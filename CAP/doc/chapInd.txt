@@ -443,8 +443,8 @@
   [2XExtractMin[102X, for IsStringMinHeap 8.5-4 
   [2XFiberProduct[102X 6.11-7 
   [2XFiberProductEmbeddingInDirectSum[102X, for IsList 6.11-6 
-  [2XFiberProductFunctorial[102X, for IsList, IsList, IsList 6.11-16 
-  [2XFiberProductFunctorialWithGivenFiberProducts[102X, for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject 6.11-17 
+  [2XFiberProductFunctorial[102X, for IsList, IsList, IsList 6.11-15 
+  [2XFiberProductFunctorialWithGivenFiberProducts[102X, for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject 6.11-16 
   [2XFiberProductOp[102X, for IsList 6.11-8 
   [2XFunctionCalledBeforeInstallation[102X, for IsDerivedMethod 8.2-14 
   [2XFunctorCanonicalizeZeroMorphisms[102X, for IsCapCategory 5.4-15 
@@ -666,8 +666,8 @@
   [2XProjectiveLift[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 2.9-4 
   [2XPushout[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 6.12-8 
       for IsList 6.12-7 
-  [2XPushoutFunctorial[102X, for IsList, IsList, IsList 6.12-16 
-  [2XPushoutFunctorialWithGivenPushouts[102X, for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject 6.12-17 
+  [2XPushoutFunctorial[102X, for IsList, IsList, IsList 6.12-15 
+  [2XPushoutFunctorialWithGivenPushouts[102X, for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject 6.12-16 
   [2XRandomMorphism[102X, for IsCapCategory, IsInt 3.4-9 
       for IsCapCategory, IsList 3.4-9 
   [2XRandomMorphismByInteger[102X, for IsCapCategory, IsInt 3.4-7 
@@ -751,9 +751,8 @@
   [2XUniversalMorphismFromImageWithGivenImageObject[102X, for IsCapCategoryMorphism, IsList, IsCapCategoryObject 6.13-9 
   [2XUniversalMorphismFromInitialObject[102X, for IsCapCategoryObject 6.5-3 
   [2XUniversalMorphismFromInitialObjectWithGivenInitialObject[102X, for IsCapCategoryObject, IsCapCategoryObject 6.5-4 
-  [2XUniversalMorphismFromPushout[102X 6.12-13 
-  [2XUniversalMorphismFromPushoutOp[102X, for IsList, IsCapCategoryObject, IsList 6.12-14 
-  [2XUniversalMorphismFromPushoutWithGivenPushout[102X, for IsList, IsCapCategoryObject, IsList, IsCapCategoryObject 6.12-15 
+  [2XUniversalMorphismFromPushout[102X, for IsList, IsCapCategoryObject, IsList 6.12-13 
+  [2XUniversalMorphismFromPushoutWithGivenPushout[102X, for IsList, IsCapCategoryObject, IsList, IsCapCategoryObject 6.12-14 
   [2XUniversalMorphismFromZeroObject[102X, for IsCapCategoryObject 6.3-3 
   [2XUniversalMorphismFromZeroObjectWithGivenZeroObject[102X, for IsCapCategoryObject, IsCapCategoryObject 6.3-4 
   [2XUniversalMorphismIntoCoimage[102X, for IsCapCategoryMorphism, IsList 6.14-12 
@@ -764,9 +763,8 @@
   [2XUniversalMorphismIntoDirectSumWithGivenDirectSum[102X, for IsList, IsCapCategoryObject, IsList, IsCapCategoryObject 6.6-8 
   [2XUniversalMorphismIntoEqualizer[102X, for IsList, IsCapCategoryObject, IsCapCategoryMorphism 6.9-7 
   [2XUniversalMorphismIntoEqualizerWithGivenEqualizer[102X, for IsList, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 6.9-8 
-  [2XUniversalMorphismIntoFiberProduct[102X 6.11-13 
-  [2XUniversalMorphismIntoFiberProductOp[102X, for IsList, IsCapCategoryObject, IsList 6.11-14 
-  [2XUniversalMorphismIntoFiberProductWithGivenFiberProduct[102X, for IsList, IsCapCategoryObject, IsList, IsCapCategoryObject 6.11-15 
+  [2XUniversalMorphismIntoFiberProduct[102X, for IsList, IsCapCategoryObject, IsList 6.11-13 
+  [2XUniversalMorphismIntoFiberProductWithGivenFiberProduct[102X, for IsList, IsCapCategoryObject, IsList, IsCapCategoryObject 6.11-14 
   [2XUniversalMorphismIntoTerminalObject[102X, for IsCapCategoryObject 6.4-3 
   [2XUniversalMorphismIntoTerminalObjectWithGivenTerminalObject[102X, for IsCapCategoryObject, IsCapCategoryObject 6.4-4 
   [2XUniversalMorphismIntoZeroObject[102X, for IsCapCategoryObject 6.3-5 

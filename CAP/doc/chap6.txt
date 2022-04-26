@@ -1508,28 +1508,7 @@
   
   [1X6.11-13 UniversalMorphismIntoFiberProduct[101X
   
-  [33X[1;0Y[29X[2XUniversalMorphismIntoFiberProduct[102X( [3Xarg[103X ) [32X function[133X
-  
-  [33X[0;0YThis  is  a  convenience  method.  There  are two different ways to use this
-  method:[133X
-  
-  [30X    [33X[0;6YThe arguments are a list of morphisms [23XD = ( \beta_i: P_i \rightarrow B
-        )_{i  =  1  \dots  n}[123X  and  a  list  of  morphisms  [23X\tau = ( \tau_i: T
-        \rightarrow  P_i  )[123X such that [23X\beta_i \circ \tau_i \sim_{T, B} \beta_j
-        \circ  \tau_j[123X for all pairs [23Xi,j[123X. The output is the morphism [23Xu( \tau ):
-        T \rightarrow \mathrm{FiberProduct}(D)[123X given by the universal property
-        of the fiber product.[133X
-  
-  [30X    [33X[0;6YThe arguments are a list of morphisms [23XD = ( \beta_i: P_i \rightarrow B
-        )_{i  =  1  \dots  n}[123X  and morphisms [23X\tau_1: T \rightarrow P_1, \dots,
-        \tau_n:  T  \rightarrow P_n[123X such that [23X\beta_i \circ \tau_i \sim_{T, B}
-        \beta_j  \circ \tau_j[123X for all pairs [23Xi,j[123X. The output is the morphism [23Xu(
-        \tau  ): T \rightarrow \mathrm{FiberProduct}(D)[123X given by the universal
-        property of the fiber product.[133X
-  
-  [1X6.11-14 UniversalMorphismIntoFiberProductOp[101X
-  
-  [33X[1;0Y[29X[2XUniversalMorphismIntoFiberProductOp[102X( [3XD[103X, [3XT[103X, [3Xtau[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XUniversalMorphismIntoFiberProduct[102X( [3XD[103X, [3XT[103X, [3Xtau[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( T, \mathrm{FiberProduct}(D) )[123X[133X
   
   [33X[0;0YThe  arguments are a list of morphisms [23XD = ( \beta_i: P_i \rightarrow B )_{i
@@ -1540,7 +1519,7 @@
   morphism  [23Xu(  \tau  ):  T  \rightarrow \mathrm{FiberProduct}(D)[123X given by the
   universal property of the fiber product.[133X
   
-  [1X6.11-15 UniversalMorphismIntoFiberProductWithGivenFiberProduct[101X
+  [1X6.11-14 UniversalMorphismIntoFiberProductWithGivenFiberProduct[101X
   
   [33X[1;0Y[29X[2XUniversalMorphismIntoFiberProductWithGivenFiberProduct[102X( [3XD[103X, [3XT[103X, [3Xtau[103X, [3XP[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( T, P )[123X[133X
@@ -1553,7 +1532,7 @@
   from [3Xtau[103X in that case. The output is the morphism [23Xu( \tau ): T \rightarrow P[123X
   given by the universal property of the fiber product.[133X
   
-  [1X6.11-16 FiberProductFunctorial[101X
+  [1X6.11-15 FiberProductFunctorial[101X
   
   [33X[1;0Y[29X[2XFiberProductFunctorial[102X( [3XLs[103X, [3XLm[103X, [3XLr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\mathrm{FiberProduct}( ( \beta_i )_{i=1
@@ -1568,7 +1547,7 @@
   )  \rightarrow  \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} )[123X given by
   the functoriality of the fiber product.[133X
   
-  [1X6.11-17 FiberProductFunctorialWithGivenFiberProducts[101X
+  [1X6.11-16 FiberProductFunctorialWithGivenFiberProducts[101X
   
   [33X[1;0Y[29X[2XFiberProductFunctorialWithGivenFiberProducts[102X( [3Xs[103X, [3XLs[103X, [3XLm[103X, [3XLr[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(s, r)[123X[133X
@@ -1726,28 +1705,7 @@
   
   [1X6.12-13 UniversalMorphismFromPushout[101X
   
-  [33X[1;0Y[29X[2XUniversalMorphismFromPushout[102X( [3Xarg[103X ) [32X function[133X
-  
-  [33X[0;0YThis  is  a  convenience  method.  There  are two different ways to use this
-  method:[133X
-  
-  [30X    [33X[0;6YThe arguments are a list of morphisms [23XD = ( \beta_i: B \rightarrow I_i
-        )_{i  =  1  \dots  n}[123X  and  a  list  of morphisms [23X\tau = ( \tau_i: I_i
-        \rightarrow  T  )_{i  =  1  \dots  n}[123X  such  that [23X\tau_i \circ \beta_i
-        \sim_{B,T} \tau_j \circ \beta_j[123X. The output is the morphism [23Xu( \tau ):
-        \mathrm{Pushout}(D)  \rightarrow  T[123X given by the universal property of
-        the pushout.[133X
-  
-  [30X    [33X[0;6YThe arguments are a list of morphisms [23XD = ( \beta_i: B \rightarrow I_i
-        )_{i  =  1  \dots  n}[123X  and morphisms [23X\tau_1: I_1 \rightarrow T, \dots,
-        \tau_n:  I_n  \rightarrow  T[123X such that [23X\tau_i \circ \beta_i \sim_{B,T}
-        \tau_j   \circ  \beta_j[123X.  The  output  is  the  morphism  [23Xu(  \tau  ):
-        \mathrm{Pushout}(D)  \rightarrow  T[123X given by the universal property of
-        the pushout.[133X
-  
-  [1X6.12-14 UniversalMorphismFromPushoutOp[101X
-  
-  [33X[1;0Y[29X[2XUniversalMorphismFromPushoutOp[102X( [3XD[103X, [3XT[103X, [3Xtau[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XUniversalMorphismFromPushout[102X( [3XD[103X, [3XT[103X, [3Xtau[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \mathrm{Pushout}(D), T )[123X[133X
   
   [33X[0;0YThe  arguments are a list of morphisms [23XD = ( \beta_i: B \rightarrow I_i )_{i
@@ -1758,7 +1716,7 @@
   [23Xu( \tau ): \mathrm{Pushout}(D) \rightarrow T[123X given by the universal property
   of the pushout.[133X
   
-  [1X6.12-15 UniversalMorphismFromPushoutWithGivenPushout[101X
+  [1X6.12-14 UniversalMorphismFromPushoutWithGivenPushout[101X
   
   [33X[1;0Y[29X[2XUniversalMorphismFromPushoutWithGivenPushout[102X( [3XD[103X, [3XT[103X, [3Xtau[103X, [3XI[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( I, T )[123X[133X
@@ -1771,7 +1729,7 @@
   from [3Xtau[103X in that case. The output is the morphism [23Xu( \tau ): I \rightarrow T[123X
   given by the universal property of the pushout.[133X
   
-  [1X6.12-16 PushoutFunctorial[101X
+  [1X6.12-15 PushoutFunctorial[101X
   
   [33X[1;0Y[29X[2XPushoutFunctorial[102X( [3XLs[103X, [3XLm[103X, [3XLr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in [23X\mathrm{Hom}(\mathrm{Pushout}( ( \beta_i )_{i=1}^n
@@ -1786,7 +1744,7 @@
   \rightarrow   \mathrm{Pushout}(   (   \beta_i'  )_{i=1}^n  )[123X  given  by  the
   functoriality of the pushout.[133X
   
-  [1X6.12-17 PushoutFunctorialWithGivenPushouts[101X
+  [1X6.12-16 PushoutFunctorialWithGivenPushouts[101X
   
   [33X[1;0Y[29X[2XPushoutFunctorialWithGivenPushouts[102X( [3Xs[103X, [3XLs[103X, [3XLm[103X, [3XLr[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(s, r)[123X[133X

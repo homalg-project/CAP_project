@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2022.04-02
+                                   2022.04-03
   
   
-                                 10 April 2022
+                                 26 April 2022
   
   
                                Sebastian Gutsche
@@ -457,10 +457,9 @@
       6.11-11 MorphismFromFiberProductToSink
       6.11-12 MorphismFromFiberProductToSinkWithGivenFiberProduct
       6.11-13 UniversalMorphismIntoFiberProduct
-      6.11-14 UniversalMorphismIntoFiberProductOp
-      6.11-15 UniversalMorphismIntoFiberProductWithGivenFiberProduct
-      6.11-16 FiberProductFunctorial
-      6.11-17 FiberProductFunctorialWithGivenFiberProducts
+      6.11-14 UniversalMorphismIntoFiberProductWithGivenFiberProduct
+      6.11-15 FiberProductFunctorial
+      6.11-16 FiberProductFunctorialWithGivenFiberProducts
     6.12 [33X[0;0YPushout[133X
       6.12-1 IsomorphismFromPushoutToCokernelOfDiagonalDifference
       6.12-2 IsomorphismFromCokernelOfDiagonalDifferenceToPushout
@@ -475,10 +474,9 @@
       6.12-11 MorphismFromSourceToPushout
       6.12-12 MorphismFromSourceToPushoutWithGivenPushout
       6.12-13 UniversalMorphismFromPushout
-      6.12-14 UniversalMorphismFromPushoutOp
-      6.12-15 UniversalMorphismFromPushoutWithGivenPushout
-      6.12-16 PushoutFunctorial
-      6.12-17 PushoutFunctorialWithGivenPushouts
+      6.12-14 UniversalMorphismFromPushoutWithGivenPushout
+      6.12-15 PushoutFunctorial
+      6.12-16 PushoutFunctorialWithGivenPushouts
     6.13 [33X[0;0YImage[133X
       6.13-1 IsomorphismFromImageObjectToKernelOfCokernel
       6.13-2 IsomorphismFromKernelOfCokernelToImageObject
