@@ -406,7 +406,7 @@ AddDerivationToCAP( TruthMorphismOfNotWithGivenObjects,
 end );
 
 ## [Goldblatt 1984: Topoi - The categorical analysis of logic, Section 6.6 (Truth-arrows in a topos)]
-## ∧: Ω × Ω → Ω classifies the product morphism ⟨⊤,⊤⟩: 𝟙 ↪ Ω × Ω of twice the morphism ⊤: 𝟙 ↪ Ω
+## ∧: Ω × Ω → Ω classifies the product morphism ⟨ ⊤, ⊤ ⟩: 𝟙 ↪ Ω × Ω of twice the morphism ⊤: 𝟙 ↪ Ω
 AddDerivationToCAP( TruthMorphismOfAndWithGivenObjects,
   function( cat, Omega2, Omega )
     local T, t;
