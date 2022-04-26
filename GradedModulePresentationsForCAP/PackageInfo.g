@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "GradedModulePresentationsForCAP",
 Subtitle := "Presentations for graded modules",
-Version := "2022.03-02",
-Date := "10/03/2022",
+Version := "2022.04-01",
+Date := "26/04/2022",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -71,7 +71,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.11.1",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "CAP", ">= 2021.10-06" ],
+                           [ "CAP", ">= 2022.04-03" ],
                            [ "ModulePresentationsForCAP", ">=2019.08.07" ],
                            [ "GradedRingForHomalg", ">=2019.08.07" ],
                            [ "ComplexesAndFilteredObjectsForCAP", ">=2016.09.19" ],
