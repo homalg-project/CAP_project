@@ -82,8 +82,8 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsElementaryTopos :=
           Concatenation( [
                   "SubobjectClassifier",
                   "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
-                  #"TruthMorphismOfTrueWithGivenObjects", ## can be derived from SubobjectClassifier and ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier
-                  #"SubobjectOfClassifyingMorphism", ## can be derived from SubobjectClassifier and TruthMorphismOfTrueWithGivenObjects
+                  #"TruthMorphismOfTrueWithGivenObjects", ## derived from SubobjectClassifier & ClassifyingMorphismOfSubobjectWithGiven... & IdentityMorphism
+                  "SubobjectOfClassifyingMorphism", ## can be derived from SubobjectClassifier & TruthMorphismOfTrueWithGivenObjects & ProjectionInFactorOfFiberProduct
                   ],
                   CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianClosedCategory,
                   CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteCompleteCategory,
