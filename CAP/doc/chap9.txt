@@ -291,3 +291,17 @@
   starting  with [3Xinitial_value[103X. If no such fixpoint exists, the execution does
   not terminate.[133X
   
+  [1X9.2-29 TransitivelyNeededOtherPackages[101X
+  
+  [33X[1;0Y[29X[2XTransitivelyNeededOtherPackages[102X( [3Xpackage_name[103X ) [32X function[133X
+  
+  [33X[0;0YReturns a list of package names which are transitively needed other packages
+  of the package [3Xpackage_name[103X.[133X
+  
+  [1X9.2-30 PackageOfCAPOperation[101X
+  
+  [33X[1;0Y[29X[2XPackageOfCAPOperation[102X( [3Xoperation_name[103X ) [32X function[133X
+  
+  [33X[0;0YReturns  the  name  of  the  package  to  which  the  CAP operation given by
+  [3Xoperation_name[103X belongs or fail if the package is not known.[133X
+  
