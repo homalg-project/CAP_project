@@ -13,9 +13,7 @@ InstallGlobalFunction( InfoStringOfInstalledOperationsOfCategory,
         return;
     fi;
     
-    list_of_properties := ShallowCopy( RecNames( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD ) );
-
-    Remove( list_of_properties, Position( list_of_properties, "EveryCategory" ) );
+    list_of_properties := Intersection( ListKnownCategoricalProperties( category ), RecNames( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD ) );
     
     list_of_properties := Filtered( list_of_properties, p -> CheckConstructivenessOfCategory( category, p ) = [ ] );
     
