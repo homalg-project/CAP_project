@@ -280,3 +280,31 @@ InstallGlobalFunction( CAP_INTERNAL_ASSERT_IS_NON_NEGATIVE_INTEGER_OR_INFINITY,
     fi;
     
 end );
+
+##
+InstallGlobalFunction( PackageOfCAPOperation, function ( operation_name )
+  local packages;
+    
+    if not IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name) ) then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( operation_name, " is not a CAP operation" );
+        
+    fi;
+    
+    packages := Filtered( RecNames( CAP_INTERNAL_METHOD_NAME_RECORDS_BY_PACKAGE ), package -> IsBound( CAP_INTERNAL_METHOD_NAME_RECORDS_BY_PACKAGE.(package).(operation_name) ) );
+    
+    if Length( packages ) = 0 then
+        
+        return fail;
+        
+    elif Length( packages ) > 1 then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "Found multiple packages for CAP operation ", operation_name );
+        
+    fi;
+    
+    return packages[1];
+    
+end );
