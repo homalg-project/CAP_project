@@ -465,27 +465,6 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    given_arguments,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    package_name,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    # hack until we can compile Toposes</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    : operations := Intersection(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        ListInstalledOperationsOfCategory(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            MATRIX_CATEGORY( QQ : no_precompiled_code )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        Union(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            RecNames( CAP_INTERNAL_CORE_METHOD_NAME_RECORD ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            RecNames( MONOIDAL_CATEGORIES_BASIC_METHOD_NAME_RECORD ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            RecNames( MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            RecNames( DISTRIBUTIVE_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            RecNames( CLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            RecNames( COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            RecNames( BRAIDED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            RecNames(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                RIGID_SYMMETRIC_CLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            RecNames(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                RIGID_SYMMETRIC_COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MatrixCategoryPrecompiled( QQ );</span>
 Category of matrices over Q

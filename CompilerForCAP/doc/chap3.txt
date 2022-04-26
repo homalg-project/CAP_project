@@ -427,27 +427,6 @@
     [4X[25X>[125X [27X    given_arguments,[127X[104X
     [4X[25X>[125X [27X    package_name,[127X[104X
     [4X[25X>[125X [27X    compiled_category_name[127X[104X
-    [4X[25X>[125X [27X    # hack until we can compile Toposes[127X[104X
-    [4X[25X>[125X [27X    : operations := Intersection([127X[104X
-    [4X[25X>[125X [27X        ListInstalledOperationsOfCategory([127X[104X
-    [4X[25X>[125X [27X            MATRIX_CATEGORY( QQ : no_precompiled_code )[127X[104X
-    [4X[25X>[125X [27X        ),[127X[104X
-    [4X[25X>[125X [27X        Union([127X[104X
-    [4X[25X>[125X [27X            RecNames( CAP_INTERNAL_CORE_METHOD_NAME_RECORD ),[127X[104X
-    [4X[25X>[125X [27X            RecNames( MONOIDAL_CATEGORIES_BASIC_METHOD_NAME_RECORD ),[127X[104X
-    [4X[25X>[125X [27X            RecNames( MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ),[127X[104X
-    [4X[25X>[125X [27X            RecNames( DISTRIBUTIVE_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ),[127X[104X
-    [4X[25X>[125X [27X            RecNames( CLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ),[127X[104X
-    [4X[25X>[125X [27X            RecNames( COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ),[127X[104X
-    [4X[25X>[125X [27X            RecNames( BRAIDED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ),[127X[104X
-    [4X[25X>[125X [27X            RecNames([127X[104X
-    [4X[25X>[125X [27X                RIGID_SYMMETRIC_CLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD[127X[104X
-    [4X[25X>[125X [27X            ),[127X[104X
-    [4X[25X>[125X [27X            RecNames([127X[104X
-    [4X[25X>[125X [27X                RIGID_SYMMETRIC_COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD[127X[104X
-    [4X[25X>[125X [27X            )[127X[104X
-    [4X[25X>[125X [27X        )[127X[104X
-    [4X[25X>[125X [27X    )[127X[104X
     [4X[25X>[125X [27X);;[127X[104X
     [4X[25Xgap>[125X [27XMatrixCategoryPrecompiled( QQ );[127X[104X
     [4X[28XCategory of matrices over Q[128X[104X
