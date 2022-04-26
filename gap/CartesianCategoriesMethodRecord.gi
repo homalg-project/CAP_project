@@ -24,6 +24,8 @@ DirectProductOnMorphismsWithGivenDirectProducts := rec(
   io_type := [ [ "s", "alpha", "beta", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "CoproductOnMorphismsWithGivenCoproducts",
+  dual_preprocessor_func :=
+    { cat, s, alpha, beta, r } -> [ Opposite( cat ), Opposite( r ), Opposite( alpha ), Opposite( beta ), Opposite( s ) ],
   dual_arguments_reversed := false,
 ),
 
