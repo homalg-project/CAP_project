@@ -12,7 +12,7 @@
 #!   The result is available via a global function called <A>compiled_category_name</A> which is written to the file <A>package_name</A>`/precompiled_categories/`<A>compiled_category_name</A>`.gi`.
 #!   The global function takes the same arguments as <A>category_constructor</A> and returns the category with the compiled functions installed as primitive operations.
 #!   If a list of operations is given via the option `operations`, only operations in this list are precompiled.
-#!   Else all installed operations of the category are precompiled.
+#!   Else all installed operations (excluding operations which are part of suggested dependencies) of the category are precompiled.
 #!   Technical requirements:
 #!     * <A>category_constructor</A> must be a regular function, i.e. not an operation or a kernel function.
 #!     * <A>category_constructor</A> must support the option `FinalizeCategory`.

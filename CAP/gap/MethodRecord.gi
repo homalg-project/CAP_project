@@ -5168,7 +5168,7 @@ CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE( CAP_INTERNAL_METHOD_NAME_RE
 ##
 InstallGlobalFunction( CAP_INTERNAL_GENERATE_DOCUMENTATION_FOR_CATEGORY_INSTANCES,
   function ( subsections, package_name, filename, chapter_name, section_name )
-    local output_string, package_info, current_string, collected_dependencies, subsection, category, subsection_title, operations, booknames, bookname, info, label, match, nr, res, test_string, test_string_legacy, output_path, dep, p, i, name;
+    local output_string, package_info, current_string, transitively_needed_other_packages, subsection, category, subsection_title, operations, bookname, info, label, match, nr, res, test_string, test_string_legacy, output_path, i, name;
     
     output_string := "";
     
@@ -5204,25 +5204,7 @@ InstallGlobalFunction( CAP_INTERNAL_GENERATE_DOCUMENTATION_FOR_CATEGORY_INSTANCE
     output_string := Concatenation( output_string, current_string );
     
     # We do not want to include operations from optional dependencies because those might not be available.
-    collected_dependencies := [ package_name ];
-    
-    for dep in collected_dependencies do
-        
-        package_info := First( PackageInfo( dep ) );
-        
-        Assert( 0, package_info <> fail );
-        
-        for p in package_info.Dependencies.NeededOtherPackages do
-            
-            if not p[1] in collected_dependencies then
-                
-                Add( collected_dependencies, p[1] );
-                
-            fi;
-            
-        od;
-        
-    od;
+    transitively_needed_other_packages := TransitivelyNeededOtherPackages( package_name );
     
     for i in [ 1 .. Length( subsections ) ] do
         
@@ -5265,23 +5247,17 @@ InstallGlobalFunction( CAP_INTERNAL_GENERATE_DOCUMENTATION_FOR_CATEGORY_INSTANCE
         for name in operations do
             
             # find package name = bookname
-            booknames := Filtered( RecNames( CAP_INTERNAL_METHOD_NAME_RECORDS_BY_PACKAGE ), bookname -> IsBound( CAP_INTERNAL_METHOD_NAME_RECORDS_BY_PACKAGE.(bookname).(name) ) );
+            bookname := PackageOfCAPOperation( name );
             
-            if Length( booknames ) = 0 then
+            if bookname = fail then
                 
                 Display( Concatenation( "WARNING: Could not find package for CAP operation ", name, ", skipping." ) );
                 continue;
                 
-            elif Length( booknames ) > 1 then
-                
-                Error( "Found multiple packages for CAP operation ", name );
-                
             fi;
             
-            bookname := booknames[1];
-            
             # skip operation if it comes from an optional dependency
-            if not bookname in collected_dependencies then
+            if not bookname in transitively_needed_other_packages then
                 
                 continue;
                 
@@ -5313,7 +5289,7 @@ InstallGlobalFunction( CAP_INTERNAL_GENERATE_DOCUMENTATION_FOR_CATEGORY_INSTANCE
             
             if Length(match) < nr then
                 
-                Error( "Could not get HELP_GET_MATCHES for book ", bookname, " and label ", SIMPLE_STRING( label ) );
+                Error( "Could not get HELP_GET_MATCHES for book ", bookname, ", operation ", name, ", and label ", SIMPLE_STRING( label ) );
                 
             fi;
             

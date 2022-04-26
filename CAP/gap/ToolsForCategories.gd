@@ -228,3 +228,13 @@ DeclareGlobalFunction( "CapJitAddTypeSignatureDeferred" );
 #!   If no such fixpoint exists, the execution does not terminate.
 #! @Arguments predicate, func, initial_value
 DeclareGlobalFunction( "CapFixpoint" );
+
+#! @Description
+#!   Returns a list of package names which are transitively needed other packages of the package <A>package_name</A>.
+#! @Arguments package_name
+DeclareGlobalFunction( "TransitivelyNeededOtherPackages" );
+
+#! @Description
+#!   Returns the name of the package to which the CAP operation given by <A>operation_name</A> belongs or fail if the package is not known.
+#! @Arguments operation_name
+DeclareGlobalFunction( "PackageOfCAPOperation" );

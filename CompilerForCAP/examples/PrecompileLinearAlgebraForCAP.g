@@ -23,27 +23,6 @@ CapJitPrecompileCategoryAndCompareResult(
     given_arguments,
     package_name,
     compiled_category_name
-    # hack until we can compile Toposes
-    : operations := Intersection(
-        ListInstalledOperationsOfCategory(
-            MATRIX_CATEGORY( QQ : no_precompiled_code )
-        ),
-        Union(
-            RecNames( CAP_INTERNAL_CORE_METHOD_NAME_RECORD ),
-            RecNames( MONOIDAL_CATEGORIES_BASIC_METHOD_NAME_RECORD ),
-            RecNames( MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ),
-            RecNames( DISTRIBUTIVE_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ),
-            RecNames( CLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ),
-            RecNames( COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ),
-            RecNames( BRAIDED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ),
-            RecNames(
-                RIGID_SYMMETRIC_CLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD
-            ),
-            RecNames(
-                RIGID_SYMMETRIC_COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD
-            )
-        )
-    )
 );;
 
 MatrixCategoryPrecompiled( QQ );

@@ -4,7 +4,7 @@
 # Implementations
 #
 InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_constructor, given_arguments, package_name, compiled_category_name )
-  local cat1, cat2, cat, operations, diff, source_attribute_getter_name, range_attribute_getter_name, output_string, package_info, parameters_string, current_string, compiled_tree, compiled_func, function_string, weight, IsPrecompiledDerivation_string, function_name, current_rec;
+  local cat1, cat2, cat, transitively_needed_other_packages, operations, diff, source_attribute_getter_name, range_attribute_getter_name, output_string, package_info, parameters_string, current_string, compiled_tree, compiled_func, function_string, weight, IsPrecompiledDerivation_string, function_name, current_rec;
     
     if IsOperation( category_constructor ) or IsKernelFunction( category_constructor ) then
         
@@ -38,7 +38,10 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
     
     if ValueOption( "operations" ) = fail then
         
-        operations := ListInstalledOperationsOfCategory( cat );
+        transitively_needed_other_packages := TransitivelyNeededOtherPackages( package_name );
+        
+        # the case `PackageOfCAPOperation( operation_name ) = fail` is handled implicitely
+        operations := Filtered( ListInstalledOperationsOfCategory( cat ), operation_name -> PackageOfCAPOperation( operation_name ) in transitively_needed_other_packages );
         
     elif ValueOption( "operations" ) = "primitive" then
         

@@ -1147,6 +1147,39 @@ InstallGlobalFunction( CapFixpoint, function ( predicate, func, initial_value )
     
 end );
 
+##
+InstallGlobalFunction( TransitivelyNeededOtherPackages, function ( package_name )
+  local collected_dependencies, package_info, dep, p;
+    
+    collected_dependencies := [ package_name ];
+    
+    for dep in collected_dependencies do
+        
+        package_info := First( PackageInfo( dep ) );
+        
+        if package_info = fail then
+            
+            # COVERAGE_IGNORE_NEXT_LINE
+            Error( dep, " is not the name of an available package" );
+            
+        fi;
+        
+        for p in package_info.Dependencies.NeededOtherPackages do
+            
+            if not p[1] in collected_dependencies then
+                
+                Add( collected_dependencies, p[1] );
+                
+            fi;
+            
+        od;
+        
+    od;
+    
+    return collected_dependencies;
+    
+end );
+
 ## Hack for making CAP work with GAP versions smaller than 4.11
 ## Fixme: Remove this once we are sure we do not want compatibility
 ## to GAP < 4.11 anymore.
