@@ -41,6 +41,10 @@ Thus, there is no penalty in writing high-level code: Using `CompilerForCAP`, an
 * `CAP` can use the linear algebra in OSCAR/Nemo via the package [`NemoLinearAlgebraForCAP`](https://github.com/sebastianpos/NemoLinearAlgebraForCAP/). If this package is used, `CompilerForCAP` is able to generate native OSCAR-code, see [this pull request](https://github.com/sebastianpos/NemoLinearAlgebraForCAP/pull/1).
 * [planned] In some settings, e.g. in product categories, opportunities for parallelisation arise naturally. `CompilerForCAP` should be able to detect such situations and parallelise code using HPC-GAP or Julia where possible.
 
+## Funding
+
+<img src="img/BMWK_Fz_2017_WebSVG_en.svg" width="170px">
+
 <!-- BEGIN FOOTER -->
 [html-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
 [html-url]: https://homalg-project.github.io/CAP_project/CompilerForCAP/doc/chap0_mj.html
