@@ -6,7 +6,7 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2022.04-05
+                                   2022.04-06
   
   
                                  29 April 2022
@@ -906,6 +906,7 @@
       12.3-3 AsMorphismInWrapperCategory
       12.3-4 \/
       12.3-5 WrapperCategory
+      12.3-6 WrappingFunctor
   13 [33X[0;0YExamples and Tests[133X
     13.1 [33X[0;0YFunctors[133X
     13.2 [33X[0;0YHomomorphism structure[133X

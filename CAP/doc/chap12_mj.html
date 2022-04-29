@@ -47,6 +47,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12_mj.html#X7A95EED57AD2AF78">12.3-3 AsMorphismInWrapperCategory</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12_mj.html#X7BF21C4587D89462"><code>12.3-4 \/</code></a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12_mj.html#X7C22BC7182777CF4">12.3-5 WrapperCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12_mj.html#X86932DDE8378A2AF">12.3-6 WrappingFunctor</a></span>
 </div></div>
 </div>
 
@@ -174,6 +175,15 @@
 </li>
 </ul>
 <p>Additionally, the following options of <code class="func">CategoryConstructor</code> (<a href="chap11_mj.html#X8070F8B48111E8A7"><span class="RefLink">11.2-1</span></a>) are supported: <code class="code">category_filter</code>, <code class="code">category_object_filter</code>, <code class="code">category_morphism_filter</code>, <code class="code">object_constructor</code>, <code class="code">object_datum</code>, <code class="code">morphism_constructor</code>, <code class="code">morphism_datum</code>.</p>
+
+<p><a id="X86932DDE8378A2AF" name="X86932DDE8378A2AF"></a></p>
+
+<h5>12.3-6 WrappingFunctor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WrappingFunctor</code>( <var class="Arg">W</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a functor</p>
+
+<p>Return the functor from the wrapped category <code class="code">UnderlyingCategory</code>(<var class="Arg">W</var>) to the wrapper category <var class="Arg">W</var>. The functor maps each wrapped object/morphism to its wrapping object/morphism.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap11_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap13_mj.html">[Next Chapter]</a>&nbsp;  </div>

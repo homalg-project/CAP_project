@@ -777,6 +777,7 @@
   [2XVerticalPostCompose[102X, for IsCapCategoryTwoCell, IsCapCategoryTwoCell 4.2-5 
   [2XVerticalPreCompose[102X, for IsCapCategoryTwoCell, IsCapCategoryTwoCell 4.2-4 
   [2XWrapperCategory[102X, for IsCapCategory, IsRecord 12.3-5 
+  [2XWrappingFunctor[102X, for IsWrapperCapCategory 12.3-6 
   [2XZeroMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject 3.8-7 
   [2XZeroObject[102X, for IsCapCategory 6.3-1 
       for IsCapCategoryCell 6.3-2 

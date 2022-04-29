@@ -105,3 +105,12 @@
   [10Xcategory_morphism_filter[110X,          [10Xobject_constructor[110X,         [10Xobject_datum[110X,
   [10Xmorphism_constructor[110X, [10Xmorphism_datum[110X.[133X
   
+  [1X12.3-6 WrappingFunctor[101X
+  
+  [33X[1;0Y[29X[2XWrappingFunctor[102X( [3XW[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya functor[133X
+  
+  [33X[0;0YReturn  the  functor  from the wrapped category [10XUnderlyingCategory[110X([3XW[103X) to the
+  wrapper  category  [3XW[103X.  The  functor maps each wrapped object/morphism to its
+  wrapping object/morphism.[133X
+  
