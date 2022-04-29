@@ -403,7 +403,7 @@ InstallMethod( Display,
     
     Display( ObjectDatum( a ) );
     
-    Display( "\nAn object given by the above data" );
+    Print( "\nAn object in ", Name( CapCategory( a ) ), " given by the above data\n" );
     
 end );
 
@@ -416,6 +416,6 @@ InstallMethod( Display,
     
     Display( MorphismDatum( phi ) );
     
-    Display( "\nA morphism given by the above data" );
+    Print( "\nA morphism in ", Name( CapCategory( phi ) ), " given by the above data\n" );
     
 end );
