@@ -388,6 +388,38 @@ InstallMethod( WrapperCategory,
     
 end );
 
+##
+InstallMethod( WrappingFunctor,
+        "for a wrapper category",
+        [ IsWrapperCapCategory ],
+        
+  function( W )
+    local C, name, Id;
+    
+    C := UnderlyingCategory( W );
+    
+    name := Concatenation( "Wrapper functor from ", Name( C ), " to its wrapper category ", Name( W ) );
+    
+    Id := CapFunctor( name, C, W );
+    
+    AddObjectFunction( Id,
+      function ( objC )
+        
+        return ObjectConstructor( W, objC );
+        
+    end );
+    
+    AddMorphismFunction( Id,
+      function ( s, morC, r )
+        
+        return MorphismConstructor( W, s, morC, r );
+        
+    end );
+    
+    return Id;
+    
+end );
+
 ##################################
 ##
 ## View & Display

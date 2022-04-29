@@ -100,3 +100,12 @@ DeclareOperation( "\/",
 #! @Returns a category
 DeclareOperation( "WrapperCategory",
                   [ IsCapCategory, IsRecord ] );
+
+
+#! @Description
+#!  Return the functor from the wrapped category <C>UnderlyingCategory</C>(<A>W</A>) to the wrapper category <A>W</A>.
+#!  The functor maps each wrapped object/morphism to its wrapping object/morphism.
+#! @Arguments W
+#! @Returns a functor
+DeclareAttribute( "WrappingFunctor",
+                  IsWrapperCapCategory );
