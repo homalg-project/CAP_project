@@ -344,14 +344,21 @@ AddDerivationToCAP( SubobjectOfClassifyingMorphism,
                     [ [ TruthMorphismOfTrueWithGivenObjects , 1 ],
                       [ ProjectionInFactorOfFiberProduct , 1 ] ],
   function( cat, mor )
-    local truth;
+    local truth, subobject;
     
     truth := TruthMorphismOfTrueWithGivenObjects(
                      cat,
                      TerminalObject( cat ),
                      SubobjectClassifier( cat ) );
     
-    return ProjectionInFactorOfFiberProduct( cat, [ mor, truth ], 1 );
+    subobject := ProjectionInFactorOfFiberProduct( cat, [ mor, truth ], 1 );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 4, IsMonomorphism( subobject ) );
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    SetIsMonomorphism( subobject, true );
+    
+    return subobject;
     
 end : Description := "SubobjectOfClassifyingMorphism using the fiber product along the true morphism" );
 
@@ -488,14 +495,6 @@ AddDerivationToCAP( TruthMorphismOfImpliesWithGivenObjects,
     
 end );
 
-##
-AddDerivationToCAP( PseudoComplementSubobject,
-  function( cat, iota )
-    
-    return Source( EmbeddingOfPseudoComplementSubobject( cat, iota ) );
-    
-end );
-
 ## Note that |Sub(Ω)| = |End(Ω)|
 ## * but id_Ω ≜ ⊤_Ω ∈ Sub(Ω) does not correspond to id_Ω ∈ End(Ω) but to ⊤_Ω: Ω → 𝟙 → Ω ∈ End(Ω), which is generally not an iso
 ## * and id_Ω ∈ End(Ω) corresponds to ⊤: 𝟙 → Ω
@@ -516,10 +515,10 @@ AddDerivationToCAP( EmbeddingOfPseudoComplementSubobject,
 end );
 
 ##
-AddDerivationToCAP( IntersectionSubobject,
-  function( cat, iota1, iota2 )
+AddDerivationToCAP( PseudoComplementSubobject,
+  function( cat, iota )
     
-    return Source( EmbeddingOfIntersectionSubobject( cat, iota1, iota2 ) );
+    return Source( EmbeddingOfPseudoComplementSubobject( cat, iota ) );
     
 end );
 
@@ -554,10 +553,10 @@ AddDerivationToCAP( EmbeddingOfIntersectionSubobject,
 end );
 
 ##
-AddDerivationToCAP( UnionSubobject,
+AddDerivationToCAP( IntersectionSubobject,
   function( cat, iota1, iota2 )
     
-    return Source( EmbeddingOfUnionSubobject( cat, iota1, iota2 ) );
+    return Source( EmbeddingOfIntersectionSubobject( cat, iota1, iota2 ) );
     
 end );
 
@@ -598,10 +597,10 @@ AddDerivationToCAP( EmbeddingOfUnionSubobject,
 end );
 
 ##
-AddDerivationToCAP( RelativePseudoComplementSubobject,
+AddDerivationToCAP( UnionSubobject,
   function( cat, iota1, iota2 )
     
-    return Source( EmbeddingOfRelativePseudoComplementSubobject( cat, iota1, iota2 ) );
+    return Source( EmbeddingOfUnionSubobject( cat, iota1, iota2 ) );
     
 end );
 
@@ -624,6 +623,14 @@ AddDerivationToCAP( EmbeddingOfRelativePseudoComplementSubobject,
                                      ClassifyingMorphismOfSubobject( cat, iota2 ) ] ), ## χ_ι2
                            TruthMorphismOfImplies( cat ) ## ⇒: Ω × Ω → Ω
                            ) );
+    
+end );
+
+##
+AddDerivationToCAP( RelativePseudoComplementSubobject,
+  function( cat, iota1, iota2 )
+    
+    return Source( EmbeddingOfRelativePseudoComplementSubobject( cat, iota1, iota2 ) );
     
 end );
 
