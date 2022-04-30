@@ -344,14 +344,21 @@ AddDerivationToCAP( SubobjectOfClassifyingMorphism,
                     [ [ TruthMorphismOfTrueWithGivenObjects , 1 ],
                       [ ProjectionInFactorOfFiberProduct , 1 ] ],
   function( cat, mor )
-    local truth;
+    local truth, subobject;
     
     truth := TruthMorphismOfTrueWithGivenObjects(
                      cat,
                      TerminalObject( cat ),
                      SubobjectClassifier( cat ) );
     
-    return ProjectionInFactorOfFiberProduct( cat, [ mor, truth ], 1 );
+    subobject := ProjectionInFactorOfFiberProduct( cat, [ mor, truth ], 1 );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 4, IsMonomorphism( subobject ) );
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    SetIsMonomorphism( subobject, true );
+    
+    return subobject;
     
 end : Description := "SubobjectOfClassifyingMorphism using the fiber product along the true morphism" );
 
