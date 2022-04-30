@@ -547,8 +547,16 @@ end );
 ## [Goldblatt 1984: Topoi - The categorical analysis of logic, Theorem 7.1.2]
 AddDerivationToCAP( EmbeddingOfIntersectionSubobject,
   function( cat, iota1, iota2 )
+    local subobject;
     
-    return MorphismFromFiberProductToSink( cat, [ iota1, iota2 ] );
+    subobject := MorphismFromFiberProductToSink( cat, [ iota1, iota2 ] );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 4, IsMonomorphism( subobject ) );
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    SetIsMonomorphism( subobject, true );
+    
+    return subobject;
     
 end );
 
