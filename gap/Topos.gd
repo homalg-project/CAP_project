@@ -20,30 +20,6 @@ DeclareOperation( "BinaryDirectProduct",
 DeclareOperation( "BinaryCoproduct",
         [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ] );
 
-####################################
-##
-#! @Section Morphisms of external Hom
-##
-####################################
-
-#! @Description
-#! The argument are two objects <A>A</A>, <A>B</A>.
-#! The output is a list of all morphisms from <A>A</A> to <A>B</A>.
-#! @Returns a list of morphism
-#! @Arguments A, B
-DeclareOperation( "MorphismsOfExternalHom",
-                  [ IsCapCategoryObject, IsCapCategoryObject ] );
-
-####################################
-##
-#! @Section Subobject Classifier
-##
-####################################
-
-DeclareGlobalVariable( "TOPOS_METHOD_NAME_RECORD" );
-
-#! @Section Subobject Classifier
-
 #! @Description
 #!  The property of the category <A>C</A> being finite complete.
 #! @Arguments C
@@ -71,6 +47,30 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteCocompleteCategory :=
                   "UniversalMorphismFromCoequalizerWithGivenCoequalizer",
                   ],
                   CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory ) );
+
+####################################
+##
+#! @Section Morphisms of external Hom
+##
+####################################
+
+#! @Description
+#! The argument are two objects <A>A</A>, <A>B</A>.
+#! The output is a list of all morphisms from <A>A</A> to <A>B</A>.
+#! @Returns a list of morphism
+#! @Arguments A, B
+DeclareOperation( "MorphismsOfExternalHom",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+####################################
+##
+#! @Section Subobject Classifier
+##
+####################################
+
+DeclareGlobalVariable( "TOPOS_METHOD_NAME_RECORD" );
+
+#! @Section Subobject Classifier
 
 #! @Description
 #!  The property of <A>C</A> being an elementary topos.
