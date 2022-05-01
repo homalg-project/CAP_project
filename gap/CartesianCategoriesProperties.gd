@@ -12,8 +12,6 @@ Perform(
     ],
     AddCategoricalProperty );
 
-InstallTrueMethod( IsCartesianCategory, IsAbelianCategory );
-
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianCategory  := Concatenation( [
 "DirectProduct",
 "ProjectionInFactorOfDirectProductWithGivenDirectProduct",

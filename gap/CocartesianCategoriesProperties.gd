@@ -12,8 +12,6 @@ Perform(
     ],
     AddCategoricalProperty );
 
-InstallTrueMethod( IsCocartesianCategory, IsAbelianCategory );
-
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory  := Concatenation( [
 "Coproduct",
 "InjectionOfCofactorOfCoproductWithGivenCoproduct",
