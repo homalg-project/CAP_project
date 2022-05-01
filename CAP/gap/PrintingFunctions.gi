@@ -20,7 +20,9 @@ InstallGlobalFunction( InfoStringOfInstalledOperationsOfCategory,
     list_of_properties := Filtered( list_of_properties, p -> CheckConstructivenessOfCategory( category, p ) = [ ] );
     
     list_of_properties := MaximalObjects( list_of_properties,
-                                  { p1, p2 } -> IsSubset( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.( p2 ), CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.( p1 ) ) );
+                                  { p1, p2 } ->
+                                  IsSubset( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.( p2 ), CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.( p1 ) ) or
+                                  ( IsProperty( ValueGlobal( p2 ) ) and ( p1 in ListImpliedFilters( ValueGlobal( p2 ) ) ) ) );
     
     StableSortBy( list_of_properties, p -> Length( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.( p ) ) );
     
