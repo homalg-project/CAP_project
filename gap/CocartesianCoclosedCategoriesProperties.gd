@@ -5,3 +5,5 @@
 #
 
 AddCategoricalProperty( [ "IsCocartesianCoclosedCategory", "IsCartesianClosedCategory" ] );
+
+AddCategoricalProperty( [ "IsBicartesianCoclosedCategory", "IsBicartesianClosedCategory" ] );

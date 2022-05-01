@@ -4,14 +4,30 @@
 # Implementations
 #
 
+InstallTrueMethod( IsCartesianCategory, IsBicartesianCategory );
+InstallTrueMethod( IsCocartesianCategory, IsBicartesianCategory );
+InstallTrueMethod( IsBicartesianCategory, IsCartesianCategory and IsCocartesianCategory );
+
+InstallTrueMethod( IsBicartesianCategory, IsAbelianCategory );
+
+# https://ncatlab.org/nlab/show/bicartesian+closed+category
+InstallTrueMethod( IsBicartesianCategory, IsBicartesianClosedCategory );
+InstallTrueMethod( IsCartesianClosedCategory, IsBicartesianClosedCategory );
+InstallTrueMethod( IsDistributiveCartesianCategory, IsBicartesianClosedCategory );
+
+InstallTrueMethod( IsBicartesianCategory, IsBicartesianCoclosedCategory );
+InstallTrueMethod( IsCocartesianCoclosedCategory, IsBicartesianCoclosedCategory );
+#InstallTrueMethod( IsCodistributiveCocartesianCategory, IsBicartesianCoclosedCategory );
+
 InstallTrueMethod( IsCartesianCategory, IsFiniteCompleteCategory );
 InstallTrueMethod( IsCocartesianCategory, IsFiniteCocompleteCategory );
 
+InstallTrueMethod( IsFiniteCompleteCategory, IsAbelianCategory );
+InstallTrueMethod( IsFiniteCocompleteCategory, IsAbelianCategory );
+
 InstallTrueMethod( IsFiniteCompleteCategory, IsElementaryTopos );
 InstallTrueMethod( IsFiniteCocompleteCategory, IsElementaryTopos );
-
-InstallTrueMethod( IsCartesianClosedCategory, IsElementaryTopos );
-InstallTrueMethod( IsDistributiveCartesianCategory, IsElementaryTopos );
+InstallTrueMethod( IsBicartesianClosedCategory, IsElementaryTopos );
 
 ##
 InstallMethodForCompilerForCAP( BinaryDirectProduct,
