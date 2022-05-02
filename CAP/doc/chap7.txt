@@ -259,6 +259,10 @@
         call  of the dual operation all arguments have to be given in reversed
         order.[133X
   
+  [30X    [33X[0;6Ydual_with_given_arguments_reversed  (optional): Boolean, marks whether
+        for  the  call  of  the  dual operation the source and range of a with
+        given operation have to be given in reversed order.[133X
+  
   [30X    [33X[0;6Ydual_preprocessor_func  (optional):  let  f  be an operation with dual
         operation g. For the automatic installation of g from f, the arguments
         given to g are preprocessed by this given function.[133X
