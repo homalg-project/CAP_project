@@ -18,6 +18,9 @@ InstallTrueMethod( IsAdditiveCategory, IsPreAbelianCategory );
 
 InstallTrueMethod( IsPreAbelianCategory, IsAbelianCategory );
 
+InstallTrueMethod( IsAbelianCategory, IsAbelianCategoryWithEnoughProjectives );
+
+InstallTrueMethod( IsAbelianCategory, IsAbelianCategoryWithEnoughInjectives );
 
 ######################################
 ##
