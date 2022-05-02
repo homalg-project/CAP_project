@@ -96,6 +96,37 @@ CapJitAddLogicFunction( function ( tree )
     
 end );
 
+# NTuple( n, a_1, ..., a_n )[i] => a_i
+CapJitAddLogicFunction( function ( tree )
+  local pre_func;
+    
+    Info( InfoCapJit, 1, "####" );
+    Info( InfoCapJit, 1, "Apply logic for accessing elements of tuples." );
+    
+    pre_func := function ( tree, additional_arguments )
+      local args;
+        
+        if CapJitIsCallToGlobalFunction( tree, "[]" ) and CapJitIsCallToGlobalFunction( tree.args.1, "NTuple" ) then
+            
+            if tree.args.2.type <> "EXPR_INT" then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Error( "You should only access tuples via literal integers." );
+                
+            fi;
+            
+            return tree.args.1.args.(tree.args.2.value + 1);
+            
+        fi;
+        
+        return tree;
+        
+    end;
+    
+    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+    
+end );
+
 # a = b?
 CapJitAddLogicFunction( function ( tree )
   local pre_func;

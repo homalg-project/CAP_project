@@ -576,7 +576,8 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INFERRED_DATA_TYPES, function ( tree, in
             
             if not ForAll( tree.list, element -> element.data_type = tree.list.1.data_type ) then
                 
-                #Error( "the list is not homogeneous, this is not supported" );
+                Display( "WARNING: list is not homogeneous, this is not supported. Use `NTuple` or its convenience aliases instead. The filters of the element types are:" );
+                Display( List( AsListMut( tree.list ), element -> element.data_type.filter ) );
                 # there might already be a data type set, but we want to avoid partial typings -> unbind
                 Unbind( tree.data_type );
                 return tree;
@@ -910,6 +911,27 @@ CapJitAddTypeSignature( "Positions", [ IsList, IsObject ], function ( input_type
     Assert( 0, input_types[1].element_type = input_types[2] );
     
     return rec( filter := IsList, element_type := rec( filter := IsInt ) );
+    
+end );
+
+CapJitAddTypeSignature( "NTuple", "any", function ( input_types )
+    
+    Assert( 0, input_types[1].filter = IsInt );
+    
+    return rec( filter := IsNTuple, element_types := input_types{[ 2 .. Length( input_types ) ]} );
+    
+end );
+
+CapJitAddTypeSignature( "[]", [ IsNTuple, IsInt ], function ( args, func_stack )
+    
+    if args.2.type <> "EXPR_INT" then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "You should only access tuples via literal integers." );
+        
+    fi;
+    
+    return rec( args := args, output_type := args.1.data_type.element_types[args.2.value] );
     
 end );
 

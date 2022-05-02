@@ -13,6 +13,12 @@ BindGlobal( "CAP_JIT_INTERNAL_GET_KEY_AND_POSITIONS_TO_OUTLINE", function ( tree
         
         positions_to_outline := [ 1 .. tree.list.length ];
         
+    elif CapJitIsCallToGlobalFunction( tree, "NTuple" ) then
+        
+        key := "args";
+        
+        positions_to_outline := [ 2 .. tree.args.length ];
+        
     elif CapJitIsCallToGlobalFunction( tree, "ObjectifyObjectForCAPWithAttributes" ) then
         
         key := "args";

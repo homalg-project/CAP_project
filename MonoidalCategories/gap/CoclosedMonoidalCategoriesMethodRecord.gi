@@ -53,7 +53,7 @@ CoclosedEvaluationMorphismWithGivenRange := rec(
   io_type := [ [ "a", "b", "r" ], [ "a", "r" ] ],
   return_type := "morphism",
   dual_operation := "EvaluationMorphismWithGivenSource",
-  dual_preprocessor_func := { cat, a, b, r } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( r ) ],
+  dual_preprocessor_func := { cat, a, b, r } -> NTuple( 4, Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( r ) ),
   dual_arguments_reversed := false,
   # Test in CoclosedMonoidalCategoriesTest
 ),
@@ -93,7 +93,7 @@ InternalCoHomToTensorProductAdjunctionMap := rec(
   io_type := [ [ "a", "b", "f" ], [ "a", "t" ] ],
   return_type := "morphism",
   dual_operation := "InternalHomToTensorProductAdjunctionMap",
-  dual_preprocessor_func := { cat, a, b, f } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( f ) ],
+  dual_preprocessor_func := { cat, a, b, f } -> NTuple( 4, Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( f ) ),
   dual_arguments_reversed := false,
   # Test in CoclosedMonoidalCategoriesTest
 ),
@@ -216,7 +216,7 @@ InternalCoHomTensorProductCompatibilityMorphism := rec(
   with_given_object_position := "both",
   return_type := "morphism",
   dual_operation := "TensorProductInternalHomCompatibilityMorphism",
-  dual_preprocessor_func := { cat, list } -> [ Opposite( cat ), [ Opposite( list[3] ), Opposite( list[1] ), Opposite( list[4] ), Opposite( list[2] ) ] ],
+  dual_preprocessor_func := { cat, list } -> Pair( Opposite( cat ), [ Opposite( list[3] ), Opposite( list[1] ), Opposite( list[4] ), Opposite( list[2] ) ] ),
   dual_arguments_reversed := false,
   # Test in CoclosedMonoidalCategoriesTest
 ),
@@ -229,7 +229,7 @@ InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects := rec(
   return_type := "morphism",
   dual_operation := "TensorProductInternalHomCompatibilityMorphismWithGivenObjects",
   dual_preprocessor_func :=
-    { cat, s, list, r } -> [ Opposite( cat ), Opposite( r ), [ Opposite( list[3] ), Opposite( list[1] ), Opposite( list[4] ), Opposite( list[2] ) ], Opposite( s ) ],
+    { cat, s, list, r } -> NTuple( 4, Opposite( cat ), Opposite( r ), [ Opposite( list[3] ), Opposite( list[1] ), Opposite( list[4] ), Opposite( list[2] ) ], Opposite( s ) ),
   dual_arguments_reversed := false,
   # Test in CoclosedMonoidalCategoriesTest
 ),
@@ -251,7 +251,7 @@ CoDualityTensorProductCompatibilityMorphismWithGivenObjects := rec(
   io_type := [ [ "s", "a", "b", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "TensorProductDualityCompatibilityMorphismWithGivenObjects",
-  dual_preprocessor_func := { cat, s, a, b, r} -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( s ) ],
+  dual_preprocessor_func := { cat, s, a, b, r } -> NTuple( 5, Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( s ) ),
   dual_arguments_reversed := false,
   # Test in CoclosedMonoidalCategoriesTest
 ),
@@ -315,7 +315,7 @@ CoLambdaElimination := rec(
   io_type := [ [ "a", "b", "alpha" ], [ "a", "b" ] ],
   return_type := "morphism",
   dual_operation := "LambdaElimination",
-  dual_preprocessor_func := { cat, a, b, alpha } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( alpha ) ],
+  dual_preprocessor_func := { cat, a, b, alpha } -> NTuple( 4, Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( alpha ) ),
   dual_arguments_reversed := false,
   # Test in CoclosedMonoidalCategoriesTest
 ),

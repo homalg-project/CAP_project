@@ -180,6 +180,7 @@ DeclareGlobalFunction( "IsSpecializationOfFilter" );
 #! @Description
 #!   Checks if <A>filter_list2</A> is more special than <A>filter_list1</A>,
 #!   i.e. if both lists have the same length and any element of <A>filter_list2</A> implies the corresponding element of <A>filter_list1</A>.
+#!   <A>filter_list1</A> and <A>filter_list2</A> can also be the string `"any"`, respresenting a most general filter list of any length.
 #! @Arguments filter_list1, filter_list2
 DeclareGlobalFunction( "IsSpecializationOfFilterList" );
 
@@ -206,7 +207,7 @@ DeclareGlobalFunction( "CapJitAddKnownMethod" );
 
 #! @Description
 #!   (experimental) Adds a type signature for the global function or operation given by <A>name</A> to the compiler.
-#!   <A>input_filters</A> must be a list of filters.
+#!   <A>input_filters</A> must be a list of filters, or the string '"any"' representing a most general filter list of any length.
 #!   <A>output_data_type</A> must be a filter, a data type, or a function.
 #!   If it is a function with one argument, it must accept a list of input types and return the corresponding data type of the output.
 #!   If it is a function with two arguments, it must accept the arguments of a function call of <A>name</A> (as syntax trees)
@@ -244,3 +245,24 @@ DeclareGlobalFunction( "PackageOfCAPOperation" );
 #! @Arguments list, obj
 #! @Returns an integer
 DeclareOperation( "SafePosition", [ IsList, IsObject ] );
+
+#! @Description
+#!   Returns <A>args</A> while asserting that its length is <A>n</A>.
+#! @Arguments n, args...
+#! @Returns a list
+DeclareGlobalFunction( "NTuple" );
+
+# this filter is only used for the type system in CompilerForCAP
+DeclareFilter( "IsNTuple" );
+
+#! @Description
+#!   Alias for `NTuple( 2, <A>first</A>, <A>second</A> )`.
+#! @Arguments first, second
+#! @Returns a list
+DeclareGlobalFunction( "Pair" );
+
+#! @Description
+#!   Alias for `NTuple( 3, <A>first</A>, <A>second</A>, <A>third</A> )`.
+#! @Arguments first, second, third
+#! @Returns a list
+DeclareGlobalFunction( "Triple" );
