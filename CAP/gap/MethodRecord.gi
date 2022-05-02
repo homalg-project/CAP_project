@@ -4332,6 +4332,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
     
     recnames := RecNames( record );
     
+    # loop before detecting With(out)Given pairs
     for current_recname in recnames do
         
         current_rec := record.(current_recname);
@@ -4489,6 +4490,14 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
         if not IsBound( current_rec.dual_arguments_reversed ) then
             
             current_rec.dual_arguments_reversed := false;
+            
+        fi;
+        
+        if Length( Filtered( [ "dual_preprocessor_func", "dual_arguments_reversed", "dual_with_given_objects_reversed" ],
+                             name -> IsBound( current_rec.(name) ) and ( IsFunction( current_rec.(name) ) or current_rec.(name) = true )
+                           ) ) >= 2 then
+            
+            Error( "dual_preprocessor_func, dual_arguments_reversed = true and dual_with_given_objects_reversed = true are mutually exclusive" );
             
         fi;
         
@@ -4949,11 +4958,18 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
         
     od;
     
-    # set `output_source_getter` and `output_range_getter`
+    # loop after detecting With(out)Given pairs
     for current_recname in recnames do
         
         current_rec := record.(current_recname);
         
+        if IsBound( current_rec.dual_with_given_objects_reversed ) and current_rec.dual_with_given_objects_reversed and not current_rec.is_with_given then
+            
+            Error( "dual_with_given_objects_reversed may only be set for with given records" );
+            
+        fi;
+        
+        # set `output_source_getter` and `output_range_getter`
         if IsBound( current_rec.output_source_getter_string ) then
             
             current_rec.output_source_getter := EvalString( ReplacedStringViaRecord(

@@ -61,7 +61,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
   function( opposite_category, category )
     local only_primitive_operations, recnames, current_recname, current_entry, dual_operation_name,
           filter_list, input_arguments_names, return_type, func_string,
-          dual_preprocessor_func_string, preprocessor_string, dual_arguments,
+          dual_preprocessor_func_string, preprocessor_string, dual_arguments, tmp,
           dual_postprocessor_func_string, postprocessor_string, output_source_getter_string, output_range_getter_string, return_statement,
           func, weight, current_add, list_of_attributes, attr, tester, setter, getter;
     
@@ -217,6 +217,14 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
             if current_entry.dual_arguments_reversed then
                 
                 dual_arguments := Reversed( dual_arguments );
+                
+            fi;
+            
+            if current_entry.is_with_given and IsBound( current_entry.dual_with_given_objects_reversed ) and current_entry.dual_with_given_objects_reversed then
+                
+                tmp := dual_arguments[1];
+                dual_arguments[1] := dual_arguments[Length( dual_arguments)];
+                dual_arguments[Length( dual_arguments)] := tmp;
                 
             fi;
             

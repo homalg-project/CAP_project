@@ -25,9 +25,8 @@ TensorProductOnMorphismsWithGivenTensorProducts := rec(
   io_type := [ [ "s", "alpha", "beta", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "TensorProductOnMorphismsWithGivenTensorProducts",
-  dual_preprocessor_func :=
-    { cat, s, alpha, beta, r } -> [ Opposite( cat ), Opposite( r ), Opposite( alpha ), Opposite( beta ), Opposite( s ) ],
   dual_arguments_reversed := false,
+  dual_with_given_objects_reversed := true,
   # Test in MonoidalCategoriesTest
 ),
 
