@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "LinearAlgebraForCAP",
 Subtitle := "Category of Matrices over a Field for CAP",
-Version := "2022.04-02",
-Date := "07/04/2022",
+Version := "2022.05-01",
+Date := "03/05/2022",
 License := "GPL-2.0-or-later",
 
 Persons := [
