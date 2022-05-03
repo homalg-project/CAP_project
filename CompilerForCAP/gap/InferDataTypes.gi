@@ -374,14 +374,14 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INFERRED_DATA_TYPES, function ( tree, in
     end;
     
     result_func := function ( tree, result, keys, func_stack )
-      local positions, name, rec_name, data_type, filter, func_pos, func, pos, value, key, i;
+      local typed_args, positions, name, rec_name, data_type, filter, func_pos, func, pos, value, key, i;
         
         tree := ShallowCopy( tree );
         
         if tree.type = "EXPR_FUNCCALL" then
             
             # get data types of all arguments
-            tree.args := List( tree.args, function ( a )
+            typed_args := List( tree.args, function ( a )
                 
                 if a.type = "EXPR_DECLARATIVE_FUNC" then
                     
@@ -400,7 +400,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INFERRED_DATA_TYPES, function ( tree, in
                 
             end );
             
-            if ForAny( tree.args, a -> not IsBound( a.data_type ) ) then
+            if ForAny( typed_args, a -> not IsBound( a.data_type ) ) then
                 
                 #Error( "could not determine data_type of all arguments" );
                 # there might already be a data type set, but we want to avoid partial typings -> unbind
@@ -409,7 +409,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INFERRED_DATA_TYPES, function ( tree, in
                 
             fi;
             
-            result := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS( tree.funcref, tree.args, func_stack );
+            result := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS( tree.funcref, typed_args, func_stack );
             
             if result = fail then
                 
@@ -423,16 +423,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INFERRED_DATA_TYPES, function ( tree, in
             Assert( 0, IsRecord( result.output_type ) );
             
             # check if the signatures of all functions could be determined
-            positions := PositionsProperty( result.args, a -> a.type = "EXPR_DECLARATIVE_FUNC" and not IsBound( a.data_type.signature ) );
-            
-            if not IsEmpty( positions ) then
-                
-                for pos in positions do
-                    
-                    # do not keep partial type
-                    Unbind( result.args.(pos).data_type );
-                    
-                od;
+            if ForAny( result.args, a -> a.type = "EXPR_DECLARATIVE_FUNC" and not IsBound( a.data_type.signature ) ) then
                 
                 #Error( "could not determine signature of a function argument" );
                 # there might already be a data type set, but we want to avoid partial typings -> unbind
