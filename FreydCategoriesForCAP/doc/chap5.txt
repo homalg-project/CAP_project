@@ -1235,7 +1235,8 @@
         UniversalMorphismFromImageWithGivenImageObject                     for
         iscapcategorymorphism, islist, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismFromPushout[102X ([14XCAP: UniversalMorphismFromPushout[114X)[133X
+  [30X    [33X[0;6Y[2XUniversalMorphismFromPushout[102X  ([14XCAP:  UniversalMorphismFromPushout  for
+        islist, iscapcategoryobject, islist[114X)[133X
   
   [30X    [33X[0;6Y[2XUniversalMorphismFromPushoutWithGivenPushout[102X                     ([14XCAP:
         UniversalMorphismFromPushoutWithGivenPushout        for        islist,
@@ -1249,7 +1250,8 @@
         iscapcategorymorphism, islist, iscapcategoryobject[114X)[133X
   
   [30X    [33X[0;6Y[2XUniversalMorphismIntoFiberProduct[102X                                ([14XCAP:
-        UniversalMorphismIntoFiberProduct[114X)[133X
+        UniversalMorphismIntoFiberProduct   for  islist,  iscapcategoryobject,
+        islist[114X)[133X
   
   [30X    [33X[0;6Y[2XUniversalMorphismIntoFiberProductWithGivenFiberProduct[102X           ([14XCAP:
         UniversalMorphismIntoFiberProductWithGivenFiberProduct   for   islist,
