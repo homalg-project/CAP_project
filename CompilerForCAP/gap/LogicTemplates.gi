@@ -294,6 +294,7 @@ CapJitAddLogicTemplate(
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ "list_of_lists", "index", "func" ],
+        variable_filters := [ IsList, IsInt, IsFunction ],
         src_template := "List( list_of_lists[index], func )",
         dst_template := "List( list_of_lists, list -> List( list, func ) )[index]",
         new_funcs := [ [ "list" ] ],
