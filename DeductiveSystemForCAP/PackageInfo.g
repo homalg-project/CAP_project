@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "DeductiveSystemForCAP",
 Subtitle := "Deductive system for CAP",
-Version := "2022.03-04",
-Date := "15/03/2022",
+Version := "2022.05-01",
+Date := "03/05/2022",
 License := "GPL-2.0-or-later",
 
 Persons := [
