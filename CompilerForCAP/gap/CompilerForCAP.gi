@@ -34,7 +34,7 @@ InstallGlobalFunction( CapJitCompiledFunction, function ( func, args... )
 end );
 
 InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( func, args... )
-  local debug, debug_idempotence, category_as_first_argument, category, type_signature, tree, resolving_phase_functions, orig_tree, compiled_func, tmp, rule_phase_functions, f;
+  local debug, debug_idempotence, category_as_first_argument, category, type_signature, filter_list, arguments_data_types, return_type, return_data_type, tree, resolving_phase_functions, orig_tree, compiled_func, tmp, rule_phase_functions, f;
     
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, "Start compilation." );
@@ -90,10 +90,112 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
             
         fi;
         
+    elif Length( args ) = 3 then
+        
+        if IsCapCategory( args[1] ) and IsList( args[2] ) and Length( args[2] ) = NumberArgumentsFunction( func ) then
+            
+            category_as_first_argument := true;
+            category := args[1];
+            
+            filter_list := args[2];
+            
+            arguments_data_types := List( filter_list, function ( filter )
+                
+                if filter = "category" then
+                    
+                    return rec( filter := IsCapCategory, category := category );
+                    
+                elif filter = "object" then
+                    
+                    return rec( filter := category!.object_representation, category := category );
+                    
+                elif filter = "morphism" then
+                    
+                    return rec( filter := category!.morphism_representation, category := category );
+                    
+                elif filter = "list_of_objects" then
+                    
+                    return rec( filter := IsList, element_type := rec( filter := category!.object_representation, category := category ) );
+                    
+                elif filter = "list_of_morphisms" then
+                    
+                    return rec( filter := IsList, element_type := rec( filter := category!.morphism_representation, category := category ) );
+                    
+                elif filter = IsInt then
+                    
+                    return rec( filter := IsInt );
+                    
+                elif filter = "object_in_range_category_of_homomorphism_structure" then
+                    
+                    return rec( filter := RangeCategoryOfHomomorphismStructure( category )!.object_representation, category := RangeCategoryOfHomomorphismStructure( category ) );
+                    
+                elif filter = "morphism_in_range_category_of_homomorphism_structure" then
+                    
+                    return rec( filter := RangeCategoryOfHomomorphismStructure( category )!.morphism_representation, category := RangeCategoryOfHomomorphismStructure( category ) );
+                    
+                else
+                    
+                    #Error( "unhandled filter", filter );
+                    return fail;
+                    
+                fi;
+                
+            end );
+            
+            return_type := args[3];
+            
+            if return_type = "object" then
+                
+                return_data_type := rec( filter := category!.object_representation, category := category );
+                
+            elif return_type = "morphism" then
+                
+                return_data_type := rec( filter := category!.morphism_representation, category := category );
+                
+            elif return_type = "list_of_objects" then
+                
+                return_data_type := rec( filter := IsList, element_type := rec( filter := category!.object_representation, category := category ) );
+                
+            elif return_type = "list_of_morphisms" then
+                
+                return_data_type := rec( filter := IsList, element_type := rec( filter := category!.morphism_representation, category := category ) );
+                
+            elif return_type = "object_in_range_category_of_homomorphism_structure" then
+                
+                return_data_type := rec( filter := RangeCategoryOfHomomorphismStructure( category )!.object_representation, category := RangeCategoryOfHomomorphismStructure( category ) );
+                
+            elif return_type = "morphism_in_range_category_of_homomorphism_structure" then
+                
+                return_data_type := rec( filter := RangeCategoryOfHomomorphismStructure( category )!.morphism_representation, category := RangeCategoryOfHomomorphismStructure( category ) );
+                
+            else
+                
+                #Error( "unhandled return_type", return_type );
+                return_data_type := fail;
+                
+            fi;
+            
+            if fail in arguments_data_types then
+                
+                type_signature := fail;
+                
+            else
+                
+                type_signature := [ arguments_data_types, return_data_type ];
+                
+            fi;
+            
+        else
+            
+            # COVERAGE_IGNORE_NEXT_LINE
+            Error( "the second argument of CapJitCompiledFunction(AsEnhancedSyntaxTree) must be a CAP category, the third a list of input filters (as in `filter_list` in the method name record) for the given function, and the fourth an output filter (as in `return_type` in the method name record) for the given function" );
+            
+        fi;
+        
     else
         
         # COVERAGE_IGNORE_NEXT_LINE
-        Error( "CapJitCompiledFunction(AsEnhancedSyntaxTree) must be called with at most two arguments" );
+        Error( "CapJitCompiledFunction(AsEnhancedSyntaxTree) must be called with one, two, or four arguments" );
         
     fi;
     

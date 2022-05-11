@@ -4,7 +4,7 @@
 # Implementations
 #
 InstallGlobalFunction( "CapJitCompiledCAPOperationAsEnhancedSyntaxTree", function ( cat, operation_name )
-  local index, function_to_compile, info, filter_list, return_type, arguments_data_types, return_data_type;
+  local index, function_to_compile, info, filter_list, return_type;
     
     if not (IsBound( cat!.category_as_first_argument ) and cat!.category_as_first_argument = true) then
         
@@ -48,7 +48,6 @@ InstallGlobalFunction( "CapJitCompiledCAPOperationAsEnhancedSyntaxTree", functio
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name);
         
-        filter_list := info.filter_list;
         return_type := info.return_type;
         
         if IsString( return_type ) and EndsWith( return_type, "fail" ) then
@@ -61,95 +60,7 @@ InstallGlobalFunction( "CapJitCompiledCAPOperationAsEnhancedSyntaxTree", functio
             
         fi;
         
-        arguments_data_types := List( filter_list, function ( filter )
-            
-            if filter = "category" then
-                
-                return rec( filter := IsCapCategory, category := cat );
-                
-            elif filter = "object" then
-                
-                return rec( filter := cat!.object_representation, category := cat );
-                
-            elif filter = "morphism" then
-                
-                return rec( filter := cat!.morphism_representation, category := cat );
-                
-            elif filter = "list_of_objects" then
-                
-                return rec( filter := IsList, element_type := rec( filter := cat!.object_representation, category := cat ) );
-                
-            elif filter = "list_of_morphisms" then
-                
-                return rec( filter := IsList, element_type := rec( filter := cat!.morphism_representation, category := cat ) );
-                
-            elif filter = IsInt then
-                
-                return rec( filter := IsInt );
-                
-            elif filter = "object_in_range_category_of_homomorphism_structure" then
-                
-                return rec( filter := RangeCategoryOfHomomorphismStructure( cat )!.object_representation, category := RangeCategoryOfHomomorphismStructure( cat ) );
-                
-            elif filter = "morphism_in_range_category_of_homomorphism_structure" then
-                
-                return rec( filter := RangeCategoryOfHomomorphismStructure( cat )!.morphism_representation, category := RangeCategoryOfHomomorphismStructure( cat ) );
-                
-            else
-                
-                #Error( "unhandled filter", filter );
-                return fail;
-                
-            fi;
-            
-        end );
-        
-        if fail in arguments_data_types then
-            
-            arguments_data_types := fail;
-            
-        fi;
-        
-        if return_type = "object" then
-            
-            return_data_type := rec( filter := cat!.object_representation, category := cat );
-            
-        elif return_type = "morphism" then
-            
-            return_data_type := rec( filter := cat!.morphism_representation, category := cat );
-            
-        elif return_type = "list_of_objects" then
-            
-            return_data_type := rec( filter := IsList, element_type := rec( filter := cat!.object_representation, category := cat ) );
-            
-        elif return_type = "list_of_morphisms" then
-            
-            return_data_type := rec( filter := IsList, element_type := rec( filter := cat!.morphism_representation, category := cat ) );
-            
-        elif return_type = "object_in_range_category_of_homomorphism_structure" then
-            
-            return_data_type := rec( filter := RangeCategoryOfHomomorphismStructure( cat )!.object_representation, category := RangeCategoryOfHomomorphismStructure( cat ) );
-            
-        elif return_type = "morphism_in_range_category_of_homomorphism_structure" then
-            
-            return_data_type := rec( filter := RangeCategoryOfHomomorphismStructure( cat )!.morphism_representation, category := RangeCategoryOfHomomorphismStructure( cat ) );
-            
-        else
-            
-            #Error( "unhandled return_type", return_type );
-            return_data_type := fail;
-            
-        fi;
-        
-        if arguments_data_types <> fail then
-            
-            cat!.compiled_functions_trees.(operation_name)[index] := CapJitCompiledFunctionAsEnhancedSyntaxTree( function_to_compile, [ arguments_data_types, return_data_type ] );
-            
-        else
-            
-            cat!.compiled_functions_trees.(operation_name)[index] := CapJitCompiledFunctionAsEnhancedSyntaxTree( function_to_compile, cat );
-            
-        fi;
+        cat!.compiled_functions_trees.(operation_name)[index] := CapJitCompiledFunctionAsEnhancedSyntaxTree( function_to_compile, cat, info.filter_list, return_type );
         
     fi;
     
