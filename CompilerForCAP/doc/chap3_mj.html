@@ -697,6 +697,35 @@ end
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", false );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LinearAlgebraForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MATRIX_CATEGORY( Q );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># test CapJitCompiledFunction with explicit type signature</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">Display(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    CapJitCompiledFunction(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        cat -&gt; ZeroObject( cat ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        [</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            [</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                    filter := IsCapCategory,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                    category := vec</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            fail,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        ]</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+function ( cat_1 )
+    return ObjectifyObjectForCAPWithAttributes( rec(
+           ), cat_1, Dimension, 0 );
+end
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", false );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">##</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput"># duplicate code inside a function</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">func := function( x )</span>

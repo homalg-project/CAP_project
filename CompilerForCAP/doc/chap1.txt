@@ -212,7 +212,10 @@
   [3Xtype_signature[103X   (see   [2XCapJitInferredDataTypes[102X  ([14X2.5-9[114X)).  If  [3Xfunc[103X  is  an
   operation  or a kernel function, it is returned unchanged. If [3Xtype_signature[103X
   is not given, all steps which require knowledge about the types of variables
-  are  skipped.  If  a  full  type  signature  is  not available but the first
+  are  skipped.  The  type  signature  can  also  be  given  by three separate
+  arguments: a CAP category, a list of input filters (as in [10Xfilter_list[110X in the
+  method  name  record)  and an output filter (as in [10Xreturn_type[110X in the method
+  name  record).  If  a  full  type  signature  is not available but the first
   argument  of  [3Xfunc[103X  is  a CAP category, an instance of a CAP category can be
   given  as the second argument. In this case, the category is used to get the
   type information required to resolve CAP operations.[133X
