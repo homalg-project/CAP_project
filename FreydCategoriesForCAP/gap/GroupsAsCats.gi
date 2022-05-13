@@ -300,7 +300,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
             HOM_PERMUTATION_ARRAY :=
                 List( [ 1 .. size ], g ->
                     List( [ 1 .. size ], h ->
-                        List( elements, x -> Position( elements, elements[g] * x * elements[h] ) )
+                        List( elements, x -> -1 + Position( elements, elements[g] * x * elements[h] ) )
                     )
                 );
             
@@ -328,7 +328,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
                 return MapOfFinSets(
                         FREYD_CATEGORIES_SkeletalFinSets,
                         RG,
-                        List( elements, x -> Position( elements, elements[PositionWithinElements( alpha )] * x * elements[PositionWithinElements( beta )] ) ),
+                        List( elements, x -> -1 + Position( elements, elements[PositionWithinElements( alpha )] * x * elements[PositionWithinElements( beta )] ) ),
                         RG
                 );
                 
@@ -352,7 +352,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
             return MapOfFinSets(
                 FREYD_CATEGORIES_SkeletalFinSets,
                 t_obj,
-                [ PositionWithinElements( alpha ) ],
+                [ -1 + PositionWithinElements( alpha ) ],
                 RG
             );
         end );
@@ -362,7 +362,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
           function( cat, a, b, mor )
             return GroupAsCategoryMorphism(
                 category,
-                elements[ AsList( mor )[1] ]
+                elements[ 1 + AsList( mor )[1] ]
             );
         end );
         
