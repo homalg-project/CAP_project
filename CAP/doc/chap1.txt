@@ -10,6 +10,66 @@
   category  object  also  knows  which constructions are currently possible in
   this category.[133X
   
+  [33X[0;0YClassically,  a category consists of a class of objects, a set of morphisms,
+  identity  morphisms,  and  a  composition  function  satisfying  some simple
+  axioms. In CAP, we use a slightly different notion of a category.[133X
+  
+  [33X[0;0YA CAP category [23X\mathbf{C}[123X consists of the following data:[133X
+  
+  [30X    [33X[0;6YA set [23X\mathrm{Obj}_{\mathbf{C}}[123X of [13Xobjects[113X.[133X
+  
+  [30X    [33X[0;6YFor    every   pair   [23Xa,b   \in   \mathrm{Obj}_{\mathbf{C}}[123X,   a   set
+        [23X\mathrm{Hom}_{\mathbf{C}}( a, b )[123X of [13Xmorphisms[113X.[133X
+  
+  [30X    [33X[0;6YFor  every  pair  [23Xa,b  \in  \mathrm{Obj}_{\mathbf{C}}[123X,  an equivalence
+        relation  [23X\sim_{a,b}[123X  on  [23X\mathrm{Hom}_{\mathbf{C}}(  a,  b  )[123X  called
+        [13Xcongruence for morphisms[113X.[133X
+  
+  [30X    [33X[0;6YFor  every  [23Xa  \in  \mathrm{Obj}_{\mathbf{C}}[123X,  an  [13Xidentity  morphism[113X
+        [23X\mathrm{id}_a \in \mathrm{Hom}_{\mathbf{C}}( a, a )[123X.[133X
+  
+  [30X    [33X[0;6YFor  every triple [23Xa, b, c \in \mathrm{Obj}_{\mathbf{C}}[123X, a [13Xcomposition
+        function[113X[133X
+  
+  
+  [24X      [33X[0;6Y\circ:      \mathrm{Hom}_{\mathbf{C}}(      b,      c     )     \times
+        \mathrm{Hom}_{\mathbf{C}}(        a,       b       )       \rightarrow
+        \mathrm{Hom}_{\mathbf{C}}( a, c )[133X
+  
+  [124X
+  
+        [33X[0;6Ycompatible   with   the  congruence,  i.e.,  if  [23X\alpha,  \alpha'  \in
+        \mathrm{Hom}_{\mathbf{C}}(    a,    b    )[123X,    [23X\beta,    \beta'    \in
+        \mathrm{Hom}_{\mathbf{C}}( b, c )[123X, [23X\alpha \sim_{a,b} \alpha'[123X and [23X\beta
+        \sim_{b,c}  \beta'[123X,  then  [23X\beta  \circ \alpha \sim_{a,c} \beta' \circ
+        \alpha'[123X.[133X
+  
+  [30X    [33X[0;6YFor    all    [23Xa,   b   \in   \mathrm{Obj}_{\mathbf{C}}[123X,   [23X\alpha   \in
+        \mathrm{Hom}_{\mathbf{C}}( a, b )[123X, we have[133X
+  
+  
+  [24X      [33X[0;6Y\left( \mathrm{id}_{b} \circ \alpha \right) \sim_{a,b} \alpha[133X
+  
+  [124X
+  
+        [33X[0;6Yand[133X
+  
+  
+  [24X      [33X[0;6Y\alpha \sim_{a,b} \left( \alpha \circ \mathrm{id}_{a} \right).[133X
+  
+  [124X
+  
+  [30X    [33X[0;6YFor    all   [23Xa,b,c,d   \in   \mathrm{Obj}_{\mathbf{C}}[123X,   [23X\alpha   \in
+        \mathrm{Hom}_{\mathbf{C}}(       a,      b      )[123X,      [23X\beta      \in
+        \mathrm{Hom}_{\mathbf{C}}(      b,      c      )[123X,      [23X\gamma      \in
+        \mathrm{Hom}_{\mathbf{C}}( c, d )[123X, we have[133X
+  
+  
+  [24X      [33X[0;6Y\left((  \gamma  \circ  \beta ) \circ \alpha \right) \sim_{a,d} \left(
+        \gamma \circ ( \beta \circ \alpha ) \right)[133X
+  
+  [124X
+  
   
   [1X1.1 [33X[0;0YCategories[133X[101X
   

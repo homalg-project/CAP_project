@@ -121,6 +121,46 @@
 
 <p>Categories are the main GAP objects in CAP. They are used to associate GAP objects which represent objects and morphisms with their category. By associating a GAP object to the category, one of two filters belonging to the category (ObjectFilter/MorphismFilter) are set to true. Via Add methods, functions for specific existential quantifiers can be associated to the category and after that can be applied to GAP objects in the category. A GAP category object also knows which constructions are currently possible in this category.</p>
 
+<p>Classically, a category consists of a class of objects, a set of morphisms, identity morphisms, and a composition function satisfying some simple axioms. In CAP, we use a slightly different notion of a category.</p>
+
+<p>A CAP category <span class="SimpleMath">\(\mathbf{C}\)</span> consists of the following data:</p>
+
+
+<ul>
+<li><p>A set <span class="SimpleMath">\(\mathrm{Obj}_{\mathbf{C}}\)</span> of <em>objects</em>.</p>
+
+</li>
+<li><p>For every pair <span class="SimpleMath">\(a,b \in \mathrm{Obj}_{\mathbf{C}}\)</span>, a set <span class="SimpleMath">\(\mathrm{Hom}_{\mathbf{C}}( a, b )\)</span> of <em>morphisms</em>.</p>
+
+</li>
+<li><p>For every pair <span class="SimpleMath">\(a,b \in \mathrm{Obj}_{\mathbf{C}}\)</span>, an equivalence relation <span class="SimpleMath">\(\sim_{a,b}\)</span> on <span class="SimpleMath">\(\mathrm{Hom}_{\mathbf{C}}( a, b )\)</span> called <em>congruence for morphisms</em>.</p>
+
+</li>
+<li><p>For every <span class="SimpleMath">\(a \in \mathrm{Obj}_{\mathbf{C}}\)</span>, an <em>identity morphism</em> <span class="SimpleMath">\(\mathrm{id}_a \in \mathrm{Hom}_{\mathbf{C}}( a, a )\)</span>.</p>
+
+</li>
+<li><p>For every triple <span class="SimpleMath">\(a, b, c \in \mathrm{Obj}_{\mathbf{C}}\)</span>, a <em>composition function</em></p>
+
+<p class="center">\[\circ: \mathrm{Hom}_{\mathbf{C}}( b, c ) \times \mathrm{Hom}_{\mathbf{C}}( a, b ) \rightarrow \mathrm{Hom}_{\mathbf{C}}( a, c )\]</p>
+
+<p>compatible with the congruence, i.e., if <span class="SimpleMath">\(\alpha, \alpha' \in \mathrm{Hom}_{\mathbf{C}}( a, b )\)</span>, <span class="SimpleMath">\(\beta, \beta' \in \mathrm{Hom}_{\mathbf{C}}( b, c )\)</span>, <span class="SimpleMath">\(\alpha \sim_{a,b} \alpha'\)</span> and <span class="SimpleMath">\(\beta \sim_{b,c} \beta'\)</span>, then <span class="SimpleMath">\(\beta \circ \alpha \sim_{a,c} \beta' \circ \alpha'\)</span>.</p>
+
+</li>
+<li><p>For all <span class="SimpleMath">\(a, b \in \mathrm{Obj}_{\mathbf{C}}\)</span>, <span class="SimpleMath">\(\alpha \in \mathrm{Hom}_{\mathbf{C}}( a, b )\)</span>, we have</p>
+
+<p class="center">\[\left( \mathrm{id}_{b} \circ \alpha \right) \sim_{a,b} \alpha\]</p>
+
+<p>and</p>
+
+<p class="center">\[\alpha \sim_{a,b} \left( \alpha \circ \mathrm{id}_{a} \right).\]</p>
+
+</li>
+<li><p>For all <span class="SimpleMath">\(a,b,c,d \in \mathrm{Obj}_{\mathbf{C}}\)</span>, <span class="SimpleMath">\(\alpha \in \mathrm{Hom}_{\mathbf{C}}( a, b )\)</span>, <span class="SimpleMath">\(\beta \in \mathrm{Hom}_{\mathbf{C}}( b, c )\)</span>, <span class="SimpleMath">\(\gamma \in \mathrm{Hom}_{\mathbf{C}}( c, d )\)</span>, we have</p>
+
+<p class="center">\[\left(( \gamma \circ \beta ) \circ \alpha \right) \sim_{a,d} \left( \gamma \circ ( \beta \circ \alpha ) \right)\]</p>
+
+</li>
+</ul>
 <p><a id="X7CC6903E78F24167" name="X7CC6903E78F24167"></a></p>
 
 <h4>1.1 <span class="Heading">Categories</span></h4>
