@@ -683,7 +683,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
             
             return CategoryOfRowsMorphism( rows,
                 FunctorObj( Source( mor ) ),
-                CertainRows( id, AsList( mor ) ),
+                CertainRows( id, 1 + AsList( mor ) ),
                 FunctorObj( range )
             );
             
@@ -784,7 +784,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
                 LinearClosureMorphism(
                     a,
                     EntriesOfHomalgMatrix( UnderlyingMatrix( mor ) ),
-                    List( [ 1 .. size ], i ->
+                    List( [ 0 .. size - 1 ], i ->
                         InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
                             a_und, b_und, MapOfFinSets( t_finsets, [ i ], range_finset )
                         )
