@@ -13,6 +13,35 @@
 #!  associated to the category and after that can be applied to GAP objects in the category.
 #!  A GAP category object also knows which constructions
 #!  are currently possible in this category.
+#!
+#! Classically, a category consists of a class of objects, a set of morphisms, identity morphisms, and a composition function
+#! satisfying some simple axioms. In CAP, we use a slightly different notion of a category.
+#!
+#! A CAP category $\mathbf{C}$ consists of the following data:
+#! * A set $\mathrm{Obj}_{\mathbf{C}}$ of **objects**.
+#! * For every pair $a,b \in \mathrm{Obj}_{\mathbf{C}}$, a set $\mathrm{Hom}_{\mathbf{C}}( a, b )$ of **morphisms**.
+#! * For every pair $a,b \in \mathrm{Obj}_{\mathbf{C}}$, an equivalence relation $\sim_{a,b}$ on $\mathrm{Hom}_{\mathbf{C}}( a, b )$
+#!   called **congruence for morphisms**.
+#! * For every $a \in \mathrm{Obj}_{\mathbf{C}}$, an **identity morphism** $\mathrm{id}_a \in \mathrm{Hom}_{\mathbf{C}}( a, a )$.
+#! * For every triple $a, b, c \in \mathrm{Obj}_{\mathbf{C}}$, a **composition function**
+#!   $$\circ: \mathrm{Hom}_{\mathbf{C}}( b, c ) \times \mathrm{Hom}_{\mathbf{C}}( a, b ) \rightarrow \mathrm{Hom}_{\mathbf{C}}( a, c )$$
+#!   compatible with the congruence, i.e.,
+#!   if $\alpha, \alpha' \in \mathrm{Hom}_{\mathbf{C}}( a, b )$,
+#!   $\beta, \beta' \in \mathrm{Hom}_{\mathbf{C}}( b, c )$,
+#!   $\alpha \sim_{a,b} \alpha'$
+#!   and $\beta \sim_{b,c} \beta'$,
+#!   then $\beta \circ \alpha \sim_{a,c} \beta' \circ \alpha'$.
+#! * For all $a, b \in \mathrm{Obj}_{\mathbf{C}}$,
+#!   $\alpha \in \mathrm{Hom}_{\mathbf{C}}( a, b )$,
+#!   we have $$\left( \mathrm{id}_{b} \circ \alpha \right) \sim_{a,b} \alpha$$
+#!   and
+#!   $$\alpha \sim_{a,b} \left( \alpha \circ \mathrm{id}_{a} \right).$$
+#! * For all $a,b,c,d \in \mathrm{Obj}_{\mathbf{C}}$,
+#!   $\alpha \in \mathrm{Hom}_{\mathbf{C}}( a, b )$,
+#!   $\beta \in \mathrm{Hom}_{\mathbf{C}}( b, c )$,
+#!   $\gamma \in \mathrm{Hom}_{\mathbf{C}}( c, d )$,
+#!   we have $$\left(( \gamma \circ \beta ) \circ \alpha \right) \sim_{a,d} \left( \gamma \circ ( \beta \circ \alpha ) \right)$$
+
 
 ###################################
 ##
