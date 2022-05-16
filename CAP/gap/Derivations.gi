@@ -1054,8 +1054,8 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
         
         if IsFilter( category_filter ) and Tester( category_filter )( category ) and not category_filter( category ) then
             continue;
-        elif IsFilter( category_filter) and not Tester( category_filter )( category ) then
-            Print( "If ", Name( category ), " would be ", NamesFilter( category_filter )[ 1 ], " then\n" );
+        elif IsFilter( category_filter ) and not Tester( category_filter )( category ) then
+            Print( "If ", Name( category ), " would be ", JoinStringsWithSeparator( Filtered( NamesFilter( category_filter ), name -> not StartsWith( name, "Has" ) ), " and " ), " then\n" );
             Print( string, " could be derived by\n" );
         elif IsFunction( category_filter ) and not category_filter( category ) then
             continue;
