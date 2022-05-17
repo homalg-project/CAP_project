@@ -17,6 +17,17 @@ DeclareGlobalFunction( "StopCompilationAtCategory" );
 #! @Arguments category
 DeclareGlobalFunction( "ContinueCompilationAtCategory" );
 
+#! @Description
+#!   Stops the compiler from inlining and optimizing code of primitively installed operations of <A>category</A>.
+#!   Warning: Due to caching of compiled CAP operations, this has to be called before any compilation involving <A>category</A>.
+#! @Arguments category
+DeclareGlobalFunction( "StopCompilationAtPrimitivelyInstalledOperationsOfCategory" );
+
+#! @Description
+#!   Allows the compiler to inline and optimize code of primitively installed operations of <A>category</A> (this is the default).
+#! @Arguments category
+DeclareGlobalFunction( "ContinueCompilationAtPrimitivelyInstalledOperationsOfCategory" );
+
 #! @Section Getting information about the compilation process
 
 #! @Description

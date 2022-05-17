@@ -20,6 +20,22 @@ InstallGlobalFunction( ContinueCompilationAtCategory, function ( category )
     
 end );
 
+InstallGlobalFunction( StopCompilationAtPrimitivelyInstalledOperationsOfCategory, function ( category )
+    
+    Assert( 0, IsCapCategory( category ) );
+    
+    category!.stop_compilation_at_primitively_installed_operations := true;
+    
+end );
+
+InstallGlobalFunction( ContinueCompilationAtPrimitivelyInstalledOperationsOfCategory, function ( category )
+    
+    Assert( 0, IsCapCategory( category ) );
+    
+    category!.stop_compilation_at_primitively_installed_operations := false;
+    
+end );
+
 InstallGlobalFunction( CapJitCompiledFunction, function ( func, args... )
     
     if IsOperation( func ) or IsKernelFunction( func ) then

@@ -31,6 +31,12 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree )
                         
                     fi;
                     
+                    if IsBound( category!.stop_compilation_at_primitively_installed_operations ) and category!.stop_compilation_at_primitively_installed_operations = true and operation_name in ListPrimitivelyInstalledOperationsOfCategory( category ) then
+                        
+                        return tree;
+                        
+                    fi;
+                    
                     Info( InfoCapJit, 1, "####" );
                     Info( InfoCapJit, 1, Concatenation( "Resolve ", operation_name, "." ) );
                     
