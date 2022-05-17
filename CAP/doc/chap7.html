@@ -146,10 +146,10 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X83F60F5F7E57F3C8">7.7-95 AddIsEqualForMorphisms</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X84AB81547A770D36">7.7-96 AddIsEqualForMorphismsOnMor</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X787F654B82150781">7.7-97 AddIsEqualForObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X85D7E2DE7D45CF70">7.7-98 AddIsHomSetInhabited</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X85701DBE7A5F90A1">7.7-99 AddIsIdempotent</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X8507561F7E66719B">7.7-100 AddIsIdenticalToIdentityMorphism</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X8219E5A47E352C66">7.7-101 AddIsIdenticalToZeroMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X79F9BCED7C82AEAC">7.7-98 AddIsEqualToIdentityMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X849B7E507B01ABE7">7.7-99 AddIsEqualToZeroMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X85D7E2DE7D45CF70">7.7-100 AddIsHomSetInhabited</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X85701DBE7A5F90A1">7.7-101 AddIsIdempotent</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X7E6EDA9484F3E6F6">7.7-102 AddIsInitial</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X7F7F309F7C67D6CE">7.7-103 AddIsInjective</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X7B0818ED7A7BBCB4">7.7-104 AddIsIsomorphism</a></span>
@@ -1597,9 +1597,27 @@ DeclareOperation( "CapInternalInstallAdd",
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsEqualForObjects</code>. <span class="Math">F: ( arg2, arg3 ) \mapsto \mathtt{IsEqualForObjects}(arg2, arg3)</span>.</p>
 
+<p><a id="X79F9BCED7C82AEAC" name="X79F9BCED7C82AEAC"></a></p>
+
+<h5>7.7-98 AddIsEqualToIdentityMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsEqualToIdentityMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsEqualToIdentityMorphism</code>. <span class="Math">F: ( arg2 ) \mapsto \mathtt{IsEqualToIdentityMorphism}(arg2)</span>.</p>
+
+<p><a id="X849B7E507B01ABE7" name="X849B7E507B01ABE7"></a></p>
+
+<h5>7.7-99 AddIsEqualToZeroMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsEqualToZeroMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsEqualToZeroMorphism</code>. <span class="Math">F: ( arg2 ) \mapsto \mathtt{IsEqualToZeroMorphism}(arg2)</span>.</p>
+
 <p><a id="X85D7E2DE7D45CF70" name="X85D7E2DE7D45CF70"></a></p>
 
-<h5>7.7-98 AddIsHomSetInhabited</h5>
+<h5>7.7-100 AddIsHomSetInhabited</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsHomSetInhabited</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -1608,30 +1626,12 @@ DeclareOperation( "CapInternalInstallAdd",
 
 <p><a id="X85701DBE7A5F90A1" name="X85701DBE7A5F90A1"></a></p>
 
-<h5>7.7-99 AddIsIdempotent</h5>
+<h5>7.7-101 AddIsIdempotent</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsIdempotent</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsIdempotent</code>. <span class="Math">F: ( arg2 ) \mapsto \mathtt{IsIdempotent}(arg2)</span>.</p>
-
-<p><a id="X8507561F7E66719B" name="X8507561F7E66719B"></a></p>
-
-<h5>7.7-100 AddIsIdenticalToIdentityMorphism</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsIdenticalToIdentityMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: nothing</p>
-
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsIdenticalToIdentityMorphism</code>. <span class="Math">F: ( arg2 ) \mapsto \mathtt{IsIdenticalToIdentityMorphism}(arg2)</span>.</p>
-
-<p><a id="X8219E5A47E352C66" name="X8219E5A47E352C66"></a></p>
-
-<h5>7.7-101 AddIsIdenticalToZeroMorphism</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsIdenticalToZeroMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: nothing</p>
-
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsIdenticalToZeroMorphism</code>. <span class="Math">F: ( arg2 ) \mapsto \mathtt{IsIdenticalToZeroMorphism}(arg2)</span>.</p>
 
 <p><a id="X7E6EDA9484F3E6F6" name="X7E6EDA9484F3E6F6"></a></p>
 

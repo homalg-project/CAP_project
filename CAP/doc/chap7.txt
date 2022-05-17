@@ -1339,7 +1339,27 @@
   given  function [23XF[123X to the category for the basic operation [10XIsEqualForObjects[110X.
   [23XF: ( arg2, arg3 ) \mapsto \mathtt{IsEqualForObjects}(arg2, arg3)[123X.[133X
   
-  [1X7.7-98 AddIsHomSetInhabited[101X
+  [1X7.7-98 AddIsEqualToIdentityMorphism[101X
+  
+  [33X[1;0Y[29X[2XAddIsEqualToIdentityMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XIsEqualToIdentityMorphism[110X.       [23XF:       (       arg2       )       \mapsto
+  \mathtt{IsEqualToIdentityMorphism}(arg2)[123X.[133X
+  
+  [1X7.7-99 AddIsEqualToZeroMorphism[101X
+  
+  [33X[1;0Y[29X[2XAddIsEqualToZeroMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XIsEqualToZeroMorphism[110X.        [23XF:        (        arg2        )       \mapsto
+  \mathtt{IsEqualToZeroMorphism}(arg2)[123X.[133X
+  
+  [1X7.7-100 AddIsHomSetInhabited[101X
   
   [33X[1;0Y[29X[2XAddIsHomSetInhabited[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1348,7 +1368,7 @@
   given  function [23XF[123X to the category for the basic operation [10XIsHomSetInhabited[110X.
   [23XF: ( arg2, arg3 ) \mapsto \mathtt{IsHomSetInhabited}(arg2, arg3)[123X.[133X
   
-  [1X7.7-99 AddIsIdempotent[101X
+  [1X7.7-101 AddIsIdempotent[101X
   
   [33X[1;0Y[29X[2XAddIsIdempotent[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1356,26 +1376,6 @@
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given  function [23XF[123X to the category for the basic operation [10XIsIdempotent[110X. [23XF: (
   arg2 ) \mapsto \mathtt{IsIdempotent}(arg2)[123X.[133X
-  
-  [1X7.7-100 AddIsIdenticalToIdentityMorphism[101X
-  
-  [33X[1;0Y[29X[2XAddIsIdenticalToIdentityMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ynothing[133X
-  
-  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XIsIdenticalToIdentityMorphism[110X.       [23XF:      (      arg2      )      \mapsto
-  \mathtt{IsIdenticalToIdentityMorphism}(arg2)[123X.[133X
-  
-  [1X7.7-101 AddIsIdenticalToZeroMorphism[101X
-  
-  [33X[1;0Y[29X[2XAddIsIdenticalToZeroMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ynothing[133X
-  
-  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XIsIdenticalToZeroMorphism[110X.       [23XF:       (       arg2       )       \mapsto
-  \mathtt{IsIdenticalToZeroMorphism}(arg2)[123X.[133X
   
   [1X7.7-102 AddIsInitial[101X
   

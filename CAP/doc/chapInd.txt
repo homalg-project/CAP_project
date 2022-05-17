@@ -116,10 +116,10 @@
   [2XAddIsEqualForMorphisms[102X, for IsCapCategory, IsFunction 7.7-95 
   [2XAddIsEqualForMorphismsOnMor[102X, for IsCapCategory, IsFunction 7.7-96 
   [2XAddIsEqualForObjects[102X, for IsCapCategory, IsFunction 7.7-97 
-  [2XAddIsHomSetInhabited[102X, for IsCapCategory, IsFunction 7.7-98 
-  [2XAddIsIdempotent[102X, for IsCapCategory, IsFunction 7.7-99 
-  [2XAddIsIdenticalToIdentityMorphism[102X, for IsCapCategory, IsFunction 7.7-100 
-  [2XAddIsIdenticalToZeroMorphism[102X, for IsCapCategory, IsFunction 7.7-101 
+  [2XAddIsEqualToIdentityMorphism[102X, for IsCapCategory, IsFunction 7.7-98 
+  [2XAddIsEqualToZeroMorphism[102X, for IsCapCategory, IsFunction 7.7-99 
+  [2XAddIsHomSetInhabited[102X, for IsCapCategory, IsFunction 7.7-100 
+  [2XAddIsIdempotent[102X, for IsCapCategory, IsFunction 7.7-101 
   [2XAddIsInitial[102X, for IsCapCategory, IsFunction 7.7-102 
   [2XAddIsInjective[102X, for IsCapCategory, IsFunction 7.7-103 
   [2XAddIsIsomorphism[102X, for IsCapCategory, IsFunction 7.7-104 
@@ -533,10 +533,10 @@
   [2XIsEqualForMorphisms[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.7-2 
   [2XIsEqualForMorphismsOnMor[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.7-3 
   [2XIsEqualForObjects[102X, for IsCapCategoryObject, IsCapCategoryObject 2.2-1 
+  [2XIsEqualToIdentityMorphism[102X, for IsCapCategoryMorphism 3.5-1 
+  [2XIsEqualToZeroMorphism[102X, for IsCapCategoryMorphism 3.5-2 
   [2XIsHomSetInhabited[102X, for IsCapCategoryObject, IsCapCategoryObject 3.15-1 
   [2XIsIdempotent[102X, for IsCapCategoryMorphism 3.3-7 
-  [2XIsIdenticalToIdentityMorphism[102X, for IsCapCategoryMorphism 3.5-1 
-  [2XIsIdenticalToZeroMorphism[102X, for IsCapCategoryMorphism 3.5-2 
   [2XIsInitial[102X, for IsCapCategoryObject 2.3-5 
   [2XIsInjective[102X, for IsCapCategoryObject 2.3-3 
   [2XIsIsomorphism[102X, for IsCapCategoryMorphism 3.3-3 

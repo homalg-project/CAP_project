@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2022.05-03
+                                   2022.05-04
   
   
-                                  16 May 2022
+                                  17 May 2022
   
   
                                Sebastian Gutsche
@@ -183,8 +183,8 @@
       3.4-8 RandomMorphismByList
       3.4-9 RandomMorphismWithFixedSource
     3.5 [33X[0;0YNon-Categorical Properties of Morphisms[133X
-      3.5-1 IsIdenticalToIdentityMorphism
-      3.5-2 IsIdenticalToZeroMorphism
+      3.5-1 IsEqualToIdentityMorphism
+      3.5-2 IsEqualToZeroMorphism
       3.5-3 IsEndomorphism
       3.5-4 IsAutomorphism
     3.6 [33X[0;0YAdding Morphisms to a Category[133X
@@ -618,10 +618,10 @@
       7.7-95 AddIsEqualForMorphisms
       7.7-96 AddIsEqualForMorphismsOnMor
       7.7-97 AddIsEqualForObjects
-      7.7-98 AddIsHomSetInhabited
-      7.7-99 AddIsIdempotent
-      7.7-100 AddIsIdenticalToIdentityMorphism
-      7.7-101 AddIsIdenticalToZeroMorphism
+      7.7-98 AddIsEqualToIdentityMorphism
+      7.7-99 AddIsEqualToZeroMorphism
+      7.7-100 AddIsHomSetInhabited
+      7.7-101 AddIsIdempotent
       7.7-102 AddIsInitial
       7.7-103 AddIsInjective
       7.7-104 AddIsIsomorphism
