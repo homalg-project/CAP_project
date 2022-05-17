@@ -22,7 +22,7 @@ BindGlobal( "CAP_INTERNAL_LiftNaturalTransformationToGradedModuleFunctor",
     
     source_functor := Source( natural_transformation );
     
-    if not IsIdenticalToIdentityMorphism( source_functor ) then
+    if not IsEqualToIdentityMorphism( source_functor ) then
         Error( "source is not identity functor" );
     fi;
     

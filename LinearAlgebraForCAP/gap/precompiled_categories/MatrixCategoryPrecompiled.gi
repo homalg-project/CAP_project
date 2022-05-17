@@ -2557,20 +2557,7 @@ end
     , 100 );
     
     ##
-    AddIsIdempotent( cat,
-        
-########
-function ( cat_1, arg2_1 )
-    local deduped_1_1;
-    deduped_1_1 := UnderlyingMatrix( arg2_1 );
-    return deduped_1_1 * deduped_1_1 = deduped_1_1;
-end
-########
-        
-    , 201 : IsPrecompiledDerivation := true );
-    
-    ##
-    AddIsIdenticalToIdentityMorphism( cat,
+    AddIsEqualToIdentityMorphism( cat,
         
 ########
 function ( cat_1, arg2_1 )
@@ -2588,7 +2575,7 @@ end
     , 403 : IsPrecompiledDerivation := true );
     
     ##
-    AddIsIdenticalToZeroMorphism( cat,
+    AddIsEqualToZeroMorphism( cat,
         
 ########
 function ( cat_1, arg2_1 )
@@ -2597,6 +2584,19 @@ end
 ########
         
     , 202 : IsPrecompiledDerivation := true );
+    
+    ##
+    AddIsIdempotent( cat,
+        
+########
+function ( cat_1, arg2_1 )
+    local deduped_1_1;
+    deduped_1_1 := UnderlyingMatrix( arg2_1 );
+    return deduped_1_1 * deduped_1_1 = deduped_1_1;
+end
+########
+        
+    , 201 : IsPrecompiledDerivation := true );
     
     ##
     AddIsInitial( cat,
