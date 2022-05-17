@@ -170,13 +170,13 @@
   [30X    [33X[0;6Y[2XIsEqualForObjects[102X  ([14XCAP:  IsEqualForObjects  for  iscapcategoryobject,
         iscapcategoryobject[114X)[133X
   
+  [30X    [33X[0;6Y[2XIsEqualToIdentityMorphism[102X    ([14XCAP:    IsEqualToIdentityMorphism    for
+        iscapcategorymorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XIsEqualToZeroMorphism[102X       ([14XCAP:       IsEqualToZeroMorphism      for
+        iscapcategorymorphism[114X)[133X
+  
   [30X    [33X[0;6Y[2XIsIdempotent[102X ([14XCAP: IsIdempotent for iscapcategorymorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XIsIdenticalToIdentityMorphism[102X  ([14XCAP: IsIdenticalToIdentityMorphism for
-        iscapcategorymorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XIsIdenticalToZeroMorphism[102X    ([14XCAP:    IsIdenticalToZeroMorphism    for
-        iscapcategorymorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XIsInitial[102X ([14XCAP: IsInitial for iscapcategoryobject[114X)[133X
   
