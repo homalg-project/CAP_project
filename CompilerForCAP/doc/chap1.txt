@@ -279,6 +279,21 @@
   [33X[0;0YAllows  the  compiler  to  inline and optimize code of [3Xcategory[103X (this is the
   default).[133X
   
+  [1X1.7-3 StopCompilationAtPrimitivelyInstalledOperationsOfCategory[101X
+  
+  [33X[1;0Y[29X[2XStopCompilationAtPrimitivelyInstalledOperationsOfCategory[102X( [3Xcategory[103X ) [32X function[133X
+  
+  [33X[0;0YStops  the  compiler  from  inlining  and  optimizing  code  of  primitively
+  installed  operations  of  [3Xcategory[103X. Warning: Due to caching of compiled CAP
+  operations, this has to be called before any compilation involving [3Xcategory[103X.[133X
+  
+  [1X1.7-4 ContinueCompilationAtPrimitivelyInstalledOperationsOfCategory[101X
+  
+  [33X[1;0Y[29X[2XContinueCompilationAtPrimitivelyInstalledOperationsOfCategory[102X( [3Xcategory[103X ) [32X function[133X
+  
+  [33X[0;0YAllows  the  compiler  to  inline and optimize code of primitively installed
+  operations of [3Xcategory[103X (this is the default).[133X
+  
   
   [1X1.8 [33X[0;0YGetting information about the compilation process[133X[101X
   

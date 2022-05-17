@@ -55,6 +55,8 @@
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X85B3DF4C80406968">1.7-1 StopCompilationAtCategory</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7ECBAF2483705ED2">1.7-2 ContinueCompilationAtCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X80ABBF057E2687E1">1.7-3 StopCompilationAtPrimitivelyInstalledOperationsOfCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X86EE97ED7A87D7CC">1.7-4 ContinueCompilationAtPrimitivelyInstalledOperationsOfCategory</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7B946AD083F7CEEA">1.8 <span class="Heading">Getting information about the compilation process</span></a>
 </span>
@@ -283,6 +285,20 @@
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ContinueCompilationAtCategory</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Allows the compiler to inline and optimize code of <var class="Arg">category</var> (this is the default).</p>
+
+<p><a id="X80ABBF057E2687E1" name="X80ABBF057E2687E1"></a></p>
+
+<h5>1.7-3 StopCompilationAtPrimitivelyInstalledOperationsOfCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; StopCompilationAtPrimitivelyInstalledOperationsOfCategory</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Stops the compiler from inlining and optimizing code of primitively installed operations of <var class="Arg">category</var>. Warning: Due to caching of compiled CAP operations, this has to be called before any compilation involving <var class="Arg">category</var>.</p>
+
+<p><a id="X86EE97ED7A87D7CC" name="X86EE97ED7A87D7CC"></a></p>
+
+<h5>1.7-4 ContinueCompilationAtPrimitivelyInstalledOperationsOfCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ContinueCompilationAtPrimitivelyInstalledOperationsOfCategory</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Allows the compiler to inline and optimize code of primitively installed operations of <var class="Arg">category</var> (this is the default).</p>
 
 <p><a id="X7B946AD083F7CEEA" name="X7B946AD083F7CEEA"></a></p>
 

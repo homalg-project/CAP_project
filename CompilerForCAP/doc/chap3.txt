@@ -1996,6 +1996,67 @@
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );;[127X[104X
+    [4X[25Xgap>[125X [27Xvec := MATRIX_CATEGORY( Q : no_precompiled_code );;[127X[104X
+    [4X[25Xgap>[125X [27Xfunc := cat -> ZeroObjectFunctorial( cat );;[127X[104X
+    [4X[25Xgap>[125X [27XStopCompilationAtCategory( vec );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, vec ) );[127X[104X
+    [4X[28XWARNING: Could not find declaration of ZeroObjectFunctorial (curre\[128X[104X
+    [4X[28Xnt input: [ <Category "IsCapCategory"> ])[128X[104X
+    [4X[28Xfunction ( cat_1 )[128X[104X
+    [4X[28X    return ZeroObjectFunctorial( cat_1 );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27XContinueCompilationAtCategory( vec );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, vec ) );[127X[104X
+    [4X[28Xfunction ( cat_1 )[128X[104X
+    [4X[28X    local morphism_attr_1_1, deduped_2_1;[128X[104X
+    [4X[28X    deduped_2_1 := ObjectifyObjectForCAPWithAttributes( rec([128X[104X
+    [4X[28X           ), cat_1, Dimension, 0 );[128X[104X
+    [4X[28X    morphism_attr_1_1 [128X[104X
+    [4X[28X     := HomalgZeroMatrix( 0, 0, UnderlyingRing( cat_1 ) );[128X[104X
+    [4X[28X    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes[128X[104X
+    [4X[28X        ( rec([128X[104X
+    [4X[28X           ), cat_1, deduped_2_1, deduped_2_1, UnderlyingMatrix, [128X[104X
+    [4X[28X       morphism_attr_1_1 );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27Xvec := MATRIX_CATEGORY( Q : no_precompiled_code );;[127X[104X
+    [4X[25Xgap>[125X [27XStopCompilationAtPrimitivelyInstalledOperationsOfCategory( vec );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, vec ) );[127X[104X
+    [4X[28XWARNING: Could not find declaration of ZeroObject (current input: \[128X[104X
+    [4X[28X[ <Category "IsCapCategory"> ])[128X[104X
+    [4X[28XWARNING: Could not find declaration of ZeroObject (current input: \[128X[104X
+    [4X[28X[ <Category "IsCapCategory"> ])[128X[104X
+    [4X[28XWARNING: Could not find declaration of ZeroObject (current input: \[128X[104X
+    [4X[28X[ <Category "IsCapCategory"> ])[128X[104X
+    [4X[28XWARNING: Could not find declaration of ZeroObject (current input: \[128X[104X
+    [4X[28X[ <Category "IsCapCategory"> ])[128X[104X
+    [4X[28XWARNING: Could not find declaration of ZeroObject (current input: \[128X[104X
+    [4X[28X[ <Category "IsCapCategory"> ])[128X[104X
+    [4X[28XWARNING: Could not find declaration of ZeroObject (current input: \[128X[104X
+    [4X[28X[ <Category "IsCapCategory"> ])[128X[104X
+    [4X[28Xfunction ( cat_1 )[128X[104X
+    [4X[28X    local deduped_1_1;[128X[104X
+    [4X[28X    deduped_1_1 := ZeroObject( cat_1 );[128X[104X
+    [4X[28X    return ZeroMorphism( cat_1, deduped_1_1, deduped_1_1 );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27XContinueCompilationAtPrimitivelyInstalledOperationsOfCategory( vec );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, vec ) );[127X[104X
+    [4X[28Xfunction ( cat_1 )[128X[104X
+    [4X[28X    local morphism_attr_1_1, deduped_2_1;[128X[104X
+    [4X[28X    deduped_2_1 := ObjectifyObjectForCAPWithAttributes( rec([128X[104X
+    [4X[28X           ), cat_1, Dimension, 0 );[128X[104X
+    [4X[28X    morphism_attr_1_1 [128X[104X
+    [4X[28X     := HomalgZeroMatrix( 0, 0, UnderlyingRing( cat_1 ) );[128X[104X
+    [4X[28X    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes[128X[104X
+    [4X[28X        ( rec([128X[104X
+    [4X[28X           ), cat_1, deduped_2_1, deduped_2_1, UnderlyingMatrix, [128X[104X
+    [4X[28X       morphism_attr_1_1 );[128X[104X
+    [4X[28Xend[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
     [4X[25Xgap>[125X [27Xvec := MATRIX_CATEGORY( Q );;[127X[104X
     [4X[25Xgap>[125X [27Xfunc := function ( cat, x )[127X[104X

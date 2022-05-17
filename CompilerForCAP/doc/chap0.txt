@@ -6,10 +6,10 @@
                    [1X Speed up computations in CAP categories [101X
   
   
-                                   2022.05-04
+                                   2022.05-05
   
   
-                                  12 May 2022
+                                  17 May 2022
   
   
                                 Fabian Zickgraf
@@ -45,6 +45,8 @@
     1.7 [33X[0;0YStopping the compiler at a certain level[133X
       1.7-1 StopCompilationAtCategory
       1.7-2 ContinueCompilationAtCategory
+      1.7-3 StopCompilationAtPrimitivelyInstalledOperationsOfCategory
+      1.7-4 ContinueCompilationAtPrimitivelyInstalledOperationsOfCategory
     1.8 [33X[0;0YGetting information about the compilation process[133X
       1.8-1 InfoCapJit
     1.9 [33X[0;0YFAQ[133X
