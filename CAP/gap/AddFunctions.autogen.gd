@@ -1855,6 +1855,44 @@ DeclareOperation( "AddIsEqualForObjects",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `IsEqualToIdentityMorphism`.
+#! $F: ( arg2 ) \mapsto \mathtt{IsEqualToIdentityMorphism}(arg2)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsEqualToIdentityMorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsEqualToIdentityMorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsEqualToIdentityMorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsEqualToIdentityMorphism",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `IsEqualToZeroMorphism`.
+#! $F: ( arg2 ) \mapsto \mathtt{IsEqualToZeroMorphism}(arg2)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsEqualToZeroMorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsEqualToZeroMorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsEqualToZeroMorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsEqualToZeroMorphism",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `IsHomSetInhabited`.
 #! $F: ( arg2, arg3 ) \mapsto \mathtt{IsHomSetInhabited}(arg2, arg3)$.
 #! @Returns nothing
@@ -1888,44 +1926,6 @@ DeclareOperation( "AddIsIdempotent",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddIsIdempotent",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation `IsIdenticalToIdentityMorphism`.
-#! $F: ( arg2 ) \mapsto \mathtt{IsIdenticalToIdentityMorphism}(arg2)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsIdenticalToIdentityMorphism",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsIdenticalToIdentityMorphism",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsIdenticalToIdentityMorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsIdenticalToIdentityMorphism",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation `IsIdenticalToZeroMorphism`.
-#! $F: ( arg2 ) \mapsto \mathtt{IsIdenticalToZeroMorphism}(arg2)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsIdenticalToZeroMorphism",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsIdenticalToZeroMorphism",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsIdenticalToZeroMorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsIdenticalToZeroMorphism",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

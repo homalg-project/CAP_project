@@ -155,17 +155,17 @@ InstallMethod( CategoryConstructor,
     # plausibility check
     if not "IsEqualForMorphisms" in options.list_of_operations_to_install then
         
-        if "IsIdenticalToIdentityMorphism" in options.list_of_operations_to_install then
+        if "IsEqualToIdentityMorphism" in options.list_of_operations_to_install then
             
             # COVERAGE_IGNORE_NEXT_LINE
-            Display( "WARNING: You want to lift `IsIdenticalToIdentityMorphism` but not `IsEqualForMorphisms` in CategoryConstructor. Since the specification of the former depends on the latter, this is probably an error." );
+            Display( "WARNING: You want to lift `IsEqualToIdentityMorphism` but not `IsEqualForMorphisms` in CategoryConstructor. Since the specification of the former depends on the latter, this is probably an error." );
             
         fi;
         
-        if "IsIdenticalToZeroMorphism" in options.list_of_operations_to_install then
+        if "IsEqualToZeroMorphism" in options.list_of_operations_to_install then
             
             # COVERAGE_IGNORE_NEXT_LINE
-            Display( "WARNING: You want to lift `IsIdenticalToZeroMorphism` but not `IsEqualForMorphisms` in CategoryConstructor. Since the specification of the former depends on the latter, this is probably an error." );
+            Display( "WARNING: You want to lift `IsEqualToZeroMorphism` but not `IsEqualForMorphisms` in CategoryConstructor. Since the specification of the former depends on the latter, this is probably an error." );
             
         fi;
         

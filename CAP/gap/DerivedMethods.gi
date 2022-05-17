@@ -848,7 +848,7 @@ AddDerivationToCAP( IsZeroForMorphisms,
 end : Description := "IsZeroForMorphisms by deciding whether the given morphism is congruent to the zero morphism" );
 
 ##
-AddDerivationToCAP( IsIdenticalToIdentityMorphism,
+AddDerivationToCAP( IsEqualToIdentityMorphism,
                     [ [ IsEqualForMorphismsOnMor, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     
@@ -856,16 +856,16 @@ AddDerivationToCAP( IsIdenticalToIdentityMorphism,
     
     return IsEqualForMorphismsOnMor( cat, morphism, IdentityMorphism( cat, Source( morphism ) ) );
     
-end : Description := "IsIdenticalToIdentityMorphism using IsEqualForMorphismsOnMor and IdentityMorphism" );
+end : Description := "IsEqualToIdentityMorphism using IsEqualForMorphismsOnMor and IdentityMorphism" );
 
 ##
-AddDerivationToCAP( IsIdenticalToZeroMorphism,
+AddDerivationToCAP( IsEqualToZeroMorphism,
                     
   function( cat, morphism )
     
     return IsEqualForMorphisms( cat, morphism, ZeroMorphism( cat, Source( morphism ), Range( morphism ) ) );
     
-end : Description := "IsIdenticalToZeroMorphism using IsEqualForMorphisms and ZeroMorphism" );
+end : Description := "IsEqualToZeroMorphism using IsEqualForMorphisms and ZeroMorphism" );
 
 ##
 AddDerivationToCAP( IsZeroForObjects,
@@ -1734,7 +1734,7 @@ AddDerivationToCAP( HomologyObjectFunctorialWithGivenHomologyObjects,
       PreCompose( cat, KernelEmbedding( cat, delta ), CokernelProjection( cat, gamma ) )
     );
     
-    cok_functorial := CokernelFunctorial( cat, alpha, epsilon, gamma );
+    cok_functorial := CokernelObjectFunctorial( cat, alpha, epsilon, gamma );
     
     functorial_mor :=
       LiftAlongMonomorphism( cat,

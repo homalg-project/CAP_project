@@ -2316,18 +2316,18 @@ IsInitial := rec(
   dual_operation := "IsTerminal",
   property_of := "object" ),
 
-IsIdenticalToIdentityMorphism := rec(
+IsEqualToIdentityMorphism := rec(
   filter_list := [ "category", "morphism" ],
   well_defined_todo := false,
   return_type := "bool",
-  dual_operation := "IsIdenticalToIdentityMorphism",
+  dual_operation := "IsEqualToIdentityMorphism",
   property_of := "morphism" ),
 
-IsIdenticalToZeroMorphism := rec(
+IsEqualToZeroMorphism := rec(
   filter_list := [ "category", "morphism" ],
   well_defined_todo := false,
   return_type := "bool",
-  dual_operation := "IsIdenticalToZeroMorphism",
+  dual_operation := "IsEqualToZeroMorphism",
   property_of := "morphism" ),
 
 CoastrictionToImage := rec(

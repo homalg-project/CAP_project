@@ -5,6 +5,10 @@
 #
 #! @Chapter Universal Objects
 
+# deprecated legacy aliases
+InstallDeprecatedAlias( "CokernelFunctorial", "CokernelObjectFunctorial", "2023.05.17" );
+InstallDeprecatedAlias( "CokernelFunctorialWithGivenCokernelObjects", "CokernelObjectFunctorialWithGivenCokernelObjects", "2023.05.17" );
+
 ####################################
 ##
 ## Coproduct and Pushout

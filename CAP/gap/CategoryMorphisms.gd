@@ -277,7 +277,7 @@ DeclareOperation( "RandomMorphism", [ IsCapCategory, IsList ] );
 #! otherwise the output is <C>false</C>.
 #! @Returns a boolean
 #! @Arguments alpha
-DeclareProperty( "IsIdenticalToIdentityMorphism",
+DeclareProperty( "IsEqualToIdentityMorphism",
                  IsCapCategoryMorphism );
 
 #! @Description
@@ -286,9 +286,8 @@ DeclareProperty( "IsIdenticalToIdentityMorphism",
 #! otherwise the output is <C>false</C>.
 #! @Returns a boolean
 #! @Arguments alpha
-DeclareProperty( "IsIdenticalToZeroMorphism",
+DeclareProperty( "IsEqualToZeroMorphism",
                  IsCapCategoryMorphism );
-
 
 ## This is not a categorical property because non-endomorphisms 
 ## can be mapped to endomorphisms under equivalences of categories.

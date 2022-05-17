@@ -279,10 +279,6 @@ DeclareOperation( "CokernelColiftWithGivenCokernelObject",
 DeclareOperation( "CokernelObjectFunctorial",
                   [ IsList ] );
 
-DeclareSynonym( "CokernelFunctorial", CokernelObjectFunctorial );
-## FIXME: Change this once we have moved to GAP 4.9
-## DeclareDeprecatedSynonym( "CokernelFunctorial", CokernelObjectFunctorial );
-
 #! @Description
 #! The arguments are three morphisms
 #! $\alpha: A \rightarrow B, \nu: B \rightarrow B', \alpha': A' \rightarrow B'$.
@@ -322,10 +318,6 @@ DeclareOperation( "CokernelObjectFunctorialWithGivenCokernelObjects",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,
                     IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
-
-DeclareSynonym( "CokernelFunctorialWithGivenCokernelObjects", CokernelObjectFunctorialWithGivenCokernelObjects );
-## FIXME:
-## DeclareDeprecatedSynonym( "CokernelFunctorialWithGivenCokernelObjects", CokernelObjectFunctorialWithGivenCokernelObjects );
 
 #! @Chapter Universal Objects
 
