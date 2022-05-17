@@ -1734,7 +1734,7 @@ AddDerivationToCAP( HomologyObjectFunctorialWithGivenHomologyObjects,
       PreCompose( cat, KernelEmbedding( cat, delta ), CokernelProjection( cat, gamma ) )
     );
     
-    cok_functorial := CokernelFunctorial( cat, alpha, epsilon, gamma );
+    cok_functorial := CokernelObjectFunctorial( cat, alpha, epsilon, gamma );
     
     functorial_mor :=
       LiftAlongMonomorphism( cat,

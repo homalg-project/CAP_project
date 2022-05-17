@@ -1634,7 +1634,7 @@ function ( cat_1, H_1_1, L_1, H_2_1 )
 end
 ########
         
-    , 3815 : IsPrecompiledDerivation := true );
+    , 4421 : IsPrecompiledDerivation := true );
     
     ##
     AddHomomorphismStructureOnMorphisms( cat,
