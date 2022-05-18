@@ -305,3 +305,10 @@
   [33X[0;0YReturns  the  name  of  the  package  to  which  the  CAP operation given by
   [3Xoperation_name[103X belongs or fail if the package is not known.[133X
   
+  [1X9.2-31 SafePosition[101X
+  
+  [33X[1;0Y[29X[2XSafePosition[102X( [3Xlist[103X, [3Xobj[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan integer[133X
+  
+  [33X[0;0YReturns [10XPosition( [110X[3Xlist[103X[10X, [110X[3Xobj[103X[10X )[110X while asserting that this value is not [10Xfail[110X.[133X
+  

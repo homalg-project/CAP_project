@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2022.05-05
+                                   2022.05-06
   
   
-                                  17 May 2022
+                                  18 May 2022
   
   
                                Sebastian Gutsche
@@ -880,6 +880,7 @@
       9.2-28 CapFixpoint
       9.2-29 TransitivelyNeededOtherPackages
       9.2-30 PackageOfCAPOperation
+      9.2-31 SafePosition
   10 [33X[0;0YLimits and Colimits[133X
     10.1 [33X[0;0YSpecification of Limits and Colimits[133X
     10.2 [33X[0;0YEnhancing Limit Specifications[133X

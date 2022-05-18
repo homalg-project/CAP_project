@@ -699,6 +699,7 @@
   [2XRangeOfFunctor[102X, for IsCapFunctor 5.4-4 
   [2XReevaluate[102X, for IsOperationWeightList 8.4-9 
   [2XResetTimingStatistics[102X 1.10-1 
+  [2XSafePosition[102X, for IsList, IsObject 9.2-31 
   [2XSaturate[102X, for IsOperationWeightList 8.4-10 
   [2XSetCachingOfCategory[102X 1.8-1 
   [2XSetCachingOfCategoryCrisp[102X 1.8-2 
