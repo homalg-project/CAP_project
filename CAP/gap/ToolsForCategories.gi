@@ -1194,14 +1194,3 @@ InstallMethod( SafePosition,
     return pos;
     
 end );
-
-## Hack for making CAP work with GAP versions smaller than 4.11
-## Fixme: Remove this once we are sure we do not want compatibility
-## to GAP < 4.11 anymore.
-if not IsBound( SuspendMethodReordering ) then
-   BindGlobal( "SuspendMethodReordering", function() end );
-fi;
-
-if not IsBound( ResumeMethodReordering ) then
-   BindGlobal( "ResumeMethodReordering", function() end );
-fi;
