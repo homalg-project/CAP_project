@@ -897,6 +897,14 @@ CapJitAddTypeSignature( "Position", [ IsList, IsObject ], function ( input_types
     
 end );
 
+CapJitAddTypeSignature( "SafePosition", [ IsList, IsObject ], function ( input_types )
+    
+    Assert( 0, input_types[1].element_type = input_types[2] );
+    
+    return rec( filter := IsInt );
+    
+end );
+
 CapJitAddTypeSignature( "Positions", [ IsList, IsObject ], function ( input_types )
     
     Assert( 0, input_types[1].element_type = input_types[2] );
