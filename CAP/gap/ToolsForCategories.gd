@@ -238,3 +238,9 @@ DeclareGlobalFunction( "TransitivelyNeededOtherPackages" );
 #!   Returns the name of the package to which the CAP operation given by <A>operation_name</A> belongs or fail if the package is not known.
 #! @Arguments operation_name
 DeclareGlobalFunction( "PackageOfCAPOperation" );
+
+#! @Description
+#!   Returns `Position( `<A>list</A>`, `<A>obj</A>` )` while asserting that this value is not `fail`.
+#! @Arguments list, obj
+#! @Returns an integer
+DeclareOperation( "SafePosition", [ IsList, IsObject ] );

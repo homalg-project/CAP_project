@@ -326,6 +326,18 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
             
             tree := f( tree );
             
+            # Hack: the tree might lose its type because we avoid partial typings.
+            # However, in many cases it can be typed later in the compilation process (after inlining etc.).
+            # Thus, we add the type back manually here.
+            if type_signature <> fail and not IsBound( tree.data_type ) then
+                
+                tree.data_type := rec(
+                    filter := IsFunction,
+                    signature := type_signature,
+                );
+                
+            fi;
+            
             if debug_idempotence then
                 
                 # COVERAGE_IGNORE_BLOCK_START
