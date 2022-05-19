@@ -11,7 +11,7 @@
 #!   Outlines wrapped arguments to local variables. This includes:
 #!     * the attribute values in `ObjectifyObjectForCAPWithAttributes`
 #!     * the attribute values (including the arguments `source` and `range`) in `ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes`
-#!     * the entries of literal lists
+#!     * the arguments of `NTuple` (excluding the first argument)
 #! @Returns a record
 #! @Arguments tree
 DeclareGlobalFunction( "CapJitOutlinedWrappedArguments" );

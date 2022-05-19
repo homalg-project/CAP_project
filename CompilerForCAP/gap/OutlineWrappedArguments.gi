@@ -7,13 +7,7 @@
 BindGlobal( "CAP_JIT_INTERNAL_GET_KEY_AND_POSITIONS_TO_OUTLINE", function ( tree, func_stack )
   local key, positions_to_outline, source, fvar, func, range;
     
-    if tree.type = "EXPR_LIST" then
-        
-        key := "list";
-        
-        positions_to_outline := [ 1 .. tree.list.length ];
-        
-    elif CapJitIsCallToGlobalFunction( tree, "NTuple" ) then
+    if CapJitIsCallToGlobalFunction( tree, "NTuple" ) then
         
         key := "args";
         
