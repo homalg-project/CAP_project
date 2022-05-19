@@ -58,6 +58,7 @@ DeclareInfoClass( "InfoCategoryConstructor" );
 #!    `underlying_morphism_getter_string` may be strings of functions computing the underlying category (when applied to the constructed category) and
 #!    the underlying object resp. morphism (when applied to the constructed category and an object resp. morphism in the constructed category).
 #!    These functions are applied to `input_arguments` and `underlying_arguments` is replaced by the result.
+#!  * `number_of_arguments` will be replaced by the number of input/underlying arguments
 #!  * `top_source` and `top_range`: If the return type is `morphism` or `morphism_or_fail`, source and range are computed if possible and `top_source` and `top_range` are replaced by the results.
 #!    For computing source and range, the `output_source_getter_string` and `output_range_getter_string` from the method name record are used if available (see <Ref Sect="Section_CapInternalInstallAdd" />).
 #!    In some categories, source and range can always be obtained in a generic way (e.g. from the morphism datum). In this case, `generic_output_source_getter_string` and `generic_output_range_getter_string`

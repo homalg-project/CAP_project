@@ -48,7 +48,7 @@ AssociatorRightToLeftWithGivenTensorProducts := rec(
   return_type := "morphism",
   dual_operation := "AssociatorLeftToRightWithGivenTensorProducts",
   dual_preprocessor_func :=
-    { cat, s, a, b, c, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( c ), Opposite( s ) ],
+    { cat, s, a, b, c, r } -> NTuple( 6, Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( c ), Opposite( s ) ),
   dual_arguments_reversed := false,
   # Test in MonoidalCategoriesTest
 ),
@@ -70,7 +70,7 @@ AssociatorLeftToRightWithGivenTensorProducts := rec(
   io_type := [ [ "s", "a", "b", "c", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "AssociatorRightToLeftWithGivenTensorProducts",
-  dual_preprocessor_func := { cat, s, a, b, c, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( c ), Opposite( s ) ],
+  dual_preprocessor_func := { cat, s, a, b, c, r } -> NTuple( 6, Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( c ), Opposite( s ) ),
   dual_arguments_reversed := false,
   # Test in MonoidalCategoriesTest
 ),

@@ -905,6 +905,16 @@ end );
 ##
 InstallGlobalFunction( "IsSpecializationOfFilterList", function ( filter_list1, filter_list2 )
     
+    if filter_list1 = "any" then
+        
+        return true;
+        
+    elif filter_list2 = "any" then
+        
+        return false;
+        
+    fi;
+    
     return Length( filter_list1 ) = Length( filter_list2 ) and ForAll( [ 1 .. Length( filter_list1 ) ], i -> IsSpecializationOfFilter( filter_list1[i], filter_list2[i] ) );
     
 end );
@@ -1052,17 +1062,21 @@ InstallGlobalFunction( "CapJitAddTypeSignature", function ( name, input_filters,
         
     fi;
     
-    if not IsList( input_filters ) then
+    if input_filters <> "any" then
         
-        # COVERAGE_IGNORE_NEXT_LINE
-        Error( "<input_filters> must be a list" );
+        if not IsList( input_filters ) then
+            
+            # COVERAGE_IGNORE_NEXT_LINE
+            Error( "<input_filters> must be a list or the string \"any\"" );
+            
+        fi;
         
-    fi;
-    
-    if not ForAll( input_filters, filter -> IsFilter( filter ) ) then
-        
-        # COVERAGE_IGNORE_NEXT_LINE
-        Error( "<input_filters> must be a list of filters" );
+        if not ForAll( input_filters, filter -> IsFilter( filter ) ) then
+            
+            # COVERAGE_IGNORE_NEXT_LINE
+            Error( "<input_filters> must be a list of filters or the string \"any\"" );
+            
+        fi;
         
     fi;
     
@@ -1101,17 +1115,21 @@ BindGlobal( "CAP_JIT_INTERNAL_TYPE_SIGNATURES_DEFERRED", rec( ) );
 
 InstallGlobalFunction( "CapJitAddTypeSignatureDeferred", function ( package_name, name, input_filters, output_data_type )
     
-    if not IsList( input_filters ) then
+    if input_filters <> "any" then
         
-        # COVERAGE_IGNORE_NEXT_LINE
-        Error( "<input_filters> must be a list" );
+        if not IsList( input_filters ) then
+            
+            # COVERAGE_IGNORE_NEXT_LINE
+            Error( "<input_filters> must be a list or the string \"any\"" );
+            
+        fi;
         
-    fi;
-    
-    if not ForAll( input_filters, filter -> IsString( filter ) ) then
-        
-        # COVERAGE_IGNORE_NEXT_LINE
-        Error( "<input_filters> must be a list of strings" );
+        if not ForAll( input_filters, filter -> IsString( filter ) ) then
+            
+            # COVERAGE_IGNORE_NEXT_LINE
+            Error( "<input_filters> must be a list of strings or the string \"any\"" );
+            
+        fi;
         
     fi;
     
@@ -1192,5 +1210,30 @@ InstallMethod( SafePosition,
     Assert( 0, pos <> fail );
     
     return pos;
+    
+end );
+
+##
+InstallGlobalFunction( NTuple, function ( n, args... )
+    
+    Assert( 0, Length( args ) = n );
+    
+    return args;
+    
+end );
+
+##
+InstallGlobalFunction( Pair, function ( first, second )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return NTuple( 2, first, second );
+    
+end );
+
+##
+InstallGlobalFunction( Triple, function ( first, second, third )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return NTuple( 3, first, second, third );
     
 end );
