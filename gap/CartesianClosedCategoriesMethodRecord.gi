@@ -56,7 +56,7 @@ CartesianEvaluationMorphismWithGivenSource := rec(
   io_type := [ [ "a", "b", "s" ], [ "s", "b" ] ],
   return_type := "morphism",
   dual_operation := "CocartesianEvaluationMorphismWithGivenRange",
-  dual_preprocessor_func := { cat, a, b, s } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( s ) ],
+  dual_preprocessor_func := { cat, a, b, s } -> NTuple( 4, Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( s ) ),
   dual_arguments_reversed := false,
   # Test in CartesianClosedCategoriesTest
 ),
@@ -96,7 +96,7 @@ ExponentialToDirectProductAdjunctionMap := rec(
   io_type := [ [ "b", "c", "g" ], [ "t", "c" ] ],
   return_type := "morphism",
   dual_operation := "CoexponentialToCoproductAdjunctionMap",
-  dual_preprocessor_func := { cat, a, b, g } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( g ) ],
+  dual_preprocessor_func := { cat, a, b, g } -> NTuple( 4, Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( g ) ),
   dual_arguments_reversed := false,
   # Test in CartesianClosedCategoriesTest
 ),
@@ -219,7 +219,7 @@ DirectProductExponentialCompatibilityMorphism := rec(
   with_given_object_position := "both",
   return_type := "morphism",
   dual_operation := "CoexponentialCoproductCompatibilityMorphism",
-  dual_preprocessor_func := { cat, list } -> [ Opposite( cat ), [ Opposite( list[2] ), Opposite( list[4] ), Opposite( list[1] ), Opposite( list[3] ) ] ],
+  dual_preprocessor_func := { cat, list } -> Pair( Opposite( cat ), [ Opposite( list[2] ), Opposite( list[4] ), Opposite( list[1] ), Opposite( list[3] ) ] ),
   dual_arguments_reversed := false,
   # Test in CartesianClosedCategoriesTest
 ),
@@ -232,7 +232,7 @@ DirectProductExponentialCompatibilityMorphismWithGivenObjects := rec(
   return_type := "morphism",
   dual_operation := "CoexponentialCoproductCompatibilityMorphismWithGivenObjects",
   dual_preprocessor_func :=
-    { cat, s, list, r } -> [ Opposite( cat ), Opposite( r ), [ Opposite( list[2] ), Opposite( list[4] ), Opposite( list[1] ), Opposite( list[3] ) ], Opposite( s ) ],
+    { cat, s, list, r } -> NTuple( 4, Opposite( cat ), Opposite( r ), [ Opposite( list[2] ), Opposite( list[4] ), Opposite( list[1] ), Opposite( list[3] ) ], Opposite( s ) ),
   dual_arguments_reversed := false,
   # Test in CartesianClosedCategoriesTest
 ),
@@ -254,7 +254,7 @@ DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects := rec(
   io_type := [ [ "s", "a", "b", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects",
-  dual_preprocessor_func := { cat, s, a, b, r} -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( s ) ],
+  dual_preprocessor_func := { cat, s, a, b, r } -> NTuple( 5, Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( s ) ),
   dual_arguments_reversed := false,
   # Test in CartesianClosedCategoriesTest
 ),
@@ -318,7 +318,7 @@ CartesianLambdaElimination := rec(
   io_type := [ [ "a", "b", "alpha" ], [ "a", "b" ] ],
   return_type := "morphism",
   dual_operation := "CocartesianLambdaElimination",
-  dual_preprocessor_func := { cat, a, b, alpha } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( alpha ) ],
+  dual_preprocessor_func := { cat, a, b, alpha } -> NTuple( 4, Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( alpha ) ),
   dual_arguments_reversed := false,
   # Test in CartesianClosedCategoriesTest
 ),
