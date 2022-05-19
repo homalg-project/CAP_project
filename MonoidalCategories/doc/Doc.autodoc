@@ -104,3 +104,15 @@ is called a <Emph>rigid symmetric coclosed monoidal category</Emph>.
 @Section Convenience Methods
 
 @Section Add-methods
+
+@Chapter Examples and Tests
+
+@Section Test functions
+
+@Chapter Code Generation for Monodial Categories
+
+@Section Monoidal Categories
+
+@Section Closed Monoidal Categories
+
+@Section Coclosed Monoidal Categories
