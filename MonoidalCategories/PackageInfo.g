@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "MonoidalCategories",
 Subtitle := "Monoidal and monoidal (co)closed categories",
-Version := "2022.05-02",
-Date := "03/05/2022",
+Version := "2022.05-03",
+Date := "19/05/2022",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -119,7 +119,7 @@ Dependencies := rec(
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "ToolsForHomalg", ">= 2018.05.22" ],
-                   [ "CAP", ">= 2022.05-01" ],
+                   [ "CAP", ">= 2022.05-07" ],
                    ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
