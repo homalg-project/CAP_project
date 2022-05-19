@@ -659,7 +659,7 @@
   [30X    [33X[0;6Ythe  attribute  values  (including  the arguments [10Xsource[110X and [10Xrange[110X) in
         [10XObjectifyMorphismWithSourceAndRangeForCAPWithAttributes[110X[133X
   
-  [30X    [33X[0;6Ythe entries of literal lists[133X
+  [30X    [33X[0;6Ythe arguments of [10XNTuple[110X (excluding the first argument)[133X
   
   [1X2.5-19 CapJitResolvedGlobalVariables[101X
   
