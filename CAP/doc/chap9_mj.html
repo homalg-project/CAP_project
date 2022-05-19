@@ -65,6 +65,9 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7FA62DB97B67C4AB">9.2-29 TransitivelyNeededOtherPackages</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7E9D968D86A536EF">9.2-30 PackageOfCAPOperation</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X844FE77D85C951AA">9.2-31 SafePosition</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7F2E50C87EC6E530">9.2-32 NTuple</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7A63799B824FAEBA">9.2-33 Pair</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7C52730F8526A57E">9.2-34 Triple</a></span>
 </div></div>
 </div>
 
@@ -256,7 +259,7 @@
 <h5>9.2-22 IsSpecializationOfFilterList</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsSpecializationOfFilterList</code>( <var class="Arg">filter_list1</var>, <var class="Arg">filter_list2</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Checks if <var class="Arg">filter_list2</var> is more special than <var class="Arg">filter_list1</var>, i.e. if both lists have the same length and any element of <var class="Arg">filter_list2</var> implies the corresponding element of <var class="Arg">filter_list1</var>.</p>
+<p>Checks if <var class="Arg">filter_list2</var> is more special than <var class="Arg">filter_list1</var>, i.e. if both lists have the same length and any element of <var class="Arg">filter_list2</var> implies the corresponding element of <var class="Arg">filter_list1</var>. <var class="Arg">filter_list1</var> and <var class="Arg">filter_list2</var> can also be the string <code class="code">"any"</code>, respresenting a most general filter list of any length.</p>
 
 <p><a id="X7F953A7086264653" name="X7F953A7086264653"></a></p>
 
@@ -284,7 +287,7 @@
 <h5>9.2-26 CapJitAddTypeSignature</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitAddTypeSignature</code>( <var class="Arg">name</var>, <var class="Arg">input_filters</var>, <var class="Arg">output_data_type</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>(experimental) Adds a type signature for the global function or operation given by <var class="Arg">name</var> to the compiler. <var class="Arg">input_filters</var> must be a list of filters. <var class="Arg">output_data_type</var> must be a filter, a data type, or a function. If it is a function with one argument, it must accept a list of input types and return the corresponding data type of the output. If it is a function with two arguments, it must accept the arguments of a function call of <var class="Arg">name</var> (as syntax trees) and the function stack and return a record with components <code class="code">args</code> (the possibly modified arguments) and <code class="code">output_type</code> (the data type of the output). See <code class="func">CapJitInferredDataTypes</code> (<a href="https://homalg-project.github.io/CAP_project/CompilerForCAP/doc/chap2_mj.html#X821BE2CE7C30674E"><span class="RefLink">CompilerForCAP: CapJitInferredDataTypes</span></a>) for more details on data types.</p>
+<p>(experimental) Adds a type signature for the global function or operation given by <var class="Arg">name</var> to the compiler. <var class="Arg">input_filters</var> must be a list of filters, or the string '"any"' representing a most general filter list of any length. <var class="Arg">output_data_type</var> must be a filter, a data type, or a function. If it is a function with one argument, it must accept a list of input types and return the corresponding data type of the output. If it is a function with two arguments, it must accept the arguments of a function call of <var class="Arg">name</var> (as syntax trees) and the function stack and return a record with components <code class="code">args</code> (the possibly modified arguments) and <code class="code">output_type</code> (the data type of the output). See <code class="func">CapJitInferredDataTypes</code> (<a href="https://homalg-project.github.io/CAP_project/CompilerForCAP/doc/chap2_mj.html#X821BE2CE7C30674E"><span class="RefLink">CompilerForCAP: CapJitInferredDataTypes</span></a>) for more details on data types.</p>
 
 <p><a id="X8345518F79EBB586" name="X8345518F79EBB586"></a></p>
 
@@ -322,6 +325,33 @@
 <p>Returns: an integer</p>
 
 <p>Returns <code class="code">Position( </code><var class="Arg">list</var><code class="code">, </code><var class="Arg">obj</var><code class="code"> )</code> while asserting that this value is not <code class="code">fail</code>.</p>
+
+<p><a id="X7F2E50C87EC6E530" name="X7F2E50C87EC6E530"></a></p>
+
+<h5>9.2-32 NTuple</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NTuple</code>( <var class="Arg">n</var>, <var class="Arg">args...</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>Returns <var class="Arg">args</var> while asserting that its length is <var class="Arg">n</var>.</p>
+
+<p><a id="X7A63799B824FAEBA" name="X7A63799B824FAEBA"></a></p>
+
+<h5>9.2-33 Pair</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Pair</code>( <var class="Arg">first</var>, <var class="Arg">second</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>Alias for <code class="code">NTuple( 2, <var class="Arg">first</var>, <var class="Arg">second</var> )</code>.</p>
+
+<p><a id="X7C52730F8526A57E" name="X7C52730F8526A57E"></a></p>
+
+<h5>9.2-34 Triple</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Triple</code>( <var class="Arg">first</var>, <var class="Arg">second</var>, <var class="Arg">third</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>Alias for <code class="code">NTuple( 3, <var class="Arg">first</var>, <var class="Arg">second</var>, <var class="Arg">third</var> )</code>.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap8_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap10_mj.html">[Next Chapter]</a>&nbsp;  </div>

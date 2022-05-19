@@ -233,7 +233,9 @@
   
   [33X[0;0YChecks if [3Xfilter_list2[103X is more special than [3Xfilter_list1[103X, i.e. if both lists
   have   the   same  length  and  any  element  of  [3Xfilter_list2[103X  implies  the
-  corresponding element of [3Xfilter_list1[103X.[133X
+  corresponding  element  of  [3Xfilter_list1[103X.  [3Xfilter_list1[103X and [3Xfilter_list2[103X can
+  also  be  the  string [10X"any"[110X, respresenting a most general filter list of any
+  length.[133X
   
   [1X9.2-23 InstallMethodForCompilerForCAP[101X
   
@@ -264,7 +266,8 @@
   [33X[1;0Y[29X[2XCapJitAddTypeSignature[102X( [3Xname[103X, [3Xinput_filters[103X, [3Xoutput_data_type[103X ) [32X function[133X
   
   [33X[0;0Y(experimental)  Adds  a  type signature for the global function or operation
-  given  by  [3Xname[103X  to  the  compiler. [3Xinput_filters[103X must be a list of filters.
+  given  by  [3Xname[103X to the compiler. [3Xinput_filters[103X must be a list of filters, or
+  the  string  '"any"'  representing a most general filter list of any length.
   [3Xoutput_data_type[103X  must  be  a filter, a data type, or a function. If it is a
   function  with one argument, it must accept a list of input types and return
   the  corresponding  data  type  of  the output. If it is a function with two
@@ -311,4 +314,25 @@
   [6XReturns:[106X  [33X[0;10Yan integer[133X
   
   [33X[0;0YReturns [10XPosition( [110X[3Xlist[103X[10X, [110X[3Xobj[103X[10X )[110X while asserting that this value is not [10Xfail[110X.[133X
+  
+  [1X9.2-32 NTuple[101X
+  
+  [33X[1;0Y[29X[2XNTuple[102X( [3Xn[103X, [3Xargs...[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YReturns [3Xargs[103X while asserting that its length is [3Xn[103X.[133X
+  
+  [1X9.2-33 Pair[101X
+  
+  [33X[1;0Y[29X[2XPair[102X( [3Xfirst[103X, [3Xsecond[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YAlias for [10XNTuple( 2, [3Xfirst[103X[10X, [3Xsecond[103X[10X )[110X.[133X
+  
+  [1X9.2-34 Triple[101X
+  
+  [33X[1;0Y[29X[2XTriple[102X( [3Xfirst[103X, [3Xsecond[103X, [3Xthird[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YAlias for [10XNTuple( 3, [3Xfirst[103X[10X, [3Xsecond[103X[10X, [3Xthird[103X[10X )[110X.[133X
   
