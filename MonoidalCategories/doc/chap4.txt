@@ -1,0 +1,31 @@
+  
+  [1X4 [33X[0;0YThe category constructor[133X[101X
+  
+  
+  [1X4.1 [33X[0;0YExample[133X[101X
+  
+  [33X[0;0YThis  is an example of a category which is created using [10XCategoryConstructor[110X
+  out  of  no input. This category [21Xlies[121X in all doctrines and can hence be used
+  (in conjunction with [10XLazyCategory[110X) in order to check the type-correctness of
+  the various derived methods provided by [5XCAP[105X or any [5XCAP[105X-based package.[133X
+  
+  [1X4.1-1 IsTerminalCategoryWithMultipleObjects[101X
+  
+  [33X[1;0Y[29X[2XIsTerminalCategoryWithMultipleObjects[102X( [3XT[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X type of a terminal category with multiple objects.[133X
+  
+  [1X4.1-2 TerminalCategoryWithMultipleObjects[101X
+  
+  [33X[1;0Y[29X[2XTerminalCategoryWithMultipleObjects[102X(  ) [32X function[133X
+  
+  [33X[0;0YConstruct a terminal category with multiple objects.[133X
+  
+  [1X4.1-3 /[101X
+  
+  [33X[1;0Y[29X[2X/[102X( [3XT[103X, [3Xstr[103X ) [32X operation[133X
+  
+  [33X[0;0YCreate  an  object  [23Xa[123X  in the terminal category [3XT[103X with multiple objects with
+  [10XString[110X([3Xstr[103X) = [23Xa[123X.[133X
+  

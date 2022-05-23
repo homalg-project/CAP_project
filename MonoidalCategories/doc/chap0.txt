@@ -6,7 +6,7 @@
                  [1X Monoidal and monoidal (co)closed categories [101X
   
   
-                                   2022.05-04
+                                   2022.05-05
   
   
                                   23 May 2022
@@ -336,11 +336,18 @@
       2.1-7 RigidSymmetricClosedMonoidalCategoriesTest
       2.1-8 RigidSymmetricCoclosedMonoidalCategoriesTest
     2.2 [33X[0;0YBasics[133X
-  3 [33X[0;0YThe category constructor[133X
-    3.1 [33X[0;0YExample[133X
-      3.1-1 IsTerminalCategoryWithMultipleObjects
-      3.1-2 TerminalCategoryWithMultipleObjects
-      3.1-3 /
+  3 [33X[0;0YCode Generation for Monodial Categories[133X
+    3.1 [33X[0;0YMonoidal Categories[133X
+      3.1-1 WriteFileForMonoidalStructure
+    3.2 [33X[0;0YClosed Monoidal Categories[133X
+      3.2-1 WriteFileForClosedMonoidalStructure
+    3.3 [33X[0;0YCoclosed Monoidal Categories[133X
+      3.3-1 WriteFileForCoclosedMonoidalStructure
+  4 [33X[0;0YThe category constructor[133X
+    4.1 [33X[0;0YExample[133X
+      4.1-1 IsTerminalCategoryWithMultipleObjects
+      4.1-2 TerminalCategoryWithMultipleObjects
+      4.1-3 /
   
   
   [32X
