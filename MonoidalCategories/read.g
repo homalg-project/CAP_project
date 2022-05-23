@@ -73,6 +73,12 @@ ReadPackage( "MonoidalCategories", "gap/RigidSymmetricCoclosedMonoidalCategories
 
 ReadPackage( "MonoidalCategories", "gap/HomomorphismStructureDerivedMethods.gi" );
 
+## Create files for monoidal categories
+
+ReadPackage( "MonoidalCategories", "gap/CreateMonoidalCategories.gi" );
+ReadPackage( "MonoidalCategories", "gap/CreateClosedMonoidalCategories.gi" );
+ReadPackage( "MonoidalCategories", "gap/CreateCoclosedMonoidalCategories.gi" );
+
 ## Test methods
 
 ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesTensorProductAndUnitTest.gi" );
