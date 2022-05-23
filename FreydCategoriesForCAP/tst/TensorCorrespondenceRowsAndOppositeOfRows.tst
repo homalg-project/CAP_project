@@ -58,6 +58,25 @@ gap> alpha := ZeroMorphism( a, b );;
 gap> MonoidalCategoriesTest( rows, a, b, c, alpha, beta );;
 
 ##############################################
+# AdditiveMonoidalCategoriesTest
+##############################################
+
+gap> a := 2 / rows;;
+gap> L := [ 3 / rows, 4 / rows, 5 / rows ];;
+
+gap> AdditiveMonoidalCategoriesTest( rows, a, L );;
+
+gap> a := 0 / rows;;
+gap> L := [ 3 / rows, 4 / rows, 5 / rows ];;
+
+gap> AdditiveMonoidalCategoriesTest( rows, a, L );;
+
+gap> a := 2 / rows;;
+gap> L := [ 3 / rows, 0 / rows, 5 / rows ];;
+
+gap> AdditiveMonoidalCategoriesTest( rows, a, L );;
+
+##############################################
 # BraidedMonoidalCategoriesTest
 ##############################################
 
