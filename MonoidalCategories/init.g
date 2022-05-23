@@ -62,3 +62,6 @@ ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategoriesTest.gd" );
 ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategoriesTest.gd" );
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricClosedMonoidalCategoriesTest.gd" );
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricCoclosedMonoidalCategoriesTest.gd" );
+
+## TerminalCategory
+ReadPackage( "MonoidalCategories", "gap/TerminalCategory.gd" );
