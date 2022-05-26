@@ -14,8 +14,10 @@
   [2XCapJitContainsRefToFVAROutsideOfFuncStack[102X 2.4-4 
   [2XCapJitCopyWithNewFunctionIDs[102X 2.4-11 
   [2XCapJitDeduplicatedExpressions[102X 2.5-4 
+  [2XCapJitDisableDataTypeInference[102X 1.8-1 
   [2XCapJitDroppedHandledEdgeCases[102X 2.5-5 
   [2XCapJitDroppedUnusedBindings[102X 2.5-6 
+  [2XCapJitEnableDataTypeInference[102X 1.8-1 
   [2XCapJitFindNodeDeep[102X 2.4-6 
   [2XCapJitFindNodes[102X 2.4-7 
   [2XCapJitGetNextUnusedVariableID[102X 2.4-17 
@@ -52,7 +54,7 @@
   [2XContinueCompilationAtPrimitivelyInstalledOperationsOfCategory[102X 1.7-4 
   [2XENHANCED_SYNTAX_TREE[102X 2.2-1 
   [2XENHANCED_SYNTAX_TREE_CODE[102X 2.2-2 
-  [2XInfoCapJit[102X 1.8-1 
+  [2XInfoCapJit[102X 1.9-1 
   [2XStopCompilationAtCategory[102X 1.7-1 
   [2XStopCompilationAtPrimitivelyInstalledOperationsOfCategory[102X 1.7-3 
   

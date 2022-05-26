@@ -58,12 +58,17 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X80ABBF057E2687E1">1.7-3 StopCompilationAtPrimitivelyInstalledOperationsOfCategory</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X86EE97ED7A87D7CC">1.7-4 ContinueCompilationAtPrimitivelyInstalledOperationsOfCategory</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7B946AD083F7CEEA">1.8 <span class="Heading">Getting information about the compilation process</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7F76759D7D772538">1.8 <span class="Heading">Disabling the automatic inference of data types</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8202365E84A044DC">1.8-1 InfoCapJit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X843286607CD2DE7E">1.8-1 CapJitDisableDataTypeInference</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X780099B481AB3AB7">1.9 <span class="Heading">FAQ</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7B946AD083F7CEEA">1.9 <span class="Heading">Getting information about the compilation process</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8202365E84A044DC">1.9-1 InfoCapJit</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X780099B481AB3AB7">1.10 <span class="Heading">FAQ</span></a>
 </span>
 </div>
 </div>
@@ -300,22 +305,34 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ContinueCompilationAtPrimitivelyInstalledOperationsOfCategory</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Allows the compiler to inline and optimize code of primitively installed operations of <var class="Arg">category</var> (this is the default).</p>
 
+<p><a id="X7F76759D7D772538" name="X7F76759D7D772538"></a></p>
+
+<h4>1.8 <span class="Heading">Disabling the automatic inference of data types</span></h4>
+
+<p><a id="X843286607CD2DE7E" name="X843286607CD2DE7E"></a></p>
+
+<h5>1.8-1 CapJitDisableDataTypeInference</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitDisableDataTypeInference</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitEnableDataTypeInference</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>In case of errors, the automatic inference of data types can be disabled (and re-enabled later on).</p>
+
 <p><a id="X7B946AD083F7CEEA" name="X7B946AD083F7CEEA"></a></p>
 
-<h4>1.8 <span class="Heading">Getting information about the compilation process</span></h4>
+<h4>1.9 <span class="Heading">Getting information about the compilation process</span></h4>
 
 <p>You can increase the info level of <code class="code">InfoCapJit</code> to get information about the compilation process.</p>
 
 <p><a id="X8202365E84A044DC" name="X8202365E84A044DC"></a></p>
 
-<h5>1.8-1 InfoCapJit</h5>
+<h5>1.9-1 InfoCapJit</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InfoCapJit</code></td><td class="tdright">(&nbsp;info class&nbsp;)</td></tr></table></div>
 <p>Info class used for info messsages of the CAP compiler.</p>
 
 <p><a id="X780099B481AB3AB7" name="X780099B481AB3AB7"></a></p>
 
-<h4>1.9 <span class="Heading">FAQ</span></h4>
+<h4>1.10 <span class="Heading">FAQ</span></h4>
 
 
 <ul>

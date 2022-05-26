@@ -781,6 +781,36 @@
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xfunc := list -> Sum( list[1] );;[127X[104X
+    [4X[25Xgap>[125X [27Xtype_signature := [[127X[104X
+    [4X[25X>[125X [27X    [[127X[104X
+    [4X[25X>[125X [27X        rec([127X[104X
+    [4X[25X>[125X [27X            filter := IsList,[127X[104X
+    [4X[25X>[125X [27X            element_type := rec([127X[104X
+    [4X[25X>[125X [27X                filter := IsList,[127X[104X
+    [4X[25X>[125X [27X                element_type := rec([127X[104X
+    [4X[25X>[125X [27X                    filter := IsInt,[127X[104X
+    [4X[25X>[125X [27X                ),[127X[104X
+    [4X[25X>[125X [27X            ),[127X[104X
+    [4X[25X>[125X [27X        ),[127X[104X
+    [4X[25X>[125X [27X    ],[127X[104X
+    [4X[25X>[125X [27X    fail,[127X[104X
+    [4X[25X>[125X [27X];;[127X[104X
+    [4X[25Xgap>[125X [27XCapJitDisableDataTypeInference( );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, type_signature ) );[127X[104X
+    [4X[28Xfunction ( list_1 )[128X[104X
+    [4X[28X    return Sum( list_1[1] );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27XCapJitEnableDataTypeInference( );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, type_signature ) );[127X[104X
+    [4X[28Xfunction ( list_1 )[128X[104X
+    [4X[28X    return List( list_1, Sum )[1];[128X[104X
+    [4X[28Xend[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27X# we have to work hard to not write semicolons so AutoDoc[127X[104X
@@ -2003,8 +2033,6 @@
     [4X[25Xgap>[125X [27Xfunc := cat -> ZeroObjectFunctorial( cat );;[127X[104X
     [4X[25Xgap>[125X [27XStopCompilationAtCategory( vec );[127X[104X
     [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, vec ) );[127X[104X
-    [4X[28XWARNING: Could not find declaration of ZeroObjectFunctorial (curre\[128X[104X
-    [4X[28Xnt input: [ <Category "IsCapCategory"> ])[128X[104X
     [4X[28Xfunction ( cat_1 )[128X[104X
     [4X[28X    return ZeroObjectFunctorial( cat_1 );[128X[104X
     [4X[28Xend[128X[104X
@@ -2024,12 +2052,6 @@
     [4X[25Xgap>[125X [27Xvec := MATRIX_CATEGORY( Q : no_precompiled_code );;[127X[104X
     [4X[25Xgap>[125X [27XStopCompilationAtPrimitivelyInstalledOperationsOfCategory( vec );[127X[104X
     [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, vec ) );[127X[104X
-    [4X[28XWARNING: Could not find declaration of ZeroObject (current input: \[128X[104X
-    [4X[28X[ <Category "IsCapCategory"> ])[128X[104X
-    [4X[28XWARNING: Could not find declaration of ZeroObject (current input: \[128X[104X
-    [4X[28X[ <Category "IsCapCategory"> ])[128X[104X
-    [4X[28XWARNING: Could not find declaration of ZeroObject (current input: \[128X[104X
-    [4X[28X[ <Category "IsCapCategory"> ])[128X[104X
     [4X[28XWARNING: Could not find declaration of ZeroObject (current input: \[128X[104X
     [4X[28X[ <Category "IsCapCategory"> ])[128X[104X
     [4X[28XWARNING: Could not find declaration of ZeroObject (current input: \[128X[104X

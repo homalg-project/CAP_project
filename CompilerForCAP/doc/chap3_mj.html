@@ -827,6 +827,37 @@ end
 
 
 <div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := list -&gt; Sum( list[1] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">type_signature := [</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    [</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            filter := IsList,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            element_type := rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                filter := IsList,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                element_type := rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                    filter := IsInt,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    fail,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitDisableDataTypeInference( );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func, type_signature ) );</span>
+function ( list_1 )
+    return Sum( list_1[1] );
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitEnableDataTypeInference( );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func, type_signature ) );</span>
+function ( list_1 )
+    return List( list_1, Sum )[1];
+end
+</pre></div>
+
+
+<div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># we have to work hard to not write semicolons so AutoDoc</span>
@@ -2065,8 +2096,6 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := cat -&gt; ZeroObjectFunctorial( cat );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StopCompilationAtCategory( vec );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func, vec ) );</span>
-WARNING: Could not find declaration of ZeroObjectFunctorial (curre\
-nt input: [ &lt;Category "IsCapCategory"&gt; ])
 function ( cat_1 )
     return ZeroObjectFunctorial( cat_1 );
 end
@@ -2086,12 +2115,6 @@ end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MATRIX_CATEGORY( Q : no_precompiled_code );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StopCompilationAtPrimitivelyInstalledOperationsOfCategory( vec );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func, vec ) );</span>
-WARNING: Could not find declaration of ZeroObject (current input: \
-[ &lt;Category "IsCapCategory"&gt; ])
-WARNING: Could not find declaration of ZeroObject (current input: \
-[ &lt;Category "IsCapCategory"&gt; ])
-WARNING: Could not find declaration of ZeroObject (current input: \
-[ &lt;Category "IsCapCategory"&gt; ])
 WARNING: Could not find declaration of ZeroObject (current input: \
 [ &lt;Category "IsCapCategory"&gt; ])
 WARNING: Could not find declaration of ZeroObject (current input: \
