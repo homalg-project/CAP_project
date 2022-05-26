@@ -15,8 +15,6 @@ func := cat -> ZeroObjectFunctorial( cat );;
 StopCompilationAtCategory( vec );
 
 Display( CapJitCompiledFunction( func, vec ) );
-#! WARNING: Could not find declaration of ZeroObjectFunctorial (curre\
-#! nt input: [ <Category "IsCapCategory"> ])
 #! function ( cat_1 )
 #!     return ZeroObjectFunctorial( cat_1 );
 #! end
@@ -41,12 +39,6 @@ vec := MATRIX_CATEGORY( Q : no_precompiled_code );;
 StopCompilationAtPrimitivelyInstalledOperationsOfCategory( vec );
 
 Display( CapJitCompiledFunction( func, vec ) );
-#! WARNING: Could not find declaration of ZeroObject (current input: \
-#! [ <Category "IsCapCategory"> ])
-#! WARNING: Could not find declaration of ZeroObject (current input: \
-#! [ <Category "IsCapCategory"> ])
-#! WARNING: Could not find declaration of ZeroObject (current input: \
-#! [ <Category "IsCapCategory"> ])
 #! WARNING: Could not find declaration of ZeroObject (current input: \
 #! [ <Category "IsCapCategory"> ])
 #! WARNING: Could not find declaration of ZeroObject (current input: \

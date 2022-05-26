@@ -36,6 +36,20 @@ InstallGlobalFunction( ContinueCompilationAtPrimitivelyInstalledOperationsOfCate
     
 end );
 
+CAP_JIT_DATA_TYPE_INFERENCE_ENABLED := true;
+
+InstallGlobalFunction( CapJitDisableDataTypeInference, function ( )
+    
+    CAP_JIT_DATA_TYPE_INFERENCE_ENABLED := false;
+    
+end );
+
+InstallGlobalFunction( CapJitEnableDataTypeInference, function ( )
+    
+    CAP_JIT_DATA_TYPE_INFERENCE_ENABLED := true;
+    
+end );
+
 InstallGlobalFunction( CapJitCompiledFunction, function ( func, args... )
     
     if IsOperation( func ) or IsKernelFunction( func ) then
@@ -296,6 +310,12 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
         CapJitOutlinedWrappedArguments,
         CapJitInlinedBindings,
     ];
+    
+    if type_signature = fail or not CAP_JIT_DATA_TYPE_INFERENCE_ENABLED then
+        
+        Remove( rule_phase_functions, Position( rule_phase_functions, CapJitInferredDataTypes ) );
+        
+    fi;
     
     orig_tree := rec( );
     while tree <> orig_tree do
