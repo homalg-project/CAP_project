@@ -28,6 +28,9 @@ InstallMethod( RingAsCategory,
             "ColumnVectorOfGeneratingSystemAsModuleInRangeCategoryOfHomomorphismStructure",
             "RingInclusionForHomomorphismStructure",
         ],
+        category_filter := IsRingAsCategory,
+        object_filter := IsRingAsCategoryObject,
+        morphism_filter := IsRingAsCategoryMorphism,
     );
     
     SetFilterObj( category, IsRingAsCategory );

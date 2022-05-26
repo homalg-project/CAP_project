@@ -227,7 +227,7 @@ CapJitAddTypeSignature( "RelationMorphism", [ IsAdelmanCategoryObject ], functio
     
     Assert( 0, IsAdelmanCategory( input_types[1].category ) );
     
-    return rec( filter := UnderlyingCategory( input_types[1].category )!.morphism_representation, category := UnderlyingCategory( input_types[1].category ) );
+    return CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) );
     
 end );
 
@@ -243,7 +243,7 @@ CapJitAddTypeSignature( "CorelationMorphism", [ IsAdelmanCategoryObject ], funct
     
     Assert( 0, IsAdelmanCategory( input_types[1].category ) );
     
-    return rec( filter := UnderlyingCategory( input_types[1].category )!.morphism_representation, category := UnderlyingCategory( input_types[1].category ) );
+    return CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) );
     
 end );
 
@@ -259,7 +259,7 @@ CapJitAddTypeSignature( "UnderlyingMorphism", [ IsAdelmanCategoryMorphism ], fun
     
     Assert( 0, IsAdelmanCategory( input_types[1].category ) );
     
-    return rec( filter := UnderlyingCategory( input_types[1].category )!.morphism_representation, category := UnderlyingCategory( input_types[1].category ) );
+    return CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) );
     
 end );
 

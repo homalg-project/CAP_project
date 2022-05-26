@@ -224,6 +224,17 @@ DeclareGlobalFunction( "CapJitAddTypeSignature" );
 #! @Arguments package_name, name, input_filters, output_data_type
 DeclareGlobalFunction( "CapJitAddTypeSignatureDeferred" );
 
+#! @BeginGroup
+#! @Description
+#!   (experimental) Returns the data type of the category (or objects or morphisms in the category) <A>category</A>.
+#! @Arguments category
+DeclareGlobalFunction( "CapJitDataTypeOfCategory" );
+#! @Arguments category
+DeclareGlobalFunction( "CapJitDataTypeOfObjectOfCategory" );
+#! @Arguments category
+DeclareGlobalFunction( "CapJitDataTypeOfMorphismOfCategory" );
+#! @EndGroup
+
 #! @Description
 #!   Computes a fixpoint of <A>func</A> with regard to equality given by <A>predicate</A>, starting with <A>initial_value</A>.
 #!   If no such fixpoint exists, the execution does not terminate.

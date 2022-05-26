@@ -221,11 +221,9 @@ InstallMethod( WrapperCategory,
         
     fi;
     
-    D!.compiler_hints := rec(
-        category_attribute_names := [
-            "UnderlyingCategory",
-        ],
-    );
+    D!.compiler_hints.category_attribute_names := [
+        "UnderlyingCategory",
+    ];
     
     SetUnderlyingCategory( D, C );
     

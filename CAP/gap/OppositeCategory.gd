@@ -26,6 +26,8 @@ DeclareCategory( "IsCapCategoryOppositeMorphism",
 DeclareProperty( "WasCreatedAsOppositeCategory",
                  IsCapCategory );
 
+InstallTrueMethod( IsCapCategory, WasCreatedAsOppositeCategory );
+
 DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_CATEGORY" );
 
 DeclareGlobalFunction( "INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_MORPHISM" );
@@ -45,16 +47,16 @@ DeclareAttribute( "Opposite",
 
 CapJitAddTypeSignature( "Opposite", [ IsCapCategory ], function ( input_types )
     
-    return rec( filter := IsCapCategory, category := Opposite( input_types[1].category ) );
+    return CapJitDataTypeOfCategory( Opposite( input_types[1].category ) );
     
 end );
 
 DeclareAttribute( "OppositeCategory",
                   WasCreatedAsOppositeCategory );
-# TODO: make the filter more specific once categories know their filters
-CapJitAddTypeSignature( "OppositeCategory", [ IsCapCategory ], function ( input_types )
+
+CapJitAddTypeSignature( "OppositeCategory", [ WasCreatedAsOppositeCategory ], function ( input_types )
     
-    return rec( filter := IsCapCategory, category := Opposite( input_types[1].category ) );
+    return CapJitDataTypeOfCategory( Opposite( input_types[1].category ) );
     
 end );
 
@@ -67,7 +69,7 @@ DeclareAttribute( "Opposite",
 
 CapJitAddTypeSignature( "Opposite", [ IsCapCategoryObject ], function ( input_types )
     
-    return rec( filter := Opposite( input_types[1].category )!.object_representation, category := Opposite( input_types[1].category ) );
+    return CapJitDataTypeOfObjectOfCategory( Opposite( input_types[1].category ) );
     
 end );
 
@@ -76,6 +78,6 @@ DeclareAttribute( "Opposite",
 
 CapJitAddTypeSignature( "Opposite", [ IsCapCategoryMorphism ], function ( input_types )
     
-    return rec( filter := Opposite( input_types[1].category )!.morphism_representation, category := Opposite( input_types[1].category ) );
+    return CapJitDataTypeOfMorphismOfCategory( Opposite( input_types[1].category ) );
     
 end );

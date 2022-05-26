@@ -106,15 +106,15 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_DATA_TYPE_OF_VALUE", function ( val
     
     if IsCapCategory( value ) then
         
-        return rec( filter := IsCapCategory, category := value );
+        return CapJitDataTypeOfCategory( value );
         
     elif IsCapCategoryObject( value ) then
         
-        return rec( filter := CapCategory( value )!.object_representation, category := CapCategory( value ) );
+        return CapJitDataTypeOfObjectOfCategory( CapCategory( value ) );
         
     elif IsCapCategoryMorphism( value ) then
         
-        return rec( filter := CapCategory( value )!.morphism_representation, category := CapCategory( value ) );
+        return CapJitDataTypeOfMorphismOfCategory( CapCategory( value ) );
         
     fi;
     
@@ -757,40 +757,40 @@ CapJitAddTypeSignature( "CapFixpoint", [ IsFunction, IsFunction, IsObject ], fun
 end );
 
 # Objectify*ForCAPWithAttributes
-CapJitAddTypeSignature( "ObjectifyObjectForCAPWithAttributes", [ IsRecord, IsCapCategory, IsFunction, IsObject ], function ( input_type )
+CapJitAddTypeSignature( "ObjectifyObjectForCAPWithAttributes", [ IsRecord, IsCapCategory, IsFunction, IsObject ], function ( input_types )
     
-    return rec( filter := input_type[2].category!.object_representation, category := input_type[2].category );
-    
-end );
-
-CapJitAddTypeSignature( "ObjectifyObjectForCAPWithAttributes", [ IsRecord, IsCapCategory, IsFunction, IsObject, IsFunction, IsObject ], function ( input_type )
-    
-    return rec( filter := input_type[2].category!.object_representation, category := input_type[2].category );
+    return CapJitDataTypeOfObjectOfCategory( input_types[2].category );
     
 end );
 
-CapJitAddTypeSignature( "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes", [ IsRecord, IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsFunction, IsObject ], function ( input_type )
+CapJitAddTypeSignature( "ObjectifyObjectForCAPWithAttributes", [ IsRecord, IsCapCategory, IsFunction, IsObject, IsFunction, IsObject ], function ( input_types )
     
-    return rec( filter := input_type[2].category!.morphism_representation, category := input_type[2].category );
+    return CapJitDataTypeOfObjectOfCategory( input_types[2].category );
+    
+end );
+
+CapJitAddTypeSignature( "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes", [ IsRecord, IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsFunction, IsObject ], function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( input_types[2].category );
     
 end );
 
 # object and morphism attributes
 CapJitAddTypeSignature( "CapCategory", [ IsCapCategoryCell ], function ( input_types )
     
-    return rec( filter := IsCapCategory, category := input_types[1].category );
+    return CapJitDataTypeOfCategory( input_types[1].category );
     
 end );
 
 CapJitAddTypeSignature( "Source", [ IsCapCategoryMorphism ], function ( input_types )
     
-    return rec( filter := input_types[1].category!.object_representation, category := input_types[1].category );
+    return CapJitDataTypeOfObjectOfCategory( input_types[1].category );
     
 end );
 
 CapJitAddTypeSignature( "Range", [ IsCapCategoryMorphism ], function ( input_types )
     
-    return rec( filter := input_types[1].category!.object_representation, category := input_types[1].category );
+    return CapJitDataTypeOfObjectOfCategory( input_types[1].category );
     
 end );
 

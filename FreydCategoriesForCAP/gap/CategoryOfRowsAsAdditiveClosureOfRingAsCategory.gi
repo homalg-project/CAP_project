@@ -119,16 +119,14 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
     
     SetUnderlyingRing( wrapper, homalg_ring );
     
-    wrapper!.compiler_hints := rec(
-        category_attribute_names := [
-            "UnderlyingRing",
-        ],
-        source_and_range_attributes_from_morphism_attribute := rec(
-            object_attribute_name := "RankOfObject",
-            morphism_attribute_name := "UnderlyingMatrix",
-            source_attribute_getter_name := "NumberRows",
-            range_attribute_getter_name := "NumberColumns",
-        ),
+    wrapper!.compiler_hints.category_attribute_names := [
+        "UnderlyingRing",
+    ];
+    wrapper!.compiler_hints.source_and_range_attributes_from_morphism_attribute := rec(
+        object_attribute_name := "RankOfObject",
+        morphism_attribute_name := "UnderlyingMatrix",
+        source_attribute_getter_name := "NumberRows",
+        range_attribute_getter_name := "NumberColumns",
     );
     
     if HasRangeCategoryOfHomomorphismStructure( ring_as_category ) then

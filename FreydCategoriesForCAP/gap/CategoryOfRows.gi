@@ -40,6 +40,9 @@ InstallMethod( CategoryOfRows,
             source_attribute_getter_name := "NumberRows",
             range_attribute_getter_name := "NumberColumns",
         ),
+        category_filter := IsCategoryOfRows,
+        object_filter := IsCategoryOfRowsObject,
+        morphism_filter := IsCategoryOfRowsMorphism,
     );
     
     # this cache replaces the KeyDependentOperation caching when using ObjectConstructor directly instead of CategoryOfRowsObject

@@ -99,6 +99,7 @@ You can give hints to the compiler to improve the result of the compilation. Com
                                                          of a morphism by `source_attribute_getter_name` (resp. `range_attribute_getter_name`) applied to
                                                          the attribute `morphism_attribute_name` of the morphism. Can be used if objects and morphisms can be
                                                          easily created from the morphism datum anyway. Note: Some simple expressions like integers are NOT replaced.
+* `{category,object,morphism}_filter`: filters used for the data types of the category and its objects and morphisms.
 
 Note: The compiler can only discover the hints if the category is the first argument of the function.
 

@@ -61,6 +61,9 @@ InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR,
         category_attribute_names := [
             "UnderlyingCategory",
         ],
+        category_filter := IsLinearClosure,
+        object_filter := IsLinearClosureObject,
+        morphism_filter := IsLinearClosureMorphism,
     );
     
     category!.with_nf := with_nf;
