@@ -27,6 +27,9 @@ InstallMethod( GroupAsCategory,
         category_attribute_names := [
             "UnderlyingGroup",
         ],
+        category_filter := IsGroupAsCategory,
+        object_filter := IsGroupAsCategoryObject,
+        morphism_filter := IsGroupAsCategoryMorphism,
     );
     
     SetFilterObj( category, IsGroupAsCategory );

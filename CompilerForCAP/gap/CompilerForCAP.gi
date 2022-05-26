@@ -133,23 +133,23 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                 
                 if filter = "category" then
                     
-                    return rec( filter := IsCapCategory, category := category );
+                    return CapJitDataTypeOfCategory( category );
                     
                 elif filter = "object" then
                     
-                    return rec( filter := category!.object_representation, category := category );
+                    return CapJitDataTypeOfObjectOfCategory( category );
                     
                 elif filter = "morphism" then
                     
-                    return rec( filter := category!.morphism_representation, category := category );
+                    return CapJitDataTypeOfMorphismOfCategory( category );
                     
                 elif filter = "list_of_objects" then
                     
-                    return rec( filter := IsList, element_type := rec( filter := category!.object_representation, category := category ) );
+                    return rec( filter := IsList, element_type := CapJitDataTypeOfObjectOfCategory( category ) );
                     
                 elif filter = "list_of_morphisms" then
                     
-                    return rec( filter := IsList, element_type := rec( filter := category!.morphism_representation, category := category ) );
+                    return rec( filter := IsList, element_type := CapJitDataTypeOfMorphismOfCategory( category ) );
                     
                 elif filter = IsInt then
                     
@@ -157,11 +157,11 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                     
                 elif filter = "object_in_range_category_of_homomorphism_structure" then
                     
-                    return rec( filter := RangeCategoryOfHomomorphismStructure( category )!.object_representation, category := RangeCategoryOfHomomorphismStructure( category ) );
+                    return CapJitDataTypeOfObjectOfCategory( RangeCategoryOfHomomorphismStructure( category ) );
                     
                 elif filter = "morphism_in_range_category_of_homomorphism_structure" then
                     
-                    return rec( filter := RangeCategoryOfHomomorphismStructure( category )!.morphism_representation, category := RangeCategoryOfHomomorphismStructure( category ) );
+                    return CapJitDataTypeOfMorphismOfCategory( RangeCategoryOfHomomorphismStructure( category ) );
                     
                 else
                     
@@ -176,27 +176,27 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
             
             if return_type = "object" then
                 
-                return_data_type := rec( filter := category!.object_representation, category := category );
+                return_data_type := CapJitDataTypeOfObjectOfCategory( category );
                 
             elif return_type = "morphism" then
                 
-                return_data_type := rec( filter := category!.morphism_representation, category := category );
+                return_data_type := CapJitDataTypeOfMorphismOfCategory( category );
                 
             elif return_type = "list_of_objects" then
                 
-                return_data_type := rec( filter := IsList, element_type := rec( filter := category!.object_representation, category := category ) );
+                return_data_type := rec( filter := IsList, element_type := CapJitDataTypeOfObjectOfCategory( category ) );
                 
             elif return_type = "list_of_morphisms" then
                 
-                return_data_type := rec( filter := IsList, element_type := rec( filter := category!.morphism_representation, category := category ) );
+                return_data_type := rec( filter := IsList, element_type := CapJitDataTypeOfMorphismOfCategory( category ) );
                 
             elif return_type = "object_in_range_category_of_homomorphism_structure" then
                 
-                return_data_type := rec( filter := RangeCategoryOfHomomorphismStructure( category )!.object_representation, category := RangeCategoryOfHomomorphismStructure( category ) );
+                return_data_type := CapJitDataTypeOfObjectOfCategory( RangeCategoryOfHomomorphismStructure( category ) );
                 
             elif return_type = "morphism_in_range_category_of_homomorphism_structure" then
                 
-                return_data_type := rec( filter := RangeCategoryOfHomomorphismStructure( category )!.morphism_representation, category := RangeCategoryOfHomomorphismStructure( category ) );
+                return_data_type := CapJitDataTypeOfMorphismOfCategory( RangeCategoryOfHomomorphismStructure( category ) );
                 
             else
                 

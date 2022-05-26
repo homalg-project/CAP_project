@@ -1151,6 +1151,128 @@ InstallGlobalFunction( "CapJitAddTypeSignatureDeferred", function ( package_name
 end );
 
 ##
+InstallGlobalFunction( CapJitDataTypeOfCategory, function ( cat )
+  local type;
+    
+    if not IsBound( cat!.compiler_hints ) or not IsBound( cat!.compiler_hints.category_filter ) then
+        
+        Print( "WARNING: The category with name \"", Name( cat ), "\" has no component `cat!.compiler_hints.category_filter`. Using `IsCapCategory` instead.\n" );
+        
+        type := rec(
+            filter := IsCapCategory,
+            category := cat,
+        );
+        
+    else
+        
+        type := rec(
+            filter := cat!.compiler_hints.category_filter,
+            category := cat,
+        );
+        
+    fi;
+    
+    if not IsSpecializationOfFilter( IsCapCategory, type.filter ) then
+        
+        Print( "WARNING: filter ", type.filter, " does not imply `IsCapCategory`. This will probably cause errors.\n" );
+        
+    fi;
+    
+    return type;
+    
+end );
+
+##
+InstallGlobalFunction( CapJitDataTypeOfObjectOfCategory, function ( cat )
+  local type;
+    
+    if not IsBound( cat!.compiler_hints ) or not IsBound( cat!.compiler_hints.object_filter ) then
+        
+        Print( "WARNING: The category with name \"", Name( cat ), "\" has no component `cat!.compiler_hints.object_filter`. Using the object representation instead.\n" );
+        
+        if not IsBound( cat!.object_representation ) then
+            
+            Print( "WARNING: The category with name \"", Name( cat ), "\" has no component `cat!.object_representation`. Using `IsCapCategoryObject` instead.\n" );
+            
+            type := rec(
+                filter := IsCapCategoryObject,
+                category := cat,
+            );
+            
+        else
+            
+            type := rec(
+                filter := cat!.object_representation,
+                category := cat,
+            );
+            
+        fi;
+        
+    else
+        
+        type := rec(
+            filter := cat!.compiler_hints.object_filter,
+            category := cat,
+        );
+        
+    fi;
+    
+    if not IsSpecializationOfFilter( IsCapCategoryObject, type.filter ) then
+        
+        Print( "WARNING: filter ", type.filter, " does not imply `IsCapCategoryObject`. This will probably cause errors.\n" );
+        
+    fi;
+    
+    return type;
+    
+end );
+
+##
+InstallGlobalFunction( CapJitDataTypeOfMorphismOfCategory, function ( cat )
+  local type;
+    
+    if not IsBound( cat!.compiler_hints ) or not IsBound( cat!.compiler_hints.morphism_filter ) then
+        
+        Print( "WARNING: The category with name \"", Name( cat ), "\" has no component `cat!.compiler_hints.morphism_filter`. Using the morphism representation instead.\n" );
+        
+        if not IsBound( cat!.morphism_representation ) then
+            
+            Print( "WARNING: The category with name \"", Name( cat ), "\" has no component `cat!.morphism_representation`. Using `IsCapCategoryMorphism` instead.\n" );
+            
+            type := rec(
+                filter := IsCapCategoryMorphism,
+                category := cat,
+            );
+            
+        else
+            
+            type := rec(
+                filter := cat!.morphism_representation,
+                category := cat,
+            );
+            
+        fi;
+        
+    else
+        
+        type := rec(
+            filter := cat!.compiler_hints.morphism_filter,
+            category := cat,
+        );
+        
+    fi;
+    
+    if not IsSpecializationOfFilter( IsCapCategoryMorphism, type.filter ) then
+        
+        Print( "WARNING: filter ", type.filter, " does not imply `IsCapCategoryMorphism`. This will probably cause errors.\n" );
+        
+    fi;
+    
+    return type;
+    
+end );
+
+##
 InstallGlobalFunction( CapFixpoint, function ( predicate, func, initial_value )
   local x, y;
     

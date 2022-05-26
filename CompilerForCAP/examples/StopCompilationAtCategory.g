@@ -40,11 +40,11 @@ StopCompilationAtPrimitivelyInstalledOperationsOfCategory( vec );
 
 Display( CapJitCompiledFunction( func, vec ) );
 #! WARNING: Could not find declaration of ZeroObject (current input: \
-#! [ <Category "IsCapCategory"> ])
+#! [ <Category "IsMatrixCategory"> ])
 #! WARNING: Could not find declaration of ZeroObject (current input: \
-#! [ <Category "IsCapCategory"> ])
+#! [ <Category "IsMatrixCategory"> ])
 #! WARNING: Could not find declaration of ZeroObject (current input: \
-#! [ <Category "IsCapCategory"> ])
+#! [ <Category "IsMatrixCategory"> ])
 #! function ( cat_1 )
 #!     local deduped_1_1;
 #!     deduped_1_1 := ZeroObject( cat_1 );

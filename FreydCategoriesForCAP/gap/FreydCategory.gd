@@ -73,7 +73,7 @@ CapJitAddTypeSignature( "RelationMorphism", [ IsFreydCategoryObject ], function 
     
     Assert( 0, IsFreydCategory( input_types[1].category ) );
     
-    return rec( filter := UnderlyingCategory( input_types[1].category )!.morphism_representation, category := UnderlyingCategory( input_types[1].category ) );
+    return CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) );
     
 end );
 
@@ -84,7 +84,7 @@ CapJitAddTypeSignature( "UnderlyingMorphism", [ IsFreydCategoryMorphism ], funct
     
     Assert( 0, IsFreydCategory( input_types[1].category ) );
     
-    return rec( filter := UnderlyingCategory( input_types[1].category )!.morphism_representation, category := UnderlyingCategory( input_types[1].category ) );
+    return CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) );
     
 end );
 

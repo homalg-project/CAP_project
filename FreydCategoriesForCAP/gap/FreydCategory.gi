@@ -63,6 +63,9 @@ InstallGlobalFunction( FREYD_CATEGORY,
         category_attribute_names := [
             "UnderlyingCategory",
         ],
+        category_filter := IsFreydCategory,
+        object_filter := IsFreydCategoryObject,
+        morphism_filter := IsFreydCategoryMorphism,
     );
     
     SetFilterObj( freyd_category, IsFreydCategory );

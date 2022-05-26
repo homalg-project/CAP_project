@@ -91,6 +91,9 @@ InstallMethod( AdditiveClosure,
         category_attribute_names := [
             "UnderlyingCategory",
         ],
+        category_filter := IsAdditiveClosureCategory,
+        object_filter := IsAdditiveClosureObject,
+        morphism_filter := IsAdditiveClosureMorphism,
     );
     
     if ValueOption( "matrix_element_as_morphism" ) <> fail or ValueOption( "list_list_as_matrix" ) <> fail then

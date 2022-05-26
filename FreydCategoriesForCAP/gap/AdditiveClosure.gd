@@ -150,7 +150,7 @@ CapJitAddTypeSignature( "ObjectList", [ IsAdditiveClosureObject ], function ( in
     
     Assert( 0, IsAdditiveClosureCategory( input_types[1].category ) );
     
-    return rec( filter := IsList, element_type := rec( filter := UnderlyingCategory( input_types[1].category )!.object_representation, category := UnderlyingCategory( input_types[1].category ) ) );
+    return rec( filter := IsList, element_type := CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ) );
     
 end );
 
@@ -166,7 +166,7 @@ CapJitAddTypeSignature( "MorphismMatrix", [ IsAdditiveClosureMorphism ], functio
     
     Assert( 0, IsAdditiveClosureCategory( input_types[1].category ) );
     
-    return rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := UnderlyingCategory( input_types[1].category )!.morphism_representation, category := UnderlyingCategory( input_types[1].category ) ) ) );
+    return rec( filter := IsList, element_type := rec( filter := IsList, element_type := CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ) ) );
     
 end );
 
@@ -204,7 +204,7 @@ CapJitAddTypeSignature( "[]", [ IsAdditiveClosureObject, IsInt ], function ( inp
     
     Assert( 0, IsAdditiveClosureCategory( input_types[1].category ) );
     
-    return rec( filter := UnderlyingCategory( input_types[1].category )!.object_representation, category := UnderlyingCategory( input_types[1].category ) );
+    return CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) );
     
 end );
 
@@ -220,7 +220,7 @@ CapJitAddTypeSignature( "MatElm", [ IsAdditiveClosureMorphism, IsInt, IsInt ], f
     
     Assert( 0, IsAdditiveClosureCategory( input_types[1].category ) );
     
-    return rec( filter := UnderlyingCategory( input_types[1].category )!.morphism_representation, category := UnderlyingCategory( input_types[1].category ) );
+    return CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) );
     
 end );
 

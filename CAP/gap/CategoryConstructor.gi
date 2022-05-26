@@ -71,10 +71,14 @@ InstallMethod( CategoryConstructor,
     
     CC!.category_as_first_argument := true;
     
+    CC!.compiler_hints := rec( );
+    
     ## set filters and attributes
     if IsBound( options.category_filter ) then
         
         SetFilterObj( CC, options.category_filter );
+        
+        CC!.compiler_hints.category_filter := options.category_filter;
         
     fi;
     
@@ -82,11 +86,15 @@ InstallMethod( CategoryConstructor,
         
         AddObjectRepresentation( CC, options.category_object_filter );
         
+        CC!.compiler_hints.object_filter := options.category_object_filter;
+        
     fi;
     
     if IsBound( options.category_morphism_filter ) then
         
         AddMorphismRepresentation( CC, options.category_morphism_filter );
+        
+        CC!.compiler_hints.morphism_filter := options.category_morphism_filter;
         
     fi;
     

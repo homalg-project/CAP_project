@@ -47,6 +47,9 @@ InstallMethod( AdelmanCategory,
         category_attribute_names := [
             "UnderlyingCategory",
         ],
+        category_filter := IsAdelmanCategory,
+        object_filter := IsAdelmanCategoryObject,
+        morphism_filter := IsAdelmanCategoryMorphism,
     );
     
     SetFilterObj( adelman_category, IsAdelmanCategory );

@@ -84,11 +84,9 @@ InstallMethod( LeftPresentationsAsFreydCategoryOfCategoryOfRows,
         only_primitive_operations := true,
     ) : FinalizeCategory := false );
     
-    wrapper!.compiler_hints := rec(
-        category_attribute_names := [
-            "UnderlyingRing",
-        ],
-    );
+    wrapper!.compiler_hints.category_attribute_names := [
+        "UnderlyingRing",
+    ];
     
     SetUnderlyingRing( wrapper, ring );
     
@@ -195,11 +193,9 @@ InstallMethod( RightPresentationsAsFreydCategoryOfCategoryOfColumns,
         only_primitive_operations := true,
     ) : FinalizeCategory := false );
     
-    wrapper!.compiler_hints := rec(
-        category_attribute_names := [
-            "UnderlyingRing",
-        ],
-    );
+    wrapper!.compiler_hints.category_attribute_names := [
+        "UnderlyingRing",
+    ];
     
     SetUnderlyingRing( wrapper, ring );
     
