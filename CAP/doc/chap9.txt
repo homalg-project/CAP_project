@@ -286,7 +286,16 @@
   [3Xpackage_name[103X  is  loaded.  This should be used with care because errors will
   only be detected at runtime.[133X
   
-  [1X9.2-28 CapFixpoint[101X
+  [1X9.2-28 CapJitDataTypeOfCategory[101X
+  
+  [33X[1;0Y[29X[2XCapJitDataTypeOfCategory[102X( [3Xcategory[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XCapJitDataTypeOfObjectOfCategory[102X( [3Xcategory[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XCapJitDataTypeOfMorphismOfCategory[102X( [3Xcategory[103X ) [32X function[133X
+  
+  [33X[0;0Y(experimental)  Returns  the  data  type  of  the  category  (or  objects or
+  morphisms in the category) [3Xcategory[103X.[133X
+  
+  [1X9.2-29 CapFixpoint[101X
   
   [33X[1;0Y[29X[2XCapFixpoint[102X( [3Xpredicate[103X, [3Xfunc[103X, [3Xinitial_value[103X ) [32X function[133X
   
@@ -294,42 +303,42 @@
   starting  with [3Xinitial_value[103X. If no such fixpoint exists, the execution does
   not terminate.[133X
   
-  [1X9.2-29 TransitivelyNeededOtherPackages[101X
+  [1X9.2-30 TransitivelyNeededOtherPackages[101X
   
   [33X[1;0Y[29X[2XTransitivelyNeededOtherPackages[102X( [3Xpackage_name[103X ) [32X function[133X
   
   [33X[0;0YReturns a list of package names which are transitively needed other packages
   of the package [3Xpackage_name[103X.[133X
   
-  [1X9.2-30 PackageOfCAPOperation[101X
+  [1X9.2-31 PackageOfCAPOperation[101X
   
   [33X[1;0Y[29X[2XPackageOfCAPOperation[102X( [3Xoperation_name[103X ) [32X function[133X
   
   [33X[0;0YReturns  the  name  of  the  package  to  which  the  CAP operation given by
   [3Xoperation_name[103X belongs or fail if the package is not known.[133X
   
-  [1X9.2-31 SafePosition[101X
+  [1X9.2-32 SafePosition[101X
   
   [33X[1;0Y[29X[2XSafePosition[102X( [3Xlist[103X, [3Xobj[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan integer[133X
   
   [33X[0;0YReturns [10XPosition( [110X[3Xlist[103X[10X, [110X[3Xobj[103X[10X )[110X while asserting that this value is not [10Xfail[110X.[133X
   
-  [1X9.2-32 NTuple[101X
+  [1X9.2-33 NTuple[101X
   
   [33X[1;0Y[29X[2XNTuple[102X( [3Xn[103X, [3Xargs...[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
   
   [33X[0;0YReturns [3Xargs[103X while asserting that its length is [3Xn[103X.[133X
   
-  [1X9.2-33 Pair[101X
+  [1X9.2-34 Pair[101X
   
   [33X[1;0Y[29X[2XPair[102X( [3Xfirst[103X, [3Xsecond[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
   
   [33X[0;0YAlias for [10XNTuple( 2, [3Xfirst[103X[10X, [3Xsecond[103X[10X )[110X.[133X
   
-  [1X9.2-34 Triple[101X
+  [1X9.2-35 Triple[101X
   
   [33X[1;0Y[29X[2XTriple[102X( [3Xfirst[103X, [3Xsecond[103X, [3Xthird[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X

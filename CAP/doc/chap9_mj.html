@@ -61,13 +61,14 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7AF9D3AC85CB0F3D">9.2-25 CapJitAddKnownMethod</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X816D0A767BD73071">9.2-26 CapJitAddTypeSignature</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X8345518F79EBB586">9.2-27 CapJitAddTypeSignatureDeferred</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X824449507B8AC925">9.2-28 CapFixpoint</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7FA62DB97B67C4AB">9.2-29 TransitivelyNeededOtherPackages</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7E9D968D86A536EF">9.2-30 PackageOfCAPOperation</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X844FE77D85C951AA">9.2-31 SafePosition</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7F2E50C87EC6E530">9.2-32 NTuple</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7A63799B824FAEBA">9.2-33 Pair</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7C52730F8526A57E">9.2-34 Triple</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X812BAF8D81DBE36B">9.2-28 CapJitDataTypeOfCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X824449507B8AC925">9.2-29 CapFixpoint</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7FA62DB97B67C4AB">9.2-30 TransitivelyNeededOtherPackages</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7E9D968D86A536EF">9.2-31 PackageOfCAPOperation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X844FE77D85C951AA">9.2-32 SafePosition</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7F2E50C87EC6E530">9.2-33 NTuple</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7A63799B824FAEBA">9.2-34 Pair</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7C52730F8526A57E">9.2-35 Triple</a></span>
 </div></div>
 </div>
 
@@ -296,30 +297,39 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitAddTypeSignatureDeferred</code>( <var class="Arg">package_name</var>, <var class="Arg">name</var>, <var class="Arg">input_filters</var>, <var class="Arg">output_data_type</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>(experimental) Same as <code class="func">CapJitAddTypeSignature</code> (<a href="chap9_mj.html#X816D0A767BD73071"><span class="RefLink">9.2-26</span></a>), but the filters and the output data type must be given as strings which will be evaluated once <var class="Arg">package_name</var> is loaded. This should be used with care because errors will only be detected at runtime.</p>
 
+<p><a id="X812BAF8D81DBE36B" name="X812BAF8D81DBE36B"></a></p>
+
+<h5>9.2-28 CapJitDataTypeOfCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitDataTypeOfCategory</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitDataTypeOfObjectOfCategory</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitDataTypeOfMorphismOfCategory</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>(experimental) Returns the data type of the category (or objects or morphisms in the category) <var class="Arg">category</var>.</p>
+
 <p><a id="X824449507B8AC925" name="X824449507B8AC925"></a></p>
 
-<h5>9.2-28 CapFixpoint</h5>
+<h5>9.2-29 CapFixpoint</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapFixpoint</code>( <var class="Arg">predicate</var>, <var class="Arg">func</var>, <var class="Arg">initial_value</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Computes a fixpoint of <var class="Arg">func</var> with regard to equality given by <var class="Arg">predicate</var>, starting with <var class="Arg">initial_value</var>. If no such fixpoint exists, the execution does not terminate.</p>
 
 <p><a id="X7FA62DB97B67C4AB" name="X7FA62DB97B67C4AB"></a></p>
 
-<h5>9.2-29 TransitivelyNeededOtherPackages</h5>
+<h5>9.2-30 TransitivelyNeededOtherPackages</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TransitivelyNeededOtherPackages</code>( <var class="Arg">package_name</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns a list of package names which are transitively needed other packages of the package <var class="Arg">package_name</var>.</p>
 
 <p><a id="X7E9D968D86A536EF" name="X7E9D968D86A536EF"></a></p>
 
-<h5>9.2-30 PackageOfCAPOperation</h5>
+<h5>9.2-31 PackageOfCAPOperation</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PackageOfCAPOperation</code>( <var class="Arg">operation_name</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns the name of the package to which the CAP operation given by <var class="Arg">operation_name</var> belongs or fail if the package is not known.</p>
 
 <p><a id="X844FE77D85C951AA" name="X844FE77D85C951AA"></a></p>
 
-<h5>9.2-31 SafePosition</h5>
+<h5>9.2-32 SafePosition</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SafePosition</code>( <var class="Arg">list</var>, <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: an integer</p>
@@ -328,7 +338,7 @@
 
 <p><a id="X7F2E50C87EC6E530" name="X7F2E50C87EC6E530"></a></p>
 
-<h5>9.2-32 NTuple</h5>
+<h5>9.2-33 NTuple</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NTuple</code>( <var class="Arg">n</var>, <var class="Arg">args...</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list</p>
@@ -337,7 +347,7 @@
 
 <p><a id="X7A63799B824FAEBA" name="X7A63799B824FAEBA"></a></p>
 
-<h5>9.2-33 Pair</h5>
+<h5>9.2-34 Pair</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Pair</code>( <var class="Arg">first</var>, <var class="Arg">second</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list</p>
@@ -346,7 +356,7 @@
 
 <p><a id="X7C52730F8526A57E" name="X7C52730F8526A57E"></a></p>
 
-<h5>9.2-34 Triple</h5>
+<h5>9.2-35 Triple</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Triple</code>( <var class="Arg">first</var>, <var class="Arg">second</var>, <var class="Arg">third</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list</p>
