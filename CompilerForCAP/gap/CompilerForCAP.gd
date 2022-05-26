@@ -28,6 +28,15 @@ DeclareGlobalFunction( "StopCompilationAtPrimitivelyInstalledOperationsOfCategor
 #! @Arguments category
 DeclareGlobalFunction( "ContinueCompilationAtPrimitivelyInstalledOperationsOfCategory" );
 
+#! @Section Disabling the automatic inference of data types
+
+#! @BeginGroup
+#! @Description
+#!   In case of errors, the automatic inference of data types can be disabled (and re-enabled later on).
+DeclareGlobalFunction( "CapJitDisableDataTypeInference" );
+DeclareGlobalFunction( "CapJitEnableDataTypeInference" );
+#! @EndGroup
+
 #! @Section Getting information about the compilation process
 
 #! @Description
