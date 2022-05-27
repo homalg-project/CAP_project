@@ -39,6 +39,21 @@ DeclareGlobalFunction( "CapJitDisableDataTypeInference" );
 DeclareGlobalFunction( "CapJitEnableDataTypeInference" );
 #! @EndGroup
 
+#! @Section Compiling step-by-step
+
+#! @BeginGroup
+#! @Description
+#!   Enables or disables step-by-step compilation for demonstration or debugging purposes.
+#!   If enabled, only the first level of CAP operations and known methods is resolved (instead of resolving recursively).
+#!   Caveats:
+#!     * This does not work if fully compiled operations are already cached, so this should be used before starting any compilation.
+#!     * This does not work if the CAP category is not immediately available from the input (e.g. because it is a range category of a homomorphism structure of the input category).
+#! @Arguments
+DeclareGlobalFunction( "CapJitEnableStepByStepCompilation" );
+#! @Arguments
+DeclareGlobalFunction( "CapJitDisableStepByStepCompilation" );
+#! @EndGroup
+
 #! @Section Proof assistant mode
 
 #! @BeginGroup
