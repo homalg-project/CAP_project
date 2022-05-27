@@ -33,8 +33,22 @@ DeclareGlobalFunction( "ContinueCompilationAtPrimitivelyInstalledOperationsOfCat
 #! @BeginGroup
 #! @Description
 #!   In case of errors, the automatic inference of data types can be disabled (and re-enabled later on).
+#! @Arguments
 DeclareGlobalFunction( "CapJitDisableDataTypeInference" );
+#! @Arguments
 DeclareGlobalFunction( "CapJitEnableDataTypeInference" );
+#! @EndGroup
+
+#! @Section Proof assistant mode
+
+#! @BeginGroup
+#! @Description
+#!   (experimental) Enables or disables the (experimental) proof assistant mode.
+#!   For example, in this mode the compiler will display warnings if the code involves CAP operations which are not known to be compatible with the congruence of morphisms.
+#! @Arguments
+DeclareGlobalFunction( "CapJitEnableProofAssistantMode" );
+#! @Arguments
+DeclareGlobalFunction( "CapJitDisableProofAssistantMode" );
 #! @EndGroup
 
 #! @Section Getting information about the compilation process

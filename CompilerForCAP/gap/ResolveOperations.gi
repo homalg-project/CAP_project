@@ -7,7 +7,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree )
   local pre_func;
     
     pre_func := function ( tree, additional_arguments )
-      local operation, operation_name, category, resolved_tree, known_methods;
+      local operation, operation_name, info, category, resolved_tree, known_methods;
         
         if tree.type = "EXPR_FUNCCALL" and tree.funcref.type = "EXPR_REF_GVAR" then
             
@@ -17,6 +17,23 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree )
             
             # check if this is a CAP operation which is not a convenience method or if we know methods for this operation
             if (operation_name in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) and tree.args.length = Length( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list )) or operation_name in RecNames( CAP_JIT_INTERNAL_KNOWN_METHODS ) then
+                
+                if CAP_JIT_PROOF_ASSISTANT_MODE_ENABLED and operation_name in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) then
+                    
+                    info := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name);
+                    
+                    if not IsBound( info.compatible_with_congruence_of_morphisms ) then
+                        
+                        # COVERAGE_IGNORE_NEXT_LINE
+                        Print( "WARNING: please check if the CAP operation ", operation_name, " is compatible with the congruence of morphisms and add this information to the method name record.\n" );
+                        
+                    elif info.compatible_with_congruence_of_morphisms <> true then
+                        
+                        Print( "WARNING: the CAP operation ", operation_name, " is not compatible with the congruence of morphisms. Keep this in mind when writing logic templates.\n" );
+                        
+                    fi;
+                    
+                fi;
                 
                 # we can resolve operations if and only if the category is known, i.e., stored in a global variable
                 if tree.args.1.type = "EXPR_REF_GVAR" then

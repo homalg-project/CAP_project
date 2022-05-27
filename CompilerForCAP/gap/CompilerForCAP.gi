@@ -50,6 +50,20 @@ InstallGlobalFunction( CapJitEnableDataTypeInference, function ( )
     
 end );
 
+CAP_JIT_PROOF_ASSISTANT_MODE_ENABLED := false;
+
+InstallGlobalFunction( CapJitEnableProofAssistantMode, function ( )
+    
+    CAP_JIT_PROOF_ASSISTANT_MODE_ENABLED := true;
+    
+end );
+
+InstallGlobalFunction( CapJitDisableProofAssistantMode, function ( )
+    
+    CAP_JIT_PROOF_ASSISTANT_MODE_ENABLED := false;
+    
+end );
+
 InstallGlobalFunction( CapJitCompiledFunction, function ( func, args... )
     
     if IsOperation( func ) or IsKernelFunction( func ) then
