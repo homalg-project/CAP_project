@@ -183,6 +183,9 @@ The record can have the following components, most of which can be set in the me
   Set for the without given operation in a with given pair. Describes whether the source resp. range are given
   (as the last argument of the with given operation) or both (as the second and the last argument of the with given operation).
 
+* compatible_with_congruence_of_morphisms (optional): Indicates if the operation is compatible with the congruence of morphisms, that is,
+  if the output does not change with regard to `IsEqualForObjects` and `IsCongruentForMorphisms` if the input changes with regard to `IsEqualForObjects` and `IsCongruentForMorphisms`.
+
 Using all those entries, the operation `CapInternalInstallAdd` installs add methods as described above. It first provides plausibility
 checks for all the entries described, then installs the Add method in 4 ways, with list or functions as second argument, and
 with an optional third parameter for the weight.

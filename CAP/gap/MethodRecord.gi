@@ -28,6 +28,7 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD, rec(
 ObjectConstructor := rec(
   filter_list := [ "category", IsObject ],
   return_type := "object",
+  compatible_with_congruence_of_morphisms := false,
 ),
 
 ObjectDatum := rec(
@@ -38,11 +39,13 @@ ObjectDatum := rec(
 MorphismConstructor := rec(
   filter_list := [ "category", "object", IsObject, "object" ],
   return_type := "morphism",
+  compatible_with_congruence_of_morphisms := false,
 ),
 
 MorphismDatum := rec(
   filter_list := [ "category", "morphism" ],
   return_type := IsObject,
+  compatible_with_congruence_of_morphisms := false,
 ),
 
 LiftAlongMonomorphism := rec(
@@ -66,7 +69,9 @@ LiftAlongMonomorphism := rec(
     return [ true ];
   end,
   return_type := "morphism",
-  dual_operation := "ColiftAlongEpimorphism" ),
+  dual_operation := "ColiftAlongEpimorphism",
+  compatible_with_congruence_of_morphisms := true,
+),
 
 IsLiftableAlongMonomorphism := rec(
   filter_list := [ "category", "morphism", "morphism" ],
@@ -88,7 +93,9 @@ IsLiftableAlongMonomorphism := rec(
     return [ true ];
   end,
   return_type := "bool",
-  dual_operation := "IsColiftableAlongEpimorphism" ),
+  dual_operation := "IsColiftableAlongEpimorphism",
+  compatible_with_congruence_of_morphisms := true,
+),
 
 ColiftAlongEpimorphism := rec(
   filter_list := [ "category", "morphism", "morphism" ],
@@ -111,7 +118,9 @@ ColiftAlongEpimorphism := rec(
     return [ true ];
   end,
   return_type := "morphism",
-  dual_operation := "LiftAlongMonomorphism" ),
+  dual_operation := "LiftAlongMonomorphism",
+  compatible_with_congruence_of_morphisms := true,
+),
 
 IsColiftableAlongEpimorphism := rec(
   filter_list := [ "category", "morphism", "morphism" ],
@@ -133,7 +142,9 @@ IsColiftableAlongEpimorphism := rec(
     return [ true ];
   end,
   return_type := "bool",
-  dual_operation := "IsLiftableAlongMonomorphism" ),
+  dual_operation := "IsLiftableAlongMonomorphism",
+  compatible_with_congruence_of_morphisms := true,
+),
 
 Lift := rec(
   filter_list := [ "category", "morphism", "morphism" ],
@@ -158,7 +169,9 @@ Lift := rec(
   return_type := "morphism",
   dual_operation := "Colift",
   dual_arguments_reversed := true,
-  is_merely_set_theoretic := true ),
+  is_merely_set_theoretic := true,
+  compatible_with_congruence_of_morphisms := false,
+),
 
 LiftOrFail := rec(
   filter_list := [ "category", "morphism", "morphism" ],
@@ -167,14 +180,18 @@ LiftOrFail := rec(
   return_type := "morphism_or_fail",
   dual_operation := "ColiftOrFail",
   dual_arguments_reversed := true,
-  is_merely_set_theoretic := true ),
+  is_merely_set_theoretic := true,
+  compatible_with_congruence_of_morphisms := false,
+),
 
 IsLiftable := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   pre_function := ~.Lift.pre_function,
   return_type := "bool",
   dual_operation := "IsColiftable",
-  dual_arguments_reversed := true ),
+  dual_arguments_reversed := true,
+  compatible_with_congruence_of_morphisms := false,
+),
 
 Colift := rec(
   filter_list := [ "category", "morphism", "morphism" ],
@@ -199,7 +216,9 @@ Colift := rec(
   return_type := "morphism",
   dual_operation := "Lift",
   dual_arguments_reversed := true,
-  is_merely_set_theoretic := true  ),
+  is_merely_set_theoretic := true,
+  compatible_with_congruence_of_morphisms := false,
+),
 
 ColiftOrFail := rec(
   filter_list := [ "category", "morphism", "morphism" ],
@@ -208,14 +227,18 @@ ColiftOrFail := rec(
   return_type := "morphism_or_fail",
   dual_operation := "LiftOrFail",
   dual_arguments_reversed := true,
-  is_merely_set_theoretic := true  ),
+  is_merely_set_theoretic := true,
+  compatible_with_congruence_of_morphisms := false,
+),
 
 IsColiftable := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   pre_function := ~.Colift.pre_function,
   return_type := "bool",
   dual_operation := "IsLiftable",
-  dual_arguments_reversed := true ),
+  dual_arguments_reversed := true,
+  compatible_with_congruence_of_morphisms := false,
+),
 
 ProjectiveLift := rec(
   filter_list := [ "category", "morphism", "morphism" ],
@@ -239,7 +262,9 @@ ProjectiveLift := rec(
   end,
   return_type := "morphism",
   dual_arguments_reversed := true,
-  dual_operation := "InjectiveColift" ),
+  dual_operation := "InjectiveColift",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 InjectiveColift := rec(
   filter_list := [ "category", "morphism", "morphism" ],
@@ -263,7 +288,9 @@ InjectiveColift := rec(
   end,
   return_type := "morphism",
   dual_arguments_reversed := true,
-  dual_operation := "ProjectiveLift" ),
+  dual_operation := "ProjectiveLift",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 IdentityMorphism := rec(
   filter_list := [ "category", "object" ],
@@ -276,95 +303,125 @@ InverseForMorphisms := rec(
   filter_list := [ "category", "morphism" ],
   io_type := [ [ "alpha" ], [ "alpha_range", "alpha_source" ] ],
   return_type := "morphism",
-  dual_operation := "InverseForMorphisms" ),
+  dual_operation := "InverseForMorphisms",
+  compatible_with_congruence_of_morphisms := true,
+),
 
 KernelObject := rec(
   filter_list := [ "category", "morphism" ],
   return_type := "object",
-  dual_operation := "CokernelObject" ),
+  dual_operation := "CokernelObject",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 KernelEmbedding := rec(
   filter_list := [ "category", "morphism" ],
   io_type := [ [ "alpha" ], [ "P", "alpha_source" ] ],
   with_given_object_position := "Source",
   return_type := "morphism",
-  dual_operation := "CokernelProjection" ),
+  dual_operation := "CokernelProjection",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 KernelEmbeddingWithGivenKernelObject := rec(
   filter_list := [ "category", "morphism", "object" ],
   io_type := [ [ "alpha", "P" ], [ "P", "alpha_source" ] ],
   return_type := "morphism",
-  dual_operation := "CokernelProjectionWithGivenCokernelObject"),
+  dual_operation := "CokernelProjectionWithGivenCokernelObject",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 MorphismFromKernelObjectToSink := rec(
   filter_list := [ "category", "morphism" ],
   io_type := [ [ "alpha" ], [ "P", "alpha_range" ] ],
   with_given_object_position := "Source",
   dual_operation := "MorphismFromSourceToCokernelObject",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 MorphismFromKernelObjectToSinkWithGivenKernelObject := rec(
   filter_list := [ "category", "morphism", "object" ],
   io_type := [ [ "alpha", "P" ], [ "P", "alpha_range" ] ],
   dual_operation := "MorphismFromSourceToCokernelObjectWithGivenCokernelObject",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 KernelLift := rec(
   filter_list := [ "category", "morphism", "object", "morphism" ],
   io_type := [ [ "alpha", "T", "tau" ], [ "T", "P" ] ],
   with_given_object_position := "Range",
   return_type := "morphism",
-  dual_operation := "CokernelColift" ),
+  dual_operation := "CokernelColift",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 KernelLiftWithGivenKernelObject := rec(
   filter_list := [ "category", "morphism", "object", "morphism", "object" ],
   io_type := [ [ "alpha", "T", "tau", "P" ], [ "T", "P" ] ],
   return_type := "morphism",
-  dual_operation := "CokernelColiftWithGivenCokernelObject" ),
+  dual_operation := "CokernelColiftWithGivenCokernelObject",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 CokernelObject := rec(
   filter_list := [ "category", "morphism" ],
   return_type := "object",
-  dual_operation := "KernelObject" ),
+  dual_operation := "KernelObject",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 CokernelProjection := rec(
   filter_list := [ "category", "morphism" ],
   io_type := [ [ "alpha" ], [ "alpha_range", "P" ] ],
   with_given_object_position := "Range",
   return_type := "morphism",
-  dual_operation := "KernelEmbedding" ),
+  dual_operation := "KernelEmbedding",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 CokernelProjectionWithGivenCokernelObject := rec(
   filter_list := [ "category", "morphism", "object" ],
   io_type := [ [ "alpha", "P" ], [ "alpha_range", "P" ] ],
   return_type := "morphism",
-  dual_operation := "KernelEmbeddingWithGivenKernelObject" ),
+  dual_operation := "KernelEmbeddingWithGivenKernelObject",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 MorphismFromSourceToCokernelObject := rec(
   filter_list := [ "category", "morphism" ],
   io_type := [ [ "alpha" ], [ "alpha_source", "P" ] ],
   with_given_object_position := "Range",
   dual_operation := "MorphismFromKernelObjectToSink",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 MorphismFromSourceToCokernelObjectWithGivenCokernelObject := rec(
   filter_list := [ "category", "morphism", "object" ],
   io_type := [ [ "alpha", "P" ], [ "alpha_source", "P" ] ],
   dual_operation := "MorphismFromKernelObjectToSinkWithGivenKernelObject",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 CokernelColift := rec(
   filter_list := [ "category", "morphism", "object", "morphism" ],
   io_type := [ [ "alpha", "T", "tau" ], [ "P", "T" ] ],
   with_given_object_position := "Source",
   return_type := "morphism",
-  dual_operation := "KernelLift" ),
+  dual_operation := "KernelLift",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 CokernelColiftWithGivenCokernelObject := rec(
   filter_list := [ "category", "morphism", "object", "morphism", "object" ],
   io_type := [ [ "alpha", "T", "tau", "P" ], [ "P", "T" ] ],
   return_type := "morphism",
-  dual_operation := "KernelLiftWithGivenKernelObject" ),
+  dual_operation := "KernelLiftWithGivenKernelObject",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 PreCompose := rec(
   filter_list := [ "category", "morphism", "morphism" ],
@@ -388,7 +445,9 @@ PreCompose := rec(
     return [ true ];
   end,
   return_type := "morphism",
-  dual_operation := "PostCompose" ),
+  dual_operation := "PostCompose",
+  compatible_with_congruence_of_morphisms := true,
+),
 
 PostCompose := rec(
   filter_list := [ "category", "morphism", "morphism" ],
@@ -413,7 +472,9 @@ PostCompose := rec(
   end,
   
   return_type := "morphism",
-  dual_operation := "PreCompose" ),
+  dual_operation := "PreCompose",
+  compatible_with_congruence_of_morphisms := true,
+),
 
 ZeroObject := rec(
   filter_list := [ "category" ],
@@ -546,7 +607,9 @@ UniversalMorphismIntoDirectSum := rec(
     return [ true ];
     
   end,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := true,
+),
 
 UniversalMorphismIntoDirectSumWithGivenDirectSum := rec(
   filter_list := [ "category", "list_of_objects", "object", "list_of_morphisms", "object" ],
@@ -575,7 +638,9 @@ UniversalMorphismIntoDirectSumWithGivenDirectSum := rec(
     return [ true ];
     
   end,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := true,
+),
 
 InjectionOfCofactorOfDirectSum := rec(
   filter_list := [ "category", "list_of_objects", IsInt ],
@@ -618,7 +683,9 @@ UniversalMorphismFromDirectSum := rec(
     return [ true ];
     
   end,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := true,
+),
 
 UniversalMorphismFromDirectSumWithGivenDirectSum := rec(
   filter_list := [ "category", "list_of_objects", "object", "list_of_morphisms", "object" ],
@@ -647,7 +714,9 @@ UniversalMorphismFromDirectSumWithGivenDirectSum := rec(
     return [ true ];
     
   end,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := true,
+),
 
 TerminalObject := rec(
   filter_list := [ "category" ],
@@ -731,7 +800,9 @@ UniversalMorphismIntoDirectProduct := rec(
     return [ true ];
     
   end,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := true,
+),
 
 UniversalMorphismIntoDirectProductWithGivenDirectProduct := rec(
   filter_list := [ "category", "list_of_objects", "object", "list_of_morphisms", "object" ],
@@ -760,7 +831,9 @@ UniversalMorphismIntoDirectProductWithGivenDirectProduct := rec(
     return [ true ];
     
   end,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := true,
+),
 
 IsCongruentForMorphisms := rec(
   filter_list := [ "category", "morphism", "morphism" ],
@@ -828,7 +901,9 @@ IsCongruentForMorphisms := rec(
     
   end,
   
-  return_type := "bool" ),
+  return_type := "bool",
+  compatible_with_congruence_of_morphisms := true,
+),
 
 IsEqualForMorphisms := rec(
   filter_list := [ "category", "morphism", "morphism" ],
@@ -885,7 +960,9 @@ IsEqualForMorphisms := rec(
     
   end,
   
-  return_type := "bool" ),
+  return_type := "bool",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 IsEqualForMorphismsOnMor := rec(
   filter_list := [ "category", "morphism", "morphism" ],
@@ -906,7 +983,9 @@ IsEqualForMorphismsOnMor := rec(
     
   end,
   
-  return_type := "bool" ),
+  return_type := "bool",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 IsEqualForObjects := rec(
   filter_list := [ "category", "object", "object" ],
@@ -950,7 +1029,9 @@ IsEqualForCacheForMorphisms := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   dual_operation := "IsEqualForCacheForMorphisms",
   well_defined_todo := false,
-  return_type := "bool" ),
+  return_type := "bool",
+  compatible_with_congruence_of_morphisms := false,
+),
   
 IsZeroForMorphisms := rec(
   filter_list := [ "category", "morphism" ],
@@ -958,7 +1039,9 @@ IsZeroForMorphisms := rec(
   return_type := "bool",
   dual_operation := "IsZeroForMorphisms",
   property_of := "morphism",
-  is_reflected_by_faithful_functor := true ),
+  is_reflected_by_faithful_functor := true,
+  compatible_with_congruence_of_morphisms := true,
+),
 
 AdditionForMorphisms := rec(
   filter_list := [ "category", "morphism", "morphism" ],
@@ -1000,7 +1083,9 @@ AdditionForMorphisms := rec(
     fi;
     
   end,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := true,
+),
 
 SubtractionForMorphisms := rec(
   filter_list := [ "category", "morphism", "morphism" ],
@@ -1042,7 +1127,9 @@ SubtractionForMorphisms := rec(
     fi;
     
   end,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := true,
+),
 
 MultiplyWithElementOfCommutativeRingForMorphisms := rec(
   filter_list := [ "category", IsRingElement, "morphism" ],
@@ -1059,13 +1146,17 @@ MultiplyWithElementOfCommutativeRingForMorphisms := rec(
     return [ true ];
   end,
   dual_operation := "MultiplyWithElementOfCommutativeRingForMorphisms",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := true,
+),
 
 AdditiveInverseForMorphisms := rec(
   filter_list := [ "category", "morphism" ],
   io_type := [ [ "a" ], [ "a_source", "a_range" ] ],
   dual_operation := "AdditiveInverseForMorphisms",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := true,
+),
 
 Coproduct := rec(
   filter_list := [ "category", "list_of_objects" ],
@@ -1113,7 +1204,9 @@ UniversalMorphismFromCoproduct := rec(
     return [ true ];
     
   end,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := true,
+),
 
 UniversalMorphismFromCoproductWithGivenCoproduct := rec(
   filter_list := [ "category", "list_of_objects", "object", "list_of_morphisms", "object" ],
@@ -1142,19 +1235,25 @@ UniversalMorphismFromCoproductWithGivenCoproduct := rec(
     return [ true ];
     
   end,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := true,
+),
 
 IsEqualAsSubobjects := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   well_defined_todo := false,
   return_type := "bool",
-  dual_operation := "IsEqualAsFactorobjects" ),
+  dual_operation := "IsEqualAsFactorobjects",
+  compatible_with_congruence_of_morphisms := true,
+),
 
 IsEqualAsFactorobjects := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   well_defined_todo := false,
   return_type := "bool",
-  dual_operation := "IsEqualAsSubobjects" ),
+  dual_operation := "IsEqualAsSubobjects",
+  compatible_with_congruence_of_morphisms := true,
+),
 
 IsDominating := rec(
   filter_list := [ "category", "morphism", "morphism" ],
@@ -1178,7 +1277,9 @@ IsDominating := rec(
     
     return [ true ];
   end,
-  return_type := "bool" ),
+  return_type := "bool",
+  compatible_with_congruence_of_morphisms := true,
+),
 
 IsCodominating := rec(
   filter_list := [ "category", "morphism", "morphism" ],
@@ -1202,7 +1303,9 @@ IsCodominating := rec(
     
     return [ true ];
   end,
-  return_type := "bool" ),
+  return_type := "bool",
+  compatible_with_congruence_of_morphisms := true,
+),
 
 Equalizer := rec(
   filter_list := [ "category", "list_of_morphisms" ],
@@ -1247,7 +1350,9 @@ Equalizer := rec(
     od;
     
     return [ true ];
-  end ),
+  end,
+  compatible_with_congruence_of_morphisms := false,
+),
 
 EmbeddingOfEqualizer := rec(
   filter_list := [ "category", "list_of_morphisms" ],
@@ -1256,26 +1361,34 @@ EmbeddingOfEqualizer := rec(
   with_given_object_position := "Source",
   dual_operation := "ProjectionOntoCoequalizer",
   
-  pre_function := ~.Equalizer.pre_function ),
+  pre_function := ~.Equalizer.pre_function,
+  compatible_with_congruence_of_morphisms := false,
+),
 
 EmbeddingOfEqualizerWithGivenEqualizer := rec(
   filter_list := [ "category", "list_of_morphisms", "object" ],
   return_type := "morphism",
   io_type := [ [ "morphisms", "P" ], [ "P", "morphisms_1_source" ] ],
-  dual_operation := "ProjectionOntoCoequalizerWithGivenCoequalizer" ),
+  dual_operation := "ProjectionOntoCoequalizerWithGivenCoequalizer",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 MorphismFromEqualizerToSink := rec(
   filter_list := [ "category", "list_of_morphisms" ],
   io_type := [ [ "morphisms" ], [ "P", "morphisms_1_range" ] ],
   with_given_object_position := "Source",
   dual_operation := "MorphismFromSourceToCoequalizer",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 MorphismFromEqualizerToSinkWithGivenEqualizer := rec(
   filter_list := [ "category", "list_of_morphisms", "object" ],
   io_type := [ [ "morphisms", "P" ], [ "P", "morphisms_1_range" ] ],
   dual_operation := "MorphismFromSourceToCoequalizerWithGivenCoequalizer",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 UniversalMorphismIntoEqualizer := rec(
   filter_list := [ "category", "list_of_morphisms", "object", "morphism" ],
@@ -1334,13 +1447,17 @@ UniversalMorphismIntoEqualizer := rec(
     od;
     
     return [ true ];
-  end ),
+  end,
+  compatible_with_congruence_of_morphisms := false,
+),
 
 UniversalMorphismIntoEqualizerWithGivenEqualizer := rec(
   filter_list := [ "category", "list_of_morphisms", "object", "morphism", "object" ],
   io_type := [ [ "morphisms", "T", "tau", "P" ], [ "T", "P" ] ],
   return_type := "morphism",
-  dual_operation := "UniversalMorphismFromCoequalizerWithGivenCoequalizer" ),
+  dual_operation := "UniversalMorphismFromCoequalizerWithGivenCoequalizer",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 FiberProduct := rec(
   filter_list := [ "category", "list_of_morphisms" ],
@@ -1371,7 +1488,9 @@ FiberProduct := rec(
     
     return [ true ];
   end,
-  return_type := "object" ),
+  return_type := "object",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 ProjectionInFactorOfFiberProduct := rec(
   filter_list := [ "category", "list_of_morphisms", IsInt ],
@@ -1402,7 +1521,9 @@ ProjectionInFactorOfFiberProduct := rec(
     
     return [ true ];
   end,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 ProjectionInFactorOfFiberProductWithGivenFiberProduct := rec(
   filter_list := [ "category", "list_of_morphisms", IsInt, "object" ],
@@ -1432,7 +1553,9 @@ ProjectionInFactorOfFiberProductWithGivenFiberProduct := rec(
     
     return [ true ];
   end,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 MorphismFromFiberProductToSink := rec(
   filter_list := [ "category", "list_of_morphisms" ],
@@ -1459,7 +1582,9 @@ MorphismFromFiberProductToSink := rec(
     
     return [ true ];
   end,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 MorphismFromFiberProductToSinkWithGivenFiberProduct := rec(
   filter_list := [ "category", "list_of_morphisms", "object" ],
@@ -1485,7 +1610,9 @@ MorphismFromFiberProductToSinkWithGivenFiberProduct := rec(
     
     return [ true ];
   end,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 UniversalMorphismIntoFiberProduct := rec(
   filter_list := [ "category", "list_of_morphisms", "object", "list_of_morphisms" ],
@@ -1546,7 +1673,9 @@ UniversalMorphismIntoFiberProduct := rec(
     
     return [ true ];
   end,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 UniversalMorphismIntoFiberProductWithGivenFiberProduct := rec(
   filter_list := [ "category", "list_of_morphisms", "object", "list_of_morphisms", "object" ],
@@ -1606,7 +1735,9 @@ UniversalMorphismIntoFiberProductWithGivenFiberProduct := rec(
     
     return [ true ];
   end,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 Coequalizer := rec(
   filter_list := [ "category", "list_of_morphisms" ],
@@ -1651,7 +1782,9 @@ Coequalizer := rec(
     od;
     
     return [ true ];
-  end ),
+  end,
+  compatible_with_congruence_of_morphisms := false,
+),
 
 ProjectionOntoCoequalizer := rec(
   filter_list := [ "category", "list_of_morphisms" ],
@@ -1660,26 +1793,34 @@ ProjectionOntoCoequalizer := rec(
   with_given_object_position := "Range",
   dual_operation := "EmbeddingOfEqualizer",
   
-  pre_function := ~.Coequalizer.pre_function ),
+  pre_function := ~.Coequalizer.pre_function,
+  compatible_with_congruence_of_morphisms := false,
+),
 
 ProjectionOntoCoequalizerWithGivenCoequalizer := rec(
   filter_list := [ "category", "list_of_morphisms", "object" ],
   return_type := "morphism",
   io_type := [ [ "morphisms", "P" ], [ "morphisms_1_range", "P" ] ],
-  dual_operation := "EmbeddingOfEqualizerWithGivenEqualizer" ),
+  dual_operation := "EmbeddingOfEqualizerWithGivenEqualizer",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 MorphismFromSourceToCoequalizer := rec(
   filter_list := [ "category", "list_of_morphisms" ],
   io_type := [ [ "morphisms" ], [ "morphisms_1_source", "P" ] ],
   with_given_object_position := "Range",
   dual_operation := "MorphismFromEqualizerToSink",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 MorphismFromSourceToCoequalizerWithGivenCoequalizer := rec(
   filter_list := [ "category", "list_of_morphisms", "object" ],
   io_type := [ [ "morphisms", "P" ], [ "morphisms_1_source", "P" ] ],
   dual_operation := "MorphismFromEqualizerToSinkWithGivenEqualizer",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 UniversalMorphismFromCoequalizer := rec(
   filter_list := [ "category", "list_of_morphisms", "object", "morphism" ],
@@ -1738,13 +1879,17 @@ UniversalMorphismFromCoequalizer := rec(
     od;
     
     return [ true ];
-  end ),
+  end,
+  compatible_with_congruence_of_morphisms := false,
+),
 
 UniversalMorphismFromCoequalizerWithGivenCoequalizer := rec(
   filter_list := [ "category", "list_of_morphisms", "object", "morphism", "object" ],
   io_type := [ [ "morphisms", "T", "tau", "P" ], [ "P", "T" ] ],
   return_type := "morphism",
-  dual_operation := "UniversalMorphismIntoEqualizerWithGivenEqualizer" ),
+  dual_operation := "UniversalMorphismIntoEqualizerWithGivenEqualizer",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 Pushout := rec(
   filter_list := [ "category", "list_of_morphisms" ],
@@ -1775,7 +1920,9 @@ Pushout := rec(
     
     return [ true ];
   end,
-  return_type := "object" ),
+  return_type := "object",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 InjectionOfCofactorOfPushout := rec(
   filter_list := [ "category", "list_of_morphisms", IsInt ],
@@ -1806,7 +1953,9 @@ InjectionOfCofactorOfPushout := rec(
     
     return [ true ];
   end,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 InjectionOfCofactorOfPushoutWithGivenPushout := rec(
   filter_list := [ "category", "list_of_morphisms", IsInt, "object" ],
@@ -1836,7 +1985,9 @@ InjectionOfCofactorOfPushoutWithGivenPushout := rec(
     
     return [ true ];
   end,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 MorphismFromSourceToPushout := rec(
   filter_list := [ "category", "list_of_morphisms" ],
@@ -1863,7 +2014,9 @@ MorphismFromSourceToPushout := rec(
     
     return [ true ];
   end,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 MorphismFromSourceToPushoutWithGivenPushout := rec(
   filter_list := [ "category", "list_of_morphisms", "object" ],
@@ -1889,7 +2042,9 @@ MorphismFromSourceToPushoutWithGivenPushout := rec(
     
     return [ true ];
   end,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 UniversalMorphismFromPushout := rec(
   filter_list := [ "category", "list_of_morphisms", "object", "list_of_morphisms" ],
@@ -1950,7 +2105,9 @@ UniversalMorphismFromPushout := rec(
     
     return [ true ];
   end,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 UniversalMorphismFromPushoutWithGivenPushout := rec(
   filter_list := [ "category", "list_of_morphisms", "object", "list_of_morphisms", "object" ],
@@ -2010,7 +2167,9 @@ UniversalMorphismFromPushoutWithGivenPushout := rec(
     
     return [ true ];
   end,
-  return_type := "morphism" ),
+  return_type := "morphism",
+  compatible_with_congruence_of_morphisms := false,
+),
 
 ImageObject := rec(
   filter_list := [ "category", "morphism" ],
@@ -2419,6 +2578,7 @@ KernelObjectFunctorial := rec(
   with_given_object_position := "both",
   dual_operation := "CokernelObjectFunctorial",
   dual_arguments_reversed := true,
+  compatible_with_congruence_of_morphisms := false,
 ),
 
 KernelObjectFunctorialWithGivenKernelObjects := rec(
@@ -2427,6 +2587,7 @@ KernelObjectFunctorialWithGivenKernelObjects := rec(
   return_type := "morphism",
   dual_operation := "CokernelObjectFunctorialWithGivenCokernelObjects",
   dual_arguments_reversed := true,
+  compatible_with_congruence_of_morphisms := false,
 ),
 
 CokernelObjectFunctorial := rec(
@@ -2438,6 +2599,7 @@ CokernelObjectFunctorial := rec(
   with_given_object_position := "both",
   dual_operation := "KernelObjectFunctorial",
   dual_arguments_reversed := true,
+  compatible_with_congruence_of_morphisms := false,
 ),
 
 CokernelObjectFunctorialWithGivenCokernelObjects := rec(
@@ -2446,6 +2608,7 @@ CokernelObjectFunctorialWithGivenCokernelObjects := rec(
   return_type := "morphism",
   dual_operation := "KernelObjectFunctorialWithGivenKernelObjects",
   dual_arguments_reversed := true,
+  compatible_with_congruence_of_morphisms := false,
 ),
 
 TerminalObjectFunctorial := rec(
@@ -2495,6 +2658,7 @@ DirectProductFunctorial := rec(
   with_given_object_position := "both",
   dual_operation := "CoproductFunctorial",
   dual_arguments_reversed := true,
+  compatible_with_congruence_of_morphisms := true,
 ),
 
 DirectProductFunctorialWithGivenDirectProducts := rec(
@@ -2503,6 +2667,7 @@ DirectProductFunctorialWithGivenDirectProducts := rec(
   return_type := "morphism",
   dual_operation := "CoproductFunctorialWithGivenCoproducts",
   dual_arguments_reversed := true,
+  compatible_with_congruence_of_morphisms := true,
 ),
 
 CoproductFunctorial := rec(
@@ -2514,6 +2679,7 @@ CoproductFunctorial := rec(
   with_given_object_position := "both",
   dual_operation := "DirectProductFunctorial",
   dual_arguments_reversed := true,
+  compatible_with_congruence_of_morphisms := true,
 ),
 
 CoproductFunctorialWithGivenCoproducts := rec(
@@ -2522,6 +2688,7 @@ CoproductFunctorialWithGivenCoproducts := rec(
   return_type := "morphism",
   dual_operation := "DirectProductFunctorialWithGivenDirectProducts",
   dual_arguments_reversed := true,
+  compatible_with_congruence_of_morphisms := true,
 ),
 
 DirectSumFunctorial := rec(
@@ -2533,6 +2700,7 @@ DirectSumFunctorial := rec(
   with_given_object_position := "both",
   dual_operation := "DirectSumFunctorial",
   dual_arguments_reversed := true,
+  compatible_with_congruence_of_morphisms := true,
 ),
 
 DirectSumFunctorialWithGivenDirectSums := rec(
@@ -2541,6 +2709,7 @@ DirectSumFunctorialWithGivenDirectSums := rec(
   return_type := "morphism",
   dual_operation := "DirectSumFunctorialWithGivenDirectSums",
   dual_arguments_reversed := true,
+  compatible_with_congruence_of_morphisms := true,
 ),
 
 EqualizerFunctorial := rec(
@@ -2552,6 +2721,7 @@ EqualizerFunctorial := rec(
   with_given_object_position := "both",
   dual_operation := "CoequalizerFunctorial",
   dual_arguments_reversed := true,
+  compatible_with_congruence_of_morphisms := false,
 ),
 
 EqualizerFunctorialWithGivenEqualizers := rec(
@@ -2560,6 +2730,7 @@ EqualizerFunctorialWithGivenEqualizers := rec(
   return_type := "morphism",
   dual_operation := "CoequalizerFunctorialWithGivenCoequalizers",
   dual_arguments_reversed := true,
+  compatible_with_congruence_of_morphisms := false,
 ),
 
 CoequalizerFunctorial := rec(
@@ -2571,6 +2742,7 @@ CoequalizerFunctorial := rec(
   with_given_object_position := "both",
   dual_operation := "EqualizerFunctorial",
   dual_arguments_reversed := true,
+  compatible_with_congruence_of_morphisms := false,
 ),
 
 CoequalizerFunctorialWithGivenCoequalizers := rec(
@@ -2579,6 +2751,7 @@ CoequalizerFunctorialWithGivenCoequalizers := rec(
   return_type := "morphism",
   dual_operation := "EqualizerFunctorialWithGivenEqualizers",
   dual_arguments_reversed := true,
+  compatible_with_congruence_of_morphisms := false,
 ),
 
 FiberProductFunctorial := rec(
@@ -2590,6 +2763,7 @@ FiberProductFunctorial := rec(
   with_given_object_position := "both",
   dual_operation := "PushoutFunctorial",
   dual_arguments_reversed := true,
+  compatible_with_congruence_of_morphisms := false,
 ),
 
 FiberProductFunctorialWithGivenFiberProducts := rec(
@@ -2598,6 +2772,7 @@ FiberProductFunctorialWithGivenFiberProducts := rec(
   return_type := "morphism",
   dual_operation := "PushoutFunctorialWithGivenPushouts",
   dual_arguments_reversed := true,
+  compatible_with_congruence_of_morphisms := false,
 ),
 
 PushoutFunctorial := rec(
@@ -2609,6 +2784,7 @@ PushoutFunctorial := rec(
   with_given_object_position := "both",
   dual_operation := "FiberProductFunctorial",
   dual_arguments_reversed := true,
+  compatible_with_congruence_of_morphisms := false,
 ),
 
 PushoutFunctorialWithGivenPushouts := rec(
@@ -2616,7 +2792,8 @@ PushoutFunctorialWithGivenPushouts := rec(
   io_type := [ [ "P", "morphisms", "L", "morphismsp", "Pp" ], [ "P", "Pp" ] ],
   return_type := "morphism",
   dual_operation := "FiberProductFunctorialWithGivenFiberProducts",
-  dual_arguments_reversed := true
+  dual_arguments_reversed := true,
+  compatible_with_congruence_of_morphisms := false,
 ),
 
 HorizontalPreCompose := rec(
@@ -4002,7 +4179,7 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
             return_type := "morphism",
             dual_operation := limit.colimit_universal_morphism_name,
         );
-
+        
         functorial_record := rec(
             function_name := limit.limit_functorial_name,
             filter_list := Concatenation( [ "category" ], limit.diagram_filter_list, limit.diagram_morphism_filter_list, limit.diagram_filter_list ),
@@ -4030,6 +4207,34 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
             dual_operation := limit.colimit_functorial_with_given_name,
             dual_arguments_reversed := true,
         );
+        
+        if limit.number_of_unbound_morphisms = 0 then
+            
+            # The diagram has only objects as input -> all operations are compatible with the congruence of morphisms:
+            # For the universal morphisms and functorials, this follows from the universal property.
+            # All other operations are automatically compatible because they do not have morphisms as input.
+            
+            if limit.number_of_targets > 0 then # if limit.number_of_targets = 0, the universal morphism has no test morphism as input anyway
+                
+                universal_morphism_record.compatible_with_congruence_of_morphisms := true;
+                functorial_record.compatible_with_congruence_of_morphisms := true;
+                functorial_with_given_record.compatible_with_congruence_of_morphisms := true;
+                
+            fi;
+            
+        else
+            
+            # The universal object might depend on the morphism datum.
+            # Thus, the operations are in general not compatible with the congruence of morphisms.
+            
+            object_record.compatible_with_congruence_of_morphisms := false;
+            projection_record.compatible_with_congruence_of_morphisms := false;
+            morphism_to_sink_record.compatible_with_congruence_of_morphisms := false;
+            universal_morphism_record.compatible_with_congruence_of_morphisms := false;
+            functorial_record.compatible_with_congruence_of_morphisms := false;
+            functorial_with_given_record.compatible_with_congruence_of_morphisms := false;
+            
+        fi;
         
         #### validate limit records
         CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.limit_object_name, object_record );
@@ -4675,6 +4880,22 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             if IsBound( return_list[2] ) and return_list[2] <> fail then
                 
                 current_rec.output_range_getter_string := return_list[2];
+                
+            fi;
+            
+        fi;
+        
+        if ForAll( current_rec.filter_list, x -> x in [ IsInt, IsRingElement, "category", "object", "object_in_range_category_of_homomorphism_structure", "other_object", "list_of_objects", "nonneg_integer_or_infinity" ] ) then
+            
+            if not IsBound( current_rec.compatible_with_congruence_of_morphisms ) then
+                
+                current_rec.compatible_with_congruence_of_morphisms := true;
+                
+            fi;
+            
+            if current_rec.compatible_with_congruence_of_morphisms <> true then
+                
+                Error( current_recname, " does not depend on morphisms but is still marked as not compatible with the congruence of morphisms" );
                 
             fi;
             
