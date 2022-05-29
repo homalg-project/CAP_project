@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# Toposes: Elementary toposes
+# CartesianCategories: Cartesian and cocartesian categories and various subdoctrines
 #
 # This file tests if the package can be loaded without errors or warnings.
 #
@@ -7,9 +7,9 @@
 gap> PushOptions( rec( OnlyNeeded := true ) );
 gap> package_loading_info_level := InfoLevel( InfoPackageLoading );;
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_ERROR );;
-gap> LoadPackage( "Toposes", false );
+gap> LoadPackage( "CartesianCategories", false );
 true
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_INFO );;
-gap> LoadPackage( "Toposes" );
+gap> LoadPackage( "CartesianCategories" );
 true
 gap> SetInfoLevel( InfoPackageLoading, package_loading_info_level );;

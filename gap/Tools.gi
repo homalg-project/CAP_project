@@ -1,11 +1,11 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# Toposes: Elementary toposes
+# CartesianCategories: Cartesian and cocartesian categories and various subdoctrines
 #
 # Implementations
 #
 
 ##
-InstallGlobalFunction( CreateFilesForToposesPackage,
+InstallGlobalFunction( CreateFilesForCartesianCategoriesPackage,
   function( )
 
 ##
@@ -41,7 +41,7 @@ WriteFileForMonoidalStructure(
              AdditiveS := "",
              BraidedS := "",
              TensorProductOnObjectsBCcat := "BinaryDirectProduct( cat,",
-             CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE := "METHOD_NAME_RECORD, \"Toposes\"",
+             CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE := "METHOD_NAME_RECORD, \"CartesianCategories\"",
              safe_replace := [ ##############################
                                ## Safe replacements for Tests
                                ##############################
@@ -86,7 +86,7 @@ WriteFileForMonoidalStructure(
                                  "RightCocartesianCodistributivityFactoring( opposite" ],
                                ],
              ),
-        "Toposes",
+        "CartesianCategories",
         rec( MonoidalCategoriesTensorProductAndUnit_gd := fail,
              MonoidalCategoriesTensorProductAndUnitTest_gd := fail,
              MonoidalCategories_gd := "CartesianCategories.gd",
@@ -158,7 +158,7 @@ WriteFileForClosedMonoidalStructure(
              Hom := "Exponential",
              ClosedSMonoidal := "Cartesian Closed",
              TensorProductOnObjectsBCcat := "BinaryDirectProduct( cat,",
-             CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE := "METHOD_NAME_RECORD, \"Toposes\"",
+             CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE := "METHOD_NAME_RECORD, \"CartesianCategories\"",
              replace := [ [ "coHom(",
                             "Coexp(" ],
                           [ "Cohom(",
@@ -361,7 +361,7 @@ WriteFileForClosedMonoidalStructure(
                                  "Coproduct( opposite" ],
                                ],
              ),
-        "Toposes",
+        "CartesianCategories",
         rec( ClosedMonoidalCategories_gd := "CartesianClosedCategories.gd",
              ClosedMonoidalCategoriesTest_gd := "CartesianClosedCategoriesTest.gd",
              RigidSymmetricClosedMonoidalCategories_gd := fail,
@@ -415,7 +415,7 @@ WriteFileForMonoidalStructure(
              AdditiveS := "",
              BraidedS := "",
              TensorProductOnObjectsBCcat := "BinaryCoproduct( cat,",
-             CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE := "METHOD_NAME_RECORD, \"Toposes\"",
+             CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE := "METHOD_NAME_RECORD, \"CartesianCategories\"",
              safe_replace := [ ##############################
                                ## Safe replacements for Tests
                                ##############################
@@ -460,7 +460,7 @@ WriteFileForMonoidalStructure(
                                  "RightCartesianDistributivityFactoring( opposite" ],
                                ],
              ),
-        "Toposes",
+        "CartesianCategories",
         rec( MonoidalCategoriesTensorProductAndUnit_gd := fail,
              MonoidalCategoriesTensorProductAndUnitTest_gd := fail,
              MonoidalCategories_gd := "CocartesianCategories.gd",
@@ -531,7 +531,7 @@ WriteFileForCoclosedMonoidalStructure(
              coHom := "Coexponential",
              CoclosedSMonoidal := "Cocartesian Coclosed",
              TensorProductOnObjectsBCcat := "BinaryCoproduct( cat,",
-             CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE := "METHOD_NAME_RECORD, \"Toposes\"",
+             CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE := "METHOD_NAME_RECORD, \"CartesianCategories\"",
              replace := [ [ "coHom(",
                             "Coexp(" ],
                           [ "Cohom(",
@@ -752,7 +752,7 @@ WriteFileForCoclosedMonoidalStructure(
                                  "DirectProduct( opposite" ],
                                ]
              ),
-        "Toposes",
+        "CartesianCategories",
         rec( CoclosedMonoidalCategories_gd := "CocartesianCoclosedCategories.gd",
              CoclosedMonoidalCategoriesTest_gd := "CocartesianCoclosedCategoriesTest.gd",
              RigidSymmetricCoclosedMonoidalCategories_gd := fail,

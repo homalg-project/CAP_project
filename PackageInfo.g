@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# Toposes: Elementary toposes
+# CartesianCategories: Cartesian and cocartesian categories and various subdoctrines
 #
 # This file contains package meta data. For additional information on
 # the meaning and correct usage of these fields, please consult the
@@ -8,9 +8,9 @@
 #
 SetPackageInfo( rec(
 
-PackageName := "Toposes",
-Subtitle := "Elementary toposes",
-Version := "2022.05-03",
+PackageName := "CartesianCategories",
+Subtitle := "Cartesian and cocartesian categories and various subdoctrines",
+Version := "2022.05-04",
 Date := ~.Version{[ 1 .. 10 ]},
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
@@ -77,13 +77,13 @@ Persons := [
 # BEGIN URLS
 SourceRepository := rec(
     Type := "git",
-    URL := "https://github.com/homalg-project/Toposes",
+    URL := "https://github.com/homalg-project/CartesianCategories",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/pkg/Toposes",
-PackageInfoURL  := "https://homalg-project.github.io/Toposes/PackageInfo.g",
-README_URL      := "https://homalg-project.github.io/Toposes/README.md",
-ArchiveURL      := Concatenation( "https://github.com/homalg-project/Toposes/releases/download/v", ~.Version, "/Toposes-", ~.Version ),
+PackageWWWHome  := "https://homalg-project.github.io/pkg/CartesianCategories",
+PackageInfoURL  := "https://homalg-project.github.io/CartesianCategories/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CartesianCategories/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CartesianCategories/releases/download/v", ~.Version, "/CartesianCategories-", ~.Version ),
 # END URLS
 
 ArchiveFormats := ".tar.gz .zip",
@@ -101,24 +101,23 @@ Status := "dev",
 AbstractHTML   :=  "",
 
 PackageDoc := rec(
-  BookName  := "Toposes",
+  BookName  := "CartesianCategories",
   ArchiveURLSubset := ["doc"],
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
   SixFile   := "doc/manual.six",
-  LongTitle := "Elementary toposes",
+  LongTitle := "Cartesian and cocartesian categories and various subdoctrines",
 ),
 
 Dependencies := rec(
   GAP := ">= 4.11.1",
   NeededOtherPackages := [
-                   [ "GAPDoc", ">= 1.5" ],
-                   [ "CAP", ">= 2022.03-06" ],
-                   ],
+                [ "GAPDoc", ">= 1.5" ],
+                [ "CAP", ">= 2022.03-06" ],
+                ],
   SuggestedOtherPackages := [
-                   [ "MonoidalCategories", ">= 2022.05-03" ],
-                   [ "CategoryConstructor", ">= 2022.05-02" ],
-                   ],
+                [ "MonoidalCategories", ">= 2022.05-05" ],
+                ],
   ExternalConditions := [ ],
 ),
 

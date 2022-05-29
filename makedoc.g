@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# Toposes: Elementary toposes
+# CartesianCategories: Cartesian and cocartesian categories and various subdoctrines
 #
 # This file is a script which compiles the package manual.
 #

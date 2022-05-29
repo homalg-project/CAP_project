@@ -1,64 +1,60 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# Toposes: Elementary toposes
+# CartesianCategories: Cartesian and cocartesian categories and various subdoctrines
 #
 # Reading the declaration part of the package.
 #
 
 if IsBound( WriteFileForMonoidalStructure ) then
-ReadPackage( "Toposes", "gap/Tools.gd");
+ReadPackage( "CartesianCategories", "gap/Tools.gd");
 fi;
 
 ## Cartesian and Cocartesian
-ReadPackage( "Toposes", "gap/CartesianCategories.gd" );
-ReadPackage( "Toposes", "gap/CocartesianCategories.gd" );
+ReadPackage( "CartesianCategories", "gap/CartesianCategories.gd" );
+ReadPackage( "CartesianCategories", "gap/CocartesianCategories.gd" );
 
-ReadPackage( "Toposes", "gap/CartesianCategoriesProperties.gd" );
-ReadPackage( "Toposes", "gap/CocartesianCategoriesProperties.gd" );
+ReadPackage( "CartesianCategories", "gap/CartesianCategoriesProperties.gd" );
+ReadPackage( "CartesianCategories", "gap/CocartesianCategoriesProperties.gd" );
 
-ReadPackage( "Toposes", "gap/CartesianCategories.autogen.gd" );
-ReadPackage( "Toposes", "gap/CocartesianCategories.autogen.gd" );
+ReadPackage( "CartesianCategories", "gap/CartesianCategories.autogen.gd" );
+ReadPackage( "CartesianCategories", "gap/CocartesianCategories.autogen.gd" );
 
-ReadPackage( "Toposes", "gap/DistributiveCartesianCategories.gd" );
-ReadPackage( "Toposes", "gap/CodistributiveCocartesianCategories.gd" );
+ReadPackage( "CartesianCategories", "gap/DistributiveCartesianCategories.gd" );
+ReadPackage( "CartesianCategories", "gap/CodistributiveCocartesianCategories.gd" );
 
-ReadPackage( "Toposes", "gap/DistributiveCartesianCategoriesProperties.gd" );
-ReadPackage( "Toposes", "gap/CodistributiveCocartesianCategoriesProperties.gd" );
+ReadPackage( "CartesianCategories", "gap/DistributiveCartesianCategoriesProperties.gd" );
+ReadPackage( "CartesianCategories", "gap/CodistributiveCocartesianCategoriesProperties.gd" );
 
-ReadPackage( "Toposes", "gap/DistributiveCartesianCategories.autogen.gd" );
-ReadPackage( "Toposes", "gap/CodistributiveCocartesianCategories.autogen.gd" );
+ReadPackage( "CartesianCategories", "gap/DistributiveCartesianCategories.autogen.gd" );
+ReadPackage( "CartesianCategories", "gap/CodistributiveCocartesianCategories.autogen.gd" );
 
-ReadPackage( "Toposes", "gap/BraidedCartesianCategories.gd" );
-ReadPackage( "Toposes", "gap/BraidedCocartesianCategories.gd" );
+ReadPackage( "CartesianCategories", "gap/BraidedCartesianCategories.gd" );
+ReadPackage( "CartesianCategories", "gap/BraidedCocartesianCategories.gd" );
 
-ReadPackage( "Toposes", "gap/BraidedCartesianCategories.autogen.gd" );
-ReadPackage( "Toposes", "gap/BraidedCocartesianCategories.autogen.gd" );
+ReadPackage( "CartesianCategories", "gap/BraidedCartesianCategories.autogen.gd" );
+ReadPackage( "CartesianCategories", "gap/BraidedCocartesianCategories.autogen.gd" );
 
 ## Cartesian Closed and Cocartesian Coclosed
-ReadPackage( "Toposes", "gap/CartesianClosedCategoriesProperties.gd" );
-ReadPackage( "Toposes", "gap/CocartesianCoclosedCategoriesProperties.gd" );
+ReadPackage( "CartesianCategories", "gap/CartesianClosedCategoriesProperties.gd" );
+ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategoriesProperties.gd" );
 
-ReadPackage( "Toposes", "gap/CartesianClosedCategories.gd" );
-ReadPackage( "Toposes", "gap/CocartesianCoclosedCategories.gd" );
+ReadPackage( "CartesianCategories", "gap/CartesianClosedCategories.gd" );
+ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategories.gd" );
 
-ReadPackage( "Toposes", "gap/CartesianClosedCategories.autogen.gd" );
-ReadPackage( "Toposes", "gap/CocartesianCoclosedCategories.autogen.gd" );
+ReadPackage( "CartesianCategories", "gap/CartesianClosedCategories.autogen.gd" );
+ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategories.autogen.gd" );
+
+## Bicartesian and finite (co)complete categories
+ReadPackage( "CartesianCategories", "gap/BicartesianCategories.gd" );
 
 ## Test methods
-ReadPackage( "Toposes", "gap/CartesianCategoriesTest.gd" );
-ReadPackage( "Toposes", "gap/CocartesianCategoriesTest.gd" );
+ReadPackage( "CartesianCategories", "gap/CartesianCategoriesTest.gd" );
+ReadPackage( "CartesianCategories", "gap/CocartesianCategoriesTest.gd" );
 
-ReadPackage( "Toposes", "gap/DistributiveCartesianCategoriesTest.gd" );
-ReadPackage( "Toposes", "gap/CodistributiveCocartesianCategoriesTest.gd" );
+ReadPackage( "CartesianCategories", "gap/DistributiveCartesianCategoriesTest.gd" );
+ReadPackage( "CartesianCategories", "gap/CodistributiveCocartesianCategoriesTest.gd" );
 
-ReadPackage( "Toposes", "gap/BraidedCartesianCategoriesTest.gd" );
-ReadPackage( "Toposes", "gap/BraidedCocartesianCategoriesTest.gd" );
+ReadPackage( "CartesianCategories", "gap/BraidedCartesianCategoriesTest.gd" );
+ReadPackage( "CartesianCategories", "gap/BraidedCocartesianCategoriesTest.gd" );
 
-ReadPackage( "Toposes", "gap/CartesianClosedCategoriesTest.gd" );
-ReadPackage( "Toposes", "gap/CocartesianCoclosedCategoriesTest.gd" );
-
-## Topos
-ReadPackage( "Toposes", "gap/Topos.gd");
-ReadPackage( "Toposes", "gap/Topos.autogen.gd");
-
-## Category of relations
-ReadPackage( "Toposes", "gap/CategoryOfRelations.gd");
+ReadPackage( "CartesianCategories", "gap/CartesianClosedCategoriesTest.gd" );
+ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategoriesTest.gd" );

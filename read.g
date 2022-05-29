@@ -1,83 +1,80 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# Toposes: Elementary toposes
+# CartesianCategories: Cartesian and cocartesian categories and various subdoctrines
 #
 # Reading the implementation part of the package.
 #
 
 if IsBound( WriteFileForMonoidalStructure ) then
-ReadPackage( "Toposes", "gap/Tools.gi");
+ReadPackage( "CartesianCategories", "gap/Tools.gi");
 fi;
 
 ## Cartesian and Cocartesian
-ReadPackage( "Toposes", "gap/CartesianCategoriesMethodRecord.gi" );
-ReadPackage( "Toposes", "gap/CocartesianCategoriesMethodRecord.gi" );
+ReadPackage( "CartesianCategories", "gap/CartesianCategoriesMethodRecord.gi" );
+ReadPackage( "CartesianCategories", "gap/CocartesianCategoriesMethodRecord.gi" );
 
-ReadPackage( "Toposes", "gap/CartesianCategories.gi" );
-ReadPackage( "Toposes", "gap/CocartesianCategories.gi" );
+ReadPackage( "CartesianCategories", "gap/CartesianCategories.gi" );
+ReadPackage( "CartesianCategories", "gap/CocartesianCategories.gi" );
 
-ReadPackage( "Toposes", "gap/DistributiveCartesianCategoriesMethodRecord.gi" );
-ReadPackage( "Toposes", "gap/CodistributiveCocartesianCategoriesMethodRecord.gi" );
+ReadPackage( "CartesianCategories", "gap/DistributiveCartesianCategoriesMethodRecord.gi" );
+ReadPackage( "CartesianCategories", "gap/CodistributiveCocartesianCategoriesMethodRecord.gi" );
 
-ReadPackage( "Toposes", "gap/DistributiveCartesianCategories.gi" );
-ReadPackage( "Toposes", "gap/CodistributiveCocartesianCategories.gi" );
+ReadPackage( "CartesianCategories", "gap/DistributiveCartesianCategories.gi" );
+ReadPackage( "CartesianCategories", "gap/CodistributiveCocartesianCategories.gi" );
 
-ReadPackage( "Toposes", "gap/BraidedCartesianCategoriesMethodRecord.gi" );
-ReadPackage( "Toposes", "gap/BraidedCocartesianCategoriesMethodRecord.gi" );
+ReadPackage( "CartesianCategories", "gap/BraidedCartesianCategoriesMethodRecord.gi" );
+ReadPackage( "CartesianCategories", "gap/BraidedCocartesianCategoriesMethodRecord.gi" );
 
-ReadPackage( "Toposes", "gap/BraidedCartesianCategories.gi" );
-ReadPackage( "Toposes", "gap/BraidedCocartesianCategories.gi" );
+ReadPackage( "CartesianCategories", "gap/BraidedCartesianCategories.gi" );
+ReadPackage( "CartesianCategories", "gap/BraidedCocartesianCategories.gi" );
 
 ## Cartesian Closed and Cocartesian Coclosed
 
-ReadPackage( "Toposes", "gap/CartesianClosedCategoriesProperties.gi" );
-ReadPackage( "Toposes", "gap/CocartesianCoclosedCategoriesProperties.gi" );
+ReadPackage( "CartesianCategories", "gap/CartesianClosedCategoriesProperties.gi" );
+ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategoriesProperties.gi" );
 
-ReadPackage( "Toposes", "gap/CartesianClosedCategoriesMethodRecord.gi" );
-ReadPackage( "Toposes", "gap/CocartesianCoclosedCategoriesMethodRecord.gi" );
+ReadPackage( "CartesianCategories", "gap/CartesianClosedCategoriesMethodRecord.gi" );
+ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategoriesMethodRecord.gi" );
 
-ReadPackage( "Toposes", "gap/CartesianClosedCategories.gi" );
-ReadPackage( "Toposes", "gap/CocartesianCoclosedCategories.gi" );
+ReadPackage( "CartesianCategories", "gap/CartesianClosedCategories.gi" );
+ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategories.gi" );
 
 ## Derived methods
-ReadPackage( "Toposes", "gap/CartesianCategoriesDerivedMethods.gi" );
-ReadPackage( "Toposes", "gap/CocartesianCategoriesDerivedMethods.gi" );
+ReadPackage( "CartesianCategories", "gap/CartesianCategoriesDerivedMethods.gi" );
+ReadPackage( "CartesianCategories", "gap/CocartesianCategoriesDerivedMethods.gi" );
 
-ReadPackage( "Toposes", "gap/DistributiveCartesianCategoriesDerivedMethods.gi" );
-ReadPackage( "Toposes", "gap/CodistributiveCocartesianCategoriesDerivedMethods.gi" );
+ReadPackage( "CartesianCategories", "gap/DistributiveCartesianCategoriesDerivedMethods.gi" );
+ReadPackage( "CartesianCategories", "gap/CodistributiveCocartesianCategoriesDerivedMethods.gi" );
 
-ReadPackage( "Toposes", "gap/BraidedCartesianCategoriesDerivedMethods.gi" );
-ReadPackage( "Toposes", "gap/BraidedCocartesianCategoriesDerivedMethods.gi" );
+ReadPackage( "CartesianCategories", "gap/BraidedCartesianCategoriesDerivedMethods.gi" );
+ReadPackage( "CartesianCategories", "gap/BraidedCocartesianCategoriesDerivedMethods.gi" );
 
-ReadPackage( "Toposes", "gap/SymmetricCartesianCategoriesDerivedMethods.gi" );
-ReadPackage( "Toposes", "gap/SymmetricCocartesianCategoriesDerivedMethods.gi" );
+ReadPackage( "CartesianCategories", "gap/SymmetricCartesianCategoriesDerivedMethods.gi" );
+ReadPackage( "CartesianCategories", "gap/SymmetricCocartesianCategoriesDerivedMethods.gi" );
 
-ReadPackage( "Toposes", "gap/CartesianClosedCategoriesDerivedMethods.gi" );
-ReadPackage( "Toposes", "gap/CocartesianCoclosedCategoriesDerivedMethods.gi" );
+ReadPackage( "CartesianCategories", "gap/CartesianClosedCategoriesDerivedMethods.gi" );
+ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategoriesDerivedMethods.gi" );
 
-ReadPackage( "Toposes", "gap/SymmetricCartesianClosedCategoriesDerivedMethods.gi" );
-ReadPackage( "Toposes", "gap/SymmetricCocartesianCoclosedCategoriesDerivedMethods.gi" );
+ReadPackage( "CartesianCategories", "gap/SymmetricCartesianClosedCategoriesDerivedMethods.gi" );
+ReadPackage( "CartesianCategories", "gap/SymmetricCocartesianCoclosedCategoriesDerivedMethods.gi" );
+
+ReadPackage( "CartesianCategories", "gap/CartesianCategoriesDerivedMethods_extra.gi" );
+ReadPackage( "CartesianCategories", "gap/CocartesianCategoriesDerivedMethods_extra.gi" );
+
+## Bicartesian and finite (co)complete categories
+ReadPackage( "CartesianCategories", "gap/BicartesianCategories.gi" );
 
 ## Test methods
-ReadPackage( "Toposes", "gap/CartesianCategoriesTest.gi" );
-ReadPackage( "Toposes", "gap/CocartesianCategoriesTest.gi" );
+ReadPackage( "CartesianCategories", "gap/CartesianCategoriesTest.gi" );
+ReadPackage( "CartesianCategories", "gap/CocartesianCategoriesTest.gi" );
 
-ReadPackage( "Toposes", "gap/DistributiveCartesianCategoriesTest.gi" );
-ReadPackage( "Toposes", "gap/CodistributiveCocartesianCategoriesTest.gi" );
+ReadPackage( "CartesianCategories", "gap/DistributiveCartesianCategoriesTest.gi" );
+ReadPackage( "CartesianCategories", "gap/CodistributiveCocartesianCategoriesTest.gi" );
 
-ReadPackage( "Toposes", "gap/BraidedCartesianCategoriesTest.gi" );
-ReadPackage( "Toposes", "gap/BraidedCocartesianCategoriesTest.gi" );
+ReadPackage( "CartesianCategories", "gap/BraidedCartesianCategoriesTest.gi" );
+ReadPackage( "CartesianCategories", "gap/BraidedCocartesianCategoriesTest.gi" );
 
-ReadPackage( "Toposes", "gap/CartesianClosedCategoriesTest.gi" );
-ReadPackage( "Toposes", "gap/CocartesianCoclosedCategoriesTest.gi" );
+ReadPackage( "CartesianCategories", "gap/CartesianClosedCategoriesTest.gi" );
+ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategoriesTest.gi" );
 
 ## Homomorphism structure
-ReadPackage( "Toposes", "gap/HomomorphismStructureDerivedMethods.gi");
-
-## Topos
-ReadPackage( "Toposes", "gap/ToposMethodRecord.gi");
-ReadPackage( "Toposes", "gap/Topos.gi");
-
-ReadPackage( "Toposes", "gap/ToposDerivedMethods.gi" );
-
-## Category of relations
-ReadPackage( "Toposes", "gap/CategoryOfRelations.gi");
+ReadPackage( "CartesianCategories", "gap/HomomorphismStructureDerivedMethods.gi");

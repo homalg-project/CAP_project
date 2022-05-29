@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# Toposes: Elementary toposes
+# CartesianCategories: Cartesian and cocartesian categories and various subdoctrines
 #
 # Declarations
 #
@@ -19,3 +19,6 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianCategory  := Concatenatio
 "TerminalObject",
 "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
 ], CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory );
+
+DeclareOperation( "BinaryDirectProduct",
+        [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ] );

@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# Toposes: Elementary toposes
+# CartesianCategories: Cartesian and cocartesian categories and various subdoctrines
 #
 # Declarations
 #
@@ -8,4 +8,4 @@
 
 # @Section Tools
 
-DeclareGlobalFunction( "CreateFilesForToposesPackage" );
+DeclareGlobalFunction( "CreateFilesForCartesianCategoriesPackage" );

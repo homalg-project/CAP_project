@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# Toposes: Elementary toposes
+# CartesianCategories: Cartesian and cocartesian categories and various subdoctrines
 #
 # Implementations
 #
@@ -25,10 +25,6 @@ InstallTrueMethod( IsCocartesianCategory, IsFiniteCocompleteCategory );
 InstallTrueMethod( IsFiniteCompleteCategory, IsAbelianCategory );
 InstallTrueMethod( IsFiniteCocompleteCategory, IsAbelianCategory );
 
-InstallTrueMethod( IsFiniteCompleteCategory, IsElementaryTopos );
-InstallTrueMethod( IsFiniteCocompleteCategory, IsElementaryTopos );
-InstallTrueMethod( IsBicartesianClosedCategory, IsElementaryTopos );
-
 ##
 InstallMethodForCompilerForCAP( BinaryDirectProduct,
         [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ],
@@ -46,24 +42,5 @@ InstallMethodForCompilerForCAP( BinaryCoproduct,
   function( cat, object_1, object_2 )
     
     return Coproduct( cat, [ object_1, object_2 ] );
-    
-end );
-
-##
-InstallMethod( AddSubobjectClassifier,
-               [ IsCapCategory, IsFunction, IsInt ],
-               
-  function( category, func, weight )
-    local wrapped_func;
-    
-    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    wrapped_func := function( cat ) return func(); end;
-    
-    AddSubobjectClassifier( category, [ [ wrapped_func, [ ] ] ], weight );
     
 end );

@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# Toposes: Elementary toposes
+# CartesianCategories: Cartesian and cocartesian categories and various subdoctrines
 #
 # This file runs package tests. It is also referenced in the package
 # metadata in PackageInfo.g.
@@ -11,6 +11,6 @@ options := rec(
     ),
 );
 
-TestDirectory( DirectoriesPackageLibrary( "Toposes", "tst" ), options );
+TestDirectory( DirectoriesPackageLibrary( "CartesianCategories", "tst" ), options );
 
 FORCE_QUIT_GAP( 1 ); # if we ever get here, there was an error
