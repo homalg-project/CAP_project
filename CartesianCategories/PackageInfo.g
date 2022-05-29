@@ -77,13 +77,13 @@ Persons := [
 # BEGIN URLS
 SourceRepository := rec(
     Type := "git",
-    URL := "https://github.com/homalg-project/CartesianCategories",
+    URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 PackageWWWHome  := "https://homalg-project.github.io/pkg/CartesianCategories",
-PackageInfoURL  := "https://homalg-project.github.io/CartesianCategories/PackageInfo.g",
-README_URL      := "https://homalg-project.github.io/CartesianCategories/README.md",
-ArchiveURL      := Concatenation( "https://github.com/homalg-project/CartesianCategories/releases/download/v", ~.Version, "/CartesianCategories-", ~.Version ),
+PackageInfoURL  := "https://homalg-project.github.io/CAP_project/CartesianCategories/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CAP_project/CartesianCategories/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/CartesianCategories-", ~.Version, "/CartesianCategories-", ~.Version ),
 # END URLS
 
 ArchiveFormats := ".tar.gz .zip",

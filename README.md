@@ -24,6 +24,7 @@ Please take a look at our [manual](https://github.com/homalg-project/CAP_project
 | [CAP](CAP#readme) | Categories, Algorithms, Programming | [![HTML stable documentation][html-CAP-img]][html-CAP-url] [![PDF stable documentation][pdf-CAP-img]][pdf-CAP-url] |
 | [ActionsForCAP](ActionsForCAP#readme) | Actions and Coactions for CAP | [![HTML stable documentation][html-ActionsForCAP-img]][html-ActionsForCAP-url] [![PDF stable documentation][pdf-ActionsForCAP-img]][pdf-ActionsForCAP-url] |
 | [AttributeCategoryForCAP](AttributeCategoryForCAP#readme) | Automatic enhancement with attributes of a CAP category | [![HTML stable documentation][html-AttributeCategoryForCAP-img]][html-AttributeCategoryForCAP-url] [![PDF stable documentation][pdf-AttributeCategoryForCAP-img]][pdf-AttributeCategoryForCAP-url] |
+| [CartesianCategories](CartesianCategories#readme) | Cartesian and cocartesian categories and various subdoctrines | [![HTML stable documentation][html-CartesianCategories-img]][html-CartesianCategories-url] [![PDF stable documentation][pdf-CartesianCategories-img]][pdf-CartesianCategories-url] |
 | [CompilerForCAP](CompilerForCAP#readme) | Speed up computations in CAP categories | [![HTML stable documentation][html-CompilerForCAP-img]][html-CompilerForCAP-url] [![PDF stable documentation][pdf-CompilerForCAP-img]][pdf-CompilerForCAP-url] |
 | [ComplexesAndFilteredObjectsForCAP](ComplexesAndFilteredObjectsForCAP#readme) | Implementation of complexes, cocomplexes and filtered objects for CAP | [![HTML stable documentation][html-ComplexesAndFilteredObjectsForCAP-img]][html-ComplexesAndFilteredObjectsForCAP-url] [![PDF stable documentation][pdf-ComplexesAndFilteredObjectsForCAP-img]][pdf-ComplexesAndFilteredObjectsForCAP-url] |
 | [DeductiveSystemForCAP](DeductiveSystemForCAP#readme) | Deductive system for CAP | [![HTML stable documentation][html-DeductiveSystemForCAP-img]][html-DeductiveSystemForCAP-url] [![PDF stable documentation][pdf-DeductiveSystemForCAP-img]][pdf-DeductiveSystemForCAP-url] |
@@ -58,6 +59,13 @@ Please take a look at our [manual](https://github.com/homalg-project/CAP_project
 
 [pdf-AttributeCategoryForCAP-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-AttributeCategoryForCAP-url]: https://homalg-project.github.io/CAP_project/AttributeCategoryForCAP/download_pdf.html
+
+
+[html-CartesianCategories-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
+[html-CartesianCategories-url]: https://homalg-project.github.io/CAP_project/CartesianCategories/doc/chap0_mj.html
+
+[pdf-CartesianCategories-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
+[pdf-CartesianCategories-url]: https://homalg-project.github.io/CAP_project/CartesianCategories/download_pdf.html
 
 
 [html-CompilerForCAP-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg

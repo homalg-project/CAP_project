@@ -461,7 +461,7 @@ fi
 chmod -R a+r .
 
 # replace links to packages which are possibly referenced in the documentation, keep this in sync with `Tests.yml.j2`
-for package in CAP_project/CAP CAP_project/CompilerForCAP CAP_project/FreydCategoriesForCAP CAP_project/MonoidalCategories HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra homalg_project/homalg homalg_project/Modules Toposes; do
+for package in CAP_project/CAP CAP_project/CompilerForCAP CAP_project/MonoidalCategories CAP_project/CartesianCategories CAP_project/FreydCategoriesForCAP HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra homalg_project/homalg homalg_project/Modules Toposes; do
     
     # adjust links to other manuals
     # Note that we cannot use sed's `-i` option for in-place editing, as
