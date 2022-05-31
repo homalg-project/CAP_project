@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# CategoryConstructor: Construct categories out of given ones
+# MonoidalCategories: Monoidal and monoidal (co)closed categories
 #
 # Implementations
 #

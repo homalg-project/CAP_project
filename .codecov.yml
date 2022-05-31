@@ -15,6 +15,9 @@ flags:
   AttributeCategoryForCAP:
     paths:
       - "AttributeCategoryForCAP/"
+  CartesianCategories:
+    paths:
+      - "CartesianCategories/"
   CompilerForCAP:
     paths:
       - "CompilerForCAP/"

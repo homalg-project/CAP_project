@@ -27,6 +27,7 @@ chmod +x codecov
 ./codecov -Z -F CAP || ./codecov -Z -F CAP || ./codecov -Z -F CAP
 ./codecov -Z -F ActionsForCAP || ./codecov -Z -F ActionsForCAP || ./codecov -Z -F ActionsForCAP
 ./codecov -Z -F AttributeCategoryForCAP || ./codecov -Z -F AttributeCategoryForCAP || ./codecov -Z -F AttributeCategoryForCAP
+./codecov -Z -F CartesianCategories || ./codecov -Z -F CartesianCategories || ./codecov -Z -F CartesianCategories
 ./codecov -Z -F CompilerForCAP || ./codecov -Z -F CompilerForCAP || ./codecov -Z -F CompilerForCAP
 ./codecov -Z -F ComplexesAndFilteredObjectsForCAP || ./codecov -Z -F ComplexesAndFilteredObjectsForCAP || ./codecov -Z -F ComplexesAndFilteredObjectsForCAP
 ./codecov -Z -F DeductiveSystemForCAP || ./codecov -Z -F DeductiveSystemForCAP || ./codecov -Z -F DeductiveSystemForCAP
