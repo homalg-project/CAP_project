@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (CartesianCategories) - Chapter 3: Examples and Tests</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap3"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap3.html">[MathJax off]</a></p>
+<p><a id="X7967FE8E7BBDF485" name="X7967FE8E7BBDF485"></a></p>
+<div class="ChapSects"><a href="chap3_mj.html#X7967FE8E7BBDF485">3 <span class="Heading">Examples and Tests</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7862428B781B1F3D">3.1 <span class="Heading">Test functions</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83B0BC037D5E2C95">3.1-1 BraidedCartesianCategoriesTest</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X815F4404798F05F3">3.1-2 BraidedCocartesianCategoriesTest</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7BC67B107EB54EE2">3.1-3 CartesianCategoriesTest</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7C19A72D81FD3652">3.1-4 CartesianClosedCategoriesTest</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8581ECE37E4E8470">3.1-5 CocartesianCategoriesTest</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7C25BAD3807EE56E">3.1-6 CocartesianCoclosedCategoriesTest</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7EA2684984BCCF6B">3.1-7 CodistributiveCocartesianCategoriesTest</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X78CA53ED85B4FEFF">3.1-8 DistributiveCartesianCategoriesTest</a></span>
+</div></div>
+</div>
+
+<h3>3 <span class="Heading">Examples and Tests</span></h3>
+
+<p><a id="X7862428B781B1F3D" name="X7862428B781B1F3D"></a></p>
+
+<h4>3.1 <span class="Heading">Test functions</span></h4>
+
+<p><a id="X83B0BC037D5E2C95" name="X83B0BC037D5E2C95"></a></p>
+
+<h5>3.1-1 BraidedCartesianCategoriesTest</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BraidedCartesianCategoriesTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>The arguments are</p>
+
+
+<ul>
+<li><p>a CAP category <span class="SimpleMath">\(cat\)</span></p>
+
+</li>
+<li><p>objects <span class="SimpleMath">\(a, b\)</span></p>
+
+</li>
+</ul>
+<p>This function checks for every operation declared in BraidedCartesianCategories.gd if it is computable in the CAP category <span class="SimpleMath">\(cat\)</span>. If yes, then the operation is executed with the parameters given above and compared to the equivalent computation in the opposite category of <span class="SimpleMath">\(cat\)</span>. Pass the options</p>
+
+
+<ul>
+<li><p><code class="code">verbose := true</code> to output more information.</p>
+
+</li>
+<li><p><code class="code">only_primitive_operations := true</code>, which is passed on to Opposite(), to only primitively install dual operations for primitively installed operations in <span class="SimpleMath">\(cat\)</span>. The advantage is, that more derivations might be tested. On the downside, this might test fewer dual_pre/postprocessor_funcs.</p>
+
+</li>
+</ul>
+<p><a id="X815F4404798F05F3" name="X815F4404798F05F3"></a></p>
+
+<h5>3.1-2 BraidedCocartesianCategoriesTest</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BraidedCocartesianCategoriesTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>The arguments are</p>
+
+
+<ul>
+<li><p>a CAP category <span class="SimpleMath">\(cat\)</span></p>
+
+</li>
+<li><p>objects <span class="SimpleMath">\(a, b\)</span></p>
+
+</li>
+</ul>
+<p>This function checks for every operation declared in BraidedCocartesianCategories.gd if it is computable in the CAP category <span class="SimpleMath">\(cat\)</span>. If yes, then the operation is executed with the parameters given above and compared to the equivalent computation in the opposite category of <span class="SimpleMath">\(cat\)</span>. Pass the options</p>
+
+
+<ul>
+<li><p><code class="code">verbose := true</code> to output more information.</p>
+
+</li>
+<li><p><code class="code">only_primitive_operations := true</code>, which is passed on to Opposite(), to only primitively install dual operations for primitively installed operations in <span class="SimpleMath">\(cat\)</span>. The advantage is, that more derivations might be tested. On the downside, this might test fewer dual_pre/postprocessor_funcs.</p>
+
+</li>
+</ul>
+<p><a id="X7BC67B107EB54EE2" name="X7BC67B107EB54EE2"></a></p>
+
+<h5>3.1-3 CartesianCategoriesTest</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianCategoriesTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>The arguments are</p>
+
+
+<ul>
+<li><p>a CAP category <span class="SimpleMath">\(cat\)</span></p>
+
+</li>
+<li><p>objects <span class="SimpleMath">\(a, b, c\)</span></p>
+
+</li>
+<li><p>a morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span></p>
+
+</li>
+<li><p>a morphism <span class="SimpleMath">\(\beta: c \rightarrow d\)</span></p>
+
+</li>
+</ul>
+<p>This function checks for every operation declared in CartesianCategories.gd if it is computable in the CAP category <span class="SimpleMath">\(cat\)</span>. If yes, then the operation is executed with the parameters given above and compared to the equivalent computation in the opposite category of <span class="SimpleMath">\(cat\)</span>. Pass the options</p>
+
+
+<ul>
+<li><p><code class="code">verbose := true</code> to output more information.</p>
+
+</li>
+<li><p><code class="code">only_primitive_operations := true</code>, which is passed on to Opposite(), to only primitively install dual operations for primitively installed operations in <span class="SimpleMath">\(cat\)</span>. The advantage is, that more derivations might be tested. On the downside, this might test fewer dual_pre/postprocessor_funcs.</p>
+
+</li>
+</ul>
+<p><a id="X7C19A72D81FD3652" name="X7C19A72D81FD3652"></a></p>
+
+<h5>3.1-4 CartesianClosedCategoriesTest</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianClosedCategoriesTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">d</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">gamma</var>, <var class="Arg">delta</var>, <var class="Arg">epsilon</var>, <var class="Arg">zeta</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>The arguments are</p>
+
+
+<ul>
+<li><p>a CAP category <span class="SimpleMath">\(cat\)</span></p>
+
+</li>
+<li><p>objects <span class="SimpleMath">\(a, b, c, d\)</span></p>
+
+</li>
+<li><p>a morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span></p>
+
+</li>
+<li><p>a morphism <span class="SimpleMath">\(\beta: c \rightarrow d\)</span></p>
+
+</li>
+<li><p>a morphism <span class="SimpleMath">\(\gamma: a \times b \rightarrow 1\)</span></p>
+
+</li>
+<li><p>a morphism <span class="SimpleMath">\(\delta: c \times d \rightarrow 1\)</span></p>
+
+</li>
+<li><p>a morphism <span class="SimpleMath">\(\epsilon: 1 \rightarrow \mathrm{Hom}(a,b)\)</span></p>
+
+</li>
+<li><p>a morphism <span class="SimpleMath">\(\zeta: 1 \rightarrow \mathrm{Hom}(c,d)\)</span></p>
+
+</li>
+</ul>
+<p>This function checks for every operation declared in CartesianClosedCategories.gd if it is computable in the CAP category <span class="SimpleMath">\(cat\)</span>. If yes, then the operation is executed with the parameters given above and compared to the equivalent computation in the opposite category of <span class="SimpleMath">\(cat\)</span>. Pass the options</p>
+
+
+<ul>
+<li><p><code class="code">verbose := true</code> to output more information.</p>
+
+</li>
+<li><p><code class="code">only_primitive_operations := true</code>, which is passed on to Opposite(), to only primitively install dual operations for primitively installed operations in <span class="SimpleMath">\(cat\)</span>. The advantage is, that more derivations might be tested. On the downside, this might test fewer dual_pre/postprocessor_funcs.</p>
+
+</li>
+</ul>
+<p><a id="X8581ECE37E4E8470" name="X8581ECE37E4E8470"></a></p>
+
+<h5>3.1-5 CocartesianCategoriesTest</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianCategoriesTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>The arguments are</p>
+
+
+<ul>
+<li><p>a CAP category <span class="SimpleMath">\(cat\)</span></p>
+
+</li>
+<li><p>objects <span class="SimpleMath">\(a, b, c\)</span></p>
+
+</li>
+<li><p>a morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span></p>
+
+</li>
+<li><p>a morphism <span class="SimpleMath">\(\beta: c \rightarrow d\)</span></p>
+
+</li>
+</ul>
+<p>This function checks for every operation declared in CocartesianCategories.gd if it is computable in the CAP category <span class="SimpleMath">\(cat\)</span>. If yes, then the operation is executed with the parameters given above and compared to the equivalent computation in the opposite category of <span class="SimpleMath">\(cat\)</span>. Pass the options</p>
+
+
+<ul>
+<li><p><code class="code">verbose := true</code> to output more information.</p>
+
+</li>
+<li><p><code class="code">only_primitive_operations := true</code>, which is passed on to Opposite(), to only primitively install dual operations for primitively installed operations in <span class="SimpleMath">\(cat\)</span>. The advantage is, that more derivations might be tested. On the downside, this might test fewer dual_pre/postprocessor_funcs.</p>
+
+</li>
+</ul>
+<p><a id="X7C25BAD3807EE56E" name="X7C25BAD3807EE56E"></a></p>
+
+<h5>3.1-6 CocartesianCoclosedCategoriesTest</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianCoclosedCategoriesTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">d</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">gamma</var>, <var class="Arg">delta</var>, <var class="Arg">epsilon</var>, <var class="Arg">zeta</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>The arguments are a CAP category <span class="SimpleMath">\(cat\)</span> objects <span class="SimpleMath">\(a, b, c, d\)</span></p>
+
+
+<ul>
+<li><p>a morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span></p>
+
+</li>
+<li><p>a morphism <span class="SimpleMath">\(\beta: c \rightarrow d\)</span></p>
+
+</li>
+<li><p>a morphism <span class="SimpleMath">\(\gamma: 1 \rightarrow a \sqcup b\)</span></p>
+
+</li>
+<li><p>a morphism <span class="SimpleMath">\(\delta: 1 \rightarrow c \sqcup d\)</span></p>
+
+</li>
+<li><p>a morphism <span class="SimpleMath">\(\epsilon: \mathrm{coHom}(a,b) \rightarrow 1\)</span></p>
+
+</li>
+<li><p>a morphism <span class="SimpleMath">\(\zeta: \mathrm{coHom}(c,d) \rightarrow 1\)</span></p>
+
+</li>
+</ul>
+<p>This function checks for every operation declared in CocartesianCoclosedCategories.gd if it is computable in the CAP category <span class="SimpleMath">\(cat\)</span>. If yes, then the operation is executed with the parameters given above and compared to the equivalent computation in the opposite category of <span class="SimpleMath">\(cat\)</span>. Pass the options</p>
+
+
+<ul>
+<li><p><code class="code">verbose := true</code> to output more information.</p>
+
+</li>
+<li><p><code class="code">only_primitive_operations := true</code>, which is passed on to Opposite(), to only primitively install dual operations for primitively installed operations in <span class="SimpleMath">\(cat\)</span>. The advantage is, that more derivations might be tested. On the downside, this might test fewer dual_pre/postprocessor_funcs.</p>
+
+</li>
+</ul>
+<p><a id="X7EA2684984BCCF6B" name="X7EA2684984BCCF6B"></a></p>
+
+<h5>3.1-7 CodistributiveCocartesianCategoriesTest</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CodistributiveCocartesianCategoriesTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>The arguments are</p>
+
+
+<ul>
+<li><p>a CAP category <span class="SimpleMath">\(cat\)</span></p>
+
+</li>
+<li><p>an object <span class="SimpleMath">\(a\)</span></p>
+
+</li>
+<li><p>a list <span class="SimpleMath">\(L\)</span> of objects</p>
+
+</li>
+</ul>
+<p>This function checks for every operation declared in CodistributiveCocartesianCategories.gd if it is computable in the CAP category <span class="SimpleMath">\(cat\)</span>. If yes, then the operation is executed with the parameters given above and compared to the equivalent computation in the opposite category of <span class="SimpleMath">\(cat\)</span>. Pass the options</p>
+
+
+<ul>
+<li><p><code class="code">verbose := true</code> to output more information.</p>
+
+</li>
+<li><p><code class="code">only_primitive_operations := true</code>, which is passed on to Opposite(), to only primitively install dual operations for primitively installed operations in <span class="SimpleMath">\(cat\)</span>. The advantage is, that more derivations might be tested. On the downside, this might test fewer dual_pre/postprocessor_funcs.</p>
+
+</li>
+</ul>
+<p><a id="X78CA53ED85B4FEFF" name="X78CA53ED85B4FEFF"></a></p>
+
+<h5>3.1-8 DistributiveCartesianCategoriesTest</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DistributiveCartesianCategoriesTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>The arguments are</p>
+
+
+<ul>
+<li><p>a CAP category <span class="SimpleMath">\(cat\)</span></p>
+
+</li>
+<li><p>an object <span class="SimpleMath">\(a\)</span></p>
+
+</li>
+<li><p>a list <span class="SimpleMath">\(L\)</span> of objects</p>
+
+</li>
+</ul>
+<p>This function checks for every operation declared in DistributiveCartesianCategories.gd if it is computable in the CAP category <span class="SimpleMath">\(cat\)</span>. If yes, then the operation is executed with the parameters given above and compared to the equivalent computation in the opposite category of <span class="SimpleMath">\(cat\)</span>. Pass the options</p>
+
+
+<ul>
+<li><p><code class="code">verbose := true</code> to output more information.</p>
+
+</li>
+<li><p><code class="code">only_primitive_operations := true</code>, which is passed on to Opposite(), to only primitively install dual operations for primitively installed operations in <span class="SimpleMath">\(cat\)</span>. The advantage is, that more derivations might be tested. On the downside, this might test fewer dual_pre/postprocessor_funcs.</p>
+
+</li>
+</ul>
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

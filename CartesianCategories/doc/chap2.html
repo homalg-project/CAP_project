@@ -1,0 +1,1347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (CartesianCategories) - Chapter 2: Cocartesian Categories</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap2"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap2_mj.html">[MathJax on]</a></p>
+<p><a id="X8407B6DB7C3A94C7" name="X8407B6DB7C3A94C7"></a></p>
+<div class="ChapSects"><a href="chap2.html#X8407B6DB7C3A94C7">2 <span class="Heading">Cocartesian Categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X8407B6DB7C3A94C7">2.1 <span class="Heading">Cocartesian Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X78839ADA85C957C8">2.1-1 CocartesianBraiding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X85FFFA1E7A7E247F">2.1-2 CocartesianBraidingWithGivenCoproducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D99EF8C7C8995D8">2.1-3 CocartesianBraidingInverse</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X83BFCEFF7A496F3A">2.1-4 CocartesianBraidingInverseWithGivenCoproducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X85A5C35F81D35CD7">2.1-5 CoproductOnMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8203861B862A36B1">2.1-6 CoproductOnMorphismsWithGivenCoproducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7804E2397B97BB8F">2.1-7 CocartesianAssociatorRightToLeft</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X80C6F6C381284294">2.1-8 CocartesianAssociatorRightToLeftWithGivenCoproducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X809C1E9F7F668DE4">2.1-9 CocartesianAssociatorLeftToRight</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X86A8599A85D974FF">2.1-10 CocartesianAssociatorLeftToRightWithGivenCoproducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X83CA3FF67CB24649">2.1-11 CocartesianLeftUnitor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X852C1D2B81A9D05D">2.1-12 CocartesianLeftUnitorWithGivenCoproduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X84DA37F184308F45">2.1-13 CocartesianLeftUnitorInverse</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7C7362437B3DBCD5">2.1-14 CocartesianLeftUnitorInverseWithGivenCoproduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X79D1FEE987980537">2.1-15 CocartesianRightUnitor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7BB1DCDE808E06F9">2.1-16 CocartesianRightUnitorWithGivenCoproduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X867C00437E26CBD5">2.1-17 CocartesianRightUnitorInverse</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7C0F9FBB7EB2A224">2.1-18 CocartesianRightUnitorInverseWithGivenCoproduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X86FBEFB381C1680F">2.1-19 LeftCocartesianCodistributivityExpanding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X85FB3FA27B125FC4">2.1-20 LeftCocartesianCodistributivityExpandingWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8437EBC38559586E">2.1-21 LeftCocartesianCodistributivityFactoring</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X81173A1C7F8A6FA5">2.1-22 LeftCocartesianCodistributivityFactoringWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X79364D638492578F">2.1-23 RightCocartesianCodistributivityExpanding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7F5CAA1A7ABC2347">2.1-24 RightCocartesianCodistributivityExpandingWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7BFA49137CABF7E3">2.1-25 RightCocartesianCodistributivityFactoring</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7BB0AFA48285832B">2.1-26 RightCocartesianCodistributivityFactoringWithGivenObjects</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X8401194B83355921">2.2 <span class="Heading">Cocartesian Coclosed Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X81A81F217824E0D9">2.2-1 CoexponentialOnObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X789E9E9883084887">2.2-2 CoexponentialOnMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X84196D1986AA2D87">2.2-3 CoexponentialOnMorphismsWithGivenCoexponentials</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X856459F9811E00B3">2.2-4 CocartesianEvaluationMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X86E2717479C2E395">2.2-5 CocartesianEvaluationMorphismWithGivenRange</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X81B67702862D3A4F">2.2-6 CocartesianCoevaluationMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7925E053822FE33B">2.2-7 CocartesianCoevaluationMorphismWithGivenSource</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7FA9C9B178E29D54">2.2-8 CoproductToCoexponentialAdjunctionMap</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X785A005C7F7B7EA1">2.2-9 CoexponentialToCoproductAdjunctionMap</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7977E68B821EBDED">2.2-10 CocartesianPreCoComposeMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8107634778D34794">2.2-11 CocartesianPreCoComposeMorphismWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X848438BC87659CAA">2.2-12 CocartesianPostCoComposeMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X82B515B07F69072C">2.2-13 CocartesianPostCoComposeMorphismWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7C32B0FE7F1BBE28">2.2-14 CocartesianDualOnObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7C24483282494BEA">2.2-15 CocartesianDualOnMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X79E3087A81A7FFB5">2.2-16 CocartesianDualOnMorphismsWithGivenCocartesianDuals</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X80FFD69484C4674E">2.2-17 CocartesianEvaluationForCocartesianDual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7EB593727F112B5C">2.2-18 CocartesianEvaluationForCocartesianDualWithGivenCoproduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8315996B8034E0CD">2.2-19 MorphismFromCocartesianBidual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X80BB47FE784859AA">2.2-20 MorphismFromCocartesianBidualWithGivenCocartesianBidual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X79C7AB14874B1A3D">2.2-21 CoexponentialCoproductCompatibilityMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7EABD2E17C2FEE30">2.2-22 CoexponentialCoproductCompatibilityMorphismWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X84162A947BD198C7">2.2-23 CocartesianDualityCoproductCompatibilityMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7BC3879A7E34C141">2.2-24 CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7A6AAD118687CAA7">2.2-25 MorphismFromCoexponentialToCoproduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7EAA87FE865A70C4">2.2-26 MorphismFromCoexponentialToCoproductWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7AAE062D801ABCB7">2.2-27 IsomorphismFromCocartesianDualToCoexponential</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7C33DB8078AAB040">2.2-28 IsomorphismFromCoexponentialToCocartesianDual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7ECA24067A915ED8">2.2-29 UniversalPropertyOfCocartesianDual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7F2EA2CA8742FDC9">2.2-30 CocartesianLambdaIntroduction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7B9811F67DF3DA0F">2.2-31 CocartesianLambdaElimination</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7A8A649479389BCF">2.2-32 IsomorphismFromObjectToCoexponential</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7CB39AA07AC92CD8">2.2-33 IsomorphismFromObjectToCoexponentialWithGivenCoexponential</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7CF3B41386945F44">2.2-34 IsomorphismFromCoexponentialToObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7E7C30DB8565E853">2.2-35 IsomorphismFromCoexponentialToObjectWithGivenCoexponential</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7B40ED8B78D067A5">2.3 <span class="Heading">Convenience Methods</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7AB3661B86C9BC8D">2.3-1 Coexponential</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X85C8C80F785AEB5E">2.4 <span class="Heading">Add-methods</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X879367BA846F988A">2.4-1 AddCocartesianBraiding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X83B790727D455391">2.4-2 AddCocartesianBraidingInverse</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X78BADCAF8392041B">2.4-3 AddCocartesianBraidingInverseWithGivenCoproducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7B5A8EC9838FA0A1">2.4-4 AddCocartesianBraidingWithGivenCoproducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X843DB630835DD00C">2.4-5 AddCocartesianAssociatorLeftToRight</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X830F0ED28727F59B">2.4-6 AddCocartesianAssociatorLeftToRightWithGivenCoproducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7DB59174842D565E">2.4-7 AddCocartesianAssociatorRightToLeft</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X78C3C43D805773C9">2.4-8 AddCocartesianAssociatorRightToLeftWithGivenCoproducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X82523F4B7D015893">2.4-9 AddCocartesianLeftUnitor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X85F3DAB880F2E2AF">2.4-10 AddCocartesianLeftUnitorInverse</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7E2934A08250CAC0">2.4-11 AddCocartesianLeftUnitorInverseWithGivenCoproduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X849BEC11838849F3">2.4-12 AddCocartesianLeftUnitorWithGivenCoproduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X80589D877840CAC9">2.4-13 AddCocartesianRightUnitor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X84A04972868B0651">2.4-14 AddCocartesianRightUnitorInverse</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7F1831397A220851">2.4-15 AddCocartesianRightUnitorInverseWithGivenCoproduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7C606B16784E43D8">2.4-16 AddCocartesianRightUnitorWithGivenCoproduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X81A64DF88266A829">2.4-17 AddCoproductOnMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X805C256679D1FC61">2.4-18 AddCoproductOnMorphismsWithGivenCoproducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7BD6CA088299DB57">2.4-19 AddCocartesianCoevaluationMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8489E04D8275641C">2.4-20 AddCocartesianCoevaluationMorphismWithGivenSource</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8799C69B80624121">2.4-21 AddCocartesianDualOnMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7A3435BE841F78E8">2.4-22 AddCocartesianDualOnMorphismsWithGivenCocartesianDuals</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X81A85797795A3C27">2.4-23 AddCocartesianDualOnObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8770D28886FEC8A3">2.4-24 AddCocartesianDualityCoproductCompatibilityMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X82B3CE207D7A23F5">2.4-25 AddCocartesianDualityCoproductCompatibilityMorphismWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X860864E87CADE984">2.4-26 AddCocartesianEvaluationForCocartesianDual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X85F176D67AD398D1">2.4-27 AddCocartesianEvaluationForCocartesianDualWithGivenCoproduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7AAB79D587E914F5">2.4-28 AddCocartesianEvaluationMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X822ABA86862D37BF">2.4-29 AddCocartesianEvaluationMorphismWithGivenRange</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X78C80D10866270D8">2.4-30 AddCocartesianLambdaElimination</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7B1EAF72786FDE05">2.4-31 AddCocartesianLambdaIntroduction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X86219B827E0CBD3E">2.4-32 AddCocartesianPostCoComposeMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7C67460D7A6AAB03">2.4-33 AddCocartesianPostCoComposeMorphismWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7E9CD641846DA058">2.4-34 AddCocartesianPreCoComposeMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7EFD27A484E07A42">2.4-35 AddCocartesianPreCoComposeMorphismWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8441A8F07AE8FFAD">2.4-36 AddCoexponentialCoproductCompatibilityMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X814EEFCE7852912D">2.4-37 AddCoexponentialCoproductCompatibilityMorphismWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7B660BF77F454397">2.4-38 AddCoexponentialOnMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8277B990830FE89B">2.4-39 AddCoexponentialOnMorphismsWithGivenCoexponentials</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8306E36D865434DE">2.4-40 AddCoexponentialOnObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X87A1D00E802BD23B">2.4-41 AddCoexponentialToCoproductAdjunctionMap</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X874F44EA8232E275">2.4-42 AddCoproductToCoexponentialAdjunctionMap</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7ADFA85F7F4C660D">2.4-43 AddIsomorphismFromCocartesianDualToCoexponential</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7A9087317E0002C6">2.4-44 AddIsomorphismFromCoexponentialToCocartesianDual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8740DECA83D8D370">2.4-45 AddIsomorphismFromCoexponentialToObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8503332C7B5FA60C">2.4-46 AddIsomorphismFromCoexponentialToObjectWithGivenCoexponential</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8154C659859FDC54">2.4-47 AddIsomorphismFromObjectToCoexponential</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X83B61B5B7D18A928">2.4-48 AddIsomorphismFromObjectToCoexponentialWithGivenCoexponential</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7CFE85E87A821590">2.4-49 AddMorphismFromCocartesianBidual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D0B496678146095">2.4-50 AddMorphismFromCocartesianBidualWithGivenCocartesianBidual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X83484DB47ACEFBF0">2.4-51 AddMorphismFromCoexponentialToCoproduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X80DF9A207E6C7E54">2.4-52 AddMorphismFromCoexponentialToCoproductWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8739648D829FDB08">2.4-53 AddUniversalPropertyOfCocartesianDual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X79D3768478931977">2.4-54 AddLeftCocartesianCodistributivityExpanding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X78AD03F17F28CDDB">2.4-55 AddLeftCocartesianCodistributivityExpandingWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8288CA7D7B2B357D">2.4-56 AddLeftCocartesianCodistributivityFactoring</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X86ECE2657C90E1D1">2.4-57 AddLeftCocartesianCodistributivityFactoringWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7DB4A43C7B9F0307">2.4-58 AddRightCocartesianCodistributivityExpanding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X84E0BA0D7BC8BDA2">2.4-59 AddRightCocartesianCodistributivityExpandingWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X86EF18C586F1D115">2.4-60 AddRightCocartesianCodistributivityFactoring</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7AA15B9986A66FB0">2.4-61 AddRightCocartesianCodistributivityFactoringWithGivenObjects</a></span>
+</div></div>
+</div>
+
+<h3>2 <span class="Heading">Cocartesian Categories</span></h3>
+
+<p><a id="X8407B6DB7C3A94C7" name="X8407B6DB7C3A94C7"></a></p>
+
+<h4>2.1 <span class="Heading">Cocartesian Categories</span></h4>
+
+<p>A <span class="Math">6</span>-tuple <span class="Math">( \mathbf{C}, \sqcup, 1, \alpha, \lambda, \rho )</span> consisting of</p>
+
+
+<ul>
+<li><p>a category <span class="Math">\mathbf{C}</span>,</p>
+
+</li>
+<li><p>a functor <span class="Math">\sqcup: \mathbf{C} \times \mathbf{C} \rightarrow \mathbf{C}</span>,</p>
+
+</li>
+<li><p>an object <span class="Math">1 \in \mathbf{C}</span>,</p>
+
+</li>
+<li><p>a natural isomorphism <span class="Math">\alpha_{a,b,c}: a \sqcup (b \sqcup c) \cong (a \sqcup b) \sqcup c</span>,</p>
+
+</li>
+<li><p>a natural isomorphism <span class="Math">\lambda_{a}: 1 \sqcup a \cong a</span>,</p>
+
+</li>
+<li><p>a natural isomorphism <span class="Math">\rho_{a}: a \sqcup 1 \cong a</span>,</p>
+
+</li>
+</ul>
+<p>is called a <em>cocartesian category</em>, if</p>
+
+
+<ul>
+<li><p>for all objects <span class="Math">a,b,c,d</span>, the pentagon identity holds:</p>
+
+</li>
+</ul>
+<p><span class="Math">(\alpha_{a,b,c} \sqcup \mathrm{id}_d) \circ \alpha_{a,b \sqcup c, d} \circ ( \mathrm{id}_a \sqcup \alpha_{b,c,d} ) = \alpha_{a \sqcup b, c, d} \circ \alpha_{a,b,c \sqcup d}</span>,</p>
+
+
+<ul>
+<li><p>for all objects <span class="Math">a,c</span>, the triangle identity holds:</p>
+
+</li>
+</ul>
+<p><span class="Math">( \rho_a \sqcup \mathrm{id}_c ) \circ \alpha_{a,1,c} = \mathrm{id}_a \sqcup \lambda_c</span>.</p>
+
+<p>The corresponding GAP property is given by <code class="code">IsCocartesianCategory</code>.</p>
+
+<p><a id="X78839ADA85C957C8" name="X78839ADA85C957C8"></a></p>
+
+<h5>2.1-1 CocartesianBraiding</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianBraiding</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a \sqcup b, b \sqcup a )</span>.</p>
+
+<p>The arguments are two objects <span class="Math">a,b</span>. The output is the braiding <span class="Math"> B_{a,b}: a \sqcup b \rightarrow b \sqcup a</span>.</p>
+
+<p><a id="X85FFFA1E7A7E247F" name="X85FFFA1E7A7E247F"></a></p>
+
+<h5>2.1-2 CocartesianBraidingWithGivenCoproducts</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianBraidingWithGivenCoproducts</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a \sqcup b, b \sqcup a )</span>.</p>
+
+<p>The arguments are an object <span class="Math">s = a \sqcup b</span>, two objects <span class="Math">a,b</span>, and an object <span class="Math">r = b \sqcup a</span>. The output is the braiding <span class="Math"> B_{a,b}: a \sqcup b \rightarrow b \sqcup a</span>.</p>
+
+<p><a id="X7D99EF8C7C8995D8" name="X7D99EF8C7C8995D8"></a></p>
+
+<h5>2.1-3 CocartesianBraidingInverse</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianBraidingInverse</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( b \sqcup a, a \sqcup b )</span>.</p>
+
+<p>The arguments are two objects <span class="Math">a,b</span>. The output is the inverse braiding <span class="Math"> B_{a,b}^{-1}: b \sqcup a \rightarrow a \sqcup b</span>.</p>
+
+<p><a id="X83BFCEFF7A496F3A" name="X83BFCEFF7A496F3A"></a></p>
+
+<h5>2.1-4 CocartesianBraidingInverseWithGivenCoproducts</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianBraidingInverseWithGivenCoproducts</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( b \sqcup a, a \sqcup b )</span>.</p>
+
+<p>The arguments are an object <span class="Math">s = b \sqcup a</span>, two objects <span class="Math">a,b</span>, and an object <span class="Math">r = a \sqcup b</span>. The output is the inverse braiding <span class="Math"> B_{a,b}^{-1}: b \sqcup a \rightarrow a \sqcup b</span>.</p>
+
+<p><a id="X85A5C35F81D35CD7" name="X85A5C35F81D35CD7"></a></p>
+
+<h5>2.1-5 CoproductOnMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoproductOnMorphisms</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a \sqcup b, a' \sqcup b')</span></p>
+
+<p>The arguments are two morphisms <span class="Math">\alpha: a \rightarrow a', \beta: b \rightarrow b'</span>. The output is the coproduct <span class="Math">\alpha \sqcup \beta</span>.</p>
+
+<p><a id="X8203861B862A36B1" name="X8203861B862A36B1"></a></p>
+
+<h5>2.1-6 CoproductOnMorphismsWithGivenCoproducts</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoproductOnMorphismsWithGivenCoproducts</code>( <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a \sqcup b, a' \sqcup b')</span></p>
+
+<p>The arguments are an object <span class="Math">s = a \sqcup b</span>, two morphisms <span class="Math">\alpha: a \rightarrow a', \beta: b \rightarrow b'</span>, and an object <span class="Math">r = a' \sqcup b'</span>. The output is the coproduct <span class="Math">\alpha \sqcup \beta</span>.</p>
+
+<p><a id="X7804E2397B97BB8F" name="X7804E2397B97BB8F"></a></p>
+
+<h5>2.1-7 CocartesianAssociatorRightToLeft</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianAssociatorRightToLeft</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a \sqcup (b \sqcup c), (a \sqcup b) \sqcup c )</span>.</p>
+
+<p>The arguments are three objects <span class="Math">a,b,c</span>. The output is the associator <span class="Math">\alpha_{a,(b,c)}: a \sqcup (b \sqcup c) \rightarrow (a \sqcup b) \sqcup c</span>.</p>
+
+<p><a id="X80C6F6C381284294" name="X80C6F6C381284294"></a></p>
+
+<h5>2.1-8 CocartesianAssociatorRightToLeftWithGivenCoproducts</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianAssociatorRightToLeftWithGivenCoproducts</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a \sqcup (b \sqcup c), (a \sqcup b) \sqcup c )</span>.</p>
+
+<p>The arguments are an object <span class="Math">s = a \sqcup (b \sqcup c)</span>, three objects <span class="Math">a,b,c</span>, and an object <span class="Math">r = (a \sqcup b) \sqcup c</span>. The output is the associator <span class="Math">\alpha_{a,(b,c)}: a \sqcup (b \sqcup c) \rightarrow (a \sqcup b) \sqcup c</span>.</p>
+
+<p><a id="X809C1E9F7F668DE4" name="X809C1E9F7F668DE4"></a></p>
+
+<h5>2.1-9 CocartesianAssociatorLeftToRight</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianAssociatorLeftToRight</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( (a \sqcup b) \sqcup c \rightarrow a \sqcup (b \sqcup c) )</span>.</p>
+
+<p>The arguments are three objects <span class="Math">a,b,c</span>. The output is the associator <span class="Math">\alpha_{(a,b),c}: (a \sqcup b) \sqcup c \rightarrow a \sqcup (b \sqcup c)</span>.</p>
+
+<p><a id="X86A8599A85D974FF" name="X86A8599A85D974FF"></a></p>
+
+<h5>2.1-10 CocartesianAssociatorLeftToRightWithGivenCoproducts</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianAssociatorLeftToRightWithGivenCoproducts</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( (a \sqcup b) \sqcup c \rightarrow a \sqcup (b \sqcup c) )</span>.</p>
+
+<p>The arguments are an object <span class="Math">s = (a \sqcup b) \sqcup c</span>, three objects <span class="Math">a,b,c</span>, and an object <span class="Math">r = a \sqcup (b \sqcup c)</span>. The output is the associator <span class="Math">\alpha_{(a,b),c}: (a \sqcup b) \sqcup c \rightarrow a \sqcup (b \sqcup c)</span>.</p>
+
+<p><a id="X83CA3FF67CB24649" name="X83CA3FF67CB24649"></a></p>
+
+<h5>2.1-11 CocartesianLeftUnitor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianLeftUnitor</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(1 \sqcup a, a )</span></p>
+
+<p>The argument is an object <span class="Math">a</span>. The output is the left unitor <span class="Math">\lambda_a: 1 \sqcup a \rightarrow a</span>.</p>
+
+<p><a id="X852C1D2B81A9D05D" name="X852C1D2B81A9D05D"></a></p>
+
+<h5>2.1-12 CocartesianLeftUnitorWithGivenCoproduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianLeftUnitorWithGivenCoproduct</code>( <var class="Arg">a</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(1 \sqcup a, a )</span></p>
+
+<p>The arguments are an object <span class="Math">a</span> and an object <span class="Math">s = 1 \sqcup a</span>. The output is the left unitor <span class="Math">\lambda_a: 1 \sqcup a \rightarrow a</span>.</p>
+
+<p><a id="X84DA37F184308F45" name="X84DA37F184308F45"></a></p>
+
+<h5>2.1-13 CocartesianLeftUnitorInverse</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianLeftUnitorInverse</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a, 1 \sqcup a)</span></p>
+
+<p>The argument is an object <span class="Math">a</span>. The output is the inverse of the left unitor <span class="Math">\lambda_a^{-1}: a \rightarrow 1 \sqcup a</span>.</p>
+
+<p><a id="X7C7362437B3DBCD5" name="X7C7362437B3DBCD5"></a></p>
+
+<h5>2.1-14 CocartesianLeftUnitorInverseWithGivenCoproduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianLeftUnitorInverseWithGivenCoproduct</code>( <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a, 1 \sqcup a)</span></p>
+
+<p>The argument is an object <span class="Math">a</span> and an object <span class="Math">r = 1 \sqcup a</span>. The output is the inverse of the left unitor <span class="Math">\lambda_a^{-1}: a \rightarrow 1 \sqcup a</span>.</p>
+
+<p><a id="X79D1FEE987980537" name="X79D1FEE987980537"></a></p>
+
+<h5>2.1-15 CocartesianRightUnitor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianRightUnitor</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a \sqcup 1, a )</span></p>
+
+<p>The argument is an object <span class="Math">a</span>. The output is the right unitor <span class="Math">\rho_a: a \sqcup 1 \rightarrow a</span>.</p>
+
+<p><a id="X7BB1DCDE808E06F9" name="X7BB1DCDE808E06F9"></a></p>
+
+<h5>2.1-16 CocartesianRightUnitorWithGivenCoproduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianRightUnitorWithGivenCoproduct</code>( <var class="Arg">a</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a \sqcup 1, a )</span></p>
+
+<p>The arguments are an object <span class="Math">a</span> and an object <span class="Math">s = a \sqcup 1</span>. The output is the right unitor <span class="Math">\rho_a: a \sqcup 1 \rightarrow a</span>.</p>
+
+<p><a id="X867C00437E26CBD5" name="X867C00437E26CBD5"></a></p>
+
+<h5>2.1-17 CocartesianRightUnitorInverse</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianRightUnitorInverse</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, a \sqcup 1 )</span></p>
+
+<p>The argument is an object <span class="Math">a</span>. The output is the inverse of the right unitor <span class="Math">\rho_a^{-1}: a \rightarrow a \sqcup 1</span>.</p>
+
+<p><a id="X7C0F9FBB7EB2A224" name="X7C0F9FBB7EB2A224"></a></p>
+
+<h5>2.1-18 CocartesianRightUnitorInverseWithGivenCoproduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianRightUnitorInverseWithGivenCoproduct</code>( <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, a \sqcup 1 )</span></p>
+
+<p>The arguments are an object <span class="Math">a</span> and an object <span class="Math">r = a \sqcup 1</span>. The output is the inverse of the right unitor <span class="Math">\rho_a^{-1}: a \rightarrow a \sqcup 1</span>.</p>
+
+<p><a id="X86FBEFB381C1680F" name="X86FBEFB381C1680F"></a></p>
+
+<h5>2.1-19 LeftCocartesianCodistributivityExpanding</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftCocartesianCodistributivityExpanding</code>( <var class="Arg">a</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a \sqcup (b_1 \times \dots \times b_n), (a \sqcup b_1) \times \dots \times (a \sqcup b_n) )</span></p>
+
+<p>The arguments are an object <span class="Math">a</span> and a list of objects <span class="Math">L = (b_1, \dots, b_n)</span>. The output is the left distributivity morphism <span class="Math">a \sqcup (b_1 \times \dots \times b_n) \rightarrow (a \sqcup b_1) \times \dots \times (a \sqcup b_n)</span>.</p>
+
+<p><a id="X85FB3FA27B125FC4" name="X85FB3FA27B125FC4"></a></p>
+
+<h5>2.1-20 LeftCocartesianCodistributivityExpandingWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftCocartesianCodistributivityExpandingWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">L</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span></p>
+
+<p>The arguments are an object <span class="Math">s = a \sqcup (b_1 \times \dots \times b_n)</span>, an object <span class="Math">a</span>, a list of objects <span class="Math">L = (b_1, \dots, b_n)</span>, and an object <span class="Math">r = (a \sqcup b_1) \times \dots \times (a \sqcup b_n)</span>. The output is the left distributivity morphism <span class="Math">s \rightarrow r</span>.</p>
+
+<p><a id="X8437EBC38559586E" name="X8437EBC38559586E"></a></p>
+
+<h5>2.1-21 LeftCocartesianCodistributivityFactoring</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftCocartesianCodistributivityFactoring</code>( <var class="Arg">a</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( (a \sqcup b_1) \times \dots \times (a \sqcup b_n), a \sqcup (b_1 \times \dots \times b_n) )</span></p>
+
+<p>The arguments are an object <span class="Math">a</span> and a list of objects <span class="Math">L = (b_1, \dots, b_n)</span>. The output is the left distributivity morphism <span class="Math">(a \sqcup b_1) \times \dots \times (a \sqcup b_n) \rightarrow a \sqcup (b_1 \times \dots \times b_n)</span>.</p>
+
+<p><a id="X81173A1C7F8A6FA5" name="X81173A1C7F8A6FA5"></a></p>
+
+<h5>2.1-22 LeftCocartesianCodistributivityFactoringWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftCocartesianCodistributivityFactoringWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">L</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span></p>
+
+<p>The arguments are an object <span class="Math">s = (a \sqcup b_1) \times \dots \times (a \sqcup b_n)</span>, an object <span class="Math">a</span>, a list of objects <span class="Math">L = (b_1, \dots, b_n)</span>, and an object <span class="Math">r = a \sqcup (b_1 \times \dots \times b_n)</span>. The output is the left distributivity morphism <span class="Math">s \rightarrow r</span>.</p>
+
+<p><a id="X79364D638492578F" name="X79364D638492578F"></a></p>
+
+<h5>2.1-23 RightCocartesianCodistributivityExpanding</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightCocartesianCodistributivityExpanding</code>( <var class="Arg">L</var>, <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( (b_1 \times \dots \times b_n) \sqcup a, (b_1 \sqcup a) \times \dots \times (b_n \sqcup a) )</span></p>
+
+<p>The arguments are a list of objects <span class="Math">L = (b_1, \dots, b_n)</span> and an object <span class="Math">a</span>. The output is the right distributivity morphism <span class="Math">(b_1 \times \dots \times b_n) \sqcup a \rightarrow (b_1 \sqcup a) \times \dots \times (b_n \sqcup a)</span>.</p>
+
+<p><a id="X7F5CAA1A7ABC2347" name="X7F5CAA1A7ABC2347"></a></p>
+
+<h5>2.1-24 RightCocartesianCodistributivityExpandingWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightCocartesianCodistributivityExpandingWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">L</var>, <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span></p>
+
+<p>The arguments are an object <span class="Math">s = (b_1 \times \dots \times b_n) \sqcup a</span>, a list of objects <span class="Math">L = (b_1, \dots, b_n)</span>, an object <span class="Math">a</span>, and an object <span class="Math">r = (b_1 \sqcup a) \times \dots \times (b_n \sqcup a)</span>. The output is the right distributivity morphism <span class="Math">s \rightarrow r</span>.</p>
+
+<p><a id="X7BFA49137CABF7E3" name="X7BFA49137CABF7E3"></a></p>
+
+<h5>2.1-25 RightCocartesianCodistributivityFactoring</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightCocartesianCodistributivityFactoring</code>( <var class="Arg">L</var>, <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( (b_1 \sqcup a) \times \dots \times (b_n \sqcup a), (b_1 \times \dots \times b_n) \sqcup a)</span></p>
+
+<p>The arguments are a list of objects <span class="Math">L = (b_1, \dots, b_n)</span> and an object <span class="Math">a</span>. The output is the right distributivity morphism <span class="Math">(b_1 \sqcup a) \times \dots \times (b_n \sqcup a) \rightarrow (b_1 \times \dots \times b_n) \sqcup a </span>.</p>
+
+<p><a id="X7BB0AFA48285832B" name="X7BB0AFA48285832B"></a></p>
+
+<h5>2.1-26 RightCocartesianCodistributivityFactoringWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightCocartesianCodistributivityFactoringWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">L</var>, <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span></p>
+
+<p>The arguments are an object <span class="Math">s = (b_1 \sqcup a) \times \dots \times (b_n \sqcup a)</span>, a list of objects <span class="Math">L = (b_1, \dots, b_n)</span>, an object <span class="Math">a</span>, and an object <span class="Math">r = (b_1 \times \dots \times b_n) \sqcup a</span>. The output is the right distributivity morphism <span class="Math">s \rightarrow r</span>.</p>
+
+<p><a id="X8401194B83355921" name="X8401194B83355921"></a></p>
+
+<h4>2.2 <span class="Heading">Cocartesian Coclosed Categories</span></h4>
+
+<p>A cocartesian category <span class="Math">\mathbf{C}</span> which has for each functor <span class="Math">- \sqcup b: \mathbf{C} \rightarrow \mathbf{C}</span> a left adjoint (denoted by <span class="Math">\mathrm{Coexponential}(-,b)</span>) is called a <em>coclosed cocartesian category</em>.</p>
+
+<p>The corresponding GAP property is called <code class="code">IsCocartesianCoclosedCategory</code>.</p>
+
+<p><a id="X81A81F217824E0D9" name="X81A81F217824E0D9"></a></p>
+
+<h5>2.2-1 CoexponentialOnObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoexponentialOnObjects</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The arguments are two objects <span class="Math">a,b</span>. The output is the coexponential object <span class="Math">\mathrm{Coexponential}(a,b)</span>.</p>
+
+<p><a id="X789E9E9883084887" name="X789E9E9883084887"></a></p>
+
+<h5>2.2-2 CoexponentialOnMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoexponentialOnMorphisms</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Coexponential}(a,b'), \mathrm{Coexponential}(a',b) )</span></p>
+
+<p>The arguments are two morphisms <span class="Math">\alpha: a \rightarrow a', \beta: b \rightarrow b'</span>. The output is the coexponential morphism <span class="Math">\mathrm{Coexponential}(\alpha,\beta): \mathrm{Coexponential}(a,b') \rightarrow \mathrm{Coexponential}(a',b)</span>.</p>
+
+<p><a id="X84196D1986AA2D87" name="X84196D1986AA2D87"></a></p>
+
+<h5>2.2-3 CoexponentialOnMorphismsWithGivenCoexponentials</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoexponentialOnMorphismsWithGivenCoexponentials</code>( <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Coexponential}(a,b'), \mathrm{Coexponential}(a',b) )</span></p>
+
+<p>The arguments are an object <span class="Math">s = \mathrm{Coexponential}(a,b')</span>, two morphisms <span class="Math">\alpha: a \rightarrow a', \beta: b \rightarrow b'</span>, and an object <span class="Math">r = \mathrm{Coexponential}(a',b)</span>. The output is the coexponential morphism <span class="Math">\mathrm{Coexponential}(\alpha,\beta): \mathrm{Coexponential}(a,b') \rightarrow \mathrm{Coexponential}(a',b)</span>.</p>
+
+<p><a id="X856459F9811E00B3" name="X856459F9811E00B3"></a></p>
+
+<h5>2.2-4 CocartesianEvaluationMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianEvaluationMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, \mathrm{Coexponential}(a,b) \sqcup b )</span>.</p>
+
+<p>The arguments are two objects <span class="Math">a, b</span>. The output is the cocartesian evaluation morphism <span class="Math">\mathrm{cocaev}_{a,b}: a \rightarrow \mathrm{Coexponential}(a,b) \sqcup b</span>, i.e., the unit of the coexponential-coproduct adjunction.</p>
+
+<p><a id="X86E2717479C2E395" name="X86E2717479C2E395"></a></p>
+
+<h5>2.2-5 CocartesianEvaluationMorphismWithGivenRange</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianEvaluationMorphismWithGivenRange</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, \mathrm{Coexponential}(a,b) \sqcup b )</span>.</p>
+
+<p>The arguments are two objects <span class="Math">a,b</span> and an object <span class="Math">r = \mathrm{Coexponential}(a,b) \sqcup b</span>. The output is the cocartesian evaluation morphism <span class="Math">\mathrm{cocaev}_{a,b}: a \rightarrow \mathrm{Coexponential}(a,b) \sqcup b</span>, i.e., the unit of the coexponential-coproduct adjunction.</p>
+
+<p><a id="X81B67702862D3A4F" name="X81B67702862D3A4F"></a></p>
+
+<h5>2.2-6 CocartesianCoevaluationMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianCoevaluationMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Coexponential}(a \sqcup b, b), a )</span>.</p>
+
+<p>The arguments are two objects <span class="Math">a,b</span>. The output is the cocartesian coevaluation morphism <span class="Math">\mathrm{cocacoev}_{a,b}: \mathrm{Coexponential}(a \sqcup b, b) \rightarrow a</span>, i.e., the counit of the coexponential-coproduct adjunction.</p>
+
+<p><a id="X7925E053822FE33B" name="X7925E053822FE33B"></a></p>
+
+<h5>2.2-7 CocartesianCoevaluationMorphismWithGivenSource</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianCoevaluationMorphismWithGivenSource</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Coexponential}(a \sqcup b, b), b )</span>.</p>
+
+<p>The arguments are two objects <span class="Math">a,b</span> and an object <span class="Math">s = \mathrm{Coexponential(a \sqcup b, b)}</span>. The output is the cocartesian coevaluation morphism <span class="Math">\mathrm{cocacoev}_{a,b}: \mathrm{Coexponential}(a \sqcup b, b) \rightarrow a</span>, i.e., the unit of the coexponential-coproduct adjunction.</p>
+
+<p><a id="X7FA9C9B178E29D54" name="X7FA9C9B178E29D54"></a></p>
+
+<h5>2.2-8 CoproductToCoexponentialAdjunctionMap</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoproductToCoexponentialAdjunctionMap</code>( <var class="Arg">c</var>, <var class="Arg">b</var>, <var class="Arg">g</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Coexponential}(a,b), c )</span>.</p>
+
+<p>The arguments are objects <span class="Math">c,b</span> and a morphism <span class="Math">g: a \rightarrow c \sqcup b</span>. The output is a morphism <span class="Math">f: \mathrm{Coexponential}(a,b) \rightarrow c</span> corresponding to <span class="Math">g</span> under the coexponential-coproduct adjunction.</p>
+
+<p><a id="X785A005C7F7B7EA1" name="X785A005C7F7B7EA1"></a></p>
+
+<h5>2.2-9 CoexponentialToCoproductAdjunctionMap</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoexponentialToCoproductAdjunctionMap</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">f</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a, c \sqcup b)</span>.</p>
+
+<p>The arguments are objects <span class="Math">a,b</span> and a morphism <span class="Math">f: \mathrm{Coexponential}(a,b) \rightarrow c</span>. The output is a morphism <span class="Math">g: a \rightarrow c \sqcup b</span> corresponding to <span class="Math">f</span> under the coexponential-coproduct adjunction.</p>
+
+<p><a id="X7977E68B821EBDED" name="X7977E68B821EBDED"></a></p>
+
+<h5>2.2-10 CocartesianPreCoComposeMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianPreCoComposeMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Coexponential}(a,c), \mathrm{Coexponential}(b,c) \sqcup \mathrm{Coexponential}(a,b) )</span>.</p>
+
+<p>The arguments are three objects <span class="Math">a,b,c</span>. The output is the precocomposition morphism <span class="Math">\mathrm{CocartesianPreCoComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{Coexponential}(a,c) \rightarrow \mathrm{Coexponential}(b,c) \sqcup \mathrm{Coexponential}(a,b)</span>.</p>
+
+<p><a id="X8107634778D34794" name="X8107634778D34794"></a></p>
+
+<h5>2.2-11 CocartesianPreCoComposeMorphismWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianPreCoComposeMorphismWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Coexponential}(a,c), \mathrm{Coexponential}(b,c) \sqcup \mathrm{Coexponential}(a,b) )</span>.</p>
+
+<p>The arguments are an object <span class="Math">s = \mathrm{Coexponential}(a,c)</span>, three objects <span class="Math">a,b,c</span>, and an object <span class="Math">r = \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(b,c)</span>. The output is the precocomposition morphism <span class="Math">\mathrm{CocartesianPreCoComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{Coexponential}(a,c) \rightarrow \mathrm{Coexponential}(b,c) \sqcup \mathrm{Coexponential}(a,b)</span>.</p>
+
+<p><a id="X848438BC87659CAA" name="X848438BC87659CAA"></a></p>
+
+<h5>2.2-12 CocartesianPostCoComposeMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianPostCoComposeMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Coexponential}(a,c), \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(b,c) )</span>.</p>
+
+<p>The arguments are three objects <span class="Math">a,b,c</span>. The output is the postcocomposition morphism <span class="Math">\mathrm{CocartesianPostCoComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{Coexponential}(a,c) \rightarrow \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(b,c)</span>.</p>
+
+<p><a id="X82B515B07F69072C" name="X82B515B07F69072C"></a></p>
+
+<h5>2.2-13 CocartesianPostCoComposeMorphismWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianPostCoComposeMorphismWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Coexponential}(a,c), \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(b,c) )</span>.</p>
+
+<p>The arguments are an object <span class="Math">s = \mathrm{Coexponential}(a,c)</span>, three objects <span class="Math">a,b,c</span>, and an object <span class="Math">r = \mathrm{Coexponential}(b,c) \sqcup \mathrm{Coexponential}(a,b)</span>. The output is the postcocomposition morphism <span class="Math">\mathrm{CocartesianPostCoComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{Coexponential}(a,c) \rightarrow \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(b,c)</span>.</p>
+
+<p><a id="X7C32B0FE7F1BBE28" name="X7C32B0FE7F1BBE28"></a></p>
+
+<h5>2.2-14 CocartesianDualOnObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianDualOnObjects</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The argument is an object <span class="Math">a</span>. The output is its codual object <span class="Math">a_{\vee}</span>.</p>
+
+<p><a id="X7C24483282494BEA" name="X7C24483282494BEA"></a></p>
+
+<h5>2.2-15 CocartesianDualOnMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianDualOnMorphisms</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( b_{\vee}, a_{\vee} )</span>.</p>
+
+<p>The argument is a morphism <span class="Math">\alpha: a \rightarrow b</span>. The output is its codual morphism <span class="Math">\alpha_{\vee}: b_{\vee} \rightarrow a_{\vee}</span>.</p>
+
+<p><a id="X79E3087A81A7FFB5" name="X79E3087A81A7FFB5"></a></p>
+
+<h5>2.2-16 CocartesianDualOnMorphismsWithGivenCocartesianDuals</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianDualOnMorphismsWithGivenCocartesianDuals</code>( <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( b_{\vee}, a_{\vee} )</span>.</p>
+
+<p>The argument is an object <span class="Math">s = b_{\vee}</span>, a morphism <span class="Math">\alpha: a \rightarrow b</span>, and an object <span class="Math">r = a_{\vee}</span>. The output is the dual morphism <span class="Math">\alpha_{\vee}: b^{\vee} \rightarrow a^{\vee}</span>.</p>
+
+<p><a id="X80FFD69484C4674E" name="X80FFD69484C4674E"></a></p>
+
+<h5>2.2-17 CocartesianEvaluationForCocartesianDual</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianEvaluationForCocartesianDual</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( 1, a_{\vee} \sqcup a )</span>.</p>
+
+<p>The argument is an object <span class="Math">a</span>. The output is the cocartesian evaluation morphism <span class="Math">\mathrm{cocaev}_{a}: 1 \rightarrow a_{\vee} \sqcup a</span>.</p>
+
+<p><a id="X7EB593727F112B5C" name="X7EB593727F112B5C"></a></p>
+
+<h5>2.2-18 CocartesianEvaluationForCocartesianDualWithGivenCoproduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianEvaluationForCocartesianDualWithGivenCoproduct</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( 1, a_{\vee} \sqcup a )</span>.</p>
+
+<p>The arguments are an object <span class="Math">s = 1</span>, an object <span class="Math">a</span>, and an object <span class="Math">r = a_{\vee} \sqcup a</span>. The output is the cocartesian evaluation morphism <span class="Math">\mathrm{cocaev}_{a}: 1 \rightarrow a_{\vee} \sqcup a</span>.</p>
+
+<p><a id="X8315996B8034E0CD" name="X8315996B8034E0CD"></a></p>
+
+<h5>2.2-19 MorphismFromCocartesianBidual</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromCocartesianBidual</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}((a_{\vee})_{\vee}, a)</span>.</p>
+
+<p>The argument is an object <span class="Math">a</span>. The output is the morphism from the cobidual <span class="Math">(a_{\vee})_{\vee} \rightarrow a</span>.</p>
+
+<p><a id="X80BB47FE784859AA" name="X80BB47FE784859AA"></a></p>
+
+<h5>2.2-20 MorphismFromCocartesianBidualWithGivenCocartesianBidual</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromCocartesianBidualWithGivenCocartesianBidual</code>( <var class="Arg">a</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}((a_{\vee})_{\vee}, a)</span>.</p>
+
+<p>The arguments are an object <span class="Math">a</span>, and an object <span class="Math">s = (a_{\vee})_{\vee}</span>. The output is the morphism from the cobidual <span class="Math">(a_{\vee})_{\vee} \rightarrow a</span>.</p>
+
+<p><a id="X79C7AB14874B1A3D" name="X79C7AB14874B1A3D"></a></p>
+
+<h5>2.2-21 CoexponentialCoproductCompatibilityMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoexponentialCoproductCompatibilityMorphism</code>( <var class="Arg">list</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Coexponential}(a \sqcup a', b \sqcup b'), \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(a',b'))</span>.</p>
+
+<p>The argument is a list of four objects <span class="Math">[ a, a', b, b' ]</span>. The output is the natural morphism <span class="Math">\mathrm{CoexponentialCoproductCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}: \mathrm{Coexponential}(a \sqcup a', b \sqcup b') \rightarrow \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(a',b')</span>.</p>
+
+<p><a id="X7EABD2E17C2FEE30" name="X7EABD2E17C2FEE30"></a></p>
+
+<h5>2.2-22 CoexponentialCoproductCompatibilityMorphismWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoexponentialCoproductCompatibilityMorphismWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">list</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Coexponential}(a \sqcup a', b \sqcup b'), \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(a',b') )</span>.</p>
+
+<p>The arguments are a list of four objects <span class="Math">[ a, a', b, b' ]</span>, and two objects <span class="Math">s = \mathrm{Coexponential}(a \sqcup a', b \sqcup b')</span> and <span class="Math">r = \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(a',b')</span>. The output is the natural morphism <span class="Math">\mathrm{CoexponentialCoproductCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}: \mathrm{Coexponential}(a \sqcup a', b \sqcup b') \rightarrow \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(a',b')</span>.</p>
+
+<p><a id="X84162A947BD198C7" name="X84162A947BD198C7"></a></p>
+
+<h5>2.2-23 CocartesianDualityCoproductCompatibilityMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianDualityCoproductCompatibilityMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( (a \sqcup b)_{\vee}, a_{\vee} \sqcup b_{\vee} )</span>.</p>
+
+<p>The arguments are two objects <span class="Math">a,b</span>. The output is the natural morphism <span class="Math">\mathrm{CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects}: (a \sqcup b)_{\vee} \rightarrow a_{\vee} \sqcup b_{\vee}</span>.</p>
+
+<p><a id="X7BC3879A7E34C141" name="X7BC3879A7E34C141"></a></p>
+
+<h5>2.2-24 CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( (a \sqcup b)_{\vee}, a_{\vee} \sqcup b_{\vee} )</span>.</p>
+
+<p>The arguments are an object <span class="Math">s = (a \sqcup b)_{\vee}</span>, two objects <span class="Math">a,b</span>, and an object <span class="Math">r = a_{\vee} \sqcup b_{\vee}</span>. The output is the natural morphism <span class="Math">\mathrm{CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects}_{a,b}: (a \sqcup b)_{\vee} \rightarrow a_{\vee} \sqcup b_{\vee}</span>.</p>
+
+<p><a id="X7A6AAD118687CAA7" name="X7A6AAD118687CAA7"></a></p>
+
+<h5>2.2-25 MorphismFromCoexponentialToCoproduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromCoexponentialToCoproduct</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Coexponential}(a,b), b_{\vee} \sqcup a )</span>.</p>
+
+<p>The arguments are two objects <span class="Math">a,b</span>. The output is the natural morphism <span class="Math">\mathrm{MorphismFromCoexponentialToCoproductWithGivenObjects}_{a,b}: \mathrm{Coexponential}(a,b) \rightarrow b_{\vee} \sqcup a</span>.</p>
+
+<p><a id="X7EAA87FE865A70C4" name="X7EAA87FE865A70C4"></a></p>
+
+<h5>2.2-26 MorphismFromCoexponentialToCoproductWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromCoexponentialToCoproductWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Coexponential}(a,b), a \sqcup b_{\vee} )</span>.</p>
+
+<p>The arguments are an object <span class="Math">s = \mathrm{Coexponential}(a,b)</span>, two objects <span class="Math">a,b</span>, and an object <span class="Math">r = b_{\vee} \sqcup a</span>. The output is the natural morphism <span class="Math">\mathrm{MorphismFromCoexponentialToCoproductWithGivenObjects}_{a,b}: \mathrm{Coexponential}(a,b) \rightarrow a \sqcup b_{\vee}</span>.</p>
+
+<p><a id="X7AAE062D801ABCB7" name="X7AAE062D801ABCB7"></a></p>
+
+<h5>2.2-27 IsomorphismFromCocartesianDualToCoexponential</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromCocartesianDualToCoexponential</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a_{\vee}, \mathrm{Coexponential}(1,a))</span>.</p>
+
+<p>The argument is an object <span class="Math">a</span>. The output is the isomorphism <span class="Math">\mathrm{IsomorphismFromCocartesianDualToCoexponential}_{a}: a_{\vee} \rightarrow \mathrm{Coexponential}(1,a)</span>.</p>
+
+<p><a id="X7C33DB8078AAB040" name="X7C33DB8078AAB040"></a></p>
+
+<h5>2.2-28 IsomorphismFromCoexponentialToCocartesianDual</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromCoexponentialToCocartesianDual</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{Coexponential}(1,a), a_{\vee})</span>.</p>
+
+<p>The argument is an object <span class="Math">a</span>. The output is the isomorphism <span class="Math">\mathrm{IsomorphismFromCoexponentialToCocartesianDual}_{a}: \mathrm{Coexponential}(1,a) \rightarrow a_{\vee}</span>.</p>
+
+<p><a id="X7ECA24067A915ED8" name="X7ECA24067A915ED8"></a></p>
+
+<h5>2.2-29 UniversalPropertyOfCocartesianDual</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UniversalPropertyOfCocartesianDual</code>( <var class="Arg">t</var>, <var class="Arg">a</var>, <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a_{\vee}, t)</span>.</p>
+
+<p>The arguments are two objects <span class="Math">t,a</span>, and a morphism <span class="Math">\alpha: 1 \rightarrow t \sqcup a</span>. The output is the morphism <span class="Math">a_{\vee} \rightarrow t</span> given by the universal property of <span class="Math">a_{\vee}</span>.</p>
+
+<p><a id="X7F2EA2CA8742FDC9" name="X7F2EA2CA8742FDC9"></a></p>
+
+<h5>2.2-30 CocartesianLambdaIntroduction</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianLambdaIntroduction</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Coexponential}(a,b), 1 )</span>.</p>
+
+<p>The argument is a morphism <span class="Math">\alpha: a \rightarrow b</span>. The output is the corresponding morphism <span class="Math"> \mathrm{Coexponential}(a,b) \rightarrow 1</span> under the coexponential-coproduct adjunction.</p>
+
+<p><a id="X7B9811F67DF3DA0F" name="X7B9811F67DF3DA0F"></a></p>
+
+<h5>2.2-31 CocartesianLambdaElimination</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianLambdaElimination</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a,b)</span>.</p>
+
+<p>The arguments are two objects <span class="Math">a,b</span>, and a morphism <span class="Math">\alpha: \mathrm{Coexponential}(a,b) \rightarrow 1</span>. The output is a morphism <span class="Math">a \rightarrow b</span> corresponding to <span class="Math">\alpha</span> under the coexponential-coproduct adjunction.</p>
+
+<p><a id="X7A8A649479389BCF" name="X7A8A649479389BCF"></a></p>
+
+<h5>2.2-32 IsomorphismFromObjectToCoexponential</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromObjectToCoexponential</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a, \mathrm{Coexponential}(a,1))</span>.</p>
+
+<p>The argument is an object <span class="Math">a</span>. The output is the natural isomorphism <span class="Math">a \rightarrow \mathrm{Coexponential}(a,1)</span>.</p>
+
+<p><a id="X7CB39AA07AC92CD8" name="X7CB39AA07AC92CD8"></a></p>
+
+<h5>2.2-33 IsomorphismFromObjectToCoexponentialWithGivenCoexponential</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromObjectToCoexponentialWithGivenCoexponential</code>( <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a, \mathrm{Coexponential}(a,1))</span>.</p>
+
+<p>The argument is an object <span class="Math">a</span>, and an object <span class="Math">r = \mathrm{Coexponential}(a,1)</span>. The output is the natural isomorphism <span class="Math">a \rightarrow \mathrm{Coexponential}(a,1)</span>.</p>
+
+<p><a id="X7CF3B41386945F44" name="X7CF3B41386945F44"></a></p>
+
+<h5>2.2-34 IsomorphismFromCoexponentialToObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromCoexponentialToObject</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{Coexponential}(a,1), a)</span>.</p>
+
+<p>The argument is an object <span class="Math">a</span>. The output is the natural isomorphism <span class="Math">\mathrm{Coexponential}(a,1) \rightarrow a</span>.</p>
+
+<p><a id="X7E7C30DB8565E853" name="X7E7C30DB8565E853"></a></p>
+
+<h5>2.2-35 IsomorphismFromCoexponentialToObjectWithGivenCoexponential</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromCoexponentialToObjectWithGivenCoexponential</code>( <var class="Arg">a</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{Coexponential}(a,1), a)</span>.</p>
+
+<p>The argument is an object <span class="Math">a</span>, and an object <span class="Math">s = \mathrm{Coexponential}(a,1)</span>. The output is the natural isomorphism <span class="Math">\mathrm{Coexponential}(a,1) \rightarrow a</span>.</p>
+
+<p><a id="X7B40ED8B78D067A5" name="X7B40ED8B78D067A5"></a></p>
+
+<h4>2.3 <span class="Heading">Convenience Methods</span></h4>
+
+<p><a id="X7AB3661B86C9BC8D" name="X7AB3661B86C9BC8D"></a></p>
+
+<h5>2.3-1 Coexponential</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Coexponential</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a cell</p>
+
+<p>This is a convenience method. The arguments are two cells <span class="Math">a,b</span>. The output is the coexponential cell. If <span class="Math">a,b</span> are two CAP objects the output is the coexponential object <span class="Math">\mathrm{Coexponential}(a,b)</span>. If at least one of the arguments is a CAP morphism the output is a CAP morphism, namely the coexponential on morphisms, where any object is replaced by its identity morphism.</p>
+
+<p><a id="X85C8C80F785AEB5E" name="X85C8C80F785AEB5E"></a></p>
+
+<h4>2.4 <span class="Heading">Add-methods</span></h4>
+
+<p><a id="X879367BA846F988A" name="X879367BA846F988A"></a></p>
+
+<h5>2.4-1 AddCocartesianBraiding</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianBraiding</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianBraiding</code>. <span class="Math">F: ( a, b ) \mapsto \mathtt{CocartesianBraiding}(a, b)</span>.</p>
+
+<p><a id="X83B790727D455391" name="X83B790727D455391"></a></p>
+
+<h5>2.4-2 AddCocartesianBraidingInverse</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianBraidingInverse</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianBraidingInverse</code>. <span class="Math">F: ( a, b ) \mapsto \mathtt{CocartesianBraidingInverse}(a, b)</span>.</p>
+
+<p><a id="X78BADCAF8392041B" name="X78BADCAF8392041B"></a></p>
+
+<h5>2.4-3 AddCocartesianBraidingInverseWithGivenCoproducts</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianBraidingInverseWithGivenCoproducts</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianBraidingInverseWithGivenCoproducts</code>. <span class="Math">F: ( s, a, b, r ) \mapsto \mathtt{CocartesianBraidingInverseWithGivenCoproducts}(s, a, b, r)</span>.</p>
+
+<p><a id="X7B5A8EC9838FA0A1" name="X7B5A8EC9838FA0A1"></a></p>
+
+<h5>2.4-4 AddCocartesianBraidingWithGivenCoproducts</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianBraidingWithGivenCoproducts</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianBraidingWithGivenCoproducts</code>. <span class="Math">F: ( s, a, b, r ) \mapsto \mathtt{CocartesianBraidingWithGivenCoproducts}(s, a, b, r)</span>.</p>
+
+<p><a id="X843DB630835DD00C" name="X843DB630835DD00C"></a></p>
+
+<h5>2.4-5 AddCocartesianAssociatorLeftToRight</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianAssociatorLeftToRight</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianAssociatorLeftToRight</code>. <span class="Math">F: ( a, b, c ) \mapsto \mathtt{CocartesianAssociatorLeftToRight}(a, b, c)</span>.</p>
+
+<p><a id="X830F0ED28727F59B" name="X830F0ED28727F59B"></a></p>
+
+<h5>2.4-6 AddCocartesianAssociatorLeftToRightWithGivenCoproducts</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianAssociatorLeftToRightWithGivenCoproducts</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianAssociatorLeftToRightWithGivenCoproducts</code>. <span class="Math">F: ( s, a, b, c, r ) \mapsto \mathtt{CocartesianAssociatorLeftToRightWithGivenCoproducts}(s, a, b, c, r)</span>.</p>
+
+<p><a id="X7DB59174842D565E" name="X7DB59174842D565E"></a></p>
+
+<h5>2.4-7 AddCocartesianAssociatorRightToLeft</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianAssociatorRightToLeft</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianAssociatorRightToLeft</code>. <span class="Math">F: ( a, b, c ) \mapsto \mathtt{CocartesianAssociatorRightToLeft}(a, b, c)</span>.</p>
+
+<p><a id="X78C3C43D805773C9" name="X78C3C43D805773C9"></a></p>
+
+<h5>2.4-8 AddCocartesianAssociatorRightToLeftWithGivenCoproducts</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianAssociatorRightToLeftWithGivenCoproducts</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianAssociatorRightToLeftWithGivenCoproducts</code>. <span class="Math">F: ( s, a, b, c, r ) \mapsto \mathtt{CocartesianAssociatorRightToLeftWithGivenCoproducts}(s, a, b, c, r)</span>.</p>
+
+<p><a id="X82523F4B7D015893" name="X82523F4B7D015893"></a></p>
+
+<h5>2.4-9 AddCocartesianLeftUnitor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianLeftUnitor</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianLeftUnitor</code>. <span class="Math">F: ( a ) \mapsto \mathtt{CocartesianLeftUnitor}(a)</span>.</p>
+
+<p><a id="X85F3DAB880F2E2AF" name="X85F3DAB880F2E2AF"></a></p>
+
+<h5>2.4-10 AddCocartesianLeftUnitorInverse</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianLeftUnitorInverse</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianLeftUnitorInverse</code>. <span class="Math">F: ( a ) \mapsto \mathtt{CocartesianLeftUnitorInverse}(a)</span>.</p>
+
+<p><a id="X7E2934A08250CAC0" name="X7E2934A08250CAC0"></a></p>
+
+<h5>2.4-11 AddCocartesianLeftUnitorInverseWithGivenCoproduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianLeftUnitorInverseWithGivenCoproduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianLeftUnitorInverseWithGivenCoproduct</code>. <span class="Math">F: ( a, r ) \mapsto \mathtt{CocartesianLeftUnitorInverseWithGivenCoproduct}(a, r)</span>.</p>
+
+<p><a id="X849BEC11838849F3" name="X849BEC11838849F3"></a></p>
+
+<h5>2.4-12 AddCocartesianLeftUnitorWithGivenCoproduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianLeftUnitorWithGivenCoproduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianLeftUnitorWithGivenCoproduct</code>. <span class="Math">F: ( a, s ) \mapsto \mathtt{CocartesianLeftUnitorWithGivenCoproduct}(a, s)</span>.</p>
+
+<p><a id="X80589D877840CAC9" name="X80589D877840CAC9"></a></p>
+
+<h5>2.4-13 AddCocartesianRightUnitor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianRightUnitor</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianRightUnitor</code>. <span class="Math">F: ( a ) \mapsto \mathtt{CocartesianRightUnitor}(a)</span>.</p>
+
+<p><a id="X84A04972868B0651" name="X84A04972868B0651"></a></p>
+
+<h5>2.4-14 AddCocartesianRightUnitorInverse</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianRightUnitorInverse</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianRightUnitorInverse</code>. <span class="Math">F: ( a ) \mapsto \mathtt{CocartesianRightUnitorInverse}(a)</span>.</p>
+
+<p><a id="X7F1831397A220851" name="X7F1831397A220851"></a></p>
+
+<h5>2.4-15 AddCocartesianRightUnitorInverseWithGivenCoproduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianRightUnitorInverseWithGivenCoproduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianRightUnitorInverseWithGivenCoproduct</code>. <span class="Math">F: ( a, r ) \mapsto \mathtt{CocartesianRightUnitorInverseWithGivenCoproduct}(a, r)</span>.</p>
+
+<p><a id="X7C606B16784E43D8" name="X7C606B16784E43D8"></a></p>
+
+<h5>2.4-16 AddCocartesianRightUnitorWithGivenCoproduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianRightUnitorWithGivenCoproduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianRightUnitorWithGivenCoproduct</code>. <span class="Math">F: ( a, s ) \mapsto \mathtt{CocartesianRightUnitorWithGivenCoproduct}(a, s)</span>.</p>
+
+<p><a id="X81A64DF88266A829" name="X81A64DF88266A829"></a></p>
+
+<h5>2.4-17 AddCoproductOnMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCoproductOnMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CoproductOnMorphisms</code>. <span class="Math">F: ( alpha, beta ) \mapsto \mathtt{CoproductOnMorphisms}(alpha, beta)</span>.</p>
+
+<p><a id="X805C256679D1FC61" name="X805C256679D1FC61"></a></p>
+
+<h5>2.4-18 AddCoproductOnMorphismsWithGivenCoproducts</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCoproductOnMorphismsWithGivenCoproducts</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CoproductOnMorphismsWithGivenCoproducts</code>. <span class="Math">F: ( s, alpha, beta, r ) \mapsto \mathtt{CoproductOnMorphismsWithGivenCoproducts}(s, alpha, beta, r)</span>.</p>
+
+<p><a id="X7BD6CA088299DB57" name="X7BD6CA088299DB57"></a></p>
+
+<h5>2.4-19 AddCocartesianCoevaluationMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianCoevaluationMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianCoevaluationMorphism</code>. <span class="Math">F: ( a, b ) \mapsto \mathtt{CocartesianCoevaluationMorphism}(a, b)</span>.</p>
+
+<p><a id="X8489E04D8275641C" name="X8489E04D8275641C"></a></p>
+
+<h5>2.4-20 AddCocartesianCoevaluationMorphismWithGivenSource</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianCoevaluationMorphismWithGivenSource</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianCoevaluationMorphismWithGivenSource</code>. <span class="Math">F: ( a, b, s ) \mapsto \mathtt{CocartesianCoevaluationMorphismWithGivenSource}(a, b, s)</span>.</p>
+
+<p><a id="X8799C69B80624121" name="X8799C69B80624121"></a></p>
+
+<h5>2.4-21 AddCocartesianDualOnMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianDualOnMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianDualOnMorphisms</code>. <span class="Math">F: ( alpha ) \mapsto \mathtt{CocartesianDualOnMorphisms}(alpha)</span>.</p>
+
+<p><a id="X7A3435BE841F78E8" name="X7A3435BE841F78E8"></a></p>
+
+<h5>2.4-22 AddCocartesianDualOnMorphismsWithGivenCocartesianDuals</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianDualOnMorphismsWithGivenCocartesianDuals</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianDualOnMorphismsWithGivenCocartesianDuals</code>. <span class="Math">F: ( s, alpha, r ) \mapsto \mathtt{CocartesianDualOnMorphismsWithGivenCocartesianDuals}(s, alpha, r)</span>.</p>
+
+<p><a id="X81A85797795A3C27" name="X81A85797795A3C27"></a></p>
+
+<h5>2.4-23 AddCocartesianDualOnObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianDualOnObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianDualOnObjects</code>. <span class="Math">F: ( a ) \mapsto \mathtt{CocartesianDualOnObjects}(a)</span>.</p>
+
+<p><a id="X8770D28886FEC8A3" name="X8770D28886FEC8A3"></a></p>
+
+<h5>2.4-24 AddCocartesianDualityCoproductCompatibilityMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianDualityCoproductCompatibilityMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianDualityCoproductCompatibilityMorphism</code>. <span class="Math">F: ( a, b ) \mapsto \mathtt{CocartesianDualityCoproductCompatibilityMorphism}(a, b)</span>.</p>
+
+<p><a id="X82B3CE207D7A23F5" name="X82B3CE207D7A23F5"></a></p>
+
+<h5>2.4-25 AddCocartesianDualityCoproductCompatibilityMorphismWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianDualityCoproductCompatibilityMorphismWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects</code>. <span class="Math">F: ( s, a, b, r ) \mapsto \mathtt{CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects}(s, a, b, r)</span>.</p>
+
+<p><a id="X860864E87CADE984" name="X860864E87CADE984"></a></p>
+
+<h5>2.4-26 AddCocartesianEvaluationForCocartesianDual</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianEvaluationForCocartesianDual</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianEvaluationForCocartesianDual</code>. <span class="Math">F: ( a ) \mapsto \mathtt{CocartesianEvaluationForCocartesianDual}(a)</span>.</p>
+
+<p><a id="X85F176D67AD398D1" name="X85F176D67AD398D1"></a></p>
+
+<h5>2.4-27 AddCocartesianEvaluationForCocartesianDualWithGivenCoproduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianEvaluationForCocartesianDualWithGivenCoproduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianEvaluationForCocartesianDualWithGivenCoproduct</code>. <span class="Math">F: ( s, a, r ) \mapsto \mathtt{CocartesianEvaluationForCocartesianDualWithGivenCoproduct}(s, a, r)</span>.</p>
+
+<p><a id="X7AAB79D587E914F5" name="X7AAB79D587E914F5"></a></p>
+
+<h5>2.4-28 AddCocartesianEvaluationMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianEvaluationMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianEvaluationMorphism</code>. <span class="Math">F: ( a, b ) \mapsto \mathtt{CocartesianEvaluationMorphism}(a, b)</span>.</p>
+
+<p><a id="X822ABA86862D37BF" name="X822ABA86862D37BF"></a></p>
+
+<h5>2.4-29 AddCocartesianEvaluationMorphismWithGivenRange</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianEvaluationMorphismWithGivenRange</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianEvaluationMorphismWithGivenRange</code>. <span class="Math">F: ( a, b, r ) \mapsto \mathtt{CocartesianEvaluationMorphismWithGivenRange}(a, b, r)</span>.</p>
+
+<p><a id="X78C80D10866270D8" name="X78C80D10866270D8"></a></p>
+
+<h5>2.4-30 AddCocartesianLambdaElimination</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianLambdaElimination</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianLambdaElimination</code>. <span class="Math">F: ( a, b, alpha ) \mapsto \mathtt{CocartesianLambdaElimination}(a, b, alpha)</span>.</p>
+
+<p><a id="X7B1EAF72786FDE05" name="X7B1EAF72786FDE05"></a></p>
+
+<h5>2.4-31 AddCocartesianLambdaIntroduction</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianLambdaIntroduction</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianLambdaIntroduction</code>. <span class="Math">F: ( alpha ) \mapsto \mathtt{CocartesianLambdaIntroduction}(alpha)</span>.</p>
+
+<p><a id="X86219B827E0CBD3E" name="X86219B827E0CBD3E"></a></p>
+
+<h5>2.4-32 AddCocartesianPostCoComposeMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianPostCoComposeMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianPostCoComposeMorphism</code>. <span class="Math">F: ( a, b, c ) \mapsto \mathtt{CocartesianPostCoComposeMorphism}(a, b, c)</span>.</p>
+
+<p><a id="X7C67460D7A6AAB03" name="X7C67460D7A6AAB03"></a></p>
+
+<h5>2.4-33 AddCocartesianPostCoComposeMorphismWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianPostCoComposeMorphismWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianPostCoComposeMorphismWithGivenObjects</code>. <span class="Math">F: ( s, a, b, c, r ) \mapsto \mathtt{CocartesianPostCoComposeMorphismWithGivenObjects}(s, a, b, c, r)</span>.</p>
+
+<p><a id="X7E9CD641846DA058" name="X7E9CD641846DA058"></a></p>
+
+<h5>2.4-34 AddCocartesianPreCoComposeMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianPreCoComposeMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianPreCoComposeMorphism</code>. <span class="Math">F: ( a, b, c ) \mapsto \mathtt{CocartesianPreCoComposeMorphism}(a, b, c)</span>.</p>
+
+<p><a id="X7EFD27A484E07A42" name="X7EFD27A484E07A42"></a></p>
+
+<h5>2.4-35 AddCocartesianPreCoComposeMorphismWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCocartesianPreCoComposeMorphismWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CocartesianPreCoComposeMorphismWithGivenObjects</code>. <span class="Math">F: ( s, a, b, c, r ) \mapsto \mathtt{CocartesianPreCoComposeMorphismWithGivenObjects}(s, a, b, c, r)</span>.</p>
+
+<p><a id="X8441A8F07AE8FFAD" name="X8441A8F07AE8FFAD"></a></p>
+
+<h5>2.4-36 AddCoexponentialCoproductCompatibilityMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCoexponentialCoproductCompatibilityMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CoexponentialCoproductCompatibilityMorphism</code>. <span class="Math">F: ( list ) \mapsto \mathtt{CoexponentialCoproductCompatibilityMorphism}(list)</span>.</p>
+
+<p><a id="X814EEFCE7852912D" name="X814EEFCE7852912D"></a></p>
+
+<h5>2.4-37 AddCoexponentialCoproductCompatibilityMorphismWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCoexponentialCoproductCompatibilityMorphismWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CoexponentialCoproductCompatibilityMorphismWithGivenObjects</code>. <span class="Math">F: ( source, list, range ) \mapsto \mathtt{CoexponentialCoproductCompatibilityMorphismWithGivenObjects}(source, list, range)</span>.</p>
+
+<p><a id="X7B660BF77F454397" name="X7B660BF77F454397"></a></p>
+
+<h5>2.4-38 AddCoexponentialOnMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCoexponentialOnMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CoexponentialOnMorphisms</code>. <span class="Math">F: ( alpha, beta ) \mapsto \mathtt{CoexponentialOnMorphisms}(alpha, beta)</span>.</p>
+
+<p><a id="X8277B990830FE89B" name="X8277B990830FE89B"></a></p>
+
+<h5>2.4-39 AddCoexponentialOnMorphismsWithGivenCoexponentials</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCoexponentialOnMorphismsWithGivenCoexponentials</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CoexponentialOnMorphismsWithGivenCoexponentials</code>. <span class="Math">F: ( s, alpha, beta, r ) \mapsto \mathtt{CoexponentialOnMorphismsWithGivenCoexponentials}(s, alpha, beta, r)</span>.</p>
+
+<p><a id="X8306E36D865434DE" name="X8306E36D865434DE"></a></p>
+
+<h5>2.4-40 AddCoexponentialOnObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCoexponentialOnObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CoexponentialOnObjects</code>. <span class="Math">F: ( a, b ) \mapsto \mathtt{CoexponentialOnObjects}(a, b)</span>.</p>
+
+<p><a id="X87A1D00E802BD23B" name="X87A1D00E802BD23B"></a></p>
+
+<h5>2.4-41 AddCoexponentialToCoproductAdjunctionMap</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCoexponentialToCoproductAdjunctionMap</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CoexponentialToCoproductAdjunctionMap</code>. <span class="Math">F: ( a, b, f ) \mapsto \mathtt{CoexponentialToCoproductAdjunctionMap}(a, b, f)</span>.</p>
+
+<p><a id="X874F44EA8232E275" name="X874F44EA8232E275"></a></p>
+
+<h5>2.4-42 AddCoproductToCoexponentialAdjunctionMap</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCoproductToCoexponentialAdjunctionMap</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CoproductToCoexponentialAdjunctionMap</code>. <span class="Math">F: ( c, b, g ) \mapsto \mathtt{CoproductToCoexponentialAdjunctionMap}(c, b, g)</span>.</p>
+
+<p><a id="X7ADFA85F7F4C660D" name="X7ADFA85F7F4C660D"></a></p>
+
+<h5>2.4-43 AddIsomorphismFromCocartesianDualToCoexponential</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromCocartesianDualToCoexponential</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsomorphismFromCocartesianDualToCoexponential</code>. <span class="Math">F: ( a ) \mapsto \mathtt{IsomorphismFromCocartesianDualToCoexponential}(a)</span>.</p>
+
+<p><a id="X7A9087317E0002C6" name="X7A9087317E0002C6"></a></p>
+
+<h5>2.4-44 AddIsomorphismFromCoexponentialToCocartesianDual</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromCoexponentialToCocartesianDual</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsomorphismFromCoexponentialToCocartesianDual</code>. <span class="Math">F: ( a ) \mapsto \mathtt{IsomorphismFromCoexponentialToCocartesianDual}(a)</span>.</p>
+
+<p><a id="X8740DECA83D8D370" name="X8740DECA83D8D370"></a></p>
+
+<h5>2.4-45 AddIsomorphismFromCoexponentialToObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromCoexponentialToObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsomorphismFromCoexponentialToObject</code>. <span class="Math">F: ( a ) \mapsto \mathtt{IsomorphismFromCoexponentialToObject}(a)</span>.</p>
+
+<p><a id="X8503332C7B5FA60C" name="X8503332C7B5FA60C"></a></p>
+
+<h5>2.4-46 AddIsomorphismFromCoexponentialToObjectWithGivenCoexponential</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromCoexponentialToObjectWithGivenCoexponential</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsomorphismFromCoexponentialToObjectWithGivenCoexponential</code>. <span class="Math">F: ( a, s ) \mapsto \mathtt{IsomorphismFromCoexponentialToObjectWithGivenCoexponential}(a, s)</span>.</p>
+
+<p><a id="X8154C659859FDC54" name="X8154C659859FDC54"></a></p>
+
+<h5>2.4-47 AddIsomorphismFromObjectToCoexponential</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromObjectToCoexponential</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsomorphismFromObjectToCoexponential</code>. <span class="Math">F: ( a ) \mapsto \mathtt{IsomorphismFromObjectToCoexponential}(a)</span>.</p>
+
+<p><a id="X83B61B5B7D18A928" name="X83B61B5B7D18A928"></a></p>
+
+<h5>2.4-48 AddIsomorphismFromObjectToCoexponentialWithGivenCoexponential</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromObjectToCoexponentialWithGivenCoexponential</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsomorphismFromObjectToCoexponentialWithGivenCoexponential</code>. <span class="Math">F: ( a, r ) \mapsto \mathtt{IsomorphismFromObjectToCoexponentialWithGivenCoexponential}(a, r)</span>.</p>
+
+<p><a id="X7CFE85E87A821590" name="X7CFE85E87A821590"></a></p>
+
+<h5>2.4-49 AddMorphismFromCocartesianBidual</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismFromCocartesianBidual</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">MorphismFromCocartesianBidual</code>. <span class="Math">F: ( a ) \mapsto \mathtt{MorphismFromCocartesianBidual}(a)</span>.</p>
+
+<p><a id="X7D0B496678146095" name="X7D0B496678146095"></a></p>
+
+<h5>2.4-50 AddMorphismFromCocartesianBidualWithGivenCocartesianBidual</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismFromCocartesianBidualWithGivenCocartesianBidual</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">MorphismFromCocartesianBidualWithGivenCocartesianBidual</code>. <span class="Math">F: ( a, s ) \mapsto \mathtt{MorphismFromCocartesianBidualWithGivenCocartesianBidual}(a, s)</span>.</p>
+
+<p><a id="X83484DB47ACEFBF0" name="X83484DB47ACEFBF0"></a></p>
+
+<h5>2.4-51 AddMorphismFromCoexponentialToCoproduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismFromCoexponentialToCoproduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">MorphismFromCoexponentialToCoproduct</code>. <span class="Math">F: ( a, b ) \mapsto \mathtt{MorphismFromCoexponentialToCoproduct}(a, b)</span>.</p>
+
+<p><a id="X80DF9A207E6C7E54" name="X80DF9A207E6C7E54"></a></p>
+
+<h5>2.4-52 AddMorphismFromCoexponentialToCoproductWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismFromCoexponentialToCoproductWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">MorphismFromCoexponentialToCoproductWithGivenObjects</code>. <span class="Math">F: ( s, a, b, r ) \mapsto \mathtt{MorphismFromCoexponentialToCoproductWithGivenObjects}(s, a, b, r)</span>.</p>
+
+<p><a id="X8739648D829FDB08" name="X8739648D829FDB08"></a></p>
+
+<h5>2.4-53 AddUniversalPropertyOfCocartesianDual</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalPropertyOfCocartesianDual</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">UniversalPropertyOfCocartesianDual</code>. <span class="Math">F: ( t, a, alpha ) \mapsto \mathtt{UniversalPropertyOfCocartesianDual}(t, a, alpha)</span>.</p>
+
+<p><a id="X79D3768478931977" name="X79D3768478931977"></a></p>
+
+<h5>2.4-54 AddLeftCocartesianCodistributivityExpanding</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLeftCocartesianCodistributivityExpanding</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">LeftCocartesianCodistributivityExpanding</code>. <span class="Math">F: ( a, L ) \mapsto \mathtt{LeftCocartesianCodistributivityExpanding}(a, L)</span>.</p>
+
+<p><a id="X78AD03F17F28CDDB" name="X78AD03F17F28CDDB"></a></p>
+
+<h5>2.4-55 AddLeftCocartesianCodistributivityExpandingWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLeftCocartesianCodistributivityExpandingWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">LeftCocartesianCodistributivityExpandingWithGivenObjects</code>. <span class="Math">F: ( s, a, L, r ) \mapsto \mathtt{LeftCocartesianCodistributivityExpandingWithGivenObjects}(s, a, L, r)</span>.</p>
+
+<p><a id="X8288CA7D7B2B357D" name="X8288CA7D7B2B357D"></a></p>
+
+<h5>2.4-56 AddLeftCocartesianCodistributivityFactoring</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLeftCocartesianCodistributivityFactoring</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">LeftCocartesianCodistributivityFactoring</code>. <span class="Math">F: ( a, L ) \mapsto \mathtt{LeftCocartesianCodistributivityFactoring}(a, L)</span>.</p>
+
+<p><a id="X86ECE2657C90E1D1" name="X86ECE2657C90E1D1"></a></p>
+
+<h5>2.4-57 AddLeftCocartesianCodistributivityFactoringWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLeftCocartesianCodistributivityFactoringWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">LeftCocartesianCodistributivityFactoringWithGivenObjects</code>. <span class="Math">F: ( s, a, L, r ) \mapsto \mathtt{LeftCocartesianCodistributivityFactoringWithGivenObjects}(s, a, L, r)</span>.</p>
+
+<p><a id="X7DB4A43C7B9F0307" name="X7DB4A43C7B9F0307"></a></p>
+
+<h5>2.4-58 AddRightCocartesianCodistributivityExpanding</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRightCocartesianCodistributivityExpanding</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">RightCocartesianCodistributivityExpanding</code>. <span class="Math">F: ( L, a ) \mapsto \mathtt{RightCocartesianCodistributivityExpanding}(L, a)</span>.</p>
+
+<p><a id="X84E0BA0D7BC8BDA2" name="X84E0BA0D7BC8BDA2"></a></p>
+
+<h5>2.4-59 AddRightCocartesianCodistributivityExpandingWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRightCocartesianCodistributivityExpandingWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">RightCocartesianCodistributivityExpandingWithGivenObjects</code>. <span class="Math">F: ( s, L, a, r ) \mapsto \mathtt{RightCocartesianCodistributivityExpandingWithGivenObjects}(s, L, a, r)</span>.</p>
+
+<p><a id="X86EF18C586F1D115" name="X86EF18C586F1D115"></a></p>
+
+<h5>2.4-60 AddRightCocartesianCodistributivityFactoring</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRightCocartesianCodistributivityFactoring</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">RightCocartesianCodistributivityFactoring</code>. <span class="Math">F: ( L, a ) \mapsto \mathtt{RightCocartesianCodistributivityFactoring}(L, a)</span>.</p>
+
+<p><a id="X7AA15B9986A66FB0" name="X7AA15B9986A66FB0"></a></p>
+
+<h5>2.4-61 AddRightCocartesianCodistributivityFactoringWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRightCocartesianCodistributivityFactoringWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">RightCocartesianCodistributivityFactoringWithGivenObjects</code>. <span class="Math">F: ( s, L, a, r ) \mapsto \mathtt{RightCocartesianCodistributivityFactoringWithGivenObjects}(s, L, a, r)</span>.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

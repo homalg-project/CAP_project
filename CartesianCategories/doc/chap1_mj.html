@@ -1,0 +1,1350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (CartesianCategories) - Chapter 1: Cartesian Categories</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap1"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap1.html">[MathJax off]</a></p>
+<p><a id="X7F63D57C7C866F54" name="X7F63D57C7C866F54"></a></p>
+<div class="ChapSects"><a href="chap1_mj.html#X7F63D57C7C866F54">1 <span class="Heading">Cartesian Categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7F63D57C7C866F54">1.1 <span class="Heading">Cartesian Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X85FFD4FA7CFB0745">1.1-1 CartesianBraiding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X862679EC826C55CA">1.1-2 CartesianBraidingWithGivenDirectProducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X82703D9880887058">1.1-3 CartesianBraidingInverse</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8709D1447DAE3B37">1.1-4 CartesianBraidingInverseWithGivenDirectProducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X879D39F87DA6868C">1.1-5 DirectProductOnMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X87BE42CF7889541B">1.1-6 DirectProductOnMorphismsWithGivenDirectProducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7EC5E6A97DBED717">1.1-7 CartesianAssociatorRightToLeft</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X86506FEB7AE250F2">1.1-8 CartesianAssociatorRightToLeftWithGivenDirectProducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X865D1A0F8437F47C">1.1-9 CartesianAssociatorLeftToRight</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7F6DE499836B7399">1.1-10 CartesianAssociatorLeftToRightWithGivenDirectProducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X876C204380849A64">1.1-11 CartesianLeftUnitor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7AA4207385D8E5F3">1.1-12 CartesianLeftUnitorWithGivenDirectProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7E5A8C69876CCD8B">1.1-13 CartesianLeftUnitorInverse</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7CB816B57FB90AF0">1.1-14 CartesianLeftUnitorInverseWithGivenDirectProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X816EB378858B96ED">1.1-15 CartesianRightUnitor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7D457C3280F841C0">1.1-16 CartesianRightUnitorWithGivenDirectProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X814B419087C73480">1.1-17 CartesianRightUnitorInverse</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8342E7EF85991C6D">1.1-18 CartesianRightUnitorInverseWithGivenDirectProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7CCD61CD7ECFA673">1.1-19 LeftCartesianDistributivityExpanding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X80B01ED183E5A16C">1.1-20 LeftCartesianDistributivityExpandingWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7E0165BD7D4424A3">1.1-21 LeftCartesianDistributivityFactoring</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X845C1B6F806E23BC">1.1-22 LeftCartesianDistributivityFactoringWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7DD0061583C919C9">1.1-23 RightCartesianDistributivityExpanding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7BCCBA9B7E1E88AC">1.1-24 RightCartesianDistributivityExpandingWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7F1C0265845759C1">1.1-25 RightCartesianDistributivityFactoring</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7F20BF257980C8A4">1.1-26 RightCartesianDistributivityFactoringWithGivenObjects</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X84CA5A90790E1CBB">1.2 <span class="Heading">Cartesian Closed Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7E6958AE790E74CC">1.2-1 ExponentialOnObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7FD20C248191563C">1.2-2 ExponentialOnMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X838501A77ED126DE">1.2-3 ExponentialOnMorphismsWithGivenExponentials</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X82AEDB9080EFBA02">1.2-4 CartesianEvaluationMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X81C555C0808F863F">1.2-5 CartesianEvaluationMorphismWithGivenSource</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8149E4C6862A10D6">1.2-6 CartesianCoevaluationMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X82A3DB377EF6F3F0">1.2-7 CartesianCoevaluationMorphismWithGivenRange</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X790FB32481FD8128">1.2-8 DirectProductToExponentialAdjunctionMap</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X87823A137BC9EB56">1.2-9 ExponentialToDirectProductAdjunctionMap</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7DF2EF1986FC7B1D">1.2-10 CartesianPreComposeMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8756757C86AAC7D7">1.2-11 CartesianPreComposeMorphismWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7FD23B3C79346476">1.2-12 CartesianPostComposeMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X84612F4F842F84B5">1.2-13 CartesianPostComposeMorphismWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X86FFDCD77B0B253B">1.2-14 CartesianDualOnObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X86A4F3AA87284231">1.2-15 CartesianDualOnMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X807DFD9585B45AD2">1.2-16 CartesianDualOnMorphismsWithGivenCartesianDuals</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7820C3368311AB68">1.2-17 CartesianEvaluationForCartesianDual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X856B6B028460FD17">1.2-18 CartesianEvaluationForCartesianDualWithGivenDirectProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7E4EFA627CB72505">1.2-19 MorphismToCartesianBidual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X84F353817E0A1588">1.2-20 MorphismToCartesianBidualWithGivenCartesianBidual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7D9C4B7C7B82F21B">1.2-21 DirectProductExponentialCompatibilityMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7A1F1E1E832BCE73">1.2-22 DirectProductExponentialCompatibilityMorphismWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7F9F529C859BB7C7">1.2-23 DirectProductCartesianDualityCompatibilityMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7EEBA52B78DD3C43">1.2-24 DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X87933AAC7C40C1FA">1.2-25 MorphismFromDirectProductToExponential</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X79905A217884A6D5">1.2-26 MorphismFromDirectProductToExponentialWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X861A772B7A162149">1.2-27 IsomorphismFromCartesianDualToExponential</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X782AE54B7C404C82">1.2-28 IsomorphismFromExponentialToCartesianDual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X83E3488284E0328F">1.2-29 UniversalPropertyOfCartesianDual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7B445ED786A92436">1.2-30 CartesianLambdaIntroduction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X809A70EB82722CD9">1.2-31 CartesianLambdaElimination</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7FBA70217C5C0646">1.2-32 IsomorphismFromObjectToExponential</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7CF80391784A8766">1.2-33 IsomorphismFromObjectToExponentialWithGivenExponential</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7BC4D6F37D4A5DA9">1.2-34 IsomorphismFromExponentialToObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7FE42D90795CDC89">1.2-35 IsomorphismFromExponentialToObjectWithGivenExponential</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7B40ED8B78D067A5">1.3 <span class="Heading">Convenience Methods</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7D8427C878F4698E">1.3-1 Exponential</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X85C8C80F785AEB5E">1.4 <span class="Heading">Add-methods</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7DECFEBB7BAB9D2C">1.4-1 AddCartesianBraiding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7D65ECAC834E1A3C">1.4-2 AddCartesianBraidingInverse</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7B2B3785849000CE">1.4-3 AddCartesianBraidingInverseWithGivenDirectProducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X826EAFEE83ABD312">1.4-4 AddCartesianBraidingWithGivenDirectProducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7C5C0B02846FD3C1">1.4-5 AddCartesianAssociatorLeftToRight</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7BCE56507A6C3BDF">1.4-6 AddCartesianAssociatorLeftToRightWithGivenDirectProducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X85D42C46813B7095">1.4-7 AddCartesianAssociatorRightToLeft</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X823408447F38988B">1.4-8 AddCartesianAssociatorRightToLeftWithGivenDirectProducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X87C1A0B97C612950">1.4-9 AddCartesianLeftUnitor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7ABD79D8854BE24B">1.4-10 AddCartesianLeftUnitorInverse</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X82203DD181396109">1.4-11 AddCartesianLeftUnitorInverseWithGivenDirectProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7E298F43786AE6A9">1.4-12 AddCartesianLeftUnitorWithGivenDirectProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7A0DA54E86334D77">1.4-13 AddCartesianRightUnitor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X83DF74D883878D5D">1.4-14 AddCartesianRightUnitorInverse</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X80FADE527ED5FBC0">1.4-15 AddCartesianRightUnitorInverseWithGivenDirectProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8000EAB2804A9214">1.4-16 AddCartesianRightUnitorWithGivenDirectProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7A912E6F7C245E68">1.4-17 AddDirectProductOnMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X83778B607BFA449A">1.4-18 AddDirectProductOnMorphismsWithGivenDirectProducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8756D50584BBFE6A">1.4-19 AddCartesianCoevaluationMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X84BE0324857FDD20">1.4-20 AddCartesianCoevaluationMorphismWithGivenRange</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X794BBA45846FD320">1.4-21 AddCartesianDualOnMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X78745F147C783D1D">1.4-22 AddCartesianDualOnMorphismsWithGivenCartesianDuals</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7EBA65C37D7EA469">1.4-23 AddCartesianDualOnObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X812A1F9884DF277F">1.4-24 AddCartesianEvaluationForCartesianDual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X87E8E1B380E7DCD7">1.4-25 AddCartesianEvaluationForCartesianDualWithGivenDirectProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7DD4447F86F1C52B">1.4-26 AddCartesianEvaluationMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X86FF28588035F8E1">1.4-27 AddCartesianEvaluationMorphismWithGivenSource</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8786AE707B1C583F">1.4-28 AddCartesianLambdaElimination</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7C6192D87B5FABDB">1.4-29 AddCartesianLambdaIntroduction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7E6F541D7BF5935F">1.4-30 AddCartesianPostComposeMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X790A62CB7CC2611D">1.4-31 AddCartesianPostComposeMorphismWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7935163587315F14">1.4-32 AddCartesianPreComposeMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X835B02D07D02753C">1.4-33 AddCartesianPreComposeMorphismWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7F7B5070863BEE7F">1.4-34 AddDirectProductCartesianDualityCompatibilityMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7C42B2E0811FD3C1">1.4-35 AddDirectProductCartesianDualityCompatibilityMorphismWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X81F9CC457A1CF01A">1.4-36 AddDirectProductExponentialCompatibilityMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X82E595AC80F1E404">1.4-37 AddDirectProductExponentialCompatibilityMorphismWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X80803B8583D2A2F0">1.4-38 AddDirectProductToExponentialAdjunctionMap</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X847439A37DA35315">1.4-39 AddExponentialOnMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7DF01A66791B2F43">1.4-40 AddExponentialOnMorphismsWithGivenExponentials</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7953DBA481E29FCD">1.4-41 AddExponentialOnObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X87F5AED47ED38995">1.4-42 AddExponentialToDirectProductAdjunctionMap</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X783FD43F79FAEE32">1.4-43 AddIsomorphismFromCartesianDualToExponential</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X83B865267D26E391">1.4-44 AddIsomorphismFromExponentialToCartesianDual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X78ABCC107CE12670">1.4-45 AddIsomorphismFromExponentialToObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7ECB83AE8761FAE4">1.4-46 AddIsomorphismFromExponentialToObjectWithGivenExponential</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X85C8CA0683C48022">1.4-47 AddIsomorphismFromObjectToExponential</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X82707C4F78445CB6">1.4-48 AddIsomorphismFromObjectToExponentialWithGivenExponential</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8420457583D88893">1.4-49 AddMorphismFromDirectProductToExponential</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X80ADD1637EAFA7BF">1.4-50 AddMorphismFromDirectProductToExponentialWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X805D9C4A84DCCE58">1.4-51 AddMorphismToCartesianBidual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X829304A984E33C7D">1.4-52 AddMorphismToCartesianBidualWithGivenCartesianBidual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X82D42BAA81A347F0">1.4-53 AddUniversalPropertyOfCartesianDual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7C28737579FF3620">1.4-54 AddLeftCartesianDistributivityExpanding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X837194A57D5DB384">1.4-55 AddLeftCartesianDistributivityExpandingWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8773CF8C875B238E">1.4-56 AddLeftCartesianDistributivityFactoring</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7D30753183F9A62A">1.4-57 AddLeftCartesianDistributivityFactoringWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X878FB2127E7380B8">1.4-58 AddRightCartesianDistributivityExpanding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X82EC8C6F798182E6">1.4-59 AddRightCartesianDistributivityExpandingWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7CD40EEB7AEBB0D9">1.4-60 AddRightCartesianDistributivityFactoring</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7CAD6DFB7D19B287">1.4-61 AddRightCartesianDistributivityFactoringWithGivenObjects</a></span>
+</div></div>
+</div>
+
+<h3>1 <span class="Heading">Cartesian Categories</span></h3>
+
+<p><a id="X7F63D57C7C866F54" name="X7F63D57C7C866F54"></a></p>
+
+<h4>1.1 <span class="Heading">Cartesian Categories</span></h4>
+
+<p>A <span class="SimpleMath">\(6\)</span>-tuple <span class="SimpleMath">\(( \mathbf{C}, \times, 1, \alpha, \lambda, \rho )\)</span> consisting of</p>
+
+
+<ul>
+<li><p>a category <span class="SimpleMath">\(\mathbf{C}\)</span>,</p>
+
+</li>
+<li><p>a functor <span class="SimpleMath">\(\times: \mathbf{C} \times \mathbf{C} \rightarrow \mathbf{C}\)</span>,</p>
+
+</li>
+<li><p>an object <span class="SimpleMath">\(1 \in \mathbf{C}\)</span>,</p>
+
+</li>
+<li><p>a natural isomorphism <span class="SimpleMath">\(\alpha_{a,b,c}: a \times (b \times c) \cong (a \times b) \times c\)</span>,</p>
+
+</li>
+<li><p>a natural isomorphism <span class="SimpleMath">\(\lambda_{a}: 1 \times a \cong a\)</span>,</p>
+
+</li>
+<li><p>a natural isomorphism <span class="SimpleMath">\(\rho_{a}: a \times 1 \cong a\)</span>,</p>
+
+</li>
+</ul>
+<p>is called a <em>cartesian category</em>, if</p>
+
+
+<ul>
+<li><p>for all objects <span class="SimpleMath">\(a,b,c,d\)</span>, the pentagon identity holds:</p>
+
+</li>
+</ul>
+<p><span class="SimpleMath">\((\alpha_{a,b,c} \times \mathrm{id}_d) \circ \alpha_{a,b \times c, d} \circ ( \mathrm{id}_a \times \alpha_{b,c,d} ) = \alpha_{a \times b, c, d} \circ \alpha_{a,b,c \times d}\)</span>,</p>
+
+
+<ul>
+<li><p>for all objects <span class="SimpleMath">\(a,c\)</span>, the triangle identity holds:</p>
+
+</li>
+</ul>
+<p><span class="SimpleMath">\(( \rho_a \times \mathrm{id}_c ) \circ \alpha_{a,1,c} = \mathrm{id}_a \times \lambda_c\)</span>.</p>
+
+<p>The corresponding GAP property is given by <code class="code">IsCartesianCategory</code>.</p>
+
+<p><a id="X85FFD4FA7CFB0745" name="X85FFD4FA7CFB0745"></a></p>
+
+<h5>1.1-1 CartesianBraiding</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianBraiding</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( a \times b, b \times a )\)</span>.</p>
+
+<p>The arguments are two objects <span class="SimpleMath">\(a,b\)</span>. The output is the braiding <span class="SimpleMath">\( B_{a,b}: a \times b \rightarrow b \times a\)</span>.</p>
+
+<p><a id="X862679EC826C55CA" name="X862679EC826C55CA"></a></p>
+
+<h5>1.1-2 CartesianBraidingWithGivenDirectProducts</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianBraidingWithGivenDirectProducts</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( a \times b, b \times a )\)</span>.</p>
+
+<p>The arguments are an object <span class="SimpleMath">\(s = a \times b\)</span>, two objects <span class="SimpleMath">\(a,b\)</span>, and an object <span class="SimpleMath">\(r = b \times a\)</span>. The output is the braiding <span class="SimpleMath">\( B_{a,b}: a \times b \rightarrow b \times a\)</span>.</p>
+
+<p><a id="X82703D9880887058" name="X82703D9880887058"></a></p>
+
+<h5>1.1-3 CartesianBraidingInverse</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianBraidingInverse</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( b \times a, a \times b )\)</span>.</p>
+
+<p>The arguments are two objects <span class="SimpleMath">\(a,b\)</span>. The output is the inverse braiding <span class="SimpleMath">\( B_{a,b}^{-1}: b \times a \rightarrow a \times b\)</span>.</p>
+
+<p><a id="X8709D1447DAE3B37" name="X8709D1447DAE3B37"></a></p>
+
+<h5>1.1-4 CartesianBraidingInverseWithGivenDirectProducts</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianBraidingInverseWithGivenDirectProducts</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( b \times a, a \times b )\)</span>.</p>
+
+<p>The arguments are an object <span class="SimpleMath">\(s = b \times a\)</span>, two objects <span class="SimpleMath">\(a,b\)</span>, and an object <span class="SimpleMath">\(r = a \times b\)</span>. The output is the inverse braiding <span class="SimpleMath">\( B_{a,b}^{-1}: b \times a \rightarrow a \times b\)</span>.</p>
+
+<p><a id="X879D39F87DA6868C" name="X879D39F87DA6868C"></a></p>
+
+<h5>1.1-5 DirectProductOnMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DirectProductOnMorphisms</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a \times b, a' \times b')\)</span></p>
+
+<p>The arguments are two morphisms <span class="SimpleMath">\(\alpha: a \rightarrow a', \beta: b \rightarrow b'\)</span>. The output is the direct product <span class="SimpleMath">\(\alpha \times \beta\)</span>.</p>
+
+<p><a id="X87BE42CF7889541B" name="X87BE42CF7889541B"></a></p>
+
+<h5>1.1-6 DirectProductOnMorphismsWithGivenDirectProducts</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DirectProductOnMorphismsWithGivenDirectProducts</code>( <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a \times b, a' \times b')\)</span></p>
+
+<p>The arguments are an object <span class="SimpleMath">\(s = a \times b\)</span>, two morphisms <span class="SimpleMath">\(\alpha: a \rightarrow a', \beta: b \rightarrow b'\)</span>, and an object <span class="SimpleMath">\(r = a' \times b'\)</span>. The output is the direct product <span class="SimpleMath">\(\alpha \times \beta\)</span>.</p>
+
+<p><a id="X7EC5E6A97DBED717" name="X7EC5E6A97DBED717"></a></p>
+
+<h5>1.1-7 CartesianAssociatorRightToLeft</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianAssociatorRightToLeft</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( a \times (b \times c), (a \times b) \times c )\)</span>.</p>
+
+<p>The arguments are three objects <span class="SimpleMath">\(a,b,c\)</span>. The output is the associator <span class="SimpleMath">\(\alpha_{a,(b,c)}: a \times (b \times c) \rightarrow (a \times b) \times c\)</span>.</p>
+
+<p><a id="X86506FEB7AE250F2" name="X86506FEB7AE250F2"></a></p>
+
+<h5>1.1-8 CartesianAssociatorRightToLeftWithGivenDirectProducts</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianAssociatorRightToLeftWithGivenDirectProducts</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( a \times (b \times c), (a \times b) \times c )\)</span>.</p>
+
+<p>The arguments are an object <span class="SimpleMath">\(s = a \times (b \times c)\)</span>, three objects <span class="SimpleMath">\(a,b,c\)</span>, and an object <span class="SimpleMath">\(r = (a \times b) \times c\)</span>. The output is the associator <span class="SimpleMath">\(\alpha_{a,(b,c)}: a \times (b \times c) \rightarrow (a \times b) \times c\)</span>.</p>
+
+<p><a id="X865D1A0F8437F47C" name="X865D1A0F8437F47C"></a></p>
+
+<h5>1.1-9 CartesianAssociatorLeftToRight</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianAssociatorLeftToRight</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( (a \times b) \times c \rightarrow a \times (b \times c) )\)</span>.</p>
+
+<p>The arguments are three objects <span class="SimpleMath">\(a,b,c\)</span>. The output is the associator <span class="SimpleMath">\(\alpha_{(a,b),c}: (a \times b) \times c \rightarrow a \times (b \times c)\)</span>.</p>
+
+<p><a id="X7F6DE499836B7399" name="X7F6DE499836B7399"></a></p>
+
+<h5>1.1-10 CartesianAssociatorLeftToRightWithGivenDirectProducts</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianAssociatorLeftToRightWithGivenDirectProducts</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( (a \times b) \times c \rightarrow a \times (b \times c) )\)</span>.</p>
+
+<p>The arguments are an object <span class="SimpleMath">\(s = (a \times b) \times c\)</span>, three objects <span class="SimpleMath">\(a,b,c\)</span>, and an object <span class="SimpleMath">\(r = a \times (b \times c)\)</span>. The output is the associator <span class="SimpleMath">\(\alpha_{(a,b),c}: (a \times b) \times c \rightarrow a \times (b \times c)\)</span>.</p>
+
+<p><a id="X876C204380849A64" name="X876C204380849A64"></a></p>
+
+<h5>1.1-11 CartesianLeftUnitor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianLeftUnitor</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(1 \times a, a )\)</span></p>
+
+<p>The argument is an object <span class="SimpleMath">\(a\)</span>. The output is the left unitor <span class="SimpleMath">\(\lambda_a: 1 \times a \rightarrow a\)</span>.</p>
+
+<p><a id="X7AA4207385D8E5F3" name="X7AA4207385D8E5F3"></a></p>
+
+<h5>1.1-12 CartesianLeftUnitorWithGivenDirectProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianLeftUnitorWithGivenDirectProduct</code>( <var class="Arg">a</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(1 \times a, a )\)</span></p>
+
+<p>The arguments are an object <span class="SimpleMath">\(a\)</span> and an object <span class="SimpleMath">\(s = 1 \times a\)</span>. The output is the left unitor <span class="SimpleMath">\(\lambda_a: 1 \times a \rightarrow a\)</span>.</p>
+
+<p><a id="X7E5A8C69876CCD8B" name="X7E5A8C69876CCD8B"></a></p>
+
+<h5>1.1-13 CartesianLeftUnitorInverse</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianLeftUnitorInverse</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a, 1 \times a)\)</span></p>
+
+<p>The argument is an object <span class="SimpleMath">\(a\)</span>. The output is the inverse of the left unitor <span class="SimpleMath">\(\lambda_a^{-1}: a \rightarrow 1 \times a\)</span>.</p>
+
+<p><a id="X7CB816B57FB90AF0" name="X7CB816B57FB90AF0"></a></p>
+
+<h5>1.1-14 CartesianLeftUnitorInverseWithGivenDirectProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianLeftUnitorInverseWithGivenDirectProduct</code>( <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a, 1 \times a)\)</span></p>
+
+<p>The argument is an object <span class="SimpleMath">\(a\)</span> and an object <span class="SimpleMath">\(r = 1 \times a\)</span>. The output is the inverse of the left unitor <span class="SimpleMath">\(\lambda_a^{-1}: a \rightarrow 1 \times a\)</span>.</p>
+
+<p><a id="X816EB378858B96ED" name="X816EB378858B96ED"></a></p>
+
+<h5>1.1-15 CartesianRightUnitor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianRightUnitor</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a \times 1, a )\)</span></p>
+
+<p>The argument is an object <span class="SimpleMath">\(a\)</span>. The output is the right unitor <span class="SimpleMath">\(\rho_a: a \times 1 \rightarrow a\)</span>.</p>
+
+<p><a id="X7D457C3280F841C0" name="X7D457C3280F841C0"></a></p>
+
+<h5>1.1-16 CartesianRightUnitorWithGivenDirectProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianRightUnitorWithGivenDirectProduct</code>( <var class="Arg">a</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a \times 1, a )\)</span></p>
+
+<p>The arguments are an object <span class="SimpleMath">\(a\)</span> and an object <span class="SimpleMath">\(s = a \times 1\)</span>. The output is the right unitor <span class="SimpleMath">\(\rho_a: a \times 1 \rightarrow a\)</span>.</p>
+
+<p><a id="X814B419087C73480" name="X814B419087C73480"></a></p>
+
+<h5>1.1-17 CartesianRightUnitorInverse</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianRightUnitorInverse</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( a, a \times 1 )\)</span></p>
+
+<p>The argument is an object <span class="SimpleMath">\(a\)</span>. The output is the inverse of the right unitor <span class="SimpleMath">\(\rho_a^{-1}: a \rightarrow a \times 1\)</span>.</p>
+
+<p><a id="X8342E7EF85991C6D" name="X8342E7EF85991C6D"></a></p>
+
+<h5>1.1-18 CartesianRightUnitorInverseWithGivenDirectProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianRightUnitorInverseWithGivenDirectProduct</code>( <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( a, a \times 1 )\)</span></p>
+
+<p>The arguments are an object <span class="SimpleMath">\(a\)</span> and an object <span class="SimpleMath">\(r = a \times 1\)</span>. The output is the inverse of the right unitor <span class="SimpleMath">\(\rho_a^{-1}: a \rightarrow a \times 1\)</span>.</p>
+
+<p><a id="X7CCD61CD7ECFA673" name="X7CCD61CD7ECFA673"></a></p>
+
+<h5>1.1-19 LeftCartesianDistributivityExpanding</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftCartesianDistributivityExpanding</code>( <var class="Arg">a</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( a \times (b_1 \sqcup \dots \sqcup b_n), (a \times b_1) \sqcup \dots \sqcup (a \times b_n) )\)</span></p>
+
+<p>The arguments are an object <span class="SimpleMath">\(a\)</span> and a list of objects <span class="SimpleMath">\(L = (b_1, \dots, b_n)\)</span>. The output is the left distributivity morphism <span class="SimpleMath">\(a \times (b_1 \sqcup \dots \sqcup b_n) \rightarrow (a \times b_1) \sqcup \dots \sqcup (a \times b_n)\)</span>.</p>
+
+<p><a id="X80B01ED183E5A16C" name="X80B01ED183E5A16C"></a></p>
+
+<h5>1.1-20 LeftCartesianDistributivityExpandingWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftCartesianDistributivityExpandingWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">L</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( s, r )\)</span></p>
+
+<p>The arguments are an object <span class="SimpleMath">\(s = a \times (b_1 \sqcup \dots \sqcup b_n)\)</span>, an object <span class="SimpleMath">\(a\)</span>, a list of objects <span class="SimpleMath">\(L = (b_1, \dots, b_n)\)</span>, and an object <span class="SimpleMath">\(r = (a \times b_1) \sqcup \dots \sqcup (a \times b_n)\)</span>. The output is the left distributivity morphism <span class="SimpleMath">\(s \rightarrow r\)</span>.</p>
+
+<p><a id="X7E0165BD7D4424A3" name="X7E0165BD7D4424A3"></a></p>
+
+<h5>1.1-21 LeftCartesianDistributivityFactoring</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftCartesianDistributivityFactoring</code>( <var class="Arg">a</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( (a \times b_1) \sqcup \dots \sqcup (a \times b_n), a \times (b_1 \sqcup \dots \sqcup b_n) )\)</span></p>
+
+<p>The arguments are an object <span class="SimpleMath">\(a\)</span> and a list of objects <span class="SimpleMath">\(L = (b_1, \dots, b_n)\)</span>. The output is the left distributivity morphism <span class="SimpleMath">\((a \times b_1) \sqcup \dots \sqcup (a \times b_n) \rightarrow a \times (b_1 \sqcup \dots \sqcup b_n)\)</span>.</p>
+
+<p><a id="X845C1B6F806E23BC" name="X845C1B6F806E23BC"></a></p>
+
+<h5>1.1-22 LeftCartesianDistributivityFactoringWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftCartesianDistributivityFactoringWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">L</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( s, r )\)</span></p>
+
+<p>The arguments are an object <span class="SimpleMath">\(s = (a \times b_1) \sqcup \dots \sqcup (a \times b_n)\)</span>, an object <span class="SimpleMath">\(a\)</span>, a list of objects <span class="SimpleMath">\(L = (b_1, \dots, b_n)\)</span>, and an object <span class="SimpleMath">\(r = a \times (b_1 \sqcup \dots \sqcup b_n)\)</span>. The output is the left distributivity morphism <span class="SimpleMath">\(s \rightarrow r\)</span>.</p>
+
+<p><a id="X7DD0061583C919C9" name="X7DD0061583C919C9"></a></p>
+
+<h5>1.1-23 RightCartesianDistributivityExpanding</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightCartesianDistributivityExpanding</code>( <var class="Arg">L</var>, <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( (b_1 \sqcup \dots \sqcup b_n) \times a, (b_1 \times a) \sqcup \dots \sqcup (b_n \times a) )\)</span></p>
+
+<p>The arguments are a list of objects <span class="SimpleMath">\(L = (b_1, \dots, b_n)\)</span> and an object <span class="SimpleMath">\(a\)</span>. The output is the right distributivity morphism <span class="SimpleMath">\((b_1 \sqcup \dots \sqcup b_n) \times a \rightarrow (b_1 \times a) \sqcup \dots \sqcup (b_n \times a)\)</span>.</p>
+
+<p><a id="X7BCCBA9B7E1E88AC" name="X7BCCBA9B7E1E88AC"></a></p>
+
+<h5>1.1-24 RightCartesianDistributivityExpandingWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightCartesianDistributivityExpandingWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">L</var>, <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( s, r )\)</span></p>
+
+<p>The arguments are an object <span class="SimpleMath">\(s = (b_1 \sqcup \dots \sqcup b_n) \times a\)</span>, a list of objects <span class="SimpleMath">\(L = (b_1, \dots, b_n)\)</span>, an object <span class="SimpleMath">\(a\)</span>, and an object <span class="SimpleMath">\(r = (b_1 \times a) \sqcup \dots \sqcup (b_n \times a)\)</span>. The output is the right distributivity morphism <span class="SimpleMath">\(s \rightarrow r\)</span>.</p>
+
+<p><a id="X7F1C0265845759C1" name="X7F1C0265845759C1"></a></p>
+
+<h5>1.1-25 RightCartesianDistributivityFactoring</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightCartesianDistributivityFactoring</code>( <var class="Arg">L</var>, <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( (b_1 \times a) \sqcup \dots \sqcup (b_n \times a), (b_1 \sqcup \dots \sqcup b_n) \times a)\)</span></p>
+
+<p>The arguments are a list of objects <span class="SimpleMath">\(L = (b_1, \dots, b_n)\)</span> and an object <span class="SimpleMath">\(a\)</span>. The output is the right distributivity morphism <span class="SimpleMath">\((b_1 \times a) \sqcup \dots \sqcup (b_n \times a) \rightarrow (b_1 \sqcup \dots \sqcup b_n) \times a \)</span>.</p>
+
+<p><a id="X7F20BF257980C8A4" name="X7F20BF257980C8A4"></a></p>
+
+<h5>1.1-26 RightCartesianDistributivityFactoringWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightCartesianDistributivityFactoringWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">L</var>, <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( s, r )\)</span></p>
+
+<p>The arguments are an object <span class="SimpleMath">\(s = (b_1 \times a) \sqcup \dots \sqcup (b_n \times a)\)</span>, a list of objects <span class="SimpleMath">\(L = (b_1, \dots, b_n)\)</span>, an object <span class="SimpleMath">\(a\)</span>, and an object <span class="SimpleMath">\(r = (b_1 \sqcup \dots \sqcup b_n) \times a\)</span>. The output is the right distributivity morphism <span class="SimpleMath">\(s \rightarrow r\)</span>.</p>
+
+<p><a id="X84CA5A90790E1CBB" name="X84CA5A90790E1CBB"></a></p>
+
+<h4>1.2 <span class="Heading">Cartesian Closed Categories</span></h4>
+
+<p>A cartesian category <span class="SimpleMath">\(\mathbf{C}\)</span> which has for each functor <span class="SimpleMath">\(- \times b: \mathbf{C} \rightarrow \mathbf{C}\)</span> a right adjoint (denoted by <span class="SimpleMath">\(\mathrm{Exponential}(b,-)\)</span>) is called a <em>closed cartesian category</em>.</p>
+
+<p>The corresponding GAP property is called <code class="code">IsCartesianClosedCategory</code>.</p>
+
+<p><a id="X7E6958AE790E74CC" name="X7E6958AE790E74CC"></a></p>
+
+<h5>1.2-1 ExponentialOnObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExponentialOnObjects</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The arguments are two objects <span class="SimpleMath">\(a,b\)</span>. The output is the exponential object <span class="SimpleMath">\(\mathrm{Exponential}(a,b)\)</span>.</p>
+
+<p><a id="X7FD20C248191563C" name="X7FD20C248191563C"></a></p>
+
+<h5>1.2-2 ExponentialOnMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExponentialOnMorphisms</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( \mathrm{Exponential}(a',b), \mathrm{Exponential}(a,b') )\)</span></p>
+
+<p>The arguments are two morphisms <span class="SimpleMath">\(\alpha: a \rightarrow a', \beta: b \rightarrow b'\)</span>. The output is the exponential morphism <span class="SimpleMath">\(\mathrm{Exponential}(\alpha,\beta): \mathrm{Exponential}(a',b) \rightarrow \mathrm{Exponential}(a,b')\)</span>.</p>
+
+<p><a id="X838501A77ED126DE" name="X838501A77ED126DE"></a></p>
+
+<h5>1.2-3 ExponentialOnMorphismsWithGivenExponentials</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExponentialOnMorphismsWithGivenExponentials</code>( <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( \mathrm{Exponential}(a',b), \mathrm{Exponential}(a,b') )\)</span></p>
+
+<p>The arguments are an object <span class="SimpleMath">\(s = \mathrm{Exponential}(a',b)\)</span>, two morphisms <span class="SimpleMath">\(\alpha: a \rightarrow a', \beta: b \rightarrow b'\)</span>, and an object <span class="SimpleMath">\(r = \mathrm{Exponential}(a,b')\)</span>. The output is the exponential morphism <span class="SimpleMath">\(\mathrm{Exponential}(\alpha,\beta): \mathrm{Exponential}(a',b) \rightarrow \mathrm{Exponential}(a,b')\)</span>.</p>
+
+<p><a id="X82AEDB9080EFBA02" name="X82AEDB9080EFBA02"></a></p>
+
+<h5>1.2-4 CartesianEvaluationMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianEvaluationMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( \mathrm{Exponential}(a,b) \times a, b )\)</span>.</p>
+
+<p>The arguments are two objects <span class="SimpleMath">\(a, b\)</span>. The output is the evaluation morphism <span class="SimpleMath">\(\mathrm{ev}_{a,b}: \mathrm{Exponential}(a,b) \times a \rightarrow b\)</span>, i.e., the counit of the direct product-exponential adjunction.</p>
+
+<p><a id="X81C555C0808F863F" name="X81C555C0808F863F"></a></p>
+
+<h5>1.2-5 CartesianEvaluationMorphismWithGivenSource</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianEvaluationMorphismWithGivenSource</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( \mathrm{Exponential}(a,b) \times a, b )\)</span>.</p>
+
+<p>The arguments are two objects <span class="SimpleMath">\(a,b\)</span> and an object <span class="SimpleMath">\(s = \mathrm{Exponential}(a,b) \times a\)</span>. The output is the evaluation morphism <span class="SimpleMath">\(\mathrm{ev}_{a,b}: \mathrm{Exponential}(a,b) \times a \rightarrow b\)</span>, i.e., the counit of the direct product-exponential adjunction.</p>
+
+<p><a id="X8149E4C6862A10D6" name="X8149E4C6862A10D6"></a></p>
+
+<h5>1.2-6 CartesianCoevaluationMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianCoevaluationMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( a, \mathrm{Exponential}(b, a \times b) )\)</span>.</p>
+
+<p>The arguments are two objects <span class="SimpleMath">\(a,b\)</span>. The output is the coevaluation morphism <span class="SimpleMath">\(\mathrm{coev}_{a,b}: a \rightarrow \mathrm{Exponential}(b, a \times b)\)</span>, i.e., the unit of the direct product-exponential adjunction.</p>
+
+<p><a id="X82A3DB377EF6F3F0" name="X82A3DB377EF6F3F0"></a></p>
+
+<h5>1.2-7 CartesianCoevaluationMorphismWithGivenRange</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianCoevaluationMorphismWithGivenRange</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( a, \mathrm{Exponential}(b, a \times b) )\)</span>.</p>
+
+<p>The arguments are two objects <span class="SimpleMath">\(a,b\)</span> and an object <span class="SimpleMath">\(r = \mathrm{Exponential}(b, a \times b)\)</span>. The output is the coevaluation morphism <span class="SimpleMath">\(\mathrm{coev}_{a,b}: a \rightarrow \mathrm{Exponential}(b, a \times b)\)</span>, i.e., the unit of the direct product-exponential adjunction.</p>
+
+<p><a id="X790FB32481FD8128" name="X790FB32481FD8128"></a></p>
+
+<h5>1.2-8 DirectProductToExponentialAdjunctionMap</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DirectProductToExponentialAdjunctionMap</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">f</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( a, \mathrm{Exponential}(b,c) )\)</span>.</p>
+
+<p>The arguments are objects <span class="SimpleMath">\(a,b\)</span> and a morphism <span class="SimpleMath">\(f: a \times b \rightarrow c\)</span>. The output is a morphism <span class="SimpleMath">\(g: a \rightarrow \mathrm{Exponential}(b,c)\)</span> corresponding to <span class="SimpleMath">\(f\)</span> under the direct product-exponential adjunction.</p>
+
+<p><a id="X87823A137BC9EB56" name="X87823A137BC9EB56"></a></p>
+
+<h5>1.2-9 ExponentialToDirectProductAdjunctionMap</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExponentialToDirectProductAdjunctionMap</code>( <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">g</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a \times b, c)\)</span>.</p>
+
+<p>The arguments are objects <span class="SimpleMath">\(b,c\)</span> and a morphism <span class="SimpleMath">\(g: a \rightarrow \mathrm{Exponential}(b,c)\)</span>. The output is a morphism <span class="SimpleMath">\(f: a \times b \rightarrow c\)</span> corresponding to <span class="SimpleMath">\(g\)</span> under the direct product-exponential adjunction.</p>
+
+<p><a id="X7DF2EF1986FC7B1D" name="X7DF2EF1986FC7B1D"></a></p>
+
+<h5>1.2-10 CartesianPreComposeMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianPreComposeMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( \mathrm{Exponential}(a,b) \times \mathrm{Exponential}(b,c), \mathrm{Exponential}(a,c) )\)</span>.</p>
+
+<p>The arguments are three objects <span class="SimpleMath">\(a,b,c\)</span>. The output is the precomposition morphism <span class="SimpleMath">\(\mathrm{CartesianPreComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{Exponential}(a,b) \times \mathrm{Exponential}(b,c) \rightarrow \mathrm{Exponential}(a,c)\)</span>.</p>
+
+<p><a id="X8756757C86AAC7D7" name="X8756757C86AAC7D7"></a></p>
+
+<h5>1.2-11 CartesianPreComposeMorphismWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianPreComposeMorphismWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( \mathrm{Exponential}(a,b) \times \mathrm{Exponential}(b,c), \mathrm{Exponential}(a,c) )\)</span>.</p>
+
+<p>The arguments are an object <span class="SimpleMath">\(s = \mathrm{Exponential}(a,b) \times \mathrm{Exponential}(b,c)\)</span>, three objects <span class="SimpleMath">\(a,b,c\)</span>, and an object <span class="SimpleMath">\(r = \mathrm{Exponential}(a,c)\)</span>. The output is the precomposition morphism <span class="SimpleMath">\(\mathrm{CartesianPreComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{Exponential}(a,b) \times \mathrm{Exponential}(b,c) \rightarrow \mathrm{Exponential}(a,c)\)</span>.</p>
+
+<p><a id="X7FD23B3C79346476" name="X7FD23B3C79346476"></a></p>
+
+<h5>1.2-12 CartesianPostComposeMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianPostComposeMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( \mathrm{Exponential}(b,c) \times \mathrm{Exponential}(a,b), \mathrm{Exponential}(a,c) )\)</span>.</p>
+
+<p>The arguments are three objects <span class="SimpleMath">\(a,b,c\)</span>. The output is the postcomposition morphism <span class="SimpleMath">\(\mathrm{CartesianPostComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{Exponential}(b,c) \times \mathrm{Exponential}(a,b) \rightarrow \mathrm{Exponential}(a,c)\)</span>.</p>
+
+<p><a id="X84612F4F842F84B5" name="X84612F4F842F84B5"></a></p>
+
+<h5>1.2-13 CartesianPostComposeMorphismWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianPostComposeMorphismWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( \mathrm{Exponential}(b,c) \times \mathrm{Exponential}(a,b), \mathrm{Exponential}(a,c) )\)</span>.</p>
+
+<p>The arguments are an object <span class="SimpleMath">\(s = \mathrm{Exponential}(b,c) \times \mathrm{Exponential}(a,b)\)</span>, three objects <span class="SimpleMath">\(a,b,c\)</span>, and an object <span class="SimpleMath">\(r = \mathrm{Exponential}(a,c)\)</span>. The output is the postcomposition morphism <span class="SimpleMath">\(\mathrm{CartesianPostComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{Exponential}(b,c) \times \mathrm{Exponential}(a,b) \rightarrow \mathrm{Exponential}(a,c)\)</span>.</p>
+
+<p><a id="X86FFDCD77B0B253B" name="X86FFDCD77B0B253B"></a></p>
+
+<h5>1.2-14 CartesianDualOnObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianDualOnObjects</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The argument is an object <span class="SimpleMath">\(a\)</span>. The output is its dual object <span class="SimpleMath">\(a^{\vee}\)</span>.</p>
+
+<p><a id="X86A4F3AA87284231" name="X86A4F3AA87284231"></a></p>
+
+<h5>1.2-15 CartesianDualOnMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianDualOnMorphisms</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( b^{\vee}, a^{\vee} )\)</span>.</p>
+
+<p>The argument is a morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span>. The output is its dual morphism <span class="SimpleMath">\(\alpha^{\vee}: b^{\vee} \rightarrow a^{\vee}\)</span>.</p>
+
+<p><a id="X807DFD9585B45AD2" name="X807DFD9585B45AD2"></a></p>
+
+<h5>1.2-16 CartesianDualOnMorphismsWithGivenCartesianDuals</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianDualOnMorphismsWithGivenCartesianDuals</code>( <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( b^{\vee}, a^{\vee} )\)</span>.</p>
+
+<p>The argument is an object <span class="SimpleMath">\(s = b^{\vee}\)</span>, a morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span>, and an object <span class="SimpleMath">\(r = a^{\vee}\)</span>. The output is the dual morphism <span class="SimpleMath">\(\alpha^{\vee}: b^{\vee} \rightarrow a^{\vee}\)</span>.</p>
+
+<p><a id="X7820C3368311AB68" name="X7820C3368311AB68"></a></p>
+
+<h5>1.2-17 CartesianEvaluationForCartesianDual</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianEvaluationForCartesianDual</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( a^{\vee} \times a, 1 )\)</span>.</p>
+
+<p>The argument is an object <span class="SimpleMath">\(a\)</span>. The output is the evaluation morphism <span class="SimpleMath">\(\mathrm{ev}_{a}: a^{\vee} \times a \rightarrow 1\)</span>.</p>
+
+<p><a id="X856B6B028460FD17" name="X856B6B028460FD17"></a></p>
+
+<h5>1.2-18 CartesianEvaluationForCartesianDualWithGivenDirectProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianEvaluationForCartesianDualWithGivenDirectProduct</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( a^{\vee} \times a, 1 )\)</span>.</p>
+
+<p>The arguments are an object <span class="SimpleMath">\(s = a^{\vee} \times a\)</span>, an object <span class="SimpleMath">\(a\)</span>, and an object <span class="SimpleMath">\(r = 1\)</span>. The output is the evaluation morphism <span class="SimpleMath">\(\mathrm{ev}_{a}: a^{\vee} \times a \rightarrow 1\)</span>.</p>
+
+<p><a id="X7E4EFA627CB72505" name="X7E4EFA627CB72505"></a></p>
+
+<h5>1.2-19 MorphismToCartesianBidual</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismToCartesianBidual</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a, (a^{\vee})^{\vee})\)</span>.</p>
+
+<p>The argument is an object <span class="SimpleMath">\(a\)</span>. The output is the morphism to the bidual <span class="SimpleMath">\(a \rightarrow (a^{\vee})^{\vee}\)</span>.</p>
+
+<p><a id="X84F353817E0A1588" name="X84F353817E0A1588"></a></p>
+
+<h5>1.2-20 MorphismToCartesianBidualWithGivenCartesianBidual</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismToCartesianBidualWithGivenCartesianBidual</code>( <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a, (a^{\vee})^{\vee})\)</span>.</p>
+
+<p>The arguments are an object <span class="SimpleMath">\(a\)</span>, and an object <span class="SimpleMath">\(r = (a^{\vee})^{\vee}\)</span>. The output is the morphism to the bidual <span class="SimpleMath">\(a \rightarrow (a^{\vee})^{\vee}\)</span>.</p>
+
+<p><a id="X7D9C4B7C7B82F21B" name="X7D9C4B7C7B82F21B"></a></p>
+
+<h5>1.2-21 DirectProductExponentialCompatibilityMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DirectProductExponentialCompatibilityMorphism</code>( <var class="Arg">list</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( \mathrm{Exponential}(a,a') \times \mathrm{Exponential}(b,b'), \mathrm{Exponential}(a \times b,a' \times b'))\)</span>.</p>
+
+<p>The argument is a list of four objects <span class="SimpleMath">\([ a, a', b, b' ]\)</span>. The output is the natural morphism <span class="SimpleMath">\(\mathrm{DirectProductExponentialCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}: \mathrm{Exponential}(a,a') \times \mathrm{Exponential}(b,b') \rightarrow \mathrm{Exponential}(a \times b,a' \times b')\)</span>.</p>
+
+<p><a id="X7A1F1E1E832BCE73" name="X7A1F1E1E832BCE73"></a></p>
+
+<h5>1.2-22 DirectProductExponentialCompatibilityMorphismWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DirectProductExponentialCompatibilityMorphismWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">list</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( \mathrm{Exponential}(a,a') \times \mathrm{Exponential}(b,b'), \mathrm{Exponential}(a \times b,a' \times b'))\)</span>.</p>
+
+<p>The arguments are a list of four objects <span class="SimpleMath">\([ a, a', b, b' ]\)</span>, and two objects <span class="SimpleMath">\(s = \mathrm{Exponential}(a,a') \times \mathrm{Exponential}(b,b')\)</span> and <span class="SimpleMath">\(r = \mathrm{Exponential}(a \times b,a' \times b')\)</span>. The output is the natural morphism <span class="SimpleMath">\(\mathrm{DirectProductExponentialCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}: \mathrm{Exponential}(a,a') \times \mathrm{Exponential}(b,b') \rightarrow \mathrm{Exponential}(a \times b,a' \times b')\)</span>.</p>
+
+<p><a id="X7F9F529C859BB7C7" name="X7F9F529C859BB7C7"></a></p>
+
+<h5>1.2-23 DirectProductCartesianDualityCompatibilityMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DirectProductCartesianDualityCompatibilityMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( a^{\vee} \times b^{\vee}, (a \times b)^{\vee} )\)</span>.</p>
+
+<p>The arguments are two objects <span class="SimpleMath">\(a,b\)</span>. The output is the natural morphism <span class="SimpleMath">\(\mathrm{DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects}: a^{\vee} \times b^{\vee} \rightarrow (a \times b)^{\vee}\)</span>.</p>
+
+<p><a id="X7EEBA52B78DD3C43" name="X7EEBA52B78DD3C43"></a></p>
+
+<h5>1.2-24 DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( a^{\vee} \times b^{\vee}, (a \times b)^{\vee} )\)</span>.</p>
+
+<p>The arguments are an object <span class="SimpleMath">\(s = a^{\vee} \times b^{\vee}\)</span>, two objects <span class="SimpleMath">\(a,b\)</span>, and an object <span class="SimpleMath">\(r = (a \times b)^{\vee}\)</span>. The output is the natural morphism <span class="SimpleMath">\(\mathrm{DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects}_{a,b}: a^{\vee} \times b^{\vee} \rightarrow (a \times b)^{\vee}\)</span>.</p>
+
+<p><a id="X87933AAC7C40C1FA" name="X87933AAC7C40C1FA"></a></p>
+
+<h5>1.2-25 MorphismFromDirectProductToExponential</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromDirectProductToExponential</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( a^{\vee} \times b, \mathrm{Exponential}(a,b) )\)</span>.</p>
+
+<p>The arguments are two objects <span class="SimpleMath">\(a,b\)</span>. The output is the natural morphism <span class="SimpleMath">\(\mathrm{MorphismFromDirectProductToExponentialWithGivenObjects}_{a,b}: a^{\vee} \times b \rightarrow \mathrm{Exponential}(a,b)\)</span>.</p>
+
+<p><a id="X79905A217884A6D5" name="X79905A217884A6D5"></a></p>
+
+<h5>1.2-26 MorphismFromDirectProductToExponentialWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromDirectProductToExponentialWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( a^{\vee} \times b, \mathrm{Exponential}(a,b) )\)</span>.</p>
+
+<p>The arguments are an object <span class="SimpleMath">\(s = a^{\vee} \times b\)</span>, two objects <span class="SimpleMath">\(a,b\)</span>, and an object <span class="SimpleMath">\(r = \mathrm{Exponential}(a,b)\)</span>. The output is the natural morphism <span class="SimpleMath">\(\mathrm{MorphismFromDirectProductToExponentialWithGivenObjects}_{a,b}: a^{\vee} \times b \rightarrow \mathrm{Exponential}(a,b)\)</span>.</p>
+
+<p><a id="X861A772B7A162149" name="X861A772B7A162149"></a></p>
+
+<h5>1.2-27 IsomorphismFromCartesianDualToExponential</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromCartesianDualToExponential</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a^{\vee}, \mathrm{Exponential}(a,1))\)</span>.</p>
+
+<p>The argument is an object <span class="SimpleMath">\(a\)</span>. The output is the isomorphism <span class="SimpleMath">\(\mathrm{IsomorphismFromCartesianDualToExponential}_{a}: a^{\vee} \rightarrow \mathrm{Exponential}(a,1)\)</span>.</p>
+
+<p><a id="X782AE54B7C404C82" name="X782AE54B7C404C82"></a></p>
+
+<h5>1.2-28 IsomorphismFromExponentialToCartesianDual</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromExponentialToCartesianDual</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(\mathrm{Exponential}(a,1), a^{\vee})\)</span>.</p>
+
+<p>The argument is an object <span class="SimpleMath">\(a\)</span>. The output is the isomorphism <span class="SimpleMath">\(\mathrm{IsomorphismFromExponentialToCartesianDual}_{a}: \mathrm{Exponential}(a,1) \rightarrow a^{\vee}\)</span>.</p>
+
+<p><a id="X83E3488284E0328F" name="X83E3488284E0328F"></a></p>
+
+<h5>1.2-29 UniversalPropertyOfCartesianDual</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UniversalPropertyOfCartesianDual</code>( <var class="Arg">t</var>, <var class="Arg">a</var>, <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(t, a^{\vee})\)</span>.</p>
+
+<p>The arguments are two objects <span class="SimpleMath">\(t,a\)</span>, and a morphism <span class="SimpleMath">\(\alpha: t \times a \rightarrow 1\)</span>. The output is the morphism <span class="SimpleMath">\(t \rightarrow a^{\vee}\)</span> given by the universal property of <span class="SimpleMath">\(a^{\vee}\)</span>.</p>
+
+<p><a id="X7B445ED786A92436" name="X7B445ED786A92436"></a></p>
+
+<h5>1.2-30 CartesianLambdaIntroduction</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianLambdaIntroduction</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( 1, \mathrm{Exponential}(a,b) )\)</span>.</p>
+
+<p>The argument is a morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span>. The output is the corresponding morphism <span class="SimpleMath">\(1 \rightarrow \mathrm{Exponential}(a,b)\)</span> under the direct product-exponential adjunction.</p>
+
+<p><a id="X809A70EB82722CD9" name="X809A70EB82722CD9"></a></p>
+
+<h5>1.2-31 CartesianLambdaElimination</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianLambdaElimination</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a,b)\)</span>.</p>
+
+<p>The arguments are two objects <span class="SimpleMath">\(a,b\)</span>, and a morphism <span class="SimpleMath">\(\alpha: 1 \rightarrow \mathrm{Exponential}(a,b)\)</span>. The output is a morphism <span class="SimpleMath">\(a \rightarrow b\)</span> corresponding to <span class="SimpleMath">\(\alpha\)</span> under the direct product-exponential adjunction.</p>
+
+<p><a id="X7FBA70217C5C0646" name="X7FBA70217C5C0646"></a></p>
+
+<h5>1.2-32 IsomorphismFromObjectToExponential</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromObjectToExponential</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a, \mathrm{Exponential}(1,a))\)</span>.</p>
+
+<p>The argument is an object <span class="SimpleMath">\(a\)</span>. The output is the natural isomorphism <span class="SimpleMath">\(a \rightarrow \mathrm{Exponential}(1,a)\)</span>.</p>
+
+<p><a id="X7CF80391784A8766" name="X7CF80391784A8766"></a></p>
+
+<h5>1.2-33 IsomorphismFromObjectToExponentialWithGivenExponential</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromObjectToExponentialWithGivenExponential</code>( <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a, \mathrm{Exponential}(1,a))\)</span>.</p>
+
+<p>The argument is an object <span class="SimpleMath">\(a\)</span>, and an object <span class="SimpleMath">\(r = \mathrm{Exponential}(1,a)\)</span>. The output is the natural isomorphism <span class="SimpleMath">\(a \rightarrow \mathrm{Exponential}(1,a)\)</span>.</p>
+
+<p><a id="X7BC4D6F37D4A5DA9" name="X7BC4D6F37D4A5DA9"></a></p>
+
+<h5>1.2-34 IsomorphismFromExponentialToObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromExponentialToObject</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(\mathrm{Exponential}(1,a),a)\)</span>.</p>
+
+<p>The argument is an object <span class="SimpleMath">\(a\)</span>. The output is the natural isomorphism <span class="SimpleMath">\(\mathrm{Exponential}(1,a) \rightarrow a\)</span>.</p>
+
+<p><a id="X7FE42D90795CDC89" name="X7FE42D90795CDC89"></a></p>
+
+<h5>1.2-35 IsomorphismFromExponentialToObjectWithGivenExponential</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromExponentialToObjectWithGivenExponential</code>( <var class="Arg">a</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(\mathrm{Exponential}(1,a),a)\)</span>.</p>
+
+<p>The argument is an object <span class="SimpleMath">\(a\)</span>, and an object <span class="SimpleMath">\(s = \mathrm{Exponential}(1,a)\)</span>. The output is the natural isomorphism <span class="SimpleMath">\(\mathrm{Exponential}(1,a) \rightarrow a\)</span>.</p>
+
+<p><a id="X7B40ED8B78D067A5" name="X7B40ED8B78D067A5"></a></p>
+
+<h4>1.3 <span class="Heading">Convenience Methods</span></h4>
+
+<p><a id="X7D8427C878F4698E" name="X7D8427C878F4698E"></a></p>
+
+<h5>1.3-1 Exponential</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Exponential</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a cell</p>
+
+<p>This is a convenience method. The arguments are two cells <span class="SimpleMath">\(a,b\)</span>. The output is the exponential cell. If <span class="SimpleMath">\(a,b\)</span> are two CAP objects the output is the internal Hom object <span class="SimpleMath">\(\mathrm{Exponential}(a,b)\)</span>. If at least one of the arguments is a CAP morphism the output is a CAP morphism, namely the exponential on morphisms, where any object is replaced by its identity morphism.</p>
+
+<p><a id="X85C8C80F785AEB5E" name="X85C8C80F785AEB5E"></a></p>
+
+<h4>1.4 <span class="Heading">Add-methods</span></h4>
+
+<p><a id="X7DECFEBB7BAB9D2C" name="X7DECFEBB7BAB9D2C"></a></p>
+
+<h5>1.4-1 AddCartesianBraiding</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianBraiding</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianBraiding</code>. <span class="SimpleMath">\(F: ( a, b ) \mapsto \mathtt{CartesianBraiding}(a, b)\)</span>.</p>
+
+<p><a id="X7D65ECAC834E1A3C" name="X7D65ECAC834E1A3C"></a></p>
+
+<h5>1.4-2 AddCartesianBraidingInverse</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianBraidingInverse</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianBraidingInverse</code>. <span class="SimpleMath">\(F: ( a, b ) \mapsto \mathtt{CartesianBraidingInverse}(a, b)\)</span>.</p>
+
+<p><a id="X7B2B3785849000CE" name="X7B2B3785849000CE"></a></p>
+
+<h5>1.4-3 AddCartesianBraidingInverseWithGivenDirectProducts</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianBraidingInverseWithGivenDirectProducts</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianBraidingInverseWithGivenDirectProducts</code>. <span class="SimpleMath">\(F: ( s, a, b, r ) \mapsto \mathtt{CartesianBraidingInverseWithGivenDirectProducts}(s, a, b, r)\)</span>.</p>
+
+<p><a id="X826EAFEE83ABD312" name="X826EAFEE83ABD312"></a></p>
+
+<h5>1.4-4 AddCartesianBraidingWithGivenDirectProducts</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianBraidingWithGivenDirectProducts</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianBraidingWithGivenDirectProducts</code>. <span class="SimpleMath">\(F: ( s, a, b, r ) \mapsto \mathtt{CartesianBraidingWithGivenDirectProducts}(s, a, b, r)\)</span>.</p>
+
+<p><a id="X7C5C0B02846FD3C1" name="X7C5C0B02846FD3C1"></a></p>
+
+<h5>1.4-5 AddCartesianAssociatorLeftToRight</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianAssociatorLeftToRight</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianAssociatorLeftToRight</code>. <span class="SimpleMath">\(F: ( a, b, c ) \mapsto \mathtt{CartesianAssociatorLeftToRight}(a, b, c)\)</span>.</p>
+
+<p><a id="X7BCE56507A6C3BDF" name="X7BCE56507A6C3BDF"></a></p>
+
+<h5>1.4-6 AddCartesianAssociatorLeftToRightWithGivenDirectProducts</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianAssociatorLeftToRightWithGivenDirectProducts</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianAssociatorLeftToRightWithGivenDirectProducts</code>. <span class="SimpleMath">\(F: ( s, a, b, c, r ) \mapsto \mathtt{CartesianAssociatorLeftToRightWithGivenDirectProducts}(s, a, b, c, r)\)</span>.</p>
+
+<p><a id="X85D42C46813B7095" name="X85D42C46813B7095"></a></p>
+
+<h5>1.4-7 AddCartesianAssociatorRightToLeft</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianAssociatorRightToLeft</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianAssociatorRightToLeft</code>. <span class="SimpleMath">\(F: ( a, b, c ) \mapsto \mathtt{CartesianAssociatorRightToLeft}(a, b, c)\)</span>.</p>
+
+<p><a id="X823408447F38988B" name="X823408447F38988B"></a></p>
+
+<h5>1.4-8 AddCartesianAssociatorRightToLeftWithGivenDirectProducts</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianAssociatorRightToLeftWithGivenDirectProducts</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianAssociatorRightToLeftWithGivenDirectProducts</code>. <span class="SimpleMath">\(F: ( s, a, b, c, r ) \mapsto \mathtt{CartesianAssociatorRightToLeftWithGivenDirectProducts}(s, a, b, c, r)\)</span>.</p>
+
+<p><a id="X87C1A0B97C612950" name="X87C1A0B97C612950"></a></p>
+
+<h5>1.4-9 AddCartesianLeftUnitor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianLeftUnitor</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianLeftUnitor</code>. <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{CartesianLeftUnitor}(a)\)</span>.</p>
+
+<p><a id="X7ABD79D8854BE24B" name="X7ABD79D8854BE24B"></a></p>
+
+<h5>1.4-10 AddCartesianLeftUnitorInverse</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianLeftUnitorInverse</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianLeftUnitorInverse</code>. <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{CartesianLeftUnitorInverse}(a)\)</span>.</p>
+
+<p><a id="X82203DD181396109" name="X82203DD181396109"></a></p>
+
+<h5>1.4-11 AddCartesianLeftUnitorInverseWithGivenDirectProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianLeftUnitorInverseWithGivenDirectProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianLeftUnitorInverseWithGivenDirectProduct</code>. <span class="SimpleMath">\(F: ( a, r ) \mapsto \mathtt{CartesianLeftUnitorInverseWithGivenDirectProduct}(a, r)\)</span>.</p>
+
+<p><a id="X7E298F43786AE6A9" name="X7E298F43786AE6A9"></a></p>
+
+<h5>1.4-12 AddCartesianLeftUnitorWithGivenDirectProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianLeftUnitorWithGivenDirectProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianLeftUnitorWithGivenDirectProduct</code>. <span class="SimpleMath">\(F: ( a, s ) \mapsto \mathtt{CartesianLeftUnitorWithGivenDirectProduct}(a, s)\)</span>.</p>
+
+<p><a id="X7A0DA54E86334D77" name="X7A0DA54E86334D77"></a></p>
+
+<h5>1.4-13 AddCartesianRightUnitor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianRightUnitor</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianRightUnitor</code>. <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{CartesianRightUnitor}(a)\)</span>.</p>
+
+<p><a id="X83DF74D883878D5D" name="X83DF74D883878D5D"></a></p>
+
+<h5>1.4-14 AddCartesianRightUnitorInverse</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianRightUnitorInverse</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianRightUnitorInverse</code>. <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{CartesianRightUnitorInverse}(a)\)</span>.</p>
+
+<p><a id="X80FADE527ED5FBC0" name="X80FADE527ED5FBC0"></a></p>
+
+<h5>1.4-15 AddCartesianRightUnitorInverseWithGivenDirectProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianRightUnitorInverseWithGivenDirectProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianRightUnitorInverseWithGivenDirectProduct</code>. <span class="SimpleMath">\(F: ( a, r ) \mapsto \mathtt{CartesianRightUnitorInverseWithGivenDirectProduct}(a, r)\)</span>.</p>
+
+<p><a id="X8000EAB2804A9214" name="X8000EAB2804A9214"></a></p>
+
+<h5>1.4-16 AddCartesianRightUnitorWithGivenDirectProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianRightUnitorWithGivenDirectProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianRightUnitorWithGivenDirectProduct</code>. <span class="SimpleMath">\(F: ( a, s ) \mapsto \mathtt{CartesianRightUnitorWithGivenDirectProduct}(a, s)\)</span>.</p>
+
+<p><a id="X7A912E6F7C245E68" name="X7A912E6F7C245E68"></a></p>
+
+<h5>1.4-17 AddDirectProductOnMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddDirectProductOnMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">DirectProductOnMorphisms</code>. <span class="SimpleMath">\(F: ( alpha, beta ) \mapsto \mathtt{DirectProductOnMorphisms}(alpha, beta)\)</span>.</p>
+
+<p><a id="X83778B607BFA449A" name="X83778B607BFA449A"></a></p>
+
+<h5>1.4-18 AddDirectProductOnMorphismsWithGivenDirectProducts</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddDirectProductOnMorphismsWithGivenDirectProducts</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">DirectProductOnMorphismsWithGivenDirectProducts</code>. <span class="SimpleMath">\(F: ( s, alpha, beta, r ) \mapsto \mathtt{DirectProductOnMorphismsWithGivenDirectProducts}(s, alpha, beta, r)\)</span>.</p>
+
+<p><a id="X8756D50584BBFE6A" name="X8756D50584BBFE6A"></a></p>
+
+<h5>1.4-19 AddCartesianCoevaluationMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianCoevaluationMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianCoevaluationMorphism</code>. <span class="SimpleMath">\(F: ( a, b ) \mapsto \mathtt{CartesianCoevaluationMorphism}(a, b)\)</span>.</p>
+
+<p><a id="X84BE0324857FDD20" name="X84BE0324857FDD20"></a></p>
+
+<h5>1.4-20 AddCartesianCoevaluationMorphismWithGivenRange</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianCoevaluationMorphismWithGivenRange</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianCoevaluationMorphismWithGivenRange</code>. <span class="SimpleMath">\(F: ( a, b, r ) \mapsto \mathtt{CartesianCoevaluationMorphismWithGivenRange}(a, b, r)\)</span>.</p>
+
+<p><a id="X794BBA45846FD320" name="X794BBA45846FD320"></a></p>
+
+<h5>1.4-21 AddCartesianDualOnMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianDualOnMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianDualOnMorphisms</code>. <span class="SimpleMath">\(F: ( alpha ) \mapsto \mathtt{CartesianDualOnMorphisms}(alpha)\)</span>.</p>
+
+<p><a id="X78745F147C783D1D" name="X78745F147C783D1D"></a></p>
+
+<h5>1.4-22 AddCartesianDualOnMorphismsWithGivenCartesianDuals</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianDualOnMorphismsWithGivenCartesianDuals</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianDualOnMorphismsWithGivenCartesianDuals</code>. <span class="SimpleMath">\(F: ( s, alpha, r ) \mapsto \mathtt{CartesianDualOnMorphismsWithGivenCartesianDuals}(s, alpha, r)\)</span>.</p>
+
+<p><a id="X7EBA65C37D7EA469" name="X7EBA65C37D7EA469"></a></p>
+
+<h5>1.4-23 AddCartesianDualOnObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianDualOnObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianDualOnObjects</code>. <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{CartesianDualOnObjects}(a)\)</span>.</p>
+
+<p><a id="X812A1F9884DF277F" name="X812A1F9884DF277F"></a></p>
+
+<h5>1.4-24 AddCartesianEvaluationForCartesianDual</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianEvaluationForCartesianDual</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianEvaluationForCartesianDual</code>. <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{CartesianEvaluationForCartesianDual}(a)\)</span>.</p>
+
+<p><a id="X87E8E1B380E7DCD7" name="X87E8E1B380E7DCD7"></a></p>
+
+<h5>1.4-25 AddCartesianEvaluationForCartesianDualWithGivenDirectProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianEvaluationForCartesianDualWithGivenDirectProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianEvaluationForCartesianDualWithGivenDirectProduct</code>. <span class="SimpleMath">\(F: ( s, a, r ) \mapsto \mathtt{CartesianEvaluationForCartesianDualWithGivenDirectProduct}(s, a, r)\)</span>.</p>
+
+<p><a id="X7DD4447F86F1C52B" name="X7DD4447F86F1C52B"></a></p>
+
+<h5>1.4-26 AddCartesianEvaluationMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianEvaluationMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianEvaluationMorphism</code>. <span class="SimpleMath">\(F: ( a, b ) \mapsto \mathtt{CartesianEvaluationMorphism}(a, b)\)</span>.</p>
+
+<p><a id="X86FF28588035F8E1" name="X86FF28588035F8E1"></a></p>
+
+<h5>1.4-27 AddCartesianEvaluationMorphismWithGivenSource</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianEvaluationMorphismWithGivenSource</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianEvaluationMorphismWithGivenSource</code>. <span class="SimpleMath">\(F: ( a, b, s ) \mapsto \mathtt{CartesianEvaluationMorphismWithGivenSource}(a, b, s)\)</span>.</p>
+
+<p><a id="X8786AE707B1C583F" name="X8786AE707B1C583F"></a></p>
+
+<h5>1.4-28 AddCartesianLambdaElimination</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianLambdaElimination</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianLambdaElimination</code>. <span class="SimpleMath">\(F: ( a, b, alpha ) \mapsto \mathtt{CartesianLambdaElimination}(a, b, alpha)\)</span>.</p>
+
+<p><a id="X7C6192D87B5FABDB" name="X7C6192D87B5FABDB"></a></p>
+
+<h5>1.4-29 AddCartesianLambdaIntroduction</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianLambdaIntroduction</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianLambdaIntroduction</code>. <span class="SimpleMath">\(F: ( alpha ) \mapsto \mathtt{CartesianLambdaIntroduction}(alpha)\)</span>.</p>
+
+<p><a id="X7E6F541D7BF5935F" name="X7E6F541D7BF5935F"></a></p>
+
+<h5>1.4-30 AddCartesianPostComposeMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianPostComposeMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianPostComposeMorphism</code>. <span class="SimpleMath">\(F: ( a, b, c ) \mapsto \mathtt{CartesianPostComposeMorphism}(a, b, c)\)</span>.</p>
+
+<p><a id="X790A62CB7CC2611D" name="X790A62CB7CC2611D"></a></p>
+
+<h5>1.4-31 AddCartesianPostComposeMorphismWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianPostComposeMorphismWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianPostComposeMorphismWithGivenObjects</code>. <span class="SimpleMath">\(F: ( s, a, b, c, r ) \mapsto \mathtt{CartesianPostComposeMorphismWithGivenObjects}(s, a, b, c, r)\)</span>.</p>
+
+<p><a id="X7935163587315F14" name="X7935163587315F14"></a></p>
+
+<h5>1.4-32 AddCartesianPreComposeMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianPreComposeMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianPreComposeMorphism</code>. <span class="SimpleMath">\(F: ( a, b, c ) \mapsto \mathtt{CartesianPreComposeMorphism}(a, b, c)\)</span>.</p>
+
+<p><a id="X835B02D07D02753C" name="X835B02D07D02753C"></a></p>
+
+<h5>1.4-33 AddCartesianPreComposeMorphismWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianPreComposeMorphismWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CartesianPreComposeMorphismWithGivenObjects</code>. <span class="SimpleMath">\(F: ( s, a, b, c, r ) \mapsto \mathtt{CartesianPreComposeMorphismWithGivenObjects}(s, a, b, c, r)\)</span>.</p>
+
+<p><a id="X7F7B5070863BEE7F" name="X7F7B5070863BEE7F"></a></p>
+
+<h5>1.4-34 AddDirectProductCartesianDualityCompatibilityMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddDirectProductCartesianDualityCompatibilityMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">DirectProductCartesianDualityCompatibilityMorphism</code>. <span class="SimpleMath">\(F: ( a, b ) \mapsto \mathtt{DirectProductCartesianDualityCompatibilityMorphism}(a, b)\)</span>.</p>
+
+<p><a id="X7C42B2E0811FD3C1" name="X7C42B2E0811FD3C1"></a></p>
+
+<h5>1.4-35 AddDirectProductCartesianDualityCompatibilityMorphismWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddDirectProductCartesianDualityCompatibilityMorphismWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects</code>. <span class="SimpleMath">\(F: ( s, a, b, r ) \mapsto \mathtt{DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects}(s, a, b, r)\)</span>.</p>
+
+<p><a id="X81F9CC457A1CF01A" name="X81F9CC457A1CF01A"></a></p>
+
+<h5>1.4-36 AddDirectProductExponentialCompatibilityMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddDirectProductExponentialCompatibilityMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">DirectProductExponentialCompatibilityMorphism</code>. <span class="SimpleMath">\(F: ( list ) \mapsto \mathtt{DirectProductExponentialCompatibilityMorphism}(list)\)</span>.</p>
+
+<p><a id="X82E595AC80F1E404" name="X82E595AC80F1E404"></a></p>
+
+<h5>1.4-37 AddDirectProductExponentialCompatibilityMorphismWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddDirectProductExponentialCompatibilityMorphismWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">DirectProductExponentialCompatibilityMorphismWithGivenObjects</code>. <span class="SimpleMath">\(F: ( source, list, range ) \mapsto \mathtt{DirectProductExponentialCompatibilityMorphismWithGivenObjects}(source, list, range)\)</span>.</p>
+
+<p><a id="X80803B8583D2A2F0" name="X80803B8583D2A2F0"></a></p>
+
+<h5>1.4-38 AddDirectProductToExponentialAdjunctionMap</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddDirectProductToExponentialAdjunctionMap</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">DirectProductToExponentialAdjunctionMap</code>. <span class="SimpleMath">\(F: ( a, b, f ) \mapsto \mathtt{DirectProductToExponentialAdjunctionMap}(a, b, f)\)</span>.</p>
+
+<p><a id="X847439A37DA35315" name="X847439A37DA35315"></a></p>
+
+<h5>1.4-39 AddExponentialOnMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddExponentialOnMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ExponentialOnMorphisms</code>. <span class="SimpleMath">\(F: ( alpha, beta ) \mapsto \mathtt{ExponentialOnMorphisms}(alpha, beta)\)</span>.</p>
+
+<p><a id="X7DF01A66791B2F43" name="X7DF01A66791B2F43"></a></p>
+
+<h5>1.4-40 AddExponentialOnMorphismsWithGivenExponentials</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddExponentialOnMorphismsWithGivenExponentials</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ExponentialOnMorphismsWithGivenExponentials</code>. <span class="SimpleMath">\(F: ( s, alpha, beta, r ) \mapsto \mathtt{ExponentialOnMorphismsWithGivenExponentials}(s, alpha, beta, r)\)</span>.</p>
+
+<p><a id="X7953DBA481E29FCD" name="X7953DBA481E29FCD"></a></p>
+
+<h5>1.4-41 AddExponentialOnObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddExponentialOnObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ExponentialOnObjects</code>. <span class="SimpleMath">\(F: ( a, b ) \mapsto \mathtt{ExponentialOnObjects}(a, b)\)</span>.</p>
+
+<p><a id="X87F5AED47ED38995" name="X87F5AED47ED38995"></a></p>
+
+<h5>1.4-42 AddExponentialToDirectProductAdjunctionMap</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddExponentialToDirectProductAdjunctionMap</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ExponentialToDirectProductAdjunctionMap</code>. <span class="SimpleMath">\(F: ( b, c, g ) \mapsto \mathtt{ExponentialToDirectProductAdjunctionMap}(b, c, g)\)</span>.</p>
+
+<p><a id="X783FD43F79FAEE32" name="X783FD43F79FAEE32"></a></p>
+
+<h5>1.4-43 AddIsomorphismFromCartesianDualToExponential</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromCartesianDualToExponential</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsomorphismFromCartesianDualToExponential</code>. <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{IsomorphismFromCartesianDualToExponential}(a)\)</span>.</p>
+
+<p><a id="X83B865267D26E391" name="X83B865267D26E391"></a></p>
+
+<h5>1.4-44 AddIsomorphismFromExponentialToCartesianDual</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromExponentialToCartesianDual</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsomorphismFromExponentialToCartesianDual</code>. <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{IsomorphismFromExponentialToCartesianDual}(a)\)</span>.</p>
+
+<p><a id="X78ABCC107CE12670" name="X78ABCC107CE12670"></a></p>
+
+<h5>1.4-45 AddIsomorphismFromExponentialToObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromExponentialToObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsomorphismFromExponentialToObject</code>. <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{IsomorphismFromExponentialToObject}(a)\)</span>.</p>
+
+<p><a id="X7ECB83AE8761FAE4" name="X7ECB83AE8761FAE4"></a></p>
+
+<h5>1.4-46 AddIsomorphismFromExponentialToObjectWithGivenExponential</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromExponentialToObjectWithGivenExponential</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsomorphismFromExponentialToObjectWithGivenExponential</code>. <span class="SimpleMath">\(F: ( a, s ) \mapsto \mathtt{IsomorphismFromExponentialToObjectWithGivenExponential}(a, s)\)</span>.</p>
+
+<p><a id="X85C8CA0683C48022" name="X85C8CA0683C48022"></a></p>
+
+<h5>1.4-47 AddIsomorphismFromObjectToExponential</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromObjectToExponential</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsomorphismFromObjectToExponential</code>. <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{IsomorphismFromObjectToExponential}(a)\)</span>.</p>
+
+<p><a id="X82707C4F78445CB6" name="X82707C4F78445CB6"></a></p>
+
+<h5>1.4-48 AddIsomorphismFromObjectToExponentialWithGivenExponential</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromObjectToExponentialWithGivenExponential</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsomorphismFromObjectToExponentialWithGivenExponential</code>. <span class="SimpleMath">\(F: ( a, r ) \mapsto \mathtt{IsomorphismFromObjectToExponentialWithGivenExponential}(a, r)\)</span>.</p>
+
+<p><a id="X8420457583D88893" name="X8420457583D88893"></a></p>
+
+<h5>1.4-49 AddMorphismFromDirectProductToExponential</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismFromDirectProductToExponential</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">MorphismFromDirectProductToExponential</code>. <span class="SimpleMath">\(F: ( a, b ) \mapsto \mathtt{MorphismFromDirectProductToExponential}(a, b)\)</span>.</p>
+
+<p><a id="X80ADD1637EAFA7BF" name="X80ADD1637EAFA7BF"></a></p>
+
+<h5>1.4-50 AddMorphismFromDirectProductToExponentialWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismFromDirectProductToExponentialWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">MorphismFromDirectProductToExponentialWithGivenObjects</code>. <span class="SimpleMath">\(F: ( s, a, b, r ) \mapsto \mathtt{MorphismFromDirectProductToExponentialWithGivenObjects}(s, a, b, r)\)</span>.</p>
+
+<p><a id="X805D9C4A84DCCE58" name="X805D9C4A84DCCE58"></a></p>
+
+<h5>1.4-51 AddMorphismToCartesianBidual</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismToCartesianBidual</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">MorphismToCartesianBidual</code>. <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{MorphismToCartesianBidual}(a)\)</span>.</p>
+
+<p><a id="X829304A984E33C7D" name="X829304A984E33C7D"></a></p>
+
+<h5>1.4-52 AddMorphismToCartesianBidualWithGivenCartesianBidual</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismToCartesianBidualWithGivenCartesianBidual</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">MorphismToCartesianBidualWithGivenCartesianBidual</code>. <span class="SimpleMath">\(F: ( a, r ) \mapsto \mathtt{MorphismToCartesianBidualWithGivenCartesianBidual}(a, r)\)</span>.</p>
+
+<p><a id="X82D42BAA81A347F0" name="X82D42BAA81A347F0"></a></p>
+
+<h5>1.4-53 AddUniversalPropertyOfCartesianDual</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalPropertyOfCartesianDual</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">UniversalPropertyOfCartesianDual</code>. <span class="SimpleMath">\(F: ( t, a, alpha ) \mapsto \mathtt{UniversalPropertyOfCartesianDual}(t, a, alpha)\)</span>.</p>
+
+<p><a id="X7C28737579FF3620" name="X7C28737579FF3620"></a></p>
+
+<h5>1.4-54 AddLeftCartesianDistributivityExpanding</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLeftCartesianDistributivityExpanding</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">LeftCartesianDistributivityExpanding</code>. <span class="SimpleMath">\(F: ( a, L ) \mapsto \mathtt{LeftCartesianDistributivityExpanding}(a, L)\)</span>.</p>
+
+<p><a id="X837194A57D5DB384" name="X837194A57D5DB384"></a></p>
+
+<h5>1.4-55 AddLeftCartesianDistributivityExpandingWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLeftCartesianDistributivityExpandingWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">LeftCartesianDistributivityExpandingWithGivenObjects</code>. <span class="SimpleMath">\(F: ( s, a, L, r ) \mapsto \mathtt{LeftCartesianDistributivityExpandingWithGivenObjects}(s, a, L, r)\)</span>.</p>
+
+<p><a id="X8773CF8C875B238E" name="X8773CF8C875B238E"></a></p>
+
+<h5>1.4-56 AddLeftCartesianDistributivityFactoring</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLeftCartesianDistributivityFactoring</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">LeftCartesianDistributivityFactoring</code>. <span class="SimpleMath">\(F: ( a, L ) \mapsto \mathtt{LeftCartesianDistributivityFactoring}(a, L)\)</span>.</p>
+
+<p><a id="X7D30753183F9A62A" name="X7D30753183F9A62A"></a></p>
+
+<h5>1.4-57 AddLeftCartesianDistributivityFactoringWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLeftCartesianDistributivityFactoringWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">LeftCartesianDistributivityFactoringWithGivenObjects</code>. <span class="SimpleMath">\(F: ( s, a, L, r ) \mapsto \mathtt{LeftCartesianDistributivityFactoringWithGivenObjects}(s, a, L, r)\)</span>.</p>
+
+<p><a id="X878FB2127E7380B8" name="X878FB2127E7380B8"></a></p>
+
+<h5>1.4-58 AddRightCartesianDistributivityExpanding</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRightCartesianDistributivityExpanding</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RightCartesianDistributivityExpanding</code>. <span class="SimpleMath">\(F: ( L, a ) \mapsto \mathtt{RightCartesianDistributivityExpanding}(L, a)\)</span>.</p>
+
+<p><a id="X82EC8C6F798182E6" name="X82EC8C6F798182E6"></a></p>
+
+<h5>1.4-59 AddRightCartesianDistributivityExpandingWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRightCartesianDistributivityExpandingWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RightCartesianDistributivityExpandingWithGivenObjects</code>. <span class="SimpleMath">\(F: ( s, L, a, r ) \mapsto \mathtt{RightCartesianDistributivityExpandingWithGivenObjects}(s, L, a, r)\)</span>.</p>
+
+<p><a id="X7CD40EEB7AEBB0D9" name="X7CD40EEB7AEBB0D9"></a></p>
+
+<h5>1.4-60 AddRightCartesianDistributivityFactoring</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRightCartesianDistributivityFactoring</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RightCartesianDistributivityFactoring</code>. <span class="SimpleMath">\(F: ( L, a ) \mapsto \mathtt{RightCartesianDistributivityFactoring}(L, a)\)</span>.</p>
+
+<p><a id="X7CAD6DFB7D19B287" name="X7CAD6DFB7D19B287"></a></p>
+
+<h5>1.4-61 AddRightCartesianDistributivityFactoringWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRightCartesianDistributivityFactoringWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RightCartesianDistributivityFactoringWithGivenObjects</code>. <span class="SimpleMath">\(F: ( s, L, a, r ) \mapsto \mathtt{RightCartesianDistributivityFactoringWithGivenObjects}(s, L, a, r)\)</span>.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>
