@@ -110,6 +110,8 @@ You can revert this decision using `ContinueCompilationAtCategory`.
 
 @Section Disabling the automatic inference of data types
 
+@Section Proof assistant mode
+
 @Section Getting information about the compilation process
 
 You can increase the info level of `InfoCapJit` to get information about the compilation process.
