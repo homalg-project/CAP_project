@@ -17,6 +17,7 @@ TensorProductOnMorphisms := rec(
   return_type := "morphism",
   dual_operation := "TensorProductOnMorphisms",
   dual_arguments_reversed := false,
+  compatible_with_congruence_of_morphisms := true,
   # Test in MonoidalCategoriesTest
 ),
 
@@ -27,6 +28,7 @@ TensorProductOnMorphismsWithGivenTensorProducts := rec(
   dual_operation := "TensorProductOnMorphismsWithGivenTensorProducts",
   dual_arguments_reversed := false,
   dual_with_given_objects_reversed := true,
+  compatible_with_congruence_of_morphisms := true,
   # Test in MonoidalCategoriesTest
 ),
 

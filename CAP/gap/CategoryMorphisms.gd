@@ -420,6 +420,7 @@ DeclareOperation( "\-", [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 #! @Description
 #! The arguments are two morphisms $\alpha, \beta: a \rightarrow b$.
 #! The output is the addition $\alpha + \beta$.
+#! Note: The addition has to be compatible with the congruence of morphisms.
 #! @Returns a morphism in $\mathrm{Hom}(a,b)$
 #! @Arguments alpha, beta
 DeclareOperation( "AdditionForMorphisms",
@@ -428,6 +429,7 @@ DeclareOperation( "AdditionForMorphisms",
 #! @Description
 #! The arguments are two morphisms $\alpha, \beta: a \rightarrow b$.
 #! The output is the addition $\alpha - \beta$.
+#! Note: The addition has to be compatible with the congruence of morphisms.
 #! @Returns a morphism in $\mathrm{Hom}(a,b)$
 #! @Arguments alpha, beta
 DeclareOperation( "SubtractionForMorphisms",
@@ -436,6 +438,7 @@ DeclareOperation( "SubtractionForMorphisms",
 #! @Description
 #! The argument is a morphism $\alpha: a \rightarrow b$.
 #! The output is its additive inverse $-\alpha$.
+#! Note: The addition has to be compatible with the congruence of morphisms.
 #! @Returns a morphism in $\mathrm{Hom}(a,b)$
 #! @Arguments alpha
 DeclareAttribute( "AdditiveInverseForMorphisms",
@@ -448,6 +451,7 @@ DeclareAttribute( "AdditiveInverse",
 #! The arguments are an element $r$ of a commutative ring
 #! and a morphism $\alpha: a \rightarrow b$.
 #! The output is the multiplication with the ring element $r \cdot \alpha$.
+#! Note: The multiplication has to be compatible with the congruence of morphisms.
 #! @Returns a morphism in $\mathrm{Hom}(a,b)$
 #! @Arguments r, alpha
 DeclareOperation( "MultiplyWithElementOfCommutativeRingForMorphisms",
