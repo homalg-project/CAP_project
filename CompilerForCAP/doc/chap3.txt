@@ -948,6 +948,37 @@
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xdummy := DummyCategory( rec([127X[104X
+    [4X[25X>[125X [27X    list_of_operations_to_install := [[127X[104X
+    [4X[25X>[125X [27X        "IdentityMorphism",[127X[104X
+    [4X[25X>[125X [27X        "ZeroObject",[127X[104X
+    [4X[25X>[125X [27X        "KernelObject",[127X[104X
+    [4X[25X>[125X [27X    ],[127X[104X
+    [4X[25X>[125X [27X) );;[127X[104X
+    [4X[25Xgap>[125X [27XStopCompilationAtPrimitivelyInstalledOperationsOfCategory( dummy );[127X[104X
+    [4X[25Xgap>[125X [27XCapJitEnableProofAssistantMode( );[127X[104X
+    [4X[25Xgap>[125X [27Xfunc :=[127X[104X
+    [4X[25X>[125X [27X    cat -> KernelObject( cat, IdentityMorphism( cat, ZeroObject( cat ) ) );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, dummy ) );[127X[104X
+    [4X[28XWARNING: the CAP operation KernelObject is not compatible with the congruence \[128X[104X
+    [4X[28Xof morphisms. Keep this in mind when writing logic templates.[128X[104X
+    [4X[28XWARNING: the CAP operation KernelObject is not compatible with the congruence \[128X[104X
+    [4X[28Xof morphisms. Keep this in mind when writing logic templates.[128X[104X
+    [4X[28Xfunction ( cat_1 )[128X[104X
+    [4X[28X    return KernelObject( cat_1, IdentityMorphism( cat_1, ZeroObject( cat_1 ) [128X[104X
+    [4X[28X         ) );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27XCapJitDisableProofAssistantMode( );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, dummy ) );[127X[104X
+    [4X[28Xfunction ( cat_1 )[128X[104X
+    [4X[28X    return KernelObject( cat_1, IdentityMorphism( cat_1, ZeroObject( cat_1 ) [128X[104X
+    [4X[28X         ) );[128X[104X
+    [4X[28Xend[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27X##[127X[104X

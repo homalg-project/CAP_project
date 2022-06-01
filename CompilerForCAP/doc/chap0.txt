@@ -6,10 +6,10 @@
                    [1X Speed up computations in CAP categories [101X
   
   
-                                   2022.05-11
+                                   2022.06-01
   
   
-                                  26 May 2022
+                                  1 June 2022
   
   
                                 Fabian Zickgraf
@@ -49,9 +49,11 @@
       1.7-4 ContinueCompilationAtPrimitivelyInstalledOperationsOfCategory
     1.8 [33X[0;0YDisabling the automatic inference of data types[133X
       1.8-1 CapJitDisableDataTypeInference
-    1.9 [33X[0;0YGetting information about the compilation process[133X
-      1.9-1 InfoCapJit
-    1.10 [33X[0;0YFAQ[133X
+    1.9 [33X[0;0YProof assistant mode[133X
+      1.9-1 CapJitEnableProofAssistantMode
+    1.10 [33X[0;0YGetting information about the compilation process[133X
+      1.10-1 InfoCapJit
+    1.11 [33X[0;0YFAQ[133X
   2 [33X[0;0YImproving and extending the compiler[133X
     2.1 [33X[0;0YLogic[133X
       2.1-1 CapJitAddLogicFunction

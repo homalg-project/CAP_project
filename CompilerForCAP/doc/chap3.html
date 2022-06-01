@@ -994,6 +994,38 @@ true
 
 
 <div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dummy := DummyCategory( rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    list_of_operations_to_install := [</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "IdentityMorphism",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "ZeroObject",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "KernelObject",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StopCompilationAtPrimitivelyInstalledOperationsOfCategory( dummy );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitEnableProofAssistantMode( );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    cat -&gt; KernelObject( cat, IdentityMorphism( cat, ZeroObject( cat ) ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func, dummy ) );</span>
+WARNING: the CAP operation KernelObject is not compatible with the congruence \
+of morphisms. Keep this in mind when writing logic templates.
+WARNING: the CAP operation KernelObject is not compatible with the congruence \
+of morphisms. Keep this in mind when writing logic templates.
+function ( cat_1 )
+    return KernelObject( cat_1, IdentityMorphism( cat_1, ZeroObject( cat_1 ) 
+         ) );
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitDisableProofAssistantMode( );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func, dummy ) );</span>
+function ( cat_1 )
+    return KernelObject( cat_1, IdentityMorphism( cat_1, ZeroObject( cat_1 ) 
+         ) );
+end
+</pre></div>
+
+
+<div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">##</span>
