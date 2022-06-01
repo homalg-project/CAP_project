@@ -340,7 +340,8 @@
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X[133X
   
   [33X[0;0YThe  arguments  are two morphisms [23X\alpha, \beta: a \rightarrow b[123X. The output
-  is the addition [23X\alpha + \beta[123X.[133X
+  is the addition [23X\alpha + \beta[123X. Note: The addition has to be compatible with
+  the congruence of morphisms.[133X
   
   [1X3.8-3 SubtractionForMorphisms[101X
   
@@ -348,7 +349,8 @@
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X[133X
   
   [33X[0;0YThe  arguments  are two morphisms [23X\alpha, \beta: a \rightarrow b[123X. The output
-  is the addition [23X\alpha - \beta[123X.[133X
+  is the addition [23X\alpha - \beta[123X. Note: The addition has to be compatible with
+  the congruence of morphisms.[133X
   
   [1X3.8-4 AdditiveInverseForMorphisms[101X
   
@@ -356,7 +358,8 @@
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X[133X
   
   [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  a  \rightarrow b[123X. The output is its
-  additive inverse [23X-\alpha[123X.[133X
+  additive  inverse  [23X-\alpha[123X. Note: The addition has to be compatible with the
+  congruence of morphisms.[133X
   
   [1X3.8-5 MultiplyWithElementOfCommutativeRingForMorphisms[101X
   
@@ -365,7 +368,8 @@
   
   [33X[0;0YThe  arguments are an element [23Xr[123X of a commutative ring and a morphism [23X\alpha:
   a  \rightarrow  b[123X.  The output is the multiplication with the ring element [23Xr
-  \cdot \alpha[123X.[133X
+  \cdot  \alpha[123X.  Note:  The  multiplication  has  to  be  compatible with the
+  congruence of morphisms.[133X
   
   [1X3.8-6 \*[101X
   

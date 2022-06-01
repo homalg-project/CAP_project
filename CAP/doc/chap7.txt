@@ -292,6 +292,12 @@
         (as  the  last  argument  of the with given operation) or both (as the
         second and the last argument of the with given operation).[133X
   
+  [30X    [33X[0;6Ycompatible_with_congruence_of_morphisms  (optional):  Indicates if the
+        operation  is compatible with the congruence of morphisms, that is, if
+        the  output  does  not  change  with  regard  to [10XIsEqualForObjects[110X and
+        [10XIsCongruentForMorphisms[110X   if   the   input   changes  with  regard  to
+        [10XIsEqualForObjects[110X and [10XIsCongruentForMorphisms[110X.[133X
+  
   [33X[0;0YUsing  all  those  entries, the operation [10XCapInternalInstallAdd[110X installs add
   methods  as  described  above. It first provides plausibility checks for all
   the  entries described, then installs the Add method in 4 ways, with list or

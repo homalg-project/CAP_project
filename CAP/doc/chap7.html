@@ -652,6 +652,12 @@ DeclareOperation( "CapInternalInstallAdd",
 
 </li>
 </ul>
+
+<ul>
+<li><p>compatible_with_congruence_of_morphisms (optional): Indicates if the operation is compatible with the congruence of morphisms, that is, if the output does not change with regard to <code class="code">IsEqualForObjects</code> and <code class="code">IsCongruentForMorphisms</code> if the input changes with regard to <code class="code">IsEqualForObjects</code> and <code class="code">IsCongruentForMorphisms</code>.</p>
+
+</li>
+</ul>
 <p>Using all those entries, the operation <code class="code">CapInternalInstallAdd</code> installs add methods as described above. It first provides plausibility checks for all the entries described, then installs the Add method in 4 ways, with list or functions as second argument, and with an optional third parameter for the weight.</p>
 
 <p><a id="X7AFC15FE81D083CB" name="X7AFC15FE81D083CB"></a></p>

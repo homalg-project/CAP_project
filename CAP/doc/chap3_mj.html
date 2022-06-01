@@ -554,7 +554,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdditionForMorphisms</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a,b)\)</span></p>
 
-<p>The arguments are two morphisms <span class="SimpleMath">\(\alpha, \beta: a \rightarrow b\)</span>. The output is the addition <span class="SimpleMath">\(\alpha + \beta\)</span>.</p>
+<p>The arguments are two morphisms <span class="SimpleMath">\(\alpha, \beta: a \rightarrow b\)</span>. The output is the addition <span class="SimpleMath">\(\alpha + \beta\)</span>. Note: The addition has to be compatible with the congruence of morphisms.</p>
 
 <p><a id="X7B6461F5873F3F9D" name="X7B6461F5873F3F9D"></a></p>
 
@@ -563,7 +563,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SubtractionForMorphisms</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a,b)\)</span></p>
 
-<p>The arguments are two morphisms <span class="SimpleMath">\(\alpha, \beta: a \rightarrow b\)</span>. The output is the addition <span class="SimpleMath">\(\alpha - \beta\)</span>.</p>
+<p>The arguments are two morphisms <span class="SimpleMath">\(\alpha, \beta: a \rightarrow b\)</span>. The output is the addition <span class="SimpleMath">\(\alpha - \beta\)</span>. Note: The addition has to be compatible with the congruence of morphisms.</p>
 
 <p><a id="X83177713785DCFFC" name="X83177713785DCFFC"></a></p>
 
@@ -572,7 +572,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdditiveInverseForMorphisms</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a,b)\)</span></p>
 
-<p>The argument is a morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span>. The output is its additive inverse <span class="SimpleMath">\(-\alpha\)</span>.</p>
+<p>The argument is a morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span>. The output is its additive inverse <span class="SimpleMath">\(-\alpha\)</span>. Note: The addition has to be compatible with the congruence of morphisms.</p>
 
 <p><a id="X8187CAF17EB5D6D0" name="X8187CAF17EB5D6D0"></a></p>
 
@@ -581,7 +581,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MultiplyWithElementOfCommutativeRingForMorphisms</code>( <var class="Arg">r</var>, <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a,b)\)</span></p>
 
-<p>The arguments are an element <span class="SimpleMath">\(r\)</span> of a commutative ring and a morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span>. The output is the multiplication with the ring element <span class="SimpleMath">\(r \cdot \alpha\)</span>.</p>
+<p>The arguments are an element <span class="SimpleMath">\(r\)</span> of a commutative ring and a morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span>. The output is the multiplication with the ring element <span class="SimpleMath">\(r \cdot \alpha\)</span>. Note: The multiplication has to be compatible with the congruence of morphisms.</p>
 
 <p><a id="X877D74C67D041F74" name="X877D74C67D041F74"></a></p>
 
