@@ -8,8 +8,8 @@
   
   [30X    [33X[0;6Ya category [23X\mathbf{C}[123X,[133X
   
-  [30X    [33X[0;6Ya   functor   [23X\otimes:   \mathbf{C}   \times   \mathbf{C}  \rightarrow
-        \mathbf{C}[123X,[133X
+  [30X    [33X[0;6Ya functor [23X\otimes: \mathbf{C} \times \mathbf{C} \rightarrow \mathbf{C}[123X
+        compatible with the congruence of morphisms,[133X
   
   [30X    [33X[0;6Yan object [23X1 \in \mathbf{C}[123X,[133X
   
@@ -25,12 +25,12 @@
   [30X    [33X[0;6Yfor all objects [23Xa,b,c,d[123X, the pentagon identity holds:[133X
   
   [33X[0;0Y[23X(\alpha_{a,b,c} \otimes \mathrm{id}_d) \circ \alpha_{a,b \otimes c, d} \circ
-  (  \mathrm{id}_a \otimes \alpha_{b,c,d} ) = \alpha_{a \otimes b, c, d} \circ
-  \alpha_{a,b,c \otimes d}[123X,[133X
+  (  \mathrm{id}_a  \otimes  \alpha_{b,c,d}  ) \sim \alpha_{a \otimes b, c, d}
+  \circ \alpha_{a,b,c \otimes d}[123X,[133X
   
   [30X    [33X[0;6Yfor all objects [23Xa,c[123X, the triangle identity holds:[133X
   
-  [33X[0;0Y[23X(  \rho_a  \otimes  \mathrm{id}_c  )  \circ  \alpha_{a,1,c}  = \mathrm{id}_a
+  [33X[0;0Y[23X(  \rho_a  \otimes  \mathrm{id}_c  ) \circ \alpha_{a,1,c} \sim \mathrm{id}_a
   \otimes \lambda_c[123X.[133X
   
   [33X[0;0YThe corresponding GAP property is given by [10XIsMonoidalCategory[110X.[133X
@@ -282,14 +282,14 @@
   [33X[0;0YA  monoidal category [23X\mathbf{C}[123X equipped with a natural isomorphism [23XB_{a,b}:
   a \otimes b \cong b \otimes a[123X is called a [13Xbraided monoidal category[113X if[133X
   
-  [30X    [33X[0;6Y[23X\lambda_a \circ B_{a,1} = \rho_a[123X,[133X
+  [30X    [33X[0;6Y[23X\lambda_a \circ B_{a,1} \sim \rho_a[123X,[133X
   
   [30X    [33X[0;6Y[23X(B_{c,a}   \otimes  \mathrm{id}_b)  \circ  \alpha_{c,a,b}  \circ  B_{a
-        \otimes  b,c}  = \alpha_{a,c,b} \circ ( \mathrm{id}_a \otimes B_{b,c})
-        \circ \alpha^{-1}_{a,b,c}[123X,[133X
+        \otimes   b,c}  \sim  \alpha_{a,c,b}  \circ  (  \mathrm{id}_a  \otimes
+        B_{b,c}) \circ \alpha^{-1}_{a,b,c}[123X,[133X
   
   [30X    [33X[0;6Y[23X(  \mathrm{id}_b  \otimes  B_{c,a}  )  \circ \alpha^{-1}_{b,c,a} \circ
-        B_{a,b   \otimes  c}  =  \alpha^{-1}_{b,a,c}  \circ  (B_{a,b}  \otimes
+        B_{a,b  \otimes  c}  \sim  \alpha^{-1}_{b,a,c}  \circ (B_{a,b} \otimes
         \mathrm{id}_c) \circ \alpha_{a,b,c}[123X.[133X
   
   [33X[0;0YThe corresponding GAP property is given by [10XIsBraidedMonoidalCategory[110X.[133X
@@ -332,7 +332,7 @@
   [1X1.4 [33X[0;0YSymmetric Monoidal Categories[133X[101X
   
   [33X[0;0YA braided monoidal category [23X\mathbf{C}[123X is called [13Xsymmetric monoidal category[113X
-  if  [23XB_{a,b}^{-1}  =  B_{b,a}[123X.  The  corresponding  GAP  property is given by
+  if  [23XB_{a,b}^{-1}  \sim  B_{b,a}[123X.  The corresponding GAP property is given by
   [10XIsSymmetricMonoidalCategory[110X.[133X
   
   

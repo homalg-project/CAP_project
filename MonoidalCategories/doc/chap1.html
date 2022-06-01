@@ -328,7 +328,7 @@
 <li><p>a category <span class="Math">\mathbf{C}</span>,</p>
 
 </li>
-<li><p>a functor <span class="Math">\otimes: \mathbf{C} \times \mathbf{C} \rightarrow \mathbf{C}</span>,</p>
+<li><p>a functor <span class="Math">\otimes: \mathbf{C} \times \mathbf{C} \rightarrow \mathbf{C}</span> compatible with the congruence of morphisms,</p>
 
 </li>
 <li><p>an object <span class="Math">1 \in \mathbf{C}</span>,</p>
@@ -352,7 +352,7 @@
 
 </li>
 </ul>
-<p><span class="Math">(\alpha_{a,b,c} \otimes \mathrm{id}_d) \circ \alpha_{a,b \otimes c, d} \circ ( \mathrm{id}_a \otimes \alpha_{b,c,d} ) = \alpha_{a \otimes b, c, d} \circ \alpha_{a,b,c \otimes d}</span>,</p>
+<p><span class="Math">(\alpha_{a,b,c} \otimes \mathrm{id}_d) \circ \alpha_{a,b \otimes c, d} \circ ( \mathrm{id}_a \otimes \alpha_{b,c,d} ) \sim \alpha_{a \otimes b, c, d} \circ \alpha_{a,b,c \otimes d}</span>,</p>
 
 
 <ul>
@@ -360,7 +360,7 @@
 
 </li>
 </ul>
-<p><span class="Math">( \rho_a \otimes \mathrm{id}_c ) \circ \alpha_{a,1,c} = \mathrm{id}_a \otimes \lambda_c</span>.</p>
+<p><span class="Math">( \rho_a \otimes \mathrm{id}_c ) \circ \alpha_{a,1,c} \sim \mathrm{id}_a \otimes \lambda_c</span>.</p>
 
 <p>The corresponding GAP property is given by <code class="code">IsMonoidalCategory</code>.</p>
 
@@ -610,13 +610,13 @@
 
 
 <ul>
-<li><p><span class="Math">\lambda_a \circ B_{a,1} = \rho_a</span>,</p>
+<li><p><span class="Math">\lambda_a \circ B_{a,1} \sim \rho_a</span>,</p>
 
 </li>
-<li><p><span class="Math">(B_{c,a} \otimes \mathrm{id}_b) \circ \alpha_{c,a,b} \circ B_{a \otimes b,c} = \alpha_{a,c,b} \circ ( \mathrm{id}_a \otimes B_{b,c}) \circ \alpha^{-1}_{a,b,c}</span>,</p>
+<li><p><span class="Math">(B_{c,a} \otimes \mathrm{id}_b) \circ \alpha_{c,a,b} \circ B_{a \otimes b,c} \sim \alpha_{a,c,b} \circ ( \mathrm{id}_a \otimes B_{b,c}) \circ \alpha^{-1}_{a,b,c}</span>,</p>
 
 </li>
-<li><p><span class="Math">( \mathrm{id}_b \otimes B_{c,a} ) \circ \alpha^{-1}_{b,c,a} \circ B_{a,b \otimes c} = \alpha^{-1}_{b,a,c} \circ (B_{a,b} \otimes \mathrm{id}_c) \circ \alpha_{a,b,c}</span>.</p>
+<li><p><span class="Math">( \mathrm{id}_b \otimes B_{c,a} ) \circ \alpha^{-1}_{b,c,a} \circ B_{a,b \otimes c} \sim \alpha^{-1}_{b,a,c} \circ (B_{a,b} \otimes \mathrm{id}_c) \circ \alpha_{a,b,c}</span>.</p>
 
 </li>
 </ul>
@@ -662,7 +662,7 @@
 
 <h4>1.4 <span class="Heading">Symmetric Monoidal Categories</span></h4>
 
-<p>A braided monoidal category <span class="Math">\mathbf{C}</span> is called <em>symmetric monoidal category</em> if <span class="Math">B_{a,b}^{-1} = B_{b,a}</span>. The corresponding GAP property is given by <code class="code">IsSymmetricMonoidalCategory</code>.</p>
+<p>A braided monoidal category <span class="Math">\mathbf{C}</span> is called <em>symmetric monoidal category</em> if <span class="Math">B_{a,b}^{-1} \sim B_{b,a}</span>. The corresponding GAP property is given by <code class="code">IsSymmetricMonoidalCategory</code>.</p>
 
 <p><a id="X7BC682067A30E580" name="X7BC682067A30E580"></a></p>
 
