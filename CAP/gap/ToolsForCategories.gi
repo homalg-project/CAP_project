@@ -1359,3 +1359,93 @@ InstallGlobalFunction( Triple, function ( first, second, third )
     return NTuple( 3, first, second, third );
     
 end );
+
+##
+InstallGlobalFunction( HandlePrecompiledTowers, function ( category, underlying_category, constructor_name )
+  local precompiled_towers, remaining_constructors_in_tower, precompiled_functions_adder, info;
+    
+    if not IsBound( underlying_category!.compiler_hints ) or not IsBound( underlying_category!.compiler_hints.precompiled_towers ) then
+        
+        return;
+        
+    fi;
+    
+    if not IsList( underlying_category!.compiler_hints.precompiled_towers ) then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "`underlying_category!.compiler_hints.precompiled_towers` must be a list" );
+        
+    fi;
+    
+    precompiled_towers := [ ];
+    
+    for info in underlying_category!.compiler_hints.precompiled_towers do
+        
+        if not (IsRecord( info ) and IsBound( info.remaining_constructors_in_tower ) and IsBound( info.precompiled_functions_adder )) then
+            
+            # COVERAGE_IGNORE_NEXT_LINE
+            Error( "the entries of `underlying_category!.compiler_hints.precompiled_towers` must be records with components `remaining_constructors_in_tower` and `precompiled_functions_adder`" );
+            
+        fi;
+        
+        remaining_constructors_in_tower := info.remaining_constructors_in_tower;
+        precompiled_functions_adder := info.precompiled_functions_adder;
+        
+        if not IsList( remaining_constructors_in_tower ) or IsEmpty( remaining_constructors_in_tower ) then
+            
+            # COVERAGE_IGNORE_NEXT_LINE
+            Error( "`remaining_constructors_in_tower` must be a non-empty list" );
+            
+        fi;
+        
+        if not IsFunction( precompiled_functions_adder ) or NumberArgumentsFunction( precompiled_functions_adder ) <> 1 then
+            
+            # COVERAGE_IGNORE_NEXT_LINE
+            Error( "`precompiled_functions_adder` must be a function accepting a single argument" );
+            
+        fi;
+        
+        if remaining_constructors_in_tower[1] = constructor_name then
+            
+            if Length( remaining_constructors_in_tower ) = 1 then
+                
+                if ValueOption( "no_precompiled_code" ) <> true then
+                    
+                    # add precompiled functions
+                    CallFuncList( precompiled_functions_adder, [ category ] );
+                    
+                fi;
+                
+            else
+                
+                # pass information on to the next level
+                Add( precompiled_towers, rec(
+                    remaining_constructors_in_tower := remaining_constructors_in_tower{[ 2 .. Length( remaining_constructors_in_tower ) ]},
+                    precompiled_functions_adder := precompiled_functions_adder,
+                ) );
+                
+            fi;
+            
+        fi;
+        
+    od;
+    
+    if not IsEmpty( precompiled_towers ) then
+        
+        if not IsBound( category!.compiler_hints ) then
+            
+            category!.compiler_hints := rec( );
+            
+        fi;
+        
+        if not IsBound( category!.compiler_hints.precompiled_towers ) then
+            
+            category!.compiler_hints.precompiled_towers := [ ];
+            
+        fi;
+        
+        category!.compiler_hints.precompiled_towers := Concatenation( category!.compiler_hints.precompiled_towers, precompiled_towers );
+        
+    fi;
+    
+end );

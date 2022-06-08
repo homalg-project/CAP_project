@@ -127,44 +127,7 @@ InstallMethod( AdditiveClosure,
     
     INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE( category );
     
-    # EXPERIMENTAL
-    precompiled_towers := [ ];
-    
-    if IsBound( underlying_category!.compiler_hints ) and IsBound( underlying_category!.compiler_hints.precompiled_towers ) then
-        
-        for info in underlying_category!.compiler_hints.precompiled_towers do
-            
-            remaining_constructors_in_tower := info.remaining_constructors_in_tower;
-            precompiled_functions_adder := info.precompiled_functions_adder;
-            
-            if remaining_constructors_in_tower[1] = "AdditiveClosure" then
-                
-                if Length( remaining_constructors_in_tower ) = 1 then
-                    
-                    if ValueOption( "no_precompiled_code" ) <> true then
-                        
-                        # add precompiled functions
-                        CallFuncList( precompiled_functions_adder, [ category ] );
-                        
-                    fi;
-                    
-                else
-                    
-                    # pass information on to the next level
-                    Add( precompiled_towers, rec(
-                        remaining_constructors_in_tower := remaining_constructors_in_tower{[ 2 .. Length( remaining_constructors_in_tower ) ]},
-                        precompiled_functions_adder := precompiled_functions_adder,
-                    ) );
-                    
-                fi;
-                
-            fi;
-            
-        od;
-        
-    fi;
-    
-    category!.compiler_hints.precompiled_towers := precompiled_towers;
+    HandlePrecompiledTowers( category, underlying_category, "AdditiveClosure" );
     
     Finalize( category );
     

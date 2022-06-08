@@ -277,3 +277,16 @@ DeclareGlobalFunction( "Pair" );
 #! @Arguments first, second, third
 #! @Returns a list
 DeclareGlobalFunction( "Triple" );
+
+#! @Description
+#!   Handles the information stored in `<A>underlying_category</A>!.compiler_hints.precompiled_towers` (if bound) which is a list of records with components:
+#!   * `remaining_constructors_in_tower`: a non-empty list of strings (names of category constructors)
+#!   * `precompiled_functions_adder`: a function accepting a CAP category as input
+#!
+#!   If <A>constructor_name</A> is the only entry of `remaining_constructors_in_tower`, `precompiled_functions_adder` is applied to <A>category</A>
+#!   (except if the option `no_precompiled_code` is set to `true`) and should add precompiled code.
+#!   Else, if <A>constructor_name</A> is the first entry of `remaining_constructors_in_tower`, the information is attached to `<A>category</A>!.compiler_hints.precompiled_towers`
+#!   after removing <A>constructor_name</A> from `remaining_constructors_in_tower`.
+#!   Note: Currently, there is no logic for finding the "optimal" code to install if <A>constructor_name</A> is the only entry of `remaining_constructors_in_tower` of multiple entries.
+#! @Arguments category, underlying_category, constructor_name
+DeclareGlobalFunction( "HandlePrecompiledTowers" );
