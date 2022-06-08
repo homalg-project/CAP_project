@@ -99,7 +99,37 @@
   [4X[32X[104X
   
   
-  [1X14.3 [33X[0;0YHomomorphism structure[133X[101X
+  [1X14.3 [33X[0;0YHandlePrecompiledTowers[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xdummy1 := CreateCapCategory( );;[127X[104X
+    [4X[25Xgap>[125X [27Xdummy2 := CreateCapCategory( );;[127X[104X
+    [4X[25Xgap>[125X [27Xdummy3 := CreateCapCategory( );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplayAndReturn := function ( string )[127X[104X
+    [4X[25X>[125X [27X    Display( string ); return string; end;;[127X[104X
+    [4X[25Xgap>[125X [27Xdummy1!.compiler_hints := rec( );;[127X[104X
+    [4X[25Xgap>[125X [27Xdummy1!.compiler_hints.precompiled_towers := [[127X[104X
+    [4X[25X>[125X [27X  rec([127X[104X
+    [4X[25X>[125X [27X    remaining_constructors_in_tower := [ "Constructor1" ],[127X[104X
+    [4X[25X>[125X [27X    precompiled_functions_adder := cat ->[127X[104X
+    [4X[25X>[125X [27X      DisplayAndReturn( "Adding precompiled operations for Constructor1" ),[127X[104X
+    [4X[25X>[125X [27X  ),[127X[104X
+    [4X[25X>[125X [27X  rec([127X[104X
+    [4X[25X>[125X [27X    remaining_constructors_in_tower := [ "Constructor1", "Constructor2" ],[127X[104X
+    [4X[25X>[125X [27X    precompiled_functions_adder := cat ->[127X[104X
+    [4X[25X>[125X [27X      DisplayAndReturn( "Adding precompiled operations for Constructor2" ),[127X[104X
+    [4X[25X>[125X [27X  ),[127X[104X
+    [4X[25X>[125X [27X];;[127X[104X
+    [4X[25Xgap>[125X [27XHandlePrecompiledTowers( dummy2, dummy1, "Constructor1" );[127X[104X
+    [4X[28XAdding precompiled operations for Constructor1[128X[104X
+    [4X[25Xgap>[125X [27XHandlePrecompiledTowers( dummy3, dummy2, "Constructor2" );[127X[104X
+    [4X[28XAdding precompiled operations for Constructor2[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X14.4 [33X[0;0YHomomorphism structure[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/FieldAsCategory.g" );;[127X[104X
@@ -265,7 +295,7 @@
   [4X[32X[104X
   
   
-  [1X14.4 [33X[0;0YHomology object[133X[101X
+  [1X14.5 [33X[0;0YHomology object[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xfield := HomalgFieldOfRationals( );;[127X[104X
@@ -339,7 +369,7 @@
   [4X[32X[104X
   
   
-  [1X14.5 [33X[0;0YLiftable[133X[101X
+  [1X14.6 [33X[0;0YLiftable[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xfield := HomalgFieldOfRationals( );;[127X[104X
@@ -363,7 +393,7 @@
   [4X[32X[104X
   
   
-  [1X14.6 [33X[0;0YWrapperCategory[133X[101X
+  [1X14.7 [33X[0;0YWrapperCategory[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP", false );[127X[104X
@@ -478,7 +508,7 @@
   [4X[32X[104X
   
   
-  [1X14.7 [33X[0;0YMonoidal Categories[133X[101X
+  [1X14.8 [33X[0;0YMonoidal Categories[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers();;[127X[104X
@@ -581,7 +611,7 @@
   [4X[32X[104X
   
   
-  [1X14.8 [33X[0;0YMorphismFromSourceToPushout and MorphismFromFiberProductToSink[133X[101X
+  [1X14.9 [33X[0;0YMorphismFromSourceToPushout and MorphismFromFiberProductToSink[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xfield := HomalgFieldOfRationals( );;[127X[104X
@@ -626,7 +656,7 @@
   [4X[32X[104X
   
   
-  [1X14.9 [33X[0;0YOpposite category[133X[101X
+  [1X14.10 [33X[0;0YOpposite category[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals();;[127X[104X
@@ -667,7 +697,7 @@
   [4X[32X[104X
   
   
-  [1X14.10 [33X[0;0YGeneralized Morphisms Category[133X[101X
+  [1X14.11 [33X[0;0YGeneralized Morphisms Category[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );[127X[104X
@@ -1036,7 +1066,7 @@
   [4X[32X[104X
   
   
-  [1X14.11 [33X[0;0YIsWellDefined[133X[101X
+  [1X14.12 [33X[0;0YIsWellDefined[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpacesForIsWellDefinedTest" );[127X[104X
@@ -1064,7 +1094,7 @@
   [4X[32X[104X
   
   
-  [1X14.12 [33X[0;0YKernel[133X[101X
+  [1X14.13 [33X[0;0YKernel[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpaces01" );[127X[104X
@@ -1174,7 +1204,7 @@
   [4X[32X[104X
   
   
-  [1X14.13 [33X[0;0YFiberProduct[133X[101X
+  [1X14.14 [33X[0;0YFiberProduct[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpacesForFiberProductTest" );[127X[104X

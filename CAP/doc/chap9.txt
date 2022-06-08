@@ -345,3 +345,27 @@
   
   [33X[0;0YAlias for [10XNTuple( 3, [3Xfirst[103X[10X, [3Xsecond[103X[10X, [3Xthird[103X[10X )[110X.[133X
   
+  [1X9.2-36 HandlePrecompiledTowers[101X
+  
+  [33X[1;0Y[29X[2XHandlePrecompiledTowers[102X( [3Xcategory[103X, [3Xunderlying_category[103X, [3Xconstructor_name[103X ) [32X function[133X
+  
+  [33X[0;0YHandles            the            information            stored           in
+  [10X[3Xunderlying_category[103X[10X!.compiler_hints.precompiled_towers[110X (if bound) which is a
+  list of records with components:[133X
+  
+  [30X    [33X[0;6Y[10Xremaining_constructors_in_tower[110X: a non-empty list of strings (names of
+        category constructors)[133X
+  
+  [30X    [33X[0;6Y[10Xprecompiled_functions_adder[110X:  a  function  accepting a CAP category as
+        input[133X
+  
+  [33X[0;0YIf  [3Xconstructor_name[103X  is  the only entry of [10Xremaining_constructors_in_tower[110X,
+  [10Xprecompiled_functions_adder[110X  is  applied  to  [3Xcategory[103X (except if the option
+  [10Xno_precompiled_code[110X  is  set to [10Xtrue[110X) and should add precompiled code. Else,
+  if  [3Xconstructor_name[103X  is the first entry of [10Xremaining_constructors_in_tower[110X,
+  the  information  is attached to [10X[3Xcategory[103X[10X!.compiler_hints.precompiled_towers[110X
+  after  removing [3Xconstructor_name[103X from [10Xremaining_constructors_in_tower[110X. Note:
+  Currently,  there  is  no logic for finding the "optimal" code to install if
+  [3Xconstructor_name[103X  is  the  only  entry of [10Xremaining_constructors_in_tower[110X of
+  multiple entries.[133X
+  

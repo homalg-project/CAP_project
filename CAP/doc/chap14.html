@@ -28,37 +28,40 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X78D1062D78BE08C1">14.2 <span class="Heading">Functors</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X86A2AE6E7C297595">14.3 <span class="Heading">Homomorphism structure</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X7B339750826300B4">14.3 <span class="Heading">HandlePrecompiledTowers</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X852F59737EC57965">14.4 <span class="Heading">Homology object</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X86A2AE6E7C297595">14.4 <span class="Heading">Homomorphism structure</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X7CDB7FF27D734D2D">14.5 <span class="Heading">Liftable</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X852F59737EC57965">14.5 <span class="Heading">Homology object</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X8245BF297DF9A3E7">14.6 <span class="Heading">WrapperCategory</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X7CDB7FF27D734D2D">14.6 <span class="Heading">Liftable</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X808DC49C7ED99B52">14.7 <span class="Heading">Monoidal Categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X8245BF297DF9A3E7">14.7 <span class="Heading">WrapperCategory</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X8218390A785F1EDB">14.8 <span class="Heading">MorphismFromSourceToPushout and MorphismFromFiberProductToSink</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X808DC49C7ED99B52">14.8 <span class="Heading">Monoidal Categories</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X84410C637B3C1D0E">14.9 <span class="Heading">Opposite category</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X8218390A785F1EDB">14.9 <span class="Heading">MorphismFromSourceToPushout and MorphismFromFiberProductToSink</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X86FB477C7908A3A6">14.10 <span class="Heading">Generalized Morphisms Category</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X84410C637B3C1D0E">14.10 <span class="Heading">Opposite category</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X7E8AFE5085FF7E15">14.11 <span class="Heading">IsWellDefined</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X86FB477C7908A3A6">14.11 <span class="Heading">Generalized Morphisms Category</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X7DCD99628504B810">14.12 <span class="Heading">Kernel</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X7E8AFE5085FF7E15">14.12 <span class="Heading">IsWellDefined</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X7DE20941803BFBD9">14.13 <span class="Heading">FiberProduct</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X7DCD99628504B810">14.13 <span class="Heading">Kernel</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X7DE20941803BFBD9">14.14 <span class="Heading">FiberProduct</span></a>
 </span>
 </div>
 </div>
@@ -166,9 +169,41 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_installation2OnMorphisms( input );;</span>
 </pre></div>
 
+<p><a id="X7B339750826300B4" name="X7B339750826300B4"></a></p>
+
+<h4>14.3 <span class="Heading">HandlePrecompiledTowers</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dummy1 := CreateCapCategory( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dummy2 := CreateCapCategory( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dummy3 := CreateCapCategory( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DisplayAndReturn := function ( string )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    Display( string ); return string; end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dummy1!.compiler_hints := rec( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dummy1!.compiler_hints.precompiled_towers := [</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    remaining_constructors_in_tower := [ "Constructor1" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    precompiled_functions_adder := cat -&gt;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      DisplayAndReturn( "Adding precompiled operations for Constructor1" ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    remaining_constructors_in_tower := [ "Constructor1", "Constructor2" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    precompiled_functions_adder := cat -&gt;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      DisplayAndReturn( "Adding precompiled operations for Constructor2" ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HandlePrecompiledTowers( dummy2, dummy1, "Constructor1" );</span>
+Adding precompiled operations for Constructor1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HandlePrecompiledTowers( dummy3, dummy2, "Constructor2" );</span>
+Adding precompiled operations for Constructor2
+</pre></div>
+
 <p><a id="X86A2AE6E7C297595" name="X86A2AE6E7C297595"></a></p>
 
-<h4>14.3 <span class="Heading">Homomorphism structure</span></h4>
+<h4>14.4 <span class="Heading">Homomorphism structure</span></h4>
 
 
 <div class="example"><pre>
@@ -337,7 +372,7 @@ true
 
 <p><a id="X852F59737EC57965" name="X852F59737EC57965"></a></p>
 
-<h4>14.4 <span class="Heading">Homology object</span></h4>
+<h4>14.5 <span class="Heading">Homology object</span></h4>
 
 
 <div class="example"><pre>
@@ -413,7 +448,7 @@ true
 
 <p><a id="X7CDB7FF27D734D2D" name="X7CDB7FF27D734D2D"></a></p>
 
-<h4>14.5 <span class="Heading">Liftable</span></h4>
+<h4>14.6 <span class="Heading">Liftable</span></h4>
 
 
 <div class="example"><pre>
@@ -439,7 +474,7 @@ true
 
 <p><a id="X8245BF297DF9A3E7" name="X8245BF297DF9A3E7"></a></p>
 
-<h4>14.6 <span class="Heading">WrapperCategory</span></h4>
+<h4>14.7 <span class="Heading">WrapperCategory</span></h4>
 
 
 <div class="example"><pre>
@@ -557,7 +592,7 @@ WrapperCategory( Category of matrices over Q )
 
 <p><a id="X808DC49C7ED99B52" name="X808DC49C7ED99B52"></a></p>
 
-<h4>14.7 <span class="Heading">Monoidal Categories</span></h4>
+<h4>14.8 <span class="Heading">Monoidal Categories</span></h4>
 
 
 <div class="example"><pre>
@@ -662,7 +697,7 @@ true
 
 <p><a id="X8218390A785F1EDB" name="X8218390A785F1EDB"></a></p>
 
-<h4>14.8 <span class="Heading">MorphismFromSourceToPushout and MorphismFromFiberProductToSink</span></h4>
+<h4>14.9 <span class="Heading">MorphismFromSourceToPushout and MorphismFromFiberProductToSink</span></h4>
 
 
 <div class="example"><pre>
@@ -709,7 +744,7 @@ true
 
 <p><a id="X84410C637B3C1D0E" name="X84410C637B3C1D0E"></a></p>
 
-<h4>14.9 <span class="Heading">Opposite category</span></h4>
+<h4>14.10 <span class="Heading">Opposite category</span></h4>
 
 
 <div class="example"><pre>
@@ -752,7 +787,7 @@ true
 
 <p><a id="X86FB477C7908A3A6" name="X86FB477C7908A3A6"></a></p>
 
-<h4>14.10 <span class="Heading">Generalized Morphisms Category</span></h4>
+<h4>14.11 <span class="Heading">Generalized Morphisms Category</span></h4>
 
 
 <div class="example"><pre>
@@ -1127,7 +1162,7 @@ true
 
 <p><a id="X7E8AFE5085FF7E15" name="X7E8AFE5085FF7E15"></a></p>
 
-<h4>14.11 <span class="Heading">IsWellDefined</span></h4>
+<h4>14.12 <span class="Heading">IsWellDefined</span></h4>
 
 
 <div class="example"><pre>
@@ -1157,7 +1192,7 @@ false
 
 <p><a id="X7DCD99628504B810" name="X7DCD99628504B810"></a></p>
 
-<h4>14.12 <span class="Heading">Kernel</span></h4>
+<h4>14.13 <span class="Heading">Kernel</span></h4>
 
 
 <div class="example"><pre>
@@ -1271,7 +1306,7 @@ true
 
 <p><a id="X7DE20941803BFBD9" name="X7DE20941803BFBD9"></a></p>
 
-<h4>14.13 <span class="Heading">FiberProduct</span></h4>
+<h4>14.14 <span class="Heading">FiberProduct</span></h4>
 
 
 <div class="example"><pre>

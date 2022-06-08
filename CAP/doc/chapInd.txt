@@ -455,6 +455,7 @@
   [2XFunctorCanonicalizeZeroObjects[102X, for IsCapCategory 5.4-13 
   [2XFunctorMorphismOperation[102X, for IsCapFunctor 5.4-8 
   [2XFunctorObjectOperation[102X, for IsCapFunctor 5.4-6 
+  [2XHandlePrecompiledTowers[102X 9.2-36 
   [2XHeapify[102X, for IsStringMinHeap, IsPosInt 8.5-10 
   [2XHeapSize[102X, for IsStringMinHeap 8.5-7 
   [2XHomologyObject[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 6.15-1 

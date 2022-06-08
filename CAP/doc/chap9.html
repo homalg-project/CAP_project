@@ -66,6 +66,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7F2E50C87EC6E530">9.2-33 NTuple</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7A63799B824FAEBA">9.2-34 Pair</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7C52730F8526A57E">9.2-35 Triple</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7B339750826300B4">9.2-36 HandlePrecompiledTowers</a></span>
 </div></div>
 </div>
 
@@ -359,6 +360,24 @@
 <p>Returns: a list</p>
 
 <p>Alias for <code class="code">NTuple( 3, <var class="Arg">first</var>, <var class="Arg">second</var>, <var class="Arg">third</var> )</code>.</p>
+
+<p><a id="X7B339750826300B4" name="X7B339750826300B4"></a></p>
+
+<h5>9.2-36 HandlePrecompiledTowers</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HandlePrecompiledTowers</code>( <var class="Arg">category</var>, <var class="Arg">underlying_category</var>, <var class="Arg">constructor_name</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Handles the information stored in <code class="code"><var class="Arg">underlying_category</var>!.compiler_hints.precompiled_towers</code> (if bound) which is a list of records with components:</p>
+
+
+<ul>
+<li><p><code class="code">remaining_constructors_in_tower</code>: a non-empty list of strings (names of category constructors)</p>
+
+</li>
+<li><p><code class="code">precompiled_functions_adder</code>: a function accepting a CAP category as input</p>
+
+</li>
+</ul>
+<p>If <var class="Arg">constructor_name</var> is the only entry of <code class="code">remaining_constructors_in_tower</code>, <code class="code">precompiled_functions_adder</code> is applied to <var class="Arg">category</var> (except if the option <code class="code">no_precompiled_code</code> is set to <code class="code">true</code>) and should add precompiled code. Else, if <var class="Arg">constructor_name</var> is the first entry of <code class="code">remaining_constructors_in_tower</code>, the information is attached to <code class="code"><var class="Arg">category</var>!.compiler_hints.precompiled_towers</code> after removing <var class="Arg">constructor_name</var> from <code class="code">remaining_constructors_in_tower</code>. Note: Currently, there is no logic for finding the "optimal" code to install if <var class="Arg">constructor_name</var> is the only entry of <code class="code">remaining_constructors_in_tower</code> of multiple entries.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap8.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap10.html">[Next Chapter]</a>&nbsp;  </div>

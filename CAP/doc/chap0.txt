@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2022.05-09
+                                   2022.06-01
   
   
-                                  1 June 2022
+                                  8 June 2022
   
   
                                Sebastian Gutsche
@@ -885,6 +885,7 @@
       9.2-33 NTuple
       9.2-34 Pair
       9.2-35 Triple
+      9.2-36 HandlePrecompiledTowers
   10 [33X[0;0YLimits and Colimits[133X
     10.1 [33X[0;0YSpecification of Limits and Colimits[133X
     10.2 [33X[0;0YEnhancing Limit Specifications[133X
@@ -923,17 +924,18 @@
   14 [33X[0;0YExamples and Tests[133X
     14.1 [33X[0;0YDummy category[133X
     14.2 [33X[0;0YFunctors[133X
-    14.3 [33X[0;0YHomomorphism structure[133X
-    14.4 [33X[0;0YHomology object[133X
-    14.5 [33X[0;0YLiftable[133X
-    14.6 [33X[0;0YWrapperCategory[133X
-    14.7 [33X[0;0YMonoidal Categories[133X
-    14.8 [33X[0;0YMorphismFromSourceToPushout and MorphismFromFiberProductToSink[133X
-    14.9 [33X[0;0YOpposite category[133X
-    14.10 [33X[0;0YGeneralized Morphisms Category[133X
-    14.11 [33X[0;0YIsWellDefined[133X
-    14.12 [33X[0;0YKernel[133X
-    14.13 [33X[0;0YFiberProduct[133X
+    14.3 [33X[0;0YHandlePrecompiledTowers[133X
+    14.4 [33X[0;0YHomomorphism structure[133X
+    14.5 [33X[0;0YHomology object[133X
+    14.6 [33X[0;0YLiftable[133X
+    14.7 [33X[0;0YWrapperCategory[133X
+    14.8 [33X[0;0YMonoidal Categories[133X
+    14.9 [33X[0;0YMorphismFromSourceToPushout and MorphismFromFiberProductToSink[133X
+    14.10 [33X[0;0YOpposite category[133X
+    14.11 [33X[0;0YGeneralized Morphisms Category[133X
+    14.12 [33X[0;0YIsWellDefined[133X
+    14.13 [33X[0;0YKernel[133X
+    14.14 [33X[0;0YFiberProduct[133X
   
   
   [32X
