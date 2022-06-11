@@ -33,7 +33,7 @@ InstallMethod( CategoryOfColumnsAsOppositeOfCategoryOfRows,
     object_datum := function( cat, obj )
       local op, rows;
         
-        op := UnderlyingCategory( cat );
+        op := ModelingCategory( cat );
         
         rows := Opposite( op );
         
@@ -55,7 +55,7 @@ InstallMethod( CategoryOfColumnsAsOppositeOfCategoryOfRows,
     morphism_datum := function( cat, mor )
       local op, rows, rows_morphism;
         
-        op := UnderlyingCategory( cat );
+        op := ModelingCategory( cat );
         
         rows := Opposite( op );
         

@@ -30,7 +30,7 @@ InstallMethod( MatrixCategoryAsAdditiveClosureOfRingAsCategory,
     object_datum := function ( cat, object )
       local add, ring_as_category, unique_object;
         
-        add := UnderlyingCategory( cat );
+        add := ModelingCategory( cat );
         ring_as_category := UnderlyingCategory( add );
         
         unique_object := RingAsCategoryUniqueObject( ring_as_category );
@@ -57,7 +57,7 @@ InstallMethod( MatrixCategoryAsAdditiveClosureOfRingAsCategory,
     morphism_datum := function ( cat, morphism )
       local add, ring_as_category, unique_object, nr_rows, nr_cols, source, range, matrix_entries, listlist;
         
-        add := UnderlyingCategory( cat );
+        add := ModelingCategory( cat );
         ring_as_category := UnderlyingCategory( add );
         
         unique_object := RingAsCategoryUniqueObject( ring_as_category );

@@ -423,7 +423,7 @@ function ( cat_1, arg2_1 )
     deduped_6_1 := UnderlyingMatrix( arg2_1 );
     deduped_5_1 := NumberColumns( deduped_6_1 );
     deduped_4_1 := NumberRows( deduped_6_1 );
-    deduped_3_1 := OppositeCategory( UnderlyingCategory( cat_1 ) );
+    deduped_3_1 := OppositeCategory( ModelingCategory( cat_1 ) );
     if not IS_IDENTICAL_OBJ( deduped_3_1, deduped_3_1 ) then
         return false;
     elif deduped_4_1 <> deduped_4_1 then
@@ -445,7 +445,7 @@ end
 ########
 function ( cat_1, arg2_1 )
     local deduped_3_1;
-    deduped_3_1 := OppositeCategory( UnderlyingCategory( cat_1 ) );
+    deduped_3_1 := OppositeCategory( ModelingCategory( cat_1 ) );
     if not IS_IDENTICAL_OBJ( deduped_3_1, deduped_3_1 ) then
         return false;
     elif RankOfObject( arg2_1 ) < 0 then
@@ -511,7 +511,7 @@ end
 ########
 function ( cat_1, arg2_1 )
     local morphism_attr_1_1, deduped_2_1, deduped_3_1;
-    deduped_3_1 := UnderlyingCategory( cat_1 );
+    deduped_3_1 := ModelingCategory( cat_1 );
     deduped_2_1 := OppositeCategory( deduped_3_1 );
     morphism_attr_1_1 := UnderlyingMatrix( arg2_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
@@ -582,7 +582,7 @@ end
 ########
 function ( cat_1, arg2_1 )
     local deduped_1_1;
-    deduped_1_1 := UnderlyingCategory( cat_1 );
+    deduped_1_1 := ModelingCategory( cat_1 );
     return ObjectifyObjectForCAPWithAttributes( rec(
            ), deduped_1_1, Opposite, ObjectifyObjectForCAPWithAttributes( rec(
              ), OppositeCategory( deduped_1_1 ), RankOfObject, RankOfObject( arg2_1 ) ) );
