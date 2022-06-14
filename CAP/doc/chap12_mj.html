@@ -36,7 +36,7 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X7C701DBF7BAE649A">12.2 <span class="Heading">Attributes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12_mj.html#X8530FCBD7F952BCA">12.2-1 UnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12_mj.html#X7875E5478236A0E3">12.2-1 ModelingCategory</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12_mj.html#X7A5C1B677DE11201">12.2-2 UnderlyingCell</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X86EC0F0A78ECBC10">12.3 <span class="Heading">Constructors</span></a>
@@ -52,6 +52,44 @@
 </div>
 
 <h3>12 <span class="Heading">Create wrapper hulls of a category</span></h3>
+
+<p>The support for building towers of category constructors is one of the main design features of CAP. Many categories that appear in the various applications can be modeled by towers of multiple category constructors. The wrapper category constructor allows adding one last layer on top which allows expressing the desired (re)interpretation of such a modeling tower. In particular, the wrapper category constructor allows specifying the name of the category together with customized methods for the operations</p>
+
+
+<ul>
+<li><p>ObjectConstructor</p>
+
+</li>
+<li><p>MorphismConstructor</p>
+
+</li>
+<li><p>ObjectDatum</p>
+
+</li>
+<li><p>MorphismDatum</p>
+
+</li>
+</ul>
+<p>in order to reflect the desired interpretation with a user-interface that is independent of the modeling tower. Note that the same tower might have multiple interpretations.</p>
+
+<div class="pcenter"><table class="GAPDocTable">
+<caption class="GAPDocTable"><b>Table: </b>A tower of categories modeling the category <code class="code">W</code></caption>
+<tr>
+<td class="tdcenter"><code class="code">W := WrapperCategory( cat_n )</code></td>
+</tr>
+<tr>
+<td class="tdcenter"><code class="code">cat_n := CategoryConstructor_n( cat_{n-1} )</code></td>
+</tr>
+<tr>
+<td class="tdcenter">...</td>
+</tr>
+<tr>
+<td class="tdcenter"><code class="code">cat_1 := CategoryConstructor_1( non_categorical_input )</code></td>
+</tr>
+</table><br /><p>&nbsp;</p><br />
+</div>
+
+<p>The wrapper category <code class="code">W</code> is by construction equivalent to the top category <code class="code">cat_n</code> in the tower. In practice, the word "tower" stands more generally for a finite poset with a greatest element.</p>
 
 <p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
 
@@ -97,14 +135,14 @@
 
 <h4>12.2 <span class="Heading">Attributes</span></h4>
 
-<p><a id="X8530FCBD7F952BCA" name="X8530FCBD7F952BCA"></a></p>
+<p><a id="X7875E5478236A0E3" name="X7875E5478236A0E3"></a></p>
 
-<h5>12.2-1 UnderlyingCategory</h5>
+<h5>12.2-1 ModelingCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategory</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ModelingCategory</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a category</p>
 
-<p>The category underlying the wrapper category <var class="Arg">category</var>.</p>
+<p>The category used to model the wrapper category <var class="Arg">category</var>.</p>
 
 <p><a id="X7A5C1B677DE11201" name="X7A5C1B677DE11201"></a></p>
 
@@ -183,7 +221,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WrappingFunctor</code>( <var class="Arg">W</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a functor</p>
 
-<p>Return the functor from the wrapped category <code class="code">UnderlyingCategory</code>(<var class="Arg">W</var>) to the wrapper category <var class="Arg">W</var>. The functor maps each wrapped object/morphism to its wrapping object/morphism.</p>
+<p>Return the functor from the wrapped category <code class="code">ModelingCategory</code>(<var class="Arg">W</var>) to the wrapper category <var class="Arg">W</var>. The functor maps each wrapped object/morphism to its wrapping object/morphism.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap11_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap13_mj.html">[Next Chapter]</a>&nbsp;  </div>
