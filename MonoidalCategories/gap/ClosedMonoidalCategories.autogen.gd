@@ -259,39 +259,39 @@ DeclareOperation( "AddInternalHomToTensorProductAdjunctionMap",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `IsomorphismFromDualToInternalHom`.
-#! $F: ( a ) \mapsto \mathtt{IsomorphismFromDualToInternalHom}(a)$.
+#! to the category for the basic operation `IsomorphismFromDualObjectToInternalHomIntoTensorUnit`.
+#! $F: ( a ) \mapsto \mathtt{IsomorphismFromDualObjectToInternalHomIntoTensorUnit}(a)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromDualToInternalHom",
+DeclareOperation( "AddIsomorphismFromDualObjectToInternalHomIntoTensorUnit",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddIsomorphismFromDualToInternalHom",
+DeclareOperation( "AddIsomorphismFromDualObjectToInternalHomIntoTensorUnit",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddIsomorphismFromDualToInternalHom",
+DeclareOperation( "AddIsomorphismFromDualObjectToInternalHomIntoTensorUnit",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddIsomorphismFromDualToInternalHom",
+DeclareOperation( "AddIsomorphismFromDualObjectToInternalHomIntoTensorUnit",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `IsomorphismFromInternalHomToDual`.
-#! $F: ( a ) \mapsto \mathtt{IsomorphismFromInternalHomToDual}(a)$.
+#! to the category for the basic operation `IsomorphismFromInternalHomIntoTensorUnitToDualObject`.
+#! $F: ( a ) \mapsto \mathtt{IsomorphismFromInternalHomIntoTensorUnitToDualObject}(a)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromInternalHomToDual",
+DeclareOperation( "AddIsomorphismFromInternalHomIntoTensorUnitToDualObject",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddIsomorphismFromInternalHomToDual",
+DeclareOperation( "AddIsomorphismFromInternalHomIntoTensorUnitToDualObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddIsomorphismFromInternalHomToDual",
+DeclareOperation( "AddIsomorphismFromInternalHomIntoTensorUnitToDualObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddIsomorphismFromInternalHomToDual",
+DeclareOperation( "AddIsomorphismFromInternalHomIntoTensorUnitToDualObject",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

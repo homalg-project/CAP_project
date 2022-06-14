@@ -16,20 +16,26 @@ DeclareGlobalVariable( "RIGID_SYMMETRIC_COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME
 
 #! @Description
 #! The arguments are two objects $a,b$.
-#! The output is the natural morphism $\mathrm{IsomorphismFromInternalCoHomToTensorProductWithGivenObjects}_{a,b}: \mathrm{\underline{coHom}}(a,b) \rightarrow b_{\vee} \otimes a$.
+#! The output is the natural morphism $\mathrm{IsomorphismFromInternalCoHomToTensorProductWithCoDualObjectWithGivenObjects}_{a,b}: \mathrm{\underline{coHom}}(a,b) \rightarrow b_{\vee} \otimes a$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a,b), b_{\vee} \otimes a )$.
 #! @Arguments a,b
-DeclareOperation( "IsomorphismFromInternalCoHomToTensorProduct",
+DeclareOperation( "IsomorphismFromInternalCoHomToTensorProductWithCoDualObject",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+InstallDeprecatedAlias( "IsomorphismFromInternalCoHomToTensorProduct", "IsomorphismFromInternalCoHomToTensorProductWithCoDualObject", "2023.06.14" );
+InstallDeprecatedAlias( "AddIsomorphismFromInternalCoHomToTensorProduct", "AddIsomorphismFromInternalCoHomToTensorProductWithCoDualObject", "2023.06.14" );
 
 #! @Description
 #! The arguments are two objects $a,b$.
-#! The output is the inverse of $\mathrm{IsomorphismFromInternalCoHomToTensorProduct}$, namely
-#! $\mathrm{IsomorphismFromTensorProductToInternalCoHom}_{a,b}: a_{\vee} \otimes b \rightarrow \mathrm{\underline{coHom}}(b,a)$.
+#! The output is the inverse of $\mathrm{IsomorphismFromInternalCoHomToTensorProductWithCoDualObject}$, namely
+#! $\mathrm{IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom}_{a,b}: a_{\vee} \otimes b \rightarrow \mathrm{\underline{coHom}}(b,a)$.
 #! @Returns a morphism in $\mathrm{Hom}( a_{\vee} \otimes b, \mathrm{\underline{coHom}}(b,a)$.
 #! @Arguments a,b
-DeclareOperation( "IsomorphismFromTensorProductToInternalCoHom",
+DeclareOperation( "IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+InstallDeprecatedAlias( "IsomorphismFromTensorProductToInternalCoHom", "IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom", "2023.06.14" );
+InstallDeprecatedAlias( "AddIsomorphismFromTensorProductToInternalCoHom", "AddIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom", "2023.06.14" );
 
 #! @Description
 #! The arguments are two objects $a,b$.

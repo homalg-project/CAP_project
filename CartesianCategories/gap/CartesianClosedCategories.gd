@@ -274,20 +274,26 @@ DeclareOperation( "MorphismFromDirectProductToExponentialWithGivenObjects",
 #! @Description
 #! The argument is an object $a$.
 #! The output is the isomorphism
-#! $\mathrm{IsomorphismFromCartesianDualToExponential}_{a}: a^{\vee} \rightarrow \mathrm{Exponential}(a,1)$.
+#! $\mathrm{IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject}_{a}: a^{\vee} \rightarrow \mathrm{Exponential}(a,1)$.
 #! @Returns a morphism in $\mathrm{Hom}(a^{\vee}, \mathrm{Exponential}(a,1))$.
 #! @Arguments a
-DeclareAttribute( "IsomorphismFromCartesianDualToExponential",
+DeclareAttribute( "IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject",
                   IsCapCategoryObject );
+
+InstallDeprecatedAlias( "IsomorphismFromCartesianDualToExponential", "IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject", "2023.06.14" );
+InstallDeprecatedAlias( "AddIsomorphismFromCartesianDualToExponential", "AddIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject", "2023.06.14" );
 
 #! @Description
 #! The argument is an object $a$.
 #! The output is the isomorphism
-#! $\mathrm{IsomorphismFromExponentialToCartesianDual}_{a}: \mathrm{Exponential}(a,1) \rightarrow a^{\vee}$.
+#! $\mathrm{IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject}_{a}: \mathrm{Exponential}(a,1) \rightarrow a^{\vee}$.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{Exponential}(a,1), a^{\vee})$.
 #! @Arguments a
-DeclareAttribute( "IsomorphismFromExponentialToCartesianDual",
+DeclareAttribute( "IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject",
                   IsCapCategoryObject );
+
+InstallDeprecatedAlias( "IsomorphismFromExponentialToCartesianDual", "IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject", "2023.06.14" );
+InstallDeprecatedAlias( "AddIsomorphismFromExponentialToCartesianDual", "AddIsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject", "2023.06.14" );
 
 #! @Description
 #! The arguments are two objects $t,a$,

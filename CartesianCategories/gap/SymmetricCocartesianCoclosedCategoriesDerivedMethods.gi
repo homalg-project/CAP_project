@@ -65,7 +65,7 @@ AddDerivationToCAP( UniversalPropertyOfCocartesianDual,
     # a_v -> ( Coexp(1,a) -> t ) = Adjoint( alpha )
     
     return PreCompose( cat,
-             IsomorphismFromCocartesianDualToCoexponential( cat, a ),
+             IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject( cat, a ),
              CoproductToCoexponentialAdjunctionMap( cat, t, a, alpha ) );
              
 end : CategoryFilter := IsCocartesianCoclosedCategory,
@@ -147,10 +147,10 @@ AddDerivationToCAP( CocartesianDualOnObjects,
 
     # Source( a_v -> Coexp(1,a) )
     
-    return Source( IsomorphismFromCocartesianDualToCoexponential( cat, a ) );
+    return Source( IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject( cat, a ) );
 
 end : CategoryFilter := IsCocartesianCoclosedCategory,
-      Description := "CocartesianDualOnObjects as the source of IsomorphismFromCocartesianDualToCoexponential" );
+      Description := "CocartesianDualOnObjects as the source of IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject" );
 
 ##
 AddDerivationToCAP( CocartesianDualOnObjects,
@@ -159,10 +159,10 @@ AddDerivationToCAP( CocartesianDualOnObjects,
 
     # Range( Coexp(1,a) -> a_v )
     
-    return Range( IsomorphismFromCoexponentialToCocartesianDual( cat, a ) );
+    return Range( IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject( cat, a ) );
 
 end : CategoryFilter := IsCocartesianCoclosedCategory,
-      Description := "CocartesianDualOnObjects as the range of IsomorphismFromCoexponentialToCocartesianDual" );
+      Description := "CocartesianDualOnObjects as the range of IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject" );
 
 ##
 AddDerivationToCAP( CocartesianDualOnMorphismsWithGivenCocartesianDuals,
@@ -185,19 +185,19 @@ AddDerivationToCAP( CocartesianDualOnMorphismsWithGivenCocartesianDuals,
     #    a_v
     
     result_morphism := PreComposeList( cat, [
-                         IsomorphismFromCocartesianDualToCoexponential( cat, Range( alpha ) ),
+                         IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject( cat, Range( alpha ) ),
                          
                          CoexponentialOnMorphisms( cat,
                            IdentityMorphism( cat, InitialObject( cat ) ),
                            alpha ),
                            
-                         IsomorphismFromCoexponentialToCocartesianDual( cat, Source( alpha ) )
+                         IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject( cat, Source( alpha ) )
                        ] );
                        
     return result_morphism;
     
 end : CategoryFilter := IsCocartesianCoclosedCategory,
-      Description := "CocartesianDualOnMorphismsWithGivenCocartesianDuals using CoexponentialOnMorphisms and IsomorphismFromCocartesianDualToCoexponential" );
+      Description := "CocartesianDualOnMorphismsWithGivenCocartesianDuals using CoexponentialOnMorphisms and IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject" );
 
 ##
 AddDerivationToCAP( CocartesianEvaluationForCocartesianDualWithGivenCoproduct,
@@ -211,10 +211,10 @@ AddDerivationToCAP( CocartesianEvaluationForCocartesianDualWithGivenCoproduct,
     return CoexponentialToCoproductAdjunctionMap( cat,
             s,
             a,
-            IsomorphismFromCoexponentialToCocartesianDual( cat, a ) );
+            IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject( cat, a ) );
 
 end : CategoryFilter := IsCocartesianCoclosedCategory,
-      Description := "CocartesianEvaluationForCocartesianDualWithGivenCoproduct using the coexponential-coproduct adjunction and IsomorphismFromCoexponentialToCocartesianDual" );
+      Description := "CocartesianEvaluationForCocartesianDualWithGivenCoproduct using the coexponential-coproduct adjunction and IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject" );
 
 ##
 AddDerivationToCAP( CocartesianLambdaIntroduction,
@@ -392,7 +392,7 @@ AddDerivationToCAP( CocartesianDualityCoproductCompatibilityMorphismWithGivenObj
     coproduct_on_a_and_b := BinaryCoproduct( cat, a, b );
     
     morphism := PreComposeList( cat, [
-                  IsomorphismFromCocartesianDualToCoexponential( cat, coproduct_on_a_and_b ),
+                  IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject( cat, coproduct_on_a_and_b ),
                   
                   CoexponentialOnMorphisms( cat,
                     CocartesianLeftUnitorInverse( cat, unit ),
@@ -401,8 +401,8 @@ AddDerivationToCAP( CocartesianDualityCoproductCompatibilityMorphismWithGivenObj
                   CoexponentialCoproductCompatibilityMorphism( cat, [ unit, unit, a, b ] ),
                   
                   CoproductOnMorphisms( cat,
-                    IsomorphismFromCoexponentialToCocartesianDual( cat, a ),
-                    IsomorphismFromCoexponentialToCocartesianDual( cat, b ) )
+                    IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject( cat, a ),
+                    IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject( cat, b ) )
                 ] );
 
     return morphism;
@@ -538,7 +538,7 @@ AddDerivationToCAP( MorphismFromCoexponentialToCoproductWithGivenObjects,
                [ unit, a, b, unit ] ),
               
              CoproductOnMorphisms( cat,
-               IsomorphismFromCoexponentialToCocartesianDual( cat, b ),
+               IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject( cat, b ),
                IsomorphismFromCoexponentialToObject( cat, a ) )
            ] );
     
@@ -817,13 +817,13 @@ AddDerivationToCAP( CocartesianDualityCoproductCompatibilityMorphismWithGivenObj
     coproduct_on_a_and_b := BinaryCoproduct( cat, a, b );
     
     morphism := PreComposeList( cat, [
-                  IsomorphismFromCocartesianDualToCoexponential( cat, coproduct_on_a_and_b ),
+                  IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject( cat, coproduct_on_a_and_b ),
                   
                   CoexponentialCoproductCompatibilityMorphism( cat, [ unit, unit, a, b ] ),
                   
                   CoproductOnMorphisms( cat,
-                    IsomorphismFromCoexponentialToCocartesianDual( cat, a ),
-                    IsomorphismFromCoexponentialToCocartesianDual( cat, b ) )
+                    IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject( cat, a ),
+                    IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject( cat, b ) )
                 ] );
               
     return morphism;

@@ -2790,7 +2790,7 @@ end
     , 100 );
     
     ##
-    AddIsomorphismFromCoDualToInternalCoHom( cat,
+    AddIsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit( cat,
         
 ########
 function ( cat_1, a_1 )
@@ -2940,7 +2940,7 @@ end
     , 201 : IsPrecompiledDerivation := true );
     
     ##
-    AddIsomorphismFromDualToInternalHom( cat,
+    AddIsomorphismFromDualObjectToInternalHomIntoTensorUnit( cat,
         
 ########
 function ( cat_1, a_1 )
@@ -3034,7 +3034,7 @@ end
     , 201 : IsPrecompiledDerivation := true );
     
     ##
-    AddIsomorphismFromInternalCoHomToCoDual( cat,
+    AddIsomorphismFromInternalCoHomFromTensorUnitToCoDualObject( cat,
         
 ########
 function ( cat_1, a_1 )
@@ -3108,7 +3108,7 @@ end
     , 5024 : IsPrecompiledDerivation := true );
     
     ##
-    AddIsomorphismFromInternalCoHomToTensorProduct( cat,
+    AddIsomorphismFromInternalCoHomToTensorProductWithCoDualObject( cat,
         
 ########
 function ( cat_1, a_1, b_1 )
@@ -3124,7 +3124,7 @@ end
     , 301 : IsPrecompiledDerivation := true );
     
     ##
-    AddIsomorphismFromInternalHomToDual( cat,
+    AddIsomorphismFromInternalHomIntoTensorUnitToDualObject( cat,
         
 ########
 function ( cat_1, a_1 )
@@ -3184,7 +3184,7 @@ end
     , 2913 : IsPrecompiledDerivation := true );
     
     ##
-    AddIsomorphismFromInternalHomToTensorProduct( cat,
+    AddIsomorphismFromInternalHomToTensorProductWithDualObject( cat,
         
 ########
 function ( cat_1, a_1, b_1 )
@@ -3409,7 +3409,7 @@ end
     , 1907 : IsPrecompiledDerivation := true );
     
     ##
-    AddIsomorphismFromTensorProductToInternalCoHom( cat,
+    AddIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom( cat,
         
 ########
 function ( cat_1, a_1, b_1 )
@@ -3425,7 +3425,7 @@ end
     , 301 : IsPrecompiledDerivation := true );
     
     ##
-    AddIsomorphismFromTensorProductToInternalHom( cat,
+    AddIsomorphismFromTensorProductWithDualObjectToInternalHom( cat,
         
 ########
 function ( cat_1, a_1, b_1 )

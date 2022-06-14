@@ -468,39 +468,39 @@ DeclareOperation( "AddExponentialToDirectProductAdjunctionMap",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `IsomorphismFromCartesianDualToExponential`.
-#! $F: ( a ) \mapsto \mathtt{IsomorphismFromCartesianDualToExponential}(a)$.
+#! to the category for the basic operation `IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject`.
+#! $F: ( a ) \mapsto \mathtt{IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject}(a)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromCartesianDualToExponential",
+DeclareOperation( "AddIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddIsomorphismFromCartesianDualToExponential",
+DeclareOperation( "AddIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddIsomorphismFromCartesianDualToExponential",
+DeclareOperation( "AddIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddIsomorphismFromCartesianDualToExponential",
+DeclareOperation( "AddIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `IsomorphismFromExponentialToCartesianDual`.
-#! $F: ( a ) \mapsto \mathtt{IsomorphismFromExponentialToCartesianDual}(a)$.
+#! to the category for the basic operation `IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject`.
+#! $F: ( a ) \mapsto \mathtt{IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject}(a)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromExponentialToCartesianDual",
+DeclareOperation( "AddIsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddIsomorphismFromExponentialToCartesianDual",
+DeclareOperation( "AddIsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddIsomorphismFromExponentialToCartesianDual",
+DeclareOperation( "AddIsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddIsomorphismFromExponentialToCartesianDual",
+DeclareOperation( "AddIsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

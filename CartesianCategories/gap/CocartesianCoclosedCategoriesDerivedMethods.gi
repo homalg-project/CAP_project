@@ -12,15 +12,15 @@
 ####################################
 
 ## Final methods for CocartesianDual
-AddFinalDerivation( IsomorphismFromCocartesianDualToCoexponential,
+AddFinalDerivation( IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject,
                     [ [ IdentityMorphism, 1 ],
                       [ CoexponentialOnObjects, 1 ],
                       [ InitialObject, 1 ] ],
                     [ CocartesianDualOnObjects,
                       CocartesianDualOnMorphismsWithGivenCocartesianDuals,
                       MorphismFromCocartesianBidualWithGivenCocartesianBidual,
-                      IsomorphismFromCocartesianDualToCoexponential,
-                      IsomorphismFromCoexponentialToCocartesianDual,
+                      IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject,
+                      IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject,
                       UniversalPropertyOfCocartesianDual,
                       CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects,
                       CocartesianEvaluationForCocartesianDualWithGivenCoproduct,
@@ -31,17 +31,17 @@ AddFinalDerivation( IsomorphismFromCocartesianDualToCoexponential,
     return IdentityMorphism( cat, CoexponentialOnObjects( cat, InitialObject( cat ), object ) );
     
 end : CategoryFilter := IsCocartesianCoclosedCategory,
-      Description := "IsomorphismFromCocartesianDualToCoexponential as the identity of Coexp(1,a)" );
+      Description := "IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject as the identity of Coexp(1,a)" );
 
-AddFinalDerivation( IsomorphismFromCoexponentialToCocartesianDual,
+AddFinalDerivation( IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject,
                     [ [ IdentityMorphism, 1 ],
                       [ CoexponentialOnObjects, 1 ],
                       [ InitialObject, 1 ] ],
                     [ CocartesianDualOnObjects,
                       CocartesianDualOnMorphismsWithGivenCocartesianDuals,
                       MorphismFromCocartesianBidualWithGivenCocartesianBidual,
-                      IsomorphismFromCocartesianDualToCoexponential,
-                      IsomorphismFromCoexponentialToCocartesianDual,
+                      IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject,
+                      IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject,
                       UniversalPropertyOfCocartesianDual,
                       CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects,
                       CocartesianEvaluationForCocartesianDualWithGivenCoproduct,
@@ -53,4 +53,4 @@ AddFinalDerivation( IsomorphismFromCoexponentialToCocartesianDual,
     return IdentityMorphism( cat, CoexponentialOnObjects( cat, InitialObject( cat ), object ) );
     
 end : CategoryFilter := IsCocartesianCoclosedCategory,
-      Description := "IsomorphismFromCoexponentialToCocartesianDual as the identity of Coexp(1,a)" );
+      Description := "IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject as the identity of Coexp(1,a)" );

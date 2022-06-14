@@ -9,15 +9,15 @@
 ####################################
 
 ## Final methods for Dual
-AddFinalDerivation( IsomorphismFromDualToInternalHom,
+AddFinalDerivation( IsomorphismFromDualObjectToInternalHomIntoTensorUnit,
                     [ [ IdentityMorphism, 1 ],
                       [ InternalHomOnObjects, 1 ],
                       [ TensorUnit, 1 ] ],
                     [ DualOnObjects,
                       DualOnMorphismsWithGivenDuals,
                       MorphismToBidualWithGivenBidual,
-                      IsomorphismFromDualToInternalHom,
-                      IsomorphismFromInternalHomToDual,
+                      IsomorphismFromDualObjectToInternalHomIntoTensorUnit,
+                      IsomorphismFromInternalHomIntoTensorUnitToDualObject,
                       UniversalPropertyOfDual,
                       TensorProductDualityCompatibilityMorphismWithGivenObjects,
                       EvaluationForDualWithGivenTensorProduct,
@@ -28,17 +28,17 @@ AddFinalDerivation( IsomorphismFromDualToInternalHom,
     return IdentityMorphism( cat, InternalHomOnObjects( cat, object, TensorUnit( cat ) ) );
     
 end : CategoryFilter := IsClosedMonoidalCategory,
-      Description := "IsomorphismFromDualToInternalHom as the identity of Hom(a,1)" );
+      Description := "IsomorphismFromDualObjectToInternalHomIntoTensorUnit as the identity of Hom(a,1)" );
 
-AddFinalDerivation( IsomorphismFromInternalHomToDual,
+AddFinalDerivation( IsomorphismFromInternalHomIntoTensorUnitToDualObject,
                     [ [ IdentityMorphism, 1 ],
                       [ InternalHomOnObjects, 1 ],
                       [ TensorUnit, 1 ] ],
                     [ DualOnObjects,
                       DualOnMorphismsWithGivenDuals,
                       MorphismToBidualWithGivenBidual,
-                      IsomorphismFromDualToInternalHom,
-                      IsomorphismFromInternalHomToDual,
+                      IsomorphismFromDualObjectToInternalHomIntoTensorUnit,
+                      IsomorphismFromInternalHomIntoTensorUnitToDualObject,
                       UniversalPropertyOfDual,
                       TensorProductDualityCompatibilityMorphismWithGivenObjects,
                       EvaluationForDualWithGivenTensorProduct,
@@ -49,4 +49,4 @@ AddFinalDerivation( IsomorphismFromInternalHomToDual,
     return IdentityMorphism( cat, InternalHomOnObjects( cat, object, TensorUnit( cat ) ) );
     
 end : CategoryFilter := IsClosedMonoidalCategory,
-      Description := "IsomorphismFromInternalHomToDual as the identity of Hom(a,1)" );
+      Description := "IsomorphismFromInternalHomIntoTensorUnitToDualObject as the identity of Hom(a,1)" );

@@ -271,20 +271,26 @@ DeclareOperation( "MorphismFromTensorProductToInternalHomWithGivenObjects",
 #! @Description
 #! The argument is an object $a$.
 #! The output is the isomorphism
-#! $\mathrm{IsomorphismFromDualToInternalHom}_{a}: a^{\vee} \rightarrow \mathrm{\underline{Hom}}(a,1)$.
+#! $\mathrm{IsomorphismFromDualObjectToInternalHomIntoTensorUnit}_{a}: a^{\vee} \rightarrow \mathrm{\underline{Hom}}(a,1)$.
 #! @Returns a morphism in $\mathrm{Hom}(a^{\vee}, \mathrm{\underline{Hom}}(a,1))$.
 #! @Arguments a
-DeclareAttribute( "IsomorphismFromDualToInternalHom",
+DeclareAttribute( "IsomorphismFromDualObjectToInternalHomIntoTensorUnit",
                   IsCapCategoryObject );
+
+InstallDeprecatedAlias( "IsomorphismFromDualToInternalHom", "IsomorphismFromDualObjectToInternalHomIntoTensorUnit", "2023.06.14" );
+InstallDeprecatedAlias( "AddIsomorphismFromDualToInternalHom", "AddIsomorphismFromDualObjectToInternalHomIntoTensorUnit", "2023.06.14" );
 
 #! @Description
 #! The argument is an object $a$.
 #! The output is the isomorphism
-#! $\mathrm{IsomorphismFromInternalHomToDual}_{a}: \mathrm{\underline{Hom}}(a,1) \rightarrow a^{\vee}$.
+#! $\mathrm{IsomorphismFromInternalHomIntoTensorUnitToDualObject}_{a}: \mathrm{\underline{Hom}}(a,1) \rightarrow a^{\vee}$.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{\underline{Hom}}(a,1), a^{\vee})$.
 #! @Arguments a
-DeclareAttribute( "IsomorphismFromInternalHomToDual",
+DeclareAttribute( "IsomorphismFromInternalHomIntoTensorUnitToDualObject",
                   IsCapCategoryObject );
+
+InstallDeprecatedAlias( "IsomorphismFromInternalHomToDual", "IsomorphismFromInternalHomIntoTensorUnitToDualObject", "2023.06.14" );
+InstallDeprecatedAlias( "AddIsomorphismFromInternalHomToDual", "AddIsomorphismFromInternalHomIntoTensorUnitToDualObject", "2023.06.14" );
 
 #! @Description
 #! The arguments are two objects $t,a$,

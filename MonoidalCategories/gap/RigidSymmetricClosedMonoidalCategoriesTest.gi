@@ -46,40 +46,40 @@ InstallGlobalFunction( "RigidSymmetricClosedMonoidalCategoriesTest",
         
         verbose := ValueOption( "verbose" ) = true;
         
-        if CanCompute( cat, "IsomorphismFromTensorProductToInternalHom" ) then
+        if CanCompute( cat, "IsomorphismFromTensorProductWithDualObjectToInternalHom" ) then
             
             if verbose then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( "Testing 'IsomorphismFromTensorProductToInternalHom' ..." );
+                Display( "Testing 'IsomorphismFromTensorProductWithDualObjectToInternalHom' ..." );
                 
             fi;
             
-            isomorphism_from_tensor_to_hom_ab := IsomorphismFromTensorProductToInternalHom( a, b );
-            isomorphism_from_tensor_to_hom_ba := IsomorphismFromTensorProductToInternalHom( b, a );
+            isomorphism_from_tensor_to_hom_ab := IsomorphismFromTensorProductWithDualObjectToInternalHom( a, b );
+            isomorphism_from_tensor_to_hom_ba := IsomorphismFromTensorProductWithDualObjectToInternalHom( b, a );
             
-            isomorphism_from_cohom_to_tensor_ab_op := IsomorphismFromInternalCoHomToTensorProduct( a_op, b_op );
-            isomorphism_from_cohom_to_tensor_ba_op := IsomorphismFromInternalCoHomToTensorProduct( b_op, a_op );
+            isomorphism_from_cohom_to_tensor_ab_op := IsomorphismFromInternalCoHomToTensorProductWithCoDualObject( a_op, b_op );
+            isomorphism_from_cohom_to_tensor_ba_op := IsomorphismFromInternalCoHomToTensorProductWithCoDualObject( b_op, a_op );
             
             Assert( 0, IsCongruentForMorphisms( isomorphism_from_cohom_to_tensor_ab_op, Opposite( isomorphism_from_tensor_to_hom_ba ) ) );
             Assert( 0, IsCongruentForMorphisms( isomorphism_from_cohom_to_tensor_ba_op, Opposite( isomorphism_from_tensor_to_hom_ab ) ) );
             
         fi;
         
-        if CanCompute( cat, "IsomorphismFromInternalHomToTensorProduct" ) then
+        if CanCompute( cat, "IsomorphismFromInternalHomToTensorProductWithDualObject" ) then
             
             if verbose then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( "Testing 'IsomorphismFromInternalHomToTensorProduct' ..." );
+                Display( "Testing 'IsomorphismFromInternalHomToTensorProductWithDualObject' ..." );
                 
             fi;
             
-            isomorphism_from_hom_to_tensor_ab := IsomorphismFromInternalHomToTensorProduct( a, b );
-            isomorphism_from_hom_to_tensor_ba := IsomorphismFromInternalHomToTensorProduct( b, a );
+            isomorphism_from_hom_to_tensor_ab := IsomorphismFromInternalHomToTensorProductWithDualObject( a, b );
+            isomorphism_from_hom_to_tensor_ba := IsomorphismFromInternalHomToTensorProductWithDualObject( b, a );
             
-            isomorphism_from_tensor_to_cohom_ab_op := IsomorphismFromTensorProductToInternalCoHom( a_op, b_op );
-            isomorphism_from_tensor_to_cohom_ba_op := IsomorphismFromTensorProductToInternalCoHom( b_op, a_op );
+            isomorphism_from_tensor_to_cohom_ab_op := IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom( a_op, b_op );
+            isomorphism_from_tensor_to_cohom_ba_op := IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom( b_op, a_op );
             
             Assert( 0, IsCongruentForMorphisms( isomorphism_from_tensor_to_cohom_ab_op, Opposite( isomorphism_from_hom_to_tensor_ab ) ) );
             Assert( 0, IsCongruentForMorphisms( isomorphism_from_tensor_to_cohom_ba_op, Opposite( isomorphism_from_hom_to_tensor_ba ) ) );

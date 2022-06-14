@@ -468,39 +468,39 @@ DeclareOperation( "AddCoproductToCoexponentialAdjunctionMap",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `IsomorphismFromCocartesianDualToCoexponential`.
-#! $F: ( a ) \mapsto \mathtt{IsomorphismFromCocartesianDualToCoexponential}(a)$.
+#! to the category for the basic operation `IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject`.
+#! $F: ( a ) \mapsto \mathtt{IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject}(a)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromCocartesianDualToCoexponential",
+DeclareOperation( "AddIsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddIsomorphismFromCocartesianDualToCoexponential",
+DeclareOperation( "AddIsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddIsomorphismFromCocartesianDualToCoexponential",
+DeclareOperation( "AddIsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddIsomorphismFromCocartesianDualToCoexponential",
+DeclareOperation( "AddIsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `IsomorphismFromCoexponentialToCocartesianDual`.
-#! $F: ( a ) \mapsto \mathtt{IsomorphismFromCoexponentialToCocartesianDual}(a)$.
+#! to the category for the basic operation `IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject`.
+#! $F: ( a ) \mapsto \mathtt{IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject}(a)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromCoexponentialToCocartesianDual",
+DeclareOperation( "AddIsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddIsomorphismFromCoexponentialToCocartesianDual",
+DeclareOperation( "AddIsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddIsomorphismFromCoexponentialToCocartesianDual",
+DeclareOperation( "AddIsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddIsomorphismFromCoexponentialToCocartesianDual",
+DeclareOperation( "AddIsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

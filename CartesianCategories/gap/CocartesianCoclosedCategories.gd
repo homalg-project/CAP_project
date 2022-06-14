@@ -271,20 +271,26 @@ DeclareOperation( "MorphismFromCoexponentialToCoproductWithGivenObjects",
 #! @Description
 #! The argument is an object $a$.
 #! The output is the isomorphism
-#! $\mathrm{IsomorphismFromCocartesianDualToCoexponential}_{a}: a_{\vee} \rightarrow \mathrm{Coexponential}(1,a)$.
+#! $\mathrm{IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject}_{a}: a_{\vee} \rightarrow \mathrm{Coexponential}(1,a)$.
 #! @Returns a morphism in $\mathrm{Hom}(a_{\vee}, \mathrm{Coexponential}(1,a))$.
 #! @Arguments a
-DeclareAttribute( "IsomorphismFromCocartesianDualToCoexponential",
+DeclareAttribute( "IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject",
                   IsCapCategoryObject );
+
+InstallDeprecatedAlias( "IsomorphismFromCocartesianDualToCoexponential", "IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject", "2023.06.14" );
+InstallDeprecatedAlias( "AddIsomorphismFromCocartesianDualToCoexponential", "AddIsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject", "2023.06.14" );
 
 #! @Description
 #! The argument is an object $a$.
 #! The output is the isomorphism
-#! $\mathrm{IsomorphismFromCoexponentialToCocartesianDual}_{a}: \mathrm{Coexponential}(1,a) \rightarrow a_{\vee}$.
+#! $\mathrm{IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject}_{a}: \mathrm{Coexponential}(1,a) \rightarrow a_{\vee}$.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{Coexponential}(1,a), a_{\vee})$.
 #! @Arguments a
-DeclareAttribute( "IsomorphismFromCoexponentialToCocartesianDual",
+DeclareAttribute( "IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject",
                   IsCapCategoryObject );
+
+InstallDeprecatedAlias( "IsomorphismFromCoexponentialToCocartesianDual", "IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject", "2023.06.14" );
+InstallDeprecatedAlias( "AddIsomorphismFromCoexponentialToCocartesianDual", "AddIsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject", "2023.06.14" );
 
 #! @Description
 #! The arguments are two objects $t,a$,

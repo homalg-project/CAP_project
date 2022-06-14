@@ -111,20 +111,20 @@ RankMorphism := rec(
   # Test in RigidSymmetricClosedMonoidalCategoriesTest
 ),
 
-IsomorphismFromTensorProductToInternalHom := rec(
+IsomorphismFromTensorProductWithDualObjectToInternalHom := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "b" ], [ "t", "i" ] ],
   return_type := "morphism",
-  dual_operation := "IsomorphismFromInternalCoHomToTensorProduct",
+  dual_operation := "IsomorphismFromInternalCoHomToTensorProductWithCoDualObject",
   dual_arguments_reversed := true,
   # Test in RigidSymmetricClosedMonoidalCategoriesTest
 ),
 
-IsomorphismFromInternalHomToTensorProduct := rec(
+IsomorphismFromInternalHomToTensorProductWithDualObject := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "b" ], [ "i", "t" ] ],
   return_type := "morphism",
-  dual_operation := "IsomorphismFromTensorProductToInternalCoHom",
+  dual_operation := "IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom",
   dual_arguments_reversed := false,
   # Test in RigidSymmetricClosedMonoidalCategoriesTest
 ),

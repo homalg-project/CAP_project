@@ -66,7 +66,7 @@ AddDerivationToCAP( UniversalPropertyOfCartesianDual,
     
     return PreCompose( cat,
              DirectProductToExponentialAdjunctionMap( cat, t, a, alpha ),
-             IsomorphismFromExponentialToCartesianDual( cat, a ) );
+             IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject( cat, a ) );
     
 end : CategoryFilter := IsCartesianClosedCategory,
       Description := "UniversalPropertyOfCartesianDual using the direct product-exponential adjunction" );
@@ -145,10 +145,10 @@ AddDerivationToCAP( CartesianDualOnObjects,
 
     # Source( a^v -> Exp(a,1) )
     
-    return Source( IsomorphismFromCartesianDualToExponential( cat, a ) );
+    return Source( IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject( cat, a ) );
     
 end : CategoryFilter := IsCartesianClosedCategory,
-      Description := "CartesianDualOnObjects as the source of IsomorphismFromCartesianDualToExponential" );
+      Description := "CartesianDualOnObjects as the source of IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject" );
 
 ##
 AddDerivationToCAP( CartesianDualOnObjects,
@@ -157,10 +157,10 @@ AddDerivationToCAP( CartesianDualOnObjects,
 
     # Range( Exp(a,1) -> a^v )
     
-    return Range( IsomorphismFromExponentialToCartesianDual( cat, a ) );
+    return Range( IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject( cat, a ) );
     
 end : CategoryFilter := IsCartesianClosedCategory,
-      Description := "CartesianDualOnObjects as the range of IsomorphismFromExponentialToCartesianDual" );
+      Description := "CartesianDualOnObjects as the range of IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject" );
 
 ##
 AddDerivationToCAP( CartesianDualOnMorphismsWithGivenCartesianDuals,
@@ -182,17 +182,17 @@ AddDerivationToCAP( CartesianDualOnMorphismsWithGivenCartesianDuals,
     #   a^v
     
     return PreComposeList( cat, [
-             IsomorphismFromCartesianDualToExponential( cat, Range( alpha ) ),
+             IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject( cat, Range( alpha ) ),
              
              ExponentialOnMorphisms( cat,
                alpha,
                IdentityMorphism( cat, TerminalObject( cat ) ) ),
                
-             IsomorphismFromExponentialToCartesianDual( cat, Source( alpha ) )
+             IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject( cat, Source( alpha ) )
            ] );
     
 end : CategoryFilter := IsCartesianClosedCategory,
-      Description := "CartesianDualOnMorphismsWithGivenCartesianDuals using ExponentialOnMorphisms and IsomorphismFromCartesianDualToExponential" );
+      Description := "CartesianDualOnMorphismsWithGivenCartesianDuals using ExponentialOnMorphisms and IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject" );
 
 ##
 AddDerivationToCAP( CartesianEvaluationForCartesianDualWithGivenDirectProduct,
@@ -204,10 +204,10 @@ AddDerivationToCAP( CartesianEvaluationForCartesianDualWithGivenDirectProduct,
     # Adjoint( a^v -> Exp(a,1) ) = ( a^v x a -> 1 )
     
     return ExponentialToDirectProductAdjunctionMap( cat, a, r,
-                                                    IsomorphismFromCartesianDualToExponential( cat, a ) );
+                                                    IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject( cat, a ) );
     
 end : CategoryFilter := IsCartesianClosedCategory,
-      Description := "CartesianEvaluationForCartesianDualWithGivenDirectProduct using the direct product-exponential adjunction and IsomorphismFromCartesianDualToExponential" );
+      Description := "CartesianEvaluationForCartesianDualWithGivenDirectProduct using the direct product-exponential adjunction and IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject" );
 
 ##
 AddDerivationToCAP( CartesianLambdaIntroduction,
@@ -384,8 +384,8 @@ AddDerivationToCAP( DirectProductCartesianDualityCompatibilityMorphismWithGivenO
     
     morphism := PreComposeList( cat, [
                   DirectProductOnMorphisms( cat,
-                    IsomorphismFromCartesianDualToExponential( cat, a ),
-                    IsomorphismFromCartesianDualToExponential( cat, b ) ),
+                    IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject( cat, a ),
+                    IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject( cat, b ) ),
                   
                   DirectProductExponentialCompatibilityMorphism( cat, [ a, unit, b, unit ] ),
                   
@@ -393,7 +393,7 @@ AddDerivationToCAP( DirectProductCartesianDualityCompatibilityMorphismWithGivenO
                     IdentityMorphism( cat, direct_product_on_a_and_b ),
                     CartesianLeftUnitor( cat, unit ) ),
                   
-                  IsomorphismFromExponentialToCartesianDual( cat, direct_product_on_a_and_b )
+                  IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject( cat, direct_product_on_a_and_b )
                 ] );
     
     return morphism;
@@ -521,7 +521,7 @@ AddDerivationToCAP( MorphismFromDirectProductToExponentialWithGivenObjects,
     
     return PreComposeList( cat, [
              DirectProductOnMorphisms( cat,
-               IsomorphismFromCartesianDualToExponential( cat, a ),
+               IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject( cat, a ),
                IsomorphismFromObjectToExponential( cat, b ) ),
                 
              DirectProductExponentialCompatibilityMorphism( cat,
@@ -806,12 +806,12 @@ AddDerivationToCAP( DirectProductCartesianDualityCompatibilityMorphismWithGivenO
     
     morphism := PreComposeList( cat, [
                   DirectProductOnMorphisms( cat,
-                    IsomorphismFromCartesianDualToExponential( cat, a ),
-                    IsomorphismFromCartesianDualToExponential( cat, b ) ),
+                    IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject( cat, a ),
+                    IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject( cat, b ) ),
                   
                   DirectProductExponentialCompatibilityMorphism( cat, [ a, unit, b, unit ] ),
                   
-                  IsomorphismFromExponentialToCartesianDual( cat, direct_product_on_a_and_b )
+                  IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject( cat, direct_product_on_a_and_b )
                 ] );
     
     return morphism;
