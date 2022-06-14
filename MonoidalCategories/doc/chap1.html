@@ -670,6 +670,8 @@
 
 <p>A monoidal category <span class="Math">\mathbf{C}</span> which has for each functor <span class="Math">- \otimes b: \mathbf{C} \rightarrow \mathbf{C}</span> a right adjoint (denoted by <span class="Math">\mathrm{\underline{Hom}}(b,-)</span>) is called a <em>closed monoidal category</em>.</p>
 
+<p>If no operations involving duals are installed manually, the dual objects will be derived as <span class="Math">a^\vee \coloneqq \mathrm{\underline{Hom}}(a,1)</span>.</p>
+
 <p>The corresponding GAP property is called <code class="code">IsClosedMonoidalCategory</code>.</p>
 
 <p><a id="X78AA83E77B380D68" name="X78AA83E77B380D68"></a></p>
@@ -992,6 +994,8 @@
 <h4>1.6 <span class="Heading">Coclosed Monoidal Categories</span></h4>
 
 <p>A monoidal category <span class="Math">\mathbf{C}</span> which has for each functor <span class="Math">- \otimes b: \mathbf{C} \rightarrow \mathbf{C}</span> a left adjoint (denoted by <span class="Math">\mathrm{\underline{coHom}}(-,b)</span>) is called a <em>coclosed monoidal category</em>.</p>
+
+<p>If no operations involving coduals are installed manually, the codual objects will be derived as <span class="Math">a_\vee \coloneqq \mathrm{\underline{coHom}}(1,a)</span>.</p>
 
 <p>The corresponding GAP property is called <code class="code">IsCoclosedMonoidalCategory</code>.</p>
 
@@ -1348,6 +1352,10 @@
 </ul>
 <p><span class="Math">a \rightarrow \mathrm{\underline{Hom}}(\mathrm{\underline{Hom}}(a, 1), 1)</span> is an isomorphism is called a <em>rigid symmetric closed monoidal category</em>.</p>
 
+<p>If no operations involving the closed structure are installed manually, the internal hom objects will be derived as <span class="Math">\mathrm{\underline{Hom}}(a,b) \coloneqq a^\vee \otimes b</span> and, in particular, <span class="Math">\mathrm{\underline{Hom}}(a,1) \coloneqq a^\vee \otimes 1</span>.</p>
+
+<p>The corresponding GAP property is given by <code class="code">IsRigidSymmetricClosedMonoidalCategory</code>.</p>
+
 <p><a id="X7E88C05A78C378B3" name="X7E88C05A78C378B3"></a></p>
 
 <h5>1.9-1 IsomorphismFromTensorProductToInternalHom</h5>
@@ -1477,6 +1485,10 @@
 </li>
 </ul>
 <p><span class="Math">\mathrm{\underline{coHom}}(1, \mathrm{\underline{coHom}}(1, a)) \rightarrow a</span> is an isomorphism is called a <em>rigid symmetric coclosed monoidal category</em>.</p>
+
+<p>If no operations involving the coclosed structure are installed manually, the internal cohom objects will be derived as <span class="Math">\mathrm{\underline{coHom}}(a,b) \coloneqq a \otimes b_\vee</span> and, in particular, <span class="Math">\mathrm{\underline{coHom}}(1,a) \coloneqq 1 \otimes a_\vee</span>.</p>
+
+<p>The corresponding GAP property is given by <code class="code">IsRigidSymmetricCoclosedMonoidalCategory</code>.</p>
 
 <p><a id="X80EB79A087797913" name="X80EB79A087797913"></a></p>
 

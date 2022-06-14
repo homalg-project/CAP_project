@@ -342,6 +342,9 @@
   \mathbf{C}    \rightarrow   \mathbf{C}[123X   a   right   adjoint   (denoted   by
   [23X\mathrm{\underline{Hom}}(b,-)[123X) is called a [13Xclosed monoidal category[113X.[133X
   
+  [33X[0;0YIf  no  operations  involving duals are installed manually, the dual objects
+  will be derived as [23Xa^\vee \coloneqq \mathrm{\underline{Hom}}(a,1)[123X.[133X
+  
   [33X[0;0YThe corresponding GAP property is called [10XIsClosedMonoidalCategory[110X.[133X
   
   [1X1.5-1 InternalHomOnObjects[101X
@@ -697,6 +700,9 @@
   [33X[0;0YA  monoidal  category  [23X\mathbf{C}[123X  which  has  for each functor [23X- \otimes b:
   \mathbf{C}    \rightarrow    \mathbf{C}[123X   a   left   adjoint   (denoted   by
   [23X\mathrm{\underline{coHom}}(-,b)[123X) is called a [13Xcoclosed monoidal category[113X.[133X
+  
+  [33X[0;0YIf  no  operations  involving  coduals  are  installed  manually, the codual
+  objects will be derived as [23Xa_\vee \coloneqq \mathrm{\underline{coHom}}(1,a)[123X.[133X
   
   [33X[0;0YThe corresponding GAP property is called [10XIsCoclosedMonoidalCategory[110X.[133X
   
@@ -1090,6 +1096,14 @@
   [33X[0;0Y[23Xa \rightarrow \mathrm{\underline{Hom}}(\mathrm{\underline{Hom}}(a, 1), 1)[123X is
   an isomorphism is called a [13Xrigid symmetric closed monoidal category[113X.[133X
   
+  [33X[0;0YIf  no operations involving the closed structure are installed manually, the
+  internal  hom  objects  will  be  derived  as  [23X\mathrm{\underline{Hom}}(a,b)
+  \coloneqq a^\vee \otimes b[123X and, in particular, [23X\mathrm{\underline{Hom}}(a,1)
+  \coloneqq a^\vee \otimes 1[123X.[133X
+  
+  [33X[0;0YThe       corresponding       GAP       property       is      given      by
+  [10XIsRigidSymmetricClosedMonoidalCategory[110X.[133X
+  
   [1X1.9-1 IsomorphismFromTensorProductToInternalHom[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromTensorProductToInternalHom[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
@@ -1227,6 +1241,14 @@
   
   [33X[0;0Y[23X\mathrm{\underline{coHom}}(1,  \mathrm{\underline{coHom}}(1, a)) \rightarrow
   a[123X is an isomorphism is called a [13Xrigid symmetric coclosed monoidal category[113X.[133X
+  
+  [33X[0;0YIf  no  operations  involving the coclosed structure are installed manually,
+  the      internal      cohom      objects     will     be     derived     as
+  [23X\mathrm{\underline{coHom}}(a,b)   \coloneqq   a   \otimes   b_\vee[123X  and,  in
+  particular, [23X\mathrm{\underline{coHom}}(1,a) \coloneqq 1 \otimes a_\vee[123X.[133X
+  
+  [33X[0;0YThe       corresponding       GAP       property       is      given      by
+  [10XIsRigidSymmetricCoclosedMonoidalCategory[110X.[133X
   
   [1X1.10-1 IsomorphismFromInternalCoHomToTensorProduct[101X
   
