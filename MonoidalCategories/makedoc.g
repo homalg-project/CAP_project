@@ -20,6 +20,7 @@ AutoDoc( rec(
     gapdoc := rec(
         LaTeXOptions := rec(
             LateExtraPreamble := """
+                \usepackage{mathtools}
             """,
         ),
     ),

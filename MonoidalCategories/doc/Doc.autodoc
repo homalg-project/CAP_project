@@ -48,6 +48,8 @@ which has for each functor $- \otimes b: \mathbf{C} \rightarrow \mathbf{C}$
 a right adjoint (denoted by $\mathrm{\underline{Hom}}(b,-)$)
 is called a <Emph>closed monoidal category</Emph>.
 
+If no operations involving duals are installed manually, the dual objects will be derived as $a^\vee \coloneqq \mathrm{\underline{Hom}}(a,1)$.
+
 The corresponding GAP property is called
 <C>IsClosedMonoidalCategory</C>.
 
@@ -57,6 +59,8 @@ A monoidal category $\mathbf{C}$
 which has for each functor $- \otimes b: \mathbf{C} \rightarrow \mathbf{C}$
 a left adjoint (denoted by $\mathrm{\underline{coHom}}(-,b)$)
 is called a <Emph>coclosed monoidal category</Emph>.
+
+If no operations involving coduals are installed manually, the codual objects will be derived as $a_\vee \coloneqq \mathrm{\underline{coHom}}(1,a)$.
 
 The corresponding GAP property is called
 <C>IsCoclosedMonoidalCategory</C>.
@@ -72,12 +76,12 @@ The corresponding GAP property is given by
 
 @Section Symmetric Coclosed Monoidal Categories
 
-#! A monoidal category $\mathbf{C}$
-#! which is symmetric and coclosed
-#! is called a <Emph>symmetric coclosed monoidal category</Emph>.
+A monoidal category $\mathbf{C}$
+which is symmetric and coclosed
+is called a <Emph>symmetric coclosed monoidal category</Emph>.
 
-#! The corresponding GAP property is given by
-#! <C>IsSymmetricCoclosedMonoidalCategory</C>.
+The corresponding GAP property is given by
+<C>IsSymmetricCoclosedMonoidalCategory</C>.
 
 @Section Rigid Symmetric Closed Monoidal Categories
 
@@ -90,6 +94,12 @@ A symmetric closed monoidal category $\mathbf{C}$ satisfying
  is an isomorphism
 is called a <Emph>rigid symmetric closed monoidal category</Emph>.
 
+If no operations involving the closed structure are installed manually, the internal hom objects will be derived as
+$\mathrm{\underline{Hom}}(a,b) \coloneqq a^\vee \otimes b$ and, in particular, $\mathrm{\underline{Hom}}(a,1) \coloneqq a^\vee \otimes 1$.
+
+The corresponding GAP property is given by
+<C>IsRigidSymmetricClosedMonoidalCategory</C>.
+
 @Section Rigid Symmetric Coclosed Monoidal Categories
 
 A symmetric coclosed monoidal category $\mathbf{C}$ satisfying
@@ -100,6 +110,12 @@ A symmetric coclosed monoidal category $\mathbf{C}$ satisfying
  $\mathrm{\underline{coHom}}(1, \mathrm{\underline{coHom}}(1, a)) \rightarrow a$
  is an isomorphism
 is called a <Emph>rigid symmetric coclosed monoidal category</Emph>.
+
+If no operations involving the coclosed structure are installed manually, the internal cohom objects will be derived as
+$\mathrm{\underline{coHom}}(a,b) \coloneqq a \otimes b_\vee$ and, in particular, $\mathrm{\underline{coHom}}(1,a) \coloneqq 1 \otimes a_\vee$.
+
+The corresponding GAP property is given by
+<C>IsRigidSymmetricCoclosedMonoidalCategory</C>.
 
 @Section Convenience Methods
 
