@@ -6,6 +6,48 @@
 
 #! @Chapter Create wrapper hulls of a category
 
+#! The support for building towers of category constructors is one
+#! of the main design features of CAP. Many categories that
+#! appear in the various applications can be modeled by towers
+#! of multiple category constructors.
+#! The wrapper category constructor allows adding
+#! one last layer on top which allows expressing
+#! the desired (re)interpretation of such a modeling tower.
+#! In particular, the wrapper category constructor allows specifying
+#! the name of the category together with customized methods for the operations
+#! * ObjectConstructor
+#! * MorphismConstructor
+#! * ObjectDatum
+#! * MorphismDatum
+#! in order to reflect the desired interpretation with
+#! a user-interface that is independent of the modeling tower.
+#! Note that the same tower might have multiple interpretations.
+#! 
+#! <Table Align="|c|">
+#! <Caption>A tower of categories modeling the category <C>W</C></Caption>
+#! <HorLine/>
+#! <Row>
+#!   <Item><C>W := WrapperCategory( cat_n )</C></Item>
+#! </Row>
+#! <HorLine/>
+#! <Row>
+#!   <Item><C>cat_n := CategoryConstructor_n( cat_{n-1} )</C></Item>
+#! </Row>
+#! <HorLine/>
+#! <Row>
+#!   <Item>...</Item>
+#! </Row>
+#! <HorLine/>
+#! <Row>
+#!   <Item><C>cat_1 := CategoryConstructor_1( non_categorical_input )</C></Item>
+#! </Row>
+#! <HorLine/>
+#! </Table>
+#! The wrapper category <C>W</C> is by construction equivalent
+#! to the top category <C>cat_n</C> in the tower.
+#! In practice, the word <Q>tower</Q> stands more generally for a finite poset
+#! with a greatest element.
+
 ####################################
 #
 #! @Section GAP categories
@@ -39,9 +81,12 @@ DeclareCategory( "IsWrapperCapCategoryMorphism",
 ####################################
 
 #! @Description
-#!  The category underlying the wrapper category <A>category</A>.
+#!  The category used to model the wrapper category <A>category</A>.
 #! @Arguments category
 #! @Returns a category
+DeclareAttribute( "ModelingCategory",
+        IsWrapperCapCategory );
+
 DeclareAttribute( "UnderlyingCategory",
         IsWrapperCapCategory );
 
@@ -103,7 +148,7 @@ DeclareOperation( "WrapperCategory",
 
 
 #! @Description
-#!  Return the functor from the wrapped category <C>UnderlyingCategory</C>(<A>W</A>) to the wrapper category <A>W</A>.
+#!  Return the functor from the wrapped category <C>ModelingCategory</C>(<A>W</A>) to the wrapper category <A>W</A>.
 #!  The functor maps each wrapped object/morphism to its wrapping object/morphism.
 #! @Arguments W
 #! @Returns a functor

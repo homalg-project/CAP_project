@@ -32,7 +32,7 @@ InstallMethod( LeftPresentationsAsFreydCategoryOfCategoryOfRows,
     object_datum := function( cat, obj )
       local freyd, category_of_rows, relation_morphism;
         
-        freyd := UnderlyingCategory( cat );
+        freyd := ModelingCategory( cat );
         
         category_of_rows := UnderlyingCategory( freyd );
         
@@ -58,7 +58,7 @@ InstallMethod( LeftPresentationsAsFreydCategoryOfCategoryOfRows,
     morphism_datum := function( cat, mor )
       local freyd, category_of_rows, morphism_datum;
         
-        freyd := UnderlyingCategory( cat );
+        freyd := ModelingCategory( cat );
         
         category_of_rows := UnderlyingCategory( freyd );
         
@@ -141,7 +141,7 @@ InstallMethod( RightPresentationsAsFreydCategoryOfCategoryOfColumns,
     object_datum := function( cat, obj )
       local freyd, category_of_columns, relation_morphism;
         
-        freyd := UnderlyingCategory( cat );
+        freyd := ModelingCategory( cat );
         
         category_of_columns := UnderlyingCategory( freyd );
         
@@ -167,7 +167,7 @@ InstallMethod( RightPresentationsAsFreydCategoryOfCategoryOfColumns,
     morphism_datum := function( cat, mor )
       local freyd, category_of_columns, morphism_datum;
         
-        freyd := UnderlyingCategory( cat );
+        freyd := ModelingCategory( cat );
         
         category_of_columns := UnderlyingCategory( freyd );
         
