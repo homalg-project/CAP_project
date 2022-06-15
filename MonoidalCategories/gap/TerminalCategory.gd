@@ -4,27 +4,25 @@
 # Declarations
 #
 
-#! @Chapter The category constructor
+#! @Chapter The terminal category with multiple objects
 
 ####################################
 #
-#! @Section Example
+#! @Section &GAP; Categories
 #
 ####################################
-
-#! This is an example of a category which is created using <C>CategoryConstructor</C>
-#! out of no input.
-
-#! This category <Q>lies</Q> in all doctrines and can hence
-#! be used (in conjunction with <C>LazyCategory</C>)
-#! in order to check the type-correctness of the various derived methods
-#! provided by &CAP; or any &CAP;-based package.
 
 #! @Description
 #!  The &GAP; type of a terminal category with multiple objects.
 #! @Arguments T
 DeclareCategory( "IsTerminalCategoryWithMultipleObjects",
         IsCapCategory );
+
+####################################
+#
+#! @Section Constructors
+#
+####################################
 
 #! @Description
 #!  Construct a terminal category with multiple objects.
