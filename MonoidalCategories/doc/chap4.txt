@@ -1,31 +1,120 @@
   
-  [1X4 [33X[0;0YThe category constructor[133X[101X
-  
-  
-  [1X4.1 [33X[0;0YExample[133X[101X
+  [1X4 [33X[0;0YThe terminal category with multiple objects[133X[101X
   
   [33X[0;0YThis  is an example of a category which is created using [10XCategoryConstructor[110X
-  out  of  no input. This category [21Xlies[121X in all doctrines and can hence be used
-  (in conjunction with [10XLazyCategory[110X) in order to check the type-correctness of
-  the various derived methods provided by [5XCAP[105X or any [5XCAP[105X-based package.[133X
+  out of no input.[133X
   
-  [1X4.1-1 IsTerminalCategoryWithMultipleObjects[101X
+  [33X[0;0YThis  category  [21Xlies[121X  in all doctrines and can hence be used (in conjunction
+  with  [10XLazyCategory[110X)  in  order  to check the type-correctness of the various
+  derived methods provided by [5XCAP[105X or any [5XCAP[105X-based package.[133X
   
-  [33X[1;0Y[29X[2XIsTerminalCategoryWithMultipleObjects[102X( [3XT[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X type of a terminal category with multiple objects.[133X
+  [1X4.1 [33X[0;0YConstructors[133X[101X
   
-  [1X4.1-2 TerminalCategoryWithMultipleObjects[101X
+  [1X4.1-1 TerminalCategoryWithMultipleObjects[101X
   
   [33X[1;0Y[29X[2XTerminalCategoryWithMultipleObjects[102X(  ) [32X function[133X
   
   [33X[0;0YConstruct a terminal category with multiple objects.[133X
   
-  [1X4.1-3 /[101X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XT := TerminalCategoryWithMultipleObjects( );[127X[104X
+    [4X[28XTerminalCategoryWithMultipleObjects[128X[104X
+    [4X[25Xgap>[125X [27XInfoOfInstalledOperationsOfCategory( T );[127X[104X
+    [4X[28X54 primitive operations were used to derive 205 operations for this category[128X[104X
+    [4X[28Xwhich constructively[128X[104X
+    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28X* IsLinearCategoryOverCommutativeRing[128X[104X
+    [4X[28X* IsRigidSymmetricClosedMonoidalCategory[128X[104X
+    [4X[28X* IsRigidSymmetricCoclosedMonoidalCategory[128X[104X
+    [4X[25Xgap>[125X [27Xa := "a" / T;[127X[104X
+    [4X[28X<An object in TerminalCategoryWithMultipleObjects>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( a );[127X[104X
+    [4X[28Xa[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( a );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xaa := ObjectConstructor( T, "a" );[127X[104X
+    [4X[28X<An object in TerminalCategoryWithMultipleObjects>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( aa );[127X[104X
+    [4X[28Xa[128X[104X
+    [4X[25Xgap>[125X [27Xa = aa;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xb := "b" / T;[127X[104X
+    [4X[28X<An object in TerminalCategoryWithMultipleObjects>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( b );[127X[104X
+    [4X[28Xb[128X[104X
+    [4X[25Xgap>[125X [27Xa = b;[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xt := TensorProduct( a, b );[127X[104X
+    [4X[28X<An object in TerminalCategoryWithMultipleObjects>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( t );[127X[104X
+    [4X[28XTensorProductOnObjects[128X[104X
+    [4X[25Xgap>[125X [27Xa = t;[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XTensorProduct( a, a ) = t;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xm := MorphismConstructor( a, "m", b );[127X[104X
+    [4X[28X<A morphism in TerminalCategoryWithMultipleObjects>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( m );[127X[104X
+    [4X[28Xa[128X[104X
+    [4X[28X|[128X[104X
+    [4X[28X| m[128X[104X
+    [4X[28Xv[128X[104X
+    [4X[28Xb[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( m );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xn := MorphismConstructor( a, "n", b );[127X[104X
+    [4X[28X<A morphism in TerminalCategoryWithMultipleObjects>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( n );[127X[104X
+    [4X[28Xa[128X[104X
+    [4X[28X|[128X[104X
+    [4X[28X| n[128X[104X
+    [4X[28Xv[128X[104X
+    [4X[28Xb[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForMorphisms( m, n );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( m, n );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xm = n;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xid := IdentityMorphism( a );[127X[104X
+    [4X[28X<An identity morphism in TerminalCategoryWithMultipleObjects>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( id );[127X[104X
+    [4X[28Xa[128X[104X
+    [4X[28X|[128X[104X
+    [4X[28X| IdentityMorphism[128X[104X
+    [4X[28Xv[128X[104X
+    [4X[28Xa[128X[104X
+    [4X[25Xgap>[125X [27Xm = id;[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xid = MorphismConstructor( a, "xyz", a );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xz := ZeroMorphism( a, a );[127X[104X
+    [4X[28X<A zero morphism in TerminalCategoryWithMultipleObjects>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( z );[127X[104X
+    [4X[28Xa[128X[104X
+    [4X[28X|[128X[104X
+    [4X[28X| ZeroMorphism[128X[104X
+    [4X[28Xv[128X[104X
+    [4X[28Xa[128X[104X
+    [4X[25Xgap>[125X [27Xid = z;[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [1X4.1-2 /[101X
   
   [33X[1;0Y[29X[2X/[102X( [3XT[103X, [3Xstr[103X ) [32X operation[133X
   
   [33X[0;0YCreate  an  object  [23Xa[123X  in the terminal category [3XT[103X with multiple objects with
   [10XString[110X([3Xstr[103X) = [23Xa[123X.[133X
+  
+  
+  [1X4.2 [33X[0;0Y[5XGAP[105X[101X[1X Categories[133X[101X
+  
+  [1X4.2-1 IsTerminalCategoryWithMultipleObjects[101X
+  
+  [33X[1;0Y[29X[2XIsTerminalCategoryWithMultipleObjects[102X( [3XT[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X type of a terminal category with multiple objects.[133X
   
