@@ -51,22 +51,22 @@
   [2XAddInternalHomOnMorphismsWithGivenInternalHoms[102X, for IsCapCategory, IsFunction 1.12-23 
   [2XAddInternalHomOnObjects[102X, for IsCapCategory, IsFunction 1.12-24 
   [2XAddInternalHomToTensorProductAdjunctionMap[102X, for IsCapCategory, IsFunction 1.12-25 
-  [2XAddIsomorphismFromCoDualToInternalCoHom[102X, for IsCapCategory, IsFunction 1.12-67 
-  [2XAddIsomorphismFromDualToInternalHom[102X, for IsCapCategory, IsFunction 1.12-26 
-  [2XAddIsomorphismFromInternalCoHomToCoDual[102X, for IsCapCategory, IsFunction 1.12-68 
+  [2XAddIsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit[102X, for IsCapCategory, IsFunction 1.12-67 
+  [2XAddIsomorphismFromDualObjectToInternalHomIntoTensorUnit[102X, for IsCapCategory, IsFunction 1.12-26 
+  [2XAddIsomorphismFromInternalCoHomFromTensorUnitToCoDualObject[102X, for IsCapCategory, IsFunction 1.12-68 
   [2XAddIsomorphismFromInternalCoHomToObject[102X, for IsCapCategory, IsFunction 1.12-69 
   [2XAddIsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom[102X, for IsCapCategory, IsFunction 1.12-70 
-  [2XAddIsomorphismFromInternalCoHomToTensorProduct[102X, for IsCapCategory, IsFunction 1.12-115 
-  [2XAddIsomorphismFromInternalHomToDual[102X, for IsCapCategory, IsFunction 1.12-27 
+  [2XAddIsomorphismFromInternalCoHomToTensorProductWithCoDualObject[102X, for IsCapCategory, IsFunction 1.12-115 
+  [2XAddIsomorphismFromInternalHomIntoTensorUnitToDualObject[102X, for IsCapCategory, IsFunction 1.12-27 
   [2XAddIsomorphismFromInternalHomToObject[102X, for IsCapCategory, IsFunction 1.12-28 
   [2XAddIsomorphismFromInternalHomToObjectWithGivenInternalHom[102X, for IsCapCategory, IsFunction 1.12-29 
-  [2XAddIsomorphismFromInternalHomToTensorProduct[102X, for IsCapCategory, IsFunction 1.12-99 
+  [2XAddIsomorphismFromInternalHomToTensorProductWithDualObject[102X, for IsCapCategory, IsFunction 1.12-99 
   [2XAddIsomorphismFromObjectToInternalCoHom[102X, for IsCapCategory, IsFunction 1.12-71 
   [2XAddIsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom[102X, for IsCapCategory, IsFunction 1.12-72 
   [2XAddIsomorphismFromObjectToInternalHom[102X, for IsCapCategory, IsFunction 1.12-30 
   [2XAddIsomorphismFromObjectToInternalHomWithGivenInternalHom[102X, for IsCapCategory, IsFunction 1.12-31 
-  [2XAddIsomorphismFromTensorProductToInternalCoHom[102X, for IsCapCategory, IsFunction 1.12-116 
-  [2XAddIsomorphismFromTensorProductToInternalHom[102X, for IsCapCategory, IsFunction 1.12-100 
+  [2XAddIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom[102X, for IsCapCategory, IsFunction 1.12-116 
+  [2XAddIsomorphismFromTensorProductWithDualObjectToInternalHom[102X, for IsCapCategory, IsFunction 1.12-100 
   [2XAdditiveMonoidalCategoriesTest[102X 2.1-1 
   [2XAddLambdaElimination[102X, for IsCapCategory, IsFunction 1.12-32 
   [2XAddLambdaIntroduction[102X, for IsCapCategory, IsFunction 1.12-33 
@@ -179,22 +179,22 @@
   [2XInternalHomOnMorphismsWithGivenInternalHoms[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 1.5-3 
   [2XInternalHomOnObjects[102X, for IsCapCategoryObject, IsCapCategoryObject 1.5-1 
   [2XInternalHomToTensorProductAdjunctionMap[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.5-9 
-  [2XIsomorphismFromCoDualToInternalCoHom[102X, for IsCapCategoryObject 1.6-27 
-  [2XIsomorphismFromDualToInternalHom[102X, for IsCapCategoryObject 1.5-27 
-  [2XIsomorphismFromInternalCoHomToCoDual[102X, for IsCapCategoryObject 1.6-28 
+  [2XIsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit[102X, for IsCapCategoryObject 1.6-27 
+  [2XIsomorphismFromDualObjectToInternalHomIntoTensorUnit[102X, for IsCapCategoryObject 1.5-27 
+  [2XIsomorphismFromInternalCoHomFromTensorUnitToCoDualObject[102X, for IsCapCategoryObject 1.6-28 
   [2XIsomorphismFromInternalCoHomToObject[102X, for IsCapCategoryObject 1.6-34 
   [2XIsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom[102X, for IsCapCategoryObject, IsCapCategoryObject 1.6-35 
-  [2XIsomorphismFromInternalCoHomToTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject 1.10-1 
-  [2XIsomorphismFromInternalHomToDual[102X, for IsCapCategoryObject 1.5-28 
+  [2XIsomorphismFromInternalCoHomToTensorProductWithCoDualObject[102X, for IsCapCategoryObject, IsCapCategoryObject 1.10-1 
+  [2XIsomorphismFromInternalHomIntoTensorUnitToDualObject[102X, for IsCapCategoryObject 1.5-28 
   [2XIsomorphismFromInternalHomToObject[102X, for IsCapCategoryObject 1.5-34 
   [2XIsomorphismFromInternalHomToObjectWithGivenInternalHom[102X, for IsCapCategoryObject, IsCapCategoryObject 1.5-35 
-  [2XIsomorphismFromInternalHomToTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject 1.9-2 
+  [2XIsomorphismFromInternalHomToTensorProductWithDualObject[102X, for IsCapCategoryObject, IsCapCategoryObject 1.9-2 
   [2XIsomorphismFromObjectToInternalCoHom[102X, for IsCapCategoryObject 1.6-32 
   [2XIsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom[102X, for IsCapCategoryObject, IsCapCategoryObject 1.6-33 
   [2XIsomorphismFromObjectToInternalHom[102X, for IsCapCategoryObject 1.5-32 
   [2XIsomorphismFromObjectToInternalHomWithGivenInternalHom[102X, for IsCapCategoryObject, IsCapCategoryObject 1.5-33 
-  [2XIsomorphismFromTensorProductToInternalCoHom[102X, for IsCapCategoryObject, IsCapCategoryObject 1.10-2 
-  [2XIsomorphismFromTensorProductToInternalHom[102X, for IsCapCategoryObject, IsCapCategoryObject 1.9-1 
+  [2XIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom[102X, for IsCapCategoryObject, IsCapCategoryObject 1.10-2 
+  [2XIsomorphismFromTensorProductWithDualObjectToInternalHom[102X, for IsCapCategoryObject, IsCapCategoryObject 1.9-1 
   [2XIsTerminalCategoryWithMultipleObjects[102X, for IsCapCategory 4.1-1 
   [2XLambdaElimination[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.5-31 
   [2XLambdaIntroduction[102X, for IsCapCategoryMorphism 1.5-30 

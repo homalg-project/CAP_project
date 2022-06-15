@@ -6,10 +6,10 @@
                  [1X Monoidal and monoidal (co)closed categories [101X
   
   
-                                   2022.05-07
+                                   2022.06-01
   
   
-                                  14 June 2022
+                                  15 June 2022
   
   
                                 Mohamed Barakat
@@ -128,8 +128,8 @@
       1.5-24 TensorProductDualityCompatibilityMorphismWithGivenObjects
       1.5-25 MorphismFromTensorProductToInternalHom
       1.5-26 MorphismFromTensorProductToInternalHomWithGivenObjects
-      1.5-27 IsomorphismFromDualToInternalHom
-      1.5-28 IsomorphismFromInternalHomToDual
+      1.5-27 IsomorphismFromDualObjectToInternalHomIntoTensorUnit
+      1.5-28 IsomorphismFromInternalHomIntoTensorUnitToDualObject
       1.5-29 UniversalPropertyOfDual
       1.5-30 LambdaIntroduction
       1.5-31 LambdaElimination
@@ -164,8 +164,8 @@
       1.6-24 CoDualityTensorProductCompatibilityMorphismWithGivenObjects
       1.6-25 MorphismFromInternalCoHomToTensorProduct
       1.6-26 MorphismFromInternalCoHomToTensorProductWithGivenObjects
-      1.6-27 IsomorphismFromCoDualToInternalCoHom
-      1.6-28 IsomorphismFromInternalCoHomToCoDual
+      1.6-27 IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit
+      1.6-28 IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject
       1.6-29 UniversalPropertyOfCoDual
       1.6-30 CoLambdaIntroduction
       1.6-31 CoLambdaElimination
@@ -176,8 +176,8 @@
     1.7 [33X[0;0YSymmetric Closed Monoidal Categories[133X
     1.8 [33X[0;0YSymmetric Coclosed Monoidal Categories[133X
     1.9 [33X[0;0YRigid Symmetric Closed Monoidal Categories[133X
-      1.9-1 IsomorphismFromTensorProductToInternalHom
-      1.9-2 IsomorphismFromInternalHomToTensorProduct
+      1.9-1 IsomorphismFromTensorProductWithDualObjectToInternalHom
+      1.9-2 IsomorphismFromInternalHomToTensorProductWithDualObject
       1.9-3 MorphismFromInternalHomToTensorProduct
       1.9-4 MorphismFromInternalHomToTensorProductWithGivenObjects
       1.9-5 TensorProductInternalHomCompatibilityMorphismInverse
@@ -189,8 +189,8 @@
       1.9-11 MorphismFromBidual
       1.9-12 MorphismFromBidualWithGivenBidual
     1.10 [33X[0;0YRigid Symmetric Coclosed Monoidal Categories[133X
-      1.10-1 IsomorphismFromInternalCoHomToTensorProduct
-      1.10-2 IsomorphismFromTensorProductToInternalCoHom
+      1.10-1 IsomorphismFromInternalCoHomToTensorProductWithCoDualObject
+      1.10-2 IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom
       1.10-3 MorphismFromTensorProductToInternalCoHom
       1.10-4 MorphismFromTensorProductToInternalCoHomWithGivenObjects
       1.10-5 InternalCoHomTensorProductCompatibilityMorphismInverse
@@ -230,8 +230,8 @@
       1.12-23 AddInternalHomOnMorphismsWithGivenInternalHoms
       1.12-24 AddInternalHomOnObjects
       1.12-25 AddInternalHomToTensorProductAdjunctionMap
-      1.12-26 AddIsomorphismFromDualToInternalHom
-      1.12-27 AddIsomorphismFromInternalHomToDual
+      1.12-26 AddIsomorphismFromDualObjectToInternalHomIntoTensorUnit
+      1.12-27 AddIsomorphismFromInternalHomIntoTensorUnitToDualObject
       1.12-28 AddIsomorphismFromInternalHomToObject
       1.12-29 AddIsomorphismFromInternalHomToObjectWithGivenInternalHom
       1.12-30 AddIsomorphismFromObjectToInternalHom
@@ -271,8 +271,8 @@
       1.12-64 AddInternalCoHomTensorProductCompatibilityMorphism
       1.12-65 AddInternalCoHomTensorProductCompatibilityMorphismWithGivenObjects
       1.12-66 AddInternalCoHomToTensorProductAdjunctionMap
-      1.12-67 AddIsomorphismFromCoDualToInternalCoHom
-      1.12-68 AddIsomorphismFromInternalCoHomToCoDual
+      1.12-67 AddIsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit
+      1.12-68 AddIsomorphismFromInternalCoHomFromTensorUnitToCoDualObject
       1.12-69 AddIsomorphismFromInternalCoHomToObject
       1.12-70 AddIsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom
       1.12-71 AddIsomorphismFromObjectToInternalCoHom
@@ -303,8 +303,8 @@
       1.12-96 AddTensorProductOnMorphismsWithGivenTensorProducts
       1.12-97 AddCoevaluationForDual
       1.12-98 AddCoevaluationForDualWithGivenTensorProduct
-      1.12-99 AddIsomorphismFromInternalHomToTensorProduct
-      1.12-100 AddIsomorphismFromTensorProductToInternalHom
+      1.12-99 AddIsomorphismFromInternalHomToTensorProductWithDualObject
+      1.12-100 AddIsomorphismFromTensorProductWithDualObjectToInternalHom
       1.12-101 AddMorphismFromBidual
       1.12-102 AddMorphismFromBidualWithGivenBidual
       1.12-103 AddMorphismFromInternalHomToTensorProduct
@@ -319,8 +319,8 @@
       1.12-112 AddCoclosedCoevaluationForCoDualWithGivenTensorProduct
       1.12-113 AddInternalCoHomTensorProductCompatibilityMorphismInverse
       1.12-114 AddInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects
-      1.12-115 AddIsomorphismFromInternalCoHomToTensorProduct
-      1.12-116 AddIsomorphismFromTensorProductToInternalCoHom
+      1.12-115 AddIsomorphismFromInternalCoHomToTensorProductWithCoDualObject
+      1.12-116 AddIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom
       1.12-117 AddMorphismFromTensorProductToInternalCoHom
       1.12-118 AddMorphismFromTensorProductToInternalCoHomWithGivenObjects
       1.12-119 AddMorphismToCoBidual

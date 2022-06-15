@@ -613,25 +613,25 @@
   [23X\mathrm{MorphismFromTensorProductToInternalHomWithGivenObjects}_{a,b}:
   a^{\vee} \otimes b \rightarrow \mathrm{\underline{Hom}}(a,b)[123X.[133X
   
-  [1X1.5-27 IsomorphismFromDualToInternalHom[101X
+  [1X1.5-27 IsomorphismFromDualObjectToInternalHomIntoTensorUnit[101X
   
-  [33X[1;0Y[29X[2XIsomorphismFromDualToInternalHom[102X( [3Xa[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XIsomorphismFromDualObjectToInternalHomIntoTensorUnit[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya           morphism           in           [23X\mathrm{Hom}(a^{\vee},
             \mathrm{\underline{Hom}}(a,1))[123X.[133X
   
   [33X[0;0YThe   argument   is   an   object   [23Xa[123X.   The   output   is  the  isomorphism
-  [23X\mathrm{IsomorphismFromDualToInternalHom}_{a}:      a^{\vee}     \rightarrow
-  \mathrm{\underline{Hom}}(a,1)[123X.[133X
+  [23X\mathrm{IsomorphismFromDualObjectToInternalHomIntoTensorUnit}_{a}:  a^{\vee}
+  \rightarrow \mathrm{\underline{Hom}}(a,1)[123X.[133X
   
-  [1X1.5-28 IsomorphismFromInternalHomToDual[101X
+  [1X1.5-28 IsomorphismFromInternalHomIntoTensorUnitToDualObject[101X
   
-  [33X[1;0Y[29X[2XIsomorphismFromInternalHomToDual[102X( [3Xa[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XIsomorphismFromInternalHomIntoTensorUnitToDualObject[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya    morphism    in    [23X\mathrm{Hom}(\mathrm{\underline{Hom}}(a,1),
             a^{\vee})[123X.[133X
   
   [33X[0;0YThe   argument   is   an   object   [23Xa[123X.   The   output   is  the  isomorphism
-  [23X\mathrm{IsomorphismFromInternalHomToDual}_{a}: \mathrm{\underline{Hom}}(a,1)
-  \rightarrow a^{\vee}[123X.[133X
+  [23X\mathrm{IsomorphismFromInternalHomIntoTensorUnitToDualObject}_{a}:
+  \mathrm{\underline{Hom}}(a,1) \rightarrow a^{\vee}[123X.[133X
   
   [1X1.5-29 UniversalPropertyOfDual[101X
   
@@ -981,24 +981,24 @@
   [23X\mathrm{MorphismFromInternalCoHomToTensorProductWithGivenObjects}_{a,b}:
   \mathrm{\underline{coHom}}(a,b) \rightarrow a \otimes b_{\vee}[123X.[133X
   
-  [1X1.6-27 IsomorphismFromCoDualToInternalCoHom[101X
+  [1X1.6-27 IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit[101X
   
-  [33X[1;0Y[29X[2XIsomorphismFromCoDualToInternalCoHom[102X( [3Xa[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XIsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya           morphism           in           [23X\mathrm{Hom}(a_{\vee},
             \mathrm{\underline{coHom}}(1,a))[123X.[133X
   
   [33X[0;0YThe   argument   is   an   object   [23Xa[123X.   The   output   is  the  isomorphism
-  [23X\mathrm{IsomorphismFromCoDualToInternalCoHom}_{a}:    a_{\vee}   \rightarrow
-  \mathrm{\underline{coHom}}(1,a)[123X.[133X
+  [23X\mathrm{IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit}_{a}:
+  a_{\vee} \rightarrow \mathrm{\underline{coHom}}(1,a)[123X.[133X
   
-  [1X1.6-28 IsomorphismFromInternalCoHomToCoDual[101X
+  [1X1.6-28 IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject[101X
   
-  [33X[1;0Y[29X[2XIsomorphismFromInternalCoHomToCoDual[102X( [3Xa[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XIsomorphismFromInternalCoHomFromTensorUnitToCoDualObject[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya    morphism   in   [23X\mathrm{Hom}(\mathrm{\underline{coHom}}(1,a),
             a_{\vee})[123X.[133X
   
   [33X[0;0YThe   argument   is   an   object   [23Xa[123X.   The   output   is  the  isomorphism
-  [23X\mathrm{IsomorphismFromInternalCoHomToCoDual}_{a}:
+  [23X\mathrm{IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject}_{a}:
   \mathrm{\underline{coHom}}(1,a) \rightarrow a_{\vee}[123X.[133X
   
   [1X1.6-29 UniversalPropertyOfCoDual[101X
@@ -1104,25 +1104,25 @@
   [33X[0;0YThe       corresponding       GAP       property       is      given      by
   [10XIsRigidSymmetricClosedMonoidalCategory[110X.[133X
   
-  [1X1.9-1 IsomorphismFromTensorProductToInternalHom[101X
+  [1X1.9-1 IsomorphismFromTensorProductWithDualObjectToInternalHom[101X
   
-  [33X[1;0Y[29X[2XIsomorphismFromTensorProductToInternalHom[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XIsomorphismFromTensorProductWithDualObjectToInternalHom[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya     morphism    in    [23X\mathrm{Hom}(    a^{\vee}    \otimes    b,
             \mathrm{\underline{Hom}}(a,b) )[123X.[133X
   
   [33X[0;0YThe  arguments  are  two  objects  [23Xa,b[123X.  The  output is the natural morphism
-  [23X\mathrm{IsomorphismFromTensorProductToInternalHom}_{a,b}: a^{\vee} \otimes b
-  \rightarrow \mathrm{\underline{Hom}}(a,b)[123X.[133X
+  [23X\mathrm{IsomorphismFromTensorProductWithDualObjectToInternalHom}_{a,b}:
+  a^{\vee} \otimes b \rightarrow \mathrm{\underline{Hom}}(a,b)[123X.[133X
   
-  [1X1.9-2 IsomorphismFromInternalHomToTensorProduct[101X
+  [1X1.9-2 IsomorphismFromInternalHomToTensorProductWithDualObject[101X
   
-  [33X[1;0Y[29X[2XIsomorphismFromInternalHomToTensorProduct[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XIsomorphismFromInternalHomToTensorProductWithDualObject[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya   morphism   in   [23X\mathrm{Hom}(   \mathrm{\underline{Hom}}(a,b),
             a^{\vee} \otimes b )[123X.[133X
   
   [33X[0;0YThe   arguments   are  two  objects  [23Xa,b[123X.  The  output  is  the  inverse  of
-  [23X\mathrm{IsomorphismFromTensorProductToInternalHom}[123X,                   namely
-  [23X\mathrm{IsomorphismFromInternalHomToTensorProduct}_{a,b}:
+  [23X\mathrm{IsomorphismFromTensorProductWithDualObjectToInternalHom}[123X,     namely
+  [23X\mathrm{IsomorphismFromInternalHomToTensorProductWithDualObject}_{a,b}:
   \mathrm{\underline{Hom}}(a,b) \rightarrow a^{\vee} \otimes b[123X.[133X
   
   [1X1.9-3 MorphismFromInternalHomToTensorProduct[101X
@@ -1250,26 +1250,26 @@
   [33X[0;0YThe       corresponding       GAP       property       is      given      by
   [10XIsRigidSymmetricCoclosedMonoidalCategory[110X.[133X
   
-  [1X1.10-1 IsomorphismFromInternalCoHomToTensorProduct[101X
+  [1X1.10-1 IsomorphismFromInternalCoHomToTensorProductWithCoDualObject[101X
   
-  [33X[1;0Y[29X[2XIsomorphismFromInternalCoHomToTensorProduct[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XIsomorphismFromInternalCoHomToTensorProductWithCoDualObject[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya   morphism   in  [23X\mathrm{Hom}(  \mathrm{\underline{coHom}}(a,b),
             b_{\vee} \otimes a )[123X.[133X
   
   [33X[0;0YThe  arguments  are  two  objects  [23Xa,b[123X.  The  output is the natural morphism
-  [23X\mathrm{IsomorphismFromInternalCoHomToTensorProductWithGivenObjects}_{a,b}:
+  [23X\mathrm{IsomorphismFromInternalCoHomToTensorProductWithCoDualObjectWithGivenObjects}_{a,b}:
   \mathrm{\underline{coHom}}(a,b) \rightarrow b_{\vee} \otimes a[123X.[133X
   
-  [1X1.10-2 IsomorphismFromTensorProductToInternalCoHom[101X
+  [1X1.10-2 IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom[101X
   
-  [33X[1;0Y[29X[2XIsomorphismFromTensorProductToInternalCoHom[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya     morphism    in    [23X\mathrm{Hom}(    a_{\vee}    \otimes    b,
             \mathrm{\underline{coHom}}(b,a)[123X.[133X
   
   [33X[0;0YThe   arguments   are  two  objects  [23Xa,b[123X.  The  output  is  the  inverse  of
-  [23X\mathrm{IsomorphismFromInternalCoHomToTensorProduct}[123X,                 namely
-  [23X\mathrm{IsomorphismFromTensorProductToInternalCoHom}_{a,b}: a_{\vee} \otimes
-  b \rightarrow \mathrm{\underline{coHom}}(b,a)[123X.[133X
+  [23X\mathrm{IsomorphismFromInternalCoHomToTensorProductWithCoDualObject}[123X, namely
+  [23X\mathrm{IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom}_{a,b}:
+  a_{\vee} \otimes b \rightarrow \mathrm{\underline{coHom}}(b,a)[123X.[133X
   
   [1X1.10-3 MorphismFromTensorProductToInternalCoHom[101X
   
@@ -1646,25 +1646,25 @@
   [10XInternalHomToTensorProductAdjunctionMap[110X.   [23XF:   (   b,   c,   g   )  \mapsto
   \mathtt{InternalHomToTensorProductAdjunctionMap}(b, c, g)[123X.[133X
   
-  [1X1.12-26 AddIsomorphismFromDualToInternalHom[101X
+  [1X1.12-26 AddIsomorphismFromDualObjectToInternalHomIntoTensorUnit[101X
   
-  [33X[1;0Y[29X[2XAddIsomorphismFromDualToInternalHom[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddIsomorphismFromDualObjectToInternalHomIntoTensorUnit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XIsomorphismFromDualToInternalHom[110X.       [23XF:      (      a      )      \mapsto
-  \mathtt{IsomorphismFromDualToInternalHom}(a)[123X.[133X
+  [10XIsomorphismFromDualObjectToInternalHomIntoTensorUnit[110X.   [23XF:  (  a  )  \mapsto
+  \mathtt{IsomorphismFromDualObjectToInternalHomIntoTensorUnit}(a)[123X.[133X
   
-  [1X1.12-27 AddIsomorphismFromInternalHomToDual[101X
+  [1X1.12-27 AddIsomorphismFromInternalHomIntoTensorUnitToDualObject[101X
   
-  [33X[1;0Y[29X[2XAddIsomorphismFromInternalHomToDual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddIsomorphismFromInternalHomIntoTensorUnitToDualObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XIsomorphismFromInternalHomToDual[110X.       [23XF:      (      a      )      \mapsto
-  \mathtt{IsomorphismFromInternalHomToDual}(a)[123X.[133X
+  [10XIsomorphismFromInternalHomIntoTensorUnitToDualObject[110X.   [23XF:  (  a  )  \mapsto
+  \mathtt{IsomorphismFromInternalHomIntoTensorUnitToDualObject}(a)[123X.[133X
   
   [1X1.12-28 AddIsomorphismFromInternalHomToObject[101X
   
@@ -2061,25 +2061,25 @@
   [10XInternalCoHomToTensorProductAdjunctionMap[110X.   [23XF:   (   a,   b,  f  )  \mapsto
   \mathtt{InternalCoHomToTensorProductAdjunctionMap}(a, b, f)[123X.[133X
   
-  [1X1.12-67 AddIsomorphismFromCoDualToInternalCoHom[101X
+  [1X1.12-67 AddIsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit[101X
   
-  [33X[1;0Y[29X[2XAddIsomorphismFromCoDualToInternalCoHom[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddIsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XIsomorphismFromCoDualToInternalCoHom[110X.      [23XF:      (     a     )     \mapsto
-  \mathtt{IsomorphismFromCoDualToInternalCoHom}(a)[123X.[133X
+  [10XIsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit[110X.  [23XF:  ( a ) \mapsto
+  \mathtt{IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit}(a)[123X.[133X
   
-  [1X1.12-68 AddIsomorphismFromInternalCoHomToCoDual[101X
+  [1X1.12-68 AddIsomorphismFromInternalCoHomFromTensorUnitToCoDualObject[101X
   
-  [33X[1;0Y[29X[2XAddIsomorphismFromInternalCoHomToCoDual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddIsomorphismFromInternalCoHomFromTensorUnitToCoDualObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XIsomorphismFromInternalCoHomToCoDual[110X.      [23XF:      (     a     )     \mapsto
-  \mathtt{IsomorphismFromInternalCoHomToCoDual}(a)[123X.[133X
+  [10XIsomorphismFromInternalCoHomFromTensorUnitToCoDualObject[110X.  [23XF:  ( a ) \mapsto
+  \mathtt{IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject}(a)[123X.[133X
   
   [1X1.12-69 AddIsomorphismFromInternalCoHomToObject[101X
   
@@ -2379,25 +2379,25 @@
   [10XCoevaluationForDualWithGivenTensorProduct[110X.   [23XF:   (   s,   a,  r  )  \mapsto
   \mathtt{CoevaluationForDualWithGivenTensorProduct}(s, a, r)[123X.[133X
   
-  [1X1.12-99 AddIsomorphismFromInternalHomToTensorProduct[101X
+  [1X1.12-99 AddIsomorphismFromInternalHomToTensorProductWithDualObject[101X
   
-  [33X[1;0Y[29X[2XAddIsomorphismFromInternalHomToTensorProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddIsomorphismFromInternalHomToTensorProductWithDualObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XIsomorphismFromInternalHomToTensorProduct[110X.    [23XF:    (   a,   b   )   \mapsto
-  \mathtt{IsomorphismFromInternalHomToTensorProduct}(a, b)[123X.[133X
+  [10XIsomorphismFromInternalHomToTensorProductWithDualObject[110X. [23XF: ( a, b ) \mapsto
+  \mathtt{IsomorphismFromInternalHomToTensorProductWithDualObject}(a, b)[123X.[133X
   
-  [1X1.12-100 AddIsomorphismFromTensorProductToInternalHom[101X
+  [1X1.12-100 AddIsomorphismFromTensorProductWithDualObjectToInternalHom[101X
   
-  [33X[1;0Y[29X[2XAddIsomorphismFromTensorProductToInternalHom[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddIsomorphismFromTensorProductWithDualObjectToInternalHom[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XIsomorphismFromTensorProductToInternalHom[110X.    [23XF:    (   a,   b   )   \mapsto
-  \mathtt{IsomorphismFromTensorProductToInternalHom}(a, b)[123X.[133X
+  [10XIsomorphismFromTensorProductWithDualObjectToInternalHom[110X. [23XF: ( a, b ) \mapsto
+  \mathtt{IsomorphismFromTensorProductWithDualObjectToInternalHom}(a, b)[123X.[133X
   
   [1X1.12-101 AddMorphismFromBidual[101X
   
@@ -2539,25 +2539,27 @@
   \mathtt{InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects}(source,
   list, range)[123X.[133X
   
-  [1X1.12-115 AddIsomorphismFromInternalCoHomToTensorProduct[101X
+  [1X1.12-115 AddIsomorphismFromInternalCoHomToTensorProductWithCoDualObject[101X
   
-  [33X[1;0Y[29X[2XAddIsomorphismFromInternalCoHomToTensorProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddIsomorphismFromInternalCoHomToTensorProductWithCoDualObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XIsomorphismFromInternalCoHomToTensorProduct[110X.   [23XF:   (   a,   b   )   \mapsto
-  \mathtt{IsomorphismFromInternalCoHomToTensorProduct}(a, b)[123X.[133X
+  [10XIsomorphismFromInternalCoHomToTensorProductWithCoDualObject[110X.  [23XF:  (  a,  b )
+  \mapsto
+  \mathtt{IsomorphismFromInternalCoHomToTensorProductWithCoDualObject}(a, b)[123X.[133X
   
-  [1X1.12-116 AddIsomorphismFromTensorProductToInternalCoHom[101X
+  [1X1.12-116 AddIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom[101X
   
-  [33X[1;0Y[29X[2XAddIsomorphismFromTensorProductToInternalCoHom[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XIsomorphismFromTensorProductToInternalCoHom[110X.   [23XF:   (   a,   b   )   \mapsto
-  \mathtt{IsomorphismFromTensorProductToInternalCoHom}(a, b)[123X.[133X
+  [10XIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom[110X.  [23XF:  (  a,  b )
+  \mapsto
+  \mathtt{IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom}(a, b)[123X.[133X
   
   [1X1.12-117 AddMorphismFromTensorProductToInternalCoHom[101X
   
