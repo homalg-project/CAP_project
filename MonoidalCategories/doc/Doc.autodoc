@@ -132,3 +132,17 @@ The corresponding GAP property is given by
 @Section Closed Monoidal Categories
 
 @Section Coclosed Monoidal Categories
+
+@Chapter The terminal category with multiple objects
+
+This is an example of a category which is created using <C>CategoryConstructor</C>
+out of no input.
+
+This category <Q>lies</Q> in all doctrines and can hence
+be used (in conjunction with <C>LazyCategory</C>)
+in order to check the type-correctness of the various derived methods
+provided by &CAP; or any &CAP;-based package.
+
+@Section Constructors
+
+@Section &GAP; Categories
