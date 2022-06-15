@@ -948,7 +948,7 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
     elif IsString( name ) then
         string := name;
     else
-        Error( "Usage is <category>,<string>\n" );
+        Error( "Usage is <category>,<string> or <category>,<CAP operation>\n" );
         return;
     fi;
     

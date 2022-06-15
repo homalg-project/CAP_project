@@ -378,21 +378,26 @@ DeclareGlobalFunction( "CapCategorySwitchLogicOff" );
 ##
 #############################################
 
-
+#! @BeginGroup
 #! @Description
-#! The argument is a category $C$ and a string $s$,
-#! which should be the name of a basic operation, e.g., PreCompose.
+#! The argument is a category <A>C</A> and a string <A>string</A>,
+#! which should be the name of a CAP operation, e.g., PreCompose.
 #! If applying this method is possible in $C$, the method returns <C>true</C>, <C>false</C> otherwise.
-#! If the string is not the name of a basic operation, an error is raised.
+#! If the string is not the name of a CAP operation, an error is raised.
+#! For debugging purposes one can also pass the CAP operation instead of its name.
 #! @Returns <C>true</C> or <C>false</C>
-#! @Arguments C,s
+#! @Arguments C, string
 DeclareOperation( "CanCompute",
                   [ IsCapCategory, IsString ] );
+#! @Arguments C, operation
+DeclareOperation( "CanCompute",
+                  [ IsCapCategory, IsFunction ] );
+#! @EndGroup
 
 #! @Description
 #! The arguments are a category $C$ and a string $s$.
 #! If $s$ is a categorical property (e.g. <C>"IsAbelianCategory"</C>),
-#! the output is a list of strings with basic operations
+#! the output is a list of strings with CAP operations
 #! which are missing in $C$ to have the categorical property
 #! constructively.
 #! If $s$ is not a categorical property, an error is raised.
