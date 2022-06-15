@@ -394,10 +394,11 @@
 
 <h5>1.5-1 CanCompute</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CanCompute</code>( <var class="Arg">C</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CanCompute</code>( <var class="Arg">C</var>, <var class="Arg">string</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CanCompute</code>( <var class="Arg">C</var>, <var class="Arg">operation</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
 
-<p>The argument is a category <span class="SimpleMath">\(C\)</span> and a string <span class="SimpleMath">\(s\)</span>, which should be the name of a basic operation, e.g., PreCompose. If applying this method is possible in <span class="SimpleMath">\(C\)</span>, the method returns <code class="code">true</code>, <code class="code">false</code> otherwise. If the string is not the name of a basic operation, an error is raised.</p>
+<p>The argument is a category <var class="Arg">C</var> and a string <var class="Arg">string</var>, which should be the name of a CAP operation, e.g., PreCompose. If applying this method is possible in <span class="SimpleMath">\(C\)</span>, the method returns <code class="code">true</code>, <code class="code">false</code> otherwise. If the string is not the name of a CAP operation, an error is raised. For debugging purposes one can also pass the CAP operation instead of its name.</p>
 
 <p><a id="X7ACB9FFA84476BA0" name="X7ACB9FFA84476BA0"></a></p>
 
@@ -406,7 +407,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CheckConstructivenessOfCategory</code>( <var class="Arg">C</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a list</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a string <span class="SimpleMath">\(s\)</span>. If <span class="SimpleMath">\(s\)</span> is a categorical property (e.g. <code class="code">"IsAbelianCategory"</code>), the output is a list of strings with basic operations which are missing in <span class="SimpleMath">\(C\)</span> to have the categorical property constructively. If <span class="SimpleMath">\(s\)</span> is not a categorical property, an error is raised.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a string <span class="SimpleMath">\(s\)</span>. If <span class="SimpleMath">\(s\)</span> is a categorical property (e.g. <code class="code">"IsAbelianCategory"</code>), the output is a list of strings with CAP operations which are missing in <span class="SimpleMath">\(C\)</span> to have the categorical property constructively. If <span class="SimpleMath">\(s\)</span> is not a categorical property, an error is raised.</p>
 
 <p><a id="X7DB3D2BD8792ABBC" name="X7DB3D2BD8792ABBC"></a></p>
 

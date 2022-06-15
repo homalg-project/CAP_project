@@ -283,13 +283,15 @@
   
   [1X1.5-1 CanCompute[101X
   
-  [33X[1;0Y[29X[2XCanCompute[102X( [3XC[103X, [3Xs[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCanCompute[102X( [3XC[103X, [3Xstring[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCanCompute[102X( [3XC[103X, [3Xoperation[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
   
-  [33X[0;0YThe  argument  is a category [23XC[123X and a string [23Xs[123X, which should be the name of a
-  basic operation, e.g., PreCompose. If applying this method is possible in [23XC[123X,
-  the method returns [10Xtrue[110X, [10Xfalse[110X otherwise. If the string is not the name of a
-  basic operation, an error is raised.[133X
+  [33X[0;0YThe  argument  is a category [3XC[103X and a string [3Xstring[103X, which should be the name
+  of a CAP operation, e.g., PreCompose. If applying this method is possible in
+  [23XC[123X,  the  method returns [10Xtrue[110X, [10Xfalse[110X otherwise. If the string is not the name
+  of  a CAP operation, an error is raised. For debugging purposes one can also
+  pass the CAP operation instead of its name.[133X
   
   [1X1.5-2 CheckConstructivenessOfCategory[101X
   
@@ -298,7 +300,7 @@
   
   [33X[0;0YThe  arguments  are  a  category  [23XC[123X  and  a  string [23Xs[123X. If [23Xs[123X is a categorical
   property  (e.g.  [10X"IsAbelianCategory"[110X),  the output is a list of strings with
-  basic  operations  which  are  missing in [23XC[123X to have the categorical property
+  CAP  operations  which  are  missing  in  [23XC[123X to have the categorical property
   constructively. If [23Xs[123X is not a categorical property, an error is raised.[133X
   
   
