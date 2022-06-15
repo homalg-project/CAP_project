@@ -529,6 +529,7 @@ InstallMethod( CreateCapCategory,
     
 end );
 
+##
 InstallMethod( CanCompute,
                [ IsCapCategory, IsString ],
                
@@ -537,13 +538,25 @@ InstallMethod( CanCompute,
     
     if not string in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) then
         
-        Error( "string is not the name of an operation" );
+        Error( string, " is not the name of a CAP operation" );
         
     fi;
     
     weight_list := category!.derivations_weight_list;
     
     return not CurrentOperationWeight( weight_list, string ) = infinity;
+    
+end );
+
+##
+InstallMethod( CanCompute,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, operation )
+    
+    Display( "WARNING: calling `CanCompute` with a CAP operation as the second argument should only be done for debugging purposes." );
+    
+    return CanCompute( category, NameFunction( operation ) );
     
 end );
 
