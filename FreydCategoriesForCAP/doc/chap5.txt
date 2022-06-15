@@ -730,14 +730,20 @@
         InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
         for iscapcategoryobject, iscapcategoryobject, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromCoDualToInternalCoHom[102X              ([14XMonoidalCategories:
-        IsomorphismFromCoDualToInternalCoHom for iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XIsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit[102X
+        ([14XMonoidalCategories:
+        IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit           for
+        iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromDualToInternalHom[102X                  ([14XMonoidalCategories:
-        IsomorphismFromDualToInternalHom for iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XIsomorphismFromDualObjectToInternalHomIntoTensorUnit[102X
+        ([14XMonoidalCategories:
+        IsomorphismFromDualObjectToInternalHomIntoTensorUnit               for
+        iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromInternalCoHomToCoDual[102X              ([14XMonoidalCategories:
-        IsomorphismFromInternalCoHomToCoDual for iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XIsomorphismFromInternalCoHomFromTensorUnitToCoDualObject[102X
+        ([14XMonoidalCategories:
+        IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject           for
+        iscapcategoryobject[114X)[133X
   
   [30X    [33X[0;6Y[2XIsomorphismFromInternalCoHomToObject[102X              ([14XMonoidalCategories:
         IsomorphismFromInternalCoHomToObject for iscapcategoryobject[114X)[133X
@@ -747,12 +753,15 @@
         IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom         for
         iscapcategoryobject, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromInternalCoHomToTensorProduct[102X       ([14XMonoidalCategories:
-        IsomorphismFromInternalCoHomToTensorProduct  for  iscapcategoryobject,
-        iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XIsomorphismFromInternalCoHomToTensorProductWithCoDualObject[102X
+        ([14XMonoidalCategories:
+        IsomorphismFromInternalCoHomToTensorProductWithCoDualObject        for
+        iscapcategoryobject, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromInternalHomToDual[102X                  ([14XMonoidalCategories:
-        IsomorphismFromInternalHomToDual for iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XIsomorphismFromInternalHomIntoTensorUnitToDualObject[102X
+        ([14XMonoidalCategories:
+        IsomorphismFromInternalHomIntoTensorUnitToDualObject               for
+        iscapcategoryobject[114X)[133X
   
   [30X    [33X[0;6Y[2XIsomorphismFromInternalHomToObject[102X                ([14XMonoidalCategories:
         IsomorphismFromInternalHomToObject for iscapcategoryobject[114X)[133X
@@ -762,9 +771,10 @@
         IsomorphismFromInternalHomToObjectWithGivenInternalHom             for
         iscapcategoryobject, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromInternalHomToTensorProduct[102X         ([14XMonoidalCategories:
-        IsomorphismFromInternalHomToTensorProduct   for   iscapcategoryobject,
-        iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XIsomorphismFromInternalHomToTensorProductWithDualObject[102X
+        ([14XMonoidalCategories:
+        IsomorphismFromInternalHomToTensorProductWithDualObject            for
+        iscapcategoryobject, iscapcategoryobject[114X)[133X
   
   [30X    [33X[0;6Y[2XIsomorphismFromObjectToInternalCoHom[102X              ([14XMonoidalCategories:
         IsomorphismFromObjectToInternalCoHom for iscapcategoryobject[114X)[133X
@@ -782,13 +792,15 @@
         IsomorphismFromObjectToInternalHomWithGivenInternalHom             for
         iscapcategoryobject, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromTensorProductToInternalCoHom[102X       ([14XMonoidalCategories:
-        IsomorphismFromTensorProductToInternalCoHom  for  iscapcategoryobject,
-        iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom[102X
+        ([14XMonoidalCategories:
+        IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom        for
+        iscapcategoryobject, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromTensorProductToInternalHom[102X         ([14XMonoidalCategories:
-        IsomorphismFromTensorProductToInternalHom   for   iscapcategoryobject,
-        iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XIsomorphismFromTensorProductWithDualObjectToInternalHom[102X
+        ([14XMonoidalCategories:
+        IsomorphismFromTensorProductWithDualObjectToInternalHom            for
+        iscapcategoryobject, iscapcategoryobject[114X)[133X
   
   [30X    [33X[0;6Y[2XLambdaElimination[102X     ([14XMonoidalCategories:    LambdaElimination    for
         iscapcategoryobject, iscapcategoryobject, iscapcategorymorphism[114X)[133X
