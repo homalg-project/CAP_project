@@ -84,8 +84,8 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7BC3879A7E34C141">2.2-24 CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7A6AAD118687CAA7">2.2-25 MorphismFromCoexponentialToCoproduct</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7EAA87FE865A70C4">2.2-26 MorphismFromCoexponentialToCoproductWithGivenObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7AAE062D801ABCB7">2.2-27 IsomorphismFromCocartesianDualToCoexponential</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7C33DB8078AAB040">2.2-28 IsomorphismFromCoexponentialToCocartesianDual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7F9DDE7B7982003E">2.2-27 IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X79FBAD5682CA4210">2.2-28 IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7ECA24067A915ED8">2.2-29 UniversalPropertyOfCocartesianDual</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7F2EA2CA8742FDC9">2.2-30 CocartesianLambdaIntroduction</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7B9811F67DF3DA0F">2.2-31 CocartesianLambdaElimination</a></span>
@@ -144,8 +144,8 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8306E36D865434DE">2.4-40 AddCoexponentialOnObjects</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X87A1D00E802BD23B">2.4-41 AddCoexponentialToCoproductAdjunctionMap</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X874F44EA8232E275">2.4-42 AddCoproductToCoexponentialAdjunctionMap</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7ADFA85F7F4C660D">2.4-43 AddIsomorphismFromCocartesianDualToCoexponential</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7A9087317E0002C6">2.4-44 AddIsomorphismFromCoexponentialToCocartesianDual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X850B071C819B9D34">2.4-43 AddIsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X87218DA97FD3C024">2.4-44 AddIsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8740DECA83D8D370">2.4-45 AddIsomorphismFromCoexponentialToObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8503332C7B5FA60C">2.4-46 AddIsomorphismFromCoexponentialToObjectWithGivenCoexponential</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8154C659859FDC54">2.4-47 AddIsomorphismFromObjectToCoexponential</a></span>
@@ -691,23 +691,23 @@
 
 <p>The arguments are an object <span class="SimpleMath">\(s = \mathrm{Coexponential}(a,b)\)</span>, two objects <span class="SimpleMath">\(a,b\)</span>, and an object <span class="SimpleMath">\(r = b_{\vee} \sqcup a\)</span>. The output is the natural morphism <span class="SimpleMath">\(\mathrm{MorphismFromCoexponentialToCoproductWithGivenObjects}_{a,b}: \mathrm{Coexponential}(a,b) \rightarrow a \sqcup b_{\vee}\)</span>.</p>
 
-<p><a id="X7AAE062D801ABCB7" name="X7AAE062D801ABCB7"></a></p>
+<p><a id="X7F9DDE7B7982003E" name="X7F9DDE7B7982003E"></a></p>
 
-<h5>2.2-27 IsomorphismFromCocartesianDualToCoexponential</h5>
+<h5>2.2-27 IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromCocartesianDualToCoexponential</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a_{\vee}, \mathrm{Coexponential}(1,a))\)</span>.</p>
 
-<p>The argument is an object <span class="SimpleMath">\(a\)</span>. The output is the isomorphism <span class="SimpleMath">\(\mathrm{IsomorphismFromCocartesianDualToCoexponential}_{a}: a_{\vee} \rightarrow \mathrm{Coexponential}(1,a)\)</span>.</p>
+<p>The argument is an object <span class="SimpleMath">\(a\)</span>. The output is the isomorphism <span class="SimpleMath">\(\mathrm{IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject}_{a}: a_{\vee} \rightarrow \mathrm{Coexponential}(1,a)\)</span>.</p>
 
-<p><a id="X7C33DB8078AAB040" name="X7C33DB8078AAB040"></a></p>
+<p><a id="X79FBAD5682CA4210" name="X79FBAD5682CA4210"></a></p>
 
-<h5>2.2-28 IsomorphismFromCoexponentialToCocartesianDual</h5>
+<h5>2.2-28 IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromCoexponentialToCocartesianDual</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(\mathrm{Coexponential}(1,a), a_{\vee})\)</span>.</p>
 
-<p>The argument is an object <span class="SimpleMath">\(a\)</span>. The output is the isomorphism <span class="SimpleMath">\(\mathrm{IsomorphismFromCoexponentialToCocartesianDual}_{a}: \mathrm{Coexponential}(1,a) \rightarrow a_{\vee}\)</span>.</p>
+<p>The argument is an object <span class="SimpleMath">\(a\)</span>. The output is the isomorphism <span class="SimpleMath">\(\mathrm{IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject}_{a}: \mathrm{Coexponential}(1,a) \rightarrow a_{\vee}\)</span>.</p>
 
 <p><a id="X7ECA24067A915ED8" name="X7ECA24067A915ED8"></a></p>
 
@@ -1167,23 +1167,23 @@
 
 <p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CoproductToCoexponentialAdjunctionMap</code>. <span class="SimpleMath">\(F: ( c, b, g ) \mapsto \mathtt{CoproductToCoexponentialAdjunctionMap}(c, b, g)\)</span>.</p>
 
-<p><a id="X7ADFA85F7F4C660D" name="X7ADFA85F7F4C660D"></a></p>
+<p><a id="X850B071C819B9D34" name="X850B071C819B9D34"></a></p>
 
-<h5>2.4-43 AddIsomorphismFromCocartesianDualToCoexponential</h5>
+<h5>2.4-43 AddIsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromCocartesianDualToCoexponential</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsomorphismFromCocartesianDualToCoexponential</code>. <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{IsomorphismFromCocartesianDualToCoexponential}(a)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject</code>. <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject}(a)\)</span>.</p>
 
-<p><a id="X7A9087317E0002C6" name="X7A9087317E0002C6"></a></p>
+<p><a id="X87218DA97FD3C024" name="X87218DA97FD3C024"></a></p>
 
-<h5>2.4-44 AddIsomorphismFromCoexponentialToCocartesianDual</h5>
+<h5>2.4-44 AddIsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromCoexponentialToCocartesianDual</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsomorphismFromCoexponentialToCocartesianDual</code>. <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{IsomorphismFromCoexponentialToCocartesianDual}(a)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject</code>. <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject}(a)\)</span>.</p>
 
 <p><a id="X8740DECA83D8D370" name="X8740DECA83D8D370"></a></p>
 

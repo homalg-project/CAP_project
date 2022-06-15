@@ -1,7 +1,7 @@
 name: CartesianCategories
-version: "2022.05-04"
+version: "2022.06-01"
 license: "GPL-2.0-or-later"
-date: 2022-05-31
+date: 2022-06-15
 description: |
     Cartesian and cocartesian categories and various subdoctrines
 
@@ -37,7 +37,7 @@ needed-pkgs:
 
 suggested-pkgs:
     - name: "MonoidalCategories"
-      version: ">= 2022.05-05"
+      version: ">= 2022.06-01"
       url: "https://homalg-project.github.io/pkg/MonoidalCategories"
 
 www: https://homalg-project.github.io/pkg/CartesianCategories
@@ -46,11 +46,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/CartesianCategories/Pa
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/CartesianCategories-2022.05-04/CartesianCategories-2022.05-04.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/CartesianCategories-2022.06-01/CartesianCategories-2022.06-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/CartesianCategories-2022.05-04/CartesianCategories-2022.05-04.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/CartesianCategories-2022.06-01/CartesianCategories-2022.06-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/CartesianCategories-2022.05-04/CartesianCategories-2022.05-04.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/CartesianCategories-2022.06-01/CartesianCategories-2022.06-01.pdf
 
 abstract: |
 
@@ -63,7 +63,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BZRK22</span>]   <b class='BibAuthor'>Barakat, M., Zickgraf, F., Román, M. and Kuhmichel, T.</b>,
      <i class='BibTitle'>CartesianCategories, Cartesian and cocartesian categories and various subdoctrines,
-             Version 2022.05-04</i>
+             Version 2022.06-01</i>
      (<span class='BibYear'>2022</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/CartesianCategories">https://homalg-project.github.io/pkg/CartesianCategories</a></span>.
@@ -71,13 +71,13 @@ citeas: |
     
 
 bibtex: |
-    @misc{ CartesianCategories2022.05-04,
+    @misc{ CartesianCategories2022.06-01,
       author =           {Barakat,  M.  and  Zickgraf, F. and Rom{\a'a}n, M. and
                           Kuhmichel, T.},
       title =            {{CartesianCategories},   Cartesian   and   cocartesian
                           categories   and   various   subdoctrines,   {V}ersion
-                          2022.05-04},
-      month =            {May},
+                          2022.06-01},
+      month =            {Jun},
       year =             {2022},
       note =             {GAP package},
       howpublished =     {\href

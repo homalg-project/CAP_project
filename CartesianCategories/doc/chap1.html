@@ -81,8 +81,8 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7EEBA52B78DD3C43">1.2-24 DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X87933AAC7C40C1FA">1.2-25 MorphismFromDirectProductToExponential</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X79905A217884A6D5">1.2-26 MorphismFromDirectProductToExponentialWithGivenObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X861A772B7A162149">1.2-27 IsomorphismFromCartesianDualToExponential</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X782AE54B7C404C82">1.2-28 IsomorphismFromExponentialToCartesianDual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X86C7BF1586008AA0">1.2-27 IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X868C5A1783BC83F7">1.2-28 IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X83E3488284E0328F">1.2-29 UniversalPropertyOfCartesianDual</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7B445ED786A92436">1.2-30 CartesianLambdaIntroduction</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X809A70EB82722CD9">1.2-31 CartesianLambdaElimination</a></span>
@@ -141,8 +141,8 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7DF01A66791B2F43">1.4-40 AddExponentialOnMorphismsWithGivenExponentials</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7953DBA481E29FCD">1.4-41 AddExponentialOnObjects</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X87F5AED47ED38995">1.4-42 AddExponentialToDirectProductAdjunctionMap</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X783FD43F79FAEE32">1.4-43 AddIsomorphismFromCartesianDualToExponential</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X83B865267D26E391">1.4-44 AddIsomorphismFromExponentialToCartesianDual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7DBF793D7A9011F9">1.4-43 AddIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7B2772A18603CE67">1.4-44 AddIsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X78ABCC107CE12670">1.4-45 AddIsomorphismFromExponentialToObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7ECB83AE8761FAE4">1.4-46 AddIsomorphismFromExponentialToObjectWithGivenExponential</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X85C8CA0683C48022">1.4-47 AddIsomorphismFromObjectToExponential</a></span>
@@ -688,23 +688,23 @@
 
 <p>The arguments are an object <span class="Math">s = a^{\vee} \times b</span>, two objects <span class="Math">a,b</span>, and an object <span class="Math">r = \mathrm{Exponential}(a,b)</span>. The output is the natural morphism <span class="Math">\mathrm{MorphismFromDirectProductToExponentialWithGivenObjects}_{a,b}: a^{\vee} \times b \rightarrow \mathrm{Exponential}(a,b)</span>.</p>
 
-<p><a id="X861A772B7A162149" name="X861A772B7A162149"></a></p>
+<p><a id="X86C7BF1586008AA0" name="X86C7BF1586008AA0"></a></p>
 
-<h5>1.2-27 IsomorphismFromCartesianDualToExponential</h5>
+<h5>1.2-27 IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromCartesianDualToExponential</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a^{\vee}, \mathrm{Exponential}(a,1))</span>.</p>
 
-<p>The argument is an object <span class="Math">a</span>. The output is the isomorphism <span class="Math">\mathrm{IsomorphismFromCartesianDualToExponential}_{a}: a^{\vee} \rightarrow \mathrm{Exponential}(a,1)</span>.</p>
+<p>The argument is an object <span class="Math">a</span>. The output is the isomorphism <span class="Math">\mathrm{IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject}_{a}: a^{\vee} \rightarrow \mathrm{Exponential}(a,1)</span>.</p>
 
-<p><a id="X782AE54B7C404C82" name="X782AE54B7C404C82"></a></p>
+<p><a id="X868C5A1783BC83F7" name="X868C5A1783BC83F7"></a></p>
 
-<h5>1.2-28 IsomorphismFromExponentialToCartesianDual</h5>
+<h5>1.2-28 IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromExponentialToCartesianDual</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{Exponential}(a,1), a^{\vee})</span>.</p>
 
-<p>The argument is an object <span class="Math">a</span>. The output is the isomorphism <span class="Math">\mathrm{IsomorphismFromExponentialToCartesianDual}_{a}: \mathrm{Exponential}(a,1) \rightarrow a^{\vee}</span>.</p>
+<p>The argument is an object <span class="Math">a</span>. The output is the isomorphism <span class="Math">\mathrm{IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject}_{a}: \mathrm{Exponential}(a,1) \rightarrow a^{\vee}</span>.</p>
 
 <p><a id="X83E3488284E0328F" name="X83E3488284E0328F"></a></p>
 
@@ -1164,23 +1164,23 @@
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">ExponentialToDirectProductAdjunctionMap</code>. <span class="Math">F: ( b, c, g ) \mapsto \mathtt{ExponentialToDirectProductAdjunctionMap}(b, c, g)</span>.</p>
 
-<p><a id="X783FD43F79FAEE32" name="X783FD43F79FAEE32"></a></p>
+<p><a id="X7DBF793D7A9011F9" name="X7DBF793D7A9011F9"></a></p>
 
-<h5>1.4-43 AddIsomorphismFromCartesianDualToExponential</h5>
+<h5>1.4-43 AddIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromCartesianDualToExponential</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsomorphismFromCartesianDualToExponential</code>. <span class="Math">F: ( a ) \mapsto \mathtt{IsomorphismFromCartesianDualToExponential}(a)</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject</code>. <span class="Math">F: ( a ) \mapsto \mathtt{IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject}(a)</span>.</p>
 
-<p><a id="X83B865267D26E391" name="X83B865267D26E391"></a></p>
+<p><a id="X7B2772A18603CE67" name="X7B2772A18603CE67"></a></p>
 
-<h5>1.4-44 AddIsomorphismFromExponentialToCartesianDual</h5>
+<h5>1.4-44 AddIsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromExponentialToCartesianDual</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsomorphismFromExponentialToCartesianDual</code>. <span class="Math">F: ( a ) \mapsto \mathtt{IsomorphismFromExponentialToCartesianDual}(a)</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject</code>. <span class="Math">F: ( a ) \mapsto \mathtt{IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject}(a)</span>.</p>
 
 <p><a id="X78ABCC107CE12670" name="X78ABCC107CE12670"></a></p>
 

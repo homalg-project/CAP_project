@@ -544,22 +544,22 @@
   [23X\mathrm{MorphismFromCoexponentialToCoproductWithGivenObjects}_{a,b}:
   \mathrm{Coexponential}(a,b) \rightarrow a \sqcup b_{\vee}[123X.[133X
   
-  [1X2.2-27 IsomorphismFromCocartesianDualToCoexponential[101X
+  [1X2.2-27 IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject[101X
   
-  [33X[1;0Y[29X[2XIsomorphismFromCocartesianDualToCoexponential[102X( [3Xa[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XIsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a_{\vee}, \mathrm{Coexponential}(1,a))[123X.[133X
   
   [33X[0;0YThe   argument   is   an   object   [23Xa[123X.   The   output   is  the  isomorphism
-  [23X\mathrm{IsomorphismFromCocartesianDualToCoexponential}_{a}:         a_{\vee}
-  \rightarrow \mathrm{Coexponential}(1,a)[123X.[133X
+  [23X\mathrm{IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject}_{a}:
+  a_{\vee} \rightarrow \mathrm{Coexponential}(1,a)[123X.[133X
   
-  [1X2.2-28 IsomorphismFromCoexponentialToCocartesianDual[101X
+  [1X2.2-28 IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject[101X
   
-  [33X[1;0Y[29X[2XIsomorphismFromCoexponentialToCocartesianDual[102X( [3Xa[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XIsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\mathrm{Coexponential}(1,a), a_{\vee})[123X.[133X
   
   [33X[0;0YThe   argument   is   an   object   [23Xa[123X.   The   output   is  the  isomorphism
-  [23X\mathrm{IsomorphismFromCoexponentialToCocartesianDual}_{a}:
+  [23X\mathrm{IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject}_{a}:
   \mathrm{Coexponential}(1,a) \rightarrow a_{\vee}[123X.[133X
   
   [1X2.2-29 UniversalPropertyOfCocartesianDual[101X
@@ -1070,25 +1070,29 @@
   [10XCoproductToCoexponentialAdjunctionMap[110X.    [23XF:   (   c,   b,   g   )   \mapsto
   \mathtt{CoproductToCoexponentialAdjunctionMap}(c, b, g)[123X.[133X
   
-  [1X2.4-43 AddIsomorphismFromCocartesianDualToCoexponential[101X
+  [1X2.4-43 AddIsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject[101X
   
-  [33X[1;0Y[29X[2XAddIsomorphismFromCocartesianDualToCoexponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddIsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XIsomorphismFromCocartesianDualToCoexponential[110X.    [23XF:    (    a   )   \mapsto
-  \mathtt{IsomorphismFromCocartesianDualToCoexponential}(a)[123X.[133X
+  [10XIsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject[110X. [23XF: ( a
+  )                                                                    \mapsto
+  \mathtt{IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject}(a)
+  .[133X
   
-  [1X2.4-44 AddIsomorphismFromCoexponentialToCocartesianDual[101X
+  [1X2.4-44 AddIsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject[101X
   
-  [33X[1;0Y[29X[2XAddIsomorphismFromCoexponentialToCocartesianDual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddIsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XIsomorphismFromCoexponentialToCocartesianDual[110X.    [23XF:    (    a   )   \mapsto
-  \mathtt{IsomorphismFromCoexponentialToCocartesianDual}(a)[123X.[133X
+  [10XIsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject[110X. [23XF: ( a
+  )                                                                    \mapsto
+  \mathtt{IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject}(a)
+  .[133X
   
   [1X2.4-45 AddIsomorphismFromCoexponentialToObject[101X
   

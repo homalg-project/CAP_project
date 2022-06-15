@@ -543,22 +543,22 @@
   [23X\mathrm{MorphismFromDirectProductToExponentialWithGivenObjects}_{a,b}:
   a^{\vee} \times b \rightarrow \mathrm{Exponential}(a,b)[123X.[133X
   
-  [1X1.2-27 IsomorphismFromCartesianDualToExponential[101X
+  [1X1.2-27 IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject[101X
   
-  [33X[1;0Y[29X[2XIsomorphismFromCartesianDualToExponential[102X( [3Xa[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a^{\vee}, \mathrm{Exponential}(a,1))[123X.[133X
   
   [33X[0;0YThe   argument   is   an   object   [23Xa[123X.   The   output   is  the  isomorphism
-  [23X\mathrm{IsomorphismFromCartesianDualToExponential}_{a}: a^{\vee} \rightarrow
-  \mathrm{Exponential}(a,1)[123X.[133X
+  [23X\mathrm{IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject}_{a}:
+  a^{\vee} \rightarrow \mathrm{Exponential}(a,1)[123X.[133X
   
-  [1X1.2-28 IsomorphismFromExponentialToCartesianDual[101X
+  [1X1.2-28 IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject[101X
   
-  [33X[1;0Y[29X[2XIsomorphismFromExponentialToCartesianDual[102X( [3Xa[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XIsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\mathrm{Exponential}(a,1), a^{\vee})[123X.[133X
   
   [33X[0;0YThe   argument   is   an   object   [23Xa[123X.   The   output   is  the  isomorphism
-  [23X\mathrm{IsomorphismFromExponentialToCartesianDual}_{a}:
+  [23X\mathrm{IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject}_{a}:
   \mathrm{Exponential}(a,1) \rightarrow a^{\vee}[123X.[133X
   
   [1X1.2-29 UniversalPropertyOfCartesianDual[101X
@@ -1064,25 +1064,29 @@
   [10XExponentialToDirectProductAdjunctionMap[110X.   [23XF:   (   b,   c,   g   )  \mapsto
   \mathtt{ExponentialToDirectProductAdjunctionMap}(b, c, g)[123X.[133X
   
-  [1X1.4-43 AddIsomorphismFromCartesianDualToExponential[101X
+  [1X1.4-43 AddIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject[101X
   
-  [33X[1;0Y[29X[2XAddIsomorphismFromCartesianDualToExponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XIsomorphismFromCartesianDualToExponential[110X.     [23XF:     (    a    )    \mapsto
-  \mathtt{IsomorphismFromCartesianDualToExponential}(a)[123X.[133X
+  [10XIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject[110X.  [23XF: ( a )
+  \mapsto
+  \mathtt{IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject}(a)
+  .[133X
   
-  [1X1.4-44 AddIsomorphismFromExponentialToCartesianDual[101X
+  [1X1.4-44 AddIsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject[101X
   
-  [33X[1;0Y[29X[2XAddIsomorphismFromExponentialToCartesianDual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddIsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XIsomorphismFromExponentialToCartesianDual[110X.     [23XF:     (    a    )    \mapsto
-  \mathtt{IsomorphismFromExponentialToCartesianDual}(a)[123X.[133X
+  [10XIsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject[110X.  [23XF: ( a )
+  \mapsto
+  \mathtt{IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject}(a)
+  .[133X
   
   [1X1.4-45 AddIsomorphismFromExponentialToObject[101X
   

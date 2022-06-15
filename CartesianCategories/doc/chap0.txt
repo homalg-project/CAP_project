@@ -6,10 +6,10 @@
         [1X Cartesian and cocartesian categories and various subdoctrines [101X
   
   
-                                   2022.05-04
+                                   2022.06-01
   
   
-                                  31 May 2022
+                                  15 June 2022
   
   
                                 Mohamed Barakat
@@ -115,8 +115,8 @@
       1.2-24 DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects
       1.2-25 MorphismFromDirectProductToExponential
       1.2-26 MorphismFromDirectProductToExponentialWithGivenObjects
-      1.2-27 IsomorphismFromCartesianDualToExponential
-      1.2-28 IsomorphismFromExponentialToCartesianDual
+      1.2-27 IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject
+      1.2-28 IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject
       1.2-29 UniversalPropertyOfCartesianDual
       1.2-30 CartesianLambdaIntroduction
       1.2-31 CartesianLambdaElimination
@@ -169,8 +169,8 @@
       1.4-40 AddExponentialOnMorphismsWithGivenExponentials
       1.4-41 AddExponentialOnObjects
       1.4-42 AddExponentialToDirectProductAdjunctionMap
-      1.4-43 AddIsomorphismFromCartesianDualToExponential
-      1.4-44 AddIsomorphismFromExponentialToCartesianDual
+      1.4-43 AddIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject
+      1.4-44 AddIsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject
       1.4-45 AddIsomorphismFromExponentialToObject
       1.4-46 AddIsomorphismFromExponentialToObjectWithGivenExponential
       1.4-47 AddIsomorphismFromObjectToExponential
@@ -243,8 +243,8 @@
       2.2-24 CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects
       2.2-25 MorphismFromCoexponentialToCoproduct
       2.2-26 MorphismFromCoexponentialToCoproductWithGivenObjects
-      2.2-27 IsomorphismFromCocartesianDualToCoexponential
-      2.2-28 IsomorphismFromCoexponentialToCocartesianDual
+      2.2-27 IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject
+      2.2-28 IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject
       2.2-29 UniversalPropertyOfCocartesianDual
       2.2-30 CocartesianLambdaIntroduction
       2.2-31 CocartesianLambdaElimination
@@ -297,8 +297,8 @@
       2.4-40 AddCoexponentialOnObjects
       2.4-41 AddCoexponentialToCoproductAdjunctionMap
       2.4-42 AddCoproductToCoexponentialAdjunctionMap
-      2.4-43 AddIsomorphismFromCocartesianDualToCoexponential
-      2.4-44 AddIsomorphismFromCoexponentialToCocartesianDual
+      2.4-43 AddIsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject
+      2.4-44 AddIsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject
       2.4-45 AddIsomorphismFromCoexponentialToObject
       2.4-46 AddIsomorphismFromCoexponentialToObjectWithGivenCoexponential
       2.4-47 AddIsomorphismFromObjectToCoexponential
