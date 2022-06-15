@@ -488,40 +488,40 @@ InstallGlobalFunction( "CartesianClosedCategoriesTest",
             
         fi;
         
-        if CanCompute( cat, "IsomorphismFromCartesianDualToExponential" ) then
+        if CanCompute( cat, "IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject" ) then
             
             if verbose then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( "Testing 'IsomorphismFromCartesianDualToExponential' ..." );
+                Display( "Testing 'IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject' ..." );
                 
             fi;
             
-            isomorphism_from_dual_to_exp_a := IsomorphismFromCartesianDualToExponential( a );
-            isomorphism_from_dual_to_exp_b := IsomorphismFromCartesianDualToExponential( b );
+            isomorphism_from_dual_to_exp_a := IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject( a );
+            isomorphism_from_dual_to_exp_b := IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject( b );
             
-            isomorphism_from_coexp_to_codual_a_op := IsomorphismFromCoexponentialToCocartesianDual( a_op );
-            isomorphism_from_coexp_to_codual_b_op := IsomorphismFromCoexponentialToCocartesianDual( b_op );
+            isomorphism_from_coexp_to_codual_a_op := IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject( a_op );
+            isomorphism_from_coexp_to_codual_b_op := IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject( b_op );
             
             Assert( 0, IsCongruentForMorphisms( isomorphism_from_coexp_to_codual_a_op, Opposite( isomorphism_from_dual_to_exp_a ) ) );
             Assert( 0, IsCongruentForMorphisms( isomorphism_from_coexp_to_codual_b_op, Opposite( isomorphism_from_dual_to_exp_b ) ) );
             
         fi;
         
-        if CanCompute( cat, "IsomorphismFromExponentialToCartesianDual" ) then
+        if CanCompute( cat, "IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject" ) then
             
             if verbose then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( "Testing 'IsomorphismFromExponentialToCartesianDual' ..." );
+                Display( "Testing 'IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject' ..." );
                 
             fi;
             
-            isomorphism_from_exp_to_dual_a := IsomorphismFromExponentialToCartesianDual( a );
-            isomorphism_from_exp_to_dual_b := IsomorphismFromExponentialToCartesianDual( b );
+            isomorphism_from_exp_to_dual_a := IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject( a );
+            isomorphism_from_exp_to_dual_b := IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject( b );
             
-            isomorphism_from_codual_to_coexp_a_op := IsomorphismFromCocartesianDualToCoexponential( a_op );
-            isomorphism_from_codual_to_coexp_b_op := IsomorphismFromCocartesianDualToCoexponential( b_op );
+            isomorphism_from_codual_to_coexp_a_op := IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject( a_op );
+            isomorphism_from_codual_to_coexp_b_op := IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject( b_op );
             
             Assert( 0, IsCongruentForMorphisms( isomorphism_from_codual_to_coexp_a_op, Opposite( isomorphism_from_exp_to_dual_a ) ) );
             Assert( 0, IsCongruentForMorphisms( isomorphism_from_codual_to_coexp_b_op, Opposite( isomorphism_from_exp_to_dual_b ) ) );

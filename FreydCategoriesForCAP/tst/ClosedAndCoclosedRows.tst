@@ -1185,31 +1185,31 @@ false
 
 # Isomorphism from dual to internal hom
 
-gap> isomorphism_from_dual_to_hom_a := IsomorphismFromDualToInternalHom( a );;
-gap> isomorphism_from_dual_to_hom_b := IsomorphismFromDualToInternalHom( b );;
-gap> isomorphism_from_dual_to_hom_c := IsomorphismFromDualToInternalHom( c );;
-gap> isomorphism_from_dual_to_hom_d := IsomorphismFromDualToInternalHom( d );;
+gap> isomorphism_from_dual_to_hom_a := IsomorphismFromDualObjectToInternalHomIntoTensorUnit( a );;
+gap> isomorphism_from_dual_to_hom_b := IsomorphismFromDualObjectToInternalHomIntoTensorUnit( b );;
+gap> isomorphism_from_dual_to_hom_c := IsomorphismFromDualObjectToInternalHomIntoTensorUnit( c );;
+gap> isomorphism_from_dual_to_hom_d := IsomorphismFromDualObjectToInternalHomIntoTensorUnit( d );;
 
 # Isomorphism from internal hom to dual
 
-gap> isomorphism_from_hom_to_dual_a := IsomorphismFromInternalHomToDual( a );;
-gap> isomorphism_from_hom_to_dual_b := IsomorphismFromInternalHomToDual( b );;
-gap> isomorphism_from_hom_to_dual_c := IsomorphismFromInternalHomToDual( c );;
-gap> isomorphism_from_hom_to_dual_d := IsomorphismFromInternalHomToDual( d );;
+gap> isomorphism_from_hom_to_dual_a := IsomorphismFromInternalHomIntoTensorUnitToDualObject( a );;
+gap> isomorphism_from_hom_to_dual_b := IsomorphismFromInternalHomIntoTensorUnitToDualObject( b );;
+gap> isomorphism_from_hom_to_dual_c := IsomorphismFromInternalHomIntoTensorUnitToDualObject( c );;
+gap> isomorphism_from_hom_to_dual_d := IsomorphismFromInternalHomIntoTensorUnitToDualObject( d );;
 
 # Isomorphism from codual to cohom
 
-gap> isomorphism_from_codual_to_cohom_a := IsomorphismFromCoDualToInternalCoHom( a );;
-gap> isomorphism_from_codual_to_cohom_b := IsomorphismFromCoDualToInternalCoHom( b );;
-gap> isomorphism_from_codual_to_cohom_c := IsomorphismFromCoDualToInternalCoHom( c );;
-gap> isomorphism_from_codual_to_cohom_d := IsomorphismFromCoDualToInternalCoHom( d );;
+gap> isomorphism_from_codual_to_cohom_a := IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit( a );;
+gap> isomorphism_from_codual_to_cohom_b := IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit( b );;
+gap> isomorphism_from_codual_to_cohom_c := IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit( c );;
+gap> isomorphism_from_codual_to_cohom_d := IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit( d );;
 
 # Isomorphism from cohom to codual
 
-gap> isomorphism_from_cohom_to_codual_a := IsomorphismFromInternalCoHomToCoDual( a );;
-gap> isomorphism_from_cohom_to_codual_b := IsomorphismFromInternalCoHomToCoDual( b );;
-gap> isomorphism_from_cohom_to_codual_c := IsomorphismFromInternalCoHomToCoDual( c );;
-gap> isomorphism_from_cohom_to_codual_d := IsomorphismFromInternalCoHomToCoDual( d );;
+gap> isomorphism_from_cohom_to_codual_a := IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject( a );;
+gap> isomorphism_from_cohom_to_codual_b := IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject( b );;
+gap> isomorphism_from_cohom_to_codual_c := IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject( c );;
+gap> isomorphism_from_cohom_to_codual_d := IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject( d );;
 
 # Correspondence
 
@@ -1491,31 +1491,31 @@ false
 
 # Isomorphism from tensor product to internal hom
 
-gap> isomorphism_from_tensor_to_hom_ab := IsomorphismFromTensorProductToInternalHom( a, b );;
-gap> isomorphism_from_tensor_to_hom_ba := IsomorphismFromTensorProductToInternalHom( b, a );;
-gap> isomorphism_from_tensor_to_hom_cd := IsomorphismFromTensorProductToInternalHom( c, d );;
-gap> isomorphism_from_tensor_to_hom_dc := IsomorphismFromTensorProductToInternalHom( d, c );;
+gap> isomorphism_from_tensor_to_hom_ab := IsomorphismFromTensorProductWithDualObjectToInternalHom( a, b );;
+gap> isomorphism_from_tensor_to_hom_ba := IsomorphismFromTensorProductWithDualObjectToInternalHom( b, a );;
+gap> isomorphism_from_tensor_to_hom_cd := IsomorphismFromTensorProductWithDualObjectToInternalHom( c, d );;
+gap> isomorphism_from_tensor_to_hom_dc := IsomorphismFromTensorProductWithDualObjectToInternalHom( d, c );;
 
 # isomorphism from tensor product to internal cohom
 
-gap> isomorphism_from_tensor_to_cohom_ab := IsomorphismFromTensorProductToInternalCoHom( a, b );;
-gap> isomorphism_from_tensor_to_cohom_ba := IsomorphismFromTensorProductToInternalCoHom( b, a );;
-gap> isomorphism_from_tensor_to_cohom_cd := IsomorphismFromTensorProductToInternalCoHom( c, d );;
-gap> isomorphism_from_tensor_to_cohom_dc := IsomorphismFromTensorProductToInternalCoHom( d, c );;
+gap> isomorphism_from_tensor_to_cohom_ab := IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom( a, b );;
+gap> isomorphism_from_tensor_to_cohom_ba := IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom( b, a );;
+gap> isomorphism_from_tensor_to_cohom_cd := IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom( c, d );;
+gap> isomorphism_from_tensor_to_cohom_dc := IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom( d, c );;
 
 # Isomorphism from internal hom to tensor product
 
-gap> isomorphism_from_hom_to_tensor_ab := IsomorphismFromInternalHomToTensorProduct( a, b );;
-gap> isomorphism_from_hom_to_tensor_ba := IsomorphismFromInternalHomToTensorProduct( b, a );;
-gap> isomorphism_from_hom_to_tensor_cd := IsomorphismFromInternalHomToTensorProduct( c, d );;
-gap> isomorphism_from_hom_to_tensor_dc := IsomorphismFromInternalHomToTensorProduct( d, c );;
+gap> isomorphism_from_hom_to_tensor_ab := IsomorphismFromInternalHomToTensorProductWithDualObject( a, b );;
+gap> isomorphism_from_hom_to_tensor_ba := IsomorphismFromInternalHomToTensorProductWithDualObject( b, a );;
+gap> isomorphism_from_hom_to_tensor_cd := IsomorphismFromInternalHomToTensorProductWithDualObject( c, d );;
+gap> isomorphism_from_hom_to_tensor_dc := IsomorphismFromInternalHomToTensorProductWithDualObject( d, c );;
 
 # Isomorphism from internal cohom to tensor product
 
-gap> isomorphism_from_cohom_to_tensor_ab := IsomorphismFromInternalCoHomToTensorProduct( a, b );;
-gap> isomorphism_from_cohom_to_tensor_ba := IsomorphismFromInternalCoHomToTensorProduct( b, a );;
-gap> isomorphism_from_cohom_to_tensor_cd := IsomorphismFromInternalCoHomToTensorProduct( c, d );;
-gap> isomorphism_from_cohom_to_tensor_dc := IsomorphismFromInternalCoHomToTensorProduct( d, c );;
+gap> isomorphism_from_cohom_to_tensor_ab := IsomorphismFromInternalCoHomToTensorProductWithCoDualObject( a, b );;
+gap> isomorphism_from_cohom_to_tensor_ba := IsomorphismFromInternalCoHomToTensorProductWithCoDualObject( b, a );;
+gap> isomorphism_from_cohom_to_tensor_cd := IsomorphismFromInternalCoHomToTensorProductWithCoDualObject( c, d );;
+gap> isomorphism_from_cohom_to_tensor_dc := IsomorphismFromInternalCoHomToTensorProductWithCoDualObject( d, c );;
 
 # Correspondence
 

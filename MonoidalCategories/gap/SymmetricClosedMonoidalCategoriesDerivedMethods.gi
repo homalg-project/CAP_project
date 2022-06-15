@@ -63,7 +63,7 @@ AddDerivationToCAP( UniversalPropertyOfDual,
     
     return PreCompose( cat,
              TensorProductToInternalHomAdjunctionMap( cat, t, a, alpha ),
-             IsomorphismFromInternalHomToDual( cat, a ) );
+             IsomorphismFromInternalHomIntoTensorUnitToDualObject( cat, a ) );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
       Description := "UniversalPropertyOfDual using the tensor hom adjunction" );
@@ -142,10 +142,10 @@ AddDerivationToCAP( DualOnObjects,
 
     # Source( a^v -> Hom(a,1) )
     
-    return Source( IsomorphismFromDualToInternalHom( cat, a ) );
+    return Source( IsomorphismFromDualObjectToInternalHomIntoTensorUnit( cat, a ) );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
-      Description := "DualOnObjects as the source of IsomorphismFromDualToInternalHom" );
+      Description := "DualOnObjects as the source of IsomorphismFromDualObjectToInternalHomIntoTensorUnit" );
 
 ##
 AddDerivationToCAP( DualOnObjects,
@@ -154,10 +154,10 @@ AddDerivationToCAP( DualOnObjects,
 
     # Range( Hom(a,1) -> a^v )
     
-    return Range( IsomorphismFromInternalHomToDual( cat, a ) );
+    return Range( IsomorphismFromInternalHomIntoTensorUnitToDualObject( cat, a ) );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
-      Description := "DualOnObjects as the range of IsomorphismFromInternalHomToDual" );
+      Description := "DualOnObjects as the range of IsomorphismFromInternalHomIntoTensorUnitToDualObject" );
 
 ##
 AddDerivationToCAP( DualOnMorphismsWithGivenDuals,
@@ -179,17 +179,17 @@ AddDerivationToCAP( DualOnMorphismsWithGivenDuals,
     #   a^v
     
     return PreComposeList( cat, [
-             IsomorphismFromDualToInternalHom( cat, Range( alpha ) ),
+             IsomorphismFromDualObjectToInternalHomIntoTensorUnit( cat, Range( alpha ) ),
              
              InternalHomOnMorphisms( cat,
                alpha,
                IdentityMorphism( cat, TensorUnit( cat ) ) ),
                
-             IsomorphismFromInternalHomToDual( cat, Source( alpha ) )
+             IsomorphismFromInternalHomIntoTensorUnitToDualObject( cat, Source( alpha ) )
            ] );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
-      Description := "DualOnMorphismsWithGivenDuals using InternalHomOnMorphisms and IsomorphismFromDualToInternalHom" );
+      Description := "DualOnMorphismsWithGivenDuals using InternalHomOnMorphisms and IsomorphismFromDualObjectToInternalHomIntoTensorUnit" );
 
 ##
 AddDerivationToCAP( EvaluationForDualWithGivenTensorProduct,
@@ -201,10 +201,10 @@ AddDerivationToCAP( EvaluationForDualWithGivenTensorProduct,
     # Adjoint( a^v -> Hom(a,1) ) = ( a^v x a -> 1 )
     
     return InternalHomToTensorProductAdjunctionMap( cat, a, r,
-                                                    IsomorphismFromDualToInternalHom( cat, a ) );
+                                                    IsomorphismFromDualObjectToInternalHomIntoTensorUnit( cat, a ) );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
-      Description := "EvaluationForDualWithGivenTensorProduct using the tensor hom adjunction and IsomorphismFromDualToInternalHom" );
+      Description := "EvaluationForDualWithGivenTensorProduct using the tensor hom adjunction and IsomorphismFromDualObjectToInternalHomIntoTensorUnit" );
 
 ##
 AddDerivationToCAP( LambdaIntroduction,
@@ -381,8 +381,8 @@ AddDerivationToCAP( TensorProductDualityCompatibilityMorphismWithGivenObjects,
     
     morphism := PreComposeList( cat, [
                   TensorProductOnMorphisms( cat,
-                    IsomorphismFromDualToInternalHom( cat, a ),
-                    IsomorphismFromDualToInternalHom( cat, b ) ),
+                    IsomorphismFromDualObjectToInternalHomIntoTensorUnit( cat, a ),
+                    IsomorphismFromDualObjectToInternalHomIntoTensorUnit( cat, b ) ),
                   
                   TensorProductInternalHomCompatibilityMorphism( cat, [ a, unit, b, unit ] ),
                   
@@ -390,7 +390,7 @@ AddDerivationToCAP( TensorProductDualityCompatibilityMorphismWithGivenObjects,
                     IdentityMorphism( cat, tensor_product_on_a_and_b ),
                     LeftUnitor( cat, unit ) ),
                   
-                  IsomorphismFromInternalHomToDual( cat, tensor_product_on_a_and_b )
+                  IsomorphismFromInternalHomIntoTensorUnitToDualObject( cat, tensor_product_on_a_and_b )
                 ] );
     
     return morphism;
@@ -518,7 +518,7 @@ AddDerivationToCAP( MorphismFromTensorProductToInternalHomWithGivenObjects,
     
     return PreComposeList( cat, [
              TensorProductOnMorphisms( cat,
-               IsomorphismFromDualToInternalHom( cat, a ),
+               IsomorphismFromDualObjectToInternalHomIntoTensorUnit( cat, a ),
                IsomorphismFromObjectToInternalHom( cat, b ) ),
                 
              TensorProductInternalHomCompatibilityMorphism( cat,
@@ -803,12 +803,12 @@ AddDerivationToCAP( TensorProductDualityCompatibilityMorphismWithGivenObjects,
     
     morphism := PreComposeList( cat, [
                   TensorProductOnMorphisms( cat,
-                    IsomorphismFromDualToInternalHom( cat, a ),
-                    IsomorphismFromDualToInternalHom( cat, b ) ),
+                    IsomorphismFromDualObjectToInternalHomIntoTensorUnit( cat, a ),
+                    IsomorphismFromDualObjectToInternalHomIntoTensorUnit( cat, b ) ),
                   
                   TensorProductInternalHomCompatibilityMorphism( cat, [ a, unit, b, unit ] ),
                   
-                  IsomorphismFromInternalHomToDual( cat, tensor_product_on_a_and_b )
+                  IsomorphismFromInternalHomIntoTensorUnitToDualObject( cat, tensor_product_on_a_and_b )
                 ] );
     
     return morphism;

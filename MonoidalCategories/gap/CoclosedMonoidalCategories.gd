@@ -268,20 +268,26 @@ DeclareOperation( "MorphismFromInternalCoHomToTensorProductWithGivenObjects",
 #! @Description
 #! The argument is an object $a$.
 #! The output is the isomorphism
-#! $\mathrm{IsomorphismFromCoDualToInternalCoHom}_{a}: a_{\vee} \rightarrow \mathrm{\underline{coHom}}(1,a)$.
+#! $\mathrm{IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit}_{a}: a_{\vee} \rightarrow \mathrm{\underline{coHom}}(1,a)$.
 #! @Returns a morphism in $\mathrm{Hom}(a_{\vee}, \mathrm{\underline{coHom}}(1,a))$.
 #! @Arguments a
-DeclareAttribute( "IsomorphismFromCoDualToInternalCoHom",
+DeclareAttribute( "IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit",
                   IsCapCategoryObject );
+
+InstallDeprecatedAlias( "IsomorphismFromCoDualToInternalCoHom", "IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit", "2023.06.14" );
+InstallDeprecatedAlias( "AddIsomorphismFromCoDualToInternalCoHom", "AddIsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit", "2023.06.14" );
 
 #! @Description
 #! The argument is an object $a$.
 #! The output is the isomorphism
-#! $\mathrm{IsomorphismFromInternalCoHomToCoDual}_{a}: \mathrm{\underline{coHom}}(1,a) \rightarrow a_{\vee}$.
+#! $\mathrm{IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject}_{a}: \mathrm{\underline{coHom}}(1,a) \rightarrow a_{\vee}$.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{\underline{coHom}}(1,a), a_{\vee})$.
 #! @Arguments a
-DeclareAttribute( "IsomorphismFromInternalCoHomToCoDual",
+DeclareAttribute( "IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject",
                   IsCapCategoryObject );
+
+InstallDeprecatedAlias( "IsomorphismFromInternalCoHomToCoDual", "IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject", "2023.06.14" );
+InstallDeprecatedAlias( "AddIsomorphismFromInternalCoHomToCoDual", "AddIsomorphismFromInternalCoHomFromTensorUnitToCoDualObject", "2023.06.14" );
 
 #! @Description
 #! The arguments are two objects $t,a$,

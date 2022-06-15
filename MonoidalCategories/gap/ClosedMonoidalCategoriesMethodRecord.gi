@@ -277,19 +277,19 @@ MorphismFromTensorProductToInternalHomWithGivenObjects := rec(
   # Test in ClosedMonoidalCategoriesTest
 ),
 
-IsomorphismFromInternalHomToDual := rec(
+IsomorphismFromInternalHomIntoTensorUnitToDualObject := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "i", "d" ] ],
   return_type := "morphism",
-  dual_operation := "IsomorphismFromCoDualToInternalCoHom",
+  dual_operation := "IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit",
   # Test in ClosedMonoidalCategoriesTest
 ),
 
-IsomorphismFromDualToInternalHom := rec(
+IsomorphismFromDualObjectToInternalHomIntoTensorUnit := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "d", "i" ] ],
   return_type := "morphism",
-  dual_operation := "IsomorphismFromInternalCoHomToCoDual",
+  dual_operation := "IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject",
   # Test in ClosedMonoidalCategoriesTest
 ),
 

@@ -486,40 +486,40 @@ InstallGlobalFunction( "CoclosedMonoidalCategoriesTest",
             
         fi;
         
-        if CanCompute( cat, "IsomorphismFromInternalCoHomToCoDual" ) then
+        if CanCompute( cat, "IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject" ) then
             
             if verbose then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( "Testing 'IsomorphismFromInternalCoHomToCoDual' ..." );
+                Display( "Testing 'IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject' ..." );
                 
             fi;
             
-            isomorphism_from_cohom_to_codual_a := IsomorphismFromInternalCoHomToCoDual( a );
-            isomorphism_from_cohom_to_codual_b := IsomorphismFromInternalCoHomToCoDual( b );
+            isomorphism_from_cohom_to_codual_a := IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject( a );
+            isomorphism_from_cohom_to_codual_b := IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject( b );
             
-            isomorphism_from_dual_to_hom_a_op := IsomorphismFromDualToInternalHom( a_op );
-            isomorphism_from_dual_to_hom_b_op := IsomorphismFromDualToInternalHom( b_op );
+            isomorphism_from_dual_to_hom_a_op := IsomorphismFromDualObjectToInternalHomIntoTensorUnit( a_op );
+            isomorphism_from_dual_to_hom_b_op := IsomorphismFromDualObjectToInternalHomIntoTensorUnit( b_op );
             
             Assert( 0, IsCongruentForMorphisms( isomorphism_from_dual_to_hom_a_op, Opposite( isomorphism_from_cohom_to_codual_a ) ) );
             Assert( 0, IsCongruentForMorphisms( isomorphism_from_dual_to_hom_b_op, Opposite( isomorphism_from_cohom_to_codual_b ) ) );
             
         fi;
         
-        if CanCompute( cat, "IsomorphismFromCoDualToInternalCoHom" ) then
+        if CanCompute( cat, "IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit" ) then
             
             if verbose then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( "Testing 'IsomorphismFromCoDualToInternalCoHom' ..." );
+                Display( "Testing 'IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit' ..." );
                 
             fi;
             
-            isomorphism_from_codual_to_cohom_a := IsomorphismFromCoDualToInternalCoHom( a );
-            isomorphism_from_codual_to_cohom_b := IsomorphismFromCoDualToInternalCoHom( b );
+            isomorphism_from_codual_to_cohom_a := IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit( a );
+            isomorphism_from_codual_to_cohom_b := IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit( b );
             
-            isomorphism_from_hom_to_dual_a_op := IsomorphismFromInternalHomToDual( a_op );
-            isomorphism_from_hom_to_dual_b_op := IsomorphismFromInternalHomToDual( b_op );
+            isomorphism_from_hom_to_dual_a_op := IsomorphismFromInternalHomIntoTensorUnitToDualObject( a_op );
+            isomorphism_from_hom_to_dual_b_op := IsomorphismFromInternalHomIntoTensorUnitToDualObject( b_op );
             
             Assert( 0, IsCongruentForMorphisms( isomorphism_from_hom_to_dual_a_op, Opposite( isomorphism_from_codual_to_cohom_a ) ) );
             Assert( 0, IsCongruentForMorphisms( isomorphism_from_hom_to_dual_b_op, Opposite( isomorphism_from_codual_to_cohom_b ) ) );

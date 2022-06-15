@@ -280,19 +280,19 @@ MorphismFromDirectProductToExponentialWithGivenObjects := rec(
   # Test in CartesianClosedCategoriesTest
 ),
 
-IsomorphismFromExponentialToCartesianDual := rec(
+IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "i", "d" ] ],
   return_type := "morphism",
-  dual_operation := "IsomorphismFromCocartesianDualToCoexponential",
+  dual_operation := "IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject",
   # Test in CartesianClosedCategoriesTest
 ),
 
-IsomorphismFromCartesianDualToExponential := rec(
+IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "d", "i" ] ],
   return_type := "morphism",
-  dual_operation := "IsomorphismFromCoexponentialToCocartesianDual",
+  dual_operation := "IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject",
   # Test in CartesianClosedCategoriesTest
 ),
 

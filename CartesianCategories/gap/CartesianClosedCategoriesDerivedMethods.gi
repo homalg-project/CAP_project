@@ -12,15 +12,15 @@
 ####################################
 
 ## Final methods for CartesianDual
-AddFinalDerivation( IsomorphismFromCartesianDualToExponential,
+AddFinalDerivation( IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject,
                     [ [ IdentityMorphism, 1 ],
                       [ ExponentialOnObjects, 1 ],
                       [ TerminalObject, 1 ] ],
                     [ CartesianDualOnObjects,
                       CartesianDualOnMorphismsWithGivenCartesianDuals,
                       MorphismToCartesianBidualWithGivenCartesianBidual,
-                      IsomorphismFromCartesianDualToExponential,
-                      IsomorphismFromExponentialToCartesianDual,
+                      IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject,
+                      IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject,
                       UniversalPropertyOfCartesianDual,
                       DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects,
                       CartesianEvaluationForCartesianDualWithGivenDirectProduct,
@@ -31,17 +31,17 @@ AddFinalDerivation( IsomorphismFromCartesianDualToExponential,
     return IdentityMorphism( cat, ExponentialOnObjects( cat, object, TerminalObject( cat ) ) );
     
 end : CategoryFilter := IsCartesianClosedCategory,
-      Description := "IsomorphismFromCartesianDualToExponential as the identity of Exp(a,1)" );
+      Description := "IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject as the identity of Exp(a,1)" );
 
-AddFinalDerivation( IsomorphismFromExponentialToCartesianDual,
+AddFinalDerivation( IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject,
                     [ [ IdentityMorphism, 1 ],
                       [ ExponentialOnObjects, 1 ],
                       [ TerminalObject, 1 ] ],
                     [ CartesianDualOnObjects,
                       CartesianDualOnMorphismsWithGivenCartesianDuals,
                       MorphismToCartesianBidualWithGivenCartesianBidual,
-                      IsomorphismFromCartesianDualToExponential,
-                      IsomorphismFromExponentialToCartesianDual,
+                      IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject,
+                      IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject,
                       UniversalPropertyOfCartesianDual,
                       DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects,
                       CartesianEvaluationForCartesianDualWithGivenDirectProduct,
@@ -52,4 +52,4 @@ AddFinalDerivation( IsomorphismFromExponentialToCartesianDual,
     return IdentityMorphism( cat, ExponentialOnObjects( cat, object, TerminalObject( cat ) ) );
     
 end : CategoryFilter := IsCartesianClosedCategory,
-      Description := "IsomorphismFromExponentialToCartesianDual as the identity of Exp(a,1)" );
+      Description := "IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject as the identity of Exp(a,1)" );

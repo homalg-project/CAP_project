@@ -62,7 +62,7 @@ AddDerivationToCAP( UniversalPropertyOfCoDual,
     # a_v -> ( Cohom(1,a) -> t ) = Adjoint( alpha )
     
     return PreCompose( cat,
-             IsomorphismFromCoDualToInternalCoHom( cat, a ),
+             IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit( cat, a ),
              TensorProductToInternalCoHomAdjunctionMap( cat, t, a, alpha ) );
              
 end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
@@ -144,10 +144,10 @@ AddDerivationToCAP( CoDualOnObjects,
 
     # Source( a_v -> Cohom(1,a) )
     
-    return Source( IsomorphismFromCoDualToInternalCoHom( cat, a ) );
+    return Source( IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit( cat, a ) );
 
 end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
-      Description := "CoDualOnObjects as the source of IsomorphismFromCoDualToInternalCoHom" );
+      Description := "CoDualOnObjects as the source of IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit" );
 
 ##
 AddDerivationToCAP( CoDualOnObjects,
@@ -156,10 +156,10 @@ AddDerivationToCAP( CoDualOnObjects,
 
     # Range( Cohom(1,a) -> a_v )
     
-    return Range( IsomorphismFromInternalCoHomToCoDual( cat, a ) );
+    return Range( IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject( cat, a ) );
 
 end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
-      Description := "CoDualOnObjects as the range of IsomorphismFromInternalCoHomToCoDual" );
+      Description := "CoDualOnObjects as the range of IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject" );
 
 ##
 AddDerivationToCAP( CoDualOnMorphismsWithGivenCoDuals,
@@ -182,19 +182,19 @@ AddDerivationToCAP( CoDualOnMorphismsWithGivenCoDuals,
     #    a_v
     
     result_morphism := PreComposeList( cat, [
-                         IsomorphismFromCoDualToInternalCoHom( cat, Range( alpha ) ),
+                         IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit( cat, Range( alpha ) ),
                          
                          InternalCoHomOnMorphisms( cat,
                            IdentityMorphism( cat, TensorUnit( cat ) ),
                            alpha ),
                            
-                         IsomorphismFromInternalCoHomToCoDual( cat, Source( alpha ) )
+                         IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject( cat, Source( alpha ) )
                        ] );
                        
     return result_morphism;
     
 end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
-      Description := "CoDualOnMorphismsWithGivenCoDuals using InternalCoHomOnMorphisms and IsomorphismFromCoDualToInternalCoHom" );
+      Description := "CoDualOnMorphismsWithGivenCoDuals using InternalCoHomOnMorphisms and IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit" );
 
 ##
 AddDerivationToCAP( CoclosedEvaluationForCoDualWithGivenTensorProduct,
@@ -208,10 +208,10 @@ AddDerivationToCAP( CoclosedEvaluationForCoDualWithGivenTensorProduct,
     return InternalCoHomToTensorProductAdjunctionMap( cat,
             s,
             a,
-            IsomorphismFromInternalCoHomToCoDual( cat, a ) );
+            IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject( cat, a ) );
 
 end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
-      Description := "CoclosedEvaluationForCoDualWithGivenTensorProduct using the cohom tensor adjunction and IsomorphismFromInternalCoHomToCoDual" );
+      Description := "CoclosedEvaluationForCoDualWithGivenTensorProduct using the cohom tensor adjunction and IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject" );
 
 ##
 AddDerivationToCAP( CoLambdaIntroduction,
@@ -389,7 +389,7 @@ AddDerivationToCAP( CoDualityTensorProductCompatibilityMorphismWithGivenObjects,
     tensor_product_on_a_and_b := TensorProductOnObjects( cat, a, b );
     
     morphism := PreComposeList( cat, [
-                  IsomorphismFromCoDualToInternalCoHom( cat, tensor_product_on_a_and_b ),
+                  IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit( cat, tensor_product_on_a_and_b ),
                   
                   InternalCoHomOnMorphisms( cat,
                     LeftUnitorInverse( cat, unit ),
@@ -398,8 +398,8 @@ AddDerivationToCAP( CoDualityTensorProductCompatibilityMorphismWithGivenObjects,
                   InternalCoHomTensorProductCompatibilityMorphism( cat, [ unit, unit, a, b ] ),
                   
                   TensorProductOnMorphisms( cat,
-                    IsomorphismFromInternalCoHomToCoDual( cat, a ),
-                    IsomorphismFromInternalCoHomToCoDual( cat, b ) )
+                    IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject( cat, a ),
+                    IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject( cat, b ) )
                 ] );
 
     return morphism;
@@ -535,7 +535,7 @@ AddDerivationToCAP( MorphismFromInternalCoHomToTensorProductWithGivenObjects,
                [ unit, a, b, unit ] ),
               
              TensorProductOnMorphisms( cat,
-               IsomorphismFromInternalCoHomToCoDual( cat, b ),
+               IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject( cat, b ),
                IsomorphismFromInternalCoHomToObject( cat, a ) )
            ] );
     
@@ -814,13 +814,13 @@ AddDerivationToCAP( CoDualityTensorProductCompatibilityMorphismWithGivenObjects,
     tensor_product_on_a_and_b := TensorProductOnObjects( cat, a, b );
     
     morphism := PreComposeList( cat, [
-                  IsomorphismFromCoDualToInternalCoHom( cat, tensor_product_on_a_and_b ),
+                  IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit( cat, tensor_product_on_a_and_b ),
                   
                   InternalCoHomTensorProductCompatibilityMorphism( cat, [ unit, unit, a, b ] ),
                   
                   TensorProductOnMorphisms( cat,
-                    IsomorphismFromInternalCoHomToCoDual( cat, a ),
-                    IsomorphismFromInternalCoHomToCoDual( cat, b ) )
+                    IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject( cat, a ),
+                    IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject( cat, b ) )
                 ] );
               
     return morphism;

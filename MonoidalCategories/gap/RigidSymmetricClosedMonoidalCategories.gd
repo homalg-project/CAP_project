@@ -16,20 +16,26 @@ DeclareGlobalVariable( "RIGID_SYMMETRIC_CLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_R
 
 #! @Description
 #! The arguments are two objects $a,b$.
-#! The output is the natural morphism $\mathrm{IsomorphismFromTensorProductToInternalHom}_{a,b}: a^{\vee} \otimes b \rightarrow \mathrm{\underline{Hom}}(a,b)$.
+#! The output is the natural morphism $\mathrm{IsomorphismFromTensorProductWithDualObjectToInternalHom}_{a,b}: a^{\vee} \otimes b \rightarrow \mathrm{\underline{Hom}}(a,b)$.
 #! @Returns a morphism in $\mathrm{Hom}( a^{\vee} \otimes b, \mathrm{\underline{Hom}}(a,b) )$.
 #! @Arguments a,b
-DeclareOperation( "IsomorphismFromTensorProductToInternalHom",
+DeclareOperation( "IsomorphismFromTensorProductWithDualObjectToInternalHom",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+InstallDeprecatedAlias( "IsomorphismFromTensorProductToInternalHom", "IsomorphismFromTensorProductWithDualObjectToInternalHom", "2023.06.14" );
+InstallDeprecatedAlias( "AddIsomorphismFromTensorProductToInternalHom", "AddIsomorphismFromTensorProductWithDualObjectToInternalHom", "2023.06.14" );
 
 #! @Description
 #! The arguments are two objects $a,b$.
-#! The output is the inverse of $\mathrm{IsomorphismFromTensorProductToInternalHom}$, namely
-#! $\mathrm{IsomorphismFromInternalHomToTensorProduct}_{a,b}: \mathrm{\underline{Hom}}(a,b) \rightarrow a^{\vee} \otimes b$.
+#! The output is the inverse of $\mathrm{IsomorphismFromTensorProductWithDualObjectToInternalHom}$, namely
+#! $\mathrm{IsomorphismFromInternalHomToTensorProductWithDualObject}_{a,b}: \mathrm{\underline{Hom}}(a,b) \rightarrow a^{\vee} \otimes b$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b), a^{\vee} \otimes b )$.
 #! @Arguments a,b
-DeclareOperation( "IsomorphismFromInternalHomToTensorProduct",
+DeclareOperation( "IsomorphismFromInternalHomToTensorProductWithDualObject",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+InstallDeprecatedAlias( "IsomorphismFromInternalHomToTensorProduct", "IsomorphismFromInternalHomToTensorProductWithDualObject", "2023.06.14" );
+InstallDeprecatedAlias( "AddIsomorphismFromInternalHomToTensorProduct", "AddIsomorphismFromInternalHomToTensorProductWithDualObject", "2023.06.14" );
 
 #! @Description
 #! The arguments are two objects $a,b$.

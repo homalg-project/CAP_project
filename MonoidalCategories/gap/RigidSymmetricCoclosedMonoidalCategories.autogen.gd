@@ -126,39 +126,39 @@ DeclareOperation( "AddInternalCoHomTensorProductCompatibilityMorphismInverseWith
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `IsomorphismFromInternalCoHomToTensorProduct`.
-#! $F: ( a, b ) \mapsto \mathtt{IsomorphismFromInternalCoHomToTensorProduct}(a, b)$.
+#! to the category for the basic operation `IsomorphismFromInternalCoHomToTensorProductWithCoDualObject`.
+#! $F: ( a, b ) \mapsto \mathtt{IsomorphismFromInternalCoHomToTensorProductWithCoDualObject}(a, b)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromInternalCoHomToTensorProduct",
+DeclareOperation( "AddIsomorphismFromInternalCoHomToTensorProductWithCoDualObject",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddIsomorphismFromInternalCoHomToTensorProduct",
+DeclareOperation( "AddIsomorphismFromInternalCoHomToTensorProductWithCoDualObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddIsomorphismFromInternalCoHomToTensorProduct",
+DeclareOperation( "AddIsomorphismFromInternalCoHomToTensorProductWithCoDualObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddIsomorphismFromInternalCoHomToTensorProduct",
+DeclareOperation( "AddIsomorphismFromInternalCoHomToTensorProductWithCoDualObject",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `IsomorphismFromTensorProductToInternalCoHom`.
-#! $F: ( a, b ) \mapsto \mathtt{IsomorphismFromTensorProductToInternalCoHom}(a, b)$.
+#! to the category for the basic operation `IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom`.
+#! $F: ( a, b ) \mapsto \mathtt{IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom}(a, b)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromTensorProductToInternalCoHom",
+DeclareOperation( "AddIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddIsomorphismFromTensorProductToInternalCoHom",
+DeclareOperation( "AddIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddIsomorphismFromTensorProductToInternalCoHom",
+DeclareOperation( "AddIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddIsomorphismFromTensorProductToInternalCoHom",
+DeclareOperation( "AddIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

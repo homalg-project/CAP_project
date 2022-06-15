@@ -234,12 +234,12 @@ WriteFileForClosedMonoidalStructure(
                                ## InternalHomToTensorProductAdjunctionMap
                                [ "dual_operation := \"InternalCoHomToTensorProductAdjunctionMap\"",
                                  "dual_operation := \"CoexponentialToCoproductAdjunctionMap\"" ],
-                               ## IsomorphismFromDualToInternalHom
-                               [ "dual_operation := \"IsomorphismFromInternalCoHomToCoDual\"",
-                                 "dual_operation := \"IsomorphismFromCoexponentialToCocartesianDual\"" ],
-                               ## IsomorphismFromInternalHomToDual
-                               [ "dual_operation := \"IsomorphismFromCoDualToInternalCoHom\"",
-                                 "dual_operation := \"IsomorphismFromCocartesianDualToCoexponential\"" ],
+                               ## IsomorphismFromDualObjectToInternalHomIntoTensorUnit
+                               [ "dual_operation := \"IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject\"",
+                                 "dual_operation := \"IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject\"" ],
+                               ## IsomorphismFromInternalHomIntoTensorUnitToDualObject
+                               [ "dual_operation := \"IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit\"",
+                                 "dual_operation := \"IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject\"" ],
                                ## IsomorphismFromInternalHomToObjectWithGivenInternalHom
                                [ "dual_operation := \"IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom\"",
                                  "dual_operation := \"IsomorphismFromObjectToCoexponentialWithGivenCoexponential\"" ],
@@ -340,10 +340,10 @@ WriteFileForClosedMonoidalStructure(
                                [ "MorphismFromInternalCoHomToTensorProduct",
                                  "MorphismFromCoexponentialToCoproduct" ],
                                ## Isomorphisms
-                               [ "IsomorphismFromInternalCoHomToCoDual",
-                                 "IsomorphismFromCoexponentialToCocartesianDual" ],
-                               [ "IsomorphismFromCoDualToInternalCoHom",
-                                 "IsomorphismFromCocartesianDualToCoexponential" ],
+                               [ "IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject",
+                                 "IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject" ],
+                               [ "IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit",
+                                 "IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject" ],
                                ## Lambdas
                                [ "CoLambdaIntroduction",
                                  "CocartesianLambdaIntroduction" ],
@@ -615,12 +615,12 @@ WriteFileForCoclosedMonoidalStructure(
                                ## InternalCoHomToTensorProductAdjunctionMap
                                [ "dual_operation := \"InternalHomToTensorProductAdjunctionMap\"",
                                  "dual_operation := \"ExponentialToDirectProductAdjunctionMap\"" ],
-                               ## IsomorphismFromInternalCoHomToCoDual
-                               [ "dual_operation := \"IsomorphismFromDualToInternalHom\"",
-                                 "dual_operation := \"IsomorphismFromCartesianDualToExponential\"" ],
-                               ## IsomorphismFromCoDualToInternalCoHom
-                               [ "dual_operation := \"IsomorphismFromInternalHomToDual\"",
-                                 "dual_operation := \"IsomorphismFromExponentialToCartesianDual\"" ],
+                               ## IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject
+                               [ "dual_operation := \"IsomorphismFromDualObjectToInternalHomIntoTensorUnit\"",
+                                 "dual_operation := \"IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject\"" ],
+                               ## IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit
+                               [ "dual_operation := \"IsomorphismFromInternalHomIntoTensorUnitToDualObject\"",
+                                 "dual_operation := \"IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject\"" ],
                                ## IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom
                                [ "dual_operation := \"IsomorphismFromInternalHomToObjectWithGivenInternalHom\"",
                                  "dual_operation := \"IsomorphismFromExponentialToObjectWithGivenExponential\"" ],
@@ -731,10 +731,10 @@ WriteFileForCoclosedMonoidalStructure(
                                [ "MorphismFromTensorProductToInternalHom",
                                  "MorphismFromDirectProductToExponential" ],
                                ## Isomorphisms
-                               [ "IsomorphismFromInternalHomToDual",
-                                 "IsomorphismFromExponentialToCartesianDual" ],
-                               [ "IsomorphismFromDualToInternalHom",
-                                 "IsomorphismFromCartesianDualToExponential" ],
+                               [ "IsomorphismFromInternalHomIntoTensorUnitToDualObject",
+                                 "IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject" ],
+                               [ "IsomorphismFromDualObjectToInternalHomIntoTensorUnit",
+                                 "IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject" ],
                                ## Lambdas
                                [ " LambdaIntroduction",
                                  " CartesianLambdaIntroduction" ],

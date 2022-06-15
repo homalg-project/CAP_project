@@ -111,20 +111,20 @@ CoRankMorphism := rec(
   # Test in RigidSymmetricCoclosedMonoidalCategoriesTest
 ),
 
-IsomorphismFromInternalCoHomToTensorProduct := rec(
+IsomorphismFromInternalCoHomToTensorProductWithCoDualObject := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "b" ], [ "i", "t" ] ],
   return_type := "morphism",
-  dual_operation := "IsomorphismFromTensorProductToInternalHom",
+  dual_operation := "IsomorphismFromTensorProductWithDualObjectToInternalHom",
   dual_arguments_reversed := true,
   # Test in RigidSymmetricCoclosedMonoidalCategoriesTest
 ),
 
-IsomorphismFromTensorProductToInternalCoHom := rec(
+IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "b" ], [ "t", "i" ] ],
   return_type := "morphism",
-  dual_operation := "IsomorphismFromInternalHomToTensorProduct",
+  dual_operation := "IsomorphismFromInternalHomToTensorProductWithDualObject",
   dual_arguments_reversed := false,
   # Test in RigidSymmetricCoclosedMonoidalCategoriesTests
 ),
