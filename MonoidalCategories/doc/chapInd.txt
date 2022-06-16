@@ -2,7 +2,7 @@
   
   [1XIndex[101X
   
-  [2X/[102X, for IsString, IsTerminalCategoryWithMultipleObjects 4.1-2 
+  [2X/[102X, for IsString, IsTerminalCategoryWithMultipleObjects 4.1-3 
   [2XAddAssociatorLeftToRight[102X, for IsCapCategory, IsFunction 1.12-83 
   [2XAddAssociatorLeftToRightWithGivenTensorProducts[102X, for IsCapCategory, IsFunction 1.12-84 
   [2XAddAssociatorRightToLeft[102X, for IsCapCategory, IsFunction 1.12-85 
@@ -179,6 +179,9 @@
   [2XInternalHomOnMorphismsWithGivenInternalHoms[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 1.5-3 
   [2XInternalHomOnObjects[102X, for IsCapCategoryObject, IsCapCategoryObject 1.5-1 
   [2XInternalHomToTensorProductAdjunctionMap[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.5-9 
+  [2XIsCellInTerminalCategoryWithMultipleObjects[102X, for IsCapCategoryCell 4.2-2 
+  [2XIsMorphismInTerminalCategoryWithMultipleObjects[102X, for IsCellInTerminalCategoryWithMultipleObjects andIsCapTerminalCategoryMorphismRep 4.2-4 
+  [2XIsObjectInTerminalCategoryWithMultipleObjects[102X, for IsCellInTerminalCategoryWithMultipleObjects andIsCapTerminalCategoryObjectRep 4.2-3 
   [2XIsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit[102X, for IsCapCategoryObject 1.6-27 
   [2XIsomorphismFromDualObjectToInternalHomIntoTensorUnit[102X, for IsCapCategoryObject 1.5-27 
   [2XIsomorphismFromInternalCoHomFromTensorUnitToCoDualObject[102X, for IsCapCategoryObject 1.6-28 
@@ -255,7 +258,8 @@
   [2XTensorProductToInternalCoHomAdjunctionMap[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.6-8 
   [2XTensorProductToInternalHomAdjunctionMap[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.5-8 
   [2XTensorUnit[102X, for IsCapCategory 1.1-17 
-  [2XTerminalCategoryWithMultipleObjects[102X 4.1-1 
+  [2XTerminalCategory[102X 4.1-1 
+  [2XTerminalCategoryWithMultipleObjects[102X 4.1-2 
   [2XTraceMap[102X, for IsCapCategoryMorphism 1.9-9 
   [2XUniversalPropertyOfCoDual[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.6-29 
   [2XUniversalPropertyOfDual[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.5-29 

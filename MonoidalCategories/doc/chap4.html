@@ -25,13 +25,17 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X86EC0F0A78ECBC10">4.1 <span class="Heading">Constructors</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7CBD1E9B81BBFFC8">4.1-1 TerminalCategoryWithMultipleObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X8701D81685F51E3B">4.1-2 /</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X80E423D681B7A2D5">4.1-1 TerminalCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7CBD1E9B81BBFFC8">4.1-2 TerminalCategoryWithMultipleObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X8701D81685F51E3B">4.1-3 /</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X7D03633A7D98026B">4.2 <span class="Heading"><strong class="pkg">GAP</strong> Categories</span></a>
 </span>
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X820A2CEC8396A351">4.2-1 IsTerminalCategoryWithMultipleObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X83DBE755865D3932">4.2-2 IsCellInTerminalCategoryWithMultipleObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X876C942280398E1A">4.2-3 IsObjectInTerminalCategoryWithMultipleObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X86C587CB7DC5F70B">4.2-4 IsMorphismInTerminalCategoryWithMultipleObjects</a></span>
 </div></div>
 </div>
 
@@ -45,9 +49,59 @@
 
 <h4>4.1 <span class="Heading">Constructors</span></h4>
 
+<p><a id="X80E423D681B7A2D5" name="X80E423D681B7A2D5"></a></p>
+
+<h5>4.1-1 TerminalCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TerminalCategory</code>(  )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Construct a terminal category possibly with multiple objects.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TerminalCategory( );</span>
+TerminalCategory( )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InfoOfInstalledOperationsOfCategory( T );</span>
+68 primitive operations were used to derive 315 operations for this category
+which constructively
+* IsEquippedWithHomomorphismStructure
+* IsLinearCategoryOverCommutativeRing
+* IsAbelianCategoryWithEnoughInjectives
+* IsAbelianCategoryWithEnoughProjectives
+* IsRigidSymmetricClosedMonoidalCategory
+* IsRigidSymmetricCoclosedMonoidalCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i := InitialObject( T );</span>
+&lt;A zero object in TerminalCategory( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := TerminalObject( T );</span>
+&lt;A zero object in TerminalCategory( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z := ZeroObject( T );</span>
+&lt;A zero object in TerminalCategory( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( i );</span>
+A zero object in TerminalCategory( ).
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( t );</span>
+A zero object in TerminalCategory( ).
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( z );</span>
+A zero object in TerminalCategory( ).
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( i, z );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( t, z );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( z );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_z := IdentityMorphism( z );</span>
+&lt;A zero, identity morphism in TerminalCategory( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">fn_z := ZeroObjectFunctorial( T );</span>
+&lt;A zero, isomorphism in TerminalCategory( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( fn_z );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( id_z, fn_z );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( id_z, fn_z );</span>
+true
+</pre></div>
+
 <p><a id="X7CBD1E9B81BBFFC8" name="X7CBD1E9B81BBFFC8"></a></p>
 
-<h5>4.1-1 TerminalCategoryWithMultipleObjects</h5>
+<h5>4.1-2 TerminalCategoryWithMultipleObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TerminalCategoryWithMultipleObjects</code>(  )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Construct a terminal category with multiple objects.</p>
@@ -57,12 +111,38 @@
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TerminalCategoryWithMultipleObjects( );</span>
 TerminalCategoryWithMultipleObjects( )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InfoOfInstalledOperationsOfCategory( T );</span>
-54 primitive operations were used to derive 205 operations for this category
+68 primitive operations were used to derive 315 operations for this category
 which constructively
 * IsEquippedWithHomomorphismStructure
 * IsLinearCategoryOverCommutativeRing
+* IsAbelianCategoryWithEnoughInjectives
+* IsAbelianCategoryWithEnoughProjectives
 * IsRigidSymmetricClosedMonoidalCategory
 * IsRigidSymmetricCoclosedMonoidalCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i := InitialObject( T );</span>
+&lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := TerminalObject( T );</span>
+&lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z := ZeroObject( T );</span>
+&lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( i );</span>
+ZeroObject
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( t );</span>
+ZeroObject
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( z );</span>
+ZeroObject
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( i, z );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( t, z );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_z := IdentityMorphism( z );</span>
+&lt;A zero, identity morphism in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">fn_z := ZeroObjectFunctorial( T );</span>
+&lt;A zero, isomorphism in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( id_z, fn_z );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( id_z, fn_z );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := "a" / T;</span>
 &lt;An object in TerminalCategoryWithMultipleObjects( )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( a );</span>
@@ -139,7 +219,7 @@ true
 
 <p><a id="X8701D81685F51E3B" name="X8701D81685F51E3B"></a></p>
 
-<h5>4.1-2 /</h5>
+<h5>4.1-3 /</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; /</code>( <var class="Arg">T</var>, <var class="Arg">str</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Create an object <span class="Math">a</span> in the terminal category <var class="Arg">T</var> with multiple objects with <code class="code">String</code>(<var class="Arg">str</var>) = <span class="Math">a</span>.</p>
@@ -156,6 +236,33 @@ true
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
 <p>The <strong class="pkg">GAP</strong> type of a terminal category with multiple objects.</p>
+
+<p><a id="X83DBE755865D3932" name="X83DBE755865D3932"></a></p>
+
+<h5>4.2-2 IsCellInTerminalCategoryWithMultipleObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInTerminalCategoryWithMultipleObjects</code>( <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> type of a cell in a terminal category with multiple objects.</p>
+
+<p><a id="X876C942280398E1A" name="X876C942280398E1A"></a></p>
+
+<h5>4.2-3 IsObjectInTerminalCategoryWithMultipleObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInTerminalCategoryWithMultipleObjects</code>( <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> type of an object in a terminal category with multiple objects.</p>
+
+<p><a id="X86C587CB7DC5F70B" name="X86C587CB7DC5F70B"></a></p>
+
+<h5>4.2-4 IsMorphismInTerminalCategoryWithMultipleObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInTerminalCategoryWithMultipleObjects</code>( <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> type of a morphism in a terminal category with multiple objects.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap3.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd.html">[Next Chapter]</a>&nbsp;  </div>
