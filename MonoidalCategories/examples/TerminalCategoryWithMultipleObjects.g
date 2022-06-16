@@ -6,12 +6,38 @@ LoadPackage( "MonoidalCategories" );
 T := TerminalCategoryWithMultipleObjects( );
 #! TerminalCategoryWithMultipleObjects( )
 InfoOfInstalledOperationsOfCategory( T );
-#! 54 primitive operations were used to derive 205 operations for this category
+#! 68 primitive operations were used to derive 315 operations for this category
 #! which constructively
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing
+#! * IsAbelianCategoryWithEnoughInjectives
+#! * IsAbelianCategoryWithEnoughProjectives
 #! * IsRigidSymmetricClosedMonoidalCategory
 #! * IsRigidSymmetricCoclosedMonoidalCategory
+i := InitialObject( T );
+#! <A zero object in TerminalCategoryWithMultipleObjects( )>
+t := TerminalObject( T );
+#! <A zero object in TerminalCategoryWithMultipleObjects( )>
+z := ZeroObject( T );
+#! <A zero object in TerminalCategoryWithMultipleObjects( )>
+Display( i );
+#! ZeroObject
+Display( t );
+#! ZeroObject
+Display( z );
+#! ZeroObject
+IsIdenticalObj( i, z );
+#! true
+IsIdenticalObj( t, z );
+#! true
+id_z := IdentityMorphism( z );
+#! <A zero, identity morphism in TerminalCategoryWithMultipleObjects( )>
+fn_z := ZeroObjectFunctorial( T );
+#! <A zero, isomorphism in TerminalCategoryWithMultipleObjects( )>
+IsEqualForMorphisms( id_z, fn_z );
+#! false
+IsCongruentForMorphisms( id_z, fn_z );
+#! true
 a := "a" / T;
 #! <An object in TerminalCategoryWithMultipleObjects( )>
 Display( a );
