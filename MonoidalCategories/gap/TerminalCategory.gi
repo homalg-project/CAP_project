@@ -134,7 +134,7 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
     morphism_datum := { cat, morphism } -> fail;
     
     T := CategoryConstructor( rec(
-                 name := "TerminalCategoryWithMultipleObjects",
+                 name := "TerminalCategoryWithMultipleObjects( )",
                  category_filter := IsTerminalCategory and IsTerminalCategoryWithMultipleObjects,
                  category_object_filter := IsCapTerminalCategoryObjectRep,
                  category_morphism_filter := IsCapTerminalCategoryMorphismRep,

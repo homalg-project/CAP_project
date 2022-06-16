@@ -4,7 +4,7 @@ LoadPackage( "MonoidalCategories" );
 
 #! @Example
 T := TerminalCategoryWithMultipleObjects( );
-#! TerminalCategoryWithMultipleObjects
+#! TerminalCategoryWithMultipleObjects( )
 InfoOfInstalledOperationsOfCategory( T );
 #! 54 primitive operations were used to derive 205 operations for this category
 #! which constructively
@@ -13,25 +13,25 @@ InfoOfInstalledOperationsOfCategory( T );
 #! * IsRigidSymmetricClosedMonoidalCategory
 #! * IsRigidSymmetricCoclosedMonoidalCategory
 a := "a" / T;
-#! <An object in TerminalCategoryWithMultipleObjects>
+#! <An object in TerminalCategoryWithMultipleObjects( )>
 Display( a );
 #! a
 IsWellDefined( a );
 #! true
 aa := ObjectConstructor( T, "a" );
-#! <An object in TerminalCategoryWithMultipleObjects>
+#! <An object in TerminalCategoryWithMultipleObjects( )>
 Display( aa );
 #! a
 a = aa;
 #! true
 b := "b" / T;
-#! <An object in TerminalCategoryWithMultipleObjects>
+#! <An object in TerminalCategoryWithMultipleObjects( )>
 Display( b );
 #! b
 a = b;
 #! false
 t := TensorProduct( a, b );
-#! <An object in TerminalCategoryWithMultipleObjects>
+#! <An object in TerminalCategoryWithMultipleObjects( )>
 Display( t );
 #! TensorProductOnObjects
 a = t;
@@ -39,7 +39,7 @@ a = t;
 TensorProduct( a, a ) = t;
 #! true
 m := MorphismConstructor( a, "m", b );
-#! <A morphism in TerminalCategoryWithMultipleObjects>
+#! <A morphism in TerminalCategoryWithMultipleObjects( )>
 Display( m );
 #! a
 #! |
@@ -49,7 +49,7 @@ Display( m );
 IsWellDefined( m );
 #! true
 n := MorphismConstructor( a, "n", b );
-#! <A morphism in TerminalCategoryWithMultipleObjects>
+#! <A morphism in TerminalCategoryWithMultipleObjects( )>
 Display( n );
 #! a
 #! |
@@ -63,7 +63,7 @@ IsCongruentForMorphisms( m, n );
 m = n;
 #! true
 id := IdentityMorphism( a );
-#! <An identity morphism in TerminalCategoryWithMultipleObjects>
+#! <An identity morphism in TerminalCategoryWithMultipleObjects( )>
 Display( id );
 #! a
 #! |
@@ -75,7 +75,7 @@ m = id;
 id = MorphismConstructor( a, "xyz", a );
 #! true
 z := ZeroMorphism( a, a );
-#! <A zero morphism in TerminalCategoryWithMultipleObjects>
+#! <A zero morphism in TerminalCategoryWithMultipleObjects( )>
 Display( z );
 #! a
 #! |
