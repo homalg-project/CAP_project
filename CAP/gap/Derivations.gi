@@ -965,7 +965,7 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
     
         current_derivation := DerivationOfOperation( weight_list, string );
         
-        Print( Name( category ), " can already compute ", string, " with weight " , String( current_weight ), ".\n" );
+        Print( Name( category ), " can already compute ", TextAttr.b4, string, TextAttr.reset, " with weight " , String( current_weight ), ".\n" );
         
         if current_derivation = fail then
             
@@ -998,13 +998,13 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
             
         else
             
-            Print( "It was derived by ", DerivationName( current_derivation ), " using \n" );
+            Print( "It was derived by ", TextAttr.b3, DerivationName( current_derivation ), TextAttr.reset, " using \n" );
             
             used_ops_with_multiples := UsedOperationsWithMultiples( current_derivation );
             
             for i in used_ops_with_multiples do
                 
-                Print( "* ", i[ 1 ], " (", i[ 2 ], "x)" );
+                Print( "* ", TextAttr.b2, i[ 1 ], TextAttr.reset, " (", i[ 2 ], "x)" );
                 Print( " installed with weight ", String( CurrentOperationWeight( weight_list, i[ 1 ] ) ) );
                 Print( "\n" );
                 
@@ -1040,11 +1040,11 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
         
     else
         
-        Print( string, " is currently not installed for ", Name( category ), ".\n\n" );
+        Print( TextAttr.b4, string, TextAttr.reset, " is currently not installed for ", Name( category ), ".\n\n" );
         
     fi;
     
-    Print( "Possible derivations of ", string, " are:\n\n" );
+    Print( "Possible derivations are:\n\n" );
     
     possible_derivations := DerivationsOfOperation( CAP_INTERNAL_DERIVATION_GRAPH, string );
     
@@ -1056,21 +1056,21 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
             continue;
         elif IsFilter( category_filter ) and not Tester( category_filter )( category ) then
             Print( "If ", Name( category ), " would be ", JoinStringsWithSeparator( Filtered( NamesFilter( category_filter ), name -> not StartsWith( name, "Has" ) ), " and " ), " then\n" );
-            Print( string, " could be derived by\n" );
+            Print( TextAttr.b4, string, TextAttr.reset, " could be derived by\n" );
         elif IsFunction( category_filter ) and not category_filter( category ) then
             continue;
         else
-            Print( string, " can be derived by\n" );
+            Print( TextAttr.b4, string, TextAttr.reset, " can be derived by\n" );
         fi;
         
         used_ops_with_multiples := UsedOperationsWithMultiples( current_derivation );
         
         for i in used_ops_with_multiples do
             
-            Print( "* ", i[ 1 ], " (", i[ 2 ], "x)" );
-            
             if CurrentOperationWeight( weight_list, i[ 1 ] ) < infinity then
-                Print( ", (already installed with weight ", String( CurrentOperationWeight( weight_list, i[ 1 ] ) ),")" );
+                Print( "* ", TextAttr.b2, i[ 1 ], TextAttr.reset, " (", i[ 2 ], "x)", ", (already installed with weight ", String( CurrentOperationWeight( weight_list, i[ 1 ] ) ),")" );
+            else
+                Print( "* ", TextAttr.b1, i[ 1 ], TextAttr.reset, " (", i[ 2 ], "x)" );
             fi;
             
             Print( "\n" );
