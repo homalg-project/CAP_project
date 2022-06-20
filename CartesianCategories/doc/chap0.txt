@@ -6,17 +6,15 @@
         [1X Cartesian and cocartesian categories and various subdoctrines [101X
   
   
-                                   2022.06-01
+                                   2022.06-02
   
   
-                                  15 June 2022
+                                  21 June 2022
   
   
                                 Mohamed Barakat
   
                                 Fabian Zickgraf
-  
-                                  Mario Román
   
                                  Tom Kuhmichel
   
@@ -36,14 +34,6 @@
       Address:  [33X[0;14YWalter-Flex-Str. 3[133X
                 [33X[0;14Y57068 Siegen[133X
                 [33X[0;14YGermany[133X
-  
-  
-  Mario Román
-      Email:    [7Xmailto:mromang08@gmail.com[107X
-      Homepage: [7Xhttps://mroman42.github.io/[107X
-      Address:  [33X[0;14YMathematical Institute[133X
-                [33X[0;14YUniversity of Oxford[133X
-                [33X[0;14YOxford, United Kingdom[133X
   
   
   Tom Kuhmichel

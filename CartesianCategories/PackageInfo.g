@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "CartesianCategories",
 Subtitle := "Cartesian and cocartesian categories and various subdoctrines",
-Version := "2022.06-01",
-Date := "15/06/2022",
-Date := "15/06/2022",
+Version := "2022.06-02",
+Date := "21/06/2022",
+Date := "21/06/2022",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -43,20 +43,6 @@ Persons := [
                "Germany" ),
     Place := "Siegen",
     Institution := "University of Siegen",
-  ),
-  rec(
-    IsAuthor := true,
-    IsMaintainer := true,
-    FirstNames := "Mario",
-    LastName := "Román",
-    WWWHome := "https://mroman42.github.io/",
-    Email := "mromang08@gmail.com",
-    PostalAddress := Concatenation(
-               "Mathematical Institute\n",
-               "University of Oxford\n",
-               "Oxford, United Kingdom" ),
-    Place := "Oxford",
-    Institution := "University of Oxford",
   ),
   rec(
     IsAuthor := true,
