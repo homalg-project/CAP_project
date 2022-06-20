@@ -331,6 +331,45 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "IsomorphismFromTensorProductWithDualObjectToInternalHom using MorphismFromTensorProductToInternalHom" );
 
 ##
+AddDerivationToCAP( MorphismFromInternalHomToTensorProductWithGivenObjects,
+                    
+  function( cat, tensor_object, a, b, internal_hom )
+    local unit;
+    
+    # inverse of the derivation of MorphismFromTensorProductToInternalHomWithGivenObjects using TensorProductInternalHomCompatibilityMorphism
+    
+    #      a^v x b
+    #          ʌ
+    #          |
+    # Hom(a,1) x Hom(1,b)
+    #          ʌ
+    #          | CompatMorphism
+    #          |
+    # Hom(a x 1, 1 x b)
+    #          ʌ
+    #          | Hom(ρ_a, (λ_b)^-1)
+    #          |
+    #       Hom(a,b)
+
+    unit := TensorUnit( cat );
+    
+    return PostComposeList( cat, [
+             TensorProductOnMorphisms( cat,
+               IsomorphismFromInternalHomIntoTensorUnitToDualObject( cat, a ),
+               IsomorphismFromInternalHomToObject( cat, b ) ),
+                
+             TensorProductInternalHomCompatibilityMorphismInverse( cat,
+               [ a, unit, unit, b ] ),
+                
+             InternalHomOnMorphisms( cat,
+               RightUnitor( cat, a ),
+               LeftUnitorInverse( cat, b ) ),
+           ] );
+    
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
+      Description := "MorphismFromInternalHomToTensorProductWithGivenObjects using TensorProductInternalHomCompatibilityMorphismInverse" );
+
+##
 AddDerivationToCAP( CoevaluationForDualWithGivenTensorProduct,
                     
   function( cat, unit, a, tensor_object )
