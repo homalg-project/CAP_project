@@ -420,6 +420,59 @@ AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphismInverseWithGive
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects as the inverse of TensorProductInternalHomCompatibilityMorphismWithGivenObjects" );
 
+##
+AddDerivationToCAP( DualOnMorphismsWithGivenDuals,
+                    
+  function( cat, source, alpha, range )
+    local a, b, av, bv;
+    
+    # α: a → b
+    # source = b^v
+    # range = a^v
+    
+    a := Source( alpha );
+    b := Range( alpha );
+    av := range;
+    bv := source;
+    
+    # b^v
+    #   |
+    #   | right unitor inverse of b^v
+    #   v
+    # b^v ⊗ 1
+    #   |
+    #   | id_{b^v} ⊗ coev_a
+    #   v
+    # b^v ⊗ (a ⊗ a^v)
+    #   |
+    #   | id_{b^v} ⊗ (α ⊗ id_{a^v})
+    #   v
+    # b^v ⊗ (b ⊗ a^v)
+    #   |
+    #   | associator
+    #   v
+    # (b^v ⊗ b) ⊗ a^v
+    #   |
+    #   | ev_b ⊗ id_{a^v}
+    #   v
+    # 1 ⊗ a^v
+    #   |
+    #   | left unitor of a^v
+    #   v
+    # a^v
+    
+    return PreComposeList( cat, [
+        RightUnitorInverse( cat, bv ),
+        TensorProductOnMorphisms( cat, IdentityMorphism( cat, bv ), CoevaluationForDual( cat, a ) ),
+        TensorProductOnMorphisms( cat, IdentityMorphism( cat, bv ), TensorProductOnMorphisms( cat, alpha, IdentityMorphism( cat, av ) ) ),
+        AssociatorRightToLeft( cat, bv, b, av ),
+        TensorProductOnMorphisms( cat, EvaluationForDual( cat, b ), IdentityMorphism( cat, av ) ),
+        LeftUnitor( cat, av )
+    ] );
+    
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
+      Description := "DualOnMorphismsWithGivenDuals via coevaluation and evaluation for duals" );
+
 ####################################
 ## Final derived methods
 ####################################
