@@ -9,13 +9,13 @@ AddDerivationToCAP( TensorProductToInternalCoHomAdjunctionMap,
 
   function( cat, c, b, g )
     
-    # g: a -> c x b
+    # g: a → c ⊗ b
     #
     #    Cohom(a,b)
     #        |
     #        | Cohom(g, id_b)
     #        v
-    # Cohom(c x b, b)
+    # Cohom(c ⊗ b, b)
     #        |
     #        | coclcoev_cb
     #        v
@@ -33,17 +33,17 @@ AddDerivationToCAP( InternalCoHomToTensorProductAdjunctionMap,
 
   function( cat, a, b, f )
 
-    # f: Cohom(a,b) -> c
+    # f: Cohom(a,b) → c
     #
     #        a
     #        |
     #        | coclev_ab
     #        v
-    # Cohom(a,b) x b
+    # Cohom(a,b) ⊗ b
     #        |
-    #        | f x id_b
+    #        | f ⊗ id_b
     #        v
-    #      c x b
+    #      c ⊗ b
     
     return PreCompose( cat,
              CoclosedEvaluationMorphism( cat, a, b ),
@@ -57,9 +57,9 @@ AddDerivationToCAP( UniversalPropertyOfCoDual,
 
   function( cat, t, a, alpha )
 
-    # alpha: 1 -> t x a
+    # alpha: 1 → t ⊗ a
     #
-    # a_v -> ( Cohom(1,a) -> t ) = Adjoint( alpha )
+    # a_v → ( Cohom(1,a) → t ) = Adjoint( alpha )
     
     return PreCompose( cat,
              IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit( cat, a ),
@@ -78,14 +78,14 @@ AddDerivationToCAP( MorphismFromCoBidualWithGivenCoBidual,
     #    |
     #    | coclev_a
     #    v
-    # a_v x a
+    # a_v ⊗ a
     #    |
     #    | B_(a_v,a)
     #    v
-    #  a x a_v
+    #  a ⊗ a_v
     #
     #
-    # UniversalPropertyOfCoDual( 1 -> a x a_v) = ( a_v_v -> a )
+    # UniversalPropertyOfCoDual( 1 → a ⊗ a_v) = ( a_v_v → a )
 
     alpha := PreCompose( cat,
                   CoclosedEvaluationForCoDual( cat, a ),
@@ -106,11 +106,11 @@ AddDerivationToCAP( MorphismFromCoBidualWithGivenCoBidual,
     #          |
     #          | Cohom( coclev_(1,a), id_(a_v) )
     #          v
-    # Cohom(a_v x a, a_v)
+    # Cohom(a_v ⊗ a, a_v)
     #          |
     #          | Cohom( B_( a_v, a), id_(a_v) )
     #          v
-    # Cohom(a x a_v, a_v)
+    # Cohom(a ⊗ a_v, a_v)
     #          |
     #          | coclcoev_(a, a_v)
     #          v
@@ -142,7 +142,7 @@ AddDerivationToCAP( CoDualOnObjects,
 
   function( cat, a )
 
-    # Source( a_v -> Cohom(1,a) )
+    # Source( a_v → Cohom(1,a) )
     
     return Source( IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit( cat, a ) );
 
@@ -154,7 +154,7 @@ AddDerivationToCAP( CoDualOnObjects,
 
   function( cat, a )
 
-    # Range( Cohom(1,a) -> a_v )
+    # Range( Cohom(1,a) → a_v )
     
     return Range( IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject( cat, a ) );
 
@@ -167,7 +167,7 @@ AddDerivationToCAP( CoDualOnMorphismsWithGivenCoDuals,
   function( cat, s, alpha, r )
     local result_morphism;
 
-    # alpha: a->b
+    # alpha: a → b
     #
     #    b_v
     #     |
@@ -203,7 +203,7 @@ AddDerivationToCAP( CoclosedEvaluationForCoDualWithGivenTensorProduct,
 
     # s := 1
 
-    # Adjoint( Cohom(1,a) -> a_v ) = ( 1 -> a_v x a )
+    # Adjoint( Cohom(1,a) → a_v ) = ( 1 → a_v ⊗ a )
 
     return InternalCoHomToTensorProductAdjunctionMap( cat,
             s,
@@ -227,9 +227,9 @@ AddDerivationToCAP( CoLambdaIntroduction,
     #   |
     #   | (λ_b)^-1
     #   v
-    # 1 x b
+    # 1 ⊗ b
     #
-    # Adjoint( a -> 1 x b ) = ( Cohom(a,b) -> 1 )
+    # Adjoint( a → 1 ⊗ b ) = ( Cohom(a,b) → 1 )
 
     range := Range( alpha );
 
@@ -249,14 +249,14 @@ AddDerivationToCAP( CoLambdaElimination,
   function( cat, a, b, alpha )
     local result_morphism;
 
-    # alpha: Cohom(a,b) -> 1
-    # Adjoint( alpha ) = ( a -> 1 x b )
+    # alpha: Cohom(a,b) → 1
+    # Adjoint( alpha ) = ( a → 1 ⊗ b )
     #
     #   a
     #   |
     #   | Adjoint( alpha )
     #   v
-    # 1 x b
+    # 1 ⊗ b
     #   |
     #   | λ_b
     #   v
@@ -275,38 +275,38 @@ AddDerivationToCAP( InternalCoHomTensorProductCompatibilityMorphismWithGivenObje
   function( cat, source, list, range )
     local a1, a2, b1, b2, morphism, int_cohom_a1_b1, int_cohom_a2_b2, id_b2, tensor_product_on_objects_int_cohom_a1_b1_int_cohom_a2_b2;
 
-    #                   a1 x a2
+    #                   a1 ⊗ a2
     #                      |
-    #                      | id_a1 x coclev_(a2,b2)
+    #                      | id_a1 ⊗ coclev_(a2,b2)
     #                      v
-    #          a1 x (Cohom(a2,b2) x b2)
+    #          a1 ⊗ (Cohom(a2,b2) ⊗ b2)
     #                      |
     #                      | α_( a1, (Cohom(a2,b2), b2) )
     #                      v
-    #          (a1 x Cohom(a2,b2)) x b2
+    #          (a1 ⊗ Cohom(a2,b2)) ⊗ b2
     #                      |
-    #                      | ( coclev_(a1,b1) x id_Cohom(a2,b2) ) x id_b2
+    #                      | ( coclev_(a1,b1) ⊗ id_Cohom(a2,b2) ) ⊗ id_b2
     #                      v
-    # ((Cohom(a1,b1) x b1) x Cohom(a2,b2)) x b2
+    # ((Cohom(a1,b1) ⊗ b1) ⊗ Cohom(a2,b2)) ⊗ b2
     #                      |
-    #                      | α_( (Cohom(a1,b1), b1), Cohom(a2,b2) ) ) x id_b2
+    #                      | α_( (Cohom(a1,b1), b1), Cohom(a2,b2) ) ) ⊗ id_b2
     #                      v
-    #  (Cohom(a1,b1) x (b1 x Cohom(a2,b2))) x b2
+    #  (Cohom(a1,b1) ⊗ (b1 ⊗ Cohom(a2,b2))) ⊗ b2
     #                      |
-    #                      | ( id_Cohom(a1,b1) x B_( b1, Cohom(a2,b2) ) ) x id_b2
+    #                      | ( id_Cohom(a1,b1) ⊗ B_( b1, Cohom(a2,b2) ) ) ⊗ id_b2
     #                      v
-    #  (Cohom(a1,b1) x (Cohom(a2,b2) x b1)) x b2
+    #  (Cohom(a1,b1) ⊗ (Cohom(a2,b2) ⊗ b1)) ⊗ b2
     #                      |
-    #                      | α_( Cohom(a1,b1), (Cohom(a2,b2), b1) ) x id_b2
+    #                      | α_( Cohom(a1,b1), (Cohom(a2,b2), b1) ) ⊗ id_b2
     #                      v
-    #  ((Cohom(a1,b1) x Cohom(a2,b2)) x b1) x b2
+    #  ((Cohom(a1,b1) ⊗ Cohom(a2,b2)) ⊗ b1) ⊗ b2
     #                      |
-    #                      | α_( (Cohom(a1,b1) x Cohom(a2,b2), b1), b2 )
+    #                      | α_( (Cohom(a1,b1) ⊗ Cohom(a2,b2), b1), b2 )
     #                      v
-    #  (Cohom(a1,b1) x Cohom(a2,b2)) x (b1 x b2)
+    #  (Cohom(a1,b1) ⊗ Cohom(a2,b2)) ⊗ (b1 ⊗ b2)
     #
     #
-    # Adjoint[ a1 x a2 -> (Cohom(a1,b1) x Cohom(a2,b2)) x (b1 x b2) ] = [ Cohom(a1 x a2, b1 x b2) -> Cohom(a1,b1) x Cohom(a2,b2) ]
+    # Adjoint[ a1 ⊗ a2 → (Cohom(a1,b1) ⊗ Cohom(a2,b2)) ⊗ (b1 ⊗ b2) ] = [ Cohom(a1 ⊗ a2, b1 ⊗ b2) → Cohom(a1,b1) ⊗ Cohom(a2,b2) ]
     
     a1 := list[1];
     a2 := list[2];
@@ -368,21 +368,21 @@ AddDerivationToCAP( CoDualityTensorProductCompatibilityMorphismWithGivenObjects,
   function( cat, s, a, b, r )
     local morphism, unit, tensor_product_on_a_and_b;
 
-    #         (a x b)_v
+    #         (a ⊗ b)_v
     #            |
     #            V
-    #      Cohom(1, a x b)
+    #      Cohom(1, a ⊗ b)
     #            |
-    #            | Cohom((λ_1)^-1, id_(a x b))
+    #            | Cohom((λ_1)^-1, id_(a ⊗ b))
     #            V
-    #  Cohom(1 x 1, a x b)
+    #  Cohom(1 ⊗ 1, a ⊗ b)
     #            |
     #            | CompatMorphism(1,1,a,b)
     #            V
-    # Cohom(1,a) x Cohom(1,b)
+    # Cohom(1,a) ⊗ Cohom(1,b)
     #            |
     #            v
-    #        a_v x b_v
+    #        a_v ⊗ b_v
     
     unit := TensorUnit( cat );
     
@@ -417,7 +417,7 @@ AddDerivationToCAP( IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom,
     #         |
     #         | Cohom((ρ_a)^-1, id_1)
     #         v
-    # Cohom(a x 1, 1)
+    # Cohom(a ⊗ 1, 1)
     #         |
     #         | coclcoev_(a,1)
     #         v
@@ -441,9 +441,9 @@ AddDerivationToCAP( IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom,
   function( cat, a, internal_cohom )
     local unit;
 
-    # (ρ_a)^-1: a -> a x 1
+    # (ρ_a)^-1: a → a ⊗ 1
     #
-    # Adjoint( (ρ_a)^-1 ) = ( Cohom(a,1) -> a )
+    # Adjoint( (ρ_a)^-1 ) = ( Cohom(a,1) → a )
     
     unit := TensorUnit( cat );
     
@@ -461,7 +461,7 @@ end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
 #                     
 #   function( cat, a, internal_cohom )
 #
-#     # Inverse( a -> Cohom(a,1) )
+#     # Inverse( a → Cohom(a,1) )
 #     
 #     return InverseForMorphisms( cat, IsomorphismFromObjectToInternalCoHom( cat, a ) );
 #     
@@ -478,7 +478,7 @@ AddDerivationToCAP( IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom,
     #       |
     #       | coclev_(a,1)
     #       v
-    # Cohom(a,1) x 1
+    # Cohom(a,1) ⊗ 1
     #       |
     #       | ρ_Cohom(a,1)
     #       v
@@ -498,7 +498,7 @@ end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
 #                     
 #   function( cat, a, internal_cohom )
 #
-#     # Inverse( Cohom(a,1) -> a)
+#     # Inverse( Cohom(a,1) → a)
 #     
 #     return InverseForMorphisms( cat, IsomorphismFromInternalCoHomToObject( cat, a ) );
 #     
@@ -515,14 +515,14 @@ AddDerivationToCAP( MorphismFromInternalCoHomToTensorProductWithGivenObjects,
     #            |
     #            | Cohom((λ_a)^-1, ρ_b)
     #            v
-    # Cohom(1 x a, b x 1)
+    # Cohom(1 ⊗ a, b ⊗ 1)
     #            |
     #            | CompatMorphism
     #            v
-    # Cohom(1,b) x Cohom(a,1)
+    # Cohom(1,b) ⊗ Cohom(a,1)
     #            |
     #            v
-    #        b_v x a
+    #        b_v ⊗ a
     
     unit := TensorUnit( cat );
     
@@ -547,7 +547,7 @@ AddDerivationToCAP( CoclosedEvaluationMorphismWithGivenRange,
                   
   function( cat, a, b, tensor_object )
 
-    # Adjoint( id_Cohom(a,b): Cohom(a,b) -> Cohom(a,b) ) = ( a -> Cohom(a,b) x b )
+    # Adjoint( id_Cohom(a,b): Cohom(a,b) → Cohom(a,b) ) = ( a → Cohom(a,b) ⊗ b )
     
     return InternalCoHomToTensorProductAdjunctionMap( cat,
              a, b,
@@ -559,7 +559,7 @@ end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
 
 AddDerivationToCAP( CoclosedCoevaluationMorphismWithGivenSource,
 
-  # Adjoint( id_(a x b): a x b -> a x b ) = ( Cohom(a x b, b) -> a )
+  # Adjoint( id_(a ⊗ b): a ⊗ b → a ⊗ b ) = ( Cohom(a ⊗ b, b) → a )
                   
   function( cat, a, b, internal_cohom )
     
@@ -581,30 +581,30 @@ AddDerivationToCAP( MonoidalPreCoComposeMorphismWithGivenObjects,
     #           |
     #           | coclev_ab
     #           v
-    #    Cohom(a,b) x b
+    #    Cohom(a,b) ⊗ b
     #           |
     #           | B_( Cohom(a,b), b )
     #           v
-    #      b x Cohom(a,b)
+    #      b ⊗ Cohom(a,b)
     #           |
-    #           | coclev_bc x id_Cohom(a,b)
+    #           | coclev_bc ⊗ id_Cohom(a,b)
     #           v
-    # (Cohom(b,c) x c) x Cohom(a,b)
+    # (Cohom(b,c) ⊗ c) ⊗ Cohom(a,b)
     #           |
     #           | α_( ( Cohom(b,c), c ), Cohom(a,b) )
     #           v
-    # Cohom(b,c) x (c x Cohom(a,b))
+    # Cohom(b,c) ⊗ (c ⊗ Cohom(a,b))
     #           |
-    #           | id_Cohom(b,c) x B_( c, Cohom(a,b) )
+    #           | id_Cohom(b,c) ⊗ B_( c, Cohom(a,b) )
     #           v
-    # Cohom(b,c) x (Cohom(a,b) x c)
+    # Cohom(b,c) ⊗ (Cohom(a,b) ⊗ c)
     #           |
     #           | α_( Cohom(b,c), ( Cohom(a,b), c ) )
     #           v
-    # (Cohom(b,c) x Cohom(a,b)) x c
+    # (Cohom(b,c) ⊗ Cohom(a,b)) ⊗ c
     #
     #
-    # Adjoint( a -> (Cohom(b,c) x Cohom(a,b)) x c ) = ( Cohom(a,c) -> Cohom(b,c) x Cohom(a,b) )
+    # Adjoint( a → (Cohom(b,c) ⊗ Cohom(a,b)) ⊗ c ) = ( Cohom(a,c) → Cohom(b,c) ⊗ Cohom(a,b) )
     
     cohom_a_b := InternalCoHomOnObjects( cat, a, b );
     
@@ -646,18 +646,18 @@ AddDerivationToCAP( MonoidalPostCoComposeMorphismWithGivenObjects,
     #             |
     #             | coclev_ab
     #             v
-    #      Cohom(a,b) x b
+    #      Cohom(a,b) ⊗ b
     #             |
-    #             | id_Cohom(a,b) x coclev_bc
+    #             | id_Cohom(a,b) ⊗ coclev_bc
     #             v
-    #  Cohom(a,b) x (Cohom(b,c) x c)
+    #  Cohom(a,b) ⊗ (Cohom(b,c) ⊗ c)
     #             |
     #             | α_( Cohom(a,b), ( Cohom(b,c), c ) )
     #             v
-    # (Cohom(a,b) x Cohom(b,c)) x c
+    # (Cohom(a,b) ⊗ Cohom(b,c)) ⊗ c
     #
     #
-    # Adjoint( a -> (Cohom(a,b) x Cohom(b,c)) x c ) = ( Cohom(a,c) -> Cohom(a,b) x Cohom(b,c) )
+    # Adjoint( a → (Cohom(a,b) ⊗ Cohom(b,c)) ⊗ c ) = ( Cohom(a,c) → Cohom(a,b) ⊗ Cohom(b,c) )
     
     cohom_a_b := InternalCoHomOnObjects( cat, a, b );
     
@@ -692,11 +692,11 @@ AddDerivationToCAP( MonoidalPostCoComposeMorphismWithGivenObjects,
     #            |
     #            | PreCoCompose
     #            v
-    # Cohom(b,c) x Cohom(a,b)
+    # Cohom(b,c) ⊗ Cohom(a,b)
     #            |
     #            | B_( Cohom(b,c), Cohom(a,b) )
     #            v
-    # Cohom(a,b) x Cohom(b,c)
+    # Cohom(a,b) ⊗ Cohom(b,c)
     
     braiding := Braiding( cat, InternalCoHomOnObjects( cat, b, c ), InternalCoHomOnObjects( cat, a, b ) );
     
@@ -715,11 +715,11 @@ AddDerivationToCAP( MonoidalPreCoComposeMorphismWithGivenObjects,
     #            |
     #            | PostCoCompose
     #            v
-    # Cohom(a,b) x Cohom(b,c)
+    # Cohom(a,b) ⊗ Cohom(b,c)
     #            |
     #            | B_( Cohom(a,b), Cohom(b,c) )
     #            v
-    # Cohom(b,c) x Cohom(a,b)
+    # Cohom(b,c) ⊗ Cohom(a,b)
 
     braiding := Braiding( cat, InternalCoHomOnObjects( cat, a, b ), InternalCoHomOnObjects( cat, b, c ) );
     
@@ -734,22 +734,22 @@ AddDerivationToCAP( InternalCoHomTensorProductCompatibilityMorphismWithGivenObje
   function( cat, source, list, range )
     local a1, a2, b1, b2, morphism, int_cohom_a1_b1, int_cohom_a2_b2, id_b2, tensor_product_on_objects_int_cohom_a1_b1_int_cohom_a2_b2;
 
-    #           a1 x a2
+    #           a1 ⊗ a2
     #              |
-    #              | id_a1 x coclev_(a2,b2)
+    #              | id_a1 ⊗ coclev_(a2,b2)
     #              v
-    #    a1 x Cohom(a2,b2) x b2
+    #    a1 ⊗ Cohom(a2,b2) ⊗ b2
     #              |
-    #              | coclev_(a1,b1) x id_Cohom(a2,b2) x id_b2
+    #              | coclev_(a1,b1) ⊗ id_Cohom(a2,b2) ⊗ id_b2
     #              v
-    # Cohom(a1,b1) x b1 x Cohom(a2,b2) x b2
+    # Cohom(a1,b1) ⊗ b1 ⊗ Cohom(a2,b2) ⊗ b2
     #              |
-    #              | id_Cohom(a1,b1) x B_( b1, Cohom(a2,b2) )  x id_b2
+    #              | id_Cohom(a1,b1) ⊗ B_( b1, Cohom(a2,b2) )  ⊗ id_b2
     #              v
-    # Cohom(a1,b1) x Cohom(a2,b2) x b1 x b2
+    # Cohom(a1,b1) ⊗ Cohom(a2,b2) ⊗ b1 ⊗ b2
     #
     #
-    # Adjoint[ a1 x a2 -> Cohom(a1,b1) x Cohom(a2,b2) x b1 x b2 ] = [ Cohom(a1 x a2, b1 x b2) -> Cohom(a1,b1) x Cohom(a2,b2) ]
+    # Adjoint[ a1 ⊗ a2 → Cohom(a1,b1) ⊗ Cohom(a2,b2) ⊗ b1 ⊗ b2 ] = [ Cohom(a1 ⊗ a2, b1 ⊗ b2) → Cohom(a1,b1) ⊗ Cohom(a2,b2) ]
     
     a1 := list[1];
     a2 := list[2];
@@ -797,17 +797,17 @@ AddDerivationToCAP( CoDualityTensorProductCompatibilityMorphismWithGivenObjects,
   function( cat, source, a, b, range )
     local morphism, unit, tensor_product_on_a_and_b;
 
-    #         (a x b)_v
+    #         (a ⊗ b)_v
     #            |
     #            V
-    #      Cohom(1, a x b)
+    #      Cohom(1, a ⊗ b)
     #            |
     #            | CompatMorphism(1,1,a,b)
     #            V
-    # Cohom(1,a) x Cohom(1,b)
+    # Cohom(1,a) ⊗ Cohom(1,b)
     #            |
     #            v
-    #        a_v x b_v
+    #        a_v ⊗ b_v
     
     unit := TensorUnit( cat );
     
@@ -838,22 +838,22 @@ AddDerivationToCAP( MonoidalPreCoComposeMorphismWithGivenObjects,
     #            |
     #            | coclev_ab
     #            v
-    #      Cohom(a,b) x b
+    #      Cohom(a,b) ⊗ b
     #            |
     #            | B_( Cohom(a,b), b )
     #            v
-    #      b x Cohom(a,b)
+    #      b ⊗ Cohom(a,b)
     #            |
-    #            | coclev_bc x id_Cohom(a,b)
+    #            | coclev_bc ⊗ id_Cohom(a,b)
     #            v
-    # Cohom(b,c) x c x Cohom(a,b)
+    # Cohom(b,c) ⊗ c ⊗ Cohom(a,b)
     #            |
-    #            | id_Cohom(b,c) x B_( c, Cohom(a,b) )
+    #            | id_Cohom(b,c) ⊗ B_( c, Cohom(a,b) )
     #            v
-    # Cohom(b,c) x Cohom(a,b) x c
+    # Cohom(b,c) ⊗ Cohom(a,b) ⊗ c
     #
     #
-    # Adjoint( a -> (Cohom(b,c) x Cohom(a,b)) x c ) = ( Cohom(a,c) -> Cohom(b,c) x Cohom(a,b) )
+    # Adjoint( a → (Cohom(b,c) ⊗ Cohom(a,b)) ⊗ c ) = ( Cohom(a,c) → Cohom(b,c) ⊗ Cohom(a,b) )
     
     cohom_a_b := InternalCoHomOnObjects( cat, a, b );
     
@@ -891,14 +891,14 @@ AddDerivationToCAP( MonoidalPostCoComposeMorphismWithGivenObjects,
     #             |
     #             | coclev_ab
     #             v
-    #      Cohom(a,b) x b
+    #      Cohom(a,b) ⊗ b
     #             |
-    #             | id_Cohom(a,b) x coclev_bc
+    #             | id_Cohom(a,b) ⊗ coclev_bc
     #             v
-    #  Cohom(a,b) x (Cohom(b,c) x c)
+    #  Cohom(a,b) ⊗ (Cohom(b,c) ⊗ c)
     #
     #
-    # Adjoint( a -> (Cohom(a,b) x Cohom(b,c)) x c ) = ( Cohom(a,c) -> Cohom(a,b) x Cohom(b,c) )
+    # Adjoint( a → (Cohom(a,b) ⊗ Cohom(b,c)) ⊗ c ) = ( Cohom(a,c) → Cohom(a,b) ⊗ Cohom(b,c) )
     
     cohom_a_b := InternalCoHomOnObjects( cat, a, b );
     

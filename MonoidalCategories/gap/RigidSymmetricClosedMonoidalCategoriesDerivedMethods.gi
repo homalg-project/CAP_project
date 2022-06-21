@@ -9,7 +9,7 @@ AddDerivationToCAP( InternalHomOnObjects,
                   
   function( cat, a, b )
     
-    # Source( Hom(a,b) -> a^v x b )
+    # Source( Hom(a,b) → a^v ⊗ b )
 
     return Source( IsomorphismFromInternalHomToTensorProductWithDualObject( cat, a, b ) );
     
@@ -21,7 +21,7 @@ AddDerivationToCAP( InternalHomOnObjects,
                   
   function( cat, a, b )
 
-    # Range( a^v x b -> Hom(a,b) )
+    # Range( a^v ⊗ b → Hom(a,b) )
     
     return Range( IsomorphismFromTensorProductWithDualObjectToInternalHom( cat, a, b ) );
     
@@ -34,18 +34,18 @@ AddDerivationToCAP( InternalHomOnMorphismsWithGivenInternalHoms,
   function( cat, internal_hom_source, alpha, beta, internal_hom_range )
     local dual_alpha;
 
-    # alpha: a -> a'
-    # beta: b -> b'
+    # alpha: a → a'
+    # beta: b → b'
     #
     # Hom(a',b)
     #     |
     #     |
     #     v
-    # a'^v x b
+    # a'^v ⊗ b
     #     |
-    #     | Dual(alpha) x beta
+    #     | Dual(alpha) ⊗ beta
     #     v
-    # a^v x b'
+    # a^v ⊗ b'
     #     |
     #     |
     #     v
@@ -67,7 +67,7 @@ AddDerivationToCAP( MorphismFromBidualWithGivenBidual,
                   
   function( cat, a, bidual )
 
-    # Inverse( a -> (a^v)^v )
+    # Inverse( a → (a^v)^v )
     
     return InverseForMorphisms( cat, MorphismToBidualWithGivenBidual( cat, a, bidual ) );
     
@@ -79,7 +79,7 @@ AddDerivationToCAP( MorphismToBidualWithGivenBidual,
                   
   function( cat, a, bidual )
 
-    # Inverse( (a^v)^v -> a )
+    # Inverse( (a^v)^v → a )
     
     return InverseForMorphisms( cat, MorphismFromBidualWithGivenBidual( cat, a, bidual ) );
     
@@ -92,23 +92,23 @@ AddDerivationToCAP( EvaluationMorphismWithGivenSource,
   function( cat, a, b, internal_hom_tensored_a )
     local morphism;
 
-    # Hom(a,b) x a
+    # Hom(a,b) ⊗ a
     #      |
-    #      | Isomorphism x id_a
+    #      | Isomorphism ⊗ id_a
     #      v
-    # (a^v x b) x a
+    # (a^v ⊗ b) ⊗ a
     #      |
-    #      | B_( Dual(a), b ) x id_a
+    #      | B_( Dual(a), b ) ⊗ id_a
     #      v
-    # (b x a^v) x a
+    # (b ⊗ a^v) ⊗ a
     #      |
     #      | α_( ( b, a^v ), a )
     #      v
-    # b x (a^v x a)
+    # b ⊗ (a^v ⊗ a)
     #      |
-    #      | id_b x ev_a
+    #      | id_b ⊗ ev_a
     #      v
-    #    b x 1
+    #    b ⊗ 1
     #      |
     #      | ρ_b
     #      v
@@ -143,19 +143,19 @@ AddDerivationToCAP( EvaluationMorphismWithGivenSource,
   function( cat, a, b, internal_hom_tensored_a )
     local morphism;
 
-    # Hom(a,b) x a
+    # Hom(a,b) ⊗ a
     #      |
-    #      | Isomorphism x id_a
+    #      | Isomorphism ⊗ id_a
     #      v
-    # a^v x b x a
+    # a^v ⊗ b ⊗ a
     #      |
-    #      | B_( Dual(a), b ) x id_a
+    #      | B_( Dual(a), b ) ⊗ id_a
     #      v
-    # b x a^v x a
+    # b ⊗ a^v ⊗ a
     #      |
-    #      | id_b x ev_a
+    #      | id_b ⊗ ev_a
     #      v
-    #    b x 1
+    #    b ⊗ 1
     
     morphism := PreComposeList( cat, [
                   TensorProductOnMorphisms( cat, 
@@ -186,27 +186,27 @@ AddDerivationToCAP( CoevaluationMorphismWithGivenRange,
     #      |
     #      | (λ_a)^-1
     #      v
-    #    1 x a
+    #    1 ⊗ a
     #      |
-    #      | coev_b x id_a
+    #      | coev_b ⊗ id_a
     #      v
-    # (b x b^v) x a
+    # (b ⊗ b^v) ⊗ a
     #      |
-    #      | B_( b, b^v ) x id_a
+    #      | B_( b, b^v ) ⊗ id_a
     #      v
-    # (b^v x b) x a
+    # (b^v ⊗ b) ⊗ a
     #      |
     #      | α_( ( b^v, b ), a )
     #      v
-    # b^v x (b x a)
+    # b^v ⊗ (b ⊗ a)
     #      |
-    #      | id_(b^v) x B_( b, a )
+    #      | id_(b^v) ⊗ B_( b, a )
     #      v
-    # b^v x (a x b)
+    # b^v ⊗ (a ⊗ b)
     #      |
     #      | Isomorphism
     #      v
-    # Hom(b, a x b)
+    # Hom(b, a ⊗ b)
     
     dual_b := DualOnObjects( cat, b );
     
@@ -245,23 +245,23 @@ AddDerivationToCAP( CoevaluationMorphismWithGivenRange,
   function( cat, a, b, internal_hom )
     local morphism, dual_b, id_a;
 
-    # 1 x a
+    # 1 ⊗ a
     #   |
-    #   | coev_b x id_a
+    #   | coev_b ⊗ id_a
     #   v
-    # b x b^v x a
+    # b ⊗ b^v ⊗ a
     #   |
-    #   | B_( b, b^v ) x id_a
+    #   | B_( b, b^v ) ⊗ id_a
     #   v
-    # b^v x b x a
+    # b^v ⊗ b ⊗ a
     #   |
-    #   | id_(b^v) x B_( b, a )
+    #   | id_(b^v) ⊗ B_( b, a )
     #   v
-    # b^v x a x b
+    # b^v ⊗ a ⊗ b
     #   |
     #   | Isomorphism
     #   v
-    # Hom(b, a x b)
+    # Hom(b, a ⊗ b)
     
     dual_b := DualOnObjects( cat, b );
     
@@ -338,14 +338,14 @@ AddDerivationToCAP( MorphismFromInternalHomToTensorProductWithGivenObjects,
     
     # inverse of the derivation of MorphismFromTensorProductToInternalHomWithGivenObjects using TensorProductInternalHomCompatibilityMorphism
     
-    #      a^v x b
+    #      a^v ⊗ b
     #          ʌ
     #          |
-    # Hom(a,1) x Hom(1,b)
+    # Hom(a,1) ⊗ Hom(1,b)
     #          ʌ
     #          | CompatMorphism
     #          |
-    # Hom(a x 1, 1 x b)
+    # Hom(a ⊗ 1, 1 ⊗ b)
     #          ʌ
     #          | Hom(ρ_a, (λ_b)^-1)
     #          |
@@ -383,11 +383,11 @@ AddDerivationToCAP( CoevaluationForDualWithGivenTensorProduct,
     #    |
     #    | Isomorphism
     #    v
-    # a^v x a
+    # a^v ⊗ a
     #    |
     #    | B_( a^v, a )
     #    v
-    # a x a^v
+    # a ⊗ a^v
     
     morphism := IdentityMorphism( cat, a );
     
@@ -408,7 +408,7 @@ AddDerivationToCAP( TraceMap,
   function( cat, alpha )
     local result_morphism, a;
 
-    # alpha: a -> a
+    # alpha: a → a
     #
     #    1
     #    |
@@ -418,7 +418,7 @@ AddDerivationToCAP( TraceMap,
     #    |
     #    | Isomorphism
     #    v
-    # a^v x a
+    # a^v ⊗ a
     #    |
     #    | ev_a
     #    v
@@ -452,7 +452,7 @@ AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphismInverseWithGive
                     
   function( cat, source, list, range )
 
-    # Inverse( Hom(a,a') x Hom(b,b') -> Hom(a x b, a' x b') )
+    # Inverse( Hom(a,a') ⊗ Hom(b,b') → Hom(a ⊗ b, a' ⊗ b') )
     
     return InverseForMorphisms( cat, TensorProductInternalHomCompatibilityMorphismWithGivenObjects( cat, source, list, range ) );
     
