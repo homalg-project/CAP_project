@@ -115,22 +115,22 @@ InstallGlobalFunction( "RigidSymmetricClosedMonoidalCategoriesTest",
                 
             fi;
             
-            # Hom( a x c, b x d ) -> Hom( a, b ) x Hom( c, d )
+            # Hom( a ⊗ c, b ⊗ d ) → Hom( a, b ) ⊗ Hom( c, d )
             tensor_to_hom_compatibility_inverse_abcd := TensorProductInternalHomCompatibilityMorphismInverse( [ a, b, c, d ] );
             
-            # Hom( c x d, a x b ) -> Hom( c, a ) x Hom( d, b )
+            # Hom( c ⊗ d, a ⊗ b ) → Hom( c, a ) ⊗ Hom( d, b )
             tensor_to_hom_compatibility_inverse_cadb := TensorProductInternalHomCompatibilityMorphismInverse( [ c, a, d, b ] );
             
-            # Cohom( a, c ) x Cohom( b, d ) -> Cohom( a x b, c x d )
+            # Cohom( a, c ) ⊗ Cohom( b, d ) → Cohom( a ⊗ b, c ⊗ d )
             cohom_to_tensor_compatibility_inverse_abcd_op := InternalCoHomTensorProductCompatibilityMorphismInverse( [ a_op, b_op, c_op, d_op ] );
             
-            # Cohom( b, a ) x Cohom( d, c ) -> Cohom( b x d, a x c )
+            # Cohom( b, a ) ⊗ Cohom( d, c ) → Cohom( b ⊗ d, a ⊗ c )
             cohom_to_tensor_compatibility_inverse_bdac_op := InternalCoHomTensorProductCompatibilityMorphismInverse( [ b_op, d_op, a_op, c_op ] );
             
-            # Cohom( a, c ) x Cohom( b, d ) -> Cohom( a x b, c x d )  ==  op( Hom( c x d, a x b ) -> Hom( c, a ) x Hom( d, b ) )
+            # Cohom( a, c ) ⊗ Cohom( b, d ) → Cohom( a ⊗ b, c ⊗ d )  ==  op( Hom( c ⊗ d, a ⊗ b ) → Hom( c, a ) ⊗ Hom( d, b ) )
             Assert( 0, IsCongruentForMorphisms( cohom_to_tensor_compatibility_inverse_abcd_op, Opposite( tensor_to_hom_compatibility_inverse_cadb ) ) );
             
-            # Cohom( b, a ) x Cohom( d, c ) -> Cohom( b x d, a x c )  ==  op( Hom( a x c, b x d ) -> Hom( a, b ) x Hom( c, d ) )
+            # Cohom( b, a ) ⊗ Cohom( d, c ) → Cohom( b ⊗ d, a ⊗ c )  ==  op( Hom( a ⊗ c, b ⊗ d ) → Hom( a, b ) ⊗ Hom( c, d ) )
             Assert( 0, IsCongruentForMorphisms( cohom_to_tensor_compatibility_inverse_bdac_op, Opposite( tensor_to_hom_compatibility_inverse_abcd ) ) );
             
         fi;

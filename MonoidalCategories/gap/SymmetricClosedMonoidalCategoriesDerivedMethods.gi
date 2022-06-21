@@ -9,13 +9,13 @@ AddDerivationToCAP( TensorProductToInternalHomAdjunctionMap,
                     
   function( cat, a, b, f )
 
-    # f: a x b -> c
+    # f: a ⊗ b → c
     #
     #      a
     #      |
     #      | coev_ab
     #      v
-    # Hom(b,a x b)
+    # Hom(b,a ⊗ b)
     #      |
     #      | Hom(id_b, f)
     #      v
@@ -33,13 +33,13 @@ AddDerivationToCAP( InternalHomToTensorProductAdjunctionMap,
                     
   function( cat, b, c, g )
 
-    # g: a -> Hom(b,c)
+    # g: a → Hom(b,c)
     #
-    #    a x b
+    #    a ⊗ b
     #      |
-    #      | g x id_b
+    #      | g ⊗ id_b
     #      v
-    # Hom(b,c) x b
+    # Hom(b,c) ⊗ b
     #      |
     #      | ev_bc
     #      v
@@ -57,9 +57,9 @@ AddDerivationToCAP( UniversalPropertyOfDual,
                     
   function( cat, t, a, alpha )
 
-    # alpha: t x a -> 1
+    # alpha: t ⊗ a → 1
     #
-    # Adjoint( alpha ) = ( t -> Hom(a,1) ) -> a^v
+    # Adjoint( alpha ) = ( t → Hom(a,1) ) → a^v
     
     return PreCompose( cat,
              TensorProductToInternalHomAdjunctionMap( cat, t, a, alpha ),
@@ -74,17 +74,17 @@ AddDerivationToCAP( MorphismToBidualWithGivenBidual,
   function( cat, a, avv )
     local alpha;
 
-    #    a x a^v
+    #    a ⊗ a^v
     #      |
     #      | B_(a,a^v)
     #      v
-    #  a^v x a
+    #  a^v ⊗ a
     #      |
     #      | ev_a
     #      v
     #      1
     #
-    # UniversalProperty( a x a^v -> 1 ) = ( a -> a^v^v)
+    # UniversalProperty( a ⊗ a^v → 1 ) = ( a → a^v^v)
 
     alpha := PreCompose( cat, Braiding( cat, a, DualOnObjects( cat, a ) ),
                             EvaluationForDual( cat, a ) );
@@ -104,11 +104,11 @@ AddDerivationToCAP( MorphismToBidualWithGivenBidual,
     #        |
     #        | coev_(a,a^v)
     #        v
-    #  Hom(av, a x a^v)
+    #  Hom(av, a ⊗ a^v)
     #        |
     #        | Hom(id_av, B_(a,a^v))
     #        v
-    # Hom(av, a^v x a)
+    # Hom(av, a^v ⊗ a)
     #        |
     #        | Hom(id_(a^v), ev_(a,1))
     #        v
@@ -140,7 +140,7 @@ AddDerivationToCAP( DualOnObjects,
                   
   function( cat, a )
 
-    # Source( a^v -> Hom(a,1) )
+    # Source( a^v → Hom(a,1) )
     
     return Source( IsomorphismFromDualObjectToInternalHomIntoTensorUnit( cat, a ) );
     
@@ -152,7 +152,7 @@ AddDerivationToCAP( DualOnObjects,
                   
   function( cat, a )
 
-    # Range( Hom(a,1) -> a^v )
+    # Range( Hom(a,1) → a^v )
     
     return Range( IsomorphismFromInternalHomIntoTensorUnitToDualObject( cat, a ) );
     
@@ -164,7 +164,7 @@ AddDerivationToCAP( DualOnMorphismsWithGivenDuals,
                   
   function( cat, s, alpha, r )
 
-    # alpha: a->b
+    # alpha: a → b
     #
     #   b^v
     #    |
@@ -198,7 +198,7 @@ AddDerivationToCAP( EvaluationForDualWithGivenTensorProduct,
 
     # r := 1
     #
-    # Adjoint( a^v -> Hom(a,1) ) = ( a^v x a -> 1 )
+    # Adjoint( a^v → Hom(a,1) ) = ( a^v ⊗ a → 1 )
     
     return InternalHomToTensorProductAdjunctionMap( cat, a, r,
                                                     IsomorphismFromDualObjectToInternalHomIntoTensorUnit( cat, a ) );
@@ -212,7 +212,7 @@ AddDerivationToCAP( LambdaIntroduction,
   function( cat, alpha )
     local result_morphism, source;
 
-    # 1 x a
+    # 1 ⊗ a
     #   |
     #   | λ_a
     #   v
@@ -222,7 +222,7 @@ AddDerivationToCAP( LambdaIntroduction,
     #   v
     #   b
     #
-    # Adjoint( 1 x a -> b) = ( 1 -> Hom(a,b) )
+    # Adjoint( 1 ⊗ a → b) = ( 1 → Hom(a,b) )
     
     source := Source( alpha );
     
@@ -239,14 +239,14 @@ AddDerivationToCAP( LambdaElimination,
   function( cat, a, b, alpha )
     local result_morphism;
 
-    # alpha: 1 -> Hom(a,b)
-    # Adjoint( alpha ) = ( 1 x a -> b)
+    # alpha: 1 → Hom(a,b)
+    # Adjoint( alpha ) = ( 1 ⊗ a → b)
     #
     #   a
     #   |
     #   | (λ_a)^-1
     #   v
-    # 1 x a
+    # 1 ⊗ a
     #   |
     #   | Adjoint( alpha)
     #   v
@@ -265,38 +265,38 @@ AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphismWithGivenObject
   function( cat, source, list, range )
     local a1, b1, a2, b2, morphism, int_hom_a1_b1, int_hom_a2_b2, id_a2, tensor_product_on_objects_int_hom_a1_b1_int_hom_a2_b2;
     
-    # (Hom(a1,b1) x Hom(a2,b2)) x (a1 x a2)
+    # (Hom(a1,b1) ⊗ Hom(a2,b2)) ⊗ (a1 ⊗ a2)
     #                  |
-    #                  | α_( Hom(a1,b1) x Hom(a2,b2), (a1, a2) )
+    #                  | α_( Hom(a1,b1) ⊗ Hom(a2,b2), (a1, a2) )
     #                  v
-    # ((Hom(a1,b1) x Hom(a2,b2)) x a1) x a2
+    # ((Hom(a1,b1) ⊗ Hom(a2,b2)) ⊗ a1) ⊗ a2
     #                  |
-    #                  | α_( ( Hom(a1,b1), Hom(a2,b2) ), a1 ) x id_a2
+    #                  | α_( ( Hom(a1,b1), Hom(a2,b2) ), a1 ) ⊗ id_a2
     #                  v
-    # (Hom(a1,b1) x (Hom(a2,b2) x a1)) x a2
+    # (Hom(a1,b1) ⊗ (Hom(a2,b2) ⊗ a1)) ⊗ a2
     #                  |
-    #                  | ( id_Hom(a1,b1) x B_( Hom(a2,b2), a1 ) ) x id_a2
+    #                  | ( id_Hom(a1,b1) ⊗ B_( Hom(a2,b2), a1 ) ) ⊗ id_a2
     #                  v
-    # (Hom(a1,b1) x (a1 x Hom(a2,b2))) x a2
+    # (Hom(a1,b1) ⊗ (a1 ⊗ Hom(a2,b2))) ⊗ a2
     #                  |
-    #                  | α_( Hom(a1,b1), ( a1, Hom(a2,b2) ) ) x id_a2
+    #                  | α_( Hom(a1,b1), ( a1, Hom(a2,b2) ) ) ⊗ id_a2
     #                  v
-    # ((Hom(a1,b1) x a1) x Hom(a2,b2)) x a2
+    # ((Hom(a1,b1) ⊗ a1) ⊗ Hom(a2,b2)) ⊗ a2
     #                  |
-    #                  | ( ev_(a1,b1) x id_Hom(a2,b2) ) x id_a2
+    #                  | ( ev_(a1,b1) ⊗ id_Hom(a2,b2) ) ⊗ id_a2
     #                  v
-    #       (b1 x Hom(a2,b2)) x a2
+    #       (b1 ⊗ Hom(a2,b2)) ⊗ a2
     #                  |
     #                  | α_( ( b1, Hom(a2,b2) ), a2 )
     #                  v
-    #       b1 x (Hom(a2,b2) x a2)
+    #       b1 ⊗ (Hom(a2,b2) ⊗ a2)
     #                  |
-    #                  | id_b1 x ev_(a2,b2)
+    #                  | id_b1 ⊗ ev_(a2,b2)
     #                  v
-    #               b1 x b2
+    #               b1 ⊗ b2
     #
     #
-    # Adjoint[ (Hom(a1,b1) x Hom(a2,b2)) x (a1 x a2) -> b1 x b2 ] = [ Hom(a1,b1) x Hom(a2,b2) -> Hom(a1 x a2, b1 x b2) ]
+    # Adjoint[ (Hom(a1,b1) ⊗ Hom(a2,b2)) ⊗ (a1 ⊗ a2) → b1 ⊗ b2 ] = [ Hom(a1,b1) ⊗ Hom(a2,b2) → Hom(a1 ⊗ a2, b1 ⊗ b2) ]
 
     a1 := list[1];
     b1 := list[2];
@@ -358,21 +358,21 @@ AddDerivationToCAP( TensorProductDualityCompatibilityMorphismWithGivenObjects,
   function( cat, s, a, b, r )
     local morphism, unit, tensor_product_on_a_and_b;
 
-    #      a^v x b^v
+    #      a^v ⊗ b^v
     #          |
     #          v
-    # Hom(a,1) x Hom(b,1)
+    # Hom(a,1) ⊗ Hom(b,1)
     #          |
     #          | CompatMorphism(a,1,b,1)
     #          V
-    #  Hom(a x b, 1 x 1)
+    #  Hom(a ⊗ b, 1 ⊗ 1)
     #          |
-    #          | Hom(id_(a x b), λ_1)
+    #          | Hom(id_(a ⊗ b), λ_1)
     #          V
-    #    Hom(a x b, 1)
+    #    Hom(a ⊗ b, 1)
     #          |
     #          V
-    #       (a x b)^v
+    #       (a ⊗ b)^v
 
     
     unit := TensorUnit( cat );
@@ -408,7 +408,7 @@ AddDerivationToCAP( IsomorphismFromObjectToInternalHomWithGivenInternalHom,
     #       |
     #       | coev_(a,1)
     #       v
-    # Hom(1, a x 1)
+    # Hom(1, a ⊗ 1)
     #       |
     #       | Hom(id_1, ρ_a)
     #       v
@@ -431,9 +431,9 @@ AddDerivationToCAP( IsomorphismFromObjectToInternalHomWithGivenInternalHom,
   function( cat, a, internal_hom )
     local unit;
 
-    # ρ_a: a x 1 -> a
+    # ρ_a: a ⊗ 1 → a
     #
-    # Adjoint( ρ_a ) = ( a -> Hom(1,a) )
+    # Adjoint( ρ_a ) = ( a → Hom(1,a) )
     
     unit := TensorUnit( cat );
     
@@ -451,7 +451,7 @@ end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
 #                     
 #   function( cat, a, internal_hom )
 #
-#     # Inverse( a -> Hom(1,a) )
+#     # Inverse( a → Hom(1,a) )
 #     
 #     return InverseForMorphisms( cat, IsomorphismFromObjectToInternalHom( cat, a ) );
 #     
@@ -468,7 +468,7 @@ AddDerivationToCAP( IsomorphismFromInternalHomToObjectWithGivenInternalHom,
     #      |
     #      | ( ρ_Hom(1,a) )^-1
     #      v
-    # Hom(1,a) x 1
+    # Hom(1,a) ⊗ 1
     #      |
     #      | ev_(1,a)
     #      v
@@ -488,7 +488,7 @@ end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
 #                     
 #   function( cat, object, internal_hom )
 #
-#     # Inverse( a -> Hom(1,a))
+#     # Inverse( a → Hom(1,a))
 #     
 #     return InverseForMorphisms( cat, IsomorphismFromInternalHomToObject( cat, object ) );
 #     
@@ -501,14 +501,14 @@ AddDerivationToCAP( MorphismFromTensorProductToInternalHomWithGivenObjects,
   function( cat, tensor_object, a, b, internal_hom )
     local unit;
 
-    #      a^v x b
+    #      a^v ⊗ b
     #          |
     #          v
-    # Hom(a,1) x Hom(1,b)
+    # Hom(a,1) ⊗ Hom(1,b)
     #          |
     #          | CompatMorphism
     #          v
-    # Hom(a x 1, 1 x b)
+    # Hom(a ⊗ 1, 1 ⊗ b)
     #          |
     #          | Hom((ρ_a)^-1, λ_b)
     #          v
@@ -537,7 +537,7 @@ AddDerivationToCAP( EvaluationMorphismWithGivenSource,
                   
   function( cat, a, b, tensor_object )
 
-    # Adjoint( id_Hom(a,b): Hom(a,b) -> Hom(a,b) ) = ( Hom(a,b) x a -> b )
+    # Adjoint( id_Hom(a,b): Hom(a,b) → Hom(a,b) ) = ( Hom(a,b) ⊗ a → b )
     
     return InternalHomToTensorProductAdjunctionMap( cat,
              a, b,
@@ -551,7 +551,7 @@ AddDerivationToCAP( CoevaluationMorphismWithGivenRange,
                   
   function( cat, a, b, internal_hom )
     
-    # Adjoint( id_(a x b): a x b -> a x b ) = ( a -> Hom(b, a x b) )
+    # Adjoint( id_(a ⊗ b): a ⊗ b → a ⊗ b ) = ( a → Hom(b, a ⊗ b) )
 
     return TensorProductToInternalHomAdjunctionMap( cat,
              a, b,
@@ -566,34 +566,34 @@ AddDerivationToCAP( MonoidalPreComposeMorphismWithGivenObjects,
   function( cat, source, a, b, c, range )
     local hom_a_b, hom_b_c, morphism;
 
-    # (Hom(a,b) x Hom(b,c)) x a
+    # (Hom(a,b) ⊗ Hom(b,c)) ⊗ a
     #           |
     #           | α_( ( Hom(a,b), Hom(b,c) ), a)
     #           v
-    # Hom(a,b) x (Hom(b,c) x a)
+    # Hom(a,b) ⊗ (Hom(b,c) ⊗ a)
     #           |
-    #           | id_Hom(a,b) x B_( Hom(b,c), a )
+    #           | id_Hom(a,b) ⊗ B_( Hom(b,c), a )
     #           v
-    # Hom(a,b) x (a x Hom(b,c))
+    # Hom(a,b) ⊗ (a ⊗ Hom(b,c))
     #           |
     #           | α_( Hom(a,b), ( a, Hom(b,c) ) )
     #           v
-    # (Hom(a,b) x a) x Hom(b,c)
+    # (Hom(a,b) ⊗ a) ⊗ Hom(b,c)
     #           |
-    #           | ev_ab x id_Hom(b,c)
+    #           | ev_ab ⊗ id_Hom(b,c)
     #           v
-    #      b x Hom(b,c)
+    #      b ⊗ Hom(b,c)
     #           |
     #           | B_( b, Hom(b,c) )
     #           v
-    #     Hom(b,c) x b
+    #     Hom(b,c) ⊗ b
     #           |
     #           | ev_bc
     #           v
     #           c
     #
     #
-    # Adjoint(  (Hom(a,b) x Hom(b,c)) x a -> c ) = ( Hom(a,b) x Hom(b,c) -> Hom(a,c) )
+    # Adjoint(  (Hom(a,b) ⊗ Hom(b,c)) ⊗ a → c ) = ( Hom(a,b) ⊗ Hom(b,c) → Hom(a,c) )
 
     hom_a_b := InternalHomOnObjects( cat, a, b );
     
@@ -631,22 +631,22 @@ AddDerivationToCAP( MonoidalPostComposeMorphismWithGivenObjects,
   function( cat, source, a, b, c, range )
     local hom_a_b, hom_b_c, morphism;
 
-    # (Hom(b,c) x Hom(a,b)) x a
+    # (Hom(b,c) ⊗ Hom(a,b)) ⊗ a
     #            |
     #            | α_( ( Hom(b,c), Hom(a,b) ), c )
     #            v
-    # Hom(b,c) x (Hom(a,b) x a)
+    # Hom(b,c) ⊗ (Hom(a,b) ⊗ a)
     #            |
-    #            | id_Hom(b,c) x ev_ab
+    #            | id_Hom(b,c) ⊗ ev_ab
     #            v
-    #      Hom(b,c) x b
+    #      Hom(b,c) ⊗ b
     #            |
     #            | ev_bc
     #            v
     #            c
     #
     #
-    # Adjoint( (Hom(b,c) x Hom(a,b)) x a -> c ) = ( Hom(b,c) x Hom(a,b) -> Hom(a,c) )
+    # Adjoint( (Hom(b,c) ⊗ Hom(a,b)) ⊗ a → c ) = ( Hom(b,c) ⊗ Hom(a,b) → Hom(a,c) )
     
     hom_a_b := InternalHomOnObjects( cat, a, b );
     
@@ -676,11 +676,11 @@ AddDerivationToCAP( MonoidalPostComposeMorphismWithGivenObjects,
   function( cat, source, a, b, c, range )
     local braiding;
 
-    # Hom(b,c) x Hom(a,b)
+    # Hom(b,c) ⊗ Hom(a,b)
     #          |
     #          | B_( Hom(b,c), Hom(a,b) )
     #          v
-    # Hom(a,b) x Hom(b,c)
+    # Hom(a,b) ⊗ Hom(b,c)
     #          |
     #          | PreCompose
     #          v
@@ -699,11 +699,11 @@ AddDerivationToCAP( MonoidalPreComposeMorphismWithGivenObjects,
   function( cat, source, a, b, c, range )
     local braiding;
 
-    # Hom(a,b) x Hom(b,c)
+    # Hom(a,b) ⊗ Hom(b,c)
     #          |
     #          | B_( Hom(a,b), Hom(b,c) )
     #          v
-    # Hom(b,c) x Hom(a,b)
+    # Hom(b,c) ⊗ Hom(a,b)
     #          |
     #          | PostCompose
     #          v
@@ -722,22 +722,22 @@ AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphismWithGivenObject
   function( cat, source, list, range )
     local a1, b1, a2, b2, morphism, int_hom_a1_b1, int_hom_a2_b2, id_a2, tensor_product_on_objects_int_hom_a1_b1_int_hom_a2_b2;
 
-    # Hom(a1,b1) x Hom(a2,b2) x a1 x a2
+    # Hom(a1,b1) ⊗ Hom(a2,b2) ⊗ a1 ⊗ a2
     #                 |
-    #                 | id_Hom(a1,b1) x B_( Hom(a2,b2), a1 ) x id_a2
+    #                 | id_Hom(a1,b1) ⊗ B_( Hom(a2,b2), a1 ) ⊗ id_a2
     #                 v
-    # Hom(a1,b1) x a1 x Hom(a2,b2) x a2
+    # Hom(a1,b1) ⊗ a1 ⊗ Hom(a2,b2) ⊗ a2
     #                 |
-    #                 | ev_(a1,b1) x id_Hom(a2,b2) x id_a2
+    #                 | ev_(a1,b1) ⊗ id_Hom(a2,b2) ⊗ id_a2
     #                 v
-    #       b1 x Hom(a2,b2) x a2
+    #       b1 ⊗ Hom(a2,b2) ⊗ a2
     #                 |
-    #                 | id_b1 x ev_(a2,b2)
+    #                 | id_b1 ⊗ ev_(a2,b2)
     #                 v
-    #              b1 x b2
+    #              b1 ⊗ b2
     #
     #
-    # Adjoint[ Hom(a1,b1) x Hom(a2,b2) x a1 x a2 -> b1 x b2 ] = [ Hom(a1,b1) x Hom(a2,b2) -> Hom(a1 x a2, b1 x b2) ]
+    # Adjoint[ Hom(a1,b1) ⊗ Hom(a2,b2) ⊗ a1 ⊗ a2 → b1 ⊗ b2 ] = [ Hom(a1,b1) ⊗ Hom(a2,b2) → Hom(a1 ⊗ a2, b1 ⊗ b2) ]
     
     a1 := list[1];
     b1 := list[2];
@@ -785,17 +785,17 @@ AddDerivationToCAP( TensorProductDualityCompatibilityMorphismWithGivenObjects,
   function( cat, source, a, b, range )
     local morphism, unit, tensor_product_on_a_and_b;
 
-    #      a^v x b^v
+    #      a^v ⊗ b^v
     #          |
     #          v
-    # Hom(a,1) x Hom(b,1)
+    # Hom(a,1) ⊗ Hom(b,1)
     #          |
     #          | CompatMorphism(a,1,b,1)
     #          V
-    #  Hom(a x b, 1)
+    #  Hom(a ⊗ b, 1)
     #          |
     #          V
-    #       (a x b)^v
+    #       (a ⊗ b)^v
     
     unit := TensorUnit( cat );
     
@@ -822,26 +822,26 @@ AddDerivationToCAP( MonoidalPreComposeMorphismWithGivenObjects,
   function( cat, source, a, b, c, range )
     local hom_a_b, hom_b_c, morphism;
 
-    # Hom(a,b) x Hom(b,c) x a
+    # Hom(a,b) ⊗ Hom(b,c) ⊗ a
     #          |
-    #          | id_Hom(a,b) x B_( Hom(b,c), a )
+    #          | id_Hom(a,b) ⊗ B_( Hom(b,c), a )
     #          v
-    # Hom(a,b) x a x Hom(b,c)
+    # Hom(a,b) ⊗ a ⊗ Hom(b,c)
     #          |
-    #          | ev_ab x id_Hom(b,c)
+    #          | ev_ab ⊗ id_Hom(b,c)
     #          v
-    #     b x Hom(b,c)
+    #     b ⊗ Hom(b,c)
     #          |
     #          | B_( b, Hom(b,c) )
     #          v
-    #     Hom(b,c) x b
+    #     Hom(b,c) ⊗ b
     #          |
     #          | ev_bc
     #          v
     #          c
     #
     #
-    # Adjoint(  (Hom(a,b) x Hom(b,c)) x a -> c ) = ( Hom(a,b) x Hom(b,c) -> Hom(a,c) )
+    # Adjoint(  (Hom(a,b) ⊗ Hom(b,c)) ⊗ a → c ) = ( Hom(a,b) ⊗ Hom(b,c) → Hom(a,c) )
     
     hom_a_b := InternalHomOnObjects( cat, a, b );
     
@@ -875,18 +875,18 @@ AddDerivationToCAP( MonoidalPostComposeMorphismWithGivenObjects,
   function( cat, source, a, b, c, range )
     local hom_a_b, hom_b_c, morphism;
 
-    # Hom(b,c) x Hom(a,b) x a
+    # Hom(b,c) ⊗ Hom(a,b) ⊗ a
     #            |
-    #            | id_Hom(b,c) x ev_ab
+    #            | id_Hom(b,c) ⊗ ev_ab
     #            v
-    #      Hom(b,c) x b
+    #      Hom(b,c) ⊗ b
     #            |
     #            | ev_bc
     #            v
     #            c
     #
     #
-    # Adjoint( Hom(b,c) x Hom(a,b) x a -> c ) = ( Hom(b,c) x Hom(a,b) -> Hom(a,c) )
+    # Adjoint( Hom(b,c) ⊗ Hom(a,b) ⊗ a → c ) = ( Hom(b,c) ⊗ Hom(a,b) → Hom(a,c) )
     
     hom_a_b := InternalHomOnObjects( cat, a, b );
     

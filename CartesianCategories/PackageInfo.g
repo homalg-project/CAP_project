@@ -102,7 +102,7 @@ Dependencies := rec(
                 [ "CAP", ">= 2022.03-06" ],
                 ],
   SuggestedOtherPackages := [
-                [ "MonoidalCategories", ">= 2022.06-01" ],
+                [ "MonoidalCategories", ">= 2022.06-06" ],
                 ],
   ExternalConditions := [ ],
 ),
