@@ -12,13 +12,13 @@ AddDerivationToCAP( DirectProductToExponentialAdjunctionMap,
                     
   function( cat, a, b, f )
 
-    # f: a x b -> c
+    # f: a × b → c
     #
     #      a
     #      |
     #      | coev_ab
     #      v
-    # Exp(b,a x b)
+    # Exp(b,a × b)
     #      |
     #      | Exp(id_b, f)
     #      v
@@ -36,13 +36,13 @@ AddDerivationToCAP( ExponentialToDirectProductAdjunctionMap,
                     
   function( cat, b, c, g )
 
-    # g: a -> Exp(b,c)
+    # g: a → Exp(b,c)
     #
-    #    a x b
+    #    a × b
     #      |
-    #      | g x id_b
+    #      | g × id_b
     #      v
-    # Exp(b,c) x b
+    # Exp(b,c) × b
     #      |
     #      | ev_bc
     #      v
@@ -60,9 +60,9 @@ AddDerivationToCAP( UniversalPropertyOfCartesianDual,
                     
   function( cat, t, a, alpha )
 
-    # alpha: t x a -> 1
+    # alpha: t × a → 1
     #
-    # Adjoint( alpha ) = ( t -> Exp(a,1) ) -> a^v
+    # Adjoint( alpha ) = ( t → Exp(a,1) ) → a^v
     
     return PreCompose( cat,
              DirectProductToExponentialAdjunctionMap( cat, t, a, alpha ),
@@ -77,17 +77,17 @@ AddDerivationToCAP( MorphismToCartesianBidualWithGivenCartesianBidual,
   function( cat, a, avv )
     local alpha;
 
-    #    a x a^v
+    #    a × a^v
     #      |
     #      | B_(a,a^v)
     #      v
-    #  a^v x a
+    #  a^v × a
     #      |
     #      | ev_a
     #      v
     #      1
     #
-    # UniversalProperty( a x a^v -> 1 ) = ( a -> a^v^v)
+    # UniversalProperty( a × a^v → 1 ) = ( a → a^v^v)
 
     alpha := PreCompose( cat, CartesianBraiding( cat, a, CartesianDualOnObjects( cat, a ) ),
                             CartesianEvaluationForCartesianDual( cat, a ) );
@@ -107,11 +107,11 @@ AddDerivationToCAP( MorphismToCartesianBidualWithGivenCartesianBidual,
     #        |
     #        | coev_(a,a^v)
     #        v
-    #  Exp(av, a x a^v)
+    #  Exp(av, a × a^v)
     #        |
     #        | Exp(id_av, B_(a,a^v))
     #        v
-    # Exp(av, a^v x a)
+    # Exp(av, a^v × a)
     #        |
     #        | Exp(id_(a^v), ev_(a,1))
     #        v
@@ -143,7 +143,7 @@ AddDerivationToCAP( CartesianDualOnObjects,
                   
   function( cat, a )
 
-    # Source( a^v -> Exp(a,1) )
+    # Source( a^v → Exp(a,1) )
     
     return Source( IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject( cat, a ) );
     
@@ -155,7 +155,7 @@ AddDerivationToCAP( CartesianDualOnObjects,
                   
   function( cat, a )
 
-    # Range( Exp(a,1) -> a^v )
+    # Range( Exp(a,1) → a^v )
     
     return Range( IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject( cat, a ) );
     
@@ -167,7 +167,7 @@ AddDerivationToCAP( CartesianDualOnMorphismsWithGivenCartesianDuals,
                   
   function( cat, s, alpha, r )
 
-    # alpha: a->b
+    # alpha: a → b
     #
     #   b^v
     #    |
@@ -201,7 +201,7 @@ AddDerivationToCAP( CartesianEvaluationForCartesianDualWithGivenDirectProduct,
 
     # r := 1
     #
-    # Adjoint( a^v -> Exp(a,1) ) = ( a^v x a -> 1 )
+    # Adjoint( a^v → Exp(a,1) ) = ( a^v × a → 1 )
     
     return ExponentialToDirectProductAdjunctionMap( cat, a, r,
                                                     IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject( cat, a ) );
@@ -215,7 +215,7 @@ AddDerivationToCAP( CartesianLambdaIntroduction,
   function( cat, alpha )
     local result_morphism, source;
 
-    # 1 x a
+    # 1 × a
     #   |
     #   | λ_a
     #   v
@@ -225,7 +225,7 @@ AddDerivationToCAP( CartesianLambdaIntroduction,
     #   v
     #   b
     #
-    # Adjoint( 1 x a -> b) = ( 1 -> Exp(a,b) )
+    # Adjoint( 1 × a → b) = ( 1 → Exp(a,b) )
     
     source := Source( alpha );
     
@@ -242,14 +242,14 @@ AddDerivationToCAP( CartesianLambdaElimination,
   function( cat, a, b, alpha )
     local result_morphism;
 
-    # alpha: 1 -> Exp(a,b)
-    # Adjoint( alpha ) = ( 1 x a -> b)
+    # alpha: 1 → Exp(a,b)
+    # Adjoint( alpha ) = ( 1 × a → b)
     #
     #   a
     #   |
     #   | (λ_a)^-1
     #   v
-    # 1 x a
+    # 1 × a
     #   |
     #   | Adjoint( alpha)
     #   v
@@ -268,38 +268,38 @@ AddDerivationToCAP( DirectProductExponentialCompatibilityMorphismWithGivenObject
   function( cat, source, list, range )
     local a1, b1, a2, b2, morphism, exp_a1_b1, exp_a2_b2, id_a2, direct_product_on_objects_exp_a1_b1_exp_a2_b2;
     
-    # (Exp(a1,b1) x Exp(a2,b2)) x (a1 x a2)
+    # (Exp(a1,b1) × Exp(a2,b2)) × (a1 × a2)
     #                  |
-    #                  | α_( Exp(a1,b1) x Exp(a2,b2), (a1, a2) )
+    #                  | α_( Exp(a1,b1) × Exp(a2,b2), (a1, a2) )
     #                  v
-    # ((Exp(a1,b1) x Exp(a2,b2)) x a1) x a2
+    # ((Exp(a1,b1) × Exp(a2,b2)) × a1) × a2
     #                  |
-    #                  | α_( ( Exp(a1,b1), Exp(a2,b2) ), a1 ) x id_a2
+    #                  | α_( ( Exp(a1,b1), Exp(a2,b2) ), a1 ) × id_a2
     #                  v
-    # (Exp(a1,b1) x (Exp(a2,b2) x a1)) x a2
+    # (Exp(a1,b1) × (Exp(a2,b2) × a1)) × a2
     #                  |
-    #                  | ( id_Exp(a1,b1) x B_( Exp(a2,b2), a1 ) ) x id_a2
+    #                  | ( id_Exp(a1,b1) × B_( Exp(a2,b2), a1 ) ) × id_a2
     #                  v
-    # (Exp(a1,b1) x (a1 x Exp(a2,b2))) x a2
+    # (Exp(a1,b1) × (a1 × Exp(a2,b2))) × a2
     #                  |
-    #                  | α_( Exp(a1,b1), ( a1, Exp(a2,b2) ) ) x id_a2
+    #                  | α_( Exp(a1,b1), ( a1, Exp(a2,b2) ) ) × id_a2
     #                  v
-    # ((Exp(a1,b1) x a1) x Exp(a2,b2)) x a2
+    # ((Exp(a1,b1) × a1) × Exp(a2,b2)) × a2
     #                  |
-    #                  | ( ev_(a1,b1) x id_Exp(a2,b2) ) x id_a2
+    #                  | ( ev_(a1,b1) × id_Exp(a2,b2) ) × id_a2
     #                  v
-    #       (b1 x Exp(a2,b2)) x a2
+    #       (b1 × Exp(a2,b2)) × a2
     #                  |
     #                  | α_( ( b1, Exp(a2,b2) ), a2 )
     #                  v
-    #       b1 x (Exp(a2,b2) x a2)
+    #       b1 × (Exp(a2,b2) × a2)
     #                  |
-    #                  | id_b1 x ev_(a2,b2)
+    #                  | id_b1 × ev_(a2,b2)
     #                  v
-    #               b1 x b2
+    #               b1 × b2
     #
     #
-    # Adjoint[ (Exp(a1,b1) x Exp(a2,b2)) x (a1 x a2) -> b1 x b2 ] = [ Exp(a1,b1) x Exp(a2,b2) -> Exp(a1 x a2, b1 x b2) ]
+    # Adjoint[ (Exp(a1,b1) × Exp(a2,b2)) × (a1 × a2) → b1 × b2 ] = [ Exp(a1,b1) × Exp(a2,b2) → Exp(a1 × a2, b1 × b2) ]
 
     a1 := list[1];
     b1 := list[2];
@@ -361,21 +361,21 @@ AddDerivationToCAP( DirectProductCartesianDualityCompatibilityMorphismWithGivenO
   function( cat, s, a, b, r )
     local morphism, unit, direct_product_on_a_and_b;
 
-    #      a^v x b^v
+    #      a^v × b^v
     #          |
     #          v
-    # Exp(a,1) x Exp(b,1)
+    # Exp(a,1) × Exp(b,1)
     #          |
     #          | CompatMorphism(a,1,b,1)
     #          V
-    #  Exp(a x b, 1 x 1)
+    #  Exp(a × b, 1 × 1)
     #          |
-    #          | Exp(id_(a x b), λ_1)
+    #          | Exp(id_(a × b), λ_1)
     #          V
-    #    Exp(a x b, 1)
+    #    Exp(a × b, 1)
     #          |
     #          V
-    #       (a x b)^v
+    #       (a × b)^v
 
     
     unit := TerminalObject( cat );
@@ -411,7 +411,7 @@ AddDerivationToCAP( IsomorphismFromObjectToExponentialWithGivenExponential,
     #       |
     #       | coev_(a,1)
     #       v
-    # Exp(1, a x 1)
+    # Exp(1, a × 1)
     #       |
     #       | Exp(id_1, ρ_a)
     #       v
@@ -434,9 +434,9 @@ AddDerivationToCAP( IsomorphismFromObjectToExponentialWithGivenExponential,
   function( cat, a, internal_hom )
     local unit;
 
-    # ρ_a: a x 1 -> a
+    # ρ_a: a × 1 → a
     #
-    # Adjoint( ρ_a ) = ( a -> Exp(1,a) )
+    # Adjoint( ρ_a ) = ( a → Exp(1,a) )
     
     unit := TerminalObject( cat );
     
@@ -454,7 +454,7 @@ end : CategoryFilter := IsCartesianClosedCategory,
 #                     
 #   function( cat, a, internal_hom )
 #
-#     # Inverse( a -> Exp(1,a) )
+#     # Inverse( a → Exp(1,a) )
 #     
 #     return InverseForMorphisms( cat, IsomorphismFromObjectToExponential( cat, a ) );
 #     
@@ -471,7 +471,7 @@ AddDerivationToCAP( IsomorphismFromExponentialToObjectWithGivenExponential,
     #      |
     #      | ( ρ_Exp(1,a) )^-1
     #      v
-    # Exp(1,a) x 1
+    # Exp(1,a) × 1
     #      |
     #      | ev_(1,a)
     #      v
@@ -491,7 +491,7 @@ end : CategoryFilter := IsCartesianClosedCategory,
 #                     
 #   function( cat, object, internal_hom )
 #
-#     # Inverse( a -> Exp(1,a))
+#     # Inverse( a → Exp(1,a))
 #     
 #     return InverseForMorphisms( cat, IsomorphismFromExponentialToObject( cat, object ) );
 #     
@@ -504,14 +504,14 @@ AddDerivationToCAP( MorphismFromDirectProductToExponentialWithGivenObjects,
   function( cat, direct_product_object, a, b, internal_hom )
     local unit;
 
-    #      a^v x b
+    #      a^v × b
     #          |
     #          v
-    # Exp(a,1) x Exp(1,b)
+    # Exp(a,1) × Exp(1,b)
     #          |
     #          | CompatMorphism
     #          v
-    # Exp(a x 1, 1 x b)
+    # Exp(a × 1, 1 × b)
     #          |
     #          | Exp((ρ_a)^-1, λ_b)
     #          v
@@ -540,7 +540,7 @@ AddDerivationToCAP( CartesianEvaluationMorphismWithGivenSource,
                   
   function( cat, a, b, direct_product_object )
 
-    # Adjoint( id_Exp(a,b): Exp(a,b) -> Exp(a,b) ) = ( Exp(a,b) x a -> b )
+    # Adjoint( id_Exp(a,b): Exp(a,b) → Exp(a,b) ) = ( Exp(a,b) × a → b )
     
     return ExponentialToDirectProductAdjunctionMap( cat,
              a, b,
@@ -554,7 +554,7 @@ AddDerivationToCAP( CartesianCoevaluationMorphismWithGivenRange,
                   
   function( cat, a, b, internal_hom )
     
-    # Adjoint( id_(a x b): a x b -> a x b ) = ( a -> Exp(b, a x b) )
+    # Adjoint( id_(a × b): a × b → a × b ) = ( a → Exp(b, a × b) )
 
     return DirectProductToExponentialAdjunctionMap( cat,
              a, b,
@@ -569,34 +569,34 @@ AddDerivationToCAP( CartesianPreComposeMorphismWithGivenObjects,
   function( cat, source, a, b, c, range )
     local exp_a_b, exp_b_c, morphism;
 
-    # (Exp(a,b) x Exp(b,c)) x a
+    # (Exp(a,b) × Exp(b,c)) × a
     #           |
     #           | α_( ( Exp(a,b), Exp(b,c) ), a)
     #           v
-    # Exp(a,b) x (Exp(b,c) x a)
+    # Exp(a,b) × (Exp(b,c) × a)
     #           |
-    #           | id_Exp(a,b) x B_( Exp(b,c), a )
+    #           | id_Exp(a,b) × B_( Exp(b,c), a )
     #           v
-    # Exp(a,b) x (a x Exp(b,c))
+    # Exp(a,b) × (a × Exp(b,c))
     #           |
     #           | α_( Exp(a,b), ( a, Exp(b,c) ) )
     #           v
-    # (Exp(a,b) x a) x Exp(b,c)
+    # (Exp(a,b) × a) × Exp(b,c)
     #           |
-    #           | ev_ab x id_Exp(b,c)
+    #           | ev_ab × id_Exp(b,c)
     #           v
-    #      b x Exp(b,c)
+    #      b × Exp(b,c)
     #           |
     #           | B_( b, Exp(b,c) )
     #           v
-    #     Exp(b,c) x b
+    #     Exp(b,c) × b
     #           |
     #           | ev_bc
     #           v
     #           c
     #
     #
-    # Adjoint(  (Exp(a,b) x Exp(b,c)) x a -> c ) = ( Exp(a,b) x Exp(b,c) -> Exp(a,c) )
+    # Adjoint(  (Exp(a,b) × Exp(b,c)) × a → c ) = ( Exp(a,b) × Exp(b,c) → Exp(a,c) )
 
     exp_a_b := ExponentialOnObjects( cat, a, b );
     
@@ -634,22 +634,22 @@ AddDerivationToCAP( CartesianPostComposeMorphismWithGivenObjects,
   function( cat, source, a, b, c, range )
     local exp_a_b, exp_b_c, morphism;
 
-    # (Exp(b,c) x Exp(a,b)) x a
+    # (Exp(b,c) × Exp(a,b)) × a
     #            |
     #            | α_( ( Exp(b,c), Exp(a,b) ), c )
     #            v
-    # Exp(b,c) x (Exp(a,b) x a)
+    # Exp(b,c) × (Exp(a,b) × a)
     #            |
-    #            | id_Exp(b,c) x ev_ab
+    #            | id_Exp(b,c) × ev_ab
     #            v
-    #      Exp(b,c) x b
+    #      Exp(b,c) × b
     #            |
     #            | ev_bc
     #            v
     #            c
     #
     #
-    # Adjoint( (Exp(b,c) x Exp(a,b)) x a -> c ) = ( Exp(b,c) x Exp(a,b) -> Exp(a,c) )
+    # Adjoint( (Exp(b,c) × Exp(a,b)) × a → c ) = ( Exp(b,c) × Exp(a,b) → Exp(a,c) )
     
     exp_a_b := ExponentialOnObjects( cat, a, b );
     
@@ -679,11 +679,11 @@ AddDerivationToCAP( CartesianPostComposeMorphismWithGivenObjects,
   function( cat, source, a, b, c, range )
     local braiding;
 
-    # Exp(b,c) x Exp(a,b)
+    # Exp(b,c) × Exp(a,b)
     #          |
     #          | B_( Exp(b,c), Exp(a,b) )
     #          v
-    # Exp(a,b) x Exp(b,c)
+    # Exp(a,b) × Exp(b,c)
     #          |
     #          | PreCompose
     #          v
@@ -702,11 +702,11 @@ AddDerivationToCAP( CartesianPreComposeMorphismWithGivenObjects,
   function( cat, source, a, b, c, range )
     local braiding;
 
-    # Exp(a,b) x Exp(b,c)
+    # Exp(a,b) × Exp(b,c)
     #          |
     #          | B_( Exp(a,b), Exp(b,c) )
     #          v
-    # Exp(b,c) x Exp(a,b)
+    # Exp(b,c) × Exp(a,b)
     #          |
     #          | PostCompose
     #          v
@@ -725,22 +725,22 @@ AddDerivationToCAP( DirectProductExponentialCompatibilityMorphismWithGivenObject
   function( cat, source, list, range )
     local a1, b1, a2, b2, morphism, exp_a1_b1, exp_a2_b2, id_a2, direct_product_on_objects_exp_a1_b1_exp_a2_b2;
 
-    # Exp(a1,b1) x Exp(a2,b2) x a1 x a2
+    # Exp(a1,b1) × Exp(a2,b2) × a1 × a2
     #                 |
-    #                 | id_Exp(a1,b1) x B_( Exp(a2,b2), a1 ) x id_a2
+    #                 | id_Exp(a1,b1) × B_( Exp(a2,b2), a1 ) × id_a2
     #                 v
-    # Exp(a1,b1) x a1 x Exp(a2,b2) x a2
+    # Exp(a1,b1) × a1 × Exp(a2,b2) × a2
     #                 |
-    #                 | ev_(a1,b1) x id_Exp(a2,b2) x id_a2
+    #                 | ev_(a1,b1) × id_Exp(a2,b2) × id_a2
     #                 v
-    #       b1 x Exp(a2,b2) x a2
+    #       b1 × Exp(a2,b2) × a2
     #                 |
-    #                 | id_b1 x ev_(a2,b2)
+    #                 | id_b1 × ev_(a2,b2)
     #                 v
-    #              b1 x b2
+    #              b1 × b2
     #
     #
-    # Adjoint[ Exp(a1,b1) x Exp(a2,b2) x a1 x a2 -> b1 x b2 ] = [ Exp(a1,b1) x Exp(a2,b2) -> Exp(a1 x a2, b1 x b2) ]
+    # Adjoint[ Exp(a1,b1) × Exp(a2,b2) × a1 × a2 → b1 × b2 ] = [ Exp(a1,b1) × Exp(a2,b2) → Exp(a1 × a2, b1 × b2) ]
     
     a1 := list[1];
     b1 := list[2];
@@ -788,17 +788,17 @@ AddDerivationToCAP( DirectProductCartesianDualityCompatibilityMorphismWithGivenO
   function( cat, source, a, b, range )
     local morphism, unit, direct_product_on_a_and_b;
 
-    #      a^v x b^v
+    #      a^v × b^v
     #          |
     #          v
-    # Exp(a,1) x Exp(b,1)
+    # Exp(a,1) × Exp(b,1)
     #          |
     #          | CompatMorphism(a,1,b,1)
     #          V
-    #  Exp(a x b, 1)
+    #  Exp(a × b, 1)
     #          |
     #          V
-    #       (a x b)^v
+    #       (a × b)^v
     
     unit := TerminalObject( cat );
     
@@ -825,26 +825,26 @@ AddDerivationToCAP( CartesianPreComposeMorphismWithGivenObjects,
   function( cat, source, a, b, c, range )
     local exp_a_b, exp_b_c, morphism;
 
-    # Exp(a,b) x Exp(b,c) x a
+    # Exp(a,b) × Exp(b,c) × a
     #          |
-    #          | id_Exp(a,b) x B_( Exp(b,c), a )
+    #          | id_Exp(a,b) × B_( Exp(b,c), a )
     #          v
-    # Exp(a,b) x a x Exp(b,c)
+    # Exp(a,b) × a × Exp(b,c)
     #          |
-    #          | ev_ab x id_Exp(b,c)
+    #          | ev_ab × id_Exp(b,c)
     #          v
-    #     b x Exp(b,c)
+    #     b × Exp(b,c)
     #          |
     #          | B_( b, Exp(b,c) )
     #          v
-    #     Exp(b,c) x b
+    #     Exp(b,c) × b
     #          |
     #          | ev_bc
     #          v
     #          c
     #
     #
-    # Adjoint(  (Exp(a,b) x Exp(b,c)) x a -> c ) = ( Exp(a,b) x Exp(b,c) -> Exp(a,c) )
+    # Adjoint(  (Exp(a,b) × Exp(b,c)) × a → c ) = ( Exp(a,b) × Exp(b,c) → Exp(a,c) )
     
     exp_a_b := ExponentialOnObjects( cat, a, b );
     
@@ -878,18 +878,18 @@ AddDerivationToCAP( CartesianPostComposeMorphismWithGivenObjects,
   function( cat, source, a, b, c, range )
     local exp_a_b, exp_b_c, morphism;
 
-    # Exp(b,c) x Exp(a,b) x a
+    # Exp(b,c) × Exp(a,b) × a
     #            |
-    #            | id_Exp(b,c) x ev_ab
+    #            | id_Exp(b,c) × ev_ab
     #            v
-    #      Exp(b,c) x b
+    #      Exp(b,c) × b
     #            |
     #            | ev_bc
     #            v
     #            c
     #
     #
-    # Adjoint( Exp(b,c) x Exp(a,b) x a -> c ) = ( Exp(b,c) x Exp(a,b) -> Exp(a,c) )
+    # Adjoint( Exp(b,c) × Exp(a,b) × a → c ) = ( Exp(b,c) × Exp(a,b) → Exp(a,c) )
     
     exp_a_b := ExponentialOnObjects( cat, a, b );
     

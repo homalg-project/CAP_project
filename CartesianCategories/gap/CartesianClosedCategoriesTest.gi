@@ -202,19 +202,19 @@ InstallGlobalFunction( "CartesianClosedCategoriesTest",
             
             ######################################
             # 
-            # alpha: a -> b
-            # beta:  c -> d
+            # alpha: a → b
+            # beta:  c → d
             # 
-            # alpha_tensor_beta: a x c -> b x d
-            # beta_tensor_alpha: c x a -> d x b
+            # alpha_tensor_beta: a × c → b × d
+            # beta_tensor_alpha: c × a → d × b
             #
             ######################################
             #
-            # alpha_op: b -> a
-            # beta_op:  d -> c
+            # alpha_op: b → a
+            # beta_op:  d → c
             #
-            # alpha_tensor_beta_op: b x d -> a x c
-            # beta_tensor_alpha_op: d x b -> c x a
+            # alpha_tensor_beta_op: b × d → a × c
+            # beta_tensor_alpha_op: d × b → c × a
             #
             ######################################
             
@@ -223,22 +223,22 @@ InstallGlobalFunction( "CartesianClosedCategoriesTest",
             alpha_tensor_beta_op := CoproductOnMorphisms( opposite, alpha_op, beta_op );
             beta_tensor_alpha_op := CoproductOnMorphisms( opposite, beta_op, alpha_op );
             
-            # Adjoint( a x c -> b x d )  ==  a -> Exp( c, b x d )
+            # Adjoint( a × c → b × d )  ==  a → Exp( c, b × d )
             tensor_to_exp_adjunction_on_alpha_tensor_beta := DirectProductToExponentialAdjunctionMap( a, c, alpha_tensor_beta );
             
-            # Adjoint( c x a -> d x b )  ==  c -> Exp( a, d x b )
+            # Adjoint( c × a → d × b )  ==  c → Exp( a, d × b )
             tensor_to_exp_adjunction_on_beta_tensor_alpha := DirectProductToExponentialAdjunctionMap( c, a, beta_tensor_alpha );
             
-            # Adjoint( b x d -> a x c )  ==  Coexp( b x d, c ) -> a
+            # Adjoint( b × d → a × c )  ==  Coexp( b × d, c ) → a
             tensor_to_coexp_adjunction_on_alpha_tensor_beta_op := CoproductToCoexponentialAdjunctionMap( a_op, c_op, alpha_tensor_beta_op );
             
-            # Adjoint( d x b -> c x a )  ==  Coexp( d x b, a ) -> c
+            # Adjoint( d × b → c × a )  ==  Coexp( d × b, a ) → c
             tensor_to_coexp_adjunction_on_beta_tensor_alpha_op := CoproductToCoexponentialAdjunctionMap( c_op, a_op, beta_tensor_alpha_op );
             
-            # Coexp( b x d, c ) -> a  ==  op( a -> Exp( c, b x d ) )
+            # Coexp( b × d, c ) → a  ==  op( a → Exp( c, b × d ) )
             Assert( 0, IsCongruentForMorphisms( tensor_to_coexp_adjunction_on_alpha_tensor_beta_op, Opposite( tensor_to_exp_adjunction_on_alpha_tensor_beta ) ) );
             
-            # Coexp( d x b, a ) -> c  ==  op( c -> Exp( a, d x b ) )
+            # Coexp( d × b, a ) → c  ==  op( c → Exp( a, d × b ) )
             Assert( 0, IsCongruentForMorphisms( tensor_to_coexp_adjunction_on_beta_tensor_alpha_op, Opposite( tensor_to_exp_adjunction_on_beta_tensor_alpha ) ) );
             
         fi;
@@ -254,38 +254,38 @@ InstallGlobalFunction( "CartesianClosedCategoriesTest",
             
             #####################################################
             #
-            # exp_alpha_beta: Exp( b, c ) -> Exp( a, d )
-            # exp_beta_alpha: Exp( d, a ) -> Exp( c, b )
+            # exp_alpha_beta: Exp( b, c ) → Exp( a, d )
+            # exp_beta_alpha: Exp( d, a ) → Exp( c, b )
             #
-            # exp_alpha_beta_op: Exp( a, d ) -> Exp( b, c )
-            # exp_beta_alpha_op: Exp( c, b ) -> Exp( d, a )
+            # exp_alpha_beta_op: Exp( a, d ) → Exp( b, c )
+            # exp_beta_alpha_op: Exp( c, b ) → Exp( d, a )
             #
             #####################################################
             #
-            # coexp_alpha_beta: Coexp( a, d ) -> Coexp( b, c )
-            # coexp_beta_alpha: Coexp( c, b ) -> Coexp( d, a )
+            # coexp_alpha_beta: Coexp( a, d ) → Coexp( b, c )
+            # coexp_beta_alpha: Coexp( c, b ) → Coexp( d, a )
             #
-            # coexp_alpha_beta_op: Coexp( b, c ) -> Coexp( a, d )
-            # coexp_beta_alpha_op: Coexp( d, a ) -> Coexp( c, b )
+            # coexp_alpha_beta_op: Coexp( b, c ) → Coexp( a, d )
+            # coexp_beta_alpha_op: Coexp( d, a ) → Coexp( c, b )
             #
             #####################################################
             
-            # Adjoint( Exp( b, c ) -> Exp( a, d ) )  ==  Exp( b, c ) x a -> d
+            # Adjoint( Exp( b, c ) → Exp( a, d ) )  ==  Exp( b, c ) × a → d
             exp_to_tensor_adjunction_on_exp_alpha_beta := ExponentialToDirectProductAdjunctionMap( a, d, exp_alpha_beta );
             
-            # Adjoint( Exp( d, a ) -> Exp( c, b ) )  ==  Exp( d, a ) x c -> b
+            # Adjoint( Exp( d, a ) → Exp( c, b ) )  ==  Exp( d, a ) × c → b
             exp_to_tensor_adjunction_on_exp_beta_alpha := ExponentialToDirectProductAdjunctionMap( c, b, exp_beta_alpha );
             
-            # Adjoint( Coexp( b, c ) -> Coexp( a, d ) )  ==  b -> Coexp( a, d ) x c
+            # Adjoint( Coexp( b, c ) → Coexp( a, d ) )  ==  b → Coexp( a, d ) × c
             coexp_to_tensor_adjunction_on_coexp_alpha_beta_op := CoexponentialToCoproductAdjunctionMap( b_op, c_op, coexp_alpha_beta_op );
             
-            # Adjoint( Coexp( d, a ) -> Coexp( c, b ) )  ==  d -> Coexp( c, b ) x a
+            # Adjoint( Coexp( d, a ) → Coexp( c, b ) )  ==  d → Coexp( c, b ) × a
             coexp_to_tensor_adjunction_on_coexp_beta_alpha_op := CoexponentialToCoproductAdjunctionMap( d_op, a_op, coexp_beta_alpha_op );
             
-            # b -> Coexp( a, d ) x c  ==  op( Exp( d, a ) x c -> b )
+            # b → Coexp( a, d ) × c  ==  op( Exp( d, a ) × c → b )
             Assert( 0, IsCongruentForMorphisms( coexp_to_tensor_adjunction_on_coexp_alpha_beta_op, Opposite( exp_to_tensor_adjunction_on_exp_beta_alpha ) ) );
             
-            # d -> Coexp( c, b ) x a  ==  op( Exp( b, c ) x a -> d )
+            # d → Coexp( c, b ) × a  ==  op( Exp( b, c ) × a → d )
             Assert( 0, IsCongruentForMorphisms( coexp_to_tensor_adjunction_on_coexp_beta_alpha_op, Opposite( exp_to_tensor_adjunction_on_exp_alpha_beta ) ) );
             
         fi;
@@ -419,22 +419,22 @@ InstallGlobalFunction( "CartesianClosedCategoriesTest",
                 
             fi;
             
-            # Exp( a, b ) x Exp( c, d ) -> Exp( a x c, b x d )
+            # Exp( a, b ) × Exp( c, d ) → Exp( a × c, b × d )
             tensor_to_exp_compatibility_abcd := DirectProductExponentialCompatibilityMorphism( [ a, b, c, d ] );
             
-            # Exp( c, a ) x Exp( d, b ) -> Exp( c x d, a x b )
+            # Exp( c, a ) × Exp( d, b ) → Exp( c × d, a × b )
             tensor_to_exp_compatibility_cadb := DirectProductExponentialCompatibilityMorphism( [ c, a, d, b ] );
             
-            # Coexp( a x b, c x d ) -> Coexp( a, c ) x Coexp( b, d )
+            # Coexp( a × b, c × d ) → Coexp( a, c ) × Coexp( b, d )
             coexp_to_tensor_compatibility_abcd_op := CoexponentialCoproductCompatibilityMorphism( [ a_op, b_op, c_op, d_op ] );
             
-            # Coexp( b x d, a x c ) -> Coexp( b, a ) x Coexp( d, c )
+            # Coexp( b × d, a × c ) → Coexp( b, a ) × Coexp( d, c )
             coexp_to_tensor_compatibility_bdac_op := CoexponentialCoproductCompatibilityMorphism( [ b_op, d_op, a_op, c_op ] );
             
-            # Coexp( a x b, c x d ) -> Coexp( a, c ) x Coexp( b, d )  ==  op( Exp( c, a ) x Exp( d, b ) -> Exp( c x d, a x b ) )
+            # Coexp( a × b, c × d ) → Coexp( a, c ) × Coexp( b, d )  ==  op( Exp( c, a ) × Exp( d, b ) → Exp( c × d, a × b ) )
             Assert( 0, IsCongruentForMorphisms( coexp_to_tensor_compatibility_abcd_op, Opposite( tensor_to_exp_compatibility_cadb ) ) );
             
-            # Coexp( b x d, a x c ) -> Coexp( b, a ) x Coexp( d, c )  ==  op( Exp( a, b ) x Exp( c, d ) -> Exp( a x c, b x d ) )
+            # Coexp( b × d, a × c ) → Coexp( b, a ) × Coexp( d, c )  ==  op( Exp( a, b ) × Exp( c, d ) → Exp( a × c, b × d ) )
             Assert( 0, IsCongruentForMorphisms( coexp_to_tensor_compatibility_bdac_op, Opposite( tensor_to_exp_compatibility_abcd ) ) );
             
         fi;
@@ -448,22 +448,22 @@ InstallGlobalFunction( "CartesianClosedCategoriesTest",
                 
             fi;
             
-            # a^v x b^v -> (a x b)^v
+            # a^v × b^v → (a × b)^v
             direct_product_duality_compatibility_ab := DirectProductCartesianDualityCompatibilityMorphism( a, b );
             
-            # b^v x a^v -> (b x a)^v
+            # b^v × a^v → (b × a)^v
             direct_product_duality_compatibility_ba := DirectProductCartesianDualityCompatibilityMorphism( b, a );
             
-            # (a x b)_v -> a_v x b_v
+            # (a × b)_v → a_v × b_v
             coduality_direct_product_compatibility_ab_op := CocartesianDualityCoproductCompatibilityMorphism( a_op, b_op );
             
-            # (b x a)_v -> b_v x a_v
+            # (b × a)_v → b_v × a_v
             coduality_direct_product_compatibility_ba_op := CocartesianDualityCoproductCompatibilityMorphism( b_op, a_op );
             
-            # (a x b)_v -> a_v x b_v  ==  op( a^v x b^v -> (a x b)^v )
+            # (a × b)_v → a_v × b_v  ==  op( a^v × b^v → (a × b)^v )
             Assert( 0, IsCongruentForMorphisms( coduality_direct_product_compatibility_ab_op, Opposite( direct_product_duality_compatibility_ab ) ) );
             
-            # (b x a)_v -> b_v x a_v  ==  op( b^v x a^v -> (b x a)^v )
+            # (b × a)_v → b_v × a_v  ==  op( b^v × a^v → (b × a)^v )
             Assert( 0, IsCongruentForMorphisms( coduality_direct_product_compatibility_ba_op, Opposite( direct_product_duality_compatibility_ba ) ) );
             
         fi;
@@ -653,10 +653,10 @@ InstallGlobalFunction( "CartesianClosedCategoriesTest",
             id_exp_ab := IdentityMorphism( ExponentialOnObjects( a, b ) );
             id_exp_ba := IdentityMorphism( ExponentialOnObjects( b, a ) );
             
-            # Adjoint( Exp( a. b ) -> Exp( a, b ) )  ==  Exp( a, b ) x a -> b
+            # Adjoint( Exp( a. b ) → Exp( a, b ) )  ==  Exp( a, b ) × a → b
             exp_to_tensor_adjunction_on_id_exp_ab := ExponentialToDirectProductAdjunctionMap( a, b, id_exp_ab );
             
-            # Adjoint( Exp( b, a ) -> Exp( b, a ) )  ==  Exp( b, a ) x b -> a
+            # Adjoint( Exp( b, a ) → Exp( b, a ) )  ==  Exp( b, a ) × b → a
             exp_to_tensor_adjunction_on_id_exp_ba := ExponentialToDirectProductAdjunctionMap( b, a, id_exp_ba );
             
             Assert( 0, IsCongruentForMorphisms( ev_ab, exp_to_tensor_adjunction_on_id_exp_ab ) );
@@ -683,10 +683,10 @@ InstallGlobalFunction( "CartesianClosedCategoriesTest",
             id_a_tensor_b := IdentityMorphism( DirectProduct( a, b ) );
             id_b_tensor_a := IdentityMorphism( DirectProduct( b, a ) );
             
-            # Adjoint( a x b -> a x b )  ==  a -> Exp( b, a x b )
+            # Adjoint( a × b → a × b )  ==  a → Exp( b, a × b )
             tensor_to_exp_adjunction_on_id_a_tensor_b := DirectProductToExponentialAdjunctionMap( a, b, id_a_tensor_b );
             
-            # Adjoint( b x a -> b x a )  ==  b -> Exp( a, b x a )
+            # Adjoint( b × a → b × a )  ==  b → Exp( a, b × a )
             tensor_to_exp_adjunction_on_id_b_tensor_a := DirectProductToExponentialAdjunctionMap( b, a, id_b_tensor_a );
             
             Assert( 0, IsCongruentForMorphisms( coev_ab, tensor_to_exp_adjunction_on_id_a_tensor_b ) );

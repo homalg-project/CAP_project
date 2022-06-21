@@ -42,6 +42,9 @@ WriteFileForMonoidalStructure(
              BraidedS := "",
              TensorProductOnObjectsBCcat := "BinaryDirectProduct( cat,",
              CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE := "METHOD_NAME_RECORD, \"CartesianCategories\"",
+             replace := [ [ "⊗",
+                            "×" ],
+                          ],
              safe_replace := [ ##############################
                                ## Safe replacements for Tests
                                ##############################
@@ -159,7 +162,9 @@ WriteFileForClosedMonoidalStructure(
              ClosedSMonoidal := "Cartesian Closed",
              TensorProductOnObjectsBCcat := "BinaryDirectProduct( cat,",
              CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE := "METHOD_NAME_RECORD, \"CartesianCategories\"",
-             replace := [ [ "coHom(",
+             replace := [ [ "⊗",
+                            "×" ],
+                          [ "coHom(",
                             "Coexp(" ],
                           [ "Cohom(",
                             "Coexp(" ],
@@ -416,6 +421,9 @@ WriteFileForMonoidalStructure(
              BraidedS := "",
              TensorProductOnObjectsBCcat := "BinaryCoproduct( cat,",
              CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE := "METHOD_NAME_RECORD, \"CartesianCategories\"",
+             replace := [ [ "⊗",
+                            "⊔" ],
+                          ],
              safe_replace := [ ##############################
                                ## Safe replacements for Tests
                                ##############################
@@ -532,7 +540,9 @@ WriteFileForCoclosedMonoidalStructure(
              CoclosedSMonoidal := "Cocartesian Coclosed",
              TensorProductOnObjectsBCcat := "BinaryCoproduct( cat,",
              CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE := "METHOD_NAME_RECORD, \"CartesianCategories\"",
-             replace := [ [ "coHom(",
+             replace := [ [ "⊗",
+                            "⊔" ],
+                          [ "coHom(",
                             "Coexp(" ],
                           [ "Cohom(",
                             "Coexp(" ],
