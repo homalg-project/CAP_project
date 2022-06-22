@@ -418,25 +418,30 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
         
     fi;
     
-    if debug then
-        # COVERAGE_IGNORE_BLOCK_START
-        compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-        Display( compiled_func );
-        Error( "apply CapJitHoistedExpressions" );
-        # COVERAGE_IGNORE_BLOCK_END
+    # do not hoist/deduplicate expressions in proof assistant mode
+    if not CAP_JIT_PROOF_ASSISTANT_MODE_ENABLED then
+        
+        if debug then
+            # COVERAGE_IGNORE_BLOCK_START
+            compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
+            Display( compiled_func );
+            Error( "apply CapJitHoistedExpressions" );
+            # COVERAGE_IGNORE_BLOCK_END
+        fi;
+        
+        tree := CapJitHoistedExpressions( tree );
+        
+        if debug then
+            # COVERAGE_IGNORE_BLOCK_START
+            compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
+            Display( compiled_func );
+            Error( "apply CapJitDeduplicatedExpressions" );
+            # COVERAGE_IGNORE_BLOCK_END
+        fi;
+        
+        tree := CapJitDeduplicatedExpressions( tree );
+        
     fi;
-    
-    tree := CapJitHoistedExpressions( tree );
-    
-    if debug then
-        # COVERAGE_IGNORE_BLOCK_START
-        compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-        Display( compiled_func );
-        Error( "apply CapJitDeduplicatedExpressions" );
-        # COVERAGE_IGNORE_BLOCK_END
-    fi;
-    
-    tree := CapJitDeduplicatedExpressions( tree );
     
     if debug then
         
