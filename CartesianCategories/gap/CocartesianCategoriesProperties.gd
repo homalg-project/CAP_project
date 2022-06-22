@@ -26,3 +26,11 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory  := Concatenat
 ## if declared in a way different from that in the method record
 DeclareOperation( "BinaryCoproduct",
         [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ] );
+
+##
+CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
+  rec(
+    BinaryCoproduct :=
+      [ [ "Coproduct", 1 ] ]
+  )
+);
