@@ -346,7 +346,7 @@ InstallMethod( Opposite,
                [ IsCapCategory, IsString ],
                
   function( category, name )
-    local opposite_category;
+    local opposite_category, known_properties, opposite_property_pairs, pair;
     
     if not IsFinalized( category ) then
         Error( "Input category must be finalized to create opposite category" );
@@ -379,6 +379,27 @@ InstallMethod( Opposite,
     
     SetOpposite( opposite_category, category );
     SetOpposite( category, opposite_category );
+    
+    known_properties := ListKnownCategoricalProperties( category );
+    
+    opposite_property_pairs := Filtered( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST, x -> x[2] <> fail );
+    
+    for pair in opposite_property_pairs do
+        
+        # plausibility check
+        if not Reversed( pair ) in opposite_property_pairs then
+            
+            Error( "The pair of categorical properties <pair> was registered using `AddCategoricalProperty`, but the reversed pair was not." );
+            
+        fi;
+        
+        if pair[1] in known_properties then
+            
+            Setter( ValueGlobal( pair[2] ) )( opposite_category, true );
+            
+        fi;
+        
+    od;
     
     AddObjectConstructor( opposite_category, function( cat, object )
       local opposite_object;
@@ -467,13 +488,13 @@ InstallMethod( Opposite,
     
     CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY( opposite_category, category );
     
+    Finalize( opposite_category );
+    
     if category!.predicate_logic then
         
         INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_CATEGORY( category );
         
     fi;
-    
-    Finalize( opposite_category );
     
     return opposite_category;
     
@@ -504,17 +525,6 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_CATEGORY,
     local opposite_property_pairs, entry, pair;
     
     opposite_property_pairs := Filtered( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST, x -> x[2] <> fail );
-    
-    # plausibility check
-    for pair in opposite_property_pairs do
-        
-        if not Reversed( pair ) in opposite_property_pairs then
-            
-            Error( "The pair of categorical properties <pair> was registered using `AddCategoricalProperty`, but the reversed pair was not." );
-            
-        fi;
-        
-    od;
     
     # prepare special format for ToDoListEntryToMaintainFollowingAttributes
     opposite_property_pairs := List( opposite_property_pairs, x -> [ "", x ] );
