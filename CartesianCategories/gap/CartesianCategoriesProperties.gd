@@ -20,5 +20,14 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianCategory  := Concatenatio
 "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
 ], CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory );
 
+##
 DeclareOperation( "BinaryDirectProduct",
         [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ] );
+
+##
+CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
+  rec(
+    BinaryDirectProduct :=
+      [ [ "DirectProduct", 1 ] ]
+  )
+);
