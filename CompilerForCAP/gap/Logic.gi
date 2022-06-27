@@ -917,12 +917,10 @@ end );
 
 # CapFixpoint
 CapJitAddLogicFunction( function ( tree )
-  local orig_tree, pre_func;
+  local pre_func;
     
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, "Apply logic for CapFixpoint." );
-    
-    orig_tree := tree;
     
     pre_func := function ( tree, additional_arguments )
       local args;
@@ -941,20 +939,16 @@ CapJitAddLogicFunction( function ( tree )
         
     end;
     
-    tree := CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
-    
-    return tree;
+    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
     
 end );
 
 # Iterated
 CapJitAddLogicFunction( function ( tree )
-  local orig_tree, pre_func;
+  local pre_func;
     
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, "Apply logic for Iterated." );
-    
-    orig_tree := tree;
     
     pre_func := function ( tree, additional_arguments )
       local args, list, func, new_tree, i;
@@ -1001,8 +995,6 @@ CapJitAddLogicFunction( function ( tree )
         
     end;
     
-    tree := CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
-    
-    return tree;
+    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
     
 end );
