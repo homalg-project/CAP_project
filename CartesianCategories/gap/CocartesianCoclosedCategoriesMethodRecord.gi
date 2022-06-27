@@ -283,6 +283,8 @@ MorphismFromCoexponentialToCoproductWithGivenObjects := rec(
 IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "d", "i" ] ],
+  output_source_getter_string := "CocartesianDualOnObjects( cat, a )",
+  output_range_getter_string := "CoexponentialOnObjects( cat, InitialObject( cat ), a )",
   return_type := "morphism",
   dual_operation := "IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject",
   # Test in CocartesianCoclosedCategoriesTest
@@ -291,6 +293,8 @@ IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject := rec(
 IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "i", "d" ] ],
+  output_source_getter_string := "CoexponentialOnObjects( cat, InitialObject( cat ), a )",
+  output_range_getter_string := "CocartesianDualOnObjects( cat, a )",
   return_type := "morphism",
   dual_operation := "IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject",
   # Test in CocartesianCoclosedCategoriesTest

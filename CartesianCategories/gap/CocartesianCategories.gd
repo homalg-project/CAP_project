@@ -76,7 +76,7 @@ DeclareOperation( "CocartesianAssociatorLeftToRightWithGivenCoproducts",
 #! @Description
 #! The argument is an object $a$.
 #! The output is the left unitor $\lambda_a: 1 \sqcup a \rightarrow a$.
-#! @Returns a morphism in $\mathrm{Hom}(1 \sqcup a, a )$
+#! @Returns a morphism in $\mathrm{Hom}(1 \sqcup a, a)$
 #! @Arguments a
 DeclareAttribute( "CocartesianLeftUnitor",
                   IsCapCategoryObject );
@@ -84,7 +84,7 @@ DeclareAttribute( "CocartesianLeftUnitor",
 #! @Description
 #! The arguments are an object $a$ and an object $s = 1 \sqcup a$.
 #! The output is the left unitor $\lambda_a: 1 \sqcup a \rightarrow a$.
-#! @Returns a morphism in $\mathrm{Hom}(1 \sqcup a, a )$
+#! @Returns a morphism in $\mathrm{Hom}(1 \sqcup a, a)$
 #! @Arguments a, s
 DeclareOperation( "CocartesianLeftUnitorWithGivenCoproduct",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
@@ -108,7 +108,7 @@ DeclareOperation( "CocartesianLeftUnitorInverseWithGivenCoproduct",
 #! @Description
 #! The argument is an object $a$.
 #! The output is the right unitor $\rho_a: a \sqcup 1 \rightarrow a$.
-#! @Returns a morphism in $\mathrm{Hom}(a \sqcup 1, a )$
+#! @Returns a morphism in $\mathrm{Hom}(a \sqcup 1, a)$
 #! @Arguments a
 DeclareAttribute( "CocartesianRightUnitor",
                   IsCapCategoryObject );
@@ -116,7 +116,7 @@ DeclareAttribute( "CocartesianRightUnitor",
 #! @Description
 #! The arguments are an object $a$ and an object $s = a \sqcup 1$.
 #! The output is the right unitor $\rho_a: a \sqcup 1 \rightarrow a$.
-#! @Returns a morphism in $\mathrm{Hom}(a \sqcup 1, a )$
+#! @Returns a morphism in $\mathrm{Hom}(a \sqcup 1, a)$
 #! @Arguments a, s
 DeclareOperation( "CocartesianRightUnitorWithGivenCoproduct",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
@@ -124,7 +124,7 @@ DeclareOperation( "CocartesianRightUnitorWithGivenCoproduct",
 #! @Description
 #! The argument is an object $a$.
 #! The output is the inverse of the right unitor $\rho_a^{-1}: a \rightarrow a \sqcup 1$.
-#! @Returns a morphism in $\mathrm{Hom}( a, a \sqcup 1 )$
+#! @Returns a morphism in $\mathrm{Hom}(a, a \sqcup 1)$
 #! @Arguments a
 DeclareAttribute( "CocartesianRightUnitorInverse",
                   IsCapCategoryObject );
@@ -133,7 +133,7 @@ DeclareAttribute( "CocartesianRightUnitorInverse",
 #! @Description
 #! The arguments are an object $a$ and an object $r = a \sqcup 1$.
 #! The output is the inverse of the right unitor $\rho_a^{-1}: a \rightarrow a \sqcup 1$.
-#! @Returns a morphism in $\mathrm{Hom}( a, a \sqcup 1 )$
+#! @Returns a morphism in $\mathrm{Hom}(a, a \sqcup 1)$
 #! @Arguments a, r
 DeclareOperation( "CocartesianRightUnitorInverseWithGivenCoproduct",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
