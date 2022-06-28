@@ -76,7 +76,7 @@ DeclareOperation( "CartesianAssociatorLeftToRightWithGivenDirectProducts",
 #! @Description
 #! The argument is an object $a$.
 #! The output is the left unitor $\lambda_a: 1 \times a \rightarrow a$.
-#! @Returns a morphism in $\mathrm{Hom}(1 \times a, a )$
+#! @Returns a morphism in $\mathrm{Hom}(1 \times a, a)$
 #! @Arguments a
 DeclareAttribute( "CartesianLeftUnitor",
                   IsCapCategoryObject );
@@ -84,7 +84,7 @@ DeclareAttribute( "CartesianLeftUnitor",
 #! @Description
 #! The arguments are an object $a$ and an object $s = 1 \times a$.
 #! The output is the left unitor $\lambda_a: 1 \times a \rightarrow a$.
-#! @Returns a morphism in $\mathrm{Hom}(1 \times a, a )$
+#! @Returns a morphism in $\mathrm{Hom}(1 \times a, a)$
 #! @Arguments a, s
 DeclareOperation( "CartesianLeftUnitorWithGivenDirectProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
@@ -108,7 +108,7 @@ DeclareOperation( "CartesianLeftUnitorInverseWithGivenDirectProduct",
 #! @Description
 #! The argument is an object $a$.
 #! The output is the right unitor $\rho_a: a \times 1 \rightarrow a$.
-#! @Returns a morphism in $\mathrm{Hom}(a \times 1, a )$
+#! @Returns a morphism in $\mathrm{Hom}(a \times 1, a)$
 #! @Arguments a
 DeclareAttribute( "CartesianRightUnitor",
                   IsCapCategoryObject );
@@ -116,7 +116,7 @@ DeclareAttribute( "CartesianRightUnitor",
 #! @Description
 #! The arguments are an object $a$ and an object $s = a \times 1$.
 #! The output is the right unitor $\rho_a: a \times 1 \rightarrow a$.
-#! @Returns a morphism in $\mathrm{Hom}(a \times 1, a )$
+#! @Returns a morphism in $\mathrm{Hom}(a \times 1, a)$
 #! @Arguments a, s
 DeclareOperation( "CartesianRightUnitorWithGivenDirectProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
@@ -124,7 +124,7 @@ DeclareOperation( "CartesianRightUnitorWithGivenDirectProduct",
 #! @Description
 #! The argument is an object $a$.
 #! The output is the inverse of the right unitor $\rho_a^{-1}: a \rightarrow a \times 1$.
-#! @Returns a morphism in $\mathrm{Hom}( a, a \times 1 )$
+#! @Returns a morphism in $\mathrm{Hom}(a, a \times 1)$
 #! @Arguments a
 DeclareAttribute( "CartesianRightUnitorInverse",
                   IsCapCategoryObject );
@@ -133,7 +133,7 @@ DeclareAttribute( "CartesianRightUnitorInverse",
 #! @Description
 #! The arguments are an object $a$ and an object $r = a \times 1$.
 #! The output is the inverse of the right unitor $\rho_a^{-1}: a \rightarrow a \times 1$.
-#! @Returns a morphism in $\mathrm{Hom}( a, a \times 1 )$
+#! @Returns a morphism in $\mathrm{Hom}(a, a \times 1)$
 #! @Arguments a, r
 DeclareOperation( "CartesianRightUnitorInverseWithGivenDirectProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
