@@ -97,7 +97,7 @@
   [1X1.1-7 LeftUnitor[101X
   
   [33X[1;0Y[29X[2XLeftUnitor[102X( [3Xa[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(1 \otimes a, a )[123X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(1 \otimes a, a)[123X[133X
   
   [33X[0;0YThe  argument  is  an  object  [23Xa[123X. The output is the left unitor [23X\lambda_a: 1
   \otimes a \rightarrow a[123X.[133X
@@ -105,7 +105,7 @@
   [1X1.1-8 LeftUnitorWithGivenTensorProduct[101X
   
   [33X[1;0Y[29X[2XLeftUnitorWithGivenTensorProduct[102X( [3Xa[103X, [3Xs[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(1 \otimes a, a )[123X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(1 \otimes a, a)[123X[133X
   
   [33X[0;0YThe  arguments  are an object [23Xa[123X and an object [23Xs = 1 \otimes a[123X. The output is
   the left unitor [23X\lambda_a: 1 \otimes a \rightarrow a[123X.[133X
@@ -129,7 +129,7 @@
   [1X1.1-11 RightUnitor[101X
   
   [33X[1;0Y[29X[2XRightUnitor[102X( [3Xa[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \otimes 1, a )[123X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \otimes 1, a)[123X[133X
   
   [33X[0;0YThe  argument  is  an  object  [23Xa[123X.  The  output is the right unitor [23X\rho_a: a
   \otimes 1 \rightarrow a[123X.[133X
@@ -137,7 +137,7 @@
   [1X1.1-12 RightUnitorWithGivenTensorProduct[101X
   
   [33X[1;0Y[29X[2XRightUnitorWithGivenTensorProduct[102X( [3Xa[103X, [3Xs[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \otimes 1, a )[123X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \otimes 1, a)[123X[133X
   
   [33X[0;0YThe  arguments  are an object [23Xa[123X and an object [23Xs = a \otimes 1[123X. The output is
   the right unitor [23X\rho_a: a \otimes 1 \rightarrow a[123X.[133X
@@ -145,7 +145,7 @@
   [1X1.1-13 RightUnitorInverse[101X
   
   [33X[1;0Y[29X[2XRightUnitorInverse[102X( [3Xa[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, a \otimes 1 )[123X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, a \otimes 1)[123X[133X
   
   [33X[0;0YThe  argument  is an object [23Xa[123X. The output is the inverse of the right unitor
   [23X\rho_a^{-1}: a \rightarrow a \otimes 1[123X.[133X
@@ -153,7 +153,7 @@
   [1X1.1-14 RightUnitorInverseWithGivenTensorProduct[101X
   
   [33X[1;0Y[29X[2XRightUnitorInverseWithGivenTensorProduct[102X( [3Xa[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, a \otimes 1 )[123X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, a \otimes 1)[123X[133X
   
   [33X[0;0YThe  arguments  are an object [23Xa[123X and an object [23Xr = a \otimes 1[123X. The output is
   the inverse of the right unitor [23X\rho_a^{-1}: a \rightarrow a \otimes 1[123X.[133X
