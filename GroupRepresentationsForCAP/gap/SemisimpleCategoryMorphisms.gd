@@ -151,11 +151,3 @@ DeclareAttribute( "SupportOfMorphismList",
 #! @Returns a vector space morphism 
 #! @Arguments alpha, i
 DeclareOperation( "Component", [ IsSemisimpleCategoryMorphism, IsObject ] );
-
-#! @Description
-#! The argument is a morphism <A>m</A> in a semisimple category.
-#! The output is a LaTeX string (without enclosing dollar signs) that may be used to print out <A>m</A> nicely.
-#! @Returns a string
-#! @Arguments m
-DeclareOperation( "LaTeXStringOp",
-        [ IsSemisimpleCategoryMorphism ] );

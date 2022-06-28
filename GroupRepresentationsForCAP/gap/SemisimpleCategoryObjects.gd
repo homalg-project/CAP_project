@@ -215,11 +215,3 @@ DeclareOperation( "TestZigZagIdentitiesForDual", [ IsSemisimpleCategoryObject ] 
 #! @Returns a boolean
 #! @Arguments L
 DeclareOperation( "TestZigZagIdentitiesForDualForAllObjectsInList", [ IsList ] );
-
-#! @Description
-#! The argument is an object <A>c</A> in a semisimple category.
-#! The output is a LaTeX string (without enclosing dollar signs) that may be used to print out <A>c</A> nicely.
-#! @Returns a string
-#! @Arguments c
-DeclareOperation( "LaTeXStringOp",
-        [ IsSemisimpleCategoryObject ] );

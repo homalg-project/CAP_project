@@ -330,7 +330,7 @@ InstallMethod( Display,
 end );
 
 ##
-InstallMethod( LaTeXStringOp,
+InstallMethod( LaTeXOutput,
         "for a morphism in a semisimple category",
         [ IsSemisimpleCategoryMorphism ],
         
@@ -361,11 +361,11 @@ InstallMethod( LaTeXStringOp,
             
             if NrRows( matrix ) = 1 and NrCols( matrix ) = 1 then
                 
-                Add( diag_entries, LaTeXStringOp( matrix[1, 1] ) );
+                Add( diag_entries, LaTeXOutput( matrix[1, 1] ) );
                 
             else
                 
-                Add( diag_entries, LaTeXStringOp( matrix ) );
+                Add( diag_entries, LaTeXOutput( matrix ) );
                 
             fi;
             

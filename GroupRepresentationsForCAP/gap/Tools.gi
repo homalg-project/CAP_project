@@ -77,7 +77,7 @@ InstallGlobalFunction( LaTeXStringOfSemisimpleCategoryObjectList,
         
         if IsShowable( "text/latex", irr ) then
             
-            Append( string, LaTeXStringOp( irr ) );
+            Append( string, LaTeXOutput( irr ) );
             
         else
             
