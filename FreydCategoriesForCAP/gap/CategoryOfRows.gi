@@ -1404,12 +1404,24 @@ InstallMethod( LaTeXOutput,
     matrix := LaTeXStringOp( UnderlyingMatrix( mor ) );
     
     if ValueOption( "OnlyDatum" ) = true then
-        
-        return matrix;
-        
+       
+       return Concatenation(
+        """{\color{blue}{""",
+        matrix,
+        """}}"""
+      );
+      
+    else
+      
+      return Concatenation(
+        LaTeXOutput( Source( mor ) ),
+        """{\color{blue}{\xrightarrow{""",
+        matrix,
+        """}}}""",
+        LaTeXOutput( Range( mor ) )
+      );
+      
     fi;
-    
-    return Concatenation( LaTeXOutput( Source( mor ) ), matrix, LaTeXOutput( Range( mor ) ) );
     
 end );
 
