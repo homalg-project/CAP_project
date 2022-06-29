@@ -130,6 +130,36 @@ InstallMethod( Display,
     
 end );
 
+##
+InstallMethod( LaTeXOutput,
+          [ IsVectorSpaceMorphism ],
+          
+  function( vector_space_morphism )
+    local matrix;
+    
+    matrix := LaTeXOutput( UnderlyingMatrix( vector_space_morphism ) );
+    
+    if ValueOption( "OnlyDatum" ) = true then
+       
+       return Concatenation(
+        """{\color{blue}{""",
+        matrix,
+        """}}"""
+      );
+      
+    else
+      
+      return Concatenation(
+        LaTeXOutput( Source( vector_space_morphism ) ),
+        """{\color{blue}{\xrightarrow{""",
+        matrix,
+        """}}}""",
+        LaTeXOutput( Range( vector_space_morphism ) )
+      );
+      
+    fi;
+    
+end );
 
 ####################################
 ##

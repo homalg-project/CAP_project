@@ -101,6 +101,16 @@ InstallMethod( Display,
     
 end );
 
+##
+InstallMethod( LaTeXOutput,
+               [ IsVectorSpaceObject ],
+               
+  function( vector_space_object )
+    
+    return Concatenation( LaTeXOutput( UnderlyingRing( CapCategory( vector_space_object ) ) ), "^{1 \\times ", String( Dimension( vector_space_object ) ), "}" );
+    
+end );
+
 ####################################
 ##
 ## Convenience
