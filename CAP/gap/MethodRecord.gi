@@ -449,6 +449,44 @@ PreCompose := rec(
   compatible_with_congruence_of_morphisms := true,
 ),
 
+PreComposeList := rec(
+  filter_list := [ "category", "list_of_morphisms" ],
+  input_arguments_names := [ "cat", "list_of_morphisms" ],
+  pre_function := function( cat, list_of_morphisms )
+    local is_equal_for_objects, i;
+    
+    if IsEmpty( list_of_morphisms ) then
+        
+        return [ false, "the list of morphisms must not be empty" ];
+        
+    fi;
+    
+    for i in [ 1 .. Length( list_of_morphisms ) - 1 ] do
+        
+        is_equal_for_objects := IsEqualForObjects( Range( list_of_morphisms[i] ), Source( list_of_morphisms[i + 1] ) );
+        
+        if is_equal_for_objects = fail then
+            
+            return [ false, "cannot decide whether morphisms are composable" ];
+            
+        elif is_equal_for_objects = false then
+            
+            return [ false, "morphisms not composable" ];
+            
+        fi;
+        
+    od;
+    
+    return [ true ];
+    
+  end,
+  return_type := "morphism",
+  output_source_getter_string := "Source( list_of_morphisms[1] )",
+  output_range_getter_string := "Range( Last( list_of_morphisms ) )",
+  dual_operation := "PostComposeList",
+  compatible_with_congruence_of_morphisms := true,
+),
+
 PostCompose := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   io_type := [ [ "beta", "alpha" ], [ "alpha_source", "beta_range" ] ],
@@ -473,6 +511,44 @@ PostCompose := rec(
   
   return_type := "morphism",
   dual_operation := "PreCompose",
+  compatible_with_congruence_of_morphisms := true,
+),
+
+PostComposeList := rec(
+  filter_list := [ "category", "list_of_morphisms" ],
+  input_arguments_names := [ "cat", "list_of_morphisms" ],
+  pre_function := function( cat, list_of_morphisms )
+    local is_equal_for_objects, i;
+    
+    if IsEmpty( list_of_morphisms ) then
+        
+        return [ false, "the list of morphisms must not be empty" ];
+        
+    fi;
+    
+    for i in [ 1 .. Length( list_of_morphisms ) - 1 ] do
+        
+        is_equal_for_objects := IsEqualForObjects( Range( list_of_morphisms[i + 1] ), Source( list_of_morphisms[i] ) );
+        
+        if is_equal_for_objects = fail then
+            
+            return [ false, "cannot decide whether morphisms are composable" ];
+            
+        elif is_equal_for_objects = false then
+            
+            return [ false, "morphisms not composable" ];
+            
+        fi;
+        
+    od;
+    
+    return [ true ];
+    
+  end,
+  return_type := "morphism",
+  output_source_getter_string := "Source( Last( list_of_morphisms ) )",
+  output_range_getter_string := "Range( list_of_morphisms[1] )",
+  dual_operation := "PreComposeList",
   compatible_with_congruence_of_morphisms := true,
 ),
 

@@ -3299,6 +3299,25 @@ DeclareOperation( "AddPostCompose",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `PostComposeList`.
+#! $F: ( list_of_morphisms ) \mapsto \mathtt{PostComposeList}(list_of_morphisms)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddPostComposeList",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddPostComposeList",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddPostComposeList",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddPostComposeList",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `PreCompose`.
 #! $F: ( alpha, beta ) \mapsto \mathtt{PreCompose}(alpha, beta)$.
 #! @Returns nothing
@@ -3313,6 +3332,25 @@ DeclareOperation( "AddPreCompose",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddPreCompose",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `PreComposeList`.
+#! $F: ( list_of_morphisms ) \mapsto \mathtt{PreComposeList}(list_of_morphisms)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddPreComposeList",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddPreComposeList",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddPreComposeList",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddPreComposeList",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

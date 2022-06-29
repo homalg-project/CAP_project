@@ -491,23 +491,7 @@ InstallMethod( PreCompose,
                
   function( morphism_list )
     
-    if IsEmpty( morphism_list ) then
-        
-        Error( "non-empty list expected" );
-        
-    fi;
-    
-    return PreComposeList( CapCategory( morphism_list[1] ), morphism_list );
-    
-end );
-
-##
-InstallMethodForCompilerForCAP( PreComposeList,
-                                [ IsCapCategory, IsList ],
-                                
-  function( cat, morphism_list )
-    
-    return Iterated( morphism_list, { alpha, beta } -> PreCompose( cat, alpha, beta ) );
+    return PreComposeList( morphism_list );
     
 end );
 
@@ -517,23 +501,7 @@ InstallMethod( PostCompose,
                
   function( morphism_list )
     
-    if IsEmpty( morphism_list ) then
-        
-        Error( "non-empty list expected" );
-        
-    fi;
-    
-    return PostComposeList( CapCategory( morphism_list[1] ), morphism_list );
-    
-end );
-
-##
-InstallMethodForCompilerForCAP( PostComposeList,
-                                [ IsCapCategory, IsList ],
-                                
-  function( cat, morphism_list )
-    
-    return Iterated( morphism_list, { beta, alpha } -> PostCompose( cat, beta, alpha ) );
+    return PostComposeList( morphism_list );
     
 end );
 

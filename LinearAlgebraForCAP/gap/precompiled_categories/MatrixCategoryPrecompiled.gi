@@ -317,7 +317,7 @@ function ( cat_1, a_1, b_1 )
 end
 ########
         
-    , 15772 : IsPrecompiledDerivation := true );
+    , 16378 : IsPrecompiledDerivation := true );
     
     ##
     AddCoDualityTensorProductCompatibilityMorphismWithGivenObjects( cat,
@@ -373,7 +373,7 @@ function ( cat_1, s_1, a_1, b_1, r_1 )
 end
 ########
         
-    , 15271 : IsPrecompiledDerivation := true );
+    , 15877 : IsPrecompiledDerivation := true );
     
     ##
     AddCoLambdaElimination( cat,
@@ -399,7 +399,7 @@ function ( cat_1, a_1, b_1, alpha_1 )
 end
 ########
         
-    , 3315 : IsPrecompiledDerivation := true );
+    , 3416 : IsPrecompiledDerivation := true );
     
     ##
     AddCoLambdaIntroduction( cat,
@@ -430,7 +430,7 @@ function ( cat_1, alpha_1 )
 end
 ########
         
-    , 5125 : IsPrecompiledDerivation := true );
+    , 5327 : IsPrecompiledDerivation := true );
     
     ##
     AddCoRankMorphism( cat,
@@ -461,7 +461,7 @@ function ( cat_1, a_1 )
 end
 ########
         
-    , 5929 : IsPrecompiledDerivation := true );
+    , 6232 : IsPrecompiledDerivation := true );
     
     ##
     AddCoTraceMap( cat,
@@ -492,7 +492,7 @@ function ( cat_1, alpha_1 )
 end
 ########
         
-    , 5828 : IsPrecompiledDerivation := true );
+    , 6131 : IsPrecompiledDerivation := true );
     
     ##
     AddCoastrictionToImage( cat,
@@ -585,7 +585,7 @@ function ( cat_1, a_1, b_1 )
 end
 ########
         
-    , 2811 : IsPrecompiledDerivation := true );
+    , 2912 : IsPrecompiledDerivation := true );
     
     ##
     AddCoclosedCoevaluationMorphismWithGivenSource( cat,
@@ -618,7 +618,7 @@ function ( cat_1, a_1, b_1, s_1 )
 end
 ########
         
-    , 2408 : IsPrecompiledDerivation := true );
+    , 2509 : IsPrecompiledDerivation := true );
     
     ##
     AddCoclosedEvaluationForCoDual( cat,
@@ -673,7 +673,7 @@ function ( cat_1, a_1, b_1 )
 end
 ########
         
-    , 2610 : IsPrecompiledDerivation := true );
+    , 2711 : IsPrecompiledDerivation := true );
     
     ##
     AddCoclosedEvaluationMorphismWithGivenRange( cat,
@@ -700,7 +700,7 @@ function ( cat_1, a_1, b_1, r_1 )
 end
 ########
         
-    , 2207 : IsPrecompiledDerivation := true );
+    , 2308 : IsPrecompiledDerivation := true );
     
     ##
     AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( cat,
@@ -772,7 +772,7 @@ function ( cat_1, a_1, b_1 )
 end
 ########
         
-    , 2811 : IsPrecompiledDerivation := true );
+    , 2912 : IsPrecompiledDerivation := true );
     
     ##
     AddCoevaluationMorphismWithGivenRange( cat,
@@ -805,7 +805,7 @@ function ( cat_1, a_1, b_1, r_1 )
 end
 ########
         
-    , 2408 : IsPrecompiledDerivation := true );
+    , 2509 : IsPrecompiledDerivation := true );
     
     ##
     AddCoimageObject( cat,
@@ -1414,7 +1414,7 @@ function ( cat_1, a_1, b_1 )
 end
 ########
         
-    , 2610 : IsPrecompiledDerivation := true );
+    , 2711 : IsPrecompiledDerivation := true );
     
     ##
     AddEvaluationMorphismWithGivenSource( cat,
@@ -1441,7 +1441,7 @@ function ( cat_1, a_1, b_1, s_1 )
 end
 ########
         
-    , 2207 : IsPrecompiledDerivation := true );
+    , 2308 : IsPrecompiledDerivation := true );
     
     ##
     AddFiberProduct( cat,
@@ -1939,7 +1939,7 @@ function ( cat_1, alpha_1, beta_1 )
 end
 ########
         
-    , 1810 : IsPrecompiledDerivation := true );
+    , 1911 : IsPrecompiledDerivation := true );
     
     ##
     AddInternalCoHomOnMorphismsWithGivenInternalCoHoms( cat,
@@ -1955,7 +1955,7 @@ function ( cat_1, s_1, alpha_1, beta_1, r_1 )
 end
 ########
         
-    , 1205 : IsPrecompiledDerivation := true );
+    , 1306 : IsPrecompiledDerivation := true );
     
     ##
     AddInternalCoHomOnObjects( cat,
@@ -2028,7 +2028,7 @@ function ( cat_1, list_1 )
 end
 ########
         
-    , 14160 : IsPrecompiledDerivation := true );
+    , 14665 : IsPrecompiledDerivation := true );
     
     ##
     AddInternalCoHomTensorProductCompatibilityMorphismInverse( cat,
@@ -2090,7 +2090,7 @@ function ( cat_1, list_1 )
 end
 ########
         
-    , 14363 : IsPrecompiledDerivation := true );
+    , 14868 : IsPrecompiledDerivation := true );
     
     ##
     AddInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects( cat,
@@ -2152,7 +2152,7 @@ function ( cat_1, source_1, list_1, range_1 )
 end
 ########
         
-    , 13156 : IsPrecompiledDerivation := true );
+    , 13661 : IsPrecompiledDerivation := true );
     
     ##
     AddInternalCoHomTensorProductCompatibilityMorphismWithGivenObjects( cat,
@@ -2213,7 +2213,7 @@ function ( cat_1, source_1, list_1, range_1 )
 end
 ########
         
-    , 12953 : IsPrecompiledDerivation := true );
+    , 13458 : IsPrecompiledDerivation := true );
     
     ##
     AddInternalCoHomToTensorProductAdjunctionMap( cat,
@@ -2240,7 +2240,7 @@ function ( cat_1, a_1, b_1, f_1 )
 end
 ########
         
-    , 3112 : IsPrecompiledDerivation := true );
+    , 3213 : IsPrecompiledDerivation := true );
     
     ##
     AddInternalHomOnMorphisms( cat,
@@ -2256,7 +2256,7 @@ function ( cat_1, alpha_1, beta_1 )
 end
 ########
         
-    , 1810 : IsPrecompiledDerivation := true );
+    , 1911 : IsPrecompiledDerivation := true );
     
     ##
     AddInternalHomOnMorphismsWithGivenInternalHoms( cat,
@@ -2272,7 +2272,7 @@ function ( cat_1, s_1, alpha_1, beta_1, r_1 )
 end
 ########
         
-    , 1205 : IsPrecompiledDerivation := true );
+    , 1306 : IsPrecompiledDerivation := true );
     
     ##
     AddInternalHomOnObjects( cat,
@@ -2311,7 +2311,7 @@ function ( cat_1, b_1, c_1, g_1 )
 end
 ########
         
-    , 3112 : IsPrecompiledDerivation := true );
+    , 3213 : IsPrecompiledDerivation := true );
     
     ##
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat,
@@ -3065,7 +3065,7 @@ function ( cat_1, a_1 )
 end
 ########
         
-    , 5025 : IsPrecompiledDerivation := true );
+    , 5227 : IsPrecompiledDerivation := true );
     
     ##
     AddIsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom( cat,
@@ -3096,7 +3096,7 @@ function ( cat_1, a_1, s_1 )
 end
 ########
         
-    , 5024 : IsPrecompiledDerivation := true );
+    , 5226 : IsPrecompiledDerivation := true );
     
     ##
     AddIsomorphismFromInternalCoHomToTensorProductWithCoDualObject( cat,
@@ -3148,7 +3148,7 @@ function ( cat_1, a_1 )
 end
 ########
         
-    , 2914 : IsPrecompiledDerivation := true );
+    , 3015 : IsPrecompiledDerivation := true );
     
     ##
     AddIsomorphismFromInternalHomToObjectWithGivenInternalHom( cat,
@@ -3172,7 +3172,7 @@ function ( cat_1, a_1, s_1 )
 end
 ########
         
-    , 2913 : IsPrecompiledDerivation := true );
+    , 3014 : IsPrecompiledDerivation := true );
     
     ##
     AddIsomorphismFromInternalHomToTensorProductWithDualObject( cat,
@@ -3279,7 +3279,7 @@ function ( cat_1, a_1 )
 end
 ########
         
-    , 2914 : IsPrecompiledDerivation := true );
+    , 3015 : IsPrecompiledDerivation := true );
     
     ##
     AddIsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom( cat,
@@ -3303,7 +3303,7 @@ function ( cat_1, a_1, r_1 )
 end
 ########
         
-    , 2913 : IsPrecompiledDerivation := true );
+    , 3014 : IsPrecompiledDerivation := true );
     
     ##
     AddIsomorphismFromObjectToInternalHom( cat,
@@ -3334,7 +3334,7 @@ function ( cat_1, a_1 )
 end
 ########
         
-    , 5025 : IsPrecompiledDerivation := true );
+    , 5227 : IsPrecompiledDerivation := true );
     
     ##
     AddIsomorphismFromObjectToInternalHomWithGivenInternalHom( cat,
@@ -3365,7 +3365,7 @@ function ( cat_1, a_1, r_1 )
 end
 ########
         
-    , 5024 : IsPrecompiledDerivation := true );
+    , 5226 : IsPrecompiledDerivation := true );
     
     ##
     AddIsomorphismFromPushoutToCokernelOfDiagonalDifference( cat,
@@ -3609,7 +3609,7 @@ function ( cat_1, a_1, b_1, alpha_1 )
 end
 ########
         
-    , 3315 : IsPrecompiledDerivation := true );
+    , 3416 : IsPrecompiledDerivation := true );
     
     ##
     AddLambdaIntroduction( cat,
@@ -3640,7 +3640,7 @@ function ( cat_1, alpha_1 )
 end
 ########
         
-    , 5125 : IsPrecompiledDerivation := true );
+    , 5327 : IsPrecompiledDerivation := true );
     
     ##
     AddLeftDistributivityExpanding( cat,
@@ -3905,7 +3905,7 @@ function ( cat_1, a_1, b_1, c_1 )
 end
 ########
         
-    , 12155 : IsPrecompiledDerivation := true );
+    , 12660 : IsPrecompiledDerivation := true );
     
     ##
     AddMonoidalPostCoComposeMorphismWithGivenObjects( cat,
@@ -3953,7 +3953,7 @@ function ( cat_1, s_1, a_1, b_1, c_1, r_1 )
 end
 ########
         
-    , 11148 : IsPrecompiledDerivation := true );
+    , 11653 : IsPrecompiledDerivation := true );
     
     ##
     AddMonoidalPostComposeMorphism( cat,
@@ -4002,7 +4002,7 @@ function ( cat_1, a_1, b_1, c_1 )
 end
 ########
         
-    , 12155 : IsPrecompiledDerivation := true );
+    , 12660 : IsPrecompiledDerivation := true );
     
     ##
     AddMonoidalPostComposeMorphismWithGivenObjects( cat,
@@ -4051,7 +4051,7 @@ function ( cat_1, s_1, a_1, b_1, c_1, r_1 )
 end
 ########
         
-    , 11148 : IsPrecompiledDerivation := true );
+    , 11653 : IsPrecompiledDerivation := true );
     
     ##
     AddMonoidalPreCoComposeMorphism( cat,
@@ -4110,7 +4110,7 @@ function ( cat_1, a_1, b_1, c_1 )
 end
 ########
         
-    , 12958 : IsPrecompiledDerivation := true );
+    , 13463 : IsPrecompiledDerivation := true );
     
     ##
     AddMonoidalPreCoComposeMorphismWithGivenObjects( cat,
@@ -4169,7 +4169,7 @@ function ( cat_1, s_1, a_1, b_1, c_1, r_1 )
 end
 ########
         
-    , 11951 : IsPrecompiledDerivation := true );
+    , 12456 : IsPrecompiledDerivation := true );
     
     ##
     AddMonoidalPreComposeMorphism( cat,
@@ -4230,7 +4230,7 @@ function ( cat_1, a_1, b_1, c_1 )
 end
 ########
         
-    , 12958 : IsPrecompiledDerivation := true );
+    , 13463 : IsPrecompiledDerivation := true );
     
     ##
     AddMonoidalPreComposeMorphismWithGivenObjects( cat,
@@ -4291,7 +4291,7 @@ function ( cat_1, s_1, a_1, b_1, c_1, r_1 )
 end
 ########
         
-    , 11951 : IsPrecompiledDerivation := true );
+    , 12456 : IsPrecompiledDerivation := true );
     
     ##
     AddMonomorphismIntoSomeInjectiveObject( cat,
@@ -4876,6 +4876,24 @@ end
     , 101 : IsPrecompiledDerivation := true );
     
     ##
+    AddPostComposeList( cat,
+        
+########
+function ( cat_1, list_of_morphisms_1 )
+    local morphism_attr_1_1;
+    morphism_attr_1_1 := Iterated( List( list_of_morphisms_1, UnderlyingMatrix ), function ( beta_2, alpha_2 )
+            return alpha_2 * beta_2;
+        end );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+end
+########
+        
+    , 102 : IsPrecompiledDerivation := true );
+    
+    ##
     AddPreCompose( cat,
         
 ########
@@ -4886,6 +4904,24 @@ end
 ########
         
     , 100 );
+    
+    ##
+    AddPreComposeList( cat,
+        
+########
+function ( cat_1, list_of_morphisms_1 )
+    local morphism_attr_1_1;
+    morphism_attr_1_1 := Iterated( List( list_of_morphisms_1, UnderlyingMatrix ), function ( alpha_2, beta_2 )
+            return alpha_2 * beta_2;
+        end );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+end
+########
+        
+    , 101 : IsPrecompiledDerivation := true );
     
     ##
     AddProjectionInFactorOfDirectProduct( cat,
@@ -5197,7 +5233,7 @@ function ( cat_1, a_1 )
 end
 ########
         
-    , 5929 : IsPrecompiledDerivation := true );
+    , 6232 : IsPrecompiledDerivation := true );
     
     ##
     AddRightDistributivityExpanding( cat,
@@ -5542,7 +5578,7 @@ function ( cat_1, a_1, b_1 )
 end
 ########
         
-    , 15772 : IsPrecompiledDerivation := true );
+    , 16378 : IsPrecompiledDerivation := true );
     
     ##
     AddTensorProductDualityCompatibilityMorphismWithGivenObjects( cat,
@@ -5600,7 +5636,7 @@ function ( cat_1, s_1, a_1, b_1, r_1 )
 end
 ########
         
-    , 15271 : IsPrecompiledDerivation := true );
+    , 15877 : IsPrecompiledDerivation := true );
     
     ##
     AddTensorProductInternalHomCompatibilityMorphism( cat,
@@ -5663,7 +5699,7 @@ function ( cat_1, list_1 )
 end
 ########
         
-    , 14160 : IsPrecompiledDerivation := true );
+    , 14665 : IsPrecompiledDerivation := true );
     
     ##
     AddTensorProductInternalHomCompatibilityMorphismInverse( cat,
@@ -5727,7 +5763,7 @@ function ( cat_1, list_1 )
 end
 ########
         
-    , 14363 : IsPrecompiledDerivation := true );
+    , 14868 : IsPrecompiledDerivation := true );
     
     ##
     AddTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects( cat,
@@ -5791,7 +5827,7 @@ function ( cat_1, source_1, list_1, range_1 )
 end
 ########
         
-    , 13156 : IsPrecompiledDerivation := true );
+    , 13661 : IsPrecompiledDerivation := true );
     
     ##
     AddTensorProductInternalHomCompatibilityMorphismWithGivenObjects( cat,
@@ -5854,7 +5890,7 @@ function ( cat_1, source_1, list_1, range_1 )
 end
 ########
         
-    , 12953 : IsPrecompiledDerivation := true );
+    , 13458 : IsPrecompiledDerivation := true );
     
     ##
     AddTensorProductOnMorphisms( cat,
@@ -5927,7 +5963,7 @@ function ( cat_1, c_1, b_1, g_1 )
 end
 ########
         
-    , 4822 : IsPrecompiledDerivation := true );
+    , 5024 : IsPrecompiledDerivation := true );
     
     ##
     AddTensorProductToInternalHomAdjunctionMap( cat,
@@ -5960,7 +5996,7 @@ function ( cat_1, a_1, b_1, f_1 )
 end
 ########
         
-    , 4822 : IsPrecompiledDerivation := true );
+    , 5024 : IsPrecompiledDerivation := true );
     
     ##
     AddTensorUnit( cat,
@@ -6043,7 +6079,7 @@ function ( cat_1, alpha_1 )
 end
 ########
         
-    , 5828 : IsPrecompiledDerivation := true );
+    , 6131 : IsPrecompiledDerivation := true );
     
     ##
     AddUniversalMorphismFromCoproduct( cat,
@@ -6501,7 +6537,7 @@ function ( cat_1, t_1, a_1, alpha_1 )
 end
 ########
         
-    , 5126 : IsPrecompiledDerivation := true );
+    , 5328 : IsPrecompiledDerivation := true );
     
     ##
     AddUniversalPropertyOfDual( cat,
@@ -6533,7 +6569,7 @@ function ( cat_1, t_1, a_1, alpha_1 )
 end
 ########
         
-    , 5126 : IsPrecompiledDerivation := true );
+    , 5328 : IsPrecompiledDerivation := true );
     
     ##
     AddZeroMorphism( cat,
