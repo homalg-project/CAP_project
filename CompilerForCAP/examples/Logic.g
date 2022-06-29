@@ -112,4 +112,14 @@ Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
 #!     return [ 1, 2, 3 ];
 #! end
 
+func := function ( x )
+  return Last( [ 3, 2, 1 ] ); end;;
+
+tree := ENHANCED_SYNTAX_TREE( func );;
+tree := CapJitAppliedLogic( tree );;
+Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
+#! function ( x_1 )
+#!     return 1;
+#! end
+
 #! @EndExample

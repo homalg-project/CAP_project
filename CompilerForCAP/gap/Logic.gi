@@ -77,7 +77,7 @@ CapJitAddLogicFunction( function ( tree )
   local pre_func;
     
     Info( InfoCapJit, 1, "####" );
-    Info( InfoCapJit, 1, "Apply logic for accessing elements of lists." );
+    Info( InfoCapJit, 1, "Apply logic for accessing elements of literal lists." );
     
     pre_func := function ( tree, additional_arguments )
       local args;
@@ -85,6 +85,29 @@ CapJitAddLogicFunction( function ( tree )
         if CapJitIsCallToGlobalFunction( tree, "[]" ) and tree.args.1.type = "EXPR_LIST" and tree.args.2.type = "EXPR_INT" then
             
             return tree.args.1.list.(tree.args.2.value);
+            
+        fi;
+        
+        return tree;
+        
+    end;
+    
+    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+    
+end );
+
+# Last( [ a_1, ..., a_n ] ) => a_n
+CapJitAddLogicFunction( function ( tree )
+  local pre_func;
+    
+    Info( InfoCapJit, 1, "####" );
+    Info( InfoCapJit, 1, "Apply logic for accessing the last element of a literal list." );
+    
+    pre_func := function ( tree, additional_arguments )
+        
+        if CapJitIsCallToGlobalFunction( tree, "Last" ) and tree.args.1.type = "EXPR_LIST" then
+            
+            return tree.args.1.list.(tree.args.1.list.length);
             
         fi;
         
