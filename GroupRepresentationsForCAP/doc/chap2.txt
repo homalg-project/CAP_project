@@ -258,16 +258,7 @@
   category  [23X\bigoplus_{i  \in  I}  k\mathrm{-vec}[123X  and  an object [23Xi \in I[123X. The
   output is [23X\alpha_i[123X.[133X
   
-  [1X2.4-2 LaTeXStringOp[101X
-  
-  [33X[1;0Y[29X[2XLaTeXStringOp[102X( [3Xm[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya string[133X
-  
-  [33X[0;0YThe argument is a morphism [3Xm[103X in a semisimple category. The output is a LaTeX
-  string  (without  enclosing  dollar  signs)  that may be used to print out [3Xm[103X
-  nicely.[133X
-  
-  [1X2.4-3 NormalizeSemisimpleCategoryObjectList[101X
+  [1X2.4-2 NormalizeSemisimpleCategoryObjectList[101X
   
   [33X[1;0Y[29X[2XNormalizeSemisimpleCategoryObjectList[102X( [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
@@ -282,7 +273,7 @@
   
   [30X    [33X[0;6Y[23Xi_j[123X is strictly less than [23Xi_{j+1}[123X.[133X
   
-  [1X2.4-4 Multiplicity[101X
+  [1X2.4-3 Multiplicity[101X
   
   [33X[1;0Y[29X[2XMultiplicity[102X( [3Xv[103X, [3Xi[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan integer[133X
@@ -291,7 +282,7 @@
   semisimple category [23X\bigoplus_{i \in I} k\mathrm{-vec}[123X, and an element [23Xi \in
   I[123X. The output is the integer [23Xa_i[123X.[133X
   
-  [1X2.4-5 Component[101X
+  [1X2.4-4 Component[101X
   
   [33X[1;0Y[29X[2XComponent[102X( [3Xv[103X, [3Xi[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya vector space object[133X
@@ -300,7 +291,7 @@
   semisimple category [23X\bigoplus_{i \in I} k\mathrm{-vec}[123X, and an element [23Xi \in
   I[123X. The output is the [23Xk[123X-vector space object [23Xk^{a_i}[123X in Cap's Matrix Category.[133X
   
-  [1X2.4-6 TestPentagonIdentity[101X
+  [1X2.4-5 TestPentagonIdentity[101X
   
   [33X[1;0Y[29X[2XTestPentagonIdentity[102X( [3Xv_1[103X, [3Xv_2[103X, [3Xv_3[103X, [3Xv_4[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -309,7 +300,7 @@
   a  category.  The  output is true if the pentagon identity holds for those 4
   objects, false otherwise.[133X
   
-  [1X2.4-7 TestPentagonIdentityForAllQuadruplesInList[101X
+  [1X2.4-6 TestPentagonIdentityForAllQuadruplesInList[101X
   
   [33X[1;0Y[29X[2XTestPentagonIdentityForAllQuadruplesInList[102X( [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -319,7 +310,7 @@
   output  is  true  if  the  pentagon identity holds for all those quadruples,
   false otherwise.[133X
   
-  [1X2.4-8 TestBraidingCompatability[101X
+  [1X2.4-7 TestBraidingCompatability[101X
   
   [33X[1;0Y[29X[2XTestBraidingCompatability[102X( [3Xv_1[103X, [3Xv_2[103X, [3Xv_3[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -328,7 +319,7 @@
   semisimple  category  [23X\bigoplus_{i \in I} k\mathrm{-vec}[123X. The output is true
   if the braiding compatabilities with the associator hold, false otherwise.[133X
   
-  [1X2.4-9 TestBraidingCompatabilityForAllTriplesInList[101X
+  [1X2.4-8 TestBraidingCompatabilityForAllTriplesInList[101X
   
   [33X[1;0Y[29X[2XTestBraidingCompatabilityForAllTriplesInList[102X( [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -338,7 +329,7 @@
   output  is true if the braiding compatabilities with the associator hold for
   all those triples false otherwise.[133X
   
-  [1X2.4-10 TestZigZagIdentitiesForDual[101X
+  [1X2.4-9 TestZigZagIdentitiesForDual[101X
   
   [33X[1;0Y[29X[2XTestZigZagIdentitiesForDual[102X( [3Xv[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -347,7 +338,7 @@
   category  [23X\bigoplus_{i  \in I} k\mathrm{-vec}[123X. The output is true if the zig
   zag identity for duals hold, false otherwise.[133X
   
-  [1X2.4-11 TestZigZagIdentitiesForDualForAllObjectsInList[101X
+  [1X2.4-10 TestZigZagIdentitiesForDualForAllObjectsInList[101X
   
   [33X[1;0Y[29X[2XTestZigZagIdentitiesForDualForAllObjectsInList[102X( [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -356,15 +347,6 @@
   a semisimple category [23X\bigoplus_{i \in I} k\mathrm{-vec}[123X. The output is true
   if  the  zig  zag  identity  for  duals  hold  for  all those objects, false
   otherwise.[133X
-  
-  [1X2.4-12 LaTeXStringOp[101X
-  
-  [33X[1;0Y[29X[2XLaTeXStringOp[102X( [3Xc[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya string[133X
-  
-  [33X[0;0YThe  argument is an object [3Xc[103X in a semisimple category. The output is a LaTeX
-  string  (without  enclosing  dollar  signs)  that may be used to print out [3Xc[103X
-  nicely.[133X
   
   
   [1X2.5 [33X[0;0YGAP Categories[133X[101X

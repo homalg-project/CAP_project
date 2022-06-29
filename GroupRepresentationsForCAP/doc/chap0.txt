@@ -6,10 +6,10 @@
               [1X Skeletal category of group representations for CAP [101X
   
   
-                                   2022.05-02
+                                   2022.06-01
   
   
-                                  17 May 2022
+                                  29 June 2022
   
   
                                 Sebastian Posur
@@ -98,17 +98,15 @@
       2.3-12 Dimension
     2.4 [33X[0;0YOperations[133X
       2.4-1 Component
-      2.4-2 LaTeXStringOp
-      2.4-3 NormalizeSemisimpleCategoryObjectList
-      2.4-4 Multiplicity
-      2.4-5 Component
-      2.4-6 TestPentagonIdentity
-      2.4-7 TestPentagonIdentityForAllQuadruplesInList
-      2.4-8 TestBraidingCompatability
-      2.4-9 TestBraidingCompatabilityForAllTriplesInList
-      2.4-10 TestZigZagIdentitiesForDual
-      2.4-11 TestZigZagIdentitiesForDualForAllObjectsInList
-      2.4-12 LaTeXStringOp
+      2.4-2 NormalizeSemisimpleCategoryObjectList
+      2.4-3 Multiplicity
+      2.4-4 Component
+      2.4-5 TestPentagonIdentity
+      2.4-6 TestPentagonIdentityForAllQuadruplesInList
+      2.4-7 TestBraidingCompatability
+      2.4-8 TestBraidingCompatabilityForAllTriplesInList
+      2.4-9 TestZigZagIdentitiesForDual
+      2.4-10 TestZigZagIdentitiesForDualForAllObjectsInList
     2.5 [33X[0;0YGAP Categories[133X
       2.5-1 IsSemisimpleCategoryMorphism
       2.5-2 IsSemisimpleCategoryObject
