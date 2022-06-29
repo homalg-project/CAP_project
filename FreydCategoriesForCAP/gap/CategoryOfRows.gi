@@ -1390,7 +1390,7 @@ InstallMethod( LaTeXOutput,
                
   function( obj )
     
-    return Concatenation( LaTeXStringOp( UnderlyingRing( CapCategory( obj ) ) ), "^{1 \\times ", String( RankOfObject( obj ) ), "}" );
+    return Concatenation( LaTeXOutput( UnderlyingRing( CapCategory( obj ) ) ), "^{1 \\times ", String( RankOfObject( obj ) ), "}" );
     
 end );
 
@@ -1401,7 +1401,7 @@ InstallMethod( LaTeXOutput,
   function( mor )
     local matrix;
     
-    matrix := LaTeXStringOp( UnderlyingMatrix( mor ) );
+    matrix := LaTeXOutput( UnderlyingMatrix( mor ) );
     
     if ValueOption( "OnlyDatum" ) = true then
        

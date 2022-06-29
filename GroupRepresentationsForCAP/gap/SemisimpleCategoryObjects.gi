@@ -470,7 +470,7 @@ InstallMethod( Display,
 end );
 
 ##
-InstallMethod( LaTeXStringOp,
+InstallMethod( LaTeXOutput,
         "for an object in a semisimple category",
         [ IsSemisimpleCategoryObject ],
         
