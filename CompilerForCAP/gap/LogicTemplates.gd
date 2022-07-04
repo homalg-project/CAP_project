@@ -16,7 +16,7 @@ DeclareGlobalFunction( "CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE" );
 #!   For a list of pre-installed logic templates, which can be used as guiding examples, see `CompilerForCAP/gap/LogicTemplates.gi`.
 #!   Logic templates are records with the following entries:
 #!     * `src_template` and `dst_template` (required): strings containing valid GAP code defining expressions
-#!     * `variable_names` (required): a list of strings
+#!     * `variable_names` (required): a list of strings (which must not be keywords in GAP)
 #!     * `variable_filters` (optional): a list of filters with the same length as `variable_names`, defaults to a list of `IsObject`
 #!     * `new_funcs` (optional): a list of lists of strings, defaults to the empty list
 #!     * `needed_packages` (optional): a list of pairs (i.e. lists with two entries) of strings, defaults to the empty list
@@ -53,7 +53,7 @@ DeclareGlobalFunction( "CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE" );
 #!       In that case, `src_template` is not parsed and `src_template_tree` is used when trying to find a match.
 #!       Variables in the sense of `variable_names` have to be given as syntax trees of type `SYNTAX_TREE_VARIABLE` with a unique `id`.
 #!       Setting `src_template` and `variable_names` is still required to have a readable representation of the template.
-#!       If `dst_template` cannot be expressed as valid GAP code, it can be in an analogous manner.
+#!       If `dst_template` cannot be expressed as valid GAP code, it can be handled in an analogous manner.
 #! @Arguments template
 DeclareGlobalFunction( "CapJitAddLogicTemplate" );
 

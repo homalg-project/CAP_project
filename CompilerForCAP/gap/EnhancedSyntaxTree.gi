@@ -522,17 +522,6 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                 
             fi;
             
-            if tree.type = "EXPR_REF_GVAR" and StartsWith( tree.gvar, "CAP_INTERNAL_JIT_TEMPLATE_VAR_" ) then
-                
-                tree := rec(
-                    type := "SYNTAX_TREE_VARIABLE",
-                    id := Int( ReplacedString( tree.gvar, "CAP_INTERNAL_JIT_TEMPLATE_VAR_", "" ) ),
-                );
-                
-                Assert( 0, tree.id <> fail );
-                
-            fi;
-            
             if CapJitIsCallToGlobalFunction( tree, "CAP_JIT_INTERNAL_EXPR_CASE" ) then
                 
                 Assert( 0, IsEvenInt( Length( tree.args ) ) );
@@ -879,7 +868,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
             
             tree := rec(
                 type := "EXPR_REF_GVAR",
-                gvar := Concatenation( "CAP_INTERNAL_JIT_TEMPLATE_VAR_", String( tree.id ) ),
+                gvar := Concatenation( "CAP_JIT_INTERNAL_TEMPLATE_VAR_", String( tree.id ) ),
             );
             # COVERAGE_IGNORE_BLOCK_END
             
