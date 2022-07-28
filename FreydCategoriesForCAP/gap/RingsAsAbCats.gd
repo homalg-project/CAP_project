@@ -36,9 +36,9 @@ DeclareAttribute( "RingAsCategoryUniqueObject",
                   IsRingAsCategory );
 
 DeclareOperation( "RingAsCategoryMorphism",
-                  [ IsObject, IsRingAsCategory ] );
+                  [ IsRingElement, IsRingAsCategory ] );
 
-KeyDependentOperation( "RingAsCategoryMorphism", IsRingAsCategory, IsObject, ReturnTrue );
+KeyDependentOperation( "RingAsCategoryMorphism", IsRingAsCategory, IsRingElement, ReturnTrue );
 
 
 ####################################
@@ -75,4 +75,4 @@ DeclareOperation( "\*",
 
 ##
 DeclareOperation( "\/",
-                  [ IsObject, IsRingAsCategory ] );
+                  [ IsRingElement, IsRingAsCategory ] );

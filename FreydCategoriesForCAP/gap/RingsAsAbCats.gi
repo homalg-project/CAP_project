@@ -65,7 +65,7 @@ end );
 
 ##
 InstallMethodForCompilerForCAP( RingAsCategoryMorphismOp,
-                                [ IsRingAsCategory, IsObject ],
+                                [ IsRingAsCategory, IsRingElement ],
                                 
   function( category, element )
     local unique_object;
@@ -84,7 +84,7 @@ end );
 
 ##
 InstallOtherMethod( RingAsCategoryMorphism,
-               [ IsObject, IsRingAsCategory ],
+               [ IsRingElement, IsRingAsCategory ],
                
   function( element, category )
     
@@ -431,7 +431,7 @@ InstallMethod( \=,
                IsCongruentForMorphisms );
 
 InstallMethod( \/,
-               [ IsObject, IsRingAsCategory ],
+               [ IsRingElement, IsRingAsCategory ],
                RingAsCategoryMorphism );
 
 ####################################

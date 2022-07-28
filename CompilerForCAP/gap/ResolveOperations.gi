@@ -7,7 +7,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree )
   local pre_func;
     
     pre_func := function ( tree, additional_arguments )
-      local operation, operation_name, info, category, resolved_tree, known_methods;
+      local operation, operation_name, info, category, resolved_tree, known_methods, known_method, similar_methods;
         
         if tree.type = "EXPR_FUNCCALL" and tree.funcref.type = "EXPR_REF_GVAR" then
             
@@ -88,6 +88,29 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree )
                             
                         fi;
                         
+                        known_method := known_methods[1];
+                        
+                        # look for GAP methods with the same number of arguments and first filter implying known_method.filters[1] or being implied by it
+                        similar_methods := Filtered( MethodsOperation( operation, tree.args.length ), m ->
+                            IS_SUBSET_FLAGS( WITH_IMPS_FLAGS( m.argFilt[1] ), WITH_IMPS_FLAGS( FLAGS_FILTER( known_method.filters[1] ) ) ) or
+                            IS_SUBSET_FLAGS( WITH_IMPS_FLAGS( FLAGS_FILTER( known_method.filters[1] ) ), WITH_IMPS_FLAGS( m.argFilt[1] ) )
+                        );
+                        
+                        # we should always find the method installed using Install(Other)MethodForCompilerForCAP
+                        Assert( 0, not IsEmpty( similar_methods ) );
+                        
+                        if Length( similar_methods ) > 1 then
+                            
+                            # COVERAGE_IGNORE_BLOCK_START
+                            Print(
+                                "WARNING: A method for ", operation_name, " with ", Length( known_method.filters ), " arguments and first filter ", known_method.filters[1], " was installed using Install(Other)MethodForCompilerForCAP ",
+                                "but additional methods with the same number of arguments and the same first filter (or a filter implying or being implied by it) have been installed (using Install(Other)Method). ",
+                                "If such an additional method is used in the code, CompilerForCAP will resolve the wrong method.\n"
+                            );
+                            # COVERAGE_IGNORE_BLOCK_END
+                            
+                        fi;
+                        
                         # precompile known methods and cache the result
                         
                         if not IsBound( category!.compiled_known_methods_trees ) then
@@ -104,7 +127,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree )
                         
                         if not IsBound( category!.compiled_known_methods_trees.(operation_name)[tree.args.length] ) then
                             
-                            category!.compiled_known_methods_trees.(operation_name)[tree.args.length] := CapJitCompiledFunctionAsEnhancedSyntaxTree( known_methods[1].method, category );
+                            category!.compiled_known_methods_trees.(operation_name)[tree.args.length] := CapJitCompiledFunctionAsEnhancedSyntaxTree( known_method.method, category );
                             
                         fi;
                         
