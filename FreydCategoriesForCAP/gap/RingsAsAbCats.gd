@@ -49,7 +49,19 @@ KeyDependentOperation( "RingAsCategoryMorphism", IsRingAsCategory, IsRingElement
 
 DeclareAttribute( "UnderlyingRingElement",
                   IsRingAsCategoryMorphism );
-CapJitAddTypeSignature( "UnderlyingRingElement", [ IsRingAsCategoryMorphism ], IsHomalgRingElement );
+CapJitAddTypeSignature( "UnderlyingRingElement", [ IsRingAsCategoryMorphism ], function ( input_types )
+    
+    if IsHomalgRing( UnderlyingRing( input_types[1].category ) ) then
+        
+        return rec( filter := IsHomalgRingElement );
+        
+    else
+        
+        return rec( filter := IsRingElement );
+        
+    fi;
+    
+end );
 
 DeclareAttribute( "UnderlyingRing",
                   IsRingAsCategory );
