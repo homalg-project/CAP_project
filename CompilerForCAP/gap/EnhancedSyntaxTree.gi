@@ -114,6 +114,13 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
         # convert lists to records
         if IsList( tree ) then
             
+            if not IsDenseList( tree ) then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Error( "non-dense lists are not supported by CompilerForCAP" );
+                
+            fi;
+            
             new_tree := rec(
                 type := "SYNTAX_TREE_LIST",
                 length := Length( tree ),

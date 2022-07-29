@@ -73,6 +73,7 @@ There are some requirements for the steps described above to be correct:
 * Since the compiler might change the order of statements, checking if a local variable (or list entry etc.) is bound is not safe.
 * For performance optimizations, the compiler might move expressions out of if/else statements, e.g. if they occur inside a (potentially
   expensive) `List` call. Thus, code inside if/else statements must execute without error even if moved outside of the if/else statement.
+* Non-dense lists are not supported.
 
 Additionally, there is no detection for recursive function calls, so resolving such a function call leads to an infinite loop.
 
