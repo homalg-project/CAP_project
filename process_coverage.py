@@ -7,6 +7,12 @@
 # c) calls of `TryNextMethod` leading to external code.
 #######################################################
 
+# This script applies three rules to all coverage*.json files below the current working directory:
+# a) Remove all coverage information of files not below the current working directory
+#    (this technically includes "tst/testall.g" because it is not referenced by an absolute path).
+# b) Strip the current working directory from the paths of files below the current working directory.
+# c) Ignore lines with one of the "COVERAGE_IGNORE_..." annotations (see below).
+
 import json
 import re
 import os
@@ -19,12 +25,16 @@ regex_return_void = re.compile("^\s*return;$")
 
 for coverage_filename in Path(".").glob("**/coverage*.json"):
     print("processing coverage file " + str(coverage_filename))
+    new_data = {}
+    new_data["coverage"] = {}
     with open(coverage_filename) as json_file:
         data = json.load(json_file)
         files = data["coverage"]
         for filename, lines_covered in files.items():
-            if filename.startswith(os.getcwd()):
+            if filename.startswith(os.getcwd() + "/"):
                 print(" processing code file " + filename)
+                # ignored lines will be delete from lines_covered in-place
+                new_data["coverage"][filename.replace(os.getcwd() + "/", "", 1)] = lines_covered
                 line_number = 0
                 ignoring = False
                 ignored_lines = []
@@ -77,4 +87,4 @@ for coverage_filename in Path(".").glob("**/coverage*.json"):
                         del lines_covered[str(line_number)]
     
     with open(coverage_filename, "w") as outfile:
-        json.dump(data, outfile, indent=0)
+        json.dump(new_data, outfile, indent=0)

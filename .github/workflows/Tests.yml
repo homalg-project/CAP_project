@@ -46,7 +46,7 @@ jobs:
           [ -d "Toposes" ] && make -C "Toposes" doc
           TERM=dumb make -C CAP_project -j $(nproc) --output-sync ci-test
           cp ./CAP_project/.codecov.yml ./
-          (cd CAP_project && LANG=C.UTF-8 python3 process_coverage_ignored_lines.py)
+          (cd CAP_project && LANG=C.UTF-8 python3 process_coverage.py)
           [ "$GITHUB_EVENT_NAME" != "schedule" ] && [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker-master:latest" ] && ./CAP_project/upload_codecov.sh
           git config --global user.name "Bot"
           git config --global user.email "empty"
