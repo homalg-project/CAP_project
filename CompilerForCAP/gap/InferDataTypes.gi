@@ -227,13 +227,27 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_LOAD_DEFERRED_TYPE_SIGNATURES", functio
 end );
 
 InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_TYPES", function ( gvar, input_types )
-  local input_filters, type_signatures, output_type;
+  local input_filters, info, type_signatures, output_type;
     
     input_filters := List( input_types, type -> type.filter );
     
     if IsCategory( ValueGlobal( gvar ) ) and Length( input_filters ) = 1 then
         
         return rec( filter := IsBool );
+        
+    fi;
+    
+    if gvar in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) then
+        
+        info := CAP_INTERNAL_METHOD_NAME_RECORD.(gvar);
+        
+        if IsSpecializationOfFilterList( info.filter_list, input_filters ) then
+            
+            Assert( 0, info.filter_list[1] = "category" );
+            
+            return CAP_JIT_INTERNAL_GET_DATA_TYPE_FROM_FILTER_OR_STRING( info.return_type, input_types[1].category );
+            
+        fi;
         
     fi;
     
