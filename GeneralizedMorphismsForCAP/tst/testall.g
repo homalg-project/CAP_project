@@ -11,6 +11,25 @@ options := rec(
     ),
 );
 
+# reverse RecNames 50% of the time to detect code relying on the order of RecNames
+if Random( RandomSource( IsMersenneTwister, NanosecondsSinceEpoch( ) ), [ false, true ] ) then
+    
+    Display( "Executing with reversed RecNames" );
+    
+    MakeReadWriteGlobal( "RecNames" );
+    
+    old_RecNames := RecNames;
+    
+    RecNames := record -> Reversed( old_RecNames( record ) );
+    
+    MakeReadOnlyGlobal( "RecNames" );
+    
+else
+    
+    Display( "Executing with non-reversed RecNames" );
+    
+fi;
+
 TestDirectory( DirectoriesPackageLibrary( "GeneralizedMorphismsForCAP", "tst" ), options );
 
 FORCE_QUIT_GAP( 1 ); # if we ever get here, there was an error
