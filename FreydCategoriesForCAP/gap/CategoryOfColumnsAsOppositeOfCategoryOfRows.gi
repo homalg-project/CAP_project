@@ -15,44 +15,55 @@ InstallMethod( CategoryOfColumnsAsOppositeOfCategoryOfRows,
                [ IsHomalgRing ],
                
   function( homalg_ring )
-    local rows, op, object_constructor, object_datum, morphism_constructor, morphism_datum, category_object_filter, wrapper;
+    local rows, op, object_constructor, modeling_tower_object_constructor, object_datum, modeling_tower_object_datum, morphism_constructor, modeling_tower_morphism_datum, morphism_datum, modeling_tower_morphism_constructor, category_object_filter, wrapper;
     
     rows := CategoryOfRows( homalg_ring : FinalizeCategory := true );
     
     op := Opposite( rows : only_primitive_operations := true, FinalizeCategory := true );
     
     ##
-    object_constructor := function( cat, underlying_object )
+    object_constructor := function( cat, rank )
         
         return ObjectifyObjectForCAPWithAttributes( rec( ), cat,
-                                                    RankOfObject, RankOfObject( Opposite( underlying_object ) ) );
+                                                    RankOfObject, rank );
         
     end;
     
-    ##
-    object_datum := function( cat, obj )
+    modeling_tower_object_constructor := function( cat, rank )
       local op, rows;
         
         op := ModelingCategory( cat );
         
         rows := Opposite( op );
         
-        return ObjectConstructor( op, CategoryOfRowsObject( rows, RankOfObject( obj ) ) );
+        return ObjectConstructor( op, CategoryOfRowsObject( rows, rank ) );
         
     end;
     
     ##
-    morphism_constructor := function( cat, source, underlying_morphism, range )
+    object_datum := function( cat, obj )
+        
+        return RankOfObject( obj );
+        
+    end;
+    
+    modeling_tower_object_datum := function( cat, obj )
+        
+        return RankOfObject( Opposite( obj ) );
+        
+    end;
+    
+    ##
+    morphism_constructor := function( cat, source, underlying_matrix, range )
         
         return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), cat,
                 source,
                 range,
-                UnderlyingMatrix, UnderlyingMatrix( Opposite( underlying_morphism ) ) );
+                UnderlyingMatrix, underlying_matrix );
         
     end;
     
-    ##
-    morphism_datum := function( cat, mor )
+    modeling_tower_morphism_constructor := function( cat, source, underlying_matrix, range )
       local op, rows, rows_morphism;
         
         op := ModelingCategory( cat );
@@ -61,17 +72,30 @@ InstallMethod( CategoryOfColumnsAsOppositeOfCategoryOfRows,
         
         rows_morphism := CategoryOfRowsMorphism(
             rows,
-            CategoryOfRowsObject( rows, RankOfObject( Range( mor ) ) ),
-            UnderlyingMatrix( mor ),
-            CategoryOfRowsObject( rows, RankOfObject( Source( mor ) ) )
+            Opposite( range ),
+            underlying_matrix,
+            Opposite( source )
         );
         
         return MorphismConstructor(
             op,
-            ObjectConstructor( op, Range( rows_morphism ) ),
+            source,
             rows_morphism,
-            ObjectConstructor( op, Source( rows_morphism ) )
+            range
         );
+        
+    end;
+    
+    ##
+    morphism_datum := function( cat, mor )
+        
+        return UnderlyingMatrix( mor );
+        
+    end;
+    
+    modeling_tower_morphism_datum := function( cat, mor )
+        
+        return UnderlyingMatrix( Opposite( mor ) );
         
     end;
     
@@ -94,6 +118,10 @@ InstallMethod( CategoryOfColumnsAsOppositeOfCategoryOfRows,
         object_datum := object_datum,
         morphism_constructor := morphism_constructor,
         morphism_datum := morphism_datum,
+        modeling_tower_object_constructor := modeling_tower_object_constructor,
+        modeling_tower_object_datum := modeling_tower_object_datum,
+        modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
+        modeling_tower_morphism_datum := modeling_tower_morphism_datum,
         only_primitive_operations := true,
     ) : FinalizeCategory := false );
     

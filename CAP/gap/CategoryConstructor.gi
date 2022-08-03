@@ -27,6 +27,8 @@ InstallMethod( CategoryConstructor,
         underlying_category_getter_string := IsString,
         underlying_object_getter_string := IsString,
         underlying_morphism_getter_string := IsString,
+        top_object_getter_string := IsString,
+        top_morphism_getter_string := IsString,
         generic_output_source_getter_string := IsString,
         generic_output_range_getter_string := IsString,
         create_func_bool := IsObject,
@@ -193,7 +195,7 @@ InstallMethod( CategoryConstructor,
                 
                 underlying_result := operation_name( underlying_arguments );
                 
-                return ObjectConstructor( cat, underlying_result );
+                return top_object_getter( cat, underlying_result );
                 
             end
         """,
@@ -209,7 +211,7 @@ InstallMethod( CategoryConstructor,
                     
                 else
                     
-                    return ObjectConstructor( cat, underlying_result );
+                    return top_object_getter( cat, underlying_result );
                     
                 fi;
                 
@@ -221,7 +223,7 @@ InstallMethod( CategoryConstructor,
                 
                 underlying_result := operation_name( underlying_arguments );
                 
-                return MorphismConstructor( cat, top_source, underlying_result, top_range );
+                return top_morphism_getter( cat, top_source, underlying_result, top_range );
                 
             end
         """,
@@ -237,7 +239,7 @@ InstallMethod( CategoryConstructor,
                     
                 else
                     
-                    return MorphismConstructor( cat, top_source, underlying_result, top_range );
+                    return top_morphism_getter( cat, top_source, underlying_result, top_range );
                     
                 fi;
                 
@@ -362,6 +364,29 @@ InstallMethod( CategoryConstructor,
             
         fi;
         
+        if StartsWith( info.return_type, "object" ) then
+            
+            if PositionSublist( func_string, "top_object_getter" ) <> fail then
+            
+                if IsBound( options.top_object_getter_string ) then
+                    
+                    func_string := ReplacedStringViaRecord( func_string, rec(
+                        top_object_getter := options.top_object_getter_string,
+                    ) );
+                    
+                else
+                    
+                    Display( "WARNING: option `top_object_getter_string` is not set in a call to `CategoryConstructor`, using default value `ObjectConstructor`. This fallback will not be supported after 2023.08.12." );
+                    func_string := ReplacedStringViaRecord( func_string, rec(
+                        top_object_getter := "ObjectConstructor",
+                    ) );
+                    
+                fi;
+                
+            fi;
+            
+        fi;
+        
         if StartsWith( info.return_type, "morphism" ) then
             
             if IsBound( info.output_source_getter_string ) and info.can_always_compute_output_source_getter then
@@ -397,6 +422,25 @@ InstallMethod( CategoryConstructor,
                 
                 Info( InfoCategoryConstructor, 3, "cannot compute source and range of ", name );
                 continue;
+                
+            fi;
+            
+            if PositionSublist( func_string, "top_morphism_getter" ) <> fail then
+            
+                if IsBound( options.top_morphism_getter_string ) then
+                    
+                    func_string := ReplacedStringViaRecord( func_string, rec(
+                        top_morphism_getter := options.top_morphism_getter_string,
+                    ) );
+                    
+                else
+                    
+                    Display( "WARNING: option `top_morphism_getter_string` is not set in a call to `CategoryConstructor`, using default value `MorphismConstructor`. This fallback will not be supported after 2023.08.12." );
+                    func_string := ReplacedStringViaRecord( func_string, rec(
+                        top_morphism_getter := "MorphismConstructor",
+                    ) );
+                    
+                fi;
                 
             fi;
             
