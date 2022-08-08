@@ -58,8 +58,8 @@ Thus, there is no penalty in writing high-level code: Using `CompilerForCAP`, an
 [date-img]: https://img.shields.io/endpoint?url=https://homalg-project.github.io/CAP_project/CompilerForCAP/badge_date.json&label=🔗%20released%20on&color=yellow
 [date-url]: https://homalg-project.github.io/CAP_project/CompilerForCAP/view_release.html
 
-[tests-img]: https://github.com/homalg-project/CAP_project/workflows/Tests/badge.svg?branch=master
-[tests-url]: https://github.com/homalg-project/CAP_project/actions?query=workflow%3ATests+branch%3Amaster
+[tests-img]: https://github.com/homalg-project/CAP_project/actions/workflows/Tests.yml/badge.svg?branch=master
+[tests-url]: https://github.com/homalg-project/CAP_project/actions/workflows/Tests.yml?query=branch%3Amaster
 
 [codecov-img]: https://codecov.io/gh/homalg-project/CAP_project/branch/master/graph/badge.svg?flag=CompilerForCAP
 [codecov-url]: https://codecov.io/gh/homalg-project/CAP_project/tree/master/CompilerForCAP
