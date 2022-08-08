@@ -230,9 +230,8 @@ InstallMethod( FreydCategoryMorphism,
 end );
 
 ##
-# Relax the conditions on source and range: they might not lie in the filter `IsFreydCategoryObject`, e.g. in the case of `LeftPresentationsAsFreydCategoryOfCategoryOfRows`
 InstallOtherMethodForCompilerForCAP( FreydCategoryMorphism,
-                                     [ IsFreydCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ],
+                                     [ IsFreydCategory, IsFreydCategoryObject, IsCapCategoryMorphism, IsFreydCategoryObject ],
                                      
   function( cat, source, morphism_datum, range )
     
@@ -311,9 +310,8 @@ InstallMethod( WitnessForBeingCongruentToZero,
     
 end );
 
-# Relax the condition on morphism: it might not lie in the filter `IsFreydCategoryMorphism`, e.g. in the case of `LeftPresentationsAsFreydCategoryOfCategoryOfRows`
 InstallOtherMethodForCompilerForCAP( WitnessForBeingCongruentToZero,
-                                     [ IsFreydCategory, IsCapCategoryMorphism ],
+                                     [ IsFreydCategory, IsFreydCategoryMorphism ],
                                      
   function( cat, morphism )
     
@@ -330,9 +328,8 @@ InstallMethod( MereExistenceOfWitnessForBeingCongruentToZero,
     
 end );
 
-# Relax the condition on morphism: it might not lie in the filter `IsFreydCategoryMorphism`, e.g. in the case of `LeftPresentationsAsFreydCategoryOfCategoryOfRows`
 InstallOtherMethodForCompilerForCAP( MereExistenceOfWitnessForBeingCongruentToZero,
-                                     [ IsFreydCategory, IsCapCategoryMorphism ],
+                                     [ IsFreydCategory, IsFreydCategoryMorphism ],
                                      
   function( cat, morphism )
     
@@ -340,9 +337,8 @@ InstallOtherMethodForCompilerForCAP( MereExistenceOfWitnessForBeingCongruentToZe
     
 end );
 
-# Relax the conditions on a and b: they might not lie in the filter `IsFreydCategoryObject`, e.g. in the case of `LeftPresentationsAsFreydCategoryOfCategoryOfRows`
 InstallMethodWithCacheFromObject( INTERNAL_HOM_EMBEDDING,
-                                  [ IsFreydCategory, IsCapCategoryObject, IsCapCategoryObject ],
+                                  [ IsFreydCategory, IsFreydCategoryObject, IsFreydCategoryObject ],
     function( cat, a, b )
       local source, range, mor;
 
