@@ -757,6 +757,12 @@ CapJitAddTypeSignature( "CapFixpoint", [ IsFunction, IsFunction, IsObject ], fun
 end );
 
 # Objectify*ForCAPWithAttributes
+CapJitAddTypeSignature( "ObjectifyObjectForCAPWithAttributes", [ IsRecord, IsCapCategory ], function ( input_types )
+    
+    return CapJitDataTypeOfObjectOfCategory( input_types[2].category );
+    
+end );
+
 CapJitAddTypeSignature( "ObjectifyObjectForCAPWithAttributes", [ IsRecord, IsCapCategory, IsFunction, IsObject ], function ( input_types )
     
     return CapJitDataTypeOfObjectOfCategory( input_types[2].category );
@@ -766,6 +772,12 @@ end );
 CapJitAddTypeSignature( "ObjectifyObjectForCAPWithAttributes", [ IsRecord, IsCapCategory, IsFunction, IsObject, IsFunction, IsObject ], function ( input_types )
     
     return CapJitDataTypeOfObjectOfCategory( input_types[2].category );
+    
+end );
+
+CapJitAddTypeSignature( "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes", [ IsRecord, IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ], function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( input_types[2].category );
     
 end );
 

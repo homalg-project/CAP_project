@@ -97,6 +97,24 @@ DeclareAttribute( "UnderlyingCategory",
 DeclareAttribute( "UnderlyingCell",
         IsWrapperCapCategoryCell );
 
+##
+CapJitAddTypeSignature( "UnderlyingCell",
+        [ IsWrapperCapCategoryObject ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfObjectOfCategory( ModelingCategory( input_types[1].category ) );
+    
+end );
+
+##
+CapJitAddTypeSignature( "UnderlyingCell",
+        [ IsWrapperCapCategoryMorphism ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( ModelingCategory( input_types[1].category ) );
+    
+end );
+
 ####################################
 #
 #! @Section Constructors
@@ -110,6 +128,15 @@ DeclareAttribute( "UnderlyingCell",
 DeclareOperation( "AsObjectInWrapperCategory",
                   [ IsWrapperCapCategory, IsCapCategoryObject ] );
 
+##
+CapJitAddTypeSignature( "AsObjectInWrapperCategory",
+        [ IsWrapperCapCategory, IsCapCategoryObject ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfObjectOfCategory( input_types[1].category );
+    
+end );
+
 #! @Description
 #!  Wrap a morphism <A>morphism</A> (in the category underlying the wrapper category `CapCategory(`<A>source</A>`)`) to form a morphism in `CapCategory(`<A>source</A>`)`
 #!  with given source and range.
@@ -117,6 +144,15 @@ DeclareOperation( "AsObjectInWrapperCategory",
 #! @Returns a morphism
 DeclareOperation( "AsMorphismInWrapperCategory",
                   [ IsWrapperCapCategoryObject, IsCapCategoryMorphism, IsWrapperCapCategoryObject ] );
+
+##
+CapJitAddTypeSignature( "AsMorphismInWrapperCategory",
+        [ IsWrapperCapCategory, IsWrapperCapCategoryObject, IsCapCategoryMorphism, IsWrapperCapCategoryObject ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
+    
+end );
 
 #! @Description
 #!  Wrap a morphism <A>morphism</A> (in the category underlying the wrapper category <A>category</A>) to form a morphism in <A>category</A>.
