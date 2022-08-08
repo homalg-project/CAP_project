@@ -63,3 +63,5 @@ The corresponding GAP property is called <C>IsCocartesianCoclosedCategory</C>.
 @Section Convenience Methods
 
 @Section Add-methods
+
+@Chapter Test functions
