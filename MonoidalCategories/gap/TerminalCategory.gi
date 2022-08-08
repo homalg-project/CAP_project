@@ -188,7 +188,8 @@ InstallGlobalFunction( TerminalCategory,
     object_constructor := function( cat, input )
         
         return ObjectifyObjectForCAPWithAttributes(
-                       rec( ), cat );
+                       rec( ), cat,
+                       IsZeroForObjects, true );
         
     end;
     
@@ -199,7 +200,8 @@ InstallGlobalFunction( TerminalCategory,
         return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
                        rec( ), cat,
                        source,
-                       range );
+                       range,
+                       IsZeroForMorphisms, true );
         
     end;
     
@@ -306,7 +308,8 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
         
         return ObjectifyObjectForCAPWithAttributes(
                        rec( ), cat,
-                       String, string );
+                       String, string,
+                       IsZeroForObjects, true );
         
     end;
     
@@ -318,7 +321,8 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
                        rec( ), cat,
                        source,
                        range,
-                       String, string );
+                       String, string,
+                       IsZeroForMorphisms, true );
         
     end;
     

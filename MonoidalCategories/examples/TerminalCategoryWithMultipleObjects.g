@@ -39,25 +39,25 @@ IsEqualForMorphisms( id_z, fn_z );
 IsCongruentForMorphisms( id_z, fn_z );
 #! true
 a := "a" / T;
-#! <An object in TerminalCategoryWithMultipleObjects( )>
+#! <A zero object in TerminalCategoryWithMultipleObjects( )>
 Display( a );
 #! a
 IsWellDefined( a );
 #! true
 aa := ObjectConstructor( T, "a" );
-#! <An object in TerminalCategoryWithMultipleObjects( )>
+#! <A zero object in TerminalCategoryWithMultipleObjects( )>
 Display( aa );
 #! a
 a = aa;
 #! true
 b := "b" / T;
-#! <An object in TerminalCategoryWithMultipleObjects( )>
+#! <A zero object in TerminalCategoryWithMultipleObjects( )>
 Display( b );
 #! b
 a = b;
 #! false
 t := TensorProduct( a, b );
-#! <An object in TerminalCategoryWithMultipleObjects( )>
+#! <A zero object in TerminalCategoryWithMultipleObjects( )>
 Display( t );
 #! TensorProductOnObjects
 a = t;
@@ -65,7 +65,7 @@ a = t;
 TensorProduct( a, a ) = t;
 #! true
 m := MorphismConstructor( a, "m", b );
-#! <A morphism in TerminalCategoryWithMultipleObjects( )>
+#! <A zero, isomorphism in TerminalCategoryWithMultipleObjects( )>
 Display( m );
 #! a
 #! |
@@ -75,7 +75,7 @@ Display( m );
 IsWellDefined( m );
 #! true
 n := MorphismConstructor( a, "n", b );
-#! <A morphism in TerminalCategoryWithMultipleObjects( )>
+#! <A zero, isomorphism in TerminalCategoryWithMultipleObjects( )>
 Display( n );
 #! a
 #! |
@@ -89,7 +89,7 @@ IsCongruentForMorphisms( m, n );
 m = n;
 #! true
 id := IdentityMorphism( a );
-#! <An identity morphism in TerminalCategoryWithMultipleObjects( )>
+#! <A zero, identity morphism in TerminalCategoryWithMultipleObjects( )>
 Display( id );
 #! a
 #! |
@@ -101,7 +101,7 @@ m = id;
 id = MorphismConstructor( a, "xyz", a );
 #! true
 z := ZeroMorphism( a, a );
-#! <A zero morphism in TerminalCategoryWithMultipleObjects( )>
+#! <A zero, isomorphism in TerminalCategoryWithMultipleObjects( )>
 Display( z );
 #! a
 #! |
