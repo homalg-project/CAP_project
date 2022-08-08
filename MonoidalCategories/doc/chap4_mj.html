@@ -147,25 +147,25 @@ false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( id_z, fn_z );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := "a" / T;</span>
-&lt;An object in TerminalCategoryWithMultipleObjects( )&gt;
+&lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( a );</span>
 a
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( a );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">aa := ObjectConstructor( T, "a" );</span>
-&lt;An object in TerminalCategoryWithMultipleObjects( )&gt;
+&lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( aa );</span>
 a
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a = aa;</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := "b" / T;</span>
-&lt;An object in TerminalCategoryWithMultipleObjects( )&gt;
+&lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( b );</span>
 b
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a = b;</span>
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := TensorProduct( a, b );</span>
-&lt;An object in TerminalCategoryWithMultipleObjects( )&gt;
+&lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( t );</span>
 TensorProductOnObjects
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a = t;</span>
@@ -173,7 +173,7 @@ false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TensorProduct( a, a ) = t;</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := MorphismConstructor( a, "m", b );</span>
-&lt;A morphism in TerminalCategoryWithMultipleObjects( )&gt;
+&lt;A zero, isomorphism in TerminalCategoryWithMultipleObjects( )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( m );</span>
 a
 |
@@ -183,7 +183,7 @@ b
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( m );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">n := MorphismConstructor( a, "n", b );</span>
-&lt;A morphism in TerminalCategoryWithMultipleObjects( )&gt;
+&lt;A zero, isomorphism in TerminalCategoryWithMultipleObjects( )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( n );</span>
 a
 |
@@ -197,7 +197,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m = n;</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id := IdentityMorphism( a );</span>
-&lt;An identity morphism in TerminalCategoryWithMultipleObjects( )&gt;
+&lt;A zero, identity morphism in TerminalCategoryWithMultipleObjects( )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( id );</span>
 a
 |
@@ -209,7 +209,7 @@ false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id = MorphismConstructor( a, "xyz", a );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z := ZeroMorphism( a, a );</span>
-&lt;A zero morphism in TerminalCategoryWithMultipleObjects( )&gt;
+&lt;A zero, isomorphism in TerminalCategoryWithMultipleObjects( )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( z );</span>
 a
 |
