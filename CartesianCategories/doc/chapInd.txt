@@ -218,6 +218,8 @@
   [2XExponentialOnMorphismsWithGivenExponentials[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 1.2-3 
   [2XExponentialOnObjects[102X, for IsCapCategoryObject, IsCapCategoryObject 1.2-1 
   [2XExponentialToDirectProductAdjunctionMap[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.2-9 
+  [2XInitialCategory[102X 4.1-1 
+  [2XIsInitialCapCategory[102X, for IsCapCategory 4.2-1 
   [2XIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject[102X, for IsCapCategoryObject 1.2-27 
   [2XIsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject[102X, for IsCapCategoryObject 2.2-27 
   [2XIsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject[102X, for IsCapCategoryObject 2.2-28 

@@ -1,0 +1,37 @@
+  
+  [1X4 [33X[0;0YThe initial category[133X[101X
+  
+  
+  [1X4.1 [33X[0;0YConstructor[133X[101X
+  
+  [1X4.1-1 InitialCategory[101X
+  
+  [33X[1;0Y[29X[2XInitialCategory[102X(  ) [32X function[133X
+  
+  [33X[0;0YConstruct a initial category.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XI := InitialCategory( );[127X[104X
+    [4X[28XInitialCategory( )[128X[104X
+    [4X[25Xgap>[125X [27XIsInitialCategory( I );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XInfoOfInstalledOperationsOfCategory( I );[127X[104X
+    [4X[28X5 primitive operations were used to derive 11 operations for this category[128X[104X
+    [4X[25Xgap>[125X [27XOI := Opposite( I );[127X[104X
+    [4X[28XOpposite of InitialCategory( )[128X[104X
+    [4X[25Xgap>[125X [27XIsInitialCategory( OI );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XInfoOfInstalledOperationsOfCategory( OI );[127X[104X
+    [4X[28X15 primitive operations were used to derive 15 operations for this category[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X4.2 [33X[0;0YGAP Categories[133X[101X
+  
+  [1X4.2-1 IsInitialCapCategory[101X
+  
+  [33X[1;0Y[29X[2XIsInitialCapCategory[102X( [3XT[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X type of a initial category.[133X
+  

@@ -126,7 +126,7 @@
   [1X2.1-11 CocartesianLeftUnitor[101X
   
   [33X[1;0Y[29X[2XCocartesianLeftUnitor[102X( [3Xa[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(1 \sqcup a, a )[123X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(1 \sqcup a, a)[123X[133X
   
   [33X[0;0YThe  argument  is  an  object  [23Xa[123X. The output is the left unitor [23X\lambda_a: 1
   \sqcup a \rightarrow a[123X.[133X
@@ -134,7 +134,7 @@
   [1X2.1-12 CocartesianLeftUnitorWithGivenCoproduct[101X
   
   [33X[1;0Y[29X[2XCocartesianLeftUnitorWithGivenCoproduct[102X( [3Xa[103X, [3Xs[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(1 \sqcup a, a )[123X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(1 \sqcup a, a)[123X[133X
   
   [33X[0;0YThe  arguments  are  an object [23Xa[123X and an object [23Xs = 1 \sqcup a[123X. The output is
   the left unitor [23X\lambda_a: 1 \sqcup a \rightarrow a[123X.[133X
@@ -158,7 +158,7 @@
   [1X2.1-15 CocartesianRightUnitor[101X
   
   [33X[1;0Y[29X[2XCocartesianRightUnitor[102X( [3Xa[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \sqcup 1, a )[123X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \sqcup 1, a)[123X[133X
   
   [33X[0;0YThe argument is an object [23Xa[123X. The output is the right unitor [23X\rho_a: a \sqcup
   1 \rightarrow a[123X.[133X
@@ -166,7 +166,7 @@
   [1X2.1-16 CocartesianRightUnitorWithGivenCoproduct[101X
   
   [33X[1;0Y[29X[2XCocartesianRightUnitorWithGivenCoproduct[102X( [3Xa[103X, [3Xs[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \sqcup 1, a )[123X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \sqcup 1, a)[123X[133X
   
   [33X[0;0YThe  arguments  are  an object [23Xa[123X and an object [23Xs = a \sqcup 1[123X. The output is
   the right unitor [23X\rho_a: a \sqcup 1 \rightarrow a[123X.[133X
@@ -174,7 +174,7 @@
   [1X2.1-17 CocartesianRightUnitorInverse[101X
   
   [33X[1;0Y[29X[2XCocartesianRightUnitorInverse[102X( [3Xa[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, a \sqcup 1 )[123X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, a \sqcup 1)[123X[133X
   
   [33X[0;0YThe  argument  is an object [23Xa[123X. The output is the inverse of the right unitor
   [23X\rho_a^{-1}: a \rightarrow a \sqcup 1[123X.[133X
@@ -182,7 +182,7 @@
   [1X2.1-18 CocartesianRightUnitorInverseWithGivenCoproduct[101X
   
   [33X[1;0Y[29X[2XCocartesianRightUnitorInverseWithGivenCoproduct[102X( [3Xa[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, a \sqcup 1 )[123X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, a \sqcup 1)[123X[133X
   
   [33X[0;0YThe  arguments  are  an object [23Xa[123X and an object [23Xr = a \sqcup 1[123X. The output is
   the inverse of the right unitor [23X\rho_a^{-1}: a \rightarrow a \sqcup 1[123X.[133X

@@ -126,7 +126,7 @@
   [1X1.1-11 CartesianLeftUnitor[101X
   
   [33X[1;0Y[29X[2XCartesianLeftUnitor[102X( [3Xa[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(1 \times a, a )[123X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(1 \times a, a)[123X[133X
   
   [33X[0;0YThe  argument  is  an  object  [23Xa[123X. The output is the left unitor [23X\lambda_a: 1
   \times a \rightarrow a[123X.[133X
@@ -134,7 +134,7 @@
   [1X1.1-12 CartesianLeftUnitorWithGivenDirectProduct[101X
   
   [33X[1;0Y[29X[2XCartesianLeftUnitorWithGivenDirectProduct[102X( [3Xa[103X, [3Xs[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(1 \times a, a )[123X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(1 \times a, a)[123X[133X
   
   [33X[0;0YThe  arguments  are  an object [23Xa[123X and an object [23Xs = 1 \times a[123X. The output is
   the left unitor [23X\lambda_a: 1 \times a \rightarrow a[123X.[133X
@@ -158,7 +158,7 @@
   [1X1.1-15 CartesianRightUnitor[101X
   
   [33X[1;0Y[29X[2XCartesianRightUnitor[102X( [3Xa[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \times 1, a )[123X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \times 1, a)[123X[133X
   
   [33X[0;0YThe argument is an object [23Xa[123X. The output is the right unitor [23X\rho_a: a \times
   1 \rightarrow a[123X.[133X
@@ -166,7 +166,7 @@
   [1X1.1-16 CartesianRightUnitorWithGivenDirectProduct[101X
   
   [33X[1;0Y[29X[2XCartesianRightUnitorWithGivenDirectProduct[102X( [3Xa[103X, [3Xs[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \times 1, a )[123X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \times 1, a)[123X[133X
   
   [33X[0;0YThe  arguments  are  an object [23Xa[123X and an object [23Xs = a \times 1[123X. The output is
   the right unitor [23X\rho_a: a \times 1 \rightarrow a[123X.[133X
@@ -174,7 +174,7 @@
   [1X1.1-17 CartesianRightUnitorInverse[101X
   
   [33X[1;0Y[29X[2XCartesianRightUnitorInverse[102X( [3Xa[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, a \times 1 )[123X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, a \times 1)[123X[133X
   
   [33X[0;0YThe  argument  is an object [23Xa[123X. The output is the inverse of the right unitor
   [23X\rho_a^{-1}: a \rightarrow a \times 1[123X.[133X
@@ -182,7 +182,7 @@
   [1X1.1-18 CartesianRightUnitorInverseWithGivenDirectProduct[101X
   
   [33X[1;0Y[29X[2XCartesianRightUnitorInverseWithGivenDirectProduct[102X( [3Xa[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, a \times 1 )[123X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, a \times 1)[123X[133X
   
   [33X[0;0YThe  arguments  are  an object [23Xa[123X and an object [23Xr = a \times 1[123X. The output is
   the inverse of the right unitor [23X\rho_a^{-1}: a \rightarrow a \times 1[123X.[133X

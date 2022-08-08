@@ -6,10 +6,10 @@
         [1X Cartesian and cocartesian categories and various subdoctrines [101X
   
   
-                                   2022.06-03
+                                   2022.08-01
   
   
-                                  22 June 2022
+                                 8 August 2022
   
   
                                 Mohamed Barakat
@@ -306,7 +306,7 @@
       2.4-59 AddRightCocartesianCodistributivityExpandingWithGivenObjects
       2.4-60 AddRightCocartesianCodistributivityFactoring
       2.4-61 AddRightCocartesianCodistributivityFactoringWithGivenObjects
-  3 [33X[0;0YExamples and Tests[133X
+  3 [33X[0;0YTest functions[133X
     3.1 [33X[0;0YTest functions[133X
       3.1-1 BraidedCartesianCategoriesTest
       3.1-2 BraidedCocartesianCategoriesTest
@@ -316,6 +316,11 @@
       3.1-6 CocartesianCoclosedCategoriesTest
       3.1-7 CodistributiveCocartesianCategoriesTest
       3.1-8 DistributiveCartesianCategoriesTest
+  4 [33X[0;0YThe initial category[133X
+    4.1 [33X[0;0YConstructor[133X
+      4.1-1 InitialCategory
+    4.2 [33X[0;0YGAP Categories[133X
+      4.2-1 IsInitialCapCategory
   
   
   [32X
