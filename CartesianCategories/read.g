@@ -8,6 +8,9 @@ if IsBound( WriteFileForMonoidalStructure ) then
 ReadPackage( "CartesianCategories", "gap/Tools.gi");
 fi;
 
+##
+ReadPackage( "CartesianCategories", "gap/InitialCategory.gi");
+
 ## Cartesian and Cocartesian
 ReadPackage( "CartesianCategories", "gap/CartesianCategoriesMethodRecord.gi" );
 ReadPackage( "CartesianCategories", "gap/CocartesianCategoriesMethodRecord.gi" );
