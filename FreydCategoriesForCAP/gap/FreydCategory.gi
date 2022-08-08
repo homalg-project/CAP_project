@@ -661,7 +661,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
       function( cat, direct_sum_source, source_diagram, diagram, range_diagram, direct_sum_range )
         
         return FreydCategoryMorphism( cat, direct_sum_source,
-                                      DirectSumFunctorial( underlying_category, List( diagram, MorphismDatum ) ),
+                                      DirectSumFunctorial( underlying_category, List( diagram, x -> MorphismDatum( cat, x ) ) ),
                                       direct_sum_range );
         
     end );
