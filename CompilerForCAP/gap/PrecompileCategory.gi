@@ -49,7 +49,10 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         
     elif IsString( ValueOption( "operations" ) ) then
         
+        # COVERAGE_IGNORE_BLOCK_START
+        Display( "WARNING: the option <operations> is a string. This is a convenience for debugging which should not be used in production code." );
         operations := [ ValueOption( "operations" ) ];
+        # COVERAGE_IGNORE_BLOCK_END
         
     else
         
@@ -81,6 +84,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         
         if source_attribute_getter_name <> NameFunction( ValueGlobal( source_attribute_getter_name ) ) then
             
+            # COVERAGE_IGNORE_NEXT_LINE
             Display( Concatenation( "WARNING: the source_attribute_getter_name ", source_attribute_getter_name, " is not equal to its canonical name ", NameFunction( ValueGlobal( source_attribute_getter_name ) ), ". This might cause errors." ) );
             
         fi;
@@ -89,6 +93,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         
         if range_attribute_getter_name <> NameFunction( ValueGlobal( range_attribute_getter_name ) ) then
             
+            # COVERAGE_IGNORE_NEXT_LINE
             Display( Concatenation( "WARNING: the range_attribute_getter_name ", range_attribute_getter_name, " is not equal to its canonical name ", NameFunction( ValueGlobal( range_attribute_getter_name ) ), ". This might cause errors." ) );
             
         fi;
@@ -162,6 +167,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
                     )
                 ) then
                 
+                # COVERAGE_IGNORE_NEXT_LINE
                 Display( Concatenation( "WARNING: Could not resolve all CAP operations while precompiling ", function_name, "." ) );
                 
             fi;
