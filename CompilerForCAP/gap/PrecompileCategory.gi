@@ -150,16 +150,21 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
             
         fi;
         
-        if not IsEmpty(
-                CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION(
-                    compiled_func,
-                    RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ),
-                    2,
-                    CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS
-                )
-            ) then
-            
-            Display( Concatenation( "WARNING: Could not resolve all CAP operations while precompiling ", function_name, "." ) );
+        # heuristic: if some given argument is a CAP category at which compilation is stopped, CAP operations in the compiled code are expected
+        if not ForAny( given_arguments, a -> IsCapCategory( a ) and ((IsBound( a!.stop_compilation ) and a!.stop_compilation = true) or (IsBound( a!.stop_compilation_at_primitively_installed_operations ) and a!.stop_compilation_at_primitively_installed_operations = true)) ) then
+        
+            if not IsEmpty(
+                    CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION(
+                        compiled_func,
+                        RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ),
+                        2,
+                        CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS
+                    )
+                ) then
+                
+                Display( Concatenation( "WARNING: Could not resolve all CAP operations while precompiling ", function_name, "." ) );
+                
+            fi;
             
         fi;
         
