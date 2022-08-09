@@ -152,9 +152,9 @@ InstallGlobalFunction( TerminalCategory,
     
     category_filter := IsCapCategory;
     
-    category_object_filter := IsCapTerminalCategoryObjectRep;
+    category_object_filter := IsCapTerminalCategoryObjectRep and HasIsZeroForObjects and IsZeroForObjects;
     
-    category_morphism_filter := IsCapTerminalCategoryMorphismRep;
+    category_morphism_filter := IsCapTerminalCategoryMorphismRep and HasIsZeroForMorphisms and IsZeroForMorphisms;
     
     ## e.g., ZeroObject, DirectSum
     create_func_object :=
@@ -188,8 +188,7 @@ InstallGlobalFunction( TerminalCategory,
     object_constructor := function( cat, input )
         
         return ObjectifyObjectForCAPWithAttributes(
-                       rec( ), cat,
-                       IsZeroForObjects, true );
+                       rec( ), cat );
         
     end;
     
@@ -200,8 +199,7 @@ InstallGlobalFunction( TerminalCategory,
         return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
                        rec( ), cat,
                        source,
-                       range,
-                       IsZeroForMorphisms, true );
+                       range );
         
     end;
     
@@ -271,9 +269,9 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
     
     category_filter := IsTerminalCategoryWithMultipleObjects;
     
-    category_object_filter := IsObjectInTerminalCategoryWithMultipleObjects;
+    category_object_filter := IsObjectInTerminalCategoryWithMultipleObjects and HasIsZeroForObjects and IsZeroForObjects;
     
-    category_morphism_filter := IsMorphismInTerminalCategoryWithMultipleObjects;
+    category_morphism_filter := IsMorphismInTerminalCategoryWithMultipleObjects and HasIsZeroForMorphisms and IsZeroForMorphisms;
     
     ## e.g., ZeroObject, DirectSum
     create_func_object :=
@@ -308,8 +306,7 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
         
         return ObjectifyObjectForCAPWithAttributes(
                        rec( ), cat,
-                       String, string,
-                       IsZeroForObjects, true );
+                       String, string );
         
     end;
     
@@ -321,8 +318,7 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
                        rec( ), cat,
                        source,
                        range,
-                       String, string,
-                       IsZeroForMorphisms, true );
+                       String, string );
         
     end;
     
