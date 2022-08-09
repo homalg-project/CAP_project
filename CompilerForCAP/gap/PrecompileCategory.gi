@@ -4,7 +4,7 @@
 # Implementations
 #
 InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_constructor, given_arguments, package_name, compiled_category_name )
-  local cat1, cat2, cat, transitively_needed_other_packages, operations, diff, source_attribute_getter_name, range_attribute_getter_name, output_string, package_info, parameters_string, current_string, compiled_tree, compiled_func, function_string, weight, IsPrecompiledDerivation_string, function_name, current_rec;
+  local cat1, cat2, cat, transitively_needed_other_packages, operations, diff, source_attribute_getter_name, range_attribute_getter_name, output_string, package_info, parameters_string, current_string, compiled_tree, compiled_func, function_string, number_of_occurrences_in_string, weight, IsPrecompiledDerivation_string, function_name, current_rec;
     
     if IsOperation( category_constructor ) or IsKernelFunction( category_constructor ) then
         
@@ -174,11 +174,74 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
             
         fi;
         
-        # if this is a property, `Objectify*ForCAPWithAttributes` should not occur anymore
-        if current_rec.return_type = "bool" and (PositionSublist( function_string, "ObjectifyObjectForCAPWithAttributes" ) <> fail or PositionSublist( function_string, "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" ) <> fail) then
+        number_of_occurrences_in_string := function ( haystack, needle )
             
-            # COVERAGE_IGNORE_NEXT_LINE
-            Display( Concatenation( "WARNING: Could not eliminate `Objectify*ForCAPWithAttributes` while precompiling ", function_name, "." ) );
+            return (Length( haystack ) - Length( ReplacedString( haystack, needle, "" ) )) / Length( needle );
+            
+        end;
+        
+        # plausibility checks for the number of occurrences of `Objectify*ForCAPWithAttributes`
+        # we check for > instead of <> because deduplication or WithGiven operations might reduce the number
+        
+        if current_rec.return_type = "bool" then
+            
+            if number_of_occurrences_in_string( function_string, "ObjectifyObjectForCAPWithAttributes" ) > 0 then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Display( Concatenation( "WARNING: Could not eliminate `ObjectifyObjectForCAPWithAttributes` while precompiling ", function_name, "." ) );
+                
+            fi;
+            
+            if number_of_occurrences_in_string( function_string, "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" ) > 0 then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Display( Concatenation( "WARNING: Could not eliminate `ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes` while precompiling ", function_name, "." ) );
+                
+            fi;
+            
+        fi;
+        
+        if current_rec.return_type = "object" and ValueOption( "number_of_objectified_objects_in_data_structure_of_object" ) <> fail then
+            
+            if number_of_occurrences_in_string( function_string, "ObjectifyObjectForCAPWithAttributes" ) > ValueOption( "number_of_objectified_objects_in_data_structure_of_object" ) then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Display( Concatenation( "WARNING: Found more than the expected number of occurrences of `ObjectifyObjectForCAPWithAttributes` while precompiling ", function_name, "." ) );
+                
+            fi;
+            
+        fi;
+        
+        if current_rec.return_type = "object" and ValueOption( "number_of_objectified_morphisms_in_data_structure_of_object" ) <> fail then
+            
+            if number_of_occurrences_in_string( function_string, "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" ) > ValueOption( "number_of_objectified_morphisms_in_data_structure_of_object" ) then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Display( Concatenation( "WARNING: Found more than the expected number of occurrences of `ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes` while precompiling ", function_name, "." ) );
+                
+            fi;
+            
+        fi;
+        
+        if current_rec.return_type = "morphism" and ValueOption( "number_of_objectified_objects_in_data_structure_of_morphism" ) <> fail then
+            
+            if number_of_occurrences_in_string( function_string, "ObjectifyObjectForCAPWithAttributes" ) > ValueOption( "number_of_objectified_objects_in_data_structure_of_morphism" ) then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Display( Concatenation( "WARNING: Found more than the expected number of occurrences of `ObjectifyObjectForCAPWithAttributes` while precompiling ", function_name, "." ) );
+                
+            fi;
+            
+        fi;
+        
+        if current_rec.return_type = "morphism" and ValueOption( "number_of_objectified_morphisms_in_data_structure_of_morphism" ) <> fail then
+            
+            if number_of_occurrences_in_string( function_string, "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" ) > ValueOption( "number_of_objectified_morphisms_in_data_structure_of_morphism" ) then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Display( Concatenation( "WARNING: Found more than the expected number of occurrences of `ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes` while precompiling ", function_name, "." ) );
+                
+            fi;
             
         fi;
         
