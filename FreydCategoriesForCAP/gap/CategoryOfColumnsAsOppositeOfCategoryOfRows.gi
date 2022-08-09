@@ -108,9 +108,6 @@ InstallMethod( CategoryOfColumnsAsOppositeOfCategoryOfRows,
         range_attribute_getter_name := "NumberRows",
     );
     
-    # needed until Opposite can properly deal with the closed structure
-    SetIsRigidSymmetricClosedMonoidalCategory( wrapper, true );
-    
     INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_CATEGORY_OF_ROWS( wrapper );
     
     Finalize( wrapper );

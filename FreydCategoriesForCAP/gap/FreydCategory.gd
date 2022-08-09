@@ -113,7 +113,6 @@ DeclareGlobalFunction( "IsValidInputForFreydCategory" );
 ##
 ##############################################
 
-# Relax the conditions on a and b: they might not lie in the filter `IsFreydCategoryObject`, e.g. in the case of `LeftPresentationsAsFreydCategoryOfCategoryOfRows`
 #! @Description
 #! The arguments are two objects <A>a</A> and <A>b</A> of a Freyd category <A>cat</A>.
 #! Assume that the relation morphism for $a$ is $\alpha \colon R_A \to A$, then we have the exact sequence
@@ -122,7 +121,7 @@ DeclareGlobalFunction( "IsValidInputForFreydCategory" );
 #! @Returns a (mono)morphism
 #! @Arguments cat, a, b
 DeclareOperationWithCache( "INTERNAL_HOM_EMBEDDING",
-                           [ IsFreydCategory, IsCapCategoryObject, IsCapCategoryObject ] );
+                           [ IsFreydCategory, IsFreydCategoryObject, IsFreydCategoryObject ] );
 
 
 ####################################################################################

@@ -47,7 +47,11 @@ CapJitPrecompileCategoryAndCompareResult(
     given_arguments,
     package_name,
     compiled_category_name :
-    operations := operations
+    operations := operations,
+    number_of_objectified_objects_in_data_structure_of_object := 1,
+    number_of_objectified_morphisms_in_data_structure_of_object := 0,
+    number_of_objectified_objects_in_data_structure_of_morphism := 2,
+    number_of_objectified_morphisms_in_data_structure_of_morphism := 1
 );
 
 # check that the compiled code is loaded automatically
