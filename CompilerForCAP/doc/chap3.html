@@ -461,7 +461,11 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_constructor,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    given_arguments,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    package_name,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name :</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_objects_in_data_structure_of_object := 1,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_morphisms_in_data_structure_of_object := 0,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_objects_in_data_structure_of_morphism := 2,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_morphisms_in_data_structure_of_morphism := 1</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MatrixCategoryPrecompiled( QQ );</span>
 Category of matrices over Q
@@ -1898,7 +1902,11 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            name,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            "Precompiled"</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        ) :</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        operations := "primitive"</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        operations := "primitive",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        number_of_objectified_objects_in_data_structure_of_object := 1,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        number_of_objectified_morphisms_in_data_structure_of_object := 0,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        number_of_objectified_objects_in_data_structure_of_morphism := 2,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        number_of_objectified_morphisms_in_data_structure_of_morphism := 1</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    ); end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfColumns( QQ, "Field" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfColumns( QQxy, "CommutativeRing" );;</span>
@@ -1946,7 +1954,11 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    given_arguments,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    package_name,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name :</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    operations := operations</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    operations := operations,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_objects_in_data_structure_of_object := 1,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_morphisms_in_data_structure_of_object := 0,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_objects_in_data_structure_of_morphism := 2,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_morphisms_in_data_structure_of_morphism := 1</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># check that the compiled code is loaded automatically</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">cat := CategoryOfRows( EEE );;</span>
@@ -2045,7 +2057,11 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            name,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            "Precompiled"</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        ) :</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        operations := operations</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        operations := operations,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        number_of_objectified_objects_in_data_structure_of_object := 1,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        number_of_objectified_morphisms_in_data_structure_of_object := 0,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        number_of_objectified_objects_in_data_structure_of_morphism := 2,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        number_of_objectified_morphisms_in_data_structure_of_morphism := 1</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    ); end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_RightPresentations(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    QQ, "Field", operations_for_commutative_ring</span>
@@ -2106,7 +2122,11 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    given_arguments,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    package_name,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name :</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    operations := "primitive"</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    operations := "primitive",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_objects_in_data_structure_of_object := 2,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_morphisms_in_data_structure_of_object := 0,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_objects_in_data_structure_of_morphism := 6,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_morphisms_in_data_structure_of_morphism := 2</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    "LinearAlgebraForCAP",</span>

@@ -167,7 +167,20 @@
   list  of  operations  is given via the option [10Xoperations[110X, only operations in
   this   list  are  precompiled.  Else  all  installed  operations  (excluding
   operations  which  are  part  of suggested dependencies) of the category are
-  precompiled. Technical requirements:[133X
+  precompiled.              Furthermore,              the              options
+  [10Xnumber_of_objectified_objects_in_data_structure_of_object[110X,
+  [10Xnumber_of_objectified_morphisms_in_data_structure_of_object[110X,
+  [10Xnumber_of_objectified_objects_in_data_structure_of_morphism[110X,             and
+  [10Xnumber_of_objectified_morphisms_in_data_structure_of_morphism[110X can optionally
+  be  set  to  allow the compiler to warn about about bad compilation results.
+  For    example,    [10Xnumber_of_objectified_objects_in_data_structure_of_object[110X
+  should   be  the  number  of  calls  to  [10XObjectifyObjectForCAPWithAttributes[110X
+  required    for    creating    an   object   in   the   tower   defined   by
+  [3Xcategory_constructor[103X,  e.g. 1 if the tower has height one, or 2 if the tower
+  has  height  two  and  the  objects  of the category at the top are given by
+  objects  in the category one level below. Warnings will be displayed if this
+  number  is  exceeded  (because  this  implies that not all wrap-unwrap-pairs
+  could be canceled). Technical requirements:[133X
   
   [30X    [33X[0;6Y[3Xcategory_constructor[103X must be a regular function, i.e. not an operation
         or a kernel function.[133X
