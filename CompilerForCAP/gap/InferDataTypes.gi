@@ -44,6 +44,61 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_LOAD_DEFERRED_GLOBAL_VARIABLE_FILTERS",
     
 end );
 
+##
+InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_DATA_TYPE_FROM_FILTER_OR_STRING", function ( filter_or_string, category )
+    
+    if IsFilter( filter_or_string ) then
+        
+        if not filter_or_string in [ IsInt ] then
+            
+            #Error( "unknown filter: ", filter_or_string );
+            return fail;
+            
+        fi;
+        
+        return rec( filter := filter_or_string );
+        
+    elif filter_or_string = "bool" then
+        
+        return rec( filter := IsBool );
+        
+    elif filter_or_string = "category" then
+        
+        return CapJitDataTypeOfCategory( category );
+        
+    elif filter_or_string = "object" then
+        
+        return CapJitDataTypeOfObjectOfCategory( category );
+        
+    elif filter_or_string = "morphism" then
+        
+        return CapJitDataTypeOfMorphismOfCategory( category );
+        
+    elif filter_or_string = "list_of_objects" then
+        
+        return rec( filter := IsList, element_type := CapJitDataTypeOfObjectOfCategory( category ) );
+        
+    elif filter_or_string = "list_of_morphisms" then
+        
+        return rec( filter := IsList, element_type := CapJitDataTypeOfMorphismOfCategory( category ) );
+        
+    elif filter_or_string = "object_in_range_category_of_homomorphism_structure" then
+        
+        return CapJitDataTypeOfObjectOfCategory( RangeCategoryOfHomomorphismStructure( category ) );
+        
+    elif filter_or_string = "morphism_in_range_category_of_homomorphism_structure" then
+        
+        return CapJitDataTypeOfMorphismOfCategory( RangeCategoryOfHomomorphismStructure( category ) );
+        
+    else
+        
+        #Error( "unhandled filter string: ", filter_or_string );
+        return fail;
+        
+    fi;
+    
+end );
+
 InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_DATA_TYPE_OF_VALUE", function ( value )
   local element_types, element_type, filters, i;
     

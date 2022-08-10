@@ -143,81 +143,11 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
             
             filter_list := args[2];
             
-            arguments_data_types := List( filter_list, function ( filter )
-                
-                if filter = "category" then
-                    
-                    return CapJitDataTypeOfCategory( category );
-                    
-                elif filter = "object" then
-                    
-                    return CapJitDataTypeOfObjectOfCategory( category );
-                    
-                elif filter = "morphism" then
-                    
-                    return CapJitDataTypeOfMorphismOfCategory( category );
-                    
-                elif filter = "list_of_objects" then
-                    
-                    return rec( filter := IsList, element_type := CapJitDataTypeOfObjectOfCategory( category ) );
-                    
-                elif filter = "list_of_morphisms" then
-                    
-                    return rec( filter := IsList, element_type := CapJitDataTypeOfMorphismOfCategory( category ) );
-                    
-                elif filter = IsInt then
-                    
-                    return rec( filter := IsInt );
-                    
-                elif filter = "object_in_range_category_of_homomorphism_structure" then
-                    
-                    return CapJitDataTypeOfObjectOfCategory( RangeCategoryOfHomomorphismStructure( category ) );
-                    
-                elif filter = "morphism_in_range_category_of_homomorphism_structure" then
-                    
-                    return CapJitDataTypeOfMorphismOfCategory( RangeCategoryOfHomomorphismStructure( category ) );
-                    
-                else
-                    
-                    #Error( "unhandled filter", filter );
-                    return fail;
-                    
-                fi;
-                
-            end );
+            arguments_data_types := List( filter_list, filter_or_string -> CAP_JIT_INTERNAL_GET_DATA_TYPE_FROM_FILTER_OR_STRING( filter_or_string, category ) );
             
             return_type := args[3];
             
-            if return_type = "object" then
-                
-                return_data_type := CapJitDataTypeOfObjectOfCategory( category );
-                
-            elif return_type = "morphism" then
-                
-                return_data_type := CapJitDataTypeOfMorphismOfCategory( category );
-                
-            elif return_type = "list_of_objects" then
-                
-                return_data_type := rec( filter := IsList, element_type := CapJitDataTypeOfObjectOfCategory( category ) );
-                
-            elif return_type = "list_of_morphisms" then
-                
-                return_data_type := rec( filter := IsList, element_type := CapJitDataTypeOfMorphismOfCategory( category ) );
-                
-            elif return_type = "object_in_range_category_of_homomorphism_structure" then
-                
-                return_data_type := CapJitDataTypeOfObjectOfCategory( RangeCategoryOfHomomorphismStructure( category ) );
-                
-            elif return_type = "morphism_in_range_category_of_homomorphism_structure" then
-                
-                return_data_type := CapJitDataTypeOfMorphismOfCategory( RangeCategoryOfHomomorphismStructure( category ) );
-                
-            else
-                
-                #Error( "unhandled return_type", return_type );
-                return_data_type := fail;
-                
-            fi;
+            return_data_type := CAP_JIT_INTERNAL_GET_DATA_TYPE_FROM_FILTER_OR_STRING( return_type, category );
             
             if fail in arguments_data_types then
                 
