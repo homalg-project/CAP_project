@@ -43,14 +43,18 @@ DeclareGlobalFunction( "DeclareAttributeWithToDoForIsWellDefined" );
 #!
 DeclareGlobalFunction( "DeclareFamilyProperty" );
 
+#! @Arguments filter_or_string[, category]
+#! @Returns a filter
+#! @Description
+#!  The function takes a filter or one of the strings listed under `filter_list` in <Ref Sect="Section_CapInternalInstallAdd" />.
+#!  Filters are returned unchanged. If a string is given, the corresponding filter of the category <A>category</A> is returned.
+#!  If no category is given, generic filters (`IsCapCategoryObject`, `IsCapCategoryMorphism` etc.) are used.
+DeclareGlobalFunction( "CAP_INTERNAL_REPLACE_STRING_WITH_FILTER" );
 
 #! @Arguments list[, category]
 #! @Returns Replaced list
 #! @Description
-#!  The function takes a list (of lists) of filters or strings, where the strings
-#!  can be category, cell, object, morphism, or twocell. The strings are then recursively replaced
-#!  by the corresponding filters of the category. The replaced list is returned.
-#!  If no category is given, generic filters (`IsCapCategoryObject`, `IsCapCategoryMorphism` etc.) are used.
+#!  Applies <Ref Func="CAP_INTERNAL_REPLACE_STRING_WITH_FILTER" /> to all elements of <A>list</A> and returns the result.
 DeclareGlobalFunction( "CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS" );
 
 #! @Arguments list, additional list
