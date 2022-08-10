@@ -178,12 +178,15 @@ DeclareGlobalFunction( "InstallDeprecatedAlias" );
 #! @Description
 #!   Checks if <A>filter2</A> is more special than <A>filter1</A>,
 #!   i.e. if <A>filter2</A> implies <A>filter1</A>.
+#!   <A>filter1</A> and/or <A>filter2</A> can also be one of the strings listed under `filter_list` in <Ref Sect="Section_CapInternalInstallAdd" /> and
+#!   in this case are replaced by the corresponding filters (e.g. `IsCapCategory`, `IsCapCategoryObject`, `IsCapCategoryMorphism`, ...).
 #! @Arguments filter1, filter2
 DeclareGlobalFunction( "IsSpecializationOfFilter" );
 
 #! @Description
 #!   Checks if <A>filter_list2</A> is more special than <A>filter_list1</A>,
-#!   i.e. if both lists have the same length and any element of <A>filter_list2</A> implies the corresponding element of <A>filter_list1</A>.
+#!   i.e. if both lists have the same length and any element of <A>filter_list2</A> is more special than
+#!   the corresponding element of <A>filter_list1</A> in the sense of <Ref Func="IsSpecializationOfFilter" />.
 #!   <A>filter_list1</A> and <A>filter_list2</A> can also be the string `"any"`, respresenting a most general filter list of any length.
 #! @Arguments filter_list1, filter_list2
 DeclareGlobalFunction( "IsSpecializationOfFilterList" );

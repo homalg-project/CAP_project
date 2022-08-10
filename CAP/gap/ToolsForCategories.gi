@@ -905,6 +905,9 @@ end );
 ##
 InstallGlobalFunction( "IsSpecializationOfFilter", function ( filter1, filter2 )
     
+    filter1 := CAP_INTERNAL_REPLACE_STRING_WITH_FILTER( filter1 );
+    filter2 := CAP_INTERNAL_REPLACE_STRING_WITH_FILTER( filter2 );
+    
     return IS_SUBSET_FLAGS( WITH_IMPS_FLAGS( FLAGS_FILTER( filter2 ) ), WITH_IMPS_FLAGS( FLAGS_FILTER( filter1 ) ) );
     
 end );
