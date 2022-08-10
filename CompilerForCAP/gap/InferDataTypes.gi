@@ -941,6 +941,12 @@ CapJitAddTypeSignature( "Cartesian", [ IsList ], function ( input_types )
     
 end );
 
+CapJitAddTypeSignature( "Reversed", [ IsList ], function ( input_types )
+    
+    return input_types[1];
+    
+end );
+
 CapJitAddTypeSignature( "Sum", [ IsList ], function ( input_types )
     
     return input_types[1].element_type;
