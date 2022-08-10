@@ -369,10 +369,112 @@ end );
 ##
 #####################################
 
+InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRING_WITH_FILTER,
+  
+  function( filter_or_string, args... )
+    local category;
+    
+    if Length( args ) > 1 then
+        Error( "CAP_INTERNAL_REPLACE_STRING_WITH_FILTER must be called with at most two arguments" );
+    elif Length( args ) = 1 then
+        category := args[1];
+    else
+        category := false;
+    fi;
+    
+    if IsFilter( filter_or_string ) then
+        return filter_or_string;
+    elif IsString( filter_or_string ) then
+        if filter_or_string = "category" then
+            if category <> false then
+                return CategoryFilter( category ) and IsCapCategory;
+            else
+                return IsCapCategory;
+            fi;
+        elif filter_or_string = "cell" then
+            if category <> false then
+                return CellFilter( category ) and IsCapCategoryCell;
+            else
+                return IsCapCategoryCell;
+            fi;
+        elif filter_or_string = "object" then
+            if category <> false then
+                return ObjectFilter( category ) and IsCapCategoryObject;
+            else
+                return IsCapCategoryObject;
+            fi;
+        elif filter_or_string = "morphism" then
+            if category <> false then
+                return MorphismFilter( category ) and IsCapCategoryMorphism;
+            else
+                return IsCapCategoryMorphism;
+            fi;
+        elif filter_or_string = "twocell" then
+            if category <> false then
+                return TwoCellFilter( category ) and IsCapCategoryTwoCell;
+            else
+                return IsCapCategoryTwoCell;
+            fi;
+        elif filter_or_string = "object_in_range_category_of_homomorphism_structure" then
+            
+            if category <> false and not HasRangeCategoryOfHomomorphismStructure( category ) then
+                
+                Display( Concatenation( "WARNING: You are calling an Add function for a CAP operation for \"", Name( category ), "\" which is part of a homomorphism structure but the category has no RangeCategoryOfHomomorphismStructure (yet)" ) );
+                
+            fi;
+            
+            if category <> false and HasRangeCategoryOfHomomorphismStructure( category ) then
+                return ObjectFilter( RangeCategoryOfHomomorphismStructure( category ) ) and IsCapCategoryObject;
+            else
+                return IsCapCategoryObject;
+            fi;
+        elif filter_or_string = "morphism_in_range_category_of_homomorphism_structure" then
+            
+            if category <> false and not HasRangeCategoryOfHomomorphismStructure( category ) then
+                
+                Display( Concatenation( "WARNING: You are calling an Add function for a CAP operation for \"", Name( category ), "\" which is part of a homomorphism structure but the category has no RangeCategoryOfHomomorphismStructure (yet)" ) );
+                
+            fi;
+            
+            if category <> false and HasRangeCategoryOfHomomorphismStructure( category ) then
+                return MorphismFilter( RangeCategoryOfHomomorphismStructure( category ) ) and IsCapCategoryMorphism;
+            else
+                return IsCapCategoryMorphism;
+            fi;
+        elif filter_or_string = "other_category" then
+            return IsCapCategory;
+        elif filter_or_string = "other_cell" then
+            return IsCapCategoryCell;
+        elif filter_or_string = "other_object" then
+            return IsCapCategoryObject;
+        elif filter_or_string = "other_morphism" then
+            return IsCapCategoryMorphism;
+        elif filter_or_string = "other_twocell" then
+            return IsCapCategoryTwoCell;
+        elif filter_or_string = "list_of_objects" then
+            return IsList;
+        elif filter_or_string = "list_of_morphisms" then
+            return IsList;
+        elif filter_or_string = "list_of_twocells" then
+            return IsList;
+        elif filter_or_string = "nonneg_integer_or_infinity" then
+            return IsCyclotomic;
+        else
+            Error( "filter type is not recognized, see the documentation for allowed values" );
+        fi;
+        
+    else
+        
+        Error( "the first argument must be a string or filter" );
+        
+    fi;
+    
+end );
+
 InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS,
   
   function( list, args... )
-      local category, i, current_entry, current_filter, j;
+      local category;
       
       if Length( args ) > 1 then
           Error( "CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS must be called with at most two arguments" );
@@ -382,103 +484,8 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS,
           category := false;
       fi;
       
-      list := ShallowCopy( list );
+      return List( list, l -> CAP_INTERNAL_REPLACE_STRING_WITH_FILTER( l, category ) );
       
-      for i in [ 1 .. Length( list ) ] do
-          current_entry := list[ i ];
-          
-          if IsFilter( current_entry ) then
-              continue;
-          
-          elif IsString( current_entry ) then
-              current_entry := LowercaseString( current_entry );
-              if current_entry = "category" then
-                  if category <> false then
-                      list[ i ] := CategoryFilter( category ) and IsCapCategory;
-                  else
-                      list[ i ] := IsCapCategory;
-                  fi;
-              elif current_entry = "cell" then
-                  if category <> false then
-                      list[ i ] := CellFilter( category ) and IsCapCategoryCell;
-                  else
-                      list[ i ] := IsCapCategoryCell;
-                  fi;
-              elif current_entry = "object" then
-                  if category <> false then
-                      list[ i ] := ObjectFilter( category ) and IsCapCategoryObject;
-                  else
-                      list[ i ] := IsCapCategoryObject;
-                  fi;
-              elif current_entry = "morphism" then
-                  if category <> false then
-                      list[ i ] := MorphismFilter( category ) and IsCapCategoryMorphism;
-                  else
-                      list[ i ] := IsCapCategoryMorphism;
-                  fi;
-              elif current_entry = "twocell" then
-                  if category <> false then
-                      list[ i ] := TwoCellFilter( category ) and IsCapCategoryTwoCell;
-                  else
-                      list[ i ] := IsCapCategoryTwoCell;
-                  fi;
-              elif current_entry = "object_in_range_category_of_homomorphism_structure" then
-                  
-                  if category <> false and not HasRangeCategoryOfHomomorphismStructure( category ) then
-                      
-                      Display( Concatenation( "WARNING: You are calling an Add function for a CAP operation for \"", Name( category ), "\" which is part of a homomorphism structure but the category has no RangeCategoryOfHomomorphismStructure (yet)" ) );
-                      
-                  fi;
-                  
-                  if category <> false and HasRangeCategoryOfHomomorphismStructure( category ) then
-                      list[ i ] := ObjectFilter( RangeCategoryOfHomomorphismStructure( category ) ) and IsCapCategoryObject;
-                  else
-                      list[ i ] := IsCapCategoryObject;
-                  fi;
-              elif current_entry = "morphism_in_range_category_of_homomorphism_structure" then
-                  
-                  if category <> false and not HasRangeCategoryOfHomomorphismStructure( category ) then
-                      
-                      Display( Concatenation( "WARNING: You are calling an Add function for a CAP operation for \"", Name( category ), "\" which is part of a homomorphism structure but the category has no RangeCategoryOfHomomorphismStructure (yet)" ) );
-                      
-                  fi;
-                  
-                  if category <> false and HasRangeCategoryOfHomomorphismStructure( category ) then
-                      list[ i ] := MorphismFilter( RangeCategoryOfHomomorphismStructure( category ) ) and IsCapCategoryMorphism;
-                  else
-                      list[ i ] := IsCapCategoryMorphism;
-                  fi;
-              elif current_entry = "other_category" then
-                  list[ i ] := IsCapCategory;
-              elif current_entry = "other_cell" then
-                  list[ i ] := IsCapCategoryCell;
-              elif current_entry = "other_object" then
-                  list[ i ] := IsCapCategoryObject;
-              elif current_entry = "other_morphism" then
-                  list[ i ] := IsCapCategoryMorphism;
-              elif current_entry = "other_twocell" then
-                  list[ i ] := IsCapCategoryTwoCell;
-              elif current_entry = "list_of_objects" then
-                  list[ i ] := IsList;
-              elif current_entry = "list_of_morphisms" then
-                  list[ i ] := IsList;
-              elif current_entry = "list_of_twocells" then
-                  list[ i ] := IsList;
-              elif current_entry = "nonneg_integer_or_infinity" then
-                  list[ i ] := IsCyclotomic;
-              else
-                  Error( "filter type is not recognized, see the documentation for allowed values" );
-              fi;
-              
-          else
-              
-              Error( "the entries of filter lists must be strings or filters" );
-              
-          fi;
-          
-      od;
-      
-      return list;
 end );
 
 InstallGlobalFunction( "CAP_INTERNAL_MERGE_FILTER_LISTS",
@@ -897,6 +904,9 @@ end );
 
 ##
 InstallGlobalFunction( "IsSpecializationOfFilter", function ( filter1, filter2 )
+    
+    filter1 := CAP_INTERNAL_REPLACE_STRING_WITH_FILTER( filter1 );
+    filter2 := CAP_INTERNAL_REPLACE_STRING_WITH_FILTER( filter2 );
     
     return IS_SUBSET_FLAGS( WITH_IMPS_FLAGS( FLAGS_FILTER( filter2 ) ), WITH_IMPS_FLAGS( FLAGS_FILTER( filter1 ) ) );
     
