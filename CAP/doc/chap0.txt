@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2022.07-01
+                                   2022.08-01
   
   
-                                 8 August 2022
+                                 10 August 2022
   
   
                                Sebastian Gutsche
@@ -854,38 +854,39 @@
       9.2-2 InstallSetWithToDoForIsWellDefined
       9.2-3 DeclareAttributeWithToDoForIsWellDefined
       9.2-4 DeclareFamilyProperty
-      9.2-5 CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS
-      9.2-6 CAP_INTERNAL_MERGE_FILTER_LISTS
-      9.2-7 CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT
-      9.2-8 CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION
-      9.2-9 CAP_INTERNAL_MERGE_PRECONDITIONS_LIST
-      9.2-10 CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY
-      9.2-11 CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY
-      9.2-12 CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY
-      9.2-13 CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY
-      9.2-14 CAP_INTERNAL_ASSERT_IS_LIST_OF_OBJECTS_OF_CATEGORY
-      9.2-15 CAP_INTERNAL_ASSERT_IS_LIST_OF_MORPHISMS_OF_CATEGORY
-      9.2-16 CAP_INTERNAL_ASSERT_IS_LIST_OF_TWO_CELLS_OF_CATEGORY
-      9.2-17 CAP_INTERNAL_ASSERT_IS_NON_NEGATIVE_INTEGER_OR_INFINITY
-      9.2-18 CachingStatistic
-      9.2-19 BrowseCachingStatistic
-      9.2-20 InstallDeprecatedAlias
-      9.2-21 IsSpecializationOfFilter
-      9.2-22 IsSpecializationOfFilterList
-      9.2-23 InstallMethodForCompilerForCAP
-      9.2-24 InstallOtherMethodForCompilerForCAP
-      9.2-25 CapJitAddKnownMethod
-      9.2-26 CapJitAddTypeSignature
-      9.2-27 CapJitAddTypeSignatureDeferred
-      9.2-28 CapJitDataTypeOfCategory
-      9.2-29 CapFixpoint
-      9.2-30 TransitivelyNeededOtherPackages
-      9.2-31 PackageOfCAPOperation
-      9.2-32 SafePosition
-      9.2-33 NTuple
-      9.2-34 Pair
-      9.2-35 Triple
-      9.2-36 HandlePrecompiledTowers
+      9.2-5 CAP_INTERNAL_REPLACE_STRING_WITH_FILTER
+      9.2-6 CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS
+      9.2-7 CAP_INTERNAL_MERGE_FILTER_LISTS
+      9.2-8 CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT
+      9.2-9 CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION
+      9.2-10 CAP_INTERNAL_MERGE_PRECONDITIONS_LIST
+      9.2-11 CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY
+      9.2-12 CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY
+      9.2-13 CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY
+      9.2-14 CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY
+      9.2-15 CAP_INTERNAL_ASSERT_IS_LIST_OF_OBJECTS_OF_CATEGORY
+      9.2-16 CAP_INTERNAL_ASSERT_IS_LIST_OF_MORPHISMS_OF_CATEGORY
+      9.2-17 CAP_INTERNAL_ASSERT_IS_LIST_OF_TWO_CELLS_OF_CATEGORY
+      9.2-18 CAP_INTERNAL_ASSERT_IS_NON_NEGATIVE_INTEGER_OR_INFINITY
+      9.2-19 CachingStatistic
+      9.2-20 BrowseCachingStatistic
+      9.2-21 InstallDeprecatedAlias
+      9.2-22 IsSpecializationOfFilter
+      9.2-23 IsSpecializationOfFilterList
+      9.2-24 InstallMethodForCompilerForCAP
+      9.2-25 InstallOtherMethodForCompilerForCAP
+      9.2-26 CapJitAddKnownMethod
+      9.2-27 CapJitAddTypeSignature
+      9.2-28 CapJitAddTypeSignatureDeferred
+      9.2-29 CapJitDataTypeOfCategory
+      9.2-30 CapFixpoint
+      9.2-31 TransitivelyNeededOtherPackages
+      9.2-32 PackageOfCAPOperation
+      9.2-33 SafePosition
+      9.2-34 NTuple
+      9.2-35 Pair
+      9.2-36 Triple
+      9.2-37 HandlePrecompiledTowers
   10 [33X[0;0YLimits and Colimits[133X
     10.1 [33X[0;0YSpecification of Limits and Colimits[133X
     10.2 [33X[0;0YEnhancing Limit Specifications[133X
