@@ -127,7 +127,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree )
                         
                         if not IsBound( category!.compiled_known_methods_trees.(operation_name)[tree.args.length] ) then
                             
-                            category!.compiled_known_methods_trees.(operation_name)[tree.args.length] := CapJitCompiledFunctionAsEnhancedSyntaxTree( known_method.method, category );
+                            category!.compiled_known_methods_trees.(operation_name)[tree.args.length] := CapJitCompiledFunctionAsEnhancedSyntaxTree( known_method.method, false, category );
                             
                         fi;
                         

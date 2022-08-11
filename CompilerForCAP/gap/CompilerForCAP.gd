@@ -75,6 +75,10 @@ DeclareGlobalFunction( "CapJitCompiledFunction" );
 #! @Description
 #!   Like <Ref Func="CapJitCompiledFunction" />, but returns an enhanced syntax tree of the compiled function.
 #!   <A>func</A> must not be an operation or a kernel function because those cannot properly be represented as a syntax tree.
+#!   The second argument can be used to disable post-processing, e.g. the application of compiler hints.
 #! @Returns a record
-#! @Arguments func[, type_signature]
+#! @Arguments func, post_processing_enabled[, type_signature]
 DeclareGlobalFunction( "CapJitCompiledFunctionAsEnhancedSyntaxTree" );
+
+# helper
+DeclareGlobalFunction( "CAP_JIT_INTERNAL_POST_PROCESSED_SYNTAX_TREE" );
