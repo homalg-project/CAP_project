@@ -9,6 +9,6 @@
 
 #! @Description
 #!   A special version of <Ref Func="CapJitCompiledFunctionAsEnhancedSyntaxTree" /> compiling the operation
-#!   given by <A>operation_name</A> in <A>cat</A>.
+#!   given by <A>operation_name</A> in <A>cat</A> (with post-processing disabled).
 #! @Arguments cat, operation_name
 DeclareGlobalFunction( "CapJitCompiledCAPOperationAsEnhancedSyntaxTree" );

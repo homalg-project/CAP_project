@@ -137,6 +137,8 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         
         compiled_tree := CapJitCompiledCAPOperationAsEnhancedSyntaxTree( cat, function_name );
         
+        compiled_tree := CAP_JIT_INTERNAL_POST_PROCESSED_SYNTAX_TREE( compiled_tree, cat, false );
+        
         # change names of arguments
         compiled_tree := CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID(
             compiled_tree,

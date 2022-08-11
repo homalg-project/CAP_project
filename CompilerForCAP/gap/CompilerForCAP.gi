@@ -73,11 +73,11 @@ InstallGlobalFunction( CapJitCompiledFunction, function ( func, args... )
         
     fi;
     
-    return ENHANCED_SYNTAX_TREE_CODE( CallFuncList( CapJitCompiledFunctionAsEnhancedSyntaxTree, Concatenation( [ func ], args ) ) );
+    return ENHANCED_SYNTAX_TREE_CODE( CallFuncList( CapJitCompiledFunctionAsEnhancedSyntaxTree, Concatenation( [ func, true ], args ) ) );
     
 end );
 
-InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( func, args... )
+InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( func, post_processing_enabled, args... )
   local debug, debug_idempotence, category_as_first_argument, category, type_signature, filter_list, arguments_data_types, return_type, return_data_type, tree, resolving_phase_functions, orig_tree, compiled_func, tmp, rule_phase_functions, f;
     
     Info( InfoCapJit, 1, "####" );
@@ -324,6 +324,34 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
     
     # post-processing
     
+    if post_processing_enabled then
+        
+        tree := CAP_JIT_INTERNAL_POST_PROCESSED_SYNTAX_TREE( tree, category, debug );
+        
+    fi;
+    
+    if debug then
+        
+        # COVERAGE_IGNORE_BLOCK_START
+        compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
+        
+        Display( compiled_func );
+        
+        Error( "compilation finished" );
+        # COVERAGE_IGNORE_BLOCK_END
+        
+    fi;
+    
+    Info( InfoCapJit, 1, "####" );
+    Info( InfoCapJit, 1, "Compilation finished." );
+    
+    return tree;
+    
+end );
+
+InstallGlobalFunction( CAP_JIT_INTERNAL_POST_PROCESSED_SYNTAX_TREE, function ( tree, category, debug )
+  local compiled_func;
+    
     if debug then
         # COVERAGE_IGNORE_BLOCK_START
         compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
@@ -334,7 +362,7 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
     
     tree := CapJitInlinedBindingsFully( tree );
     
-    if category_as_first_argument then
+    if category <> fail then
         
         if debug then
             # COVERAGE_IGNORE_BLOCK_START
@@ -372,21 +400,6 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
         tree := CapJitDeduplicatedExpressions( tree );
         
     fi;
-    
-    if debug then
-        
-        # COVERAGE_IGNORE_BLOCK_START
-        compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-        
-        Display( compiled_func );
-        
-        Error( "compilation finished" );
-        # COVERAGE_IGNORE_BLOCK_END
-        
-    fi;
-    
-    Info( InfoCapJit, 1, "####" );
-    Info( InfoCapJit, 1, "Compilation finished." );
     
     return tree;
     
