@@ -92,7 +92,11 @@ Display( compiled_func2 );
 #! end
 
 Display( ENHANCED_SYNTAX_TREE_CODE(
-    CapJitCompiledCAPOperationAsEnhancedSyntaxTree( vec, "KernelEmbedding" )
+  CAP_JIT_INTERNAL_POST_PROCESSED_SYNTAX_TREE(
+    CapJitCompiledCAPOperationAsEnhancedSyntaxTree( vec, "KernelEmbedding" ),
+    vec,
+    false
+  )
 ) );
 #! function ( cat_1, morphism_1 )
 #!     local morphism_attr_1_1;

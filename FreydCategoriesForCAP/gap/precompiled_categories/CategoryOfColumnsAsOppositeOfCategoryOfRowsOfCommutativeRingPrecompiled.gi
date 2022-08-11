@@ -419,16 +419,14 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1;
-    deduped_6_1 := UnderlyingMatrix( arg2_1 );
-    deduped_5_1 := NumberColumns( deduped_6_1 );
-    deduped_4_1 := NumberRows( deduped_6_1 );
+    local deduped_3_1, deduped_4_1;
+    deduped_4_1 := UnderlyingMatrix( arg2_1 );
     deduped_3_1 := OppositeCategory( ModelingCategory( cat_1 ) );
     if not IS_IDENTICAL_OBJ( deduped_3_1, deduped_3_1 ) then
         return false;
-    elif deduped_4_1 <> deduped_4_1 then
+    elif NumberRows( deduped_4_1 ) <> RankOfObject( Range( arg2_1 ) ) then
         return false;
-    elif deduped_5_1 <> deduped_5_1 then
+    elif NumberColumns( deduped_4_1 ) <> RankOfObject( Source( arg2_1 ) ) then
         return false;
     else
         return true;
