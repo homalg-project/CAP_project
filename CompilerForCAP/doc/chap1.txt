@@ -214,7 +214,8 @@
   [33X[1;0Y[29X[2XCapJitCompiledCAPOperationAsEnhancedSyntaxTree[102X( [3Xcat[103X, [3Xoperation_name[103X ) [32X function[133X
   
   [33X[0;0YA  special  version  of  [2XCapJitCompiledFunctionAsEnhancedSyntaxTree[102X  ([14X1.5-3[114X)
-  compiling the operation given by [3Xoperation_name[103X in [3Xcat[103X.[133X
+  compiling the operation given by [3Xoperation_name[103X in [3Xcat[103X (with post-processing
+  disabled).[133X
   
   [1X1.5-2 CapJitCompiledFunction[101X
   
@@ -235,12 +236,14 @@
   
   [1X1.5-3 CapJitCompiledFunctionAsEnhancedSyntaxTree[101X
   
-  [33X[1;0Y[29X[2XCapJitCompiledFunctionAsEnhancedSyntaxTree[102X( [3Xfunc[103X[, [3Xtype_signature[103X] ) [32X function[133X
+  [33X[1;0Y[29X[2XCapJitCompiledFunctionAsEnhancedSyntaxTree[102X( [3Xfunc[103X, [3Xpost_processing_enabled[103X[, [3Xtype_signature[103X] ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
   [33X[0;0YLike  [2XCapJitCompiledFunction[102X ([14X1.5-2[114X), but returns an enhanced syntax tree of
   the  compiled  function.  [3Xfunc[103X must not be an operation or a kernel function
-  because those cannot properly be represented as a syntax tree.[133X
+  because  those  cannot  properly be represented as a syntax tree. The second
+  argument  can  be  used  to disable post-processing, e.g. the application of
+  compiler hints.[133X
   
   
   [1X1.6 [33X[0;0YGiving hints to the compiler[133X[101X

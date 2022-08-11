@@ -399,7 +399,11 @@
     [4X[28X            end ) ) );[128X[104X
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE([127X[104X
-    [4X[25X>[125X [27X    CapJitCompiledCAPOperationAsEnhancedSyntaxTree( vec, "KernelEmbedding" )[127X[104X
+    [4X[25X>[125X [27X  CAP_JIT_INTERNAL_POST_PROCESSED_SYNTAX_TREE([127X[104X
+    [4X[25X>[125X [27X    CapJitCompiledCAPOperationAsEnhancedSyntaxTree( vec, "KernelEmbedding" ),[127X[104X
+    [4X[25X>[125X [27X    vec,[127X[104X
+    [4X[25X>[125X [27X    false[127X[104X
+    [4X[25X>[125X [27X  )[127X[104X
     [4X[25X>[125X [27X) );[127X[104X
     [4X[28Xfunction ( cat_1, morphism_1 )[128X[104X
     [4X[28X    local morphism_attr_1_1;[128X[104X
