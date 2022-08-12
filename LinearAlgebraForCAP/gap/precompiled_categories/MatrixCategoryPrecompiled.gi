@@ -2727,19 +2727,11 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local deduped_1_1, deduped_2_1, deduped_3_1;
-    deduped_3_1 := UnderlyingMatrix( arg2_1 );
-    deduped_2_1 := Range( arg2_1 );
-    deduped_1_1 := Source( arg2_1 );
-    if not IS_IDENTICAL_OBJ( cat_1, CapCategory( deduped_1_1 ) ) then
+    local deduped_1_1;
+    deduped_1_1 := UnderlyingMatrix( arg2_1 );
+    if NumberRows( deduped_1_1 ) <> Dimension( Source( arg2_1 ) ) then
         return false;
-    elif not IS_IDENTICAL_OBJ( cat_1, CapCategory( arg2_1 ) ) then
-        return false;
-    elif not IS_IDENTICAL_OBJ( cat_1, CapCategory( deduped_2_1 ) ) then
-        return false;
-    elif NumberRows( deduped_3_1 ) <> Dimension( deduped_1_1 ) then
-        return false;
-    elif NumberColumns( deduped_3_1 ) <> Dimension( deduped_2_1 ) then
+    elif NumberColumns( deduped_1_1 ) <> Dimension( Range( arg2_1 ) ) then
         return false;
     else
         return true;
@@ -2755,9 +2747,7 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    if not IS_IDENTICAL_OBJ( cat_1, CapCategory( arg2_1 ) ) then
-        return false;
-    elif Dimension( arg2_1 ) < 0 then
+    if Dimension( arg2_1 ) < 0 then
         return false;
     else
         return true;

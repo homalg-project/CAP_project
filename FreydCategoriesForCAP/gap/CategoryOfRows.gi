@@ -422,11 +422,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     AddIsWellDefinedForObjects( category,
       function( cat, object )
         
-        if not IsIdenticalObj( category, CapCategory( object ) ) then
-          
-          return false;
-          
-        elif RankOfObject( object ) < 0 then
+        if RankOfObject( object ) < 0 then
           
           return false;
           
@@ -441,19 +437,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     AddIsWellDefinedForMorphisms( category,
       function( cat, morphism )
         
-        if not IsIdenticalObj( category, CapCategory( Source( morphism ) ) ) then
-          
-          return false;
-          
-        elif not IsIdenticalObj( category, CapCategory( morphism ) ) then
-          
-          return false;
-          
-        elif not IsIdenticalObj( category, CapCategory( Range( morphism ) ) ) then
-          
-          return false;
-          
-        elif NrRows( UnderlyingMatrix( morphism ) ) <> RankOfObject( Source( morphism ) ) then
+        if NrRows( UnderlyingMatrix( morphism ) ) <> RankOfObject( Source( morphism ) ) then
           
           return false;
           
