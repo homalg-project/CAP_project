@@ -4,10 +4,19 @@
 # Implementations
 #
 InstallGlobalFunction( CapJitResolvedOperations, function ( tree )
-  local pre_func;
+  local result_func;
     
-    pre_func := function ( tree, additional_arguments )
-      local operation, operation_name, info, category, resolved_tree, known_methods, known_method, similar_methods;
+    # operations are compiled recursively, so we can use result_func instead of pre_func
+    result_func := function ( tree, result, keys, additional_arguments )
+      local key, operation, operation_name, info, category, resolved_tree, known_methods, known_method, similar_methods;
+        
+        tree := ShallowCopy( tree );
+        
+        for key in keys do
+            
+            tree.(key) := result.(key);
+            
+        od;
         
         if tree.type = "EXPR_FUNCCALL" and tree.funcref.type = "EXPR_REF_GVAR" then
             
@@ -158,6 +167,6 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree )
         
     end;
     
-    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+    return CapJitIterateOverTree( tree, ReturnFirst, result_func, ReturnTrue, true );
     
 end );
