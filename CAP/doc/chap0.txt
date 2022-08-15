@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2022.08-02
+                                   2022.08-03
   
   
-                                 11 August 2022
+                                 15 August 2022
   
   
                                Sebastian Gutsche
@@ -900,10 +900,11 @@
       11.2-1 CategoryConstructor
   12 [33X[0;0YCreate wrapper hulls of a category[133X
     12.1 [33X[0;0YGAP categories[133X
-      12.1-1 IsWrapperCapCategory
-      12.1-2 IsWrapperCapCategoryCell
-      12.1-3 IsWrapperCapCategoryObject
-      12.1-4 IsWrapperCapCategoryMorphism
+      12.1-1 WasCreatedAsWrapperCapCategory
+      12.1-2 IsWrapperCapCategory
+      12.1-3 IsWrapperCapCategoryCell
+      12.1-4 IsWrapperCapCategoryObject
+      12.1-5 IsWrapperCapCategoryMorphism
     12.2 [33X[0;0YAttributes[133X
       12.2-1 ModelingCategory
       12.2-2 UnderlyingCell
@@ -914,6 +915,10 @@
       12.3-4 \/
       12.3-5 WrapperCategory
       12.3-6 WrappingFunctor
+      12.3-7 ModelingObject
+      12.3-8 ModeledObject
+      12.3-9 ModelingMorphism
+      12.3-10 ModeledMorphism
   13 [33X[0;0YDummy categories[133X
     13.1 [33X[0;0YGAP categories[133X
       13.1-1 IsDummyCategory

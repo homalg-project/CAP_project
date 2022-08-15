@@ -107,6 +107,12 @@
 <li><p><code class="code">underlying_morphism_getter_string</code> (optional): see below</p>
 
 </li>
+<li><p><code class="code">top_object_getter_string</code> (optional): see below</p>
+
+</li>
+<li><p><code class="code">top_morphism_getter_string</code> (optional): see below</p>
+
+</li>
 <li><p><code class="code">generic_output_source_getter_string</code> (optional): see below</p>
 
 </li>
@@ -146,6 +152,9 @@
 
 </li>
 <li><p><code class="code">top_source</code> and <code class="code">top_range</code>: If the return type is <code class="code">morphism</code> or <code class="code">morphism_or_fail</code>, source and range are computed if possible and <code class="code">top_source</code> and <code class="code">top_range</code> are replaced by the results. For computing source and range, the <code class="code">output_source_getter_string</code> and <code class="code">output_range_getter_string</code> from the method name record are used if available (see <a href="chap7_mj.html#X7D83FC527EA66166"><span class="RefLink">7.3</span></a>). In some categories, source and range can always be obtained in a generic way (e.g. from the morphism datum). In this case, <code class="code">generic_output_source_getter_string</code> and <code class="code">generic_output_range_getter_string</code> can be set and are used if the required information is not available in the method name record.</p>
+
+</li>
+<li><p><code class="code">top_object_getter</code> and <code class="code">top_morphism_getter</code> are used in the <code class="code">"default"</code> strings and are replaced by <code class="code">top_object_getter_string</code> and <code class="code">top_morphism_getter_string</code>, respectively.</p>
 
 </li>
 </ul>

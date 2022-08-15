@@ -41,28 +41,37 @@
   
   [1X12.1 [33X[0;0YGAP categories[133X[101X
   
-  [1X12.1-1 IsWrapperCapCategory[101X
+  [1X12.1-1 WasCreatedAsWrapperCapCategory[101X
+  
+  [33X[1;0Y[29X[2XWasCreatedAsWrapperCapCategory[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe   [5XGAP[105X   category   of  CAP  categories  that  have  been  created  using
+  [2XWrapperCategory[102X ([14X12.3-5[114X) but not necessarily use the default data structure.[133X
+  
+  [1X12.1-2 IsWrapperCapCategory[101X
   
   [33X[1;0Y[29X[2XIsWrapperCapCategory[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X category of a wrapper CAP category.[133X
+  [33X[0;0YThe  [5XGAP[105X  category  of  a  wrapper  CAP  category  (using  the  default data
+  structure).[133X
   
-  [1X12.1-2 IsWrapperCapCategoryCell[101X
+  [1X12.1-3 IsWrapperCapCategoryCell[101X
   
   [33X[1;0Y[29X[2XIsWrapperCapCategoryCell[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of cells in a wrapper CAP category.[133X
   
-  [1X12.1-3 IsWrapperCapCategoryObject[101X
+  [1X12.1-4 IsWrapperCapCategoryObject[101X
   
   [33X[1;0Y[29X[2XIsWrapperCapCategoryObject[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of objects in a wrapper CAP category.[133X
   
-  [1X12.1-4 IsWrapperCapCategoryMorphism[101X
+  [1X12.1-5 IsWrapperCapCategoryMorphism[101X
   
   [33X[1;0Y[29X[2XIsWrapperCapCategoryMorphism[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
@@ -140,7 +149,26 @@
   [33X[0;0YAdditionally,  the  following  options  of  [2XCategoryConstructor[102X ([14X11.2-1[114X) are
   supported:              [10Xcategory_filter[110X,             [10Xcategory_object_filter[110X,
   [10Xcategory_morphism_filter[110X,          [10Xobject_constructor[110X,         [10Xobject_datum[110X,
-  [10Xmorphism_constructor[110X, [10Xmorphism_datum[110X.[133X
+  [10Xmorphism_constructor[110X,  [10Xmorphism_datum[110X.  To avoid inconsistencies, either all
+  or  none of those options should be set. If they are set, also the following
+  options should be set:[133X
+  
+  [30X    [33X[0;6Y[10Xmodeling_tower_object_constructor[110X:  a  function which gets the wrapper
+        category  and  an  object  datum  (in  the  sense of [10Xobject_datum[110X) and
+        returns the corresponding modeling object in the modeling category,[133X
+  
+  [30X    [33X[0;6Y[10Xmodeling_tower_object_datum[110X:   a   function  which  gets  the  wrapper
+        category  and  an  object  in  the  modeling  category and returns the
+        corresponding object datum (in the sense of [10Xobject_datum[110X),[133X
+  
+  [30X    [33X[0;6Y[10Xmodeling_tower_morphism_constructor[110X: a function which gets the wrapper
+        category,  a source in the modeling category, a morphism datum (in the
+        sense  of  [10Xmorphism_datum[110X),  and  a range in the modeling category and
+        returns the corresponding modeling morphism in the modeling category,[133X
+  
+  [30X    [33X[0;6Y[10Xmodeling_tower_morphism_datum[110X:  a  function  which  gets  the  wrapper
+        category  and  a  morphism  in  the  modeling category and returns the
+        corresponding morphism datum (in the sense of [10Xmorphism_datum[110X),[133X
   
   [1X12.3-6 WrappingFunctor[101X
   
@@ -150,4 +178,41 @@
   [33X[0;0YReturn  the  functor  from  the  wrapped category [10XModelingCategory[110X([3XW[103X) to the
   wrapper  category  [3XW[103X.  The  functor maps each wrapped object/morphism to its
   wrapping object/morphism.[133X
+  
+  [1X12.3-7 ModelingObject[101X
+  
+  [33X[1;0Y[29X[2XModelingObject[102X( [3Xcat[103X, [3Xobj[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category object[133X
+  
+  [33X[0;0YReturns  the  object  modeling  the  object  [3Xobj[103X  in  [3Xcat[103X. [3Xcat[103X must be a CAP
+  category  which  has  been  created  as  a  wrapper  CAP  category  (but not
+  necessarily uses the default data structure).[133X
+  
+  [1X12.3-8 ModeledObject[101X
+  
+  [33X[1;0Y[29X[2XModeledObject[102X( [3Xcat[103X, [3Xobj[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category object[133X
+  
+  [33X[0;0YReturns  the  object  modeled  by the object [3Xobj[103X in the modeling category of
+  [3Xcat[103X.  [3Xcat[103X  must  be  a  CAP category which has been created as a wrapper CAP
+  category (but not necessarily uses the default data structure).[133X
+  
+  [1X12.3-9 ModelingMorphism[101X
+  
+  [33X[1;0Y[29X[2XModelingMorphism[102X( [3Xcat[103X, [3Xmor[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category morphism[133X
+  
+  [33X[0;0YReturns  the  morphism  modeling  the morphism [3Xmor[103X in [3Xcat[103X. [3Xcat[103X must be a CAP
+  category  which  has  been  created  as  a  wrapper  CAP  category  (but not
+  necessarily uses the default data structure).[133X
+  
+  [1X12.3-10 ModeledMorphism[101X
+  
+  [33X[1;0Y[29X[2XModeledMorphism[102X( [3Xcat[103X, [3Xsource[103X, [3Xobj[103X, [3Xrange[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category morphism[133X
+  
+  [33X[0;0YReturns the morphism modeled by the morphism [3Xmor[103X in the modeling category of
+  [3Xcat[103X  with  given source and range. [3Xcat[103X must be a CAP category which has been
+  created as a wrapper CAP category (but not necessarily uses the default data
+  structure).[133X
   

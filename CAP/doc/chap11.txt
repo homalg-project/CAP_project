@@ -59,6 +59,10 @@
   
   [30X    [33X[0;6Y[10Xunderlying_morphism_getter_string[110X (optional): see below[133X
   
+  [30X    [33X[0;6Y[10Xtop_object_getter_string[110X (optional): see below[133X
+  
+  [30X    [33X[0;6Y[10Xtop_morphism_getter_string[110X (optional): see below[133X
+  
   [30X    [33X[0;6Y[10Xgeneric_output_source_getter_string[110X (optional): see below[133X
   
   [30X    [33X[0;6Y[10Xgeneric_output_range_getter_string[110X (optional): see below[133X
@@ -110,6 +114,10 @@
         case,              [10Xgeneric_output_source_getter_string[110X             and
         [10Xgeneric_output_range_getter_string[110X  can  be  set  and  are used if the
         required information is not available in the method name record.[133X
+  
+  [30X    [33X[0;6Y[10Xtop_object_getter[110X  and  [10Xtop_morphism_getter[110X  are used in the [10X"default"[110X
+        strings    and    are   replaced   by   [10Xtop_object_getter_string[110X   and
+        [10Xtop_morphism_getter_string[110X, respectively.[133X
   
   [33X[0;0YNote  that  the  category  is created with [10Xcategory_as_first_argument[110X set to
   [10Xtrue[110X (see [14X7.3[114X).[133X
