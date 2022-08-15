@@ -574,21 +574,12 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1;
-    deduped_7_1 := Opposite( arg2_1 );
-    deduped_6_1 := OppositeCategory( cat_1 );
-    deduped_5_1 := UnderlyingMatrix( deduped_7_1 );
-    deduped_4_1 := Range( deduped_7_1 );
-    deduped_3_1 := Source( deduped_7_1 );
-    if not IS_IDENTICAL_OBJ( deduped_6_1, CapCategory( deduped_3_1 ) ) then
+    local deduped_3_1, deduped_4_1;
+    deduped_4_1 := Opposite( arg2_1 );
+    deduped_3_1 := UnderlyingMatrix( deduped_4_1 );
+    if NumberRows( deduped_3_1 ) <> Dimension( Source( deduped_4_1 ) ) then
         return false;
-    elif not IS_IDENTICAL_OBJ( deduped_6_1, CapCategory( deduped_7_1 ) ) then
-        return false;
-    elif not IS_IDENTICAL_OBJ( deduped_6_1, CapCategory( deduped_4_1 ) ) then
-        return false;
-    elif NumberRows( deduped_5_1 ) <> Dimension( deduped_3_1 ) then
-        return false;
-    elif NumberColumns( deduped_5_1 ) <> Dimension( deduped_4_1 ) then
+    elif NumberColumns( deduped_3_1 ) <> Dimension( Range( deduped_4_1 ) ) then
         return false;
     else
         return true;
@@ -604,11 +595,7 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local deduped_3_1;
-    deduped_3_1 := Opposite( arg2_1 );
-    if not IS_IDENTICAL_OBJ( OppositeCategory( cat_1 ), CapCategory( deduped_3_1 ) ) then
-        return false;
-    elif Dimension( deduped_3_1 ) < 0 then
+    if Dimension( Opposite( arg2_1 ) ) < 0 then
         return false;
     else
         return true;

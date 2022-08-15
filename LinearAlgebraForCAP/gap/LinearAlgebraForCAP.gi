@@ -184,11 +184,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddIsWellDefinedForObjects( category,
       function( cat, object )
 
-        if not IsIdenticalObj( category, CapCategory( object ) ) then
-
-          return false;
-
-        elif Dimension( object ) < 0 then
+        if Dimension( object ) < 0 then
 
           return false;
 
@@ -203,19 +199,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddIsWellDefinedForMorphisms( category,
       function( cat, morphism )
 
-        if not IsIdenticalObj( category, CapCategory( Source( morphism ) ) ) then
-
-          return false;
-
-        elif not IsIdenticalObj( category, CapCategory( morphism ) ) then
-
-          return false;
-
-        elif not IsIdenticalObj( category, CapCategory( Range( morphism ) ) ) then
-
-          return false;
-
-        elif NrRows( UnderlyingMatrix( morphism ) ) <> Dimension( Source( morphism ) ) then
+        if NrRows( UnderlyingMatrix( morphism ) ) <> Dimension( Source( morphism ) ) then
 
           return false;
 
