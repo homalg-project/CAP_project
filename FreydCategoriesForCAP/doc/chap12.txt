@@ -1202,7 +1202,100 @@
   [4X[32X[104X
   
   
-  [1X12.20  [33X[0;0YTesting  if  an  object  is  projective,  injective,  bijective,  and[101X
+  [1X12.20 [33X[0;0YOpposite( CategoryOfRow ) as CategoryOfColumns[133X[101X
+  
+  [33X[0;0YAssume  that  we  have the constructors [10XCategoryOfRows[110X and [10XCategoryOfColumns[110X
+  but   no   constructor   [10XOpposite[110X.   Then   we  can  still  model  [10XOpposite(
+  CategoryOfRows  )[110X  as  [10XCategoryOfColumns[110X  using [10XWrapperCategory[110X. This can be
+  achieved  up  to  minor  modifications  by  swapping  [10Xobject_constructor[110X and
+  [10Xmodeling_tower_object_constructor[110X         and         so        on        in
+  [10XCategoryOfColumsAsOppositeOfCategoryOfRows[110X. With this, objects and morphisms
+  indeed  have  the  attribute  [10XOpposite[110X  as  desired. Getting [10XObjectDatum[110X and
+  [10XMorphismDatum[110X  to  return  this  attribute would also be possible, but would
+  require   more   effort   than   simply   swapping   [10Xobject_constructor[110X  and
+  [10Xmodeling_tower_object_constructor[110X and so.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals( );;[127X[104X
+    [4X[25Xgap>[125X [27Xcols := CategoryOfColumns( QQ );;[127X[104X
+    [4X[25Xgap>[125X [27Xrows := CategoryOfRows( QQ );;[127X[104X
+    [4X[25Xgap>[125X [27Xobject_constructor :=[127X[104X
+    [4X[25X>[125X [27X    { cat, rank } -> ObjectifyObjectForCAPWithAttributes([127X[104X
+    [4X[25X>[125X [27X        rec( ), cat,[127X[104X
+    [4X[25X>[125X [27X        Opposite, CategoryOfRowsObject( Opposite( cat ), rank )[127X[104X
+    [4X[25X>[125X [27X    );;[127X[104X
+    [4X[25Xgap>[125X [27Xmodeling_tower_object_constructor :=[127X[104X
+    [4X[25X>[125X [27X    { cat, rank } -> ObjectifyObjectForCAPWithAttributes([127X[104X
+    [4X[25X>[125X [27X        rec( ), ModelingCategory( cat ),[127X[104X
+    [4X[25X>[125X [27X        RankOfObject, rank[127X[104X
+    [4X[25X>[125X [27X    );;[127X[104X
+    [4X[25Xgap>[125X [27Xobject_datum := { cat, obj } -> RankOfObject( Opposite( obj ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xmodeling_tower_object_datum := { cat, obj } -> RankOfObject( obj );;[127X[104X
+    [4X[25Xgap>[125X [27Xmorphism_constructor :=[127X[104X
+    [4X[25X>[125X [27X    { cat, source, underlying_matrix, range } ->[127X[104X
+    [4X[25X>[125X [27X        ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes([127X[104X
+    [4X[25X>[125X [27X            rec( ), cat,[127X[104X
+    [4X[25X>[125X [27X            source, range,[127X[104X
+    [4X[25X>[125X [27X            Opposite, CategoryOfRowsMorphism([127X[104X
+    [4X[25X>[125X [27X                Opposite( cat ),[127X[104X
+    [4X[25X>[125X [27X                Opposite( range ),[127X[104X
+    [4X[25X>[125X [27X                underlying_matrix,[127X[104X
+    [4X[25X>[125X [27X                Opposite( source )[127X[104X
+    [4X[25X>[125X [27X            )[127X[104X
+    [4X[25X>[125X [27X        );;[127X[104X
+    [4X[25Xgap>[125X [27Xmodeling_tower_morphism_constructor :=[127X[104X
+    [4X[25X>[125X [27X    { cat, source, underlying_matrix, range } ->[127X[104X
+    [4X[25X>[125X [27X        ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes([127X[104X
+    [4X[25X>[125X [27X            rec( ), ModelingCategory( cat ),[127X[104X
+    [4X[25X>[125X [27X            source, range,[127X[104X
+    [4X[25X>[125X [27X            UnderlyingMatrix, underlying_matrix[127X[104X
+    [4X[25X>[125X [27X        );;[127X[104X
+    [4X[25Xgap>[125X [27Xmorphism_datum := { cat, mor } -> UnderlyingMatrix( Opposite( mor ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xmodeling_tower_morphism_datum := { cat, mor } -> UnderlyingMatrix( mor );;[127X[104X
+    [4X[25Xgap>[125X [27Xop := WrapperCategory( cols, rec([127X[104X
+    [4X[25X>[125X [27X    name := Concatenation( "Opposite( ", Name( rows )," )" ),[127X[104X
+    [4X[25X>[125X [27X    category_filter := WasCreatedAsOppositeCategory,[127X[104X
+    [4X[25X>[125X [27X    category_object_filter := IsCapCategoryOppositeObject,[127X[104X
+    [4X[25X>[125X [27X    category_morphism_filter := IsCapCategoryOppositeMorphism,[127X[104X
+    [4X[25X>[125X [27X    object_constructor := object_constructor,[127X[104X
+    [4X[25X>[125X [27X    object_datum := object_datum,[127X[104X
+    [4X[25X>[125X [27X    morphism_constructor := morphism_constructor,[127X[104X
+    [4X[25X>[125X [27X    morphism_datum := morphism_datum,[127X[104X
+    [4X[25X>[125X [27X    modeling_tower_object_constructor := modeling_tower_object_constructor,[127X[104X
+    [4X[25X>[125X [27X    modeling_tower_object_datum := modeling_tower_object_datum,[127X[104X
+    [4X[25X>[125X [27X    modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,[127X[104X
+    [4X[25X>[125X [27X    modeling_tower_morphism_datum := modeling_tower_morphism_datum,[127X[104X
+    [4X[25X>[125X [27X    only_primitive_operations := true,[127X[104X
+    [4X[25X>[125X [27X) );[127X[104X
+    [4X[28XOpposite( Rows( Q ) )[128X[104X
+    [4X[25Xgap>[125X [27XSetOpposite( op, rows );[127X[104X
+    [4X[25Xgap>[125X [27Xsource := ObjectConstructor( op, 1 );[127X[104X
+    [4X[28X<An object in Opposite( Rows( Q ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xrange := ObjectConstructor( op, 2 );[127X[104X
+    [4X[28X<An object in Opposite( Rows( Q ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xzero := ZeroMorphism( source, range );[127X[104X
+    [4X[28X<A zero morphism in Opposite( Rows( Q ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xsum := AdditionForMorphisms( zero, zero );[127X[104X
+    [4X[28X<A morphism in Opposite( Rows( Q ) )>[128X[104X
+    [4X[25Xgap>[125X [27X# notice that source and range are indeed swapped compared to the above[127X[104X
+    [4X[25X>[125X [27XDisplay( Opposite( sum ) );[127X[104X
+    [4X[28XSource: [128X[104X
+    [4X[28XA row module over Q of rank 2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix: [128X[104X
+    [4X[28X[ [  0 ],[128X[104X
+    [4X[28X  [  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange: [128X[104X
+    [4X[28XA row module over Q of rank 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Rows( Q )[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X12.21  [33X[0;0YTesting  if  an  object  is  projective,  injective,  bijective,  and[101X
   [1Xcomputing projective/injective dimensions[133X[101X
   
   [4X[32X  Example  [32X[104X
@@ -1244,7 +1337,7 @@
   [4X[32X[104X
   
   
-  [1X12.21 [33X[0;0YProsets[133X[101X
+  [1X12.22 [33X[0;0YProsets[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )[128X[104X
@@ -1285,7 +1378,7 @@
   [4X[32X[104X
   
   
-  [1X12.22 [33X[0;0YQuiver rows bascis[133X[101X
+  [1X12.23 [33X[0;0YQuiver rows bascis[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
@@ -1381,7 +1474,7 @@
   [4X[32X[104X
   
   
-  [1X12.23 [33X[0;0YQuiver rows over the integers[133X[101X
+  [1X12.24 [33X[0;0YQuiver rows over the integers[133X[101X
   
   [33X[0;0YWell-defined morphisms[133X
   
@@ -1474,7 +1567,7 @@
   [4X[32X[104X
   
   
-  [1X12.24 [33X[0;0YCategory of relations[133X[101X
+  [1X12.25 [33X[0;0YCategory of relations[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XF := HomalgRingOfIntegers( 3 );;[127X[104X
@@ -1512,7 +1605,7 @@
   [4X[32X[104X
   
   
-  [1X12.25 [33X[0;0YRings as Ab-categories[133X[101X
+  [1X12.26 [33X[0;0YRings as Ab-categories[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XCR := RingAsCategory( Integers );;[127X[104X
@@ -1545,7 +1638,7 @@
   [4X[32X[104X
   
   
-  [1X12.26 [33X[0;0YSnake lemma first proof[133X[101X
+  [1X12.27 [33X[0;0YSnake lemma first proof[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
@@ -1616,7 +1709,7 @@
   [4X[32X[104X
   
   
-  [1X12.27 [33X[0;0YSnake lemma second proof[133X[101X
+  [1X12.28 [33X[0;0YSnake lemma second proof[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
@@ -1664,7 +1757,7 @@
   [4X[32X[104X
   
   
-  [1X12.28 [33X[0;0YSubobject lattice[133X[101X
+  [1X12.29 [33X[0;0YSubobject lattice[133X[101X
   
   [33X[0;0YWe  compute  the  number  of  the  generic  subobject lattice generated by 2
   independent subobjects y,z and one subobject x of y.[133X
@@ -1690,7 +1783,7 @@
   [4X[32X[104X
   
   
-  [1X12.29 [33X[0;0YAdelman category theorem[133X[101X
+  [1X12.30 [33X[0;0YAdelman category theorem[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
@@ -1715,7 +1808,7 @@
   [4X[32X[104X
   
   
-  [1X12.30 [33X[0;0YTests[133X[101X
+  [1X12.31 [33X[0;0YTests[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", false );[127X[104X

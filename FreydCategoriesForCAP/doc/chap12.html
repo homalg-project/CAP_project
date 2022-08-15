@@ -79,37 +79,40 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7F1E3F5A7EC538B6">12.19 <span class="Heading">Matrices over ZG</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X820CD9B28165BF9F">12.20 <span class="Heading">Testing if an object is projective, injective, bijective, and computing projective/injective dimensions</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X8598E8828771FA9D">12.20 <span class="Heading">Opposite( CategoryOfRow ) as CategoryOfColumns</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7AFC8F247C00D608">12.21 <span class="Heading">Prosets</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X820CD9B28165BF9F">12.21 <span class="Heading">Testing if an object is projective, injective, bijective, and computing projective/injective dimensions</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X816C8E7A811E9438">12.22 <span class="Heading">Quiver rows bascis</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7AFC8F247C00D608">12.22 <span class="Heading">Prosets</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7A3B76387B5880D4">12.23 <span class="Heading">Quiver rows over the integers</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X816C8E7A811E9438">12.23 <span class="Heading">Quiver rows bascis</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X789E61CF843CF960">12.24 <span class="Heading">Category of relations</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7A3B76387B5880D4">12.24 <span class="Heading">Quiver rows over the integers</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X8001962586A4466B">12.25 <span class="Heading">Rings as Ab-categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X789E61CF843CF960">12.25 <span class="Heading">Category of relations</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X8438072885E4F598">12.26 <span class="Heading">Snake lemma first proof</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X8001962586A4466B">12.26 <span class="Heading">Rings as Ab-categories</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X80ABE43A7CC9CA81">12.27 <span class="Heading">Snake lemma second proof</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X8438072885E4F598">12.27 <span class="Heading">Snake lemma first proof</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7CA9460078765CA9">12.28 <span class="Heading">Subobject lattice</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X80ABE43A7CC9CA81">12.28 <span class="Heading">Snake lemma second proof</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7C93B0F6874AB31E">12.29 <span class="Heading">Adelman category theorem</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7CA9460078765CA9">12.29 <span class="Heading">Subobject lattice</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7A810CDA83F2897F">12.30 <span class="Heading">Tests</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7C93B0F6874AB31E">12.30 <span class="Heading">Adelman category theorem</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7A810CDA83F2897F">12.31 <span class="Heading">Tests</span></a>
 </span>
 </div>
 </div>
@@ -1358,9 +1361,95 @@ true
 #@fi
 </pre></div>
 
+<p><a id="X8598E8828771FA9D" name="X8598E8828771FA9D"></a></p>
+
+<h4>12.20 <span class="Heading">Opposite( CategoryOfRow ) as CategoryOfColumns</span></h4>
+
+<p>Assume that we have the constructors <code class="code">CategoryOfRows</code> and <code class="code">CategoryOfColumns</code> but no constructor <code class="code">Opposite</code>. Then we can still model <code class="code">Opposite( CategoryOfRows )</code> as <code class="code">CategoryOfColumns</code> using <code class="code">WrapperCategory</code>. This can be achieved up to minor modifications by swapping <code class="code">object_constructor</code> and <code class="code">modeling_tower_object_constructor</code> and so on in <code class="code">CategoryOfColumsAsOppositeOfCategoryOfRows</code>. With this, objects and morphisms indeed have the attribute <code class="code">Opposite</code> as desired. Getting <code class="code">ObjectDatum</code> and <code class="code">MorphismDatum</code> to return this attribute would also be possible, but would require more effort than simply swapping <code class="code">object_constructor</code> and <code class="code">modeling_tower_object_constructor</code> and so.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cols := CategoryOfColumns( QQ );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rows := CategoryOfRows( QQ );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">object_constructor :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    { cat, rank } -&gt; ObjectifyObjectForCAPWithAttributes(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        rec( ), cat,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        Opposite, CategoryOfRowsObject( Opposite( cat ), rank )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">modeling_tower_object_constructor :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    { cat, rank } -&gt; ObjectifyObjectForCAPWithAttributes(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        rec( ), ModelingCategory( cat ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        RankOfObject, rank</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">object_datum := { cat, obj } -&gt; RankOfObject( Opposite( obj ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">modeling_tower_object_datum := { cat, obj } -&gt; RankOfObject( obj );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">morphism_constructor :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    { cat, source, underlying_matrix, range } -&gt;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            rec( ), cat,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            source, range,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            Opposite, CategoryOfRowsMorphism(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                Opposite( cat ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                Opposite( range ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                underlying_matrix,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                Opposite( source )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">modeling_tower_morphism_constructor :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    { cat, source, underlying_matrix, range } -&gt;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            rec( ), ModelingCategory( cat ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            source, range,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            UnderlyingMatrix, underlying_matrix</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">morphism_datum := { cat, mor } -&gt; UnderlyingMatrix( Opposite( mor ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">modeling_tower_morphism_datum := { cat, mor } -&gt; UnderlyingMatrix( mor );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">op := WrapperCategory( cols, rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    name := Concatenation( "Opposite( ", Name( rows )," )" ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_filter := WasCreatedAsOppositeCategory,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_object_filter := IsCapCategoryOppositeObject,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_morphism_filter := IsCapCategoryOppositeMorphism,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    object_constructor := object_constructor,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    object_datum := object_datum,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    morphism_constructor := morphism_constructor,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    morphism_datum := morphism_datum,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    modeling_tower_object_constructor := modeling_tower_object_constructor,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    modeling_tower_object_datum := modeling_tower_object_datum,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    modeling_tower_morphism_datum := modeling_tower_morphism_datum,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    only_primitive_operations := true,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">) );</span>
+Opposite( Rows( Q ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOpposite( op, rows );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">source := ObjectConstructor( op, 1 );</span>
+&lt;An object in Opposite( Rows( Q ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">range := ObjectConstructor( op, 2 );</span>
+&lt;An object in Opposite( Rows( Q ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">zero := ZeroMorphism( source, range );</span>
+&lt;A zero morphism in Opposite( Rows( Q ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sum := AdditionForMorphisms( zero, zero );</span>
+&lt;A morphism in Opposite( Rows( Q ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># notice that source and range are indeed swapped compared to the above</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">Display( Opposite( sum ) );</span>
+Source: 
+A row module over Q of rank 2
+
+Matrix: 
+[ [  0 ],
+  [  0 ] ]
+
+Range: 
+A row module over Q of rank 1
+
+A morphism in Rows( Q )
+</pre></div>
+
 <p><a id="X820CD9B28165BF9F" name="X820CD9B28165BF9F"></a></p>
 
-<h4>12.20 <span class="Heading">Testing if an object is projective, injective, bijective, and computing projective/injective dimensions</span></h4>
+<h4>12.21 <span class="Heading">Testing if an object is projective, injective, bijective, and computing projective/injective dimensions</span></h4>
 
 
 <div class="example"><pre>
@@ -1403,7 +1492,7 @@ true
 
 <p><a id="X7AFC8F247C00D608" name="X7AFC8F247C00D608"></a></p>
 
-<h4>12.21 <span class="Heading">Prosets</span></h4>
+<h4>12.22 <span class="Heading">Prosets</span></h4>
 
 
 <div class="example"><pre>
@@ -1446,7 +1535,7 @@ true
 
 <p><a id="X816C8E7A811E9438" name="X816C8E7A811E9438"></a></p>
 
-<h4>12.22 <span class="Heading">Quiver rows bascis</span></h4>
+<h4>12.23 <span class="Heading">Quiver rows bascis</span></h4>
 
 
 <div class="example"><pre>
@@ -1544,7 +1633,7 @@ true
 
 <p><a id="X7A3B76387B5880D4" name="X7A3B76387B5880D4"></a></p>
 
-<h4>12.23 <span class="Heading">Quiver rows over the integers</span></h4>
+<h4>12.24 <span class="Heading">Quiver rows over the integers</span></h4>
 
 <p>Well-defined morphisms</p>
 
@@ -1641,7 +1730,7 @@ false
 
 <p><a id="X789E61CF843CF960" name="X789E61CF843CF960"></a></p>
 
-<h4>12.24 <span class="Heading">Category of relations</span></h4>
+<h4>12.25 <span class="Heading">Category of relations</span></h4>
 
 
 <div class="example"><pre>
@@ -1681,7 +1770,7 @@ true
 
 <p><a id="X8001962586A4466B" name="X8001962586A4466B"></a></p>
 
-<h4>12.25 <span class="Heading">Rings as Ab-categories</span></h4>
+<h4>12.26 <span class="Heading">Rings as Ab-categories</span></h4>
 
 
 <div class="example"><pre>
@@ -1716,7 +1805,7 @@ true
 
 <p><a id="X8438072885E4F598" name="X8438072885E4F598"></a></p>
 
-<h4>12.26 <span class="Heading">Snake lemma first proof</span></h4>
+<h4>12.27 <span class="Heading">Snake lemma first proof</span></h4>
 
 
 <div class="example"><pre>
@@ -1789,7 +1878,7 @@ true
 
 <p><a id="X80ABE43A7CC9CA81" name="X80ABE43A7CC9CA81"></a></p>
 
-<h4>12.27 <span class="Heading">Snake lemma second proof</span></h4>
+<h4>12.28 <span class="Heading">Snake lemma second proof</span></h4>
 
 
 <div class="example"><pre>
@@ -1839,7 +1928,7 @@ true
 
 <p><a id="X7CA9460078765CA9" name="X7CA9460078765CA9"></a></p>
 
-<h4>12.28 <span class="Heading">Subobject lattice</span></h4>
+<h4>12.29 <span class="Heading">Subobject lattice</span></h4>
 
 <p>We compute the number of the generic subobject lattice generated by 2 independent subobjects y,z and one subobject x of y.</p>
 
@@ -1866,7 +1955,7 @@ true
 
 <p><a id="X7C93B0F6874AB31E" name="X7C93B0F6874AB31E"></a></p>
 
-<h4>12.29 <span class="Heading">Adelman category theorem</span></h4>
+<h4>12.30 <span class="Heading">Adelman category theorem</span></h4>
 
 
 <div class="example"><pre>
@@ -1893,7 +1982,7 @@ true
 
 <p><a id="X7A810CDA83F2897F" name="X7A810CDA83F2897F"></a></p>
 
-<h4>12.30 <span class="Heading">Tests</span></h4>
+<h4>12.31 <span class="Heading">Tests</span></h4>
 
 
 <div class="example"><pre>
