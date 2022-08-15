@@ -20,6 +20,26 @@ DeclareCategory( "IsInitialCapCategory",
 
 AddCategoricalProperty( [ "IsInitialCategory", "IsInitialCategory" ] );
 
+#! @Description
+#!  The &GAP; type of a cell in a initial category.
+#! @Arguments T
+DeclareCategory( "IsCellInInitialCategory",
+        IsCapCategoryCell );
+
+#! @Description
+#!  The &GAP; type of an object in a initial category.
+#! @Arguments T
+DeclareCategory( "IsObjectInInitialCategory",
+        IsCellInInitialCategory and
+        IsCapCategoryObjectRep );
+
+#! @Description
+#!  The &GAP; type of a morphism in a initial category.
+#! @Arguments T
+DeclareCategory( "IsMorphismInInitialCategory",
+        IsCellInInitialCategory and
+        IsCapCategoryMorphismRep );
+
 ####################################
 #
 #! @Section Constructor

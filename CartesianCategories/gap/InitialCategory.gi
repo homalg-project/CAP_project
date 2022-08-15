@@ -17,6 +17,14 @@ InstallGlobalFunction( InitialCategory,
     SetFilterObj( I, IsInitialCategory );
     
     SetRangeCategoryOfHomomorphismStructure( I, I );
+
+    ##
+    I!.compiler_hints :=
+      rec(
+          category_filter := IsInitialCategory,
+          object_filter := IsObjectInInitialCategory,
+          morphism_filter := IsMorphismInInitialCategory
+          );
     
     ##
     AddIsEqualForObjects( I,
