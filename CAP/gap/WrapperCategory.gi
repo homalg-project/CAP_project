@@ -124,7 +124,7 @@ InstallMethod( WrapperCategory,
         [ IsCapCategory, IsRecord ],
         
   function( C, options )
-    local known_options_with_filters, filter, category_constructor_options, copy_value_or_default, list_of_operations_to_install, D, HC, option_name;
+    local known_options_with_filters, filter, combined_options, category_constructor_options, copy_value_or_default, list_of_operations_to_install, D, modeling_tower_object_constructor, modeling_tower_object_datum, modeling_tower_morphism_constructor, modeling_tower_morphism_datum, HC, option_name;
     
     ## check given options
     known_options_with_filters := rec(
@@ -136,6 +136,10 @@ InstallMethod( WrapperCategory,
         object_datum := IsFunction,
         morphism_constructor := IsFunction,
         morphism_datum := IsFunction,
+        modeling_tower_object_constructor := IsFunction,
+        modeling_tower_object_datum := IsFunction,
+        modeling_tower_morphism_constructor := IsFunction,
+        modeling_tower_morphism_datum := IsFunction,
         only_primitive_operations := IsBool,
         wrap_range_of_hom_structure := IsBool,
     );
@@ -162,12 +166,37 @@ InstallMethod( WrapperCategory,
         
     od;
     
+    # options which should either all or none be set
+    combined_options := [
+        "category_filter",
+        "category_object_filter",
+        "category_morphism_filter",
+        "object_constructor",
+        "object_datum",
+        "morphism_constructor",
+        "morphism_datum",
+        "modeling_tower_object_constructor",
+        "modeling_tower_object_datum",
+        "modeling_tower_morphism_constructor",
+        "modeling_tower_morphism_datum",
+    ];
+    
+    if Length( Set( List( combined_options, name -> IsBound( options.(name) ) ) ) ) > 1 then
+        
+        Display( "WARNING: To avoid inconsistencies, either all or none of the following options should be set in a call to `WrapperCategory`. This is not the case." );
+        Display( combined_options );
+        
+    fi;
+    
+    # the methods for ModelingObject et al. will be installed later once we have a category filter
     category_constructor_options := rec(
         underlying_category_getter_string := "ModelingCategory",
-        underlying_object_getter_string := "ObjectDatum",
-        underlying_morphism_getter_string := "MorphismDatum",
-        generic_output_source_getter_string := "ObjectConstructor( cat, Source( underlying_result ) )",
-        generic_output_range_getter_string := "ObjectConstructor( cat, Range( underlying_result ) )",
+        underlying_object_getter_string := "ModelingObject",
+        underlying_morphism_getter_string := "ModelingMorphism",
+        top_object_getter_string := "ModeledObject",
+        top_morphism_getter_string := "ModeledMorphism",
+        generic_output_source_getter_string := "ModeledObject( cat, Source( underlying_result ) )",
+        generic_output_range_getter_string := "ModeledObject( cat, Range( underlying_result ) )",
         create_func_bool := "default",
         create_func_object := "default",
         create_func_object_or_fail := "default",
@@ -200,13 +229,22 @@ InstallMethod( WrapperCategory,
         
     end;
     
-    copy_value_or_default( options, category_constructor_options, "category_filter", IsWrapperCapCategory );
     copy_value_or_default( options, category_constructor_options, "category_object_filter", IsWrapperCapCategoryObject );
     copy_value_or_default( options, category_constructor_options, "category_morphism_filter", IsWrapperCapCategoryMorphism );
     copy_value_or_default( options, category_constructor_options, "object_constructor", AsObjectInWrapperCategory );
     copy_value_or_default( options, category_constructor_options, "object_datum", { D, o } -> UnderlyingCell( o ) );
     copy_value_or_default( options, category_constructor_options, "morphism_constructor", AsMorphismInWrapperCategory );
     copy_value_or_default( options, category_constructor_options, "morphism_datum", { D, m } -> UnderlyingCell( m ) );
+    
+    if IsBound( options.category_filter ) then
+        
+        category_constructor_options.category_filter := WasCreatedAsWrapperCapCategory and options.category_filter;
+        
+    else
+        
+        category_constructor_options.category_filter := IsWrapperCapCategory; # IsWrapperCapCategory already implies WasCreatedAsWrapperCapCategory
+        
+    fi;
     
     if HasCommutativeRingOfLinearCategory( C ) then
         
@@ -242,13 +280,111 @@ InstallMethod( WrapperCategory,
     
     SetModelingCategory( D, C );
     
+    # install methods
+    if IsBound( options.modeling_tower_object_constructor ) then
+        
+        modeling_tower_object_constructor := options.modeling_tower_object_constructor;
+        
+    else
+        
+        modeling_tower_object_constructor := { cat, obj } -> obj;
+        
+    fi;
+    
+    if IsBound( options.modeling_tower_object_datum ) then
+        
+        modeling_tower_object_datum := options.modeling_tower_object_datum;
+        
+    else
+        
+        modeling_tower_object_datum := { cat, obj } -> obj;
+        
+    fi;
+    
+    if IsBound( options.modeling_tower_morphism_constructor ) then
+        
+        modeling_tower_morphism_constructor := options.modeling_tower_morphism_constructor;
+        
+    else
+        
+        modeling_tower_morphism_constructor := { cat, source, mor, range } -> mor;
+        
+    fi;
+    
+    if IsBound( options.modeling_tower_morphism_datum ) then
+        
+        modeling_tower_morphism_datum := options.modeling_tower_morphism_datum;
+        
+    else
+        
+        modeling_tower_morphism_datum := { cat, mor } -> mor;
+        
+    fi;
+    
+    InstallMethodForCompilerForCAP( ModelingTowerObjectConstructor,
+        [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), IsObject ],
+        modeling_tower_object_constructor
+    );
+    
+    InstallMethodForCompilerForCAP( ModelingTowerObjectDatum,
+        [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), IsCapCategoryObject and ObjectFilter( C ) ],
+        modeling_tower_object_datum
+    );
+    
+    InstallMethodForCompilerForCAP( ModelingTowerMorphismConstructor,
+        [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), IsCapCategoryObject and ObjectFilter( C ), IsObject, IsCapCategoryObject and ObjectFilter( C ) ],
+        modeling_tower_morphism_constructor
+    );
+    
+    InstallMethodForCompilerForCAP( ModelingTowerMorphismDatum,
+        [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), IsCapCategoryMorphism and MorphismFilter( C ) ],
+        modeling_tower_morphism_datum
+    );
+    
+    
+    InstallMethodForCompilerForCAP( ModelingObject,
+        [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), IsCapCategoryObject and ObjectFilter( D ) ],
+        
+      function ( cat, obj )
+        
+        return ModelingTowerObjectConstructor( cat, ObjectDatum( cat, obj ) );
+        
+    end );
+    
+    InstallMethodForCompilerForCAP( ModeledObject,
+        [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), IsCapCategoryObject and ObjectFilter( C ) ],
+        
+      function ( cat, obj )
+        
+        return ObjectConstructor( cat, ModelingTowerObjectDatum( cat, obj ) );
+        
+    end );
+    
+    InstallMethodForCompilerForCAP( ModelingMorphism,
+        [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), IsCapCategoryMorphism and MorphismFilter( D ) ],
+        
+      function ( cat, mor )
+        
+        return ModelingTowerMorphismConstructor( cat, ModelingObject( cat, Source( mor ) ), MorphismDatum( cat, mor ), ModelingObject( cat, Range( mor ) ) );
+        
+    end );
+    
+    InstallMethodForCompilerForCAP( ModeledMorphism,
+        [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), IsCapCategoryObject and ObjectFilter( D ), IsCapCategoryMorphism and MorphismFilter( C ), IsCapCategoryObject and ObjectFilter( D ) ],
+        
+      function ( cat, source, mor, range )
+        
+        return MorphismConstructor( cat, source, ModelingTowerMorphismDatum( cat, mor ), range );
+        
+    end );
+    
     if "BasisOfExternalHom" in list_of_operations_to_install then
         
         AddBasisOfExternalHom( D,
           function( cat, a, b )
             
-            return List( BasisOfExternalHom( ModelingCategory( cat ), ObjectDatum( cat, a ), ObjectDatum( cat, b ) ),
-                         mor -> MorphismConstructor( cat, a, mor, b ) );
+            return List( BasisOfExternalHom( ModelingCategory( cat ), ModelingObject( cat, a ), ModelingObject( cat, b ) ),
+                         mor -> ModeledMorphism( cat, a, mor, b ) );
             
         end );
         
@@ -260,8 +396,8 @@ InstallMethod( WrapperCategory,
           function( cat, alpha, L )
             
             return CoefficientsOfMorphismWithGivenBasisOfExternalHom( ModelingCategory( cat ),
-                           MorphismDatum( cat, alpha ),
-                           List( L, l -> MorphismDatum( cat, l ) ) );
+                           ModelingMorphism( cat, alpha ),
+                           List( L, l -> ModelingMorphism( cat, l ) ) );
             
         end );
         
@@ -271,7 +407,7 @@ InstallMethod( WrapperCategory,
         
         HC := RangeCategoryOfHomomorphismStructure( C );
         
-        if IsBound( options.wrap_range_of_hom_structure ) and options.wrap_range_of_hom_structure and not IsWrapperCapCategory( HC ) then
+        if IsBound( options.wrap_range_of_hom_structure ) and options.wrap_range_of_hom_structure and not WasCreatedAsWrapperCapCategory( HC ) then
             
             if IsIdenticalObj( C, HC ) then
                 
@@ -292,7 +428,7 @@ InstallMethod( WrapperCategory,
                 AddDistinguishedObjectOfHomomorphismStructure( D,
                   function( cat )
                     
-                    return ObjectConstructor( HC, DistinguishedObjectOfHomomorphismStructure( ModelingCategory( cat ) ) );
+                    return ModeledObject( HC, DistinguishedObjectOfHomomorphismStructure( ModelingCategory( cat ) ) );
                     
                 end );
             fi;
@@ -301,7 +437,7 @@ InstallMethod( WrapperCategory,
                 AddHomomorphismStructureOnObjects( D,
                   function( cat, a, b )
                     
-                    return ObjectConstructor( HC, HomomorphismStructureOnObjects( ModelingCategory( cat ), ObjectDatum( cat, a ), ObjectDatum( cat, b ) ) );
+                    return ModeledObject( HC, HomomorphismStructureOnObjects( ModelingCategory( cat ), ModelingObject( cat, a ), ModelingObject( cat, b ) ) );
                     
                 end );
             fi;
@@ -310,7 +446,7 @@ InstallMethod( WrapperCategory,
                 AddHomomorphismStructureOnMorphismsWithGivenObjects( D,
                   function( cat, s, alpha, beta, r )
                     
-                    return MorphismConstructor( HC, s, HomomorphismStructureOnMorphismsWithGivenObjects( ModelingCategory( cat ), ObjectDatum( HC, s ), MorphismDatum( cat, alpha ), MorphismDatum( cat, beta ), ObjectDatum( HC, r ) ), r );
+                    return ModeledMorphism( HC, s, HomomorphismStructureOnMorphismsWithGivenObjects( ModelingCategory( cat ), ModelingObject( HC, s ), ModelingMorphism( cat, alpha ), ModelingMorphism( cat, beta ), ModelingObject( HC, r ) ), r );
                     
                 end );
             fi;
@@ -319,7 +455,7 @@ InstallMethod( WrapperCategory,
                 AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( D,
                   function( cat, s, alpha, r )
                     
-                    return MorphismConstructor( HC, s, InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( ModelingCategory( cat ), ObjectDatum( HC, s ), MorphismDatum( cat, alpha ), ObjectDatum( HC, r ) ), r );
+                    return ModeledMorphism( HC, s, InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( ModelingCategory( cat ), ModelingObject( HC, s ), ModelingMorphism( cat, alpha ), ModelingObject( HC, r ) ), r );
                     
                 end );
             fi;
@@ -328,7 +464,7 @@ InstallMethod( WrapperCategory,
                 AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( D,
                   function( cat, a, b, iota )
                     
-                    return MorphismConstructor( cat, a, InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( ModelingCategory( cat ), ObjectDatum( cat, a ), ObjectDatum( cat, b ), MorphismDatum( HC, iota ) ), b );
+                    return ModeledMorphism( cat, a, InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( ModelingCategory( cat ), ModelingObject( cat, a ), ModelingObject( cat, b ), ModelingMorphism( HC, iota ) ), b );
                     
                 end );
             fi;
@@ -350,7 +486,7 @@ InstallMethod( WrapperCategory,
                 AddHomomorphismStructureOnObjects( D,
                   function( cat, a, b )
                     
-                    return HomomorphismStructureOnObjects( ModelingCategory( cat ), ObjectDatum( cat, a ), ObjectDatum( cat, b ) );
+                    return HomomorphismStructureOnObjects( ModelingCategory( cat ), ModelingObject( cat, a ), ModelingObject( cat, b ) );
                     
                 end );
             fi;
@@ -359,7 +495,7 @@ InstallMethod( WrapperCategory,
                 AddHomomorphismStructureOnMorphismsWithGivenObjects( D,
                   function( cat, s, alpha, beta, r )
                     
-                    return HomomorphismStructureOnMorphismsWithGivenObjects( ModelingCategory( cat ), s, MorphismDatum( cat, alpha ), MorphismDatum( cat, beta ), r );
+                    return HomomorphismStructureOnMorphismsWithGivenObjects( ModelingCategory( cat ), s, ModelingMorphism( cat, alpha ), ModelingMorphism( cat, beta ), r );
                     
                 end );
             fi;
@@ -368,7 +504,7 @@ InstallMethod( WrapperCategory,
                 AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( D,
                   function( cat, alpha )
                     
-                    return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( ModelingCategory( cat ), MorphismDatum( cat, alpha ) );
+                    return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( ModelingCategory( cat ), ModelingMorphism( cat, alpha ) );
                     
                 end );
             fi;
@@ -377,7 +513,7 @@ InstallMethod( WrapperCategory,
                 AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( D,
                   function( cat, s, alpha, r )
                     
-                    return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( ModelingCategory( cat ), s, MorphismDatum( cat, alpha ), r );
+                    return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( ModelingCategory( cat ), s, ModelingMorphism( cat, alpha ), r );
                     
                 end );
             fi;
@@ -386,7 +522,7 @@ InstallMethod( WrapperCategory,
                 AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( D,
                   function( cat, a, b, iota )
                     
-                    return MorphismConstructor( cat, a, InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( ModelingCategory( cat ), ObjectDatum( cat, a ), ObjectDatum( cat, b ), iota ), b );
+                    return ModeledMorphism( cat, a, InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( ModelingCategory( cat ), ModelingObject( cat, a ), ModelingObject( cat, b ), iota ), b );
                     
                 end );
             fi;

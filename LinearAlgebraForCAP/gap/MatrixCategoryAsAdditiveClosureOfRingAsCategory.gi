@@ -104,6 +104,11 @@ InstallMethod( MatrixCategoryAsAdditiveClosureOfRingAsCategory,
         object_datum := object_datum,
         morphism_constructor := morphism_constructor,
         morphism_datum := morphism_datum,
+        # TODO: use new system
+        modeling_tower_object_constructor := { cat, obj } -> obj,
+        modeling_tower_object_datum := { cat, obj } -> obj,
+        modeling_tower_morphism_constructor := { cat, source, mor, range } -> mor,
+        modeling_tower_morphism_datum := { cat, mor } -> mor,
         only_primitive_operations := true,
     ) : FinalizeCategory := false );
     

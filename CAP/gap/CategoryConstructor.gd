@@ -39,6 +39,8 @@ DeclareInfoClass( "InfoCategoryConstructor" );
 #!  * `underlying_category_getter_string` (optional): see below
 #!  * `underlying_object_getter_string` (optional): see below
 #!  * `underlying_morphism_getter_string` (optional): see below
+#!  * `top_object_getter_string` (optional): see below
+#!  * `top_morphism_getter_string` (optional): see below
 #!  * `generic_output_source_getter_string` (optional): see below
 #!  * `generic_output_range_getter_string` (optional): see below
 #!  * `create_func_bool`: see below
@@ -63,6 +65,7 @@ DeclareInfoClass( "InfoCategoryConstructor" );
 #!    For computing source and range, the `output_source_getter_string` and `output_range_getter_string` from the method name record are used if available (see <Ref Sect="Section_CapInternalInstallAdd" />).
 #!    In some categories, source and range can always be obtained in a generic way (e.g. from the morphism datum). In this case, `generic_output_source_getter_string` and `generic_output_range_getter_string`
 #!    can be set and are used if the required information is not available in the method name record.
+#!  * `top_object_getter` and `top_morphism_getter` are used in the `"default"` strings and are replaced by `top_object_getter_string` and `top_morphism_getter_string`, respectively.
 #!
 #!  Note that the category is created with `category_as_first_argument` set to `true` (see <Ref Sect="Section_CapInternalInstallAdd" />).
 #! @Arguments options
