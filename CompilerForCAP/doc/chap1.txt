@@ -144,6 +144,8 @@
         expensive)  [10XList[110X  call.  Thus,  code  inside  if/else  statements must
         execute without error even if moved outside of the if/else statement.[133X
   
+  [30X    [33X[0;6YNon-dense lists are not supported.[133X
+  
   [33X[0;0YAdditionally,  there  is  no  detection  for  recursive  function  calls, so
   resolving such a function call leads to an infinite loop.[133X
   

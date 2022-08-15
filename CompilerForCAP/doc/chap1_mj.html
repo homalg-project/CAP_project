@@ -193,6 +193,9 @@
 <li><p>For performance optimizations, the compiler might move expressions out of if/else statements, e.g. if they occur inside a (potentially expensive) <code class="code">List</code> call. Thus, code inside if/else statements must execute without error even if moved outside of the if/else statement.</p>
 
 </li>
+<li><p>Non-dense lists are not supported.</p>
+
+</li>
 </ul>
 <p>Additionally, there is no detection for recursive function calls, so resolving such a function call leads to an infinite loop.</p>
 
