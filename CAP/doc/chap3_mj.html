@@ -110,10 +110,10 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7C9F3D8086238443">3.10-1 IdentityMorphism</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8244F7A0868BE27D">3.10-2 PreCompose</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83CB57FB81931CFE">3.10-3 PreCompose</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7EEE0D627B052671">3.10-4 PreComposeList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X87A7BCFA7C2D8F5B">3.10-4 PreComposeList</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X84293B8381256A08">3.10-5 PostCompose</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81222A1084A4F637">3.10-6 PostCompose</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X84AC2CBE78E874A6">3.10-7 PostComposeList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8107D27F7B62D023">3.10-7 PostComposeList</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7D5182B48598FBC5">3.11 <span class="Heading">Well-Definedness of Morphisms</span></a>
 </span>
@@ -674,14 +674,14 @@
 
 <p>This is a convenience method. The argument is a list of morphisms <span class="SimpleMath">\(L = ( \alpha_1: a_1 \rightarrow a_2, \alpha_2: a_2 \rightarrow a_3, \dots, \alpha_n: a_n \rightarrow a_{n+1} )\)</span>. The output is the composition <span class="SimpleMath">\(\alpha_{n} \circ ( \alpha_{n-1} \circ ( \dots ( \alpha_2 \circ \alpha_1 ) ) )\)</span>.</p>
 
-<p><a id="X7EEE0D627B052671" name="X7EEE0D627B052671"></a></p>
+<p><a id="X87A7BCFA7C2D8F5B" name="X87A7BCFA7C2D8F5B"></a></p>
 
 <h5>3.10-4 PreComposeList</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PreComposeList</code>( <var class="Arg">C</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a_1, a_{n+1})\)</span></p>
 
-<p>This is a convenience method. The arguments are a category <span class="SimpleMath">\(C\)</span> and a list of morphisms <span class="SimpleMath">\(L = ( \alpha_1: a_1 \rightarrow a_2, \alpha_2: a_2 \rightarrow a_3, \dots, \alpha_n: a_n \rightarrow a_{n+1} )\)</span> in <span class="SimpleMath">\(C\)</span>. The output is the composition <span class="SimpleMath">\(\alpha_{n} \circ ( \alpha_{n-1} \circ ( \dots ( \alpha_2 \circ \alpha_1 ) ) )\)</span>.</p>
+<p>The argument is a list of morphisms <span class="SimpleMath">\(L = ( \alpha_1: a_1 \rightarrow a_2, \alpha_2: a_2 \rightarrow a_3, \dots, \alpha_n: a_n \rightarrow a_{n+1} )\)</span> in <span class="SimpleMath">\(C\)</span>. The output is the composition <span class="SimpleMath">\(\alpha_{n} \circ ( \alpha_{n-1} \circ ( \dots ( \alpha_2 \circ \alpha_1 ) ) )\)</span>.</p>
 
 <p><a id="X84293B8381256A08" name="X84293B8381256A08"></a></p>
 
@@ -701,14 +701,14 @@
 
 <p>This is a convenience method. The argument is a list of morphisms <span class="SimpleMath">\(L = ( \alpha_n: a_n \rightarrow a_{n+1}, \alpha_{n-1}: a_{n-1} \rightarrow a_n, \dots, \alpha_1: a_1 \rightarrow a_2 )\)</span>. The output is the composition <span class="SimpleMath">\(((\alpha_{n} \circ \alpha_{n-1}) \circ \dots \alpha_2) \circ \alpha_1\)</span>.</p>
 
-<p><a id="X84AC2CBE78E874A6" name="X84AC2CBE78E874A6"></a></p>
+<p><a id="X8107D27F7B62D023" name="X8107D27F7B62D023"></a></p>
 
 <h5>3.10-7 PostComposeList</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PostComposeList</code>( <var class="Arg">C</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a_1, a_{n+1})\)</span></p>
 
-<p>This is a convenience method. The arguments are a category <span class="SimpleMath">\(C\)</span> and a list of morphisms <span class="SimpleMath">\(L = ( \alpha_n: a_n \rightarrow a_{n+1}, \alpha_{n-1}: a_{n-1} \rightarrow a_n, \dots, \alpha_1: a_1 \rightarrow a_2 )\)</span>. The output is the composition <span class="SimpleMath">\(((\alpha_{n} \circ \alpha_{n-1}) \circ \dots \alpha_2) \circ \alpha_1\)</span>.</p>
+<p>The argument is a list of morphisms <span class="SimpleMath">\(L = ( \alpha_n: a_n \rightarrow a_{n+1}, \alpha_{n-1}: a_{n-1} \rightarrow a_n, \dots, \alpha_1: a_1 \rightarrow a_2 )\)</span>. The output is the composition <span class="SimpleMath">\(((\alpha_{n} \circ \alpha_{n-1}) \circ \dots \alpha_2) \circ \alpha_1\)</span>.</p>
 
 <p><a id="X7D5182B48598FBC5" name="X7D5182B48598FBC5"></a></p>
 

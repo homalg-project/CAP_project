@@ -2098,7 +2098,16 @@
   given  function  [23XF[123X to the category for the basic operation [10XPostCompose[110X. [23XF: (
   beta, alpha ) \mapsto \mathtt{PostCompose}(beta, alpha)[123X.[133X
   
-  [1X7.7-174 AddPreCompose[101X
+  [1X7.7-174 AddPostComposeList[101X
+  
+  [33X[1;0Y[29X[2XAddPostComposeList[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given function [23XF[123X to the category for the basic operation [10XPostComposeList[110X. [23XF:
+  ( list_of_morphisms ) \mapsto \mathtt{PostComposeList}(list_of_morphisms)[123X.[133X
+  
+  [1X7.7-175 AddPreCompose[101X
   
   [33X[1;0Y[29X[2XAddPreCompose[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2107,7 +2116,16 @@
   given  function  [23XF[123X  to the category for the basic operation [10XPreCompose[110X. [23XF: (
   alpha, beta ) \mapsto \mathtt{PreCompose}(alpha, beta)[123X.[133X
   
-  [1X7.7-175 AddProjectionInFactorOfDirectProduct[101X
+  [1X7.7-176 AddPreComposeList[101X
+  
+  [33X[1;0Y[29X[2XAddPreComposeList[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given  function [23XF[123X to the category for the basic operation [10XPreComposeList[110X. [23XF:
+  ( list_of_morphisms ) \mapsto \mathtt{PreComposeList}(list_of_morphisms)[123X.[133X
+  
+  [1X7.7-177 AddProjectionInFactorOfDirectProduct[101X
   
   [33X[1;0Y[29X[2XAddProjectionInFactorOfDirectProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2117,7 +2135,7 @@
   [10XProjectionInFactorOfDirectProduct[110X.    [23XF:    (    objects,    k   )   \mapsto
   \mathtt{ProjectionInFactorOfDirectProduct}(objects, k)[123X.[133X
   
-  [1X7.7-176 AddProjectionInFactorOfDirectProductWithGivenDirectProduct[101X
+  [1X7.7-178 AddProjectionInFactorOfDirectProductWithGivenDirectProduct[101X
   
   [33X[1;0Y[29X[2XAddProjectionInFactorOfDirectProductWithGivenDirectProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2129,7 +2147,7 @@
   \mathtt{ProjectionInFactorOfDirectProductWithGivenDirectProduct}(objects, k,
   P)[123X.[133X
   
-  [1X7.7-177 AddProjectionInFactorOfDirectSum[101X
+  [1X7.7-179 AddProjectionInFactorOfDirectSum[101X
   
   [33X[1;0Y[29X[2XAddProjectionInFactorOfDirectSum[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2139,7 +2157,7 @@
   [10XProjectionInFactorOfDirectSum[110X.     [23XF:     (    objects,    k    )    \mapsto
   \mathtt{ProjectionInFactorOfDirectSum}(objects, k)[123X.[133X
   
-  [1X7.7-178 AddProjectionInFactorOfDirectSumWithGivenDirectSum[101X
+  [1X7.7-180 AddProjectionInFactorOfDirectSumWithGivenDirectSum[101X
   
   [33X[1;0Y[29X[2XAddProjectionInFactorOfDirectSumWithGivenDirectSum[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2150,7 +2168,7 @@
   \mapsto \mathtt{ProjectionInFactorOfDirectSumWithGivenDirectSum}(objects, k,
   P)[123X.[133X
   
-  [1X7.7-179 AddProjectionInFactorOfFiberProduct[101X
+  [1X7.7-181 AddProjectionInFactorOfFiberProduct[101X
   
   [33X[1;0Y[29X[2XAddProjectionInFactorOfFiberProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2160,7 +2178,7 @@
   [10XProjectionInFactorOfFiberProduct[110X.    [23XF:    (    morphisms,   k   )   \mapsto
   \mathtt{ProjectionInFactorOfFiberProduct}(morphisms, k)[123X.[133X
   
-  [1X7.7-180 AddProjectionInFactorOfFiberProductWithGivenFiberProduct[101X
+  [1X7.7-182 AddProjectionInFactorOfFiberProductWithGivenFiberProduct[101X
   
   [33X[1;0Y[29X[2XAddProjectionInFactorOfFiberProductWithGivenFiberProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2172,7 +2190,7 @@
   \mathtt{ProjectionInFactorOfFiberProductWithGivenFiberProduct}(morphisms, k,
   P)[123X.[133X
   
-  [1X7.7-181 AddProjectionOntoCoequalizer[101X
+  [1X7.7-183 AddProjectionOntoCoequalizer[101X
   
   [33X[1;0Y[29X[2XAddProjectionOntoCoequalizer[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2182,7 +2200,7 @@
   [10XProjectionOntoCoequalizer[110X.      [23XF:      (      morphisms      )      \mapsto
   \mathtt{ProjectionOntoCoequalizer}(morphisms)[123X.[133X
   
-  [1X7.7-182 AddProjectionOntoCoequalizerWithGivenCoequalizer[101X
+  [1X7.7-184 AddProjectionOntoCoequalizerWithGivenCoequalizer[101X
   
   [33X[1;0Y[29X[2XAddProjectionOntoCoequalizerWithGivenCoequalizer[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2192,7 +2210,7 @@
   [10XProjectionOntoCoequalizerWithGivenCoequalizer[110X.  [23XF:  ( morphisms, P ) \mapsto
   \mathtt{ProjectionOntoCoequalizerWithGivenCoequalizer}(morphisms, P)[123X.[133X
   
-  [1X7.7-183 AddProjectiveDimension[101X
+  [1X7.7-185 AddProjectiveDimension[101X
   
   [33X[1;0Y[29X[2XAddProjectiveDimension[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2201,7 +2219,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XProjectiveDimension[110X. [23XF: ( arg2 ) \mapsto \mathtt{ProjectiveDimension}(arg2)[123X.[133X
   
-  [1X7.7-184 AddProjectiveLift[101X
+  [1X7.7-186 AddProjectiveLift[101X
   
   [33X[1;0Y[29X[2XAddProjectiveLift[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2210,7 +2228,7 @@
   given  function [23XF[123X to the category for the basic operation [10XProjectiveLift[110X. [23XF:
   ( alpha, beta ) \mapsto \mathtt{ProjectiveLift}(alpha, beta)[123X.[133X
   
-  [1X7.7-185 AddPushout[101X
+  [1X7.7-187 AddPushout[101X
   
   [33X[1;0Y[29X[2XAddPushout[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2219,7 +2237,7 @@
   given  function [23XF[123X to the category for the basic operation [10XPushout[110X. [23XF: ( arg2
   ) \mapsto \mathtt{Pushout}(arg2)[123X.[133X
   
-  [1X7.7-186 AddPushoutFunctorial[101X
+  [1X7.7-188 AddPushoutFunctorial[101X
   
   [33X[1;0Y[29X[2XAddPushoutFunctorial[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2229,7 +2247,7 @@
   [23XF:        (       morphisms,       L,       morphismsp       )       \mapsto
   \mathtt{PushoutFunctorial}(morphisms, L, morphismsp)[123X.[133X
   
-  [1X7.7-187 AddPushoutFunctorialWithGivenPushouts[101X
+  [1X7.7-189 AddPushoutFunctorialWithGivenPushouts[101X
   
   [33X[1;0Y[29X[2XAddPushoutFunctorialWithGivenPushouts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2240,7 +2258,7 @@
   \mapsto    \mathtt{PushoutFunctorialWithGivenPushouts}(P,    morphisms,   L,
   morphismsp, Pp)[123X.[133X
   
-  [1X7.7-188 AddRandomMorphismByInteger[101X
+  [1X7.7-190 AddRandomMorphismByInteger[101X
   
   [33X[1;0Y[29X[2XAddRandomMorphismByInteger[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2250,7 +2268,7 @@
   [10XRandomMorphismByInteger[110X.        [23XF:        (        n        )        \mapsto
   \mathtt{RandomMorphismByInteger}(n)[123X.[133X
   
-  [1X7.7-189 AddRandomMorphismByList[101X
+  [1X7.7-191 AddRandomMorphismByList[101X
   
   [33X[1;0Y[29X[2XAddRandomMorphismByList[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2259,7 +2277,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XRandomMorphismByList[110X. [23XF: ( L ) \mapsto \mathtt{RandomMorphismByList}(L)[123X.[133X
   
-  [1X7.7-190 AddRandomMorphismWithFixedRangeByInteger[101X
+  [1X7.7-192 AddRandomMorphismWithFixedRangeByInteger[101X
   
   [33X[1;0Y[29X[2XAddRandomMorphismWithFixedRangeByInteger[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2269,7 +2287,7 @@
   [10XRandomMorphismWithFixedRangeByInteger[110X.    [23XF:    (    B,    n    )    \mapsto
   \mathtt{RandomMorphismWithFixedRangeByInteger}(B, n)[123X.[133X
   
-  [1X7.7-191 AddRandomMorphismWithFixedRangeByList[101X
+  [1X7.7-193 AddRandomMorphismWithFixedRangeByList[101X
   
   [33X[1;0Y[29X[2XAddRandomMorphismWithFixedRangeByList[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2279,7 +2297,7 @@
   [10XRandomMorphismWithFixedRangeByList[110X.     [23XF:     (     B,    L    )    \mapsto
   \mathtt{RandomMorphismWithFixedRangeByList}(B, L)[123X.[133X
   
-  [1X7.7-192 AddRandomMorphismWithFixedSourceAndRangeByInteger[101X
+  [1X7.7-194 AddRandomMorphismWithFixedSourceAndRangeByInteger[101X
   
   [33X[1;0Y[29X[2XAddRandomMorphismWithFixedSourceAndRangeByInteger[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2289,7 +2307,7 @@
   [10XRandomMorphismWithFixedSourceAndRangeByInteger[110X.  [23XF:  (  A,  B,  n  ) \mapsto
   \mathtt{RandomMorphismWithFixedSourceAndRangeByInteger}(A, B, n)[123X.[133X
   
-  [1X7.7-193 AddRandomMorphismWithFixedSourceAndRangeByList[101X
+  [1X7.7-195 AddRandomMorphismWithFixedSourceAndRangeByList[101X
   
   [33X[1;0Y[29X[2XAddRandomMorphismWithFixedSourceAndRangeByList[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2299,7 +2317,7 @@
   [10XRandomMorphismWithFixedSourceAndRangeByList[110X.   [23XF:   (  A,  B,  L  )  \mapsto
   \mathtt{RandomMorphismWithFixedSourceAndRangeByList}(A, B, L)[123X.[133X
   
-  [1X7.7-194 AddRandomMorphismWithFixedSourceByInteger[101X
+  [1X7.7-196 AddRandomMorphismWithFixedSourceByInteger[101X
   
   [33X[1;0Y[29X[2XAddRandomMorphismWithFixedSourceByInteger[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2309,7 +2327,7 @@
   [10XRandomMorphismWithFixedSourceByInteger[110X.    [23XF:    (    A,    n    )   \mapsto
   \mathtt{RandomMorphismWithFixedSourceByInteger}(A, n)[123X.[133X
   
-  [1X7.7-195 AddRandomMorphismWithFixedSourceByList[101X
+  [1X7.7-197 AddRandomMorphismWithFixedSourceByList[101X
   
   [33X[1;0Y[29X[2XAddRandomMorphismWithFixedSourceByList[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2319,7 +2337,7 @@
   [10XRandomMorphismWithFixedSourceByList[110X.     [23XF:     (    A,    L    )    \mapsto
   \mathtt{RandomMorphismWithFixedSourceByList}(A, L)[123X.[133X
   
-  [1X7.7-196 AddRandomObjectByInteger[101X
+  [1X7.7-198 AddRandomObjectByInteger[101X
   
   [33X[1;0Y[29X[2XAddRandomObjectByInteger[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2328,7 +2346,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XRandomObjectByInteger[110X. [23XF: ( n ) \mapsto \mathtt{RandomObjectByInteger}(n)[123X.[133X
   
-  [1X7.7-197 AddRandomObjectByList[101X
+  [1X7.7-199 AddRandomObjectByList[101X
   
   [33X[1;0Y[29X[2XAddRandomObjectByList[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2337,7 +2355,7 @@
   given function [23XF[123X to the category for the basic operation [10XRandomObjectByList[110X.
   [23XF: ( L ) \mapsto \mathtt{RandomObjectByList}(L)[123X.[133X
   
-  [1X7.7-198 AddSimplifyEndo[101X
+  [1X7.7-200 AddSimplifyEndo[101X
   
   [33X[1;0Y[29X[2XAddSimplifyEndo[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2346,7 +2364,7 @@
   given  function [23XF[123X to the category for the basic operation [10XSimplifyEndo[110X. [23XF: (
   mor, n ) \mapsto \mathtt{SimplifyEndo}(mor, n)[123X.[133X
   
-  [1X7.7-199 AddSimplifyEndo_IsoFromInputObject[101X
+  [1X7.7-201 AddSimplifyEndo_IsoFromInputObject[101X
   
   [33X[1;0Y[29X[2XAddSimplifyEndo_IsoFromInputObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2356,7 +2374,7 @@
   [10XSimplifyEndo_IsoFromInputObject[110X.     [23XF:     (     mor,     n    )    \mapsto
   \mathtt{SimplifyEndo_IsoFromInputObject}(mor, n)[123X.[133X
   
-  [1X7.7-200 AddSimplifyEndo_IsoToInputObject[101X
+  [1X7.7-202 AddSimplifyEndo_IsoToInputObject[101X
   
   [33X[1;0Y[29X[2XAddSimplifyEndo_IsoToInputObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2366,7 +2384,7 @@
   [10XSimplifyEndo_IsoToInputObject[110X.     [23XF:     (     mor,     n     )     \mapsto
   \mathtt{SimplifyEndo_IsoToInputObject}(mor, n)[123X.[133X
   
-  [1X7.7-201 AddSimplifyMorphism[101X
+  [1X7.7-203 AddSimplifyMorphism[101X
   
   [33X[1;0Y[29X[2XAddSimplifyMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2375,7 +2393,7 @@
   given  function  [23XF[123X to the category for the basic operation [10XSimplifyMorphism[110X.
   [23XF: ( mor, n ) \mapsto \mathtt{SimplifyMorphism}(mor, n)[123X.[133X
   
-  [1X7.7-202 AddSimplifyObject[101X
+  [1X7.7-204 AddSimplifyObject[101X
   
   [33X[1;0Y[29X[2XAddSimplifyObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2384,7 +2402,7 @@
   given  function [23XF[123X to the category for the basic operation [10XSimplifyObject[110X. [23XF:
   ( A, n ) \mapsto \mathtt{SimplifyObject}(A, n)[123X.[133X
   
-  [1X7.7-203 AddSimplifyObject_IsoFromInputObject[101X
+  [1X7.7-205 AddSimplifyObject_IsoFromInputObject[101X
   
   [33X[1;0Y[29X[2XAddSimplifyObject_IsoFromInputObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2394,7 +2412,7 @@
   [10XSimplifyObject_IsoFromInputObject[110X.     [23XF:     (     A,     n    )    \mapsto
   \mathtt{SimplifyObject_IsoFromInputObject}(A, n)[123X.[133X
   
-  [1X7.7-204 AddSimplifyObject_IsoToInputObject[101X
+  [1X7.7-206 AddSimplifyObject_IsoToInputObject[101X
   
   [33X[1;0Y[29X[2XAddSimplifyObject_IsoToInputObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2404,7 +2422,7 @@
   [10XSimplifyObject_IsoToInputObject[110X.     [23XF:     (     A,     n     )     \mapsto
   \mathtt{SimplifyObject_IsoToInputObject}(A, n)[123X.[133X
   
-  [1X7.7-205 AddSimplifyRange[101X
+  [1X7.7-207 AddSimplifyRange[101X
   
   [33X[1;0Y[29X[2XAddSimplifyRange[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2413,7 +2431,7 @@
   given function [23XF[123X to the category for the basic operation [10XSimplifyRange[110X. [23XF: (
   mor, n ) \mapsto \mathtt{SimplifyRange}(mor, n)[123X.[133X
   
-  [1X7.7-206 AddSimplifyRange_IsoFromInputObject[101X
+  [1X7.7-208 AddSimplifyRange_IsoFromInputObject[101X
   
   [33X[1;0Y[29X[2XAddSimplifyRange_IsoFromInputObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2423,7 +2441,7 @@
   [10XSimplifyRange_IsoFromInputObject[110X.     [23XF:     (     mor,    n    )    \mapsto
   \mathtt{SimplifyRange_IsoFromInputObject}(mor, n)[123X.[133X
   
-  [1X7.7-207 AddSimplifyRange_IsoToInputObject[101X
+  [1X7.7-209 AddSimplifyRange_IsoToInputObject[101X
   
   [33X[1;0Y[29X[2XAddSimplifyRange_IsoToInputObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2433,7 +2451,7 @@
   [10XSimplifyRange_IsoToInputObject[110X.     [23XF:     (     mor,     n     )    \mapsto
   \mathtt{SimplifyRange_IsoToInputObject}(mor, n)[123X.[133X
   
-  [1X7.7-208 AddSimplifySource[101X
+  [1X7.7-210 AddSimplifySource[101X
   
   [33X[1;0Y[29X[2XAddSimplifySource[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2442,7 +2460,7 @@
   given  function [23XF[123X to the category for the basic operation [10XSimplifySource[110X. [23XF:
   ( mor, n ) \mapsto \mathtt{SimplifySource}(mor, n)[123X.[133X
   
-  [1X7.7-209 AddSimplifySourceAndRange[101X
+  [1X7.7-211 AddSimplifySourceAndRange[101X
   
   [33X[1;0Y[29X[2XAddSimplifySourceAndRange[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2452,7 +2470,7 @@
   [10XSimplifySourceAndRange[110X.       [23XF:      (      mor,      n      )      \mapsto
   \mathtt{SimplifySourceAndRange}(mor, n)[123X.[133X
   
-  [1X7.7-210 AddSimplifySourceAndRange_IsoFromInputRange[101X
+  [1X7.7-212 AddSimplifySourceAndRange_IsoFromInputRange[101X
   
   [33X[1;0Y[29X[2XAddSimplifySourceAndRange_IsoFromInputRange[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2462,7 +2480,7 @@
   [10XSimplifySourceAndRange_IsoFromInputRange[110X.    [23XF:   (   mor,   n   )   \mapsto
   \mathtt{SimplifySourceAndRange_IsoFromInputRange}(mor, n)[123X.[133X
   
-  [1X7.7-211 AddSimplifySourceAndRange_IsoFromInputSource[101X
+  [1X7.7-213 AddSimplifySourceAndRange_IsoFromInputSource[101X
   
   [33X[1;0Y[29X[2XAddSimplifySourceAndRange_IsoFromInputSource[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2472,7 +2490,7 @@
   [10XSimplifySourceAndRange_IsoFromInputSource[110X.   [23XF:   (   mor,   n   )   \mapsto
   \mathtt{SimplifySourceAndRange_IsoFromInputSource}(mor, n)[123X.[133X
   
-  [1X7.7-212 AddSimplifySourceAndRange_IsoToInputRange[101X
+  [1X7.7-214 AddSimplifySourceAndRange_IsoToInputRange[101X
   
   [33X[1;0Y[29X[2XAddSimplifySourceAndRange_IsoToInputRange[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2482,7 +2500,7 @@
   [10XSimplifySourceAndRange_IsoToInputRange[110X.    [23XF:    (    mor,   n   )   \mapsto
   \mathtt{SimplifySourceAndRange_IsoToInputRange}(mor, n)[123X.[133X
   
-  [1X7.7-213 AddSimplifySourceAndRange_IsoToInputSource[101X
+  [1X7.7-215 AddSimplifySourceAndRange_IsoToInputSource[101X
   
   [33X[1;0Y[29X[2XAddSimplifySourceAndRange_IsoToInputSource[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2492,7 +2510,7 @@
   [10XSimplifySourceAndRange_IsoToInputSource[110X.    [23XF:    (   mor,   n   )   \mapsto
   \mathtt{SimplifySourceAndRange_IsoToInputSource}(mor, n)[123X.[133X
   
-  [1X7.7-214 AddSimplifySource_IsoFromInputObject[101X
+  [1X7.7-216 AddSimplifySource_IsoFromInputObject[101X
   
   [33X[1;0Y[29X[2XAddSimplifySource_IsoFromInputObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2502,7 +2520,7 @@
   [10XSimplifySource_IsoFromInputObject[110X.     [23XF:     (    mor,    n    )    \mapsto
   \mathtt{SimplifySource_IsoFromInputObject}(mor, n)[123X.[133X
   
-  [1X7.7-215 AddSimplifySource_IsoToInputObject[101X
+  [1X7.7-217 AddSimplifySource_IsoToInputObject[101X
   
   [33X[1;0Y[29X[2XAddSimplifySource_IsoToInputObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2512,7 +2530,7 @@
   [10XSimplifySource_IsoToInputObject[110X.     [23XF:     (     mor,     n    )    \mapsto
   \mathtt{SimplifySource_IsoToInputObject}(mor, n)[123X.[133X
   
-  [1X7.7-216 AddSolveLinearSystemInAbCategory[101X
+  [1X7.7-218 AddSolveLinearSystemInAbCategory[101X
   
   [33X[1;0Y[29X[2XAddSolveLinearSystemInAbCategory[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2522,7 +2540,7 @@
   [10XSolveLinearSystemInAbCategory[110X.   [23XF:   (   arg2,   arg3,   arg4   )   \mapsto
   \mathtt{SolveLinearSystemInAbCategory}(arg2, arg3, arg4)[123X.[133X
   
-  [1X7.7-217 AddSolveLinearSystemInAbCategoryOrFail[101X
+  [1X7.7-219 AddSolveLinearSystemInAbCategoryOrFail[101X
   
   [33X[1;0Y[29X[2XAddSolveLinearSystemInAbCategoryOrFail[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2532,7 +2550,7 @@
   [10XSolveLinearSystemInAbCategoryOrFail[110X.   [23XF:  (  arg2,  arg3,  arg4  )  \mapsto
   \mathtt{SolveLinearSystemInAbCategoryOrFail}(arg2, arg3, arg4)[123X.[133X
   
-  [1X7.7-218 AddSomeInjectiveObject[101X
+  [1X7.7-220 AddSomeInjectiveObject[101X
   
   [33X[1;0Y[29X[2XAddSomeInjectiveObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2541,7 +2559,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XSomeInjectiveObject[110X. [23XF: ( arg2 ) \mapsto \mathtt{SomeInjectiveObject}(arg2)[123X.[133X
   
-  [1X7.7-219 AddSomeProjectiveObject[101X
+  [1X7.7-221 AddSomeProjectiveObject[101X
   
   [33X[1;0Y[29X[2XAddSomeProjectiveObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2551,7 +2569,7 @@
   [10XSomeProjectiveObject[110X.        [23XF:        (        arg2        )        \mapsto
   \mathtt{SomeProjectiveObject}(arg2)[123X.[133X
   
-  [1X7.7-220 AddSomeReductionBySplitEpiSummand[101X
+  [1X7.7-222 AddSomeReductionBySplitEpiSummand[101X
   
   [33X[1;0Y[29X[2XAddSomeReductionBySplitEpiSummand[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2561,7 +2579,7 @@
   [10XSomeReductionBySplitEpiSummand[110X.      [23XF:      (      alpha      )     \mapsto
   \mathtt{SomeReductionBySplitEpiSummand}(alpha)[123X.[133X
   
-  [1X7.7-221 AddSomeReductionBySplitEpiSummand_MorphismFromInputRange[101X
+  [1X7.7-223 AddSomeReductionBySplitEpiSummand_MorphismFromInputRange[101X
   
   [33X[1;0Y[29X[2XAddSomeReductionBySplitEpiSummand_MorphismFromInputRange[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2571,7 +2589,7 @@
   [10XSomeReductionBySplitEpiSummand_MorphismFromInputRange[110X.  [23XF: ( alpha ) \mapsto
   \mathtt{SomeReductionBySplitEpiSummand_MorphismFromInputRange}(alpha)[123X.[133X
   
-  [1X7.7-222 AddSomeReductionBySplitEpiSummand_MorphismToInputRange[101X
+  [1X7.7-224 AddSomeReductionBySplitEpiSummand_MorphismToInputRange[101X
   
   [33X[1;0Y[29X[2XAddSomeReductionBySplitEpiSummand_MorphismToInputRange[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2581,7 +2599,7 @@
   [10XSomeReductionBySplitEpiSummand_MorphismToInputRange[110X.  [23XF:  (  alpha ) \mapsto
   \mathtt{SomeReductionBySplitEpiSummand_MorphismToInputRange}(alpha)[123X.[133X
   
-  [1X7.7-223 AddSubtractionForMorphisms[101X
+  [1X7.7-225 AddSubtractionForMorphisms[101X
   
   [33X[1;0Y[29X[2XAddSubtractionForMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2591,7 +2609,7 @@
   [10XSubtractionForMorphisms[110X.       [23XF:       (      a,      b      )      \mapsto
   \mathtt{SubtractionForMorphisms}(a, b)[123X.[133X
   
-  [1X7.7-224 AddTerminalObject[101X
+  [1X7.7-226 AddTerminalObject[101X
   
   [33X[1;0Y[29X[2XAddTerminalObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2600,7 +2618,7 @@
   given  function [23XF[123X to the category for the basic operation [10XTerminalObject[110X. [23XF:
   ( ) \mapsto \mathtt{TerminalObject}()[123X.[133X
   
-  [1X7.7-225 AddTerminalObjectFunctorial[101X
+  [1X7.7-227 AddTerminalObjectFunctorial[101X
   
   [33X[1;0Y[29X[2XAddTerminalObjectFunctorial[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2610,7 +2628,7 @@
   [10XTerminalObjectFunctorial[110X.          [23XF:          (          )          \mapsto
   \mathtt{TerminalObjectFunctorial}()[123X.[133X
   
-  [1X7.7-226 AddTerminalObjectFunctorialWithGivenTerminalObjects[101X
+  [1X7.7-228 AddTerminalObjectFunctorialWithGivenTerminalObjects[101X
   
   [33X[1;0Y[29X[2XAddTerminalObjectFunctorialWithGivenTerminalObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2620,7 +2638,7 @@
   [10XTerminalObjectFunctorialWithGivenTerminalObjects[110X.  [23XF:  (  P,  Pp  )  \mapsto
   \mathtt{TerminalObjectFunctorialWithGivenTerminalObjects}(P, Pp)[123X.[133X
   
-  [1X7.7-227 AddUniversalMorphismFromCoequalizer[101X
+  [1X7.7-229 AddUniversalMorphismFromCoequalizer[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromCoequalizer[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2630,7 +2648,7 @@
   [10XUniversalMorphismFromCoequalizer[110X.   [23XF:   (   morphisms,  T,  tau  )  \mapsto
   \mathtt{UniversalMorphismFromCoequalizer}(morphisms, T, tau)[123X.[133X
   
-  [1X7.7-228 AddUniversalMorphismFromCoequalizerWithGivenCoequalizer[101X
+  [1X7.7-230 AddUniversalMorphismFromCoequalizerWithGivenCoequalizer[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromCoequalizerWithGivenCoequalizer[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2642,7 +2660,7 @@
   \mathtt{UniversalMorphismFromCoequalizerWithGivenCoequalizer}(morphisms,  T,
   tau, P)[123X.[133X
   
-  [1X7.7-229 AddUniversalMorphismFromCoproduct[101X
+  [1X7.7-231 AddUniversalMorphismFromCoproduct[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromCoproduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2652,7 +2670,7 @@
   [10XUniversalMorphismFromCoproduct[110X.   [23XF:   (   objects,   T,   tau   )   \mapsto
   \mathtt{UniversalMorphismFromCoproduct}(objects, T, tau)[123X.[133X
   
-  [1X7.7-230 AddUniversalMorphismFromCoproductWithGivenCoproduct[101X
+  [1X7.7-232 AddUniversalMorphismFromCoproductWithGivenCoproduct[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromCoproductWithGivenCoproduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2663,7 +2681,7 @@
   \mapsto   \mathtt{UniversalMorphismFromCoproductWithGivenCoproduct}(objects,
   T, tau, P)[123X.[133X
   
-  [1X7.7-231 AddUniversalMorphismFromDirectSum[101X
+  [1X7.7-233 AddUniversalMorphismFromDirectSum[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromDirectSum[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2673,7 +2691,7 @@
   [10XUniversalMorphismFromDirectSum[110X.   [23XF:   (   objects,   T,   tau   )   \mapsto
   \mathtt{UniversalMorphismFromDirectSum}(objects, T, tau)[123X.[133X
   
-  [1X7.7-232 AddUniversalMorphismFromDirectSumWithGivenDirectSum[101X
+  [1X7.7-234 AddUniversalMorphismFromDirectSumWithGivenDirectSum[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromDirectSumWithGivenDirectSum[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2684,7 +2702,7 @@
   \mapsto   \mathtt{UniversalMorphismFromDirectSumWithGivenDirectSum}(objects,
   T, tau, P)[123X.[133X
   
-  [1X7.7-233 AddUniversalMorphismFromImage[101X
+  [1X7.7-235 AddUniversalMorphismFromImage[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromImage[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2694,7 +2712,7 @@
   [10XUniversalMorphismFromImage[110X.     [23XF:     (     alpha,     tau     )    \mapsto
   \mathtt{UniversalMorphismFromImage}(alpha, tau)[123X.[133X
   
-  [1X7.7-234 AddUniversalMorphismFromImageWithGivenImageObject[101X
+  [1X7.7-236 AddUniversalMorphismFromImageWithGivenImageObject[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromImageWithGivenImageObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2704,7 +2722,7 @@
   [10XUniversalMorphismFromImageWithGivenImageObject[110X. [23XF: ( alpha, tau, I ) \mapsto
   \mathtt{UniversalMorphismFromImageWithGivenImageObject}(alpha, tau, I)[123X.[133X
   
-  [1X7.7-235 AddUniversalMorphismFromInitialObject[101X
+  [1X7.7-237 AddUniversalMorphismFromInitialObject[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromInitialObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2714,7 +2732,7 @@
   [10XUniversalMorphismFromInitialObject[110X.      [23XF:      (      T      )     \mapsto
   \mathtt{UniversalMorphismFromInitialObject}(T)[123X.[133X
   
-  [1X7.7-236 AddUniversalMorphismFromInitialObjectWithGivenInitialObject[101X
+  [1X7.7-238 AddUniversalMorphismFromInitialObjectWithGivenInitialObject[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromInitialObjectWithGivenInitialObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2725,7 +2743,7 @@
   \mapsto \mathtt{UniversalMorphismFromInitialObjectWithGivenInitialObject}(T,
   P)[123X.[133X
   
-  [1X7.7-237 AddUniversalMorphismFromPushout[101X
+  [1X7.7-239 AddUniversalMorphismFromPushout[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromPushout[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2735,7 +2753,7 @@
   [10XUniversalMorphismFromPushout[110X.   [23XF:   (   morphisms,   T,   tau   )   \mapsto
   \mathtt{UniversalMorphismFromPushout}(morphisms, T, tau)[123X.[133X
   
-  [1X7.7-238 AddUniversalMorphismFromPushoutWithGivenPushout[101X
+  [1X7.7-240 AddUniversalMorphismFromPushoutWithGivenPushout[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromPushoutWithGivenPushout[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2746,7 +2764,7 @@
   \mapsto  \mathtt{UniversalMorphismFromPushoutWithGivenPushout}(morphisms, T,
   tau, P)[123X.[133X
   
-  [1X7.7-239 AddUniversalMorphismFromZeroObject[101X
+  [1X7.7-241 AddUniversalMorphismFromZeroObject[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromZeroObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2756,7 +2774,7 @@
   [10XUniversalMorphismFromZeroObject[110X.       [23XF:       (      T      )      \mapsto
   \mathtt{UniversalMorphismFromZeroObject}(T)[123X.[133X
   
-  [1X7.7-240 AddUniversalMorphismFromZeroObjectWithGivenZeroObject[101X
+  [1X7.7-242 AddUniversalMorphismFromZeroObjectWithGivenZeroObject[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromZeroObjectWithGivenZeroObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2766,7 +2784,7 @@
   [10XUniversalMorphismFromZeroObjectWithGivenZeroObject[110X.  [23XF:  (  T,  P  ) \mapsto
   \mathtt{UniversalMorphismFromZeroObjectWithGivenZeroObject}(T, P)[123X.[133X
   
-  [1X7.7-241 AddUniversalMorphismIntoCoimage[101X
+  [1X7.7-243 AddUniversalMorphismIntoCoimage[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoCoimage[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2776,7 +2794,7 @@
   [10XUniversalMorphismIntoCoimage[110X.     [23XF:     (     alpha,    tau    )    \mapsto
   \mathtt{UniversalMorphismIntoCoimage}(alpha, tau)[123X.[133X
   
-  [1X7.7-242 AddUniversalMorphismIntoCoimageWithGivenCoimageObject[101X
+  [1X7.7-244 AddUniversalMorphismIntoCoimageWithGivenCoimageObject[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoCoimageWithGivenCoimageObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2787,7 +2805,7 @@
   \mapsto   \mathtt{UniversalMorphismIntoCoimageWithGivenCoimageObject}(alpha,
   tau, C)[123X.[133X
   
-  [1X7.7-243 AddUniversalMorphismIntoDirectProduct[101X
+  [1X7.7-245 AddUniversalMorphismIntoDirectProduct[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoDirectProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2797,7 +2815,7 @@
   [10XUniversalMorphismIntoDirectProduct[110X.   [23XF:   (   objects,  T,  tau  )  \mapsto
   \mathtt{UniversalMorphismIntoDirectProduct}(objects, T, tau)[123X.[133X
   
-  [1X7.7-244 AddUniversalMorphismIntoDirectProductWithGivenDirectProduct[101X
+  [1X7.7-246 AddUniversalMorphismIntoDirectProductWithGivenDirectProduct[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoDirectProductWithGivenDirectProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2809,7 +2827,7 @@
   \mathtt{UniversalMorphismIntoDirectProductWithGivenDirectProduct}(objects,
   T, tau, P)[123X.[133X
   
-  [1X7.7-245 AddUniversalMorphismIntoDirectSum[101X
+  [1X7.7-247 AddUniversalMorphismIntoDirectSum[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoDirectSum[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2819,7 +2837,7 @@
   [10XUniversalMorphismIntoDirectSum[110X.   [23XF:   (   objects,   T,   tau   )   \mapsto
   \mathtt{UniversalMorphismIntoDirectSum}(objects, T, tau)[123X.[133X
   
-  [1X7.7-246 AddUniversalMorphismIntoDirectSumWithGivenDirectSum[101X
+  [1X7.7-248 AddUniversalMorphismIntoDirectSumWithGivenDirectSum[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoDirectSumWithGivenDirectSum[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2830,7 +2848,7 @@
   \mapsto   \mathtt{UniversalMorphismIntoDirectSumWithGivenDirectSum}(objects,
   T, tau, P)[123X.[133X
   
-  [1X7.7-247 AddUniversalMorphismIntoEqualizer[101X
+  [1X7.7-249 AddUniversalMorphismIntoEqualizer[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoEqualizer[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2840,7 +2858,7 @@
   [10XUniversalMorphismIntoEqualizer[110X.   [23XF:   (   morphisms,   T,   tau  )  \mapsto
   \mathtt{UniversalMorphismIntoEqualizer}(morphisms, T, tau)[123X.[133X
   
-  [1X7.7-248 AddUniversalMorphismIntoEqualizerWithGivenEqualizer[101X
+  [1X7.7-250 AddUniversalMorphismIntoEqualizerWithGivenEqualizer[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoEqualizerWithGivenEqualizer[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2852,7 +2870,7 @@
   \mathtt{UniversalMorphismIntoEqualizerWithGivenEqualizer}(morphisms, T, tau,
   P)[123X.[133X
   
-  [1X7.7-249 AddUniversalMorphismIntoFiberProduct[101X
+  [1X7.7-251 AddUniversalMorphismIntoFiberProduct[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoFiberProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2862,7 +2880,7 @@
   [10XUniversalMorphismIntoFiberProduct[110X.   [23XF:   (  morphisms,  T,  tau  )  \mapsto
   \mathtt{UniversalMorphismIntoFiberProduct}(morphisms, T, tau)[123X.[133X
   
-  [1X7.7-250 AddUniversalMorphismIntoFiberProductWithGivenFiberProduct[101X
+  [1X7.7-252 AddUniversalMorphismIntoFiberProductWithGivenFiberProduct[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoFiberProductWithGivenFiberProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2874,7 +2892,7 @@
   \mathtt{UniversalMorphismIntoFiberProductWithGivenFiberProduct}(morphisms,
   T, tau, P)[123X.[133X
   
-  [1X7.7-251 AddUniversalMorphismIntoTerminalObject[101X
+  [1X7.7-253 AddUniversalMorphismIntoTerminalObject[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoTerminalObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2884,7 +2902,7 @@
   [10XUniversalMorphismIntoTerminalObject[110X.      [23XF:      (      T     )     \mapsto
   \mathtt{UniversalMorphismIntoTerminalObject}(T)[123X.[133X
   
-  [1X7.7-252 AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject[101X
+  [1X7.7-254 AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2895,7 +2913,7 @@
   \mapsto
   \mathtt{UniversalMorphismIntoTerminalObjectWithGivenTerminalObject}(T, P)[123X.[133X
   
-  [1X7.7-253 AddUniversalMorphismIntoZeroObject[101X
+  [1X7.7-255 AddUniversalMorphismIntoZeroObject[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoZeroObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2905,7 +2923,7 @@
   [10XUniversalMorphismIntoZeroObject[110X.       [23XF:       (      T      )      \mapsto
   \mathtt{UniversalMorphismIntoZeroObject}(T)[123X.[133X
   
-  [1X7.7-254 AddUniversalMorphismIntoZeroObjectWithGivenZeroObject[101X
+  [1X7.7-256 AddUniversalMorphismIntoZeroObjectWithGivenZeroObject[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoZeroObjectWithGivenZeroObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2915,7 +2933,7 @@
   [10XUniversalMorphismIntoZeroObjectWithGivenZeroObject[110X.  [23XF:  (  T,  P  ) \mapsto
   \mathtt{UniversalMorphismIntoZeroObjectWithGivenZeroObject}(T, P)[123X.[133X
   
-  [1X7.7-255 AddVerticalPostCompose[101X
+  [1X7.7-257 AddVerticalPostCompose[101X
   
   [33X[1;0Y[29X[2XAddVerticalPostCompose[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2925,7 +2943,7 @@
   [10XVerticalPostCompose[110X.      [23XF:      (      arg2,      arg3      )      \mapsto
   \mathtt{VerticalPostCompose}(arg2, arg3)[123X.[133X
   
-  [1X7.7-256 AddVerticalPreCompose[101X
+  [1X7.7-258 AddVerticalPreCompose[101X
   
   [33X[1;0Y[29X[2XAddVerticalPreCompose[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2934,7 +2952,7 @@
   given function [23XF[123X to the category for the basic operation [10XVerticalPreCompose[110X.
   [23XF: ( arg2, arg3 ) \mapsto \mathtt{VerticalPreCompose}(arg2, arg3)[123X.[133X
   
-  [1X7.7-257 AddZeroMorphism[101X
+  [1X7.7-259 AddZeroMorphism[101X
   
   [33X[1;0Y[29X[2XAddZeroMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2943,7 +2961,7 @@
   given  function [23XF[123X to the category for the basic operation [10XZeroMorphism[110X. [23XF: (
   a, b ) \mapsto \mathtt{ZeroMorphism}(a, b)[123X.[133X
   
-  [1X7.7-258 AddZeroObject[101X
+  [1X7.7-260 AddZeroObject[101X
   
   [33X[1;0Y[29X[2XAddZeroObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2952,7 +2970,7 @@
   given  function [23XF[123X to the category for the basic operation [10XZeroObject[110X. [23XF: ( )
   \mapsto \mathtt{ZeroObject}()[123X.[133X
   
-  [1X7.7-259 AddZeroObjectFunctorial[101X
+  [1X7.7-261 AddZeroObjectFunctorial[101X
   
   [33X[1;0Y[29X[2XAddZeroObjectFunctorial[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -2961,7 +2979,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XZeroObjectFunctorial[110X. [23XF: ( ) \mapsto \mathtt{ZeroObjectFunctorial}()[123X.[133X
   
-  [1X7.7-260 AddZeroObjectFunctorialWithGivenZeroObjects[101X
+  [1X7.7-262 AddZeroObjectFunctorialWithGivenZeroObjects[101X
   
   [33X[1;0Y[29X[2XAddZeroObjectFunctorialWithGivenZeroObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X

@@ -478,11 +478,10 @@
   [33X[1;0Y[29X[2XPreComposeList[102X( [3XC[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a_1, a_{n+1})[123X[133X
   
-  [33X[0;0YThis  is  a convenience method. The arguments are a category [23XC[123X and a list of
-  morphisms  [23XL  =  (  \alpha_1: a_1 \rightarrow a_2, \alpha_2: a_2 \rightarrow
-  a_3,  \dots,  \alpha_n:  a_n  \rightarrow  a_{n+1} )[123X in [23XC[123X. The output is the
-  composition  [23X\alpha_{n}  \circ ( \alpha_{n-1} \circ ( \dots ( \alpha_2 \circ
-  \alpha_1 ) ) )[123X.[133X
+  [33X[0;0YThe  argument  is  a  list of morphisms [23XL = ( \alpha_1: a_1 \rightarrow a_2,
+  \alpha_2: a_2 \rightarrow a_3, \dots, \alpha_n: a_n \rightarrow a_{n+1} )[123X in
+  [23XC[123X.  The  output  is  the composition [23X\alpha_{n} \circ ( \alpha_{n-1} \circ (
+  \dots ( \alpha_2 \circ \alpha_1 ) ) )[123X.[133X
   
   [1X3.10-5 PostCompose[101X
   
@@ -508,11 +507,10 @@
   [33X[1;0Y[29X[2XPostComposeList[102X( [3XC[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a_1, a_{n+1})[123X[133X
   
-  [33X[0;0YThis  is  a convenience method. The arguments are a category [23XC[123X and a list of
-  morphisms  [23XL  =  (  \alpha_n: a_n \rightarrow a_{n+1}, \alpha_{n-1}: a_{n-1}
-  \rightarrow  a_n,  \dots, \alpha_1: a_1 \rightarrow a_2 )[123X. The output is the
-  composition  [23X((\alpha_{n}  \circ  \alpha_{n-1})  \circ \dots \alpha_2) \circ
-  \alpha_1[123X.[133X
+  [33X[0;0YThe argument is a list of morphisms [23XL = ( \alpha_n: a_n \rightarrow a_{n+1},
+  \alpha_{n-1}:  a_{n-1} \rightarrow a_n, \dots, \alpha_1: a_1 \rightarrow a_2
+  )[123X.  The  output  is  the  composition [23X((\alpha_{n} \circ \alpha_{n-1}) \circ
+  \dots \alpha_2) \circ \alpha_1[123X.[133X
   
   
   [1X3.11 [33X[0;0YWell-Definedness of Morphisms[133X[101X
