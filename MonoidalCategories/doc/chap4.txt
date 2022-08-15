@@ -21,7 +21,7 @@
     [4X[25Xgap>[125X [27XT := TerminalCategory( );[127X[104X
     [4X[28XTerminalCategory( )[128X[104X
     [4X[25Xgap>[125X [27XInfoOfInstalledOperationsOfCategory( T );[127X[104X
-    [4X[28X68 primitive operations were used to derive 315 operations for this category[128X[104X
+    [4X[28X68 primitive operations were used to derive 317 operations for this category[128X[104X
     [4X[28Xwhich constructively[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsLinearCategoryOverCommutativeRing[128X[104X
@@ -69,7 +69,7 @@
     [4X[25Xgap>[125X [27XT := TerminalCategoryWithMultipleObjects( );[127X[104X
     [4X[28XTerminalCategoryWithMultipleObjects( )[128X[104X
     [4X[25Xgap>[125X [27XInfoOfInstalledOperationsOfCategory( T );[127X[104X
-    [4X[28X68 primitive operations were used to derive 315 operations for this category[128X[104X
+    [4X[28X68 primitive operations were used to derive 317 operations for this category[128X[104X
     [4X[28Xwhich constructively[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsLinearCategoryOverCommutativeRing[128X[104X
