@@ -6,10 +6,10 @@
         [1X Cartesian and cocartesian categories and various subdoctrines [101X
   
   
-                                   2022.08-01
+                                   2022.08-02
   
   
-                                 8 August 2022
+                                 15 August 2022
   
   
                                 Mohamed Barakat
@@ -321,6 +321,9 @@
       4.1-1 InitialCategory
     4.2 [33X[0;0YGAP Categories[133X
       4.2-1 IsInitialCapCategory
+      4.2-2 IsCellInInitialCategory
+      4.2-3 IsObjectInInitialCategory
+      4.2-4 IsMorphismInInitialCategory
   
   
   [32X
