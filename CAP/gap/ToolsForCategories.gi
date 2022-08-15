@@ -466,7 +466,7 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRING_WITH_FILTER,
         elif filter_or_string = "nonneg_integer_or_infinity" then
             return IsCyclotomic;
         else
-            Error( "filter type is not recognized, see the documentation for allowed values" );
+            Error( "filter type ", filter_or_string, " is not recognized, see the documentation for allowed values" );
         fi;
         
     else

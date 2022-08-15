@@ -97,7 +97,9 @@
 #! * <Ref BookName="CAP" Func="ObjectConstructor" Label="for Is" />
 #! * <Ref BookName="CAP" Func="ObjectDatum" Label="for Is" />
 #! * <Ref BookName="CAP" Func="PostCompose" Label="for Is" />
+#! * <Ref BookName="CAP" Func="PostComposeList" Label="for Is" />
 #! * <Ref BookName="CAP" Func="PreCompose" Label="for Is" />
+#! * <Ref BookName="CAP" Func="PreComposeList" Label="for Is" />
 #! * <Ref BookName="CAP" Func="ProjectionInFactorOfDirectProduct" Label="for Is" />
 #! * <Ref BookName="CAP" Func="ProjectionInFactorOfDirectProductWithGivenDirectProduct" Label="for Is" />
 #! * <Ref BookName="CAP" Func="ProjectionInFactorOfDirectSum" Label="for Is" />

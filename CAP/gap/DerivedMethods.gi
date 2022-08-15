@@ -1246,6 +1246,42 @@ AddDerivationToCAP( PreCompose,
 end : Description := "PreCompose using PostCompose and swapping arguments" );
 
 ##
+AddDerivationToCAP( PreCompose,
+                    
+  function( cat, left_mor, right_mor )
+    
+    return PreComposeList( cat, [ left_mor, right_mor ] );
+    
+end : Description := "PreCompose by wrapping the arguments in a list" );
+
+##
+AddDerivationToCAP( PreComposeList,
+                    
+  function( cat, morphism_list )
+    
+    return Iterated( morphism_list, { alpha, beta } -> PreCompose( cat, alpha, beta ) );
+    
+end : Description := "PreComposeList by iterating PreCompose" );
+
+##
+AddDerivationToCAP( PostCompose,
+                    
+  function( cat, mor_right, mor_left )
+    
+    return PostComposeList( cat, [ mor_right, mor_left ] );
+    
+end : Description := "PostCompose by wrapping the arguments in a list" );
+
+##
+AddDerivationToCAP( PostComposeList,
+                    
+  function( cat, morphism_list )
+    
+    return Iterated( morphism_list, { beta, alpha } -> PostCompose( cat, beta, alpha ) );
+    
+end : Description := "PostComposeList by iterating PostCompose" );
+
+##
 AddDerivationToCAP( InverseForMorphisms,
                     [ [ IdentityMorphism, 1 ],
                       [ LiftAlongMonomorphism, 1 ] ],

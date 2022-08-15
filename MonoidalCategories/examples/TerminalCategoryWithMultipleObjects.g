@@ -6,7 +6,7 @@ LoadPackage( "MonoidalCategories" );
 T := TerminalCategoryWithMultipleObjects( );
 #! TerminalCategoryWithMultipleObjects( )
 InfoOfInstalledOperationsOfCategory( T );
-#! 68 primitive operations were used to derive 315 operations for this category
+#! 68 primitive operations were used to derive 317 operations for this category
 #! which constructively
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing
