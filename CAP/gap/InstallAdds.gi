@@ -441,7 +441,22 @@ InstallGlobalFunction( CapInternalInstallAdd,
             
             new_filter_list := CAP_INTERNAL_MERGE_FILTER_LISTS( replaced_filter_list, additional_filters );
             
-            if category!.overhead then
+            if IsBound( category!.is_bare ) and category!.is_bare = true then
+                
+                # bare category = a category whose objects and morphisms are represented by primitive data types, e.g. integers
+                
+                new_filter_list := Concatenation( [ IsCapCategory and CategoryFilter( category ) ], ListWithIdenticalEntries( Length( replaced_filter_list ) - 1, IsObject ) );
+                
+                InstallOtherMethod( ValueGlobal( install_name ),
+                            new_filter_list,
+                    
+                    function( arg )
+                        
+                        return CallFuncList( func_to_install, arg );
+                        
+                end );
+                
+            elif category!.overhead then
                 
                 InstallMethodWithCache( ValueGlobal( install_name ),
                                 new_filter_list,

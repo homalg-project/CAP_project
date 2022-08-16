@@ -36,6 +36,7 @@ InstallMethod( CategoryConstructor,
         create_func_object_or_fail := IsObject,
         create_func_morphism := IsObject,
         create_func_morphism_or_fail := IsObject,
+        is_bare := IsBool,
     );
     
     for option_name in RecNames( options ) do
@@ -74,6 +75,12 @@ InstallMethod( CategoryConstructor,
     CC!.category_as_first_argument := true;
     
     CC!.compiler_hints := rec( );
+    
+    if IsBound( options.is_bare ) then
+        
+        CC!.is_bare := options.is_bare;
+        
+    fi;
     
     ## set filters and attributes
     if IsBound( options.category_filter ) then

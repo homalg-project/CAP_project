@@ -124,7 +124,7 @@ InstallMethod( WrapperCategory,
         [ IsCapCategory, IsRecord ],
         
   function( C, options )
-    local known_options_with_filters, filter, combined_options, category_constructor_options, copy_value_or_default, list_of_operations_to_install, D, modeling_tower_object_constructor, modeling_tower_object_datum, modeling_tower_morphism_constructor, modeling_tower_morphism_datum, HC, option_name;
+    local known_options_with_filters, filter, combined_options, category_constructor_options, copy_value_or_default, list_of_operations_to_install, D, modeling_tower_object_constructor, modeling_tower_object_datum, modeling_tower_morphism_constructor, modeling_tower_morphism_datum, install_method, C_object_filter, C_morphism_filter, D_object_filter, D_morphism_filter, HC, option_name;
     
     ## check given options
     known_options_with_filters := rec(
@@ -142,6 +142,7 @@ InstallMethod( WrapperCategory,
         modeling_tower_morphism_datum := IsFunction,
         only_primitive_operations := IsBool,
         wrap_range_of_hom_structure := IsBool,
+        is_bare := IsBool,
     );
     
     for option_name in RecNames( options ) do
@@ -285,6 +286,12 @@ InstallMethod( WrapperCategory,
     
     category_constructor_options.list_of_operations_to_install := list_of_operations_to_install;
     
+    if IsBound( options.is_bare ) then
+        
+        category_constructor_options.is_bare := options.is_bare;
+        
+    fi;
+    
     D := CategoryConstructor( category_constructor_options );
     
     if IsBound( C!.supports_empty_limits ) then
@@ -340,29 +347,51 @@ InstallMethod( WrapperCategory,
         
     fi;
     
-    InstallMethodForCompilerForCAP( ModelingTowerObjectConstructor,
+    install_method := InstallMethodForCompilerForCAP;
+    C_object_filter := IsCapCategoryObject and ObjectFilter( C );
+    C_morphism_filter := IsCapCategoryMorphism and MorphismFilter( C );
+    D_object_filter := IsCapCategoryObject and ObjectFilter( D );
+    D_morphism_filter := IsCapCategoryMorphism and MorphismFilter( D );
+    
+    if IsBound( C!.is_bare ) and C!.is_bare = true then
+        
+        install_method := InstallOtherMethodForCompilerForCAP;
+        C_object_filter := IsObject;
+        C_morphism_filter := IsObject;
+        
+    fi;
+    
+    if IsBound( options.is_bare ) and options.is_bare = true then
+        
+        install_method := InstallOtherMethodForCompilerForCAP;
+        D_object_filter := IsObject;
+        D_morphism_filter := IsObject;
+        
+    fi;
+    
+    install_method( ModelingTowerObjectConstructor,
         [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), IsObject ],
         modeling_tower_object_constructor
     );
     
-    InstallMethodForCompilerForCAP( ModelingTowerObjectDatum,
-        [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), IsCapCategoryObject and ObjectFilter( C ) ],
+    install_method( ModelingTowerObjectDatum,
+        [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), C_object_filter ],
         modeling_tower_object_datum
     );
     
-    InstallMethodForCompilerForCAP( ModelingTowerMorphismConstructor,
-        [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), IsCapCategoryObject and ObjectFilter( C ), IsObject, IsCapCategoryObject and ObjectFilter( C ) ],
+    install_method( ModelingTowerMorphismConstructor,
+        [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), C_object_filter, IsObject, C_object_filter ],
         modeling_tower_morphism_constructor
     );
     
-    InstallMethodForCompilerForCAP( ModelingTowerMorphismDatum,
-        [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), IsCapCategoryMorphism and MorphismFilter( C ) ],
+    install_method( ModelingTowerMorphismDatum,
+        [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), C_morphism_filter ],
         modeling_tower_morphism_datum
     );
     
     
-    InstallMethodForCompilerForCAP( ModelingObject,
-        [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), IsCapCategoryObject and ObjectFilter( D ) ],
+    install_method( ModelingObject,
+        [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), D_object_filter ],
         
       function ( cat, obj )
         
@@ -370,8 +399,8 @@ InstallMethod( WrapperCategory,
         
     end );
     
-    InstallMethodForCompilerForCAP( ModeledObject,
-        [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), IsCapCategoryObject and ObjectFilter( C ) ],
+    install_method( ModeledObject,
+        [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), C_object_filter ],
         
       function ( cat, obj )
         
@@ -379,8 +408,8 @@ InstallMethod( WrapperCategory,
         
     end );
     
-    InstallMethodForCompilerForCAP( ModelingMorphism,
-        [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), IsCapCategoryMorphism and MorphismFilter( D ) ],
+    install_method( ModelingMorphism,
+        [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), D_morphism_filter ],
         
       function ( cat, mor )
         
@@ -388,8 +417,8 @@ InstallMethod( WrapperCategory,
         
     end );
     
-    InstallMethodForCompilerForCAP( ModeledMorphism,
-        [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), IsCapCategoryObject and ObjectFilter( D ), IsCapCategoryMorphism and MorphismFilter( C ), IsCapCategoryObject and ObjectFilter( D ) ],
+    install_method( ModeledMorphism,
+        [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), D_object_filter, C_morphism_filter, D_object_filter ],
         
       function ( cat, source, mor, range )
         
