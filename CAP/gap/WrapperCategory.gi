@@ -166,7 +166,7 @@ InstallMethod( WrapperCategory,
         
     od;
     
-    # options which should either all or none be set
+    # options which should either all or none be set for consistency
     combined_options := [
         "category_filter",
         "category_object_filter",
@@ -180,6 +180,25 @@ InstallMethod( WrapperCategory,
         "modeling_tower_morphism_constructor",
         "modeling_tower_morphism_datum",
     ];
+    
+    # If the given filters imply the default filters, using the default options does not cause inconsistencies -> avoid a warning in this case.
+    if IsBound( options.category_filter ) and IsSpecializationOfFilter( IsWrapperCapCategory, options.category_filter ) then
+        
+        Remove( combined_options, Position( combined_options, "category_filter" ) );
+        
+    fi;
+    
+    if IsBound( options.category_object_filter ) and IsSpecializationOfFilter( IsWrapperCapCategoryObject, options.category_object_filter ) then
+        
+        Remove( combined_options, Position( combined_options, "category_object_filter" ) );
+        
+    fi;
+    
+    if IsBound( options.category_morphism_filter ) and IsSpecializationOfFilter( IsWrapperCapCategoryMorphism, options.category_morphism_filter ) then
+        
+        Remove( combined_options, Position( combined_options, "category_morphism_filter" ) );
+        
+    fi;
     
     if Length( Set( List( combined_options, name -> IsBound( options.(name) ) ) ) ) > 1 then
         
