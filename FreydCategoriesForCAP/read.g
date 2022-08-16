@@ -21,6 +21,8 @@ ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfGradedRowsAndColumns/Tools.
 ReadPackage( "FreydCategoriesForCAP", "gap/FreydCategoriesDerivedMethods.gi" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/FreydCategory.gi" );
+ReadPackage( "FreydCategoriesForCAP", "gap/CoFreydCategory.gi" );
+ReadPackage( "FreydCategoriesForCAP", "gap/CoFreydCategoryAsOppositeOfFreydCategoryOfOpposite.gi" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/AdditiveClosure.gi" );
 
