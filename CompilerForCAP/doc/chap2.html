@@ -130,7 +130,7 @@
 <li><p><code class="code">src_template</code> and <code class="code">dst_template</code> (required): strings containing valid GAP code defining expressions</p>
 
 </li>
-<li><p><code class="code">variable_names</code> (required): a list of strings</p>
+<li><p><code class="code">variable_names</code> (required): a list of strings (which must not be keywords in GAP)</p>
 
 </li>
 <li><p><code class="code">variable_filters</code> (optional): a list of filters with the same length as <code class="code">variable_names</code>, defaults to a list of <code class="code">IsObject</code></p>
@@ -179,7 +179,7 @@
 <li><p><code class="code">src_template</code> is only replaced by <code class="code">dst_template</code> if the result is well-defined, i.e., if all function variables reference only functions in their function stack. This can be used to move "static" variables (i.e. variables not depending on local variables) outside of functions. Example: consider a template with <code class="code">src_template</code> given by <code class="code">Sum( List( L, x -&gt; x^2 * value ) )</code> and <code class="code">dst_template</code> given by <code class="code">Sum( List( L, x -&gt; x^2 ) ) * value</code> (assuming distributivity). This replacement is only valid if <code class="code">value</code> is independent of <code class="code">x</code>. However, we do not need to make this explicit at any point, because if <code class="code">value</code> depends on <code class="code">x</code>, the result <code class="code">Sum( List( L, x -&gt; x^2 ) ) * value</code> is not well-defined, so the template is not applied anyway.</p>
 
 </li>
-<li><p>If <code class="code">src_template</code> cannot be expressed as valid GAP code, the component <code class="code">src_template_tree</code> can be set. In that case, <code class="code">src_template</code> is not parsed and <code class="code">src_template_tree</code> is used when trying to find a match. Variables in the sense of <code class="code">variable_names</code> have to be given as syntax trees of type <code class="code">SYNTAX_TREE_VARIABLE</code> with a unique <code class="code">id</code>. Setting <code class="code">src_template</code> and <code class="code">variable_names</code> is still required to have a readable representation of the template. If <code class="code">dst_template</code> cannot be expressed as valid GAP code, it can be in an analogous manner.</p>
+<li><p>If <code class="code">src_template</code> cannot be expressed as valid GAP code, the component <code class="code">src_template_tree</code> can be set. In that case, <code class="code">src_template</code> is not parsed and <code class="code">src_template_tree</code> is used when trying to find a match. Variables in the sense of <code class="code">variable_names</code> have to be given as syntax trees of type <code class="code">SYNTAX_TREE_VARIABLE</code> with a unique <code class="code">id</code>. Setting <code class="code">src_template</code> and <code class="code">variable_names</code> is still required to have a readable representation of the template. If <code class="code">dst_template</code> cannot be expressed as valid GAP code, it can be handled in an analogous manner.</p>
 
 </li>
 </ul>

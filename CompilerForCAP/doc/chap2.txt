@@ -52,7 +52,8 @@
   [30X    [33X[0;6Y[10Xsrc_template[110X and [10Xdst_template[110X (required): strings containing valid GAP
         code defining expressions[133X
   
-  [30X    [33X[0;6Y[10Xvariable_names[110X (required): a list of strings[133X
+  [30X    [33X[0;6Y[10Xvariable_names[110X  (required):  a  list  of  strings  (which  must not be
+        keywords in GAP)[133X
   
   [30X    [33X[0;6Y[10Xvariable_filters[110X (optional): a list of filters with the same length as
         [10Xvariable_names[110X, defaults to a list of [10XIsObject[110X[133X
@@ -121,7 +122,7 @@
         type  [10XSYNTAX_TREE_VARIABLE[110X  with a unique [10Xid[110X. Setting [10Xsrc_template[110X and
         [10Xvariable_names[110X  is still required to have a readable representation of
         the  template.  If [10Xdst_template[110X cannot be expressed as valid GAP code,
-        it can be in an analogous manner.[133X
+        it can be handled in an analogous manner.[133X
   
   
   [1X2.2 [33X[0;0YEnhanced syntax trees[133X[101X
