@@ -1921,6 +1921,64 @@
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xdummy := DummyCategory( rec([127X[104X
+    [4X[25X>[125X [27X    list_of_operations_to_install := [[127X[104X
+    [4X[25X>[125X [27X        # general category[127X[104X
+    [4X[25X>[125X [27X        "PreCompose",[127X[104X
+    [4X[25X>[125X [27X        "IdentityMorphism",[127X[104X
+    [4X[25X>[125X [27X        "IsEqualForMorphisms",[127X[104X
+    [4X[25X>[125X [27X        "IsEqualForMorphismsOnMor",[127X[104X
+    [4X[25X>[125X [27X        "IsWellDefinedForMorphisms",[127X[104X
+    [4X[25X>[125X [27X        [127X[104X
+    [4X[25X>[125X [27X        # computable[127X[104X
+    [4X[25X>[125X [27X        "IsCongruentForMorphisms",[127X[104X
+    [4X[25X>[125X [27X        [127X[104X
+    [4X[25X>[125X [27X        # pre-additive[127X[104X
+    [4X[25X>[125X [27X        "AdditionForMorphisms",[127X[104X
+    [4X[25X>[125X [27X        "SubtractionForMorphisms",[127X[104X
+    [4X[25X>[125X [27X        "AdditiveInverseForMorphisms",[127X[104X
+    [4X[25X>[125X [27X        "ZeroMorphism",[127X[104X
+    [4X[25X>[125X [27X        [127X[104X
+    [4X[25X>[125X [27X        # with zero object[127X[104X
+    [4X[25X>[125X [27X        "ZeroObject",[127X[104X
+    [4X[25X>[125X [27X        "UniversalMorphismIntoZeroObject",[127X[104X
+    [4X[25X>[125X [27X        "UniversalMorphismFromZeroObject",[127X[104X
+    [4X[25X>[125X [27X        "ZeroObjectFunctorial",[127X[104X
+    [4X[25X>[125X [27X        [127X[104X
+    [4X[25X>[125X [27X        # additive[127X[104X
+    [4X[25X>[125X [27X        "DirectSum",[127X[104X
+    [4X[25X>[125X [27X        "DirectSumFunctorial",[127X[104X
+    [4X[25X>[125X [27X        "ProjectionInFactorOfDirectSum",[127X[104X
+    [4X[25X>[125X [27X        "UniversalMorphismIntoDirectSum",[127X[104X
+    [4X[25X>[125X [27X        "InjectionOfCofactorOfDirectSum",[127X[104X
+    [4X[25X>[125X [27X        "UniversalMorphismFromDirectSum",[127X[104X
+    [4X[25X>[125X [27X        [127X[104X
+    [4X[25X>[125X [27X        # colifts[127X[104X
+    [4X[25X>[125X [27X        "IsColiftable"[127X[104X
+    [4X[25X>[125X [27X    ],[127X[104X
+    [4X[25X>[125X [27X    properties := [[127X[104X
+    [4X[25X>[125X [27X        "IsAdditiveCategory",[127X[104X
+    [4X[25X>[125X [27X    ],[127X[104X
+    [4X[25X>[125X [27X) );;[127X[104X
+    [4X[25Xgap>[125X [27XStopCompilationAtPrimitivelyInstalledOperationsOfCategory( dummy );[127X[104X
+    [4X[25Xgap>[125X [27XCapJitPrecompileCategoryAndCompareResult([127X[104X
+    [4X[25X>[125X [27X    underlying_category -> CoFreydCategoryAsOppositeOfFreydCategoryOfOpposite([127X[104X
+    [4X[25X>[125X [27X        underlying_category[127X[104X
+    [4X[25X>[125X [27X    ),[127X[104X
+    [4X[25X>[125X [27X    [ dummy ],[127X[104X
+    [4X[25X>[125X [27X    "FreydCategoriesForCAP",[127X[104X
+    [4X[25X>[125X [27X    "CoFreydCategoryAsOppositeOfFreydCategoryOfOppositePrecompiled" :[127X[104X
+    [4X[25X>[125X [27X    operations := "primitive",[127X[104X
+    [4X[25X>[125X [27X    number_of_objectified_objects_in_data_structure_of_object := 1,[127X[104X
+    [4X[25X>[125X [27X    number_of_objectified_morphisms_in_data_structure_of_object := 0,[127X[104X
+    [4X[25X>[125X [27X    number_of_objectified_objects_in_data_structure_of_morphism := 2,[127X[104X
+    [4X[25X>[125X [27X    number_of_objectified_morphisms_in_data_structure_of_morphism := 1[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "ModulePresentationsForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationalsInSingular( );;[127X[104X

@@ -1983,6 +1983,65 @@ true
 
 
 <div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dummy := DummyCategory( rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    list_of_operations_to_install := [</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        # general category</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "PreCompose",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "IdentityMorphism",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "IsEqualForMorphisms",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "IsEqualForMorphismsOnMor",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "IsWellDefinedForMorphisms",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        # computable</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "IsCongruentForMorphisms",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        # pre-additive</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "AdditionForMorphisms",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "SubtractionForMorphisms",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "AdditiveInverseForMorphisms",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "ZeroMorphism",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        # with zero object</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "ZeroObject",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "UniversalMorphismIntoZeroObject",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "UniversalMorphismFromZeroObject",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "ZeroObjectFunctorial",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        # additive</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "DirectSum",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "DirectSumFunctorial",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "ProjectionInFactorOfDirectSum",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "UniversalMorphismIntoDirectSum",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "InjectionOfCofactorOfDirectSum",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "UniversalMorphismFromDirectSum",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        # colifts</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "IsColiftable"</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    properties := [</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "IsAdditiveCategory",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StopCompilationAtPrimitivelyInstalledOperationsOfCategory( dummy );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategoryAndCompareResult(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    underlying_category -&gt; CoFreydCategoryAsOppositeOfFreydCategoryOfOpposite(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        underlying_category</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ dummy ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "FreydCategoriesForCAP",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "CoFreydCategoryAsOppositeOfFreydCategoryOfOppositePrecompiled" :</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    operations := "primitive",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_objects_in_data_structure_of_object := 1,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_morphisms_in_data_structure_of_object := 0,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_objects_in_data_structure_of_morphism := 2,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_morphisms_in_data_structure_of_morphism := 1</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+</pre></div>
+
+
+<div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "ModulePresentationsForCAP", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationalsInSingular( );;</span>
