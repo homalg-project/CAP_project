@@ -728,7 +728,95 @@
   [4X[32X[104X
   
   
-  [1X12.10 [33X[0;0YCokernel image closure in category of rows[133X[101X
+  [1X12.10 [33X[0;0YCoFreyd category[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );;[127X[104X
+    [4X[25Xgap>[125X [27Xrows := CategoryOfRows( ZZ );;[127X[104X
+    [4X[25Xgap>[125X [27Xco_freyd := CoFreydCategory( rows );[127X[104X
+    [4X[28XCoFreyd( Rows( Z ) )[128X[104X
+    [4X[25Xgap>[125X [27Xrows_obj := CategoryOfRowsObject( rows, 1 );; # ZZ^1[127X[104X
+    [4X[25Xgap>[125X [27Xco_freyd_obj := AsCoFreydCategoryObject( rows_obj );; # ZZ^1 -> 0[127X[104X
+    [4X[25Xgap>[125X [27Xrows_mor := CategoryOfRowsMorphism( rows, rows_obj, HomalgMatrix( [ 2 ], 1, 1, ZZ ), rows_obj );; # ZZ^1 --2-> ZZ^1[127X[104X
+    [4X[25Xgap>[125X [27Xco_freyd_mor := CoFreydCategoryMorphism( co_freyd_obj, rows_mor, co_freyd_obj );;[127X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( co_freyd_mor );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( KernelObject( co_freyd_mor ) );[127X[104X
+    [4X[28X[128X[104X
+    [4X[28X--------------------------------[128X[104X
+    [4X[28XCoRelation morphism:[128X[104X
+    [4X[28X--------------------------------[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource: [128X[104X
+    [4X[28XA row module over Z of rank 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix: [128X[104X
+    [4X[28X[ [  2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange: [128X[104X
+    [4X[28XA row module over Z of rank 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Rows( Z )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X--------------------------------[128X[104X
+    [4X[28XGeneral description:[128X[104X
+    [4X[28X--------------------------------[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in CoFreyd( Rows( Z ) )[128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMorphism( KernelEmbedding( co_freyd_mor ) ) );[127X[104X
+    [4X[28XSource: [128X[104X
+    [4X[28XA row module over Z of rank 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix: [128X[104X
+    [4X[28X[ [  1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange: [128X[104X
+    [4X[28XA row module over Z of rank 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn identity morphism in Rows( Z )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( CokernelObject( co_freyd_mor ) );[127X[104X
+    [4X[28X[128X[104X
+    [4X[28X--------------------------------[128X[104X
+    [4X[28XCoRelation morphism:[128X[104X
+    [4X[28X--------------------------------[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource: [128X[104X
+    [4X[28XA row module over Z of rank 0[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix: [128X[104X
+    [4X[28X(an empty 0 x 0 matrix)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange: [128X[104X
+    [4X[28XA row module over Z of rank 0[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA zero, split epi-, split monomorphism in Rows( Z )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X--------------------------------[128X[104X
+    [4X[28XGeneral description:[128X[104X
+    [4X[28X--------------------------------[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in CoFreyd( Rows( Z ) )[128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMorphism( CokernelProjection( co_freyd_mor ) ) );[127X[104X
+    [4X[28XSource: [128X[104X
+    [4X[28XA row module over Z of rank 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix: [128X[104X
+    [4X[28X(an empty 1 x 0 matrix)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange: [128X[104X
+    [4X[28XA row module over Z of rank 0[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA zero, split epimorphism in Rows( Z )[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X12.11 [33X[0;0YCokernel image closure in category of rows[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XR := HomalgFieldOfRationalsInSingular() * "x,y,z";;[127X[104X
@@ -793,7 +881,7 @@
   [4X[32X[104X
   
   
-  [1X12.11 [33X[0;0YCokernel image closure in category of columns[133X[101X
+  [1X12.12 [33X[0;0YCokernel image closure in category of columns[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XR := HomalgFieldOfRationalsInSingular() * "x,y,z";;[127X[104X
@@ -858,7 +946,7 @@
   [4X[32X[104X
   
   
-  [1X12.12 [33X[0;0YExactness conditions[133X[101X
+  [1X12.13 [33X[0;0YExactness conditions[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
@@ -895,7 +983,7 @@
   [4X[32X[104X
   
   
-  [1X12.13 [33X[0;0YGrade filtration[133X[101X
+  [1X12.14 [33X[0;0YGrade filtration[133X[101X
   
   [33X[0;0YThe sequence of modules computed via satellites behaves in a way that is not
   understood in the case when the ring is not Auslander regular.[133X
@@ -999,7 +1087,7 @@
   [4X[32X[104X
   
   
-  [1X12.14 [33X[0;0YGroups as categories[133X[101X
+  [1X12.15 [33X[0;0YGroups as categories[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )[128X[104X
@@ -1038,7 +1126,7 @@
   [4X[32X[104X
   
   
-  [1X12.15 [33X[0;0YHomomorphisms between f.p. functors based on category of rows[133X[101X
+  [1X12.16 [33X[0;0YHomomorphisms between f.p. functors based on category of rows[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XR := HomalgFieldOfRationalsInSingular() * "x,y,z";;[127X[104X
@@ -1055,7 +1143,7 @@
   [4X[32X[104X
   
   
-  [1X12.16 [33X[0;0YHomomorphisms between f.p. functors based on category of columns[133X[101X
+  [1X12.17 [33X[0;0YHomomorphisms between f.p. functors based on category of columns[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XR := HomalgFieldOfRationalsInSingular() * "x,y,z";;[127X[104X
@@ -1072,7 +1160,7 @@
   [4X[32X[104X
   
   
-  [1X12.17 [33X[0;0YLinear closure of categories[133X[101X
+  [1X12.18 [33X[0;0YLinear closure of categories[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )[128X[104X
@@ -1101,7 +1189,7 @@
   [4X[32X[104X
   
   
-  [1X12.18 [33X[0;0YMatrices over ZP K[133X[101X
+  [1X12.19 [33X[0;0YMatrices over ZP K[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )[128X[104X
@@ -1146,7 +1234,7 @@
   [4X[32X[104X
   
   
-  [1X12.19 [33X[0;0YMatrices over ZG[133X[101X
+  [1X12.20 [33X[0;0YMatrices over ZG[133X[101X
   
   [33X[0;0YConstruction of a tower of categories[133X
   
@@ -1202,7 +1290,7 @@
   [4X[32X[104X
   
   
-  [1X12.20 [33X[0;0YOpposite( CategoryOfRow ) as CategoryOfColumns[133X[101X
+  [1X12.21 [33X[0;0YOpposite( CategoryOfRow ) as CategoryOfColumns[133X[101X
   
   [33X[0;0YAssume  that  we  have the constructors [10XCategoryOfRows[110X and [10XCategoryOfColumns[110X
   but   no   constructor   [10XOpposite[110X.   Then   we  can  still  model  [10XOpposite(
@@ -1295,7 +1383,7 @@
   [4X[32X[104X
   
   
-  [1X12.21  [33X[0;0YTesting  if  an  object  is  projective,  injective,  bijective,  and[101X
+  [1X12.22  [33X[0;0YTesting  if  an  object  is  projective,  injective,  bijective,  and[101X
   [1Xcomputing projective/injective dimensions[133X[101X
   
   [4X[32X  Example  [32X[104X
@@ -1337,7 +1425,7 @@
   [4X[32X[104X
   
   
-  [1X12.22 [33X[0;0YProsets[133X[101X
+  [1X12.23 [33X[0;0YProsets[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )[128X[104X
@@ -1378,7 +1466,7 @@
   [4X[32X[104X
   
   
-  [1X12.23 [33X[0;0YQuiver rows bascis[133X[101X
+  [1X12.24 [33X[0;0YQuiver rows bascis[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
@@ -1474,7 +1562,7 @@
   [4X[32X[104X
   
   
-  [1X12.24 [33X[0;0YQuiver rows over the integers[133X[101X
+  [1X12.25 [33X[0;0YQuiver rows over the integers[133X[101X
   
   [33X[0;0YWell-defined morphisms[133X
   
@@ -1567,7 +1655,7 @@
   [4X[32X[104X
   
   
-  [1X12.25 [33X[0;0YCategory of relations[133X[101X
+  [1X12.26 [33X[0;0YCategory of relations[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XF := HomalgRingOfIntegers( 3 );;[127X[104X
@@ -1605,7 +1693,7 @@
   [4X[32X[104X
   
   
-  [1X12.26 [33X[0;0YRings as Ab-categories[133X[101X
+  [1X12.27 [33X[0;0YRings as Ab-categories[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XCR := RingAsCategory( Integers );;[127X[104X
@@ -1638,7 +1726,7 @@
   [4X[32X[104X
   
   
-  [1X12.27 [33X[0;0YSnake lemma first proof[133X[101X
+  [1X12.28 [33X[0;0YSnake lemma first proof[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
@@ -1709,7 +1797,7 @@
   [4X[32X[104X
   
   
-  [1X12.28 [33X[0;0YSnake lemma second proof[133X[101X
+  [1X12.29 [33X[0;0YSnake lemma second proof[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
@@ -1757,7 +1845,7 @@
   [4X[32X[104X
   
   
-  [1X12.29 [33X[0;0YSubobject lattice[133X[101X
+  [1X12.30 [33X[0;0YSubobject lattice[133X[101X
   
   [33X[0;0YWe  compute  the  number  of  the  generic  subobject lattice generated by 2
   independent subobjects y,z and one subobject x of y.[133X
@@ -1783,7 +1871,7 @@
   [4X[32X[104X
   
   
-  [1X12.30 [33X[0;0YAdelman category theorem[133X[101X
+  [1X12.31 [33X[0;0YAdelman category theorem[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
@@ -1808,7 +1896,7 @@
   [4X[32X[104X
   
   
-  [1X12.31 [33X[0;0YTests[133X[101X
+  [1X12.32 [33X[0;0YTests[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", false );[127X[104X

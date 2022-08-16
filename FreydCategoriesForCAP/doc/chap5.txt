@@ -260,8 +260,12 @@
   [30X    [33X[0;6Y[2XPostCompose[102X     ([14XCAP:     PostCompose    for    iscapcategorymorphism,
         iscapcategorymorphism[114X)[133X
   
+  [30X    [33X[0;6Y[2XPostComposeList[102X ([14XCAP: PostComposeList for islist[114X)[133X
+  
   [30X    [33X[0;6Y[2XPreCompose[102X     ([14XCAP:     PreCompose     for     iscapcategorymorphism,
         iscapcategorymorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XPreComposeList[102X ([14XCAP: PreComposeList for islist[114X)[133X
   
   [30X    [33X[0;6Y[2XProjectionInFactorOfDirectProduct[102X                                ([14XCAP:
         ProjectionInFactorOfDirectProduct for islist, isint[114X)[133X
