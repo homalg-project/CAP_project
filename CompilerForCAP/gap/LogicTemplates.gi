@@ -14,7 +14,7 @@ InstallGlobalFunction( CapJitAddLogicTemplate, function ( template )
 end );
 
 InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( template )
-  local diff, template_var_name, tmp_tree, pre_func, additional_arguments_func, i;
+  local diff, variable_name, pre_func_identify_syntax_tree_variables, additional_arguments_func_identify_syntax_tree_variables, tmp_tree, pre_func, additional_arguments_func, i;
     
     # Caution: this function must only be called once the needed packages of the template are loaded!
     
@@ -48,6 +48,17 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
         Error( "a logic template has unknown components: ", diff );
         
     fi;
+    
+    for variable_name in template.variable_names do
+        
+        if variable_name in GAPInfo.Keywords then
+            
+            # COVERAGE_IGNORE_NEXT_LINE
+            Error( "\"", variable_name, "\" (contained in variable_names) is a keyword. This is not supported." );
+            
+        fi;
+        
+    od;
     
     if IsBound( template.variable_filters ) and Length( template.variable_names ) <> Length( template.variable_filters ) then
         
@@ -94,31 +105,36 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
         
     fi;
     
-    # replace variables by CAP_INTERNAL_JIT_TEMPLATE_VAR_i
-    for i in [ 1 .. Length( template.variable_names ) ] do
+    pre_func_identify_syntax_tree_variables := function ( tree, outer_func_id )
         
-        template_var_name := Concatenation( "CAP_INTERNAL_JIT_TEMPLATE_VAR_", String( i ) );
-        
-        if not IsBoundGlobal( template_var_name ) then
+        if tree.type = "EXPR_REF_FVAR" and tree.func_id = outer_func_id then
             
-            DeclareGlobalVariable( template_var_name );
+            return rec(
+                type := "SYNTAX_TREE_VARIABLE",
+                id := SafePosition( tmp_tree.nams, tree.name ),
+            );
             
         fi;
         
-        template.src_template := ReplacedString( template.src_template, template.variable_names[i], template_var_name );
-        template.dst_template := ReplacedString( template.dst_template, template.variable_names[i], template_var_name );
+        return tree;
         
-    od;
+    end;
+    
+    additional_arguments_func_identify_syntax_tree_variables := function ( tree, key, outer_func_id )
+        
+        return outer_func_id;
+        
+    end;
     
     # get src_template_tree from src_template
     if not IsBound( template.src_template_tree ) then
         
         # to get a syntax tree we have to wrap the template in a function
-        tmp_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "x -> ", template.src_template ) ) );
+        tmp_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "{ ", JoinStringsWithSeparator( template.variable_names, ", " ), " } -> ", template.src_template ) ) );
         
         Assert( 0, tmp_tree.bindings.names = [ "RETURN_VALUE" ] );
         
-        template.src_template_tree := CapJitValueOfBinding( tmp_tree.bindings, "RETURN_VALUE" );
+        template.src_template_tree := CapJitIterateOverTree( CapJitValueOfBinding( tmp_tree.bindings, "RETURN_VALUE" ), pre_func_identify_syntax_tree_variables, CapJitResultFuncCombineChildren, additional_arguments_func_identify_syntax_tree_variables, tmp_tree.id );
         
     fi;
     
@@ -126,11 +142,11 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
     if not IsBound( template.dst_template_tree ) then
         
         # to get a syntax tree we have to wrap the template in a function
-        tmp_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "x -> ", template.dst_template ) ) );
+        tmp_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "{ ", JoinStringsWithSeparator( template.variable_names, ", " ), " } -> ", template.dst_template ) ) );
         
         Assert( 0, tmp_tree.bindings.names = [ "RETURN_VALUE" ] );
         
-        template.dst_template_tree := CapJitValueOfBinding( tmp_tree.bindings, "RETURN_VALUE" );
+        template.dst_template_tree := CapJitIterateOverTree( CapJitValueOfBinding( tmp_tree.bindings, "RETURN_VALUE" ), pre_func_identify_syntax_tree_variables, CapJitResultFuncCombineChildren, additional_arguments_func_identify_syntax_tree_variables, tmp_tree.id );
         
     fi;
     
@@ -310,11 +326,11 @@ CapJitAddLogicTemplate(
     )
 );
 
-# [ 1 .. end ][i] => i
+# [ 1 .. range_end ][i] => i
 CapJitAddLogicTemplate(
     rec(
-        variable_names := [ "end", "index" ],
-        src_template := "[ 1 .. end ][index]",
+        variable_names := [ "range_end", "index" ],
+        src_template := "[ 1 .. range_end ][index]",
         dst_template := "index",
     )
 );
@@ -434,7 +450,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
             
         fi;
         
-        # handle syntax tree variables (CAP_INTERNAL_JIT_TEMPLATE_VAR_i)
+        # handle syntax tree variables
         if template_tree.type = "SYNTAX_TREE_VARIABLE" then
             
             var_number := template_tree.id;
