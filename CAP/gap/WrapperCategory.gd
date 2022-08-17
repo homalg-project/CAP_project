@@ -5,7 +5,9 @@
 #
 
 #! @Chapter Create wrapper hulls of a category
-
+#!
+#! @Section Introduction
+#!
 #! The support for building towers of category constructors is one
 #! of the main design features of CAP. Many categories that
 #! appear in the various applications can be modeled by towers
@@ -20,18 +22,18 @@
 #! * ObjectDatum
 #! * MorphismDatum
 #! in order to reflect the desired interpretation with
-#! a user-interface that is independent of the modeling tower.
+#! a user-interface that is independent of the modeling tower (see below for details).
 #! Note that the same tower might have multiple interpretations.
 #! 
 #! <Table Align="|c|">
-#! <Caption>A tower of categories modeling the category <C>W</C></Caption>
+#! <Caption>A tower of categories modeling the category `W`</Caption>
 #! <HorLine/>
 #! <Row>
-#!   <Item><C>W := WrapperCategory( cat_n )</C></Item>
+#!   <Item>`W := WrapperCategory( cat_n )`</Item>
 #! </Row>
 #! <HorLine/>
 #! <Row>
-#!   <Item><C>cat_n := CategoryConstructor_n( cat_{n-1} )</C></Item>
+#!   <Item>`cat_n := CategoryConstructor_n( cat_{n-1} )`</Item>
 #! </Row>
 #! <HorLine/>
 #! <Row>
@@ -39,14 +41,123 @@
 #! </Row>
 #! <HorLine/>
 #! <Row>
-#!   <Item><C>cat_1 := CategoryConstructor_1( non_categorical_input )</C></Item>
+#!   <Item>`cat_1 := CategoryConstructor_1( non_categorical_input )`</Item>
 #! </Row>
 #! <HorLine/>
 #! </Table>
-#! The wrapper category <C>W</C> is by construction equivalent
-#! to the top category <C>cat_n</C> in the tower.
+#! The wrapper category `W` is isomorphic
+#! to the top category `cat_n` in the tower.
 #! In practice, the word <Q>tower</Q> stands more generally for a finite poset
 #! with a greatest element.
+#!
+#! @Section How to equip a tower with a custom data structure?
+#!
+#! To equip a tower with a custom data structure, wrap it using
+#! <Ref Oper="WrapperCategory" Label="for IsCapCategory, IsRecord" /> with the options described
+#! in the following.
+#! Modeling `CategoryOfColumns( R )` as `Opposite( CategoryOfRows( R ) )` will be
+#! our guiding example (see `CategoryOfColumnsAsOppositeOfCategoryOfRows.gi` in
+#! `FreydCategoriesForCAP` for a full implementation).
+#! <Enum>
+#! <Item>
+#!     Set the options `category_filter`, `category_object_filter`, and `category_morphism_filter`
+#!     to the filters corresponding to the custom data structure, e.g. `IsCategoryOfColumns`,
+#!     `IsCategoryOfColumsObject`, and `IsCategoryOfColumsMorphism`.
+#! </Item>
+#! <Item>
+#!     Set `object_constructor`, `object_datum`, `morphism_constructor`, and `morphism_datum`
+#!     to the functions one would write for `ObjectConstructor` and so on for a primitive implementation.
+#!     In our example, `object_constructor` takes the wrapper category (which `IsCategoryOfColumns` due
+#!     to the filter set in the first step) and an integer, and returns a CAP object
+#!     in the category with attribute `Dimension` set to the integer, just like a primitive
+#!     implementation of `CategoryOfColumns` would do.
+#! </Item>
+#! <Item>
+#!     Set `modeling_tower_object_constructor`, `modeling_tower_object_datum`,
+#!    `modeling_tower_morphism_constructor`, and `modeling_tower_morphism_datum`:
+#!    `modeling_tower_object_constructor` gets the same input as `object_constructor` but must return
+#!    the corresponding object in the tower. `modeling_tower_object_datum` has the same output as `object_datum`
+#!    but gets the wrapper category and an object in the tower as an input.
+#!    In our example, `modeling_tower_object_constructor` gets the wrapper category and an integer
+#!    as in step 2 and wraps the integer as a `CategoryOfRowsObject` and the result as an opposite
+#!    object. `modeling_tower_object_datum` gets the wrapper category and an object in
+#!    `Opposite( CategoryOfRows( R ) )` (that is, an integer wrapped in a category of rows object
+#!    wrapped in an opposite object) and returns the underlying integer.
+#!    `modeling_tower_morphism_constructor` and `modeling_tower_morphism_datum` are given analogously.
+#! </Item>
+#! </Enum>
+#! By composing `modeling_tower_object_datum` with `object_constructor` and `modeling_tower_morphism_datum` with `morphism_constructor`
+#! (with suitable source and range), `WrapperCategory` defines a functor "Wrapping" from `cat_n` to `W`.
+#! Similarly, it defines a functor "Unwrapping" from `W` to `cat_n` by composing `object_datum` with
+#! `modeling_tower_object_constructor` and `morphism_datum` with `modeling_tower_morphism_constructor` (with suitable source and range).
+#! "Wrapping" should be an isomorphism of categories with inverse "Unwrapping".
+#! More precisely, one has to take care of the following things:
+#!   * `W` should just be a reinterpretation of `cat_n` (with a nicer data structure), so we certainly
+#!     want "Wrapping" to be an equivalence of categories with pseudo-inverse "Unwrapping".
+#!   * `WrapperCategory` copies all properties from `cat_n` to `W`,
+#!     including properties like `IsSkeletalCategory` which are not necessarily preserved by mere equivalences.
+#!   * To fulfill the specification of WithGiven operations, wrapping a WithGiven object `A` in `cat_n`
+#!     as an object in `W` and unwrapping it again must give an object equal to `A`. So we require
+#!     "Wrapping" and then "Unwrapping" to be the identity. Conversely, let let `B_1` be an object in `W`
+#!     which we unwrap and wrap again to form an object `B_2`. By construction of `W`, `B_1` and `B_2` are equal
+#!     if and only if they are equal when unwrapped. But due to "Wrapping" and then "Unwrapping" being the identity,
+#!     unwrapping `B_2` simply gives an object equal to `B_1` unwrapped. Thus, also `B_1` and `B_2` are equal.
+#!     Thus, "Wrapping" has to be an equivalence which is a bijection on objects, and hence an isomorphism (although
+#!     "Unwrapping" is not necessarily its inverse).
+#!     Note: Alternatively, one can make sure that WithGiven operations in `cat_n` are only called
+#!     via the corresponding non-WithGiven operation in `cat_n`. This can be achieved by wrapping
+#!     all operations of `cat_n` (i.e. creating `W` with `only_primitive_operations := false`), disabling redirect functions
+#!     (i.e. creating `W` with the option `overhead := false`) and not calling WithGiven operations
+#!     of `W` manually.
+#!
+#! @Section How does it work?
+#!
+#! Operations in `WrapperCategory` are implemented as follows:
+#! <Enum>
+#! <Item>
+#!     Apply `object_datum` and `morphism_datum` to the input to get the underlying data.
+#! </Item>
+#! <Item>
+#!     Apply `modeling_tower_object_constructor` and `modeling_tower_morphism_constructor`
+#!     to the underlying data to get objects and morphisms in the tower.
+#! </Item>
+#! <Item>
+#!     Apply the operation of the tower.
+#! </Item>
+#! <Item>
+#!     Apply `modeling_tower_object_datum` or `modeling_tower_morphism_datum` to the result
+#!     to get the underlying data.
+#! </Item>
+#! <Item>
+#!     Apply `object_constructor` or `morphism_constructor` to the underlying data to get an
+#!     object or a morphism in the wrapper category.
+#! </Item>
+#! </Enum>
+#! The first two steps define the functor "Unwrapping" and the last two steps define the functor "Wrapping".
+#! "Wrapping" on objects and morphisms is called `ModeledObject` and `ModeledMorphism` in the code.
+#! "Unwrapping" on objects and morphisms is called `ModelingObject` and `ModelingMorphism` in the code.
+#!
+#! @Section Relation to `CompilerForCAP`
+#!
+#! The operation of the tower (step 3 above) usually unwraps objects and morphisms,
+#! operates on the underlying data, and wraps the result. The unwrapping usually
+#! cancels with step 2 above, and wrapping the result usually cancels with step 4 above.
+#! If one now compiles the operations of the wrapper category, only the following steps remain:
+#! <Enum>
+#! <Item>
+#!     Apply `object_datum` and `morphism_datum` to the input to get the underlying data.
+#! </Item>
+#! <Item>
+#!     Operate on the underlying data. (previously part of step 3)
+#! </Item>
+#! <Item>
+#!     Apply `object_constructor` or `morphism_constructor` to the underlying data to get an
+#!     object or a morphism in the wrapper category. (previously step 5)
+#! </Item>
+#! </Enum>
+#! This is exactly what a primitive implementation would look like. Thus, in many cases
+#! compiling a wrapper category immediately gives a primitive implementation with no remaining
+#! references to the tower.
 
 ####################################
 #
@@ -201,7 +312,7 @@ DeclareOperation( "WrapperCategory",
 
 
 #! @Description
-#!  Return the functor from the wrapped category <C>ModelingCategory</C>(<A>W</A>) to the wrapper category <A>W</A>.
+#!  Return the functor from the wrapped category `ModelingCategory`(<A>W</A>) to the wrapper category <A>W</A>.
 #!  The functor maps each wrapped object/morphism to its wrapping object/morphism.
 #! @Arguments W
 #! @Returns a functor
