@@ -23,7 +23,6 @@ shasum -a 256 -c codecov.SHA256SUM
 
 # execute
 chmod +x codecov
-./codecov -Z || ./codecov -Z || ./codecov -Z
 ./codecov -Z -F CAP || ./codecov -Z -F CAP || ./codecov -Z -F CAP
 ./codecov -Z -F ActionsForCAP || ./codecov -Z -F ActionsForCAP || ./codecov -Z -F ActionsForCAP
 ./codecov -Z -F AttributeCategoryForCAP || ./codecov -Z -F AttributeCategoryForCAP || ./codecov -Z -F AttributeCategoryForCAP
