@@ -567,6 +567,38 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     
     underlying_category := UnderlyingCategory( category );
     
+    ##
+    AddObjectConstructor( category,
+      function( cat, list_of_objects )
+        
+        return AdditiveClosureObject( cat, list_of_objects );
+        
+    end );
+    
+    ##
+    AddObjectDatum( category,
+      function( cat, object );
+        
+        return ObjectList( object );
+        
+    end );
+    
+    ##
+    AddMorphismConstructor( category,
+      function( cat, source, listlist, range )
+        
+        return AdditiveClosureMorphism( cat, source, listlist, range );
+        
+    end );
+    
+    ##
+    AddMorphismDatum( category,
+      function( cat, morphism );
+        
+        return MorphismMatrix( morphism );
+        
+    end );
+    
     ## Well-defined for objects and morphisms
     ##
     AddIsWellDefinedForObjects( category,
