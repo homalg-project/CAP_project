@@ -23,8 +23,6 @@ ReadPackage( "CAP", "gap/LimitConvenience.gd" );
 
 ReadPackage( "CAP", "gap/UniversalObjects.gd" );
 
-ReadPackage( "CAP", "gap/MonoidalCategories.gd" );
-
 ReadPackage( "CAP", "gap/InstallAdds.gd" );
 
 ReadPackage( "CAP", "gap/TheoremParser.gd");

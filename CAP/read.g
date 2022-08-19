@@ -26,15 +26,11 @@ ReadPackage( "CAP", "gap/UniversalObjects.gi" );
 
 ReadPackage( "CAP", "gap/InstallAdds.gi" );
 
-ReadPackage( "CAP", "gap/MonoidalCategories.gi" );
-
 ReadPackage( "CAP", "gap/TheoremParser.gi");
 
 ReadPackage( "CAP", "gap/LogicForCAP.gi");
 
 ReadPackage( "CAP", "gap/DerivedMethods.gi");
-
-ReadPackage( "CAP", "gap/MonoidalCategoriesDerivedMethods.gi");
 
 ReadPackage( "CAP", "gap/LimitConvenienceOutput.gi");
 
