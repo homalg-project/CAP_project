@@ -14,5 +14,3 @@ ReadPackage( "ActionsForCAP", "gap/CoactionObjects.gd" );
 ReadPackage( "ActionsForCAP", "gap/ActionMorphisms.gd" );
 
 ReadPackage( "ActionsForCAP", "gap/CoactionMorphisms.gd" );
-
-ReadPackage( "ActionsForCAP", "gap/InternalExteriorAlgebraModules.gd" );

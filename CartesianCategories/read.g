@@ -45,9 +45,6 @@ ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategories.gi" );
 ReadPackage( "CartesianCategories", "gap/CartesianCategoriesDerivedMethods.gi" );
 ReadPackage( "CartesianCategories", "gap/CocartesianCategoriesDerivedMethods.gi" );
 
-ReadPackage( "CartesianCategories", "gap/DistributiveCartesianCategoriesDerivedMethods.gi" );
-ReadPackage( "CartesianCategories", "gap/CodistributiveCocartesianCategoriesDerivedMethods.gi" );
-
 ReadPackage( "CartesianCategories", "gap/BraidedCartesianCategoriesDerivedMethods.gi" );
 ReadPackage( "CartesianCategories", "gap/BraidedCocartesianCategoriesDerivedMethods.gi" );
 
