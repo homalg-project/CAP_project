@@ -1,7 +1,7 @@
 name: FreydCategoriesForCAP
-version: "2022.08-06"
+version: "2022.08-07"
 license: "GPL-2.0-or-later"
-date: 2022-08-18
+date: 2022-08-19
 description: |
     Freyd categories - Formal (co)kernels for additive categories
 
@@ -55,11 +55,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2022.08-06/FreydCategoriesForCAP-2022.08-06.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2022.08-07/FreydCategoriesForCAP-2022.08-07.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2022.08-06/FreydCategoriesForCAP-2022.08-06.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2022.08-07/FreydCategoriesForCAP-2022.08-07.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2022.08-06/FreydCategoriesForCAP-2022.08-06.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2022.08-07/FreydCategoriesForCAP-2022.08-07.pdf
 
 abstract: |
 
@@ -70,7 +70,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>PB22</span>]   <b class='BibAuthor'>Posur, S. and Bies, M.</b>,
      <i class='BibTitle'>FreydCategoriesForCAP, Freyd categories - Formal (co)kernels for additive categories,
-             Version 2022.08-06</i>
+             Version 2022.08-07</i>
      (<span class='BibYear'>2022</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FreydCategoriesForCAP">https://homalg-project.github.io/pkg/FreydCategoriesForCAP</a></span>.
@@ -78,11 +78,11 @@ citeas: |
     
 
 bibtex: |
-    @misc{ FreydCategoriesForCAP2022.08-06,
+    @misc{ FreydCategoriesForCAP2022.08-07,
       author =           {Posur, S. and Bies, M.},
       title =            {{FreydCategoriesForCAP},  Freyd  categories  -  Formal
                           (co)kernels   for   additive   categories,   {V}ersion
-                          2022.08-06},
+                          2022.08-07},
       month =            {Aug},
       year =             {2022},
       note =             {GAP package},
