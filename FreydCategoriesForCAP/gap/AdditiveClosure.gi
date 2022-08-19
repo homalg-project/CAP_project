@@ -1311,6 +1311,68 @@ InstallMethod( Display,
     
 end );
 
+##
+InstallMethod( LaTeXOutput,
+          [ IsAdditiveClosureObject ],
+          
+  function( obj )
+    local objs;
+    
+    objs := CollectEntries( ObjectList( obj ) );
+    
+    if IsEmpty( objs ) then
+      return "0";
+    else
+      return
+        JoinStringsWithSeparator(
+          List( objs,
+              function( pair )
+                local s;
+                s := Concatenation( "{", LaTeXOutput( pair[ 1 ] ), "}" );
+                if pair[ 2 ] <> 1 then
+                    s := Concatenation( s, "^{\\oplus ", String( pair[ 2 ] ), "}" );
+                fi;
+                return s;
+              end ),
+          "\\oplus" );
+    fi;
+    
+end );
+
+##
+InstallMethod( LaTeXOutput,
+          [ IsAdditiveClosureMorphism ],
+          
+  function( morphism )
+    local matrix, str;
+    
+    matrix := MorphismMatrix( morphism );
+    
+    if ForAny( List( [ Source( morphism ), Range( morphism ) ], ObjectList ), IsEmpty ) then
+        str := "\\\\";
+    else
+        str := JoinStringsWithSeparator(
+              List( matrix, row -> JoinStringsWithSeparator(
+                                      List( row, m -> LaTeXOutput( m : OnlyDatum := true ) ),
+                                      "\&" ) ),
+              "\\\\ \n"
+            );
+    fi;
+    
+    str :=  Concatenation( "\\begin{pmatrix}", str, "\\end{pmatrix}" );
+    
+    if ValueOption( "OnlyDatum" ) = true then
+        return str;
+    fi;
+    
+    return Concatenation(
+              LaTeXOutput( Source( morphism ) ),
+              "\\xrightarrow{", str, "}",
+              LaTeXOutput( Range( morphism ) )
+            );
+    
+end );
+
 ####################################
 ##
 ## Down
