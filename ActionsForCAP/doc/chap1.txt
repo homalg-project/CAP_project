@@ -237,15 +237,15 @@
     [4X[28X<An object in Complex category of Ascending filtered object category of Category with attributes of Category of left presentations of Q[x,y]>[128X[104X
     [4X[25Xgap>[125X [27XLessGenFunctor := FunctorLessGeneratorsLeft( R );[127X[104X
     [4X[28XLess generators for Category of left presentations of Q[x,y][128X[104X
-    [4X[25Xgap>[125X [27XProfileFunctionsInGlobalVariables( true );[127X[104X
-    [4X[25Xgap>[125X [27XProfileOperationsAndMethods( true );[127X[104X
-    [4X[25Xgap>[125X [27XProfileGlobalFunctions( true );[127X[104X
+    [4X[25Xgap>[125X [27X# ProfileFunctionsInGlobalVariables( true );[127X[104X
+    [4X[25Xgap>[125X [27X# ProfileOperationsAndMethods( true );[127X[104X
+    [4X[25Xgap>[125X [27X# ProfileGlobalFunctions( true );[127X[104X
     [4X[25Xgap>[125X [27X# s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 0, 0, 0 );[127X[104X
-    [4X[25Xgap>[125X [27XProfileFunctionsInGlobalVariables( false );[127X[104X
-    [4X[25Xgap>[125X [27XProfileOperationsAndMethods( false );[127X[104X
-    [4X[25Xgap>[125X [27XProfileGlobalFunctions( false );[127X[104X
+    [4X[25Xgap>[125X [27X# ProfileFunctionsInGlobalVariables( false );[127X[104X
+    [4X[25Xgap>[125X [27X# ProfileOperationsAndMethods( false );[127X[104X
+    [4X[25Xgap>[125X [27X# ProfileGlobalFunctions( false );[127X[104X
     [4X[25Xgap>[125X [27X# [127X[104X
-    [4X[25X>[125X [27X#DisplayProfile();[127X[104X
+    [4X[25X>[125X [27X# DisplayProfile();[127X[104X
     [4X[25Xgap>[125X [27X# [127X[104X
     [4X[25X>[125X [27X# [127X[104X
     [4X[25X>[125X [27X# ProfileFunctionsInGlobalVariables( true );[127X[104X
