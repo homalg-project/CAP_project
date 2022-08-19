@@ -156,15 +156,15 @@ LessGenFunctor := FunctorLessGeneratorsLeft( R );
 #! Less generators for Category of left presentations of Q[x,y]
 
 
-ProfileFunctionsInGlobalVariables( true );
-ProfileOperationsAndMethods( true );
-ProfileGlobalFunctions( true );
+# ProfileFunctionsInGlobalVariables( true );
+# ProfileOperationsAndMethods( true );
+# ProfileGlobalFunctions( true );
 # s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 0, 0, 0 );
-ProfileFunctionsInGlobalVariables( false );
-ProfileOperationsAndMethods( false );
-ProfileGlobalFunctions( false );
+# ProfileFunctionsInGlobalVariables( false );
+# ProfileOperationsAndMethods( false );
+# ProfileGlobalFunctions( false );
 # 
-#DisplayProfile();
+# DisplayProfile();
 # 
 # 
 # ProfileFunctionsInGlobalVariables( true );
