@@ -577,7 +577,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     
     ##
     AddObjectDatum( category,
-      function( cat, object );
+      function( cat, object )
         
         return ObjectList( object );
         
@@ -593,7 +593,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     
     ##
     AddMorphismDatum( category,
-      function( cat, morphism );
+      function( cat, morphism )
         
         return MorphismMatrix( morphism );
         
