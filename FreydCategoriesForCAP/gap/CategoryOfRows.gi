@@ -515,8 +515,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         [ function( cat, left_morphism, zero_morphism )
             
             return CategoryOfRowsMorphism( cat, Source( left_morphism ),
-                                        HomalgZeroMatrix( NrRows( UnderlyingMatrix( left_morphism ) ),
-                                        NrColumns( UnderlyingMatrix( zero_morphism ) ), ring ),
+                                        HomalgZeroMatrix( RankOfObject( Source( left_morphism ) ),
+                                        RankOfObject( Range( zero_morphism ) ), ring ),
                                         Range( zero_morphism ) );
           
           end, [ IsCapCategory, IsCapCategoryMorphism, IsZeroForMorphisms ] ],
@@ -524,8 +524,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         [ function( cat, zero_morphism, right_morphism )
             
             return CategoryOfRowsMorphism( cat, Source( zero_morphism ),
-                                           HomalgZeroMatrix( NrRows( UnderlyingMatrix( zero_morphism ) ),
-                                           NrColumns( UnderlyingMatrix( right_morphism ) ), ring ),
+                                           HomalgZeroMatrix( RankOfObject( Source( zero_morphism ) ),
+                                           RankOfObject( Range( right_morphism ) ), ring ),
                                            Range( right_morphism ) );
           
           end, [ IsCapCategory, IsZeroForMorphisms, IsCapCategoryMorphism ] ],
@@ -697,7 +697,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
         homalg_matrix := ReducedSyzygiesOfRows( UnderlyingMatrix( morphism ) );
         
-        return CategoryOfRowsMorphism( cat, CategoryOfRowsObject( cat, NrRows( homalg_matrix ) ), homalg_matrix, Source( morphism ) );
+        return CategoryOfRowsMorphism( cat, CategoryOfRowsObject( cat, NrRows( homalg_matrix ) ), homalg_matrix, Source( morphism ) ); # taking NrRows could be avoided by using a WithGiven version
         
     end );
     
@@ -707,7 +707,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
         homalg_matrix := ReducedSyzygiesOfColumns( UnderlyingMatrix( morphism ) );
         
-        return CategoryOfRowsMorphism( cat, Range( morphism ), homalg_matrix, CategoryOfRowsObject( cat, NrColumns( homalg_matrix ) ) );
+        return CategoryOfRowsMorphism( cat, Range( morphism ), homalg_matrix, CategoryOfRowsObject( cat, NrColumns( homalg_matrix ) ) ); # taking NrColumns could be avoided by using a WithGiven version
         
     end );
     
@@ -718,7 +718,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
         homalg_matrix := ReducedSyzygiesOfRows( UnderlyingMatrix( morphism_1 ), UnderlyingMatrix( morphism_2 ) );
         
-        return CategoryOfRowsMorphism( cat, CategoryOfRowsObject( cat, NrRows( homalg_matrix ) ), homalg_matrix, Source( morphism_1 ) );
+        return CategoryOfRowsMorphism( cat, CategoryOfRowsObject( cat, NrRows( homalg_matrix ) ), homalg_matrix, Source( morphism_1 ) ); # taking NrRows could be avoided by using a WithGiven version
         
     end );
     
@@ -748,7 +748,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
         homalg_matrix := ReducedSyzygiesOfColumns( UnderlyingMatrix( morphism_1 ), UnderlyingMatrix( morphism_2 ) );
         
-        return CategoryOfRowsMorphism( cat, Range( morphism_1 ), homalg_matrix, CategoryOfRowsObject( cat, NrColumns( homalg_matrix ) ) );
+        return CategoryOfRowsMorphism( cat, Range( morphism_1 ), homalg_matrix, CategoryOfRowsObject( cat, NrColumns( homalg_matrix ) ) ); # taking NrColumns could be avoided by using a WithGiven version
         
     end );
     
@@ -803,11 +803,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
       ##
       AddKernelObject( category,
         function( cat, morphism )
-          local homalg_matrix;
           
-          homalg_matrix := UnderlyingMatrix( morphism );
-          
-          return CategoryOfRowsObject( cat, NrRows( homalg_matrix ) - RowRankOfMatrix( homalg_matrix ) );
+          return CategoryOfRowsObject( cat, RankOfObject( Source( morphism ) ) - RowRankOfMatrix( UnderlyingMatrix( morphism ) ) );
           
       end );
       
@@ -818,7 +815,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
           
           kernel_emb := SyzygiesOfRows( UnderlyingMatrix( morphism ) );
           
-          kernel_object := CategoryOfRowsObject( cat, NrRows( kernel_emb ) );
+          kernel_object := CategoryOfRowsObject( cat, NrRows( kernel_emb ) ); # taking NrRows could be avoided by using a WithGiven version
           
           return CategoryOfRowsMorphism( cat, kernel_object, kernel_emb, Source( morphism ) );
           
@@ -827,11 +824,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
       ##
       AddCokernelObject( category,
         function( cat, morphism )
-          local homalg_matrix;
           
-          homalg_matrix := UnderlyingMatrix( morphism );
-          
-          return CategoryOfRowsObject( cat, NrColumns( homalg_matrix ) - RowRankOfMatrix( homalg_matrix ) );
+          return CategoryOfRowsObject( cat, RankOfObject( Range( morphism ) ) - RowRankOfMatrix( UnderlyingMatrix( morphism ) ) );
           
       end );
       
@@ -842,7 +836,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
           
           cokernel_proj := SyzygiesOfColumns( UnderlyingMatrix( morphism ) );
           
-          cokernel_obj := CategoryOfRowsObject( cat, NrColumns( cokernel_proj ) );
+          cokernel_obj := CategoryOfRowsObject( cat, NrColumns( cokernel_proj ) ); # taking NrColumns could be avoided by using a WithGiven version
           
           return CategoryOfRowsMorphism( cat, Range( morphism ), cokernel_proj, cokernel_obj );
           
