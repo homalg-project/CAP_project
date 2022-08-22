@@ -2155,7 +2155,7 @@ AddDerivationToCAP( IsomorphismFromDirectSumToDirectProduct,
                     [ [ InverseForMorphisms, 1 ],
                       [ IsomorphismFromDirectProductToDirectSum, 1 ] ],
                       
-  function( cat, diagram );
+  function( cat, diagram )
     
     return InverseForMorphisms( cat, IsomorphismFromDirectProductToDirectSum( cat, diagram ) );
     

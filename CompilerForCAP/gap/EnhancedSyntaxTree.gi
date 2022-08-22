@@ -43,7 +43,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
         
         # using LocationFunc causes a segfault (https://github.com/gap-system/gap/issues/4507)
         # COVERAGE_IGNORE_NEXT_LINE
-        CallFuncList( Error, Concatenation( [ "for function at ", FilenameFunc( func ), ":", StartlineFunc( func ), ":\n" ], args ) );
+        CallFuncList( Error, Concatenation( [ "for function at ", TextAttr.b1, FilenameFunc( func ), ":", StartlineFunc( func ), TextAttr.reset, ":\n" ], args ) );
         
     end;
     
@@ -137,6 +137,19 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
         elif IsRecord( tree ) then
             
             Assert( 0, IsBound( tree.type ) );
+            
+            # check for unsupported stuff
+            if tree.type = "STAT_EMPTY" then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                ErrorWithFuncLocation( "Found an empty statement, probably there is a superfluous semicolon in the function mentioned above." );
+                
+            elif tree.type = "STAT_ASS_GVAR" then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                ErrorWithFuncLocation( "Found an assignment to the global variable `", tree.gvar, "`. Maybe this should be a local variable of the function mentioned above?" );
+                
+            fi;
             
             # replace verbose types by short types
             if StartsWith( tree.type, "STAT_SEQ_STAT" ) then
