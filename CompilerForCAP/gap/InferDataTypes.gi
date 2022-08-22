@@ -933,11 +933,26 @@ CapJitAddTypeSignature( "Concatenation", [ IsList, IsList ], function ( input_ty
     
 end );
 
+CapJitAddTypeSignature( "Difference", [ IsList, IsList ], function ( input_types )
+    
+    Assert( 0, input_types[1] = input_types[2] );
+    
+    return input_types[1];
+    
+end );
+
 CapJitAddTypeSignature( "Cartesian", [ IsList ], function ( input_types )
     
     Assert( 0, input_types[1].element_type.filter = IsList );
     
     return input_types[1];
+    
+end );
+
+CapJitAddTypeSignature( "Combinations", [ IsList, IsInt ], function ( input_types )
+    
+    return rec( filter := IsList,
+                element_type := input_types[1] );
     
 end );
 
