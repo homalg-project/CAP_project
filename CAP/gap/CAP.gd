@@ -41,7 +41,12 @@
 #!   $\beta \in \mathrm{Hom}_{\mathbf{C}}( b, c )$,
 #!   $\gamma \in \mathrm{Hom}_{\mathbf{C}}( c, d )$,
 #!   we have $$\left(( \gamma \circ \beta ) \circ \alpha \right) \sim_{a,d} \left( \gamma \circ ( \beta \circ \alpha ) \right)$$
-
+#!
+#! CAP only supports **typed** categories, that is, any element of $\mathrm{Obj}_{\mathbf{C}}$ must have an attribute `CapCategory` which stores $\mathbf{C}$
+#! and any element of $\mathrm{Hom}_{\mathbf{C}}( a, b )$ for some $a$ and $b$ must have attributes `CapCategory`, `Source`, and `Range`,
+#! which store $\mathbf{C}$, $a$, and $b$, respectively. This allows to do proper type checking and to have convenient interfaces
+#! where the category and sources and ranges of morphisms do not have to be passed explicitly.
+#! For the limited support for untyped or **bare** categories, see <Ref Sect="Section_BareCategories" />.
 
 ###################################
 ##
