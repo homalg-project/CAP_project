@@ -195,8 +195,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
         end );
         
         ##
-        AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
-          function( cat, alpha )
+        AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( category,
+          function( cat, distinguished_object, alpha, r )
             local underlying_matrix;
             
             underlying_matrix := UnderlyingMatrix( alpha );
@@ -204,9 +204,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
             underlying_matrix := ConvertMatrixToColumn( underlying_matrix );
             
             return CategoryOfColumnsMorphism( cat,
-                     DistinguishedObjectOfHomomorphismStructure( cat ),
+                     distinguished_object,
                      underlying_matrix,
-                     HomomorphismStructureOnObjects( cat, Source( alpha ), Range( alpha ) )
+                     r
                    );
             
         end );

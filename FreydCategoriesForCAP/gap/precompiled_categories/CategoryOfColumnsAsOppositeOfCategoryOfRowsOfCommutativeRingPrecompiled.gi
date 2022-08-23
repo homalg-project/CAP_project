@@ -343,16 +343,12 @@ end
     , 100 );
     
     ##
-    AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat,
+    AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( cat,
         
 ########
-function ( cat_1, alpha_1 )
-    local morphism_attr_1_1;
-    morphism_attr_1_1 := ConvertMatrixToColumn( UnderlyingMatrix( alpha_1 ) );
+function ( cat_1, source_1, alpha_1, range_1 )
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, RankOfObject, 1 ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+           ), cat_1, source_1, range_1, UnderlyingMatrix, ConvertMatrixToColumn( UnderlyingMatrix( alpha_1 ) ) );
 end
 ########
         
