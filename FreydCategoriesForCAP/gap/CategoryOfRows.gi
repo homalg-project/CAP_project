@@ -894,8 +894,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         end );
         
         ##
-        AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
-          function( cat, alpha )
+        AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( category,
+          function( cat, distinguished_object, alpha, r )
             local underlying_matrix;
             
             underlying_matrix := UnderlyingMatrix( alpha );
@@ -903,9 +903,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
             underlying_matrix := ConvertMatrixToRow( underlying_matrix );
             
             return CategoryOfRowsMorphism( cat,
-                     DistinguishedObjectOfHomomorphismStructure( cat ),
+                     distinguished_object,
                      underlying_matrix,
-                     HomomorphismStructureOnObjects( cat, Source( alpha ), Range( alpha ) )
+                     r
                    );
             
         end );
