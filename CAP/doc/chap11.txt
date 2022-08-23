@@ -42,7 +42,7 @@
         [2XObjectConstructor[102X ([14X2.7-1[114X) to the category[133X
   
   [30X    [33X[0;6Y[10Xobject_datum[110X   (optional):   function  added  as  an  installation  of
-        [2XObjectDatum[102X ([14X2.7-2[114X) to the category[133X
+        [2XObjectDatum[102X ([14X2.7-3[114X) to the category[133X
   
   [30X    [33X[0;6Y[10Xmorphism_constructor[110X  (optional): function added as an installation of
         [2XMorphismConstructor[102X ([14X3.2-1[114X) to the category[133X

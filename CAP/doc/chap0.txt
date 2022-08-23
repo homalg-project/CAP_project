@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2022.08-07
+                                   2022.08-08
   
   
-                                 22 August 2022
+                                 23 August 2022
   
   
                                Sebastian Gutsche
@@ -135,7 +135,8 @@
       2.6-4 ObjectifyObjectForCAPWithAttributes
     2.7 [33X[0;0YObject constructors[133X
       2.7-1 ObjectConstructor
-      2.7-2 ObjectDatum
+      2.7-2 \/
+      2.7-3 ObjectDatum
     2.8 [33X[0;0YWell-Definedness of Objects[133X
       2.8-1 IsWellDefinedForObjects
     2.9 [33X[0;0YProjectives[133X
