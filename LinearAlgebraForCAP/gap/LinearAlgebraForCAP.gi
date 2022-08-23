@@ -269,7 +269,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         [ function( cat, left_morphism, zero_morphism )
             
             return VectorSpaceMorphism( cat, Source( left_morphism ),
-                                        HomalgZeroMatrix( NrRows( UnderlyingMatrix( left_morphism ) ), NrColumns( UnderlyingMatrix( zero_morphism ) ), homalg_field ),
+                                        HomalgZeroMatrix( Dimension( Source( left_morphism ) ), Dimension( Range( zero_morphism ) ), homalg_field ),
                                         Range( zero_morphism ) );
           
           end, [ IsCapCategory, IsCapCategoryMorphism, IsZeroForMorphisms ] ],
@@ -277,7 +277,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         [ function( cat, zero_morphism, right_morphism )
             
             return VectorSpaceMorphism( cat, Source( zero_morphism ),
-                                        HomalgZeroMatrix( NrRows( UnderlyingMatrix( zero_morphism ) ), NrColumns( UnderlyingMatrix( right_morphism ) ), homalg_field ),
+                                        HomalgZeroMatrix( Dimension( Source( zero_morphism ) ), Dimension( Range( right_morphism ) ), homalg_field ),
                                         Range( right_morphism ) );
           
           end, [ IsCapCategory, IsZeroForMorphisms, IsCapCategoryMorphism ] ],
@@ -502,11 +502,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddKernelObject( category,
       function( cat, morphism )
-        local homalg_matrix;
         
-        homalg_matrix := UnderlyingMatrix( morphism );
-        
-        return MatrixCategoryObject( cat, NrRows( homalg_matrix ) - RowRankOfMatrix( homalg_matrix ) );
+        return MatrixCategoryObject( cat, Dimension( Source( morphism ) ) - RowRankOfMatrix( UnderlyingMatrix( morphism ) ) );
         
     end );
     
@@ -517,7 +514,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         kernel_emb := SyzygiesOfRows( UnderlyingMatrix( morphism ) );
         
-        kernel_object := MatrixCategoryObject( cat, NrRows( kernel_emb ) );
+        kernel_object := MatrixCategoryObject( cat, NrRows( kernel_emb ) ); # taking NrRows could be avoided by using a WithGiven version
         
         return VectorSpaceMorphism( cat, kernel_object, kernel_emb, Source( morphism ) );
         
@@ -566,11 +563,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddCokernelObject( category,
       function( cat, morphism )
-        local homalg_matrix;
         
-        homalg_matrix := UnderlyingMatrix( morphism );
-        
-        return MatrixCategoryObject( cat, NrColumns( homalg_matrix ) - RowRankOfMatrix( homalg_matrix ) );
+        return MatrixCategoryObject( cat, Dimension( Range( morphism ) ) - RowRankOfMatrix( UnderlyingMatrix( morphism ) ) );
         
     end );
     
@@ -581,7 +575,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         cokernel_proj := SyzygiesOfColumns( UnderlyingMatrix( morphism ) );
         
-        cokernel_obj := MatrixCategoryObject( cat, NrColumns( cokernel_proj ) );
+        cokernel_obj := MatrixCategoryObject( cat, NrColumns( cokernel_proj ) ); # taking NrColumns could be avoided by using a WithGiven version
         
         return VectorSpaceMorphism( cat, Range( morphism ), cokernel_proj, cokernel_obj );
         
@@ -875,8 +869,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     end );
     
     ##
-    AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
-      function( cat, alpha )
+    AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( category,
+      function( cat, distinguished_object, alpha, r )
         local matrix, new_matrix;
         
         matrix := UnderlyingMatrix( alpha );
@@ -884,9 +878,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         new_matrix := ConvertMatrixToRow( matrix );
         
         return VectorSpaceMorphism( cat,
-          MatrixCategoryObject( cat, 1 ),
+          distinguished_object,
           new_matrix,
-          MatrixCategoryObject( cat, NrColumns( new_matrix ) )
+          r
         );
         
     end );

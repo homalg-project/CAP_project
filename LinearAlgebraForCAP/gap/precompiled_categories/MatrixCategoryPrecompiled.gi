@@ -812,10 +812,8 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local deduped_1_1;
-    deduped_1_1 := SyzygiesOfRows( UnderlyingMatrix( arg2_1 ) );
     return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, Dimension, NumberColumns( deduped_1_1 ) - RowRankOfMatrix( deduped_1_1 ) );
+           ), cat_1, Dimension, Dimension( Source( arg2_1 ) ) - RowRankOfMatrix( SyzygiesOfRows( UnderlyingMatrix( arg2_1 ) ) ) );
 end
 ########
         
@@ -886,10 +884,8 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local deduped_1_1;
-    deduped_1_1 := UnderlyingMatrix( arg2_1 );
     return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, Dimension, NumberColumns( deduped_1_1 ) - RowRankOfMatrix( deduped_1_1 ) );
+           ), cat_1, Dimension, Dimension( Range( arg2_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( arg2_1 ) ) );
 end
 ########
         
@@ -1448,25 +1444,24 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1;
-    deduped_10_1 := Length( arg2_1 );
-    deduped_9_1 := UnderlyingRing( cat_1 );
-    deduped_8_1 := List( arg2_1, function ( logic_new_func_x_2 )
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1;
+    deduped_9_1 := Length( arg2_1 );
+    deduped_8_1 := UnderlyingRing( cat_1 );
+    deduped_7_1 := List( arg2_1, function ( logic_new_func_x_2 )
             return Dimension( Source( logic_new_func_x_2 ) );
         end );
-    deduped_7_1 := Sum( deduped_8_1 );
+    deduped_6_1 := Sum( deduped_7_1 );
     hoisted_4_1 := List( arg2_1, UnderlyingMatrix );
-    hoisted_3_1 := deduped_10_1;
-    hoisted_2_1 := deduped_9_1;
-    hoisted_1_1 := deduped_8_1;
-    deduped_6_1 := List( [ 1 .. deduped_10_1 ], function ( logic_new_func_x_2 )
+    hoisted_3_1 := deduped_9_1;
+    hoisted_2_1 := deduped_8_1;
+    hoisted_1_1 := deduped_7_1;
+    deduped_5_1 := List( [ 1 .. deduped_9_1 ], function ( logic_new_func_x_2 )
             local deduped_1_2;
             deduped_1_2 := hoisted_1_1[logic_new_func_x_2];
             return UnionOfRows( HomalgZeroMatrix( Sum( hoisted_1_1{[ 1 .. (logic_new_func_x_2 - 1) ]} ), deduped_1_2, hoisted_2_1 ), HomalgIdentityMatrix( deduped_1_2, hoisted_2_1 ), HomalgZeroMatrix( Sum( hoisted_1_1{[ (logic_new_func_x_2 + 1) .. hoisted_3_1 ]} ), deduped_1_2, hoisted_2_1 ) ) * hoisted_4_1[logic_new_func_x_2];
         end );
-    deduped_5_1 := UnionOfColumns( deduped_9_1, deduped_7_1, deduped_6_1{[ 1 .. deduped_10_1 - 1 ]} ) + -1 * UnionOfColumns( deduped_9_1, deduped_7_1, deduped_6_1{[ 2 .. deduped_10_1 ]} );
     return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, Dimension, NumberRows( deduped_5_1 ) - RowRankOfMatrix( deduped_5_1 ) );
+           ), cat_1, Dimension, deduped_6_1 - RowRankOfMatrix( (UnionOfColumns( deduped_8_1, deduped_6_1, deduped_5_1{[ 1 .. deduped_9_1 - 1 ]} ) + -1 * UnionOfColumns( deduped_8_1, deduped_6_1, deduped_5_1{[ 2 .. deduped_9_1 ]} )) ) );
 end
 ########
         
@@ -1540,7 +1535,7 @@ function ( cat_1, morphisms_1, L_1, morphismsp_1 )
     deduped_11_1 := UnionOfColumns( deduped_18_1, deduped_14_1, deduped_12_1{[ 1 .. deduped_19_1 - 1 ]} ) + -1 * UnionOfColumns( deduped_18_1, deduped_14_1, deduped_12_1{[ 2 .. deduped_19_1 ]} );
     hoisted_7_1 := List( L_1, UnderlyingMatrix );
     hoisted_6_1 := SyzygiesOfRows( deduped_11_1 );
-    morphism_attr_1_1 := RightDivide( UnionOfColumns( deduped_18_1, NumberRows( deduped_11_1 ) - RowRankOfMatrix( deduped_11_1 ), List( [ 1 .. Length( L_1 ) ], function ( logic_new_func_x_2 )
+    morphism_attr_1_1 := RightDivide( UnionOfColumns( deduped_18_1, deduped_14_1 - RowRankOfMatrix( deduped_11_1 ), List( [ 1 .. Length( L_1 ) ], function ( logic_new_func_x_2 )
                 local deduped_1_2;
                 deduped_1_2 := Sum( hoisted_2_1{[ 1 .. logic_new_func_x_2 - 1 ]} ) + 1;
                 return CertainColumns( hoisted_6_1, [ deduped_1_2 .. (deduped_1_2 - 1 + hoisted_2_1[logic_new_func_x_2]) ] ) * hoisted_7_1[logic_new_func_x_2];
@@ -1609,9 +1604,9 @@ end
 ########
 function ( cat_1, alpha_1, beta_1 )
     local deduped_1_1;
-    deduped_1_1 := SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( beta_1 ) ) * SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ) );
+    deduped_1_1 := SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) );
     return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, Dimension, NumberRows( deduped_1_1 ) - RowRankOfMatrix( deduped_1_1 ) );
+           ), cat_1, Dimension, NumberColumns( deduped_1_1 ) - RowRankOfMatrix( SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( beta_1 ) ) * deduped_1_1 ) ) );
 end
 ########
         
@@ -1626,7 +1621,7 @@ function ( cat_1, H_1_1, L_1, H_2_1 )
     deduped_5_1 := SyzygiesOfColumns( UnderlyingMatrix( L_1[4] ) );
     deduped_4_1 := SyzygiesOfColumns( UnderlyingMatrix( L_1[1] ) );
     deduped_3_1 := SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( L_1[5] ) ) * deduped_5_1 );
-    deduped_2_1 := HomalgIdentityMatrix( NumberRows( deduped_3_1 ) - RowRankOfMatrix( deduped_3_1 ), UnderlyingRing( cat_1 ) );
+    deduped_2_1 := HomalgIdentityMatrix( NumberColumns( deduped_5_1 ) - RowRankOfMatrix( deduped_3_1 ), UnderlyingRing( cat_1 ) );
     morphism_attr_1_1 := RightDivide( SyzygiesOfRows( SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( L_1[2] ) ) * deduped_4_1 ) ) * LeftDivide( deduped_4_1, (UnderlyingMatrix( L_1[3] ) * deduped_5_1) ), SyzygiesOfRows( deduped_3_1 ) ) * RightDivide( deduped_2_1, deduped_2_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
@@ -1724,10 +1719,8 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local deduped_1_1;
-    deduped_1_1 := SyzygiesOfColumns( UnderlyingMatrix( arg2_1 ) );
     return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, Dimension, NumberRows( deduped_1_1 ) - RowRankOfMatrix( deduped_1_1 ) );
+           ), cat_1, Dimension, Dimension( Range( arg2_1 ) ) - RowRankOfMatrix( SyzygiesOfColumns( UnderlyingMatrix( arg2_1 ) ) ) );
 end
 ########
         
@@ -2327,23 +2320,19 @@ function ( cat_1, alpha_1 )
 end
 ########
         
-    , 100 );
+    , 301 : IsPrecompiledDerivation := true );
     
     ##
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( cat,
         
 ########
 function ( cat_1, source_1, alpha_1, range_1 )
-    local morphism_attr_1_1;
-    morphism_attr_1_1 := ConvertMatrixToRow( UnderlyingMatrix( alpha_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, 1 ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+           ), cat_1, source_1, range_1, UnderlyingMatrix, ConvertMatrixToRow( UnderlyingMatrix( alpha_1 ) ) );
 end
 ########
         
-    , 101 : IsPrecompiledDerivation := true );
+    , 100 );
     
     ##
     AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
@@ -2379,7 +2368,7 @@ function ( cat_1, C_1, alpha_1, I_1 )
     local morphism_attr_1_1, deduped_2_1, deduped_3_1;
     deduped_3_1 := UnderlyingMatrix( alpha_1 );
     deduped_2_1 := SyzygiesOfColumns( deduped_3_1 );
-    morphism_attr_1_1 := RightDivide( HomalgIdentityMatrix( NumberRows( deduped_2_1 ) - RowRankOfMatrix( deduped_2_1 ), UnderlyingRing( cat_1 ) ), RightDivide( LeftDivide( SyzygiesOfColumns( SyzygiesOfRows( deduped_3_1 ) ), deduped_3_1 ), SyzygiesOfRows( deduped_2_1 ) ) );
+    morphism_attr_1_1 := RightDivide( HomalgIdentityMatrix( Dimension( Range( alpha_1 ) ) - RowRankOfMatrix( deduped_2_1 ), UnderlyingRing( cat_1 ) ), RightDivide( LeftDivide( SyzygiesOfColumns( SyzygiesOfRows( deduped_3_1 ) ), deduped_3_1 ), SyzygiesOfRows( deduped_2_1 ) ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
              ), cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
@@ -2797,9 +2786,8 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) );
-    morphism_attr_1_1 := HomalgIdentityMatrix( NumberColumns( deduped_2_1 ) - RowRankOfMatrix( deduped_2_1 ), UnderlyingRing( cat_1 ) );
+    local morphism_attr_1_1;
+    morphism_attr_1_1 := HomalgIdentityMatrix( Dimension( Source( alpha_1 ) ) - RowRankOfMatrix( SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ), UnderlyingRing( cat_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
              ), cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
@@ -2814,24 +2802,23 @@ end
         
 ########
 function ( cat_1, D_1 )
-    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1;
-    deduped_11_1 := Length( D_1 );
-    deduped_10_1 := UnderlyingRing( cat_1 );
-    deduped_9_1 := List( D_1, function ( logic_new_func_x_2 )
+    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1;
+    deduped_10_1 := Length( D_1 );
+    deduped_9_1 := UnderlyingRing( cat_1 );
+    deduped_8_1 := List( D_1, function ( logic_new_func_x_2 )
             return Dimension( Range( logic_new_func_x_2 ) );
         end );
-    deduped_8_1 := Sum( deduped_9_1 );
-    hoisted_5_1 := deduped_11_1;
-    hoisted_4_1 := deduped_10_1;
-    hoisted_3_1 := deduped_9_1;
+    deduped_7_1 := Sum( deduped_8_1 );
+    hoisted_5_1 := deduped_10_1;
+    hoisted_4_1 := deduped_9_1;
+    hoisted_3_1 := deduped_8_1;
     hoisted_2_1 := List( D_1, UnderlyingMatrix );
-    deduped_7_1 := List( [ 1 .. deduped_11_1 ], function ( logic_new_func_x_2 )
+    deduped_6_1 := List( [ 1 .. deduped_10_1 ], function ( logic_new_func_x_2 )
             local deduped_1_2;
             deduped_1_2 := hoisted_3_1[logic_new_func_x_2];
             return hoisted_2_1[logic_new_func_x_2] * UnionOfColumns( HomalgZeroMatrix( deduped_1_2, Sum( hoisted_3_1{[ 1 .. (logic_new_func_x_2 - 1) ]} ), hoisted_4_1 ), HomalgIdentityMatrix( deduped_1_2, hoisted_4_1 ), HomalgZeroMatrix( deduped_1_2, Sum( hoisted_3_1{[ (logic_new_func_x_2 + 1) .. hoisted_5_1 ]} ), hoisted_4_1 ) );
         end );
-    deduped_6_1 := UnionOfRows( deduped_10_1, deduped_8_1, deduped_7_1{[ 1 .. deduped_11_1 - 1 ]} ) + -1 * UnionOfRows( deduped_10_1, deduped_8_1, deduped_7_1{[ 2 .. deduped_11_1 ]} );
-    morphism_attr_1_1 := HomalgIdentityMatrix( NumberColumns( deduped_6_1 ) - RowRankOfMatrix( deduped_6_1 ), deduped_10_1 );
+    morphism_attr_1_1 := HomalgIdentityMatrix( deduped_7_1 - RowRankOfMatrix( (UnionOfRows( deduped_9_1, deduped_7_1, deduped_6_1{[ 1 .. deduped_10_1 - 1 ]} ) + -1 * UnionOfRows( deduped_9_1, deduped_7_1, deduped_6_1{[ 2 .. deduped_10_1 ]} )) ), deduped_9_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
              ), cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
@@ -2846,9 +2833,8 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) );
-    morphism_attr_1_1 := HomalgIdentityMatrix( NumberColumns( deduped_2_1 ) - RowRankOfMatrix( deduped_2_1 ), UnderlyingRing( cat_1 ) );
+    local morphism_attr_1_1;
+    morphism_attr_1_1 := HomalgIdentityMatrix( Dimension( Source( alpha_1 ) ) - RowRankOfMatrix( SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ), UnderlyingRing( cat_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
              ), cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
@@ -2947,24 +2933,23 @@ end
         
 ########
 function ( cat_1, D_1 )
-    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1;
-    deduped_11_1 := Length( D_1 );
-    deduped_10_1 := UnderlyingRing( cat_1 );
-    deduped_9_1 := List( D_1, function ( logic_new_func_x_2 )
+    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1;
+    deduped_10_1 := Length( D_1 );
+    deduped_9_1 := UnderlyingRing( cat_1 );
+    deduped_8_1 := List( D_1, function ( logic_new_func_x_2 )
             return Dimension( Source( logic_new_func_x_2 ) );
         end );
-    deduped_8_1 := Sum( deduped_9_1 );
+    deduped_7_1 := Sum( deduped_8_1 );
     hoisted_5_1 := List( D_1, UnderlyingMatrix );
-    hoisted_4_1 := deduped_11_1;
-    hoisted_3_1 := deduped_10_1;
-    hoisted_2_1 := deduped_9_1;
-    deduped_7_1 := List( [ 1 .. deduped_11_1 ], function ( logic_new_func_x_2 )
+    hoisted_4_1 := deduped_10_1;
+    hoisted_3_1 := deduped_9_1;
+    hoisted_2_1 := deduped_8_1;
+    deduped_6_1 := List( [ 1 .. deduped_10_1 ], function ( logic_new_func_x_2 )
             local deduped_1_2;
             deduped_1_2 := hoisted_2_1[logic_new_func_x_2];
             return UnionOfRows( HomalgZeroMatrix( Sum( hoisted_2_1{[ 1 .. (logic_new_func_x_2 - 1) ]} ), deduped_1_2, hoisted_3_1 ), HomalgIdentityMatrix( deduped_1_2, hoisted_3_1 ), HomalgZeroMatrix( Sum( hoisted_2_1{[ (logic_new_func_x_2 + 1) .. hoisted_4_1 ]} ), deduped_1_2, hoisted_3_1 ) ) * hoisted_5_1[logic_new_func_x_2];
         end );
-    deduped_6_1 := UnionOfColumns( deduped_10_1, deduped_8_1, deduped_7_1{[ 1 .. deduped_11_1 - 1 ]} ) + -1 * UnionOfColumns( deduped_10_1, deduped_8_1, deduped_7_1{[ 2 .. deduped_11_1 ]} );
-    morphism_attr_1_1 := HomalgIdentityMatrix( NumberRows( deduped_6_1 ) - RowRankOfMatrix( deduped_6_1 ), deduped_10_1 );
+    morphism_attr_1_1 := HomalgIdentityMatrix( deduped_7_1 - RowRankOfMatrix( (UnionOfColumns( deduped_9_1, deduped_7_1, deduped_6_1{[ 1 .. deduped_10_1 - 1 ]} ) + -1 * UnionOfColumns( deduped_9_1, deduped_7_1, deduped_6_1{[ 2 .. deduped_10_1 ]} )) ), deduped_9_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
              ), cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
@@ -2980,8 +2965,8 @@ end
 ########
 function ( cat_1, alpha_1, beta_1 )
     local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( beta_1 ) ) * SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ) );
-    morphism_attr_1_1 := HomalgIdentityMatrix( NumberRows( deduped_2_1 ) - RowRankOfMatrix( deduped_2_1 ), UnderlyingRing( cat_1 ) );
+    deduped_2_1 := SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) );
+    morphism_attr_1_1 := HomalgIdentityMatrix( NumberColumns( deduped_2_1 ) - RowRankOfMatrix( SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( beta_1 ) ) * deduped_2_1 ) ), UnderlyingRing( cat_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
              ), cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
@@ -2996,9 +2981,8 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) );
-    morphism_attr_1_1 := HomalgIdentityMatrix( NumberRows( deduped_2_1 ) - RowRankOfMatrix( deduped_2_1 ), UnderlyingRing( cat_1 ) );
+    local morphism_attr_1_1;
+    morphism_attr_1_1 := HomalgIdentityMatrix( Dimension( Range( alpha_1 ) ) - RowRankOfMatrix( SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ) ), UnderlyingRing( cat_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
              ), cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
@@ -3196,8 +3180,8 @@ end
 ########
 function ( cat_1, alpha_1, beta_1 )
     local morphism_attr_1_1, deduped_2_1, deduped_3_1;
-    deduped_3_1 := SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( beta_1 ) ) * SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ) );
-    deduped_2_1 := HomalgIdentityMatrix( NumberRows( deduped_3_1 ) - RowRankOfMatrix( deduped_3_1 ), UnderlyingRing( cat_1 ) );
+    deduped_3_1 := SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) );
+    deduped_2_1 := HomalgIdentityMatrix( NumberColumns( deduped_3_1 ) - RowRankOfMatrix( SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( beta_1 ) ) * deduped_3_1 ) ), UnderlyingRing( cat_1 ) );
     morphism_attr_1_1 := RightDivide( deduped_2_1, deduped_2_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
@@ -3213,9 +3197,8 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) );
-    morphism_attr_1_1 := HomalgIdentityMatrix( NumberRows( deduped_2_1 ) - RowRankOfMatrix( deduped_2_1 ), UnderlyingRing( cat_1 ) );
+    local morphism_attr_1_1;
+    morphism_attr_1_1 := HomalgIdentityMatrix( Dimension( Range( alpha_1 ) ) - RowRankOfMatrix( SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ) ), UnderlyingRing( cat_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
              ), cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
@@ -3230,24 +3213,23 @@ end
         
 ########
 function ( cat_1, D_1 )
-    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1;
-    deduped_11_1 := Length( D_1 );
-    deduped_10_1 := UnderlyingRing( cat_1 );
-    deduped_9_1 := List( D_1, function ( logic_new_func_x_2 )
+    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1;
+    deduped_10_1 := Length( D_1 );
+    deduped_9_1 := UnderlyingRing( cat_1 );
+    deduped_8_1 := List( D_1, function ( logic_new_func_x_2 )
             return Dimension( Source( logic_new_func_x_2 ) );
         end );
-    deduped_8_1 := Sum( deduped_9_1 );
+    deduped_7_1 := Sum( deduped_8_1 );
     hoisted_5_1 := List( D_1, UnderlyingMatrix );
-    hoisted_4_1 := deduped_11_1;
-    hoisted_3_1 := deduped_10_1;
-    hoisted_2_1 := deduped_9_1;
-    deduped_7_1 := List( [ 1 .. deduped_11_1 ], function ( logic_new_func_x_2 )
+    hoisted_4_1 := deduped_10_1;
+    hoisted_3_1 := deduped_9_1;
+    hoisted_2_1 := deduped_8_1;
+    deduped_6_1 := List( [ 1 .. deduped_10_1 ], function ( logic_new_func_x_2 )
             local deduped_1_2;
             deduped_1_2 := hoisted_2_1[logic_new_func_x_2];
             return UnionOfRows( HomalgZeroMatrix( Sum( hoisted_2_1{[ 1 .. (logic_new_func_x_2 - 1) ]} ), deduped_1_2, hoisted_3_1 ), HomalgIdentityMatrix( deduped_1_2, hoisted_3_1 ), HomalgZeroMatrix( Sum( hoisted_2_1{[ (logic_new_func_x_2 + 1) .. hoisted_4_1 ]} ), deduped_1_2, hoisted_3_1 ) ) * hoisted_5_1[logic_new_func_x_2];
         end );
-    deduped_6_1 := UnionOfColumns( deduped_10_1, deduped_8_1, deduped_7_1{[ 1 .. deduped_11_1 - 1 ]} ) + -1 * UnionOfColumns( deduped_10_1, deduped_8_1, deduped_7_1{[ 2 .. deduped_11_1 ]} );
-    morphism_attr_1_1 := HomalgIdentityMatrix( NumberRows( deduped_6_1 ) - RowRankOfMatrix( deduped_6_1 ), deduped_10_1 );
+    morphism_attr_1_1 := HomalgIdentityMatrix( deduped_7_1 - RowRankOfMatrix( (UnionOfColumns( deduped_9_1, deduped_7_1, deduped_6_1{[ 1 .. deduped_10_1 - 1 ]} ) + -1 * UnionOfColumns( deduped_9_1, deduped_7_1, deduped_6_1{[ 2 .. deduped_10_1 ]} )) ), deduped_9_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
              ), cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
@@ -3372,24 +3354,23 @@ end
         
 ########
 function ( cat_1, D_1 )
-    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1;
-    deduped_11_1 := Length( D_1 );
-    deduped_10_1 := UnderlyingRing( cat_1 );
-    deduped_9_1 := List( D_1, function ( logic_new_func_x_2 )
+    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1;
+    deduped_10_1 := Length( D_1 );
+    deduped_9_1 := UnderlyingRing( cat_1 );
+    deduped_8_1 := List( D_1, function ( logic_new_func_x_2 )
             return Dimension( Range( logic_new_func_x_2 ) );
         end );
-    deduped_8_1 := Sum( deduped_9_1 );
-    hoisted_5_1 := deduped_11_1;
-    hoisted_4_1 := deduped_10_1;
-    hoisted_3_1 := deduped_9_1;
+    deduped_7_1 := Sum( deduped_8_1 );
+    hoisted_5_1 := deduped_10_1;
+    hoisted_4_1 := deduped_9_1;
+    hoisted_3_1 := deduped_8_1;
     hoisted_2_1 := List( D_1, UnderlyingMatrix );
-    deduped_7_1 := List( [ 1 .. deduped_11_1 ], function ( logic_new_func_x_2 )
+    deduped_6_1 := List( [ 1 .. deduped_10_1 ], function ( logic_new_func_x_2 )
             local deduped_1_2;
             deduped_1_2 := hoisted_3_1[logic_new_func_x_2];
             return hoisted_2_1[logic_new_func_x_2] * UnionOfColumns( HomalgZeroMatrix( deduped_1_2, Sum( hoisted_3_1{[ 1 .. (logic_new_func_x_2 - 1) ]} ), hoisted_4_1 ), HomalgIdentityMatrix( deduped_1_2, hoisted_4_1 ), HomalgZeroMatrix( deduped_1_2, Sum( hoisted_3_1{[ (logic_new_func_x_2 + 1) .. hoisted_5_1 ]} ), hoisted_4_1 ) );
         end );
-    deduped_6_1 := UnionOfRows( deduped_10_1, deduped_8_1, deduped_7_1{[ 1 .. deduped_11_1 - 1 ]} ) + -1 * UnionOfRows( deduped_10_1, deduped_8_1, deduped_7_1{[ 2 .. deduped_11_1 ]} );
-    morphism_attr_1_1 := HomalgIdentityMatrix( NumberColumns( deduped_6_1 ) - RowRankOfMatrix( deduped_6_1 ), deduped_10_1 );
+    morphism_attr_1_1 := HomalgIdentityMatrix( deduped_7_1 - RowRankOfMatrix( (UnionOfRows( deduped_9_1, deduped_7_1, deduped_6_1{[ 1 .. deduped_10_1 - 1 ]} ) + -1 * UnionOfRows( deduped_9_1, deduped_7_1, deduped_6_1{[ 2 .. deduped_10_1 ]} )) ), deduped_9_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
              ), cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
@@ -3544,10 +3525,8 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local deduped_1_1;
-    deduped_1_1 := UnderlyingMatrix( arg2_1 );
     return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, Dimension, NumberRows( deduped_1_1 ) - RowRankOfMatrix( deduped_1_1 ) );
+           ), cat_1, Dimension, Dimension( Source( arg2_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( arg2_1 ) ) );
 end
 ########
         
@@ -3857,7 +3836,7 @@ function ( cat_1, arg2_1, arg3_1, arg4_1 )
 end
 ########
         
-    , 201 : IsPrecompiledDerivation := true );
+    , 402 : IsPrecompiledDerivation := true );
     
     ##
     AddMonoidalPostCoComposeMorphism( cat,
@@ -4585,10 +4564,9 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    local morphism_attr_1_1, deduped_2_1, deduped_3_1;
-    deduped_3_1 := UnderlyingMatrix( alpha_1 );
+    local morphism_attr_1_1, deduped_2_1;
     deduped_2_1 := Range( alpha_1 );
-    morphism_attr_1_1 := HomalgZeroMatrix( NumberRows( deduped_3_1 ) - RowRankOfMatrix( deduped_3_1 ), Dimension( deduped_2_1 ), UnderlyingRing( cat_1 ) );
+    morphism_attr_1_1 := HomalgZeroMatrix( Dimension( Source( alpha_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( alpha_1 ) ), Dimension( deduped_2_1 ), UnderlyingRing( cat_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
              ), cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), deduped_2_1, UnderlyingMatrix, morphism_attr_1_1 );
@@ -4602,10 +4580,9 @@ end
         
 ########
 function ( cat_1, alpha_1, P_1 )
-    local morphism_attr_1_1, deduped_2_1, deduped_3_1;
-    deduped_3_1 := UnderlyingMatrix( alpha_1 );
+    local morphism_attr_1_1, deduped_2_1;
     deduped_2_1 := Range( alpha_1 );
-    morphism_attr_1_1 := HomalgZeroMatrix( NumberRows( deduped_3_1 ) - RowRankOfMatrix( deduped_3_1 ), Dimension( deduped_2_1 ), UnderlyingRing( cat_1 ) );
+    morphism_attr_1_1 := HomalgZeroMatrix( Dimension( Source( alpha_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( alpha_1 ) ), Dimension( deduped_2_1 ), UnderlyingRing( cat_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
              ), cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), deduped_2_1, UnderlyingMatrix, morphism_attr_1_1 );
@@ -4619,10 +4596,9 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    local morphism_attr_1_1, deduped_2_1, deduped_3_1;
-    deduped_3_1 := UnderlyingMatrix( alpha_1 );
+    local morphism_attr_1_1, deduped_2_1;
     deduped_2_1 := Source( alpha_1 );
-    morphism_attr_1_1 := HomalgZeroMatrix( Dimension( deduped_2_1 ), NumberColumns( deduped_3_1 ) - RowRankOfMatrix( deduped_3_1 ), UnderlyingRing( cat_1 ) );
+    morphism_attr_1_1 := HomalgZeroMatrix( Dimension( deduped_2_1 ), Dimension( Range( alpha_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( alpha_1 ) ), UnderlyingRing( cat_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, deduped_2_1, ObjectifyObjectForCAPWithAttributes( rec(
              ), cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
@@ -4636,10 +4612,9 @@ end
         
 ########
 function ( cat_1, alpha_1, P_1 )
-    local morphism_attr_1_1, deduped_2_1, deduped_3_1;
-    deduped_3_1 := UnderlyingMatrix( alpha_1 );
+    local morphism_attr_1_1, deduped_2_1;
     deduped_2_1 := Source( alpha_1 );
-    morphism_attr_1_1 := HomalgZeroMatrix( Dimension( deduped_2_1 ), NumberColumns( deduped_3_1 ) - RowRankOfMatrix( deduped_3_1 ), UnderlyingRing( cat_1 ) );
+    morphism_attr_1_1 := HomalgZeroMatrix( Dimension( deduped_2_1 ), Dimension( Range( alpha_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( alpha_1 ) ), UnderlyingRing( cat_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, deduped_2_1, ObjectifyObjectForCAPWithAttributes( rec(
              ), cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
@@ -5080,25 +5055,24 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1;
-    deduped_10_1 := Length( arg2_1 );
-    deduped_9_1 := UnderlyingRing( cat_1 );
-    deduped_8_1 := List( arg2_1, function ( logic_new_func_x_2 )
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1;
+    deduped_9_1 := Length( arg2_1 );
+    deduped_8_1 := UnderlyingRing( cat_1 );
+    deduped_7_1 := List( arg2_1, function ( logic_new_func_x_2 )
             return Dimension( Range( logic_new_func_x_2 ) );
         end );
-    deduped_7_1 := Sum( deduped_8_1 );
-    hoisted_4_1 := deduped_10_1;
-    hoisted_3_1 := deduped_9_1;
-    hoisted_2_1 := deduped_8_1;
+    deduped_6_1 := Sum( deduped_7_1 );
+    hoisted_4_1 := deduped_9_1;
+    hoisted_3_1 := deduped_8_1;
+    hoisted_2_1 := deduped_7_1;
     hoisted_1_1 := List( arg2_1, UnderlyingMatrix );
-    deduped_6_1 := List( [ 1 .. deduped_10_1 ], function ( logic_new_func_x_2 )
+    deduped_5_1 := List( [ 1 .. deduped_9_1 ], function ( logic_new_func_x_2 )
             local deduped_1_2;
             deduped_1_2 := hoisted_2_1[logic_new_func_x_2];
             return hoisted_1_1[logic_new_func_x_2] * UnionOfColumns( HomalgZeroMatrix( deduped_1_2, Sum( hoisted_2_1{[ 1 .. (logic_new_func_x_2 - 1) ]} ), hoisted_3_1 ), HomalgIdentityMatrix( deduped_1_2, hoisted_3_1 ), HomalgZeroMatrix( deduped_1_2, Sum( hoisted_2_1{[ (logic_new_func_x_2 + 1) .. hoisted_4_1 ]} ), hoisted_3_1 ) );
         end );
-    deduped_5_1 := UnionOfRows( deduped_9_1, deduped_7_1, deduped_6_1{[ 1 .. deduped_10_1 - 1 ]} ) + -1 * UnionOfRows( deduped_9_1, deduped_7_1, deduped_6_1{[ 2 .. deduped_10_1 ]} );
     return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, Dimension, NumberColumns( deduped_5_1 ) - RowRankOfMatrix( deduped_5_1 ) );
+           ), cat_1, Dimension, deduped_6_1 - RowRankOfMatrix( (UnionOfRows( deduped_8_1, deduped_6_1, deduped_5_1{[ 1 .. deduped_9_1 - 1 ]} ) + -1 * UnionOfRows( deduped_8_1, deduped_6_1, deduped_5_1{[ 2 .. deduped_9_1 ]} )) ) );
 end
 ########
         
@@ -5141,7 +5115,7 @@ function ( cat_1, morphisms_1, L_1, morphismsp_1 )
     deduped_11_1 := UnionOfRows( deduped_18_1, deduped_14_1, deduped_12_1{[ 1 .. deduped_19_1 - 1 ]} ) + -1 * UnionOfRows( deduped_18_1, deduped_14_1, deduped_12_1{[ 2 .. deduped_19_1 ]} );
     hoisted_10_1 := SyzygiesOfColumns( deduped_11_1 );
     hoisted_9_1 := List( L_1, UnderlyingMatrix );
-    morphism_attr_1_1 := LeftDivide( SyzygiesOfColumns( UnionOfRows( deduped_18_1, deduped_15_1, deduped_13_1{[ 1 .. deduped_20_1 - 1 ]} ) + -1 * UnionOfRows( deduped_18_1, deduped_15_1, deduped_13_1{[ 2 .. deduped_20_1 ]} ) ), UnionOfRows( deduped_18_1, NumberColumns( deduped_11_1 ) - RowRankOfMatrix( deduped_11_1 ), List( [ 1 .. Length( L_1 ) ], function ( logic_new_func_x_2 )
+    morphism_attr_1_1 := LeftDivide( SyzygiesOfColumns( UnionOfRows( deduped_18_1, deduped_15_1, deduped_13_1{[ 1 .. deduped_20_1 - 1 ]} ) + -1 * UnionOfRows( deduped_18_1, deduped_15_1, deduped_13_1{[ 2 .. deduped_20_1 ]} ) ), UnionOfRows( deduped_18_1, deduped_14_1 - RowRankOfMatrix( deduped_11_1 ), List( [ 1 .. Length( L_1 ) ], function ( logic_new_func_x_2 )
                 local deduped_1_2;
                 deduped_1_2 := Sum( hoisted_7_1{[ 1 .. logic_new_func_x_2 - 1 ]} ) + 1;
                 return hoisted_9_1[logic_new_func_x_2] * CertainRows( hoisted_10_1, [ deduped_1_2 .. (deduped_1_2 - 1 + hoisted_7_1[logic_new_func_x_2]) ] );
@@ -5438,7 +5412,7 @@ function ( cat_1, arg2_1, arg3_1, arg4_1 )
 end
 ########
         
-    , 401 : IsPrecompiledDerivation := true );
+    , 602 : IsPrecompiledDerivation := true );
     
     ##
     AddSomeInjectiveObject( cat,
@@ -5467,9 +5441,8 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := UnderlyingMatrix( alpha_1 );
-    morphism_attr_1_1 := HomalgZeroMatrix( 0, NumberColumns( deduped_2_1 ) - RowRankOfMatrix( deduped_2_1 ), UnderlyingRing( cat_1 ) );
+    local morphism_attr_1_1;
+    morphism_attr_1_1 := HomalgZeroMatrix( 0, Dimension( Range( alpha_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( alpha_1 ) ), UnderlyingRing( cat_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
              ), cat_1, Dimension, 0 ), ObjectifyObjectForCAPWithAttributes( rec(

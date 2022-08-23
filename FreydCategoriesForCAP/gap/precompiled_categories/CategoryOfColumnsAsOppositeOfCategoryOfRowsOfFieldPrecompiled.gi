@@ -196,10 +196,8 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local deduped_3_1;
-    deduped_3_1 := UnderlyingMatrix( arg2_1 );
     return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, RankOfObject, NumberRows( deduped_3_1 ) - RowRankOfMatrix( deduped_3_1 ) );
+           ), cat_1, RankOfObject, RankOfObject( Range( arg2_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( arg2_1 ) ) );
 end
 ########
         
@@ -553,10 +551,8 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local deduped_3_1;
-    deduped_3_1 := UnderlyingMatrix( arg2_1 );
     return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, RankOfObject, NumberColumns( deduped_3_1 ) - RowRankOfMatrix( deduped_3_1 ) );
+           ), cat_1, RankOfObject, RankOfObject( Source( arg2_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( arg2_1 ) ) );
 end
 ########
         

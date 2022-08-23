@@ -177,10 +177,10 @@ end
 ########
 function ( cat_1, arg2_1 )
     local deduped_3_1;
-    deduped_3_1 := UnderlyingMatrix( Opposite( arg2_1 ) );
+    deduped_3_1 := Opposite( arg2_1 );
     return ObjectifyObjectForCAPWithAttributes( rec(
            ), cat_1, Opposite, ObjectifyObjectForCAPWithAttributes( rec(
-             ), OppositeCategory( cat_1 ), Dimension, NumberRows( deduped_3_1 ) - RowRankOfMatrix( deduped_3_1 ) ) );
+             ), OppositeCategory( cat_1 ), Dimension, Dimension( Source( deduped_3_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( deduped_3_1 ) ) ) );
 end
 ########
         
@@ -429,17 +429,12 @@ end
     , 100 );
     
     ##
-    AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat,
+    AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( cat,
         
 ########
-function ( cat_1, alpha_1 )
-    local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := OppositeCategory( cat_1 );
-    morphism_attr_1_1 := ConvertMatrixToRow( UnderlyingMatrix( Opposite( alpha_1 ) ) );
+function ( cat_1, source_1, alpha_1, range_1 )
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), deduped_2_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), deduped_2_1, Dimension, 1 ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), deduped_2_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+           ), OppositeCategory( cat_1 ), source_1, range_1, UnderlyingMatrix, ConvertMatrixToRow( UnderlyingMatrix( Opposite( alpha_1 ) ) ) );
 end
 ########
         
@@ -655,10 +650,10 @@ end
 ########
 function ( cat_1, arg2_1 )
     local deduped_3_1;
-    deduped_3_1 := UnderlyingMatrix( Opposite( arg2_1 ) );
+    deduped_3_1 := Opposite( arg2_1 );
     return ObjectifyObjectForCAPWithAttributes( rec(
            ), cat_1, Opposite, ObjectifyObjectForCAPWithAttributes( rec(
-             ), OppositeCategory( cat_1 ), Dimension, NumberColumns( deduped_3_1 ) - RowRankOfMatrix( deduped_3_1 ) ) );
+             ), OppositeCategory( cat_1 ), Dimension, Dimension( Range( deduped_3_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( deduped_3_1 ) ) ) );
 end
 ########
         
