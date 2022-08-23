@@ -430,7 +430,7 @@ InstallMethod( \=,
                [ IsRingAsCategoryMorphism, IsRingAsCategoryMorphism ],
                IsCongruentForMorphisms );
 
-InstallMethod( \/,
+InstallOtherMethod( \/,
                [ IsRingElement, IsRingAsCategory ],
                RingAsCategoryMorphism );
 

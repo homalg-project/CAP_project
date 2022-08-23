@@ -387,7 +387,7 @@ InstallMethod( \=,
                [ IsGroupAsCategoryMorphism, IsGroupAsCategoryMorphism ],
                IsCongruentForMorphisms );
 
-InstallMethod( \/,
+InstallOtherMethod( \/,
                [ IsObject, IsGroupAsCategory ],
                GroupAsCategoryMorphism );
 

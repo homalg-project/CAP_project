@@ -192,6 +192,22 @@ InstallMethod( AddObject,
 end );
 
 ##
+InstallMethod( \/,
+               [ IsObject, IsCapCategory ],
+               
+  function( object_datum, cat )
+    
+    if not CanCompute( cat, "ObjectConstructor" ) then
+        
+        Error( "You are calling the generic \"/\" method, but <cat> does not have an object constructor. Please add one or install a special version of \"/\"." );
+        
+    fi;
+    
+    return ObjectConstructor( cat, object_datum );
+    
+end );
+
+##
 InstallMethod( IsWellDefined,
                [ IsCapCategoryObject ],
   IsWellDefinedForObjects

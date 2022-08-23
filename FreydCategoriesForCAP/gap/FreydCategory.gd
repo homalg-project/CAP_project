@@ -49,9 +49,6 @@ DeclareAttribute( "EmbeddingFunctorIntoFreydCategory",
                   IsCapCategory );
 
 DeclareOperation( "\/",
-                  [ IsCapCategoryObject, IsFreydCategory ] );
-
-DeclareOperation( "\/",
                   [ IsCapCategoryMorphism, IsFreydCategory ] );
 
 DeclareOperation( "\/",

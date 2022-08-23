@@ -58,10 +58,6 @@ DeclareOperation( "CategoryOfColumnsMorphism",
 DeclareOperation( "\/",
                   [ IsHomalgMatrix, IsCategoryOfColumns ] );
 
-DeclareOperation( "\/",
-                  [ IsInt, IsCategoryOfColumns ] );
-
-
 ####################################
 ##
 #! @Section Attributes

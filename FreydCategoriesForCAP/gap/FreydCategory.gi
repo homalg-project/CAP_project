@@ -2066,26 +2066,7 @@ end );
 ####################################
 
 ##
-InstallMethod( \/,
-              [ IsCapCategoryMorphism, IsFreydCategory ],
-              
-  function( mor, category )
-    local freyd_mor;
-    
-    freyd_mor := FreydCategoryObject( category, mor );
-    
-    if not IsIdenticalObj( CapCategory( freyd_mor ), category ) then
-        
-        Error( "The Freyd category of the given morphism is not identical to the provided Freyd category" );
-        
-    fi;
-    
-    return freyd_mor;
-    
-end );
-
-##
-InstallMethod( \/,
+InstallOtherMethod( \/,
                [ IsHomalgMatrix, IsFreydCategory ],
                
   function( mat, freyd_category )
@@ -2095,7 +2076,7 @@ InstallMethod( \/,
 end );
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
                [ IsCapCategoryObject, IsFreydCategory ],
                
   function( obj, freyd_category )

@@ -50,9 +50,6 @@ DeclareOperation( "CategoryOfRowsMorphism",
 DeclareOperation( "\/",
                   [ IsHomalgMatrix, IsCategoryOfRows ] );
 
-DeclareOperation( "\/",
-                  [ IsInt, IsCategoryOfRows ] );
-
 KeyDependentOperation( "StandardRowMorphism",
                        IsCategoryOfRowsObject, IsInt, ReturnTrue );
 

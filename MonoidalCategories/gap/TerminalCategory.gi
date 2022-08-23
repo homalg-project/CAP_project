@@ -383,16 +383,6 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
     
 end );
 
-##
-InstallMethod( \/,
-        [ IsString, IsTerminalCategoryWithMultipleObjects ],
-        
-  function( string, T )
-    
-    return ObjectConstructor( T, string );
-    
-end );
-
 ##################################
 ##
 ## View & Display

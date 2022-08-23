@@ -44,9 +44,6 @@ DeclareAttribute( "AsVectorSpaceMorphism", IsHomalgMatrix );
 DeclareOperation( "\/",
                   [ IsHomalgMatrix, IsMatrixCategory ] );
 
-DeclareOperation( "\/",
-                  [ IsInt, IsMatrixCategory ] );
-
 ####################################
 ##
 #! @Section Attributes

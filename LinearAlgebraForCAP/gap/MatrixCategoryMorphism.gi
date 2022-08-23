@@ -168,7 +168,7 @@ end );
 ####################################
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
                [ IsHomalgMatrix, IsMatrixCategory ],
   function( homalg_matrix, category )
     local field;

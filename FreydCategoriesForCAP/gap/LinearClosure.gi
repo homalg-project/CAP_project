@@ -949,7 +949,7 @@ InstallMethod( \=,
                [ IsLinearClosureMorphism, IsLinearClosureMorphism ],
                IsCongruentForMorphisms );
 
-InstallMethod( \/,
+InstallOtherMethod( \/,
                [ IsCapCategoryMorphism, IsLinearClosure ],
                
     function( mor, cat )

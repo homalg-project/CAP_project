@@ -110,18 +110,3 @@ InstallMethod( LaTeXOutput,
     return Concatenation( LaTeXOutput( UnderlyingRing( CapCategory( vector_space_object ) ) ), "^{1 \\times ", String( Dimension( vector_space_object ) ), "}" );
     
 end );
-
-####################################
-##
-## Convenience
-##
-####################################
-
-##
-InstallMethod( \/,
-               [ IsInt, IsMatrixCategory ],
-  function( dim, category )
-    
-    return MatrixCategoryObject( category, dim );
-    
-end );

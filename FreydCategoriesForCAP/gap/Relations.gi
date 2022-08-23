@@ -264,12 +264,12 @@ end );
 ####################################
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
                [ IsCapCategoryObject, IsRelCategory ],
                RelCategoryObject );
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
                [ IsCapCategoryMorphism, IsRelCategory ],
                
   function( mor, rel )

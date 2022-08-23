@@ -289,7 +289,7 @@ InstallMethod( ProductOp,
 end );
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
           [ IsList, IsCapProductCategory ],
   function( list, category )
 
