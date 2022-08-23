@@ -142,12 +142,12 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
             if tree.type = "STAT_EMPTY" then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                ErrorWithFuncLocation( "Found an empty statement, probably there is a superfluous semicolon in the function mentioned above." );
+                ErrorWithFuncLocation( "Found an empty statement, probably there is a superfluous semicolon in the function mentioned above.\n" );
                 
             elif tree.type = "STAT_ASS_GVAR" then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                ErrorWithFuncLocation( "Found an assignment to the global variable `", tree.gvar, "`. Maybe this should be a local variable of the function mentioned above?" );
+                ErrorWithFuncLocation( "Found an assignment to the global variable `", tree.gvar, "`. Maybe this should be a local variable of the function mentioned above?\n" );
                 
             fi;
             

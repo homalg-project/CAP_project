@@ -77,11 +77,15 @@ InstallGlobalFunction( CapJitCompiledFunction, function ( func, args... )
     
 end );
 
+BindGlobal( "CAP_JIT_INTERNAL_COMPILED_FUNCTIONS_STACK", [ ] );
+
 InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( func, post_processing_enabled, args... )
   local debug, debug_idempotence, category_as_first_argument, category, type_signature, filter_list, arguments_data_types, return_type, return_data_type, tree, resolving_phase_functions, orig_tree, compiled_func, tmp, rule_phase_functions, f;
     
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, "Start compilation." );
+    
+    Add( CAP_JIT_INTERNAL_COMPILED_FUNCTIONS_STACK, func );
     
     if IsOperation( func ) or IsKernelFunction( func ) then
         
@@ -341,6 +345,8 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
         # COVERAGE_IGNORE_BLOCK_END
         
     fi;
+    
+    Remove( CAP_JIT_INTERNAL_COMPILED_FUNCTIONS_STACK );
     
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, "Compilation finished." );

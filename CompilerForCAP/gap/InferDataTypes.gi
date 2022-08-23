@@ -186,7 +186,7 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_DATA_TYPE_OF_VALUE", function ( val
     
     if Length( filters ) > 1 then
         
-        Error( "<value> matches more than one filter in CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS: ", filters );
+        ErrorWithCurrentlyCompiledFunctionLocation( "<value> matches more than one filter in CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS: ", filters );
         
     elif Length( filters ) = 1 then
         
@@ -260,7 +260,7 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_I
     
     if not IsBound( CAP_JIT_INTERNAL_TYPE_SIGNATURES.(gvar) ) then
         
-        Display( Concatenation( "WARNING: Could not find declaration of ", gvar, " (current input: ", String( input_filters ), ")" ) );
+        DisplayWithCurrentlyCompiledFunctionLocation( Concatenation( "WARNING: Could not find declaration of ", gvar, " (current input: ", String( input_filters ), ")" ) );
         return fail;
         
     fi;
@@ -278,13 +278,13 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_I
     
     if Length( type_signatures ) = 0 then
         
-        Display( Concatenation( "WARNING: Could not find matching declaration of ", gvar, " for input ", String( input_filters ) ) );
+        DisplayWithCurrentlyCompiledFunctionLocation( Concatenation( "WARNING: Could not find matching declaration of ", gvar, " for input ", String( input_filters ) ) );
         return fail;
         
     elif Length( type_signatures ) > 1 then
         
         # COVERAGE_IGNORE_NEXT_LINE
-        Error( "Found multiple matching declarations of ", gvar, " for input ", input_filters );
+        ErrorWithCurrentlyCompiledFunctionLocation( "Found multiple matching declarations of ", gvar, " for input ", input_filters );
         
     fi;
     
@@ -613,7 +613,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INFERRED_DATA_TYPES, function ( tree, in
             
             if not ForAll( tree.branches, branch -> branch.condition.data_type.filter = IsBool ) then
                 
-                Error( "a condition of the case expression is not a boolean" );
+                ErrorWithCurrentlyCompiledFunctionLocation( "a condition of the case expression is not a boolean" );
                 
             fi;
             
@@ -646,7 +646,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INFERRED_DATA_TYPES, function ( tree, in
             if not ForAll( tree.list, element -> element.data_type = tree.list.1.data_type ) then
                 
                 Display( "WARNING: list is not homogeneous, this is not supported. Use `NTuple` or its convenience aliases instead. The filters of the element types are:" );
-                Display( List( AsListMut( tree.list ), element -> element.data_type.filter ) );
+                DisplayWithCurrentlyCompiledFunctionLocation( List( AsListMut( tree.list ), element -> element.data_type.filter ) );
                 # there might already be a data type set, but we want to avoid partial typings -> unbind
                 Unbind( tree.data_type );
                 return tree;
@@ -664,7 +664,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INFERRED_DATA_TYPES, function ( tree, in
                 # "fail" explicitly has no type yet
                 if ValueGlobal( tree.gvar ) <> fail then
                     
-                    Display( Concatenation( "could not get type of gvar ", tree.gvar ) );
+                    DisplayWithCurrentlyCompiledFunctionLocation( Concatenation( "could not get type of gvar ", tree.gvar ) );
                     
                 fi;
                 
@@ -763,7 +763,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INFERRED_DATA_TYPES, function ( tree, in
             
         else
             
-            Display( Concatenation( "Cannot compute data type for syntax tree type ", tree.type, " yet." ) );
+            DisplayWithCurrentlyCompiledFunctionLocation( Concatenation( "Cannot compute data type for syntax tree type ", tree.type, " yet." ) );
             # there might already be a data type set, but we want to avoid partial typings -> unbind
             Unbind( tree.data_type );
             return tree;
@@ -1037,7 +1037,7 @@ CapJitAddTypeSignature( "[]", [ IsNTuple, IsInt ], function ( args, func_stack )
     if args.2.type <> "EXPR_INT" then
         
         # COVERAGE_IGNORE_NEXT_LINE
-        Error( "You should only access tuples via literal integers." );
+        ErrorWithCurrentlyCompiledFunctionLocation( "You should only access tuples via literal integers." );
         
     fi;
     
