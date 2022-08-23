@@ -141,3 +141,13 @@ DeclareOperation( "LastOp", [ IsRecord ] );
 DeclareOperation( "ForAllOp", [ IsRecord, IsFunction ] );
 DeclareOperation( "ForAnyOp", [ IsRecord, IsFunction ] );
 DeclareOperation( "Iterator", [ IsRecord ] );
+
+#! @Description
+#!   Displays <A>obj</A> followed by the location of the currently compiled function.
+#! @Arguments obj
+DeclareGlobalFunction( "DisplayWithCurrentlyCompiledFunctionLocation" );
+
+#! @Description
+#!   Prints <A>obj</A> as an error followed by the location of the currently compiled function.
+#! @Arguments obj
+DeclareGlobalFunction( "ErrorWithCurrentlyCompiledFunctionLocation" );
