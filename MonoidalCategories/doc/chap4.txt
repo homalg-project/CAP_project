@@ -175,13 +175,6 @@
     [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
-  [1X4.1-3 /[101X
-  
-  [33X[1;0Y[29X[2X/[102X( [3XT[103X, [3Xstr[103X ) [32X operation[133X
-  
-  [33X[0;0YCreate  an  object  [23Xa[123X  in the terminal category [3XT[103X with multiple objects with
-  [10XString[110X([3Xstr[103X) = [23Xa[123X.[133X
-  
   
   [1X4.2 [33X[0;0Y[5XGAP[105X[101X[1X Categories[133X[101X
   

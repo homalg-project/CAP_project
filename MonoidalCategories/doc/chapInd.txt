@@ -2,7 +2,6 @@
   
   [1XIndex[101X
   
-  [2X/[102X, for IsString, IsTerminalCategoryWithMultipleObjects 4.1-3 
   [2XAddAssociatorLeftToRight[102X, for IsCapCategory, IsFunction 1.12-83 
   [2XAddAssociatorLeftToRightWithGivenTensorProducts[102X, for IsCapCategory, IsFunction 1.12-84 
   [2XAddAssociatorRightToLeft[102X, for IsCapCategory, IsFunction 1.12-85 

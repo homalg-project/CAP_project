@@ -1,7 +1,7 @@
 name: MonoidalCategories
-version: "2022.08-03"
+version: "2022.08-04"
 license: "GPL-2.0-or-later"
-date: 2022-08-15
+date: 2022-08-23
 description: |
     Monoidal and monoidal (co)closed categories
 
@@ -35,7 +35,7 @@ needed-pkgs:
       version: ">= 2018.05.22"
       url: "https://homalg-project.github.io/pkg/ToolsForHomalg"
     - name: "CAP"
-      version: ">= 2022.05-07"
+      version: ">= 2022.08-08"
       url: "https://homalg-project.github.io/pkg/CAP"
 
 www: https://homalg-project.github.io/pkg/MonoidalCategories
@@ -44,11 +44,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/MonoidalCategories/Pac
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2022.08-03/MonoidalCategories-2022.08-03.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2022.08-04/MonoidalCategories-2022.08-04.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2022.08-03/MonoidalCategories-2022.08-03.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2022.08-04/MonoidalCategories-2022.08-04.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2022.08-03/MonoidalCategories-2022.08-03.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2022.08-04/MonoidalCategories-2022.08-04.pdf
 
 abstract: |
 
@@ -61,7 +61,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BGPK22</span>]   <b class='BibAuthor'>Barakat, M., Gutsche, S., Posur, S. and Kuhmichel, T.</b>,
      <i class='BibTitle'>MonoidalCategories, Monoidal and monoidal (co)closed categories,
-             Version 2022.08-03</i>
+             Version 2022.08-04</i>
      (<span class='BibYear'>2022</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/MonoidalCategories">https://homalg-project.github.io/pkg/MonoidalCategories</a></span>.
@@ -69,11 +69,11 @@ citeas: |
     
 
 bibtex: |
-    @misc{ MonoidalCategories2022.08-03,
+    @misc{ MonoidalCategories2022.08-04,
       author =           {Barakat,   M.  and  Gutsche,  S.  and  Posur,  S.  and
                           Kuhmichel, T.},
       title =            {{MonoidalCategories}, Monoidal and monoidal (co)closed
-                          categories, {V}ersion 2022.08-03},
+                          categories, {V}ersion 2022.08-04},
       month =            {Aug},
       year =             {2022},
       note =             {GAP package},
