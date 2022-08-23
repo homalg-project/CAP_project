@@ -6,10 +6,10 @@
                    [1X Speed up computations in CAP categories [101X
   
   
-                                   2022.08-09
+                                   2022.08-10
   
   
-                                 22 August 2022
+                                 23 August 2022
   
   
                                 Fabian Zickgraf
@@ -82,6 +82,8 @@
       2.4-15 CapJitUnbindBinding
       2.4-16 CapJitReplacedEXPR_REF_FVARByValue
       2.4-17 CapJitGetNextUnusedVariableID
+      2.4-18 DisplayWithCurrentlyCompiledFunctionLocation
+      2.4-19 ErrorWithCurrentlyCompiledFunctionLocation
     2.5 [33X[0;0YCompilation steps[133X
       2.5-1 CapJitAppliedCompilerHints
       2.5-2 CapJitReplacedGlobalVariablesByCategoryAttributes

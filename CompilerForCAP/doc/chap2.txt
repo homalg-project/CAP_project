@@ -472,6 +472,19 @@
   of  the function [3Xfunc[103X (given as an enhanced syntax tree) ends with [10XString( [110X[23Xm[123X[10X
   )[110X for any [23Xm \geq n[123X.[133X
   
+  [1X2.4-18 DisplayWithCurrentlyCompiledFunctionLocation[101X
+  
+  [33X[1;0Y[29X[2XDisplayWithCurrentlyCompiledFunctionLocation[102X( [3Xobj[103X ) [32X function[133X
+  
+  [33X[0;0YDisplays [3Xobj[103X followed by the location of the currently compiled function.[133X
+  
+  [1X2.4-19 ErrorWithCurrentlyCompiledFunctionLocation[101X
+  
+  [33X[1;0Y[29X[2XErrorWithCurrentlyCompiledFunctionLocation[102X( [3Xobj[103X ) [32X function[133X
+  
+  [33X[0;0YPrints  [3Xobj[103X  as  an error followed by the location of the currently compiled
+  function.[133X
+  
   
   [1X2.5 [33X[0;0YCompilation steps[133X[101X
   

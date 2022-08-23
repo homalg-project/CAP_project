@@ -60,6 +60,8 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X823022237A2584E6">2.4-15 CapJitUnbindBinding</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7A17377380E409D0">2.4-16 CapJitReplacedEXPR_REF_FVARByValue</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7E53C09D7DD16BE3">2.4-17 CapJitGetNextUnusedVariableID</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8226EA7484A7C350">2.4-18 DisplayWithCurrentlyCompiledFunctionLocation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X82F160C086B156B8">2.4-19 ErrorWithCurrentlyCompiledFunctionLocation</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X80608A9A78CF95E0">2.5 <span class="Heading">Compilation steps</span></a>
 </span>
@@ -505,6 +507,20 @@
 <p>Returns: an integer</p>
 
 <p>Returns the minimal positive integer <span class="Math">n</span> such that no name of a local variable of the function <var class="Arg">func</var> (given as an enhanced syntax tree) ends with <code class="code">String( </code><span class="Math">m</span><code class="code"> )</code> for any <span class="Math">m \geq n</span>.</p>
+
+<p><a id="X8226EA7484A7C350" name="X8226EA7484A7C350"></a></p>
+
+<h5>2.4-18 DisplayWithCurrentlyCompiledFunctionLocation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DisplayWithCurrentlyCompiledFunctionLocation</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Displays <var class="Arg">obj</var> followed by the location of the currently compiled function.</p>
+
+<p><a id="X82F160C086B156B8" name="X82F160C086B156B8"></a></p>
+
+<h5>2.4-19 ErrorWithCurrentlyCompiledFunctionLocation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ErrorWithCurrentlyCompiledFunctionLocation</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Prints <var class="Arg">obj</var> as an error followed by the location of the currently compiled function.</p>
 
 <p><a id="X80608A9A78CF95E0" name="X80608A9A78CF95E0"></a></p>
 
