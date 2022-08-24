@@ -312,6 +312,7 @@ KernelObject := rec(
   return_type := "object",
   dual_operation := "CokernelObject",
   compatible_with_congruence_of_morphisms := false,
+  functorial := "KernelObjectFunctorial",
 ),
 
 KernelEmbedding := rec(
@@ -370,6 +371,7 @@ CokernelObject := rec(
   return_type := "object",
   dual_operation := "KernelObject",
   compatible_with_congruence_of_morphisms := false,
+  functorial := "CokernelObjectFunctorial",
 ),
 
 CokernelProjection := rec(
@@ -555,7 +557,9 @@ PostComposeList := rec(
 ZeroObject := rec(
   filter_list := [ "category" ],
   return_type := "object",
-  dual_operation := "ZeroObject" ),
+  dual_operation := "ZeroObject",
+  functorial := "ZeroObjectFunctorial",
+),
 
 ZeroObjectFunctorial := rec(
   filter_list := [ "category" ],
@@ -640,7 +644,9 @@ ZeroMorphism := rec(
 DirectSum := rec(
   filter_list := [ "category", "list_of_objects" ],
   return_type := "object",
-  dual_operation := "DirectSum" ),
+  dual_operation := "DirectSum",
+  functorial := "DirectSumFunctorial",
+),
 
 ProjectionInFactorOfDirectSum := rec(
   filter_list := [ "category", "list_of_objects", IsInt ],
@@ -797,7 +803,9 @@ UniversalMorphismFromDirectSumWithGivenDirectSum := rec(
 TerminalObject := rec(
   filter_list := [ "category" ],
   return_type := "object",
-  dual_operation := "InitialObject" ),
+  dual_operation := "InitialObject",
+  functorial := "TerminalObjectFunctorial",
+),
 
 UniversalMorphismIntoTerminalObject := rec(
   filter_list := [ "category", "object" ],
@@ -815,7 +823,9 @@ UniversalMorphismIntoTerminalObjectWithGivenTerminalObject := rec(
 InitialObject := rec(
   filter_list := [ "category" ],
   return_type := "object",
-  dual_operation := "TerminalObject" ),
+  dual_operation := "TerminalObject",
+  functorial := "InitialObjectFunctorial",
+),
 
 UniversalMorphismFromInitialObject := rec(
   filter_list := [ "category", "object" ],
@@ -833,7 +843,9 @@ UniversalMorphismFromInitialObjectWithGivenInitialObject := rec(
 DirectProduct := rec(
   filter_list := [ "category", "list_of_objects" ],
   return_type := "object",
-  dual_operation := "Coproduct" ),
+  dual_operation := "Coproduct",
+  functorial := "DirectProductFunctorial",
+),
 
 ProjectionInFactorOfDirectProduct := rec(
   filter_list := [ "category", "list_of_objects", IsInt ],
@@ -1237,7 +1249,9 @@ AdditiveInverseForMorphisms := rec(
 Coproduct := rec(
   filter_list := [ "category", "list_of_objects" ],
   return_type := "object",
-  dual_operation := "DirectProduct" ),
+  dual_operation := "DirectProduct",
+  functorial := "CoproductFunctorial",
+),
 
 InjectionOfCofactorOfCoproduct := rec(
   filter_list := [ "category", "list_of_objects", IsInt ],
@@ -1428,6 +1442,7 @@ Equalizer := rec(
     return [ true ];
   end,
   compatible_with_congruence_of_morphisms := false,
+  functorial := "EqualizerFunctorial",
 ),
 
 EmbeddingOfEqualizer := rec(
@@ -1566,6 +1581,7 @@ FiberProduct := rec(
   end,
   return_type := "object",
   compatible_with_congruence_of_morphisms := false,
+  functorial := "FiberProductFunctorial",
 ),
 
 ProjectionInFactorOfFiberProduct := rec(
@@ -1860,6 +1876,7 @@ Coequalizer := rec(
     return [ true ];
   end,
   compatible_with_congruence_of_morphisms := false,
+  functorial := "CoequalizerFunctorial",
 ),
 
 ProjectionOntoCoequalizer := rec(
@@ -1998,6 +2015,7 @@ Pushout := rec(
   end,
   return_type := "object",
   compatible_with_congruence_of_morphisms := false,
+  functorial := "PushoutFunctorial",
 ),
 
 InjectionOfCofactorOfPushout := rec(
@@ -4136,7 +4154,15 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
             record.io_type[2] := List( record.io_type[2], x -> ReplacedString( x, "range", "source" ) );
             record.io_type[2] := List( record.io_type[2], x -> ReplacedString( x, "tmp", "range" ) );
         fi;
-
+        
+        if IsBound( record.functorial ) then
+            
+            Assert( 0, record.functorial = limit.limit_functorial_name );
+            
+            record.functorial := limit.colimit_functorial_name;
+            
+        fi;
+        
         if IsBound( record.with_given_object_position ) then
             if record.with_given_object_position = "Source" then
                 record.with_given_object_position := "Range";
@@ -4223,6 +4249,7 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
             filter_list := object_filter_list,
             return_type := "object",
             dual_operation := limit.colimit_object_name,
+            functorial := limit.limit_functorial_name,
         );
 
         if limit.number_of_targets > 0 then
@@ -4606,7 +4633,7 @@ end );
 
 InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
   function( record )
-    local recnames, current_recname, current_rec, io_type, number_of_arguments, functorial, func_string,
+    local recnames, current_recname, current_rec, io_type, number_of_arguments, func_string,
           installation_name, output_list, input_list, argument_names, return_list, current_output, input_position, list_position,
           without_given_name, with_given_names, with_given_name, without_given_rec, with_given_object_position, object_name,
           object_filter_list, with_given_object_filter, given_source_argument_name, given_range_argument_name, with_given_rec, i;
@@ -4729,18 +4756,6 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
         if not IsBound( current_rec.with_given_without_given_name_pair ) then
             
             current_rec.with_given_without_given_name_pair := fail;
-            
-        fi;
-        
-        if not IsBound( current_rec.functorial ) then
-            
-            functorial := PositionProperty( recnames, i -> StartsWith( i, Concatenation( current_recname, "Functorial" ) ) );
-            
-            if functorial <> fail then
-                
-                current_rec.functorial := recnames[ functorial ];
-                
-            fi;
             
         fi;
         
