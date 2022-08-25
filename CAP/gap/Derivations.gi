@@ -144,7 +144,7 @@ function( d, weight, C )
       fi;
       
       add_method := ValueGlobal( add_name );
-      add_method( C, implementation_list, weight : SetPrimitive := false, IsDerivation := true );
+      add_method( C, implementation_list, weight : IsDerivation := true );
       
 #   fi;
   
@@ -1108,7 +1108,7 @@ InstallGlobalFunction( ListPrimitivelyInstalledOperationsOfCategory,
         Error( "input must be category or cell" );
     fi;
     
-    names := AsSortedList( RecNames( cat!.primitive_operations ) );
+    names := AsSortedList( Filtered( RecNames( cat!.primitive_operations ), x -> cat!.primitive_operations.(x) ) );
     
     if filter <> fail then
         names := Filtered( names, i -> PositionSublist( i, filter ) <> fail );

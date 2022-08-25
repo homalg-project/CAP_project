@@ -163,7 +163,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                    [ IsCapCategory, IsList, IsInt ],
       
       function( category, method_list, weight )
-        local install_func, replaced_filter_list, needs_wrapping, i, set_primitive, is_derivation, is_final_derivation, without_given_name, with_given_name,
+        local install_func, replaced_filter_list, needs_wrapping, i, is_derivation, is_final_derivation, is_precompiled_derivation, without_given_name, with_given_name,
               without_given_weight, with_given_weight, number_of_proposed_arguments, current_function_number,
               current_function_argument_number, current_additional_filter_list_length, filter, input_human_readable_identifier_getter, input_sanity_check_functions,
               output_human_readable_identifier_getter, output_sanity_check_function;
@@ -181,20 +181,11 @@ InstallGlobalFunction( CapInternalInstallAdd,
             return;
         fi;
         
-        set_primitive := ValueOption( "SetPrimitive" );
-        if set_primitive <> false then
-            set_primitive := true;
-        fi;
+        is_derivation := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "IsDerivation", false );
         
-        is_derivation := ValueOption( "IsDerivation" );
-        if is_derivation <> true then
-            is_derivation := false;
-        fi;
+        is_final_derivation := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "IsFinalDerivation", false );
         
-        is_final_derivation := ValueOption( "IsFinalDerivation" );
-        if is_final_derivation <> true then
-            is_final_derivation := false;
-        fi;
+        is_precompiled_derivation := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "IsPrecompiledDerivation", false );
         
         if weight = -1 then
             weight := 100;
@@ -517,7 +508,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                         fi;
                     fi;
                     
-                    if (not is_derivation) then
+                    if not is_derivation and not is_final_derivation then
                         if category!.add_primitive_output then
                             add_function( category, result );
                         elif category!.output_sanity_check_level > 0 then
@@ -579,12 +570,20 @@ InstallGlobalFunction( CapInternalInstallAdd,
             
         od;
         
-        if set_primitive then
+        if not is_derivation then
+            
+            # Final derivations are not handled by the original derivation mechanism and are thus just like primitive operations for it.
             AddPrimitiveOperation( category!.derivations_weight_list, function_name, weight );
             
-            if not ValueOption( "IsFinalDerivation" ) = true and not ValueOption( "IsPrecompiledDerivation" ) = true then
-                category!.primitive_operations.( function_name ) := true;
-            fi;
+        fi;
+        
+        if is_derivation or is_final_derivation or is_precompiled_derivation then
+            
+            category!.primitive_operations.( function_name ) := false;
+            
+        else
+            
+            category!.primitive_operations.( function_name ) := true;
             
         fi;
         

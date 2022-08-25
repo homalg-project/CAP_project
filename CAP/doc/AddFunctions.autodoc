@@ -72,12 +72,6 @@ Every Add method has the same structure. The steps in the Add method are as foll
 * Weight check: If the current weight of the operation is lower than the given weight of the new functions,
                 then the add function returns and installs nothing.
 
-* Option check: There are two possible options for every add method: `SetPrimitive` and `IsDerivation`.
-  * `SetPrimitive` should be a boolean, the default is true. If `SetPrimitive` is false, then the
-    current call of this add will not set the installed function to be primitive. This is used for derivations.
-  * `IsDerivation` should be a boolean, default is false. If it is true, the add method assumes that the given
-    function is a derivation and does not try to install a corresponding pair (See below).
-
 * Default weight: If the weight parameter is -1, the default weight is assumed, which is 100.
 
 * Checking for pairs: If the function is part of a with given pair, we check if the weight of the with given operation
@@ -86,8 +80,6 @@ Every Add method has the same structure. The steps in the Add method are as foll
 
 * Installation: Next, the method to install the functions is created. It creates the correct filter list, by merging the standard filters
                 for the operation with the particular filters for the given functions, then installs the method as described above.
-
-* SetPrimitive: If the set primitive flag is true, it is set as primitive in the weight list of the category.
 
 After calling an add method, the corresponding operation is available in the category. Also, some derivations, which are triggered by the setting
 of the primitive value, might be available.
