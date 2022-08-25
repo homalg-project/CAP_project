@@ -270,7 +270,7 @@
 
 
 <ul>
-<li><p><code class="code">category_attribute_names</code>: a list of names of attributes of the category. If a global variable in the compiled code has the same value as one of the given attributes of the category, the global variable is replaced by the attribute getter applied to the category. Background: During the compilation, the compiler resolves attributes occuring in the code and stores them in global variables called <code class="code">CAP_JIT_INTERNAL_GLOBAL_VARIABLE_n</code> (for integers <code class="code">n</code> starting from 1). If these variables cannot be replaced, the resulting code is only valid in the current session.</p>
+<li><p><code class="code">category_attribute_names</code>: a list of names of attributes of the category. If a global variable in the compiled code has the same value (w.r.t. <code class="code">IsIdenticalObj</code>) as one of the given attributes of the category, the global variable is replaced by the attribute getter applied to the category. Background: During the compilation, the compiler resolves attributes occuring in the code and stores them in global variables called <code class="code">CAP_JIT_INTERNAL_GLOBAL_VARIABLE_n</code> (for integers <code class="code">n</code> starting from 1). If these variables cannot be replaced, the resulting code is only valid in the current session.</p>
 
 </li>
 <li><p><code class="code">source_and_range_attributes_from_morphism_attribute</code>: a record with keys <code class="code">object_attribute_name</code>, <code class="code">morphism_attribute_name</code>, <code class="code">source_attribute_getter_name</code>, and <code class="code">range_attribute_getter_name</code>. Replaces the attribute <code class="code">object_attribute_name</code> of the source (resp. range) of a morphism by <code class="code">source_attribute_getter_name</code> (resp. <code class="code">range_attribute_getter_name</code>) applied to the attribute <code class="code">morphism_attribute_name</code> of the morphism. Can be used if objects and morphisms can be easily created from the morphism datum anyway. Note: Some simple expressions like integers are NOT replaced.</p>
@@ -356,6 +356,14 @@
 <p><a id="X780099B481AB3AB7" name="X780099B481AB3AB7"></a></p>
 
 <h4>1.11 <span class="Heading">FAQ</span></h4>
+
+
+<ul>
+<li><p>Q: Where do the category attributes in the compiled code come from?</p>
+
+</li>
+</ul>
+<p>A: During compilation, attributes of categories are <em>resolved</em>, that is, their values are stored in global variables without keeping track of which category they belong to. After the compilation, CompilerForCAP tries to replace those global variables again by attributes registered via <code class="code">category_attribute_names</code> to the current category (for details, see <a href="chap1_mj.html#X7E61259E7D6E8EEB"><span class="RefLink">1.6</span></a>). If some attributes of the current category are categories themselves, their attributes are also taken into account (recursively). In this case, if two categories <code class="code">cat1</code> and <code class="code">cat2</code> have attributes <code class="code">Attr1</code> and <code class="code">Attr2</code>, respectively, with the same value, it is undefined whether <code class="code">Attr1( cat1 )</code> or <code class="code">Attr2( cat2 )</code> will be used. So even if only <code class="code">Attr2( cat2 )</code> appeared in the original code, <code class="code">Attr1( cat1 )</code> might appear in the compiled code.</p>
 
 
 <ul>

@@ -256,13 +256,13 @@
   
   [30X    [33X[0;6Y[10Xcategory_attribute_names[110X:  a  list  of  names  of  attributes  of  the
         category. If a global variable in the compiled code has the same value
-        as one of the given attributes of the category, the global variable is
-        replaced  by the attribute getter applied to the category. Background:
-        During  the  compilation, the compiler resolves attributes occuring in
-        the    code    and    stores   them   in   global   variables   called
-        [10XCAP_JIT_INTERNAL_GLOBAL_VARIABLE_n[110X  (for  integers [10Xn[110X starting from 1).
-        If  these  variables  cannot  be  replaced, the resulting code is only
-        valid in the current session.[133X
+        (w.r.t.  [10XIsIdenticalObj[110X)  as  one  of  the  given  attributes  of  the
+        category,  the  global  variable  is  replaced by the attribute getter
+        applied  to  the  category.  Background:  During  the compilation, the
+        compiler  resolves  attributes occuring in the code and stores them in
+        global   variables   called   [10XCAP_JIT_INTERNAL_GLOBAL_VARIABLE_n[110X  (for
+        integers  [10Xn[110X  starting  from 1). If these variables cannot be replaced,
+        the resulting code is only valid in the current session.[133X
   
   [30X    [33X[0;6Y[10Xsource_and_range_attributes_from_morphism_attribute[110X:   a  record  with
         keys          [10Xobject_attribute_name[110X,          [10Xmorphism_attribute_name[110X,
@@ -354,6 +354,20 @@
   
   
   [1X1.11 [33X[0;0YFAQ[133X[101X
+  
+  [30X    [33X[0;6YQ: Where do the category attributes in the compiled code come from?[133X
+  
+  [33X[0;0YA: During compilation, attributes of categories are [13Xresolved[113X, that is, their
+  values  are  stored  in  global  variables  without  keeping  track of which
+  category  they  belong  to.  After  the compilation, CompilerForCAP tries to
+  replace   those   global   variables  again  by  attributes  registered  via
+  [10Xcategory_attribute_names[110X  to the current category (for details, see [14X1.6[114X). If
+  some  attributes  of  the  current category are categories themselves, their
+  attributes  are  also taken into account (recursively). In this case, if two
+  categories [10Xcat1[110X and [10Xcat2[110X have attributes [10XAttr1[110X and [10XAttr2[110X, respectively, with
+  the  same value, it is undefined whether [10XAttr1( cat1 )[110X or [10XAttr2( cat2 )[110X will
+  be used. So even if only [10XAttr2( cat2 )[110X appeared in the original code, [10XAttr1(
+  cat1 )[110X might appear in the compiled code.[133X
   
   [30X    [33X[0;6YQ: Why is my function not resolved?[133X
   
