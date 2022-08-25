@@ -416,21 +416,6 @@ DeclareOperation( "AddSomeFunc",
 </ul>
 
 <ul>
-<li><p>Option check: There are two possible options for every add method: <code class="code">SetPrimitive</code> and <code class="code">IsDerivation</code>.</p>
-
-
-<ul>
-<li><p><code class="code">SetPrimitive</code> should be a boolean, the default is true. If <code class="code">SetPrimitive</code> is false, then the current call of this add will not set the installed function to be primitive. This is used for derivations.</p>
-
-</li>
-<li><p><code class="code">IsDerivation</code> should be a boolean, default is false. If it is true, the add method assumes that the given function is a derivation and does not try to install a corresponding pair (See below).</p>
-
-</li>
-</ul>
-</li>
-</ul>
-
-<ul>
 <li><p>Default weight: If the weight parameter is -1, the default weight is assumed, which is 100.</p>
 
 </li>
@@ -444,12 +429,6 @@ DeclareOperation( "AddSomeFunc",
 
 <ul>
 <li><p>Installation: Next, the method to install the functions is created. It creates the correct filter list, by merging the standard filters for the operation with the particular filters for the given functions, then installs the method as described above.</p>
-
-</li>
-</ul>
-
-<ul>
-<li><p>SetPrimitive: If the set primitive flag is true, it is set as primitive in the weight list of the category.</p>
 
 </li>
 </ul>

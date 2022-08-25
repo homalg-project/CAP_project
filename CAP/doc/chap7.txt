@@ -103,19 +103,6 @@
         given  weight  of the new functions, then the add function returns and
         installs nothing.[133X
   
-  [30X    [33X[0;6YOption  check:  There  are  two possible options for every add method:
-        [10XSetPrimitive[110X and [10XIsDerivation[110X.[133X
-  
-        [30X    [33X[0;12Y[10XSetPrimitive[110X  should  be  a  boolean,  the  default  is true. If
-              [10XSetPrimitive[110X  is  false,  then the current call of this add will
-              not set the installed function to be primitive. This is used for
-              derivations.[133X
-  
-        [30X    [33X[0;12Y[10XIsDerivation[110X  should  be  a  boolean, default is false. If it is
-              true,  the  add  method  assumes  that  the  given function is a
-              derivation and does not try to install a corresponding pair (See
-              below).[133X
-  
   [30X    [33X[0;6YDefault  weight:  If the weight parameter is -1, the default weight is
         assumed, which is 100.[133X
   
@@ -129,9 +116,6 @@
         creates  the  correct filter list, by merging the standard filters for
         the  operation  with  the  particular filters for the given functions,
         then installs the method as described above.[133X
-  
-  [30X    [33X[0;6YSetPrimitive:  If  the  set  primitive  flag  is  true,  it  is set as
-        primitive in the weight list of the category.[133X
   
   [33X[0;0YAfter calling an add method, the corresponding operation is available in the
   category.  Also, some derivations, which are triggered by the setting of the
