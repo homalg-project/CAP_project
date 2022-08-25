@@ -177,8 +177,6 @@ InstallMethod( Finalize,
         
     fi;
     
-    SuspendMethodReordering( );
-    
     derivation_list := ShallowCopy( CAP_INTERNAL_FINAL_DERIVATION_LIST.final_derivation_list );
     
     if not category!.is_computable then
@@ -276,6 +274,9 @@ InstallMethod( Finalize,
         
         properties_with_logic := RecNames( category!.logical_implication_files.Propositions );
         
+        # INSTALL_LOGICAL_IMPLICATIONS_HELPER indirectly calls `InstallTrueMethod` many times -> suspend method reordering
+        SuspendMethodReordering( );
+        
         for property_name in properties_with_logic do
             
             property := ValueGlobal( property_name );
@@ -288,9 +289,9 @@ InstallMethod( Finalize,
             
         od;
         
+        ResumeMethodReordering( );
+        
     fi;
-    
-    ResumeMethodReordering( );
     
     return true;
     

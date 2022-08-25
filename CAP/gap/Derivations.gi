@@ -225,13 +225,13 @@ function( G, d )
     
     method_name := TargetOperation( d );
     
-    if not method_name in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) then
+    if not IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(method_name) ) then
         
         Error( "trying to add a derivation to CAP_INTERNAL_DERIVATION_GRAPH for a method not in CAP_INTERNAL_METHOD_NAME_RECORD" );
         
     fi;
     
-    filter_list := CAP_INTERNAL_METHOD_NAME_RECORD!.(method_name).filter_list;
+    filter_list := CAP_INTERNAL_METHOD_NAME_RECORD.(method_name).filter_list;
     
     number_of_proposed_arguments := Length( filter_list );
     
@@ -547,18 +547,24 @@ end );
 InstallMethod( MakeOperationWeightList,
                [ IsCapCategory, IsDerivedMethodGraph ],
 function( C, G )
-  local owl, op_name;
-  owl := Objectify( NewType( TheFamilyOfOperationWeightLists,
-                             IsOperationWeightListRep ),
-                    rec( operation_weights := rec(),
-                         operation_derivations := rec() ) );
-  for op_name in Operations( G ) do
-    owl!.operation_weights.( op_name ) := infinity;
-    owl!.operation_derivations.( op_name ) := fail;
-  od;
-  SetDerivationGraph( owl, G );
-  SetCategoryOfOperationWeightList( owl, C );
-  return owl;
+  local operation_weights, operation_derivations, owl, op_name;
+    
+    operation_weights := rec( );
+    operation_derivations := rec( );
+    
+    for op_name in Operations( G ) do
+        operation_weights.( op_name ) := infinity;
+        operation_derivations.( op_name ) := fail;
+    od;
+    
+    owl := ObjectifyWithAttributes(
+        rec( operation_weights := operation_weights, operation_derivations := operation_derivations ), NewType( TheFamilyOfOperationWeightLists, IsOperationWeightListRep ),
+        DerivationGraph, G,
+        CategoryOfOperationWeightList, C
+    );
+    
+    return owl;
+    
 end );
 
 InstallMethod( String,
