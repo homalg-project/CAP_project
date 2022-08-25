@@ -343,11 +343,15 @@ InstallGlobalFunction( AddPredicateImplicationFileToCategory,
     
     theorem_list := READ_PREDICATE_IMPLICATION_FILE( filename );
     
+    SuspendMethodReordering( );
+    
     for i in theorem_list do
         
         ADD_PREDICATE_IMPLICATIONS_TO_CATEGORY( category, i );
         
     od;
+    
+    ResumeMethodReordering( );
     
 end );
 
