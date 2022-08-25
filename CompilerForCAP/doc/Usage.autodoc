@@ -90,7 +90,7 @@ One can also compile a function `func` manually via <Ref Func="CapJitCompiledFun
 
 You can give hints to the compiler to improve the result of the compilation. Compiler hints are attached to the category by making
 `category!.compiler_hints` a record with one or more of the following keys:
-* `category_attribute_names`: a list of names of attributes of the category. If a global variable in the compiled code has the same value
+* `category_attribute_names`: a list of names of attributes of the category. If a global variable in the compiled code has the same value (w.r.t. `IsIdenticalObj`)
                               as one of the given attributes of the category, the global variable is replaced by the attribute getter applied to the category.
                               Background: During the compilation, the compiler resolves attributes occuring in the code and stores them in global variables
                               called `CAP_JIT_INTERNAL_GLOBAL_VARIABLE_n` (for integers `n` starting from 1). If these variables cannot be replaced,
@@ -118,6 +118,15 @@ You can revert this decision using `ContinueCompilationAtCategory`.
 You can increase the info level of `InfoCapJit` to get information about the compilation process.
 
 @Section FAQ
+
+* Q: Where do the category attributes in the compiled code come from?
+A: During compilation, attributes of categories are **resolved**, that is, their values are stored in global variables
+without keeping track of which category they belong to. After the compilation, CompilerForCAP tries to replace those global variables again
+by attributes registered via `category_attribute_names` to the current category (for details, see <Ref Sect="Section_CompilerHints" />).
+If some attributes of the current category are categories themselves, their attributes are also taken into account (recursively).
+In this case, if two categories `cat1` and `cat2` have attributes `Attr1` and `Attr2`, respectively, with the same value,
+it is undefined whether `Attr1( cat1 )` or `Attr2( cat2 )` will be used. So even if only `Attr2( cat2 )` appeared in the original code,
+`Attr1( cat1 )` might appear in the compiled code.
 
 * Q: Why is my function not resolved?
 A: The function might be listed in `CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES` or it might be missing an annotation
