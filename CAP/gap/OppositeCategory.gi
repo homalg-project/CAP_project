@@ -87,7 +87,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
         
     od;
     
-    recnames := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
+    recnames := AsSortedList( RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) );
     
     for current_recname in recnames do
         
