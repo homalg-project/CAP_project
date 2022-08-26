@@ -365,7 +365,7 @@ end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># compile the primitive installation of</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput"># MorphismBetweenDirectSumsWithGivenDirectSums</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">Display(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[3][1]</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[2][1]</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
 function ( cat, S, diagram_S, morphism_matrix, diagram_T, T )
     local underlying_matrix;
@@ -381,7 +381,7 @@ function ( cat, S, diagram_S, morphism_matrix, diagram_T, T )
          underlying_matrix ), T );
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func1 := CapJitCompiledFunction(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[3][1],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[2][1],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    vec</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func1 );</span>
