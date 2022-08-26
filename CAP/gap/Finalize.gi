@@ -189,6 +189,16 @@ InstallMethod( Finalize,
     
     while true do
         
+        # Why is this saturation needed?
+        # Answer: https://github.com/homalg-project/CAP_project/issues/318
+        # Derivations are installed recursively by `InstallDerivationsUsingOperation`.
+        # If all dependencies of a derivation would be registered using the second argument of
+        # `AddDerivationToCAP` (or using the automated detection), this would suffice to consider
+        # all derivations which could ever be installed.
+        # However, derivations might have implicit dependencies in their CategoryFilter.
+        # This is used when checking for operations in other categories, e.g. the range category of the homomorphism structure.
+        # If the category and the other category coincide, it might thus happen that
+        # despite the recursive handling in `InstallDerivationsUsingOperation`, the derivations are not satured.
         Saturate( weight_list );
         
         current_installs := [ ];
