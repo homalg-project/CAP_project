@@ -259,8 +259,6 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
         
     od;
     
-    obj!.redirects := rec( );
-    
     obj!.primitive_operations := rec( );
 
     obj!.added_functions := rec( );
