@@ -79,12 +79,16 @@ InstallGlobalFunction( MATRIX_CATEGORY,
     
     INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY( category );
     
-    ## TODO: Logic for MatrixCategory
-    AddPredicateImplicationFileToCategory( category,
-      Filename(
-        DirectoriesPackageLibrary( "LinearAlgebraForCAP", "LogicForMatrixCategory" ),
-        "PredicateImplicationsForMatrixCategory.tex" )
-    );
+    if category!.overhead then
+        
+        ## TODO: Logic for MatrixCategory
+        AddPredicateImplicationFileToCategory( category,
+          Filename(
+            DirectoriesPackageLibrary( "LinearAlgebraForCAP", "LogicForMatrixCategory" ),
+            "PredicateImplicationsForMatrixCategory.tex" )
+        );
+        
+    fi;
     
     if ValueOption( "no_precompiled_code" ) <> true then
         
