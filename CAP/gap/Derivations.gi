@@ -154,6 +154,7 @@ InstallMethod( DerivationResultWeight,
                [ IsDerivedMethod, IsDenseList ],
 function( d, op_weights )
   local w, used_op_multiples, i, op_w, mult;
+  Display( "WARNING: DerivationResultWeight is deprecated and will not be supported after 2023.08.26.\n" );
   w := DerivationWeight( d );
   used_op_multiples := UsedOperationMultiples( d );
   for i in [ 1 .. Length( used_op_multiples ) ] do
@@ -592,9 +593,40 @@ end );
 InstallMethod( OperationWeightUsingDerivation,
                [ IsOperationWeightList, IsDerivedMethod ],
 function( owl, d )
-  return DerivationResultWeight
-         ( d, List( UsedOperations( d ),
-                    op_name -> CurrentOperationWeight( owl, op_name ) ) );
+  local weight, used_operations, used_operation_multiples, operation_weights, operation_name, operation_weight, i;
+    
+    weight := DerivationWeight( d );
+    operation_weights := owl!.operation_weights;
+    
+    used_operations := UsedOperations( d );
+    used_operation_multiples := UsedOperationMultiples( d );
+    
+    Assert( 0, Length( used_operations ) = Length( used_operation_multiples ) );
+    
+    for i in [ 1 .. Length( used_operations ) ] do
+        
+        operation_name := used_operations[i];
+        
+        if not IsBound( operation_weights.(operation_name) ) then
+            
+            return infinity;
+            
+        fi;
+        
+        operation_weight := operation_weights.(operation_name);
+        
+        if operation_weight = infinity then
+            
+            return infinity;
+            
+        fi;
+        
+        weight := weight + operation_weight * used_operation_multiples[i];
+        
+    od;
+    
+    return weight;
+    
 end );
 
 InstallMethod( DerivationOfOperation,
