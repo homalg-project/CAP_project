@@ -523,9 +523,9 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                 operation_name := NameFunction( ValueGlobal( tree.funcref.gvar ) );
                 
                 if not (
-                    (operation_name in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) and Length( tree.args ) = Length( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list ))
+                    (IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name) ) and Length( tree.args ) = Length( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list ))
                     or
-                    (operation_name in RecNames( CAP_JIT_INTERNAL_KNOWN_METHODS ) and ForAny( CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name), x -> Length( tree.args ) = Length( x.filters ) ))
+                    (IsBound( CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name) ) and ForAny( CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name), x -> Length( tree.args ) = Length( x.filters ) ))
                     ) then
                     
                     # using LocationFunc causes a segfault (https://github.com/gap-system/gap/issues/4507)
@@ -894,7 +894,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
         else
             
             # replace by native syntax if possible
-            if CapJitIsCallToGlobalFunction( tree, gvar -> gvar in RecNames( CAP_JIT_INTERNAL_OPERATION_TO_SYNTAX_TREE_TRANSLATIONS ) ) then
+            if CapJitIsCallToGlobalFunction( tree, gvar -> IsBound( CAP_JIT_INTERNAL_OPERATION_TO_SYNTAX_TREE_TRANSLATIONS.(gvar) ) ) then
                 
                 tree := CAP_JIT_INTERNAL_OPERATION_TO_SYNTAX_TREE_TRANSLATIONS.(tree.funcref.gvar)( tree );
                 

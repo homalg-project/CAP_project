@@ -176,6 +176,10 @@ InstallGlobalFunction( CapInternalInstallAdd,
             Error( "you must pass at least one function to the add method" );
         fi;
         
+        if weight = -1 then
+            weight := 100;
+        fi;
+        
         ## If there already is a faster method, do nothing!
         if weight > CurrentOperationWeight( category!.derivations_weight_list, function_name ) then
             return;
@@ -186,41 +190,6 @@ InstallGlobalFunction( CapInternalInstallAdd,
         is_final_derivation := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "IsFinalDerivation", false );
         
         is_precompiled_derivation := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "IsPrecompiledDerivation", false );
-        
-        if weight = -1 then
-            weight := 100;
-        fi;
-        
-        if record.with_given_without_given_name_pair <> fail then
-            
-            without_given_name := record.with_given_without_given_name_pair[ 1 ];
-            with_given_name := record.with_given_without_given_name_pair[ 2 ];
-            
-            without_given_weight := CurrentOperationWeight( category!.derivations_weight_list, without_given_name );
-            with_given_weight := CurrentOperationWeight( category!.derivations_weight_list, with_given_name );
-            
-            # take the weight of the currently added function into account
-            if record.is_with_given then
-                
-                with_given_weight := weight;
-                
-            else
-                
-                without_given_weight := weight;
-                
-            fi;
-            
-            if with_given_weight <= without_given_weight then
-                
-                category!.redirects.( without_given_name ) := true;
-                
-            else
-                
-                category!.redirects.( without_given_name ) := false;
-                
-            fi;
-            
-        fi;
         
         replaced_filter_list := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( filter_list, category );
         
@@ -449,7 +418,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                         
                     fi;
                     
-                    if (redirect_function <> false) and (not IsBound( category!.redirects.( function_name ) ) or category!.redirects.( function_name ) <> false) then
+                    if redirect_function <> false then
                         redirect_return := CallFuncList( redirect_function, arg );
                         if redirect_return[ 1 ] = true then
                             if category!.predicate_logic then

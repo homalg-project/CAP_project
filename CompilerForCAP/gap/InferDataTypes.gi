@@ -237,7 +237,7 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_I
         
     fi;
     
-    if gvar in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) then
+    if IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(gvar) ) then
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(gvar);
         

@@ -36,9 +36,7 @@ Every other part, except from function, does only depend on the name `SomeFunc`.
   argument and then returns the value. In general, the redirect can be an arbitrary function. It is called with the same
   arguments as the operation `SomeFunc` itself and can return an array containing `[ true, something ]`, which will cause
   the installed method to simply return the object `something`, or `[ false ]`. If the output is `false`, the computation will
-  continue with the step Prefunction. Additionally, for every category and every name like `SomeFunc`, there is a boolean,
-  stored in the category's component `redirects` under the name of `SomeFunc`, which, when it is `false`, will prevent the
-  redirect function from being executed.
+  continue with the step Prefunction.
 
 * Prefunction: The prefunction should be used for error handling and plausibility checks of the input to `SomeFunc`
   (e.g. for `KernelLift` it should check wether range and source of the morphims coincide). Generally, the prefunction is defined
@@ -69,14 +67,10 @@ Every other part, except from function, does only depend on the name `SomeFunc`.
 Except from installing a new method for the name `SomeFunc`, an Add method does slightly more.
 Every Add method has the same structure. The steps in the Add method are as follows:
 
-* Weight check: If the current weight of the operation is lower than the given weight of the new functions,
-                then the add function returns and installs nothing.
-
 * Default weight: If the weight parameter is -1, the default weight is assumed, which is 100.
 
-* Checking for pairs: If the function is part of a with given pair, we check if the weight of the with given operation
-                      is less than or equal to the weight of the without given operation. If this is the case,
-                      the redirect function for the without given operation is enabled, else disabled.
+* Weight check: If the current weight of the operation is lower than the given weight of the new functions,
+                then the add function returns and installs nothing.
 
 * Installation: Next, the method to install the functions is created. It creates the correct filter list, by merging the standard filters
                 for the operation with the particular filters for the given functions, then installs the method as described above.

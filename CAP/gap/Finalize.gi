@@ -53,7 +53,7 @@ BindGlobal( "CAP_INTERNAL_FINAL_DERIVATION_SANITY_CHECK",
         
         method_name := NameFunction( method[1] );
         
-        if not method_name in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) then
+        if not IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(method_name) ) then
             
             Error( "trying to add a final derivation for a method not in CAP_INTERNAL_METHOD_NAME_RECORD" );
             
@@ -189,6 +189,16 @@ InstallMethod( Finalize,
     
     while true do
         
+        # Why is this saturation needed?
+        # Answer: https://github.com/homalg-project/CAP_project/issues/318
+        # Derivations are installed recursively by `InstallDerivationsUsingOperation`.
+        # If all dependencies of a derivation would be registered using the second argument of
+        # `AddDerivationToCAP` (or using the automated detection), this would suffice to consider
+        # all derivations which could ever be installed.
+        # However, derivations might have implicit dependencies in their CategoryFilter.
+        # This is used when checking for operations in other categories, e.g. the range category of the homomorphism structure.
+        # If the category and the other category coincide, it might thus happen that
+        # despite the recursive handling in `InstallDerivationsUsingOperation`, the derivations are not satured.
         Saturate( weight_list );
         
         current_installs := [ ];
@@ -231,7 +241,7 @@ InstallMethod( Finalize,
                                           ") ",
                                           NameFunction( current_final_derivation.name ),
                                           ": ",
-                                          current_final_derivation.description, "\n" ) );
+                                          current_final_derivation.description, " (final derivation)\n" ) );
             
             ## call function before adding the method
             

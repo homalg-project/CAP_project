@@ -155,7 +155,7 @@ InstallMethod( CategoryConstructor,
         # COVERAGE_IGNORE_NEXT_LINE
         Error( "Missing mandatory option `list_of_operations_to_install`." );
         
-    elif not ForAll( options.list_of_operations_to_install, name -> name in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) ) then
+    elif not ForAll( options.list_of_operations_to_install, name -> IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(name) ) ) then
         
         # COVERAGE_IGNORE_NEXT_LINE
         Error( "The value of the option `list_of_operations_to_install` must be a list of names of CAP operations." );
@@ -263,7 +263,7 @@ InstallMethod( CategoryConstructor,
             
         fi;
         
-        if not info.return_type in RecNames( default_func_strings ) then
+        if not IsString( info.return_type ) or not IsBound( default_func_strings.(info.return_type) ) then
             
             Info( InfoCategoryConstructor, 3, "cannot yet handle return_type=\"", info.return_type, "\" required for ", name );
             continue;

@@ -4477,8 +4477,8 @@ end );
 
 BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
   
-  function( with_given_name, object_function_name, object_arguments_positions )
-    local return_func, has_name, has_function, object_function, with_given_name_function, is_attribute, attribute_tester;
+  function( without_given_name, with_given_name, object_function_name, object_arguments_positions )
+    local object_function, with_given_name_function, is_attribute, record, attribute_tester;
     
     object_function := ValueGlobal( object_function_name );
     
@@ -4489,9 +4489,20 @@ BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
     if not is_attribute then
         
         return function( arg )
-          local category, object_args, cache, cache_value;
+          local category, without_given_weight, with_given_weight, object_args, cache, cache_value;
             
             category := arg[ 1 ];
+            
+            without_given_weight := CurrentOperationWeight( category!.derivations_weight_list, without_given_name );
+            with_given_weight := CurrentOperationWeight( category!.derivations_weight_list, with_given_name );
+            
+            # If the WithGiven version is more expensive than the WithoutGiven version, redirection makes no sense and
+            # might even lead to inifite loops if the WithGiven version is derived from the WithoutGiven version.
+            if with_given_weight > without_given_weight then
+                
+                return [ false ];
+                
+            fi;
             
             object_args := arg{ object_arguments_positions };
             
@@ -4520,9 +4531,20 @@ BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
         attribute_tester := Tester( object_function );
         
         return function( arg )
-            local object_args, cache_value, category, cache;
+          local category, without_given_weight, with_given_weight, object_args, cache_value, cache;
             
             category := arg[ 1 ];
+            
+            without_given_weight := CurrentOperationWeight( category!.derivations_weight_list, without_given_name );
+            with_given_weight := CurrentOperationWeight( category!.derivations_weight_list, with_given_name );
+            
+            # If the WithGiven version is more expensive than the WithoutGiven version, redirection makes no sense and
+            # might even lead to inifite loops if the WithGiven version is derived from the WithoutGiven version.
+            if with_given_weight > without_given_weight then
+                
+                return [ false ];
+                
+            fi;
             
             object_args := arg{ object_arguments_positions };
 
@@ -5252,7 +5274,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                         
                     else
                         
-                        without_given_rec.redirect_function := CAP_INTERNAL_CREATE_REDIRECTION( with_given_name, object_name, [ 1 .. Length( object_filter_list ) ] );
+                        without_given_rec.redirect_function := CAP_INTERNAL_CREATE_REDIRECTION( without_given_name, with_given_name, object_name, [ 1 .. Length( object_filter_list ) ] );
                         
                     fi;
                     
