@@ -176,6 +176,10 @@ InstallGlobalFunction( CapInternalInstallAdd,
             Error( "you must pass at least one function to the add method" );
         fi;
         
+        if weight = -1 then
+            weight := 100;
+        fi;
+        
         ## If there already is a faster method, do nothing!
         if weight > CurrentOperationWeight( category!.derivations_weight_list, function_name ) then
             return;
@@ -186,10 +190,6 @@ InstallGlobalFunction( CapInternalInstallAdd,
         is_final_derivation := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "IsFinalDerivation", false );
         
         is_precompiled_derivation := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "IsPrecompiledDerivation", false );
-        
-        if weight = -1 then
-            weight := 100;
-        fi;
         
         if record.with_given_without_given_name_pair <> fail then
             

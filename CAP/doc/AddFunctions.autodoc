@@ -69,10 +69,10 @@ Every other part, except from function, does only depend on the name `SomeFunc`.
 Except from installing a new method for the name `SomeFunc`, an Add method does slightly more.
 Every Add method has the same structure. The steps in the Add method are as follows:
 
+* Default weight: If the weight parameter is -1, the default weight is assumed, which is 100.
+
 * Weight check: If the current weight of the operation is lower than the given weight of the new functions,
                 then the add function returns and installs nothing.
-
-* Default weight: If the weight parameter is -1, the default weight is assumed, which is 100.
 
 * Checking for pairs: If the function is part of a with given pair, we check if the weight of the with given operation
                       is less than or equal to the weight of the without given operation. If this is the case,
