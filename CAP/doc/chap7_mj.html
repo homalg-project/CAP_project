@@ -362,7 +362,7 @@ DeclareOperation( "AddSomeFunc",
 
 
 <ul>
-<li><p>Redirect function: The redirect is used to redirect the computation from the given functions to some other symbol. If there is for example a with given method for some universal property, and the universal object is already computed, the redirect function might detect such a thing, calls the with given operation with the universal object as additional argument and then returns the value. In general, the redirect can be an arbitrary function. It is called with the same arguments as the operation <code class="code">SomeFunc</code> itself and can return an array containing <code class="code">[ true, something ]</code>, which will cause the installed method to simply return the object <code class="code">something</code>, or <code class="code">[ false ]</code>. If the output is <code class="code">false</code>, the computation will continue with the step Prefunction. Additionally, for every category and every name like <code class="code">SomeFunc</code>, there is a boolean, stored in the category's component <code class="code">redirects</code> under the name of <code class="code">SomeFunc</code>, which, when it is <code class="code">false</code>, will prevent the redirect function from being executed.</p>
+<li><p>Redirect function: The redirect is used to redirect the computation from the given functions to some other symbol. If there is for example a with given method for some universal property, and the universal object is already computed, the redirect function might detect such a thing, calls the with given operation with the universal object as additional argument and then returns the value. In general, the redirect can be an arbitrary function. It is called with the same arguments as the operation <code class="code">SomeFunc</code> itself and can return an array containing <code class="code">[ true, something ]</code>, which will cause the installed method to simply return the object <code class="code">something</code>, or <code class="code">[ false ]</code>. If the output is <code class="code">false</code>, the computation will continue with the step Prefunction.</p>
 
 </li>
 </ul>
@@ -410,19 +410,13 @@ DeclareOperation( "AddSomeFunc",
 
 
 <ul>
-<li><p>Weight check: If the current weight of the operation is lower than the given weight of the new functions, then the add function returns and installs nothing.</p>
-
-</li>
-</ul>
-
-<ul>
 <li><p>Default weight: If the weight parameter is -1, the default weight is assumed, which is 100.</p>
 
 </li>
 </ul>
 
 <ul>
-<li><p>Checking for pairs: If the function is part of a with given pair, we check if the weight of the with given operation is less than or equal to the weight of the without given operation. If this is the case, the redirect function for the without given operation is enabled, else disabled.</p>
+<li><p>Weight check: If the current weight of the operation is lower than the given weight of the new functions, then the add function returns and installs nothing.</p>
 
 </li>
 </ul>

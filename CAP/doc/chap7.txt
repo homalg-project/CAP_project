@@ -50,11 +50,7 @@
         arguments  as  the  operation  [10XSomeFunc[110X itself and can return an array
         containing  [10X[ true, something ][110X, which will cause the installed method
         to  simply return the object [10Xsomething[110X, or [10X[ false ][110X. If the output is
-        [10Xfalse[110X,  the  computation  will  continue  with  the  step Prefunction.
-        Additionally,  for  every category and every name like [10XSomeFunc[110X, there
-        is  a  boolean, stored in the category's component [10Xredirects[110X under the
-        name  of  [10XSomeFunc[110X, which, when it is [10Xfalse[110X, will prevent the redirect
-        function from being executed.[133X
+        [10Xfalse[110X, the computation will continue with the step Prefunction.[133X
   
   [30X    [33X[0;6YPrefunction:  The  prefunction  should  be used for error handling and
         plausibility  checks  of the input to [10XSomeFunc[110X (e.g. for [10XKernelLift[110X it
@@ -99,18 +95,12 @@
   does  slightly  more.  Every Add method has the same structure. The steps in
   the Add method are as follows:[133X
   
-  [30X    [33X[0;6YWeight check: If the current weight of the operation is lower than the
-        given  weight  of the new functions, then the add function returns and
-        installs nothing.[133X
-  
   [30X    [33X[0;6YDefault  weight:  If the weight parameter is -1, the default weight is
         assumed, which is 100.[133X
   
-  [30X    [33X[0;6YChecking  for  pairs: If the function is part of a with given pair, we
-        check  if the weight of the with given operation is less than or equal
-        to the weight of the without given operation. If this is the case, the
-        redirect  function  for  the  without given operation is enabled, else
-        disabled.[133X
+  [30X    [33X[0;6YWeight check: If the current weight of the operation is lower than the
+        given  weight  of the new functions, then the add function returns and
+        installs nothing.[133X
   
   [30X    [33X[0;6YInstallation: Next, the method to install the functions is created. It
         creates  the  correct filter list, by merging the standard filters for
