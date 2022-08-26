@@ -534,7 +534,7 @@ InstallMethod( CanCompute,
   function( category, string )
     local weight_list;
     
-    if not string in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) then
+    if not IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(string) ) then
         
         Error( string, " is not the name of a CAP operation" );
         
@@ -565,7 +565,7 @@ InstallMethod( CheckConstructivenessOfCategory,
   function( category, string )
     local category_property, result_list;
     
-    if not string in RecNames( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD ) then
+    if not IsBound( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.(string) ) then
       
       Error( "the given string is not a property of a category" );
     

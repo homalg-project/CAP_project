@@ -25,9 +25,9 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree )
             operation_name := NameFunction( operation );
             
             # check if this is a CAP operation which is not a convenience method or if we know methods for this operation
-            if (operation_name in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) and tree.args.length = Length( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list )) or operation_name in RecNames( CAP_JIT_INTERNAL_KNOWN_METHODS ) then
+            if (IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name) ) and tree.args.length = Length( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list )) or IsBound( CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name) ) then
                 
-                if CAP_JIT_PROOF_ASSISTANT_MODE_ENABLED and operation_name in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) then
+                if CAP_JIT_PROOF_ASSISTANT_MODE_ENABLED and IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name) ) then
                     
                     info := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name);
                     
@@ -67,7 +67,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree )
                     Info( InfoCapJit, 1, Concatenation( "Resolve ", operation_name, "." ) );
                     
                     # check if this is a CAP operation which is not a convenience method
-                    if operation_name in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) and tree.args.length = Length( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list ) then
+                    if IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name) ) and tree.args.length = Length( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list ) then
                         
                         Assert( 0, CanCompute( category, operation_name ) );
                         
@@ -76,7 +76,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree )
                         resolved_tree := CapJitCompiledCAPOperationAsEnhancedSyntaxTree( category, operation_name );
                         
                     # check if we know methods for this operation
-                    elif operation_name in RecNames( CAP_JIT_INTERNAL_KNOWN_METHODS ) then
+                    elif IsBound( CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name) ) then
                         
                         Info( InfoCapJit, 1, "Methods are known for this operation." );
                         

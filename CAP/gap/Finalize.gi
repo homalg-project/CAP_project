@@ -53,7 +53,7 @@ BindGlobal( "CAP_INTERNAL_FINAL_DERIVATION_SANITY_CHECK",
         
         method_name := NameFunction( method[1] );
         
-        if not method_name in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) then
+        if not IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(method_name) ) then
             
             Error( "trying to add a final derivation for a method not in CAP_INTERNAL_METHOD_NAME_RECORD" );
             
