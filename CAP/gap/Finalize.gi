@@ -231,7 +231,7 @@ InstallMethod( Finalize,
                                           ") ",
                                           NameFunction( current_final_derivation.name ),
                                           ": ",
-                                          current_final_derivation.description, "\n" ) );
+                                          current_final_derivation.description, " (final derivation)\n" ) );
             
             ## call function before adding the method
             
