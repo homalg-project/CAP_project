@@ -19,7 +19,7 @@ morphism_matrix := [ [ alpha, beta ], [ beta, alpha ] ];;
 # compile the primitive installation of
 # MorphismBetweenDirectSumsWithGivenDirectSums
 Display(
-    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[3][1]
+    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[2][1]
 );
 #! function ( cat, S, diagram_S, morphism_matrix, diagram_T, T )
 #!     local underlying_matrix;
@@ -35,7 +35,7 @@ Display(
 #!          underlying_matrix ), T );
 #! end
 compiled_func1 := CapJitCompiledFunction(
-    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[3][1],
+    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[2][1],
     vec
 );;
 Display( compiled_func1 );

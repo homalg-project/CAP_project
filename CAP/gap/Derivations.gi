@@ -667,7 +667,11 @@ BindGlobal( "TryToInstallDerivation", function ( owl, d )
 
     if new_weight < current_weight or (new_weight = current_weight and current_derivation <> fail and new_pos < current_pos) then
         
-        InstallDerivationForCategory( d, new_weight, CategoryOfOperationWeightList( owl ) );
+        if not IsIdenticalObj( current_derivation, d ) then
+            
+            InstallDerivationForCategory( d, new_weight, CategoryOfOperationWeightList( owl ) );
+            
+        fi;
         
         owl!.operation_weights.( target ) := new_weight;
         owl!.operation_derivations.( target ) := d;
