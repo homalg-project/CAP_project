@@ -1197,7 +1197,7 @@ InstallGlobalFunction( ListPrimitivelyInstalledOperationsOfCategory,
         Error( "input must be category or cell" );
     fi;
     
-    names := AsSortedList( Filtered( RecNames( cat!.primitive_operations ), x -> cat!.primitive_operations.(x) ) );
+    names := Filtered( RecNames( cat!.primitive_operations ), x -> cat!.primitive_operations.(x) );
     
     if filter <> fail then
         names := Filtered( names, i -> PositionSublist( i, filter ) <> fail );
