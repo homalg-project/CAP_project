@@ -404,5 +404,3 @@ DeclareGlobalFunction( "DerivationsOfMethodByCategory" );
 
 DeclareGlobalFunction( "ListInstalledOperationsOfCategory" );
 DeclareGlobalFunction( "ListPrimitivelyInstalledOperationsOfCategory" );
-
-DeclareGlobalFunction( "CAP_INTERNAL_DERIVATION_SANITY_CHECK" );

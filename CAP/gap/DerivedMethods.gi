@@ -1813,10 +1813,11 @@ end : Description := "ZeroObjectFunctorial using ZeroMorphism" );
 AddDerivationToCAP( DirectSumDiagonalDifference,
                     [ [ DirectSum, 1 ],
                       [ PreCompose, 2 ], ## Length( diagram ) would be the correct number here
-                      [ ProjectionInFactorOfDirectSum, 2 ], ## Length( diagram ) would be the correct number here
+                      [ ProjectionInFactorOfDirectSumWithGivenDirectSum, 2 ], ## Length( diagram ) would be the correct number here
+                      [ UniversalMorphismIntoZeroObject, 1 ],
                       [ UniversalMorphismIntoDirectSum, 2 ], ## 2*(Length( diagram ) - 1) would be the correct number here
-                      [ AdditiveInverseForMorphisms,1 ],
-                      [ AdditionForMorphisms, 1 ] ],
+                      [ SubtractionForMorphisms, 1 ],
+                    ],
                     
   function( cat, diagram )
     local direct_sum_diagram, direct_sum, number_of_morphisms, list_of_morphisms, ranges, mor1, mor2;
@@ -1850,10 +1851,10 @@ end : CategoryFilter := cat -> not ( IsBound( cat!.supports_empty_limits ) and c
 AddDerivationToCAP( DirectSumDiagonalDifference,
                     [ [ DirectSum, 1 ],
                       [ PreCompose, 2 ], ## Length( diagram ) would be the correct number here
-                      [ ProjectionInFactorOfDirectSum, 2 ], ## Length( diagram ) would be the correct number here
+                      [ ProjectionInFactorOfDirectSumWithGivenDirectSum, 2 ], ## Length( diagram ) would be the correct number here
                       [ UniversalMorphismIntoDirectSum, 2 ], ## 2*(Length( diagram ) - 1) would be the correct number here
-                      [ AdditiveInverseForMorphisms,1 ],
-                      [ AdditionForMorphisms, 1 ] ],
+                      [ SubtractionForMorphisms, 1 ],
+                    ],
                     
   function( cat, diagram )
     local direct_sum_diagram, direct_sum, number_of_morphisms, list_of_morphisms, ranges, mor1, mor2;
@@ -1880,11 +1881,12 @@ end : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.su
 ##
 AddDerivationToCAP( DirectSumCodiagonalDifference,
                     [ [ DirectSum, 1 ],
-                      [ InjectionOfCofactorOfDirectSum, 2 ], ## Length( diagram ) would be the correct number
+                      [ InjectionOfCofactorOfDirectSumWithGivenDirectSum, 2 ], ## Length( diagram ) would be the correct number
                       [ PreCompose, 2 ], ## Length( diagram ) would be the correct number
+                      [ UniversalMorphismFromZeroObject, 1 ],
                       [ UniversalMorphismFromDirectSum, 2 ], ## 2*( Length( diagram ) - 1 ) would be the correct number 
-                      [ AdditiveInverseForMorphisms, 1 ],
-                      [ AdditionForMorphisms, 1 ] ],
+                      [ SubtractionForMorphisms, 1 ],
+                    ],
                     
   function( cat, diagram )
     local direct_sum_diagram, direct_sum, number_of_morphisms, list_of_morphisms, sources, mor1, mor2;
@@ -1917,11 +1919,11 @@ end : CategoryFilter := cat -> not ( IsBound( cat!.supports_empty_limits ) and c
 ##
 AddDerivationToCAP( DirectSumCodiagonalDifference,
                     [ [ DirectSum, 1 ],
-                      [ InjectionOfCofactorOfDirectSum, 2 ], ## Length( diagram ) would be the correct number
+                      [ InjectionOfCofactorOfDirectSumWithGivenDirectSum, 2 ], ## Length( diagram ) would be the correct number
                       [ PreCompose, 2 ], ## Length( diagram ) would be the correct number
                       [ UniversalMorphismFromDirectSum, 2 ], ## 2*( Length( diagram ) - 1 ) would be the correct number 
-                      [ AdditiveInverseForMorphisms, 1 ],
-                      [ AdditionForMorphisms, 1 ] ],
+                      [ SubtractionForMorphisms, 1 ],
+                    ],
                     
   function( cat, diagram )
     local direct_sum_diagram, direct_sum, number_of_morphisms, list_of_morphisms, sources, mor1, mor2;

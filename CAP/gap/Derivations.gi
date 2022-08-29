@@ -297,16 +297,30 @@ InstallMethod( AddDerivation,
     collected_list := [ ];
     
     if preconditions_complete = false then
+        
         for current_implementation in implementations_with_extra_filters do
-
+            
             current_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( current_implementation[ 1 ], operations_in_graph, loop_multiplier, CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS );
             current_list := List( current_list, i -> [ ValueGlobal( i[ 1 ] ), i[2] ]);
             collected_list := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, current_list );
-
+            
         od;
+        
+        if not IsEmpty( used_ops_with_multiples ) and (Length( collected_list ) <> Length( used_ops_with_multiples ) or not ForAll( collected_list, c -> c in used_ops_with_multiples )) then
+            
+            Print(
+                "WARNING: You have installed a derivation for ", NameFunction( target_op ), " with preconditions ", used_ops_with_multiples,
+                " but the automated detection has detected the following list of preconditions: ", collected_list, ".\n",
+                "If this is a bug in the automated detection, please report it. If the preconditions cannot be detected automatically, use the option `ConditionsListComplete := true`.\n"
+            );
+            
+        else
+            
+            used_ops_with_multiples := collected_list;
+            
+        fi;
+        
     fi;
-    
-    used_ops_with_multiples := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, used_ops_with_multiples );
     
     derivation := MakeDerivation( description,
                                   target_op,
@@ -321,10 +335,8 @@ InstallMethod( AddDerivation,
         
     fi;
     
-    ## This sanity check should be obsolete
-    # CAP_INTERNAL_DERIVATION_SANITY_CHECK( graph, derivation );
-    
     AddDerivation( graph, derivation );
+    
 end );
 
 InstallGlobalFunction( AddDerivationToCAP,
@@ -1071,47 +1083,3 @@ InstallGlobalFunction( ListInstalledOperationsOfCategory,
     return list_of_methods;
     
 end );
-      
-
-InstallGlobalFunction( CAP_INTERNAL_DERIVATION_SANITY_CHECK,
-                       
-  function( graph, derivation )
-    local possible_names, all_operations, function_object, function_string,
-          string_stream, i;
-    
-    possible_names := UsedOperations( derivation );
-    
-    all_operations := Operations( graph );
-    
-    for function_object in DerivationFunctionsWithExtraFilters( derivation ) do
-        
-        function_object := function_object[ 1 ];
-        
-        function_string := "";
-        
-        string_stream := OutputTextString( function_string, false );
-        
-        SetPrintFormattingStatus( string_stream, false );
-        
-        PrintTo( string_stream, function_object );
-        
-        CloseStream( string_stream );
-        
-        RemoveCharacters( function_string, "()[];," );
-        
-        NormalizeWhitespace( function_string );
-        
-        function_string := SplitString( function_string, " " );
-        
-        for i in function_string do
-            
-            if i in all_operations and not i in possible_names then
-                Error( Concatenation( "derivation with description\n", String( derivation ), "\n uses ", i, ",\n which is not part of its condition" ) );
-            fi;
-            
-        od;
-        
-    od;
-    
-end );
-
