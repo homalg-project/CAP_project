@@ -2987,22 +2987,9 @@ AddFinalDerivation( IsomorphismFromFiberProductToKernelOfDiagonalDifference,
     
     return IdentityMorphism( cat, kernel_of_diagonal_difference );
     
-end : Description := "IsomorphismFromFiberProductToKernelOfDiagonalDifference as the identity of the kernel of diagonal difference" );
-
-##
-AddFinalDerivation( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
-                    [ [ DirectSumDiagonalDifference, 1 ], 
-                      [ KernelObject, 1 ],
-                      [ IdentityMorphism, 1 ] ],
-                    [ FiberProduct,
-                      ProjectionInFactorOfFiberProduct,
-                      ProjectionInFactorOfFiberProductWithGivenFiberProduct,
-                      UniversalMorphismIntoFiberProduct,
-                      UniversalMorphismIntoFiberProductWithGivenFiberProduct,
-                      FiberProductEmbeddingInDirectSum,
-                      IsomorphismFromFiberProductToKernelOfDiagonalDifference,
-                      IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct ],
-                    
+  end,
+[
+  IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
   function( cat, diagram )
     local kernel_of_diagonal_difference;
     
@@ -3010,7 +2997,8 @@ AddFinalDerivation( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
     
     return IdentityMorphism( cat, kernel_of_diagonal_difference );
     
-end : Description := "IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct as the identity of the kernel of diagonal difference" );
+  end
+] : Description := "IsomorphismFromFiberProductToKernelOfDiagonalDifference as the identity of the kernel of diagonal difference" );
 
 ##
 AddFinalDerivation( IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram,
@@ -3039,22 +3027,9 @@ AddFinalDerivation( IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram
     
     return IdentityMorphism( cat, equalizer_of_direct_product_diagram );
 
-end : Description := "IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram as the identity of the equalizer of direct product diagram" );
-
-##
-AddFinalDerivation( IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct,
-                    [ [ ProjectionInFactorOfDirectProduct, 2 ], ## Length( diagram ) would be the correct number
-                      [ PreCompose, 2 ], ## Length( diagram ) would be the correct number
-                      [ Equalizer, 1 ],
-                      [ IdentityMorphism, 1 ] ],
-                    [ FiberProduct,
-                      ProjectionInFactorOfFiberProduct,
-                      ProjectionInFactorOfFiberProductWithGivenFiberProduct,
-                      UniversalMorphismIntoFiberProduct,
-                      UniversalMorphismIntoFiberProductWithGivenFiberProduct,
-                      IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram,
-                      IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct ],
-                    
+  end,
+[
+  IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct,
   function( cat, diagram )
     local D, diagram_of_equalizer, equalizer_of_direct_product_diagram;
     
@@ -3068,7 +3043,8 @@ AddFinalDerivation( IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct
     
     return IdentityMorphism( cat, equalizer_of_direct_product_diagram );
 
-end : Description := "IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct as the identity of the equalizer of direct product diagram" );
+  end
+] : Description := "IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram as the identity of the equalizer of direct product diagram" );
 
 ## Final methods for Pushout
 
@@ -3093,22 +3069,9 @@ AddFinalDerivation( IsomorphismFromPushoutToCokernelOfDiagonalDifference,
     
     return IdentityMorphism( cat, cokernel_of_diagonal_difference );
     
-end : Description := "IsomorphismFromPushoutToCokernelOfDiagonalDifference as the identity of the cokernel of diagonal difference" );
-
-##
-AddFinalDerivation( IsomorphismFromCokernelOfDiagonalDifferenceToPushout,
-                    [ [ CokernelObject, 1 ],
-                      [ DirectSumCodiagonalDifference, 1 ],
-                      [ IdentityMorphism, 1 ] ],
-                    [ Pushout,
-                      InjectionOfCofactorOfPushout,
-                      InjectionOfCofactorOfPushoutWithGivenPushout,
-                      UniversalMorphismFromPushout,
-                      UniversalMorphismFromPushoutWithGivenPushout,
-                      DirectSumProjectionInPushout,
-                      IsomorphismFromPushoutToCokernelOfDiagonalDifference,
-                      IsomorphismFromCokernelOfDiagonalDifferenceToPushout ],
-                    
+  end,
+[
+  IsomorphismFromCokernelOfDiagonalDifferenceToPushout,
   function( cat, diagram )
     local cokernel_of_diagonal_difference;
     
@@ -3116,7 +3079,8 @@ AddFinalDerivation( IsomorphismFromCokernelOfDiagonalDifferenceToPushout,
     
     return IdentityMorphism( cat, cokernel_of_diagonal_difference );
     
-end : Description := "IsomorphismFromCokernelOfDiagonalDifferenceToPushout as the identity of the cokernel of diagonal difference" );
+  end
+]: Description := "IsomorphismFromPushoutToCokernelOfDiagonalDifference as the identity of the cokernel of diagonal difference" );
 
 ##
 AddFinalDerivation( IsomorphismFromPushoutToCoequalizerOfCoproductDiagram,
@@ -3145,22 +3109,9 @@ AddFinalDerivation( IsomorphismFromPushoutToCoequalizerOfCoproductDiagram,
     
     return IdentityMorphism( cat, coequalizer_of_coproduct_diagram );
     
-end : Description := "IsomorphismFromPushoutToCoequalizerOfCoproductDiagram as the identity of the coequalizer of coproduct diagram" );
-
-##
-AddFinalDerivation( IsomorphismFromCoequalizerOfCoproductDiagramToPushout,
-                    [ [ InjectionOfCofactorOfCoproduct, 2 ], ## Length( diagram ) would be the correct number
-                      [ PreCompose, 2 ], ## Length( diagram ) would be the correct number
-                      [ Coequalizer, 1 ],
-                      [ IdentityMorphism, 1 ] ],
-                    [ Pushout,
-                      InjectionOfCofactorOfPushout,
-                      InjectionOfCofactorOfPushoutWithGivenPushout,
-                      UniversalMorphismFromPushout,
-                      UniversalMorphismFromPushoutWithGivenPushout,
-                      IsomorphismFromPushoutToCoequalizerOfCoproductDiagram,
-                      IsomorphismFromCoequalizerOfCoproductDiagramToPushout ],
-                    
+  end,
+[
+  IsomorphismFromCoequalizerOfCoproductDiagramToPushout,
   function( cat, diagram )
     local D, diagram_of_coequalizer, coequalizer_of_coproduct_diagram;
     
@@ -3174,7 +3125,8 @@ AddFinalDerivation( IsomorphismFromCoequalizerOfCoproductDiagramToPushout,
     
     return IdentityMorphism( cat, coequalizer_of_coproduct_diagram );
     
-end : Description := "IsomorphismFromCoequalizerOfCoproductDiagramToPushout as the identity of the coequalizer of coproduct diagram" );
+  end
+]: Description := "IsomorphismFromPushoutToCoequalizerOfCoproductDiagram as the identity of the coequalizer of coproduct diagram" );
 
 ## Final methods for Image
 
@@ -3200,23 +3152,9 @@ AddFinalDerivation( IsomorphismFromImageObjectToKernelOfCokernel,
     
     return IdentityMorphism( cat, kernel_of_cokernel );
     
-end : Description := "IsomorphismFromImageObjectToKernelOfCokernel as the identity of the kernel of the cokernel" );
-
-##
-AddFinalDerivation( IsomorphismFromKernelOfCokernelToImageObject,
-                    [ [ KernelObject, 1 ],
-                      [ CokernelProjection, 1 ],
-                      [ IdentityMorphism, 1 ] ],
-                    [ ImageObject,
-                      ImageEmbedding,
-                      ImageEmbeddingWithGivenImageObject,
-                      CoastrictionToImage,
-                      CoastrictionToImageWithGivenImageObject,
-                      UniversalMorphismFromImage,
-                      UniversalMorphismFromImageWithGivenImageObject,
-                      IsomorphismFromImageObjectToKernelOfCokernel,
-                      IsomorphismFromKernelOfCokernelToImageObject ],
-                    
+  end,
+[
+  IsomorphismFromKernelOfCokernelToImageObject,
   function( cat, mor )
     local kernel_of_cokernel;
     
@@ -3224,7 +3162,8 @@ AddFinalDerivation( IsomorphismFromKernelOfCokernelToImageObject,
     
     return IdentityMorphism( cat, kernel_of_cokernel );
     
-end : Description := "IsomorphismFromKernelOfCokernelToImageObject as the identity of the kernel of the cokernel" );
+  end
+]: Description := "IsomorphismFromImageObjectToKernelOfCokernel as the identity of the kernel of the cokernel" );
 
 ##
 AddDerivationToCAP( MorphismFromCoimageToImageWithGivenObjects,
@@ -3287,23 +3226,9 @@ AddFinalDerivation( IsomorphismFromCoimageToCokernelOfKernel,
     
     return IdentityMorphism( cat, cokernel_of_kernel );
     
-end : Description := "IsomorphismFromCoimageToCokernelOfKernel as the identity of the cokernel of the kernel" );
-
-##
-AddFinalDerivation( IsomorphismFromCokernelOfKernelToCoimage,
-                    [ [ CokernelObject, 1 ],
-                      [ KernelEmbedding, 1 ],
-                      [ IdentityMorphism, 1 ] ],
-                    [ CoimageObject,
-                      CoimageProjection,
-                      CoimageProjectionWithGivenCoimageObject,
-                      AstrictionToCoimage,
-                      AstrictionToCoimageWithGivenCoimageObject,
-                      UniversalMorphismIntoCoimage,
-                      UniversalMorphismIntoCoimageWithGivenCoimageObject,
-                      IsomorphismFromCoimageToCokernelOfKernel,
-                      IsomorphismFromCokernelOfKernelToCoimage ],
-                    
+  end,
+[
+  IsomorphismFromCokernelOfKernelToCoimage,
   function( cat, mor )
     local cokernel_of_kernel;
     
@@ -3311,8 +3236,8 @@ AddFinalDerivation( IsomorphismFromCokernelOfKernelToCoimage,
     
     return IdentityMorphism( cat, cokernel_of_kernel );
     
-end : Description := "IsomorphismFromCokernelOfKernelToCoimage as the identity of the cokernel of the kernel" );
-
+  end
+] : Description := "IsomorphismFromCoimageToCokernelOfKernel as the identity of the cokernel of the kernel" );
 
 ## Final methods for initial object
 
@@ -3320,7 +3245,9 @@ end : Description := "IsomorphismFromCokernelOfKernelToCoimage as the identity o
 AddFinalDerivation( IsomorphismFromInitialObjectToZeroObject,
                     [ [ ZeroObject, 1 ],
                       [ IdentityMorphism, 1 ] ],
-                    [ InitialObject,
+                    [ IsomorphismFromInitialObjectToZeroObject,
+                      IsomorphismFromZeroObjectToInitialObject,
+                      InitialObject,
                       UniversalMorphismFromInitialObject
                       ## NOTE: the combination of AddZeroObject and AddUniversalMorphismFromInitialObjectWithGivenInitialObject
                       ## is okay because only having UniversalMorphismFromInitialObjectWithGivenInitialObject, you cannot
@@ -3332,25 +3259,15 @@ AddFinalDerivation( IsomorphismFromInitialObjectToZeroObject,
     
     return IdentityMorphism( cat, ZeroObject( cat ) );
     
-end : Description := "IsomorphismFromInitialObjectToZeroObject as the identity of the zero object" );
-
-##
-AddFinalDerivation( IsomorphismFromZeroObjectToInitialObject,
-                    [ [ ZeroObject, 1 ],
-                      [ IdentityMorphism, 1 ] ],
-                    [ InitialObject,
-                      UniversalMorphismFromInitialObject
-                      ## NOTE: the combination of AddZeroObject and AddUniversalMorphismFromInitialObjectWithGivenInitialObject
-                      ## is okay because only having UniversalMorphismFromInitialObjectWithGivenInitialObject, you cannot
-                      ## deduce an InitialObject
-#                       UniversalMorphismFromInitialObjectWithGivenInitialObject
-                    ],
-                    
+  end,
+[
+  IsomorphismFromZeroObjectToInitialObject,
   function( cat )
     
     return IdentityMorphism( cat, ZeroObject( cat ) );
     
-end : Description := "IsomorphismFromZeroObjectToInitialObject as the identity of the zero object" );
+  end
+] : Description := "IsomorphismFromInitialObjectToZeroObject as the identity of the zero object" );
 
 ## Final methods for terminal object
 
@@ -3358,7 +3275,9 @@ end : Description := "IsomorphismFromZeroObjectToInitialObject as the identity o
 AddFinalDerivation( IsomorphismFromTerminalObjectToZeroObject,
                     [ [ ZeroObject, 1 ],
                       [ IdentityMorphism, 1 ] ],
-                    [ TerminalObject,
+                    [ IsomorphismFromTerminalObjectToZeroObject,
+                      IsomorphismFromZeroObjectToTerminalObject,
+                      TerminalObject,
                       UniversalMorphismIntoTerminalObject
                       ## NOTE: the combination of AddZeroObject and AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject
                       ## is okay because only having UniversalMorphismIntoTerminalObjectWithGivenTerminalObject, you cannot
@@ -3370,25 +3289,15 @@ AddFinalDerivation( IsomorphismFromTerminalObjectToZeroObject,
     
     return IdentityMorphism( cat, ZeroObject( cat ) );
     
-end : Description := "IsomorphismFromTerminalObjectToZeroObject as the identity of the zero object" );
-
-##
-AddFinalDerivation( IsomorphismFromZeroObjectToTerminalObject,
-                    [ [ ZeroObject, 1 ],
-                      [ IdentityMorphism, 1 ] ],
-                    [ TerminalObject,
-                      UniversalMorphismIntoTerminalObject
-                      ## NOTE: the combination of AddZeroObject and AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject
-                      ## is okay because only having UniversalMorphismIntoTerminalObjectWithGivenTerminalObject, you cannot
-                      ## deduce a TerminalObject
-#                       UniversalMorphismIntoTerminalObjectWithGivenTerminalObject
-                    ],
-                    
+  end,
+[
+  IsomorphismFromZeroObjectToTerminalObject,
   function( cat )
     
     return IdentityMorphism( cat, ZeroObject( cat ) );
     
-end : Description := "IsomorphismFromZeroObjectToTerminalObject as the identity of the zero object" );
+  end
+] : Description := "IsomorphismFromTerminalObjectToZeroObject as the identity of the zero object" );
 
 ## Final methods for product
 
@@ -3396,7 +3305,9 @@ end : Description := "IsomorphismFromZeroObjectToTerminalObject as the identity 
 AddFinalDerivation( IsomorphismFromDirectSumToDirectProduct,
                     [ [ DirectSum, 1 ],
                       [ IdentityMorphism, 1 ] ],
-                    [ DirectProduct,
+                    [ IsomorphismFromDirectSumToDirectProduct,
+                      IsomorphismFromDirectProductToDirectSum,
+                      DirectProduct,
                       DirectProductFunctorialWithGivenDirectProducts,
                       ProjectionInFactorOfDirectProduct,
 #                       ProjectionInFactorOfDirectProductWithGivenDirectProduct,
@@ -3407,24 +3318,15 @@ AddFinalDerivation( IsomorphismFromDirectSumToDirectProduct,
     
     return IdentityMorphism( cat, DirectSum( cat, diagram ) );
     
-end : Description := "IsomorphismFromDirectSumToDirectProduct as the identity of the direct sum" );
-
-##
-AddFinalDerivation( IsomorphismFromDirectProductToDirectSum,
-                    [ [ DirectSum, 1 ],
-                      [ IdentityMorphism, 1 ] ],
-                    [ DirectProduct,
-                      DirectProductFunctorialWithGivenDirectProducts,
-                      ProjectionInFactorOfDirectProduct,
-#                       ProjectionInFactorOfDirectProductWithGivenDirectProduct,
-                      UniversalMorphismIntoDirectProduct ],
-#                       UniversalMorphismIntoDirectProductWithGivenDirectProduct ],
-                      
+  end,
+[
+  IsomorphismFromDirectProductToDirectSum,
   function( cat, diagram )
     
     return IdentityMorphism( cat, DirectSum( cat, diagram ) );
     
-end : Description := "IsomorphismFromDirectProductToDirectSum as the identity of the direct sum" );
+  end
+] : Description := "IsomorphismFromDirectSumToDirectProduct as the identity of the direct sum" );
 
 ## Final methods for coproduct
 
@@ -3432,7 +3334,9 @@ end : Description := "IsomorphismFromDirectProductToDirectSum as the identity of
 AddFinalDerivation( IsomorphismFromCoproductToDirectSum,
                     [ [ DirectSum, 1 ],
                       [ IdentityMorphism, 1 ] ],
-                    [ Coproduct,
+                    [ IsomorphismFromCoproductToDirectSum,
+                      IsomorphismFromDirectSumToCoproduct,
+                      Coproduct,
                       CoproductFunctorialWithGivenCoproducts,
                       InjectionOfCofactorOfCoproduct,
 #                       InjectionOfCofactorOfCoproductWithGivenCoproduct,
@@ -3443,24 +3347,15 @@ AddFinalDerivation( IsomorphismFromCoproductToDirectSum,
     
     return IdentityMorphism( cat, DirectSum( cat, diagram ) );
     
-end : Description := "IsomorphismFromCoproductToDirectSum as the identity of the direct sum" );
-
-##
-AddFinalDerivation( IsomorphismFromDirectSumToCoproduct,
-                    [ [ DirectSum, 1 ],
-                      [ IdentityMorphism, 1 ] ],
-                    [ Coproduct,
-                      CoproductFunctorialWithGivenCoproducts,
-                      InjectionOfCofactorOfCoproduct,
-#                       InjectionOfCofactorOfCoproductWithGivenCoproduct,
-                      UniversalMorphismFromCoproduct ],
-#                       UniversalMorphismFromCoproductWithGivenCoproduct ],
-                      
+  end,
+[
+  IsomorphismFromDirectSumToCoproduct,
   function( cat, diagram )
     
     return IdentityMorphism( cat, DirectSum( cat, diagram ) );
     
-end : Description := "IsomorphismFromDirectSumToCoproduct as the identity of the direct sum" );
+  end
+]: Description := "IsomorphismFromCoproductToDirectSum as the identity of the direct sum" );
 
 ## Final methods for homology object
 
@@ -3469,8 +3364,12 @@ AddFinalDerivation( IsomorphismFromHomologyObjectToItsConstructionAsAnImageObjec
                     [ [ ImageObject, 1 ],
                       [ PreCompose, 1 ],
                       [ KernelEmbedding, 1 ],
-                      [ CokernelProjection, 1 ] ],
-                    [ HomologyObject,
+                      [ CokernelProjection, 1 ],
+                      [ IdentityMorphism, 1 ],
+                    ],
+                    [ IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject,
+                      IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject,
+                      HomologyObject,
                       HomologyObjectFunctorialWithGivenHomologyObjects ],
                       
   function( cat, alpha, beta )
@@ -3480,7 +3379,18 @@ AddFinalDerivation( IsomorphismFromHomologyObjectToItsConstructionAsAnImageObjec
     
     return IdentityMorphism( cat, homology_object );
     
-end : CategoryFilter := HasIsAbelianCategory and IsAbelianCategory,
+  end,
+[
+  IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject,
+  function( cat, alpha, beta )
+    local homology_object;
+    
+    homology_object := ImageObject( cat, PreCompose( cat, KernelEmbedding( cat, beta ), CokernelProjection( cat, alpha ) ) );
+    
+    return IdentityMorphism( cat, homology_object );
+    
+  end
+]: CategoryFilter := HasIsAbelianCategory and IsAbelianCategory,
       Description := "IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject as the identity of the homology object constructed as an image object" );
 
 

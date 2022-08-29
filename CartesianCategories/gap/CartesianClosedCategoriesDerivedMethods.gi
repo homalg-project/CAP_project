@@ -30,26 +30,13 @@ AddFinalDerivation( IsomorphismFromCartesianDualObjectToExponentialIntoTerminalO
     
     return IdentityMorphism( cat, ExponentialOnObjects( cat, object, TerminalObject( cat ) ) );
     
-end : CategoryFilter := IsCartesianClosedCategory,
-      Description := "IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject as the identity of Exp(a,1)" );
-
-AddFinalDerivation( IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject,
-                    [ [ IdentityMorphism, 1 ],
-                      [ ExponentialOnObjects, 1 ],
-                      [ TerminalObject, 1 ] ],
-                    [ CartesianDualOnObjects,
-                      CartesianDualOnMorphismsWithGivenCartesianDuals,
-                      MorphismToCartesianBidualWithGivenCartesianBidual,
-                      IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject,
-                      IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject,
-                      UniversalPropertyOfCartesianDual,
-                      DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects,
-                      CartesianEvaluationForCartesianDualWithGivenDirectProduct,
-                      MorphismFromDirectProductToExponentialWithGivenObjects ],
-                 
+  end,
+[
+  IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject,
   function( cat, object )
     
     return IdentityMorphism( cat, ExponentialOnObjects( cat, object, TerminalObject( cat ) ) );
     
-end : CategoryFilter := IsCartesianClosedCategory,
-      Description := "IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject as the identity of Exp(a,1)" );
+  end
+] : CategoryFilter := IsCartesianClosedCategory,
+      Description := "IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject and its inverse as the identity of Exp(a,1)" );

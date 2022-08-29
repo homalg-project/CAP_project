@@ -47,6 +47,12 @@ BindGlobal( "CAP_INTERNAL_FINAL_DERIVATION_SANITY_CHECK",
         
     od;
     
+    if StartsWith( NameFunction( derivation.target_op ), "IsomorphismFrom" ) and IsEmpty( derivation.additional_functions ) then
+        
+        Print( "WARNING: You are installing a final derivation for ", derivation.target_op, " which does not include its inverse. You should probably use a bundled final derivation to also install its inverse.\n" );
+        
+    fi;
+    
     methods_to_check := Concatenation( [ [ derivation.target_op, derivation.function_list ] ], derivation.additional_functions );
     
     for method in methods_to_check do
@@ -164,7 +170,7 @@ InstallMethod( Finalize,
                [ IsCapCategory ],
   
   function( category )
-    local derivation_list, weight_list, current_installs, current_final_derivation, current_tester_func, weight, add_name, properties_with_logic, property, i, current_additional_func, property_name;
+    local derivation_list, weight_list, current_install, current_final_derivation, current_tester_func, weight, add_name, properties_with_logic, property, i, current_additional_func, property_name;
     
     if IsFinalized( category ) then
         
@@ -202,7 +208,7 @@ InstallMethod( Finalize,
         # despite the recursive handling in `InstallDerivationsUsingOperation`, the derivations are not satured.
         Saturate( weight_list );
         
-        current_installs := [ ];
+        current_install := fail;
         
         for i in [ 1 .. Length( derivation_list ) ] do
             
@@ -216,23 +222,26 @@ InstallMethod( Finalize,
                 if IsFilter( current_tester_func ) then
                     
                     if Tester( current_tester_func )( category ) and current_tester_func( category ) then
-                        Add( current_installs, i );
+                        current_install := i;
+                        break;
                     fi;
                     
                 elif IsFunction( current_tester_func ) and current_tester_func( category ) then ## in particular: not a filter
-                    Add( current_installs, i );
+                    current_install := i;
+                    break;
                 fi;
             
             fi;
             
         od;
         
-        if current_installs = [ ] then
+        if current_install = fail then
+            
             break;
-        fi;
-        
-        for i in current_installs do
-            current_final_derivation := derivation_list[ i ];
+            
+        else
+            
+            current_final_derivation := Remove( derivation_list, i );
             
             ## calculate weight
             weight := current_final_derivation.weight + Sum( List( current_final_derivation.used_ops_with_multiples, j -> CurrentOperationWeight( weight_list, NameFunction( j[ 1 ] ) ) * j[ 2 ] ) );
@@ -272,10 +281,7 @@ InstallMethod( Finalize,
                 add_name( category, current_additional_func[ 2 ], weight : IsFinalDerivation := true );
             od;
             
-        od;
-        
-        ## Remove all already installed entries
-        derivation_list := derivation_list{ Difference( [ 1 .. Length( derivation_list ) ], current_installs ) };
+        fi;
         
     od;
     

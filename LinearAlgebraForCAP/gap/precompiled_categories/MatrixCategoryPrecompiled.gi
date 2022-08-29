@@ -1617,12 +1617,10 @@ end
         
 ########
 function ( cat_1, H_1_1, L_1, H_2_1 )
-    local morphism_attr_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
-    deduped_5_1 := SyzygiesOfColumns( UnderlyingMatrix( L_1[4] ) );
-    deduped_4_1 := SyzygiesOfColumns( UnderlyingMatrix( L_1[1] ) );
-    deduped_3_1 := SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( L_1[5] ) ) * deduped_5_1 );
-    deduped_2_1 := HomalgIdentityMatrix( NumberColumns( deduped_5_1 ) - RowRankOfMatrix( deduped_3_1 ), UnderlyingRing( cat_1 ) );
-    morphism_attr_1_1 := RightDivide( SyzygiesOfRows( SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( L_1[2] ) ) * deduped_4_1 ) ) * LeftDivide( deduped_4_1, (UnderlyingMatrix( L_1[3] ) * deduped_5_1) ), SyzygiesOfRows( deduped_3_1 ) ) * RightDivide( deduped_2_1, deduped_2_1 );
+    local morphism_attr_1_1, deduped_2_1, deduped_3_1;
+    deduped_3_1 := SyzygiesOfColumns( UnderlyingMatrix( L_1[4] ) );
+    deduped_2_1 := SyzygiesOfColumns( UnderlyingMatrix( L_1[1] ) );
+    morphism_attr_1_1 := RightDivide( SyzygiesOfRows( SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( L_1[2] ) ) * deduped_2_1 ) ) * LeftDivide( deduped_2_1, (UnderlyingMatrix( L_1[3] ) * deduped_3_1) ), SyzygiesOfRows( SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( L_1[5] ) ) * deduped_3_1 ) ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
              ), cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
@@ -1630,7 +1628,7 @@ function ( cat_1, H_1_1, L_1, H_2_1 )
 end
 ########
         
-    , 4421 : IsPrecompiledDerivation := true );
+    , 4218 : IsPrecompiledDerivation := true );
     
     ##
     AddHomomorphismStructureOnMorphisms( cat,
@@ -3179,10 +3177,9 @@ end
         
 ########
 function ( cat_1, alpha_1, beta_1 )
-    local morphism_attr_1_1, deduped_2_1, deduped_3_1;
-    deduped_3_1 := SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) );
-    deduped_2_1 := HomalgIdentityMatrix( NumberColumns( deduped_3_1 ) - RowRankOfMatrix( SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( beta_1 ) ) * deduped_3_1 ) ), UnderlyingRing( cat_1 ) );
-    morphism_attr_1_1 := RightDivide( deduped_2_1, deduped_2_1 );
+    local morphism_attr_1_1, deduped_2_1;
+    deduped_2_1 := SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) );
+    morphism_attr_1_1 := HomalgIdentityMatrix( NumberColumns( deduped_2_1 ) - RowRankOfMatrix( SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( beta_1 ) ) * deduped_2_1 ) ), UnderlyingRing( cat_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
              ), cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
@@ -3190,7 +3187,7 @@ function ( cat_1, alpha_1, beta_1 )
 end
 ########
         
-    , 906 : IsPrecompiledDerivation := true );
+    , 703 : IsPrecompiledDerivation := true );
     
     ##
     AddIsomorphismFromKernelOfCokernelToImageObject( cat,
