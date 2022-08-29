@@ -57,10 +57,12 @@ DeclareCategory( "IsDerivedMethod", IsObject );
 #!  should be <C>1</C>.
 #!  The argument <A>func</A> contains the actual implementation of the
 #!  derived method.
-#!  The argument <A>category_filter</A> is a filter describing
+#!  The argument <A>category_filter</A> is a filter (or function) describing
 #!  which categories the derivation is valid for.  If it is valid
 #!  for all categories, then this argument should have the value
-#!  <C>IsCapCategory</C>.
+#!  <C>IsCapCategory</C>. The output of <A>category_filter</A> must not
+#!  change during the installation of operations. In particular, it must
+#!  not rely on `CanCompute` to check conditions.
 #! @Arguments name, target_op, used_ops_with_multiples, weight, func, category_filter
 DeclareOperation( "MakeDerivation",
                   [ IsString, IsFunction, IsDenseList,

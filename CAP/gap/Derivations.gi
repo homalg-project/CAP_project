@@ -38,6 +38,12 @@ InstallMethod( MakeDerivation,
                
 function( name, target_op, used_op_names_with_multiples_and_category_getters, weight, func, category_filter )
     
+    if PositionSublist( String( category_filter ), "CanCompute" ) <> fail then
+        
+        Print( "WARNING: The CategoryFilter of a derivation for ", NameFunction( target_op ), " uses `CanCompute`. Please register all preconditions explicitly.\n" );
+        
+    fi;
+    
     return ObjectifyWithAttributes(
         rec( ), NewType( TheFamilyOfDerivations, IsDerivedMethodRep ),
         DerivationName, name,
