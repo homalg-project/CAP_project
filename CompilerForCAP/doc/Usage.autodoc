@@ -111,6 +111,8 @@ You can revert this decision using `ContinueCompilationAtCategory`.
 
 @Section Disabling the automatic inference of data types
 
+@Section Compiling step-by-step
+
 @Section Proof assistant mode
 
 @Section Getting information about the compilation process

@@ -50,6 +50,20 @@ InstallGlobalFunction( CapJitEnableDataTypeInference, function ( )
     
 end );
 
+CAP_JIT_RESOLVE_ONE_LEVEL_ONLY := false;
+
+InstallGlobalFunction( CapJitEnableStepByStepCompilation, function ( )
+    
+    CAP_JIT_RESOLVE_ONE_LEVEL_ONLY := true;
+    
+end );
+
+InstallGlobalFunction( CapJitDisableStepByStepCompilation, function ( )
+    
+    CAP_JIT_RESOLVE_ONE_LEVEL_ONLY := false;
+    
+end );
+
 CAP_JIT_PROOF_ASSISTANT_MODE_ENABLED := false;
 
 InstallGlobalFunction( CapJitEnableProofAssistantMode, function ( )
@@ -76,6 +90,8 @@ InstallGlobalFunction( CapJitCompiledFunction, function ( func, args... )
     return ENHANCED_SYNTAX_TREE_CODE( CallFuncList( CapJitCompiledFunctionAsEnhancedSyntaxTree, Concatenation( [ func, true ], args ) ) );
     
 end );
+
+CAP_JIT_INTERNAL_COMPILATION_IN_PROGRESS := false;
 
 BindGlobal( "CAP_JIT_INTERNAL_COMPILED_FUNCTIONS_STACK", [ ] );
 
@@ -187,6 +203,20 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
         
     fi;
     
+    if CAP_JIT_RESOLVE_ONE_LEVEL_ONLY then
+        
+        if CAP_JIT_INTERNAL_COMPILATION_IN_PROGRESS then
+            
+            return tree;
+            
+        else
+            
+            CAP_JIT_INTERNAL_COMPILATION_IN_PROGRESS := true;
+            
+        fi;
+        
+    fi;
+    
     # resolving phase
     resolving_phase_functions := [
         CapJitResolvedOperations,
@@ -242,6 +272,12 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
             fi;
             
         od;
+        
+        if CAP_JIT_RESOLVE_ONE_LEVEL_ONLY then
+            
+            break;
+            
+        fi;
         
     od;
     
@@ -350,6 +386,12 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
     
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, "Compilation finished." );
+    
+    if CAP_JIT_RESOLVE_ONE_LEVEL_ONLY then
+        
+        CAP_JIT_INTERNAL_COMPILATION_IN_PROGRESS := false;
+        
+    fi;
     
     return tree;
     
