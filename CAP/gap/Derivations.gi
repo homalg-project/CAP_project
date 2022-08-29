@@ -149,6 +149,10 @@ function( operations )
     G!.derivations_by_target.( op_name ) := [];
     G!.derivations_by_used_ops.( op_name ) := [];
   od;
+  
+  # derivations not using any operations
+  G!.derivations_by_used_ops.none := [];
+  
   return G;
 end );
 
@@ -221,6 +225,12 @@ function( G, d )
     # returns the category itself, this allows to recursively trigger derivations correctly.
     Add( G!.derivations_by_used_ops.( x[1] ), d );
   od;
+  
+  if IsEmpty( UsedOperationsWithMultiplesAndCategoryGetters( d ) ) then
+    
+    Add( G!.derivations_by_used_ops.none, d );
+    
+  fi;
   
 end );
 
@@ -573,13 +583,19 @@ end );
 InstallMethod( Reevaluate,
                [ IsOperationWeightList ],
 function( owl )
-    local op_name, d;
+  local new_weight, op_name, d;
     
     for op_name in Operations( DerivationGraph( owl ) ) do
         
         for d in DerivationsOfOperation( DerivationGraph( owl ), op_name ) do
             
-            TryToInstallDerivation( owl, d );
+            new_weight := TryToInstallDerivation( owl, d );
+            
+            if new_weight <> fail then
+                
+                InstallDerivationsUsingOperation( owl, TargetOperation( d ) );
+                
+            fi;
             
         od;
         

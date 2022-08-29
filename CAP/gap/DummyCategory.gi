@@ -16,6 +16,7 @@ InstallMethod( DummyCategory,
     category_constructor_options.category_filter := IsDummyCategory;
     category_constructor_options.category_object_filter := IsDummyCategoryObject;
     category_constructor_options.category_morphism_filter := IsDummyCategoryMorphism;
+    category_constructor_options.supports_empty_limits := true;
     
     dummy_function := { operation_name, dummy } -> """
         function( input_arguments )
@@ -32,8 +33,6 @@ InstallMethod( DummyCategory,
     category_constructor_options.create_func_morphism_or_fail := dummy_function;
     
     C := CategoryConstructor( category_constructor_options );
-    
-    C!.supports_empty_limits := true;
     
     Finalize( C );
     

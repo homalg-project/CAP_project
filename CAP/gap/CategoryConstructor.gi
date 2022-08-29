@@ -24,6 +24,7 @@ InstallMethod( CategoryConstructor,
         morphism_constructor := IsFunction,
         morphism_datum := IsFunction,
         list_of_operations_to_install := IsList,
+        supports_empty_limits := IsBool,
         underlying_category_getter_string := IsString,
         underlying_object_getter_string := IsString,
         underlying_morphism_getter_string := IsString,
@@ -72,6 +73,12 @@ InstallMethod( CategoryConstructor,
     fi;
     
     CC!.category_as_first_argument := true;
+    
+    if IsBound( options.supports_empty_limits ) then
+        
+        CC!.supports_empty_limits := options.supports_empty_limits;
+        
+    fi;
     
     CC!.compiler_hints := rec( );
     
