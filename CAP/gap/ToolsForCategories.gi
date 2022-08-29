@@ -671,6 +671,12 @@ InstallGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION",
         
     od;
     
+    if loop_power <> 0 then
+        
+        Error( "The automated detection of preconditions of derivations could not detect loops properly. If you are using the reserved word `for` in the implementation (for example in a string), this is probably the cause. If not, please report this as a bug. You can use `ConditionsListComplete := true` to avoid this error." );
+        
+    fi;
+    
     symbol_appearance_rec := List( RecNames( symbol_appearance_rec ), i -> [ i, symbol_appearance_rec.(i) ] );
     symbol_appearance_rec := CAP_INTERNAL_REPLACE_ADDITIONAL_SYMBOL_APPEARANCE( symbol_appearance_rec, replacement_record );
     return symbol_appearance_rec;
