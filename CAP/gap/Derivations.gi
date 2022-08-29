@@ -34,33 +34,59 @@ InstallGlobalFunction( "DeactivateDerivationInfo",
 end );
 
 InstallMethod( MakeDerivation,
-               [ IsString, IsFunction, IsDenseList,
-                 IsPosInt, IsDenseList, IsFunction ],
-function( name, target_op, used_ops_with_multiples,
-          weight, implementations_with_extra_filters,
-          category_filter )
-  local d, used_ops, used_op_multiples, used_op_names_with_multiples;
-  d := rec();
-  used_ops := List( used_ops_with_multiples,
-                    l -> NameFunction( l[ 1 ] ) );
-  used_op_multiples := List( used_ops_with_multiples, l -> l[ 2 ] );
-  used_op_names_with_multiples :=
-    List( used_ops_with_multiples,
-          l -> [ NameFunction( l[ 1 ] ), l[ 2 ] ] );
-  ObjectifyWithAttributes
-    ( d,
-      NewType( TheFamilyOfDerivations, IsDerivedMethodRep ),
-      DerivationName, name,
-      DerivationWeight, weight,
-      DerivationFunctionsWithExtraFilters, implementations_with_extra_filters,
-      CategoryFilter, category_filter,
-      TargetOperation, NameFunction( target_op ),
-      UsedOperations, used_ops,
-      UsedOperationsWithMultiples, used_op_names_with_multiples,
-      UsedOperationMultiples, used_op_multiples );
-  # TODO options
-  
-  return d;
+               [ IsString, IsFunction, IsDenseList, IsPosInt, IsDenseList, IsFunction ],
+               
+function( name, target_op, used_ops_with_multiples_and_category_getters, weight, implementations_with_extra_filters, category_filter )
+  local used_op_names_with_multiples_and_category_getters, x;
+    
+    used_op_names_with_multiples_and_category_getters := [ ];
+    
+    for x in used_ops_with_multiples_and_category_getters do
+        
+        if Length( x ) < 2 or not IsFunction( x[1] ) or not IsInt( x[2] ) then
+            
+            Error( "preconditions must be of the form `[op, mult, getter]`, where `getter` is optional" );
+            
+        fi;
+        
+        if (Length( x ) = 2 or (Length( x ) = 3 and x[3] = fail)) and x[1] = target_op then
+            
+            Error( "A derivation for ", NameFunction( target_op ), " has itself as a precondition. This is not supported because we cannot compute a well-defined weight.\n" );
+            
+        fi;
+        
+        if Length( x ) = 2 then
+            
+            Add( used_op_names_with_multiples_and_category_getters, [ NameFunction( x[1] ), x[2], fail ] );
+            
+        elif Length( x ) = 3 then
+            
+            if x <> fail and not (IsFunction( x[3] ) and NumberArgumentsFunction( x[3] ) = 1) then
+                
+                Error( "the category getter must be a single-argument function" );
+                
+            fi;
+            
+            Add( used_op_names_with_multiples_and_category_getters, [ NameFunction( x[1] ), x[2], x[3] ] );
+            
+        else
+            
+            Error( "The list of preconditions must be a list of pairs or triples." );
+            
+        fi;
+        
+    od;
+    
+    return ObjectifyWithAttributes(
+        rec( ), NewType( TheFamilyOfDerivations, IsDerivedMethodRep ),
+        DerivationName, name,
+        DerivationWeight, weight,
+        DerivationFunctionsWithExtraFilters, implementations_with_extra_filters,
+        CategoryFilter, category_filter,
+        TargetOperation, NameFunction( target_op ),
+        UsedOperationsWithMultiplesAndCategoryGetters, used_op_names_with_multiples_and_category_getters
+    );
+    
 end );
 
 InstallMethod( String,
@@ -125,10 +151,10 @@ function( d, op_weights )
   local w, used_op_multiples, i, op_w, mult;
   Display( "WARNING: DerivationResultWeight is deprecated and will not be supported after 2023.08.26.\n" );
   w := DerivationWeight( d );
-  used_op_multiples := UsedOperationMultiples( d );
+  used_op_multiples := UsedOperationsWithMultiplesAndCategoryGetters( d );
   for i in [ 1 .. Length( used_op_multiples ) ] do
     op_w := op_weights[ i ];
-    mult := used_op_multiples[ i ];
+    mult := used_op_multiples[ i ][ 2 ];
     if op_w = infinity then
       return infinity;
     fi;
@@ -189,7 +215,7 @@ end );
 InstallMethod( AddDerivation,
                [ IsDerivedMethodGraphRep, IsDerivedMethod ],
 function( G, d )
-  local method_name, filter_list, number_of_proposed_arguments, current_function_argument_number, current_additional_filter_list_length, impl, op_name;
+  local method_name, filter_list, number_of_proposed_arguments, current_function_argument_number, current_additional_filter_list_length, impl, x;
   
   if IsIdenticalObj( G, CAP_INTERNAL_DERIVATION_GRAPH ) then
     
@@ -232,9 +258,12 @@ function( G, d )
   fi;
   
   Add( G!.derivations_by_target.( TargetOperation( d ) ), d );
-  for op_name in UsedOperations( d ) do
-    Add( G!.derivations_by_used_ops.( op_name ), d );
+  for x in UsedOperationsWithMultiplesAndCategoryGetters( d ) do
+    # We add all operations, even those with category getters: In case the category getter
+    # returns the category itself, this allows to recursively trigger derivations correctly.
+    Add( G!.derivations_by_used_ops.( x[1] ), d );
   od;
+  
 end );
 
 InstallMethod( AddDerivation,
@@ -424,19 +453,26 @@ end );
 InstallMethod( OperationWeightUsingDerivation,
                [ IsOperationWeightList, IsDerivedMethod ],
 function( owl, d )
-  local weight, used_operations, used_operation_multiples, operation_weights, operation_name, operation_weight, i;
+  local category, category_operation_weights, weight, operation_weights, operation_name, operation_weight, x;
+    
+    category := CategoryOfOperationWeightList( owl );
+    category_operation_weights := owl!.operation_weights;
     
     weight := DerivationWeight( d );
-    operation_weights := owl!.operation_weights;
     
-    used_operations := UsedOperations( d );
-    used_operation_multiples := UsedOperationMultiples( d );
-    
-    Assert( 0, Length( used_operations ) = Length( used_operation_multiples ) );
-    
-    for i in [ 1 .. Length( used_operations ) ] do
+    for x in UsedOperationsWithMultiplesAndCategoryGetters( d ) do
         
-        operation_name := used_operations[i];
+        if x[3] = fail then
+            
+            operation_weights := category_operation_weights;
+            
+        else
+            
+            operation_weights := x[3](category)!.derivations_weight_list!.operation_weights;
+            
+        fi;
+        
+        operation_name := x[1];
         
         if not IsBound( operation_weights.(operation_name) ) then
             
@@ -452,7 +488,7 @@ function( owl, d )
             
         fi;
         
-        weight := weight + operation_weight * used_operation_multiples[i];
+        weight := weight + operation_weight * x[2];
         
     od;
     
@@ -649,7 +685,7 @@ function( owl, op_name )
       return [];
     else
       return Concatenation( [ [ fail, DerivationWeight( d ) ] ],
-                            UsedOperationsWithMultiples( d ) );
+                            UsedOperationsWithMultiplesAndCategoryGetters( d ) );
     fi;
   end;
   PrintTree( [ op_name, fail ],
@@ -863,9 +899,7 @@ end );
 InstallGlobalFunction( DerivationsOfMethodByCategory,
   
   function( category, name )
-    local string, weight_list, current_weight, current_derivation,
-          currently_installed_funcs, to_delete, used_ops_with_multiples,
-          possible_derivations, category_filter, i;
+    local string, category_weight_list, current_weight, current_derivation, currently_installed_funcs, to_delete, weight_list, category_getter_string, possible_derivations, category_filter, weight, i, x;
     
     if IsFunction( name ) then
         string := NameFunction( name );
@@ -881,13 +915,13 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
         return;
     fi;
     
-    weight_list := category!.derivations_weight_list;
+    category_weight_list := category!.derivations_weight_list;
     
-    current_weight := CurrentOperationWeight( weight_list, string );
+    current_weight := CurrentOperationWeight( category_weight_list, string );
     
     if current_weight < infinity then
     
-        current_derivation := DerivationOfOperation( weight_list, string );
+        current_derivation := DerivationOfOperation( category_weight_list, string );
         
         Print( Name( category ), " can already compute ", TextAttr.b4, string, TextAttr.reset, " with weight " , String( current_weight ), ".\n" );
         
@@ -924,12 +958,22 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
             
             Print( "It was derived by ", TextAttr.b3, DerivationName( current_derivation ), TextAttr.reset, " using \n" );
             
-            used_ops_with_multiples := UsedOperationsWithMultiples( current_derivation );
-            
-            for i in used_ops_with_multiples do
+            for x in UsedOperationsWithMultiplesAndCategoryGetters( current_derivation ) do
                 
-                Print( "* ", TextAttr.b2, i[ 1 ], TextAttr.reset, " (", i[ 2 ], "x)" );
-                Print( " installed with weight ", String( CurrentOperationWeight( weight_list, i[ 1 ] ) ) );
+                if x[3] = fail then
+                    
+                    weight_list := category_weight_list;
+                    category_getter_string := "";
+                    
+                else
+                    
+                    weight_list := x[3](category)!.derivations_weight_list;
+                    category_getter_string := Concatenation( " in category obtained by applying ", String( x[3] ) );
+                    
+                fi;
+                
+                Print( "* ", TextAttr.b2, x[1], TextAttr.reset, " (", x[2], "x)", category_getter_string );
+                Print( " installed with weight ", String( CurrentOperationWeight( weight_list, x[1] ) ) );
                 Print( "\n" );
                 
             od;
@@ -987,14 +1031,26 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
             Print( TextAttr.b4, string, TextAttr.reset, " can be derived by\n" );
         fi;
         
-        used_ops_with_multiples := UsedOperationsWithMultiples( current_derivation );
-        
-        for i in used_ops_with_multiples do
+        for x in UsedOperationsWithMultiplesAndCategoryGetters( current_derivation ) do
             
-            if CurrentOperationWeight( weight_list, i[ 1 ] ) < infinity then
-                Print( "* ", TextAttr.b2, i[ 1 ], TextAttr.reset, " (", i[ 2 ], "x)", ", (already installed with weight ", String( CurrentOperationWeight( weight_list, i[ 1 ] ) ),")" );
+            if x[3] = fail then
+                
+                weight_list := category_weight_list;
+                category_getter_string := "";
+                
             else
-                Print( "* ", TextAttr.b1, i[ 1 ], TextAttr.reset, " (", i[ 2 ], "x)" );
+                
+                weight_list := x[3](category)!.derivations_weight_list;
+                category_getter_string := Concatenation( " in category obtained by applying ", String( x[3] ) );
+                
+            fi;
+            
+            weight := CurrentOperationWeight( weight_list, x[1] );
+            
+            if weight < infinity then
+                Print( "* ", TextAttr.b2, x[1], TextAttr.reset, " (", x[2], "x)", category_getter_string, ", (already installed with weight ", weight,")" );
+            else
+                Print( "* ", TextAttr.b1, x[1], TextAttr.reset, " (", x[2], "x)", category_getter_string );
             fi;
             
             Print( "\n" );

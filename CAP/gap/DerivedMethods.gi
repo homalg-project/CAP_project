@@ -2778,7 +2778,12 @@ AddDerivationToCAP( SolveLinearSystemInAbCategory,
                     [ [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure, 1 ],
                       [ HomomorphismStructureOnMorphismsWithGivenObjects, 1 ],
                       [ HomomorphismStructureOnObjects, 1 ],
-                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 1 ] ],
+                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 1 ],
+                      [ UniversalMorphismIntoDirectSum, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ MorphismBetweenDirectSums, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ Lift, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ ComponentOfMorphismIntoDirectSum, 1, RangeCategoryOfHomomorphismStructure ],
+                    ],
   function( cat, left_coefficients, right_coefficients, right_side )
     local range_cat, m, n, distinguished_object, interpretations, nu, H_B_C, H_A_D, list, H, lift, summands;
     
@@ -2829,31 +2834,7 @@ AddDerivationToCAP( SolveLinearSystemInAbCategory,
       );
   end :
   ConditionsListComplete := true,
-  CategoryFilter := function( cat )
-    local B, conditions;
-    
-    if HasIsAbCategory( cat ) and IsAbCategory( cat ) and HasRangeCategoryOfHomomorphismStructure( cat ) then
-        
-        B := RangeCategoryOfHomomorphismStructure( cat );
-        
-        conditions := [
-          "UniversalMorphismIntoDirectSum",
-          "MorphismBetweenDirectSums",
-          "Lift",
-          "PreCompose"
-        ];
-        
-        if ForAll( conditions, c -> CanCompute( B, c ) ) then
-            
-            return true;
-            
-        fi;
-        
-    fi;
-    
-    return false;
-    
-  end,
+  CategoryFilter := IsAbCategory and HasRangeCategoryOfHomomorphismStructure,
   Description := "SolveLinearSystemInAbCategory using the homomorphism structure" 
 );
 
@@ -2862,7 +2843,12 @@ AddDerivationToCAP( SolveLinearSystemInAbCategoryOrFail,
                     [ [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure, 1 ],
                       [ HomomorphismStructureOnMorphismsWithGivenObjects, 1 ],
                       [ HomomorphismStructureOnObjects, 1 ],
-                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 1 ] ],
+                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 1 ],
+                      [ UniversalMorphismIntoDirectSum, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ MorphismBetweenDirectSums, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ Lift, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ ComponentOfMorphismIntoDirectSum, 1, RangeCategoryOfHomomorphismStructure ],
+                    ],
   function( cat, left_coefficients, right_coefficients, right_side )
     local range_cat, m, n, distinguished_object, interpretations, nu, H_B_C, H_A_D, list, H, lift, summands;
     
@@ -2919,38 +2905,17 @@ AddDerivationToCAP( SolveLinearSystemInAbCategoryOrFail,
       );
   end :
   ConditionsListComplete := true,
-  CategoryFilter := function( cat )
-    local B, conditions;
-    
-    if HasIsAbCategory( cat ) and IsAbCategory( cat ) and HasRangeCategoryOfHomomorphismStructure( cat ) then
-        
-        B := RangeCategoryOfHomomorphismStructure( cat );
-        
-        conditions := [
-          "UniversalMorphismIntoDirectSum",
-          "MorphismBetweenDirectSums",
-          "LiftOrFail",
-          "PreCompose"
-        ];
-        
-        if ForAll( conditions, c -> CanCompute( B, c ) ) then
-            
-            return true;
-            
-        fi;
-        
-    fi;
-    
-    return false;
-    
-  end,
+  CategoryFilter := IsAbCategory and HasRangeCategoryOfHomomorphismStructure,
   Description := "SolveLinearSystemInAbCategoryOrFail using the homomorphism structure" 
 );
 
 ##
 AddDerivationToCAP( MereExistenceOfSolutionOfLinearSystemInAbCategory,
                     [ [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure, 1 ],
-                      [ HomomorphismStructureOnMorphismsWithGivenObjects, 1 ]
+                      [ HomomorphismStructureOnMorphismsWithGivenObjects, 1 ],
+                      [ UniversalMorphismIntoDirectSum, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ MorphismBetweenDirectSums, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ IsLiftable, 1, RangeCategoryOfHomomorphismStructure ],
                     ],
   function( cat, left_coefficients, right_coefficients, right_side )
     local range_cat, m, n, distinguished_object, interpretations, nu, H_B_C, H_A_D, list, H;
@@ -2991,30 +2956,7 @@ AddDerivationToCAP( MereExistenceOfSolutionOfLinearSystemInAbCategory,
     
   end :
   ConditionsListComplete := true,
-  CategoryFilter := function( cat )
-    local B, conditions;
-    
-    if HasIsAbCategory( cat ) and IsAbCategory( cat ) and HasRangeCategoryOfHomomorphismStructure( cat ) then
-        
-        B := RangeCategoryOfHomomorphismStructure( cat );
-        
-        conditions := [
-          "UniversalMorphismIntoDirectSum",
-          "MorphismBetweenDirectSums",
-          "IsLiftable"
-        ];
-        
-        if ForAll( conditions, c -> CanCompute( B, c ) ) then
-            
-            return true;
-            
-        fi;
-        
-    fi;
-    
-    return false;
-    
-  end,
+  CategoryFilter := IsAbCategory and HasRangeCategoryOfHomomorphismStructure,
   Description := "MereExistenceOfSolutionOfLinearSystemInAbCategory using the homomorphism structure"
 );
 
