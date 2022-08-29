@@ -285,13 +285,13 @@ InstallMethod( WrapperCategory,
     
     category_constructor_options.list_of_operations_to_install := list_of_operations_to_install;
     
-    D := CategoryConstructor( category_constructor_options );
-    
     if IsBound( C!.supports_empty_limits ) then
         
-        D!.supports_empty_limits := C!.supports_empty_limits;
+        category_constructor_options.supports_empty_limits := C!.supports_empty_limits;
         
     fi;
+    
+    D := CategoryConstructor( category_constructor_options );
     
     D!.compiler_hints.category_attribute_names := [
         "ModelingCategory",

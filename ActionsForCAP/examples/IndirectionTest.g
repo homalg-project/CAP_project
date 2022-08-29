@@ -91,6 +91,7 @@ category_with_attributes_record := rec(
 triple := EnhancementWithAttributes( category_with_attributes_record );;
 indirection_category := triple[1];;
 SetIsAbelianCategory( indirection_category, true );;
+Reevaluate( indirection_category!.derivations_weight_list );
 AddIsEqualForCacheForObjects( indirection_category, IsIdenticalObj );;
 AddIsEqualForObjects( indirection_category, function( obj1, obj2 ) return UnderlyingCell( obj1 ) = UnderlyingCell( obj2 ); end );;
 AddIsEqualForCacheForMorphisms( indirection_category, IsIdenticalObj );;

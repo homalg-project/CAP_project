@@ -1729,7 +1729,7 @@ AddDerivationToCAP( MorphismBetweenDirectSumsWithGivenDirectSums,
     return UniversalMorphismFromDirectSumWithGivenDirectSum( cat, diagram_S, T, test_diagram_coproduct, S );
     
 end : CategoryFilter := cat -> not ( IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true ),
-      Description := "MorphismBetweenDirectSumsWithGivenDirectSums using universal morphisms of direct sums" );
+      Description := "MorphismBetweenDirectSumsWithGivenDirectSums using universal morphisms of direct sums (without support for empty limits)" );
 
 ##
 AddDerivationToCAP( MorphismBetweenDirectSumsWithGivenDirectSums,
@@ -1744,7 +1744,7 @@ AddDerivationToCAP( MorphismBetweenDirectSumsWithGivenDirectSums,
     return UniversalMorphismFromDirectSumWithGivenDirectSum( cat, diagram_S, T, test_diagram_coproduct, S );
     
 end : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true,
-      Description := "MorphismBetweenDirectSumsWithGivenDirectSums using universal morphisms of direct sums" );
+      Description := "MorphismBetweenDirectSumsWithGivenDirectSums using universal morphisms of direct sums (with support for empty limits)" );
 
 ##
 AddDerivationToCAP( HomologyObjectFunctorialWithGivenHomologyObjects,
@@ -1845,7 +1845,7 @@ AddDerivationToCAP( DirectSumDiagonalDifference,
     return SubtractionForMorphisms( cat, mor1, mor2 );
     
 end : CategoryFilter := cat -> not ( IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true ),
-      Description := "DirectSumDiagonalDifference using the operations defining this morphism" );
+      Description := "DirectSumDiagonalDifference using the operations defining this morphism (without support for empty limits)" );
 
 ##
 AddDerivationToCAP( DirectSumDiagonalDifference,
@@ -1876,7 +1876,7 @@ AddDerivationToCAP( DirectSumDiagonalDifference,
     return SubtractionForMorphisms( cat, mor1, mor2 );
     
 end : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true,
-      Description := "DirectSumDiagonalDifference using the operations defining this morphism" );
+      Description := "DirectSumDiagonalDifference using the operations defining this morphism (with support for empty limits)" );
 
 ##
 AddDerivationToCAP( DirectSumCodiagonalDifference,
@@ -1914,7 +1914,7 @@ AddDerivationToCAP( DirectSumCodiagonalDifference,
     return SubtractionForMorphisms( cat, mor1, mor2 );
     
 end : CategoryFilter := cat -> not ( IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true ),
-      Description := "DirectSumCodiagonalDifference using the operations defining this morphism" );
+      Description := "DirectSumCodiagonalDifference using the operations defining this morphism (without support for empty limits)" );
 
 ##
 AddDerivationToCAP( DirectSumCodiagonalDifference,
@@ -1945,7 +1945,7 @@ AddDerivationToCAP( DirectSumCodiagonalDifference,
     return SubtractionForMorphisms( cat, mor1, mor2 );
     
 end : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true,
-      Description := "DirectSumCodiagonalDifference using the operations defining this morphism" );
+      Description := "DirectSumCodiagonalDifference using the operations defining this morphism (with support for empty limits)" );
 
 
 ##

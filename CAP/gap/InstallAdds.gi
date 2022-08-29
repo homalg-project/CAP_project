@@ -176,6 +176,15 @@ InstallGlobalFunction( CapInternalInstallAdd,
             Error( "you must pass at least one function to the add method" );
         fi;
         
+        # prepare for the checks in Finalize
+        if not IsBound( category!.initially_known_categorical_properties ) then
+            
+            category!.initially_known_categorical_properties := ShallowCopy( ListKnownCategoricalProperties( category ) );
+            
+            InstallDerivationsUsingOperation( category!.derivations_weight_list, "none" );
+            
+        fi;
+        
         if weight = -1 then
             weight := 100;
         fi;
