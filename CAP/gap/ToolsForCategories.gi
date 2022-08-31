@@ -571,31 +571,49 @@ end );
 BindGlobal( "CAP_INTERNAL_REPLACE_ADDITIONAL_SYMBOL_APPEARANCE",
   
   function( appearance_list, replacement_record )
-    local remove_list, new_appearances, current_appearance_nr,
-          current_appearance, current_replacement, i;
-
+    local remove_list, new_appearances, current_appearance, pos, current_appearance_nr, current_replacement, i;
+    
+    appearance_list := StructuralCopy( appearance_list );
+    
     remove_list := [];
     new_appearances := [];
-
+    
     for current_appearance_nr in [ 1 .. Length( appearance_list ) ] do
         
         current_appearance := appearance_list[ current_appearance_nr ];
         
         if IsBound( replacement_record.(current_appearance[ 1 ]) ) then
+            
             Add( remove_list, current_appearance_nr );
+            
             for current_replacement in replacement_record.(current_appearance[ 1 ]) do
-                Add( new_appearances, [ current_replacement[ 1 ], current_replacement[ 2 ] * current_appearance[ 2 ] ] );
+                
+                pos := Position( List( appearance_list, x -> x[1] ), current_replacement[1] );
+                
+                if pos = fail then
+                    
+                    Add( new_appearances, [ current_replacement[ 1 ], current_replacement[ 2 ] * current_appearance[ 2 ] ] );
+                    
+                else
+                    
+                    appearance_list[pos][2] := appearance_list[pos][2] + current_replacement[ 2 ] * current_appearance[ 2 ];
+                    
+                fi;
+                
             od;
+            
         fi;
-
+        
     od;
-
+    
     for i in Reversed( remove_list ) do
+        
         Remove( appearance_list, i );
+        
     od;
-
+    
     return Concatenation( appearance_list, new_appearances );
-
+    
 end );
 
 ##
@@ -653,6 +671,7 @@ InstallGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION",
             symbol_appearance_rec.( current_symbol ) := symbol_appearance_rec.( current_symbol ) + loop_multiple^loop_power;
             
         elif current_symbol in [ "for", "while", "List", "Perform", "Apply" ] then
+            
             loop_power := loop_power + 1;
             
         elif current_symbol = "od" then
