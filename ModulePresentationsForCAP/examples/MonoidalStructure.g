@@ -15,8 +15,8 @@ N := AsLeftPresentation( HomalgMatrix( [ [ 3 ] ], 1, 1, R ) );
 T := TensorProductOnObjects( M, N );
 #! <An object in Category of left presentations of Z>
 Display( T );
-#! [ [  3 ],
-#!   [  2 ] ]
+#! [ [  2 ],
+#!   [  3 ] ]
 #! 
 #! An object in Category of left presentations of Z
 IsZero( T );
@@ -37,8 +37,8 @@ l := LambdaElimination( DirectSum( M, M ), DirectSum( M, N ), alpha );
 IsZero( l );
 #! false
 Display( l );
-#! [ [  -2,   6 ],
-#!   [  -1,  -3 ] ]
+#! [ [  236554,       0 ],
+#!   [   78415,       0 ] ]
 #!
 #! A morphism in Category of left presentations of Z
 #! @EndExample
