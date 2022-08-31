@@ -275,7 +275,7 @@ DeclareGlobalFunction( "IsValidInputForFreydCategory" );
 #! into $\mathrm{\underline{Hom}}(A, b)$ is the internal Hom-embedding. This method returns this very map.
 #! @Returns a (mono)morphism
 #! @Arguments cat, a, b
-DeclareOperationWithCache( "INTERNAL_HOM_EMBEDDING",
+DeclareOperation( "INTERNAL_HOM_EMBEDDING",
                            [ IsFreydCategory, IsFreydCategoryObject, IsFreydCategoryObject ] );
 
 

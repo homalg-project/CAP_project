@@ -254,11 +254,226 @@ end
     , 100 );
     
     ##
+    AddAssociatorLeftToRightWithGivenTensorProducts( cat,
+        
+########
+function ( cat_1, s_1, a_1, b_1, c_1, r_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, HomalgIdentityMatrix( NumberRows( UnderlyingMatrix( s_1 ) ), UnderlyingRing( cat_1 ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddAssociatorRightToLeftWithGivenTensorProducts( cat,
+        
+########
+function ( cat_1, s_1, a_1, b_1, c_1, r_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, HomalgIdentityMatrix( NumberRows( UnderlyingMatrix( s_1 ) ), UnderlyingRing( cat_1 ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddBraidingWithGivenTensorProducts( cat,
+        
+########
+function ( cat_1, s_1, a_1, b_1, r_1 )
+    local hoisted_1_1, hoisted_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := NumberRows( UnderlyingMatrix( b_1 ) );
+    deduped_4_1 := NumberRows( UnderlyingMatrix( a_1 ) );
+    deduped_3_1 := deduped_4_1 * deduped_5_1;
+    hoisted_2_1 := deduped_5_1;
+    hoisted_1_1 := deduped_4_1;
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_3_1 ], function ( i_2 )
+                    local deduped_1_2;
+                    deduped_1_2 := i_2 - 1;
+                    return REM_INT( deduped_1_2, hoisted_1_1 ) * hoisted_2_1 + QUO_INT( deduped_1_2, hoisted_1_1 ) + 1;
+                end ) ), deduped_3_1 ), deduped_3_1, deduped_3_1, UnderlyingRing( cat_1 ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddCoevaluationMorphismWithGivenRange( cat,
+        
+########
+function ( cat_1, a_1, b_1, r_1 )
+    local hoisted_1_1, hoisted_2_1, deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1, deduped_12_1, deduped_13_1, deduped_14_1, deduped_15_1, deduped_16_1, deduped_17_1, deduped_18_1, deduped_19_1, deduped_20_1, deduped_21_1, deduped_22_1;
+    deduped_22_1 := UnderlyingMatrix( a_1 );
+    deduped_21_1 := UnderlyingMatrix( b_1 );
+    deduped_20_1 := UnderlyingRing( cat_1 );
+    deduped_19_1 := NumberRows( deduped_22_1 );
+    deduped_18_1 := NumberRows( deduped_21_1 );
+    deduped_17_1 := HomalgIdentityMatrix( deduped_19_1, deduped_20_1 );
+    deduped_16_1 := deduped_18_1 * deduped_18_1;
+    deduped_15_1 := deduped_18_1 * deduped_19_1;
+    deduped_14_1 := HomalgIdentityMatrix( deduped_18_1, deduped_20_1 );
+    deduped_13_1 := deduped_19_1 * deduped_18_1;
+    deduped_12_1 := deduped_18_1 * deduped_13_1;
+    deduped_11_1 := HomalgIdentityMatrix( deduped_12_1, deduped_20_1 );
+    deduped_10_1 := UnionOfColumns( deduped_20_1, deduped_13_1, [ KroneckerMat( deduped_22_1, deduped_14_1 ), DiagMat( deduped_20_1, ListWithIdenticalEntries( deduped_19_1, deduped_21_1 ) ) ] );
+    deduped_9_1 := DiagMat( deduped_20_1, ListWithIdenticalEntries( deduped_18_1, deduped_10_1 ) );
+    deduped_8_1 := ReducedSyzygiesOfColumns( KroneckerMat( TransposedMatrix( deduped_21_1 ), HomalgIdentityMatrix( deduped_13_1, deduped_20_1 ) ), DiagMat( deduped_20_1, ListWithIdenticalEntries( NumberColumns( deduped_21_1 ), deduped_10_1 ) ) );
+    deduped_7_1 := DiagMat( deduped_20_1, ListWithIdenticalEntries( deduped_18_1, ReducedBasisOfColumnModule( deduped_10_1 ) ) );
+    deduped_6_1 := NumberColumns( deduped_9_1 ) + 1;
+    deduped_5_1 := UnionOfColumns( deduped_20_1, NumberRows( deduped_9_1 ), [ deduped_9_1, deduped_11_1 ] );
+    deduped_4_1 := NumberColumns( deduped_7_1 ) + 1;
+    deduped_3_1 := [ deduped_6_1 .. deduped_6_1 - 1 + deduped_12_1 ];
+    hoisted_2_1 := deduped_19_1;
+    hoisted_1_1 := deduped_18_1;
+    return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, r_1, UnderlyingMatrix, CertainRows( SafeLeftDivide( UnionOfColumns( deduped_20_1, deduped_12_1, [ deduped_7_1, CertainRows( SafeLeftDivide( deduped_5_1, deduped_8_1 ), deduped_3_1 ) ] ), CertainRows( SafeLeftDivide( deduped_5_1, deduped_11_1 ), deduped_3_1 ) * (DiagMat( deduped_20_1, ListWithIdenticalEntries( deduped_18_1, HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_15_1 ], function ( i_2 )
+                                local deduped_1_2;
+                                deduped_1_2 := (i_2 - 1);
+                                return (REM_INT( deduped_1_2, hoisted_1_1 ) * hoisted_2_1 + QUO_INT( deduped_1_2, hoisted_1_1 ) + 1);
+                            end ) ), deduped_15_1 ), deduped_15_1, deduped_15_1, deduped_20_1 ) ) ) * (KroneckerMat( HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_16_1 ], function ( i_2 )
+                                local deduped_1_2;
+                                deduped_1_2 := (i_2 - 1);
+                                return (REM_INT( deduped_1_2, hoisted_1_1 ) * hoisted_1_1 + QUO_INT( deduped_1_2, hoisted_1_1 ) + 1);
+                            end ) ), deduped_16_1 ), deduped_16_1, deduped_16_1, deduped_20_1 ), deduped_17_1 ) * KroneckerMat( ConvertMatrixToColumn( deduped_14_1 ), deduped_17_1 ))) ), [ deduped_4_1 .. deduped_4_1 - 1 + NumberColumns( deduped_8_1 ) ] ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddEvaluationMorphismWithGivenSource( cat,
+        
+########
+function ( cat_1, a_1, b_1, s_1 )
+    local hoisted_1_1, hoisted_2_1, deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1, deduped_12_1, deduped_13_1, deduped_14_1, deduped_15_1, deduped_16_1, deduped_17_1, deduped_18_1;
+    deduped_18_1 := UnderlyingMatrix( a_1 );
+    deduped_17_1 := UnderlyingMatrix( b_1 );
+    deduped_16_1 := UnderlyingRing( cat_1 );
+    deduped_15_1 := NumberColumns( deduped_18_1 );
+    deduped_14_1 := NumberRows( deduped_18_1 );
+    deduped_13_1 := NumberRows( deduped_17_1 );
+    deduped_12_1 := deduped_14_1 * deduped_13_1;
+    deduped_11_1 := HomalgIdentityMatrix( deduped_14_1, deduped_16_1 );
+    deduped_10_1 := HomalgIdentityMatrix( deduped_12_1, deduped_16_1 );
+    deduped_9_1 := DiagMat( deduped_16_1, ListWithIdenticalEntries( deduped_14_1, deduped_17_1 ) );
+    deduped_8_1 := DiagMat( deduped_16_1, ListWithIdenticalEntries( deduped_14_1, ReducedBasisOfColumnModule( deduped_17_1 ) ) );
+    deduped_7_1 := deduped_12_1 * deduped_14_1;
+    deduped_6_1 := NumberColumns( deduped_9_1 ) + 1;
+    deduped_5_1 := UnionOfColumns( deduped_16_1, NumberRows( deduped_9_1 ), [ deduped_9_1, deduped_10_1 ] );
+    deduped_4_1 := [ deduped_6_1 .. deduped_6_1 - 1 + deduped_12_1 ];
+    deduped_3_1 := Sum( [ NumberColumns( deduped_8_1 ) * deduped_14_1, deduped_12_1 * deduped_15_1 ] ) + 1;
+    hoisted_2_1 := deduped_13_1;
+    hoisted_1_1 := deduped_14_1;
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, b_1, UnderlyingMatrix, DiagMat( deduped_16_1, ListWithIdenticalEntries( deduped_13_1, ConvertMatrixToRow( deduped_11_1 ) ) ) * KroneckerMat( HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_12_1 ], function ( i_2 )
+                            local deduped_1_2;
+                            deduped_1_2 := (i_2 - 1);
+                            return (REM_INT( deduped_1_2, hoisted_1_1 ) * hoisted_2_1 + QUO_INT( deduped_1_2, hoisted_1_1 ) + 1);
+                        end ) ), deduped_12_1 ), deduped_12_1, deduped_12_1, deduped_16_1 ), deduped_11_1 ) * CertainRows( SafeLeftDivide( UnionOfColumns( deduped_16_1, deduped_7_1, [ UnionOfColumns( deduped_16_1, deduped_7_1, [ KroneckerMat( deduped_8_1, deduped_11_1 ), DiagMat( deduped_16_1, ListWithIdenticalEntries( deduped_12_1, deduped_18_1 ) ) ] ), KroneckerMat( CertainRows( SafeLeftDivide( deduped_5_1, deduped_10_1 ), deduped_4_1 ), deduped_11_1 ) ] ), HomalgIdentityMatrix( deduped_7_1, deduped_16_1 ) ), [ deduped_3_1 .. (deduped_3_1 - 1 + deduped_7_1) ] ) * KroneckerMat( CertainRows( SafeLeftDivide( deduped_5_1, ReducedSyzygiesOfColumns( KroneckerMat( TransposedMatrix( deduped_18_1 ), HomalgIdentityMatrix( deduped_13_1, deduped_16_1 ) ), DiagMat( deduped_16_1, ListWithIdenticalEntries( deduped_15_1, deduped_17_1 ) ) ) ), deduped_4_1 ), deduped_11_1 ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddInternalHomOnMorphismsWithGivenInternalHoms( cat,
+        
+########
+function ( cat_1, s_1, alpha_1, beta_1, r_1 )
+    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1;
+    deduped_8_1 := UnderlyingRing( cat_1 );
+    deduped_7_1 := UnderlyingMatrix( Source( beta_1 ) );
+    deduped_6_1 := UnderlyingMatrix( Range( alpha_1 ) );
+    deduped_5_1 := UnderlyingMatrix( Range( beta_1 ) );
+    deduped_4_1 := UnderlyingMatrix( Source( alpha_1 ) );
+    deduped_3_1 := DiagMat( deduped_8_1, ListWithIdenticalEntries( NumberRows( deduped_4_1 ), deduped_5_1 ) );
+    deduped_2_1 := ReducedSyzygiesOfColumns( KroneckerMat( TransposedMatrix( deduped_4_1 ), HomalgIdentityMatrix( NumberRows( deduped_5_1 ), deduped_8_1 ) ), DiagMat( deduped_8_1, ListWithIdenticalEntries( NumberColumns( deduped_4_1 ), deduped_5_1 ) ) );
+    deduped_1_1 := NumberColumns( deduped_3_1 ) + 1;
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, CertainRows( SafeLeftDivide( UnionOfColumns( deduped_8_1, NumberRows( deduped_3_1 ), [ deduped_3_1, deduped_2_1 ] ), KroneckerMat( TransposedMatrix( UnderlyingMatrix( alpha_1 ) ), UnderlyingMatrix( beta_1 ) ) * ReducedSyzygiesOfColumns( KroneckerMat( TransposedMatrix( deduped_6_1 ), HomalgIdentityMatrix( NumberRows( deduped_7_1 ), deduped_8_1 ) ), DiagMat( deduped_8_1, ListWithIdenticalEntries( NumberColumns( deduped_6_1 ), deduped_7_1 ) ) ) ), [ deduped_1_1 .. deduped_1_1 - 1 + NumberColumns( deduped_2_1 ) ] ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddInternalHomOnObjects( cat,
+        
+########
+function ( cat_1, a_1, b_1 )
+    local deduped_1_1, deduped_2_1, deduped_3_1;
+    deduped_3_1 := UnderlyingRing( cat_1 );
+    deduped_2_1 := UnderlyingMatrix( b_1 );
+    deduped_1_1 := UnderlyingMatrix( a_1 );
+    return CreateCapCategoryObjectWithAttributes( cat_1, UnderlyingMatrix, ReducedSyzygiesOfColumns( ReducedSyzygiesOfColumns( KroneckerMat( TransposedMatrix( deduped_1_1 ), HomalgIdentityMatrix( NumberRows( deduped_2_1 ), deduped_3_1 ) ), DiagMat( deduped_3_1, ListWithIdenticalEntries( NumberColumns( deduped_1_1 ), deduped_2_1 ) ) ), DiagMat( deduped_3_1, ListWithIdenticalEntries( NumberRows( deduped_1_1 ), deduped_2_1 ) ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddLeftUnitorWithGivenTensorProduct( cat,
+        
+########
+function ( cat_1, a_1, s_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, a_1, UnderlyingMatrix, HomalgIdentityMatrix( NumberRows( UnderlyingMatrix( a_1 ) ), UnderlyingRing( cat_1 ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddMultiplyWithElementOfCommutativeRingForMorphisms( cat,
         
 ########
 function ( cat_1, r_1, a_1 )
     return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), UnderlyingMatrix, r_1 * UnderlyingMatrix( a_1 ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddRightUnitorWithGivenTensorProduct( cat,
+        
+########
+function ( cat_1, a_1, s_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, a_1, UnderlyingMatrix, HomalgIdentityMatrix( NumberRows( UnderlyingMatrix( a_1 ) ), UnderlyingRing( cat_1 ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddTensorProductOnMorphismsWithGivenTensorProducts( cat,
+        
+########
+function ( cat_1, s_1, alpha_1, beta_1, r_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, KroneckerMat( UnderlyingMatrix( alpha_1 ), UnderlyingMatrix( beta_1 ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddTensorProductOnObjects( cat,
+        
+########
+function ( cat_1, arg2_1, arg3_1 )
+    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := UnderlyingMatrix( arg3_1 );
+    deduped_4_1 := UnderlyingMatrix( arg2_1 );
+    deduped_3_1 := UnderlyingRing( cat_1 );
+    deduped_2_1 := NumberRows( deduped_5_1 );
+    deduped_1_1 := NumberRows( deduped_4_1 );
+    return CreateCapCategoryObjectWithAttributes( cat_1, UnderlyingMatrix, UnionOfColumns( deduped_3_1, deduped_1_1 * deduped_2_1, [ KroneckerMat( deduped_4_1, HomalgIdentityMatrix( deduped_2_1, deduped_3_1 ) ), DiagMat( deduped_3_1, ListWithIdenticalEntries( deduped_1_1, deduped_5_1 ) ) ] ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddTensorUnit( cat,
+        
+########
+function ( cat_1 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, UnderlyingMatrix, HomalgZeroMatrix( 1, 0, UnderlyingRing( cat_1 ) ) );
 end
 ########
         
