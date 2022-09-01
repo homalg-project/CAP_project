@@ -250,9 +250,9 @@ InstallMethod( WrapperCategory,
     
     copy_value_or_default( options, category_constructor_options, "category_object_filter", IsWrapperCapCategoryObject );
     copy_value_or_default( options, category_constructor_options, "category_morphism_filter", IsWrapperCapCategoryMorphism );
-    copy_value_or_default( options, category_constructor_options, "object_constructor", AsObjectInWrapperCategory );
+    copy_value_or_default( options, category_constructor_options, "object_constructor", { D, object_datum } -> AsObjectInWrapperCategory( D, object_datum ) );
     copy_value_or_default( options, category_constructor_options, "object_datum", { D, o } -> UnderlyingCell( o ) );
-    copy_value_or_default( options, category_constructor_options, "morphism_constructor", AsMorphismInWrapperCategory );
+    copy_value_or_default( options, category_constructor_options, "morphism_constructor", { D, source, morphism_datum, range } -> AsMorphismInWrapperCategory( D, source, morphism_datum, range ) );
     copy_value_or_default( options, category_constructor_options, "morphism_datum", { D, m } -> UnderlyingCell( m ) );
     
     if IsBound( options.category_filter ) then
