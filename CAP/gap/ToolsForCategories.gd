@@ -150,8 +150,6 @@ DeclareGlobalFunction( "CAP_INTERNAL_ASSERT_IS_NON_NEGATIVE_INTEGER_OR_INFINITY"
 
 DeclareGlobalFunction( "ListKnownCategoricalProperties" );
 
-DeclareGlobalFunction( "CAP_MergeRecords" );
-
 DeclareGlobalFunction( "HelpForCAP" );
 
 #! @Arguments category[, operation]

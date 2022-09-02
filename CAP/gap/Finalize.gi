@@ -47,10 +47,11 @@ BindGlobal( "CAP_INTERNAL_FINAL_DERIVATION_SANITY_CHECK",
         
     od;
     
-    methods_to_check := Concatenation( [ [ derivation.name, derivation.function_list ] ], derivation.additional_functions );
+    methods_to_check := Concatenation( [ [ derivation.target_op, derivation.function_list ] ], derivation.additional_functions );
     
     for method in methods_to_check do
         
+        # see AddDerivation in Derivations.gi
         method_name := NameFunction( method[1] );
         
         if not IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(method_name) ) then
@@ -94,7 +95,7 @@ end );
 
 InstallGlobalFunction( AddFinalDerivation,
                
-  function( name, can, cannot, func_list, additional_functions... )
+  function( target_op, can, cannot, func_list, additional_functions... )
     local final_derivation, loop_multiplier, collected_list, current_implementation, current_list,
           operations_in_graph, used_ops_with_multiples, preconditions_complete, i, current_additional_func, function_called_before_installation;
 
@@ -133,7 +134,7 @@ InstallGlobalFunction( AddFinalDerivation,
             
         od;
     fi;
-    final_derivation.weights := collected_list;
+    final_derivation.used_ops_with_multiples := collected_list;
     used_ops_with_multiples := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, can );
     final_derivation.can_compute := used_ops_with_multiples;
 
@@ -148,7 +149,7 @@ InstallGlobalFunction( AddFinalDerivation,
         current_additional_func[ 3 ] := collected_list;
     od;
     
-    final_derivation.name := name;
+    final_derivation.target_op := target_op;
     final_derivation.cannot_compute := cannot;
     final_derivation.function_list := func_list;
     final_derivation.function_called_before_installation := function_called_before_installation;
@@ -181,7 +182,7 @@ InstallMethod( Finalize,
     
     if not category!.is_computable then
         
-        derivation_list := Filtered( derivation_list, der -> not NameFunction( der!.name ) = "IsCongruentForMorphisms" );
+        derivation_list := Filtered( derivation_list, der -> not NameFunction( der!.target_op ) = "IsCongruentForMorphisms" );
         
     fi;
     
@@ -234,12 +235,12 @@ InstallMethod( Finalize,
             current_final_derivation := derivation_list[ i ];
             
             ## calculate weight
-            weight := current_final_derivation.weight + Sum( List( current_final_derivation.weights, j -> CurrentOperationWeight( weight_list, NameFunction( j[ 1 ] ) ) * j[ 2 ] ) );
+            weight := current_final_derivation.weight + Sum( List( current_final_derivation.used_ops_with_multiples, j -> CurrentOperationWeight( weight_list, NameFunction( j[ 1 ] ) ) * j[ 2 ] ) );
             
             Info( DerivationInfo, 1, Concatenation( "install(",
                                           String( weight ),
                                           ") ",
-                                          NameFunction( current_final_derivation.name ),
+                                          NameFunction( current_final_derivation.target_op ),
                                           ": ",
                                           current_final_derivation.description, " (final derivation)\n" ) );
             
@@ -252,7 +253,7 @@ InstallMethod( Finalize,
             fi;
             
             ## Add method
-            add_name := ValueGlobal( Concatenation( [ "Add", NameFunction( current_final_derivation.name ) ] ) );
+            add_name := ValueGlobal( Concatenation( [ "Add", NameFunction( current_final_derivation.target_op ) ] ) );
             
             add_name( category, current_final_derivation.function_list, weight : IsFinalDerivation := true );
 

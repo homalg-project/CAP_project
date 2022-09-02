@@ -571,39 +571,49 @@ end );
 BindGlobal( "CAP_INTERNAL_REPLACE_ADDITIONAL_SYMBOL_APPEARANCE",
   
   function( appearance_list, replacement_record )
-    local remove_list, new_appearances, current_appearance_nr,
-          current_appearance, current_replacement, i;
-
+    local remove_list, new_appearances, current_appearance, pos, current_appearance_nr, current_replacement, i;
+    
+    appearance_list := StructuralCopy( appearance_list );
+    
     remove_list := [];
     new_appearances := [];
-
+    
     for current_appearance_nr in [ 1 .. Length( appearance_list ) ] do
         
         current_appearance := appearance_list[ current_appearance_nr ];
         
         if IsBound( replacement_record.(current_appearance[ 1 ]) ) then
+            
             Add( remove_list, current_appearance_nr );
+            
             for current_replacement in replacement_record.(current_appearance[ 1 ]) do
-                Add( new_appearances, [ current_replacement[ 1 ], current_replacement[ 2 ] * current_appearance[ 2 ] ] );
+                
+                pos := Position( List( appearance_list, x -> x[1] ), current_replacement[1] );
+                
+                if pos = fail then
+                    
+                    Add( new_appearances, [ current_replacement[ 1 ], current_replacement[ 2 ] * current_appearance[ 2 ] ] );
+                    
+                else
+                    
+                    appearance_list[pos][2] := appearance_list[pos][2] + current_replacement[ 2 ] * current_appearance[ 2 ];
+                    
+                fi;
+                
             od;
+            
         fi;
-
+        
     od;
-
+    
     for i in Reversed( remove_list ) do
+        
         Remove( appearance_list, i );
+        
     od;
-
+    
     return Concatenation( appearance_list, new_appearances );
-
-end );
-
-BindGlobal( "CAP_INTERNAL_VALUE_GLOBAL_OR_VALUE",
-  function( val )
-    if IsString( val ) then
-        return ValueGlobal( val );
-    fi;
-    return val;
+    
 end );
 
 ##
@@ -631,8 +641,8 @@ InstallGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION",
     fi;
     
     ## Make List, Perform, Apply look like loops
-    ## Beginning space is important here, to avoid scanning things like CallFuncList
-    for i in [ " List(", " Perform(", " Apply(" ] do
+    ## Beginning space (or new line) is important here, to avoid scanning things like CallFuncList
+    for i in [ " List(", "\nList(",  " Perform(", "\nPerform(", "\nApply(", " Apply(" ] do
         
         func_as_string := CAP_INTERNAL_MAKE_LOOP_SYMBOL_LOOK_LIKE_LOOP( func_as_string, i );
         
@@ -661,6 +671,7 @@ InstallGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION",
             symbol_appearance_rec.( current_symbol ) := symbol_appearance_rec.( current_symbol ) + loop_multiple^loop_power;
             
         elif current_symbol in [ "for", "while", "List", "Perform", "Apply" ] then
+            
             loop_power := loop_power + 1;
             
         elif current_symbol = "od" then
@@ -670,6 +681,12 @@ InstallGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION",
         fi;
         
     od;
+    
+    if loop_power <> 0 then
+        
+        Error( "The automated detection of preconditions of derivations could not detect loops properly. If you are using the reserved word `for` in the implementation (for example in a string), this is probably the cause. If not, please report this as a bug. You can use `ConditionsListComplete := true` to avoid this error." );
+        
+    fi;
     
     symbol_appearance_rec := List( RecNames( symbol_appearance_rec ), i -> [ i, symbol_appearance_rec.(i) ] );
     symbol_appearance_rec := CAP_INTERNAL_REPLACE_ADDITIONAL_SYMBOL_APPEARANCE( symbol_appearance_rec, replacement_record );
@@ -815,16 +832,6 @@ InstallGlobalFunction( ListKnownCategoricalProperties,
     
     return list;
     
-end );
-
-InstallGlobalFunction( CAP_MergeRecords,
-  function( dst, src )
-    local key;
-    for key in RecNames( src ) do
-        if not IsBound( dst.( key ) ) then
-            dst.( key ) := src.( key );
-        fi;
-    od;
 end );
 
 InstallGlobalFunction( HelpForCAP,

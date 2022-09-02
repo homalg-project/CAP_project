@@ -191,6 +191,12 @@ InstallGlobalFunction( CapInternalInstallAdd,
         
         is_precompiled_derivation := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "IsPrecompiledDerivation", false );
         
+        if Length( Positions( [ is_derivation, is_final_derivation, is_precompiled_derivation ], true ) ) > 1 then
+            
+            Error( "at most one of the options `IsDerivation`, `IsFinalDerivation` and `IsPrecompiledDerivation` may be set" );
+            
+        fi;
+        
         replaced_filter_list := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( filter_list, category );
         
         ## Nr arguments sanity check
@@ -542,7 +548,8 @@ InstallGlobalFunction( CapInternalInstallAdd,
         if not is_derivation then
             
             # Final derivations are not handled by the original derivation mechanism and are thus just like primitive operations for it.
-            AddPrimitiveOperation( category!.derivations_weight_list, function_name, weight );
+            # make sure to reset options
+            AddPrimitiveOperation( category!.derivations_weight_list, function_name, weight : IsFinalDerivation := false, IsPrecompiledDerivation := false );
             
         fi;
         
