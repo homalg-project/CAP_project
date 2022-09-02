@@ -194,48 +194,28 @@
   
   [33X[1;0Y[29X[2XAddDerivation[102X( [3Xarg1[103X, [3Xarg2[103X, [3Xarg3[103X ) [32X operation[133X
   
-  [1X8.3-8 AddDerivationPair[101X
-  
-  [33X[1;0Y[29X[2XAddDerivationPair[102X( [3Xarg1[103X, [3Xarg2[103X, [3Xarg3[103X, [3Xarg4[103X, [3Xarg5[103X, [3Xarg6[103X ) [32X operation[133X
-  
-  [1X8.3-9 AddDerivationPair[101X
-  
-  [33X[1;0Y[29X[2XAddDerivationPair[102X( [3Xarg1[103X, [3Xarg2[103X, [3Xarg3[103X, [3Xarg4[103X, [3Xarg5[103X ) [32X operation[133X
-  
-  [1X8.3-10 AddDerivationPair[101X
-  
-  [33X[1;0Y[29X[2XAddDerivationPair[102X( [3Xarg1[103X, [3Xarg2[103X, [3Xarg3[103X, [3Xarg4[103X, [3Xarg5[103X, [3Xarg6[103X ) [32X operation[133X
-  
-  [1X8.3-11 AddDerivationPair[101X
-  
-  [33X[1;0Y[29X[2XAddDerivationPair[102X( [3Xarg1[103X, [3Xarg2[103X, [3Xarg3[103X, [3Xarg4[103X, [3Xarg5[103X ) [32X operation[133X
-  
-  [1X8.3-12 AddDerivationToCAP[101X
+  [1X8.3-8 AddDerivationToCAP[101X
   
   [33X[1;0Y[29X[2XAddDerivationToCAP[102X( [3Xarg[103X ) [32X function[133X
   
-  [1X8.3-13 AddDerivationPairToCAP[101X
-  
-  [33X[1;0Y[29X[2XAddDerivationPairToCAP[102X( [3Xarg[103X ) [32X function[133X
-  
-  [1X8.3-14 AddWithGivenDerivationPairToCAP[101X
+  [1X8.3-9 AddWithGivenDerivationPairToCAP[101X
   
   [33X[1;0Y[29X[2XAddWithGivenDerivationPairToCAP[102X( [3Xarg[103X ) [32X function[133X
   
-  [1X8.3-15 Operations[101X
+  [1X8.3-10 Operations[101X
   
   [33X[1;0Y[29X[2XOperations[102X( [3XG[103X ) [32X attribute[133X
   
   [33X[0;0YGives the operations in the graph [3XG[103X, as a list of strings.[133X
   
-  [1X8.3-16 DerivationsUsingOperation[101X
+  [1X8.3-11 DerivationsUsingOperation[101X
   
   [33X[1;0Y[29X[2XDerivationsUsingOperation[102X( [3XG[103X, [3Xop_name[103X ) [32X operation[133X
   
   [33X[0;0YFinds  all  the  derivations  in  the  graph  [3XG[103X that use the operation named
   [3Xop_name[103X, and returns them as a list.[133X
   
-  [1X8.3-17 DerivationsOfOperation[101X
+  [1X8.3-12 DerivationsOfOperation[101X
   
   [33X[1;0Y[29X[2XDerivationsOfOperation[102X( [3XG[103X, [3Xop_name[103X ) [32X operation[133X
   

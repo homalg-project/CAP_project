@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2022.08-12
+                                   2022.09-01
   
   
-                                 26 August 2022
+                                2 September 2022
   
   
                                Sebastian Gutsche
@@ -812,16 +812,11 @@
       8.3-5 AddDerivation
       8.3-6 AddDerivation
       8.3-7 AddDerivation
-      8.3-8 AddDerivationPair
-      8.3-9 AddDerivationPair
-      8.3-10 AddDerivationPair
-      8.3-11 AddDerivationPair
-      8.3-12 AddDerivationToCAP
-      8.3-13 AddDerivationPairToCAP
-      8.3-14 AddWithGivenDerivationPairToCAP
-      8.3-15 Operations
-      8.3-16 DerivationsUsingOperation
-      8.3-17 DerivationsOfOperation
+      8.3-8 AddDerivationToCAP
+      8.3-9 AddWithGivenDerivationPairToCAP
+      8.3-10 Operations
+      8.3-11 DerivationsUsingOperation
+      8.3-12 DerivationsOfOperation
     8.4 [33X[0;0YManaging Derivations in a Category[133X
       8.4-1 IsOperationWeightList
       8.4-2 MakeOperationWeightList
