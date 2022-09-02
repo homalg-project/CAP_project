@@ -358,109 +358,6 @@ InstallMethod( AddDerivation,
     AddDerivation( graph, derivation );
 end );
 
-InstallMethod( AddDerivationPair,
-               [ IsDerivedMethodGraph, IsFunction, IsFunction, IsFunction, IsFunction ],
-               
-  function( graph, target_op1, target_op2, implementations_with_extra_filters1, implementations_with_extra_filters2 )
-    
-    Display( "WARNING: AddDerivationPair is deprecated and will not be supported after 2022.10.26. Please use AddDerivation instead.\n" );
-    
-    AddDerivationPair( graph,
-                       target_op1,
-                       target_op2,
-                       [ ],
-                       [ [ implementations_with_extra_filters1, [ ] ] ],
-                       [ [ implementations_with_extra_filters2, [ ] ] ] );
-                   
-end );
-
-InstallMethod( AddDerivationPair,
-               [ IsDerivedMethodGraph, IsFunction, IsFunction, IsDenseList, IsDenseList ],
-               
-  function( graph, target_op1, target_op2, implementations_with_extra_filters1, implementations_with_extra_filters2 )
-    
-    Display( "WARNING: AddDerivationPair is deprecated and will not be supported after 2022.10.26. Please use AddDerivation instead.\n" );
-    
-    AddDerivationPair( graph,
-                       target_op1,
-                       target_op2,
-                       [ ],
-                       implementations_with_extra_filters1,
-                       implementations_with_extra_filters2 );
-                   
-end );
-
-InstallMethod( AddDerivationPair,
-               [ IsDerivedMethodGraph, IsFunction, IsFunction, IsDenseList, IsFunction, IsFunction ],
-               
-  function( graph, target_op1, target_op2, used_ops_with_multiples,
-            implementations_with_extra_filters1, implementations_with_extra_filters2 )
-    
-    Display( "WARNING: AddDerivationPair is deprecated and will not be supported after 2022.10.26. Please use AddDerivation instead.\n" );
-    
-    AddDerivationPair( graph,
-                       target_op1,
-                       target_op2,
-                       used_ops_with_multiples,
-                       [ [ implementations_with_extra_filters1, [ ] ] ],
-                       [ [ implementations_with_extra_filters2, [ ] ] ] );
-    
-end );
-
-InstallMethod( AddDerivationPair,
-               [ IsDerivedMethodGraph, IsFunction, IsFunction, IsDenseList, IsDenseList, IsDenseList ],
-               
-  function( graph, target_op1, target_op2, used_ops_with_multiples,
-            implementations_with_extra_filters1, implementations_with_extra_filters2 )
-    local weight, category_filter, description, derivation1, derivation2, collected_list,
-          operations_in_graph, current_list, current_implementation, loop_multiplier,
-          preconditions_complete;
-    
-    Display( "WARNING: AddDerivationPair is deprecated and will not be supported after 2022.10.26. Please use AddDerivation instead.\n" );
-    
-    weight := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Weight", 1 );
-    category_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryFilter", IsCapCategory );
-    description := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Description", "" );
-    loop_multiplier := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "WeightLoopMultiple", 2 );
-    preconditions_complete := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "ConditionsListComplete", false );
-    
-    ## get used ops
-    ## Is this the right place? Or should this only be done when no ops are given?
-    operations_in_graph := Operations( graph );
-    
-    collected_list := [ ];
-    
-    if preconditions_complete = false then
-        for current_implementation in Concatenation( implementations_with_extra_filters1, implementations_with_extra_filters2 ) do
-            
-            current_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( current_implementation[ 1 ], operations_in_graph, loop_multiplier, CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS );
-            current_list := List( current_list, i -> [ ValueGlobal( i[ 1 ] ), i[ 2 ] ]);
-            collected_list := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, current_list );
-            
-        od;
-    fi;
-    
-    used_ops_with_multiples := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, used_ops_with_multiples );
-    
-    derivation1 := MakeDerivation( description,
-                                  target_op1,
-                                  used_ops_with_multiples,
-                                  weight,
-                                  implementations_with_extra_filters1,
-                                  category_filter );
-    
-    derivation2 := MakeDerivation( description,
-                                   target_op2,
-                                   used_ops_with_multiples,
-                                   weight,
-                                   implementations_with_extra_filters2,
-                                   category_filter );
-    
-    AddDerivation( graph, derivation1 );
-    AddDerivation( graph, derivation2 );
-    
-end );
-
 InstallGlobalFunction( AddDerivationToCAP,
   
   function( arg )
@@ -472,64 +369,17 @@ InstallGlobalFunction( AddDerivationToCAP,
     
 end );
 
-InstallGlobalFunction( AddDerivationPairToCAP,
-  
-  function( arg )
-    
-    Display( "WARNING: AddDerivationPairToCAP is deprecated and will not be supported after 2022.10.26. Please use AddDerivationToCAP instead.\n" );
-    
-    CallFuncList( AddDerivationPair, Concatenation( [ CAP_INTERNAL_DERIVATION_GRAPH ], arg ) );
-    
-end );
-
 InstallGlobalFunction( AddWithGivenDerivationPairToCAP,
   
-  function( arg )
-    local op_without_given, op_with_given, recnames, new_arg, i, test_arg, func_arg;
+  function( target_op, without_given_func, with_given_func )
+    local without_given_name, with_given_name;
     
-    op_without_given := NameFunction( arg[ 1 ] );
+    without_given_name := NameFunction( target_op );
     
-    op_with_given := CAP_INTERNAL_METHOD_NAME_RECORD.(op_without_given).with_given_without_given_name_pair[ 2 ];
+    with_given_name := CAP_INTERNAL_METHOD_NAME_RECORD.(without_given_name).with_given_without_given_name_pair[2];
     
-    ## Check whether arguments need to be filled
-    
-    test_arg := arg[ Length( arg ) - 1 ];
-    
-    if Length( arg ) = 2 or ( not IsFunction( test_arg ) and not ( IsList( test_arg ) and IsList( test_arg[ 1 ] ) ) ) then
-        
-        Print(
-          Concatenation(
-          "WARNING: AddWithGivenDerivationPairToCAP with a single function is deprecated and will not be supported after 2022.05.06. ",
-          "Please use AddDerivationToCAP instead and make sure that suitable WithGiven derivations are installed.\n"
-          )
-        );
-        
-        # we only get one function -> leave the other for the usual WithGiven derivation
-        CallFuncList( AddDerivationToCAP, arg );
-        
-        return;
-        
-    fi;
-    
-    if Length( arg ) = 3 and ForAll( arg, IsFunction ) then
-        
-        AddDerivationToCAP( arg[ 1 ], arg[ 2 ] );
-        AddDerivationToCAP( ValueGlobal( op_with_given ), arg[ 3 ] );
-        
-        return;
-        
-    fi;
-    
-    Print(
-      Concatenation(
-      "WARNING: AddWithGivenDerivationPairToCAP is deprecated and will not be supported after 2022.10.26 except when passing exactly three functions.",
-      "Please use AddDerivationToCAP instead.\n"
-      )
-    );
-    
-    new_arg := Concatenation( [ CAP_INTERNAL_DERIVATION_GRAPH, arg[ 1 ], ValueGlobal( op_with_given ) ], arg{[ 2 .. Length( arg ) ]} );
-    
-    CallFuncList( AddDerivationPair, new_arg );
+    AddDerivationToCAP( target_op, without_given_func );
+    AddDerivationToCAP( ValueGlobal( with_given_name ), with_given_func );
     
 end );
 
