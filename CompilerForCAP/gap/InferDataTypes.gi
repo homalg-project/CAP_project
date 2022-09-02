@@ -965,10 +965,17 @@ CapJitAddTypeSignature( "ListWithIdenticalEntries", [ IsInt, IsObject ], functio
 end );
 
 CapJitAddTypeSignature( "Concatenation", [ IsList ], function ( input_types )
+    local filter;
     
-    Assert( 0, input_types[1].element_type.filter = IsList );
+    if input_types[1].element_type.filter = IsList then
+        filter := IsList;
+    elif input_types[1].element_type.filter = IsLazyArray then
+        filter := IsLazyArray;
+    else
+        Error( input_types[1].element_type.filter, " is not in [ IsList, IsLazyArray ]\n" );
+    fi;
     
-    return rec( filter := IsList, element_type := input_types[1].element_type.element_type );
+    return rec( filter := filter, element_type := input_types[1].element_type.element_type );
     
 end );
 
@@ -1173,6 +1180,53 @@ CapJitAddTypeSignature( "[,]", [ IsList, IsInt, IsInt ], function ( input_types 
     Assert( 0, input_types[1].element_type.filter = IsList );
     
     return input_types[1].element_type.element_type;
+    
+end );
+
+CapJitAddTypeSignature( "LazyArray", [ IsInt, IsFunction ], function ( args, func_stack )
+    
+    args := ShallowCopy( args );
+    
+    args.2 := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS_TYPES( args.2, [ args.1.data_type ], func_stack );
+    
+    if args.2 = fail then
+        
+        #Error( "could not determine output type" );
+        return fail;
+        
+    fi;
+    
+    return rec( args := args, output_type := rec( filter := IsLazyArray, element_type := args.2.data_type.signature[2] ) );
+    
+end );
+
+CapJitAddTypeSignature( "LazyStandardInterval", [ IsInt ], function ( input_types )
+    
+    return rec( filter := IsLazyArray, element_type := rec( filter := IsInt ) );
+    
+end );
+
+CapJitAddTypeSignature( "LazyInterval", [ IsInt, IsInt ], function ( input_types )
+    
+    return rec( filter := IsLazyInterval, element_type := rec( filter := IsInt ) );
+    
+end );
+
+CapJitAddTypeSignature( "LazyConstantArray", [ IsInt, IsInt ], function ( input_types )
+    
+    return rec( filter := IsLazyConstantArray, element_type := rec( filter := IsInt ) );
+    
+end );
+
+CapJitAddTypeSignature( "LazyArrayFromList", [ IsList ], function ( input_types )
+    
+    return rec( filter := IsLazyArrayFromList, element_type := rec( filter := IsInt ) );
+    
+end );
+
+CapJitAddTypeSignature( "ListOfValues", [ IsLazyArray ], function ( input_types )
+    
+    return rec( filter := IsList, element_type := rec( filter := IsInt ) );
     
 end );
 
