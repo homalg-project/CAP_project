@@ -598,14 +598,6 @@ BindGlobal( "CAP_INTERNAL_REPLACE_ADDITIONAL_SYMBOL_APPEARANCE",
 
 end );
 
-BindGlobal( "CAP_INTERNAL_VALUE_GLOBAL_OR_VALUE",
-  function( val )
-    if IsString( val ) then
-        return ValueGlobal( val );
-    fi;
-    return val;
-end );
-
 ##
 InstallGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION",
   
@@ -821,16 +813,6 @@ InstallGlobalFunction( ListKnownCategoricalProperties,
     
     return list;
     
-end );
-
-InstallGlobalFunction( CAP_MergeRecords,
-  function( dst, src )
-    local key;
-    for key in RecNames( src ) do
-        if not IsBound( dst.( key ) ) then
-            dst.( key ) := src.( key );
-        fi;
-    od;
 end );
 
 InstallGlobalFunction( HelpForCAP,
