@@ -51,6 +51,7 @@ BindGlobal( "CAP_INTERNAL_FINAL_DERIVATION_SANITY_CHECK",
     
     for method in methods_to_check do
         
+        # see AddDerivation in Derivations.gi
         method_name := NameFunction( method[1] );
         
         if not IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(method_name) ) then
