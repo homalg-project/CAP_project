@@ -310,7 +310,13 @@ DeclareAttribute( "CommutativeRingOfLinearCategory",
 # make this mutable so we can overwrite it even if
 # some category constructor has already set it
 
-##
+#! @Description
+#! The argument is a category $C$ which is expected to lie in the
+#! filter <C>IsEquippedWithHomomorphismStructure</C>.
+#! The output is the range category $D$ of the defining functor
+#! $H: C^{\mathrm{op}} \times C \rightarrow D$ of the homomorphism structure.
+#! @Arguments C
+#! @Returns a category
 DeclareAttribute( "RangeCategoryOfHomomorphismStructure",
                   IsCapCategory,
                   "mutable" );
