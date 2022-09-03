@@ -174,6 +174,36 @@ InstallMethod( MorphismBetweenDirectSums,
            );
 end );
 
+##
+InstallOtherMethod( MorphismBetweenDirectSums,
+                    [ IsCapCategory, IsList ],
+               
+  function( cat, morphism_matrix )
+    local nr_rows, nr_cols;
+    
+    nr_rows := Size( morphism_matrix );
+    
+    if nr_rows = 0 then
+        
+        Error( "The given matrix must not be empty" );
+        
+    fi;
+    
+    nr_cols := Size( morphism_matrix[1] );
+    
+    if nr_cols = 0 then
+        
+        Error( "The given matrix must not be empty" );
+        
+    fi;
+    
+    return MorphismBetweenDirectSums( cat,
+             List( morphism_matrix, row -> Source( row[1] ) ),
+             morphism_matrix,
+             List( morphism_matrix[1], col -> Range( col ) )
+           );
+end );
+
 ####################################
 ##
 ## Equalizer
