@@ -5321,7 +5321,8 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                     current_rec.output_source_getter,
                     Concatenation( recnames, RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) ),
                     2,
-                    CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS
+                    CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS,
+                    rec( )
                 )
             );
             
@@ -5344,7 +5345,8 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                     current_rec.output_range_getter,
                     Concatenation( recnames, RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) ),
                     2,
-                    CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS
+                    CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS,
+                    rec( )
                 )
             );
             

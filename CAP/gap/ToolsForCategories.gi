@@ -582,17 +582,17 @@ BindGlobal( "CAP_INTERNAL_REPLACE_ADDITIONAL_SYMBOL_APPEARANCE",
         
         current_appearance := appearance_list[ current_appearance_nr ];
         
-        if IsBound( replacement_record.(current_appearance[ 1 ]) ) then
+        if IsBound( replacement_record.(current_appearance[1]) ) then
             
             Add( remove_list, current_appearance_nr );
             
-            for current_replacement in replacement_record.(current_appearance[ 1 ]) do
+            for current_replacement in replacement_record.(current_appearance[1]) do
                 
-                pos := Position( List( appearance_list, x -> x[1] ), current_replacement[1] );
+                pos := PositionProperty( appearance_list, x -> x[1] = current_replacement[1] and x[3] = current_appearance[3] );
                 
                 if pos = fail then
                     
-                    Add( new_appearances, [ current_replacement[ 1 ], current_replacement[ 2 ] * current_appearance[ 2 ] ] );
+                    Add( new_appearances, [ current_replacement[ 1 ], current_replacement[ 2 ] * current_appearance[ 2 ], current_appearance[3] ] );
                     
                 else
                     
@@ -619,8 +619,8 @@ end );
 ##
 InstallGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION",
   
-  function( func, symbol_list, loop_multiple, replacement_record )
-    local func_as_string, func_stream, i, func_as_list, loop_power, symbol_appearance_rec, current_symbol;
+  function( func, symbol_list, loop_multiple, replacement_record, category_getters )
+    local func_as_string, func_stream, func_as_list, loop_power, symbol_appearance_list, current_symbol, category_getter, pos, i;
     
     if IsOperation( func ) then
         
@@ -656,19 +656,40 @@ InstallGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION",
     
     loop_power := 0;
     
-    symbol_appearance_rec := rec( );
+    symbol_appearance_list := [ ];
     
     symbol_list := Concatenation( symbol_list, RecNames( replacement_record ) );
     
-    for current_symbol in func_as_list do
+    for i in [ 1 .. Length( func_as_list ) ] do
+        
+        current_symbol := func_as_list[i];
         
         if current_symbol in symbol_list then
             
-            if not IsBound( symbol_appearance_rec.( current_symbol ) ) then
-                symbol_appearance_rec.( current_symbol ) := 0;
+            # function cannot end with a symbol
+            Assert( 0, i < Length( func_as_list ) );
+            
+            if IsBound( category_getters.(func_as_list[i + 1]) ) then
+                
+                category_getter := category_getters.(func_as_list[i + 1]);
+                
+            else
+                
+                category_getter := fail;
+                
             fi;
             
-            symbol_appearance_rec.( current_symbol ) := symbol_appearance_rec.( current_symbol ) + loop_multiple^loop_power;
+            pos := PositionProperty( symbol_appearance_list, x -> x[1] = current_symbol and x[3] = category_getter );
+            
+            if pos = fail then
+                
+                Add( symbol_appearance_list, [ current_symbol, loop_multiple^loop_power, category_getter ] );
+                
+            else
+                
+                symbol_appearance_list[pos][2] := symbol_appearance_list[pos][2] + loop_multiple^loop_power;
+                
+            fi;
             
         elif current_symbol in [ "for", "while", "List", "Perform", "Apply" ] then
             
@@ -684,13 +705,12 @@ InstallGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION",
     
     if loop_power <> 0 then
         
-        Error( "The automated detection of preconditions of derivations could not detect loops properly. If you are using the reserved word `for` in the implementation (for example in a string), this is probably the cause. If not, please report this as a bug. You can use `ConditionsListComplete := true` to avoid this error." );
+        Error( "The automated detection of preconditions of derivations could not detect loops properly. If you are using the reserved word `for` in the implementation (e.g. in a string), this is probably the cause. If not, please report this as a bug." );
         
     fi;
     
-    symbol_appearance_rec := List( RecNames( symbol_appearance_rec ), i -> [ i, symbol_appearance_rec.(i) ] );
-    symbol_appearance_rec := CAP_INTERNAL_REPLACE_ADDITIONAL_SYMBOL_APPEARANCE( symbol_appearance_rec, replacement_record );
-    return symbol_appearance_rec;
+    symbol_appearance_list := CAP_INTERNAL_REPLACE_ADDITIONAL_SYMBOL_APPEARANCE( symbol_appearance_list, replacement_record );
+    return symbol_appearance_list;
     
 end );
 
@@ -698,23 +718,22 @@ end );
 InstallGlobalFunction( CAP_INTERNAL_MERGE_PRECONDITIONS_LIST,
   
   function( list1, list2 )
-    local i, j, append;
+    local pos, current_precondition;
     
-    for i in list1 do
+    list2 := StructuralCopy( list2 );
+    
+    for current_precondition in list1 do
         
-        append := true;
+        pos := PositionProperty( list2, x -> x[1] = current_precondition[1] and x[3] = current_precondition[3] );
         
-        for j in [ 1 .. Length( list2 ) ] do
+        if pos = fail then
             
-            if list2[ j ][ 1 ] = i[ 1 ] then
-                list2[ j ][ 2 ] := Maximum( list2[ j ][ 2 ], i[ 2 ] );
-                append := false;
-                break;
-            fi;
-        od;
-        
-        if append then
-            Add( list2, i );
+            Add( list2, current_precondition );
+            
+        else
+            
+            list2[pos][2] := Maximum( list2[pos][2], current_precondition[2] );
+            
         fi;
         
     od;

@@ -71,7 +71,7 @@ InstallGlobalFunction( CAPAddPrepareFunction,
         fi;
     od;
     
-    used_symbol_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( prepare_function, operation_names, 1, rec() );
+    used_symbol_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( prepare_function, operation_names, 1, rec( ), rec( ) );
     used_symbol_list := List( used_symbol_list, i -> i[ 1 ] );
     used_symbol_list := Concatenation( used_symbol_list, precondition_list );
     used_symbol_list := DuplicateFreeList( used_symbol_list );

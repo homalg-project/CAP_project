@@ -2834,7 +2834,7 @@ AddDerivationToCAP( SolveLinearSystemInAbCategory,
         )
       );
   end :
-  ConditionsListComplete := true,
+  CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
   CategoryFilter := IsAbCategory and HasRangeCategoryOfHomomorphismStructure,
   Description := "SolveLinearSystemInAbCategory using the homomorphism structure" 
 );
@@ -2906,7 +2906,7 @@ AddDerivationToCAP( SolveLinearSystemInAbCategoryOrFail,
         )
       );
   end :
-  ConditionsListComplete := true,
+  CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
   CategoryFilter := IsAbCategory and HasRangeCategoryOfHomomorphismStructure,
   Description := "SolveLinearSystemInAbCategoryOrFail using the homomorphism structure" 
 );
@@ -2959,7 +2959,7 @@ AddDerivationToCAP( MereExistenceOfSolutionOfLinearSystemInAbCategory,
     return IsLiftable( range_cat, nu, H );
     
   end :
-  ConditionsListComplete := true,
+  CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
   CategoryFilter := IsAbCategory and HasRangeCategoryOfHomomorphismStructure,
   Description := "MereExistenceOfSolutionOfLinearSystemInAbCategory using the homomorphism structure"
 );
