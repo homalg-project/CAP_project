@@ -37,30 +37,27 @@
   [33X[0;0YCreates a new derivation object. The argument [3Xname[103X is an arbitrary name used
   to  identify this derivation, and is useful only for debugging purposes. The
   argument [3Xtarget_op[103X is the operation which the derived method implements. The
-  argument [3Xused_ops_with_multiples[103X contains each operation used by the derived
-  method,  together  with  a  positive  integer specifying how many times that
-  operation  is used and optionally a category getter. This is given as a list
-  of  lists,  where  each  sublist  has as first entry an operation, as second
-  entry  an  integer  and  as third entry optionally a function. This function
-  should  accept the category and return a category for which the operation in
-  the first entry must be installed for the derivation to be considered valid.
-  The  argument  [3Xweight[103X  is  an  additional number to add when calculating the
-  resulting weight of the target operation using this derivation. Unless there
-  is  any particular reason to regard the derivation as exceedingly expensive,
-  this  number  should  be  [10X1[110X. The argument [3Ximplementations_with_extra_filters[103X
-  contains one or more functions with the actual implementation of the derived
-  method, together with lists of extra argument filters for each function. The
-  argument  is  a list with entries of the form [10X[fun, filters][110X, where [10Xfun[110X is a
-  function  and [10Xfilters[110X is a (not necessarily dense) list of argument filters.
-  If  only  one  function  is given, then [10Xfilters[110X should be the empty list; in
-  this  case  the  argument's  value  would  be  [[fun,[]]],  where [10Xfun[110X is the
-  function.   The  argument  [3Xcategory_filter[103X  is  a  filter  describing  which
-  categories  the  derivation is valid for. If it is valid for all categories,
-  then   this  argument  should  have  the  value  [10XIsCapCategory[110X.  The  Option
-  [10XConditionsListComplete[110X indicates if the manually given list of preconditions
-  for  this  derivation  is  complete  or  should  be  extended by looking for
-  categorical operations in the function body. The value [10Xfalse[110X indicates it is
-  not complete, every other value that it is complete. Default is [10Xfalse[110X.[133X
+  argument [3Xused_ops_with_multiples[103X contains the name of each operation used by
+  the  derived  method,  together  with a positive integer specifying how many
+  times that operation is used and optionally a category getter. This is given
+  as  a  list  of  lists, where each sublist has as first entry the name of an
+  operation,  as  second  entry  an  integer  and  as third entry optionally a
+  function. This function should accept the category and return a category for
+  which  the operation in the first entry must be installed for the derivation
+  to  be  considered valid. The argument [3Xweight[103X is an additional number to add
+  when  calculating  the  resulting  weight of the target operation using this
+  derivation.  Unless  there is any particular reason to regard the derivation
+  as   exceedingly   expensive,   this   number  should  be  [10X1[110X.  The  argument
+  [3Ximplementations_with_extra_filters[103X  contains  one or more functions with the
+  actual  implementation  of  the derived method, together with lists of extra
+  argument  filters  for each function. The argument is a list with entries of
+  the  form  [10X[fun,  filters][110X,  where  [10Xfun[110X  is a function and [10Xfilters[110X is a (not
+  necessarily  dense) list of argument filters. If only one function is given,
+  then  [10Xfilters[110X  should  be  the empty list; in this case the argument's value
+  would be [[fun,[]]], where [10Xfun[110X is the function. The argument [3Xcategory_filter[103X
+  is  a  filter describing which categories the derivation is valid for. If it
+  is  valid  for  all  categories,  then  this  argument should have the value
+  [10XIsCapCategory[110X.[133X
   
   [1X8.2-3 DerivationName[101X
   
