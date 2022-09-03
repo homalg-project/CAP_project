@@ -402,7 +402,6 @@
   [2XDerivationInfo[102X 8.1-1 
   [2XDerivationName[102X, for IsDerivedMethod 8.2-3 
   [2XDerivationOfOperation[102X, for IsOperationWeightList, IsString 8.4-7 
-  [2XDerivationResultWeight[102X, for IsDerivedMethod, IsDenseList 8.2-13 
   [2XDerivationsOfOperation[102X, for IsDerivedMethodGraph, IsString 8.3-12 
   [2XDerivationsUsingOperation[102X, for IsDerivedMethodGraph, IsString 8.3-11 
   [2XDerivationWeight[102X, for IsDerivedMethod 8.2-4 
@@ -450,7 +449,7 @@
   [2XFiberProductFunctorial[102X, for IsList, IsList, IsList 6.11-15 
   [2XFiberProductFunctorialWithGivenFiberProducts[102X, for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject 6.11-16 
   [2XFiberProductOp[102X, for IsList 6.11-8 
-  [2XFunctionCalledBeforeInstallation[102X, for IsDerivedMethod 8.2-14 
+  [2XFunctionCalledBeforeInstallation[102X, for IsDerivedMethod 8.2-11 
   [2XFunctorCanonicalizeZeroMorphisms[102X, for IsCapCategory 5.4-15 
   [2XFunctorCanonicalizeZeroObjects[102X, for IsCapCategory 5.4-13 
   [2XFunctorMorphismOperation[102X, for IsCapFunctor 5.4-8 
@@ -496,7 +495,7 @@
   [2XInjectiveDimension[102X, for IsCapCategoryObject 2.12-2 
   [2XInputSignature[102X, for IsCapFunctor 5.4-10 
   [2XInstallDeprecatedAlias[102X 9.2-21 
-  [2XInstallDerivationForCategory[102X, for IsDerivedMethod, IsPosInt, IsCapCategory 8.2-12 
+  [2XInstallDerivationForCategory[102X, for IsDerivedMethod, IsPosInt, IsCapCategory 8.2-10 
   [2XInstallDerivationsUsingOperation[102X, for IsOperationWeightList, IsString 8.4-8 
   [2XInstallFunctor[102X, for IsCapFunctor, IsString 5.4-11 
   [2XInstallMethodForCompilerForCAP[102X 9.2-24 
@@ -788,9 +787,7 @@
   [2XUniversalMorphismIntoTerminalObjectWithGivenTerminalObject[102X, for IsCapCategoryObject, IsCapCategoryObject 6.4-4 
   [2XUniversalMorphismIntoZeroObject[102X, for IsCapCategoryObject 6.3-5 
   [2XUniversalMorphismIntoZeroObjectWithGivenZeroObject[102X, for IsCapCategoryObject, IsCapCategoryObject 6.3-6 
-  [2XUsedOperationMultiples[102X, for IsDerivedMethod 8.2-10 
-  [2XUsedOperations[102X, for IsDerivedMethod 8.2-9 
-  [2XUsedOperationsWithMultiples[102X, for IsDerivedMethod 8.2-11 
+  [2XUsedOperationsWithMultiplesAndCategoryGetters[102X, for IsDerivedMethod 8.2-9 
   [2XVerticalPostCompose[102X, for IsCapCategoryTwoCell, IsCapCategoryTwoCell 4.2-5 
   [2XVerticalPreCompose[102X, for IsCapCategoryTwoCell, IsCapCategoryTwoCell 4.2-4 
   [2XWasCreatedAsWrapperCapCategory[102X, for IsCapCategory 12.1-1 

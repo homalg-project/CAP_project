@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2022.09-01
+                                   2022.09-02
   
   
-                                2 September 2022
+                                3 September 2022
   
   
                                Sebastian Gutsche
@@ -798,12 +798,9 @@
       8.2-6 CategoryFilter
       8.2-7 IsApplicableToCategory
       8.2-8 TargetOperation
-      8.2-9 UsedOperations
-      8.2-10 UsedOperationMultiples
-      8.2-11 UsedOperationsWithMultiples
-      8.2-12 InstallDerivationForCategory
-      8.2-13 DerivationResultWeight
-      8.2-14 FunctionCalledBeforeInstallation
+      8.2-9 UsedOperationsWithMultiplesAndCategoryGetters
+      8.2-10 InstallDerivationForCategory
+      8.2-11 FunctionCalledBeforeInstallation
     8.3 [33X[0;0YDerivation Graphs[133X
       8.3-1 IsDerivedMethodGraph
       8.3-2 MakeDerivationGraph

@@ -40,12 +40,9 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7F2B7310826D555B">8.2-6 CategoryFilter</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7CA199A3868E0222">8.2-7 IsApplicableToCategory</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X82E56CD47C15FE34">8.2-8 TargetOperation</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7A407F3F7F264A77">8.2-9 UsedOperations</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X78FAD4788098483B">8.2-10 UsedOperationMultiples</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X80FA45B68744108E">8.2-11 UsedOperationsWithMultiples</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7DCED23B84345454">8.2-12 InstallDerivationForCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X82546C667C204B78">8.2-13 DerivationResultWeight</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X87B8757F7AAEE7DE">8.2-14 FunctionCalledBeforeInstallation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7CEDBB3E7BCA64D1">8.2-9 UsedOperationsWithMultiplesAndCategoryGetters</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7DCED23B84345454">8.2-10 InstallDerivationForCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X87B8757F7AAEE7DE">8.2-11 FunctionCalledBeforeInstallation</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap8.html#X87186DAD7DF242ED">8.3 <span class="Heading">Derivation Graphs</span></a>
 </span>
@@ -138,7 +135,7 @@
 <h5>8.2-2 MakeDerivation</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MakeDerivation</code>( <var class="Arg">name</var>, <var class="Arg">target_op</var>, <var class="Arg">used_ops_with_multiples</var>, <var class="Arg">weight</var>, <var class="Arg">implementations_with_extra_filters</var>, <var class="Arg">category_filter</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Creates a new derivation object. The argument <var class="Arg">name</var> is an arbitrary name used to identify this derivation, and is useful only for debugging purposes. The argument <var class="Arg">target_op</var> is the operation which the derived method implements. The argument <var class="Arg">used_ops_with_multiples</var> contains each operation used by the derived method, together with a positive integer specifying how many times that operation is used. This is given as a list of lists, where each sublist has as first entry an operation and as second entry an integer. The argument <var class="Arg">weight</var> is an additional number to add when calculating the resulting weight of the target operation using this derivation. Unless there is any particular reason to regard the derivation as exceedingly expensive, this number should be <code class="code">1</code>. The argument <var class="Arg">implementations_with_extra_filters</var> contains one or more functions with the actual implementation of the derived method, together with lists of extra argument filters for each function. The argument is a list with entries of the form <code class="code">[fun, filters]</code>, where <code class="code">fun</code> is a function and <code class="code">filters</code> is a (not necessarily dense) list of argument filters. If only one function is given, then <code class="code">filters</code> should be the empty list; in this case the argument's value would be [[fun,[]]], where <code class="code">fun</code> is the function. The argument <var class="Arg">category_filter</var> is a filter describing which categories the derivation is valid for. If it is valid for all categories, then this argument should have the value <code class="code">IsCapCategory</code>. The Option <code class="code">ConditionsListComplete</code> indicates if the manually given list of preconditions for this derivation is complete or should be extended by looking for categorical operations in the function body. The value <code class="code">false</code> indicates it is not complete, every other value that it is complete. Default is <code class="code">false</code>.</p>
+<p>Creates a new derivation object. The argument <var class="Arg">name</var> is an arbitrary name used to identify this derivation, and is useful only for debugging purposes. The argument <var class="Arg">target_op</var> is the operation which the derived method implements. The argument <var class="Arg">used_ops_with_multiples</var> contains each operation used by the derived method, together with a positive integer specifying how many times that operation is used and optionally a category getter. This is given as a list of lists, where each sublist has as first entry an operation, as second entry an integer and as third entry optionally a function. This function should accept the category and return a category for which the operation in the first entry must be installed for the derivation to be considered valid. The argument <var class="Arg">weight</var> is an additional number to add when calculating the resulting weight of the target operation using this derivation. Unless there is any particular reason to regard the derivation as exceedingly expensive, this number should be <code class="code">1</code>. The argument <var class="Arg">implementations_with_extra_filters</var> contains one or more functions with the actual implementation of the derived method, together with lists of extra argument filters for each function. The argument is a list with entries of the form <code class="code">[fun, filters]</code>, where <code class="code">fun</code> is a function and <code class="code">filters</code> is a (not necessarily dense) list of argument filters. If only one function is given, then <code class="code">filters</code> should be the empty list; in this case the argument's value would be [[fun,[]]], where <code class="code">fun</code> is the function. The argument <var class="Arg">category_filter</var> is a filter describing which categories the derivation is valid for. If it is valid for all categories, then this argument should have the value <code class="code">IsCapCategory</code>. The Option <code class="code">ConditionsListComplete</code> indicates if the manually given list of preconditions for this derivation is complete or should be extended by looking for categorical operations in the function body. The value <code class="code">false</code> indicates it is not complete, every other value that it is complete. Default is <code class="code">false</code>.</p>
 
 <p><a id="X85FA69CA831B3D68" name="X85FA69CA831B3D68"></a></p>
 
@@ -184,44 +181,23 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TargetOperation</code>( <var class="Arg">d</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: The name (as a string) of the operation implemented by the derivation <var class="Arg">d</var></p>
 
-<p><a id="X7A407F3F7F264A77" name="X7A407F3F7F264A77"></a></p>
+<p><a id="X7CEDBB3E7BCA64D1" name="X7CEDBB3E7BCA64D1"></a></p>
 
-<h5>8.2-9 UsedOperations</h5>
+<h5>8.2-9 UsedOperationsWithMultiplesAndCategoryGetters</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UsedOperations</code>( <var class="Arg">d</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: The names (as strings) of the operations used by the derivation <var class="Arg">d</var></p>
-
-<p><a id="X78FAD4788098483B" name="X78FAD4788098483B"></a></p>
-
-<h5>8.2-10 UsedOperationMultiples</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UsedOperationMultiples</code>( <var class="Arg">d</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: Multiplicities of each operation used by the derivation <var class="Arg">d</var>, in order corresponding to the operation names returned by <code class="code">UsedOperations(d)</code>.</p>
-
-<p><a id="X80FA45B68744108E" name="X80FA45B68744108E"></a></p>
-
-<h5>8.2-11 UsedOperationsWithMultiples</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UsedOperationsWithMultiples</code>( <var class="Arg">d</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: The names of the operations used by the derivation <var class="Arg">d</var>, together with their multiplicities. The result is a list consisting of lists of the form <code class="code">[op_name, mult]</code>, where <code class="code">op_name</code> is a string and <code class="code">mult</code> a positive integer.</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UsedOperationsWithMultiplesAndCategoryGetters</code>( <var class="Arg">d</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: The names of the operations used by the derivation <var class="Arg">d</var>, together with their multiplicities and category getters. The result is a list consisting of lists of the form <code class="code">[op_name, mult, getter]</code>, where <code class="code">op_name</code> is a string, <code class="code">mult</code> a positive integer and <code class="code">getter</code> is a function or <code class="code">fail</code>.</p>
 
 <p><a id="X7DCED23B84345454" name="X7DCED23B84345454"></a></p>
 
-<h5>8.2-12 InstallDerivationForCategory</h5>
+<h5>8.2-10 InstallDerivationForCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InstallDerivationForCategory</code>( <var class="Arg">d</var>, <var class="Arg">weight</var>, <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Install the derived method <var class="Arg">d</var> for the category <var class="Arg">C</var>. The integer <var class="Arg">weight</var> is the computed weight of the operation implemented by this derivation.</p>
 
-<p><a id="X82546C667C204B78" name="X82546C667C204B78"></a></p>
-
-<h5>8.2-13 DerivationResultWeight</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DerivationResultWeight</code>( <var class="Arg">d</var>, <var class="Arg">op_weights</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Computes the resulting weight of the target operation of this derivation given a list of weights for the operations it uses. The argument <var class="Arg">op_weights</var> should be a list of integers specifying weights for the operations given by <code class="code">UsedOperations( d )</code>, in the same order.</p>
-
 <p><a id="X87B8757F7AAEE7DE" name="X87B8757F7AAEE7DE"></a></p>
 
-<h5>8.2-14 FunctionCalledBeforeInstallation</h5>
+<h5>8.2-11 FunctionCalledBeforeInstallation</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FunctionCalledBeforeInstallation</code>( <var class="Arg">d</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Input is a derived method. Output is a unary function that takes as an input a category and does not output anything. This function is always called before the installation of the derived method for a concrete instance of a category.</p>
