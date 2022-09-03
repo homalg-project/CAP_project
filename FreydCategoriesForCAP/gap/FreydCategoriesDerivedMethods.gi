@@ -359,6 +359,7 @@ AddFinalDerivation( WeakBiFiberProductMorphismToDirectSum,
                       ProjectionInFirstFactorOfWeakBiFiberProduct,
                       ProjectionInSecondFactorOfWeakBiFiberProduct,
                       UniversalMorphismIntoWeakBiFiberProduct,
+                      WeakBiFiberProductMorphismToDirectSum,
                     ],
                       
   function( cat, alpha, beta )
@@ -420,6 +421,7 @@ AddFinalDerivation( DirectSumMorphismToWeakBiPushout,
                       InjectionOfFirstCofactorOfWeakBiPushout,
                       InjectionOfSecondCofactorOfWeakBiPushout,
                       UniversalMorphismFromWeakBiPushout,
+                      DirectSumMorphismToWeakBiPushout,
                     ],
                       
   function( cat, alpha, beta )
@@ -472,7 +474,10 @@ end,
 ##
 AddFinalDerivation( ProjectionOfBiasedWeakFiberProduct,
                     [ [ ProjectionInFirstFactorOfWeakBiFiberProduct, 1 ] ],
-                    [ BiasedWeakFiberProduct ],
+                    [
+                      BiasedWeakFiberProduct,
+                      ProjectionOfBiasedWeakFiberProduct,
+                    ],
                     
   function( cat, alpha, beta )
     
@@ -483,7 +488,10 @@ end : Description := "ProjectionOfBiasedWeakFiberProduct using ProjectionInFirst
 ##
 AddFinalDerivation( InjectionOfBiasedWeakPushout,
                     [ [ InjectionOfFirstCofactorOfWeakBiPushout, 1 ] ],
-                    [ BiasedWeakPushout ],
+                    [
+                      BiasedWeakPushout,
+                      InjectionOfBiasedWeakPushout,
+                    ],
                     
   function( cat, alpha, beta )
     

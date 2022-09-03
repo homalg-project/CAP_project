@@ -328,6 +328,15 @@ end );
 
 
 ##
+CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
+  rec(
+    CoefficientsOfMorphism := [
+        [ "BasisOfExternalHom", 1 ],
+        [ "CoefficientsOfMorphismWithGivenBasisOfExternalHom", 1 ],
+    ],
+  )
+ );
+
 InstallMethod( CoefficientsOfMorphism,
               [ IsCapCategoryMorphism ],
   function( alpha )
