@@ -327,9 +327,28 @@
   (and re-enabled later on).[133X
   
   
-  [1X1.9 [33X[0;0YProof assistant mode[133X[101X
+  [1X1.9 [33X[0;0YCompiling step-by-step[133X[101X
   
-  [1X1.9-1 CapJitEnableProofAssistantMode[101X
+  [1X1.9-1 CapJitEnableStepByStepCompilation[101X
+  
+  [33X[1;0Y[29X[2XCapJitEnableStepByStepCompilation[102X(  ) [32X function[133X
+  [33X[1;0Y[29X[2XCapJitDisableStepByStepCompilation[102X(  ) [32X function[133X
+  
+  [33X[0;0YEnables  or disables step-by-step compilation for demonstration or debugging
+  purposes.  If  enabled,  only  the  first  level of CAP operations and known
+  methods is resolved (instead of resolving recursively). Caveats:[133X
+  
+  [30X    [33X[0;6YThis does not work if fully compiled operations are already cached, so
+        this should be used before starting any compilation.[133X
+  
+  [30X    [33X[0;6YThis  does  not  work if the CAP category is not immediately available
+        from  the input (e.g. because it is a range category of a homomorphism
+        structure of the input category).[133X
+  
+  
+  [1X1.10 [33X[0;0YProof assistant mode[133X[101X
+  
+  [1X1.10-1 CapJitEnableProofAssistantMode[101X
   
   [33X[1;0Y[29X[2XCapJitEnableProofAssistantMode[102X(  ) [32X function[133X
   [33X[1;0Y[29X[2XCapJitDisableProofAssistantMode[102X(  ) [32X function[133X
@@ -341,19 +360,19 @@
   deduplicated.[133X
   
   
-  [1X1.10 [33X[0;0YGetting information about the compilation process[133X[101X
+  [1X1.11 [33X[0;0YGetting information about the compilation process[133X[101X
   
   [33X[0;0YYou  can  increase the info level of [10XInfoCapJit[110X to get information about the
   compilation process.[133X
   
-  [1X1.10-1 InfoCapJit[101X
+  [1X1.11-1 InfoCapJit[101X
   
   [33X[1;0Y[29X[2XInfoCapJit[102X [32X info class[133X
   
   [33X[0;0YInfo class used for info messsages of the CAP compiler.[133X
   
   
-  [1X1.11 [33X[0;0YFAQ[133X[101X
+  [1X1.12 [33X[0;0YFAQ[133X[101X
   
   [30X    [33X[0;6YQ: Where do the category attributes in the compiled code come from?[133X
   

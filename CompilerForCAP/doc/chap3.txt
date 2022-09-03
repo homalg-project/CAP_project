@@ -987,6 +987,56 @@
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCapJitDisableDataTypeInference( );[127X[104X
+    [4X[25Xgap>[125X [27XCapJitEnableStepByStepCompilation( );[127X[104X
+    [4X[25Xgap>[125X [27Xdummy := DummyCategory( rec([127X[104X
+    [4X[25X>[125X [27X    list_of_operations_to_install := [[127X[104X
+    [4X[25X>[125X [27X        "ZeroObject",[127X[104X
+    [4X[25X>[125X [27X        "ZeroMorphism",[127X[104X
+    [4X[25X>[125X [27X    ],[127X[104X
+    [4X[25X>[125X [27X) );;[127X[104X
+    [4X[25Xgap>[125X [27XStopCompilationAtPrimitivelyInstalledOperationsOfCategory( dummy );[127X[104X
+    [4X[25Xgap>[125X [27Xfunc := cat -> ZeroObjectFunctorialWithGivenZeroObjects( cat,[127X[104X
+    [4X[25X>[125X [27X    ZeroObject( cat ),[127X[104X
+    [4X[25X>[125X [27X    ZeroObject( cat )[127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func := CapJitCompiledFunction( func, dummy );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( compiled_func );[127X[104X
+    [4X[28Xfunction ( cat_1 )[128X[104X
+    [4X[28X    return ZeroObjectFunctorial( cat_1 );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func := CapJitCompiledFunction( compiled_func, dummy );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( compiled_func );[127X[104X
+    [4X[28Xfunction ( cat_1 )[128X[104X
+    [4X[28X    local deduped_1_1;[128X[104X
+    [4X[28X    deduped_1_1 := ZeroObject( cat_1 );[128X[104X
+    [4X[28X    return ZeroMorphism( cat_1, deduped_1_1, deduped_1_1 );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27XCapJitDisableStepByStepCompilation( );[127X[104X
+    [4X[25Xgap>[125X [27Xdummy := DummyCategory( rec([127X[104X
+    [4X[25X>[125X [27X    list_of_operations_to_install := [[127X[104X
+    [4X[25X>[125X [27X        "ZeroObject",[127X[104X
+    [4X[25X>[125X [27X        "ZeroMorphism",[127X[104X
+    [4X[25X>[125X [27X    ],[127X[104X
+    [4X[25X>[125X [27X) );;[127X[104X
+    [4X[25Xgap>[125X [27XStopCompilationAtPrimitivelyInstalledOperationsOfCategory( dummy );[127X[104X
+    [4X[25Xgap>[125X [27Xfunc := cat -> ZeroObjectFunctorialWithGivenZeroObjects( cat,[127X[104X
+    [4X[25X>[125X [27X    ZeroObject( cat ),[127X[104X
+    [4X[25X>[125X [27X    ZeroObject( cat )[127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func := CapJitCompiledFunction( func, dummy );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( compiled_func );[127X[104X
+    [4X[28Xfunction ( cat_1 )[128X[104X
+    [4X[28X    local deduped_1_1;[128X[104X
+    [4X[28X    deduped_1_1 := ZeroObject( cat_1 );[128X[104X
+    [4X[28X    return ZeroMorphism( cat_1, deduped_1_1, deduped_1_1 );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27XCapJitEnableDataTypeInference( );[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27X##[127X[104X

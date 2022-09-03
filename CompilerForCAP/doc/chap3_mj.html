@@ -1037,6 +1037,57 @@ end
 
 
 <div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitDisableDataTypeInference( );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitEnableStepByStepCompilation( );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dummy := DummyCategory( rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    list_of_operations_to_install := [</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "ZeroObject",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "ZeroMorphism",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StopCompilationAtPrimitivelyInstalledOperationsOfCategory( dummy );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := cat -&gt; ZeroObjectFunctorialWithGivenZeroObjects( cat,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ZeroObject( cat ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ZeroObject( cat )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := CapJitCompiledFunction( func, dummy );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
+function ( cat_1 )
+    return ZeroObjectFunctorial( cat_1 );
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := CapJitCompiledFunction( compiled_func, dummy );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
+function ( cat_1 )
+    local deduped_1_1;
+    deduped_1_1 := ZeroObject( cat_1 );
+    return ZeroMorphism( cat_1, deduped_1_1, deduped_1_1 );
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitDisableStepByStepCompilation( );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dummy := DummyCategory( rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    list_of_operations_to_install := [</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "ZeroObject",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "ZeroMorphism",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StopCompilationAtPrimitivelyInstalledOperationsOfCategory( dummy );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := cat -&gt; ZeroObjectFunctorialWithGivenZeroObjects( cat,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ZeroObject( cat ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ZeroObject( cat )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := CapJitCompiledFunction( func, dummy );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
+function ( cat_1 )
+    local deduped_1_1;
+    deduped_1_1 := ZeroObject( cat_1 );
+    return ZeroMorphism( cat_1, deduped_1_1, deduped_1_1 );
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitEnableDataTypeInference( );</span>
+</pre></div>
+
+
+<div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">##</span>

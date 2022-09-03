@@ -63,17 +63,22 @@
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X843286607CD2DE7E">1.8-1 CapJitDisableDataTypeInference</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X8517503D80444503">1.9 <span class="Heading">Proof assistant mode</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X846C79BA815F795A">1.9 <span class="Heading">Compiling step-by-step</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X795104B985A220EE">1.9-1 CapJitEnableProofAssistantMode</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7B02F25F82DD0F3A">1.9-1 CapJitEnableStepByStepCompilation</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7B946AD083F7CEEA">1.10 <span class="Heading">Getting information about the compilation process</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X8517503D80444503">1.10 <span class="Heading">Proof assistant mode</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8202365E84A044DC">1.10-1 InfoCapJit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X795104B985A220EE">1.10-1 CapJitEnableProofAssistantMode</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X780099B481AB3AB7">1.11 <span class="Heading">FAQ</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7B946AD083F7CEEA">1.11 <span class="Heading">Getting information about the compilation process</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8202365E84A044DC">1.11-1 InfoCapJit</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X780099B481AB3AB7">1.12 <span class="Heading">FAQ</span></a>
 </span>
 </div>
 </div>
@@ -328,13 +333,34 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitEnableDataTypeInference</code>(  )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>In case of errors, the automatic inference of data types can be disabled (and re-enabled later on).</p>
 
+<p><a id="X846C79BA815F795A" name="X846C79BA815F795A"></a></p>
+
+<h4>1.9 <span class="Heading">Compiling step-by-step</span></h4>
+
+<p><a id="X7B02F25F82DD0F3A" name="X7B02F25F82DD0F3A"></a></p>
+
+<h5>1.9-1 CapJitEnableStepByStepCompilation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitEnableStepByStepCompilation</code>(  )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitDisableStepByStepCompilation</code>(  )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Enables or disables step-by-step compilation for demonstration or debugging purposes. If enabled, only the first level of CAP operations and known methods is resolved (instead of resolving recursively). Caveats:</p>
+
+
+<ul>
+<li><p>This does not work if fully compiled operations are already cached, so this should be used before starting any compilation.</p>
+
+</li>
+<li><p>This does not work if the CAP category is not immediately available from the input (e.g. because it is a range category of a homomorphism structure of the input category).</p>
+
+</li>
+</ul>
 <p><a id="X8517503D80444503" name="X8517503D80444503"></a></p>
 
-<h4>1.9 <span class="Heading">Proof assistant mode</span></h4>
+<h4>1.10 <span class="Heading">Proof assistant mode</span></h4>
 
 <p><a id="X795104B985A220EE" name="X795104B985A220EE"></a></p>
 
-<h5>1.9-1 CapJitEnableProofAssistantMode</h5>
+<h5>1.10-1 CapJitEnableProofAssistantMode</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitEnableProofAssistantMode</code>(  )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitDisableProofAssistantMode</code>(  )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
@@ -342,20 +368,20 @@
 
 <p><a id="X7B946AD083F7CEEA" name="X7B946AD083F7CEEA"></a></p>
 
-<h4>1.10 <span class="Heading">Getting information about the compilation process</span></h4>
+<h4>1.11 <span class="Heading">Getting information about the compilation process</span></h4>
 
 <p>You can increase the info level of <code class="code">InfoCapJit</code> to get information about the compilation process.</p>
 
 <p><a id="X8202365E84A044DC" name="X8202365E84A044DC"></a></p>
 
-<h5>1.10-1 InfoCapJit</h5>
+<h5>1.11-1 InfoCapJit</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InfoCapJit</code></td><td class="tdright">(&nbsp;info class&nbsp;)</td></tr></table></div>
 <p>Info class used for info messsages of the CAP compiler.</p>
 
 <p><a id="X780099B481AB3AB7" name="X780099B481AB3AB7"></a></p>
 
-<h4>1.11 <span class="Heading">FAQ</span></h4>
+<h4>1.12 <span class="Heading">FAQ</span></h4>
 
 
 <ul>
