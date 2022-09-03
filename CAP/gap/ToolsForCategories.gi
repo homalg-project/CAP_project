@@ -724,7 +724,7 @@ InstallGlobalFunction( CAP_INTERNAL_MERGE_PRECONDITIONS_LIST,
     
     for current_precondition in list1 do
         
-        pos := PositionProperty( list2, x -> x[1] = current_precondition[1] and x[3] = current_precondition[3] );
+        pos := PositionProperty( list2, x -> x[1] = current_precondition[1] and ((Length( x ) = 2 and Length( current_precondition ) = 2) or (x[3] = current_precondition[3])) );
         
         if pos = fail then
             
