@@ -1190,7 +1190,7 @@ function ( cat_1, D_1 )
 end
 ########
         
-    , 1706 : IsPrecompiledDerivation := true );
+    , 1104 : IsPrecompiledDerivation := true );
     
     ##
     AddDirectSumDiagonalDifference( cat,
@@ -1221,7 +1221,7 @@ function ( cat_1, D_1 )
 end
 ########
         
-    , 1706 : IsPrecompiledDerivation := true );
+    , 1104 : IsPrecompiledDerivation := true );
     
     ##
     AddDirectSumFunctorial( cat,
@@ -1284,7 +1284,7 @@ function ( cat_1, D_1 )
 end
 ########
         
-    , 3814 : IsPrecompiledDerivation := true );
+    , 2610 : IsPrecompiledDerivation := true );
     
     ##
     AddDistinguishedObjectOfHomomorphismStructure( cat,
@@ -1465,7 +1465,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 3815 : IsPrecompiledDerivation := true );
+    , 2611 : IsPrecompiledDerivation := true );
     
     ##
     AddFiberProductEmbeddingInDirectSum( cat,
@@ -1496,7 +1496,7 @@ function ( cat_1, D_1 )
 end
 ########
         
-    , 3814 : IsPrecompiledDerivation := true );
+    , 2610 : IsPrecompiledDerivation := true );
     
     ##
     AddFiberProductFunctorial( cat,
@@ -1547,7 +1547,7 @@ function ( cat_1, morphisms_1, L_1, morphismsp_1 )
 end
 ########
         
-    , 19782 : IsPrecompiledDerivation := true );
+    , 13762 : IsPrecompiledDerivation := true );
     
     ##
     AddFiberProductFunctorialWithGivenFiberProducts( cat,
@@ -1596,7 +1596,7 @@ function ( cat_1, P_1, morphisms_1, L_1, morphismsp_1, Pp_1 )
 end
 ########
         
-    , 12151 : IsPrecompiledDerivation := true );
+    , 8539 : IsPrecompiledDerivation := true );
     
     ##
     AddHomologyObject( cat,
@@ -1873,7 +1873,7 @@ function ( cat_1, morphisms_1, k_1 )
 end
 ########
         
-    , 3915 : IsPrecompiledDerivation := true );
+    , 2711 : IsPrecompiledDerivation := true );
     
     ##
     AddInjectionOfCofactorOfPushoutWithGivenPushout( cat,
@@ -1904,7 +1904,7 @@ function ( cat_1, morphisms_1, k_1, P_1 )
 end
 ########
         
-    , 3916 : IsPrecompiledDerivation := true );
+    , 2712 : IsPrecompiledDerivation := true );
     
     ##
     AddInjectiveColift( cat,
@@ -2826,7 +2826,7 @@ function ( cat_1, D_1 )
 end
 ########
         
-    , 1907 : IsPrecompiledDerivation := true );
+    , 1305 : IsPrecompiledDerivation := true );
     
     ##
     AddIsomorphismFromCokernelOfKernelToCoimage( cat,
@@ -2957,7 +2957,7 @@ function ( cat_1, D_1 )
 end
 ########
         
-    , 1907 : IsPrecompiledDerivation := true );
+    , 1305 : IsPrecompiledDerivation := true );
     
     ##
     AddIsomorphismFromHomologyObjectToItsConstructionAsAnImageObject( cat,
@@ -3237,7 +3237,7 @@ function ( cat_1, D_1 )
 end
 ########
         
-    , 1907 : IsPrecompiledDerivation := true );
+    , 1305 : IsPrecompiledDerivation := true );
     
     ##
     AddIsomorphismFromObjectToInternalCoHom( cat,
@@ -3378,7 +3378,7 @@ function ( cat_1, D_1 )
 end
 ########
         
-    , 1907 : IsPrecompiledDerivation := true );
+    , 1305 : IsPrecompiledDerivation := true );
     
     ##
     AddIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom( cat,
@@ -3836,7 +3836,7 @@ function ( cat_1, arg2_1, arg3_1, arg4_1 )
 end
 ########
         
-    , 402 : IsPrecompiledDerivation := true );
+    , 1004 : IsPrecompiledDerivation := true );
     
     ##
     AddMonoidalPostCoComposeMorphism( cat,
@@ -4461,7 +4461,7 @@ function ( cat_1, morphisms_1 )
 end
 ########
         
-    , 4016 : IsPrecompiledDerivation := true );
+    , 2812 : IsPrecompiledDerivation := true );
     
     ##
     AddMorphismFromFiberProductToSinkWithGivenFiberProduct( cat,
@@ -4493,7 +4493,7 @@ function ( cat_1, morphisms_1, P_1 )
 end
 ########
         
-    , 4017 : IsPrecompiledDerivation := true );
+    , 2813 : IsPrecompiledDerivation := true );
     
     ##
     AddMorphismFromInternalCoHomToTensorProduct( cat,
@@ -4653,7 +4653,7 @@ function ( cat_1, morphisms_1 )
 end
 ########
         
-    , 4016 : IsPrecompiledDerivation := true );
+    , 2812 : IsPrecompiledDerivation := true );
     
     ##
     AddMorphismFromSourceToPushoutWithGivenPushout( cat,
@@ -4685,7 +4685,7 @@ function ( cat_1, morphisms_1, P_1 )
 end
 ########
         
-    , 4017 : IsPrecompiledDerivation := true );
+    , 2813 : IsPrecompiledDerivation := true );
     
     ##
     AddMorphismFromTensorProductToInternalCoHom( cat,
@@ -5005,7 +5005,7 @@ function ( cat_1, morphisms_1, k_1 )
 end
 ########
         
-    , 3915 : IsPrecompiledDerivation := true );
+    , 2711 : IsPrecompiledDerivation := true );
     
     ##
     AddProjectionInFactorOfFiberProductWithGivenFiberProduct( cat,
@@ -5036,7 +5036,7 @@ function ( cat_1, morphisms_1, k_1, P_1 )
 end
 ########
         
-    , 3916 : IsPrecompiledDerivation := true );
+    , 2712 : IsPrecompiledDerivation := true );
     
     ##
     AddProjectiveLift( cat,
@@ -5076,7 +5076,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 3815 : IsPrecompiledDerivation := true );
+    , 2611 : IsPrecompiledDerivation := true );
     
     ##
     AddPushoutFunctorial( cat,
@@ -5127,7 +5127,7 @@ function ( cat_1, morphisms_1, L_1, morphismsp_1 )
 end
 ########
         
-    , 19782 : IsPrecompiledDerivation := true );
+    , 13762 : IsPrecompiledDerivation := true );
     
     ##
     AddPushoutFunctorialWithGivenPushouts( cat,
@@ -5176,7 +5176,7 @@ function ( cat_1, P_1, morphisms_1, L_1, morphismsp_1, Pp_1 )
 end
 ########
         
-    , 12151 : IsPrecompiledDerivation := true );
+    , 8539 : IsPrecompiledDerivation := true );
     
     ##
     AddRankMorphism( cat,
@@ -5412,7 +5412,7 @@ function ( cat_1, arg2_1, arg3_1, arg4_1 )
 end
 ########
         
-    , 602 : IsPrecompiledDerivation := true );
+    , 1304 : IsPrecompiledDerivation := true );
     
     ##
     AddSomeInjectiveObject( cat,
@@ -6206,7 +6206,7 @@ function ( cat_1, morphisms_1, T_1, tau_1 )
 end
 ########
         
-    , 4117 : IsPrecompiledDerivation := true );
+    , 2913 : IsPrecompiledDerivation := true );
     
     ##
     AddUniversalMorphismFromPushoutWithGivenPushout( cat,
@@ -6238,7 +6238,7 @@ function ( cat_1, morphisms_1, T_1, tau_1, P_1 )
 end
 ########
         
-    , 4118 : IsPrecompiledDerivation := true );
+    , 2914 : IsPrecompiledDerivation := true );
     
     ##
     AddUniversalMorphismFromZeroObject( cat,
@@ -6392,7 +6392,7 @@ function ( cat_1, morphisms_1, T_1, tau_1 )
 end
 ########
         
-    , 4117 : IsPrecompiledDerivation := true );
+    , 2913 : IsPrecompiledDerivation := true );
     
     ##
     AddUniversalMorphismIntoFiberProductWithGivenFiberProduct( cat,
@@ -6424,7 +6424,7 @@ function ( cat_1, morphisms_1, T_1, tau_1, P_1 )
 end
 ########
         
-    , 4118 : IsPrecompiledDerivation := true );
+    , 2914 : IsPrecompiledDerivation := true );
     
     ##
     AddUniversalMorphismIntoTerminalObject( cat,

@@ -43,9 +43,13 @@ DeclareCategory( "IsDerivedMethod", IsObject );
 #!  the derived method implements.
 #!  The argument <A>used_ops_with_multiples</A> contains each
 #!  operation used by the derived method, together with a positive
-#!  integer specifying how many times that operation is used.
+#!  integer specifying how many times that operation is used and
+#!  optionally a category getter.
 #!  This is given as a list of lists, where each sublist has as
-#!  first entry an operation and as second entry an integer.
+#!  first entry an operation, as second entry an integer and as
+#!  third entry optionally a function. This function should accept the
+#!  category and return a category for which the operation in the first
+#!  entry must be installed for the derivation to be considered valid.
 #!  The argument <A>weight</A> is an additional number to add
 #!  when calculating the resulting weight of the target operation
 #!  using this derivation.  Unless there is any particular reason
@@ -112,25 +116,12 @@ DeclareAttribute( "TargetOperation", IsDerivedMethod );
 
 #! @Arguments d
 #! @Returns
-#!  The names (as strings) of the operations used by the
-#!  derivation <A>d</A>
-DeclareAttribute( "UsedOperations", IsDerivedMethod );
-
-#! @Arguments d
-#! @Returns
-#!  Multiplicities of each operation used by the derivation
-#!  <A>d</A>, in order corresponding to the operation names
-#!  returned by <C>UsedOperations(d)</C>.
-DeclareAttribute( "UsedOperationMultiples", IsDerivedMethod );
-
-#! @Arguments d
-#! @Returns
 #!  The names of the operations used by the derivation <A>d</A>,
-#!  together with their multiplicities.
+#!  together with their multiplicities and category getters.
 #!  The result is a list consisting of lists of the form
-#!  <C>[op_name, mult]</C>, where <C>op_name</C> is a string
-#!  and <C>mult</C> a positive integer.
-DeclareAttribute( "UsedOperationsWithMultiples", IsDerivedMethod );
+#!  `[op_name, mult, getter]`, where `op_name` is a string,
+#!  `mult` a positive integer and `getter` is a function or `fail`.
+DeclareAttribute( "UsedOperationsWithMultiplesAndCategoryGetters", IsDerivedMethod );
 
 #! @Description
 #!  Install the derived method <A>d</A> for the category <A>C</A>.
@@ -140,13 +131,7 @@ DeclareAttribute( "UsedOperationsWithMultiples", IsDerivedMethod );
 DeclareOperation( "InstallDerivationForCategory",
                   [ IsDerivedMethod, IsPosInt, IsCapCategory ] );
 
-#! @Description
-#!  Computes the resulting weight of the target operation of this
-#!  derivation given a list of weights for the operations it uses.
-#!  The argument <A>op_weights</A> should be a list of integers
-#!  specifying weights for the operations given by
-#!  <C>UsedOperations( d )</C>, in the same order.
-#! @Arguments d, op_weights
+# deprecated
 DeclareOperation( "DerivationResultWeight",
                   [ IsDerivedMethod, IsDenseList ] );
 
@@ -404,5 +389,3 @@ DeclareGlobalFunction( "DerivationsOfMethodByCategory" );
 
 DeclareGlobalFunction( "ListInstalledOperationsOfCategory" );
 DeclareGlobalFunction( "ListPrimitivelyInstalledOperationsOfCategory" );
-
-DeclareGlobalFunction( "CAP_INTERNAL_DERIVATION_SANITY_CHECK" );
