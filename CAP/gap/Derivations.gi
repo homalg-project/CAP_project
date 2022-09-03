@@ -36,46 +36,7 @@ end );
 InstallMethod( MakeDerivation,
                [ IsString, IsFunction, IsDenseList, IsPosInt, IsDenseList, IsFunction ],
                
-function( name, target_op, used_ops_with_multiples_and_category_getters, weight, implementations_with_extra_filters, category_filter )
-  local used_op_names_with_multiples_and_category_getters, x;
-    
-    used_op_names_with_multiples_and_category_getters := [ ];
-    
-    for x in used_ops_with_multiples_and_category_getters do
-        
-        if Length( x ) < 2 or not IsFunction( x[1] ) or not IsInt( x[2] ) then
-            
-            Error( "preconditions must be of the form `[op, mult, getter]`, where `getter` is optional" );
-            
-        fi;
-        
-        if (Length( x ) = 2 or (Length( x ) = 3 and x[3] = fail)) and x[1] = target_op then
-            
-            Error( "A derivation for ", NameFunction( target_op ), " has itself as a precondition. This is not supported because we cannot compute a well-defined weight.\n" );
-            
-        fi;
-        
-        if Length( x ) = 2 then
-            
-            Add( used_op_names_with_multiples_and_category_getters, [ NameFunction( x[1] ), x[2], fail ] );
-            
-        elif Length( x ) = 3 then
-            
-            if x <> fail and not (IsFunction( x[3] ) and NumberArgumentsFunction( x[3] ) = 1) then
-                
-                Error( "the category getter must be a single-argument function" );
-                
-            fi;
-            
-            Add( used_op_names_with_multiples_and_category_getters, [ NameFunction( x[1] ), x[2], x[3] ] );
-            
-        else
-            
-            Error( "The list of preconditions must be a list of pairs or triples." );
-            
-        fi;
-        
-    od;
+function( name, target_op, used_op_names_with_multiples_and_category_getters, weight, implementations_with_extra_filters, category_filter )
     
     return ObjectifyWithAttributes(
         rec( ), NewType( TheFamilyOfDerivations, IsDerivedMethodRep ),
@@ -306,46 +267,82 @@ end );
 InstallMethod( AddDerivation,
                [ IsDerivedMethodGraph, IsFunction, IsDenseList, IsDenseList ],
                
-  function( graph, target_op, used_ops_with_multiples,
-            implementations_with_extra_filters )
-    local weight, category_filter, description, derivation, collected_list,
-          operations_in_graph, current_list, current_implementation, loop_multiplier,
-          preconditions_complete, function_called_before_installation;
+  function( graph, target_op, used_ops_with_multiples_and_category_getters, implementations_with_extra_filters )
+    local weight, category_filter, description, loop_multiplier, category_getters, function_called_before_installation, operations_in_graph, collected_list, current_list, used_op_names_with_multiples_and_category_getters, derivation, current_implementation, x;
     
     weight := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Weight", 1 );
     category_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryFilter", IsCapCategory );
     description := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Description", "" );
     loop_multiplier := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "WeightLoopMultiple", 2 );
-    preconditions_complete := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "ConditionsListComplete", false );
+    category_getters := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryGetters", rec( ) );
     function_called_before_installation := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "FunctionCalledBeforeInstallation", false );
     
     ## get used ops
-    ## Is this the right place? Or should this only be done when no ops are given?
     operations_in_graph := Operations( graph );
     
     collected_list := [ ];
     
-    if preconditions_complete = false then
+    for current_implementation in implementations_with_extra_filters do
         
-        for current_implementation in implementations_with_extra_filters do
+        current_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( current_implementation[ 1 ], operations_in_graph, loop_multiplier, CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS, category_getters );
+        collected_list := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, current_list );
+        
+    od;
+    
+    if IsEmpty( used_ops_with_multiples_and_category_getters ) then
+        
+        used_op_names_with_multiples_and_category_getters := collected_list;
+        
+    else
+        
+        used_op_names_with_multiples_and_category_getters := [ ];
+        
+        for x in used_ops_with_multiples_and_category_getters do
             
-            current_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( current_implementation[ 1 ], operations_in_graph, loop_multiplier, CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS );
-            current_list := List( current_list, i -> [ ValueGlobal( i[ 1 ] ), i[2] ]);
-            collected_list := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, current_list );
+            if Length( x ) < 2 or not IsFunction( x[1] ) or not IsInt( x[2] ) then
+                
+                Error( "preconditions must be of the form `[op, mult, getter]`, where `getter` is optional" );
+                
+            fi;
+            
+            if (Length( x ) = 2 or (Length( x ) = 3 and x[3] = fail)) and x[1] = target_op then
+                
+                Error( "A derivation for ", NameFunction( target_op ), " has itself as a precondition. This is not supported because we cannot compute a well-defined weight.\n" );
+                
+            fi;
+            
+            if Length( x ) = 2 then
+                
+                Add( used_op_names_with_multiples_and_category_getters, [ NameFunction( x[1] ), x[2], fail ] );
+                
+            elif Length( x ) = 3 then
+                
+                if x <> fail and not (IsFunction( x[3] ) and NumberArgumentsFunction( x[3] ) = 1) then
+                    
+                    Error( "the category getter must be a single-argument function" );
+                    
+                fi;
+                
+                Add( used_op_names_with_multiples_and_category_getters, [ NameFunction( x[1] ), x[2], x[3] ] );
+                
+            else
+                
+                Error( "The list of preconditions must be a list of pairs or triples." );
+                
+            fi;
             
         od;
         
-        if not IsEmpty( used_ops_with_multiples ) and (Length( collected_list ) <> Length( used_ops_with_multiples ) or not ForAll( collected_list, c -> c in used_ops_with_multiples )) then
+        if Length( collected_list ) <> Length( used_op_names_with_multiples_and_category_getters ) or not ForAll( collected_list, c -> c in used_op_names_with_multiples_and_category_getters ) then
+            
+            SortBy( used_op_names_with_multiples_and_category_getters, x -> x[1] );
+            SortBy( collected_list, x -> x[1] );
             
             Print(
-                "WARNING: You have installed a derivation for ", NameFunction( target_op ), " with preconditions ", used_ops_with_multiples,
+                "WARNING: You have installed a derivation for ", NameFunction( target_op ), " with preconditions ", used_op_names_with_multiples_and_category_getters,
                 " but the automated detection has detected the following list of preconditions: ", collected_list, ".\n",
-                "If this is a bug in the automated detection, please report it. If the preconditions cannot be detected automatically, use the option `ConditionsListComplete := true`.\n"
+                "If this is a bug in the automated detection, please report it.\n"
             );
-            
-        else
-            
-            used_ops_with_multiples := collected_list;
             
         fi;
         
@@ -353,7 +350,7 @@ InstallMethod( AddDerivation,
     
     derivation := MakeDerivation( description,
                                   target_op,
-                                  used_ops_with_multiples,
+                                  used_op_names_with_multiples_and_category_getters,
                                   weight,
                                   implementations_with_extra_filters,
                                   category_filter );

@@ -41,12 +41,12 @@ DeclareCategory( "IsDerivedMethod", IsObject );
 #!  purposes.
 #!  The argument <A>target_op</A> is the operation which
 #!  the derived method implements.
-#!  The argument <A>used_ops_with_multiples</A> contains each
+#!  The argument <A>used_ops_with_multiples</A> contains the name of each
 #!  operation used by the derived method, together with a positive
 #!  integer specifying how many times that operation is used and
 #!  optionally a category getter.
 #!  This is given as a list of lists, where each sublist has as
-#!  first entry an operation, as second entry an integer and as
+#!  first entry the name of an operation, as second entry an integer and as
 #!  third entry optionally a function. This function should accept the
 #!  category and return a category for which the operation in the first
 #!  entry must be installed for the derivation to be considered valid.
@@ -68,11 +68,6 @@ DeclareCategory( "IsDerivedMethod", IsObject );
 #!  which categories the derivation is valid for.  If it is valid
 #!  for all categories, then this argument should have the value
 #!  <C>IsCapCategory</C>.
-#!  The Option <C>ConditionsListComplete</C> indicates if the manually
-#!  given list of preconditions for this derivation is complete
-#!  or should be extended by looking for categorical operations
-#!  in the function body. The value <C>false</C> indicates it is not complete,
-#!  every other value that it is complete. Default is <C>false</C>.
 #! @Arguments name, target_op, used_ops_with_multiples, weight, implementations_with_extra_filters, category_filter
 DeclareOperation( "MakeDerivation",
                   [ IsString, IsFunction, IsDenseList,

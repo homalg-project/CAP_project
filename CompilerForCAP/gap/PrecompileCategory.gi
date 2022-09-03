@@ -165,7 +165,8 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
                         compiled_func,
                         RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ),
                         2,
-                        CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS
+                        CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS,
+                        rec( )
                     )
                 ) then
                 
