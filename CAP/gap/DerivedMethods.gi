@@ -2775,14 +2775,15 @@ end : Description := "VerticalPreCompose using VerticalPostCompose" );
 
 ##
 AddDerivationToCAP( SolveLinearSystemInAbCategory,
-                    [ [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure, 1 ],
-                      [ HomomorphismStructureOnMorphismsWithGivenObjects, 1 ],
-                      [ HomomorphismStructureOnObjects, 1 ],
-                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 1 ],
+                    [ [ DistinguishedObjectOfHomomorphismStructure, 1 ],
+                      [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure, 2 ],
+                      [ HomomorphismStructureOnMorphismsWithGivenObjects, 4 ],
+                      [ HomomorphismStructureOnObjects, 6 ],
+                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 2 ],
                       [ UniversalMorphismIntoDirectSum, 1, RangeCategoryOfHomomorphismStructure ],
                       [ MorphismBetweenDirectSums, 1, RangeCategoryOfHomomorphismStructure ],
                       [ Lift, 1, RangeCategoryOfHomomorphismStructure ],
-                      [ ComponentOfMorphismIntoDirectSum, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ ComponentOfMorphismIntoDirectSum, 2, RangeCategoryOfHomomorphismStructure ],
                     ],
   function( cat, left_coefficients, right_coefficients, right_side )
     local range_cat, m, n, distinguished_object, interpretations, nu, H_B_C, H_A_D, list, H, lift, summands;
@@ -2840,14 +2841,15 @@ AddDerivationToCAP( SolveLinearSystemInAbCategory,
 
 ##
 AddDerivationToCAP( SolveLinearSystemInAbCategoryOrFail,
-                    [ [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure, 1 ],
-                      [ HomomorphismStructureOnMorphismsWithGivenObjects, 1 ],
-                      [ HomomorphismStructureOnObjects, 1 ],
-                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 1 ],
+                    [ [ DistinguishedObjectOfHomomorphismStructure, 1 ],
+                      [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure, 2 ],
+                      [ HomomorphismStructureOnMorphismsWithGivenObjects, 4 ],
+                      [ HomomorphismStructureOnObjects, 6 ],
+                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 2 ],
                       [ UniversalMorphismIntoDirectSum, 1, RangeCategoryOfHomomorphismStructure ],
                       [ MorphismBetweenDirectSums, 1, RangeCategoryOfHomomorphismStructure ],
-                      [ Lift, 1, RangeCategoryOfHomomorphismStructure ],
-                      [ ComponentOfMorphismIntoDirectSum, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ LiftOrFail, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ ComponentOfMorphismIntoDirectSum, 2, RangeCategoryOfHomomorphismStructure ],
                     ],
   function( cat, left_coefficients, right_coefficients, right_side )
     local range_cat, m, n, distinguished_object, interpretations, nu, H_B_C, H_A_D, list, H, lift, summands;
@@ -2911,8 +2913,10 @@ AddDerivationToCAP( SolveLinearSystemInAbCategoryOrFail,
 
 ##
 AddDerivationToCAP( MereExistenceOfSolutionOfLinearSystemInAbCategory,
-                    [ [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure, 1 ],
-                      [ HomomorphismStructureOnMorphismsWithGivenObjects, 1 ],
+                    [ [ DistinguishedObjectOfHomomorphismStructure, 1 ],
+                      [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure, 2 ],
+                      [ HomomorphismStructureOnObjects, 4 ],
+                      [ HomomorphismStructureOnMorphismsWithGivenObjects, 4 ],
                       [ UniversalMorphismIntoDirectSum, 1, RangeCategoryOfHomomorphismStructure ],
                       [ MorphismBetweenDirectSums, 1, RangeCategoryOfHomomorphismStructure ],
                       [ IsLiftable, 1, RangeCategoryOfHomomorphismStructure ],

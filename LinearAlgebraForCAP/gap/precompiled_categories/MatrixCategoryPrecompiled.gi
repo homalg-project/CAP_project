@@ -3836,7 +3836,7 @@ function ( cat_1, arg2_1, arg3_1, arg4_1 )
 end
 ########
         
-    , 1004 : IsPrecompiledDerivation := true );
+    , 2105 : IsPrecompiledDerivation := true );
     
     ##
     AddMonoidalPostCoComposeMorphism( cat,
@@ -5412,7 +5412,7 @@ function ( cat_1, arg2_1, arg3_1, arg4_1 )
 end
 ########
         
-    , 1304 : IsPrecompiledDerivation := true );
+    , 2705 : IsPrecompiledDerivation := true );
     
     ##
     AddSomeInjectiveObject( cat,
