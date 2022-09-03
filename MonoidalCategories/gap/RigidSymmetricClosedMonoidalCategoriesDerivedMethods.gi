@@ -538,7 +538,10 @@ AddFinalDerivation( IsomorphismFromTensorProductWithDualObjectToInternalHom,
                       MorphismFromTensorProductToInternalHomWithGivenObjects,
                       MorphismFromInternalHomToTensorProductWithGivenObjects,
                       IsomorphismFromTensorProductWithDualObjectToInternalHom,
-                      IsomorphismFromInternalHomToTensorProductWithDualObject ],
+                      IsomorphismFromInternalHomToTensorProductWithDualObject,
+                      IsomorphismFromInternalHomIntoTensorUnitToDualObject,
+                      IsomorphismFromDualObjectToInternalHomIntoTensorUnit,
+                    ],
                     
   function( cat, a, b )
     

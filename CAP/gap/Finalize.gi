@@ -9,43 +9,13 @@ InstallValue( CAP_INTERNAL_FINAL_DERIVATION_LIST,
 BindGlobal( "CAP_INTERNAL_FINAL_DERIVATION_SANITY_CHECK",
   
   function( derivation )
-    local possible_names, all_operations, function_object, function_string, string_stream, methods_to_check, method_name, filter_list, number_of_proposed_arguments, current_function_argument_number, current_additional_filter_list_length, i, method, impl;
+    local methods_to_check, method_name, filter_list, number_of_proposed_arguments, current_function_argument_number, current_additional_filter_list_length, method, impl;
     
-    possible_names := derivation!.can_compute;
-    
-    possible_names := List( possible_names, i -> NameFunction( i[ 1 ] ) );
-    
-    all_operations := Operations( CAP_INTERNAL_DERIVATION_GRAPH );
-    
-    for function_object in derivation!.function_list do
+    if PositionSublist( String( derivation.category_filter ), "CanCompute" ) <> fail then
         
-        function_object := function_object[ 1 ];
+        Print( "WARNING: The CategoryFilter of a final derivation for ", NameFunction( derivation.target_op ), " uses `CanCompute`. Please register all preconditions explicitly.\n" );
         
-        function_string := "";
-        
-        string_stream := OutputTextString( function_string, false );
-        
-        SetPrintFormattingStatus( string_stream, false );
-        
-        PrintTo( string_stream, function_object );
-        
-        CloseStream( string_stream );
-        
-        RemoveCharacters( function_string, "()[];," );
-        
-        NormalizeWhitespace( function_string );
-        
-        function_string := SplitString( function_string, " " );
-        
-        for i in function_string do
-            
-            if i in all_operations and not i in possible_names then
-                Error( Concatenation( "final derivation with description\n", derivation.description, "\n uses ", i, ",\n which is not part of its condition" ) );
-            fi;
-            
-        od;
-        
-    od;
+    fi;
     
     if StartsWith( NameFunction( derivation.target_op ), "IsomorphismFrom" ) and IsEmpty( derivation.additional_functions ) then
         
@@ -56,6 +26,12 @@ BindGlobal( "CAP_INTERNAL_FINAL_DERIVATION_SANITY_CHECK",
     methods_to_check := Concatenation( [ [ derivation.target_op, derivation.function_list ] ], derivation.additional_functions );
     
     for method in methods_to_check do
+        
+        if not method[1] in derivation.cannot_compute then
+            
+            Print( "WARNING: A final derivation for ", NameFunction( derivation.target_op ), " installs ", NameFunction( method[1] ), " but does not list it in its exclude list.\n" );
+            
+        fi;
         
         # see AddDerivation in Derivations.gi
         method_name := NameFunction( method[1] );
@@ -101,10 +77,9 @@ end );
 
 InstallGlobalFunction( AddFinalDerivation,
                
-  function( target_op, can, cannot, func_list, additional_functions... )
-    local final_derivation, loop_multiplier, collected_list, current_implementation, current_list,
-          operations_in_graph, used_ops_with_multiples, preconditions_complete, i, current_additional_func, function_called_before_installation;
-
+  function( target_op, can_compute, cannot_compute, func_list, additional_functions... )
+    local final_derivation, loop_multiplier, category_getters, function_called_before_installation, operations_in_graph, operations_to_install, collected_list, current_list, union_of_collected_lists, used_op_names_with_multiples_and_category_getters, i, current_implementation, current_additional_func, x;
+    
     if IsFunction( func_list ) then
         func_list := [ [ func_list, [] ] ];
     fi;
@@ -115,7 +90,7 @@ InstallGlobalFunction( AddFinalDerivation,
     final_derivation.description := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Description", "" );
     final_derivation.category_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryFilter", IsCapCategory );
     loop_multiplier := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "WeightLoopMultiple", 2 );
-    preconditions_complete := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "ConditionsListComplete", false );
+    category_getters := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryGetters", rec( ) );
     function_called_before_installation := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "FunctionCalledBeforeInstallation", false );
     
     for i in [ 1 .. Length( additional_functions ) ] do
@@ -124,39 +99,106 @@ InstallGlobalFunction( AddFinalDerivation,
         fi;
     od;
     final_derivation.additional_functions := additional_functions;
-
-    ## get used ops
+    
     operations_in_graph := Operations( CAP_INTERNAL_DERIVATION_GRAPH );
+    
+    ## Find symbols in functions
+    operations_to_install := [ ];
     
     collected_list := [ ];
     
-    ## Find symbols in main function
-    if preconditions_complete = false then
-        for current_implementation in func_list do
-            
-            current_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( current_implementation[ 1 ], operations_in_graph, loop_multiplier, CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS, rec( ) );
-            current_list := List( current_list, i -> [ ValueGlobal( i[ 1 ] ), i[2] ]);
-            collected_list := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, current_list );
-            
-        od;
-    fi;
-    final_derivation.used_ops_with_multiples := collected_list;
-    used_ops_with_multiples := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, can );
-    final_derivation.can_compute := used_ops_with_multiples;
-
-    ## Find symbols in additional function
-    for current_additional_func in final_derivation.additional_functions do
-        collected_list := [];
-        for current_implementation in current_additional_func[ 2 ] do
-            current_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( current_implementation[ 1 ], operations_in_graph, loop_multiplier, CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS, rec( ) );
-            current_list := List( current_list, i -> [ ValueGlobal( i[ 1 ] ), i[2] ]);
-            collected_list := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, current_list );
-        od;
-        current_additional_func[ 3 ] := collected_list;
+    for current_implementation in func_list do
+        
+        current_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( current_implementation[ 1 ], operations_in_graph, loop_multiplier, CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS, category_getters );
+        collected_list := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, current_list );
+        
     od;
     
+    final_derivation.used_ops_with_multiples := collected_list;
+    
+    Add( operations_to_install, NameFunction( target_op ) );
+    
+    union_of_collected_lists := collected_list;
+    
+    for current_additional_func in final_derivation.additional_functions do
+        
+        collected_list := [];
+        
+        for current_implementation in current_additional_func[ 2 ] do
+            
+            current_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( current_implementation[ 1 ], operations_in_graph, loop_multiplier, CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS, category_getters );
+            collected_list := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, current_list );
+            
+        od;
+        
+        current_additional_func[ 3 ] := collected_list;
+        
+        # Operations may use operations from the same final derivation as long as the latter are installed before the former.
+        # In this case, the used operations are no preconditions and thus should not go into union_of_collected_lists.
+        collected_list := Filtered( collected_list, x -> not x[1] in operations_to_install );
+        
+        Add( operations_to_install, NameFunction( current_additional_func[ 1 ] ) );
+        
+        union_of_collected_lists := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( union_of_collected_lists, collected_list );
+        
+    od;
+    
+    # see MakeDerivation in Derivations.gi
+    used_op_names_with_multiples_and_category_getters := [ ];
+    
+    for x in can_compute do
+        
+        if Length( x ) < 2 or not IsFunction( x[1] ) or not IsInt( x[2] ) then
+            
+            Error( "preconditions must be of the form `[op, mult, getter]`, where `getter` is optional" );
+            
+        fi;
+        
+        # CAP_INTERNAL_FINAL_DERIVATION_SANITY_CHECK ensures that all installed operations appear in cannot_compute
+        if (Length( x ) = 2 or (Length( x ) = 3 and x[3] = fail)) and x[1] in cannot_compute then
+            
+            Error( "A final derivation for ", NameFunction( target_op ), " has precondition ", x[1], " which is also in its exclude list.\n" );
+            
+        fi;
+        
+        if Length( x ) = 2 then
+            
+            Add( used_op_names_with_multiples_and_category_getters, [ NameFunction( x[1] ), x[2], fail ] );
+            
+        elif Length( x ) = 3 then
+            
+            if x <> fail and not (IsFunction( x[3] ) and NumberArgumentsFunction( x[3] ) = 1) then
+                
+                Error( "the category getter must be a single-argument function" );
+                
+            fi;
+            
+            Add( used_op_names_with_multiples_and_category_getters, [ NameFunction( x[1] ), x[2], x[3] ] );
+            
+        else
+            
+            Error( "The list of preconditions must be a list of pairs or triples." );
+            
+        fi;
+        
+    od;
+    
+    if Length( union_of_collected_lists ) <> Length( used_op_names_with_multiples_and_category_getters ) or not ForAll( union_of_collected_lists, c -> c in used_op_names_with_multiples_and_category_getters ) then
+        
+        SortBy( used_op_names_with_multiples_and_category_getters, x -> x[1] );
+        SortBy( union_of_collected_lists, x -> x[1] );
+        
+        Print(
+            "WARNING: You have installed a final derivation for ", NameFunction( target_op ), " with preconditions ", used_op_names_with_multiples_and_category_getters,
+            " but the automated detection has detected the following list of preconditions: ", union_of_collected_lists, ".\n",
+            "If this is a bug in the automated detection, please report it. If the preconditions cannot be detected automatically, use the option `ConditionsListComplete := true`.\n"
+        );
+        
+    fi;
+    
     final_derivation.target_op := target_op;
-    final_derivation.cannot_compute := cannot;
+    final_derivation.can_compute := used_op_names_with_multiples_and_category_getters;
+    final_derivation.cannot_compute := cannot_compute;
     final_derivation.function_list := func_list;
     final_derivation.function_called_before_installation := function_called_before_installation;
     
@@ -170,7 +212,7 @@ InstallMethod( Finalize,
                [ IsCapCategory ],
   
   function( category )
-    local derivation_list, weight_list, current_install, current_final_derivation, current_tester_func, weight, add_name, properties_with_logic, property, i, current_additional_func, property_name;
+    local derivation_list, weight_list, current_install, current_final_derivation, filter, category_operation_weights, weight, operation_weights, operation_name, operation_weight, add_name, properties_with_logic, property, i, x, current_additional_func, property_name;
     
     if IsFinalized( category ) then
         
@@ -214,24 +256,88 @@ InstallMethod( Finalize,
             
             current_final_derivation := derivation_list[ i ];
             
-            if ForAll( current_final_derivation.can_compute, j -> CurrentOperationWeight( weight_list, NameFunction( j[ 1 ] ) ) < infinity ) and
-              ForAll( current_final_derivation.cannot_compute, j -> CurrentOperationWeight( weight_list, NameFunction( j ) ) = infinity ) then
-                
-                current_tester_func := current_final_derivation.category_filter;
-
-                if IsFilter( current_tester_func ) then
-                    
-                    if Tester( current_tester_func )( category ) and current_tester_func( category ) then
-                        current_install := i;
-                        break;
-                    fi;
-                    
-                elif IsFunction( current_tester_func ) and current_tester_func( category ) then ## in particular: not a filter
-                    current_install := i;
-                    break;
-                fi;
+            # check the category filter
+            # see IsApplicableToCategory in Derivations.gi
+            filter := current_final_derivation.category_filter;
             
+            if IsFilter( filter ) then
+                
+                if not(Tester( filter )( category ) and filter( category )) then
+                    
+                    continue;
+                    
+                fi;
+                
+            elif IsFunction( filter ) then
+                
+                if not filter( category ) then
+                    
+                    continue;
+                    
+                fi;
+                
+            else
+                
+                Error( "Category filter is not a filter or function" );
+                
             fi;
+            
+            # check the exclude list
+            if ForAny( current_final_derivation.cannot_compute, j -> CurrentOperationWeight( weight_list, NameFunction( j ) ) < infinity ) then
+                
+                continue;
+                
+            fi;
+            
+            # check the preconditions
+            # see OperationWeightUsingDerivation in Derivations.gi
+            category_operation_weights := weight_list!.operation_weights;
+            
+            weight := current_final_derivation.weight;
+            
+            for x in current_final_derivation.can_compute do
+                
+                if x[3] = fail then
+                    
+                    operation_weights := category_operation_weights;
+                    
+                else
+                    
+                    operation_weights := x[3](category)!.derivations_weight_list!.operation_weights;
+                    
+                fi;
+                
+                operation_name := x[1];
+                
+                if not IsBound( operation_weights.(operation_name) ) then
+                    
+                    weight := infinity;
+                    break;
+                    
+                fi;
+                
+                operation_weight := operation_weights.(operation_name);
+                
+                if operation_weight = infinity then
+                    
+                    weight := infinity;
+                    break;
+                    
+                fi;
+                
+                weight := weight + operation_weight * x[2];
+                
+            od;
+            
+            if weight = infinity then
+                
+                continue;
+                
+            fi;
+            
+            # if we get here, everything matched
+            current_install := i;
+            break;
             
         od;
         
@@ -243,8 +349,43 @@ InstallMethod( Finalize,
             
             current_final_derivation := Remove( derivation_list, i );
             
-            ## calculate weight
-            weight := current_final_derivation.weight + Sum( List( current_final_derivation.used_ops_with_multiples, j -> CurrentOperationWeight( weight_list, NameFunction( j[ 1 ] ) ) * j[ 2 ] ) );
+            weight := current_final_derivation.weight;
+            
+            for x in current_final_derivation.used_ops_with_multiples do
+                
+                if x[3] = fail then
+                    
+                    operation_weights := category_operation_weights;
+                    
+                else
+                    
+                    operation_weights := x[3](category)!.derivations_weight_list!.operation_weights;
+                    
+                fi;
+                
+                operation_name := x[1];
+                
+                if not IsBound( operation_weights.(operation_name) ) then
+                    
+                    weight := infinity;
+                    break;
+                    
+                fi;
+                
+                operation_weight := operation_weights.(operation_name);
+                
+                if operation_weight = infinity then
+                    
+                    weight := infinity;
+                    break;
+                    
+                fi;
+                
+                weight := weight + operation_weight * x[2];
+                
+            od;
+            
+            Assert( 0, weight <> infinity );
             
             Info( DerivationInfo, 1, Concatenation( "install(",
                                           String( weight ),
@@ -268,7 +409,43 @@ InstallMethod( Finalize,
 
             for current_additional_func in current_final_derivation.additional_functions do
                 
-                weight := current_final_derivation.weight + Sum( List( current_additional_func[ 3 ], j -> CurrentOperationWeight( weight_list, NameFunction( j[ 1 ] ) ) * j[ 2 ] ) );
+                weight := current_final_derivation.weight;
+                
+                for x in current_additional_func[3] do
+                    
+                    if x[3] = fail then
+                        
+                        operation_weights := category_operation_weights;
+                        
+                    else
+                        
+                        operation_weights := x[3](category)!.derivations_weight_list!.operation_weights;
+                        
+                    fi;
+                    
+                    operation_name := x[1];
+                    
+                    if not IsBound( operation_weights.(operation_name) ) then
+                        
+                        weight := infinity;
+                        break;
+                        
+                    fi;
+                    
+                    operation_weight := operation_weights.(operation_name);
+                    
+                    if operation_weight = infinity then
+                        
+                        weight := infinity;
+                        break;
+                        
+                    fi;
+                    
+                    weight := weight + operation_weight * x[2];
+                    
+                od;
+                
+                Assert( 0, weight <> infinity );
                 
                 Info( DerivationInfo, 1, Concatenation( "install(",
                                               String( weight ),
@@ -279,6 +456,7 @@ InstallMethod( Finalize,
                 
                 add_name := ValueGlobal( Concatenation( [ "Add", NameFunction( current_additional_func[ 1 ] ) ] ) );
                 add_name( category, current_additional_func[ 2 ], weight : IsFinalDerivation := true );
+                
             od;
             
         fi;

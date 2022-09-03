@@ -43,9 +43,11 @@ end );
 ##
 AddFinalDerivation( DistinguishedObjectOfHomomorphismStructure,
                     [
-                      [ BasisOfExternalHom, 1 ],
-                      [ CoefficientsOfMorphismWithGivenBasisOfExternalHom, 1 ],
-                      [ MultiplyWithElementOfCommutativeRingForMorphisms, 1 ]
+                      [ BasisOfExternalHom, 3 ], # part of CoefficientsOfMorphism
+                      [ CoefficientsOfMorphismWithGivenBasisOfExternalHom, 2 ],
+                      [ MultiplyWithElementOfCommutativeRingForMorphisms, 2 ],
+                      [ ZeroMorphism, 1 ],
+                      [ PreCompose, 2 ],
                     ],
                     [
                       HomomorphismStructureOnObjects,
@@ -157,7 +159,7 @@ AddFinalDerivation( DistinguishedObjectOfHomomorphismStructure,
     fi;
     
   end
-] : ConditionsListComplete := true,
+] :
   FunctionCalledBeforeInstallation :=
     function( cat )
       local matrix_cat;
