@@ -341,7 +341,15 @@ InstallMethod( CoefficientsOfMorphism,
               [ IsCapCategoryMorphism ],
   function( alpha )
     
-    return CoefficientsOfMorphismWithGivenBasisOfExternalHom( alpha, BasisOfExternalHom( Source( alpha ), Range( alpha ) ) );
+    return CoefficientsOfMorphism( CapCategory( alpha ), alpha );
+    
+end );
+
+InstallOtherMethod( CoefficientsOfMorphism,
+              [ IsCapCategory, IsCapCategoryMorphism ],
+  function( cat, alpha )
+    
+    return CoefficientsOfMorphismWithGivenBasisOfExternalHom( cat, alpha, BasisOfExternalHom( cat, Source( alpha ), Range( alpha ) ) );
     
 end );
 
