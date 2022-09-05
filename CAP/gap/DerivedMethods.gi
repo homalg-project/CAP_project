@@ -3438,25 +3438,27 @@ AddFinalDerivation( IsEqualForMorphisms,
 ##
 AddFinalDerivation( BasisOfExternalHom,
                     [
-                      [ HomomorphismStructureOnObjects ],
-                      [ HomomorphismStructureOnMorphismsWithGivenObjects ],
-                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism ],
-                      [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure ],
-                      [ DistinguishedObjectOfHomomorphismStructure ],
-                      [ MultiplyWithElementOfCommutativeRingForMorphisms ]
+                      [ HomomorphismStructureOnObjects, 1 ],
+                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 2 ],
+                      [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure, 1 ],
+                      [ DistinguishedObjectOfHomomorphismStructure, 1 ],
+                      [ BasisOfExternalHom, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ CoefficientsOfMorphismWithGivenBasisOfExternalHom, 1, RangeCategoryOfHomomorphismStructure ],
                     ],
                     [
                       BasisOfExternalHom,
                       CoefficientsOfMorphismWithGivenBasisOfExternalHom
                     ],
   function( cat, a, b )
-    local hom_a_b, D, B;
+    local range_cat, hom_a_b, D, B;
+    
+    range_cat := RangeCategoryOfHomomorphismStructure( cat );
     
     hom_a_b := HomomorphismStructureOnObjects( cat, a, b );
     
     D := DistinguishedObjectOfHomomorphismStructure( cat );
     
-    B := ValueGlobal( "BasisOfExternalHom" )( D, hom_a_b );
+    B := BasisOfExternalHom( range_cat, D, hom_a_b );
     
     return List( B, m -> InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat, a, b, m ) );
   
@@ -3464,14 +3466,17 @@ AddFinalDerivation( BasisOfExternalHom,
 [
   CoefficientsOfMorphismWithGivenBasisOfExternalHom,
   function( cat, alpha, L )
-    local beta;
-        
+    local range_cat, beta;
+    
+    range_cat := RangeCategoryOfHomomorphismStructure( cat );
+    
     beta := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat, alpha );
     
-    return CoefficientsOfMorphism( beta );
+    return CoefficientsOfMorphism( range_cat, beta );
     
   end
-] : ConditionsListComplete := true,
+] :
+  CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
   CategoryFilter :=
     function( cat )
       local range_cat, required_methods;
@@ -3503,18 +3508,6 @@ AddFinalDerivation( BasisOfExternalHom,
       fi;
       
       if not IsIdenticalObj( CommutativeRingOfLinearCategory( cat ), CommutativeRingOfLinearCategory( range_cat ) ) then
-        
-        return false;
-        
-      fi;
-      
-      required_methods := [
-                            "BasisOfExternalHom",
-                            "CoefficientsOfMorphismWithGivenBasisOfExternalHom",
-                            "MultiplyWithElementOfCommutativeRingForMorphisms"
-                          ];
-      
-      if not ForAll( required_methods, m -> CanCompute( range_cat, m ) ) then
         
         return false;
         

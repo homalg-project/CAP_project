@@ -444,7 +444,10 @@ AddFinalDerivation( IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom,
                       MorphismFromTensorProductToInternalCoHomWithGivenObjects,
                       MorphismFromInternalCoHomToTensorProductWithGivenObjects,
                       IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom,
-                      IsomorphismFromInternalCoHomToTensorProductWithCoDualObject ],
+                      IsomorphismFromInternalCoHomToTensorProductWithCoDualObject,
+                      IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject,
+                      IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit,
+                    ],
                     
   function( cat, a, b )
     
