@@ -10,30 +10,39 @@ BindGlobal( "CATEGORY_FILTER_CHECKER",
     
     # if the category is matrix category of some homalg field then do nothing
     if IsBound( cat!.field_for_matrix_category ) then
-      
-      return false;
-      
+        
+        return false;
+        
     fi;
     
     if not ( HasIsLinearCategoryOverCommutativeRing( cat ) and IsLinearCategoryOverCommutativeRing( cat ) ) then
-      
-      return false;
-      
+        
+        return false;
+        
     fi;
     
     k := CommutativeRingOfLinearCategory( cat );
     
     if not ( HasIsFieldForHomalg( k ) and IsFieldForHomalg( k ) ) then
-      
-      return false;
-      
+        
+        return false;
+        
     fi;
     
-    if HasRangeCategoryOfHomomorphismStructure( cat ) and
-        not IsIdenticalObj( RangeCategoryOfHomomorphismStructure( cat ), MatrixCategory( k ) ) then
-      
-      return false;
-      
+    if HasRangeCategoryOfHomomorphismStructure( cat ) then
+        
+        if not HasMatrixCategory( k ) then
+            
+            return false;
+            
+        fi;
+        
+        if not IsIdenticalObj( RangeCategoryOfHomomorphismStructure( cat ), MatrixCategory( k ) ) then
+            
+            return false;
+            
+        fi;
+        
     fi;
     
     return true;
