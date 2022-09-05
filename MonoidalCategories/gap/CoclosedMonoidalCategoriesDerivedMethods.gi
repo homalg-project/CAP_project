@@ -27,27 +27,13 @@ AddFinalDerivation( IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit,
     
     return IdentityMorphism( cat, InternalCoHomOnObjects( cat, TensorUnit( cat ), object ) );
     
-end : CategoryFilter := IsCoclosedMonoidalCategory,
-      Description := "IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit as the identity of coHom(1,a)" );
-
-AddFinalDerivation( IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject,
-                    [ [ IdentityMorphism, 1 ],
-                      [ InternalCoHomOnObjects, 1 ],
-                      [ TensorUnit, 1 ] ],
-                    [ CoDualOnObjects,
-                      CoDualOnMorphismsWithGivenCoDuals,
-                      MorphismFromCoBidualWithGivenCoBidual,
-                      IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit,
-                      IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject,
-                      UniversalPropertyOfCoDual,
-                      CoDualityTensorProductCompatibilityMorphismWithGivenObjects,
-                      CoclosedEvaluationForCoDualWithGivenTensorProduct,
-                      MorphismFromInternalCoHomToTensorProductWithGivenObjects
-                      ],
-
+  end,
+[
+  IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject,
   function( cat, object )
     
     return IdentityMorphism( cat, InternalCoHomOnObjects( cat, TensorUnit( cat ), object ) );
     
-end : CategoryFilter := IsCoclosedMonoidalCategory,
-      Description := "IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject as the identity of coHom(1,a)" );
+  end
+] : CategoryFilter := IsCoclosedMonoidalCategory,
+      Description := "IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit as the identity of coHom(1,a)" );

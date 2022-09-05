@@ -30,27 +30,13 @@ AddFinalDerivation( IsomorphismFromCocartesianDualObjectToCoexponentialFromIniti
     
     return IdentityMorphism( cat, CoexponentialOnObjects( cat, InitialObject( cat ), object ) );
     
-end : CategoryFilter := IsCocartesianCoclosedCategory,
-      Description := "IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject as the identity of Coexp(1,a)" );
-
-AddFinalDerivation( IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject,
-                    [ [ IdentityMorphism, 1 ],
-                      [ CoexponentialOnObjects, 1 ],
-                      [ InitialObject, 1 ] ],
-                    [ CocartesianDualOnObjects,
-                      CocartesianDualOnMorphismsWithGivenCocartesianDuals,
-                      MorphismFromCocartesianBidualWithGivenCocartesianBidual,
-                      IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject,
-                      IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject,
-                      UniversalPropertyOfCocartesianDual,
-                      CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects,
-                      CocartesianEvaluationForCocartesianDualWithGivenCoproduct,
-                      MorphismFromCoexponentialToCoproductWithGivenObjects
-                      ],
-
+  end,
+[
+  IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject,
   function( cat, object )
     
     return IdentityMorphism( cat, CoexponentialOnObjects( cat, InitialObject( cat ), object ) );
     
-end : CategoryFilter := IsCocartesianCoclosedCategory,
-      Description := "IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject as the identity of Coexp(1,a)" );
+  end
+] : CategoryFilter := IsCocartesianCoclosedCategory,
+      Description := "IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject as the identity of Coexp(1,a)" );

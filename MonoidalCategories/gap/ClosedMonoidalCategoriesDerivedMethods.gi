@@ -27,26 +27,13 @@ AddFinalDerivation( IsomorphismFromDualObjectToInternalHomIntoTensorUnit,
     
     return IdentityMorphism( cat, InternalHomOnObjects( cat, object, TensorUnit( cat ) ) );
     
-end : CategoryFilter := IsClosedMonoidalCategory,
-      Description := "IsomorphismFromDualObjectToInternalHomIntoTensorUnit as the identity of Hom(a,1)" );
-
-AddFinalDerivation( IsomorphismFromInternalHomIntoTensorUnitToDualObject,
-                    [ [ IdentityMorphism, 1 ],
-                      [ InternalHomOnObjects, 1 ],
-                      [ TensorUnit, 1 ] ],
-                    [ DualOnObjects,
-                      DualOnMorphismsWithGivenDuals,
-                      MorphismToBidualWithGivenBidual,
-                      IsomorphismFromDualObjectToInternalHomIntoTensorUnit,
-                      IsomorphismFromInternalHomIntoTensorUnitToDualObject,
-                      UniversalPropertyOfDual,
-                      TensorProductDualityCompatibilityMorphismWithGivenObjects,
-                      EvaluationForDualWithGivenTensorProduct,
-                      MorphismFromTensorProductToInternalHomWithGivenObjects ],
-                 
+  end,
+[
+  IsomorphismFromInternalHomIntoTensorUnitToDualObject,
   function( cat, object )
     
     return IdentityMorphism( cat, InternalHomOnObjects( cat, object, TensorUnit( cat ) ) );
     
-end : CategoryFilter := IsClosedMonoidalCategory,
-      Description := "IsomorphismFromInternalHomIntoTensorUnitToDualObject as the identity of Hom(a,1)" );
+  end
+] : CategoryFilter := IsClosedMonoidalCategory,
+      Description := "IsomorphismFromDualObjectToInternalHomIntoTensorUnit and its inverse as the identity of Hom(a,1)" );
