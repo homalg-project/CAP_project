@@ -9,7 +9,7 @@ InstallValue( CAP_INTERNAL_FINAL_DERIVATION_LIST,
 BindGlobal( "CAP_INTERNAL_FINAL_DERIVATION_SANITY_CHECK",
   
   function( derivation )
-    local methods_to_check, method_name, filter_list, number_of_proposed_arguments, current_function_argument_number, current_additional_filter_list_length, method, impl;
+    local methods_to_check, method_name, filter_list, number_of_proposed_arguments, current_function_argument_number, method;
     
     if PositionSublist( String( derivation.category_filter ), "CanCompute" ) <> fail then
         
@@ -23,7 +23,7 @@ BindGlobal( "CAP_INTERNAL_FINAL_DERIVATION_SANITY_CHECK",
         
     fi;
     
-    methods_to_check := Concatenation( [ [ derivation.target_op, derivation.function_list ] ], derivation.additional_functions );
+    methods_to_check := Concatenation( [ [ derivation.target_op, derivation.func ] ], derivation.additional_functions );
     
     for method in methods_to_check do
         
@@ -46,23 +46,12 @@ BindGlobal( "CAP_INTERNAL_FINAL_DERIVATION_SANITY_CHECK",
         
         number_of_proposed_arguments := Length( filter_list );
         
-        for impl in method[2] do
-            
-            current_function_argument_number := NumberArgumentsFunction( impl[ 1 ] );
-            
-            if current_function_argument_number >= 0 and current_function_argument_number <> number_of_proposed_arguments then
-                Error( "While adding a final derivation for ", method_name, ": given function has ", String( current_function_argument_number ),
-                       " arguments but should have ", String( number_of_proposed_arguments ) );
-            fi;
-            
-            current_additional_filter_list_length := Length( impl[ 2 ] );
-            
-            if current_additional_filter_list_length > 0 and current_additional_filter_list_length <> number_of_proposed_arguments then
-                Error( "While adding a final derivation for ", method_name, ": there are ", String( current_additional_filter_list_length ),
-                       " additional filters but there should be ", String( number_of_proposed_arguments ), " (or none)" );
-            fi;
-            
-        od;
+        current_function_argument_number := NumberArgumentsFunction( method[2] );
+        
+        if current_function_argument_number >= 0 and current_function_argument_number <> number_of_proposed_arguments then
+            Error( "While adding a final derivation for ", method_name, ": given function has ", String( current_function_argument_number ),
+                   " arguments but should have ", String( number_of_proposed_arguments ) );
+        fi;
         
     od;
     
@@ -77,11 +66,11 @@ end );
 
 InstallGlobalFunction( AddFinalDerivation,
                
-  function( target_op, can_compute, cannot_compute, func_list, additional_functions... )
-    local final_derivation, loop_multiplier, category_getters, function_called_before_installation, operations_in_graph, operations_to_install, collected_list, current_list, union_of_collected_lists, used_op_names_with_multiples_and_category_getters, i, current_implementation, current_additional_func, x;
+  function( target_op, can_compute, cannot_compute, func, additional_functions... )
+    local final_derivation, loop_multiplier, category_getters, function_called_before_installation, operations_in_graph, operations_to_install, collected_list, union_of_collected_lists, used_op_names_with_multiples_and_category_getters, i, current_additional_func, x;
     
-    if IsFunction( func_list ) then
-        func_list := [ [ func_list, [] ] ];
+    if IsList( func ) then
+        Error( "passing a list of functions to `AddFinalDerivation` is not supported anymore" );
     fi;
 
     final_derivation := rec( );
@@ -94,8 +83,8 @@ InstallGlobalFunction( AddFinalDerivation,
     function_called_before_installation := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "FunctionCalledBeforeInstallation", false );
     
     for i in [ 1 .. Length( additional_functions ) ] do
-        if IsFunction( additional_functions[ i ][ 2 ] ) then
-            additional_functions[ i ][ 2 ] := [ [ additional_functions[ i ][ 2 ], [ ] ] ];
+        if IsList( additional_functions[i][2] ) then
+            Error( "passing lists of functions to `AddFinalDerivation` is not supported anymore" );
         fi;
     od;
     final_derivation.additional_functions := additional_functions;
@@ -105,15 +94,7 @@ InstallGlobalFunction( AddFinalDerivation,
     ## Find symbols in functions
     operations_to_install := [ ];
     
-    collected_list := [ ];
-    
-    for current_implementation in func_list do
-        
-        current_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( current_implementation[ 1 ], operations_in_graph, loop_multiplier, CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS, category_getters );
-        collected_list := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, current_list );
-        
-    od;
-    
+    collected_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( func, operations_in_graph, loop_multiplier, CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS, category_getters );
     final_derivation.used_ops_with_multiples := collected_list;
     
     Add( operations_to_install, NameFunction( target_op ) );
@@ -122,22 +103,15 @@ InstallGlobalFunction( AddFinalDerivation,
     
     for current_additional_func in final_derivation.additional_functions do
         
-        collected_list := [];
+        collected_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( current_additional_func[2], operations_in_graph, loop_multiplier, CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS, category_getters );
         
-        for current_implementation in current_additional_func[ 2 ] do
-            
-            current_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( current_implementation[ 1 ], operations_in_graph, loop_multiplier, CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS, category_getters );
-            collected_list := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, current_list );
-            
-        od;
-        
-        current_additional_func[ 3 ] := collected_list;
+        current_additional_func[3] := collected_list;
         
         # Operations may use operations from the same final derivation as long as the latter are installed before the former.
         # In this case, the used operations are no preconditions and thus should not go into union_of_collected_lists.
         collected_list := Filtered( collected_list, x -> not x[1] in operations_to_install );
         
-        Add( operations_to_install, NameFunction( current_additional_func[ 1 ] ) );
+        Add( operations_to_install, NameFunction( current_additional_func[1] ) );
         
         union_of_collected_lists := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( union_of_collected_lists, collected_list );
         
@@ -199,7 +173,7 @@ InstallGlobalFunction( AddFinalDerivation,
     final_derivation.target_op := target_op;
     final_derivation.can_compute := used_op_names_with_multiples_and_category_getters;
     final_derivation.cannot_compute := cannot_compute;
-    final_derivation.function_list := func_list;
+    final_derivation.func := func;
     final_derivation.function_called_before_installation := function_called_before_installation;
     
     CAP_INTERNAL_FINAL_DERIVATION_SANITY_CHECK( final_derivation );
@@ -405,7 +379,9 @@ InstallMethod( Finalize,
             ## Add method
             add_name := ValueGlobal( Concatenation( [ "Add", NameFunction( current_final_derivation.target_op ) ] ) );
             
-            add_name( category, current_final_derivation.function_list, weight : IsFinalDerivation := true );
+            # use the add method with signature IsCapCategory, IsList, IsInt to avoid
+            # the convenience for AddZeroObject etc.
+            add_name( category, [ Pair( current_final_derivation.func, [ ] ) ], weight : IsFinalDerivation := true );
 
             for current_additional_func in current_final_derivation.additional_functions do
                 
@@ -455,7 +431,11 @@ InstallMethod( Finalize,
                                               current_final_derivation.description, "\n" ) );
                 
                 add_name := ValueGlobal( Concatenation( [ "Add", NameFunction( current_additional_func[ 1 ] ) ] ) );
-                add_name( category, current_additional_func[ 2 ], weight : IsFinalDerivation := true );
+                
+                
+                # use the add method with signature IsCapCategory, IsList, IsInt to avoid
+                # the convenience for AddZeroObject etc.
+                add_name( category, [ Pair( current_additional_func[2], [ ] ) ], weight : IsFinalDerivation := true );
                 
             od;
             
