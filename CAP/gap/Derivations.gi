@@ -34,15 +34,15 @@ InstallGlobalFunction( "DeactivateDerivationInfo",
 end );
 
 InstallMethod( MakeDerivation,
-               [ IsString, IsFunction, IsDenseList, IsPosInt, IsDenseList, IsFunction ],
+               [ IsString, IsFunction, IsDenseList, IsPosInt, IsFunction, IsFunction ],
                
-function( name, target_op, used_op_names_with_multiples_and_category_getters, weight, implementations_with_extra_filters, category_filter )
+function( name, target_op, used_op_names_with_multiples_and_category_getters, weight, func, category_filter )
     
     return ObjectifyWithAttributes(
         rec( ), NewType( TheFamilyOfDerivations, IsDerivedMethodRep ),
         DerivationName, name,
         DerivationWeight, weight,
-        DerivationFunctionsWithExtraFilters, implementations_with_extra_filters,
+        DerivationFunction, func,
         CategoryFilter, category_filter,
         TargetOperation, NameFunction( target_op ),
         UsedOperationsWithMultiplesAndCategoryGetters, used_op_names_with_multiples_and_category_getters
@@ -80,7 +80,7 @@ end );
 InstallMethod( InstallDerivationForCategory,
                [ IsDerivedMethod, IsPosInt, IsCapCategory ],
 function( d, weight, C )
-  local method_name, implementation_list, add_method, add_name, general_filter_list,
+  local method_name, func, add_method, add_name, general_filter_list,
         installation_name, nr_arguments, cache_name, current_filters, current_implementation,
         function_called_before_installation;
   
@@ -92,7 +92,7 @@ function( d, weight, C )
                                           DerivationName( d ), "\n" ) );
   
   method_name := TargetOperation( d );
-  implementation_list := DerivationFunctionsWithExtraFilters( d );
+  func := DerivationFunction( d );
   add_name := Concatenation( "Add", method_name );
   add_method := ValueGlobal( add_name );
   
@@ -102,7 +102,9 @@ function( d, weight, C )
       
   fi;
   
-  add_method( C, implementation_list, weight : IsDerivation := true );
+  # use the add method with signature IsCapCategory, IsList, IsInt to avoid
+  # the convenience for AddZeroObject etc.
+  add_method( C, [ Pair( func, [ ] ) ], weight : IsDerivation := true );
   
 end );
 
@@ -176,7 +178,7 @@ end );
 InstallMethod( AddDerivation,
                [ IsDerivedMethodGraphRep, IsDerivedMethod ],
 function( G, d )
-  local method_name, filter_list, number_of_proposed_arguments, current_function_argument_number, current_additional_filter_list_length, impl, x;
+  local method_name, filter_list, number_of_proposed_arguments, current_function_argument_number, x;
   
   if IsIdenticalObj( G, CAP_INTERNAL_DERIVATION_GRAPH ) then
     
@@ -192,23 +194,12 @@ function( G, d )
     
     number_of_proposed_arguments := Length( filter_list );
     
-    for impl in DerivationFunctionsWithExtraFilters( d ) do
-        
-        current_function_argument_number := NumberArgumentsFunction( impl[ 1 ] );
-        
-        if current_function_argument_number >= 0 and current_function_argument_number <> number_of_proposed_arguments then
-            Error( "While adding a derivation for ", method_name, ": given function has ", String( current_function_argument_number ),
-                   " arguments but should have ", String( number_of_proposed_arguments ) );
-        fi;
-        
-        current_additional_filter_list_length := Length( impl[ 2 ] );
-        
-        if current_additional_filter_list_length > 0 and current_additional_filter_list_length <> number_of_proposed_arguments then
-            Error( "While adding a derivation for ", method_name, ": there are ", String( current_additional_filter_list_length ),
-                   " additional filters but there should be ", String( number_of_proposed_arguments ), " (or none)" );
-        fi;
-        
-    od;
+    current_function_argument_number := NumberArgumentsFunction( DerivationFunction( d ) );
+    
+    if current_function_argument_number >= 0 and current_function_argument_number <> number_of_proposed_arguments then
+        Error( "While adding a derivation for ", method_name, ": given function has ", String( current_function_argument_number ),
+               " arguments but should have ", String( number_of_proposed_arguments ) );
+    fi;
     
     if NumberArgumentsFunction( CategoryFilter( d ) ) = 0 or NumberArgumentsFunction( CategoryFilter( d ) ) > 1 then
         
@@ -230,45 +221,17 @@ end );
 InstallMethod( AddDerivation,
                [ IsDerivedMethodGraph, IsFunction, IsFunction ],
                
-  function( graph, target_op, implementations_with_extra_filters )
+  function( graph, target_op, func )
     
-    AddDerivation( graph,
-                   target_op,
-                   [ ],
-                   [ [ implementations_with_extra_filters, [ ] ] ] );
-                   
-end );
-
-InstallMethod( AddDerivation,
-               [ IsDerivedMethodGraph, IsFunction, IsDenseList ],
-               
-  function( graph, target_op, implementations_with_extra_filters )
-    
-    AddDerivation( graph,
-                   target_op,
-                   [ ],
-                   [ [ implementations_with_extra_filters, [ ] ] ] );
+    AddDerivation( graph, target_op, [ ], func );
                    
 end );
 
 InstallMethod( AddDerivation,
                [ IsDerivedMethodGraph, IsFunction, IsDenseList, IsFunction ],
                
-  function( graph, target_op, used_ops_with_multiples,
-            implementations_with_extra_filters )
-    
-    AddDerivation( graph,
-                  target_op,
-                  used_ops_with_multiples,
-                  [ [ implementations_with_extra_filters, [ ] ] ] );
-    
-end );
-
-InstallMethod( AddDerivation,
-               [ IsDerivedMethodGraph, IsFunction, IsDenseList, IsDenseList ],
-               
-  function( graph, target_op, used_ops_with_multiples_and_category_getters, implementations_with_extra_filters )
-    local weight, category_filter, description, loop_multiplier, category_getters, function_called_before_installation, operations_in_graph, collected_list, current_list, used_op_names_with_multiples_and_category_getters, derivation, current_implementation, x;
+  function( graph, target_op, used_ops_with_multiples_and_category_getters, func )
+    local weight, category_filter, description, loop_multiplier, category_getters, function_called_before_installation, operations_in_graph, collected_list, used_op_names_with_multiples_and_category_getters, derivation, x;
     
     weight := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Weight", 1 );
     category_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryFilter", IsCapCategory );
@@ -280,14 +243,7 @@ InstallMethod( AddDerivation,
     ## get used ops
     operations_in_graph := Operations( graph );
     
-    collected_list := [ ];
-    
-    for current_implementation in implementations_with_extra_filters do
-        
-        current_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( current_implementation[ 1 ], operations_in_graph, loop_multiplier, CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS, category_getters );
-        collected_list := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, current_list );
-        
-    od;
+    collected_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( func, operations_in_graph, loop_multiplier, CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS, category_getters );
     
     if IsEmpty( used_ops_with_multiples_and_category_getters ) then
         
@@ -352,7 +308,7 @@ InstallMethod( AddDerivation,
                                   target_op,
                                   used_op_names_with_multiples_and_category_getters,
                                   weight,
-                                  implementations_with_extra_filters,
+                                  func,
                                   category_filter );
     
     if function_called_before_installation <> false then
@@ -362,6 +318,24 @@ InstallMethod( AddDerivation,
     fi;
     
     AddDerivation( graph, derivation );
+    
+end );
+
+InstallMethod( AddDerivation,
+               [ IsDerivedMethodGraph, IsFunction, IsDenseList ],
+               
+  function( graph, target_op, implementations_with_extra_filters )
+    
+    Error( "passing a list of functions to `AddDerivation` is not supported anymore" );
+    
+end );
+
+InstallMethod( AddDerivation,
+               [ IsDerivedMethodGraph, IsFunction, IsDenseList, IsDenseList ],
+               
+  function( graph, target_op, used_ops_with_multiples, implementations_with_extra_filters )
+    
+    Error( "passing a list of functions to `AddDerivation` is not supported anymore" );
     
 end );
 
@@ -975,7 +949,7 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
                 
             od;
             
-            currently_installed_funcs := DerivationFunctionsWithExtraFilters( current_derivation );
+            currently_installed_funcs := [ Pair( DerivationFunction( current_derivation ), [ ] ) ];
             
         fi;
         

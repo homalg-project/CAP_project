@@ -55,23 +55,16 @@ DeclareCategory( "IsDerivedMethod", IsObject );
 #!  using this derivation.  Unless there is any particular reason
 #!  to regard the derivation as exceedingly expensive, this number
 #!  should be <C>1</C>.
-#!  The argument <A>implementations_with_extra_filters</A> contains
-#!  one or more functions with the actual implementation of the
-#!  derived method, together with lists of extra argument filters
-#!  for each function.  The argument is a list with entries of the
-#!  form <C>[fun, filters]</C>, where <C>fun</C> is a function and
-#!  <C>filters</C> is a (not necessarily dense) list of argument
-#!  filters.  If only one function is given, then <C>filters</C>
-#!  should be the empty list; in this case the argument's value
-#!  would be [[fun,[]]], where <C>fun</C> is the function.
+#!  The argument <A>func</A> contains the actual implementation of the
+#!  derived method.
 #!  The argument <A>category_filter</A> is a filter describing
 #!  which categories the derivation is valid for.  If it is valid
 #!  for all categories, then this argument should have the value
 #!  <C>IsCapCategory</C>.
-#! @Arguments name, target_op, used_ops_with_multiples, weight, implementations_with_extra_filters, category_filter
+#! @Arguments name, target_op, used_ops_with_multiples, weight, func, category_filter
 DeclareOperation( "MakeDerivation",
                   [ IsString, IsFunction, IsDenseList,
-                    IsPosInt, IsDenseList, IsFunction ] );
+                    IsPosInt, IsFunction, IsFunction ] );
 
 #! @Description
 #!  The name of the derivation.  This is a name identifying this
@@ -86,10 +79,9 @@ DeclareAttribute( "DerivationName", IsDerivedMethod );
 DeclareAttribute( "DerivationWeight", IsDerivedMethod );
 
 #! @Description
-#!  The implementation(s) of the derivation, together with lists
-#!  of extra filters for each implementation.
+#!  The implementation of the derivation.
 #! @Arguments d
-DeclareAttribute( "DerivationFunctionsWithExtraFilters", IsDerivedMethod );
+DeclareAttribute( "DerivationFunction", IsDerivedMethod );
 
 #! @Description
 #!  Filter describing which categories the derivation is valid for.
