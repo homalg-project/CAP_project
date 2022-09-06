@@ -32,7 +32,7 @@
   
   [1X8.2-2 MakeDerivation[101X
   
-  [33X[1;0Y[29X[2XMakeDerivation[102X( [3Xname[103X, [3Xtarget_op[103X, [3Xused_ops_with_multiples[103X, [3Xweight[103X, [3Ximplementations_with_extra_filters[103X, [3Xcategory_filter[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XMakeDerivation[102X( [3Xname[103X, [3Xtarget_op[103X, [3Xused_ops_with_multiples[103X, [3Xweight[103X, [3Xfunc[103X, [3Xcategory_filter[103X ) [32X operation[133X
   
   [33X[0;0YCreates a new derivation object. The argument [3Xname[103X is an arbitrary name used
   to  identify this derivation, and is useful only for debugging purposes. The
@@ -47,17 +47,11 @@
   to  be  considered valid. The argument [3Xweight[103X is an additional number to add
   when  calculating  the  resulting  weight of the target operation using this
   derivation.  Unless  there is any particular reason to regard the derivation
-  as   exceedingly   expensive,   this   number  should  be  [10X1[110X.  The  argument
-  [3Ximplementations_with_extra_filters[103X  contains  one or more functions with the
-  actual  implementation  of  the derived method, together with lists of extra
-  argument  filters  for each function. The argument is a list with entries of
-  the  form  [10X[fun,  filters][110X,  where  [10Xfun[110X  is a function and [10Xfilters[110X is a (not
-  necessarily  dense) list of argument filters. If only one function is given,
-  then  [10Xfilters[110X  should  be  the empty list; in this case the argument's value
-  would be [[fun,[]]], where [10Xfun[110X is the function. The argument [3Xcategory_filter[103X
-  is  a  filter describing which categories the derivation is valid for. If it
-  is  valid  for  all  categories,  then  this  argument should have the value
-  [10XIsCapCategory[110X.[133X
+  as  exceedingly  expensive,  this  number  should  be  [10X1[110X.  The argument [3Xfunc[103X
+  contains  the  actual  implementation  of  the  derived method. The argument
+  [3Xcategory_filter[103X  is  a  filter describing which categories the derivation is
+  valid for. If it is valid for all categories, then this argument should have
+  the value [10XIsCapCategory[110X.[133X
   
   [1X8.2-3 DerivationName[101X
   
@@ -73,12 +67,11 @@
   
   [33X[0;0YExtra weight for the derivation.[133X
   
-  [1X8.2-5 DerivationFunctionsWithExtraFilters[101X
+  [1X8.2-5 DerivationFunction[101X
   
-  [33X[1;0Y[29X[2XDerivationFunctionsWithExtraFilters[102X( [3Xd[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XDerivationFunction[102X( [3Xd[103X ) [32X attribute[133X
   
-  [33X[0;0YThe  implementation(s)  of  the  derivation,  together  with  lists of extra
-  filters for each implementation.[133X
+  [33X[0;0YThe implementation of the derivation.[133X
   
   [1X8.2-6 CategoryFilter[101X
   

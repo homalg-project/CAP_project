@@ -397,7 +397,7 @@
   [2XDeclareAttributeWithToDoForIsWellDefined[102X 9.2-3 
   [2XDeclareFamilyProperty[102X 9.2-4 
   [2XDecreaseKey[102X, for IsStringMinHeap, IsString, IsInt 8.5-5 
-  [2XDerivationFunctionsWithExtraFilters[102X, for IsDerivedMethod 8.2-5 
+  [2XDerivationFunction[102X, for IsDerivedMethod 8.2-5 
   [2XDerivationGraph[102X, for IsOperationWeightList 8.4-3 
   [2XDerivationInfo[102X 8.1-1 
   [2XDerivationName[102X, for IsDerivedMethod 8.2-3 
@@ -608,7 +608,7 @@
   [2XLiftAlongMonomorphism[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-1 
   [2XLiftOrFail[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-6 
   [2XListCAPPrepareFunctions[102X 7.6-3 
-  [2XMakeDerivation[102X, for IsString, IsFunction, IsDenseList,IsPosInt, IsDenseList, IsFunction 8.2-2 
+  [2XMakeDerivation[102X, for IsString, IsFunction, IsDenseList,IsPosInt, IsFunction, IsFunction 8.2-2 
   [2XMakeDerivationGraph[102X, for IsDenseList 8.3-2 
   [2XMakeOperationWeightList[102X, for IsCapCategory, IsDerivedMethodGraph 8.4-2 
   [2XMereExistenceOfSolutionOfLinearSystemInAbCategory[102X, for IsList, IsList, IsList 3.16-10 
