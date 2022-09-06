@@ -876,6 +876,7 @@ CapJitAddTypeSignature( "Range", [ IsCapCategoryMorphism ], function ( input_typ
 end );
 
 # GAP operations
+CapJitAddTypeSignature( "RETURN_TRUE", [ IsObject, IsObject ], IsBool );
 CapJitAddTypeSignature( "Length", [ IsList ], IsInt );
 CapJitAddTypeSignature( "+", [ IsInt, IsInt ], IsInt );
 CapJitAddTypeSignature( "-", [ IsInt, IsInt ], IsInt );
