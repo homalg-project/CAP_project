@@ -661,6 +661,25 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xdummy := DummyCategory( rec([127X[104X
+    [4X[25X>[125X [27X    list_of_operations_to_install := [[127X[104X
+    [4X[25X>[125X [27X        "IdentityMorphism",[127X[104X
+    [4X[25X>[125X [27X    ],[127X[104X
+    [4X[25X>[125X [27X) : FinalizeCategory := false );;[127X[104X
+    [4X[25Xgap>[125X [27XAddIsProjective( dummy, ReturnTrue );[127X[104X
+    [4X[25Xgap>[125X [27XFinalize( dummy );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction([127X[104X
+    [4X[25X>[125X [27X    { cat, obj } -> IsProjective( cat, obj ),[127X[104X
+    [4X[25X>[125X [27X    dummy[127X[104X
+    [4X[25X>[125X [27X) );[127X[104X
+    [4X[28Xfunction ( cat_1, obj_1 )[128X[104X
+    [4X[28X    return RETURN_TRUE( cat_1, obj_1 );[128X[104X
+    [4X[28Xend[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X

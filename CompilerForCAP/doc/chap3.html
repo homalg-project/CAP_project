@@ -702,6 +702,26 @@ end
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", false );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dummy := DummyCategory( rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    list_of_operations_to_install := [</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "IdentityMorphism",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">) : FinalizeCategory := false );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddIsProjective( dummy, ReturnTrue );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Finalize( dummy );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    { cat, obj } -&gt; IsProjective( cat, obj ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    dummy</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">) );</span>
+function ( cat_1, obj_1 )
+    return RETURN_TRUE( cat_1, obj_1 );
+end
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", false );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LinearAlgebraForCAP", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();;</span>
