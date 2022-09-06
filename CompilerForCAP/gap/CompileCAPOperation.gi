@@ -4,7 +4,7 @@
 # Implementations
 #
 InstallGlobalFunction( "CapJitCompiledCAPOperationAsEnhancedSyntaxTree", function ( cat, operation_name )
-  local index, function_to_compile, info, filter_list, return_type;
+  local index, function_to_compile, global_variable_name, info, return_type;
     
     if not (IsBound( cat!.category_as_first_argument ) and cat!.category_as_first_argument = true) then
         
@@ -41,8 +41,15 @@ InstallGlobalFunction( "CapJitCompiledCAPOperationAsEnhancedSyntaxTree", functio
         
         if IsOperation( function_to_compile ) or IsKernelFunction( function_to_compile ) then
             
-            # COVERAGE_IGNORE_NEXT_LINE
-            Error( "compiling operations or kernel functions is not supported." );
+            global_variable_name := CapJitGetOrCreateGlobalVariable( function_to_compile );
+            
+            function_to_compile := EvalString( ReplacedStringViaRecord(
+                "{ input_arguments } -> global_variable_name( input_arguments )",
+                rec(
+                    input_arguments := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).input_arguments_names,
+                    global_variable_name := global_variable_name,
+                )
+            ) );
             
         fi;
         
