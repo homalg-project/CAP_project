@@ -474,7 +474,7 @@ InstallMethod( Finalize,
                 
             fi;
             
-            Print( "* The category has gained a new setting like `supports_empty_limits` since adding the first function. Such settings should always be set before adding functions.\n" );
+            Print( "* The category might have gained a new setting like `supports_empty_limits` since adding the first function. Such settings should always be set before adding functions.\n" );
             Print( "* The category filter of some derivation does not fulfill the specification.\n" );
             Print( "For debugging, call `ActivateDerivationInfo( )`, retry, and look at the derivations between \"Starting reevaluation of ...\" and \"Finished reevaluation of ...\".\n" );
             
