@@ -53,6 +53,9 @@
   [30X    [33X[0;6Y[10Xlist_of_operations_to_install[110X  (mandatory):  a  list  of  names of [5XCAP[105X
         operations which should be installed for the category[133X
   
+  [30X    [33X[0;6Y[10Xsupports_empty_limits[110X  (optional): whether the category supports empty
+        lists in inputs to operations of limits and colimits[133X
+  
   [30X    [33X[0;6Y[10Xunderlying_category_getter_string[110X (optional): see below[133X
   
   [30X    [33X[0;6Y[10Xunderlying_object_getter_string[110X (optional): see below[133X

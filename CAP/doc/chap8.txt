@@ -49,9 +49,11 @@
   derivation.  Unless  there is any particular reason to regard the derivation
   as  exceedingly  expensive,  this  number  should  be  [10X1[110X.  The argument [3Xfunc[103X
   contains  the  actual  implementation  of  the  derived method. The argument
-  [3Xcategory_filter[103X  is  a  filter describing which categories the derivation is
-  valid for. If it is valid for all categories, then this argument should have
-  the value [10XIsCapCategory[110X.[133X
+  [3Xcategory_filter[103X  is  a  filter (or function) describing which categories the
+  derivation  is  valid  for.  If  it  is  valid for all categories, then this
+  argument  should have the value [10XIsCapCategory[110X. The output of [3Xcategory_filter[103X
+  must  not  change  during  the installation of operations. In particular, it
+  must not rely on [10XCanCompute[110X to check conditions.[133X
   
   [1X8.2-3 DerivationName[101X
   
