@@ -208,6 +208,7 @@ Q[x,y]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">triple := EnhancementWithAttributes( category_with_attributes_record );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">indirection_category := triple[1];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetIsAbelianCategory( indirection_category, true );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Reevaluate( indirection_category!.derivations_weight_list );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddIsEqualForCacheForObjects( indirection_category, IsIdenticalObj );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddIsEqualForObjects( indirection_category, function( obj1, obj2 ) return UnderlyingCell( obj1 ) = UnderlyingCell( obj2 ); end );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddIsEqualForCacheForMorphisms( indirection_category, IsIdenticalObj );;</span>
