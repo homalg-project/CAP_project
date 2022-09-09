@@ -465,6 +465,8 @@ InstallMethod( Finalize,
             
             Print( "WARNING: The installed derivations of the category named \"", Name( category ), "\" have changed by reevaluation, which is not expected at this point.\n" );
             Print( "This might be due to one of the following reasons:\n" );
+            Print( "* The category might have gained a new setting like `supports_empty_limits` since adding the first function. Such settings should always be set before adding functions.\n" );
+            Print( "* The category filter of some derivation might not fulfill the specification.\n" );
             
             diff := Difference( categorical_properties, category!.initially_known_categorical_properties );
             
@@ -474,8 +476,6 @@ InstallMethod( Finalize,
                 
             fi;
             
-            Print( "* The category might have gained a new setting like `supports_empty_limits` since adding the first function. Such settings should always be set before adding functions.\n" );
-            Print( "* The category filter of some derivation does not fulfill the specification.\n" );
             Print( "For debugging, call `ActivateDerivationInfo( )`, retry, and look at the derivations between \"Starting reevaluation of ...\" and \"Finished reevaluation of ...\".\n" );
             
         fi;
