@@ -644,9 +644,11 @@ InstallGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION",
     ## Beginning space (or new line) is important here, to avoid scanning things like CallFuncList
     for i in [ " List(", "\nList(",  " Perform(", "\nPerform(", "\nApply(", " Apply(" ] do
         
-        func_as_string := CAP_INTERNAL_MAKE_LOOP_SYMBOL_LOOK_LIKE_LOOP( func_as_string, i );
+        func_as_string := ReplacedString( func_as_string, i, " CAP_INTERNAL_FUNCTIONAL_LOOP" );
         
     od;
+    
+    func_as_string := CAP_INTERNAL_MAKE_LOOP_SYMBOL_LOOK_LIKE_LOOP( func_as_string, "CAP_INTERNAL_FUNCTIONAL_LOOP" );
     
     RemoveCharacters( func_as_string, "()[];," );
     
@@ -691,7 +693,7 @@ InstallGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION",
                 
             fi;
             
-        elif current_symbol in [ "for", "while", "List", "Perform", "Apply" ] then
+        elif current_symbol in [ "for", "while", "CAP_INTERNAL_FUNCTIONAL_LOOP" ] then
             
             loop_power := loop_power + 1;
             
@@ -705,7 +707,7 @@ InstallGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION",
     
     if loop_power <> 0 then
         
-        Error( "The automated detection of preconditions of derivations could not detect loops properly. If you are using the reserved word `for` in the implementation (e.g. in a string), this is probably the cause. If not, please report this as a bug." );
+        Error( "The automated detection of CAP operations could not detect loops properly. If the reserved word `for` appears in <func_as_string> (e.g. in a string), this is probably the cause. If not, please report this as a bug mentioning <func_as_string>." );
         
     fi;
     
