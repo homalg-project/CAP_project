@@ -149,6 +149,11 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                 # COVERAGE_IGNORE_NEXT_LINE
                 ErrorWithFuncLocation( "Found an assignment to the global variable `", tree.gvar, "`. Maybe this should be a local variable of the function mentioned above?\n" );
                 
+            elif tree.type = "EXPR_RANGE" and IsBound( tree.second ) then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                ErrorWithFuncLocation( "Found a range of the form `[ first, second .. last ]`. Only ranges of the form `[ first .. last ]` are supported currently.\n" );
+                
             fi;
             
             # replace verbose types by short types
