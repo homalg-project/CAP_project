@@ -1499,3 +1499,214 @@ InstallGlobalFunction( CAP_JIT_INCOMPLETE_LOGIC, function ( value )
     return value;
     
 end );
+
+##
+InstallGlobalFunction( ListWithKeys, function ( list, func )
+  local res, i;
+    
+    # see implementation of `List`
+    
+    res := EmptyPlist( Length( list ) );
+    
+    # hack to save type adjustments and conversions (e.g. to blist)
+    if Length( list ) > 0 then
+        
+        res[Length( list )] := 1;
+        
+    fi;
+    
+    for i in [ 1 .. Length( list ) ] do
+        
+        res[i] := func( i, list[i] );
+        
+    od;
+    
+    return res;
+    
+end );
+
+##
+InstallGlobalFunction( SumWithKeys, function ( list, func )
+  local sum, i;
+    
+    # see implementation of `Sum`
+    
+    if IsEmpty( list ) then
+        
+        sum := 0;
+        
+    else
+        
+        sum := func( 1, list[1] );
+        
+        for i in [ 2 .. Length( list ) ] do
+            
+            sum := sum + func( i, list[i] );
+            
+        od;
+        
+    fi;
+    
+    return sum;
+    
+end );
+
+##
+InstallGlobalFunction( ProductWithKeys, function ( list, func )
+  local product, i;
+    
+    # adapted implementation of `Product`
+    
+    if IsEmpty( list ) then
+        
+        product := 1;
+        
+    else
+        
+        product := func( 1, list[1] );
+        
+        for i in [ 2 .. Length( list ) ] do
+            
+            product := product * func( i, list[i] );
+            
+        od;
+        
+    fi;
+    
+    return product;
+    
+end );
+
+##
+InstallGlobalFunction( ForAllWithKeys, function ( list, func )
+  local i;
+    
+    # adapted implementation of `ForAll`
+    
+    for i in [ 1 .. Length( list ) ] do
+        
+        if not func( i, list[i] ) then
+            
+            return false;
+            
+        fi;
+        
+    od;
+    
+    return true;
+    
+end );
+
+##
+InstallGlobalFunction( ForAnyWithKeys, function ( list, func )
+  local i;
+    
+    # adapted implementation of `ForAny`
+    
+    for i in [ 1 .. Length( list ) ] do
+        
+        if func( i, list[i] ) then
+            
+            return true;
+            
+        fi;
+        
+    od;
+    
+    return false;
+    
+end );
+
+##
+InstallGlobalFunction( NumberWithKeys, function ( list, func )
+  local nr, i;
+    
+    # adapted implementation of `Number`
+    
+    nr := 0;
+    
+    for i in [ 1 .. Length( list ) ] do
+        
+        if func( i, list[i] ) then
+            
+            nr := nr + 1;
+            
+        fi;
+        
+    od;
+    
+    return nr;
+    
+end );
+
+##
+InstallGlobalFunction( FilteredWithKeys, function ( list, func )
+  local res, i, elm, j;
+    
+    # adapted implementation of `Filtered`
+    
+    res := list{[ ]};
+    
+    i := 0;
+    
+    for j in [ 1 .. Length( list ) ] do
+        
+        elm := list[j];
+        
+        if func( j, elm ) then
+            
+            i := i + 1;
+            
+            res[i] := elm;
+            
+        fi;
+        
+    od;
+    
+    return res;
+    
+end );
+
+##
+InstallGlobalFunction( FirstWithKeys, function ( list, func )
+  local elm, i;
+    
+    # adapted implementation of `First`
+    
+    for i in [ 1 .. Length( list ) ] do
+        
+        elm := list[i];
+        
+        if func( i, elm ) then
+            
+            return elm;
+            
+        fi;
+        
+    od;
+    
+    return fail;
+    
+end );
+
+##
+InstallGlobalFunction( LastWithKeys, function ( list, func )
+  local elm, i;
+    
+    # adapted implementation of `Last`
+    
+    for i in [ Length( list ), Length( list ) - 1 .. 1 ] do
+        
+        elm := list[i];
+        
+        if func( i, elm ) then
+            
+            return elm;
+            
+        fi;
+        
+    od;
+    
+    return fail;
+    
+end );
