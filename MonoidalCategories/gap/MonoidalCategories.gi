@@ -4,6 +4,8 @@
 # Implementations
 #
 
+InstallTrueMethod( IsMonoidalCategory, IsStrictMonoidalCategory );
+
 ##
 AddDerivationToCAP( AssociatorRightToLeft,
 
