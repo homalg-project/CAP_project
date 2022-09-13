@@ -7,6 +7,8 @@
 
 
 
+InstallTrueMethod( IsCartesianCategory, IsStrictCartesianCategory );
+
 ##
 AddDerivationToCAP( CartesianAssociatorRightToLeft,
 

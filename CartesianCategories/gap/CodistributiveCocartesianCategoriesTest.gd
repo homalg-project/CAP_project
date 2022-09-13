@@ -7,7 +7,7 @@
 
 
 
-#! @Chapter Test functions
+#! @Chapter Examples and Tests
 
 #! @Section Test functions
 
