@@ -7,6 +7,8 @@
 
 
 
+InstallTrueMethod( IsCocartesianCategory, IsStrictCocartesianCategory );
+
 ##
 AddDerivationToCAP( CocartesianAssociatorRightToLeft,
 
