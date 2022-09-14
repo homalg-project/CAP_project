@@ -151,7 +151,7 @@ AddDerivationToCAP( LeftCartesianDistributivityExpandingWithGivenObjects,
     
     return InverseForMorphisms( cat, LeftCartesianDistributivityFactoringWithGivenObjects( cat, Uk_axLk, a, L, ax_UkLk ) );
     
-end : CategoryFilter := IsDistributiveCartesianCategory,
+end : CategoryFilter := IsDistributiveCategory,
   Description := "LeftCartesianDistributivityExpandingWithGivenObjects using LeftCartesianDistributivityFactoringWithGivenObjects" );
 
 ##
@@ -160,5 +160,5 @@ AddDerivationToCAP( RightCartesianDistributivityExpandingWithGivenObjects,
     
     return InverseForMorphisms( cat, RightCartesianDistributivityFactoringWithGivenObjects( cat, Uk_Lkxa, L, a, UkLk_xa ) );
     
-end : CategoryFilter := IsDistributiveCartesianCategory,
+end : CategoryFilter := IsDistributiveCategory,
   Description := "RightCartesianDistributivityExpandingWithGivenObjects using RightCartesianDistributivityFactoringWithGivenObjects" );

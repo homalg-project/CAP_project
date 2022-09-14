@@ -13,11 +13,11 @@ InstallTrueMethod( IsBicartesianCategory, IsAbelianCategory );
 # https://ncatlab.org/nlab/show/bicartesian+closed+category
 InstallTrueMethod( IsBicartesianCategory, IsBicartesianClosedCategory );
 InstallTrueMethod( IsCartesianClosedCategory, IsBicartesianClosedCategory );
-InstallTrueMethod( IsDistributiveCartesianCategory, IsBicartesianClosedCategory );
+InstallTrueMethod( IsDistributiveCategory, IsBicartesianClosedCategory );
 
 InstallTrueMethod( IsBicartesianCategory, IsBicartesianCoclosedCategory );
 InstallTrueMethod( IsCocartesianCoclosedCategory, IsBicartesianCoclosedCategory );
-#InstallTrueMethod( IsCodistributiveCocartesianCategory, IsBicartesianCoclosedCategory );
+#InstallTrueMethod( IsCodistributiveCategory, IsBicartesianCoclosedCategory );
 
 InstallTrueMethod( IsCartesianCategory, IsFiniteCompleteCategory );
 InstallTrueMethod( IsCocartesianCategory, IsFiniteCocompleteCategory );
