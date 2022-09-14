@@ -263,7 +263,7 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
     local name, category_filter, category_object_filter, category_morphism_filter,
           create_func_object, create_func_morphism,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
-          properties, excluded_properties, T;
+          properties, excluded_properties, excluded_skeletal_properties, excluded_strict_properties, T;
     
     name := "TerminalCategoryWithMultipleObjects( )";
     
@@ -326,8 +326,11 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
     
     ## prevent skeletality and strictness
     properties := Set( List( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST, a -> a[1] ) );
-    excluded_properties := Filtered( properties, p -> IsInt( PositionSublist( p, "Strict" ) ) );
-    Add( excluded_properties, "IsSkeletalCategory" );
+    excluded_strict_properties := Filtered( properties, p -> IsInt( PositionSublist( p, "Strict" ) ) );
+    excluded_skeletal_properties := Filtered( properties, p -> "IsSkeletalCategory" in ListImpliedFilters( FilterByName( p ) ) );
+    Add( excluded_skeletal_properties, "IsSkeletalCategory" );
+    
+    excluded_properties := Concatenation( excluded_strict_properties, excluded_skeletal_properties );
     
     T := CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY( rec(
                  name := name,
