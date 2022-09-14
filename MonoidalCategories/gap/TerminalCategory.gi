@@ -79,8 +79,8 @@ InstallGlobalFunction( CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY,
     skip := [ "IsEqualForObjects",
               "IsEqualForMorphisms",
               "IsCongruentForMorphisms",
-              "LeftCartesianDistributivityExpandingWithGivenObjects", ## gets derived since IsDistributiveCartesianCategory := true
-              "LeftCocartesianCodistributivityFactoringWithGivenObjects", ## gets derived since IsCodistributiveCocartesianCategory := true
+              "LeftCartesianDistributivityExpandingWithGivenObjects", ## gets derived since IsDistributiveCategory := true
+              "LeftCocartesianCodistributivityFactoringWithGivenObjects", ## gets derived since IsCodistributiveCategory := true
               "MorphismToBidual",
               "MorphismFromBidual",
               "MorphismToCoBidual",
