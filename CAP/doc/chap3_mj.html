@@ -77,6 +77,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X82453E55857562AB">3.6-2 AddMorphism</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X812F94E5790616EC">3.6-3 AddMorphismRepresentation</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7D4369A984B1BD3E">3.6-4 ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X78005D357A051FC6">3.6-5 CreateCapCategoryMorphismWithAttributes</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X850CFDD48773998E">3.7 <span class="Heading">Equality and Congruence for Morphisms</span></a>
 </span>
@@ -502,6 +503,15 @@
 <p>Returns: a morphism</p>
 
 <p>Objectifies the morphism <var class="Arg">morphism</var> with the type created for morphisms in the category <var class="Arg">category</var>. The type is created by passing a representation to <code class="code">AddMorphismRepresentation</code>. Morphisms which are objectified using this method do not have to be passed to the <code class="code">AddMorphism</code> function. The arguments <code class="code">source</code> and <code class="code">range</code> are assumed to be objectified. The optional arguments behave like the corresponding arguments in <code class="code">ObjectifyWithAttributes</code>. Also returns the objectified morphism.</p>
+
+<p><a id="X78005D357A051FC6" name="X78005D357A051FC6"></a></p>
+
+<h5>3.6-5 CreateCapCategoryMorphismWithAttributes</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateCapCategoryMorphismWithAttributes</code>( <var class="Arg">morphism</var>, <var class="Arg">category</var>, <var class="Arg">source</var>, <var class="Arg">range</var>[, <var class="Arg">attr1</var>, <var class="Arg">val1</var>, <var class="Arg">attr2</var>, <var class="Arg">val2</var>, <var class="Arg">...</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>Shorthand for <code class="code">ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), category, source, range[, attr1, val1, attr2, val2, ...] )</code>.</p>
 
 <p><a id="X850CFDD48773998E" name="X850CFDD48773998E"></a></p>
 

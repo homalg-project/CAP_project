@@ -189,6 +189,14 @@
   behave  like  the  corresponding  arguments in [10XObjectifyWithAttributes[110X. Also
   returns the objectified object.[133X
   
+  [1X2.6-5 CreateCapCategoryObjectWithAttributes[101X
+  
+  [33X[1;0Y[29X[2XCreateCapCategoryObjectWithAttributes[102X( [3Xcategory[103X[, [3Xattribute1[103X, [3Xvalue1[103X, [3X...[103X] ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YShorthand   for   [10XObjectifyObjectForCAPWithAttributes(  rec(  ),  category[,
+  attribute1, value1, ...] )[110X.[133X
+  
   
   [1X2.7 [33X[0;0YObject constructors[133X[101X
   

@@ -66,6 +66,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X855C644A812F32B7">2.6-2 AddObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7A68365C82BDA4E7">2.6-3 AddObjectRepresentation</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X78095CF37B92F0D9">2.6-4 ObjectifyObjectForCAPWithAttributes</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X87BD8BB88206D940">2.6-5 CreateCapCategoryObjectWithAttributes</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X824C0CC579E8DD7F">2.7 <span class="Heading">Object constructors</span></a>
 </span>
@@ -299,6 +300,15 @@
 <p>Returns: an object</p>
 
 <p>Objectifies the object <var class="Arg">object</var> with the type created for objects in the category <var class="Arg">category</var>. The type is created by passing a representation to <code class="code">AddObjectRepresentation</code>. Objects which are objectified using this method do not have to be passed to the <code class="code">AddObject</code> function. The optional arguments behave like the corresponding arguments in <code class="code">ObjectifyWithAttributes</code>. Also returns the objectified object.</p>
+
+<p><a id="X87BD8BB88206D940" name="X87BD8BB88206D940"></a></p>
+
+<h5>2.6-5 CreateCapCategoryObjectWithAttributes</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateCapCategoryObjectWithAttributes</code>( <var class="Arg">category</var>[, <var class="Arg">attribute1</var>, <var class="Arg">value1</var>, <var class="Arg">...</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>Shorthand for <code class="code">ObjectifyObjectForCAPWithAttributes( rec( ), category[, attribute1, value1, ...] )</code>.</p>
 
 <p><a id="X824C0CC579E8DD7F" name="X824C0CC579E8DD7F"></a></p>
 
