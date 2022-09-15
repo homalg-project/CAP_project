@@ -381,7 +381,7 @@ CapJitAddLogicFunction( function ( tree )
     
 end );
 
-# AttributeGetter( ObjectifyObject/MorphismForCAPWithAttributes( ..., Attribute, value, ... ) ) => value
+# AttributeGetter( CreateCapCategoryObject/MorphismWithAttributes( ..., Attribute, value, ... ) ) => value
 CapJitAddLogicFunction( function ( tree )
   local pre_func;
     
@@ -402,37 +402,37 @@ CapJitAddLogicFunction( function ( tree )
             
             list := fail;
             
-            if CapJitIsCallToGlobalFunction( object, "ObjectifyObjectForCAPWithAttributes" ) then
+            if CapJitIsCallToGlobalFunction( object, "CreateCapCategoryObjectWithAttributes" ) then
                 
                 # special case
                 if attribute_name = "CapCategory" then
                     
-                    return object.args.2;
+                    return object.args.1;
                     
                 fi;
                 
-                list := Sublist( object.args, [ 3 .. object.args.length ] );
+                list := Sublist( object.args, [ 2 .. object.args.length ] );
                 
             fi;
             
-            if CapJitIsCallToGlobalFunction( object, "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" ) then
+            if CapJitIsCallToGlobalFunction( object, "CreateCapCategoryMorphismWithAttributes" ) then
                 
                 # special cases
                 if attribute_name = "CapCategory" then
                     
-                    return object.args.2;
+                    return object.args.1;
                     
                 elif attribute_name = "Source" then
                     
-                    return object.args.3;
+                    return object.args.2;
                     
                 elif attribute_name = "Range" then
                     
-                    return object.args.4;
+                    return object.args.3;
                     
                 fi;
                 
-                list := Sublist( object.args, [ 5 .. object.args.length ] );
+                list := Sublist( object.args, [ 4 .. object.args.length ] );
                 
             fi;
             
@@ -537,23 +537,23 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
         
         return_obj := result_func.bindings.BINDING_RETURN_VALUE;
         
-        if CapJitIsCallToGlobalFunction( return_obj, gvar -> gvar in [ "ObjectifyObjectForCAPWithAttributes", "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" ] ) and return_obj.args.2.type = "EXPR_REF_GVAR" then
+        if CapJitIsCallToGlobalFunction( return_obj, gvar -> gvar in [ "CreateCapCategoryObjectWithAttributes", "CreateCapCategoryMorphismWithAttributes" ] ) and return_obj.args.1.type = "EXPR_REF_GVAR" then
             
-            cat := ValueGlobal( return_obj.args.2.gvar );
+            cat := ValueGlobal( return_obj.args.1.gvar );
             
             Assert( 0, IsCapCategory( cat ) );
             
             attribute_name := fail;
             
-            if return_obj.funcref.gvar = "ObjectifyObjectForCAPWithAttributes" and return_obj.args.length = 4 and return_obj.args.3.type = "EXPR_REF_GVAR" then
+            if return_obj.funcref.gvar = "CreateCapCategoryObjectWithAttributes" and return_obj.args.length = 3 and return_obj.args.2.type = "EXPR_REF_GVAR" then
                 
-                attribute_name := return_obj.args.3.gvar;
+                attribute_name := return_obj.args.2.gvar;
                 
-            elif return_obj.funcref.gvar = "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" and return_obj.args.length = 6 and return_obj.args.5.type = "EXPR_REF_GVAR" then
+            elif return_obj.funcref.gvar = "CreateCapCategoryMorphismWithAttributes" and return_obj.args.length = 5 and return_obj.args.4.type = "EXPR_REF_GVAR" then
                 
                 case := fail;
                 
-                source := return_obj.args.3;
+                source := return_obj.args.2;
                 
                 # source might have been outlined
                 if source.type = "EXPR_REF_FVAR" and source.func_id = result_func.id then
@@ -562,7 +562,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                     
                 fi;
                 
-                range := return_obj.args.4;
+                range := return_obj.args.3;
                 
                 # range might have been outlined
                 if range.type = "EXPR_REF_FVAR" and range.func_id = result_func.id then
@@ -580,7 +580,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                 then
                     
                     case := "from_initial_value";
-                    attribute_name := return_obj.args.5.gvar;
+                    attribute_name := return_obj.args.4.gvar;
                     
                 elif
                     # Source and Range can be recovered from compiler hints
@@ -589,7 +589,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                     
                     case := "from_compiler_hints";
                     
-                    attribute_name := return_obj.args.5.gvar;
+                    attribute_name := return_obj.args.4.gvar;
                     
                     Assert( 0, attribute_name = cat!.compiler_hints.source_and_range_attributes_from_morphism_attribute.morphism_attribute_name );
                     
@@ -692,22 +692,20 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                 new_args := AsSyntaxTreeList( new_args );
                 
                 # create new tree
-                if return_obj.funcref.gvar = "ObjectifyObjectForCAPWithAttributes" then
+                if return_obj.funcref.gvar = "CreateCapCategoryObjectWithAttributes" then
                     
-                    # func call to ObjectifyObjectForCAPWithAttributes
+                    # func call to CreateCapCategoryObjectWithAttributes
                     new_tree := rec(
                         type := "EXPR_FUNCCALL",
                         funcref := rec(
                             type := "EXPR_REF_GVAR",
-                            gvar := "ObjectifyObjectForCAPWithAttributes"
+                            gvar := "CreateCapCategoryObjectWithAttributes"
                         ),
                         args := AsSyntaxTreeList( [
-                            # the record
-                            return_obj.args.1,
                             # the category
-                            return_obj.args.2,
+                            return_obj.args.1,
                             # the attribute
-                            return_obj.args.3,
+                            return_obj.args.2,
                             # the func call with new args
                             rec(
                                 type := "EXPR_FUNCCALL",
@@ -717,7 +715,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                         ] ),
                     );
                     
-                elif return_obj.funcref.gvar = "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" then
+                elif return_obj.funcref.gvar = "CreateCapCategoryMorphismWithAttributes" then
                     
                     if case = "from_initial_value" then
                         
@@ -744,18 +742,16 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                             
                         fi;
                         
-                        # func call to ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes
+                        # func call to CreateCapCategoryMorphismWithAttributes
                         new_tree := rec(
                             type := "EXPR_FUNCCALL",
                             funcref := rec(
                                 type := "EXPR_REF_GVAR",
-                                gvar := "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes"
+                                gvar := "CreateCapCategoryMorphismWithAttributes"
                             ),
                             args := AsSyntaxTreeList( [
-                                # the record
-                                return_obj.args.1,
                                 # the category
-                                return_obj.args.2,
+                                return_obj.args.1,
                                 # the source
                                 rec(
                                     type := "EXPR_FUNCCALL",
@@ -779,7 +775,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                                     ] ),
                                 ),
                                 # the attribute
-                                return_obj.args.5,
+                                return_obj.args.4,
                                 # the func call with new args
                                 rec(
                                     type := "EXPR_FUNCCALL",
@@ -814,29 +810,22 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                                     BINDING_RETURN_VALUE := rec(
                                         type := "EXPR_FUNCCALL",
                                         funcref := rec(
-                                            gvar := "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes",
+                                            gvar := "CreateCapCategoryMorphismWithAttributes",
                                             type := "EXPR_REF_GVAR",
                                         ),
                                         args := AsSyntaxTreeList( [
-                                            # the record
-                                            return_obj.args.1,
                                             # the category
-                                            return_obj.args.2,
+                                            return_obj.args.1,
                                             # the source
                                             rec(
                                                 type := "EXPR_FUNCCALL",
                                                 funcref := rec(
                                                     type := "EXPR_REF_GVAR",
-                                                    gvar := "ObjectifyObjectForCAPWithAttributes",
+                                                    gvar := "CreateCapCategoryObjectWithAttributes",
                                                 ),
                                                 args := AsSyntaxTreeList( [
-                                                    # emtpy rec( )
-                                                    rec(
-                                                        type := "EXPR_REC",
-                                                        keyvalue := AsSyntaxTreeList( [ ] ),
-                                                    ),
                                                     # the category
-                                                    return_obj.args.2,
+                                                    return_obj.args.1,
                                                     # the object attribute
                                                     rec(
                                                         type := "EXPR_REF_GVAR",
@@ -864,16 +853,11 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                                                 type := "EXPR_FUNCCALL",
                                                 funcref := rec(
                                                     type := "EXPR_REF_GVAR",
-                                                    gvar := "ObjectifyObjectForCAPWithAttributes",
+                                                    gvar := "CreateCapCategoryObjectWithAttributes",
                                                 ),
                                                 args := AsSyntaxTreeList( [
-                                                    # emtpy rec( )
-                                                    rec(
-                                                        type := "EXPR_REC",
-                                                        keyvalue := AsSyntaxTreeList( [ ] ),
-                                                    ),
                                                     # the category
-                                                    return_obj.args.2,
+                                                    return_obj.args.1,
                                                     # the object attribute
                                                     rec(
                                                         type := "EXPR_REF_GVAR",
@@ -897,7 +881,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                                                 ] ),
                                             ),
                                             # the attribute
-                                            return_obj.args.5,
+                                            return_obj.args.4,
                                             # cap_jit_morphism_attribute
                                             rec(
                                                 type := "EXPR_REF_FVAR",

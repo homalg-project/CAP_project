@@ -4,25 +4,12 @@
 # Implementations
 #
 InstallGlobalFunction( CapJitDeduplicatedExpressions, function ( tree )
-  local expressions_by_level_and_type, pre_func, result_func, additional_arguments_func, ignored_paths, path_replacements, bound_levels, expressions_by_type, expressions, info, expr, positions, equal_expressions, length, common_path, pos, func_path, func, id, new_variable_name, info2, level, key, path_replacement, i;
+  local expressions_by_level_and_type, result_func, additional_arguments_func, ignored_paths, path_replacements, bound_levels, expressions_by_type, expressions, info, expr, positions, equal_expressions, length, common_path, pos, func_path, func, id, new_variable_name, info2, level, key, path_replacement, i;
     
     # functions and hoisted variables will be modified inline
     tree := StructuralCopy( tree );
     
     expressions_by_level_and_type := [ ];
-    
-    pre_func := function ( tree, additional_arguments )
-        
-        if CapJitIsCallToGlobalFunction( tree, gvar -> gvar in [ "ObjectifyObjectForCAPWithAttributes", "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" ] ) then
-            
-            # special case: the first argument of Objectify*WithAttributes is affected by side effects and thus must not be deduplicated
-            tree.args.1.CAP_JIT_DO_NOT_DEDUPLICATE := true;
-            
-        fi;
-        
-        return tree;
-        
-    end;
     
     result_func := function ( tree, result, keys, info )
       local level;
@@ -37,12 +24,7 @@ InstallGlobalFunction( CapJitDeduplicatedExpressions, function ( tree )
             
         fi;
         
-        if IsBound( tree.CAP_JIT_DO_NOT_DEDUPLICATE ) and tree.CAP_JIT_DO_NOT_DEDUPLICATE = true then
-            
-            # we do not need this information anymore
-            Unbind( tree.CAP_JIT_DO_NOT_DEDUPLICATE );
-            
-        elif StartsWith( tree.type, "EXPR_" ) and not tree.type in [ "EXPR_REF_FVAR", "EXPR_REF_GVAR", "EXPR_DECLARATIVE_FUNC", "EXPR_INT", "EXPR_STRING", "EXPR_TRUE", "EXPR_FALSE" ] then
+        if StartsWith( tree.type, "EXPR_" ) and not tree.type in [ "EXPR_REF_FVAR", "EXPR_REF_GVAR", "EXPR_DECLARATIVE_FUNC", "EXPR_INT", "EXPR_STRING", "EXPR_TRUE", "EXPR_FALSE" ] then
             
             if not IsBound( expressions_by_level_and_type[level] ) then
                 
@@ -72,7 +54,7 @@ InstallGlobalFunction( CapJitDeduplicatedExpressions, function ( tree )
     end;
     
     # populate `expressions_by_level_and_type`
-    CapJitIterateOverTree( tree, pre_func, result_func, additional_arguments_func, rec( path := [ ] ) );
+    CapJitIterateOverTree( tree, ReturnFirst, result_func, additional_arguments_func, rec( path := [ ] ) );
     
     # now actually deduplicate expressions
     ignored_paths := [ ];

@@ -10,8 +10,7 @@ BindGlobal( "ADD_FUNCTIONS_FOR_CoFreydCategoryAsOppositeOfFreydCategoryOfOpposit
         
 ########
 function ( cat_1, a_1, b_1 )
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, Source( a_1 ), Range( a_1 ), UnderlyingMorphism, AdditionForMorphisms( UnderlyingCategory( cat_1 ), UnderlyingMorphism( a_1 ), UnderlyingMorphism( b_1 ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), UnderlyingMorphism, AdditionForMorphisms( UnderlyingCategory( cat_1 ), UnderlyingMorphism( a_1 ), UnderlyingMorphism( b_1 ) ) );
 end
 ########
         
@@ -22,8 +21,7 @@ end
         
 ########
 function ( cat_1, a_1 )
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, Source( a_1 ), Range( a_1 ), UnderlyingMorphism, AdditiveInverseForMorphisms( UnderlyingCategory( cat_1 ), UnderlyingMorphism( a_1 ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), UnderlyingMorphism, AdditiveInverseForMorphisms( UnderlyingCategory( cat_1 ), UnderlyingMorphism( a_1 ) ) );
 end
 ########
         
@@ -34,8 +32,7 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, CoRelationMorphism, DirectSumFunctorial( UnderlyingCategory( cat_1 ), List( arg2_1, function ( logic_new_func_x_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, CoRelationMorphism, DirectSumFunctorial( UnderlyingCategory( cat_1 ), List( arg2_1, function ( logic_new_func_x_2 )
                 return Source( CoRelationMorphism( logic_new_func_x_2 ) );
             end ), List( arg2_1, function ( logic_new_func_x_2 )
                 return CoRelationMorphism( logic_new_func_x_2 );
@@ -52,8 +49,7 @@ end
         
 ########
 function ( cat_1, P_1, objects_1, L_1, objectsp_1, Pp_1 )
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, P_1, Pp_1, UnderlyingMorphism, DirectSumFunctorial( UnderlyingCategory( cat_1 ), List( L_1, function ( logic_new_func_x_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, UnderlyingMorphism, DirectSumFunctorial( UnderlyingCategory( cat_1 ), List( L_1, function ( logic_new_func_x_2 )
                 return Source( CoRelationMorphism( Source( logic_new_func_x_2 ) ) );
             end ), List( L_1, function ( logic_new_func_x_2 )
                 return UnderlyingMorphism( logic_new_func_x_2 );
@@ -70,8 +66,7 @@ end
         
 ########
 function ( cat_1, a_1 )
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, a_1, a_1, UnderlyingMorphism, IdentityMorphism( UnderlyingCategory( cat_1 ), Source( CoRelationMorphism( a_1 ) ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, a_1, UnderlyingMorphism, IdentityMorphism( UnderlyingCategory( cat_1 ), Source( CoRelationMorphism( a_1 ) ) ) );
 end
 ########
         
@@ -82,8 +77,7 @@ end
         
 ########
 function ( cat_1, objects_1, k_1, P_1 )
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, objects_1[k_1], P_1, UnderlyingMorphism, InjectionOfCofactorOfDirectSum( UnderlyingCategory( cat_1 ), List( objects_1, function ( logic_new_func_x_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, objects_1[k_1], P_1, UnderlyingMorphism, InjectionOfCofactorOfDirectSum( UnderlyingCategory( cat_1 ), List( objects_1, function ( logic_new_func_x_2 )
                 return Source( CoRelationMorphism( logic_new_func_x_2 ) );
             end ), k_1 ) );
 end
@@ -184,9 +178,7 @@ function ( cat_1, alpha_1 )
     deduped_3_1 := UnderlyingCategory( cat_1 );
     deduped_2_1 := CoRelationMorphism( deduped_4_1 );
     deduped_1_1 := Source( deduped_2_1 );
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, CoRelationMorphism, UniversalMorphismIntoDirectSum( deduped_3_1, [ Range( deduped_2_1 ), Source( CoRelationMorphism( Range( alpha_1 ) ) ) ], deduped_1_1, [ deduped_2_1, UnderlyingMorphism( alpha_1 ) ] ) ), deduped_4_1, UnderlyingMorphism, IdentityMorphism( deduped_3_1, deduped_1_1 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, CoRelationMorphism, UniversalMorphismIntoDirectSum( deduped_3_1, [ Range( deduped_2_1 ), Source( CoRelationMorphism( Range( alpha_1 ) ) ) ], deduped_1_1, [ deduped_2_1, UnderlyingMorphism( alpha_1 ) ] ) ), deduped_4_1, UnderlyingMorphism, IdentityMorphism( deduped_3_1, deduped_1_1 ) );
 end
 ########
         
@@ -197,8 +189,7 @@ end
         
 ########
 function ( cat_1, alpha_1, T_1, tau_1, P_1 )
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, T_1, P_1, UnderlyingMorphism, UnderlyingMorphism( tau_1 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, UnderlyingMorphism, UnderlyingMorphism( tau_1 ) );
 end
 ########
         
@@ -212,9 +203,7 @@ function ( cat_1, A_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := UnderlyingCategory( cat_1 );
     deduped_1_1 := Source( CoRelationMorphism( A_1 ) );
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, A_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, CoRelationMorphism, UniversalMorphismIntoZeroObject( deduped_2_1, deduped_1_1 ) ), UnderlyingMorphism, IdentityMorphism( deduped_2_1, deduped_1_1 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, A_1, CreateCapCategoryObjectWithAttributes( cat_1, CoRelationMorphism, UniversalMorphismIntoZeroObject( deduped_2_1, deduped_1_1 ) ), UnderlyingMorphism, IdentityMorphism( deduped_2_1, deduped_1_1 ) );
 end
 ########
         
@@ -225,8 +214,7 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1, arg4_1 )
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, arg2_1, arg4_1, UnderlyingMorphism, arg3_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg4_1, UnderlyingMorphism, arg3_1 );
 end
 ########
         
@@ -248,8 +236,7 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, CoRelationMorphism, arg2_1 );
+    return CreateCapCategoryObjectWithAttributes( cat_1, CoRelationMorphism, arg2_1 );
 end
 ########
         
@@ -271,8 +258,7 @@ end
         
 ########
 function ( cat_1, beta_1, alpha_1 )
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, Source( alpha_1 ), Range( beta_1 ), UnderlyingMorphism, PreCompose( UnderlyingCategory( cat_1 ), UnderlyingMorphism( alpha_1 ), UnderlyingMorphism( beta_1 ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Range( beta_1 ), UnderlyingMorphism, PreCompose( UnderlyingCategory( cat_1 ), UnderlyingMorphism( alpha_1 ), UnderlyingMorphism( beta_1 ) ) );
 end
 ########
         
@@ -283,8 +269,7 @@ end
         
 ########
 function ( cat_1, objects_1, k_1, P_1 )
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, P_1, objects_1[k_1], UnderlyingMorphism, ProjectionInFactorOfDirectSum( UnderlyingCategory( cat_1 ), List( objects_1, function ( logic_new_func_x_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, objects_1[k_1], UnderlyingMorphism, ProjectionInFactorOfDirectSum( UnderlyingCategory( cat_1 ), List( objects_1, function ( logic_new_func_x_2 )
                 return Source( CoRelationMorphism( logic_new_func_x_2 ) );
             end ), k_1 ) );
 end
@@ -297,8 +282,7 @@ end
         
 ########
 function ( cat_1, objects_1, T_1, tau_1, P_1 )
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, P_1, T_1, UnderlyingMorphism, UniversalMorphismFromDirectSum( UnderlyingCategory( cat_1 ), List( objects_1, function ( logic_new_func_x_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, UnderlyingMorphism, UniversalMorphismFromDirectSum( UnderlyingCategory( cat_1 ), List( objects_1, function ( logic_new_func_x_2 )
                 return Source( CoRelationMorphism( logic_new_func_x_2 ) );
             end ), Source( CoRelationMorphism( T_1 ) ), List( tau_1, function ( logic_new_func_x_2 )
                 return UnderlyingMorphism( logic_new_func_x_2 );
@@ -313,8 +297,7 @@ end
         
 ########
 function ( cat_1, T_1, P_1 )
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, P_1, T_1, UnderlyingMorphism, UniversalMorphismFromZeroObject( UnderlyingCategory( cat_1 ), Source( CoRelationMorphism( T_1 ) ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, UnderlyingMorphism, UniversalMorphismFromZeroObject( UnderlyingCategory( cat_1 ), Source( CoRelationMorphism( T_1 ) ) ) );
 end
 ########
         
@@ -325,8 +308,7 @@ end
         
 ########
 function ( cat_1, objects_1, T_1, tau_1, P_1 )
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, T_1, P_1, UnderlyingMorphism, UniversalMorphismIntoDirectSum( UnderlyingCategory( cat_1 ), List( objects_1, function ( logic_new_func_x_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, UnderlyingMorphism, UniversalMorphismIntoDirectSum( UnderlyingCategory( cat_1 ), List( objects_1, function ( logic_new_func_x_2 )
                 return Source( CoRelationMorphism( logic_new_func_x_2 ) );
             end ), Source( CoRelationMorphism( T_1 ) ), List( tau_1, function ( logic_new_func_x_2 )
                 return UnderlyingMorphism( logic_new_func_x_2 );
@@ -341,8 +323,7 @@ end
         
 ########
 function ( cat_1, T_1, P_1 )
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, T_1, P_1, UnderlyingMorphism, UniversalMorphismIntoZeroObject( UnderlyingCategory( cat_1 ), Source( CoRelationMorphism( T_1 ) ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, UnderlyingMorphism, UniversalMorphismIntoZeroObject( UnderlyingCategory( cat_1 ), Source( CoRelationMorphism( T_1 ) ) ) );
 end
 ########
         
@@ -353,8 +334,7 @@ end
         
 ########
 function ( cat_1, a_1, b_1 )
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, a_1, b_1, UnderlyingMorphism, ZeroMorphism( UnderlyingCategory( cat_1 ), Source( CoRelationMorphism( a_1 ) ), Source( CoRelationMorphism( b_1 ) ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, b_1, UnderlyingMorphism, ZeroMorphism( UnderlyingCategory( cat_1 ), Source( CoRelationMorphism( a_1 ) ), Source( CoRelationMorphism( b_1 ) ) ) );
 end
 ########
         
@@ -365,8 +345,7 @@ end
         
 ########
 function ( cat_1 )
-    return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, CoRelationMorphism, ZeroObjectFunctorial( UnderlyingCategory( cat_1 ) ) );
+    return CreateCapCategoryObjectWithAttributes( cat_1, CoRelationMorphism, ZeroObjectFunctorial( UnderlyingCategory( cat_1 ) ) );
 end
 ########
         

@@ -13,19 +13,19 @@ BindGlobal( "CAP_JIT_INTERNAL_GET_KEY_AND_POSITIONS_TO_OUTLINE", function ( tree
         
         positions_to_outline := [ 2 .. tree.args.length ];
         
-    elif CapJitIsCallToGlobalFunction( tree, "ObjectifyObjectForCAPWithAttributes" ) then
+    elif CapJitIsCallToGlobalFunction( tree, "CreateCapCategoryObjectWithAttributes" ) then
         
         key := "args";
         
-        # ObjectifyObjectForCAPWithAttributes( rec( ), cat, attr1, val1, attr2, val2, ... );
-        positions_to_outline := [ 4, 6 .. tree.args.length ];
+        # CreateCapCategoryObjectWithAttributes( cat, attr1, val1, attr2, val2, ... );
+        positions_to_outline := [ 3, 5 .. tree.args.length ];
         
-    elif CapJitIsCallToGlobalFunction( tree, "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" ) then
+    elif CapJitIsCallToGlobalFunction( tree, "CreateCapCategoryMorphismWithAttributes" ) then
         
         key := "args";
         
-        # ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), cat, source, range, attr1, val1, attr2, val2, ... );
-        positions_to_outline := Concatenation( [ 3, 4 ], [ 6, 8 .. tree.args.length ] );
+        # CreateCapCategoryMorphismWithAttributes( cat, source, range, attr1, val1, attr2, val2, ... );
+        positions_to_outline := Concatenation( [ 2, 3 ], [ 5, 7 .. tree.args.length ] );
         
     else
         

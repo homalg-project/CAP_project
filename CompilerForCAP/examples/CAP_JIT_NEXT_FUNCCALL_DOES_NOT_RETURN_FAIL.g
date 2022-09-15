@@ -25,11 +25,10 @@ Display( compiled_func );
 #!     local morphism_attr_1_1;
 #!     morphism_attr_1_1 := RightDivide( UnderlyingMatrix( test_mor_1 ), 
 #!        SyzygiesOfRows( UnderlyingMatrix( mor_1 ) ) );
-#!     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-#!            ), cat_1, Source( test_mor_1 ), 
-#!        ObjectifyObjectForCAPWithAttributes( rec(
-#!              ), cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), 
-#!        UnderlyingMatrix, morphism_attr_1_1 );
+#!     return CreateCapCategoryMorphismWithAttributes( cat_1, 
+#!        Source( test_mor_1 ), CreateCapCategoryObjectWithAttributes( cat_1, 
+#!          Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, 
+#!        morphism_attr_1_1 );
 #! end
 
 func1 := function( x )

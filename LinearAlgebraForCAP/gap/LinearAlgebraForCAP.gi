@@ -126,8 +126,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
             
         fi;
         
-        return ObjectifyObjectForCAPWithAttributes( rec( ), cat,
-                                                    Dimension, dimension );
+        return CreateCapCategoryObjectWithAttributes( cat, Dimension, dimension );
         
     end );
     
@@ -167,10 +166,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
             
         fi;
         
-        return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), cat,
-                                               source,
-                                               range,
-                                               UnderlyingMatrix, homalg_matrix
+        return CreateCapCategoryMorphismWithAttributes( cat, source, range,
+                                                        UnderlyingMatrix, homalg_matrix
         );
         
     end );

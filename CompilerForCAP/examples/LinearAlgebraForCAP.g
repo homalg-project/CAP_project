@@ -43,9 +43,8 @@ Display( compiled_func1 );
 #!     local hoisted_1_1, deduped_2_1;
 #!     deduped_2_1 := UnderlyingRing( cat_1 );
 #!     hoisted_1_1 := deduped_2_1;
-#!     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-#!            ), cat_1, S_1, T_1, UnderlyingMatrix, 
-#!        UnionOfRows( deduped_2_1, Dimension( T_1 ), 
+#!     return CreateCapCategoryMorphismWithAttributes( cat_1, S_1, T_1, 
+#!        UnderlyingMatrix, UnionOfRows( deduped_2_1, Dimension( T_1 ), 
 #!          ListN( diagram_S_1, List( morphism_matrix_1, function ( row_2 )
 #!                   return List( row_2, UnderlyingMatrix );
 #!               end ), function ( source_2, row_2 )
@@ -78,9 +77,8 @@ Display( compiled_func2 );
 #!     local hoisted_1_1, deduped_2_1;
 #!     deduped_2_1 := UnderlyingRing( cat_1 );
 #!     hoisted_1_1 := deduped_2_1;
-#!     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-#!            ), cat_1, S_1, T_1, UnderlyingMatrix, 
-#!        UnionOfRows( deduped_2_1, Dimension( T_1 ), 
+#!     return CreateCapCategoryMorphismWithAttributes( cat_1, S_1, T_1, 
+#!        UnderlyingMatrix, UnionOfRows( deduped_2_1, Dimension( T_1 ), 
 #!          ListN( diagram_S_1, morphism_matrix_1, 
 #!            function ( logic_new_func_x_2, logic_new_func_y_2 )
 #!                 return 
@@ -101,10 +99,10 @@ Display( ENHANCED_SYNTAX_TREE_CODE(
 #! function ( cat_1, morphism_1 )
 #!     local morphism_attr_1_1;
 #!     morphism_attr_1_1 := SyzygiesOfRows( UnderlyingMatrix( morphism_1 ) );
-#!     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-#!            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-#!              ), cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), 
-#!        Source( morphism_1 ), UnderlyingMatrix, morphism_attr_1_1 );
+#!     return CreateCapCategoryMorphismWithAttributes( cat_1, 
+#!        CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 
+#!          NumberRows( morphism_attr_1_1 ) ), Source( morphism_1 ), 
+#!        UnderlyingMatrix, morphism_attr_1_1 );
 #! end
 
 #! @EndExample

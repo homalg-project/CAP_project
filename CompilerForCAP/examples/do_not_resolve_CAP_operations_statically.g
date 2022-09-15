@@ -16,8 +16,7 @@ func := function ( cat, x )
 # make sure that ZeroObject( cat ) is not resolved to a global variable
 Display( CapJitCompiledFunction( { cat, x } -> func( cat, x ), vec ) );
 #! function ( cat_1, x_1 )
-#!     return ObjectifyObjectForCAPWithAttributes( rec(
-#!            ), cat_1, Dimension, 0 );
+#!     return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 0 );
 #! end
 
 #! @EndExample
