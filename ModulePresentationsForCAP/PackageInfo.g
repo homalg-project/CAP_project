@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "ModulePresentationsForCAP",
 Subtitle := "Category R-pres for CAP",
-Version := "2022.08-03",
-Date := "19/08/2022",
+Version := "2022.09-01",
+Date := "15/09/2022",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -88,7 +88,7 @@ Dependencies := rec(
   GAP := ">= 4.11.1",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "MatricesForHomalg", ">=2019.02.01" ],
-                           [ "CAP", ">= 2022.01-05" ],
+                           [ "CAP", ">= 2022.09-13" ],
                            [ "MonoidalCategories", ">= 2019.01.16" ],
                            [ "GeneralizedMorphismsForCAP", ">=0" ],
   ],
