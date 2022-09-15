@@ -352,9 +352,8 @@
     [4X[28X    local hoisted_1_1, deduped_2_1;[128X[104X
     [4X[28X    deduped_2_1 := UnderlyingRing( cat_1 );[128X[104X
     [4X[28X    hoisted_1_1 := deduped_2_1;[128X[104X
-    [4X[28X    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec([128X[104X
-    [4X[28X           ), cat_1, S_1, T_1, UnderlyingMatrix, [128X[104X
-    [4X[28X       UnionOfRows( deduped_2_1, Dimension( T_1 ), [128X[104X
+    [4X[28X    return CreateCapCategoryMorphismWithAttributes( cat_1, S_1, T_1, [128X[104X
+    [4X[28X       UnderlyingMatrix, UnionOfRows( deduped_2_1, Dimension( T_1 ), [128X[104X
     [4X[28X         ListN( diagram_S_1, List( morphism_matrix_1, function ( row_2 )[128X[104X
     [4X[28X                  return List( row_2, UnderlyingMatrix );[128X[104X
     [4X[28X              end ), function ( source_2, row_2 )[128X[104X
@@ -386,9 +385,8 @@
     [4X[28X    local hoisted_1_1, deduped_2_1;[128X[104X
     [4X[28X    deduped_2_1 := UnderlyingRing( cat_1 );[128X[104X
     [4X[28X    hoisted_1_1 := deduped_2_1;[128X[104X
-    [4X[28X    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec([128X[104X
-    [4X[28X           ), cat_1, S_1, T_1, UnderlyingMatrix, [128X[104X
-    [4X[28X       UnionOfRows( deduped_2_1, Dimension( T_1 ), [128X[104X
+    [4X[28X    return CreateCapCategoryMorphismWithAttributes( cat_1, S_1, T_1, [128X[104X
+    [4X[28X       UnderlyingMatrix, UnionOfRows( deduped_2_1, Dimension( T_1 ), [128X[104X
     [4X[28X         ListN( diagram_S_1, morphism_matrix_1, [128X[104X
     [4X[28X           function ( logic_new_func_x_2, logic_new_func_y_2 )[128X[104X
     [4X[28X                return [128X[104X
@@ -408,10 +406,10 @@
     [4X[28Xfunction ( cat_1, morphism_1 )[128X[104X
     [4X[28X    local morphism_attr_1_1;[128X[104X
     [4X[28X    morphism_attr_1_1 := SyzygiesOfRows( UnderlyingMatrix( morphism_1 ) );[128X[104X
-    [4X[28X    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec([128X[104X
-    [4X[28X           ), cat_1, ObjectifyObjectForCAPWithAttributes( rec([128X[104X
-    [4X[28X             ), cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), [128X[104X
-    [4X[28X       Source( morphism_1 ), UnderlyingMatrix, morphism_attr_1_1 );[128X[104X
+    [4X[28X    return CreateCapCategoryMorphismWithAttributes( cat_1, [128X[104X
+    [4X[28X       CreateCapCategoryObjectWithAttributes( cat_1, Dimension, [128X[104X
+    [4X[28X         NumberRows( morphism_attr_1_1 ) ), Source( morphism_1 ), [128X[104X
+    [4X[28X       UnderlyingMatrix, morphism_attr_1_1 );[128X[104X
     [4X[28Xend[128X[104X
   [4X[32X[104X
   
@@ -485,8 +483,8 @@
     [4X[28X<A vector space object over Q of dimension 2>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, cat ) );[127X[104X
     [4X[28Xfunction ( cat_1 )[128X[104X
-    [4X[28X    return ObjectifyObjectForCAPWithAttributes( rec([128X[104X
-    [4X[28X           ), cat_1, Dimension, CapFixpoint( function ( x_2, y_2 )[128X[104X
+    [4X[28X    return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, [128X[104X
+    [4X[28X       CapFixpoint( function ( x_2, y_2 )[128X[104X
     [4X[28X              return x_2 = 3 and y_2 = 2;[128X[104X
     [4X[28X          end, function ( x_2 )[128X[104X
     [4X[28X              return x_2 - 1;[128X[104X
@@ -514,16 +512,15 @@
     [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, cat ) );[127X[104X
     [4X[28Xfunction ( cat_1 )[128X[104X
     [4X[28X    local morphism_attr_1_1, deduped_2_1;[128X[104X
-    [4X[28X    deduped_2_1 := ObjectifyObjectForCAPWithAttributes( rec([128X[104X
-    [4X[28X           ), cat_1, Dimension, 1 );[128X[104X
+    [4X[28X    deduped_2_1 := CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 1 [128X[104X
+    [4X[28X       );[128X[104X
     [4X[28X    morphism_attr_1_1 := CapFixpoint( function ( x_2, y_2 )[128X[104X
     [4X[28X            return IsZero( y_2 );[128X[104X
     [4X[28X        end, function ( x_2 )[128X[104X
     [4X[28X            return x_2 + -1 * x_2;[128X[104X
     [4X[28X        end, HomalgIdentityMatrix( 1, UnderlyingRing( cat_1 ) ) );[128X[104X
-    [4X[28X    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec([128X[104X
-    [4X[28X           ), cat_1, deduped_2_1, deduped_2_1, UnderlyingMatrix, [128X[104X
-    [4X[28X       morphism_attr_1_1 );[128X[104X
+    [4X[28X    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_2_1, [128X[104X
+    [4X[28X       deduped_2_1, UnderlyingMatrix, morphism_attr_1_1 );[128X[104X
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27X# Iterated with list[127X[104X
     [4X[25X>[125X [27Xfunc := { cat, alpha, beta, gamma } ->[127X[104X
@@ -533,8 +530,8 @@
     [4X[25X>[125X [27X    );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, cat ) );[127X[104X
     [4X[28Xfunction ( cat_1, alpha_1, beta_1, gamma_1 )[128X[104X
-    [4X[28X    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec([128X[104X
-    [4X[28X           ), cat_1, Source( alpha_1 ), Range( gamma_1 ), UnderlyingMatrix, [128X[104X
+    [4X[28X    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), [128X[104X
+    [4X[28X       Range( gamma_1 ), UnderlyingMatrix, [128X[104X
     [4X[28X       UnderlyingMatrix( alpha_1 ) * UnderlyingMatrix( beta_1 ) [128X[104X
     [4X[28X        * UnderlyingMatrix( gamma_1 ) );[128X[104X
     [4X[28Xend[128X[104X
@@ -549,10 +546,10 @@
     [4X[28Xfunction ( cat_1, morphism_list_1 )[128X[104X
     [4X[28X    local deduped_1_1;[128X[104X
     [4X[28X    deduped_1_1 := morphism_list_1[1];[128X[104X
-    [4X[28X    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec([128X[104X
-    [4X[28X           ), cat_1, Source( deduped_1_1 ), Range( deduped_1_1 ), [128X[104X
-    [4X[28X       UnderlyingMatrix, Iterated( List( morphism_list_1, UnderlyingMatrix )[128X[104X
-    [4X[28X          , function ( alpha_2, beta_2 )[128X[104X
+    [4X[28X    return CreateCapCategoryMorphismWithAttributes( cat_1, [128X[104X
+    [4X[28X       Source( deduped_1_1 ), Range( deduped_1_1 ), UnderlyingMatrix, [128X[104X
+    [4X[28X       Iterated( List( morphism_list_1, UnderlyingMatrix ), [128X[104X
+    [4X[28X         function ( alpha_2, beta_2 )[128X[104X
     [4X[28X              return alpha_2 + beta_2;[128X[104X
     [4X[28X          end ) );[128X[104X
     [4X[28Xend[128X[104X
@@ -570,12 +567,12 @@
     [4X[28X       function ( alpha_2, beta_2 )[128X[104X
     [4X[28X            return alpha_2 * beta_2;[128X[104X
     [4X[28X        end );[128X[104X
-    [4X[28X    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec([128X[104X
-    [4X[28X           ), cat_1, ObjectifyObjectForCAPWithAttributes( rec([128X[104X
-    [4X[28X             ), cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), [128X[104X
-    [4X[28X       ObjectifyObjectForCAPWithAttributes( rec([128X[104X
-    [4X[28X             ), cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), [128X[104X
-    [4X[28X       UnderlyingMatrix, morphism_attr_1_1 );[128X[104X
+    [4X[28X    return CreateCapCategoryMorphismWithAttributes( cat_1, [128X[104X
+    [4X[28X       CreateCapCategoryObjectWithAttributes( cat_1, Dimension, [128X[104X
+    [4X[28X         NumberRows( morphism_attr_1_1 ) ), [128X[104X
+    [4X[28X       CreateCapCategoryObjectWithAttributes( cat_1, Dimension, [128X[104X
+    [4X[28X         NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, [128X[104X
+    [4X[28X       morphism_attr_1_1 );[128X[104X
     [4X[28Xend[128X[104X
   [4X[32X[104X
   
@@ -598,11 +595,10 @@
     [4X[28X    local morphism_attr_1_1;[128X[104X
     [4X[28X    morphism_attr_1_1 := RightDivide( UnderlyingMatrix( test_mor_1 ), [128X[104X
     [4X[28X       SyzygiesOfRows( UnderlyingMatrix( mor_1 ) ) );[128X[104X
-    [4X[28X    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec([128X[104X
-    [4X[28X           ), cat_1, Source( test_mor_1 ), [128X[104X
-    [4X[28X       ObjectifyObjectForCAPWithAttributes( rec([128X[104X
-    [4X[28X             ), cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), [128X[104X
-    [4X[28X       UnderlyingMatrix, morphism_attr_1_1 );[128X[104X
+    [4X[28X    return CreateCapCategoryMorphismWithAttributes( cat_1, [128X[104X
+    [4X[28X       Source( test_mor_1 ), CreateCapCategoryObjectWithAttributes( cat_1, [128X[104X
+    [4X[28X         Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, [128X[104X
+    [4X[28X       morphism_attr_1_1 );[128X[104X
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27Xfunc1 := function( x )[127X[104X
     [4X[25X>[125X [27X    #% CAP_JIT_RESOLVE_FUNCTION[127X[104X
@@ -700,8 +696,7 @@
     [4X[25X>[125X [27X    )[127X[104X
     [4X[25X>[125X [27X);[127X[104X
     [4X[28Xfunction ( cat_1 )[128X[104X
-    [4X[28X    return ObjectifyObjectForCAPWithAttributes( rec([128X[104X
-    [4X[28X           ), cat_1, Dimension, 0 );[128X[104X
+    [4X[28X    return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 0 );[128X[104X
     [4X[28Xend[128X[104X
   [4X[32X[104X
   
@@ -1410,18 +1405,19 @@
     [4X[28X    local morphism_attr_1_1, morphism_attr_2_1;[128X[104X
     [4X[28X    morphism_attr_2_1 := matrix_1;[128X[104X
     [4X[28X    morphism_attr_1_1 := matrix_1;[128X[104X
-    [4X[28X    return [ ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec([128X[104X
-    [4X[28X               ), cat_1, ObjectifyObjectForCAPWithAttributes( rec([128X[104X
-    [4X[28X                 ), cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), [128X[104X
-    [4X[28X           ObjectifyObjectForCAPWithAttributes( rec([128X[104X
-    [4X[28X                 ), cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), [128X[104X
-    [4X[28X           UnderlyingMatrix, morphism_attr_1_1 ), [128X[104X
-    [4X[28X        ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec([128X[104X
-    [4X[28X               ), cat_1, ObjectifyObjectForCAPWithAttributes( rec([128X[104X
-    [4X[28X                 ), cat_1, Dimension, NumberRows( morphism_attr_2_1 ) ), [128X[104X
-    [4X[28X           ObjectifyObjectForCAPWithAttributes( rec([128X[104X
-    [4X[28X                 ), cat_1, Dimension, NumberColumns( morphism_attr_2_1 ) ), [128X[104X
-    [4X[28X           UnderlyingMatrix, morphism_attr_2_1 ) ];[128X[104X
+    [4X[28X    return [128X[104X
+    [4X[28X     [ CreateCapCategoryMorphismWithAttributes( cat_1, [128X[104X
+    [4X[28X           CreateCapCategoryObjectWithAttributes( cat_1, Dimension, [128X[104X
+    [4X[28X             NumberRows( morphism_attr_1_1 ) ), [128X[104X
+    [4X[28X           CreateCapCategoryObjectWithAttributes( cat_1, Dimension, [128X[104X
+    [4X[28X             NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, [128X[104X
+    [4X[28X           morphism_attr_1_1 ), [128X[104X
+    [4X[28X        CreateCapCategoryMorphismWithAttributes( cat_1, [128X[104X
+    [4X[28X           CreateCapCategoryObjectWithAttributes( cat_1, Dimension, [128X[104X
+    [4X[28X             NumberRows( morphism_attr_2_1 ) ), [128X[104X
+    [4X[28X           CreateCapCategoryObjectWithAttributes( cat_1, Dimension, [128X[104X
+    [4X[28X             NumberColumns( morphism_attr_2_1 ) ), UnderlyingMatrix, [128X[104X
+    [4X[28X           morphism_attr_2_1 ) ];[128X[104X
     [4X[28Xend[128X[104X
   [4X[32X[104X
   
@@ -2230,14 +2226,11 @@
     [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, vec ) );[127X[104X
     [4X[28Xfunction ( cat_1 )[128X[104X
     [4X[28X    local morphism_attr_1_1, deduped_2_1;[128X[104X
-    [4X[28X    deduped_2_1 := ObjectifyObjectForCAPWithAttributes( rec([128X[104X
-    [4X[28X           ), cat_1, Dimension, 0 );[128X[104X
-    [4X[28X    morphism_attr_1_1 [128X[104X
-    [4X[28X     := HomalgZeroMatrix( 0, 0, UnderlyingRing( cat_1 ) );[128X[104X
-    [4X[28X    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes[128X[104X
-    [4X[28X        ( rec([128X[104X
-    [4X[28X           ), cat_1, deduped_2_1, deduped_2_1, UnderlyingMatrix, [128X[104X
-    [4X[28X       morphism_attr_1_1 );[128X[104X
+    [4X[28X    deduped_2_1 := CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 0 [128X[104X
+    [4X[28X       );[128X[104X
+    [4X[28X    morphism_attr_1_1 := HomalgZeroMatrix( 0, 0, UnderlyingRing( cat_1 ) );[128X[104X
+    [4X[28X    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_2_1, [128X[104X
+    [4X[28X       deduped_2_1, UnderlyingMatrix, morphism_attr_1_1 );[128X[104X
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27Xvec := MATRIX_CATEGORY( Q : no_precompiled_code );;[127X[104X
     [4X[25Xgap>[125X [27XStopCompilationAtPrimitivelyInstalledOperationsOfCategory( vec );[127X[104X
@@ -2251,14 +2244,11 @@
     [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, vec ) );[127X[104X
     [4X[28Xfunction ( cat_1 )[128X[104X
     [4X[28X    local morphism_attr_1_1, deduped_2_1;[128X[104X
-    [4X[28X    deduped_2_1 := ObjectifyObjectForCAPWithAttributes( rec([128X[104X
-    [4X[28X           ), cat_1, Dimension, 0 );[128X[104X
-    [4X[28X    morphism_attr_1_1 [128X[104X
-    [4X[28X     := HomalgZeroMatrix( 0, 0, UnderlyingRing( cat_1 ) );[128X[104X
-    [4X[28X    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes[128X[104X
-    [4X[28X        ( rec([128X[104X
-    [4X[28X           ), cat_1, deduped_2_1, deduped_2_1, UnderlyingMatrix, [128X[104X
-    [4X[28X       morphism_attr_1_1 );[128X[104X
+    [4X[28X    deduped_2_1 := CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 0 [128X[104X
+    [4X[28X       );[128X[104X
+    [4X[28X    morphism_attr_1_1 := HomalgZeroMatrix( 0, 0, UnderlyingRing( cat_1 ) );[128X[104X
+    [4X[28X    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_2_1, [128X[104X
+    [4X[28X       deduped_2_1, UnderlyingMatrix, morphism_attr_1_1 );[128X[104X
     [4X[28Xend[128X[104X
   [4X[32X[104X
   
@@ -2271,8 +2261,7 @@
     [4X[25Xgap>[125X [27X# make sure that ZeroObject( cat ) is not resolved to a global variable[127X[104X
     [4X[25X>[125X [27XDisplay( CapJitCompiledFunction( { cat, x } -> func( cat, x ), vec ) );[127X[104X
     [4X[28Xfunction ( cat_1, x_1 )[128X[104X
-    [4X[28X    return ObjectifyObjectForCAPWithAttributes( rec([128X[104X
-    [4X[28X           ), cat_1, Dimension, 0 );[128X[104X
+    [4X[28X    return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 0 );[128X[104X
     [4X[28Xend[128X[104X
   [4X[32X[104X
   

@@ -114,7 +114,7 @@
 
 <h4>2.1 <span class="Heading">Logic</span></h4>
 
-<p>Warning: When writing logic functions and templates keep in mind that wrapped arguments are outlined, see <code class="func">CapJitOutlinedWrappedArguments</code> (<a href="chap2_mj.html#X79FD7D407C591072"><span class="RefLink">2.5-18</span></a>). This means that for example a logic template of the form <code class="code">ObjectifyObjectForCAPWithAttributes( rec( ), cat, attr, MyFunction( x ) )</code> will never match because <code class="code">MyFunction( x )</code> is outlined to a local variable.</p>
+<p>Warning: When writing logic functions and templates keep in mind that wrapped arguments are outlined, see <code class="func">CapJitOutlinedWrappedArguments</code> (<a href="chap2_mj.html#X79FD7D407C591072"><span class="RefLink">2.5-18</span></a>). This means that for example a logic template of the form <code class="code">CreateCapCategoryObjectWithAttributes( cat, attr, MyFunction( x ) )</code> will never match because <code class="code">MyFunction( x )</code> is outlined to a local variable.</p>
 
 <p><a id="X804E3CAD82BE47BB" name="X804E3CAD82BE47BB"></a></p>
 
@@ -716,10 +716,10 @@
 
 
 <ul>
-<li><p>the attribute values in <code class="code">ObjectifyObjectForCAPWithAttributes</code></p>
+<li><p>the attribute values in <code class="code">CreateCapCategoryObjectWithAttributes</code></p>
 
 </li>
-<li><p>the attribute values (including the arguments <code class="code">source</code> and <code class="code">range</code>) in <code class="code">ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes</code></p>
+<li><p>the attribute values (including the arguments <code class="code">source</code> and <code class="code">range</code>) in <code class="code">CreateCapCategoryMorphismWithAttributes</code></p>
 
 </li>
 <li><p>the arguments of <code class="code">NTuple</code> (excluding the first argument)</p>

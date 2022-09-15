@@ -24,8 +24,8 @@
   [33X[0;0YWarning:  When  writing  logic  functions  and  templates  keep in mind that
   wrapped arguments are outlined, see [2XCapJitOutlinedWrappedArguments[102X ([14X2.5-18[114X).
   This   means   that   for   example   a   logic   template   of   the   form
-  [10XObjectifyObjectForCAPWithAttributes(  rec(  ),  cat, attr, MyFunction( x ) )[110X
-  will never match because [10XMyFunction( x )[110X is outlined to a local variable.[133X
+  [10XCreateCapCategoryObjectWithAttributes(  cat,  attr,  MyFunction(  x ) )[110X will
+  never match because [10XMyFunction( x )[110X is outlined to a local variable.[133X
   
   [1X2.1-1 CapJitAddLogicFunction[101X
   
@@ -668,10 +668,10 @@
   
   [33X[0;0YOutlines wrapped arguments to local variables. This includes:[133X
   
-  [30X    [33X[0;6Ythe attribute values in [10XObjectifyObjectForCAPWithAttributes[110X[133X
+  [30X    [33X[0;6Ythe attribute values in [10XCreateCapCategoryObjectWithAttributes[110X[133X
   
   [30X    [33X[0;6Ythe  attribute  values  (including  the arguments [10Xsource[110X and [10Xrange[110X) in
-        [10XObjectifyMorphismWithSourceAndRangeForCAPWithAttributes[110X[133X
+        [10XCreateCapCategoryMorphismWithAttributes[110X[133X
   
   [30X    [33X[0;6Ythe arguments of [10XNTuple[110X (excluding the first argument)[133X
   

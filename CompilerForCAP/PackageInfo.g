@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "CompilerForCAP",
 Subtitle := "Speed up computations in CAP categories",
-Version := "2022.09-04",
-Date := "12/09/2022",
+Version := "2022.09-05",
+Date := "15/09/2022",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -70,7 +70,7 @@ Dependencies := rec(
   GAP := ">= 4.11.1",
   NeededOtherPackages := [
       [ "ToolsForHomalg", ">= 2022.09-04" ],
-      [ "CAP", ">= 2022.08-01" ],
+      [ "CAP", ">= 2022.09-13" ],
   ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],

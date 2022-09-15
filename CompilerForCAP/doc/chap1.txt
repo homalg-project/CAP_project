@@ -176,7 +176,7 @@
   [10Xnumber_of_objectified_morphisms_in_data_structure_of_morphism[110X can optionally
   be  set  to  allow the compiler to warn about about bad compilation results.
   For    example,    [10Xnumber_of_objectified_objects_in_data_structure_of_object[110X
-  should   be  the  number  of  calls  to  [10XObjectifyObjectForCAPWithAttributes[110X
+  should  be  the  number  of  calls  to [10XCreateCapCategoryObjectWithAttributes[110X
   required    for    creating    an   object   in   the   tower   defined   by
   [3Xcategory_constructor[103X,  e.g. 1 if the tower has height one, or 2 if the tower
   has  height  two  and  the  objects  of the category at the top are given by
