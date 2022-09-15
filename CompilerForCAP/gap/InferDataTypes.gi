@@ -825,34 +825,34 @@ CapJitAddTypeSignature( "CapFixpoint", [ IsFunction, IsFunction, IsObject ], fun
     
 end );
 
-# Objectify*ForCAPWithAttributes
-CapJitAddTypeSignature( "ObjectifyObjectForCAPWithAttributes", [ IsRecord, IsCapCategory ], function ( input_types )
+# CreateCapCategory*WithAttributes
+CapJitAddTypeSignature( "CreateCapCategoryObjectWithAttributes", [ IsCapCategory ], function ( input_types )
     
-    return CapJitDataTypeOfObjectOfCategory( input_types[2].category );
-    
-end );
-
-CapJitAddTypeSignature( "ObjectifyObjectForCAPWithAttributes", [ IsRecord, IsCapCategory, IsFunction, IsObject ], function ( input_types )
-    
-    return CapJitDataTypeOfObjectOfCategory( input_types[2].category );
+    return CapJitDataTypeOfObjectOfCategory( input_types[1].category );
     
 end );
 
-CapJitAddTypeSignature( "ObjectifyObjectForCAPWithAttributes", [ IsRecord, IsCapCategory, IsFunction, IsObject, IsFunction, IsObject ], function ( input_types )
+CapJitAddTypeSignature( "CreateCapCategoryObjectWithAttributes", [ IsCapCategory, IsFunction, IsObject ], function ( input_types )
     
-    return CapJitDataTypeOfObjectOfCategory( input_types[2].category );
-    
-end );
-
-CapJitAddTypeSignature( "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes", [ IsRecord, IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ], function ( input_types )
-    
-    return CapJitDataTypeOfMorphismOfCategory( input_types[2].category );
+    return CapJitDataTypeOfObjectOfCategory( input_types[1].category );
     
 end );
 
-CapJitAddTypeSignature( "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes", [ IsRecord, IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsFunction, IsObject ], function ( input_types )
+CapJitAddTypeSignature( "CreateCapCategoryObjectWithAttributes", [ IsCapCategory, IsFunction, IsObject, IsFunction, IsObject ], function ( input_types )
     
-    return CapJitDataTypeOfMorphismOfCategory( input_types[2].category );
+    return CapJitDataTypeOfObjectOfCategory( input_types[1].category );
+    
+end );
+
+CapJitAddTypeSignature( "CreateCapCategoryMorphismWithAttributes", [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ], function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
+    
+end );
+
+CapJitAddTypeSignature( "CreateCapCategoryMorphismWithAttributes", [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsFunction, IsObject ], function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
     
 end );
 

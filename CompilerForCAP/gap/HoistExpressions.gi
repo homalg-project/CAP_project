@@ -17,26 +17,13 @@ InstallGlobalFunction( CapJitHoistedBindings, function ( tree )
 end );
 
 InstallGlobalFunction( CAP_JIT_INTERNAL_HOISTED_EXPRESSIONS_OR_BINDINGS, function ( tree, only_hoist_bindings )
-  local expressions_to_hoist, references_to_function_variables, pre_func, result_func, additional_arguments_func;
+  local expressions_to_hoist, references_to_function_variables, result_func, additional_arguments_func, pre_func;
     
     # functions and hoisted variables will be modified inline
     tree := StructuralCopy( tree );
     
     expressions_to_hoist := rec( );
     references_to_function_variables := rec( );
-    
-    pre_func := function ( tree, additional_arguments )
-        
-        if CapJitIsCallToGlobalFunction( tree, gvar -> gvar in [ "ObjectifyObjectForCAPWithAttributes", "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" ] ) then
-            
-            # special case: the first argument of Objectify*WithAttributes is affected by side effects and thus must not be hoisted
-            tree.args.1.CAP_JIT_DO_NOT_HOIST := true;
-            
-        fi;
-        
-        return tree;
-        
-    end;
     
     result_func := function ( tree, result, keys, func_stack )
       local levels, level, type_matches, pos, func_id, name;
@@ -85,15 +72,6 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_HOISTED_EXPRESSIONS_OR_BINDINGS, functio
         level := MaximumList( levels, 1 );
         
         for name in keys do
-            
-            if IsBound( tree.(name).CAP_JIT_DO_NOT_HOIST ) and tree.(name).CAP_JIT_DO_NOT_HOIST = true then
-                
-                # we do not need this information anymore
-                Unbind( tree.(name).CAP_JIT_DO_NOT_HOIST );
-                
-                continue;
-                
-            fi;
             
             # Hoisting the return value would require special care below, so we skip it because
             # the return value is not a user-visible binding and
@@ -155,7 +133,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_HOISTED_EXPRESSIONS_OR_BINDINGS, functio
     end;
     
     # populate `expressions_to_hoist`
-    CapJitIterateOverTreeWithCachedBindingResults( tree, pre_func, result_func, additional_arguments_func, [ ] );
+    CapJitIterateOverTreeWithCachedBindingResults( tree, ReturnFirst, result_func, additional_arguments_func, [ ] );
     
     # now actually hoist the expressions
     pre_func := function ( tree, additional_arguments )

@@ -8,7 +8,7 @@
 #! @Section Logic
 
 #! Warning: When writing logic functions and templates keep in mind that wrapped arguments are outlined, see <Ref Func="CapJitOutlinedWrappedArguments" />.
-#! This means that for example a logic template of the form `ObjectifyObjectForCAPWithAttributes( rec( ), cat, attr, MyFunction( x ) )` will
+#! This means that for example a logic template of the form `CreateCapCategoryObjectWithAttributes( cat, attr, MyFunction( x ) )` will
 #! never match because `MyFunction( x )` is outlined to a local variable.
 
 #! @Description

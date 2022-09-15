@@ -183,22 +183,22 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
             
         end;
         
-        # plausibility checks for the number of occurrences of `Objectify*ForCAPWithAttributes`
+        # plausibility checks for the number of occurrences of `CreateCapCategory*WithAttributes`
         # we check for > instead of <> because deduplication or WithGiven operations might reduce the number
         
         if current_rec.return_type = "bool" then
             
-            if number_of_occurrences_in_string( function_string, "ObjectifyObjectForCAPWithAttributes" ) > 0 then
+            if number_of_occurrences_in_string( function_string, "CreateCapCategoryObjectWithAttributes" ) > 0 then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( Concatenation( "WARNING: Could not eliminate `ObjectifyObjectForCAPWithAttributes` while precompiling ", function_name, "." ) );
+                Display( Concatenation( "WARNING: Could not eliminate `CreateCapCategoryObjectWithAttributes` while precompiling ", function_name, "." ) );
                 
             fi;
             
-            if number_of_occurrences_in_string( function_string, "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" ) > 0 then
+            if number_of_occurrences_in_string( function_string, "CreateCapCategoryMorphismWithAttributes" ) > 0 then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( Concatenation( "WARNING: Could not eliminate `ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes` while precompiling ", function_name, "." ) );
+                Display( Concatenation( "WARNING: Could not eliminate `CreateCapCategoryMorphismWithAttributes` while precompiling ", function_name, "." ) );
                 
             fi;
             
@@ -206,10 +206,10 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         
         if current_rec.return_type = "object" and ValueOption( "number_of_objectified_objects_in_data_structure_of_object" ) <> fail then
             
-            if number_of_occurrences_in_string( function_string, "ObjectifyObjectForCAPWithAttributes" ) > ValueOption( "number_of_objectified_objects_in_data_structure_of_object" ) then
+            if number_of_occurrences_in_string( function_string, "CreateCapCategoryObjectWithAttributes" ) > ValueOption( "number_of_objectified_objects_in_data_structure_of_object" ) then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( Concatenation( "WARNING: Found more than the expected number of occurrences of `ObjectifyObjectForCAPWithAttributes` while precompiling ", function_name, "." ) );
+                Display( Concatenation( "WARNING: Found more than the expected number of occurrences of `CreateCapCategoryObjectWithAttributes` while precompiling ", function_name, "." ) );
                 
             fi;
             
@@ -217,10 +217,10 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         
         if current_rec.return_type = "object" and ValueOption( "number_of_objectified_morphisms_in_data_structure_of_object" ) <> fail then
             
-            if number_of_occurrences_in_string( function_string, "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" ) > ValueOption( "number_of_objectified_morphisms_in_data_structure_of_object" ) then
+            if number_of_occurrences_in_string( function_string, "CreateCapCategoryMorphismWithAttributes" ) > ValueOption( "number_of_objectified_morphisms_in_data_structure_of_object" ) then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( Concatenation( "WARNING: Found more than the expected number of occurrences of `ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes` while precompiling ", function_name, "." ) );
+                Display( Concatenation( "WARNING: Found more than the expected number of occurrences of `CreateCapCategoryMorphismWithAttributes` while precompiling ", function_name, "." ) );
                 
             fi;
             
@@ -228,10 +228,10 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         
         if current_rec.return_type = "morphism" and ValueOption( "number_of_objectified_objects_in_data_structure_of_morphism" ) <> fail then
             
-            if number_of_occurrences_in_string( function_string, "ObjectifyObjectForCAPWithAttributes" ) > ValueOption( "number_of_objectified_objects_in_data_structure_of_morphism" ) then
+            if number_of_occurrences_in_string( function_string, "CreateCapCategoryObjectWithAttributes" ) > ValueOption( "number_of_objectified_objects_in_data_structure_of_morphism" ) then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( Concatenation( "WARNING: Found more than the expected number of occurrences of `ObjectifyObjectForCAPWithAttributes` while precompiling ", function_name, "." ) );
+                Display( Concatenation( "WARNING: Found more than the expected number of occurrences of `CreateCapCategoryObjectWithAttributes` while precompiling ", function_name, "." ) );
                 
             fi;
             
@@ -239,10 +239,10 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         
         if current_rec.return_type = "morphism" and ValueOption( "number_of_objectified_morphisms_in_data_structure_of_morphism" ) <> fail then
             
-            if number_of_occurrences_in_string( function_string, "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" ) > ValueOption( "number_of_objectified_morphisms_in_data_structure_of_morphism" ) then
+            if number_of_occurrences_in_string( function_string, "CreateCapCategoryMorphismWithAttributes" ) > ValueOption( "number_of_objectified_morphisms_in_data_structure_of_morphism" ) then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( Concatenation( "WARNING: Found more than the expected number of occurrences of `ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes` while precompiling ", function_name, "." ) );
+                Display( Concatenation( "WARNING: Found more than the expected number of occurrences of `CreateCapCategoryMorphismWithAttributes` while precompiling ", function_name, "." ) );
                 
             fi;
             

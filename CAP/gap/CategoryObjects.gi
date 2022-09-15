@@ -256,7 +256,7 @@ InstallMethod( RandomObject, [ IsCapCategory, IsInt ], RandomObjectByInteger );
 ##
 InstallMethod( RandomObject, [ IsCapCategory, IsList ], RandomObjectByList );
 
-
+##
 InstallGlobalFunction( ObjectifyObjectForCAPWithAttributes,
                        
   function( object, category, additional_arguments_list... )
@@ -264,6 +264,22 @@ InstallGlobalFunction( ObjectifyObjectForCAPWithAttributes,
     
     arg_list := Concatenation(
         [ object, ObjectType( category ), CapCategory, category ], additional_arguments_list
+    );
+    
+    return CallFuncList( ObjectifyWithAttributes, arg_list );
+    
+end );
+
+##
+InstallGlobalFunction( CreateCapCategoryObjectWithAttributes,
+                       
+  function( category, additional_arguments_list... )
+    local arg_list;
+    
+    # inline ObjectifyObjectForCAPWithAttributes( rec( ), category, additional_arguments_list... );
+    
+    arg_list := Concatenation(
+        [ rec( ), ObjectType( category ), CapCategory, category ], additional_arguments_list
     );
     
     return CallFuncList( ObjectifyWithAttributes, arg_list );

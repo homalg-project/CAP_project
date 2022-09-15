@@ -7,8 +7,8 @@ BindGlobal( "CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES", [
     "Julia", # if we resolve this, we lose information about the Julia module and operation
     "List",
     "ListN",
-    "ObjectifyObjectForCAPWithAttributes",
-    "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes",
+    "CreateCapCategoryObjectWithAttributes",
+    "CreateCapCategoryMorphismWithAttributes",
 ] );
 
 InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )

@@ -34,8 +34,8 @@ func( cat );
 
 Display( CapJitCompiledFunction( func, cat ) );
 #! function ( cat_1 )
-#!     return ObjectifyObjectForCAPWithAttributes( rec(
-#!            ), cat_1, Dimension, CapFixpoint( function ( x_2, y_2 )
+#!     return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 
+#!        CapFixpoint( function ( x_2, y_2 )
 #!               return x_2 = 3 and y_2 = 2;
 #!           end, function ( x_2 )
 #!               return x_2 - 1;
@@ -66,16 +66,15 @@ func( cat );
 Display( CapJitCompiledFunction( func, cat ) );
 #! function ( cat_1 )
 #!     local morphism_attr_1_1, deduped_2_1;
-#!     deduped_2_1 := ObjectifyObjectForCAPWithAttributes( rec(
-#!            ), cat_1, Dimension, 1 );
+#!     deduped_2_1 := CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 1 
+#!        );
 #!     morphism_attr_1_1 := CapFixpoint( function ( x_2, y_2 )
 #!             return IsZero( y_2 );
 #!         end, function ( x_2 )
 #!             return x_2 + -1 * x_2;
 #!         end, HomalgIdentityMatrix( 1, UnderlyingRing( cat_1 ) ) );
-#!     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-#!            ), cat_1, deduped_2_1, deduped_2_1, UnderlyingMatrix, 
-#!        morphism_attr_1_1 );
+#!     return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_2_1, 
+#!        deduped_2_1, UnderlyingMatrix, morphism_attr_1_1 );
 #! end
 
 # Iterated with list
@@ -87,8 +86,8 @@ func := { cat, alpha, beta, gamma } ->
 
 Display( CapJitCompiledFunction( func, cat ) );
 #! function ( cat_1, alpha_1, beta_1, gamma_1 )
-#!     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-#!            ), cat_1, Source( alpha_1 ), Range( gamma_1 ), UnderlyingMatrix, 
+#!     return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), 
+#!        Range( gamma_1 ), UnderlyingMatrix, 
 #!        UnderlyingMatrix( alpha_1 ) * UnderlyingMatrix( beta_1 ) 
 #!         * UnderlyingMatrix( gamma_1 ) );
 #! end
@@ -105,10 +104,10 @@ Display( CapJitCompiledFunction( func, cat ) );
 #! function ( cat_1, morphism_list_1 )
 #!     local deduped_1_1;
 #!     deduped_1_1 := morphism_list_1[1];
-#!     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-#!            ), cat_1, Source( deduped_1_1 ), Range( deduped_1_1 ), 
-#!        UnderlyingMatrix, Iterated( List( morphism_list_1, UnderlyingMatrix )
-#!           , function ( alpha_2, beta_2 )
+#!     return CreateCapCategoryMorphismWithAttributes( cat_1, 
+#!        Source( deduped_1_1 ), Range( deduped_1_1 ), UnderlyingMatrix, 
+#!        Iterated( List( morphism_list_1, UnderlyingMatrix ), 
+#!          function ( alpha_2, beta_2 )
 #!               return alpha_2 + beta_2;
 #!           end ) );
 #! end
@@ -128,12 +127,12 @@ Display( CapJitCompiledFunction( func, cat ) );
 #!        function ( alpha_2, beta_2 )
 #!             return alpha_2 * beta_2;
 #!         end );
-#!     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-#!            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-#!              ), cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), 
-#!        ObjectifyObjectForCAPWithAttributes( rec(
-#!              ), cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), 
-#!        UnderlyingMatrix, morphism_attr_1_1 );
+#!     return CreateCapCategoryMorphismWithAttributes( cat_1, 
+#!        CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 
+#!          NumberRows( morphism_attr_1_1 ) ), 
+#!        CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 
+#!          NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, 
+#!        morphism_attr_1_1 );
 #! end
 
 #! @EndExample

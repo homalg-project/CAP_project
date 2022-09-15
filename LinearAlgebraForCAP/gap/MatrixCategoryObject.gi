@@ -33,8 +33,7 @@ InstallMethodForCompilerForCAP( MatrixCategoryObjectOp,
         
     fi;
     
-    return ObjectifyObjectForCAPWithAttributes( rec( ), cat,
-                                                Dimension, dimension );
+    return CreateCapCategoryObjectWithAttributes( cat, Dimension, dimension );
     
 end );
 

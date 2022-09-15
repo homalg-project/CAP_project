@@ -565,6 +565,52 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                 
             fi;
             
+            # ObjectifyObjectForCAPWithAttributes -> CreateCapCategoryObjectWithAttributes
+            if CapJitIsCallToGlobalFunction( tree, "ObjectifyObjectForCAPWithAttributes" ) then
+                
+                if tree.args[1].type = "EXPR_REC" and IsEmpty( tree.args[1].keyvalue ) then
+                    
+                    tree := rec(
+                        type := "EXPR_FUNCCALL",
+                        funcref := rec(
+                            type := "EXPR_REF_GVAR",
+                            gvar := "CreateCapCategoryObjectWithAttributes"
+                        ),
+                        args := tree.args{[ 2 .. Length( tree.args ) ]},
+                    );
+                    
+                else
+                    
+                    # COVERAGE_IGNORE_NEXT_LINE
+                    ErrorWithFuncLocation( "Found ObjectifyObjectForCAPWithAttributes with first argument not literally equal to `rec( )`. This is not supported.\n" );
+                    
+                fi;
+                
+            fi;
+            
+            # ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes -> CreateCapCategoryMorphismWithAttributes
+            if CapJitIsCallToGlobalFunction( tree, "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" ) then
+                
+                if tree.args[1].type = "EXPR_REC" and IsEmpty( tree.args[1].keyvalue ) then
+                    
+                    tree := rec(
+                        type := "EXPR_FUNCCALL",
+                        funcref := rec(
+                            type := "EXPR_REF_GVAR",
+                            gvar := "CreateCapCategoryMorphismWithAttributes"
+                        ),
+                        args := tree.args{[ 2 .. Length( tree.args ) ]},
+                    );
+                    
+                else
+                    
+                    # COVERAGE_IGNORE_NEXT_LINE
+                    ErrorWithFuncLocation( "Found ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes with first argument not literally equal to `rec( )`. This is not supported.\n" );
+                    
+                fi;
+                
+            fi;
+            
         else
             
             # COVERAGE_IGNORE_NEXT_LINE

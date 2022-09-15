@@ -26,13 +26,13 @@ InstallGlobalFunction( CapJitReplacedSourceAndRangeAttributes, function ( tree, 
         
         func := Last( func_stack );
         
-        if CapJitIsCallToGlobalFunction( tree, "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" ) then
+        if CapJitIsCallToGlobalFunction( tree, "CreateCapCategoryMorphismWithAttributes" ) then
             
             args := tree.args;
             
-            if args.2.type = "EXPR_REF_GVAR" then
+            if args.1.type = "EXPR_REF_GVAR" then
                 
-                category := ValueGlobal( args.2.gvar );
+                category := ValueGlobal( args.1.gvar );
                 
                 Assert( 0, IsCapCategory( category ) );
                 
@@ -44,7 +44,7 @@ InstallGlobalFunction( CapJitReplacedSourceAndRangeAttributes, function ( tree, 
                     range_attribute_getter_name := category!.compiler_hints.source_and_range_attributes_from_morphism_attribute.range_attribute_getter_name;
                     
                     # check if either Source or Range are constructed inplace
-                    if CapJitIsCallToGlobalFunction( args.3, "ObjectifyObjectForCAPWithAttributes" ) or CapJitIsCallToGlobalFunction( args.4, "ObjectifyObjectForCAPWithAttributes" ) then
+                    if CapJitIsCallToGlobalFunction( args.2, "CreateCapCategoryObjectWithAttributes" ) or CapJitIsCallToGlobalFunction( args.3, "CreateCapCategoryObjectWithAttributes" ) then
                         
                         morphism_attribute_position := PositionProperty( args, x -> x.type = "EXPR_REF_GVAR" and x.gvar = morphism_attribute_name );
                         
@@ -55,7 +55,7 @@ InstallGlobalFunction( CapJitReplacedSourceAndRangeAttributes, function ( tree, 
                             
                         fi;
                         
-                        Assert( 0, IsOddInt( morphism_attribute_position ) and morphism_attribute_position > 4 and morphism_attribute_position < args.length );
+                        Assert( 0, IsEvenInt( morphism_attribute_position ) and morphism_attribute_position > 3 and morphism_attribute_position < args.length );
                         
                         morphism_attribute_value := args.(morphism_attribute_position + 1);
                         
@@ -75,9 +75,9 @@ InstallGlobalFunction( CapJitReplacedSourceAndRangeAttributes, function ( tree, 
                             name := new_variable_name,
                         );
                         
-                        if CapJitIsCallToGlobalFunction( args.3, "ObjectifyObjectForCAPWithAttributes" ) then
+                        if CapJitIsCallToGlobalFunction( args.2, "CreateCapCategoryObjectWithAttributes" ) then
                             
-                            source_args := args.3.args;
+                            source_args := args.2.args;
                             
                             source_attribute_position := PositionProperty( source_args, x -> x.type = "EXPR_REF_GVAR" and x.gvar = object_attribute_name );
                             
@@ -88,7 +88,7 @@ InstallGlobalFunction( CapJitReplacedSourceAndRangeAttributes, function ( tree, 
                                 
                             fi;
                             
-                            Assert( 0, IsOddInt( source_attribute_position ) and source_attribute_position > 2 and source_attribute_position < source_args.length );
+                            Assert( 0, IsEvenInt( source_attribute_position ) and source_attribute_position > 1 and source_attribute_position < source_args.length );
                             
                             # ignore simple expression, e.g. integers
                             if not source_args.(source_attribute_position + 1).type in [ "EXPR_INT", "EXPR_STRING", "EXPR_CHAR", "EXPR_TRUE", "EXPR_FALSE", "EXPR_REF_GVAR" ] then
@@ -112,9 +112,9 @@ InstallGlobalFunction( CapJitReplacedSourceAndRangeAttributes, function ( tree, 
                             
                         fi;
                         
-                        if CapJitIsCallToGlobalFunction( args.4, "ObjectifyObjectForCAPWithAttributes" ) then
+                        if CapJitIsCallToGlobalFunction( args.3, "CreateCapCategoryObjectWithAttributes" ) then
                             
-                            range_args := args.4.args;
+                            range_args := args.3.args;
                             
                             range_attribute_position := PositionProperty( range_args, x -> x.type = "EXPR_REF_GVAR" and x.gvar = object_attribute_name );
                             
@@ -125,7 +125,7 @@ InstallGlobalFunction( CapJitReplacedSourceAndRangeAttributes, function ( tree, 
                                 
                             fi;
                             
-                            Assert( 0, IsOddInt( range_attribute_position ) and range_attribute_position > 2 and range_attribute_position < range_args.length );
+                            Assert( 0, IsEvenInt( range_attribute_position ) and range_attribute_position > 1 and range_attribute_position < range_args.length );
                             
                             # ignore simple expression, e.g. integers
                             if not range_args.(range_attribute_position + 1).type in [ "EXPR_INT", "EXPR_STRING", "EXPR_CHAR", "EXPR_TRUE", "EXPR_FALSE", "EXPR_REF_GVAR" ] then

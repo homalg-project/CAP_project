@@ -218,7 +218,7 @@ DeclareOperation( "AddObject",
 DeclareOperation( "AddObjectRepresentation",
                   [ IsCapCategory, IsObject ] );
 
-#! @Arguments object, category, [attribute1, value1, ...]
+#! @Arguments object, category[, attribute1, value1, ...]
 #! @Description
 #!  Objectifies the object <A>object</A> with the type created
 #!  for objects in the category <A>category</A>. The type
@@ -229,6 +229,12 @@ DeclareOperation( "AddObjectRepresentation",
 #!  Also returns the objectified object.
 #! @Returns an object
 DeclareGlobalFunction( "ObjectifyObjectForCAPWithAttributes" );
+
+#! @Arguments category, [attribute1, value1, ...]
+#! @Description
+#!  Shorthand for `ObjectifyObjectForCAPWithAttributes( rec( ), category[, attribute1, value1, ...] )`.
+#! @Returns an object
+DeclareGlobalFunction( "CreateCapCategoryObjectWithAttributes" );
 
 ###################################
 ##

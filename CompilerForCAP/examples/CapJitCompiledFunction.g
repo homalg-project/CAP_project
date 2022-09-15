@@ -28,8 +28,7 @@ Display(
     )
 );
 #! function ( cat_1 )
-#!     return ObjectifyObjectForCAPWithAttributes( rec(
-#!            ), cat_1, Dimension, 0 );
+#!     return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 0 );
 #! end
 
 #! @EndExample
