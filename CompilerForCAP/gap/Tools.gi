@@ -820,6 +820,23 @@ InstallMethod( Iterator,
     
 end );
 
+InstallGlobalFunction( PrintWithCurrentlyCompiledFunctionLocation, function ( args... )
+  local func;
+    
+    # COVERAGE_IGNORE_BLOCK_START
+    if IsEmpty( CAP_JIT_INTERNAL_COMPILED_FUNCTIONS_STACK ) then
+        
+        CallFuncList( Print, Concatenation( args, [ "\nwhile not compiling a function. This should never happen.\n" ] ) );
+        
+    fi;
+    
+    func := Last( CAP_JIT_INTERNAL_COMPILED_FUNCTIONS_STACK );
+    
+    CallFuncList( Print, Concatenation( args, [ "\nwhile compiling function with name \"", NameFunction( func ), "\"\nlocated at ", FilenameFunc( func ), ":", StartlineFunc( func ), "\n\n" ] ) );
+    # COVERAGE_IGNORE_BLOCK_END
+    
+end );
+
 InstallGlobalFunction( DisplayWithCurrentlyCompiledFunctionLocation, function ( obj )
   local func;
     
