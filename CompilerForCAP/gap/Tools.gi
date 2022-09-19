@@ -839,19 +839,19 @@ InstallGlobalFunction( DisplayWithCurrentlyCompiledFunctionLocation, function ( 
     
 end );
 
-InstallGlobalFunction( ErrorWithCurrentlyCompiledFunctionLocation, function ( obj )
+InstallGlobalFunction( ErrorWithCurrentlyCompiledFunctionLocation, function ( args... )
   local func;
     
     # COVERAGE_IGNORE_BLOCK_START
     if IsEmpty( CAP_JIT_INTERNAL_COMPILED_FUNCTIONS_STACK ) then
         
-        Error( obj, "\nwhile not compiling a function. This should never happen.\n" );
+        CallFuncList( Error, Concatenation( args, [ "\nwhile not compiling a function. This should never happen.\n" ] ) );
         
     fi;
     
     func := Last( CAP_JIT_INTERNAL_COMPILED_FUNCTIONS_STACK );
     
-    Error( obj, "\nwhile compiling function with name \"", NameFunction( func ), "\"\nlocated at ", FilenameFunc( func ), ":", StartlineFunc( func ), "\n" );
+    CallFuncList( Error, Concatenation( args, [ "\nwhile compiling function with name \"", NameFunction( func ), "\"\nlocated at ", FilenameFunc( func ), ":", StartlineFunc( func ), "\n" ] ) );
     # COVERAGE_IGNORE_BLOCK_END
     
 end );

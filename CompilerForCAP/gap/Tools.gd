@@ -148,6 +148,6 @@ DeclareOperation( "Iterator", [ IsRecord ] );
 DeclareGlobalFunction( "DisplayWithCurrentlyCompiledFunctionLocation" );
 
 #! @Description
-#!   Prints <A>obj</A> as an error followed by the location of the currently compiled function.
-#! @Arguments obj
+#!   Prints <A>args...</A> as an error followed by the location of the currently compiled function.
+#! @Arguments args...
 DeclareGlobalFunction( "ErrorWithCurrentlyCompiledFunctionLocation" );
