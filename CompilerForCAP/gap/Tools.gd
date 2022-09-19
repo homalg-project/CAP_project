@@ -143,11 +143,16 @@ DeclareOperation( "ForAnyOp", [ IsRecord, IsFunction ] );
 DeclareOperation( "Iterator", [ IsRecord ] );
 
 #! @Description
+#!   Prints <A>args...</A> followed by the location of the currently compiled function.
+#! @Arguments args...
+DeclareGlobalFunction( "PrintWithCurrentlyCompiledFunctionLocation" );
+
+#! @Description
 #!   Displays <A>obj</A> followed by the location of the currently compiled function.
 #! @Arguments obj
 DeclareGlobalFunction( "DisplayWithCurrentlyCompiledFunctionLocation" );
 
 #! @Description
-#!   Prints <A>obj</A> as an error followed by the location of the currently compiled function.
-#! @Arguments obj
+#!   Prints <A>args...</A> as an error followed by the location of the currently compiled function.
+#! @Arguments args...
 DeclareGlobalFunction( "ErrorWithCurrentlyCompiledFunctionLocation" );

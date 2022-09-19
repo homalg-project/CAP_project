@@ -866,6 +866,12 @@ CapJitAddTypeSignature( "CreateCapCategoryObjectWithAttributes", [ IsCapCategory
     
 end );
 
+CapJitAddTypeSignature( "CreateCapCategoryObjectWithAttributes", [ IsCapCategory, IsFunction, IsObject, IsFunction, IsObject, IsFunction, IsObject ], function ( input_types )
+    
+    return CapJitDataTypeOfObjectOfCategory( input_types[1].category );
+    
+end );
+
 CapJitAddTypeSignature( "CreateCapCategoryMorphismWithAttributes", [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ], function ( input_types )
     
     return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
