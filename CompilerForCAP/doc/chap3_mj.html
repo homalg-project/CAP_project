@@ -1483,7 +1483,8 @@ end
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># check that CapJitResolvedGlobalVariables is idempotent</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput"></span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">MY_GLOBAL_FUNCTION_1 := function ( x )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">CapJitDisableDataTypeInference( );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MY_GLOBAL_FUNCTION_1 := function ( x )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    #% CAP_JIT_RESOLVE_FUNCTION</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    return x; end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MY_GLOBAL_FUNCTION_2 := function ( x )</span>
@@ -1527,6 +1528,7 @@ function (  )
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree = tree2;</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitEnableDataTypeInference( );</span>
 </pre></div>
 
 

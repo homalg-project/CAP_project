@@ -1426,7 +1426,8 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27X# check that CapJitResolvedGlobalVariables is idempotent[127X[104X
     [4X[25X>[125X [27X[127X[104X
-    [4X[25X>[125X [27XMY_GLOBAL_FUNCTION_1 := function ( x )[127X[104X
+    [4X[25X>[125X [27XCapJitDisableDataTypeInference( );[127X[104X
+    [4X[25Xgap>[125X [27XMY_GLOBAL_FUNCTION_1 := function ( x )[127X[104X
     [4X[25X>[125X [27X    #% CAP_JIT_RESOLVE_FUNCTION[127X[104X
     [4X[25X>[125X [27X    return x; end;;[127X[104X
     [4X[25Xgap>[125X [27XMY_GLOBAL_FUNCTION_2 := function ( x )[127X[104X
@@ -1470,6 +1471,7 @@
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27Xtree = tree2;[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCapJitEnableDataTypeInference( );[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
