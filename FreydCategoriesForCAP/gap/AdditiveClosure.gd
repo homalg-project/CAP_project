@@ -138,6 +138,12 @@ DeclareAttribute( "ExtendNaturalTransformationToAdditiveClosureOfSource",
 DeclareAttribute( "UnderlyingCategory",
                   IsAdditiveClosureCategory );
 
+CapJitAddTypeSignature( "UnderlyingCategory", [ IsAdditiveClosureCategory ], function ( input_types )
+    
+    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
+    
+end );
+
 #! @Description
 #! The argument is a formal direct sum $A:=A_1\oplus\dots\oplus A_m$ in some additive closure category $C^\oplus$.
 #! The output is the list $[A_1,\dots,A_m]$.

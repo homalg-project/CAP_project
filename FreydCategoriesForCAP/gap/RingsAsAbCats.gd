@@ -35,6 +35,12 @@ DeclareAttribute( "RingAsCategory",
 DeclareAttribute( "RingAsCategoryUniqueObject",
                   IsRingAsCategory );
 
+CapJitAddTypeSignature( "RingAsCategoryUniqueObject", [ IsRingAsCategory ], function ( input_types )
+    
+    return CapJitDataTypeOfObjectOfCategory( input_types[1].category );
+    
+end );
+
 DeclareOperation( "RingAsCategoryMorphism",
                   [ IsRingElement, IsRingAsCategory ] );
 

@@ -19,7 +19,7 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
     
     # we have to use result_func instead of pre_func to correctly resolve `Attribute( UnderlyingCategory( cat ) )`
     result_func := function ( tree, result, keys, additional_arguments )
-      local key, value, resolved_tree, name, attr, cat, global_variable_name;
+      local value, global_variable_name, data_type, resolved_tree, name, key;
         
         tree := ShallowCopy( tree );
         
@@ -38,10 +38,26 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
                 
                 global_variable_name := CapJitGetOrCreateGlobalVariable( value );
                 
+                if CAP_JIT_DATA_TYPE_INFERENCE_ENABLED then
+                    
+                    data_type := CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_TYPES( NameFunction( ValueGlobal( tree.funcref.gvar ) ), [ CapJitDataTypeOfCategory( ValueGlobal( tree.args.1.gvar ) ) ] );
+                    
+                else
+                    
+                    data_type := fail;
+                    
+                fi;
+                
                 tree := rec(
                     type := "EXPR_REF_GVAR",
                     gvar := global_variable_name,
                 );
+                
+                if data_type <> fail then
+                    
+                    tree.data_type := data_type;
+                    
+                fi;
                 
             fi;
             
