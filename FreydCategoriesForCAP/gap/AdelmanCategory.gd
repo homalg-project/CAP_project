@@ -215,6 +215,12 @@ DeclareAttribute( "ProjectionFunctorAdelmanCategoryToFreydCategory",
 DeclareAttribute( "UnderlyingCategory",
                   IsAdelmanCategory );
 
+CapJitAddTypeSignature( "UnderlyingCategory", [ IsAdelmanCategory ], function ( input_types )
+    
+    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
+    
+end );
+
 #! @Description
 #! The argument is an object $x$ in an Adelman category.
 #! The output is its relation morphism $\rho: a \rightarrow b$.
