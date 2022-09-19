@@ -39,3 +39,4 @@ DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY" );
 
 DeclareAttribute( "UnderlyingRing",
                   IsMatrixCategory );
+CapJitAddTypeSignature( "UnderlyingRing", [ IsMatrixCategory ], IsHomalgRing );

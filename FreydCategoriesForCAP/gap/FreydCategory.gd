@@ -63,6 +63,12 @@ DeclareOperation( "\/",
 DeclareAttribute( "UnderlyingCategory",
                   IsFreydCategory );
 
+CapJitAddTypeSignature( "UnderlyingCategory", [ IsFreydCategory ], function ( input_types )
+    
+    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
+    
+end );
+
 DeclareAttribute( "RelationMorphism",
                   IsFreydCategoryObject );
 

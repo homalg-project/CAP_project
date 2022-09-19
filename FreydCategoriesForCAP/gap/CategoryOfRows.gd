@@ -61,6 +61,7 @@ KeyDependentOperation( "StandardRowMorphism",
 
 DeclareAttribute( "UnderlyingRing",
                   IsCategoryOfRows );
+CapJitAddTypeSignature( "UnderlyingRing", [ IsCategoryOfRows ], IsHomalgRing );
 
 DeclareAttribute( "GeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure",
                   IsCategoryOfRows );

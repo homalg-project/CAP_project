@@ -657,20 +657,42 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INFERRED_DATA_TYPES, function ( tree, in
             
         elif tree.type = "EXPR_REF_GVAR" then
             
-            data_type := CAP_JIT_INTERNAL_GET_DATA_TYPE_OF_VALUE( ValueGlobal( tree.gvar ) );
-            
-            if data_type = fail or data_type = "list_with_unknown_element_type" then
+            if IsBound( tree.data_type ) then
                 
-                # "fail" explicitly has no type yet
-                if ValueGlobal( tree.gvar ) <> fail then
+                data_type := CAP_JIT_INTERNAL_GET_DATA_TYPE_OF_VALUE( ValueGlobal( tree.gvar ) );
+                
+                if data_type <> fail then
                     
-                    DisplayWithCurrentlyCompiledFunctionLocation( Concatenation( "could not get type of gvar ", tree.gvar ) );
+                    if (data_type.filter = IsFunction and tree.data_type.filter <> IsFunction) or (data_type.filter <> IsFunction and data_type <> tree.data_type) then
+                        
+                        DisplayWithCurrentlyCompiledFunctionLocation( Concatenation( "the data type ", String( tree.data_type ), " of gvar ", tree.gvar, " differs from the automatically detected data type ", String( data_type ) ) );
+                        
+                    fi;
+                    
+                    data_type := tree.data_type;
                     
                 fi;
                 
-                # there might already be a data type set, but we want to avoid partial typings -> unbind
-                Unbind( tree.data_type );
-                return tree;
+                data_type := tree.data_type;
+                
+            else
+                
+                data_type := CAP_JIT_INTERNAL_GET_DATA_TYPE_OF_VALUE( ValueGlobal( tree.gvar ) );
+                
+                if data_type = fail or data_type = "list_with_unknown_element_type" then
+                    
+                    # "fail" explicitly has no type yet
+                    if ValueGlobal( tree.gvar ) <> fail then
+                        
+                        DisplayWithCurrentlyCompiledFunctionLocation( Concatenation( "could not get type of gvar ", tree.gvar ) );
+                        
+                    fi;
+                    
+                    # there might already be a data type set, but we want to avoid partial typings -> unbind
+                    Unbind( tree.data_type );
+                    return tree;
+                    
+                fi;
                 
             fi;
             
@@ -856,7 +878,13 @@ CapJitAddTypeSignature( "CreateCapCategoryMorphismWithAttributes", [ IsCapCatego
     
 end );
 
-# object and morphism attributes
+# category, object and morphism attributes
+CapJitAddTypeSignature( "RangeCategoryOfHomomorphismStructure", [ IsCapCategory ], function ( input_types )
+    
+    return CapJitDataTypeOfCategory( RangeCategoryOfHomomorphismStructure( input_types[1].category ) );
+    
+end );
+
 CapJitAddTypeSignature( "CapCategory", [ IsCapCategoryCell ], function ( input_types )
     
     return CapJitDataTypeOfCategory( input_types[1].category );

@@ -9,6 +9,8 @@ LoadPackage( "CompilerForCAP", false );
 
 # check that CapJitResolvedGlobalVariables is idempotent
 
+CapJitDisableDataTypeInference( );
+
 MY_GLOBAL_FUNCTION_1 := function ( x )
     #% CAP_JIT_RESOLVE_FUNCTION
     return x; end;;
@@ -62,5 +64,7 @@ Display( ENHANCED_SYNTAX_TREE_CODE( tree2 ) );
 
 tree = tree2;
 #! true
+
+CapJitEnableDataTypeInference( );
 
 #! @EndExample

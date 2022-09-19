@@ -93,6 +93,16 @@ DeclareCategory( "IsWrapperCapCategoryMorphism",
 DeclareAttribute( "ModelingCategory",
         WasCreatedAsWrapperCapCategory );
 
+##
+CapJitAddTypeSignature( "ModelingCategory",
+        [ WasCreatedAsWrapperCapCategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfCategory( ModelingCategory( input_types[1].category ) );
+    
+end );
+
+
 DeclareAttribute( "UnderlyingCategory",
         IsWrapperCapCategory );
 
