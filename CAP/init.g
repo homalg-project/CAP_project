@@ -46,9 +46,9 @@ ReadPackage( "CAP", "gap/ProductCategory.gd" );
 
 ReadPackage( "CAP", "gap/CategoriesCategory.gd" );
 
-ReadPackage( "CAP", "gap/TerminalCategory.gd" );
-
 ReadPackage( "CAP", "gap/CategoryConstructor.gd" );
+
+ReadPackage( "CAP", "gap/TerminalCategory.gd" );
 
 ReadPackage( "CAP", "gap/WrapperCategory.gd" );
 
