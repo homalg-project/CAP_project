@@ -849,9 +849,15 @@ end
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := list -&gt; Sum( list[1] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := { list1, list2 } -&gt; List( list1, x -&gt; Sum( list2[x] ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">type_signature := [</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    [</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            filter := IsList,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            element_type := rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                filter := IsInt,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        rec(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            filter := IsList,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            element_type := rec(</span>
@@ -866,13 +872,19 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitDisableDataTypeInference( );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func, type_signature ) );</span>
-function ( list_1 )
-    return Sum( list_1[1] );
+function ( list1_1, list2_1 )
+    return List( list1_1, function ( x_2 )
+            return Sum( list2_1[x_2] );
+        end );
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitEnableDataTypeInference( );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func, type_signature ) );</span>
-function ( list_1 )
-    return List( list_1, Sum )[1];
+function ( list1_1, list2_1 )
+    local hoisted_3_1;
+    hoisted_3_1 := List( list2_1, Sum );
+    return List( list1_1, function ( x_2 )
+            return hoisted_3_1[x_2];
+        end );
 end
 </pre></div>
 

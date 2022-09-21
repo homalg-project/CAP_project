@@ -805,9 +805,15 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xfunc := list -> Sum( list[1] );;[127X[104X
+    [4X[25Xgap>[125X [27Xfunc := { list1, list2 } -> List( list1, x -> Sum( list2[x] ) );;[127X[104X
     [4X[25Xgap>[125X [27Xtype_signature := [[127X[104X
     [4X[25X>[125X [27X    [[127X[104X
+    [4X[25X>[125X [27X        rec([127X[104X
+    [4X[25X>[125X [27X            filter := IsList,[127X[104X
+    [4X[25X>[125X [27X            element_type := rec([127X[104X
+    [4X[25X>[125X [27X                filter := IsInt,[127X[104X
+    [4X[25X>[125X [27X            ),[127X[104X
+    [4X[25X>[125X [27X        ),[127X[104X
     [4X[25X>[125X [27X        rec([127X[104X
     [4X[25X>[125X [27X            filter := IsList,[127X[104X
     [4X[25X>[125X [27X            element_type := rec([127X[104X
@@ -822,13 +828,19 @@
     [4X[25X>[125X [27X];;[127X[104X
     [4X[25Xgap>[125X [27XCapJitDisableDataTypeInference( );[127X[104X
     [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, type_signature ) );[127X[104X
-    [4X[28Xfunction ( list_1 )[128X[104X
-    [4X[28X    return Sum( list_1[1] );[128X[104X
+    [4X[28Xfunction ( list1_1, list2_1 )[128X[104X
+    [4X[28X    return List( list1_1, function ( x_2 )[128X[104X
+    [4X[28X            return Sum( list2_1[x_2] );[128X[104X
+    [4X[28X        end );[128X[104X
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27XCapJitEnableDataTypeInference( );[127X[104X
     [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, type_signature ) );[127X[104X
-    [4X[28Xfunction ( list_1 )[128X[104X
-    [4X[28X    return List( list_1, Sum )[1];[128X[104X
+    [4X[28Xfunction ( list1_1, list2_1 )[128X[104X
+    [4X[28X    local hoisted_3_1;[128X[104X
+    [4X[28X    hoisted_3_1 := List( list2_1, Sum );[128X[104X
+    [4X[28X    return List( list1_1, function ( x_2 )[128X[104X
+    [4X[28X            return hoisted_3_1[x_2];[128X[104X
+    [4X[28X        end );[128X[104X
     [4X[28Xend[128X[104X
   [4X[32X[104X
   
