@@ -35,6 +35,9 @@ ReadPackage( "CartesianCategories", "gap/BraidedCocartesianCategories.gi" );
 ReadPackage( "CartesianCategories", "gap/CartesianClosedCategoriesProperties.gi" );
 ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategoriesProperties.gi" );
 
+ReadPackage( "CartesianCategories", "gap/CartesianClosedCategoriesProperties2.gi" );
+ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategoriesProperties2.gi" );
+
 ReadPackage( "CartesianCategories", "gap/CartesianClosedCategoriesMethodRecord.gi" );
 ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategoriesMethodRecord.gi" );
 
