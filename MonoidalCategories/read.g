@@ -89,6 +89,3 @@ ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategoriesTest.gi" );
 ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategoriesTest.gi" );
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricClosedMonoidalCategoriesTest.gi" );
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricCoclosedMonoidalCategoriesTest.gi" );
-
-## TerminalCategory
-ReadPackage( "MonoidalCategories", "gap/TerminalCategory.gi" );
