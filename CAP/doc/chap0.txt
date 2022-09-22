@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2022.09-14
+                                   2022.09-15
   
   
-                               19 September 2022
+                               22 September 2022
   
   
                                Sebastian Gutsche
@@ -885,6 +885,7 @@
       9.2-35 Pair
       9.2-36 Triple
       9.2-37 HandlePrecompiledTowers
+      9.2-38 CAP_JIT_INCOMPLETE_LOGIC
   10 [33X[0;0YLimits and Colimits[133X
     10.1 [33X[0;0YSpecification of Limits and Colimits[133X
     10.2 [33X[0;0YEnhancing Limit Specifications[133X

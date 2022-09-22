@@ -380,3 +380,10 @@
   [3Xconstructor_name[103X  is  the  only  entry of [10Xremaining_constructors_in_tower[110X of
   multiple entries.[133X
   
+  [1X9.2-38 CAP_JIT_INCOMPLETE_LOGIC[101X
+  
+  [33X[1;0Y[29X[2XCAP_JIT_INCOMPLETE_LOGIC[102X( [3Xvalue[103X ) [32X function[133X
+  
+  [33X[0;0YSimply  returns  [3Xvalue[103X.  Used  to signify that the argument is not fully run
+  through all logic functions/templates by CompilerForCAP.[133X
+  

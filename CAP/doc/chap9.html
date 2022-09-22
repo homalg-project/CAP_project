@@ -68,6 +68,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7A63799B824FAEBA">9.2-35 Pair</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7C52730F8526A57E">9.2-36 Triple</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7B339750826300B4">9.2-37 HandlePrecompiledTowers</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7D06D3287E3BFCBB">9.2-38 CAP_JIT_INCOMPLETE_LOGIC</a></span>
 </div></div>
 </div>
 
@@ -388,6 +389,13 @@
 </li>
 </ul>
 <p>If <var class="Arg">constructor_name</var> is the only entry of <code class="code">remaining_constructors_in_tower</code>, <code class="code">precompiled_functions_adder</code> is applied to <var class="Arg">category</var> (except if the option <code class="code">no_precompiled_code</code> is set to <code class="code">true</code>) and should add precompiled code. Else, if <var class="Arg">constructor_name</var> is the first entry of <code class="code">remaining_constructors_in_tower</code>, the information is attached to <code class="code"><var class="Arg">category</var>!.compiler_hints.precompiled_towers</code> after removing <var class="Arg">constructor_name</var> from <code class="code">remaining_constructors_in_tower</code>. Note: Currently, there is no logic for finding the "optimal" code to install if <var class="Arg">constructor_name</var> is the only entry of <code class="code">remaining_constructors_in_tower</code> of multiple entries.</p>
+
+<p><a id="X7D06D3287E3BFCBB" name="X7D06D3287E3BFCBB"></a></p>
+
+<h5>9.2-38 CAP_JIT_INCOMPLETE_LOGIC</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_JIT_INCOMPLETE_LOGIC</code>( <var class="Arg">value</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Simply returns <var class="Arg">value</var>. Used to signify that the argument is not fully run through all logic functions/templates by CompilerForCAP.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap8.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap10.html">[Next Chapter]</a>&nbsp;  </div>
