@@ -2,35 +2,35 @@
   
   [1XIndex[101X
   
-  [2XAddAssociatorLeftToRight[102X, for IsCapCategory, IsFunction 1.12-83 
-  [2XAddAssociatorLeftToRightWithGivenTensorProducts[102X, for IsCapCategory, IsFunction 1.12-84 
-  [2XAddAssociatorRightToLeft[102X, for IsCapCategory, IsFunction 1.12-85 
-  [2XAddAssociatorRightToLeftWithGivenTensorProducts[102X, for IsCapCategory, IsFunction 1.12-86 
+  [2XAddAssociatorLeftToRight[102X, for IsCapCategory, IsFunction 1.12-87 
+  [2XAddAssociatorLeftToRightWithGivenTensorProducts[102X, for IsCapCategory, IsFunction 1.12-88 
+  [2XAddAssociatorRightToLeft[102X, for IsCapCategory, IsFunction 1.12-89 
+  [2XAddAssociatorRightToLeftWithGivenTensorProducts[102X, for IsCapCategory, IsFunction 1.12-90 
   [2XAddBraiding[102X, for IsCapCategory, IsFunction 1.12-9 
   [2XAddBraidingInverse[102X, for IsCapCategory, IsFunction 1.12-10 
   [2XAddBraidingInverseWithGivenTensorProducts[102X, for IsCapCategory, IsFunction 1.12-11 
   [2XAddBraidingWithGivenTensorProducts[102X, for IsCapCategory, IsFunction 1.12-12 
-  [2XAddCoclosedCoevaluationForCoDual[102X, for IsCapCategory, IsFunction 1.12-111 
-  [2XAddCoclosedCoevaluationForCoDualWithGivenTensorProduct[102X, for IsCapCategory, IsFunction 1.12-112 
-  [2XAddCoclosedCoevaluationMorphism[102X, for IsCapCategory, IsFunction 1.12-55 
-  [2XAddCoclosedCoevaluationMorphismWithGivenSource[102X, for IsCapCategory, IsFunction 1.12-56 
-  [2XAddCoclosedEvaluationForCoDual[102X, for IsCapCategory, IsFunction 1.12-57 
-  [2XAddCoclosedEvaluationForCoDualWithGivenTensorProduct[102X, for IsCapCategory, IsFunction 1.12-58 
-  [2XAddCoclosedEvaluationMorphism[102X, for IsCapCategory, IsFunction 1.12-59 
-  [2XAddCoclosedEvaluationMorphismWithGivenRange[102X, for IsCapCategory, IsFunction 1.12-60 
-  [2XAddCoDualityTensorProductCompatibilityMorphism[102X, for IsCapCategory, IsFunction 1.12-51 
-  [2XAddCoDualityTensorProductCompatibilityMorphismWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-52 
-  [2XAddCoDualOnMorphisms[102X, for IsCapCategory, IsFunction 1.12-48 
-  [2XAddCoDualOnMorphismsWithGivenCoDuals[102X, for IsCapCategory, IsFunction 1.12-49 
-  [2XAddCoDualOnObjects[102X, for IsCapCategory, IsFunction 1.12-50 
-  [2XAddCoevaluationForDual[102X, for IsCapCategory, IsFunction 1.12-97 
-  [2XAddCoevaluationForDualWithGivenTensorProduct[102X, for IsCapCategory, IsFunction 1.12-98 
+  [2XAddCoclosedCoevaluationForCoDual[102X, for IsCapCategory, IsFunction 1.12-115 
+  [2XAddCoclosedCoevaluationForCoDualWithGivenTensorProduct[102X, for IsCapCategory, IsFunction 1.12-116 
+  [2XAddCoclosedCoevaluationMorphism[102X, for IsCapCategory, IsFunction 1.12-57 
+  [2XAddCoclosedCoevaluationMorphismWithGivenSource[102X, for IsCapCategory, IsFunction 1.12-58 
+  [2XAddCoclosedEvaluationForCoDual[102X, for IsCapCategory, IsFunction 1.12-59 
+  [2XAddCoclosedEvaluationForCoDualWithGivenTensorProduct[102X, for IsCapCategory, IsFunction 1.12-60 
+  [2XAddCoclosedEvaluationMorphism[102X, for IsCapCategory, IsFunction 1.12-61 
+  [2XAddCoclosedEvaluationMorphismWithGivenRange[102X, for IsCapCategory, IsFunction 1.12-62 
+  [2XAddCoDualityTensorProductCompatibilityMorphism[102X, for IsCapCategory, IsFunction 1.12-53 
+  [2XAddCoDualityTensorProductCompatibilityMorphismWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-54 
+  [2XAddCoDualOnMorphisms[102X, for IsCapCategory, IsFunction 1.12-50 
+  [2XAddCoDualOnMorphismsWithGivenCoDuals[102X, for IsCapCategory, IsFunction 1.12-51 
+  [2XAddCoDualOnObjects[102X, for IsCapCategory, IsFunction 1.12-52 
+  [2XAddCoevaluationForDual[102X, for IsCapCategory, IsFunction 1.12-101 
+  [2XAddCoevaluationForDualWithGivenTensorProduct[102X, for IsCapCategory, IsFunction 1.12-102 
   [2XAddCoevaluationMorphism[102X, for IsCapCategory, IsFunction 1.12-13 
   [2XAddCoevaluationMorphismWithGivenRange[102X, for IsCapCategory, IsFunction 1.12-14 
-  [2XAddCoLambdaElimination[102X, for IsCapCategory, IsFunction 1.12-53 
-  [2XAddCoLambdaIntroduction[102X, for IsCapCategory, IsFunction 1.12-54 
-  [2XAddCoRankMorphism[102X, for IsCapCategory, IsFunction 1.12-109 
-  [2XAddCoTraceMap[102X, for IsCapCategory, IsFunction 1.12-110 
+  [2XAddCoLambdaElimination[102X, for IsCapCategory, IsFunction 1.12-55 
+  [2XAddCoLambdaIntroduction[102X, for IsCapCategory, IsFunction 1.12-56 
+  [2XAddCoRankMorphism[102X, for IsCapCategory, IsFunction 1.12-113 
+  [2XAddCoTraceMap[102X, for IsCapCategory, IsFunction 1.12-114 
   [2XAddDualOnMorphisms[102X, for IsCapCategory, IsFunction 1.12-15 
   [2XAddDualOnMorphismsWithGivenDuals[102X, for IsCapCategory, IsFunction 1.12-16 
   [2XAddDualOnObjects[102X, for IsCapCategory, IsFunction 1.12-17 
@@ -38,93 +38,97 @@
   [2XAddEvaluationForDualWithGivenTensorProduct[102X, for IsCapCategory, IsFunction 1.12-19 
   [2XAddEvaluationMorphism[102X, for IsCapCategory, IsFunction 1.12-20 
   [2XAddEvaluationMorphismWithGivenSource[102X, for IsCapCategory, IsFunction 1.12-21 
-  [2XAddInternalCoHomOnMorphisms[102X, for IsCapCategory, IsFunction 1.12-61 
-  [2XAddInternalCoHomOnMorphismsWithGivenInternalCoHoms[102X, for IsCapCategory, IsFunction 1.12-62 
-  [2XAddInternalCoHomOnObjects[102X, for IsCapCategory, IsFunction 1.12-63 
-  [2XAddInternalCoHomTensorProductCompatibilityMorphism[102X, for IsCapCategory, IsFunction 1.12-64 
-  [2XAddInternalCoHomTensorProductCompatibilityMorphismInverse[102X, for IsCapCategory, IsFunction 1.12-113 
-  [2XAddInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-114 
-  [2XAddInternalCoHomTensorProductCompatibilityMorphismWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-65 
-  [2XAddInternalCoHomToTensorProductAdjunctionMap[102X, for IsCapCategory, IsFunction 1.12-66 
+  [2XAddInternalCoHomOnMorphisms[102X, for IsCapCategory, IsFunction 1.12-63 
+  [2XAddInternalCoHomOnMorphismsWithGivenInternalCoHoms[102X, for IsCapCategory, IsFunction 1.12-64 
+  [2XAddInternalCoHomOnObjects[102X, for IsCapCategory, IsFunction 1.12-65 
+  [2XAddInternalCoHomTensorProductCompatibilityMorphism[102X, for IsCapCategory, IsFunction 1.12-66 
+  [2XAddInternalCoHomTensorProductCompatibilityMorphismInverse[102X, for IsCapCategory, IsFunction 1.12-117 
+  [2XAddInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-118 
+  [2XAddInternalCoHomTensorProductCompatibilityMorphismWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-67 
+  [2XAddInternalCoHomToTensorProductAdjunctionMap[102X, for IsCapCategory, IsFunction 1.12-68 
+  [2XAddInternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct[102X, for IsCapCategory, IsFunction 1.12-69 
   [2XAddInternalHomOnMorphisms[102X, for IsCapCategory, IsFunction 1.12-22 
   [2XAddInternalHomOnMorphismsWithGivenInternalHoms[102X, for IsCapCategory, IsFunction 1.12-23 
   [2XAddInternalHomOnObjects[102X, for IsCapCategory, IsFunction 1.12-24 
   [2XAddInternalHomToTensorProductAdjunctionMap[102X, for IsCapCategory, IsFunction 1.12-25 
-  [2XAddIsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit[102X, for IsCapCategory, IsFunction 1.12-67 
-  [2XAddIsomorphismFromDualObjectToInternalHomIntoTensorUnit[102X, for IsCapCategory, IsFunction 1.12-26 
-  [2XAddIsomorphismFromInternalCoHomFromTensorUnitToCoDualObject[102X, for IsCapCategory, IsFunction 1.12-68 
-  [2XAddIsomorphismFromInternalCoHomToObject[102X, for IsCapCategory, IsFunction 1.12-69 
-  [2XAddIsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom[102X, for IsCapCategory, IsFunction 1.12-70 
-  [2XAddIsomorphismFromInternalCoHomToTensorProductWithCoDualObject[102X, for IsCapCategory, IsFunction 1.12-115 
-  [2XAddIsomorphismFromInternalHomIntoTensorUnitToDualObject[102X, for IsCapCategory, IsFunction 1.12-27 
-  [2XAddIsomorphismFromInternalHomToObject[102X, for IsCapCategory, IsFunction 1.12-28 
-  [2XAddIsomorphismFromInternalHomToObjectWithGivenInternalHom[102X, for IsCapCategory, IsFunction 1.12-29 
-  [2XAddIsomorphismFromInternalHomToTensorProductWithDualObject[102X, for IsCapCategory, IsFunction 1.12-99 
-  [2XAddIsomorphismFromObjectToInternalCoHom[102X, for IsCapCategory, IsFunction 1.12-71 
-  [2XAddIsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom[102X, for IsCapCategory, IsFunction 1.12-72 
-  [2XAddIsomorphismFromObjectToInternalHom[102X, for IsCapCategory, IsFunction 1.12-30 
-  [2XAddIsomorphismFromObjectToInternalHomWithGivenInternalHom[102X, for IsCapCategory, IsFunction 1.12-31 
-  [2XAddIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom[102X, for IsCapCategory, IsFunction 1.12-116 
-  [2XAddIsomorphismFromTensorProductWithDualObjectToInternalHom[102X, for IsCapCategory, IsFunction 1.12-100 
+  [2XAddInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct[102X, for IsCapCategory, IsFunction 1.12-26 
+  [2XAddIsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit[102X, for IsCapCategory, IsFunction 1.12-70 
+  [2XAddIsomorphismFromDualObjectToInternalHomIntoTensorUnit[102X, for IsCapCategory, IsFunction 1.12-27 
+  [2XAddIsomorphismFromInternalCoHomFromTensorUnitToCoDualObject[102X, for IsCapCategory, IsFunction 1.12-71 
+  [2XAddIsomorphismFromInternalCoHomToObject[102X, for IsCapCategory, IsFunction 1.12-72 
+  [2XAddIsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom[102X, for IsCapCategory, IsFunction 1.12-73 
+  [2XAddIsomorphismFromInternalCoHomToTensorProductWithCoDualObject[102X, for IsCapCategory, IsFunction 1.12-119 
+  [2XAddIsomorphismFromInternalHomIntoTensorUnitToDualObject[102X, for IsCapCategory, IsFunction 1.12-28 
+  [2XAddIsomorphismFromInternalHomToObject[102X, for IsCapCategory, IsFunction 1.12-29 
+  [2XAddIsomorphismFromInternalHomToObjectWithGivenInternalHom[102X, for IsCapCategory, IsFunction 1.12-30 
+  [2XAddIsomorphismFromInternalHomToTensorProductWithDualObject[102X, for IsCapCategory, IsFunction 1.12-103 
+  [2XAddIsomorphismFromObjectToInternalCoHom[102X, for IsCapCategory, IsFunction 1.12-74 
+  [2XAddIsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom[102X, for IsCapCategory, IsFunction 1.12-75 
+  [2XAddIsomorphismFromObjectToInternalHom[102X, for IsCapCategory, IsFunction 1.12-31 
+  [2XAddIsomorphismFromObjectToInternalHomWithGivenInternalHom[102X, for IsCapCategory, IsFunction 1.12-32 
+  [2XAddIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom[102X, for IsCapCategory, IsFunction 1.12-120 
+  [2XAddIsomorphismFromTensorProductWithDualObjectToInternalHom[102X, for IsCapCategory, IsFunction 1.12-104 
   [2XAdditiveMonoidalCategoriesTest[102X 2.1-1 
-  [2XAddLambdaElimination[102X, for IsCapCategory, IsFunction 1.12-32 
-  [2XAddLambdaIntroduction[102X, for IsCapCategory, IsFunction 1.12-33 
+  [2XAddLambdaElimination[102X, for IsCapCategory, IsFunction 1.12-33 
+  [2XAddLambdaIntroduction[102X, for IsCapCategory, IsFunction 1.12-34 
   [2XAddLeftDistributivityExpanding[102X, for IsCapCategory, IsFunction 1.12-1 
   [2XAddLeftDistributivityExpandingWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-2 
   [2XAddLeftDistributivityFactoring[102X, for IsCapCategory, IsFunction 1.12-3 
   [2XAddLeftDistributivityFactoringWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-4 
-  [2XAddLeftUnitor[102X, for IsCapCategory, IsFunction 1.12-87 
-  [2XAddLeftUnitorInverse[102X, for IsCapCategory, IsFunction 1.12-88 
-  [2XAddLeftUnitorInverseWithGivenTensorProduct[102X, for IsCapCategory, IsFunction 1.12-89 
-  [2XAddLeftUnitorWithGivenTensorProduct[102X, for IsCapCategory, IsFunction 1.12-90 
-  [2XAddMonoidalPostCoComposeMorphism[102X, for IsCapCategory, IsFunction 1.12-73 
-  [2XAddMonoidalPostCoComposeMorphismWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-74 
-  [2XAddMonoidalPostComposeMorphism[102X, for IsCapCategory, IsFunction 1.12-34 
-  [2XAddMonoidalPostComposeMorphismWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-35 
-  [2XAddMonoidalPreCoComposeMorphism[102X, for IsCapCategory, IsFunction 1.12-75 
-  [2XAddMonoidalPreCoComposeMorphismWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-76 
-  [2XAddMonoidalPreComposeMorphism[102X, for IsCapCategory, IsFunction 1.12-36 
-  [2XAddMonoidalPreComposeMorphismWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-37 
-  [2XAddMorphismFromBidual[102X, for IsCapCategory, IsFunction 1.12-101 
-  [2XAddMorphismFromBidualWithGivenBidual[102X, for IsCapCategory, IsFunction 1.12-102 
-  [2XAddMorphismFromCoBidual[102X, for IsCapCategory, IsFunction 1.12-77 
-  [2XAddMorphismFromCoBidualWithGivenCoBidual[102X, for IsCapCategory, IsFunction 1.12-78 
-  [2XAddMorphismFromInternalCoHomToTensorProduct[102X, for IsCapCategory, IsFunction 1.12-79 
-  [2XAddMorphismFromInternalCoHomToTensorProductWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-80 
-  [2XAddMorphismFromInternalHomToTensorProduct[102X, for IsCapCategory, IsFunction 1.12-103 
-  [2XAddMorphismFromInternalHomToTensorProductWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-104 
-  [2XAddMorphismFromTensorProductToInternalCoHom[102X, for IsCapCategory, IsFunction 1.12-117 
-  [2XAddMorphismFromTensorProductToInternalCoHomWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-118 
-  [2XAddMorphismFromTensorProductToInternalHom[102X, for IsCapCategory, IsFunction 1.12-38 
-  [2XAddMorphismFromTensorProductToInternalHomWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-39 
-  [2XAddMorphismToBidual[102X, for IsCapCategory, IsFunction 1.12-40 
-  [2XAddMorphismToBidualWithGivenBidual[102X, for IsCapCategory, IsFunction 1.12-41 
-  [2XAddMorphismToCoBidual[102X, for IsCapCategory, IsFunction 1.12-119 
-  [2XAddMorphismToCoBidualWithGivenCoBidual[102X, for IsCapCategory, IsFunction 1.12-120 
-  [2XAddRankMorphism[102X, for IsCapCategory, IsFunction 1.12-105 
+  [2XAddLeftUnitor[102X, for IsCapCategory, IsFunction 1.12-91 
+  [2XAddLeftUnitorInverse[102X, for IsCapCategory, IsFunction 1.12-92 
+  [2XAddLeftUnitorInverseWithGivenTensorProduct[102X, for IsCapCategory, IsFunction 1.12-93 
+  [2XAddLeftUnitorWithGivenTensorProduct[102X, for IsCapCategory, IsFunction 1.12-94 
+  [2XAddMonoidalPostCoComposeMorphism[102X, for IsCapCategory, IsFunction 1.12-76 
+  [2XAddMonoidalPostCoComposeMorphismWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-77 
+  [2XAddMonoidalPostComposeMorphism[102X, for IsCapCategory, IsFunction 1.12-35 
+  [2XAddMonoidalPostComposeMorphismWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-36 
+  [2XAddMonoidalPreCoComposeMorphism[102X, for IsCapCategory, IsFunction 1.12-78 
+  [2XAddMonoidalPreCoComposeMorphismWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-79 
+  [2XAddMonoidalPreComposeMorphism[102X, for IsCapCategory, IsFunction 1.12-37 
+  [2XAddMonoidalPreComposeMorphismWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-38 
+  [2XAddMorphismFromBidual[102X, for IsCapCategory, IsFunction 1.12-105 
+  [2XAddMorphismFromBidualWithGivenBidual[102X, for IsCapCategory, IsFunction 1.12-106 
+  [2XAddMorphismFromCoBidual[102X, for IsCapCategory, IsFunction 1.12-80 
+  [2XAddMorphismFromCoBidualWithGivenCoBidual[102X, for IsCapCategory, IsFunction 1.12-81 
+  [2XAddMorphismFromInternalCoHomToTensorProduct[102X, for IsCapCategory, IsFunction 1.12-82 
+  [2XAddMorphismFromInternalCoHomToTensorProductWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-83 
+  [2XAddMorphismFromInternalHomToTensorProduct[102X, for IsCapCategory, IsFunction 1.12-107 
+  [2XAddMorphismFromInternalHomToTensorProductWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-108 
+  [2XAddMorphismFromTensorProductToInternalCoHom[102X, for IsCapCategory, IsFunction 1.12-121 
+  [2XAddMorphismFromTensorProductToInternalCoHomWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-122 
+  [2XAddMorphismFromTensorProductToInternalHom[102X, for IsCapCategory, IsFunction 1.12-39 
+  [2XAddMorphismFromTensorProductToInternalHomWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-40 
+  [2XAddMorphismToBidual[102X, for IsCapCategory, IsFunction 1.12-41 
+  [2XAddMorphismToBidualWithGivenBidual[102X, for IsCapCategory, IsFunction 1.12-42 
+  [2XAddMorphismToCoBidual[102X, for IsCapCategory, IsFunction 1.12-123 
+  [2XAddMorphismToCoBidualWithGivenCoBidual[102X, for IsCapCategory, IsFunction 1.12-124 
+  [2XAddRankMorphism[102X, for IsCapCategory, IsFunction 1.12-109 
   [2XAddRightDistributivityExpanding[102X, for IsCapCategory, IsFunction 1.12-5 
   [2XAddRightDistributivityExpandingWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-6 
   [2XAddRightDistributivityFactoring[102X, for IsCapCategory, IsFunction 1.12-7 
   [2XAddRightDistributivityFactoringWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-8 
-  [2XAddRightUnitor[102X, for IsCapCategory, IsFunction 1.12-91 
-  [2XAddRightUnitorInverse[102X, for IsCapCategory, IsFunction 1.12-92 
-  [2XAddRightUnitorInverseWithGivenTensorProduct[102X, for IsCapCategory, IsFunction 1.12-93 
-  [2XAddRightUnitorWithGivenTensorProduct[102X, for IsCapCategory, IsFunction 1.12-94 
-  [2XAddTensorProductDualityCompatibilityMorphism[102X, for IsCapCategory, IsFunction 1.12-42 
-  [2XAddTensorProductDualityCompatibilityMorphismWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-43 
-  [2XAddTensorProductInternalHomCompatibilityMorphism[102X, for IsCapCategory, IsFunction 1.12-44 
-  [2XAddTensorProductInternalHomCompatibilityMorphismInverse[102X, for IsCapCategory, IsFunction 1.12-106 
-  [2XAddTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-107 
-  [2XAddTensorProductInternalHomCompatibilityMorphismWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-45 
-  [2XAddTensorProductOnMorphisms[102X, for IsCapCategory, IsFunction 1.12-95 
-  [2XAddTensorProductOnMorphismsWithGivenTensorProducts[102X, for IsCapCategory, IsFunction 1.12-96 
+  [2XAddRightUnitor[102X, for IsCapCategory, IsFunction 1.12-95 
+  [2XAddRightUnitorInverse[102X, for IsCapCategory, IsFunction 1.12-96 
+  [2XAddRightUnitorInverseWithGivenTensorProduct[102X, for IsCapCategory, IsFunction 1.12-97 
+  [2XAddRightUnitorWithGivenTensorProduct[102X, for IsCapCategory, IsFunction 1.12-98 
+  [2XAddTensorProductDualityCompatibilityMorphism[102X, for IsCapCategory, IsFunction 1.12-43 
+  [2XAddTensorProductDualityCompatibilityMorphismWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-44 
+  [2XAddTensorProductInternalHomCompatibilityMorphism[102X, for IsCapCategory, IsFunction 1.12-45 
+  [2XAddTensorProductInternalHomCompatibilityMorphismInverse[102X, for IsCapCategory, IsFunction 1.12-110 
+  [2XAddTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-111 
+  [2XAddTensorProductInternalHomCompatibilityMorphismWithGivenObjects[102X, for IsCapCategory, IsFunction 1.12-46 
+  [2XAddTensorProductOnMorphisms[102X, for IsCapCategory, IsFunction 1.12-99 
+  [2XAddTensorProductOnMorphismsWithGivenTensorProducts[102X, for IsCapCategory, IsFunction 1.12-100 
   [2XAddTensorProductOnObjects[102X, for IsCapCategory, IsFunction 1.1-16 
-  [2XAddTensorProductToInternalCoHomAdjunctionMap[102X, for IsCapCategory, IsFunction 1.12-81 
-  [2XAddTensorProductToInternalHomAdjunctionMap[102X, for IsCapCategory, IsFunction 1.12-46 
+  [2XAddTensorProductToInternalCoHomAdjunctionMap[102X, for IsCapCategory, IsFunction 1.12-84 
+  [2XAddTensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom[102X, for IsCapCategory, IsFunction 1.12-85 
+  [2XAddTensorProductToInternalHomAdjunctionMap[102X, for IsCapCategory, IsFunction 1.12-47 
+  [2XAddTensorProductToInternalHomAdjunctionMapWithGivenInternalHom[102X, for IsCapCategory, IsFunction 1.12-48 
   [2XAddTensorUnit[102X, for IsCapCategory, IsFunction 1.1-18 
-  [2XAddTraceMap[102X, for IsCapCategory, IsFunction 1.12-108 
-  [2XAddUniversalPropertyOfCoDual[102X, for IsCapCategory, IsFunction 1.12-82 
-  [2XAddUniversalPropertyOfDual[102X, for IsCapCategory, IsFunction 1.12-47 
+  [2XAddTraceMap[102X, for IsCapCategory, IsFunction 1.12-112 
+  [2XAddUniversalPropertyOfCoDual[102X, for IsCapCategory, IsFunction 1.12-86 
+  [2XAddUniversalPropertyOfDual[102X, for IsCapCategory, IsFunction 1.12-49 
   [2XAssociatorLeftToRight[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.1-5 
   [2XAssociatorLeftToRightWithGivenTensorProducts[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.1-6 
   [2XAssociatorRightToLeft[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.1-3 
@@ -139,67 +143,69 @@
   [2XCoclosedCoevaluationForCoDualWithGivenTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.10-8 
   [2XCoclosedCoevaluationMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject 1.6-6 
   [2XCoclosedCoevaluationMorphismWithGivenSource[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.6-7 
-  [2XCoclosedEvaluationForCoDual[102X, for IsCapCategoryObject 1.6-17 
-  [2XCoclosedEvaluationForCoDualWithGivenTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.6-18 
+  [2XCoclosedEvaluationForCoDual[102X, for IsCapCategoryObject 1.6-19 
+  [2XCoclosedEvaluationForCoDualWithGivenTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.6-20 
   [2XCoclosedEvaluationMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject 1.6-4 
   [2XCoclosedEvaluationMorphismWithGivenRange[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.6-5 
   [2XCoclosedMonoidalCategoriesTest[102X 2.1-4 
-  [2XCoDualityTensorProductCompatibilityMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject 1.6-23 
-  [2XCoDualityTensorProductCompatibilityMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.6-24 
-  [2XCoDualOnMorphisms[102X, for IsCapCategoryMorphism 1.6-15 
-  [2XCoDualOnMorphismsWithGivenCoDuals[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 1.6-16 
-  [2XCoDualOnObjects[102X, for IsCapCategoryObject 1.6-14 
+  [2XCoDualityTensorProductCompatibilityMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject 1.6-25 
+  [2XCoDualityTensorProductCompatibilityMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.6-26 
+  [2XCoDualOnMorphisms[102X, for IsCapCategoryMorphism 1.6-17 
+  [2XCoDualOnMorphismsWithGivenCoDuals[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 1.6-18 
+  [2XCoDualOnObjects[102X, for IsCapCategoryObject 1.6-16 
   [2XCoevaluationForDual[102X, for IsCapCategoryObject 1.9-7 
   [2XCoevaluationForDualWithGivenTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.9-8 
   [2XCoevaluationMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject 1.5-6 
   [2XCoevaluationMorphismWithGivenRange[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.5-7 
-  [2XCoLambdaElimination[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.6-31 
-  [2XCoLambdaIntroduction[102X, for IsCapCategoryMorphism 1.6-30 
+  [2XCoLambdaElimination[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.6-33 
+  [2XCoLambdaIntroduction[102X, for IsCapCategoryMorphism 1.6-32 
   [2XCoRankMorphism[102X, for IsCapCategoryObject 1.10-10 
   [2XCoTraceMap[102X, for IsCapCategoryMorphism 1.10-9 
-  [2XDualOnMorphisms[102X, for IsCapCategoryMorphism 1.5-15 
-  [2XDualOnMorphismsWithGivenDuals[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 1.5-16 
-  [2XDualOnObjects[102X, for IsCapCategoryObject 1.5-14 
-  [2XEvaluationForDual[102X, for IsCapCategoryObject 1.5-17 
-  [2XEvaluationForDualWithGivenTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.5-18 
+  [2XDualOnMorphisms[102X, for IsCapCategoryMorphism 1.5-17 
+  [2XDualOnMorphismsWithGivenDuals[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 1.5-18 
+  [2XDualOnObjects[102X, for IsCapCategoryObject 1.5-16 
+  [2XEvaluationForDual[102X, for IsCapCategoryObject 1.5-19 
+  [2XEvaluationForDualWithGivenTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.5-20 
   [2XEvaluationMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject 1.5-4 
   [2XEvaluationMorphismWithGivenSource[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.5-5 
   [2XInternalCoHom[102X, for IsCapCategoryCell, IsCapCategoryCell 1.11-2 
   [2XInternalCoHomOnMorphisms[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.6-2 
   [2XInternalCoHomOnMorphismsWithGivenInternalCoHoms[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 1.6-3 
   [2XInternalCoHomOnObjects[102X, for IsCapCategoryObject, IsCapCategoryObject 1.6-1 
-  [2XInternalCoHomTensorProductCompatibilityMorphism[102X, for IsList 1.6-21 
+  [2XInternalCoHomTensorProductCompatibilityMorphism[102X, for IsList 1.6-23 
   [2XInternalCoHomTensorProductCompatibilityMorphismInverse[102X, for IsList 1.10-5 
   [2XInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects[102X, for IsCapCategoryObject, IsList, IsCapCategoryObject 1.10-6 
-  [2XInternalCoHomTensorProductCompatibilityMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsList, IsCapCategoryObject 1.6-22 
-  [2XInternalCoHomToTensorProductAdjunctionMap[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.6-9 
+  [2XInternalCoHomTensorProductCompatibilityMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsList, IsCapCategoryObject 1.6-24 
+  [2XInternalCoHomToTensorProductAdjunctionMap[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.6-10 
+  [2XInternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 1.6-11 
   [2XInternalHom[102X, for IsCapCategoryCell, IsCapCategoryCell 1.11-1 
   [2XInternalHomOnMorphisms[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.5-2 
   [2XInternalHomOnMorphismsWithGivenInternalHoms[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 1.5-3 
   [2XInternalHomOnObjects[102X, for IsCapCategoryObject, IsCapCategoryObject 1.5-1 
-  [2XInternalHomToTensorProductAdjunctionMap[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.5-9 
+  [2XInternalHomToTensorProductAdjunctionMap[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.5-10 
+  [2XInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 1.5-11 
   [2XIsCellInTerminalCategoryWithMultipleObjects[102X, for IsCapCategoryCell 4.2-2 
   [2XIsMorphismInTerminalCategoryWithMultipleObjects[102X, for IsCellInTerminalCategoryWithMultipleObjects andIsCapTerminalCategoryMorphismRep 4.2-4 
   [2XIsObjectInTerminalCategoryWithMultipleObjects[102X, for IsCellInTerminalCategoryWithMultipleObjects andIsCapTerminalCategoryObjectRep 4.2-3 
-  [2XIsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit[102X, for IsCapCategoryObject 1.6-27 
-  [2XIsomorphismFromDualObjectToInternalHomIntoTensorUnit[102X, for IsCapCategoryObject 1.5-27 
-  [2XIsomorphismFromInternalCoHomFromTensorUnitToCoDualObject[102X, for IsCapCategoryObject 1.6-28 
-  [2XIsomorphismFromInternalCoHomToObject[102X, for IsCapCategoryObject 1.6-34 
-  [2XIsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom[102X, for IsCapCategoryObject, IsCapCategoryObject 1.6-35 
+  [2XIsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit[102X, for IsCapCategoryObject 1.6-29 
+  [2XIsomorphismFromDualObjectToInternalHomIntoTensorUnit[102X, for IsCapCategoryObject 1.5-29 
+  [2XIsomorphismFromInternalCoHomFromTensorUnitToCoDualObject[102X, for IsCapCategoryObject 1.6-30 
+  [2XIsomorphismFromInternalCoHomToObject[102X, for IsCapCategoryObject 1.6-36 
+  [2XIsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom[102X, for IsCapCategoryObject, IsCapCategoryObject 1.6-37 
   [2XIsomorphismFromInternalCoHomToTensorProductWithCoDualObject[102X, for IsCapCategoryObject, IsCapCategoryObject 1.10-1 
-  [2XIsomorphismFromInternalHomIntoTensorUnitToDualObject[102X, for IsCapCategoryObject 1.5-28 
-  [2XIsomorphismFromInternalHomToObject[102X, for IsCapCategoryObject 1.5-34 
-  [2XIsomorphismFromInternalHomToObjectWithGivenInternalHom[102X, for IsCapCategoryObject, IsCapCategoryObject 1.5-35 
+  [2XIsomorphismFromInternalHomIntoTensorUnitToDualObject[102X, for IsCapCategoryObject 1.5-30 
+  [2XIsomorphismFromInternalHomToObject[102X, for IsCapCategoryObject 1.5-36 
+  [2XIsomorphismFromInternalHomToObjectWithGivenInternalHom[102X, for IsCapCategoryObject, IsCapCategoryObject 1.5-37 
   [2XIsomorphismFromInternalHomToTensorProductWithDualObject[102X, for IsCapCategoryObject, IsCapCategoryObject 1.9-2 
-  [2XIsomorphismFromObjectToInternalCoHom[102X, for IsCapCategoryObject 1.6-32 
-  [2XIsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom[102X, for IsCapCategoryObject, IsCapCategoryObject 1.6-33 
-  [2XIsomorphismFromObjectToInternalHom[102X, for IsCapCategoryObject 1.5-32 
-  [2XIsomorphismFromObjectToInternalHomWithGivenInternalHom[102X, for IsCapCategoryObject, IsCapCategoryObject 1.5-33 
+  [2XIsomorphismFromObjectToInternalCoHom[102X, for IsCapCategoryObject 1.6-34 
+  [2XIsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom[102X, for IsCapCategoryObject, IsCapCategoryObject 1.6-35 
+  [2XIsomorphismFromObjectToInternalHom[102X, for IsCapCategoryObject 1.5-34 
+  [2XIsomorphismFromObjectToInternalHomWithGivenInternalHom[102X, for IsCapCategoryObject, IsCapCategoryObject 1.5-35 
   [2XIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom[102X, for IsCapCategoryObject, IsCapCategoryObject 1.10-2 
   [2XIsomorphismFromTensorProductWithDualObjectToInternalHom[102X, for IsCapCategoryObject, IsCapCategoryObject 1.9-1 
   [2XIsTerminalCategoryWithMultipleObjects[102X, for IsCapCategory 4.2-1 
-  [2XLambdaElimination[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.5-31 
-  [2XLambdaIntroduction[102X, for IsCapCategoryMorphism 1.5-30 
+  [2XLambdaElimination[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.5-33 
+  [2XLambdaIntroduction[102X, for IsCapCategoryMorphism 1.5-32 
   [2XLeftDistributivityExpanding[102X, for IsCapCategoryObject, IsList 1.2-1 
   [2XLeftDistributivityExpandingWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsList, IsCapCategoryObject 1.2-2 
   [2XLeftDistributivityFactoring[102X, for IsCapCategoryObject, IsList 1.2-3 
@@ -210,28 +216,28 @@
   [2XLeftUnitorWithGivenTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject 1.1-8 
   [2XMonoidalCategoriesTensorProductAndUnitTest[102X 2.1-5 
   [2XMonoidalCategoriesTest[102X 2.1-6 
-  [2XMonoidalPostCoComposeMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.6-12 
-  [2XMonoidalPostCoComposeMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.6-13 
-  [2XMonoidalPostComposeMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.5-12 
-  [2XMonoidalPostComposeMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.5-13 
-  [2XMonoidalPreCoComposeMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.6-10 
-  [2XMonoidalPreCoComposeMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.6-11 
-  [2XMonoidalPreComposeMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.5-10 
-  [2XMonoidalPreComposeMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.5-11 
+  [2XMonoidalPostCoComposeMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.6-14 
+  [2XMonoidalPostCoComposeMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.6-15 
+  [2XMonoidalPostComposeMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.5-14 
+  [2XMonoidalPostComposeMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.5-15 
+  [2XMonoidalPreCoComposeMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.6-12 
+  [2XMonoidalPreCoComposeMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.6-13 
+  [2XMonoidalPreComposeMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.5-12 
+  [2XMonoidalPreComposeMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.5-13 
   [2XMorphismFromBidual[102X, for IsCapCategoryObject 1.9-11 
   [2XMorphismFromBidualWithGivenBidual[102X, for IsCapCategoryObject, IsCapCategoryObject 1.9-12 
-  [2XMorphismFromCoBidual[102X, for IsCapCategoryObject 1.6-19 
-  [2XMorphismFromCoBidualWithGivenCoBidual[102X, for IsCapCategoryObject, IsCapCategoryObject 1.6-20 
-  [2XMorphismFromInternalCoHomToTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject 1.6-25 
-  [2XMorphismFromInternalCoHomToTensorProductWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.6-26 
+  [2XMorphismFromCoBidual[102X, for IsCapCategoryObject 1.6-21 
+  [2XMorphismFromCoBidualWithGivenCoBidual[102X, for IsCapCategoryObject, IsCapCategoryObject 1.6-22 
+  [2XMorphismFromInternalCoHomToTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject 1.6-27 
+  [2XMorphismFromInternalCoHomToTensorProductWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.6-28 
   [2XMorphismFromInternalHomToTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject 1.9-3 
   [2XMorphismFromInternalHomToTensorProductWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.9-4 
   [2XMorphismFromTensorProductToInternalCoHom[102X, for IsCapCategoryObject, IsCapCategoryObject 1.10-3 
   [2XMorphismFromTensorProductToInternalCoHomWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.10-4 
-  [2XMorphismFromTensorProductToInternalHom[102X, for IsCapCategoryObject, IsCapCategoryObject 1.5-25 
-  [2XMorphismFromTensorProductToInternalHomWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.5-26 
-  [2XMorphismToBidual[102X, for IsCapCategoryObject 1.5-19 
-  [2XMorphismToBidualWithGivenBidual[102X, for IsCapCategoryObject, IsCapCategoryObject 1.5-20 
+  [2XMorphismFromTensorProductToInternalHom[102X, for IsCapCategoryObject, IsCapCategoryObject 1.5-27 
+  [2XMorphismFromTensorProductToInternalHomWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.5-28 
+  [2XMorphismToBidual[102X, for IsCapCategoryObject 1.5-21 
+  [2XMorphismToBidualWithGivenBidual[102X, for IsCapCategoryObject, IsCapCategoryObject 1.5-22 
   [2XMorphismToCoBidual[102X, for IsCapCategoryObject 1.10-11 
   [2XMorphismToCoBidualWithGivenCoBidual[102X, for IsCapCategoryObject, IsCapCategoryObject 1.10-12 
   [2XRankMorphism[102X, for IsCapCategoryObject 1.9-10 
@@ -245,23 +251,25 @@
   [2XRightUnitorWithGivenTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject 1.1-12 
   [2XRigidSymmetricClosedMonoidalCategoriesTest[102X 2.1-7 
   [2XRigidSymmetricCoclosedMonoidalCategoriesTest[102X 2.1-8 
-  [2XTensorProductDualityCompatibilityMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject 1.5-23 
-  [2XTensorProductDualityCompatibilityMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.5-24 
-  [2XTensorProductInternalHomCompatibilityMorphism[102X, for IsList 1.5-21 
+  [2XTensorProductDualityCompatibilityMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject 1.5-25 
+  [2XTensorProductDualityCompatibilityMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.5-26 
+  [2XTensorProductInternalHomCompatibilityMorphism[102X, for IsList 1.5-23 
   [2XTensorProductInternalHomCompatibilityMorphismInverse[102X, for IsList 1.9-5 
   [2XTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects[102X, for IsCapCategoryObject, IsList, IsCapCategoryObject 1.9-6 
-  [2XTensorProductInternalHomCompatibilityMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsList, IsCapCategoryObject 1.5-22 
+  [2XTensorProductInternalHomCompatibilityMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsList, IsCapCategoryObject 1.5-24 
   [2XTensorProductOnMorphisms[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.1-1 
   [2XTensorProductOnMorphismsWithGivenTensorProducts[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 1.1-2 
   [2XTensorProductOnObjects[102X, for IsCapCategoryObject, IsCapCategoryObject 1.1-15 
   [2XTensorProductToInternalCoHomAdjunctionMap[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.6-8 
+  [2XTensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 1.6-9 
   [2XTensorProductToInternalHomAdjunctionMap[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.5-8 
+  [2XTensorProductToInternalHomAdjunctionMapWithGivenInternalHom[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 1.5-9 
   [2XTensorUnit[102X, for IsCapCategory 1.1-17 
   [2XTerminalCategory[102X 4.1-1 
   [2XTerminalCategoryWithMultipleObjects[102X 4.1-2 
   [2XTraceMap[102X, for IsCapCategoryMorphism 1.9-9 
-  [2XUniversalPropertyOfCoDual[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.6-29 
-  [2XUniversalPropertyOfDual[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.5-29 
+  [2XUniversalPropertyOfCoDual[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.6-31 
+  [2XUniversalPropertyOfDual[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.5-31 
   [2XWriteFileForClosedMonoidalStructure[102X 3.2-1 
   [2XWriteFileForCoclosedMonoidalStructure[102X 3.3-1 
   [2XWriteFileForMonoidalStructure[102X 3.1-1 
