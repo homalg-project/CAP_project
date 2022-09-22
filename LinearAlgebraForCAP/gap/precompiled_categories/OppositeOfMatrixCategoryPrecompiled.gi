@@ -207,7 +207,7 @@ function ( cat_1, alpha_1, S_1, i_1 )
             return Dimension( Opposite( logic_new_func_x_2 ) );
         end );
     deduped_1_1 := Sum( deduped_2_1{[ 1 .. i_1 - 1 ]} ) + 1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_3_1, Range( alpha_1 ), Opposite, CreateCapCategoryMorphismWithAttributes( OppositeCategory( cat_1 ), Source( deduped_4_1 ), Opposite( deduped_3_1 ), UnderlyingMatrix, CertainColumns( UnderlyingMatrix( deduped_4_1 ), [ deduped_1_1 .. deduped_1_1 - 1 + deduped_2_1[i_1] ] ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_3_1, Range( alpha_1 ), Opposite, CreateCapCategoryMorphismWithAttributes( OppositeCategory( cat_1 ), Source( deduped_4_1 ), Opposite( CAP_JIT_INCOMPLETE_LOGIC( deduped_3_1 ) ), UnderlyingMatrix, CertainColumns( UnderlyingMatrix( deduped_4_1 ), [ deduped_1_1 .. deduped_1_1 - 1 + deduped_2_1[i_1] ] ) ) );
 end
 ########
         
@@ -225,7 +225,7 @@ function ( cat_1, alpha_1, S_1, i_1 )
             return Dimension( Opposite( logic_new_func_x_2 ) );
         end );
     deduped_1_1 := Sum( deduped_2_1{[ 1 .. i_1 - 1 ]} ) + 1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), deduped_3_1, Opposite, CreateCapCategoryMorphismWithAttributes( OppositeCategory( cat_1 ), Opposite( deduped_3_1 ), Range( deduped_4_1 ), UnderlyingMatrix, CertainRows( UnderlyingMatrix( deduped_4_1 ), [ deduped_1_1 .. deduped_1_1 - 1 + deduped_2_1[i_1] ] ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), deduped_3_1, Opposite, CreateCapCategoryMorphismWithAttributes( OppositeCategory( cat_1 ), Opposite( CAP_JIT_INCOMPLETE_LOGIC( deduped_3_1 ) ), Range( deduped_4_1 ), UnderlyingMatrix, CertainRows( UnderlyingMatrix( deduped_4_1 ), [ deduped_1_1 .. deduped_1_1 - 1 + deduped_2_1[i_1] ] ) ) );
 end
 ########
         
@@ -368,7 +368,7 @@ function ( cat_1, objects_1, k_1, P_1 )
             return Dimension( Opposite( logic_new_func_x_2 ) );
         end );
     deduped_1_1 := deduped_2_1[k_1];
-    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_4_1, P_1, Opposite, CreateCapCategoryMorphismWithAttributes( deduped_5_1, Opposite( P_1 ), Opposite( deduped_4_1 ), UnderlyingMatrix, UnionOfRows( HomalgZeroMatrix( Sum( deduped_2_1{[ 1 .. k_1 - 1 ]} ), deduped_1_1, deduped_3_1 ), HomalgIdentityMatrix( deduped_1_1, deduped_3_1 ), HomalgZeroMatrix( Sum( deduped_2_1{[ k_1 + 1 .. Length( objects_1 ) ]} ), deduped_1_1, deduped_3_1 ) ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_4_1, P_1, Opposite, CreateCapCategoryMorphismWithAttributes( deduped_5_1, Opposite( P_1 ), Opposite( CAP_JIT_INCOMPLETE_LOGIC( deduped_4_1 ) ), UnderlyingMatrix, UnionOfRows( HomalgZeroMatrix( Sum( deduped_2_1{[ 1 .. k_1 - 1 ]} ), deduped_1_1, deduped_3_1 ), HomalgIdentityMatrix( deduped_1_1, deduped_3_1 ), HomalgZeroMatrix( Sum( deduped_2_1{[ k_1 + 1 .. Length( objects_1 ) ]} ), deduped_1_1, deduped_3_1 ) ) ) );
 end
 ########
         
@@ -754,7 +754,7 @@ function ( cat_1, objects_1, k_1, P_1 )
             return Dimension( Opposite( logic_new_func_x_2 ) );
         end );
     deduped_1_1 := deduped_2_1[k_1];
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, deduped_4_1, Opposite, CreateCapCategoryMorphismWithAttributes( deduped_5_1, Opposite( deduped_4_1 ), Opposite( P_1 ), UnderlyingMatrix, UnionOfColumns( HomalgZeroMatrix( deduped_1_1, Sum( deduped_2_1{[ 1 .. k_1 - 1 ]} ), deduped_3_1 ), HomalgIdentityMatrix( deduped_1_1, deduped_3_1 ), HomalgZeroMatrix( deduped_1_1, Sum( deduped_2_1{[ k_1 + 1 .. Length( objects_1 ) ]} ), deduped_3_1 ) ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, deduped_4_1, Opposite, CreateCapCategoryMorphismWithAttributes( deduped_5_1, Opposite( CAP_JIT_INCOMPLETE_LOGIC( deduped_4_1 ) ), Opposite( P_1 ), UnderlyingMatrix, UnionOfColumns( HomalgZeroMatrix( deduped_1_1, Sum( deduped_2_1{[ 1 .. k_1 - 1 ]} ), deduped_3_1 ), HomalgIdentityMatrix( deduped_1_1, deduped_3_1 ), HomalgZeroMatrix( deduped_1_1, Sum( deduped_2_1{[ k_1 + 1 .. Length( objects_1 ) ]} ), deduped_3_1 ) ) ) );
 end
 ########
         

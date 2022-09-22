@@ -442,7 +442,7 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
             # simplifying it to `func( list[index] )` always makes sense. This simplification might lead to new instances of `List( list, func )[index]`,
             # so we repeat the process until no occurrences of `List( list, func )[index]` remain. In principle, we should rerun the whole rule phase, but this would
             # rewrite `func( list[index] )` to `List( list, func )[index]` again, so we only run a subset of functions of the rule phase.
-            # As a consequence, one cannot apply logic to the result of this simplifcation.
+            # As a consequence, one cannot apply logic to the result of this simplification.
             while true do
                 
                 changed := false;
@@ -453,7 +453,7 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                         
                         changed := true;
                         
-                        # func( list[index] )
+                        # func( CAP_JIT_INCOMPLETE_LOGIC( list[index] ) )
                         return rec(
                             type := "EXPR_FUNCCALL",
                             funcref := tree.args.1.args.2, # func
@@ -462,11 +462,20 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                                     type := "EXPR_FUNCCALL",
                                     funcref := rec(
                                         type := "EXPR_REF_GVAR",
-                                        gvar := "[]",
+                                        gvar := "CAP_JIT_INCOMPLETE_LOGIC",
                                     ),
                                     args := AsSyntaxTreeList( [
-                                        tree.args.1.args.1, # list
-                                        tree.args.2, # index
+                                        rec(
+                                            type := "EXPR_FUNCCALL",
+                                            funcref := rec(
+                                                type := "EXPR_REF_GVAR",
+                                                gvar := "[]",
+                                            ),
+                                            args := AsSyntaxTreeList( [
+                                                tree.args.1.args.1, # list
+                                                tree.args.2, # index
+                                            ] ),
+                                        ),
                                     ] ),
                                 ),
                             ] ),

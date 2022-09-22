@@ -295,3 +295,8 @@ DeclareGlobalFunction( "Triple" );
 #!   Note: Currently, there is no logic for finding the "optimal" code to install if <A>constructor_name</A> is the only entry of `remaining_constructors_in_tower` of multiple entries.
 #! @Arguments category, underlying_category, constructor_name
 DeclareGlobalFunction( "HandlePrecompiledTowers" );
+
+#! @Description
+#!   Simply returns <A>value</A>. Used to signify that the argument is not fully run through all logic functions/templates by CompilerForCAP.
+#! @Arguments value
+DeclareGlobalFunction( "CAP_JIT_INCOMPLETE_LOGIC" );

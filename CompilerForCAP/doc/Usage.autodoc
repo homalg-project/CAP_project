@@ -151,3 +151,10 @@ A: We can only drop unused variables, inline variables, etc. if we assume that t
 STAT_PROCCALL or assignment to higher variables cause (or at least indicate) side effects, so continuing with the compilation
 would probably not lead to a correct result.
 
+* Q: Why is a given logic function or logic template not applied?
+A: There are various possible reasons for this:
+* Compiler hints, hoisting, and deduplication are applied after the rule phase, so even if the logic would apply to then final result,
+  it might not apply to the intermediate result.
+* The compiler might not be able to decide a required equality of expressions because it cannot decide the equality of arbitrary functions.
+* If the expression is part of a call to `CAP_JIT_INCOMPLETE_LOGIC`, this shows that it has not fully run through all logic functions/templates.
+
