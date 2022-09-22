@@ -90,10 +90,10 @@ DeclareGlobalFunction( "CapJitCompiledFunction" );
 #! @Description
 #!   Like <Ref Func="CapJitCompiledFunction" />, but returns an enhanced syntax tree of the compiled function.
 #!   <A>func</A> must not be an operation or a kernel function because those cannot properly be represented as a syntax tree.
-#!   The second argument can be used to disable post-processing, e.g. the application of compiler hints.
+#!   <A>post_processing</A> can be one of the following strings:
+#!   * `"with_post_processing"`: The post-processing step, e.g. the application of compiler hints, is executed.
+#!   * `"without_post_processing"`: The post-processing step is not executed.
+#!   * `"with_and_without_post_processing"`: A pair of trees is returned: The second tree with post-processing applied, the first tree without.
 #! @Returns a record
-#! @Arguments func, post_processing_enabled[, type_signature]
+#! @Arguments func, post_processing[, type_signature]
 DeclareGlobalFunction( "CapJitCompiledFunctionAsEnhancedSyntaxTree" );
-
-# helper
-DeclareGlobalFunction( "CAP_JIT_INTERNAL_POST_PROCESSED_SYNTAX_TREE" );

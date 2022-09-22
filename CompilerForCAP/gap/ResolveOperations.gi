@@ -73,7 +73,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree )
                         
                         Info( InfoCapJit, 1, "This is a CAP operation, recurse compilation." );
                         
-                        resolved_tree := CapJitCompiledCAPOperationAsEnhancedSyntaxTree( category, operation_name );
+                        resolved_tree := CapJitCompiledCAPOperationAsEnhancedSyntaxTree( category, operation_name, false );
                         
                     # check if we know methods for this operation
                     elif IsBound( CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name) ) then
@@ -136,7 +136,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree )
                         
                         if not IsBound( category!.compiled_known_methods_trees.(operation_name)[tree.args.length] ) then
                             
-                            category!.compiled_known_methods_trees.(operation_name)[tree.args.length] := CapJitCompiledFunctionAsEnhancedSyntaxTree( known_method.method, false, category );
+                            category!.compiled_known_methods_trees.(operation_name)[tree.args.length] := CapJitCompiledFunctionAsEnhancedSyntaxTree( known_method.method, "without_post_processing", category );
                             
                         fi;
                         
