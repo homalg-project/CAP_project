@@ -8,20 +8,22 @@ InstallTrueMethod( IsCartesianCategory, IsBicartesianCategory );
 InstallTrueMethod( IsCocartesianCategory, IsBicartesianCategory );
 InstallTrueMethod( IsBicartesianCategory, IsCartesianCategory and IsCocartesianCategory );
 
-InstallTrueMethod( IsBicartesianCategory, IsAbelianCategory );
-
 # https://ncatlab.org/nlab/show/bicartesian+closed+category
-InstallTrueMethod( IsBicartesianCategory, IsBicartesianClosedCategory );
+InstallTrueMethod( IsBicartesianClosedCategory, IsCartesianClosedCategory and IsCocartesianCategory );
 InstallTrueMethod( IsCartesianClosedCategory, IsBicartesianClosedCategory );
+InstallTrueMethod( IsCocartesianCategory, IsBicartesianClosedCategory );
 InstallTrueMethod( IsDistributiveCategory, IsBicartesianClosedCategory );
 
-InstallTrueMethod( IsBicartesianCategory, IsBicartesianCoclosedCategory );
+# https://ncatlab.org/nlab/show/bicartesian+coclosed+category
+InstallTrueMethod( IsBicartesianCoclosedCategory, IsCocartesianCoclosedCategory and IsCartesianCategory );
 InstallTrueMethod( IsCocartesianCoclosedCategory, IsBicartesianCoclosedCategory );
-#InstallTrueMethod( IsCodistributiveCategory, IsBicartesianCoclosedCategory );
+InstallTrueMethod( IsCartesianCategory, IsBicartesianClosedCategory );
+InstallTrueMethod( IsCodistributiveCategory, IsBicartesianCoclosedCategory );
 
 InstallTrueMethod( IsCartesianCategory, IsFiniteCompleteCategory );
 InstallTrueMethod( IsCocartesianCategory, IsFiniteCocompleteCategory );
 
+InstallTrueMethod( IsBicartesianCategory, IsAbelianCategory );
 InstallTrueMethod( IsFiniteCompleteCategory, IsAbelianCategory );
 InstallTrueMethod( IsFiniteCocompleteCategory, IsAbelianCategory );
 
