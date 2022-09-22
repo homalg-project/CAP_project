@@ -165,7 +165,7 @@ InstallMethod( MatrixCategoryAsAdditiveClosureOfRingAsCategory,
     AddHomomorphismStructureOnObjects( wrapper,
       function( cat, object_1, object_2 )
         
-        return CategoryOfRowsObject( RangeCategoryOfHomomorphismStructure( cat ), RankOfObject( object_1 ) * RankOfObject( object_2 ) );
+        return CategoryOfRowsObject( RangeCategoryOfHomomorphismStructure( cat ), Dimension( object_1 ) * Dimension( object_2 ) );
         
     end );
     
