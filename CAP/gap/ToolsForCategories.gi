@@ -1493,3 +1493,9 @@ InstallGlobalFunction( HandlePrecompiledTowers, function ( category, underlying_
     fi;
     
 end );
+
+InstallGlobalFunction( CAP_JIT_INCOMPLETE_LOGIC, function ( value )
+    
+    return value;
+    
+end );

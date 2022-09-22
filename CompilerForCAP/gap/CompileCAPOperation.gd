@@ -9,6 +9,7 @@
 
 #! @Description
 #!   A special version of <Ref Func="CapJitCompiledFunctionAsEnhancedSyntaxTree" /> compiling the operation
-#!   given by <A>operation_name</A> in <A>cat</A> (with post-processing disabled).
-#! @Arguments cat, operation_name
+#!   given by <A>operation_name</A> in <A>cat</A>. The boolean <A>post_processing_enabled</A> decides
+#!   whether the tree before or after post-processing should be returned.
+#! @Arguments cat, operation_name, post_processing_enabled
 DeclareGlobalFunction( "CapJitCompiledCAPOperationAsEnhancedSyntaxTree" );

@@ -9,6 +9,7 @@ BindGlobal( "CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES", [
     "ListN",
     "CreateCapCategoryObjectWithAttributes",
     "CreateCapCategoryMorphismWithAttributes",
+    "CAP_JIT_INCOMPLETE_LOGIC",
 ] );
 
 InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )

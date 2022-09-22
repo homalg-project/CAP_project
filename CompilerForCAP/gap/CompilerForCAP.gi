@@ -87,7 +87,7 @@ InstallGlobalFunction( CapJitCompiledFunction, function ( func, args... )
         
     fi;
     
-    return ENHANCED_SYNTAX_TREE_CODE( CallFuncList( CapJitCompiledFunctionAsEnhancedSyntaxTree, Concatenation( [ func, true ], args ) ) );
+    return ENHANCED_SYNTAX_TREE_CODE( CallFuncList( CapJitCompiledFunctionAsEnhancedSyntaxTree, Concatenation( [ func, "with_post_processing" ], args ) ) );
     
 end );
 
@@ -95,8 +95,8 @@ CAP_JIT_INTERNAL_COMPILATION_IN_PROGRESS := false;
 
 BindGlobal( "CAP_JIT_INTERNAL_COMPILED_FUNCTIONS_STACK", [ ] );
 
-InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( func, post_processing_enabled, args... )
-  local debug, debug_idempotence, category_as_first_argument, category, type_signature, filter_list, arguments_data_types, return_type, return_data_type, tree, resolving_phase_functions, orig_tree, compiled_func, tmp, rule_phase_functions, f;
+InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( func, with_or_without_post_processing, args... )
+  local debug, debug_idempotence, category_as_first_argument, category, type_signature, filter_list, arguments_data_types, return_type, return_data_type, tree, resolving_phase_functions, orig_tree, compiled_func, tmp, rule_phase_functions, tree_without_post_processing, changed, pre_func, f;
     
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, "Start compilation." );
@@ -207,7 +207,20 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
         
         if CAP_JIT_INTERNAL_COMPILATION_IN_PROGRESS then
             
-            return tree;
+            if with_or_without_post_processing = "without_post_processing" or with_or_without_post_processing = "with_post_processing" then
+                
+                return tree;
+                
+            elif with_or_without_post_processing = "with_and_without_post_processing" then
+                
+                return Pair( tree, tree );
+                
+            else
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Error( "with_or_without_post_processing must be one of \"without_post_processing\", \"with_post_processing\" or \"with_and_without_post_processing\" but is ", with_or_without_post_processing );
+                
+            fi;
             
         else
             
@@ -363,10 +376,135 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
     od;
     
     # post-processing
-    
-    if post_processing_enabled then
+    if with_or_without_post_processing = "with_post_processing" or with_or_without_post_processing = "with_and_without_post_processing" then
         
-        tree := CAP_JIT_INTERNAL_POST_PROCESSED_SYNTAX_TREE( tree, category, debug );
+        tree_without_post_processing := StructuralCopy( tree );
+        
+        if debug then
+            # COVERAGE_IGNORE_BLOCK_START
+            compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
+            Display( compiled_func );
+            Error( "apply CapJitInlinedBindingsFully" );
+            # COVERAGE_IGNORE_BLOCK_END
+        fi;
+        
+        tree := CapJitInlinedBindingsFully( tree );
+        
+        if category_as_first_argument then
+            
+            if debug then
+                # COVERAGE_IGNORE_BLOCK_START
+                compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
+                Display( compiled_func );
+                Error( "apply CapJitAppliedCompilerHints" );
+                # COVERAGE_IGNORE_BLOCK_END
+            fi;
+            
+            tree := CapJitAppliedCompilerHints( tree, category );
+            
+        fi;
+        
+        # do not hoist/deduplicate expressions in proof assistant mode
+        if not CAP_JIT_PROOF_ASSISTANT_MODE_ENABLED then
+            
+            if debug then
+                # COVERAGE_IGNORE_BLOCK_START
+                compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
+                Display( compiled_func );
+                Error( "apply CapJitHoistedExpressions" );
+                # COVERAGE_IGNORE_BLOCK_END
+            fi;
+            
+            tree := CapJitHoistedExpressions( tree );
+            
+            if debug then
+                # COVERAGE_IGNORE_BLOCK_START
+                compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
+                Display( compiled_func );
+                Error( "apply CapJitDeduplicatedExpressions" );
+                # COVERAGE_IGNORE_BLOCK_END
+            fi;
+            
+            tree := CapJitDeduplicatedExpressions( tree );
+            
+            # Simplify `List( list, func )[index]` to `func( list[index] )`.
+            # We do not want to do this during compilation because of the following situation:
+            # expr1 := List( [ 1 .. var1 ], x -> very_expensive_operation( x ) ); expr2 := List( [ 1 .. var2 ], y -> List( [ 1 .. var1 ], x -> expr1[x][y] ) );
+            # If we inline and transform this to
+            # expr2 := List( [ 1 .. var2 ], y -> List( [ 1 .. var1 ], x -> very_expensive_operation( x )[y] ) );
+            # we cannot simply hoist `very_expensive_operation( x )`. One solution would be "generalized hoisting": We can detect that the subexpression
+            # `very_expensive_operation( x )` and its domain `[ 1 .. var1 ]` are independent of `y` and thus extract `expr1` from `expr2` again.
+            # However, this only improves the runtime if looping over `[ 1 .. var1 ]` is less expensive than the additional computations of `very_expensive_operation( x )`
+            # in the inlined expression. CompilerForCAP cannot decide this.
+            # Another solution would be to only transform `List( list, func )[index]` if `List( list, func )` depends on the same function levels as `index` and can thus not
+            # be hoisted anyway. However, the function levels on which `List( list, func )` depends can change during the compilation due to cancellation.
+            # Thus, we use the brute-force algorithm here: If we encounter `List( list, func )[index]` during post-processing and after inlining and hoisting,
+            # simplifying it to `func( list[index] )` always makes sense. This simplification might lead to new instances of `List( list, func )[index]`,
+            # so we repeat the process until no occurrences of `List( list, func )[index]` remain. In principle, we should rerun the whole rule phase, but this would
+            # rewrite `func( list[index] )` to `List( list, func )[index]` again, so we only run a subset of functions of the rule phase.
+            # As a consequence, one cannot apply logic to the result of this simplification.
+            while true do
+                
+                changed := false;
+                
+                pre_func := function ( tree, additional_arguments )
+                    
+                    if CapJitIsCallToGlobalFunction( tree, "[]" ) and CapJitIsCallToGlobalFunction( tree.args.1, "List" ) and tree.args.1.args.length = 2 then
+                        
+                        changed := true;
+                        
+                        # func( CAP_JIT_INCOMPLETE_LOGIC( list[index] ) )
+                        return rec(
+                            type := "EXPR_FUNCCALL",
+                            funcref := tree.args.1.args.2, # func
+                            args := AsSyntaxTreeList( [
+                                rec(
+                                    type := "EXPR_FUNCCALL",
+                                    funcref := rec(
+                                        type := "EXPR_REF_GVAR",
+                                        gvar := "CAP_JIT_INCOMPLETE_LOGIC",
+                                    ),
+                                    args := AsSyntaxTreeList( [
+                                        rec(
+                                            type := "EXPR_FUNCCALL",
+                                            funcref := rec(
+                                                type := "EXPR_REF_GVAR",
+                                                gvar := "[]",
+                                            ),
+                                            args := AsSyntaxTreeList( [
+                                                tree.args.1.args.1, # list
+                                                tree.args.2, # index
+                                            ] ),
+                                        ),
+                                    ] ),
+                                ),
+                            ] ),
+                        );
+                        
+                    fi;
+                    
+                    return tree;
+                    
+                end;
+                
+                tree := CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+                
+                if not changed then
+                    
+                    break;
+                    
+                fi;
+                
+                tree := CapJitInlinedArguments( tree );
+                tree := CapJitInlinedSimpleFunctionCalls( tree );
+                tree := CapJitInlinedFunctionCalls( tree );
+                tree := CapJitInlinedBindingsFully( tree );
+                tree := CapJitHoistedExpressions( tree );
+                tree := CapJitDeduplicatedExpressions( tree );
+                
+            od;
+            
+        fi;
         
     fi;
     
@@ -393,129 +531,19 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
         
     fi;
     
-    return tree;
-    
-end );
-
-InstallGlobalFunction( CAP_JIT_INTERNAL_POST_PROCESSED_SYNTAX_TREE, function ( tree, category, debug )
-  local compiled_func, changed, pre_func;
-    
-    if debug then
-        # COVERAGE_IGNORE_BLOCK_START
-        compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-        Display( compiled_func );
-        Error( "apply CapJitInlinedBindingsFully" );
-        # COVERAGE_IGNORE_BLOCK_END
-    fi;
-    
-    tree := CapJitInlinedBindingsFully( tree );
-    
-    if category <> fail then
+    if with_or_without_post_processing = "without_post_processing" or with_or_without_post_processing = "with_post_processing" then
         
-        if debug then
-            # COVERAGE_IGNORE_BLOCK_START
-            compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display( compiled_func );
-            Error( "apply CapJitAppliedCompilerHints" );
-            # COVERAGE_IGNORE_BLOCK_END
-        fi;
+        return tree;
         
-        tree := CapJitAppliedCompilerHints( tree, category );
+    elif with_or_without_post_processing = "with_and_without_post_processing" then
+        
+        return Pair( tree_without_post_processing, tree );
+        
+    else
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "with_or_without_post_processing must be one of \"without_post_processing\", \"with_post_processing\" or \"with_and_without_post_processing\" but is ", with_or_without_post_processing );
         
     fi;
-    
-    # do not hoist/deduplicate expressions in proof assistant mode
-    if not CAP_JIT_PROOF_ASSISTANT_MODE_ENABLED then
-        
-        if debug then
-            # COVERAGE_IGNORE_BLOCK_START
-            compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display( compiled_func );
-            Error( "apply CapJitHoistedExpressions" );
-            # COVERAGE_IGNORE_BLOCK_END
-        fi;
-        
-        tree := CapJitHoistedExpressions( tree );
-        
-        if debug then
-            # COVERAGE_IGNORE_BLOCK_START
-            compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display( compiled_func );
-            Error( "apply CapJitDeduplicatedExpressions" );
-            # COVERAGE_IGNORE_BLOCK_END
-        fi;
-        
-        tree := CapJitDeduplicatedExpressions( tree );
-        
-        # Simplify `List( list, func )[index]` to `func( list[index] )`.
-        # We do not want to do this during compilation because of the following situation:
-        # expr1 := List( [ 1 .. var1 ], x -> very_expensive_operation( x ) ); expr2 := List( [ 1 .. var2 ], y -> List( [ 1 .. var1 ], x -> expr1[x][y] ) );
-        # If we inline and transform this to
-        # expr2 := List( [ 1 .. var2 ], y -> List( [ 1 .. var1 ], x -> very_expensive_operation( x )[y] ) );
-        # we cannot simply hoist `very_expensive_operation( x )`. One solution would be "generalized hoisting": We can detect that the subexpression
-        # `very_expensive_operation( x )` and its domain `[ 1 .. var1 ]` are independent of `y` and thus extract `expr1` from `expr2` again.
-        # However, this only improves the runtime if looping over `[ 1 .. var1 ]` is less expensive than the additional computations of `very_expensive_operation( x )`
-        # in the inlined expression. CompilerForCAP cannot decide this.
-        # Another solution would be to only transform `List( list, func )[index]` if `List( list, func )` depends on the same function levels as `index` and can thus not
-        # be hoisted anyway. However, the function levels on which `List( list, func )` depends can change during the compilation due to cancellation.
-        # Thus, we use the brute-force algorithm here: If we encounter `List( list, func )[index]` during post-processing and after inlining and hoisting,
-        # simplifying it to `func( list[index] )` always makes sense. This simplification might lead to new instances of `List( list, func )[index]`,
-        # so we repeat the process until no occurrences of `List( list, func )[index]` remain. In principle, we should rerun the whole rule phase, but this would require
-        # type signatures and can thus not be triggered from the post-processing currently. As a consequence, one cannot apply logic to the result of this simplifcation.
-        while true do
-            
-            changed := false;
-            
-            pre_func := function ( tree, additional_arguments )
-                
-                if CapJitIsCallToGlobalFunction( tree, "[]" ) and CapJitIsCallToGlobalFunction( tree.args.1, "List" ) and tree.args.1.args.length = 2 then
-                    
-                    changed := true;
-                    
-                    # func( list[index] )
-                    return rec(
-                        type := "EXPR_FUNCCALL",
-                        funcref := tree.args.1.args.2, # func
-                        args := AsSyntaxTreeList( [
-                            rec(
-                                type := "EXPR_FUNCCALL",
-                                funcref := rec(
-                                    type := "EXPR_REF_GVAR",
-                                    gvar := "[]",
-                                ),
-                                args := AsSyntaxTreeList( [
-                                    tree.args.1.args.1, # list
-                                    tree.args.2, # index
-                                ] ),
-                            ),
-                        ] ),
-                    );
-                    
-                fi;
-                
-                return tree;
-                
-            end;
-            
-            tree := CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
-            
-            if not changed then
-                
-                break;
-                
-            fi;
-            
-            tree := CapJitInlinedArguments( tree );
-            tree := CapJitInlinedSimpleFunctionCalls( tree );
-            tree := CapJitInlinedFunctionCalls( tree );
-            tree := CapJitInlinedBindingsFully( tree );
-            tree := CapJitHoistedExpressions( tree );
-            tree := CapJitDeduplicatedExpressions( tree );
-            
-        od;
-        
-    fi;
-    
-    return tree;
     
 end );

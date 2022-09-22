@@ -39,6 +39,7 @@ InstallGlobalFunction( CapJitInlinedArguments, function ( tree )
             fi;
             
             func.bindings := ShallowCopy( func.bindings );
+            func.bindings.names := ShallowCopy( func.bindings.names );
             
             for j in [ 1 .. func.narg ] do
                 
