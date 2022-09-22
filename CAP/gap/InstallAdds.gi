@@ -546,7 +546,23 @@ InstallGlobalFunction( CapInternalInstallAdd,
             # set name for debugging purposes
             if NameFunction( i[ 1 ] ) in [ "unknown", "_EVALSTRINGTMP" ] then
                 
-                SetNameFunction( i[ 1 ], Concatenation( "Function added to ", Name( category ), " for ", function_name ) );
+                if is_derivation then
+                    
+                    SetNameFunction( i[ 1 ], Concatenation( "Derivation (first added to ", Name( category ), ") of ", function_name ) );
+                    
+                elif is_final_derivation then
+                    
+                    SetNameFunction( i[ 1 ], Concatenation( "Final derivation (first added to ", Name( category ), ") of ", function_name ) );
+                    
+                elif is_precompiled_derivation then
+                    
+                    SetNameFunction( i[ 1 ], Concatenation( "Precompiled derivation added to ", Name( category ), " for ", function_name ) );
+                    
+                else
+                    
+                    SetNameFunction( i[ 1 ], Concatenation( "Function added to ", Name( category ), " for ", function_name ) );
+                    
+                fi;
                 
             fi;
             
