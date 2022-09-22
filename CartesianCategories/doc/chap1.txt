@@ -354,21 +354,41 @@
   [33X[1;0Y[29X[2XDirectProductToExponentialAdjunctionMap[102X( [3Xa[103X, [3Xb[103X, [3Xf[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, \mathrm{Exponential}(b,c) )[123X.[133X
   
-  [33X[0;0YThe  arguments  are  objects [23Xa,b[123X and a morphism [23Xf: a \times b \rightarrow c[123X.
-  The   output  is  a  morphism  [23Xg:  a  \rightarrow  \mathrm{Exponential}(b,c)[123X
+  [33X[0;0YThe  arguments  are two objects [23Xa,b[123X and a morphism [23Xf: a \times b \rightarrow
+  c[123X.  The  output  is  a  morphism  [23Xg: a \rightarrow \mathrm{Exponential}(b,c)[123X
   corresponding to [23Xf[123X under the direct product-exponential adjunction.[133X
   
-  [1X1.2-9 ExponentialToDirectProductAdjunctionMap[101X
+  [1X1.2-9 DirectProductToExponentialAdjunctionMapWithGivenExponential[101X
+  
+  [33X[1;0Y[29X[2XDirectProductToExponentialAdjunctionMapWithGivenExponential[102X( [3Xa[103X, [3Xb[103X, [3Xf[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, \mathrm{Exponential}(b,c) )[123X.[133X
+  
+  [33X[0;0YThe  arguments  are  two objects [23Xa,b[123X, a morphism [23Xf: a \times b \rightarrow c[123X
+  and  an  object [23Xi = \mathrm{Exponential}(b,c)[123X. The output is a morphism [23Xg: a
+  \rightarrow  \mathrm{Exponential}(b,c)[123X  corresponding  to [23Xf[123X under the direct
+  product-exponential adjunction.[133X
+  
+  [1X1.2-10 ExponentialToDirectProductAdjunctionMap[101X
   
   [33X[1;0Y[29X[2XExponentialToDirectProductAdjunctionMap[102X( [3Xb[103X, [3Xc[103X, [3Xg[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \times b, c)[123X.[133X
   
-  [33X[0;0YThe   arguments   are   objects   [23Xb,c[123X   and  a  morphism  [23Xg:  a  \rightarrow
+  [33X[0;0YThe  arguments  are  two  objects  [23Xb,c[123X  and  a  morphism  [23Xg:  a  \rightarrow
   \mathrm{Exponential}(b,c)[123X.   The   output  is  a  morphism  [23Xf:  a  \times  b
   \rightarrow  c[123X  corresponding  to  [23Xg[123X  under  the  direct product-exponential
   adjunction.[133X
   
-  [1X1.2-10 CartesianPreComposeMorphism[101X
+  [1X1.2-11 ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct[101X
+  
+  [33X[1;0Y[29X[2XExponentialToDirectProductAdjunctionMapWithGivenDirectProduct[102X( [3Xb[103X, [3Xc[103X, [3Xg[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \times b, c)[123X.[133X
+  
+  [33X[0;0YThe   arguments   are   two   objects  [23Xb,c[123X,  a  morphism  [23Xg:  a  \rightarrow
+  \mathrm{Exponential}(b,c)[123X  and  an  object  [23Xt  = a \times b[123X. The output is a
+  morphism  [23Xf:  a  \times  b \rightarrow c[123X corresponding to [23Xg[123X under the direct
+  product-exponential adjunction.[133X
+  
+  [1X1.2-12 CartesianPreComposeMorphism[101X
   
   [33X[1;0Y[29X[2XCartesianPreComposeMorphism[102X( [3Xa[103X, [3Xb[103X, [3Xc[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya   morphism  in  [23X\mathrm{Hom}(  \mathrm{Exponential}(a,b)  \times
@@ -379,7 +399,7 @@
   \mathrm{Exponential}(a,b)   \times   \mathrm{Exponential}(b,c)   \rightarrow
   \mathrm{Exponential}(a,c)[123X.[133X
   
-  [1X1.2-11 CartesianPreComposeMorphismWithGivenObjects[101X
+  [1X1.2-13 CartesianPreComposeMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XCartesianPreComposeMorphismWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya   morphism  in  [23X\mathrm{Hom}(  \mathrm{Exponential}(a,b)  \times
@@ -392,7 +412,7 @@
   \mathrm{Exponential}(a,b)   \times   \mathrm{Exponential}(b,c)   \rightarrow
   \mathrm{Exponential}(a,c)[123X.[133X
   
-  [1X1.2-12 CartesianPostComposeMorphism[101X
+  [1X1.2-14 CartesianPostComposeMorphism[101X
   
   [33X[1;0Y[29X[2XCartesianPostComposeMorphism[102X( [3Xa[103X, [3Xb[103X, [3Xc[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya   morphism  in  [23X\mathrm{Hom}(  \mathrm{Exponential}(b,c)  \times
@@ -403,7 +423,7 @@
   \mathrm{Exponential}(b,c)   \times   \mathrm{Exponential}(a,b)   \rightarrow
   \mathrm{Exponential}(a,c)[123X.[133X
   
-  [1X1.2-13 CartesianPostComposeMorphismWithGivenObjects[101X
+  [1X1.2-15 CartesianPostComposeMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XCartesianPostComposeMorphismWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya   morphism  in  [23X\mathrm{Hom}(  \mathrm{Exponential}(b,c)  \times
@@ -416,14 +436,14 @@
   \mathrm{Exponential}(b,c)   \times   \mathrm{Exponential}(a,b)   \rightarrow
   \mathrm{Exponential}(a,c)[123X.[133X
   
-  [1X1.2-14 CartesianDualOnObjects[101X
+  [1X1.2-16 CartesianDualOnObjects[101X
   
   [33X[1;0Y[29X[2XCartesianDualOnObjects[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
   [33X[0;0YThe argument is an object [23Xa[123X. The output is its dual object [23Xa^{\vee}[123X.[133X
   
-  [1X1.2-15 CartesianDualOnMorphisms[101X
+  [1X1.2-17 CartesianDualOnMorphisms[101X
   
   [33X[1;0Y[29X[2XCartesianDualOnMorphisms[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( b^{\vee}, a^{\vee} )[123X.[133X
@@ -431,7 +451,7 @@
   [33X[0;0YThe  argument  is a morphism [23X\alpha: a \rightarrow b[123X. The output is its dual
   morphism [23X\alpha^{\vee}: b^{\vee} \rightarrow a^{\vee}[123X.[133X
   
-  [1X1.2-16 CartesianDualOnMorphismsWithGivenCartesianDuals[101X
+  [1X1.2-18 CartesianDualOnMorphismsWithGivenCartesianDuals[101X
   
   [33X[1;0Y[29X[2XCartesianDualOnMorphismsWithGivenCartesianDuals[102X( [3Xs[103X, [3Xalpha[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( b^{\vee}, a^{\vee} )[123X.[133X
@@ -440,7 +460,7 @@
   and  an  object [23Xr = a^{\vee}[123X. The output is the dual morphism [23X\alpha^{\vee}:
   b^{\vee} \rightarrow a^{\vee}[123X.[133X
   
-  [1X1.2-17 CartesianEvaluationForCartesianDual[101X
+  [1X1.2-19 CartesianEvaluationForCartesianDual[101X
   
   [33X[1;0Y[29X[2XCartesianEvaluationForCartesianDual[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a^{\vee} \times a, 1 )[123X.[133X
@@ -448,7 +468,7 @@
   [33X[0;0YThe  argument  is  an  object  [23Xa[123X.  The  output  is  the  evaluation morphism
   [23X\mathrm{ev}_{a}: a^{\vee} \times a \rightarrow 1[123X.[133X
   
-  [1X1.2-18 CartesianEvaluationForCartesianDualWithGivenDirectProduct[101X
+  [1X1.2-20 CartesianEvaluationForCartesianDualWithGivenDirectProduct[101X
   
   [33X[1;0Y[29X[2XCartesianEvaluationForCartesianDualWithGivenDirectProduct[102X( [3Xs[103X, [3Xa[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a^{\vee} \times a, 1 )[123X.[133X
@@ -457,7 +477,7 @@
   object  [23Xr  =  1[123X.  The  output  is  the  evaluation morphism [23X\mathrm{ev}_{a}:
   a^{\vee} \times a \rightarrow 1[123X.[133X
   
-  [1X1.2-19 MorphismToCartesianBidual[101X
+  [1X1.2-21 MorphismToCartesianBidual[101X
   
   [33X[1;0Y[29X[2XMorphismToCartesianBidual[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, (a^{\vee})^{\vee})[123X.[133X
@@ -465,7 +485,7 @@
   [33X[0;0YThe  argument  is  an  object  [23Xa[123X. The output is the morphism to the bidual [23Xa
   \rightarrow (a^{\vee})^{\vee}[123X.[133X
   
-  [1X1.2-20 MorphismToCartesianBidualWithGivenCartesianBidual[101X
+  [1X1.2-22 MorphismToCartesianBidualWithGivenCartesianBidual[101X
   
   [33X[1;0Y[29X[2XMorphismToCartesianBidualWithGivenCartesianBidual[102X( [3Xa[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, (a^{\vee})^{\vee})[123X.[133X
@@ -473,7 +493,7 @@
   [33X[0;0YThe  arguments  are  an  object  [23Xa[123X, and an object [23Xr = (a^{\vee})^{\vee}[123X. The
   output is the morphism to the bidual [23Xa \rightarrow (a^{\vee})^{\vee}[123X.[133X
   
-  [1X1.2-21 DirectProductExponentialCompatibilityMorphism[101X
+  [1X1.2-23 DirectProductExponentialCompatibilityMorphism[101X
   
   [33X[1;0Y[29X[2XDirectProductExponentialCompatibilityMorphism[102X( [3Xlist[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}(  \mathrm{Exponential}(a,a')  \times
@@ -486,7 +506,7 @@
   \mathrm{Exponential}(a,a')   \times  \mathrm{Exponential}(b,b')  \rightarrow
   \mathrm{Exponential}(a \times b,a' \times b')[123X.[133X
   
-  [1X1.2-22 DirectProductExponentialCompatibilityMorphismWithGivenObjects[101X
+  [1X1.2-24 DirectProductExponentialCompatibilityMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XDirectProductExponentialCompatibilityMorphismWithGivenObjects[102X( [3Xs[103X, [3Xlist[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}(  \mathrm{Exponential}(a,a')  \times
@@ -501,7 +521,7 @@
   \mathrm{Exponential}(a,a')   \times  \mathrm{Exponential}(b,b')  \rightarrow
   \mathrm{Exponential}(a \times b,a' \times b')[123X.[133X
   
-  [1X1.2-23 DirectProductCartesianDualityCompatibilityMorphism[101X
+  [1X1.2-25 DirectProductCartesianDualityCompatibilityMorphism[101X
   
   [33X[1;0Y[29X[2XDirectProductCartesianDualityCompatibilityMorphism[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}( a^{\vee} \times b^{\vee}, (a \times
@@ -511,7 +531,7 @@
   [23X\mathrm{DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects}:
   a^{\vee} \times b^{\vee} \rightarrow (a \times b)^{\vee}[123X.[133X
   
-  [1X1.2-24 DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects[101X
+  [1X1.2-26 DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XDirectProductCartesianDualityCompatibilityMorphismWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3Xb[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}( a^{\vee} \times b^{\vee}, (a \times
@@ -522,7 +542,7 @@
   [23X\mathrm{DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects}_{a,b}:
   a^{\vee} \times b^{\vee} \rightarrow (a \times b)^{\vee}[123X.[133X
   
-  [1X1.2-25 MorphismFromDirectProductToExponential[101X
+  [1X1.2-27 MorphismFromDirectProductToExponential[101X
   
   [33X[1;0Y[29X[2XMorphismFromDirectProductToExponential[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya     morphism     in    [23X\mathrm{Hom}(    a^{\vee}    \times    b,
@@ -532,7 +552,7 @@
   [23X\mathrm{MorphismFromDirectProductToExponentialWithGivenObjects}_{a,b}:
   a^{\vee} \times b \rightarrow \mathrm{Exponential}(a,b)[123X.[133X
   
-  [1X1.2-26 MorphismFromDirectProductToExponentialWithGivenObjects[101X
+  [1X1.2-28 MorphismFromDirectProductToExponentialWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XMorphismFromDirectProductToExponentialWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3Xb[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya     morphism     in    [23X\mathrm{Hom}(    a^{\vee}    \times    b,
@@ -543,7 +563,7 @@
   [23X\mathrm{MorphismFromDirectProductToExponentialWithGivenObjects}_{a,b}:
   a^{\vee} \times b \rightarrow \mathrm{Exponential}(a,b)[123X.[133X
   
-  [1X1.2-27 IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject[101X
+  [1X1.2-29 IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a^{\vee}, \mathrm{Exponential}(a,1))[123X.[133X
@@ -552,7 +572,7 @@
   [23X\mathrm{IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject}_{a}:
   a^{\vee} \rightarrow \mathrm{Exponential}(a,1)[123X.[133X
   
-  [1X1.2-28 IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject[101X
+  [1X1.2-30 IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\mathrm{Exponential}(a,1), a^{\vee})[123X.[133X
@@ -561,7 +581,7 @@
   [23X\mathrm{IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject}_{a}:
   \mathrm{Exponential}(a,1) \rightarrow a^{\vee}[123X.[133X
   
-  [1X1.2-29 UniversalPropertyOfCartesianDual[101X
+  [1X1.2-31 UniversalPropertyOfCartesianDual[101X
   
   [33X[1;0Y[29X[2XUniversalPropertyOfCartesianDual[102X( [3Xt[103X, [3Xa[103X, [3Xalpha[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(t, a^{\vee})[123X.[133X
@@ -570,7 +590,7 @@
   \rightarrow  1[123X.  The  output is the morphism [23Xt \rightarrow a^{\vee}[123X given by
   the universal property of [23Xa^{\vee}[123X.[133X
   
-  [1X1.2-30 CartesianLambdaIntroduction[101X
+  [1X1.2-32 CartesianLambdaIntroduction[101X
   
   [33X[1;0Y[29X[2XCartesianLambdaIntroduction[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( 1, \mathrm{Exponential}(a,b) )[123X.[133X
@@ -579,7 +599,7 @@
   corresponding  morphism  [23X1  \rightarrow  \mathrm{Exponential}(a,b)[123X under the
   direct product-exponential adjunction.[133X
   
-  [1X1.2-31 CartesianLambdaElimination[101X
+  [1X1.2-33 CartesianLambdaElimination[101X
   
   [33X[1;0Y[29X[2XCartesianLambdaElimination[102X( [3Xa[103X, [3Xb[103X, [3Xalpha[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X.[133X
@@ -588,7 +608,7 @@
   \mathrm{Exponential}(a,b)[123X.   The  output  is  a  morphism  [23Xa  \rightarrow  b[123X
   corresponding to [23X\alpha[123X under the direct product-exponential adjunction.[133X
   
-  [1X1.2-32 IsomorphismFromObjectToExponential[101X
+  [1X1.2-34 IsomorphismFromObjectToExponential[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromObjectToExponential[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, \mathrm{Exponential}(1,a))[123X.[133X
@@ -596,7 +616,7 @@
   [33X[0;0YThe  argument  is  an  object  [23Xa[123X.  The  output  is the natural isomorphism [23Xa
   \rightarrow \mathrm{Exponential}(1,a)[123X.[133X
   
-  [1X1.2-33 IsomorphismFromObjectToExponentialWithGivenExponential[101X
+  [1X1.2-35 IsomorphismFromObjectToExponentialWithGivenExponential[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromObjectToExponentialWithGivenExponential[102X( [3Xa[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, \mathrm{Exponential}(1,a))[123X.[133X
@@ -605,7 +625,7 @@
   The     output     is     the     natural    isomorphism    [23Xa    \rightarrow
   \mathrm{Exponential}(1,a)[123X.[133X
   
-  [1X1.2-34 IsomorphismFromExponentialToObject[101X
+  [1X1.2-36 IsomorphismFromExponentialToObject[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromExponentialToObject[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\mathrm{Exponential}(1,a),a)[123X.[133X
@@ -613,7 +633,7 @@
   [33X[0;0YThe  argument  is  an  object  [23Xa[123X.  The  output  is  the  natural isomorphism
   [23X\mathrm{Exponential}(1,a) \rightarrow a[123X.[133X
   
-  [1X1.2-35 IsomorphismFromExponentialToObjectWithGivenExponential[101X
+  [1X1.2-37 IsomorphismFromExponentialToObjectWithGivenExponential[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromExponentialToObjectWithGivenExponential[102X( [3Xa[103X, [3Xs[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\mathrm{Exponential}(1,a),a)[123X.[133X
@@ -1023,7 +1043,19 @@
   [10XDirectProductToExponentialAdjunctionMap[110X.   [23XF:   (   a,   b,   f   )  \mapsto
   \mathtt{DirectProductToExponentialAdjunctionMap}(a, b, f)[123X.[133X
   
-  [1X1.4-39 AddExponentialOnMorphisms[101X
+  [1X1.4-39 AddDirectProductToExponentialAdjunctionMapWithGivenExponential[101X
+  
+  [33X[1;0Y[29X[2XAddDirectProductToExponentialAdjunctionMapWithGivenExponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XDirectProductToExponentialAdjunctionMapWithGivenExponential[110X. [23XF: ( a, b, f, i
+  )                                                                    \mapsto
+  \mathtt{DirectProductToExponentialAdjunctionMapWithGivenExponential}(a,   b,
+  f, i)[123X.[133X
+  
+  [1X1.4-40 AddExponentialOnMorphisms[101X
   
   [33X[1;0Y[29X[2XAddExponentialOnMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1033,7 +1065,7 @@
   [10XExponentialOnMorphisms[110X.      [23XF:      (     alpha,     beta     )     \mapsto
   \mathtt{ExponentialOnMorphisms}(alpha, beta)[123X.[133X
   
-  [1X1.4-40 AddExponentialOnMorphismsWithGivenExponentials[101X
+  [1X1.4-41 AddExponentialOnMorphismsWithGivenExponentials[101X
   
   [33X[1;0Y[29X[2XAddExponentialOnMorphismsWithGivenExponentials[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1044,7 +1076,7 @@
   \mapsto \mathtt{ExponentialOnMorphismsWithGivenExponentials}(s, alpha, beta,
   r)[123X.[133X
   
-  [1X1.4-41 AddExponentialOnObjects[101X
+  [1X1.4-42 AddExponentialOnObjects[101X
   
   [33X[1;0Y[29X[2XAddExponentialOnObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1054,7 +1086,7 @@
   [10XExponentialOnObjects[110X.  [23XF:  ( a, b ) \mapsto \mathtt{ExponentialOnObjects}(a,
   b)[123X.[133X
   
-  [1X1.4-42 AddExponentialToDirectProductAdjunctionMap[101X
+  [1X1.4-43 AddExponentialToDirectProductAdjunctionMap[101X
   
   [33X[1;0Y[29X[2XAddExponentialToDirectProductAdjunctionMap[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1064,7 +1096,19 @@
   [10XExponentialToDirectProductAdjunctionMap[110X.   [23XF:   (   b,   c,   g   )  \mapsto
   \mathtt{ExponentialToDirectProductAdjunctionMap}(b, c, g)[123X.[133X
   
-  [1X1.4-43 AddIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject[101X
+  [1X1.4-44 AddExponentialToDirectProductAdjunctionMapWithGivenDirectProduct[101X
+  
+  [33X[1;0Y[29X[2XAddExponentialToDirectProductAdjunctionMapWithGivenDirectProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XExponentialToDirectProductAdjunctionMapWithGivenDirectProduct[110X. [23XF: ( b, c, g,
+  t                                  )                                 \mapsto
+  \mathtt{ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct}(b, c,
+  g, t)[123X.[133X
+  
+  [1X1.4-45 AddIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1076,7 +1120,7 @@
   \mathtt{IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject}(a)
   .[133X
   
-  [1X1.4-44 AddIsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject[101X
+  [1X1.4-46 AddIsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1088,7 +1132,7 @@
   \mathtt{IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject}(a)
   .[133X
   
-  [1X1.4-45 AddIsomorphismFromExponentialToObject[101X
+  [1X1.4-47 AddIsomorphismFromExponentialToObject[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromExponentialToObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1098,7 +1142,7 @@
   [10XIsomorphismFromExponentialToObject[110X.      [23XF:      (      a      )     \mapsto
   \mathtt{IsomorphismFromExponentialToObject}(a)[123X.[133X
   
-  [1X1.4-46 AddIsomorphismFromExponentialToObjectWithGivenExponential[101X
+  [1X1.4-48 AddIsomorphismFromExponentialToObjectWithGivenExponential[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromExponentialToObjectWithGivenExponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1108,7 +1152,7 @@
   [10XIsomorphismFromExponentialToObjectWithGivenExponential[110X.  [23XF: ( a, s ) \mapsto
   \mathtt{IsomorphismFromExponentialToObjectWithGivenExponential}(a, s)[123X.[133X
   
-  [1X1.4-47 AddIsomorphismFromObjectToExponential[101X
+  [1X1.4-49 AddIsomorphismFromObjectToExponential[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromObjectToExponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1118,7 +1162,7 @@
   [10XIsomorphismFromObjectToExponential[110X.      [23XF:      (      a      )     \mapsto
   \mathtt{IsomorphismFromObjectToExponential}(a)[123X.[133X
   
-  [1X1.4-48 AddIsomorphismFromObjectToExponentialWithGivenExponential[101X
+  [1X1.4-50 AddIsomorphismFromObjectToExponentialWithGivenExponential[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromObjectToExponentialWithGivenExponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1128,7 +1172,7 @@
   [10XIsomorphismFromObjectToExponentialWithGivenExponential[110X.  [23XF: ( a, r ) \mapsto
   \mathtt{IsomorphismFromObjectToExponentialWithGivenExponential}(a, r)[123X.[133X
   
-  [1X1.4-49 AddMorphismFromDirectProductToExponential[101X
+  [1X1.4-51 AddMorphismFromDirectProductToExponential[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromDirectProductToExponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1138,7 +1182,7 @@
   [10XMorphismFromDirectProductToExponential[110X.    [23XF:    (    a,    b    )   \mapsto
   \mathtt{MorphismFromDirectProductToExponential}(a, b)[123X.[133X
   
-  [1X1.4-50 AddMorphismFromDirectProductToExponentialWithGivenObjects[101X
+  [1X1.4-52 AddMorphismFromDirectProductToExponentialWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromDirectProductToExponentialWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1149,7 +1193,7 @@
   \mapsto   \mathtt{MorphismFromDirectProductToExponentialWithGivenObjects}(s,
   a, b, r)[123X.[133X
   
-  [1X1.4-51 AddMorphismToCartesianBidual[101X
+  [1X1.4-53 AddMorphismToCartesianBidual[101X
   
   [33X[1;0Y[29X[2XAddMorphismToCartesianBidual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1159,7 +1203,7 @@
   [10XMorphismToCartesianBidual[110X.        [23XF:        (        a       )       \mapsto
   \mathtt{MorphismToCartesianBidual}(a)[123X.[133X
   
-  [1X1.4-52 AddMorphismToCartesianBidualWithGivenCartesianBidual[101X
+  [1X1.4-54 AddMorphismToCartesianBidualWithGivenCartesianBidual[101X
   
   [33X[1;0Y[29X[2XAddMorphismToCartesianBidualWithGivenCartesianBidual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1169,7 +1213,7 @@
   [10XMorphismToCartesianBidualWithGivenCartesianBidual[110X.  [23XF:  (  a,  r  )  \mapsto
   \mathtt{MorphismToCartesianBidualWithGivenCartesianBidual}(a, r)[123X.[133X
   
-  [1X1.4-53 AddUniversalPropertyOfCartesianDual[101X
+  [1X1.4-55 AddUniversalPropertyOfCartesianDual[101X
   
   [33X[1;0Y[29X[2XAddUniversalPropertyOfCartesianDual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1179,7 +1223,7 @@
   [10XUniversalPropertyOfCartesianDual[110X.    [23XF:    (   t,   a,   alpha   )   \mapsto
   \mathtt{UniversalPropertyOfCartesianDual}(t, a, alpha)[123X.[133X
   
-  [1X1.4-54 AddLeftCartesianDistributivityExpanding[101X
+  [1X1.4-56 AddLeftCartesianDistributivityExpanding[101X
   
   [33X[1;0Y[29X[2XAddLeftCartesianDistributivityExpanding[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1189,7 +1233,7 @@
   [10XLeftCartesianDistributivityExpanding[110X.     [23XF:    (    a,    L    )    \mapsto
   \mathtt{LeftCartesianDistributivityExpanding}(a, L)[123X.[133X
   
-  [1X1.4-55 AddLeftCartesianDistributivityExpandingWithGivenObjects[101X
+  [1X1.4-57 AddLeftCartesianDistributivityExpandingWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddLeftCartesianDistributivityExpandingWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1200,7 +1244,7 @@
   \mapsto  \mathtt{LeftCartesianDistributivityExpandingWithGivenObjects}(s, a,
   L, r)[123X.[133X
   
-  [1X1.4-56 AddLeftCartesianDistributivityFactoring[101X
+  [1X1.4-58 AddLeftCartesianDistributivityFactoring[101X
   
   [33X[1;0Y[29X[2XAddLeftCartesianDistributivityFactoring[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1210,7 +1254,7 @@
   [10XLeftCartesianDistributivityFactoring[110X.     [23XF:    (    a,    L    )    \mapsto
   \mathtt{LeftCartesianDistributivityFactoring}(a, L)[123X.[133X
   
-  [1X1.4-57 AddLeftCartesianDistributivityFactoringWithGivenObjects[101X
+  [1X1.4-59 AddLeftCartesianDistributivityFactoringWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddLeftCartesianDistributivityFactoringWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1221,7 +1265,7 @@
   \mapsto  \mathtt{LeftCartesianDistributivityFactoringWithGivenObjects}(s, a,
   L, r)[123X.[133X
   
-  [1X1.4-58 AddRightCartesianDistributivityExpanding[101X
+  [1X1.4-60 AddRightCartesianDistributivityExpanding[101X
   
   [33X[1;0Y[29X[2XAddRightCartesianDistributivityExpanding[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1231,7 +1275,7 @@
   [10XRightCartesianDistributivityExpanding[110X.    [23XF:    (    L,    a    )    \mapsto
   \mathtt{RightCartesianDistributivityExpanding}(L, a)[123X.[133X
   
-  [1X1.4-59 AddRightCartesianDistributivityExpandingWithGivenObjects[101X
+  [1X1.4-61 AddRightCartesianDistributivityExpandingWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddRightCartesianDistributivityExpandingWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1242,7 +1286,7 @@
   \mapsto \mathtt{RightCartesianDistributivityExpandingWithGivenObjects}(s, L,
   a, r)[123X.[133X
   
-  [1X1.4-60 AddRightCartesianDistributivityFactoring[101X
+  [1X1.4-62 AddRightCartesianDistributivityFactoring[101X
   
   [33X[1;0Y[29X[2XAddRightCartesianDistributivityFactoring[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1252,7 +1296,7 @@
   [10XRightCartesianDistributivityFactoring[110X.    [23XF:    (    L,    a    )    \mapsto
   \mathtt{RightCartesianDistributivityFactoring}(L, a)[123X.[133X
   
-  [1X1.4-61 AddRightCartesianDistributivityFactoringWithGivenObjects[101X
+  [1X1.4-63 AddRightCartesianDistributivityFactoringWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddRightCartesianDistributivityFactoringWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
