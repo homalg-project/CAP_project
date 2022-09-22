@@ -1,5 +1,5 @@
 name: CartesianCategories
-version: "2022.09-05"
+version: "2022.09-06"
 license: "GPL-2.0-or-later"
 date: 2022-09-22
 description: |
@@ -42,11 +42,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/CartesianCategories/Pa
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/CartesianCategories-2022.09-05/CartesianCategories-2022.09-05.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/CartesianCategories-2022.09-06/CartesianCategories-2022.09-06.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/CartesianCategories-2022.09-05/CartesianCategories-2022.09-05.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/CartesianCategories-2022.09-06/CartesianCategories-2022.09-06.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/CartesianCategories-2022.09-05/CartesianCategories-2022.09-05.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/CartesianCategories-2022.09-06/CartesianCategories-2022.09-06.pdf
 
 abstract: |
 
@@ -59,7 +59,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BZK22</span>]   <b class='BibAuthor'>Barakat, M., Zickgraf, F. and Kuhmichel, T.</b>,
      <i class='BibTitle'>CartesianCategories, Cartesian and cocartesian categories and various subdoctrines,
-             Version 2022.09-05</i>
+             Version 2022.09-06</i>
      (<span class='BibYear'>2022</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/CartesianCategories">https://homalg-project.github.io/pkg/CartesianCategories</a></span>.
@@ -67,11 +67,11 @@ citeas: |
     
 
 bibtex: |
-    @misc{ CartesianCategories2022.09-05,
+    @misc{ CartesianCategories2022.09-06,
       author =           {Barakat, M. and Zickgraf, F. and Kuhmichel, T.},
       title =            {{CartesianCategories},   Cartesian   and   cocartesian
                           categories   and   various   subdoctrines,   {V}ersion
-                          2022.09-05},
+                          2022.09-06},
       month =            {Sep},
       year =             {2022},
       note =             {GAP package},
