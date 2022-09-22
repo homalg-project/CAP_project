@@ -149,6 +149,78 @@ InstallMethod( MatrixCategoryAsAdditiveClosureOfRingAsCategory,
         
     end );
     
+    ##
+    AddIsLiftable( wrapper,
+      function( cat, alpha, beta )
+        
+        return IsZero( DecideZeroRows( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) ) );
+        
+    end );
+    
+    ## Operations related to homomorphism structure
+    
+    Assert( 0, IsCategoryOfRows( RangeCategoryOfHomomorphismStructure( wrapper ) ) );
+    
+    ##
+    AddHomomorphismStructureOnObjects( wrapper,
+      function( cat, object_1, object_2 )
+        
+        return CategoryOfRowsObject( RangeCategoryOfHomomorphismStructure( cat ), RankOfObject( object_1 ) * RankOfObject( object_2 ) );
+        
+    end );
+    
+    ##
+    AddHomomorphismStructureOnMorphismsWithGivenObjects( wrapper,
+      function( cat, source, alpha, beta, range )
+        
+        return CategoryOfRowsMorphism( RangeCategoryOfHomomorphismStructure( cat ), source,
+                                       KroneckerMat( TransposedMatrix( UnderlyingMatrix( alpha ) ), UnderlyingMatrix( beta ) ),
+                                       range );
+        
+    end );
+    
+    ##
+    AddDistinguishedObjectOfHomomorphismStructure( wrapper,
+      function( cat )
+        
+        return CategoryOfRowsObject( RangeCategoryOfHomomorphismStructure( cat ), 1 );
+        
+    end );
+    
+    ##
+    AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( wrapper,
+      function( cat, distinguished_object, alpha, r )
+        local underlying_matrix;
+        
+        underlying_matrix := UnderlyingMatrix( alpha );
+        
+        underlying_matrix := ConvertMatrixToRow( underlying_matrix );
+        
+        return CategoryOfRowsMorphism( RangeCategoryOfHomomorphismStructure( cat ),
+                 distinguished_object,
+                 underlying_matrix,
+                 r
+               );
+        
+    end );
+    
+    ##
+    AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( wrapper,
+      function( cat, A, B, morphism )
+        local nr_rows, nr_columns, underlying_matrix;
+        
+        nr_rows := Dimension( A );
+        
+        nr_columns := Dimension( B );
+        
+        underlying_matrix := UnderlyingMatrix( morphism );
+        
+        underlying_matrix := ConvertRowToMatrix( underlying_matrix, nr_rows, nr_columns );
+        
+        return VectorSpaceMorphism( cat, A, underlying_matrix, B );
+        
+    end );
+    
     Finalize( wrapper );
     
     return wrapper;
