@@ -7,13 +7,17 @@ T := TerminalCategoryWithMultipleObjects( );
 #! TerminalCategoryWithMultipleObjects( )
 InfoOfInstalledOperationsOfCategory( T );
 #! 68 primitive operations were used to derive 317 operations for this category
-#! which constructively
+#! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing
 #! * IsAbelianCategoryWithEnoughInjectives
 #! * IsAbelianCategoryWithEnoughProjectives
 #! * IsRigidSymmetricClosedMonoidalCategory
 #! * IsRigidSymmetricCoclosedMonoidalCategory
+#! and furthermore mathematically
+#! * IsLocallyOfFiniteInjectiveDimension
+#! * IsLocallyOfFiniteProjectiveDimension
+#! * IsTerminalCategory
 i := InitialObject( T );
 #! <A zero object in TerminalCategoryWithMultipleObjects( )>
 t := TerminalObject( T );
