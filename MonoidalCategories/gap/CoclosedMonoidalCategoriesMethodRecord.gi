@@ -88,12 +88,31 @@ TensorProductToInternalCoHomAdjunctionMap := rec(
   # Test in CoclosedMonoidalCategoriesTest
 ),
 
+TensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom := rec(
+  filter_list := [ "category", "object", "object", "morphism", "object" ],
+  io_type := [ [ "c", "b", "g", "i" ], [ "i", "c" ] ],
+  return_type := "morphism",
+  dual_operation := "TensorProductToInternalHomAdjunctionMapWithGivenInternalHom",
+  dual_arguments_reversed := false,
+  # Test in CoclosedMonoidalCategoriesTest
+),
+
 InternalCoHomToTensorProductAdjunctionMap := rec(
   filter_list := [ "category", "object", "object", "morphism" ],
-  io_type := [ [ "a", "b", "f" ], [ "a", "t" ] ],
+  io_type := [ [ "a", "b", "f", ], [ "a", "t" ] ],
   return_type := "morphism",
   dual_operation := "InternalHomToTensorProductAdjunctionMap",
   dual_preprocessor_func := { cat, a, b, f } -> NTuple( 4, Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( f ) ),
+  dual_arguments_reversed := false,
+  # Test in CoclosedMonoidalCategoriesTest
+),
+
+InternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct := rec(
+  filter_list := [ "category", "object", "object", "morphism", "object" ],
+  io_type := [ [ "a", "b", "f", "t" ], [ "a", "t" ] ],
+  return_type := "morphism",
+  dual_operation := "InternalHomToTensorProductAdjunctionMapWithGivenTensorProduct",
+  dual_preprocessor_func := { cat, a, b, f, t } -> NTuple( 4, Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( f ), Opposite( t ) ),
   dual_arguments_reversed := false,
   # Test in CoclosedMonoidalCategoriesTest
 ),

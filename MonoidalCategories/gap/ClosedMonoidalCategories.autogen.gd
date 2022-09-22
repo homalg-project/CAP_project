@@ -259,6 +259,25 @@ DeclareOperation( "AddInternalHomToTensorProductAdjunctionMap",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `InternalHomToTensorProductAdjunctionMapWithGivenTensorProduct`.
+#! $F: ( b, c, g, t ) \mapsto \mathtt{InternalHomToTensorProductAdjunctionMapWithGivenTensorProduct}(b, c, g, t)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `IsomorphismFromDualObjectToInternalHomIntoTensorUnit`.
 #! $F: ( a ) \mapsto \mathtt{IsomorphismFromDualObjectToInternalHomIntoTensorUnit}(a)$.
 #! @Returns nothing
@@ -653,6 +672,25 @@ DeclareOperation( "AddTensorProductToInternalHomAdjunctionMap",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddTensorProductToInternalHomAdjunctionMap",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `TensorProductToInternalHomAdjunctionMapWithGivenInternalHom`.
+#! $F: ( a, b, f, i ) \mapsto \mathtt{TensorProductToInternalHomAdjunctionMapWithGivenInternalHom}(a, b, f, i)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddTensorProductToInternalHomAdjunctionMapWithGivenInternalHom",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddTensorProductToInternalHomAdjunctionMapWithGivenInternalHom",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddTensorProductToInternalHomAdjunctionMapWithGivenInternalHom",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddTensorProductToInternalHomAdjunctionMapWithGivenInternalHom",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
