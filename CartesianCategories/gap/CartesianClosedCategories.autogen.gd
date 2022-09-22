@@ -392,6 +392,25 @@ DeclareOperation( "AddDirectProductToExponentialAdjunctionMap",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `DirectProductToExponentialAdjunctionMapWithGivenExponential`.
+#! $F: ( a, b, f, i ) \mapsto \mathtt{DirectProductToExponentialAdjunctionMapWithGivenExponential}(a, b, f, i)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddDirectProductToExponentialAdjunctionMapWithGivenExponential",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddDirectProductToExponentialAdjunctionMapWithGivenExponential",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddDirectProductToExponentialAdjunctionMapWithGivenExponential",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddDirectProductToExponentialAdjunctionMapWithGivenExponential",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `ExponentialOnMorphisms`.
 #! $F: ( alpha, beta ) \mapsto \mathtt{ExponentialOnMorphisms}(alpha, beta)$.
 #! @Returns nothing
@@ -463,6 +482,25 @@ DeclareOperation( "AddExponentialToDirectProductAdjunctionMap",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddExponentialToDirectProductAdjunctionMap",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct`.
+#! $F: ( b, c, g, t ) \mapsto \mathtt{ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct}(b, c, g, t)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddExponentialToDirectProductAdjunctionMapWithGivenDirectProduct",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddExponentialToDirectProductAdjunctionMapWithGivenDirectProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddExponentialToDirectProductAdjunctionMapWithGivenDirectProduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddExponentialToDirectProductAdjunctionMapWithGivenDirectProduct",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

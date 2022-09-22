@@ -91,12 +91,31 @@ DirectProductToExponentialAdjunctionMap := rec(
   # Test in CartesianClosedCategoriesTest
 ),
 
+DirectProductToExponentialAdjunctionMapWithGivenExponential:= rec(
+  filter_list := [ "category", "object", "object", "morphism", "object" ],
+  io_type := [ [ "a", "b", "f", "i" ], [ "a", "i" ] ],
+  return_type := "morphism",
+  dual_operation := "CoproductToCoexponentialAdjunctionMapWithGivenCoexponential",
+  dual_arguments_reversed := false,
+  # Test in CartesianClosedCategoriesTest
+),
+
 ExponentialToDirectProductAdjunctionMap := rec(
   filter_list := [ "category", "object", "object", "morphism" ],
   io_type := [ [ "b", "c", "g" ], [ "t", "c" ] ],
   return_type := "morphism",
   dual_operation := "CoexponentialToCoproductAdjunctionMap",
   dual_preprocessor_func := { cat, a, b, g } -> NTuple( 4, Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( g ) ),
+  dual_arguments_reversed := false,
+  # Test in CartesianClosedCategoriesTest
+),
+
+ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct := rec(
+  filter_list := [ "category", "object", "object", "morphism", "object" ],
+  io_type := [ [ "b", "c", "g", "t" ], [ "t", "c" ] ],
+  return_type := "morphism",
+  dual_operation := "CoexponentialToCoproductAdjunctionMapWithGivenCoproduct",
+  dual_preprocessor_func := { cat, a, b, g, t } -> NTuple( 4, Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( g ),Opposite( t ) ),
   dual_arguments_reversed := false,
   # Test in CartesianClosedCategoriesTest
 ),

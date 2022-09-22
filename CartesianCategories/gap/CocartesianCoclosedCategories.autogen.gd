@@ -449,6 +449,25 @@ DeclareOperation( "AddCoexponentialToCoproductAdjunctionMap",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `CoexponentialToCoproductAdjunctionMapWithGivenCoproduct`.
+#! $F: ( a, b, f, t ) \mapsto \mathtt{CoexponentialToCoproductAdjunctionMapWithGivenCoproduct}(a, b, f, t)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCoexponentialToCoproductAdjunctionMapWithGivenCoproduct",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCoexponentialToCoproductAdjunctionMapWithGivenCoproduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCoexponentialToCoproductAdjunctionMapWithGivenCoproduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCoexponentialToCoproductAdjunctionMapWithGivenCoproduct",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `CoproductToCoexponentialAdjunctionMap`.
 #! $F: ( c, b, g ) \mapsto \mathtt{CoproductToCoexponentialAdjunctionMap}(c, b, g)$.
 #! @Returns nothing
@@ -463,6 +482,25 @@ DeclareOperation( "AddCoproductToCoexponentialAdjunctionMap",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddCoproductToCoexponentialAdjunctionMap",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `CoproductToCoexponentialAdjunctionMapWithGivenCoexponential`.
+#! $F: ( c, b, g, i ) \mapsto \mathtt{CoproductToCoexponentialAdjunctionMapWithGivenCoexponential}(c, b, g, i)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCoproductToCoexponentialAdjunctionMapWithGivenCoexponential",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCoproductToCoexponentialAdjunctionMapWithGivenCoexponential",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCoproductToCoexponentialAdjunctionMapWithGivenCoexponential",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCoproductToCoexponentialAdjunctionMapWithGivenCoexponential",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

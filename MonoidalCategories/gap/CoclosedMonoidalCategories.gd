@@ -86,7 +86,7 @@ DeclareOperation( "CoclosedCoevaluationMorphismWithGivenSource",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are objects $c,b$ and a morphism $g: a \rightarrow c \otimes b$.
+#! The arguments are two objects $c,b$ and a morphism $g: a \rightarrow c \otimes b$.
 #! The output is a morphism $f: \mathrm{\underline{coHom}}(a,b) \rightarrow c$
 #! corresponding to $g$ under the cohom tensor adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a,b), c )$.
@@ -95,13 +95,31 @@ DeclareOperation( "TensorProductToInternalCoHomAdjunctionMap",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
-#! The arguments are objects $a,b$ and a morphism $f: \mathrm{\underline{coHom}}(a,b) \rightarrow c$.
+#! The arguments are two objects $c,b$, a morphism $g: a \rightarrow c \otimes b$ and an object $i = \mathrm{\underline{coHom}(a,b)}$.
+#! The output is a morphism $f: \mathrm{\underline{coHom}}(a,b) \rightarrow c$
+#! corresponding to $g$ under the cohom tensor adjunction.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a,b), c )$.
+#! @Arguments c, b, g
+DeclareOperation( "TensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are two objects $a,b$ and a morphism $f: \mathrm{\underline{coHom}}(a,b) \rightarrow c$.
 #! The output is a morphism $g: a \rightarrow c \otimes b$ corresponding to $f$ under the
 #! cohom tensor adjunction.
 #! @Returns a morphism in $\mathrm{Hom}(a, c \otimes b)$.
 #! @Arguments a, b, f
 DeclareOperation( "InternalCoHomToTensorProductAdjunctionMap",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are two objects $a,b$, a morphism $f: \mathrm{\underline{coHom}}(a,b) \rightarrow c$ and an object $t = c \otimes b$.
+#! The output is a morphism $g: a \rightarrow c \otimes b$ corresponding to $f$ under the
+#! cohom tensor adjunction.
+#! @Returns a morphism in $\mathrm{Hom}(a, c \otimes b)$.
+#! @Arguments a, b, f
+DeclareOperation( "InternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are three objects $a,b,c$.
