@@ -246,8 +246,8 @@
 
 <h5>1.5-1 CapJitCompiledCAPOperationAsEnhancedSyntaxTree</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitCompiledCAPOperationAsEnhancedSyntaxTree</code>( <var class="Arg">cat</var>, <var class="Arg">operation_name</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>A special version of <code class="func">CapJitCompiledFunctionAsEnhancedSyntaxTree</code> (<a href="chap1_mj.html#X7B1445EE85D8CA0A"><span class="RefLink">1.5-3</span></a>) compiling the operation given by <var class="Arg">operation_name</var> in <var class="Arg">cat</var> (with post-processing disabled).</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitCompiledCAPOperationAsEnhancedSyntaxTree</code>( <var class="Arg">cat</var>, <var class="Arg">operation_name</var>, <var class="Arg">post_processing_enabled</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>A special version of <code class="func">CapJitCompiledFunctionAsEnhancedSyntaxTree</code> (<a href="chap1_mj.html#X7B1445EE85D8CA0A"><span class="RefLink">1.5-3</span></a>) compiling the operation given by <var class="Arg">operation_name</var> in <var class="Arg">cat</var>. The boolean <var class="Arg">post_processing_enabled</var> decides whether the tree before or after post-processing should be returned.</p>
 
 <p><a id="X86F1D06C81670DC8" name="X86F1D06C81670DC8"></a></p>
 
@@ -262,11 +262,23 @@
 
 <h5>1.5-3 CapJitCompiledFunctionAsEnhancedSyntaxTree</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitCompiledFunctionAsEnhancedSyntaxTree</code>( <var class="Arg">func</var>, <var class="Arg">post_processing_enabled</var>[, <var class="Arg">type_signature</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitCompiledFunctionAsEnhancedSyntaxTree</code>( <var class="Arg">func</var>, <var class="Arg">post_processing</var>[, <var class="Arg">type_signature</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a record</p>
 
-<p>Like <code class="func">CapJitCompiledFunction</code> (<a href="chap1_mj.html#X86F1D06C81670DC8"><span class="RefLink">1.5-2</span></a>), but returns an enhanced syntax tree of the compiled function. <var class="Arg">func</var> must not be an operation or a kernel function because those cannot properly be represented as a syntax tree. The second argument can be used to disable post-processing, e.g. the application of compiler hints.</p>
+<p>Like <code class="func">CapJitCompiledFunction</code> (<a href="chap1_mj.html#X86F1D06C81670DC8"><span class="RefLink">1.5-2</span></a>), but returns an enhanced syntax tree of the compiled function. <var class="Arg">func</var> must not be an operation or a kernel function because those cannot properly be represented as a syntax tree. <var class="Arg">post_processing</var> can be one of the following strings:</p>
 
+
+<ul>
+<li><p><code class="code">"with_post_processing"</code>: The post-processing step, e.g. the application of compiler hints, is executed.</p>
+
+</li>
+<li><p><code class="code">"without_post_processing"</code>: The post-processing step is not executed.</p>
+
+</li>
+<li><p><code class="code">"with_and_without_post_processing"</code>: A pair of trees is returned: The second tree with post-processing applied, the first tree without.</p>
+
+</li>
+</ul>
 <p><a id="X7E61259E7D6E8EEB" name="X7E61259E7D6E8EEB"></a></p>
 
 <h4>1.6 <span class="Heading">Giving hints to the compiler</span></h4>
@@ -415,6 +427,26 @@
 </ul>
 <p>A: We can only drop unused variables, inline variables, etc. if we assume that the code contains no side effects. Statements like STAT_PROCCALL or assignment to higher variables cause (or at least indicate) side effects, so continuing with the compilation would probably not lead to a correct result.</p>
 
+
+<ul>
+<li><p>Q: Why is a given logic function or logic template not applied?</p>
+
+</li>
+</ul>
+<p>A: There are various possible reasons for this:</p>
+
+
+<ul>
+<li><p>Compiler hints, hoisting, and deduplication are applied after the rule phase, so even if the logic would apply to then final result, it might not apply to the intermediate result.</p>
+
+</li>
+<li><p>The compiler might not be able to decide a required equality of expressions because it cannot decide the equality of arbitrary functions.</p>
+
+</li>
+<li><p>If the expression is part of a call to <code class="code">CAP_JIT_INCOMPLETE_LOGIC</code>, this shows that it has not fully run through all logic functions/templates.</p>
+
+</li>
+</ul>
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Next Chapter]</a>&nbsp;  </div>
 

@@ -213,11 +213,12 @@
   
   [1X1.5-1 CapJitCompiledCAPOperationAsEnhancedSyntaxTree[101X
   
-  [33X[1;0Y[29X[2XCapJitCompiledCAPOperationAsEnhancedSyntaxTree[102X( [3Xcat[103X, [3Xoperation_name[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XCapJitCompiledCAPOperationAsEnhancedSyntaxTree[102X( [3Xcat[103X, [3Xoperation_name[103X, [3Xpost_processing_enabled[103X ) [32X function[133X
   
   [33X[0;0YA  special  version  of  [2XCapJitCompiledFunctionAsEnhancedSyntaxTree[102X  ([14X1.5-3[114X)
-  compiling the operation given by [3Xoperation_name[103X in [3Xcat[103X (with post-processing
-  disabled).[133X
+  compiling  the  operation  given  by  [3Xoperation_name[103X  in  [3Xcat[103X.  The  boolean
+  [3Xpost_processing_enabled[103X   decides   whether   the   tree   before  or  after
+  post-processing should be returned.[133X
   
   [1X1.5-2 CapJitCompiledFunction[101X
   
@@ -238,14 +239,21 @@
   
   [1X1.5-3 CapJitCompiledFunctionAsEnhancedSyntaxTree[101X
   
-  [33X[1;0Y[29X[2XCapJitCompiledFunctionAsEnhancedSyntaxTree[102X( [3Xfunc[103X, [3Xpost_processing_enabled[103X[, [3Xtype_signature[103X] ) [32X function[133X
+  [33X[1;0Y[29X[2XCapJitCompiledFunctionAsEnhancedSyntaxTree[102X( [3Xfunc[103X, [3Xpost_processing[103X[, [3Xtype_signature[103X] ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
   [33X[0;0YLike  [2XCapJitCompiledFunction[102X ([14X1.5-2[114X), but returns an enhanced syntax tree of
   the  compiled  function.  [3Xfunc[103X must not be an operation or a kernel function
-  because  those  cannot  properly be represented as a syntax tree. The second
-  argument  can  be  used  to disable post-processing, e.g. the application of
-  compiler hints.[133X
+  because   those   cannot   properly   be   represented  as  a  syntax  tree.
+  [3Xpost_processing[103X can be one of the following strings:[133X
+  
+  [30X    [33X[0;6Y[10X"with_post_processing"[110X: The post-processing step, e.g. the application
+        of compiler hints, is executed.[133X
+  
+  [30X    [33X[0;6Y[10X"without_post_processing"[110X: The post-processing step is not executed.[133X
+  
+  [30X    [33X[0;6Y[10X"with_and_without_post_processing"[110X:  A  pair of trees is returned: The
+        second tree with post-processing applied, the first tree without.[133X
   
   
   [1X1.6 [33X[0;0YGiving hints to the compiler[133X[101X
@@ -420,4 +428,19 @@
   that  the  code  contains  no side effects. Statements like STAT_PROCCALL or
   assignment to higher variables cause (or at least indicate) side effects, so
   continuing with the compilation would probably not lead to a correct result.[133X
+  
+  [30X    [33X[0;6YQ: Why is a given logic function or logic template not applied?[133X
+  
+  [33X[0;0YA: There are various possible reasons for this:[133X
+  
+  [30X    [33X[0;6YCompiler hints, hoisting, and deduplication are applied after the rule
+        phase, so even if the logic would apply to then final result, it might
+        not apply to the intermediate result.[133X
+  
+  [30X    [33X[0;6YThe  compiler  might  not  be  able  to  decide a required equality of
+        expressions  because  it  cannot  decide  the  equality  of  arbitrary
+        functions.[133X
+  
+  [30X    [33X[0;6YIf  the expression is part of a call to [10XCAP_JIT_INCOMPLETE_LOGIC[110X, this
+        shows that it has not fully run through all logic functions/templates.[133X
   
