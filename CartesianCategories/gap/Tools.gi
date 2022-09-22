@@ -239,6 +239,9 @@ WriteFileForClosedMonoidalStructure(
                                ## InternalHomToTensorProductAdjunctionMap
                                [ "dual_operation := \"InternalCoHomToTensorProductAdjunctionMap\"",
                                  "dual_operation := \"CoexponentialToCoproductAdjunctionMap\"" ],
+                               ## InternalHomToTensorProductAdjunctionMapWithGivenTensorProduct
+                               [ "dual_operation := \"InternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct\"",
+                                 "dual_operation := \"CoexponentialToCoproductAdjunctionMapWithGivenCoproduct\"" ],
                                ## IsomorphismFromDualObjectToInternalHomIntoTensorUnit
                                [ "dual_operation := \"IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject\"",
                                  "dual_operation := \"IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject\"" ],
@@ -302,6 +305,9 @@ WriteFileForClosedMonoidalStructure(
                                ## TensorProductToInternalHomAdjunctionMap
                                [ "dual_operation := \"TensorProductToInternalCoHomAdjunctionMap\"",
                                  "dual_operation := \"CoproductToCoexponentialAdjunctionMap\"" ],
+                               ## TensorProductToInternalHomAdjunctionMapWithGivenInternalHom
+                               [ "dual_operation := \"TensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom\"",
+                                 "dual_operation := \"CoproductToCoexponentialAdjunctionMapWithGivenCoexponential\"" ],
                                ## UniversalPropertyOfDual
                                [ "dual_operation := \"UniversalPropertyOfCoDual\"",
                                  "dual_operation := \"UniversalPropertyOfCocartesianDual\"" ],
@@ -625,6 +631,9 @@ WriteFileForCoclosedMonoidalStructure(
                                ## InternalCoHomToTensorProductAdjunctionMap
                                [ "dual_operation := \"InternalHomToTensorProductAdjunctionMap\"",
                                  "dual_operation := \"ExponentialToDirectProductAdjunctionMap\"" ],
+                               ## InternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct
+                               [ "dual_operation := \"InternalHomToTensorProductAdjunctionMapWithGivenTensorProduct\"",
+                                 "dual_operation := \"ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct\"" ],
                                ## IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject
                                [ "dual_operation := \"IsomorphismFromDualObjectToInternalHomIntoTensorUnit\"",
                                  "dual_operation := \"IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject\"" ],
@@ -688,6 +697,9 @@ WriteFileForCoclosedMonoidalStructure(
                                ## TensorProductToInternalCoHomAdjunctionMap
                                [ "dual_operation := \"TensorProductToInternalHomAdjunctionMap\"",
                                  "dual_operation := \"DirectProductToExponentialAdjunctionMap\"" ],
+                               ## TensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom
+                               [ "dual_operation := \"TensorProductToInternalHomAdjunctionMapWithGivenInternalHom\"",
+                                 "dual_operation := \"DirectProductToExponentialAdjunctionMapWithGivenExponential\"" ],
                                ## UniversalPropertyOfCoDual
                                [ "dual_operation := \"UniversalPropertyOfDual\"",
                                  "dual_operation := \"UniversalPropertyOfCartesianDual\"" ],
