@@ -1122,6 +1122,22 @@ end
 function ( x_1 )
     return 1;
 end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function ( list_of_lists )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  return Length( Concatenation( list_of_lists ) ); end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitAppliedLogic( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );</span>
+function ( list_of_lists_1 )
+    return Sum( List( list_of_lists_1, Length ) );
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function ( list1, list2, list3 )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  return Length( Concatenation( list1, list2, list3 ) ); end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitAppliedLogic( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );</span>
+function ( list1_1, list2_1, list3_1 )
+    return Sum( [ Length( list1_1 ), Length( list2_1 ), Length( list3_1 ) ] );
+end
 </pre></div>
 
 

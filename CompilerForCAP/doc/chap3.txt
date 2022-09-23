@@ -1074,6 +1074,22 @@
     [4X[28Xfunction ( x_1 )[128X[104X
     [4X[28X    return 1;[128X[104X
     [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27Xfunc := function ( list_of_lists )[127X[104X
+    [4X[25X>[125X [27X  return Length( Concatenation( list_of_lists ) ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := CapJitAppliedLogic( tree );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE( tree ) );[127X[104X
+    [4X[28Xfunction ( list_of_lists_1 )[128X[104X
+    [4X[28X    return Sum( List( list_of_lists_1, Length ) );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27Xfunc := function ( list1, list2, list3 )[127X[104X
+    [4X[25X>[125X [27X  return Length( Concatenation( list1, list2, list3 ) ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := CapJitAppliedLogic( tree );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE( tree ) );[127X[104X
+    [4X[28Xfunction ( list1_1, list2_1, list3_1 )[128X[104X
+    [4X[28X    return Sum( [ Length( list1_1 ), Length( list2_1 ), Length( list3_1 ) ] );[128X[104X
+    [4X[28Xend[128X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
