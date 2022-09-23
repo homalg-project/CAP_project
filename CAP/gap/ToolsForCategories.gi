@@ -1513,11 +1513,7 @@ InstallGlobalFunction( HandlePrecompiledTowers, function ( category, underlying_
     
 end );
 
-InstallGlobalFunction( CAP_JIT_INCOMPLETE_LOGIC, function ( value )
-    
-    return value;
-    
-end );
+InstallGlobalFunction( CAP_JIT_INCOMPLETE_LOGIC, IdFunc );
 
 ##
 InstallGlobalFunction( ListWithKeys, function ( list, func )
