@@ -80,6 +80,8 @@ InstallMethod( AdelmanCategory,
     
     INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY( adelman_category );
     
+    HandlePrecompiledTowers( adelman_category, underlying_category, "AdelmanCategory" );
+    
     Finalize( adelman_category );
     
     return adelman_category;
