@@ -122,4 +122,24 @@ Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
 #!     return 1;
 #! end
 
+func := function ( list_of_lists )
+  return Length( Concatenation( list_of_lists ) ); end;;
+
+tree := ENHANCED_SYNTAX_TREE( func );;
+tree := CapJitAppliedLogic( tree );;
+Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
+#! function ( list_of_lists_1 )
+#!     return Sum( List( list_of_lists_1, Length ) );
+#! end
+
+func := function ( list1, list2, list3 )
+  return Length( Concatenation( list1, list2, list3 ) ); end;;
+
+tree := ENHANCED_SYNTAX_TREE( func );;
+tree := CapJitAppliedLogic( tree );;
+Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
+#! function ( list1_1, list2_1, list3_1 )
+#!     return Sum( [ Length( list1_1 ), Length( list2_1 ), Length( list3_1 ) ] );
+#! end
+
 #! @EndExample
