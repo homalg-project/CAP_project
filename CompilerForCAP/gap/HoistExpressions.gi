@@ -17,7 +17,7 @@ InstallGlobalFunction( CapJitHoistedBindings, function ( tree )
 end );
 
 InstallGlobalFunction( CAP_JIT_INTERNAL_HOISTED_EXPRESSIONS_OR_BINDINGS, function ( tree, only_hoist_bindings )
-  local expressions_to_hoist, references_to_function_variables, result_func, additional_arguments_func, pre_func;
+  local expressions_to_hoist, references_to_function_variables, pre_func, result_func, additional_arguments_func;
     
     # functions and hoisted variables will be modified inline
     tree := StructuralCopy( tree );
@@ -235,5 +235,357 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_HOISTED_EXPRESSIONS_OR_BINDINGS, functio
     end;
     
     return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+    
+end );
+
+InstallValue( CAP_JIT_EXPENSIVE_FUNCTION_NAMES, [ ] );
+
+InstallGlobalFunction( CapJitExtractedExpensiveOperationsFromLoops, function ( tree )
+  local EXTRACT_EXPRESSIONS;
+    
+    # functions and hoisted variables will be modified inline
+    tree := StructuralCopy( tree );
+    
+    EXTRACT_EXPRESSIONS := function ( tree, func_stack, domain_infos )
+      local pre_func, result_func;
+        
+        pre_func := function ( tree, additional_arguments )
+            
+            if tree.type = "EXPR_DECLARATIVE_FUNC" then
+                
+                if not IsIdenticalObj( tree, Last( func_stack ) ) then
+                    
+                    # manual recursion in result_func
+                    return fail;
+                    
+                fi;
+                
+            fi;
+            
+            if CapJitIsCallToGlobalFunction( tree, gvar -> true ) then
+                
+                if tree.funcref.gvar in [ "List", "Sum", "Product", "ForAll", "ForAny", "Number", "Filtered", "First", "Last" ] and tree.args.length = 2 and tree.args.2.type = "EXPR_DECLARATIVE_FUNC" then
+                    
+                    Assert( 0, tree.args.2.narg = 1 );
+                    
+                    # If expressions depend on bindings, we cannot hoist them without also hoisting the binding -> only consider fully inlined functions for now.
+                    if Length( tree.args.2.nams ) = 2 then
+                        
+                        # manual recursion in result_func
+                        return fail;
+                        
+                    fi;
+                    
+                elif ForAny( tree.args, a -> a.type = "EXPR_DECLARATIVE_FUNC" ) and not tree.funcref.gvar in [ "ListN", "Iterated", "CapFixpoint" ] then
+                    
+                    # COVERAGE_IGNORE_NEXT_LINE
+                    Print( "WARNING: Could not detect domain of function in call of ", tree.funcref.gvar, ". Please write a bug report including this message.\n" );
+                    
+                fi;
+                
+            fi;
+            
+            return tree;
+            
+        end;
+        
+        result_func := function ( tree, result, keys, additional_arguments )
+          local hoisted_expression, levels, domain_result, func_result, level, orig, key;
+            
+            hoisted_expression := function ( expr, levels )
+              local old_length, new_length, target_level, func, loop_func, info, new_variable_name, value, new_expr, level, pos, name;
+                
+                if not StartsWith( expr.type, "EXPR_" ) then
+                    
+                    return expr;
+                    
+                fi;
+                
+                if expr.type in [ "EXPR_REF_FVAR", "EXPR_REF_GVAR", "EXPR_DECLARATIVE_FUNC", "EXPR_INT", "EXPR_STRING", "EXPR_TRUE", "EXPR_FALSE" ] then
+                    
+                    return expr;
+                    
+                fi;
+                
+                levels := ShallowCopy( levels );
+                
+                # we never hoist to level 0 -> always implicitly depend on level 1
+                AddSet( levels, 1 );
+                
+                # recursively collect all levels on which expr depends
+                old_length := 0;
+                new_length := Length( levels );
+                while old_length <> new_length do
+                    
+                    for level in levels do
+                        
+                        if domain_infos[level] <> fail then
+                            
+                            levels := Union( levels, domain_infos[level].domain_levels );
+                            
+                        fi;
+                        
+                    od;
+                    
+                    old_length := new_length;
+                    new_length := Length( levels );
+                    
+                od;
+                
+                # find longest prefix without missing levels (as long as the domain is known)
+                for pos in Reversed( [ 1 .. Length( levels ) ] ) do
+                    
+                    target_level := levels[pos];
+                    
+                    if pos = target_level or domain_infos[target_level] = fail then
+                        
+                        break;
+                        
+                    fi;
+                    
+                od;
+                
+                Assert( 0, target_level > 0 );
+                
+                func := func_stack[target_level];
+                levels := Filtered( levels, l -> l > target_level );
+                
+                # if we would hoist to the current level, do nothing
+                if target_level = Length( func_stack ) then
+                    
+                    Assert( 0, IsEmpty( levels ) );
+                    
+                    return expr;
+                    
+                fi;
+                
+                for level in Reversed( levels ) do
+                    
+                    loop_func := func_stack[level];
+                    
+                    info := domain_infos[level];
+                    
+                    if not info.is_prepared then
+                        
+                        info.is_prepared := true;
+                        
+                        Assert( 0, info.funccall.funcref.gvar in [ "List", "Sum", "Product", "ForAll", "ForAny", "Number", "Filtered", "First", "Last" ] and info.funccall.args.length = 2 and info.funccall.args.2.type = "EXPR_DECLARATIVE_FUNC" );
+                        Assert( 0, info.funccall.args.2.narg = 1 );
+                        Assert( 0, Length( info.funccall.args.2.nams ) = 2 );
+                        
+                        # prepare funccall
+                        info.funccall.funcref.gvar := Concatenation( info.funccall.funcref.gvar, "WithKeys" );
+                        
+                        info.funccall.args.2.narg := 2;
+                        Add( info.funccall.args.2.nams, "key", 1 );
+                        
+                        # hoist domain
+                        Assert( 0, IsIdenticalObj( info.funccall.args.1, info.domain ) );
+                        
+                        if info.domain_is_expensive then
+                            
+                            info.funccall.args.1 := hoisted_expression( info.funccall.args.1, info.domain_levels );
+                            
+                        fi;
+                        
+                    fi;
+                    
+                    Assert( 0, loop_func.narg = 2 );
+                    Assert( 0, Length( loop_func.nams ) >= 3 );
+                    Assert( 0, loop_func.nams[1] = "key" );
+                    Assert( 0, loop_func.nams[3] = "RETURN_VALUE" );
+                    
+                    # The check in pre_func makes sure that all domains are fully inlined at the beginning.
+                    # Thus, if `loop_func` has proper bindings, the values of those must be hoisted expressions
+                    # and those expressions must either depend on all levels until `level` or `domain_infos[level] = fail`.
+                    # By the construction above, `domain_infos[level] <> fail` and `expr` does not depend on all levels until `level` and thus
+                    # cannot depend on the values of the bindings of `loop_func`.
+                    # Thus, we can simply use the first three nams for the newly created function below.
+                    
+                    expr := rec(
+                        type := "EXPR_FUNCCALL",
+                        funcref := rec(
+                            type := "EXPR_REF_GVAR",
+                            gvar := "ListWithKeys",
+                        ),
+                        args := AsSyntaxTreeList( [
+                            info.domain,
+                            rec(
+                                type := "EXPR_DECLARATIVE_FUNC",
+                                id := loop_func.id,
+                                narg := 2,
+                                variadic := false,
+                                nams := loop_func.nams{[ 1 .. 3 ]},
+                                bindings := rec(
+                                    type := "FVAR_BINDING_SEQ",
+                                    names := [ "RETURN_VALUE" ],
+                                    BINDING_RETURN_VALUE := expr,
+                                ),
+                            ),
+                        ] ),
+                    );
+                    
+                od;
+                
+                new_variable_name := fail;
+                
+                for name in func.bindings.names do
+                    
+                    # We cannot reuse the return value.
+                    if name = "RETURN_VALUE" then
+                        
+                        continue;
+                        
+                    fi;
+                    
+                    value := CapJitValueOfBinding( func.bindings, name );
+                    
+                    Assert( 0, not IsIdenticalObj( value, expr ) ); # this would mean that we hoist to the same level, but this is excluded above
+                    
+                    if CapJitIsEqualForEnhancedSyntaxTrees( value, expr ) then
+                        
+                        new_variable_name := name;
+                        
+                        break;
+                        
+                    fi;
+                    
+                od;
+                
+                if new_variable_name = fail then
+                    
+                    new_variable_name := Concatenation( "hoisted_", String( CapJitGetNextUnusedVariableID( func ) ) );
+                    
+                    func.nams := Concatenation( func.nams, [ new_variable_name ] );
+                    
+                    CapJitAddBinding( func.bindings, new_variable_name, CapJitCopyWithNewFunctionIDs( expr ) );
+                    
+                fi;
+                
+                new_expr := rec(
+                    type := "EXPR_REF_FVAR",
+                    func_id := func.id,
+                    name := new_variable_name,
+                );
+                
+                for level in levels do
+                    
+                    loop_func := func_stack[level];
+                    
+                    # some of these list accesses can usually be hoisted, but we leave this to the generic hoisting afterwards
+                    new_expr := rec(
+                        type := "EXPR_FUNCCALL",
+                        funcref := rec(
+                            type := "EXPR_REF_GVAR",
+                            gvar := "[]",
+                        ),
+                        args := AsSyntaxTreeList( [
+                            new_expr,
+                            rec(
+                                type := "EXPR_REF_FVAR",
+                                func_id := loop_func.id,
+                                name := "key",
+                            ),
+                        ] ),
+                    );
+                    
+                od;
+                
+                return new_expr;
+                
+            end;
+            
+            if result = fail then
+                
+                if tree.type = "EXPR_DECLARATIVE_FUNC" then
+                    
+                    # recurse with unknown domain
+                    return EXTRACT_EXPRESSIONS( tree, Concatenation( func_stack, [ tree ] ), Concatenation( domain_infos, [ fail ] ) );
+                    
+                else
+                    
+                    Assert( 0, CapJitIsCallToGlobalFunction( tree, gvar -> gvar in [ "List", "Sum", "Product", "ForAll", "ForAny", "Number", "Filtered", "First", "Last" ] ) );
+                    Assert( 0, tree.args.length = 2 );
+                    Assert( 0, tree.args.2.type = "EXPR_DECLARATIVE_FUNC" );
+                    
+                    orig := tree.args.1;
+                    
+                    domain_result := EXTRACT_EXPRESSIONS( tree.args.1, func_stack, domain_infos );
+                    
+                    func_result := EXTRACT_EXPRESSIONS( tree.args.2, Concatenation( func_stack, [ tree.args.2 ] ), Concatenation( domain_infos, [ rec( is_prepared := false, funccall := tree, domain := tree.args.1, domain_levels := domain_result.levels, domain_is_expensive := domain_result.is_expensive ) ] ) );
+                    
+                    # if the domain has been hoisted by the call to `EXTRACT_EXPRESSIONS`, it is not expensive anymore
+                    if not IsIdenticalObj( orig, tree.args.1 ) then
+                        
+                        domain_result.is_expensive := false;
+                        
+                    fi;
+                    
+                    return rec( levels := Union( domain_result.levels, func_result.levels ), is_expensive := domain_result.is_expensive or func_result.is_expensive );
+                    
+                fi;
+                
+            else
+                
+                levels := Union( List( keys, name -> result.(name).levels ) );
+                
+                if tree.type = "EXPR_REF_FVAR" then
+                    
+                    level := PositionProperty( func_stack, f -> f.id = tree.func_id );
+                    
+                    Assert( 0, level <> fail );
+                    
+                    # references to variables always restrict the scope to the corresponding function
+                    AddSet( levels, level );
+                    
+                    # We could also add the domain levels here, but that would lead to larger chunks being hoisted which hinders deduplication.
+                    
+                elif tree.type = "FVAR_BINDING_SEQ" then
+                    
+                    # bindings restrict the scope to the current function
+                    AddSet( levels, Length( func_stack ) );
+                    
+                elif tree.type = "EXPR_DECLARATIVE_FUNC" then
+                    
+                    # a function binds its variables, so the level of the function variables can be ignored
+                    RemoveSet( levels, Length( func_stack ) );
+                    
+                fi;
+                
+                for key in keys do
+                    
+                    # We could exclude level 1 in the comparison, but that would lead to larger chunks being hoisted which hinders deduplication,
+                    # and only affects code independent of the input which should be rare.
+                    # Additionally, in the future we would like to hoist to level 0.
+                    if result.(key).is_expensive and levels <> result.(key).levels then # result.(key).levels is a subset of levels, so this is equivalent to being a proper subset
+                        
+                        orig := tree.(key);
+                        
+                        tree.(key) := hoisted_expression( tree.(key), result.(key).levels );
+                        
+                        if not IsIdenticalObj( orig, tree.(key) ) then
+                            
+                            # if this was actually hoisted, the result is not expensive anymore
+                            result.(key).is_expensive := false;
+                            
+                        fi;
+                        
+                    fi;
+                    
+                od;
+                
+                return rec( levels := levels, is_expensive := ForAny( keys, key -> result.(key).is_expensive ) or CapJitIsCallToGlobalFunction( tree, gvar -> gvar in CAP_JIT_EXPENSIVE_FUNCTION_NAMES ) );
+                
+            fi;
+            
+        end;
+        
+        return CapJitIterateOverTree( tree, pre_func, result_func, ReturnTrue, true );
+        
+    end;
+    
+    EXTRACT_EXPRESSIONS( tree, [ ], [ ] );
+    
+    return tree;
     
 end );
