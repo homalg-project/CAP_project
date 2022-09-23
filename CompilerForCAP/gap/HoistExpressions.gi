@@ -23,7 +23,37 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_HOISTED_EXPRESSIONS_OR_BINDINGS, functio
     tree := StructuralCopy( tree );
     
     expressions_to_hoist := rec( );
-    references_to_function_variables := rec( );
+    
+    if only_hoist_bindings then
+        
+        references_to_function_variables := rec( );
+        
+    fi;
+    
+    pre_func := function ( tree, additional_arguments )
+      local name;
+        
+        if tree.type = "EXPR_DECLARATIVE_FUNC" then
+            
+            expressions_to_hoist.(tree.id) := [ ];
+            
+            if only_hoist_bindings then
+                
+                references_to_function_variables.(tree.id) := rec( );
+                
+                for name in tree.nams do
+                    
+                    references_to_function_variables.(tree.id).(name) := [ ];
+                    
+                od;
+                
+            fi;
+            
+        fi;
+        
+        return tree;
+        
+    end;
     
     result_func := function ( tree, result, keys, func_stack )
       local levels, level, type_matches, pos, func_id, name;
@@ -35,18 +65,6 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_HOISTED_EXPRESSIONS_OR_BINDINGS, functio
             # if EXPR_REF_FVAR references a function argument, `result` will be a record
             if only_hoist_bindings and IsList( result ) then
                 
-                if not IsBound( references_to_function_variables.(tree.func_id) ) then
-                    
-                    references_to_function_variables.(tree.func_id) := rec( );
-                    
-                fi;
-                
-                if not IsBound( references_to_function_variables.(tree.func_id).(tree.name) ) then
-                    
-                    references_to_function_variables.(tree.func_id).(tree.name) := [ ];
-                    
-                fi;
-                
                 Add( references_to_function_variables.(tree.func_id).(tree.name), tree );
                 
                 return result;
@@ -54,17 +72,17 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_HOISTED_EXPRESSIONS_OR_BINDINGS, functio
             fi;
             
             # references to variables always restrict the scope to the corresponding function
-            Add( levels, PositionProperty( func_stack, f -> f.id = tree.func_id ) );
+            AddSet( levels, PositionProperty( func_stack, f -> f.id = tree.func_id ) );
             
         elif tree.type = "FVAR_BINDING_SEQ" then
             
             # bindings restrict the scope to the current function
-            Add( levels, Length( func_stack ) );
+            AddSet( levels, Length( func_stack ) );
             
         elif tree.type = "EXPR_DECLARATIVE_FUNC" then
             
             # a function binds its variables, so the level of the function variables can be ignored (at this point, the function stack does not yet include the current func)
-            levels := Difference( levels, [ Length( func_stack ) + 1 ] );
+            RemoveSet( levels, Length( func_stack ) + 1 );
             
         fi;
         
@@ -98,12 +116,6 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_HOISTED_EXPRESSIONS_OR_BINDINGS, functio
                 
                 func_id := func_stack[pos].id;
                 
-                if not IsBound( expressions_to_hoist.(func_id) ) then
-                    
-                    expressions_to_hoist.(func_id) := [ ];
-                    
-                fi;
-                
                 Add( expressions_to_hoist.(func_id), rec(
                     parent := tree,
                     key := name,
@@ -122,8 +134,6 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_HOISTED_EXPRESSIONS_OR_BINDINGS, functio
         
         if tree.type = "EXPR_DECLARATIVE_FUNC" then
             
-            Assert( 0, IsBound( tree.id ) );
-            
             return Concatenation( func_stack, [ tree ] );
             
         fi;
@@ -133,13 +143,13 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_HOISTED_EXPRESSIONS_OR_BINDINGS, functio
     end;
     
     # populate `expressions_to_hoist`
-    CapJitIterateOverTreeWithCachedBindingResults( tree, ReturnFirst, result_func, additional_arguments_func, [ ] );
+    CapJitIterateOverTreeWithCachedBindingResults( tree, pre_func, result_func, additional_arguments_func, [ ] );
     
     # now actually hoist the expressions
     pre_func := function ( tree, additional_arguments )
       local id, info, parent, key, expr, new_variable_name, to_delete, info2, old_variable_name, old_func, i, ref;
         
-        if tree.type = "EXPR_DECLARATIVE_FUNC" and IsBound( expressions_to_hoist.(tree.id) ) then
+        if tree.type = "EXPR_DECLARATIVE_FUNC" then
             
             id := CapJitGetNextUnusedVariableID( tree );
             
@@ -175,18 +185,14 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_HOISTED_EXPRESSIONS_OR_BINDINGS, functio
                             
                             old_func := info2.old_func;
                             
-                            if IsBound( references_to_function_variables.(info2.old_func.id) ) and IsBound( references_to_function_variables.(info2.old_func.id).(old_variable_name) ) then
+                            for ref in references_to_function_variables.(info2.old_func.id).(old_variable_name) do
                                 
-                                for ref in references_to_function_variables.(info2.old_func.id).(old_variable_name) do
-                                    
-                                    Assert( 0, ref.type = "EXPR_REF_FVAR" );
-                                    
-                                    ref.func_id := tree.id;
-                                    ref.name := new_variable_name;
-                                    
-                                od;
+                                Assert( 0, ref.type = "EXPR_REF_FVAR" );
                                 
-                            fi;
+                                ref.func_id := tree.id;
+                                ref.name := new_variable_name;
+                                
+                            od;
                             
                             # drop old binding
                             Remove( info2.old_func.nams, Position( info2.old_func.nams, old_variable_name ) );
