@@ -210,6 +210,89 @@ CapJitAddLogicFunction( function ( tree )
     
 end );
 
+# Length( Concatenation( ... ) ) => Sum( ... )
+CapJitAddLogicFunction( function ( tree )
+  local pre_func;
+    
+    Info( InfoCapJit, 1, "####" );
+    Info( InfoCapJit, 1, "Apply logic for Length of a Concatenation." );
+    
+    pre_func := function ( tree, additional_arguments )
+      local args;
+        
+        if CapJitIsCallToGlobalFunction( tree, "Length" ) and tree.args.length = 1 and CapJitIsCallToGlobalFunction( tree.args.1, "Concatenation" ) then
+            
+            args := tree.args.1.args;
+            
+            if args.length = 1 then
+                
+                # Length( Concatenation( list ) ) -> Sum( List( list, Length ) )
+                
+                tree := rec(
+                    type := "EXPR_FUNCCALL",
+                    funcref := rec(
+                        type := "EXPR_REF_GVAR",
+                        gvar := "Sum",
+                    ),
+                    args := AsSyntaxTreeList( [
+                        rec(
+                            type := "EXPR_FUNCCALL",
+                            funcref := rec(
+                                type := "EXPR_REF_GVAR",
+                                gvar := "List",
+                            ),
+                            args := AsSyntaxTreeList( [
+                                args.1,
+                                rec(
+                                    type := "EXPR_REF_GVAR",
+                                    gvar := "Length",
+                                ),
+                            ] ),
+                        ),
+                    ] ),
+                );
+                
+            else
+                
+                # Length( Concatenation( list1, list2, ... ) ) -> Sum( [ Length( list1 ), Length( list2 ), ... ] )
+                
+                tree := rec(
+                    type := "EXPR_FUNCCALL",
+                    funcref := rec(
+                        type := "EXPR_REF_GVAR",
+                        gvar := "Sum",
+                    ),
+                    args := AsSyntaxTreeList( [
+                        rec(
+                            type := "EXPR_LIST",
+                            list := List( args, a ->
+                                rec(
+                                    type := "EXPR_FUNCCALL",
+                                    funcref := rec(
+                                        type := "EXPR_REF_GVAR",
+                                        gvar := "Length",
+                                    ),
+                                    args := AsSyntaxTreeList( [
+                                        a,
+                                    ] ),
+                                )
+                            ),
+                        ),
+                    ] ),
+                );
+                
+            fi;
+            
+        fi;
+        
+        return tree;
+        
+    end;
+    
+    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+    
+end );
+
 # Concatenation( [ ... ] ) => Concatenation( ... )
 # Concatenation( [ a, b, ... ], [ c, d, ... ], ... ) => [ a, b, ..., c, d, ... ]
 CapJitAddLogicFunction( function ( tree )
