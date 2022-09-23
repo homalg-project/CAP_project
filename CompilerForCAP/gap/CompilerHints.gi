@@ -180,7 +180,7 @@ InstallGlobalFunction( CapJitReplacedSourceAndRangeAttributes, function ( tree, 
 end );
 
 InstallGlobalFunction( CapJitReplacedGlobalVariablesByCategoryAttributes, function ( tree, category )
-  local categories_in_tower, categories_in_tower_getters, category_attribute_values, category_attribute_values_getters, i, cat, cat_getter, attribute_names, value, pre_func, name;
+  local categories_in_tower, categories_in_tower_getters, category_attribute_values, category_attribute_values_getters, i, cat, cat_getter, attribute_names, value, getter, pre_func, name;
     
     categories_in_tower := [ category ];
     categories_in_tower_getters := [
@@ -226,37 +226,30 @@ InstallGlobalFunction( CapJitReplacedGlobalVariablesByCategoryAttributes, functi
             
             value := ValueGlobal( name )( cat );
             
-            if IsCapCategory( value ) and not ForAny( categories_in_tower, c -> IsIdenticalObj( c, value ) ) then
+            getter := rec(
+                type := "EXPR_FUNCCALL",
+                funcref := rec(
+                    type := "EXPR_REF_GVAR",
+                    gvar := name,
+                ),
+                args := AsSyntaxTreeList( [
+                    cat_getter
+                ] ),
+            );
+            
+            if IsCapCategory( value ) then
                 
-                Add( categories_in_tower, value );
-                Add( categories_in_tower_getters,
-                    rec(
-                        type := "EXPR_FUNCCALL",
-                        funcref := rec(
-                            type := "EXPR_REF_GVAR",
-                            gvar := name,
-                        ),
-                        args := AsSyntaxTreeList( [
-                            cat_getter
-                        ] ),
-                    )
-                );
+                if not ForAny( categories_in_tower, c -> IsIdenticalObj( c, value ) ) then
+                    
+                    Add( categories_in_tower, value );
+                    Add( categories_in_tower_getters, getter );
+                    
+                fi;
                 
             else
                 
                 Add( category_attribute_values, value );
-                Add( category_attribute_values_getters,
-                    rec(
-                        type := "EXPR_FUNCCALL",
-                        funcref := rec(
-                            type := "EXPR_REF_GVAR",
-                            gvar := name,
-                        ),
-                        args := AsSyntaxTreeList( [
-                            cat_getter
-                        ] ),
-                    )
-                );
+                Add( category_attribute_values_getters, getter );
                 
             fi;
             
