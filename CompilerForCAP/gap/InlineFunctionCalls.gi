@@ -59,9 +59,9 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID, function ( tree,
         
         if tree.type = "EXPR_REF_FVAR" and tree.func_id = old_func_id then
             
-            tree.func_id := new_func_id;
-            
             Assert( 0, tree.name in old_nams );
+            
+            tree.func_id := new_func_id;
             
             tree.name := new_nams[Position( old_nams, tree.name )];
             
