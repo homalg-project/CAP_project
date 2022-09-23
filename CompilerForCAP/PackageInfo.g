@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "CompilerForCAP",
 Subtitle := "Speed up computations in CAP categories",
-Version := "2022.09-10",
-Date := "22/09/2022",
+Version := "2022.09-11",
+Date := "23/09/2022",
 License := "GPL-2.0-or-later",
 
 Persons := [

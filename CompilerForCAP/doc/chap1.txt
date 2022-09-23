@@ -162,14 +162,19 @@
   
   [33X[0;0YCompiles   operations   of   the  CAP  category  returned  by  the  function
   [3Xcategory_constructor[103X applied to [3Xgiven_arguments[103X. The result is available via
-  a global function called [3Xcompiled_category_name[103X which is written to the file
-  [3Xpackage_name[103X[10X/precompiled_categories/[110X[3Xcompiled_category_name[103X[10X.gi[110X.   The  global
-  function  takes  the  same arguments as [3Xcategory_constructor[103X and returns the
-  category with the compiled functions installed as primitive operations. If a
-  list  of  operations  is given via the option [10Xoperations[110X, only operations in
-  this   list  are  precompiled.  Else  all  installed  operations  (excluding
-  operations  which  are  part  of suggested dependencies) of the category are
-  precompiled.              Furthermore,              the              options
+  a  global  function called [10XADD_FUNCTIONS_FOR_[110X[3Xcompiled_category_name[103X which is
+  written                    to                    the                    file
+  [3Xpackage_name[103X[10X/precompiled_categories/[110X[3Xcompiled_category_name[103X[10X.gi[110X  and  adds the
+  compiled  functions  to the category given as the only argument. For testing
+  purposes,  there  is  also  a  global function called [3Xcompiled_category_name[103X
+  which  takes  the  same  arguments  as  [3Xcategory_constructor[103X and returns the
+  category  with  the compiled functions installed (note: [3Xcategory_constructor[103X
+  is  called  with [10Xno_precompiled_code := true[110X, which might lead to uncompiled
+  code  being present in lower categories of a tower of categories). If a list
+  of  operations  is  given via the option [10Xoperations[110X, only operations in this
+  list  are  precompiled.  Else all installed operations (excluding operations
+  which  are  part of suggested dependencies) of the category are precompiled.
+  Furthermore,                           the                           options
   [10Xnumber_of_objectified_objects_in_data_structure_of_object[110X,
   [10Xnumber_of_objectified_morphisms_in_data_structure_of_object[110X,
   [10Xnumber_of_objectified_objects_in_data_structure_of_morphism[110X,             and
