@@ -9,8 +9,12 @@
 
 #! @Description
 #!   Compiles operations of the CAP category returned by the function <A>category_constructor</A> applied to <A>given_arguments</A>.
-#!   The result is available via a global function called <A>compiled_category_name</A> which is written to the file <A>package_name</A>`/precompiled_categories/`<A>compiled_category_name</A>`.gi`.
-#!   The global function takes the same arguments as <A>category_constructor</A> and returns the category with the compiled functions installed as primitive operations.
+#!   The result is available via a global function called `ADD_FUNCTIONS_FOR_`<A>compiled_category_name</A>
+#!   which is written to the file <A>package_name</A>`/precompiled_categories/`<A>compiled_category_name</A>`.gi`
+#!   and adds the compiled functions to the category given as the only argument.
+#!   For testing purposes, there is also a global function called <A>compiled_category_name</A> which takes the same arguments as <A>category_constructor</A>
+#!   and returns the category with the compiled functions installed (note: <A>category_constructor</A> is called with `no_precompiled_code := true`, which might lead to
+#!   uncompiled code being present in lower categories of a tower of categories).
 #!   If a list of operations is given via the option `operations`, only operations in this list are precompiled.
 #!   Else all installed operations (excluding operations which are part of suggested dependencies) of the category are precompiled.
 #!   Furthermore, the options `number_of_objectified_objects_in_data_structure_of_object`, `number_of_objectified_morphisms_in_data_structure_of_object`,
