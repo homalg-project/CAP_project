@@ -605,9 +605,9 @@ BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR", function( without
     
     with_given_via_without_given_function := EvalString( ReplacedStringViaRecord(
         """
-        function( with_given_arguments )
+        function( with_given_arguments... )
             
-            return without_given_name( without_given_arguments );
+            return without_given_name( without_given_arguments... );
             
         end
         """,
@@ -643,9 +643,9 @@ BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR", function( without
     
     without_given_via_with_given_function := EvalString( ReplacedStringViaRecord(
         """
-        function( without_given_arguments )
+        function( without_given_arguments... )
             
-            return with_given_name( with_given_arguments );
+            return with_given_name( with_given_arguments... );
             
         end
         """,

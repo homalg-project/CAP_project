@@ -127,12 +127,12 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
         
         func_string :=
             """
-            function ( input_arguments )
+            function ( input_arguments... )
               local dual_preprocessor_func, prep_arg, result, dual_postprocessor_func;
                 
                 preprocessor_string
                 
-                result := dual_operation_name( dual_arguments );
+                result := dual_operation_name( dual_arguments... );
                 
                 postprocessor_string
                 
@@ -156,7 +156,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
             preprocessor_string := ReplacedStringViaRecord(
                 """
                 dual_preprocessor_func := dual_preprocessor_func_string;
-                prep_arg := dual_preprocessor_func( input_arguments );
+                prep_arg := dual_preprocessor_func( input_arguments... );
                 #% CAP_JIT_DROP_NEXT_STATEMENT
                 Assert( 0, IsIdenticalObj( prep_arg[1], OppositeCategory( cat ) ) );
                 """,

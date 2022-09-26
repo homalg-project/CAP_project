@@ -207,11 +207,11 @@ InstallGlobalFunction( "CAP_INTERNAL_GENERATE_CONVENIENCE_METHODS_FOR_LIMITS",
             current_string := ReplacedStringViaRecord( """
 ##
 InstallOtherMethod( functorial_name,
-                    [ filter_list ],
+                    [ filter_list... ],
                
-  function( input_arguments )
+  function( input_arguments... )
     
-    return functorial_name( source_diagram_arguments, input_arguments, range_diagram_arguments );
+    return functorial_name( source_diagram_arguments, input_arguments..., range_diagram_arguments );
     
 end );
 """,
@@ -230,11 +230,11 @@ end );
             current_string := ReplacedStringViaRecord( """
 ##
 InstallOtherMethodForCompilerForCAP( functorial_name,
-                                     [ IsCapCategory, filter_list ],
+                                     [ IsCapCategory, filter_list... ],
                     
-  function( cat, input_arguments )
+  function( cat, input_arguments... )
     
-    return functorial_name( cat, source_diagram_arguments, input_arguments, range_diagram_arguments );
+    return functorial_name( cat, source_diagram_arguments, input_arguments..., range_diagram_arguments );
     
 end );
 """,
@@ -252,11 +252,11 @@ end );
             current_string := ReplacedStringViaRecord( """
 ##
 InstallOtherMethod( functorial_with_given_name,
-               [ IsCapCategoryObject, filter_list, IsCapCategoryObject ],
+               [ IsCapCategoryObject, filter_list..., IsCapCategoryObject ],
                
-  function( source, input_arguments, range )
+  function( source, input_arguments..., range )
     
-    return functorial_with_given_name( source, source_diagram_arguments, input_arguments, range_diagram_arguments, range );
+    return functorial_with_given_name( source, source_diagram_arguments, input_arguments..., range_diagram_arguments, range );
     
 end );
 """,
@@ -275,11 +275,11 @@ end );
             current_string := ReplacedStringViaRecord( """
 ##
 InstallOtherMethodForCompilerForCAP( functorial_with_given_name,
-                                     [ IsCapCategory, IsCapCategoryObject, filter_list, IsCapCategoryObject ],
+                                     [ IsCapCategory, IsCapCategoryObject, filter_list..., IsCapCategoryObject ],
                
-  function( cat, source, input_arguments, range )
+  function( cat, source, input_arguments..., range )
     
-    return functorial_with_given_name( cat, source, source_diagram_arguments, input_arguments, range_diagram_arguments, range );
+    return functorial_with_given_name( cat, source, source_diagram_arguments, input_arguments..., range_diagram_arguments, range );
     
 end );
 """,
@@ -317,7 +317,7 @@ end );
                 if limit_colimit = "limit" then
                     
                     test_string := ReplacedStringViaRecord(
-                        "PreCompose( cat, projection_with_given( cat, source_diagram, source_object ), mu )",
+                        "PreCompose( cat, projection_with_given( cat, source_diagram..., source_object ), mu )",
                         rec(
                             projection_with_given := limit.limit_projection_with_given_name,
                             source_diagram := source_diagram_arguments_names,
@@ -328,7 +328,7 @@ end );
                 elif limit_colimit = "colimit" then
                     
                     test_string := ReplacedStringViaRecord(
-                        "PreCompose( cat, mu, injection_with_given( cat, range_diagram, range_object ) )",
+                        "PreCompose( cat, mu, injection_with_given( cat, range_diagram..., range_object ) )",
                         rec(
                             injection_with_given := limit.colimit_injection_with_given_name,
                             range_diagram := range_diagram_arguments_names,
@@ -349,7 +349,7 @@ end );
                 if limit_colimit = "limit" then
                     
                     test_string := ReplacedStringViaRecord(
-                        "List( [ 1 .. Length( L ) ], i -> PreCompose( cat, projection_with_given( cat, source_diagram, i, source_object ), L[i] ) )",
+                        "List( [ 1 .. Length( L ) ], i -> PreCompose( cat, projection_with_given( cat, source_diagram..., i, source_object ), L[i] ) )",
                         rec(
                             projection_with_given := limit.limit_projection_with_given_name,
                             source_diagram := source_diagram_arguments_names,
@@ -360,7 +360,7 @@ end );
                 elif limit_colimit = "colimit" then
                     
                     test_string := ReplacedStringViaRecord(
-                        "List( [ 1 .. Length( L ) ], i -> PreCompose( cat, L[i], injection_with_given( cat, range_diagram, i, range_object ) ) )",
+                        "List( [ 1 .. Length( L ) ], i -> PreCompose( cat, L[i], injection_with_given( cat, range_diagram..., i, range_object ) ) )",
                         rec(
                             injection_with_given := limit.colimit_injection_with_given_name,
                             range_diagram := range_diagram_arguments_names,
@@ -407,9 +407,9 @@ end );
 ##
 AddDerivationToCAP( functorial_with_given_name,
                     
-  function( input_arguments )
+  function( input_arguments... )
     
-    return universal_morphism_with_given( call_arguments );
+    return universal_morphism_with_given( call_arguments... );
     
 end : Description := "functorial_with_given_name using the universality of the limit_colimit" );
 """,
