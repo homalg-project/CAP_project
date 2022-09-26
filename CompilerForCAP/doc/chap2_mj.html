@@ -598,7 +598,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitHoistedExpressions</code>( <var class="Arg">tree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a record</p>
 
-<p>Hoists expressions which are part of but indepedent of inner functions to outer functions.</p>
+<p>Hoists expressions which are part of but indepedent of inner functions to outer functions. Assumes that there are no unused bindings (i.e., you should use <code class="func">CapJitDroppedUnusedBindings</code> (<a href="chap2_mj.html#X7F43BA10869178AC"><span class="RefLink">2.5-6</span></a>) first).</p>
 
 <p><a id="X7ADA6AEF8564A0EE" name="X7ADA6AEF8564A0EE"></a></p>
 
@@ -607,7 +607,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitHoistedBindings</code>( <var class="Arg">tree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a record</p>
 
-<p>Hoists bindings which are part of but indepedent of inner functions to outer functions.</p>
+<p>Hoists bindings which are part of but indepedent of inner functions to outer functions. Assumes that there are no unused bindings (i.e., you should use <code class="func">CapJitDroppedUnusedBindings</code> (<a href="chap2_mj.html#X7F43BA10869178AC"><span class="RefLink">2.5-6</span></a>) first).</p>
 
 <p><a id="X821BE2CE7C30674E" name="X821BE2CE7C30674E"></a></p>
 

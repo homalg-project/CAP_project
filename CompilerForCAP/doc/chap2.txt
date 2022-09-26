@@ -552,7 +552,8 @@
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
   [33X[0;0YHoists  expressions  which  are part of but indepedent of inner functions to
-  outer functions.[133X
+  outer functions. Assumes that there are no unused bindings (i.e., you should
+  use [2XCapJitDroppedUnusedBindings[102X ([14X2.5-6[114X) first).[133X
   
   [1X2.5-8 CapJitHoistedBindings[101X
   
@@ -560,7 +561,8 @@
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
   [33X[0;0YHoists bindings which are part of but indepedent of inner functions to outer
-  functions.[133X
+  functions.  Assumes  that there are no unused bindings (i.e., you should use
+  [2XCapJitDroppedUnusedBindings[102X ([14X2.5-6[114X) first).[133X
   
   [1X2.5-9 CapJitInferredDataTypes[101X
   
