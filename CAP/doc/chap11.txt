@@ -92,10 +92,10 @@
   
   [30X    [33X[0;6Y[10Xoperation_name[110X will be replaced by the name of the operation[133X
   
-  [30X    [33X[0;6Y[10Xinput_arguments[110X   will   be   replaced  by  the  [10Xinput_arguments_names[110X
+  [30X    [33X[0;6Y[10Xinput_arguments...[110X  will  be  replaced  by  the  [10Xinput_arguments_names[110X
         specified in the method name record (see [14X7.3[114X)[133X
   
-  [30X    [33X[0;6Y[10Xunderlying_arguments[110X:  If  the  constructed  category  is created from
+  [30X    [33X[0;6Y[10Xunderlying_arguments...[110X:  If  the constructed category is created from
         another          category,          [10Xunderlying_category_getter_string[110X,
         [10Xunderlying_object_getter_string[110X, and [10Xunderlying_morphism_getter_string[110X
         may  be  strings  of functions computing the underlying category (when
