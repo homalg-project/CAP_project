@@ -604,7 +604,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     AddIsWellDefinedForObjects( category,
       function( cat, object )
         
-        if not ForAll( ObjectList( object ), obj -> IsIdenticalObj( UnderlyingCategory( cat ), CapCategory( obj ) ) ) then
+        if not ForAll( ObjectList( object ), obj -> IsIdenticalObj( UnderlyingCategory( cat ), CapCategory( obj ) ) and IsWellDefinedForObjects( UnderlyingCategory( cat ), obj ) ) then
             
             return false;
             
@@ -634,14 +634,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
             
         elif not ForAll( [ 1 .. nr_rows ], i ->
                  ForAll( [ 1 .. nr_cols ], j ->
-                   IsCapCategoryMorphism( morphism[i, j] ) )
-                 ) then
-            
-            return false;
-            
-        elif not ForAll( [ 1 .. nr_rows ], i ->
-                 ForAll( [ 1 .. nr_cols ], j ->
-                   IsIdenticalObj( UnderlyingCategory( cat ), CapCategory( morphism[i, j] ) )
+                   # is a well-defined CAP category morphism in the underlying category
+                   IsCapCategoryMorphism( morphism[i, j] ) and IsIdenticalObj( UnderlyingCategory( cat ), CapCategory( morphism[i, j] ) ) and IsWellDefinedForMorphisms( UnderlyingCategory( cat ), morphism[i, j] )
                  ) 
                ) then
             

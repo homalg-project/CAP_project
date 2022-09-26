@@ -298,11 +298,11 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
     rule_phase_functions := [
         CapJitInferredDataTypes,
         CapJitAppliedLogic,
-        CapJitDroppedUnusedBindings,
         CapJitDroppedHandledEdgeCases,
         CapJitInlinedArguments,
         CapJitInlinedSimpleFunctionCalls,
         CapJitInlinedFunctionCalls,
+        CapJitDroppedUnusedBindings,
         CapJitHoistedBindings,
         CapJitOutlinedWrappedArguments,
         CapJitInlinedBindings,
