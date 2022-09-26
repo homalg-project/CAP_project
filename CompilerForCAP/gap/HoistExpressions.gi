@@ -153,6 +153,14 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_HOISTED_EXPRESSIONS_OR_BINDINGS, functio
             
             id := CapJitGetNextUnusedVariableID( tree );
             
+            if not IsBound( expressions_to_hoist.(tree.id) ) then
+                
+                # CapJitIterateOverTreeWithCachedBindingResults only visits used bindings
+                # COVERAGE_IGNORE_NEXT_LINE
+                Error( "found unused bindings, please drop unused bindings first" );
+                
+            fi;
+            
             while Length( expressions_to_hoist.(tree.id) ) > 0 do
                 
                 info := expressions_to_hoist.(tree.id)[1];
