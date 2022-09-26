@@ -19,7 +19,7 @@ InstallMethod( DummyCategory,
     category_constructor_options.supports_empty_limits := true;
     
     dummy_function := { operation_name, dummy } -> """
-        function( input_arguments )
+        function( input_arguments... )
             
             Error( "this is a dummy category without actual implementation" );
             

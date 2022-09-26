@@ -17,7 +17,7 @@ InstallGlobalFunction( CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY,
         function( operation_name, T )
             
             return """
-                function( input_arguments )
+                function( input_arguments... )
                     
                     return true;
                     
@@ -161,7 +161,7 @@ InstallGlobalFunction( TerminalCategory,
         function( name, T )
             
             return """
-                function( input_arguments )
+                function( input_arguments... )
                     
                     return ObjectConstructor( cat, [ ] );
                     
@@ -175,7 +175,7 @@ InstallGlobalFunction( TerminalCategory,
         function( name, T )
             
             return """
-                function( input_arguments )
+                function( input_arguments... )
                     
                     return MorphismConstructor( cat, top_source, [ ], top_range );
                     
@@ -278,7 +278,7 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
         function( name, T )
             
             return """
-                function( input_arguments )
+                function( input_arguments... )
                     
                     return ObjectConstructor( cat, "operation_name" );
                     
@@ -292,7 +292,7 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
         function( name, T )
             
             return """
-                function( input_arguments )
+                function( input_arguments... )
                     
                     return MorphismConstructor( cat, top_source, "operation_name", top_range );
                     

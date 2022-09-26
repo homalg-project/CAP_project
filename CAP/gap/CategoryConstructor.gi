@@ -190,27 +190,27 @@ InstallMethod( CategoryConstructor,
     
     default_func_strings := rec(
         bool := """
-            function( input_arguments )
+            function( input_arguments... )
                 
-                return operation_name( underlying_arguments );
+                return operation_name( underlying_arguments... );
                 
             end
         """,
         object := """
-            function( input_arguments )
+            function( input_arguments... )
               local underlying_result;
                 
-                underlying_result := operation_name( underlying_arguments );
+                underlying_result := operation_name( underlying_arguments... );
                 
                 return top_object_getter( cat, underlying_result );
                 
             end
         """,
         object_or_fail := """
-            function( input_arguments )
+            function( input_arguments... )
               local underlying_result;
                 
-                underlying_result := operation_name( underlying_arguments );
+                underlying_result := operation_name( underlying_arguments... );
                 
                 if underlying_result = fail then
                     
@@ -225,20 +225,20 @@ InstallMethod( CategoryConstructor,
             end
         """,
         morphism := """
-            function( input_arguments )
+            function( input_arguments... )
               local underlying_result;
                 
-                underlying_result := operation_name( underlying_arguments );
+                underlying_result := operation_name( underlying_arguments... );
                 
                 return top_morphism_getter( cat, top_source, underlying_result, top_range );
                 
             end
         """,
         morphism_or_fail := """
-            function( input_arguments )
+            function( input_arguments... )
               local underlying_result;
                 
-                underlying_result := operation_name( underlying_arguments );
+                underlying_result := operation_name( underlying_arguments... );
                 
                 if underlying_result = fail then
                     

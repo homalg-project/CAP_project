@@ -46,7 +46,7 @@ InstallGlobalFunction( "CapJitCompiledCAPOperationAsEnhancedSyntaxTree", functio
             global_variable_name := CapJitGetOrCreateGlobalVariable( function_to_compile );
             
             function_to_compile := EvalString( ReplacedStringViaRecord(
-                "{ input_arguments } -> global_variable_name( input_arguments )",
+                "{ input_arguments... } -> global_variable_name( input_arguments... )",
                 rec(
                     input_arguments := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).input_arguments_names,
                     global_variable_name := global_variable_name,

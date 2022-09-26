@@ -4290,11 +4290,11 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
             return_type := "morphism",
             # object_name
             output_source_getter_string := ReplacedStringViaRecord(
-                "object_name( arguments )",
+                "object_name( arguments... )",
                 rec( object_name := limit.limit_object_name, arguments := Concatenation( [ "cat" ], limit.functorial_source_diagram_arguments_names ) )
             ),
             output_range_getter_string := ReplacedStringViaRecord(
-                "object_name( arguments )",
+                "object_name( arguments... )",
                 rec( object_name := limit.limit_object_name, arguments := Concatenation( [ "cat" ], limit.functorial_range_diagram_arguments_names ) )
             ),
             with_given_object_position := "both",
@@ -5307,7 +5307,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
         if IsBound( current_rec.output_source_getter_string ) then
             
             current_rec.output_source_getter := EvalString( ReplacedStringViaRecord(
-                "{ arguments } -> getter",
+                "{ arguments... } -> getter",
                 rec(
                     arguments := current_rec.input_arguments_names,
                     getter := current_rec.output_source_getter_string,
@@ -5331,7 +5331,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
         if IsBound( current_rec.output_range_getter_string ) then
             
             current_rec.output_range_getter := EvalString( ReplacedStringViaRecord(
-                "{ arguments } -> getter",
+                "{ arguments... } -> getter",
                 rec(
                     arguments := current_rec.input_arguments_names,
                     getter := current_rec.output_range_getter_string,
@@ -5436,7 +5436,7 @@ InstallGlobalFunction( CAP_INTERNAL_GENERATE_DOCUMENTATION_FROM_METHOD_NAME_RECO
 # ! The arguments are a category $C$ and a function $F$.
 # ! This operation adds the given function $F$
 # ! to the category for the basic operation `function_name`.
-# ! $F: ( input_arguments ) \mapsto \mathtt{function_name}(input_arguments)$.
+# ! $F: ( input_arguments... ) \mapsto \mathtt{function_name}(input_arguments...)$.
 # ! @Returns nothing
 # ! @Arguments C, F
 DeclareOperation( "Addfunction_name",
