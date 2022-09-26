@@ -6,10 +6,10 @@
                  [1X Monoidal and monoidal (co)closed categories [101X
   
   
-                                   2022.09-07
+                                   2022.09-08
   
   
-                               22 September 2022
+                               26 September 2022
   
   
                                 Mohamed Barakat
