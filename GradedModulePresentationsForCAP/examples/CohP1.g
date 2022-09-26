@@ -16,9 +16,11 @@ Sgrmod := GradedLeftPresentations( S );
 #! The category of graded left f.p. modules over Q[x,y] (with weights [ 1, 1 ])
 InfoOfInstalledOperationsOfCategory( Sgrmod );
 #! 40 primitive operations were used to derive 198 operations for this category
-#! which constructively
+#! which algorithmically
 #! * IsMonoidalCategory
 #! * IsAbelianCategoryWithEnoughProjectives
+#! and furthermore mathematically
+#! * IsSymmetricClosedMonoidalCategory (but not yet algorithmically)
 #ListPrimitivelyInstalledOperationsOfCategory( Sgrmod );
 M := GradedFreeLeftPresentation( 2, S, [ 1, 1 ] );
 #! <An object in The category of graded left f.p. modules over Q[x,y]
@@ -72,7 +74,7 @@ CohP1 := Sgrmod / C;
 #! over Q[x,y] (with weights [ 1, 1 ]) by test function with name: is_artinian
 InfoOfInstalledOperationsOfCategory( CohP1 );
 #! 21 primitive operations were used to derive 157 operations for this category
-#! which constructively
+#! which algorithmically
 #! * IsAbelianCategory
 Sh := CanonicalProjection( CohP1 );
 #! Localization functor of The Serre quotient category of The category of graded left
