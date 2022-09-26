@@ -16,8 +16,7 @@ BindGlobal( "CAP_JIT_INTERNAL_DEFERRED_GLOBAL_VARIABLE_FILTERS", [
     "IsHomalgRingMap",
     # QPA
     "IsPath",
-    "IsPathAlgebra",
-    "IsQuotientOfPathAlgebra",
+    "IsQuiverAlgebra",
 ] );
 
 InstallGlobalFunction( "CAP_JIT_INTERNAL_LOAD_DEFERRED_GLOBAL_VARIABLE_FILTERS", function ( )
@@ -1350,23 +1349,14 @@ CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "*", [ "IsHomalgMatrix", "I
 
 # QPA operations
 CapJitAddTypeSignatureDeferred( "QPA", "VertexIndex", [ "IsQuiverVertex" ], "IsInt" );
-CapJitAddTypeSignatureDeferred( "QPA", "Representative", [ "IsQuotientOfPathAlgebraElement" ], "IsPathAlgebraElement" );
-CapJitAddTypeSignatureDeferred( "QPA", "Paths", [ "IsPathAlgebraElement" ], "rec( filter := IsList, element_type := rec( filter := IsPath ) )" );
-CapJitAddTypeSignatureDeferred( "QPA", "Paths", [ "IsQuotientOfPathAlgebraElement" ], "rec( filter := IsList, element_type := rec( filter := IsPath ) )" );
-CapJitAddTypeSignatureDeferred( "QPA", "AlgebraOfElement", [ "IsPathAlgebraElement" ], "IsPathAlgebra" );
-CapJitAddTypeSignatureDeferred( "QPA", "AlgebraOfElement", [ "IsQuotientOfPathAlgebraElement" ], "IsQuotientOfPathAlgebra" );
-CapJitAddTypeSignatureDeferred( "QPA", "ZeroImmutable", [ "IsPathAlgebra" ], "IsPathAlgebraElement" );
-CapJitAddTypeSignatureDeferred( "QPA", "ZeroImmutable", [ "IsQuotientOfPathAlgebra" ], "IsQuotientOfPathAlgebraElement" );
-CapJitAddTypeSignatureDeferred( "QPA", "PathAsAlgebraElement", [ "IsPathAlgebra", "IsPath" ], "IsPathAlgebraElement" );
-CapJitAddTypeSignatureDeferred( "QPA", "PathAsAlgebraElement", [ "IsQuotientOfPathAlgebra", "IsPath" ], "IsQuotientOfPathAlgebraElement" );
-CapJitAddTypeSignatureDeferred( "QPA", "QuiverAlgebraElement", [ "IsPathAlgebra", "IsList", "IsList" ], "IsPathAlgebraElement" );
-CapJitAddTypeSignatureDeferred( "QPA", "QuiverAlgebraElement", [ "IsQuotientOfPathAlgebra", "IsList", "IsList" ], "IsQuotientOfPathAlgebraElement" );
-CapJitAddTypeSignatureDeferred( "QPA", "IsZero", [ "IsPathAlgebraElement" ], "IsBool" );
-CapJitAddTypeSignatureDeferred( "QPA", "IsZero", [ "IsQuotientOfPathAlgebraElement" ], "IsBool" );
-CapJitAddTypeSignatureDeferred( "QPA", "+", [ "IsPathAlgebraElement", "IsPathAlgebraElement" ], "IsPathAlgebraElement" );
-CapJitAddTypeSignatureDeferred( "QPA", "+", [ "IsQuotientOfPathAlgebraElement", "IsQuotientOfPathAlgebraElement" ], "IsQuotientOfPathAlgebraElement" );
-CapJitAddTypeSignatureDeferred( "QPA", "*", [ "IsPathAlgebraElement", "IsPathAlgebraElement" ], "IsPathAlgebraElement" );
-CapJitAddTypeSignatureDeferred( "QPA", "*", [ "IsQuotientOfPathAlgebraElement", "IsQuotientOfPathAlgebraElement" ], "IsQuotientOfPathAlgebraElement" );
+CapJitAddTypeSignatureDeferred( "QPA", "Paths", [ "IsQuiverAlgebraElement" ], "rec( filter := IsList, element_type := rec( filter := IsPath ) )" );
+CapJitAddTypeSignatureDeferred( "QPA", "AlgebraOfElement", [ "IsQuiverAlgebraElement" ], "IsQuiverAlgebra" );
+CapJitAddTypeSignatureDeferred( "QPA", "ZeroImmutable", [ "IsQuiverAlgebra" ], "IsQuiverAlgebraElement" );
+CapJitAddTypeSignatureDeferred( "QPA", "PathAsAlgebraElement", [ "IsQuiverAlgebra", "IsPath" ], "IsQuiverAlgebraElement" );
+CapJitAddTypeSignatureDeferred( "QPA", "QuiverAlgebraElement", [ "IsQuiverAlgebra", "IsList", "IsList" ], "IsQuiverAlgebraElement" );
+CapJitAddTypeSignatureDeferred( "QPA", "IsZero", [ "IsQuiverAlgebraElement" ], "IsBool" );
+CapJitAddTypeSignatureDeferred( "QPA", "+", [ "IsQuiverAlgebraElement", "IsQuiverAlgebraElement" ], "IsQuiverAlgebraElement" );
+CapJitAddTypeSignatureDeferred( "QPA", "*", [ "IsQuiverAlgebraElement", "IsQuiverAlgebraElement" ], "IsQuiverAlgebraElement" );
 CapJitAddTypeSignatureDeferred( "QPA", "QuiverOfPath", [ "IsPath" ], "IsQuiver" );
 CapJitAddTypeSignatureDeferred( "QPA", "Source", [ "IsPath" ], "IsQuiverVertex" );
 CapJitAddTypeSignatureDeferred( "QPA", "Target", [ "IsPath" ], "IsQuiverVertex" );
