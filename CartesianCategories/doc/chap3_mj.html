@@ -37,6 +37,9 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7EA2684984BCCF6B">3.1-7 CodistributiveCocartesianCategoriesTest</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X78CA53ED85B4FEFF">3.1-8 DistributiveCartesianCategoriesTest</a></span>
 </div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X794F44AE78DD7CAF">3.2 <span class="Heading">InfoOfInstalledOperationsOfCategory</span></a>
+</span>
+</div>
 </div>
 
 <h3>3 <span class="Heading">Examples and Tests</span></h3>
@@ -309,6 +312,30 @@
 
 </li>
 </ul>
+<p><a id="X794F44AE78DD7CAF" name="X794F44AE78DD7CAF"></a></p>
+
+<h4>3.2 <span class="Heading">InfoOfInstalledOperationsOfCategory</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CartesianCategories", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">distributive := DummyCategory( rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  list_of_operations_to_install :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    Concatenation(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianClosedCategory,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory  ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  properties := [ "IsCartesianClosedCategory", "IsCocartesianCategory",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                  "IsSkeletalCategory" ] ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InfoOfInstalledOperationsOfCategory( distributive );</span>
+19 primitive operations were used to derive 103 operations for this category
+which algorithmically
+* IsBicartesianClosedCategory
+and furthermore mathematically
+* IsDistributiveCategory (but not yet algorithmically)
+* IsSkeletalCategory
+</pre></div>
+
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap4_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
