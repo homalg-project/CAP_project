@@ -300,10 +300,12 @@ Q[x,y]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Sgrmod := GradedLeftPresentations( S );</span>
 The category of graded left f.p. modules over Q[x,y] (with weights [ 1, 1 ])
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InfoOfInstalledOperationsOfCategory( Sgrmod );</span>
-40 primitive operations were used to derive 196 operations for this category
-which constructively
+40 primitive operations were used to derive 198 operations for this category
+which algorithmically
 * IsMonoidalCategory
 * IsAbelianCategoryWithEnoughProjectives
+and furthermore mathematically
+* IsSymmetricClosedMonoidalCategory (but not yet algorithmically)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#ListPrimitivelyInstalledOperationsOfCategory( Sgrmod );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := GradedFreeLeftPresentation( 2, S, [ 1, 1 ] );</span>
 &lt;An object in The category of graded left f.p. modules over Q[x,y]
@@ -356,8 +358,8 @@ function( M ) ... end
 The Serre quotient category of The category of graded left f.p. modules
 over Q[x,y] (with weights [ 1, 1 ]) by test function with name: is_artinian
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InfoOfInstalledOperationsOfCategory( CohP1 );</span>
-21 primitive operations were used to derive 155 operations for this category
-which constructively
+21 primitive operations were used to derive 157 operations for this category
+which algorithmically
 * IsAbelianCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Sh := CanonicalProjection( CohP1 );</span>
 Localization functor of The Serre quotient category of The category of graded left
