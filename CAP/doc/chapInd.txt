@@ -452,6 +452,10 @@
   [2XFiberProductFunctorial[102X, for IsList, IsList, IsList 6.11-15 
   [2XFiberProductFunctorialWithGivenFiberProducts[102X, for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject 6.11-16 
   [2XFiberProductOp[102X, for IsList 6.11-8 
+  [2XFilteredWithKeys[102X 9.2-45 
+  [2XFirstWithKeys[102X 9.2-46 
+  [2XForAllWithKeys[102X 9.2-42 
+  [2XForAnyWithKeys[102X 9.2-43 
   [2XFunctionCalledBeforeInstallation[102X, for IsDerivedMethod 8.2-11 
   [2XFunctorCanonicalizeZeroMorphisms[102X, for IsCapCategory 5.4-15 
   [2XFunctorCanonicalizeZeroObjects[102X, for IsCapCategory 5.4-13 
@@ -605,12 +609,14 @@
       for IsList 6.1-8 
   [2XKernelObjectFunctorialWithGivenKernelObjects[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 6.1-11 
       for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,IsCapCategoryMorphism, IsCapCategoryObject 6.1-10 
+  [2XLastWithKeys[102X 9.2-47 
   [2XLaTeXOutput[102X, for IsCapCategory 1.13-2 
       for IsCapCategoryCell 1.13-1 
   [2XLift[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-5 
   [2XLiftAlongMonomorphism[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-1 
   [2XLiftOrFail[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-6 
   [2XListCAPPrepareFunctions[102X 7.6-3 
+  [2XListWithKeys[102X 9.2-39 
   [2XMakeDerivation[102X, for IsString, IsFunction, IsDenseList,IsPosInt, IsFunction, IsFunction 8.2-2 
   [2XMakeDerivationGraph[102X, for IsDenseList 8.3-2 
   [2XMakeOperationWeightList[102X, for IsCapCategory, IsDerivedMethodGraph 8.4-2 
@@ -653,6 +659,7 @@
   [2XNaturalIsomorphismFromIdentityToCanonicalizeZeroObjects[102X, for IsCapCategory 5.4-14 
   [2XNaturalTransformation[102X, for IsCapFunctor, IsCapFunctor 5.5-2 
   [2XNTuple[102X 9.2-34 
+  [2XNumberWithKeys[102X 9.2-44 
   [2XObjectCache[102X, for IsCapFunctor 9.1-1 
   [2XObjectConstructor[102X, for IsCapCategory, IsObject 2.7-1 
   [2XObjectDatum[102X, for IsCapCategoryObject 2.7-3 
@@ -673,6 +680,7 @@
   [2XPrintDerivationTree[102X, for IsOperationWeightList, IsString 8.4-12 
   [2XPrintTree[102X, for IsObject, IsFunction, IsFunction 8.4-13 
   [2XPrintTreeRec[102X, for IsObject, IsFunction, IsFunction, IsInt 8.4-14 
+  [2XProductWithKeys[102X 9.2-41 
   [2XProjectionInFactorOfDirectProduct[102X, for IsList, IsInt 6.8-3 
   [2XProjectionInFactorOfDirectProductWithGivenDirectProduct[102X, for IsList, IsInt, IsCapCategoryObject 6.8-4 
   [2XProjectionInFactorOfDirectSum[102X, for IsList, IsInt 6.6-3 
@@ -753,6 +761,7 @@
   [2XSourceOfFunctor[102X, for IsCapFunctor 5.4-3 
   [2XStringMinHeap[102X 8.5-2 
   [2XSubtractionForMorphisms[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.8-3 
+  [2XSumWithKeys[102X 9.2-40 
   [2XSwap[102X, for IsStringMinHeap, IsPosInt, IsPosInt 8.5-9 
   [2XTargetOperation[102X, for IsDerivedMethod 8.2-8 
   [2XTerminalObject[102X, for IsCapCategory 6.4-1 
