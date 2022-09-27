@@ -257,10 +257,16 @@ DeclareGlobalFunction( "TransitivelyNeededOtherPackages" );
 DeclareGlobalFunction( "PackageOfCAPOperation" );
 
 #! @Description
-#!   Returns `Position( `<A>list</A>`, `<A>obj</A>` )` while asserting that this value is not `fail`.
+#!   Returns `Position( <A>list</A>, <A>obj</A> )` while asserting that this value is not `fail`.
 #! @Arguments list, obj
 #! @Returns an integer
 DeclareOperation( "SafePosition", [ IsList, IsObject ] );
+
+#! @Description
+#!   Returns `PositionProperty( <A>list</A>, <A>func</A> )` while asserting that this value is not `fail`.
+#! @Arguments list, func
+#! @Returns an integer
+DeclareOperation( "SafePositionProperty", [ IsList, IsFunction ] );
 
 #! @Description
 #!   Returns <A>args</A> while asserting that its length is <A>n</A>.

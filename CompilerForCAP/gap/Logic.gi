@@ -697,7 +697,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                 # check if arguments are only accessed via the attribute
                 for func in ConcatenationForSyntaxTreeLists( AsSyntaxTreeList( [ new_func ] ), new_additional_funcs ) do
                     
-                    arguments_references_paths := CapJitFindNodes( func, { tree, path } -> tree.type = "EXPR_REF_FVAR" and tree.func_id = func.id and Position( func.nams, tree.name ) <= func.narg );
+                    arguments_references_paths := CapJitFindNodes( func, { tree, path } -> tree.type = "EXPR_REF_FVAR" and tree.func_id = func.id and SafePosition( func.nams, tree.name ) <= func.narg );
                     
                     for path in arguments_references_paths do
                         

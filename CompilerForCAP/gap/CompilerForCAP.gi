@@ -310,7 +310,7 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
     
     if type_signature = fail or not CAP_JIT_DATA_TYPE_INFERENCE_ENABLED then
         
-        Remove( rule_phase_functions, Position( rule_phase_functions, CapJitInferredDataTypes ) );
+        Remove( rule_phase_functions, SafePosition( rule_phase_functions, CapJitInferredDataTypes ) );
         
     fi;
     

@@ -69,7 +69,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INLINED_BINDINGS, function ( tree, initi
                 Assert( 0, func <> fail );
                 
                 # the fvar might be an argument, which has no binding
-                if Position( func.nams, tree.name ) > func.narg then
+                if SafePosition( func.nams, tree.name ) > func.narg then
                     
                     value := CapJitValueOfBinding( func.bindings, tree.name );
                     
@@ -118,7 +118,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INLINED_BINDINGS, function ( tree, initi
     end;
     
     result_func := function ( tree, result, keys, func_stack )
-      local info, key, fvar, func, pos, value, new_nams, name, i;
+      local info, key, fvar, func, value, new_nams, name, i;
         
         if result = fail then
             
@@ -159,12 +159,8 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INLINED_BINDINGS, function ( tree, initi
                     func := First( func_stack, func -> func.id = fvar.func_id );
                     Assert( 0, func <> fail );
                     
-                    pos := Position( func.nams, fvar.name );
-                    
-                    Assert( 0, pos <> fail );
-                    
                     # the fvar might be an argument, which has no binding
-                    if pos <= func.narg then
+                    if SafePosition( func.nams, fvar.name ) <= func.narg then
                         continue;
                     fi;
                     

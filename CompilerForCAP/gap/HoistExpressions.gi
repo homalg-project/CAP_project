@@ -72,7 +72,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_HOISTED_EXPRESSIONS_OR_BINDINGS, functio
             fi;
             
             # references to variables always restrict the scope to the corresponding function
-            AddSet( levels, PositionProperty( func_stack, f -> f.id = tree.func_id ) );
+            AddSet( levels, SafePositionProperty( func_stack, f -> f.id = tree.func_id ) );
             
         elif tree.type = "FVAR_BINDING_SEQ" then
             
@@ -203,7 +203,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_HOISTED_EXPRESSIONS_OR_BINDINGS, functio
                             od;
                             
                             # drop old binding
-                            Remove( info2.old_func.nams, Position( info2.old_func.nams, old_variable_name ) );
+                            Remove( info2.old_func.nams, SafePosition( info2.old_func.nams, old_variable_name ) );
                             CapJitUnbindBinding( info2.old_func.bindings, old_variable_name );
                             
                         else
@@ -290,7 +290,7 @@ InstallGlobalFunction( CapJitExtractedExpensiveOperationsFromLoops, function ( t
         end;
         
         result_func := function ( tree, result, keys, additional_arguments )
-          local hoisted_expression, levels, domain_result, func_result, level, orig, key;
+          local hoisted_expression, levels, domain_result, func_result, orig, key;
             
             hoisted_expression := function ( expr, levels )
               local old_length, new_length, target_level, func, loop_func, info, new_variable_name, value, new_expr, level, pos, name;
@@ -531,12 +531,8 @@ InstallGlobalFunction( CapJitExtractedExpensiveOperationsFromLoops, function ( t
                 
                 if tree.type = "EXPR_REF_FVAR" then
                     
-                    level := PositionProperty( func_stack, f -> f.id = tree.func_id );
-                    
-                    Assert( 0, level <> fail );
-                    
                     # references to variables always restrict the scope to the corresponding function
-                    AddSet( levels, level );
+                    AddSet( levels, SafePositionProperty( func_stack, f -> f.id = tree.func_id ) );
                     
                     # We could also add the domain levels here, but that would lead to larger chunks being hoisted which hinders deduplication.
                     

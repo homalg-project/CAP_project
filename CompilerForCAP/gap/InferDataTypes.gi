@@ -697,8 +697,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INFERRED_DATA_TYPES, function ( tree, in
             
         elif tree.type = "EXPR_REF_FVAR" then
             
-            func_pos := PositionProperty( func_stack, func -> func.id = tree.func_id );
-            Assert( 0, func_pos <> fail );
+            func_pos := SafePositionProperty( func_stack, func -> func.id = tree.func_id );
             
             func := func_stack[func_pos];
             
@@ -711,7 +710,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INFERRED_DATA_TYPES, function ( tree, in
                 
             fi;
             
-            pos := Position( func.nams, tree.name );
+            pos := SafePosition( func.nams, tree.name );
             
             if pos <= func.narg then
                 
