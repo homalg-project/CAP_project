@@ -21,7 +21,7 @@ InstallGlobalFunction( CapJitDroppedUnusedBindings, function ( tree )
         if tree.type = "EXPR_DECLARATIVE_FUNC" then
             
             # first drop unused names
-            tree.nams := Filtered( tree.nams, name -> Position( tree.nams, name ) <= tree.narg or name in tree.bindings.names );
+            tree.nams := Filtered( tree.nams, name -> SafePosition( tree.nams, name ) <= tree.narg or name in tree.bindings.names );
             
             # find unused bindings
             

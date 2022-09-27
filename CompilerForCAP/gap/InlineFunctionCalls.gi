@@ -14,7 +14,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID, function ( tree,
     Assert( 0, Length( new_nams ) >= Length( old_nams ) );
     Assert( 0, "RETURN_VALUE" in old_nams );
     # if RETURN_VALUE in new_nams: check that it has the same position as in old_nams
-    Assert( 0, not "RETURN_VALUE" in new_nams or Position( new_nams, "RETURN_VALUE" ) = Position( old_nams, "RETURN_VALUE" ) );
+    Assert( 0, not "RETURN_VALUE" in new_nams or SafePosition( new_nams, "RETURN_VALUE" ) = SafePosition( old_nams, "RETURN_VALUE" ) );
     
     tree := StructuralCopy( tree );
     
@@ -47,9 +47,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID, function ( tree,
             
             for name in tree.bindings.names do
                 
-                Assert( 0, name in old_nams );
-                
-                CapJitAddBinding( new_bindings, new_nams[Position( old_nams, name )], CapJitValueOfBinding( tree.bindings, name ) );
+                CapJitAddBinding( new_bindings, new_nams[SafePosition( old_nams, name )], CapJitValueOfBinding( tree.bindings, name ) );
                 
             od;
             
@@ -59,11 +57,12 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID, function ( tree,
         
         if tree.type = "EXPR_REF_FVAR" and tree.func_id = old_func_id then
             
+            # assert this before setting the new function ID for easier debugging
             Assert( 0, tree.name in old_nams );
             
             tree.func_id := new_func_id;
             
-            tree.name := new_nams[Position( old_nams, tree.name )];
+            tree.name := new_nams[SafePosition( old_nams, tree.name )];
             
         fi;
         
@@ -110,8 +109,7 @@ InstallGlobalFunction( CapJitInlinedFunctionCalls, function ( tree )
             
             # create new local variables and make them unique by prepending the function ID
             new_nams := List( inline_func.nams, name -> Concatenation( "inline_", String( inline_func.id ), "_", name ) );
-            pos_RETURN_VALUE := Position( inline_func.nams, "RETURN_VALUE" );
-            Assert( 0, pos_RETURN_VALUE <> fail );
+            pos_RETURN_VALUE := SafePosition( inline_func.nams, "RETURN_VALUE" );
             
             Assert( 0, IsDuplicateFreeList( new_nams ) );
             
