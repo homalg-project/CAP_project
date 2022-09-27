@@ -6,7 +6,7 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2022.09-19
+                                   2022.09-20
   
   
                                27 September 2022
@@ -881,20 +881,21 @@
       9.2-31 TransitivelyNeededOtherPackages
       9.2-32 PackageOfCAPOperation
       9.2-33 SafePosition
-      9.2-34 NTuple
-      9.2-35 Pair
-      9.2-36 Triple
-      9.2-37 HandlePrecompiledTowers
-      9.2-38 CAP_JIT_INCOMPLETE_LOGIC
-      9.2-39 ListWithKeys
-      9.2-40 SumWithKeys
-      9.2-41 ProductWithKeys
-      9.2-42 ForAllWithKeys
-      9.2-43 ForAnyWithKeys
-      9.2-44 NumberWithKeys
-      9.2-45 FilteredWithKeys
-      9.2-46 FirstWithKeys
-      9.2-47 LastWithKeys
+      9.2-34 SafePositionProperty
+      9.2-35 NTuple
+      9.2-36 Pair
+      9.2-37 Triple
+      9.2-38 HandlePrecompiledTowers
+      9.2-39 CAP_JIT_INCOMPLETE_LOGIC
+      9.2-40 ListWithKeys
+      9.2-41 SumWithKeys
+      9.2-42 ProductWithKeys
+      9.2-43 ForAllWithKeys
+      9.2-44 ForAnyWithKeys
+      9.2-45 NumberWithKeys
+      9.2-46 FilteredWithKeys
+      9.2-47 FirstWithKeys
+      9.2-48 LastWithKeys
   10 [33X[0;0YLimits and Colimits[133X
     10.1 [33X[0;0YSpecification of Limits and Colimits[133X
     10.2 [33X[0;0YEnhancing Limit Specifications[133X
