@@ -509,8 +509,11 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                 tree := CapJitInlinedSimpleFunctionCalls( tree );
                 tree := CapJitInlinedFunctionCalls( tree );
                 tree := CapJitInlinedBindingsFully( tree );
+                # simplifying `List( list, x -> false )[1]` might lead to edge cases which can be dropped
+                tree := CapJitDroppedHandledEdgeCases( tree );
                 # CapJitExtractedExpensiveOperationsFromLoops cannot handle ListWithKeys yet, so it cannot be executed more than once.
                 #tree := CapJitExtractedExpensiveOperationsFromLoops( tree );
+                # CapJitInlinedBindingsFully drops unused bindings and the output of CapJitDroppedHandledEdgeCases is still fully inlined -> no new bindings
                 tree := CapJitHoistedExpressions( tree );
                 tree := CapJitDeduplicatedExpressions( tree );
                 
