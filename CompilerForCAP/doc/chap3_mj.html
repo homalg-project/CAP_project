@@ -588,44 +588,10 @@ function (  )
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coded_func2();</span>
 2
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># we have to work hard to not write semicolons so AutoDoc</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput"># does not begin a new statement</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">func3 := EvalString( ReplacedString( """function( x )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  local my_func, inner_func@</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    my_func := MY_ID_FUNC( x -&gt; x )@</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    inner_func := function( )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">      local y@</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        if x then</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            return 1@</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        else</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            y := 2@</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            return y@</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        fi@</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    end@</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return my_func( inner_func( ) )@</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">end""", "@", ";" ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func3 := function( x )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  local y; if x then return 1; else return 1; fi; end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func3 := CapJitCompiledFunction( func3 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func3 );</span>
-function ( x_1 )
-    local deduped_1_1;
-    deduped_1_1 := MY_ID_FUNC( function ( x_2 )
-            return x_2;
-        end );
-    if x_1 then
-        return deduped_1_1( 1 );
-    else
-        return deduped_1_1( 2 );
-    fi;
-    return;
-end
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func4 := function( x )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  local y; if x then return 1; else return 1; fi; end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func4 := CapJitCompiledFunction( func4 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func4 );</span>
 function ( x_1 )
     return 1;
 end

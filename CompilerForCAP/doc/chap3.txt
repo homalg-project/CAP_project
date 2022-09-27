@@ -542,44 +542,10 @@
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27Xcoded_func2();[127X[104X
     [4X[28X2[128X[104X
-    [4X[25Xgap>[125X [27X# we have to work hard to not write semicolons so AutoDoc[127X[104X
-    [4X[25X>[125X [27X# does not begin a new statement[127X[104X
-    [4X[25X>[125X [27Xfunc3 := EvalString( ReplacedString( """function( x )[127X[104X
-    [4X[25X>[125X [27X  local my_func, inner_func@[127X[104X
-    [4X[25X>[125X [27X    [127X[104X
-    [4X[25X>[125X [27X    my_func := MY_ID_FUNC( x -> x )@[127X[104X
-    [4X[25X>[125X [27X    [127X[104X
-    [4X[25X>[125X [27X    inner_func := function( )[127X[104X
-    [4X[25X>[125X [27X      local y@[127X[104X
-    [4X[25X>[125X [27X        if x then[127X[104X
-    [4X[25X>[125X [27X            return 1@[127X[104X
-    [4X[25X>[125X [27X        else[127X[104X
-    [4X[25X>[125X [27X            y := 2@[127X[104X
-    [4X[25X>[125X [27X            return y@[127X[104X
-    [4X[25X>[125X [27X        fi@[127X[104X
-    [4X[25X>[125X [27X    end@[127X[104X
-    [4X[25X>[125X [27X    [127X[104X
-    [4X[25X>[125X [27X    return my_func( inner_func( ) )@[127X[104X
-    [4X[25X>[125X [27X    [127X[104X
-    [4X[25X>[125X [27Xend""", "@", ";" ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xfunc3 := function( x )[127X[104X
+    [4X[25X>[125X [27X  local y; if x then return 1; else return 1; fi; end;;[127X[104X
     [4X[25Xgap>[125X [27Xcompiled_func3 := CapJitCompiledFunction( func3 );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( compiled_func3 );[127X[104X
-    [4X[28Xfunction ( x_1 )[128X[104X
-    [4X[28X    local deduped_1_1;[128X[104X
-    [4X[28X    deduped_1_1 := MY_ID_FUNC( function ( x_2 )[128X[104X
-    [4X[28X            return x_2;[128X[104X
-    [4X[28X        end );[128X[104X
-    [4X[28X    if x_1 then[128X[104X
-    [4X[28X        return deduped_1_1( 1 );[128X[104X
-    [4X[28X    else[128X[104X
-    [4X[28X        return deduped_1_1( 2 );[128X[104X
-    [4X[28X    fi;[128X[104X
-    [4X[28X    return;[128X[104X
-    [4X[28Xend[128X[104X
-    [4X[25Xgap>[125X [27Xfunc4 := function( x )[127X[104X
-    [4X[25X>[125X [27X  local y; if x then return 1; else return 1; fi; end;;[127X[104X
-    [4X[25Xgap>[125X [27Xcompiled_func4 := CapJitCompiledFunction( func4 );;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( compiled_func4 );[127X[104X
     [4X[28Xfunction ( x_1 )[128X[104X
     [4X[28X    return 1;[128X[104X
     [4X[28Xend[128X[104X
