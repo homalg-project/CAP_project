@@ -411,6 +411,16 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                 # COVERAGE_IGNORE_BLOCK_START
                 compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
                 Display( compiled_func );
+                Error( "apply CapJitExtractedExpensiveOperationsFromLoops" );
+                # COVERAGE_IGNORE_BLOCK_END
+            fi;
+            
+            tree := CapJitExtractedExpensiveOperationsFromLoops( tree );
+            
+            if debug then
+                # COVERAGE_IGNORE_BLOCK_START
+                compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
+                Display( compiled_func );
                 Error( "apply CapJitHoistedExpressions" );
                 # COVERAGE_IGNORE_BLOCK_END
             fi;
@@ -499,6 +509,11 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                 tree := CapJitInlinedSimpleFunctionCalls( tree );
                 tree := CapJitInlinedFunctionCalls( tree );
                 tree := CapJitInlinedBindingsFully( tree );
+                # simplifying `List( list, x -> false )[1]` might lead to edge cases which can be dropped
+                tree := CapJitDroppedHandledEdgeCases( tree );
+                # CapJitExtractedExpensiveOperationsFromLoops cannot handle ListWithKeys yet, so it cannot be executed more than once.
+                #tree := CapJitExtractedExpensiveOperationsFromLoops( tree );
+                # CapJitInlinedBindingsFully drops unused bindings and the output of CapJitDroppedHandledEdgeCases is still fully inlined -> no new bindings
                 tree := CapJitHoistedExpressions( tree );
                 tree := CapJitDeduplicatedExpressions( tree );
                 

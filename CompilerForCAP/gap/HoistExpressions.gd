@@ -23,3 +23,7 @@ DeclareGlobalFunction( "CapJitHoistedExpressions" );
 #! @Returns a record
 #! @Arguments tree
 DeclareGlobalFunction( "CapJitHoistedBindings" );
+
+# EXPERIMENTAL
+DeclareGlobalVariable( "CAP_JIT_EXPENSIVE_FUNCTION_NAMES" );
+DeclareGlobalFunction( "CapJitExtractedExpensiveOperationsFromLoops" );
