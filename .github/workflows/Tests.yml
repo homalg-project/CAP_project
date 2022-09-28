@@ -22,10 +22,11 @@ jobs:
     steps:
       # keep workflow active even if repository has no activity for 60 days (do not execute for pull requests)
       - run: '[ "$GITHUB_EVENT_NAME" = "pull_request" ] || curl --fail -X PUT -H "Accept: application/vnd.github.v3+json" -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/$GITHUB_REPOSITORY/actions/workflows/Tests.yml/enable'
-      - uses: actions/checkout@v1
-      - run: mkdir -p /home/gap/.gap/pkg/
-      - run: sudo cp -a $GITHUB_WORKSPACE /home/gap/.gap/pkg/
-      - run: sudo chown -R gap:gap /home/gap/.gap/pkg/
+      # checkout needs access to temporary directory
+      - run: sudo chmod 1777 $RUNNER_TEMP
+      - run: sudo chown gap:gap $GITHUB_WORKSPACE
+      - uses: actions/checkout@v3
+      - run: cp -a $GITHUB_WORKSPACE /home/gap/.gap/pkg/
       - run: |
           export HOME="/home/gap"
           cd /home/gap/.gap/pkg/
@@ -53,6 +54,7 @@ jobs:
           cd CAP_project
           CUR_SHA=$(git rev-parse --verify HEAD)
           if [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker:latest" ] && [ "$CUR_SHA" = "$(git rev-parse origin/master)" ] && [ $(dirname "$GITHUB_REPOSITORY") = "homalg-project" ]; then \
+            git fetch origin gh-pages; \
             git worktree add gh-pages/ gh-pages || (echo "There was an error. Make sure there is a branch named 'gh-pages'. See https://github.com/homalg-project/PackageJanitor#error-there-was-an-error-make-sure-there-is-a-branch-named-gh-pages"; exit 1); \
             git checkout master; \
             LANG=C.UTF-8 ./make_dist.sh --token "${{ secrets.GITHUB_TOKEN }}"; \

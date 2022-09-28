@@ -29,14 +29,14 @@ test-doc: doc
 
 test-with-coverage: doc
 	gap --quitonbreak --cover stats tst/testall.g
-	echo 'LoadPackage("profiling"); OutputJsonCoverage("stats", "coverage.json");' | gap --quitonbreak
+	gap --quitonbreak --norepl -c 'LoadPackage("profiling"); OutputJsonCoverage("stats", "coverage.json");'
 
 test-spacing:
 	grep -R "[^ [\"]  " gap/*.gi && echo "Duplicate spaces found" && exit 1 || exit 0
 	grep -RE '[^ ] +$$' gap/* && echo "Trailing whitespace found" && exit 1 || exit 0
 	for filename in gap/*; do \
 		echo $$filename; \
-		echo "LoadPackage(\"GeneralizedMorphismsForCAP\"); SizeScreen([4096]); func := ReadAsFunction(\"$$filename\"); FileString(\"gap_spacing\", DisplayString(func));" | gap --quitonbreak --banner; \
+		gap --quitonbreak --norepl --banner -c "LoadPackage(\"GeneralizedMorphismsForCAP\"); SizeScreen([4096]); func := ReadAsFunction(\"$$filename\"); FileString(\"gap_spacing\", DisplayString(func));"; \
 		echo -e "\033[0m"; \
 		# In a perfect world, the DisplayString of a function would exactly match our code. However, our line breaks and indentation might differ from the GAP ones, \
 		# so we remove all indentation, line breaks, and empty lines, and afterwards insert line breaks at semicolons again for better readability. \

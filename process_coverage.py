@@ -23,7 +23,7 @@ regex_block_end = re.compile("^\s*# COVERAGE_IGNORE_BLOCK_END$")
 regex_next_line = re.compile("^\s*# COVERAGE_IGNORE_NEXT_LINE$")
 regex_return_void = re.compile("^\s*return;$")
 
-for coverage_filename in Path(".").glob("**/coverage*.json"):
+for coverage_filename in Path("../").glob("**/coverage*.json"):
     print("processing coverage file " + str(coverage_filename))
     new_data = {}
     new_data["coverage"] = {}
