@@ -276,7 +276,7 @@ InstallGlobalFunction( CapJitExtractedExpensiveOperationsFromLoops, function ( t
                         
                     fi;
                     
-                elif ForAny( tree.args, a -> a.type = "EXPR_DECLARATIVE_FUNC" ) and not tree.funcref.gvar in [ "ListN", "Iterated", "CapFixpoint" ] then
+                elif ForAny( tree.args, a -> a.type = "EXPR_DECLARATIVE_FUNC" ) and not tree.funcref.gvar in [ "ListN", "Iterated", "CapFixpoint", "LazyHList" ] then
                     
                     # COVERAGE_IGNORE_NEXT_LINE
                     Print( "WARNING: Could not detect domain of function in call of ", tree.funcref.gvar, ". Please write a bug report including this message.\n" );
