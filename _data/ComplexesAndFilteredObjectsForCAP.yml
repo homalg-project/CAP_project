@@ -1,7 +1,7 @@
 name: ComplexesAndFilteredObjectsForCAP
-version: "2022.05-01"
+version: "2022.09-01"
 license: "GPL-2.0-or-later"
-date: 2022-05-03
+date: 2022-09-28
 description: |
     Implementation of complexes, cocomplexes and filtered objects for CAP
 
@@ -33,11 +33,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/ComplexesAndFilteredOb
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/ComplexesAndFilteredObjectsForCAP-2022.05-01/ComplexesAndFilteredObjectsForCAP-2022.05-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/ComplexesAndFilteredObjectsForCAP-2022.09-01/ComplexesAndFilteredObjectsForCAP-2022.09-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/ComplexesAndFilteredObjectsForCAP-2022.05-01/ComplexesAndFilteredObjectsForCAP-2022.05-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/ComplexesAndFilteredObjectsForCAP-2022.09-01/ComplexesAndFilteredObjectsForCAP-2022.09-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/ComplexesAndFilteredObjectsForCAP-2022.05-01/ComplexesAndFilteredObjectsForCAP-2022.05-01.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/ComplexesAndFilteredObjectsForCAP-2022.09-01/ComplexesAndFilteredObjectsForCAP-2022.09-01.pdf
 
 abstract: |
 
@@ -48,7 +48,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>PG22</span>]   <b class='BibAuthor'>Posur, S. and Gutsche, S.</b>,
      <i class='BibTitle'>ComplexesAndFilteredObjectsForCAP, Implementation of complexes, cocomplexes and filtered objects for CAP,
-             Version 2022.05-01</i>
+             Version 2022.09-01</i>
      (<span class='BibYear'>2022</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/ComplexesAndFilteredObjectsForCAP">https://homalg-project.github.io/pkg/ComplexesAndFilteredObjectsForCAP</a></span>.
@@ -56,12 +56,12 @@ citeas: |
     
 
 bibtex: |
-    @misc{ ComplexesAndFilteredObjectsForCAP2022.05-01,
+    @misc{ ComplexesAndFilteredObjectsForCAP2022.09-01,
       author =           {Posur, S. and Gutsche, S.},
       title =            {{ComplexesAndFilteredObjectsForCAP}, Implementation of
                           complexes,  cocomplexes  and filtered objects for CAP,
-                          {V}ersion 2022.05-01},
-      month =            {May},
+                          {V}ersion 2022.09-01},
+      month =            {Sep},
       year =             {2022},
       note =             {GAP package},
       howpublished =     {\href
