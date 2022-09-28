@@ -1307,7 +1307,8 @@ DeclareOperation( "DirectProductFunctorialWithGivenDirectProducts",
 
 #! @Description
 #! This is a convenience method.
-#! There are two different ways to use this method:
+#! There are three different ways to use this method:
+#! * The arguments are an object $A$ and a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$.
 #! * The argument is a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$.
 #! * The arguments are morphisms $\beta_1: A \rightarrow B, \dots, \beta_n: A \rightarrow B$.
 #! The output is the equalizer $\mathrm{Equalizer}(D)$.
@@ -1315,77 +1316,84 @@ DeclareOperation( "DirectProductFunctorialWithGivenDirectProducts",
 DeclareGlobalFunction( "Equalizer" );
 
 #! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$.
+#! The arguments are an object $A$ and list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$.
+#! For convenience, the object $A$ can be omitted and is automatically derived from $D$ in that case.
 #! The output is the equalizer $\mathrm{Equalizer}(D)$.
 #! @Returns an object
-#! @Arguments D
+#! @Arguments A, D
 DeclareOperation( "EqualizerOp",
-                           [ IsList ] );
+                  [ IsCapCategoryObject, IsList ] );
 
 #! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$.
+#! The arguments are an object $A$ and a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$.
+#! For convenience, the object $A$ can be omitted and is automatically derived from $D$ in that case.
 #! The output is the equalizer embedding
 #! $\iota: \mathrm{Equalizer}(D) \rightarrow A$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Equalizer}(D), A )$
-#! @Arguments D
+#! @Arguments A, D
 DeclareOperation( "EmbeddingOfEqualizer",
-                  [ IsList ] );
+                  [ IsCapCategoryObject, IsList ] );
 
 #! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$,
+#! The arguments are an object $A$, a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$,
 #! and an object $E = \mathrm{Equalizer}(D)$.
+#! For convenience, the object $A$ can be omitted and is automatically derived from $D$ in that case.
 #! The output is the equalizer embedding
 #! $\iota: E \rightarrow A$.
 #! @Returns a morphism in $\mathrm{Hom}( E, A )$
-#! @Arguments D,E
+#! @Arguments A, D, E
 DeclareOperation( "EmbeddingOfEqualizerWithGivenEqualizer",
-                  [ IsList, IsCapCategoryObject ] );
+                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$.
+#! The arguments are an object $A$ and a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$.
+#! For convenience, the object $A$ can be omitted and is automatically derived from $D$ in that case.
 #! The output is the composition $\mu: \mathrm{Equalizer}(D) \rightarrow B$
 #! of the embedding $\iota: \mathrm{Equalizer}(D) \rightarrow A$ and $\beta_1$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Equalizer}(D), B )$
-#! @Arguments D
+#! @Arguments A, D
 DeclareOperation( "MorphismFromEqualizerToSink",
-                  [ IsList ] );
+                  [ IsCapCategoryObject, IsList ] );
 
 #! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$
+#! The arguments are an object $A$, a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$
 #! and an object $E = \mathrm{Equalizer}(D)$.
+#! For convenience, the object $A$ can be omitted and is automatically derived from $D$ in that case.
 #! The output is the composition $\mu: E \rightarrow B$
 #! of the embedding $\iota: E \rightarrow A$ and $\beta_1$.
 #! @Returns a morphism in $\mathrm{Hom}( E, B )$
-#! @Arguments D, E
+#! @Arguments A, D, E
 DeclareOperation( "MorphismFromEqualizerToSinkWithGivenEqualizer",
-                  [ IsList, IsCapCategoryObject ] );
+                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$, a test object $T$,
+#! The arguments are an object $A$, a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$, a test object $T$,
 #! and a morphism $ \tau: T \rightarrow A $
 #! such that $\beta_i \circ \tau  \sim_{T, B} \beta_j \circ \tau$ for all pairs $i,j$.
+#! For convenience, the object $A$ can be omitted and is automatically derived from $D$ in that case.
 #! For convenience, the test object <A>T</A> can be omitted and is automatically derived from <A>tau</A> in that case.
 #! The output is the morphism
 #! $u( \tau ): T \rightarrow \mathrm{Equalizer}(D)$
 #! given by the universal property of the equalizer.
 #! @Returns a morphism in $\mathrm{Hom}( T, \mathrm{Equalizer}(D) )$
-#! @Arguments D, T, tau
+#! @Arguments A, D, T, tau
 DeclareOperation( "UniversalMorphismIntoEqualizer",
-                  [ IsList, IsCapCategoryObject, IsCapCategoryMorphism ] );
+                  [ IsCapCategoryObject, IsList, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$, a test object $T$,
+#! The arguments are an object $A$, a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$, a test object $T$,
 #! a morphism $\tau: T \rightarrow A )$
 #! such that $\beta_i \circ \tau  \sim_{T, B} \beta_j \circ \tau$ for all pairs $i,j$,
 #! and an object $E = \mathrm{Equalizer}(D)$.
+#! For convenience, the object $A$ can be omitted and is automatically derived from $D$ in that case.
 #! For convenience, the test object <A>T</A> can be omitted and is automatically derived from <A>tau</A> in that case.
 #! The output is the morphism
 #! $u( \tau ): T \rightarrow E$
 #! given by the universal property of the equalizer.
 #! @Returns a morphism in $\mathrm{Hom}( T, E )$
-#! @Arguments D, T, tau, E
+#! @Arguments A, D, T, tau, E
 DeclareOperation( "UniversalMorphismIntoEqualizerWithGivenEqualizer",
-                  [ IsList, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
+                  [ IsCapCategoryObject, IsList, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a list of morphisms
@@ -1478,7 +1486,8 @@ DeclareOperation( "EqualizerFunctorialWithGivenEqualizers",
 
 #! @Description
 #! This is a convenience method.
-#! There are two different ways to use this method:
+#! There are three different ways to use this method:
+#! * The arguments are an object $A$ and a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$.
 #! * The argument is a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$.
 #! * The arguments are morphisms $\beta_1: B \rightarrow A, \dots, \beta_n: B \rightarrow A$.
 #! The output is the coequalizer $\mathrm{Coequalizer}(D)$.
@@ -1487,77 +1496,84 @@ DeclareGlobalFunction( "Coequalizer" );
 
 
 #! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$.
+#! The arguments are an object $A$ and a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$.
+#! For convenience, the object $A$ can be omitted and is automatically derived from $D$ in that case.
 #! The output is the coequalizer $\mathrm{Coequalizer}(D)$.
 #! @Returns an object
-#! @Arguments D
+#! @Arguments A, D
 DeclareOperation( "CoequalizerOp",
-                           [ IsList ] );
+                  [ IsCapCategoryObject, IsList ] );
 
 #! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$.
+#! The arguments are an object $A$ and a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$.
+#! For convenience, the object $A$ can be omitted and is automatically derived from $D$ in that case.
 #! The output is the projection
 #! $\pi: A \rightarrow \mathrm{Coequalizer}( D )$.
 #! @Returns a morphism in $\mathrm{Hom}( A, \mathrm{Coequalizer}( D ) )$.
-#! @Arguments D
+#! @Arguments A, D
 DeclareOperation( "ProjectionOntoCoequalizer",
-                  [ IsList ] );
+                  [ IsCapCategoryObject, IsList ] );
 
 #! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$,
+#! The arguments are an object $A$, a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$,
 #! and an object $C = \mathrm{Coequalizer}(D)$.
+#! For convenience, the object $A$ can be omitted and is automatically derived from $D$ in that case.
 #! The output is the projection
 #! $\pi: A \rightarrow C$.
 #! @Returns a morphism in $\mathrm{Hom}( A, C )$.
-#! @Arguments D,C
+#! @Arguments A, D, C
 DeclareOperation( "ProjectionOntoCoequalizerWithGivenCoequalizer",
-                  [ IsList, IsCapCategoryObject ] );
+                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$.
+#! The arguments are an object $A$ and a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$.
+#! For convenience, the object $A$ can be omitted and is automatically derived from $D$ in that case.
 #! The output is the composition $\mu: B \rightarrow \mathrm{Coequalizer}(D)$
 #! of $\beta_1$ and the projection $\pi: A \rightarrow \mathrm{Coequalizer}( D )$.
 #! @Returns a morphism in $\mathrm{Hom}( B, \mathrm{Coequalizer}( D ) )$.
-#! @Arguments D
+#! @Arguments A, D
 DeclareOperation( "MorphismFromSourceToCoequalizer",
-                  [ IsList ] );
+                  [ IsCapCategoryObject, IsList ] );
 
 #! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$
+#! The arguments are an object $A$, a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$
 #! and an object $C = \mathrm{Coequalizer}(D)$.
+#! For convenience, the object $A$ can be omitted and is automatically derived from $D$ in that case.
 #! The output is the composition $\mu: B \rightarrow C$
 #! of $\beta_1$ and the projection $\pi: A \rightarrow C$.
 #! @Returns a morphism in $\mathrm{Hom}( B, C )$.
-#! @Arguments D, C
+#! @Arguments A, D, C
 DeclareOperation( "MorphismFromSourceToCoequalizerWithGivenCoequalizer",
-                  [ IsList, IsCapCategoryObject ] );
+                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$, a test object $T$,
+#! The arguments are an object $A$, a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$, a test object $T$,
 #! and a morphism $\tau: A \rightarrow T $ such that
 #! $\tau \circ \beta_i \sim_{B,T} \tau \circ \beta_j$ for all pairs $i,j$.
+#! For convenience, the object $A$ can be omitted and is automatically derived from $D$ in that case.
 #! For convenience, the test object <A>T</A> can be omitted and is automatically derived from <A>tau</A> in that case.
 #! The output is the morphism
 #! $u( \tau ): \mathrm{Coequalizer}(D) \rightarrow T$
 #! given by the universal property of the coequalizer.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Coequalizer}(D), T )$
-#! @Arguments D, T, tau
+#! @Arguments A, D, T, tau
 DeclareOperation( "UniversalMorphismFromCoequalizer",
-                  [ IsList, IsCapCategoryObject, IsCapCategoryMorphism ] );
+                  [ IsCapCategoryObject, IsList, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$, a test object $T$,
+#! The arguments are an object $A$, a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$, a test object $T$,
 #! a morphism $\tau: A \rightarrow T $ such that
 #! $\tau \circ \beta_i \sim_{B,T} \tau \circ \beta_j$,
 #! and an object $C = \mathrm{Coequalizer}(D)$.
+#! For convenience, the object $A$ can be omitted and is automatically derived from $D$ in that case.
 #! For convenience, the test object <A>T</A> can be omitted and is automatically derived from <A>tau</A> in that case.
 #! The output is the morphism
 #! $u( \tau ): C \rightarrow T$
 #! given by the universal property of the coequalizer.
 #! @Returns a morphism in $\mathrm{Hom}( C, T )$
-#! @Arguments D, T, tau, C
+#! @Arguments A, D, T, tau, C
 DeclareOperation( "UniversalMorphismFromCoequalizerWithGivenCoequalizer",
-                  [ IsList, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
+                  [ IsCapCategoryObject, IsList, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a list of morphisms

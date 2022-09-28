@@ -93,12 +93,6 @@ InstallGlobalFunction( "CAP_INTERNAL_GENERATE_CONVENIENCE_METHODS_FOR_LIMITS",
         # derive test object
         if IsOperation( ValueGlobal( universal_morphism_name ) ) then
             
-            if Length( limit.diagram_filter_list ) <> 1 then
-                
-                Error( "this case is not implemented" );
-                
-            fi;
-            
             if diagram_position = "Source" then
                 
                 test_object_position := "Range";
@@ -113,8 +107,6 @@ InstallGlobalFunction( "CAP_INTERNAL_GENERATE_CONVENIENCE_METHODS_FOR_LIMITS",
                 
             fi;
             
-            diagram_filter_list_string := NameFunction( CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( limit.diagram_filter_list )[1] );
-            
             if limit.number_of_targets = 1 then
                 
                 tau_filter := "IsCapCategoryMorphism";
@@ -127,47 +119,56 @@ InstallGlobalFunction( "CAP_INTERNAL_GENERATE_CONVENIENCE_METHODS_FOR_LIMITS",
                 
             fi;
             
-            current_string := Concatenation(
-                "\n",
-                "InstallOtherMethod( ", universal_morphism_name, ",\n",
-                "                    [ ", diagram_filter_list_string, ", ", tau_filter, " ],\n",
-                "                    \n",
-                "    function( diagram, tau )\n",
-                "        #% CAP_JIT_RESOLVE_FUNCTION\n",
-                "        \n",
-                "        return ", universal_morphism_name, "( diagram, ", test_object_position, "( tau", list_selector, " ), tau );\n",
-                "        \n",
-                "end );\n",
-                "\n",
-                "InstallOtherMethod( ", universal_morphism_name, ",\n",
-                "                    [ IsCapCategory, ", diagram_filter_list_string, ", ", tau_filter, " ],\n",
-                "                    \n",
-                "    function( cat, diagram, tau )\n",
-                "        #% CAP_JIT_RESOLVE_FUNCTION\n",
-                "        \n",
-                "        return ", universal_morphism_name, "( cat, diagram, ", test_object_position, "( tau", list_selector, " ), tau );\n",
-                "        \n",
-                "end );\n",
-                "\n",
-                "InstallOtherMethod( ", universal_morphism_name, "WithGiven", object_name, ",\n",
-                "                    [ ", diagram_filter_list_string, ", ", tau_filter, ", IsCapCategoryObject ],\n",
-                "                    \n",
-                "    function( diagram, tau, P )\n",
-                "        #% CAP_JIT_RESOLVE_FUNCTION\n",
-                "        \n",
-                "        return ", universal_morphism_name, "WithGiven", object_name, "( diagram, ", test_object_position, "( tau", list_selector, " ), tau, P );\n",
-                "        \n",
-                "end );\n",
-                "\n",
-                "InstallOtherMethod( ", universal_morphism_name, "WithGiven", object_name, ",\n",
-                "                    [ IsCapCategory, ", diagram_filter_list_string, ", ", tau_filter, ", IsCapCategoryObject ],\n",
-                "                    \n",
-                "    function( cat, diagram, tau, P )\n",
-                "        #% CAP_JIT_RESOLVE_FUNCTION\n",
-                "        \n",
-                "        return ", universal_morphism_name, "WithGiven", object_name, "( cat, diagram, ", test_object_position, "( tau", list_selector, " ), tau, P );\n",
-                "        \n",
-                "end );\n"
+            current_string := ReplacedStringViaRecord( """
+InstallOtherMethod( without_given_universal_morphism,
+                    [ diagram_filter_list..., tau_filter ],
+                    
+    function( diagram_arguments..., tau )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return without_given_universal_morphism( diagram_arguments..., test_object_position( selected_tau ), tau );
+        
+end );
+
+InstallOtherMethod( without_given_universal_morphism,
+                    [ IsCapCategory, diagram_filter_list..., tau_filter ],
+                    
+    function( cat, diagram_arguments..., tau )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return without_given_universal_morphism( cat, diagram_arguments..., test_object_position( selected_tau ), tau );
+        
+end );
+
+InstallOtherMethod( with_given_universal_morphism,
+                    [ diagram_filter_list..., tau_filter, IsCapCategoryObject ],
+                    
+    function( diagram_arguments..., tau, P )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return with_given_universal_morphism( diagram_arguments..., test_object_position( selected_tau ), tau, P );
+        
+end );
+
+InstallOtherMethod( with_given_universal_morphism,
+                    [ IsCapCategory, diagram_filter_list..., tau_filter, IsCapCategoryObject ],
+                    
+    function( cat, diagram_arguments..., tau, P )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return with_given_universal_morphism( cat, diagram_arguments..., test_object_position( selected_tau ), tau, P );
+        
+end );
+""",
+                rec(
+                    without_given_universal_morphism := universal_morphism_name,
+                    with_given_universal_morphism := Concatenation( universal_morphism_name, "WithGiven", object_name ),
+                    diagram_filter_list := List( CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( limit.diagram_filter_list ), NameFunction ),
+                    tau_filter := tau_filter,
+                    diagram_arguments := limit.diagram_input_type,
+                    test_object_position := test_object_position,
+                    selected_tau := Concatenation( "tau", list_selector ),
+                )
             );
             
             output_string := Concatenation( output_string, current_string );
@@ -177,7 +178,7 @@ InstallGlobalFunction( "CAP_INTERNAL_GENERATE_CONVENIENCE_METHODS_FOR_LIMITS",
     end;
     
     generate_functorial_convenience_method := function( limit, limit_colimit, object_name, functorial_name, functorial_with_given_name )
-      local functorial_with_given_record, filter_list, input_type, arguments_string, source_diagram_arguments_string, range_diagram_arguments_string, replaced_filter_list, current_string, input_arguments_names, source_argument_name, range_argument_name, source_diagram_arguments_names, range_diagram_arguments_names, test_string, test_arguments, universal_morphism_with_given_name, call_arguments;
+      local functorial_with_given_record, filter_list, input_type, arguments_string, source_diagram_arguments_string, range_diagram_arguments_string, replaced_filter_list, current_string, input_arguments_names, source_argument_name, range_argument_name, source_diagram_arguments_names, range_diagram_arguments_names, equalizer_preprocessing, test_string, test_arguments, universal_morphism_with_given_name, call_arguments;
         
         Assert( 0, limit_colimit in [ "limit", "colimit" ] );
         
@@ -308,6 +309,10 @@ end );
         source_diagram_arguments_names := limit.functorial_source_diagram_arguments_names;
         range_diagram_arguments_names := limit.functorial_range_diagram_arguments_names;
         
+        # EqualizerFunctorialWithGivenEqualizers would have 8 arguments if the source objects would be given
+        # -> we have to work around this and derive the source objects from the morphism between the diagrams.
+        equalizer_preprocessing := "";
+        
         if Length( limit.diagram_filter_list ) > 0 then
             
             if limit.number_of_targets = 1 then
@@ -339,6 +344,19 @@ end );
                 else
                     
                     Error( "this should never happen" );
+                    
+                fi;
+                
+                if limit.number_of_unbound_morphisms > 1 then
+                    
+                    if limit.limit_object_name <> "Equalizer" then
+                        
+                        Error( "This is a hack which might not be valid in general." );
+                        
+                    fi;
+                    
+                    # we are in the Equalizer case, which needs special handling (see above)
+                    equalizer_preprocessing := "local Y, Yp;\n    \n    Y := Source( mu );\n    Yp := Range( mu );\n    ";
                     
                 fi;
                 
@@ -408,7 +426,7 @@ end );
 AddDerivationToCAP( functorial_with_given_name,
                     
   function( input_arguments... )
-    
+    equalizer_preprocessing
     return universal_morphism_with_given( call_arguments... );
     
 end : Description := "functorial_with_given_name using the universality of the limit_colimit" );
@@ -416,6 +434,7 @@ end : Description := "functorial_with_given_name using the universality of the l
             rec(
                 functorial_with_given_name := functorial_with_given_name,
                 input_arguments := input_arguments_names,
+                equalizer_preprocessing := equalizer_preprocessing,
                 universal_morphism_with_given := universal_morphism_with_given_name,
                 call_arguments := call_arguments,
                 limit_colimit := limit_colimit,
