@@ -1,7 +1,7 @@
 name: ModulePresentationsForCAP
-version: "2022.09-01"
+version: "2022.09-02"
 license: "GPL-2.0-or-later"
-date: 2022-09-15
+date: 2022-09-28
 description: |
     Category R-pres for CAP
 
@@ -50,11 +50,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/ModulePresentationsFor
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2022.09-01/ModulePresentationsForCAP-2022.09-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2022.09-02/ModulePresentationsForCAP-2022.09-02.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2022.09-01/ModulePresentationsForCAP-2022.09-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2022.09-02/ModulePresentationsForCAP-2022.09-02.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2022.09-01/ModulePresentationsForCAP-2022.09-01.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2022.09-02/ModulePresentationsForCAP-2022.09-02.pdf
 
 abstract: |
     <span class="pkgname">ModulePresentationsForCAP</span> provides the category of finitely presented modules over a computable ring.
@@ -66,7 +66,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>GP22</span>]   <b class='BibAuthor'>Gutsche, S. and Posur, S.</b>,
      <i class='BibTitle'>ModulePresentationsForCAP, Category R-pres for CAP,
-             Version 2022.09-01</i>
+             Version 2022.09-02</i>
      (<span class='BibYear'>2022</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/ModulePresentationsForCAP">https://homalg-project.github.io/pkg/ModulePresentationsForCAP</a></span>.
@@ -74,10 +74,10 @@ citeas: |
     
 
 bibtex: |
-    @misc{ ModulePresentationsForCAP2022.09-01,
+    @misc{ ModulePresentationsForCAP2022.09-02,
       author =           {Gutsche, S. and Posur, S.},
       title =            {{ModulePresentationsForCAP},  Category R-pres for CAP,
-                          {V}ersion 2022.09-01},
+                          {V}ersion 2022.09-02},
       month =            {Sep},
       year =             {2022},
       note =             {GAP package},
