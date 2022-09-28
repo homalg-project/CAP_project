@@ -101,7 +101,7 @@ DeclareOperation( "TensorProductToInternalHomAdjunctionMap",
 #! The output is a morphism $g: a \rightarrow \mathrm{\underline{Hom}}(b,c)$
 #! corresponding to $f$ under the tensor hom adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{\underline{Hom}}(b,c) )$.
-#! @Arguments a, b, f
+#! @Arguments a, b, f, i
 DeclareOperation( "TensorProductToInternalHomAdjunctionMapWithGivenInternalHom",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
@@ -119,7 +119,7 @@ DeclareOperation( "InternalHomToTensorProductAdjunctionMap",
 #! The output is a morphism $f: a \otimes b \rightarrow c$ corresponding to $g$ under the
 #! tensor hom adjunction.
 #! @Returns a morphism in $\mathrm{Hom}(a \otimes b, c)$.
-#! @Arguments b, c, g
+#! @Arguments b, c, g, t
 DeclareOperation( "InternalHomToTensorProductAdjunctionMapWithGivenTensorProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
