@@ -231,9 +231,235 @@ InstallGlobalFunction( Equalizer,
        
        return EqualizerOp( CapCategory( arg[1][1] ), arg[1] );
        
-     fi;
+    fi;
     
-    return EqualizerOp( CapCategory( arg[ 1 ] ), arg );
+    if Length( arg ) = 2
+       and IsCapCategoryObject( arg[1] )
+       and IsList( arg[2] )
+       and ForAll( arg[2], IsCapCategoryMorphism ) then
+       
+       return EqualizerOp( CapCategory( arg[1] ), arg[1], arg[2] );
+       
+    fi;
+    
+    return EqualizerOp( CapCategory( arg[1] ), arg );
+    
+end );
+
+##
+InstallOtherMethod( EqualizerOp,
+        [ IsList ],
+        
+  function ( list_of_morphisms )
+    
+    if IsEmpty( list_of_morphisms ) then
+        
+        Error( "the list of morphisms must not be empty" );
+        
+    fi;
+    
+    return EqualizerOp( CapCategory( list_of_morphisms[1] ), list_of_morphisms );
+    
+end );
+
+InstallOtherMethod( EqualizerOp,
+        [ IsCapCategory, IsList ],
+        
+  function ( cat, list_of_morphisms )
+    
+    if IsEmpty( list_of_morphisms ) then
+        
+        Error( "the list of morphisms must not be empty" );
+        
+    fi;
+    
+    return EqualizerOp( cat, Source( list_of_morphisms[1] ), list_of_morphisms );
+    
+end );
+
+##
+InstallOtherMethod( EmbeddingOfEqualizer,
+        [ IsList ],
+        
+  function ( list_of_morphisms )
+    
+    if IsEmpty( list_of_morphisms ) then
+        
+        Error( "the list of morphisms must not be empty" );
+        
+    fi;
+    
+    return EmbeddingOfEqualizer( CapCategory( list_of_morphisms[1] ), list_of_morphisms );
+    
+end );
+
+InstallOtherMethod( EmbeddingOfEqualizer,
+        [ IsCapCategory, IsList ],
+        
+  function ( cat, list_of_morphisms )
+    
+    if IsEmpty( list_of_morphisms ) then
+        
+        Error( "the list of morphisms must not be empty" );
+        
+    fi;
+    
+    return EmbeddingOfEqualizer( cat, Source( list_of_morphisms[1] ), list_of_morphisms );
+    
+end );
+
+##
+InstallOtherMethod( EmbeddingOfEqualizerWithGivenEqualizer,
+        [ IsList, IsCapCategoryObject ],
+        
+  function ( list_of_morphisms, E )
+    
+    if IsEmpty( list_of_morphisms ) then
+        
+        Error( "the list of morphisms must not be empty" );
+        
+    fi;
+    
+    return EmbeddingOfEqualizerWithGivenEqualizer( CapCategory( list_of_morphisms[1] ), list_of_morphisms, E );
+    
+end );
+
+InstallOtherMethod( EmbeddingOfEqualizerWithGivenEqualizer,
+        [ IsCapCategory, IsList, IsCapCategoryObject ],
+        
+  function ( cat, list_of_morphisms, E )
+    
+    if IsEmpty( list_of_morphisms ) then
+        
+        Error( "the list of morphisms must not be empty" );
+        
+    fi;
+    
+    return EmbeddingOfEqualizerWithGivenEqualizer( cat, Source( list_of_morphisms[1] ), list_of_morphisms, E );
+    
+end );
+
+##
+InstallOtherMethod( MorphismFromEqualizerToSink,
+        [ IsList ],
+        
+  function ( list_of_morphisms )
+    
+    if IsEmpty( list_of_morphisms ) then
+        
+        Error( "the list of morphisms must not be empty" );
+        
+    fi;
+    
+    return MorphismFromEqualizerToSink( CapCategory( list_of_morphisms[1] ), list_of_morphisms );
+    
+end );
+
+InstallOtherMethod( MorphismFromEqualizerToSink,
+        [ IsCapCategory, IsList ],
+        
+  function ( cat, list_of_morphisms )
+    
+    if IsEmpty( list_of_morphisms ) then
+        
+        Error( "the list of morphisms must not be empty" );
+        
+    fi;
+    
+    return MorphismFromEqualizerToSink( cat, Source( list_of_morphisms[1] ), list_of_morphisms );
+    
+end );
+
+##
+InstallOtherMethod( MorphismFromEqualizerToSinkWithGivenEqualizer,
+        [ IsList, IsCapCategoryObject ],
+        
+  function ( list_of_morphisms, E )
+    
+    if IsEmpty( list_of_morphisms ) then
+        
+        Error( "the list of morphisms must not be empty" );
+        
+    fi;
+    
+    return MorphismFromEqualizerToSinkWithGivenEqualizer( CapCategory( list_of_morphisms[1] ), list_of_morphisms, E );
+    
+end );
+
+InstallOtherMethod( MorphismFromEqualizerToSinkWithGivenEqualizer,
+        [ IsCapCategory, IsList, IsCapCategoryObject ],
+        
+  function ( cat, list_of_morphisms, E )
+    
+    if IsEmpty( list_of_morphisms ) then
+        
+        Error( "the list of morphisms must not be empty" );
+        
+    fi;
+    
+    return MorphismFromEqualizerToSinkWithGivenEqualizer( cat, Source( list_of_morphisms[1] ), list_of_morphisms, E );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismIntoEqualizer,
+        [ IsList, IsCapCategoryMorphism ],
+        
+  function ( list_of_morphisms, tau )
+    
+    if IsEmpty( list_of_morphisms ) then
+        
+        Error( "the list of morphisms must not be empty" );
+        
+    fi;
+    
+    return UniversalMorphismIntoEqualizer( CapCategory( list_of_morphisms[1] ), list_of_morphisms, tau );
+    
+end );
+
+InstallOtherMethod( UniversalMorphismIntoEqualizer,
+        [ IsCapCategory, IsList, IsCapCategoryMorphism ],
+        
+  function ( cat, list_of_morphisms, tau )
+    
+    if IsEmpty( list_of_morphisms ) then
+        
+        Error( "the list of morphisms must not be empty" );
+        
+    fi;
+    
+    return UniversalMorphismIntoEqualizer( cat, Source( list_of_morphisms[1] ), list_of_morphisms, tau );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismIntoEqualizerWithGivenEqualizer,
+        [ IsList, IsCapCategoryMorphism, IsCapCategoryObject ],
+        
+  function ( list_of_morphisms, tau, E )
+    
+    if IsEmpty( list_of_morphisms ) then
+        
+        Error( "the list of morphisms must not be empty" );
+        
+    fi;
+    
+    return UniversalMorphismIntoEqualizerWithGivenEqualizer( CapCategory( list_of_morphisms[1] ), list_of_morphisms, tau, E );
+    
+end );
+
+InstallOtherMethod( UniversalMorphismIntoEqualizer,
+        [ IsCapCategory, IsList, IsCapCategoryMorphism, IsCapCategoryObject ],
+        
+  function ( cat, list_of_morphisms, tau, E )
+    
+    if IsEmpty( list_of_morphisms ) then
+        
+        Error( "the list of morphisms must not be empty" );
+        
+    fi;
+    
+    return UniversalMorphismIntoEqualizerWithGivenEqualizer( cat, Source( list_of_morphisms[1] ), list_of_morphisms, tau, E );
     
 end );
 
@@ -299,7 +525,233 @@ InstallGlobalFunction( Coequalizer,
        
      fi;
     
+    if Length( arg ) = 2
+       and IsCapCategoryObject( arg[2] )
+       and IsList( arg[2] )
+       and ForAll( arg[2], IsCapCategoryMorphism ) then
+       
+       return CoequalizerOp( CapCategory( arg[1] ), arg[1], arg[2] );
+       
+     fi;
+    
     return CoequalizerOp( CapCategory( arg[ 1 ] ), arg );
+    
+end );
+
+##
+InstallOtherMethod( CoequalizerOp,
+        [ IsList ],
+        
+  function ( list_of_morphisms )
+    
+    if IsEmpty( list_of_morphisms ) then
+        
+        Error( "the list of morphisms must not be empty" );
+        
+    fi;
+    
+    return CoequalizerOp( CapCategory( list_of_morphisms[1] ), list_of_morphisms );
+    
+end );
+
+InstallOtherMethod( CoequalizerOp,
+        [ IsCapCategory, IsList ],
+        
+  function ( cat, list_of_morphisms )
+    
+    if IsEmpty( list_of_morphisms ) then
+        
+        Error( "the list of morphisms must not be empty" );
+        
+    fi;
+    
+    return CoequalizerOp( cat, Range( list_of_morphisms[1] ), list_of_morphisms );
+    
+end );
+
+##
+InstallOtherMethod( ProjectionOntoCoequalizer,
+        [ IsList ],
+        
+  function ( list_of_morphisms )
+    
+    if IsEmpty( list_of_morphisms ) then
+        
+        Error( "the list of morphisms must not be empty" );
+        
+    fi;
+    
+    return ProjectionOntoCoequalizer( CapCategory( list_of_morphisms[1] ), list_of_morphisms );
+    
+end );
+
+InstallOtherMethod( ProjectionOntoCoequalizer,
+        [ IsCapCategory, IsList ],
+        
+  function ( cat, list_of_morphisms )
+    
+    if IsEmpty( list_of_morphisms ) then
+        
+        Error( "the list of morphisms must not be empty" );
+        
+    fi;
+    
+    return ProjectionOntoCoequalizer( cat, Range( list_of_morphisms[1] ), list_of_morphisms );
+    
+end );
+
+##
+InstallOtherMethod( ProjectionOntoCoequalizerWithGivenCoequalizer,
+        [ IsList, IsCapCategoryObject ],
+        
+  function ( list_of_morphisms, E )
+    
+    if IsEmpty( list_of_morphisms ) then
+        
+        Error( "the list of morphisms must not be empty" );
+        
+    fi;
+    
+    return ProjectionOntoCoequalizerWithGivenCoequalizer( CapCategory( list_of_morphisms[1] ), list_of_morphisms, E );
+    
+end );
+
+InstallOtherMethod( ProjectionOntoCoequalizerWithGivenCoequalizer,
+        [ IsCapCategory, IsList, IsCapCategoryObject ],
+        
+  function ( cat, list_of_morphisms, E )
+    
+    if IsEmpty( list_of_morphisms ) then
+        
+        Error( "the list of morphisms must not be empty" );
+        
+    fi;
+    
+    return ProjectionOntoCoequalizerWithGivenCoequalizer( cat, Range( list_of_morphisms[1] ), list_of_morphisms, E );
+    
+end );
+
+##
+InstallOtherMethod( MorphismFromSourceToCoequalizer,
+        [ IsList ],
+        
+  function ( list_of_morphisms )
+    
+    if IsEmpty( list_of_morphisms ) then
+        
+        Error( "the list of morphisms must not be empty" );
+        
+    fi;
+    
+    return MorphismFromSourceToCoequalizer( CapCategory( list_of_morphisms[1] ), list_of_morphisms );
+    
+end );
+
+InstallOtherMethod( MorphismFromSourceToCoequalizer,
+        [ IsCapCategory, IsList ],
+        
+  function ( cat, list_of_morphisms )
+    
+    if IsEmpty( list_of_morphisms ) then
+        
+        Error( "the list of morphisms must not be empty" );
+        
+    fi;
+    
+    return MorphismFromSourceToCoequalizer( cat, Range( list_of_morphisms[1] ), list_of_morphisms );
+    
+end );
+
+##
+InstallOtherMethod( MorphismFromSourceToCoequalizerWithGivenCoequalizer,
+        [ IsList, IsCapCategoryObject ],
+        
+  function ( list_of_morphisms, E )
+    
+    if IsEmpty( list_of_morphisms ) then
+        
+        Error( "the list of morphisms must not be empty" );
+        
+    fi;
+    
+    return MorphismFromSourceToCoequalizerWithGivenCoequalizer( CapCategory( list_of_morphisms[1] ), list_of_morphisms, E );
+    
+end );
+
+InstallOtherMethod( MorphismFromSourceToCoequalizerWithGivenCoequalizer,
+        [ IsCapCategory, IsList, IsCapCategoryObject ],
+        
+  function ( cat, list_of_morphisms, E )
+    
+    if IsEmpty( list_of_morphisms ) then
+        
+        Error( "the list of morphisms must not be empty" );
+        
+    fi;
+    
+    return MorphismFromSourceToCoequalizerWithGivenCoequalizer( cat, Range( list_of_morphisms[1] ), list_of_morphisms, E );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismFromCoequalizer,
+        [ IsList, IsCapCategoryMorphism ],
+        
+  function ( list_of_morphisms, tau )
+    
+    if IsEmpty( list_of_morphisms ) then
+        
+        Error( "the list of morphisms must not be empty" );
+        
+    fi;
+    
+    return UniversalMorphismFromCoequalizer( CapCategory( list_of_morphisms[1] ), list_of_morphisms, tau );
+    
+end );
+
+InstallOtherMethod( UniversalMorphismFromCoequalizer,
+        [ IsCapCategory, IsList, IsCapCategoryMorphism ],
+        
+  function ( cat, list_of_morphisms, tau )
+    
+    if IsEmpty( list_of_morphisms ) then
+        
+        Error( "the list of morphisms must not be empty" );
+        
+    fi;
+    
+    return UniversalMorphismFromCoequalizer( cat, Range( list_of_morphisms[1] ), list_of_morphisms, tau );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismFromCoequalizerWithGivenCoequalizer,
+        [ IsList, IsCapCategoryMorphism, IsCapCategoryObject ],
+        
+  function ( list_of_morphisms, tau, E )
+    
+    if IsEmpty( list_of_morphisms ) then
+        
+        Error( "the list of morphisms must not be empty" );
+        
+    fi;
+    
+    return UniversalMorphismFromCoequalizerWithGivenCoequalizer( CapCategory( list_of_morphisms[1] ), list_of_morphisms, tau, E );
+    
+end );
+
+InstallOtherMethod( UniversalMorphismIntoEqualizer,
+        [ IsCapCategory, IsList, IsCapCategoryMorphism, IsCapCategoryObject ],
+        
+  function ( cat, list_of_morphisms, tau, E )
+    
+    if IsEmpty( list_of_morphisms ) then
+        
+        Error( "the list of morphisms must not be empty" );
+        
+    fi;
+    
+    return UniversalMorphismFromCoequalizerWithGivenCoequalizer( cat, Range( list_of_morphisms[1] ), list_of_morphisms, tau, E );
     
 end );
 

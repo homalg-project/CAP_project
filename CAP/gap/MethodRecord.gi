@@ -1398,20 +1398,18 @@ IsCodominating := rec(
 ),
 
 Equalizer := rec(
-  filter_list := [ "category", "list_of_morphisms" ],
+  filter_list := [ "category", "object", "list_of_morphisms" ],
   return_type := "object",
   dual_operation := "Coequalizer",
   
-  pre_function := function( cat, diagram )
-    local cobase, base, current_morphism, current_value;
+  pre_function := function( cat, cobase, diagram )
+    local base, current_morphism, current_value;
     
     if IsEmpty( diagram ) then
         
         return [ true ];
         
     fi;
-    
-    cobase := Source( diagram[1] );
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
         
@@ -1446,9 +1444,9 @@ Equalizer := rec(
 ),
 
 EmbeddingOfEqualizer := rec(
-  filter_list := [ "category", "list_of_morphisms" ],
+  filter_list := [ "category", "object", "list_of_morphisms" ],
   return_type := "morphism",
-  io_type := [ [ "morphisms" ], [ "P", "morphisms_1_source" ] ],
+  io_type := [ [ "Y", "morphisms" ], [ "P", "Y" ] ],
   with_given_object_position := "Source",
   dual_operation := "ProjectionOntoCoequalizer",
   
@@ -1457,16 +1455,16 @@ EmbeddingOfEqualizer := rec(
 ),
 
 EmbeddingOfEqualizerWithGivenEqualizer := rec(
-  filter_list := [ "category", "list_of_morphisms", "object" ],
+  filter_list := [ "category", "object", "list_of_morphisms", "object" ],
   return_type := "morphism",
-  io_type := [ [ "morphisms", "P" ], [ "P", "morphisms_1_source" ] ],
+  io_type := [ [ "Y", "morphisms", "P" ], [ "P", "Y" ] ],
   dual_operation := "ProjectionOntoCoequalizerWithGivenCoequalizer",
   compatible_with_congruence_of_morphisms := false,
 ),
 
 MorphismFromEqualizerToSink := rec(
-  filter_list := [ "category", "list_of_morphisms" ],
-  io_type := [ [ "morphisms" ], [ "P", "morphisms_1_range" ] ],
+  filter_list := [ "category", "object", "list_of_morphisms" ],
+  io_type := [ [ "Y", "morphisms" ], [ "P", "morphisms_1_range" ] ],
   with_given_object_position := "Source",
   dual_operation := "MorphismFromSourceToCoequalizer",
   return_type := "morphism",
@@ -1474,30 +1472,28 @@ MorphismFromEqualizerToSink := rec(
 ),
 
 MorphismFromEqualizerToSinkWithGivenEqualizer := rec(
-  filter_list := [ "category", "list_of_morphisms", "object" ],
-  io_type := [ [ "morphisms", "P" ], [ "P", "morphisms_1_range" ] ],
+  filter_list := [ "category", "object", "list_of_morphisms", "object" ],
+  io_type := [ [ "Y", "morphisms", "P" ], [ "P", "morphisms_1_range" ] ],
   dual_operation := "MorphismFromSourceToCoequalizerWithGivenCoequalizer",
   return_type := "morphism",
   compatible_with_congruence_of_morphisms := false,
 ),
 
 UniversalMorphismIntoEqualizer := rec(
-  filter_list := [ "category", "list_of_morphisms", "object", "morphism" ],
-  io_type := [ [ "morphisms", "T", "tau" ], [ "T", "P" ] ],
+  filter_list := [ "category", "object", "list_of_morphisms", "object", "morphism" ],
+  io_type := [ [ "Y", "morphisms", "T", "tau" ], [ "T", "P" ] ],
   with_given_object_position := "Range",
   return_type := "morphism",
   dual_operation := "UniversalMorphismFromCoequalizer",
   
-  pre_function := function( cat, diagram, test_object, tau )
-    local cobase, base, current_morphism, current_value, current_morphism_position;
+  pre_function := function( cat, cobase, diagram, test_object, tau )
+    local base, current_morphism, current_value, current_morphism_position;
     
     if IsEmpty( diagram ) then
         
         return [ true ];
         
     fi;
-    
-    cobase := Source( diagram[1] );
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
         
@@ -1543,8 +1539,8 @@ UniversalMorphismIntoEqualizer := rec(
 ),
 
 UniversalMorphismIntoEqualizerWithGivenEqualizer := rec(
-  filter_list := [ "category", "list_of_morphisms", "object", "morphism", "object" ],
-  io_type := [ [ "morphisms", "T", "tau", "P" ], [ "T", "P" ] ],
+  filter_list := [ "category", "object", "list_of_morphisms", "object", "morphism", "object" ],
+  io_type := [ [ "Y", "morphisms", "T", "tau", "P" ], [ "T", "P" ] ],
   return_type := "morphism",
   dual_operation := "UniversalMorphismFromCoequalizerWithGivenCoequalizer",
   compatible_with_congruence_of_morphisms := false,
@@ -1832,12 +1828,12 @@ UniversalMorphismIntoFiberProductWithGivenFiberProduct := rec(
 ),
 
 Coequalizer := rec(
-  filter_list := [ "category", "list_of_morphisms" ],
+  filter_list := [ "category", "object", "list_of_morphisms" ],
   return_type := "object",
   dual_operation := "Equalizer",
   
-  pre_function := function( cat, diagram )
-    local base, cobase, current_morphism, current_value;
+  pre_function := function( cat, cobase, diagram )
+    local base, current_morphism, current_value;
     
     if IsEmpty( diagram ) then
         
@@ -1858,8 +1854,6 @@ Coequalizer := rec(
         fi;
         
     od;
-    
-    cobase := Range( diagram[1] );
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
         
@@ -1880,9 +1874,9 @@ Coequalizer := rec(
 ),
 
 ProjectionOntoCoequalizer := rec(
-  filter_list := [ "category", "list_of_morphisms" ],
+  filter_list := [ "category", "object", "list_of_morphisms" ],
   return_type := "morphism",
-  io_type := [ [ "morphisms" ], [ "morphisms_1_range", "P" ] ],
+  io_type := [ [ "Y", "morphisms" ], [ "Y", "P" ] ],
   with_given_object_position := "Range",
   dual_operation := "EmbeddingOfEqualizer",
   
@@ -1891,16 +1885,16 @@ ProjectionOntoCoequalizer := rec(
 ),
 
 ProjectionOntoCoequalizerWithGivenCoequalizer := rec(
-  filter_list := [ "category", "list_of_morphisms", "object" ],
+  filter_list := [ "category", "object", "list_of_morphisms", "object" ],
   return_type := "morphism",
-  io_type := [ [ "morphisms", "P" ], [ "morphisms_1_range", "P" ] ],
+  io_type := [ [ "Y", "morphisms", "P" ], [ "Y", "P" ] ],
   dual_operation := "EmbeddingOfEqualizerWithGivenEqualizer",
   compatible_with_congruence_of_morphisms := false,
 ),
 
 MorphismFromSourceToCoequalizer := rec(
-  filter_list := [ "category", "list_of_morphisms" ],
-  io_type := [ [ "morphisms" ], [ "morphisms_1_source", "P" ] ],
+  filter_list := [ "category", "object", "list_of_morphisms" ],
+  io_type := [ [ "Y", "morphisms" ], [ "morphisms_1_source", "P" ] ],
   with_given_object_position := "Range",
   dual_operation := "MorphismFromEqualizerToSink",
   return_type := "morphism",
@@ -1908,22 +1902,22 @@ MorphismFromSourceToCoequalizer := rec(
 ),
 
 MorphismFromSourceToCoequalizerWithGivenCoequalizer := rec(
-  filter_list := [ "category", "list_of_morphisms", "object" ],
-  io_type := [ [ "morphisms", "P" ], [ "morphisms_1_source", "P" ] ],
+  filter_list := [ "category", "object", "list_of_morphisms", "object" ],
+  io_type := [ [ "Y", "morphisms", "P" ], [ "morphisms_1_source", "P" ] ],
   dual_operation := "MorphismFromEqualizerToSinkWithGivenEqualizer",
   return_type := "morphism",
   compatible_with_congruence_of_morphisms := false,
 ),
 
 UniversalMorphismFromCoequalizer := rec(
-  filter_list := [ "category", "list_of_morphisms", "object", "morphism" ],
-  io_type := [ [ "morphisms", "T", "tau" ], [ "P", "T" ] ],
+  filter_list := [ "category", "object", "list_of_morphisms", "object", "morphism" ],
+  io_type := [ [ "Y", "morphisms", "T", "tau" ], [ "P", "T" ] ],
   with_given_object_position := "Source",
   return_type := "morphism",
   dual_operation := "UniversalMorphismIntoEqualizer",
   
-  pre_function := function( cat, diagram, test_object, tau )
-    local base, cobase, current_morphism, current_value, current_morphism_position;
+  pre_function := function( cat, cobase, diagram, test_object, tau )
+    local base, current_morphism, current_value, current_morphism_position;
     
     if IsEmpty( diagram ) then
         
@@ -1944,8 +1938,6 @@ UniversalMorphismFromCoequalizer := rec(
         fi;
         
     od;
-    
-    cobase := Range( diagram[1] );
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
         
@@ -1977,8 +1969,8 @@ UniversalMorphismFromCoequalizer := rec(
 ),
 
 UniversalMorphismFromCoequalizerWithGivenCoequalizer := rec(
-  filter_list := [ "category", "list_of_morphisms", "object", "morphism", "object" ],
-  io_type := [ [ "morphisms", "T", "tau", "P" ], [ "P", "T" ] ],
+  filter_list := [ "category", "object", "list_of_morphisms", "object", "morphism", "object" ],
+  io_type := [ [ "Y", "morphisms", "T", "tau", "P" ], [ "P", "T" ] ],
   return_type := "morphism",
   dual_operation := "UniversalMorphismIntoEqualizerWithGivenEqualizer",
   compatible_with_congruence_of_morphisms := false,
@@ -4016,6 +4008,10 @@ InstallGlobalFunction( "CAP_INTERNAL_ENHANCE_NAME_RECORD_LIMITS",
             Add( diagram_filter_list, "morphism" );
             Add( diagram_input_type, "alpha" );
         elif number_of_unbound_morphisms > 1 then
+            if number_of_targets = 1 then
+                Add( diagram_filter_list, "object" );
+                Add( diagram_input_type, "Y" );
+            fi;
             Add( diagram_filter_list, "list_of_morphisms" );
             Add( diagram_input_type, "morphisms" );
         fi;
@@ -4206,7 +4202,7 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
             if limit.number_of_unbound_morphisms = 1 then
                 projection_io_type[2] := [ "P", "alpha_source" ];
             elif limit.number_of_targets = 1 then
-                projection_io_type[2] := [ "P", "morphisms_1_source" ];
+                projection_io_type[2] := [ "P", "Y" ];
             else
                 projection_io_type[2] := [ "P", "morphisms_k_source" ];
             fi;
@@ -4215,7 +4211,7 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
             if limit.number_of_unbound_morphisms = 1 then
                 projection_io_type[2] := [ "P", "alpha_range" ];
             elif limit.number_of_targets = 1 then
-                projection_io_type[2] := [ "P", "morphisms_1_range" ];
+                projection_io_type[2] := [ "P", "Y" ];
             else
                 projection_io_type[2] := [ "P", "morphisms_k_range" ];
             fi;
@@ -4341,7 +4337,7 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
         
         #### validate limit records
         CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.limit_object_name, object_record );
-
+        
         if limit.number_of_targets > 0 then
             CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.limit_projection_name, projection_record );
             CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.limit_projection_with_given_name, make_record_with_given( projection_record, limit.limit_object_name, limit.colimit_object_name ) );
@@ -4354,10 +4350,15 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
         
         CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.limit_universal_morphism_name, universal_morphism_record );
         CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.limit_universal_morphism_with_given_name, make_record_with_given( universal_morphism_record, limit.limit_object_name, limit.colimit_object_name ) );
-
-        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, functorial_record.function_name, functorial_record );
-        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, functorial_with_given_record.function_name, functorial_with_given_record );
-
+        
+        # GAP has a limit of 6 arguments per operation -> operations which would have more than 6 arguments have to work around this
+        if Length( functorial_with_given_record.filter_list ) <= 6 then
+            
+            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, functorial_record.function_name, functorial_record );
+            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, functorial_with_given_record.function_name, functorial_with_given_record );
+            
+        fi;
+        
         #### validate colimit records
         CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.colimit_object_name, make_colimit( limit, object_record ) );
         
@@ -4374,8 +4375,13 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
         CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.colimit_universal_morphism_name, make_colimit( limit, universal_morphism_record ) );
         CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.colimit_universal_morphism_with_given_name, make_record_with_given( make_colimit( limit, universal_morphism_record ), limit.colimit_object_name, limit.limit_object_name ) );
         
-        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, functorial_record.dual_operation, make_colimit( limit, functorial_record ) );
-        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, functorial_with_given_record.dual_operation, make_colimit( limit, functorial_with_given_record ) );
+        # GAP has a limit of 6 arguments per operation -> operations which would have more than 6 arguments have to work around this
+        if Length( functorial_with_given_record.filter_list ) <= 6 then
+            
+            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, functorial_record.dual_operation, make_colimit( limit, functorial_record ) );
+            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, functorial_with_given_record.dual_operation, make_colimit( limit, functorial_with_given_record ) );
+            
+        fi;
         
     od;
     

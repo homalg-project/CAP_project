@@ -222,7 +222,7 @@ DeclareOperation( "AddCoefficientsOfMorphismWithGivenBasisOfExternalHom",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `Coequalizer`.
-#! $F: ( arg2 ) \mapsto \mathtt{Coequalizer}(arg2)$.
+#! $F: ( arg2, arg3 ) \mapsto \mathtt{Coequalizer}(arg2, arg3)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddCoequalizer",
@@ -811,7 +811,7 @@ DeclareOperation( "AddDistinguishedObjectOfHomomorphismStructure",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `EmbeddingOfEqualizer`.
-#! $F: ( morphisms ) \mapsto \mathtt{EmbeddingOfEqualizer}(morphisms)$.
+#! $F: ( Y, morphisms ) \mapsto \mathtt{EmbeddingOfEqualizer}(Y, morphisms)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddEmbeddingOfEqualizer",
@@ -830,7 +830,7 @@ DeclareOperation( "AddEmbeddingOfEqualizer",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `EmbeddingOfEqualizerWithGivenEqualizer`.
-#! $F: ( morphisms, P ) \mapsto \mathtt{EmbeddingOfEqualizerWithGivenEqualizer}(morphisms, P)$.
+#! $F: ( Y, morphisms, P ) \mapsto \mathtt{EmbeddingOfEqualizerWithGivenEqualizer}(Y, morphisms, P)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddEmbeddingOfEqualizerWithGivenEqualizer",
@@ -887,7 +887,7 @@ DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjective
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `Equalizer`.
-#! $F: ( arg2 ) \mapsto \mathtt{Equalizer}(arg2)$.
+#! $F: ( arg2, arg3 ) \mapsto \mathtt{Equalizer}(arg2, arg3)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddEqualizer",
@@ -2996,7 +2996,7 @@ DeclareOperation( "AddMorphismFromCoimageToImageWithGivenObjects",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `MorphismFromEqualizerToSink`.
-#! $F: ( morphisms ) \mapsto \mathtt{MorphismFromEqualizerToSink}(morphisms)$.
+#! $F: ( Y, morphisms ) \mapsto \mathtt{MorphismFromEqualizerToSink}(Y, morphisms)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddMorphismFromEqualizerToSink",
@@ -3015,7 +3015,7 @@ DeclareOperation( "AddMorphismFromEqualizerToSink",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `MorphismFromEqualizerToSinkWithGivenEqualizer`.
-#! $F: ( morphisms, P ) \mapsto \mathtt{MorphismFromEqualizerToSinkWithGivenEqualizer}(morphisms, P)$.
+#! $F: ( Y, morphisms, P ) \mapsto \mathtt{MorphismFromEqualizerToSinkWithGivenEqualizer}(Y, morphisms, P)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddMorphismFromEqualizerToSinkWithGivenEqualizer",
@@ -3110,7 +3110,7 @@ DeclareOperation( "AddMorphismFromKernelObjectToSinkWithGivenKernelObject",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `MorphismFromSourceToCoequalizer`.
-#! $F: ( morphisms ) \mapsto \mathtt{MorphismFromSourceToCoequalizer}(morphisms)$.
+#! $F: ( Y, morphisms ) \mapsto \mathtt{MorphismFromSourceToCoequalizer}(Y, morphisms)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddMorphismFromSourceToCoequalizer",
@@ -3129,7 +3129,7 @@ DeclareOperation( "AddMorphismFromSourceToCoequalizer",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `MorphismFromSourceToCoequalizerWithGivenCoequalizer`.
-#! $F: ( morphisms, P ) \mapsto \mathtt{MorphismFromSourceToCoequalizerWithGivenCoequalizer}(morphisms, P)$.
+#! $F: ( Y, morphisms, P ) \mapsto \mathtt{MorphismFromSourceToCoequalizerWithGivenCoequalizer}(Y, morphisms, P)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddMorphismFromSourceToCoequalizerWithGivenCoequalizer",
@@ -3471,7 +3471,7 @@ DeclareOperation( "AddProjectionInFactorOfFiberProductWithGivenFiberProduct",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `ProjectionOntoCoequalizer`.
-#! $F: ( morphisms ) \mapsto \mathtt{ProjectionOntoCoequalizer}(morphisms)$.
+#! $F: ( Y, morphisms ) \mapsto \mathtt{ProjectionOntoCoequalizer}(Y, morphisms)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddProjectionOntoCoequalizer",
@@ -3490,7 +3490,7 @@ DeclareOperation( "AddProjectionOntoCoequalizer",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `ProjectionOntoCoequalizerWithGivenCoequalizer`.
-#! $F: ( morphisms, P ) \mapsto \mathtt{ProjectionOntoCoequalizerWithGivenCoequalizer}(morphisms, P)$.
+#! $F: ( Y, morphisms, P ) \mapsto \mathtt{ProjectionOntoCoequalizerWithGivenCoequalizer}(Y, morphisms, P)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddProjectionOntoCoequalizerWithGivenCoequalizer",
@@ -4345,7 +4345,7 @@ DeclareOperation( "AddTerminalObjectFunctorialWithGivenTerminalObjects",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `UniversalMorphismFromCoequalizer`.
-#! $F: ( morphisms, T, tau ) \mapsto \mathtt{UniversalMorphismFromCoequalizer}(morphisms, T, tau)$.
+#! $F: ( Y, morphisms, T, tau ) \mapsto \mathtt{UniversalMorphismFromCoequalizer}(Y, morphisms, T, tau)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismFromCoequalizer",
@@ -4364,7 +4364,7 @@ DeclareOperation( "AddUniversalMorphismFromCoequalizer",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `UniversalMorphismFromCoequalizerWithGivenCoequalizer`.
-#! $F: ( morphisms, T, tau, P ) \mapsto \mathtt{UniversalMorphismFromCoequalizerWithGivenCoequalizer}(morphisms, T, tau, P)$.
+#! $F: ( Y, morphisms, T, tau, P ) \mapsto \mathtt{UniversalMorphismFromCoequalizerWithGivenCoequalizer}(Y, morphisms, T, tau, P)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismFromCoequalizerWithGivenCoequalizer",
@@ -4725,7 +4725,7 @@ DeclareOperation( "AddUniversalMorphismIntoDirectSumWithGivenDirectSum",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `UniversalMorphismIntoEqualizer`.
-#! $F: ( morphisms, T, tau ) \mapsto \mathtt{UniversalMorphismIntoEqualizer}(morphisms, T, tau)$.
+#! $F: ( Y, morphisms, T, tau ) \mapsto \mathtt{UniversalMorphismIntoEqualizer}(Y, morphisms, T, tau)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismIntoEqualizer",
@@ -4744,7 +4744,7 @@ DeclareOperation( "AddUniversalMorphismIntoEqualizer",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `UniversalMorphismIntoEqualizerWithGivenEqualizer`.
-#! $F: ( morphisms, T, tau, P ) \mapsto \mathtt{UniversalMorphismIntoEqualizerWithGivenEqualizer}(morphisms, T, tau, P)$.
+#! $F: ( Y, morphisms, T, tau, P ) \mapsto \mathtt{UniversalMorphismIntoEqualizerWithGivenEqualizer}(Y, morphisms, T, tau, P)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismIntoEqualizerWithGivenEqualizer",

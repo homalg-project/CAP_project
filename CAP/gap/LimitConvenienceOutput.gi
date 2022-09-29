@@ -51,40 +51,40 @@ end );
 InstallOtherMethod( UniversalMorphismIntoDirectProduct,
                     [ IsList, IsList ],
                     
-    function( diagram, tau )
+    function( objects, tau )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismIntoDirectProduct( diagram, Source( tau[1] ), tau );
+        return UniversalMorphismIntoDirectProduct( objects, Source( tau[1] ), tau );
         
 end );
 
 InstallOtherMethod( UniversalMorphismIntoDirectProduct,
                     [ IsCapCategory, IsList, IsList ],
                     
-    function( cat, diagram, tau )
+    function( cat, objects, tau )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismIntoDirectProduct( cat, diagram, Source( tau[1] ), tau );
+        return UniversalMorphismIntoDirectProduct( cat, objects, Source( tau[1] ), tau );
         
 end );
 
 InstallOtherMethod( UniversalMorphismIntoDirectProductWithGivenDirectProduct,
                     [ IsList, IsList, IsCapCategoryObject ],
                     
-    function( diagram, tau, P )
+    function( objects, tau, P )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismIntoDirectProductWithGivenDirectProduct( diagram, Source( tau[1] ), tau, P );
+        return UniversalMorphismIntoDirectProductWithGivenDirectProduct( objects, Source( tau[1] ), tau, P );
         
 end );
 
 InstallOtherMethod( UniversalMorphismIntoDirectProductWithGivenDirectProduct,
                     [ IsCapCategory, IsList, IsList, IsCapCategoryObject ],
                     
-    function( cat, diagram, tau, P )
+    function( cat, objects, tau, P )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat, diagram, Source( tau[1] ), tau, P );
+        return UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat, objects, Source( tau[1] ), tau, P );
         
 end );
 
@@ -135,40 +135,40 @@ end );
 InstallOtherMethod( UniversalMorphismFromCoproduct,
                     [ IsList, IsList ],
                     
-    function( diagram, tau )
+    function( objects, tau )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismFromCoproduct( diagram, Range( tau[1] ), tau );
+        return UniversalMorphismFromCoproduct( objects, Range( tau[1] ), tau );
         
 end );
 
 InstallOtherMethod( UniversalMorphismFromCoproduct,
                     [ IsCapCategory, IsList, IsList ],
                     
-    function( cat, diagram, tau )
+    function( cat, objects, tau )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismFromCoproduct( cat, diagram, Range( tau[1] ), tau );
+        return UniversalMorphismFromCoproduct( cat, objects, Range( tau[1] ), tau );
         
 end );
 
 InstallOtherMethod( UniversalMorphismFromCoproductWithGivenCoproduct,
                     [ IsList, IsList, IsCapCategoryObject ],
                     
-    function( diagram, tau, P )
+    function( objects, tau, P )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismFromCoproductWithGivenCoproduct( diagram, Range( tau[1] ), tau, P );
+        return UniversalMorphismFromCoproductWithGivenCoproduct( objects, Range( tau[1] ), tau, P );
         
 end );
 
 InstallOtherMethod( UniversalMorphismFromCoproductWithGivenCoproduct,
                     [ IsCapCategory, IsList, IsList, IsCapCategoryObject ],
                     
-    function( cat, diagram, tau, P )
+    function( cat, objects, tau, P )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismFromCoproductWithGivenCoproduct( cat, diagram, Range( tau[1] ), tau, P );
+        return UniversalMorphismFromCoproductWithGivenCoproduct( cat, objects, Range( tau[1] ), tau, P );
         
 end );
 
@@ -317,40 +317,40 @@ end );
 InstallOtherMethod( UniversalMorphismIntoDirectSum,
                     [ IsList, IsList ],
                     
-    function( diagram, tau )
+    function( objects, tau )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismIntoDirectSum( diagram, Source( tau[1] ), tau );
+        return UniversalMorphismIntoDirectSum( objects, Source( tau[1] ), tau );
         
 end );
 
 InstallOtherMethod( UniversalMorphismIntoDirectSum,
                     [ IsCapCategory, IsList, IsList ],
                     
-    function( cat, diagram, tau )
+    function( cat, objects, tau )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismIntoDirectSum( cat, diagram, Source( tau[1] ), tau );
+        return UniversalMorphismIntoDirectSum( cat, objects, Source( tau[1] ), tau );
         
 end );
 
 InstallOtherMethod( UniversalMorphismIntoDirectSumWithGivenDirectSum,
                     [ IsList, IsList, IsCapCategoryObject ],
                     
-    function( diagram, tau, P )
+    function( objects, tau, P )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismIntoDirectSumWithGivenDirectSum( diagram, Source( tau[1] ), tau, P );
+        return UniversalMorphismIntoDirectSumWithGivenDirectSum( objects, Source( tau[1] ), tau, P );
         
 end );
 
 InstallOtherMethod( UniversalMorphismIntoDirectSumWithGivenDirectSum,
                     [ IsCapCategory, IsList, IsList, IsCapCategoryObject ],
                     
-    function( cat, diagram, tau, P )
+    function( cat, objects, tau, P )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismIntoDirectSumWithGivenDirectSum( cat, diagram, Source( tau[1] ), tau, P );
+        return UniversalMorphismIntoDirectSumWithGivenDirectSum( cat, objects, Source( tau[1] ), tau, P );
         
 end );
 
@@ -401,40 +401,40 @@ end );
 InstallOtherMethod( UniversalMorphismFromDirectSum,
                     [ IsList, IsList ],
                     
-    function( diagram, tau )
+    function( objects, tau )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismFromDirectSum( diagram, Range( tau[1] ), tau );
+        return UniversalMorphismFromDirectSum( objects, Range( tau[1] ), tau );
         
 end );
 
 InstallOtherMethod( UniversalMorphismFromDirectSum,
                     [ IsCapCategory, IsList, IsList ],
                     
-    function( cat, diagram, tau )
+    function( cat, objects, tau )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismFromDirectSum( cat, diagram, Range( tau[1] ), tau );
+        return UniversalMorphismFromDirectSum( cat, objects, Range( tau[1] ), tau );
         
 end );
 
 InstallOtherMethod( UniversalMorphismFromDirectSumWithGivenDirectSum,
                     [ IsList, IsList, IsCapCategoryObject ],
                     
-    function( diagram, tau, P )
+    function( objects, tau, P )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismFromDirectSumWithGivenDirectSum( diagram, Range( tau[1] ), tau, P );
+        return UniversalMorphismFromDirectSumWithGivenDirectSum( objects, Range( tau[1] ), tau, P );
         
 end );
 
 InstallOtherMethod( UniversalMorphismFromDirectSumWithGivenDirectSum,
                     [ IsCapCategory, IsList, IsList, IsCapCategoryObject ],
                     
-    function( cat, diagram, tau, P )
+    function( cat, objects, tau, P )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismFromDirectSumWithGivenDirectSum( cat, diagram, Range( tau[1] ), tau, P );
+        return UniversalMorphismFromDirectSumWithGivenDirectSum( cat, objects, Range( tau[1] ), tau, P );
         
 end );
 
@@ -499,80 +499,80 @@ end : Description := "DirectSumFunctorialWithGivenDirectSums using the universal
 InstallOtherMethod( UniversalMorphismIntoFiberProduct,
                     [ IsList, IsList ],
                     
-    function( diagram, tau )
+    function( morphisms, tau )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismIntoFiberProduct( diagram, Source( tau[1] ), tau );
+        return UniversalMorphismIntoFiberProduct( morphisms, Source( tau[1] ), tau );
         
 end );
 
 InstallOtherMethod( UniversalMorphismIntoFiberProduct,
                     [ IsCapCategory, IsList, IsList ],
                     
-    function( cat, diagram, tau )
+    function( cat, morphisms, tau )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismIntoFiberProduct( cat, diagram, Source( tau[1] ), tau );
+        return UniversalMorphismIntoFiberProduct( cat, morphisms, Source( tau[1] ), tau );
         
 end );
 
 InstallOtherMethod( UniversalMorphismIntoFiberProductWithGivenFiberProduct,
                     [ IsList, IsList, IsCapCategoryObject ],
                     
-    function( diagram, tau, P )
+    function( morphisms, tau, P )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismIntoFiberProductWithGivenFiberProduct( diagram, Source( tau[1] ), tau, P );
+        return UniversalMorphismIntoFiberProductWithGivenFiberProduct( morphisms, Source( tau[1] ), tau, P );
         
 end );
 
 InstallOtherMethod( UniversalMorphismIntoFiberProductWithGivenFiberProduct,
                     [ IsCapCategory, IsList, IsList, IsCapCategoryObject ],
                     
-    function( cat, diagram, tau, P )
+    function( cat, morphisms, tau, P )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismIntoFiberProductWithGivenFiberProduct( cat, diagram, Source( tau[1] ), tau, P );
+        return UniversalMorphismIntoFiberProductWithGivenFiberProduct( cat, morphisms, Source( tau[1] ), tau, P );
         
 end );
 
 InstallOtherMethod( UniversalMorphismFromPushout,
                     [ IsList, IsList ],
                     
-    function( diagram, tau )
+    function( morphisms, tau )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismFromPushout( diagram, Range( tau[1] ), tau );
+        return UniversalMorphismFromPushout( morphisms, Range( tau[1] ), tau );
         
 end );
 
 InstallOtherMethod( UniversalMorphismFromPushout,
                     [ IsCapCategory, IsList, IsList ],
                     
-    function( cat, diagram, tau )
+    function( cat, morphisms, tau )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismFromPushout( cat, diagram, Range( tau[1] ), tau );
+        return UniversalMorphismFromPushout( cat, morphisms, Range( tau[1] ), tau );
         
 end );
 
 InstallOtherMethod( UniversalMorphismFromPushoutWithGivenPushout,
                     [ IsList, IsList, IsCapCategoryObject ],
                     
-    function( diagram, tau, P )
+    function( morphisms, tau, P )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismFromPushoutWithGivenPushout( diagram, Range( tau[1] ), tau, P );
+        return UniversalMorphismFromPushoutWithGivenPushout( morphisms, Range( tau[1] ), tau, P );
         
 end );
 
 InstallOtherMethod( UniversalMorphismFromPushoutWithGivenPushout,
                     [ IsCapCategory, IsList, IsList, IsCapCategoryObject ],
                     
-    function( cat, diagram, tau, P )
+    function( cat, morphisms, tau, P )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismFromPushoutWithGivenPushout( cat, diagram, Range( tau[1] ), tau, P );
+        return UniversalMorphismFromPushoutWithGivenPushout( cat, morphisms, Range( tau[1] ), tau, P );
         
 end );
 
@@ -595,82 +595,82 @@ AddDerivationToCAP( PushoutFunctorialWithGivenPushouts,
 end : Description := "PushoutFunctorialWithGivenPushouts using the universality of the colimit" );
 
 InstallOtherMethod( UniversalMorphismIntoEqualizer,
-                    [ IsList, IsCapCategoryMorphism ],
+                    [ IsCapCategoryObject, IsList, IsCapCategoryMorphism ],
                     
-    function( diagram, tau )
+    function( Y, morphisms, tau )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismIntoEqualizer( diagram, Source( tau ), tau );
+        return UniversalMorphismIntoEqualizer( Y, morphisms, Source( tau ), tau );
         
 end );
 
 InstallOtherMethod( UniversalMorphismIntoEqualizer,
-                    [ IsCapCategory, IsList, IsCapCategoryMorphism ],
+                    [ IsCapCategory, IsCapCategoryObject, IsList, IsCapCategoryMorphism ],
                     
-    function( cat, diagram, tau )
+    function( cat, Y, morphisms, tau )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismIntoEqualizer( cat, diagram, Source( tau ), tau );
+        return UniversalMorphismIntoEqualizer( cat, Y, morphisms, Source( tau ), tau );
         
 end );
 
 InstallOtherMethod( UniversalMorphismIntoEqualizerWithGivenEqualizer,
-                    [ IsList, IsCapCategoryMorphism, IsCapCategoryObject ],
+                    [ IsCapCategoryObject, IsList, IsCapCategoryMorphism, IsCapCategoryObject ],
                     
-    function( diagram, tau, P )
+    function( Y, morphisms, tau, P )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismIntoEqualizerWithGivenEqualizer( diagram, Source( tau ), tau, P );
+        return UniversalMorphismIntoEqualizerWithGivenEqualizer( Y, morphisms, Source( tau ), tau, P );
         
 end );
 
 InstallOtherMethod( UniversalMorphismIntoEqualizerWithGivenEqualizer,
-                    [ IsCapCategory, IsList, IsCapCategoryMorphism, IsCapCategoryObject ],
+                    [ IsCapCategory, IsCapCategoryObject, IsList, IsCapCategoryMorphism, IsCapCategoryObject ],
                     
-    function( cat, diagram, tau, P )
+    function( cat, Y, morphisms, tau, P )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismIntoEqualizerWithGivenEqualizer( cat, diagram, Source( tau ), tau, P );
+        return UniversalMorphismIntoEqualizerWithGivenEqualizer( cat, Y, morphisms, Source( tau ), tau, P );
         
 end );
 
 InstallOtherMethod( UniversalMorphismFromCoequalizer,
-                    [ IsList, IsCapCategoryMorphism ],
+                    [ IsCapCategoryObject, IsList, IsCapCategoryMorphism ],
                     
-    function( diagram, tau )
+    function( Y, morphisms, tau )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismFromCoequalizer( diagram, Range( tau ), tau );
+        return UniversalMorphismFromCoequalizer( Y, morphisms, Range( tau ), tau );
         
 end );
 
 InstallOtherMethod( UniversalMorphismFromCoequalizer,
-                    [ IsCapCategory, IsList, IsCapCategoryMorphism ],
+                    [ IsCapCategory, IsCapCategoryObject, IsList, IsCapCategoryMorphism ],
                     
-    function( cat, diagram, tau )
+    function( cat, Y, morphisms, tau )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismFromCoequalizer( cat, diagram, Range( tau ), tau );
+        return UniversalMorphismFromCoequalizer( cat, Y, morphisms, Range( tau ), tau );
         
 end );
 
 InstallOtherMethod( UniversalMorphismFromCoequalizerWithGivenCoequalizer,
-                    [ IsList, IsCapCategoryMorphism, IsCapCategoryObject ],
+                    [ IsCapCategoryObject, IsList, IsCapCategoryMorphism, IsCapCategoryObject ],
                     
-    function( diagram, tau, P )
+    function( Y, morphisms, tau, P )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismFromCoequalizerWithGivenCoequalizer( diagram, Range( tau ), tau, P );
+        return UniversalMorphismFromCoequalizerWithGivenCoequalizer( Y, morphisms, Range( tau ), tau, P );
         
 end );
 
 InstallOtherMethod( UniversalMorphismFromCoequalizerWithGivenCoequalizer,
-                    [ IsCapCategory, IsList, IsCapCategoryMorphism, IsCapCategoryObject ],
+                    [ IsCapCategory, IsCapCategoryObject, IsList, IsCapCategoryMorphism, IsCapCategoryObject ],
                     
-    function( cat, diagram, tau, P )
+    function( cat, Y, morphisms, tau, P )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return UniversalMorphismFromCoequalizerWithGivenCoequalizer( cat, diagram, Range( tau ), tau, P );
+        return UniversalMorphismFromCoequalizerWithGivenCoequalizer( cat, Y, morphisms, Range( tau ), tau, P );
         
 end );
 
@@ -678,8 +678,12 @@ end );
 AddDerivationToCAP( EqualizerFunctorialWithGivenEqualizers,
                     
   function( cat, P, morphisms, mu, morphismsp, Pp )
+    local Y, Yp;
     
-    return UniversalMorphismIntoEqualizerWithGivenEqualizer( cat, morphismsp, P, PreCompose( cat, EmbeddingOfEqualizerWithGivenEqualizer( cat, morphisms, P ), mu ), Pp );
+    Y := Source( mu );
+    Yp := Range( mu );
+    
+    return UniversalMorphismIntoEqualizerWithGivenEqualizer( cat, Yp, morphismsp, P, PreCompose( cat, EmbeddingOfEqualizerWithGivenEqualizer( cat, Y, morphisms, P ), mu ), Pp );
     
 end : Description := "EqualizerFunctorialWithGivenEqualizers using the universality of the limit" );
 
@@ -687,88 +691,92 @@ end : Description := "EqualizerFunctorialWithGivenEqualizers using the universal
 AddDerivationToCAP( CoequalizerFunctorialWithGivenCoequalizers,
                     
   function( cat, P, morphisms, mu, morphismsp, Pp )
+    local Y, Yp;
     
-    return UniversalMorphismFromCoequalizerWithGivenCoequalizer( cat, morphisms, Pp, PreCompose( cat, mu, ProjectionOntoCoequalizerWithGivenCoequalizer( cat, morphismsp, Pp ) ), P );
+    Y := Source( mu );
+    Yp := Range( mu );
+    
+    return UniversalMorphismFromCoequalizerWithGivenCoequalizer( cat, Y, morphisms, Pp, PreCompose( cat, mu, ProjectionOntoCoequalizerWithGivenCoequalizer( cat, Yp, morphismsp, Pp ) ), P );
     
 end : Description := "CoequalizerFunctorialWithGivenCoequalizers using the universality of the colimit" );
 
 InstallOtherMethod( KernelLift,
                     [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                     
-    function( diagram, tau )
+    function( alpha, tau )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return KernelLift( diagram, Source( tau ), tau );
+        return KernelLift( alpha, Source( tau ), tau );
         
 end );
 
 InstallOtherMethod( KernelLift,
                     [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ],
                     
-    function( cat, diagram, tau )
+    function( cat, alpha, tau )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return KernelLift( cat, diagram, Source( tau ), tau );
+        return KernelLift( cat, alpha, Source( tau ), tau );
         
 end );
 
 InstallOtherMethod( KernelLiftWithGivenKernelObject,
                     [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ],
                     
-    function( diagram, tau, P )
+    function( alpha, tau, P )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return KernelLiftWithGivenKernelObject( diagram, Source( tau ), tau, P );
+        return KernelLiftWithGivenKernelObject( alpha, Source( tau ), tau, P );
         
 end );
 
 InstallOtherMethod( KernelLiftWithGivenKernelObject,
                     [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ],
                     
-    function( cat, diagram, tau, P )
+    function( cat, alpha, tau, P )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return KernelLiftWithGivenKernelObject( cat, diagram, Source( tau ), tau, P );
+        return KernelLiftWithGivenKernelObject( cat, alpha, Source( tau ), tau, P );
         
 end );
 
 InstallOtherMethod( CokernelColift,
                     [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                     
-    function( diagram, tau )
+    function( alpha, tau )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return CokernelColift( diagram, Range( tau ), tau );
+        return CokernelColift( alpha, Range( tau ), tau );
         
 end );
 
 InstallOtherMethod( CokernelColift,
                     [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ],
                     
-    function( cat, diagram, tau )
+    function( cat, alpha, tau )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return CokernelColift( cat, diagram, Range( tau ), tau );
+        return CokernelColift( cat, alpha, Range( tau ), tau );
         
 end );
 
 InstallOtherMethod( CokernelColiftWithGivenCokernelObject,
                     [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ],
                     
-    function( diagram, tau, P )
+    function( alpha, tau, P )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return CokernelColiftWithGivenCokernelObject( diagram, Range( tau ), tau, P );
+        return CokernelColiftWithGivenCokernelObject( alpha, Range( tau ), tau, P );
         
 end );
 
 InstallOtherMethod( CokernelColiftWithGivenCokernelObject,
                     [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ],
                     
-    function( cat, diagram, tau, P )
+    function( cat, alpha, tau, P )
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        return CokernelColiftWithGivenCokernelObject( cat, diagram, Range( tau ), tau, P );
+        return CokernelColiftWithGivenCokernelObject( cat, alpha, Range( tau ), tau, P );
         
 end );
 
