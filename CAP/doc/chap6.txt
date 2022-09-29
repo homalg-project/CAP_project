@@ -1098,8 +1098,11 @@
   [33X[1;0Y[29X[2XEqualizer[102X( [3Xarg[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
-  [33X[0;0YThis  is  a  convenience  method.  There  are two different ways to use this
+  [33X[0;0YThis  is  a  convenience  method. There are three different ways to use this
   method:[133X
+  
+  [30X    [33X[0;6YThe arguments are an object [23XA[123X and a list of morphisms [23XD = ( \beta_i: A
+        \rightarrow B )_{i = 1 \dots n}[123X.[133X
   
   [30X    [33X[0;6YThe  argument  is  a  list of morphisms [23XD = ( \beta_i: A \rightarrow B
         )_{i = 1 \dots n}[123X.[133X
@@ -1111,75 +1114,84 @@
   
   [1X6.9-2 EqualizerOp[101X
   
-  [33X[1;0Y[29X[2XEqualizerOp[102X( [3XD[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XEqualizerOp[102X( [3XA[103X, [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
-  [33X[0;0YThe  argument is a list of morphisms [23XD = ( \beta_i: A \rightarrow B )_{i = 1
-  \dots n}[123X. The output is the equalizer [23X\mathrm{Equalizer}(D)[123X.[133X
+  [33X[0;0YThe  arguments  are  an  object  [23XA[123X  and  list  of morphisms [23XD = ( \beta_i: A
+  \rightarrow  B  )_{i  =  1  \dots  n}[123X.  For convenience, the object [23XA[123X can be
+  omitted  and is automatically derived from [23XD[123X in that case. The output is the
+  equalizer [23X\mathrm{Equalizer}(D)[123X.[133X
   
   [1X6.9-3 EmbeddingOfEqualizer[101X
   
-  [33X[1;0Y[29X[2XEmbeddingOfEqualizer[102X( [3XD[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XEmbeddingOfEqualizer[102X( [3XA[103X, [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \mathrm{Equalizer}(D), A )[123X[133X
   
-  [33X[0;0YThe  arguments are a list of morphisms [23XD = ( \beta_i: A \rightarrow B )_{i =
-  1    \dots    n}[123X.   The   output   is   the   equalizer   embedding   [23X\iota:
-  \mathrm{Equalizer}(D) \rightarrow A[123X.[133X
+  [33X[0;0YThe  arguments  are  an  object  [23XA[123X  and a list of morphisms [23XD = ( \beta_i: A
+  \rightarrow  B  )_{i  =  1  \dots  n}[123X.  For convenience, the object [23XA[123X can be
+  omitted  and is automatically derived from [23XD[123X in that case. The output is the
+  equalizer embedding [23X\iota: \mathrm{Equalizer}(D) \rightarrow A[123X.[133X
   
   [1X6.9-4 EmbeddingOfEqualizerWithGivenEqualizer[101X
   
-  [33X[1;0Y[29X[2XEmbeddingOfEqualizerWithGivenEqualizer[102X( [3XD[103X, [3XE[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XEmbeddingOfEqualizerWithGivenEqualizer[102X( [3XA[103X, [3XD[103X, [3XE[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( E, A )[123X[133X
   
-  [33X[0;0YThe  arguments are a list of morphisms [23XD = ( \beta_i: A \rightarrow B )_{i =
-  1  \dots  n}[123X,  and  an  object  [23XE = \mathrm{Equalizer}(D)[123X. The output is the
-  equalizer embedding [23X\iota: E \rightarrow A[123X.[133X
+  [33X[0;0YThe  arguments  are  an  object  [23XA[123X,  a  list  of  morphisms [23XD = ( \beta_i: A
+  \rightarrow  B  )_{i  = 1 \dots n}[123X, and an object [23XE = \mathrm{Equalizer}(D)[123X.
+  For  convenience,  the  object [23XA[123X can be omitted and is automatically derived
+  from  [23XD[123X  in  that  case.  The  output  is  the  equalizer embedding [23X\iota: E
+  \rightarrow A[123X.[133X
   
   [1X6.9-5 MorphismFromEqualizerToSink[101X
   
-  [33X[1;0Y[29X[2XMorphismFromEqualizerToSink[102X( [3XD[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XMorphismFromEqualizerToSink[102X( [3XA[103X, [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \mathrm{Equalizer}(D), B )[123X[133X
   
-  [33X[0;0YThe  arguments are a list of morphisms [23XD = ( \beta_i: A \rightarrow B )_{i =
-  1  \dots  n}[123X.  The  output  is  the  composition  [23X\mu: \mathrm{Equalizer}(D)
-  \rightarrow  B[123X  of  the embedding [23X\iota: \mathrm{Equalizer}(D) \rightarrow A[123X
-  and [23X\beta_1[123X.[133X
+  [33X[0;0YThe  arguments  are  an  object  [23XA[123X  and a list of morphisms [23XD = ( \beta_i: A
+  \rightarrow  B  )_{i  =  1  \dots  n}[123X.  For convenience, the object [23XA[123X can be
+  omitted  and is automatically derived from [23XD[123X in that case. The output is the
+  composition [23X\mu: \mathrm{Equalizer}(D) \rightarrow B[123X of the embedding [23X\iota:
+  \mathrm{Equalizer}(D) \rightarrow A[123X and [23X\beta_1[123X.[133X
   
   [1X6.9-6 MorphismFromEqualizerToSinkWithGivenEqualizer[101X
   
-  [33X[1;0Y[29X[2XMorphismFromEqualizerToSinkWithGivenEqualizer[102X( [3XD[103X, [3XE[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XMorphismFromEqualizerToSinkWithGivenEqualizer[102X( [3XA[103X, [3XD[103X, [3XE[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( E, B )[123X[133X
   
-  [33X[0;0YThe  arguments are a list of morphisms [23XD = ( \beta_i: A \rightarrow B )_{i =
-  1  \dots  n}[123X  and  an  object  [23XE  = \mathrm{Equalizer}(D)[123X. The output is the
-  composition [23X\mu: E \rightarrow B[123X of the embedding [23X\iota: E \rightarrow A[123X and
-  [23X\beta_1[123X.[133X
+  [33X[0;0YThe  arguments  are  an  object  [23XA[123X,  a  list  of  morphisms [23XD = ( \beta_i: A
+  \rightarrow B )_{i = 1 \dots n}[123X and an object [23XE = \mathrm{Equalizer}(D)[123X. For
+  convenience, the object [23XA[123X can be omitted and is automatically derived from [23XD[123X
+  in  that  case.  The  output  is the composition [23X\mu: E \rightarrow B[123X of the
+  embedding [23X\iota: E \rightarrow A[123X and [23X\beta_1[123X.[133X
   
   [1X6.9-7 UniversalMorphismIntoEqualizer[101X
   
-  [33X[1;0Y[29X[2XUniversalMorphismIntoEqualizer[102X( [3XD[103X, [3XT[103X, [3Xtau[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XUniversalMorphismIntoEqualizer[102X( [3XA[103X, [3XD[103X, [3XT[103X, [3Xtau[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( T, \mathrm{Equalizer}(D) )[123X[133X
   
-  [33X[0;0YThe  arguments are a list of morphisms [23XD = ( \beta_i: A \rightarrow B )_{i =
-  1  \dots  n}[123X,  a  test object [23XT[123X, and a morphism [23X \tau: T \rightarrow A [123X such
-  that  [23X\beta_i  \circ  \tau \sim_{T, B} \beta_j \circ \tau[123X for all pairs [23Xi,j[123X.
-  For  convenience,  the  test  object  [3XT[103X  can be omitted and is automatically
-  derived  from  [3Xtau[103X  in  that  case.  The output is the morphism [23Xu( \tau ): T
-  \rightarrow  \mathrm{Equalizer}(D)[123X  given  by  the universal property of the
-  equalizer.[133X
+  [33X[0;0YThe  arguments  are  an  object  [23XA[123X,  a  list  of  morphisms [23XD = ( \beta_i: A
+  \rightarrow  B  )_{i  = 1 \dots n}[123X, a test object [23XT[123X, and a morphism [23X \tau: T
+  \rightarrow  A  [123X such that [23X\beta_i \circ \tau \sim_{T, B} \beta_j \circ \tau[123X
+  for  all  pairs  [23Xi,j[123X.  For  convenience,  the object [23XA[123X can be omitted and is
+  automatically  derived from [23XD[123X in that case. For convenience, the test object
+  [3XT[103X  can  be  omitted  and is automatically derived from [3Xtau[103X in that case. The
+  output  is the morphism [23Xu( \tau ): T \rightarrow \mathrm{Equalizer}(D)[123X given
+  by the universal property of the equalizer.[133X
   
   [1X6.9-8 UniversalMorphismIntoEqualizerWithGivenEqualizer[101X
   
-  [33X[1;0Y[29X[2XUniversalMorphismIntoEqualizerWithGivenEqualizer[102X( [3XD[103X, [3XT[103X, [3Xtau[103X, [3XE[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XUniversalMorphismIntoEqualizerWithGivenEqualizer[102X( [3XA[103X, [3XD[103X, [3XT[103X, [3Xtau[103X, [3XE[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( T, E )[123X[133X
   
-  [33X[0;0YThe  arguments are a list of morphisms [23XD = ( \beta_i: A \rightarrow B )_{i =
-  1  \dots  n}[123X,  a test object [23XT[123X, a morphism [23X\tau: T \rightarrow A )[123X such that
-  [23X\beta_i  \circ \tau \sim_{T, B} \beta_j \circ \tau[123X for all pairs [23Xi,j[123X, and an
-  object  [23XE = \mathrm{Equalizer}(D)[123X. For convenience, the test object [3XT[103X can be
-  omitted  and  is  automatically derived from [3Xtau[103X in that case. The output is
-  the  morphism  [23Xu( \tau ): T \rightarrow E[123X given by the universal property of
-  the equalizer.[133X
+  [33X[0;0YThe  arguments  are  an  object  [23XA[123X,  a  list  of  morphisms [23XD = ( \beta_i: A
+  \rightarrow  B  )_{i  =  1  \dots  n}[123X,  a  test object [23XT[123X, a morphism [23X\tau: T
+  \rightarrow  A )[123X such that [23X\beta_i \circ \tau \sim_{T, B} \beta_j \circ \tau[123X
+  for all pairs [23Xi,j[123X, and an object [23XE = \mathrm{Equalizer}(D)[123X. For convenience,
+  the  object  [23XA[123X  can  be  omitted and is automatically derived from [23XD[123X in that
+  case. For convenience, the test object [3XT[103X can be omitted and is automatically
+  derived  from  [3Xtau[103X  in  that  case.  The output is the morphism [23Xu( \tau ): T
+  \rightarrow E[123X given by the universal property of the equalizer.[133X
   
   [1X6.9-9 EqualizerFunctorial[101X
   
@@ -1242,8 +1254,11 @@
   [33X[1;0Y[29X[2XCoequalizer[102X( [3Xarg[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
-  [33X[0;0YThis  is  a  convenience  method.  There  are two different ways to use this
+  [33X[0;0YThis  is  a  convenience  method. There are three different ways to use this
   method:[133X
+  
+  [30X    [33X[0;6YThe arguments are an object [23XA[123X and a list of morphisms [23XD = ( \beta_i: B
+        \rightarrow A )_{i = 1 \dots n}[123X.[133X
   
   [30X    [33X[0;6YThe  argument  is  a  list of morphisms [23XD = ( \beta_i: B \rightarrow A
         )_{i = 1 \dots n}[123X.[133X
@@ -1255,75 +1270,83 @@
   
   [1X6.10-2 CoequalizerOp[101X
   
-  [33X[1;0Y[29X[2XCoequalizerOp[102X( [3XD[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCoequalizerOp[102X( [3XA[103X, [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
-  [33X[0;0YThe  argument is a list of morphisms [23XD = ( \beta_i: B \rightarrow A )_{i = 1
-  \dots n}[123X. The output is the coequalizer [23X\mathrm{Coequalizer}(D)[123X.[133X
+  [33X[0;0YThe  arguments  are  an  object  [23XA[123X  and a list of morphisms [23XD = ( \beta_i: B
+  \rightarrow  A  )_{i  =  1  \dots  n}[123X.  For convenience, the object [23XA[123X can be
+  omitted  and is automatically derived from [23XD[123X in that case. The output is the
+  coequalizer [23X\mathrm{Coequalizer}(D)[123X.[133X
   
   [1X6.10-3 ProjectionOntoCoequalizer[101X
   
-  [33X[1;0Y[29X[2XProjectionOntoCoequalizer[102X( [3XD[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XProjectionOntoCoequalizer[102X( [3XA[103X, [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( A, \mathrm{Coequalizer}( D ) )[123X.[133X
   
-  [33X[0;0YThe  arguments are a list of morphisms [23XD = ( \beta_i: B \rightarrow A )_{i =
-  1   \dots   n}[123X.   The   output   is   the   projection  [23X\pi:  A  \rightarrow
-  \mathrm{Coequalizer}( D )[123X.[133X
+  [33X[0;0YThe  arguments  are  an  object  [23XA[123X  and a list of morphisms [23XD = ( \beta_i: B
+  \rightarrow  A  )_{i  =  1  \dots  n}[123X.  For convenience, the object [23XA[123X can be
+  omitted  and is automatically derived from [23XD[123X in that case. The output is the
+  projection [23X\pi: A \rightarrow \mathrm{Coequalizer}( D )[123X.[133X
   
   [1X6.10-4 ProjectionOntoCoequalizerWithGivenCoequalizer[101X
   
-  [33X[1;0Y[29X[2XProjectionOntoCoequalizerWithGivenCoequalizer[102X( [3XD[103X, [3XC[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XProjectionOntoCoequalizerWithGivenCoequalizer[102X( [3XA[103X, [3XD[103X, [3XC[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( A, C )[123X.[133X
   
-  [33X[0;0YThe  arguments are a list of morphisms [23XD = ( \beta_i: B \rightarrow A )_{i =
-  1  \dots  n}[123X,  and  an object [23XC = \mathrm{Coequalizer}(D)[123X. The output is the
-  projection [23X\pi: A \rightarrow C[123X.[133X
+  [33X[0;0YThe  arguments  are  an  object  [23XA[123X,  a  list  of  morphisms [23XD = ( \beta_i: B
+  \rightarrow  A )_{i = 1 \dots n}[123X, and an object [23XC = \mathrm{Coequalizer}(D)[123X.
+  For  convenience,  the  object [23XA[123X can be omitted and is automatically derived
+  from [23XD[123X in that case. The output is the projection [23X\pi: A \rightarrow C[123X.[133X
   
   [1X6.10-5 MorphismFromSourceToCoequalizer[101X
   
-  [33X[1;0Y[29X[2XMorphismFromSourceToCoequalizer[102X( [3XD[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XMorphismFromSourceToCoequalizer[102X( [3XA[103X, [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( B, \mathrm{Coequalizer}( D ) )[123X.[133X
   
-  [33X[0;0YThe  arguments are a list of morphisms [23XD = ( \beta_i: B \rightarrow A )_{i =
-  1   \dots   n}[123X.   The   output   is   the  composition  [23X\mu:  B  \rightarrow
-  \mathrm{Coequalizer}(D)[123X  of  [23X\beta_1[123X  and  the projection [23X\pi: A \rightarrow
-  \mathrm{Coequalizer}( D )[123X.[133X
+  [33X[0;0YThe  arguments  are  an  object  [23XA[123X  and a list of morphisms [23XD = ( \beta_i: B
+  \rightarrow  A  )_{i  =  1  \dots  n}[123X.  For convenience, the object [23XA[123X can be
+  omitted  and is automatically derived from [23XD[123X in that case. The output is the
+  composition  [23X\mu:  B  \rightarrow \mathrm{Coequalizer}(D)[123X of [23X\beta_1[123X and the
+  projection [23X\pi: A \rightarrow \mathrm{Coequalizer}( D )[123X.[133X
   
   [1X6.10-6 MorphismFromSourceToCoequalizerWithGivenCoequalizer[101X
   
-  [33X[1;0Y[29X[2XMorphismFromSourceToCoequalizerWithGivenCoequalizer[102X( [3XD[103X, [3XC[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XMorphismFromSourceToCoequalizerWithGivenCoequalizer[102X( [3XA[103X, [3XD[103X, [3XC[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( B, C )[123X.[133X
   
-  [33X[0;0YThe  arguments are a list of morphisms [23XD = ( \beta_i: B \rightarrow A )_{i =
-  1  \dots  n}[123X  and  an  object [23XC = \mathrm{Coequalizer}(D)[123X. The output is the
-  composition  [23X\mu:  B  \rightarrow  C[123X  of  [23X\beta_1[123X  and the projection [23X\pi: A
-  \rightarrow C[123X.[133X
+  [33X[0;0YThe  arguments  are  an  object  [23XA[123X,  a  list  of  morphisms [23XD = ( \beta_i: B
+  \rightarrow  A  )_{i = 1 \dots n}[123X and an object [23XC = \mathrm{Coequalizer}(D)[123X.
+  For  convenience,  the  object [23XA[123X can be omitted and is automatically derived
+  from  [23XD[123X  in that case. The output is the composition [23X\mu: B \rightarrow C[123X of
+  [23X\beta_1[123X and the projection [23X\pi: A \rightarrow C[123X.[133X
   
   [1X6.10-7 UniversalMorphismFromCoequalizer[101X
   
-  [33X[1;0Y[29X[2XUniversalMorphismFromCoequalizer[102X( [3XD[103X, [3XT[103X, [3Xtau[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XUniversalMorphismFromCoequalizer[102X( [3XA[103X, [3XD[103X, [3XT[103X, [3Xtau[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \mathrm{Coequalizer}(D), T )[123X[133X
   
-  [33X[0;0YThe  arguments are a list of morphisms [23XD = ( \beta_i: B \rightarrow A )_{i =
-  1 \dots n}[123X, a test object [23XT[123X, and a morphism [23X\tau: A \rightarrow T [123X such that
-  [23X\tau  \circ  \beta_i  \sim_{B,T}  \tau  \circ \beta_j[123X for all pairs [23Xi,j[123X. For
-  convenience,  the  test object [3XT[103X can be omitted and is automatically derived
-  from   [3Xtau[103X   in   that   case.  The  output  is  the  morphism  [23Xu(  \tau  ):
-  \mathrm{Coequalizer}(D) \rightarrow T[123X given by the universal property of the
-  coequalizer.[133X
+  [33X[0;0YThe  arguments  are  an  object  [23XA[123X,  a  list  of  morphisms [23XD = ( \beta_i: B
+  \rightarrow  A  )_{i  =  1 \dots n}[123X, a test object [23XT[123X, and a morphism [23X\tau: A
+  \rightarrow  T  [123X  such that [23X\tau \circ \beta_i \sim_{B,T} \tau \circ \beta_j[123X
+  for  all  pairs  [23Xi,j[123X.  For  convenience,  the object [23XA[123X can be omitted and is
+  automatically  derived from [23XD[123X in that case. For convenience, the test object
+  [3XT[103X  can  be  omitted  and is automatically derived from [3Xtau[103X in that case. The
+  output  is  the  morphism  [23Xu(  \tau ): \mathrm{Coequalizer}(D) \rightarrow T[123X
+  given by the universal property of the coequalizer.[133X
   
   [1X6.10-8 UniversalMorphismFromCoequalizerWithGivenCoequalizer[101X
   
-  [33X[1;0Y[29X[2XUniversalMorphismFromCoequalizerWithGivenCoequalizer[102X( [3XD[103X, [3XT[103X, [3Xtau[103X, [3XC[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XUniversalMorphismFromCoequalizerWithGivenCoequalizer[102X( [3XA[103X, [3XD[103X, [3XT[103X, [3Xtau[103X, [3XC[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( C, T )[123X[133X
   
-  [33X[0;0YThe  arguments are a list of morphisms [23XD = ( \beta_i: B \rightarrow A )_{i =
-  1  \dots  n}[123X,  a  test object [23XT[123X, a morphism [23X\tau: A \rightarrow T [123X such that
-  [23X\tau  \circ  \beta_i  \sim_{B,T}  \tau  \circ  \beta_j[123X,  and  an  object [23XC =
-  \mathrm{Coequalizer}(D)[123X.  For  convenience, the test object [3XT[103X can be omitted
-  and  is  automatically  derived  from  [3Xtau[103X  in  that case. The output is the
-  morphism  [23Xu(  \tau ): C \rightarrow T[123X given by the universal property of the
-  coequalizer.[133X
+  [33X[0;0YThe  arguments  are  an  object  [23XA[123X,  a  list  of  morphisms [23XD = ( \beta_i: B
+  \rightarrow  A  )_{i  =  1  \dots  n}[123X,  a  test object [23XT[123X, a morphism [23X\tau: A
+  \rightarrow  T  [123X such that [23X\tau \circ \beta_i \sim_{B,T} \tau \circ \beta_j[123X,
+  and an object [23XC = \mathrm{Coequalizer}(D)[123X. For convenience, the object [23XA[123X can
+  be   omitted  and  is  automatically  derived  from  [23XD[123X  in  that  case.  For
+  convenience,  the  test object [3XT[103X can be omitted and is automatically derived
+  from [3Xtau[103X in that case. The output is the morphism [23Xu( \tau ): C \rightarrow T[123X
+  given by the universal property of the coequalizer.[133X
   
   [1X6.10-9 CoequalizerFunctorial[101X
   

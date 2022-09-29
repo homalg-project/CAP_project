@@ -811,7 +811,7 @@ DeclareOperation( "CapInternalInstallAdd",
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCoequalizer</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">Coequalizer</code>. <span class="Math">F: ( arg2 ) \mapsto \mathtt{Coequalizer}(arg2)</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">Coequalizer</code>. <span class="Math">F: ( arg2, arg3 ) \mapsto \mathtt{Coequalizer}(arg2, arg3)</span>.</p>
 
 <p><a id="X85D135A186E19749" name="X85D135A186E19749"></a></p>
 
@@ -1090,7 +1090,7 @@ DeclareOperation( "CapInternalInstallAdd",
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEmbeddingOfEqualizer</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">EmbeddingOfEqualizer</code>. <span class="Math">F: ( morphisms ) \mapsto \mathtt{EmbeddingOfEqualizer}(morphisms)</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">EmbeddingOfEqualizer</code>. <span class="Math">F: ( Y, morphisms ) \mapsto \mathtt{EmbeddingOfEqualizer}(Y, morphisms)</span>.</p>
 
 <p><a id="X8346BE927EB0C95B" name="X8346BE927EB0C95B"></a></p>
 
@@ -1099,7 +1099,7 @@ DeclareOperation( "CapInternalInstallAdd",
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEmbeddingOfEqualizerWithGivenEqualizer</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">EmbeddingOfEqualizerWithGivenEqualizer</code>. <span class="Math">F: ( morphisms, P ) \mapsto \mathtt{EmbeddingOfEqualizerWithGivenEqualizer}(morphisms, P)</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">EmbeddingOfEqualizerWithGivenEqualizer</code>. <span class="Math">F: ( Y, morphisms, P ) \mapsto \mathtt{EmbeddingOfEqualizerWithGivenEqualizer}(Y, morphisms, P)</span>.</p>
 
 <p><a id="X85B76EA67A35B7B2" name="X85B76EA67A35B7B2"></a></p>
 
@@ -1126,7 +1126,7 @@ DeclareOperation( "CapInternalInstallAdd",
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEqualizer</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">Equalizer</code>. <span class="Math">F: ( arg2 ) \mapsto \mathtt{Equalizer}(arg2)</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">Equalizer</code>. <span class="Math">F: ( arg2, arg3 ) \mapsto \mathtt{Equalizer}(arg2, arg3)</span>.</p>
 
 <p><a id="X8042AA538466FFE0" name="X8042AA538466FFE0"></a></p>
 
@@ -2125,7 +2125,7 @@ DeclareOperation( "CapInternalInstallAdd",
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismFromEqualizerToSink</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">MorphismFromEqualizerToSink</code>. <span class="Math">F: ( morphisms ) \mapsto \mathtt{MorphismFromEqualizerToSink}(morphisms)</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">MorphismFromEqualizerToSink</code>. <span class="Math">F: ( Y, morphisms ) \mapsto \mathtt{MorphismFromEqualizerToSink}(Y, morphisms)</span>.</p>
 
 <p><a id="X857FA53779546DAC" name="X857FA53779546DAC"></a></p>
 
@@ -2134,7 +2134,7 @@ DeclareOperation( "CapInternalInstallAdd",
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismFromEqualizerToSinkWithGivenEqualizer</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">MorphismFromEqualizerToSinkWithGivenEqualizer</code>. <span class="Math">F: ( morphisms, P ) \mapsto \mathtt{MorphismFromEqualizerToSinkWithGivenEqualizer}(morphisms, P)</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">MorphismFromEqualizerToSinkWithGivenEqualizer</code>. <span class="Math">F: ( Y, morphisms, P ) \mapsto \mathtt{MorphismFromEqualizerToSinkWithGivenEqualizer}(Y, morphisms, P)</span>.</p>
 
 <p><a id="X87BB71D881AFD21C" name="X87BB71D881AFD21C"></a></p>
 
@@ -2179,7 +2179,7 @@ DeclareOperation( "CapInternalInstallAdd",
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismFromSourceToCoequalizer</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">MorphismFromSourceToCoequalizer</code>. <span class="Math">F: ( morphisms ) \mapsto \mathtt{MorphismFromSourceToCoequalizer}(morphisms)</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">MorphismFromSourceToCoequalizer</code>. <span class="Math">F: ( Y, morphisms ) \mapsto \mathtt{MorphismFromSourceToCoequalizer}(Y, morphisms)</span>.</p>
 
 <p><a id="X84074D4B7E584205" name="X84074D4B7E584205"></a></p>
 
@@ -2188,7 +2188,7 @@ DeclareOperation( "CapInternalInstallAdd",
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismFromSourceToCoequalizerWithGivenCoequalizer</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">MorphismFromSourceToCoequalizerWithGivenCoequalizer</code>. <span class="Math">F: ( morphisms, P ) \mapsto \mathtt{MorphismFromSourceToCoequalizerWithGivenCoequalizer}(morphisms, P)</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">MorphismFromSourceToCoequalizerWithGivenCoequalizer</code>. <span class="Math">F: ( Y, morphisms, P ) \mapsto \mathtt{MorphismFromSourceToCoequalizerWithGivenCoequalizer}(Y, morphisms, P)</span>.</p>
 
 <p><a id="X7E2024F080A442DF" name="X7E2024F080A442DF"></a></p>
 
@@ -2350,7 +2350,7 @@ DeclareOperation( "CapInternalInstallAdd",
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectionOntoCoequalizer</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">ProjectionOntoCoequalizer</code>. <span class="Math">F: ( morphisms ) \mapsto \mathtt{ProjectionOntoCoequalizer}(morphisms)</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">ProjectionOntoCoequalizer</code>. <span class="Math">F: ( Y, morphisms ) \mapsto \mathtt{ProjectionOntoCoequalizer}(Y, morphisms)</span>.</p>
 
 <p><a id="X8691E0FA7BF900F5" name="X8691E0FA7BF900F5"></a></p>
 
@@ -2359,7 +2359,7 @@ DeclareOperation( "CapInternalInstallAdd",
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectionOntoCoequalizerWithGivenCoequalizer</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">ProjectionOntoCoequalizerWithGivenCoequalizer</code>. <span class="Math">F: ( morphisms, P ) \mapsto \mathtt{ProjectionOntoCoequalizerWithGivenCoequalizer}(morphisms, P)</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">ProjectionOntoCoequalizerWithGivenCoequalizer</code>. <span class="Math">F: ( Y, morphisms, P ) \mapsto \mathtt{ProjectionOntoCoequalizerWithGivenCoequalizer}(Y, morphisms, P)</span>.</p>
 
 <p><a id="X828B50D57F3DAB71" name="X828B50D57F3DAB71"></a></p>
 
@@ -2764,7 +2764,7 @@ DeclareOperation( "CapInternalInstallAdd",
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismFromCoequalizer</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">UniversalMorphismFromCoequalizer</code>. <span class="Math">F: ( morphisms, T, tau ) \mapsto \mathtt{UniversalMorphismFromCoequalizer}(morphisms, T, tau)</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">UniversalMorphismFromCoequalizer</code>. <span class="Math">F: ( Y, morphisms, T, tau ) \mapsto \mathtt{UniversalMorphismFromCoequalizer}(Y, morphisms, T, tau)</span>.</p>
 
 <p><a id="X7F27613984BEA3BB" name="X7F27613984BEA3BB"></a></p>
 
@@ -2773,7 +2773,7 @@ DeclareOperation( "CapInternalInstallAdd",
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismFromCoequalizerWithGivenCoequalizer</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">UniversalMorphismFromCoequalizerWithGivenCoequalizer</code>. <span class="Math">F: ( morphisms, T, tau, P ) \mapsto \mathtt{UniversalMorphismFromCoequalizerWithGivenCoequalizer}(morphisms, T, tau, P)</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">UniversalMorphismFromCoequalizerWithGivenCoequalizer</code>. <span class="Math">F: ( Y, morphisms, T, tau, P ) \mapsto \mathtt{UniversalMorphismFromCoequalizerWithGivenCoequalizer}(Y, morphisms, T, tau, P)</span>.</p>
 
 <p><a id="X874696508440B555" name="X874696508440B555"></a></p>
 
@@ -2944,7 +2944,7 @@ DeclareOperation( "CapInternalInstallAdd",
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoEqualizer</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">UniversalMorphismIntoEqualizer</code>. <span class="Math">F: ( morphisms, T, tau ) \mapsto \mathtt{UniversalMorphismIntoEqualizer}(morphisms, T, tau)</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">UniversalMorphismIntoEqualizer</code>. <span class="Math">F: ( Y, morphisms, T, tau ) \mapsto \mathtt{UniversalMorphismIntoEqualizer}(Y, morphisms, T, tau)</span>.</p>
 
 <p><a id="X872A26F678D6989B" name="X872A26F678D6989B"></a></p>
 
@@ -2953,7 +2953,7 @@ DeclareOperation( "CapInternalInstallAdd",
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoEqualizerWithGivenEqualizer</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">UniversalMorphismIntoEqualizerWithGivenEqualizer</code>. <span class="Math">F: ( morphisms, T, tau, P ) \mapsto \mathtt{UniversalMorphismIntoEqualizerWithGivenEqualizer}(morphisms, T, tau, P)</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">UniversalMorphismIntoEqualizerWithGivenEqualizer</code>. <span class="Math">F: ( Y, morphisms, T, tau, P ) \mapsto \mathtt{UniversalMorphismIntoEqualizerWithGivenEqualizer}(Y, morphisms, T, tau, P)</span>.</p>
 
 <p><a id="X7F7446F882DF6DA5" name="X7F7446F882DF6DA5"></a></p>
 
