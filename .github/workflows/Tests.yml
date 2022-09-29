@@ -59,7 +59,7 @@ jobs:
             git checkout master; \
             LANG=C.UTF-8 ./make_dist.sh --token "${{ secrets.GITHUB_TOKEN }}"; \
             # publish subsplits (fetch all history first)
-            git fetch --unshallow \
+            git fetch --unshallow; \
             git subtree split --prefix=FreydCategoriesForCAP -b FreydCategoriesForCAP-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/FreydCategoriesForCAP FreydCategoriesForCAP-split:master; \
           else \
             echo "Not making a release."; \
