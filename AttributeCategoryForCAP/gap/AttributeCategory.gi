@@ -22,7 +22,7 @@ InstallValue( CAP_INTERNAL_STRUCTURE_FUNCTION_RECORD_FOR_CATEGORY_WITH_ATTRIBUTE
       filter_list := [ "morphism_filter", "object_filter_of_underlying_category" ] ),
       
   Equalizer := rec(
-      filter_list := [ "list", "object_filter_of_underlying_category" ] ),
+      filter_list := [ "object_filter", "list", "object_filter_of_underlying_category" ] ),
       
   ImageObject := rec(
       filter_list := [ "morphism_filter", "object_filter_of_underlying_category" ] ),
@@ -34,7 +34,7 @@ InstallValue( CAP_INTERNAL_STRUCTURE_FUNCTION_RECORD_FOR_CATEGORY_WITH_ATTRIBUTE
       filter_list := [ "morphism_filter", "object_filter_of_underlying_category" ] ),
       
   Coequalizer := rec(
-      filter_list := [ "list", "object_filter_of_underlying_category" ] ),
+      filter_list := [ "object_filter", "list", "object_filter_of_underlying_category" ] ),
       
   CoimageObject := rec(
       filter_list := [ "morphism_filter", "object_filter_of_underlying_category" ] ),
@@ -473,9 +473,9 @@ InstallGlobalFunction( CAP_INTERNAL_DERIVE_STRUCTURE_FUNCTIONS_OF_UNIVERSAL_OBJE
         
         derivation_record.Equalizer := rec(
           uses := [ "EmbeddingOfEqualizer" ],
-          derivation := function( equalizer_diagram, equalizer_object )
+          derivation := function( source, equalizer_diagram, equalizer_object )
               
-              return lift_operation( EmbeddingOfEqualizer( UnderlyingCell( equalizer_diagram ) ), Source( equalizer_diagram[1] ) );
+              return lift_operation( EmbeddingOfEqualizer( UnderlyingCell( source ), UnderlyingCell( equalizer_diagram ) ), UnderlyingCell( source ) );
               
         end );
         
@@ -517,9 +517,9 @@ InstallGlobalFunction( CAP_INTERNAL_DERIVE_STRUCTURE_FUNCTIONS_OF_UNIVERSAL_OBJE
         
         derivation_record.Coequalizer := rec(
           uses := [ "ProjectionOntoCoequalizer" ],
-          derivation := function( coequalizer_diagram, coequalizer_object )
+          derivation := function( range, coequalizer_diagram, coequalizer_object )
               
-              return colift_operation( ProjectionOntoCoequalizer( UnderlyingCell( coequalizer_diagram ) ), Range( coequalizer_diagram[1] ) );
+              return colift_operation( ProjectionOntoCoequalizer( UnderlyingCell( range ), UnderlyingCell( coequalizer_diagram ) ), UnderlyingCell( range ) );
               
         end );
         
