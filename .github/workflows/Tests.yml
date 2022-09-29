@@ -26,6 +26,9 @@ jobs:
       - run: sudo chmod 1777 $RUNNER_TEMP
       - run: sudo chown gap:gap $GITHUB_WORKSPACE
       - uses: actions/checkout@v3
+        with:
+          # the persisted token interferes with the subsplit token used below
+          persist-credentials: false
       - run: cp -a $GITHUB_WORKSPACE /home/gap/.gap/pkg/
       - run: |
           export HOME="/home/gap"
