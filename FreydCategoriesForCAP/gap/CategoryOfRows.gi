@@ -1299,8 +1299,139 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
     end );
     
+    ##
+    ## Random Methods
+    ##
+    AddRandomObjectByList( category,
+      function ( category, L )
+        
+        if IsEmpty( L ) then
+          Add( L, 0 );
+        fi;
+        
+        return CategoryOfRowsObject( category, AbsInt( Random( L ) ) );
+    
+    end );
+    
+    ##
+    AddRandomObjectByInteger( category,
+      function ( category, n )
+        
+        return RandomObjectByList( category, [ 0 .. AbsInt( n ) ] );
+    
+    end );
+    
+    ##
+    AddRandomMorphismWithFixedSourceAndRangeByList( category,
+      function ( category, S, R, L )
+        local ring, mat;
+        
+        ring := UnderlyingRing( category );
+        
+        if IsEmpty( L ) then
+          Add( L, 0 );
+        fi;
+        
+        mat := Sum( L, c -> c * RandomMatrix( RankOfObject( S ), RankOfObject( R ), ring ) );
+        
+        return CategoryOfRowsMorphism( category, S, mat, R );
+    
+    end );
+    
+    ##
+    AddRandomMorphismWithFixedSourceAndRangeByInteger( category,
+      function ( category, S, R, n )
+        
+        return RandomMorphismWithFixedSourceAndRangeByList( category, S, R, [ 1 ] );
+    
+    end );
+    
+    ##
+    AddRandomMorphismWithFixedSourceByList( category,
+      function ( category, S, L )
+        local ring, r, R, mat;
+        
+        ring := UnderlyingRing( category );
+        
+        if not ( Length( L ) = 2 and IsList( L[1] ) and IsList( L[2] ) ) then
+          Error( "The input should be a list consisting of two lists\n" );
+        fi;
+        
+        if IsEmpty( L[1] ) then
+          Add( L[1], 0 );
+        fi;
+        
+        r := AbsInt( Random( L[1] ) );
+        
+        R := CategoryOfRowsObject( category, r );
+        
+        return RandomMorphismWithFixedSourceAndRangeByList( S, R, L[2] );
+    
+    end );
+    
+    AddRandomMorphismWithFixedSourceByInteger( category,
+      function ( category, S, n )
+        
+        return RandomMorphismWithFixedSourceByList( category, S, [ [ 0 .. AbsInt( n ) ], [ 1 ] ] );
+    
+    end );
+    
+    ##
+    AddRandomMorphismWithFixedRangeByList( category,
+      function ( category, R, L )
+        local ring, s, S, mat;
+        
+        ring := UnderlyingRing( category );
+        
+        if not ( Length( L ) = 2 and IsList( L[1] ) and IsList( L[2] ) ) then
+          Error( "The input should be a list consisting of two lists\n" );
+        fi;
+        
+        if L[1] then
+          Add( L[1], 0 );
+        fi;
+        
+        s := AbsInt( Random( L[1] ) );
+        
+        S := CategoryOfRowsObject( category, s );
+        
+        return RandomMorphismWithFixedSourceAndRangeByList( category, S, R, L[2] );
+    
+    end );
+    
+    AddRandomMorphismWithFixedRangeByInteger( category,
+      function ( category, R, n )
+        
+        return RandomMorphismWithFixedRangeByList( category, R, [ [ 0 .. AbsInt( n ) ], [ 1 ] ] );
+    
+    end );
+    
+    ##
+    AddRandomMorphismByList( category,
+      function ( category, L )
+        
+        if not ( Length( L ) = 3 and IsList( L[1] ) and IsList( L[2] ) and IsList( L[3] ) ) then
+          Error( "The input should be a list consisting of three lists\n" );
+        fi;
+        
+        return RandomMorphismWithFixedSourceAndRangeByList(
+                    category,
+                    RandomObjectByList( category, L[1] ),
+                    RandomObjectByList( category, L[2] ),
+                    L[3] );
+    
+    end );
+    
+    ##
+    AddRandomMorphismByInteger( category,
+      function ( category, n )
+        
+        return RandomMorphismByList( category, [ [ 0 .. AbsInt( n ) ], [ 0 .. AbsInt( n ) ], [ 1 ] ] );
+    
+    end );
+    
 end );
-
+   
 ####################################
 ##
 ## View
