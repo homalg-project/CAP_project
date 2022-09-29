@@ -655,7 +655,6 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                 fi;
                 
                 if
-                    # WARNING: this needs a hack when outlining wrapped arguments
                     # Source can be recovered from initial_value
                     CapJitIsCallToGlobalFunction( source, "Source" ) and source.args.length = 1 and source.args.1.type = "EXPR_REF_FVAR" and source.args.1.func_id = result_func.id and source.args.1.name = result_func.nams[1] and
                     # Range can be recovered from initial_value
