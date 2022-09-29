@@ -603,18 +603,21 @@ CapJitAddLogicFunction( function ( tree )
 end );
 
 # helper
-InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, result_func_index, additional_funcs_indices, initial_value_index, initial_value_is_list )
-  local result_func, initial_value, additional_funcs, return_obj, cat, attribute_name, case, source, range, new_func, new_additional_funcs, arguments_references_paths, parent, new_initial_value, args, new_args, new_tree, initial_value_morphism, func, path, i;
+InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, result_func_index, additional_funcs_indices, initial_value_index, additional_values_indices, list_values_indices )
+  local result_func, initial_value, additional_funcs, additional_values, return_obj, cat, attribute_name, case, source, range, new_func, new_additional_funcs, arguments_references_paths, parent, new_initial_value, args, new_additional_values, new_args, new_tree, initial_value_morphism, func, path, i;
     
     Assert( 0, tree.type = "EXPR_FUNCCALL" );
     Assert( 0, tree.funcref.type = "EXPR_REF_GVAR" );
-    Assert( 0, [ 1 .. tree.args.length ] = Set( Concatenation( [ result_func_index, initial_value_index ], additional_funcs_indices ) ) );
+    Assert( 0, [ 1 .. tree.args.length ] = Set( Concatenation( [ result_func_index, initial_value_index ], additional_funcs_indices, additional_values_indices ) ) );
     Assert( 0, not result_func_index in additional_funcs_indices );
     Assert( 0, not initial_value_index in additional_funcs_indices );
+    Assert( 0, not result_func_index in additional_values_indices );
+    Assert( 0, not initial_value_index in additional_values_indices );
     
     result_func := tree.args.(result_func_index);
     initial_value := tree.args.(initial_value_index);
     additional_funcs := Sublist( tree.args, additional_funcs_indices );
+    additional_values := Sublist( tree.args, additional_values_indices );
     
     if result_func.type = "EXPR_DECLARATIVE_FUNC" and ForAll( additional_funcs, f -> f.type = "EXPR_DECLARATIVE_FUNC" ) then
         
@@ -655,7 +658,6 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                 fi;
                 
                 if
-                    # WARNING: this needs a hack when outlining wrapped arguments
                     # Source can be recovered from initial_value
                     CapJitIsCallToGlobalFunction( source, "Source" ) and source.args.length = 1 and source.args.1.type = "EXPR_REF_FVAR" and source.args.1.func_id = result_func.id and source.args.1.name = result_func.nams[1] and
                     # Range can be recovered from initial_value
@@ -729,7 +731,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                 od;
                 
                 # wrap initial_value in a call to the attribute
-                if initial_value_is_list then
+                if initial_value_index in list_values_indices then
                 
                     new_initial_value := rec(
                         type := "EXPR_FUNCCALL",
@@ -761,6 +763,48 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                     
                 fi;
                 
+                # wrap additional values in a call to the attribute
+                
+                new_additional_values := [ ];
+                
+                for i in [ 1 .. Length( additional_values_indices ) ] do
+                    
+                    if additional_values_indices[i] in list_values_indices then
+                        
+                        new_additional_values[i] := rec(
+                            type := "EXPR_FUNCCALL",
+                            funcref := rec(
+                                type := "EXPR_REF_GVAR",
+                                gvar := "List",
+                            ),
+                            args := AsSyntaxTreeList( [
+                                additional_values.(i),
+                                rec(
+                                    type := "EXPR_REF_GVAR",
+                                    gvar := attribute_name,
+                                )
+                            ] ),
+                        );
+                        
+                    else
+                        
+                        # COVERAGE_IGNORE_NEXT_LINE
+                        Error( "this case is currently not used and thus commented" );
+                        #new_additional_values[i] := rec(
+                            #type := "EXPR_FUNCCALL",
+                            #funcref := rec(
+                                #type := "EXPR_REF_GVAR",
+                                #gvar := attribute_name,
+                            #),
+                            #args := AsSyntaxTreeList( [
+                                #additional_values.(i),
+                            #] ),
+                        #);
+                        
+                    fi;
+                    
+                od;
+                
                 # form new args by collecting the variables set above
                 new_args := [ ];
                 new_args[result_func_index] := new_func;
@@ -769,6 +813,12 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                 for i in [ 1 .. Length( additional_funcs_indices ) ] do
                     
                     new_args[additional_funcs_indices[i]] := new_additional_funcs.(i);
+                    
+                od;
+                
+                for i in [ 1 .. Length( additional_values_indices ) ] do
+                    
+                    new_args[additional_values_indices[i]] := new_additional_values[i];
                     
                 od;
                 
@@ -802,7 +852,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                     
                     if case = "from_initial_value" then
                         
-                        if initial_value_is_list then
+                        if initial_value_index in list_values_indices then
                             
                             initial_value_morphism := rec(
                                 type := "EXPR_FUNCCALL",
@@ -1021,7 +1071,7 @@ CapJitAddLogicFunction( function ( tree )
             
             Assert( 0, args.length = 3 );
             
-            return CAP_JIT_INTERNAL_TELESCOPED_ITERATION( tree, 2, [ 1 ], 3, false );
+            return CAP_JIT_INTERNAL_TELESCOPED_ITERATION( tree, 2, [ 1 ], 3, [ ], [ ] );
             
         fi;
         
@@ -1041,31 +1091,40 @@ CapJitAddLogicFunction( function ( tree )
     Info( InfoCapJit, 1, "Apply logic for Iterated." );
     
     pre_func := function ( tree, additional_arguments )
-      local args, list, func, new_tree, i;
+      local args, list, func, entries, new_tree, i;
         
         if CapJitIsCallToGlobalFunction( tree, "Iterated" ) then
             
             args := tree.args;
             
-            Assert( 0, args.length = 2 );
+            Assert( 0, args.length = 2 or args.length = 3 );
             
             list := args.1;
             func := args.2;
             
             if list.type = "EXPR_LIST" then
                 
-                Assert( 0, list.list.length > 0 );
+                entries := list.list;
                 
-                new_tree := list.list.1;
+                # if we have an initial value, preprend it to the entries
+                if args.length = 3 then
+                    
+                    entries := ConcatenationForSyntaxTreeLists( AsSyntaxTreeList( [ args.3 ] ), entries );
+                    
+                fi;
                 
-                for i in [ 2 .. list.list.length ] do
+                Assert( 0, entries.length > 0 );
+                
+                new_tree := entries.1;
+                
+                for i in [ 2 .. entries.length ] do
                     
                     new_tree := rec(
                         type := "EXPR_FUNCCALL",
                         funcref := CapJitCopyWithNewFunctionIDs( func ),
                         args := AsSyntaxTreeList( [
                             new_tree,
-                            list.list.(i)
+                            entries.(i)
                         ] ),
                     );
                     
@@ -1075,7 +1134,20 @@ CapJitAddLogicFunction( function ( tree )
                 
             else
                 
-                return CAP_JIT_INTERNAL_TELESCOPED_ITERATION( tree, 2, [ ], 1, true );
+                if args.length = 2 then
+                    
+                    return CAP_JIT_INTERNAL_TELESCOPED_ITERATION( tree, 2, [ ], 1, [ ], [ 1 ] );
+                    
+                elif args.length = 3 then
+                    
+                    return CAP_JIT_INTERNAL_TELESCOPED_ITERATION( tree, 2, [ ], 3, [ 1 ], [ 1 ] );
+                    
+                else
+                    
+                    # COVERAGE_IGNORE_NEXT_LINE
+                    Error( "this should never happen" );
+                    
+                fi;
                 
             fi;
             

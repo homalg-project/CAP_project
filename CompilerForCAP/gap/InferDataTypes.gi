@@ -1292,6 +1292,25 @@ CapJitAddTypeSignature( "Iterated", [ IsList, IsFunction ], function ( args, fun
     
 end );
 
+CapJitAddTypeSignature( "Iterated", [ IsList, IsFunction, IsObject ], function ( args, func_stack )
+    
+    Assert( 0, args.1.data_type.element_type = args.3.data_type );
+    
+    args := ShallowCopy( args );
+    
+    args.2 := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS_TYPES( args.2, [ args.1.data_type.element_type, args.1.data_type.element_type ], func_stack );
+    
+    if args.2 = fail then
+        
+        #Error( "could not determine output type" );
+        return fail;
+        
+    fi;
+    
+    return rec( args := args, output_type := args.2.data_type.signature[2] );
+    
+end );
+
 # homalg operations
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgMatrix", [ "IsList", "IsInt", "IsInt", "IsHomalgRing" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgMatrixListList", [ "IsList", "IsInt", "IsInt", "IsHomalgRing" ], "IsHomalgMatrix" );

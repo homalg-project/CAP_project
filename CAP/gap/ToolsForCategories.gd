@@ -247,6 +247,11 @@ DeclareGlobalFunction( "CapJitDataTypeOfMorphismOfCategory" );
 DeclareGlobalFunction( "CapFixpoint" );
 
 #! @Description
+#!   Shorthand for `Iterated( Concatenation( [ <A>initial_value</A> ], <A>list</A> ), <A>func</A> )`.
+#! @Arguments list, func, initial_value
+DeclareOperation( "Iterated", [ IsList, IsFunction, IsObject ] );
+
+#! @Description
 #!   Returns a list of package names which are transitively needed other packages of the package <A>package_name</A>.
 #! @Arguments package_name
 DeclareGlobalFunction( "TransitivelyNeededOtherPackages" );
