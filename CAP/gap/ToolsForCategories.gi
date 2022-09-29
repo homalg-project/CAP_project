@@ -1332,6 +1332,16 @@ InstallGlobalFunction( CapFixpoint, function ( predicate, func, initial_value )
 end );
 
 ##
+InstallMethod( Iterated,
+               [ IsList, IsFunction, IsObject ],
+               
+  function( list, func, initial_value )
+    
+    return Iterated( Concatenation( [ initial_value ], list ), func );
+    
+end );
+
+##
 InstallGlobalFunction( TransitivelyNeededOtherPackages, function ( package_name )
   local collected_dependencies, package_info, dep, p;
     

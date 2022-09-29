@@ -794,17 +794,15 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         
         nr_cols_2 := NrCols( morphism_2 );
         
-        if ForAny( [ nr_cols_1, nr_rows_2 ], IsZero ) then
-            
-            return ZeroMorphism( cat, Source( morphism_1 ), Range( morphism_2 ) );
-            
-        fi;
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        Assert( 0, nr_cols_1 = nr_rows_2 ); # already checked by the pre function
         
         listlist := List( [ 1 .. nr_rows_1 ], i ->
                         List( [ 1 .. nr_cols_2 ], j ->
                             Iterated(
                                 List( [ 1 .. nr_cols_1 ], k -> PreCompose( UnderlyingCategory( cat ), morphism_1[i, k], morphism_2[k, j] ) ),
-                                { alpha, beta } -> AdditionForMorphisms( UnderlyingCategory( cat ), alpha, beta )
+                                { alpha, beta } -> AdditionForMorphisms( UnderlyingCategory( cat ), alpha, beta ),
+                                ZeroMorphism( UnderlyingCategory( cat ), Source( morphism_1 )[i], Range( morphism_2 )[j] )
                             )
                         )
                     );

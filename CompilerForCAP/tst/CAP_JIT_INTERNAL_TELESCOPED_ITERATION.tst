@@ -74,7 +74,7 @@ function ( cat_1 )
        deduped_2_1, UnderlyingMatrix, morphism_attr_1_1 );
 end
 
-# Iterated with list
+# Iterated with literal list
 gap> func := { cat, alpha, beta, gamma } ->
 >     Iterated(
 >         [ alpha, beta, gamma ],
@@ -88,6 +88,41 @@ function ( cat_1, alpha_1, beta_1, gamma_1 )
        Range( gamma_1 ), UnderlyingMatrix, 
        UnderlyingMatrix( alpha_1 ) * UnderlyingMatrix( beta_1 ) 
         * UnderlyingMatrix( gamma_1 ) );
+end
+
+# Iterated with literal list and initial_value
+gap> func := { cat, source, alpha, beta, gamma } ->
+>     Iterated(
+>         [ alpha, beta, gamma ],
+>         { alpha, beta } -> PreCompose( cat, alpha, beta ),
+>         IdentityMorphism( cat, source )
+>     );;
+
+#
+gap> Display( CapJitCompiledFunction( func, cat ) );
+function ( cat_1, source_1, alpha_1, beta_1, gamma_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, 
+       Range( gamma_1 ), UnderlyingMatrix, 
+       HomalgIdentityMatrix( Dimension( source_1 ), UnderlyingRing( cat_1 ) ) 
+            * UnderlyingMatrix( alpha_1 ) * UnderlyingMatrix( beta_1 ) 
+        * UnderlyingMatrix( gamma_1 ) );
+end
+
+# Iterated with empty literal list and initial_value
+gap> func := { cat, source } ->
+>     Iterated(
+>         [ ],
+>         { alpha, beta } -> PreCompose( cat, alpha, beta ),
+>         IdentityMorphism( cat, source )
+>     );;
+
+#
+gap> Display( CapJitCompiledFunction( func, cat ) );
+function ( cat_1, source_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, 
+       source_1, UnderlyingMatrix, 
+       HomalgIdentityMatrix( Dimension( source_1 ), UnderlyingRing( cat_1 ) ) 
+       );
 end
 
 # Iterated (case: from_initial_value)
@@ -109,6 +144,26 @@ function ( cat_1, morphism_list_1 )
          function ( alpha_2, beta_2 )
               return alpha_2 + beta_2;
           end ) );
+end
+
+# Iterated with three arguments (case: from_initial_value)
+# sum of morphisms
+gap> func := { cat, source, morphism_list, range } ->
+>     Iterated(
+>         morphism_list,
+>         { alpha, beta } -> AdditionForMorphisms( cat, alpha, beta ),
+>         ZeroMorphism( cat, source, range )
+>     );;
+
+#
+gap> Display( CapJitCompiledFunction( func, cat ) );
+function ( cat_1, source_1, morphism_list_1, range_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, 
+       UnderlyingMatrix, Iterated( List( morphism_list_1, UnderlyingMatrix ), 
+         function ( alpha_2, beta_2 )
+              return alpha_2 + beta_2;
+          end, HomalgZeroMatrix( Dimension( source_1 ), Dimension( range_1 ), 
+           UnderlyingRing( cat_1 ) ) ) );
 end
 
 # Iterated (case: from_compiler_hints)
