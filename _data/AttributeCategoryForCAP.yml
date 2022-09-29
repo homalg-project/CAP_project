@@ -1,7 +1,7 @@
 name: AttributeCategoryForCAP
-version: "2022.09-01"
+version: "2022.09-02"
 license: "GPL-2.0-or-later"
-date: 2022-09-28
+date: 2022-09-29
 description: |
     Automatic enhancement with attributes of a CAP category
 
@@ -36,11 +36,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/AttributeCategoryForCA
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/AttributeCategoryForCAP-2022.09-01/AttributeCategoryForCAP-2022.09-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/AttributeCategoryForCAP-2022.09-02/AttributeCategoryForCAP-2022.09-02.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/AttributeCategoryForCAP-2022.09-01/AttributeCategoryForCAP-2022.09-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/AttributeCategoryForCAP-2022.09-02/AttributeCategoryForCAP-2022.09-02.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/AttributeCategoryForCAP-2022.09-01/AttributeCategoryForCAP-2022.09-01.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/AttributeCategoryForCAP-2022.09-02/AttributeCategoryForCAP-2022.09-02.pdf
 
 abstract: |
 
@@ -51,7 +51,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>PG22</span>]   <b class='BibAuthor'>Posur, S. and Gutsche, S.</b>,
      <i class='BibTitle'>AttributeCategoryForCAP, Automatic enhancement with attributes of a CAP category,
-             Version 2022.09-01</i>
+             Version 2022.09-02</i>
      (<span class='BibYear'>2022</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/AttributeCategoryForCAP">https://homalg-project.github.io/pkg/AttributeCategoryForCAP</a></span>.
@@ -59,10 +59,10 @@ citeas: |
     
 
 bibtex: |
-    @misc{ AttributeCategoryForCAP2022.09-01,
+    @misc{ AttributeCategoryForCAP2022.09-02,
       author =           {Posur, S. and Gutsche, S.},
       title =            {{AttributeCategoryForCAP},  Automatic enhancement with
-                          attributes of a CAP category, {V}ersion 2022.09-01},
+                          attributes of a CAP category, {V}ersion 2022.09-02},
       month =            {Sep},
       year =             {2022},
       note =             {GAP package},
