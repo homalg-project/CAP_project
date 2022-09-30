@@ -431,7 +431,7 @@
   
   [1X1.5-9 TensorProductToInternalHomAdjunctionMapWithGivenInternalHom[101X
   
-  [33X[1;0Y[29X[2XTensorProductToInternalHomAdjunctionMapWithGivenInternalHom[102X( [3Xa[103X, [3Xb[103X, [3Xf[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XTensorProductToInternalHomAdjunctionMapWithGivenInternalHom[102X( [3Xa[103X, [3Xb[103X, [3Xf[103X, [3Xi[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, \mathrm{\underline{Hom}}(b,c) )[123X.[133X
   
   [33X[0;0YThe  arguments  are two objects [23Xa,b[123X, a morphism [23Xf: a \otimes b \rightarrow c[123X
@@ -450,7 +450,7 @@
   
   [1X1.5-11 InternalHomToTensorProductAdjunctionMapWithGivenTensorProduct[101X
   
-  [33X[1;0Y[29X[2XInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct[102X( [3Xb[103X, [3Xc[103X, [3Xg[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct[102X( [3Xb[103X, [3Xc[103X, [3Xg[103X, [3Xt[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \otimes b, c)[123X.[133X
   
   [33X[0;0YThe   arguments   are   two   objects  [23Xb,c[123X,  a  morphism  [23Xg:  a  \rightarrow
@@ -813,7 +813,7 @@
   
   [1X1.6-9 TensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom[101X
   
-  [33X[1;0Y[29X[2XTensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom[102X( [3Xc[103X, [3Xb[103X, [3Xg[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XTensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom[102X( [3Xc[103X, [3Xb[103X, [3Xg[103X, [3Xi[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \mathrm{\underline{coHom}}(a,b), c )[123X.[133X
   
   [33X[0;0YThe  arguments  are two objects [23Xc,b[123X, a morphism [23Xg: a \rightarrow c \otimes b[123X
@@ -833,7 +833,7 @@
   
   [1X1.6-11 InternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct[101X
   
-  [33X[1;0Y[29X[2XInternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct[102X( [3Xa[103X, [3Xb[103X, [3Xf[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XInternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct[102X( [3Xa[103X, [3Xb[103X, [3Xf[103X, [3Xt[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, c \otimes b)[123X.[133X
   
   [33X[0;0YThe     arguments     are     two     objects    [23Xa,b[123X,    a    morphism    [23Xf:
