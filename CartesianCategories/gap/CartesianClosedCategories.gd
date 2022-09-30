@@ -104,7 +104,7 @@ DeclareOperation( "DirectProductToExponentialAdjunctionMap",
 #! The output is a morphism $g: a \rightarrow \mathrm{Exponential}(b,c)$
 #! corresponding to $f$ under the direct product-exponential adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{Exponential}(b,c) )$.
-#! @Arguments a, b, f
+#! @Arguments a, b, f, i
 DeclareOperation( "DirectProductToExponentialAdjunctionMapWithGivenExponential",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
@@ -122,7 +122,7 @@ DeclareOperation( "ExponentialToDirectProductAdjunctionMap",
 #! The output is a morphism $f: a \times b \rightarrow c$ corresponding to $g$ under the
 #! direct product-exponential adjunction.
 #! @Returns a morphism in $\mathrm{Hom}(a \times b, c)$.
-#! @Arguments b, c, g
+#! @Arguments b, c, g, t
 DeclareOperation( "ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 

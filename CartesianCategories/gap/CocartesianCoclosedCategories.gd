@@ -102,7 +102,7 @@ DeclareOperation( "CoproductToCoexponentialAdjunctionMap",
 #! The output is a morphism $f: \mathrm{Coexponential}(a,b) \rightarrow c$
 #! corresponding to $g$ under the coexponential-coproduct adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Coexponential}(a,b), c )$.
-#! @Arguments c, b, g
+#! @Arguments c, b, g, i
 DeclareOperation( "CoproductToCoexponentialAdjunctionMapWithGivenCoexponential",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
@@ -120,7 +120,7 @@ DeclareOperation( "CoexponentialToCoproductAdjunctionMap",
 #! The output is a morphism $g: a \rightarrow c \sqcup b$ corresponding to $f$ under the
 #! coexponential-coproduct adjunction.
 #! @Returns a morphism in $\mathrm{Hom}(a, c \sqcup b)$.
-#! @Arguments a, b, f
+#! @Arguments a, b, f, t
 DeclareOperation( "CoexponentialToCoproductAdjunctionMapWithGivenCoproduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
