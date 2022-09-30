@@ -362,7 +362,7 @@
   
   [1X2.2-9 CoproductToCoexponentialAdjunctionMapWithGivenCoexponential[101X
   
-  [33X[1;0Y[29X[2XCoproductToCoexponentialAdjunctionMapWithGivenCoexponential[102X( [3Xc[103X, [3Xb[103X, [3Xg[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCoproductToCoexponentialAdjunctionMapWithGivenCoexponential[102X( [3Xc[103X, [3Xb[103X, [3Xg[103X, [3Xi[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \mathrm{Coexponential}(a,b), c )[123X.[133X
   
   [33X[0;0YThe  arguments  are  two objects [23Xc,b[123X, a morphism [23Xg: a \rightarrow c \sqcup b[123X
@@ -382,7 +382,7 @@
   
   [1X2.2-11 CoexponentialToCoproductAdjunctionMapWithGivenCoproduct[101X
   
-  [33X[1;0Y[29X[2XCoexponentialToCoproductAdjunctionMapWithGivenCoproduct[102X( [3Xa[103X, [3Xb[103X, [3Xf[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCoexponentialToCoproductAdjunctionMapWithGivenCoproduct[102X( [3Xa[103X, [3Xb[103X, [3Xf[103X, [3Xt[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, c \sqcup b)[123X.[133X
   
   [33X[0;0YThe arguments are two objects [23Xa,b[123X, a morphism [23Xf: \mathrm{Coexponential}(a,b)
