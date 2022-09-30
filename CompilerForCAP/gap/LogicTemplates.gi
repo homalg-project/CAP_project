@@ -343,12 +343,31 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
     
 end );
 
+# x -> x => ID_FUNC
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ ],
+        src_template := "x -> x",
+        dst_template := "ID_FUNC",
+    )
+);
+
 # ID_FUNC( value ) => value
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ "value" ],
         src_template := "ID_FUNC( value )",
         dst_template := "value",
+    )
+);
+
+# List( list, ID_FUNC ) => list
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "list" ],
+        variable_filters := [ IsList ],
+        src_template := "List( list, ID_FUNC )",
+        dst_template := "list",
     )
 );
 
@@ -442,6 +461,15 @@ CapJitAddLogicTemplate(
         variable_names := [ "list", "func" ],
         src_template := "Length( List( list, func ) )",
         dst_template := "Length( list )",
+    )
+);
+
+# Length( [ 1 .. n ] ) => n
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "n" ],
+        src_template := "Length( [ 1 .. n ] )",
+        dst_template := "n",
     )
 );
 

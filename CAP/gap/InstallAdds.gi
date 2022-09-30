@@ -687,6 +687,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR", function( without
         Concatenation( with_given_name, " by calling ", without_given_name, " with the WithGiven argument(s) dropped" ),
         [ [ ValueGlobal( without_given_name ), 1 ] ],
         with_given_via_without_given_function
+        : is_with_given_derivation := true
     );
     
     AddDerivationToCAP(
@@ -694,6 +695,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR", function( without
         Concatenation( without_given_name, " by calling ", with_given_name, " with the WithGiven object(s)" ),
         Concatenation( [ [ ValueGlobal( with_given_name ), 1 ] ], List( additional_preconditions, x -> [ ValueGlobal( x[1] ), x[2] ] ) ),
         without_given_via_with_given_function
+        : is_with_given_derivation := true
     );
     
 end );

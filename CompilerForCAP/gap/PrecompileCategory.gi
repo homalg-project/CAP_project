@@ -14,8 +14,8 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
     fi;
     
     # check if category_constructor returns a new instance of the category every time
-    cat1 := CallFuncList( category_constructor, given_arguments : no_precompiled_code := true );
-    cat2 := CallFuncList( category_constructor, given_arguments : no_precompiled_code := true );
+    cat1 := CallFuncList( category_constructor, given_arguments : no_precompiled_code := true, overhead := false );
+    cat2 := CallFuncList( category_constructor, given_arguments : no_precompiled_code := true, overhead := false );
     
     if IsIdenticalObj( cat1, cat2 ) then
         
@@ -25,7 +25,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
     fi;
     
     # check that category_constructor supports `FinalizeCategory`
-    cat := CallFuncList( category_constructor, given_arguments : FinalizeCategory := false, no_precompiled_code := true );
+    cat := CallFuncList( category_constructor, given_arguments : FinalizeCategory := false, no_precompiled_code := true, overhead := false );
     
     if IsFinalized( cat ) then
         

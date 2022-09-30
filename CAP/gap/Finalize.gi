@@ -367,7 +367,15 @@ InstallMethod( Finalize,
         
     fi;
     
-    derivation_list := ShallowCopy( CAP_INTERNAL_FINAL_DERIVATION_LIST.final_derivation_list );
+    if ValueOption( "disable_derivations" ) = true then
+        
+        derivation_list := [ ];
+        
+    else
+        
+        derivation_list := ShallowCopy( CAP_INTERNAL_FINAL_DERIVATION_LIST.final_derivation_list );
+        
+    fi;
     
     weight_list := category!.derivations_weight_list;
     
