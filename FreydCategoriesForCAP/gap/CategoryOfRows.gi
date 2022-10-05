@@ -1387,15 +1387,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
           Error( "The input should be a list consisting of two lists\n" );
         fi;
         
-        if L[1] then
-          Add( L[1], 0 );
-        fi;
-        
-        s := AbsInt( Random( L[1] ) );
-        
-        S := CategoryOfRowsObject( category, s );
-        
-        return RandomMorphismWithFixedSourceAndRangeByList( category, S, R, L[2] );
+        return RandomMorphismWithFixedSourceAndRangeByList( category, RandomObjectByList( category, L[1] ), R, L[2] );
     
     end );
     
