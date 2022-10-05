@@ -111,6 +111,16 @@
 #! * <Ref BookName="FreydCategoriesForCAP" Func="ProjectionOfBiasedWeakFiberProduct" Label="for Is" />
 #! * <Ref BookName="FreydCategoriesForCAP" Func="ProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct" Label="for Is" />
 #! * <Ref BookName="CAP" Func="ProjectiveLift" Label="for Is" />
+#! * <Ref BookName="CAP" Func="RandomMorphismByInteger" Label="for Is" />
+#! * <Ref BookName="CAP" Func="RandomMorphismByList" Label="for Is" />
+#! * <Ref BookName="CAP" Func="RandomMorphismWithFixedRangeByInteger" Label="for Is" />
+#! * <Ref BookName="CAP" Func="RandomMorphismWithFixedRangeByList" Label="for Is" />
+#! * <Ref BookName="CAP" Func="RandomMorphismWithFixedSourceAndRangeByInteger" Label="for Is" />
+#! * <Ref BookName="CAP" Func="RandomMorphismWithFixedSourceAndRangeByList" Label="for Is" />
+#! * <Ref BookName="CAP" Func="RandomMorphismWithFixedSourceByInteger" Label="for Is" />
+#! * <Ref BookName="CAP" Func="RandomMorphismWithFixedSourceByList" Label="for Is" />
+#! * <Ref BookName="CAP" Func="RandomObjectByInteger" Label="for Is" />
+#! * <Ref BookName="CAP" Func="RandomObjectByList" Label="for Is" />
 #! * <Ref BookName="CAP" Func="SimplifyRange" Label="for Is" />
 #! * <Ref BookName="CAP" Func="SimplifyRange_IsoFromInputObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="SimplifyRange_IsoToInputObject" Label="for Is" />
