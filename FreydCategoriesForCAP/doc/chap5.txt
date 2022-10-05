@@ -311,6 +311,37 @@
   [30X    [33X[0;6Y[2XProjectiveLift[102X   ([14XCAP:   ProjectiveLift   for   IsCapCategoryMorphism,
         IsCapCategoryMorphism[114X)[133X
   
+  [30X    [33X[0;6Y[2XRandomMorphismByInteger[102X      ([14XCAP:     RandomMorphismByInteger     for
+        IsCapCategory, IsInt[114X)[133X
+  
+  [30X    [33X[0;6Y[2XRandomMorphismByList[102X  ([14XCAP:  RandomMorphismByList  for  IsCapCategory,
+        IsList[114X)[133X
+  
+  [30X    [33X[0;6Y[2XRandomMorphismWithFixedRangeByInteger[102X                            ([14XCAP:
+        RandomMorphismWithFixedRangeByInteger for IsCapCategoryObject, IsInt[114X)[133X
+  
+  [30X    [33X[0;6Y[2XRandomMorphismWithFixedRangeByList[102X                               ([14XCAP:
+        RandomMorphismWithFixedRangeByList for IsCapCategoryObject, IsList[114X)[133X
+  
+  [30X    [33X[0;6Y[2XRandomMorphismWithFixedSourceAndRangeByInteger[102X                   ([14XCAP:
+        RandomMorphismWithFixedSourceAndRangeByInteger                     for
+        IsCapCategoryObject, IsCapCategoryObject, IsInt[114X)[133X
+  
+  [30X    [33X[0;6Y[2XRandomMorphismWithFixedSourceAndRangeByList[102X                      ([14XCAP:
+        RandomMorphismWithFixedSourceAndRangeByList  for  IsCapCategoryObject,
+        IsCapCategoryObject, IsList[114X)[133X
+  
+  [30X    [33X[0;6Y[2XRandomMorphismWithFixedSourceByInteger[102X                           ([14XCAP:
+        RandomMorphismWithFixedSourceByInteger for IsCapCategoryObject, IsInt[114X)[133X
+  
+  [30X    [33X[0;6Y[2XRandomMorphismWithFixedSourceByList[102X                              ([14XCAP:
+        RandomMorphismWithFixedSourceByList for IsCapCategoryObject, IsList[114X)[133X
+  
+  [30X    [33X[0;6Y[2XRandomObjectByInteger[102X  ([14XCAP:  RandomObjectByInteger for IsCapCategory,
+        IsInt[114X)[133X
+  
+  [30X    [33X[0;6Y[2XRandomObjectByList[102X ([14XCAP: RandomObjectByList for IsCapCategory, IsList[114X)[133X
+  
   [30X    [33X[0;6Y[2XSimplifyRange[102X ([14XCAP: SimplifyRange for IsCapCategoryMorphism, IsObject[114X)[133X
   
   [30X    [33X[0;6Y[2XSimplifyRange_IsoFromInputObject[102X                                 ([14XCAP:
@@ -1282,4 +1313,99 @@
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe GAP category of objects in the category of rows over a ring [23XR[123X.[133X
+  
+  
+  [1X5.3 [33X[0;0YRandom Methods in Category of Rows[133X[101X
+  
+  [1X5.3-1 RandomObjectByList[101X
+  
+  [33X[1;0Y[29X[2XRandomObjectByList[102X( [3XC[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object in a category of rows[133X
+  
+  [33X[0;0YThe  arguments  are  a category [3XC[103X and a list [3XL[103X of integers. The output is an
+  object  whose rank is the absolute value of a random element in [3XL[103X, or 0 if [3XL[103X
+  is empty.[133X
+  
+  [1X5.3-2 RandomObjectByInteger[101X
+  
+  [33X[1;0Y[29X[2XRandomObjectByInteger[102X( [3XC[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object in a category of rows[133X
+  
+  [33X[0;0YThe  arguments  are  a category of rows [3XC[103X and an integer [3Xn[103X. The output is an
+  object whose rank is at most the absolute value of [3Xn[103X.[133X
+  
+  [1X5.3-3 RandomMorphismWithFixedSourceAndRangeByList[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceAndRangeByList[102X( [3XS[103X, [3XR[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in a category of rows[133X
+  
+  [33X[0;0YThe arguments are two objects [3XS[103X, [3XR[103X and a list [3XL[103X of integers. The output is a
+  morphism  from  [3XS[103X  to  [3XR[103X  whose  matrix is an [3XL[103X-linear combination of random
+  matrices over the underlying ring, or the zero morphism if [3XL[103X is empty.[133X
+  
+  [1X5.3-4 RandomMorphismWithFixedSourceAndRangeByInteger[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceAndRangeByInteger[102X( [3XS[103X, [3XR[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in a category of rows[133X
+  
+  [33X[0;0YThe  arguments  are  two  objects  [3XS[103X,  [3XR[103X  and  an integer [3Xn[103X. The output is a
+  morphism  from  [3XS[103X  to [3XR[103X defined by a random matrix over the underlying ring.
+  Particularly, the argument [3Xn[103X will be disregarded.[133X
+  
+  [1X5.3-5 RandomMorphismWithFixedSourceByList[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceByList[102X( [3XS[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in a category of rows[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [3XS[103X  and  a list [3XL[103X consisting of two lists of
+  integers.  The  output is a morphism from [3XS[103X to an object [3XR[103X whose rank is the
+  absolute  value  of  a  random  element  in [3XL[103X[1], or 0 if [3XL[103X[1] is empty. The
+  matrix of the morphism is an [3XL[103X[2]-linear combination of random matrices over
+  the underlying ring, or the zero matrix if [3XL[103X[2] is empty.[133X
+  
+  [1X5.3-6 RandomMorphismWithFixedSourceByInteger[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceByInteger[102X( [3XS[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in a category of rows[133X
+  
+  [33X[0;0YThe  arguments  are  an  object [3XS[103X and an integer [3Xn[103X. The output is a morphism
+  from [3XS[103X to an object [3XR[103X whose rank is at most the absolute value of [3Xn[103X.[133X
+  
+  [1X5.3-7 RandomMorphismWithFixedRangeByList[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismWithFixedRangeByList[102X( [3XR[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in a category of rows[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [3XR[103X  and  a list [3XL[103X consisting of two lists of
+  integers.  The  output is a morphism to [3XR[103X from an object [3XS[103X whose rank is the
+  absolute  value  of  a  random  element  in [3XL[103X[1], or 0 if [3XL[103X[1] is empty. The
+  matrix of the morphism is an [3XL[103X[2]-linear combination of random matrices over
+  the underlying ring, or the zero matrix if [3XL[103X[2] is empty.[133X
+  
+  [1X5.3-8 RandomMorphismWithFixedRangeByInteger[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismWithFixedRangeByInteger[102X( [3XR[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in a category of rows[133X
+  
+  [33X[0;0YThe  arguments are an object [3XR[103X and an integer [3Xn[103X. The output is a morphism to
+  [3XR[103X from an object [3XS[103X whose rank is at most the absolute value of [3Xn[103X.[133X
+  
+  [1X5.3-9 RandomMorphismByList[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismByList[102X( [3XC[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in a category of rows[133X
+  
+  [33X[0;0YThe arguments are a category of rows [3XC[103X and a list [3XL[103X consisting of 3 lists of
+  integers.  The  output  is  a morphism from an object [3XS[103X to an object [3XR[103X whose
+  ranks  are  the  absolute  values of random elements in [3XL[103X[1] resp. [3XL[103X[2]. Its
+  matrix  is an [3XL[103X[3]-linear combination of random matrices over the underlying
+  ring, or the zero matrix if [3XL[103X[3] is empty.[133X
+  
+  [1X5.3-10 RandomMorphismByInteger[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismByInteger[102X( [3XC[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in a category of rows[133X
+  
+  [33X[0;0YThe  arguments  are  a  category of rows [3XC[103X and an integer [3Xn[103X. The output is a
+  morphism whose source and range ranks are at most the absolute value of [3Xn[103X.[133X
   
