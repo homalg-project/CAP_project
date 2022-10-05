@@ -1349,9 +1349,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     ##
     AddRandomMorphismWithFixedSourceByList( category,
       function ( category, S, L )
-        local ring, r, R, mat;
-        
-        ring := UnderlyingRing( category );
         
         if not ( Length( L ) = 2 and IsList( L[1] ) and IsList( L[2] ) ) then
           Error( "The input should be a list consisting of two lists\n" );
@@ -1371,9 +1368,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     ##
     AddRandomMorphismWithFixedRangeByList( category,
       function ( category, R, L )
-        local ring, s, S, mat;
-        
-        ring := UnderlyingRing( category );
         
         if not ( Length( L ) = 2 and IsList( L[1] ) and IsList( L[2] ) ) then
           Error( "The input should be a list consisting of two lists\n" );
