@@ -3422,31 +3422,39 @@ CoefficientsOfMorphismWithGivenBasisOfExternalHom := rec(
 RandomObjectByInteger := rec(
   filter_list := [ "category", IsInt ],
   io_type := [ [ "n" ], [ "A" ] ],
-  return_type := "object_or_fail"
+  return_type := "object_or_fail",
+  dual_operation := "RandomObjectByInteger",
 ),
 
 RandomMorphismByInteger := rec(
   filter_list := [ "category", IsInt ],
   io_type := [ [ "n" ], [ "alpha" ] ],
-  return_type := "morphism_or_fail"
+  return_type := "morphism_or_fail",
+  dual_operation := "RandomMorphismByInteger",
 ),
 
 RandomMorphismWithFixedSourceByInteger := rec(
   filter_list := [ "category", "object", IsInt ],
   io_type := [ [ "A", "n" ], [ "A", "B" ] ],
   return_type := "morphism_or_fail",
+  dual_operation := "RandomMorphismWithFixedRangeByInteger",
 ),
 
 RandomMorphismWithFixedRangeByInteger := rec(
   filter_list := [ "category", "object", IsInt ],
   io_type := [ [ "B", "n" ], [ "A", "B" ] ],
   return_type := "morphism_or_fail",
+  dual_operation := "RandomMorphismWithFixedSourceByInteger",
 ),
 
 RandomMorphismWithFixedSourceAndRangeByInteger := rec(
   filter_list := [ "category", "object", "object", IsInt ],
   io_type := [ [ "A", "B", "n" ], [ "A", "B" ] ],
   return_type := "morphism_or_fail",
+  dual_operation := "RandomMorphismWithFixedSourceAndRangeByInteger",
+  dual_preprocessor_func := function( cat, A, B, n )
+      return NTuple( 4, OppositeCategory( cat ), Opposite( B ), Opposite( A ), n );
+  end
 ),
 
 RandomObjectByList := rec(
