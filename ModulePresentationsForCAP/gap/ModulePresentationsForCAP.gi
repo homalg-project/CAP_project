@@ -421,7 +421,7 @@ InstallGlobalFunction( ADD_KERNEL_LEFT,
         
         embedding := CertainRows( embedding, NonZeroRows( embedding ) );
         
-        kernel := LazySyzygiesOfRows( embedding, source_matrix );
+        kernel := SyzygiesOfRows( embedding, source_matrix );
         
         kernel := AsLeftPresentation( kernel );
         
@@ -472,7 +472,7 @@ InstallGlobalFunction( ADD_KERNEL_RIGHT,
         
         embedding := CertainColumns( embedding, NonZeroColumns( embedding ) );
         
-        kernel := LazySyzygiesOfColumns( embedding, source_matrix );
+        kernel := SyzygiesOfColumns( embedding, source_matrix );
         
         kernel := AsRightPresentation( kernel );
         
