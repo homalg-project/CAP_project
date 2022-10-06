@@ -31,22 +31,22 @@ Ul := TensorUnit( CapCategory( Ml ) );
 IntHoml := InternalHomOnObjects( DirectSum( Ml, Ul ), Nl );
 #! <An object in Category of left presentations of Z>
 Display( UnderlyingMatrix( IntHoml ) );
-#! [ [  -2,  -1 ],
-#!   [   1,  -1 ] ]
+#! [ [  1,  2 ],
+#!   [  0,  3 ] ]
 generator_l1 := StandardGeneratorMorphism( IntHoml, 1 );
 #! <A morphism in Category of left presentations of Z>
 morphism_l1 := LambdaElimination( DirectSum( Ml, Ul ), Nl, generator_l1 );
 #! <A morphism in Category of left presentations of Z>
 Display( UnderlyingMatrix( morphism_l1 ) );
-#! [ [  0 ],
-#!   [  2 ] ]
+#! [ [  -3 ],
+#!   [   2 ] ]
 generator_l2 := StandardGeneratorMorphism( IntHoml, 2 );
 #! <A morphism in Category of left presentations of Z>
 morphism_l2 := LambdaElimination( DirectSum( Ml, Ul ), Nl, generator_l2 );
 #! <A morphism in Category of left presentations of Z>
 Display( UnderlyingMatrix( morphism_l2 ) );
-#! [ [  0 ],
-#!   [  2 ] ]
+#! [ [   0 ],
+#!   [  -1 ] ]
 IsEqualForMorphisms( LambdaIntroduction( morphism_l1 ), generator_l1 );
 #! false
 IsCongruentForMorphisms( LambdaIntroduction( morphism_l1 ), generator_l1 );
@@ -79,21 +79,21 @@ Ur := TensorUnit( CapCategory( Mr ) );
 IntHomr := InternalHomOnObjects( DirectSum( Mr, Ur ), Nr );
 #! <An object in Category of right presentations of Z>
 Display( UnderlyingMatrix( IntHomr ) );
-#! [ [  -2,   1 ],
-#!   [  -1,  -1 ] ]
+#! [ [  1,  0 ],
+#!   [  2,  3 ] ]
 generator_r1 := StandardGeneratorMorphism( IntHomr, 1 );
 #! <A morphism in Category of right presentations of Z>
 morphism_r1 := LambdaElimination( DirectSum( Mr, Ur ), Nr, generator_r1 );
 #! <A morphism in Category of right presentations of Z>
 Display( UnderlyingMatrix( morphism_r1 ) );
-#! [ [  0,   2 ] ]
+#! [ [  -3,   2 ] ]
 generator_r2 := StandardGeneratorMorphism( IntHoml, 2 );
 #! <A morphism in Category of left presentations of Z>
 morphism_r2 := LambdaElimination( DirectSum( Ml, Ul ), Nl, generator_r2 );
 #! <A morphism in Category of left presentations of Z>
 Display( UnderlyingMatrix( morphism_r2 ) );
 #! [ [   0 ],
-#!   [   2 ] ]
+#!   [  -1 ] ]
 IsEqualForMorphisms( LambdaIntroduction( morphism_r1 ), generator_r1 );
 #! false
 IsCongruentForMorphisms( LambdaIntroduction( morphism_r1 ), generator_r1 );
