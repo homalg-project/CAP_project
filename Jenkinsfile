@@ -12,6 +12,10 @@ pipeline {
 	stages {
 		stage('test') {
 			steps {
+				dir('pkg') {
+					sh 'rm -rf homalg_project; git clone --depth 1 https://github.com/homalg-project/homalg_project.git'
+				}
+
 				dir('pkg/CAP_project') {
 					sh 'TERM=dumb make -j $(nproc) --output-sync ci-test'
 				}
