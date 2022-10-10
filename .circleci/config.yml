@@ -16,7 +16,7 @@ jobs:
           cd ..
           git clone --depth 1 https://github.com/homalg-project/homalg_project.git
           cd CAP_project
-          TERM=dumb make ci-test
+          make ci-test
 workflows:
   version: 2
   commit:
