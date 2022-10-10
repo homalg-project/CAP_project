@@ -124,7 +124,7 @@ InstallMethod( WrapperCategory,
         [ IsCapCategory, IsRecord ],
         
   function( C, options )
-    local known_options_with_filters, filter, combined_options, category_constructor_options, copy_value_or_default, list_of_operations_to_install, D, modeling_tower_object_constructor, modeling_tower_object_datum, modeling_tower_morphism_constructor, modeling_tower_morphism_datum, HC, option_name;
+    local known_options_with_filters, filter, combined_options, category_constructor_options, copy_value_or_default, list_of_operations_to_install, D, modeling_tower_object_constructor, modeling_tower_object_datum, modeling_tower_morphism_constructor, modeling_tower_morphism_datum, operations_of_homomorphism_structure, HC, option_name;
     
     ## check given options
     known_options_with_filters := rec(
@@ -422,7 +422,17 @@ InstallMethod( WrapperCategory,
         
     fi;
     
-    if HasRangeCategoryOfHomomorphismStructure( C ) then
+    operations_of_homomorphism_structure := [
+        "DistinguishedObjectOfHomomorphismStructure",
+        "HomomorphismStructureOnObjects",
+        "HomomorphismStructureOnMorphisms",
+        "HomomorphismStructureOnMorphismsWithGivenObjects",
+        "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
+        "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects",
+        "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
+    ];
+    
+    if HasRangeCategoryOfHomomorphismStructure( C ) and not IsEmpty( Intersection( list_of_operations_to_install, operations_of_homomorphism_structure ) ) then
         
         HC := RangeCategoryOfHomomorphismStructure( C );
         
