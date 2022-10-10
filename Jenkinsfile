@@ -17,7 +17,7 @@ pipeline {
 				}
 
 				dir('pkg/CAP_project') {
-					sh 'TERM=dumb make -j $(nproc) --output-sync ci-test'
+					sh 'make -j $(nproc) --output-sync ci-test'
 				}
 			}
 		}

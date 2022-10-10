@@ -48,7 +48,7 @@ jobs:
           [ -d "homalg_project/homalg" ] && make -C "homalg_project/homalg" doc
           [ -d "homalg_project/Modules" ] && make -C "homalg_project/Modules" doc
           [ -d "Toposes" ] && make -C "Toposes" doc
-          TERM=dumb make -C CAP_project -j $(nproc) --output-sync ci-test
+          make -C CAP_project -j $(nproc) --output-sync ci-test
           cp ./CAP_project/.codecov.yml ./
           (cd CAP_project && LANG=C.UTF-8 python3 process_coverage.py)
           [ "$GITHUB_EVENT_NAME" != "schedule" ] && [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker-master:latest" ] && ./CAP_project/upload_codecov.sh
