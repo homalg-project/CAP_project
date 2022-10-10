@@ -537,22 +537,22 @@
     [4X[25Xgap>[125X [27XIntHoml := InternalHomOnObjects( DirectSum( Ml, Ul ), Nl );[127X[104X
     [4X[28X<An object in Category of left presentations of Z>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( IntHoml ) );[127X[104X
-    [4X[28X[ [  -2,  -1 ],[128X[104X
-    [4X[28X  [   1,  -1 ] ][128X[104X
+    [4X[28X[ [  1,  2 ],[128X[104X
+    [4X[28X  [  0,  3 ] ][128X[104X
     [4X[25Xgap>[125X [27Xgenerator_l1 := StandardGeneratorMorphism( IntHoml, 1 );[127X[104X
     [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
     [4X[25Xgap>[125X [27Xmorphism_l1 := LambdaElimination( DirectSum( Ml, Ul ), Nl, generator_l1 );[127X[104X
     [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( morphism_l1 ) );[127X[104X
-    [4X[28X[ [  0 ],[128X[104X
-    [4X[28X  [  2 ] ][128X[104X
+    [4X[28X[ [  -3 ],[128X[104X
+    [4X[28X  [   2 ] ][128X[104X
     [4X[25Xgap>[125X [27Xgenerator_l2 := StandardGeneratorMorphism( IntHoml, 2 );[127X[104X
     [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
     [4X[25Xgap>[125X [27Xmorphism_l2 := LambdaElimination( DirectSum( Ml, Ul ), Nl, generator_l2 );[127X[104X
     [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( morphism_l2 ) );[127X[104X
-    [4X[28X[ [  0 ],[128X[104X
-    [4X[28X  [  2 ] ][128X[104X
+    [4X[28X[ [   0 ],[128X[104X
+    [4X[28X  [  -1 ] ][128X[104X
     [4X[25Xgap>[125X [27XIsEqualForMorphisms( LambdaIntroduction( morphism_l1 ), generator_l1 );[127X[104X
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XIsCongruentForMorphisms( LambdaIntroduction( morphism_l1 ), generator_l1 );[127X[104X
@@ -585,21 +585,21 @@
     [4X[25Xgap>[125X [27XIntHomr := InternalHomOnObjects( DirectSum( Mr, Ur ), Nr );[127X[104X
     [4X[28X<An object in Category of right presentations of Z>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( IntHomr ) );[127X[104X
-    [4X[28X[ [  -2,   1 ],[128X[104X
-    [4X[28X  [  -1,  -1 ] ][128X[104X
+    [4X[28X[ [  1,  0 ],[128X[104X
+    [4X[28X  [  2,  3 ] ][128X[104X
     [4X[25Xgap>[125X [27Xgenerator_r1 := StandardGeneratorMorphism( IntHomr, 1 );[127X[104X
     [4X[28X<A morphism in Category of right presentations of Z>[128X[104X
     [4X[25Xgap>[125X [27Xmorphism_r1 := LambdaElimination( DirectSum( Mr, Ur ), Nr, generator_r1 );[127X[104X
     [4X[28X<A morphism in Category of right presentations of Z>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( morphism_r1 ) );[127X[104X
-    [4X[28X[ [  0,   2 ] ][128X[104X
+    [4X[28X[ [  -3,   2 ] ][128X[104X
     [4X[25Xgap>[125X [27Xgenerator_r2 := StandardGeneratorMorphism( IntHoml, 2 );[127X[104X
     [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
     [4X[25Xgap>[125X [27Xmorphism_r2 := LambdaElimination( DirectSum( Ml, Ul ), Nl, generator_r2 );[127X[104X
     [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( morphism_r2 ) );[127X[104X
     [4X[28X[ [   0 ],[128X[104X
-    [4X[28X  [   2 ] ][128X[104X
+    [4X[28X  [  -1 ] ][128X[104X
     [4X[25Xgap>[125X [27XIsEqualForMorphisms( LambdaIntroduction( morphism_r1 ), generator_r1 );[127X[104X
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XIsCongruentForMorphisms( LambdaIntroduction( morphism_r1 ), generator_r1 );[127X[104X

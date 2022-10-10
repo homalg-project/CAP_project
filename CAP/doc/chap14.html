@@ -622,22 +622,22 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IntHoml := InternalHomOnObjects( DirectSum( Ml, Ul ), Nl );</span>
 &lt;An object in Category of left presentations of Z&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( UnderlyingMatrix( IntHoml ) );</span>
-[ [  -2,  -1 ],
-  [   1,  -1 ] ]
+[ [  1,  2 ],
+  [  0,  3 ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">generator_l1 := StandardGeneratorMorphism( IntHoml, 1 );</span>
 &lt;A morphism in Category of left presentations of Z&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">morphism_l1 := LambdaElimination( DirectSum( Ml, Ul ), Nl, generator_l1 );</span>
 &lt;A morphism in Category of left presentations of Z&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( UnderlyingMatrix( morphism_l1 ) );</span>
-[ [  0 ],
-  [  2 ] ]
+[ [  -3 ],
+  [   2 ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">generator_l2 := StandardGeneratorMorphism( IntHoml, 2 );</span>
 &lt;A morphism in Category of left presentations of Z&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">morphism_l2 := LambdaElimination( DirectSum( Ml, Ul ), Nl, generator_l2 );</span>
 &lt;A morphism in Category of left presentations of Z&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( UnderlyingMatrix( morphism_l2 ) );</span>
-[ [  0 ],
-  [  2 ] ]
+[ [   0 ],
+  [  -1 ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( LambdaIntroduction( morphism_l1 ), generator_l1 );</span>
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( LambdaIntroduction( morphism_l1 ), generator_l1 );</span>
@@ -670,21 +670,21 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IntHomr := InternalHomOnObjects( DirectSum( Mr, Ur ), Nr );</span>
 &lt;An object in Category of right presentations of Z&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( UnderlyingMatrix( IntHomr ) );</span>
-[ [  -2,   1 ],
-  [  -1,  -1 ] ]
+[ [  1,  0 ],
+  [  2,  3 ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">generator_r1 := StandardGeneratorMorphism( IntHomr, 1 );</span>
 &lt;A morphism in Category of right presentations of Z&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">morphism_r1 := LambdaElimination( DirectSum( Mr, Ur ), Nr, generator_r1 );</span>
 &lt;A morphism in Category of right presentations of Z&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( UnderlyingMatrix( morphism_r1 ) );</span>
-[ [  0,   2 ] ]
+[ [  -3,   2 ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">generator_r2 := StandardGeneratorMorphism( IntHoml, 2 );</span>
 &lt;A morphism in Category of left presentations of Z&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">morphism_r2 := LambdaElimination( DirectSum( Ml, Ul ), Nl, generator_r2 );</span>
 &lt;A morphism in Category of left presentations of Z&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( UnderlyingMatrix( morphism_r2 ) );</span>
 [ [   0 ],
-  [   2 ] ]
+  [  -1 ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( LambdaIntroduction( morphism_r1 ), generator_r1 );</span>
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( LambdaIntroduction( morphism_r1 ), generator_r1 );</span>
