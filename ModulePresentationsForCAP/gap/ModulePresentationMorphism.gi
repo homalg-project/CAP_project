@@ -35,25 +35,13 @@ InstallMethod( PresentationMorphism,
     
     if left then
         
-        if IsBound( source!.nr_generators ) and NrRows( matrix ) <> source!.nr_generators then
+        if NrRows( matrix ) <> NrColumns( UnderlyingMatrix( source ) ) then
             
             Error( "the number of rows of the given matrix is incorrect" );
             
         fi;
         
-        if HasUnderlyingMatrix( source ) and NrRows( matrix ) <> NrColumns( UnderlyingMatrix( source ) ) then
-            
-            Error( "the number of rows of the given matrix is incorrect" );
-            
-        fi;
-        
-        if IsBound( range!.nr_generators ) and NrColumns( matrix ) <> range!.nr_generators then
-            
-            Error( "the number of columns of the given matrix is incorrect" );
-            
-        fi;
-        
-        if HasUnderlyingMatrix( range ) and NrColumns( matrix ) <> NrColumns( UnderlyingMatrix( range ) ) then
+        if NrColumns( matrix ) <> NrColumns( UnderlyingMatrix( range ) ) then
             
             Error( "the number of columns of the given matrix is incorrect" );
             
@@ -61,25 +49,13 @@ InstallMethod( PresentationMorphism,
         
     else
         
-        if IsBound( source!.nr_generators ) and NrColumns( matrix ) <> source!.nr_generators then
+        if NrColumns( matrix ) <> NrRows( UnderlyingMatrix( source ) ) then
             
             Error( "the number of columns of the given matrix is incorrect" );
             
         fi;
         
-        if HasUnderlyingMatrix( source ) and NrColumns( matrix ) <> NrRows( UnderlyingMatrix( source ) ) then
-            
-            Error( "the number of columns of the given matrix is incorrect" );
-            
-        fi;
-        
-        if IsBound( range!.nr_generators ) and NrRows( matrix ) <> range!.nr_generators then
-            
-            Error( "the number of rows of the given matrix is incorrect" );
-            
-        fi;
-        
-        if HasUnderlyingMatrix( range ) and NrRows( matrix ) <> NrRows( UnderlyingMatrix( range ) ) then
+        if NrRows( matrix ) <> NrRows( UnderlyingMatrix( range ) ) then
             
             Error( "the number of rows of the given matrix is incorrect" );
             
@@ -87,7 +63,7 @@ InstallMethod( PresentationMorphism,
         
     fi;
     
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), category,
+    return CreateCapCategoryMorphismWithAttributes( category,
                              source,
                              range,
                              UnderlyingMatrix, matrix );
