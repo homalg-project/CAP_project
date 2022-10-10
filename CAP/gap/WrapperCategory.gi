@@ -124,7 +124,7 @@ InstallMethod( WrapperCategory,
         [ IsCapCategory, IsRecord ],
         
   function( C, options )
-    local known_options_with_filters, filter, combined_options, category_constructor_options, copy_value_or_default, list_of_operations_to_install, D, modeling_tower_object_constructor, modeling_tower_object_datum, modeling_tower_morphism_constructor, modeling_tower_morphism_datum, HC, option_name;
+    local known_options_with_filters, filter, combined_options, category_constructor_options, copy_value_or_default, list_of_operations_to_install, D, modeling_tower_object_constructor, modeling_tower_object_datum, modeling_tower_morphism_constructor, modeling_tower_morphism_datum, operations_of_homomorphism_structure, HC, option_name;
     
     ## check given options
     known_options_with_filters := rec(
@@ -422,7 +422,17 @@ InstallMethod( WrapperCategory,
         
     fi;
     
-    if HasRangeCategoryOfHomomorphismStructure( C ) then
+    operations_of_homomorphism_structure := [
+        "DistinguishedObjectOfHomomorphismStructure",
+        "HomomorphismStructureOnObjects",
+        "HomomorphismStructureOnMorphisms",
+        "HomomorphismStructureOnMorphismsWithGivenObjects",
+        "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
+        "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects",
+        "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
+    ];
+    
+    if HasRangeCategoryOfHomomorphismStructure( C ) and not IsEmpty( Intersection( list_of_operations_to_install, operations_of_homomorphism_structure ) ) then
         
         HC := RangeCategoryOfHomomorphismStructure( C );
         
@@ -461,11 +471,35 @@ InstallMethod( WrapperCategory,
                 end );
             fi;
             
+            if "HomomorphismStructureOnMorphisms" in list_of_operations_to_install then
+                AddHomomorphismStructureOnMorphisms( D,
+                  function( cat, alpha, beta )
+                    local underlying_result;
+                    
+                    underlying_result := HomomorphismStructureOnMorphisms( ModelingCategory( cat ), ModelingMorphism( cat, alpha ), ModelingMorphism( cat, beta ) );
+                    
+                    return ModeledMorphism( HC, ModeledObject( cat, Source( underlying_result ) ), underlying_result, ModeledObject( cat, Range( underlying_result ) ) );
+                    
+                end );
+            fi;
+            
             if "HomomorphismStructureOnMorphismsWithGivenObjects" in list_of_operations_to_install then
                 AddHomomorphismStructureOnMorphismsWithGivenObjects( D,
                   function( cat, s, alpha, beta, r )
                     
                     return ModeledMorphism( HC, s, HomomorphismStructureOnMorphismsWithGivenObjects( ModelingCategory( cat ), ModelingObject( HC, s ), ModelingMorphism( cat, alpha ), ModelingMorphism( cat, beta ), ModelingObject( HC, r ) ), r );
+                    
+                end );
+            fi;
+            
+            if "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" in list_of_operations_to_install then
+                AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( D,
+                  function( cat, alpha )
+                    local underlying_result;
+                    
+                    underlying_result := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( ModelingCategory( cat ), ModelingMorphism( cat, alpha ) );
+                    
+                    return ModeledMorphism( HC, ModeledObject( cat, Source( underlying_result ) ), underlying_result, ModeledObject( cat, Range( underlying_result ) ) );
                     
                 end );
             fi;
@@ -506,6 +540,15 @@ InstallMethod( WrapperCategory,
                   function( cat, a, b )
                     
                     return HomomorphismStructureOnObjects( ModelingCategory( cat ), ModelingObject( cat, a ), ModelingObject( cat, b ) );
+                    
+                end );
+            fi;
+            
+            if "HomomorphismStructureOnMorphisms" in list_of_operations_to_install then
+                AddHomomorphismStructureOnMorphisms( D,
+                  function( cat, alpha, beta )
+                    
+                    return HomomorphismStructureOnMorphisms( ModelingCategory( cat ), ModelingMorphism( cat, alpha ), ModelingMorphism( cat, beta ) );
                     
                 end );
             fi;

@@ -22,8 +22,10 @@ AddFinalDerivation( DistinguishedObjectOfHomomorphismStructure,
                     [
                       DistinguishedObjectOfHomomorphismStructure,
                       HomomorphismStructureOnObjects,
+                      HomomorphismStructureOnMorphisms,
                       HomomorphismStructureOnMorphismsWithGivenObjects,
                       InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure,
+                      InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects,
                       InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
                     ],
         
@@ -65,9 +67,7 @@ end
     
   end
 ] : CategoryFilter := function( cat )
-      return ( not HasRangeCategoryOfHomomorphismStructure( cat ) or
-               ( WasCreatedAsWrapperCapCategory( cat ) and
-                 IsIdenticalObj( ModelingCategory( cat ), RangeCategoryOfHomomorphismStructure( cat ) ) ) ) and
+      return not HasRangeCategoryOfHomomorphismStructure( cat ) and
              not ( IsBound( cat!.do_not_use_cartesian_closed_structure_as_homomorphism_structure ) and
                IsIdenticalObj( cat!.do_not_use_cartesian_closed_structure_as_homomorphism_structure, true ) );
     end,

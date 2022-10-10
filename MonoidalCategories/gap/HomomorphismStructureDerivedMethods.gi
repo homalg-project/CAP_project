@@ -19,8 +19,10 @@ AddFinalDerivation( DistinguishedObjectOfHomomorphismStructure,
                     [
                       DistinguishedObjectOfHomomorphismStructure,
                       HomomorphismStructureOnObjects,
+                      HomomorphismStructureOnMorphisms,
                       HomomorphismStructureOnMorphismsWithGivenObjects,
                       InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure,
+                      InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects,
                       InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
                     ],
         
