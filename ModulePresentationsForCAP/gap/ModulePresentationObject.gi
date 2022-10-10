@@ -13,9 +13,7 @@
 InstallGlobalFunction( AsLeftOrRightPresentation,
                
   function( matrix, left )
-    local module, ring, presentation_category;
-    
-    module := rec( );
+    local ring, presentation_category;
     
     ring := HomalgRing( matrix );
     
@@ -25,8 +23,7 @@ InstallGlobalFunction( AsLeftOrRightPresentation,
         presentation_category := RightPresentations( ring );
     fi;
     
-    return ObjectifyObjectForCAPWithAttributes( module, presentation_category,
-                                                UnderlyingMatrix, matrix );
+    return CreateCapCategoryObjectWithAttributes( presentation_category, UnderlyingMatrix, matrix );
     
 end );
 

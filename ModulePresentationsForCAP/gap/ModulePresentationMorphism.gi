@@ -63,7 +63,7 @@ InstallMethod( PresentationMorphism,
         
     fi;
     
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), category,
+    return CreateCapCategoryMorphismWithAttributes( category,
                              source,
                              range,
                              UnderlyingMatrix, matrix );
