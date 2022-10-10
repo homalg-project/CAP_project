@@ -587,9 +587,9 @@ DeclareGlobalFunction( "DisableAddForCategoricalOperations" );
 #!    * <C>DisableSanityChecks</C>: see <Ref Sect="Section_Sanity_checks" />.
 #!    * <C>DisableAddForCategoricalOperations</C>: see <Ref Sect="Section_Automatic_adds" />.
 #!    * <C>DeactivateToDoList</C>: see the package <C>ToolsForHomalg</C>.
-#!    * Use <C>ObjectifyObjectForCAPWithAttributes</C> (<Ref Sect="Section_Adding_Objects_to_a_Category" />)
+#!    * Use <C>CreateCapCategoryObjectWithAttributes</C> (<Ref Sect="Section_Adding_Objects_to_a_Category" />)
 #!        instead of <C>AddObject</C> and
-#!        <C>ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes</C> (<Ref Sect="Section_Adding_Morphisms_to_a_Category" />)
+#!        <C>CreateCapCategoryMorphismWithAttributes</C> (<Ref Sect="Section_Adding_Morphisms_to_a_Category" />)
 #!        instead of <C>AddMorphism</C>.
 #!    * Add all attribute testers (<C>Has...</C>) of your objects resp. morphisms to the filters passed to
 #!        <C>AddObjectRepresentation</C> (<Ref Sect="Section_Adding_Objects_to_a_Category" />) resp.
