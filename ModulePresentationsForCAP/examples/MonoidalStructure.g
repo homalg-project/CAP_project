@@ -24,30 +24,21 @@ IsZero( T );
 H := InternalHomOnObjects( DirectSum( M, M ), DirectSum( M, N ) );
 #! <An object in Category of left presentations of Z>
 Display( H );
-#! [ [  -4,  -2 ],
-#!   [   2,   2 ] ]
+#! [ [   0,   0,   0,  -2 ],
+#!   [   1,   2,   0,   0 ],
+#!   [   0,   2,   2,   0 ],
+#!   [   2,   3,   0,   2 ] ]
 #! 
 #! An object in Category of left presentations of Z
-alpha := StandardGeneratorMorphism( H, 1 );
+alpha := StandardGeneratorMorphism( H, 3 );
 #! <A morphism in Category of left presentations of Z>
 l := LambdaElimination( DirectSum( M, M ), DirectSum( M, N ), alpha );
 #! <A morphism in Category of left presentations of Z>
 IsZero( l );
 #! false
 Display( l );
-#! [ [  0,   0 ],
-#!   [  1,  0 ] ]
-#!
-#! A morphism in Category of left presentations of Z
-alpha2 := StandardGeneratorMorphism( H, 2 );
-#! <A morphism in Category of left presentations of Z>
-l2 := LambdaElimination( DirectSum( M, M ), DirectSum( M, N ), alpha2 );
-#! <A morphism in Category of left presentations of Z>
-IsZero( l2 );
-#! false
-Display( l2 );
-#! [ [  1,   0 ],
-#!   [  0,  0 ] ]
+#! [ [  -2,   6 ],
+#!   [  -1,  -3 ] ]
 #!
 #! A morphism in Category of left presentations of Z
 #! @EndExample
