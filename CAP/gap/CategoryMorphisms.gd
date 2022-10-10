@@ -257,6 +257,10 @@ DeclareOperation( "RandomMorphismWithFixedRange", [ IsCapCategoryObject, IsList 
 DeclareOperation( "RandomMorphismWithFixedSourceAndRange", [ IsCapCategoryObject, IsCapCategoryObject, IsInt ] );
 #! @Arguments a, b, L
 DeclareOperation( "RandomMorphismWithFixedSourceAndRange", [ IsCapCategoryObject, IsCapCategoryObject, IsList ] );
+#! @Arguments a, b, n
+DeclareOperation( "RandomMorphism", [ IsCapCategoryObject, IsCapCategoryObject, IsInt ] );
+#! @Arguments a, b, L
+DeclareOperation( "RandomMorphism", [ IsCapCategoryObject, IsCapCategoryObject, IsList ] );
 #! @Arguments C, n
 DeclareOperation( "RandomMorphism", [ IsCapCategory, IsInt ] );
 #! @Arguments C, L
