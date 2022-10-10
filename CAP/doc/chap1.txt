@@ -188,23 +188,7 @@
   [33X[0;0YThe argument is a category [23XC[123X. The output is a filter in which all [23X2[123X-cells of
   [23XC[123X shall lie.[133X
   
-  [1X1.3-6 ObjectType[101X
-  
-  [33X[1;0Y[29X[2XObjectType[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya GAP type[133X
-  
-  [33X[0;0YThe  argument  is  a category [23XC[123X. The output is the GAP type of objects of [23XC[123X.
-  Only available after calling [10XAddObjectRepresentation[110X.[133X
-  
-  [1X1.3-7 MorphismType[101X
-  
-  [33X[1;0Y[29X[2XMorphismType[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya GAP type[133X
-  
-  [33X[0;0YThe  argument is a category [23XC[123X. The output is the GAP type of morphisms of [23XC[123X.
-  Only available after calling [10XAddMorphismRepresentation[110X.[133X
-  
-  [1X1.3-8 CommutativeRingOfLinearCategory[101X
+  [1X1.3-6 CommutativeRingOfLinearCategory[101X
   
   [33X[1;0Y[29X[2XCommutativeRingOfLinearCategory[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya ring[133X
@@ -213,7 +197,7 @@
   [10XIsLinearCategoryOverCommutativeRing[110X.  The  output is a commutative ring over
   which the category is linear.[133X
   
-  [1X1.3-9 RangeCategoryOfHomomorphismStructure[101X
+  [1X1.3-7 RangeCategoryOfHomomorphismStructure[101X
   
   [33X[1;0Y[29X[2XRangeCategoryOfHomomorphismStructure[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya category[133X
@@ -223,7 +207,7 @@
   the  defining  functor  [23XH:  C^{\mathrm{op}}  \times  C  \rightarrow D[123X of the
   homomorphism structure.[133X
   
-  [1X1.3-10 AdditiveGenerators[101X
+  [1X1.3-8 AdditiveGenerators[101X
   
   [33X[1;0Y[29X[2XAdditiveGenerators[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya list of objects[133X
@@ -459,9 +443,9 @@
   
   [30X    [33X[0;6Y[10XDeactivateToDoList[110X: see the package [10XToolsForHomalg[110X.[133X
   
-  [30X    [33X[0;6YUse [10XObjectifyObjectForCAPWithAttributes[110X ([14X2.6[114X) instead of [10XAddObject[110X and
-        [10XObjectifyMorphismWithSourceAndRangeForCAPWithAttributes[110X  ([14X3.6[114X) instead
-        of [10XAddMorphism[110X.[133X
+  [30X    [33X[0;6YUse  [10XCreateCapCategoryObjectWithAttributes[110X  ([14X2.6[114X) instead of [10XAddObject[110X
+        and    [10XCreateCapCategoryMorphismWithAttributes[110X    ([14X3.6[114X)   instead   of
+        [10XAddMorphism[110X.[133X
   
   [30X    [33X[0;6YAdd  all attribute testers ([10XHas...[110X) of your objects resp. morphisms to
         the    filters   passed   to   [10XAddObjectRepresentation[110X   ([14X2.6[114X)   resp.

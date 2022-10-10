@@ -6,7 +6,7 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2022.10-02
+                                   2022.10-03
   
   
                                 10 October 2022
@@ -72,11 +72,9 @@
       1.3-3 ObjectFilter
       1.3-4 MorphismFilter
       1.3-5 TwoCellFilter
-      1.3-6 ObjectType
-      1.3-7 MorphismType
-      1.3-8 CommutativeRingOfLinearCategory
-      1.3-9 RangeCategoryOfHomomorphismStructure
-      1.3-10 AdditiveGenerators
+      1.3-6 CommutativeRingOfLinearCategory
+      1.3-7 RangeCategoryOfHomomorphismStructure
+      1.3-8 AdditiveGenerators
     1.4 [33X[0;0YLogic switcher[133X
       1.4-1 CapCategorySwitchLogicPropagationForObjectsOn
       1.4-2 CapCategorySwitchLogicPropagationForObjectsOff

@@ -155,7 +155,7 @@
   [2XAddIsZeroForMorphisms[102X, for IsCapCategory, IsFunction 7.7-116 
   [2XAddIsZeroForObjects[102X, for IsCapCategory, IsFunction 7.7-117 
   [2XAdditionForMorphisms[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.8-2 
-  [2XAdditiveGenerators[102X, for IsCapCategory 1.3-10 
+  [2XAdditiveGenerators[102X, for IsCapCategory 1.3-8 
   [2XAdditiveInverseForMorphisms[102X, for IsCapCategoryMorphism 3.8-4 
   [2XAddKernelEmbedding[102X, for IsCapCategory, IsFunction 7.7-140 
   [2XAddKernelEmbeddingWithGivenKernelObject[102X, for IsCapCategory, IsFunction 7.7-141 
@@ -380,7 +380,7 @@
   [2XColift[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-8 
   [2XColiftAlongEpimorphism[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-2 
   [2XColiftOrFail[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-9 
-  [2XCommutativeRingOfLinearCategory[102X, for IsCapCategory 1.3-8 
+  [2XCommutativeRingOfLinearCategory[102X, for IsCapCategory 1.3-6 
   [2XComponentOfMorphismFromDirectSum[102X, for IsCapCategoryMorphism, IsList, IsInt 6.6-20 
   [2XComponentOfMorphismIntoDirectSum[102X, for IsCapCategoryMorphism, IsList, IsInt 6.6-19 
   [2XContains[102X, for IsStringMinHeap, IsString 8.5-8 
@@ -653,7 +653,6 @@
   [2XMorphismFromSourceToPushoutWithGivenPushout[102X, for IsList, IsCapCategoryObject 6.12-12 
   [2XMorphismFromZeroObject[102X, for IsCapCategoryObject 6.3-7 
   [2XMorphismIntoZeroObject[102X, for IsCapCategoryObject 6.3-8 
-  [2XMorphismType[102X, for IsCapCategory 1.3-7 
   [2XMultiplyWithElementOfCommutativeRingForMorphisms[102X, for IsRingElement, IsCapCategoryMorphism 3.8-5 
   [2XName[102X, for IsCapNaturalTransformation 5.5-1 
   [2XNaturalIsomorphismFromIdentityToCanonicalizeZeroMorphisms[102X, for IsCapCategory 5.4-16 
@@ -667,7 +666,6 @@
   [2XObjectFilter[102X, for IsCapCategory 1.3-3 
   [2XObjectifyMorphismWithSourceAndRangeForCAPWithAttributes[102X 3.6-4 
   [2XObjectifyObjectForCAPWithAttributes[102X 2.6-4 
-  [2XObjectType[102X, for IsCapCategory 1.3-6 
   [2XOperations[102X, for IsDerivedMethodGraph 8.3-10 
   [2XOperationWeightUsingDerivation[102X, for IsOperationWeightList, IsDerivedMethod 8.4-6 
   [2XPackageOfCAPOperation[102X 9.2-33 
@@ -718,7 +716,7 @@
   [2XRandomObjectByList[102X, for IsCapCategory, IsList 2.4-2 
   [2XRange[102X, for IsCapCategoryMorphism 3.1-3 
       for IsCapCategoryTwoCell 4.1-2 
-  [2XRangeCategoryOfHomomorphismStructure[102X, for IsCapCategory 1.3-9 
+  [2XRangeCategoryOfHomomorphismStructure[102X, for IsCapCategory 1.3-7 
   [2XRangeOfFunctor[102X, for IsCapFunctor 5.4-4 
   [2XReevaluate[102X, for IsOperationWeightList 8.4-9 
   [2XResetTimingStatistics[102X 1.10-1 
