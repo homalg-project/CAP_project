@@ -265,7 +265,6 @@ InstallMethod( AddMorphismRepresentation,
     
     category!.morphism_representation := representation;
     category!.morphism_type := NewType( TheFamilyOfCapCategoryMorphisms, representation and MorphismFilter( category ) and IsCapCategoryMorphismRep and HasSource and HasRange and HasCapCategory );
-    SetMorphismType( category, category!.morphism_type );
     
 end );
 
@@ -296,7 +295,7 @@ InstallGlobalFunction( ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes,
     local arg_list, objectified_morphism;
     
     arg_list := Concatenation(
-        [ morphism, MorphismType( category ), CapCategory, category, Source, source, Range, range ], additional_arguments_list
+        [ morphism, category!.morphism_type, CapCategory, category, Source, source, Range, range ], additional_arguments_list
     );
     
     objectified_morphism := CallFuncList( ObjectifyWithAttributes, arg_list );
@@ -319,7 +318,7 @@ InstallGlobalFunction( CreateCapCategoryMorphismWithAttributes,
     # inline ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), category, source, range, additional_arguments_list... );
     
     arg_list := Concatenation(
-        [ rec( ), MorphismType( category ), CapCategory, category, Source, source, Range, range ], additional_arguments_list
+        [ rec( ), category!.morphism_type, CapCategory, category, Source, source, Range, range ], additional_arguments_list
     );
     
     objectified_morphism := CallFuncList( ObjectifyWithAttributes, arg_list );

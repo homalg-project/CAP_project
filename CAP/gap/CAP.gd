@@ -275,24 +275,6 @@ DeclareAttribute( "TwoCellFilter",
                   IsCapCategory );
 
 #! @Description
-#! The argument is a category $C$.
-#! The output is the GAP type of objects of $C$.
-#! Only available after calling `AddObjectRepresentation`.
-#! @Arguments C
-#! @Returns a GAP type
-DeclareAttribute( "ObjectType",
-                  IsCapCategory );
-
-#! @Description
-#! The argument is a category $C$.
-#! The output is the GAP type of morphisms of $C$.
-#! Only available after calling `AddMorphismRepresentation`.
-#! @Arguments C
-#! @Returns a GAP type
-DeclareAttribute( "MorphismType",
-                  IsCapCategory );
-
-#! @Description
 #! The argument is a category $C$ which is expected to lie in the
 #! filter <C>IsLinearCategoryOverCommutativeRing</C>.
 #! The output is a commutative ring over which the category is linear.
