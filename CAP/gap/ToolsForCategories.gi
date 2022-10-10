@@ -424,11 +424,7 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRING_WITH_FILTER,
             fi;
             
             if category <> false and HasRangeCategoryOfHomomorphismStructure( category ) then
-                # FIXME: We would like to include the object filter of the range category here, but this does not allow to change the range category later on:
-                # When changing the range category, primitive operations are correctly installed using the new range category,
-                # but derivations which have already been triggered will not be re-installed and thus still use the old range category.
-                #return ObjectFilter( RangeCategoryOfHomomorphismStructure( category ) ) and IsCapCategoryObject;
-                return IsCapCategoryObject;
+                return ObjectFilter( RangeCategoryOfHomomorphismStructure( category ) ) and IsCapCategoryObject;
             else
                 return IsCapCategoryObject;
             fi;
@@ -441,9 +437,7 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRING_WITH_FILTER,
             fi;
             
             if category <> false and HasRangeCategoryOfHomomorphismStructure( category ) then
-                # FIXME: see above
-                #return MorphismFilter( RangeCategoryOfHomomorphismStructure( category ) ) and IsCapCategoryMorphism;
-                return IsCapCategoryMorphism;
+                return MorphismFilter( RangeCategoryOfHomomorphismStructure( category ) ) and IsCapCategoryMorphism;
             else
                 return IsCapCategoryMorphism;
             fi;

@@ -275,40 +275,13 @@ DeclareAttribute( "TwoCellFilter",
                   IsCapCategory );
 
 #! @Description
-#! The argument is a category $C$.
-#! The output is the GAP type of objects of $C$.
-#! Only available after calling `AddObjectRepresentation`.
-#! @Arguments C
-#! @Returns a GAP type
-DeclareAttribute( "ObjectType",
-                  IsCapCategory,
-                  "mutable" );
-# make this mutable so we can overwrite it even if
-# some category constructor has already set it
-
-#! @Description
-#! The argument is a category $C$.
-#! The output is the GAP type of morphisms of $C$.
-#! Only available after calling `AddMorphismRepresentation`.
-#! @Arguments C
-#! @Returns a GAP type
-DeclareAttribute( "MorphismType",
-                  IsCapCategory,
-                  "mutable" );
-# make this mutable so we can overwrite it even if
-# some category constructor has already set it
-
-#! @Description
 #! The argument is a category $C$ which is expected to lie in the
 #! filter <C>IsLinearCategoryOverCommutativeRing</C>.
 #! The output is a commutative ring over which the category is linear.
 #! @Arguments C
 #! @Returns a ring
 DeclareAttribute( "CommutativeRingOfLinearCategory",
-                  IsCapCategory,
-                  "mutable" );
-# make this mutable so we can overwrite it even if
-# some category constructor has already set it
+                  IsCapCategory );
 
 #! @Description
 #! The argument is a category $C$ which is expected to lie in the
@@ -318,10 +291,7 @@ DeclareAttribute( "CommutativeRingOfLinearCategory",
 #! @Arguments C
 #! @Returns a category
 DeclareAttribute( "RangeCategoryOfHomomorphismStructure",
-                  IsCapCategory,
-                  "mutable" );
-# make this mutable so we can overwrite it even if
-# some category constructor has already set it
+                  IsCapCategory );
 
 #! @Description
 #! The argument is an additive category $C$.
@@ -617,9 +587,9 @@ DeclareGlobalFunction( "DisableAddForCategoricalOperations" );
 #!    * <C>DisableSanityChecks</C>: see <Ref Sect="Section_Sanity_checks" />.
 #!    * <C>DisableAddForCategoricalOperations</C>: see <Ref Sect="Section_Automatic_adds" />.
 #!    * <C>DeactivateToDoList</C>: see the package <C>ToolsForHomalg</C>.
-#!    * Use <C>ObjectifyObjectForCAPWithAttributes</C> (<Ref Sect="Section_Adding_Objects_to_a_Category" />)
+#!    * Use <C>CreateCapCategoryObjectWithAttributes</C> (<Ref Sect="Section_Adding_Objects_to_a_Category" />)
 #!        instead of <C>AddObject</C> and
-#!        <C>ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes</C> (<Ref Sect="Section_Adding_Morphisms_to_a_Category" />)
+#!        <C>CreateCapCategoryMorphismWithAttributes</C> (<Ref Sect="Section_Adding_Morphisms_to_a_Category" />)
 #!        instead of <C>AddMorphism</C>.
 #!    * Add all attribute testers (<C>Has...</C>) of your objects resp. morphisms to the filters passed to
 #!        <C>AddObjectRepresentation</C> (<Ref Sect="Section_Adding_Objects_to_a_Category" />) resp.
