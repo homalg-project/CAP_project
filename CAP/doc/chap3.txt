@@ -140,56 +140,56 @@
   [1X3.4-1 RandomMorphismWithFixedSourceByInteger[101X
   
   [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceByInteger[102X( [3Xa[103X, [3Xn[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X or [10Xfail[110X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X[133X
   
   [33X[0;0YThe  arguments  are an object [23Xa[123X in a category [23XC[123X and an integer [23Xn[123X. The output
-  is a random morphism [23X\alpha: a \rightarrow b[123X for some object [23Xb[123X in [23XC[123X or [10Xfail[110X.[133X
+  is a random morphism [23X\alpha: a \rightarrow b[123X for some object [23Xb[123X in [23XC[123X.[133X
   
   [1X3.4-2 RandomMorphismWithFixedSourceByList[101X
   
   [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceByList[102X( [3Xa[103X, [3XL[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X or [10Xfail[110X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X[133X
   
   [33X[0;0YThe  arguments are an object [23Xa[123X in a category [23XC[123X and a list [23XL[123X. The output is a
-  random morphism [23X\alpha: a \rightarrow b[123X for some object [23Xb[123X in [23XC[123X or [10Xfail[110X.[133X
+  random morphism [23X\alpha: a \rightarrow b[123X for some object [23Xb[123X in [23XC[123X.[133X
   
   [1X3.4-3 RandomMorphismWithFixedRangeByInteger[101X
   
   [33X[1;0Y[29X[2XRandomMorphismWithFixedRangeByInteger[102X( [3Xb[103X, [3Xn[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X or [10Xfail[110X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X[133X
   
   [33X[0;0YThe  arguments  are an object [23Xb[123X in a category [23XC[123X and an integer [23Xn[123X. The output
-  is a random morphism [23X\alpha: a \rightarrow b[123X for some object [23Xa[123X in [23XC[123X or [10Xfail[110X.[133X
+  is a random morphism [23X\alpha: a \rightarrow b[123X for some object [23Xa[123X in [23XC[123X.[133X
   
   [1X3.4-4 RandomMorphismWithFixedRangeByList[101X
   
   [33X[1;0Y[29X[2XRandomMorphismWithFixedRangeByList[102X( [3Xb[103X, [3XL[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X or [10Xfail[110X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X[133X
   
   [33X[0;0YThe  arguments are an object [23Xb[123X in a category [23XC[123X and a list [23XL[123X. The output is a
-  random morphism [23X\alpha: a \rightarrow b[123X for some object [23Xa[123X in [23XC[123X or [10Xfail[110X.[133X
+  random morphism [23X\alpha: a \rightarrow b[123X for some object [23Xa[123X in [23XC[123X.[133X
   
   [1X3.4-5 RandomMorphismWithFixedSourceAndRangeByInteger[101X
   
   [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceAndRangeByInteger[102X( [3Xa[103X, [3Xb[103X, [3Xn[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X or [10Xfail[110X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X[133X
   
   [33X[0;0YThe  arguments are two objects [23Xa[123X and [23Xb[123X in a category [23XC[123X and an integer [23Xn[123X. The
-  output is a random morphism [23X\alpha: a \rightarrow b[123X in [23XC[123X or [10Xfail[110X.[133X
+  output is a random morphism [23X\alpha: a \rightarrow b[123X in [23XC[123X.[133X
   
   [1X3.4-6 RandomMorphismWithFixedSourceAndRangeByList[101X
   
   [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceAndRangeByList[102X( [3Xa[103X, [3Xb[103X, [3XL[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X or [10Xfail[110X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X[133X
   
   [33X[0;0YThis  operation is not a CAP basic operation The arguments are two objects [23Xa[123X
   and  [23Xb[123X in a category [23XC[123X and a list [23XL[123X. The output is a random morphism [23X\alpha:
-  a \rightarrow b[123X in [23XC[123X or [10Xfail[110X.[133X
+  a \rightarrow b[123X in [23XC[123X.[133X
   
   [1X3.4-7 RandomMorphismByInteger[101X
   
   [33X[1;0Y[29X[2XRandomMorphismByInteger[102X( [3XC[103X, [3Xn[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism or [10Xfail[110X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23XC[123X[133X
   
   [33X[0;0YThe  arguments  are  a  category  [23XC[123X and an integer [23Xn[123X. The output is a random
   morphism   in   [23XC[123X   or   [10Xfail[110X.  If  the  methods  [10XRandomObjectByInteger[110X  and
@@ -201,10 +201,10 @@
   [1X3.4-8 RandomMorphismByList[101X
   
   [33X[1;0Y[29X[2XRandomMorphismByList[102X( [3XC[103X, [3XL[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism or [10Xfail[110X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23XC[123X[133X
   
   [33X[0;0YThe arguments are a category [23XC[123X and a list [23XL[123X. The output is a random morphism
-  in [23XC[123X or [10Xfail[110X.[133X
+  in [23XC[123X.[133X
   
   [1X3.4-9 RandomMorphismWithFixedSource[101X
   
@@ -214,6 +214,8 @@
   [33X[1;0Y[29X[2XRandomMorphismWithFixedRange[102X( [3Xb[103X, [3XL[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceAndRange[102X( [3Xa[103X, [3Xb[103X, [3Xn[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceAndRange[102X( [3Xa[103X, [3Xb[103X, [3XL[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XRandomMorphism[102X( [3Xa[103X, [3Xb[103X, [3Xn[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XRandomMorphism[102X( [3Xa[103X, [3Xb[103X, [3XL[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XRandomMorphism[102X( [3XC[103X, [3Xn[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XRandomMorphism[102X( [3XC[103X, [3XL[103X ) [32X operation[133X
   

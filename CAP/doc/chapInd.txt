@@ -696,6 +696,8 @@
   [2XPushoutFunctorialWithGivenPushouts[102X, for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject 6.12-16 
   [2XRandomMorphism[102X, for IsCapCategory, IsInt 3.4-9 
       for IsCapCategory, IsList 3.4-9 
+      for IsCapCategoryObject, IsCapCategoryObject, IsInt 3.4-9 
+      for IsCapCategoryObject, IsCapCategoryObject, IsList 3.4-9 
   [2XRandomMorphismByInteger[102X, for IsCapCategory, IsInt 3.4-7 
   [2XRandomMorphismByList[102X, for IsCapCategory, IsList 3.4-8 
   [2XRandomMorphismWithFixedRange[102X, for IsCapCategoryObject, IsInt 3.4-9 

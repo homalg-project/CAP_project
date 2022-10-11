@@ -111,18 +111,18 @@
   [1X2.4-1 RandomObjectByInteger[101X
   
   [33X[1;0Y[29X[2XRandomObjectByInteger[102X( [3XC[103X, [3Xn[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Yan object or [10Xfail[110X[133X
+  [6XReturns:[106X  [33X[0;10Yan object in [23XC[123X[133X
   
   [33X[0;0YThe  arguments  are  a  category  [23XC[123X and an integer [23Xn[123X. The output is a random
-  object in [23XC[123X or [10Xfail[110X.[133X
+  object in [23XC[123X.[133X
   
   [1X2.4-2 RandomObjectByList[101X
   
   [33X[1;0Y[29X[2XRandomObjectByList[102X( [3XC[103X, [3XL[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Yan object or [10Xfail[110X[133X
+  [6XReturns:[106X  [33X[0;10Yan object in [23XC[123X[133X
   
   [33X[0;0YThe  arguments  are a category [23XC[123X and a list [23XL[123X. The output is a random object
-  in [23XC[123X or [10Xfail[110X.[133X
+  in [23XC[123X.[133X
   
   [1X2.4-3 RandomObject[101X
   
