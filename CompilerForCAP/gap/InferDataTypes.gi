@@ -1007,6 +1007,12 @@ CapJitAddTypeSignature( "Product", [ IsList ], function ( input_types )
     
 end );
 
+CapJitAddTypeSignature( "Random", [ IsList ], function ( input_types )
+    
+    return input_types[1].element_type;
+    
+end );
+
 CapJitAddTypeSignature( "[]", [ IsList, IsInt ], function ( input_types )
     
     return input_types[1].element_type;
@@ -1316,6 +1322,7 @@ CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgMatrix", [ "IsList",
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgMatrixListList", [ "IsList", "IsInt", "IsInt", "IsHomalgRing" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgIdentityMatrix", [ "IsInt", "IsHomalgRing" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgZeroMatrix", [ "IsInt", "IsInt", "IsHomalgRing" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "RandomMatrix", [ "IsInt", "IsInt", "IsHomalgRing" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "IsZero", [ "IsHomalgMatrix" ], "IsBool" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "MatElm", [ "IsHomalgMatrix", "IsInt", "IsInt" ], "IsHomalgRingElement" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "ConvertRowToMatrix", [ "IsHomalgMatrix", "IsInt", "IsInt" ], "IsHomalgMatrix" );

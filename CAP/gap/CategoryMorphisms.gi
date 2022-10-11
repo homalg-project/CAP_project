@@ -270,23 +270,33 @@ end );
 
 InstallMethod( RandomMorphismWithFixedSourceAndRange,
     [ IsCapCategoryObject, IsCapCategoryObject, IsInt ], RandomMorphismWithFixedSourceAndRangeByInteger );
+
 InstallMethod( RandomMorphismWithFixedSourceAndRange,
     [ IsCapCategoryObject, IsCapCategoryObject, IsList ], RandomMorphismWithFixedSourceAndRangeByList );
 
 InstallMethod( RandomMorphismWithFixedSource,
     [ IsCapCategoryObject, IsInt ], RandomMorphismWithFixedSourceByInteger );
+
 InstallMethod( RandomMorphismWithFixedSource,
     [ IsCapCategoryObject, IsList ], RandomMorphismWithFixedSourceByList );
 
 InstallMethod( RandomMorphismWithFixedRange,
     [ IsCapCategoryObject, IsInt ], RandomMorphismWithFixedRangeByInteger );
+
 InstallMethod( RandomMorphismWithFixedRange,
     [ IsCapCategoryObject, IsList ], RandomMorphismWithFixedRangeByList );
 
 InstallMethod( RandomMorphism,
     [ IsCapCategory, IsInt ], RandomMorphismByInteger );
+
 InstallMethod( RandomMorphism,
     [ IsCapCategory, IsList ], RandomMorphismByList );
+
+InstallMethod( RandomMorphism,
+    [ IsCapCategoryObject, IsCapCategoryObject, IsList ], RandomMorphismWithFixedSourceAndRangeByList );
+
+InstallMethod( RandomMorphism,
+    [ IsCapCategoryObject, IsCapCategoryObject, IsInt ], RandomMorphismWithFixedSourceAndRangeByInteger );
 
 ##
 InstallGlobalFunction( ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes,

@@ -1305,20 +1305,24 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     AddRandomObjectByList( category,
       function ( category, L )
         
-        if IsEmpty( L ) then
-          Add( L, 0 );
+        if IsEmpty( L ) or ForAny( L, IsNegInt ) then
+          Error( "The input should be a non-empty list of non-negative integers\n" );
         fi;
         
-        return CategoryOfRowsObject( category, AbsInt( Random( L ) ) );
-    
+        return CategoryOfRowsObject( category, Random( L ) );
+        
     end );
     
     ##
     AddRandomObjectByInteger( category,
       function ( category, n )
         
-        return RandomObjectByList( category, [ 0 .. AbsInt( n ) ] );
-    
+        if IsNegInt( n ) then
+          Error( "The input should be a non-negative integer\n" );
+        fi;
+        
+        return RandomObjectByList( category, [ 0 .. n ] );
+        
     end );
     
     ##
@@ -1328,68 +1332,58 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
         ring := UnderlyingRing( category );
         
-        if IsEmpty( L ) then
-          Add( L, 0 );
+        if IsEmpty( L ) or ForAny( L, IsNegInt ) then
+          Error( "The input should be a non-empty list of non-negative integers\n" );
         fi;
         
         mat := Sum( L, c -> c * RandomMatrix( RankOfObject( S ), RankOfObject( R ), ring ) );
         
         return CategoryOfRowsMorphism( category, S, mat, R );
-    
+        
     end );
     
     ##
     AddRandomMorphismWithFixedSourceAndRangeByInteger( category,
       function ( category, S, R, n )
         
+        if IsNegInt( n ) then
+          Error( "The input should be a non-negative integer\n" );
+        fi;
+        
         return RandomMorphismWithFixedSourceAndRangeByList( category, S, R, [ 1 ] );
-    
+        
     end );
     
     ##
     AddRandomMorphismWithFixedSourceByList( category,
       function ( category, S, L )
         
-        if not ( Length( L ) = 2 and IsList( L[1] ) and IsList( L[2] ) ) then
-          Error( "The input should be a list consisting of two lists\n" );
+        if Length( L ) <> 2 or ForAny( L, e -> IsEmpty( e ) or ForAny( e, IsNegInt ) ) then
+          Error( "The input should be a list consisting of two non-empty lists of non-negative integers\n" );
         fi;
         
         return RandomMorphismWithFixedSourceAndRangeByList( category, S, RandomObjectByList( category, L[1] ), L[2] );
-    
-    end );
-    
-    AddRandomMorphismWithFixedSourceByInteger( category,
-      function ( category, S, n )
         
-        return RandomMorphismWithFixedSourceByList( category, S, [ [ 0 .. AbsInt( n ) ], [ 1 ] ] );
-    
     end );
     
     ##
     AddRandomMorphismWithFixedRangeByList( category,
       function ( category, R, L )
         
-        if not ( Length( L ) = 2 and IsList( L[1] ) and IsList( L[2] ) ) then
-          Error( "The input should be a list consisting of two lists\n" );
+        if Length( L ) <> 2 or ForAny( L, e -> IsEmpty( e ) or ForAny( e, IsNegInt ) ) then
+          Error( "The input should be a list consisting of two non-empty lists of non-negative integers\n" );
         fi;
         
         return RandomMorphismWithFixedSourceAndRangeByList( category, RandomObjectByList( category, L[1] ), R, L[2] );
-    
-    end );
-    
-    AddRandomMorphismWithFixedRangeByInteger( category,
-      function ( category, R, n )
         
-        return RandomMorphismWithFixedRangeByList( category, R, [ [ 0 .. AbsInt( n ) ], [ 1 ] ] );
-    
     end );
     
     ##
     AddRandomMorphismByList( category,
       function ( category, L )
         
-        if not ( Length( L ) = 3 and IsList( L[1] ) and IsList( L[2] ) and IsList( L[3] ) ) then
-          Error( "The input should be a list consisting of three lists\n" );
+        if Length( L ) <> 3 or ForAny( L, e -> IsEmpty( e ) or ForAny( e, IsNegInt ) ) then
+          Error( "The input should be a list consisting of three non-empty lists of non-negative integers\n" );
         fi;
         
         return RandomMorphismWithFixedSourceAndRangeByList(
@@ -1397,14 +1391,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
                     RandomObjectByList( category, L[1] ),
                     RandomObjectByList( category, L[2] ),
                     L[3] );
-    
-    end );
-    
-    ##
-    AddRandomMorphismByInteger( category,
-      function ( category, n )
-        
-        return RandomMorphismByList( category, [ [ 0 .. AbsInt( n ) ], [ 0 .. AbsInt( n ) ], [ 1 ] ] );
     
     end );
     

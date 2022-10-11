@@ -146,16 +146,16 @@ DeclareProperty( "IsZero",
 
 #! @Description
 #! The arguments are a category $C$ and an integer $n$.
-#! The output is a random object in $C$ or <C>fail</C>.
-#! @Returns an object or <C>fail</C>
+#! The output is a random object in $C$.
+#! @Returns an object in $C$
 #! @Arguments C, n
 DeclareOperation( "RandomObjectByInteger",
                   [ IsCapCategory, IsInt ] );
 
 #! @Description
 #! The arguments are a category $C$ and a list $L$.
-#! The output is a random object in $C$ or <C>fail</C>.
-#! @Returns an object or <C>fail</C>
+#! The output is a random object in $C$.
+#! @Returns an object in $C$
 #! @Arguments C, L
 DeclareOperation( "RandomObjectByList",
                   [ IsCapCategory, IsList ] );
