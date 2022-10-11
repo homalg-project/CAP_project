@@ -169,44 +169,40 @@ DeclareProperty( "IsIdempotent",
 
 #! @Description
 #! The arguments are an object $a$ in a category $C$ and an integer $n$.
-#! The output is a random morphism $\alpha: a \rightarrow b$ for some object
-#! $b$ in $C$ or <C>fail</C>.
-#! @Returns a morphism in $\mathrm{Hom}(a,b)$ or <C>fail</C>
+#! The output is a random morphism $\alpha: a \rightarrow b$ for some object $b$ in $C$.
+#! @Returns a morphism in $\mathrm{Hom}(a,b)$
 #! @Arguments a, n
 DeclareOperation( "RandomMorphismWithFixedSourceByInteger",
                   [ IsCapCategoryObject, IsInt ] );
 
 #! @Description
 #! The arguments are an object $a$ in a category $C$ and a list $L$.
-#! The output is a random morphism $\alpha: a \rightarrow b$ for some object
-#! $b$ in $C$ or <C>fail</C>.
-#! @Returns a morphism in $\mathrm{Hom}(a,b)$ or <C>fail</C>
+#! The output is a random morphism $\alpha: a \rightarrow b$ for some object $b$ in $C$.
+#! @Returns a morphism in $\mathrm{Hom}(a,b)$
 #! @Arguments a, L
 DeclareOperation( "RandomMorphismWithFixedSourceByList",
                   [ IsCapCategoryObject, IsList ] );
 
 #! @Description
 #! The arguments are an object $b$ in a category $C$ and an integer $n$.
-#! The output is a random morphism $\alpha: a \rightarrow b$ for some object
-#! $a$ in $C$ or <C>fail</C>.
-#! @Returns a morphism in $\mathrm{Hom}(a,b)$ or <C>fail</C>
+#! The output is a random morphism $\alpha: a \rightarrow b$ for some object $a$ in $C$.
+#! @Returns a morphism in $\mathrm{Hom}(a,b)$
 #! @Arguments b, n
 DeclareOperation( "RandomMorphismWithFixedRangeByInteger",
                   [ IsCapCategoryObject, IsInt ] );
 
 #! @Description
 #! The arguments are an object $b$ in a category $C$ and a list $L$.
-#! The output is a random morphism $\alpha: a \rightarrow b$ for some object
-#! $a$ in $C$ or <C>fail</C>.
-#! @Returns a morphism in $\mathrm{Hom}(a,b)$ or <C>fail</C>
+#! The output is a random morphism $\alpha: a \rightarrow b$ for some object $a$ in $C$.
+#! @Returns a morphism in $\mathrm{Hom}(a,b)$
 #! @Arguments b, L
 DeclareOperation( "RandomMorphismWithFixedRangeByList",
                   [ IsCapCategoryObject, IsList ] );
 
 #! @Description
 #! The arguments are two objects $a$ and $b$ in a category $C$ and an integer $n$.
-#! The output is a random morphism $\alpha: a \rightarrow b$ in $C$ or <C>fail</C>.
-#! @Returns a morphism in $\mathrm{Hom}(a,b)$ or <C>fail</C>
+#! The output is a random morphism $\alpha: a \rightarrow b$ in $C$.
+#! @Returns a morphism in $\mathrm{Hom}(a,b)$
 #! @Arguments a, b, n
 DeclareOperation( "RandomMorphismWithFixedSourceAndRangeByInteger",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsInt ] );
@@ -214,8 +210,8 @@ DeclareOperation( "RandomMorphismWithFixedSourceAndRangeByInteger",
 #! @Description
 #! This operation is not a CAP basic operation
 #! The arguments are two objects $a$ and $b$ in a category $C$ and a list $L$.
-#! The output is a random morphism $\alpha: a \rightarrow b$ in $C$ or <C>fail</C>.
-#! @Returns a morphism in $\mathrm{Hom}(a,b)$ or <C>fail</C>
+#! The output is a random morphism $\alpha: a \rightarrow b$ in $C$.
+#! @Returns a morphism in $\mathrm{Hom}(a,b)$
 #! @Arguments a, b, L
 DeclareOperation( "RandomMorphismWithFixedSourceAndRangeByList",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsList ] );
@@ -228,15 +224,15 @@ DeclareOperation( "RandomMorphismWithFixedSourceAndRangeByList",
 #! are added to the category $C$, then <C>RandomMorphismByInteger</C> can be
 #! derived to return a random morphism of complexity $n$ with random
 #! source(range) of complexity $n$.
-#! @Returns a morphism or <C>fail</C>
+#! @Returns a morphism in $C$
 #! @Arguments C, n
 DeclareOperation( "RandomMorphismByInteger",
                   [ IsCapCategory, IsInt ] );
 
 #! @Description
 #! The arguments are a category $C$ and a list $L$.
-#! The output is a random morphism in $C$ or <C>fail</C>.
-#! @Returns a morphism or <C>fail</C>
+#! The output is a random morphism in $C$.
+#! @Returns a morphism in $C$
 #! @Arguments C, L
 DeclareOperation( "RandomMorphismByList",
                   [ IsCapCategory, IsList ] );
@@ -244,7 +240,7 @@ DeclareOperation( "RandomMorphismByList",
 #! @BeginGroup
 #! @Description
 #! These are convenient methods and they, depending on the input, delegate to one of the above methods.
-# @Returns an object, morphism or fail
+# @Returns an object, morphism in $C$
 #! @Arguments a, n
 DeclareOperation( "RandomMorphismWithFixedSource", [ IsCapCategoryObject, IsInt ] );
 #! @Arguments a, L
