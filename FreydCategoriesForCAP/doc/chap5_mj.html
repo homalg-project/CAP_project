@@ -1220,7 +1220,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomObjectByList</code>( <var class="Arg">C</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: an object in a category of rows</p>
 
-<p>The arguments are a category <var class="Arg">C</var> and a list <var class="Arg">L</var> of integers. The output is an object whose rank is the absolute value of a random element in <var class="Arg">L</var>, or 0 if <var class="Arg">L</var> is empty.</p>
+<p>The arguments are a category <var class="Arg">C</var> and a non-empty list <var class="Arg">L</var> of non-negative integers. The output is an object whose rank is a random element in <var class="Arg">L</var>.</p>
 
 <p><a id="X8685EE527E483BC2" name="X8685EE527E483BC2"></a></p>
 
@@ -1229,7 +1229,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomObjectByInteger</code>( <var class="Arg">C</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: an object in a category of rows</p>
 
-<p>The arguments are a category of rows <var class="Arg">C</var> and an integer <var class="Arg">n</var>. The output is an object whose rank is at most the absolute value of <var class="Arg">n</var>.</p>
+<p>The arguments are a category of rows <var class="Arg">C</var> and a non-negative integer <var class="Arg">n</var>. The output is an object whose rank is at most <var class="Arg">n</var>.</p>
 
 <p><a id="X7C0DCA8F7FA3ACAA" name="X7C0DCA8F7FA3ACAA"></a></p>
 
@@ -1238,7 +1238,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismWithFixedSourceAndRangeByList</code>( <var class="Arg">S</var>, <var class="Arg">R</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in a category of rows</p>
 
-<p>The arguments are two objects <var class="Arg">S</var>, <var class="Arg">R</var> and a list <var class="Arg">L</var> of integers. The output is a morphism from <var class="Arg">S</var> to <var class="Arg">R</var> whose matrix is an <var class="Arg">L</var>-linear combination of random matrices over the underlying ring, or the zero morphism if <var class="Arg">L</var> is empty.</p>
+<p>The arguments are two objects <var class="Arg">S</var>, <var class="Arg">R</var> and a non-empty list <var class="Arg">L</var> of non-negative integers. The output is a morphism from <var class="Arg">S</var> to <var class="Arg">R</var> whose matrix is an <var class="Arg">L</var>-linear combination of random matrices over the underlying ring.</p>
 
 <p><a id="X7C06DBA77D8B0724" name="X7C06DBA77D8B0724"></a></p>
 
@@ -1247,7 +1247,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismWithFixedSourceAndRangeByInteger</code>( <var class="Arg">S</var>, <var class="Arg">R</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in a category of rows</p>
 
-<p>The arguments are two objects <var class="Arg">S</var>, <var class="Arg">R</var> and an integer <var class="Arg">n</var>. The output is a morphism from <var class="Arg">S</var> to <var class="Arg">R</var> defined by a random matrix over the underlying ring. Particularly, the argument <var class="Arg">n</var> will be disregarded.</p>
+<p>The arguments are two objects <var class="Arg">S</var>, <var class="Arg">R</var> and a non-negative integer <var class="Arg">n</var>. The output is a morphism from <var class="Arg">S</var> to <var class="Arg">R</var> defined by a random matrix over the underlying ring. Particularly, the argument <var class="Arg">n</var> will be disregarded.</p>
 
 <p><a id="X79BBBBB17CB0BA13" name="X79BBBBB17CB0BA13"></a></p>
 
@@ -1256,7 +1256,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismWithFixedSourceByList</code>( <var class="Arg">S</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in a category of rows</p>
 
-<p>The arguments are an object <var class="Arg">S</var> and a list <var class="Arg">L</var> consisting of two lists of integers. The output is a morphism from <var class="Arg">S</var> to an object <var class="Arg">R</var> whose rank is the absolute value of a random element in <var class="Arg">L</var>[1], or 0 if <var class="Arg">L</var>[1] is empty. The matrix of the morphism is an <var class="Arg">L</var>[2]-linear combination of random matrices over the underlying ring, or the zero matrix if <var class="Arg">L</var>[2] is empty.</p>
+<p>The arguments are an object <var class="Arg">S</var> and a list <var class="Arg">L</var> consisting of two non-empty lists of non-negative integers. The output is a morphism from <var class="Arg">S</var> to an object <var class="Arg">R</var> whose rank is a random element in <var class="Arg">L</var>[1]. The matrix of the morphism is an <var class="Arg">L</var>[2]-linear combination of random matrices over the underlying ring.</p>
 
 <p><a id="X789457CF8030AD0A" name="X789457CF8030AD0A"></a></p>
 
@@ -1265,7 +1265,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismWithFixedSourceByInteger</code>( <var class="Arg">S</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in a category of rows</p>
 
-<p>The arguments are an object <var class="Arg">S</var> and an integer <var class="Arg">n</var>. The output is a morphism from <var class="Arg">S</var> to an object <var class="Arg">R</var> whose rank is at most the absolute value of <var class="Arg">n</var>.</p>
+<p>The arguments are an object <var class="Arg">S</var> and a non-negative integer <var class="Arg">n</var>. The output is a morphism from <var class="Arg">S</var> to an object <var class="Arg">R</var> whose rank is at most <var class="Arg">n</var>.</p>
 
 <p><a id="X783D6F7A7B4B85CB" name="X783D6F7A7B4B85CB"></a></p>
 
@@ -1274,7 +1274,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismWithFixedRangeByList</code>( <var class="Arg">R</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in a category of rows</p>
 
-<p>The arguments are an object <var class="Arg">R</var> and a list <var class="Arg">L</var> consisting of two lists of integers. The output is a morphism to <var class="Arg">R</var> from an object <var class="Arg">S</var> whose rank is the absolute value of a random element in <var class="Arg">L</var>[1], or 0 if <var class="Arg">L</var>[1] is empty. The matrix of the morphism is an <var class="Arg">L</var>[2]-linear combination of random matrices over the underlying ring, or the zero matrix if <var class="Arg">L</var>[2] is empty.</p>
+<p>The arguments are an object <var class="Arg">R</var> and a list <var class="Arg">L</var> consisting of two non-empty lists of non-negative integers. The output is a morphism to <var class="Arg">R</var> from an object <var class="Arg">S</var> whose rank is a random element in <var class="Arg">L</var>[1]. The matrix of the morphism is an <var class="Arg">L</var>[2]-linear combination of random matrices over the underlying ring.</p>
 
 <p><a id="X7A744B9D862984C8" name="X7A744B9D862984C8"></a></p>
 
@@ -1283,7 +1283,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismWithFixedRangeByInteger</code>( <var class="Arg">R</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in a category of rows</p>
 
-<p>The arguments are an object <var class="Arg">R</var> and an integer <var class="Arg">n</var>. The output is a morphism to <var class="Arg">R</var> from an object <var class="Arg">S</var> whose rank is at most the absolute value of <var class="Arg">n</var>.</p>
+<p>The arguments are an object <var class="Arg">R</var> and a non-negative integer <var class="Arg">n</var>. The output is a morphism to <var class="Arg">R</var> from an object <var class="Arg">S</var> whose rank is at most <var class="Arg">n</var>.</p>
 
 <p><a id="X7EBCB45D85ACD0A2" name="X7EBCB45D85ACD0A2"></a></p>
 
@@ -1292,7 +1292,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismByList</code>( <var class="Arg">C</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in a category of rows</p>
 
-<p>The arguments are a category of rows <var class="Arg">C</var> and a list <var class="Arg">L</var> consisting of 3 lists of integers. The output is a morphism from an object <var class="Arg">S</var> to an object <var class="Arg">R</var> whose ranks are the absolute values of random elements in <var class="Arg">L</var>[1] resp. <var class="Arg">L</var>[2]. Its matrix is an <var class="Arg">L</var>[3]-linear combination of random matrices over the underlying ring, or the zero matrix if <var class="Arg">L</var>[3] is empty.</p>
+<p>The arguments are a category of rows <var class="Arg">C</var> and a list <var class="Arg">L</var> consisting of 3 non-empty lists of non-negative integers. The output is a morphism from an object <var class="Arg">S</var> to an object <var class="Arg">R</var> whose ranks are random elements in <var class="Arg">L</var>[1] resp. <var class="Arg">L</var>[2]. Its matrix is an <var class="Arg">L</var>[3]-linear combination of random matrices over the underlying ring.</p>
 
 <p><a id="X7C3D65707DD373CB" name="X7C3D65707DD373CB"></a></p>
 
@@ -1301,7 +1301,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismByInteger</code>( <var class="Arg">C</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in a category of rows</p>
 
-<p>The arguments are a category of rows <var class="Arg">C</var> and an integer <var class="Arg">n</var>. The output is a morphism whose source and range ranks are at most the absolute value of <var class="Arg">n</var>.</p>
+<p>The arguments are a category of rows <var class="Arg">C</var> and a non-negative integer <var class="Arg">n</var>. The output is a morphism whose source and range ranks are at most <var class="Arg">n</var>.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap4_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap6_mj.html">[Next Chapter]</a>&nbsp;  </div>

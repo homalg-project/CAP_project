@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "FreydCategoriesForCAP",
 Subtitle := "Freyd categories - Formal (co)kernels for additive categories",
-Version := "2022.10-04",
+Version := "2022.10-05",
 Date := "11/10/2022",
 License := "GPL-2.0-or-later",
 
