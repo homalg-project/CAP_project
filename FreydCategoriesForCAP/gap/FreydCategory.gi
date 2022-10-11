@@ -1102,10 +1102,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                 
                 range_category := category;
                 
-                
             else
                 
-                range_category := FreydCategory( underlying_range_category );
+                range_category := FreydCategory( underlying_range_category : FinalizeCategory := true );
                 
             fi;
             
