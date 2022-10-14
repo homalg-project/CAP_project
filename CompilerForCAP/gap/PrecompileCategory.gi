@@ -47,7 +47,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         
         operations := ListPrimitivelyInstalledOperationsOfCategory( cat );
         
-    elif IsString( ValueOption( "operations" ) ) then
+    elif IsStringRep( ValueOption( "operations" ) ) then # use IsStringRep instead of IsString to distinguish between the empty string and an empty list
         
         # COVERAGE_IGNORE_BLOCK_START
         Display( "WARNING: the option <operations> is a string. This is a convenience for debugging which should not be used in production code." );
