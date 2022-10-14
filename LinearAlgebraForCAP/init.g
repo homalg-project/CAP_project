@@ -9,5 +9,3 @@ ReadPackage( "LinearAlgebraForCAP", "gap/LinearAlgebraForCAP.gd" );
 ReadPackage( "LinearAlgebraForCAP", "gap/MatrixCategoryObject.gd" );
 
 ReadPackage( "LinearAlgebraForCAP", "gap/MatrixCategoryMorphism.gd" );
-
-ReadPackage( "LinearAlgebraForCAP", "gap/MatrixCategoryAsAdditiveClosureOfRingAsCategory.gd" );
