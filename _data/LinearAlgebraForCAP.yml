@@ -1,7 +1,7 @@
 name: LinearAlgebraForCAP
-version: "2022.09-12"
+version: "2022.10-01"
 license: "GPL-2.0-or-later"
-date: 2022-09-28
+date: 2022-10-14
 description: |
     Category of Matrices over a Field for CAP
 
@@ -39,22 +39,17 @@ needed-pkgs:
       version: ">= 2022.06-01"
       url: "https://homalg-project.github.io/pkg/MonoidalCategories"
 
-suggested-pkgs:
-    - name: "FreydCategoriesForCAP"
-      version: ">= 2021.12-02"
-      url: "https://homalg-project.github.io/pkg/FreydCategoriesForCAP"
-
 www: https://homalg-project.github.io/pkg/LinearAlgebraForCAP
 readme: README.md
 packageinfo: https://homalg-project.github.io/CAP_project/LinearAlgebraForCAP/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2022.09-12/LinearAlgebraForCAP-2022.09-12.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2022.10-01/LinearAlgebraForCAP-2022.10-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2022.09-12/LinearAlgebraForCAP-2022.09-12.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2022.10-01/LinearAlgebraForCAP-2022.10-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2022.09-12/LinearAlgebraForCAP-2022.09-12.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2022.10-01/LinearAlgebraForCAP-2022.10-01.pdf
 
 abstract: |
     <span class="pkgname">LinearAlgebraForCAP</span> provides a skeletal model of the category of finite dimensional vector spaces over a computable field.
@@ -66,7 +61,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>GP22</span>]   <b class='BibAuthor'>Gutsche, S. and Posur, S.</b>,
      <i class='BibTitle'>LinearAlgebraForCAP, Category of Matrices over a Field for CAP,
-             Version 2022.09-12</i>
+             Version 2022.10-01</i>
      (<span class='BibYear'>2022</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/LinearAlgebraForCAP">https://homalg-project.github.io/pkg/LinearAlgebraForCAP</a></span>.
@@ -74,11 +69,11 @@ citeas: |
     
 
 bibtex: |
-    @misc{ LinearAlgebraForCAP2022.09-12,
+    @misc{ LinearAlgebraForCAP2022.10-01,
       author =           {Gutsche, S. and Posur, S.},
       title =            {{LinearAlgebraForCAP},  Category  of  Matrices  over a
-                          Field for CAP, {V}ersion 2022.09-12},
-      month =            {Sep},
+                          Field for CAP, {V}ersion 2022.10-01},
+      month =            {Oct},
       year =             {2022},
       note =             {GAP package},
       howpublished =     {\href

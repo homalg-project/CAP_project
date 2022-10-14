@@ -252,75 +252,7 @@
   [4X[32X[104X
   
   
-  [1X2.2 [33X[0;0YMatrixCategoryAsAdditiveClosureOfRingAsCategory[133X[101X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X#@if IsPackageMarkedForLoading( "FreydCategoriesForCAP", ">= 2021.12-02" )[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP", false );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals();;[127X[104X
-    [4X[25Xgap>[125X [27Xvec := MatrixCategoryAsAdditiveClosureOfRingAsCategory( QQ );[127X[104X
-    [4X[28XCategory of matrices over Q[128X[104X
-    [4X[25Xgap>[125X [27Xa := MatrixCategoryObject( vec, 3 );[127X[104X
-    [4X[28X<A vector space object over Q of dimension 3>[128X[104X
-    [4X[25Xgap>[125X [27XHasIsProjective( a ) and IsProjective( a );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xb := MatrixCategoryObject( vec, 4 );[127X[104X
-    [4X[28X<A vector space object over Q of dimension 4>[128X[104X
-    [4X[25Xgap>[125X [27XDirectSum( a, b );[127X[104X
-    [4X[28X<A vector space object over Q of dimension 7>[128X[104X
-    [4X[25Xgap>[125X [27XZeroObject( vec );[127X[104X
-    [4X[28X<A vector space object over Q of dimension 0>[128X[104X
-    [4X[25Xgap>[125X [27XZeroMorphism( a, b );[127X[104X
-    [4X[28X<A zero morphism in Category of matrices over Q>[128X[104X
-    [4X[25Xgap>[125X [27Xhomalg_matrix := HomalgMatrix( [ [ 1, 0, 0, 0 ],[127X[104X
-    [4X[25X>[125X [27X                                 [ 0, 1, 0, -1 ],[127X[104X
-    [4X[25X>[125X [27X                                 [ -1, 0, 2, 1 ] ], 3, 4, QQ );[127X[104X
-    [4X[28X<A 3 x 4 matrix over an internal ring>[128X[104X
-    [4X[25Xgap>[125X [27Xalpha := VectorSpaceMorphism( a, homalg_matrix, b );[127X[104X
-    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( alpha );[127X[104X
-    [4X[28X[ [   1,   0,   0,   0 ],[128X[104X
-    [4X[28X  [   0,   1,   0,  -1 ],[128X[104X
-    [4X[28X  [  -1,   0,   2,   1 ] ][128X[104X
-    [4X[28X[128X[104X
-    [4X[28XA morphism in Category of matrices over Q[128X[104X
-    [4X[25Xgap>[125X [27Xhomalg_matrix := HomalgMatrix( [ [ 1, 1, 0, 0 ],[127X[104X
-    [4X[25X>[125X [27X                                 [ 0, 1, 0, -1 ],[127X[104X
-    [4X[25X>[125X [27X                                 [ -1, 0, 2, 1 ] ], 3, 4, QQ );[127X[104X
-    [4X[28X<A 3 x 4 matrix over an internal ring>[128X[104X
-    [4X[25Xgap>[125X [27Xbeta := VectorSpaceMorphism( a, homalg_matrix, b );[127X[104X
-    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
-    [4X[25Xgap>[125X [27Xgamma := UniversalMorphismIntoDirectSum( [ alpha, alpha ] );;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( gamma );[127X[104X
-    [4X[28X[ [   1,   0,   0,   0,   1,   0,   0,   0 ],[128X[104X
-    [4X[28X  [   0,   1,   0,  -1,   0,   1,   0,  -1 ],[128X[104X
-    [4X[28X  [  -1,   0,   2,   1,  -1,   0,   2,   1 ] ][128X[104X
-    [4X[28X[128X[104X
-    [4X[28XA morphism in Category of matrices over Q[128X[104X
-    [4X[25Xgap>[125X [27XIsEqualForMorphisms( ComponentOfMorphismIntoDirectSum( gamma, [ b, b ], 1 ), alpha );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsEqualForMorphisms( ComponentOfMorphismIntoDirectSum( gamma, [ b, b ], 2 ), alpha );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xgamma := UniversalMorphismFromDirectSum( [ beta, beta ] );;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( gamma );[127X[104X
-    [4X[28X[ [   1,   1,   0,   0 ],[128X[104X
-    [4X[28X  [   0,   1,   0,  -1 ],[128X[104X
-    [4X[28X  [  -1,   0,   2,   1 ],[128X[104X
-    [4X[28X  [   1,   1,   0,   0 ],[128X[104X
-    [4X[28X  [   0,   1,   0,  -1 ],[128X[104X
-    [4X[28X  [  -1,   0,   2,   1 ] ][128X[104X
-    [4X[28X[128X[104X
-    [4X[28XA morphism in Category of matrices over Q[128X[104X
-    [4X[25Xgap>[125X [27XIsEqualForMorphisms( ComponentOfMorphismFromDirectSum( gamma, [ a, a ], 1 ), beta );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsEqualForMorphisms( ComponentOfMorphismFromDirectSum( gamma, [ a, a ], 2 ), beta );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[28X#@fi[128X[104X
-  [4X[32X[104X
-  
-  
-  [1X2.3 [33X[0;0YSplit epi summand[133X[101X
+  [1X2.2 [33X[0;0YSplit epi summand[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
