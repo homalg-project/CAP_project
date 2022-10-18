@@ -1000,7 +1000,7 @@ DeclareOperation( "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorph
 #! @Returns a morphism in $\mathrm{Hom}_{C}(a,a')$
 #! @Arguments a,a',iota
 DeclareOperation( "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
-                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are three lists $\alpha$, $\beta$, and $\gamma$.
@@ -1090,6 +1090,67 @@ DeclareOperation( "HomStructure",
 #! This is a convenience method for
 #! <C>DistinguishedObjectOfHomomorphismStructure</C>.
 DeclareOperation( "HomStructure",
+                  [ IsCapCategory ] );
+
+#! @BeginGroup
+#! @Description
+#! If $\iota\colon D \to E$ is a full embedding of categories, every $D$-homomorphism structure for a category $C$
+#! extends to a $E$-homomorphism structure for $C$. This operations accepts four functions
+#! and installs operations `DistinguishedObjectOfHomomorphismStructureExtendedByFullEmbedding`,
+#! `HomomorphismStructureOnObjectsExtendedByFullEmbedding` etc. which correspond to the $E$-homomorphism structure for $C$.
+#! Note: To distinguish embeddings in different categories, in addition to $C$ also $E$ is passed to the operations.
+#! When using this with different embeddings with the range category $E$, only the last embedding will be used.
+#! The arguments are:
+#! * `object_function` gets the categories $C$ and $E$ and an object in $D$.
+#! * `morphism_function` gets the categories $C$ and $E$, an object in $E$, a morphism in $D$ and another object in $E$.
+#!   The objects are the results of `object_function` applied to the source and range of the morphism.
+#! * `object_function_inverse` gets the categories $C$ and $E$ and a morphism in $E$.
+#! * `morphism_function_inverse` gets the categories $C$ and $E$, an object in $D$, a morphism in $E$ and another object in $D$.
+#!   The objects are the results of `object_function_inverse` applied to the source and range of the morphism.
+#! `object_function` and `morphism_function` define the embedding. `object_function_inverse` and `morphism_function_inverse` define
+#! the inverse of the embedding on its image.
+#! @Returns nothing
+#! @Arguments C, E, object_function, morphism_function, object_function_inverse, morphism_function_inverse
+DeclareOperation( "ExtendRangeOfHomomorphismStructureByFullEmbedding",
+                  [ IsCapCategory, IsCapCategory, IsFunction, IsFunction, IsFunction, IsFunction ] );
+
+#! @Arguments C, E, a, b
+DeclareOperation( "HomomorphismStructureOnObjectsExtendedByFullEmbedding",
+                  [ IsCapCategory, IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Arguments C, E, alpha, beta
+DeclareOperation( "HomomorphismStructureOnMorphismsExtendedByFullEmbedding",
+                  [ IsCapCategory, IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+#! @Arguments C, E, s, alpha, beta, r
+DeclareOperation( "HomomorphismStructureOnMorphismsWithGivenObjectsExtendedByFullEmbedding",
+                  [ IsCapCategory, IsCapCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Arguments C, E
+DeclareOperation( "DistinguishedObjectOfHomomorphismStructureExtendedByFullEmbedding",
+                  [ IsCapCategory, IsCapCategory ] );
+
+#! @Arguments C, E, alpha
+DeclareOperation( "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureExtendedByFullEmbedding",
+                  [ IsCapCategory, IsCapCategory, IsCapCategoryMorphism ] );
+
+#! @Arguments C, E, distinguished_object, alpha, r
+DeclareOperation( "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjectsExtendedByFullEmbedding",
+                  [ IsCapCategory, IsCapCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Arguments C, E, a, a', iota
+DeclareOperation( "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphismExtendedByFullEmbedding",
+                  [ IsCapCategory, IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
+#! @EndGroup
+
+#! @Description
+#! Chooses the identity on $D$ as the full embedding in
+#! <Ref Oper="ExtendRangeOfHomomorphismStructureByFullEmbedding" Label="for IsCapCategory, IsCapCategory, IsFunction, IsFunction, IsFunction, IsFunction" />.
+#! This is useful to handle this case as a degenerate case of
+#! <Ref Oper="ExtendRangeOfHomomorphismStructureByFullEmbedding" Label="for IsCapCategory, IsCapCategory, IsFunction, IsFunction, IsFunction, IsFunction" />.
+#! @Returns nothing
+#! @Arguments C
+DeclareOperation( "ExtendRangeOfHomomorphismStructureByIdentityAsFullEmbedding",
                   [ IsCapCategory ] );
 
 

@@ -8,7 +8,7 @@ LoadPackage( "LinearAlgebraForCAP", false );
 #! true
 Q := HomalgFieldOfRationals( );
 #! Q
-Qmat := MatrixCategory( Q );
+Qmat := MATRIX_CATEGORY( Q );
 #! Category of matrices over Q
 Wrapper := WrapperCategory( Qmat, rec( ) );
 #! WrapperCategory( Category of matrices over Q )
@@ -26,7 +26,9 @@ beta := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphis
 IsCongruentForMorphisms( mor, beta );
 #! true
 
-Wrapper2 := WrapperCategory( Qmat, rec( wrap_range_of_hom_structure := true ) );
+Qmat2 := MATRIX_CATEGORY( Q );
+#! Category of matrices over Q
+Wrapper2 := WrapperCategory( Qmat2, rec( wrap_range_of_hom_structure := true ) );
 #! WrapperCategory( Category of matrices over Q )
 mor := ZeroMorphism( ZeroObject( Wrapper2 ), ZeroObject( Wrapper2 ) );;
 distinguished_object := DistinguishedObjectOfHomomorphismStructure( Wrapper2 );;
