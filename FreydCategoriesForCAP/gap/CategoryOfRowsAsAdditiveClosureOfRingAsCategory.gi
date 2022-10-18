@@ -157,7 +157,7 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
         SetIsAbelianCategory( wrapper, true );
         
     fi;
-
+    
     # some manually precompiled functions
     
     ##
