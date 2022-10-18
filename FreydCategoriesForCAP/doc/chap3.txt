@@ -8,11 +8,10 @@
     [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationalsInSingular();;[127X[104X
     [4X[25Xgap>[125X [27XR := QQ * "x,y,z";;[127X[104X
     [4X[25Xgap>[125X [27Xrows := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( R );;[127X[104X
-    [4X[25Xgap>[125X [27XCR := UnderlyingCategory( ModelingCategory( rows ) );;[127X[104X
     [4X[25Xgap>[125X [27XM := HomalgMatrix( "[[x^2,4*y]]", 1, 2, R );;[127X[104X
     [4X[25Xgap>[125X [27XN := HomalgMatrix( "[[1,3*x], [2*y^3,5*y]]", 2, 2, R );;[127X[104X
     [4X[25Xgap>[125X [27XP := M * N;;[127X[104X
-    [4X[25Xgap>[125X [27Xo := ObjectConstructor( rows, AsAdditiveClosureObject( RingAsCategoryUniqueObject( CR ) ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xo := CategoryOfRowsObject( rows, 1 );;[127X[104X
     [4X[25Xgap>[125X [27XA := o;;[127X[104X
     [4X[25Xgap>[125X [27XB := DirectSum( o, o );;[127X[104X
     [4X[25Xgap>[125X [27Xalpha := CategoryOfRowsMorphism( rows, A, M, B );;[127X[104X
@@ -26,7 +25,8 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XUnderlyingMatrix( gamma ) = P;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xdelta := Lift( gamma, beta );;[127X[104X
+    [4X[25Xgap>[125X [27X# compute Lift( gamma, beta ) via SolveLinearSystemInAbCategory for coverage of hom structure:[127X[104X
+    [4X[25X>[125X [27Xdelta := SolveLinearSystemInAbCategory( [ [ IdentityMorphism( A ) ] ], [ [ beta ] ], [ gamma ] )[1];;[127X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( delta );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsCongruentForMorphisms( gamma, PreCompose( delta, beta ) );[127X[104X
@@ -34,11 +34,10 @@
     [4X[25Xgap>[125X [27X# E and EE are both occupied by GAP[127X[104X
     [4X[25X>[125X [27XEEE := KoszulDualRing( R );;[127X[104X
     [4X[25Xgap>[125X [27Xrows := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( EEE );;[127X[104X
-    [4X[25Xgap>[125X [27XCEEE := UnderlyingCategory( ModelingCategory( rows ) );;[127X[104X
     [4X[25Xgap>[125X [27XM := HomalgMatrix( "[[e0*e1,3*e0]]", 1, 2, EEE );;[127X[104X
     [4X[25Xgap>[125X [27XN := HomalgMatrix( "[[1,e0*e2], [2*e0*e1*e2,5*e2]]", 2, 2, EEE );;[127X[104X
     [4X[25Xgap>[125X [27XP := M * N;;[127X[104X
-    [4X[25Xgap>[125X [27Xo := ObjectConstructor( rows, AsAdditiveClosureObject( RingAsCategoryUniqueObject( CEEE ) ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xo := CategoryOfRowsObject( rows, 1 );;[127X[104X
     [4X[25Xgap>[125X [27XA := o;;[127X[104X
     [4X[25Xgap>[125X [27XB := DirectSum( o, o );;[127X[104X
     [4X[25Xgap>[125X [27Xalpha := CategoryOfRowsMorphism( rows, A, M, B );;[127X[104X
@@ -52,7 +51,8 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XUnderlyingMatrix( gamma ) = P;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xdelta := Lift( gamma, beta );;[127X[104X
+    [4X[25Xgap>[125X [27X# compute Lift( gamma, beta ) via SolveLinearSystemInAbCategory for coverage of hom structure:[127X[104X
+    [4X[25X>[125X [27Xdelta := SolveLinearSystemInAbCategory( [ [ IdentityMorphism( A ) ] ], [ [ beta ] ], [ gamma ] )[1];;[127X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( delta );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsCongruentForMorphisms( gamma, PreCompose( delta, beta ) );[127X[104X

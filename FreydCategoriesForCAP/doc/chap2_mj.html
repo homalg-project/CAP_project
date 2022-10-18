@@ -36,15 +36,16 @@
 </span>
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X83CEE62E7F65193B">2.2-1 AdditiveClosure</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X79F5D5987C402AA8">2.2-2 AdditiveClosureObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7BFEDC957BDFD922">2.2-3 AsAdditiveClosureObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X825AFED37B96E8E3">2.2-4 AdditiveClosureMorphism</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7E68504F7906F9BA">2.2-5 AsAdditiveClosureMorphism</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X83052556783E9F72">2.2-6 InclusionFunctorInAdditiveClosure</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7CB9D74B81E8657F">2.2-7 ExtendFunctorToAdditiveClosures</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X800F55F17A280DE5">2.2-8 ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X80D324A184629A28">2.2-9 ExtendFunctorToAdditiveClosureOfSource</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X82EE592782202D2E">2.2-10 ExtendNaturalTransformationToAdditiveClosureOfSource</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X782F119178F61C5A">2.2-2 ADDITIVE_CLOSURE</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X79F5D5987C402AA8">2.2-3 AdditiveClosureObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7BFEDC957BDFD922">2.2-4 AsAdditiveClosureObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X825AFED37B96E8E3">2.2-5 AdditiveClosureMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7E68504F7906F9BA">2.2-6 AsAdditiveClosureMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X83052556783E9F72">2.2-7 InclusionFunctorInAdditiveClosure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7CB9D74B81E8657F">2.2-8 ExtendFunctorToAdditiveClosures</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X800F55F17A280DE5">2.2-9 ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X80D324A184629A28">2.2-10 ExtendFunctorToAdditiveClosureOfSource</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X82EE592782202D2E">2.2-11 ExtendNaturalTransformationToAdditiveClosureOfSource</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7C701DBF7BAE649A">2.3 <span class="Heading">Attributes</span></a>
 </span>
@@ -118,9 +119,18 @@
 
 <p>The argument is an Ab-category <span class="SimpleMath">\(C\)</span>. The output is its additive closure <span class="SimpleMath">\(C^\oplus\)</span>.</p>
 
+<p><a id="X782F119178F61C5A" name="X782F119178F61C5A"></a></p>
+
+<h5>2.2-2 ADDITIVE_CLOSURE</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ADDITIVE_CLOSURE</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: the category <span class="SimpleMath">\(C^\oplus\)</span></p>
+
+<p>Same as <code class="func">AdditiveClosure</code> (<a href="chap2_mj.html#X83CEE62E7F65193B"><span class="RefLink">2.2-1</span></a>), but as an operation instead of an attribute.</p>
+
 <p><a id="X79F5D5987C402AA8" name="X79F5D5987C402AA8"></a></p>
 
-<h5>2.2-2 AdditiveClosureObject</h5>
+<h5>2.2-3 AdditiveClosureObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdditiveClosureObject</code>( <var class="Arg">L</var>, <var class="Arg">C^\oplus</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: an object in <span class="SimpleMath">\(C^\oplus\)</span></p>
@@ -129,7 +139,7 @@
 
 <p><a id="X7BFEDC957BDFD922" name="X7BFEDC957BDFD922"></a></p>
 
-<h5>2.2-3 AsAdditiveClosureObject</h5>
+<h5>2.2-4 AsAdditiveClosureObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsAdditiveClosureObject</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: an object in <span class="SimpleMath">\(C^\oplus\)</span></p>
@@ -138,7 +148,7 @@
 
 <p><a id="X825AFED37B96E8E3" name="X825AFED37B96E8E3"></a></p>
 
-<h5>2.2-4 AdditiveClosureMorphism</h5>
+<h5>2.2-5 AdditiveClosureMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdditiveClosureMorphism</code>( <var class="Arg">A</var>, <var class="Arg">M</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}_{C^\oplus}(A,B)\)</span></p>
@@ -147,7 +157,7 @@
 
 <p><a id="X7E68504F7906F9BA" name="X7E68504F7906F9BA"></a></p>
 
-<h5>2.2-5 AsAdditiveClosureMorphism</h5>
+<h5>2.2-6 AsAdditiveClosureMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsAdditiveClosureMorphism</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(C^\oplus\)</span></p>
@@ -156,7 +166,7 @@
 
 <p><a id="X83052556783E9F72" name="X83052556783E9F72"></a></p>
 
-<h5>2.2-6 InclusionFunctorInAdditiveClosure</h5>
+<h5>2.2-7 InclusionFunctorInAdditiveClosure</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InclusionFunctorInAdditiveClosure</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a functor <span class="SimpleMath">\(C\to C^\oplus\)</span></p>
@@ -165,7 +175,7 @@
 
 <p><a id="X7CB9D74B81E8657F" name="X7CB9D74B81E8657F"></a></p>
 
-<h5>2.2-7 ExtendFunctorToAdditiveClosures</h5>
+<h5>2.2-8 ExtendFunctorToAdditiveClosures</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExtendFunctorToAdditiveClosures</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a functor <span class="SimpleMath">\(C^\oplus \to D^\oplus\)</span></p>
@@ -174,7 +184,7 @@
 
 <p><a id="X800F55F17A280DE5" name="X800F55F17A280DE5"></a></p>
 
-<h5>2.2-8 ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource</h5>
+<h5>2.2-9 ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a functor <span class="SimpleMath">\(C^\oplus \to D\)</span></p>
@@ -183,7 +193,7 @@
 
 <p><a id="X80D324A184629A28" name="X80D324A184629A28"></a></p>
 
-<h5>2.2-9 ExtendFunctorToAdditiveClosureOfSource</h5>
+<h5>2.2-10 ExtendFunctorToAdditiveClosureOfSource</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExtendFunctorToAdditiveClosureOfSource</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a functor <span class="SimpleMath">\(C^\oplus \to D^\oplus\)</span> or <span class="SimpleMath">\(C^\oplus \to D\)</span></p>
@@ -192,7 +202,7 @@
 
 <p><a id="X82EE592782202D2E" name="X82EE592782202D2E"></a></p>
 
-<h5>2.2-10 ExtendNaturalTransformationToAdditiveClosureOfSource</h5>
+<h5>2.2-11 ExtendNaturalTransformationToAdditiveClosureOfSource</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExtendNaturalTransformationToAdditiveClosureOfSource</code>( <var class="Arg">eta</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a natural transformation from <span class="SimpleMath">\(F^\oplus\)</span> to <span class="SimpleMath">\(G^\oplus\)</span></p>
