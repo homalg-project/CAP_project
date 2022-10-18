@@ -7,6 +7,7 @@
 # read precompiled categories
 ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CategoryOfColumnsAsOppositeOfCategoryOfRowsOfFieldPrecompiled.gi" );
 ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CategoryOfColumnsAsOppositeOfCategoryOfRowsOfCommutativeRingPrecompiled.gi" );
+ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CategoryOfColumnsAsOppositeOfCategoryOfRowsOfHomalgExteriorRingOverFieldPrecompiled.gi" );
 ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CategoryOfColumnsAsOppositeOfCategoryOfRowsOfArbitraryRingPrecompiled.gi" );
 
 ####################################
@@ -33,6 +34,10 @@ InstallMethod( CategoryOfColumns,
         elif HasIsCommutative( homalg_ring ) and IsCommutative( homalg_ring ) then
             
             ADD_FUNCTIONS_FOR_CategoryOfColumnsAsOppositeOfCategoryOfRowsOfCommutativeRingPrecompiled( cat );
+            
+        elif HasIsExteriorRing( homalg_ring ) and IsExteriorRing( homalg_ring ) and IsField( BaseRing( homalg_ring ) ) then
+            
+            ADD_FUNCTIONS_FOR_CategoryOfColumnsAsOppositeOfCategoryOfRowsOfHomalgExteriorRingOverFieldPrecompiled( cat );
             
         else
             

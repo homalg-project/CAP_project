@@ -364,6 +364,17 @@ end
     , 100 );
     
     ##
+    AddIsEqualForMorphisms( cat,
+        
+########
+function ( cat_1, arg2_1, arg3_1 )
+    return UnderlyingMatrix( arg2_1 ) = UnderlyingMatrix( arg3_1 );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddIsEqualForObjects( cat,
         
 ########

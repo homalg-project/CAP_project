@@ -15,65 +15,130 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
                [ IsHomalgRing ],
                
   function( homalg_ring )
-    local ring_as_category, add, object_constructor, object_datum, morphism_constructor, morphism_datum, category_object_filter, wrapper;
+    local ring_as_category, add, object_constructor, modeling_tower_object_constructor, object_datum, modeling_tower_object_datum, morphism_constructor, modeling_tower_morphism_constructor, morphism_datum, modeling_tower_morphism_datum, category_object_filter, wrapper;
     
     ring_as_category := RING_AS_CATEGORY( homalg_ring : FinalizeCategory := true );
     
     add := ADDITIVE_CLOSURE( ring_as_category : FinalizeCategory := true );
     
-    object_constructor := function ( cat, object_datum )
+    object_constructor := function ( cat, rank )
         
-        return CategoryOfRowsObject( cat, Length( ObjectList( object_datum ) ) );
+        if not IsInt( rank ) or rank < 0 then
+            
+            Error( "the object datum must be a non-negative integer" );
+            
+        fi;
+        
+        return CategoryOfRowsObject( cat, rank );
+        
+    end;
+    
+    modeling_tower_object_constructor := function ( cat, rank )
+      local add, ring_as_category, unique_object;
+        
+        if not IsInt( rank ) or rank < 0 then
+            
+            Error( "the object datum must be a non-negative integer" );
+            
+        fi;
+        
+        add := ModelingCategory( cat );
+        ring_as_category := UnderlyingCategory( add );
+        
+        unique_object := RingAsCategoryUniqueObject( ring_as_category );
+        
+        return AdditiveClosureObject( add, ListWithIdenticalEntries( rank, unique_object ) );
         
     end;
     
     object_datum := function ( cat, object )
-      local add, ring_as_category, unique_object;
         
-        add := ModelingCategory( cat );
-        ring_as_category := UnderlyingCategory( add );
-        
-        unique_object := RingAsCategoryUniqueObject( ring_as_category );
-        
-        return AdditiveClosureObject( add, ListWithIdenticalEntries( RankOfObject( object ), unique_object ) );
+        return RankOfObject( object );
         
     end;
     
-    morphism_constructor := function ( cat, source, morphism_datum, range )
-      local matrix_entries, homalg_matrix;
+    modeling_tower_object_datum := function ( cat, object )
         
-        matrix_entries := List( MorphismMatrix( morphism_datum ),
-            row -> List( row,
-                c -> UnderlyingRingElement( c )
-            )
-        );
-        
-        homalg_matrix := HomalgMatrixListList( matrix_entries, RankOfObject( source ), RankOfObject( range ), UnderlyingRing( cat ) );
-        
-        return CategoryOfRowsMorphism( cat, source, homalg_matrix, range );
+        return Length( ObjectList( object ) );
         
     end;
     
-    morphism_datum := function ( cat, morphism )
+    morphism_constructor := function ( cat, source, underlying_matrix, range )
+        
+        if not IsHomalgMatrix( underlying_matrix ) then
+            
+            Error( "the morphism datum must be a homalg matrix" );
+            
+        fi;
+        
+        if not IsIdenticalObj( HomalgRing( underlying_matrix ), UnderlyingRing( cat ) ) then
+            
+            Error( "the matrix is defined over a different ring than the category" );
+            
+        fi;
+        
+        if NrRows( underlying_matrix ) <> ObjectDatum( cat, source ) then
+            
+            Error( "the number of rows has to be equal to the rank of the source" );
+            
+        fi;
+        
+        if NrColumns( underlying_matrix ) <> ObjectDatum( cat, range ) then
+            
+            Error( "the number of columns has to be equal to the rank of the range" );
+            
+        fi;
+        
+        return CategoryOfRowsMorphism( cat, source, underlying_matrix, range );
+        
+    end;
+    
+    modeling_tower_morphism_constructor := function ( cat, source2, underlying_matrix, range2 )
       local add, ring_as_category, unique_object, nr_rows, nr_cols, source, range, matrix_entries, listlist;
         
+        if not IsHomalgMatrix( underlying_matrix ) then
+            
+            Error( "the morphism datum must be a homalg matrix" );
+            
+        fi;
+        
+        if not IsIdenticalObj( HomalgRing( underlying_matrix ), UnderlyingRing( cat ) ) then
+            
+            Error( "the matrix is defined over a different ring than the category" );
+            
+        fi;
+        
+        if NrRows( underlying_matrix ) <> modeling_tower_object_datum( cat, source2 ) then
+            
+            Error( "the number of rows has to be equal to the rank of the source" );
+            
+        fi;
+        
+        if NrColumns( underlying_matrix ) <> modeling_tower_object_datum( cat, range2 ) then
+            
+            Error( "the number of columns has to be equal to the rank of the range" );
+            
+        fi;
+        
         add := ModelingCategory( cat );
         ring_as_category := UnderlyingCategory( add );
         
         unique_object := RingAsCategoryUniqueObject( ring_as_category );
         
-        nr_rows := NrRows( UnderlyingMatrix( morphism ) );
-        nr_cols := NrCols( UnderlyingMatrix( morphism ) );
+        nr_rows := NrRows( underlying_matrix );
+        nr_cols := NrCols( underlying_matrix );
         
-        #% CAP_JIT_DROP_NEXT_STATEMENT
-        Assert( 0, RankOfObject( Source( morphism ) ) = nr_rows );
-        #% CAP_JIT_DROP_NEXT_STATEMENT
-        Assert( 0, RankOfObject( Range( morphism ) ) = nr_cols );
-        
+        # We construct source and range explicitly because otherwise the compiler is missing the information that
+        # Length( ObjectList( source ) ) = NrRows( underlying_matrix ).
         source := AdditiveClosureObject( add, ListWithIdenticalEntries( nr_rows, unique_object ) );
         range := AdditiveClosureObject( add, ListWithIdenticalEntries( nr_cols, unique_object ) );
         
-        matrix_entries := EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( morphism ) );
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        Assert( 0, IsEqualForObjects( source, source2 ) );
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        Assert( 0, IsEqualForObjects( range, range2 ) );
+        
+        matrix_entries := EntriesOfHomalgMatrixAsListList( underlying_matrix );
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         Assert( 0, Length( matrix_entries ) = nr_rows );
@@ -92,6 +157,25 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
         Assert( 0, ForAll( listlist, row -> Length( row ) = Length( ObjectList( range ) ) ) );
         
         return AdditiveClosureMorphism( add, source, listlist, range );
+        
+    end;
+    
+    morphism_datum := function ( cat, morphism )
+        
+        return UnderlyingMatrix( morphism );
+        
+    end;
+    
+    modeling_tower_morphism_datum := function ( cat, morphism )
+      local matrix_entries;
+        
+        matrix_entries := List( MorphismMatrix( morphism ),
+            row -> List( row,
+                c -> UnderlyingRingElement( c )
+            )
+        );
+        
+        return HomalgMatrixListList( matrix_entries, NrRows( morphism ), NrCols( morphism ), UnderlyingRing( cat ) );
         
     end;
     
@@ -114,13 +198,12 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
         object_datum := object_datum,
         morphism_constructor := morphism_constructor,
         morphism_datum := morphism_datum,
-        # TODO: use new system
-        modeling_tower_object_constructor := { cat, obj } -> obj,
-        modeling_tower_object_datum := { cat, obj } -> obj,
-        modeling_tower_morphism_constructor := { cat, source, mor, range } -> mor,
-        modeling_tower_morphism_datum := { cat, mor } -> mor,
+        modeling_tower_object_constructor := modeling_tower_object_constructor,
+        modeling_tower_object_datum := modeling_tower_object_datum,
+        modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
+        modeling_tower_morphism_datum := modeling_tower_morphism_datum,
         only_primitive_operations := true,
-        wrap_range_of_hom_structure := IsIdenticalObj( add, RangeCategoryOfHomomorphismStructure( add ) ),
+        wrap_range_of_hom_structure := HasRangeCategoryOfHomomorphismStructure( add ) and IsIdenticalObj( add, RangeCategoryOfHomomorphismStructure( add ) ),
     ) : FinalizeCategory := false );
     
     SetUnderlyingRing( wrapper, homalg_ring );
@@ -128,6 +211,7 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
     wrapper!.compiler_hints.category_attribute_names := [
         "UnderlyingRing",
     ];
+    
     wrapper!.compiler_hints.source_and_range_attributes_from_morphism_attribute := rec(
         object_attribute_name := "RankOfObject",
         morphism_attribute_name := "UnderlyingMatrix",
@@ -170,17 +254,6 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
     end );
     
     ##
-    AddDirectSum( wrapper,
-      function( cat, object_list )
-        local rank;
-        
-        rank := Sum( List( object_list, object -> RankOfObject( object ) ) );
-        
-        return CategoryOfRowsObject( cat, rank );
-        
-    end );
-    
-    ##
     AddIsLiftable( wrapper,
       function( cat, alpha, beta )
         
@@ -188,6 +261,7 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
         
     end );
     
+    ##
     AddLift( wrapper,
       function( cat, alpha, beta )
         local right_divide;
@@ -216,75 +290,6 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
         return CategoryOfRowsMorphism( cat, Range( alpha ), left_divide, Range( beta ) );
         
     end );
-    
-    ##
-    if HasIsCommutative( homalg_ring ) and IsCommutative( homalg_ring ) then
-        
-        ## Operations related to homomorphism structure
-        
-        Assert( 0, IsCategoryOfRows( RangeCategoryOfHomomorphismStructure( wrapper ) ) );
-        
-        ##
-        AddHomomorphismStructureOnObjects( wrapper,
-          function( cat, object_1, object_2 )
-            
-            return CategoryOfRowsObject( RangeCategoryOfHomomorphismStructure( cat ), RankOfObject( object_1 ) * RankOfObject( object_2 ) );
-            
-        end );
-        
-        ##
-        AddHomomorphismStructureOnMorphismsWithGivenObjects( wrapper,
-          function( cat, source, alpha, beta, range )
-            
-            return CategoryOfRowsMorphism( RangeCategoryOfHomomorphismStructure( cat ), source,
-                                           KroneckerMat( TransposedMatrix( UnderlyingMatrix( alpha ) ), UnderlyingMatrix( beta ) ),
-                                           range );
-            
-        end );
-        
-        ##
-        AddDistinguishedObjectOfHomomorphismStructure( wrapper,
-          function( cat )
-            
-            return CategoryOfRowsObject( RangeCategoryOfHomomorphismStructure( cat ), 1 );
-            
-        end );
-        
-        ##
-        AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( wrapper,
-          function( cat, distinguished_object, alpha, r )
-            local underlying_matrix;
-            
-            underlying_matrix := UnderlyingMatrix( alpha );
-            
-            underlying_matrix := ConvertMatrixToRow( underlying_matrix );
-            
-            return CategoryOfRowsMorphism( RangeCategoryOfHomomorphismStructure( cat ),
-                     distinguished_object,
-                     underlying_matrix,
-                     r
-                   );
-            
-        end );
-        
-        ##
-        AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( wrapper,
-          function( cat, A, B, morphism )
-            local nr_rows, nr_columns, underlying_matrix;
-            
-            nr_rows := RankOfObject( A );
-            
-            nr_columns := RankOfObject( B );
-            
-            underlying_matrix := UnderlyingMatrix( morphism );
-            
-            underlying_matrix := ConvertRowToMatrix( underlying_matrix, nr_rows, nr_columns );
-            
-            return CategoryOfRowsMorphism( cat, A, underlying_matrix, B );
-            
-        end );
-        
-    fi;
     
     Finalize( wrapper );
     

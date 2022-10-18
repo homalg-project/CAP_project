@@ -3,7 +3,7 @@
 #
 # Implementations
 #
-BindGlobal( "ADD_FUNCTIONS_FOR_CategoryOfColumnsAsOppositeOfCategoryOfRowsOfFieldPrecompiled", function ( cat )
+BindGlobal( "ADD_FUNCTIONS_FOR_CategoryOfColumnsAsOppositeOfCategoryOfRowsOfHomalgExteriorRingOverFieldPrecompiled", function ( cat )
     
     ##
     AddAdditionForMorphisms( cat,
@@ -22,184 +22,6 @@ end
 ########
 function ( cat_1, a_1 )
     return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), UnderlyingMatrix, - UnderlyingMatrix( a_1 ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddBasisOfExternalHom( cat,
-        
-########
-function ( cat_1, arg2_1, arg3_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1, deduped_4_1, deduped_5_1, deduped_6_1;
-    deduped_6_1 := RankOfObject( arg2_1 );
-    deduped_5_1 := RankOfObject( arg3_1 );
-    deduped_4_1 := deduped_5_1 * deduped_6_1;
-    hoisted_3_1 := deduped_6_1;
-    hoisted_2_1 := deduped_5_1;
-    hoisted_1_1 := HomalgIdentityMatrix( deduped_4_1, UnderlyingRing( cat_1 ) );
-    return List( [ 1 .. deduped_4_1 ], function ( logic_new_func_x_2 )
-            return CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg3_1, UnderlyingMatrix, ConvertRowToMatrix( CertainRows( hoisted_1_1, [ logic_new_func_x_2 ] ), hoisted_2_1, hoisted_3_1 ) );
-        end );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddBraidingInverseWithGivenTensorProducts( cat,
-        
-########
-function ( cat_1, s_1, a_1, b_1, r_1 )
-    local hoisted_1_1, hoisted_2_1, deduped_3_1;
-    deduped_3_1 := RankOfObject( s_1 );
-    hoisted_2_1 := RankOfObject( a_1 );
-    hoisted_1_1 := RankOfObject( b_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_3_1 ], function ( i_2 )
-                    local deduped_1_2;
-                    deduped_1_2 := i_2 - 1;
-                    return REM_INT( deduped_1_2, hoisted_1_1 ) * hoisted_2_1 + QUO_INT( deduped_1_2, hoisted_1_1 ) + 1;
-                end ) ), deduped_3_1 ), deduped_3_1, deduped_3_1, UnderlyingRing( cat_1 ) ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddBraidingWithGivenTensorProducts( cat,
-        
-########
-function ( cat_1, s_1, a_1, b_1, r_1 )
-    local hoisted_1_1, hoisted_2_1, deduped_3_1;
-    deduped_3_1 := RankOfObject( s_1 );
-    hoisted_2_1 := RankOfObject( a_1 );
-    hoisted_1_1 := RankOfObject( b_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_3_1 ], function ( i_2 )
-                      local deduped_1_2;
-                      deduped_1_2 := (i_2 - 1);
-                      return (REM_INT( deduped_1_2, hoisted_1_1 ) * hoisted_2_1 + QUO_INT( deduped_1_2, hoisted_1_1 ) + 1);
-                  end ) ) ^ -1, deduped_3_1 ), deduped_3_1, deduped_3_1, UnderlyingRing( cat_1 ) ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddCoDualOnMorphismsWithGivenCoDuals( cat,
-        
-########
-function ( cat_1, s_1, alpha_1, r_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, TransposedMatrix( UnderlyingMatrix( alpha_1 ) ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddCoDualOnObjects( cat,
-        
-########
-function ( cat_1, a_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, RankOfObject( a_1 ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddCoclosedCoevaluationForCoDualWithGivenTensorProduct( cat,
-        
-########
-function ( cat_1, s_1, a_1, r_1 )
-    local deduped_1_1, deduped_2_1;
-    deduped_2_1 := UnderlyingRing( cat_1 );
-    deduped_1_1 := RankOfObject( a_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, function (  )
-              if deduped_1_1 = 0 then
-                  return HomalgZeroMatrix( RankOfObject( r_1 ), RankOfObject( s_1 ), deduped_2_1 );
-              else
-                  return ConvertMatrixToRow( HomalgIdentityMatrix( deduped_1_1, deduped_2_1 ) );
-              fi;
-              return;
-          end(  ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddCoclosedEvaluationForCoDualWithGivenTensorProduct( cat,
-        
-########
-function ( cat_1, s_1, a_1, r_1 )
-    local deduped_1_1, deduped_2_1;
-    deduped_2_1 := UnderlyingRing( cat_1 );
-    deduped_1_1 := RankOfObject( a_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, function (  )
-              if deduped_1_1 = 0 then
-                  return HomalgZeroMatrix( RankOfObject( r_1 ), RankOfObject( s_1 ), deduped_2_1 );
-              else
-                  return ConvertMatrixToColumn( HomalgIdentityMatrix( deduped_1_1, deduped_2_1 ) );
-              fi;
-              return;
-          end(  ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( cat,
-        
-########
-function ( cat_1, arg2_1, arg3_1 )
-    return EntriesOfHomalgMatrix( UnderlyingMatrix( arg2_1 ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddCoevaluationForDualWithGivenTensorProduct( cat,
-        
-########
-function ( cat_1, s_1, a_1, r_1 )
-    local deduped_1_1, deduped_2_1;
-    deduped_2_1 := UnderlyingRing( cat_1 );
-    deduped_1_1 := RankOfObject( a_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, function (  )
-              if deduped_1_1 = 0 then
-                  return HomalgZeroMatrix( RankOfObject( r_1 ), RankOfObject( s_1 ), deduped_2_1 );
-              else
-                  return ConvertMatrixToColumn( HomalgIdentityMatrix( deduped_1_1, deduped_2_1 ) );
-              fi;
-              return;
-          end(  ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddCokernelObject( cat,
-        
-########
-function ( cat_1, arg2_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, RankOfObject( Range( arg2_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( arg2_1 ) ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddCokernelProjection( cat,
-        
-########
-function ( cat_1, alpha_1 )
-    local morphism_attr_1_1;
-    morphism_attr_1_1 := SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Range( alpha_1 ), CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
@@ -286,54 +108,20 @@ end
     , 100 );
     
     ##
-    AddDualOnMorphismsWithGivenDuals( cat,
-        
-########
-function ( cat_1, s_1, alpha_1, r_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, TransposedMatrix( UnderlyingMatrix( alpha_1 ) ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddDualOnObjects( cat,
-        
-########
-function ( cat_1, a_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, RankOfObject( a_1 ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddEvaluationForDualWithGivenTensorProduct( cat,
-        
-########
-function ( cat_1, s_1, a_1, r_1 )
-    local deduped_1_1, deduped_2_1;
-    deduped_2_1 := UnderlyingRing( cat_1 );
-    deduped_1_1 := RankOfObject( a_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, function (  )
-              if deduped_1_1 = 0 then
-                  return HomalgZeroMatrix( RankOfObject( r_1 ), RankOfObject( s_1 ), deduped_2_1 );
-              else
-                  return ConvertMatrixToRow( HomalgIdentityMatrix( deduped_1_1, deduped_2_1 ) );
-              fi;
-              return;
-          end(  ) );
-end
-########
-        
-    , 100 );
-    
-    ##
     AddHomomorphismStructureOnMorphismsWithGivenObjects( cat,
         
 ########
 function ( cat_1, source_1, alpha_1, beta_1, range_1 )
-    return CreateCapCategoryMorphismWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), source_1, range_1, UnderlyingMatrix, KroneckerMat( TransposedMatrix( UnderlyingMatrix( beta_1 ) ), UnderlyingMatrix( alpha_1 ) ) );
+    local hoisted_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1;
+    deduped_6_1 := UnderlyingMatrix( alpha_1 );
+    deduped_5_1 := ColumnVectorOfGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( cat_1 );
+    deduped_4_1 := UnderlyingMatrix( beta_1 );
+    deduped_3_1 := UnderlyingRing( cat_1 );
+    deduped_2_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
+    hoisted_1_1 := deduped_3_1;
+    return CreateCapCategoryMorphismWithAttributes( deduped_2_1, source_1, range_1, UnderlyingMatrix, CoercedMatrix( deduped_3_1, UnderlyingRing( deduped_2_1 ), CoefficientsWithGivenMonomials( KroneckerMat( TransposedMatrix( deduped_4_1 ), DualKroneckerMat( UnionOfRows( deduped_3_1, NumberColumns( deduped_5_1 ), List( GeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( cat_1 ), function ( generator_2 )
+                        return COMPILATION_HELPER_HomalgMatrixFromRingElement( generator_2, hoisted_1_1 );
+                    end ) ), deduped_6_1 ) ), DiagMat( deduped_3_1, ListWithIdenticalEntries( NumberRows( deduped_4_1 ), DiagMat( deduped_3_1, ListWithIdenticalEntries( NumberColumns( deduped_6_1 ), deduped_5_1 ) ) ) ) ) ) );
 end
 ########
         
@@ -344,7 +132,7 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, RankOfObject( arg3_1 ) * RankOfObject( arg2_1 ) );
+    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, Sum( ListWithIdenticalEntries( RankOfObject( arg3_1 ) * RankOfObject( arg2_1 ), Length( GeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( cat_1 ) ) ) ) );
 end
 ########
         
@@ -379,7 +167,11 @@ end
         
 ########
 function ( cat_1, source_1, alpha_1, range_1 )
-    return CreateCapCategoryMorphismWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), source_1, range_1, UnderlyingMatrix, ConvertMatrixToRow( UnderlyingMatrix( alpha_1 ) ) );
+    local deduped_1_1, deduped_2_1, deduped_3_1;
+    deduped_3_1 := UnderlyingMatrix( alpha_1 );
+    deduped_2_1 := UnderlyingRing( cat_1 );
+    deduped_1_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
+    return CreateCapCategoryMorphismWithAttributes( deduped_1_1, source_1, range_1, UnderlyingMatrix, CoercedMatrix( deduped_2_1, UnderlyingRing( deduped_1_1 ), CoefficientsWithGivenMonomials( ConvertMatrixToRow( deduped_3_1 ), DiagMat( deduped_2_1, ListWithIdenticalEntries( NumberRows( deduped_3_1 ), DiagMat( deduped_2_1, ListWithIdenticalEntries( NumberColumns( deduped_3_1 ), ColumnVectorOfGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( cat_1 ) ) ) ) ) ) ) );
 end
 ########
         
@@ -390,7 +182,32 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1, arg4_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg3_1, UnderlyingMatrix, ConvertRowToMatrix( UnderlyingMatrix( arg4_1 ), RankOfObject( arg3_1 ), RankOfObject( arg2_1 ) ) );
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, deduped_8_1, deduped_9_1, deduped_10_1;
+    deduped_10_1 := RankOfObject( arg2_1 );
+    deduped_9_1 := RankOfObject( arg3_1 );
+    deduped_8_1 := [ 1 .. deduped_9_1 ];
+    hoisted_7_1 := ColumnVectorOfGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( cat_1 );
+    hoisted_6_1 := RingInclusionForHomomorphismStructure( cat_1 );
+    hoisted_4_1 := [ 1 .. deduped_10_1 ];
+    hoisted_3_1 := UnderlyingMatrix( arg4_1 );
+    hoisted_2_1 := Length( GeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( cat_1 ) );
+    hoisted_1_1 := deduped_10_1;
+    hoisted_5_1 := List( deduped_8_1, function ( logic_new_func_x_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := hoisted_1_1 * (logic_new_func_x_2 - 1);
+            return List( hoisted_4_1, function ( logic_new_func_x_3 )
+                    local deduped_1_3;
+                    deduped_1_3 := Sum( ListWithIdenticalEntries( hoisted_1_2 + logic_new_func_x_3 - 1, hoisted_2_1 ) ) + 1;
+                    return CertainColumns( hoisted_3_1, [ deduped_1_3 .. deduped_1_3 - 1 + hoisted_2_1 ] );
+                end );
+        end );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg3_1, UnderlyingMatrix, HomalgMatrixListList( List( deduped_8_1, function ( logic_new_func_x_2 )
+                local hoisted_1_2;
+                hoisted_1_2 := hoisted_5_1[logic_new_func_x_2];
+                return List( hoisted_4_1, function ( logic_new_func_x_3 )
+                        return EntriesOfHomalgMatrix( Pullback( hoisted_6_1, hoisted_1_2[logic_new_func_x_3] ) * hoisted_7_1 )[1];
+                    end );
+            end ), deduped_9_1, deduped_10_1, UnderlyingRing( cat_1 ) ) );
 end
 ########
         
@@ -510,30 +327,6 @@ end
     , 100 );
     
     ##
-    AddKernelEmbedding( cat,
-        
-########
-function ( cat_1, alpha_1 )
-    local morphism_attr_1_1;
-    morphism_attr_1_1 := SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), Source( alpha_1 ), UnderlyingMatrix, morphism_attr_1_1 );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddKernelObject( cat,
-        
-########
-function ( cat_1, arg2_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, RankOfObject( Source( arg2_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( arg2_1 ) ) );
-end
-########
-        
-    , 100 );
-    
-    ##
     AddLift( cat,
         
 ########
@@ -561,39 +354,6 @@ end
 ########
 function ( cat_1, arg2_1 )
     return UnderlyingMatrix( arg2_1 );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddMorphismFromCoBidualWithGivenCoBidual( cat,
-        
-########
-function ( cat_1, a_1, s_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, a_1, UnderlyingMatrix, HomalgIdentityMatrix( RankOfObject( a_1 ), UnderlyingRing( cat_1 ) ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddMorphismToBidualWithGivenBidual( cat,
-        
-########
-function ( cat_1, a_1, r_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, r_1, UnderlyingMatrix, HomalgIdentityMatrix( RankOfObject( a_1 ), UnderlyingRing( cat_1 ) ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddMultiplyWithElementOfCommutativeRingForMorphisms( cat,
-        
-########
-function ( cat_1, r_1, a_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), UnderlyingMatrix, r_1 * UnderlyingMatrix( a_1 ) );
 end
 ########
         
@@ -848,39 +608,6 @@ end
     , 100 );
     
     ##
-    AddTensorProductOnMorphismsWithGivenTensorProducts( cat,
-        
-########
-function ( cat_1, s_1, alpha_1, beta_1, r_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, KroneckerMat( UnderlyingMatrix( alpha_1 ), UnderlyingMatrix( beta_1 ) ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddTensorProductOnObjects( cat,
-        
-########
-function ( cat_1, arg2_1, arg3_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, RankOfObject( arg2_1 ) * RankOfObject( arg3_1 ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddTensorUnit( cat,
-        
-########
-function ( cat_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, 1 );
-end
-########
-        
-    , 100 );
-    
-    ##
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( cat,
         
 ########
@@ -978,7 +705,7 @@ end
     
 end );
 
-BindGlobal( "CategoryOfColumnsAsOppositeOfCategoryOfRowsOfFieldPrecompiled", function ( homalg_ring )
+BindGlobal( "CategoryOfColumnsAsOppositeOfCategoryOfRowsOfHomalgExteriorRingOverFieldPrecompiled", function ( homalg_ring )
   local category_constructor, cat;
     
     category_constructor :=
@@ -992,7 +719,7 @@ end;
     
     cat := category_constructor( homalg_ring : FinalizeCategory := false, no_precompiled_code := true );
     
-    ADD_FUNCTIONS_FOR_CategoryOfColumnsAsOppositeOfCategoryOfRowsOfFieldPrecompiled( cat );
+    ADD_FUNCTIONS_FOR_CategoryOfColumnsAsOppositeOfCategoryOfRowsOfHomalgExteriorRingOverFieldPrecompiled( cat );
     
     Finalize( cat );
     

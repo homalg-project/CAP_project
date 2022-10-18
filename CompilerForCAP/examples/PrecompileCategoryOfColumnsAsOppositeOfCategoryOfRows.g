@@ -9,7 +9,8 @@ LoadPackage( "FreydCategoriesForCAP", false );
 
 QQ := HomalgFieldOfRationalsInSingular( );;
 QQxy := QQ * "x,y";;
-EEE := KoszulDualRing( QQxy * "a,b" );;
+EQQxy := KoszulDualRing( QQxy );;
+R := KoszulDualRing( HomalgRingOfIntegersInSingular( ) * "x,y" );;
 
 precompile_CategoryOfColumns := function( homalg_ring, name )
     
@@ -33,6 +34,7 @@ precompile_CategoryOfColumns := function( homalg_ring, name )
 
 precompile_CategoryOfColumns( QQ, "Field" );;
 precompile_CategoryOfColumns( QQxy, "CommutativeRing" );;
-precompile_CategoryOfColumns( EEE, "ArbitraryRing" );;
+precompile_CategoryOfColumns( EQQxy, "HomalgExteriorRingOverField" );;
+precompile_CategoryOfColumns( R, "ArbitraryRing" );;
 
 #! @EndExample
