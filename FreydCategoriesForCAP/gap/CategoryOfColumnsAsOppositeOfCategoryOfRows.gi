@@ -17,7 +17,7 @@ InstallMethod( CategoryOfColumnsAsOppositeOfCategoryOfRows,
   function( homalg_ring )
     local rows, op, object_constructor, modeling_tower_object_constructor, object_datum, modeling_tower_object_datum, morphism_constructor, modeling_tower_morphism_datum, morphism_datum, modeling_tower_morphism_constructor, category_object_filter, wrapper;
     
-    rows := CategoryOfRows( homalg_ring : FinalizeCategory := true );
+    rows := CategoryOfRows( homalg_ring : FinalizeCategory := true, no_precompiled_code := false ); # we do not want to recompile CategoryOfRows
     
     op := Opposite( rows : only_primitive_operations := true, FinalizeCategory := true );
     
@@ -137,6 +137,18 @@ InstallMethod( CategoryOfColumnsAsOppositeOfCategoryOfRows,
         source_attribute_getter_name := "NumberColumns",
         range_attribute_getter_name := "NumberRows",
     );
+    
+    if HasIsExteriorRing( homalg_ring ) and IsExteriorRing( homalg_ring ) and IsField( BaseRing( homalg_ring ) ) then
+        
+        SetGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( wrapper, GeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( rows ) );
+        SetColumnVectorOfGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( wrapper, ColumnVectorOfGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( rows ) );
+        SetRingInclusionForHomomorphismStructure( wrapper, RingInclusionForHomomorphismStructure( rows ) );
+        
+        Add( wrapper!.compiler_hints.category_attribute_names, "GeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure" );
+        Add( wrapper!.compiler_hints.category_attribute_names, "ColumnVectorOfGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure" );
+        Add( wrapper!.compiler_hints.category_attribute_names, "RingInclusionForHomomorphismStructure" );
+        
+    fi;
     
     INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_CATEGORY_OF_ROWS( wrapper );
     

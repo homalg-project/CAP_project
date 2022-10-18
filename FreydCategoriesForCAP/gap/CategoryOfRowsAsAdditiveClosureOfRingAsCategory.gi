@@ -203,7 +203,7 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
         modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
         modeling_tower_morphism_datum := modeling_tower_morphism_datum,
         only_primitive_operations := true,
-        wrap_range_of_hom_structure := IsIdenticalObj( add, RangeCategoryOfHomomorphismStructure( add ) ),
+        wrap_range_of_hom_structure := HasRangeCategoryOfHomomorphismStructure( add ) and IsIdenticalObj( add, RangeCategoryOfHomomorphismStructure( add ) ),
     ) : FinalizeCategory := false );
     
     SetUnderlyingRing( wrapper, homalg_ring );
@@ -211,6 +211,7 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
     wrapper!.compiler_hints.category_attribute_names := [
         "UnderlyingRing",
     ];
+    
     wrapper!.compiler_hints.source_and_range_attributes_from_morphism_attribute := rec(
         object_attribute_name := "RankOfObject",
         morphism_attribute_name := "UnderlyingMatrix",
@@ -253,17 +254,6 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
     end );
     
     ##
-    AddDirectSum( wrapper,
-      function( cat, object_list )
-        local rank;
-        
-        rank := Sum( List( object_list, object -> RankOfObject( object ) ) );
-        
-        return CategoryOfRowsObject( cat, rank );
-        
-    end );
-    
-    ##
     AddIsLiftable( wrapper,
       function( cat, alpha, beta )
         
@@ -271,6 +261,7 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
         
     end );
     
+    ##
     AddLift( wrapper,
       function( cat, alpha, beta )
         local right_divide;
@@ -299,75 +290,6 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
         return CategoryOfRowsMorphism( cat, Range( alpha ), left_divide, Range( beta ) );
         
     end );
-    
-    ##
-    if HasIsCommutative( homalg_ring ) and IsCommutative( homalg_ring ) then
-        
-        ## Operations related to homomorphism structure
-        
-        Assert( 0, IsCategoryOfRows( RangeCategoryOfHomomorphismStructure( wrapper ) ) );
-        
-        ##
-        AddHomomorphismStructureOnObjects( wrapper,
-          function( cat, object_1, object_2 )
-            
-            return CategoryOfRowsObject( RangeCategoryOfHomomorphismStructure( cat ), RankOfObject( object_1 ) * RankOfObject( object_2 ) );
-            
-        end );
-        
-        ##
-        AddHomomorphismStructureOnMorphismsWithGivenObjects( wrapper,
-          function( cat, source, alpha, beta, range )
-            
-            return CategoryOfRowsMorphism( RangeCategoryOfHomomorphismStructure( cat ), source,
-                                           KroneckerMat( TransposedMatrix( UnderlyingMatrix( alpha ) ), UnderlyingMatrix( beta ) ),
-                                           range );
-            
-        end );
-        
-        ##
-        AddDistinguishedObjectOfHomomorphismStructure( wrapper,
-          function( cat )
-            
-            return CategoryOfRowsObject( RangeCategoryOfHomomorphismStructure( cat ), 1 );
-            
-        end );
-        
-        ##
-        AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( wrapper,
-          function( cat, distinguished_object, alpha, r )
-            local underlying_matrix;
-            
-            underlying_matrix := UnderlyingMatrix( alpha );
-            
-            underlying_matrix := ConvertMatrixToRow( underlying_matrix );
-            
-            return CategoryOfRowsMorphism( RangeCategoryOfHomomorphismStructure( cat ),
-                     distinguished_object,
-                     underlying_matrix,
-                     r
-                   );
-            
-        end );
-        
-        ##
-        AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( wrapper,
-          function( cat, A, B, morphism )
-            local nr_rows, nr_columns, underlying_matrix;
-            
-            nr_rows := RankOfObject( A );
-            
-            nr_columns := RankOfObject( B );
-            
-            underlying_matrix := UnderlyingMatrix( morphism );
-            
-            underlying_matrix := ConvertRowToMatrix( underlying_matrix, nr_rows, nr_columns );
-            
-            return CategoryOfRowsMorphism( cat, A, underlying_matrix, B );
-            
-        end );
-        
-    fi;
     
     Finalize( wrapper );
     

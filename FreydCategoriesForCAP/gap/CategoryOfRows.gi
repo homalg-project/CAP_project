@@ -5,7 +5,10 @@
 #
 
 # read precompiled categories
+ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CategoryOfRowsAsAdditiveClosureOfRingAsCategoryOfFieldPrecompiled.gi" );
+ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CategoryOfRowsAsAdditiveClosureOfRingAsCategoryOfCommutativeRingPrecompiled.gi" );
 ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CategoryOfRowsAsAdditiveClosureOfRingAsCategoryOfHomalgExteriorRingOverFieldPrecompiled.gi" );
+ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CategoryOfRowsAsAdditiveClosureOfRingAsCategoryOfArbitraryRingPrecompiled.gi" );
 
 ####################################
 ##
@@ -18,105 +21,55 @@ InstallMethod( CategoryOfRows,
                [ IsHomalgRing ],
                
   function( homalg_ring )
-    local category, wrapper;
+    local cat;
     
-    # We cannot simply return `CategoryOfRowsAsAdditiveClosureOfRingAsCategory( homalg_ring )` but have to construct the category manually
-    # because `RingAsCategory` uses `CategoryOfRows` as the range category of the homomorphism structure, so this would lead
-    # to an infinite recursion.
-    
-    category := CreateCapCategory( Concatenation( "Rows( ", RingName( homalg_ring )," )" ) );
-    
-    category!.category_as_first_argument := true;
-    
-    category!.supports_empty_limits := true;
-    
-    category!.compiler_hints := rec(
-        category_attribute_names := [
-            "UnderlyingRing",
-        ],
-        source_and_range_attributes_from_morphism_attribute := rec(
-            object_attribute_name := "RankOfObject",
-            morphism_attribute_name := "UnderlyingMatrix",
-            source_attribute_getter_name := "NumberRows",
-            range_attribute_getter_name := "NumberColumns",
-        ),
-        category_filter := IsCategoryOfRows,
-        object_filter := IsCategoryOfRowsObject,
-        morphism_filter := IsCategoryOfRowsMorphism,
-    );
+    cat := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( homalg_ring : FinalizeCategory := false );
     
     # this cache replaces the KeyDependentOperation caching when using ObjectConstructor directly instead of CategoryOfRowsObject
-    SetCachingToWeak( category, "ObjectConstructor" );
-    
-    SetFilterObj( category, IsCategoryOfRows );
-    
-    if HasHasInvariantBasisProperty( homalg_ring ) and HasInvariantBasisProperty( homalg_ring ) then
-        SetIsSkeletalCategory( category, true );
-    fi;
-    
-    SetIsAdditiveCategory( category, true );
-    
-    SetUnderlyingRing( category, homalg_ring );
-    
-    if HasIsCommutative( homalg_ring ) and IsCommutative( homalg_ring ) then
-
-      SetIsStrictMonoidalCategory( category, true );
-
-      SetIsRigidSymmetricClosedMonoidalCategory( category, true );
-
-      SetIsRigidSymmetricCoclosedMonoidalCategory( category, true );
-      
-      SetIsLinearCategoryOverCommutativeRing( category, true );
-      
-      SetCommutativeRingOfLinearCategory( category, homalg_ring );
-      
-    fi;
-    
-    if HasIsFieldForHomalg( homalg_ring ) and IsFieldForHomalg( homalg_ring ) then
-        
-        AddObjectRepresentation( category, IsCategoryOfRowsObject and HasIsProjective and IsProjective );
-        
-        SetIsAbelianCategory( category, true );
-        
-    else
-        
-        AddObjectRepresentation( category, IsCategoryOfRowsObject );
-        
-    fi;
-    
-    AddMorphismRepresentation( category, IsCategoryOfRowsMorphism and HasUnderlyingMatrix );
+    SetCachingToWeak( cat, "ObjectConstructor" );
     
     if ValueOption( "no_precompiled_code" ) <> true then
         
-        # add precompiled homomorphism structure for exterior rings over fields
-        if HasIsExteriorRing( homalg_ring ) and IsExteriorRing( homalg_ring ) and IsField( BaseRing( homalg_ring ) ) then
+        if HasIsFieldForHomalg( homalg_ring ) and IsFieldForHomalg( homalg_ring ) then
             
-            # This does not lead to an infinite recursion because in this case the range category of the homomorphism structure
-            # of the ring as category is `CategoryOfRows( BaseRing( homalg_ring ) )`.
-            # However, we must not use `wrapper` directly because we overwrite object and morphism constructors below.
-            wrapper := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( homalg_ring );
+            ADD_FUNCTIONS_FOR_CategoryOfRowsAsAdditiveClosureOfRingAsCategoryOfFieldPrecompiled( cat );
             
-            # set the required attributes
-            SetRangeCategoryOfHomomorphismStructure( category, RangeCategoryOfHomomorphismStructure( wrapper ) );
-            SetGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( category, GeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( wrapper ) );
-            SetColumnVectorOfGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( category, ColumnVectorOfGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( wrapper ) );
-            SetRingInclusionForHomomorphismStructure( category, RingInclusionForHomomorphismStructure( wrapper ) );
+        elif HasIsCommutative( homalg_ring ) and IsCommutative( homalg_ring ) then
             
-            Add( category!.compiler_hints.category_attribute_names, "GeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure" );
-            Add( category!.compiler_hints.category_attribute_names, "ColumnVectorOfGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure" );
-            Add( category!.compiler_hints.category_attribute_names, "RingInclusionForHomomorphismStructure" );
+            ADD_FUNCTIONS_FOR_CategoryOfRowsAsAdditiveClosureOfRingAsCategoryOfCommutativeRingPrecompiled( cat );
             
-            ADD_FUNCTIONS_FOR_CategoryOfRowsAsAdditiveClosureOfRingAsCategoryOfHomalgExteriorRingOverFieldPrecompiled( category );
+        elif HasIsExteriorRing( homalg_ring ) and IsExteriorRing( homalg_ring ) and IsField( BaseRing( homalg_ring ) ) then
+            
+            ADD_FUNCTIONS_FOR_CategoryOfRowsAsAdditiveClosureOfRingAsCategoryOfHomalgExteriorRingOverFieldPrecompiled( cat );
+            
+        else
+            
+            ADD_FUNCTIONS_FOR_CategoryOfRowsAsAdditiveClosureOfRingAsCategoryOfArbitraryRingPrecompiled( cat );
             
         fi;
         
     fi;
     
-    INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS( category );
+    # the folowing properties are not (yet) handled by AdditiveClosure
+    if HasIsCommutative( homalg_ring ) and IsCommutative( homalg_ring ) then
+        
+        SetIsStrictMonoidalCategory( cat, true );
+        
+        SetIsRigidSymmetricClosedMonoidalCategory( cat, true );
+        
+        SetIsRigidSymmetricCoclosedMonoidalCategory( cat, true );
+        
+        SetIsLinearCategoryOverCommutativeRing( cat, true );
+        
+        SetCommutativeRingOfLinearCategory( cat, homalg_ring );
+        
+    fi;
     
-    Finalize( category );
+    INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS( cat );
     
-    return category;
+    Finalize( cat );
+    
+    return cat;
     
 end );
 
@@ -349,74 +302,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     is_defined_over_field := HasIsFieldForHomalg( ring ) and IsFieldForHomalg( ring );
     
-    ## constructors
-    ##
-    AddObjectConstructor( category,
-      function( cat, rank )
-        
-        if not IsInt( rank ) or rank < 0 then
-            
-            Error( "the object datum must be a non-negative integer" );
-            
-        fi;
-        
-        return ObjectifyObjectForCAPWithAttributes( rec( ), cat,
-                                                    RankOfObject, rank );
-        
-    end );
-    
-    ##
-    AddObjectDatum( category,
-      function( cat, object )
-        
-        return RankOfObject( object );
-        
-    end );
-    
-    ##
-    AddMorphismConstructor( category,
-      function( cat, source, homalg_matrix, range )
-        
-        if not IsHomalgMatrix( homalg_matrix ) then
-            
-            Error( "the morphism datum must be a homalg matrix" );
-            
-        fi;
-        
-        if not IsIdenticalObj( HomalgRing( homalg_matrix ), UnderlyingRing( cat ) ) then
-            
-            Error( "the matrix is defined over a different ring than the category" );
-            
-        fi;
-        
-        if NrRows( homalg_matrix ) <> ObjectDatum( cat, source ) then
-            
-            Error( "the number of rows has to be equal to the rank of the source" );
-            
-        fi;
-        
-        if NrColumns( homalg_matrix ) <> ObjectDatum( cat, range ) then
-            
-            Error( "the number of columns has to be equal to the rank of the range" );
-            
-        fi;
-        
-        return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), cat,
-                                               source,
-                                               range,
-                                               UnderlyingMatrix, homalg_matrix
-        );
-        
-    end );
-    
-    ##
-    AddMorphismDatum( category,
-      function( cat, morphism )
-        
-        return UnderlyingMatrix( morphism );
-        
-    end );
-    
     ## Well-defined for objects and morphisms
     ##
     AddIsWellDefinedForObjects( category,
@@ -459,6 +344,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
       
         return RankOfObject( object_1 ) = RankOfObject( object_2 );
       
+    end );
+    
+    ##
+    AddIsEqualForMorphisms( category,
+      function( cat, morphism_1, morphism_2 )
+        
+        return UnderlyingMatrix( morphism_1 ) = UnderlyingMatrix( morphism_2 );
+        
     end );
     
     ##
@@ -860,70 +753,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
           function( cat, r, alpha )
             
             return CategoryOfRowsMorphism( cat, Source( alpha ), r * UnderlyingMatrix( alpha ), Range( alpha ) );
-            
-        end );
-        
-        ## Operations related to homomorphism structure
-        
-        SetRangeCategoryOfHomomorphismStructure( category, category );
-        
-        ##
-        AddHomomorphismStructureOnObjects( category,
-          function( cat, object_1, object_2 )
-            
-            return CategoryOfRowsObject( cat, RankOfObject( object_1 ) * RankOfObject( object_2 ) );
-            
-        end );
-        
-        ##
-        AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
-          function( cat, source, alpha, beta, range )
-            
-            return CategoryOfRowsMorphism( cat, source,
-                                           KroneckerMat( TransposedMatrix( UnderlyingMatrix( alpha ) ), UnderlyingMatrix( beta ) ),
-                                           range );
-            
-        end );
-        
-        ##
-        AddDistinguishedObjectOfHomomorphismStructure( category,
-          function( cat )
-            
-            return CategoryOfRowsObject( cat, 1 );
-            
-        end );
-        
-        ##
-        AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( category,
-          function( cat, distinguished_object, alpha, r )
-            local underlying_matrix;
-            
-            underlying_matrix := UnderlyingMatrix( alpha );
-            
-            underlying_matrix := ConvertMatrixToRow( underlying_matrix );
-            
-            return CategoryOfRowsMorphism( cat,
-                     distinguished_object,
-                     underlying_matrix,
-                     r
-                   );
-            
-        end );
-        
-        ##
-        AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
-          function( cat, A, B, morphism )
-            local nr_rows, nr_columns, underlying_matrix;
-            
-            nr_rows := RankOfObject( A );
-            
-            nr_columns := RankOfObject( B );
-            
-            underlying_matrix := UnderlyingMatrix( morphism );
-            
-            underlying_matrix := ConvertRowToMatrix( underlying_matrix, nr_rows, nr_columns );
-            
-            return CategoryOfRowsMorphism( cat, A, underlying_matrix, B );
             
         end );
         
