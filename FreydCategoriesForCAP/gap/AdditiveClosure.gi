@@ -569,7 +569,7 @@ end );
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
   
   function( category )
-    local compare_morphisms, underlying_category, range_category;
+    local compare_morphisms, underlying_category, range_category, object_function, morphism_function, object_function_inverse, morphism_function_inverse;
     
     underlying_category := UnderlyingCategory( category );
     
@@ -950,7 +950,75 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     
     if HasRangeCategoryOfHomomorphismStructure( underlying_category ) then
         
-        range_category := RangeCategoryOfHomomorphismStructure( underlying_category );
+        # If the range category of the underlying category is not additive but pre-additive, we first apply AdditiveClosure to it.
+        # See https://arxiv.org/abs/1908.04132 (Sebastian Posur: Methods of constructive category theory), Remark 1.28
+        if not (HasIsAdditiveCategory and IsAdditiveCategory)( RangeCategoryOfHomomorphismStructure( underlying_category ) ) and (HasIsAbCategory and IsAbCategory)( RangeCategoryOfHomomorphismStructure( underlying_category ) ) then
+            
+            if IsIdenticalObj( underlying_category, RangeCategoryOfHomomorphismStructure( underlying_category ) ) then
+                
+                # prevent infinite recursion
+                range_category := category;
+                
+            else
+                
+                range_category := AdditiveClosure( RangeCategoryOfHomomorphismStructure( underlying_category ) );
+                
+            fi;
+            
+            # prepare for ExtendRangeOfHomomorphismStructureByFullEmbedding
+            object_function := function ( category, range_category, object )
+                #% CAP_JIT_RESOLVE_FUNCTION
+                
+                return AdditiveClosureObject( range_category, [ object ] );
+                
+            end;
+            
+            morphism_function := function ( category, range_category, source, morphism, range )
+                #% CAP_JIT_RESOLVE_FUNCTION
+                
+                return AdditiveClosureMorphism( range_category,
+                    source,
+                    [ [ morphism ] ],
+                    range
+                );
+                
+            end;
+            
+            object_function_inverse := function ( category, range_category, object )
+                #% CAP_JIT_RESOLVE_FUNCTION
+                
+                #% CAP_JIT_DROP_NEXT_STATEMENT
+                Assert( 0, Length( ObjectList( object ) ) = 1 );
+                
+                return ObjectList( object )[1];
+                
+            end;
+            
+            morphism_function_inverse := function ( category, range_category, source, morphism, range )
+                #% CAP_JIT_RESOLVE_FUNCTION
+                
+                #% CAP_JIT_DROP_NEXT_STATEMENT
+                Assert( 0, NrRows( morphism ) = 1 and NrCols( morphism ) = 1 );
+                
+                #% CAP_JIT_DROP_NEXT_STATEMENT
+                Assert( 0, IsEqualForObjects( source, Source( morphism[1,1] ) ) );
+                
+                #% CAP_JIT_DROP_NEXT_STATEMENT
+                Assert( 0, IsEqualForObjects( range, Range( morphism[1,1] ) ) );
+                
+                return morphism[1,1];
+                
+            end;
+            
+            ExtendRangeOfHomomorphismStructureByFullEmbedding( underlying_category, range_category, object_function, morphism_function, object_function_inverse, morphism_function_inverse );
+            
+        else
+            
+            range_category := RangeCategoryOfHomomorphismStructure( underlying_category );
+            
+            ExtendRangeOfHomomorphismStructureByIdentityAsFullEmbedding( underlying_category );
+            
+        fi;
         
         SetRangeCategoryOfHomomorphismStructure( category, range_category );
         
@@ -964,7 +1032,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                 return DirectSum( range_category,
                           Concatenation(
                             List( ObjectList( object_1 ), obj_i ->
-                              List( ObjectList( object_2 ), obj_j -> HomomorphismStructureOnObjects( UnderlyingCategory( cat ), obj_i, obj_j ) )
+                              List( ObjectList( object_2 ), obj_j -> HomomorphismStructureOnObjectsExtendedByFullEmbedding( UnderlyingCategory( cat ), range_category, obj_i, obj_j ) )
                             )
                           )
                         );
@@ -1003,7 +1071,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                             MorphismBetweenDirectSums(
                               List( [ 1 .. size_s ], s ->
                                 List( [ 1 .. size_t ], t ->
-                                  HomomorphismStructureOnMorphisms( UnderlyingCategory( cat ), alpha[i, j], beta[s, t] )
+                                  HomomorphismStructureOnMorphismsExtendedByFullEmbedding( UnderlyingCategory( cat ), range_category, alpha[i, j], beta[s, t] )
                                 )
                               )
                             )
@@ -1039,14 +1107,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                 H_B_C :=
                     List( [ 1 .. size_j ], j ->
                         List( [ 1 .. size_s ], s ->
-                            HomomorphismStructureOnObjects( UnderlyingCategory( cat ), B[j], C[s] )
+                            HomomorphismStructureOnObjectsExtendedByFullEmbedding( UnderlyingCategory( cat ), range_category, B[j], C[s] )
                         )
                     );
                 
                 H_A_D :=
                     List( [ 1 .. size_i ], i ->
                         List( [ 1 .. size_t ], t ->
-                            HomomorphismStructureOnObjects( UnderlyingCategory( cat ), A[i], D[t] )
+                            HomomorphismStructureOnObjectsExtendedByFullEmbedding( UnderlyingCategory( cat ), range_category, A[i], D[t] )
                         )
                     );
                 
@@ -1065,7 +1133,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                                 List( [ 1 .. size_s ], s -> H_B_C[j][s] ),
                                 List( [ 1 .. size_s ], s ->
                                     List( [ 1 .. size_t ], t ->
-                                        HomomorphismStructureOnMorphismsWithGivenObjects( UnderlyingCategory( cat ), H_B_C[j][s], alpha[i, j], beta[s, t], H_A_D[i][t] )
+                                        HomomorphismStructureOnMorphismsWithGivenObjectsExtendedByFullEmbedding( UnderlyingCategory( cat ), range_category, H_B_C[j][s], alpha[i, j], beta[s, t], H_A_D[i][t] )
                                     )
                                 ),
                                 List( [ 1 .. size_t ], t -> H_A_D[i][t] ),
@@ -1086,7 +1154,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
             AddDistinguishedObjectOfHomomorphismStructure( category,
               function( cat )
                 
-                return DistinguishedObjectOfHomomorphismStructure( UnderlyingCategory( cat ) );
+                return DistinguishedObjectOfHomomorphismStructureExtendedByFullEmbedding( UnderlyingCategory( cat ), range_category );
                 
             end );
             
@@ -1119,7 +1187,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                         List( [ 1 .. size_i ], i ->
                           UniversalMorphismIntoDirectSum( range_category,
                             List( [ 1 .. size_j ], j ->
-                              InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( UnderlyingCategory( cat ), alpha[i, j] )
+                              InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureExtendedByFullEmbedding( UnderlyingCategory( cat ), range_category, alpha[i, j] )
                             )
                           )
                         )
@@ -1152,7 +1220,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                 H_B_C :=
                     List( [ 1 .. size_j ], j ->
                         List( [ 1 .. size_s ], s ->
-                            HomomorphismStructureOnObjects( UnderlyingCategory( cat ), B[j], C[s] )
+                            HomomorphismStructureOnObjectsExtendedByFullEmbedding( UnderlyingCategory( cat ), range_category, B[j], C[s] )
                         )
                     );
                 
@@ -1167,7 +1235,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                             List( [ 1 .. size_s ], s -> H_B_C[j][s] ),
                             distinguished_object,
                             List( [ 1 .. size_s ], s ->
-                                InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( UnderlyingCategory( cat ), alpha[j, s] )
+                                InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjectsExtendedByFullEmbedding( UnderlyingCategory( cat ), range_category, distinguished_object, alpha[j, s], H_B_C[j][s] )
                             ),
                             direct_sums[j]
                         )
@@ -1202,7 +1270,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                 summands := 
                   Concatenation(
                             List( obj_list_A, obj_i ->
-                                List( obj_list_B, obj_j -> HomomorphismStructureOnObjects( UnderlyingCategory( cat ), obj_i, obj_j ) )
+                                List( obj_list_B, obj_j -> HomomorphismStructureOnObjectsExtendedByFullEmbedding( UnderlyingCategory( cat ), range_category, obj_i, obj_j ) )
                             )
                           );
                 
@@ -1220,7 +1288,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                         A,
                         List( [ 1 .. size_i ], i ->
                           List( [ 1 .. size_j ], j ->
-                            InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UnderlyingCategory( cat ),
+                            InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphismExtendedByFullEmbedding( UnderlyingCategory( cat ), range_category,
                               obj_list_A[i],
                               obj_list_B[j],
                               listlist[i][j]
