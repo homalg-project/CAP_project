@@ -124,7 +124,7 @@ InstallMethod( WrapperCategory,
         [ IsCapCategory, IsRecord ],
         
   function( C, options )
-    local known_options_with_filters, filter, combined_options, category_constructor_options, copy_value_or_default, list_of_operations_to_install, D, modeling_tower_object_constructor, modeling_tower_object_datum, modeling_tower_morphism_constructor, modeling_tower_morphism_datum, operations_of_homomorphism_structure, HC, option_name;
+    local known_options_with_filters, filter, combined_options, category_constructor_options, copy_value_or_default, list_of_operations_to_install, D, modeling_tower_object_constructor, modeling_tower_object_datum, modeling_tower_morphism_constructor, modeling_tower_morphism_datum, operations_of_homomorphism_structure, HC, object_function, morphism_function, object_function_inverse, morphism_function_inverse, option_name;
     
     ## check given options
     known_options_with_filters := rec(
@@ -451,144 +451,116 @@ InstallMethod( WrapperCategory,
                 
             fi;
             
-            SetRangeCategoryOfHomomorphismStructure( D, HC );
+            # prepare for ExtendRangeOfHomomorphismStructureByFullEmbedding
+            object_function := function ( C, HC, object )
+                #% CAP_JIT_RESOLVE_FUNCTION
+                
+                return ModeledObject( HC, object );
+                
+            end;
             
-            if "DistinguishedObjectOfHomomorphismStructure" in list_of_operations_to_install then
-                AddDistinguishedObjectOfHomomorphismStructure( D,
-                  function( cat )
-                    
-                    return ModeledObject( HC, DistinguishedObjectOfHomomorphismStructure( ModelingCategory( cat ) ) );
-                    
-                end );
-            fi;
+            morphism_function := function ( C, HC, source, morphism, range )
+                #% CAP_JIT_RESOLVE_FUNCTION
+                
+                return ModeledMorphism( HC,
+                    source,
+                    morphism,
+                    range
+                );
+                
+            end;
             
-            if "HomomorphismStructureOnObjects" in list_of_operations_to_install then
-                AddHomomorphismStructureOnObjects( D,
-                  function( cat, a, b )
-                    
-                    return ModeledObject( HC, HomomorphismStructureOnObjects( ModelingCategory( cat ), ModelingObject( cat, a ), ModelingObject( cat, b ) ) );
-                    
-                end );
-            fi;
+            object_function_inverse := function ( C, HC, object )
+                #% CAP_JIT_RESOLVE_FUNCTION
+                
+                return ModelingObject( HC, object );
+                
+            end;
             
-            if "HomomorphismStructureOnMorphisms" in list_of_operations_to_install then
-                AddHomomorphismStructureOnMorphisms( D,
-                  function( cat, alpha, beta )
-                    local underlying_result;
-                    
-                    underlying_result := HomomorphismStructureOnMorphisms( ModelingCategory( cat ), ModelingMorphism( cat, alpha ), ModelingMorphism( cat, beta ) );
-                    
-                    return ModeledMorphism( HC, ModeledObject( cat, Source( underlying_result ) ), underlying_result, ModeledObject( cat, Range( underlying_result ) ) );
-                    
-                end );
-            fi;
+            morphism_function_inverse := function ( C, HC, source, morphism, range )
+                #% CAP_JIT_RESOLVE_FUNCTION
+                
+                #% CAP_JIT_DROP_NEXT_STATEMENT
+                Assert( 0, IsEqualForObjects( source, Source( ModelingMorphism( HC, morphism ) ) ) );
+                
+                #% CAP_JIT_DROP_NEXT_STATEMENT
+                Assert( 0, IsEqualForObjects( source, Source( ModelingMorphism( HC, morphism ) ) ) );
+                
+                return ModelingMorphism( HC, morphism );
+                
+            end;
             
-            if "HomomorphismStructureOnMorphismsWithGivenObjects" in list_of_operations_to_install then
-                AddHomomorphismStructureOnMorphismsWithGivenObjects( D,
-                  function( cat, s, alpha, beta, r )
-                    
-                    return ModeledMorphism( HC, s, HomomorphismStructureOnMorphismsWithGivenObjects( ModelingCategory( cat ), ModelingObject( HC, s ), ModelingMorphism( cat, alpha ), ModelingMorphism( cat, beta ), ModelingObject( HC, r ) ), r );
-                    
-                end );
-            fi;
-            
-            if "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" in list_of_operations_to_install then
-                AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( D,
-                  function( cat, alpha )
-                    local underlying_result;
-                    
-                    underlying_result := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( ModelingCategory( cat ), ModelingMorphism( cat, alpha ) );
-                    
-                    return ModeledMorphism( HC, ModeledObject( cat, Source( underlying_result ) ), underlying_result, ModeledObject( cat, Range( underlying_result ) ) );
-                    
-                end );
-            fi;
-            
-            if "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects" in list_of_operations_to_install then
-                AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( D,
-                  function( cat, s, alpha, r )
-                    
-                    return ModeledMorphism( HC, s, InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( ModelingCategory( cat ), ModelingObject( HC, s ), ModelingMorphism( cat, alpha ), ModelingObject( HC, r ) ), r );
-                    
-                end );
-            fi;
-            
-            if "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" in list_of_operations_to_install then
-                AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( D,
-                  function( cat, a, b, iota )
-                    
-                    return ModeledMorphism( cat, a, InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( ModelingCategory( cat ), ModelingObject( cat, a ), ModelingObject( cat, b ), ModelingMorphism( HC, iota ) ), b );
-                    
-                end );
-            fi;
+            ExtendRangeOfHomomorphismStructureByFullEmbedding( C, HC, object_function, morphism_function, object_function_inverse, morphism_function_inverse );
             
         else
             
-            SetRangeCategoryOfHomomorphismStructure( D, HC );
+            ExtendRangeOfHomomorphismStructureByIdentityAsFullEmbedding( C );
             
-            if "DistinguishedObjectOfHomomorphismStructure" in list_of_operations_to_install then
-                AddDistinguishedObjectOfHomomorphismStructure( D,
-                  function( cat )
-                    
-                    return DistinguishedObjectOfHomomorphismStructure( ModelingCategory( cat ) );
-                    
-                end );
-            fi;
-            
-            if "HomomorphismStructureOnObjects" in list_of_operations_to_install then
-                AddHomomorphismStructureOnObjects( D,
-                  function( cat, a, b )
-                    
-                    return HomomorphismStructureOnObjects( ModelingCategory( cat ), ModelingObject( cat, a ), ModelingObject( cat, b ) );
-                    
-                end );
-            fi;
-            
-            if "HomomorphismStructureOnMorphisms" in list_of_operations_to_install then
-                AddHomomorphismStructureOnMorphisms( D,
-                  function( cat, alpha, beta )
-                    
-                    return HomomorphismStructureOnMorphisms( ModelingCategory( cat ), ModelingMorphism( cat, alpha ), ModelingMorphism( cat, beta ) );
-                    
-                end );
-            fi;
-            
-            if "HomomorphismStructureOnMorphismsWithGivenObjects" in list_of_operations_to_install then
-                AddHomomorphismStructureOnMorphismsWithGivenObjects( D,
-                  function( cat, s, alpha, beta, r )
-                    
-                    return HomomorphismStructureOnMorphismsWithGivenObjects( ModelingCategory( cat ), s, ModelingMorphism( cat, alpha ), ModelingMorphism( cat, beta ), r );
-                    
-                end );
-            fi;
-            
-            if "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" in list_of_operations_to_install then
-                AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( D,
-                  function( cat, alpha )
-                    
-                    return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( ModelingCategory( cat ), ModelingMorphism( cat, alpha ) );
-                    
-                end );
-            fi;
-            
-            if "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects" in list_of_operations_to_install then
-                AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( D,
-                  function( cat, s, alpha, r )
-                    
-                    return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( ModelingCategory( cat ), s, ModelingMorphism( cat, alpha ), r );
-                    
-                end );
-            fi;
-            
-            if "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" in list_of_operations_to_install then
-                AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( D,
-                  function( cat, a, b, iota )
-                    
-                    return ModeledMorphism( cat, a, InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( ModelingCategory( cat ), ModelingObject( cat, a ), ModelingObject( cat, b ), iota ), b );
-                    
-                end );
-            fi;
-            
+        fi;
+        
+        SetRangeCategoryOfHomomorphismStructure( D, HC );
+        
+        if "DistinguishedObjectOfHomomorphismStructure" in list_of_operations_to_install then
+            AddDistinguishedObjectOfHomomorphismStructure( D,
+              function( cat )
+                
+                return DistinguishedObjectOfHomomorphismStructureExtendedByFullEmbedding( ModelingCategory( cat ), HC );
+                
+            end );
+        fi;
+        
+        if "HomomorphismStructureOnObjects" in list_of_operations_to_install then
+            AddHomomorphismStructureOnObjects( D,
+              function( cat, a, b )
+                
+                return HomomorphismStructureOnObjectsExtendedByFullEmbedding( ModelingCategory( cat ), HC, ModelingObject( cat, a ), ModelingObject( cat, b ) );
+                
+            end );
+        fi;
+        
+        if "HomomorphismStructureOnMorphisms" in list_of_operations_to_install then
+            AddHomomorphismStructureOnMorphisms( D,
+              function( cat, alpha, beta )
+                
+                return HomomorphismStructureOnMorphismsExtendedByFullEmbedding( ModelingCategory( cat ), HC, ModelingMorphism( cat, alpha ), ModelingMorphism( cat, beta ) );
+                
+            end );
+        fi;
+        
+        if "HomomorphismStructureOnMorphismsWithGivenObjects" in list_of_operations_to_install then
+            AddHomomorphismStructureOnMorphismsWithGivenObjects( D,
+              function( cat, s, alpha, beta, r )
+                
+                return HomomorphismStructureOnMorphismsWithGivenObjectsExtendedByFullEmbedding( ModelingCategory( cat ), HC, s, ModelingMorphism( cat, alpha ), ModelingMorphism( cat, beta ), r );
+                
+            end );
+        fi;
+        
+        if "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" in list_of_operations_to_install then
+            AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( D,
+              function( cat, alpha )
+                
+                return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureExtendedByFullEmbedding( ModelingCategory( cat ), HC, ModelingMorphism( cat, alpha ) );
+                
+            end );
+        fi;
+        
+        if "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects" in list_of_operations_to_install then
+            AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( D,
+              function( cat, s, alpha, r )
+                
+                return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjectsExtendedByFullEmbedding( ModelingCategory( cat ), HC, s, ModelingMorphism( cat, alpha ), r );
+                
+            end );
+        fi;
+        
+        if "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" in list_of_operations_to_install then
+            AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( D,
+              function( cat, a, b, iota )
+                
+                return ModeledMorphism( cat, a, InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphismExtendedByFullEmbedding( ModelingCategory( cat ), HC, ModelingObject( cat, a ), ModelingObject( cat, b ), iota ), b );
+                
+            end );
         fi;
         
     fi;

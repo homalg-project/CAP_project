@@ -1081,7 +1081,7 @@ InstallGlobalFunction( CapJitAddKnownMethod,
     if ForAny( known_methods, m -> Length( m.filters ) = Length( filters ) and ( IsSpecializationOfFilter( m.filters[1], filters[1] ) or IsSpecializationOfFilter( filters[1], m.filters[1] ) ) ) then
         
         # COVERAGE_IGNORE_NEXT_LINE
-        Error( "there is already a method known for ", operation_name, " with a category filter which implies the current category filter or is impled by it" );
+        Error( "there is already a method known for ", operation_name, " with a category filter which implies the current category filter or is implied by it" );
         
     fi;
     

@@ -32,5 +32,9 @@ IsZero( delta );
 #! true
 2 * beta;
 #! <1>
+Lift( alpha * alpha, alpha );
+#! <2>
+Colift( alpha, alpha * alpha );
+#! <2>
 
 #! @EndExample

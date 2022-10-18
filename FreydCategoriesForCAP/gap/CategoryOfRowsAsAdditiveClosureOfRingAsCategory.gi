@@ -17,9 +17,9 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
   function( homalg_ring )
     local ring_as_category, add, object_constructor, object_datum, morphism_constructor, morphism_datum, category_object_filter, wrapper;
     
-    ring_as_category := RingAsCategory( homalg_ring : FinalizeCategory := true );
+    ring_as_category := RING_AS_CATEGORY( homalg_ring : FinalizeCategory := true );
     
-    add := AdditiveClosure( ring_as_category : FinalizeCategory := true );
+    add := ADDITIVE_CLOSURE( ring_as_category : FinalizeCategory := true );
     
     object_constructor := function ( cat, object_datum )
         
@@ -120,6 +120,7 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
         modeling_tower_morphism_constructor := { cat, source, mor, range } -> mor,
         modeling_tower_morphism_datum := { cat, mor } -> mor,
         only_primitive_operations := true,
+        wrap_range_of_hom_structure := IsIdenticalObj( add, RangeCategoryOfHomomorphismStructure( add ) ),
     ) : FinalizeCategory := false );
     
     SetUnderlyingRing( wrapper, homalg_ring );
@@ -134,7 +135,7 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
         range_attribute_getter_name := "NumberColumns",
     );
     
-    if HasRangeCategoryOfHomomorphismStructure( ring_as_category ) then
+    if HasIsExteriorRing( homalg_ring ) and IsExteriorRing( homalg_ring ) and IsField( BaseRing( homalg_ring ) ) then
         
         SetGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( wrapper, GeneratingSystemAsModuleInRangeCategoryOfHomomorphismStructure( ring_as_category ) );
         SetColumnVectorOfGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( wrapper, ColumnVectorOfGeneratingSystemAsModuleInRangeCategoryOfHomomorphismStructure( ring_as_category ) );
@@ -157,7 +158,7 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
         SetIsAbelianCategory( wrapper, true );
         
     fi;
-
+    
     # some manually precompiled functions
     
     ##
@@ -184,6 +185,35 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
       function( cat, alpha, beta )
         
         return IsZero( DecideZeroRows( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) ) );
+        
+    end );
+    
+    AddLift( wrapper,
+      function( cat, alpha, beta )
+        local right_divide;
+        
+        right_divide := RightDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) );
+        
+        return CategoryOfRowsMorphism( cat, Source( alpha ), right_divide, Source( beta ) );
+        
+    end );
+    
+    ##
+    AddIsColiftable( wrapper,
+      function( cat, alpha, beta )
+        
+        return IsZero( DecideZeroColumns( UnderlyingMatrix( beta ), UnderlyingMatrix( alpha ) ) );
+        
+    end );
+    
+    ##
+    AddColift( wrapper,
+      function( cat, alpha, beta )
+        local left_divide;
+        
+        left_divide := LeftDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) );
+        
+        return CategoryOfRowsMorphism( cat, Range( alpha ), left_divide, Range( beta ) );
         
     end );
     
