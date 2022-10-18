@@ -261,6 +261,28 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
             
         end );
         
+        ##
+        AddLift( category,
+          function( cat, alpha, beta )
+            
+            return RingAsCategoryMorphism(
+                category,
+                UnderlyingRingElement( alpha ) / UnderlyingRingElement( beta )
+            );
+            
+        end );
+        
+        ##
+        AddColift( category,
+          function( cat, alpha, beta )
+            
+            return RingAsCategoryMorphism(
+                category,
+                UnderlyingRingElement( beta ) / UnderlyingRingElement( alpha )
+            );
+            
+        end );
+        
     fi;
     
     ## Homomorphism structure
