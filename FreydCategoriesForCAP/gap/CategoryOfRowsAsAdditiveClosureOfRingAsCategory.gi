@@ -120,6 +120,7 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
         modeling_tower_morphism_constructor := { cat, source, mor, range } -> mor,
         modeling_tower_morphism_datum := { cat, mor } -> mor,
         only_primitive_operations := true,
+        wrap_range_of_hom_structure := IsIdenticalObj( add, RangeCategoryOfHomomorphismStructure( add ) ),
     ) : FinalizeCategory := false );
     
     SetUnderlyingRing( wrapper, homalg_ring );
@@ -134,7 +135,7 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
         range_attribute_getter_name := "NumberColumns",
     );
     
-    if HasRangeCategoryOfHomomorphismStructure( ring_as_category ) then
+    if HasIsExteriorRing( homalg_ring ) and IsExteriorRing( homalg_ring ) and IsField( BaseRing( homalg_ring ) ) then
         
         SetGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( wrapper, GeneratingSystemAsModuleInRangeCategoryOfHomomorphismStructure( ring_as_category ) );
         SetColumnVectorOfGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( wrapper, ColumnVectorOfGeneratingSystemAsModuleInRangeCategoryOfHomomorphismStructure( ring_as_category ) );

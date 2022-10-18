@@ -30,9 +30,7 @@ InstallMethod( RING_AS_CATEGORY,
     category!.compiler_hints := rec(
         category_attribute_names := [
             "UnderlyingRing",
-            "GeneratingSystemAsModuleInRangeCategoryOfHomomorphismStructure",
-            "ColumnVectorOfGeneratingSystemAsModuleInRangeCategoryOfHomomorphismStructure",
-            "RingInclusionForHomomorphismStructure",
+            "RingAsCategoryUniqueObject",
         ],
         category_filter := IsRingAsCategory,
         object_filter := IsRingAsCategoryObject,
@@ -287,7 +285,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
     
     ## Homomorphism structure
     
-    range_category := fail;
+    generating_system := fail;
     
     ## Homomorphism structure for homalg exterior rings over fields
     if IsHomalgRing( ring ) and HasIsExteriorRing( ring ) and IsExteriorRing( ring ) and IsField( BaseRing( ring ) ) then
@@ -338,45 +336,49 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
         
     fi;
     
-    ## Homomorphism structure for commutative homalg rings
-    if IsHomalgRing( ring ) and HasIsCommutative( ring ) and IsCommutative( ring ) then
+    ## Homomorphism structure for commutative rings, see https://arxiv.org/abs/1908.04132 (Sebastian Posur: Methods of constructive category theory), Example 1.24
+    if HasIsCommutative( ring ) and IsCommutative( ring ) then
         
-        range_category := CategoryOfRows( ring );
+        ##
+        SetRangeCategoryOfHomomorphismStructure( category, category );
         
-        generating_system := [ One( ring ) ];
+        ##
+        AddDistinguishedObjectOfHomomorphismStructure( category, { cat } -> RingAsCategoryUniqueObject( cat ) );
         
-        generating_system_as_column := HomalgMatrix( generating_system, Length( generating_system ), 1, ring );
+        ##
+        AddHomomorphismStructureOnObjects( category, { cat, a, b } -> RingAsCategoryUniqueObject( cat ) );
         
-        ring_as_module := function ( )
-            #% CAP_JIT_RESOLVE_FUNCTION
+        ##
+        AddHomomorphismStructureOnMorphisms( category,
+          function( cat, alpha, beta )
+            local a, b, rows;
             
-            return CategoryOfRowsObject( range_category, Length( generating_system ) );
+            a := UnderlyingRingElement( alpha );
+            b := UnderlyingRingElement( beta );
             
-        end;
+            return RingAsCategoryMorphism( cat, a * b );
+            
+        end );
         
-        # ring^{1 x 1}
-        distinguished_object := function( )
-            #% CAP_JIT_RESOLVE_FUNCTION
+        ##
+        AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
+          function( cat, alpha )
             
-            return CategoryOfRowsObject( range_category, 1 );
+            return alpha;
             
-        end;
+        end );
         
-        interpret_element_as_row_vector := function( r )
-            #% CAP_JIT_RESOLVE_FUNCTION
+        ##
+        AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
+          function( cat, a, b, mor )
             
-            return HomalgMatrix( [ r ], 1, 1, ring );
+            return mor;
             
-        end;
-        
-        morphism_constructor := CategoryOfRowsMorphism;
-        
-        # identity
-        ring_inclusion := RingMap( ring );
+        end );
         
     fi;
     
-    if range_category <> fail then
+    if generating_system <> fail then
         
         # set attributes
         MakeImmutable( generating_system );
@@ -385,6 +387,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
         SetColumnVectorOfGeneratingSystemAsModuleInRangeCategoryOfHomomorphismStructure( category, generating_system_as_column );
         
         SetRingInclusionForHomomorphismStructure( category, ring_inclusion );
+        
+        Add( category!.compiler_hints.category_attribute_names, "GeneratingSystemAsModuleInRangeCategoryOfHomomorphismStructure" );
+        Add( category!.compiler_hints.category_attribute_names, "ColumnVectorOfGeneratingSystemAsModuleInRangeCategoryOfHomomorphismStructure" );
+        Add( category!.compiler_hints.category_attribute_names, "RingInclusionForHomomorphismStructure" );
         
         ##
         SetRangeCategoryOfHomomorphismStructure( category, range_category );
