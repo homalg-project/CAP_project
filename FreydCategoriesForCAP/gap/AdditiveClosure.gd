@@ -49,6 +49,13 @@ DeclareAttribute( "AdditiveClosure",
                   IsCapCategory );
 
 #! @Description
+#! Same as <Ref Attr="AdditiveClosure" Label="for IsCapCategory" />, but as an operation instead of an attribute.
+#! @Arguments C
+#! @Returns the category $C^\oplus$
+DeclareOperation( "ADDITIVE_CLOSURE",
+                  [ IsCapCategory ] );
+
+#! @Description
 #! The argument is a list of objects $L=[A_1,\dots,A_n]$ in an Ab-category $C$. The output is the formal direct sum
 #! $A_1\oplus\dots\oplus A_n$ in the additive closure $C^\oplus$.
 #! @Arguments L, C^\oplus

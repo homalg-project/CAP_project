@@ -13,6 +13,12 @@
 ##
 InstallMethod( RingAsCategory,
                [ IsRing ],
+               RING_AS_CATEGORY
+);
+
+##
+InstallMethod( RING_AS_CATEGORY,
+               [ IsRing ],
                
   function( ring )
     local category;

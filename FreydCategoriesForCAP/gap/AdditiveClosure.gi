@@ -71,6 +71,12 @@ end );
 ##
 InstallMethod( AdditiveClosure,
                [ IsCapCategory ],
+               ADDITIVE_CLOSURE
+);
+
+##
+InstallMethod( ADDITIVE_CLOSURE,
+               [ IsCapCategory ],
                
   function( underlying_category )
     local category, precompiled_towers, remaining_constructors_in_tower, precompiled_functions_adder, info;

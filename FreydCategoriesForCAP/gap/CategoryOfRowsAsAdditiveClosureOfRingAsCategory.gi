@@ -17,9 +17,9 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
   function( homalg_ring )
     local ring_as_category, add, object_constructor, object_datum, morphism_constructor, morphism_datum, category_object_filter, wrapper;
     
-    ring_as_category := RingAsCategory( homalg_ring : FinalizeCategory := true );
+    ring_as_category := RING_AS_CATEGORY( homalg_ring : FinalizeCategory := true );
     
-    add := AdditiveClosure( ring_as_category : FinalizeCategory := true );
+    add := ADDITIVE_CLOSURE( ring_as_category : FinalizeCategory := true );
     
     object_constructor := function ( cat, object_datum )
         

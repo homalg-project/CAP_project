@@ -32,6 +32,9 @@ DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY" );
 DeclareAttribute( "RingAsCategory",
                   IsRing );
 
+DeclareOperation( "RING_AS_CATEGORY",
+                  [ IsRing ] );
+
 DeclareAttribute( "RingAsCategoryUniqueObject",
                   IsRingAsCategory );
 
