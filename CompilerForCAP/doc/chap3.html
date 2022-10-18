@@ -739,7 +739,8 @@ end
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationalsInSingular( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQxy := QQ * "x,y";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EEE := KoszulDualRing( QQxy * "a,b" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EQQxy := KoszulDualRing( QQxy );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := KoszulDualRing( HomalgRingOfIntegersInSingular( ) * "x,y" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfColumns := function( homalg_ring, name )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    CapJitPrecompileCategoryAndCompareResult(</span>
@@ -761,7 +762,8 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    ); end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfColumns( QQ, "Field" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfColumns( QQxy, "CommutativeRing" );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfColumns( EEE, "ArbitraryRing" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfColumns( EQQxy, "HomalgExteriorRingOverField" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfColumns( R, "ArbitraryRing" );;</span>
 </pre></div>
 
 
@@ -771,23 +773,11 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "FreydCategoriesForCAP",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    "gap/CategoryOfRowsAsAdditiveClosureOfRingAsCategory_CompilerLogic.gi");</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># We only compile one very special case:</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput"># The homomorphism structure for homalg exterior rings over fields.</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput"></span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationalsInSingular( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationalsInSingular( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQxy := QQ * "x,y";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EEE := KoszulDualRing( QQxy );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    homalg_ring -&gt; CategoryOfRowsAsAdditiveClosureOfRingAsCategory(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        homalg_ring</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ EEE ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "FreydCategoriesForCAP";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := Concatenation(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "CategoryOfRowsAsAdditiveClosureOfRingAsCategoryOf",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "HomalgExteriorRingOverFieldPrecompiled"</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := [</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EQQxy := KoszulDualRing( QQxy );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := KoszulDualRing( HomalgRingOfIntegersInSingular( ) * "x,y" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_structure_operations := [</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    "DistinguishedObjectOfHomomorphismStructure",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    "HomomorphismStructureOnObjects",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    "HomomorphismStructureOnMorphismsWithGivenObjects",</span>
@@ -800,21 +790,37 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        "ToHomomorphismStructureAsMorphism"</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategoryAndCompareResult(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_constructor,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    given_arguments,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    package_name,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name :</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    operations := operations,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_objects_in_data_structure_of_object := 1,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_morphisms_in_data_structure_of_object := 0,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_objects_in_data_structure_of_morphism := 2,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_morphisms_in_data_structure_of_morphism := 1</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># check that the compiled code is loaded automatically</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">cat := CategoryOfRows( EEE );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CanCompute( cat, "HomomorphismStructureOnMorphismsWithGivenObjects" );</span>
-true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfRows := function( homalg_ring, name, operations )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    CapJitPrecompileCategoryAndCompareResult(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        homalg_ring -&gt; CategoryOfRowsAsAdditiveClosureOfRingAsCategory(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            homalg_ring</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        [ homalg_ring ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "FreydCategoriesForCAP",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        Concatenation(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "CategoryOfRowsAsAdditiveClosureOfRingAsCategoryOf",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            name,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "Precompiled"</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        ) :</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        operations := operations,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        number_of_objectified_objects_in_data_structure_of_object := 1,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        number_of_objectified_morphisms_in_data_structure_of_object := 0,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        number_of_objectified_objects_in_data_structure_of_morphism := 2,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        number_of_objectified_morphisms_in_data_structure_of_morphism := 1</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ); end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfRows(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    QQ, "Field", hom_structure_operations</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfRows(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    QQxy, "CommutativeRing", hom_structure_operations</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfRows(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    EQQxy, "HomalgExteriorRingOverField", hom_structure_operations</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfRows(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    R, "ArbitraryRing", [ ]</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
 </pre></div>
 
 
