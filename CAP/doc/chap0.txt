@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2022.10-04
+                                   2022.10-05
   
   
-                                11 October 2022
+                                18 October 2022
   
   
                                Sebastian Gutsche
@@ -256,9 +256,11 @@
       3.16-15 HomStructure
       3.16-16 HomStructure
       3.16-17 HomStructure
-      3.16-18 BasisOfExternalHom
-      3.16-19 CoefficientsOfMorphismWithGivenBasisOfExternalHom
-      3.16-20 CoefficientsOfMorphism
+      3.16-18 ExtendRangeOfHomomorphismStructureByFullEmbedding
+      3.16-19 ExtendRangeOfHomomorphismStructureByIdentityAsFullEmbedding
+      3.16-20 BasisOfExternalHom
+      3.16-21 CoefficientsOfMorphismWithGivenBasisOfExternalHom
+      3.16-22 CoefficientsOfMorphism
     3.17 [33X[0;0YSimplified Morphisms[133X
       3.17-1 SimplifyMorphism
       3.17-2 SimplifySource

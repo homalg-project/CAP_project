@@ -167,9 +167,11 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7CDC08947CF2022E">3.16-15 HomStructure</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X820B9AC886D78944">3.16-16 HomStructure</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8705DA127E089709">3.16-17 HomStructure</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7CC9C1A487AE6086">3.16-18 BasisOfExternalHom</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X82DE981C839D9F71">3.16-19 CoefficientsOfMorphismWithGivenBasisOfExternalHom</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8636593C845B23D2">3.16-20 CoefficientsOfMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X873E91D180B3057C">3.16-18 ExtendRangeOfHomomorphismStructureByFullEmbedding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C551C8F7BA2F3F1">3.16-19 ExtendRangeOfHomomorphismStructureByIdentityAsFullEmbedding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7CC9C1A487AE6086">3.16-20 BasisOfExternalHom</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X82DE981C839D9F71">3.16-21 CoefficientsOfMorphismWithGivenBasisOfExternalHom</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8636593C845B23D2">3.16-22 CoefficientsOfMorphism</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7B39E2927B533D10">3.17 <span class="Heading">Simplified Morphisms</span></a>
 </span>
@@ -1043,9 +1045,51 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HomStructure</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>This is a convenience method for <code class="code">DistinguishedObjectOfHomomorphismStructure</code>.</p>
 
+<p><a id="X873E91D180B3057C" name="X873E91D180B3057C"></a></p>
+
+<h5>3.16-18 ExtendRangeOfHomomorphismStructureByFullEmbedding</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExtendRangeOfHomomorphismStructureByFullEmbedding</code>( <var class="Arg">C</var>, <var class="Arg">E</var>, <var class="Arg">object_function</var>, <var class="Arg">morphism_function</var>, <var class="Arg">object_function_inverse</var>, <var class="Arg">morphism_function_inverse</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HomomorphismStructureOnObjectsExtendedByFullEmbedding</code>( <var class="Arg">C</var>, <var class="Arg">E</var>, <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HomomorphismStructureOnMorphismsExtendedByFullEmbedding</code>( <var class="Arg">C</var>, <var class="Arg">E</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HomomorphismStructureOnMorphismsWithGivenObjectsExtendedByFullEmbedding</code>( <var class="Arg">C</var>, <var class="Arg">E</var>, <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DistinguishedObjectOfHomomorphismStructureExtendedByFullEmbedding</code>( <var class="Arg">C</var>, <var class="Arg">E</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureExtendedByFullEmbedding</code>( <var class="Arg">C</var>, <var class="Arg">E</var>, <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjectsExtendedByFullEmbedding</code>( <var class="Arg">C</var>, <var class="Arg">E</var>, <var class="Arg">distinguished_object</var>, <var class="Arg">alpha</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphismExtendedByFullEmbedding</code>( <var class="Arg">C</var>, <var class="Arg">E</var>, <var class="Arg">a</var>, <var class="Arg">a'</var>, <var class="Arg">iota</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>If <span class="Math">\iota\colon D \to E</span> is a full embedding of categories, every <span class="Math">D</span>-homomorphism structure for a category <span class="Math">C</span> extends to a <span class="Math">E</span>-homomorphism structure for <span class="Math">C</span>. This operations accepts four functions and installs operations <code class="code">DistinguishedObjectOfHomomorphismStructureExtendedByFullEmbedding</code>, <code class="code">HomomorphismStructureOnObjectsExtendedByFullEmbedding</code> etc. which correspond to the <span class="Math">E</span>-homomorphism structure for <span class="Math">C</span>. Note: To distinguish embeddings in different categories, in addition to <span class="Math">C</span> also <span class="Math">E</span> is passed to the operations. When using this with different embeddings with the range category <span class="Math">E</span>, only the last embedding will be used. The arguments are:</p>
+
+
+<ul>
+<li><p><code class="code">object_function</code> gets the categories <span class="Math">C</span> and <span class="Math">E</span> and an object in <span class="Math">D</span>.</p>
+
+</li>
+<li><p><code class="code">morphism_function</code> gets the categories <span class="Math">C</span> and <span class="Math">E</span>, an object in <span class="Math">E</span>, a morphism in <span class="Math">D</span> and another object in <span class="Math">E</span>. The objects are the results of <code class="code">object_function</code> applied to the source and range of the morphism.</p>
+
+</li>
+<li><p><code class="code">object_function_inverse</code> gets the categories <span class="Math">C</span> and <span class="Math">E</span> and a morphism in <span class="Math">E</span>.</p>
+
+</li>
+<li><p><code class="code">morphism_function_inverse</code> gets the categories <span class="Math">C</span> and <span class="Math">E</span>, an object in <span class="Math">D</span>, a morphism in <span class="Math">E</span> and another object in <span class="Math">D</span>. The objects are the results of <code class="code">object_function_inverse</code> applied to the source and range of the morphism.</p>
+
+</li>
+</ul>
+<p><code class="code">object_function</code> and <code class="code">morphism_function</code> define the embedding. <code class="code">object_function_inverse</code> and <code class="code">morphism_function_inverse</code> define the inverse of the embedding on its image.</p>
+
+<p><a id="X7C551C8F7BA2F3F1" name="X7C551C8F7BA2F3F1"></a></p>
+
+<h5>3.16-19 ExtendRangeOfHomomorphismStructureByIdentityAsFullEmbedding</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExtendRangeOfHomomorphismStructureByIdentityAsFullEmbedding</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>Chooses the identity on <span class="Math">D</span> as the full embedding in <code class="func">ExtendRangeOfHomomorphismStructureByFullEmbedding</code> (<a href="chap3.html#X873E91D180B3057C"><span class="RefLink">3.16-18</span></a>). This is useful to handle this case as a degenerate case of <code class="func">ExtendRangeOfHomomorphismStructureByFullEmbedding</code> (<a href="chap3.html#X873E91D180B3057C"><span class="RefLink">3.16-18</span></a>).</p>
+
 <p><a id="X7CC9C1A487AE6086" name="X7CC9C1A487AE6086"></a></p>
 
-<h5>3.16-18 BasisOfExternalHom</h5>
+<h5>3.16-20 BasisOfExternalHom</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BasisOfExternalHom</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a list of morphisms in <span class="Math">\mathrm{Hom}_{C}(a,b)</span></p>
@@ -1054,7 +1098,7 @@
 
 <p><a id="X82DE981C839D9F71" name="X82DE981C839D9F71"></a></p>
 
-<h5>3.16-19 CoefficientsOfMorphismWithGivenBasisOfExternalHom</h5>
+<h5>3.16-21 CoefficientsOfMorphismWithGivenBasisOfExternalHom</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoefficientsOfMorphismWithGivenBasisOfExternalHom</code>( <var class="Arg">alpha</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a list of elements in <span class="Math">k</span></p>
@@ -1063,7 +1107,7 @@
 
 <p><a id="X8636593C845B23D2" name="X8636593C845B23D2"></a></p>
 
-<h5>3.16-20 CoefficientsOfMorphism</h5>
+<h5>3.16-22 CoefficientsOfMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoefficientsOfMorphism</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a list of elements in <span class="Math">k</span></p>

@@ -485,7 +485,7 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals( );</span>
 Q
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Qmat := MatrixCategory( Q );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Qmat := MATRIX_CATEGORY( Q );</span>
 Category of matrices over Q
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Wrapper := WrapperCategory( Qmat, rec( ) );</span>
 WrapperCategory( Category of matrices over Q )
@@ -502,7 +502,9 @@ WrapperCategory( Category of matrices over Q )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( mor ), Range( mor ), iota );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( mor, beta );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Wrapper2 := WrapperCategory( Qmat, rec( wrap_range_of_hom_structure := true ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Qmat2 := MATRIX_CATEGORY( Q );</span>
+Category of matrices over Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Wrapper2 := WrapperCategory( Qmat2, rec( wrap_range_of_hom_structure := true ) );</span>
 WrapperCategory( Category of matrices over Q )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor := ZeroMorphism( ZeroObject( Wrapper2 ), ZeroObject( Wrapper2 ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">distinguished_object := DistinguishedObjectOfHomomorphismStructure( Wrapper2 );;</span>

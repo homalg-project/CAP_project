@@ -400,7 +400,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );[127X[104X
     [4X[28XQ[128X[104X
-    [4X[25Xgap>[125X [27XQmat := MatrixCategory( Q );[127X[104X
+    [4X[25Xgap>[125X [27XQmat := MATRIX_CATEGORY( Q );[127X[104X
     [4X[28XCategory of matrices over Q[128X[104X
     [4X[25Xgap>[125X [27XWrapper := WrapperCategory( Qmat, rec( ) );[127X[104X
     [4X[28XWrapperCategory( Category of matrices over Q )[128X[104X
@@ -417,7 +417,9 @@
     [4X[25Xgap>[125X [27Xbeta := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( mor ), Range( mor ), iota );;[127X[104X
     [4X[25Xgap>[125X [27XIsCongruentForMorphisms( mor, beta );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XWrapper2 := WrapperCategory( Qmat, rec( wrap_range_of_hom_structure := true ) );[127X[104X
+    [4X[25Xgap>[125X [27XQmat2 := MATRIX_CATEGORY( Q );[127X[104X
+    [4X[28XCategory of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27XWrapper2 := WrapperCategory( Qmat2, rec( wrap_range_of_hom_structure := true ) );[127X[104X
     [4X[28XWrapperCategory( Category of matrices over Q )[128X[104X
     [4X[25Xgap>[125X [27Xmor := ZeroMorphism( ZeroObject( Wrapper2 ), ZeroObject( Wrapper2 ) );;[127X[104X
     [4X[25Xgap>[125X [27Xdistinguished_object := DistinguishedObjectOfHomomorphismStructure( Wrapper2 );;[127X[104X

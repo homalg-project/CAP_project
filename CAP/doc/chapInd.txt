@@ -299,7 +299,7 @@
   [2XAsObjectInWrapperCategory[102X, for IsWrapperCapCategory, IsCapCategoryObject 12.3-1 
   [2XAstrictionToCoimage[102X, for IsCapCategoryMorphism 6.14-10 
   [2XAstrictionToCoimageWithGivenCoimageObject[102X, for IsCapCategoryMorphism, IsCapCategoryObject 6.14-11 
-  [2XBasisOfExternalHom[102X, for IsCapCategoryObject, IsCapCategoryObject 3.16-18 
+  [2XBasisOfExternalHom[102X, for IsCapCategoryObject, IsCapCategoryObject 3.16-20 
   [2XBrowseCachingStatistic[102X 9.2-20 
   [2XBrowseTimingStatistics[102X 1.10-1 
   [2XCachingStatistic[102X 9.2-19 
@@ -359,8 +359,8 @@
   [2XCheckConstructivenessOfCategory[102X, for IsCapCategory, IsString 1.5-2 
   [2XCoastrictionToImage[102X, for IsCapCategoryMorphism 6.13-6 
   [2XCoastrictionToImageWithGivenImageObject[102X, for IsCapCategoryMorphism, IsCapCategoryObject 6.13-7 
-  [2XCoefficientsOfMorphism[102X, for IsCapCategoryMorphism 3.16-20 
-  [2XCoefficientsOfMorphismWithGivenBasisOfExternalHom[102X, for IsCapCategoryMorphism, IsList 3.16-19 
+  [2XCoefficientsOfMorphism[102X, for IsCapCategoryMorphism 3.16-22 
+  [2XCoefficientsOfMorphismWithGivenBasisOfExternalHom[102X, for IsCapCategoryMorphism, IsList 3.16-21 
   [2XCoequalizer[102X 6.10-1 
   [2XCoequalizerFunctorial[102X, for IsList, IsCapCategoryMorphism, IsList 6.10-9 
   [2XCoequalizerFunctorialWithGivenCoequalizers[102X, for IsCapCategoryObject, IsList, IsCapCategoryMorphism, IsList, IsCapCategoryObject 6.10-10 
@@ -426,6 +426,7 @@
   [2XDisableTimingStatistics[102X 1.10-1 
   [2XDisplayTimingStatistics[102X 1.10-1 
   [2XDistinguishedObjectOfHomomorphismStructure[102X, for IsCapCategory 3.16-4 
+  [2XDistinguishedObjectOfHomomorphismStructureExtendedByFullEmbedding[102X, for IsCapCategory, IsCapCategory 3.16-18 
   [2XDown[102X, for IsObject 1.7-1 
   [2XDownOnlyMorphismData[102X, for IsCapCategoryMorphism 1.7-2 
   [2XDownToBottom[102X, for IsObject 1.7-3 
@@ -446,6 +447,8 @@
   [2XEqualizerFunctorial[102X, for IsList, IsCapCategoryMorphism, IsList 6.9-9 
   [2XEqualizerFunctorialWithGivenEqualizers[102X, for IsCapCategoryObject, IsList, IsCapCategoryMorphism, IsList, IsCapCategoryObject 6.9-10 
   [2XEqualizerOp[102X, for IsCapCategoryObject, IsList 6.9-2 
+  [2XExtendRangeOfHomomorphismStructureByFullEmbedding[102X, for IsCapCategory, IsCapCategory, IsFunction, IsFunction, IsFunction, IsFunction 3.16-18 
+  [2XExtendRangeOfHomomorphismStructureByIdentityAsFullEmbedding[102X, for IsCapCategory 3.16-19 
   [2XExtractMin[102X, for IsStringMinHeap 8.5-4 
   [2XFiberProduct[102X 6.11-7 
   [2XFiberProductEmbeddingInDirectSum[102X, for IsList 6.11-6 
@@ -468,8 +471,11 @@
   [2XHomologyObjectFunctorial[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism 6.15-2 
   [2XHomologyObjectFunctorialWithGivenHomologyObjects[102X, for IsCapCategoryObject, IsList, IsCapCategoryObject 6.15-3 
   [2XHomomorphismStructureOnMorphisms[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.16-2 
+  [2XHomomorphismStructureOnMorphismsExtendedByFullEmbedding[102X, for IsCapCategory, IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism 3.16-18 
   [2XHomomorphismStructureOnMorphismsWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 3.16-3 
+  [2XHomomorphismStructureOnMorphismsWithGivenObjectsExtendedByFullEmbedding[102X, for IsCapCategory, IsCapCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 3.16-18 
   [2XHomomorphismStructureOnObjects[102X, for IsCapCategoryObject, IsCapCategoryObject 3.16-1 
+  [2XHomomorphismStructureOnObjectsExtendedByFullEmbedding[102X, for IsCapCategory, IsCapCategory, IsCapCategoryObject, IsCapCategoryObject 3.16-18 
   [2XHomStructure[102X, for IsCapCategory 3.16-17 
       for IsCapCategoryMorphism 3.16-15 
       for IsCapCategoryMorphism, IsCapCategoryMorphism 3.16-11 
@@ -511,8 +517,11 @@
   [2XInstallOtherMethodForCompilerForCAP[102X 9.2-25 
   [2XInstallSetWithToDoForIsWellDefined[102X, for IsObject, IsString, IsList 9.2-2 
   [2XInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure[102X, for IsCapCategoryMorphism 3.16-5 
+  [2XInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureExtendedByFullEmbedding[102X, for IsCapCategory, IsCapCategory, IsCapCategoryMorphism 3.16-18 
   [2XInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 3.16-6 
+  [2XInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjectsExtendedByFullEmbedding[102X, for IsCapCategory, IsCapCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 3.16-18 
   [2XInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 3.16-7 
+  [2XInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphismExtendedByFullEmbedding[102X, for IsCapCategory, IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 3.16-18 
   [2XInverseForMorphisms[102X, for IsCapCategoryMorphism 3.13-1 
   [2XInverseMorphismFromCoimageToImage[102X, for IsCapCategoryMorphism 6.14-3 
   [2XInverseMorphismFromCoimageToImageWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 6.14-4 
