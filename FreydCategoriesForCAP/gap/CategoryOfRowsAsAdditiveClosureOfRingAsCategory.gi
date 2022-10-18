@@ -188,6 +188,35 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
         
     end );
     
+    AddLift( wrapper,
+      function( cat, alpha, beta )
+        local right_divide;
+        
+        right_divide := RightDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) );
+        
+        return CategoryOfRowsMorphism( cat, Source( alpha ), right_divide, Source( beta ) );
+        
+    end );
+    
+    ##
+    AddIsColiftable( wrapper,
+      function( cat, alpha, beta )
+        
+        return IsZero( DecideZeroColumns( UnderlyingMatrix( beta ), UnderlyingMatrix( alpha ) ) );
+        
+    end );
+    
+    ##
+    AddColift( wrapper,
+      function( cat, alpha, beta )
+        local left_divide;
+        
+        left_divide := LeftDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) );
+        
+        return CategoryOfRowsMorphism( cat, Range( alpha ), left_divide, Range( beta ) );
+        
+    end );
+    
     ##
     if HasIsCommutative( homalg_ring ) and IsCommutative( homalg_ring ) then
         

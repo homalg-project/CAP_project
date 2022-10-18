@@ -30,7 +30,8 @@ IsWellDefined( gamma );
 #! true
 UnderlyingMatrix( gamma ) = P;
 #! true
-delta := Lift( gamma, beta );;
+# compute Lift( gamma, beta ) via SolveLinearSystemInAbCategory for coverage of hom structure:
+delta := SolveLinearSystemInAbCategory( [ [ IdentityMorphism( A ) ] ], [ [ beta ] ], [ gamma ] )[1];;
 IsWellDefined( delta );
 #! true
 IsCongruentForMorphisms( gamma, PreCompose( delta, beta ) );
@@ -61,7 +62,8 @@ IsWellDefined( gamma );
 #! true
 UnderlyingMatrix( gamma ) = P;
 #! true
-delta := Lift( gamma, beta );;
+# compute Lift( gamma, beta ) via SolveLinearSystemInAbCategory for coverage of hom structure:
+delta := SolveLinearSystemInAbCategory( [ [ IdentityMorphism( A ) ] ], [ [ beta ] ], [ gamma ] )[1];;
 IsWellDefined( delta );
 #! true
 IsCongruentForMorphisms( gamma, PreCompose( delta, beta ) );
