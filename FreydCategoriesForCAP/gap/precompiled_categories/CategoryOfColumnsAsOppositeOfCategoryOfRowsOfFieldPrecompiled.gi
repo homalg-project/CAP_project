@@ -93,17 +93,7 @@ end
         
 ########
 function ( cat_1, s_1, a_1, r_1 )
-    local deduped_1_1, deduped_2_1;
-    deduped_2_1 := UnderlyingRing( cat_1 );
-    deduped_1_1 := RankOfObject( a_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, function (  )
-              if deduped_1_1 = 0 then
-                  return HomalgZeroMatrix( RankOfObject( r_1 ), RankOfObject( s_1 ), deduped_2_1 );
-              else
-                  return ConvertMatrixToRow( HomalgIdentityMatrix( deduped_1_1, deduped_2_1 ) );
-              fi;
-              return;
-          end(  ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, ConvertMatrixToRow( HomalgIdentityMatrix( RankOfObject( a_1 ), UnderlyingRing( cat_1 ) ) ) );
 end
 ########
         
@@ -114,17 +104,7 @@ end
         
 ########
 function ( cat_1, s_1, a_1, r_1 )
-    local deduped_1_1, deduped_2_1;
-    deduped_2_1 := UnderlyingRing( cat_1 );
-    deduped_1_1 := RankOfObject( a_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, function (  )
-              if deduped_1_1 = 0 then
-                  return HomalgZeroMatrix( RankOfObject( r_1 ), RankOfObject( s_1 ), deduped_2_1 );
-              else
-                  return ConvertMatrixToColumn( HomalgIdentityMatrix( deduped_1_1, deduped_2_1 ) );
-              fi;
-              return;
-          end(  ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, ConvertMatrixToColumn( HomalgIdentityMatrix( RankOfObject( a_1 ), UnderlyingRing( cat_1 ) ) ) );
 end
 ########
         
@@ -146,17 +126,7 @@ end
         
 ########
 function ( cat_1, s_1, a_1, r_1 )
-    local deduped_1_1, deduped_2_1;
-    deduped_2_1 := UnderlyingRing( cat_1 );
-    deduped_1_1 := RankOfObject( a_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, function (  )
-              if deduped_1_1 = 0 then
-                  return HomalgZeroMatrix( RankOfObject( r_1 ), RankOfObject( s_1 ), deduped_2_1 );
-              else
-                  return ConvertMatrixToColumn( HomalgIdentityMatrix( deduped_1_1, deduped_2_1 ) );
-              fi;
-              return;
-          end(  ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, ConvertMatrixToColumn( HomalgIdentityMatrix( RankOfObject( a_1 ), UnderlyingRing( cat_1 ) ) ) );
 end
 ########
         
@@ -296,17 +266,7 @@ end
         
 ########
 function ( cat_1, s_1, a_1, r_1 )
-    local deduped_1_1, deduped_2_1;
-    deduped_2_1 := UnderlyingRing( cat_1 );
-    deduped_1_1 := RankOfObject( a_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, function (  )
-              if deduped_1_1 = 0 then
-                  return HomalgZeroMatrix( RankOfObject( r_1 ), RankOfObject( s_1 ), deduped_2_1 );
-              else
-                  return ConvertMatrixToRow( HomalgIdentityMatrix( deduped_1_1, deduped_2_1 ) );
-              fi;
-              return;
-          end(  ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, ConvertMatrixToRow( HomalgIdentityMatrix( RankOfObject( a_1 ), UnderlyingRing( cat_1 ) ) ) );
 end
 ########
         
