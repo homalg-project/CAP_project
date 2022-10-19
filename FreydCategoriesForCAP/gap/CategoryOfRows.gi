@@ -799,6 +799,62 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
           
       end );
       
+      ##
+      AddSomeReductionBySplitEpiSummand( category,
+        function( cat, alpha )
+          
+          return MorphismFromZeroObject( cat, CokernelObject( cat, alpha ) );
+          
+      end );
+      
+      ##
+      AddSomeReductionBySplitEpiSummand_MorphismFromInputRange( category,
+        function( cat, alpha )
+          
+          return CokernelProjection( cat, alpha );
+          
+      end );
+      
+      ##
+      AddSomeReductionBySplitEpiSummand_MorphismToInputRange( category,
+        function( cat, alpha )
+          local cok;
+          
+          cok := CokernelProjection( cat, alpha );
+          
+          return Lift( cat,
+                  IdentityMorphism( cat, Range( cok ) ),
+                  cok
+          );
+          
+      end );
+      
+    else
+      
+      ##
+      AddSomeReductionBySplitEpiSummand( category,
+        function( cat, alpha )
+          
+          return AsCategoryOfRowsMorphism( CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple( alpha )[1], category );
+          
+      end );
+      
+      ##
+      AddSomeReductionBySplitEpiSummand_MorphismFromInputRange( category,
+        function( cat, alpha )
+          
+          return AsCategoryOfRowsMorphism( CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple( alpha )[2], category );
+          
+      end );
+      
+      ##
+      AddSomeReductionBySplitEpiSummand_MorphismToInputRange( category,
+        function( cat, alpha )
+          
+          return AsCategoryOfRowsMorphism( CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple( alpha )[3], category );
+          
+      end );
+      
     fi;
     
     ## Basic Operation Properties
@@ -1117,30 +1173,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
             CATEGORY_OF_ROWS_SimplificationRangeTuple( alpha )[2],
             Range( alpha )
           );
-        
-    end );
-    
-    ##
-    AddSomeReductionBySplitEpiSummand( category,
-      function( cat, alpha )
-        
-        return AsCategoryOfRowsMorphism( CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple( alpha )[1], category );
-        
-    end );
-    
-    ##
-    AddSomeReductionBySplitEpiSummand_MorphismFromInputRange( category,
-      function( cat, alpha )
-        
-        return AsCategoryOfRowsMorphism( CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple( alpha )[2], category );
-        
-    end );
-    
-    ##
-    AddSomeReductionBySplitEpiSummand_MorphismToInputRange( category,
-      function( cat, alpha )
-        
-        return AsCategoryOfRowsMorphism( CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple( alpha )[3], category );
         
     end );
     
