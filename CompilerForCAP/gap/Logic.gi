@@ -543,6 +543,65 @@ CapJitAddLogicFunction( function ( tree )
     
 end );
 
+# CreateCapCategoryObjectWithAttributes( cat, Attribute, Attribute( obj ) ) => obj
+# Note: Attribute( obj ) is outlined!
+CapJitAddLogicFunction( function ( tree )
+  local pre_func, additional_arguments_func;
+    
+    Info( InfoCapJit, 1, "####" );
+    Info( InfoCapJit, 1, "Apply logic for unwrapping and immediately re-wrapping a CAP category object." );
+    
+    pre_func := function ( tree, func_stack )
+      local attribute_name, func_pos, func, value;
+        
+        # Attribute( obj ) is outlined!
+        if CapJitIsCallToGlobalFunction( tree, "CreateCapCategoryObjectWithAttributes" ) and tree.args.length = 3 and tree.args.1.type = "EXPR_REF_GVAR" and IsBound( tree.args.1.data_type ) and tree.args.2.type = "EXPR_REF_GVAR" and tree.args.3.type = "EXPR_REF_FVAR" then
+            
+            attribute_name := tree.args.2.gvar;
+            
+            func_pos := SafePositionProperty( func_stack, func -> func.id = tree.args.3.func_id );
+            
+            func := func_stack[func_pos];
+            
+            value := CapJitValueOfBinding( func.bindings, tree.args.3.name );
+            
+            if CapJitIsCallToGlobalFunction( value, attribute_name ) and value.args.length = 1 and IsBound( value.args.1.data_type ) then
+                
+                Assert( 0, IsSpecializationOfFilter( IsCapCategory, tree.args.1.data_type.filter ) );
+                
+                if value.args.1.data_type = CapJitDataTypeOfObjectOfCategory( tree.args.1.data_type.category ) then
+                    
+                    return value.args.1;
+                    
+                fi;
+                
+            fi;
+            
+        fi;
+        
+        return tree;
+        
+    end;
+    
+    additional_arguments_func := function ( tree, key, func_stack )
+        
+        if tree.type = "EXPR_DECLARATIVE_FUNC" then
+            
+            return Concatenation( func_stack, [ tree ] );
+            
+        else
+            
+            return func_stack;
+            
+        fi;
+        
+    end;
+    
+    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, additional_arguments_func, [ ] );
+    
+end );
+
+
 # EXPR_CASE with all branches having the same value
 CapJitAddLogicFunction( function ( tree )
   local pre_func;

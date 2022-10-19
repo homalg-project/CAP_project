@@ -101,7 +101,7 @@ end
         
 ########
 function ( cat_1, a_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, RankOfObject( a_1 ) );
+    return a_1;
 end
 ########
         
@@ -293,7 +293,7 @@ end
         
 ########
 function ( cat_1, a_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, RankOfObject( a_1 ) );
+    return a_1;
 end
 ########
         
