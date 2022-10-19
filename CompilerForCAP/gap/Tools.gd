@@ -117,7 +117,7 @@ DeclareGlobalFunction( "CapJitReplacedEXPR_REF_FVARByValue" );
 
 #! @Description
 #!   Returns the minimal positive integer $n$ such that no name of a local variable of the function <A>func</A>
-#!   (given as an enhanced syntax tree) ends with `String( `$m$` )` for any $m \geq n$.
+#!   (given as an enhanced syntax tree) ends with `Concatenation( "_", String( `$m$` ) )` for any $m \geq n$.
 #! @Returns an integer
 #! @Arguments func
 DeclareGlobalFunction( "CapJitGetNextUnusedVariableID" );

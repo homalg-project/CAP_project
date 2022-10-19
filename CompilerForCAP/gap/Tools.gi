@@ -462,7 +462,7 @@ InstallGlobalFunction( CapJitGetNextUnusedVariableID, function ( func )
             
         od;
         
-        if pos < Length( name ) then
+        if pos > 0 and pos < Length( name ) and name[pos] = '_' then
             
             Add( used_ids, Int( name{[ pos + 1 .. Length( name ) ]} ) );
             

@@ -273,15 +273,15 @@ gap> tree := CapJitHoistedBindings( tree );;
 gap> compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;
 gap> Display( compiled_func );
 function (  )
-    local var1_1, func1_1, func2_1, hoisted_3_1, hoisted_4_1;
+    local var1_1, func1_1, func2_1, hoisted_1_1, hoisted_2_1;
     var1_1 := 1;
-    hoisted_3_1 := var1_1 + 1;
-    hoisted_4_1 := hoisted_3_1 + 2;
+    hoisted_1_1 := var1_1 + 1;
+    hoisted_2_1 := hoisted_1_1 + 2;
     func2_1 := function (  )
-          return hoisted_4_1;
+          return hoisted_2_1;
       end;
     func1_1 := function (  )
-          return hoisted_4_1;
+          return hoisted_2_1;
       end;
     return [ func1_1, func2_1 ];
 end

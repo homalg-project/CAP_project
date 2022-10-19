@@ -90,9 +90,9 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    local deduped_4_1;
-    deduped_4_1 := UnderlyingCategory( cat_1 );
-    return IsColiftable( deduped_4_1, CoRelationMorphism( Source( arg2_1 ) ), AdditionForMorphisms( deduped_4_1, UnderlyingMorphism( arg2_1 ), AdditiveInverseForMorphisms( deduped_4_1, UnderlyingMorphism( arg3_1 ) ) ) );
+    local deduped_1_1;
+    deduped_1_1 := UnderlyingCategory( cat_1 );
+    return IsColiftable( deduped_1_1, CoRelationMorphism( Source( arg2_1 ) ), AdditionForMorphisms( deduped_1_1, UnderlyingMorphism( arg2_1 ), AdditiveInverseForMorphisms( deduped_1_1, UnderlyingMorphism( arg3_1 ) ) ) );
 end
 ########
         
@@ -125,12 +125,12 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local deduped_3_1, deduped_4_1;
-    deduped_4_1 := UnderlyingMorphism( arg2_1 );
-    deduped_3_1 := UnderlyingCategory( cat_1 );
-    if not IsWellDefinedForMorphisms( deduped_3_1, deduped_4_1 ) then
+    local deduped_1_1, deduped_2_1;
+    deduped_2_1 := UnderlyingMorphism( arg2_1 );
+    deduped_1_1 := UnderlyingCategory( cat_1 );
+    if not IsWellDefinedForMorphisms( deduped_1_1, deduped_2_1 ) then
         return false;
-    elif not IsColiftable( deduped_3_1, CoRelationMorphism( Source( arg2_1 ) ), PreCompose( deduped_3_1, deduped_4_1, CoRelationMorphism( Range( arg2_1 ) ) ) ) then
+    elif not IsColiftable( deduped_1_1, CoRelationMorphism( Source( arg2_1 ) ), PreCompose( deduped_1_1, deduped_2_1, CoRelationMorphism( Range( arg2_1 ) ) ) ) then
         return false;
     else
         return true;
