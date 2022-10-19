@@ -507,7 +507,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitGetNextUnusedVariableID</code>( <var class="Arg">func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: an integer</p>
 
-<p>Returns the minimal positive integer <span class="Math">n</span> such that no name of a local variable of the function <var class="Arg">func</var> (given as an enhanced syntax tree) ends with <code class="code">String( </code><span class="Math">m</span><code class="code"> )</code> for any <span class="Math">m \geq n</span>.</p>
+<p>Returns the minimal positive integer <span class="Math">n</span> such that no name of a local variable of the function <var class="Arg">func</var> (given as an enhanced syntax tree) ends with <code class="code">Concatenation( "_", String( </code><span class="Math">m</span><code class="code"> ) )</code> for any <span class="Math">m \geq n</span>.</p>
 
 <p><a id="X8051DC1182147513" name="X8051DC1182147513"></a></p>
 

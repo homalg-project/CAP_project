@@ -469,8 +469,8 @@
   [6XReturns:[106X  [33X[0;10Yan integer[133X
   
   [33X[0;0YReturns the minimal positive integer [23Xn[123X such that no name of a local variable
-  of  the function [3Xfunc[103X (given as an enhanced syntax tree) ends with [10XString( [110X[23Xm[123X[10X
-  )[110X for any [23Xm \geq n[123X.[133X
+  of  the  function  [3Xfunc[103X  (given  as  an  enhanced  syntax  tree)  ends  with
+  [10XConcatenation( "_", String( [110X[23Xm[123X[10X ) )[110X for any [23Xm \geq n[123X.[133X
   
   [1X2.4-18 PrintWithCurrentlyCompiledFunctionLocation[101X
   
