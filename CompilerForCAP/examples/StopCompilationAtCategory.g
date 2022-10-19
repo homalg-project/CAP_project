@@ -4,11 +4,11 @@
 
 #! @Example
 
-LoadPackage( "LinearAlgebraForCAP", false );
+LoadPackage( "FreydCategoriesForCAP", false );
 #! true
 
-Q := HomalgFieldOfRationals( );;
-vec := MATRIX_CATEGORY( Q : no_precompiled_code );;
+QQ := HomalgFieldOfRationals( );;
+vec := CategoryOfRows( QQ : no_precompiled_code );;
 
 func := cat -> ZeroObjectFunctorial( cat );;
 
@@ -24,14 +24,14 @@ ContinueCompilationAtCategory( vec );
 Display( CapJitCompiledFunction( func, vec ) );
 #! function ( cat_1 )
 #!     local morphism_attr_1_1, deduped_2_1;
-#!     deduped_2_1 := CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 0 
-#!        );
+#!     deduped_2_1 := CreateCapCategoryObjectWithAttributes( cat_1, 
+#!        RankOfObject, 0 );
 #!     morphism_attr_1_1 := HomalgZeroMatrix( 0, 0, UnderlyingRing( cat_1 ) );
 #!     return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_2_1, 
 #!        deduped_2_1, UnderlyingMatrix, morphism_attr_1_1 );
 #! end
 
-vec := MATRIX_CATEGORY( Q : no_precompiled_code );;
+vec := CategoryOfRows( QQ : no_precompiled_code );;
 
 StopCompilationAtPrimitivelyInstalledOperationsOfCategory( vec );
 
@@ -47,8 +47,8 @@ ContinueCompilationAtPrimitivelyInstalledOperationsOfCategory( vec );
 Display( CapJitCompiledFunction( func, vec ) );
 #! function ( cat_1 )
 #!     local morphism_attr_1_1, deduped_2_1;
-#!     deduped_2_1 := CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 0 
-#!        );
+#!     deduped_2_1 := CreateCapCategoryObjectWithAttributes( cat_1, 
+#!        RankOfObject, 0 );
 #!     morphism_attr_1_1 := HomalgZeroMatrix( 0, 0, UnderlyingRing( cat_1 ) );
 #!     return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_2_1, 
 #!        deduped_2_1, UnderlyingMatrix, morphism_attr_1_1 );

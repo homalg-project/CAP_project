@@ -4,16 +4,16 @@
 
 #! @Example
 
-LoadPackage( "LinearAlgebraForCAP", false );
+LoadPackage( "FreydCategoriesForCAP", false );
 #! true
 
-ReadPackage( "LinearAlgebraForCAP", "gap/CompilerLogic.gi" );
+ReadPackage( "FreydCategoriesForCAP",
+    "gap/MatrixCategoryAsCategoryOfRows_CompilerLogic.gi" );
 #! true
 
 QQ := HomalgFieldOfRationals( );;
 
-# be careful not to use `MatrixCategory` because attributes are not supported
-category_constructor := field -> MATRIX_CATEGORY( field );;
+category_constructor := field -> MatrixCategoryAsCategoryOfRows( field );;
 given_arguments := [ QQ ];;
 compiled_category_name := "MatrixCategoryPrecompiled";;
 package_name := "LinearAlgebraForCAP";;

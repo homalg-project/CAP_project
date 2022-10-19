@@ -43,3 +43,14 @@ CapJitAddLogicTemplate(
         needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
+
+# matrix1 + (- matrix2) => matrix1 - matrix2
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "matrix1", "matrix2" ],
+        variable_filters := [ "IsHomalgMatrix", "IsHomalgMatrix" ],
+        src_template := "matrix1 + (- matrix2)",
+        dst_template := "matrix1 - matrix2",
+        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
+    )
+);

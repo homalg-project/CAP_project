@@ -2,9 +2,10 @@
 
 #! @Section Tests
 
-LoadPackage( "LinearAlgebraForCAP" );
-
 #! @Example
+
+LoadPackage( "LinearAlgebraForCAP", false );
+#! true
 
 QQ := HomalgFieldOfRationals( );;
 
@@ -13,7 +14,7 @@ category_constructor := function( field )
     return Opposite(
         MATRIX_CATEGORY(
             field :
-            no_precompiled_code := true, FinalizeCategory := true
+            no_precompiled_code := false, FinalizeCategory := true
         ) :
         only_primitive_operations := true
     ); end;;

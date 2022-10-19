@@ -112,7 +112,7 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    return IsZero( DecideZeroColumns( UnderlyingMatrix( arg2_1 ) + (- UnderlyingMatrix( arg3_1 )), UnderlyingMatrix( Range( arg2_1 ) ) ) );
+    return IsZero( DecideZeroColumns( UnderlyingMatrix( arg2_1 ) - UnderlyingMatrix( arg3_1 ), UnderlyingMatrix( Range( arg2_1 ) ) ) );
 end
 ########
         

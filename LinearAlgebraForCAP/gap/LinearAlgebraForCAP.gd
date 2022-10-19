@@ -26,6 +26,10 @@ DeclareCategory( "IsMatrixCategory",
 DeclareAttribute( "MatrixCategory",
                   IsFieldForHomalg );
 
+# proper implementation in FreydCategoriesForCAP
+DeclareOperation( "MatrixCategoryAsCategoryOfRows",
+                  [ IsFieldForHomalg ] );
+
 # provide a constructor which is not an attribute
 DeclareGlobalFunction( "MATRIX_CATEGORY" );
 
