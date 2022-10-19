@@ -668,6 +668,26 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     if is_defined_over_field then
       
+      ## enough projectives & injectives
+      
+      ##
+      AddSomeProjectiveObject( category, { cat, obj } -> obj );
+      
+      ##
+      AddEpimorphismFromSomeProjectiveObject( category, { cat, obj } -> IdentityMorphism( cat, obj ) );
+      
+      ##
+      AddIsProjective( category, { cat, obj } -> true );
+      
+      ##
+      AddSomeInjectiveObject( category, { cat, obj } -> obj );
+      
+      ##
+      AddMonomorphismIntoSomeInjectiveObject( category, { cat, obj } -> IdentityMorphism( cat, obj ) );
+      
+      ##
+      AddIsInjective( category, { cat, obj } -> true );
+      
       ##
       AddBasisOfExternalHom( category,
         function( cat, S, T )

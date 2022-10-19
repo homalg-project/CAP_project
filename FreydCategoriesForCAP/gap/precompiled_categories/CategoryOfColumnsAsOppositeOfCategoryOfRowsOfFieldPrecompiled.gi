@@ -281,6 +281,17 @@ end
     , 100 );
     
     ##
+    AddEpimorphismFromSomeProjectiveObject( cat,
+        
+########
+function ( cat_1, A_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, A_1, A_1, UnderlyingMatrix, HomalgIdentityMatrix( RankOfObject( A_1 ), UnderlyingRing( cat_1 ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddEvaluationForDualWithGivenTensorProduct( cat,
         
 ########
@@ -414,11 +425,33 @@ end
     , 100 );
     
     ##
+    AddIsInjective( cat,
+        
+########
+function ( cat_1, arg2_1 )
+    return true;
+end
+########
+        
+    , 100 );
+    
+    ##
     AddIsLiftable( cat,
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
     return IsZero( DecideZeroColumns( UnderlyingMatrix( arg2_1 ), UnderlyingMatrix( arg3_1 ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddIsProjective( cat,
+        
+########
+function ( cat_1, arg2_1 )
+    return true;
 end
 ########
         
@@ -512,6 +545,17 @@ end
 ########
 function ( cat_1, alpha_1, beta_1 )
     return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Source( beta_1 ), UnderlyingMatrix, LeftDivide( UnderlyingMatrix( beta_1 ), UnderlyingMatrix( alpha_1 ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddMonomorphismIntoSomeInjectiveObject( cat,
+        
+########
+function ( cat_1, A_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, A_1, A_1, UnderlyingMatrix, HomalgIdentityMatrix( RankOfObject( A_1 ), UnderlyingRing( cat_1 ) ) );
 end
 ########
         
@@ -782,6 +826,28 @@ function ( cat_1, mor_1, n_1 )
     local morphism_attr_1_1;
     morphism_attr_1_1 := SimplifyHomalgMatrixByRightMultiplicationWithInvertibleMatrix( UnderlyingMatrix( mor_1 ) )[2];
     return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), Source( mor_1 ), UnderlyingMatrix, morphism_attr_1_1 );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddSomeInjectiveObject( cat,
+        
+########
+function ( cat_1, arg2_1 )
+    return arg2_1;
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddSomeProjectiveObject( cat,
+        
+########
+function ( cat_1, arg2_1 )
+    return arg2_1;
 end
 ########
         
