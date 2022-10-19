@@ -563,15 +563,20 @@ CapJitAddLogicFunction( function ( tree )
             
             func := func_stack[func_pos];
             
-            value := CapJitValueOfBinding( func.bindings, tree.args.3.name );
+            # check if tree.args.3 references a binding, not an argument
+            if SafePosition( func.nams, tree.args.3.name ) > func.narg then
             
-            if CapJitIsCallToGlobalFunction( value, attribute_name ) and value.args.length = 1 and IsBound( value.args.1.data_type ) then
+                value := CapJitValueOfBinding( func.bindings, tree.args.3.name );
                 
-                Assert( 0, IsSpecializationOfFilter( IsCapCategory, tree.args.1.data_type.filter ) );
-                
-                if value.args.1.data_type = CapJitDataTypeOfObjectOfCategory( tree.args.1.data_type.category ) then
+                if CapJitIsCallToGlobalFunction( value, attribute_name ) and value.args.length = 1 and IsBound( value.args.1.data_type ) then
                     
-                    return value.args.1;
+                    Assert( 0, IsSpecializationOfFilter( IsCapCategory, tree.args.1.data_type.filter ) );
+                    
+                    if value.args.1.data_type = CapJitDataTypeOfObjectOfCategory( tree.args.1.data_type.category ) then
+                        
+                        return value.args.1;
+                        
+                    fi;
                     
                 fi;
                 
@@ -701,7 +706,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                 source := return_obj.args.2;
                 
                 # source might have been outlined
-                if source.type = "EXPR_REF_FVAR" and source.func_id = result_func.id then
+                if source.type = "EXPR_REF_FVAR" and source.func_id = result_func.id and SafePosition( result_func.nams, source.name ) > result_func.narg then
                     
                     source := CapJitValueOfBinding( result_func.bindings, source.name );
                     
@@ -710,7 +715,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                 range := return_obj.args.3;
                 
                 # range might have been outlined
-                if range.type = "EXPR_REF_FVAR" and range.func_id = result_func.id then
+                if range.type = "EXPR_REF_FVAR" and range.func_id = result_func.id and SafePosition( result_func.nams, range.name ) > result_func.narg then
                     
                     range := CapJitValueOfBinding( result_func.bindings, range.name );
                     
