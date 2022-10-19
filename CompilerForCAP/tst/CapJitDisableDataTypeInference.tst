@@ -44,10 +44,10 @@ gap> CapJitEnableDataTypeInference( );
 #
 gap> Display( CapJitCompiledFunction( func, type_signature ) );
 function ( list1_1, list2_1 )
-    local hoisted_3_1;
-    hoisted_3_1 := List( list2_1, Sum );
+    local hoisted_1_1;
+    hoisted_1_1 := List( list2_1, Sum );
     return List( list1_1, function ( x_2 )
-            return hoisted_3_1[x_2];
+            return hoisted_1_1[x_2];
         end );
 end
 

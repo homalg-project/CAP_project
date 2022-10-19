@@ -59,9 +59,7 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, UnderlyingMatrix, DiagMat( UnderlyingRing( cat_1 ), List( arg2_1, function ( logic_new_func_x_2 )
-                return UnderlyingMatrix( logic_new_func_x_2 );
-            end ) ) );
+    return CreateCapCategoryObjectWithAttributes( cat_1, UnderlyingMatrix, DiagMat( UnderlyingRing( cat_1 ), List( arg2_1, UnderlyingMatrix ) ) );
 end
 ########
         
@@ -186,9 +184,7 @@ end
         
 ########
 function ( cat_1, objects_1, T_1, tau_1, P_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, UnderlyingMatrix, UnionOfRows( UnderlyingRing( cat_1 ), NumberColumns( UnderlyingMatrix( T_1 ) ), List( tau_1, function ( logic_new_func_x_2 )
-                return UnderlyingMatrix( logic_new_func_x_2 );
-            end ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, UnderlyingMatrix, UnionOfRows( UnderlyingRing( cat_1 ), NumberColumns( UnderlyingMatrix( T_1 ) ), List( tau_1, UnderlyingMatrix ) ) );
 end
 ########
         
@@ -210,9 +206,7 @@ end
         
 ########
 function ( cat_1, objects_1, T_1, tau_1, P_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, UnderlyingMatrix, UnionOfColumns( UnderlyingRing( cat_1 ), NumberColumns( UnderlyingMatrix( T_1 ) ), List( tau_1, function ( logic_new_func_x_2 )
-                return UnderlyingMatrix( logic_new_func_x_2 );
-            end ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, UnderlyingMatrix, UnionOfColumns( UnderlyingRing( cat_1 ), NumberColumns( UnderlyingMatrix( T_1 ) ), List( tau_1, UnderlyingMatrix ) ) );
 end
 ########
         
