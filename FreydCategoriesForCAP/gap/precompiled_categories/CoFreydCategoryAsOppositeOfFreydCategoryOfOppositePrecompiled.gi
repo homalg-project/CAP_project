@@ -34,9 +34,7 @@ end
 function ( cat_1, arg2_1 )
     return CreateCapCategoryObjectWithAttributes( cat_1, CoRelationMorphism, DirectSumFunctorial( UnderlyingCategory( cat_1 ), List( arg2_1, function ( logic_new_func_x_2 )
                 return Source( CoRelationMorphism( logic_new_func_x_2 ) );
-            end ), List( arg2_1, function ( logic_new_func_x_2 )
-                return CoRelationMorphism( logic_new_func_x_2 );
-            end ), List( arg2_1, function ( logic_new_func_x_2 )
+            end ), List( arg2_1, CoRelationMorphism ), List( arg2_1, function ( logic_new_func_x_2 )
                 return Range( CoRelationMorphism( logic_new_func_x_2 ) );
             end ) ) );
 end
@@ -51,9 +49,7 @@ end
 function ( cat_1, P_1, objects_1, L_1, objectsp_1, Pp_1 )
     return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, UnderlyingMorphism, DirectSumFunctorial( UnderlyingCategory( cat_1 ), List( L_1, function ( logic_new_func_x_2 )
                 return Source( CoRelationMorphism( Source( logic_new_func_x_2 ) ) );
-            end ), List( L_1, function ( logic_new_func_x_2 )
-                return UnderlyingMorphism( logic_new_func_x_2 );
-            end ), List( L_1, function ( logic_new_func_x_2 )
+            end ), List( L_1, UnderlyingMorphism ), List( L_1, function ( logic_new_func_x_2 )
                 return Source( CoRelationMorphism( Range( logic_new_func_x_2 ) ) );
             end ) ) );
 end
@@ -284,9 +280,7 @@ end
 function ( cat_1, objects_1, T_1, tau_1, P_1 )
     return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, UnderlyingMorphism, UniversalMorphismFromDirectSum( UnderlyingCategory( cat_1 ), List( objects_1, function ( logic_new_func_x_2 )
                 return Source( CoRelationMorphism( logic_new_func_x_2 ) );
-            end ), Source( CoRelationMorphism( T_1 ) ), List( tau_1, function ( logic_new_func_x_2 )
-                return UnderlyingMorphism( logic_new_func_x_2 );
-            end ) ) );
+            end ), Source( CoRelationMorphism( T_1 ) ), List( tau_1, UnderlyingMorphism ) ) );
 end
 ########
         
@@ -310,9 +304,7 @@ end
 function ( cat_1, objects_1, T_1, tau_1, P_1 )
     return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, UnderlyingMorphism, UniversalMorphismIntoDirectSum( UnderlyingCategory( cat_1 ), List( objects_1, function ( logic_new_func_x_2 )
                 return Source( CoRelationMorphism( logic_new_func_x_2 ) );
-            end ), Source( CoRelationMorphism( T_1 ) ), List( tau_1, function ( logic_new_func_x_2 )
-                return UnderlyingMorphism( logic_new_func_x_2 );
-            end ) ) );
+            end ), Source( CoRelationMorphism( T_1 ) ), List( tau_1, UnderlyingMorphism ) ) );
 end
 ########
         

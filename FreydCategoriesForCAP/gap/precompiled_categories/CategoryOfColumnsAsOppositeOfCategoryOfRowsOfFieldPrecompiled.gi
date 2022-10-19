@@ -222,9 +222,7 @@ end
 ########
 function ( cat_1, alpha_1, S_1, i_1 )
     local deduped_1_1, deduped_2_1;
-    deduped_2_1 := List( S_1, function ( logic_new_func_x_2 )
-            return RankOfObject( logic_new_func_x_2 );
-        end );
+    deduped_2_1 := List( S_1, RankOfObject );
     deduped_1_1 := Sum( deduped_2_1{[ 1 .. i_1 - 1 ]} ) + 1;
     return CreateCapCategoryMorphismWithAttributes( cat_1, S_1[i_1], Range( alpha_1 ), UnderlyingMatrix, CertainColumns( UnderlyingMatrix( alpha_1 ), [ deduped_1_1 .. deduped_1_1 - 1 + deduped_2_1[i_1] ] ) );
 end
@@ -238,9 +236,7 @@ end
 ########
 function ( cat_1, alpha_1, S_1, i_1 )
     local deduped_1_1, deduped_2_1;
-    deduped_2_1 := List( S_1, function ( logic_new_func_x_2 )
-            return RankOfObject( logic_new_func_x_2 );
-        end );
+    deduped_2_1 := List( S_1, RankOfObject );
     deduped_1_1 := Sum( deduped_2_1{[ 1 .. i_1 - 1 ]} ) + 1;
     return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), S_1[i_1], UnderlyingMatrix, CertainRows( UnderlyingMatrix( alpha_1 ), [ deduped_1_1 .. deduped_1_1 - 1 + deduped_2_1[i_1] ] ) );
 end
@@ -253,9 +249,7 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, Sum( List( arg2_1, function ( logic_new_func_x_2 )
-                return RankOfObject( logic_new_func_x_2 );
-            end ) ) );
+    return CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, Sum( List( arg2_1, RankOfObject ) ) );
 end
 ########
         
@@ -266,9 +260,7 @@ end
         
 ########
 function ( cat_1, P_1, objects_1, L_1, objectsp_1, Pp_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, UnderlyingMatrix, DiagMat( UnderlyingRing( cat_1 ), List( L_1, function ( logic_new_func_x_2 )
-                return UnderlyingMatrix( logic_new_func_x_2 );
-            end ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, UnderlyingMatrix, DiagMat( UnderlyingRing( cat_1 ), List( L_1, UnderlyingMatrix ) ) );
 end
 ########
         
@@ -885,9 +877,7 @@ end
         
 ########
 function ( cat_1, objects_1, T_1, tau_1, P_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, UnderlyingMatrix, UnionOfColumns( UnderlyingRing( cat_1 ), RankOfObject( T_1 ), List( tau_1, function ( logic_new_func_x_2 )
-                return UnderlyingMatrix( logic_new_func_x_2 );
-            end ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, UnderlyingMatrix, UnionOfColumns( UnderlyingRing( cat_1 ), RankOfObject( T_1 ), List( tau_1, UnderlyingMatrix ) ) );
 end
 ########
         
@@ -909,9 +899,7 @@ end
         
 ########
 function ( cat_1, objects_1, T_1, tau_1, P_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, UnderlyingMatrix, UnionOfRows( UnderlyingRing( cat_1 ), RankOfObject( T_1 ), List( tau_1, function ( logic_new_func_x_2 )
-                return UnderlyingMatrix( logic_new_func_x_2 );
-            end ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, UnderlyingMatrix, UnionOfRows( UnderlyingRing( cat_1 ), RankOfObject( T_1 ), List( tau_1, UnderlyingMatrix ) ) );
 end
 ########
         

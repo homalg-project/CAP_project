@@ -252,6 +252,15 @@ CapJitAddLogicTemplate(
     )
 );
 
+# List( list, x -> func( x ) ) => List( list, func )
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "list", "func" ],
+        src_template := "List( list, x -> func( x ) )",
+        dst_template := "List( list, func )",
+    )
+);
+
 # List( ListN( L1, L2, f ), g ) => ListN( L1, L2, { x, y } -> g( f( x, y ) ) )
 CapJitAddLogicTemplate(
     rec(
