@@ -517,6 +517,28 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     end );
     
     ##
+    AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
+      function( cat, object_list, projection_number, direct_sum_object )
+        local dim_pre, dim_post, dim_factor, number_of_objects, projection_in_factor;
+        
+        number_of_objects := Length( object_list );
+        
+        dim_pre := Sum( List( object_list{ [ 1 .. projection_number - 1 ] }, c -> RankOfObject( c ) ) );
+        
+        dim_post := Sum( List( object_list{ [ projection_number + 1 .. number_of_objects ] }, c -> RankOfObject( c ) ) );
+        
+        dim_factor := RankOfObject( object_list[ projection_number ] );
+        
+        projection_in_factor := UnionOfRows( HomalgZeroMatrix( dim_pre, dim_factor, ring ),
+                                             HomalgIdentityMatrix( dim_factor, ring ),
+                                             HomalgZeroMatrix( dim_post, dim_factor, ring )
+                                           );
+        
+        return CategoryOfRowsMorphism( cat, direct_sum_object, projection_in_factor, object_list[ projection_number ] );
+        
+    end );
+    
+    ##
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
       function( cat, diagram, test_object, sink, direct_sum )
         local underlying_matrix_of_universal_morphism;
@@ -530,6 +552,28 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
         return CategoryOfRowsMorphism( cat, test_object, underlying_matrix_of_universal_morphism, direct_sum );
       
+    end );
+    
+    ##
+    AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
+      function( cat, object_list, injection_number, coproduct )
+        local dim_pre, dim_post, dim_cofactor, number_of_objects, injection_of_cofactor;
+        
+        number_of_objects := Length( object_list );
+        
+        dim_pre := Sum( List( object_list{ [ 1 .. injection_number - 1 ] }, c -> RankOfObject( c ) ) );
+        
+        dim_post := Sum( List( object_list{ [ injection_number + 1 .. number_of_objects ] }, c -> RankOfObject( c ) ) );
+        
+        dim_cofactor := RankOfObject( object_list[ injection_number ] );
+        
+        injection_of_cofactor := UnionOfColumns( HomalgZeroMatrix( dim_cofactor, dim_pre ,ring ),
+                                                 HomalgIdentityMatrix( dim_cofactor, ring ),
+                                                 HomalgZeroMatrix( dim_cofactor, dim_post, ring )
+                                               );
+        
+        return CategoryOfRowsMorphism( cat, object_list[ injection_number ], injection_of_cofactor, coproduct );
+
     end );
     
     ##
