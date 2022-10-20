@@ -1134,6 +1134,13 @@
   [30X    [33X[0;6Y[2XDirectSumProjectionInPushout[102X  ([14XCAP:  DirectSumProjectionInPushout  for
         IsList[114X)[133X
   
+  [30X    [33X[0;6Y[2XEpimorphismFromSomeProjectiveObject[102X                              ([14XCAP:
+        EpimorphismFromSomeProjectiveObject for IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject[102X ([14XCAP:
+        EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject   for
+        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
   [30X    [33X[0;6Y[2XFiberProduct[102X ([14XCAP: FiberProduct[114X)[133X
   
   [30X    [33X[0;6Y[2XFiberProductEmbeddingInDirectSum[102X                                 ([14XCAP:
@@ -1171,6 +1178,12 @@
   [30X    [33X[0;6Y[2XInverseMorphismFromCoimageToImageWithGivenObjects[102X                ([14XCAP:
         InverseMorphismFromCoimageToImageWithGivenObjects                  for
         IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XIsBijectiveObject[102X ([14XCAP: IsBijectiveObject for IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XIsInjective[102X ([14XCAP: IsInjective for IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XIsProjective[102X ([14XCAP: IsProjective for IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XIsomorphismFromCoimageToCokernelOfKernel[102X                         ([14XCAP:
         IsomorphismFromCoimageToCokernelOfKernel for IsCapCategoryMorphism[114X)[133X
@@ -1228,6 +1241,13 @@
         IsCapCategoryMorphism,    IsCapCategoryMorphism,IsCapCategoryMorphism,
         IsCapCategoryObject[114X)[133X
   
+  [30X    [33X[0;6Y[2XMonomorphismIntoSomeInjectiveObject[102X                              ([14XCAP:
+        MonomorphismIntoSomeInjectiveObject for IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject[102X  ([14XCAP:
+        MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject    for
+        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
   [30X    [33X[0;6Y[2XMorphismFromCoimageToImageWithGivenObjects[102X                       ([14XCAP:
         MorphismFromCoimageToImageWithGivenObjects   for  IsCapCategoryObject,
         IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
@@ -1274,6 +1294,11 @@
   [30X    [33X[0;6Y[2XPushoutFunctorialWithGivenPushouts[102X                               ([14XCAP:
         PushoutFunctorialWithGivenPushouts  for  IsCapCategoryObject,  IsList,
         IsList, IsList, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XSomeInjectiveObject[102X ([14XCAP: SomeInjectiveObject for IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XSomeProjectiveObject[102X        ([14XCAP:       SomeProjectiveObject       for
+        IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XUniversalMorphismFromImage[102X    ([14XCAP:   UniversalMorphismFromImage   for
         IsCapCategoryMorphism, IsList[114X)[133X
