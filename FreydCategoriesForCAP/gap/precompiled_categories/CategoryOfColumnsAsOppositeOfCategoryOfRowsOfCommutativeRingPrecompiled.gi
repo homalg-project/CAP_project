@@ -47,25 +47,6 @@ end
     , 100 );
     
     ##
-    AddBraidingWithGivenTensorProducts( cat,
-        
-########
-function ( cat_1, s_1, a_1, b_1, r_1 )
-    local hoisted_1_1, hoisted_2_1, deduped_3_1;
-    deduped_3_1 := RankOfObject( s_1 );
-    hoisted_2_1 := RankOfObject( a_1 );
-    hoisted_1_1 := RankOfObject( b_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_3_1 ], function ( i_2 )
-                      local deduped_1_2;
-                      deduped_1_2 := (i_2 - 1);
-                      return (REM_INT( deduped_1_2, hoisted_1_1 ) * hoisted_2_1 + QUO_INT( deduped_1_2, hoisted_1_1 ) + 1);
-                  end ) ) ^ -1, deduped_3_1 ), deduped_3_1, deduped_3_1, UnderlyingRing( cat_1 ) ) );
-end
-########
-        
-    , 100 );
-    
-    ##
     AddCoDualOnMorphismsWithGivenCoDuals( cat,
         
 ########
@@ -92,17 +73,7 @@ end
         
 ########
 function ( cat_1, s_1, a_1, r_1 )
-    local deduped_1_1, deduped_2_1;
-    deduped_2_1 := UnderlyingRing( cat_1 );
-    deduped_1_1 := RankOfObject( a_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, function (  )
-              if deduped_1_1 = 0 then
-                  return HomalgZeroMatrix( RankOfObject( r_1 ), RankOfObject( s_1 ), deduped_2_1 );
-              else
-                  return ConvertMatrixToRow( HomalgIdentityMatrix( deduped_1_1, deduped_2_1 ) );
-              fi;
-              return;
-          end(  ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, ConvertMatrixToRow( HomalgIdentityMatrix( RankOfObject( a_1 ), UnderlyingRing( cat_1 ) ) ) );
 end
 ########
         
@@ -113,17 +84,7 @@ end
         
 ########
 function ( cat_1, s_1, a_1, r_1 )
-    local deduped_1_1, deduped_2_1;
-    deduped_2_1 := UnderlyingRing( cat_1 );
-    deduped_1_1 := RankOfObject( a_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, function (  )
-              if deduped_1_1 = 0 then
-                  return HomalgZeroMatrix( RankOfObject( r_1 ), RankOfObject( s_1 ), deduped_2_1 );
-              else
-                  return ConvertMatrixToColumn( HomalgIdentityMatrix( deduped_1_1, deduped_2_1 ) );
-              fi;
-              return;
-          end(  ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, ConvertMatrixToColumn( HomalgIdentityMatrix( RankOfObject( a_1 ), UnderlyingRing( cat_1 ) ) ) );
 end
 ########
         
@@ -134,17 +95,7 @@ end
         
 ########
 function ( cat_1, s_1, a_1, r_1 )
-    local deduped_1_1, deduped_2_1;
-    deduped_2_1 := UnderlyingRing( cat_1 );
-    deduped_1_1 := RankOfObject( a_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, function (  )
-              if deduped_1_1 = 0 then
-                  return HomalgZeroMatrix( RankOfObject( r_1 ), RankOfObject( s_1 ), deduped_2_1 );
-              else
-                  return ConvertMatrixToColumn( HomalgIdentityMatrix( deduped_1_1, deduped_2_1 ) );
-              fi;
-              return;
-          end(  ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, ConvertMatrixToColumn( HomalgIdentityMatrix( RankOfObject( a_1 ), UnderlyingRing( cat_1 ) ) ) );
 end
 ########
         
@@ -249,17 +200,7 @@ end
         
 ########
 function ( cat_1, s_1, a_1, r_1 )
-    local deduped_1_1, deduped_2_1;
-    deduped_2_1 := UnderlyingRing( cat_1 );
-    deduped_1_1 := RankOfObject( a_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, function (  )
-              if deduped_1_1 = 0 then
-                  return HomalgZeroMatrix( RankOfObject( r_1 ), RankOfObject( s_1 ), deduped_2_1 );
-              else
-                  return ConvertMatrixToRow( HomalgIdentityMatrix( deduped_1_1, deduped_2_1 ) );
-              fi;
-              return;
-          end(  ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, ConvertMatrixToRow( HomalgIdentityMatrix( RankOfObject( a_1 ), UnderlyingRing( cat_1 ) ) ) );
 end
 ########
         
@@ -306,6 +247,21 @@ function ( cat_1, a_1, b_1 )
     local morphism_attr_1_1;
     morphism_attr_1_1 := ReducedSyzygiesOfRows( UnderlyingMatrix( a_1 ), UnderlyingMatrix( b_1 ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, Range( a_1 ), CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( cat,
+        
+########
+function ( cat_1, objects_1, k_1, P_1 )
+    local deduped_1_1, deduped_2_1, deduped_3_1;
+    deduped_3_1 := UnderlyingRing( cat_1 );
+    deduped_2_1 := List( objects_1, RankOfObject );
+    deduped_1_1 := deduped_2_1[k_1];
+    return CreateCapCategoryMorphismWithAttributes( cat_1, objects_1[k_1], P_1, UnderlyingMatrix, UnionOfRows( HomalgZeroMatrix( Sum( deduped_2_1{[ 1 .. k_1 - 1 ]} ), deduped_1_1, deduped_3_1 ), HomalgIdentityMatrix( deduped_1_1, deduped_3_1 ), HomalgZeroMatrix( Sum( deduped_2_1{[ k_1 + 1 .. Length( objects_1 ) ]} ), deduped_1_1, deduped_3_1 ) ) );
 end
 ########
         
@@ -540,6 +496,21 @@ end
 ########
 function ( cat_1, beta_1, alpha_1 )
     return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Range( beta_1 ), UnderlyingMatrix, UnderlyingMatrix( beta_1 ) * UnderlyingMatrix( alpha_1 ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddProjectionInFactorOfDirectSumWithGivenDirectSum( cat,
+        
+########
+function ( cat_1, objects_1, k_1, P_1 )
+    local deduped_1_1, deduped_2_1, deduped_3_1;
+    deduped_3_1 := UnderlyingRing( cat_1 );
+    deduped_2_1 := List( objects_1, RankOfObject );
+    deduped_1_1 := deduped_2_1[k_1];
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, objects_1[k_1], UnderlyingMatrix, UnionOfColumns( HomalgZeroMatrix( deduped_1_1, Sum( deduped_2_1{[ 1 .. k_1 - 1 ]} ), deduped_3_1 ), HomalgIdentityMatrix( deduped_1_1, deduped_3_1 ), HomalgZeroMatrix( deduped_1_1, Sum( deduped_2_1{[ k_1 + 1 .. Length( objects_1 ) ]} ), deduped_3_1 ) ) );
 end
 ########
         

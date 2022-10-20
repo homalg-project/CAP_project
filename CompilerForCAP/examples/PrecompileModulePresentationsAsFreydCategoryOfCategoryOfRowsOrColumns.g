@@ -7,6 +7,10 @@
 LoadPackage( "ModulePresentationsForCAP", false );
 #! true
 
+ReadPackage( "FreydCategoriesForCAP",
+    "gap/MatrixCategoryAsCategoryOfRows_CompilerLogic.gi" );
+#! true
+
 QQ := HomalgFieldOfRationalsInSingular( );;
 QQxy := QQ * "x,y";;
 EEE := KoszulDualRing( QQxy * "a,b" );;

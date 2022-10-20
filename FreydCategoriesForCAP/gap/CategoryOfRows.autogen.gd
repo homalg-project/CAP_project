@@ -338,6 +338,8 @@
 #! * <Ref BookName="CAP" Func="CokernelProjection" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CokernelProjectionWithGivenCokernelObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="DirectSumProjectionInPushout" Label="for Is" />
+#! * <Ref BookName="CAP" Func="EpimorphismFromSomeProjectiveObject" Label="for Is" />
+#! * <Ref BookName="CAP" Func="EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="FiberProduct" Label="" />
 #! * <Ref BookName="CAP" Func="FiberProductEmbeddingInDirectSum" Label="for Is" />
 #! * <Ref BookName="CAP" Func="FiberProductFunctorial" Label="for Is" />
@@ -350,6 +352,9 @@
 #! * <Ref BookName="CAP" Func="InjectionOfCofactorOfPushout" Label="for Is" />
 #! * <Ref BookName="CAP" Func="InjectionOfCofactorOfPushoutWithGivenPushout" Label="for Is" />
 #! * <Ref BookName="CAP" Func="InverseMorphismFromCoimageToImageWithGivenObjects" Label="for Is" />
+#! * <Ref BookName="CAP" Func="IsBijectiveObject" Label="for Is" />
+#! * <Ref BookName="CAP" Func="IsInjective" Label="for Is" />
+#! * <Ref BookName="CAP" Func="IsProjective" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsomorphismFromCoimageToCokernelOfKernel" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsomorphismFromCokernelOfDiagonalDifferenceToPushout" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsomorphismFromCokernelOfKernelToCoimage" Label="for Is" />
@@ -367,6 +372,8 @@
 #! * <Ref BookName="CAP" Func="KernelObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="KernelObjectFunctorial" Label="for Is" />
 #! * <Ref BookName="CAP" Func="KernelObjectFunctorialWithGivenKernelObjects" Label="for Is" />
+#! * <Ref BookName="CAP" Func="MonomorphismIntoSomeInjectiveObject" Label="for Is" />
+#! * <Ref BookName="CAP" Func="MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MorphismFromCoimageToImageWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MorphismFromFiberProductToSink" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MorphismFromFiberProductToSinkWithGivenFiberProduct" Label="for Is" />
@@ -381,6 +388,8 @@
 #! * <Ref BookName="CAP" Func="Pushout" Label="for Is" />
 #! * <Ref BookName="CAP" Func="PushoutFunctorial" Label="for Is" />
 #! * <Ref BookName="CAP" Func="PushoutFunctorialWithGivenPushouts" Label="for Is" />
+#! * <Ref BookName="CAP" Func="SomeInjectiveObject" Label="for Is" />
+#! * <Ref BookName="CAP" Func="SomeProjectiveObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="UniversalMorphismFromImage" Label="for Is" />
 #! * <Ref BookName="CAP" Func="UniversalMorphismFromImageWithGivenImageObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="UniversalMorphismFromPushout" Label="for Is" />

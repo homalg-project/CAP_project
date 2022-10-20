@@ -95,24 +95,13 @@ end
         
 ########
 function ( cat_1, objects_1, k_1, P_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1, deduped_7_1;
-    deduped_7_1 := UnderlyingRing( cat_1 );
-    deduped_6_1 := List( objects_1, function ( logic_new_func_x_2 )
+    local deduped_1_1, deduped_2_1, deduped_3_1;
+    deduped_3_1 := UnderlyingRing( cat_1 );
+    deduped_2_1 := List( objects_1, function ( logic_new_func_x_2 )
             return NumberRows( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
-    deduped_5_1 := deduped_6_1[k_1];
-    hoisted_4_1 := deduped_7_1;
-    hoisted_3_1 := deduped_5_1;
-    hoisted_2_1 := deduped_6_1;
-    hoisted_1_1 := HomalgIdentityMatrix( deduped_5_1, deduped_7_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, objects_1[k_1], P_1, UnderlyingMatrix, UnionOfRows( deduped_7_1, deduped_5_1, List( [ 1 .. Length( objects_1 ) ], function ( logic_new_func_x_2 )
-                if logic_new_func_x_2 = k_1 then
-                    return hoisted_1_1;
-                else
-                    return HomalgZeroMatrix( hoisted_2_1[logic_new_func_x_2], hoisted_3_1, hoisted_4_1 );
-                fi;
-                return;
-            end ) ) );
+    deduped_1_1 := deduped_2_1[k_1];
+    return CreateCapCategoryMorphismWithAttributes( cat_1, objects_1[k_1], P_1, UnderlyingMatrix, UnionOfRows( HomalgZeroMatrix( Sum( deduped_2_1{[ 1 .. k_1 - 1 ]} ), deduped_1_1, deduped_3_1 ), HomalgIdentityMatrix( deduped_1_1, deduped_3_1 ), HomalgZeroMatrix( Sum( deduped_2_1{[ k_1 + 1 .. Length( objects_1 ) ]} ), deduped_1_1, deduped_3_1 ) ) );
 end
 ########
         
@@ -123,7 +112,7 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    return IsZero( DecideZeroColumns( UnderlyingMatrix( arg2_1 ) + (- UnderlyingMatrix( arg3_1 )), UnderlyingMatrix( Range( arg2_1 ) ) ) );
+    return IsZero( DecideZeroColumns( UnderlyingMatrix( arg2_1 ) - UnderlyingMatrix( arg3_1 ), UnderlyingMatrix( Range( arg2_1 ) ) ) );
 end
 ########
         
@@ -156,24 +145,13 @@ end
         
 ########
 function ( cat_1, objects_1, k_1, P_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1, deduped_7_1;
-    deduped_7_1 := UnderlyingRing( cat_1 );
-    deduped_6_1 := List( objects_1, function ( logic_new_func_x_2 )
+    local deduped_1_1, deduped_2_1, deduped_3_1;
+    deduped_3_1 := UnderlyingRing( cat_1 );
+    deduped_2_1 := List( objects_1, function ( logic_new_func_x_2 )
             return NumberRows( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
-    deduped_5_1 := deduped_6_1[k_1];
-    hoisted_4_1 := deduped_7_1;
-    hoisted_3_1 := deduped_5_1;
-    hoisted_2_1 := deduped_6_1;
-    hoisted_1_1 := HomalgIdentityMatrix( deduped_5_1, deduped_7_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, objects_1[k_1], UnderlyingMatrix, UnionOfColumns( deduped_7_1, deduped_5_1, List( [ 1 .. Length( objects_1 ) ], function ( logic_new_func_x_2 )
-                if logic_new_func_x_2 = k_1 then
-                    return hoisted_1_1;
-                else
-                    return HomalgZeroMatrix( hoisted_3_1, hoisted_2_1[logic_new_func_x_2], hoisted_4_1 );
-                fi;
-                return;
-            end ) ) );
+    deduped_1_1 := deduped_2_1[k_1];
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, objects_1[k_1], UnderlyingMatrix, UnionOfColumns( HomalgZeroMatrix( deduped_1_1, Sum( deduped_2_1{[ 1 .. k_1 - 1 ]} ), deduped_3_1 ), HomalgIdentityMatrix( deduped_1_1, deduped_3_1 ), HomalgZeroMatrix( deduped_1_1, Sum( deduped_2_1{[ k_1 + 1 .. Length( objects_1 ) ]} ), deduped_3_1 ) ) );
 end
 ########
         

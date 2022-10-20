@@ -436,7 +436,7 @@ InstallMethod( WrapperCategory,
         
         HC := RangeCategoryOfHomomorphismStructure( C );
         
-        if IsBound( options.wrap_range_of_hom_structure ) and options.wrap_range_of_hom_structure and not WasCreatedAsWrapperCapCategory( HC ) then
+        if IsBound( options.wrap_range_of_hom_structure ) and options.wrap_range_of_hom_structure then
             
             if IsIdenticalObj( C, HC ) then
                 

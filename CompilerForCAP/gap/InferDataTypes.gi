@@ -1364,6 +1364,7 @@ CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "DecideZeroRows", [ "IsHoma
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "DecideZeroColumns", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
 
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "+", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "-", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
 
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "*", [ "IsHomalgRingElement", "IsHomalgRingElement" ], "IsHomalgRingElement" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "*", [ "IsInt", "IsHomalgMatrix" ], "IsHomalgMatrix" );

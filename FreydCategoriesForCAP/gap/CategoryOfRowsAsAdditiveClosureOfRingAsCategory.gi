@@ -241,6 +241,10 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
         
         SetIsAbelianCategory( wrapper, true );
         
+        SetIsAbelianCategoryWithEnoughProjectives( wrapper, true );
+        
+        SetIsAbelianCategoryWithEnoughInjectives( wrapper, true );
+        
     fi;
     
     # some manually precompiled functions

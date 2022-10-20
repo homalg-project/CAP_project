@@ -441,7 +441,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
         return CategoryOfRowsMorphism( cat, Source( morphism_1 ),
                                        UnderlyingMatrix( morphism_1 ) + UnderlyingMatrix( morphism_2 ),
-                                       Range( morphism_2 ) );
+                                       Range( morphism_1 ) );
         
     end );
     
@@ -517,6 +517,28 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     end );
     
     ##
+    AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
+      function( cat, object_list, projection_number, direct_sum_object )
+        local dim_pre, dim_post, dim_factor, number_of_objects, projection_in_factor;
+        
+        number_of_objects := Length( object_list );
+        
+        dim_pre := Sum( List( object_list{ [ 1 .. projection_number - 1 ] }, c -> RankOfObject( c ) ) );
+        
+        dim_post := Sum( List( object_list{ [ projection_number + 1 .. number_of_objects ] }, c -> RankOfObject( c ) ) );
+        
+        dim_factor := RankOfObject( object_list[ projection_number ] );
+        
+        projection_in_factor := UnionOfRows( HomalgZeroMatrix( dim_pre, dim_factor, ring ),
+                                             HomalgIdentityMatrix( dim_factor, ring ),
+                                             HomalgZeroMatrix( dim_post, dim_factor, ring )
+                                           );
+        
+        return CategoryOfRowsMorphism( cat, direct_sum_object, projection_in_factor, object_list[ projection_number ] );
+        
+    end );
+    
+    ##
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
       function( cat, diagram, test_object, sink, direct_sum )
         local underlying_matrix_of_universal_morphism;
@@ -530,6 +552,28 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
         return CategoryOfRowsMorphism( cat, test_object, underlying_matrix_of_universal_morphism, direct_sum );
       
+    end );
+    
+    ##
+    AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
+      function( cat, object_list, injection_number, coproduct )
+        local dim_pre, dim_post, dim_cofactor, number_of_objects, injection_of_cofactor;
+        
+        number_of_objects := Length( object_list );
+        
+        dim_pre := Sum( List( object_list{ [ 1 .. injection_number - 1 ] }, c -> RankOfObject( c ) ) );
+        
+        dim_post := Sum( List( object_list{ [ injection_number + 1 .. number_of_objects ] }, c -> RankOfObject( c ) ) );
+        
+        dim_cofactor := RankOfObject( object_list[ injection_number ] );
+        
+        injection_of_cofactor := UnionOfColumns( HomalgZeroMatrix( dim_cofactor, dim_pre ,ring ),
+                                                 HomalgIdentityMatrix( dim_cofactor, ring ),
+                                                 HomalgZeroMatrix( dim_cofactor, dim_post, ring )
+                                               );
+        
+        return CategoryOfRowsMorphism( cat, object_list[ injection_number ], injection_of_cofactor, coproduct );
+
     end );
     
     ##
@@ -668,6 +712,26 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     if is_defined_over_field then
       
+      ## enough projectives & injectives
+      
+      ##
+      AddSomeProjectiveObject( category, { cat, obj } -> obj );
+      
+      ##
+      AddEpimorphismFromSomeProjectiveObject( category, { cat, obj } -> IdentityMorphism( cat, obj ) );
+      
+      ##
+      AddIsProjective( category, { cat, obj } -> true );
+      
+      ##
+      AddSomeInjectiveObject( category, { cat, obj } -> obj );
+      
+      ##
+      AddMonomorphismIntoSomeInjectiveObject( category, { cat, obj } -> IdentityMorphism( cat, obj ) );
+      
+      ##
+      AddIsInjective( category, { cat, obj } -> true );
+      
       ##
       AddBasisOfExternalHom( category,
         function( cat, S, T )
@@ -732,6 +796,62 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
           cokernel_obj := CategoryOfRowsObject( cat, NrColumns( cokernel_proj ) ); # taking NrColumns could be avoided by using a WithGiven version
           
           return CategoryOfRowsMorphism( cat, Range( morphism ), cokernel_proj, cokernel_obj );
+          
+      end );
+      
+      ##
+      AddSomeReductionBySplitEpiSummand( category,
+        function( cat, alpha )
+          
+          return MorphismFromZeroObject( cat, CokernelObject( cat, alpha ) );
+          
+      end );
+      
+      ##
+      AddSomeReductionBySplitEpiSummand_MorphismFromInputRange( category,
+        function( cat, alpha )
+          
+          return CokernelProjection( cat, alpha );
+          
+      end );
+      
+      ##
+      AddSomeReductionBySplitEpiSummand_MorphismToInputRange( category,
+        function( cat, alpha )
+          local cok;
+          
+          cok := CokernelProjection( cat, alpha );
+          
+          return Lift( cat,
+                  IdentityMorphism( cat, Range( cok ) ),
+                  cok
+          );
+          
+      end );
+      
+    else
+      
+      ##
+      AddSomeReductionBySplitEpiSummand( category,
+        function( cat, alpha )
+          
+          return AsCategoryOfRowsMorphism( CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple( alpha )[1], category );
+          
+      end );
+      
+      ##
+      AddSomeReductionBySplitEpiSummand_MorphismFromInputRange( category,
+        function( cat, alpha )
+          
+          return AsCategoryOfRowsMorphism( CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple( alpha )[2], category );
+          
+      end );
+      
+      ##
+      AddSomeReductionBySplitEpiSummand_MorphismToInputRange( category,
+        function( cat, alpha )
+          
+          return AsCategoryOfRowsMorphism( CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple( alpha )[3], category );
           
       end );
       
@@ -813,30 +933,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         ## Operations related to the tensor-hom adjunction
         
         ##
-        AddBraidingInverseWithGivenTensorProducts( category,
-          function( cat, object_2_tensored_object_1, object_1, object_2, object_1_tensored_object_2 )
-          local permutation_matrix, rank, rank_1, rank_2;
-          
-          rank_1 := RankOfObject( object_1 );
-          
-          rank_2 := RankOfObject( object_2 );
-          
-          rank := RankOfObject( object_1_tensored_object_2 );
-          
-          ## Mind the inversion of the permutation
-          permutation_matrix := PermutationMat(
-                                  PermList( List( [ 1 .. rank ], i -> ( RemInt( i - 1, rank_2 ) * rank_1 + QuoInt( i - 1, rank_2 ) + 1 ) ) )^(-1),
-                                  rank
-                                );
-          
-          return CategoryOfRowsMorphism( cat, object_2_tensored_object_1,
-                                            HomalgMatrix( permutation_matrix, rank, rank, ring ),
-                                            object_1_tensored_object_2
-                                          );
-          
-        end );
-        
-        ##
         AddDualOnObjects( category, { cat, obj } -> obj );
         
         ##
@@ -856,12 +952,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
             
             rank := RankOfObject( object );
             
-            if rank = 0 then
-                
-                return ZeroMorphism( cat, tensor_object, unit );
-                
-            fi;
-            
             id := HomalgIdentityMatrix( rank, ring );
             
             return CategoryOfRowsMorphism( cat, tensor_object,
@@ -876,12 +966,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
             local rank, id;
             
             rank := RankOfObject( object );
-            
-            if rank = 0 then
-                
-                return ZeroMorphism( cat, unit, tensor_object );
-                
-            fi;
             
             id := HomalgIdentityMatrix( rank, ring );
             
@@ -916,12 +1000,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
             
             rank := RankOfObject( object );
             
-            if rank = 0 then
-                
-                return ZeroMorphism( cat, unit, tensor_object );
-                
-            fi;
-            
             id := HomalgIdentityMatrix( rank, ring );
             
             return CategoryOfRowsMorphism( cat, unit,
@@ -936,12 +1014,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
             local rank, id;
             
             rank := RankOfObject( object );
-            
-            if rank = 0 then
-                
-                return ZeroMorphism( cat, tensor_object, unit );
-                
-            fi;
             
             id := HomalgIdentityMatrix( rank, ring );
             
@@ -1101,30 +1173,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
             CATEGORY_OF_ROWS_SimplificationRangeTuple( alpha )[2],
             Range( alpha )
           );
-        
-    end );
-    
-    ##
-    AddSomeReductionBySplitEpiSummand( category,
-      function( cat, alpha )
-        
-        return AsCategoryOfRowsMorphism( CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple( alpha )[1], category );
-        
-    end );
-    
-    ##
-    AddSomeReductionBySplitEpiSummand_MorphismFromInputRange( category,
-      function( cat, alpha )
-        
-        return AsCategoryOfRowsMorphism( CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple( alpha )[2], category );
-        
-    end );
-    
-    ##
-    AddSomeReductionBySplitEpiSummand_MorphismToInputRange( category,
-      function( cat, alpha )
-        
-        return AsCategoryOfRowsMorphism( CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple( alpha )[3], category );
         
     end );
     

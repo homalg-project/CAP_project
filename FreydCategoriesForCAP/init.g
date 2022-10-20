@@ -12,6 +12,8 @@ ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfRowsAsAdditiveClosureOfRing
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfColumns.gd" );
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfColumnsAsOppositeOfCategoryOfRows.gd" );
 
+ReadPackage( "FreydCategoriesForCAP", "gap/MatrixCategoryAsCategoryOfRows.gd" );
+
 # include the packages for graded rows and columns
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfGradedRowsAndColumns/GradedRowOrColumn.gd" );
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfGradedRowsAndColumns/GradedRowOrColumnMorphism.gd" );

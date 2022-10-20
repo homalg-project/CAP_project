@@ -3,12 +3,12 @@ gap> START_TEST( "CapJitCompiledFunction" );
 #
 gap> LoadPackage( "CompilerForCAP", false );
 true
-gap> LoadPackage( "LinearAlgebraForCAP", false );
+gap> LoadPackage( "FreydCategoriesForCAP", false );
 true
 
 #
-gap> Q := HomalgFieldOfRationals();;
-gap> vec := MATRIX_CATEGORY( Q );;
+gap> QQ := HomalgFieldOfRationals();;
+gap> vec := CategoryOfRows( QQ );;
 
 # test CapJitCompiledFunction with explicit type signature
 gap> Display(
@@ -26,7 +26,7 @@ gap> Display(
 >     )
 > );
 function ( cat_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 0 );
+    return CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, 0 );
 end
 
 #

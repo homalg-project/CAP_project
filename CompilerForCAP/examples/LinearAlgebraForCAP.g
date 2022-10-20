@@ -2,12 +2,13 @@
 
 #! @Section Examples
 
-LoadPackage( "LinearAlgebraForCAP" );
-
 #! @Example
 
+LoadPackage( "FreydCategoriesForCAP", false );
+#! true
+
 Q := HomalgFieldOfRationals();;
-vec := MATRIX_CATEGORY( Q : no_precompiled_code := true );;
+vec := MatrixCategoryAsCategoryOfRows( Q : no_precompiled_code := true );;
 
 V := MatrixCategoryObject( vec, 2 );;
 alpha := ZeroMorphism( V, V );;
@@ -16,45 +17,7 @@ beta := IdentityMorphism( V );;
 W := DirectSum( V, V );;
 morphism_matrix := [ [ alpha, beta ], [ beta, alpha ] ];;
 
-# compile the primitive installation of
-# MorphismBetweenDirectSumsWithGivenDirectSums
-Display(
-    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[2][1]
-);
-#! function ( cat, S, diagram_S, morphism_matrix, diagram_T, T )
-#!     local underlying_matrix;
-#!     underlying_matrix := List( morphism_matrix, function ( row )
-#!             return List( row, UnderlyingMatrix );
-#!         end );
-#!     underlying_matrix := ListN( diagram_S, underlying_matrix, 
-#!        function ( source, row )
-#!             return UnionOfColumns( homalg_field, Dimension( source ), row );
-#!         end );
-#!     return 
-#!      VectorSpaceMorphism( cat, S, UnionOfRows( homalg_field, Dimension( T ), 
-#!          underlying_matrix ), T );
-#! end
-compiled_func1 := CapJitCompiledFunction(
-    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[2][1],
-    vec
-);;
-Display( compiled_func1 );
-#! function ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )
-#!     local hoisted_1_1, deduped_2_1;
-#!     deduped_2_1 := UnderlyingRing( cat_1 );
-#!     hoisted_1_1 := deduped_2_1;
-#!     return CreateCapCategoryMorphismWithAttributes( cat_1, S_1, T_1, 
-#!        UnderlyingMatrix, UnionOfRows( deduped_2_1, Dimension( T_1 ), 
-#!          ListN( diagram_S_1, List( morphism_matrix_1, function ( row_2 )
-#!                   return List( row_2, UnderlyingMatrix );
-#!               end ), function ( source_2, row_2 )
-#!                 return UnionOfColumns( hoisted_1_1, Dimension( source_2 ), 
-#!                    row_2 );
-#!             end ) ) );
-#! end
-
-# compile the default derivation of
-# MorphismBetweenDirectSumsWithGivenDirectSums
+# compile the derivation of MorphismBetweenDirectSumsWithGivenDirectSums
 Display(
     vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[1][1]
 );
@@ -92,12 +55,12 @@ Display( ENHANCED_SYNTAX_TREE_CODE(
         vec, "KernelEmbedding", true
     )
 ) );
-#! function ( cat_1, morphism_1 )
+#! function ( cat_1, alpha_1 )
 #!     local morphism_attr_1_1;
-#!     morphism_attr_1_1 := SyzygiesOfRows( UnderlyingMatrix( morphism_1 ) );
+#!     morphism_attr_1_1 := SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) );
 #!     return CreateCapCategoryMorphismWithAttributes( cat_1, 
 #!        CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 
-#!          NumberRows( morphism_attr_1_1 ) ), Source( morphism_1 ), 
+#!          NumberRows( morphism_attr_1_1 ) ), Source( alpha_1 ), 
 #!        UnderlyingMatrix, morphism_attr_1_1 );
 #! end
 

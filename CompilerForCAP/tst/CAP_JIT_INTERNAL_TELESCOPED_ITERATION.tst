@@ -3,22 +3,26 @@ gap> START_TEST( "CAP_JIT_INTERNAL_TELESCOPED_ITERATION" );
 #
 gap> LoadPackage( "CompilerForCAP", false );
 true
-gap> LoadPackage( "LinearAlgebraForCAP", false );
+gap> LoadPackage( "FreydCategoriesForCAP", false );
+true
+
+#
+gap> ReadPackage( "FreydCategoriesForCAP", "gap/MatrixCategoryAsCategoryOfRows_CompilerLogic.gi" );
 true
 
 #
 gap> QQ := HomalgFieldOfRationals( );;
-gap> cat := MatrixCategory( QQ );;
+gap> cat := CategoryOfRows( QQ );;
 
 # CapFixpoint with object
 gap> func := function( cat )
 >   local predicate, func, initial_value;
 >     
->     predicate := { x, y } -> Dimension( x ) = 3 and Dimension( y ) = 2;
+>     predicate := { x, y } -> RankOfObject( x ) = 3 and RankOfObject( y ) = 2;
 >     
->     func := x -> MatrixCategoryObject( cat, Dimension( x ) - 1 );
+>     func := x -> CategoryOfRowsObject( cat, RankOfObject( x ) - 1 );
 >     
->     initial_value := MatrixCategoryObject( cat, 10 );
+>     initial_value := CategoryOfRowsObject( cat, 10 );
 >     
 >     return CapFixpoint( predicate, func, initial_value );
 >     
@@ -26,12 +30,12 @@ gap> func := function( cat )
 
 #
 gap> func( cat );
-<A vector space object over Q of dimension 2>
+<A row module over Q of rank 2>
 
 #
 gap> Display( CapJitCompiledFunction( func, cat ) );
 function ( cat_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 
+    return CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, 
        CapFixpoint( function ( x_2, y_2 )
               return x_2 = 3 and y_2 = 2;
           end, function ( x_2 )
@@ -43,7 +47,7 @@ end
 gap> func := function( cat )
 >   local obj, predicate, func, initial_value;
 >     
->     obj := MatrixCategoryObject( cat, 1 );
+>     obj := CategoryOfRowsObject( cat, 1 );
 >     
 >     predicate := { x, y } -> IsZeroForMorphisms( cat, y );
 >     
@@ -57,18 +61,18 @@ gap> func := function( cat )
 
 #
 gap> func( cat );
-<A morphism in Category of matrices over Q>
+<A morphism in Rows( Q )>
 
 #
 gap> Display( CapJitCompiledFunction( func, cat ) );
 function ( cat_1 )
     local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 1 
-       );
+    deduped_2_1 := CreateCapCategoryObjectWithAttributes( cat_1, 
+       RankOfObject, 1 );
     morphism_attr_1_1 := CapFixpoint( function ( x_2, y_2 )
             return IsZero( y_2 );
         end, function ( x_2 )
-            return x_2 + -1 * x_2;
+            return x_2 - x_2;
         end, HomalgIdentityMatrix( 1, UnderlyingRing( cat_1 ) ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_2_1, 
        deduped_2_1, UnderlyingMatrix, morphism_attr_1_1 );
@@ -103,8 +107,7 @@ gap> Display( CapJitCompiledFunction( func, cat ) );
 function ( cat_1, source_1, alpha_1, beta_1, gamma_1 )
     return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, 
        Range( gamma_1 ), UnderlyingMatrix, 
-       HomalgIdentityMatrix( Dimension( source_1 ), UnderlyingRing( cat_1 ) ) 
-            * UnderlyingMatrix( alpha_1 ) * UnderlyingMatrix( beta_1 ) 
+       UnderlyingMatrix( alpha_1 ) * UnderlyingMatrix( beta_1 ) 
         * UnderlyingMatrix( gamma_1 ) );
 end
 
@@ -121,8 +124,8 @@ gap> Display( CapJitCompiledFunction( func, cat ) );
 function ( cat_1, source_1 )
     return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, 
        source_1, UnderlyingMatrix, 
-       HomalgIdentityMatrix( Dimension( source_1 ), UnderlyingRing( cat_1 ) ) 
-       );
+       HomalgIdentityMatrix( RankOfObject( source_1 ), 
+         UnderlyingRing( cat_1 ) ) );
 end
 
 # Iterated (case: from_initial_value)
@@ -162,8 +165,8 @@ function ( cat_1, source_1, morphism_list_1, range_1 )
        UnderlyingMatrix, Iterated( List( morphism_list_1, UnderlyingMatrix ), 
          function ( alpha_2, beta_2 )
               return alpha_2 + beta_2;
-          end, HomalgZeroMatrix( Dimension( source_1 ), Dimension( range_1 ), 
-           UnderlyingRing( cat_1 ) ) ) );
+          end, HomalgZeroMatrix( RankOfObject( source_1 ), 
+           RankOfObject( range_1 ), UnderlyingRing( cat_1 ) ) ) );
 end
 
 # Iterated (case: from_compiler_hints)
@@ -183,9 +186,9 @@ function ( cat_1, morphism_list_1 )
             return alpha_2 * beta_2;
         end );
     return CreateCapCategoryMorphismWithAttributes( cat_1, 
-       CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 
+       CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, 
          NumberRows( morphism_attr_1_1 ) ), 
-       CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 
+       CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, 
          NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, 
        morphism_attr_1_1 );
 end
