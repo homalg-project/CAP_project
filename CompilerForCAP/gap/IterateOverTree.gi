@@ -170,7 +170,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ITERATE_OVER_TREE, function ( tree, pre_
         keys := List( tree.names, name -> Concatenation( "BINDING_", name ) );
         
         # check that tree.names and the record entries are in sync
-        Assert( 3, IsSortedList( tree.names ) and SortedList( Filtered( RecNames( tree ), name -> StartsWith( name, "BINDING_" ) ) ) = keys );
+        Assert( 3, IsEqualSet( Filtered( RecNames( tree ), name -> StartsWith( name, "BINDING_" ) ), keys ) );
         
     else
         

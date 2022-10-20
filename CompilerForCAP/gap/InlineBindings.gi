@@ -35,8 +35,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INLINED_BINDINGS, function ( tree, initi
             
             # check that tree.names and the record entries are in sync
             # otherwise we might "lose" bindings unexpectedly
-            Assert( 0, IsSortedList( tree.names ) );
-            Assert( 0, SortedList( Filtered( RecNames( tree ), name -> StartsWith( name, "BINDING_" ) ) ) = List( tree.names, name -> Concatenation( "BINDING_", name ) ) );
+            Assert( 0, IsEqualSet( Filtered( RecNames( tree ), name -> StartsWith( name, "BINDING_" ) ), List( tree.names, name -> Concatenation( "BINDING_", name ) ) ) );
             
             new_bindings := rec(
                 type := "FVAR_BINDING_SEQ",

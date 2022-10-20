@@ -354,7 +354,7 @@ InstallGlobalFunction( CapJitAddBinding, function ( bindings, name, value )
     fi;
     
     bindings.(rec_name) := value;
-    AddSet( bindings.names, name );
+    Add( bindings.names, name );
     
 end );
 
@@ -386,6 +386,7 @@ InstallGlobalFunction( CapJitValueOfBinding, function ( bindings, name )
 end );
 
 InstallGlobalFunction( CapJitUnbindBinding, function ( bindings, name )
+  local pos;
     
     if not IsRecord( bindings ) or not IsBound( bindings.type ) or bindings.type <> "FVAR_BINDING_SEQ" then
         
@@ -401,7 +402,9 @@ InstallGlobalFunction( CapJitUnbindBinding, function ( bindings, name )
         
     fi;
     
-    if not name in bindings.names then
+    pos := Position( bindings.names, name );
+    
+    if pos = fail then
         
         # COVERAGE_IGNORE_NEXT_LINE
         Error( name, " is not the name of a binding" );
@@ -409,7 +412,7 @@ InstallGlobalFunction( CapJitUnbindBinding, function ( bindings, name )
     fi;
     
     Unbind( bindings.(Concatenation( "BINDING_", name )) );
-    RemoveSet( bindings.names, name );
+    Remove( bindings.names, pos );
     
 end );
 
