@@ -10,19 +10,17 @@ jobs:
     steps:
       - checkout
       - run: |
-          sudo apt -o Acquire::https::Verify-Peer="false" update
-          sudo apt -o Acquire::https::Verify-Peer="false" dist-upgrade -y
-          sudo apt -o Acquire::https::Verify-Peer="false" install -y texlive-latex-extra texlive-science curl
           cd ..
+          git clone --depth 1 https://github.com/gap-packages/AutoDoc.git
           git clone --depth 1 https://github.com/homalg-project/homalg_project.git
           cd CAP_project
-          make ci-test
+          make -j 4 --output-sync ci-test
 workflows:
   version: 2
   commit:
     jobs:
       - test:
-          docker_image: gapsystem/gap-docker
+          docker_image: ghcr.io/homalg-project/gap-docker
           filters:
             branches:
               only:
@@ -39,4 +37,4 @@ workflows:
                 - master
     jobs:
       - test:
-          docker_image: gapsystem/gap-docker-master
+          docker_image: ghcr.io/homalg-project/gap-docker-master
