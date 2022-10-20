@@ -38,51 +38,16 @@
 
 
 <div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP", false );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MATRIX_CATEGORY( Q : no_precompiled_code := true );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MatrixCategoryAsCategoryOfRows( Q : no_precompiled_code := true );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := MatrixCategoryObject( vec, 2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := ZeroMorphism( V, V );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := IdentityMorphism( V );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">W := DirectSum( V, V );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">morphism_matrix := [ [ alpha, beta ], [ beta, alpha ] ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># compile the primitive installation of</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput"># MorphismBetweenDirectSumsWithGivenDirectSums</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">Display(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[2][1]</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
-function ( cat, S, diagram_S, morphism_matrix, diagram_T, T )
-    local underlying_matrix;
-    underlying_matrix := List( morphism_matrix, function ( row )
-            return List( row, UnderlyingMatrix );
-        end );
-    underlying_matrix := ListN( diagram_S, underlying_matrix, 
-       function ( source, row )
-            return UnionOfColumns( homalg_field, Dimension( source ), row );
-        end );
-    return 
-     VectorSpaceMorphism( cat, S, UnionOfRows( homalg_field, Dimension( T ), 
-         underlying_matrix ), T );
-end
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func1 := CapJitCompiledFunction(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[2][1],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    vec</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func1 );</span>
-function ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )
-    local hoisted_1_1, deduped_2_1;
-    deduped_2_1 := UnderlyingRing( cat_1 );
-    hoisted_1_1 := deduped_2_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, S_1, T_1, 
-       UnderlyingMatrix, UnionOfRows( deduped_2_1, Dimension( T_1 ), 
-         ListN( diagram_S_1, List( morphism_matrix_1, function ( row_2 )
-                  return List( row_2, UnderlyingMatrix );
-              end ), function ( source_2, row_2 )
-                return UnionOfColumns( hoisted_1_1, Dimension( source_2 ), 
-                   row_2 );
-            end ) ) );
-end
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># compile the default derivation of</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput"># MorphismBetweenDirectSumsWithGivenDirectSums</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># compile the derivation of MorphismBetweenDirectSumsWithGivenDirectSums</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">Display(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[1][1]</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
@@ -119,25 +84,25 @@ end
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        vec, "KernelEmbedding", true</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">) );</span>
-function ( cat_1, morphism_1 )
+function ( cat_1, alpha_1 )
     local morphism_attr_1_1;
-    morphism_attr_1_1 := SyzygiesOfRows( UnderlyingMatrix( morphism_1 ) );
+    morphism_attr_1_1 := SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, 
        CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 
-         NumberRows( morphism_attr_1_1 ) ), Source( morphism_1 ), 
+         NumberRows( morphism_attr_1_1 ) ), Source( alpha_1 ), 
        UnderlyingMatrix, morphism_attr_1_1 );
 end
 </pre></div>
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LinearAlgebraForCAP", false );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "LinearAlgebraForCAP", "gap/CompilerLogic.gi" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "FreydCategoriesForCAP",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "gap/MatrixCategoryAsCategoryOfRows_CompilerLogic.gi" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals( );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># be careful not to use `MatrixCategory` because attributes are not supported</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">category_constructor := field -&gt; MATRIX_CATEGORY( field );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor := field -&gt; MatrixCategoryAsCategoryOfRows( field );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ QQ ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "MatrixCategoryPrecompiled";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "LinearAlgebraForCAP";;</span>
@@ -884,6 +849,9 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "ModulePresentationsForCAP", false );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "FreydCategoriesForCAP",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "gap/MatrixCategoryAsCategoryOfRows_CompilerLogic.gi" );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationalsInSingular( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQxy := QQ * "x,y";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EEE := KoszulDualRing( QQxy * "a,b" );;</span>
@@ -1018,13 +986,15 @@ true
 
 
 <div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LinearAlgebraForCAP", false );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># be careful not to use `MatrixCategory` because attributes are not supported</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">category_constructor := function( field )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    return Opposite(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        MATRIX_CATEGORY(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            field :</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            no_precompiled_code := true, FinalizeCategory := true</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            no_precompiled_code := false, FinalizeCategory := true</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        ) :</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        only_primitive_operations := true</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    ); end;;</span>
@@ -1052,10 +1022,10 @@ Opposite of Category of matrices over Q
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LinearAlgebraForCAP", false );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals( );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MATRIX_CATEGORY( Q : no_precompiled_code );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := CategoryOfRows( QQ : no_precompiled_code );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := cat -&gt; ZeroObjectFunctorial( cat );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StopCompilationAtCategory( vec );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func, vec ) );</span>
@@ -1066,13 +1036,13 @@ end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func, vec ) );</span>
 function ( cat_1 )
     local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 0 
-       );
+    deduped_2_1 := CreateCapCategoryObjectWithAttributes( cat_1, 
+       RankOfObject, 0 );
     morphism_attr_1_1 := HomalgZeroMatrix( 0, 0, UnderlyingRing( cat_1 ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_2_1, 
        deduped_2_1, UnderlyingMatrix, morphism_attr_1_1 );
 end
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MATRIX_CATEGORY( Q : no_precompiled_code );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := CategoryOfRows( QQ : no_precompiled_code );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StopCompilationAtPrimitivelyInstalledOperationsOfCategory( vec );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func, vec ) );</span>
 function ( cat_1 )
@@ -1084,8 +1054,8 @@ end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func, vec ) );</span>
 function ( cat_1 )
     local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 0 
-       );
+    deduped_2_1 := CreateCapCategoryObjectWithAttributes( cat_1, 
+       RankOfObject, 0 );
     morphism_attr_1_1 := HomalgZeroMatrix( 0, 0, UnderlyingRing( cat_1 ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_2_1, 
        deduped_2_1, UnderlyingMatrix, morphism_attr_1_1 );

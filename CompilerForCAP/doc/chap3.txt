@@ -5,51 +5,16 @@
   [1X3.1 [33X[0;0YExamples[133X[101X
   
   [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
-    [4X[25Xgap>[125X [27Xvec := MATRIX_CATEGORY( Q : no_precompiled_code := true );;[127X[104X
+    [4X[25Xgap>[125X [27Xvec := MatrixCategoryAsCategoryOfRows( Q : no_precompiled_code := true );;[127X[104X
     [4X[25Xgap>[125X [27XV := MatrixCategoryObject( vec, 2 );;[127X[104X
     [4X[25Xgap>[125X [27Xalpha := ZeroMorphism( V, V );;[127X[104X
     [4X[25Xgap>[125X [27Xbeta := IdentityMorphism( V );;[127X[104X
     [4X[25Xgap>[125X [27XW := DirectSum( V, V );;[127X[104X
     [4X[25Xgap>[125X [27Xmorphism_matrix := [ [ alpha, beta ], [ beta, alpha ] ];;[127X[104X
-    [4X[25Xgap>[125X [27X# compile the primitive installation of[127X[104X
-    [4X[25X>[125X [27X# MorphismBetweenDirectSumsWithGivenDirectSums[127X[104X
-    [4X[25X>[125X [27XDisplay([127X[104X
-    [4X[25X>[125X [27X    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[2][1][127X[104X
-    [4X[25X>[125X [27X);[127X[104X
-    [4X[28Xfunction ( cat, S, diagram_S, morphism_matrix, diagram_T, T )[128X[104X
-    [4X[28X    local underlying_matrix;[128X[104X
-    [4X[28X    underlying_matrix := List( morphism_matrix, function ( row )[128X[104X
-    [4X[28X            return List( row, UnderlyingMatrix );[128X[104X
-    [4X[28X        end );[128X[104X
-    [4X[28X    underlying_matrix := ListN( diagram_S, underlying_matrix, [128X[104X
-    [4X[28X       function ( source, row )[128X[104X
-    [4X[28X            return UnionOfColumns( homalg_field, Dimension( source ), row );[128X[104X
-    [4X[28X        end );[128X[104X
-    [4X[28X    return [128X[104X
-    [4X[28X     VectorSpaceMorphism( cat, S, UnionOfRows( homalg_field, Dimension( T ), [128X[104X
-    [4X[28X         underlying_matrix ), T );[128X[104X
-    [4X[28Xend[128X[104X
-    [4X[25Xgap>[125X [27Xcompiled_func1 := CapJitCompiledFunction([127X[104X
-    [4X[25X>[125X [27X    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[2][1],[127X[104X
-    [4X[25X>[125X [27X    vec[127X[104X
-    [4X[25X>[125X [27X);;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( compiled_func1 );[127X[104X
-    [4X[28Xfunction ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )[128X[104X
-    [4X[28X    local hoisted_1_1, deduped_2_1;[128X[104X
-    [4X[28X    deduped_2_1 := UnderlyingRing( cat_1 );[128X[104X
-    [4X[28X    hoisted_1_1 := deduped_2_1;[128X[104X
-    [4X[28X    return CreateCapCategoryMorphismWithAttributes( cat_1, S_1, T_1, [128X[104X
-    [4X[28X       UnderlyingMatrix, UnionOfRows( deduped_2_1, Dimension( T_1 ), [128X[104X
-    [4X[28X         ListN( diagram_S_1, List( morphism_matrix_1, function ( row_2 )[128X[104X
-    [4X[28X                  return List( row_2, UnderlyingMatrix );[128X[104X
-    [4X[28X              end ), function ( source_2, row_2 )[128X[104X
-    [4X[28X                return UnionOfColumns( hoisted_1_1, Dimension( source_2 ), [128X[104X
-    [4X[28X                   row_2 );[128X[104X
-    [4X[28X            end ) ) );[128X[104X
-    [4X[28Xend[128X[104X
-    [4X[25Xgap>[125X [27X# compile the default derivation of[127X[104X
-    [4X[25X>[125X [27X# MorphismBetweenDirectSumsWithGivenDirectSums[127X[104X
+    [4X[25Xgap>[125X [27X# compile the derivation of MorphismBetweenDirectSumsWithGivenDirectSums[127X[104X
     [4X[25X>[125X [27XDisplay([127X[104X
     [4X[25X>[125X [27X    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[1][1][127X[104X
     [4X[25X>[125X [27X);[127X[104X
@@ -86,24 +51,24 @@
     [4X[25X>[125X [27X        vec, "KernelEmbedding", true[127X[104X
     [4X[25X>[125X [27X    )[127X[104X
     [4X[25X>[125X [27X) );[127X[104X
-    [4X[28Xfunction ( cat_1, morphism_1 )[128X[104X
+    [4X[28Xfunction ( cat_1, alpha_1 )[128X[104X
     [4X[28X    local morphism_attr_1_1;[128X[104X
-    [4X[28X    morphism_attr_1_1 := SyzygiesOfRows( UnderlyingMatrix( morphism_1 ) );[128X[104X
+    [4X[28X    morphism_attr_1_1 := SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) );[128X[104X
     [4X[28X    return CreateCapCategoryMorphismWithAttributes( cat_1, [128X[104X
     [4X[28X       CreateCapCategoryObjectWithAttributes( cat_1, Dimension, [128X[104X
-    [4X[28X         NumberRows( morphism_attr_1_1 ) ), Source( morphism_1 ), [128X[104X
+    [4X[28X         NumberRows( morphism_attr_1_1 ) ), Source( alpha_1 ), [128X[104X
     [4X[28X       UnderlyingMatrix, morphism_attr_1_1 );[128X[104X
     [4X[28Xend[128X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP", false );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XReadPackage( "LinearAlgebraForCAP", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "FreydCategoriesForCAP",[127X[104X
+    [4X[25X>[125X [27X    "gap/MatrixCategoryAsCategoryOfRows_CompilerLogic.gi" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals( );;[127X[104X
-    [4X[25Xgap>[125X [27X# be careful not to use `MatrixCategory` because attributes are not supported[127X[104X
-    [4X[25X>[125X [27Xcategory_constructor := field -> MATRIX_CATEGORY( field );;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_constructor := field -> MatrixCategoryAsCategoryOfRows( field );;[127X[104X
     [4X[25Xgap>[125X [27Xgiven_arguments := [ QQ ];;[127X[104X
     [4X[25Xgap>[125X [27Xcompiled_category_name := "MatrixCategoryPrecompiled";;[127X[104X
     [4X[25Xgap>[125X [27Xpackage_name := "LinearAlgebraForCAP";;[127X[104X
@@ -837,6 +802,9 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "ModulePresentationsForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "FreydCategoriesForCAP",[127X[104X
+    [4X[25X>[125X [27X    "gap/MatrixCategoryAsCategoryOfRows_CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationalsInSingular( );;[127X[104X
     [4X[25Xgap>[125X [27XQQxy := QQ * "x,y";;[127X[104X
     [4X[25Xgap>[125X [27XEEE := KoszulDualRing( QQxy * "a,b" );;[127X[104X
@@ -970,13 +938,15 @@
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals( );;[127X[104X
     [4X[25Xgap>[125X [27X# be careful not to use `MatrixCategory` because attributes are not supported[127X[104X
     [4X[25X>[125X [27Xcategory_constructor := function( field )[127X[104X
     [4X[25X>[125X [27X    return Opposite([127X[104X
     [4X[25X>[125X [27X        MATRIX_CATEGORY([127X[104X
     [4X[25X>[125X [27X            field :[127X[104X
-    [4X[25X>[125X [27X            no_precompiled_code := true, FinalizeCategory := true[127X[104X
+    [4X[25X>[125X [27X            no_precompiled_code := false, FinalizeCategory := true[127X[104X
     [4X[25X>[125X [27X        ) :[127X[104X
     [4X[25X>[125X [27X        only_primitive_operations := true[127X[104X
     [4X[25X>[125X [27X    ); end;;[127X[104X
@@ -1003,10 +973,10 @@
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP", false );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );;[127X[104X
-    [4X[25Xgap>[125X [27Xvec := MATRIX_CATEGORY( Q : no_precompiled_code );;[127X[104X
+    [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals( );;[127X[104X
+    [4X[25Xgap>[125X [27Xvec := CategoryOfRows( QQ : no_precompiled_code );;[127X[104X
     [4X[25Xgap>[125X [27Xfunc := cat -> ZeroObjectFunctorial( cat );;[127X[104X
     [4X[25Xgap>[125X [27XStopCompilationAtCategory( vec );[127X[104X
     [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, vec ) );[127X[104X
@@ -1017,13 +987,13 @@
     [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, vec ) );[127X[104X
     [4X[28Xfunction ( cat_1 )[128X[104X
     [4X[28X    local morphism_attr_1_1, deduped_2_1;[128X[104X
-    [4X[28X    deduped_2_1 := CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 0 [128X[104X
-    [4X[28X       );[128X[104X
+    [4X[28X    deduped_2_1 := CreateCapCategoryObjectWithAttributes( cat_1, [128X[104X
+    [4X[28X       RankOfObject, 0 );[128X[104X
     [4X[28X    morphism_attr_1_1 := HomalgZeroMatrix( 0, 0, UnderlyingRing( cat_1 ) );[128X[104X
     [4X[28X    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_2_1, [128X[104X
     [4X[28X       deduped_2_1, UnderlyingMatrix, morphism_attr_1_1 );[128X[104X
     [4X[28Xend[128X[104X
-    [4X[25Xgap>[125X [27Xvec := MATRIX_CATEGORY( Q : no_precompiled_code );;[127X[104X
+    [4X[25Xgap>[125X [27Xvec := CategoryOfRows( QQ : no_precompiled_code );;[127X[104X
     [4X[25Xgap>[125X [27XStopCompilationAtPrimitivelyInstalledOperationsOfCategory( vec );[127X[104X
     [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, vec ) );[127X[104X
     [4X[28Xfunction ( cat_1 )[128X[104X
@@ -1035,8 +1005,8 @@
     [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, vec ) );[127X[104X
     [4X[28Xfunction ( cat_1 )[128X[104X
     [4X[28X    local morphism_attr_1_1, deduped_2_1;[128X[104X
-    [4X[28X    deduped_2_1 := CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 0 [128X[104X
-    [4X[28X       );[128X[104X
+    [4X[28X    deduped_2_1 := CreateCapCategoryObjectWithAttributes( cat_1, [128X[104X
+    [4X[28X       RankOfObject, 0 );[128X[104X
     [4X[28X    morphism_attr_1_1 := HomalgZeroMatrix( 0, 0, UnderlyingRing( cat_1 ) );[128X[104X
     [4X[28X    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_2_1, [128X[104X
     [4X[28X       deduped_2_1, UnderlyingMatrix, morphism_attr_1_1 );[128X[104X
