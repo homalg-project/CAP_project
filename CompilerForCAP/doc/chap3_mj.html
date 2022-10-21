@@ -51,8 +51,9 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">W := DirectSum( V, V );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">morphism_matrix := [ [ alpha, beta ], [ beta, alpha ] ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># compile the derivation of MorphismBetweenDirectSumsWithGivenDirectSums</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">Display(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[1][1]</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">Print(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[1][1],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "\n"</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
 function ( cat, S, diagram_S, morphism_matrix, diagram_T, T )
     local test_diagram_product, test_diagram_coproduct;
