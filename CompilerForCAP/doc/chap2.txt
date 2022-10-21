@@ -194,9 +194,9 @@
         [10XFVAR_BINDING_SEQ[110X  describes  a  set(!)  of bindings (= assignments) of
         local  variables. It has a key [10Xnames[110X, a list of bound names. Values of
         bindings   can   be   added/obtained/unbound   via   [10XCapJitAddBinding[110X,
-        [10XCapJitValueOfBinding[110X,  and  [10XCapJitUnbindBinding[110X.  When  the  tree to a
-        function  again,  the  set  of  bindings is endowed with a order which
-        respects the relation "uses".[133X
+        [10XCapJitValueOfBinding[110X,   and  [10XCapJitUnbindBinding[110X.  When  the  tree  is
+        converted  to  a function again, the set of bindings is endowed with a
+        order which respects the relation "uses".[133X
   
   [30X    [33X[0;6YLocal  variables  must  not  be assigned more than once (this includes
         function  arguments, which are assigned at least once, namely when the
