@@ -18,8 +18,9 @@ W := DirectSum( V, V );;
 morphism_matrix := [ [ alpha, beta ], [ beta, alpha ] ];;
 
 # compile the derivation of MorphismBetweenDirectSumsWithGivenDirectSums
-Display(
-    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[1][1]
+Print(
+    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[1][1],
+    "\n"
 );
 #! function ( cat, S, diagram_S, morphism_matrix, diagram_T, T )
 #!     local test_diagram_product, test_diagram_coproduct;
