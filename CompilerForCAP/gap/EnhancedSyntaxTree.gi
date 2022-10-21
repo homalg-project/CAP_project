@@ -1045,8 +1045,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 end;
                 
                 # is modified below
-                # do not take func.bindings.names directly because we want to preserve the order of func.nams (e.g. deduped_9 < deduped_10)
-                binding_names := Filtered( func.nams, x -> x in func.bindings.names );
+                binding_names := ShallowCopy( func.bindings.names );
                 
                 ordered_binding_names := [ ];
                 

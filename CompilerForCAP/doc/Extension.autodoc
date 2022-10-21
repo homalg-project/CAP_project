@@ -48,7 +48,7 @@ To simplify the handling of syntax trees, the CAP compiler enhances syntax trees
   A syntax tree of type `FVAR_BINDING_SEQ` describes a set(!) of bindings (= assignments) of local variables.
   It has a key `names`, a list of bound names. Values of bindings can be added/obtained/unbound via
   `CapJitAddBinding`, `CapJitValueOfBinding`, and `CapJitUnbindBinding`.
-  When the tree to a function again, the set of bindings is endowed with a order which respects the relation "uses".
+  When the tree is converted to a function again, the set of bindings is endowed with a order which respects the relation "uses".
 * Local variables must not be assigned more than once (this includes function arguments, which are assigned at least once,
   namely when the function is called). An exception is made for "rapid reassignments": if the same variable is assigned
   and then reassigned immediately in the next statement, the right-hand side of the first assignment is inserted

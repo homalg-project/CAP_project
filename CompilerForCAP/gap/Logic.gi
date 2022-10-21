@@ -998,7 +998,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                                 variadic := false,
                                 bindings := rec(
                                     type := "FVAR_BINDING_SEQ",
-                                    names := Set( [ "cap_jit_morphism_attribute", "RETURN_VALUE" ] ),
+                                    names := [ "cap_jit_morphism_attribute", "RETURN_VALUE" ],
                                     BINDING_cap_jit_morphism_attribute := rec(
                                         type := "EXPR_FUNCCALL",
                                         funcref := tree.funcref,
