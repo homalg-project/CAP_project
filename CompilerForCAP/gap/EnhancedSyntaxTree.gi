@@ -13,7 +13,7 @@ end );
 BindGlobal( "CAP_JIT_INTERNAL_SYNTAX_TREE_TO_OPERATION_TRANSLATIONS", rec(
     EXPR_ELM_LIST := tree -> rec( operation_name := "[]", args := [ tree.list, tree.pos ] ),
     EXPR_ELMS_LIST := tree -> rec( operation_name := "{}", args := [ tree.list, tree.poss ] ),
-    EXPR_ELM_MAT := tree -> rec( operation_name := "MatElm", args := [ tree.list, tree.row, tree.col ] ),
+    EXPR_ELM_MAT := tree -> rec( operation_name := "[,]", args := [ tree.list, tree.row, tree.col ] ),
     EXPR_SUM := tree -> rec( operation_name := "+", args := [ tree.left, tree.right ] ),
     EXPR_DIFF := tree -> rec( operation_name := "-", args := [ tree.left, tree.right ] ),
     EXPR_PROD := tree -> rec( operation_name := "*", args := [ tree.left, tree.right ] ),
@@ -25,7 +25,7 @@ BindGlobal( "CAP_JIT_INTERNAL_SYNTAX_TREE_TO_OPERATION_TRANSLATIONS", rec(
 BindGlobal( "CAP_JIT_INTERNAL_OPERATION_TO_SYNTAX_TREE_TRANSLATIONS", rec(
     \[\] := tree -> rec( type := "EXPR_ELM_LIST", list := tree.args.1, pos := tree.args.2 ),
     \{\} := tree -> rec( type := "EXPR_ELMS_LIST", list := tree.args.1, poss := tree.args.2 ),
-    MatELm := tree -> rec( type := "EXPR_ELM_MAT", list := tree.args.1, row := tree.args.2, col := tree.args.3 ),
+    \[\,\] := tree -> rec( type := "EXPR_ELM_MAT", list := tree.args.1, row := tree.args.2, col := tree.args.3 ),
     \+ := tree -> rec( type := "EXPR_SUM", left := tree.args.1, right := tree.args.2 ),
     \- := tree -> rec( type := "EXPR_DIFF", left := tree.args.1, right := tree.args.2 ),
     \* := tree -> rec( type := "EXPR_PROD", left := tree.args.1, right := tree.args.2 ),

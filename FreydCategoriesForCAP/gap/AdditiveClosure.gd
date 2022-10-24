@@ -226,10 +226,10 @@ end );
 #! The output is the $(i,j)$'th entry in <C>MorphismMatrix</C>($\alpha$).
 #! @Arguments alpha, i, j
 #! @Returns a morphism $C$
-DeclareOperation( "MatElm",
+DeclareOperation( "[,]",
                   [ IsAdditiveClosureMorphism, IsInt, IsInt ] );
 
-CapJitAddTypeSignature( "MatElm", [ IsAdditiveClosureMorphism, IsInt, IsInt ], function ( input_types )
+CapJitAddTypeSignature( "[,]", [ IsAdditiveClosureMorphism, IsInt, IsInt ], function ( input_types )
     
     Assert( 0, IsAdditiveClosureCategory( input_types[1].category ) );
     
