@@ -2,6 +2,7 @@
   
   [1XIndex[101X
   
+  [2X[[102X, for IsAdditiveClosureMorphism, IsInt, IsInt 2.4-2 
   [2X[][102X, for IsAdditiveClosureObject, IsInt 2.4-1 
   [2X\*[102X, for IsFreydCategoryMorphism, IsFreydCategoryMorphism 11.2-3 
       for IsFreydCategoryObject, IsFreydCategoryObject 11.2-1 
@@ -131,7 +132,6 @@
   [2XIsMonoPreserving[102X, for IsAdelmanCategoryObject 4.4-4 
   [2XIsRightExact[102X, for IsAdelmanCategoryObject 4.4-3 
   [2XIsSequenceAsAdelmanCategoryObject[102X, for IsAdelmanCategoryObject 4.3-9 
-  [2XMatElm[102X, for IsAdditiveClosureMorphism, IsInt, IsInt 2.4-2 
   [2XMereExistenceOfWitnessPairForBeingCongruentToZero[102X, for IsAdelmanCategoryMorphism 4.3-8 
   [2XMonomorphismToSomeInjectiveObjectForCokernelObject[102X, for IsCapCategoryMorphism 1.7-5 
   [2XMonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject[102X, for IsCapCategoryMorphism, IsCapCategoryObject 1.7-6 

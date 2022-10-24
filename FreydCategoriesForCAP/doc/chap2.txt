@@ -176,9 +176,9 @@
   [33X[0;0YThe  arguments  are a formal direct sum [23XA[123X in some additive category [23XC^\oplus[123X
   and an integers [23Xi[123X. The output is the [23Xi[123X'th entry in [10XObjectList[110X([23XA[123X).[133X
   
-  [1X2.4-2 MatElm[101X
+  [1X2.4-2 [[101X
   
-  [33X[1;0Y[29X[2XMatElm[102X( [3Xalpha[103X, [3Xi[103X, [3Xj[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2X[[102X( [3Xalpha[103X, [3Xi[103X, [3Xj[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism [23XC[123X[133X
   
   [33X[0;0YThe  arguments  are  a  morphism [23X\alpha:A\to B[123X between formal direct sums in
