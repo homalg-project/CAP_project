@@ -645,12 +645,14 @@
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27Xfunc := x -> x[1,1];;[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xfunc := x -> MatElm( x, 1, 1 );;[127X[104X
     [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
     [4X[25Xgap>[125X [27Xtree := CapJitResolvedGlobalVariables( tree );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE( tree ) );[127X[104X
     [4X[28Xfunction ( x_1 )[128X[104X
-    [4X[28X    return MatElm( x_1, 1, 1 );[128X[104X
+    [4X[28X    return x_1[1, 1];[128X[104X
     [4X[28Xend[128X[104X
   [4X[32X[104X
   

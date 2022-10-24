@@ -691,12 +691,14 @@ end
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := x -&gt; x[1,1];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := x -&gt; MatElm( x, 1, 1 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitResolvedGlobalVariables( tree );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );</span>
 function ( x_1 )
-    return MatElm( x_1, 1, 1 );
+    return x_1[1, 1];
 end
 </pre></div>
 
