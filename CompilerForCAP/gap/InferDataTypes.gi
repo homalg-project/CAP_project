@@ -1131,7 +1131,7 @@ CapJitAddTypeSignature( "*", [ IsInt, IsList ], function ( input_types )
     
 end );
 
-CapJitAddTypeSignature( "MatElm", [ IsList, IsInt, IsInt ], function ( input_types )
+CapJitAddTypeSignature( "[,]", [ IsList, IsInt, IsInt ], function ( input_types )
     
     Assert( 0, input_types[1].element_type.filter = IsList );
     
@@ -1324,7 +1324,7 @@ CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgIdentityMatrix", [ "
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgZeroMatrix", [ "IsInt", "IsInt", "IsHomalgRing" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "RandomMatrix", [ "IsInt", "IsInt", "IsHomalgRing" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "IsZero", [ "IsHomalgMatrix" ], "IsBool" );
-CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "MatElm", [ "IsHomalgMatrix", "IsInt", "IsInt" ], "IsHomalgRingElement" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "[,]", [ "IsHomalgMatrix", "IsInt", "IsInt" ], "IsHomalgRingElement" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "ConvertRowToMatrix", [ "IsHomalgMatrix", "IsInt", "IsInt" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "ConvertColumnToMatrix", [ "IsHomalgMatrix", "IsInt", "IsInt" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "ConvertMatrixToRow", [ "IsHomalgMatrix" ], "IsHomalgMatrix" );
