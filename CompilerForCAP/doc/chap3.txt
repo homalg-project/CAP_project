@@ -238,6 +238,27 @@
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27Xtree = tree2;[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# test category_attribute_resolving_functions[127X[104X
+    [4X[25X>[125X [27XMY_CAP_CATEGORY_3 := CreateCapCategory( );;[127X[104X
+    [4X[25Xgap>[125X [27XSetMyAttribute( MY_CAP_CATEGORY_3, 1 );[127X[104X
+    [4X[25Xgap>[125X [27XMY_CAP_CATEGORY_3!.compiler_hints := rec([127X[104X
+    [4X[25X>[125X [27X    category_attribute_names := [[127X[104X
+    [4X[25X>[125X [27X        "MyAttribute"[127X[104X
+    [4X[25X>[125X [27X    ],[127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27Xfunc := cat -> MyAttribute( cat );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, MY_CAP_CATEGORY_3 ) );[127X[104X
+    [4X[28Xfunction ( cat_1 )[128X[104X
+    [4X[28X    return MyAttribute( cat_1 );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27XMY_CAP_CATEGORY_3!.compiler_hints.category_attribute_resolving_functions :=[127X[104X
+    [4X[25X>[125X [27X  rec([127X[104X
+    [4X[25X>[125X [27X    MyAttribute := { } -> rec( type := "EXPR_INT", value := 1 ),[127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, MY_CAP_CATEGORY_3 ) );[127X[104X
+    [4X[28Xfunction ( cat_1 )[128X[104X
+    [4X[28X    return 1;[128X[104X
+    [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27XCapJitEnableDataTypeInference( );[127X[104X
   [4X[32X[104X
   

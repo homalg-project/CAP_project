@@ -280,6 +280,27 @@ function (  )
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree = tree2;</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># test category_attribute_resolving_functions</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">MY_CAP_CATEGORY_3 := CreateCapCategory( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetMyAttribute( MY_CAP_CATEGORY_3, 1 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MY_CAP_CATEGORY_3!.compiler_hints := rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_attribute_names := [</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "MyAttribute"</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := cat -&gt; MyAttribute( cat );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func, MY_CAP_CATEGORY_3 ) );</span>
+function ( cat_1 )
+    return MyAttribute( cat_1 );
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MY_CAP_CATEGORY_3!.compiler_hints.category_attribute_resolving_functions :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    MyAttribute := { } -&gt; rec( type := "EXPR_INT", value := 1 ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func, MY_CAP_CATEGORY_3 ) );</span>
+function ( cat_1 )
+    return 1;
+end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitEnableDataTypeInference( );</span>
 </pre></div>
 
