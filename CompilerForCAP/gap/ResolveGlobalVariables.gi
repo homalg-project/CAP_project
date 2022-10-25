@@ -20,7 +20,7 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
     
     # we have to use result_func instead of pre_func to correctly resolve `Attribute( UnderlyingCategory( cat ) )`
     result_func := function ( tree, result, keys, additional_arguments )
-      local value, global_variable_name, data_type, resolved_tree, name, key;
+      local cat, attribute_getter, attribute_name, value, global_variable_name, data_type, resolved_tree, name, key;
         
         tree := ShallowCopy( tree );
         
@@ -35,28 +35,42 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
             # resolve category attributes
             if CapJitIsCallToGlobalFunction( tree, gvar -> not NameFunction( ValueGlobal( gvar ) ) in Concatenation( CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES, RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ), RecNames( CAP_JIT_INTERNAL_KNOWN_METHODS ) ) ) and tree.args.length = 1 and tree.args.1.type = "EXPR_REF_GVAR" and IsCapCategory( ValueGlobal( tree.args.1.gvar ) ) then
                 
-                value := ValueGlobal( tree.funcref.gvar )( ValueGlobal( tree.args.1.gvar ) );
+                cat := ValueGlobal( tree.args.1.gvar );
                 
-                global_variable_name := CapJitGetOrCreateGlobalVariable( value );
+                attribute_getter := ValueGlobal( tree.funcref.gvar );
                 
-                if CAP_JIT_DATA_TYPE_INFERENCE_ENABLED then
+                attribute_name := NameFunction( attribute_getter );
+                
+                if IsBound( cat!.compiler_hints ) and IsBound( cat!.compiler_hints.category_attribute_resolving_functions ) and IsBound( cat!.compiler_hints.category_attribute_resolving_functions.(attribute_name) ) then
                     
-                    data_type := CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_TYPES( NameFunction( ValueGlobal( tree.funcref.gvar ) ), [ CapJitDataTypeOfCategory( ValueGlobal( tree.args.1.gvar ) ) ] );
+                    tree := cat!.compiler_hints.category_attribute_resolving_functions.(attribute_name)( );
                     
                 else
                     
-                    data_type := fail;
+                    value := attribute_getter( cat );
                     
-                fi;
-                
-                tree := rec(
-                    type := "EXPR_REF_GVAR",
-                    gvar := global_variable_name,
-                );
-                
-                if data_type <> fail then
+                    global_variable_name := CapJitGetOrCreateGlobalVariable( value );
                     
-                    tree.data_type := data_type;
+                    if CAP_JIT_DATA_TYPE_INFERENCE_ENABLED then
+                        
+                        data_type := CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_TYPES( attribute_name, [ CapJitDataTypeOfCategory( cat ) ] );
+                        
+                    else
+                        
+                        data_type := fail;
+                        
+                    fi;
+                    
+                    tree := rec(
+                        type := "EXPR_REF_GVAR",
+                        gvar := global_variable_name,
+                    );
+                    
+                    if data_type <> fail then
+                        
+                        tree.data_type := data_type;
+                        
+                    fi;
                     
                 fi;
                 

@@ -65,6 +65,32 @@ Display( ENHANCED_SYNTAX_TREE_CODE( tree2 ) );
 tree = tree2;
 #! true
 
+# test category_attribute_resolving_functions
+MY_CAP_CATEGORY_3 := CreateCapCategory( );;
+SetMyAttribute( MY_CAP_CATEGORY_3, 1 );
+MY_CAP_CATEGORY_3!.compiler_hints := rec(
+    category_attribute_names := [
+        "MyAttribute"
+    ],
+);;
+
+func := cat -> MyAttribute( cat );;
+
+Display( CapJitCompiledFunction( func, MY_CAP_CATEGORY_3 ) );
+#! function ( cat_1 )
+#!     return MyAttribute( cat_1 );
+#! end
+
+MY_CAP_CATEGORY_3!.compiler_hints.category_attribute_resolving_functions :=
+  rec(
+    MyAttribute := { } -> rec( type := "EXPR_INT", value := 1 ),
+);;
+
+Display( CapJitCompiledFunction( func, MY_CAP_CATEGORY_3 ) );
+#! function ( cat_1 )
+#!     return 1;
+#! end
+
 CapJitEnableDataTypeInference( );
 
 #! @EndExample
