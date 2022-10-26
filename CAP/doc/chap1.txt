@@ -215,6 +215,26 @@
   [33X[0;0YThe argument is an additive category [23XC[123X. The output is a list [23XL[123X of objects in
   [23XC[123X such that every object in [23XC[123X is a finite direct sum of objects in [23XL[123X.[133X
   
+  [1X1.3-9 IndecomposableProjectiveObjects[101X
+  
+  [33X[1;0Y[29X[2XIndecomposableProjectiveObjects[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list of objects[133X
+  
+  [33X[0;0YThe argument is an Abelian category [23XC[123X with enough projectives. The output is
+  the set of indecomposable projective objects in [23XC[123X up to isomorphism. That is
+  every projective object in [23XC[123X is isomorphic to a finite direct sum over these
+  objects.[133X
+  
+  [1X1.3-10 IndecomposableInjectiveObjects[101X
+  
+  [33X[1;0Y[29X[2XIndecomposableInjectiveObjects[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list of objects[133X
+  
+  [33X[0;0YThe  argument is an Abelian category [23XC[123X with enough injectives. The output is
+  the  set of indecomposable injective objects in [23XC[123X up to isomorphism. That is
+  every  injective object in [23XC[123X is isomorphic to a finite direct sum over these
+  objects.[133X
+  
   
   [1X1.4 [33X[0;0YLogic switcher[133X[101X
   

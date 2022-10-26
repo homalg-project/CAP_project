@@ -137,6 +137,9 @@
 <li><p><code class="code">create_func_morphism_or_fail</code>: see below</p>
 
 </li>
+<li><p><code class="code">create_func_list_of_objects</code>: see below</p>
+
+</li>
 </ul>
 <p>The values of the keys <code class="code">create_func_*</code> should be either the string <code class="code">"default</code>" or functions which accept the category and the name of a <strong class="pkg">CAP</strong> operation of the corresponding <code class="code">return_type</code>. Values for return types occuring for operations in <code class="code">list_of_operations_to_install</code> are mandatory. The functions must return strings, which (after some replacements described below) will be evaluated and added as an installation of the corresponding operation to the category. The value <code class="code">"default"</code> chooses a suitable default string, see the implementation for details. The following placeholders may be used in the strings and are replaced automatically:</p>
 

@@ -80,6 +80,8 @@
   
   [30X    [33X[0;6Y[10Xcreate_func_morphism_or_fail[110X: see below[133X
   
+  [30X    [33X[0;6Y[10Xcreate_func_list_of_objects[110X: see below[133X
+  
   [33X[0;0YThe  values  of the keys [10Xcreate_func_*[110X should be either the string [10X"default[110X"
   or  functions  which  accept the category and the name of a [5XCAP[105X operation of
   the   corresponding  [10Xreturn_type[110X.  Values  for  return  types  occuring  for
