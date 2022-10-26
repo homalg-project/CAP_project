@@ -382,7 +382,7 @@ InstallMethod( CategoryConstructor,
             
         fi;
         
-        if ForAny( [ "object", "list_of_objects" ], str -> StartsWith( info.return_type, str ) ) then
+        if PositionSublist( info.return_type, "object" ) <> fail then
             
             if PositionSublist( func_string, "top_object_getter" ) <> fail then
             
