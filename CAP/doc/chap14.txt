@@ -7,11 +7,20 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "CAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xlist_of_operations_to_install := [[127X[104X
+    [4X[25X>[125X [27X    "ObjectConstructor",[127X[104X
+    [4X[25X>[125X [27X    "MorphismConstructor",[127X[104X
+    [4X[25X>[125X [27X    "ObjectDatum",[127X[104X
+    [4X[25X>[125X [27X    "MorphismDatum",[127X[104X
+    [4X[25X>[125X [27X    "PreCompose",[127X[104X
+    [4X[25X>[125X [27X    "IdentityMorphism",[127X[104X
+    [4X[25X>[125X [27X    "DirectSum",[127X[104X
+    [4X[25X>[125X [27X];;[127X[104X
     [4X[25Xgap>[125X [27Xdummy := DummyCategory( rec([127X[104X
-    [4X[25X>[125X [27X    list_of_operations_to_install := [ "PreCompose", "IdentityMorphism", "DirectSum" ],[127X[104X
+    [4X[25X>[125X [27X    list_of_operations_to_install := list_of_operations_to_install,[127X[104X
     [4X[25X>[125X [27X    properties := [ "IsAdditiveCategory" ],[127X[104X
     [4X[25X>[125X [27X) );;[127X[104X
-    [4X[25Xgap>[125X [27XCanCompute( dummy, "DirectSum" );[127X[104X
+    [4X[25Xgap>[125X [27XForAll( list_of_operations_to_install, o -> CanCompute( dummy, o ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsAdditiveCategory( dummy );[127X[104X
     [4X[28Xtrue[128X[104X

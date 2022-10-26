@@ -76,11 +76,20 @@
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CAP", false );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">list_of_operations_to_install := [</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "ObjectConstructor",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "MorphismConstructor",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "ObjectDatum",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "MorphismDatum",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "PreCompose",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "IdentityMorphism",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "DirectSum",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dummy := DummyCategory( rec(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    list_of_operations_to_install := [ "PreCompose", "IdentityMorphism", "DirectSum" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    list_of_operations_to_install := list_of_operations_to_install,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    properties := [ "IsAdditiveCategory" ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CanCompute( dummy, "DirectSum" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ForAll( list_of_operations_to_install, o -&gt; CanCompute( dummy, o ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsAdditiveCategory( dummy );</span>
 true

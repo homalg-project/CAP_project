@@ -47,7 +47,8 @@
   [33X[0;0YCreates  a dummy category subject to the options given via [3Xoptions[103X, which is
   a  record  passed  on to [2XCategoryConstructor[102X ([14X11.2-1[114X). Note that the options
   [10X{category,object,morphism}_filter[110X        will        be        set        to
-  [10XIsDummyCategory{,Object,Morphism}[110X  and  [10Xcreate_func_*[110X  will  be set to dummy
+  [10XIsDummyCategory{,Object,Morphism}[110X          and          the          options
+  [10X{object,morphism}_{constructor,datum}[110X and [10Xcreate_func_*[110X will be set to dummy
   implementations  (throwing  errors when actually called). The dummy category
   will pretend to support empty limits by default.[133X
   
