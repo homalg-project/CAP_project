@@ -18,8 +18,48 @@ InstallMethod( DummyCategory,
     category_constructor_options.category_morphism_filter := IsDummyCategoryMorphism;
     category_constructor_options.supports_empty_limits := true;
     
+    if "ObjectConstructor" in options.list_of_operations_to_install then
+        
+        category_constructor_options.object_constructor := function ( cat, object_datum )
+            
+            Error( "this is a dummy category without actual implementation" );
+            
+        end;
+        
+    fi;
+    
+    if "MorphismConstructor" in options.list_of_operations_to_install then
+        
+        category_constructor_options.morphism_constructor := function ( cat, source, morphism_datum, range )
+            
+            Error( "this is a dummy category without actual implementation" );
+            
+        end;
+        
+    fi;
+    
+    if "ObjectDatum" in options.list_of_operations_to_install then
+        
+        category_constructor_options.object_datum := function ( cat, object )
+            
+            Error( "this is a dummy category without actual implementation" );
+            
+        end;
+        
+    fi;
+    
+    if "MorphismDatum" in options.list_of_operations_to_install then
+        
+        category_constructor_options.morphism_datum := function ( cat, morphism )
+            
+            Error( "this is a dummy category without actual implementation" );
+            
+        end;
+        
+    fi;
+    
     dummy_function := { operation_name, dummy } -> """
-        function( input_arguments... )
+        function ( input_arguments... )
             
             Error( "this is a dummy category without actual implementation" );
             

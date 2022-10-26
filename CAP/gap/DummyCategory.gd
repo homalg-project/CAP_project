@@ -43,7 +43,7 @@ DeclareCategory( "IsDummyCategoryMorphism",
 
 #! @Description
 #!  Creates a dummy category subject to the options given via <A>options</A>, which is a record passed on to <Ref Oper="CategoryConstructor" Label="for IsRecord" />.
-#!  Note that the options `{category,object,morphism}_filter` will be set to `IsDummyCategory{,Object,Morphism}` and
+#!  Note that the options `{category,object,morphism}_filter` will be set to `IsDummyCategory{,Object,Morphism}` and the options `{object,morphism}_{constructor,datum}` and
 #!  `create_func_*` will be set to dummy implementations (throwing errors when actually called).
 #!  The dummy category will pretend to support empty limits by default.
 #! @Arguments options
