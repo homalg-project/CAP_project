@@ -31,6 +31,7 @@ InstallMethod( DummyCategory,
     category_constructor_options.create_func_object_or_fail := dummy_function;
     category_constructor_options.create_func_morphism := dummy_function;
     category_constructor_options.create_func_morphism_or_fail := dummy_function;
+    category_constructor_options.create_func_list_of_objects := dummy_function;
     
     C := CategoryConstructor( category_constructor_options );
     
