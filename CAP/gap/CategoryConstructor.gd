@@ -49,6 +49,7 @@ DeclareInfoClass( "InfoCategoryConstructor" );
 #!  * `create_func_object_or_fail`: see below
 #!  * `create_func_morphism`: see below
 #!  * `create_func_morphism_or_fail`: see below
+#!  * `create_func_list_of_objects`: see below
 #!
 #!  The values of the keys `create_func_*` should be either the string `"default`" or functions which accept the category and the name of a &CAP; operation
 #!  of the corresponding `return_type`. Values for return types occuring for operations in `list_of_operations_to_install` are mandatory.
