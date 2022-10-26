@@ -19,6 +19,17 @@ end
     , 100 );
     
     ##
+    AddAdditiveGenerators( cat,
+        
+########
+function ( cat_1 )
+    return [ CreateCapCategoryObjectWithAttributes( cat_1, Opposite, CreateCapCategoryObjectWithAttributes( OppositeCategory( cat_1 ), Dimension, 1 ) ) ];
+end
+########
+        
+    , 100 );
+    
+    ##
     AddAdditiveInverseForMorphisms( cat,
         
 ########

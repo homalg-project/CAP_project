@@ -37,6 +37,7 @@ InstallMethod( CategoryConstructor,
         create_func_object_or_fail := IsObject,
         create_func_morphism := IsObject,
         create_func_morphism_or_fail := IsObject,
+        create_func_list_of_objects := IsList
     );
     
     for option_name in RecNames( options ) do
@@ -252,6 +253,16 @@ InstallMethod( CategoryConstructor,
                 
             end
         """,
+        list_of_objects := """
+            function( input_arguments... )
+              local underlying_result;
+              
+              underlying_result := operation_name( underlying_arguments... );
+              
+              return List( underlying_result, object -> top_object_getter( cat, object ) );
+              
+            end
+        """
     );
     
     Info( InfoCategoryConstructor, 2,  "Lifting the following operations for ", Name( CC ), ":\n" );
@@ -371,7 +382,7 @@ InstallMethod( CategoryConstructor,
             
         fi;
         
-        if StartsWith( info.return_type, "object" ) then
+        if ForAny( [ "object", "list_of_objects" ], str -> StartsWith( info.return_type, str ) ) then
             
             if PositionSublist( func_string, "top_object_getter" ) <> fail then
             

@@ -221,6 +221,7 @@ InstallMethod( WrapperCategory,
         create_func_object_or_fail := "default",
         create_func_morphism := "default",
         create_func_morphism_or_fail := "default",
+        create_func_list_of_objects := "default"
     );
     
     if IsBound( options.name ) then
