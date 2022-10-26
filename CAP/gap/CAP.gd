@@ -301,6 +301,24 @@ DeclareAttribute( "RangeCategoryOfHomomorphismStructure",
 DeclareAttribute( "AdditiveGenerators",
                   IsCapCategory );
 
+#! @Description
+#!  The argument is an Abelian category $C$ with enough projectives.
+#!  The output is the set of indecomposable projective objects in $C$ up to isomorphism.
+#!  That is every projective object in $C$ is isomorphic to a finite direct sum over these objects.
+#! @Arguments C
+#! @Returns a list of objects
+DeclareAttribute( "IndecomposableProjectiveObjects",
+                  IsCapCategory );
+
+#! @Description
+#!  The argument is an Abelian category $C$ with enough injectives.
+#!  The output is the set of indecomposable injective objects in $C$ up to isomorphism.
+#!  That is every injective object in $C$ is isomorphic to a finite direct sum over these objects.
+#! @Arguments C
+#! @Returns a list of objects
+DeclareAttribute( "IndecomposableInjectiveObjects",
+                  IsCapCategory );
+
 #############################################
 ##
 #! @Section Logic switcher

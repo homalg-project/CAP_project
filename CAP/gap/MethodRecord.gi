@@ -3823,6 +3823,18 @@ AdditiveGenerators := rec(
   dual_operation := "AdditiveGenerators",
 ),
 
+IndecomposableProjectiveObjects := rec(
+  filter_list := [ "category" ],
+  return_type := "list_of_objects",
+  dual_operation := "IndecomposableInjectiveObjects",
+),
+
+IndecomposableInjectiveObjects := rec(
+  filter_list := [ "category" ],
+  return_type := "list_of_objects",
+  dual_operation := "IndecomposableProjectiveObjects",
+),
+
 ) );
 
 InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD_LIMITS, [
