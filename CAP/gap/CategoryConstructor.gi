@@ -37,7 +37,7 @@ InstallMethod( CategoryConstructor,
         create_func_object_or_fail := IsObject,
         create_func_morphism := IsObject,
         create_func_morphism_or_fail := IsObject,
-        create_func_list_of_objects := IsList
+        create_func_list_of_objects := IsList,
     );
     
     for option_name in RecNames( options ) do
@@ -262,7 +262,7 @@ InstallMethod( CategoryConstructor,
               return List( underlying_result, object -> top_object_getter( cat, object ) );
               
             end
-        """
+        """,
     );
     
     Info( InfoCategoryConstructor, 2,  "Lifting the following operations for ", Name( CC ), ":\n" );
