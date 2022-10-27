@@ -6,10 +6,10 @@
         [1X Freyd categories - Formal (co)kernels for additive categories [101X
   
   
-                                   2022.10-11
+                                   2022.10-12
   
   
-                                24 October 2022
+                                27 October 2022
   
   
                                 Sebastian Posur
@@ -266,13 +266,24 @@
       9.4-9 UnzipDegreeList
   10 [33X[0;0YCokernel image closure[133X
   11 [33X[0;0YFreyd category[133X
-    11.1 [33X[0;0YInternal Hom-Embedding[133X
-      11.1-1 INTERNAL_HOM_EMBEDDING
-    11.2 [33X[0;0YConvenient methods for tensor products of freyd objects and morphisms[133X
-      11.2-1 \*
-      11.2-2 \^
-      11.2-3 \*
-      11.2-4 \^
+    11.1 [33X[0;0YRandom methods in Freyd categories[133X
+      11.1-1 RandomObjectByList
+      11.1-2 RandomObjectByInteger
+      11.1-3 RandomMorphismWithFixedSourceAndRangeByList
+      11.1-4 RandomMorphismWithFixedSourceAndRangeByInteger
+      11.1-5 RandomMorphismWithFixedSourceByList
+      11.1-6 RandomMorphismWithFixedSourceByInteger
+      11.1-7 RandomMorphismWithFixedRangeByList
+      11.1-8 RandomMorphismWithFixedRangeByInteger
+      11.1-9 RandomMorphismByList
+      11.1-10 RandomMorphismByInteger
+    11.2 [33X[0;0YInternal Hom-Embedding[133X
+      11.2-1 INTERNAL_HOM_EMBEDDING
+    11.3 [33X[0;0YConvenient methods for tensor products of freyd objects and morphisms[133X
+      11.3-1 \*
+      11.3-2 \^
+      11.3-3 \*
+      11.3-4 \^
   12 [33X[0;0YExamples and Tests[133X
     12.1 [33X[0;0YAdelman 5 lemma[133X
     12.2 [33X[0;0YAdelman category basics for category of rows[133X

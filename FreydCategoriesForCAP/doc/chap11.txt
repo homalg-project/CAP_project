@@ -2,9 +2,177 @@
   [1X11 [33X[0;0YFreyd category[133X[101X
   
   
-  [1X11.1 [33X[0;0YInternal Hom-Embedding[133X[101X
+  [1X11.1 [33X[0;0YRandom methods in Freyd categories[133X[101X
   
-  [1X11.1-1 INTERNAL_HOM_EMBEDDING[101X
+  [1X11.1-1 RandomObjectByList[101X
+  
+  [33X[1;0Y[29X[2XRandomObjectByList[102X( [3Xcat[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object in a Freyd category[133X
+  
+  [33X[0;0YThe  arguments  are  a Freyd category [3Xcat[103X of a category [3Xunderlying_cat[103X and a
+  list  [3XL[103X.  The output is an object in [3Xcat[103X whose relation morphism is a random
+  morphism          in          [3Xunderlying_cat[103X         constructed         via
+  [10XRandomMorphismByList[110X([3Xunderlying_cat[103X, [3XL[103X).[133X
+  
+  [1X11.1-2 RandomObjectByInteger[101X
+  
+  [33X[1;0Y[29X[2XRandomObjectByInteger[102X( [3Xcat[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object in a Freyd category[133X
+  
+  [33X[0;0YThe  arguments  are a Freyd category [3Xcat[103X of a category [3Xunderlying_cat[103X and an
+  integer  [3Xn[103X.  The  output  is  an  object in [3Xcat[103X whose relation morphism is a
+  random       morphism       in      [3Xunderlying_cat[103X      constructed      via
+  [10XRandomMorphismByInteger[110X([3Xunderlying_cat[103X, [3Xn[103X).[133X
+  
+  [1X11.1-3 RandomMorphismWithFixedSourceAndRangeByList[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceAndRangeByList[102X( [3XS[103X, [3XR[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in a Freyd category[133X
+  
+  [33X[0;0YThe  arguments are two objects [3XS[103X and [3XR[103X in a Freyd category [3Xcat[103X of a category
+  [3Xunderlying_cat[103X  and  a  list  [3XL[103X.  The  category  [3Xcat[103X  is  required to have a
+  homomorphism structure [23X(1,H,\nu)[123X over [3Xunderlying_cat[103X or [3Xcat[103X. The output is a
+  morphism in [3Xcat[103X constructed as follows:[133X
+  
+  [30X    [33X[0;6YIf  the  source of the relation morphism [23X\rho_S[123X of [3XS[103X is zero, then the
+        morphism     datum     of    the    output    is    constructed    via
+        [10XRandomMorphismWithFixedSourceAndRangeByList[110X([10XRange[110X([23X\rho_S[123X),
+        [10XRange[110X([23X\rho_R[123X), [3XL[103X) where [23X\rho_R[123X is the relation morphism of [3XR[103X.[133X
+  
+  [30X    [33X[0;6YOtherwise,  the output is [23X\nu^{-1}_{S,R}(\eta):S \to R[123X where [23X\eta:1\to
+        H(S,R)[123X      is      a      random     morphism     constructed     via
+        [10XRandomMorphismWithFixedSourceAndRangeByList[110X([23X1[123X,[23XH(S,R)[123X,[3XL[103X).[133X
+  
+  [1X11.1-4 RandomMorphismWithFixedSourceAndRangeByInteger[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceAndRangeByInteger[102X( [3XS[103X, [3XR[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in a Freyd category[133X
+  
+  [33X[0;0YThe  arguments are two objects [3XS[103X and [3XR[103X in a Freyd category [3Xcat[103X of a category
+  [3Xunderlying_cat[103X  and  an  integer  [3Xn[103X.  The category [3Xcat[103X is required to have a
+  homomorphism structure [23X(1,H,\nu)[123X over [3Xunderlying_cat[103X or [3Xcat[103X. The output is a
+  morphism in [3Xcat[103X constructed as follows:[133X
+  
+  [30X    [33X[0;6YIf  the  source of the relation morphism [23X\rho_S[123X of [3XS[103X is zero, then the
+        morphism     datum     of    the    output    is    constructed    via
+        [10XRandomMorphismWithFixedSourceAndRangeByInteger[110X([10XRange[110X([23X\rho_S[123X),
+        [10XRange[110X([23X\rho_R[123X), [3Xn[103X) where [23X\rho_R[123X is the relation morphism of [3XR[103X.[133X
+  
+  [30X    [33X[0;6YOtherwise,  the output is [23X\nu^{-1}_{S,R}(\eta):S \to R[123X where [23X\eta:1\to
+        H(S,R)[123X      is      a      random     morphism     constructed     via
+        [10XRandomMorphismWithFixedSourceAndRangeByInteger[110X([23X1[123X,[23XH(S,R)[123X,[3Xn[103X).[133X
+  
+  [1X11.1-5 RandomMorphismWithFixedSourceByList[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceByList[102X( [3XS[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in a Freyd category[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [3XS[103X  in  a  Freyd  category [3Xcat[103X of a category
+  [3Xunderlying_cat[103X  and  a  list  [3XL[103X.  We  denote  the  relation morphism of [3XS[103X by
+  [23X\rho_S:S_1  \to  S_2[123X  in  [3Xunderlying_cat[103X.  The  output  is a morphism in [3Xcat[103X
+  constructed as follows:[133X
+  
+  [30X    [33X[0;6YCompute       a      morphism      [23X\rho:S_1      \to      R_1[123X      via
+        [10XRandomMorphismWithFixedSourceByList[110X([23XS_1[123X,[3XL[103X).[133X
+  
+  [30X    [33X[0;6YCompute  the pair of injections [23X\mu_1:S_2 \to K[123X and [23X\mu_2:R_1 \to K[123X in
+        the weak-bipushout [23XK[123X of the pair ([23X\rho_S[123X, [23X\rho[123X).[133X
+  
+  [30X    [33X[0;6YCompute       a      morphism      [23X\delta:K      \to      R_2[123X      via
+        [10XRandomMorphismWithFixedSourceByList[110X([23XK[123X,[3XL[103X).[133X
+  
+  [33X[0;0YThe output is a morphism [23XS \to R[123X in [3Xcat[103X whose morphism datum is [23X\delta \circ
+  \mu_1[123X and whose range's relation morphism is [23X\delta \circ \mu_2[123X.[133X
+  
+  [1X11.1-6 RandomMorphismWithFixedSourceByInteger[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceByInteger[102X( [3XS[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in a Freyd category[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [3XS[103X  in  a  Freyd  category [3Xcat[103X of a category
+  [3Xunderlying_cat[103X  and  an  integer  [3Xn[103X. We denote the relation morphism of [3XS[103X by
+  [23X\rho_S:S_1  \to  S_2[123X  in  [3Xunderlying_cat[103X.  The  output  is a morphism in [3Xcat[103X
+  constructed as follows:[133X
+  
+  [30X    [33X[0;6YCompute       a      morphism      [23X\rho:S_1      \to      R_1[123X      via
+        [10XRandomMorphismWithFixedSourceByInteger[110X([23XS_1[123X,[3Xn[103X).[133X
+  
+  [30X    [33X[0;6YCompute  the pair of injections [23X\mu_1:S_2 \to K[123X and [23X\mu_2:R_1 \to K[123X in
+        the weak-bipushout [23XK[123X of the pair ([23X\rho_S[123X, [23X\rho[123X).[133X
+  
+  [30X    [33X[0;6YCompute       a      morphism      [23X\delta:K      \to      R_2[123X      via
+        [10XRandomMorphismWithFixedSourceByInteger[110X([23XK[123X,[3Xn[103X).[133X
+  
+  [33X[0;0YThe output is a morphism [23XS \to R[123X in [3Xcat[103X whose morphism datum is [23X\delta \circ
+  \mu_1[123X and whose range's relation morphism is [23X\delta \circ \mu_2[123X.[133X
+  
+  [1X11.1-7 RandomMorphismWithFixedRangeByList[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismWithFixedRangeByList[102X( [3XR[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in a Freyd category[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [3XR[103X  in  a  Freyd  category [3Xcat[103X of a category
+  [3Xunderlying_cat[103X  and  a  list  [3XL[103X.  We  denote  the  relation morphism of [3XR[103X by
+  [23X\rho_R:R_1  \to  R_2[123X  in  [3Xunderlying_cat[103X.  The  output  is a morphism in [3Xcat[103X
+  constructed as follows:[133X
+  
+  [30X    [33X[0;6YCompute       a      morphism      [23X\rho:S_2      \to      R_2[123X      via
+        [10XRandomMorphismWithFixedRangeByList[110X([23XR_2[123X,[3XL[103X).[133X
+  
+  [30X    [33X[0;6YCompute  the  projection  [23X\rho_S:K \to S_2[123X in the second factor of the
+        weak-bifiber-product of the pair ([23X\rho_R[123X,[23X\rho[123X).[133X
+  
+  [30X    [33X[0;6YCompute       a      morphism      [23X\delta:S_1      \to      K[123X      via
+        [10XRandomMorphismWithFixedRangeByList[110X([23XK[123X,[3XL[103X).[133X
+  
+  [33X[0;0YThe  output  is  a  morphism [23XS \to R[123X in [3Xcat[103X whose morphism datum is [23X\rho[123X and
+  whose source's relation morphism is [23X\rho_S \circ \delta[123X.[133X
+  
+  [1X11.1-8 RandomMorphismWithFixedRangeByInteger[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismWithFixedRangeByInteger[102X( [3XR[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in a Freyd category[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [3XR[103X  in  a  Freyd  category [3Xcat[103X of a category
+  [3Xunderlying_cat[103X  and  an  integer  [3Xn[103X. We denote the relation morphism of [3XR[103X by
+  [23X\rho_R:R_1  \to  R_2[123X  in  [3Xunderlying_cat[103X.  The  output  is a morphism in [3Xcat[103X
+  constructed as follows:[133X
+  
+  [30X    [33X[0;6YCompute       a      morphism      [23X\rho:S_2      \to      R_2[123X      via
+        [10XRandomMorphismWithFixedRangeByInteger[110X([23XR_2[123X,[3Xn[103X).[133X
+  
+  [30X    [33X[0;6YCompute  the  projection  [23X\rho_S:K \to S_2[123X in the second factor of the
+        weak-bifiber-product of the pair ([23X\rho_R[123X,[23X\rho[123X).[133X
+  
+  [30X    [33X[0;6YCompute       a      morphism      [23X\delta:S_1      \to      K[123X      via
+        [10XRandomMorphismWithFixedRangeByInteger[110X([23XK[123X,[3Xn[103X).[133X
+  
+  [33X[0;0YThe  output  is  a  morphism [23XS \to R[123X in [3Xcat[103X whose morphism datum is [23X\rho[123X and
+  whose source's relation morphism is [23X\rho_S \circ \delta[123X.[133X
+  
+  [1X11.1-9 RandomMorphismByList[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismByList[102X( [3Xcat[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in a Freyd category[133X
+  
+  [33X[0;0YThe  arguments  are  a  Freyd  category [3Xcat[103X and a list [3XL[103X consisting of three
+  lists.         The         output         is         constructed         via
+  [10XRandomMorphismWithFixedSourceAndRangeByList[110X([23XS[123X,[23XR[123X,[3XL[103X[3]) where [23XS[123X is constructed
+  via [10XRandomObjectByList[110X([3Xcat[103X,[3XL[103X[1]) and [23XR[123X via [10XRandomObjectByList[110X([3Xcat[103X,[3XL[103X[2]).[133X
+  
+  [1X11.1-10 RandomMorphismByInteger[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismByInteger[102X( [3Xcat[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in a Freyd category[133X
+  
+  [33X[0;0YThe  arguments  are  a  Freyd  category  [3Xcat[103X and an integer [3Xn[103X. The output is
+  constructed  via [10XRandomMorphismWithFixedSourceAndRangeByInteger[110X([23XS[123X,[23XR[123X,[3Xn[103X) where
+  [23XS[123X and [23XR[123X are random objects constructed via [10XRandomObjectByInteger[110X([3Xcat[103X,[3Xn[103X).[133X
+  
+  
+  [1X11.2 [33X[0;0YInternal Hom-Embedding[133X[101X
+  
+  [1X11.2-1 INTERNAL_HOM_EMBEDDING[101X
   
   [33X[1;0Y[29X[2XINTERNAL_HOM_EMBEDDING[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya (mono)morphism[133X
@@ -18,21 +186,21 @@
   returns this very map.[133X
   
   
-  [1X11.2 [33X[0;0YConvenient methods for tensor products of freyd objects and morphisms[133X[101X
+  [1X11.3 [33X[0;0YConvenient methods for tensor products of freyd objects and morphisms[133X[101X
   
-  [1X11.2-1 \*[101X
+  [1X11.3-1 \*[101X
   
   [33X[1;0Y[29X[2X\*[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
   
-  [1X11.2-2 \^[101X
+  [1X11.3-2 \^[101X
   
   [33X[1;0Y[29X[2X\^[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
   
-  [1X11.2-3 \*[101X
+  [1X11.3-3 \*[101X
   
   [33X[1;0Y[29X[2X\*[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
   
-  [1X11.2-4 \^[101X
+  [1X11.3-4 \^[101X
   
   [33X[1;0Y[29X[2X\^[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
   

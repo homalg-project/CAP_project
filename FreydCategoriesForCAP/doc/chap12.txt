@@ -436,6 +436,34 @@
     [4X[25X>[125X [27Xfreyd := FreydCategory( cat );;[127X[104X
     [4X[25Xgap>[125X [27XIsAbelianCategory( freyd );;[127X[104X
     [4X[25Xgap>[125X [27Xobj_gamma := FreydCategoryObject( gamma );;[127X[104X
+    [4X[25Xgap>[125X [27Xu := RandomMorphismWithFixedSource( obj_gamma, [ [5], [5] ] );;[127X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( u ) and IsEqualForObjects( Source(u), obj_gamma );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xu := RandomMorphismWithFixedSource( obj_gamma, 5 );;[127X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( u ) and IsEqualForObjects( Source(u), obj_gamma );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xu := RandomMorphismWithFixedRange( obj_gamma, [ [5], [5] ] );;[127X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( u ) and IsEqualForObjects( Range(u), obj_gamma );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xu := RandomMorphismWithFixedRange( obj_gamma, 5 );;[127X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( u ) and IsEqualForObjects( Range(u), obj_gamma );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xobj_delta := RandomObject( freyd, [[10],[10],[10]] );;[127X[104X
+    [4X[25Xgap>[125X [27Xobj_delta := RandomObject( freyd, 10 );;[127X[104X
+    [4X[25Xgap>[125X [27Xu := RandomMorphismWithFixedSourceAndRange( obj_gamma, obj_delta, [ 5 ] );;[127X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( u );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForObjects( Source(u), obj_gamma ) and IsEqualForObjects( Range(u), obj_delta );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xu := RandomMorphismWithFixedSourceAndRange( obj_gamma, obj_delta, 5 );;[127X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( u );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForObjects( Source(u), obj_gamma ) and IsEqualForObjects( Range(u), obj_delta );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( RandomMorphism( freyd, 5 ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( RandomMorphism( freyd, [[[5],[5],[5]],[[5],[5],[5]],[1]] ) );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xf := FreydCategoryMorphism( obj_gamma, gamma, obj_gamma );;[127X[104X
     [4X[25Xgap>[125X [27Xwitness := MorphismWitness( f );;[127X[104X
     [4X[25Xgap>[125X [27Xg := FreydCategoryMorphism( obj_gamma, ZeroMorphism( obj2, obj2 ), obj_gamma );;[127X[104X

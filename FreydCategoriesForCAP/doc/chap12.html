@@ -573,6 +573,34 @@ false
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">freyd := FreydCategory( cat );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsAbelianCategory( freyd );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj_gamma := FreydCategoryObject( gamma );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := RandomMorphismWithFixedSource( obj_gamma, [ [5], [5] ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( u ) and IsEqualForObjects( Source(u), obj_gamma );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := RandomMorphismWithFixedSource( obj_gamma, 5 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( u ) and IsEqualForObjects( Source(u), obj_gamma );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := RandomMorphismWithFixedRange( obj_gamma, [ [5], [5] ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( u ) and IsEqualForObjects( Range(u), obj_gamma );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := RandomMorphismWithFixedRange( obj_gamma, 5 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( u ) and IsEqualForObjects( Range(u), obj_gamma );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj_delta := RandomObject( freyd, [[10],[10],[10]] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj_delta := RandomObject( freyd, 10 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := RandomMorphismWithFixedSourceAndRange( obj_gamma, obj_delta, [ 5 ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( u );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForObjects( Source(u), obj_gamma ) and IsEqualForObjects( Range(u), obj_delta );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := RandomMorphismWithFixedSourceAndRange( obj_gamma, obj_delta, 5 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( u );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForObjects( Source(u), obj_gamma ) and IsEqualForObjects( Range(u), obj_delta );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( RandomMorphism( freyd, 5 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( RandomMorphism( freyd, [[[5],[5],[5]],[[5],[5],[5]],[1]] ) );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f := FreydCategoryMorphism( obj_gamma, gamma, obj_gamma );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">witness := MorphismWitness( f );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">g := FreydCategoryMorphism( obj_gamma, ZeroMorphism( obj2, obj2 ), obj_gamma );;</span>

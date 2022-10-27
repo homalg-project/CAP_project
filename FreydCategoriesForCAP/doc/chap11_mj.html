@@ -25,30 +25,212 @@
 <p id="mathjaxlink" class="pcenter"><a href="chap11.html">[MathJax off]</a></p>
 <p><a id="X83356AF979A27866" name="X83356AF979A27866"></a></p>
 <div class="ChapSects"><a href="chap11_mj.html#X83356AF979A27866">11 <span class="Heading">Freyd category</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11_mj.html#X86275AA282372849">11.1 <span class="Heading">Internal Hom-Embedding</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11_mj.html#X7BDA455B80ED7301">11.1 <span class="Heading">Random methods in Freyd categories</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7A7DD0D7843CE4E1">11.1-1 INTERNAL_HOM_EMBEDDING</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7EA651437FD173A5">11.1-1 RandomObjectByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7A04D2A17B3EE0B6">11.1-2 RandomObjectByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X78185D177EE6239E">11.1-3 RandomMorphismWithFixedSourceAndRangeByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7FF7861F7CFBBB1C">11.1-4 RandomMorphismWithFixedSourceAndRangeByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7F486797829D8AE9">11.1-5 RandomMorphismWithFixedSourceByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7E925E33800B31C7">11.1-6 RandomMorphismWithFixedSourceByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X82E8DB3A7DFCDED7">11.1-7 RandomMorphismWithFixedRangeByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X85CED41486DB6990">11.1-8 RandomMorphismWithFixedRangeByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7ADB9B91792BFBFC">11.1-9 RandomMorphismByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7F9C25337FFD31E3">11.1-10 RandomMorphismByInteger</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11_mj.html#X788F566382950153">11.2 <span class="Heading">Convenient methods for tensor products of freyd objects and morphisms</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11_mj.html#X86275AA282372849">11.2 <span class="Heading">Internal Hom-Embedding</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X863AA56F85B9EBFA"><code>11.2-1 \*</code></a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7DC86DF381FF3408"><code>11.2-2 \^</code></a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7F9588547A221BDB"><code>11.2-3 \*</code></a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7F68F6D38770804F"><code>11.2-4 \^</code></a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7A7DD0D7843CE4E1">11.2-1 INTERNAL_HOM_EMBEDDING</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11_mj.html#X788F566382950153">11.3 <span class="Heading">Convenient methods for tensor products of freyd objects and morphisms</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X863AA56F85B9EBFA"><code>11.3-1 \*</code></a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7DC86DF381FF3408"><code>11.3-2 \^</code></a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7F9588547A221BDB"><code>11.3-3 \*</code></a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7F68F6D38770804F"><code>11.3-4 \^</code></a></span>
 </div></div>
 </div>
 
 <h3>11 <span class="Heading">Freyd category</span></h3>
 
+<p><a id="X7BDA455B80ED7301" name="X7BDA455B80ED7301"></a></p>
+
+<h4>11.1 <span class="Heading">Random methods in Freyd categories</span></h4>
+
+<p><a id="X7EA651437FD173A5" name="X7EA651437FD173A5"></a></p>
+
+<h5>11.1-1 RandomObjectByList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomObjectByList</code>( <var class="Arg">cat</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object in a Freyd category</p>
+
+<p>The arguments are a Freyd category <var class="Arg">cat</var> of a category <var class="Arg">underlying_cat</var> and a list <var class="Arg">L</var>. The output is an object in <var class="Arg">cat</var> whose relation morphism is a random morphism in <var class="Arg">underlying_cat</var> constructed via <code class="code">RandomMorphismByList</code>(<var class="Arg">underlying_cat</var>, <var class="Arg">L</var>).</p>
+
+<p><a id="X7A04D2A17B3EE0B6" name="X7A04D2A17B3EE0B6"></a></p>
+
+<h5>11.1-2 RandomObjectByInteger</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomObjectByInteger</code>( <var class="Arg">cat</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object in a Freyd category</p>
+
+<p>The arguments are a Freyd category <var class="Arg">cat</var> of a category <var class="Arg">underlying_cat</var> and an integer <var class="Arg">n</var>. The output is an object in <var class="Arg">cat</var> whose relation morphism is a random morphism in <var class="Arg">underlying_cat</var> constructed via <code class="code">RandomMorphismByInteger</code>(<var class="Arg">underlying_cat</var>, <var class="Arg">n</var>).</p>
+
+<p><a id="X78185D177EE6239E" name="X78185D177EE6239E"></a></p>
+
+<h5>11.1-3 RandomMorphismWithFixedSourceAndRangeByList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismWithFixedSourceAndRangeByList</code>( <var class="Arg">S</var>, <var class="Arg">R</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in a Freyd category</p>
+
+<p>The arguments are two objects <var class="Arg">S</var> and <var class="Arg">R</var> in a Freyd category <var class="Arg">cat</var> of a category <var class="Arg">underlying_cat</var> and a list <var class="Arg">L</var>. The category <var class="Arg">cat</var> is required to have a homomorphism structure <span class="SimpleMath">\((1,H,\nu)\)</span> over <var class="Arg">underlying_cat</var> or <var class="Arg">cat</var>. The output is a morphism in <var class="Arg">cat</var> constructed as follows:</p>
+
+
+<ul>
+<li><p>If the source of the relation morphism <span class="SimpleMath">\(\rho_S\)</span> of <var class="Arg">S</var> is zero, then the morphism datum of the output is constructed via <code class="code">RandomMorphismWithFixedSourceAndRangeByList</code>(<code class="code">Range</code>(<span class="SimpleMath">\(\rho_S\)</span>), <code class="code">Range</code>(<span class="SimpleMath">\(\rho_R\)</span>), <var class="Arg">L</var>) where <span class="SimpleMath">\(\rho_R\)</span> is the relation morphism of <var class="Arg">R</var>.</p>
+
+</li>
+<li><p>Otherwise, the output is <span class="SimpleMath">\(\nu^{-1}_{S,R}(\eta):S \to R\)</span> where <span class="SimpleMath">\(\eta:1\to H(S,R)\)</span> is a random morphism constructed via <code class="code">RandomMorphismWithFixedSourceAndRangeByList</code>(<span class="SimpleMath">\(1\)</span>,<span class="SimpleMath">\(H(S,R)\)</span>,<var class="Arg">L</var>).</p>
+
+</li>
+</ul>
+<p><a id="X7FF7861F7CFBBB1C" name="X7FF7861F7CFBBB1C"></a></p>
+
+<h5>11.1-4 RandomMorphismWithFixedSourceAndRangeByInteger</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismWithFixedSourceAndRangeByInteger</code>( <var class="Arg">S</var>, <var class="Arg">R</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in a Freyd category</p>
+
+<p>The arguments are two objects <var class="Arg">S</var> and <var class="Arg">R</var> in a Freyd category <var class="Arg">cat</var> of a category <var class="Arg">underlying_cat</var> and an integer <var class="Arg">n</var>. The category <var class="Arg">cat</var> is required to have a homomorphism structure <span class="SimpleMath">\((1,H,\nu)\)</span> over <var class="Arg">underlying_cat</var> or <var class="Arg">cat</var>. The output is a morphism in <var class="Arg">cat</var> constructed as follows:</p>
+
+
+<ul>
+<li><p>If the source of the relation morphism <span class="SimpleMath">\(\rho_S\)</span> of <var class="Arg">S</var> is zero, then the morphism datum of the output is constructed via <code class="code">RandomMorphismWithFixedSourceAndRangeByInteger</code>(<code class="code">Range</code>(<span class="SimpleMath">\(\rho_S\)</span>), <code class="code">Range</code>(<span class="SimpleMath">\(\rho_R\)</span>), <var class="Arg">n</var>) where <span class="SimpleMath">\(\rho_R\)</span> is the relation morphism of <var class="Arg">R</var>.</p>
+
+</li>
+<li><p>Otherwise, the output is <span class="SimpleMath">\(\nu^{-1}_{S,R}(\eta):S \to R\)</span> where <span class="SimpleMath">\(\eta:1\to H(S,R)\)</span> is a random morphism constructed via <code class="code">RandomMorphismWithFixedSourceAndRangeByInteger</code>(<span class="SimpleMath">\(1\)</span>,<span class="SimpleMath">\(H(S,R)\)</span>,<var class="Arg">n</var>).</p>
+
+</li>
+</ul>
+<p><a id="X7F486797829D8AE9" name="X7F486797829D8AE9"></a></p>
+
+<h5>11.1-5 RandomMorphismWithFixedSourceByList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismWithFixedSourceByList</code>( <var class="Arg">S</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in a Freyd category</p>
+
+<p>The arguments are an object <var class="Arg">S</var> in a Freyd category <var class="Arg">cat</var> of a category <var class="Arg">underlying_cat</var> and a list <var class="Arg">L</var>. We denote the relation morphism of <var class="Arg">S</var> by <span class="SimpleMath">\(\rho_S:S_1 \to S_2\)</span> in <var class="Arg">underlying_cat</var>. The output is a morphism in <var class="Arg">cat</var> constructed as follows:</p>
+
+
+<ul>
+<li><p>Compute a morphism <span class="SimpleMath">\(\rho:S_1 \to R_1\)</span> via <code class="code">RandomMorphismWithFixedSourceByList</code>(<span class="SimpleMath">\(S_1\)</span>,<var class="Arg">L</var>).</p>
+
+</li>
+<li><p>Compute the pair of injections <span class="SimpleMath">\(\mu_1:S_2 \to K\)</span> and <span class="SimpleMath">\(\mu_2:R_1 \to K\)</span> in the weak-bipushout <span class="SimpleMath">\(K\)</span> of the pair (<span class="SimpleMath">\(\rho_S\)</span>, <span class="SimpleMath">\(\rho\)</span>).</p>
+
+</li>
+<li><p>Compute a morphism <span class="SimpleMath">\(\delta:K \to R_2\)</span> via <code class="code">RandomMorphismWithFixedSourceByList</code>(<span class="SimpleMath">\(K\)</span>,<var class="Arg">L</var>).</p>
+
+</li>
+</ul>
+<p>The output is a morphism <span class="SimpleMath">\(S \to R\)</span> in <var class="Arg">cat</var> whose morphism datum is <span class="SimpleMath">\(\delta \circ \mu_1\)</span> and whose range's relation morphism is <span class="SimpleMath">\(\delta \circ \mu_2\)</span>.</p>
+
+<p><a id="X7E925E33800B31C7" name="X7E925E33800B31C7"></a></p>
+
+<h5>11.1-6 RandomMorphismWithFixedSourceByInteger</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismWithFixedSourceByInteger</code>( <var class="Arg">S</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in a Freyd category</p>
+
+<p>The arguments are an object <var class="Arg">S</var> in a Freyd category <var class="Arg">cat</var> of a category <var class="Arg">underlying_cat</var> and an integer <var class="Arg">n</var>. We denote the relation morphism of <var class="Arg">S</var> by <span class="SimpleMath">\(\rho_S:S_1 \to S_2\)</span> in <var class="Arg">underlying_cat</var>. The output is a morphism in <var class="Arg">cat</var> constructed as follows:</p>
+
+
+<ul>
+<li><p>Compute a morphism <span class="SimpleMath">\(\rho:S_1 \to R_1\)</span> via <code class="code">RandomMorphismWithFixedSourceByInteger</code>(<span class="SimpleMath">\(S_1\)</span>,<var class="Arg">n</var>).</p>
+
+</li>
+<li><p>Compute the pair of injections <span class="SimpleMath">\(\mu_1:S_2 \to K\)</span> and <span class="SimpleMath">\(\mu_2:R_1 \to K\)</span> in the weak-bipushout <span class="SimpleMath">\(K\)</span> of the pair (<span class="SimpleMath">\(\rho_S\)</span>, <span class="SimpleMath">\(\rho\)</span>).</p>
+
+</li>
+<li><p>Compute a morphism <span class="SimpleMath">\(\delta:K \to R_2\)</span> via <code class="code">RandomMorphismWithFixedSourceByInteger</code>(<span class="SimpleMath">\(K\)</span>,<var class="Arg">n</var>).</p>
+
+</li>
+</ul>
+<p>The output is a morphism <span class="SimpleMath">\(S \to R\)</span> in <var class="Arg">cat</var> whose morphism datum is <span class="SimpleMath">\(\delta \circ \mu_1\)</span> and whose range's relation morphism is <span class="SimpleMath">\(\delta \circ \mu_2\)</span>.</p>
+
+<p><a id="X82E8DB3A7DFCDED7" name="X82E8DB3A7DFCDED7"></a></p>
+
+<h5>11.1-7 RandomMorphismWithFixedRangeByList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismWithFixedRangeByList</code>( <var class="Arg">R</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in a Freyd category</p>
+
+<p>The arguments are an object <var class="Arg">R</var> in a Freyd category <var class="Arg">cat</var> of a category <var class="Arg">underlying_cat</var> and a list <var class="Arg">L</var>. We denote the relation morphism of <var class="Arg">R</var> by <span class="SimpleMath">\(\rho_R:R_1 \to R_2\)</span> in <var class="Arg">underlying_cat</var>. The output is a morphism in <var class="Arg">cat</var> constructed as follows:</p>
+
+
+<ul>
+<li><p>Compute a morphism <span class="SimpleMath">\(\rho:S_2 \to R_2\)</span> via <code class="code">RandomMorphismWithFixedRangeByList</code>(<span class="SimpleMath">\(R_2\)</span>,<var class="Arg">L</var>).</p>
+
+</li>
+<li><p>Compute the projection <span class="SimpleMath">\(\rho_S:K \to S_2\)</span> in the second factor of the weak-bifiber-product of the pair (<span class="SimpleMath">\(\rho_R\)</span>,<span class="SimpleMath">\(\rho\)</span>).</p>
+
+</li>
+<li><p>Compute a morphism <span class="SimpleMath">\(\delta:S_1 \to K\)</span> via <code class="code">RandomMorphismWithFixedRangeByList</code>(<span class="SimpleMath">\(K\)</span>,<var class="Arg">L</var>).</p>
+
+</li>
+</ul>
+<p>The output is a morphism <span class="SimpleMath">\(S \to R\)</span> in <var class="Arg">cat</var> whose morphism datum is <span class="SimpleMath">\(\rho\)</span> and whose source's relation morphism is <span class="SimpleMath">\(\rho_S \circ \delta\)</span>.</p>
+
+<p><a id="X85CED41486DB6990" name="X85CED41486DB6990"></a></p>
+
+<h5>11.1-8 RandomMorphismWithFixedRangeByInteger</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismWithFixedRangeByInteger</code>( <var class="Arg">R</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in a Freyd category</p>
+
+<p>The arguments are an object <var class="Arg">R</var> in a Freyd category <var class="Arg">cat</var> of a category <var class="Arg">underlying_cat</var> and an integer <var class="Arg">n</var>. We denote the relation morphism of <var class="Arg">R</var> by <span class="SimpleMath">\(\rho_R:R_1 \to R_2\)</span> in <var class="Arg">underlying_cat</var>. The output is a morphism in <var class="Arg">cat</var> constructed as follows:</p>
+
+
+<ul>
+<li><p>Compute a morphism <span class="SimpleMath">\(\rho:S_2 \to R_2\)</span> via <code class="code">RandomMorphismWithFixedRangeByInteger</code>(<span class="SimpleMath">\(R_2\)</span>,<var class="Arg">n</var>).</p>
+
+</li>
+<li><p>Compute the projection <span class="SimpleMath">\(\rho_S:K \to S_2\)</span> in the second factor of the weak-bifiber-product of the pair (<span class="SimpleMath">\(\rho_R\)</span>,<span class="SimpleMath">\(\rho\)</span>).</p>
+
+</li>
+<li><p>Compute a morphism <span class="SimpleMath">\(\delta:S_1 \to K\)</span> via <code class="code">RandomMorphismWithFixedRangeByInteger</code>(<span class="SimpleMath">\(K\)</span>,<var class="Arg">n</var>).</p>
+
+</li>
+</ul>
+<p>The output is a morphism <span class="SimpleMath">\(S \to R\)</span> in <var class="Arg">cat</var> whose morphism datum is <span class="SimpleMath">\(\rho\)</span> and whose source's relation morphism is <span class="SimpleMath">\(\rho_S \circ \delta\)</span>.</p>
+
+<p><a id="X7ADB9B91792BFBFC" name="X7ADB9B91792BFBFC"></a></p>
+
+<h5>11.1-9 RandomMorphismByList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismByList</code>( <var class="Arg">cat</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in a Freyd category</p>
+
+<p>The arguments are a Freyd category <var class="Arg">cat</var> and a list <var class="Arg">L</var> consisting of three lists. The output is constructed via <code class="code">RandomMorphismWithFixedSourceAndRangeByList</code>(<span class="SimpleMath">\(S\)</span>,<span class="SimpleMath">\(R\)</span>,<var class="Arg">L</var>[3]) where <span class="SimpleMath">\(S\)</span> is constructed via <code class="code">RandomObjectByList</code>(<var class="Arg">cat</var>,<var class="Arg">L</var>[1]) and <span class="SimpleMath">\(R\)</span> via <code class="code">RandomObjectByList</code>(<var class="Arg">cat</var>,<var class="Arg">L</var>[2]).</p>
+
+<p><a id="X7F9C25337FFD31E3" name="X7F9C25337FFD31E3"></a></p>
+
+<h5>11.1-10 RandomMorphismByInteger</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismByInteger</code>( <var class="Arg">cat</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in a Freyd category</p>
+
+<p>The arguments are a Freyd category <var class="Arg">cat</var> and an integer <var class="Arg">n</var>. The output is constructed via <code class="code">RandomMorphismWithFixedSourceAndRangeByInteger</code>(<span class="SimpleMath">\(S\)</span>,<span class="SimpleMath">\(R\)</span>,<var class="Arg">n</var>) where <span class="SimpleMath">\(S\)</span> and <span class="SimpleMath">\(R\)</span> are random objects constructed via <code class="code">RandomObjectByInteger</code>(<var class="Arg">cat</var>,<var class="Arg">n</var>).</p>
+
 <p><a id="X86275AA282372849" name="X86275AA282372849"></a></p>
 
-<h4>11.1 <span class="Heading">Internal Hom-Embedding</span></h4>
+<h4>11.2 <span class="Heading">Internal Hom-Embedding</span></h4>
 
 <p><a id="X7A7DD0D7843CE4E1" name="X7A7DD0D7843CE4E1"></a></p>
 
-<h5>11.1-1 INTERNAL_HOM_EMBEDDING</h5>
+<h5>11.2-1 INTERNAL_HOM_EMBEDDING</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; INTERNAL_HOM_EMBEDDING</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a (mono)morphism</p>
@@ -57,26 +239,26 @@
 
 <p><a id="X788F566382950153" name="X788F566382950153"></a></p>
 
-<h4>11.2 <span class="Heading">Convenient methods for tensor products of freyd objects and morphisms</span></h4>
+<h4>11.3 <span class="Heading">Convenient methods for tensor products of freyd objects and morphisms</span></h4>
 
 <p><a id="X863AA56F85B9EBFA" name="X863AA56F85B9EBFA"></a></p>
 
-<h5><code>11.2-1 \*</code></h5>
+<h5><code>11.3-1 \*</code></h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; \*</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p><a id="X7DC86DF381FF3408" name="X7DC86DF381FF3408"></a></p>
 
-<h5><code>11.2-2 \^</code></h5>
+<h5><code>11.3-2 \^</code></h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; \^</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p><a id="X7F9588547A221BDB" name="X7F9588547A221BDB"></a></p>
 
-<h5><code>11.2-3 \*</code></h5>
+<h5><code>11.3-3 \*</code></h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; \*</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p><a id="X7F68F6D38770804F" name="X7F68F6D38770804F"></a></p>
 
-<h5><code>11.2-4 \^</code></h5>
+<h5><code>11.3-4 \^</code></h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; \^</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 
