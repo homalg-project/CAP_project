@@ -290,6 +290,17 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
     ## Homomorphism structure for homalg exterior rings over fields
     if IsHomalgRing( ring ) and HasIsExteriorRing( ring ) and IsExteriorRing( ring ) and IsField( BaseRing( ring ) ) then
         
+        SetIsLinearCategoryOverCommutativeRing( category, true );
+        
+        SetCommutativeRingOfLinearCategory( category, BaseRing( ring ) );
+        
+        AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
+          function( cat, r, alpha )
+            
+            return RingAsCategoryMorphism( category, ( r / ring ) * UnderlyingRingElement( alpha ) );
+            
+        end );
+        
         field := BaseRing( ring );
         
         range_category := CategoryOfRows( field );
