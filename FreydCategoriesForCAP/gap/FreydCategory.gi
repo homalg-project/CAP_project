@@ -1745,6 +1745,226 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
       
     fi;
     
+    ## Random Methods by Lists
+    ##
+    if ForAll( [ "RandomObjectByList",
+                 "RandomMorphismWithFixedSourceByList",
+                 "RandomMorphismWithFixedRangeByList",
+                 "RandomMorphismByList",
+                 "InjectionOfFirstCofactorOfWeakBiPushout",
+                 "InjectionOfSecondCofactorOfWeakBiPushout",
+                 "ProjectionInSecondFactorOfWeakBiFiberProduct" ], m -> CanCompute( underlying_category, m ) ) then
+      
+      ##
+      AddRandomObjectByList( category,
+        function ( cat, L )
+          
+          return FreydCategoryObject( cat, RandomMorphismByList( underlying_category, L ) );
+          
+      end );
+      
+      ##
+      AddRandomMorphismWithFixedSourceByList( category,
+        function ( cat, S, L )
+          local rho_S, rho, delta, mu_1, mu_2;
+          
+          rho_S := RelationMorphism( S );
+          
+          rho := RandomMorphismWithFixedSourceByList( underlying_category, Source( rho_S ), L );
+          
+          mu_1 := InjectionOfFirstCofactorOfWeakBiPushout( underlying_category, rho_S, rho );
+          mu_2 := InjectionOfSecondCofactorOfWeakBiPushout( underlying_category, rho_S, rho );
+          
+          delta := RandomMorphismWithFixedSourceByList( underlying_category, Range( mu_1 ), L );
+          
+          mu_1 := PreCompose( underlying_category, mu_1, delta );
+          mu_2 := PreCompose( underlying_category, mu_2, delta );
+          
+          return FreydCategoryMorphism( cat, S, mu_1, FreydCategoryObject( cat, mu_2 ) );
+          
+      end );
+      
+      ##
+      AddRandomMorphismWithFixedRangeByList( category,
+        function ( cat, R, L )
+          local rho_R, rho, rho_S, delta;
+          
+          rho_R := RelationMorphism( R );
+          
+          rho := RandomMorphismWithFixedRangeByList( underlying_category, Range( rho_R ), L );
+          
+          rho_S := ProjectionInSecondFactorOfWeakBiFiberProduct( rho_R, rho );
+          
+          delta := RandomMorphismWithFixedRangeByList( underlying_category, Source( rho_S ), L );
+          
+          rho_S := PreCompose( underlying_category, delta, rho_S );
+          
+          return FreydCategoryMorphism( cat, FreydCategoryObject( cat, rho_S ), rho, R );
+          
+      end );
+      
+      if CanCompute( underlying_category, "IsZeroForObjects" ) and
+          CanCompute( underlying_category, "RandomMorphismWithFixedSourceAndRangeByList" ) and
+            HasRangeCategoryOfHomomorphismStructure( category ) and
+              ( IsIdenticalObj( RangeCategoryOfHomomorphismStructure( category ), category ) or
+                IsIdenticalObj( RangeCategoryOfHomomorphismStructure( category ), underlying_category ) ) then
+        
+        ## The above two restrictions ensure that L will be passed to the underlying category.
+        ##
+        AddRandomMorphismWithFixedSourceAndRangeByList( category,
+          function ( cat, S, R, L )
+            
+            if IsZeroForObjects( underlying_category, Source( RelationMorphism( S ) ) ) then
+              
+              return FreydCategoryMorphism(
+                        cat,
+                        S,
+                        RandomMorphismWithFixedSourceAndRangeByList(
+                          underlying_category,
+                          Range( RelationMorphism( S ) ),
+                          Range( RelationMorphism( R ) ),
+                          L ),
+                        R );
+            
+            else
+              # If the category has homomorphism structure over itself then
+              # this case delegates to the above case since the source of the relation morphism
+              # of DistinguishedObjectOfHomomorphismStructure( cat ) is zero.
+              return InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
+                        cat,
+                        S,
+                        R,
+                        RandomMorphismWithFixedSourceAndRangeByList(
+                          RangeCategoryOfHomomorphismStructure( cat ),
+                          DistinguishedObjectOfHomomorphismStructure( cat ),
+                          HomomorphismStructureOnObjects( cat, S, R ),
+                          L ) );
+            
+            fi;
+            
+        end );
+        
+        ##
+        AddRandomMorphismByList( category,
+          function ( cat, L )
+            
+            if not ( Length( L ) = 3 and ForAll( L, IsList ) ) then
+              Error( "The input should be a list consisting of three lists\n" );
+            fi;
+            
+            return RandomMorphismWithFixedSourceAndRangeByList(
+                      cat,
+                      RandomObjectByList( cat, L[1] ),
+                      RandomObjectByList( cat, L[2] ),
+                      L[3] );
+        end );
+        
+      fi;
+    
+    fi;
+   
+    ## Random Methods by Integers
+    ##
+    if ForAll( [ "RandomObjectByInteger",
+                 "RandomMorphismWithFixedSourceByInteger",
+                 "RandomMorphismWithFixedRangeByInteger",
+                 "RandomMorphismByInteger",
+                 "InjectionOfFirstCofactorOfWeakBiPushout",
+                 "InjectionOfSecondCofactorOfWeakBiPushout",
+                 "ProjectionInSecondFactorOfWeakBiFiberProduct" ], m -> CanCompute( underlying_category, m ) ) then
+
+      
+      ##
+      AddRandomObjectByInteger( category,
+        function ( cat, n )
+          
+          return FreydCategoryObject( cat, RandomMorphismByInteger( underlying_category, n ) );
+          
+      end );
+      
+      ##
+      AddRandomMorphismWithFixedSourceByInteger( category,
+        function ( cat, S, n )
+          local rho_S, rho, delta, mu_1, mu_2;
+          
+          rho_S := RelationMorphism( S );
+          
+          rho := RandomMorphismWithFixedSourceByInteger( underlying_category, Source( rho_S ), n );
+          
+          mu_1 := InjectionOfFirstCofactorOfWeakBiPushout( underlying_category, rho_S, rho );
+          mu_2 := InjectionOfSecondCofactorOfWeakBiPushout( underlying_category, rho_S, rho );
+          
+          delta := RandomMorphismWithFixedSourceByInteger( underlying_category, Range( mu_1 ), n );
+          
+          mu_1 := PreCompose( underlying_category, mu_1, delta );
+          mu_2 := PreCompose( underlying_category, mu_2, delta );
+          
+          return FreydCategoryMorphism( cat, S, mu_1, FreydCategoryObject( cat, mu_2 ) );
+          
+      end );
+       
+      ##
+      AddRandomMorphismWithFixedRangeByInteger( category,
+        function ( cat, R, n )
+          local rho_R, rho, rho_S, delta;
+          
+          rho_R := RelationMorphism( R );
+          
+          rho := RandomMorphismWithFixedRangeByInteger( underlying_category, Range( rho_R ), n );
+          
+          rho_S := ProjectionInSecondFactorOfWeakBiFiberProduct( rho_R, rho );
+          
+          delta := RandomMorphismWithFixedRangeByInteger( underlying_category, Source( rho_S ), n );
+          
+          rho_S := PreCompose( underlying_category, delta, rho_S );
+          
+          return FreydCategoryMorphism( cat, FreydCategoryObject( cat, rho_S ), rho, R );
+          
+      end );
+      
+      if CanCompute( underlying_category, "IsZeroForObjects" ) and
+          CanCompute( underlying_category, "RandomMorphismWithFixedSourceAndRangeByInteger" ) and
+            HasRangeCategoryOfHomomorphismStructure( category ) and
+              ( IsIdenticalObj( RangeCategoryOfHomomorphismStructure( category ), category ) or
+                IsIdenticalObj( RangeCategoryOfHomomorphismStructure( category ), underlying_category ) ) then
+        
+        ##
+        AddRandomMorphismWithFixedSourceAndRangeByInteger( category,
+          function ( cat, S, R, n )
+            
+            if IsZeroForObjects( underlying_category, Source( RelationMorphism( S ) ) ) then
+              
+              return FreydCategoryMorphism(
+                        cat,
+                        S,
+                        RandomMorphismWithFixedSourceAndRangeByInteger(
+                          underlying_category,
+                          Range( RelationMorphism( S ) ),
+                          Range( RelationMorphism( R ) ),
+                          n ),
+                        R );
+            
+            else
+              # If the category has homomorphism structure over itself, then
+              # this case delegates to the above case since the source of the relation morphism
+              # of DistinguishedObjectOfHomomorphismStructure( cat ) is zero.
+              return InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
+                        cat,
+                        S,
+                        R,
+                        RandomMorphismWithFixedSourceAndRangeByInteger(
+                          RangeCategoryOfHomomorphismStructure( cat ),
+                          DistinguishedObjectOfHomomorphismStructure( cat ),
+                          HomomorphismStructureOnObjects( cat, S, R ),
+                          n ) );
+            
+            fi;
+            
+        end );
+        
+      fi;
+    
+    fi;
 end );
 
 ####################################

@@ -63,6 +63,34 @@ UniversalMorphismFromWeakBiPushout( alpha, alpha, pi1, pi2 );;
 freyd := FreydCategory( cat );;
 IsAbelianCategory( freyd );;
 obj_gamma := FreydCategoryObject( gamma );;
+u := RandomMorphismWithFixedSource( obj_gamma, [ [5], [5] ] );;
+IsWellDefined( u ) and IsEqualForObjects( Source(u), obj_gamma );
+#! true
+u := RandomMorphismWithFixedSource( obj_gamma, 5 );;
+IsWellDefined( u ) and IsEqualForObjects( Source(u), obj_gamma );
+#! true
+u := RandomMorphismWithFixedRange( obj_gamma, [ [5], [5] ] );;
+IsWellDefined( u ) and IsEqualForObjects( Range(u), obj_gamma );
+#! true
+u := RandomMorphismWithFixedRange( obj_gamma, 5 );;
+IsWellDefined( u ) and IsEqualForObjects( Range(u), obj_gamma );
+#! true
+obj_delta := RandomObject( freyd, [[10],[10],[10]] );;
+obj_delta := RandomObject( freyd, 10 );;
+u := RandomMorphismWithFixedSourceAndRange( obj_gamma, obj_delta, [ 5 ] );;
+IsWellDefined( u );
+#! true
+IsEqualForObjects( Source(u), obj_gamma ) and IsEqualForObjects( Range(u), obj_delta );
+#! true
+u := RandomMorphismWithFixedSourceAndRange( obj_gamma, obj_delta, 5 );;
+IsWellDefined( u );
+#! true
+IsEqualForObjects( Source(u), obj_gamma ) and IsEqualForObjects( Range(u), obj_delta );
+#! true
+IsWellDefined( RandomMorphism( freyd, 5 ) );
+#! true
+IsWellDefined( RandomMorphism( freyd, [[[5],[5],[5]],[[5],[5],[5]],[1]] ) );
+#! true
 f := FreydCategoryMorphism( obj_gamma, gamma, obj_gamma );;
 witness := MorphismWitness( f );;
 g := FreydCategoryMorphism( obj_gamma, ZeroMorphism( obj2, obj2 ), obj_gamma );;
