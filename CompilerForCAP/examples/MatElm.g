@@ -12,7 +12,7 @@ tree := ENHANCED_SYNTAX_TREE( func );;
 tree := CapJitResolvedGlobalVariables( tree );;
 Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
 #! function ( x_1 )
-#!     return x_1[1, 1];
+#!     return \[\,\]( x_1, 1, 1 );
 #! end
 
 #! @EndExample
