@@ -87,6 +87,8 @@
 #! * <Ref BookName="CAP" Func="IsomorphismFromTerminalObjectToZeroObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsomorphismFromZeroObjectToInitialObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsomorphismFromZeroObjectToTerminalObject" Label="for Is" />
+#! * <Ref BookName="CAP" Func="JointPairwiseDifferencesOfMorphismsFromCoproduct" Label="for Is" />
+#! * <Ref BookName="CAP" Func="JointPairwiseDifferencesOfMorphismsIntoDirectProduct" Label="for Is" />
 #! * <Ref BookName="CAP" Func="Lift" Label="for Is" />
 #! * <Ref BookName="CAP" Func="LiftAlongMonomorphism" Label="for Is" />
 #! * <Ref BookName="CAP" Func="LiftOrFail" Label="for Is" />

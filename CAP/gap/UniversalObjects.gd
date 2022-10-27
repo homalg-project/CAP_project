@@ -1424,6 +1424,16 @@ DeclareOperation( "EqualizerFunctorial",
 DeclareOperation( "EqualizerFunctorialWithGivenEqualizers",
                   [ IsCapCategoryObject, IsList, IsCapCategoryMorphism, IsList, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are an object A and a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$.
+#! The output is a morphism
+#! $A \rightarrow \prod_{i=1}^{n-1} B$
+#! such that its kernel equalizes the $\beta_i$.
+#! @Returns a morphism in $\mathrm{Hom}( A, \prod_{i=1}^{n-1} B )$
+#! @Arguments A, D
+DeclareOperation( "JointPairwiseDifferencesOfMorphismsIntoDirectProduct",
+                  [ IsCapCategoryObject, IsList ] );
+
 #! @Chapter Universal Objects
 
 ####################################
@@ -1486,7 +1496,6 @@ DeclareOperation( "EqualizerFunctorialWithGivenEqualizers",
 #! The output is the coequalizer $\mathrm{Coequalizer}(D)$.
 #! @Returns an object
 DeclareGlobalFunction( "Coequalizer" );
-
 
 #! @Description
 #! The arguments are an object $A$ and a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$.
@@ -1603,6 +1612,16 @@ DeclareOperation( "CoequalizerFunctorial",
 #! @Arguments s, Ls, mu, Lr, r
 DeclareOperation( "CoequalizerFunctorialWithGivenCoequalizers",
                   [ IsCapCategoryObject, IsList, IsCapCategoryMorphism, IsList, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are an object A and a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$.
+#! The output is a morphism
+#! $\bigsqcup_{i=1}^{n-1} B \rightarrow A$
+#! such that its cokernel coequalizes the $\beta_i$.
+#! @Returns a morphism in $\mathrm{Hom}(\bigsqcup_{i=1}^{n-1} B, A)$
+#! @Arguments A, D
+DeclareOperation( "JointPairwiseDifferencesOfMorphismsFromCoproduct",
+                  [ IsCapCategoryObject, IsList ] );
 
 #! @Chapter Universal Objects
 

@@ -3097,6 +3097,13 @@ DirectSumDiagonalDifference := rec(
   return_type := "morphism",
   dual_operation := "DirectSumCodiagonalDifference",
 ),
+
+JointPairwiseDifferencesOfMorphismsFromCoproduct:= rec(
+  filter_list := [ "category", "object", "list_of_morphisms" ],
+  io_type := [ [ "A", "D" ], [ "A", "P" ] ],
+  return_type := "morphism",
+  dual_operation := "JointPairwiseDifferencesOfMorphismsIntoDirectProduct",
+),
   
 FiberProductEmbeddingInDirectSum := rec(
   filter_list := [ "category", "list_of_morphisms" ],
@@ -3236,6 +3243,13 @@ DirectSumCodiagonalDifference := rec(
   filter_list := [ "category", "list_of_morphisms" ],
   return_type := "morphism",
   dual_operation := "DirectSumDiagonalDifference",
+),
+
+JointPairwiseDifferencesOfMorphismsIntoDirectProduct := rec(
+  filter_list := [ "category", "object", "list_of_morphisms" ],
+  io_type := [ [ "A", "D" ], [ "C", "A" ] ],
+  return_type := "morphism",
+  dual_operation := "JointPairwiseDifferencesOfMorphismsFromCoproduct",
 ),
 
 DirectSumProjectionInPushout := rec(

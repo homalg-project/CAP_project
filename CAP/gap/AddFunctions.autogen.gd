@@ -2824,6 +2824,44 @@ DeclareOperation( "AddIsomorphismFromZeroObjectToTerminalObject",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `JointPairwiseDifferencesOfMorphismsFromCoproduct`.
+#! $F: ( A, D ) \mapsto \mathtt{JointPairwiseDifferencesOfMorphismsFromCoproduct}(A, D)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddJointPairwiseDifferencesOfMorphismsFromCoproduct",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddJointPairwiseDifferencesOfMorphismsFromCoproduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddJointPairwiseDifferencesOfMorphismsFromCoproduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddJointPairwiseDifferencesOfMorphismsFromCoproduct",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `JointPairwiseDifferencesOfMorphismsIntoDirectProduct`.
+#! $F: ( A, D ) \mapsto \mathtt{JointPairwiseDifferencesOfMorphismsIntoDirectProduct}(A, D)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddJointPairwiseDifferencesOfMorphismsIntoDirectProduct",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddJointPairwiseDifferencesOfMorphismsIntoDirectProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddJointPairwiseDifferencesOfMorphismsIntoDirectProduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddJointPairwiseDifferencesOfMorphismsIntoDirectProduct",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `KernelEmbedding`.
 #! $F: ( alpha ) \mapsto \mathtt{KernelEmbedding}(alpha)$.
 #! @Returns nothing

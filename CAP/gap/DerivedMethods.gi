@@ -2257,6 +2257,57 @@ end : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.su
       Description := "DirectSumDiagonalDifference using the operations defining this morphism (with support for empty limits)" );
 
 ##
+AddDerivationToCAP( JointPairwiseDifferencesOfMorphismsIntoDirectProduct,
+                    [ [ UniversalMorphismIntoZeroObject, 1 ],
+                      [ UniversalMorphismIntoDirectProduct, 2 ], ## 2*(Length( diagram ) - 1) would be the correct number here
+                      [ SubtractionForMorphisms, 1 ],
+                    ],
+                    
+  function( cat, A, diagram )
+    local number_of_morphisms, ranges, mor1, mor2;
+    
+    number_of_morphisms := Length( diagram );
+    
+    if number_of_morphisms = 1 then
+        
+        return UniversalMorphismIntoZeroObject( cat, Source( diagram[1] ) );
+        
+    fi;
+    
+    ranges := List( diagram, Range );
+    
+    mor1 := UniversalMorphismIntoDirectProduct( cat, ranges{[ 1 .. number_of_morphisms - 1 ]}, A, diagram{[ 1 .. number_of_morphisms - 1 ]} );
+    
+    mor2 := UniversalMorphismIntoDirectProduct( cat, ranges{[ 2 .. number_of_morphisms ]}, A, diagram{[ 2 .. number_of_morphisms ]} );
+    
+    return SubtractionForMorphisms( cat, mor1, mor2 );
+    
+end : CategoryFilter := cat -> not ( IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true ),
+      Description := "JointPairwiseDifferencesOfMorphismsIntoDirectProduct using the operations defining this morphism (without support for empty limits)" );
+
+##
+AddDerivationToCAP( JointPairwiseDifferencesOfMorphismsIntoDirectProduct,
+                    [ [ UniversalMorphismIntoDirectProduct, 2 ], ## 2*(Length( diagram ) - 1) would be the correct number here
+                      [ SubtractionForMorphisms, 1 ],
+                    ],
+                    
+  function( cat, A, diagram )
+    local number_of_morphisms, ranges, mor1, mor2;
+    
+    number_of_morphisms := Length( diagram );
+    
+    ranges := List( diagram, Range );
+    
+    mor1 := UniversalMorphismIntoDirectProduct( cat, ranges{[ 1 .. number_of_morphisms - 1 ]}, A, diagram{[ 1 .. number_of_morphisms - 1 ]} );
+    
+    mor2 := UniversalMorphismIntoDirectProduct( cat, ranges{[ 2 .. number_of_morphisms ]}, A, diagram{[ 2 .. number_of_morphisms ]} );
+    
+    return SubtractionForMorphisms( cat, mor1, mor2 );
+    
+end : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true,
+      Description := "JointPairwiseDifferencesOfMorphismsIntoDirectProduct using the operations defining this morphism (with support for empty limits)" );
+
+##
 AddDerivationToCAP( DirectSumCodiagonalDifference,
                     [ [ DirectSum, 1 ],
                       [ InjectionOfCofactorOfDirectSumWithGivenDirectSum, 2 ], ## Length( diagram ) would be the correct number
@@ -2325,6 +2376,56 @@ AddDerivationToCAP( DirectSumCodiagonalDifference,
 end : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true,
       Description := "DirectSumCodiagonalDifference using the operations defining this morphism (with support for empty limits)" );
 
+##
+AddDerivationToCAP( JointPairwiseDifferencesOfMorphismsFromCoproduct,
+                    [ [ UniversalMorphismFromZeroObject, 1 ],
+                      [ UniversalMorphismFromCoproduct, 2 ], ## 2*( Length( diagram ) - 1 ) would be the correct number 
+                      [ SubtractionForMorphisms, 1 ],
+                    ],
+                    
+  function( cat, A, diagram )
+    local number_of_morphisms, sources, mor1, mor2;
+    
+    number_of_morphisms := Length( diagram );
+ 
+    if number_of_morphisms = 1 then
+        
+        return UniversalMorphismFromZeroObject( cat, Range( diagram[1] ) );
+        
+    fi;
+    
+    sources := List( diagram, Source );
+    
+    mor1 := UniversalMorphismFromCoproduct( cat, sources{[ 1 .. number_of_morphisms - 1 ]}, A, diagram{[ 1 .. number_of_morphisms - 1 ]} );
+    
+    mor2 := UniversalMorphismFromCoproduct( cat, sources{[ 2 .. number_of_morphisms ]}, A, diagram{[ 2 .. number_of_morphisms ]} );
+    
+    return SubtractionForMorphisms( cat, mor1, mor2 );
+    
+end : CategoryFilter := cat -> not ( IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true ),
+      Description := "JointPairwiseDifferencesOfMorphismsFromCoproduct using the operations defining this morphism (without support for empty limits)" );
+
+##
+AddDerivationToCAP( JointPairwiseDifferencesOfMorphismsFromCoproduct,
+                    [ [ UniversalMorphismFromCoproduct, 2 ], ## 2*( Length( diagram ) - 1 ) would be the correct number 
+                      [ SubtractionForMorphisms, 1 ],
+                    ],
+                    
+  function( cat, A, diagram )
+    local number_of_morphisms, sources, mor1, mor2;
+    
+    number_of_morphisms := Length( diagram );
+    
+    sources := List( diagram, Source );
+    
+    mor1 := UniversalMorphismFromCoproduct( cat, sources{[ 1 .. number_of_morphisms - 1 ]}, A, diagram{[ 1 .. number_of_morphisms - 1 ]} );
+    
+    mor2 := UniversalMorphismFromCoproduct( cat, sources{[ 2 .. number_of_morphisms ]}, A, diagram{[ 2 .. number_of_morphisms ]} );
+    
+    return SubtractionForMorphisms( cat, mor1, mor2 );
+    
+end : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true,
+      Description := "JointPairwiseDifferencesOfMorphismsFromCoproduct using the operations defining this morphism (with support for empty limits)" );
 
 ##
 AddDerivationToCAP( FiberProductEmbeddingInDirectSum,
@@ -2387,7 +2488,6 @@ AddDerivationToCAP( DirectSumProjectionInPushout,
     return UniversalMorphismFromDirectSum( cat, ranges_of_diagram, Pushout( cat, diagram ), test_sink );
     
 end : Description := "DirectSumProjectionInPushout using the universal property of the direct sum" );
-
 
 ##
 AddDerivationToCAP( IsomorphismFromInitialObjectToZeroObject,
