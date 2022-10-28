@@ -9,7 +9,7 @@
 ####################################
 
 ## Final methods for Dual
-AddFinalDerivation( IsomorphismFromDualObjectToInternalHomIntoTensorUnit,
+AddFinalDerivationBundle( # IsomorphismFromDualObjectToInternalHomIntoTensorUnit,
                     [ [ IdentityMorphism, 1 ],
                       [ InternalHomOnObjects, 1 ],
                       [ TensorUnit, 1 ] ],
@@ -22,12 +22,14 @@ AddFinalDerivation( IsomorphismFromDualObjectToInternalHomIntoTensorUnit,
                       TensorProductDualityCompatibilityMorphismWithGivenObjects,
                       EvaluationForDualWithGivenTensorProduct,
                       MorphismFromTensorProductToInternalHomWithGivenObjects ],
-                 
+[
+  IsomorphismFromDualObjectToInternalHomIntoTensorUnit,
   function( cat, object )
     
     return IdentityMorphism( cat, InternalHomOnObjects( cat, object, TensorUnit( cat ) ) );
     
-  end,
+  end
+],
 [
   IsomorphismFromInternalHomIntoTensorUnitToDualObject,
   function( cat, object )

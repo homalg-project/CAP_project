@@ -9,7 +9,7 @@
 ####################################
 
 ##
-AddFinalDerivation( DistinguishedObjectOfHomomorphismStructure,
+AddFinalDerivationBundle( # DistinguishedObjectOfHomomorphismStructure,
                     [ [ TensorUnit, 1 ],
                       [ InternalHomOnObjects, 1 ],
                       [ InternalHomOnMorphismsWithGivenInternalHoms, 1 ],
@@ -25,12 +25,14 @@ AddFinalDerivation( DistinguishedObjectOfHomomorphismStructure,
                       InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects,
                       InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
                     ],
-        
+[
+  DistinguishedObjectOfHomomorphismStructure,
   function ( cat )
     
     return TensorUnit( cat );
     
-  end,
+  end
+],
 [
   HomomorphismStructureOnObjects,
   function ( cat, a, b )

@@ -425,7 +425,7 @@ end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory,
 ## Final methods for InternalCoHom
 
 ##
-AddFinalDerivation( IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom,
+AddFinalDerivationBundle( # IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom,
                     [ [ IdentityMorphism, 1 ],
                       [ CoDualOnObjects, 1 ],
                       [ LeftUnitor, 1 ],
@@ -448,12 +448,14 @@ AddFinalDerivation( IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom,
                       IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject,
                       IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit,
                     ],
-                    
+[
+  IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom,
   function( cat, a, b )
     
     return IdentityMorphism( cat, TensorProductOnObjects( cat, a, CoDualOnObjects( cat, b ) ) );
     
-  end,
+  end
+],
 [
   IsomorphismFromInternalCoHomToTensorProductWithCoDualObject,
   function( cat, a, b )

@@ -12,7 +12,7 @@
 ####################################
 
 ## Final methods for CartesianDual
-AddFinalDerivation( IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject,
+AddFinalDerivationBundle( # IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject,
                     [ [ IdentityMorphism, 1 ],
                       [ ExponentialOnObjects, 1 ],
                       [ TerminalObject, 1 ] ],
@@ -25,12 +25,14 @@ AddFinalDerivation( IsomorphismFromCartesianDualObjectToExponentialIntoTerminalO
                       DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects,
                       CartesianEvaluationForCartesianDualWithGivenDirectProduct,
                       MorphismFromDirectProductToExponentialWithGivenObjects ],
-                 
+[
+  IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject,
   function( cat, object )
     
     return IdentityMorphism( cat, ExponentialOnObjects( cat, object, TerminalObject( cat ) ) );
     
-  end,
+  end
+],
 [
   IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject,
   function( cat, object )

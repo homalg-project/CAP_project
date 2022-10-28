@@ -519,7 +519,7 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
 ## Final methods for InternalHom
 
 ##
-AddFinalDerivation( IsomorphismFromTensorProductWithDualObjectToInternalHom,
+AddFinalDerivationBundle( # IsomorphismFromTensorProductWithDualObjectToInternalHom,
                     [ [ IdentityMorphism, 1 ],
                       [ DualOnObjects, 1 ],
                       [ RightUnitor, 1 ],
@@ -542,12 +542,14 @@ AddFinalDerivation( IsomorphismFromTensorProductWithDualObjectToInternalHom,
                       IsomorphismFromInternalHomIntoTensorUnitToDualObject,
                       IsomorphismFromDualObjectToInternalHomIntoTensorUnit,
                     ],
-                    
+[
+  IsomorphismFromTensorProductWithDualObjectToInternalHom,
   function( cat, a, b )
     
     return IdentityMorphism( cat, TensorProductOnObjects( cat, DualOnObjects( cat, a ), b ) );
     
-  end,
+  end
+],
 [
   IsomorphismFromInternalHomToTensorProductWithDualObject,
   function( cat, a, b )
