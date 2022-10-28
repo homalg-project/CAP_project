@@ -44,6 +44,12 @@ function( name, target_op, used_op_names_with_multiples_and_category_getters, we
         
     fi;
     
+    if NumberArgumentsFunction( category_filter ) = 0 or NumberArgumentsFunction( category_filter ) > 1 then
+        
+        Error( "the CategoryFilter of a derivation must accept exactly one argument" );
+        
+    fi;
+    
     return ObjectifyWithAttributes(
         rec( ), NewType( TheFamilyOfDerivations, IsDerivedMethodRep ),
         DerivationName, name,
@@ -209,12 +215,6 @@ function( G, d )
     if current_function_argument_number >= 0 and current_function_argument_number <> number_of_proposed_arguments then
         Error( "While adding a derivation for ", method_name, ": given function has ", String( current_function_argument_number ),
                " arguments but should have ", String( number_of_proposed_arguments ) );
-    fi;
-    
-    if NumberArgumentsFunction( CategoryFilter( d ) ) = 0 or NumberArgumentsFunction( CategoryFilter( d ) ) > 1 then
-        
-        Error( "the CategoryFilter of a derivation must accept exactly one argument" );
-        
     fi;
     
   fi;
