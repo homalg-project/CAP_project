@@ -59,6 +59,12 @@ InstallGlobalFunction( AddFinalDerivation,
                
   function( target_op, can_compute, cannot_compute, func, additional_functions... )
     
+    if not IsEmpty( additional_functions ) then
+        
+        Display( "WARNING: AddFinalDerivation with additional functions is deprecated and will not be supported after 2023.10.28. Please use AddFinalDerivationBundle instead." );
+        
+    fi;
+    
     CallFuncList( AddFinalDerivationBundle, Concatenation( [ can_compute, cannot_compute, [ target_op, func ] ], additional_functions ) );
     
 end );
