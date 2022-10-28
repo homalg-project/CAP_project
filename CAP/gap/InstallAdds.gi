@@ -198,6 +198,15 @@ InstallGlobalFunction( CapInternalInstallAdd,
         
         is_final_derivation := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "IsFinalDerivation", false );
         
+        if is_final_derivation then
+            
+            Assert( 0, is_derivation );
+            
+            # `is_derivation` is used below in the sense of a non-final derivation
+            is_derivation := false;
+            
+        fi;
+        
         is_precompiled_derivation := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "IsPrecompiledDerivation", false );
         
         if Length( Positions( [ is_derivation, is_final_derivation, is_precompiled_derivation ], true ) ) > 1 then
