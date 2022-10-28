@@ -279,7 +279,7 @@ end : Description := "WeakBiPushout as the range of DirectSumMorphismToWeakBiPus
 ## Final derivations
 
 ##
-AddFinalDerivation( WeakKernelObject,
+AddFinalDerivationBundle( # WeakKernelObject,
                     [ [ KernelObject, 1 ],
                       [ KernelEmbedding, 1 ],
                       [ KernelLift, 1 ] ],
@@ -287,12 +287,14 @@ AddFinalDerivation( WeakKernelObject,
                     [ WeakKernelObject,
                       WeakKernelEmbedding,
                       WeakKernelLift ],
-                    
+[
+  WeakKernelObject,
   function( cat, morphism )
     
     return KernelObject( cat, morphism );
     
-  end,
+  end
+],
 [
   WeakKernelEmbedding,
   function( cat, morphism )
@@ -311,7 +313,7 @@ AddFinalDerivation( WeakKernelObject,
 ] : Description := "weak kernel using kernel" );
 
 ##
-AddFinalDerivation( WeakCokernelObject,
+AddFinalDerivationBundle( # WeakCokernelObject,
                     [ [ CokernelObject, 1 ],
                       [ CokernelProjection, 1 ],
                       [ CokernelColift, 1 ] ],
@@ -319,12 +321,14 @@ AddFinalDerivation( WeakCokernelObject,
                     [ WeakCokernelObject,
                       WeakCokernelProjection,
                       WeakCokernelColift ],
-                    
+[
+  WeakCokernelObject,
   function( cat, morphism )
     
     return CokernelObject( cat, morphism );
     
-  end,
+  end
+],
 [
   WeakCokernelProjection,
   function( cat, morphism )
@@ -346,7 +350,7 @@ AddFinalDerivation( WeakCokernelObject,
 ## Decision: we use a derivation from weak kernels and direct sums
 
 ##
-AddFinalDerivation( WeakBiFiberProductMorphismToDirectSum,
+AddFinalDerivationBundle( # WeakBiFiberProductMorphismToDirectSum,
                     [ [ DirectSumDiagonalDifference, 1 ],
                       [ WeakKernelEmbedding, 1 ],
                       [ ProjectionInFactorOfDirectSum, 1 ],
@@ -361,7 +365,8 @@ AddFinalDerivation( WeakBiFiberProductMorphismToDirectSum,
                       UniversalMorphismIntoWeakBiFiberProduct,
                       WeakBiFiberProductMorphismToDirectSum,
                     ],
-                      
+[
+  WeakBiFiberProductMorphismToDirectSum,
   function( cat, alpha, beta )
     local diagonal_difference;
     
@@ -369,7 +374,8 @@ AddFinalDerivation( WeakBiFiberProductMorphismToDirectSum,
     
     return WeakKernelEmbedding( cat, diagonal_difference );
     
-  end,
+  end
+],
 [
   ProjectionInFirstFactorOfWeakBiFiberProduct,
   function( cat, alpha, beta )
@@ -408,7 +414,7 @@ AddFinalDerivation( WeakBiFiberProductMorphismToDirectSum,
 
 ## weak bi-pushout
 ##
-AddFinalDerivation( DirectSumMorphismToWeakBiPushout,
+AddFinalDerivationBundle( # DirectSumMorphismToWeakBiPushout,
                     [ [ DirectSumCodiagonalDifference, 1 ],
                       [ WeakCokernelProjection, 1 ],
                       [ InjectionOfCofactorOfDirectSum, 1 ],
@@ -423,7 +429,8 @@ AddFinalDerivation( DirectSumMorphismToWeakBiPushout,
                       UniversalMorphismFromWeakBiPushout,
                       DirectSumMorphismToWeakBiPushout,
                     ],
-                      
+[
+  DirectSumMorphismToWeakBiPushout,
   function( cat, alpha, beta )
     local co_diagonal_difference;
     
@@ -431,7 +438,8 @@ AddFinalDerivation( DirectSumMorphismToWeakBiPushout,
     
     return WeakCokernelProjection( cat, co_diagonal_difference );
     
-end,
+end
+],
 [
   InjectionOfFirstCofactorOfWeakBiPushout,
   function( cat, alpha, beta )

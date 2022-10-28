@@ -12,7 +12,7 @@
 ####################################
 
 ##
-AddFinalDerivation( DistinguishedObjectOfHomomorphismStructure,
+AddFinalDerivationBundle( # DistinguishedObjectOfHomomorphismStructure,
                     [ [ TerminalObject, 1 ],
                       [ ExponentialOnObjects, 1 ],
                       [ ExponentialOnMorphismsWithGivenExponentials, 1 ],
@@ -28,12 +28,14 @@ AddFinalDerivation( DistinguishedObjectOfHomomorphismStructure,
                       InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects,
                       InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
                     ],
-        
+[
+  DistinguishedObjectOfHomomorphismStructure,
   function ( cat )
     
     return TerminalObject( cat );
     
-  end,
+  end
+],
 [
   HomomorphismStructureOnObjects,
   function ( cat, a, b )

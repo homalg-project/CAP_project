@@ -9,7 +9,7 @@
 ####################################
 
 ## Final methods for CoDual
-AddFinalDerivation( IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit,
+AddFinalDerivationBundle( # IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit,
                     [ [ IdentityMorphism, 1 ],
                       [ InternalCoHomOnObjects, 1 ],
                       [ TensorUnit, 1 ] ],
@@ -23,11 +23,14 @@ AddFinalDerivation( IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit,
                       CoclosedEvaluationForCoDualWithGivenTensorProduct,
                       MorphismFromInternalCoHomToTensorProductWithGivenObjects
                       ],
+[
+  IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit,
   function( cat, object )
     
     return IdentityMorphism( cat, InternalCoHomOnObjects( cat, TensorUnit( cat ), object ) );
     
-  end,
+  end
+],
 [
   IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject,
   function( cat, object )

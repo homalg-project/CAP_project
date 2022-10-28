@@ -12,7 +12,7 @@
 ####################################
 
 ## Final methods for CocartesianDual
-AddFinalDerivation( IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject,
+AddFinalDerivationBundle( # IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject,
                     [ [ IdentityMorphism, 1 ],
                       [ CoexponentialOnObjects, 1 ],
                       [ InitialObject, 1 ] ],
@@ -26,11 +26,14 @@ AddFinalDerivation( IsomorphismFromCocartesianDualObjectToCoexponentialFromIniti
                       CocartesianEvaluationForCocartesianDualWithGivenCoproduct,
                       MorphismFromCoexponentialToCoproductWithGivenObjects
                       ],
+[
+  IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject,
   function( cat, object )
     
     return IdentityMorphism( cat, CoexponentialOnObjects( cat, InitialObject( cat ), object ) );
     
-  end,
+  end
+],
 [
   IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject,
   function( cat, object )

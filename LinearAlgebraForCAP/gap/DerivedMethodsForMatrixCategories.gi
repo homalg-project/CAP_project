@@ -50,7 +50,7 @@ BindGlobal( "CATEGORY_FILTER_CHECKER",
 end );
 
 ##
-AddFinalDerivation( DistinguishedObjectOfHomomorphismStructure,
+AddFinalDerivationBundle( # DistinguishedObjectOfHomomorphismStructure,
                     [
                       [ BasisOfExternalHom, 3 ], # part of CoefficientsOfMorphism
                       [ CoefficientsOfMorphismWithGivenBasisOfExternalHom, 2 ],
@@ -65,7 +65,8 @@ AddFinalDerivation( DistinguishedObjectOfHomomorphismStructure,
                       InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure,
                       InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
                     ],
-  
+[
+  DistinguishedObjectOfHomomorphismStructure,
   function( cat )
     local k;
     
@@ -73,7 +74,8 @@ AddFinalDerivation( DistinguishedObjectOfHomomorphismStructure,
     
     return VectorSpaceObject( 1, k );
     
-  end,
+  end
+],
 [
   HomomorphismStructureOnObjects,
   function( cat, a, b )
