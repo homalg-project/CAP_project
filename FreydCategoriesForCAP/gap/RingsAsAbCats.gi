@@ -372,6 +372,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
         
     fi;
     
+    ## Random Methods
+    
+    AddRandomObjectByInteger( category,
+      { cat, n } -> RingAsCategoryUniqueObject( cat ) );
+    
+    AddRandomMorphismWithFixedSourceAndRangeByInteger( category,
+      { cat, S, R, n } ->  RingAsCategoryMorphism( cat, Sum( [ 1 .. n ], i -> Random( ring ), Zero( ring ) ) ) );
+    
 end );
 
 ####################################
