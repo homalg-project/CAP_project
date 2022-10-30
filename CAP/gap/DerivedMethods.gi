@@ -2257,6 +2257,61 @@ end : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.su
       Description := "DirectSumDiagonalDifference using the operations defining this morphism (with support for empty limits)" );
 
 ##
+AddDerivationToCAP( DirectSumDiagonalDifference,
+                    [ [ DirectSum, 1 ],
+                      [ PreCompose, 2 ], ## Length( diagram ) would be the correct number here
+                      [ ProjectionInFactorOfDirectSumWithGivenDirectSum, 2 ], ## Length( diagram ) would be the correct number here
+                      [ UniversalMorphismIntoZeroObject, 1 ],
+                      [ JointPairwiseDifferencesOfMorphismsIntoDirectProduct, 1 ],
+                    ],
+                    
+  function( cat, diagram )
+    local direct_sum_diagram, direct_sum, number_of_morphisms, list_of_morphisms;
+    
+    direct_sum_diagram := List( diagram, Source );
+    
+    direct_sum := DirectSum( cat, direct_sum_diagram );
+    
+    number_of_morphisms := Length( diagram );
+    
+    list_of_morphisms := List( [ 1 .. number_of_morphisms ], i -> PreCompose( cat, ProjectionInFactorOfDirectSumWithGivenDirectSum( cat, direct_sum_diagram, i, direct_sum ), diagram[ i ] ) );
+    
+    if number_of_morphisms = 1 then
+        
+        return UniversalMorphismIntoZeroObject( cat, Source( list_of_morphisms[1] ) );
+        
+    fi;
+    
+    return JointPairwiseDifferencesOfMorphismsIntoDirectProduct( cat, direct_sum, list_of_morphisms );
+    
+end : CategoryFilter := cat -> not ( IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true ),
+      Description := "DirectSumDiagonalDifference using JointPairwiseDifferencesOfMorphismsIntoDirectProduct (without support for empty limits)" );
+
+##
+AddDerivationToCAP( DirectSumDiagonalDifference,
+                    [ [ DirectSum, 1 ],
+                      [ PreCompose, 2 ], ## Length( diagram ) would be the correct number here
+                      [ ProjectionInFactorOfDirectSumWithGivenDirectSum, 2 ], ## Length( diagram ) would be the correct number here
+                      [ JointPairwiseDifferencesOfMorphismsIntoDirectProduct, 1 ],
+                    ],
+                    
+  function( cat, diagram )
+    local direct_sum_diagram, direct_sum, number_of_morphisms, list_of_morphisms;
+    
+    direct_sum_diagram := List( diagram, Source );
+    
+    direct_sum := DirectSum( cat, direct_sum_diagram );
+    
+    number_of_morphisms := Length( diagram );
+    
+    list_of_morphisms := List( [ 1 .. number_of_morphisms ], i -> PreCompose( cat, ProjectionInFactorOfDirectSumWithGivenDirectSum( cat, direct_sum_diagram, i, direct_sum ), diagram[ i ] ) );
+    
+    return JointPairwiseDifferencesOfMorphismsIntoDirectProduct( cat, direct_sum, list_of_morphisms );
+    
+end : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true,
+      Description := "DirectSumDiagonalDifference using JointPairwiseDifferencesOfMorphismsIntoDirectProduct (with support for empty limits)" );
+
+##
 AddDerivationToCAP( JointPairwiseDifferencesOfMorphismsIntoDirectProduct,
                     [ [ UniversalMorphismIntoZeroObject, 1 ],
                       [ UniversalMorphismIntoDirectProduct, 2 ], ## 2*(Length( diagram ) - 1) would be the correct number here
@@ -2375,6 +2430,61 @@ AddDerivationToCAP( DirectSumCodiagonalDifference,
     
 end : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true,
       Description := "DirectSumCodiagonalDifference using the operations defining this morphism (with support for empty limits)" );
+
+##
+AddDerivationToCAP( DirectSumCodiagonalDifference,
+                    [ [ DirectSum, 1 ],
+                      [ InjectionOfCofactorOfDirectSumWithGivenDirectSum, 2 ], ## Length( diagram ) would be the correct number
+                      [ PreCompose, 2 ], ## Length( diagram ) would be the correct number
+                      [ UniversalMorphismFromZeroObject, 1 ],
+                      [ JointPairwiseDifferencesOfMorphismsFromCoproduct, 1 ],
+                    ],
+                    
+  function( cat, diagram )
+    local direct_sum_diagram, direct_sum, number_of_morphisms, list_of_morphisms, sources, mor1, mor2;
+    
+    direct_sum_diagram := List( diagram, Range );
+    
+    direct_sum := DirectSum( cat, direct_sum_diagram );
+    
+    number_of_morphisms := Length( diagram );
+    
+    list_of_morphisms := List( [ 1 .. number_of_morphisms ], i -> PreCompose( cat, diagram[ i ], InjectionOfCofactorOfDirectSumWithGivenDirectSum( cat, direct_sum_diagram, i, direct_sum ) ) );
+    
+    if number_of_morphisms = 1 then
+        
+        return UniversalMorphismFromZeroObject( cat, Range( list_of_morphisms[1] ) );
+        
+    fi;
+    
+    return JointPairwiseDifferencesOfMorphismsFromCoproduct( cat, direct_sum, list_of_morphisms );
+    
+end : CategoryFilter := cat -> not ( IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true ),
+      Description := "DirectSumCodiagonalDifference using JointPairwiseDifferencesOfMorphismsFromCoproduct (without support for empty limits)" );
+
+##
+AddDerivationToCAP( DirectSumCodiagonalDifference,
+                    [ [ DirectSum, 1 ],
+                      [ InjectionOfCofactorOfDirectSumWithGivenDirectSum, 2 ], ## Length( diagram ) would be the correct number
+                      [ PreCompose, 2 ], ## Length( diagram ) would be the correct number
+                      [ JointPairwiseDifferencesOfMorphismsFromCoproduct, 1 ],
+                    ],
+                    
+  function( cat, diagram )
+    local direct_sum_diagram, direct_sum, number_of_morphisms, list_of_morphisms, sources, mor1, mor2;
+    
+    direct_sum_diagram := List( diagram, Range );
+    
+    direct_sum := DirectSum( cat, direct_sum_diagram );
+    
+    number_of_morphisms := Length( diagram );
+    
+    list_of_morphisms := List( [ 1 .. number_of_morphisms ], i -> PreCompose( cat, diagram[ i ], InjectionOfCofactorOfDirectSumWithGivenDirectSum( cat, direct_sum_diagram, i, direct_sum ) ) );
+    
+    return JointPairwiseDifferencesOfMorphismsFromCoproduct( cat, direct_sum, list_of_morphisms );
+    
+end : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true,
+      Description := "DirectSumCodiagonalDifference using JointPairwiseDifferencesOfMorphismsFromCoproduct (with support for empty limits)" );
 
 ##
 AddDerivationToCAP( JointPairwiseDifferencesOfMorphismsFromCoproduct,
