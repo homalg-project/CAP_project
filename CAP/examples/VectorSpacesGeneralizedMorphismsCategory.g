@@ -14,7 +14,7 @@ vecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );
 #! VectorSpacesForGeneralizedMorphismsTest
 ReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );
 #! true
-LoadPackage( "GeneralizedMorphismsForCAP" );
+LoadPackage( "GeneralizedMorphismsForCAP", false );
 #! true
 B := QVectorSpace( 2 );
 #! <A rational vector space of dimension 2>

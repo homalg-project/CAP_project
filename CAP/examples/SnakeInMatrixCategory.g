@@ -5,7 +5,7 @@
 #! @Example
 LoadPackage( "LinearAlgebraForCAP" );
 #! true
-LoadPackage( "GeneralizedMorphismsForCAP" );
+LoadPackage( "GeneralizedMorphismsForCAP", false );
 #! true
 old_generalized_morphism_standard := CAP_INTERNAL!.generalized_morphism_standard;;
 SwitchGeneralizedMorphismStandard( "cospan" );

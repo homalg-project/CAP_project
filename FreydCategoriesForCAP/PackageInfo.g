@@ -87,8 +87,7 @@ PackageDoc := rec(
 
 Dependencies := rec(
   GAP := ">= 4.11.1",
-  NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "CAP", ">= 2022.10-05" ],
+  NeededOtherPackages := [ [ "CAP", ">= 2022.10-05" ],
                            [ "MatricesForHomalg", ">= 2021.07-01" ],
                            [ "GradedRingForHomalg", ">=2019.08.07" ],
                            [ "MonoidalCategories", ">= 2022.06-01" ],
