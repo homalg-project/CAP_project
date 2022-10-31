@@ -566,17 +566,15 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
             )
         );
     
-    if over_Z then
-        
-        default_range_of_HomStructure := CategoryOfRows( ring );
-        
-    else
-        
-        default_range_of_HomStructure := MatrixCategory( ring );
-        
-    fi;
+    default_range_of_HomStructure := CategoryOfRows( ring );
     
     hom_structure_range_category := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "range_of_HomStructure", default_range_of_HomStructure );
+    
+    if not (IsCategoryOfRows( hom_structure_range_category ) or (IsBoundGlobal( "IsMatrixCategory" ) and ValueGlobal( "IsMatrixCategory" )( hom_structure_range_category ))) then
+        
+        Error( "range_of_HomStructure must be a category of rows or a matrix category" );
+        
+    fi;
     
     SetRangeCategoryOfHomomorphismStructure( category, hom_structure_range_category );
     

@@ -6,9 +6,10 @@
 
 LoadPackage( "FreydCategoriesForCAP", false );
 #! true
+LoadPackage( "LinearAlgebraForCAP", false );
+#! true
 
-ReadPackage( "FreydCategoriesForCAP",
-    "gap/MatrixCategoryAsCategoryOfRows_CompilerLogic.gi" );
+ReadPackage( "LinearAlgebraForCAP", "gap/CompilerLogic.gi" );
 #! true
 
 QQ := HomalgFieldOfRationals( );;
