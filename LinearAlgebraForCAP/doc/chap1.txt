@@ -14,7 +14,16 @@
   non-negative  integer  [23Xm[123X to a non-negative integer [23Xn[123X are given by [23Xm \times n[123X
   matrices.[133X
   
-  [1X1.1-2 VectorSpaceMorphism[101X
+  [1X1.1-2 MatrixCategoryAsCategoryOfRows[101X
+  
+  [33X[1;0Y[29X[2XMatrixCategoryAsCategoryOfRows[102X( [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya category[133X
+  
+  [33X[0;0YThe  argument is a homalg field [23XF[123X. The output is the matrix category over [23XF[123X,
+  constructed  internally  as  a  wrapper category of the [10XCategoryOfRows[110X of [23XF[123X.
+  Only available if the package [10XFreydCategoriesForCAP[110X is available.[133X
+  
+  [1X1.1-3 VectorSpaceMorphism[101X
   
   [33X[1;0Y[29X[2XVectorSpaceMorphism[102X( [3XS[103X, [3XM[103X, [3XR[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(S,R)[123X[133X
@@ -24,7 +33,7 @@
   matrices  over [23XF[123X. The output is the morphism [23XS \rightarrow R[123X in the category
   of matrices over [23XF[123X whose underlying matrix is given by [23XM[123X.[133X
   
-  [1X1.1-3 VectorSpaceObject[101X
+  [1X1.1-4 VectorSpaceObject[101X
   
   [33X[1;0Y[29X[2XVectorSpaceObject[102X( [3Xd[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -33,7 +42,7 @@
   is  an  object  in  the  category  of  matrices  over [23XF[123X of dimension [23Xd[123X. This
   function delegates to [10XMatrixCategoryObject[110X.[133X
   
-  [1X1.1-4 MatrixCategoryObject[101X
+  [1X1.1-5 MatrixCategoryObject[101X
   
   [33X[1;0Y[29X[2XMatrixCategoryObject[102X( [3Xcat[103X, [3Xd[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
