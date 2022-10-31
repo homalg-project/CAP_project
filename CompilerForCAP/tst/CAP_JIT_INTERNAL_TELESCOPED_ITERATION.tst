@@ -7,7 +7,7 @@ gap> LoadPackage( "FreydCategoriesForCAP", false );
 true
 
 #
-gap> ReadPackage( "FreydCategoriesForCAP", "gap/MatrixCategoryAsCategoryOfRows_CompilerLogic.gi" );
+gap> ReadPackage( "LinearAlgebraForCAP", "gap/CompilerLogic.gi" );
 true
 
 #

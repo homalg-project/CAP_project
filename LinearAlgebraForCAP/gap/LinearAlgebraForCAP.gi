@@ -88,31 +88,26 @@ InstallGlobalFunction( MATRIX_CATEGORY,
         
     fi;
     
-    if ValueOption( "no_precompiled_code" ) <> true then
+    if ValueOption( "no_precompiled_code" ) = true then
         
-        ADD_FUNCTIONS_FOR_MatrixCategoryPrecompiled( category );
+        if IsPackageMarkedForLoading( "FreydCategoriesForCAP", ">= 2022.10-14" ) then
+            
+            return MatrixCategoryAsCategoryOfRows( homalg_field );
+            
+        else
+            
+            Error( "To get a version of `MatrixCategory` without precompiled code, the package `FreydCategoriesForCAP` is required." );
+            
+        fi;
         
     else
         
-        Print(
-            "WARNING: MatixCategory has no primitive installation but is generated from CategoryOfRows by compilation. ",
-            "Creating it without precompiled code will return a category without installed operations.\n"
-        );
+        ADD_FUNCTIONS_FOR_MatrixCategoryPrecompiled( category );
         
     fi;
     
     Finalize( category );
     
     return category;
-    
-end );
-
-##
-InstallMethod( MatrixCategoryAsCategoryOfRows,
-               [ IsFieldForHomalg ],
-               
-  function( homalg_ring )
-    
-    Error( "FreydCategoriesForCAP has to be loaded for using MatrixCategoryAsCategoryOfRows" );
     
 end );

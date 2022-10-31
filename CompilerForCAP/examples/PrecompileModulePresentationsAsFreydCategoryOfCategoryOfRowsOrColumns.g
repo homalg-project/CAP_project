@@ -7,8 +7,7 @@
 LoadPackage( "ModulePresentationsForCAP", false );
 #! true
 
-ReadPackage( "FreydCategoriesForCAP",
-    "gap/MatrixCategoryAsCategoryOfRows_CompilerLogic.gi" );
+ReadPackage( "LinearAlgebraForCAP", "gap/CompilerLogic.gi" );
 #! true
 
 QQ := HomalgFieldOfRationalsInSingular( );;
