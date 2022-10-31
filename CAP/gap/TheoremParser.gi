@@ -817,13 +817,7 @@ end );
 InstallGlobalFunction( "READ_LOGIC_FILE",
                        
   function( filename, type )
-    local stream, file, line, substring, theorem_list, without_align, parser;
-    
-    if not IsExistingFile( filename ) then
-        
-        Error( "no file found" );
-        
-    fi;
+    local parser, file, lines, theorem_list, substring, without_align;
     
     if LowercaseString( type ) = "implication" then
         
@@ -843,23 +837,13 @@ InstallGlobalFunction( "READ_LOGIC_FILE",
         
     fi;
     
-    stream := IO_File( filename, "r" );
+    file := ReadFileForHomalg( filename );
     
-    line := IO_ReadLine( stream );
+    lines := SplitString( file, "\n" );
     
-    file := "";
+    lines := List( lines, l -> REMOVE_PART_AFTER_FIRST_SUBSTRING( l, "%" ) );
     
-    while line <> "" do
-        
-        line := REMOVE_PART_AFTER_FIRST_SUBSTRING( line, "%" );
-        
-        file := Concatenation( file, line );
-        
-        line := IO_ReadLine( stream );
-        
-    od;
-    
-    IO_Close( stream );
+    file := JoinStringsWithSeparator( lines, "\n" );
     
     NormalizeWhitespace( file );
     

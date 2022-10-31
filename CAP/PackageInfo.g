@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "CAP",
 Subtitle := "Categories, Algorithms, Programming",
-Version := "2022.10-11",
+Version := "2022.10-12",
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
 
@@ -97,9 +97,7 @@ PackageDoc := rec(
 
 Dependencies := rec(
   GAP := ">= 4.11.1",
-  NeededOtherPackages := [ [ "AutoDoc", ">= 2016.02.16" ],
-                           [ "ToolsForHomalg", ">= 2022.09-06" ],
-                           [ "io", ">=0" ],
+  NeededOtherPackages := [ [ "ToolsForHomalg", ">= 2022.09-06" ],
   ],
   SuggestedOtherPackages := [ [ "Browse", ">=0" ],
                               [ "CompilerForCAP", ">= 2021.12-05" ],
