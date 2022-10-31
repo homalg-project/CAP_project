@@ -102,8 +102,9 @@ end
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "FreydCategoriesForCAP",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "gap/MatrixCategoryAsCategoryOfRows_CompilerLogic.gi" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LinearAlgebraForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "LinearAlgebraForCAP", "gap/CompilerLogic.gi" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor := field -&gt; MatrixCategoryAsCategoryOfRows( field );;</span>
@@ -876,8 +877,7 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "ModulePresentationsForCAP", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "FreydCategoriesForCAP",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "gap/MatrixCategoryAsCategoryOfRows_CompilerLogic.gi" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "LinearAlgebraForCAP", "gap/CompilerLogic.gi" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationalsInSingular( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQxy := QQ * "x,y";;</span>
