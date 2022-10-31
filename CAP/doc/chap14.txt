@@ -445,7 +445,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "GeneralizedMorphismsForCAP" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "GeneralizedMorphismsForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xold_generalized_morphism_standard := CAP_INTERNAL!.generalized_morphism_standard;;[127X[104X
     [4X[25Xgap>[125X [27XSwitchGeneralizedMorphismStandard( "cospan" );[127X[104X
@@ -715,7 +715,7 @@
     [4X[28XVectorSpacesForGeneralizedMorphismsTest[128X[104X
     [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "GeneralizedMorphismsForCAP" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "GeneralizedMorphismsForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XB := QVectorSpace( 2 );[127X[104X
     [4X[28X<A rational vector space of dimension 2>[128X[104X
@@ -1084,7 +1084,7 @@
     [4X[28XVectorSpacesForIsWellDefinedTest [128X[104X
     [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "GeneralizedMorphismsForCAP" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "GeneralizedMorphismsForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XA := QVectorSpace( 1 );[127X[104X
     [4X[28X<A rational vector space of dimension 1>[128X[104X

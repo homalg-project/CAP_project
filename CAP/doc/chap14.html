@@ -528,7 +528,7 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LinearAlgebraForCAP" );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "GeneralizedMorphismsForCAP" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "GeneralizedMorphismsForCAP", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">old_generalized_morphism_standard := CAP_INTERNAL!.generalized_morphism_standard;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SwitchGeneralizedMorphismStandard( "cospan" );</span>
@@ -806,7 +806,7 @@ true
 VectorSpacesForGeneralizedMorphismsTest
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "GeneralizedMorphismsForCAP" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "GeneralizedMorphismsForCAP", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := QVectorSpace( 2 );</span>
 &lt;A rational vector space of dimension 2&gt;
@@ -1181,7 +1181,7 @@ true
 VectorSpacesForIsWellDefinedTest 
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "GeneralizedMorphismsForCAP" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "GeneralizedMorphismsForCAP", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := QVectorSpace( 1 );</span>
 &lt;A rational vector space of dimension 1&gt;
