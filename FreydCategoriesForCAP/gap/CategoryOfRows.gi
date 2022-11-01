@@ -1272,7 +1272,111 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     end );
     
 end );
-   
+
+##
+## use ExternalHom & CoefficientsOfMorphism to derive Hom-Structure
+##
+AddFinalDerivationBundle( # DistinguishedObjectOfHomomorphismStructure,
+                    [
+                      [ BasisOfExternalHom, 1 ],
+                      [ CoefficientsOfMorphism, 2 ],
+                      [ MultiplyWithElementOfCommutativeRingForMorphisms, 2 ],
+                      [ PreComposeList, 2 ],
+                      [ SumOfMorphisms, 1 ]
+                    ],
+                    [
+                      HomomorphismStructureOnObjects,
+                      HomomorphismStructureOnMorphismsWithGivenObjects,
+                      DistinguishedObjectOfHomomorphismStructure,
+                      InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects,
+                      InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
+                    ],
+[
+  DistinguishedObjectOfHomomorphismStructure,
+  function ( cat )
+    
+    return CategoryOfRowsObject( RangeCategoryOfHomomorphismStructure( cat ), 1 );
+    
+  end
+],
+[
+  HomomorphismStructureOnObjects,
+  function ( cat, a, b )
+    
+    return CategoryOfRowsObject( RangeCategoryOfHomomorphismStructure( cat ), Length( BasisOfExternalHom( cat, a, b ) ) );
+    
+  end
+],
+[
+  HomomorphismStructureOnMorphismsWithGivenObjects,
+    
+    #            α
+    #      a --------> a'     hom_source := H(a',b) -------> hom_range := H(a,b')
+    #      |           |
+    #  αℓβ |           | ℓ
+    #      |           |
+    #      v           v
+    #      b' <------- b
+    #            β
+    
+  function ( cat, hom_source, alpha, beta, hom_range )
+    local basis, m;
+    
+    basis := BasisOfExternalHom( cat, Range( alpha ), Source( beta ) );
+    
+    basis := List( basis, ell -> CoefficientsOfMorphism( cat, PreComposeList( cat, [ alpha, ell, beta ] ) ) );
+    
+    m := HomalgMatrix( basis, RankOfObject( hom_source ), RankOfObject( hom_range ), CommutativeRingOfLinearCategory( cat ) );
+    
+    return CategoryOfRowsMorphism( RangeCategoryOfHomomorphismStructure( cat ), hom_source, m, hom_range );
+    
+  end
+],
+[
+  InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects,
+  function ( cat, distinguished_object, alpha, r )
+    local m;
+    
+    m := HomalgMatrix( CoefficientsOfMorphism( cat, alpha ), 1, RankOfObject( r ), CommutativeRingOfLinearCategory( cat ) );
+    
+    return CategoryOfRowsMorphism( RangeCategoryOfHomomorphismStructure( cat ), distinguished_object, m, r );
+    
+  end
+],
+[
+  InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism,
+  function ( cat, a, b, iota )
+    local coeffs, basis;
+    
+    coeffs := EntriesOfHomalgMatrix( UnderlyingMatrix( iota ) );
+    
+    basis := BasisOfExternalHom( cat, a, b );
+    
+    return SumOfMorphisms( cat, a, ListN( coeffs, basis, { c, m } -> MultiplyWithElementOfCommutativeRingForMorphisms( cat, c, m ) ), b );
+    
+  end
+] :
+  FunctionCalledBeforeInstallation :=
+    function ( cat )
+      SetRangeCategoryOfHomomorphismStructure( cat, CategoryOfRows( CommutativeRingOfLinearCategory( cat ) ) );
+      return;
+  end,
+  CategoryFilter :=
+    function ( cat )
+      
+      if not IsCategoryOfRows( cat ) and
+              HasIsLinearCategoryOverCommutativeRing( cat ) and IsLinearCategoryOverCommutativeRing( cat ) and
+                HasCommutativeRingOfLinearCategory( cat ) and IsHomalgRing( CommutativeRingOfLinearCategory( cat ) ) then
+        
+        return true;
+        
+      fi;
+      
+      return false;
+  end,
+  Description := "Using BasisOfExternalHom and CoefficientsOfMorphism to equip k-linear categories with a Hom-Structure over the category of k-rows"
+);
+
 ####################################
 ##
 ## View
