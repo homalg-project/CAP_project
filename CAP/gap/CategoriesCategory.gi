@@ -528,7 +528,7 @@ AddPreCompose( CapCat,
   function( left_functor, right_functor )
     local new_functor;
     
-    new_functor := CapFunctor( Concatenation( "Composition of ",
+    new_functor := CapFunctor( Concatenation( "Precomposition of ",
                                                  Name( left_functor ),
                                                  " and ",
                                                  Name( right_functor ) ),
@@ -962,7 +962,7 @@ InstallMethod( NaturalTransformation,
                
   function( source, range )
     
-    return NaturalTransformation( Concatenation( "A Natural transformation from ", Name( source ), " to ", Name( range ) ), source, range );
+    return NaturalTransformation( Concatenation( "A natural transformation from ", Name( source ), " to ", Name( range ) ), source, range );
     
 end );
 
