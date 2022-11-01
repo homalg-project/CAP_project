@@ -3451,7 +3451,7 @@ function ( cat_1, arg2_1, arg3_1, arg4_1 )
 end
 ########
         
-    , 2206 : IsPrecompiledDerivation := true );
+    , 2306 : IsPrecompiledDerivation := true );
     
     ##
     AddMonoidalPostCoComposeMorphism( cat,
@@ -3900,7 +3900,7 @@ function ( cat_1, source_diagram_1, mat_1, range_diagram_1 )
 end
 ########
         
-    , 402 : IsPrecompiledDerivation := true );
+    , 502 : IsPrecompiledDerivation := true );
     
     ##
     AddMorphismBetweenDirectSumsWithGivenDirectSums( cat,
@@ -3916,7 +3916,7 @@ function ( cat_1, S_1, source_diagram_1, mat_1, range_diagram_1, T_1 )
 end
 ########
         
-    , 201 : IsPrecompiledDerivation := true );
+    , 301 : IsPrecompiledDerivation := true );
     
     ##
     AddMorphismConstructor( cat,
@@ -5091,7 +5091,7 @@ function ( cat_1, arg2_1, arg3_1, arg4_1 )
 end
 ########
         
-    , 2806 : IsPrecompiledDerivation := true );
+    , 2906 : IsPrecompiledDerivation := true );
     
     ##
     AddSomeInjectiveObject( cat,
