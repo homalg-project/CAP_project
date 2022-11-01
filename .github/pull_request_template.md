@@ -1,5 +1,5 @@
 Thanks for your contribution! To make sure everything is in place, please check the instructions below.
-If anything is unclear or does not work, don't hestitate to submit the PR as is.
+If anything is unclear or does not work, don't hesitate to submit the PR as is.
 
 1. If the changes warrant a release (if in doubt, assume yes), bump the version numbers of the affected packages.
    The version number is of the format `YYYY.MM-NN`, where `YYYY` and `MM` are the current year and month, and `NN` is a two digit number counting upwards, starting from `01` each month.
