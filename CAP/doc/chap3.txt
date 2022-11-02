@@ -522,6 +522,15 @@
   )[123X.  The  output  is  the  composition [23X((\alpha_{n} \circ \alpha_{n-1}) \circ
   \dots \alpha_2) \circ \alpha_1[123X.[133X
   
+  [1X3.10-8 SumOfMorphisms[101X
+  
+  [33X[1;0Y[29X[2XSumOfMorphisms[102X( [3Xs[103X, [3Xmorphisms[103X, [3Xr[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(s,r)[123X[133X
+  
+  [33X[0;0YThe  arguments are two objects [3Xs[103X, [3Xr[103X and a list [3Xmorphisms[103X of morphisms from [3Xs[103X
+  to  [3Xr[103X.  The  output  is  the  sum  of  all  elements  in  [3Xmorphisms[103X,  or the
+  zero-morphism from [3Xs[103X to [3Xr[103X if [3Xmorphisms[103X is empty.[133X
+  
   
   [1X3.11 [33X[0;0YWell-Definedness of Morphisms[133X[101X
   

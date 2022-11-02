@@ -115,6 +115,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X84293B8381256A08">3.10-5 PostCompose</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81222A1084A4F637">3.10-6 PostCompose</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8107D27F7B62D023">3.10-7 PostComposeList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7D50F754822C30D7">3.10-8 SumOfMorphisms</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7D5182B48598FBC5">3.11 <span class="Heading">Well-Definedness of Morphisms</span></a>
 </span>
@@ -723,6 +724,15 @@
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a_1, a_{n+1})\)</span></p>
 
 <p>The argument is a list of morphisms <span class="SimpleMath">\(L = ( \alpha_n: a_n \rightarrow a_{n+1}, \alpha_{n-1}: a_{n-1} \rightarrow a_n, \dots, \alpha_1: a_1 \rightarrow a_2 )\)</span>. The output is the composition <span class="SimpleMath">\(((\alpha_{n} \circ \alpha_{n-1}) \circ \dots \alpha_2) \circ \alpha_1\)</span>.</p>
+
+<p><a id="X7D50F754822C30D7" name="X7D50F754822C30D7"></a></p>
+
+<h5>3.10-8 SumOfMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SumOfMorphisms</code>( <var class="Arg">s</var>, <var class="Arg">morphisms</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(s,r)\)</span></p>
+
+<p>The arguments are two objects <var class="Arg">s</var>, <var class="Arg">r</var> and a list <var class="Arg">morphisms</var> of morphisms from <var class="Arg">s</var> to <var class="Arg">r</var>. The output is the sum of all elements in <var class="Arg">morphisms</var>, or the zero-morphism from <var class="Arg">s</var> to <var class="Arg">r</var> if <var class="Arg">morphisms</var> is empty.</p>
 
 <p><a id="X7D5182B48598FBC5" name="X7D5182B48598FBC5"></a></p>
 

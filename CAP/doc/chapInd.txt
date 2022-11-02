@@ -254,44 +254,45 @@
   [2XAddSomeReductionBySplitEpiSummand_MorphismFromInputRange[102X, for IsCapCategory, IsFunction 7.7-225 
   [2XAddSomeReductionBySplitEpiSummand_MorphismToInputRange[102X, for IsCapCategory, IsFunction 7.7-226 
   [2XAddSubtractionForMorphisms[102X, for IsCapCategory, IsFunction 7.7-227 
-  [2XAddTerminalObject[102X, for IsCapCategory, IsFunction 7.7-228 
-  [2XAddTerminalObjectFunctorial[102X, for IsCapCategory, IsFunction 7.7-229 
-  [2XAddTerminalObjectFunctorialWithGivenTerminalObjects[102X, for IsCapCategory, IsFunction 7.7-230 
-  [2XAddUniversalMorphismFromCoequalizer[102X, for IsCapCategory, IsFunction 7.7-231 
-  [2XAddUniversalMorphismFromCoequalizerWithGivenCoequalizer[102X, for IsCapCategory, IsFunction 7.7-232 
-  [2XAddUniversalMorphismFromCoproduct[102X, for IsCapCategory, IsFunction 7.7-233 
-  [2XAddUniversalMorphismFromCoproductWithGivenCoproduct[102X, for IsCapCategory, IsFunction 7.7-234 
-  [2XAddUniversalMorphismFromDirectSum[102X, for IsCapCategory, IsFunction 7.7-235 
-  [2XAddUniversalMorphismFromDirectSumWithGivenDirectSum[102X, for IsCapCategory, IsFunction 7.7-236 
-  [2XAddUniversalMorphismFromImage[102X, for IsCapCategory, IsFunction 7.7-237 
-  [2XAddUniversalMorphismFromImageWithGivenImageObject[102X, for IsCapCategory, IsFunction 7.7-238 
-  [2XAddUniversalMorphismFromInitialObject[102X, for IsCapCategory, IsFunction 7.7-239 
-  [2XAddUniversalMorphismFromInitialObjectWithGivenInitialObject[102X, for IsCapCategory, IsFunction 7.7-240 
-  [2XAddUniversalMorphismFromPushout[102X, for IsCapCategory, IsFunction 7.7-241 
-  [2XAddUniversalMorphismFromPushoutWithGivenPushout[102X, for IsCapCategory, IsFunction 7.7-242 
-  [2XAddUniversalMorphismFromZeroObject[102X, for IsCapCategory, IsFunction 7.7-243 
-  [2XAddUniversalMorphismFromZeroObjectWithGivenZeroObject[102X, for IsCapCategory, IsFunction 7.7-244 
-  [2XAddUniversalMorphismIntoCoimage[102X, for IsCapCategory, IsFunction 7.7-245 
-  [2XAddUniversalMorphismIntoCoimageWithGivenCoimageObject[102X, for IsCapCategory, IsFunction 7.7-246 
-  [2XAddUniversalMorphismIntoDirectProduct[102X, for IsCapCategory, IsFunction 7.7-247 
-  [2XAddUniversalMorphismIntoDirectProductWithGivenDirectProduct[102X, for IsCapCategory, IsFunction 7.7-248 
-  [2XAddUniversalMorphismIntoDirectSum[102X, for IsCapCategory, IsFunction 7.7-249 
-  [2XAddUniversalMorphismIntoDirectSumWithGivenDirectSum[102X, for IsCapCategory, IsFunction 7.7-250 
-  [2XAddUniversalMorphismIntoEqualizer[102X, for IsCapCategory, IsFunction 7.7-251 
-  [2XAddUniversalMorphismIntoEqualizerWithGivenEqualizer[102X, for IsCapCategory, IsFunction 7.7-252 
-  [2XAddUniversalMorphismIntoFiberProduct[102X, for IsCapCategory, IsFunction 7.7-253 
-  [2XAddUniversalMorphismIntoFiberProductWithGivenFiberProduct[102X, for IsCapCategory, IsFunction 7.7-254 
-  [2XAddUniversalMorphismIntoTerminalObject[102X, for IsCapCategory, IsFunction 7.7-255 
-  [2XAddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject[102X, for IsCapCategory, IsFunction 7.7-256 
-  [2XAddUniversalMorphismIntoZeroObject[102X, for IsCapCategory, IsFunction 7.7-257 
-  [2XAddUniversalMorphismIntoZeroObjectWithGivenZeroObject[102X, for IsCapCategory, IsFunction 7.7-258 
-  [2XAddVerticalPostCompose[102X, for IsCapCategory, IsFunction 7.7-259 
-  [2XAddVerticalPreCompose[102X, for IsCapCategory, IsFunction 7.7-260 
+  [2XAddSumOfMorphisms[102X, for IsCapCategory, IsFunction 7.7-228 
+  [2XAddTerminalObject[102X, for IsCapCategory, IsFunction 7.7-229 
+  [2XAddTerminalObjectFunctorial[102X, for IsCapCategory, IsFunction 7.7-230 
+  [2XAddTerminalObjectFunctorialWithGivenTerminalObjects[102X, for IsCapCategory, IsFunction 7.7-231 
+  [2XAddUniversalMorphismFromCoequalizer[102X, for IsCapCategory, IsFunction 7.7-232 
+  [2XAddUniversalMorphismFromCoequalizerWithGivenCoequalizer[102X, for IsCapCategory, IsFunction 7.7-233 
+  [2XAddUniversalMorphismFromCoproduct[102X, for IsCapCategory, IsFunction 7.7-234 
+  [2XAddUniversalMorphismFromCoproductWithGivenCoproduct[102X, for IsCapCategory, IsFunction 7.7-235 
+  [2XAddUniversalMorphismFromDirectSum[102X, for IsCapCategory, IsFunction 7.7-236 
+  [2XAddUniversalMorphismFromDirectSumWithGivenDirectSum[102X, for IsCapCategory, IsFunction 7.7-237 
+  [2XAddUniversalMorphismFromImage[102X, for IsCapCategory, IsFunction 7.7-238 
+  [2XAddUniversalMorphismFromImageWithGivenImageObject[102X, for IsCapCategory, IsFunction 7.7-239 
+  [2XAddUniversalMorphismFromInitialObject[102X, for IsCapCategory, IsFunction 7.7-240 
+  [2XAddUniversalMorphismFromInitialObjectWithGivenInitialObject[102X, for IsCapCategory, IsFunction 7.7-241 
+  [2XAddUniversalMorphismFromPushout[102X, for IsCapCategory, IsFunction 7.7-242 
+  [2XAddUniversalMorphismFromPushoutWithGivenPushout[102X, for IsCapCategory, IsFunction 7.7-243 
+  [2XAddUniversalMorphismFromZeroObject[102X, for IsCapCategory, IsFunction 7.7-244 
+  [2XAddUniversalMorphismFromZeroObjectWithGivenZeroObject[102X, for IsCapCategory, IsFunction 7.7-245 
+  [2XAddUniversalMorphismIntoCoimage[102X, for IsCapCategory, IsFunction 7.7-246 
+  [2XAddUniversalMorphismIntoCoimageWithGivenCoimageObject[102X, for IsCapCategory, IsFunction 7.7-247 
+  [2XAddUniversalMorphismIntoDirectProduct[102X, for IsCapCategory, IsFunction 7.7-248 
+  [2XAddUniversalMorphismIntoDirectProductWithGivenDirectProduct[102X, for IsCapCategory, IsFunction 7.7-249 
+  [2XAddUniversalMorphismIntoDirectSum[102X, for IsCapCategory, IsFunction 7.7-250 
+  [2XAddUniversalMorphismIntoDirectSumWithGivenDirectSum[102X, for IsCapCategory, IsFunction 7.7-251 
+  [2XAddUniversalMorphismIntoEqualizer[102X, for IsCapCategory, IsFunction 7.7-252 
+  [2XAddUniversalMorphismIntoEqualizerWithGivenEqualizer[102X, for IsCapCategory, IsFunction 7.7-253 
+  [2XAddUniversalMorphismIntoFiberProduct[102X, for IsCapCategory, IsFunction 7.7-254 
+  [2XAddUniversalMorphismIntoFiberProductWithGivenFiberProduct[102X, for IsCapCategory, IsFunction 7.7-255 
+  [2XAddUniversalMorphismIntoTerminalObject[102X, for IsCapCategory, IsFunction 7.7-256 
+  [2XAddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject[102X, for IsCapCategory, IsFunction 7.7-257 
+  [2XAddUniversalMorphismIntoZeroObject[102X, for IsCapCategory, IsFunction 7.7-258 
+  [2XAddUniversalMorphismIntoZeroObjectWithGivenZeroObject[102X, for IsCapCategory, IsFunction 7.7-259 
+  [2XAddVerticalPostCompose[102X, for IsCapCategory, IsFunction 7.7-260 
+  [2XAddVerticalPreCompose[102X, for IsCapCategory, IsFunction 7.7-261 
   [2XAddWithGivenDerivationPairToCAP[102X 8.3-9 
-  [2XAddZeroMorphism[102X, for IsCapCategory, IsFunction 7.7-261 
-  [2XAddZeroObject[102X, for IsCapCategory, IsFunction 7.7-262 
-  [2XAddZeroObjectFunctorial[102X, for IsCapCategory, IsFunction 7.7-263 
-  [2XAddZeroObjectFunctorialWithGivenZeroObjects[102X, for IsCapCategory, IsFunction 7.7-264 
+  [2XAddZeroMorphism[102X, for IsCapCategory, IsFunction 7.7-262 
+  [2XAddZeroObject[102X, for IsCapCategory, IsFunction 7.7-263 
+  [2XAddZeroObjectFunctorial[102X, for IsCapCategory, IsFunction 7.7-264 
+  [2XAddZeroObjectFunctorialWithGivenZeroObjects[102X, for IsCapCategory, IsFunction 7.7-265 
   [2XApplyFunctor[102X 5.4-9 
   [2XApplyNaturalTransformation[102X 5.5-4 
   [2XAsCapCategory[102X, for IsCapCategoryAsCatObject 5.3-2 
@@ -776,6 +777,7 @@
   [2XSourceOfFunctor[102X, for IsCapFunctor 5.4-3 
   [2XStringMinHeap[102X 8.5-2 
   [2XSubtractionForMorphisms[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.8-3 
+  [2XSumOfMorphisms[102X, for IsCapCategoryObject, IsList, IsCapCategoryObject 3.10-8 
   [2XSumWithKeys[102X 9.2-42 
   [2XSwap[102X, for IsStringMinHeap, IsPosInt, IsPosInt 8.5-9 
   [2XTargetOperation[102X, for IsDerivedMethod 8.2-8 
