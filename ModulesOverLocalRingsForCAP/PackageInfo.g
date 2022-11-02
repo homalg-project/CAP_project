@@ -69,7 +69,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.11.1",
+  GAP := ">= 4.12.1",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "ModulePresentationsForCAP", "2017.03.27" ],
                            [ "GeneralizedMorphismsForCAP", "2016.10.05" ],

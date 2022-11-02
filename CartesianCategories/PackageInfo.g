@@ -96,7 +96,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.11.1",
+  GAP := ">= 4.12.1",
   NeededOtherPackages := [
                 [ "CAP", ">= 2022.09-17" ],
                 ],
