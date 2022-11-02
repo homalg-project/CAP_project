@@ -6,6 +6,9 @@
 
 LoadPackage( "FreydCategoriesForCAP", false );
 #! true
+ReadPackage( "FreydCategoriesForCAP",
+    "gap/CategoryOfRowsAsAdditiveClosureOfRingAsCategory_CompilerLogic.gi");
+#! true
 
 QQ := HomalgFieldOfRationalsInSingular( );;
 QQxy := QQ * "x,y";;

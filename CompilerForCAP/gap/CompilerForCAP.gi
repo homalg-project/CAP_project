@@ -96,7 +96,7 @@ CAP_JIT_INTERNAL_COMPILATION_IN_PROGRESS := false;
 BindGlobal( "CAP_JIT_INTERNAL_COMPILED_FUNCTIONS_STACK", [ ] );
 
 InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( func, with_or_without_post_processing, args... )
-  local debug, debug_idempotence, category_as_first_argument, category, type_signature, filter_list, arguments_data_types, return_type, return_data_type, tree, resolving_phase_functions, orig_tree, compiled_func, tmp, rule_phase_functions, tree_without_post_processing, changed, pre_func, f;
+  local debug, debug_idempotence, category_as_first_argument, category, type_signature, filter_list, arguments_data_types, return_type, return_data_type, tree, resolving_phase_functions, orig_tree, compiled_func, tmp, rule_phase_functions, tree_without_post_processing, changed, pre_func, domains, additional_arguments_func, f;
     
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, "Start compilation." );
@@ -437,59 +437,175 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
             
             tree := CapJitDeduplicatedExpressions( tree );
             
-            # Simplify `List( list, func )[index]` to `func( list[index] )`.
+            # Generalized loop fusion: Simplify `List( list, func )[index]` to `func( list[index] )`
             # We do not want to do this during compilation because of the following situation:
             # expr1 := List( [ 1 .. var1 ], x -> very_expensive_operation( x ) ); expr2 := List( [ 1 .. var2 ], y -> List( [ 1 .. var1 ], x -> expr1[x][y] ) );
             # If we inline and transform this to
             # expr2 := List( [ 1 .. var2 ], y -> List( [ 1 .. var1 ], x -> very_expensive_operation( x )[y] ) );
-            # we cannot simply hoist `very_expensive_operation( x )`. One solution would be "generalized hoisting": We can detect that the subexpression
+            # we cannot simply hoist `very_expensive_operation( x )`.
+            # One solution is "generalized hoisting" (see CapJitExtractedExpensiveOperationsFromLoops): We can detect that the subexpression
             # `very_expensive_operation( x )` and its domain `[ 1 .. var1 ]` are independent of `y` and thus extract `expr1` from `expr2` again.
             # However, this only improves the runtime if looping over `[ 1 .. var1 ]` is less expensive than the additional computations of `very_expensive_operation( x )`
-            # in the inlined expression. CompilerForCAP cannot decide this.
-            # Another solution would be to only transform `List( list, func )[index]` if `List( list, func )` depends on the same function levels as `index` and can thus not
-            # be hoisted anyway. However, the function levels on which `List( list, func )` depends can change during the compilation due to cancellation.
-            # Thus, we use the brute-force algorithm here: If we encounter `List( list, func )[index]` during post-processing and after inlining and hoisting,
-            # simplifying it to `func( list[index] )` always makes sense. This simplification might lead to new instances of `List( list, func )[index]`,
-            # so we repeat the process until no occurrences of `List( list, func )[index]` remain. In principle, we should rerun the whole rule phase, but this would
-            # rewrite `func( list[index] )` to `List( list, func )[index]` again, so we only run a subset of functions of the rule phase.
-            # As a consequence, one cannot apply logic to the result of this simplification.
+            # in the inlined expression. This information has to be passed to CompilerForCAP explicitly via CAP_JIT_EXPENSIVE_FUNCTION_NAMES.
+            # The general case is the following:
+            # hoisted_expr := List( domain, func ); result := List( enclosing_domain_1, x -> List( enclosing_domain_2, y -> hoisted_expr[i] ) );
+            # where of course there can be more or fewer enclosing domains. It makes sense to transform this into
+            # result := List( enclosing_domain_1, x -> List( enclosing_domain_2, y -> func( domain[i] ) ) );
+            # if and only if looping over `domain` is more expensive than looping over the cartesian product of the enclosing domains (assuming that `hoisted_expr` was
+            # not deduplicated, i.e. is not used multiple times. If it is, the argument is not correct).
+            # In particular, this depends on the level to which `hoisted_expr` can be hoisted. However, the function levels on which `hoisted_expr` depends can
+            # change during the compilation due to cancellation. So we can only do this optimization here at the end.
+            # This might lead to new instances of `List( list, func )[index]`, so we repeat the process until no occurrences of `List( list, func )[index]` remain
+            # In principle, we should rerun the whole rule phase, but this could rewrite `func( list[index] )` to `List( list, func )[index]` again,
+            # so we only run a subset of functions of the rule phase. As a consequence, one cannot apply logic to the result of this simplification.
+            # For now, we only consider two special cases below: The cases of no or a single enclosing domain.
+            # This simplifies checking if looping over `domain` is more expensive than looping over the cartesian product of the enclosing domains:
+            # If there is no domain, this is true trivially. If there is a single enclosing domain, we only have to compare that to `domain`, see `is_shorter_than`.
+            # The implementation of `is_shorter_than` only covers special cases.
+            # In the case with a single enclosing domain we do not check if `hoisted_expr` was deduplicated, i.e. is used multiple times, yet.
+            # However, in this case we might not want to apply the simplification.
+            # Note: In the case of a single enclosing domain which is equal to the domain, this would more or less correspond to the traditional concept of loop fusion.
+            # That is why we call it "generalized loop fusion".
             while true do
                 
                 changed := false;
                 
-                pre_func := function ( tree, additional_arguments )
+                # fuse loops with the same domain
+                domains := rec( );
+                
+                pre_func := function ( tree, func_stack )
+                  local value_of_binding_iterated, is_shorter_than, list_call, domain, simplify, enclosing_domain;
                     
-                    if CapJitIsCallToGlobalFunction( tree, "[]" ) and CapJitIsCallToGlobalFunction( tree.args.1, "List" ) and tree.args.1.args.length = 2 then
+                    value_of_binding_iterated := function ( tree )
+                      local pos, func;
                         
-                        changed := true;
+                        if tree.type = "EXPR_REF_FVAR" then
+                            
+                            pos := SafePositionProperty( func_stack, f -> f.id = tree.func_id );
+                            
+                            func := func_stack[pos];
+                            
+                            if SafePosition( func.nams, tree.name ) > func.narg then
+                                
+                                return value_of_binding_iterated( CapJitValueOfBinding( func.bindings, tree.name ) );
+                                
+                            fi;
+                            
+                        fi;
                         
-                        # func( CAP_JIT_INCOMPLETE_LOGIC( list[index] ) )
-                        return rec(
-                            type := "EXPR_FUNCCALL",
-                            funcref := tree.args.1.args.2, # func
-                            args := AsSyntaxTreeList( [
-                                rec(
+                        return tree;
+                        
+                    end;
+                    
+                    is_shorter_than := function ( domain1, domain2 )
+                      local last, minuend;
+                        
+                        domain1 := value_of_binding_iterated( domain1 );
+                        domain2 := value_of_binding_iterated( domain2 );
+                        
+                        if CapJitIsEqualForEnhancedSyntaxTrees( domain1, domain2 ) then
+                            
+                            return true;
+                            
+                        fi;
+                        
+                        # `[ 0 .. Length( list ) - 1 ]` is as long as `list`
+                        if domain1.type = "EXPR_RANGE" and domain1.first.type = "EXPR_INT" and domain1.first.value = 0 then
+                            
+                            last := value_of_binding_iterated( domain1.last );
+                            
+                            if CapJitIsCallToGlobalFunction( last, "-" ) and last.args.2.type = "EXPR_INT" and last.args.2.value = 1 then
+                                
+                                minuend := value_of_binding_iterated( last.args.1 );
+                                
+                                if CapJitIsCallToGlobalFunction( minuend, "Length" ) then
+                                    
+                                    return is_shorter_than( minuend.args.1, domain2 );
+                                    
+                                fi;
+                                
+                            fi;
+                            
+                        fi;
+                        
+                        # `Filtered( list, func )` is shorter than `list`
+                        if CapJitIsCallToGlobalFunction( domain1, "Filtered" ) and CapJitIsEqualForEnhancedSyntaxTrees( value_of_binding_iterated( domain1.args.1 ), domain2 ) then
+                            
+                            return true;
+                            
+                        fi;
+                        
+                        return fail;
+                        
+                    end;
+                    
+                    if CapJitIsCallToGlobalFunction( tree, "[]" ) then
+                        
+                        list_call := value_of_binding_iterated( tree.args.1 );
+                        
+                        if CapJitIsCallToGlobalFunction( list_call, "List" ) and list_call.args.length = 2 then
+                            
+                            domain := list_call.args.1;
+                            
+                            simplify := false;
+                            
+                            # case: no enclosing domain, i.e. not hoisted, and not deduplicated
+                            if tree.args.1.type <> "EXPR_REF_FVAR" then
+                                
+                                Assert( 0, IsIdenticalObj( list_call, tree.args.1 ) );
+                                
+                                simplify := true;
+                                
+                            # case: a single enclosing domain
+                            elif tree.args.1.type = "EXPR_REF_FVAR" and Length( func_stack ) >= 2 and tree.args.1.func_id = func_stack[Length( func_stack ) - 1].id and IsBound( domains.(Last( func_stack ).id) ) then
+                                
+                                enclosing_domain := domains.(Last( func_stack ).id);
+                                
+                                # In the future, we should also take into account if the list_call was deduplicated, i.e. appears multiple times.
+                                # In this case, we might not want simplify.
+                                if is_shorter_than( enclosing_domain, domain ) = true then
+                                    
+                                    simplify := true;
+                                    
+                                fi;
+                                
+                            fi;
+                            
+                            if simplify then
+                                
+                                changed := true;
+                                
+                                # List( domain, func )[index] => func( CAP_JIT_INCOMPLETE_LOGIC( domain[index] ) )
+                                return rec(
                                     type := "EXPR_FUNCCALL",
-                                    funcref := rec(
-                                        type := "EXPR_REF_GVAR",
-                                        gvar := "CAP_JIT_INCOMPLETE_LOGIC",
-                                    ),
+                                    funcref := CapJitCopyWithNewFunctionIDs( list_call.args.2 ), # func
                                     args := AsSyntaxTreeList( [
                                         rec(
                                             type := "EXPR_FUNCCALL",
                                             funcref := rec(
                                                 type := "EXPR_REF_GVAR",
-                                                gvar := "[]",
+                                                gvar := "CAP_JIT_INCOMPLETE_LOGIC", # CAP_JIT_INCOMPLETE_LOGIC
                                             ),
                                             args := AsSyntaxTreeList( [
-                                                tree.args.1.args.1, # list
-                                                tree.args.2, # index
+                                                rec(
+                                                    type := "EXPR_FUNCCALL",
+                                                    funcref := rec(
+                                                        type := "EXPR_REF_GVAR",
+                                                        gvar := "[]",
+                                                    ),
+                                                    args := AsSyntaxTreeList( [
+                                                        CapJitCopyWithNewFunctionIDs( domain ), # domain
+                                                        tree.args.2, # index
+                                                    ] ),
+                                                ),
                                             ] ),
                                         ),
                                     ] ),
-                                ),
-                            ] ),
-                        );
+                                );
+                                
+                            fi;
+                            
+                        fi;
                         
                     fi;
                     
@@ -497,7 +613,25 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                     
                 end;
                 
-                tree := CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+                additional_arguments_func := function ( tree, key, func_stack )
+                    
+                    if CapJitIsCallToGlobalFunction( tree, gvar -> gvar in CAP_JIT_INTERNAL_NAMES_OF_LOOP_FUNCTIONS ) and tree.args.length = 2 and tree.args.2.type = "EXPR_DECLARATIVE_FUNC" then
+                        
+                        domains.(tree.args.2.id) := tree.args.1;
+                        
+                    fi;
+                    
+                    if tree.type = "EXPR_DECLARATIVE_FUNC" then
+                        
+                        func_stack := Concatenation( func_stack, [ tree ] );
+                        
+                    fi;
+                    
+                    return func_stack;
+                    
+                end;
+                
+                tree := CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, additional_arguments_func, [ ] );
                 
                 if not changed then
                     
