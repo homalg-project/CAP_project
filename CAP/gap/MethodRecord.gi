@@ -451,6 +451,40 @@ PreCompose := rec(
   compatible_with_congruence_of_morphisms := true,
 ),
 
+SumOfMorphisms := rec(
+  filter_list := [ "category", "object", "list_of_morphisms", "object" ],
+  input_arguments_names := [ "cat", "source", "list_of_morphisms", "range" ],
+  pre_function := function( cat, source, list_of_morphisms, range )
+    local m, is_equal_for_sources, is_equal_for_ranges;
+    
+    for m in list_of_morphisms do
+        
+        is_equal_for_sources := IsEqualForObjects( cat, source, Source( m ) );
+        is_equal_for_ranges := IsEqualForObjects( cat, range, Range( m ) );
+        
+        if is_equal_for_sources = fail or is_equal_for_ranges = fail then
+            
+            return [ false, "cannot decide whether morphisms are compatible with the provided source and range objects" ];
+            
+        elif is_equal_for_sources = false or is_equal_for_ranges = false then
+            
+            return [ false, "some of the morphisms are not compatible with the provided source and range objects" ];
+            
+        fi;
+        
+    od;
+    
+    return [ true ];
+    
+  end,
+  return_type := "morphism",
+  output_source_getter_string := "source",
+  output_range_getter_string := "range",
+  dual_operation := "SumOfMorphisms",
+  dual_arguments_reversed := true,
+  compatible_with_congruence_of_morphisms := true,
+),
+
 PreComposeList := rec(
   filter_list := [ "category", "list_of_morphisms" ],
   input_arguments_names := [ "cat", "list_of_morphisms" ],

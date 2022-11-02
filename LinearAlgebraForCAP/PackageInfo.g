@@ -89,7 +89,7 @@ Dependencies := rec(
   NeededOtherPackages := [ [ "ToolsForHomalg", ">=2015.09.18" ],
                            [ "MatricesForHomalg", ">= 2021.12-01" ],
                            [ "GaussForHomalg", ">= 2021.04-02" ],
-                           [ "CAP", ">= 2022.11-02" ],
+                           [ "CAP", ">= 2022.11-04" ],
                            [ "MonoidalCategories", ">= 2022.06-01" ],
                            ],
   SuggestedOtherPackages := [

@@ -668,6 +668,14 @@ DeclareOperation( "PostCompose",
 DeclareOperation( "PostComposeList",
                   [ IsList ] );
 
+#! @Description
+#! The arguments are two objects <A>s</A>, <A>r</A> and a list <A>morphisms</A> of morphisms from <A>s</A> to <A>r</A>.
+#! The output is the sum of all elements in <A>morphisms</A>, or the zero-morphism from <A>s</A> to <A>r</A> 
+#! if <A>morphisms</A> is empty.
+#! @Returns a morphism in $\mathrm{Hom}(s,r)$
+#! @Arguments s, morphisms, r
+DeclareOperation( "SumOfMorphisms",
+                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
 ###################################
 ##

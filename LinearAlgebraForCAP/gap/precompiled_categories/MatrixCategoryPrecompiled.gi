@@ -5167,6 +5167,19 @@ end
     , 201 : IsPrecompiledDerivation := true );
     
     ##
+    AddSumOfMorphisms( cat,
+        
+########
+function ( cat_1, source_1, list_of_morphisms_1, range_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, UnderlyingMatrix, Iterated( List( list_of_morphisms_1, UnderlyingMatrix ), function ( alpha_2, beta_2 )
+              return alpha_2 + beta_2;
+          end, HomalgZeroMatrix( Dimension( source_1 ), Dimension( range_1 ), UnderlyingRing( cat_1 ) ) ) );
+end
+########
+        
+    , 201 : IsPrecompiledDerivation := true );
+    
+    ##
     AddTensorProductDualityCompatibilityMorphism( cat,
         
 ########

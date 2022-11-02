@@ -4325,6 +4325,25 @@ DeclareOperation( "AddSubtractionForMorphisms",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `SumOfMorphisms`.
+#! $F: ( source, list_of_morphisms, range ) \mapsto \mathtt{SumOfMorphisms}(source, list_of_morphisms, range)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSumOfMorphisms",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSumOfMorphisms",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSumOfMorphisms",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSumOfMorphisms",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `TerminalObject`.
 #! $F: (  ) \mapsto \mathtt{TerminalObject}()$.
 #! @Returns nothing
