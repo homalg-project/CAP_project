@@ -183,7 +183,7 @@ InstallGlobalFunction( AddFinalDerivationBundle,
         Print(
             "WARNING: You have installed a final derivation for ", TargetOperation( derivations[1] ), " with preconditions ", used_op_names_with_multiples_and_category_getters,
             " but the automated detection has detected the following list of preconditions: ", union_of_collected_lists, ".\n",
-            "If this is a bug in the automated detection, please report it. If the preconditions cannot be detected automatically, use the option `ConditionsListComplete := true`.\n"
+            "If this is a bug in the automated detection, please report it.\n"
         );
         
     fi;
