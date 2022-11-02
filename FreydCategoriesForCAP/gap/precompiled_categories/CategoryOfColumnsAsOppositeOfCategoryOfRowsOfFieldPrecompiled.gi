@@ -122,10 +122,10 @@ end
     , 100 );
     
     ##
-    AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( cat,
+    AddCoefficientsOfMorphism( cat,
         
 ########
-function ( cat_1, arg2_1, arg3_1 )
+function ( cat_1, arg2_1 )
     return EntriesOfHomalgMatrix( UnderlyingMatrix( arg2_1 ) );
 end
 ########

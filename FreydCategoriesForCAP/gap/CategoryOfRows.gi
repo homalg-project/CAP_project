@@ -750,8 +750,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
       end );
       
       ##
-      AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( category,
-        function( cat, morphism, L )
+      AddCoefficientsOfMorphism( category,
+        function( cat, morphism )
           
           return EntriesOfHomalgMatrix( UnderlyingMatrix( morphism ) );
           

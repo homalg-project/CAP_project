@@ -410,14 +410,12 @@ InstallMethod( WrapperCategory,
         
     fi;
     
-    if "CoefficientsOfMorphismWithGivenBasisOfExternalHom" in list_of_operations_to_install then
+    if "CoefficientsOfMorphism" in list_of_operations_to_install then
         
-        AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( D,
-          function( cat, alpha, L )
+        AddCoefficientsOfMorphism( D,
+          function( cat, alpha )
             
-            return CoefficientsOfMorphismWithGivenBasisOfExternalHom( ModelingCategory( cat ),
-                           ModelingMorphism( cat, alpha ),
-                           List( L, l -> ModelingMorphism( cat, l ) ) );
+            return CoefficientsOfMorphism( ModelingCategory( cat ), ModelingMorphism( cat, alpha ) );
             
         end );
         

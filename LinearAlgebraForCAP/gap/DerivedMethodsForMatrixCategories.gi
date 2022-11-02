@@ -52,8 +52,8 @@ end );
 ##
 AddFinalDerivationBundle( # DistinguishedObjectOfHomomorphismStructure,
                     [
-                      [ BasisOfExternalHom, 3 ], # part of CoefficientsOfMorphism
-                      [ CoefficientsOfMorphismWithGivenBasisOfExternalHom, 2 ],
+                      [ BasisOfExternalHom, 1 ],
+                      [ CoefficientsOfMorphism, 2 ],
                       [ MultiplyWithElementOfCommutativeRingForMorphisms, 2 ],
                       [ ZeroMorphism, 1 ],
                       [ PreCompose, 2 ],
