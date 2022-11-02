@@ -392,6 +392,9 @@
   [30X    [33X[0;6Y[2XSubtractionForMorphisms[102X      ([14XCAP:     SubtractionForMorphisms     for
         IsCapCategoryMorphism, IsCapCategoryMorphism[114X)[133X
   
+  [30X    [33X[0;6Y[2XSumOfMorphisms[102X  ([14XCAP:  SumOfMorphisms for IsCapCategoryObject, IsList,
+        IsCapCategoryObject[114X)[133X
+  
   [30X    [33X[0;6Y[2XTerminalObject[102X ([14XCAP: TerminalObject for IsCapCategory[114X)[133X
   
   [30X    [33X[0;6Y[2XTerminalObjectFunctorial[102X     ([14XCAP:     TerminalObjectFunctorial    for
