@@ -2718,8 +2718,7 @@ function( cat, A, diagram )
     
     return Source( EmbeddingOfEqualizer( cat, A, diagram ) );
     
-end : CategoryFilter := cat -> not ( IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true ),
-      Description := "Equalizer as the source of EmbeddingOfEqualizer" );
+end : Description := "Equalizer as the source of EmbeddingOfEqualizer" );
 
 ##
 AddDerivationToCAP( Coequalizer,
@@ -2729,8 +2728,7 @@ AddDerivationToCAP( Coequalizer,
     
     return Range( ProjectionOntoCoequalizer( cat, A, diagram ) );
     
-end : CategoryFilter := cat -> not ( IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true ),
-      Description := "Coequalizer as the range of ProjectionOntoCoequalizer" );
+end : Description := "Coequalizer as the range of ProjectionOntoCoequalizer" );
 
 ##
 AddDerivationToCAP( HomologyObject,
