@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "ModulesOverLocalRingsForCAP",
 Subtitle := "Category of modules over a local ring modeled by Serre quotients for CAP",
-Version := "2022.09-01",
-Date := "28/09/2022",
+Version := "2022.11-01",
+Date := "02/11/2022",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -69,7 +69,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.11.1",
+  GAP := ">= 4.12.1",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "ModulePresentationsForCAP", "2017.03.27" ],
                            [ "GeneralizedMorphismsForCAP", "2016.10.05" ],
