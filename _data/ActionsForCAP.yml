@@ -1,7 +1,7 @@
 name: ActionsForCAP
-version: "2022.09-02"
+version: "2022.11-01"
 license: "GPL-2.0-or-later"
-date: 2022-09-28
+date: 2022-11-02
 description: |
     Actions and Coactions for CAP
 
@@ -17,7 +17,7 @@ maintainers:
     - name: Sebastian Posur
       url: https://sebastianpos.github.io
 
-GAP: ">= 4.11.1"
+GAP: ">= 4.12.1"
 
 needed-pkgs:
     - name: "GAPDoc"
@@ -39,11 +39,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/ActionsForCAP/PackageI
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-2022.09-02/ActionsForCAP-2022.09-02.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-2022.11-01/ActionsForCAP-2022.11-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-2022.09-02/ActionsForCAP-2022.09-02.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-2022.11-01/ActionsForCAP-2022.11-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-2022.09-02/ActionsForCAP-2022.09-02.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-2022.11-01/ActionsForCAP-2022.11-01.pdf
 
 abstract: |
 
@@ -54,7 +54,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>GP22</span>]   <b class='BibAuthor'>Gutsche, S. and Posur, S.</b>,
      <i class='BibTitle'>ActionsForCAP, Actions and Coactions for CAP,
-             Version 2022.09-02</i>
+             Version 2022.11-01</i>
      (<span class='BibYear'>2022</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/ActionsForCAP">https://homalg-project.github.io/pkg/ActionsForCAP</a></span>.
@@ -62,11 +62,11 @@ citeas: |
     
 
 bibtex: |
-    @misc{ ActionsForCAP2022.09-02,
+    @misc{ ActionsForCAP2022.11-01,
       author =           {Gutsche, S. and Posur, S.},
       title =            {{ActionsForCAP},   Actions   and  Coactions  for  CAP,
-                          {V}ersion 2022.09-02},
-      month =            {Sep},
+                          {V}ersion 2022.11-01},
+      month =            {Nov},
       year =             {2022},
       note =             {GAP package},
       howpublished =     {\href
