@@ -22,9 +22,6 @@ jobs:
     steps:
       # keep workflow active even if repository has no activity for 60 days (do not execute for pull requests)
       - run: '[ "$GITHUB_EVENT_NAME" = "pull_request" ] || curl --fail -X PUT -H "Accept: application/vnd.github.v3+json" -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/$GITHUB_REPOSITORY/actions/workflows/Tests.yml/enable'
-      # checkout needs access to temporary directory
-      - run: sudo chmod 1777 $RUNNER_TEMP
-      - run: sudo chown gap:gap $GITHUB_WORKSPACE
       - uses: actions/checkout@v3
         with:
           # the persisted token interferes with the subsplit token used below

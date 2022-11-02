@@ -242,7 +242,7 @@ InstallMethod( Finalize,
     
     if not category!.is_computable then
         
-        derivation_list := Filtered( derivation_list, der -> not ForAny( der.additional_functions, x -> NameFunction( x[1] ) = "IsCongruentForMorphisms" ) );
+        derivation_list := Filtered( derivation_list, der -> not ForAny( der.derivations, x -> TargetOperation( x ) = "IsCongruentForMorphisms" ) );
         
     fi;
     
