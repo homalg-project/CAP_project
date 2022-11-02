@@ -144,6 +144,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree )
                         
                     else
                         
+                        # COVERAGE_IGNORE_NEXT_LINE
                         Error( "this should never happen" );
                         
                     fi;
