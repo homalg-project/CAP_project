@@ -1309,6 +1309,16 @@ AddDerivationToCAP( InverseForMorphisms,
       
 end : Description := "InverseForMorphisms using ColiftAlongEpimorphism of an identity morphism" );
 
+##
+AddDerivationToCAP( AdditionForMorphisms,
+                    [ [ SumOfMorphisms, 1 ] ],
+                    
+  function( cat, mor1, mor2 )
+    
+    return SumOfMorphisms( cat, Source( mor1 ), [ mor1, mor2 ], Range( mor1 ) );
+    
+end : CategoryFilter := IsAdditiveCategory,
+      Description := "AdditionForMorphisms using SumOfMorphisms" );
 
 ##
 AddDerivationToCAP( AdditionForMorphisms,
@@ -1342,6 +1352,18 @@ AddDerivationToCAP( SubtractionForMorphisms,
     
 end : CategoryFilter := IsAbCategory,
       Description := "SubtractionForMorphisms(mor1, mor2) as the sum of mor1 and the additive inverse of mor2" );
+
+##
+AddDerivationToCAP( SumOfMorphisms,
+                    [ [ AdditionForMorphisms, 1 ],
+                      [ ZeroMorphism, 1 ] ],
+                    
+  function( cat, obj1, mors, obj2 )
+    
+    return Iterated( mors, { alpha, beta } -> AdditionForMorphisms( cat, alpha, beta ), ZeroMorphism( cat, obj1, obj2 ) );
+    
+end : CategoryFilter := IsAbCategory,
+      Description := "SumOfMorphisms using AdditionForMorphisms and ZeroMorphism" );
 
 ##
 AddDerivationToCAP( LiftAlongMonomorphism,

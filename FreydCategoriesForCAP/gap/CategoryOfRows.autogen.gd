@@ -136,6 +136,7 @@
 #! * <Ref BookName="CAP" Func="SomeReductionBySplitEpiSummand_MorphismFromInputRange" Label="for Is" />
 #! * <Ref BookName="CAP" Func="SomeReductionBySplitEpiSummand_MorphismToInputRange" Label="for Is" />
 #! * <Ref BookName="CAP" Func="SubtractionForMorphisms" Label="for Is" />
+#! * <Ref BookName="CAP" Func="SumOfMorphisms" Label="for Is" />
 #! * <Ref BookName="CAP" Func="TerminalObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="TerminalObjectFunctorial" Label="for Is" />
 #! * <Ref BookName="CAP" Func="TerminalObjectFunctorialWithGivenTerminalObjects" Label="for Is" />
