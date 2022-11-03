@@ -17,10 +17,10 @@ test: doc
 	gap tst/testall.g
 
 test-basic-spacing:
-	grep -RPl "\t" examples/ gap/ && echo "Tabs found" && exit 1 || exit 0
-	grep -RPl "\r" examples/ gap/ && echo "Windows line-endings found" && exit 1 || exit 0
-	# the second grep is a hack to fix the exit code with -L for grep <= 3.1
-	grep -RPzL "\n\z" examples/ gap/ | grep "" && echo "File with no newline at end of file found" && exit 1 || exit 0
+	# exit code 1 means no match, which is what we want here (exit code 2 signals an error)
+	grep -RPl "\t" examples/ gap/; test $$? -eq 1 || (echo "Tabs found" && exit 1)
+	grep -RPl "\r" examples/ gap/; test $$? -eq 1 || (echo "Windows line-endings found" && exit 1)
+	grep -RPzL "\n\z" examples/ gap/ | grep ""; test $$? -eq 1 || (echo "File with no newline at end of file found" && exit 1)
 
 test-doc: doc
 	cp -aT doc/ doc_tmp/
@@ -32,12 +32,12 @@ test-with-coverage: doc
 	gap --quitonbreak --norepl -c 'LoadPackage("profiling"); OutputJsonCoverage("stats", "coverage.json");'
 
 test-spacing:
-	grep -R "[^ [\"]  " gap/*.gi && echo "Duplicate spaces found" && exit 1 || exit 0
-	grep -RE '[^ ] +$$' gap/* && echo "Trailing whitespace found" && exit 1 || exit 0
+	# exit code 1 means no match, which is what we want here (exit code 2 signals an error)
+	grep -R "[^ [\"]  " gap/*.gi; test $$? -eq 1 || (echo "Duplicate spaces found" && exit 1)
+	grep -RE '[^ ] +$$' gap/*; test $$? -eq 1 || (echo "Trailing whitespace found" && exit 1)
 	for filename in gap/*; do \
 		echo $$filename; \
 		gap --quitonbreak --norepl --banner -c "LoadPackage(\"CompilerForCAP\"); SizeScreen([4096]); func := ReadAsFunction(\"$$filename\"); FileString(\"gap_spacing\", DisplayString(func));"; \
-		echo -e "\033[0m"; \
 		# In a perfect world, the DisplayString of a function would exactly match our code. However, our line breaks and indentation might differ from the GAP ones, \
 		# so we remove all indentation, line breaks, and empty lines, and afterwards insert line breaks at semicolons again for better readability. \
 		cat "gap_spacing" | tail -n +2 | head -n -2 | sed 's/\[  \]/[ ]/g' | sed 's/(  )/( )/g' | sed 's/(  :/( :/g' | sed 's/ *$$//' | sed 's/^ *//' | grep -v "^$$" | tr "\n" " " | sed 's/;/;\n/g' > modified_gap_spacing; \
