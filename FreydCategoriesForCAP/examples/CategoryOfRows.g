@@ -361,3 +361,102 @@ Display( inj_push );
 #! Range: 
 #! A row module over Z of rank 2
 #! @EndLog
+
+##############
+# Equalizer
+##############
+
+#! @Example
+Q := HomalgFieldOfRationals();;
+rows := CategoryOfRows( Q );;
+homalg_matrix := HomalgMatrix( [ [ 1, 0 ],
+                                 [ 0, 1 ],
+                                 [ -2, 0] ], 3, 2, Q );;
+alpha := homalg_matrix / rows;;
+diagram := [ alpha, 2*alpha, 3*alpha ];;
+equalizer := EmbeddingOfEqualizer( diagram );;
+Display(equalizer);
+#! Source: 
+#! A row module over Q of rank 1
+#!
+#! Matrix:
+#! [ [  2,  0,  1 ] ]
+#!
+#! Range:
+#! A row module over Q of rank 3
+#!
+#! A monomorphism in Rows( Q )
+equalizer_d1 := PreCompose( equalizer, diagram[1] );;
+equalizer_d2 := PreCompose( equalizer, diagram[2] );;
+equalizer_d3 := PreCompose( equalizer, diagram[3] );;
+IsEqualForMorphisms( equalizer_d1, equalizer_d2 );
+#! true
+IsEqualForMorphisms( equalizer_d2, equalizer_d3 );
+#! true
+IsEqualForMorphisms( equalizer_d1, equalizer_d3 );
+#! true
+universal_morphism := UniversalMorphismIntoEqualizer( Source(alpha), diagram, Source( 2*equalizer ), 2*equalizer );;
+Display( universal_morphism );
+#! Source:
+#! A row module over Q of rank 1
+#! 
+#! Matrix:
+#! [ [  2 ] ]
+#! 
+#! Range:
+#! A row module over Q of rank 1
+#! 
+#! A morphism in Rows( Q )
+IsEqualForMorphisms( PreCompose( universal_morphism, equalizer ), 2*equalizer );
+#! true
+#! @EndExample
+
+##############
+# Coequalizer
+##############
+
+#! @Example
+Q := HomalgFieldOfRationals();;
+rows := CategoryOfRows( Q );;
+homalg_matrix := HomalgMatrix( [ [ 1, 0, -2 ],
+                                 [ 0, 1, 0 ] ], 2, 3, Q );;
+alpha := homalg_matrix / rows;;
+diagram := [ alpha, 2*alpha, 3*alpha ];;
+coequalizer := ProjectionOntoCoequalizer( diagram );;
+Display( coequalizer );
+#! Source:
+#! A row module over Q of rank 3
+#!
+#! Matrix: 
+#! [ [  2 ],
+#!   [  0 ],
+#!   [  1 ] ]
+#! 
+#! Range:
+#! A row module over Q of rank 1
+#!
+#! An epimorphism in Rows( Q )
+coequalizer_d1 := PreCompose( diagram[1], coequalizer );;
+coequalizer_d2 := PreCompose( diagram[2], coequalizer );;
+coequalizer_d3 := PreCompose( diagram[3], coequalizer );;
+IsEqualForMorphisms( coequalizer_d1, coequalizer_d2 );
+#! true
+IsEqualForMorphisms( coequalizer_d2, coequalizer_d3 );
+#! true
+IsEqualForMorphisms( coequalizer_d1, coequalizer_d3 );
+#! true
+universal_morphism := UniversalMorphismFromCoequalizer( Range(alpha), diagram, Range( 2*coequalizer ), 2*coequalizer );;
+Display( universal_morphism );
+#! Source:
+#! A row module over Q of rank 1
+#! 
+#! Matrix:
+#! [ [  2 ] ]
+#! 
+#! Range:
+#! A row module over Q of rank 1
+#! 
+#! A morphism in Rows( Q )
+IsEqualForMorphisms( PreCompose( coequalizer,  universal_morphism ), 2*coequalizer );
+#! true
+#! @EndExample
