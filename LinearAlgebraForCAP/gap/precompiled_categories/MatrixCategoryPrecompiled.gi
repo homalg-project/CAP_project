@@ -659,6 +659,62 @@ end
     , 100 );
     
     ##
+    AddCoequalizer( cat,
+        
+########
+function ( cat_1, arg2_1, arg3_1 )
+    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
+    deduped_4_1 := Length( arg3_1 );
+    deduped_3_1 := List( arg3_1, UnderlyingMatrix );
+    deduped_2_1 := UnderlyingRing( cat_1 );
+    deduped_1_1 := Dimension( arg2_1 );
+    return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, deduped_1_1 - RowRankOfMatrix( (UnionOfRows( deduped_2_1, deduped_1_1, deduped_3_1{[ 1 .. deduped_4_1 - 1 ]} ) - UnionOfRows( deduped_2_1, deduped_1_1, deduped_3_1{[ 2 .. deduped_4_1 ]} )) ) );
+end
+########
+        
+    , 2819 : IsPrecompiledDerivation := true );
+    
+    ##
+    AddCoequalizerFunctorial( cat,
+        
+########
+function ( cat_1, morphisms_1, mu_1, morphismsp_1 )
+    local morphism_attr_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1;
+    deduped_8_1 := Length( morphismsp_1 );
+    deduped_7_1 := List( morphismsp_1, UnderlyingMatrix );
+    deduped_6_1 := Length( morphisms_1 );
+    deduped_5_1 := List( morphisms_1, UnderlyingMatrix );
+    deduped_4_1 := UnderlyingRing( cat_1 );
+    deduped_3_1 := Dimension( Range( mu_1 ) );
+    deduped_2_1 := Dimension( Source( mu_1 ) );
+    morphism_attr_1_1 := LeftDivide( SyzygiesOfColumns( UnionOfRows( deduped_4_1, deduped_2_1, deduped_5_1{[ 1 .. deduped_6_1 - 1 ]} ) - UnionOfRows( deduped_4_1, deduped_2_1, deduped_5_1{[ 2 .. deduped_6_1 ]} ) ), UnderlyingMatrix( mu_1 ) * SyzygiesOfColumns( (UnionOfRows( deduped_4_1, deduped_3_1, deduped_7_1{[ 1 .. deduped_8_1 - 1 ]} ) - UnionOfRows( deduped_4_1, deduped_3_1, deduped_7_1{[ 2 .. deduped_8_1 ]} )) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+end
+########
+        
+    , 11480 : IsPrecompiledDerivation := true );
+    
+    ##
+    AddCoequalizerFunctorialWithGivenCoequalizers( cat,
+        
+########
+function ( cat_1, P_1, morphisms_1, mu_1, morphismsp_1, Pp_1 )
+    local morphism_attr_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1;
+    deduped_8_1 := Length( morphismsp_1 );
+    deduped_7_1 := List( morphismsp_1, UnderlyingMatrix );
+    deduped_6_1 := Length( morphisms_1 );
+    deduped_5_1 := List( morphisms_1, UnderlyingMatrix );
+    deduped_4_1 := UnderlyingRing( cat_1 );
+    deduped_3_1 := Dimension( Range( mu_1 ) );
+    deduped_2_1 := Dimension( Source( mu_1 ) );
+    morphism_attr_1_1 := LeftDivide( SyzygiesOfColumns( UnionOfRows( deduped_4_1, deduped_2_1, deduped_5_1{[ 1 .. deduped_6_1 - 1 ]} ) - UnionOfRows( deduped_4_1, deduped_2_1, deduped_5_1{[ 2 .. deduped_6_1 ]} ) ), UnderlyingMatrix( mu_1 ) * SyzygiesOfColumns( (UnionOfRows( deduped_4_1, deduped_3_1, deduped_7_1{[ 1 .. deduped_8_1 - 1 ]} ) - UnionOfRows( deduped_4_1, deduped_3_1, deduped_7_1{[ 2 .. deduped_8_1 ]} )) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+end
+########
+        
+    , 5841 : IsPrecompiledDerivation := true );
+    
+    ##
     AddCoevaluationForDual( cat,
         
 ########
@@ -1220,6 +1276,40 @@ end
     , 100 );
     
     ##
+    AddEmbeddingOfEqualizer( cat,
+        
+########
+function ( cat_1, Y_1, morphisms_1 )
+    local morphism_attr_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := Length( morphisms_1 );
+    deduped_4_1 := List( morphisms_1, UnderlyingMatrix );
+    deduped_3_1 := Dimension( Y_1 );
+    deduped_2_1 := UnderlyingRing( cat_1 );
+    morphism_attr_1_1 := SyzygiesOfRows( UnionOfColumns( deduped_2_1, deduped_3_1, deduped_4_1{[ 1 .. deduped_5_1 - 1 ]} ) - UnionOfColumns( deduped_2_1, deduped_3_1, deduped_4_1{[ 2 .. deduped_5_1 ]} ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), Y_1, UnderlyingMatrix, morphism_attr_1_1 );
+end
+########
+        
+    , 2818 : IsPrecompiledDerivation := true );
+    
+    ##
+    AddEmbeddingOfEqualizerWithGivenEqualizer( cat,
+        
+########
+function ( cat_1, Y_1, morphisms_1, P_1 )
+    local morphism_attr_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := Length( morphisms_1 );
+    deduped_4_1 := List( morphisms_1, UnderlyingMatrix );
+    deduped_3_1 := Dimension( Y_1 );
+    deduped_2_1 := UnderlyingRing( cat_1 );
+    morphism_attr_1_1 := SyzygiesOfRows( UnionOfColumns( deduped_2_1, deduped_3_1, deduped_4_1{[ 1 .. deduped_5_1 - 1 ]} ) - UnionOfColumns( deduped_2_1, deduped_3_1, deduped_4_1{[ 2 .. deduped_5_1 ]} ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), Y_1, UnderlyingMatrix, morphism_attr_1_1 );
+end
+########
+        
+    , 2819 : IsPrecompiledDerivation := true );
+    
+    ##
     AddEpimorphismFromSomeProjectiveObject( cat,
         
 ########
@@ -1240,6 +1330,62 @@ end
 ########
         
     , 101 : IsPrecompiledDerivation := true );
+    
+    ##
+    AddEqualizer( cat,
+        
+########
+function ( cat_1, arg2_1, arg3_1 )
+    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
+    deduped_4_1 := Length( arg3_1 );
+    deduped_3_1 := List( arg3_1, UnderlyingMatrix );
+    deduped_2_1 := UnderlyingRing( cat_1 );
+    deduped_1_1 := Dimension( arg2_1 );
+    return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, deduped_1_1 - RowRankOfMatrix( (UnionOfColumns( deduped_2_1, deduped_1_1, deduped_3_1{[ 1 .. deduped_4_1 - 1 ]} ) - UnionOfColumns( deduped_2_1, deduped_1_1, deduped_3_1{[ 2 .. deduped_4_1 ]} )) ) );
+end
+########
+        
+    , 2819 : IsPrecompiledDerivation := true );
+    
+    ##
+    AddEqualizerFunctorial( cat,
+        
+########
+function ( cat_1, morphisms_1, mu_1, morphismsp_1 )
+    local morphism_attr_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1;
+    deduped_8_1 := Length( morphismsp_1 );
+    deduped_7_1 := List( morphismsp_1, UnderlyingMatrix );
+    deduped_6_1 := Length( morphisms_1 );
+    deduped_5_1 := List( morphisms_1, UnderlyingMatrix );
+    deduped_4_1 := UnderlyingRing( cat_1 );
+    deduped_3_1 := Dimension( Range( mu_1 ) );
+    deduped_2_1 := Dimension( Source( mu_1 ) );
+    morphism_attr_1_1 := RightDivide( SyzygiesOfRows( (UnionOfColumns( deduped_4_1, deduped_2_1, deduped_5_1{[ 1 .. deduped_6_1 - 1 ]} ) - UnionOfColumns( deduped_4_1, deduped_2_1, deduped_5_1{[ 2 .. deduped_6_1 ]} )) ) * UnderlyingMatrix( mu_1 ), SyzygiesOfRows( UnionOfColumns( deduped_4_1, deduped_3_1, deduped_7_1{[ 1 .. deduped_8_1 - 1 ]} ) - UnionOfColumns( deduped_4_1, deduped_3_1, deduped_7_1{[ 2 .. deduped_8_1 ]} ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+end
+########
+        
+    , 11480 : IsPrecompiledDerivation := true );
+    
+    ##
+    AddEqualizerFunctorialWithGivenEqualizers( cat,
+        
+########
+function ( cat_1, P_1, morphisms_1, mu_1, morphismsp_1, Pp_1 )
+    local morphism_attr_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1;
+    deduped_8_1 := Length( morphismsp_1 );
+    deduped_7_1 := List( morphismsp_1, UnderlyingMatrix );
+    deduped_6_1 := Length( morphisms_1 );
+    deduped_5_1 := List( morphisms_1, UnderlyingMatrix );
+    deduped_4_1 := UnderlyingRing( cat_1 );
+    deduped_3_1 := Dimension( Range( mu_1 ) );
+    deduped_2_1 := Dimension( Source( mu_1 ) );
+    morphism_attr_1_1 := RightDivide( SyzygiesOfRows( (UnionOfColumns( deduped_4_1, deduped_2_1, deduped_5_1{[ 1 .. deduped_6_1 - 1 ]} ) - UnionOfColumns( deduped_4_1, deduped_2_1, deduped_5_1{[ 2 .. deduped_6_1 ]} )) ) * UnderlyingMatrix( mu_1 ), SyzygiesOfRows( UnionOfColumns( deduped_4_1, deduped_3_1, deduped_7_1{[ 1 .. deduped_8_1 - 1 ]} ) - UnionOfColumns( deduped_4_1, deduped_3_1, deduped_7_1{[ 2 .. deduped_8_1 ]} ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+end
+########
+        
+    , 5841 : IsPrecompiledDerivation := true );
     
     ##
     AddEvaluationForDual( cat,
@@ -4157,6 +4303,40 @@ end
     , 2011 : IsPrecompiledDerivation := true );
     
     ##
+    AddMorphismFromEqualizerToSink( cat,
+        
+########
+function ( cat_1, Y_1, morphisms_1 )
+    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := Length( morphisms_1 );
+    deduped_4_1 := List( morphisms_1, UnderlyingMatrix );
+    deduped_3_1 := Dimension( Y_1 );
+    deduped_2_1 := UnderlyingRing( cat_1 );
+    deduped_1_1 := SyzygiesOfRows( (UnionOfColumns( deduped_2_1, deduped_3_1, deduped_4_1{[ 1 .. deduped_5_1 - 1 ]} ) - UnionOfColumns( deduped_2_1, deduped_3_1, deduped_4_1{[ 2 .. deduped_5_1 ]} )) ) * deduped_4_1[1];
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( deduped_1_1 ) ), Range( CAP_JIT_INCOMPLETE_LOGIC( morphisms_1[1] ) ), UnderlyingMatrix, deduped_1_1 );
+end
+########
+        
+    , 2919 : IsPrecompiledDerivation := true );
+    
+    ##
+    AddMorphismFromEqualizerToSinkWithGivenEqualizer( cat,
+        
+########
+function ( cat_1, Y_1, morphisms_1, P_1 )
+    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := Length( morphisms_1 );
+    deduped_4_1 := List( morphisms_1, UnderlyingMatrix );
+    deduped_3_1 := Dimension( Y_1 );
+    deduped_2_1 := UnderlyingRing( cat_1 );
+    deduped_1_1 := SyzygiesOfRows( (UnionOfColumns( deduped_2_1, deduped_3_1, deduped_4_1{[ 1 .. deduped_5_1 - 1 ]} ) - UnionOfColumns( deduped_2_1, deduped_3_1, deduped_4_1{[ 2 .. deduped_5_1 ]} )) ) * deduped_4_1[1];
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( deduped_1_1 ) ), Range( CAP_JIT_INCOMPLETE_LOGIC( morphisms_1[1] ) ), UnderlyingMatrix, deduped_1_1 );
+end
+########
+        
+    , 2920 : IsPrecompiledDerivation := true );
+    
+    ##
     AddMorphismFromFiberProductToSink( cat,
         
 ########
@@ -4295,6 +4475,40 @@ end
 ########
         
     , 202 : IsPrecompiledDerivation := true );
+    
+    ##
+    AddMorphismFromSourceToCoequalizer( cat,
+        
+########
+function ( cat_1, Y_1, morphisms_1 )
+    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := Length( morphisms_1 );
+    deduped_4_1 := Dimension( Y_1 );
+    deduped_3_1 := UnderlyingRing( cat_1 );
+    deduped_2_1 := List( morphisms_1, UnderlyingMatrix );
+    deduped_1_1 := deduped_2_1[1] * SyzygiesOfColumns( (UnionOfRows( deduped_3_1, deduped_4_1, deduped_2_1{[ 1 .. deduped_5_1 - 1 ]} ) - UnionOfRows( deduped_3_1, deduped_4_1, deduped_2_1{[ 2 .. deduped_5_1 ]} )) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( CAP_JIT_INCOMPLETE_LOGIC( morphisms_1[1] ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( deduped_1_1 ) ), UnderlyingMatrix, deduped_1_1 );
+end
+########
+        
+    , 2919 : IsPrecompiledDerivation := true );
+    
+    ##
+    AddMorphismFromSourceToCoequalizerWithGivenCoequalizer( cat,
+        
+########
+function ( cat_1, Y_1, morphisms_1, P_1 )
+    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := Length( morphisms_1 );
+    deduped_4_1 := Dimension( Y_1 );
+    deduped_3_1 := UnderlyingRing( cat_1 );
+    deduped_2_1 := List( morphisms_1, UnderlyingMatrix );
+    deduped_1_1 := deduped_2_1[1] * SyzygiesOfColumns( (UnionOfRows( deduped_3_1, deduped_4_1, deduped_2_1{[ 1 .. deduped_5_1 - 1 ]} ) - UnionOfRows( deduped_3_1, deduped_4_1, deduped_2_1{[ 2 .. deduped_5_1 ]} )) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( CAP_JIT_INCOMPLETE_LOGIC( morphisms_1[1] ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( deduped_1_1 ) ), UnderlyingMatrix, deduped_1_1 );
+end
+########
+        
+    , 2920 : IsPrecompiledDerivation := true );
     
     ##
     AddMorphismFromSourceToCokernelObject( cat,
@@ -4715,6 +4929,40 @@ end
 ########
         
     , 2712 : IsPrecompiledDerivation := true );
+    
+    ##
+    AddProjectionOntoCoequalizer( cat,
+        
+########
+function ( cat_1, Y_1, morphisms_1 )
+    local morphism_attr_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := Length( morphisms_1 );
+    deduped_4_1 := List( morphisms_1, UnderlyingMatrix );
+    deduped_3_1 := Dimension( Y_1 );
+    deduped_2_1 := UnderlyingRing( cat_1 );
+    morphism_attr_1_1 := SyzygiesOfColumns( UnionOfRows( deduped_2_1, deduped_3_1, deduped_4_1{[ 1 .. deduped_5_1 - 1 ]} ) - UnionOfRows( deduped_2_1, deduped_3_1, deduped_4_1{[ 2 .. deduped_5_1 ]} ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Y_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+end
+########
+        
+    , 2818 : IsPrecompiledDerivation := true );
+    
+    ##
+    AddProjectionOntoCoequalizerWithGivenCoequalizer( cat,
+        
+########
+function ( cat_1, Y_1, morphisms_1, P_1 )
+    local morphism_attr_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := Length( morphisms_1 );
+    deduped_4_1 := List( morphisms_1, UnderlyingMatrix );
+    deduped_3_1 := Dimension( Y_1 );
+    deduped_2_1 := UnderlyingRing( cat_1 );
+    morphism_attr_1_1 := SyzygiesOfColumns( UnionOfRows( deduped_2_1, deduped_3_1, deduped_4_1{[ 1 .. deduped_5_1 - 1 ]} ) - UnionOfRows( deduped_2_1, deduped_3_1, deduped_4_1{[ 2 .. deduped_5_1 ]} ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Y_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+end
+########
+        
+    , 2819 : IsPrecompiledDerivation := true );
     
     ##
     AddProjectiveLift( cat,
@@ -5809,6 +6057,40 @@ end
     , 6131 : IsPrecompiledDerivation := true );
     
     ##
+    AddUniversalMorphismFromCoequalizer( cat,
+        
+########
+function ( cat_1, Y_1, morphisms_1, T_1, tau_1 )
+    local morphism_attr_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := Length( morphisms_1 );
+    deduped_4_1 := List( morphisms_1, UnderlyingMatrix );
+    deduped_3_1 := Dimension( Y_1 );
+    deduped_2_1 := UnderlyingRing( cat_1 );
+    morphism_attr_1_1 := LeftDivide( SyzygiesOfColumns( UnionOfRows( deduped_2_1, deduped_3_1, deduped_4_1{[ 1 .. deduped_5_1 - 1 ]} ) - UnionOfRows( deduped_2_1, deduped_3_1, deduped_4_1{[ 2 .. deduped_5_1 ]} ) ), UnderlyingMatrix( tau_1 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), Range( tau_1 ), UnderlyingMatrix, morphism_attr_1_1 );
+end
+########
+        
+    , 2920 : IsPrecompiledDerivation := true );
+    
+    ##
+    AddUniversalMorphismFromCoequalizerWithGivenCoequalizer( cat,
+        
+########
+function ( cat_1, Y_1, morphisms_1, T_1, tau_1, P_1 )
+    local morphism_attr_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := Length( morphisms_1 );
+    deduped_4_1 := List( morphisms_1, UnderlyingMatrix );
+    deduped_3_1 := Dimension( Y_1 );
+    deduped_2_1 := UnderlyingRing( cat_1 );
+    morphism_attr_1_1 := LeftDivide( SyzygiesOfColumns( UnionOfRows( deduped_2_1, deduped_3_1, deduped_4_1{[ 1 .. deduped_5_1 - 1 ]} ) - UnionOfRows( deduped_2_1, deduped_3_1, deduped_4_1{[ 2 .. deduped_5_1 ]} ) ), UnderlyingMatrix( tau_1 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), Range( tau_1 ), UnderlyingMatrix, morphism_attr_1_1 );
+end
+########
+        
+    , 2921 : IsPrecompiledDerivation := true );
+    
+    ##
     AddUniversalMorphismFromCoproduct( cat,
         
 ########
@@ -6067,6 +6349,40 @@ end
 ########
         
     , 100 );
+    
+    ##
+    AddUniversalMorphismIntoEqualizer( cat,
+        
+########
+function ( cat_1, Y_1, morphisms_1, T_1, tau_1 )
+    local morphism_attr_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := Length( morphisms_1 );
+    deduped_4_1 := List( morphisms_1, UnderlyingMatrix );
+    deduped_3_1 := Dimension( Y_1 );
+    deduped_2_1 := UnderlyingRing( cat_1 );
+    morphism_attr_1_1 := RightDivide( UnderlyingMatrix( tau_1 ), SyzygiesOfRows( UnionOfColumns( deduped_2_1, deduped_3_1, deduped_4_1{[ 1 .. deduped_5_1 - 1 ]} ) - UnionOfColumns( deduped_2_1, deduped_3_1, deduped_4_1{[ 2 .. deduped_5_1 ]} ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( tau_1 ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+end
+########
+        
+    , 2920 : IsPrecompiledDerivation := true );
+    
+    ##
+    AddUniversalMorphismIntoEqualizerWithGivenEqualizer( cat,
+        
+########
+function ( cat_1, Y_1, morphisms_1, T_1, tau_1, P_1 )
+    local morphism_attr_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := Length( morphisms_1 );
+    deduped_4_1 := List( morphisms_1, UnderlyingMatrix );
+    deduped_3_1 := Dimension( Y_1 );
+    deduped_2_1 := UnderlyingRing( cat_1 );
+    morphism_attr_1_1 := RightDivide( UnderlyingMatrix( tau_1 ), SyzygiesOfRows( UnionOfColumns( deduped_2_1, deduped_3_1, deduped_4_1{[ 1 .. deduped_5_1 - 1 ]} ) - UnionOfColumns( deduped_2_1, deduped_3_1, deduped_4_1{[ 2 .. deduped_5_1 ]} ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( tau_1 ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+end
+########
+        
+    , 2921 : IsPrecompiledDerivation := true );
     
     ##
     AddUniversalMorphismIntoFiberProduct( cat,

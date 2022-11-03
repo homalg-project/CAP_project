@@ -8,7 +8,7 @@ LoadPackage( "MonoidalCategories" );
 T := TerminalCategoryWithMultipleObjects( );
 #! TerminalCategoryWithMultipleObjects( )
 InfoOfInstalledOperationsOfCategory( T );
-#! 63 primitive operations were used to derive 286 operations for this category
+#! 63 primitive operations were used to derive 304 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts

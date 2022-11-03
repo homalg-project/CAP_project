@@ -2490,6 +2490,42 @@ AddDerivationToCAP( DirectSumProjectionInPushout,
 end : Description := "DirectSumProjectionInPushout using the universal property of the direct sum" );
 
 ##
+AddDerivationToCAP( EmbeddingOfEqualizer,
+                    [ [ KernelEmbedding, 1 ],
+                      [ JointPairwiseDifferencesOfMorphismsIntoDirectProduct, 1 ],
+                      [ PreCompose, 1 ],
+                      [ IsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct, 1 ] ],
+                    
+  function( cat, A, diagram )
+    local kernel_of_pairwise_difference;
+    
+    kernel_of_pairwise_difference := KernelEmbedding( cat, JointPairwiseDifferencesOfMorphismsIntoDirectProduct( cat, A, diagram ) );
+    
+    return PreCompose( cat, IsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct( cat, A, diagram ),
+                       kernel_of_pairwise_difference );
+    
+end : CategoryFilter := IsPreAbelianCategory,
+      Description := "EmbeddingOfEqualizer using the kernel embedding of JointPairwiseDifferencesOfMorphismsIntoDirectProduct" );
+
+##
+AddDerivationToCAP( ProjectionOntoCoequalizer,
+                    [ [ CokernelProjection, 1 ],
+                      [ JointPairwiseDifferencesOfMorphismsFromCoproduct, 1 ],
+                      [ PreCompose, 1 ],
+                      [ IsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct, 1 ] ],
+                    
+  function( cat, A, diagram )
+    local cokernel_proj_of_pairwise_difference;
+    
+    cokernel_proj_of_pairwise_difference := CokernelProjection( cat, JointPairwiseDifferencesOfMorphismsFromCoproduct( cat, A, diagram ) );
+    
+    return PreCompose( cat, cokernel_proj_of_pairwise_difference,
+                       IsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct( cat, A, diagram ) );
+    
+end : CategoryFilter := IsPreAbelianCategory,
+      Description := "ProjectionOntoCoequalizer using the cokernel projection of JointPairwiseDifferencesOfMorphismsFromCoproduct" );
+
+##
 AddDerivationToCAP( IsomorphismFromInitialObjectToZeroObject,
                     [ [ UniversalMorphismFromInitialObject, 1 ],
                       [ ZeroObject, 1 ] ],
