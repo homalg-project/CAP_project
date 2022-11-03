@@ -456,15 +456,15 @@
   [10XCoastrictionToImageWithGivenImageObject[110X.   [23XF:   (   alpha,   I   )   \mapsto
   \mathtt{CoastrictionToImageWithGivenImageObject}(alpha, I)[123X.[133X
   
-  [1X7.7-11 AddCoefficientsOfMorphismWithGivenBasisOfExternalHom[101X
+  [1X7.7-11 AddCoefficientsOfMorphism[101X
   
-  [33X[1;0Y[29X[2XAddCoefficientsOfMorphismWithGivenBasisOfExternalHom[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCoefficientsOfMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCoefficientsOfMorphismWithGivenBasisOfExternalHom[110X. [23XF: ( arg2, arg3 ) \mapsto
-  \mathtt{CoefficientsOfMorphismWithGivenBasisOfExternalHom}(arg2, arg3)[123X.[133X
+  [10XCoefficientsOfMorphism[110X.        [23XF:        (        arg2       )       \mapsto
+  \mathtt{CoefficientsOfMorphism}(arg2)[123X.[133X
   
   [1X7.7-12 AddCoequalizer[101X
   

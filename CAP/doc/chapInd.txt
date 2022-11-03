@@ -20,7 +20,7 @@
   [2XAddCategoricalProperty[102X 1.1-6 
   [2XAddCoastrictionToImage[102X, for IsCapCategory, IsFunction 7.7-9 
   [2XAddCoastrictionToImageWithGivenImageObject[102X, for IsCapCategory, IsFunction 7.7-10 
-  [2XAddCoefficientsOfMorphismWithGivenBasisOfExternalHom[102X, for IsCapCategory, IsFunction 7.7-11 
+  [2XAddCoefficientsOfMorphism[102X, for IsCapCategory, IsFunction 7.7-11 
   [2XAddCoequalizer[102X, for IsCapCategory, IsFunction 7.7-12 
   [2XAddCoequalizerFunctorial[102X, for IsCapCategory, IsFunction 7.7-13 
   [2XAddCoequalizerFunctorialWithGivenCoequalizers[102X, for IsCapCategory, IsFunction 7.7-14 
