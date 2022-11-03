@@ -202,20 +202,20 @@ DeclareOperation( "AddCoastrictionToImageWithGivenImageObject",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `CoefficientsOfMorphismWithGivenBasisOfExternalHom`.
-#! $F: ( arg2, arg3 ) \mapsto \mathtt{CoefficientsOfMorphismWithGivenBasisOfExternalHom}(arg2, arg3)$.
+#! to the category for the basic operation `CoefficientsOfMorphism`.
+#! $F: ( arg2 ) \mapsto \mathtt{CoefficientsOfMorphism}(arg2)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddCoefficientsOfMorphismWithGivenBasisOfExternalHom",
+DeclareOperation( "AddCoefficientsOfMorphism",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddCoefficientsOfMorphismWithGivenBasisOfExternalHom",
+DeclareOperation( "AddCoefficientsOfMorphism",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddCoefficientsOfMorphismWithGivenBasisOfExternalHom",
+DeclareOperation( "AddCoefficientsOfMorphism",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddCoefficientsOfMorphismWithGivenBasisOfExternalHom",
+DeclareOperation( "AddCoefficientsOfMorphism",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

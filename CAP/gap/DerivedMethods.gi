@@ -3507,11 +3507,11 @@ AddFinalDerivationBundle( # BasisOfExternalHom,
                       [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure, 1 ],
                       [ DistinguishedObjectOfHomomorphismStructure, 1 ],
                       [ BasisOfExternalHom, 1, RangeCategoryOfHomomorphismStructure ],
-                      [ CoefficientsOfMorphismWithGivenBasisOfExternalHom, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ CoefficientsOfMorphism, 1, RangeCategoryOfHomomorphismStructure ],
                     ],
                     [
                       BasisOfExternalHom,
-                      CoefficientsOfMorphismWithGivenBasisOfExternalHom
+                      CoefficientsOfMorphism
                     ],
 [
   BasisOfExternalHom,
@@ -3531,8 +3531,8 @@ AddFinalDerivationBundle( # BasisOfExternalHom,
   end
 ],
 [
-  CoefficientsOfMorphismWithGivenBasisOfExternalHom,
-  function( cat, alpha, L )
+  CoefficientsOfMorphism,
+  function( cat, alpha )
     local range_cat, beta;
     
     range_cat := RangeCategoryOfHomomorphismStructure( cat );
@@ -3583,5 +3583,5 @@ AddFinalDerivationBundle( # BasisOfExternalHom,
       return true;
       
   end,
-  Description := "Adding BasisOfExternalHom using homomorphism structure"
+  Description := "Adding BasisOfExternalHom and CoefficientsOfMorphism using homomorphism structure"
 );

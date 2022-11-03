@@ -358,33 +358,23 @@ InstallMethod( Simplify,
     
 end );
 
+##
+InstallOtherMethod( CoefficientsOfMorphismWithGivenBasisOfExternalHom,
+          [ IsCapCategory, IsCapCategoryMorphism, IsList ],
+
+  function( cat, morphism, basis )
+    
+    Display( "WARNING: CoefficientsOfMorphismWithGivenBasisOfExternalHom is deprecated and will not be supported after 2023.10.30. Please use CoefficientsOfMorphism instead!\n" );
+    
+    return CoefficientsOfMorphism( cat, morphism );
+    
+end );
 
 ##
-CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
-  rec(
-    CoefficientsOfMorphism := [
-        [ "BasisOfExternalHom", 1 ],
-        [ "CoefficientsOfMorphismWithGivenBasisOfExternalHom", 1 ],
-    ],
-  )
- );
+InstallMethod( CoefficientsOfMorphismWithGivenBasisOfExternalHom,
+          [ IsCapCategoryMorphism, IsList ],
 
-InstallMethod( CoefficientsOfMorphism,
-              [ IsCapCategoryMorphism ],
-  function( alpha )
-    
-    return CoefficientsOfMorphism( CapCategory( alpha ), alpha );
-    
-end );
-
-InstallOtherMethod( CoefficientsOfMorphism,
-              [ IsCapCategory, IsCapCategoryMorphism ],
-  function( cat, alpha )
-    
-    return CoefficientsOfMorphismWithGivenBasisOfExternalHom( cat, alpha, BasisOfExternalHom( cat, Source( alpha ), Range( alpha ) ) );
-    
-end );
-
+  { morphism, basis } -> CoefficientsOfMorphismWithGivenBasisOfExternalHom( CapCategory( morphism ), morphism, basis ) );
 
 ######################################
 ##

@@ -3446,10 +3446,10 @@ BasisOfExternalHom := rec(
   dual_arguments_reversed := true
 ),
 
-CoefficientsOfMorphismWithGivenBasisOfExternalHom := rec(
-  filter_list := [ "category", "morphism", "list_of_morphisms" ],
+CoefficientsOfMorphism := rec(
+  filter_list := [ "category", "morphism" ],
   return_type := IsList,
-  dual_operation := "CoefficientsOfMorphismWithGivenBasisOfExternalHom",
+  dual_operation := "CoefficientsOfMorphism",
   dual_postprocessor_func := IdFunc
 ),
 
