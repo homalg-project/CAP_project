@@ -1100,9 +1100,8 @@
         CoastrictionToImageWithGivenImageObject   for   IsCapCategoryMorphism,
         IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XCoefficientsOfMorphismWithGivenBasisOfExternalHom[102X                ([14XCAP:
-        CoefficientsOfMorphismWithGivenBasisOfExternalHom                  for
-        IsCapCategoryMorphism, IsList[114X)[133X
+  [30X    [33X[0;6Y[2XCoefficientsOfMorphism[102X      ([14XCAP:      CoefficientsOfMorphism      for
+        IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XCoimageObject[102X ([14XCAP: CoimageObject for IsCapCategoryMorphism[114X)[133X
   
