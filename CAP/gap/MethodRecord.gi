@@ -1617,6 +1617,20 @@ UniversalMorphismIntoEqualizerWithGivenEqualizer := rec(
   compatible_with_congruence_of_morphisms := false,
 ),
 
+IsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct := rec(
+  filter_list := [ "category", "object", "list_of_morphisms" ],
+  io_type := [ [ "A", "D" ], [ "E", "Delta" ] ],
+  return_type := "morphism",
+  dual_operation := "IsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproductToCoequalizer",
+),
+
+IsomorphismFromKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProductToEqualizer := rec(
+  filter_list := [ "category", "object", "list_of_morphisms" ],
+  io_type := [ [ "A", "D" ], [ "Delta", "E" ] ],
+  return_type := "morphism",
+  dual_operation := "IsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct",
+),
+
 FiberProduct := rec(
   filter_list := [ "category", "list_of_morphisms" ],
   dual_operation := "Pushout",
@@ -2045,6 +2059,20 @@ UniversalMorphismFromCoequalizerWithGivenCoequalizer := rec(
   return_type := "morphism",
   dual_operation := "UniversalMorphismIntoEqualizerWithGivenEqualizer",
   compatible_with_congruence_of_morphisms := false,
+),
+
+IsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct := rec(
+  filter_list := [ "category", "object", "list_of_morphisms" ],
+  io_type := [ [ "A", "D" ], [ "C", "Delta" ] ],
+  return_type := "morphism",
+  dual_operation := "IsomorphismFromKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProductToEqualizer",
+),
+
+IsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproductToCoequalizer := rec(
+  filter_list := [ "category", "object", "list_of_morphisms" ],
+  io_type := [ [ "A", "D" ], [ "Delta", "C" ] ],
+  return_type := "morphism",
+  dual_operation := "IsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct",
 ),
 
 Pushout := rec(

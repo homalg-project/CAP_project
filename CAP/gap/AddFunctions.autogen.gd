@@ -2425,6 +2425,25 @@ DeclareOperation( "AddIsomorphismFromCoequalizerOfCoproductDiagramToPushout",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `IsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct`.
+#! $F: ( A, D ) \mapsto \mathtt{IsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct}(A, D)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `IsomorphismFromCoimageToCokernelOfKernel`.
 #! $F: ( alpha ) \mapsto \mathtt{IsomorphismFromCoimageToCokernelOfKernel}(alpha)$.
 #! @Returns nothing
@@ -2458,6 +2477,25 @@ DeclareOperation( "AddIsomorphismFromCokernelOfDiagonalDifferenceToPushout",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddIsomorphismFromCokernelOfDiagonalDifferenceToPushout",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `IsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproductToCoequalizer`.
+#! $F: ( A, D ) \mapsto \mathtt{IsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproductToCoequalizer}(A, D)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproductToCoequalizer",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproductToCoequalizer",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproductToCoequalizer",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproductToCoequalizer",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -2572,6 +2610,25 @@ DeclareOperation( "AddIsomorphismFromEqualizerOfDirectProductDiagramToFiberProdu
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddIsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `IsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct`.
+#! $F: ( A, D ) \mapsto \mathtt{IsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct}(A, D)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -2724,6 +2781,25 @@ DeclareOperation( "AddIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `IsomorphismFromKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProductToEqualizer`.
+#! $F: ( A, D ) \mapsto \mathtt{IsomorphismFromKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProductToEqualizer}(A, D)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsomorphismFromKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProductToEqualizer",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProductToEqualizer",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProductToEqualizer",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProductToEqualizer",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
