@@ -37,4 +37,13 @@ precompile_CategoryOfColumns( QQxy, "CommutativeRing" );;
 precompile_CategoryOfColumns( EQQxy, "HomalgExteriorRingOverField" );;
 precompile_CategoryOfColumns( R, "ArbitraryRing" );;
 
+CategoryOfColumns( QQ )!.precompiled_functions_added;
+#! true
+CategoryOfColumns( QQxy )!.precompiled_functions_added;
+#! true
+CategoryOfColumns( EQQxy )!.precompiled_functions_added;
+#! true
+CategoryOfColumns( R )!.precompiled_functions_added;
+#! true
+
 #! @EndExample

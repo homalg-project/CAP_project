@@ -4,7 +4,7 @@
 # Implementations
 #
 InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_constructor, given_arguments, package_name, compiled_category_name )
-  local cat1, cat2, cat, transitively_needed_other_packages, operations, diff, source_attribute_getter_name, range_attribute_getter_name, output_string, package_info, parameters_string, current_string, compiled_tree, compiled_func, function_string, number_of_occurrences_in_string, weight, IsPrecompiledDerivation_string, function_name, current_rec;
+  local cat1, cat2, cat, transitively_needed_other_packages, operations, diff, source_attribute_getter_name, range_attribute_getter_name, output_string, package_info, parameters, current_string, compiled_tree, compiled_func, function_string, number_of_occurrences_in_string, weight, IsPrecompiledDerivation_string, function_name, current_rec;
     
     if IsOperation( category_constructor ) or IsKernelFunction( category_constructor ) then
         
@@ -110,8 +110,6 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         Error( "could not find package info" );
         
     fi;
-    
-    parameters_string := JoinStringsWithSeparator( NamesLocalVariablesFunction( category_constructor ){[ 1 .. NumberArgumentsFunction( category_constructor ) ]}, ", " );
     
     current_string := Concatenation(
         "# SPDX-License-Identifier: GPL-2.0-or-later\n",
@@ -284,30 +282,46 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         
     od;
     
-    current_string := Concatenation(
-        "    \n",
-        "end );\n",
-        "\n",
-        "BindGlobal( \"", compiled_category_name, "\", function ( ", parameters_string, " )\n",
-        "  local category_constructor, cat;\n",
-        "    \n",
-        "    category_constructor :=\n",
-        "        \n",
-        "        \n",
-        "        ", CapJitPrettyPrintFunction( category_constructor ), ";\n",
-        "        \n",
-        "        \n",
-        "    \n",
-        "    cat := category_constructor( ", parameters_string, " : FinalizeCategory := false, no_precompiled_code := true );\n",
-        "    \n",
-        "    ADD_FUNCTIONS_FOR_", compiled_category_name, "( cat );\n",
-        "    \n",
-        "    Finalize( cat );\n",
-        "    \n",
-        "    return cat;\n",
-        "    \n",
-        "end );\n"
-    );
+    parameters := NamesLocalVariablesFunction( category_constructor ){[ 1 .. NumberArgumentsFunction( category_constructor ) ]};
+    
+    current_string := Concatenation( "    ", ReplacedStringViaRecord( """
+    if IsBound( cat!.precompiled_functions_added ) then
+        
+        # coverage_ignore_next_line
+        Error( "precompiled functions have already been added before" );
+        
+    fi;
+    
+    cat!.precompiled_functions_added := true;
+    
+end );
+
+BindGlobal( "compiled_category_name", function ( parameters... )
+  local category_constructor, cat;
+    
+    category_constructor :=
+        
+        
+        implementation;
+        
+        
+    
+    cat := category_constructor( parameters... : FinalizeCategory := false, no_precompiled_code := true );
+    
+    ADD_FUNCTIONS_FOR_compiled_category_name( cat );
+    
+    Finalize( cat );
+    
+    return cat;
+    
+end );
+""",
+    rec(
+        compiled_category_name := compiled_category_name,
+        parameters := parameters,
+        implementation := CapJitPrettyPrintFunction( category_constructor ),
+        coverage_ignore_next_line := "COVERAGE_IGNORE_NEXT_LINE", # handled here to make COVERAGE_IGNORE_NEXT_LINE not trigger in the above string
+    ) ) );
     output_string := Concatenation( output_string, current_string );
     
     WriteFileInPackageForHomalg( package_name, Concatenation( "precompiled_categories/", compiled_category_name, ".gi" ), output_string );
