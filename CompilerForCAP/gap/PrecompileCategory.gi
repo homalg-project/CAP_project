@@ -125,6 +125,13 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
     
     for function_name in operations do
         
+        # random functions are not functional and for example inlining might produce wrong results
+        if StartsWith( function_name, "Random" ) then
+            
+            continue;
+            
+        fi;
+        
         current_rec := CAP_INTERNAL_METHOD_NAME_RECORD.(function_name);
         
         # operations/derivations returning fail usually do not fulfill the requirements that all branches of an if statement can be executed
