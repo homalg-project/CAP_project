@@ -7,6 +7,8 @@
 
 #! @Section Tools
 
+DeclareGlobalName( "CAP_JIT_INTERNAL_NAMES_OF_LOOP_FUNCTIONS" );
+
 #! @Description
 #!   Checks if <A>tree</A> is an EXPR_FUNCCALL with `funcref` EXPR_GVAR such that `gvar` fulfills <A>condition</A>.
 #!   If <A>condition</A> is a string, `gvar` must be equal to the string.

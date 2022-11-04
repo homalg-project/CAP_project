@@ -264,7 +264,7 @@ InstallGlobalFunction( CapJitExtractedExpensiveOperationsFromLoops, function ( t
             
             if CapJitIsCallToGlobalFunction( tree, gvar -> true ) then
                 
-                if tree.funcref.gvar in [ "List", "Sum", "Product", "ForAll", "ForAny", "Number", "Filtered", "First", "Last" ] and tree.args.length = 2 and tree.args.2.type = "EXPR_DECLARATIVE_FUNC" then
+                if tree.funcref.gvar in CAP_JIT_INTERNAL_NAMES_OF_LOOP_FUNCTIONS and tree.args.length = 2 and tree.args.2.type = "EXPR_DECLARATIVE_FUNC" then
                     
                     Assert( 0, tree.args.2.narg = 1 );
                     

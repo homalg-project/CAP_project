@@ -6,6 +6,9 @@
 BindGlobal( "CAP_JIT_INTERNAL_FUNCTION_ID", 1 );
 MakeReadWriteGlobal( "CAP_JIT_INTERNAL_FUNCTION_ID" );
 
+# names of functions which accept a domain and a function which is applied to elements of the domain
+BindGlobal( "CAP_JIT_INTERNAL_NAMES_OF_LOOP_FUNCTIONS", [ "List", "Sum", "Product", "ForAll", "ForAny", "Number", "Filtered", "First", "Last" ] );
+
 InstallGlobalFunction( CapJitIsCallToGlobalFunction, function ( tree, condition )
   local condition_func;
     
