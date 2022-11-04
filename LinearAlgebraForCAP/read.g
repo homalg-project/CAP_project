@@ -16,5 +16,3 @@ if IsPackageMarkedForLoading( "FreydCategoriesForCAP", ">= 2022.10-14" ) then
     ReadPackage( "LinearAlgebraForCAP", "gap/MatrixCategoryAsCategoryOfRows.gi" );
     
 fi;
-
-ReadPackage( "LinearAlgebraForCAP", "gap/DerivedMethodsForMatrixCategories.gi" );
