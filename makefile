@@ -125,56 +125,56 @@ test_ToricSheaves:
 ########################################
 ci-test: homalg_compatibility doc ci-test_CAP ci-test_ActionsForCAP ci-test_AttributeCategoryForCAP ci-test_CartesianCategories ci-test_CompilerForCAP ci-test_ComplexesAndFilteredObjectsForCAP ci-test_DeductiveSystemForCAP ci-test_FreydCategoriesForCAP ci-test_GeneralizedMorphismsForCAP ci-test_GradedModulePresentationsForCAP ci-test_GroupRepresentationsForCAP ci-test_HomologicalAlgebraForCAP ci-test_InternalExteriorAlgebraForCAP ci-test_LinearAlgebraForCAP ci-test_ModulePresentationsForCAP ci-test_ModulesOverLocalRingsForCAP ci-test_MonoidalCategories ci-test_ToricSheaves
 
-ci-test_CAP:
+ci-test_CAP: doc
 	$(MAKE) -C CAP ci-test
 
-ci-test_ActionsForCAP:
+ci-test_ActionsForCAP: doc
 	$(MAKE) -C ActionsForCAP ci-test
 
-ci-test_AttributeCategoryForCAP:
+ci-test_AttributeCategoryForCAP: doc
 	$(MAKE) -C AttributeCategoryForCAP ci-test
 
-ci-test_CartesianCategories:
+ci-test_CartesianCategories: doc
 	$(MAKE) -C CartesianCategories ci-test
 
-ci-test_CompilerForCAP:
+ci-test_CompilerForCAP: doc
 	$(MAKE) -C CompilerForCAP ci-test
 
-ci-test_ComplexesAndFilteredObjectsForCAP:
+ci-test_ComplexesAndFilteredObjectsForCAP: doc
 	$(MAKE) -C ComplexesAndFilteredObjectsForCAP ci-test
 
-ci-test_DeductiveSystemForCAP:
+ci-test_DeductiveSystemForCAP: doc
 	$(MAKE) -C DeductiveSystemForCAP ci-test
 
-ci-test_FreydCategoriesForCAP:
+ci-test_FreydCategoriesForCAP: doc
 	$(MAKE) -C FreydCategoriesForCAP ci-test
 
-ci-test_GeneralizedMorphismsForCAP:
+ci-test_GeneralizedMorphismsForCAP: doc
 	$(MAKE) -C GeneralizedMorphismsForCAP ci-test
 
-ci-test_GradedModulePresentationsForCAP:
+ci-test_GradedModulePresentationsForCAP: doc
 	$(MAKE) -C GradedModulePresentationsForCAP ci-test
 
-ci-test_GroupRepresentationsForCAP:
+ci-test_GroupRepresentationsForCAP: doc
 	$(MAKE) -C GroupRepresentationsForCAP ci-test
 
-ci-test_HomologicalAlgebraForCAP:
+ci-test_HomologicalAlgebraForCAP: doc
 	$(MAKE) -C HomologicalAlgebraForCAP ci-test
 
-ci-test_InternalExteriorAlgebraForCAP:
+ci-test_InternalExteriorAlgebraForCAP: doc
 	$(MAKE) -C InternalExteriorAlgebraForCAP ci-test
 
-ci-test_LinearAlgebraForCAP:
+ci-test_LinearAlgebraForCAP: doc
 	$(MAKE) -C LinearAlgebraForCAP ci-test
 
-ci-test_ModulePresentationsForCAP:
+ci-test_ModulePresentationsForCAP: doc
 	$(MAKE) -C ModulePresentationsForCAP ci-test
 
-ci-test_ModulesOverLocalRingsForCAP:
+ci-test_ModulesOverLocalRingsForCAP: doc
 	$(MAKE) -C ModulesOverLocalRingsForCAP ci-test
 
-ci-test_MonoidalCategories:
+ci-test_MonoidalCategories: doc
 	$(MAKE) -C MonoidalCategories ci-test
 
-ci-test_ToricSheaves:
+ci-test_ToricSheaves: doc
 	$(MAKE) -C ToricSheaves ci-test
