@@ -120,12 +120,8 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MatrixCategoryPrecompiled( QQ );</span>
 Category of matrices over Q
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># check that the compiled code is loaded automatically</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput"># for this, we use the name of the argument of `ZeroObject`:</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput"># for non-compiled code it is "cat", while for compiled code it is "cat_1"</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">cat := MatrixCategory( QQ );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NamesLocalVariablesFunction( Last( cat!.added_functions.ZeroObject )[1] )[1];</span>
-"cat_1"
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MatrixCategory( QQ )!.precompiled_functions_added;</span>
+true
 </pre></div>
 
 <p><a id="X7A810CDA83F2897F" name="X7A810CDA83F2897F"></a></p>
@@ -499,6 +495,14 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfColumns( QQxy, "CommutativeRing" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfColumns( EQQxy, "HomalgExteriorRingOverField" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfColumns( R, "ArbitraryRing" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CategoryOfColumns( QQ )!.precompiled_functions_added;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CategoryOfColumns( QQxy )!.precompiled_functions_added;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CategoryOfColumns( EQQxy )!.precompiled_functions_added;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CategoryOfColumns( R )!.precompiled_functions_added;</span>
+true
 </pre></div>
 
 
@@ -556,6 +560,14 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfRows(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    R, "ArbitraryRing", [ ]</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CategoryOfRows( QQ )!.precompiled_functions_added;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CategoryOfRows( QQxy )!.precompiled_functions_added;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CategoryOfRows( EQQxy )!.precompiled_functions_added;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CategoryOfRows( R )!.precompiled_functions_added;</span>
+true
 </pre></div>
 
 
@@ -615,6 +627,8 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_objects_in_data_structure_of_morphism := 2,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_morphisms_in_data_structure_of_morphism := 1</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoFreydCategory( dummy )!.precompiled_functions_added;</span>
+true
 </pre></div>
 
 
@@ -725,34 +739,21 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_RightPresentations(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    EEE, "ArbitraryRing", operations_for_arbitrary_ring</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># check that the compiled code is loaded automatically</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput"># for this, we use the name of the argument of `ZeroObject`:</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput"># for non-compiled code it is "cat", while for compiled code it is "cat_1"</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LeftPresentations( QQ )!.precompiled_functions_added;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LeftPresentations( QQxy )!.precompiled_functions_added;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LeftPresentations( EEE )!.precompiled_functions_added;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RightPresentations( QQ )!.precompiled_functions_added;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RightPresentations( QQxy )!.precompiled_functions_added;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RightPresentations( EEE )!.precompiled_functions_added;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># put the letter 'V' here to work around</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># https://github.com/frankluebeck/GAPDoc/pull/61</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput"></span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">cat := LeftPresentations( QQ );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NamesLocalVariablesFunction( Last( cat!.added_functions.ZeroObject )[1] )[1]</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    = "cat_1";</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat := LeftPresentations( QQxy );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NamesLocalVariablesFunction( Last( cat!.added_functions.ZeroObject )[1] )[1]</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    = "cat_1";</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat := LeftPresentations( EEE );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NamesLocalVariablesFunction( Last( cat!.added_functions.ZeroObject )[1] )[1]</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    = "cat_1";</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat := RightPresentations( QQ );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NamesLocalVariablesFunction( Last( cat!.added_functions.ZeroObject )[1] )[1]</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    = "cat_1";</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat := RightPresentations( QQxy );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NamesLocalVariablesFunction( Last( cat!.added_functions.ZeroObject )[1] )[1]</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    = "cat_1";</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat := RightPresentations( EEE );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NamesLocalVariablesFunction( Last( cat!.added_functions.ZeroObject )[1] )[1]</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    = "cat_1";</span>
-true
 </pre></div>
 
 

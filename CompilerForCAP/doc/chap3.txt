@@ -86,12 +86,8 @@
     [4X[25X>[125X [27X);;[127X[104X
     [4X[25Xgap>[125X [27XMatrixCategoryPrecompiled( QQ );[127X[104X
     [4X[28XCategory of matrices over Q[128X[104X
-    [4X[25Xgap>[125X [27X# check that the compiled code is loaded automatically[127X[104X
-    [4X[25X>[125X [27X# for this, we use the name of the argument of `ZeroObject`:[127X[104X
-    [4X[25X>[125X [27X# for non-compiled code it is "cat", while for compiled code it is "cat_1"[127X[104X
-    [4X[25X>[125X [27Xcat := MatrixCategory( QQ );;[127X[104X
-    [4X[25Xgap>[125X [27XNamesLocalVariablesFunction( Last( cat!.added_functions.ZeroObject )[1] )[1];[127X[104X
-    [4X[28X"cat_1"[128X[104X
+    [4X[25Xgap>[125X [27XMatrixCategory( QQ )!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
   
@@ -460,6 +456,14 @@
     [4X[25Xgap>[125X [27Xprecompile_CategoryOfColumns( QQxy, "CommutativeRing" );;[127X[104X
     [4X[25Xgap>[125X [27Xprecompile_CategoryOfColumns( EQQxy, "HomalgExteriorRingOverField" );;[127X[104X
     [4X[25Xgap>[125X [27Xprecompile_CategoryOfColumns( R, "ArbitraryRing" );;[127X[104X
+    [4X[25Xgap>[125X [27XCategoryOfColumns( QQ )!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCategoryOfColumns( QQxy )!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCategoryOfColumns( EQQxy )!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCategoryOfColumns( R )!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -516,6 +520,14 @@
     [4X[25Xgap>[125X [27Xprecompile_CategoryOfRows([127X[104X
     [4X[25X>[125X [27X    R, "ArbitraryRing", [ ][127X[104X
     [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27XCategoryOfRows( QQ )!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCategoryOfRows( QQxy )!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCategoryOfRows( EQQxy )!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCategoryOfRows( R )!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -574,6 +586,8 @@
     [4X[25X>[125X [27X    number_of_objectified_objects_in_data_structure_of_morphism := 2,[127X[104X
     [4X[25X>[125X [27X    number_of_objectified_morphisms_in_data_structure_of_morphism := 1[127X[104X
     [4X[25X>[125X [27X);[127X[104X
+    [4X[25Xgap>[125X [27XCoFreydCategory( dummy )!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -683,34 +697,21 @@
     [4X[25Xgap>[125X [27Xprecompile_RightPresentations([127X[104X
     [4X[25X>[125X [27X    EEE, "ArbitraryRing", operations_for_arbitrary_ring[127X[104X
     [4X[25X>[125X [27X);;[127X[104X
-    [4X[25Xgap>[125X [27X# check that the compiled code is loaded automatically[127X[104X
-    [4X[25X>[125X [27X# for this, we use the name of the argument of `ZeroObject`:[127X[104X
-    [4X[25X>[125X [27X# for non-compiled code it is "cat", while for compiled code it is "cat_1"[127X[104X
+    [4X[25Xgap>[125X [27XLeftPresentations( QQ )!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLeftPresentations( QQxy )!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLeftPresentations( EEE )!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XRightPresentations( QQ )!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XRightPresentations( QQxy )!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XRightPresentations( EEE )!.precompiled_functions_added;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# put the letter 'V' here to work around[127X[104X
+    [4X[25X>[125X [27X# https://github.com/frankluebeck/GAPDoc/pull/61[127X[104X
     [4X[25X>[125X [27X[127X[104X
-    [4X[25X>[125X [27Xcat := LeftPresentations( QQ );;[127X[104X
-    [4X[25Xgap>[125X [27XNamesLocalVariablesFunction( Last( cat!.added_functions.ZeroObject )[1] )[1][127X[104X
-    [4X[25X>[125X [27X    = "cat_1";[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xcat := LeftPresentations( QQxy );;[127X[104X
-    [4X[25Xgap>[125X [27XNamesLocalVariablesFunction( Last( cat!.added_functions.ZeroObject )[1] )[1][127X[104X
-    [4X[25X>[125X [27X    = "cat_1";[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xcat := LeftPresentations( EEE );;[127X[104X
-    [4X[25Xgap>[125X [27XNamesLocalVariablesFunction( Last( cat!.added_functions.ZeroObject )[1] )[1][127X[104X
-    [4X[25X>[125X [27X    = "cat_1";[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xcat := RightPresentations( QQ );;[127X[104X
-    [4X[25Xgap>[125X [27XNamesLocalVariablesFunction( Last( cat!.added_functions.ZeroObject )[1] )[1][127X[104X
-    [4X[25X>[125X [27X    = "cat_1";[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xcat := RightPresentations( QQxy );;[127X[104X
-    [4X[25Xgap>[125X [27XNamesLocalVariablesFunction( Last( cat!.added_functions.ZeroObject )[1] )[1][127X[104X
-    [4X[25X>[125X [27X    = "cat_1";[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xcat := RightPresentations( EEE );;[127X[104X
-    [4X[25Xgap>[125X [27XNamesLocalVariablesFunction( Last( cat!.added_functions.ZeroObject )[1] )[1][127X[104X
-    [4X[25X>[125X [27X    = "cat_1";[127X[104X
-    [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
