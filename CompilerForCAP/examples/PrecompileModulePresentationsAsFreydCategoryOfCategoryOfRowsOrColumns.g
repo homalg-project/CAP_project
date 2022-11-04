@@ -120,39 +120,25 @@ precompile_RightPresentations(
 );;
 
 
-# check that the compiled code is loaded automatically
-# for this, we use the name of the argument of `ZeroObject`:
-# for non-compiled code it is "cat", while for compiled code it is "cat_1"
-
-cat := LeftPresentations( QQ );;
-NamesLocalVariablesFunction( Last( cat!.added_functions.ZeroObject )[1] )[1]
-    = "cat_1";
+LeftPresentations( QQ )!.precompiled_functions_added;
 #! true
 
-cat := LeftPresentations( QQxy );;
-NamesLocalVariablesFunction( Last( cat!.added_functions.ZeroObject )[1] )[1]
-    = "cat_1";
+LeftPresentations( QQxy )!.precompiled_functions_added;
 #! true
 
-cat := LeftPresentations( EEE );;
-NamesLocalVariablesFunction( Last( cat!.added_functions.ZeroObject )[1] )[1]
-    = "cat_1";
+LeftPresentations( EEE )!.precompiled_functions_added;
 #! true
 
-cat := RightPresentations( QQ );;
-NamesLocalVariablesFunction( Last( cat!.added_functions.ZeroObject )[1] )[1]
-    = "cat_1";
+RightPresentations( QQ )!.precompiled_functions_added;
 #! true
 
-cat := RightPresentations( QQxy );;
-NamesLocalVariablesFunction( Last( cat!.added_functions.ZeroObject )[1] )[1]
-    = "cat_1";
+RightPresentations( QQxy )!.precompiled_functions_added;
 #! true
 
-cat := RightPresentations( EEE );;
-NamesLocalVariablesFunction( Last( cat!.added_functions.ZeroObject )[1] )[1]
-    = "cat_1";
+RightPresentations( EEE )!.precompiled_functions_added;
 #! true
 
+# put the letter 'V' here to work around
+# https://github.com/frankluebeck/GAPDoc/pull/61
 
 #! @EndExample

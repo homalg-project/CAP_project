@@ -63,4 +63,7 @@ CapJitPrecompileCategoryAndCompareResult(
     number_of_objectified_morphisms_in_data_structure_of_morphism := 1
 );
 
+CoFreydCategory( dummy )!.precompiled_functions_added;
+#! true
+
 #! @EndExample

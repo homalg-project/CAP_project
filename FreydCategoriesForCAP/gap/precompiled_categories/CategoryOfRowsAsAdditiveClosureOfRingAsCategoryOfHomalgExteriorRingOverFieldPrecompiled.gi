@@ -98,6 +98,15 @@ end
         
     , 100 );
     
+    if IsBound( cat!.precompiled_functions_added ) then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "precompiled functions have already been added before" );
+        
+    fi;
+    
+    cat!.precompiled_functions_added := true;
+    
 end );
 
 BindGlobal( "CategoryOfRowsAsAdditiveClosureOfRingAsCategoryOfHomalgExteriorRingOverFieldPrecompiled", function ( homalg_ring )

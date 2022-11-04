@@ -33,11 +33,7 @@ CapJitPrecompileCategoryAndCompareResult(
 MatrixCategoryPrecompiled( QQ );
 #! Category of matrices over Q
 
-# check that the compiled code is loaded automatically
-# for this, we use the name of the argument of `ZeroObject`:
-# for non-compiled code it is "cat", while for compiled code it is "cat_1"
-cat := MatrixCategory( QQ );;
-NamesLocalVariablesFunction( Last( cat!.added_functions.ZeroObject )[1] )[1];
-#! "cat_1"
+MatrixCategory( QQ )!.precompiled_functions_added;
+#! true
 
 #! @EndExample

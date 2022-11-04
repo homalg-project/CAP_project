@@ -4670,81 +4670,6 @@ end
     , 8539 : IsPrecompiledDerivation := true );
     
     ##
-    AddRandomMorphismByInteger( cat,
-        
-########
-function ( cat_1, n_1 )
-    local morphism_attr_1_1, hoisted_2_1, deduped_3_1;
-    deduped_3_1 := Random( [ 0 .. n_1 ] );
-    hoisted_2_1 := RandomMatrix( deduped_3_1, deduped_3_1, UnderlyingRing( cat_1 ) );
-    morphism_attr_1_1 := Sum( [ 1 ], function ( c_2 )
-            return c_2 * hoisted_2_1;
-        end );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
-end
-########
-        
-    , 301 : IsPrecompiledDerivation := true );
-    
-    ##
-    AddRandomMorphismWithFixedRangeByInteger( cat,
-        
-########
-function ( cat_1, B_1, n_1 )
-    local morphism_attr_1_1, hoisted_2_1;
-    hoisted_2_1 := RandomMatrix( Random( [ 0 .. n_1 ] ), Dimension( B_1 ), UnderlyingRing( cat_1 ) );
-    morphism_attr_1_1 := Sum( [ 1 ], function ( c_2 )
-            return c_2 * hoisted_2_1;
-        end );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), B_1, UnderlyingMatrix, morphism_attr_1_1 );
-end
-########
-        
-    , 201 : IsPrecompiledDerivation := true );
-    
-    ##
-    AddRandomMorphismWithFixedSourceAndRangeByInteger( cat,
-        
-########
-function ( cat_1, A_1, B_1, n_1 )
-    local hoisted_1_1;
-    hoisted_1_1 := RandomMatrix( Dimension( A_1 ), Dimension( B_1 ), UnderlyingRing( cat_1 ) );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, A_1, B_1, UnderlyingMatrix, Sum( [ 1 ], function ( c_2 )
-              return c_2 * hoisted_1_1;
-          end ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddRandomMorphismWithFixedSourceByInteger( cat,
-        
-########
-function ( cat_1, A_1, n_1 )
-    local morphism_attr_1_1, hoisted_2_1;
-    hoisted_2_1 := RandomMatrix( Dimension( A_1 ), Random( [ 0 .. n_1 ] ), UnderlyingRing( cat_1 ) );
-    morphism_attr_1_1 := Sum( [ 1 ], function ( c_2 )
-            return c_2 * hoisted_2_1;
-        end );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, A_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
-end
-########
-        
-    , 201 : IsPrecompiledDerivation := true );
-    
-    ##
-    AddRandomObjectByInteger( cat,
-        
-########
-function ( cat_1, n_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, Random( [ 0 .. n_1 ] ) );
-end
-########
-        
-    , 100 );
-    
-    ##
     AddRankMorphism( cat,
         
 ########
@@ -6171,6 +6096,15 @@ end
 ########
         
     , 101 : IsPrecompiledDerivation := true );
+    
+    if IsBound( cat!.precompiled_functions_added ) then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "precompiled functions have already been added before" );
+        
+    fi;
+    
+    cat!.precompiled_functions_added := true;
     
 end );
 

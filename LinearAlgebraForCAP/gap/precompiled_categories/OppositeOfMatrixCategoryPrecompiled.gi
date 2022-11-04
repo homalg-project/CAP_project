@@ -720,35 +720,6 @@ end
     , 100 );
     
     ##
-    AddRandomMorphismWithFixedSourceAndRangeByInteger( cat,
-        
-########
-function ( cat_1, A_1, B_1, n_1 )
-    local hoisted_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
-    deduped_4_1 := Opposite( A_1 );
-    deduped_3_1 := Opposite( B_1 );
-    deduped_2_1 := OppositeCategory( cat_1 );
-    hoisted_1_1 := RandomMatrix( Dimension( deduped_3_1 ), Dimension( deduped_4_1 ), UnderlyingRing( deduped_2_1 ) );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, A_1, B_1, Opposite, CreateCapCategoryMorphismWithAttributes( deduped_2_1, deduped_3_1, deduped_4_1, UnderlyingMatrix, Sum( [ 1 ], function ( c_2 )
-                return c_2 * hoisted_1_1;
-            end ) ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddRandomObjectByInteger( cat,
-        
-########
-function ( cat_1, n_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, Opposite, CreateCapCategoryObjectWithAttributes( OppositeCategory( cat_1 ), Dimension, Random( [ 0 .. n_1 ] ) ) );
-end
-########
-        
-    , 100 );
-    
-    ##
     AddSimplifyRange( cat,
         
 ########
@@ -1063,6 +1034,15 @@ end
 ########
         
     , 100 );
+    
+    if IsBound( cat!.precompiled_functions_added ) then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "precompiled functions have already been added before" );
+        
+    fi;
+    
+    cat!.precompiled_functions_added := true;
     
 end );
 
