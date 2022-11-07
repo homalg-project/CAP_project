@@ -4390,6 +4390,19 @@ end
     , 102 : IsPrecompiledDerivation := true );
     
     ##
+    AddPostInverseForMorphisms( cat,
+        
+########
+function ( cat_1, alpha_1 )
+    local deduped_1_1;
+    deduped_1_1 := Source( alpha_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Range( alpha_1 ), deduped_1_1, UnderlyingMatrix, LeftDivide( UnderlyingMatrix( alpha_1 ), HomalgIdentityMatrix( Dimension( deduped_1_1 ), UnderlyingRing( cat_1 ) ) ) );
+end
+########
+        
+    , 201 : IsPrecompiledDerivation := true );
+    
+    ##
     AddPreCompose( cat,
         
 ########
@@ -4414,6 +4427,19 @@ end
 ########
         
     , 101 : IsPrecompiledDerivation := true );
+    
+    ##
+    AddPreInverseForMorphisms( cat,
+        
+########
+function ( cat_1, alpha_1 )
+    local deduped_1_1;
+    deduped_1_1 := Range( alpha_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_1_1, Source( alpha_1 ), UnderlyingMatrix, RightDivide( HomalgIdentityMatrix( Dimension( deduped_1_1 ), UnderlyingRing( cat_1 ) ), UnderlyingMatrix( alpha_1 ) ) );
+end
+########
+        
+    , 201 : IsPrecompiledDerivation := true );
     
     ##
     AddProjectionInFactorOfDirectProduct( cat,

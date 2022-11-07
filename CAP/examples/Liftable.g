@@ -23,4 +23,8 @@ IsColiftable( gamma, beta );
 #! false
 IsColiftableAlongEpimorphism( beta, gamma );
 #! true
+PreCompose( PreInverseForMorphisms( gamma ), gamma ) = IdentityMorphism( V );
+#! true
+PreCompose( alpha, PostInverseForMorphisms( alpha ) ) = IdentityMorphism( V );
+#! true
 #! @EndExample

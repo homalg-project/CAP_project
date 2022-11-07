@@ -886,6 +886,26 @@ DeclareOperation( "IsColiftable",
 DeclareOperation( "InverseForMorphisms",
                   [ IsCapCategoryMorphism ] );
 
+#! @Description
+#! The argument is a split-epimorphism $\alpha: a \rightarrow b$.
+#! The output is a pre-inverse $\iota: b \rightarrow a$ of $\alpha$,
+#! i.e., $\iota$ satisfies $\alpha \circ \iota \sim_{b,b} \mathrm{id}_b$.
+#! The morphism $\iota$ is also known as a section or a right-inverse of $\alpha$.
+#! @Returns a morphism in $\mathrm{Hom}(b,a)$
+#! @Arguments alpha
+DeclareOperation( "PreInverseForMorphisms",
+                  [ IsCapCategoryMorphism ] );
+
+#! @Description
+#! The argument is a split-monomorphism $\alpha: a \rightarrow b$.
+#! The output is a post-inverse $\pi: b \rightarrow a$ of $\alpha$,
+#! i.e., $\pi$ satisfies $\pi \circ \alpha \sim_{a,a} \mathrm{id}_a$.
+#! The morphism $\pi$ is also known as a contraction or a left-inverse of $\alpha$.
+#! @Returns a morphism in $\mathrm{Hom}(b,a)$
+#! @Arguments alpha
+DeclareOperation( "PostInverseForMorphisms",
+                  [ IsCapCategoryMorphism ] );
+
 ###################################
 ##
 #! @Section Tool functions for caches
