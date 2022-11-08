@@ -170,8 +170,8 @@ DeclareProperty( "IsIdempotent",
 #! @Description
 #! The arguments are an object $a$ in a category $C$ and an integer $n$.
 #! The output is a random morphism $\alpha: a \rightarrow b$ for some object $b$ in $C$.
-#! If $C$ is equipped with the methods <C>RandomObjectByInteger</C> and <C>RandomMorphismWithFixedSourceAndRangeByInteger</C>,
-#! then <C>RandomMorphismWithFixedSourceByInteger</C>$(C,a,n)$ can be derived as
+#! If $C$ is equipped with the methods <C>RandomObjectByInteger</C> and <C>RandomMorphismWithFixedSourceAndRangeByInteger</C>
+#! and $C$ is an Ab-category, then <C>RandomMorphismWithFixedSourceByInteger</C>$(C,a,n)$ can be derived as
 #! <C>RandomMorphismWithFixedSourceAndRangeByInteger</C>($C$,$a$,$b$,$1$+<C>Log2Int</C>($n$)) where
 #! $b$ is computed via <C>RandomObjectByInteger</C>($C$,$n$).
 #! @Returns a morphism in $\mathrm{Hom}(a,b)$
@@ -182,6 +182,10 @@ DeclareOperation( "RandomMorphismWithFixedSourceByInteger",
 #! @Description
 #! The arguments are an object $a$ in a category $C$ and a list $L$.
 #! The output is a random morphism $\alpha: a \rightarrow b$ for some object $b$ in $C$.
+#! If $C$ is equipped with the methods <C>RandomObjectByList</C> and <C>RandomMorphismWithFixedSourceAndRangeByList</C>
+#! and $C$ is an Ab-category, then <C>RandomMorphismWithFixedSourceByList</C>$(C,a,L)$ can be derived as
+#! <C>RandomMorphismWithFixedSourceAndRangeByList</C>($C,a,b,L[2]$) where
+#! $b$ is computed via <C>RandomObjectByList</C>($C,L[1]$).
 #! @Returns a morphism in $\mathrm{Hom}(a,b)$
 #! @Arguments a, L
 DeclareOperation( "RandomMorphismWithFixedSourceByList",
@@ -190,8 +194,8 @@ DeclareOperation( "RandomMorphismWithFixedSourceByList",
 #! @Description
 #! The arguments are an object $b$ in a category $C$ and an integer $n$.
 #! The output is a random morphism $\alpha: a \rightarrow b$ for some object $a$ in $C$.
-#! If $C$ is equipped with the methods <C>RandomObjectByInteger</C> and <C>RandomMorphismWithFixedSourceAndRangeByInteger</C>,
-#! then <C>RandomMorphismWithFixedRangeByInteger</C>$(C,b,n)$ can be derived as
+#! If $C$ is equipped with the methods <C>RandomObjectByInteger</C> and <C>RandomMorphismWithFixedSourceAndRangeByInteger</C>
+#! and $C$ is an Ab-category, then <C>RandomMorphismWithFixedRangeByInteger</C>$(C,b,n)$ can be derived as
 #! <C>RandomMorphismWithFixedSourceAndRangeByInteger</C>($C$,$a$,$b$,$1$+<C>Log2Int</C>($n$)) where
 #! $a$ is computed via <C>RandomObjectByInteger</C>($C$,$n$).
 #! @Returns a morphism in $\mathrm{Hom}(a,b)$
@@ -202,6 +206,10 @@ DeclareOperation( "RandomMorphismWithFixedRangeByInteger",
 #! @Description
 #! The arguments are an object $b$ in a category $C$ and a list $L$.
 #! The output is a random morphism $\alpha: a \rightarrow b$ for some object $a$ in $C$.
+#! If $C$ is equipped with the methods <C>RandomObjectByList</C> and <C>RandomMorphismWithFixedSourceAndRangeByList</C>
+#! and $C$ is an Ab-category, then <C>RandomMorphismWithFixedRangeByList</C>$(C,b,L)$ can be derived as
+#! <C>RandomMorphismWithFixedSourceAndRangeByList</C>($C,a,b,L[2]$) where
+#! $a$ is computed via <C>RandomObjectByList</C>($C,L[1]$).
 #! @Returns a morphism in $\mathrm{Hom}(a,b)$
 #! @Arguments b, L
 DeclareOperation( "RandomMorphismWithFixedRangeByList",
@@ -228,8 +236,8 @@ DeclareOperation( "RandomMorphismWithFixedSourceAndRangeByList",
 #! The arguments are a category $C$ and an integer $n$.
 #! The output is a random morphism in $C$.
 #! The operation can be derived in three different ways:
-#! - If $C$ is equipped with the methods <C>RandomObjectByInteger</C> and <C>RandomMorphismWithFixedSourceAndRangeByInteger</C>,
-#!   then <C>RandomMorphism</C>$(C,n)$ can be derived as
+#! - If $C$ is equipped with the methods <C>RandomObjectByInteger</C> and <C>RandomMorphismWithFixedSourceAndRangeByInteger</C>
+#!   and $C$ is an Ab-category, then <C>RandomMorphism</C>$(C,n)$ can be derived as
 #!   <C>RandomMorphismWithFixedSourceAndRangeByInteger</C>($C,a,b$,$1$+<C>Log2Int</C>($n$)) where
 #!   $a$ and $b$ are computed via <C>RandomObjectByInteger</C>($C,n$).
 #! - If $C$ is equipped with the methods <C>RandomObjectByInteger</C> and <C>RandomMorphismWithFixedSourceByInteger</C>,
@@ -248,6 +256,19 @@ DeclareOperation( "RandomMorphismByInteger",
 #! @Description
 #! The arguments are a category $C$ and a list $L$.
 #! The output is a random morphism in $C$.
+#! The operation can be derived in three different ways:
+#! - If $C$ is equipped with the methods <C>RandomObjectByList</C> and <C>RandomMorphismWithFixedSourceAndRangeByList</C>
+#!   and $C$ is an Ab-category, then <C>RandomMorphism</C>$(C,L)$ can be derived as
+#!   <C>RandomMorphismWithFixedSourceAndRangeByList</C>($C,a,b,L[3]$)) where
+#!   $a$ and $b$ are computed via <C>RandomObjectByList</C>($C,L[i]$) for $i=1,2$ respectively.
+#! - If $C$ is equipped with the methods <C>RandomObjectByList</C> and <C>RandomMorphismWithFixedSourceByList</C>,
+#!   then <C>RandomMorphism</C>$(C,L)$ can be derived as
+#!   <C>RandomMorphismWithFixedSourceByList</C>($C,a,L[2]$) where
+#!   $a$ is computed via <C>RandomObjectByList</C>($C,L[1]$).
+#! - If $C$ is equipped with the methods <C>RandomObjectByList</C> and <C>RandomMorphismWithFixedRangeByList</C>,
+#!   then <C>RandomMorphism</C>$(C,L)$ can be derived as
+#!   <C>RandomMorphismWithFixedRangeByList</C>($C,b,L[2]$) where
+#!   $b$ is computed via <C>RandomObjectByList</C>($C,L[1]$).
 #! @Returns a morphism in $C$
 #! @Arguments C, L
 DeclareOperation( "RandomMorphismByList",
