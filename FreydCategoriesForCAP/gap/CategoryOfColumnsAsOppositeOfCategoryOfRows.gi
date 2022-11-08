@@ -17,7 +17,7 @@ InstallMethod( CategoryOfColumnsAsOppositeOfCategoryOfRows,
   function( homalg_ring )
     local rows, op, object_constructor, modeling_tower_object_constructor, object_datum, modeling_tower_object_datum, morphism_constructor, modeling_tower_morphism_datum, morphism_datum, modeling_tower_morphism_constructor, category_object_filter, wrapper;
     
-    rows := CategoryOfRows( homalg_ring : FinalizeCategory := true, no_precompiled_code := false ); # we do not want to recompile CategoryOfRows
+    rows := CategoryOfRows( homalg_ring : FinalizeCategory := true );
     
     op := Opposite( rows : only_primitive_operations := true, FinalizeCategory := true );
     

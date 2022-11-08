@@ -23,21 +23,21 @@ shasum -a 256 -c codecov.SHA256SUM
 
 # execute
 chmod +x codecov
-./codecov -Z -F CAP || ./codecov -Z -F CAP || ./codecov -Z -F CAP
-./codecov -Z -F ActionsForCAP || ./codecov -Z -F ActionsForCAP || ./codecov -Z -F ActionsForCAP
-./codecov -Z -F AttributeCategoryForCAP || ./codecov -Z -F AttributeCategoryForCAP || ./codecov -Z -F AttributeCategoryForCAP
-./codecov -Z -F CartesianCategories || ./codecov -Z -F CartesianCategories || ./codecov -Z -F CartesianCategories
-./codecov -Z -F CompilerForCAP || ./codecov -Z -F CompilerForCAP || ./codecov -Z -F CompilerForCAP
-./codecov -Z -F ComplexesAndFilteredObjectsForCAP || ./codecov -Z -F ComplexesAndFilteredObjectsForCAP || ./codecov -Z -F ComplexesAndFilteredObjectsForCAP
-./codecov -Z -F DeductiveSystemForCAP || ./codecov -Z -F DeductiveSystemForCAP || ./codecov -Z -F DeductiveSystemForCAP
-./codecov -Z -F FreydCategoriesForCAP || ./codecov -Z -F FreydCategoriesForCAP || ./codecov -Z -F FreydCategoriesForCAP
-./codecov -Z -F GeneralizedMorphismsForCAP || ./codecov -Z -F GeneralizedMorphismsForCAP || ./codecov -Z -F GeneralizedMorphismsForCAP
-./codecov -Z -F GradedModulePresentationsForCAP || ./codecov -Z -F GradedModulePresentationsForCAP || ./codecov -Z -F GradedModulePresentationsForCAP
-./codecov -Z -F GroupRepresentationsForCAP || ./codecov -Z -F GroupRepresentationsForCAP || ./codecov -Z -F GroupRepresentationsForCAP
-./codecov -Z -F HomologicalAlgebraForCAP || ./codecov -Z -F HomologicalAlgebraForCAP || ./codecov -Z -F HomologicalAlgebraForCAP
-./codecov -Z -F InternalExteriorAlgebraForCAP || ./codecov -Z -F InternalExteriorAlgebraForCAP || ./codecov -Z -F InternalExteriorAlgebraForCAP
-./codecov -Z -F LinearAlgebraForCAP || ./codecov -Z -F LinearAlgebraForCAP || ./codecov -Z -F LinearAlgebraForCAP
-./codecov -Z -F ModulePresentationsForCAP || ./codecov -Z -F ModulePresentationsForCAP || ./codecov -Z -F ModulePresentationsForCAP
-./codecov -Z -F ModulesOverLocalRingsForCAP || ./codecov -Z -F ModulesOverLocalRingsForCAP || ./codecov -Z -F ModulesOverLocalRingsForCAP
-./codecov -Z -F MonoidalCategories || ./codecov -Z -F MonoidalCategories || ./codecov -Z -F MonoidalCategories
-./codecov -Z -F ToricSheaves || ./codecov -Z -F ToricSheaves || ./codecov -Z -F ToricSheaves
+./codecov -Z -v -s ../ -F CAP || (sleep 30; ./codecov -Z -v -s ../ -F CAP || (sleep 30; ./codecov -Z -v -s ../ -F CAP))
+./codecov -Z -v -s ../ -F ActionsForCAP || (sleep 30; ./codecov -Z -v -s ../ -F ActionsForCAP || (sleep 30; ./codecov -Z -v -s ../ -F ActionsForCAP))
+./codecov -Z -v -s ../ -F AttributeCategoryForCAP || (sleep 30; ./codecov -Z -v -s ../ -F AttributeCategoryForCAP || (sleep 30; ./codecov -Z -v -s ../ -F AttributeCategoryForCAP))
+./codecov -Z -v -s ../ -F CartesianCategories || (sleep 30; ./codecov -Z -v -s ../ -F CartesianCategories || (sleep 30; ./codecov -Z -v -s ../ -F CartesianCategories))
+./codecov -Z -v -s ../ -F CompilerForCAP || (sleep 30; ./codecov -Z -v -s ../ -F CompilerForCAP || (sleep 30; ./codecov -Z -v -s ../ -F CompilerForCAP))
+./codecov -Z -v -s ../ -F ComplexesAndFilteredObjectsForCAP || (sleep 30; ./codecov -Z -v -s ../ -F ComplexesAndFilteredObjectsForCAP || (sleep 30; ./codecov -Z -v -s ../ -F ComplexesAndFilteredObjectsForCAP))
+./codecov -Z -v -s ../ -F DeductiveSystemForCAP || (sleep 30; ./codecov -Z -v -s ../ -F DeductiveSystemForCAP || (sleep 30; ./codecov -Z -v -s ../ -F DeductiveSystemForCAP))
+./codecov -Z -v -s ../ -F FreydCategoriesForCAP || (sleep 30; ./codecov -Z -v -s ../ -F FreydCategoriesForCAP || (sleep 30; ./codecov -Z -v -s ../ -F FreydCategoriesForCAP))
+./codecov -Z -v -s ../ -F GeneralizedMorphismsForCAP || (sleep 30; ./codecov -Z -v -s ../ -F GeneralizedMorphismsForCAP || (sleep 30; ./codecov -Z -v -s ../ -F GeneralizedMorphismsForCAP))
+./codecov -Z -v -s ../ -F GradedModulePresentationsForCAP || (sleep 30; ./codecov -Z -v -s ../ -F GradedModulePresentationsForCAP || (sleep 30; ./codecov -Z -v -s ../ -F GradedModulePresentationsForCAP))
+./codecov -Z -v -s ../ -F GroupRepresentationsForCAP || (sleep 30; ./codecov -Z -v -s ../ -F GroupRepresentationsForCAP || (sleep 30; ./codecov -Z -v -s ../ -F GroupRepresentationsForCAP))
+./codecov -Z -v -s ../ -F HomologicalAlgebraForCAP || (sleep 30; ./codecov -Z -v -s ../ -F HomologicalAlgebraForCAP || (sleep 30; ./codecov -Z -v -s ../ -F HomologicalAlgebraForCAP))
+./codecov -Z -v -s ../ -F InternalExteriorAlgebraForCAP || (sleep 30; ./codecov -Z -v -s ../ -F InternalExteriorAlgebraForCAP || (sleep 30; ./codecov -Z -v -s ../ -F InternalExteriorAlgebraForCAP))
+./codecov -Z -v -s ../ -F LinearAlgebraForCAP || (sleep 30; ./codecov -Z -v -s ../ -F LinearAlgebraForCAP || (sleep 30; ./codecov -Z -v -s ../ -F LinearAlgebraForCAP))
+./codecov -Z -v -s ../ -F ModulePresentationsForCAP || (sleep 30; ./codecov -Z -v -s ../ -F ModulePresentationsForCAP || (sleep 30; ./codecov -Z -v -s ../ -F ModulePresentationsForCAP))
+./codecov -Z -v -s ../ -F ModulesOverLocalRingsForCAP || (sleep 30; ./codecov -Z -v -s ../ -F ModulesOverLocalRingsForCAP || (sleep 30; ./codecov -Z -v -s ../ -F ModulesOverLocalRingsForCAP))
+./codecov -Z -v -s ../ -F MonoidalCategories || (sleep 30; ./codecov -Z -v -s ../ -F MonoidalCategories || (sleep 30; ./codecov -Z -v -s ../ -F MonoidalCategories))
+./codecov -Z -v -s ../ -F ToricSheaves || (sleep 30; ./codecov -Z -v -s ../ -F ToricSheaves || (sleep 30; ./codecov -Z -v -s ../ -F ToricSheaves))

@@ -22,13 +22,11 @@ jobs:
     steps:
       # keep workflow active even if repository has no activity for 60 days (do not execute for pull requests)
       - run: '[ "$GITHUB_EVENT_NAME" = "pull_request" ] || curl --fail -X PUT -H "Accept: application/vnd.github.v3+json" -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/$GITHUB_REPOSITORY/actions/workflows/Tests.yml/enable'
-      # checkout needs access to temporary directory
-      - run: sudo chmod 1777 $RUNNER_TEMP
-      - run: sudo chown gap:gap $GITHUB_WORKSPACE
       - uses: actions/checkout@v3
         with:
           # the persisted token interferes with the subsplit token used below
           persist-credentials: false
+          fetch-depth: 0
       - run: cp -a $GITHUB_WORKSPACE /home/gap/.gap/pkg/
       - run: |
           export HOME="/home/gap"
@@ -49,20 +47,18 @@ jobs:
           [ -d "homalg_project/Modules" ] && make -C "homalg_project/Modules" doc
           [ -d "Toposes" ] && make -C "Toposes" doc
           make -C CAP_project -j $(nproc) --output-sync ci-test
-          cp ./CAP_project/.codecov.yml ./
-          (cd CAP_project && LANG=C.UTF-8 python3 process_coverage.py)
-          [ "$GITHUB_EVENT_NAME" != "schedule" ] && [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker-master:latest" ] && ./CAP_project/upload_codecov.sh
+          cd CAP_project
+          LANG=C.UTF-8 python3 process_coverage.py
+          [ "$GITHUB_EVENT_NAME" != "schedule" ] && [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker-master:latest" ] && ./upload_codecov.sh
           git config --global user.name "Bot"
           git config --global user.email "empty"
-          cd CAP_project
           CUR_SHA=$(git rev-parse --verify HEAD)
           if [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker:latest" ] && [ "$CUR_SHA" = "$(git rev-parse origin/master)" ] && [ $(dirname "$GITHUB_REPOSITORY") = "homalg-project" ]; then \
             git fetch origin gh-pages; \
             git worktree add gh-pages/ gh-pages || (echo "There was an error. Make sure there is a branch named 'gh-pages'. See https://github.com/homalg-project/PackageJanitor#error-there-was-an-error-make-sure-there-is-a-branch-named-gh-pages"; exit 1); \
             git checkout master; \
             LANG=C.UTF-8 ./make_dist.sh --token "${{ secrets.GITHUB_TOKEN }}"; \
-            # publish subsplits (fetch all history first)
-            git fetch --unshallow; \
+            # publish subsplits
             git subtree split --prefix=FreydCategoriesForCAP -b FreydCategoriesForCAP-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/FreydCategoriesForCAP FreydCategoriesForCAP-split:master; \
           else \
             echo "Not making a release."; \

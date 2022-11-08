@@ -636,7 +636,7 @@ InstallGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION",
     
     ## Make List, Perform, Apply look like loops
     ## Beginning space (or new line) is important here, to avoid scanning things like CallFuncList
-    for i in [ " List(", "\nList(",  " Perform(", "\nPerform(", "\nApply(", " Apply(" ] do
+    for i in [ " List(", "\nList(", " ListN(", "\nListN(", " Perform(", "\nPerform(", "\nApply(", " Apply(" ] do
         
         func_as_string := ReplacedString( func_as_string, i, " CAP_INTERNAL_FUNCTIONAL_LOOP" );
         
@@ -1513,11 +1513,7 @@ InstallGlobalFunction( HandlePrecompiledTowers, function ( category, underlying_
     
 end );
 
-InstallGlobalFunction( CAP_JIT_INCOMPLETE_LOGIC, function ( value )
-    
-    return value;
-    
-end );
+InstallGlobalFunction( CAP_JIT_INCOMPLETE_LOGIC, IdFunc );
 
 ##
 InstallGlobalFunction( ListWithKeys, function ( list, func )

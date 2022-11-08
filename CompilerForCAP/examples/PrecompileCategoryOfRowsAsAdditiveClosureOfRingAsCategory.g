@@ -63,4 +63,13 @@ precompile_CategoryOfRows(
     R, "ArbitraryRing", [ ]
 );;
 
+CategoryOfRows( QQ )!.precompiled_functions_added;
+#! true
+CategoryOfRows( QQxy )!.precompiled_functions_added;
+#! true
+CategoryOfRows( EQQxy )!.precompiled_functions_added;
+#! true
+CategoryOfRows( R )!.precompiled_functions_added;
+#! true
+
 #! @EndExample

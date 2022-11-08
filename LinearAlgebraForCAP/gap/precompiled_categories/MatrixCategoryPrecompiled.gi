@@ -648,10 +648,10 @@ end
     , 2308 : IsPrecompiledDerivation := true );
     
     ##
-    AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( cat,
+    AddCoefficientsOfMorphism( cat,
         
 ########
-function ( cat_1, arg2_1, arg3_1 )
+function ( cat_1, arg2_1 )
     return EntriesOfHomalgMatrix( UnderlyingMatrix( arg2_1 ) );
 end
 ########
@@ -3451,7 +3451,7 @@ function ( cat_1, arg2_1, arg3_1, arg4_1 )
 end
 ########
         
-    , 2206 : IsPrecompiledDerivation := true );
+    , 2306 : IsPrecompiledDerivation := true );
     
     ##
     AddMonoidalPostCoComposeMorphism( cat,
@@ -3900,7 +3900,7 @@ function ( cat_1, source_diagram_1, mat_1, range_diagram_1 )
 end
 ########
         
-    , 402 : IsPrecompiledDerivation := true );
+    , 502 : IsPrecompiledDerivation := true );
     
     ##
     AddMorphismBetweenDirectSumsWithGivenDirectSums( cat,
@@ -3916,7 +3916,7 @@ function ( cat_1, S_1, source_diagram_1, mat_1, range_diagram_1, T_1 )
 end
 ########
         
-    , 201 : IsPrecompiledDerivation := true );
+    , 301 : IsPrecompiledDerivation := true );
     
     ##
     AddMorphismConstructor( cat,
@@ -4670,81 +4670,6 @@ end
     , 8539 : IsPrecompiledDerivation := true );
     
     ##
-    AddRandomMorphismByInteger( cat,
-        
-########
-function ( cat_1, n_1 )
-    local morphism_attr_1_1, hoisted_2_1, deduped_3_1;
-    deduped_3_1 := Random( [ 0 .. n_1 ] );
-    hoisted_2_1 := RandomMatrix( deduped_3_1, deduped_3_1, UnderlyingRing( cat_1 ) );
-    morphism_attr_1_1 := Sum( [ 1 ], function ( c_2 )
-            return c_2 * hoisted_2_1;
-        end );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
-end
-########
-        
-    , 301 : IsPrecompiledDerivation := true );
-    
-    ##
-    AddRandomMorphismWithFixedRangeByInteger( cat,
-        
-########
-function ( cat_1, B_1, n_1 )
-    local morphism_attr_1_1, hoisted_2_1;
-    hoisted_2_1 := RandomMatrix( Random( [ 0 .. n_1 ] ), Dimension( B_1 ), UnderlyingRing( cat_1 ) );
-    morphism_attr_1_1 := Sum( [ 1 ], function ( c_2 )
-            return c_2 * hoisted_2_1;
-        end );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), B_1, UnderlyingMatrix, morphism_attr_1_1 );
-end
-########
-        
-    , 201 : IsPrecompiledDerivation := true );
-    
-    ##
-    AddRandomMorphismWithFixedSourceAndRangeByInteger( cat,
-        
-########
-function ( cat_1, A_1, B_1, n_1 )
-    local hoisted_1_1;
-    hoisted_1_1 := RandomMatrix( Dimension( A_1 ), Dimension( B_1 ), UnderlyingRing( cat_1 ) );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, A_1, B_1, UnderlyingMatrix, Sum( [ 1 ], function ( c_2 )
-              return c_2 * hoisted_1_1;
-          end ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddRandomMorphismWithFixedSourceByInteger( cat,
-        
-########
-function ( cat_1, A_1, n_1 )
-    local morphism_attr_1_1, hoisted_2_1;
-    hoisted_2_1 := RandomMatrix( Dimension( A_1 ), Random( [ 0 .. n_1 ] ), UnderlyingRing( cat_1 ) );
-    morphism_attr_1_1 := Sum( [ 1 ], function ( c_2 )
-            return c_2 * hoisted_2_1;
-        end );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, A_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
-end
-########
-        
-    , 201 : IsPrecompiledDerivation := true );
-    
-    ##
-    AddRandomObjectByInteger( cat,
-        
-########
-function ( cat_1, n_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, Random( [ 0 .. n_1 ] ) );
-end
-########
-        
-    , 100 );
-    
-    ##
     AddRankMorphism( cat,
         
 ########
@@ -5060,38 +4985,40 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1, arg4_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1;
-    deduped_10_1 := UnderlyingRing( cat_1 );
-    deduped_9_1 := arg2_1[1];
-    deduped_8_1 := [ 1 .. Length( arg2_1 ) ];
-    deduped_7_1 := [ 1 .. Length( deduped_9_1 ) ];
-    hoisted_4_1 := deduped_10_1;
-    hoisted_3_1 := deduped_8_1;
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1;
+    deduped_11_1 := UnderlyingRing( cat_1 );
+    deduped_10_1 := arg2_1[1];
+    deduped_9_1 := [ 1 .. Length( arg2_1 ) ];
+    deduped_8_1 := [ 1 .. Length( deduped_10_1 ) ];
+    hoisted_4_1 := deduped_11_1;
+    hoisted_3_1 := deduped_9_1;
     hoisted_2_1 := arg3_1[1];
-    hoisted_1_1 := deduped_9_1;
-    hoisted_6_1 := RightDivide( UnionOfColumns( deduped_10_1, 1, List( deduped_8_1, function ( logic_new_func_x_2 )
+    hoisted_1_1 := deduped_10_1;
+    hoisted_7_1 := RightDivide( UnionOfColumns( deduped_11_1, 1, List( deduped_9_1, function ( logic_new_func_x_2 )
                 return ConvertMatrixToRow( UnderlyingMatrix( arg4_1[logic_new_func_x_2] ) );
-            end ) ), UnionOfRows( deduped_10_1, Sum( List( deduped_8_1, function ( logic_new_func_x_2 )
+            end ) ), UnionOfRows( deduped_11_1, Sum( List( deduped_9_1, function ( logic_new_func_x_2 )
                   return Dimension( Source( arg2_1[logic_new_func_x_2][1] ) ) * Dimension( Range( arg3_1[logic_new_func_x_2][1] ) );
-              end ) ), List( deduped_7_1, function ( logic_new_func_x_2 )
+              end ) ), List( deduped_8_1, function ( logic_new_func_x_2 )
                 return UnionOfColumns( hoisted_4_1, Dimension( Range( hoisted_1_1[logic_new_func_x_2] ) ) * Dimension( Source( hoisted_2_1[logic_new_func_x_2] ) ), List( hoisted_3_1, function ( logic_new_func_x_3 )
                           return KroneckerMat( TransposedMatrix( UnderlyingMatrix( arg2_1[logic_new_func_x_3][logic_new_func_x_2] ) ), UnderlyingMatrix( arg3_1[logic_new_func_x_3][logic_new_func_x_2] ) );
                       end ) );
             end ) ) );
-    hoisted_5_1 := List( deduped_7_1, function ( logic_new_func_x_2 )
+    hoisted_6_1 := deduped_8_1;
+    hoisted_5_1 := List( deduped_8_1, function ( logic_new_func_x_2 )
             return Dimension( Range( hoisted_1_1[logic_new_func_x_2] ) ) * Dimension( Source( hoisted_2_1[logic_new_func_x_2] ) );
         end );
-    return List( deduped_7_1, function ( j_2 )
-            local deduped_1_2, deduped_2_2, deduped_3_2;
+    return List( deduped_8_1, function ( j_2 )
+            local deduped_1_2, deduped_2_2, deduped_3_2, deduped_4_2;
+            deduped_4_2 := CAP_JIT_INCOMPLETE_LOGIC( hoisted_6_1[j_2] );
             deduped_3_2 := Source( hoisted_2_1[j_2] );
             deduped_2_2 := Range( hoisted_1_1[j_2] );
             deduped_1_2 := Sum( hoisted_5_1{[ 1 .. j_2 - 1 ]} ) + 1;
-            return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_2_2, deduped_3_2, UnderlyingMatrix, ConvertRowToMatrix( CertainColumns( hoisted_6_1, [ deduped_1_2 .. deduped_1_2 - 1 + hoisted_5_1[j_2] ] ), Dimension( deduped_2_2 ), Dimension( deduped_3_2 ) ) );
+            return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_2_2, deduped_3_2, UnderlyingMatrix, ConvertRowToMatrix( CertainColumns( hoisted_7_1, [ deduped_1_2 .. deduped_1_2 - 1 + Dimension( Range( hoisted_1_1[deduped_4_2] ) ) * Dimension( Source( hoisted_2_1[deduped_4_2] ) ) ] ), Dimension( deduped_2_2 ), Dimension( deduped_3_2 ) ) );
         end );
 end
 ########
         
-    , 2806 : IsPrecompiledDerivation := true );
+    , 2906 : IsPrecompiledDerivation := true );
     
     ##
     AddSomeInjectiveObject( cat,
@@ -5161,6 +5088,19 @@ end
 ########
 function ( cat_1, a_1, b_1 )
     return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), UnderlyingMatrix, UnderlyingMatrix( a_1 ) - UnderlyingMatrix( b_1 ) );
+end
+########
+        
+    , 201 : IsPrecompiledDerivation := true );
+    
+    ##
+    AddSumOfMorphisms( cat,
+        
+########
+function ( cat_1, source_1, list_of_morphisms_1, range_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, UnderlyingMatrix, Iterated( List( list_of_morphisms_1, UnderlyingMatrix ), function ( alpha_2, beta_2 )
+              return alpha_2 + beta_2;
+          end, HomalgZeroMatrix( Dimension( source_1 ), Dimension( range_1 ), UnderlyingRing( cat_1 ) ) ) );
 end
 ########
         
@@ -6158,6 +6098,15 @@ end
 ########
         
     , 101 : IsPrecompiledDerivation := true );
+    
+    if IsBound( cat!.precompiled_functions_added ) then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "precompiled functions have already been added before" );
+        
+    fi;
+    
+    cat!.precompiled_functions_added := true;
     
 end );
 

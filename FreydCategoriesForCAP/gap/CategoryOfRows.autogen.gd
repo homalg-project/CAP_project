@@ -136,6 +136,7 @@
 #! * <Ref BookName="CAP" Func="SomeReductionBySplitEpiSummand_MorphismFromInputRange" Label="for Is" />
 #! * <Ref BookName="CAP" Func="SomeReductionBySplitEpiSummand_MorphismToInputRange" Label="for Is" />
 #! * <Ref BookName="CAP" Func="SubtractionForMorphisms" Label="for Is" />
+#! * <Ref BookName="CAP" Func="SumOfMorphisms" Label="for Is" />
 #! * <Ref BookName="CAP" Func="TerminalObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="TerminalObjectFunctorial" Label="for Is" />
 #! * <Ref BookName="CAP" Func="TerminalObjectFunctorialWithGivenTerminalObjects" Label="for Is" />
@@ -326,7 +327,7 @@
 #! * <Ref BookName="CAP" Func="BasisOfExternalHom" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoastrictionToImage" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoastrictionToImageWithGivenImageObject" Label="for Is" />
-#! * <Ref BookName="CAP" Func="CoefficientsOfMorphismWithGivenBasisOfExternalHom" Label="for Is" />
+#! * <Ref BookName="CAP" Func="CoefficientsOfMorphism" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoimageObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoimageProjection" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoimageProjectionWithGivenCoimageObject" Label="for Is" />
