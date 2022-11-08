@@ -173,7 +173,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
     AddSomeReductionBySplitEpiSummand( category,
       function( cat, alpha )
         
-        return AsCategoryOfColumnsMorphism( CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple( alpha )[1], category );
+        return AsCategoryOfColumnsMorphism( cat, CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple( alpha )[1] );
         
     end );
     
@@ -181,7 +181,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
     AddSomeReductionBySplitEpiSummand_MorphismFromInputRange( category,
       function( cat, alpha )
         
-        return AsCategoryOfColumnsMorphism( CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple( alpha )[2], category );
+        return AsCategoryOfColumnsMorphism( cat, CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple( alpha )[2] );
         
     end );
     
@@ -189,7 +189,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
     AddSomeReductionBySplitEpiSummand_MorphismToInputRange( category,
       function( cat, alpha )
         
-        return AsCategoryOfColumnsMorphism( CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple( alpha )[3], category );
+        return AsCategoryOfColumnsMorphism( cat, CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple( alpha )[3] );
         
     end );
     

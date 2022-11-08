@@ -85,13 +85,23 @@ InstallMethod( AsCategoryOfColumnsMorphism,
                [ IsHomalgMatrix, IsCategoryOfColumns ],
                
   function( homalg_matrix, category )
+    
+    return AsCategoryOfColumnsMorphism( category, homalg_matrix );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( AsCategoryOfColumnsMorphism,
+               [ IsCategoryOfColumns, IsHomalgMatrix ],
+               
+  function( category, homalg_matrix )
     local source, range;
     
     source := CategoryOfColumnsObject( category, NrColumns( homalg_matrix ) );
     
     range := CategoryOfColumnsObject( category, NrRows( homalg_matrix ) );
     
-    return CategoryOfColumnsMorphism( source, homalg_matrix, range );
+    return CategoryOfColumnsMorphism( category, source, homalg_matrix, range );
     
 end );
 
@@ -197,8 +207,6 @@ InstallMethod( CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple,
     return [ S, T, TI ];
     
 end );
-
-CapJitAddTypeSignature( "CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple", [ IsCategoryOfColumnsMorphism ], rec( filter := IsList, element_type := rec( filter := IsHomalgMatrix ) ) );
 
 ####################################
 ##

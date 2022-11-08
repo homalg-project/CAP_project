@@ -493,7 +493,9 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    return AsCategoryOfColumnsMorphism( CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple( alpha_1 )[1], cat_1 );
+    local morphism_attr_1_1;
+    morphism_attr_1_1 := CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple( alpha_1 )[1];
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
@@ -504,7 +506,9 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    return AsCategoryOfColumnsMorphism( CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple( alpha_1 )[2], cat_1 );
+    local morphism_attr_1_1;
+    morphism_attr_1_1 := CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple( alpha_1 )[2];
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
@@ -515,7 +519,9 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    return AsCategoryOfColumnsMorphism( CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple( alpha_1 )[3], cat_1 );
+    local morphism_attr_1_1;
+    morphism_attr_1_1 := CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple( alpha_1 )[3];
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
@@ -631,7 +637,7 @@ BindGlobal( "CategoryOfColumnsAsOppositeOfCategoryOfRowsOfArbitraryRingPrecompil
         
         
         function ( homalg_ring )
-    return CategoryOfColumnsAsOppositeOfCategoryOfRows( homalg_ring );
+    return CategoryOfColumns( homalg_ring );
 end;
         
         
