@@ -1319,7 +1319,14 @@ end );
 
 # homalg operations
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgMatrix", [ "IsList", "IsInt", "IsInt", "IsHomalgRing" ], "IsHomalgMatrix" );
-CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgMatrixListList", [ "IsList", "IsInt", "IsInt", "IsHomalgRing" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgMatrixListList", [ "IsList", "IsInt", "IsInt", "IsHomalgRing" ], """function( input_types )
+    
+    Assert( 0, input_types[1].element_type.filter = IsList );
+    Assert( 0, input_types[1].element_type.element_type.filter in [ IsHomalgRingElement, IsInt, IsRat ] );
+    
+    return rec( filter := IsHomalgMatrix );
+    
+end""" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgIdentityMatrix", [ "IsInt", "IsHomalgRing" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgZeroMatrix", [ "IsInt", "IsInt", "IsHomalgRing" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "RandomMatrix", [ "IsInt", "IsInt", "IsHomalgRing" ], "IsHomalgMatrix" );
