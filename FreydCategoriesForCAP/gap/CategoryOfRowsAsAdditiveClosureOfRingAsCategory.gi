@@ -221,13 +221,9 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
     
     if HasIsExteriorRing( homalg_ring ) and IsExteriorRing( homalg_ring ) and IsField( BaseRing( homalg_ring ) ) then
         
-        SetGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( wrapper, GeneratingSystemAsModuleInRangeCategoryOfHomomorphismStructure( ring_as_category ) );
-        SetColumnVectorOfGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( wrapper, ColumnVectorOfGeneratingSystemAsModuleInRangeCategoryOfHomomorphismStructure( ring_as_category ) );
-        SetRingInclusionForHomomorphismStructure( wrapper, RingInclusionForHomomorphismStructure( ring_as_category ) );
+        SetBasisOfRingOverBaseFieldAsColumnVector( wrapper, BasisOverBaseFieldAsColumnVector( ring_as_category ) );
         
-        Add( wrapper!.compiler_hints.category_attribute_names, "GeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure" );
-        Add( wrapper!.compiler_hints.category_attribute_names, "ColumnVectorOfGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure" );
-        Add( wrapper!.compiler_hints.category_attribute_names, "RingInclusionForHomomorphismStructure" );
+        Add( wrapper!.compiler_hints.category_attribute_names, "BasisOfRingOverBaseFieldAsColumnVector" );
         
     fi;
     

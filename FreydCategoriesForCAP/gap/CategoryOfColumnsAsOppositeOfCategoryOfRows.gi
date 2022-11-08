@@ -140,13 +140,9 @@ InstallMethod( CategoryOfColumnsAsOppositeOfCategoryOfRows,
     
     if HasIsExteriorRing( homalg_ring ) and IsExteriorRing( homalg_ring ) and IsField( BaseRing( homalg_ring ) ) then
         
-        SetGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( wrapper, GeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( rows ) );
-        SetColumnVectorOfGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( wrapper, ColumnVectorOfGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( rows ) );
-        SetRingInclusionForHomomorphismStructure( wrapper, RingInclusionForHomomorphismStructure( rows ) );
+        SetBasisOfRingOverBaseFieldAsColumnVector( wrapper, BasisOfRingOverBaseFieldAsColumnVector( rows ) );
         
-        Add( wrapper!.compiler_hints.category_attribute_names, "GeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure" );
-        Add( wrapper!.compiler_hints.category_attribute_names, "ColumnVectorOfGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure" );
-        Add( wrapper!.compiler_hints.category_attribute_names, "RingInclusionForHomomorphismStructure" );
+        Add( wrapper!.compiler_hints.category_attribute_names, "BasisOfRingOverBaseFieldAsColumnVector" );
         
     fi;
     

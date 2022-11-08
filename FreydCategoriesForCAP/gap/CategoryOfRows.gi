@@ -849,11 +849,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     if HasIsCommutative( ring ) and IsCommutative( ring ) then
         
-        SetIsLinearCategoryOverCommutativeRing( category, true );
+        Assert( 0, IsLinearCategoryOverCommutativeRing( category ) );
         
-        SetCommutativeRingOfLinearCategory( category, ring );
+        Assert( 0, IsIdenticalObj( CommutativeRingOfLinearCategory( category ), ring ) );
         
         ##
+        # MultiplyWithElementOfCommutativeRingForMorphisms cannot be typed yet, so it cannot be precompiled yet
         AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
           function( cat, r, alpha )
             
@@ -883,6 +884,23 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
           function( cat, morphism )
             
             return EntriesOfHomalgMatrix( UnderlyingMatrix( morphism ) );
+            
+        end );
+        
+    fi;
+    
+    if HasIsExteriorRing( ring ) and IsExteriorRing( ring ) and IsField( BaseRing( ring ) ) then
+        
+        Assert( 0, IsLinearCategoryOverCommutativeRing( category ) );
+        
+        Assert( 0, IsIdenticalObj( CommutativeRingOfLinearCategory( category ), BaseRing( ring ) ) );
+        
+        ##
+        # MultiplyWithElementOfCommutativeRingForMorphisms cannot be typed yet, so it cannot be precompiled yet
+        AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
+          function( cat, r, alpha )
+            
+            return CategoryOfRowsMorphism( cat, Source( alpha ), (r / ring) * UnderlyingMatrix( alpha ), Range( alpha ) );
             
         end );
         

@@ -193,6 +193,26 @@ CapJitAddLogicTemplate(
     )
 );
 
+# HomalgMatrix( EntriesOfHomalgRowVector )
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "matrix", "nr_cols", "ring" ],
+        src_template := "HomalgMatrix( EntriesOfHomalgRowVector( matrix ), 1, nr_cols, ring )",
+        dst_template := "matrix",
+        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
+    )
+);
+
+# HomalgMatrix( many EntriesOfHomalgRowVector )
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "list", "row_vector", "nr_rows", "nr_cols", "ring" ],
+        src_template := "HomalgMatrix( List( list, x -> EntriesOfHomalgRowVector( row_vector ) ), nr_rows, nr_cols, ring )",
+        dst_template := "UnionOfRows( ring, nr_cols, List( list, x -> row_vector ) )",
+        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
+    )
+);
+
 # HomalgMatrixListList( UnionOfRowsListList ) => UnionOfRows( HomalgMatrixListList )
 CapJitAddLogicTemplate(
     rec(
@@ -280,13 +300,15 @@ CapJitAddLogicTemplate(
     )
 );
 
-# COMPILATION_HELPER_HomalgMatrixFromRingElement( ring_element_to_pull_out * ring_element2 )
+# COMPILATION_HELPER_HomalgMatrixFromRingElement( ring_element_1_to_pull_out * ring_element_2 * ring_element_3_to_pull_out )
+# the associativity on the right in dst_template is important: AdditiveClosure first loops over ring_element1,
+# so to hoist it as high as possible we have to pull it out as far as possible
 CapJitAddLogicTemplate(
     rec(
-        variable_names := [ "homalg_ring", "nr_cols", "list", "ring_element1", "ring_element2" ],
-        variable_filters := [ IsObject, IsObject, IsObject, "IsHomalgRingElement", "IsHomalgRingElement" ],
-        src_template := "UnionOfRows( homalg_ring, nr_cols, List( list, l -> COMPILATION_HELPER_HomalgMatrixFromRingElement( ring_element1 * ring_element2, homalg_ring ) ) )",
-        dst_template := "ring_element1 * UnionOfRows( homalg_ring, nr_cols, List( list, l -> COMPILATION_HELPER_HomalgMatrixFromRingElement( ring_element2, homalg_ring ) ) )",
+        variable_names := [ "homalg_ring", "nr_cols", "list", "ring_element1", "ring_element2", "ring_element3" ],
+        variable_filters := [ IsObject, IsObject, IsObject, "IsHomalgRingElement", "IsHomalgRingElement", "IsHomalgRingElement" ],
+        src_template := "UnionOfRows( homalg_ring, nr_cols, List( list, l -> COMPILATION_HELPER_HomalgMatrixFromRingElement( ring_element1 * ring_element2 * ring_element3, homalg_ring ) ) )",
+        dst_template := "ring_element1 * (UnionOfRows( homalg_ring, nr_cols, List( list, l -> COMPILATION_HELPER_HomalgMatrixFromRingElement( ring_element2, homalg_ring ) ) ) * ring_element3)",
         needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
@@ -298,17 +320,6 @@ CapJitAddLogicTemplate(
         variable_filters := [ IsObject, IsObject, IsObject, "IsHomalgRingElement", "IsHomalgRingElement" ],
         src_template := "UnionOfColumns( homalg_ring, nr_rows, List( list, l -> COMPILATION_HELPER_HomalgMatrixFromRingElement( ring_element1 * ring_element2, homalg_ring ) ) )",
         dst_template := "ring_element1 * UnionOfColumns( homalg_ring, nr_rows, List( list, l -> COMPILATION_HELPER_HomalgMatrixFromRingElement( ring_element2, homalg_ring ) ) )",
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
-    )
-);
-
-# COMPILATION_HELPER_HomalgMatrixFromRingElement( ring_element1 * ring_element_to_pull_out )
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "homalg_ring", "nr_cols", "list", "ring_element1", "ring_element2" ],
-        variable_filters := [ IsObject, IsObject, IsObject, "IsHomalgRingElement", "IsHomalgRingElement" ],
-        src_template := "UnionOfRows( homalg_ring, nr_cols, List( list, l -> COMPILATION_HELPER_HomalgMatrixFromRingElement( ring_element1 * ring_element2, homalg_ring ) ) )",
-        dst_template := "UnionOfRows( homalg_ring, nr_cols, List( list, l -> COMPILATION_HELPER_HomalgMatrixFromRingElement( ring_element1, homalg_ring ) ) ) * ring_element2",
         needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
@@ -445,6 +456,40 @@ CapJitAddLogicTemplate(
             )
         """,
         dst_template := "ConvertRowToMatrix( matrix, nr_rows, nr_cols )",
+        needed_packages := [ [ "MatricesForHomalg", ">= 2020.06.27" ] ],
+    )
+);
+
+# detect row * column
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "list1", "list2", "ring" ],
+        variable_filters := [ "IsList", "IsList", "IsHomalgRing" ],
+        src_template := "Iterated( ListN( list1, list2, { x, y } -> x / ring * UnderlyingRingElement( y ) ), { alpha, beta } -> alpha + beta, Zero( ring ) )",
+        dst_template := "EntriesOfHomalgMatrix( HomalgMatrixListList( [ List( list1, x -> x / ring ) ], 1, Length( list1 ), ring ) * HomalgMatrixListList( List( list2, y -> [ UnderlyingRingElement( y ) ] ), Length( list2 ), 1, ring ) )[1]",
+        new_funcs := [ [ "x" ], [ "y" ] ],
+        needed_packages := [ [ "MatricesForHomalg", ">= 2020.06.27" ] ],
+    )
+);
+
+# detect CoercedMatrix
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "row_vector", "ring" ],
+        variable_filters := [ "IsHomalgMatrix", "IsHomalgRing" ],
+        src_template := "HomalgMatrixListList( [ List( EntriesOfHomalgRowVector( row_vector ), x -> x / ring ) ], 1, Length( EntriesOfHomalgRowVector( row_vector ) ), ring )",
+        dst_template := "CoercedMatrix( ring, row_vector )",
+        needed_packages := [ [ "MatricesForHomalg", ">= 2020.06.27" ] ],
+    )
+);
+
+# detect complicated vector unwrapping and wrapping
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "column_vector", "ring" ],
+        variable_filters := [ "IsHomalgMatrix", "IsHomalgRing" ],
+        src_template := "HomalgMatrixListList( List( EntriesOfHomalgColumnVector( column_vector ), x -> [ x ] ), Length( EntriesOfHomalgColumnVector( column_vector ) ), 1, ring )",
+        dst_template := "column_vector",
         needed_packages := [ [ "MatricesForHomalg", ">= 2020.06.27" ] ],
     )
 );
