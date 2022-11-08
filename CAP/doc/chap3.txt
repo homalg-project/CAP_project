@@ -682,6 +682,26 @@
   [33X[0;0YThe  argument  is  an isomorphism [23X\alpha: a \rightarrow b[123X. The output is its
   inverse [23X\alpha^{-1}: b \rightarrow a[123X.[133X
   
+  [1X3.13-2 PreInverseForMorphisms[101X
+  
+  [33X[1;0Y[29X[2XPreInverseForMorphisms[102X( [3Xalpha[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(b,a)[123X[133X
+  
+  [33X[0;0YThe argument is a split-epimorphism [23X\alpha: a \rightarrow b[123X. The output is a
+  pre-inverse  [23X\iota:  b \rightarrow a[123X of [23X\alpha[123X, i.e., [23X\iota[123X satisfies [23X\alpha
+  \circ  \iota \sim_{b,b} \mathrm{id}_b[123X. The morphism [23X\iota[123X is also known as a
+  section or a right-inverse of [23X\alpha[123X.[133X
+  
+  [1X3.13-3 PostInverseForMorphisms[101X
+  
+  [33X[1;0Y[29X[2XPostInverseForMorphisms[102X( [3Xalpha[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(b,a)[123X[133X
+  
+  [33X[0;0YThe  argument is a split-monomorphism [23X\alpha: a \rightarrow b[123X. The output is
+  a post-inverse [23X\pi: b \rightarrow a[123X of [23X\alpha[123X, i.e., [23X\pi[123X satisfies [23X\pi \circ
+  \alpha  \sim_{a,a}  \mathrm{id}_a[123X.  The  morphism  [23X\pi[123X  is  also  known as a
+  contraction or a left-inverse of [23X\alpha[123X.[133X
+  
   
   [1X3.14 [33X[0;0YTool functions for caches[133X[101X
   

@@ -140,6 +140,8 @@
 </span>
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8371BF227B4C32EF">3.13-1 InverseForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83E4A87F7B2290F1">3.13-2 PreInverseForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X800447917F75989A">3.13-3 PostInverseForMorphisms</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7DD668627932185C">3.14 <span class="Heading">Tool functions for caches</span></a>
 </span>
@@ -866,6 +868,24 @@
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(b,a)\)</span></p>
 
 <p>The argument is an isomorphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span>. The output is its inverse <span class="SimpleMath">\(\alpha^{-1}: b \rightarrow a\)</span>.</p>
+
+<p><a id="X83E4A87F7B2290F1" name="X83E4A87F7B2290F1"></a></p>
+
+<h5>3.13-2 PreInverseForMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PreInverseForMorphisms</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(b,a)\)</span></p>
+
+<p>The argument is a split-epimorphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span>. The output is a pre-inverse <span class="SimpleMath">\(\iota: b \rightarrow a\)</span> of <span class="SimpleMath">\(\alpha\)</span>, i.e., <span class="SimpleMath">\(\iota\)</span> satisfies <span class="SimpleMath">\(\alpha \circ \iota \sim_{b,b} \mathrm{id}_b\)</span>. The morphism <span class="SimpleMath">\(\iota\)</span> is also known as a section or a right-inverse of <span class="SimpleMath">\(\alpha\)</span>.</p>
+
+<p><a id="X800447917F75989A" name="X800447917F75989A"></a></p>
+
+<h5>3.13-3 PostInverseForMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PostInverseForMorphisms</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(b,a)\)</span></p>
+
+<p>The argument is a split-monomorphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span>. The output is a post-inverse <span class="SimpleMath">\(\pi: b \rightarrow a\)</span> of <span class="SimpleMath">\(\alpha\)</span>, i.e., <span class="SimpleMath">\(\pi\)</span> satisfies <span class="SimpleMath">\(\pi \circ \alpha \sim_{a,a} \mathrm{id}_a\)</span>. The morphism <span class="SimpleMath">\(\pi\)</span> is also known as a contraction or a left-inverse of <span class="SimpleMath">\(\alpha\)</span>.</p>
 
 <p><a id="X7DD668627932185C" name="X7DD668627932185C"></a></p>
 
