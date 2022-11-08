@@ -169,6 +169,26 @@ function ( cat_1, source_1, morphism_list_1, range_1 )
            RankOfObject( range_1 ), UnderlyingRing( cat_1 ) ) ) );
 end
 
+# Iterated (case: global_variables)
+# PreComposeList
+gap> MY_GLOBAL_OBJECT := ObjectConstructor( cat, 1 );;
+gap> func := { cat, morphism_list } ->
+>     Iterated(
+>         morphism_list,
+>         { alpha, beta } -> MorphismConstructor( cat, MY_GLOBAL_OBJECT, MorphismDatum( cat, alpha ) + MorphismDatum( cat, beta ), MY_GLOBAL_OBJECT )
+>     );;
+
+#
+gap> Display( CapJitCompiledFunction( func, cat ) );
+function ( cat_1, morphism_list_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, MY_GLOBAL_OBJECT, 
+       MY_GLOBAL_OBJECT, UnderlyingMatrix, 
+       Iterated( List( morphism_list_1, UnderlyingMatrix ), 
+         function ( alpha_2, beta_2 )
+              return alpha_2 + beta_2;
+          end ) );
+end
+
 # Iterated (case: from_compiler_hints)
 # PreComposeList
 gap> func := { cat, morphism_list } ->
