@@ -1035,6 +1035,23 @@ CapJitAddTypeSignature( "First", [ IsList, IsFunction ], function ( args, func_s
     
 end );
 
+CapJitAddTypeSignature( "SafeFirst", [ IsList, IsFunction ], function ( args, func_stack )
+    
+    args := ShallowCopy( args );
+    
+    args.2 := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS_TYPES( args.2, [ args.1.data_type.element_type ], func_stack );
+    
+    if args.2 = fail then
+        
+        #Error( "could not determine output type" );
+        return fail;
+        
+    fi;
+    
+    return rec( args := args, output_type := args.1.data_type.element_type );
+    
+end );
+
 CapJitAddTypeSignature( "Position", [ IsList, IsObject ], function ( input_types )
     
     Assert( 0, input_types[1].element_type = input_types[2] );
