@@ -281,6 +281,45 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
             
         end );
         
+        ## Homomorphism structure for commutative rings, see https://arxiv.org/abs/1908.04132 (Sebastian Posur: Methods of constructive category theory), Example 1.24
+        
+        ##
+        SetRangeCategoryOfHomomorphismStructure( category, category );
+        
+        ##
+        AddDistinguishedObjectOfHomomorphismStructure( category, { cat } -> RingAsCategoryUniqueObject( cat ) );
+        
+        ##
+        AddHomomorphismStructureOnObjects( category, { cat, a, b } -> RingAsCategoryUniqueObject( cat ) );
+        
+        ##
+        AddHomomorphismStructureOnMorphisms( category,
+          function( cat, alpha, beta )
+            local a, b, rows;
+            
+            a := UnderlyingRingElement( alpha );
+            b := UnderlyingRingElement( beta );
+            
+            return RingAsCategoryMorphism( cat, a * b );
+            
+        end );
+        
+        ##
+        AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
+          function( cat, alpha )
+            
+            return alpha;
+            
+        end );
+        
+        ##
+        AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
+          function( cat, a, b, mor )
+            
+            return mor;
+            
+        end );
+        
     fi;
     
     ## Homomorphism structure
@@ -333,48 +372,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
         morphism_constructor := CategoryOfRowsMorphism;
         
         ring_inclusion := RingMap( [], field, ring );
-        
-    fi;
-    
-    ## Homomorphism structure for commutative rings, see https://arxiv.org/abs/1908.04132 (Sebastian Posur: Methods of constructive category theory), Example 1.24
-    if HasIsCommutative( ring ) and IsCommutative( ring ) then
-        
-        ##
-        SetRangeCategoryOfHomomorphismStructure( category, category );
-        
-        ##
-        AddDistinguishedObjectOfHomomorphismStructure( category, { cat } -> RingAsCategoryUniqueObject( cat ) );
-        
-        ##
-        AddHomomorphismStructureOnObjects( category, { cat, a, b } -> RingAsCategoryUniqueObject( cat ) );
-        
-        ##
-        AddHomomorphismStructureOnMorphisms( category,
-          function( cat, alpha, beta )
-            local a, b, rows;
-            
-            a := UnderlyingRingElement( alpha );
-            b := UnderlyingRingElement( beta );
-            
-            return RingAsCategoryMorphism( cat, a * b );
-            
-        end );
-        
-        ##
-        AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
-          function( cat, alpha )
-            
-            return alpha;
-            
-        end );
-        
-        ##
-        AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
-          function( cat, a, b, mor )
-            
-            return mor;
-            
-        end );
         
     fi;
     
