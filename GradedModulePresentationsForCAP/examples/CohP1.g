@@ -15,7 +15,7 @@ S := GradedRing( Q["x,y"] );
 Sgrmod := GradedLeftPresentations( S );
 #! The category of graded left f.p. modules over Q[x,y] (with weights [ 1, 1 ])
 InfoOfInstalledOperationsOfCategory( Sgrmod );
-#! 40 primitive operations were used to derive 199 operations for this category
+#! 40 primitive operations were used to derive 201 operations for this category
 #! which algorithmically
 #! * IsMonoidalCategory
 #! * IsAbelianCategoryWithEnoughProjectives

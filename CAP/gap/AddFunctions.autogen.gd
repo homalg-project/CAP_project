@@ -3356,6 +3356,25 @@ DeclareOperation( "AddPostComposeList",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `PostInverseForMorphisms`.
+#! $F: ( alpha ) \mapsto \mathtt{PostInverseForMorphisms}(alpha)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddPostInverseForMorphisms",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddPostInverseForMorphisms",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddPostInverseForMorphisms",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddPostInverseForMorphisms",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `PreCompose`.
 #! $F: ( alpha, beta ) \mapsto \mathtt{PreCompose}(alpha, beta)$.
 #! @Returns nothing
@@ -3389,6 +3408,25 @@ DeclareOperation( "AddPreComposeList",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddPreComposeList",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `PreInverseForMorphisms`.
+#! $F: ( alpha ) \mapsto \mathtt{PreInverseForMorphisms}(alpha)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddPreInverseForMorphisms",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddPreInverseForMorphisms",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddPreInverseForMorphisms",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddPreInverseForMorphisms",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

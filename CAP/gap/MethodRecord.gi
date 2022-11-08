@@ -307,6 +307,22 @@ InverseForMorphisms := rec(
   compatible_with_congruence_of_morphisms := true,
 ),
 
+PreInverseForMorphisms := rec(
+  filter_list := [ "category", "morphism" ],
+  io_type := [ [ "alpha" ], [ "alpha_range", "alpha_source" ] ],
+  return_type := "morphism",
+  dual_operation := "PostInverseForMorphisms",
+  is_merely_set_theoretic := true
+),
+
+PostInverseForMorphisms := rec(
+  filter_list := [ "category", "morphism" ],
+  io_type := [ [ "alpha" ], [ "alpha_range", "alpha_source" ] ],
+  return_type := "morphism",
+  dual_operation := "PreInverseForMorphisms",
+  is_merely_set_theoretic := true
+),
+
 KernelObject := rec(
   filter_list := [ "category", "morphism" ],
   return_type := "object",

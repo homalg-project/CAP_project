@@ -1310,6 +1310,28 @@ AddDerivationToCAP( InverseForMorphisms,
 end : Description := "InverseForMorphisms using ColiftAlongEpimorphism of an identity morphism" );
 
 ##
+AddDerivationToCAP( PreInverseForMorphisms,
+                    [ [ IdentityMorphism, 1 ],
+                      [ Lift, 1 ] ],
+  
+  function( cat, mor )
+    
+    return Lift( cat, IdentityMorphism( cat, Range( mor ) ), mor );
+    
+end : Description := "PreInverseForMorphisms using IdentityMorphism and Lift" );
+
+##
+AddDerivationToCAP( PostInverseForMorphisms,
+                    [ [ IdentityMorphism, 1 ],
+                      [ Colift, 1 ] ],
+  
+  function( cat, mor )
+    
+    return Colift( cat, mor, IdentityMorphism( cat, Source( mor ) ) );
+    
+end : Description := "PostInverseForMorphisms using IdentityMorphism and Colift" );
+
+##
 AddDerivationToCAP( AdditionForMorphisms,
                     [ [ SumOfMorphisms, 1 ] ],
                     
