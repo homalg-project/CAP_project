@@ -1415,6 +1415,21 @@ InstallMethod( SafePositionProperty,
 end );
 
 ##
+InstallMethod( SafeFirst,
+               [ IsList, IsFunction ],
+               
+  function( list, func )
+    local entry;
+    
+    entry := First( list, func );
+    
+    Assert( 0, entry <> fail );
+    
+    return entry;
+    
+end );
+
+##
 InstallGlobalFunction( NTuple, function ( n, args... )
     
     Assert( 0, Length( args ) = n );

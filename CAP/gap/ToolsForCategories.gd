@@ -274,6 +274,12 @@ DeclareOperation( "SafePosition", [ IsList, IsObject ] );
 DeclareOperation( "SafePositionProperty", [ IsList, IsFunction ] );
 
 #! @Description
+#!   Returns `First( <A>list</A>, <A>func</A> )` while asserting that this value is not `fail`.
+#! @Arguments list, func
+#! @Returns an element of the list
+DeclareOperation( "SafeFirst", [ IsList, IsFunction ] );
+
+#! @Description
 #!   Returns <A>args</A> while asserting that its length is <A>n</A>.
 #! @Arguments n, args...
 #! @Returns a list

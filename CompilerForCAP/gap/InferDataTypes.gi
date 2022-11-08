@@ -1060,6 +1060,12 @@ CapJitAddTypeSignature( "Positions", [ IsList, IsObject ], function ( input_type
     
 end );
 
+CapJitAddTypeSignature( "SafeFirst", [ IsList, IsFunction ], function ( input_types )
+    
+    return input_types[1].element_type;
+    
+end );
+
 CapJitAddTypeSignature( "NTuple", "any", function ( input_types )
     
     Assert( 0, input_types[1].filter = IsInt );

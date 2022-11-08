@@ -70,7 +70,7 @@ Dependencies := rec(
   GAP := ">= 4.12.1",
   NeededOtherPackages := [
       [ "ToolsForHomalg", ">= 2022.09-04" ],
-      [ "CAP", ">= 2022.09-15" ],
+      [ "CAP", ">= 2022.11-10" ],
   ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
