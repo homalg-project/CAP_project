@@ -170,6 +170,10 @@ DeclareProperty( "IsIdempotent",
 #! @Description
 #! The arguments are an object $a$ in a category $C$ and an integer $n$.
 #! The output is a random morphism $\alpha: a \rightarrow b$ for some object $b$ in $C$.
+#! If $C$ is equipped with the methods <C>RandomObjectByInteger</C> and <C>RandomMorphismWithFixedSourceAndRangeByInteger</C>,
+#! then <C>RandomMorphismWithFixedSourceByInteger</C>$(C,a,n)$ can be derived as
+#! <C>RandomMorphismWithFixedSourceAndRangeByInteger</C>($C$,$a$,$b$,$1$+<C>Log2Int</C>($n$)) where
+#! $b$ is computed via <C>RandomObjectByInteger</C>($C$,$n$).
 #! @Returns a morphism in $\mathrm{Hom}(a,b)$
 #! @Arguments a, n
 DeclareOperation( "RandomMorphismWithFixedSourceByInteger",
@@ -186,6 +190,10 @@ DeclareOperation( "RandomMorphismWithFixedSourceByList",
 #! @Description
 #! The arguments are an object $b$ in a category $C$ and an integer $n$.
 #! The output is a random morphism $\alpha: a \rightarrow b$ for some object $a$ in $C$.
+#! If $C$ is equipped with the methods <C>RandomObjectByInteger</C> and <C>RandomMorphismWithFixedSourceAndRangeByInteger</C>,
+#! then <C>RandomMorphismWithFixedRangeByInteger</C>$(C,b,n)$ can be derived as
+#! <C>RandomMorphismWithFixedSourceAndRangeByInteger</C>($C$,$a$,$b$,$1$+<C>Log2Int</C>($n$)) where
+#! $a$ is computed via <C>RandomObjectByInteger</C>($C$,$n$).
 #! @Returns a morphism in $\mathrm{Hom}(a,b)$
 #! @Arguments b, n
 DeclareOperation( "RandomMorphismWithFixedRangeByInteger",
@@ -218,12 +226,20 @@ DeclareOperation( "RandomMorphismWithFixedSourceAndRangeByList",
 
 #! @Description
 #! The arguments are a category $C$ and an integer $n$.
-#! The output is a random morphism in $C$ or <C>fail</C>.
-#! If the methods <C>RandomObjectByInteger</C> and
-#! <C>RandomMorphismWithFixedSourceByInteger</C>(<C>RandomMorphismWithFixedRangeByInteger</C>)
-#! are added to the category $C$, then <C>RandomMorphismByInteger</C> can be
-#! derived to return a random morphism of complexity $n$ with random
-#! source(range) of complexity $n$.
+#! The output is a random morphism in $C$.
+#! The operation can be derived in three different ways:
+#! - If $C$ is equipped with the methods <C>RandomObjectByInteger</C> and <C>RandomMorphismWithFixedSourceAndRangeByInteger</C>,
+#!   then <C>RandomMorphism</C>$(C,n)$ can be derived as
+#!   <C>RandomMorphismWithFixedSourceAndRangeByInteger</C>($C,a,b$,$1$+<C>Log2Int</C>($n$)) where
+#!   $a$ and $b$ are computed via <C>RandomObjectByInteger</C>($C,n$).
+#! - If $C$ is equipped with the methods <C>RandomObjectByInteger</C> and <C>RandomMorphismWithFixedSourceByInteger</C>,
+#!   then <C>RandomMorphism</C>$(C,n)$ can be derived as
+#!   <C>RandomMorphismWithFixedSourceByInteger</C>($C,a,1$+<C>Log2Int</C>($n$)) where
+#!   $a$ is computed via <C>RandomObjectByInteger</C>($C,n$).
+#! - If $C$ is equipped with the methods <C>RandomObjectByInteger</C> and <C>RandomMorphismWithFixedRangeByInteger</C>,
+#!   then <C>RandomMorphism</C>$(C,n)$ can be derived as
+#!   <C>RandomMorphismWithFixedRangeByInteger</C>($C,b,1$+<C>Log2Int</C>($n$)) where
+#!   $b$ is computed via <C>RandomObjectByInteger</C>($C,n$).
 #! @Returns a morphism in $C$
 #! @Arguments C, n
 DeclareOperation( "RandomMorphismByInteger",

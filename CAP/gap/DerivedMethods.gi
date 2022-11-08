@@ -1566,7 +1566,7 @@ AddDerivationToCAP( RandomMorphismByInteger,
 
   function( cat, n )
     
-    return RandomMorphismWithFixedSourceByInteger( cat, RandomObjectByInteger( cat, n ), n );
+    return RandomMorphismWithFixedSourceByInteger( cat, RandomObjectByInteger( cat, n ), 1 + Log2Int( n ) );
     
 end : Description := "RandomMorphismByInteger using RandomObjectByInteger and RandomMorphismWithFixedSourceByInteger" );
 
@@ -1579,7 +1579,7 @@ AddDerivationToCAP( RandomMorphismByInteger,
 
   function( cat, n )
     
-    return RandomMorphismWithFixedRangeByInteger( cat, RandomObjectByInteger( cat, n ), n );
+    return RandomMorphismWithFixedRangeByInteger( cat, RandomObjectByInteger( cat, n ),  1 + Log2Int( n ) );
     
 end : Description := "RandomMorphismByInteger using RandomObjectByInteger and RandomMorphismWithFixedRangeByInteger" );
 
@@ -1592,7 +1592,7 @@ AddDerivationToCAP( RandomMorphismWithFixedSourceByInteger,
 
   function( cat, S, n )
     
-    return RandomMorphismWithFixedSourceAndRangeByInteger( cat, S, RandomObjectByInteger( cat, n ), n );
+    return RandomMorphismWithFixedSourceAndRangeByInteger( cat, S, RandomObjectByInteger( cat, n ), 1 + Log2Int( n ) );
     
 end : CategoryFilter := IsAbCategory,
 Description := "RandomMorphismWithFixedSourceByInteger using RandomObjectByInteger and RandomMorphismWithFixedSourceAndRangeByInteger" );
@@ -1606,7 +1606,7 @@ AddDerivationToCAP( RandomMorphismWithFixedRangeByInteger,
 
   function( cat, R, n )
     
-    return RandomMorphismWithFixedSourceAndRangeByInteger( cat, RandomObjectByInteger( cat, n ), R, n );
+    return RandomMorphismWithFixedSourceAndRangeByInteger( cat, RandomObjectByInteger( cat, n ), R, 1 + Log2Int( n ) );
     
 end : CategoryFilter := IsAbCategory,
 Description := "RandomMorphismWithFixedRangeByInteger using RandomObjectByInteger and RandomMorphismWithFixedSourceAndRangeByInteger" );
@@ -1620,7 +1620,7 @@ AddDerivationToCAP( RandomMorphismByInteger,
 
   function( cat, n )
     
-    return RandomMorphismWithFixedSourceAndRangeByInteger( cat, RandomObjectByInteger( cat, n ), RandomObjectByInteger( cat, n ), n );
+    return RandomMorphismWithFixedSourceAndRangeByInteger( cat, RandomObjectByInteger( cat, n ), RandomObjectByInteger( cat, n ), 1 + Log2Int( n ) );
     
 end : CategoryFilter := IsAbCategory,
 Description := "RandomMorphismByInteger using RandomObjectByInteger and RandomMorphismWithFixedSourceAndRangeByInteger" );
