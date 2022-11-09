@@ -1030,8 +1030,11 @@ end );
 
 CapJitAddTypeSignature( "First", [ IsList, IsFunction ], function ( args, func_stack )
     
-    #Error( "cannot express Is...OrFail yet" );
+    # COVERAGE_IGNORE_BLOCK_START
+    PrintWithCurrentlyCompiledFunctionLocation( "WARNING: `First` might return fail and thus cannot be handled by the type system currently. Please use `SafeFirst` instead." );
+    
     return fail;
+    # COVERAGE_IGNORE_BLOCK_END
     
 end );
 
@@ -1054,10 +1057,13 @@ end );
 
 CapJitAddTypeSignature( "Position", [ IsList, IsObject ], function ( input_types )
     
+    # COVERAGE_IGNORE_BLOCK_START
     Assert( 0, input_types[1].element_type = input_types[2] );
     
-    #Error( "cannot express IsIntOrFail yet" );
+    PrintWithCurrentlyCompiledFunctionLocation( "WARNING: `Position` might return fail and thus cannot be handled by the type system currently. Please use `SafePosition` instead." );
+    
     return fail;
+    # COVERAGE_IGNORE_BLOCK_END
     
 end );
 
