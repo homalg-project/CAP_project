@@ -885,6 +885,23 @@ CapJitAddTypeSignature( "RangeCategoryOfHomomorphismStructure", [ IsCapCategory 
     
 end );
 
+CapJitAddTypeSignature( "CommutativeRingOfLinearCategory", [ IsCapCategory ], function ( input_types )
+  local ring;
+    
+    ring := CommutativeRingOfLinearCategory( input_types[1].category );
+    
+    if IsBoundGlobal( "IsHomalgRing" ) and ValueGlobal( "IsHomalgRing" )( ring ) then
+        
+        return rec( filter := ValueGlobal( "IsHomalgRing" ) );
+        
+    else
+        
+        return rec( filter := IsRing );
+        
+    fi;
+    
+end );
+
 CapJitAddTypeSignature( "CapCategory", [ IsCapCategoryCell ], function ( input_types )
     
     return CapJitDataTypeOfCategory( input_types[1].category );
@@ -1338,6 +1355,8 @@ CapJitAddTypeSignature( "Iterated", [ IsList, IsFunction, IsObject ], function (
 end );
 
 # homalg operations
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "ZeroImmutable", [ "IsHomalgRing" ], "IsHomalgRingElement" );
+
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgMatrix", [ "IsList", "IsInt", "IsInt", "IsHomalgRing" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgMatrixListList", [ "IsList", "IsInt", "IsInt", "IsHomalgRing" ], """function( input_types )
     
@@ -1387,9 +1406,14 @@ CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "CoercedMatrix", [ "IsHomal
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "Pullback", [ "IsHomalgRingMap", "IsHomalgMatrix" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "EntriesOfHomalgMatrix", [ "IsHomalgMatrix" ], "rec( filter := IsList, element_type := rec( filter := IsHomalgRingElement ) )" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "EntriesOfHomalgMatrixAsListList", [ "IsHomalgMatrix" ], "rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsHomalgRingElement ) ) )" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "EntriesOfHomalgRowVector", [ "IsHomalgMatrix" ], "rec( filter := IsList, element_type := rec( filter := IsHomalgRingElement ) )" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "EntriesOfHomalgColumnVector", [ "IsHomalgMatrix" ], "rec( filter := IsList, element_type := rec( filter := IsHomalgRingElement ) )" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "DecideZeroRows", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "DecideZeroColumns", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
 
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "/", [ "IsHomalgRingElement", "IsHomalgRing" ], "IsHomalgRingElement" );
+
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "+", [ "IsHomalgRingElement", "IsHomalgRingElement" ], "IsHomalgRingElement" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "+", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "AdditiveInverseSameMutability", [ "IsHomalgMatrix" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "-", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );

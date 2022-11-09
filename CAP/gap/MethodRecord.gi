@@ -5596,7 +5596,7 @@ CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE( CAP_INTERNAL_METHOD_NAME_RE
 ##
 InstallGlobalFunction( CAP_INTERNAL_GENERATE_DOCUMENTATION_FOR_CATEGORY_INSTANCES,
   function ( subsections, package_name, filename, chapter_name, section_name )
-    local output_string, package_info, current_string, transitively_needed_other_packages, subsection, category, subsection_title, operations, bookname, info, label, match, nr, res, test_string, test_string_legacy, output_path, i, name;
+    local output_string, package_info, current_string, transitively_needed_other_packages, previous_operations, subsection, category, subsection_title, operations, bookname, info, label, match, nr, res, test_string, test_string_legacy, output_path, i, name;
     
     output_string := "";
     
@@ -5634,6 +5634,8 @@ InstallGlobalFunction( CAP_INTERNAL_GENERATE_DOCUMENTATION_FOR_CATEGORY_INSTANCE
     # We do not want to include operations from optional dependencies because those might not be available.
     transitively_needed_other_packages := TransitivelyNeededOtherPackages( package_name );
     
+    previous_operations := [ ];
+    
     for i in [ 1 .. Length( subsections ) ] do
         
         subsection := subsections[i];
@@ -5658,13 +5660,13 @@ InstallGlobalFunction( CAP_INTERNAL_GENERATE_DOCUMENTATION_FOR_CATEGORY_INSTANCE
             
         else
             
-            if not IsSubset( ListInstalledOperationsOfCategory( category ), ListInstalledOperationsOfCategory( subsections[i - 1][1] ) ) then
+            if not IsSubset( ListInstalledOperationsOfCategory( category ), previous_operations ) then
                 
                 Error( "the operations of the ", i - 1, "-th category are not a subset of the operations of the ", i, "-th category" );
                 
             fi;
             
-            operations := AsSortedList( Difference( ListInstalledOperationsOfCategory( category ), ListInstalledOperationsOfCategory( subsections[i - 1][1] ) ) );
+            operations := AsSortedList( Difference( ListInstalledOperationsOfCategory( category ), previous_operations ) );
             
             current_string := "\n\n# ! The following additional CAP operations are supported:";
             
@@ -5763,6 +5765,8 @@ InstallGlobalFunction( CAP_INTERNAL_GENERATE_DOCUMENTATION_FOR_CATEGORY_INSTANCE
                 )
             );
             output_string := Concatenation( output_string, current_string );
+            
+            Add( previous_operations, name );
             
         od;
         

@@ -68,7 +68,7 @@ InstallMethod( RingAsCategoryUniqueObject,
 end );
 
 ##
-InstallMethodForCompilerForCAP( RingAsCategoryMorphismOp,
+InstallMethodForCompilerForCAP( RingAsCategoryMorphism,
                                 [ IsRingAsCategory, IsRingElement ],
                                 
   function( category, element )
@@ -151,7 +151,7 @@ end );
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
   
   function( category )
-    local ring, equality_func, range_category, field, generating_system, indets, l, generating_system_as_column, ring_as_module, distinguished_object, interpret_element_as_row_vector, morphism_constructor, ring_inclusion, k, comb;
+    local ring, equality_func, field, basis_over_base_field, indets, l, basis_over_base_field_as_column_vector, k, comb;
     
     ring := UnderlyingRing( category );
     
@@ -250,14 +250,23 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
     
     if HasIsCommutative( ring ) and IsCommutative( ring ) then
         
+        SetIsLinearCategoryOverCommutativeRing( category, true );
+        
         SetCommutativeRingOfLinearCategory( category, ring );
         
+        ##
         AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
           function( cat, r, alpha )
             
             return RingAsCategoryMorphism( category, r * UnderlyingRingElement( alpha ) );
             
         end );
+        
+        ##
+        AddBasisOfExternalHom( category, { cat, a, b } -> [ RingAsCategoryMorphism( category, One( ring ) ) ] );
+        
+        ##
+        AddCoefficientsOfMorphism( category, { cat, mor } -> [ UnderlyingRingElement( mor ) ] );
         
         ##
         AddLift( category,
@@ -281,63 +290,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
             
         end );
         
-    fi;
-    
-    ## Homomorphism structure
-    
-    generating_system := fail;
-    
-    ## Homomorphism structure for homalg exterior rings over fields
-    if IsHomalgRing( ring ) and HasIsExteriorRing( ring ) and IsExteriorRing( ring ) and IsField( BaseRing( ring ) ) then
-        
-        field := BaseRing( ring );
-        
-        range_category := CategoryOfRows( field );
-        
-        generating_system := [ One( ring ) ];
-        
-        indets := IndeterminatesOfExteriorRing( ring );
-        
-        l := Length( indets );
-        
-        for k in [ 1 .. l ] do
-            for comb in Combinations( indets, k ) do
-                Add( generating_system, Product( comb ) );
-            od;
-        od;
-        
-        generating_system_as_column := HomalgMatrix( generating_system, Length( generating_system ), 1, ring );
-        
-        ring_as_module := function ( )
-            #% CAP_JIT_RESOLVE_FUNCTION
-            
-            return CategoryOfRowsObject( range_category, Length( generating_system ) );
-            
-        end;
-        
-        # field^{1 x 1}
-        distinguished_object := function( )
-            #% CAP_JIT_RESOLVE_FUNCTION
-            
-            return CategoryOfRowsObject( range_category, 1 );
-            
-        end;
-        
-        interpret_element_as_row_vector := function( r )
-            #% CAP_JIT_RESOLVE_FUNCTION
-            
-            return CoercedMatrix( ring, field, CoefficientsWithGivenMonomials( HomalgMatrix( [ r ], 1, 1, ring ), generating_system_as_column ) );
-            
-        end;
-        
-        morphism_constructor := CategoryOfRowsMorphism;
-        
-        ring_inclusion := RingMap( [], field, ring );
-        
-    fi;
-    
-    ## Homomorphism structure for commutative rings, see https://arxiv.org/abs/1908.04132 (Sebastian Posur: Methods of constructive category theory), Example 1.24
-    if HasIsCommutative( ring ) and IsCommutative( ring ) then
+        ## Homomorphism structure for commutative rings, see https://arxiv.org/abs/1908.04132 (Sebastian Posur: Methods of constructive category theory), Example 1.24
         
         ##
         SetRangeCategoryOfHomomorphismStructure( category, category );
@@ -378,73 +331,44 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
         
     fi;
     
-    if generating_system <> fail then
+    if IsHomalgRing( ring ) and HasIsExteriorRing( ring ) and IsExteriorRing( ring ) and IsField( BaseRing( ring ) ) then
         
-        # set attributes
-        MakeImmutable( generating_system );
-        SetGeneratingSystemAsModuleInRangeCategoryOfHomomorphismStructure( category, generating_system );
+        field := BaseRing( ring );
         
-        SetColumnVectorOfGeneratingSystemAsModuleInRangeCategoryOfHomomorphismStructure( category, generating_system_as_column );
+        SetIsLinearCategoryOverCommutativeRing( category, true );
         
-        SetRingInclusionForHomomorphismStructure( category, ring_inclusion );
-        
-        Add( category!.compiler_hints.category_attribute_names, "GeneratingSystemAsModuleInRangeCategoryOfHomomorphismStructure" );
-        Add( category!.compiler_hints.category_attribute_names, "ColumnVectorOfGeneratingSystemAsModuleInRangeCategoryOfHomomorphismStructure" );
-        Add( category!.compiler_hints.category_attribute_names, "RingInclusionForHomomorphismStructure" );
+        SetCommutativeRingOfLinearCategory( category, field );
         
         ##
-        SetRangeCategoryOfHomomorphismStructure( category, range_category );
-        
-        ##
-        AddDistinguishedObjectOfHomomorphismStructure( category, { cat } -> distinguished_object( ) );
-        
-        ##
-        AddHomomorphismStructureOnObjects( category, { cat, a, b } -> ring_as_module( ) );
-        
-        ##
-        AddHomomorphismStructureOnMorphisms( category,
-          function( cat, alpha, beta )
-            local a, b, rows;
+        AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
+          function( cat, r, alpha )
             
-            a := UnderlyingRingElement( alpha );
-            b := UnderlyingRingElement( beta );
-            
-            rows := List( generating_system, function( generator )
-              local res, element;
-                
-                element := a * (generator * b);
-                
-                res := interpret_element_as_row_vector( element );
-                
-                return res;
-                
-            end );
-            
-            return morphism_constructor( range_category, ring_as_module( ), UnionOfRows( UnderlyingRing( range_category ), Length( generating_system ), rows ), ring_as_module( ) );
+            return RingAsCategoryMorphism( category, (r / ring) * UnderlyingRingElement( alpha ) );
             
         end );
         
-        ##
-        AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
-          function( cat, alpha )
-            local decomposition;
-            
-            decomposition := interpret_element_as_row_vector( UnderlyingRingElement( alpha ) );
-            
-            return morphism_constructor( range_category, distinguished_object( ), decomposition, ring_as_module( ) );
-            
-        end );
+        indets := IndeterminatesOfExteriorRing( ring );
+        
+        l := Length( indets );
+        
+        basis_over_base_field := [ One( ring ) ];
+        for k in [ 1 .. l ] do
+            for comb in Combinations( indets, k ) do
+                Add( basis_over_base_field, Product( comb ) );
+            od;
+        od;
+        
+        basis_over_base_field_as_column_vector := HomalgMatrix( basis_over_base_field, Length( basis_over_base_field ), 1, ring );
+        
+        SetBasisOverBaseFieldAsColumnVector( category, basis_over_base_field_as_column_vector );
+        
+        Add( category!.compiler_hints.category_attribute_names, "BasisOverBaseFieldAsColumnVector" );
         
         ##
-        AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
-          function( cat, a, b, mor )
-            local element;
-            
-            element := EntriesOfHomalgMatrix( Pullback( ring_inclusion, UnderlyingMatrix( mor ) ) * generating_system_as_column )[1];
-            
-            return RingAsCategoryMorphism( category, element );
-            
-        end );
+        AddBasisOfExternalHom( category, { cat, a, b } -> List( EntriesOfHomalgColumnVector( basis_over_base_field_as_column_vector ), x -> RingAsCategoryMorphism( cat, x ) ) );
+        
+        ##
+        AddCoefficientsOfMorphism( category, { cat, r } -> EntriesOfHomalgRowVector( CoercedMatrix( ring, field, CoefficientsWithGivenMonomials( HomalgMatrix( [ UnderlyingRingElement( r ) ], 1, 1, ring ), basis_over_base_field_as_column_vector ) ) ) );
         
     fi;
     

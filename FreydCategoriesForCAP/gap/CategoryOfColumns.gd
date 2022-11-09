@@ -60,36 +60,14 @@ DeclareAttribute( "UnderlyingRing",
                   IsCategoryOfColumns );
 CapJitAddTypeSignature( "UnderlyingRing", [ IsCategoryOfColumns ], IsHomalgRing );
 
-DeclareAttribute( "GeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure",
+DeclareAttribute( "BasisOfRingOverBaseFieldAsColumnVector",
                   IsCategoryOfColumns );
 
-CapJitAddTypeSignature( "GeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure", [ IsCategoryOfColumns ], function ( input_types )
-    
-    Assert( 0, IsHomalgRing( UnderlyingRing( input_types[1].category ) ) );
-    
-    return rec( filter := IsList, element_type := rec( filter := IsHomalgRingElement ) );
-    
-end );
-
-DeclareAttribute( "ColumnVectorOfGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure",
-                  IsCategoryOfColumns );
-
-CapJitAddTypeSignature( "ColumnVectorOfGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure", [ IsCategoryOfColumns ], function ( input_types )
+CapJitAddTypeSignature( "BasisOfRingOverBaseFieldAsColumnVector", [ IsCategoryOfColumns ], function ( input_types )
     
     Assert( 0, IsHomalgRing( UnderlyingRing( input_types[1].category ) ) );
     
     return rec( filter := IsHomalgMatrix );
-    
-end );
-
-DeclareAttribute( "RingInclusionForHomomorphismStructure",
-                  IsCategoryOfColumns );
-
-CapJitAddTypeSignature( "RingInclusionForHomomorphismStructure", [ IsCategoryOfColumns ], function ( input_types )
-    
-    Assert( 0, IsHomalgRing( UnderlyingRing( input_types[1].category ) ) );
-    
-    return rec( filter := IsHomalgRingMap );
     
 end );
 

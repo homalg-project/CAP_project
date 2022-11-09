@@ -187,6 +187,8 @@
 #! @Subsection CategoryOfRows of an exterior algebra over a field
 
 #! The following additional CAP operations are supported:
+#! * <Ref BookName="CAP" Func="BasisOfExternalHom" Label="for Is" />
+#! * <Ref BookName="CAP" Func="CoefficientsOfMorphism" Label="for Is" />
 #! * <Ref BookName="CAP" Func="DistinguishedObjectOfHomomorphismStructure" Label="for Is" />
 #! * <Ref BookName="CAP" Func="HomomorphismStructureOnMorphisms" Label="for Is" />
 #! * <Ref BookName="CAP" Func="HomomorphismStructureOnMorphismsWithGivenObjects" Label="for Is" />
@@ -195,6 +197,7 @@
 #! * <Ref BookName="CAP" Func="InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="CAP" Func="InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MereExistenceOfSolutionOfLinearSystemInAbCategory" Label="for Is" />
+#! * <Ref BookName="CAP" Func="MultiplyWithElementOfCommutativeRingForMorphisms" Label="for Is" />
 #! * <Ref BookName="CAP" Func="SolveLinearSystemInAbCategory" Label="for Is" />
 #! * <Ref BookName="CAP" Func="SolveLinearSystemInAbCategoryOrFail" Label="for Is" />
 
@@ -205,7 +208,6 @@
 #! * <Ref BookName="MonoidalCategories" Func="AssociatorLeftToRightWithGivenTensorProducts" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="AssociatorRightToLeft" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="AssociatorRightToLeftWithGivenTensorProducts" Label="for Is" />
-#! * <Ref BookName="CAP" Func="BasisOfExternalHom" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="Braiding" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="BraidingInverse" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="BraidingInverseWithGivenTensorProducts" Label="for Is" />
@@ -227,7 +229,6 @@
 #! * <Ref BookName="MonoidalCategories" Func="CoclosedEvaluationForCoDualWithGivenTensorProduct" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="CoclosedEvaluationMorphism" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="CoclosedEvaluationMorphismWithGivenRange" Label="for Is" />
-#! * <Ref BookName="CAP" Func="CoefficientsOfMorphism" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="CoevaluationForDual" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="CoevaluationForDualWithGivenTensorProduct" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="CoevaluationMorphism" Label="for Is" />
@@ -301,7 +302,6 @@
 #! * <Ref BookName="MonoidalCategories" Func="MorphismToBidualWithGivenBidual" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="MorphismToCoBidual" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="MorphismToCoBidualWithGivenCoBidual" Label="for Is" />
-#! * <Ref BookName="CAP" Func="MultiplyWithElementOfCommutativeRingForMorphisms" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="RankMorphism" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="RightDistributivityExpanding" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="RightDistributivityExpandingWithGivenObjects" Label="for Is" />
