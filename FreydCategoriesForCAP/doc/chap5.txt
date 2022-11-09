@@ -568,6 +568,12 @@
   
   [33X[0;0YThe following additional CAP operations are supported:[133X
   
+  [30X    [33X[0;6Y[2XBasisOfExternalHom[102X  ([14XCAP:  BasisOfExternalHom for IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCoefficientsOfMorphism[102X      ([14XCAP:      CoefficientsOfMorphism      for
+        IsCapCategoryMorphism[114X)[133X
+  
   [30X    [33X[0;6Y[2XDistinguishedObjectOfHomomorphismStructure[102X                       ([14XCAP:
         DistinguishedObjectOfHomomorphismStructure for IsCapCategory[114X)[133X
   
@@ -602,6 +608,10 @@
         MereExistenceOfSolutionOfLinearSystemInAbCategory  for IsList, IsList,
         IsList[114X)[133X
   
+  [30X    [33X[0;6Y[2XMultiplyWithElementOfCommutativeRingForMorphisms[102X                 ([14XCAP:
+        MultiplyWithElementOfCommutativeRingForMorphisms   for  IsRingElement,
+        IsCapCategoryMorphism[114X)[133X
+  
   [30X    [33X[0;6Y[2XSolveLinearSystemInAbCategory[102X  ([14XCAP: SolveLinearSystemInAbCategory for
         IsList, IsList, IsList[114X)[133X
   
@@ -627,9 +637,6 @@
   [30X    [33X[0;6Y[2XAssociatorRightToLeftWithGivenTensorProducts[102X      ([14XMonoidalCategories:
         AssociatorRightToLeftWithGivenTensorProducts  for IsCapCategoryObject,
         IsCapCategoryObject,     IsCapCategoryObject,     IsCapCategoryObject,
-        IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XBasisOfExternalHom[102X  ([14XCAP:  BasisOfExternalHom for IsCapCategoryObject,
         IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XBraiding[102X   ([14XMonoidalCategories:   Braiding   for  IsCapCategoryObject,
@@ -707,9 +714,6 @@
   [30X    [33X[0;6Y[2XCoclosedEvaluationMorphismWithGivenRange[102X          ([14XMonoidalCategories:
         CoclosedEvaluationMorphismWithGivenRange    for   IsCapCategoryObject,
         IsCapCategoryObject, IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XCoefficientsOfMorphism[102X      ([14XCAP:      CoefficientsOfMorphism      for
-        IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XCoevaluationForDual[102X   ([14XMonoidalCategories:   CoevaluationForDual   for
         IsCapCategoryObject[114X)[133X
@@ -1003,10 +1007,6 @@
   [30X    [33X[0;6Y[2XMorphismToCoBidualWithGivenCoBidual[102X               ([14XMonoidalCategories:
         MorphismToCoBidualWithGivenCoBidual      for      IsCapCategoryObject,
         IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XMultiplyWithElementOfCommutativeRingForMorphisms[102X                 ([14XCAP:
-        MultiplyWithElementOfCommutativeRingForMorphisms   for  IsRingElement,
-        IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XRankMorphism[102X        ([14XMonoidalCategories:        RankMorphism       for
         IsCapCategoryObject[114X)[133X

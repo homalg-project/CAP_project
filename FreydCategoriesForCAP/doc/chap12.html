@@ -1968,12 +1968,53 @@ true
 &lt;0&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( delta );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">2 * beta;</span>
-&lt;1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">2 * alpha;</span>
+&lt;4&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Lift( alpha * alpha, alpha );</span>
 &lt;2&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Colift( alpha, alpha * alpha );</span>
 &lt;2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">BasisOfExternalHom( u, u );</span>
+[ &lt;1&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoefficientsOfMorphism( alpha );</span>
+[ 2 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( alpha, SumOfMorphisms( u, ListN( CoefficientsOfMorphism( alpha ), BasisOfExternalHom( u, u ), { x, y } -&gt; MultiplyWithElementOfCommutativeRingForMorphisms( x, y ) ), u ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EEE := KoszulDualRing( HomalgFieldOfRationalsInSingular( ) * "x,y" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CE := RingAsCategory( EEE );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := RingAsCategoryUniqueObject( CE );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := ("2 + 3 * e0 + 4 * e1 + 5 * e0*e1" / EEE) / CE;</span>
+&lt;5*e0*e1+3*e0+4*e1+2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( alpha );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( alpha );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha * alpha;</span>
+&lt;20*e0*e1+12*e0+16*e1+4&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">-alpha;</span>
+&lt;-5*e0*e1-3*e0-4*e1-2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( alpha + AdditiveInverse( alpha ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := IdentityMorphism( u );</span>
+&lt;1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( gamma );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">delta := ZeroMorphism( u, u );</span>
+&lt;0&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( delta );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">2 * alpha;</span>
+&lt;10*e0*e1+6*e0+8*e1+4&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Lift( alpha * alpha, alpha );</span>
+&lt;5*e0*e1+3*e0+4*e1+2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Colift( alpha, alpha * alpha );</span>
+&lt;5*e0*e1+3*e0+4*e1+2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">BasisOfExternalHom( u, u );</span>
+[ &lt;1&gt;, &lt;e0&gt;, &lt;e1&gt;, &lt;e0*e1&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoefficientsOfMorphism( alpha );</span>
+[ 2, 3, 4, 5 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( alpha, SumOfMorphisms( u, ListN( CoefficientsOfMorphism( alpha ), BasisOfExternalHom( u, u ), { x, y } -&gt; MultiplyWithElementOfCommutativeRingForMorphisms( x, y ) ), u ) );</span>
+true
 </pre></div>
 
 <p><a id="X8438072885E4F598" name="X8438072885E4F598"></a></p>
