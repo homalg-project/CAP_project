@@ -39,6 +39,26 @@ end
     , 100 );
     
     ##
+    AddBasisOfExternalHom( cat,
+        
+########
+function ( cat_1, arg2_1, arg3_1 )
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, deduped_4_1, deduped_5_1, deduped_6_1;
+    deduped_6_1 := RankOfObject( arg3_1 );
+    deduped_5_1 := RankOfObject( arg2_1 );
+    deduped_4_1 := deduped_5_1 * deduped_6_1;
+    hoisted_3_1 := deduped_6_1;
+    hoisted_2_1 := deduped_5_1;
+    hoisted_1_1 := HomalgIdentityMatrix( deduped_4_1, UnderlyingRing( cat_1 ) );
+    return List( [ 1 .. deduped_4_1 ], function ( logic_new_func_x_2 )
+            return CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg3_1, UnderlyingMatrix, ConvertRowToMatrix( CertainRows( hoisted_1_1, [ logic_new_func_x_2 ] ), hoisted_2_1, hoisted_3_1 ) );
+        end );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddBraidingWithGivenTensorProducts( cat,
         
 ########
@@ -96,6 +116,17 @@ end
 ########
 function ( cat_1, s_1, a_1, r_1 )
     return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, ConvertMatrixToRow( HomalgIdentityMatrix( RankOfObject( a_1 ), UnderlyingRing( cat_1 ) ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddCoefficientsOfMorphism( cat,
+        
+########
+function ( cat_1, arg2_1 )
+    return EntriesOfHomalgMatrix( UnderlyingMatrix( arg2_1 ) );
 end
 ########
         
