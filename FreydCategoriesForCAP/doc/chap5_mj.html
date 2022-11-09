@@ -30,9 +30,11 @@
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X857355B083E27880">5.1-1 <span class="Heading">CategoryOfRows of an arbitrary ring</span></a>
 </span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X78F8B2517F91E7F8">5.1-2 <span class="Heading">CategoryOfRows of a commutative ring</span></a>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X7E413D9F840A5FA0">5.1-2 <span class="Heading">CategoryOfRows of an exterior algebra over a field</span></a>
 </span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X7E6976E586BA41F7">5.1-3 <span class="Heading">CategoryOfRows of a field</span></a>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X78F8B2517F91E7F8">5.1-3 <span class="Heading">CategoryOfRows of a commutative ring</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X7E6976E586BA41F7">5.1-4 <span class="Heading">CategoryOfRows of a field</span></a>
 </span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5_mj.html#X7D03633A7D98026B">5.2 <span class="Heading">GAP Categories</span></a>
@@ -584,9 +586,48 @@
 
 </li>
 </ul>
+<p><a id="X7E413D9F840A5FA0" name="X7E413D9F840A5FA0"></a></p>
+
+<h5>5.1-2 <span class="Heading">CategoryOfRows of an exterior algebra over a field</span></h5>
+
+<p>The following additional CAP operations are supported:</p>
+
+
+<ul>
+<li><p><code class="func">DistinguishedObjectOfHomomorphismStructure</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X7999CCFF82DA16D7"><span class="RefLink">CAP: DistinguishedObjectOfHomomorphismStructure for IsCapCategory</span></a>)</p>
+
+</li>
+<li><p><code class="func">HomomorphismStructureOnMorphisms</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X8257E3787865C5E0"><span class="RefLink">CAP: HomomorphismStructureOnMorphisms for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">HomomorphismStructureOnMorphismsWithGivenObjects</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X7FBC94B983CBA64F"><span class="RefLink">CAP: HomomorphismStructureOnMorphismsWithGivenObjects for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">HomomorphismStructureOnObjects</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X81BC29A679416C45"><span class="RefLink">CAP: HomomorphismStructureOnObjects for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X81F1237C7DBF7603"><span class="RefLink">CAP: InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X7A5A05C682EB033D"><span class="RefLink">CAP: InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X8760D39C865239E8"><span class="RefLink">CAP: InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">MereExistenceOfSolutionOfLinearSystemInAbCategory</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X7A722FA5817D5F76"><span class="RefLink">CAP: MereExistenceOfSolutionOfLinearSystemInAbCategory for IsList, IsList, IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">SolveLinearSystemInAbCategory</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X7BE5E2687FC110AC"><span class="RefLink">CAP: SolveLinearSystemInAbCategory for IsList, IsList, IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">SolveLinearSystemInAbCategoryOrFail</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X7CAAF16981546CE0"><span class="RefLink">CAP: SolveLinearSystemInAbCategoryOrFail for IsList, IsList, IsList</span></a>)</p>
+
+</li>
+</ul>
 <p><a id="X78F8B2517F91E7F8" name="X78F8B2517F91E7F8"></a></p>
 
-<h5>5.1-2 <span class="Heading">CategoryOfRows of a commutative ring</span></h5>
+<h5>5.1-3 <span class="Heading">CategoryOfRows of a commutative ring</span></h5>
 
 <p>The following additional CAP operations are supported:</p>
 
@@ -685,9 +726,6 @@
 <li><p><code class="func">CoevaluationMorphismWithGivenRange</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X7E8123AD8567A5C0"><span class="RefLink">MonoidalCategories: CoevaluationMorphismWithGivenRange for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
 
 </li>
-<li><p><code class="func">DistinguishedObjectOfHomomorphismStructure</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X7999CCFF82DA16D7"><span class="RefLink">CAP: DistinguishedObjectOfHomomorphismStructure for IsCapCategory</span></a>)</p>
-
-</li>
 <li><p><code class="func">DualOnMorphisms</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X815C0BC47D000819"><span class="RefLink">MonoidalCategories: DualOnMorphisms for IsCapCategoryMorphism</span></a>)</p>
 
 </li>
@@ -707,15 +745,6 @@
 
 </li>
 <li><p><code class="func">EvaluationMorphismWithGivenSource</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X7E42359B7A888F61"><span class="RefLink">MonoidalCategories: EvaluationMorphismWithGivenSource for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
-
-</li>
-<li><p><code class="func">HomomorphismStructureOnMorphisms</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X8257E3787865C5E0"><span class="RefLink">CAP: HomomorphismStructureOnMorphisms for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
-
-</li>
-<li><p><code class="func">HomomorphismStructureOnMorphismsWithGivenObjects</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X7FBC94B983CBA64F"><span class="RefLink">CAP: HomomorphismStructureOnMorphismsWithGivenObjects for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
-
-</li>
-<li><p><code class="func">HomomorphismStructureOnObjects</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X81BC29A679416C45"><span class="RefLink">CAP: HomomorphismStructureOnObjects for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
 
 </li>
 <li><p><code class="func">InternalCoHomOnMorphisms</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X7FDF105D7F56EB53"><span class="RefLink">MonoidalCategories: InternalCoHomOnMorphisms for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
@@ -752,15 +781,6 @@
 
 </li>
 <li><p><code class="func">InternalHomToTensorProductAdjunctionMap</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X7A48DA157CCFB0B9"><span class="RefLink">MonoidalCategories: InternalHomToTensorProductAdjunctionMap for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism</span></a>)</p>
-
-</li>
-<li><p><code class="func">InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X81F1237C7DBF7603"><span class="RefLink">CAP: InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure for IsCapCategoryMorphism</span></a>)</p>
-
-</li>
-<li><p><code class="func">InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X7A5A05C682EB033D"><span class="RefLink">CAP: InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
-
-</li>
-<li><p><code class="func">InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X8760D39C865239E8"><span class="RefLink">CAP: InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism</span></a>)</p>
 
 </li>
 <li><p><code class="func">IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X86C7E40C85318EFA"><span class="RefLink">MonoidalCategories: IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit for IsCapCategoryObject</span></a>)</p>
@@ -839,9 +859,6 @@
 
 </li>
 <li><p><code class="func">LeftUnitorWithGivenTensorProduct</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X7ED284DF7BA21774"><span class="RefLink">MonoidalCategories: LeftUnitorWithGivenTensorProduct for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
-
-</li>
-<li><p><code class="func">MereExistenceOfSolutionOfLinearSystemInAbCategory</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X7A722FA5817D5F76"><span class="RefLink">CAP: MereExistenceOfSolutionOfLinearSystemInAbCategory for IsList, IsList, IsList</span></a>)</p>
 
 </li>
 <li><p><code class="func">MonoidalPostCoComposeMorphism</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X83FE0B8D853A76C1"><span class="RefLink">MonoidalCategories: MonoidalPostCoComposeMorphism for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
@@ -946,12 +963,6 @@
 <li><p><code class="func">RightUnitorWithGivenTensorProduct</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X84C8F97F7BF2282D"><span class="RefLink">MonoidalCategories: RightUnitorWithGivenTensorProduct for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
 
 </li>
-<li><p><code class="func">SolveLinearSystemInAbCategory</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X7BE5E2687FC110AC"><span class="RefLink">CAP: SolveLinearSystemInAbCategory for IsList, IsList, IsList</span></a>)</p>
-
-</li>
-<li><p><code class="func">SolveLinearSystemInAbCategoryOrFail</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X7CAAF16981546CE0"><span class="RefLink">CAP: SolveLinearSystemInAbCategoryOrFail for IsList, IsList, IsList</span></a>)</p>
-
-</li>
 <li><p><code class="func">TensorProductDualityCompatibilityMorphism</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X7D173DB08132E40A"><span class="RefLink">MonoidalCategories: TensorProductDualityCompatibilityMorphism for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
 
 </li>
@@ -1000,7 +1011,7 @@
 </ul>
 <p><a id="X7E6976E586BA41F7" name="X7E6976E586BA41F7"></a></p>
 
-<h5>5.1-3 <span class="Heading">CategoryOfRows of a field</span></h5>
+<h5>5.1-4 <span class="Heading">CategoryOfRows of a field</span></h5>
 
 <p>The following additional CAP operations are supported:</p>
 

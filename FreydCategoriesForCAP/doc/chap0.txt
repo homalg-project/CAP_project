@@ -6,7 +6,7 @@
         [1X Freyd categories - Formal (co)kernels for additive categories [101X
   
   
-                                   2022.11-08
+                                   2022.11-09
   
   
                                 9 November 2022
@@ -204,8 +204,9 @@
   5 [33X[0;0YCategory of rows[133X
     5.1 [33X[0;0YSupported CAP operations[133X
       5.1-1 [33X[0;0YCategoryOfRows of an arbitrary ring[133X
-      5.1-2 [33X[0;0YCategoryOfRows of a commutative ring[133X
-      5.1-3 [33X[0;0YCategoryOfRows of a field[133X
+      5.1-2 [33X[0;0YCategoryOfRows of an exterior algebra over a field[133X
+      5.1-3 [33X[0;0YCategoryOfRows of a commutative ring[133X
+      5.1-4 [33X[0;0YCategoryOfRows of a field[133X
     5.2 [33X[0;0YGAP Categories[133X
       5.2-1 IsCategoryOfRowsObject
     5.3 [33X[0;0YRandom Methods in Category of Rows[133X
