@@ -604,10 +604,6 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INFERRED_DATA_TYPES, function ( tree, in
             
             data_type := rec( filter := IsRecord );
             
-        elif tree.type = "EXPR_AINV" then
-            
-            data_type := tree.op.data_type;
-            
         elif tree.type = "EXPR_CASE" then
             
             if not ForAll( tree.branches, branch -> branch.condition.data_type.filter = IsBool ) then
@@ -911,6 +907,7 @@ end );
 CapJitAddTypeSignature( "RETURN_TRUE", [ IsObject, IsObject ], IsBool );
 CapJitAddTypeSignature( "Length", [ IsList ], IsInt );
 CapJitAddTypeSignature( "+", [ IsInt, IsInt ], IsInt );
+CapJitAddTypeSignature( "AdditiveInverseSameMutability", [ IsInt ], IsInt );
 CapJitAddTypeSignature( "-", [ IsInt, IsInt ], IsInt );
 CapJitAddTypeSignature( "*", [ IsInt, IsInt ], IsInt );
 CapJitAddTypeSignature( "^", [ IsInt, IsInt ], IsInt );
@@ -1031,7 +1028,7 @@ CapJitAddTypeSignature( "SSortedList", [ IsList ], function ( input_types )
     
 end );
 
-CapJitAddTypeSignature( "First", [ IsList, IsObject ], function ( input_types )
+CapJitAddTypeSignature( "First", [ IsList, IsFunction ], function ( args, func_stack )
     
     #Error( "cannot express Is...OrFail yet" );
     return fail;
@@ -1319,7 +1316,14 @@ end );
 
 # homalg operations
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgMatrix", [ "IsList", "IsInt", "IsInt", "IsHomalgRing" ], "IsHomalgMatrix" );
-CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgMatrixListList", [ "IsList", "IsInt", "IsInt", "IsHomalgRing" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgMatrixListList", [ "IsList", "IsInt", "IsInt", "IsHomalgRing" ], """function( input_types )
+    
+    Assert( 0, input_types[1].element_type.filter = IsList );
+    Assert( 0, input_types[1].element_type.element_type.filter in [ IsHomalgRingElement, IsInt, IsRat ] );
+    
+    return rec( filter := IsHomalgMatrix );
+    
+end""" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgIdentityMatrix", [ "IsInt", "IsHomalgRing" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgZeroMatrix", [ "IsInt", "IsInt", "IsHomalgRing" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "RandomMatrix", [ "IsInt", "IsInt", "IsHomalgRing" ], "IsHomalgMatrix" );
@@ -1364,6 +1368,7 @@ CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "DecideZeroRows", [ "IsHoma
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "DecideZeroColumns", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
 
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "+", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "AdditiveInverseSameMutability", [ "IsHomalgMatrix" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "-", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
 
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "*", [ "IsHomalgRingElement", "IsHomalgRingElement" ], "IsHomalgRingElement" );
@@ -1382,6 +1387,7 @@ CapJitAddTypeSignatureDeferred( "QPA", "PathAsAlgebraElement", [ "IsQuiverAlgebr
 CapJitAddTypeSignatureDeferred( "QPA", "QuiverAlgebraElement", [ "IsQuiverAlgebra", "IsList", "IsList" ], "IsQuiverAlgebraElement" );
 CapJitAddTypeSignatureDeferred( "QPA", "IsZero", [ "IsQuiverAlgebraElement" ], "IsBool" );
 CapJitAddTypeSignatureDeferred( "QPA", "+", [ "IsQuiverAlgebraElement", "IsQuiverAlgebraElement" ], "IsQuiverAlgebraElement" );
+CapJitAddTypeSignatureDeferred( "QPA", "AdditiveInverseSameMutability", [ "IsQuiverAlgebraElement" ], "IsQuiverAlgebraElement" );
 CapJitAddTypeSignatureDeferred( "QPA", "*", [ "IsQuiverAlgebraElement", "IsQuiverAlgebraElement" ], "IsQuiverAlgebraElement" );
 CapJitAddTypeSignatureDeferred( "QPA", "QuiverOfPath", [ "IsPath" ], "IsQuiver" );
 CapJitAddTypeSignatureDeferred( "QPA", "Source", [ "IsPath" ], "IsQuiverVertex" );

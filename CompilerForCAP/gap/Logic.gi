@@ -732,6 +732,15 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                     attribute_name := return_obj.args.4.gvar;
                     
                 elif
+                    # Source and Range are global variables
+                    source.type = "EXPR_REF_GVAR" and range.type = "EXPR_REF_GVAR"
+                then
+                    
+                    case := "global_variables";
+                    
+                    attribute_name := return_obj.args.4.gvar;
+                    
+                elif
                     # Source and Range can be recovered from compiler hints
                     IsBound( cat!.compiler_hints ) and IsBound( cat!.compiler_hints.source_and_range_attributes_from_morphism_attribute )
                 then
@@ -971,6 +980,33 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                                         CapJitCopyWithNewFunctionIDs( initial_value_morphism )
                                     ] ),
                                 ),
+                                # the attribute
+                                return_obj.args.4,
+                                # the func call with new args
+                                rec(
+                                    type := "EXPR_FUNCCALL",
+                                    funcref := tree.funcref,
+                                    args := new_args,
+                                ),
+                            ] ),
+                        );
+                        
+                    elif case = "global_variables" then
+                        
+                        # func call to CreateCapCategoryMorphismWithAttributes
+                        new_tree := rec(
+                            type := "EXPR_FUNCCALL",
+                            funcref := rec(
+                                type := "EXPR_REF_GVAR",
+                                gvar := "CreateCapCategoryMorphismWithAttributes"
+                            ),
+                            args := AsSyntaxTreeList( [
+                                # the category
+                                return_obj.args.1,
+                                # the source
+                                source,
+                                # the range
+                                range,
                                 # the attribute
                                 return_obj.args.4,
                                 # the func call with new args

@@ -1116,6 +1116,22 @@ InstallGlobalFunction( "CapJitAddTypeSignature", function ( name, input_filters,
             
         fi;
         
+        if ForAny( input_filters, f -> IsSpecializationOfFilter( IsFunction, f ) ) and (not IsFunction( output_data_type ) or NumberArgumentsFunction( output_data_type ) <> 2) then
+            
+            if not name in [ "CreateCapCategoryObjectWithAttributes", "CreateCapCategoryMorphismWithAttributes" ] then
+                
+                # COVERAGE_IGNORE_BLOCK_START
+                Print(
+                    "WARNING: You are adding a type signature for ", name, " which can get a function as input but you do not compute the signature of the function. ",
+                    "This will work for references to global functions but not for literal functions. ",
+                    "See `List` in `CompilerForCAP/gap/InferDataTypes.gi` for an example of how to handle the signature of functions properly.\n"
+                );
+                # COVERAGE_IGNORE_BLOCK_END
+                
+            fi;
+            
+        fi;
+        
     fi;
     
     if not IsBound( CAP_JIT_INTERNAL_TYPE_SIGNATURES.(name) ) then

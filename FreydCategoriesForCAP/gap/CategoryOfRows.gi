@@ -1348,7 +1348,7 @@ AddFinalDerivationBundle( # DistinguishedObjectOfHomomorphismStructure,
   function ( cat, a, b, iota )
     local coeffs, basis;
     
-    coeffs := EntriesOfHomalgMatrix( UnderlyingMatrix( iota ) );
+    coeffs := EntriesOfHomalgRowVector( UnderlyingMatrix( iota ) );
     
     basis := BasisOfExternalHom( cat, a, b );
     
