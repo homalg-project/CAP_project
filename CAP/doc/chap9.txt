@@ -349,28 +349,35 @@
   [33X[0;0YReturns  [10XPositionProperty(  [3Xlist[103X[10X,  [3Xfunc[103X[10X )[110X while asserting that this value is
   not [10Xfail[110X.[133X
   
-  [1X9.2-36 NTuple[101X
+  [1X9.2-36 SafeFirst[101X
+  
+  [33X[1;0Y[29X[2XSafeFirst[102X( [3Xlist[103X, [3Xfunc[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan element of the list[133X
+  
+  [33X[0;0YReturns [10XFirst( [3Xlist[103X[10X, [3Xfunc[103X[10X )[110X while asserting that this value is not [10Xfail[110X.[133X
+  
+  [1X9.2-37 NTuple[101X
   
   [33X[1;0Y[29X[2XNTuple[102X( [3Xn[103X, [3Xargs...[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
   
   [33X[0;0YReturns [3Xargs[103X while asserting that its length is [3Xn[103X.[133X
   
-  [1X9.2-37 Pair[101X
+  [1X9.2-38 Pair[101X
   
   [33X[1;0Y[29X[2XPair[102X( [3Xfirst[103X, [3Xsecond[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
   
   [33X[0;0YAlias for [10XNTuple( 2, [3Xfirst[103X[10X, [3Xsecond[103X[10X )[110X.[133X
   
-  [1X9.2-38 Triple[101X
+  [1X9.2-39 Triple[101X
   
   [33X[1;0Y[29X[2XTriple[102X( [3Xfirst[103X, [3Xsecond[103X, [3Xthird[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
   
   [33X[0;0YAlias for [10XNTuple( 3, [3Xfirst[103X[10X, [3Xsecond[103X[10X, [3Xthird[103X[10X )[110X.[133X
   
-  [1X9.2-39 HandlePrecompiledTowers[101X
+  [1X9.2-40 HandlePrecompiledTowers[101X
   
   [33X[1;0Y[29X[2XHandlePrecompiledTowers[102X( [3Xcategory[103X, [3Xunderlying_category[103X, [3Xconstructor_name[103X ) [32X function[133X
   
@@ -394,14 +401,14 @@
   [3Xconstructor_name[103X  is  the  only  entry of [10Xremaining_constructors_in_tower[110X of
   multiple entries.[133X
   
-  [1X9.2-40 CAP_JIT_INCOMPLETE_LOGIC[101X
+  [1X9.2-41 CAP_JIT_INCOMPLETE_LOGIC[101X
   
   [33X[1;0Y[29X[2XCAP_JIT_INCOMPLETE_LOGIC[102X( [3Xvalue[103X ) [32X function[133X
   
   [33X[0;0YSimply  returns  [3Xvalue[103X.  Used  to signify that the argument is not fully run
   through all logic functions/templates by CompilerForCAP.[133X
   
-  [1X9.2-41 ListWithKeys[101X
+  [1X9.2-42 ListWithKeys[101X
   
   [33X[1;0Y[29X[2XListWithKeys[102X( [3Xlist[103X, [3Xfunc[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
@@ -409,7 +416,7 @@
   [33X[0;0YSame  as  [10XList(  [3Xlist[103X[10X,  [3Xfunc[103X[10X  )[110X  but [3Xfunc[103X gets both the key [10Xi[110X and [10X[3Xlist[103X[10X[i][110X as
   arguments.[133X
   
-  [1X9.2-42 SumWithKeys[101X
+  [1X9.2-43 SumWithKeys[101X
   
   [33X[1;0Y[29X[2XSumWithKeys[102X( [3Xlist[103X, [3Xfunc[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
@@ -417,7 +424,7 @@
   [33X[0;0YSame  as  [10XSum(  [3Xlist[103X[10X,  [3Xfunc[103X[10X  )[110X  but  [3Xfunc[103X gets both the key [10Xi[110X and [10X[3Xlist[103X[10X[i][110X as
   arguments.[133X
   
-  [1X9.2-43 ProductWithKeys[101X
+  [1X9.2-44 ProductWithKeys[101X
   
   [33X[1;0Y[29X[2XProductWithKeys[102X( [3Xlist[103X, [3Xfunc[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
@@ -425,7 +432,7 @@
   [33X[0;0YSame  as  [10XProduct(  [3Xlist[103X[10X, [3Xfunc[103X[10X )[110X but [3Xfunc[103X gets both the key [10Xi[110X and [10X[3Xlist[103X[10X[i][110X as
   arguments.[133X
   
-  [1X9.2-44 ForAllWithKeys[101X
+  [1X9.2-45 ForAllWithKeys[101X
   
   [33X[1;0Y[29X[2XForAllWithKeys[102X( [3Xlist[103X, [3Xfunc[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
@@ -433,7 +440,7 @@
   [33X[0;0YSame  as  [10XForAll(  [3Xlist[103X[10X,  [3Xfunc[103X[10X )[110X but [3Xfunc[103X gets both the key [10Xi[110X and [10X[3Xlist[103X[10X[i][110X as
   arguments.[133X
   
-  [1X9.2-45 ForAnyWithKeys[101X
+  [1X9.2-46 ForAnyWithKeys[101X
   
   [33X[1;0Y[29X[2XForAnyWithKeys[102X( [3Xlist[103X, [3Xfunc[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
@@ -441,7 +448,7 @@
   [33X[0;0YSame  as  [10XForAny(  [3Xlist[103X[10X,  [3Xfunc[103X[10X )[110X but [3Xfunc[103X gets both the key [10Xi[110X and [10X[3Xlist[103X[10X[i][110X as
   arguments.[133X
   
-  [1X9.2-46 NumberWithKeys[101X
+  [1X9.2-47 NumberWithKeys[101X
   
   [33X[1;0Y[29X[2XNumberWithKeys[102X( [3Xlist[103X, [3Xfunc[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
@@ -449,7 +456,7 @@
   [33X[0;0YSame  as  [10XNumber(  [3Xlist[103X[10X,  [3Xfunc[103X[10X )[110X but [3Xfunc[103X gets both the key [10Xi[110X and [10X[3Xlist[103X[10X[i][110X as
   arguments.[133X
   
-  [1X9.2-47 FilteredWithKeys[101X
+  [1X9.2-48 FilteredWithKeys[101X
   
   [33X[1;0Y[29X[2XFilteredWithKeys[102X( [3Xlist[103X, [3Xfunc[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
@@ -457,7 +464,7 @@
   [33X[0;0YSame  as  [10XFiltered( [3Xlist[103X[10X, [3Xfunc[103X[10X )[110X but [3Xfunc[103X gets both the key [10Xi[110X and [10X[3Xlist[103X[10X[i][110X as
   arguments.[133X
   
-  [1X9.2-48 FirstWithKeys[101X
+  [1X9.2-49 FirstWithKeys[101X
   
   [33X[1;0Y[29X[2XFirstWithKeys[102X( [3Xlist[103X, [3Xfunc[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
@@ -465,7 +472,7 @@
   [33X[0;0YSame  as  [10XFirst(  [3Xlist[103X[10X,  [3Xfunc[103X[10X  )[110X but [3Xfunc[103X gets both the key [10Xi[110X and [10X[3Xlist[103X[10X[i][110X as
   arguments.[133X
   
-  [1X9.2-49 LastWithKeys[101X
+  [1X9.2-50 LastWithKeys[101X
   
   [33X[1;0Y[29X[2XLastWithKeys[102X( [3Xlist[103X, [3Xfunc[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
