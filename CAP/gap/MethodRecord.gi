@@ -5658,6 +5658,12 @@ InstallGlobalFunction( CAP_INTERNAL_GENERATE_DOCUMENTATION_FOR_CATEGORY_INSTANCE
             
         else
             
+            if not IsSubset( ListInstalledOperationsOfCategory( category ), ListInstalledOperationsOfCategory( subsections[i - 1][1] ) ) then
+                
+                Error( "the operations of the ", i - 1, "-th category are not a subset of the operations of the ", i, "-th category" );
+                
+            fi;
+            
             operations := AsSortedList( Difference( ListInstalledOperationsOfCategory( category ), ListInstalledOperationsOfCategory( subsections[i - 1][1] ) ) );
             
             current_string := "\n\n# ! The following additional CAP operations are supported:";
