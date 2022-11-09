@@ -31,7 +31,7 @@ for coverage_filename in Path("../").glob("**/coverage*.json"):
         data = json.load(json_file)
         files = data["coverage"]
         for filename, lines_covered in files.items():
-            if filename.startswith(os.getcwd() + "/"):
+            if filename.startswith(os.getcwd() + "/") and not filename.endswith("manual.six"):
                 print(" processing code file " + filename)
                 # ignored lines will be delete from lines_covered in-place
                 new_data["coverage"][filename.replace(os.getcwd() + "/", "", 1)] = lines_covered
