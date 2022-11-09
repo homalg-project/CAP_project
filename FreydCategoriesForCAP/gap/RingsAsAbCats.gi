@@ -68,7 +68,7 @@ InstallMethod( RingAsCategoryUniqueObject,
 end );
 
 ##
-InstallMethodForCompilerForCAP( RingAsCategoryMorphismOp,
+InstallMethodForCompilerForCAP( RingAsCategoryMorphism,
                                 [ IsRingAsCategory, IsRingElement ],
                                 
   function( category, element )

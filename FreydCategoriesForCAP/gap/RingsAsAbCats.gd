@@ -45,10 +45,7 @@ CapJitAddTypeSignature( "RingAsCategoryUniqueObject", [ IsRingAsCategory ], func
 end );
 
 DeclareOperation( "RingAsCategoryMorphism",
-                  [ IsRingElement, IsRingAsCategory ] );
-
-KeyDependentOperation( "RingAsCategoryMorphism", IsRingAsCategory, IsRingElement, ReturnTrue );
-
+                  [ IsRingAsCategory, IsRingElement ] );
 
 ####################################
 ##
