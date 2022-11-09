@@ -262,10 +262,16 @@
   
   [30X    [33X[0;6Y[2XPostComposeList[102X ([14XCAP: PostComposeList for IsList[114X)[133X
   
+  [30X    [33X[0;6Y[2XPostInverseForMorphisms[102X      ([14XCAP:     PostInverseForMorphisms     for
+        IsCapCategoryMorphism[114X)[133X
+  
   [30X    [33X[0;6Y[2XPreCompose[102X     ([14XCAP:     PreCompose     for     IsCapCategoryMorphism,
         IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XPreComposeList[102X ([14XCAP: PreComposeList for IsList[114X)[133X
+  
+  [30X    [33X[0;6Y[2XPreInverseForMorphisms[102X      ([14XCAP:      PreInverseForMorphisms      for
+        IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XProjectionInFactorOfDirectProduct[102X                                ([14XCAP:
         ProjectionInFactorOfDirectProduct for IsList, IsInt[114X)[133X
