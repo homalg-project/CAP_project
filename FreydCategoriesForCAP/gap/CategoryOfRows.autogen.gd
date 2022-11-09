@@ -184,6 +184,20 @@
 #! * <Ref BookName="CAP" Func="ZeroObjectFunctorial" Label="for Is" />
 #! * <Ref BookName="CAP" Func="ZeroObjectFunctorialWithGivenZeroObjects" Label="for Is" />
 
+#! @Subsection CategoryOfRows of an exterior algebra over a field
+
+#! The following additional CAP operations are supported:
+#! * <Ref BookName="CAP" Func="DistinguishedObjectOfHomomorphismStructure" Label="for Is" />
+#! * <Ref BookName="CAP" Func="HomomorphismStructureOnMorphisms" Label="for Is" />
+#! * <Ref BookName="CAP" Func="HomomorphismStructureOnMorphismsWithGivenObjects" Label="for Is" />
+#! * <Ref BookName="CAP" Func="HomomorphismStructureOnObjects" Label="for Is" />
+#! * <Ref BookName="CAP" Func="InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" Label="for Is" />
+#! * <Ref BookName="CAP" Func="InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects" Label="for Is" />
+#! * <Ref BookName="CAP" Func="InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" Label="for Is" />
+#! * <Ref BookName="CAP" Func="MereExistenceOfSolutionOfLinearSystemInAbCategory" Label="for Is" />
+#! * <Ref BookName="CAP" Func="SolveLinearSystemInAbCategory" Label="for Is" />
+#! * <Ref BookName="CAP" Func="SolveLinearSystemInAbCategoryOrFail" Label="for Is" />
+
 #! @Subsection CategoryOfRows of a commutative ring
 
 #! The following additional CAP operations are supported:
@@ -218,7 +232,6 @@
 #! * <Ref BookName="MonoidalCategories" Func="CoevaluationForDualWithGivenTensorProduct" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="CoevaluationMorphism" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="CoevaluationMorphismWithGivenRange" Label="for Is" />
-#! * <Ref BookName="CAP" Func="DistinguishedObjectOfHomomorphismStructure" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="DualOnMorphisms" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="DualOnMorphismsWithGivenDuals" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="DualOnObjects" Label="for Is" />
@@ -226,9 +239,6 @@
 #! * <Ref BookName="MonoidalCategories" Func="EvaluationForDualWithGivenTensorProduct" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="EvaluationMorphism" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="EvaluationMorphismWithGivenSource" Label="for Is" />
-#! * <Ref BookName="CAP" Func="HomomorphismStructureOnMorphisms" Label="for Is" />
-#! * <Ref BookName="CAP" Func="HomomorphismStructureOnMorphismsWithGivenObjects" Label="for Is" />
-#! * <Ref BookName="CAP" Func="HomomorphismStructureOnObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="InternalCoHomOnMorphisms" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="InternalCoHomOnMorphismsWithGivenInternalCoHoms" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="InternalCoHomOnObjects" Label="for Is" />
@@ -241,9 +251,6 @@
 #! * <Ref BookName="MonoidalCategories" Func="InternalHomOnMorphismsWithGivenInternalHoms" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="InternalHomOnObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="InternalHomToTensorProductAdjunctionMap" Label="for Is" />
-#! * <Ref BookName="CAP" Func="InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" Label="for Is" />
-#! * <Ref BookName="CAP" Func="InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects" Label="for Is" />
-#! * <Ref BookName="CAP" Func="InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="IsomorphismFromDualObjectToInternalHomIntoTensorUnit" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject" Label="for Is" />
@@ -270,7 +277,6 @@
 #! * <Ref BookName="MonoidalCategories" Func="LeftUnitorInverse" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="LeftUnitorInverseWithGivenTensorProduct" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="LeftUnitorWithGivenTensorProduct" Label="for Is" />
-#! * <Ref BookName="CAP" Func="MereExistenceOfSolutionOfLinearSystemInAbCategory" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="MonoidalPostCoComposeMorphism" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="MonoidalPostCoComposeMorphismWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="MonoidalPostComposeMorphism" Label="for Is" />
@@ -305,8 +311,6 @@
 #! * <Ref BookName="MonoidalCategories" Func="RightUnitorInverse" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="RightUnitorInverseWithGivenTensorProduct" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="RightUnitorWithGivenTensorProduct" Label="for Is" />
-#! * <Ref BookName="CAP" Func="SolveLinearSystemInAbCategory" Label="for Is" />
-#! * <Ref BookName="CAP" Func="SolveLinearSystemInAbCategoryOrFail" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductDualityCompatibilityMorphism" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductDualityCompatibilityMorphismWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductInternalHomCompatibilityMorphism" Label="for Is" />
