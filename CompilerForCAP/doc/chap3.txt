@@ -439,7 +439,7 @@
     [4X[25Xgap>[125X [27Xprecompile_CategoryOfColumns := function( homalg_ring, name )[127X[104X
     [4X[25X>[125X [27X    [127X[104X
     [4X[25X>[125X [27X    CapJitPrecompileCategoryAndCompareResult([127X[104X
-    [4X[25X>[125X [27X        homalg_ring -> CategoryOfColumnsAsOppositeOfCategoryOfRows([127X[104X
+    [4X[25X>[125X [27X        homalg_ring -> CategoryOfColumns([127X[104X
     [4X[25X>[125X [27X            homalg_ring[127X[104X
     [4X[25X>[125X [27X        ),[127X[104X
     [4X[25X>[125X [27X        [ homalg_ring ],[127X[104X
@@ -479,23 +479,10 @@
     [4X[25Xgap>[125X [27XQQxy := QQ * "x,y";;[127X[104X
     [4X[25Xgap>[125X [27XEQQxy := KoszulDualRing( QQxy );;[127X[104X
     [4X[25Xgap>[125X [27XR := KoszulDualRing( HomalgRingOfIntegersInSingular( ) * "x,y" );;[127X[104X
-    [4X[25Xgap>[125X [27Xhom_structure_operations := [[127X[104X
-    [4X[25X>[125X [27X    "DistinguishedObjectOfHomomorphismStructure",[127X[104X
-    [4X[25X>[125X [27X    "HomomorphismStructureOnObjects",[127X[104X
-    [4X[25X>[125X [27X    "HomomorphismStructureOnMorphismsWithGivenObjects",[127X[104X
-    [4X[25X>[125X [27X    Concatenation([127X[104X
-    [4X[25X>[125X [27X        "InterpretMorphismAsMorphismFromDistinguishedObject",[127X[104X
-    [4X[25X>[125X [27X        "ToHomomorphismStructureWithGivenObjects"[127X[104X
-    [4X[25X>[125X [27X    ),[127X[104X
-    [4X[25X>[125X [27X    Concatenation([127X[104X
-    [4X[25X>[125X [27X        "InterpretMorphismFromDistinguishedObject",[127X[104X
-    [4X[25X>[125X [27X        "ToHomomorphismStructureAsMorphism"[127X[104X
-    [4X[25X>[125X [27X    ),[127X[104X
-    [4X[25X>[125X [27X];;[127X[104X
-    [4X[25Xgap>[125X [27Xprecompile_CategoryOfRows := function( homalg_ring, name, operations )[127X[104X
+    [4X[25Xgap>[125X [27Xprecompile_CategoryOfRows := function( homalg_ring, name )[127X[104X
     [4X[25X>[125X [27X    [127X[104X
     [4X[25X>[125X [27X    CapJitPrecompileCategoryAndCompareResult([127X[104X
-    [4X[25X>[125X [27X        homalg_ring -> CategoryOfRowsAsAdditiveClosureOfRingAsCategory([127X[104X
+    [4X[25X>[125X [27X        homalg_ring -> CategoryOfRows([127X[104X
     [4X[25X>[125X [27X            homalg_ring[127X[104X
     [4X[25X>[125X [27X        ),[127X[104X
     [4X[25X>[125X [27X        [ homalg_ring ],[127X[104X
@@ -505,24 +492,16 @@
     [4X[25X>[125X [27X            name,[127X[104X
     [4X[25X>[125X [27X            "Precompiled"[127X[104X
     [4X[25X>[125X [27X        ) :[127X[104X
-    [4X[25X>[125X [27X        operations := operations,[127X[104X
+    [4X[25X>[125X [27X        operations := "primitive",[127X[104X
     [4X[25X>[125X [27X        number_of_objectified_objects_in_data_structure_of_object := 1,[127X[104X
     [4X[25X>[125X [27X        number_of_objectified_morphisms_in_data_structure_of_object := 0,[127X[104X
     [4X[25X>[125X [27X        number_of_objectified_objects_in_data_structure_of_morphism := 2,[127X[104X
     [4X[25X>[125X [27X        number_of_objectified_morphisms_in_data_structure_of_morphism := 1[127X[104X
     [4X[25X>[125X [27X    ); end;;[127X[104X
-    [4X[25Xgap>[125X [27Xprecompile_CategoryOfRows([127X[104X
-    [4X[25X>[125X [27X    QQ, "Field", hom_structure_operations[127X[104X
-    [4X[25X>[125X [27X);;[127X[104X
-    [4X[25Xgap>[125X [27Xprecompile_CategoryOfRows([127X[104X
-    [4X[25X>[125X [27X    QQxy, "CommutativeRing", hom_structure_operations[127X[104X
-    [4X[25X>[125X [27X);;[127X[104X
-    [4X[25Xgap>[125X [27Xprecompile_CategoryOfRows([127X[104X
-    [4X[25X>[125X [27X    EQQxy, "HomalgExteriorRingOverField", hom_structure_operations[127X[104X
-    [4X[25X>[125X [27X);;[127X[104X
-    [4X[25Xgap>[125X [27Xprecompile_CategoryOfRows([127X[104X
-    [4X[25X>[125X [27X    R, "ArbitraryRing", [ ][127X[104X
-    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27Xprecompile_CategoryOfRows( QQ, "Field" );;[127X[104X
+    [4X[25Xgap>[125X [27Xprecompile_CategoryOfRows( QQxy, "CommutativeRing" );;[127X[104X
+    [4X[25Xgap>[125X [27Xprecompile_CategoryOfRows( EQQxy, "HomalgExteriorRingOverField" );;[127X[104X
+    [4X[25Xgap>[125X [27Xprecompile_CategoryOfRows( R, "ArbitraryRing" );;[127X[104X
     [4X[25Xgap>[125X [27XCategoryOfRows( QQ )!.precompiled_functions_added;[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XCategoryOfRows( QQxy )!.precompiled_functions_added;[127X[104X
