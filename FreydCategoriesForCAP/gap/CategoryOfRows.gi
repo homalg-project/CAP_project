@@ -59,10 +59,6 @@ InstallMethod( CategoryOfRows,
         
         SetIsRigidSymmetricCoclosedMonoidalCategory( cat, true );
         
-        SetIsLinearCategoryOverCommutativeRing( cat, true );
-        
-        SetCommutativeRingOfLinearCategory( cat, homalg_ring );
-        
     fi;
     
     INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS( cat );
@@ -743,31 +739,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
       AddIsInjective( category, { cat, obj } -> true );
       
       ##
-      AddBasisOfExternalHom( category,
-        function( cat, S, T )
-          local s, t, identity, matrices;
-          
-          s := RankOfObject( S );
-          
-          t := RankOfObject( T );
-          
-          identity := HomalgIdentityMatrix( s * t, UnderlyingRing( cat ) );
-          
-          matrices := List( [ 1 .. s * t ], i -> ConvertRowToMatrix( CertainRows( identity, [ i ] ), s, t ) );
-          
-          return List( matrices, mat -> CategoryOfRowsMorphism( cat, S, mat, T ) );
-          
-      end );
-      
-      ##
-      AddCoefficientsOfMorphism( category,
-        function( cat, morphism )
-          
-          return EntriesOfHomalgMatrix( UnderlyingMatrix( morphism ) );
-          
-      end );
-      
-      ##
       AddKernelObject( category,
         function( cat, morphism )
           
@@ -878,11 +849,40 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     if HasIsCommutative( ring ) and IsCommutative( ring ) then
         
+        SetIsLinearCategoryOverCommutativeRing( category, true );
+        
+        SetCommutativeRingOfLinearCategory( category, ring );
+        
         ##
         AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
           function( cat, r, alpha )
             
             return CategoryOfRowsMorphism( cat, Source( alpha ), r * UnderlyingMatrix( alpha ), Range( alpha ) );
+            
+        end );
+        
+        ##
+        AddBasisOfExternalHom( category,
+          function( cat, S, T )
+            local s, t, identity, matrices;
+            
+            s := RankOfObject( S );
+            
+            t := RankOfObject( T );
+            
+            identity := HomalgIdentityMatrix( s * t, UnderlyingRing( cat ) );
+            
+            matrices := List( [ 1 .. s * t ], i -> ConvertRowToMatrix( CertainRows( identity, [ i ] ), s, t ) );
+            
+            return List( matrices, mat -> CategoryOfRowsMorphism( cat, S, mat, T ) );
+            
+        end );
+        
+        ##
+        AddCoefficientsOfMorphism( category,
+          function( cat, morphism )
+            
+            return EntriesOfHomalgMatrix( UnderlyingMatrix( morphism ) );
             
         end );
         
