@@ -584,6 +584,9 @@
         IsCapCategoryObject,     IsCapCategoryObject,     IsCapCategoryObject,
         IsCapCategoryObject[114X)[133X
   
+  [30X    [33X[0;6Y[2XBasisOfExternalHom[102X  ([14XCAP:  BasisOfExternalHom for IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
+  
   [30X    [33X[0;6Y[2XBraiding[102X   ([14XMonoidalCategories:   Braiding   for  IsCapCategoryObject,
         IsCapCategoryObject[114X)[133X
   
@@ -659,6 +662,9 @@
   [30X    [33X[0;6Y[2XCoclosedEvaluationMorphismWithGivenRange[102X          ([14XMonoidalCategories:
         CoclosedEvaluationMorphismWithGivenRange    for   IsCapCategoryObject,
         IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCoefficientsOfMorphism[102X      ([14XCAP:      CoefficientsOfMorphism      for
+        IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XCoevaluationForDual[102X   ([14XMonoidalCategories:   CoevaluationForDual   for
         IsCapCategoryObject[114X)[133X
@@ -1096,18 +1102,12 @@
         AstrictionToCoimageWithGivenCoimageObject  for  IsCapCategoryMorphism,
         IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XBasisOfExternalHom[102X  ([14XCAP:  BasisOfExternalHom for IsCapCategoryObject,
-        IsCapCategoryObject[114X)[133X
-  
   [30X    [33X[0;6Y[2XCoastrictionToImage[102X        ([14XCAP:        CoastrictionToImage        for
         IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XCoastrictionToImageWithGivenImageObject[102X                          ([14XCAP:
         CoastrictionToImageWithGivenImageObject   for   IsCapCategoryMorphism,
         IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XCoefficientsOfMorphism[102X      ([14XCAP:      CoefficientsOfMorphism      for
-        IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XCoimageObject[102X ([14XCAP: CoimageObject for IsCapCategoryMorphism[114X)[133X
   
