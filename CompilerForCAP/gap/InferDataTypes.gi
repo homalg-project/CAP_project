@@ -604,10 +604,6 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INFERRED_DATA_TYPES, function ( tree, in
             
             data_type := rec( filter := IsRecord );
             
-        elif tree.type = "EXPR_AINV" then
-            
-            data_type := tree.op.data_type;
-            
         elif tree.type = "EXPR_CASE" then
             
             if not ForAll( tree.branches, branch -> branch.condition.data_type.filter = IsBool ) then
@@ -911,6 +907,7 @@ end );
 CapJitAddTypeSignature( "RETURN_TRUE", [ IsObject, IsObject ], IsBool );
 CapJitAddTypeSignature( "Length", [ IsList ], IsInt );
 CapJitAddTypeSignature( "+", [ IsInt, IsInt ], IsInt );
+CapJitAddTypeSignature( "AdditiveInverseSameMutability", [ IsInt ], IsInt );
 CapJitAddTypeSignature( "-", [ IsInt, IsInt ], IsInt );
 CapJitAddTypeSignature( "*", [ IsInt, IsInt ], IsInt );
 CapJitAddTypeSignature( "^", [ IsInt, IsInt ], IsInt );
@@ -1371,6 +1368,7 @@ CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "DecideZeroRows", [ "IsHoma
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "DecideZeroColumns", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
 
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "+", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "AdditiveInverseSameMutability", [ "IsHomalgMatrix" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "-", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
 
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "*", [ "IsHomalgRingElement", "IsHomalgRingElement" ], "IsHomalgRingElement" );
@@ -1389,6 +1387,7 @@ CapJitAddTypeSignatureDeferred( "QPA", "PathAsAlgebraElement", [ "IsQuiverAlgebr
 CapJitAddTypeSignatureDeferred( "QPA", "QuiverAlgebraElement", [ "IsQuiverAlgebra", "IsList", "IsList" ], "IsQuiverAlgebraElement" );
 CapJitAddTypeSignatureDeferred( "QPA", "IsZero", [ "IsQuiverAlgebraElement" ], "IsBool" );
 CapJitAddTypeSignatureDeferred( "QPA", "+", [ "IsQuiverAlgebraElement", "IsQuiverAlgebraElement" ], "IsQuiverAlgebraElement" );
+CapJitAddTypeSignatureDeferred( "QPA", "AdditiveInverseSameMutability", [ "IsQuiverAlgebraElement" ], "IsQuiverAlgebraElement" );
 CapJitAddTypeSignatureDeferred( "QPA", "*", [ "IsQuiverAlgebraElement", "IsQuiverAlgebraElement" ], "IsQuiverAlgebraElement" );
 CapJitAddTypeSignatureDeferred( "QPA", "QuiverOfPath", [ "IsPath" ], "IsQuiver" );
 CapJitAddTypeSignatureDeferred( "QPA", "Source", [ "IsPath" ], "IsQuiverVertex" );
