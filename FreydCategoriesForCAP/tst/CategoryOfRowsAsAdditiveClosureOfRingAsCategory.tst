@@ -83,5 +83,21 @@ true
 gap> IsEqualForMorphisms( ComponentOfMorphismFromDirectSum( gamma, [ a, a ], 2 ), beta );
 true
 
+# hom structure for exterior algebras over fields
+gap> QQ := HomalgFieldOfRationalsInSingular( );;
+gap> QQxy := QQ * "x,y";;
+gap> EQQxy := KoszulDualRing( QQxy );;
+gap> rows := CategoryOfRows( EQQxy );;
+gap> mor := IdentityMorphism( CategoryOfRowsObject( rows, 5 ) );;
+gap> distinguished_object := DistinguishedObjectOfHomomorphismStructure( rows );;
+gap> object := HomomorphismStructureOnObjects( Source( mor ), Source( mor ) );;
+gap> HomomorphismStructureOnMorphisms( mor, mor );;
+gap> HomomorphismStructureOnMorphismsWithGivenObjects( object, mor, mor, object );;
+gap> iota := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( mor );;
+gap> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( distinguished_object, mor, object );;
+gap> beta := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( mor ), Range( mor ), iota );;
+gap> IsCongruentForMorphisms( mor, beta );
+true
+
 #
 gap> STOP_TEST( "CategoryOfRowsAsAdditiveClosureOfRingAsCategory" );
