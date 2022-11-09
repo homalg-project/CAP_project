@@ -190,11 +190,17 @@ DeclareAttribute( "UnderlyingMatrix",
                   IsCategoryOfRowsMorphism );
 CapJitAddTypeSignature( "UnderlyingMatrix", [ IsCategoryOfRowsMorphism ], IsHomalgMatrix );
 
-DeclareAttribute( "UnderlyingMatrix",
-                  IsCategoryOfRowsMorphism );
-
 DeclareAttribute( "CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple",
                   IsCategoryOfRowsMorphism );
+
+CapJitAddTypeSignature( "CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple", [ IsCategoryOfRowsMorphism ], rec(
+    filter := IsNTuple,
+    element_types := [
+        rec( filter := IsHomalgMatrix ),
+        rec( filter := IsHomalgMatrix ),
+        rec( filter := IsHomalgMatrix ),
+    ],
+) );
 
 ####################################
 ##

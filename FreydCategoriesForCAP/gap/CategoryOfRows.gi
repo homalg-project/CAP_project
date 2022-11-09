@@ -105,13 +105,23 @@ InstallMethod( AsCategoryOfRowsMorphism,
                [ IsHomalgMatrix, IsCategoryOfRows ],
                
   function( homalg_matrix, category )
+    
+    return AsCategoryOfRowsMorphism( category, homalg_matrix );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( AsCategoryOfRowsMorphism,
+               [ IsCategoryOfRows, IsHomalgMatrix ],
+               
+  function( category, homalg_matrix )
     local source, range;
     
     source := CategoryOfRowsObject( category, NrRows( homalg_matrix ) );
     
     range := CategoryOfRowsObject( category, NrColumns( homalg_matrix ) );
     
-    return CategoryOfRowsMorphism( source, homalg_matrix, range );
+    return CategoryOfRowsMorphism( category, source, homalg_matrix, range );
     
 end );
 
@@ -835,7 +845,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
       AddSomeReductionBySplitEpiSummand( category,
         function( cat, alpha )
           
-          return AsCategoryOfRowsMorphism( CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple( alpha )[1], category );
+          return AsCategoryOfRowsMorphism( cat, CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple( alpha )[1] );
           
       end );
       
@@ -843,7 +853,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
       AddSomeReductionBySplitEpiSummand_MorphismFromInputRange( category,
         function( cat, alpha )
           
-          return AsCategoryOfRowsMorphism( CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple( alpha )[2], category );
+          return AsCategoryOfRowsMorphism( cat, CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple( alpha )[2] );
           
       end );
       
@@ -851,7 +861,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
       AddSomeReductionBySplitEpiSummand_MorphismToInputRange( category,
         function( cat, alpha )
           
-          return AsCategoryOfRowsMorphism( CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple( alpha )[3], category );
+          return AsCategoryOfRowsMorphism( cat, CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple( alpha )[3] );
           
       end );
       

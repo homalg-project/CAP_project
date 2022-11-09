@@ -18,7 +18,7 @@ R := KoszulDualRing( HomalgRingOfIntegersInSingular( ) * "x,y" );;
 precompile_CategoryOfColumns := function( homalg_ring, name )
     
     CapJitPrecompileCategoryAndCompareResult(
-        homalg_ring -> CategoryOfColumnsAsOppositeOfCategoryOfRows(
+        homalg_ring -> CategoryOfColumns(
             homalg_ring
         ),
         [ homalg_ring ],

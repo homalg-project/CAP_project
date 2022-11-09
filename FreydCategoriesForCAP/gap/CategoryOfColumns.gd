@@ -44,14 +44,6 @@ KeyDependentOperation( "CategoryOfColumnsObject",
 DeclareOperation( "AsCategoryOfColumnsMorphism",
                   [ IsHomalgMatrix, IsCategoryOfColumns ] );
 
-CapJitAddTypeSignature( "AsCategoryOfColumnsMorphism", [ IsHomalgMatrix, IsCategoryOfColumns ], function ( input_types )
-    
-    Assert( 0, IsCategoryOfColumns( input_types[2].category ) );
-    
-    return CapJitDataTypeOfMorphismOfCategory( input_types[2].category );
-    
-end );
-
 DeclareOperation( "CategoryOfColumnsMorphism",
                   [ IsCategoryOfColumnsObject, IsHomalgMatrix, IsCategoryOfColumnsObject ] );
 
@@ -66,6 +58,7 @@ DeclareOperation( "\/",
 
 DeclareAttribute( "UnderlyingRing",
                   IsCategoryOfColumns );
+CapJitAddTypeSignature( "UnderlyingRing", [ IsCategoryOfColumns ], IsHomalgRing );
 
 DeclareAttribute( "GeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure",
                   IsCategoryOfColumns );
@@ -110,3 +103,12 @@ CapJitAddTypeSignature( "UnderlyingMatrix", [ IsCategoryOfColumnsMorphism ], IsH
 
 DeclareAttribute( "CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple",
                   IsCategoryOfColumnsMorphism );
+
+CapJitAddTypeSignature( "CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple", [ IsCategoryOfColumnsMorphism ], rec(
+    filter := IsNTuple,
+    element_types := [
+        rec( filter := IsHomalgMatrix ),
+        rec( filter := IsHomalgMatrix ),
+        rec( filter := IsHomalgMatrix ),
+    ],
+) );
