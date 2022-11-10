@@ -524,6 +524,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                     ) then
                     
                     # using LocationFunc causes a segfault (https://github.com/gap-system/gap/issues/4507)
+                    # COVERAGE_IGNORE_NEXT_LINE
                     Print( "WARNING: operation ", tree.funcref.gvar, ", located in function at ", FilenameFunc( func ), ":", StartlineFunc( func ), " can probably not be resolved.\n" );
                     
                 fi;

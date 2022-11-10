@@ -29,5 +29,9 @@ function ( cat_1 )
     return CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, 0 );
 end
 
+# test "compiling" kernel functions
+gap> IsIdenticalObj( CapJitCompiledFunction( IdFunc ), IdFunc );
+true
+
 #
 gap> STOP_TEST( "CapJitCompiledFunction" );

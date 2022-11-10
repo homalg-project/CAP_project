@@ -7,6 +7,8 @@ true
 # make tests deterministic
 gap> original_func_id := CAP_JIT_INTERNAL_FUNCTION_ID;;
 gap> CAP_JIT_INTERNAL_FUNCTION_ID := 1;;
+gap> original_global_variable_counter := CAP_JIT_INTERNAL_GLOBAL_VARIABLE_COUNTER;;
+gap> CAP_JIT_INTERNAL_GLOBAL_VARIABLE_COUNTER := 0;;
 
 #
 gap> func := function( x )
@@ -321,8 +323,36 @@ function (  )
     return;
 end
 
+# test various cases not usually occuring in our code
+gap> func := function ( )
+>   local higher_variable;
+>   
+>   # context variable two levels higher than the function
+>   higher_variable := "higher_variable";
+>   
+>   return function ( )
+>   
+>       return function ( )
+>           local value, i;
+>           
+>           # EXPR_FUNCCALL with more than 6 arguments
+>           return ReturnTrue( 1, 2, 3, 4, 5, 6, 7 ) and Length( higher_variable ) > 0;
+>           
+>       end;
+>       
+>   end;
+>   
+> end;;
+gap> Display( ENHANCED_SYNTAX_TREE_CODE( ENHANCED_SYNTAX_TREE( func( )( ) : globalize_hvars ) ) );
+function (  )
+    local value_1, i_1;
+    return ReturnTrue( 1, 2, 3, 4, 5, 6, 7 ) 
+      and Length( CAP_JIT_INTERNAL_GLOBAL_VARIABLE_0 ) > 0;
+end
+
 #
 gap> CAP_JIT_INTERNAL_FUNCTION_ID := original_func_id;;
+gap> CAP_JIT_INTERNAL_GLOBAL_VARIABLE_COUNTER := original_global_variable_counter;;
 
 #
 gap> STOP_TEST( "ENHANCED_SYNTAX_TREE" );
