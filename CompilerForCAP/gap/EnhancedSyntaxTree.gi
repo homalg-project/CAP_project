@@ -86,7 +86,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
     if tree.variadic and Length( given_arguments ) >= tree.narg then
         
         # COVERAGE_IGNORE_NEXT_LINE
-        Error( "cannot insert given arguments into variadic arguments" );
+        ErrorWithFuncLocation( "cannot insert given arguments into variadic arguments" );
         
     fi;
     
@@ -121,7 +121,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
             if not IsDenseList( tree ) then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Error( "non-dense lists are not supported by CompilerForCAP" );
+                ErrorWithFuncLocation( "non-dense lists are not supported by CompilerForCAP" );
                 
             fi;
             
@@ -283,7 +283,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                         if not EndsWith( name, suffix ) then
                             
                             # COVERAGE_IGNORE_NEXT_LINE
-                            Error( "variable name ", name, " does not have expected suffix ", suffix );
+                            ErrorWithFuncLocation( "variable name ", name, " does not have expected suffix ", suffix );
                             
                         fi;
                         
@@ -618,7 +618,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
         else
             
             # COVERAGE_IGNORE_NEXT_LINE
-            Error( "this should never happen" );
+            ErrorWithFuncLocation( "this should never happen" );
             
         fi;
         
