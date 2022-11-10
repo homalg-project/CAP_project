@@ -158,6 +158,11 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                 # COVERAGE_IGNORE_NEXT_LINE
                 ErrorWithFuncLocation( "Found a range of the form `[ first, second .. last ]`. Only ranges of the form `[ first .. last ]` are supported currently.\n" );
                 
+            elif tree.type = "EXPR_REC" and not IsEmpty( tree.keyvalue ) then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                ErrorWithFuncLocation( "Non-empty records are not supported.\n" );
+                
             fi;
             
             # replace verbose types by short types
@@ -168,14 +173,6 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
             elif StartsWith( tree.type, "EXPR_FUNCCALL_" ) then
                 
                 tree.type := "EXPR_FUNCCALL";
-            
-            elif StartsWith( tree.type, "STAT_PROCCALL_" ) then
-                
-                tree.type := "STAT_PROCCALL";
-            
-            elif StartsWith( tree.type, "STAT_FOR" ) then
-                
-                tree.type := "STAT_FOR";
             
             fi;
             
@@ -239,17 +236,6 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                     );
                     
                 fi;
-                
-            fi;
-            
-            # give rec key-values a type
-            if tree.type = "EXPR_REC" then
-                
-                for keyvalue in tree.keyvalue do
-                    
-                    keyvalue.type := "REC_KEY_VALUE_PAIR";
-                    
-                od;
                 
             fi;
             
@@ -1256,47 +1242,6 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                     
                 fi;
             
-            elif StartsWith( tree.type, "STAT_PROCCALL" ) then
-                
-                if tree.type <> "STAT_PROCCALL" then
-                    
-                    # COVERAGE_IGNORE_NEXT_LINE
-                    Error( "enhanced syntax trees can only be used with short types" );
-                    
-                fi;
-                
-                if tree.args.length > 6 then
-                    
-                    tree.type := "STAT_PROCCALL_XARGS";
-                    
-                else
-                    
-                    tree.type := Concatenation( "STAT_PROCCALL_", String( tree.args.length ), "ARGS" );
-                    
-                fi;
-                
-            elif StartsWith( tree.type, "STAT_FOR" ) then
-                
-                if tree.type <> "STAT_FOR" then
-                    
-                    # COVERAGE_IGNORE_NEXT_LINE
-                    Error( "enhanced syntax trees can only be used with short types" );
-                    
-                fi;
-                
-                # check if we range over a local variable
-                if tree.collection.type = "EXPR_RANGE" and tree.variable.type = "EXPR_REF_FVAR" and tree.variable.func_id = Last( func_stack ).id then
-                    
-                    tree.type := "STAT_FOR_RANGE";
-                    
-                fi;
-                
-                if tree.body.length = 2 or tree.body.length = 3 then
-                    
-                    tree.type := Concatenation( tree.type, String( tree.body.length ) );
-                    
-                fi;
-                
             fi;
             
             # nest statements
