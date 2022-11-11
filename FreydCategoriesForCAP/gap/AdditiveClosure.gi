@@ -805,10 +805,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         
         listlist := List( [ 1 .. nr_rows_1 ], i ->
                         List( [ 1 .. nr_cols_2 ], j ->
-                            Iterated(
+                            SumOfMorphisms( UnderlyingCategory( cat ),
+                                Source( morphism_1 )[i],
                                 List( [ 1 .. nr_cols_1 ], k -> PreCompose( UnderlyingCategory( cat ), morphism_1[i, k], morphism_2[k, j] ) ),
-                                { alpha, beta } -> AdditionForMorphisms( UnderlyingCategory( cat ), alpha, beta ),
-                                ZeroMorphism( UnderlyingCategory( cat ), Source( morphism_1 )[i], Range( morphism_2 )[j] )
+                                Range( morphism_2 )[j]
                             )
                         )
                     );
