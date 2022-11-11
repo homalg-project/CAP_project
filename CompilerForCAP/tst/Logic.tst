@@ -164,4 +164,42 @@ function ( list1_1, list2_1, list3_1 )
 end
 
 #
+gap> func := cat -> CapCategory( CreateCapCategoryObjectWithAttributes( cat ) );;
+
+#
+gap> tree := ENHANCED_SYNTAX_TREE( func );;
+gap> tree := CapJitAppliedLogic( tree );;
+gap> Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
+function ( cat_1 )
+    return cat_1;
+end
+
+#
+gap> func := { cat, obj } -> CapCategory( CreateCapCategoryMorphismWithAttributes( cat, obj, obj ) );;
+
+#
+gap> tree := ENHANCED_SYNTAX_TREE( func );;
+gap> tree := CapJitAppliedLogic( tree );;
+gap> Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
+function ( cat_1, obj_1 )
+    return cat_1;
+end
+
+#
+gap> func := { x } -> AdditiveInverse( CAP_JIT_INTERNAL_EXPR_CASE( x, 1, true, 2 ) );;
+
+#
+gap> tree := ENHANCED_SYNTAX_TREE( func );;
+gap> tree := CapJitAppliedLogic( tree );;
+gap> Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
+function ( x_1 )
+    if x_1 then
+        return AdditiveInverse( 1 );
+    else
+        return AdditiveInverse( 2 );
+    fi;
+    return;
+end
+
+#
 gap> STOP_TEST( "Logic" );

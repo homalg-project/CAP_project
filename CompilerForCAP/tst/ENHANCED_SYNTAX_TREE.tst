@@ -277,15 +277,19 @@ true
 
 # test CAP_JIT_INTERNAL_EXPR_CASE
 gap> func := { } -> CAP_JIT_INTERNAL_EXPR_CASE( 1 <> 1, 1, true, 2 );;
-gap> tree := ENHANCED_SYNTAX_TREE( func );;
+gap> tree := ENHANCED_SYNTAX_TREE( func : type_signature := [ [ ], rec( filter := IsInt ) ] );;
 gap> CapJitPrettyPrintSyntaxTree( tree );
 rec(
   0_type := "EXPR_DECLARATIVE_FUNC",
-  1_id := 7,
-  2_nams := [ "RETURN_VALUE" ],
-  3_narg := 0,
-  4_variadic := false,
-  5_bindings := rec(
+  1_data_type := rec(
+      filter := <Category "IsFunction">,
+      signature := [ [  ], rec(
+              filter := <Category "IsInt"> ) ] ),
+  2_id := 7,
+  3_nams := [ "RETURN_VALUE" ],
+  4_narg := 0,
+  5_variadic := false,
+  6_bindings := rec(
       0_type := "FVAR_BINDING_SEQ",
       1_names := [ "RETURN_VALUE" ],
       2_BINDING_RETURN_VALUE := rec(

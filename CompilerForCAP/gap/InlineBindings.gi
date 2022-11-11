@@ -64,8 +64,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INLINED_BINDINGS, function ( tree, initi
             
             if tree.type = "EXPR_REF_FVAR" then
                 
-                func := First( func_stack, func -> func.id = tree.func_id );
-                Assert( 0, func <> fail );
+                func := SafeFirst( func_stack, func -> func.id = tree.func_id );
                 
                 # the fvar might be an argument, which has no binding
                 if SafePosition( func.nams, tree.name ) > func.narg then
@@ -155,8 +154,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INLINED_BINDINGS, function ( tree, initi
                     
                     fvar := tree.(key).(i);
                     
-                    func := First( func_stack, func -> func.id = fvar.func_id );
-                    Assert( 0, func <> fail );
+                    func := SafeFirst( func_stack, func -> func.id = fvar.func_id );
                     
                     # the fvar might be an argument, which has no binding
                     if SafePosition( func.nams, fvar.name ) <= func.narg then
