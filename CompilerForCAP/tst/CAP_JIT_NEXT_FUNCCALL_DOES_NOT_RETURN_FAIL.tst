@@ -62,4 +62,20 @@ function ( x_1 )
 end
 
 #
+gap> call_func := function( x )
+>   local value;
+>   
+>   #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL
+>   value := func2( x );
+>   
+>   return value;
+> end;;
+
+#
+gap> Display( CapJitCompiledFunction( call_func ) );
+function ( x_1 )
+    return 1;
+end
+
+#
 gap> STOP_TEST( "CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL" );

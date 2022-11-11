@@ -54,6 +54,8 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         operations := [ ValueOption( "operations" ) ];
         # COVERAGE_IGNORE_BLOCK_END
         
+        # due to https://github.com/gap-system/gap/issues/4995 we have to ignore the following line
+        # COVERAGE_IGNORE_NEXT_LINE
     else
         
         operations := ValueOption( "operations" );
