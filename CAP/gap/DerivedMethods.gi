@@ -1226,6 +1226,17 @@ AddDerivationToCAP( ZeroMorphism,
         Description := "Zero morphism by composition of morphism into and from zero object" );
 
 ##
+AddDerivationToCAP( ZeroMorphism,
+                    [ [ SumOfMorphisms, 1 ] ],
+                    
+  function( cat, obj_source, obj_range )
+    
+    return SumOfMorphisms( cat, obj_source, [ ], obj_range );
+    
+  end : CategoryFilter := IsAbCategory,
+        Description := "computing the empty sum of morphisms" );
+
+##
 AddDerivationToCAP( PostCompose,
                     [ [ PreCompose, 1 ] ],
                     
