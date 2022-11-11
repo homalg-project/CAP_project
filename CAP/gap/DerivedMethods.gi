@@ -1339,7 +1339,7 @@ AddDerivationToCAP( AdditionForMorphisms,
     
     return SumOfMorphisms( cat, Source( mor1 ), [ mor1, mor2 ], Range( mor1 ) );
     
-end : CategoryFilter := IsAdditiveCategory,
+end : CategoryFilter := IsAbCategory,
       Description := "AdditionForMorphisms using SumOfMorphisms" );
 
 ##
