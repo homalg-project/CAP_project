@@ -19,7 +19,7 @@ BindGlobal( "TheFamilyOfCapCategoryObjects",
 
 BindGlobal( "TheTypeOfCapCategoryObjects",
         NewType( TheFamilyOfCapCategoryObjects,
-                IsCapCategoryObjectRep ) );
+                IsCapCategoryObject ) );
 
 #######################################
 ##
@@ -245,7 +245,7 @@ InstallMethod( AddObjectRepresentation,
     fi;
     
     category!.object_representation := representation;
-    category!.object_type := NewType( TheFamilyOfCapCategoryObjects, representation and ObjectFilter( category ) and IsCapCategoryObjectRep and HasCapCategory );
+    category!.object_type := NewType( TheFamilyOfCapCategoryObjects, representation and ObjectFilter( category ) and HasCapCategory );
     
 end );
 

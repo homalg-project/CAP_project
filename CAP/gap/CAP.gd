@@ -91,7 +91,7 @@ InstallValue( CATEGORIES_FAMILY_PROPERTIES,
 #!  as a handler and a presentation of the CAP category.
 #! @Arguments object
 DeclareCategory( "IsCapCategory",
-                 IsObject );
+                 IsAttributeStoringRep );
 
 #! @Description
 #! The GAP category of CAP category cells.

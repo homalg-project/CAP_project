@@ -5,16 +5,6 @@
 #
 #! @Chapter Managing Derived Methods
 
-DeclareRepresentation( "IsDerivedMethodRep",
-                       IsAttributeStoringRep and IsDerivedMethod,
-                       [] );
-DeclareRepresentation( "IsDerivedMethodGraphRep",
-                       IsAttributeStoringRep and IsDerivedMethodGraph,
-                       [] );
-DeclareRepresentation( "IsOperationWeightListRep",
-                       IsAttributeStoringRep and IsOperationWeightList,
-                       [] );
-
 BindGlobal( "TheFamilyOfDerivations",
             NewFamily( "TheFamilyOfDerivations" ) );
 BindGlobal( "TheFamilyOfDerivationGraphs",
@@ -51,7 +41,7 @@ function( name, target_op, used_op_names_with_multiples_and_category_getters, we
     fi;
     
     return ObjectifyWithAttributes(
-        rec( ), NewType( TheFamilyOfDerivations, IsDerivedMethodRep ),
+        rec( ), NewType( TheFamilyOfDerivations, IsDerivedMethod ),
         DerivationName, name,
         DerivationWeight, weight,
         DerivationFunction, func,
@@ -147,7 +137,7 @@ function( operations )
   ObjectifyWithAttributes
     ( G,
       NewType( TheFamilyOfDerivationGraphs,
-               IsDerivedMethodGraphRep ) );
+               IsDerivedMethodGraph ) );
   
   SetOperations( G, operations );
   
@@ -192,7 +182,7 @@ function( G )
 end );
 
 InstallMethod( AddDerivation,
-               [ IsDerivedMethodGraphRep, IsDerivedMethod ],
+               [ IsDerivedMethodGraph, IsDerivedMethod ],
 function( G, d )
   local method_name, filter_list, number_of_proposed_arguments, current_function_argument_number, x;
   
@@ -381,13 +371,13 @@ InstallGlobalFunction( AddWithGivenDerivationPairToCAP,
 end );
 
 InstallMethod( DerivationsUsingOperation,
-               [ IsDerivedMethodGraphRep, IsString ],
+               [ IsDerivedMethodGraph, IsString ],
 function( G, op_name )
   return G!.derivations_by_used_ops.( op_name );
 end );
 
 InstallMethod( DerivationsOfOperation,
-               [ IsDerivedMethodGraphRep, IsString ],
+               [ IsDerivedMethodGraph, IsString ],
 function( G, op_name )
   return G!.derivations_by_target.( op_name );
 end );
@@ -406,7 +396,7 @@ function( C, G )
     od;
     
     owl := ObjectifyWithAttributes(
-        rec( operation_weights := operation_weights, operation_derivations := operation_derivations ), NewType( TheFamilyOfOperationWeightLists, IsOperationWeightListRep ),
+        rec( operation_weights := operation_weights, operation_derivations := operation_derivations ), NewType( TheFamilyOfOperationWeightLists, IsOperationWeightList ),
         DerivationGraph, G,
         CategoryOfOperationWeightList, C
     );
@@ -429,7 +419,7 @@ function( owl )
 end );
 
 InstallMethod( CurrentOperationWeight,
-               [ IsOperationWeightListRep, IsString ],
+               [ IsOperationWeightList, IsString ],
 function( owl, op_name )
   if IsBound( owl!.operation_weights.( op_name ) ) then
       return owl!.operation_weights.( op_name );
@@ -484,7 +474,7 @@ function( owl, d )
 end );
 
 InstallMethod( DerivationOfOperation,
-               [ IsOperationWeightListRep, IsString ],
+               [ IsOperationWeightList, IsString ],
 function( owl, op_name )
   return owl!.operation_derivations.( op_name );
 end );
@@ -541,7 +531,7 @@ BindGlobal( "TryToInstallDerivation", function ( owl, d )
 end );
 
 InstallMethod( InstallDerivationsUsingOperation,
-               [ IsOperationWeightListRep, IsString ],
+               [ IsOperationWeightList, IsString ],
 function( owl, op_name )
   local Q, derivations_to_install, node, new_weight, target, d;
     
@@ -619,7 +609,7 @@ InstallMethod( Saturate,
 end );
 
 InstallMethod( AddPrimitiveOperation,
-               [ IsOperationWeightListRep, IsString, IsInt ],
+               [ IsOperationWeightList, IsString, IsInt ],
 function( owl, op_name, weight )
     
     Info( DerivationInfo, 1, Concatenation( "install(",
@@ -687,17 +677,13 @@ function( owl, op_name )
 end );
 
 
-DeclareRepresentation( "IsStringMinHeapRep",
-                       IsComponentObjectRep and IsStringMinHeap,
-                       [] );
-
 BindGlobal( "TheFamilyOfStringMinHeaps",
             NewFamily( "TheFamilyOfStringMinHeaps" ) );
 
 InstallGlobalFunction( StringMinHeap,
 function()
   return Objectify( NewType( TheFamilyOfStringMinHeaps,
-                             IsStringMinHeapRep ),
+                             IsStringMinHeap ),
                     rec( key := function(n) return n[2]; end,
                          str := function(n) return n[1]; end,
                          array := [],
@@ -718,13 +704,13 @@ function( H )
 end );
 
 InstallMethod( HeapSize,
-               [ IsStringMinHeapRep ],
+               [ IsStringMinHeap ],
 function( H )
   return Length( H!.array );
 end );
 
 InstallMethod( Add,
-               [ IsStringMinHeapRep, IsString, IsInt ],
+               [ IsStringMinHeap, IsString, IsInt ],
 function( H, string, key )
   local array, i;
   array := H!.array;
@@ -735,13 +721,13 @@ function( H, string, key )
 end );
 
 InstallMethod( IsEmptyHeap,
-               [ IsStringMinHeapRep ],
+               [ IsStringMinHeap ],
 function( H )
   return IsEmpty( H!.array );
 end );
 
 InstallMethod( ExtractMin,
-               [ IsStringMinHeapRep ],
+               [ IsStringMinHeap ],
 function( H )
   local array, node;
   array := H!.array;
@@ -756,7 +742,7 @@ function( H )
 end );
 
 InstallMethod( DecreaseKey,
-               [ IsStringMinHeapRep, IsString, IsInt ],
+               [ IsStringMinHeap, IsString, IsInt ],
 function( H, string, key )
   local array, i, parent;
   array := H!.array;
@@ -771,7 +757,7 @@ function( H, string, key )
 end );
 
 InstallMethod( Swap,
-               [ IsStringMinHeapRep, IsPosInt, IsPosInt ],
+               [ IsStringMinHeap, IsPosInt, IsPosInt ],
 function( H, i, j )
   local tmp, array, node_indices, str;
   array := H!.array;
@@ -785,13 +771,13 @@ function( H, i, j )
 end );
 
 InstallMethod( Contains,
-               [ IsStringMinHeapRep, IsString ],
+               [ IsStringMinHeap, IsString ],
 function( H, string )
   return IsBound( H!.node_indices.( string ) );
 end );
 
 InstallMethod( Heapify,
-               [ IsStringMinHeapRep, IsPosInt ],
+               [ IsStringMinHeap, IsPosInt ],
 function( H, i )
   local key, array, left, right, smallest;
   key := H!.key;

@@ -19,7 +19,7 @@ BindGlobal( "TheFamilyOfCapCategoryMorphisms",
 
 BindGlobal( "TheTypeOfCapCategoryMorphisms",
         NewType( TheFamilyOfCapCategoryMorphisms,
-                IsCapCategoryMorphismRep ) );
+                IsCapCategoryMorphism ) );
 
 ######################################
 ##
@@ -264,7 +264,7 @@ InstallMethod( AddMorphismRepresentation,
     fi;
     
     category!.morphism_representation := representation;
-    category!.morphism_type := NewType( TheFamilyOfCapCategoryMorphisms, representation and MorphismFilter( category ) and IsCapCategoryMorphismRep and HasSource and HasRange and HasCapCategory );
+    category!.morphism_type := NewType( TheFamilyOfCapCategoryMorphisms, representation and MorphismFilter( category ) and HasSource and HasRange and HasCapCategory );
     
 end );
 

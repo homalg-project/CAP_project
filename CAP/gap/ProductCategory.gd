@@ -28,7 +28,7 @@ DeclareOperationWithCache( "DirectProductFunctor",
 DeclareOperationWithCache( "CoproductFunctor",
                            [ IsCapCategory, IsInt ] );
 
-DeclareFilter( "IsCapProductCategory" );
+DeclareFilter( "IsCapProductCategory", IsCapCategory );
 
 
 DeclareAttribute( "Components",
@@ -75,7 +75,7 @@ DeclareOperation( "ProductOp",
 ############################
 
 DeclareAttribute( "Length",
-                  IsCapCategory and IsCapProductCategory );
+                  IsCapProductCategory );
 
 DeclareAttribute( "Length",
                   IsCapCategoryProductObject );

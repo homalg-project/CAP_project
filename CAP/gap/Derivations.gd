@@ -32,7 +32,7 @@ DeclareGlobalFunction( "DeactivateDerivationInfo" );
 #!  A derivation object describes a derived method.
 #!  It contains information about which operation the derived method
 #!  implements, and which other operations it relies on.
-DeclareCategory( "IsDerivedMethod", IsObject );
+DeclareCategory( "IsDerivedMethod", IsAttributeStoringRep );
 
 #! @Description
 #!  Creates a new derivation object.
@@ -140,7 +140,7 @@ DeclareAttribute( "FunctionCalledBeforeInstallation", IsDerivedMethod );
 #! @Description
 #!  A derivation graph consists of a set of operations and a set of derivations
 #!  specifying how some operations can be implemented in terms of other operations.
-DeclareCategory( "IsDerivedMethodGraph", IsObject );
+DeclareCategory( "IsDerivedMethodGraph", IsAttributeStoringRep );
 
 #! @Description
 #!  Make a derivation graph containing the given set of operations and no derivations.
@@ -210,7 +210,7 @@ DeclareOperation( "DerivationsOfOperation", [ IsDerivedMethodGraph, IsString ] )
 #!  all possible derived methods for $C$ in such a way that every operation has the
 #!  smallest possible weight (the weight of a derived method is computed by using
 #!  the weights of the operations it uses; see <C>DerivationResultWeight</C>).
-DeclareCategory( "IsOperationWeightList", IsObject );
+DeclareCategory( "IsOperationWeightList", IsAttributeStoringRep );
 
 #! @Description
 #!  Create the operation weight list for a category.
@@ -309,7 +309,7 @@ DeclareOperation( "PrintTreeRec",
 #! @Description
 #!  A string min heap is a min heap where every node contains a string label and an
 #!  integer key.
-DeclareCategory( "IsStringMinHeap", IsObject );
+DeclareCategory( "IsStringMinHeap", IsAttributeStoringRep );
 
 #! @Description
 #!  Create an empty string min heap.

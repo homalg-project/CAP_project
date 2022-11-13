@@ -171,7 +171,7 @@ BindGlobal( "TheFamilyOfCapCategories",
 
 BindGlobal( "TheTypeOfCapCategories",
         NewType( TheFamilyOfCapCategories,
-                 IsCapCategoryRep ) );
+                 IsCapCategory ) );
 
 
 #####################################
@@ -188,7 +188,7 @@ InstallGlobalFunction( CREATE_CAP_CATEGORY_FILTERS,
 
     name := Name( category );
     
-    filter := NewFilter( Concatenation( name, "InternalCategoryFilter" ) );
+    filter := NewFilter( Concatenation( name, "InternalCategoryFilter" ), IsCapCategory );
     
     SetCategoryFilter( category, filter );
     
@@ -196,19 +196,19 @@ InstallGlobalFunction( CREATE_CAP_CATEGORY_FILTERS,
     
     filter_name := Concatenation( name, "CellFilter" );
     
-    cell_filter := NewFilter( filter_name );
+    cell_filter := NewFilter( filter_name, IsCapCategoryCell );
     
     SetCellFilter( category, cell_filter );
     
-    filter := NewCategory( Concatenation( name, "ObjectFilter" ), cell_filter );
+    filter := NewCategory( Concatenation( name, "ObjectFilter" ), IsCapCategoryObject and cell_filter );
     
     SetObjectFilter( category, filter );
     
-    filter := NewCategory( Concatenation( name, "MorphismFilter" ), cell_filter );
+    filter := NewCategory( Concatenation( name, "MorphismFilter" ), IsCapCategoryMorphism and cell_filter );
     
     SetMorphismFilter( category, filter );
     
-    filter := NewCategory( Concatenation( name, "TwoCellFilter" ), cell_filter );
+    filter := NewCategory( Concatenation( name, "TwoCellFilter" ), IsCapCategoryTwoCell and cell_filter );
     
     SetTwoCellFilter( category, filter );
     

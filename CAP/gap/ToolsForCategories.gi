@@ -387,31 +387,31 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRING_WITH_FILTER,
     elif IsString( filter_or_string ) then
         if filter_or_string = "category" then
             if category <> false then
-                return CategoryFilter( category ) and IsCapCategory;
+                return CategoryFilter( category );
             else
                 return IsCapCategory;
             fi;
         elif filter_or_string = "cell" then
             if category <> false then
-                return CellFilter( category ) and IsCapCategoryCell;
+                return CellFilter( category );
             else
                 return IsCapCategoryCell;
             fi;
         elif filter_or_string = "object" then
             if category <> false then
-                return ObjectFilter( category ) and IsCapCategoryObject;
+                return ObjectFilter( category );
             else
                 return IsCapCategoryObject;
             fi;
         elif filter_or_string = "morphism" then
             if category <> false then
-                return MorphismFilter( category ) and IsCapCategoryMorphism;
+                return MorphismFilter( category );
             else
                 return IsCapCategoryMorphism;
             fi;
         elif filter_or_string = "twocell" then
             if category <> false then
-                return TwoCellFilter( category ) and IsCapCategoryTwoCell;
+                return TwoCellFilter( category );
             else
                 return IsCapCategoryTwoCell;
             fi;
@@ -424,7 +424,7 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRING_WITH_FILTER,
             fi;
             
             if category <> false and HasRangeCategoryOfHomomorphismStructure( category ) then
-                return ObjectFilter( RangeCategoryOfHomomorphismStructure( category ) ) and IsCapCategoryObject;
+                return ObjectFilter( RangeCategoryOfHomomorphismStructure( category ) );
             else
                 return IsCapCategoryObject;
             fi;
@@ -437,7 +437,7 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRING_WITH_FILTER,
             fi;
             
             if category <> false and HasRangeCategoryOfHomomorphismStructure( category ) then
-                return MorphismFilter( RangeCategoryOfHomomorphismStructure( category ) ) and IsCapCategoryMorphism;
+                return MorphismFilter( RangeCategoryOfHomomorphismStructure( category ) );
             else
                 return IsCapCategoryMorphism;
             fi;

@@ -9,7 +9,7 @@ DeclareRepresentation( "IsCapCategoryAsCatObjectRep",
 
 BindGlobal( "TheTypeOfCapCategoriesAsCatObjects",
         NewType( TheFamilyOfCapCategoryObjects,
-                IsCapCategoryAsCatObjectRep ) );
+                IsCapCategoryAsCatObject ) );
 
 DeclareRepresentation( "IsCapFunctorRep",
                        IsCapCategoryMorphismRep and IsCapFunctor,
@@ -17,7 +17,7 @@ DeclareRepresentation( "IsCapFunctorRep",
 
 BindGlobal( "TheTypeOfCapFunctors",
         NewType( TheFamilyOfCapCategoryMorphisms,
-                IsCapFunctorRep ) );
+                IsCapFunctor ) );
 
 DeclareRepresentation( "IsCapNaturalTransformationRep",
                        IsCapCategoryTwoCellRep and IsCapNaturalTransformation,
@@ -25,7 +25,7 @@ DeclareRepresentation( "IsCapNaturalTransformationRep",
 
 BindGlobal( "TheTypeOfCapNaturalTransformations",
         NewType( TheFamilyOfCapCategoryTwoCells,
-                IsCapNaturalTransformationRep ) );
+                IsCapNaturalTransformation ) );
 
 ##
 InstallGlobalFunction( CAP_INTERNAL_CREATE_Cat,
@@ -1245,7 +1245,7 @@ end );
 
 AddIsWellDefinedForObjects( CapCat,
 
-  IsCapCategoryAsCatObjectRep
+  IsCapCategoryAsCatObject
 
 );
 
