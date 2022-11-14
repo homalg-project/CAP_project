@@ -76,7 +76,7 @@ DeclareOperation( RandomObjectByList, [ IsCategoryOfRows, IsList ] );
 DeclareOperation( RandomObjectByInteger, [ IsCategoryOfRows, IsInt ] );
 
 #! @Description
-#! The arguments are two objects <A>S</A>, <A>R</A> and a non-empty list <A>L</A> of non-negative integers.
+#! The arguments are two objects <A>S</A>, <A>R</A> and a list <A>L</A> of integers or elements in the underlying ring.
 #! The output is a morphism from <A>S</A> to <A>R</A> whose matrix is an <A>L</A>-linear combination of random
 #! matrices over the underlying ring.
 #! @Returns  a morphism in a category of rows
@@ -84,7 +84,7 @@ DeclareOperation( RandomObjectByInteger, [ IsCategoryOfRows, IsInt ] );
 DeclareOperation( RandomMorphismWithFixedSourceAndRangeByList, [ IsCategoryOfRowsObject, IsCategoryOfRowsObject, IsList ] );
 
 #! @Description
-#! The arguments are two objects <A>S</A>, <A>R</A> and a non-negative integer <A>n</A>.
+#! The arguments are two objects <A>S</A>, <A>R</A> and an integer <A>n</A>.
 #! The output is a morphism from <A>S</A> to <A>R</A> defined by a random matrix over the underlying ring.
 #! Particularly, the argument <A>n</A> will be disregarded.
 #! @Returns  a morphism in a category of rows
@@ -92,7 +92,7 @@ DeclareOperation( RandomMorphismWithFixedSourceAndRangeByList, [ IsCategoryOfRow
 DeclareOperation( RandomMorphismWithFixedSourceAndRangeByInteger, [ IsCategoryOfRowsObject, IsCategoryOfRowsObject, IsInt ] );
 
 #! @Description
-#! The arguments are an object <A>S</A> and a list <A>L</A> consisting of two non-empty lists of non-negative integers.
+#! The arguments are an object <A>S</A> and a list <A>L</A> consisting of two lists: a non-empty list of non-negative integers and a list of integers or elements in the underlying ring.
 #! The output is a morphism from <A>S</A> to an object <A>R</A> whose rank is a random element in <A>L</A>[1].
 #! The matrix of the morphism is an <A>L</A>[2]-linear combination of random matrices over the underlying ring.
 #! @Returns a morphism in a category of rows
@@ -107,7 +107,7 @@ DeclareOperation( RandomMorphismWithFixedSourceByList, [ IsCategoryOfRowsObject,
 DeclareOperation( RandomMorphismWithFixedSourceByInteger, [ IsCategoryOfRowsObject, IsInt ] );
 
 #! @Description
-#! The arguments are an object <A>R</A> and a list <A>L</A> consisting of two non-empty lists of non-negative integers.
+#! The arguments are an object <A>R</A> and a list <A>L</A> consisting of two lists: a non-empty list of non-negative integers and a list of integers or elements in the underlying ring.
 #! The output is a morphism to <A>R</A> from an object <A>S</A> whose rank is a random element in <A>L</A>[1].
 #! The matrix of the morphism is an <A>L</A>[2]-linear combination of random matrices over the underlying ring.
 #! @Returns a morphism in a category of rows
@@ -122,7 +122,7 @@ DeclareOperation( RandomMorphismWithFixedRangeByList, [ IsCategoryOfRowsObject, 
 DeclareOperation( RandomMorphismWithFixedRangeByInteger, [ IsCategoryOfRowsObject, IsInt ] );
 
 #! @Description
-#! The arguments are a category of rows <A>C</A> and a list <A>L</A> consisting of 3 non-empty lists of non-negative integers.
+#! The arguments are a category of rows <A>C</A> and a list <A>L</A> consisting of 3 lists: two non-empty lists of non-negative integers and a list of integers or elements in the underlying ring.
 #! The output is a morphism from an object <A>S</A> to an object <A>R</A> whose ranks are random elements in <A>L</A>[1] resp. <A>L</A>[2].
 #! Its matrix is an <A>L</A>[3]-linear combination of random matrices over the underlying ring.
 #! @Returns  a morphism in a category of rows
