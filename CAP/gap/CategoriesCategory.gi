@@ -9,7 +9,7 @@ DeclareRepresentation( "IsCapCategoryAsCatObjectRep",
 
 BindGlobal( "TheTypeOfCapCategoriesAsCatObjects",
         NewType( TheFamilyOfCapCategoryObjects,
-                IsCapCategoryAsCatObjectRep ) );
+                IsCapCategoryAsCatObject ) );
 
 DeclareRepresentation( "IsCapFunctorRep",
                        IsCapCategoryMorphismRep and IsCapFunctor,
@@ -17,7 +17,7 @@ DeclareRepresentation( "IsCapFunctorRep",
 
 BindGlobal( "TheTypeOfCapFunctors",
         NewType( TheFamilyOfCapCategoryMorphisms,
-                IsCapFunctorRep ) );
+                IsCapFunctor ) );
 
 DeclareRepresentation( "IsCapNaturalTransformationRep",
                        IsCapCategoryTwoCellRep and IsCapNaturalTransformation,
@@ -25,7 +25,7 @@ DeclareRepresentation( "IsCapNaturalTransformationRep",
 
 BindGlobal( "TheTypeOfCapNaturalTransformations",
         NewType( TheFamilyOfCapCategoryTwoCells,
-                IsCapNaturalTransformationRep ) );
+                IsCapNaturalTransformation ) );
 
 ##
 InstallGlobalFunction( CAP_INTERNAL_CREATE_Cat,
@@ -239,11 +239,7 @@ BindGlobal( "CAP_INTERNAL_FUNCTOR_CREATE_FILTER_LIST",
     
     filter_list := List( InputSignature( functor ), i -> i[ 1 ] );
     
-    if type = "cell" then
-        
-        filter_list := List( filter_list, CellFilter );
-        
-    elif type = "object" then
+    if type = "object" then
         
         filter_list := List( filter_list, ObjectFilter );
         
@@ -1245,7 +1241,7 @@ end );
 
 AddIsWellDefinedForObjects( CapCat,
 
-  IsCapCategoryAsCatObjectRep
+  IsCapCategoryAsCatObject
 
 );
 

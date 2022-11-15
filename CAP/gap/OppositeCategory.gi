@@ -374,7 +374,7 @@ InstallMethod( Opposite,
     AddObjectRepresentation( opposite_category, IsCapCategoryOppositeObject );
     AddMorphismRepresentation( opposite_category, IsCapCategoryOppositeMorphism );
     
-    SetWasCreatedAsOppositeCategory( opposite_category, true );
+    SetFilterObj( opposite_category, WasCreatedAsOppositeCategory );
     SetOppositeCategory( opposite_category, category );
     
     SetOpposite( opposite_category, category );

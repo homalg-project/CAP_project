@@ -10,17 +10,14 @@
 ##
 #############################################################################
 
-DeclareCategory( "IsCapCategoryProductCell",
-                  IsCapCategoryCell );
-
 DeclareCategory( "IsCapCategoryProductObject",
-                 IsCapCategoryProductCell and IsCapCategoryObject );
+                 IsCapCategoryObject );
 
 DeclareCategory( "IsCapCategoryProductMorphism",
-                 IsCapCategoryProductCell and IsCapCategoryMorphism );
+                 IsCapCategoryMorphism );
 
 DeclareCategory( "IsCapCategoryProductTwoCell",
-                 IsCapCategoryProductCell and IsCapCategoryTwoCell );
+                 IsCapCategoryTwoCell );
 
 DeclareOperationWithCache( "DirectProductFunctor",
                            [ IsCapCategory, IsInt ] );
@@ -28,20 +25,32 @@ DeclareOperationWithCache( "DirectProductFunctor",
 DeclareOperationWithCache( "CoproductFunctor",
                            [ IsCapCategory, IsInt ] );
 
-DeclareFilter( "IsCapProductCategory" );
+DeclareFilter( "IsCapProductCategory", IsCapCategory );
 
 
 DeclareAttribute( "Components",
-                  IsCapCategory and IsCapProductCategory );
+                  IsCapProductCategory );
 
 DeclareAttribute( "Components",
-                  IsCapCategoryProductCell );
+                  IsCapCategoryProductObject );
 
-DeclareOperation( "\[\]",
-                  [ IsCapCategory and IsCapProductCategory, IsInt ] );
+DeclareAttribute( "Components",
+                  IsCapCategoryProductMorphism );
 
-DeclareOperation( "\[\]",
-                  [ IsCapCategoryProductCell, IsInt ] );
+DeclareAttribute( "Components",
+                  IsCapCategoryProductTwoCell );
+
+DeclareOperation( "[]",
+                  [ IsCapProductCategory, IsInt ] );
+
+DeclareOperation( "[]",
+                  [ IsCapCategoryProductObject, IsInt ] );
+
+DeclareOperation( "[]",
+                  [ IsCapCategoryProductMorphism, IsInt ] );
+
+DeclareOperation( "[]",
+                  [ IsCapCategoryProductTwoCell, IsInt ] );
 
 
 ############################
@@ -62,7 +71,7 @@ DeclareOperation( "ProductOp_OnObjects",
 DeclareOperation( "ProductOp_OnTwoCells",
                   [ IsList, IsCapCategory ] );
 
-DeclareOperation( "\/",
+DeclareOperation( "/",
                   [ IsList, IsCapProductCategory ] );
 
 DeclareOperation( "ProductOp",
@@ -75,7 +84,7 @@ DeclareOperation( "ProductOp",
 ############################
 
 DeclareAttribute( "Length",
-                  IsCapCategory and IsCapProductCategory );
+                  IsCapProductCategory );
 
 DeclareAttribute( "Length",
                   IsCapCategoryProductObject );

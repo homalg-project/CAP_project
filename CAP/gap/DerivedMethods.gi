@@ -1860,7 +1860,7 @@ AddDerivationToCAP( HomologyObjectFunctorialWithGivenHomologyObjects,
         )
     );
     
-end : CategoryFilter := HasIsAbelianCategory and IsAbelianCategory,
+end : CategoryFilter := IsAbelianCategory,
       Description := "HomologyObjectFunctorialWithGivenHomologyObjects using functoriality of (co)kernels and images in abelian categories" );
 
 
@@ -3160,7 +3160,7 @@ AddFinalDerivationBundle( # IsomorphismFromPushoutToCokernelOfDiagonalDifference
     return IdentityMorphism( cat, cokernel_of_diagonal_difference );
     
   end
-]: Description := "IsomorphismFromPushoutToCokernelOfDiagonalDifference as the identity of the cokernel of diagonal difference" );
+] : Description := "IsomorphismFromPushoutToCokernelOfDiagonalDifference as the identity of the cokernel of diagonal difference" );
 
 ##
 AddFinalDerivationBundle( # IsomorphismFromPushoutToCoequalizerOfCoproductDiagram,
@@ -3209,7 +3209,7 @@ AddFinalDerivationBundle( # IsomorphismFromPushoutToCoequalizerOfCoproductDiagra
     return IdentityMorphism( cat, coequalizer_of_coproduct_diagram );
     
   end
-]: Description := "IsomorphismFromPushoutToCoequalizerOfCoproductDiagram as the identity of the coequalizer of coproduct diagram" );
+] : Description := "IsomorphismFromPushoutToCoequalizerOfCoproductDiagram as the identity of the coequalizer of coproduct diagram" );
 
 ## Final methods for Image
 
@@ -3248,7 +3248,7 @@ AddFinalDerivationBundle( # IsomorphismFromImageObjectToKernelOfCokernel,
     return IdentityMorphism( cat, kernel_of_cokernel );
     
   end
-]: Description := "IsomorphismFromImageObjectToKernelOfCokernel as the identity of the kernel of the cokernel" );
+] : Description := "IsomorphismFromImageObjectToKernelOfCokernel as the identity of the kernel of the cokernel" );
 
 ##
 AddDerivationToCAP( MorphismFromCoimageToImageWithGivenObjects,
@@ -3450,7 +3450,7 @@ AddFinalDerivationBundle( # IsomorphismFromCoproductToDirectSum,
     return IdentityMorphism( cat, DirectSum( cat, diagram ) );
     
   end
-]: Description := "IsomorphismFromCoproductToDirectSum as the identity of the direct sum" );
+] : Description := "IsomorphismFromCoproductToDirectSum as the identity of the direct sum" );
 
 ## Final methods for homology object
 
@@ -3487,7 +3487,7 @@ AddFinalDerivationBundle( # IsomorphismFromHomologyObjectToItsConstructionAsAnIm
     return IdentityMorphism( cat, homology_object );
     
   end
-]: CategoryFilter := HasIsAbelianCategory and IsAbelianCategory,
+] : CategoryFilter := IsAbelianCategory,
       Description := "IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject as the identity of the homology object constructed as an image object" );
 
 

@@ -309,7 +309,7 @@ InstallGlobalFunction( DeclareFamilyProperty,
         
         family := "general";
         
-    elif IsBound( arg[ 3 ] ) and LowercaseString( arg[ 3 ] ) in [ "cell", "object", "morphism", "twocell" ] then
+    elif IsBound( arg[ 3 ] ) and LowercaseString( arg[ 3 ] ) in [ "object", "morphism", "twocell" ] then
         
         arg[ 4 ] := arg[ 3 ];
         
@@ -327,13 +327,13 @@ InstallGlobalFunction( DeclareFamilyProperty,
         
     else
         
-        cell_type := "cell";
+        Error( "the case `cell` is not supported anymore" );
         
     fi;
     
-    if not cell_type in [ "object", "morphism", "twocell", "cell" ] then
+    if not cell_type in [ "object", "morphism", "twocell" ] then
         
-        Error( "cell must be object, morphism, twocell, or cell" );
+        Error( "cell must be object, morphism, or twocell" );
         
     fi;
     
@@ -387,31 +387,25 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRING_WITH_FILTER,
     elif IsString( filter_or_string ) then
         if filter_or_string = "category" then
             if category <> false then
-                return CategoryFilter( category ) and IsCapCategory;
+                return CategoryFilter( category );
             else
                 return IsCapCategory;
             fi;
-        elif filter_or_string = "cell" then
-            if category <> false then
-                return CellFilter( category ) and IsCapCategoryCell;
-            else
-                return IsCapCategoryCell;
-            fi;
         elif filter_or_string = "object" then
             if category <> false then
-                return ObjectFilter( category ) and IsCapCategoryObject;
+                return ObjectFilter( category );
             else
                 return IsCapCategoryObject;
             fi;
         elif filter_or_string = "morphism" then
             if category <> false then
-                return MorphismFilter( category ) and IsCapCategoryMorphism;
+                return MorphismFilter( category );
             else
                 return IsCapCategoryMorphism;
             fi;
         elif filter_or_string = "twocell" then
             if category <> false then
-                return TwoCellFilter( category ) and IsCapCategoryTwoCell;
+                return TwoCellFilter( category );
             else
                 return IsCapCategoryTwoCell;
             fi;
@@ -424,7 +418,7 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRING_WITH_FILTER,
             fi;
             
             if category <> false and HasRangeCategoryOfHomomorphismStructure( category ) then
-                return ObjectFilter( RangeCategoryOfHomomorphismStructure( category ) ) and IsCapCategoryObject;
+                return ObjectFilter( RangeCategoryOfHomomorphismStructure( category ) );
             else
                 return IsCapCategoryObject;
             fi;
@@ -437,14 +431,12 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRING_WITH_FILTER,
             fi;
             
             if category <> false and HasRangeCategoryOfHomomorphismStructure( category ) then
-                return MorphismFilter( RangeCategoryOfHomomorphismStructure( category ) ) and IsCapCategoryMorphism;
+                return MorphismFilter( RangeCategoryOfHomomorphismStructure( category ) );
             else
                 return IsCapCategoryMorphism;
             fi;
         elif filter_or_string = "other_category" then
             return IsCapCategory;
-        elif filter_or_string = "other_cell" then
-            return IsCapCategoryCell;
         elif filter_or_string = "other_object" then
             return IsCapCategoryObject;
         elif filter_or_string = "other_morphism" then

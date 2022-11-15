@@ -20,11 +20,11 @@ DeclareRepresentation( "IsCapTerminalCategoryMorphismRep",
 
 BindGlobal( "TheTypeOfCapTerminalCategoryObject",
         NewType( TheFamilyOfCapCategoryObjects,
-                IsCapTerminalCategoryObjectRep ) );
+                IsCapTerminalCategoryObject ) );
 
 BindGlobal( "TheTypeOfCapTerminalCategoryMorphism",
         NewType( TheFamilyOfCapCategoryMorphisms,
-                IsCapTerminalCategoryMorphismRep ) );
+                IsCapTerminalCategoryMorphism ) );
 
 #####################################
 ##
@@ -36,7 +36,8 @@ InstallValue( CAP_INTERNAL_TERMINAL_CATEGORY,
               
               CreateCapCategory( "TerminalCategory" ) );
 
-SetFilterObj( CAP_INTERNAL_TERMINAL_CATEGORY, IsTerminalCategory );
+SetFilterObj( CAP_INTERNAL_TERMINAL_CATEGORY, IsCapTerminalCategory );
+SetIsTerminalCategory( CAP_INTERNAL_TERMINAL_CATEGORY, true );
 
 InstallValue( CAP_INTERNAL_TERMINAL_CATEGORY_AS_CAT_OBJECT,
               
@@ -44,7 +45,7 @@ InstallValue( CAP_INTERNAL_TERMINAL_CATEGORY_AS_CAT_OBJECT,
 
 ##
 InstallMethod( UniqueObject,
-               [ IsCapCategory and IsTerminalCategory ],
+               [ IsCapTerminalCategory ],
                
   function( category )
     local object;
@@ -62,7 +63,7 @@ end );
 
 ##
 InstallMethod( UniqueMorphism,
-               [ IsCapCategory and IsTerminalCategory ],
+               [ IsCapTerminalCategory ],
                
   function( category )
     local morphism, object;

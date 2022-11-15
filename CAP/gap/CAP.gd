@@ -91,7 +91,7 @@ InstallValue( CATEGORIES_FAMILY_PROPERTIES,
 #!  as a handler and a presentation of the CAP category.
 #! @Arguments object
 DeclareCategory( "IsCapCategory",
-                 IsObject );
+                 IsAttributeStoringRep );
 
 #! @Description
 #! The GAP category of CAP category cells.
@@ -238,12 +238,6 @@ DeclareOperation( "CreateCapCategory",
 DeclareAttribute( "CategoryFilter",
                   IsCapCategory );
 
-#! @Description
-#! The argument is a category $C$.
-#! The output is a filter in which all cells
-#! of $C$ shall lie.
-#! @Arguments C
-#! @Returns a filter
 DeclareAttribute( "CellFilter",
                   IsCapCategory );
 

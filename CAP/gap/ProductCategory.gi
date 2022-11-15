@@ -10,33 +10,29 @@
 ##
 #############################################################################
 
-DeclareRepresentation( "IsCapCategoryProductCellRep",
-                       IsAttributeStoringRep and IsCapCategoryProductCell,
-                       [ ] );
-
 DeclareRepresentation( "IsCapCategoryProductObjectRep",
-                       IsCapCategoryProductCellRep and IsCapCategoryProductObject and IsCapCategoryObjectRep,
+                       IsCapCategoryProductObject and IsCapCategoryObjectRep,
                        [ ] );
 
 DeclareRepresentation( "IsCapCategoryProductMorphismRep",
-                       IsCapCategoryProductCellRep and IsCapCategoryProductMorphism and IsCapCategoryMorphismRep,
+                       IsCapCategoryProductMorphism and IsCapCategoryMorphismRep,
                        [ ] );
 
 DeclareRepresentation( "IsCapCategoryProductTwoCellRep",
-                       IsCapCategoryProductCellRep and IsCapCategoryProductTwoCell and IsCapCategoryTwoCellRep,
+                       IsCapCategoryProductTwoCell and IsCapCategoryTwoCellRep,
                        [ ] );
 
 BindGlobal( "TheTypeOfCapCategoryProductObjects",
         NewType( TheFamilyOfCapCategoryObjects,
-                IsCapCategoryProductObjectRep ) );
+                IsCapCategoryProductObject ) );
 
 BindGlobal( "TheTypeOfCapCategoryProductMorphisms",
         NewType( TheFamilyOfCapCategoryMorphisms,
-                IsCapCategoryProductMorphismRep ) );
+                IsCapCategoryProductMorphism ) );
 
 BindGlobal( "TheTypeOfCapCategoryProductTwoCells",
         NewType( TheFamilyOfCapCategoryTwoCells,
-                IsCapCategoryProductTwoCellRep ) );
+                IsCapCategoryProductTwoCell ) );
 
 ###################################
 ##
@@ -46,13 +42,25 @@ BindGlobal( "TheTypeOfCapCategoryProductTwoCells",
 
 ##
 InstallMethod( Components,
-               [ IsCapCategory and IsCapProductCategory ],
+               [ IsCapProductCategory ],
                
   i -> [ i ] );
 
 ##
 InstallMethod( Components,
-               [ IsCapCategoryProductCell ],
+               [ IsCapCategoryProductObject ],
+               
+  i -> [ i ] );
+
+##
+InstallMethod( Components,
+               [ IsCapCategoryProductMorphism ],
+               
+  i -> [ i ] );
+
+##
+InstallMethod( Components,
+               [ IsCapCategoryProductTwoCell ],
                
   i -> [ i ] );
 
@@ -138,7 +146,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_PRODUCT_ADDS_FROM_CATEGORY",
         
         current_entry := CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname );
         
-        if not ForAll( current_entry.filter_list, filter -> filter in [ "category", "cell", "object", "morphism", "twocell", IsInt, "list_of_objects", "list_of_morphisms", "list_of_twocells" ] ) then
+        if not ForAll( current_entry.filter_list, filter -> filter in [ "category", "object", "morphism", "twocell", IsInt, "list_of_objects", "list_of_morphisms", "list_of_twocells" ] ) then
             continue;
         fi;
         
@@ -328,7 +336,7 @@ end );
 
 ##
 InstallMethod( ProductOp,
-               [ IsList, IsCapCategoryTwoCellRep ],
+               [ IsList, IsCapCategoryTwoCell ],
                
   function( twocell_list, selector )
     local category_list;
@@ -341,7 +349,7 @@ end );
 
 ##
 InstallMethod( \[\],
-               [ IsCapCategory and IsCapProductCategory, IsInt ],
+               [ IsCapProductCategory, IsInt ],
                
   function( category, index )
     
@@ -357,7 +365,39 @@ end );
 
 ##
 InstallMethod( \[\],
-               [ IsCapCategoryProductCellRep, IsInt ],
+               [ IsCapCategoryProductObject, IsInt ],
+               
+  function( cell, index )
+    
+    if Length( cell ) < index then
+        
+        Error( "index too high, cannot compute this Component" );
+        
+    fi;
+    
+    return Components( cell )[ index ];
+    
+end );
+
+##
+InstallMethod( \[\],
+               [ IsCapCategoryProductMorphism, IsInt ],
+               
+  function( cell, index )
+    
+    if Length( cell ) < index then
+        
+        Error( "index too high, cannot compute this Component" );
+        
+    fi;
+    
+    return Components( cell )[ index ];
+    
+end );
+
+##
+InstallMethod( \[\],
+               [ IsCapCategoryProductTwoCell, IsInt ],
                
   function( cell, index )
     
@@ -379,7 +419,7 @@ end );
 
 ##
 InstallMethod( Source,
-               [ IsCapCategoryProductMorphismRep ],
+               [ IsCapCategoryProductMorphism ],
                
   function( morphism )
     
@@ -389,7 +429,7 @@ end );
 
 ##
 InstallMethod( Range,
-               [ IsCapCategoryProductMorphismRep ],
+               [ IsCapCategoryProductMorphism ],
                
   function( morphism )
     
@@ -399,7 +439,7 @@ end );
 
 ##
 InstallMethod( Source,
-               [ IsCapCategoryProductTwoCellRep ],
+               [ IsCapCategoryProductTwoCell ],
                
   function( twocell )
     
@@ -409,7 +449,7 @@ end );
 
 ##
 InstallMethod( Range,
-               [ IsCapCategoryProductMorphismRep ],
+               [ IsCapCategoryProductMorphism ],
                
   function( twocell )
     
@@ -419,7 +459,7 @@ end );
 
 ##
 InstallMethodWithCacheFromObject( HorizontalPreCompose,
-                                  [ IsCapCategoryProductTwoCellRep, IsCapCategoryProductTwoCellRep ],
+                                  [ IsCapCategoryProductTwoCell, IsCapCategoryProductTwoCell ],
                
   function( twocell_left, twocell_right )
     local left_comp, right_comp;
@@ -434,7 +474,7 @@ end );
 
 ##
 InstallMethodWithCacheFromObject( VerticalPreCompose,
-                                  [ IsCapCategoryProductTwoCellRep, IsCapCategoryProductTwoCellRep ],
+                                  [ IsCapCategoryProductTwoCell, IsCapCategoryProductTwoCell ],
                
   function( twocell_left, twocell_right )
     local left_comp, right_comp;
@@ -582,7 +622,7 @@ end );
 
 ##
 InstallMethod( IsEqualForCache,
-               [ IsCapCategoryProductCellRep, IsCapCategoryProductCellRep ],
+               [ IsCapCategoryProductObject, IsCapCategoryProductObject ],
                
   function( obj1, obj2 )
     local list1, list2, length;

@@ -257,7 +257,7 @@ DeclareOperation( "ObjectConstructor",
 #!   Shorthand for `ObjectConstructor( C, a )`.
 #! @Returns an object
 #! @Arguments a, C
-DeclareOperation( "\/",
+DeclareOperation( "/",
                   [ IsObject, IsCapCategory ] );
 
 #! @Description

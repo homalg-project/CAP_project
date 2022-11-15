@@ -21,6 +21,12 @@ DeclareGlobalVariable( "CAP_INTERNAL_TERMINAL_CATEGORY" );
 ##
 #########################################
 
+DeclareFilter( "IsCapTerminalCategory", IsCapCategory );
+
+DeclareFilter( "IsCapTerminalCategoryObject", IsCapCategoryObject );
+
+DeclareFilter( "IsCapTerminalCategoryMorphism", IsCapCategoryMorphism );
+
 AddCategoricalProperty( [ "IsTerminalCategory", "IsTerminalCategory" ] );
 
 #########################################
@@ -30,10 +36,10 @@ AddCategoricalProperty( [ "IsTerminalCategory", "IsTerminalCategory" ] );
 #########################################
 
 DeclareAttribute( "UniqueObject",
-                  IsCapCategory );
+                  IsCapTerminalCategory );
 
 DeclareAttribute( "UniqueMorphism",
-                  IsCapCategory );
+                  IsCapTerminalCategory );
 
 #########################################
 ##

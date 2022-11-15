@@ -171,7 +171,7 @@ BindGlobal( "TheFamilyOfCapCategories",
 
 BindGlobal( "TheTypeOfCapCategories",
         NewType( TheFamilyOfCapCategories,
-                 IsCapCategoryRep ) );
+                 IsCapCategory ) );
 
 
 #####################################
@@ -184,31 +184,25 @@ BindGlobal( "TheTypeOfCapCategories",
 InstallGlobalFunction( CREATE_CAP_CATEGORY_FILTERS,
                        
   function( category )
-    local name, cell_filter, filter_name, filter;
+    local name, filter;
 
     name := Name( category );
     
-    filter := NewFilter( Concatenation( name, "InternalCategoryFilter" ) );
+    filter := NewFilter( Concatenation( name, "InternalCategoryFilter" ), IsCapCategory );
     
     SetCategoryFilter( category, filter );
     
     SetFilterObj( category, filter );
     
-    filter_name := Concatenation( name, "CellFilter" );
-    
-    cell_filter := NewFilter( filter_name );
-    
-    SetCellFilter( category, cell_filter );
-    
-    filter := NewCategory( Concatenation( name, "ObjectFilter" ), cell_filter );
+    filter := NewCategory( Concatenation( name, "ObjectFilter" ), IsCapCategoryObject );
     
     SetObjectFilter( category, filter );
     
-    filter := NewCategory( Concatenation( name, "MorphismFilter" ), cell_filter );
+    filter := NewCategory( Concatenation( name, "MorphismFilter" ), IsCapCategoryMorphism );
     
     SetMorphismFilter( category, filter );
     
-    filter := NewCategory( Concatenation( name, "TwoCellFilter" ), cell_filter );
+    filter := NewCategory( Concatenation( name, "TwoCellFilter" ), IsCapCategoryTwoCell );
     
     SetTwoCellFilter( category, filter );
     
@@ -542,7 +536,7 @@ InstallMethod( CanCompute,
     
     weight_list := category!.derivations_weight_list;
     
-    return not CurrentOperationWeight( weight_list, string ) = infinity;
+    return CurrentOperationWeight( weight_list, string ) <> infinity;
     
 end );
 
@@ -1077,5 +1071,14 @@ InstallGlobalFunction( EnableAddForCategoricalOperations,
     fi;
     
     category!.add_primitive_output := true;
+    
+end );
+
+InstallMethod( CellFilter,
+               [ IsCapCategory ],
+
+  function ( category )
+    
+    Error( "Categories do not have an attribute `CellFilter` anymore." );
     
 end );

@@ -276,10 +276,6 @@ InstallGlobalFunction( CapInternalInstallAdd,
             elif filter = "category" then
                 # the only check would be that the input lies in IsCapCategory, which is already checked by the method selection
                 input_sanity_check_functions[i] := ReturnTrue;
-            elif filter = "cell" then
-                input_sanity_check_functions[i] := function( arg, i )
-                    CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY( arg, category, function( ) return input_human_readable_identifier_getter( i ); end );
-                end;
             elif filter = "object" then
                 input_sanity_check_functions[i] := function( arg, i )
                     CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arg, category, function( ) return input_human_readable_identifier_getter( i ); end );
@@ -299,10 +295,6 @@ InstallGlobalFunction( CapInternalInstallAdd,
             elif filter = "morphism_in_range_category_of_homomorphism_structure" then
                 input_sanity_check_functions[i] := function( arg, i )
                     CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arg, RangeCategoryOfHomomorphismStructure( category ), function( ) return input_human_readable_identifier_getter( i ); end );
-                end;
-            elif filter = "other_cell" then
-                input_sanity_check_functions[i] := function( arg, i )
-                    CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY( arg, false, function( ) return input_human_readable_identifier_getter( i ); end );
                 end;
             elif filter = "other_object" then
                 input_sanity_check_functions[i] := function( arg, i )

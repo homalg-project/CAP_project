@@ -21,19 +21,14 @@ DeclareCategory( "IsDummyCategory",
         IsCapCategory );
 
 #! @Description
-#!  The &GAP; category of cells in a dummy CAP category.
-DeclareCategory( "IsDummyCategoryCell",
-        IsCapCategoryCell );
-
-#! @Description
 #!  The &GAP; category of objects in a dummy CAP category.
 DeclareCategory( "IsDummyCategoryObject",
-        IsDummyCategoryCell and IsCapCategoryObject );
+        IsCapCategoryObject );
 
 #! @Description
 #!  The &GAP; category of morphisms in a dummy CAP category.
 DeclareCategory( "IsDummyCategoryMorphism",
-        IsDummyCategoryCell and IsCapCategoryMorphism );
+        IsCapCategoryMorphism );
 
 ####################################
 #

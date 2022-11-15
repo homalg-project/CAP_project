@@ -12,7 +12,7 @@ BindGlobal( "TheFamilyOfCapCategoryTwoCells",
 
 BindGlobal( "TheTypeOfCapCategoryTwoCells",
         NewType( TheFamilyOfCapCategoryTwoCells,
-                IsCapCategoryTwoCellRep ) );
+                IsCapCategoryTwoCell ) );
 
 ####################################
 ##
