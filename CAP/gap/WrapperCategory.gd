@@ -66,19 +66,14 @@ DeclareCategory( "IsWrapperCapCategory",
         WasCreatedAsWrapperCapCategory );
 
 #! @Description
-#!  The &GAP; category of cells in a wrapper CAP category.
-DeclareCategory( "IsWrapperCapCategoryCell",
-        IsCapCategoryCell );
-
-#! @Description
 #!  The &GAP; category of objects in a wrapper CAP category.
 DeclareCategory( "IsWrapperCapCategoryObject",
-        IsWrapperCapCategoryCell and IsCapCategoryObject );
+        IsCapCategoryObject );
 
 #! @Description
 #!  The &GAP; category of morphisms in a wrapper CAP category.
 DeclareCategory( "IsWrapperCapCategoryMorphism",
-        IsWrapperCapCategoryCell and IsCapCategoryMorphism );
+        IsCapCategoryMorphism );
 
 ####################################
 #
@@ -107,11 +102,11 @@ DeclareAttribute( "UnderlyingCategory",
         IsWrapperCapCategory );
 
 #! @Description
-#!  The cell underlying the wrapper category cell <A>cell</A>.
-#! @Arguments cell
-#! @Returns a category cell
+#!  The cell underlying the wrapper category object <A>object</A>.
+#! @Arguments object
+#! @Returns a category object
 DeclareAttribute( "UnderlyingCell",
-        IsWrapperCapCategoryCell );
+        IsWrapperCapCategoryObject );
 
 ##
 CapJitAddTypeSignature( "UnderlyingCell",
@@ -121,6 +116,13 @@ CapJitAddTypeSignature( "UnderlyingCell",
     return CapJitDataTypeOfObjectOfCategory( ModelingCategory( input_types[1].category ) );
     
 end );
+
+#! @Description
+#!  The cell underlying the wrapper category morphism <A>morphism</A>.
+#! @Arguments morphism
+#! @Returns a category morphism
+DeclareAttribute( "UnderlyingCell",
+        IsWrapperCapCategoryMorphism );
 
 ##
 CapJitAddTypeSignature( "UnderlyingCell",

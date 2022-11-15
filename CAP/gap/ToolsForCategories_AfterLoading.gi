@@ -69,10 +69,6 @@ InstallGlobalFunction( CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY,
         Error( Concatenation( "The CapCategory of ", human_readable_identifier_getter(), " is not identical to the category named \033[1m", Name( category ), "\033[0m.", generic_help_string ) );
     fi;
     
-    if category <> false and not CellFilter( category )( cell ) then
-        Error( Concatenation( human_readable_identifier_getter(), " does not lie in the cell filter of the category named \033[1m", Name( category ), "\033[0m.", generic_help_string ) );
-    fi;
-    
 end );
 
 ##

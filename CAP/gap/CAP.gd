@@ -238,12 +238,6 @@ DeclareOperation( "CreateCapCategory",
 DeclareAttribute( "CategoryFilter",
                   IsCapCategory );
 
-#! @Description
-#! The argument is a category $C$.
-#! The output is a filter in which all cells
-#! of $C$ shall lie.
-#! @Arguments C
-#! @Returns a filter
 DeclareAttribute( "CellFilter",
                   IsCapCategory );
 

@@ -309,7 +309,7 @@ InstallGlobalFunction( DeclareFamilyProperty,
         
         family := "general";
         
-    elif IsBound( arg[ 3 ] ) and LowercaseString( arg[ 3 ] ) in [ "cell", "object", "morphism", "twocell" ] then
+    elif IsBound( arg[ 3 ] ) and LowercaseString( arg[ 3 ] ) in [ "object", "morphism", "twocell" ] then
         
         arg[ 4 ] := arg[ 3 ];
         
@@ -327,13 +327,13 @@ InstallGlobalFunction( DeclareFamilyProperty,
         
     else
         
-        cell_type := "cell";
+        Error( "the case `cell` is not supported anymore" );
         
     fi;
     
-    if not cell_type in [ "object", "morphism", "twocell", "cell" ] then
+    if not cell_type in [ "object", "morphism", "twocell" ] then
         
-        Error( "cell must be object, morphism, twocell, or cell" );
+        Error( "cell must be object, morphism, or twocell" );
         
     fi;
     
@@ -391,12 +391,6 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRING_WITH_FILTER,
             else
                 return IsCapCategory;
             fi;
-        elif filter_or_string = "cell" then
-            if category <> false then
-                return CellFilter( category );
-            else
-                return IsCapCategoryCell;
-            fi;
         elif filter_or_string = "object" then
             if category <> false then
                 return ObjectFilter( category );
@@ -443,8 +437,6 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRING_WITH_FILTER,
             fi;
         elif filter_or_string = "other_category" then
             return IsCapCategory;
-        elif filter_or_string = "other_cell" then
-            return IsCapCategoryCell;
         elif filter_or_string = "other_object" then
             return IsCapCategoryObject;
         elif filter_or_string = "other_morphism" then

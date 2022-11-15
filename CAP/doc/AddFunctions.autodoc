@@ -113,14 +113,12 @@ The record can have the following components, most of which can be set in the me
                as the first argument is installed automatically. Additionally, the category is not passed to primitively added functions, except if
                `category!.category_as_first_argument` is set to `true` (this will probably change to be the default in the future).
                * <C>category</C>,
-               * <C>cell</C>,
                * <C>object</C>,
                * <C>morphism</C>,
                * <C>twocell</C>,
                * <C>object_in_range_category_of_homomorphism_structure</C>,
                * <C>morphism_in_range_category_of_homomorphism_structure</C>,
                * <C>other_category</C>,
-               * <C>other_cell</C>,
                * <C>other_object</C>,
                * <C>other_morphism</C>,
                * <C>other_twocell</C>,

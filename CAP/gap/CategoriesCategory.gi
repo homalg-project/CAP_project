@@ -239,11 +239,7 @@ BindGlobal( "CAP_INTERNAL_FUNCTOR_CREATE_FILTER_LIST",
     
     filter_list := List( InputSignature( functor ), i -> i[ 1 ] );
     
-    if type = "cell" then
-        
-        filter_list := List( filter_list, CellFilter );
-        
-    elif type = "object" then
+    if type = "object" then
         
         filter_list := List( filter_list, ObjectFilter );
         

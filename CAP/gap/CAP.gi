@@ -184,7 +184,7 @@ BindGlobal( "TheTypeOfCapCategories",
 InstallGlobalFunction( CREATE_CAP_CATEGORY_FILTERS,
                        
   function( category )
-    local name, cell_filter, filter_name, filter;
+    local name, filter;
 
     name := Name( category );
     
@@ -194,21 +194,15 @@ InstallGlobalFunction( CREATE_CAP_CATEGORY_FILTERS,
     
     SetFilterObj( category, filter );
     
-    filter_name := Concatenation( name, "CellFilter" );
-    
-    cell_filter := NewFilter( filter_name, IsCapCategoryCell );
-    
-    SetCellFilter( category, cell_filter );
-    
-    filter := NewCategory( Concatenation( name, "ObjectFilter" ), IsCapCategoryObject and cell_filter );
+    filter := NewCategory( Concatenation( name, "ObjectFilter" ), IsCapCategoryObject );
     
     SetObjectFilter( category, filter );
     
-    filter := NewCategory( Concatenation( name, "MorphismFilter" ), IsCapCategoryMorphism and cell_filter );
+    filter := NewCategory( Concatenation( name, "MorphismFilter" ), IsCapCategoryMorphism );
     
     SetMorphismFilter( category, filter );
     
-    filter := NewCategory( Concatenation( name, "TwoCellFilter" ), IsCapCategoryTwoCell and cell_filter );
+    filter := NewCategory( Concatenation( name, "TwoCellFilter" ), IsCapCategoryTwoCell );
     
     SetTwoCellFilter( category, filter );
     
@@ -1077,5 +1071,14 @@ InstallGlobalFunction( EnableAddForCategoricalOperations,
     fi;
     
     category!.add_primitive_output := true;
+    
+end );
+
+InstallMethod( CellFilter,
+               [ IsCapCategory ],
+
+  function ( category )
+    
+    Error( "Categories do not have an attribute `CellFilter` anymore." );
     
 end );

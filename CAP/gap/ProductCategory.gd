@@ -10,17 +10,14 @@
 ##
 #############################################################################
 
-DeclareCategory( "IsCapCategoryProductCell",
-                  IsCapCategoryCell );
-
 DeclareCategory( "IsCapCategoryProductObject",
-                 IsCapCategoryProductCell and IsCapCategoryObject );
+                 IsCapCategoryObject );
 
 DeclareCategory( "IsCapCategoryProductMorphism",
-                 IsCapCategoryProductCell and IsCapCategoryMorphism );
+                 IsCapCategoryMorphism );
 
 DeclareCategory( "IsCapCategoryProductTwoCell",
-                 IsCapCategoryProductCell and IsCapCategoryTwoCell );
+                 IsCapCategoryTwoCell );
 
 DeclareOperationWithCache( "DirectProductFunctor",
                            [ IsCapCategory, IsInt ] );
@@ -32,16 +29,28 @@ DeclareFilter( "IsCapProductCategory", IsCapCategory );
 
 
 DeclareAttribute( "Components",
-                  IsCapCategory and IsCapProductCategory );
+                  IsCapProductCategory );
 
 DeclareAttribute( "Components",
-                  IsCapCategoryProductCell );
+                  IsCapCategoryProductObject );
 
-DeclareOperation( "\[\]",
-                  [ IsCapCategory and IsCapProductCategory, IsInt ] );
+DeclareAttribute( "Components",
+                  IsCapCategoryProductMorphism );
 
-DeclareOperation( "\[\]",
-                  [ IsCapCategoryProductCell, IsInt ] );
+DeclareAttribute( "Components",
+                  IsCapCategoryProductTwoCell );
+
+DeclareOperation( "[]",
+                  [ IsCapProductCategory, IsInt ] );
+
+DeclareOperation( "[]",
+                  [ IsCapCategoryProductObject, IsInt ] );
+
+DeclareOperation( "[]",
+                  [ IsCapCategoryProductMorphism, IsInt ] );
+
+DeclareOperation( "[]",
+                  [ IsCapCategoryProductTwoCell, IsInt ] );
 
 
 ############################
