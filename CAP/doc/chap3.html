@@ -91,7 +91,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7B6461F5873F3F9D">3.8-3 SubtractionForMorphisms</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83177713785DCFFC">3.8-4 AdditiveInverseForMorphisms</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8187CAF17EB5D6D0">3.8-5 MultiplyWithElementOfCommutativeRingForMorphisms</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X877D74C67D041F74"><code>3.8-6 \*</code></a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X877D74C67D041F74">3.8-6 *</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X873412DB7BD0FBD3">3.8-7 ZeroMorphism</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7C81E153817F489F">3.9 <span class="Heading">Subobject and Factorobject Operations</span></a>
@@ -599,9 +599,9 @@
 
 <p><a id="X877D74C67D041F74" name="X877D74C67D041F74"></a></p>
 
-<h5><code>3.8-6 \*</code></h5>
+<h5>3.8-6 *</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; \*</code>( <var class="Arg">r</var>, <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; *</code>( <var class="Arg">r</var>, <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a,b)</span></p>
 
 <p>This is a convenience method. It has two arguments. The first argument is either a rational number <span class="Math">q</span> or an element <span class="Math">r</span> of a commutative ring <span class="Math">R</span>. The second argument is a morphism <span class="Math">\alpha: a \rightarrow b</span> in a linear category over the commutative ring <span class="Math">R</span>. In the case where the first element is a rational number, this method tries to interpret <span class="Math">q</span> as an element <span class="Math">r</span> of <span class="Math">R</span> via <code class="code">R!.interpret_rationals_func</code>. If no such interpretation exists, this method throws an error. The output is the multiplication with the ring element <span class="Math">r \cdot \alpha</span>.</p>

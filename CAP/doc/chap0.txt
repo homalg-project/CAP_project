@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2022.11-12
+                                   2022.11-14
   
   
-                                11 November 2022
+                                15 November 2022
   
   
                                Sebastian Gutsche
@@ -68,15 +68,14 @@
       1.2-2 CreateCapCategory
     1.3 [33X[0;0YInternal Attributes[133X
       1.3-1 CategoryFilter
-      1.3-2 CellFilter
-      1.3-3 ObjectFilter
-      1.3-4 MorphismFilter
-      1.3-5 TwoCellFilter
-      1.3-6 CommutativeRingOfLinearCategory
-      1.3-7 RangeCategoryOfHomomorphismStructure
-      1.3-8 AdditiveGenerators
-      1.3-9 IndecomposableProjectiveObjects
-      1.3-10 IndecomposableInjectiveObjects
+      1.3-2 ObjectFilter
+      1.3-3 MorphismFilter
+      1.3-4 TwoCellFilter
+      1.3-5 CommutativeRingOfLinearCategory
+      1.3-6 RangeCategoryOfHomomorphismStructure
+      1.3-7 AdditiveGenerators
+      1.3-8 IndecomposableProjectiveObjects
+      1.3-9 IndecomposableInjectiveObjects
     1.4 [33X[0;0YLogic switcher[133X
       1.4-1 CapCategorySwitchLogicPropagationForObjectsOn
       1.4-2 CapCategorySwitchLogicPropagationForObjectsOff
@@ -137,7 +136,7 @@
       2.6-5 CreateCapCategoryObjectWithAttributes
     2.7 [33X[0;0YObject constructors[133X
       2.7-1 ObjectConstructor
-      2.7-2 \/
+      2.7-2 /
       2.7-3 ObjectDatum
     2.8 [33X[0;0YWell-Definedness of Objects[133X
       2.8-1 IsWellDefinedForObjects
@@ -206,7 +205,7 @@
       3.8-3 SubtractionForMorphisms
       3.8-4 AdditiveInverseForMorphisms
       3.8-5 MultiplyWithElementOfCommutativeRingForMorphisms
-      3.8-6 \*
+      3.8-6 *
       3.8-7 ZeroMorphism
     3.9 [33X[0;0YSubobject and Factorobject Operations[133X
       3.9-1 IsEqualAsSubobjects
@@ -923,17 +922,17 @@
     12.1 [33X[0;0YGAP categories[133X
       12.1-1 WasCreatedAsWrapperCapCategory
       12.1-2 IsWrapperCapCategory
-      12.1-3 IsWrapperCapCategoryCell
-      12.1-4 IsWrapperCapCategoryObject
-      12.1-5 IsWrapperCapCategoryMorphism
+      12.1-3 IsWrapperCapCategoryObject
+      12.1-4 IsWrapperCapCategoryMorphism
     12.2 [33X[0;0YAttributes[133X
       12.2-1 ModelingCategory
       12.2-2 UnderlyingCell
+      12.2-3 UnderlyingCell
     12.3 [33X[0;0YConstructors[133X
       12.3-1 AsObjectInWrapperCategory
       12.3-2 AsMorphismInWrapperCategory
       12.3-3 AsMorphismInWrapperCategory
-      12.3-4 \/
+      12.3-4 /
       12.3-5 WrapperCategory
       12.3-6 WrappingFunctor
       12.3-7 ModelingObject
@@ -943,9 +942,8 @@
   13 [33X[0;0YDummy categories[133X
     13.1 [33X[0;0YGAP categories[133X
       13.1-1 IsDummyCategory
-      13.1-2 IsDummyCategoryCell
-      13.1-3 IsDummyCategoryObject
-      13.1-4 IsDummyCategoryMorphism
+      13.1-2 IsDummyCategoryObject
+      13.1-3 IsDummyCategoryMorphism
     13.2 [33X[0;0YConstructors[133X
       13.2-1 DummyCategory
   14 [33X[0;0YExamples and Tests[133X

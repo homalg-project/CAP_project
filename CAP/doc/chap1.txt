@@ -156,15 +156,7 @@
   
   [33X[0;0YThe argument is a category [23XC[123X. The output is a filter in which [23XC[123X lies.[133X
   
-  [1X1.3-2 CellFilter[101X
-  
-  [33X[1;0Y[29X[2XCellFilter[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya filter[133X
-  
-  [33X[0;0YThe argument is a category [23XC[123X. The output is a filter in which all cells of [23XC[123X
-  shall lie.[133X
-  
-  [1X1.3-3 ObjectFilter[101X
+  [1X1.3-2 ObjectFilter[101X
   
   [33X[1;0Y[29X[2XObjectFilter[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya filter[133X
@@ -172,7 +164,7 @@
   [33X[0;0YThe argument is a category [23XC[123X. The output is a filter in which all objects of
   [23XC[123X shall lie.[133X
   
-  [1X1.3-4 MorphismFilter[101X
+  [1X1.3-3 MorphismFilter[101X
   
   [33X[1;0Y[29X[2XMorphismFilter[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya filter[133X
@@ -180,7 +172,7 @@
   [33X[0;0YThe  argument is a category [23XC[123X. The output is a filter in which all morphisms
   of [23XC[123X shall lie.[133X
   
-  [1X1.3-5 TwoCellFilter[101X
+  [1X1.3-4 TwoCellFilter[101X
   
   [33X[1;0Y[29X[2XTwoCellFilter[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya filter[133X
@@ -188,7 +180,7 @@
   [33X[0;0YThe argument is a category [23XC[123X. The output is a filter in which all [23X2[123X-cells of
   [23XC[123X shall lie.[133X
   
-  [1X1.3-6 CommutativeRingOfLinearCategory[101X
+  [1X1.3-5 CommutativeRingOfLinearCategory[101X
   
   [33X[1;0Y[29X[2XCommutativeRingOfLinearCategory[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya ring[133X
@@ -197,7 +189,7 @@
   [10XIsLinearCategoryOverCommutativeRing[110X.  The  output is a commutative ring over
   which the category is linear.[133X
   
-  [1X1.3-7 RangeCategoryOfHomomorphismStructure[101X
+  [1X1.3-6 RangeCategoryOfHomomorphismStructure[101X
   
   [33X[1;0Y[29X[2XRangeCategoryOfHomomorphismStructure[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya category[133X
@@ -207,7 +199,7 @@
   the  defining  functor  [23XH:  C^{\mathrm{op}}  \times  C  \rightarrow D[123X of the
   homomorphism structure.[133X
   
-  [1X1.3-8 AdditiveGenerators[101X
+  [1X1.3-7 AdditiveGenerators[101X
   
   [33X[1;0Y[29X[2XAdditiveGenerators[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya list of objects[133X
@@ -215,7 +207,7 @@
   [33X[0;0YThe argument is an additive category [23XC[123X. The output is a list [23XL[123X of objects in
   [23XC[123X such that every object in [23XC[123X is a finite direct sum of objects in [23XL[123X.[133X
   
-  [1X1.3-9 IndecomposableProjectiveObjects[101X
+  [1X1.3-8 IndecomposableProjectiveObjects[101X
   
   [33X[1;0Y[29X[2XIndecomposableProjectiveObjects[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya list of objects[133X
@@ -225,7 +217,7 @@
   every projective object in [23XC[123X is isomorphic to a finite direct sum over these
   objects.[133X
   
-  [1X1.3-10 IndecomposableInjectiveObjects[101X
+  [1X1.3-9 IndecomposableInjectiveObjects[101X
   
   [33X[1;0Y[29X[2XIndecomposableInjectiveObjects[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya list of objects[133X

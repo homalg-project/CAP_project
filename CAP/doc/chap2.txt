@@ -211,9 +211,9 @@
   change  this behaviour by calling [10XSetCachingToWeak( C, "ObjectConstructor" )[110X
   resp. [10XSetCachingToCrisp( C, "ObjectConstructor" )[110X.[133X
   
-  [1X2.7-2 \/[101X
+  [1X2.7-2 /[101X
   
-  [33X[1;0Y[29X[2X\/[102X( [3Xa[103X, [3XC[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2X/[102X( [3Xa[103X, [3XC[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
   [33X[0;0YShorthand for [10XObjectConstructor( C, a )[110X.[133X

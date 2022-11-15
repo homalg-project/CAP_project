@@ -159,8 +159,6 @@
   
         [30X    [33X[0;12Y[10Xcategory[110X,[133X
   
-        [30X    [33X[0;12Y[10Xcell[110X,[133X
-  
         [30X    [33X[0;12Y[10Xobject[110X,[133X
   
         [30X    [33X[0;12Y[10Xmorphism[110X,[133X
@@ -172,8 +170,6 @@
         [30X    [33X[0;12Y[10Xmorphism_in_range_category_of_homomorphism_structure[110X,[133X
   
         [30X    [33X[0;12Y[10Xother_category[110X,[133X
-  
-        [30X    [33X[0;12Y[10Xother_cell[110X,[133X
   
         [30X    [33X[0;12Y[10Xother_object[110X,[133X
   

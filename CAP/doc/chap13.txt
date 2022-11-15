@@ -15,21 +15,14 @@
   
   [33X[0;0YThe [5XGAP[105X category of a dummy CAP category.[133X
   
-  [1X13.1-2 IsDummyCategoryCell[101X
-  
-  [33X[1;0Y[29X[2XIsDummyCategoryCell[102X( [3Xarg[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe [5XGAP[105X category of cells in a dummy CAP category.[133X
-  
-  [1X13.1-3 IsDummyCategoryObject[101X
+  [1X13.1-2 IsDummyCategoryObject[101X
   
   [33X[1;0Y[29X[2XIsDummyCategoryObject[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of objects in a dummy CAP category.[133X
   
-  [1X13.1-4 IsDummyCategoryMorphism[101X
+  [1X13.1-3 IsDummyCategoryMorphism[101X
   
   [33X[1;0Y[29X[2XIsDummyCategoryMorphism[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X

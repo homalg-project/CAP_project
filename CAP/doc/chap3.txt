@@ -381,9 +381,9 @@
   \cdot  \alpha[123X.  Note:  The  multiplication  has  to  be  compatible with the
   congruence of morphisms.[133X
   
-  [1X3.8-6 \*[101X
+  [1X3.8-6 *[101X
   
-  [33X[1;0Y[29X[2X\*[102X( [3Xr[103X, [3Xalpha[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2X*[102X( [3Xr[103X, [3Xalpha[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X[133X
   
   [33X[0;0YThis  is  a  convenience method. It has two arguments. The first argument is
