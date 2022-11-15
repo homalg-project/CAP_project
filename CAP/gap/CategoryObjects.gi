@@ -338,7 +338,7 @@ end );
 CAP_INTERNAL_CREATE_OBJECT_PRINT( );
 
 InstallMethod( String,
-               [ IsCapCategoryObject and HasCapCategory ],
+               [ IsCapCategoryObject ],
                
   function( object )
     

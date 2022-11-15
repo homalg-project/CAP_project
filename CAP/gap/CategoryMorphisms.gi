@@ -840,7 +840,7 @@ end );
 CAP_INTERNAL_CREATE_MORPHISM_PRINT( );
 
 InstallMethod( String,
-               [ IsCapCategoryMorphism and HasCapCategory ],
+               [ IsCapCategoryMorphism ],
                
   function( morphism )
     

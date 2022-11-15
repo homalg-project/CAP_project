@@ -183,7 +183,7 @@ DeclareOperation( "AsMorphismInWrapperCategory",
 #!  Convenience method for <Ref Oper="AsObjectInWrapperCategory" Label="for IsWrapperCapCategory, IsCapCategoryObject" />
 #!  and <Ref Oper="AsMorphismInWrapperCategory" Label="for IsWrapperCapCategory, IsCapCategoryMorphism" />.
 #! @Arguments cell, category
-DeclareOperation( "\/",
+DeclareOperation( "/",
                 [ IsCapCategoryCell, IsWrapperCapCategory ] );
 
 #! @Description

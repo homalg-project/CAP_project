@@ -536,7 +536,7 @@ InstallMethod( CanCompute,
     
     weight_list := category!.derivations_weight_list;
     
-    return not CurrentOperationWeight( weight_list, string ) = infinity;
+    return CurrentOperationWeight( weight_list, string ) <> infinity;
     
 end );
 

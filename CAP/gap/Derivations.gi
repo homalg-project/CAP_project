@@ -134,8 +134,7 @@ function( operations )
   local G, op_name;
   G := rec( derivations_by_target := rec(),
               derivations_by_used_ops := rec() );
-  ObjectifyWithAttributes
-    ( G,
+  G := ObjectifyWithAttributes( G,
       NewType( TheFamilyOfDerivationGraphs,
                IsDerivedMethodGraph ) );
   

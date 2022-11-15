@@ -71,7 +71,7 @@ DeclareOperation( "ProductOp_OnObjects",
 DeclareOperation( "ProductOp_OnTwoCells",
                   [ IsList, IsCapCategory ] );
 
-DeclareOperation( "\/",
+DeclareOperation( "/",
                   [ IsList, IsCapProductCategory ] );
 
 DeclareOperation( "ProductOp",

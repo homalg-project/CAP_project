@@ -419,9 +419,9 @@ DeclareProperty( "IsZeroForMorphisms",
 
 DeclareProperty( "IsZero", IsCapCategoryMorphism );
 
-DeclareOperation( "\+", [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+DeclareOperation( "+", [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-DeclareOperation( "\-", [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+DeclareOperation( "-", [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are two morphisms $\alpha, \beta: a \rightarrow b$.
@@ -475,10 +475,10 @@ DeclareOperation( "MultiplyWithElementOfCommutativeRingForMorphisms",
 #! The output is the multiplication with the ring element $r \cdot \alpha$.
 #! @Returns a morphism in $\mathrm{Hom}(a,b)$
 #! @Arguments r, alpha
-DeclareOperation( "\*",
+DeclareOperation( "*",
                   [ IsRingElement, IsCapCategoryMorphism ] );
 
-DeclareOperation( "\*",
+DeclareOperation( "*",
                   [ IsCapCategoryMorphism, IsRingElement ] );
 
 
