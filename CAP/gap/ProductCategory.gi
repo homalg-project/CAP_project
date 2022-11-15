@@ -599,7 +599,7 @@ MakeReadOnlyGlobal( "Product" );
 
 ##
 InstallMethod( IsEqualForCache,
-               [ IsCapCategory and IsCapProductCategory, IsCapCategory and IsCapProductCategory ],
+               [ IsCapProductCategory, IsCapProductCategory ],
                
   function( category1, category2 )
     local list1, list2, length;
@@ -623,6 +623,52 @@ end );
 ##
 InstallMethod( IsEqualForCache,
                [ IsCapCategoryProductObject, IsCapCategoryProductObject ],
+               
+  function( obj1, obj2 )
+    local list1, list2, length;
+    
+    list1 := Components( obj1 );
+    
+    list2 := Components( obj2 );
+    
+    length := Length( list1 );
+    
+    if length <> Length( list2 ) then
+        
+        return false;
+        
+    fi;
+    
+    return ForAll( [ 1 .. length ], i -> IsEqualForCache( list1[ i ], list2[ i ] ) );
+    
+end );
+
+##
+InstallMethod( IsEqualForCache,
+               [ IsCapCategoryProductMorphism, IsCapCategoryProductMorphism ],
+               
+  function( obj1, obj2 )
+    local list1, list2, length;
+    
+    list1 := Components( obj1 );
+    
+    list2 := Components( obj2 );
+    
+    length := Length( list1 );
+    
+    if length <> Length( list2 ) then
+        
+        return false;
+        
+    fi;
+    
+    return ForAll( [ 1 .. length ], i -> IsEqualForCache( list1[ i ], list2[ i ] ) );
+    
+end );
+
+##
+InstallMethod( IsEqualForCache,
+               [ IsCapCategoryProductTwoCell, IsCapCategoryProductTwoCell ],
                
   function( obj1, obj2 )
     local list1, list2, length;
