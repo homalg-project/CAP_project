@@ -1003,6 +1003,25 @@ end );
 ##
 #######################################
 
+# fallback methods for Julia
+InstallMethod( ViewObj,
+               [ IsCapCategory ],
+               
+  function ( category )
+    
+    Print( Name( category ) );
+    
+end );
+
+InstallMethod( Display,
+               [ IsCapCategory ],
+               
+  function ( category )
+    
+    Print( "A CAP category with name ", Name( category ), "\n" );
+    
+end );
+
 InstallGlobalFunction( CAP_INTERNAL_INSTALL_PRINT_FUNCTION,
                
   function( )
@@ -1045,7 +1064,9 @@ InstallMethod( String,
                [ IsCapCategory ],
     Name );
 
+#= comment for Julia
 CAP_INTERNAL_INSTALL_PRINT_FUNCTION( );
+# =#
 
 InstallGlobalFunction( DisableAddForCategoricalOperations,
   
