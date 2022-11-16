@@ -225,6 +225,13 @@ DeclareOperation( "CreateCapCategory",
 ##
 ###################################
 
+#! @Description
+#! The argument is a category $C$.
+#! The output is its name.
+#! @Arguments C
+#! @Returns a string
+DeclareAttribute( "Name", IsCapCategory );
+
 #! Each category $C$ stores various filters.
 #! They are used to apply the right functions in the method selection.
 
