@@ -163,8 +163,14 @@ The record can have the following components, most of which can be set in the me
 * output_source_getter_string (optional): Only valid if the operation returns a morphism: a piece of GAP code which computes the source of the
   returned morphism. The input arguments are available via the names given in `input_arguments_names`.
 
+* can_always_compute_output_source_getter (optional): Only valid if `output_source_getter_string` is also set:
+  Whether the code in `output_source_getter_string` is independent of CAP operations and can thus always be computed without having to check the installed operations of a category.
+
 * output_range_getter_string (optional): Only valid if the operation returns a morphism: a piece of GAP code which computes the range of the
   returned morphism. The input arguments are available via the names given in `input_arguments_names`.
+
+* can_always_compute_output_range_getter (optional): Only valid if `output_range_getter_string` is also set:
+  Whether the code in `output_range_getter_string` is independent of CAP operations and can thus always be computed without having to check the installed operations of a category.
 
 * with_given_object_position (optional): One of the following strings: `"Source"`, `"Range"`, or `"both"`.
   Set for the without given operation in a with given pair. Describes whether the source resp. range are given

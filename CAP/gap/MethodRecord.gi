@@ -551,7 +551,9 @@ PreComposeList := rec(
   end,
   return_type := "morphism",
   output_source_getter_string := "Source( list_of_morphisms[1] )",
+  can_always_compute_output_source_getter := true,
   output_range_getter_string := "Range( Last( list_of_morphisms ) )",
+  can_always_compute_output_range_getter := true,
   dual_operation := "PostComposeList",
   compatible_with_congruence_of_morphisms := true,
 ),
@@ -616,7 +618,9 @@ PostComposeList := rec(
   end,
   return_type := "morphism",
   output_source_getter_string := "Source( Last( list_of_morphisms ) )",
+  can_always_compute_output_source_getter := true,
   output_range_getter_string := "Range( list_of_morphisms[1] )",
+  can_always_compute_output_range_getter := true,
   dual_operation := "PreComposeList",
   compatible_with_congruence_of_morphisms := true,
 ),
@@ -4754,7 +4758,8 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
     local recnames, current_recname, current_rec, io_type, number_of_arguments, func_string,
           installation_name, output_list, input_list, argument_names, return_list, current_output, input_position, list_position,
           without_given_name, with_given_names, with_given_name, without_given_rec, with_given_object_position, object_name,
-          object_filter_list, with_given_object_filter, given_source_argument_name, given_range_argument_name, with_given_rec, i;
+          object_filter_list, with_given_object_filter, given_source_argument_name, given_range_argument_name, with_given_rec, i,
+          can_always_compute_output_source_getter, can_always_compute_output_range_getter;
     
     recnames := RecNames( record );
     
@@ -5122,12 +5127,14 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             if return_list[1] <> fail then
                 
                 current_rec.output_source_getter_string := return_list[1];
+                current_rec.can_always_compute_output_source_getter := true;
                 
             fi;
             
             if return_list[2] <> fail then
                 
                 current_rec.output_range_getter_string := return_list[2];
+                current_rec.can_always_compute_output_range_getter := true;
                 
             fi;
             
@@ -5450,16 +5457,47 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             ) );
             
             # Test if output_source_getter_string contains a CAP operation.
-            # If not, it can always be computed (independent of the conrete category).
-            current_rec.can_always_compute_output_source_getter := IsEmpty(
-                CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION(
-                    current_rec.output_source_getter,
-                    Concatenation( recnames, RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) ),
-                    2,
-                    CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS,
-                    rec( )
-                )
-            );
+            # If not, it can always be computed (independent of the concrete category).
+            
+            can_always_compute_output_source_getter := fail;
+            
+            if current_rec.output_source_getter_string in current_rec.input_arguments_names then
+                
+                can_always_compute_output_source_getter := true;
+                
+            else
+                
+                #= comment for Julia
+                can_always_compute_output_source_getter := IsEmpty(
+                    CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION(
+                        current_rec.output_source_getter,
+                        Concatenation( recnames, RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) ),
+                        2,
+                        CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS,
+                        rec( )
+                    )
+                );
+                # =#
+                
+            fi;
+            
+            if can_always_compute_output_source_getter <> fail then
+                
+                if IsBound( current_rec.can_always_compute_output_source_getter ) then
+                    
+                    if current_rec.can_always_compute_output_source_getter <> can_always_compute_output_source_getter then
+                        
+                        Error( "<current_rec.can_always_compute_output_source_getter> does not match the automatically detected value" );
+                        
+                    fi;
+                    
+                else
+                    
+                    current_rec.can_always_compute_output_source_getter := can_always_compute_output_source_getter;
+                    
+                fi;
+                
+            fi;
             
         fi;
         
@@ -5474,16 +5512,47 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             ) );
             
             # Test if output_range_getter_string contains a CAP operation.
-            # If not, it can always be computed (independent of the conrete category).
-            current_rec.can_always_compute_output_range_getter := IsEmpty(
-                CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION(
-                    current_rec.output_range_getter,
-                    Concatenation( recnames, RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) ),
-                    2,
-                    CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS,
-                    rec( )
-                )
-            );
+            # If not, it can always be computed (independent of the concrete category).
+            
+            can_always_compute_output_range_getter := fail;
+            
+            if current_rec.output_range_getter_string in current_rec.input_arguments_names then
+                
+                can_always_compute_output_range_getter := true;
+                
+            else
+                
+                #= comment for Julia
+                can_always_compute_output_range_getter := IsEmpty(
+                    CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION(
+                        current_rec.output_range_getter,
+                        Concatenation( recnames, RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) ),
+                        2,
+                        CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS,
+                        rec( )
+                    )
+                );
+                # =#
+                
+            fi;
+            
+            if can_always_compute_output_range_getter <> fail then
+                
+                if IsBound( current_rec.can_always_compute_output_range_getter ) then
+                    
+                    if current_rec.can_always_compute_output_range_getter <> can_always_compute_output_range_getter then
+                        
+                        Error( "<current_rec.can_always_compute_output_range_getter> does not match the automatically detected value" );
+                        
+                    fi;
+                    
+                else
+                    
+                    current_rec.can_always_compute_output_range_getter := can_always_compute_output_range_getter;
+                    
+                fi;
+                
+            fi;
             
         fi;
         
