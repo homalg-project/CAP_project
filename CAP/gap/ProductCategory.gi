@@ -575,6 +575,7 @@ end );
 ##
 ###################################
 
+#= comment for Julia
 BindGlobal( "CAP_INTERNAL_PRODUCT_SAVE", Product );
 
 MakeReadWriteGlobal( "Product" );
@@ -593,6 +594,7 @@ Product := function( arg )
 end;
 
 MakeReadOnlyGlobal( "Product" );
+# =#
 
 ##
 InstallMethod( IsEqualForCache,

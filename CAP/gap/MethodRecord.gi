@@ -5505,6 +5505,7 @@ InstallGlobalFunction( CAP_INTERNAL_GENERATE_DOCUMENTATION_FROM_METHOD_NAME_RECO
   function ( record, package_name, filename, chapter_name, section_name )
     local recnames, output_string, package_info, current_string, current_recname, current_rec, output_path;
     
+    #= comment for Julia
     recnames := SortedList( RecNames( record ) );
     
     output_string := "";
@@ -5595,6 +5596,7 @@ DeclareOperation( "Addfunction_name",
         ) );
         
     fi;
+    # =#
     
 end );
 

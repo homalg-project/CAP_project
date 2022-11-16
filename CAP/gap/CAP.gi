@@ -102,6 +102,9 @@ InstallGlobalFunction( GET_METHOD_CACHE,
   function( category, name, number )
     local cache, cache_type;
     
+    cache := fail;
+    
+    #= comment for Julia
     if IsBound( category!.caches.( name ) ) and IsCachingObject( category!.caches.( name ) ) then
         
         if category!.caches.( name )!.nr_keys <> number then
@@ -137,6 +140,7 @@ InstallGlobalFunction( GET_METHOD_CACHE,
     fi;
     
     category!.caches.(name) := cache;
+    # =#
     
     return cache;
     

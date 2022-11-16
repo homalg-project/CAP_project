@@ -1086,6 +1086,7 @@ BindGlobal( "CAP_JIT_INTERNAL_TYPE_SIGNATURES", rec( ) );
 
 InstallGlobalFunction( "CapJitAddTypeSignature", function ( name, input_filters, output_data_type )
     
+    #= comment for Julia
     if IsCategory( ValueGlobal( name ) ) and Length( input_filters ) = 1 then
         
         Error( "adding type signatures for GAP categories applied to a single argument is not supported" );
@@ -1153,6 +1154,7 @@ InstallGlobalFunction( "CapJitAddTypeSignature", function ( name, input_filters,
     fi;
     
     Add( CAP_JIT_INTERNAL_TYPE_SIGNATURES.(name), [ input_filters, output_data_type ] );
+    # =#
     
 end );
 

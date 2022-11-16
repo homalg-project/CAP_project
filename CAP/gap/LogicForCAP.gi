@@ -8,6 +8,7 @@ InstallValue( CATEGORIES_LOGIC_FILES,
   rec(
       
       Propositions := rec(
+          #= comment for Julia
           IsCapCategory := [
                        Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PropositionsForGeneralCategories.tex" )
                      ],
@@ -25,8 +26,11 @@ InstallValue( CATEGORIES_LOGIC_FILES,
                                   ],
           IsAbelianCategory := [
                                   Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PropositionsForAbelianCategories.tex" )
-                               ] ),
+                               ],
+          # =#
+        ),
       Predicates := rec(
+          #= comment for Julia
           IsCapCategory := [
                        Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PredicateImplicationsForGeneralCategories.tex" )
                      ],
@@ -44,8 +48,11 @@ InstallValue( CATEGORIES_LOGIC_FILES,
                                   ],
           IsAbelianCategory := [
                                  Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PredicateImplicationsForAbelianCategories.tex" )
-                               ] ),
+                               ],
+          # =#
+        ),
       EvalRules := rec(
+          #= comment for Julia
           IsCapCategory := [
                       Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "RelationsForGeneralCategories.tex" )
                      ],
@@ -63,7 +70,9 @@ InstallValue( CATEGORIES_LOGIC_FILES,
                                   ],
           IsAbelianCategory := [
                                 Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "RelationsForAbelianCategories.tex" )
-                               ] ),
+                               ],
+          # =#
+        ),
      ) );
 
 InstallGlobalFunction( SetCapLogicInfo,
