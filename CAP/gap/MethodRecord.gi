@@ -4828,11 +4828,11 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
         fi;
         
         if IsBound( current_rec.dual_preprocessor_func ) and NumberArgumentsFunction( current_rec.dual_preprocessor_func ) >= 0 and NumberArgumentsFunction( current_rec.dual_preprocessor_func ) <> number_of_arguments then
-            Error( "the dual preprocessor function of <current_rec> has the wrong number of arguments" );
+            Error( "the dual preprocessor function of ", current_recname, " has the wrong number of arguments" );
         fi;
         
         if not ForAll( current_rec.filter_list, x -> IsString( x ) or IsFilter( x ) ) then
-            Error( "the filter list of <current_rec> does not fulfill the requirements" );
+            Error( "the filter list of ", current_recname, " does not fulfill the requirements" );
         fi;
         
         if not IsBound( current_rec.install_convenience_without_category ) then

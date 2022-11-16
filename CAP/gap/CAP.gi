@@ -118,7 +118,7 @@ InstallGlobalFunction( GET_METHOD_CACHE,
         cache := CreateCrispCachingObject( number );
         DeactivateCachingObject( cache );
     else
-        Error( "unrecognized cache type" );
+        Error( "unrecognized cache type ", cache_type );
     fi;
     
     category!.caches.(name) := cache;
