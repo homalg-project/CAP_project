@@ -3158,7 +3158,7 @@ AddDerivationToCAP( MereExistenceOfSolutionOfLinearSystemInAbCategory,
 
 ##
 AddFinalDerivationBundle( # IsomorphismFromFiberProductToKernelOfDiagonalDifference
-                    [ [ DirectSumDiagonalDifference, 1 ], 
+                    [ [ DirectSumDiagonalDifference, 1 ],
                       [ KernelObject, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     [ FiberProduct,
@@ -3171,6 +3171,9 @@ AddFinalDerivationBundle( # IsomorphismFromFiberProductToKernelOfDiagonalDiffere
                       IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct ],
 [
   IsomorphismFromFiberProductToKernelOfDiagonalDifference,
+  [ [ DirectSumDiagonalDifference, 1 ],
+    [ KernelObject, 1 ],
+    [ IdentityMorphism, 1 ] ],
   function( cat, diagram )
     local kernel_of_diagonal_difference;
     
@@ -3178,10 +3181,13 @@ AddFinalDerivationBundle( # IsomorphismFromFiberProductToKernelOfDiagonalDiffere
     
     return IdentityMorphism( cat, kernel_of_diagonal_difference );
     
-  end
+  end,
 ],
 [
   IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
+  [ [ DirectSumDiagonalDifference, 1 ],
+    [ KernelObject, 1 ],
+    [ IdentityMorphism, 1 ] ],
   function( cat, diagram )
     local kernel_of_diagonal_difference;
     
@@ -3189,7 +3195,7 @@ AddFinalDerivationBundle( # IsomorphismFromFiberProductToKernelOfDiagonalDiffere
     
     return IdentityMorphism( cat, kernel_of_diagonal_difference );
     
-  end
+  end,
 ] : Description := "IsomorphismFromFiberProductToKernelOfDiagonalDifference as the identity of the kernel of diagonal difference" );
 
 ##
@@ -3208,6 +3214,11 @@ AddFinalDerivationBundle( # IsomorphismFromFiberProductToEqualizerOfDirectProduc
                       IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct ],
 [
   IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram,
+  [ [ ProjectionInFactorOfDirectProduct, 2 ], ## Length( diagram ) would be the correct number
+    [ PreCompose, 2 ], ## Length( diagram ) would be the correct number
+    [ DirectProduct, 1 ],
+    [ Equalizer, 1 ],
+    [ IdentityMorphism, 1 ] ],
   function( cat, diagram )
     local D, diagram_of_equalizer, equalizer_of_direct_product_diagram;
     
@@ -3221,10 +3232,15 @@ AddFinalDerivationBundle( # IsomorphismFromFiberProductToEqualizerOfDirectProduc
     
     return IdentityMorphism( cat, equalizer_of_direct_product_diagram );
 
-  end
+  end,
 ],
 [
   IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct,
+  [ [ ProjectionInFactorOfDirectProduct, 2 ], ## Length( diagram ) would be the correct number
+    [ PreCompose, 2 ], ## Length( diagram ) would be the correct number
+    [ DirectProduct, 1 ],
+    [ Equalizer, 1 ],
+    [ IdentityMorphism, 1 ] ],
   function( cat, diagram )
     local D, diagram_of_equalizer, equalizer_of_direct_product_diagram;
     
@@ -3238,7 +3254,7 @@ AddFinalDerivationBundle( # IsomorphismFromFiberProductToEqualizerOfDirectProduc
     
     return IdentityMorphism( cat, equalizer_of_direct_product_diagram );
 
-  end
+  end,
 ] : Description := "IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram as the identity of the equalizer of direct product diagram" );
 
 ## Final methods for Pushout
@@ -3258,6 +3274,9 @@ AddFinalDerivationBundle( # IsomorphismFromPushoutToCokernelOfDiagonalDifference
                       IsomorphismFromCokernelOfDiagonalDifferenceToPushout ],
 [
   IsomorphismFromPushoutToCokernelOfDiagonalDifference,
+  [ [ CokernelObject, 1 ],
+    [ DirectSumCodiagonalDifference, 1 ],
+    [ IdentityMorphism, 1 ] ],
   function( cat, diagram )
     local cokernel_of_diagonal_difference;
     
@@ -3265,10 +3284,13 @@ AddFinalDerivationBundle( # IsomorphismFromPushoutToCokernelOfDiagonalDifference
     
     return IdentityMorphism( cat, cokernel_of_diagonal_difference );
     
-  end
+  end,
 ],
 [
   IsomorphismFromCokernelOfDiagonalDifferenceToPushout,
+  [ [ CokernelObject, 1 ],
+    [ DirectSumCodiagonalDifference, 1 ],
+    [ IdentityMorphism, 1 ] ],
   function( cat, diagram )
     local cokernel_of_diagonal_difference;
     
@@ -3276,7 +3298,7 @@ AddFinalDerivationBundle( # IsomorphismFromPushoutToCokernelOfDiagonalDifference
     
     return IdentityMorphism( cat, cokernel_of_diagonal_difference );
     
-  end
+  end,
 ] : Description := "IsomorphismFromPushoutToCokernelOfDiagonalDifference as the identity of the cokernel of diagonal difference" );
 
 ##
@@ -3295,6 +3317,11 @@ AddFinalDerivationBundle( # IsomorphismFromPushoutToCoequalizerOfCoproductDiagra
                       IsomorphismFromCoequalizerOfCoproductDiagramToPushout ],
 [
   IsomorphismFromPushoutToCoequalizerOfCoproductDiagram,
+  [ [ InjectionOfCofactorOfCoproduct, 2 ], ## Length( diagram ) would be the correct number
+    [ PreCompose, 2 ], ## Length( diagram ) would be the correct number
+    [ Coproduct, 1 ],
+    [ Coequalizer, 1 ],
+    [ IdentityMorphism, 1 ] ],
   function( cat, diagram )
     local D, diagram_of_coequalizer, coequalizer_of_coproduct_diagram;
     
@@ -3308,10 +3335,15 @@ AddFinalDerivationBundle( # IsomorphismFromPushoutToCoequalizerOfCoproductDiagra
     
     return IdentityMorphism( cat, coequalizer_of_coproduct_diagram );
     
-  end
+  end,
 ],
 [
   IsomorphismFromCoequalizerOfCoproductDiagramToPushout,
+  [ [ InjectionOfCofactorOfCoproduct, 2 ], ## Length( diagram ) would be the correct number
+    [ PreCompose, 2 ], ## Length( diagram ) would be the correct number
+    [ Coproduct, 1 ],
+    [ Coequalizer, 1 ],
+    [ IdentityMorphism, 1 ] ],
   function( cat, diagram )
     local D, diagram_of_coequalizer, coequalizer_of_coproduct_diagram;
     
@@ -3325,7 +3357,7 @@ AddFinalDerivationBundle( # IsomorphismFromPushoutToCoequalizerOfCoproductDiagra
     
     return IdentityMorphism( cat, coequalizer_of_coproduct_diagram );
     
-  end
+  end,
 ] : Description := "IsomorphismFromPushoutToCoequalizerOfCoproductDiagram as the identity of the coequalizer of coproduct diagram" );
 
 ## Final methods for Image
@@ -3346,6 +3378,9 @@ AddFinalDerivationBundle( # IsomorphismFromImageObjectToKernelOfCokernel,
                       IsomorphismFromKernelOfCokernelToImageObject ],
 [
   IsomorphismFromImageObjectToKernelOfCokernel,
+  [ [ KernelObject, 1 ],
+    [ CokernelProjection, 1 ],
+    [ IdentityMorphism, 1 ] ],
   function( cat, mor )
     local kernel_of_cokernel;
     
@@ -3353,10 +3388,13 @@ AddFinalDerivationBundle( # IsomorphismFromImageObjectToKernelOfCokernel,
     
     return IdentityMorphism( cat, kernel_of_cokernel );
     
-  end
+  end,
 ],
 [
   IsomorphismFromKernelOfCokernelToImageObject,
+  [ [ KernelObject, 1 ],
+    [ CokernelProjection, 1 ],
+    [ IdentityMorphism, 1 ] ],
   function( cat, mor )
     local kernel_of_cokernel;
     
@@ -3364,7 +3402,7 @@ AddFinalDerivationBundle( # IsomorphismFromImageObjectToKernelOfCokernel,
     
     return IdentityMorphism( cat, kernel_of_cokernel );
     
-  end
+  end,
 ] : Description := "IsomorphismFromImageObjectToKernelOfCokernel as the identity of the kernel of the cokernel" );
 
 ##
@@ -3422,6 +3460,9 @@ AddFinalDerivationBundle( # IsomorphismFromCoimageToCokernelOfKernel,
                       IsomorphismFromCokernelOfKernelToCoimage ],
 [
   IsomorphismFromCoimageToCokernelOfKernel,
+  [ [ CokernelObject, 1 ],
+    [ KernelEmbedding, 1 ],
+    [ IdentityMorphism, 1 ] ],
   function( cat, mor )
     local cokernel_of_kernel;
     
@@ -3429,10 +3470,13 @@ AddFinalDerivationBundle( # IsomorphismFromCoimageToCokernelOfKernel,
     
     return IdentityMorphism( cat, cokernel_of_kernel );
     
-  end
+  end,
 ],
 [
   IsomorphismFromCokernelOfKernelToCoimage,
+  [ [ CokernelObject, 1 ],
+    [ KernelEmbedding, 1 ],
+    [ IdentityMorphism, 1 ] ],
   function( cat, mor )
     local cokernel_of_kernel;
     
@@ -3440,7 +3484,7 @@ AddFinalDerivationBundle( # IsomorphismFromCoimageToCokernelOfKernel,
     
     return IdentityMorphism( cat, cokernel_of_kernel );
     
-  end
+  end,
 ] : Description := "IsomorphismFromCoimageToCokernelOfKernel as the identity of the cokernel of the kernel" );
 
 ## Final methods for initial object
@@ -3460,19 +3504,23 @@ AddFinalDerivationBundle( # IsomorphismFromInitialObjectToZeroObject,
                     ],
 [
   IsomorphismFromInitialObjectToZeroObject,
+  [ [ ZeroObject, 1 ],
+    [ IdentityMorphism, 1 ] ],
   function( cat )
     
     return IdentityMorphism( cat, ZeroObject( cat ) );
     
-  end
+  end,
 ],
 [
   IsomorphismFromZeroObjectToInitialObject,
+  [ [ ZeroObject, 1 ],
+    [ IdentityMorphism, 1 ] ],
   function( cat )
     
     return IdentityMorphism( cat, ZeroObject( cat ) );
     
-  end
+  end,
 ] : Description := "IsomorphismFromInitialObjectToZeroObject as the identity of the zero object" );
 
 ## Final methods for terminal object
@@ -3492,19 +3540,23 @@ AddFinalDerivationBundle( # IsomorphismFromTerminalObjectToZeroObject,
                     ],
 [
   IsomorphismFromTerminalObjectToZeroObject,
+  [ [ ZeroObject, 1 ],
+    [ IdentityMorphism, 1 ] ],
   function( cat )
     
     return IdentityMorphism( cat, ZeroObject( cat ) );
     
-  end
+  end,
 ],
 [
   IsomorphismFromZeroObjectToTerminalObject,
+  [ [ ZeroObject, 1 ],
+    [ IdentityMorphism, 1 ] ],
   function( cat )
     
     return IdentityMorphism( cat, ZeroObject( cat ) );
     
-  end
+  end,
 ] : Description := "IsomorphismFromTerminalObjectToZeroObject as the identity of the zero object" );
 
 ## Final methods for product
@@ -3523,19 +3575,23 @@ AddFinalDerivationBundle( # IsomorphismFromDirectSumToDirectProduct,
 #                       UniversalMorphismIntoDirectProductWithGivenDirectProduct ],
 [
   IsomorphismFromDirectSumToDirectProduct,
+  [ [ DirectSum, 1 ],
+    [ IdentityMorphism, 1 ] ],
   function( cat, diagram )
     
     return IdentityMorphism( cat, DirectSum( cat, diagram ) );
     
-  end
+  end,
 ],
 [
   IsomorphismFromDirectProductToDirectSum,
+  [ [ DirectSum, 1 ],
+    [ IdentityMorphism, 1 ] ],
   function( cat, diagram )
     
     return IdentityMorphism( cat, DirectSum( cat, diagram ) );
     
-  end
+  end,
 ] : Description := "IsomorphismFromDirectSumToDirectProduct as the identity of the direct sum" );
 
 ## Final methods for coproduct
@@ -3554,19 +3610,23 @@ AddFinalDerivationBundle( # IsomorphismFromCoproductToDirectSum,
 #                       UniversalMorphismFromCoproductWithGivenCoproduct ],
 [
   IsomorphismFromCoproductToDirectSum,
+  [ [ DirectSum, 1 ],
+    [ IdentityMorphism, 1 ] ],
   function( cat, diagram )
     
     return IdentityMorphism( cat, DirectSum( cat, diagram ) );
     
-  end
+  end,
 ],
 [
   IsomorphismFromDirectSumToCoproduct,
+  [ [ DirectSum, 1 ],
+    [ IdentityMorphism, 1 ] ],
   function( cat, diagram )
     
     return IdentityMorphism( cat, DirectSum( cat, diagram ) );
     
-  end
+  end,
 ] : Description := "IsomorphismFromCoproductToDirectSum as the identity of the direct sum" );
 
 ## Final methods for homology object
@@ -3585,6 +3645,12 @@ AddFinalDerivationBundle( # IsomorphismFromHomologyObjectToItsConstructionAsAnIm
                       HomologyObjectFunctorialWithGivenHomologyObjects ],
 [
   IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject,
+  [ [ ImageObject, 1 ],
+    [ PreCompose, 1 ],
+    [ KernelEmbedding, 1 ],
+    [ CokernelProjection, 1 ],
+    [ IdentityMorphism, 1 ],
+  ],
   function( cat, alpha, beta )
     local homology_object;
     
@@ -3592,10 +3658,16 @@ AddFinalDerivationBundle( # IsomorphismFromHomologyObjectToItsConstructionAsAnIm
     
     return IdentityMorphism( cat, homology_object );
     
-  end
+  end,
 ],
 [
   IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject,
+  [ [ ImageObject, 1 ],
+    [ PreCompose, 1 ],
+    [ KernelEmbedding, 1 ],
+    [ CokernelProjection, 1 ],
+    [ IdentityMorphism, 1 ],
+  ],
   function( cat, alpha, beta )
     local homology_object;
     
@@ -3603,7 +3675,7 @@ AddFinalDerivationBundle( # IsomorphismFromHomologyObjectToItsConstructionAsAnIm
     
     return IdentityMorphism( cat, homology_object );
     
-  end
+  end,
 ] : CategoryFilter := IsAbelianCategory,
       Description := "IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject as the identity of the homology object constructed as an image object" );
 
@@ -3665,6 +3737,12 @@ AddFinalDerivationBundle( # BasisOfExternalHom,
                     ],
 [
   BasisOfExternalHom,
+  [
+    [ HomomorphismStructureOnObjects, 1 ],
+    [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 2 ],
+    [ DistinguishedObjectOfHomomorphismStructure, 1 ],
+    [ BasisOfExternalHom, 1, RangeCategoryOfHomomorphismStructure ],
+  ],
   function( cat, a, b )
     local range_cat, hom_a_b, D, B;
     
@@ -3678,10 +3756,14 @@ AddFinalDerivationBundle( # BasisOfExternalHom,
     
     return List( B, m -> InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat, a, b, m ) );
   
-  end
+  end,
 ],
 [
   CoefficientsOfMorphism,
+  [
+    [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure, 1 ],
+    [ CoefficientsOfMorphism, 1, RangeCategoryOfHomomorphismStructure ],
+  ],
   function( cat, alpha )
     local range_cat, beta;
     
@@ -3691,7 +3773,7 @@ AddFinalDerivationBundle( # BasisOfExternalHom,
     
     return CoefficientsOfMorphism( range_cat, beta );
     
-  end
+  end,
 ] :
   CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
   CategoryFilter :=
