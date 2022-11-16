@@ -4572,15 +4572,13 @@ end );
 BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
   
   function( without_given_name, with_given_name, object_function_name, object_arguments_positions )
-    local object_function, with_given_name_function, is_attribute, record, attribute_tester;
+    local object_function, with_given_name_function, record, attribute_tester;
     
     object_function := ValueGlobal( object_function_name );
     
     with_given_name_function := ValueGlobal( with_given_name );
     
-    is_attribute := IsOperation( object_function ) and Tester( object_function ) <> false;
-    
-    if not is_attribute then
+    if not IsAttribute( object_function ) then
         
         return function( arg )
           local category, without_given_weight, with_given_weight, object_args, cache, cache_value;
@@ -4671,7 +4669,7 @@ end );
 BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
   
   function( source_range_object, object_function_name, object_arguments_positions )
-    local object_getter, object_function, setter_function, is_attribute, cache_key_length;
+    local object_getter, object_function, setter_function, cache_key_length;
     
     if source_range_object = "Source" then
         object_getter := Source;
@@ -4683,10 +4681,9 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
     
     object_function := ValueGlobal( object_function_name );
     
-    is_attribute := IsOperation( object_function ) and Setter( object_function ) <> false;
     cache_key_length := Length( object_arguments_positions );
     
-    if not is_attribute then
+    if not IsAttribute( object_function ) then
     
         return function( arg )
             local result, object, category;
@@ -4790,7 +4787,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
             io_type := current_rec.io_type;
             
-            if not IsList( io_type ) or not Length( io_type ) = 2 then
+            if not IsList( io_type ) or Length( io_type ) <> 2 then
                 Error( "the io_type of <current_rec> is not a list of length 2" );
             fi;
             
@@ -5002,7 +4999,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
             output_list := current_rec.io_type[ 2 ];
             
-            if not Length( output_list ) = 2 then
+            if Length( output_list ) <> 2 then
                 
                 Error( "the output type is not a list of length 2" );
                 

@@ -486,11 +486,11 @@ InstallGlobalFunction( "CAP_INTERNAL_MERGE_FILTER_LISTS",
     local i;
     filter_list := ShallowCopy( filter_list );
     
-    if not Length( filter_list ) >= Length( additional_filters ) then
+    if Length( filter_list ) < Length( additional_filters ) then
         Error( "too many additional filters" );
     fi;
     
-    for i in [ 1 .. Length( filter_list ) ] do
+    for i in [ 1 .. Length( additional_filters ) ] do
         if IsBound( additional_filters[ i ] ) then
             filter_list[ i ] := filter_list[ i ] and additional_filters[ i ];
         fi;
@@ -1733,7 +1733,7 @@ InstallGlobalFunction( LastWithKeys, function ( list, func )
     
     # adapted implementation of `Last`
     
-    for i in [ Length( list ), Length( list ) - 1 .. 1 ] do
+    for i in Reversed( [ 1 .. Length( list ) ] ) do
         
         elm := list[i];
         

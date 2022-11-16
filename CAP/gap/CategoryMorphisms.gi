@@ -201,7 +201,7 @@ end );
 
 ##
 InstallMethod( \*,
-               [ IsRingElement and IsRat, IsCapCategoryMorphism ],
+               [ IsRat, IsCapCategoryMorphism ],
                
 function( q, mor )
     local cat, ring, r;

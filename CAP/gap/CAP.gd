@@ -140,10 +140,10 @@ DeclareCategory( "IsCellOfSkeletalCategory",
 DeclareGlobalFunction( "AddCategoricalProperty" );
 
 InstallGlobalFunction( AddCategoricalProperty,
-  function( property_list )
-    local i;
+  function( property_pair )
+    local property;
     
-    if not IsList( property_list ) or Length( property_list ) <> 2 or not IsString( property_list[1] ) or not ( IsString( property_list[2] ) or property_list[2] = fail ) then
+    if not IsList( property_pair ) or Length( property_pair ) <> 2 or not IsString( property_pair[1] ) or not ( IsString( property_pair[2] ) or property_pair[2] = fail ) then
         Error(
             "You must pass a pair (i.e. a list of length 2) of strings to `AddCategoricalProperty`. ",
             "The second entry is the property of the opposite category. ",
@@ -152,17 +152,12 @@ InstallGlobalFunction( AddCategoricalProperty,
         return;
     fi;
     
-    Add( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST, property_list );
+    Add( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST, property_pair );
     
-    for i in [ 1 .. 2 ] do
-        
-        if IsBound( property_list[ i ] ) and IsString( property_list[ i ] ) then
-            
-            DeclareProperty( property_list[ i ], IsCapCategory );
-            
-        fi;
-        
-    od;
+    DeclareProperty( property_pair[1], IsCapCategory );
+    
+    # all property pairs must also be added with the entries swapped
+    # this will declare the opposite property
     
 end );
 
