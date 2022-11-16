@@ -888,8 +888,8 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
         return;
     fi;
     
-    if not IsBoundGlobal( string ) then
-        Error( Concatenation( string, " is not bound globally." ) );
+    if not IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(string) ) then
+        Error( string, " is not the name of a CAP operation." );
         return;
     fi;
     
