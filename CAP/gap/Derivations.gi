@@ -877,35 +877,35 @@ end );
 InstallGlobalFunction( DerivationsOfMethodByCategory,
   
   function( category, name )
-    local string, category_weight_list, current_weight, current_derivation, currently_installed_funcs, to_delete, weight_list, category_getter_string, possible_derivations, category_filter, weight, i, x;
+    local category_weight_list, current_weight, current_derivation, currently_installed_funcs, to_delete, weight_list, category_getter_string, possible_derivations, category_filter, weight, i, x;
     
     if IsFunction( name ) then
-        string := NameFunction( name );
-    elif IsString( name ) then
-        string := name;
-    else
+        name := NameFunction( name );
+    fi;
+    
+    if not IsString( name ) then
         Error( "Usage is <category>,<string> or <category>,<CAP operation>\n" );
         return;
     fi;
     
-    if not IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(string) ) then
-        Error( string, " is not the name of a CAP operation." );
+    if not IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(name) ) then
+        Error( name, " is not the name of a CAP operation." );
         return;
     fi;
     
     category_weight_list := category!.derivations_weight_list;
     
-    current_weight := CurrentOperationWeight( category_weight_list, string );
+    current_weight := CurrentOperationWeight( category_weight_list, name );
     
     if current_weight < infinity then
     
-        current_derivation := DerivationOfOperation( category_weight_list, string );
+        current_derivation := DerivationOfOperation( category_weight_list, name );
         
-        Print( Name( category ), " can already compute ", TextAttr.b4, string, TextAttr.reset, " with weight " , String( current_weight ), ".\n" );
+        Print( Name( category ), " can already compute ", TextAttr.b4, name, TextAttr.reset, " with weight " , current_weight, ".\n" );
         
         if current_derivation = fail then
             
-            if IsBound( category!.primitive_operations.( string ) ) and category!.primitive_operations.( string ) = true then
+            if IsBound( category!.primitive_operations.( name ) ) and category!.primitive_operations.( name ) = true then
                 
                 Print( "It was given as a primitive operation.\n" );
                 
@@ -915,7 +915,7 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
                 
             fi;
             
-            currently_installed_funcs := category!.added_functions.( string );
+            currently_installed_funcs := category!.added_functions.( name );
             
             # delete overwritten funcs
             to_delete := [ ];
@@ -986,13 +986,13 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
         
     else
         
-        Print( TextAttr.b4, string, TextAttr.reset, " is currently not installed for ", Name( category ), ".\n\n" );
+        Print( TextAttr.b4, name, TextAttr.reset, " is currently not installed for ", Name( category ), ".\n\n" );
         
     fi;
     
     Print( "Possible derivations are:\n\n" );
     
-    possible_derivations := DerivationsOfOperation( CAP_INTERNAL_DERIVATION_GRAPH, string );
+    possible_derivations := DerivationsOfOperation( CAP_INTERNAL_DERIVATION_GRAPH, name );
     
     for current_derivation in possible_derivations do
         
@@ -1002,11 +1002,11 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
             continue;
         elif IsFilter( category_filter ) and not Tester( category_filter )( category ) then
             Print( "If ", Name( category ), " would be ", JoinStringsWithSeparator( Filtered( NamesFilter( category_filter ), name -> not StartsWith( name, "Has" ) ), " and " ), " then\n" );
-            Print( TextAttr.b4, string, TextAttr.reset, " could be derived by\n" );
+            Print( TextAttr.b4, name, TextAttr.reset, " could be derived by\n" );
         elif IsFunction( category_filter ) and not category_filter( category ) then
             continue;
         else
-            Print( TextAttr.b4, string, TextAttr.reset, " can be derived by\n" );
+            Print( TextAttr.b4, name, TextAttr.reset, " can be derived by\n" );
         fi;
         
         for x in UsedOperationsWithMultiplesAndCategoryGetters( current_derivation ) do
@@ -1035,7 +1035,7 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
             
         od;
         
-        Print( "with additional weight ", String( DerivationWeight( current_derivation ) ), ".\n\n" );
+        Print( "with additional weight ", DerivationWeight( current_derivation ), ".\n\n" );
         
     od;
     
