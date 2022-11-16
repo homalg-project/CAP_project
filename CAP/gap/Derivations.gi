@@ -183,7 +183,7 @@ end );
 InstallMethod( AddDerivation,
                [ IsDerivedMethodGraph, IsDerivedMethod ],
 function( G, d )
-  local method_name, filter_list, number_of_proposed_arguments, current_function_argument_number, x;
+  local method_name, filter_list, number_of_proposed_arguments, current_function_argument_number, target_op, x;
   
   if IsIdenticalObj( G, CAP_INTERNAL_DERIVATION_GRAPH ) then
     
@@ -208,7 +208,9 @@ function( G, d )
     
   fi;
   
-  Add( G!.derivations_by_target.( TargetOperation( d ) ), d );
+  target_op := TargetOperation( d );
+  
+  Add( G!.derivations_by_target.( target_op ), d );
   for x in UsedOperationsWithMultiplesAndCategoryGetters( d ) do
     # We add all operations, even those with category getters: In case the category getter
     # returns the category itself, this allows to recursively trigger derivations correctly.
@@ -711,11 +713,10 @@ end );
 InstallMethod( Add,
                [ IsStringMinHeap, IsString, IsInt ],
 function( H, string, key )
-  local array, i;
+  local array;
   array := H!.array;
-  i := Length( array ) + 1;
-  H!.node_indices.( string ) := i;
-  array[ i ] := [ string, key ];
+  Add( array, [ string, key ] );
+  H!.node_indices.( string ) := Length( array );
   DecreaseKey( H, string, key );
 end );
 
@@ -728,12 +729,13 @@ end );
 InstallMethod( ExtractMin,
                [ IsStringMinHeap ],
 function( H )
-  local array, node;
+  local array, node, key;
   array := H!.array;
   node := array[ 1 ];
   Swap( H, 1, Length( array ) );
-  Unbind( array[ Length( array ) ] );
-  Unbind( H!.node_indices.( H!.str( node ) ) );
+  Remove( array );
+  key := H!.str( node );
+  Unbind( H!.node_indices.( key ) );
   if not IsEmpty( array ) then
     Heapify( H, 1 );
   fi;
@@ -758,15 +760,17 @@ end );
 InstallMethod( Swap,
                [ IsStringMinHeap, IsPosInt, IsPosInt ],
 function( H, i, j )
-  local tmp, array, node_indices, str;
+  local array, node_indices, str, tmp, key;
   array := H!.array;
   node_indices := H!.node_indices;
   str := H!.str;
   tmp := array[ i ];
   array[ i ] := array[ j ];
   array[ j ] := tmp;
-  node_indices.( str( array[ i ] ) ) := i;
-  node_indices.( str( array[ j ] ) ) := j;
+  key := str( array[ i ] );
+  node_indices.( key ) := i;
+  key := str( array[ j ] );
+  node_indices.( key ) := j;
 end );
 
 InstallMethod( Contains,

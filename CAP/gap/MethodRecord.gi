@@ -3436,6 +3436,7 @@ SolveLinearSystemInAbCategory := rec(
     
   end,
   pre_function_full := function( cat, left_coeffs, right_coeffs, rhs )
+    local nr_columns_left, nr_columns_right;
     
     if not ForAll( [ 1 .. Length( left_coeffs ) ], i -> ForAll( left_coeffs[i], coeff -> IsEqualForObjects( Source( coeff ), Source( rhs[i] ) ) <> false ) ) then
         return [ false, "the sources of the left coefficients must correspond to the sources of the right hand side" ];
@@ -3445,11 +3446,15 @@ SolveLinearSystemInAbCategory := rec(
         return [ false, "the ranges of the right coefficients must correspond to the ranges of the right hand side" ];
     fi;
     
-    if not ForAll( [ 1 .. Length( left_coeffs[1] ) ], j -> ForAll( left_coeffs, x -> IsEqualForObjects( Range( x[j] ), Range( left_coeffs[1][j] ) ) <> false ) ) then
+    nr_columns_left := Length( left_coeffs[1] );
+    
+    if not ForAll( [ 1 .. nr_columns_left ], j -> ForAll( left_coeffs, x -> IsEqualForObjects( Range( x[j] ), Range( left_coeffs[1][j] ) ) <> false ) ) then
         return [ false, "all ranges in a column of the left coefficients must be equal" ];
     fi;
     
-    if not ForAll( [ 1 .. Length( right_coeffs[1] ) ], j -> ForAll( right_coeffs, x -> IsEqualForObjects( Source( x[j] ), Source( right_coeffs[1][j] ) ) <> false ) ) then
+    nr_columns_right := Length( right_coeffs[1] );
+    
+    if not ForAll( [ 1 .. nr_columns_right ], j -> ForAll( right_coeffs, x -> IsEqualForObjects( Source( x[j] ), Source( right_coeffs[1][j] ) ) <> false ) ) then
         return [ false, "all sources in a column of the right coefficients must be equal" ];
     fi;
     
@@ -5011,9 +5016,8 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
             argument_names := input_list;
             
-            return_list := [ ];
-            
-            for i in [ 1 .. Length( output_list ) ] do
+            return_list := List( [ 1 .. Length( output_list ) ], function ( i )
+              local current_output, input_position, list_position;
                 
                 current_output := output_list[ i ];
                 
@@ -5021,24 +5025,22 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                 
                 if input_position = fail then
                     
-                    return_list[ i ] := fail;
-                    
-                    continue;
+                    return fail;
                     
                 fi;
                 
                 if Length( current_output ) = 1 then
                     
-                   return_list[ i ] := argument_names[ input_position ];
+                   return argument_names[ input_position ];
                    
                 elif Length( current_output ) = 2 then
                     
                     if LowercaseString( current_output[ 2 ] ) = "source" then
-                        return_list[ i ] := Concatenation( "Source( ", argument_names[ input_position ], " )" );
+                        return Concatenation( "Source( ", argument_names[ input_position ], " )" );
                     elif LowercaseString( current_output[ 2 ] ) = "range" then
-                        return_list[ i ] := Concatenation( "Range( ", argument_names[ input_position ], " )" );
+                        return Concatenation( "Range( ", argument_names[ input_position ], " )" );
                     elif Position( input_list, current_output[ 2 ] ) <> fail then
-                        return_list[ i ] := Concatenation( argument_names[ input_position ], "[", argument_names[ Position( input_list, current_output[ 2 ] ) ], "]" );
+                        return Concatenation( argument_names[ input_position ], "[", argument_names[ Position( input_list, current_output[ 2 ] ) ], "]" );
                     else
                         Error( "wrong input type" );
                     fi;
@@ -5060,9 +5062,9 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                     fi;
                     
                     if LowercaseString( current_output[ 3 ] ) = "source" then
-                        return_list[ i ] := Concatenation( "Source( ", argument_names[ input_position ], "[", list_position, "] )" );
+                        return Concatenation( "Source( ", argument_names[ input_position ], "[", list_position, "] )" );
                     elif LowercaseString( current_output[ 3 ] ) = "range" then
-                        return_list[ i ] := Concatenation( "Range( ", argument_names[ input_position ], "[", list_position, "] )" );
+                        return Concatenation( "Range( ", argument_names[ input_position ], "[", list_position, "] )" );
                     else
                         Error( "wrong output syntax" );
                     fi;
@@ -5073,15 +5075,15 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                     
                 fi;
                 
-            od;
+            end );
             
-            if IsBound( return_list[1] ) and return_list[1] <> fail then
+            if Length( output_list ) >= 1 and return_list[1] <> fail then
                 
                 current_rec.output_source_getter_string := return_list[1];
                 
             fi;
             
-            if IsBound( return_list[2] ) and return_list[2] <> fail then
+            if Length( output_list ) >= 2 and return_list[2] <> fail then
                 
                 current_rec.output_range_getter_string := return_list[2];
                 
@@ -5297,7 +5299,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                 
             fi;
             
-            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( record, with_given_name, with_given_rec : subset_only );
+            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( record, with_given_name, with_given_rec : subset_only := true );
             
             # now enhance the actual with_given_rec
             with_given_rec := record.(with_given_name);

@@ -165,7 +165,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
       function( category, method_list, weight )
         local install_func, replaced_filter_list, needs_wrapping, i, is_derivation, is_final_derivation, is_precompiled_derivation, without_given_name, with_given_name,
               without_given_weight, with_given_weight, number_of_proposed_arguments, current_function_number,
-              current_function_argument_number, current_additional_filter_list_length, filter, input_human_readable_identifier_getter, input_sanity_check_functions,
+              current_function_argument_number, current_additional_filter_list_length, input_human_readable_identifier_getter, input_sanity_check_functions,
               output_human_readable_identifier_getter, output_sanity_check_function;
         
         if IsFinalized( category ) then
@@ -265,70 +265,71 @@ InstallGlobalFunction( CapInternalInstallAdd,
         # prepare input sanity check
         input_human_readable_identifier_getter := i -> Concatenation( "the ", String(i), "-th argument of the function \033[1m", record.function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" );
         
-        input_sanity_check_functions := [];
-        for i in [ 1 .. Length( record.filter_list ) ] do
+        input_sanity_check_functions := List( [ 1 .. Length( record.filter_list ) ], function ( i )
+          local filter;
             
             filter := record.filter_list[ i ];
 
             if IsFilter( filter ) then
                 # the only check would be that the input lies in the filter, which is already checked by the method selection
-                input_sanity_check_functions[i] := ReturnTrue;
+                return ReturnTrue;
             elif filter = "category" then
                 # the only check would be that the input lies in IsCapCategory, which is already checked by the method selection
-                input_sanity_check_functions[i] := ReturnTrue;
+                return ReturnTrue;
             elif filter = "object" then
-                input_sanity_check_functions[i] := function( arg, i )
+                return function( arg, i )
                     CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arg, category, function( ) return input_human_readable_identifier_getter( i ); end );
                 end;
             elif filter = "morphism" then
-                input_sanity_check_functions[i] := function( arg, i )
+                return function( arg, i )
                     CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arg, category, function( ) return input_human_readable_identifier_getter( i ); end );
                 end;
             elif filter = "twocell" then
-                input_sanity_check_functions[i] := function( arg, i )
+                return function( arg, i )
                     CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( arg, category, function( ) return input_human_readable_identifier_getter( i ); end );
                 end;
             elif filter = "object_in_range_category_of_homomorphism_structure" then
-                input_sanity_check_functions[i] := function( arg, i )
+                return function( arg, i )
                     CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arg, RangeCategoryOfHomomorphismStructure( category ), function( ) return input_human_readable_identifier_getter( i ); end );
                 end;
             elif filter = "morphism_in_range_category_of_homomorphism_structure" then
-                input_sanity_check_functions[i] := function( arg, i )
+                return function( arg, i )
                     CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arg, RangeCategoryOfHomomorphismStructure( category ), function( ) return input_human_readable_identifier_getter( i ); end );
                 end;
             elif filter = "other_object" then
-                input_sanity_check_functions[i] := function( arg, i )
+                return function( arg, i )
                     CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arg, false, function( ) return input_human_readable_identifier_getter( i ); end );
                 end;
             elif filter = "other_morphism" then
-                input_sanity_check_functions[i] := function( arg, i )
+                return function( arg, i )
                     CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arg, false, function( ) return input_human_readable_identifier_getter( i ); end );
                 end;
             elif filter = "other_twocell" then
-                input_sanity_check_functions[i] := function( arg, i )
+                return function( arg, i )
                     CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( arg, false, function( ) return input_human_readable_identifier_getter( i ); end );
                 end;
             elif filter = "list_of_objects" then
-                input_sanity_check_functions[i] := function( arg, i )
+                return function( arg, i )
                     CAP_INTERNAL_ASSERT_IS_LIST_OF_OBJECTS_OF_CATEGORY( arg, category, function( ) return input_human_readable_identifier_getter( i ); end );
                 end;
             elif filter = "list_of_morphisms" then
-                input_sanity_check_functions[i] := function( arg, i )
+                return function( arg, i )
                     CAP_INTERNAL_ASSERT_IS_LIST_OF_MORPHISMS_OF_CATEGORY( arg, category, function( ) return input_human_readable_identifier_getter( i ); end );
                 end;
             elif filter = "list_of_twocells" then
-                input_sanity_check_functions[i] := function( arg, i )
+                return function( arg, i )
                     CAP_INTERNAL_ASSERT_IS_LIST_OF_TWO_CELLS_OF_CATEGORY( arg, category, function( ) return input_human_readable_identifier_getter( i ); end );
                 end;
             elif filter = "nonneg_integer_or_infinity" then
-                input_sanity_check_functions[i] := function( arg, i )
+                return function( arg, i )
                     CAP_INTERNAL_ASSERT_IS_NON_NEGATIVE_INTEGER_OR_INFINITY( arg, function( ) return input_human_readable_identifier_getter( i ); end );
                 end;
             else
                 Display( Concatenation( "Warning: You should add an input sanity check for the following filter: ", String( filter ) ) );
-                input_sanity_check_functions[i] := ReturnTrue;
+                return ReturnTrue;
             fi;
-        od;
+            
+        end );
         
         # prepare output sanity check
         output_human_readable_identifier_getter := function( )

@@ -1324,10 +1324,13 @@ InstallGlobalFunction( CapFixpoint, function ( predicate, func, initial_value )
     
     y := initial_value;
     
-    repeat
+    while true do
         x := y;
         y := func( x );
-    until predicate( x, y );
+        if predicate( x, y ) then
+            break;
+        fi;
+    od;
     
     return y;
     
