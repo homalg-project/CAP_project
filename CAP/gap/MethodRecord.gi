@@ -4383,7 +4383,8 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
             # For the universal morphisms and functorials, this follows from the universal property.
             # All other operations are automatically compatible because they do not have morphisms as input.
             
-            if limit.number_of_targets > 0 then # if limit.number_of_targets = 0, the universal morphism has no test morphism as input anyway
+            # if limit.number_of_targets = 0, the universal morphism has no test morphism as input anyway
+            if limit.number_of_targets > 0 then
                 
                 universal_morphism_record.compatible_with_congruence_of_morphisms := true;
                 functorial_record.compatible_with_congruence_of_morphisms := true;
