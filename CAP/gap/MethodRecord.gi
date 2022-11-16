@@ -2468,8 +2468,8 @@ IsWellDefinedForMorphisms := rec(
     
     category := CapCategory( morphism );
     
-    if not ( IsWellDefined( source ) and IsWellDefined( range ) )
-       or not ( IsIdenticalObj( CapCategory( source ), category ) and IsIdenticalObj( CapCategory( range ), category ) ) then
+    if not ( IsWellDefined( source ) and IsWellDefined( range ) ) or
+       not ( IsIdenticalObj( CapCategory( source ), category ) and IsIdenticalObj( CapCategory( range ), category ) ) then
       
       return [ true, false ];
       
