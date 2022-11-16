@@ -145,8 +145,22 @@ InstallGlobalFunction( CapInternalInstallAdd,
                    [ IsCapCategory, IsFunction, IsInt ],
                    
       function( category, func, weight )
+        local wrapped_func;
         
-        ValueGlobal( add_name )( category, [ [ func, [ ] ] ], weight );
+        if function_name in [ "ZeroObject", "TerminalObject", "InitialObject", "DistinguishedObjectOfHomomorphismStructure" ] and not (IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true) then
+            
+            ## The users do not have to give the category as an argument
+            ## to their functions, but within derivations, the category has
+            ## to be an argument (see any derivation of ZeroObject in DerivedMethods.gi)
+            wrapped_func := function( cat ) return func(); end;
+            
+        else
+            
+            wrapped_func := func;
+            
+        fi;
+        
+        ValueGlobal( add_name )( category, [ [ wrapped_func, [ ] ] ], weight );
         
     end );
     
@@ -724,83 +738,3 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD,
 end );
 
 CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD( CAP_INTERNAL_METHOD_NAME_RECORD );
-
-## These methods overwrite the automatically generated methods.
-## The users do not have to give the category as an argument
-## to their functions, but within derivations, the category has
-## to be an argument (see any derivation of ZeroObject in DerivedMethods.gi)
-##
-InstallMethod( AddZeroObject,
-               [ IsCapCategory, IsFunction, IsInt ],
-               
-  function( category, func, weight )
-    local wrapped_func;
-    
-    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    wrapped_func := function( cat ) return func(); end;
-    
-    AddZeroObject( category, [ [ wrapped_func, [ ] ] ], weight );
-    
-end );
-
-##
-InstallMethod( AddInitialObject,
-               [ IsCapCategory, IsFunction, IsInt ],
-               
-  function( category, func, weight )
-    local wrapped_func;
-    
-    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    wrapped_func := function( cat ) return func(); end;
-    
-    AddInitialObject( category, [ [ wrapped_func, [ ] ] ], weight );
-    
-end );
-
-##
-InstallMethod( AddTerminalObject,
-               [ IsCapCategory, IsFunction, IsInt ],
-               
-  function( category, func, weight )
-    local wrapped_func;
-    
-    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    wrapped_func := function( cat ) return func(); end;
-    
-    AddTerminalObject( category, [ [ wrapped_func, [ ] ] ], weight );
-    
-end );
-
-##
-InstallMethod( AddDistinguishedObjectOfHomomorphismStructure,
-               [ IsCapCategory, IsFunction, IsInt ],
-               
-  function( category, func, weight )
-    local wrapped_func;
-    
-    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    wrapped_func := function( cat ) return func(); end;
-    
-    AddDistinguishedObjectOfHomomorphismStructure( category, [ [ wrapped_func, [ ] ] ], weight );
-    
-end );
