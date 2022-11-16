@@ -270,7 +270,12 @@ InstallGlobalFunction( CapInternalInstallAdd,
             if needs_wrapping then
                 
                 method_list[ current_function_number ][ 1 ] := CAP_INTERNAL_CREATE_NEW_FUNC_WITH_ONE_MORE_ARGUMENT_WITH_RETURN( method_list[ current_function_number ][ 1 ] );
-                method_list[ current_function_number ][ 2 ] := Concatenation( [ IsCapCategory ], method_list[ current_function_number ][ 2 ] );
+                
+                if not IsEmpty( method_list[ current_function_number ][ 2 ] ) then
+                    
+                    method_list[ current_function_number ][ 2 ] := Concatenation( [ IsCapCategory ], method_list[ current_function_number ][ 2 ] );
+                    
+                fi;
                 
             fi;
             
