@@ -2503,7 +2503,7 @@ AddDerivationToCAP( ProjectiveDimension,
     
     return dim;
 
-end : CategoryFilter := IsLocallyOfFiniteProjectiveDimension and IsAbelianCategory,
+end : CategoryFilter := cat -> HasIsLocallyOfFiniteProjectiveDimension( cat ) and IsLocallyOfFiniteProjectiveDimension( cat ) and HasIsAbelianCategory( cat ) and IsAbelianCategory( cat ),
 Description := "ProjectiveDimension by iteratively testing whether the syzygy object is projective" );
 
 ##
@@ -2523,7 +2523,7 @@ AddDerivationToCAP( InjectiveDimension,
     
     return dim;
 
-end : CategoryFilter := IsLocallyOfFiniteInjectiveDimension and IsAbelianCategory,
+end : CategoryFilter := cat -> HasIsLocallyOfFiniteInjectiveDimension( cat ) and IsLocallyOfFiniteInjectiveDimension( cat ) and HasIsAbelianCategory( cat ) and IsAbelianCategory( cat ),
 Description := "InjectiveDimension by iteratively testing whether the cosyzygy object is injective" );
 
 
@@ -2908,7 +2908,7 @@ AddDerivationToCAP( SolveLinearSystemInAbCategory,
       );
   end :
   CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
-  CategoryFilter := IsAbCategory and HasRangeCategoryOfHomomorphismStructure,
+  CategoryFilter := cat -> HasIsAbCategory( cat ) and IsAbCategory( cat ) and HasRangeCategoryOfHomomorphismStructure( cat ),
   Description := "SolveLinearSystemInAbCategory using the homomorphism structure" 
 );
 
@@ -2980,7 +2980,7 @@ AddDerivationToCAP( SolveLinearSystemInAbCategoryOrFail,
       );
   end :
   CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
-  CategoryFilter := IsAbCategory and HasRangeCategoryOfHomomorphismStructure,
+  CategoryFilter := cat -> HasIsAbCategory( cat ) and IsAbCategory( cat ) and HasRangeCategoryOfHomomorphismStructure( cat ),
   Description := "SolveLinearSystemInAbCategoryOrFail using the homomorphism structure" 
 );
 
@@ -3033,7 +3033,7 @@ AddDerivationToCAP( MereExistenceOfSolutionOfLinearSystemInAbCategory,
     
   end :
   CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
-  CategoryFilter := IsAbCategory and HasRangeCategoryOfHomomorphismStructure,
+  CategoryFilter := cat -> HasIsAbCategory( cat ) and IsAbCategory( cat ) and HasRangeCategoryOfHomomorphismStructure( cat ),
   Description := "MereExistenceOfSolutionOfLinearSystemInAbCategory using the homomorphism structure"
 );
 
