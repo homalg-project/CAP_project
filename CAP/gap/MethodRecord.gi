@@ -24,6 +24,23 @@ InstallValue( CAP_INTERNAL_VALID_RETURN_TYPES,
 #! @EndCode
 );
 
+##
+InstallGlobalFunction( CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,
+  function( args... )
+    local list;
+      
+    list := CAP_INTERNAL_OPPOSITE_RECURSIVE( args );
+      
+    return List( list, function( l )
+        if IsList( l ) then
+            return Reversed( l );
+        else
+            return l;
+        fi;
+    end );
+
+end );
+
 InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD, rec(
 ObjectConstructor := rec(
   filter_list := [ "category", IsObject ],
@@ -5441,23 +5458,6 @@ CAP_INTERNAL_ENHANCE_NAME_RECORD( CAP_INTERNAL_METHOD_NAME_RECORD );
 # CAP_INTERNAL_METHOD_NAME_RECORD above should be renamed to CAP_INTERNAL_CORE_METHOD_NAME_RECORD.
 # CAP_INTERNAL_METHOD_NAME_RECORD should be an empty record at the beginning, which is populated in CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD
 BindGlobal( "CAP_INTERNAL_CORE_METHOD_NAME_RECORD", StructuralCopy( CAP_INTERNAL_METHOD_NAME_RECORD ) );
-
-##
-InstallGlobalFunction( CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,
-  function( arg )
-    local list;
-      
-    list := CAP_INTERNAL_OPPOSITE_RECURSIVE( arg );
-      
-    return List( list, function( l )
-        if IsList( l ) then
-            return Reversed( l );
-        else
-            return l;
-        fi;
-    end );
-
-end );
 
 ##
 InstallGlobalFunction( CAP_INTERNAL_GENERATE_DOCUMENTATION_FROM_METHOD_NAME_RECORD,
