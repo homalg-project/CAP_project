@@ -10,16 +10,8 @@
 ##
 ######################################
 
-DeclareRepresentation( "IsCapCategoryObjectRep",
-                       IsAttributeStoringRep and IsCapCategoryObject,
-                       [ ] );
-
-BindGlobal( "TheFamilyOfCapCategoryObjects",
-        NewFamily( "TheFamilyOfCapCategoryObjects" ) );
-
-BindGlobal( "TheTypeOfCapCategoryObjects",
-        NewType( TheFamilyOfCapCategoryObjects,
-                IsCapCategoryObject ) );
+# backwards compatibility
+BindGlobal( "IsCapCategoryObjectRep", IsCapCategoryObject );
 
 #######################################
 ##

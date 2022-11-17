@@ -10,16 +10,8 @@
 ##
 ######################################
 
-DeclareRepresentation( "IsCapCategoryMorphismRep",
-                       IsAttributeStoringRep and IsCapCategoryMorphism,
-                       [ ] );
-
-BindGlobal( "TheFamilyOfCapCategoryMorphisms",
-        NewFamily( "TheFamilyOfCapCategoryMorphisms" ) );
-
-BindGlobal( "TheTypeOfCapCategoryMorphisms",
-        NewType( TheFamilyOfCapCategoryMorphisms,
-                IsCapCategoryMorphism ) );
+# backwards compatibility
+BindGlobal( "IsCapCategoryMorphismRep", IsCapCategoryMorphism );
 
 ######################################
 ##

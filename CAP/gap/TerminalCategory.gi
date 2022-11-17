@@ -10,21 +10,11 @@
 ##
 #####################################
 
-DeclareRepresentation( "IsCapTerminalCategoryObjectRep",
-                       IsAttributeStoringRep and IsCapCategoryObjectRep,
-                       [ ] );
+# backwards compatibility
+BindGlobal( "IsCapTerminalCategoryObjectRep", IsCapTerminalCategoryObject );
 
-DeclareRepresentation( "IsCapTerminalCategoryMorphismRep",
-                       IsAttributeStoringRep and IsCapCategoryMorphismRep,
-                       [ ] );
-
-BindGlobal( "TheTypeOfCapTerminalCategoryObject",
-        NewType( TheFamilyOfCapCategoryObjects,
-                IsCapTerminalCategoryObject ) );
-
-BindGlobal( "TheTypeOfCapTerminalCategoryMorphism",
-        NewType( TheFamilyOfCapCategoryMorphisms,
-                IsCapTerminalCategoryMorphism ) );
+# backwards compatibility
+BindGlobal( "IsCapTerminalCategoryMorphismRep", IsCapTerminalCategoryMorphism );
 
 #####################################
 ##
@@ -34,9 +24,8 @@ BindGlobal( "TheTypeOfCapTerminalCategoryMorphism",
 
 InstallValue( CAP_INTERNAL_TERMINAL_CATEGORY,
               
-              CreateCapCategory( "TerminalCategory" ) );
+              CreateCapCategory( "TerminalCategory", IsCapTerminalCategory, IsCapTerminalCategoryObject, IsCapTerminalCategoryMorphism, IsCapCategoryTwoCell ) );
 
-SetFilterObj( CAP_INTERNAL_TERMINAL_CATEGORY, IsCapTerminalCategory );
 SetIsTerminalCategory( CAP_INTERNAL_TERMINAL_CATEGORY, true );
 
 InstallValue( CAP_INTERNAL_TERMINAL_CATEGORY_AS_CAT_OBJECT,
@@ -50,10 +39,7 @@ InstallMethod( UniqueObject,
   function( category )
     local object;
     
-    object := ObjectifyWithAttributes( rec( ), TheTypeOfCapTerminalCategoryObject,
-                                       IsZeroForObjects, true );
-    
-    Add( CAP_INTERNAL_TERMINAL_CATEGORY, object );
+    object := CreateCapCategoryObjectWithAttributes( category, IsZeroForObjects, true );
     
     SetIsWellDefined( object, true );
     
@@ -66,16 +52,11 @@ InstallMethod( UniqueMorphism,
                [ IsCapTerminalCategory ],
                
   function( category )
-    local morphism, object;
+    local object, morphism;
     
-    object := UniqueObject( CAP_INTERNAL_TERMINAL_CATEGORY );
+    object := UniqueObject( category );
     
-    morphism := ObjectifyWithAttributes( rec( ), TheTypeOfCapTerminalCategoryMorphism,
-                                         Source, object,
-                                         Range, object,
-                                         IsOne, true );
-    
-    Add( CAP_INTERNAL_TERMINAL_CATEGORY, morphism );
+    morphism := CreateCapCategoryMorphismWithAttributes( category, object, object, IsOne, true );
     
     SetIsWellDefined( morphism, true );
     
