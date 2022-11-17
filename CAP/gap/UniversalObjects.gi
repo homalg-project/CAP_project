@@ -448,7 +448,7 @@ InstallOtherMethod( UniversalMorphismIntoEqualizerWithGivenEqualizer,
     
 end );
 
-InstallOtherMethod( UniversalMorphismIntoEqualizer,
+InstallOtherMethod( UniversalMorphismIntoEqualizerWithGivenEqualizer,
         [ IsCapCategory, IsList, IsCapCategoryMorphism, IsCapCategoryObject ],
         
   function ( cat, list_of_morphisms, tau, E )
@@ -740,7 +740,7 @@ InstallOtherMethod( UniversalMorphismFromCoequalizerWithGivenCoequalizer,
     
 end );
 
-InstallOtherMethod( UniversalMorphismIntoEqualizer,
+InstallOtherMethod( UniversalMorphismFromCoequalizerWithGivenCoequalizer,
         [ IsCapCategory, IsList, IsCapCategoryMorphism, IsCapCategoryObject ],
         
   function ( cat, list_of_morphisms, tau, E )
