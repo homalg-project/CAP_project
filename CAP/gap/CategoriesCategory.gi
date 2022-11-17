@@ -3,25 +3,14 @@
 #
 # Implementations
 #
-DeclareRepresentation( "IsCapCategoryAsCatObjectRep",
-                       IsCapCategoryObjectRep and IsCapCategoryAsCatObject,
-                       [ ] );
+# backwards compatibility
+BindGlobal( "IsCapCategoryAsCatObjectRep", IsCapCategoryAsCatObject );
 
-BindGlobal( "TheTypeOfCapCategoriesAsCatObjects",
-        NewType( TheFamilyOfCapCategoryObjects,
-                IsCapCategoryAsCatObject ) );
+# backwards compatibility
+BindGlobal( "IsCapFunctorRep", IsCapFunctor );
 
-DeclareRepresentation( "IsCapFunctorRep",
-                       IsCapCategoryMorphismRep and IsCapFunctor,
-                       [ ] );
-
-BindGlobal( "TheTypeOfCapFunctors",
-        NewType( TheFamilyOfCapCategoryMorphisms,
-                IsCapFunctor ) );
-
-DeclareRepresentation( "IsCapNaturalTransformationRep",
-                       IsCapCategoryTwoCellRep and IsCapNaturalTransformation,
-                       [ ] );
+# backwards compatibility
+BindGlobal( "IsCapNaturalTransformationRep", IsCapNaturalTransformation );
 
 BindGlobal( "TheTypeOfCapNaturalTransformations",
         NewType( TheFamilyOfCapCategoryTwoCells,
@@ -31,18 +20,15 @@ BindGlobal( "TheTypeOfCapNaturalTransformations",
 InstallGlobalFunction( CAP_INTERNAL_CREATE_Cat,
                
   function(  )
+    local obj_rec;
     
-    InstallValue( CapCat, rec( caching_info := rec( ), overhead := true, is_computable := true ) );
+    obj_rec := rec( caching_info := rec( ), overhead := true, is_computable := true );
     
-    CREATE_CAP_CATEGORY_OBJECT( CapCat, [ [ "Name", "Cat" ] ] );
-    
-    CREATE_CAP_CATEGORY_FILTERS( CapCat );
-    
-    return CapCat;
+    return CREATE_CAP_CATEGORY_OBJECT( obj_rec, "Cat", IsCapCategory, IsCapCategoryAsCatObject, IsCapFunctor, IsCapNaturalTransformation );
     
 end );
 
-CAP_INTERNAL_CREATE_Cat( );
+BindGlobal( "CapCat", CAP_INTERNAL_CREATE_Cat( ) );
 
 ##
 InstallMethod( AsCatObject,
@@ -51,10 +37,8 @@ InstallMethod( AsCatObject,
   function( category )
     local cat_obj;
     
-    cat_obj := ObjectifyWithAttributes( rec( ), TheTypeOfCapCategoriesAsCatObjects,
+    cat_obj := CreateCapCategoryObjectWithAttributes( CapCat,
                                         AsCapCategory, category );
-    
-    Add( CapCat, cat_obj );
     
     SetIsWellDefined( cat_obj, true );
     
@@ -122,13 +106,11 @@ InstallMethod( CapFunctor,
     
     source := CAP_INTERNAL_CREATE_FUNCTOR_SOURCE( source_list );
     
-    objectified_functor := ObjectifyWithAttributes( functor, TheTypeOfCapFunctors,
+    objectified_functor := ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( functor, CapCat,
+                                                    AsCatObject( source ),
+                                                    AsCatObject( range ),
                                                     Name, name,
-                                                    Source, AsCatObject( source ),
-                                                    Range, AsCatObject( range ),
                                                     InputSignature, source_list );
-    
-    Add( CapCat, objectified_functor );
     
     return objectified_functor;
     

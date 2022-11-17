@@ -70,7 +70,7 @@ InstallMethod( IsApplicableToCategory,
 function( d, C )
   local filter;
   filter := CategoryFilter( d );
-  if IsFilter( filter ) then
+  if IsProperty( filter ) then
       return Tester( filter )( C ) and filter( C );
   elif IsFunction( filter ) then
       return filter( C );
@@ -1002,9 +1002,9 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
         
         category_filter := CategoryFilter( current_derivation );
         
-        if IsFilter( category_filter ) and Tester( category_filter )( category ) and not category_filter( category ) then
+        if IsProperty( category_filter ) and Tester( category_filter )( category ) and not category_filter( category ) then
             continue;
-        elif IsFilter( category_filter ) and not Tester( category_filter )( category ) then
+        elif IsProperty( category_filter ) and not Tester( category_filter )( category ) then
             Print( "If ", Name( category ), " would be ", JoinStringsWithSeparator( Filtered( NamesFilter( category_filter ), name -> not StartsWith( name, "Has" ) ), " and " ), " then\n" );
             Print( TextAttr.b4, name, TextAttr.reset, " could be derived by\n" );
         elif IsFunction( category_filter ) and not category_filter( category ) then

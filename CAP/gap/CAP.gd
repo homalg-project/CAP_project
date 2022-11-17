@@ -192,8 +192,6 @@ DeclareOperation( "AddCategoryToFamily",
 
 DeclareGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT" );
 
-DeclareGlobalFunction( "CREATE_CAP_CATEGORY_FILTERS" );
-
 DeclareGlobalFunction( "INSTALL_ADD_FUNCTIONS_FOR_CATEGORY" );
 
 #! @Description
@@ -213,6 +211,16 @@ DeclareOperation( "CreateCapCategory",
 #! @Returns a category
 DeclareOperation( "CreateCapCategory",
                            [ IsString ] );
+
+#! @Description
+#! The argument is a string $s$.
+#! This operation creates a new CAP category from scratch.
+#! Its name is set to $s$.
+#! The category, its objects, its morphisms, and its two cells will lie in the corresponding given filters.
+#! @Arguments s, category_filter, object_filter, morphism_filter, two_cell_filter
+#! @Returns a category
+DeclareOperation( "CreateCapCategory",
+                           [ IsString, IsFunction, IsFunction, IsFunction, IsFunction ] );
 
 ###################################
 ##

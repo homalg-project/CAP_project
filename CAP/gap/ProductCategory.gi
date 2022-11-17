@@ -10,17 +10,14 @@
 ##
 #############################################################################
 
-DeclareRepresentation( "IsCapCategoryProductObjectRep",
-                       IsCapCategoryProductObject and IsCapCategoryObjectRep,
-                       [ ] );
+# backwards compatibility
+BindGlobal( "IsCapCategoryProductObjectRep", IsCapCategoryProductObject );
 
-DeclareRepresentation( "IsCapCategoryProductMorphismRep",
-                       IsCapCategoryProductMorphism and IsCapCategoryMorphismRep,
-                       [ ] );
+# backwards compatibility
+BindGlobal( "IsCapCategoryProductMorphismRep", IsCapCategoryProductMorphism );
 
-DeclareRepresentation( "IsCapCategoryProductTwoCellRep",
-                       IsCapCategoryProductTwoCell and IsCapCategoryTwoCellRep,
-                       [ ] );
+# backwards compatibility
+BindGlobal( "IsCapCategoryProductTwoCellRep", IsCapCategoryProductTwoCell );
 
 BindGlobal( "TheTypeOfCapCategoryProductObjects",
         NewType( TheFamilyOfCapCategoryObjects,

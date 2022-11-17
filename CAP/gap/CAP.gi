@@ -6,6 +6,21 @@
 
 ######################################
 ##
+## Reps, types, stuff.
+##
+######################################
+
+BindGlobal( "TheFamilyOfCapCategoryObjects",
+        NewFamily( "TheFamilyOfCapCategoryObjects" ) );
+
+BindGlobal( "TheFamilyOfCapCategoryMorphisms",
+        NewFamily( "TheFamilyOfCapCategoryMorphisms" ) );
+
+BindGlobal( "TheFamilyOfCapCategoryTwoCells",
+        NewFamily( "TheFamilyOfCapCategoryTwoCells" ) );
+
+######################################
+##
 ## Properties logic
 ##
 ######################################
@@ -162,9 +177,8 @@ InstallValue( CAP_INTERNAL_DERIVATION_GRAPH,
 ##
 ######################################
 
-DeclareRepresentation( "IsCapCategoryRep",
-                       IsAttributeStoringRep and IsCapCategory,
-                       [ ] );
+# backwards compatibility
+BindGlobal( "IsCapCategoryRep", IsCapCategory );
 
 BindGlobal( "TheFamilyOfCapCategories",
         NewFamily( "TheFamilyOfCapCategories" ) );
@@ -181,65 +195,38 @@ BindGlobal( "TheTypeOfCapCategories",
 #####################################
 
 ##
-InstallGlobalFunction( CREATE_CAP_CATEGORY_FILTERS,
-                       
-  function( category )
-    local name, filter;
-
-    name := Name( category );
-    
-    filter := NewFilter( Concatenation( name, "InternalCategoryFilter" ), IsCapCategory );
-    
-    SetCategoryFilter( category, filter );
-    
-    SetFilterObj( category, filter );
-    
-    filter := NewCategory( Concatenation( name, "ObjectFilter" ), IsCapCategoryObject );
-    
-    SetObjectFilter( category, filter );
-    
-    filter := NewCategory( Concatenation( name, "MorphismFilter" ), IsCapCategoryMorphism );
-    
-    SetMorphismFilter( category, filter );
-    
-    filter := NewCategory( Concatenation( name, "TwoCellFilter" ), IsCapCategoryTwoCell );
-    
-    SetTwoCellFilter( category, filter );
-    
-end );
-
-##
 InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
-                       
-  function( obj_rec, attr_list )
-    local i, flatted_attribute_list, obj, operation_name;
-    
-    for i in [ 1 .. Length( attr_list ) ] do
-        
-        if IsString( attr_list[ i ][ 1 ] ) then
-            
-            attr_list[ i ][ 1 ] := ValueGlobal( attr_list[ i ][ 1 ] );
-            
-        fi;
-        
-    od;
-    
-    flatted_attribute_list := [ ];
-    
-    for i in attr_list do
-        
-        Add( flatted_attribute_list, i[ 1 ] );
-        
-        Add( flatted_attribute_list, i[ 2 ] );
-        
-    od;
-    
-    flatted_attribute_list := Concatenation( [ obj_rec, TheTypeOfCapCategories ], flatted_attribute_list );
-    
+  function( obj_rec, name, category_filter, object_filter, morphism_filter, two_cell_filter )
+    local filter, obj, operation_name;
     
     obj_rec!.logical_implication_files := StructuralCopy( CATEGORIES_LOGIC_FILES );
     
-    obj := CallFuncList( ObjectifyWithAttributes, flatted_attribute_list );
+    filter := NewFilter( Concatenation( name, "InternalCategoryFilter" ), category_filter );
+    
+    obj := ObjectifyWithAttributes( obj_rec, NewType( TheFamilyOfCapCategories, filter ), Name, name );
+    
+    SetCategoryFilter( obj, filter );
+    
+    # object filter
+    filter := NewCategory( Concatenation( name, "ObjectFilter" ), object_filter );
+    
+    SetObjectFilter( obj, filter );
+    
+    obj!.object_representation := object_filter;
+    obj!.object_type := NewType( TheFamilyOfCapCategoryObjects, filter );
+    
+    # morphism filter
+    filter := NewCategory( Concatenation( name, "MorphismFilter" ), morphism_filter );
+    
+    SetMorphismFilter( obj, filter );
+    
+    obj!.morphism_representation := morphism_filter;
+    obj!.morphism_type := NewType( TheFamilyOfCapCategoryMorphisms, filter );
+    
+    # two cell filter
+    filter := NewCategory( Concatenation( name, "TwoCellFilter" ), two_cell_filter );
+    
+    SetTwoCellFilter( obj, filter );
     
     SetIsFinalized( obj, false );
     
@@ -491,22 +478,28 @@ InstallMethod( CreateCapCategory,
                [ IsString ],
                
   function( name )
+    
+    return CreateCapCategory( name, IsCapCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryTwoCell );
+    
+end );
+
+##
+InstallMethod( CreateCapCategory,
+               [ IsString, IsFunction, IsFunction, IsFunction, IsFunction ],
+               
+  function( name, category_filter, object_filter, morphism_filter, two_cell_filter )
     local overhead, is_computable, category;
     
     overhead := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "overhead", true );
     
     is_computable := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "is_computable", true );
 
-    category := rec( );
-    
-    category := CREATE_CAP_CATEGORY_OBJECT( category, [ [ "Name", name ] ] );
+    category := CREATE_CAP_CATEGORY_OBJECT( rec( ), name, category_filter, object_filter, morphism_filter, two_cell_filter );
     
     category!.overhead := overhead;
     
     category!.is_computable := is_computable;
 
-    CREATE_CAP_CATEGORY_FILTERS( category );
-    
     if overhead then
     
       AddCategoryToFamily( category, "general" );
