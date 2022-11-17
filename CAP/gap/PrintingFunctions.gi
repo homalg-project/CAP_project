@@ -7,7 +7,7 @@ InstallGlobalFunction( InfoStringOfInstalledOperationsOfCategory,
   
   function( category )
     local list_of_mathematical_properties, list_of_potential_algorithmic_properties,
-          list_of_algorithmic_properties, list_of_maximal_algorithmic_properties, property, string;
+          list_of_algorithmic_properties, list_of_maximal_algorithmic_properties, property, result;
     
     if not IsCapCategory( category ) then
         Error( "first argument must be a category" );
@@ -28,16 +28,16 @@ InstallGlobalFunction( InfoStringOfInstalledOperationsOfCategory,
     
     StableSortBy( list_of_maximal_algorithmic_properties, p -> Length( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.( p ) ) );
     
-    string := ShallowCopy( String( Length( ListPrimitivelyInstalledOperationsOfCategory( category ) ) ) );
-    Append( string, " primitive operations were used to derive " );
-    Append( string, String( Length( ListInstalledOperationsOfCategory( category ) ) ) );
-    Append( string, " operations for this category" );
+    result := String( Length( ListPrimitivelyInstalledOperationsOfCategory( category ) ) );
+    result := Concatenation( result, " primitive operations were used to derive " );
+    result := Concatenation( result, String( Length( ListInstalledOperationsOfCategory( category ) ) ) );
+    result := Concatenation( result, " operations for this category" );
     if not IsEmpty( list_of_maximal_algorithmic_properties ) then
-        Append( string, " which algorithmically" );
+        result := Concatenation( result, " which algorithmically" );
     fi;
     for property in list_of_maximal_algorithmic_properties do
-        Append( string, "\n* " );
-        Append( string, property );
+        result := Concatenation( result, "\n* " );
+        result := Concatenation( result, property );
     od;
     
     list_of_mathematical_properties := Difference( list_of_mathematical_properties, list_of_algorithmic_properties );
@@ -46,21 +46,21 @@ InstallGlobalFunction( InfoStringOfInstalledOperationsOfCategory,
     
     if not IsEmpty( list_of_mathematical_properties ) then
         if not IsEmpty( list_of_algorithmic_properties ) then
-            Append( string, "\nand furthermore" );
+            result := Concatenation( result, "\nand furthermore" );
         else
-            Append( string, " which" );
+            result := Concatenation( result, " which" );
         fi;
-        Append( string, " mathematically" );
+        result := Concatenation( result, " mathematically" );
     fi;
     for property in list_of_mathematical_properties do
-        Append( string, "\n* " );
-        Append( string, property );
+        result := Concatenation( result, "\n* " );
+        result := Concatenation( result, property );
         if property in Difference( list_of_potential_algorithmic_properties, list_of_algorithmic_properties ) then
-            Append( string, " (but not yet algorithmically)" );
+            result := Concatenation( result, " (but not yet algorithmically)" );
         fi;
     od;
     
-    return string;
+    return result;
     
 end );
 

@@ -225,18 +225,18 @@ InstallGlobalFunction( Equalizer,
         
     fi;
     
-    if Length( arg ) = 1
-       and IsList( arg[1] )
-       and ForAll( arg[1], IsCapCategoryMorphism ) then
+    if Length( arg ) = 1 and
+       IsList( arg[1] ) and
+       ForAll( arg[1], IsCapCategoryMorphism ) then
        
        return EqualizerOp( CapCategory( arg[1][1] ), arg[1] );
        
     fi;
     
-    if Length( arg ) = 2
-       and IsCapCategoryObject( arg[1] )
-       and IsList( arg[2] )
-       and ForAll( arg[2], IsCapCategoryMorphism ) then
+    if Length( arg ) = 2 and
+       IsCapCategoryObject( arg[1] ) and
+       IsList( arg[2] ) and
+       ForAll( arg[2], IsCapCategoryMorphism ) then
        
        return EqualizerOp( CapCategory( arg[1] ), arg[1], arg[2] );
        
@@ -448,7 +448,7 @@ InstallOtherMethod( UniversalMorphismIntoEqualizerWithGivenEqualizer,
     
 end );
 
-InstallOtherMethod( UniversalMorphismIntoEqualizer,
+InstallOtherMethod( UniversalMorphismIntoEqualizerWithGivenEqualizer,
         [ IsCapCategory, IsList, IsCapCategoryMorphism, IsCapCategoryObject ],
         
   function ( cat, list_of_morphisms, tau, E )
@@ -484,9 +484,9 @@ InstallGlobalFunction( FiberProduct,
         
     fi;
     
-    if Length( arg ) = 1
-       and IsList( arg[1] )
-       and ForAll( arg[1], IsCapCategoryMorphism ) then
+    if Length( arg ) = 1 and
+       IsList( arg[1] ) and
+       ForAll( arg[1], IsCapCategoryMorphism ) then
        
        return FiberProductOp( CapCategory( arg[1][1] ), arg[1] );
        
@@ -517,18 +517,18 @@ InstallGlobalFunction( Coequalizer,
         
     fi;
     
-    if Length( arg ) = 1
-       and IsList( arg[1] )
-       and ForAll( arg[1], IsCapCategoryMorphism ) then
+    if Length( arg ) = 1 and
+       IsList( arg[1] ) and
+       ForAll( arg[1], IsCapCategoryMorphism ) then
        
        return CoequalizerOp( CapCategory( arg[1][1] ), arg[1] );
        
      fi;
     
-    if Length( arg ) = 2
-       and IsCapCategoryObject( arg[2] )
-       and IsList( arg[2] )
-       and ForAll( arg[2], IsCapCategoryMorphism ) then
+    if Length( arg ) = 2 and
+       IsCapCategoryObject( arg[2] ) and
+       IsList( arg[2] ) and
+       ForAll( arg[2], IsCapCategoryMorphism ) then
        
        return CoequalizerOp( CapCategory( arg[1] ), arg[1], arg[2] );
        
@@ -740,7 +740,7 @@ InstallOtherMethod( UniversalMorphismFromCoequalizerWithGivenCoequalizer,
     
 end );
 
-InstallOtherMethod( UniversalMorphismIntoEqualizer,
+InstallOtherMethod( UniversalMorphismFromCoequalizerWithGivenCoequalizer,
         [ IsCapCategory, IsList, IsCapCategoryMorphism, IsCapCategoryObject ],
         
   function ( cat, list_of_morphisms, tau, E )

@@ -201,7 +201,7 @@ end );
 
 ##
 InstallMethod( \*,
-               [ IsRingElement and IsRat, IsCapCategoryMorphism ],
+               [ IsRat, IsCapCategoryMorphism ],
                
 function( q, mor )
     local cat, ring, r;
@@ -383,10 +383,10 @@ InstallMethod( CoefficientsOfMorphismWithGivenBasisOfExternalHom,
 ######################################
 
 # This method should usually not be selected when the two morphisms belong to the same category
-InstallMethod( IsEqualForMorphisms,
-                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
+InstallOtherMethod( IsEqualForMorphisms,
+                    [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ],
 
-  function( morphism_1, morphism_2 )
+  function( cat, morphism_1, morphism_2 )
     
     if not HasCapCategory( morphism_1 ) then
         Error( Concatenation( "the morphism \"", String( morphism_1 ), "\" has no CAP category" ) );
@@ -404,10 +404,10 @@ InstallMethod( IsEqualForMorphisms,
 end );
 
 # This method should usually not be selected when the two morphisms belong to the same category
-InstallMethod( IsCongruentForMorphisms,
-                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
+InstallOtherMethod( IsCongruentForMorphisms,
+                    [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ],
 
-  function( morphism_1, morphism_2 )
+  function( cat, morphism_1, morphism_2 )
     
     if not HasCapCategory( morphism_1 ) then
         Error( Concatenation( "the morphism \"", String( morphism_1 ), "\" has no CAP category" ) );
@@ -513,16 +513,6 @@ InstallDeprecatedAlias( "AddIsIdenticalToZeroMorphism", "AddIsEqualToZeroMorphis
 #     return ZeroMorphism( Source( mor ), Range( mor ) );
 #     
 # end );
-
-##
-InstallMethod( \-,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( alpha, beta )
-    
-    return alpha + AdditiveInverse( beta );
-    
-end );
 
 ##
 InstallMethod( PreCompose,

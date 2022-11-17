@@ -24,6 +24,23 @@ InstallValue( CAP_INTERNAL_VALID_RETURN_TYPES,
 #! @EndCode
 );
 
+##
+InstallGlobalFunction( CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,
+  function( args... )
+    local list;
+      
+    list := CAP_INTERNAL_OPPOSITE_RECURSIVE( args );
+      
+    return List( list, function( l )
+        if IsList( l ) then
+            return Reversed( l );
+        else
+            return l;
+        fi;
+    end );
+
+end );
+
 InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD, rec(
 ObjectConstructor := rec(
   filter_list := [ "category", IsObject ],
@@ -1016,7 +1033,7 @@ IsCongruentForMorphisms := rec(
   
   redirect_function := function( cat, morphism_1, morphism_2 )
     
-    if IsIdenticalObj( morphism_1, morphism_2 ) then 
+    if IsIdenticalObj( morphism_1, morphism_2 ) then
       
       return [ true, true ];
       
@@ -1086,7 +1103,7 @@ IsEqualForMorphisms := rec(
   
   redirect_function := function( cat, morphism_1, morphism_2 )
     
-    if IsIdenticalObj( morphism_1, morphism_2 ) then 
+    if IsIdenticalObj( morphism_1, morphism_2 ) then
       
       return [ true, true ];
       
@@ -1109,7 +1126,7 @@ IsEqualForMorphismsOnMor := rec(
   
   redirect_function := function( cat, morphism_1, morphism_2 )
     
-    if IsIdenticalObj( morphism_1, morphism_2 ) then 
+    if IsIdenticalObj( morphism_1, morphism_2 ) then
       
       return [ true, true ];
       
@@ -2451,8 +2468,8 @@ IsWellDefinedForMorphisms := rec(
     
     category := CapCategory( morphism );
     
-    if not ( IsWellDefined( source ) and IsWellDefined( range ) )
-       or not ( IsIdenticalObj( CapCategory( source ), category ) and IsIdenticalObj( CapCategory( range ), category ) ) then
+    if not ( IsWellDefined( source ) and IsWellDefined( range ) ) or
+       not ( IsIdenticalObj( CapCategory( source ), category ) and IsIdenticalObj( CapCategory( range ), category ) ) then
       
       return [ true, false ];
       
@@ -2560,9 +2577,9 @@ IsSplitEpimorphism := rec(
 IsIdempotent := rec(
    pre_function := function( cat, morphism )
     
-    #do not use IsEndomorphism( morphism ) here because you don't know if
-    #the user has given an own IsEndomorphism function
-    if not IsEqualForObjects( Source( morphism ), Range( morphism ) ) then 
+    # do not use IsEndomorphism( morphism ) here because you don't know if
+    # the user has given an own IsEndomorphism function
+    if not IsEqualForObjects( Source( morphism ), Range( morphism ) ) then
       
       return [ false, "the given morphism has to be an endomorphism" ];
       
@@ -3419,6 +3436,7 @@ SolveLinearSystemInAbCategory := rec(
     
   end,
   pre_function_full := function( cat, left_coeffs, right_coeffs, rhs )
+    local nr_columns_left, nr_columns_right;
     
     if not ForAll( [ 1 .. Length( left_coeffs ) ], i -> ForAll( left_coeffs[i], coeff -> IsEqualForObjects( Source( coeff ), Source( rhs[i] ) ) <> false ) ) then
         return [ false, "the sources of the left coefficients must correspond to the sources of the right hand side" ];
@@ -3428,11 +3446,15 @@ SolveLinearSystemInAbCategory := rec(
         return [ false, "the ranges of the right coefficients must correspond to the ranges of the right hand side" ];
     fi;
     
-    if not ForAll( [ 1 .. Length( left_coeffs[1] ) ], j -> ForAll( left_coeffs, x -> IsEqualForObjects( Range( x[j] ), Range( left_coeffs[1][j] ) ) <> false ) ) then
+    nr_columns_left := Length( left_coeffs[1] );
+    
+    if not ForAll( [ 1 .. nr_columns_left ], j -> ForAll( left_coeffs, x -> IsEqualForObjects( Range( x[j] ), Range( left_coeffs[1][j] ) ) <> false ) ) then
         return [ false, "all ranges in a column of the left coefficients must be equal" ];
     fi;
     
-    if not ForAll( [ 1 .. Length( right_coeffs[1] ) ], j -> ForAll( right_coeffs, x -> IsEqualForObjects( Source( x[j] ), Source( right_coeffs[1][j] ) ) <> false ) ) then
+    nr_columns_right := Length( right_coeffs[1] );
+    
+    if not ForAll( [ 1 .. nr_columns_right ], j -> ForAll( right_coeffs, x -> IsEqualForObjects( Source( x[j] ), Source( right_coeffs[1][j] ) ) <> false ) ) then
         return [ false, "all sources in a column of the right coefficients must be equal" ];
     fi;
     
@@ -4383,7 +4405,8 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
             # For the universal morphisms and functorials, this follows from the universal property.
             # All other operations are automatically compatible because they do not have morphisms as input.
             
-            if limit.number_of_targets > 0 then # if limit.number_of_targets = 0, the universal morphism has no test morphism as input anyway
+            # if limit.number_of_targets = 0, the universal morphism has no test morphism as input anyway
+            if limit.number_of_targets > 0 then
                 
                 universal_morphism_record.compatible_with_congruence_of_morphisms := true;
                 functorial_record.compatible_with_congruence_of_morphisms := true;
@@ -4554,15 +4577,13 @@ end );
 BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
   
   function( without_given_name, with_given_name, object_function_name, object_arguments_positions )
-    local object_function, with_given_name_function, is_attribute, record, attribute_tester;
+    local object_function, with_given_name_function, record, attribute_tester;
     
     object_function := ValueGlobal( object_function_name );
     
     with_given_name_function := ValueGlobal( with_given_name );
     
-    is_attribute := IsOperation( object_function ) and Tester( object_function ) <> false;
-    
-    if not is_attribute then
+    if not IsAttribute( object_function ) then
         
         return function( arg )
           local category, without_given_weight, with_given_weight, object_args, cache, cache_value;
@@ -4653,7 +4674,7 @@ end );
 BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
   
   function( source_range_object, object_function_name, object_arguments_positions )
-    local object_getter, object_function, setter_function, is_attribute, cache_key_length;
+    local object_getter, object_function, setter_function, cache_key_length;
     
     if source_range_object = "Source" then
         object_getter := Source;
@@ -4665,10 +4686,9 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
     
     object_function := ValueGlobal( object_function_name );
     
-    is_attribute := IsOperation( object_function ) and Setter( object_function ) <> false;
     cache_key_length := Length( object_arguments_positions );
     
-    if not is_attribute then
+    if not IsAttribute( object_function ) then
     
         return function( arg )
             local result, object, category;
@@ -4772,7 +4792,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
             io_type := current_rec.io_type;
             
-            if not IsList( io_type ) or not Length( io_type ) = 2 then
+            if not IsList( io_type ) or Length( io_type ) <> 2 then
                 Error( "the io_type of <current_rec> is not a list of length 2" );
             fi;
             
@@ -4810,11 +4830,11 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
         fi;
         
         if IsBound( current_rec.dual_preprocessor_func ) and NumberArgumentsFunction( current_rec.dual_preprocessor_func ) >= 0 and NumberArgumentsFunction( current_rec.dual_preprocessor_func ) <> number_of_arguments then
-            Error( "the dual preprocessor function of <current_rec> has the wrong number of arguments" );
+            Error( "the dual preprocessor function of ", current_recname, " has the wrong number of arguments" );
         fi;
         
         if not ForAll( current_rec.filter_list, x -> IsString( x ) or IsFilter( x ) ) then
-            Error( "the filter list of <current_rec> does not fulfill the requirements" );
+            Error( "the filter list of ", current_recname, " does not fulfill the requirements" );
         fi;
         
         if not IsBound( current_rec.install_convenience_without_category ) then
@@ -4984,7 +5004,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
             output_list := current_rec.io_type[ 2 ];
             
-            if not Length( output_list ) = 2 then
+            if Length( output_list ) <> 2 then
                 
                 Error( "the output type is not a list of length 2" );
                 
@@ -4996,9 +5016,8 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
             argument_names := input_list;
             
-            return_list := [ ];
-            
-            for i in [ 1 .. Length( output_list ) ] do
+            return_list := List( [ 1 .. Length( output_list ) ], function ( i )
+              local current_output, input_position, list_position;
                 
                 current_output := output_list[ i ];
                 
@@ -5006,24 +5025,22 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                 
                 if input_position = fail then
                     
-                    return_list[ i ] := fail;
-                    
-                    continue;
+                    return fail;
                     
                 fi;
                 
                 if Length( current_output ) = 1 then
                     
-                   return_list[ i ] := argument_names[ input_position ];
+                   return argument_names[ input_position ];
                    
                 elif Length( current_output ) = 2 then
                     
                     if LowercaseString( current_output[ 2 ] ) = "source" then
-                        return_list[ i ] := Concatenation( "Source( ", argument_names[ input_position ], " )" );
+                        return Concatenation( "Source( ", argument_names[ input_position ], " )" );
                     elif LowercaseString( current_output[ 2 ] ) = "range" then
-                        return_list[ i ] := Concatenation( "Range( ", argument_names[ input_position ], " )" );
+                        return Concatenation( "Range( ", argument_names[ input_position ], " )" );
                     elif Position( input_list, current_output[ 2 ] ) <> fail then
-                        return_list[ i ] := Concatenation( argument_names[ input_position ], "[", argument_names[ Position( input_list, current_output[ 2 ] ) ], "]" );
+                        return Concatenation( argument_names[ input_position ], "[", argument_names[ Position( input_list, current_output[ 2 ] ) ], "]" );
                     else
                         Error( "wrong input type" );
                     fi;
@@ -5045,9 +5062,9 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                     fi;
                     
                     if LowercaseString( current_output[ 3 ] ) = "source" then
-                        return_list[ i ] := Concatenation( "Source( ", argument_names[ input_position ], "[", list_position, "] )" );
+                        return Concatenation( "Source( ", argument_names[ input_position ], "[", list_position, "] )" );
                     elif LowercaseString( current_output[ 3 ] ) = "range" then
-                        return_list[ i ] := Concatenation( "Range( ", argument_names[ input_position ], "[", list_position, "] )" );
+                        return Concatenation( "Range( ", argument_names[ input_position ], "[", list_position, "] )" );
                     else
                         Error( "wrong output syntax" );
                     fi;
@@ -5058,15 +5075,15 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                     
                 fi;
                 
-            od;
+            end );
             
-            if IsBound( return_list[1] ) and return_list[1] <> fail then
+            if Length( output_list ) >= 1 and return_list[1] <> fail then
                 
                 current_rec.output_source_getter_string := return_list[1];
                 
             fi;
             
-            if IsBound( return_list[2] ) and return_list[2] <> fail then
+            if Length( output_list ) >= 2 and return_list[2] <> fail then
                 
                 current_rec.output_range_getter_string := return_list[2];
                 
@@ -5282,7 +5299,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                 
             fi;
             
-            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( record, with_given_name, with_given_rec : subset_only );
+            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( record, with_given_name, with_given_rec : subset_only := true );
             
             # now enhance the actual with_given_rec
             with_given_rec := record.(with_given_name);
@@ -5440,23 +5457,6 @@ CAP_INTERNAL_ENHANCE_NAME_RECORD( CAP_INTERNAL_METHOD_NAME_RECORD );
 # CAP_INTERNAL_METHOD_NAME_RECORD above should be renamed to CAP_INTERNAL_CORE_METHOD_NAME_RECORD.
 # CAP_INTERNAL_METHOD_NAME_RECORD should be an empty record at the beginning, which is populated in CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD
 BindGlobal( "CAP_INTERNAL_CORE_METHOD_NAME_RECORD", StructuralCopy( CAP_INTERNAL_METHOD_NAME_RECORD ) );
-
-##
-InstallGlobalFunction( CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,
-  function( arg )
-    local list;
-      
-    list := CAP_INTERNAL_OPPOSITE_RECURSIVE( arg );
-      
-    return List( list, function( l )
-        if IsList( l ) then
-            return Reversed( l );
-        else
-            return l;
-        fi;
-    end );
-
-end );
 
 ##
 InstallGlobalFunction( CAP_INTERNAL_GENERATE_DOCUMENTATION_FROM_METHOD_NAME_RECORD,

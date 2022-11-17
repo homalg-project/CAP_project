@@ -65,23 +65,22 @@ end );
 BindGlobal( "CAP_INTERNAL_NICE_FUNCTOR_INPUT_LIST",
   
   function( list )
-    local i;
     
-    for i in [ 1 .. Length( list ) ] do
+    return List( [ 1 .. Length( list ) ], function ( i )
         
         if IsCapCategory( list[ i ] ) then
-            list[ i ] := [ list[ i ], false ]; ##true means opposite
+            return [ list[ i ], false ]; ##true means opposite
         elif IsCapCategoryAsCatObject( list[ i ] ) then
-            list[ i ] := [ AsCapCategory( list[ i ] ), false ];
+            return [ AsCapCategory( list[ i ] ), false ];
         elif IsList( list[ i ] ) and Length( list[ i ] ) = 2 and IsCapCategory( list[ i ][ 1 ] ) and ( not IsBool( list[i][2] ) ) then
-            list[ i ][ 2 ] := true;
+            return [ list[ i ][1], true ];
         elif IsList( list[ i ] ) and Length( list[ i ] ) = 2 and IsCapCategoryAsCatObject( list[ i ][ 1 ] ) and ( not IsBool( list[i][2] ) ) then
-            list[ i ] := [ AsCapCategory( list[ i ][ 1 ] ), true ];
+            return [ AsCapCategory( list[ i ][ 1 ] ), true ];
+        else
+            return list[i];
         fi;
         
-    od;
-    
-    return list;
+    end );
     
 end );
 

@@ -3,21 +3,21 @@
 #
 # Reading the declaration part of the package.
 #
-ReadPackage( "CAP", "gap/ToolsForCategories.gd");
+ReadPackage( "CAP", "gap/ToolsForCategories.gd" );
 
-ReadPackage( "CAP", "gap/CAP.gd");
+ReadPackage( "CAP", "gap/CAP.gd" );
 
-ReadPackage( "CAP", "gap/Derivations.gd");
+ReadPackage( "CAP", "gap/Derivations.gd" );
 
 ReadPackage( "CAP", "gap/Finalize.gd" );
 
 ReadPackage( "CAP", "gap/AddFunctions.autogen.gd" );
 
-ReadPackage( "CAP", "gap/CategoryObjects.gd");
+ReadPackage( "CAP", "gap/CategoryObjects.gd" );
 
-ReadPackage( "CAP", "gap/CategoryMorphisms.gd");
+ReadPackage( "CAP", "gap/CategoryMorphisms.gd" );
 
-ReadPackage( "CAP", "gap/CategoryTwoCells.gd");
+ReadPackage( "CAP", "gap/CategoryTwoCells.gd" );
 
 ReadPackage( "CAP", "gap/LimitConvenience.gd" );
 
@@ -25,9 +25,9 @@ ReadPackage( "CAP", "gap/UniversalObjects.gd" );
 
 ReadPackage( "CAP", "gap/InstallAdds.gd" );
 
-ReadPackage( "CAP", "gap/TheoremParser.gd");
+ReadPackage( "CAP", "gap/TheoremParser.gd" );
 
-ReadPackage( "CAP", "gap/LogicForCAP.gd");
+ReadPackage( "CAP", "gap/LogicForCAP.gd" );
 
 ReadPackage( "CAP", "gap/MethodRecord.gd" );
 

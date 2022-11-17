@@ -464,7 +464,7 @@ end );
 BindGlobal( "FIND_PREDICATE_VARIABLES",
             
   function( source_part, range_variables )
-    local split_source_part, func, predicate, variables, source_rec, bound_variable, value,
+    local split_source_part, func, predicate, variables, source_rec, first, bound_variable, value,
           position_exists, position_forall, i;
     
     split_source_part := SplitString( source_part, "(" );
@@ -502,7 +502,9 @@ BindGlobal( "FIND_PREDICATE_VARIABLES",
     
     if Minimum( [ position_forall, position_exists ] ) <> fail then
         
-        predicate := predicate{[ Minimum( [ position_forall, position_exists ] ) + 7 .. Length( predicate ) ]};
+        first := Minimum( [ position_forall, position_exists ] ) + 7;
+        
+        predicate := predicate{[ first .. Length( predicate ) ]};
         
         predicate := SplitString( predicate, ":" );
         
@@ -581,7 +583,7 @@ InstallGlobalFunction( PARSE_THEOREM_FROM_LATEX,
   function( theorem_string )
     local variable_part, source_part, range_part, range_value, range_command,
           range_predicate, range_variables, position, i, current_source_rec, source_part_split,
-          sources_list, int_conversion, theorem_record, result_function_variables, to_be_removed,
+          sources_list, int_conversion, length, theorem_record, result_function_variables, to_be_removed,
           source_part_copy;
     
     source_part := PositionSublist( theorem_string, "|" );
@@ -660,7 +662,9 @@ InstallGlobalFunction( PARSE_THEOREM_FROM_LATEX,
         
         if source_part[ i ][ 1 ] = '(' then
             
-            source_part[ i ] := source_part[ i ]{[ 2 .. Length( source_part[ i ] ) - 1 ]};
+            length := Length( source_part[ i ] );
+            
+            source_part[ i ] := source_part[ i ]{[ 2 .. length - 1 ]};
             
         fi;
         
@@ -1255,6 +1259,7 @@ end );
 InstallGlobalFunction( "SPLIT_INTO_LIST_NAME_AND_INDEX",
             
   function( variable_name )
+    local length;
     
     if not IS_LIST_WITH_INDEX( variable_name ) then
         
@@ -1266,7 +1271,9 @@ InstallGlobalFunction( "SPLIT_INTO_LIST_NAME_AND_INDEX",
     
     variable_name := SplitString( variable_name, "[" );
     
-    variable_name[ 2 ] := variable_name[ 2 ]{[ 1 .. Length( variable_name[ 2 ] ) - 1 ]};
+    length := Length( variable_name[ 2 ] );
+    
+    variable_name[ 2 ] := variable_name[ 2 ]{[ 1 .. length - 1 ]};
     
     return List( variable_name, NormalizedWhitespace );
     
