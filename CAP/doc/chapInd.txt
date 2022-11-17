@@ -395,6 +395,7 @@
   [2XCoproductFunctorialWithGivenCoproducts[102X, for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject 6.7-9 
   [2XCreateCapCategory[102X 1.2-1 
       for IsString 1.2-2 
+      for IsString, IsFunction, IsFunction, IsFunction, IsFunction 1.2-3 
   [2XCreateCapCategoryMorphismWithAttributes[102X 3.6-5 
   [2XCreateCapCategoryObjectWithAttributes[102X 2.6-5 
   [2XCurrentOperationWeight[102X, for IsOperationWeightList, IsString 8.4-5 

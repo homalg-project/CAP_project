@@ -143,6 +143,15 @@
   [33X[0;0YThe  argument  is a string [23Xs[123X. This operation creates a new CAP category from
   scratch. Its name is set to [23Xs[123X.[133X
   
+  [1X1.2-3 CreateCapCategory[101X
+  
+  [33X[1;0Y[29X[2XCreateCapCategory[102X( [3Xs[103X, [3Xcategory_filter[103X, [3Xobject_filter[103X, [3Xmorphism_filter[103X, [3Xtwo_cell_filter[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya category[133X
+  
+  [33X[0;0YThe  argument  is a string [23Xs[123X. This operation creates a new CAP category from
+  scratch. Its name is set to [23Xs[123X. The category, its objects, its morphisms, and
+  its two cells will lie in the corresponding given filters.[133X
+  
   
   [1X1.3 [33X[0;0YInternal Attributes[133X[101X
   
