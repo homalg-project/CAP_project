@@ -515,16 +515,6 @@ InstallDeprecatedAlias( "AddIsIdenticalToZeroMorphism", "AddIsEqualToZeroMorphis
 # end );
 
 ##
-InstallMethod( \-,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( alpha, beta )
-    
-    return alpha + AdditiveInverse( beta );
-    
-end );
-
-##
 InstallMethod( PreCompose,
                [ IsList ],
                
