@@ -449,7 +449,7 @@ end );
 
 ##
 InstallMethod( Range,
-               [ IsCapCategoryProductMorphism ],
+               [ IsCapCategoryProductTwoCell ],
                
   function( twocell )
     
