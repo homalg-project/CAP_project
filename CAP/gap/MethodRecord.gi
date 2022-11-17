@@ -1016,7 +1016,7 @@ IsCongruentForMorphisms := rec(
   
   redirect_function := function( cat, morphism_1, morphism_2 )
     
-    if IsIdenticalObj( morphism_1, morphism_2 ) then 
+    if IsIdenticalObj( morphism_1, morphism_2 ) then
       
       return [ true, true ];
       
@@ -1086,7 +1086,7 @@ IsEqualForMorphisms := rec(
   
   redirect_function := function( cat, morphism_1, morphism_2 )
     
-    if IsIdenticalObj( morphism_1, morphism_2 ) then 
+    if IsIdenticalObj( morphism_1, morphism_2 ) then
       
       return [ true, true ];
       
@@ -1109,7 +1109,7 @@ IsEqualForMorphismsOnMor := rec(
   
   redirect_function := function( cat, morphism_1, morphism_2 )
     
-    if IsIdenticalObj( morphism_1, morphism_2 ) then 
+    if IsIdenticalObj( morphism_1, morphism_2 ) then
       
       return [ true, true ];
       
@@ -2560,9 +2560,9 @@ IsSplitEpimorphism := rec(
 IsIdempotent := rec(
    pre_function := function( cat, morphism )
     
-    #do not use IsEndomorphism( morphism ) here because you don't know if
-    #the user has given an own IsEndomorphism function
-    if not IsEqualForObjects( Source( morphism ), Range( morphism ) ) then 
+    # do not use IsEndomorphism( morphism ) here because you don't know if
+    # the user has given an own IsEndomorphism function
+    if not IsEqualForObjects( Source( morphism ), Range( morphism ) ) then
       
       return [ false, "the given morphism has to be an endomorphism" ];
       
