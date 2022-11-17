@@ -55,15 +55,9 @@
 ####################################
 
 #! @Description
-#!  The &GAP; category of CAP categories that have been created using <Ref Oper="WrapperCategory" Label="for IsCapCategory, IsRecord" />
-#!  but not necessarily use the default data structure.
-DeclareCategory( "WasCreatedAsWrapperCapCategory",
-        IsCapCategory );
-
-#! @Description
 #!  The &GAP; category of a wrapper CAP category (using the default data structure).
 DeclareCategory( "IsWrapperCapCategory",
-        WasCreatedAsWrapperCapCategory );
+        IsCapCategory );
 
 #! @Description
 #!  The &GAP; category of objects in a wrapper CAP category.
@@ -86,11 +80,11 @@ DeclareCategory( "IsWrapperCapCategoryMorphism",
 #! @Arguments category
 #! @Returns a category
 DeclareAttribute( "ModelingCategory",
-        WasCreatedAsWrapperCapCategory );
+        IsCapCategory );
 
 ##
 CapJitAddTypeSignature( "ModelingCategory",
-        [ WasCreatedAsWrapperCapCategory ],
+        [ IsCapCategory ],
   function ( input_types )
     
     return CapJitDataTypeOfCategory( ModelingCategory( input_types[1].category ) );
@@ -220,7 +214,7 @@ DeclareAttribute( "WrappingFunctor",
 #! @Arguments cat, obj
 #! @Returns a CAP category object
 DeclareOperation( "ModelingObject",
-                  [ WasCreatedAsWrapperCapCategory, IsCapCategoryObject ] );
+                  [ IsCapCategory, IsCapCategoryObject ] );
 
 #! @Description
 #!  Returns the object modeled by the object <A>obj</A> in the modeling category of <A>cat</A>.
@@ -228,25 +222,25 @@ DeclareOperation( "ModelingObject",
 #! @Arguments cat, obj
 #! @Returns a CAP category object
 DeclareOperation( "ModeledObject",
-                  [ WasCreatedAsWrapperCapCategory, IsCapCategoryObject ] );
+                  [ IsCapCategory, IsCapCategoryObject ] );
 
 #! @Description
 #!  Returns the morphism modeling the morphism <A>mor</A> in <A>cat</A>.
 #!  <A>cat</A> must be a CAP category which has been created as a wrapper CAP category (but not necessarily uses the default data structure).
 #! @Arguments cat, mor
 #! @Returns a CAP category morphism
-DeclareOperation( "ModelingMorphism", [ WasCreatedAsWrapperCapCategory, IsCapCategoryMorphism ] );
+DeclareOperation( "ModelingMorphism", [ IsCapCategory, IsCapCategoryMorphism ] );
 
 #! @Description
 #!  Returns the morphism modeled by the morphism <A>mor</A> in the modeling category of <A>cat</A> with given source and range.
 #!  <A>cat</A> must be a CAP category which has been created as a wrapper CAP category (but not necessarily uses the default data structure).
 #! @Arguments cat, source, obj, range
 #! @Returns a CAP category morphism
-DeclareOperation( "ModeledMorphism", [ WasCreatedAsWrapperCapCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
+DeclareOperation( "ModeledMorphism", [ IsCapCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 # helper operations
 # Those should never be used outside of WrapperCategory, but allow to register methods for CompilerForCAP.
-DeclareOperation( "ModelingTowerObjectConstructor", [ WasCreatedAsWrapperCapCategory, IsObject ] );
-DeclareOperation( "ModelingTowerObjectDatum", [ WasCreatedAsWrapperCapCategory, IsCapCategoryObject ] );
-DeclareOperation( "ModelingTowerMorphismConstructor", [ WasCreatedAsWrapperCapCategory, IsCapCategoryObject, IsObject, IsCapCategoryObject ] );
-DeclareOperation( "ModelingTowerMorphismDatum", [ WasCreatedAsWrapperCapCategory, IsCapCategoryMorphism ] );
+DeclareOperation( "ModelingTowerObjectConstructor", [ IsCapCategory, IsObject ] );
+DeclareOperation( "ModelingTowerObjectDatum", [ IsCapCategory, IsCapCategoryObject ] );
+DeclareOperation( "ModelingTowerMorphismConstructor", [ IsCapCategory, IsCapCategoryObject, IsObject, IsCapCategoryObject ] );
+DeclareOperation( "ModelingTowerMorphismDatum", [ IsCapCategory, IsCapCategoryMorphism ] );
