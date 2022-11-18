@@ -135,13 +135,19 @@
         installed as methods.[133X
   
   [30X    [33X[0;6Ypre_function  (optional):  A function which is used as the prefunction
-        of the installed methods, as described above.[133X
+        of  the installed methods, as described above. Can also be the name of
+        another  operation.  In  this  case the pre function of the referenced
+        operation is used.[133X
   
   [30X    [33X[0;6Ypre_function_full  (optional):  A  function  which is used as the full
-        prefunction of the installed methods, as described above.[133X
+        prefunction  of the installed methods, as described above. Can also be
+        the  name  of another operation. In this case the full pre function of
+        the referenced operation is used.[133X
   
   [30X    [33X[0;6Yredirect_function (optional): A function which is used as the redirect
-        function of the installed methods, as described above.[133X
+        function of the installed methods, as described above. Can also be the
+        name  of  another operation. In this case the redirect function of the
+        referenced operation is used.[133X
   
   [30X    [33X[0;6Ypost_function (optional): A function which is used as the postfunction
         of the installed methods, as described above.[133X
@@ -251,10 +257,22 @@
         the returned morphism. The input arguments are available via the names
         given in [10Xinput_arguments_names[110X.[133X
   
+  [30X    [33X[0;6Ycan_always_compute_output_source_getter   (optional):  Only  valid  if
+        [10Xoutput_source_getter_string[110X   is   also   set:  Whether  the  code  in
+        [10Xoutput_source_getter_string[110X  is  independent of CAP operations and can
+        thus  always  be  computed  without  having  to  check  the  installed
+        operations of a category.[133X
+  
   [30X    [33X[0;6Youtput_range_getter_string  (optional):  Only  valid  if the operation
         returns  a  morphism:  a piece of GAP code which computes the range of
         the returned morphism. The input arguments are available via the names
         given in [10Xinput_arguments_names[110X.[133X
+  
+  [30X    [33X[0;6Ycan_always_compute_output_range_getter   (optional):   Only  valid  if
+        [10Xoutput_range_getter_string[110X   is   also   set:   Whether  the  code  in
+        [10Xoutput_range_getter_string[110X  is  independent  of CAP operations and can
+        thus  always  be  computed  without  having  to  check  the  installed
+        operations of a category.[133X
   
   [30X    [33X[0;6Ywith_given_object_position  (optional):  One of the following strings:
         [10X"Source"[110X, [10X"Range"[110X, or [10X"both"[110X. Set for the without given operation in a

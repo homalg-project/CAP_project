@@ -461,19 +461,19 @@ DeclareOperation( "CapInternalInstallAdd",
 </ul>
 
 <ul>
-<li><p>pre_function (optional): A function which is used as the prefunction of the installed methods, as described above.</p>
+<li><p>pre_function (optional): A function which is used as the prefunction of the installed methods, as described above. Can also be the name of another operation. In this case the pre function of the referenced operation is used.</p>
 
 </li>
 </ul>
 
 <ul>
-<li><p>pre_function_full (optional): A function which is used as the full prefunction of the installed methods, as described above.</p>
+<li><p>pre_function_full (optional): A function which is used as the full prefunction of the installed methods, as described above. Can also be the name of another operation. In this case the full pre function of the referenced operation is used.</p>
 
 </li>
 </ul>
 
 <ul>
-<li><p>redirect_function (optional): A function which is used as the redirect function of the installed methods, as described above.</p>
+<li><p>redirect_function (optional): A function which is used as the redirect function of the installed methods, as described above. Can also be the name of another operation. In this case the redirect function of the referenced operation is used.</p>
 
 </li>
 </ul>
@@ -619,7 +619,19 @@ DeclareOperation( "CapInternalInstallAdd",
 </ul>
 
 <ul>
+<li><p>can_always_compute_output_source_getter (optional): Only valid if <code class="code">output_source_getter_string</code> is also set: Whether the code in <code class="code">output_source_getter_string</code> is independent of CAP operations and can thus always be computed without having to check the installed operations of a category.</p>
+
+</li>
+</ul>
+
+<ul>
 <li><p>output_range_getter_string (optional): Only valid if the operation returns a morphism: a piece of GAP code which computes the range of the returned morphism. The input arguments are available via the names given in <code class="code">input_arguments_names</code>.</p>
+
+</li>
+</ul>
+
+<ul>
+<li><p>can_always_compute_output_range_getter (optional): Only valid if <code class="code">output_range_getter_string</code> is also set: Whether the code in <code class="code">output_range_getter_string</code> is independent of CAP operations and can thus always be computed without having to check the installed operations of a category.</p>
 
 </li>
 </ul>

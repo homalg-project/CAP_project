@@ -25,15 +25,14 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7D03633A7D98026B">12.1 <span class="Heading">GAP categories</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X805F95CC83C8A7A0">12.1-1 WasCreatedAsWrapperCapCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X783D407979D5B364">12.1-2 IsWrapperCapCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X7E59F7CB7F1D9569">12.1-3 IsWrapperCapCategoryObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X7B2D95DA7D635FD7">12.1-4 IsWrapperCapCategoryMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X82BF68357D8889C4">12.1-1 IsWrapperCapCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X7E59F7CB7F1D9569">12.1-2 IsWrapperCapCategoryObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X7B2D95DA7D635FD7">12.1-3 IsWrapperCapCategoryMorphism</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7C701DBF7BAE649A">12.2 <span class="Heading">Attributes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X81E3337B879B5EAA">12.2-1 ModelingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X811A167F7DABD0F9">12.2-1 ModelingCategory</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X81829E6386E43EF3">12.2-2 UnderlyingCell</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X7AA0358D85F1CD9F">12.2-3 UnderlyingCell</a></span>
 </div></div>
@@ -46,10 +45,10 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X7BF21C4587D89462">12.3-4 /</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X7C22BC7182777CF4">12.3-5 WrapperCategory</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X86932DDE8378A2AF">12.3-6 WrappingFunctor</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X82451D9185CD9FA4">12.3-7 ModelingObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X87D3B7227886FBAA">12.3-8 ModeledObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X7ED17B397C5CC798">12.3-9 ModelingMorphism</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X82277F387D146EB4">12.3-10 ModeledMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X7D2C2C3D7A342007">12.3-7 ModelingObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X82896F3A81CFFF57">12.3-8 ModeledObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X7C8C515B7E679556">12.3-9 ModelingMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X8616A636859481E0">12.3-10 ModeledMorphism</a></span>
 </div></div>
 </div>
 
@@ -97,18 +96,9 @@
 
 <h4>12.1 <span class="Heading">GAP categories</span></h4>
 
-<p><a id="X805F95CC83C8A7A0" name="X805F95CC83C8A7A0"></a></p>
+<p><a id="X82BF68357D8889C4" name="X82BF68357D8889C4"></a></p>
 
-<h5>12.1-1 WasCreatedAsWrapperCapCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WasCreatedAsWrapperCapCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of CAP categories that have been created using <code class="func">WrapperCategory</code> (<a href="chap12.html#X7C22BC7182777CF4"><span class="RefLink">12.3-5</span></a>) but not necessarily use the default data structure.</p>
-
-<p><a id="X783D407979D5B364" name="X783D407979D5B364"></a></p>
-
-<h5>12.1-2 IsWrapperCapCategory</h5>
+<h5>12.1-1 IsWrapperCapCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsWrapperCapCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
@@ -117,7 +107,7 @@
 
 <p><a id="X7E59F7CB7F1D9569" name="X7E59F7CB7F1D9569"></a></p>
 
-<h5>12.1-3 IsWrapperCapCategoryObject</h5>
+<h5>12.1-2 IsWrapperCapCategoryObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsWrapperCapCategoryObject</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
@@ -126,7 +116,7 @@
 
 <p><a id="X7B2D95DA7D635FD7" name="X7B2D95DA7D635FD7"></a></p>
 
-<h5>12.1-4 IsWrapperCapCategoryMorphism</h5>
+<h5>12.1-3 IsWrapperCapCategoryMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsWrapperCapCategoryMorphism</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
@@ -137,7 +127,7 @@
 
 <h4>12.2 <span class="Heading">Attributes</span></h4>
 
-<p><a id="X81E3337B879B5EAA" name="X81E3337B879B5EAA"></a></p>
+<p><a id="X811A167F7DABD0F9" name="X811A167F7DABD0F9"></a></p>
 
 <h5>12.2-1 ModelingCategory</h5>
 
@@ -249,7 +239,7 @@
 
 <p>Return the functor from the wrapped category <code class="code">ModelingCategory</code>(<var class="Arg">W</var>) to the wrapper category <var class="Arg">W</var>. The functor maps each wrapped object/morphism to its wrapping object/morphism.</p>
 
-<p><a id="X82451D9185CD9FA4" name="X82451D9185CD9FA4"></a></p>
+<p><a id="X7D2C2C3D7A342007" name="X7D2C2C3D7A342007"></a></p>
 
 <h5>12.3-7 ModelingObject</h5>
 
@@ -258,7 +248,7 @@
 
 <p>Returns the object modeling the object <var class="Arg">obj</var> in <var class="Arg">cat</var>. <var class="Arg">cat</var> must be a CAP category which has been created as a wrapper CAP category (but not necessarily uses the default data structure).</p>
 
-<p><a id="X87D3B7227886FBAA" name="X87D3B7227886FBAA"></a></p>
+<p><a id="X82896F3A81CFFF57" name="X82896F3A81CFFF57"></a></p>
 
 <h5>12.3-8 ModeledObject</h5>
 
@@ -267,7 +257,7 @@
 
 <p>Returns the object modeled by the object <var class="Arg">obj</var> in the modeling category of <var class="Arg">cat</var>. <var class="Arg">cat</var> must be a CAP category which has been created as a wrapper CAP category (but not necessarily uses the default data structure).</p>
 
-<p><a id="X7ED17B397C5CC798" name="X7ED17B397C5CC798"></a></p>
+<p><a id="X7C8C515B7E679556" name="X7C8C515B7E679556"></a></p>
 
 <h5>12.3-9 ModelingMorphism</h5>
 
@@ -276,7 +266,7 @@
 
 <p>Returns the morphism modeling the morphism <var class="Arg">mor</var> in <var class="Arg">cat</var>. <var class="Arg">cat</var> must be a CAP category which has been created as a wrapper CAP category (but not necessarily uses the default data structure).</p>
 
-<p><a id="X82277F387D146EB4" name="X82277F387D146EB4"></a></p>
+<p><a id="X8616A636859481E0" name="X8616A636859481E0"></a></p>
 
 <h5>12.3-10 ModeledMorphism</h5>
 

@@ -41,15 +41,7 @@
   
   [1X12.1 [33X[0;0YGAP categories[133X[101X
   
-  [1X12.1-1 WasCreatedAsWrapperCapCategory[101X
-  
-  [33X[1;0Y[29X[2XWasCreatedAsWrapperCapCategory[102X( [3Xarg[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe   [5XGAP[105X   category   of  CAP  categories  that  have  been  created  using
-  [2XWrapperCategory[102X ([14X12.3-5[114X) but not necessarily use the default data structure.[133X
-  
-  [1X12.1-2 IsWrapperCapCategory[101X
+  [1X12.1-1 IsWrapperCapCategory[101X
   
   [33X[1;0Y[29X[2XIsWrapperCapCategory[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
@@ -57,14 +49,14 @@
   [33X[0;0YThe  [5XGAP[105X  category  of  a  wrapper  CAP  category  (using  the  default data
   structure).[133X
   
-  [1X12.1-3 IsWrapperCapCategoryObject[101X
+  [1X12.1-2 IsWrapperCapCategoryObject[101X
   
   [33X[1;0Y[29X[2XIsWrapperCapCategoryObject[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of objects in a wrapper CAP category.[133X
   
-  [1X12.1-4 IsWrapperCapCategoryMorphism[101X
+  [1X12.1-3 IsWrapperCapCategoryMorphism[101X
   
   [33X[1;0Y[29X[2XIsWrapperCapCategoryMorphism[102X( [3Xarg[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
