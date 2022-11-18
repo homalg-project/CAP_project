@@ -136,7 +136,7 @@ end );
 BindGlobal( "SPLIT_KOMMAS_NOT_IN_BRACKETS",
             
   function( string )
-    local return_list, bracket_count, i, positions;
+    local positions, bracket_count, return_list, first, last, i;
     
     if Length( string ) = 0 then
         
@@ -172,7 +172,10 @@ BindGlobal( "SPLIT_KOMMAS_NOT_IN_BRACKETS",
     
     for i in [ 1 .. Length( positions ) - 1 ] do
         
-        Add( return_list, string{[ positions[ i ] + 1 .. positions[ i + 1 ] - 1 ]} );
+        first := positions[ i ] + 1;
+        last := positions[ i + 1 ] - 1;
+        
+        Add( return_list, string{[ first .. last ]} );
         
     od;
     
