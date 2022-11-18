@@ -193,7 +193,7 @@ Lift := rec(
 LiftOrFail := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   io_type := [ [ "alpha", "beta" ], [ "alpha_source", "beta_source" ] ],
-  pre_function := ~.Lift.pre_function,
+  pre_function := "Lift",
   return_type := "morphism_or_fail",
   dual_operation := "ColiftOrFail",
   dual_arguments_reversed := true,
@@ -203,7 +203,7 @@ LiftOrFail := rec(
 
 IsLiftable := rec(
   filter_list := [ "category", "morphism", "morphism" ],
-  pre_function := ~.Lift.pre_function,
+  pre_function := "Lift",
   return_type := "bool",
   dual_operation := "IsColiftable",
   dual_arguments_reversed := true,
@@ -240,7 +240,7 @@ Colift := rec(
 ColiftOrFail := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   io_type := [ [ "alpha", "beta" ], [ "alpha_range", "beta_range" ] ],
-  pre_function := ~.Colift.pre_function,
+  pre_function := "Colift",
   return_type := "morphism_or_fail",
   dual_operation := "LiftOrFail",
   dual_arguments_reversed := true,
@@ -250,7 +250,7 @@ ColiftOrFail := rec(
 
 IsColiftable := rec(
   filter_list := [ "category", "morphism", "morphism" ],
-  pre_function := ~.Colift.pre_function,
+  pre_function := "Colift",
   return_type := "bool",
   dual_operation := "IsLiftable",
   dual_arguments_reversed := true,
@@ -1517,7 +1517,7 @@ EmbeddingOfEqualizer := rec(
   with_given_object_position := "Source",
   dual_operation := "ProjectionOntoCoequalizer",
   
-  pre_function := ~.Equalizer.pre_function,
+  pre_function := "Equalizer",
   compatible_with_congruence_of_morphisms := false,
 ),
 
@@ -1947,7 +1947,7 @@ ProjectionOntoCoequalizer := rec(
   with_given_object_position := "Range",
   dual_operation := "EmbeddingOfEqualizer",
   
-  pre_function := ~.Coequalizer.pre_function,
+  pre_function := "Coequalizer",
   compatible_with_congruence_of_morphisms := false,
 ),
 
@@ -3466,15 +3466,15 @@ SolveLinearSystemInAbCategory := rec(
 SolveLinearSystemInAbCategoryOrFail := rec(
   filter_list := [ "category", IsList, IsList, "list_of_morphisms" ],
   return_type := "list_of_morphisms_or_fail",
-  pre_function := ~.SolveLinearSystemInAbCategory.pre_function,
-  pre_function_full := ~.SolveLinearSystemInAbCategory.pre_function_full
+  pre_function := "SolveLinearSystemInAbCategory",
+  pre_function_full := "SolveLinearSystemInAbCategory"
 ),
 
 MereExistenceOfSolutionOfLinearSystemInAbCategory := rec(
   filter_list := [ "category", IsList, IsList, "list_of_morphisms" ],
   return_type := "bool",
-  pre_function := ~.SolveLinearSystemInAbCategory.pre_function,
-  pre_function_full := ~.SolveLinearSystemInAbCategory.pre_function_full
+  pre_function := "SolveLinearSystemInAbCategory",
+  pre_function_full := "SolveLinearSystemInAbCategory"
 ),
 
 BasisOfExternalHom := rec(
@@ -3679,7 +3679,7 @@ SimplifyObject_IsoFromInputObject := rec(
     return [ false ];
     
   end,
-  pre_function := ~.SimplifyObject.pre_function
+  pre_function := "SimplifyObject"
   ),
 
 SimplifyObject_IsoToInputObject := rec(
@@ -3687,8 +3687,8 @@ SimplifyObject_IsoToInputObject := rec(
   io_type := [ [ "A", "n" ], [ "B", "A" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyObject_IsoFromInputObject",
-  redirect_function := ~.SimplifyObject_IsoFromInputObject.redirect_function,
-  pre_function := ~.SimplifyObject.pre_function
+  redirect_function := "SimplifyObject_IsoFromInputObject",
+  pre_function := "SimplifyObject"
   ),
 
 ## SimplifyMorphism
@@ -3697,8 +3697,8 @@ SimplifyMorphism := rec(
   io_type := [ [ "mor", "n" ], [ "mor_source", "mor_range" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyMorphism",
-  redirect_function := ~.SimplifyObject.redirect_function,
-  pre_function := ~.SimplifyObject.pre_function
+  redirect_function := "SimplifyObject",
+  pre_function := "SimplifyObject"
   ),
 
 ## SimplifySource*
@@ -3707,8 +3707,8 @@ SimplifySource := rec(
   io_type := [ [ "mor", "n" ], [ "Ap", "mor_range" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyRange",
-  redirect_function := ~.SimplifyObject.redirect_function,
-  pre_function := ~.SimplifyObject.pre_function
+  redirect_function := "SimplifyObject",
+  pre_function := "SimplifyObject"
   ),
 
 SimplifySource_IsoToInputObject := rec(
@@ -3725,7 +3725,7 @@ SimplifySource_IsoToInputObject := rec(
     return [ false ];
     
   end,
-  pre_function := ~.SimplifyObject.pre_function
+  pre_function := "SimplifyObject"
   ),
   
 SimplifySource_IsoFromInputObject := rec(
@@ -3733,8 +3733,8 @@ SimplifySource_IsoFromInputObject := rec(
   io_type := [ [ "mor", "n" ], [ "mor_source", "Ap" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyRange_IsoToInputObject",
-  redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
-  pre_function := ~.SimplifyObject.pre_function
+  redirect_function := "SimplifySource_IsoToInputObject",
+  pre_function := "SimplifyObject"
   ),
 
 ## SimplifyRange*
@@ -3743,8 +3743,8 @@ SimplifyRange := rec(
   io_type := [ [ "mor", "n" ], [ "mor_source", "Bp" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySource",
-  redirect_function := ~.SimplifyObject.redirect_function,
-  pre_function := ~.SimplifyObject.pre_function
+  redirect_function := "SimplifyObject",
+  pre_function := "SimplifyObject"
   ),
 
 SimplifyRange_IsoToInputObject := rec(
@@ -3761,7 +3761,7 @@ SimplifyRange_IsoToInputObject := rec(
     return [ false ];
     
   end,
-  pre_function := ~.SimplifyObject.pre_function
+  pre_function := "SimplifyObject"
   ),
   
 SimplifyRange_IsoFromInputObject := rec(
@@ -3769,8 +3769,8 @@ SimplifyRange_IsoFromInputObject := rec(
   io_type := [ [ "mor", "n" ], [ "mor_range", "Bp" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySource_IsoToInputObject",
-  redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
-  pre_function := ~.SimplifyObject.pre_function
+  redirect_function := "SimplifySource_IsoToInputObject",
+  pre_function := "SimplifyObject"
   ),
 
 ## SimplifySourceAndRange*
@@ -3779,8 +3779,8 @@ SimplifySourceAndRange := rec(
   io_type := [ [ "mor", "n" ], [ "Ap", "Bp" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySourceAndRange",
-  redirect_function := ~.SimplifyObject.redirect_function,
-  pre_function := ~.SimplifyObject.pre_function
+  redirect_function := "SimplifyObject",
+  pre_function := "SimplifyObject"
   ),
 
 SimplifySourceAndRange_IsoToInputSource := rec(
@@ -3788,8 +3788,8 @@ SimplifySourceAndRange_IsoToInputSource := rec(
   io_type := [ [ "mor", "n" ], [ "Ap", "mor_source" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySourceAndRange_IsoFromInputRange",
-  redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
-  pre_function := ~.SimplifyObject.pre_function
+  redirect_function := "SimplifySource_IsoToInputObject",
+  pre_function := "SimplifyObject"
   ),
   
 SimplifySourceAndRange_IsoFromInputSource := rec(
@@ -3797,8 +3797,8 @@ SimplifySourceAndRange_IsoFromInputSource := rec(
   io_type := [ [ "mor", "n" ], [ "mor_source", "Ap" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySourceAndRange_IsoToInputRange",
-  redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
-  pre_function := ~.SimplifyObject.pre_function
+  redirect_function := "SimplifySource_IsoToInputObject",
+  pre_function := "SimplifyObject"
   ),
 
 SimplifySourceAndRange_IsoToInputRange := rec(
@@ -3806,8 +3806,8 @@ SimplifySourceAndRange_IsoToInputRange := rec(
   io_type := [ [ "mor", "n" ], [ "Bp", "mor_range" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySourceAndRange_IsoFromInputSource",
-  redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
-  pre_function := ~.SimplifyObject.pre_function
+  redirect_function := "SimplifySource_IsoToInputObject",
+  pre_function := "SimplifyObject"
   ),
   
 SimplifySourceAndRange_IsoFromInputRange := rec(
@@ -3815,8 +3815,8 @@ SimplifySourceAndRange_IsoFromInputRange := rec(
   io_type := [ [ "mor", "n" ], [ "mor_range", "Bp" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySourceAndRange_IsoToInputSource",
-  redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
-  pre_function := ~.SimplifyObject.pre_function
+  redirect_function := "SimplifySource_IsoToInputObject",
+  pre_function := "SimplifyObject"
   ),
 
 ## SimplifyEndo*
@@ -3825,7 +3825,7 @@ SimplifyEndo := rec(
   io_type := [ [ "mor", "n" ], [ "Ap", "Ap" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyEndo",
-  redirect_function := ~.SimplifyObject.redirect_function,
+  redirect_function := "SimplifyObject",
   pre_function := function( cat, endo, n )
     
     if not ( IsPosInt( n ) or IsInfinity( n ) ) then
@@ -3846,8 +3846,8 @@ SimplifyEndo_IsoFromInputObject := rec(
   io_type := [ [ "mor", "n" ], [ "mor_source", "Ap" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyEndo_IsoToInputObject",
-  redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
-  pre_function := ~.SimplifyEndo.pre_function
+  redirect_function := "SimplifySource_IsoToInputObject",
+  pre_function := "SimplifyEndo"
   ),
 
 SimplifyEndo_IsoToInputObject := rec(
@@ -3855,8 +3855,8 @@ SimplifyEndo_IsoToInputObject := rec(
   io_type := [ [ "mor", "n" ], [ "Ap", "mor_range" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyEndo_IsoFromInputObject",
-  redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
-  pre_function := ~.SimplifyEndo.pre_function
+  redirect_function := "SimplifySource_IsoToInputObject",
+  pre_function := "SimplifyEndo"
   ),
 
 SomeReductionBySplitEpiSummand := rec(
@@ -4810,6 +4810,48 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
         fi;
         
         current_rec.function_name := current_recname;
+        
+        if IsBound( current_rec.pre_function ) and IsString( current_rec.pre_function ) then
+            
+            if IsBound( record.(current_rec.pre_function) ) and IsBound( record.(current_rec.pre_function).pre_function ) and IsFunction( record.(current_rec.pre_function).pre_function ) then
+                
+                current_rec.pre_function := record.(current_rec.pre_function).pre_function;
+                
+            else
+                
+                Error( "Could not find pre function for ", current_recname, ". ", current_rec.pre_function, " is not the name of an operation in the record, has no pre function, or has itself a string as pre function." );
+                
+            fi;
+            
+        fi;
+        
+        if IsBound( current_rec.pre_function_full ) and IsString( current_rec.pre_function_full ) then
+            
+            if IsBound( record.(current_rec.pre_function_full) ) and IsBound( record.(current_rec.pre_function_full).pre_function_full ) and IsFunction( record.(current_rec.pre_function_full).pre_function_full ) then
+                
+                current_rec.pre_function_full := record.(current_rec.pre_function_full).pre_function_full;
+                
+            else
+                
+                Error( "Could not find full pre function for ", current_recname, ". ", current_rec.pre_function_full, " is not the name of an operation in the record, has no full pre function, or has itself a string as full pre function." );
+                
+            fi;
+            
+        fi;
+        
+        if IsBound( current_rec.redirect_function ) and IsString( current_rec.redirect_function ) then
+            
+            if IsBound( record.(current_rec.redirect_function) ) and IsBound( record.(current_rec.redirect_function).redirect_function ) and IsFunction( record.(current_rec.redirect_function).redirect_function ) then
+                
+                current_rec.redirect_function := record.(current_rec.redirect_function).redirect_function;
+                
+            else
+                
+                Error( "Could not find redirect function for ", current_recname, ". ", current_rec.redirect_function, " is not the name of an operation in the record, has no redirect function, or has itself a string as redirect function." );
+                
+            fi;
+            
+        fi;
         
         number_of_arguments := Length( current_rec.filter_list );
         
