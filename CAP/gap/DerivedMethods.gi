@@ -11,6 +11,8 @@
 ###########################
 
 AddDerivationToCAP( MorphismFromKernelObjectToSink,
+                    [ [ KernelObject, 1 ],
+                      [ ZeroMorphism, 1 ] ],
         
   function( cat, alpha )
     local K;
@@ -37,6 +39,8 @@ end : Description := "KernelLift using LiftAlongMonomorphism and KernelEmbedding
 
 ##
 AddDerivationToCAP( MorphismFromSourceToCokernelObject,
+                    [ [ CokernelObject, 1 ],
+                      [ ZeroMorphism, 1 ] ],
         
   function( cat, alpha )
     local C;
@@ -284,6 +288,11 @@ end : CategoryFilter := IsAdditiveCategory,
 
 ##
 AddDerivationToCAP( ProjectionInFactorOfFiberProduct,
+                    [ [ ProjectionInFactorOfDirectProduct, 3 ],
+                      [ PreCompose, 4 ],
+                      [ EmbeddingOfEqualizer, 1 ],
+                      [ DirectProduct, 1 ],
+                      [ IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram, 1 ] ],
         
   function( cat, diagram, projection_number )
     local D, diagram_of_equalizer, iota;
@@ -302,6 +311,12 @@ AddDerivationToCAP( ProjectionInFactorOfFiberProduct,
 
 ##
 AddDerivationToCAP( UniversalMorphismIntoFiberProduct,
+                    [ [ ProjectionInFactorOfDirectProduct, 2 ],
+                      [ PreCompose, 3 ],
+                      [ UniversalMorphismIntoDirectProduct, 1 ],
+                      [ UniversalMorphismIntoEqualizer, 1 ],
+                      [ DirectProduct, 1 ],
+                      [ IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct, 1 ] ],
         
   function( cat, diagram, test_object, tau )
     local D, diagram_of_equalizer, chi, psi;
@@ -322,6 +337,8 @@ AddDerivationToCAP( UniversalMorphismIntoFiberProduct,
 
 ##
 AddDerivationToCAP( ProjectionInFactorOfFiberProduct,
+                    [ [ FiberProductEmbeddingInDirectSum, 1 ],
+                      [ ComponentOfMorphismIntoDirectSum, 1 ] ],
                       
   function( cat, diagram, projection_number )
     local embedding_in_direct_sum, direct_sum_diagram;
@@ -336,6 +353,8 @@ AddDerivationToCAP( ProjectionInFactorOfFiberProduct,
 
 ##
 AddDerivationToCAP( MorphismFromFiberProductToSink,
+                    [ [ ProjectionInFactorOfFiberProduct, 1 ],
+                      [ PreCompose, 1 ] ],
         
   function( cat, diagram )
     local pi_1;
@@ -348,6 +367,11 @@ AddDerivationToCAP( MorphismFromFiberProductToSink,
 
 ##
 AddDerivationToCAP( InjectionOfCofactorOfPushout,
+                    [ [ InjectionOfCofactorOfCoproduct, 3 ],
+                      [ PreCompose, 4 ],
+                      [ Coproduct, 1 ],
+                      [ ProjectionOntoCoequalizer, 1 ],
+                      [ IsomorphismFromCoequalizerOfCoproductDiagramToPushout, 1 ] ],
         
   function( cat, diagram, injection_number )
     local D, diagram_of_coequalizer, pi;
@@ -366,6 +390,12 @@ AddDerivationToCAP( InjectionOfCofactorOfPushout,
 
 ##
 AddDerivationToCAP( UniversalMorphismFromPushout,
+                    [ [ InjectionOfCofactorOfCoproduct, 2 ],
+                      [ PreCompose, 3 ],
+                      [ UniversalMorphismFromCoproduct, 1 ],
+                      [ UniversalMorphismFromCoequalizer, 1 ],
+                      [ Coproduct, 1 ],
+                      [ IsomorphismFromPushoutToCoequalizerOfCoproductDiagram, 1 ] ],
         
   function( cat, diagram, test_object, tau )
     local D, diagram_of_coequalizer, chi, psi;
@@ -386,6 +416,8 @@ AddDerivationToCAP( UniversalMorphismFromPushout,
 
 ##
 AddDerivationToCAP( InjectionOfCofactorOfPushout,
+                    [ [ DirectSumProjectionInPushout, 1 ],
+                      [ ComponentOfMorphismFromDirectSum, 1 ] ],
                                          
   function( cat, diagram, injection_number )
     local projection_from_direct_sum, direct_sum_diagram;
@@ -400,6 +432,8 @@ AddDerivationToCAP( InjectionOfCofactorOfPushout,
 
 ##
 AddDerivationToCAP( MorphismFromSourceToPushout,
+                    [ [ InjectionOfCofactorOfPushout, 1 ],
+                      [ PreCompose, 1 ] ],
   
   function( cat, diagram )
     local iota_1;
@@ -412,6 +446,9 @@ AddDerivationToCAP( MorphismFromSourceToPushout,
 
 ##
 AddDerivationToCAP( UniversalMorphismFromZeroObject,
+                    [ [ IsomorphismFromZeroObjectToInitialObject, 1 ],
+                      [ UniversalMorphismFromInitialObject, 1 ],
+                      [ PreCompose, 1 ] ],
                   
   function( cat, obj )
     
@@ -422,6 +459,9 @@ AddDerivationToCAP( UniversalMorphismFromZeroObject,
 
 ##
 AddDerivationToCAP( UniversalMorphismIntoZeroObject,
+                    [ [ UniversalMorphismIntoTerminalObject, 1 ],
+                      [ IsomorphismFromTerminalObjectToZeroObject, 1 ],
+                      [ PreCompose, 1 ] ],
                   
   function( cat, obj )
     
@@ -431,6 +471,9 @@ AddDerivationToCAP( UniversalMorphismIntoZeroObject,
 
 ##
 AddDerivationToCAP( ProjectionInFactorOfDirectSum,
+                    [ [ IsomorphismFromDirectSumToDirectProduct, 1 ],
+                      [ ProjectionInFactorOfDirectProduct, 1 ],
+                      [ PreCompose, 1 ] ],
                 
   function( cat, diagram, projection_number )
     
@@ -441,6 +484,9 @@ AddDerivationToCAP( ProjectionInFactorOfDirectSum,
 
 ##
 AddDerivationToCAP( UniversalMorphismIntoDirectSum,
+                    [ [ UniversalMorphismIntoDirectProduct, 1 ],
+                      [ IsomorphismFromDirectProductToDirectSum, 1 ],
+                      [ PreCompose, 1 ] ],
                     
   function( cat, diagram, test_object, source )
     
@@ -450,6 +496,9 @@ AddDerivationToCAP( UniversalMorphismIntoDirectSum,
 
 ##
 AddDerivationToCAP( InjectionOfCofactorOfDirectSum,
+                    [ [ InjectionOfCofactorOfCoproduct, 1 ],
+                      [ IsomorphismFromCoproductToDirectSum, 1 ],
+                      [ PreCompose, 1 ] ],
                     
   function( cat, diagram, injection_number )
     
@@ -459,6 +508,9 @@ AddDerivationToCAP( InjectionOfCofactorOfDirectSum,
 
 ##
 AddDerivationToCAP( UniversalMorphismFromDirectSum,
+                    [ [ IsomorphismFromDirectSumToCoproduct, 1 ],
+                      [ UniversalMorphismFromCoproduct, 1 ],
+                      [ PreCompose, 1 ] ],
                     
   function( cat, diagram, test_object, sink )
     
@@ -468,6 +520,9 @@ AddDerivationToCAP( UniversalMorphismFromDirectSum,
 
 ##
 AddDerivationToCAP( UniversalMorphismIntoTerminalObject,
+                    [ [ UniversalMorphismIntoZeroObject, 1 ],
+                      [ IsomorphismFromZeroObjectToTerminalObject, 1 ],
+                      [ PreCompose, 1 ] ],
   
   function( cat, obj )
     
@@ -478,6 +533,9 @@ AddDerivationToCAP( UniversalMorphismIntoTerminalObject,
 
 ##
 AddDerivationToCAP( UniversalMorphismFromInitialObject,
+                    [ [ IsomorphismFromInitialObjectToZeroObject, 1 ],
+                      [ UniversalMorphismFromZeroObject, 1 ],
+                      [ PreCompose, 1 ] ],
   
   function( cat, obj )
     
@@ -488,6 +546,9 @@ AddDerivationToCAP( UniversalMorphismFromInitialObject,
 
 ##
 AddDerivationToCAP( ProjectionInFactorOfDirectProduct,
+                    [ [ IsomorphismFromDirectProductToDirectSum, 1 ],
+                      [ ProjectionInFactorOfDirectSum, 1 ],
+                      [ PreCompose, 1 ] ],
   
   function( cat, diagram, projection_number )
     
@@ -497,6 +558,9 @@ AddDerivationToCAP( ProjectionInFactorOfDirectProduct,
 
 ##
 AddDerivationToCAP( UniversalMorphismIntoDirectProduct,
+                    [ [ UniversalMorphismIntoDirectSum, 1 ],
+                      [ IsomorphismFromDirectSumToDirectProduct, 1 ],
+                      [ PreCompose, 1 ] ],
                     
   function( cat, diagram, test_object, source )
     
@@ -507,6 +571,9 @@ AddDerivationToCAP( UniversalMorphismIntoDirectProduct,
 
 ##
 AddDerivationToCAP( InjectionOfCofactorOfCoproduct,
+                    [ [ InjectionOfCofactorOfDirectSum, 1 ],
+                      [ IsomorphismFromDirectSumToCoproduct, 1 ],
+                      [ PreCompose, 1 ] ],
                       
   function( cat, diagram, injection_number )
     
@@ -516,6 +583,9 @@ AddDerivationToCAP( InjectionOfCofactorOfCoproduct,
 
 ##
 AddDerivationToCAP( UniversalMorphismFromCoproduct,
+                    [ [ IsomorphismFromCoproductToDirectSum, 1 ],
+                      [ UniversalMorphismFromDirectSum, 1 ],
+                      [ PreCompose, 1 ] ],
                     
   function( cat, diagram, test_object, sink )
     
@@ -525,6 +595,11 @@ AddDerivationToCAP( UniversalMorphismFromCoproduct,
 
 ##
 AddDerivationToCAP( UniversalMorphismIntoFiberProduct,
+                    [ [ UniversalMorphismIntoDirectSum, 1 ],
+                      [ DirectSumDiagonalDifference, 1 ],
+                      [ KernelLift, 1 ],
+                      [ IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct, 1 ],
+                      [ PreCompose, 1 ] ],
                                        
   function( cat, diagram, test_object, source )
     local test_function, direct_sum_diagonal_difference, kernel_lift;
@@ -544,6 +619,11 @@ AddDerivationToCAP( UniversalMorphismIntoFiberProduct,
 
 ##
 AddDerivationToCAP( UniversalMorphismFromPushout,
+                    [ [ UniversalMorphismFromDirectSum, 1 ],
+                      [ DirectSumCodiagonalDifference, 1 ],
+                      [ CokernelColift, 1 ],
+                      [ IsomorphismFromPushoutToCokernelOfDiagonalDifference, 1 ],
+                      [ PreCompose, 1 ] ],
                             
   function( cat, diagram, test_object, sink )
     local test_function, direct_sum_codiagonal_difference, cokernel_colift;
@@ -561,6 +641,10 @@ AddDerivationToCAP( UniversalMorphismFromPushout,
 
 ##
 AddDerivationToCAP( ImageEmbedding,
+                    [ [ CokernelProjection, 1 ],
+                      [ KernelEmbedding, 1 ],
+                      [ IsomorphismFromImageObjectToKernelOfCokernel, 1 ],
+                      [ PreCompose, 1 ] ],
                       
   function( cat, mor )
     local image_embedding;
@@ -576,6 +660,10 @@ AddDerivationToCAP( ImageEmbedding,
 
 ##
 AddDerivationToCAP( CoimageProjection,
+                    [ [ KernelEmbedding, 1 ],
+                      [ CokernelProjection, 1 ],
+                      [ IsomorphismFromCokernelOfKernelToCoimage, 1 ],
+                      [ PreCompose, 1 ] ],
   
   function( cat, mor )
     local coimage_projection;
@@ -590,6 +678,9 @@ end : CategoryFilter := IsAbelianCategory, ##FIXME: PreAbelian?
 
 ##
 AddDerivationToCAP( CoimageProjection,
+                    [ [ CanonicalIdentificationFromImageObjectToCoimage, 1 ],
+                      [ CoastrictionToImage, 1 ],
+                      [ PreCompose, 1 ] ],
   
   function( cat, mor )
     local iso;
@@ -707,6 +798,10 @@ end : Description := "UniversalMorphismIntoCoimage using CoimageProjection and C
 
 ##
 AddDerivationToCAP( UniversalMorphismIntoCoimage,
+                    [ [ UniversalMorphismFromImage, 1 ],
+                      [ CanonicalIdentificationFromImageObjectToCoimage, 1 ],
+                      [ InverseForMorphisms, 1 ],
+                      [ PreCompose, 1 ] ],
   
   function( cat, morphism, test_factorization )
     local induced_mor;
@@ -733,6 +828,8 @@ end : Description := "UniversalMorphismIntoEqualizer using LiftAlongMonomorphism
 
 ##
 AddDerivationToCAP( MorphismFromEqualizerToSink,
+                    [ [ EmbeddingOfEqualizer, 1 ],
+                      [ PreCompose, 1 ] ],
         
   function( cat, A, diagram )
     local iota;
@@ -759,6 +856,8 @@ end : Description := "UniversalMorphismFromCoequalizer using ColiftAlongEpimorph
 
 ##
 AddDerivationToCAP( MorphismFromSourceToCoequalizer,
+                    [ [ ProjectionOntoCoequalizer, 1 ],
+                      [ PreCompose, 1 ] ],
   
   function( cat, A, diagram )
     local pi;
@@ -777,6 +876,9 @@ AddDerivationToCAP( MorphismFromSourceToCoequalizer,
 
 ##
 AddDerivationToCAP( IsBijectiveObject,
+                    [ [ IsProjective, 1 ],
+                      [ IsInjective, 1 ] ],
+                    
   function( cat, object )
     
     return IsProjective( cat, object ) and IsInjective( cat, object );
@@ -785,6 +887,10 @@ end : Description := "IsBijectiveObject by checking if the object is both projec
 
 ##
 AddDerivationToCAP( IsProjective,
+                    [ [ IsLiftable, 1 ],
+                      [ EpimorphismFromSomeProjectiveObject, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    
   function( cat, object )
     
     return IsLiftable( cat,
@@ -796,6 +902,10 @@ end : Description := "IsProjective by checking if the object is a summand of som
 
 ##
 AddDerivationToCAP( IsInjective,
+                    [ [ IsColiftable, 1 ],
+                      [ MonomorphismIntoSomeInjectiveObject, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    
   function( cat, object )
     
     return IsColiftable( cat,
@@ -807,6 +917,8 @@ end : Description := "IsInjective by checking if the object is a summand of some
 
 ##
 AddDerivationToCAP( IsOne,
+                    [ [ IdentityMorphism, 1 ],
+                      [ IsCongruentForMorphisms, 1 ] ],
                     
   function( cat, morphism )
     local object;
@@ -819,6 +931,7 @@ end : Description := "IsOne by comparing with the identity morphism" );
 
 ##
 AddDerivationToCAP( IsEndomorphism,
+                    [ [ IsEqualForObjects, 1 ] ],
                       
   function( cat, morphism )
     
@@ -828,6 +941,8 @@ end : Description := "IsEndomorphism by deciding whether source and range are eq
 
 ##
 AddDerivationToCAP( IsAutomorphism,
+                    [ [ IsEndomorphism, 1 ],
+                      [ IsIsomorphism, 1 ] ],
                     
   function( cat, morphism )
     
@@ -837,6 +952,8 @@ end : Description := "IsAutomorphism by checking IsEndomorphism and IsIsomorphis
 
 ##
 AddDerivationToCAP( IsZeroForMorphisms,
+                    [ [ ZeroMorphism, 1 ],
+                      [ IsCongruentForMorphisms, 1 ] ],
                       
   function( cat, morphism )
     local zero_morphism;
