@@ -5077,13 +5077,13 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                 
             end );
             
-            if Length( output_list ) >= 1 and return_list[1] <> fail then
+            if return_list[1] <> fail then
                 
                 current_rec.output_source_getter_string := return_list[1];
                 
             fi;
             
-            if Length( output_list ) >= 2 and return_list[2] <> fail then
+            if return_list[2] <> fail then
                 
                 current_rec.output_range_getter_string := return_list[2];
                 
