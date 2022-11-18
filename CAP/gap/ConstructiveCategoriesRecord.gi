@@ -3,62 +3,98 @@
 #
 # Implementations
 #
-InstallValue( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD, rec(
+InstallValue( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD, rec( ) );
 
-EveryCategory := [
-  "PreCompose", "IdentityMorphism", "IsEqualForObjects", "IsEqualForMorphisms", "IsCongruentForMorphisms" ],
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory := [
+    "PreCompose",
+    "IdentityMorphism",
+    "IsEqualForObjects",
+    "IsEqualForMorphisms",
+    "IsCongruentForMorphisms",
+];
 
-IsEquippedWithHomomorphismStructure := Concatenation( [
-   "DistinguishedObjectOfHomomorphismStructure",
-   "HomomorphismStructureOnObjects",
-   "HomomorphismStructureOnMorphisms",
-   "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
-   "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ], ~.EveryCategory ),
 
-IsEnrichedOverCommutativeRegularSemigroup := Concatenation(
-  [ "AdditionForMorphisms" ], ~.EveryCategory ),
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsEquippedWithHomomorphismStructure := Concatenation(
+    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory,
+    [
+        "DistinguishedObjectOfHomomorphismStructure",
+        "HomomorphismStructureOnObjects",
+        "HomomorphismStructureOnMorphisms",
+        "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
+        "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
+    ]
+);
 
-IsAbCategory := Concatenation( [ 
-  "ZeroMorphism", 
-  "IsZeroForMorphisms", 
-  "SubtractionForMorphisms",
-  "AdditiveInverseForMorphisms" ], ~.IsEnrichedOverCommutativeRegularSemigroup ),
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsEnrichedOverCommutativeRegularSemigroup := Concatenation(
+    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory,
+    [
+        "AdditionForMorphisms",
+    ]
+);
 
-IsLinearCategoryOverCommutativeRing := Concatenation( [
-  "MultiplyWithElementOfCommutativeRingForMorphisms" ], ~.IsAbCategory ),
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsAbCategory := Concatenation(
+    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsEnrichedOverCommutativeRegularSemigroup,
+    [
+        "ZeroMorphism",
+        "IsZeroForMorphisms",
+        "SubtractionForMorphisms",
+        "AdditiveInverseForMorphisms",
+    ]
+);
 
-IsAdditiveCategory := Concatenation( [
-  "ZeroObject",
-  "UniversalMorphismFromZeroObject",
-  "UniversalMorphismIntoZeroObject",
-  "DirectSum",
-  "ProjectionInFactorOfDirectSum",
-  "InjectionOfCofactorOfDirectSum",
-  "UniversalMorphismIntoDirectSum",
-  "UniversalMorphismFromDirectSum" ], ~.IsAbCategory ),
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsLinearCategoryOverCommutativeRing := Concatenation(
+    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsAbCategory,
+    [
+        "MultiplyWithElementOfCommutativeRingForMorphisms",
+    ]
+);
 
-IsPreAbelianCategory := Concatenation( [
-"KernelObject",
-"KernelEmbedding",
-"KernelLift",
-"CokernelObject",
-"CokernelProjection",
-"CokernelColift"
-], ~.IsAdditiveCategory ),
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsAdditiveCategory := Concatenation(
+    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsAbCategory,
+    [
+        "ZeroObject",
+        "UniversalMorphismFromZeroObject",
+        "UniversalMorphismIntoZeroObject",
+        "DirectSum",
+        "ProjectionInFactorOfDirectSum",
+        "InjectionOfCofactorOfDirectSum",
+        "UniversalMorphismIntoDirectSum",
+        "UniversalMorphismFromDirectSum",
+    ]
+);
 
-IsAbelianCategory := Concatenation( [
-"LiftAlongMonomorphism",
-"ColiftAlongEpimorphism" ], ~.IsPreAbelianCategory ),
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPreAbelianCategory := Concatenation(
+    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsAdditiveCategory,
+    [
+        "KernelObject",
+        "KernelEmbedding",
+        "KernelLift",
+        "CokernelObject",
+        "CokernelProjection",
+        "CokernelColift",
+    ]
+);
 
-IsAbelianCategoryWithEnoughProjectives := Concatenation( [
-"EpimorphismFromSomeProjectiveObject",
-"ProjectiveLift"
-], ~.IsAbelianCategory ),
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsAbelianCategory := Concatenation(
+    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPreAbelianCategory,
+    [
+        "LiftAlongMonomorphism",
+        "ColiftAlongEpimorphism",
+    ]
+);
 
-IsAbelianCategoryWithEnoughInjectives := Concatenation( [
-"MonomorphismIntoSomeInjectiveObject",
-"InjectiveColift"
-], ~.IsAbelianCategory )
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsAbelianCategoryWithEnoughProjectives := Concatenation(
+    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsAbelianCategory,
+    [
+        "EpimorphismFromSomeProjectiveObject",
+        "ProjectiveLift",
+    ]
+);
 
-) );
-
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsAbelianCategoryWithEnoughInjectives := Concatenation(
+    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsAbelianCategory,
+    [
+        "MonomorphismIntoSomeInjectiveObject",
+        "InjectiveColift",
+    ]
+);
