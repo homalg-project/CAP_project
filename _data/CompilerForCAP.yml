@@ -1,7 +1,7 @@
 name: CompilerForCAP
-version: "2022.11-09"
+version: "2022.11-10"
 license: "GPL-2.0-or-later"
-date: 2022-11-11
+date: 2022-11-18
 description: |
     Speed up computations in CAP categories
 
@@ -29,11 +29,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/CompilerForCAP/Package
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2022.11-09/CompilerForCAP-2022.11-09.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2022.11-10/CompilerForCAP-2022.11-10.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2022.11-09/CompilerForCAP-2022.11-09.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2022.11-10/CompilerForCAP-2022.11-10.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2022.11-09/CompilerForCAP-2022.11-09.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2022.11-10/CompilerForCAP-2022.11-10.pdf
 
 abstract: |
 
@@ -44,7 +44,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>Zic22</span>]   <b class='BibAuthor'>Zickgraf, F.</b>,
      <i class='BibTitle'>CompilerForCAP, Speed up computations in CAP categories,
-             Version 2022.11-09</i>
+             Version 2022.11-10</i>
      (<span class='BibYear'>2022</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/CompilerForCAP">https://homalg-project.github.io/pkg/CompilerForCAP</a></span>.
@@ -52,10 +52,10 @@ citeas: |
     
 
 bibtex: |
-    @misc{ CompilerForCAP2022.11-09,
+    @misc{ CompilerForCAP2022.11-10,
       author =           {Zickgraf, F.},
       title =            {{CompilerForCAP},   Speed   up   computations  in  CAP
-                          categories, {V}ersion 2022.11-09},
+                          categories, {V}ersion 2022.11-10},
       month =            {Nov},
       year =             {2022},
       note =             {GAP package},
