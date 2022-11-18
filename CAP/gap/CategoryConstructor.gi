@@ -9,7 +9,7 @@ InstallMethod( CategoryConstructor,
                [ IsRecord ],
                
   function( options )
-    local known_options_with_filters, filter, CC, default_func_strings, info, unknown_filters, create_func_name, create_func, func_string, underlying_arguments, add, func, option_name, prop, name;
+    local known_options_with_filters, name, filter, CC, default_func_strings, info, unknown_filters, create_func_name, create_func, func_string, underlying_arguments, add, func, option_name, prop;
     
     ## check given options
     known_options_with_filters := rec(
@@ -17,7 +17,9 @@ InstallMethod( CategoryConstructor,
         category_filter := IsFilter,
         category_object_filter := IsFilter,
         category_morphism_filter := IsFilter,
+        #= comment for Julia
         commutative_ring_of_linear_category := IsRing and HasIsCommutative and IsCommutative,
+        # =#
         properties := IsList,
         object_constructor := IsFunction,
         object_datum := IsFunction,
@@ -65,13 +67,15 @@ InstallMethod( CategoryConstructor,
     ## create category
     if IsBound( options.name ) then
         
-        CC := CreateCapCategory( options.name );
+        name := options.name;
         
     else
         
-        CC := CreateCapCategory( );
+        name := Concatenation( "AutomaticCapCategory", String( CAP_INTERNAL_NAME_COUNTER( ) ) );
         
     fi;
+    
+    CC := CreateCapCategory( name, options.category_filter, options.category_object_filter, options.category_morphism_filter, IsCapCategoryTwoCell );
     
     CC!.category_as_first_argument := true;
     
@@ -86,23 +90,17 @@ InstallMethod( CategoryConstructor,
     ## set filters and attributes
     if IsBound( options.category_filter ) then
         
-        SetFilterObj( CC, options.category_filter );
-        
         CC!.compiler_hints.category_filter := options.category_filter;
         
     fi;
     
     if IsBound( options.category_object_filter ) then
         
-        AddObjectRepresentation( CC, options.category_object_filter );
-        
         CC!.compiler_hints.object_filter := options.category_object_filter;
         
     fi;
     
     if IsBound( options.category_morphism_filter ) then
-        
-        AddMorphismRepresentation( CC, options.category_morphism_filter );
         
         CC!.compiler_hints.morphism_filter := options.category_morphism_filter;
         
@@ -407,7 +405,7 @@ InstallMethod( CategoryConstructor,
         
         if StartsWith( info.return_type, "morphism" ) then
             
-            if IsBound( info.output_source_getter_string ) and info.can_always_compute_output_source_getter then
+            if IsBound( info.output_source_getter_string ) and IsBound( info.can_always_compute_output_source_getter ) and info.can_always_compute_output_source_getter then
                 
                 func_string := ReplacedStringViaRecord( func_string, rec(
                     top_source := info.output_source_getter_string,
@@ -421,7 +419,7 @@ InstallMethod( CategoryConstructor,
                 
             fi;
             
-            if IsBound( info.output_range_getter_string ) and info.can_always_compute_output_range_getter then
+            if IsBound( info.output_range_getter_string ) and IsBound( info.can_always_compute_output_range_getter ) and info.can_always_compute_output_range_getter then
                 
                 func_string := ReplacedStringViaRecord( func_string, rec(
                     top_range := info.output_range_getter_string,

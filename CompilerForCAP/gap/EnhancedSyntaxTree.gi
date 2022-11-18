@@ -1353,32 +1353,41 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
             
             if tree.type = "EXPR_CASE" then
                 
+                # code as IdFunc( function( ) if ... then return ...; else return ...; fi; end )()
+                # the IdFunc is required because the GAP syntax `function() return ...; end()` is not valid in Julia
                 tree := rec(
                     type := "EXPR_FUNCCALL_0ARGS",
                     args := AsSyntaxTreeList( [ ] ),
                     funcref := rec(
-                        type := "EXPR_FUNC",
-                        id := -1, # will be ignored anyway
-                        nams := [ ],
-                        narg := 0,
-                        nloc := 0,
-                        variadic := false,
-                        stats := rec(
-                            type := "STAT_SEQ_STAT",
-                            statements := AsSyntaxTreeList( [
-                                rec(
-                                    type := "STAT_IF_ELIF",
-                                    branches := List( tree.branches, branch -> rec(
-                                        type := "BRANCH_IF",
-                                        condition := branch.condition,
-                                        body := rec(
-                                            type := "STAT_RETURN_OBJ",
-                                            obj := branch.value,
-                                        ),
-                                    ) ),
-                                ),
-                            ] ),
+                        type := "EXPR_FUNCCALL",
+                        funcref := rec(
+                            type := "EXPR_REF_GVAR",
+                            gvar := "IdFunc",
                         ),
+                        args := AsSyntaxTreeList( [ rec(
+                            type := "EXPR_FUNC",
+                            id := -1, # will be ignored anyway
+                            nams := [ ],
+                            narg := 0,
+                            nloc := 0,
+                            variadic := false,
+                            stats := rec(
+                                type := "STAT_SEQ_STAT",
+                                statements := AsSyntaxTreeList( [
+                                    rec(
+                                        type := "STAT_IF_ELIF",
+                                        branches := List( tree.branches, branch -> rec(
+                                            type := "BRANCH_IF",
+                                            condition := branch.condition,
+                                            body := rec(
+                                                type := "STAT_RETURN_OBJ",
+                                                obj := branch.value,
+                                            ),
+                                        ) ),
+                                    ),
+                                ] ),
+                            ),
+                        ) ] ),
                     ),
                 );
                 

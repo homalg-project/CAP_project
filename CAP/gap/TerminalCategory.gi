@@ -156,11 +156,13 @@ InstallMethod( FunctorFromTerminalCategory,
 end );
 
 ##
+#= comment for Julia
 InstallMethod( FunctorFromTerminalCategory,
                [ IsCapCategoryMorphism and IsOne ],
                
   morphism -> FunctorFromTerminalCategory( Source( morphism ) )
   
 );
+# =#
 
 Finalize( CAP_INTERNAL_TERMINAL_CATEGORY );

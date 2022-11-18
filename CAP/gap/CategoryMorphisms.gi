@@ -743,6 +743,27 @@ InstallMethod( IsWellDefined,
 ##
 ###########################
 
+# fallback methods for Julia
+InstallMethod( ViewObj,
+               [ IsCapCategoryMorphism ],
+               
+  function ( morphism )
+    
+    # avoid space in front of "in" to distinguish it from the keyword "in"
+    Print( "<A morphism ", "in ", Name( CapCategory( morphism ) ), ">" );
+    
+end );
+
+InstallMethod( Display,
+               [ IsCapCategoryMorphism ],
+               
+  function ( morphism )
+    
+    # avoid space in front of "in" to distinguish it from the keyword "in"
+    Print( "A morphism ", "in ", Name( CapCategory( morphism ) ), ".\n" );
+    
+end );
+
 ##
 InstallGlobalFunction( CAP_INTERNAL_CREATE_MORPHISM_PRINT,
                        
@@ -819,7 +840,9 @@ InstallGlobalFunction( CAP_INTERNAL_CREATE_MORPHISM_PRINT,
     
 end );
 
+#= comment for Julia
 CAP_INTERNAL_CREATE_MORPHISM_PRINT( );
+# =#
 
 InstallMethod( String,
                [ IsCapCategoryMorphism ],

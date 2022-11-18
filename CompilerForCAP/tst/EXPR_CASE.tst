@@ -76,14 +76,14 @@ gap> tree2 := rec(
 gap> coded_func2 := ENHANCED_SYNTAX_TREE_CODE( tree2 );;
 gap> Display( coded_func2 );
 function (  )
-    return MY_ID_FUNC( function (  )
-              if false then
-                  return 1;
-              else
-                  return 2;
-              fi;
-              return;
-          end(  ) );
+    return MY_ID_FUNC( IdFunc( function (  )
+                if false then
+                    return 1;
+                else
+                    return 2;
+                fi;
+                return;
+            end )(  ) );
 end
 
 #

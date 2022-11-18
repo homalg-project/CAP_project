@@ -502,4 +502,6 @@ end : Description := "functorial_name by taking the identity morphism of object_
     
 end );
 
+#= comment for Julia
 CAP_INTERNAL_GENERATE_CONVENIENCE_METHODS_FOR_LIMITS( "CAP", CAP_INTERNAL_METHOD_NAME_RECORD, CAP_INTERNAL_METHOD_NAME_RECORD_LIMITS );
+# =#

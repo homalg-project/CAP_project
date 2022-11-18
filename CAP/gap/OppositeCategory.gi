@@ -260,7 +260,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
                 
                 return_statement := "return MorphismConstructor( cat, output_source_getter, result, output_range_getter )";
                 
-                if IsBound( current_entry.output_source_getter_string ) and current_entry.can_always_compute_output_source_getter then
+                if IsBound( current_entry.output_source_getter_string ) and IsBound( current_entry.can_always_compute_output_source_getter ) and current_entry.can_always_compute_output_source_getter then
                     
                     output_source_getter_string := current_entry.output_source_getter_string;
                     
@@ -270,7 +270,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
                     
                 fi;
                 
-                if IsBound( current_entry.output_range_getter_string ) and current_entry.can_always_compute_output_range_getter then
+                if IsBound( current_entry.output_range_getter_string ) and IsBound( current_entry.can_always_compute_output_range_getter ) and current_entry.can_always_compute_output_range_getter then
                     
                     output_range_getter_string := current_entry.output_range_getter_string;
                     
@@ -352,7 +352,7 @@ InstallMethod( Opposite,
         Error( "Input category must be finalized to create opposite category" );
     fi;
     
-    opposite_category := CreateCapCategory( name );
+    opposite_category := CreateCapCategory( name, WasCreatedAsOppositeCategory, IsCapCategoryOppositeObject, IsCapCategoryOppositeMorphism, IsCapCategoryTwoCell );
     
     opposite_category!.category_as_first_argument := true;
     
@@ -371,10 +371,6 @@ InstallMethod( Opposite,
         morphism_filter := IsCapCategoryOppositeMorphism,
     );
     
-    AddObjectRepresentation( opposite_category, IsCapCategoryOppositeObject );
-    AddMorphismRepresentation( opposite_category, IsCapCategoryOppositeMorphism );
-    
-    SetFilterObj( opposite_category, WasCreatedAsOppositeCategory );
     SetOppositeCategory( opposite_category, category );
     
     SetOpposite( opposite_category, category );
@@ -420,7 +416,9 @@ InstallMethod( Opposite,
         #% CAP_JIT_DROP_NEXT_STATEMENT
         if CapCategory( object )!.predicate_logic then
             
+            #= comment for Julia
             INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_OBJECT( object );
+            # =#
             
         fi;
         
@@ -469,7 +467,9 @@ InstallMethod( Opposite,
         #% CAP_JIT_DROP_NEXT_STATEMENT
         if CapCategory( morphism )!.predicate_logic then
             
+            #= comment for Julia
             INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_MORPHISM( morphism );
+            # =#
             
         fi;
         
@@ -492,7 +492,9 @@ InstallMethod( Opposite,
     
     if category!.predicate_logic then
         
+        #= comment for Julia
         INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_CATEGORY( category );
+        # =#
         
     fi;
     

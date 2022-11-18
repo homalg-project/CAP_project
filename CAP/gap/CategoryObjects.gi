@@ -292,6 +292,27 @@ end );
 ##
 ###########################
 
+# fallback methods for Julia
+InstallMethod( ViewObj,
+               [ IsCapCategoryObject ],
+               
+  function ( object )
+    
+    # avoid space in front of "in" to distinguish it from the keyword "in"
+    Print( "<An object ", "in ", Name( CapCategory( object ) ), ">" );
+    
+end );
+
+InstallMethod( Display,
+               [ IsCapCategoryObject ],
+               
+  function ( object )
+    
+    # avoid space in front of "in" to distinguish it from the keyword "in"
+    Print( "An object ", "in ", Name( CapCategory( object ) ), ".\n" );
+    
+end );
+
 ##
 InstallGlobalFunction( CAP_INTERNAL_CREATE_OBJECT_PRINT,
                        
@@ -327,7 +348,9 @@ InstallGlobalFunction( CAP_INTERNAL_CREATE_OBJECT_PRINT,
     
 end );
 
+#= comment for Julia
 CAP_INTERNAL_CREATE_OBJECT_PRINT( );
+# =#
 
 InstallMethod( String,
                [ IsCapCategoryObject ],

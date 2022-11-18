@@ -251,18 +251,18 @@ InstallMethod( WrapperCategory,
     
     copy_value_or_default( options, category_constructor_options, "category_object_filter", IsWrapperCapCategoryObject );
     copy_value_or_default( options, category_constructor_options, "category_morphism_filter", IsWrapperCapCategoryMorphism );
-    copy_value_or_default( options, category_constructor_options, "object_constructor", AsObjectInWrapperCategory );
+    copy_value_or_default( options, category_constructor_options, "object_constructor", { cat, d } -> AsObjectInWrapperCategory( cat, d ) );
     copy_value_or_default( options, category_constructor_options, "object_datum", { D, o } -> UnderlyingCell( o ) );
-    copy_value_or_default( options, category_constructor_options, "morphism_constructor", AsMorphismInWrapperCategory );
+    copy_value_or_default( options, category_constructor_options, "morphism_constructor", { cat, s, d, t } -> AsMorphismInWrapperCategory( cat, s, d, t ) );
     copy_value_or_default( options, category_constructor_options, "morphism_datum", { D, m } -> UnderlyingCell( m ) );
     
     if IsBound( options.category_filter ) then
         
-        category_constructor_options.category_filter := WasCreatedAsWrapperCapCategory and options.category_filter;
+        category_constructor_options.category_filter := options.category_filter;
         
     else
         
-        category_constructor_options.category_filter := IsWrapperCapCategory; # IsWrapperCapCategory already implies WasCreatedAsWrapperCapCategory
+        category_constructor_options.category_filter := IsWrapperCapCategory;
         
     fi;
     
@@ -342,28 +342,28 @@ InstallMethod( WrapperCategory,
     fi;
     
     InstallMethodForCompilerForCAP( ModelingTowerObjectConstructor,
-        [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), IsObject ],
+        [ CategoryFilter( D ), IsObject ],
         modeling_tower_object_constructor
     );
     
     InstallMethodForCompilerForCAP( ModelingTowerObjectDatum,
-        [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), IsCapCategoryObject and ObjectFilter( C ) ],
+        [ CategoryFilter( D ), ObjectFilter( C ) ],
         modeling_tower_object_datum
     );
     
     InstallMethodForCompilerForCAP( ModelingTowerMorphismConstructor,
-        [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), IsCapCategoryObject and ObjectFilter( C ), IsObject, IsCapCategoryObject and ObjectFilter( C ) ],
+        [ CategoryFilter( D ), ObjectFilter( C ), IsObject, ObjectFilter( C ) ],
         modeling_tower_morphism_constructor
     );
     
     InstallMethodForCompilerForCAP( ModelingTowerMorphismDatum,
-        [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), IsCapCategoryMorphism and MorphismFilter( C ) ],
+        [ CategoryFilter( D ), MorphismFilter( C ) ],
         modeling_tower_morphism_datum
     );
     
     
     InstallMethodForCompilerForCAP( ModelingObject,
-        [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), IsCapCategoryObject and ObjectFilter( D ) ],
+        [ CategoryFilter( D ), ObjectFilter( D ) ],
         
       function ( cat, obj )
         
@@ -372,7 +372,7 @@ InstallMethod( WrapperCategory,
     end );
     
     InstallMethodForCompilerForCAP( ModeledObject,
-        [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), IsCapCategoryObject and ObjectFilter( C ) ],
+        [ CategoryFilter( D ), ObjectFilter( C ) ],
         
       function ( cat, obj )
         
@@ -381,7 +381,7 @@ InstallMethod( WrapperCategory,
     end );
     
     InstallMethodForCompilerForCAP( ModelingMorphism,
-        [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), IsCapCategoryMorphism and MorphismFilter( D ) ],
+        [ CategoryFilter( D ), MorphismFilter( D ) ],
         
       function ( cat, mor )
         
@@ -390,7 +390,7 @@ InstallMethod( WrapperCategory,
     end );
     
     InstallMethodForCompilerForCAP( ModeledMorphism,
-        [ WasCreatedAsWrapperCapCategory and CategoryFilter( D ), IsCapCategoryObject and ObjectFilter( D ), IsCapCategoryMorphism and MorphismFilter( C ), IsCapCategoryObject and ObjectFilter( D ) ],
+        [ CategoryFilter( D ), ObjectFilter( D ), MorphismFilter( C ), ObjectFilter( D ) ],
         
       function ( cat, source, mor, range )
         

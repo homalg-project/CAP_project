@@ -52,6 +52,7 @@ InstallGlobalFunction( CAPAddPrepareFunction,
   function( prepare_function, name, doc_string, arg... )
     local precondition_list, operation_names, used_symbol_list, current_precondition;
     
+    #= comment for Julia
     if Length( arg ) = 1 then
         precondition_list := arg[ 1 ];
     else
@@ -77,6 +78,7 @@ InstallGlobalFunction( CAPAddPrepareFunction,
     used_symbol_list := DuplicateFreeList( used_symbol_list );
     
     CAP_PREPARE_FUNCTION_RECORD.(name) := [ prepare_function, doc_string, used_symbol_list ];
+    # =#
     
 end );
 

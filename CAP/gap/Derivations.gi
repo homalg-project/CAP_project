@@ -230,15 +230,19 @@ InstallMethod( AddDerivation,
                
   function( graph, target_op, func )
     
-    AddDerivation( graph, target_op, [ ], func );
-                   
+    AddDerivation( graph, target_op, fail, func );
+    
 end );
 
-InstallMethod( AddDerivation,
-               [ IsDerivedMethodGraph, IsFunction, IsDenseList, IsFunction ],
+# Contrary to the documentation, for internal code we allow used_ops_with_multiples_and_category_getters to be equal to fail
+# to distinguish the case of no preconditions given
+InstallOtherMethod( AddDerivation,
+               [ IsDerivedMethodGraph, IsFunction, IsObject, IsFunction ],
                
   function( graph, target_op, used_ops_with_multiples_and_category_getters, func )
     local weight, category_filter, description, loop_multiplier, category_getters, function_called_before_installation, operations_in_graph, collected_list, used_op_names_with_multiples_and_category_getters, derivation, x;
+    
+    Assert( 0, used_ops_with_multiples_and_category_getters = fail or IsList( used_ops_with_multiples_and_category_getters ) );
     
     weight := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Weight", 1 );
     category_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryFilter", IsCapCategory );
@@ -250,13 +254,19 @@ InstallMethod( AddDerivation,
     ## get used ops
     operations_in_graph := Operations( graph );
     
+    used_op_names_with_multiples_and_category_getters := fail;
+    
+    #= comment for Julia
     collected_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( func, operations_in_graph, loop_multiplier, CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS, category_getters );
     
-    if IsEmpty( used_ops_with_multiples_and_category_getters ) then
+    if used_ops_with_multiples_and_category_getters = fail then
         
         used_op_names_with_multiples_and_category_getters := collected_list;
         
-    else
+    fi;
+    # =#
+    
+    if used_ops_with_multiples_and_category_getters <> fail then
         
         used_op_names_with_multiples_and_category_getters := [ ];
         
@@ -296,6 +306,7 @@ InstallMethod( AddDerivation,
             
         od;
         
+        #= comment for Julia
         if Length( collected_list ) <> Length( used_op_names_with_multiples_and_category_getters ) or not ForAll( collected_list, c -> c in used_op_names_with_multiples_and_category_getters ) then
             
             SortBy( used_op_names_with_multiples_and_category_getters, x -> x[1] );
@@ -308,6 +319,13 @@ InstallMethod( AddDerivation,
             );
             
         fi;
+        # =#
+        
+    fi;
+    
+    if used_op_names_with_multiples_and_category_getters = fail then
+        
+        return;
         
     fi;
     

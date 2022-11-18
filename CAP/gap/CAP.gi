@@ -102,6 +102,9 @@ InstallGlobalFunction( GET_METHOD_CACHE,
   function( category, name, number )
     local cache, cache_type;
     
+    cache := fail;
+    
+    #= comment for Julia
     if IsBound( category!.caches.( name ) ) and IsCachingObject( category!.caches.( name ) ) then
         
         if category!.caches.( name )!.nr_keys <> number then
@@ -137,6 +140,7 @@ InstallGlobalFunction( GET_METHOD_CACHE,
     fi;
     
     category!.caches.(name) := cache;
+    # =#
     
     return cache;
     
@@ -999,6 +1003,25 @@ end );
 ##
 #######################################
 
+# fallback methods for Julia
+InstallMethod( ViewObj,
+               [ IsCapCategory ],
+               
+  function ( category )
+    
+    Print( Name( category ) );
+    
+end );
+
+InstallMethod( Display,
+               [ IsCapCategory ],
+               
+  function ( category )
+    
+    Print( "A CAP category with name ", Name( category ), "\n" );
+    
+end );
+
 InstallGlobalFunction( CAP_INTERNAL_INSTALL_PRINT_FUNCTION,
                
   function( )
@@ -1041,7 +1064,9 @@ InstallMethod( String,
                [ IsCapCategory ],
     Name );
 
+#= comment for Julia
 CAP_INTERNAL_INSTALL_PRINT_FUNCTION( );
+# =#
 
 InstallGlobalFunction( DisableAddForCategoricalOperations,
   
