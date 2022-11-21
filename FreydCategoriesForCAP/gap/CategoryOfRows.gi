@@ -1211,7 +1211,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
       function ( category, L )
         
         if IsEmpty( L ) or ForAny( L, IsNegInt ) then
-          Error( "The input should be a non-empty list of non-negative integers\n" );
+          Error( "the list passed to 'RandomObjectByList' in ", Name( category ), " must be a non-empty list of non-negative integers!\n" );
         fi;
         
         return CategoryOfRowsObject( category, Random( L ) );
@@ -1223,7 +1223,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
       function ( category, n )
         
         if IsNegInt( n ) then
-          Error( "The input should be a non-negative integer\n" );
+          Error( "the integer passed to 'RandomObjectByInteger' in ", Name( category ), " must be a non-negative integer!\n" );
         fi;
         
         return RandomObjectByList( category, [ 0 .. n ] );
@@ -1233,15 +1233,18 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     ##
     AddRandomMorphismWithFixedSourceAndRangeByList( category,
       function ( category, S, R, L )
-        local ring, mat;
+        local ring, s, r, mat;
         
         ring := UnderlyingRing( category );
         
-        if IsEmpty( L ) or ForAny( L, IsNegInt ) then
-          Error( "The input should be a non-empty list of non-negative integers\n" );
+        if not ForAll( L, c -> ForAny( [ IsInt, IsHomalgRingElement ], is -> is( c ) ) ) then
+          Error( "the list passed to 'RandomMorphismWithFixedSourceAndRangeByList' in ", Name( category ), " must be a list of integers or elements in the underlying ring!\n" );
         fi;
         
-        mat := Sum( L, c -> c * RandomMatrix( RankOfObject( S ), RankOfObject( R ), ring ) );
+        s := RankOfObject( S );
+        r := RankOfObject( R );
+        
+        mat := Sum( L, c -> c * RandomMatrix( s, r, ring ), HomalgZeroMatrix( s, r, ring ) );
         
         return CategoryOfRowsMorphism( category, S, mat, R );
         
@@ -1251,52 +1254,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     AddRandomMorphismWithFixedSourceAndRangeByInteger( category,
       function ( category, S, R, n )
         
-        if IsNegInt( n ) then
-          Error( "The input should be a non-negative integer\n" );
-        fi;
-        
         return RandomMorphismWithFixedSourceAndRangeByList( category, S, R, [ 1 ] );
         
-    end );
-    
-    ##
-    AddRandomMorphismWithFixedSourceByList( category,
-      function ( category, S, L )
-        
-        if Length( L ) <> 2 or ForAny( L, e -> IsEmpty( e ) or ForAny( e, IsNegInt ) ) then
-          Error( "The input should be a list consisting of two non-empty lists of non-negative integers\n" );
-        fi;
-        
-        return RandomMorphismWithFixedSourceAndRangeByList( category, S, RandomObjectByList( category, L[1] ), L[2] );
-        
-    end );
-    
-    ##
-    AddRandomMorphismWithFixedRangeByList( category,
-      function ( category, R, L )
-        
-        if Length( L ) <> 2 or ForAny( L, e -> IsEmpty( e ) or ForAny( e, IsNegInt ) ) then
-          Error( "The input should be a list consisting of two non-empty lists of non-negative integers\n" );
-        fi;
-        
-        return RandomMorphismWithFixedSourceAndRangeByList( category, RandomObjectByList( category, L[1] ), R, L[2] );
-        
-    end );
-    
-    ##
-    AddRandomMorphismByList( category,
-      function ( category, L )
-        
-        if Length( L ) <> 3 or ForAny( L, e -> IsEmpty( e ) or ForAny( e, IsNegInt ) ) then
-          Error( "The input should be a list consisting of three non-empty lists of non-negative integers\n" );
-        fi;
-        
-        return RandomMorphismWithFixedSourceAndRangeByList(
-                    category,
-                    RandomObjectByList( category, L[1] ),
-                    RandomObjectByList( category, L[2] ),
-                    L[3] );
-    
     end );
     
 end );
