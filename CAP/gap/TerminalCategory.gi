@@ -22,15 +22,22 @@ BindGlobal( "IsCapTerminalCategoryMorphismRep", IsCapTerminalCategoryMorphism );
 ##
 #####################################
 
-InstallValue( CAP_INTERNAL_TERMINAL_CATEGORY,
-              
-              CreateCapCategory( "TerminalCategory", IsCapTerminalCategory, IsCapTerminalCategoryObject, IsCapTerminalCategoryMorphism, IsCapCategoryTwoCell ) );
-
-SetIsTerminalCategory( CAP_INTERNAL_TERMINAL_CATEGORY, true );
-
-InstallValue( CAP_INTERNAL_TERMINAL_CATEGORY_AS_CAT_OBJECT,
-              
-              AsCatObject( CAP_INTERNAL_TERMINAL_CATEGORY ) );
+##
+BindGlobal( "CAP_INTERNAL_CREATE_TerminalCategory",
+  function(  )
+    local cat;
+    
+    cat := CreateCapCategory( "TerminalCategory", IsCapTerminalCategory, IsCapTerminalCategoryObject, IsCapTerminalCategoryMorphism, IsCapCategoryTwoCell );
+    
+    SetIsTerminalCategory( cat, true );
+    
+    INSTALL_TERMINAL_CATEGORY_FUNCTIONS( cat );
+    
+    Finalize( cat );
+    
+    return cat;
+    
+end );
 
 ##
 InstallMethod( UniqueObject,
@@ -73,7 +80,7 @@ end );
 ##
 BindGlobal( "INSTALL_TERMINAL_CATEGORY_FUNCTIONS",
             
-  function( )
+  function( cat )
     local obj_function_list, obj_func, morphism_function_list, morphism_function, i;
     
     obj_function_list := [ AddZeroObject,
@@ -81,11 +88,11 @@ BindGlobal( "INSTALL_TERMINAL_CATEGORY_FUNCTIONS",
                            AddCokernelObject,
                            AddDirectProduct ];
     
-    obj_func := function( arg ) return UniqueObject( CAP_INTERNAL_TERMINAL_CATEGORY ); end;
+    obj_func := function( arg ) return UniqueObject( cat ); end;
     
     for i in obj_function_list do
         
-        i( CAP_INTERNAL_TERMINAL_CATEGORY, obj_func );
+        i( cat, obj_func );
         
     od;
     
@@ -106,17 +113,15 @@ BindGlobal( "INSTALL_TERMINAL_CATEGORY_FUNCTIONS",
                                 AddUniversalMorphismIntoDirectProduct,
                                 AddUniversalMorphismIntoDirectProductWithGivenDirectProduct ];
     
-    morphism_function := function( arg ) return UniqueMorphism( CAP_INTERNAL_TERMINAL_CATEGORY ); end;
+    morphism_function := function( arg ) return UniqueMorphism( cat ); end;
     
     for i in morphism_function_list do
         
-        i( CAP_INTERNAL_TERMINAL_CATEGORY, morphism_function );
+        i( cat, morphism_function );
         
     od;
     
 end );
-
-INSTALL_TERMINAL_CATEGORY_FUNCTIONS( );
 
 ################################
 ##
@@ -164,5 +169,3 @@ InstallMethod( FunctorFromTerminalCategory,
   
 );
 # =#
-
-Finalize( CAP_INTERNAL_TERMINAL_CATEGORY );
