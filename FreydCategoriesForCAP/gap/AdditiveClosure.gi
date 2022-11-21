@@ -1303,6 +1303,90 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         
     fi;
     
+    if ForAll( [ "BasisOfExternalHom",
+                 "CoefficientsOfMorphismWithGivenBasisOfExternalHom",
+                 "ZeroMorphism" ], op -> CanCompute( underlying_category, op ) ) then
+      
+      ##
+      AddBasisOfExternalHom( category,
+        function( cat, object_1, object_2 )
+          local size_i, size_j, listlist, L;
+          
+          size_i := Size( ObjectList( object_1 ) );
+          size_j := Size( ObjectList( object_2 ) );
+          
+          listlist := List( [ 1 .. size_i ], i ->
+                        List( [ 1 .. size_j ], j ->
+                          ZeroMorphism( object_1[i], object_2[j] )
+                        )
+                      );
+          
+          return
+              Concatenation(
+                List( [ 1 .. size_i ], i ->
+                  Concatenation(
+                    List( [ 1 .. size_j ],
+                      function( j )
+                        local current_basis;
+                        
+                        current_basis := BasisOfExternalHom( object_1[ i ], object_2[ j ] );
+                        
+                        return List( current_basis,
+                                function( m )
+                                  local z;
+                                  z := listlist[ i, j ];
+                                  listlist[ i, j ] := m;
+                                  m := AdditiveClosureMorphismListList( object_1, listlist, object_2 );
+                                  listlist[ i, j ] := z;
+                                  return m;
+                                end
+                              );
+                      
+                      end
+                    )
+                  )
+                )
+              );
+      end );
+      
+      ##
+      InstallMethod( CoefficientsOfMorphism,
+                [ IsAdditiveClosureMorphism and MorphismFilter( category ) ],
+        
+        function( morphism )
+          local object_1, object_2, nr_rows, nr_cols;
+          
+          object_1 := Source( morphism );
+          
+          object_2 := Range( morphism );
+          
+          nr_rows := NumberRows( morphism );
+          
+          nr_cols := NumberColumns( morphism );
+          
+          return
+            Concatenation(
+              List( [ 1 .. nr_rows ],
+                  i -> Concatenation(
+                        List( [ 1 .. nr_cols ],
+                          j -> CoefficientsOfMorphismWithGivenBasisOfExternalHom(
+                                  morphism[ i, j ],
+                                  BasisOfExternalHom( object_1[ i ], object_2[ j ] )
+                              )
+                            )
+                          )
+                        )
+                      );
+      
+      end );
+      
+      ##
+      AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( category,
+        {cat, morphism, B} -> CoefficientsOfMorphism( morphism )
+      );
+    
+    fi;
+    
 end );
 
 ####################################
