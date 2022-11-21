@@ -11,9 +11,19 @@
 ##
 #########################################
 
-DeclareGlobalVariable( "CAP_INTERNAL_TERMINAL_CATEGORY_AS_CAT_OBJECT" );
+DeclareGlobalName( "CAP_INTERNAL_TERMINAL_CATEGORY" );
 
-DeclareGlobalVariable( "CAP_INTERNAL_TERMINAL_CATEGORY" );
+DeclareGlobalName( "CAP_INTERNAL_TERMINAL_CATEGORY_AS_CAT_OBJECT" );
+
+####################################
+##
+## Constructor
+##
+####################################
+
+DeclareGlobalName( "CAP_INTERNAL_CREATE_TerminalCategory" );
+
+DeclareGlobalName( "INSTALL_TERMINAL_CATEGORY_FUNCTIONS" );
 
 #########################################
 ##
