@@ -351,7 +351,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismWithFixedSourceByInteger</code>( <var class="Arg">a</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a,b)</span></p>
 
-<p>The arguments are an object <span class="Math">a</span> in a category <span class="Math">C</span> and an integer <span class="Math">n</span>. The output is a random morphism <span class="Math">\alpha: a \rightarrow b</span> for some object <span class="Math">b</span> in <span class="Math">C</span>.</p>
+<p>The arguments are an object <span class="Math">a</span> in a category <span class="Math">C</span> and an integer <span class="Math">n</span>. The output is a random morphism <span class="Math">\alpha: a \rightarrow b</span> for some object <span class="Math">b</span> in <span class="Math">C</span>. If <span class="Math">C</span> is equipped with the methods <code class="code">RandomObjectByInteger</code> and <code class="code">RandomMorphismWithFixedSourceAndRangeByInteger</code> and <span class="Math">C</span> is an Ab-category, then <code class="code">RandomMorphismWithFixedSourceByInteger</code><span class="Math">(C,a,n)</span> can be derived as <code class="code">RandomMorphismWithFixedSourceAndRangeByInteger</code>(<span class="Math">C</span>,<span class="Math">a</span>,<span class="Math">b</span>,<span class="Math">1</span>+<code class="code">Log2Int</code>(<span class="Math">n</span>)) where <span class="Math">b</span> is computed via <code class="code">RandomObjectByInteger</code>(<span class="Math">C</span>,<span class="Math">n</span>).</p>
 
 <p><a id="X84FDBEED7844CDB6" name="X84FDBEED7844CDB6"></a></p>
 
@@ -360,7 +360,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismWithFixedSourceByList</code>( <var class="Arg">a</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a,b)</span></p>
 
-<p>The arguments are an object <span class="Math">a</span> in a category <span class="Math">C</span> and a list <span class="Math">L</span>. The output is a random morphism <span class="Math">\alpha: a \rightarrow b</span> for some object <span class="Math">b</span> in <span class="Math">C</span>.</p>
+<p>The arguments are an object <span class="Math">a</span> in a category <span class="Math">C</span> and a list <span class="Math">L</span>. The output is a random morphism <span class="Math">\alpha: a \rightarrow b</span> for some object <span class="Math">b</span> in <span class="Math">C</span>. If <span class="Math">C</span> is equipped with the methods <code class="code">RandomObjectByList</code> and <code class="code">RandomMorphismWithFixedSourceAndRangeByList</code> and <span class="Math">C</span> is an Ab-category, then <code class="code">RandomMorphismWithFixedSourceByList</code><span class="Math">(C,a,L)</span> can be derived as <code class="code">RandomMorphismWithFixedSourceAndRangeByList</code>(<span class="Math">C,a,b,L[2]</span>) where <span class="Math">b</span> is computed via <code class="code">RandomObjectByList</code>(<span class="Math">C,L[1]</span>).</p>
 
 <p><a id="X844B1DDC8488B7CA" name="X844B1DDC8488B7CA"></a></p>
 
@@ -369,7 +369,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismWithFixedRangeByInteger</code>( <var class="Arg">b</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a,b)</span></p>
 
-<p>The arguments are an object <span class="Math">b</span> in a category <span class="Math">C</span> and an integer <span class="Math">n</span>. The output is a random morphism <span class="Math">\alpha: a \rightarrow b</span> for some object <span class="Math">a</span> in <span class="Math">C</span>.</p>
+<p>The arguments are an object <span class="Math">b</span> in a category <span class="Math">C</span> and an integer <span class="Math">n</span>. The output is a random morphism <span class="Math">\alpha: a \rightarrow b</span> for some object <span class="Math">a</span> in <span class="Math">C</span>. If <span class="Math">C</span> is equipped with the methods <code class="code">RandomObjectByInteger</code> and <code class="code">RandomMorphismWithFixedSourceAndRangeByInteger</code> and <span class="Math">C</span> is an Ab-category, then <code class="code">RandomMorphismWithFixedRangeByInteger</code><span class="Math">(C,b,n)</span> can be derived as <code class="code">RandomMorphismWithFixedSourceAndRangeByInteger</code>(<span class="Math">C</span>,<span class="Math">a</span>,<span class="Math">b</span>,<span class="Math">1</span>+<code class="code">Log2Int</code>(<span class="Math">n</span>)) where <span class="Math">a</span> is computed via <code class="code">RandomObjectByInteger</code>(<span class="Math">C</span>,<span class="Math">n</span>).</p>
 
 <p><a id="X8568D71882C30501" name="X8568D71882C30501"></a></p>
 
@@ -378,7 +378,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismWithFixedRangeByList</code>( <var class="Arg">b</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a,b)</span></p>
 
-<p>The arguments are an object <span class="Math">b</span> in a category <span class="Math">C</span> and a list <span class="Math">L</span>. The output is a random morphism <span class="Math">\alpha: a \rightarrow b</span> for some object <span class="Math">a</span> in <span class="Math">C</span>.</p>
+<p>The arguments are an object <span class="Math">b</span> in a category <span class="Math">C</span> and a list <span class="Math">L</span>. The output is a random morphism <span class="Math">\alpha: a \rightarrow b</span> for some object <span class="Math">a</span> in <span class="Math">C</span>. If <span class="Math">C</span> is equipped with the methods <code class="code">RandomObjectByList</code> and <code class="code">RandomMorphismWithFixedSourceAndRangeByList</code> and <span class="Math">C</span> is an Ab-category, then <code class="code">RandomMorphismWithFixedRangeByList</code><span class="Math">(C,b,L)</span> can be derived as <code class="code">RandomMorphismWithFixedSourceAndRangeByList</code>(<span class="Math">C,a,b,L[2]</span>) where <span class="Math">a</span> is computed via <code class="code">RandomObjectByList</code>(<span class="Math">C,L[1]</span>).</p>
 
 <p><a id="X80F66E9D809EA6A7" name="X80F66E9D809EA6A7"></a></p>
 
@@ -405,8 +405,20 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismByInteger</code>( <var class="Arg">C</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">C</span></p>
 
-<p>The arguments are a category <span class="Math">C</span> and an integer <span class="Math">n</span>. The output is a random morphism in <span class="Math">C</span> or <code class="code">fail</code>. If the methods <code class="code">RandomObjectByInteger</code> and <code class="code">RandomMorphismWithFixedSourceByInteger</code>(<code class="code">RandomMorphismWithFixedRangeByInteger</code>) are added to the category <span class="Math">C</span>, then <code class="code">RandomMorphismByInteger</code> can be derived to return a random morphism of complexity <span class="Math">n</span> with random source(range) of complexity <span class="Math">n</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and an integer <span class="Math">n</span>. The output is a random morphism in <span class="Math">C</span>. The operation can be derived in three different ways:</p>
 
+
+<ul>
+<li><p>If <span class="Math">C</span> is equipped with the methods <code class="code">RandomObjectByInteger</code> and <code class="code">RandomMorphismWithFixedSourceAndRangeByInteger</code> and <span class="Math">C</span> is an Ab-category, then <code class="code">RandomMorphism</code><span class="Math">(C,n)</span> can be derived as <code class="code">RandomMorphismWithFixedSourceAndRangeByInteger</code>(<span class="Math">C,a,b</span>,<span class="Math">1</span>+<code class="code">Log2Int</code>(<span class="Math">n</span>)) where <span class="Math">a</span> and <span class="Math">b</span> are computed via <code class="code">RandomObjectByInteger</code>(<span class="Math">C,n</span>).</p>
+
+</li>
+<li><p>If <span class="Math">C</span> is equipped with the methods <code class="code">RandomObjectByInteger</code> and <code class="code">RandomMorphismWithFixedSourceByInteger</code>, then <code class="code">RandomMorphism</code><span class="Math">(C,n)</span> can be derived as <code class="code">RandomMorphismWithFixedSourceByInteger</code>(<span class="Math">C,a,1</span>+<code class="code">Log2Int</code>(<span class="Math">n</span>)) where <span class="Math">a</span> is computed via <code class="code">RandomObjectByInteger</code>(<span class="Math">C,n</span>).</p>
+
+</li>
+<li><p>If <span class="Math">C</span> is equipped with the methods <code class="code">RandomObjectByInteger</code> and <code class="code">RandomMorphismWithFixedRangeByInteger</code>, then <code class="code">RandomMorphism</code><span class="Math">(C,n)</span> can be derived as <code class="code">RandomMorphismWithFixedRangeByInteger</code>(<span class="Math">C,b,1</span>+<code class="code">Log2Int</code>(<span class="Math">n</span>)) where <span class="Math">b</span> is computed via <code class="code">RandomObjectByInteger</code>(<span class="Math">C,n</span>).</p>
+
+</li>
+</ul>
 <p><a id="X7E79F7A9802F622D" name="X7E79F7A9802F622D"></a></p>
 
 <h5>3.4-8 RandomMorphismByList</h5>
@@ -414,8 +426,20 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismByList</code>( <var class="Arg">C</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">C</span></p>
 
-<p>The arguments are a category <span class="Math">C</span> and a list <span class="Math">L</span>. The output is a random morphism in <span class="Math">C</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a list <span class="Math">L</span>. The output is a random morphism in <span class="Math">C</span>. The operation can be derived in three different ways:</p>
 
+
+<ul>
+<li><p>If <span class="Math">C</span> is equipped with the methods <code class="code">RandomObjectByList</code> and <code class="code">RandomMorphismWithFixedSourceAndRangeByList</code> and <span class="Math">C</span> is an Ab-category, then <code class="code">RandomMorphism</code><span class="Math">(C,L)</span> can be derived as <code class="code">RandomMorphismWithFixedSourceAndRangeByList</code>(<span class="Math">C,a,b,L[3]</span>)) where <span class="Math">a</span> and <span class="Math">b</span> are computed via <code class="code">RandomObjectByList</code>(<span class="Math">C,L[i]</span>) for <span class="Math">i=1,2</span> respectively.</p>
+
+</li>
+<li><p>If <span class="Math">C</span> is equipped with the methods <code class="code">RandomObjectByList</code> and <code class="code">RandomMorphismWithFixedSourceByList</code>, then <code class="code">RandomMorphism</code><span class="Math">(C,L)</span> can be derived as <code class="code">RandomMorphismWithFixedSourceByList</code>(<span class="Math">C,a,L[2]</span>) where <span class="Math">a</span> is computed via <code class="code">RandomObjectByList</code>(<span class="Math">C,L[1]</span>).</p>
+
+</li>
+<li><p>If <span class="Math">C</span> is equipped with the methods <code class="code">RandomObjectByList</code> and <code class="code">RandomMorphismWithFixedRangeByList</code>, then <code class="code">RandomMorphism</code><span class="Math">(C,L)</span> can be derived as <code class="code">RandomMorphismWithFixedRangeByList</code>(<span class="Math">C,b,L[2]</span>) where <span class="Math">b</span> is computed via <code class="code">RandomObjectByList</code>(<span class="Math">C,L[1]</span>).</p>
+
+</li>
+</ul>
 <p><a id="X83D121E787FDC6E8" name="X83D121E787FDC6E8"></a></p>
 
 <h5>3.4-9 RandomMorphismWithFixedSource</h5>

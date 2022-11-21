@@ -143,7 +143,12 @@
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X[133X
   
   [33X[0;0YThe  arguments  are an object [23Xa[123X in a category [23XC[123X and an integer [23Xn[123X. The output
-  is a random morphism [23X\alpha: a \rightarrow b[123X for some object [23Xb[123X in [23XC[123X.[133X
+  is a random morphism [23X\alpha: a \rightarrow b[123X for some object [23Xb[123X in [23XC[123X. If [23XC[123X is
+  equipped      with      the      methods      [10XRandomObjectByInteger[110X      and
+  [10XRandomMorphismWithFixedSourceAndRangeByInteger[110X and [23XC[123X is an Ab-category, then
+  [10XRandomMorphismWithFixedSourceByInteger[110X[23X(C,a,n)[123X     can    be    derived    as
+  [10XRandomMorphismWithFixedSourceAndRangeByInteger[110X([23XC[123X,[23Xa[123X,[23Xb[123X,[23X1[123X+[10XLog2Int[110X([23Xn[123X))  where  [23Xb[123X
+  is computed via [10XRandomObjectByInteger[110X([23XC[123X,[23Xn[123X).[133X
   
   [1X3.4-2 RandomMorphismWithFixedSourceByList[101X
   
@@ -151,7 +156,12 @@
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X[133X
   
   [33X[0;0YThe  arguments are an object [23Xa[123X in a category [23XC[123X and a list [23XL[123X. The output is a
-  random morphism [23X\alpha: a \rightarrow b[123X for some object [23Xb[123X in [23XC[123X.[133X
+  random  morphism  [23X\alpha:  a  \rightarrow  b[123X for some object [23Xb[123X in [23XC[123X. If [23XC[123X is
+  equipped       with       the       methods      [10XRandomObjectByList[110X      and
+  [10XRandomMorphismWithFixedSourceAndRangeByList[110X  and  [23XC[123X  is an Ab-category, then
+  [10XRandomMorphismWithFixedSourceByList[110X[23X(C,a,L)[123X     can     be     derived     as
+  [10XRandomMorphismWithFixedSourceAndRangeByList[110X([23XC,a,b,L[2][123X)  where [23Xb[123X is computed
+  via [10XRandomObjectByList[110X([23XC,L[1][123X).[133X
   
   [1X3.4-3 RandomMorphismWithFixedRangeByInteger[101X
   
@@ -159,7 +169,12 @@
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X[133X
   
   [33X[0;0YThe  arguments  are an object [23Xb[123X in a category [23XC[123X and an integer [23Xn[123X. The output
-  is a random morphism [23X\alpha: a \rightarrow b[123X for some object [23Xa[123X in [23XC[123X.[133X
+  is a random morphism [23X\alpha: a \rightarrow b[123X for some object [23Xa[123X in [23XC[123X. If [23XC[123X is
+  equipped      with      the      methods      [10XRandomObjectByInteger[110X      and
+  [10XRandomMorphismWithFixedSourceAndRangeByInteger[110X and [23XC[123X is an Ab-category, then
+  [10XRandomMorphismWithFixedRangeByInteger[110X[23X(C,b,n)[123X     can     be    derived    as
+  [10XRandomMorphismWithFixedSourceAndRangeByInteger[110X([23XC[123X,[23Xa[123X,[23Xb[123X,[23X1[123X+[10XLog2Int[110X([23Xn[123X))  where  [23Xa[123X
+  is computed via [10XRandomObjectByInteger[110X([23XC[123X,[23Xn[123X).[133X
   
   [1X3.4-4 RandomMorphismWithFixedRangeByList[101X
   
@@ -167,7 +182,12 @@
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X[133X
   
   [33X[0;0YThe  arguments are an object [23Xb[123X in a category [23XC[123X and a list [23XL[123X. The output is a
-  random morphism [23X\alpha: a \rightarrow b[123X for some object [23Xa[123X in [23XC[123X.[133X
+  random  morphism  [23X\alpha:  a  \rightarrow  b[123X for some object [23Xa[123X in [23XC[123X. If [23XC[123X is
+  equipped       with       the       methods      [10XRandomObjectByList[110X      and
+  [10XRandomMorphismWithFixedSourceAndRangeByList[110X  and  [23XC[123X  is an Ab-category, then
+  [10XRandomMorphismWithFixedRangeByList[110X[23X(C,b,L)[123X      can     be     derived     as
+  [10XRandomMorphismWithFixedSourceAndRangeByList[110X([23XC,a,b,L[2][123X)  where [23Xa[123X is computed
+  via [10XRandomObjectByList[110X([23XC,L[1][123X).[133X
   
   [1X3.4-5 RandomMorphismWithFixedSourceAndRangeByInteger[101X
   
@@ -192,11 +212,23 @@
   [6XReturns:[106X  [33X[0;10Ya morphism in [23XC[123X[133X
   
   [33X[0;0YThe  arguments  are  a  category  [23XC[123X and an integer [23Xn[123X. The output is a random
-  morphism   in   [23XC[123X   or   [10Xfail[110X.  If  the  methods  [10XRandomObjectByInteger[110X  and
-  [10XRandomMorphismWithFixedSourceByInteger[110X([10XRandomMorphismWithFixedRangeByInteger[110X)
-  are  added to the category [23XC[123X, then [10XRandomMorphismByInteger[110X can be derived to
-  return  a  random  morphism  of  complexity  [23Xn[123X  with random source(range) of
-  complexity [23Xn[123X.[133X
+  morphism in [23XC[123X. The operation can be derived in three different ways:[133X
+  
+  [30X    [33X[0;6YIf   [23XC[123X   is   equipped  with  the  methods  [10XRandomObjectByInteger[110X  and
+        [10XRandomMorphismWithFixedSourceAndRangeByInteger[110X    and    [23XC[123X    is    an
+        Ab-category,    then    [10XRandomMorphism[110X[23X(C,n)[123X    can   be   derived   as
+        [10XRandomMorphismWithFixedSourceAndRangeByInteger[110X([23XC,a,b[123X,[23X1[123X+[10XLog2Int[110X([23Xn[123X))
+        where [23Xa[123X and [23Xb[123X are computed via [10XRandomObjectByInteger[110X([23XC,n[123X).[133X
+  
+  [30X    [33X[0;6YIf   [23XC[123X   is   equipped  with  the  methods  [10XRandomObjectByInteger[110X  and
+        [10XRandomMorphismWithFixedSourceByInteger[110X,  then  [10XRandomMorphism[110X[23X(C,n)[123X can
+        be derived as [10XRandomMorphismWithFixedSourceByInteger[110X([23XC,a,1[123X+[10XLog2Int[110X([23Xn[123X))
+        where [23Xa[123X is computed via [10XRandomObjectByInteger[110X([23XC,n[123X).[133X
+  
+  [30X    [33X[0;6YIf   [23XC[123X   is   equipped  with  the  methods  [10XRandomObjectByInteger[110X  and
+        [10XRandomMorphismWithFixedRangeByInteger[110X, then [10XRandomMorphism[110X[23X(C,n)[123X can be
+        derived   as   [10XRandomMorphismWithFixedRangeByInteger[110X([23XC,b,1[123X+[10XLog2Int[110X([23Xn[123X))
+        where [23Xb[123X is computed via [10XRandomObjectByInteger[110X([23XC,n[123X).[133X
   
   [1X3.4-8 RandomMorphismByList[101X
   
@@ -204,7 +236,23 @@
   [6XReturns:[106X  [33X[0;10Ya morphism in [23XC[123X[133X
   
   [33X[0;0YThe arguments are a category [23XC[123X and a list [23XL[123X. The output is a random morphism
-  in [23XC[123X.[133X
+  in [23XC[123X. The operation can be derived in three different ways:[133X
+  
+  [30X    [33X[0;6YIf   [23XC[123X   is   equipped   with   the   methods  [10XRandomObjectByList[110X  and
+        [10XRandomMorphismWithFixedSourceAndRangeByList[110X  and  [23XC[123X is an Ab-category,
+        then       [10XRandomMorphism[110X[23X(C,L)[123X       can       be      derived      as
+        [10XRandomMorphismWithFixedSourceAndRangeByList[110X([23XC,a,b,L[3][123X)) where [23Xa[123X and [23Xb[123X
+        are computed via [10XRandomObjectByList[110X([23XC,L[i][123X) for [23Xi=1,2[123X respectively.[133X
+  
+  [30X    [33X[0;6YIf   [23XC[123X   is   equipped   with   the   methods  [10XRandomObjectByList[110X  and
+        [10XRandomMorphismWithFixedSourceByList[110X,  then  [10XRandomMorphism[110X[23X(C,L)[123X can be
+        derived  as  [10XRandomMorphismWithFixedSourceByList[110X([23XC,a,L[2][123X)  where [23Xa[123X is
+        computed via [10XRandomObjectByList[110X([23XC,L[1][123X).[133X
+  
+  [30X    [33X[0;6YIf   [23XC[123X   is   equipped   with   the   methods  [10XRandomObjectByList[110X  and
+        [10XRandomMorphismWithFixedRangeByList[110X,  then  [10XRandomMorphism[110X[23X(C,L)[123X  can be
+        derived  as  [10XRandomMorphismWithFixedRangeByList[110X([23XC,b,L[2][123X)  where  [23Xb[123X is
+        computed via [10XRandomObjectByList[110X([23XC,L[1][123X).[133X
   
   [1X3.4-9 RandomMorphismWithFixedSource[101X
   
