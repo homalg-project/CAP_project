@@ -947,13 +947,6 @@ DeclareOperation( "DirectSumFunctorial",
 DeclareOperation( "DirectSumFunctorialWithGivenDirectSums",
                   [ IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject ] );
 
-#! @Chapter Technical Details
-
-#! @Section Universal Objects
-
-DeclareProperty( "IS_IMPLIED_DIRECT_SUM", 
-                 IsCapCategoryObject );
-
 #! @Chapter Universal Objects
 
 ####################################

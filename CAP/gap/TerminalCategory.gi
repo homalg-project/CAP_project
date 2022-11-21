@@ -60,9 +60,9 @@ InstallGlobalFunction( CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY,
         fi;
         
         ## Do not install boolean operations. Instead explicitly add them after the call to category constructor.
-        # if info.return_type = "bool" then
-        #     Remove( list_of_operations_to_install, Position( list_of_operations_to_install, operation_name ) );
-        # fi;
+        if info.return_type = "bool" then
+            Remove( list_of_operations_to_install, Position( list_of_operations_to_install, operation_name ) );
+        fi;
       
     od;
     
