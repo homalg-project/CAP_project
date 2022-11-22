@@ -3726,17 +3726,18 @@ AddFinalDerivationBundle( # IsomorphismFromCoproductToDirectSum,
 AddFinalDerivationBundle( # RandomObjectByList,
                     [ [ RandomObjectByInteger, 1 ],
                       [ RandomMorphismWithFixedSourceAndRangeByInteger, 1 ],
-                      [ RandomMorphismWithFixedRangeByInteger, 1 ],
                       [ RandomMorphismWithFixedSourceByInteger, 1 ],
+                      [ RandomMorphismWithFixedRangeByInteger, 1 ],
                       [ RandomMorphismByInteger, 1 ],
                     ],
                     [ RandomObjectByList,
                       RandomMorphismWithFixedSourceAndRangeByList,
-                      RandomMorphismWithFixedRangeByList,
                       RandomMorphismWithFixedSourceByList,
+                      RandomMorphismWithFixedRangeByList,
                       RandomMorphismByList ],
 [
   RandomObjectByList,
+  [ [ RandomObjectByInteger, 1 ] ],
   function( cat, L )
     
     if Length( L ) <> 1 or not IsInt( L[1] ) then
@@ -3749,6 +3750,7 @@ AddFinalDerivationBundle( # RandomObjectByList,
 ],
 [
   RandomMorphismWithFixedSourceAndRangeByList,
+  [ [ RandomMorphismWithFixedSourceAndRangeByInteger, 1 ] ],
   function( cat, S, R, L )
     
     if Length( L ) <> 1 or not IsInt( L[1] ) then
@@ -3760,19 +3762,8 @@ AddFinalDerivationBundle( # RandomObjectByList,
   end
 ],
 [
-  RandomMorphismWithFixedRangeByList,
-  function( cat, R, L )
-    
-    if Length( L ) <> 1 or not IsInt( L[1] ) then
-        Error( "the list passed to 'RandomMorphismWithFixedRangeByList' in ", Name( cat ), " must consist of only one integer!\n" );
-    fi;
-    
-    return RandomMorphismWithFixedRangeByInteger( cat, R, L[1] );
-    
-  end
-],
-[
   RandomMorphismWithFixedSourceByList,
+  [ [ RandomMorphismWithFixedSourceByInteger, 1 ] ],
   function( cat, S, L )
     
     if Length( L ) <> 1 or not IsInt( L[1] ) then
@@ -3784,7 +3775,21 @@ AddFinalDerivationBundle( # RandomObjectByList,
   end
 ],
 [
+  RandomMorphismWithFixedRangeByList,
+  [ [ RandomMorphismWithFixedRangeByInteger, 1 ] ],
+  function( cat, R, L )
+    
+    if Length( L ) <> 1 or not IsInt( L[1] ) then
+        Error( "the list passed to 'RandomMorphismWithFixedRangeByList' in ", Name( cat ), " must consist of only one integer!\n" );
+    fi;
+    
+    return RandomMorphismWithFixedRangeByInteger( cat, R, L[1] );
+    
+  end
+],
+[
   RandomMorphismByList,
+  [ [ RandomMorphismByInteger, 1 ] ],
   function( cat, L )
     
     if Length( L ) <> 1 or not IsInt( L[1] ) then
@@ -3794,7 +3799,7 @@ AddFinalDerivationBundle( # RandomObjectByList,
     return RandomMorphismByInteger( cat, L[1] );
     
   end
-]: Description := "Derive all <ByList> random methods from <ByInteger> random methods" );
+] : Description := "Derive all <ByList> random methods from <ByInteger> random methods" );
 
 ## Final methods for homology object
 
