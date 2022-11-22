@@ -6,10 +6,10 @@
                  [1X Monoidal and monoidal (co)closed categories [101X
   
   
-                                   2022.11-02
+                                   2022.11-03
   
   
-                                9 November 2022
+                                22 November 2022
   
   
                                 Mohamed Barakat
@@ -353,13 +353,6 @@
       3.3-1 WriteFileForCoclosedMonoidalStructure
   4 [33X[0;0YThe terminal category with multiple objects[133X
     4.1 [33X[0;0YConstructors[133X
-      4.1-1 TerminalCategory
-      4.1-2 TerminalCategoryWithMultipleObjects
-    4.2 [33X[0;0Y[5XGAP[105X Categories[133X
-      4.2-1 IsTerminalCategoryWithMultipleObjects
-      4.2-2 IsCellInTerminalCategoryWithMultipleObjects
-      4.2-3 IsObjectInTerminalCategoryWithMultipleObjects
-      4.2-4 IsMorphismInTerminalCategoryWithMultipleObjects
   
   
   [32X
