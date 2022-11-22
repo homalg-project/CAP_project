@@ -320,6 +320,7 @@
   [2XCAP_INTERNAL_ASSERT_IS_NON_NEGATIVE_INTEGER_OR_INFINITY[102X 9.2-18 
   [2XCAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY[102X 9.2-12 
   [2XCAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY[102X 9.2-14 
+  [2XCAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY[102X 15.2-3 
   [2XCAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION[102X 9.2-9 
   [2XCAP_INTERNAL_GENERATE_CONVENIENCE_METHODS_FOR_LIMITS[102X 10.3-1 
   [2XCAP_INTERNAL_MERGE_FILTER_LISTS[102X 9.2-7 
@@ -327,6 +328,8 @@
   [2XCAP_INTERNAL_REPLACE_STRING_WITH_FILTER[102X 9.2-5 
   [2XCAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS[102X 9.2-6 
   [2XCAP_INTERNAL_RETURN_OPTION_OR_DEFAULT[102X 9.2-8 
+  [2XCAP_INTERNAL_TERMINAL_CATEGORY[102X 15.4-1 
+  [2XCAP_INTERNAL_TERMINAL_CATEGORY_AS_CAT_OBJECT[102X 15.4-2 
   [2XCAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD[102X 10.3-2 
   [2XCAP_JIT_INCOMPLETE_LOGIC[102X 9.2-41 
   [2XCAPAddPrepareFunction[102X 7.6-2 
@@ -467,6 +470,7 @@
   [2XFunctionCalledBeforeInstallation[102X, for IsDerivedMethod 8.2-11 
   [2XFunctorCanonicalizeZeroMorphisms[102X, for IsCapCategory 5.4-15 
   [2XFunctorCanonicalizeZeroObjects[102X, for IsCapCategory 5.4-13 
+  [2XFunctorFromTerminalCategory[102X, for IsCapCategoryCell 15.3-3 
   [2XFunctorMorphismOperation[102X, for IsCapFunctor 5.4-8 
   [2XFunctorObjectOperation[102X, for IsCapFunctor 5.4-6 
   [2XHandlePrecompiledTowers[102X 9.2-40 
@@ -543,6 +547,10 @@
   [2XIsCapCategoryTwoCell[102X, for IsCapCategoryCell 1.1-5 
   [2XIsCapFunctor[102X, for IsCapCategoryMorphism 5.2-2 
   [2XIsCapNaturalTransformation[102X, for IsCapCategoryTwoCell 5.2-3 
+  [2XIsCapTerminalCategoryWithMultipleObjects[102X, for IsCapCategory 15.1-5 
+  [2XIsCapTerminalCategoryWithSingleObject[102X, for IsCapCategory 15.1-1 
+  [2XIsCellInCapTerminalCategoryWithMultipleObjects[102X, for IsCapCategoryCell 15.1-6 
+  [2XIsCellInCapTerminalCategoryWithSingleObject[102X, for IsCapCategoryCell 15.1-2 
   [2XIsCodominating[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.9-4 
   [2XIsColiftable[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-10 
   [2XIsColiftableAlongEpimorphism[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-4 
@@ -573,6 +581,10 @@
   [2XIsLiftable[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-7 
   [2XIsLiftableAlongMonomorphism[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-3 
   [2XIsMonomorphism[102X, for IsCapCategoryMorphism 3.3-1 
+  [2XIsMorphismInCapTerminalCategoryWithMultipleObjects[102X, for IsCellInCapTerminalCategoryWithMultipleObjects andIsCapCategoryMorphism 15.1-8 
+  [2XIsMorphismInCapTerminalCategoryWithSingleObject[102X, for IsCellInCapTerminalCategoryWithSingleObject andIsCapCategoryMorphism 15.1-4 
+  [2XIsObjectInCapTerminalCategoryWithMultipleObjects[102X, for IsCellInCapTerminalCategoryWithMultipleObjects andIsCapCategoryObject 15.1-7 
+  [2XIsObjectInCapTerminalCategoryWithSingleObject[102X, for IsCellInCapTerminalCategoryWithSingleObject andIsCapCategoryObject 15.1-3 
   [2XIsomorphismFromCoequalizerOfCoproductDiagramToPushout[102X, for IsList 6.12-4 
   [2XIsomorphismFromCoimageToCokernelOfKernel[102X, for IsCapCategoryMorphism 6.14-5 
   [2XIsomorphismFromCokernelOfDiagonalDifferenceToPushout[102X, for IsList 6.12-2 
@@ -785,6 +797,8 @@
   [2XSumWithKeys[102X 9.2-43 
   [2XSwap[102X, for IsStringMinHeap, IsPosInt, IsPosInt 8.5-9 
   [2XTargetOperation[102X, for IsDerivedMethod 8.2-8 
+  [2XTerminalCategory[102X 15.2-1 
+  [2XTerminalCategoryWithMultipleObjects[102X 15.2-2 
   [2XTerminalObject[102X, for IsCapCategory 6.4-1 
       for IsCapCategoryCell 6.4-2 
   [2XTerminalObjectFunctorial[102X, for IsCapCategory 6.4-5 
@@ -794,6 +808,8 @@
   [2XTwoCellFilter[102X, for IsCapCategory 1.3-5 
   [2XUnderlyingCell[102X, for IsWrapperCapCategoryMorphism 12.2-3 
       for IsWrapperCapCategoryObject 12.2-2 
+  [2XUniqueMorphism[102X, for IsCapTerminalCategoryWithSingleObject 15.3-2 
+  [2XUniqueObject[102X, for IsCapTerminalCategoryWithSingleObject 15.3-1 
   [2XUniversalMorphismFromCoequalizer[102X, for IsCapCategoryObject, IsList, IsCapCategoryObject, IsCapCategoryMorphism 6.10-7 
   [2XUniversalMorphismFromCoequalizerWithGivenCoequalizer[102X, for IsCapCategoryObject, IsList, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 6.10-8 
   [2XUniversalMorphismFromCoproduct[102X, for IsList, IsCapCategoryObject, IsList 6.7-6 

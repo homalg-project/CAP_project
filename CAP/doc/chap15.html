@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (CAP) - Chapter 15: Terminal category</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap15"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap14.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap15_mj.html">[MathJax on]</a></p>
+<p><a id="X7EA29B7D7BA60F42" name="X7EA29B7D7BA60F42"></a></p>
+<div class="ChapSects"><a href="chap15.html#X7EA29B7D7BA60F42">15 <span class="Heading">Terminal category</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap15.html#X7D03633A7D98026B">15.1 <span class="Heading"><strong class="pkg">GAP</strong> Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X8665012E7D503742">15.1-1 IsCapTerminalCategoryWithSingleObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X7EAFCCE18797D362">15.1-2 IsCellInCapTerminalCategoryWithSingleObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X84B297C981CD9E33">15.1-3 IsObjectInCapTerminalCategoryWithSingleObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X7B51D0F37E6CA018">15.1-4 IsMorphismInCapTerminalCategoryWithSingleObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X85A149A17E45806B">15.1-5 IsCapTerminalCategoryWithMultipleObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X7AB5CB837E1D3B75">15.1-6 IsCellInCapTerminalCategoryWithMultipleObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X79DC47AC7B6C1D35">15.1-7 IsObjectInCapTerminalCategoryWithMultipleObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X7A8D8ADE8390093C">15.1-8 IsMorphismInCapTerminalCategoryWithMultipleObjects</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap15.html#X86EC0F0A78ECBC10">15.2 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X80E423D681B7A2D5">15.2-1 TerminalCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X7CBD1E9B81BBFFC8">15.2-2 TerminalCategoryWithMultipleObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X81FA767C792670A2">15.2-3 CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap15.html#X7C701DBF7BAE649A">15.3 <span class="Heading">Attributes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X85CD99D48472E1AA">15.3-1 UniqueObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X843705A4819E81E1">15.3-2 UniqueMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X815EE32778070D08">15.3-3 FunctorFromTerminalCategory</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap15.html#X7A4C2D0E7E286B4F">15.4 <span class="Heading">Variables</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X78601D407BD8B9FF">15.4-1 CAP_INTERNAL_TERMINAL_CATEGORY</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X7B4745F086D342D5">15.4-2 CAP_INTERNAL_TERMINAL_CATEGORY_AS_CAT_OBJECT</a></span>
+</div></div>
+</div>
+
+<h3>15 <span class="Heading">Terminal category</span></h3>
+
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>15.1 <span class="Heading"><strong class="pkg">GAP</strong> Categories</span></h4>
+
+<p><a id="X8665012E7D503742" name="X8665012E7D503742"></a></p>
+
+<h5>15.1-1 IsCapTerminalCategoryWithSingleObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapTerminalCategoryWithSingleObject</code>( <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> type of a terminal category.</p>
+
+<p><a id="X7EAFCCE18797D362" name="X7EAFCCE18797D362"></a></p>
+
+<h5>15.1-2 IsCellInCapTerminalCategoryWithSingleObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInCapTerminalCategoryWithSingleObject</code>( <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> type of a cell in a terminal category.</p>
+
+<p><a id="X84B297C981CD9E33" name="X84B297C981CD9E33"></a></p>
+
+<h5>15.1-3 IsObjectInCapTerminalCategoryWithSingleObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInCapTerminalCategoryWithSingleObject</code>( <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> type of an object in a terminal category.</p>
+
+<p><a id="X7B51D0F37E6CA018" name="X7B51D0F37E6CA018"></a></p>
+
+<h5>15.1-4 IsMorphismInCapTerminalCategoryWithSingleObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInCapTerminalCategoryWithSingleObject</code>( <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> type of a morphism in a terminal category.</p>
+
+<p><a id="X85A149A17E45806B" name="X85A149A17E45806B"></a></p>
+
+<h5>15.1-5 IsCapTerminalCategoryWithMultipleObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapTerminalCategoryWithMultipleObjects</code>( <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> type of a terminal category with multiple objects.</p>
+
+<p><a id="X7AB5CB837E1D3B75" name="X7AB5CB837E1D3B75"></a></p>
+
+<h5>15.1-6 IsCellInCapTerminalCategoryWithMultipleObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInCapTerminalCategoryWithMultipleObjects</code>( <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> type of a cell in a terminal category with multiple objects.</p>
+
+<p><a id="X79DC47AC7B6C1D35" name="X79DC47AC7B6C1D35"></a></p>
+
+<h5>15.1-7 IsObjectInCapTerminalCategoryWithMultipleObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInCapTerminalCategoryWithMultipleObjects</code>( <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> type of an object in a terminal category with multiple objects.</p>
+
+<p><a id="X7A8D8ADE8390093C" name="X7A8D8ADE8390093C"></a></p>
+
+<h5>15.1-8 IsMorphismInCapTerminalCategoryWithMultipleObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInCapTerminalCategoryWithMultipleObjects</code>( <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> type of a morphism in a terminal category with multiple objects.</p>
+
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>15.2 <span class="Heading">Constructors</span></h4>
+
+<p><a id="X80E423D681B7A2D5" name="X80E423D681B7A2D5"></a></p>
+
+<h5>15.2-1 TerminalCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TerminalCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Construct a terminal category.</p>
+
+<p><a id="X7CBD1E9B81BBFFC8" name="X7CBD1E9B81BBFFC8"></a></p>
+
+<h5>15.2-2 TerminalCategoryWithMultipleObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TerminalCategoryWithMultipleObjects</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Construct a terminal category with multiple objects.</p>
+
+<p><a id="X81FA767C792670A2" name="X81FA767C792670A2"></a></p>
+
+<h5>15.2-3 CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY</code>( <var class="Arg">options</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>This function takes a record of options suited for CategoryConstructor. It makes common adjustments from TerminalCategory and TerminalCategoryWithMultipleObjects to the list of operations to install and the categorical properties of the given record, before passing it on to CategoryConstructor.</p>
+
+<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
+
+<h4>15.3 <span class="Heading">Attributes</span></h4>
+
+<p><a id="X85CD99D48472E1AA" name="X85CD99D48472E1AA"></a></p>
+
+<h5>15.3-1 UniqueObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UniqueObject</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> object</p>
+
+<p>The unique object in a terminal category.</p>
+
+<p><a id="X843705A4819E81E1" name="X843705A4819E81E1"></a></p>
+
+<h5>15.3-2 UniqueMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UniqueMorphism</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> morphism</p>
+
+<p>The unique morphism in a terminal category.</p>
+
+<p><a id="X815EE32778070D08" name="X815EE32778070D08"></a></p>
+
+<h5>15.3-3 FunctorFromTerminalCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FunctorFromTerminalCategory</code>( <var class="Arg">cell</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> morphism</p>
+
+<p>A functor from a terminal category to another category with a given cell <em>cell</em>.</p>
+
+<p><a id="X7A4C2D0E7E286B4F" name="X7A4C2D0E7E286B4F"></a></p>
+
+<h4>15.4 <span class="Heading">Variables</span></h4>
+
+<p><a id="X78601D407BD8B9FF" name="X78601D407BD8B9FF"></a></p>
+
+<h5>15.4-1 CAP_INTERNAL_TERMINAL_CATEGORY</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_TERMINAL_CATEGORY</code></td><td class="tdright">(&nbsp;global variable&nbsp;)</td></tr></table></div>
+<p>A terminal category.</p>
+
+<p><a id="X7B4745F086D342D5" name="X7B4745F086D342D5"></a></p>
+
+<h5>15.4-2 CAP_INTERNAL_TERMINAL_CATEGORY_AS_CAT_OBJECT</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_TERMINAL_CATEGORY_AS_CAT_OBJECT</code></td><td class="tdright">(&nbsp;global variable&nbsp;)</td></tr></table></div>
+<p>A terminal category as an object in CAT.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap14.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

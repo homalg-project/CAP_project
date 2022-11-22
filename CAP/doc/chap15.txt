@@ -1,0 +1,128 @@
+  
+  [1X15 [33X[0;0YTerminal category[133X[101X
+  
+  
+  [1X15.1 [33X[0;0Y[5XGAP[105X[101X[1X Categories[133X[101X
+  
+  [1X15.1-1 IsCapTerminalCategoryWithSingleObject[101X
+  
+  [33X[1;0Y[29X[2XIsCapTerminalCategoryWithSingleObject[102X( [3XT[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X type of a terminal category.[133X
+  
+  [1X15.1-2 IsCellInCapTerminalCategoryWithSingleObject[101X
+  
+  [33X[1;0Y[29X[2XIsCellInCapTerminalCategoryWithSingleObject[102X( [3XT[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X type of a cell in a terminal category.[133X
+  
+  [1X15.1-3 IsObjectInCapTerminalCategoryWithSingleObject[101X
+  
+  [33X[1;0Y[29X[2XIsObjectInCapTerminalCategoryWithSingleObject[102X( [3XT[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X type of an object in a terminal category.[133X
+  
+  [1X15.1-4 IsMorphismInCapTerminalCategoryWithSingleObject[101X
+  
+  [33X[1;0Y[29X[2XIsMorphismInCapTerminalCategoryWithSingleObject[102X( [3XT[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X type of a morphism in a terminal category.[133X
+  
+  [1X15.1-5 IsCapTerminalCategoryWithMultipleObjects[101X
+  
+  [33X[1;0Y[29X[2XIsCapTerminalCategoryWithMultipleObjects[102X( [3XT[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X type of a terminal category with multiple objects.[133X
+  
+  [1X15.1-6 IsCellInCapTerminalCategoryWithMultipleObjects[101X
+  
+  [33X[1;0Y[29X[2XIsCellInCapTerminalCategoryWithMultipleObjects[102X( [3XT[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X type of a cell in a terminal category with multiple objects.[133X
+  
+  [1X15.1-7 IsObjectInCapTerminalCategoryWithMultipleObjects[101X
+  
+  [33X[1;0Y[29X[2XIsObjectInCapTerminalCategoryWithMultipleObjects[102X( [3XT[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X type of an object in a terminal category with multiple objects.[133X
+  
+  [1X15.1-8 IsMorphismInCapTerminalCategoryWithMultipleObjects[101X
+  
+  [33X[1;0Y[29X[2XIsMorphismInCapTerminalCategoryWithMultipleObjects[102X( [3XT[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X type of a morphism in a terminal category with multiple objects.[133X
+  
+  
+  [1X15.2 [33X[0;0YConstructors[133X[101X
+  
+  [1X15.2-1 TerminalCategory[101X
+  
+  [33X[1;0Y[29X[2XTerminalCategory[102X( [3Xarg[103X ) [32X function[133X
+  
+  [33X[0;0YConstruct a terminal category.[133X
+  
+  [1X15.2-2 TerminalCategoryWithMultipleObjects[101X
+  
+  [33X[1;0Y[29X[2XTerminalCategoryWithMultipleObjects[102X( [3Xarg[103X ) [32X function[133X
+  
+  [33X[0;0YConstruct a terminal category with multiple objects.[133X
+  
+  [1X15.2-3 CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY[101X
+  
+  [33X[1;0Y[29X[2XCAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY[102X( [3Xoptions[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  
+  [33X[0;0YThis  function  takes a record of options suited for CategoryConstructor. It
+  makes       common      adjustments      from      TerminalCategory      and
+  TerminalCategoryWithMultipleObjects to the list of operations to install and
+  the  categorical  properties  of  the  given record, before passing it on to
+  CategoryConstructor.[133X
+  
+  
+  [1X15.3 [33X[0;0YAttributes[133X[101X
+  
+  [1X15.3-1 UniqueObject[101X
+  
+  [33X[1;0Y[29X[2XUniqueObject[102X( [3Xarg[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
+  
+  [33X[0;0YThe unique object in a terminal category.[133X
+  
+  [1X15.3-2 UniqueMorphism[101X
+  
+  [33X[1;0Y[29X[2XUniqueMorphism[102X( [3Xarg[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  
+  [33X[0;0YThe unique morphism in a terminal category.[133X
+  
+  [1X15.3-3 FunctorFromTerminalCategory[101X
+  
+  [33X[1;0Y[29X[2XFunctorFromTerminalCategory[102X( [3Xcell[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  
+  [33X[0;0YA  functor  from  a  terminal category to another category with a given cell
+  [13Xcell[113X.[133X
+  
+  
+  [1X15.4 [33X[0;0YVariables[133X[101X
+  
+  [1X15.4-1 CAP_INTERNAL_TERMINAL_CATEGORY[101X
+  
+  [33X[1;0Y[29X[2XCAP_INTERNAL_TERMINAL_CATEGORY[102X [32X global variable[133X
+  
+  [33X[0;0YA terminal category.[133X
+  
+  [1X15.4-2 CAP_INTERNAL_TERMINAL_CATEGORY_AS_CAT_OBJECT[101X
+  
+  [33X[1;0Y[29X[2XCAP_INTERNAL_TERMINAL_CATEGORY_AS_CAT_OBJECT[102X [32X global variable[133X
+  
+  [33X[0;0YA terminal category as an object in CAT.[133X
+  
