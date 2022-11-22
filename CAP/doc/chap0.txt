@@ -6,7 +6,7 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2022.11-20
+                                   2022.11-21
   
   
                                 22 November 2022
@@ -965,24 +965,19 @@
   15 [33X[0;0YTerminal category[133X
     15.1 [33X[0;0Y[5XGAP[105X Categories[133X
       15.1-1 IsCapTerminalCategoryWithSingleObject
-      15.1-2 IsCellInCapTerminalCategoryWithSingleObject
-      15.1-3 IsObjectInCapTerminalCategoryWithSingleObject
-      15.1-4 IsMorphismInCapTerminalCategoryWithSingleObject
-      15.1-5 IsCapTerminalCategoryWithMultipleObjects
-      15.1-6 IsCellInCapTerminalCategoryWithMultipleObjects
-      15.1-7 IsObjectInCapTerminalCategoryWithMultipleObjects
-      15.1-8 IsMorphismInCapTerminalCategoryWithMultipleObjects
+      15.1-2 IsObjectInCapTerminalCategoryWithSingleObject
+      15.1-3 IsMorphismInCapTerminalCategoryWithSingleObject
+      15.1-4 IsCapTerminalCategoryWithMultipleObjects
+      15.1-5 IsObjectInCapTerminalCategoryWithMultipleObjects
+      15.1-6 IsMorphismInCapTerminalCategoryWithMultipleObjects
     15.2 [33X[0;0YConstructors[133X
-      15.2-1 TerminalCategory
+      15.2-1 TerminalCategoryWithSingleObject
       15.2-2 TerminalCategoryWithMultipleObjects
       15.2-3 CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY
     15.3 [33X[0;0YAttributes[133X
       15.3-1 UniqueObject
       15.3-2 UniqueMorphism
       15.3-3 FunctorFromTerminalCategory
-    15.4 [33X[0;0YVariables[133X
-      15.4-1 CAP_INTERNAL_TERMINAL_CATEGORY
-      15.4-2 CAP_INTERNAL_TERMINAL_CATEGORY_AS_CAT_OBJECT
   
   
   [32X
