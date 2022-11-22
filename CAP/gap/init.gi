@@ -45,7 +45,9 @@ BindGlobal( "init_CAP", function ( )
                   )
     );
     
+    #= comment for Julia
     BindGlobal( "CapCat", CAP_INTERNAL_CREATE_Cat( ) );
+    # =#
     
 end );
 
