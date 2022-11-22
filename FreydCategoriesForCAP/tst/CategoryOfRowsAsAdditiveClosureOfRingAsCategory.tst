@@ -93,14 +93,14 @@ true
 gap> IsWellDefinedForMorphisms( RandomMorphism( vec, 10 ) ) and IsWellDefinedForMorphisms( RandomMorphism( vec, [10] ) );
 true
 gap> a := RandomObject( ModelingCategory( vec ), 20 );;
-gap> b := RandomObject( ModelingCategory( vec ), [10,[5]] );;
+gap> b := RandomObject( ModelingCategory( vec ), [[10],[5]] );;
 gap> IsEqualForObjects( Range( RandomMorphismWithFixedSourceAndRange( a, b, 10 ) ), b ) and IsEqualForObjects( Source( RandomMorphismWithFixedSourceAndRange( a, b, [10] ) ), a );
 true
-gap> IsEqualForObjects( Source( RandomMorphismWithFixedSource( a, 10 ) ), a ) and IsEqualForObjects( Source( RandomMorphismWithFixedSource( a, [[10,[5]],[5]] ) ), a );
+gap> IsEqualForObjects( Source( RandomMorphismWithFixedSource( a, 10 ) ), a ) and IsEqualForObjects( Source( RandomMorphismWithFixedSource( a, [[[10],[5]],[5]] ) ), a );
 true
-gap> IsEqualForObjects( Range( RandomMorphismWithFixedRange( b, 10 ) ), b ) and IsEqualForObjects( Range( RandomMorphismWithFixedRange( b, [[10,[5]],[5]] ) ), b );
+gap> IsEqualForObjects( Range( RandomMorphismWithFixedRange( b, 10 ) ), b ) and IsEqualForObjects( Range( RandomMorphismWithFixedRange( b, [[[10],[5]],[5]] ) ), b );
 true
-gap> IsWellDefinedForMorphisms( RandomMorphism( ModelingCategory( vec ), 10 ) ) and IsWellDefinedForMorphisms( RandomMorphism( ModelingCategory( vec ), [[10,[5]],[10,[5]],[10]] ) );
+gap> IsWellDefinedForMorphisms( RandomMorphism( ModelingCategory( vec ), 10 ) ) and IsWellDefinedForMorphisms( RandomMorphism( ModelingCategory( vec ), [[[10],[5]],[[10],[5]],[10]] ) );
 true
 
 # hom structure for exterior algebras over fields

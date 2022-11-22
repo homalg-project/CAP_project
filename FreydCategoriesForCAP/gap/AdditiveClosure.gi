@@ -1352,11 +1352,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_OF_RANDOM_METHODS_FOR_ADDITIVE_CLOSURE,
       AddRandomObjectByList( category,
         function( cat, L )
           
-          if Length( L ) <> 2 or (not IsInt( L[1] )) or IsNegInt( L[1] ) or (not IsList( L[2] )) then
-              Error( "the list passed to 'RandomObjectByList' in", Name( category ), " must be a list of length two consiting of a non-negative integer and a list!\n" );
+          if Length( L ) <> 2 or (not ForAll( L, IsList )) or IsEmpty( L[1] ) or ForAny( L[1], IsNegInt ) then
+              Error( "the list passed to 'RandomObjectByList' in ", Name( category ), " must be a list of length two consisting of a non-empty list of non-negative integers and a list!\n" );
           fi;
           
-          return AdditiveClosureObject( List( [ 1 .. Random( 0, L[1] ) ], i -> RandomObjectByList( underlying_category, L[2] ) ), cat );
+          return AdditiveClosureObject( List( [ 1 .. Random( L[1] ) ], i -> RandomObjectByList( underlying_category, L[2] ) ), cat );
       
       end );
       
