@@ -31,10 +31,6 @@ test-with-coverage: doc
 	gap --quitonbreak --cover stats tst/testall.g
 	gap --quitonbreak --norepl -c 'LoadPackage("profiling"); OutputJsonCoverage("stats", "coverage.json");'
 
-test-with-coverage-without-precompiled-code: doc
-	gap --quitonbreak --cover stats_no_precompiled_code tst/testall_no_precompiled_code.g
-	gap --quitonbreak --norepl -c 'LoadPackage("profiling"); OutputJsonCoverage("stats_no_precompiled_code", "coverage_no_precompiled_code.json");'
-
 test-spacing:
 	# exit code 1 means no match, which is what we want here (exit code 2 signals an error)
 	grep -R "[^ [\"]  " gap/*.gi; test $$? -eq 1 || (echo "Duplicate spaces found" && exit 1)
