@@ -200,15 +200,116 @@
   [10XAsAdditiveClosureMorphism[110X.[133X
   
   
-  [1X2.5 [33X[0;0YGlobal functions[133X[101X
+  [1X2.5 [33X[0;0YRandom methods for additive closure category[133X[101X
   
-  [1X2.5-1 NullMatImmutable[101X
+  [1X2.5-1 RandomObjectByList[101X
+  
+  [33X[1;0Y[29X[2XRandomObjectByList[102X( [3XC[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object in C[133X
+  
+  [33X[0;0YThe  arguments are an additive closure category [3XC[103X of a category [3XU[103X and a list
+  [3XL[103X  whose  first  entry is a non-negative integer and second entry is a list.
+  The  output  is  an object in [3XC[103X which is a formal direct sum of at most [3XL[103X[1]
+  objects in [3XU[103X each computed via [10XRandomObjectByList[110X([3XU[103X,[3XL[103X[2]).[133X
+  
+  [1X2.5-2 RandomObjectByInteger[101X
+  
+  [33X[1;0Y[29X[2XRandomObjectByInteger[102X( [3XC[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object in C[133X
+  
+  [33X[0;0YThe  arguments  are  an  additive  closure  category [3XC[103X of a category [3XU[103X and a
+  non-negative  integer  [3Xn[103X.  The  output  is  an object in [3XC[103X which is a formal
+  direct   sum   of   at   most   [3Xn[103X   objects   in   [3XU[103X   each   computed   via
+  [10XRandomObjectByInteger[110X([3XU[103X,[3Xn[103X).[133X
+  
+  [1X2.5-3 RandomMorphismWithFixedSourceAndRangeByList[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceAndRangeByList[102X( [3XS[103X, [3XR[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in C[133X
+  
+  [33X[0;0YThe  arguments  are  two objects [3XS[103X, [3XR[103X and a list [3XL[103X. The output is a morphism
+  from   [3XS[103X   to   [3XR[103X   whose   matrix  entry  at  index  [23Xi,j[123X  is  computed  via
+  [10XRandomMorphismWithFixedSourceAndRangeByList[110X([3XS[103X[[23Xi[123X],[3XR[103X[[23Xj[123X],[3XL[103X).[133X
+  
+  [1X2.5-4 RandomMorphismWithFixedSourceAndRangeByInteger[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceAndRangeByInteger[102X( [3XS[103X, [3XR[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in C[133X
+  
+  [33X[0;0YThe  arguments  are  two  objects  [3XS[103X,  [3XR[103X  and  an integer [3Xn[103X. The output is a
+  morphism  from  [3XS[103X  to  [3XR[103X  whose  matrix  entry  at index [23Xi,j[123X is computed via
+  [10XRandomMorphismWithFixedSourceAndRangeByInteger[110X([3XS[103X[[23Xi[123X],[3XR[103X[[23Xj[123X],[3Xn[103X).[133X
+  
+  [1X2.5-5 RandomMorphismWithFixedSourceByList[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceByList[102X( [3XS[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in C[133X
+  
+  [33X[0;0YThe arguments are an object [3XS[103X in an additive closure category [3XC[103X and a list [3XL[103X
+  consisting        of        two       lists.       The       output       is
+  [10XRandomMorphismWithFixedSourceAndRangeByList[110X([3XS[103X,[23XR[123X,[3XL[103X[2])  where  [23XR[123X  is computed
+  via [10XRandomObjectByList[110X([3XC[103X,[3XL[103X[1]).[133X
+  
+  [1X2.5-6 RandomMorphismWithFixedSourceByInteger[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceByInteger[102X( [3XS[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in C[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [3XS[103X  in an additive closure category [3XC[103X and an
+  integer              [3Xn[103X.              The              output              is
+  [10XRandomMorphismWithFixedSourceAndRangeByInteger[110X([3XS[103X,[23XR[123X,[23X1[123X+[10XLog2Int[110X([3Xn[103X))  where [23XR[123X is
+  computed via [10XRandomObjectByInteger[110X([3XC[103X,[3Xn[103X).[133X
+  
+  [1X2.5-7 RandomMorphismWithFixedRangeByList[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismWithFixedRangeByList[102X( [3XR[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in a category of rows[133X
+  
+  [33X[0;0YThe arguments are an object [3XR[103X in an additive closure category [3XC[103X and a list [3XL[103X
+  consisting        of        two       lists.       The       output       is
+  [10XRandomMorphismWithFixedSourceAndRangeByList[110X([3XS[103X,[23XR[123X,[3XL[103X[2])  where  [23XS[123X  is computed
+  via [10XRandomObjectByList[110X([3XC[103X,[3XL[103X[1]).[133X
+  
+  [1X2.5-8 RandomMorphismWithFixedRangeByInteger[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismWithFixedRangeByInteger[102X( [3XR[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in C[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [3XS[103X  in an additive closure category [3XC[103X and an
+  integer              [3Xn[103X.              The              output              is
+  [10XRandomMorphismWithFixedSourceAndRangeByInteger[110X([3XS[103X,[23XR[123X,[23X1[123X+[10XLog2Int[110X([3Xn[103X))  where [23XS[123X is
+  computed via [10XRandomObjectByInteger[110X([3XC[103X,[3Xn[103X).[133X
+  
+  [1X2.5-9 RandomMorphismByList[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismByList[102X( [3XC[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in C[133X
+  
+  [33X[0;0YThe arguments are an additive closure category [3XC[103X and a list [3XL[103X consisiting of
+  three              lists.              The             output             is
+  [10XRandomMorphismWithFixedSourceAndRangeByList[110X([23XS[123X,[23XR[123X,[3XL[103X[3]))  where  [23XS[123X  and  [23XR[123X are
+  computed via [10XRandomObjectByList[110X([3XC[103X,[3XL[103X[i]) for [23Xi=1,2[123X respectively.[133X
+  
+  [1X2.5-10 RandomMorphismByInteger[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismByInteger[102X( [3XC[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in C[133X
+  
+  [33X[0;0YThe  arguments are an additive closure category [3XC[103X and a non-negative integer
+  [3Xn[103X.                     The                     output                     is
+  [10XRandomMorphismWithFixedSourceAndRangeByInteger[110X([23XS[123X,[23XR[123X,[23X1[123X+[10XLog2Int[110X([3Xn[103X)))   where  [23XS[123X
+  and [23XR[123X are computed via [10XRandomObjectByInteger[110X([3XC[103X,[3Xn[103X).[133X
+  
+  
+  [1X2.6 [33X[0;0YGlobal functions[133X[101X
+  
+  [1X2.6-1 NullMatImmutable[101X
   
   [33X[1;0Y[29X[2XNullMatImmutable[102X( [3Xarg[103X ) [32X function[133X
   
   [33X[0;0YA (faster) version of [10XNullMat[110X returning an immutable matrix.[133X
   
-  [1X2.5-2 UnionOfRowsListList[101X
+  [1X2.6-2 UnionOfRowsListList[101X
   
   [33X[1;0Y[29X[2XUnionOfRowsListList[102X( [3Xnr_cols[103X, [3XL[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list of lists[133X
@@ -216,7 +317,7 @@
   [33X[0;0YStacks  the  matrices (lists of lists) in the list [3XL[103X. The matrices must have
   [10Xnr_cols[110X columns.[133X
   
-  [1X2.5-3 UnionOfColumnsListList[101X
+  [1X2.6-3 UnionOfColumnsListList[101X
   
   [33X[1;0Y[29X[2XUnionOfColumnsListList[102X( [3Xnr_rows[103X, [3XL[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list of lists[133X

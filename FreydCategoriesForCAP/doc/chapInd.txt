@@ -89,8 +89,8 @@
       for IsCapFunctor, IsLinearClosure, IsFunction 13.1-1 
   [2XExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource[102X, for IsCapFunctor 2.2-9 
   [2XExtendNaturalTransformationToAdditiveClosureOfSource[102X, for IsCapNaturalTransformation 2.2-11 
-  [2XFpGradedLeftModules[102X, for IsHomalgGradedRing 17.1-1 
-  [2XFpGradedRightModules[102X, for IsHomalgGradedRing 17.1-2 
+  [2XFpGradedLeftModules[102X, for IsHomalgGradedRing 18.1-1 
+  [2XFpGradedRightModules[102X, for IsHomalgGradedRing 18.1-2 
   [2XGradedColumn[102X, for IsList, IsHomalgGradedRing 9.1-5 
       for IsList, IsHomalgGradedRing, IsBool 9.1-6 
   [2XGradedRow[102X, for IsList, IsHomalgGradedRing 9.1-3 
@@ -115,12 +115,12 @@
   [2XIsCategoryOfRowsObject[102X, for IsCapCategoryObject 5.2-1 
   [2XIsEpiPreserving[102X, for IsAdelmanCategoryObject 4.4-5 
   [2XIsExact[102X, for IsAdelmanCategoryObject 4.4-1 
-  [2XIsFpGradedLeftModulesMorphism[102X, for IsFpGradedLeftOrRightModulesMorphism 17.3-2 
-  [2XIsFpGradedLeftModulesObject[102X, for IsFpGradedLeftOrRightModulesObject 17.2-2 
-  [2XIsFpGradedLeftOrRightModulesMorphism[102X, for IsFreydCategoryMorphism 17.3-1 
-  [2XIsFpGradedLeftOrRightModulesObject[102X, for IsFreydCategoryObject 17.2-1 
-  [2XIsFpGradedRightModulesMorphism[102X, for IsFpGradedLeftOrRightModulesMorphism 17.3-3 
-  [2XIsFpGradedRightModulesObject[102X, for IsFpGradedLeftOrRightModulesObject 17.2-3 
+  [2XIsFpGradedLeftModulesMorphism[102X, for IsFpGradedLeftOrRightModulesMorphism 18.3-2 
+  [2XIsFpGradedLeftModulesObject[102X, for IsFpGradedLeftOrRightModulesObject 18.2-2 
+  [2XIsFpGradedLeftOrRightModulesMorphism[102X, for IsFreydCategoryMorphism 18.3-1 
+  [2XIsFpGradedLeftOrRightModulesObject[102X, for IsFreydCategoryObject 18.2-1 
+  [2XIsFpGradedRightModulesMorphism[102X, for IsFpGradedLeftOrRightModulesMorphism 18.3-3 
+  [2XIsFpGradedRightModulesObject[102X, for IsFpGradedLeftOrRightModulesObject 18.2-3 
   [2XIsGradedColumn[102X, for IsGradedRowOrColumn 9.3-3 
   [2XIsGradedColumnMorphism[102X, for IsGradedRowOrColumnMorphism 9.3-6 
   [2XIsGradedRow[102X, for IsGradedRowOrColumn 9.3-2 
@@ -136,7 +136,7 @@
   [2XMonomorphismToSomeInjectiveObjectForCokernelObject[102X, for IsCapCategoryMorphism 1.7-5 
   [2XMonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject[102X, for IsCapCategoryMorphism, IsCapCategoryObject 1.7-6 
   [2XMorphismMatrix[102X, for IsAdditiveClosureMorphism 2.3-3 
-  [2XNullMatImmutable[102X 2.5-1 
+  [2XNullMatImmutable[102X 2.6-1 
   [2XNumberColumns[102X, for IsAdditiveClosureMorphism 2.3-5 
   [2XNumberRows[102X, for IsAdditiveClosureMorphism 2.3-4 
   [2XObjectList[102X, for IsAdditiveClosureObject 2.3-2 
@@ -146,26 +146,46 @@
   [2XProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 1.3-5 
   [2XProjectionOfBiasedWeakFiberProduct[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.4-2 
   [2XProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 1.4-3 
-  [2XRandomMorphismByInteger[102X, for IsCategoryOfRows, IsInt 5.3-10 
+  [2XRandomMorphismByInteger[102X, for IsAdditiveClosureCategory, IsInt 2.5-10 
+      for IsCategoryOfRows, IsInt 5.3-10 
       for IsFreydCategory, IsInt 11.1-10 
-  [2XRandomMorphismByList[102X, for IsCategoryOfRows, IsList 5.3-9 
+      for IsRingAsCategory, IsInt 14.1-10 
+  [2XRandomMorphismByList[102X, for IsAdditiveClosureCategory, IsList 2.5-9 
+      for IsCategoryOfRows, IsList 5.3-9 
       for IsFreydCategory, IsList 11.1-9 
-  [2XRandomMorphismWithFixedRangeByInteger[102X, for IsCategoryOfRowsObject, IsInt 5.3-8 
+      for IsRingAsCategory, IsList 14.1-9 
+  [2XRandomMorphismWithFixedRangeByInteger[102X, for IsAdditiveClosureObject, IsInt 2.5-8 
+      for IsCategoryOfRowsObject, IsInt 5.3-8 
       for IsFreydCategoryObject, IsInt 11.1-8 
-  [2XRandomMorphismWithFixedRangeByList[102X, for IsCategoryOfRowsObject, IsList 5.3-7 
+      for IsRingAsCategoryObject, IsInt 14.1-8 
+  [2XRandomMorphismWithFixedRangeByList[102X, for IsAdditiveClosureObject, IsList 2.5-7 
+      for IsCategoryOfRowsObject, IsList 5.3-7 
       for IsFreydCategoryObject, IsList 11.1-7 
-  [2XRandomMorphismWithFixedSourceAndRangeByInteger[102X, for IsCategoryOfRowsObject, IsCategoryOfRowsObject, IsInt 5.3-4 
+      for IsRingAsCategoryObject, IsList 14.1-7 
+  [2XRandomMorphismWithFixedSourceAndRangeByInteger[102X, for IsAdditiveClosureObject, IsAdditiveClosureObject, IsInt 2.5-4 
+      for IsCategoryOfRowsObject, IsCategoryOfRowsObject, IsInt 5.3-4 
       for IsFreydCategoryObject, IsFreydCategoryObject, IsInt 11.1-4 
-  [2XRandomMorphismWithFixedSourceAndRangeByList[102X, for IsCategoryOfRowsObject, IsCategoryOfRowsObject, IsList 5.3-3 
+      for IsRingAsCategoryObject, IsRingAsCategoryObject, IsInt 14.1-4 
+  [2XRandomMorphismWithFixedSourceAndRangeByList[102X, for IsAdditiveClosureObject, IsAdditiveClosureObject, IsList 2.5-3 
+      for IsCategoryOfRowsObject, IsCategoryOfRowsObject, IsList 5.3-3 
       for IsFreydCategoryObject, IsFreydCategoryObject, IsList 11.1-3 
-  [2XRandomMorphismWithFixedSourceByInteger[102X, for IsCategoryOfRowsObject, IsInt 5.3-6 
+      for IsRingAsCategoryObject, IsRingAsCategoryObject, IsList 14.1-3 
+  [2XRandomMorphismWithFixedSourceByInteger[102X, for IsAdditiveClosureObject, IsInt 2.5-6 
+      for IsCategoryOfRowsObject, IsInt 5.3-6 
       for IsFreydCategoryObject, IsInt 11.1-6 
-  [2XRandomMorphismWithFixedSourceByList[102X, for IsCategoryOfRowsObject, IsList 5.3-5 
+      for IsRingAsCategoryObject, IsInt 14.1-6 
+  [2XRandomMorphismWithFixedSourceByList[102X, for IsAdditiveClosureObject, IsList 2.5-5 
+      for IsCategoryOfRowsObject, IsList 5.3-5 
       for IsFreydCategoryObject, IsList 11.1-5 
-  [2XRandomObjectByInteger[102X, for IsCategoryOfRows, IsInt 5.3-2 
+      for IsRingAsCategoryObject, IsList 14.1-5 
+  [2XRandomObjectByInteger[102X, for IsAdditiveClosureCategory, IsInt 2.5-2 
+      for IsCategoryOfRows, IsInt 5.3-2 
       for IsFreydCategory, IsInt 11.1-2 
-  [2XRandomObjectByList[102X, for IsCategoryOfRows, IsList 5.3-1 
+      for IsRingAsCategory, IsInt 14.1-2 
+  [2XRandomObjectByList[102X, for IsAdditiveClosureCategory, IsList 2.5-1 
+      for IsCategoryOfRows, IsList 5.3-1 
       for IsFreydCategory, IsList 11.1-1 
+      for IsRingAsCategory, IsList 14.1-1 
   [2XRankOfObject[102X, for IsGradedRowOrColumn 9.2-3 
   [2XRelationMorphism[102X, for IsAdelmanCategoryObject 4.3-2 
   [2XRelationWitness[102X, for IsAdelmanCategoryMorphism 4.3-5 
@@ -177,8 +197,8 @@
       for IsGradedRowOrColumnMorphism 9.2-4 
   [2XUnderlyingHomalgMatrix[102X, for IsGradedRowOrColumnMorphism 9.2-5 
   [2XUnderlyingMorphism[102X, for IsAdelmanCategoryMorphism 4.3-4 
-  [2XUnionOfColumnsListList[102X 2.5-3 
-  [2XUnionOfRowsListList[102X 2.5-2 
+  [2XUnionOfColumnsListList[102X 2.6-3 
+  [2XUnionOfRowsListList[102X 2.6-2 
   [2XUniversalMorphismFromBiasedWeakPushout[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism 1.6-4 
   [2XUniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 1.6-5 
   [2XUniversalMorphismFromWeakBiPushout[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism 1.5-6 

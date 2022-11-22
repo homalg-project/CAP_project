@@ -6,10 +6,10 @@
         [1X Freyd categories - Formal (co)kernels for additive categories [101X
   
   
-                                   2022.11-11
+                                   2022.11-12
   
   
-                                11 November 2022
+                                22 November 2022
   
   
                                 Sebastian Posur
@@ -165,10 +165,21 @@
       2.4-2 [
       2.4-3 \/
       2.4-4 \/
-    2.5 [33X[0;0YGlobal functions[133X
-      2.5-1 NullMatImmutable
-      2.5-2 UnionOfRowsListList
-      2.5-3 UnionOfColumnsListList
+    2.5 [33X[0;0YRandom methods for additive closure category[133X
+      2.5-1 RandomObjectByList
+      2.5-2 RandomObjectByInteger
+      2.5-3 RandomMorphismWithFixedSourceAndRangeByList
+      2.5-4 RandomMorphismWithFixedSourceAndRangeByInteger
+      2.5-5 RandomMorphismWithFixedSourceByList
+      2.5-6 RandomMorphismWithFixedSourceByInteger
+      2.5-7 RandomMorphismWithFixedRangeByList
+      2.5-8 RandomMorphismWithFixedRangeByInteger
+      2.5-9 RandomMorphismByList
+      2.5-10 RandomMorphismByInteger
+    2.6 [33X[0;0YGlobal functions[133X
+      2.6-1 NullMatImmutable
+      2.6-2 UnionOfRowsListList
+      2.6-3 UnionOfColumnsListList
   3 [33X[0;0YExample on additive closure[133X
     3.1 [33X[0;0YUsing matrix data structures[133X
   4 [33X[0;0YAdelman category[133X
@@ -323,35 +334,47 @@
     13.1 [33X[0;0YFunctors[133X
       13.1-1 ExtendFunctorToLinearClosureOfSource
       13.1-2 ExtendFunctorToLinearClosureOfSource
-  14 [33X[0;0YExamples on graded rows and columns[133X
-    14.1 [33X[0;0YFreyd category of graded rows[133X
-    14.2 [33X[0;0YFreyd category of graded columns[133X
-    14.3 [33X[0;0YConstructors of objects and reduction of degree lists[133X
-    14.4 [33X[0;0YConstructors of morphisms[133X
-    14.5 [33X[0;0YThe GAP categories[133X
-    14.6 [33X[0;0YA few categorical constructions for graded rows[133X
-    14.7 [33X[0;0YA few categorical constructions for graded columns[133X
-    14.8 [33X[0;0YAdditional examples on monoidal structure for graded rows[133X
-    14.9 [33X[0;0YAdditional examples on monoidal structure for graded columns[133X
-    14.10 [33X[0;0YExamples to test Tools methods in graded rows/cols[133X
-  15 [33X[0;0YCategory of rows and columns over a field[133X
-    15.1 [33X[0;0YAbelian operations for rows[133X
-  16 [33X[0;0YExample on tensor products in Freyd categories[133X
-    16.1 [33X[0;0YTensor products for categories of rows[133X
-    16.2 [33X[0;0YTensor products for categories of columns[133X
-  17 [33X[0;0YThe CAP category of graded module presentations for CAP by use of Freyd
+  14 [33X[0;0YRings as categories[133X
+    14.1 [33X[0;0YRandom methods[133X
+      14.1-1 RandomObjectByList
+      14.1-2 RandomObjectByInteger
+      14.1-3 RandomMorphismWithFixedSourceAndRangeByList
+      14.1-4 RandomMorphismWithFixedSourceAndRangeByInteger
+      14.1-5 RandomMorphismWithFixedSourceByList
+      14.1-6 RandomMorphismWithFixedSourceByInteger
+      14.1-7 RandomMorphismWithFixedRangeByList
+      14.1-8 RandomMorphismWithFixedRangeByInteger
+      14.1-9 RandomMorphismByList
+      14.1-10 RandomMorphismByInteger
+  15 [33X[0;0YExamples on graded rows and columns[133X
+    15.1 [33X[0;0YFreyd category of graded rows[133X
+    15.2 [33X[0;0YFreyd category of graded columns[133X
+    15.3 [33X[0;0YConstructors of objects and reduction of degree lists[133X
+    15.4 [33X[0;0YConstructors of morphisms[133X
+    15.5 [33X[0;0YThe GAP categories[133X
+    15.6 [33X[0;0YA few categorical constructions for graded rows[133X
+    15.7 [33X[0;0YA few categorical constructions for graded columns[133X
+    15.8 [33X[0;0YAdditional examples on monoidal structure for graded rows[133X
+    15.9 [33X[0;0YAdditional examples on monoidal structure for graded columns[133X
+    15.10 [33X[0;0YExamples to test Tools methods in graded rows/cols[133X
+  16 [33X[0;0YCategory of rows and columns over a field[133X
+    16.1 [33X[0;0YAbelian operations for rows[133X
+  17 [33X[0;0YExample on tensor products in Freyd categories[133X
+    17.1 [33X[0;0YTensor products for categories of rows[133X
+    17.2 [33X[0;0YTensor products for categories of columns[133X
+  18 [33X[0;0YThe CAP category of graded module presentations for CAP by use of Freyd
   categories[133X
-    17.1 [33X[0;0YCAP categories[133X
-      17.1-1 FpGradedLeftModules
-      17.1-2 FpGradedRightModules
-    17.2 [33X[0;0YThe GAP categories for graded module presentations for CAP[133X
-      17.2-1 IsFpGradedLeftOrRightModulesObject
-      17.2-2 IsFpGradedLeftModulesObject
-      17.2-3 IsFpGradedRightModulesObject
-    17.3 [33X[0;0YThe GAP categories for graded module presentation morphisms for CAP[133X
-      17.3-1 IsFpGradedLeftOrRightModulesMorphism
-      17.3-2 IsFpGradedLeftModulesMorphism
-      17.3-3 IsFpGradedRightModulesMorphism
+    18.1 [33X[0;0YCAP categories[133X
+      18.1-1 FpGradedLeftModules
+      18.1-2 FpGradedRightModules
+    18.2 [33X[0;0YThe GAP categories for graded module presentations for CAP[133X
+      18.2-1 IsFpGradedLeftOrRightModulesObject
+      18.2-2 IsFpGradedLeftModulesObject
+      18.2-3 IsFpGradedRightModulesObject
+    18.3 [33X[0;0YThe GAP categories for graded module presentation morphisms for CAP[133X
+      18.3-1 IsFpGradedLeftOrRightModulesMorphism
+      18.3-2 IsFpGradedLeftModulesMorphism
+      18.3-3 IsFpGradedRightModulesMorphism
   
   
   [32X
