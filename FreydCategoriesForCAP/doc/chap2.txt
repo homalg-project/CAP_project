@@ -208,9 +208,9 @@
   [6XReturns:[106X  [33X[0;10Yan object in C[133X
   
   [33X[0;0YThe  arguments are an additive closure category [3XC[103X of a category [3XU[103X and a list
-  [3XL[103X  whose  first  entry is a non-negative integer and second entry is a list.
-  The  output  is  an object in [3XC[103X which is a formal direct sum of at most [3XL[103X[1]
-  objects in [3XU[103X each computed via [10XRandomObjectByList[110X([3XU[103X,[3XL[103X[2]).[133X
+  [3XL[103X  whose first entry is a non-empty list of non-negative integers and second
+  entry  is  a list. The output is an object in [3XC[103X which is a formal direct sum
+  of [10XRandom[110X([3XL[103X[1]) objects in [3XU[103X each computed via [10XRandomObjectByList[110X([3XU[103X,[3XL[103X[2]).[133X
   
   [1X2.5-2 RandomObjectByInteger[101X
   
