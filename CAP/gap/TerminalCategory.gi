@@ -24,18 +24,16 @@ BindGlobal( "IsCapTerminalCategoryMorphismRep", IsMorphismInCapTerminalCategoryW
 
 InstallGlobalFunction( CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY,
   function( input_record )
-    local completed_record, category_filter,
-          list_of_operations_to_install, operation_name, info, with_given_object_name,
-          properties, excluded_properties, T;
+    local completed_record, list_of_operations_to_install, skip, info, properties, excluded_properties, T, operation_name;
     
     completed_record := ShallowCopy( input_record );
     
     list_of_operations_to_install :=
       Concatenation( List( RecNames( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD ), p -> CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.(p) ) );
     
-    list_of_operations_to_install := Set( list_of_operations_to_install );
+    skip := [ ];
     
-    for operation_name in ShallowCopy( list_of_operations_to_install ) do
+    for operation_name in list_of_operations_to_install do
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name);
         
         ## Do not install universal morphisms but their
@@ -47,22 +45,19 @@ InstallGlobalFunction( CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY,
                 Add( list_of_operations_to_install, info.with_given_without_given_name_pair[2] );
             fi;
             if IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(info.with_given_without_given_name_pair[2]).with_given_object_name ) then
-                Remove( list_of_operations_to_install, Position( list_of_operations_to_install, operation_name ) );
-                with_given_object_name := CAP_INTERNAL_METHOD_NAME_RECORD.(info.with_given_without_given_name_pair[2]).with_given_object_name;
-                if not with_given_object_name in list_of_operations_to_install then
-                    Add( list_of_operations_to_install, with_given_object_name );
-                fi;
+                Add( skip, operation_name );
+                Add( list_of_operations_to_install, CAP_INTERNAL_METHOD_NAME_RECORD.(info.with_given_without_given_name_pair[2]).with_given_object_name );
             fi;
         fi;
         
-        # Do not install boolean operations
+        # Do not install boolean operations. For example `IsEndomorphism` is not always true for a morphism in a terminal category with multiple objects.
         if info.return_type = "bool" then
-            Remove( list_of_operations_to_install, Position( list_of_operations_to_install, operation_name ) );
+            Add( skip, operation_name );
         fi;
       
     od;
     
-    list_of_operations_to_install := Set( list_of_operations_to_install );
+    list_of_operations_to_install := Difference( list_of_operations_to_install, skip );
     
     completed_record.list_of_operations_to_install := list_of_operations_to_install;
     
@@ -81,7 +76,11 @@ InstallGlobalFunction( CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY,
     ## can still set IsInitialCategory = true manually, if the doctrine is clear from the context.
     Add( excluded_properties, "IsInitialCategory" );
     
-    properties := Difference( properties, excluded_properties );
+    properties := Filtered( properties, p -> not ForAny( excluded_properties, e -> e = p or e in ListImpliedFilters( FilterByName( p ) ) ) );
+    
+    Add( properties, "IsTerminalCategory" );
+    
+    completed_record.properties := properties;
     
     if not IsBound( completed_record.commutative_ring_of_linear_category ) then
         completed_record.commutative_ring_of_linear_category := Integers;
@@ -98,33 +97,31 @@ InstallGlobalFunction( CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY,
         
     end );
     
-    SetIsTerminalCategory( T, true );
-    
     return T;
     
 end );
 
 #########################################
 #
-# Terminal category
+# Terminal category with a single object
 #
 #########################################
 
 ##
-InstallGlobalFunction( TerminalCategory,
+InstallGlobalFunction( TerminalCategoryWithSingleObject,
   function( )
     local name, category_filter, category_object_filter, category_morphism_filter,
           create_func_object, create_func_morphism,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           T;
     
-    name := "TerminalCategory( )";
+    name := "TerminalCategoryWithSingleObject( )";
     
     category_filter := IsCapTerminalCategoryWithSingleObject;
     
     category_object_filter := IsObjectInCapTerminalCategoryWithSingleObject and HasIsZeroForObjects and IsZeroForObjects;
     
-    category_morphism_filter := IsMorphismInCapTerminalCategoryWithSingleObject and HasIsZeroForMorphisms and IsZeroForMorphisms;
+    category_morphism_filter := IsMorphismInCapTerminalCategoryWithSingleObject and HasIsZeroForMorphisms and IsZeroForMorphisms and HasIsOne and IsOne;
     
     ## e.g., ZeroObject, DirectSum
     create_func_object :=
@@ -133,7 +130,7 @@ InstallGlobalFunction( TerminalCategory,
             return """
                 function( input_arguments... )
                     
-                    return ObjectConstructor( cat, [ ] );
+                    return ObjectConstructor( cat, fail );
                     
                 end
             """;
@@ -147,7 +144,7 @@ InstallGlobalFunction( TerminalCategory,
             return """
                 function( input_arguments... )
                     
-                    return MorphismConstructor( cat, top_source, [ ], top_range );
+                    return MorphismConstructor( cat, top_source, fail, top_range );
                     
                 end
             """;
@@ -228,28 +225,17 @@ InstallGlobalFunction( TerminalCategory,
 end );
 
 ##
-BindGlobal( "CAP_INTERNAL_CREATE_TerminalCategory",
-  function( )
-    local cat;
-    
-    return TerminalCategory();
-    
-end );
-
-##
 InstallMethod( UniqueObject,
                [ IsCapTerminalCategoryWithSingleObject ],
                
   function( category )
     local object;
     
-    object := CreateCapCategoryObjectWithAttributes( category, IsZeroForObjects, true );
-    
-    SetIsWellDefined( object, true );
+    object := ObjectConstructor( category, fail );
     
     return object;
     
-end ); 
+end );
 
 ##
 InstallMethod( UniqueMorphism,
@@ -260,9 +246,7 @@ InstallMethod( UniqueMorphism,
     
     object := UniqueObject( category );
     
-    morphism := CreateCapCategoryMorphismWithAttributes( category, object, object, IsOne, true );
-    
-    SetIsWellDefined( morphism, true );
+    morphism := MorphismConstructor( category, object, fail, object );
     
     return morphism;
     
@@ -343,14 +327,10 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
     
     ## prevent strictness
     properties := Set( List( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST, a -> a[1] ) );
-    excluded_strict_properties := Filtered( properties, p -> "IsStrictMonoidalCategory" in ListImpliedFilters( FilterByName( p ) ) );
-    excluded_strict_properties := Concatenation( excluded_strict_properties, Filtered( properties, p -> "IsStrictCartesianCategory" in ListImpliedFilters( FilterByName( p ) ) ) );
-    excluded_strict_properties := Concatenation( excluded_strict_properties, Filtered( properties, p -> "IsStrictCocartesianCategory" in ListImpliedFilters( FilterByName( p ) ) ) );
-    excluded_strict_properties := Concatenation( excluded_strict_properties, [ "IsStrictMonoidalCategory", "IsStrictCartesianCategory", "IsStrictCocartesianCategory" ] );
+    excluded_strict_properties := Filtered( properties, p -> StartsWith( p, "IsStrict" ) );
     
     ## prevent skeletality
-    excluded_skeletal_properties := Filtered( properties, p -> "IsSkeletalCategory" in ListImpliedFilters( FilterByName( p ) ) );
-    Add( excluded_skeletal_properties, "IsSkeletalCategory" );
+    excluded_skeletal_properties := [ "IsSkeletalCategory" ];
     
     excluded_properties := Concatenation( excluded_strict_properties, excluded_skeletal_properties );
     
@@ -421,7 +401,7 @@ InstallMethod( FunctorFromTerminalCategory,
   function( object )
     local functor;
     
-    functor := CapFunctor( Concatenation( "InjectionInto", Name( CapCategory( object ) ) ), CAP_INTERNAL_TERMINAL_CATEGORY, CapCategory( object ) );
+    functor := CapFunctor( Concatenation( "InjectionInto", Name( CapCategory( object ) ) ), AsCapCategory( TerminalObject( CapCat ) ), CapCategory( object ) );
     
     functor!.terminal_object_functor_object := object;
     
@@ -447,8 +427,8 @@ end );
 
 ##
 #= comment for Julia
-InstallMethod( FunctorFromTerminalCategory,
-               [ IsCapCategoryMorphism and IsOne ],
+InstallOtherMethod( FunctorFromTerminalCategory,
+                    [ IsCapCategoryMorphism and IsOne ],
                
   morphism -> FunctorFromTerminalCategory( Source( morphism ) )
   

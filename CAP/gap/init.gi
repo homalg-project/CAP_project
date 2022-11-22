@@ -47,7 +47,7 @@ BindGlobal( "init_CAP", function ( )
     
     BindGlobal( "CapCat", CAP_INTERNAL_CREATE_Cat( ) );
     
-    BindGlobal( "CAP_INTERNAL_TERMINAL_CATEGORY", CAP_INTERNAL_CREATE_TerminalCategory( ) );
+    BindGlobal( "CAP_INTERNAL_TERMINAL_CATEGORY", TerminalCategoryWithSingleObject( ) );
     
     BindGlobal( "CAP_INTERNAL_TERMINAL_CATEGORY_AS_CAT_OBJECT", AsCatObject( CAP_INTERNAL_TERMINAL_CATEGORY ) );
     
