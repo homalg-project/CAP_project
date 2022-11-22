@@ -1303,6 +1303,79 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         
     fi;
     
+    INSTALL_FUNCTIONS_OF_RANDOM_METHODS_FOR_ADDITIVE_CLOSURE( category );
+    
+end );
+
+##
+InstallGlobalFunction( INSTALL_FUNCTIONS_OF_RANDOM_METHODS_FOR_ADDITIVE_CLOSURE,
+  function( category )
+    local underlying_category;
+    
+    underlying_category := UnderlyingCategory( category );
+    
+    ## Random Methods by Integers
+    ##
+    if CanCompute( underlying_category, "RandomObjectByInteger" ) then
+      
+      AddRandomObjectByInteger( category,
+        function( cat, n )
+          
+          if IsNegInt( n ) then
+              Error( "the integer passed to 'RandomObjectByInteger' in ", Name( category ), " must be a non-negative integer!\n" );
+          fi;
+          
+          return AdditiveClosureObject( List( [ 1 .. Random( 0, n ) ], i -> RandomObjectByInteger( underlying_category, n ) ), cat );
+          
+      end );
+      
+    fi;
+    
+    if CanCompute( underlying_category, "RandomMorphismWithFixedSourceAndRangeByInteger" ) then
+      
+      AddRandomMorphismWithFixedSourceAndRangeByInteger( category,
+        function( cat, S, R, n )
+          
+          return AdditiveClosureMorphism(
+                    S,
+                    List( ObjectList( S ), s -> List( ObjectList( R ), r -> RandomMorphismWithFixedSourceAndRangeByInteger( underlying_category, s, r, n ) ) ),
+                    R );
+      
+      end );
+      
+    fi;
+    
+    ## Random Methods by Lists
+    ##
+    if CanCompute( underlying_category, "RandomObjectByList" ) then
+      
+      AddRandomObjectByList( category,
+        function( cat, L )
+          
+          if Length( L ) <> 2 or (not IsInt( L[1] )) or IsNegInt( L[1] ) or (not IsList( L[2] )) then
+              Error( "the list passed to 'RandomObjectByList' in", Name( category ), " must be a list of length two consiting of a non-negative integer and a list!\n" );
+          fi;
+          
+          return AdditiveClosureObject( List( [ 1 .. Random( 0, L[1] ) ], i -> RandomObjectByList( underlying_category, L[2] ) ), cat );
+      
+      end );
+      
+    fi;
+    
+    if CanCompute( underlying_category, "RandomMorphismWithFixedSourceAndRangeByList" ) then
+      
+      AddRandomMorphismWithFixedSourceAndRangeByList( category,
+        function( cat, S, R, L )
+          
+          return AdditiveClosureMorphism(
+                    S,
+                    List( ObjectList( S ), s -> List( ObjectList( R ), r -> RandomMorphismWithFixedSourceAndRangeByList( underlying_category, s, r, L ) ) ),
+                    R );
+      
+      end );
+      
+    fi;
+    
 end );
 
 ####################################
