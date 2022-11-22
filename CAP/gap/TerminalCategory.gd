@@ -12,29 +12,21 @@
 ########################################
 
 #! @Description
-#!  The &GAP; type of a terminal category.
+#!  The &GAP; type of a terminal category with a single object.
 #! @Arguments T
 DeclareCategory( "IsCapTerminalCategoryWithSingleObject",
         IsCapCategory );
 
 #! @Description
-#!  The &GAP; type of a cell in a terminal category.
-#! @Arguments T
-DeclareCategory( "IsCellInCapTerminalCategoryWithSingleObject",
-        IsCapCategoryCell );
-
-#! @Description
-#!  The &GAP; type of an object in a terminal category.
+#!  The &GAP; type of an object in a terminal category with a single object.
 #! @Arguments T
 DeclareCategory( "IsObjectInCapTerminalCategoryWithSingleObject",
-        IsCellInCapTerminalCategoryWithSingleObject and
         IsCapCategoryObject );
 
 #! @Description
-#!  The &GAP; type of a morphism in a terminal category.
+#!  The &GAP; type of a morphism in a terminal category with a single object.
 #! @Arguments T
 DeclareCategory( "IsMorphismInCapTerminalCategoryWithSingleObject",
-        IsCellInCapTerminalCategoryWithSingleObject and
         IsCapCategoryMorphism );
 
 #! @Description
@@ -44,23 +36,15 @@ DeclareCategory( "IsCapTerminalCategoryWithMultipleObjects",
         IsCapCategory );
 
 #! @Description
-#!  The &GAP; type of a cell in a terminal category with multiple objects.
-#! @Arguments T
-DeclareCategory( "IsCellInCapTerminalCategoryWithMultipleObjects",
-        IsCapCategoryCell );
-
-#! @Description
 #!  The &GAP; type of an object in a terminal category with multiple objects.
 #! @Arguments T
 DeclareCategory( "IsObjectInCapTerminalCategoryWithMultipleObjects",
-        IsCellInCapTerminalCategoryWithMultipleObjects and
         IsCapCategoryObject );
 
 #! @Description
 #!  The &GAP; type of a morphism in a terminal category with multiple objects.
 #! @Arguments T
 DeclareCategory( "IsMorphismInCapTerminalCategoryWithMultipleObjects",
-        IsCellInCapTerminalCategoryWithMultipleObjects and
         IsCapCategoryMorphism );
 
 AddCategoricalProperty( [ "IsTerminalCategory", "IsTerminalCategory" ] );
@@ -71,21 +55,17 @@ AddCategoricalProperty( [ "IsTerminalCategory", "IsTerminalCategory" ] );
 #
 ########################################
 
-DeclareGlobalName( "CAP_INTERNAL_CREATE_TerminalCategory" );
-
 #! @Description
-#!  Construct a terminal category.
-DeclareGlobalFunction( "TerminalCategory" );
-#! @InsertChunk TerminalCategory
+#!  Construct a terminal category with a single object.
+DeclareGlobalFunction( "TerminalCategoryWithSingleObject" );
 
 #! @Description
 #!  Construct a terminal category with multiple objects.
 DeclareGlobalFunction( "TerminalCategoryWithMultipleObjects" );
-#! @InsertChunk TerminalCategoryWithMultipleObjects
 
 #! @Description
 #!  This function takes a record of options suited for CategoryConstructor. 
-#!  It makes common adjustments from TerminalCategory and TerminalCategoryWithMultipleObjects
+#!  It makes common adjustments for TerminalCategoryWithSingleObject and TerminalCategoryWithMultipleObjects
 #!  to the list of operations to install and the categorical properties of the given record,
 #!  before passing it on to CategoryConstructor.
 #! @Arguments options
@@ -99,13 +79,13 @@ DeclareGlobalFunction( "CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY" );
 #########################################
 
 #! @Description
-#!  The unique object in a terminal category.
+#!  The unique object in a terminal category with a single object.
 #! @Returns a &CAP; object
 DeclareAttribute( "UniqueObject",
                   IsCapTerminalCategoryWithSingleObject );
 
 #! @Description
-#!  The unique morphism in a terminal category.
+#!  The unique morphism in a terminal category with a single object.
 #! @Returns a &CAP; morphism
 DeclareAttribute( "UniqueMorphism",
                   IsCapTerminalCategoryWithSingleObject );
@@ -117,22 +97,8 @@ DeclareAttribute( "UniqueMorphism",
 #########################################
 
 #! @Description
-#!  A functor from a terminal category to another category with a given cell **cell**.
-#! @Arguments cell
-#! @Returns a &CAP; morphism
+#!  A functor from `AsCapCategory( TerminalObject( CapCat ) )` mapping the unique object to <A>object</A>.
+#! @Arguments object
+#! @Returns a &CAP; functor
 DeclareAttribute( "FunctorFromTerminalCategory",
-                  IsCapCategoryCell );
-
-#########################################
-#
-#! @Section Variables
-#
-#########################################
-
-#! @Description
-#!  A terminal category.
-DeclareGlobalName( "CAP_INTERNAL_TERMINAL_CATEGORY" );
-
-#! @Description
-#!  A terminal category as an object in CAT.
-DeclareGlobalName( "CAP_INTERNAL_TERMINAL_CATEGORY_AS_CAT_OBJECT" );
+                  IsCapCategoryObject );

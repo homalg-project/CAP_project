@@ -560,45 +560,25 @@ AddTerminalObject( cat,
                    
   function( )
     
-    return CAP_INTERNAL_TERMINAL_CATEGORY_AS_CAT_OBJECT;
-    
-end );
-
-##
-AddUniversalMorphismIntoTerminalObject( cat,
-                               
-  function( category )
-    local new_functor;
-    
-    new_functor := CapFunctor( Concatenation( "The terminal of ", Name( AsCapCategory( category ) ) ), category, CAP_INTERNAL_TERMINAL_CATEGORY_AS_CAT_OBJECT );
-    
-    AddObjectFunction( new_functor,
-                       
-                       function( arg ) return UniqueObject( CAP_INTERNAL_TERMINAL_CATEGORY ); end );
-    
-    AddMorphismFunction( new_functor,
-                         
-                         function( arg ) return UniqueMorphism( CAP_INTERNAL_TERMINAL_CATEGORY ); end );
-    
-    return new_functor;
+    return AsCatObject( TerminalCategoryWithSingleObject( ) );
     
 end );
 
 ##
 AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( cat,
                                
-  function( category, cat_obj )
+  function( category, terminal_cat )
     local new_functor;
     
-    new_functor := CapFunctor( Concatenation( "The terminal of ", Name( AsCapCategory( category ) ) ), category, CAP_INTERNAL_TERMINAL_CATEGORY_AS_CAT_OBJECT );
+    new_functor := CapFunctor( Concatenation( "The terminal of ", Name( AsCapCategory( category ) ) ), category, terminal_cat );
     
     AddObjectFunction( new_functor,
                        
-                       function( arg ) return UniqueObject( CAP_INTERNAL_TERMINAL_CATEGORY ); end );
+                       function( arg ) return UniqueObject( AsCapCategory( terminal_cat ) ); end );
     
     AddMorphismFunction( new_functor,
                          
-                         function( arg ) return UniqueMorphism( CAP_INTERNAL_TERMINAL_CATEGORY ); end );
+                         function( arg ) return UniqueMorphism( AsCapCategory( terminal_cat ) ); end );
     
     return new_functor;
     
