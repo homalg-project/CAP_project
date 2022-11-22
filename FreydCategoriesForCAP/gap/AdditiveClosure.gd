@@ -260,8 +260,8 @@ DeclareOperation( "\/",
 if false then
 
 #! @Description
-#! The arguments are an additive closure category <A>C</A> of a category <A>U</A> and a list <A>L</A> whose first entry is a non-negative integer and second entry is a list.
-#! The output is an object in <A>C</A> which is a formal direct sum of at most <A>L</A>[1] objects in <A>U</A> each computed via <C>RandomObjectByList</C>(<A>U</A>,<A>L</A>[2]).
+#! The arguments are an additive closure category <A>C</A> of a category <A>U</A> and a list <A>L</A> whose first entry is a non-empty list of non-negative integers and second entry is a list.
+#! The output is an object in <A>C</A> which is a formal direct sum of <C>Random</C>(<A>L</A>[1]) objects in <A>U</A> each computed via <C>RandomObjectByList</C>(<A>U</A>,<A>L</A>[2]).
 #! @Returns an object in C
 #! @Arguments C, L
 DeclareOperation( RandomObjectByList, [ IsAdditiveClosureCategory, IsList ] );
