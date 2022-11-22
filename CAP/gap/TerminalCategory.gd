@@ -102,17 +102,3 @@ DeclareAttribute( "UniqueMorphism",
 #! @Returns a &CAP; functor
 DeclareAttribute( "FunctorFromTerminalCategory",
                   IsCapCategoryObject );
-
-#########################################
-#
-#! @Section Variables
-#
-#########################################
-
-#! @Description
-#!  A terminal category.
-DeclareGlobalName( "CAP_INTERNAL_TERMINAL_CATEGORY" );
-
-#! @Description
-#!  A terminal category as an object in CAT.
-DeclareGlobalName( "CAP_INTERNAL_TERMINAL_CATEGORY_AS_CAT_OBJECT" );
