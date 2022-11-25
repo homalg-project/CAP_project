@@ -11,7 +11,13 @@ BindGlobal( "TheFamilyOfDerivationGraphs",
             NewFamily( "TheFamilyOfDerivationGraphs" ) );
 BindGlobal( "TheFamilyOfOperationWeightLists",
             NewFamily( "TheFamilyOfOperationWeightLists" ) );
+BindGlobal( "TheFamilyOfStringMinHeaps",
+            NewFamily( "TheFamilyOfStringMinHeaps" ) );
 
+BindGlobal( "TheTypeOfDerivedMethods", NewType( TheFamilyOfDerivations, IsDerivedMethod ) );
+BindGlobal( "TheTypeOfDerivationsGraphs", NewType( TheFamilyOfDerivationGraphs, IsDerivedMethodGraph ) );
+BindGlobal( "TheTypeOfOperationWeightLists", NewType( TheFamilyOfOperationWeightLists, IsOperationWeightList ) );
+BindGlobal( "TheTypeOfStringMinHeaps", NewType( TheFamilyOfStringMinHeaps, IsStringMinHeap ) );
 
 InstallGlobalFunction( "ActivateDerivationInfo",
   function( )
@@ -41,7 +47,7 @@ function( name, target_op, used_op_names_with_multiples_and_category_getters, we
     fi;
     
     return ObjectifyWithAttributes(
-        rec( ), NewType( TheFamilyOfDerivations, IsDerivedMethod ),
+        rec( ), TheTypeOfDerivedMethods,
         DerivationName, name,
         DerivationWeight, weight,
         DerivationFunction, func,
@@ -134,9 +140,7 @@ function( operations )
   local G, op_name;
   G := rec( derivations_by_target := rec(),
               derivations_by_used_ops := rec() );
-  G := ObjectifyWithAttributes( G,
-      NewType( TheFamilyOfDerivationGraphs,
-               IsDerivedMethodGraph ) );
+  G := ObjectifyWithAttributes( G, TheTypeOfDerivationsGraphs );
   
   SetOperations( G, operations );
   
@@ -415,7 +419,7 @@ function( C, G )
     od;
     
     owl := ObjectifyWithAttributes(
-        rec( operation_weights := operation_weights, operation_derivations := operation_derivations ), NewType( TheFamilyOfOperationWeightLists, IsOperationWeightList ),
+        rec( operation_weights := operation_weights, operation_derivations := operation_derivations ), TheTypeOfOperationWeightLists,
         DerivationGraph, G,
         CategoryOfOperationWeightList, C
     );
@@ -696,13 +700,9 @@ function( owl, op_name )
 end );
 
 
-BindGlobal( "TheFamilyOfStringMinHeaps",
-            NewFamily( "TheFamilyOfStringMinHeaps" ) );
-
 InstallGlobalFunction( StringMinHeap,
 function()
-  return Objectify( NewType( TheFamilyOfStringMinHeaps,
-                             IsStringMinHeap ),
+  return Objectify( TheTypeOfStringMinHeaps,
                     rec( key := function(n) return n[2]; end,
                          str := function(n) return n[1]; end,
                          array := [],
