@@ -67,8 +67,6 @@ DeclareGlobalVariable( "CAP_INTERNAL_DERIVATION_GRAPH" );
 
 DeclareGlobalVariable( "CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST" );
 
-## Syntax for categorical property with no dual counterpart:
-## [ , "property" ]
 InstallValue( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST, [ ] );
 
 DeclareGlobalVariable( "CATEGORIES_FAMILY_PROPERTIES" );
