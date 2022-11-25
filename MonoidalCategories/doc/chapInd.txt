@@ -184,6 +184,10 @@
   [2XInternalHomOnObjects[102X, for IsCapCategoryObject, IsCapCategoryObject 1.5-1 
   [2XInternalHomToTensorProductAdjunctionMap[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.5-10 
   [2XInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 1.5-11 
+  [2XIsBraidedMonoidalCategory[102X, for IsCapCategory 5.1-1 
+  [2XIsClosedMonoidalCategory[102X, for IsCapCategory 5.1-2 
+  [2XIsCoclosedMonoidalCategory[102X, for IsCapCategory 5.1-3 
+  [2XIsMonoidalCategory[102X, for IsCapCategory 5.1-4 
   [2XIsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit[102X, for IsCapCategoryObject 1.6-29 
   [2XIsomorphismFromDualObjectToInternalHomIntoTensorUnit[102X, for IsCapCategoryObject 1.5-29 
   [2XIsomorphismFromInternalCoHomFromTensorUnitToCoDualObject[102X, for IsCapCategoryObject 1.6-30 
@@ -200,6 +204,12 @@
   [2XIsomorphismFromObjectToInternalHomWithGivenInternalHom[102X, for IsCapCategoryObject, IsCapCategoryObject 1.5-35 
   [2XIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom[102X, for IsCapCategoryObject, IsCapCategoryObject 1.10-2 
   [2XIsomorphismFromTensorProductWithDualObjectToInternalHom[102X, for IsCapCategoryObject, IsCapCategoryObject 1.9-1 
+  [2XIsRigidSymmetricClosedMonoidalCategory[102X, for IsCapCategory 5.1-6 
+  [2XIsRigidSymmetricCoclosedMonoidalCategory[102X, for IsCapCategory 5.1-7 
+  [2XIsStrictMonoidalCategory[102X, for IsCapCategory 5.1-5 
+  [2XIsSymmetricClosedMonoidalCategory[102X, for IsCapCategory 5.1-8 
+  [2XIsSymmetricCoclosedMonoidalCategory[102X, for IsCapCategory 5.1-9 
+  [2XIsSymmetricMonoidalCategory[102X, for IsCapCategory 5.1-10 
   [2XLambdaElimination[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.5-33 
   [2XLambdaIntroduction[102X, for IsCapCategoryMorphism 1.5-32 
   [2XLeftDistributivityExpanding[102X, for IsCapCategoryObject, IsList 1.2-1 

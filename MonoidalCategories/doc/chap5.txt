@@ -1,0 +1,76 @@
+  
+  [1X5 [33X[0;0YMonoidalCategories automatic generated documentation[133X[101X
+  
+  
+  [1X5.1 [33X[0;0YMonoidalCategories automatic generated documentation of properties[133X[101X
+  
+  [1X5.1-1 IsBraidedMonoidalCategory[101X
+  
+  [33X[1;0Y[29X[2XIsBraidedMonoidalCategory[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of the category [3XC[103X being braided monoidal.[133X
+  
+  [1X5.1-2 IsClosedMonoidalCategory[101X
+  
+  [33X[1;0Y[29X[2XIsClosedMonoidalCategory[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of the category [3XC[103X being closed monoidal.[133X
+  
+  [1X5.1-3 IsCoclosedMonoidalCategory[101X
+  
+  [33X[1;0Y[29X[2XIsCoclosedMonoidalCategory[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of the category [3XC[103X being coclosed monoidal.[133X
+  
+  [1X5.1-4 IsMonoidalCategory[101X
+  
+  [33X[1;0Y[29X[2XIsMonoidalCategory[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of the category [3XC[103X being monoidal.[133X
+  
+  [1X5.1-5 IsStrictMonoidalCategory[101X
+  
+  [33X[1;0Y[29X[2XIsStrictMonoidalCategory[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of the category [3XC[103X being strict monoidal.[133X
+  
+  [1X5.1-6 IsRigidSymmetricClosedMonoidalCategory[101X
+  
+  [33X[1;0Y[29X[2XIsRigidSymmetricClosedMonoidalCategory[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of the category [3XC[103X being rigid symmetric closed monoidal.[133X
+  
+  [1X5.1-7 IsRigidSymmetricCoclosedMonoidalCategory[101X
+  
+  [33X[1;0Y[29X[2XIsRigidSymmetricCoclosedMonoidalCategory[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of the category [3XC[103X being rigid symmetric coclosed monoidal.[133X
+  
+  [1X5.1-8 IsSymmetricClosedMonoidalCategory[101X
+  
+  [33X[1;0Y[29X[2XIsSymmetricClosedMonoidalCategory[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of the category [3XC[103X being symmetric closed monoidal.[133X
+  
+  [1X5.1-9 IsSymmetricCoclosedMonoidalCategory[101X
+  
+  [33X[1;0Y[29X[2XIsSymmetricCoclosedMonoidalCategory[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of the category [3XC[103X being symmetric coclosed monoidal.[133X
+  
+  [1X5.1-10 IsSymmetricMonoidalCategory[101X
+  
+  [33X[1;0Y[29X[2XIsSymmetricMonoidalCategory[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of the category [3XC[103X being symmetric monoidal.[133X
+  
