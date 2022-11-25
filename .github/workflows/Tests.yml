@@ -10,6 +10,12 @@ on:
     - cron: "0 4 * * *" # after gap-docker(-master) is rebuilt
   workflow_dispatch:
 
+# cancel runs for pull requests on force push
+# https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#example-using-a-fallback-value
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}-${{ github.run_attempt }}
+  cancel-in-progress: true
+
 jobs:
   test:
     strategy:
