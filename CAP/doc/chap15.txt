@@ -46,6 +46,13 @@
   
   [33X[0;0YThe [5XGAP[105X type of a morphism in a terminal category with multiple objects.[133X
   
+  [1X15.1-7 IsTerminalCategory[101X
+  
+  [33X[1;0Y[29X[2XIsTerminalCategory[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of the category [3XC[103X being terminal.[133X
+  
   
   [1X15.2 [33X[0;0YConstructors[133X[101X
   

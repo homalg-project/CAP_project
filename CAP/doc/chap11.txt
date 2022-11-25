@@ -33,7 +33,7 @@
         [2XAddMorphismRepresentation[102X ([14X3.6-3[114X) to the category[133X
   
   [30X    [33X[0;6Y[10Xcommutative_ring_of_linear_category[110X   (optional):   ring  attached  as
-        [2XCommutativeRingOfLinearCategory[102X ([14X1.3-6[114X) to the category[133X
+        [2XCommutativeRingOfLinearCategory[102X ([14X1.4-6[114X) to the category[133X
   
   [30X    [33X[0;6Y[10Xproperties[110X  (optional):  list  of  categorical properties the category
         will have, see [10XCAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST[110X[133X

@@ -86,7 +86,7 @@
   [30X    [33X[0;6YAddfunction:  If  the  result  is  a category cell, it is added to the
         category  for  which  the  function was installed. This is disabled by
         default  and  can  be  enabled  via  [2XEnableAddForCategoricalOperations[102X
-        ([14X1.11-1[114X).[133X
+        ([14X1.12-1[114X).[133X
   
   
   [1X7.2 [33X[0;0YAdd Method[133X[101X
