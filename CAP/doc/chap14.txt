@@ -712,7 +712,208 @@
   [4X[32X[104X
   
   
-  [1X14.11 [33X[0;0YGeneralized Morphisms Category[133X[101X
+  [1X14.11 [33X[0;0YTerminal category[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "MonoidalCategories" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XT := TerminalCategoryWithMultipleObjects( );[127X[104X
+    [4X[28XTerminalCategoryWithMultipleObjects( )[128X[104X
+    [4X[25Xgap>[125X [27XInfoOfInstalledOperationsOfCategory( T );[127X[104X
+    [4X[28X63 primitive operations were used to derive 276 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsCategoryWithDecidableColifts[128X[104X
+    [4X[28X* IsCategoryWithDecidableLifts[128X[104X
+    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28X* IsLinearCategoryOverCommutativeRing[128X[104X
+    [4X[28X* IsAbelianCategoryWithEnoughInjectives[128X[104X
+    [4X[28X* IsAbelianCategoryWithEnoughProjectives[128X[104X
+    [4X[28X* IsRigidSymmetricClosedMonoidalCategory[128X[104X
+    [4X[28X* IsRigidSymmetricCoclosedMonoidalCategory[128X[104X
+    [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28X* IsLocallyOfFiniteInjectiveDimension[128X[104X
+    [4X[28X* IsLocallyOfFiniteProjectiveDimension[128X[104X
+    [4X[28X* IsTerminalCategory[128X[104X
+    [4X[25Xgap>[125X [27Xi := InitialObject( T );[127X[104X
+    [4X[28X<A zero object in TerminalCategoryWithMultipleObjects( )>[128X[104X
+    [4X[25Xgap>[125X [27Xt := TerminalObject( T );[127X[104X
+    [4X[28X<A zero object in TerminalCategoryWithMultipleObjects( )>[128X[104X
+    [4X[25Xgap>[125X [27Xz := ZeroObject( T );[127X[104X
+    [4X[28X<A zero object in TerminalCategoryWithMultipleObjects( )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( i );[127X[104X
+    [4X[28XZeroObject[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( t );[127X[104X
+    [4X[28XZeroObject[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( z );[127X[104X
+    [4X[28XZeroObject[128X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( i, z );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( t, z );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xid_z := IdentityMorphism( z );[127X[104X
+    [4X[28X<A zero, identity morphism in TerminalCategoryWithMultipleObjects( )>[128X[104X
+    [4X[25Xgap>[125X [27Xfn_z := ZeroObjectFunctorial( T );[127X[104X
+    [4X[28X<A zero, isomorphism in TerminalCategoryWithMultipleObjects( )>[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForMorphisms( id_z, fn_z );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( id_z, fn_z );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xa := "a" / T;[127X[104X
+    [4X[28X<A zero object in TerminalCategoryWithMultipleObjects( )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( a );[127X[104X
+    [4X[28Xa[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( a );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xaa := ObjectConstructor( T, "a" );[127X[104X
+    [4X[28X<A zero object in TerminalCategoryWithMultipleObjects( )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( aa );[127X[104X
+    [4X[28Xa[128X[104X
+    [4X[25Xgap>[125X [27Xa = aa;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xb := "b" / T;[127X[104X
+    [4X[28X<A zero object in TerminalCategoryWithMultipleObjects( )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( b );[127X[104X
+    [4X[28Xb[128X[104X
+    [4X[25Xgap>[125X [27Xa = b;[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xt := TensorProduct( a, b );[127X[104X
+    [4X[28X<A zero object in TerminalCategoryWithMultipleObjects( )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( t );[127X[104X
+    [4X[28XTensorProductOnObjects[128X[104X
+    [4X[25Xgap>[125X [27Xa = t;[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XTensorProduct( a, a ) = t;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xm := MorphismConstructor( a, "m", b );[127X[104X
+    [4X[28X<A zero, isomorphism in TerminalCategoryWithMultipleObjects( )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( m );[127X[104X
+    [4X[28Xa[128X[104X
+    [4X[28X|[128X[104X
+    [4X[28X| m[128X[104X
+    [4X[28Xv[128X[104X
+    [4X[28Xb[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( m );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xn := MorphismConstructor( a, "n", b );[127X[104X
+    [4X[28X<A zero, isomorphism in TerminalCategoryWithMultipleObjects( )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( n );[127X[104X
+    [4X[28Xa[128X[104X
+    [4X[28X|[128X[104X
+    [4X[28X| n[128X[104X
+    [4X[28Xv[128X[104X
+    [4X[28Xb[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForMorphisms( m, n );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( m, n );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xm = n;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xid := IdentityMorphism( a );[127X[104X
+    [4X[28X<A zero, identity morphism in TerminalCategoryWithMultipleObjects( )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( id );[127X[104X
+    [4X[28Xa[128X[104X
+    [4X[28X|[128X[104X
+    [4X[28X| IdentityMorphism[128X[104X
+    [4X[28Xv[128X[104X
+    [4X[28Xa[128X[104X
+    [4X[25Xgap>[125X [27Xm = id;[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xid = MorphismConstructor( a, "xyz", a );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xz := ZeroMorphism( a, a );[127X[104X
+    [4X[28X<A zero, isomorphism in TerminalCategoryWithMultipleObjects( )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( z );[127X[104X
+    [4X[28Xa[128X[104X
+    [4X[28X|[128X[104X
+    [4X[28X| ZeroMorphism[128X[104X
+    [4X[28Xv[128X[104X
+    [4X[28Xa[128X[104X
+    [4X[25Xgap>[125X [27Xid = z;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsLiftable( m, n );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xlift := Lift( m, n );[127X[104X
+    [4X[28X<A zero, isomorphism in TerminalCategoryWithMultipleObjects( )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( lift );[127X[104X
+    [4X[28Xa[128X[104X
+    [4X[28X|[128X[104X
+    [4X[28X| Lift[128X[104X
+    [4X[28Xv[128X[104X
+    [4X[28Xa[128X[104X
+    [4X[25Xgap>[125X [27XIsColiftable( m, n );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xcolift := Colift( m, n );[127X[104X
+    [4X[28X<A zero, isomorphism in TerminalCategoryWithMultipleObjects( )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( colift );[127X[104X
+    [4X[28Xb[128X[104X
+    [4X[28X|[128X[104X
+    [4X[28X| Colift[128X[104X
+    [4X[28Xv[128X[104X
+    [4X[28Xb[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "MonoidalCategories" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XT := TerminalCategoryWithSingleObject( );[127X[104X
+    [4X[28XTerminalCategoryWithSingleObject( )[128X[104X
+    [4X[25Xgap>[125X [27XInfoOfInstalledOperationsOfCategory( T );[127X[104X
+    [4X[28X63 primitive operations were used to derive 276 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsCategoryWithDecidableColifts[128X[104X
+    [4X[28X* IsCategoryWithDecidableLifts[128X[104X
+    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28X* IsLinearCategoryOverCommutativeRing[128X[104X
+    [4X[28X* IsAbelianCategoryWithEnoughInjectives[128X[104X
+    [4X[28X* IsAbelianCategoryWithEnoughProjectives[128X[104X
+    [4X[28X* IsRigidSymmetricClosedMonoidalCategory[128X[104X
+    [4X[28X* IsRigidSymmetricCoclosedMonoidalCategory[128X[104X
+    [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28X* IsLocallyOfFiniteInjectiveDimension[128X[104X
+    [4X[28X* IsLocallyOfFiniteProjectiveDimension[128X[104X
+    [4X[28X* IsSkeletalCategory[128X[104X
+    [4X[28X* IsStrictMonoidalCategory[128X[104X
+    [4X[28X* IsTerminalCategory[128X[104X
+    [4X[25Xgap>[125X [27Xi := InitialObject( T );[127X[104X
+    [4X[28X<A zero object in TerminalCategoryWithSingleObject( )>[128X[104X
+    [4X[25Xgap>[125X [27Xt := TerminalObject( T );[127X[104X
+    [4X[28X<A zero object in TerminalCategoryWithSingleObject( )>[128X[104X
+    [4X[25Xgap>[125X [27Xz := ZeroObject( T );[127X[104X
+    [4X[28X<A zero object in TerminalCategoryWithSingleObject( )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( i );[127X[104X
+    [4X[28XA zero object in TerminalCategoryWithSingleObject( ).[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( t );[127X[104X
+    [4X[28XA zero object in TerminalCategoryWithSingleObject( ).[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( z );[127X[104X
+    [4X[28XA zero object in TerminalCategoryWithSingleObject( ).[128X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( i, z );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( t, z );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( z );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xid_z := IdentityMorphism( z );[127X[104X
+    [4X[28X<A zero, identity morphism in TerminalCategoryWithSingleObject( )>[128X[104X
+    [4X[25Xgap>[125X [27Xfn_z := ZeroObjectFunctorial( T );[127X[104X
+    [4X[28X<A zero, identity morphism in TerminalCategoryWithSingleObject( )>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( fn_z );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForMorphisms( id_z, fn_z );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( id_z, fn_z );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsLiftable( id_z, fn_z );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLift( id_z, fn_z );[127X[104X
+    [4X[28X<A zero, identity morphism in TerminalCategoryWithSingleObject( )>[128X[104X
+    [4X[25Xgap>[125X [27XIsColiftable( id_z, fn_z );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XColift( id_z, fn_z );[127X[104X
+    [4X[28X<A zero, identity morphism in TerminalCategoryWithSingleObject( )>[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X14.12 [33X[0;0YGeneralized Morphisms Category[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );[127X[104X
@@ -1081,7 +1282,7 @@
   [4X[32X[104X
   
   
-  [1X14.12 [33X[0;0YIsWellDefined[133X[101X
+  [1X14.13 [33X[0;0YIsWellDefined[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpacesForIsWellDefinedTest" );[127X[104X
@@ -1109,7 +1310,7 @@
   [4X[32X[104X
   
   
-  [1X14.13 [33X[0;0YKernel[133X[101X
+  [1X14.14 [33X[0;0YKernel[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpaces01" );[127X[104X
@@ -1219,7 +1420,7 @@
   [4X[32X[104X
   
   
-  [1X14.14 [33X[0;0YFiberProduct[133X[101X
+  [1X14.15 [33X[0;0YFiberProduct[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpacesForFiberProductTest" );[127X[104X
