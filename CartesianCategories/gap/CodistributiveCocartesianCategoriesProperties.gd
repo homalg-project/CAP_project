@@ -4,6 +4,11 @@
 # Declarations
 #
 
+#! @Description
+#!  The property of the category <A>C</A> being codistributive.
+#! @Arguments C
+DeclareProperty( "IsCodistributiveCategory", IsCapCategory );
+
 AddCategoricalProperty( [ "IsCodistributiveCategory", "IsDistributiveCategory" ] );
 
 InstallTrueMethod( IsCartesianCategory, IsCodistributiveCategory );

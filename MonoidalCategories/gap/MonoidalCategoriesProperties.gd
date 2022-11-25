@@ -16,10 +16,16 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalCategory  := Concatenation
 "RightUnitorInverseWithGivenTensorProduct"
 ], CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory );
 
-Perform(
-## This is the CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST
-    [
-      [ "IsMonoidalCategory", "IsMonoidalCategory" ],
-      [ "IsStrictMonoidalCategory", "IsStrictMonoidalCategory" ],
-    ],
-    AddCategoricalProperty );
+#! @Description
+#!  The property of the category <A>C</A> being monoidal.
+#! @Arguments C
+DeclareProperty( "IsMonoidalCategory", IsCapCategory );
+
+AddCategoricalProperty( [ "IsMonoidalCategory", "IsMonoidalCategory" ] );
+
+#! @Description
+#!  The property of the category <A>C</A> being strict monoidal.
+#! @Arguments C
+DeclareProperty( "IsStrictMonoidalCategory", IsCapCategory );
+
+AddCategoricalProperty( [ "IsStrictMonoidalCategory", "IsStrictMonoidalCategory" ] );
