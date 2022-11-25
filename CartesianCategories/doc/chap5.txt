@@ -1,0 +1,102 @@
+  
+  [1X5 [33X[0;0YCartesianCategories automatic generated documentation[133X[101X
+  
+  
+  [1X5.1 [33X[0;0YCartesianCategories automatic generated documentation of properties[133X[101X
+  
+  [1X5.1-1 IsBicartesianCategory[101X
+  
+  [33X[1;0Y[29X[2XIsBicartesianCategory[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of the category [3XC[103X being bicartesian.[133X
+  
+  [1X5.1-2 IsFiniteCompleteCategory[101X
+  
+  [33X[1;0Y[29X[2XIsFiniteCompleteCategory[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of the category [3XC[103X being finite complete.[133X
+  
+  [1X5.1-3 IsFiniteCocompleteCategory[101X
+  
+  [33X[1;0Y[29X[2XIsFiniteCocompleteCategory[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of the category [3XC[103X being finite cocomplete.[133X
+  
+  [1X5.1-4 IsCartesianCategory[101X
+  
+  [33X[1;0Y[29X[2XIsCartesianCategory[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of the category [3XC[103X being cartesian.[133X
+  
+  [1X5.1-5 IsStrictCartesianCategory[101X
+  
+  [33X[1;0Y[29X[2XIsStrictCartesianCategory[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [1X5.1-6 IsCartesianClosedCategory[101X
+  
+  [33X[1;0Y[29X[2XIsCartesianClosedCategory[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of the category [3XC[103X being cartesian closed.[133X
+  
+  [1X5.1-7 IsBicartesianClosedCategory[101X
+  
+  [33X[1;0Y[29X[2XIsBicartesianClosedCategory[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of the category [3XC[103X being bicartesian closed.[133X
+  
+  [1X5.1-8 IsCocartesianCategory[101X
+  
+  [33X[1;0Y[29X[2XIsCocartesianCategory[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of the category [3XC[103X being cocartesian.[133X
+  
+  [1X5.1-9 IsStrictCocartesianCategory[101X
+  
+  [33X[1;0Y[29X[2XIsStrictCocartesianCategory[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of the category [3XC[103X being strict cocartesian.[133X
+  
+  [1X5.1-10 IsCocartesianCoclosedCategory[101X
+  
+  [33X[1;0Y[29X[2XIsCocartesianCoclosedCategory[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of the category [3XC[103X being cocartesian coclosed.[133X
+  
+  [1X5.1-11 IsBicartesianCoclosedCategory[101X
+  
+  [33X[1;0Y[29X[2XIsBicartesianCoclosedCategory[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of the category [3XC[103X being bicartesian coclosed.[133X
+  
+  [1X5.1-12 IsCodistributiveCategory[101X
+  
+  [33X[1;0Y[29X[2XIsCodistributiveCategory[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of the category [3XC[103X being codistributive.[133X
+  
+  [1X5.1-13 IsDistributiveCategory[101X
+  
+  [33X[1;0Y[29X[2XIsDistributiveCategory[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of the category [3XC[103X being distributive.[133X
+  
+  [1X5.1-14 IsInitialCategory[101X
+  
+  [33X[1;0Y[29X[2XIsInitialCategory[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of the category [3XC[103X being initial.[133X
+  

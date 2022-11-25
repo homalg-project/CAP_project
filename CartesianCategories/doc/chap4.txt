@@ -35,26 +35,26 @@
   [33X[1;0Y[29X[2XIsInitialCapCategory[102X( [3XT[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X type of a initial category.[133X
+  [33X[0;0YThe [5XGAP[105X type of an initial category.[133X
   
   [1X4.2-2 IsCellInInitialCategory[101X
   
   [33X[1;0Y[29X[2XIsCellInInitialCategory[102X( [3XT[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X type of a cell in a initial category.[133X
+  [33X[0;0YThe [5XGAP[105X type of a cell in an initial category.[133X
   
   [1X4.2-3 IsObjectInInitialCategory[101X
   
   [33X[1;0Y[29X[2XIsObjectInInitialCategory[102X( [3XT[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X type of an object in a initial category.[133X
+  [33X[0;0YThe [5XGAP[105X type of an object in an initial category.[133X
   
   [1X4.2-4 IsMorphismInInitialCategory[101X
   
   [33X[1;0Y[29X[2XIsMorphismInInitialCategory[102X( [3XT[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X type of a morphism in a initial category.[133X
+  [33X[0;0YThe [5XGAP[105X type of a morphism in an initial category.[133X
   

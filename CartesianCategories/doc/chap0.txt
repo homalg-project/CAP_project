@@ -6,10 +6,10 @@
         [1X Cartesian and cocartesian categories and various subdoctrines [101X
   
   
-                                   2022.11-01
+                                   2022.11-02
   
   
-                                2 November 2022
+                                25 November 2022
   
   
                                 Mohamed Barakat
@@ -333,6 +333,22 @@
       4.2-2 IsCellInInitialCategory
       4.2-3 IsObjectInInitialCategory
       4.2-4 IsMorphismInInitialCategory
+  5 [33X[0;0YCartesianCategories automatic generated documentation[133X
+    5.1 [33X[0;0YCartesianCategories automatic generated documentation of properties[133X
+      5.1-1 IsBicartesianCategory
+      5.1-2 IsFiniteCompleteCategory
+      5.1-3 IsFiniteCocompleteCategory
+      5.1-4 IsCartesianCategory
+      5.1-5 IsStrictCartesianCategory
+      5.1-6 IsCartesianClosedCategory
+      5.1-7 IsBicartesianClosedCategory
+      5.1-8 IsCocartesianCategory
+      5.1-9 IsStrictCocartesianCategory
+      5.1-10 IsCocartesianCoclosedCategory
+      5.1-11 IsBicartesianCoclosedCategory
+      5.1-12 IsCodistributiveCategory
+      5.1-13 IsDistributiveCategory
+      5.1-14 IsInitialCategory
   
   
   [32X
