@@ -1,13 +1,17 @@
-#! @Chunk TerminalCategoryWithMultipleObjects
+#! @Chapter Examples and Tests
 
-LoadPackage( "MonoidalCategories" );
+#! @Section Terminal category
 
 #! @Example
+LoadPackage( "MonoidalCategories" );
+#! true
 T := TerminalCategoryWithMultipleObjects( );
 #! TerminalCategoryWithMultipleObjects( )
 InfoOfInstalledOperationsOfCategory( T );
-#! 68 primitive operations were used to derive 320 operations for this category
+#! 63 primitive operations were used to derive 276 operations for this category
 #! which algorithmically
+#! * IsCategoryWithDecidableColifts
+#! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing
 #! * IsAbelianCategoryWithEnoughInjectives
@@ -114,4 +118,24 @@ Display( z );
 #! a
 id = z;
 #! true
+IsLiftable( m, n );
+#! true
+lift := Lift( m, n );
+#! <A zero, isomorphism in TerminalCategoryWithMultipleObjects( )>
+Display( lift );
+#! a
+#! |
+#! | Lift
+#! v
+#! a
+IsColiftable( m, n );
+#! true
+colift := Colift( m, n );
+#! <A zero, isomorphism in TerminalCategoryWithMultipleObjects( )>
+Display( colift );
+#! b
+#! |
+#! | Colift
+#! v
+#! b
 #! @EndExample

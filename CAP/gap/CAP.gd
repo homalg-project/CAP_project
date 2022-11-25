@@ -164,6 +164,8 @@ end );
 Perform(
 ## This is the CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST
     [ [ "IsEquippedWithHomomorphismStructure", "IsEquippedWithHomomorphismStructure" ],
+      [ "IsCategoryWithDecidableLifts", "IsCategoryWithDecidableColifts" ],
+      [ "IsCategoryWithDecidableColifts", "IsCategoryWithDecidableLifts" ],
       [ "IsEnrichedOverCommutativeRegularSemigroup", "IsEnrichedOverCommutativeRegularSemigroup" ],
       [ "IsSkeletalCategory", "IsSkeletalCategory" ],
       [ "IsAbCategory", "IsAbCategory" ],

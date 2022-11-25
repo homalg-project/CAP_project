@@ -6,6 +6,31 @@
 
 ###########################
 ##
+## In a terminal category
+##
+###########################
+
+AddDerivationToCAP( IsLiftable,
+        
+  function( cat, morphism1, morphism2 )
+        
+    ## equality of targets is part of the specification of the input and checked by the pre-function
+    return true;
+    
+end : CategoryFilter := IsTerminalCategory,
+      Description := "Two morphisms with equal targets are mutually liftable in a terminal category" );
+    
+AddDerivationToCAP( IsColiftable,
+  function( cat, morphism1, morphism2 )
+    
+    ## equality of sources is part of the specification of the input and checked by the pre-function
+    return true;
+    
+end : CategoryFilter := IsTerminalCategory,
+                        Description := "Two morphisms with equal sources are mutually coliftable in a terminal category" );
+
+###########################
+##
 ## WithGiven pairs
 ##
 ###########################
