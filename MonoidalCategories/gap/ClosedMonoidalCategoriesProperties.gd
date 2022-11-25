@@ -4,4 +4,9 @@
 # Declarations
 #
 
+#! @Description
+#!  The property of the category <A>C</A> being closed monoidal.
+#! @Arguments C
+DeclareProperty( "IsClosedMonoidalCategory", IsCapCategory );
+
 AddCategoricalProperty( [ "IsClosedMonoidalCategory", "IsCoclosedMonoidalCategory" ] );

@@ -4,4 +4,9 @@
 # Declarations
 #
 
+#! @Description
+#!  The property of the category <A>C</A> being initial.
+#! @Arguments C
+DeclareProperty( "IsInitialCategory", IsCapCategory );
+
 AddCategoricalProperty( [ "IsInitialCategory", "IsInitialCategory" ] );

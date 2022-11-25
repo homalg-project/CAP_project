@@ -4,4 +4,9 @@
 # Declarations
 #
 
+#! @Description
+#!  The property of the category <A>C</A> being rigid symmetric closed monoidal.
+#! @Arguments C
+DeclareProperty( "IsRigidSymmetricClosedMonoidalCategory", IsCapCategory );
+
 AddCategoricalProperty( [ "IsRigidSymmetricClosedMonoidalCategory", "IsRigidSymmetricCoclosedMonoidalCategory" ] );

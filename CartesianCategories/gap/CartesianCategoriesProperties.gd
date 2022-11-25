@@ -4,13 +4,18 @@
 # Declarations
 #
 
-Perform(
-## This is the CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST
-    [
-      [ "IsCartesianCategory", "IsCocartesianCategory" ],
-      [ "IsStrictCartesianCategory", "IsStrictCocartesianCategory" ],
-    ],
-    AddCategoricalProperty );
+#! @Description
+#!  The property of the category <A>C</A> being cartesian.
+#! @Arguments C
+DeclareProperty( "IsCartesianCategory", IsCapCategory );
+
+AddCategoricalProperty( [ "IsCartesianCategory", "IsCocartesianCategory" ] );
+
+#!  The property of the category <A>C</A> being strict cartesian.
+#! @Arguments C
+DeclareProperty( "IsStrictCartesianCategory", IsCapCategory );
+
+AddCategoricalProperty( [ "IsStrictCartesianCategory", "IsStrictCocartesianCategory" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianCategory  := Concatenation( [
 "DirectProduct",

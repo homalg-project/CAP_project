@@ -47,6 +47,11 @@ DeclareCategory( "IsObjectInCapTerminalCategoryWithMultipleObjects",
 DeclareCategory( "IsMorphismInCapTerminalCategoryWithMultipleObjects",
         IsCapCategoryMorphism );
 
+#! @Description
+#!  The property of the category <A>C</A> being terminal.
+#! @Arguments C
+DeclareProperty( "IsTerminalCategory", IsCapCategory );
+
 AddCategoricalProperty( [ "IsTerminalCategory", "IsTerminalCategory" ] );
 
 ########################################

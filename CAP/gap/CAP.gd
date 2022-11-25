@@ -126,6 +126,13 @@ DeclareCategory( "IsCapCategoryTwoCell",
 DeclareCategory( "IsCellOfSkeletalCategory",
                  IsCapCategoryCell );
 
+###################################
+##
+#! @Section Categorical properties
+##
+###################################
+
+
 #! @Description
 #!  Adds a categorical property to the list of CAP
 #!  categorical properties. <A>list</A> must be a list
@@ -152,31 +159,118 @@ InstallGlobalFunction( AddCategoricalProperty,
     
     Add( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST, property_pair );
     
-    DeclareProperty( property_pair[1], IsCapCategory );
-    
-    # all property pairs must also be added with the entries swapped
-    # this will declare the opposite property
+    #= comment for Julia
+    if not IsBoundGlobal( property_pair[1] ) then
+        
+        Print( "WARNING: please declare ", property_pair[1], " as a property of IsCapCategory with corresponding documentation before adding it as a categorical property.\n" );
+        
+        DeclareProperty( property_pair[1], IsCapCategory );
+        
+        # all property pairs must also be added with the entries swapped
+        # this will declare the opposite property
+        
+    fi;
+    # =#
     
 end );
 
-Perform(
-## This is the CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST
-    [ [ "IsEquippedWithHomomorphismStructure", "IsEquippedWithHomomorphismStructure" ],
-      [ "IsCategoryWithDecidableLifts", "IsCategoryWithDecidableColifts" ],
-      [ "IsCategoryWithDecidableColifts", "IsCategoryWithDecidableLifts" ],
-      [ "IsEnrichedOverCommutativeRegularSemigroup", "IsEnrichedOverCommutativeRegularSemigroup" ],
-      [ "IsSkeletalCategory", "IsSkeletalCategory" ],
-      [ "IsAbCategory", "IsAbCategory" ],
-      [ "IsLinearCategoryOverCommutativeRing", "IsLinearCategoryOverCommutativeRing" ],
-      [ "IsAdditiveCategory", "IsAdditiveCategory" ],
-      [ "IsPreAbelianCategory", "IsPreAbelianCategory" ],
-      [ "IsAbelianCategory", "IsAbelianCategory" ],
-      [ "IsAbelianCategoryWithEnoughProjectives", "IsAbelianCategoryWithEnoughInjectives" ],
-      [ "IsAbelianCategoryWithEnoughInjectives", "IsAbelianCategoryWithEnoughProjectives" ],
-      [ "IsLocallyOfFiniteProjectiveDimension", "IsLocallyOfFiniteInjectiveDimension" ],
-      [ "IsLocallyOfFiniteInjectiveDimension", "IsLocallyOfFiniteProjectiveDimension" ]
-    ],
-    AddCategoricalProperty );
+#! @Description
+#!  The property of the category <A>C</A> being equipped with a homomorphism structure.
+#! @Arguments C
+DeclareProperty( "IsEquippedWithHomomorphismStructure", IsCapCategory );
+
+AddCategoricalProperty( [ "IsEquippedWithHomomorphismStructure", "IsEquippedWithHomomorphismStructure" ] );
+
+#! @Description
+#!  The property of the category <A>C</A> having decidable lifts.
+#! @Arguments C
+DeclareProperty( "IsCategoryWithDecidableLifts", IsCapCategory );
+
+AddCategoricalProperty( [ "IsCategoryWithDecidableLifts", "IsCategoryWithDecidableColifts" ] );
+
+#! @Description
+#!  The property of the category <A>C</A> having decidable colifts.
+#! @Arguments C
+DeclareProperty( "IsCategoryWithDecidableColifts", IsCapCategory );
+
+AddCategoricalProperty( [ "IsCategoryWithDecidableColifts", "IsCategoryWithDecidableLifts" ] );
+
+#! @Description
+#!  The property of the category <A>C</A> being enriched over a commutative regular semigroup.
+#! @Arguments C
+DeclareProperty( "IsEnrichedOverCommutativeRegularSemigroup", IsCapCategory );
+
+AddCategoricalProperty( [ "IsEnrichedOverCommutativeRegularSemigroup", "IsEnrichedOverCommutativeRegularSemigroup" ] );
+
+#! @Description
+#!  The property of the category <A>C</A> being skeletal.
+#! @Arguments C
+DeclareProperty( "IsSkeletalCategory", IsCapCategory );
+
+AddCategoricalProperty( [ "IsSkeletalCategory", "IsSkeletalCategory" ] );
+
+#! @Description
+#!  The property of the category <A>C</A> being preadditive.
+#! @Arguments C
+DeclareProperty( "IsAbCategory", IsCapCategory );
+
+AddCategoricalProperty( [ "IsAbCategory", "IsAbCategory" ] );
+
+#! @Description
+#!  The property of the category <A>C</A> being linear over a commutative ring.
+#! @Arguments C
+DeclareProperty( "IsLinearCategoryOverCommutativeRing", IsCapCategory );
+
+AddCategoricalProperty( [ "IsLinearCategoryOverCommutativeRing", "IsLinearCategoryOverCommutativeRing" ] );
+
+#! @Description
+#!  The property of the category <A>C</A> being additive.
+#! @Arguments C
+DeclareProperty( "IsAdditiveCategory", IsCapCategory );
+
+AddCategoricalProperty( [ "IsAdditiveCategory", "IsAdditiveCategory" ] );
+
+#! @Description
+#!  The property of the category <A>C</A> being preabelian.
+#! @Arguments C
+DeclareProperty( "IsPreAbelianCategory", IsCapCategory );
+
+AddCategoricalProperty( [ "IsPreAbelianCategory", "IsPreAbelianCategory" ] );
+
+#! @Description
+#!  The property of the category <A>C</A> being abelian.
+#! @Arguments C
+DeclareProperty( "IsAbelianCategory", IsCapCategory );
+
+AddCategoricalProperty( [ "IsAbelianCategory", "IsAbelianCategory" ] );
+
+#! @Description
+#!  The property of the category <A>C</A> being abelian with enough projectives.
+#! @Arguments C
+DeclareProperty( "IsAbelianCategoryWithEnoughProjectives", IsCapCategory );
+
+AddCategoricalProperty( [ "IsAbelianCategoryWithEnoughProjectives", "IsAbelianCategoryWithEnoughInjectives" ] );
+
+#! @Description
+#!  The property of the category <A>C</A> being abelian with enough injectives.
+#! @Arguments C
+DeclareProperty( "IsAbelianCategoryWithEnoughInjectives", IsCapCategory );
+
+AddCategoricalProperty( [ "IsAbelianCategoryWithEnoughInjectives", "IsAbelianCategoryWithEnoughProjectives" ] );
+
+#! @Description
+#!  The property of the category <A>C</A> being locally of finite projective dimension.
+#! @Arguments C
+DeclareProperty( "IsLocallyOfFiniteProjectiveDimension", IsCapCategory );
+
+AddCategoricalProperty( [ "IsLocallyOfFiniteProjectiveDimension", "IsLocallyOfFiniteInjectiveDimension" ] );
+
+#! @Description
+#!  The property of the category <A>C</A> being locally of finite injective dimension.
+#! @Arguments C
+DeclareProperty( "IsLocallyOfFiniteInjectiveDimension", IsCapCategory );
+
+AddCategoricalProperty( [ "IsLocallyOfFiniteInjectiveDimension", "IsLocallyOfFiniteProjectiveDimension" ] );
 
 DeclareAttribute( "TheoremRecord",
                   IsCapCategory, "mutable" );

@@ -4,13 +4,19 @@
 # Declarations
 #
 
-Perform(
-## This is the CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST
-    [
-      [ "IsCocartesianCategory", "IsCartesianCategory" ],
-      [ "IsStrictCocartesianCategory", "IsStrictCartesianCategory" ],
-    ],
-    AddCategoricalProperty );
+#! @Description
+#!  The property of the category <A>C</A> being cocartesian.
+#! @Arguments C
+DeclareProperty( "IsCocartesianCategory", IsCapCategory );
+
+AddCategoricalProperty( [ "IsCocartesianCategory", "IsCartesianCategory" ] );
+
+#! @Description
+#!  The property of the category <A>C</A> being strict cocartesian.
+#! @Arguments C
+DeclareProperty( "IsStrictCocartesianCategory", IsCapCategory );
+
+AddCategoricalProperty( [ "IsStrictCocartesianCategory", "IsStrictCartesianCategory" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory  := Concatenation( [
 "Coproduct",

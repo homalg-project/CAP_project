@@ -9,6 +9,8 @@
 #! @Description
 #!  The property of the category <A>C</A> being bicartesian.
 #! @Arguments C
+DeclareProperty( "IsBicartesianCategory", IsCapCategory );
+
 AddCategoricalProperty( [ "IsBicartesianCategory", "IsBicartesianCategory" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBicartesianCategory :=
@@ -32,6 +34,8 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBicartesianCoclosedCategory :=
 #! @Description
 #!  The property of the category <A>C</A> being finite complete.
 #! @Arguments C
+DeclareProperty( "IsFiniteCompleteCategory", IsCapCategory );
+
 AddCategoricalProperty( [ "IsFiniteCompleteCategory", "IsFiniteCocompleteCategory" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteCompleteCategory :=
@@ -46,6 +50,8 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteCompleteCategory :=
 #! @Description
 #!  The property of the category <A>C</A> being finite cocomplete.
 #! @Arguments C
+DeclareProperty( "IsFiniteCocompleteCategory", IsCapCategory );
+
 AddCategoricalProperty( [ "IsFiniteCocompleteCategory", "IsFiniteCompleteCategory" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteCocompleteCategory :=
