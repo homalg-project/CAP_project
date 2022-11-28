@@ -621,6 +621,7 @@ InstallGlobalFunction( InstallDeprecatedAlias,
   
   function( alias_name, function_name, deprecation_date )
     
+    #= comment for Julia
     BindGlobal( alias_name, function ( args... )
       local result;
         
@@ -639,6 +640,7 @@ InstallGlobalFunction( InstallDeprecatedAlias,
         fi;
         
     end );
+    # =#
     
 end );
 

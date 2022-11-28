@@ -327,6 +327,7 @@ InstallMethod( DeactivateCaching,
     
 end );
 
+#= comment for Julia
 ##
 InstallMethod( CachingObject,
                [ IsCapCategoryCell, IsString, IsInt ],
@@ -342,6 +343,7 @@ InstallMethod( CachingObject,
                [ IsCapCategory, IsString, IsInt ],
                
   GET_METHOD_CACHE );
+# =#
 
 InstallGlobalFunction( SetCachingOfCategory,
   

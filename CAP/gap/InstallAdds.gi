@@ -104,8 +104,6 @@ InstallGlobalFunction( CapInternalInstallAdd,
         
         replaced_filter_list := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( filter_list );
         
-        DeclareOperation( install_name, replaced_filter_list );
-        
         if filter_list[2] in [ "object", "morphism", "twocell" ] then
             
             get_convenience_function := oper -> { arg } -> CallFuncList( oper, Concatenation( [ CapCategory( arg[1] ) ], arg ) );
@@ -529,11 +527,11 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     
                     return result;
                     
-                end : Cache := GET_METHOD_CACHE( category, function_name, Length( filter_list ) ) );
+                end : InstallMethod := InstallOtherMethod, Cache := GET_METHOD_CACHE( category, function_name, Length( filter_list ) ) );
             
             else #category!.overhead = false
                 
-                InstallMethod( ValueGlobal( install_name ),
+                InstallOtherMethod( ValueGlobal( install_name ),
                             new_filter_list,
                     
                     function( arg )
