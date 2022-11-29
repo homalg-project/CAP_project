@@ -1890,6 +1890,28 @@
   \mathrm{im}(\alpha)  \rightarrow  T[123X  given  by the universal property of the
   image.[133X
   
+  [1X6.13-10 ImageObjectFunctorial[101X
+  
+  [33X[1;0Y[29X[2XImageObjectFunctorial[102X( [3Xalpha[103X, [3Xnu[103X, [3Xalpha_prime[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya   morphism  in  [23X\mathrm{Hom}(  \mathrm{ImageObject}(  \alpha  ),
+            \mathrm{ImageObject}( \alpha' ) )[123X[133X
+  
+  [33X[0;0YThe   arguments  are  three  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\nu:  B
+  \rightarrow  B'[123X,  [23X\alpha':  A'  \rightarrow  B'[123X.  The output is the morphism
+  [23X\mathrm{ImageObject}(  \alpha  ) \rightarrow \mathrm{ImageObject}( \alpha' )[123X
+  given by the functoriality of the image.[133X
+  
+  [1X6.13-11 ImageObjectFunctorialWithGivenImageObjects[101X
+  
+  [33X[1;0Y[29X[2XImageObjectFunctorialWithGivenImageObjects[102X( [3Xs[103X, [3Xalpha[103X, [3Xnu[103X, [3Xalpha_prime[103X, [3Xr[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [23Xs  =  \mathrm{ImageObject}( \alpha )[123X, three
+  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\nu:  B  \rightarrow B'[123X, [23X\alpha': A'
+  \rightarrow  B'[123X,  and  an  object  [23Xr  = \mathrm{ImageObject}( \alpha' )[123X. The
+  output   is   the   morphism   [23X\mathrm{ImageObject}(  \alpha  )  \rightarrow
+  \mathrm{ImageObject}( \alpha' )[123X given by the functoriality of the image.[133X
+  
   
   [1X6.14 [33X[0;0YCoimage[133X[101X
   
@@ -2059,6 +2081,28 @@
   [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  A  \rightarrow B[123X. The output is the
   canonical identification [23Xc: \mathrm{coim}( \alpha ) \rightarrow \mathrm{im}(
   \alpha )[123X.[133X
+  
+  [1X6.14-16 CoimageObjectFunctorial[101X
+  
+  [33X[1;0Y[29X[2XCoimageObjectFunctorial[102X( [3Xalpha[103X, [3Xmu[103X, [3Xalpha_prime[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya   morphism  in  [23X\mathrm{Hom}(\mathrm{CoimageObject}(  \alpha  ),
+            \mathrm{CoimageObject}( \alpha' ))[123X[133X
+  
+  [33X[0;0YThe   arguments  are  three  morphisms  [23X\alpha:  A  \rightarrow  B,  \mu:  A
+  \rightarrow  A',  \alpha':  A'  \rightarrow  B'[123X.  The output is the morphism
+  [23X\mathrm{CoimageObject}( \alpha ) \rightarrow \mathrm{CoimageObject}( \alpha'
+  )[123X given by the functoriality of the coimage.[133X
+  
+  [1X6.14-17 CoimageObjectFunctorialWithGivenCoimageObjects[101X
+  
+  [33X[1;0Y[29X[2XCoimageObjectFunctorialWithGivenCoimageObjects[102X( [3Xs[103X, [3Xalpha[103X, [3Xmu[103X, [3Xalpha_prime[103X, [3Xr[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(s, r)[123X[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [23Xs = \mathrm{CoimageObject}( \alpha )[123X, three
+  morphisms  [23X\alpha:  A  \rightarrow  B,  \mu:  A  \rightarrow A', \alpha': A'
+  \rightarrow  B'[123X,  and  an  object [23Xr = \mathrm{CoimageObject}( \alpha' )[123X. The
+  output   is   the  morphism  [23X\mathrm{CoimageObject}(  \alpha  )  \rightarrow
+  \mathrm{CoimageObject}( \alpha' )[123X given by the functoriality of the coimage.[133X
   
   
   [1X6.15 [33X[0;0YHomology objects[133X[101X

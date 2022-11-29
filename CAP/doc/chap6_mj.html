@@ -224,6 +224,8 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X78BE36EA83BEF493">6.13-7 CoastrictionToImageWithGivenImageObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7989B1FB811D2033">6.13-8 UniversalMorphismFromImage</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X86E557097CFB4430">6.13-9 UniversalMorphismFromImageWithGivenImageObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7A46647F7AA9C398">6.13-10 ImageObjectFunctorial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X85F174A07A09B04C">6.13-11 ImageObjectFunctorialWithGivenImageObjects</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6_mj.html#X7EB02EC487B586E5">6.14 <span class="Heading">Coimage</span></a>
 </span>
@@ -243,6 +245,8 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X87AACC0083B6D49F">6.14-13 UniversalMorphismIntoCoimageWithGivenCoimageObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7D1114D97D8179BD">6.14-14 CanonicalIdentificationFromImageObjectToCoimage</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X8471140B7DF55646">6.14-15 CanonicalIdentificationFromCoimageToImageObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X852EFBA87E7F6831">6.14-16 CoimageObjectFunctorial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7FB58F087D65DB38">6.14-17 CoimageObjectFunctorialWithGivenCoimageObjects</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6_mj.html#X87F38F8284D3137C">6.15 <span class="Heading">Homology objects</span></a>
 </span>
@@ -1958,6 +1962,24 @@
 
 <p>The arguments are a morphism <span class="SimpleMath">\(\alpha: A \rightarrow B\)</span>, a pair of morphisms <span class="SimpleMath">\(\tau = ( \tau_1: A \rightarrow T, \tau_2: T \hookrightarrow B )\)</span> where <span class="SimpleMath">\(\tau_2\)</span> is a monomorphism such that <span class="SimpleMath">\(\tau_2 \circ \tau_1 \sim_{A,B} \alpha\)</span>, and an object <span class="SimpleMath">\(I = \mathrm{im}( \alpha )\)</span>. The output is the morphism <span class="SimpleMath">\(u(\tau): \mathrm{im}(\alpha) \rightarrow T\)</span> given by the universal property of the image.</p>
 
+<p><a id="X7A46647F7AA9C398" name="X7A46647F7AA9C398"></a></p>
+
+<h5>6.13-10 ImageObjectFunctorial</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ImageObjectFunctorial</code>( <var class="Arg">alpha</var>, <var class="Arg">nu</var>, <var class="Arg">alpha_prime</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( \mathrm{ImageObject}( \alpha ), \mathrm{ImageObject}( \alpha' ) )\)</span></p>
+
+<p>The arguments are three morphisms <span class="SimpleMath">\(\alpha: A \rightarrow B\)</span>, <span class="SimpleMath">\(\nu: B \rightarrow B'\)</span>, <span class="SimpleMath">\(\alpha': A' \rightarrow B'\)</span>. The output is the morphism <span class="SimpleMath">\(\mathrm{ImageObject}( \alpha ) \rightarrow \mathrm{ImageObject}( \alpha' )\)</span> given by the functoriality of the image.</p>
+
+<p><a id="X85F174A07A09B04C" name="X85F174A07A09B04C"></a></p>
+
+<h5>6.13-11 ImageObjectFunctorialWithGivenImageObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ImageObjectFunctorialWithGivenImageObjects</code>( <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">nu</var>, <var class="Arg">alpha_prime</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( s, r )\)</span></p>
+
+<p>The arguments are an object <span class="SimpleMath">\(s = \mathrm{ImageObject}( \alpha )\)</span>, three morphisms <span class="SimpleMath">\(\alpha: A \rightarrow B\)</span>, <span class="SimpleMath">\(\nu: B \rightarrow B'\)</span>, <span class="SimpleMath">\(\alpha': A' \rightarrow B'\)</span>, and an object <span class="SimpleMath">\(r = \mathrm{ImageObject}( \alpha' )\)</span>. The output is the morphism <span class="SimpleMath">\(\mathrm{ImageObject}( \alpha ) \rightarrow \mathrm{ImageObject}( \alpha' )\)</span> given by the functoriality of the image.</p>
+
 <p><a id="X7EB02EC487B586E5" name="X7EB02EC487B586E5"></a></p>
 
 <h4>6.14 <span class="Heading">Coimage</span></h4>
@@ -2117,6 +2139,24 @@
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(\mathrm{coim}( \alpha ), \mathrm{im}( \alpha ) )\)</span></p>
 
 <p>The argument is a morphism <span class="SimpleMath">\(\alpha: A \rightarrow B\)</span>. The output is the canonical identification <span class="SimpleMath">\(c: \mathrm{coim}( \alpha ) \rightarrow \mathrm{im}( \alpha )\)</span>.</p>
+
+<p><a id="X852EFBA87E7F6831" name="X852EFBA87E7F6831"></a></p>
+
+<h5>6.14-16 CoimageObjectFunctorial</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoimageObjectFunctorial</code>( <var class="Arg">alpha</var>, <var class="Arg">mu</var>, <var class="Arg">alpha_prime</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(\mathrm{CoimageObject}( \alpha ), \mathrm{CoimageObject}( \alpha' ))\)</span></p>
+
+<p>The arguments are three morphisms <span class="SimpleMath">\(\alpha: A \rightarrow B, \mu: A \rightarrow A', \alpha': A' \rightarrow B'\)</span>. The output is the morphism <span class="SimpleMath">\(\mathrm{CoimageObject}( \alpha ) \rightarrow \mathrm{CoimageObject}( \alpha' )\)</span> given by the functoriality of the coimage.</p>
+
+<p><a id="X7FB58F087D65DB38" name="X7FB58F087D65DB38"></a></p>
+
+<h5>6.14-17 CoimageObjectFunctorialWithGivenCoimageObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoimageObjectFunctorialWithGivenCoimageObjects</code>( <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">mu</var>, <var class="Arg">alpha_prime</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(s, r)\)</span></p>
+
+<p>The arguments are an object <span class="SimpleMath">\(s = \mathrm{CoimageObject}( \alpha )\)</span>, three morphisms <span class="SimpleMath">\(\alpha: A \rightarrow B, \mu: A \rightarrow A', \alpha': A' \rightarrow B'\)</span>, and an object <span class="SimpleMath">\(r = \mathrm{CoimageObject}( \alpha' )\)</span>. The output is the morphism <span class="SimpleMath">\(\mathrm{CoimageObject}( \alpha ) \rightarrow \mathrm{CoimageObject}( \alpha' )\)</span> given by the functoriality of the coimage.</p>
 
 <p><a id="X87F38F8284D3137C" name="X87F38F8284D3137C"></a></p>
 
