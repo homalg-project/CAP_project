@@ -254,6 +254,16 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8799E88E79EFE007">6.15-4 IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X828E94BA7CF6FB71">6.15-5 IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject</a></span>
 </div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X81E4AE0B7876230B">6.16 <span class="Heading">Projective covers and injective envelopes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X790C931979343CFF">6.16-1 ProjectiveCoverObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X851836CC829092D9">6.16-2 EpimorphismFromProjectiveCoverObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7C9F2CC480C7DA1D">6.16-3 EpimorphismFromProjectiveCoverObjectWithGivenProjectiveCoverObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X791CA23A8401BF2F">6.16-4 InjectiveEnvelopeObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X879A01DD7DC8AB13">6.16-5 MonomorphismIntoInjectiveEnvelopeObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X781E3ED78574B379">6.16-6 MonomorphismIntoInjectiveEnvelopeObjectWithGivenInjectiveEnvelopeObject</a></span>
+</div></div>
 </div>
 
 <h3>6 <span class="Heading">Universal Objects</span></h3>
@@ -2213,6 +2223,64 @@
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( I, \mathrm{HomologyObject}( \alpha, \beta ) )</span></p>
 
 <p>The arguments are two morphisms <span class="Math">\alpha: A \rightarrow B, \beta: B \rightarrow C</span>. The output is the natural isomorphism from the construction of the homology object as <span class="Math">\mathrm{ImageObject}( \mathrm{PreCompose}( \mathrm{KernelEmbedding}( \beta ), \mathrm{CokernelProjection}( \alpha ) ) )</span>, denoted by <span class="Math">I</span>, to the homology object <span class="Math">H</span> of <span class="Math">\alpha</span> and <span class="Math">\beta</span>.</p>
+
+<p><a id="X81E4AE0B7876230B" name="X81E4AE0B7876230B"></a></p>
+
+<h4>6.16 <span class="Heading">Projective covers and injective envelopes</span></h4>
+
+<p><a id="X790C931979343CFF" name="X790C931979343CFF"></a></p>
+
+<h5>6.16-1 ProjectiveCoverObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ProjectiveCoverObject</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The argument is an object <span class="Math">A</span>. The output is a projective cover of <span class="Math">A</span>.</p>
+
+<p><a id="X851836CC829092D9" name="X851836CC829092D9"></a></p>
+
+<h5>6.16-2 EpimorphismFromProjectiveCoverObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EpimorphismFromProjectiveCoverObject</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an epimorphism</p>
+
+<p>The argument is an object <span class="Math">A</span>. The output is an epimorphism from a projective cover of <span class="Math">A</span>.</p>
+
+<p><a id="X7C9F2CC480C7DA1D" name="X7C9F2CC480C7DA1D"></a></p>
+
+<h5>6.16-3 EpimorphismFromProjectiveCoverObjectWithGivenProjectiveCoverObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EpimorphismFromProjectiveCoverObjectWithGivenProjectiveCoverObject</code>( <var class="Arg">A</var>, <var class="Arg">P</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an epimorphism</p>
+
+<p>The argument is an object <span class="Math">A</span>. The output is the epimorphism from the projective cover <span class="Math">P</span> of <span class="Math">A</span>.</p>
+
+<p><a id="X791CA23A8401BF2F" name="X791CA23A8401BF2F"></a></p>
+
+<h5>6.16-4 InjectiveEnvelopeObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InjectiveEnvelopeObject</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The argument is an object <span class="Math">A</span>. The output is an injective envelope of <span class="Math">A</span>.</p>
+
+<p><a id="X879A01DD7DC8AB13" name="X879A01DD7DC8AB13"></a></p>
+
+<h5>6.16-5 MonomorphismIntoInjectiveEnvelopeObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MonomorphismIntoInjectiveEnvelopeObject</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a monomorphism</p>
+
+<p>The argument is an object <span class="Math">A</span>. The output is a monomorphism into an injective envelope of <span class="Math">A</span>.</p>
+
+<p><a id="X781E3ED78574B379" name="X781E3ED78574B379"></a></p>
+
+<h5>6.16-6 MonomorphismIntoInjectiveEnvelopeObjectWithGivenInjectiveEnvelopeObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MonomorphismIntoInjectiveEnvelopeObjectWithGivenInjectiveEnvelopeObject</code>( <var class="Arg">A</var>, <var class="Arg">I</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a monomorphism</p>
+
+<p>The argument is an object <span class="Math">A</span>. The output is a monomorphism into an injective envelope <span class="Math">I</span> of <span class="Math">A</span>.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap5.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap7.html">[Next Chapter]</a>&nbsp;  </div>

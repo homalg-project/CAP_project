@@ -2188,3 +2188,52 @@
   \mathrm{KernelEmbedding}(  \beta  ), \mathrm{CokernelProjection}( \alpha ) )
   )[123X, denoted by [23XI[123X, to the homology object [23XH[123X of [23X\alpha[123X and [23X\beta[123X.[133X
   
+  
+  [1X6.16 [33X[0;0YProjective covers and injective envelopes[133X[101X
+  
+  [1X6.16-1 ProjectiveCoverObject[101X
+  
+  [33X[1;0Y[29X[2XProjectiveCoverObject[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe argument is an object [23XA[123X. The output is a projective cover of [23XA[123X.[133X
+  
+  [1X6.16-2 EpimorphismFromProjectiveCoverObject[101X
+  
+  [33X[1;0Y[29X[2XEpimorphismFromProjectiveCoverObject[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yan epimorphism[133X
+  
+  [33X[0;0YThe  argument is an object [23XA[123X. The output is an epimorphism from a projective
+  cover of [23XA[123X.[133X
+  
+  [1X6.16-3 EpimorphismFromProjectiveCoverObjectWithGivenProjectiveCoverObject[101X
+  
+  [33X[1;0Y[29X[2XEpimorphismFromProjectiveCoverObjectWithGivenProjectiveCoverObject[102X( [3XA[103X, [3XP[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan epimorphism[133X
+  
+  [33X[0;0YThe  argument  is  an  object  [23XA[123X.  The  output  is  the epimorphism from the
+  projective cover [23XP[123X of [23XA[123X.[133X
+  
+  [1X6.16-4 InjectiveEnvelopeObject[101X
+  
+  [33X[1;0Y[29X[2XInjectiveEnvelopeObject[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe argument is an object [23XA[123X. The output is an injective envelope of [23XA[123X.[133X
+  
+  [1X6.16-5 MonomorphismIntoInjectiveEnvelopeObject[101X
+  
+  [33X[1;0Y[29X[2XMonomorphismIntoInjectiveEnvelopeObject[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya monomorphism[133X
+  
+  [33X[0;0YThe  argument is an object [23XA[123X. The output is a monomorphism into an injective
+  envelope of [23XA[123X.[133X
+  
+  [1X6.16-6 MonomorphismIntoInjectiveEnvelopeObjectWithGivenInjectiveEnvelopeObject[101X
+  
+  [33X[1;0Y[29X[2XMonomorphismIntoInjectiveEnvelopeObjectWithGivenInjectiveEnvelopeObject[102X( [3XA[103X, [3XI[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya monomorphism[133X
+  
+  [33X[0;0YThe  argument is an object [23XA[123X. The output is a monomorphism into an injective
+  envelope [23XI[123X of [23XA[123X.[133X
+  
