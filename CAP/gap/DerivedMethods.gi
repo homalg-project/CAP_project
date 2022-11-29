@@ -921,6 +921,26 @@ AddDerivationToCAP( CoimageObjectFunctorialWithGivenCoimageObjects,
     
 end : Description := "CoimageObjectFunctorialWithGivenCoimageObjects using the universality" );
 
+##
+AddDerivationToCAP( ProjectiveCoverObject,
+                    [ [ EpimorphismFromProjectiveCoverObject, 1 ] ],
+                    
+  function( cat, obj )
+    
+    return Source( EpimorphismFromProjectiveCoverObject( cat, obj ) );
+    
+end : Description := "ProjectiveCoverObject as the source of EpimorphismFromProjectiveCoverObject" );
+
+##
+AddDerivationToCAP( InjectiveEnvelopeObject,
+                    [ [ MonomorphismIntoInjectiveEnvelopeObject, 1 ] ],
+                    
+  function( cat, obj )
+    
+    return Range( MonomorphismIntoInjectiveEnvelopeObject( cat, obj ) );
+    
+end : Description := "InjectiveEnvelopeObject as the range of MonomorphismIntoInjectiveEnvelopeObject" );
+
 ###########################
 ##
 ## Methods returning a boolean
@@ -1375,6 +1395,30 @@ AddDerivationToCAP( IsColiftableAlongEpimorphism,
     return IsColiftable( cat, epsilon, tau );
     
 end : Description := "IsColiftableAlongEpimorphism using IsColiftable" );
+
+##
+AddDerivationToCAP( IsProjective,
+        [ [ EpimorphismFromProjectiveCoverObject, 1 ],
+          [ IsIsomorphism, 1 ],
+          ],
+        
+  function( cat, alpha )
+    
+    return IsIsomorphism( cat, EpimorphismFromProjectiveCoverObject( cat, alpha ) );
+    
+end );
+
+##
+AddDerivationToCAP( IsInjective,
+        [ [ MonomorphismIntoInjectiveEnvelopeObject, 1 ],
+          [ IsIsomorphism, 1 ],
+          ],
+        
+  function( cat, alpha )
+    
+    return IsIsomorphism( cat, MonomorphismIntoInjectiveEnvelopeObject( cat, alpha ) );
+    
+end );
 
 ###########################
 ##

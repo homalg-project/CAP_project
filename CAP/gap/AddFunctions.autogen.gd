@@ -886,6 +886,44 @@ DeclareOperation( "AddEmbeddingOfEqualizerWithGivenEqualizer",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `EpimorphismFromProjectiveCoverObject`.
+#! $F: ( A ) \mapsto \mathtt{EpimorphismFromProjectiveCoverObject}(A)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddEpimorphismFromProjectiveCoverObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddEpimorphismFromProjectiveCoverObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddEpimorphismFromProjectiveCoverObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddEpimorphismFromProjectiveCoverObject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `EpimorphismFromProjectiveCoverObjectWithGivenProjectiveCoverObject`.
+#! $F: ( A, P ) \mapsto \mathtt{EpimorphismFromProjectiveCoverObjectWithGivenProjectiveCoverObject}(A, P)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddEpimorphismFromProjectiveCoverObjectWithGivenProjectiveCoverObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddEpimorphismFromProjectiveCoverObjectWithGivenProjectiveCoverObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddEpimorphismFromProjectiveCoverObjectWithGivenProjectiveCoverObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddEpimorphismFromProjectiveCoverObjectWithGivenProjectiveCoverObject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `EpimorphismFromSomeProjectiveObject`.
 #! $F: ( A ) \mapsto \mathtt{EpimorphismFromSomeProjectiveObject}(A)$.
 #! @Returns nothing
@@ -1565,6 +1603,25 @@ DeclareOperation( "AddInjectiveDimension",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddInjectiveDimension",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `InjectiveEnvelopeObject`.
+#! $F: ( arg2 ) \mapsto \mathtt{InjectiveEnvelopeObject}(arg2)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddInjectiveEnvelopeObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInjectiveEnvelopeObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInjectiveEnvelopeObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInjectiveEnvelopeObject",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -2976,6 +3033,44 @@ DeclareOperation( "AddMereExistenceOfSolutionOfLinearSystemInAbCategory",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `MonomorphismIntoInjectiveEnvelopeObject`.
+#! $F: ( A ) \mapsto \mathtt{MonomorphismIntoInjectiveEnvelopeObject}(A)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMonomorphismIntoInjectiveEnvelopeObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMonomorphismIntoInjectiveEnvelopeObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMonomorphismIntoInjectiveEnvelopeObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMonomorphismIntoInjectiveEnvelopeObject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `MonomorphismIntoInjectiveEnvelopeObjectWithGivenInjectiveEnvelopeObject`.
+#! $F: ( A, I ) \mapsto \mathtt{MonomorphismIntoInjectiveEnvelopeObjectWithGivenInjectiveEnvelopeObject}(A, I)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMonomorphismIntoInjectiveEnvelopeObjectWithGivenInjectiveEnvelopeObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMonomorphismIntoInjectiveEnvelopeObjectWithGivenInjectiveEnvelopeObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMonomorphismIntoInjectiveEnvelopeObjectWithGivenInjectiveEnvelopeObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMonomorphismIntoInjectiveEnvelopeObjectWithGivenInjectiveEnvelopeObject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `MonomorphismIntoSomeInjectiveObject`.
 #! $F: ( A ) \mapsto \mathtt{MonomorphismIntoSomeInjectiveObject}(A)$.
 #! @Returns nothing
@@ -3655,6 +3750,25 @@ DeclareOperation( "AddProjectionOntoCoequalizerWithGivenCoequalizer",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddProjectionOntoCoequalizerWithGivenCoequalizer",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `ProjectiveCoverObject`.
+#! $F: ( arg2 ) \mapsto \mathtt{ProjectiveCoverObject}(arg2)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddProjectiveCoverObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddProjectiveCoverObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddProjectiveCoverObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddProjectiveCoverObject",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
