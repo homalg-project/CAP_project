@@ -3953,6 +3953,48 @@ IndecomposableInjectiveObjects := rec(
   dual_operation := "IndecomposableProjectiveObjects",
 ),
 
+ProjectiveCoverObject := rec(
+  filter_list := [ "category", "object" ],
+  return_type := "object",
+  dual_operation := "InjectiveEnvelopeObject",
+  is_merely_set_theoretic := true ),
+
+EpimorphismFromProjectiveCoverObject := rec(
+  filter_list := [ "category", "object" ],
+  io_type := [ [ "A" ], [ "P", "A" ] ],
+  with_given_object_position := "Source",
+  return_type := "morphism",
+  dual_operation := "MonomorphismIntoInjectiveEnvelopeObject",
+  is_merely_set_theoretic := true ),
+
+EpimorphismFromProjectiveCoverObjectWithGivenProjectiveCoverObject := rec(
+  filter_list := [ "category", "object", "object" ],
+  io_type := [ [ "A", "P" ], [ "P", "A" ] ],
+  return_type := "morphism",
+  dual_operation := "MonomorphismIntoInjectiveEnvelopeObjectWithGivenInjectiveEnvelopeObject",
+  is_merely_set_theoretic := true ),
+
+InjectiveEnvelopeObject := rec(
+  filter_list := [ "category", "object" ],
+  return_type := "object",
+  dual_operation := "ProjectiveCoverObject",
+  is_merely_set_theoretic := true ),
+
+MonomorphismIntoInjectiveEnvelopeObject := rec(
+  filter_list := [ "category", "object" ],
+  io_type := [ [ "A" ], [ "A", "I" ] ],
+  with_given_object_position := "Range",
+  return_type := "morphism",
+  dual_operation := "EpimorphismFromProjectiveCoverObject",
+  is_merely_set_theoretic := true ),
+
+MonomorphismIntoInjectiveEnvelopeObjectWithGivenInjectiveEnvelopeObject := rec(
+  filter_list := [ "category", "object", "object" ],
+  io_type := [ [ "A", "I" ], [ "A", "I" ] ],
+  return_type := "morphism",
+  dual_operation := "EpimorphismFromProjectiveCoverObjectWithGivenProjectiveCoverObject",
+  is_merely_set_theoretic := true ),
+
 ) );
 
 InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD_LIMITS, [

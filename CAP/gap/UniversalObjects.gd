@@ -2540,6 +2540,62 @@ DeclareOperation( "IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject
 
 #! @Chapter Universal Objects
 
+###################################
+##
+#! @Section Projective covers and injective envelopes
+##
+###################################
+
+#! @Description
+#!  The argument is an object $A$.
+#!  The output is a projective cover of $A$.
+#! @Arguments A
+#! @Returns an object
+DeclareAttribute( "ProjectiveCoverObject",
+        IsCapCategoryObject );
+
+#! @Description
+#!  The argument is an object $A$.
+#!  The output is an epimorphism from a projective cover of $A$.
+#! @Arguments A
+#! @Returns an epimorphism
+DeclareAttribute( "EpimorphismFromProjectiveCoverObject",
+        IsCapCategoryObject );
+
+#! @Description
+#!  The argument is an object $A$.
+#!  The output is the epimorphism from the projective cover $P$ of $A$.
+#! @Arguments A, P
+#! @Returns an epimorphism
+DeclareOperation( "EpimorphismFromProjectiveCoverObjectWithGivenProjectiveCoverObject",
+        [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#!  The argument is an object $A$.
+#!  The output is an injective envelope of $A$.
+#! @Arguments A
+#! @Returns an object
+DeclareAttribute( "InjectiveEnvelopeObject",
+        IsCapCategoryObject );
+
+#! @Description
+#!  The argument is an object $A$.
+#!  The output is a monomorphism into an injective envelope of $A$.
+#! @Arguments A
+#! @Returns a monomorphism
+DeclareAttribute( "MonomorphismIntoInjectiveEnvelopeObject",
+        IsCapCategoryObject );
+
+#! @Description
+#!  The argument is an object $A$.
+#!  The output is a monomorphism into an injective envelope $I$ of $A$.
+#! @Arguments A, I
+#! @Returns a monomorphism
+DeclareOperation( "MonomorphismIntoInjectiveEnvelopeObjectWithGivenInjectiveEnvelopeObject",
+        [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Chapter Universal Objects
+
 ####################################
 ##
 #! @Section Convenience Methods
