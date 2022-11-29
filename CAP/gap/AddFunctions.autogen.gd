@@ -297,6 +297,44 @@ DeclareOperation( "AddCoimageObject",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `CoimageObjectFunctorial`.
+#! $F: ( alpha, mu, alphap ) \mapsto \mathtt{CoimageObjectFunctorial}(alpha, mu, alphap)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCoimageObjectFunctorial",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCoimageObjectFunctorial",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCoimageObjectFunctorial",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCoimageObjectFunctorial",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `CoimageObjectFunctorialWithGivenCoimageObjects`.
+#! $F: ( C, alpha, mu, alphap, Cp ) \mapsto \mathtt{CoimageObjectFunctorialWithGivenCoimageObjects}(C, alpha, mu, alphap, Cp)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCoimageObjectFunctorialWithGivenCoimageObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCoimageObjectFunctorialWithGivenCoimageObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCoimageObjectFunctorialWithGivenCoimageObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCoimageObjectFunctorialWithGivenCoimageObjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `CoimageProjection`.
 #! $F: ( alpha ) \mapsto \mathtt{CoimageProjection}(alpha)$.
 #! @Returns nothing
@@ -1242,6 +1280,44 @@ DeclareOperation( "AddImageObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddImageObject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `ImageObjectFunctorial`.
+#! $F: ( alpha, nu, alphap ) \mapsto \mathtt{ImageObjectFunctorial}(alpha, nu, alphap)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddImageObjectFunctorial",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddImageObjectFunctorial",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddImageObjectFunctorial",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddImageObjectFunctorial",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `ImageObjectFunctorialWithGivenImageObjects`.
+#! $F: ( I, alpha, nu, alphap, Ip ) \mapsto \mathtt{ImageObjectFunctorialWithGivenImageObjects}(I, alpha, nu, alphap, Ip)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddImageObjectFunctorialWithGivenImageObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddImageObjectFunctorialWithGivenImageObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddImageObjectFunctorialWithGivenImageObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddImageObjectFunctorialWithGivenImageObjects",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

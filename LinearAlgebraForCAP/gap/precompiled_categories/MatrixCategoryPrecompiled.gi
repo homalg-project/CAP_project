@@ -754,6 +754,32 @@ end
     , 302 : IsPrecompiledDerivation := true );
     
     ##
+    AddCoimageObjectFunctorial( cat,
+        
+########
+function ( cat_1, alpha_1, mu_1, alphap_1 )
+    local morphism_attr_1_1;
+    morphism_attr_1_1 := LeftDivide( SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ), UnderlyingMatrix( mu_1 ) * SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( alphap_1 ) ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+end
+########
+        
+    , 2013 : IsPrecompiledDerivation := true );
+    
+    ##
+    AddCoimageObjectFunctorialWithGivenCoimageObjects( cat,
+        
+########
+function ( cat_1, C_1, alpha_1, mu_1, alphap_1, Cp_1 )
+    local morphism_attr_1_1;
+    morphism_attr_1_1 := LeftDivide( SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ), UnderlyingMatrix( mu_1 ) * SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( alphap_1 ) ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+end
+########
+        
+    , 1408 : IsPrecompiledDerivation := true );
+    
+    ##
     AddCoimageProjection( cat,
         
 ########
@@ -1547,6 +1573,32 @@ end
 ########
         
     , 302 : IsPrecompiledDerivation := true );
+    
+    ##
+    AddImageObjectFunctorial( cat,
+        
+########
+function ( cat_1, alpha_1, nu_1, alphap_1 )
+    local morphism_attr_1_1;
+    morphism_attr_1_1 := RightDivide( SyzygiesOfRows( SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ) ) * UnderlyingMatrix( nu_1 ), SyzygiesOfRows( SyzygiesOfColumns( UnderlyingMatrix( alphap_1 ) ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+end
+########
+        
+    , 2013 : IsPrecompiledDerivation := true );
+    
+    ##
+    AddImageObjectFunctorialWithGivenImageObjects( cat,
+        
+########
+function ( cat_1, I_1, alpha_1, nu_1, alphap_1, Ip_1 )
+    local morphism_attr_1_1;
+    morphism_attr_1_1 := RightDivide( SyzygiesOfRows( SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ) ) * UnderlyingMatrix( nu_1 ), SyzygiesOfRows( SyzygiesOfColumns( UnderlyingMatrix( alphap_1 ) ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+end
+########
+        
+    , 1408 : IsPrecompiledDerivation := true );
     
     ##
     AddInitialObject( cat,

@@ -335,6 +335,8 @@
 #! * <Ref BookName="CAP" Func="CoastrictionToImage" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoastrictionToImageWithGivenImageObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoimageObject" Label="for Is" />
+#! * <Ref BookName="CAP" Func="CoimageObjectFunctorial" Label="for Is" />
+#! * <Ref BookName="CAP" Func="CoimageObjectFunctorialWithGivenCoimageObjects" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoimageProjection" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoimageProjectionWithGivenCoimageObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CokernelColift" Label="for Is" />
@@ -356,6 +358,8 @@
 #! * <Ref BookName="CAP" Func="ImageEmbedding" Label="for Is" />
 #! * <Ref BookName="CAP" Func="ImageEmbeddingWithGivenImageObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="ImageObject" Label="for Is" />
+#! * <Ref BookName="CAP" Func="ImageObjectFunctorial" Label="for Is" />
+#! * <Ref BookName="CAP" Func="ImageObjectFunctorialWithGivenImageObjects" Label="for Is" />
 #! * <Ref BookName="CAP" Func="InjectionOfCofactorOfPushout" Label="for Is" />
 #! * <Ref BookName="CAP" Func="InjectionOfCofactorOfPushoutWithGivenPushout" Label="for Is" />
 #! * <Ref BookName="CAP" Func="InverseMorphismFromCoimageToImageWithGivenObjects" Label="for Is" />
