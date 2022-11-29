@@ -2201,6 +2201,30 @@ DeclareOperation( "UniversalMorphismFromImage",
 DeclareOperation( "UniversalMorphismFromImageWithGivenImageObject",
                   [ IsCapCategoryMorphism, IsList, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are three morphisms
+#! $\alpha: A \rightarrow B$, $\nu: B \rightarrow B'$, $\alpha': A' \rightarrow B'$.
+#! The output is the morphism
+#! $\mathrm{ImageObject}( \alpha ) \rightarrow \mathrm{ImageObject}( \alpha' )$
+#! given by the functoriality of the image.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{ImageObject}( \alpha ), \mathrm{ImageObject}( \alpha' ) )$
+#! @Arguments alpha, nu, alpha_prime
+DeclareOperation( "ImageObjectFunctorial",
+        [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are an object $s = \mathrm{ImageObject}( \alpha )$,
+#! three morphisms
+#! $\alpha: A \rightarrow B$, $\nu: B \rightarrow B'$, $\alpha': A' \rightarrow B'$,
+#! and an object $r = \mathrm{ImageObject}( \alpha' )$.
+#! The output is the morphism
+#! $\mathrm{ImageObject}( \alpha ) \rightarrow \mathrm{ImageObject}( \alpha' )$
+#! given by the functoriality of the image.
+#! @Returns a morphism in $\mathrm{Hom}( s, r )$
+#! @Arguments s, alpha, nu, alpha_prime, r
+DeclareOperation( "ImageObjectFunctorialWithGivenImageObjects",
+        [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
 #! @Chapter Universal Objects
 
 ####################################
@@ -2399,6 +2423,31 @@ DeclareAttribute( "CanonicalIdentificationFromImageObjectToCoimage",
 #! @Arguments alpha
 DeclareAttribute( "CanonicalIdentificationFromCoimageToImageObject",
                   IsCapCategoryMorphism );
+
+#! @Description
+#! The arguments are three morphisms
+#! $\alpha: A \rightarrow B, \mu: A \rightarrow A', \alpha': A' \rightarrow B'$.
+#! The output is the morphism
+#! $\mathrm{CoimageObject}( \alpha ) \rightarrow \mathrm{CoimageObject}( \alpha' )$
+#! given by the functoriality of the coimage.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{CoimageObject}( \alpha ), \mathrm{CoimageObject}( \alpha' ))$
+#! @Arguments alpha, mu, alpha_prime
+DeclareOperation( "CoimageObjectFunctorial",
+        [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+
+#! @Description
+#! The arguments are an object $s = \mathrm{CoimageObject}( \alpha )$,
+#! three morphisms
+#! $\alpha: A \rightarrow B, \mu: A \rightarrow A', \alpha': A' \rightarrow B'$,
+#! and an object $r = \mathrm{CoimageObject}( \alpha' )$.
+#! The output is the morphism
+#! $\mathrm{CoimageObject}( \alpha ) \rightarrow \mathrm{CoimageObject}( \alpha' )$
+#! given by the functoriality of the coimage.
+#! @Returns a morphism in $\mathrm{Hom}(s, r)$
+#! @Arguments s, alpha, mu, alpha_prime, r
+DeclareOperation( "CoimageObjectFunctorialWithGivenCoimageObjects",
+        [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Chapter Universal Objects
 

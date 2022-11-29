@@ -893,6 +893,34 @@ AddDerivationToCAP( MorphismFromSourceToCoequalizer,
     
   end : Description := "MorphismFromSourceToCoequalizer by composing the first morphism in the diagram with the projection" );
 
+##
+AddDerivationToCAP( ImageObjectFunctorialWithGivenImageObjects,
+                    [ [ LiftAlongMonomorphism, 1 ],
+                      [ ImageEmbeddingWithGivenImageObject, 2 ],
+                      [ PreCompose, 1 ] ],
+        
+  function( cat, I, alpha, nu, alphap, Ip )
+    
+    return LiftAlongMonomorphism( cat,
+                   ImageEmbeddingWithGivenImageObject( cat, alphap, Ip ),
+                   PreCompose( cat, ImageEmbeddingWithGivenImageObject( cat, alpha, I ), nu ) );
+    
+end : Description := "ImageObjectFunctorialWithGivenImageObjects using the universality" );
+
+##
+AddDerivationToCAP( CoimageObjectFunctorialWithGivenCoimageObjects,
+                    [ [ ColiftAlongEpimorphism, 1 ],
+                      [ CoimageProjectionWithGivenCoimageObject, 2 ],
+                      [ PreCompose, 1 ] ],
+        
+  function( cat, C, alpha, mu, alphap, Cp )
+    
+    return ColiftAlongEpimorphism( cat,
+                   CoimageProjectionWithGivenCoimageObject( cat, alpha, C ),
+                   PreCompose( cat, mu, CoimageProjectionWithGivenCoimageObject( cat, alphap, Cp ) ) );
+    
+end : Description := "CoimageObjectFunctorialWithGivenCoimageObjects using the universality" );
+
 ###########################
 ##
 ## Methods returning a boolean
