@@ -878,3 +878,28 @@ InstallGlobalFunction( ErrorWithCurrentlyCompiledFunctionLocation, function ( ar
     # COVERAGE_IGNORE_BLOCK_END
     
 end );
+
+InstallGlobalFunction( EvalStringStrict, function ( string )
+  local s, res, fres;
+    
+    # adapted from RunTests
+    s := InputTextString( Concatenation( string, ";;" ) );
+    
+    res := "";
+    fres := OutputTextString( res, false );
+    
+    READ_STREAM_LOOP( s, fres, false );
+    
+    CloseStream( fres );
+    CloseStream( s );
+    
+    if not IsEmpty( res ) then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( res );
+        
+    fi;
+    
+    return EvalString( string );
+    
+end );
