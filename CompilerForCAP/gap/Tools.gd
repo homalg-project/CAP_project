@@ -158,3 +158,8 @@ DeclareGlobalFunction( "DisplayWithCurrentlyCompiledFunctionLocation" );
 #!   Prints <A>args...</A> as an error followed by the location of the currently compiled function.
 #! @Arguments args...
 DeclareGlobalFunction( "ErrorWithCurrentlyCompiledFunctionLocation" );
+
+#! @Description
+#!   Same as `EvalString`, but enters a break-loop when encountering syntax errors or warnings.
+#! @Arguments string
+DeclareGlobalFunction( "EvalStringStrict" );

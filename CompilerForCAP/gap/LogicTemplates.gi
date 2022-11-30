@@ -58,6 +58,13 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
             
         fi;
         
+        if PositionSublist( template.src_template, variable_name ) = fail then
+            
+            # COVERAGE_IGNORE_NEXT_LINE
+            Error( "Variable name \"", variable_name, "\" does not appear in src_template. This is not supported." );
+            
+        fi;
+        
     od;
     
     if IsBound( template.variable_filters ) and Length( template.variable_names ) <> Length( template.variable_filters ) then
@@ -130,7 +137,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
     if not IsBound( template.src_template_tree ) then
         
         # to get a syntax tree we have to wrap the template in a function
-        tmp_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "{ ", JoinStringsWithSeparator( template.variable_names, ", " ), " } -> ", template.src_template ) ) );
+        tmp_tree := ENHANCED_SYNTAX_TREE( EvalStringStrict( Concatenation( "{ ", JoinStringsWithSeparator( template.variable_names, ", " ), " } -> ", template.src_template ) ) );
         
         Assert( 0, tmp_tree.bindings.names = [ "RETURN_VALUE" ] );
         
@@ -142,7 +149,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
     if not IsBound( template.dst_template_tree ) then
         
         # to get a syntax tree we have to wrap the template in a function
-        tmp_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "{ ", JoinStringsWithSeparator( template.variable_names, ", " ), " } -> ", template.dst_template ) ) );
+        tmp_tree := ENHANCED_SYNTAX_TREE( EvalStringStrict( Concatenation( "{ ", JoinStringsWithSeparator( template.variable_names, ", " ), " } -> ", template.dst_template ) ) );
         
         Assert( 0, tmp_tree.bindings.names = [ "RETURN_VALUE" ] );
         
@@ -709,7 +716,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATES, function ( tree
                 if not IsDenseList( variables ) or Length( variables ) <> Length( template.variable_names ) then
                     
                     # COVERAGE_IGNORE_NEXT_LINE
-                    Error( "matched wrong number of variables" );
+                    Error( "the following variables where not matched: ", template.variable_names{Difference( [ 1 .. Length( template.variable_names ) ], PositionsBound( variables ) )} );
                     
                 fi;
                 
@@ -754,6 +761,13 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATES, function ( tree
                         if CapJitContainsRefToFVAROutsideOfFuncStack( variables[tree.id], func_id_stack ) then
                             
                             well_defined := false;
+                            
+                            if IsBound( template.debug ) and template.debug then
+                                
+                                # COVERAGE_IGNORE_NEXT_LINE
+                                Error( "variable contains fvar outside of func stack" );
+                                
+                            fi;
                             
                             # abort iteration
                             return fail;
