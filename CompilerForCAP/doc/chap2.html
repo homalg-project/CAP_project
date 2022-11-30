@@ -63,6 +63,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8051DC1182147513">2.4-18 PrintWithCurrentlyCompiledFunctionLocation</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8226EA7484A7C350">2.4-19 DisplayWithCurrentlyCompiledFunctionLocation</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X82F160C086B156B8">2.4-20 ErrorWithCurrentlyCompiledFunctionLocation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X80E5D6BC7C7DC6B1">2.4-21 EvalStringStrict</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X80608A9A78CF95E0">2.5 <span class="Heading">Compilation steps</span></a>
 </span>
@@ -529,6 +530,13 @@
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ErrorWithCurrentlyCompiledFunctionLocation</code>( <var class="Arg">args...</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Prints <var class="Arg">args...</var> as an error followed by the location of the currently compiled function.</p>
+
+<p><a id="X80E5D6BC7C7DC6B1" name="X80E5D6BC7C7DC6B1"></a></p>
+
+<h5>2.4-21 EvalStringStrict</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EvalStringStrict</code>( <var class="Arg">string</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Same as <code class="code">EvalString</code>, but enters a break-loop when encountering syntax errors or warnings.</p>
 
 <p><a id="X80608A9A78CF95E0" name="X80608A9A78CF95E0"></a></p>
 
