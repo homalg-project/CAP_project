@@ -1413,6 +1413,7 @@ end );
 
 # homalg operations
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "ZeroImmutable", [ "IsHomalgRing" ], "IsHomalgRingElement" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "OneImmutable", [ "IsHomalgRing" ], "IsHomalgRingElement" );
 
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgMatrix", [ "IsList", "IsInt", "IsInt", "IsHomalgRing" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgMatrixListList", [ "IsList", "IsInt", "IsInt", "IsHomalgRing" ], """function( input_types )
