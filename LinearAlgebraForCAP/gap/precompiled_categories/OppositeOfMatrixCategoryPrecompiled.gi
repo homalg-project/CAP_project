@@ -398,11 +398,11 @@ end
     AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
         
 ########
-function ( cat_1, arg2_1, arg3_1, arg4_1 )
+function ( cat_1, source_1, range_1, alpha_1 )
     local deduped_1_1, deduped_2_1;
-    deduped_2_1 := Opposite( arg2_1 );
-    deduped_1_1 := Opposite( arg3_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg3_1, Opposite, CreateCapCategoryMorphismWithAttributes( OppositeCategory( cat_1 ), deduped_1_1, deduped_2_1, UnderlyingMatrix, ConvertRowToMatrix( UnderlyingMatrix( arg4_1 ), Dimension( deduped_1_1 ), Dimension( deduped_2_1 ) ) ) );
+    deduped_2_1 := Opposite( source_1 );
+    deduped_1_1 := Opposite( range_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, Opposite, CreateCapCategoryMorphismWithAttributes( OppositeCategory( cat_1 ), deduped_1_1, deduped_2_1, UnderlyingMatrix, ConvertRowToMatrix( UnderlyingMatrix( alpha_1 ), Dimension( deduped_1_1 ), Dimension( deduped_2_1 ) ) ) );
 end
 ########
         
