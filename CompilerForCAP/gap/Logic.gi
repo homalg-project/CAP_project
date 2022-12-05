@@ -552,19 +552,17 @@ CapJitAddLogicFunction( function ( tree )
     Info( InfoCapJit, 1, "Apply logic for unwrapping and immediately re-wrapping a CAP category object." );
     
     pre_func := function ( tree, func_stack )
-      local attribute_name, func_pos, func, value;
+      local attribute_name, func, value;
         
         # Attribute( obj ) is outlined!
         if CapJitIsCallToGlobalFunction( tree, "CreateCapCategoryObjectWithAttributes" ) and tree.args.length = 3 and tree.args.1.type = "EXPR_REF_GVAR" and IsBound( tree.args.1.data_type ) and tree.args.2.type = "EXPR_REF_GVAR" and tree.args.3.type = "EXPR_REF_FVAR" then
             
             attribute_name := tree.args.2.gvar;
             
-            func_pos := SafePositionProperty( func_stack, func -> func.id = tree.args.3.func_id );
-            
-            func := func_stack[func_pos];
+            func := SafeUniqueEntry( func_stack, func -> func.id = tree.args.3.func_id );
             
             # check if tree.args.3 references a binding, not an argument
-            if SafePosition( func.nams, tree.args.3.name ) > func.narg then
+            if SafeUniquePosition( func.nams, tree.args.3.name ) > func.narg then
             
                 value := CapJitValueOfBinding( func.bindings, tree.args.3.name );
                 
@@ -706,7 +704,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                 source := return_obj.args.2;
                 
                 # source might have been outlined
-                if source.type = "EXPR_REF_FVAR" and source.func_id = result_func.id and SafePosition( result_func.nams, source.name ) > result_func.narg then
+                if source.type = "EXPR_REF_FVAR" and source.func_id = result_func.id and SafeUniquePosition( result_func.nams, source.name ) > result_func.narg then
                     
                     source := CapJitValueOfBinding( result_func.bindings, source.name );
                     
@@ -715,7 +713,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                 range := return_obj.args.3;
                 
                 # range might have been outlined
-                if range.type = "EXPR_REF_FVAR" and range.func_id = result_func.id and SafePosition( result_func.nams, range.name ) > result_func.narg then
+                if range.type = "EXPR_REF_FVAR" and range.func_id = result_func.id and SafeUniquePosition( result_func.nams, range.name ) > result_func.narg then
                     
                     range := CapJitValueOfBinding( result_func.bindings, range.name );
                     
@@ -772,7 +770,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                 # check if arguments are only accessed via the attribute
                 for func in ConcatenationForSyntaxTreeLists( AsSyntaxTreeList( [ new_func ] ), new_additional_funcs ) do
                     
-                    arguments_references_paths := CapJitFindNodes( func, { tree, path } -> tree.type = "EXPR_REF_FVAR" and tree.func_id = func.id and SafePosition( func.nams, tree.name ) <= func.narg );
+                    arguments_references_paths := CapJitFindNodes( func, { tree, path } -> tree.type = "EXPR_REF_FVAR" and tree.func_id = func.id and SafeUniquePosition( func.nams, tree.name ) <= func.narg );
                     
                     for path in arguments_references_paths do
                         

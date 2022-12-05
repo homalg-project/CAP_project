@@ -235,16 +235,34 @@ DeclareGlobalFunction( "PackageOfCAPOperation" );
 DeclareOperation( "SafePosition", [ IsList, IsObject ] );
 
 #! @Description
+#!   Returns `Position( <A>list</A>, <A>obj</A> )` while asserting that this value is not `fail` and the position is unique.
+#! @Arguments list, obj
+#! @Returns an integer
+DeclareOperation( "SafeUniquePosition", [ IsList, IsObject ] );
+
+#! @Description
 #!   Returns `PositionProperty( <A>list</A>, <A>func</A> )` while asserting that this value is not `fail`.
 #! @Arguments list, func
 #! @Returns an integer
 DeclareOperation( "SafePositionProperty", [ IsList, IsFunction ] );
 
 #! @Description
+#!   Returns a position in <A>list</A> for which <A>func</A> returns `true` when applied to the corresponding entry while asserting that there exists exactly one such position.
+#! @Arguments list, func
+#! @Returns an integer
+DeclareOperation( "SafeUniquePositionProperty", [ IsList, IsFunction ] );
+
+#! @Description
 #!   Returns `First( <A>list</A>, <A>func</A> )` while asserting that this value is not `fail`.
 #! @Arguments list, func
 #! @Returns an element of the list
 DeclareOperation( "SafeFirst", [ IsList, IsFunction ] );
+
+#! @Description
+#!   Returns a value in <A>list</A> for which <A>func</A> returns `true` while asserting that there exists exactly one such entry.
+#! @Arguments list, func
+#! @Returns an element of the list
+DeclareOperation( "SafeUniqueEntry", [ IsList, IsFunction ] );
 
 #! @Description
 #!   Returns <A>args</A> while asserting that its length is <A>n</A>.

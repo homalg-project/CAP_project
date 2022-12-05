@@ -132,7 +132,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
             
             return rec(
                 type := "SYNTAX_TREE_VARIABLE",
-                id := SafePosition( tmp_tree.nams, tree.name ),
+                id := SafeUniquePosition( tmp_tree.nams, tree.name ),
             );
             
         fi;
