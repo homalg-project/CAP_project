@@ -1250,9 +1250,9 @@
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism[110X.
-  [23XF:         (         arg2,         arg3,        arg4        )        \mapsto
-  \mathtt{InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism}(arg2,
-  arg3, arg4)[123X.[133X
+  [23XF:        (        source,        range,        alpha        )       \mapsto
+  \mathtt{InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism}(source,
+  range, alpha)[123X.[133X
   
   [1X7.7-89 AddInverseForMorphisms[101X
   
