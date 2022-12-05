@@ -1116,6 +1116,14 @@
   
   [30X    [33X[0;6Y[2XCoimageObject[102X ([14XCAP: CoimageObject for IsCapCategoryMorphism[114X)[133X
   
+  [30X    [33X[0;6Y[2XCoimageObjectFunctorial[102X      ([14XCAP:     CoimageObjectFunctorial     for
+        IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCoimageObjectFunctorialWithGivenCoimageObjects[102X                   ([14XCAP:
+        CoimageObjectFunctorialWithGivenCoimageObjects                     for
+        IsCapCategoryObject,   IsCapCategoryMorphism,   IsCapCategoryMorphism,
+        IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
+  
   [30X    [33X[0;6Y[2XCoimageProjection[102X ([14XCAP: CoimageProjection for IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XCoimageProjectionWithGivenCoimageObject[102X                          ([14XCAP:
@@ -1180,6 +1188,14 @@
         IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XImageObject[102X ([14XCAP: ImageObject for IsCapCategoryMorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XImageObjectFunctorial[102X       ([14XCAP:       ImageObjectFunctorial      for
+        IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XImageObjectFunctorialWithGivenImageObjects[102X                       ([14XCAP:
+        ImageObjectFunctorialWithGivenImageObjects   for  IsCapCategoryObject,
+        IsCapCategoryMorphism,  IsCapCategoryMorphism,  IsCapCategoryMorphism,
+        IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XInjectionOfCofactorOfPushout[102X  ([14XCAP:  InjectionOfCofactorOfPushout  for
         IsList, IsInt[114X)[133X
