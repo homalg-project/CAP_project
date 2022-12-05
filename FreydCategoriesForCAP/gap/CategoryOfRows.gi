@@ -1313,7 +1313,7 @@ AddFinalDerivationBundle( # DistinguishedObjectOfHomomorphismStructure,
     
     basis := List( basis, ell -> CoefficientsOfMorphism( cat, PreComposeList( cat, [ alpha, ell, beta ] ) ) );
     
-    m := HomalgMatrix( basis, RankOfObject( hom_source ), RankOfObject( hom_range ), CommutativeRingOfLinearCategory( cat ) );
+    m := HomalgMatrixListList( basis, RankOfObject( hom_source ), RankOfObject( hom_range ), CommutativeRingOfLinearCategory( cat ) );
     
     return CategoryOfRowsMorphism( RangeCategoryOfHomomorphismStructure( cat ), hom_source, m, hom_range );
     
@@ -1324,7 +1324,7 @@ AddFinalDerivationBundle( # DistinguishedObjectOfHomomorphismStructure,
   function ( cat, distinguished_object, alpha, r )
     local m;
     
-    m := HomalgMatrix( CoefficientsOfMorphism( cat, alpha ), 1, RankOfObject( r ), CommutativeRingOfLinearCategory( cat ) );
+    m := HomalgRowVector( CoefficientsOfMorphism( cat, alpha ), RankOfObject( r ), CommutativeRingOfLinearCategory( cat ) );
     
     return CategoryOfRowsMorphism( RangeCategoryOfHomomorphismStructure( cat ), distinguished_object, m, r );
     
