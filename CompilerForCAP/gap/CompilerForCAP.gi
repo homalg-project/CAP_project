@@ -310,7 +310,7 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
     
     if type_signature = fail or not CAP_JIT_DATA_TYPE_INFERENCE_ENABLED then
         
-        Remove( rule_phase_functions, SafePosition( rule_phase_functions, CapJitInferredDataTypes ) );
+        Remove( rule_phase_functions, SafeUniquePosition( rule_phase_functions, CapJitInferredDataTypes ) );
         
     fi;
     
@@ -477,15 +477,13 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                   local value_of_binding_iterated, is_shorter_than, list_call, domain, simplify, enclosing_domain;
                     
                     value_of_binding_iterated := function ( tree )
-                      local pos, func;
+                      local func;
                         
                         if tree.type = "EXPR_REF_FVAR" then
                             
-                            pos := SafePositionProperty( func_stack, f -> f.id = tree.func_id );
+                            func := SafeUniqueEntry( func_stack, f -> f.id = tree.func_id );
                             
-                            func := func_stack[pos];
-                            
-                            if SafePosition( func.nams, tree.name ) > func.narg then
+                            if SafeUniquePosition( func.nams, tree.name ) > func.narg then
                                 
                                 return value_of_binding_iterated( CapJitValueOfBinding( func.bindings, tree.name ) );
                                 

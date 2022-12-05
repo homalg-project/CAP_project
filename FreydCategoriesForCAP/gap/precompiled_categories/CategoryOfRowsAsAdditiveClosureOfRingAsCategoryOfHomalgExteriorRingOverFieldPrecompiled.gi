@@ -199,21 +199,21 @@ end
     AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
         
 ########
-function ( cat_1, arg2_1, arg3_1, arg4_1 )
+function ( cat_1, source_1, range_1, alpha_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1, deduped_12_1;
     deduped_12_1 := BasisOfRingOverBaseFieldAsColumnVector( cat_1 );
     deduped_11_1 := UnderlyingRing( cat_1 );
-    deduped_10_1 := RankOfObject( arg3_1 );
-    deduped_9_1 := RankOfObject( arg2_1 );
+    deduped_10_1 := RankOfObject( range_1 );
+    deduped_9_1 := RankOfObject( source_1 );
     deduped_8_1 := [ 1 .. deduped_9_1 ];
     hoisted_7_1 := deduped_12_1;
     hoisted_6_1 := deduped_11_1;
-    hoisted_5_1 := UnderlyingMatrix( arg4_1 );
+    hoisted_5_1 := UnderlyingMatrix( alpha_1 );
     hoisted_4_1 := Length( EntriesOfHomalgColumnVector( deduped_12_1 ) );
     hoisted_3_1 := [ 1 .. deduped_10_1 ];
     hoisted_2_1 := deduped_10_1;
     hoisted_1_1 := deduped_8_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg3_1, UnderlyingMatrix, HomalgMatrixListList( List( deduped_8_1, function ( logic_new_func_x_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, UnderlyingMatrix, HomalgMatrixListList( List( deduped_8_1, function ( logic_new_func_x_2 )
                 local hoisted_1_2;
                 hoisted_1_2 := hoisted_2_1 * (CAP_JIT_INCOMPLETE_LOGIC( hoisted_1_1[logic_new_func_x_2] ) - 1);
                 return List( hoisted_3_1, function ( logic_new_func_x_3 )

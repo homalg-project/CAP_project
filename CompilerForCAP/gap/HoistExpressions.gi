@@ -72,7 +72,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_HOISTED_EXPRESSIONS_OR_BINDINGS, functio
             fi;
             
             # references to variables always restrict the scope to the corresponding function
-            AddSet( levels, SafePositionProperty( func_stack, f -> f.id = tree.func_id ) );
+            AddSet( levels, SafeUniquePositionProperty( func_stack, f -> f.id = tree.func_id ) );
             
         elif tree.type = "FVAR_BINDING_SEQ" then
             
@@ -203,7 +203,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_HOISTED_EXPRESSIONS_OR_BINDINGS, functio
                             od;
                             
                             # drop old binding
-                            Remove( info2.old_func.nams, SafePosition( info2.old_func.nams, old_variable_name ) );
+                            Remove( info2.old_func.nams, SafeUniquePosition( info2.old_func.nams, old_variable_name ) );
                             CapJitUnbindBinding( info2.old_func.bindings, old_variable_name );
                             
                         else
@@ -532,7 +532,7 @@ InstallGlobalFunction( CapJitExtractedExpensiveOperationsFromLoops, function ( t
                 if tree.type = "EXPR_REF_FVAR" then
                     
                     # references to variables always restrict the scope to the corresponding function
-                    AddSet( levels, SafePositionProperty( func_stack, f -> f.id = tree.func_id ) );
+                    AddSet( levels, SafeUniquePositionProperty( func_stack, f -> f.id = tree.func_id ) );
                     
                     # We could also add the domain levels here, but that would lead to larger chunks being hoisted which hinders deduplication.
                     

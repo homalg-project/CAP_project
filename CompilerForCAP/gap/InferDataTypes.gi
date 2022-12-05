@@ -442,7 +442,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INFERRED_DATA_TYPES, function ( tree, in
     end;
     
     result_func := function ( tree, result, keys, func_stack )
-      local typed_args, positions, name, rec_name, data_type, filter, func_pos, func, pos, value, key, i;
+      local typed_args, positions, name, rec_name, data_type, filter, func, pos, value, key, i;
         
         tree := ShallowCopy( tree );
         
@@ -693,9 +693,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INFERRED_DATA_TYPES, function ( tree, in
             
         elif tree.type = "EXPR_REF_FVAR" then
             
-            func_pos := SafePositionProperty( func_stack, func -> func.id = tree.func_id );
-            
-            func := func_stack[func_pos];
+            func := SafeUniqueEntry( func_stack, func -> func.id = tree.func_id );
             
             if func.variadic then
                 
@@ -706,7 +704,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INFERRED_DATA_TYPES, function ( tree, in
                 
             fi;
             
-            pos := SafePosition( func.nams, tree.name );
+            pos := SafeUniquePosition( func.nams, tree.name );
             
             if pos <= func.narg then
                 
@@ -1048,7 +1046,7 @@ end );
 CapJitAddTypeSignature( "First", [ IsList, IsFunction ], function ( args, func_stack )
     
     # COVERAGE_IGNORE_BLOCK_START
-    PrintWithCurrentlyCompiledFunctionLocation( "WARNING: `First` might return fail and thus cannot be handled by the type system currently. Please use `SafeFirst` instead." );
+    PrintWithCurrentlyCompiledFunctionLocation( "WARNING: `First` might return fail and thus cannot be handled by the type system currently. Please use `SafeUniqueEntry` (or `SafeFirst`) instead." );
     
     return fail;
     # COVERAGE_IGNORE_BLOCK_END
@@ -1072,12 +1070,29 @@ CapJitAddTypeSignature( "SafeFirst", [ IsList, IsFunction ], function ( args, fu
     
 end );
 
+CapJitAddTypeSignature( "SafeUniqueEntry", [ IsList, IsFunction ], function ( args, func_stack )
+    
+    args := ShallowCopy( args );
+    
+    args.2 := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS_TYPES( args.2, [ args.1.data_type.element_type ], func_stack );
+    
+    if args.2 = fail then
+        
+        #Error( "could not determine output type" );
+        return fail;
+        
+    fi;
+    
+    return rec( args := args, output_type := args.1.data_type.element_type );
+    
+end );
+
 CapJitAddTypeSignature( "Position", [ IsList, IsObject ], function ( input_types )
     
     # COVERAGE_IGNORE_BLOCK_START
     Assert( 0, input_types[1].element_type = input_types[2] );
     
-    PrintWithCurrentlyCompiledFunctionLocation( "WARNING: `Position` might return fail and thus cannot be handled by the type system currently. Please use `SafePosition` instead." );
+    PrintWithCurrentlyCompiledFunctionLocation( "WARNING: `Position` might return fail and thus cannot be handled by the type system currently. Please use `Safe(Unique)Position` instead." );
     
     return fail;
     # COVERAGE_IGNORE_BLOCK_END
@@ -1092,11 +1107,53 @@ CapJitAddTypeSignature( "SafePosition", [ IsList, IsObject ], function ( input_t
     
 end );
 
+CapJitAddTypeSignature( "SafeUniquePosition", [ IsList, IsObject ], function ( input_types )
+    
+    Assert( 0, input_types[1].element_type = input_types[2] );
+    
+    return rec( filter := IsInt );
+    
+end );
+
 CapJitAddTypeSignature( "Positions", [ IsList, IsObject ], function ( input_types )
     
     Assert( 0, input_types[1].element_type = input_types[2] );
     
     return rec( filter := IsList, element_type := rec( filter := IsInt ) );
+    
+end );
+
+CapJitAddTypeSignature( "SafePositionProperty", [ IsList, IsFunction ], function ( args, func_stack )
+    
+    args := ShallowCopy( args );
+    
+    args.2 := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS_TYPES( args.2, [ args.1.data_type.element_type ], func_stack );
+    
+    if args.2 = fail then
+        
+        #Error( "could not determine output type" );
+        return fail;
+        
+    fi;
+    
+    return rec( args := args, output_type := rec( filter := IsInt ) );
+    
+end );
+
+CapJitAddTypeSignature( "SafeUniquePositionProperty", [ IsList, IsFunction ], function ( args, func_stack )
+    
+    args := ShallowCopy( args );
+    
+    args.2 := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS_TYPES( args.2, [ args.1.data_type.element_type ], func_stack );
+    
+    if args.2 = fail then
+        
+        #Error( "could not determine output type" );
+        return fail;
+        
+    fi;
+    
+    return rec( args := args, output_type := rec( filter := IsInt ) );
     
 end );
 
@@ -1356,12 +1413,27 @@ end );
 
 # homalg operations
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "ZeroImmutable", [ "IsHomalgRing" ], "IsHomalgRingElement" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "OneImmutable", [ "IsHomalgRing" ], "IsHomalgRingElement" );
 
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgMatrix", [ "IsList", "IsInt", "IsInt", "IsHomalgRing" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgMatrixListList", [ "IsList", "IsInt", "IsInt", "IsHomalgRing" ], """function( input_types )
     
     Assert( 0, input_types[1].element_type.filter = IsList );
     Assert( 0, input_types[1].element_type.element_type.filter in [ IsHomalgRingElement, IsInt, IsRat ] );
+    
+    return rec( filter := IsHomalgMatrix );
+    
+end""" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgRowVector", [ "IsList", "IsInt", "IsHomalgRing" ], """function( input_types )
+    
+    Assert( 0, input_types[1].element_type.filter in [ IsHomalgRingElement, IsInt, IsRat ] );
+    
+    return rec( filter := IsHomalgMatrix );
+    
+end""" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgColumnVector", [ "IsList", "IsInt", "IsHomalgRing" ], """function( input_types )
+    
+    Assert( 0, input_types[1].element_type.filter in [ IsHomalgRingElement, IsInt, IsRat ] );
     
     return rec( filter := IsHomalgMatrix );
     

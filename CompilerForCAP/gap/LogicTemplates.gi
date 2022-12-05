@@ -73,7 +73,21 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
         Error( "the length of the record entries variable_names and variable_filters of a logic template must be equal" );
         
     fi;
-
+    
+    if Last( NormalizedWhitespace( template.src_template ) ) = ';' then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "src_template ends with a semicolon. This is not supported." );
+        
+    fi;
+    
+    if Last( NormalizedWhitespace( template.dst_template ) ) = ';' then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "dst_template ends with a semicolon. This is not supported." );
+        
+    fi;
+    
     if IsBound( template.needed_packages ) and (not IsList( template.needed_packages ) or ForAny( template.needed_packages, p -> not IsList( p ) or Length( p ) <> 2 )) then
         
         # COVERAGE_IGNORE_NEXT_LINE
@@ -118,7 +132,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
             
             return rec(
                 type := "SYNTAX_TREE_VARIABLE",
-                id := SafePosition( tmp_tree.nams, tree.name ),
+                id := SafeUniquePosition( tmp_tree.nams, tree.name ),
             );
             
         fi;

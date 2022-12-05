@@ -3438,9 +3438,9 @@ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure := rec
 InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects := rec(
   filter_list := [ "category", "object_in_range_category_of_homomorphism_structure", "morphism", "object_in_range_category_of_homomorphism_structure" ],
   input_arguments_names := [ "cat", "source", "alpha", "range" ],
+  return_type := "morphism_in_range_category_of_homomorphism_structure",
   output_source_getter_string := "source",
   output_range_getter_string := "range",
-  return_type := "morphism_in_range_category_of_homomorphism_structure",
   dual_operation := "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects",
   dual_preprocessor_func := function( cat, distinguished_object, alpha, hom_source_range )
     return NTuple( 4, OppositeCategory( cat ), distinguished_object, Opposite( alpha ), hom_source_range );
@@ -3450,7 +3450,10 @@ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGiv
 
 InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism := rec(
   filter_list := [ "category", "object", "object", "morphism_in_range_category_of_homomorphism_structure" ],
+  input_arguments_names := [ "cat", "source", "range", "alpha" ],
   return_type := "morphism",
+  output_source_getter_string := "source",
+  output_range_getter_string := "range",
   dual_operation := "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
   dual_preprocessor_func := function( cat, A, B, morphism )
     return NTuple( 4, OppositeCategory( cat ), Opposite( B ), Opposite( A ), morphism );

@@ -197,17 +197,17 @@ CapJitAddLogicTemplate(
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ "matrix", "nr_cols", "ring" ],
-        src_template := "HomalgMatrix( EntriesOfHomalgRowVector( matrix ), 1, nr_cols, ring )",
+        src_template := "HomalgRowVector( EntriesOfHomalgRowVector( matrix ), nr_cols, ring )",
         dst_template := "matrix",
         needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
 
-# HomalgMatrix( many EntriesOfHomalgRowVector )
+# HomalgMatrixListList( many EntriesOfHomalgRowVector )
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ "list", "row_vector", "nr_rows", "nr_cols", "ring" ],
-        src_template := "HomalgMatrix( List( list, x -> EntriesOfHomalgRowVector( row_vector ) ), nr_rows, nr_cols, ring )",
+        src_template := "HomalgMatrixListList( List( list, x -> EntriesOfHomalgRowVector( row_vector ) ), nr_rows, nr_cols, ring )",
         dst_template := "UnionOfRows( ring, nr_cols, List( list, x -> row_vector ) )",
         needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )

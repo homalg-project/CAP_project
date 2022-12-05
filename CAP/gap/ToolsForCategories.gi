@@ -1119,6 +1119,21 @@ InstallMethod( SafePosition,
 end );
 
 ##
+InstallMethod( SafeUniquePosition,
+               [ IsList, IsObject ],
+               
+  function( list, obj )
+    local positions;
+    
+    positions := Positions( list, obj );
+    
+    Assert( 0, Length( positions ) = 1 );
+    
+    return positions[1];
+    
+end );
+
+##
 InstallMethod( SafePositionProperty,
                [ IsList, IsFunction ],
                
@@ -1134,6 +1149,21 @@ InstallMethod( SafePositionProperty,
 end );
 
 ##
+InstallMethod( SafeUniquePositionProperty,
+               [ IsList, IsFunction ],
+               
+  function( list, func )
+    local positions;
+    
+    positions := PositionsProperty( list, func );
+    
+    Assert( 0, Length( positions ) = 1 );
+    
+    return positions[1];
+    
+end );
+
+##
 InstallMethod( SafeFirst,
                [ IsList, IsFunction ],
                
@@ -1145,6 +1175,21 @@ InstallMethod( SafeFirst,
     Assert( 0, entry <> fail );
     
     return entry;
+    
+end );
+
+##
+InstallMethod( SafeUniqueEntry,
+               [ IsList, IsFunction ],
+               
+  function( list, func )
+    local positions;
+    
+    positions := PositionsProperty( list, func );
+    
+    Assert( 0, Length( positions ) = 1 );
+    
+    return list[positions[1]];
     
 end );
 

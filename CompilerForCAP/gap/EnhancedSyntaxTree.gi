@@ -352,11 +352,11 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
             fi;
             
             # try to find EXPR_REF_FVAR in given_arguments
-            if tree.type = "EXPR_REF_FVAR" and tree.func_id = orig_tree.id and IsBound( given_arguments[SafePosition( orig_tree.nams, tree.name )] ) then
+            if tree.type = "EXPR_REF_FVAR" and tree.func_id = orig_tree.id and IsBound( given_arguments[SafeUniquePosition( orig_tree.nams, tree.name )] ) then
                 
                 tree := rec(
                     type := "EXPR_REF_GVAR",
-                    gvar := CapJitGetOrCreateGlobalVariable( given_arguments[SafePosition( orig_tree.nams, tree.name )] ),
+                    gvar := CapJitGetOrCreateGlobalVariable( given_arguments[SafeUniquePosition( orig_tree.nams, tree.name )] ),
                 );
                 
             fi;
@@ -645,7 +645,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                     
                 fi;
                 
-                if SafePosition( tree.nams, name ) <= tree.narg then
+                if SafeUniquePosition( tree.nams, name ) <= tree.narg then
                     
                     # COVERAGE_IGNORE_NEXT_LINE
                     ErrorWithFuncLocation( "A function argument with name ", name, " is assigned. This is not supported." );
@@ -1001,7 +1001,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                     
                     if tree.type = "EXPR_REF_FVAR" and tree.func_id = func.id then
                         
-                        if SafePosition( func.nams, tree.name ) > func.narg then
+                        if SafeUniquePosition( func.nams, tree.name ) > func.narg then
                             
                             Assert( 0, tree.name in func.bindings.names );
                             
@@ -1052,7 +1052,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                         
                     fi;
                     
-                    Remove( binding_names, SafePosition( binding_names, name ) );
+                    Remove( binding_names, SafeUniquePosition( binding_names, name ) );
                     
                     Add( ordered_binding_names, name );
                     
@@ -1189,7 +1189,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                     statements := AsSyntaxTreeList( statements ),
                 );
                 
-                pos_RETURN_VALUE := SafePosition( tree.nams, "RETURN_VALUE" );
+                pos_RETURN_VALUE := SafeUniquePosition( tree.nams, "RETURN_VALUE" );
                 
                 Assert( 0, pos_RETURN_VALUE <> fail );
                 
@@ -1333,12 +1333,12 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 if level = 0 then
                     
                     tree.type := ReplacedString( tree.type, "FVAR", "LVAR" );
-                    tree.lvar := SafePosition( func_stack[func_pos].nams, tree.name );
+                    tree.lvar := SafeUniquePosition( func_stack[func_pos].nams, tree.name );
                     
                 else
                     
                     tree.type := ReplacedString( tree.type, "FVAR", "HVAR" );
-                    tree.hvar := 2 ^ 16 * level + SafePosition( func_stack[func_pos].nams, tree.name );
+                    tree.hvar := 2 ^ 16 * level + SafeUniquePosition( func_stack[func_pos].nams, tree.name );
                     
                 fi;
                 
