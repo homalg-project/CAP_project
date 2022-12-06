@@ -1701,9 +1701,9 @@ DeclareOperation( "IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct"
 #! @Description
 #! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$.
 #! The output is a morphism
-#! $\bigoplus_{i=1}^n P_i \rightarrow B$
+#! $\bigoplus_{i=1}^n P_i \rightarrow \bigoplus_{i=1}^{n-1} B$
 #! such that its kernel equalizes the $\beta_i$.
-#! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n P_i, B )$
+#! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n P_i, \bigoplus_{i=1}^{n-1} B )$
 #! @Arguments D
 DeclareOperation( "DirectSumDiagonalDifference",
                   [ IsList ] );
@@ -1930,9 +1930,9 @@ DeclareOperation( "IsomorphismFromCoequalizerOfCoproductDiagramToPushout",
 #! @Description
 #! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
 #! The output is a morphism
-#! $B \rightarrow \bigoplus_{i=1}^n I_i$
+#! $\bigoplus_{i=1}^{n-1} B \rightarrow \bigoplus_{i=1}^n I_i$
 #! such that its cokernel coequalizes the $\beta_i$.
-#! @Returns a morphism in $\mathrm{Hom}(B, \bigoplus_{i=1}^n I_i)$
+#! @Returns a morphism in $\mathrm{Hom}(\bigoplus_{i=1}^{n-1} B, \bigoplus_{i=1}^n I_i)$
 #! @Arguments D
 DeclareOperation( "DirectSumCodiagonalDifference",
                   [ IsList ] );
