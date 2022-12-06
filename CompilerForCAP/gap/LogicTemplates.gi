@@ -128,7 +128,9 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
     
     pre_func_identify_syntax_tree_variables := function ( tree, outer_func_id )
         
-        if tree.type = "EXPR_REF_GVAR" and not IsBoundGlobal( tree.gvar ) then
+        # `IsBoundGlobal` calls `CheckGlobalName`, which warns about names containing characters not in `IdentifierLetters`.
+        # This is expected for operations in CAP_JIT_INTERNAL_OPERATION_TO_SYNTAX_TREE_TRANSLATIONS, so we avoid IsBoundGlobal in this case.
+        if tree.type = "EXPR_REF_GVAR" and not IsBound( CAP_JIT_INTERNAL_OPERATION_TO_SYNTAX_TREE_TRANSLATIONS.(tree.gvar) ) and not IsBoundGlobal( tree.gvar ) then
             
             # for debugging only
             # COVERAGE_IGNORE_NEXT_LINE
