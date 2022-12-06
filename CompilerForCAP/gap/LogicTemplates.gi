@@ -14,7 +14,7 @@ InstallGlobalFunction( CapJitAddLogicTemplate, function ( template )
 end );
 
 InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( template )
-  local diff, variable_name, pre_func_identify_syntax_tree_variables, additional_arguments_func_identify_syntax_tree_variables, tmp_tree, pre_func, additional_arguments_func, i;
+  local diff, variable_name, unbound_global_variable_names, pre_func_identify_syntax_tree_variables, additional_arguments_func_identify_syntax_tree_variables, tmp_tree, pre_func, additional_arguments_func, i;
     
     # Caution: this function must only be called once the needed packages of the template are loaded!
     
@@ -128,6 +128,14 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
     
     pre_func_identify_syntax_tree_variables := function ( tree, outer_func_id )
         
+        if tree.type = "EXPR_REF_GVAR" and not IsBoundGlobal( tree.gvar ) then
+            
+            # for debugging only
+            # COVERAGE_IGNORE_NEXT_LINE
+            Add( unbound_global_variable_names, tree.gvar );
+            
+        fi;
+        
         if tree.type = "EXPR_REF_FVAR" and tree.func_id = outer_func_id then
             
             return rec(
@@ -155,7 +163,16 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
         
         Assert( 0, tmp_tree.bindings.names = [ "RETURN_VALUE" ] );
         
+        unbound_global_variable_names := [ ];
+        
         template.src_template_tree := CapJitIterateOverTree( CapJitValueOfBinding( tmp_tree.bindings, "RETURN_VALUE" ), pre_func_identify_syntax_tree_variables, CapJitResultFuncCombineChildren, additional_arguments_func_identify_syntax_tree_variables, tmp_tree.id );
+        
+        if not IsEmpty( unbound_global_variable_names ) then
+            
+            # COVERAGE_IGNORE_NEXT_LINE
+            Error( "found the following unbound global variables in src_template, they should probably be listed in variable_names: ", unbound_global_variable_names );
+            
+        fi;
         
     fi;
     
@@ -167,7 +184,16 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
         
         Assert( 0, tmp_tree.bindings.names = [ "RETURN_VALUE" ] );
         
+        unbound_global_variable_names := [ ];
+        
         template.dst_template_tree := CapJitIterateOverTree( CapJitValueOfBinding( tmp_tree.bindings, "RETURN_VALUE" ), pre_func_identify_syntax_tree_variables, CapJitResultFuncCombineChildren, additional_arguments_func_identify_syntax_tree_variables, tmp_tree.id );
+        
+        if not IsEmpty( unbound_global_variable_names ) then
+            
+            # COVERAGE_IGNORE_NEXT_LINE
+            Error( "found the following unbound global variables in dst_template, there probably is a typo: ", unbound_global_variable_names );
+            
+        fi;
         
     fi;
     

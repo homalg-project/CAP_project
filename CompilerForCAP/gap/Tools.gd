@@ -160,6 +160,6 @@ DeclareGlobalFunction( "DisplayWithCurrentlyCompiledFunctionLocation" );
 DeclareGlobalFunction( "ErrorWithCurrentlyCompiledFunctionLocation" );
 
 #! @Description
-#!   Same as `EvalString`, but enters a break-loop when encountering syntax errors or warnings.
+#!   Same as `EvalString`, but enters a break-loop when encountering syntax errors.
 #! @Arguments string
 DeclareGlobalFunction( "EvalStringStrict" );

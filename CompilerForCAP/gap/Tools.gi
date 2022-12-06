@@ -880,23 +880,14 @@ InstallGlobalFunction( ErrorWithCurrentlyCompiledFunctionLocation, function ( ar
 end );
 
 InstallGlobalFunction( EvalStringStrict, function ( string )
-  local s, res, fres;
+  local func;
     
-    # adapted from RunTests
-    s := InputTextString( Concatenation( string, ";;" ) );
+    func := ReadAsFunction( InputTextString( Concatenation( "return ", string, ";" ) ) );
     
-    res := "";
-    fres := OutputTextString( res, false );
-    
-    READ_STREAM_LOOP( s, fres, false );
-    
-    CloseStream( fres );
-    CloseStream( s );
-    
-    if not IsEmpty( res ) then
+    if func = fail then
         
         # COVERAGE_IGNORE_NEXT_LINE
-        Error( res );
+        Error( "a syntax error has occured" );
         
     fi;
     
