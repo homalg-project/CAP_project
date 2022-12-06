@@ -134,13 +134,19 @@ InstallGlobalFunction( CapInternalInstallAdd,
         
         if "list_of_objects" in filter_list or "list_of_morphisms" in filter_list or "list_of_twocells" in filter_list then
             
+            replaced_filter_list := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS_FOR_JULIA( filter_list );
+            
+            Assert( 0, ValueGlobal( "IsJuliaObject" ) in replaced_filter_list );
+            
             InstallOtherMethod( ValueGlobal( install_name ),
-                    CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS_FOR_JULIA( filter_list ),
+                    replaced_filter_list,
                     { arg } -> CallFuncList( ValueGlobal( install_name ),
                             List( arg, function( ar ) if ValueGlobal( "IsJuliaObject" )( ar ) then return ValueGlobal( "ConvertJuliaToGAP" )( ar ); fi; return ar; end ) ) );
             
+            Assert( 0, record.install_convenience_without_category );
+            
             InstallOtherMethod( ValueGlobal( install_name ),
-                    CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS_FOR_JULIA( filter_list ){[ 2 .. Length( replaced_filter_list ) ]},
+                    replaced_filter_list{[ 2 .. Length( replaced_filter_list ) ]},
                     { arg } -> CallFuncList( ValueGlobal( install_name ),
                             List( arg, function( ar ) if ValueGlobal( "IsJuliaObject" )( ar ) then return ValueGlobal( "ConvertJuliaToGAP" )( ar ); fi; return ar; end ) ) );
             
