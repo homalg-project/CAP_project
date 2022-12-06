@@ -40,6 +40,6 @@ ReadPackage(
     "gap/precompiled_categories/OppositeOfMatrixCategoryPrecompiled.gi"
 );;
 OppositeOfMatrixCategoryPrecompiled( QQ );
-#! Opposite of Category of matrices over Q
+#! Opposite( Category of matrices over Q )
 
 #! @EndExample

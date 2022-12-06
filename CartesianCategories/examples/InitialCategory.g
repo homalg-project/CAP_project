@@ -11,7 +11,7 @@ InfoOfInstalledOperationsOfCategory( I );
 #! 5 primitive operations were used to derive 13 operations for this category which mathematically
 #! * IsInitialCategory
 OI := Opposite( I );
-#! Opposite of InitialCategory( )
+#! Opposite( InitialCategory( ) )
 IsInitialCategory( OI );
 #! true
 InfoOfInstalledOperationsOfCategory( OI );

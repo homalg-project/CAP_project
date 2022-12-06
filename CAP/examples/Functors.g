@@ -55,7 +55,7 @@ IsCongruentForMorphisms( value1, value3 );
 
 #! @Example
 InputSignature( F2 );
-#! [ [ Product of: Category of left presentations of Q, Opposite of Category of left presentations of Q, false ] ]
+#! [ [ Product of: Category of left presentations of Q, Opposite( Category of left presentations of Q ), false ] ]
 #! @EndExample
 
 #! Installation of the first functor as a GAP-operation.

@@ -509,7 +509,7 @@ InstallMethod( Opposite,
   function( category )
     local opposite_category;
     
-    opposite_category := Concatenation( "Opposite of ", Name( category ) );
+    opposite_category := Concatenation( "Opposite( ", Name( category ), " )" );
     
     return Opposite( category, opposite_category );
     
