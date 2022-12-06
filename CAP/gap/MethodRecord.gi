@@ -4973,7 +4973,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
         
         if not IsBound( current_rec.install_convenience_without_category ) then
             
-            if ForAny( [ "object", "morphism", "twocell", "list_of_objects", "list_of_morphisms" ], filter -> filter in current_rec.filter_list ) then
+            if ForAny( [ "object", "morphism", "twocell", "list_of_objects", "list_of_morphisms", "list_of_twocells" ], filter -> filter in current_rec.filter_list ) then
                 
                 current_rec.install_convenience_without_category := true;
                 
