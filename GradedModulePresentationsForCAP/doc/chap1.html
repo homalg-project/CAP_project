@@ -296,8 +296,11 @@ Q[x,y]
 (weights: yet unset)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Sgrmod := GradedLeftPresentations( S );</span>
 The category of graded left f.p. modules over Q[x,y] (with weights [ 1, 1 ])
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InfoOfInstalledOperationsOfCategory( Sgrmod );</span>
-40 primitive operations were used to derive 199 operations for this category
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Sgrmod );</span>
+A CAP category with name
+The category of graded left f.p. modules over Q[x,y] (with weights [ 1, 1 ]):
+
+40 primitive operations were used to derive 205 operations for this category
 which algorithmically
 * IsMonoidalCategory
 * IsAbelianCategoryWithEnoughProjectives
@@ -354,8 +357,12 @@ function( M ) ... end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CohP1 := Sgrmod / C;</span>
 The Serre quotient category of The category of graded left f.p. modules
 over Q[x,y] (with weights [ 1, 1 ]) by test function with name: is_artinian
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InfoOfInstalledOperationsOfCategory( CohP1 );</span>
-21 primitive operations were used to derive 158 operations for this category
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CohP1 );</span>
+A CAP category with name
+The Serre quotient category of The category of graded left f.p. modules
+over Q[x,y] (with weights [ 1, 1 ]) by test function with name: is_artinian:
+
+21 primitive operations were used to derive 162 operations for this category
 which algorithmically
 * IsAbelianCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Sh := CanonicalProjection( CohP1 );</span>
