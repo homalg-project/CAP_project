@@ -966,7 +966,6 @@ end );
 ##
 #######################################
 
-# fallback methods for Julia
 InstallMethod( ViewObj,
                [ IsCapCategory ],
                
@@ -981,55 +980,15 @@ InstallMethod( Display,
                
   function ( category )
     
-    Print( "A CAP category with name ", Name( category ), "\n" );
+    Print( "A CAP category with name ", Name( category ), ":\n\n" );
     
-end );
-
-InstallGlobalFunction( CAP_INTERNAL_INSTALL_PRINT_FUNCTION,
-               
-  function( )
-    local print_graph, category_function, i, internal_list;
-    
-    category_function := function( category )
-      local string;
-      
-      string := "CAP category";
-      
-      if HasName( category ) then
-          
-          Append( string, " with name " );
-          
-          Append( string, Name( category ) );
-          
-      fi;
-      
-      return string;
-      
-    end;
-    
-    print_graph := CreatePrintingGraph( IsCapCategory, category_function );
-    
-    internal_list := Concatenation( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST );
-    
-    for i in internal_list do
-        
-        AddNodeToGraph( print_graph, rec( Conditions := i,
-                                          TypeOfView := 3,
-                                          ComputeLevel := 5 ) );
-        
-    od;
-    
-    InstallPrintFunctionsOutOfPrintingGraph( print_graph );
+    InfoOfInstalledOperationsOfCategory( category );
     
 end );
 
 InstallMethod( String,
                [ IsCapCategory ],
     Name );
-
-#= comment for Julia
-CAP_INTERNAL_INSTALL_PRINT_FUNCTION( );
-# =#
 
 InstallGlobalFunction( DisableAddForCategoricalOperations,
   

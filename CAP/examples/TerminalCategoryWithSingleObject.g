@@ -7,7 +7,9 @@ LoadPackage( "MonoidalCategories" );
 #! true
 T := TerminalCategoryWithSingleObject( );
 #! TerminalCategoryWithSingleObject( )
-InfoOfInstalledOperationsOfCategory( T );
+Display( T );
+#! A CAP category with name TerminalCategoryWithSingleObject( ):
+#! 
 #! 63 primitive operations were used to derive 280 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
