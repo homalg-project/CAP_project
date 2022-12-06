@@ -36,6 +36,13 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
     
     Finalize( cat );
     
+    if IsBound( cat!.precompiled_functions_added ) then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "the category constructor must support the option `no_precompiled_code`" );
+        
+    fi;
+    
     if ValueOption( "operations" ) = fail then
         
         transitively_needed_other_packages := TransitivelyNeededOtherPackages( package_name );
