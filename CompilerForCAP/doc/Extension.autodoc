@@ -6,7 +6,8 @@ You might also want to use available tools, see <Ref Sect="Section_Tools" />. If
 a completely new one, see <Ref Sect="Section_CompilationSteps" />.
 
 For debugging you can:
-* use <Ref Func="CapJitPrettyPrintSyntaxTree" />,
+* use <Ref Func="ENHANCED_SYNTAX_TREE_CODE" /> to view the tree as GAP code (<C>ENHANCED_SYNTAX_TREE_CODE</C>( <A>tree</A> )),
+* use <Ref Func="CapJitPrettyPrintSyntaxTree" /> to view the tree in a more readable formatting (<C>CapJitPrettyPrintSyntaxTree</C>( <A>tree</A> )),
 * set `debug` to `true` in the code of <Ref Func="CapJitCompiledFunctionAsEnhancedSyntaxTree" />
   (Note: this causes informational break loops which are not actual errors),
 * use the `debug` and `debug_path` record entries of logic templates (see <Ref Func="CapJitAddLogicTemplate" />).
