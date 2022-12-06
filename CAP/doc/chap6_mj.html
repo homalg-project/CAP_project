@@ -1590,9 +1590,9 @@
 <h5>6.11-5 DirectSumDiagonalDifference</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DirectSumDiagonalDifference</code>( <var class="Arg">D</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( \bigoplus_{i=1}^n P_i, B )\)</span></p>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( \bigoplus_{i=1}^n P_i, \bigoplus_{i=1}^{n-1} B )\)</span></p>
 
-<p>The argument is a list of morphisms <span class="SimpleMath">\(D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}\)</span>. The output is a morphism <span class="SimpleMath">\(\bigoplus_{i=1}^n P_i \rightarrow B\)</span> such that its kernel equalizes the <span class="SimpleMath">\(\beta_i\)</span>.</p>
+<p>The argument is a list of morphisms <span class="SimpleMath">\(D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}\)</span>. The output is a morphism <span class="SimpleMath">\(\bigoplus_{i=1}^n P_i \rightarrow \bigoplus_{i=1}^{n-1} B\)</span> such that its kernel equalizes the <span class="SimpleMath">\(\beta_i\)</span>.</p>
 
 <p><a id="X7919AF7486FA42C5" name="X7919AF7486FA42C5"></a></p>
 
@@ -1765,9 +1765,9 @@
 <h5>6.12-5 DirectSumCodiagonalDifference</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DirectSumCodiagonalDifference</code>( <var class="Arg">D</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(B, \bigoplus_{i=1}^n I_i)\)</span></p>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(\bigoplus_{i=1}^{n-1} B, \bigoplus_{i=1}^n I_i)\)</span></p>
 
-<p>The argument is a list of morphisms <span class="SimpleMath">\(D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}\)</span>. The output is a morphism <span class="SimpleMath">\(B \rightarrow \bigoplus_{i=1}^n I_i\)</span> such that its cokernel coequalizes the <span class="SimpleMath">\(\beta_i\)</span>.</p>
+<p>The argument is a list of morphisms <span class="SimpleMath">\(D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}\)</span>. The output is a morphism <span class="SimpleMath">\(\bigoplus_{i=1}^{n-1} B \rightarrow \bigoplus_{i=1}^n I_i\)</span> such that its cokernel coequalizes the <span class="SimpleMath">\(\beta_i\)</span>.</p>
 
 <p><a id="X78450AD684E5746A" name="X78450AD684E5746A"></a></p>
 

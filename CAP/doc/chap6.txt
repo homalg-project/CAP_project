@@ -1451,11 +1451,12 @@
   [1X6.11-5 DirectSumDiagonalDifference[101X
   
   [33X[1;0Y[29X[2XDirectSumDiagonalDifference[102X( [3XD[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \bigoplus_{i=1}^n P_i, B )[123X[133X
+  [6XReturns:[106X  [33X[0;10Ya     morphism    in    [23X\mathrm{Hom}(    \bigoplus_{i=1}^n    P_i,
+            \bigoplus_{i=1}^{n-1} B )[123X[133X
   
   [33X[0;0YThe  argument is a list of morphisms [23XD = ( \beta_i: P_i \rightarrow B )_{i =
-  1  \dots  n}[123X.  The  output is a morphism [23X\bigoplus_{i=1}^n P_i \rightarrow B[123X
-  such that its kernel equalizes the [23X\beta_i[123X.[133X
+  1  \dots  n}[123X.  The  output  is  a morphism [23X\bigoplus_{i=1}^n P_i \rightarrow
+  \bigoplus_{i=1}^{n-1} B[123X such that its kernel equalizes the [23X\beta_i[123X.[133X
   
   [1X6.11-6 FiberProductEmbeddingInDirectSum[101X
   
@@ -1656,11 +1657,12 @@
   [1X6.12-5 DirectSumCodiagonalDifference[101X
   
   [33X[1;0Y[29X[2XDirectSumCodiagonalDifference[102X( [3XD[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(B, \bigoplus_{i=1}^n I_i)[123X[133X
+  [6XReturns:[106X  [33X[0;10Ya     morphism     in     [23X\mathrm{Hom}(\bigoplus_{i=1}^{n-1}    B,
+            \bigoplus_{i=1}^n I_i)[123X[133X
   
   [33X[0;0YThe  argument is a list of morphisms [23XD = ( \beta_i: B \rightarrow I_i )_{i =
-  1  \dots  n}[123X.  The  output is a morphism [23XB \rightarrow \bigoplus_{i=1}^n I_i[123X
-  such that its cokernel coequalizes the [23X\beta_i[123X.[133X
+  1  \dots  n}[123X.  The  output is a morphism [23X\bigoplus_{i=1}^{n-1} B \rightarrow
+  \bigoplus_{i=1}^n I_i[123X such that its cokernel coequalizes the [23X\beta_i[123X.[133X
   
   [1X6.12-6 DirectSumProjectionInPushout[101X
   
