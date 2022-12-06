@@ -24,6 +24,9 @@ DeclareGlobalFunction( "CAP_INTERNAL_REPLACE_STRING_WITH_FILTER" );
 #!  Applies <Ref Func="CAP_INTERNAL_REPLACE_STRING_WITH_FILTER" /> to all elements of <A>list</A> and returns the result.
 DeclareGlobalFunction( "CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS" );
 
+DeclareGlobalFunction( "CAP_INTERNAL_REPLACE_STRING_WITH_FILTER_FOR_JULIA" );
+DeclareGlobalFunction( "CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS_FOR_JULIA" );
+
 #! @Arguments list, additional list
 #! @Returns merged lists
 #! @Description
