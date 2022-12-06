@@ -495,8 +495,7 @@
   
   [33X[1;0Y[29X[2XEvalStringStrict[102X( [3Xstring[103X ) [32X function[133X
   
-  [33X[0;0YSame  as [10XEvalString[110X, but enters a break-loop when encountering syntax errors
-  or warnings.[133X
+  [33X[0;0YSame as [10XEvalString[110X, but enters a break-loop when encountering syntax errors.[133X
   
   
   [1X2.5 [33X[0;0YCompilation steps[133X[101X
