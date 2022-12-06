@@ -130,6 +130,24 @@ InstallGlobalFunction( CapInternalInstallAdd,
         
     fi;
     
+    if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
+        
+        if "list_of_objects" in filter_list or "list_of_morphisms" in filter_list or "list_of_twocells" in filter_list then
+            
+            InstallOtherMethod( ValueGlobal( install_name ),
+                    CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS_FOR_JULIA( filter_list ),
+                    { arg } -> CallFuncList( ValueGlobal( install_name ),
+                            List( arg, function( ar ) if ValueGlobal( "IsJuliaObject" )( ar ) then return ValueGlobal( "ConvertJuliaToGAP" )( ar ); fi; return ar; end ) ) );
+            
+            InstallOtherMethod( ValueGlobal( install_name ),
+                    CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS_FOR_JULIA( filter_list ){[ 2 .. Length( replaced_filter_list ) ]},
+                    { arg } -> CallFuncList( ValueGlobal( install_name ),
+                            List( arg, function( ar ) if ValueGlobal( "IsJuliaObject" )( ar ) then return ValueGlobal( "ConvertJuliaToGAP" )( ar ); fi; return ar; end ) ) );
+            
+        fi;
+        
+    fi;
+    
     InstallMethod( ValueGlobal( add_name ),
                    [ IsCapCategory, IsFunction ],
                    

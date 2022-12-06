@@ -200,6 +200,117 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS,
       
 end );
 
+InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRING_WITH_FILTER_FOR_JULIA,
+  
+  function( filter_or_string, args... )
+    local category;
+    
+    if Length( args ) > 1 then
+        Error( "CAP_INTERNAL_REPLACE_STRING_WITH_FILTER_FOR_JULIA must be called with at most two arguments" );
+    elif Length( args ) = 1 then
+        category := args[1];
+    else
+        category := false;
+    fi;
+    
+    if IsFilter( filter_or_string ) then
+        return filter_or_string;
+    elif IsString( filter_or_string ) then
+        if filter_or_string = "category" then
+            if category <> false then
+                return CategoryFilter( category );
+            else
+                return IsCapCategory;
+            fi;
+        elif filter_or_string = "object" then
+            if category <> false then
+                return ObjectFilter( category );
+            else
+                return IsCapCategoryObject;
+            fi;
+        elif filter_or_string = "morphism" then
+            if category <> false then
+                return MorphismFilter( category );
+            else
+                return IsCapCategoryMorphism;
+            fi;
+        elif filter_or_string = "twocell" then
+            if category <> false then
+                return TwoCellFilter( category );
+            else
+                return IsCapCategoryTwoCell;
+            fi;
+        elif filter_or_string = "object_in_range_category_of_homomorphism_structure" then
+            
+            if category <> false and not HasRangeCategoryOfHomomorphismStructure( category ) then
+                
+                Display( Concatenation( "WARNING: You are calling an Add function for a CAP operation for \"", Name( category ), "\" which is part of a homomorphism structure but the category has no RangeCategoryOfHomomorphismStructure (yet)" ) );
+                
+            fi;
+            
+            if category <> false and HasRangeCategoryOfHomomorphismStructure( category ) then
+                return ObjectFilter( RangeCategoryOfHomomorphismStructure( category ) );
+            else
+                return IsCapCategoryObject;
+            fi;
+        elif filter_or_string = "morphism_in_range_category_of_homomorphism_structure" then
+            
+            if category <> false and not HasRangeCategoryOfHomomorphismStructure( category ) then
+                
+                Display( Concatenation( "WARNING: You are calling an Add function for a CAP operation for \"", Name( category ), "\" which is part of a homomorphism structure but the category has no RangeCategoryOfHomomorphismStructure (yet)" ) );
+                
+            fi;
+            
+            if category <> false and HasRangeCategoryOfHomomorphismStructure( category ) then
+                return MorphismFilter( RangeCategoryOfHomomorphismStructure( category ) );
+            else
+                return IsCapCategoryMorphism;
+            fi;
+        elif filter_or_string = "other_category" then
+            return IsCapCategory;
+        elif filter_or_string = "other_object" then
+            return IsCapCategoryObject;
+        elif filter_or_string = "other_morphism" then
+            return IsCapCategoryMorphism;
+        elif filter_or_string = "other_twocell" then
+            return IsCapCategoryTwoCell;
+        elif filter_or_string = "list_of_objects" then
+            return ValueGlobal( "IsJuliaObject" );
+        elif filter_or_string = "list_of_morphisms" then
+            return ValueGlobal( "IsJuliaObject" );
+        elif filter_or_string = "list_of_twocells" then
+            return ValueGlobal( "IsJuliaObject" );
+        elif filter_or_string = "nonneg_integer_or_infinity" then
+            return IsCyclotomic;
+        else
+            Error( "filter type ", filter_or_string, " is not recognized, see the documentation for allowed values" );
+        fi;
+        
+    else
+        
+        Error( "the first argument must be a string or filter" );
+        
+    fi;
+    
+end );
+
+InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS_FOR_JULIA,
+  
+  function( list, args... )
+      local category;
+      
+      if Length( args ) > 1 then
+          Error( "CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS_FOR_JULIA must be called with at most two arguments" );
+      elif Length( args ) = 1 then
+          category := args[1];
+      else
+          category := false;
+      fi;
+      
+      return List( list, l -> CAP_INTERNAL_REPLACE_STRING_WITH_FILTER_FOR_JULIA( l, category ) );
+      
+end );
+
 InstallGlobalFunction( "CAP_INTERNAL_MERGE_FILTER_LISTS",
   
   function( filter_list, additional_filters )
