@@ -719,7 +719,9 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XT := TerminalCategoryWithMultipleObjects( );[127X[104X
     [4X[28XTerminalCategoryWithMultipleObjects( )[128X[104X
-    [4X[25Xgap>[125X [27XInfoOfInstalledOperationsOfCategory( T );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
+    [4X[28XA CAP category with name TerminalCategoryWithMultipleObjects( ):[128X[104X
+    [4X[28X[128X[104X
     [4X[28X63 primitive operations were used to derive 280 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
@@ -857,7 +859,9 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XT := TerminalCategoryWithSingleObject( );[127X[104X
     [4X[28XTerminalCategoryWithSingleObject( )[128X[104X
-    [4X[25Xgap>[125X [27XInfoOfInstalledOperationsOfCategory( T );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
+    [4X[28XA CAP category with name TerminalCategoryWithSingleObject( ):[128X[104X
+    [4X[28X[128X[104X
     [4X[28X63 primitive operations were used to derive 280 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
