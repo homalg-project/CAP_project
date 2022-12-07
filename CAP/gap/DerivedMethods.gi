@@ -684,6 +684,46 @@ AddDerivationToCAP( ImageEmbedding,
 );
 
 ##
+AddDerivationToCAP( IsomorphismFromImageObjectToKernelOfCokernel,
+                    [ [ ImageEmbedding, 1 ],
+                      [ CokernelProjection, 1 ],
+                      [ KernelEmbedding, 1 ],
+                      [ LiftAlongMonomorphism, 1 ] ],
+                      
+  function( cat, mor )
+    local image_embedding, ker_of_coker_embedding;
+    
+    image_embedding := ImageEmbedding( cat, mor );
+    
+    ker_of_coker_embedding := KernelEmbedding( cat, CokernelProjection( cat, mor ) );
+    
+    return LiftAlongMonomorphism( cat, ker_of_coker_embedding, image_embedding );
+    
+  end : CategoryFilter := IsAbelianCategory, ##FIXME: PreAbelian?
+      Description := "IsomorphismFromImageObjectToKernelOfCokernel as the unique lift of the image embedding along the kernel of the cokernel"
+);
+
+##
+AddDerivationToCAP( IsomorphismFromKernelOfCokernelToImageObject,
+                    [ [ ImageEmbedding, 1 ],
+                      [ CokernelProjection, 1 ],
+                      [ KernelEmbedding, 1 ],
+                      [ LiftAlongMonomorphism, 1 ] ],
+                      
+  function( cat, mor )
+    local image_embedding, ker_of_coker_embedding;
+    
+    image_embedding := ImageEmbedding( cat, mor );
+    
+    ker_of_coker_embedding := KernelEmbedding( cat, CokernelProjection( cat, mor ) );
+    
+    return LiftAlongMonomorphism( cat, image_embedding, ker_of_coker_embedding );
+    
+  end : CategoryFilter := IsAbelianCategory, ##FIXME: PreAbelian?
+      Description := "IsomorphismFromKernelOfCokernelToImageObject as the unique lift of the kernel of the cokernel along the image embedding"
+);
+
+##
 AddDerivationToCAP( CoimageProjection,
                     [ [ KernelEmbedding, 1 ],
                       [ CokernelProjection, 1 ],
@@ -700,6 +740,46 @@ AddDerivationToCAP( CoimageProjection,
     
 end : CategoryFilter := IsAbelianCategory, ##FIXME: PreAbelian?
       Description := "CoimageProjection as the cokernel projection of the kernel embedding" );
+
+##
+AddDerivationToCAP( IsomorphismFromCoimageToCokernelOfKernel,
+                    [ [ CoimageProjection, 1 ],
+                      [ KernelEmbedding, 1 ],
+                      [ CokernelProjection, 1 ],
+                      [ ColiftAlongEpimorphism, 1 ] ],
+                      
+  function( cat, mor )
+    local coimage_projection, coker_of_ker_projection;
+    
+    coimage_projection := CoimageProjection( cat, mor );
+    
+    coker_of_ker_projection := CokernelProjection( cat, KernelEmbedding( cat, mor ) );
+    
+    return ColiftAlongEpimorphism( cat, coimage_projection, coker_of_ker_projection );
+    
+  end : CategoryFilter := IsAbelianCategory, ##FIXME: PreAbelian?
+      Description := "IsomorphismFromCoimageToCokernelOfKernel as the unique colift of the cokernel of the kernel along the coimage projection"
+);
+
+##
+AddDerivationToCAP( IsomorphismFromCokernelOfKernelToCoimage,
+                    [ [ CoimageProjection, 1 ],
+                      [ KernelEmbedding, 1 ],
+                      [ CokernelProjection, 1 ],
+                      [ ColiftAlongEpimorphism, 1 ] ],
+                      
+  function( cat, mor )
+    local coimage_projection, coker_of_ker_projection;
+    
+    coimage_projection := CoimageProjection( cat, mor );
+    
+    coker_of_ker_projection := CokernelProjection( cat, KernelEmbedding( cat, mor ) );
+    
+    return ColiftAlongEpimorphism( cat, coker_of_ker_projection, coimage_projection );
+    
+  end : CategoryFilter := IsAbelianCategory, ##FIXME: PreAbelian?
+      Description := "IsomorphismFromCokernelOfKernelToCoimage as the unique colift the coimage projection along the cokernel of the kernel"
+);
 
 ##
 AddDerivationToCAP( CoimageProjection,
