@@ -162,6 +162,30 @@ end
     , 100 );
     
     ##
+    AddCoimageObject( cat,
+        
+########
+function ( cat_1, arg2_1 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Opposite, CreateCapCategoryObjectWithAttributes( OppositeCategory( cat_1 ), Dimension, RowRankOfMatrix( UnderlyingMatrix( Opposite( arg2_1 ) ) ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddCoimageProjectionWithGivenCoimageObject( cat,
+        
+########
+function ( cat_1, alpha_1, C_1 )
+    local deduped_1_1;
+    deduped_1_1 := Opposite( alpha_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), C_1, Opposite, CreateCapCategoryMorphismWithAttributes( OppositeCategory( cat_1 ), Opposite( C_1 ), Range( deduped_1_1 ), UnderlyingMatrix, BasisOfRows( UnderlyingMatrix( deduped_1_1 ) ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddCokernelObject( cat,
         
 ########
@@ -359,6 +383,30 @@ function ( cat_1, a_1 )
     deduped_2_1 := Opposite( a_1 );
     deduped_1_1 := OppositeCategory( cat_1 );
     return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, a_1, Opposite, CreateCapCategoryMorphismWithAttributes( deduped_1_1, deduped_2_1, deduped_2_1, UnderlyingMatrix, HomalgIdentityMatrix( Dimension( deduped_2_1 ), UnderlyingRing( deduped_1_1 ) ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddImageEmbeddingWithGivenImageObject( cat,
+        
+########
+function ( cat_1, alpha_1, I_1 )
+    local deduped_1_1;
+    deduped_1_1 := Opposite( alpha_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, I_1, Range( alpha_1 ), Opposite, CreateCapCategoryMorphismWithAttributes( OppositeCategory( cat_1 ), Source( deduped_1_1 ), Opposite( I_1 ), UnderlyingMatrix, BasisOfColumns( UnderlyingMatrix( deduped_1_1 ) ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddImageObject( cat,
+        
+########
+function ( cat_1, arg2_1 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Opposite, CreateCapCategoryObjectWithAttributes( OppositeCategory( cat_1 ), Dimension, ColumnRankOfMatrix( UnderlyingMatrix( Opposite( arg2_1 ) ) ) ) );
 end
 ########
         

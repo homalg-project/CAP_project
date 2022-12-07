@@ -93,26 +93,25 @@ end
 function ( cat_1, alpha_1 )
     local morphism_attr_1_1, deduped_2_1;
     deduped_2_1 := UnderlyingMatrix( alpha_1 );
-    morphism_attr_1_1 := LeftDivide( SyzygiesOfColumns( SyzygiesOfRows( deduped_2_1 ) ), deduped_2_1 );
+    morphism_attr_1_1 := LeftDivide( BasisOfColumns( deduped_2_1 ), deduped_2_1 );
     return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), Range( alpha_1 ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
-    , 704 : IsPrecompiledDerivation := true );
+    , 303 : IsPrecompiledDerivation := true );
     
     ##
     AddAstrictionToCoimageWithGivenCoimageObject( cat,
         
 ########
 function ( cat_1, alpha_1, C_1 )
-    local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := UnderlyingMatrix( alpha_1 );
-    morphism_attr_1_1 := LeftDivide( SyzygiesOfColumns( SyzygiesOfRows( deduped_2_1 ) ), deduped_2_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), Range( alpha_1 ), UnderlyingMatrix, morphism_attr_1_1 );
+    local deduped_1_1;
+    deduped_1_1 := UnderlyingMatrix( alpha_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, C_1, Range( alpha_1 ), UnderlyingMatrix, LeftDivide( BasisOfColumns( deduped_1_1 ), deduped_1_1 ) );
 end
 ########
         
-    , 705 : IsPrecompiledDerivation := true );
+    , 202 : IsPrecompiledDerivation := true );
     
     ##
     AddBasisOfExternalHom( cat,
@@ -470,26 +469,25 @@ end
 function ( cat_1, alpha_1 )
     local morphism_attr_1_1, deduped_2_1;
     deduped_2_1 := UnderlyingMatrix( alpha_1 );
-    morphism_attr_1_1 := RightDivide( deduped_2_1, SyzygiesOfRows( SyzygiesOfColumns( deduped_2_1 ) ) );
+    morphism_attr_1_1 := RightDivide( deduped_2_1, BasisOfRows( deduped_2_1 ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
-    , 704 : IsPrecompiledDerivation := true );
+    , 303 : IsPrecompiledDerivation := true );
     
     ##
     AddCoastrictionToImageWithGivenImageObject( cat,
         
 ########
 function ( cat_1, alpha_1, I_1 )
-    local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := UnderlyingMatrix( alpha_1 );
-    morphism_attr_1_1 := RightDivide( deduped_2_1, SyzygiesOfRows( SyzygiesOfColumns( deduped_2_1 ) ) );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+    local deduped_1_1;
+    deduped_1_1 := UnderlyingMatrix( alpha_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), I_1, UnderlyingMatrix, RightDivide( deduped_1_1, BasisOfRows( deduped_1_1 ) ) );
 end
 ########
         
-    , 705 : IsPrecompiledDerivation := true );
+    , 202 : IsPrecompiledDerivation := true );
     
     ##
     AddCoclosedCoevaluationForCoDual( cat,
@@ -747,11 +745,11 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, Dimension( Source( arg2_1 ) ) - RowRankOfMatrix( SyzygiesOfRows( UnderlyingMatrix( arg2_1 ) ) ) );
+    return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, ColumnRankOfMatrix( UnderlyingMatrix( arg2_1 ) ) );
 end
 ########
         
-    , 302 : IsPrecompiledDerivation := true );
+    , 100 );
     
     ##
     AddCoimageObjectFunctorial( cat,
@@ -759,25 +757,23 @@ end
 ########
 function ( cat_1, alpha_1, mu_1, alphap_1 )
     local morphism_attr_1_1;
-    morphism_attr_1_1 := LeftDivide( SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ), UnderlyingMatrix( mu_1 ) * SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( alphap_1 ) ) ) );
+    morphism_attr_1_1 := LeftDivide( BasisOfColumns( UnderlyingMatrix( alpha_1 ) ), UnderlyingMatrix( mu_1 ) * BasisOfColumns( UnderlyingMatrix( alphap_1 ) ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
-    , 2013 : IsPrecompiledDerivation := true );
+    , 603 : IsPrecompiledDerivation := true );
     
     ##
     AddCoimageObjectFunctorialWithGivenCoimageObjects( cat,
         
 ########
 function ( cat_1, C_1, alpha_1, mu_1, alphap_1, Cp_1 )
-    local morphism_attr_1_1;
-    morphism_attr_1_1 := LeftDivide( SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ), UnderlyingMatrix( mu_1 ) * SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( alphap_1 ) ) ) );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, C_1, Cp_1, UnderlyingMatrix, LeftDivide( BasisOfColumns( UnderlyingMatrix( alpha_1 ) ), UnderlyingMatrix( mu_1 ) * BasisOfColumns( UnderlyingMatrix( alphap_1 ) ) ) );
 end
 ########
         
-    , 1408 : IsPrecompiledDerivation := true );
+    , 402 : IsPrecompiledDerivation := true );
     
     ##
     AddCoimageProjection( cat,
@@ -785,25 +781,23 @@ end
 ########
 function ( cat_1, alpha_1 )
     local morphism_attr_1_1;
-    morphism_attr_1_1 := SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) );
+    morphism_attr_1_1 := BasisOfColumns( UnderlyingMatrix( alpha_1 ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
-    , 602 : IsPrecompiledDerivation := true );
+    , 201 : IsPrecompiledDerivation := true );
     
     ##
     AddCoimageProjectionWithGivenCoimageObject( cat,
         
 ########
 function ( cat_1, alpha_1, C_1 )
-    local morphism_attr_1_1;
-    morphism_attr_1_1 := SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), C_1, UnderlyingMatrix, BasisOfColumns( UnderlyingMatrix( alpha_1 ) ) );
 end
 ########
         
-    , 603 : IsPrecompiledDerivation := true );
+    , 100 );
     
     ##
     AddCokernelColift( cat,
@@ -1468,13 +1462,11 @@ end
         
 ########
 function ( cat_1, alpha_1, beta_1 )
-    local deduped_1_1;
-    deduped_1_1 := SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) );
-    return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( deduped_1_1 ) - RowRankOfMatrix( SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( beta_1 ) ) * deduped_1_1 ) ) );
+    return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, RowRankOfMatrix( SyzygiesOfRows( UnderlyingMatrix( beta_1 ) ) * SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ) ) );
 end
 ########
         
-    , 704 : IsPrecompiledDerivation := true );
+    , 502 : IsPrecompiledDerivation := true );
     
     ##
     AddHomologyObjectFunctorialWithGivenHomologyObjects( cat,
@@ -1484,12 +1476,12 @@ function ( cat_1, H_1_1, L_1, H_2_1 )
     local morphism_attr_1_1, deduped_2_1, deduped_3_1;
     deduped_3_1 := SyzygiesOfColumns( UnderlyingMatrix( L_1[4] ) );
     deduped_2_1 := SyzygiesOfColumns( UnderlyingMatrix( L_1[1] ) );
-    morphism_attr_1_1 := RightDivide( SyzygiesOfRows( SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( L_1[2] ) ) * deduped_2_1 ) ) * LeftDivide( deduped_2_1, (UnderlyingMatrix( L_1[3] ) * deduped_3_1) ), SyzygiesOfRows( SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( L_1[5] ) ) * deduped_3_1 ) ) );
+    morphism_attr_1_1 := RightDivide( BasisOfRows( SyzygiesOfRows( UnderlyingMatrix( L_1[2] ) ) * deduped_2_1 ) * LeftDivide( deduped_2_1, (UnderlyingMatrix( L_1[3] ) * deduped_3_1) ), BasisOfRows( SyzygiesOfRows( UnderlyingMatrix( L_1[5] ) ) * deduped_3_1 ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
-    , 4218 : IsPrecompiledDerivation := true );
+    , 3012 : IsPrecompiledDerivation := true );
     
     ##
     AddHomomorphismStructureOnMorphisms( cat,
@@ -1543,36 +1535,34 @@ end
 ########
 function ( cat_1, alpha_1 )
     local morphism_attr_1_1;
-    morphism_attr_1_1 := SyzygiesOfRows( SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ) );
+    morphism_attr_1_1 := BasisOfRows( UnderlyingMatrix( alpha_1 ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), Range( alpha_1 ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
-    , 602 : IsPrecompiledDerivation := true );
+    , 201 : IsPrecompiledDerivation := true );
     
     ##
     AddImageEmbeddingWithGivenImageObject( cat,
         
 ########
 function ( cat_1, alpha_1, I_1 )
-    local morphism_attr_1_1;
-    morphism_attr_1_1 := SyzygiesOfRows( SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ) );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), Range( alpha_1 ), UnderlyingMatrix, morphism_attr_1_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, I_1, Range( alpha_1 ), UnderlyingMatrix, BasisOfRows( UnderlyingMatrix( alpha_1 ) ) );
 end
 ########
         
-    , 603 : IsPrecompiledDerivation := true );
+    , 100 );
     
     ##
     AddImageObject( cat,
         
 ########
 function ( cat_1, arg2_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, Dimension( Range( arg2_1 ) ) - RowRankOfMatrix( SyzygiesOfColumns( UnderlyingMatrix( arg2_1 ) ) ) );
+    return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, RowRankOfMatrix( UnderlyingMatrix( arg2_1 ) ) );
 end
 ########
         
-    , 302 : IsPrecompiledDerivation := true );
+    , 100 );
     
     ##
     AddImageObjectFunctorial( cat,
@@ -1580,25 +1570,23 @@ end
 ########
 function ( cat_1, alpha_1, nu_1, alphap_1 )
     local morphism_attr_1_1;
-    morphism_attr_1_1 := RightDivide( SyzygiesOfRows( SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ) ) * UnderlyingMatrix( nu_1 ), SyzygiesOfRows( SyzygiesOfColumns( UnderlyingMatrix( alphap_1 ) ) ) );
+    morphism_attr_1_1 := RightDivide( BasisOfRows( UnderlyingMatrix( alpha_1 ) ) * UnderlyingMatrix( nu_1 ), BasisOfRows( UnderlyingMatrix( alphap_1 ) ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
-    , 2013 : IsPrecompiledDerivation := true );
+    , 603 : IsPrecompiledDerivation := true );
     
     ##
     AddImageObjectFunctorialWithGivenImageObjects( cat,
         
 ########
 function ( cat_1, I_1, alpha_1, nu_1, alphap_1, Ip_1 )
-    local morphism_attr_1_1;
-    morphism_attr_1_1 := RightDivide( SyzygiesOfRows( SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ) ) * UnderlyingMatrix( nu_1 ), SyzygiesOfRows( SyzygiesOfColumns( UnderlyingMatrix( alphap_1 ) ) ) );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, I_1, Ip_1, UnderlyingMatrix, RightDivide( BasisOfRows( UnderlyingMatrix( alpha_1 ) ) * UnderlyingMatrix( nu_1 ), BasisOfRows( UnderlyingMatrix( alphap_1 ) ) ) );
 end
 ########
         
-    , 1408 : IsPrecompiledDerivation := true );
+    , 402 : IsPrecompiledDerivation := true );
     
     ##
     AddInitialObject( cat,
@@ -2177,15 +2165,16 @@ end
         
 ########
 function ( cat_1, C_1, alpha_1, I_1 )
-    local morphism_attr_1_1, deduped_2_1, deduped_3_1;
+    local morphism_attr_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
+    deduped_4_1 := UnderlyingRing( cat_1 );
     deduped_3_1 := UnderlyingMatrix( alpha_1 );
-    deduped_2_1 := SyzygiesOfColumns( deduped_3_1 );
-    morphism_attr_1_1 := RightDivide( HomalgIdentityMatrix( Dimension( Range( alpha_1 ) ) - RowRankOfMatrix( deduped_2_1 ), UnderlyingRing( cat_1 ) ), RightDivide( LeftDivide( SyzygiesOfColumns( SyzygiesOfRows( deduped_3_1 ) ), deduped_3_1 ), SyzygiesOfRows( deduped_2_1 ) ) );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+    deduped_2_1 := SyzygiesOfRows( SyzygiesOfColumns( deduped_3_1 ) );
+    morphism_attr_1_1 := RightDivide( HomalgIdentityMatrix( RowRankOfMatrix( deduped_3_1 ), deduped_4_1 ), RightDivide( LeftDivide( BasisOfColumns( deduped_3_1 ), deduped_3_1 ), deduped_2_1 ) * RightDivide( HomalgIdentityMatrix( NumberRows( deduped_2_1 ), deduped_4_1 ), RightDivide( BasisOfRows( deduped_3_1 ), deduped_2_1 ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), C_1, UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
-    , 2214 : IsPrecompiledDerivation := true );
+    , 1817 : IsPrecompiledDerivation := true );
     
     ##
     AddIsAutomorphism( cat,
@@ -2595,13 +2584,14 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    local morphism_attr_1_1;
-    morphism_attr_1_1 := HomalgIdentityMatrix( Dimension( Source( alpha_1 ) ) - RowRankOfMatrix( SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ), UnderlyingRing( cat_1 ) );
+    local morphism_attr_1_1, deduped_2_1;
+    deduped_2_1 := UnderlyingMatrix( alpha_1 );
+    morphism_attr_1_1 := RightDivide( HomalgIdentityMatrix( ColumnRankOfMatrix( deduped_2_1 ), UnderlyingRing( cat_1 ) ), LeftDivide( SyzygiesOfColumns( SyzygiesOfRows( deduped_2_1 ) ), BasisOfColumns( deduped_2_1 ) ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
-    , 301 : IsPrecompiledDerivation := true );
+    , 808 : IsPrecompiledDerivation := true );
     
     ##
     AddIsomorphismFromCokernelOfDiagonalDifferenceToPushout( cat,
@@ -2636,13 +2626,14 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    local morphism_attr_1_1;
-    morphism_attr_1_1 := HomalgIdentityMatrix( Dimension( Source( alpha_1 ) ) - RowRankOfMatrix( SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ), UnderlyingRing( cat_1 ) );
+    local morphism_attr_1_1, deduped_2_1;
+    deduped_2_1 := UnderlyingMatrix( alpha_1 );
+    morphism_attr_1_1 := LeftDivide( SyzygiesOfColumns( SyzygiesOfRows( deduped_2_1 ) ), BasisOfColumns( deduped_2_1 ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
-    , 301 : IsPrecompiledDerivation := true );
+    , 605 : IsPrecompiledDerivation := true );
     
     ##
     AddIsomorphismFromCoproductToDirectSum( cat,
@@ -2740,27 +2731,27 @@ end
         
 ########
 function ( cat_1, alpha_1, beta_1 )
-    local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) );
-    morphism_attr_1_1 := HomalgIdentityMatrix( NumberColumns( deduped_2_1 ) - RowRankOfMatrix( SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( beta_1 ) ) * deduped_2_1 ) ), UnderlyingRing( cat_1 ) );
+    local morphism_attr_1_1;
+    morphism_attr_1_1 := HomalgIdentityMatrix( RowRankOfMatrix( SyzygiesOfRows( UnderlyingMatrix( beta_1 ) ) * SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ) ), UnderlyingRing( cat_1 ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
-    , 703 : IsPrecompiledDerivation := true );
+    , 501 : IsPrecompiledDerivation := true );
     
     ##
     AddIsomorphismFromImageObjectToKernelOfCokernel( cat,
         
 ########
 function ( cat_1, alpha_1 )
-    local morphism_attr_1_1;
-    morphism_attr_1_1 := HomalgIdentityMatrix( Dimension( Range( alpha_1 ) ) - RowRankOfMatrix( SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ) ), UnderlyingRing( cat_1 ) );
+    local morphism_attr_1_1, deduped_2_1;
+    deduped_2_1 := UnderlyingMatrix( alpha_1 );
+    morphism_attr_1_1 := RightDivide( BasisOfRows( deduped_2_1 ), SyzygiesOfRows( SyzygiesOfColumns( deduped_2_1 ) ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
-    , 301 : IsPrecompiledDerivation := true );
+    , 605 : IsPrecompiledDerivation := true );
     
     ##
     AddIsomorphismFromInitialObjectToZeroObject( cat,
@@ -2929,27 +2920,28 @@ end
         
 ########
 function ( cat_1, alpha_1, beta_1 )
-    local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) );
-    morphism_attr_1_1 := HomalgIdentityMatrix( NumberColumns( deduped_2_1 ) - RowRankOfMatrix( SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( beta_1 ) ) * deduped_2_1 ) ), UnderlyingRing( cat_1 ) );
+    local morphism_attr_1_1;
+    morphism_attr_1_1 := HomalgIdentityMatrix( RowRankOfMatrix( SyzygiesOfRows( UnderlyingMatrix( beta_1 ) ) * SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ) ), UnderlyingRing( cat_1 ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
-    , 703 : IsPrecompiledDerivation := true );
+    , 501 : IsPrecompiledDerivation := true );
     
     ##
     AddIsomorphismFromKernelOfCokernelToImageObject( cat,
         
 ########
 function ( cat_1, alpha_1 )
-    local morphism_attr_1_1;
-    morphism_attr_1_1 := HomalgIdentityMatrix( Dimension( Range( alpha_1 ) ) - RowRankOfMatrix( SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ) ), UnderlyingRing( cat_1 ) );
+    local morphism_attr_1_1, deduped_2_1, deduped_3_1;
+    deduped_3_1 := UnderlyingMatrix( alpha_1 );
+    deduped_2_1 := SyzygiesOfRows( SyzygiesOfColumns( deduped_3_1 ) );
+    morphism_attr_1_1 := RightDivide( HomalgIdentityMatrix( NumberRows( deduped_2_1 ), UnderlyingRing( cat_1 ) ), RightDivide( BasisOfRows( deduped_3_1 ), deduped_2_1 ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
-    , 301 : IsPrecompiledDerivation := true );
+    , 808 : IsPrecompiledDerivation := true );
     
     ##
     AddIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct( cat,
@@ -4045,14 +4037,15 @@ end
         
 ########
 function ( cat_1, C_1, alpha_1, I_1 )
-    local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := UnderlyingMatrix( alpha_1 );
-    morphism_attr_1_1 := RightDivide( LeftDivide( SyzygiesOfColumns( SyzygiesOfRows( deduped_2_1 ) ), deduped_2_1 ), SyzygiesOfRows( SyzygiesOfColumns( deduped_2_1 ) ) );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+    local morphism_attr_1_1, deduped_2_1, deduped_3_1;
+    deduped_3_1 := UnderlyingMatrix( alpha_1 );
+    deduped_2_1 := SyzygiesOfRows( SyzygiesOfColumns( deduped_3_1 ) );
+    morphism_attr_1_1 := RightDivide( LeftDivide( BasisOfColumns( deduped_3_1 ), deduped_3_1 ), deduped_2_1 ) * RightDivide( HomalgIdentityMatrix( NumberRows( deduped_2_1 ), UnderlyingRing( cat_1 ) ), RightDivide( BasisOfRows( deduped_3_1 ), deduped_2_1 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, C_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
-    , 2011 : IsPrecompiledDerivation := true );
+    , 1614 : IsPrecompiledDerivation := true );
     
     ##
     AddMorphismFromFiberProductToSink( cat,
@@ -5763,26 +5756,25 @@ end
 function ( cat_1, alpha_1, tau_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := CAP_JIT_INCOMPLETE_LOGIC( tau_1[2] );
-    deduped_1_1 := RightDivide( SyzygiesOfRows( SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ) ), UnderlyingMatrix( deduped_2_1 ) );
+    deduped_1_1 := RightDivide( BasisOfRows( UnderlyingMatrix( alpha_1 ) ), UnderlyingMatrix( deduped_2_1 ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( deduped_1_1 ) ), Source( deduped_2_1 ), UnderlyingMatrix, deduped_1_1 );
 end
 ########
         
-    , 704 : IsPrecompiledDerivation := true );
+    , 303 : IsPrecompiledDerivation := true );
     
     ##
     AddUniversalMorphismFromImageWithGivenImageObject( cat,
         
 ########
 function ( cat_1, alpha_1, tau_1, I_1 )
-    local deduped_1_1, deduped_2_1;
-    deduped_2_1 := CAP_JIT_INCOMPLETE_LOGIC( tau_1[2] );
-    deduped_1_1 := RightDivide( SyzygiesOfRows( SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ) ), UnderlyingMatrix( deduped_2_1 ) );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( deduped_1_1 ) ), Source( deduped_2_1 ), UnderlyingMatrix, deduped_1_1 );
+    local deduped_1_1;
+    deduped_1_1 := CAP_JIT_INCOMPLETE_LOGIC( tau_1[2] );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, I_1, Source( deduped_1_1 ), UnderlyingMatrix, RightDivide( BasisOfRows( UnderlyingMatrix( alpha_1 ) ), UnderlyingMatrix( deduped_1_1 ) ) );
 end
 ########
         
-    , 705 : IsPrecompiledDerivation := true );
+    , 202 : IsPrecompiledDerivation := true );
     
     ##
     AddUniversalMorphismFromInitialObject( cat,
@@ -5895,26 +5887,25 @@ end
 function ( cat_1, alpha_1, tau_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := CAP_JIT_INCOMPLETE_LOGIC( tau_1[1] );
-    deduped_1_1 := LeftDivide( UnderlyingMatrix( deduped_2_1 ), SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ) );
+    deduped_1_1 := LeftDivide( UnderlyingMatrix( deduped_2_1 ), BasisOfColumns( UnderlyingMatrix( alpha_1 ) ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, Range( deduped_2_1 ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( deduped_1_1 ) ), UnderlyingMatrix, deduped_1_1 );
 end
 ########
         
-    , 704 : IsPrecompiledDerivation := true );
+    , 303 : IsPrecompiledDerivation := true );
     
     ##
     AddUniversalMorphismIntoCoimageWithGivenCoimageObject( cat,
         
 ########
 function ( cat_1, alpha_1, tau_1, C_1 )
-    local deduped_1_1, deduped_2_1;
-    deduped_2_1 := CAP_JIT_INCOMPLETE_LOGIC( tau_1[1] );
-    deduped_1_1 := LeftDivide( UnderlyingMatrix( deduped_2_1 ), SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ) );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Range( deduped_2_1 ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( deduped_1_1 ) ), UnderlyingMatrix, deduped_1_1 );
+    local deduped_1_1;
+    deduped_1_1 := CAP_JIT_INCOMPLETE_LOGIC( tau_1[1] );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Range( deduped_1_1 ), C_1, UnderlyingMatrix, LeftDivide( UnderlyingMatrix( deduped_1_1 ), BasisOfColumns( UnderlyingMatrix( alpha_1 ) ) ) );
 end
 ########
         
-    , 705 : IsPrecompiledDerivation := true );
+    , 202 : IsPrecompiledDerivation := true );
     
     ##
     AddUniversalMorphismIntoDirectProduct( cat,
