@@ -1453,6 +1453,8 @@ CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "KroneckerMat", [ "IsHomalg
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "DualKroneckerMat", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "LeftDivide", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "RightDivide", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "BasisOfRows", [ "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "BasisOfColumns", [ "IsHomalgMatrix" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "SyzygiesOfRows", [ "IsHomalgMatrix" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "SyzygiesOfColumns", [ "IsHomalgMatrix" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "SyzygiesOfRows", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
@@ -1467,6 +1469,8 @@ CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "RowRankOfMatrix", [ "IsHom
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "ColumnRankOfMatrix", [ "IsHomalgMatrix" ], "IsInt" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "UnionOfRows", [ "IsHomalgRing", "IsInt", "IsList" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "UnionOfColumns", [ "IsHomalgRing", "IsInt", "IsList" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "UnionOfRows", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "UnionOfColumns", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "UnionOfRows", [ "IsHomalgMatrix", "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "UnionOfColumns", [ "IsHomalgMatrix", "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "DiagMat", [ "IsHomalgRing", "IsList" ], "IsHomalgMatrix" );
