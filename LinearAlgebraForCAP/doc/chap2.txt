@@ -115,7 +115,7 @@
     [4X[25X>[125X [27X);[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xalpha_op := Opposite( alpha );[127X[104X
-    [4X[28X<A morphism in Opposite of Category of matrices over Q>[128X[104X
+    [4X[28X<A morphism in Opposite( Category of matrices over Q )>[128X[104X
     [4X[25Xgap>[125X [27Xbasis := BasisOfExternalHom( Source( alpha_op ), Range( alpha_op ) );;[127X[104X
     [4X[25Xgap>[125X [27Xcoeffs := CoefficientsOfMorphism( alpha_op );[127X[104X
     [4X[28X[ 1, 0, 0, 0, 0, 1, 0, -1, -1, 0, 2, 1 ][128X[104X
