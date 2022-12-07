@@ -93,7 +93,7 @@ end
 function ( cat_1, alpha_1 )
     local morphism_attr_1_1, deduped_2_1;
     deduped_2_1 := UnderlyingMatrix( alpha_1 );
-    morphism_attr_1_1 := LeftDivide( SyzygiesOfColumns( SyzygiesOfRows( deduped_2_1 ) ), deduped_2_1 );
+    morphism_attr_1_1 := LeftDivide( BasisOfColumns( deduped_2_1 ), deduped_2_1 );
     return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), Range( alpha_1 ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
@@ -107,7 +107,7 @@ end
 function ( cat_1, alpha_1, C_1 )
     local morphism_attr_1_1, deduped_2_1;
     deduped_2_1 := UnderlyingMatrix( alpha_1 );
-    morphism_attr_1_1 := LeftDivide( SyzygiesOfColumns( SyzygiesOfRows( deduped_2_1 ) ), deduped_2_1 );
+    morphism_attr_1_1 := LeftDivide( BasisOfColumns( deduped_2_1 ), deduped_2_1 );
     return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), Range( alpha_1 ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
@@ -470,7 +470,7 @@ end
 function ( cat_1, alpha_1 )
     local morphism_attr_1_1, deduped_2_1;
     deduped_2_1 := UnderlyingMatrix( alpha_1 );
-    morphism_attr_1_1 := RightDivide( deduped_2_1, SyzygiesOfRows( SyzygiesOfColumns( deduped_2_1 ) ) );
+    morphism_attr_1_1 := RightDivide( deduped_2_1, BasisOfRows( deduped_2_1 ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
@@ -484,7 +484,7 @@ end
 function ( cat_1, alpha_1, I_1 )
     local morphism_attr_1_1, deduped_2_1;
     deduped_2_1 := UnderlyingMatrix( alpha_1 );
-    morphism_attr_1_1 := RightDivide( deduped_2_1, SyzygiesOfRows( SyzygiesOfColumns( deduped_2_1 ) ) );
+    morphism_attr_1_1 := RightDivide( deduped_2_1, BasisOfRows( deduped_2_1 ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
@@ -759,7 +759,7 @@ end
 ########
 function ( cat_1, alpha_1, mu_1, alphap_1 )
     local morphism_attr_1_1;
-    morphism_attr_1_1 := LeftDivide( SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ), UnderlyingMatrix( mu_1 ) * SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( alphap_1 ) ) ) );
+    morphism_attr_1_1 := LeftDivide( BasisOfColumns( UnderlyingMatrix( alpha_1 ) ), UnderlyingMatrix( mu_1 ) * BasisOfColumns( UnderlyingMatrix( alphap_1 ) ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
@@ -772,7 +772,7 @@ end
 ########
 function ( cat_1, C_1, alpha_1, mu_1, alphap_1, Cp_1 )
     local morphism_attr_1_1;
-    morphism_attr_1_1 := LeftDivide( SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ), UnderlyingMatrix( mu_1 ) * SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( alphap_1 ) ) ) );
+    morphism_attr_1_1 := LeftDivide( BasisOfColumns( UnderlyingMatrix( alpha_1 ) ), UnderlyingMatrix( mu_1 ) * BasisOfColumns( UnderlyingMatrix( alphap_1 ) ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
@@ -785,7 +785,7 @@ end
 ########
 function ( cat_1, alpha_1 )
     local morphism_attr_1_1;
-    morphism_attr_1_1 := SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) );
+    morphism_attr_1_1 := BasisOfColumns( UnderlyingMatrix( alpha_1 ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
@@ -798,7 +798,7 @@ end
 ########
 function ( cat_1, alpha_1, C_1 )
     local morphism_attr_1_1;
-    morphism_attr_1_1 := SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) );
+    morphism_attr_1_1 := BasisOfColumns( UnderlyingMatrix( alpha_1 ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
@@ -1484,7 +1484,7 @@ function ( cat_1, H_1_1, L_1, H_2_1 )
     local morphism_attr_1_1, deduped_2_1, deduped_3_1;
     deduped_3_1 := SyzygiesOfColumns( UnderlyingMatrix( L_1[4] ) );
     deduped_2_1 := SyzygiesOfColumns( UnderlyingMatrix( L_1[1] ) );
-    morphism_attr_1_1 := RightDivide( SyzygiesOfRows( SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( L_1[2] ) ) * deduped_2_1 ) ) * LeftDivide( deduped_2_1, (UnderlyingMatrix( L_1[3] ) * deduped_3_1) ), SyzygiesOfRows( SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( L_1[5] ) ) * deduped_3_1 ) ) );
+    morphism_attr_1_1 := RightDivide( BasisOfRows( SyzygiesOfRows( UnderlyingMatrix( L_1[2] ) ) * deduped_2_1 ) * LeftDivide( deduped_2_1, (UnderlyingMatrix( L_1[3] ) * deduped_3_1) ), BasisOfRows( SyzygiesOfRows( UnderlyingMatrix( L_1[5] ) ) * deduped_3_1 ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
@@ -1543,7 +1543,7 @@ end
 ########
 function ( cat_1, alpha_1 )
     local morphism_attr_1_1;
-    morphism_attr_1_1 := SyzygiesOfRows( SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ) );
+    morphism_attr_1_1 := BasisOfRows( UnderlyingMatrix( alpha_1 ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), Range( alpha_1 ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
@@ -1556,7 +1556,7 @@ end
 ########
 function ( cat_1, alpha_1, I_1 )
     local morphism_attr_1_1;
-    morphism_attr_1_1 := SyzygiesOfRows( SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ) );
+    morphism_attr_1_1 := BasisOfRows( UnderlyingMatrix( alpha_1 ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), Range( alpha_1 ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
@@ -1580,7 +1580,7 @@ end
 ########
 function ( cat_1, alpha_1, nu_1, alphap_1 )
     local morphism_attr_1_1;
-    morphism_attr_1_1 := RightDivide( SyzygiesOfRows( SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ) ) * UnderlyingMatrix( nu_1 ), SyzygiesOfRows( SyzygiesOfColumns( UnderlyingMatrix( alphap_1 ) ) ) );
+    morphism_attr_1_1 := RightDivide( BasisOfRows( UnderlyingMatrix( alpha_1 ) ) * UnderlyingMatrix( nu_1 ), BasisOfRows( UnderlyingMatrix( alphap_1 ) ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
@@ -1593,7 +1593,7 @@ end
 ########
 function ( cat_1, I_1, alpha_1, nu_1, alphap_1, Ip_1 )
     local morphism_attr_1_1;
-    morphism_attr_1_1 := RightDivide( SyzygiesOfRows( SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ) ) * UnderlyingMatrix( nu_1 ), SyzygiesOfRows( SyzygiesOfColumns( UnderlyingMatrix( alphap_1 ) ) ) );
+    morphism_attr_1_1 := RightDivide( BasisOfRows( UnderlyingMatrix( alpha_1 ) ) * UnderlyingMatrix( nu_1 ), BasisOfRows( UnderlyingMatrix( alphap_1 ) ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
@@ -2177,10 +2177,9 @@ end
         
 ########
 function ( cat_1, C_1, alpha_1, I_1 )
-    local morphism_attr_1_1, deduped_2_1, deduped_3_1;
-    deduped_3_1 := UnderlyingMatrix( alpha_1 );
-    deduped_2_1 := SyzygiesOfColumns( deduped_3_1 );
-    morphism_attr_1_1 := RightDivide( HomalgIdentityMatrix( Dimension( Range( alpha_1 ) ) - RowRankOfMatrix( deduped_2_1 ), UnderlyingRing( cat_1 ) ), RightDivide( LeftDivide( SyzygiesOfColumns( SyzygiesOfRows( deduped_3_1 ) ), deduped_3_1 ), SyzygiesOfRows( deduped_2_1 ) ) );
+    local morphism_attr_1_1, deduped_2_1;
+    deduped_2_1 := UnderlyingMatrix( alpha_1 );
+    morphism_attr_1_1 := RightDivide( HomalgIdentityMatrix( Dimension( Range( alpha_1 ) ) - RowRankOfMatrix( SyzygiesOfColumns( deduped_2_1 ) ), UnderlyingRing( cat_1 ) ), RightDivide( LeftDivide( BasisOfColumns( deduped_2_1 ), deduped_2_1 ), BasisOfRows( deduped_2_1 ) ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
@@ -4047,7 +4046,7 @@ end
 function ( cat_1, C_1, alpha_1, I_1 )
     local morphism_attr_1_1, deduped_2_1;
     deduped_2_1 := UnderlyingMatrix( alpha_1 );
-    morphism_attr_1_1 := RightDivide( LeftDivide( SyzygiesOfColumns( SyzygiesOfRows( deduped_2_1 ) ), deduped_2_1 ), SyzygiesOfRows( SyzygiesOfColumns( deduped_2_1 ) ) );
+    morphism_attr_1_1 := RightDivide( LeftDivide( BasisOfColumns( deduped_2_1 ), deduped_2_1 ), BasisOfRows( deduped_2_1 ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
@@ -5763,7 +5762,7 @@ end
 function ( cat_1, alpha_1, tau_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := CAP_JIT_INCOMPLETE_LOGIC( tau_1[2] );
-    deduped_1_1 := RightDivide( SyzygiesOfRows( SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ) ), UnderlyingMatrix( deduped_2_1 ) );
+    deduped_1_1 := RightDivide( BasisOfRows( UnderlyingMatrix( alpha_1 ) ), UnderlyingMatrix( deduped_2_1 ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( deduped_1_1 ) ), Source( deduped_2_1 ), UnderlyingMatrix, deduped_1_1 );
 end
 ########
@@ -5777,7 +5776,7 @@ end
 function ( cat_1, alpha_1, tau_1, I_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := CAP_JIT_INCOMPLETE_LOGIC( tau_1[2] );
-    deduped_1_1 := RightDivide( SyzygiesOfRows( SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ) ), UnderlyingMatrix( deduped_2_1 ) );
+    deduped_1_1 := RightDivide( BasisOfRows( UnderlyingMatrix( alpha_1 ) ), UnderlyingMatrix( deduped_2_1 ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( deduped_1_1 ) ), Source( deduped_2_1 ), UnderlyingMatrix, deduped_1_1 );
 end
 ########
@@ -5895,7 +5894,7 @@ end
 function ( cat_1, alpha_1, tau_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := CAP_JIT_INCOMPLETE_LOGIC( tau_1[1] );
-    deduped_1_1 := LeftDivide( UnderlyingMatrix( deduped_2_1 ), SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ) );
+    deduped_1_1 := LeftDivide( UnderlyingMatrix( deduped_2_1 ), BasisOfColumns( UnderlyingMatrix( alpha_1 ) ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, Range( deduped_2_1 ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( deduped_1_1 ) ), UnderlyingMatrix, deduped_1_1 );
 end
 ########
@@ -5909,7 +5908,7 @@ end
 function ( cat_1, alpha_1, tau_1, C_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := CAP_JIT_INCOMPLETE_LOGIC( tau_1[1] );
-    deduped_1_1 := LeftDivide( UnderlyingMatrix( deduped_2_1 ), SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ) );
+    deduped_1_1 := LeftDivide( UnderlyingMatrix( deduped_2_1 ), BasisOfColumns( UnderlyingMatrix( alpha_1 ) ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, Range( deduped_2_1 ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( deduped_1_1 ) ), UnderlyingMatrix, deduped_1_1 );
 end
 ########

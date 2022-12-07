@@ -54,3 +54,25 @@ CapJitAddLogicTemplate(
         needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
+
+# SyzygiesOfRows( SyzygiesOfColumns( matrix ) ) => BasisOfRows( matrix )
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "matrix" ],
+        variable_filters := [ "IsHomalgMatrix" ],
+        src_template := "SyzygiesOfRows( SyzygiesOfColumns( matrix ) )",
+        dst_template := "BasisOfRows( matrix )",
+        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
+    )
+);
+
+# SyzygiesOfColumns( SyzygiesOfRows( matrix ) ) => BasisOfColumns( matrix )
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "matrix" ],
+        variable_filters := [ "IsHomalgMatrix" ],
+        src_template := "SyzygiesOfColumns( SyzygiesOfRows( matrix ) )",
+        dst_template := "BasisOfColumns( matrix )",
+        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
+    )
+);
