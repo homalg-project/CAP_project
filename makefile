@@ -1,10 +1,6 @@
-all: homalg_compatibility doc test
+all: doc test
 
 .PHONY: test
-
-homalg_compatibility:
-	gap load_cap_sheaves.g
-	gap load_sheaves_cap.g
 
 # BEGIN PACKAGE JANITOR
 doc: doc_CAP doc_ActionsForCAP doc_AttributeCategoryForCAP doc_CartesianCategories doc_CompilerForCAP doc_ComplexesAndFilteredObjectsForCAP doc_DeductiveSystemForCAP doc_FreydCategoriesForCAP doc_GeneralizedMorphismsForCAP doc_GradedModulePresentationsForCAP doc_GroupRepresentationsForCAP doc_HomologicalAlgebraForCAP doc_InternalExteriorAlgebraForCAP doc_LinearAlgebraForCAP doc_ModulePresentationsForCAP doc_ModulesOverLocalRingsForCAP doc_MonoidalCategories doc_ToricSheaves
@@ -66,7 +62,7 @@ doc_ToricSheaves:
 # END PACKAGE JANITOR
 
 ########################################
-test: homalg_compatibility doc test_CAP test_ActionsForCAP test_AttributeCategoryForCAP test_CartesianCategories test_CompilerForCAP test_ComplexesAndFilteredObjectsForCAP test_DeductiveSystemForCAP test_FreydCategoriesForCAP test_GeneralizedMorphismsForCAP test_GradedModulePresentationsForCAP test_GroupRepresentationsForCAP test_HomologicalAlgebraForCAP test_InternalExteriorAlgebraForCAP test_LinearAlgebraForCAP test_ModulePresentationsForCAP test_ModulesOverLocalRingsForCAP test_MonoidalCategories test_ToricSheaves
+test: doc test_CAP test_ActionsForCAP test_AttributeCategoryForCAP test_CartesianCategories test_CompilerForCAP test_ComplexesAndFilteredObjectsForCAP test_DeductiveSystemForCAP test_FreydCategoriesForCAP test_GeneralizedMorphismsForCAP test_GradedModulePresentationsForCAP test_GroupRepresentationsForCAP test_HomologicalAlgebraForCAP test_InternalExteriorAlgebraForCAP test_LinearAlgebraForCAP test_ModulePresentationsForCAP test_ModulesOverLocalRingsForCAP test_MonoidalCategories test_ToricSheaves
 
 test_CAP:
 	$(MAKE) -C CAP test
@@ -123,7 +119,7 @@ test_ToricSheaves:
 	$(MAKE) -C ToricSheaves test
 
 ########################################
-ci-test: homalg_compatibility doc ci-test_CAP ci-test_ActionsForCAP ci-test_AttributeCategoryForCAP ci-test_CartesianCategories ci-test_CompilerForCAP ci-test_ComplexesAndFilteredObjectsForCAP ci-test_DeductiveSystemForCAP ci-test_FreydCategoriesForCAP ci-test_GeneralizedMorphismsForCAP ci-test_GradedModulePresentationsForCAP ci-test_GroupRepresentationsForCAP ci-test_HomologicalAlgebraForCAP ci-test_InternalExteriorAlgebraForCAP ci-test_LinearAlgebraForCAP ci-test_ModulePresentationsForCAP ci-test_ModulesOverLocalRingsForCAP ci-test_MonoidalCategories ci-test_ToricSheaves
+ci-test: doc ci-test_CAP ci-test_ActionsForCAP ci-test_AttributeCategoryForCAP ci-test_CartesianCategories ci-test_CompilerForCAP ci-test_ComplexesAndFilteredObjectsForCAP ci-test_DeductiveSystemForCAP ci-test_FreydCategoriesForCAP ci-test_GeneralizedMorphismsForCAP ci-test_GradedModulePresentationsForCAP ci-test_GroupRepresentationsForCAP ci-test_HomologicalAlgebraForCAP ci-test_InternalExteriorAlgebraForCAP ci-test_LinearAlgebraForCAP ci-test_ModulePresentationsForCAP ci-test_ModulesOverLocalRingsForCAP ci-test_MonoidalCategories ci-test_ToricSheaves
 
 ci-test_CAP: doc
 	$(MAKE) -C CAP ci-test
