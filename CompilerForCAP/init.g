@@ -49,3 +49,5 @@ ReadPackage( "CompilerForCAP", "gap/DeduplicateExpressions.gd" );
 ReadPackage( "CompilerForCAP", "gap/CleanUpHoistedAndDeduplicatedExpressions.gd" );
 
 ReadPackage( "CompilerForCAP", "gap/PrecompileCategory.gd" );
+
+ReadPackage( "CompilerForCAP", "gap/ProofAssistant.gd" );

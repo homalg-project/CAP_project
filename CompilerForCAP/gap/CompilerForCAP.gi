@@ -64,20 +64,6 @@ InstallGlobalFunction( CapJitDisableStepByStepCompilation, function ( )
     
 end );
 
-CAP_JIT_PROOF_ASSISTANT_MODE_ENABLED := false;
-
-InstallGlobalFunction( CapJitEnableProofAssistantMode, function ( )
-    
-    CAP_JIT_PROOF_ASSISTANT_MODE_ENABLED := true;
-    
-end );
-
-InstallGlobalFunction( CapJitDisableProofAssistantMode, function ( )
-    
-    CAP_JIT_PROOF_ASSISTANT_MODE_ENABLED := false;
-    
-end );
-
 InstallGlobalFunction( CapJitSetDebugLevel, function ( level )
     
     # COVERAGE_IGNORE_BLOCK_START

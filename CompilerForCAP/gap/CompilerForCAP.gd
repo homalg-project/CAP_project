@@ -54,19 +54,6 @@ DeclareGlobalFunction( "CapJitEnableStepByStepCompilation" );
 DeclareGlobalFunction( "CapJitDisableStepByStepCompilation" );
 #! @EndGroup
 
-#! @Section Proof assistant mode
-
-#! @BeginGroup
-#! @Description
-#!   (experimental) Enables or disables the (experimental) proof assistant mode.
-#!   For example, in this mode the compiler will display warnings if the code involves CAP operations which are not known to be compatible with the congruence of morphisms,
-#!   and expressions will not be hoisted or deduplicated.
-#! @Arguments
-DeclareGlobalFunction( "CapJitEnableProofAssistantMode" );
-#! @Arguments
-DeclareGlobalFunction( "CapJitDisableProofAssistantMode" );
-#! @EndGroup
-
 #! @Section Getting information about the compilation process
 
 #! @Description
