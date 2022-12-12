@@ -46,6 +46,12 @@ function( name, target_op, used_op_names_with_multiples_and_category_getters, we
         
     fi;
     
+    if IsProperty( category_filter ) then
+        
+        category_filter := Tester( category_filter ) and category_filter;
+        
+    fi;
+    
     return ObjectifyWithAttributes(
         rec( ), TheTypeOfDerivedMethods,
         DerivationName, name,
@@ -74,15 +80,7 @@ end );
 InstallMethod( IsApplicableToCategory,
                [ IsDerivedMethod, IsCapCategory ],
 function( d, C )
-  local filter;
-  filter := CategoryFilter( d );
-  if IsProperty( filter ) then
-      return Tester( filter )( C ) and filter( C );
-  elif IsFunction( filter ) then
-      return filter( C );
-  else
-      Error( "Category filter is not a filter or function" );
-  fi;
+  return CategoryFilter( d )( C );
 end );
 
 InstallMethod( InstallDerivationForCategory,
