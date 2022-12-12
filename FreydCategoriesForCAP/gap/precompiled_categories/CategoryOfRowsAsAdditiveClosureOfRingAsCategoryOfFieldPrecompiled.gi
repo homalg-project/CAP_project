@@ -144,6 +144,28 @@ end
     , 100 );
     
     ##
+    AddCoimageObject( cat,
+        
+########
+function ( cat_1, arg2_1 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, ColumnRankOfMatrix( UnderlyingMatrix( arg2_1 ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddCoimageProjectionWithGivenCoimageObject( cat,
+        
+########
+function ( cat_1, alpha_1, C_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), C_1, UnderlyingMatrix, BasisOfColumns( UnderlyingMatrix( alpha_1 ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddCokernelObject( cat,
         
 ########
@@ -311,6 +333,28 @@ end
 ########
 function ( cat_1, a_1 )
     return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, a_1, UnderlyingMatrix, HomalgIdentityMatrix( RankOfObject( a_1 ), UnderlyingRing( cat_1 ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddImageEmbeddingWithGivenImageObject( cat,
+        
+########
+function ( cat_1, alpha_1, I_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, I_1, Range( alpha_1 ), UnderlyingMatrix, BasisOfRows( UnderlyingMatrix( alpha_1 ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddImageObject( cat,
+        
+########
+function ( cat_1, arg2_1 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, RowRankOfMatrix( UnderlyingMatrix( arg2_1 ) ) );
 end
 ########
         

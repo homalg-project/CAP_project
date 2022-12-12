@@ -781,6 +781,44 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
       end );
       
       ##
+      AddImageObject( category,
+        function( cat, morphism )
+          
+          return CategoryOfRowsObject( cat, RowRankOfMatrix( UnderlyingMatrix( morphism ) ) );
+          
+      end );
+      
+      ##
+      AddImageEmbeddingWithGivenImageObject( category,
+        function( cat, morphism, image_object )
+          local image_emb;
+          
+          image_emb := BasisOfRows( UnderlyingMatrix( morphism ) );
+          
+          return CategoryOfRowsMorphism( cat, image_object, image_emb, Range( morphism ) );
+          
+      end );
+        
+      ##
+      AddCoimageObject( category,
+        function( cat, morphism )
+          
+          return CategoryOfRowsObject( cat, ColumnRankOfMatrix( UnderlyingMatrix( morphism ) ) );
+          
+      end );
+      
+      ##
+      AddCoimageProjectionWithGivenCoimageObject( category,
+        function( cat, morphism, coimage_object )
+          local coimage_prj;
+          
+          coimage_prj := BasisOfColumns( UnderlyingMatrix( morphism ) );
+          
+          return CategoryOfRowsMorphism( cat, Source( morphism ), coimage_prj, coimage_object );
+          
+      end );
+        
+      ##
       AddSomeReductionBySplitEpiSummand( category,
         function( cat, alpha )
           
