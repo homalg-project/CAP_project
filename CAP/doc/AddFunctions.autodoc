@@ -196,12 +196,6 @@ The function CAP_INTERNAL_ENHANCE_NAME_RECORD can be applied to a method name re
 * Redirect and post functions are created for all operations belonging to universal constructions (e.g. `KernelLift`) which are not a WithGiven operation.
 
 
-@Section Install All Adds
-
-The function CAP_INTERNAL_INSTALL_ALL_ADDS does not take any arguments. It is an auxiliary function which first applies CAP_INTERNAL_ENHANCE_NAME_RECORD to
-CAP_INTERNAL_METHOD_NAME_RECORD. Afterwards it iterates over CAP_INTERNAL_METHOD_NAME_RECORD and calls the CapInternalInstallAdd with the corresponding method record entry
-except if the no_install component of the record is set to true.
-
 @Section Prepare functions
 
 @Section Available Add functions
