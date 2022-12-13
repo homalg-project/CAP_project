@@ -215,7 +215,7 @@ IsZeroForObjects );
 InstallMethod( IsEqualForCache,
                [ IsCapCategoryObject, IsCapCategoryObject ],
                
-  IsEqualForCacheForObjects );
+  { obj1, obj2 } -> IsEqualForCacheForObjects( CapCategory( obj1 ), obj1, obj2 ) );
 
 ##
 # generic fallback to IsIdenticalObj

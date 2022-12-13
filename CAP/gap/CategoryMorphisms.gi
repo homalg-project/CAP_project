@@ -234,7 +234,7 @@ end );
 InstallMethod( IsEqualForCache,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                
-  IsEqualForCacheForMorphisms );
+  { mor1, mor2 } -> IsEqualForCacheForMorphisms( CapCategory( mor1 ), mor1, mor2 ) );
 
 ##
 # generic fallback to IsIdenticalObj
