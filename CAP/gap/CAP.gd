@@ -316,6 +316,18 @@ DeclareOperation( "CreateCapCategory",
 DeclareOperation( "CreateCapCategory",
                            [ IsString, IsFunction, IsFunction, IsFunction, IsFunction ] );
 
+#! @Description
+#! The argument is a string $s$.
+#! This operation creates a new CAP category from scratch.
+#! Its name is set to $s$.
+#! The category, its objects, its morphisms, and its two cells will lie in the corresponding given filters.
+#! The data types of the object/morphism/two cell datum can be given as described in <Ref BookName="CompilerForCAP" Func="CapJitInferredDataTypes" />.
+#! As a convenience, simply a filter can be given if this suffices to fully determine the data type.
+#! If a data type is not specified, pass `fail` instead.
+#! @Arguments s, category_filter, object_filter, morphism_filter, two_cell_filter, object_datum_type, morphism_datum_type, two_cell_datum_type
+#! @Returns a category
+DeclareGlobalFunction( "CreateCapCategoryWithDataTypes" );
+
 ###################################
 ##
 #! @Section Internal Attributes
@@ -370,6 +382,33 @@ DeclareAttribute( "MorphismFilter",
 #! @Arguments C
 #! @Returns a filter
 DeclareAttribute( "TwoCellFilter",
+                  IsCapCategory );
+
+#! @Description
+#! The argument is a category $C$.
+#! The output is the data type (see <Ref BookName="CompilerForCAP" Func="CapJitInferredDataTypes" />)
+#! of object data of $C$ (or `fail` if this data type is not specified).
+#! @Arguments C
+#! @Returns a data type or `fail`
+DeclareAttribute( "ObjectDatumType",
+                  IsCapCategory );
+
+#! @Description
+#! The argument is a category $C$.
+#! The output is the data type (see <Ref BookName="CompilerForCAP" Func="CapJitInferredDataTypes" />)
+#! of morphism data of $C$ (or `fail` if this data type is not specified).
+#! @Arguments C
+#! @Returns a data type or `fail`
+DeclareAttribute( "MorphismDatumType",
+                  IsCapCategory );
+
+#! @Description
+#! The argument is a category $C$.
+#! The output is the data type (see <Ref BookName="CompilerForCAP" Func="CapJitInferredDataTypes" />)
+#! of two cell data of $C$ (or `fail` if this data type is not specified).
+#! @Arguments C
+#! @Returns a data type or `fail`
+DeclareAttribute( "TwoCellDatumType",
                   IsCapCategory );
 
 #! @Description

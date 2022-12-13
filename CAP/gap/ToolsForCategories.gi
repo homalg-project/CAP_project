@@ -167,6 +167,18 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRING_WITH_FILTER,
             return IsList;
         elif filter_or_string = "list_of_morphisms" then
             return IsList;
+        elif filter_or_string = "object_datum" then
+            if category <> false and ObjectDatumType( category ) <> fail then
+                return ObjectDatumType( category ).filter;
+            else
+                return IsObject;
+            fi;
+        elif filter_or_string = "morphism_datum" then
+            if category <> false and MorphismDatumType( category ) <> fail then
+                return MorphismDatumType( category ).filter;
+            else
+                return IsObject;
+            fi;
         elif filter_or_string = "list_of_twocells" then
             return IsList;
         elif filter_or_string = "nonneg_integer_or_infinity" then
@@ -280,6 +292,18 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRING_WITH_FILTER_FOR_JULIA,
             return ValueGlobal( "IsJuliaObject" );
         elif filter_or_string = "list_of_twocells" then
             return ValueGlobal( "IsJuliaObject" );
+        elif filter_or_string = "object_datum" then
+            if category <> false and ObjectDatumType( category ) <> fail and ObjectDatumType( category ).filter = IsList then
+                return ValueGlobal( "IsJuliaObject" );
+            else
+                return IsObject;
+            fi;
+        elif filter_or_string = "morphism_datum" then
+            if category <> false and MorphismDatumType( category ) <> fail and MorphismDatumType( category ).filter = IsList then
+                return ValueGlobal( "IsJuliaObject" );
+            else
+                return IsObject;
+            fi;
         elif filter_or_string = "nonneg_integer_or_infinity" then
             return IsCyclotomic;
         else

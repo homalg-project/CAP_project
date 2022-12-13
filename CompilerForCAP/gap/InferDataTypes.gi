@@ -89,6 +89,16 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_DATA_TYPE_FROM_FILTER_OR_STRING", f
         
         return CapJitDataTypeOfMorphismOfCategory( RangeCategoryOfHomomorphismStructure( category ) );
         
+    elif filter_or_string = "object_datum" then
+        
+        # might be `fail`
+        return ObjectDatumType( category );
+        
+    elif filter_or_string = "morphism_datum" then
+        
+        # might be `fail`
+        return MorphismDatumType( category );
+        
     else
         
         #Error( "unhandled filter string: ", filter_or_string );

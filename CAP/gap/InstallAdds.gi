@@ -130,6 +130,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
         
     fi;
     
+    # convenience for Julia lists
     if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
         
         if "list_of_objects" in filter_list or "list_of_morphisms" in filter_list or "list_of_twocells" in filter_list then
@@ -361,6 +362,12 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 return function( arg, i )
                     CAP_INTERNAL_ASSERT_IS_LIST_OF_TWO_CELLS_OF_CATEGORY( arg, category, function( ) return input_human_readable_identifier_getter( i ); end );
                 end;
+            elif filter = "object_datum" then
+                # The filter is already checked by the method selection. More complicated checks (e.g. the types of list elements) should be checked in a more general way.
+                return ReturnTrue;
+            elif filter = "morphism_datum" then
+                # The filter is already checked by the method selection. More complicated checks (e.g. the types of list elements) should be checked in a more general way.
+                return ReturnTrue;
             elif filter = "nonneg_integer_or_infinity" then
                 return function( arg, i )
                     CAP_INTERNAL_ASSERT_IS_NON_NEGATIVE_INTEGER_OR_INFINITY( arg, function( ) return input_human_readable_identifier_getter( i ); end );
@@ -429,6 +436,10 @@ InstallGlobalFunction( CapInternalInstallAdd,
             output_sanity_check_function := function( result )
                 CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( result, false, output_human_readable_identifier_getter );
             end;
+        elif record.return_type = "list_of_objects" then
+            output_sanity_check_function := function( result )
+                CAP_INTERNAL_ASSERT_IS_LIST_OF_OBJECTS_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
+            end;
         elif record.return_type = "list_of_morphisms" then
             output_sanity_check_function := function( result )
                 CAP_INTERNAL_ASSERT_IS_LIST_OF_MORPHISMS_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
@@ -439,10 +450,28 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     CAP_INTERNAL_ASSERT_IS_LIST_OF_MORPHISMS_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
                 fi;
             end;
-        elif record.return_type = "list_of_objects" then
-            output_sanity_check_function := function( result )
-                CAP_INTERNAL_ASSERT_IS_LIST_OF_OBJECTS_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
-            end;
+        elif record.return_type = "object_datum" then
+            if ObjectDatumType( category ) = fail then
+                output_sanity_check_function := ReturnTrue;
+            else
+                output_sanity_check_function := function( result )
+                    # We only check the filter here. More complicated checks (e.g. the types of list elements) should be checked in a more general way.
+                    if not ObjectDatumType( category ).filter( result ) then
+                        Error( Concatenation( output_human_readable_identifier_getter(), " does not lie in the filter of object data of the category. You can access the result via the local variable 'result' in a break loop." ) );
+                    fi;
+                end;
+            fi;
+        elif record.return_type = "morphism_datum" then
+            if MorphismDatumType( category ) = fail then
+                output_sanity_check_function := ReturnTrue;
+            else
+                output_sanity_check_function := function( result )
+                    # We only check the filter here. More complicated checks (e.g. the types of list elements) should be checked in a more general way.
+                    if not MorphismDatumType( category ).filter( result ) then
+                        Error( Concatenation( output_human_readable_identifier_getter(), " does not lie in the filter of morphism data of the category. You can access the result via the local variable 'result' in a break loop." ) );
+                    fi;
+                end;
+            fi;
         elif record.return_type = "nonneg_integer_or_infinity" then
             output_sanity_check_function := function( result )
                 CAP_INTERNAL_ASSERT_IS_NON_NEGATIVE_INTEGER_OR_INFINITY( result, output_human_readable_identifier_getter );

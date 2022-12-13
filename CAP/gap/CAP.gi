@@ -161,8 +161,26 @@ BindGlobal( "TheTypeOfCapCategories",
 
 ##
 InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
-  function( obj_rec, name, category_filter, object_filter, morphism_filter, two_cell_filter )
+  function( obj_rec, name, category_filter, object_filter, morphism_filter, two_cell_filter, object_datum_type, morphism_datum_type, two_cell_datum_type )
     local filter, obj, operation_name;
+    
+    if IsFilter( object_datum_type ) then
+        
+        object_datum_type := rec( filter := object_datum_type );
+        
+    fi;
+    
+    if IsFilter( morphism_datum_type ) then
+        
+        morphism_datum_type := rec( filter := morphism_datum_type );
+        
+    fi;
+    
+    if IsFilter( two_cell_datum_type ) then
+        
+        two_cell_datum_type := rec( filter := two_cell_datum_type );
+        
+    fi;
     
     obj_rec!.logical_implication_files := StructuralCopy( CATEGORIES_LOGIC_FILES );
     
@@ -176,6 +194,7 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     filter := NewCategory( Concatenation( name, "ObjectFilter" ), object_filter );
     
     SetObjectFilter( obj, filter );
+    SetObjectDatumType( obj, object_datum_type );
     
     obj!.object_representation := object_filter;
     obj!.object_type := NewType( TheFamilyOfCapCategoryObjects, filter );
@@ -184,6 +203,7 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     filter := NewCategory( Concatenation( name, "MorphismFilter" ), morphism_filter );
     
     SetMorphismFilter( obj, filter );
+    SetMorphismDatumType( obj, morphism_datum_type );
     
     obj!.morphism_representation := morphism_filter;
     obj!.morphism_type := NewType( TheFamilyOfCapCategoryMorphisms, filter );
@@ -192,6 +212,7 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     filter := NewCategory( Concatenation( name, "TwoCellFilter" ), two_cell_filter );
     
     SetTwoCellFilter( obj, filter );
+    SetTwoCellDatumType( obj, two_cell_datum_type );
     
     SetIsFinalized( obj, false );
     
@@ -223,6 +244,46 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     obj!.predicate_logic := true;
     
     obj!.add_primitive_output := false;
+    
+    # convenience for Julia lists
+    if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
+        
+        if object_datum_type <> fail and object_datum_type.filter = IsList then
+            
+            InstallOtherMethod( ObjectConstructor,
+                                [ CategoryFilter( obj ), ValueGlobal( "IsJuliaObject" ) ],
+                                
+              function( cat, julia_list )
+                
+                return ObjectConstructor( cat, ValueGlobal( "ConvertJuliaToGAP" )( julia_list ) );
+                
+            end );
+            
+        fi;
+        
+        if morphism_datum_type <> fail and morphism_datum_type.filter = IsList then
+            
+            InstallOtherMethod( MorphismConstructor,
+                                [ ObjectFilter( obj ), ValueGlobal( "IsJuliaObject" ), ObjectFilter( obj ) ],
+                                
+              function( source, julia_list, range )
+                
+                return MorphismConstructor( source, ValueGlobal( "ConvertJuliaToGAP" )( julia_list ), range );
+                
+            end );
+            
+            InstallOtherMethod( MorphismConstructor,
+                                [ CategoryFilter( obj ), ObjectFilter( obj ), ValueGlobal( "IsJuliaObject" ), ObjectFilter( obj ) ],
+                                
+              function( cat, source, julia_list, range )
+                
+                return MorphismConstructor( cat, source, ValueGlobal( "ConvertJuliaToGAP" )( julia_list ), range );
+                
+            end );
+            
+        fi;
+        
+    fi;
     
     return obj;
     
@@ -455,26 +516,34 @@ InstallMethod( CreateCapCategory,
                [ IsString, IsFunction, IsFunction, IsFunction, IsFunction ],
                
   function( name, category_filter, object_filter, morphism_filter, two_cell_filter )
+    
+    return CreateCapCategoryWithDataTypes( name, category_filter, object_filter, morphism_filter, two_cell_filter, fail, fail, fail );
+    
+end );
+
+##
+InstallGlobalFunction( CreateCapCategoryWithDataTypes,
+  function ( name, category_filter, object_filter, morphism_filter, two_cell_filter, object_datum_type, morphism_datum_type, two_cell_datum_type )
     local overhead, is_computable, category;
     
     overhead := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "overhead", true );
     
     is_computable := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "is_computable", true );
-
-    category := CREATE_CAP_CATEGORY_OBJECT( rec( ), name, category_filter, object_filter, morphism_filter, two_cell_filter );
+    
+    category := CREATE_CAP_CATEGORY_OBJECT( rec( ), name, category_filter, object_filter, morphism_filter, two_cell_filter, object_datum_type, morphism_datum_type, two_cell_datum_type );
     
     category!.overhead := overhead;
     
     category!.is_computable := is_computable;
-
-    if overhead then
     
-      AddCategoryToFamily( category, "general" );
-      
+    if overhead then
+        
+        AddCategoryToFamily( category, "general" );
+        
     else
-      
-      category!.predicate_logic := false;
-      
+        
+        category!.predicate_logic := false;
+        
     fi;
     
     return category;
