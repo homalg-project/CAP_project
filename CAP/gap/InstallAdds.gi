@@ -736,8 +736,6 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD,
   function( record )
     local recnames, current_recname, current_rec;
     
-    CAP_INTERNAL_ENHANCE_NAME_RECORD( record );
-    
     recnames := RecNames( record );
     
     AddOperationsToDerivationGraph( CAP_INTERNAL_DERIVATION_GRAPH, recnames );
@@ -745,6 +743,12 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD,
     for current_recname in recnames do
         
         current_rec := record.( current_recname );
+        
+        if not IsBound( current_rec.function_name ) then
+            
+            Error( "the record has no entry `function_name`, probably you forgot to call CAP_INTERNAL_ENHANCE_NAME_RECORD" );
+            
+        fi;
         
         ## keep track of it in method name rec
         CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname ) := current_rec;

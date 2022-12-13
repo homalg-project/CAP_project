@@ -4844,7 +4844,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
   function( record )
     local recnames, current_recname, current_rec, io_type, number_of_arguments, func_string,
           installation_name, output_list, input_list, argument_names, return_list, current_output, input_position, list_position,
-          without_given_name, with_given_names, with_given_name, without_given_rec, with_given_object_position, object_name,
+          without_given_name, with_given_prefix, with_given_names, with_given_name, without_given_rec, with_given_object_position, object_name,
           object_filter_list, with_given_object_filter, given_source_argument_name, given_range_argument_name, with_given_rec, i,
           can_always_compute_output_source_getter, can_always_compute_output_range_getter;
     
@@ -5260,7 +5260,9 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
             without_given_name := current_recname;
             
-            with_given_names := Filtered( recnames, x -> StartsWith( x, Concatenation( without_given_name, "WithGiven" ) ) );
+            with_given_prefix := Concatenation( without_given_name, "WithGiven" );
+            
+            with_given_names := Filtered( recnames, x -> StartsWith( x, with_given_prefix ) );
             
             if Length( with_given_names ) <> 1 then
                 
@@ -5274,7 +5276,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
             with_given_object_position := without_given_rec.with_given_object_position;
             
-            object_name := ReplacedString( with_given_name, Concatenation( without_given_name, "WithGiven" ), "" );
+            object_name := ReplacedString( with_given_name, with_given_prefix, "" );
             
             # generate output_source_getter_string resp. output_range_getter_string automatically if possible
             if object_name in recnames then
