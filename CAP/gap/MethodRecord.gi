@@ -16,10 +16,12 @@ InstallValue( CAP_INTERNAL_VALID_RETURN_TYPES,
         "bool",
         "other_object",
         "other_morphism",
+        "list_of_objects",
         "list_of_morphisms",
         "list_of_morphisms_or_fail",
+        "object_datum",
+        "morphism_datum",
         "nonneg_integer_or_infinity",
-        "list_of_objects"
     ]
 #! @EndCode
 );
@@ -43,25 +45,25 @@ end );
 
 InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD, rec(
 ObjectConstructor := rec(
-  filter_list := [ "category", IsObject ],
+  filter_list := [ "category", "object_datum" ],
   return_type := "object",
   compatible_with_congruence_of_morphisms := false,
 ),
 
 ObjectDatum := rec(
   filter_list := [ "category", "object" ],
-  return_type := IsObject,
+  return_type := "object_datum",
 ),
 
 MorphismConstructor := rec(
-  filter_list := [ "category", "object", IsObject, "object" ],
+  filter_list := [ "category", "object", "morphism_datum", "object" ],
   return_type := "morphism",
   compatible_with_congruence_of_morphisms := false,
 ),
 
 MorphismDatum := rec(
   filter_list := [ "category", "morphism" ],
-  return_type := IsObject,
+  return_type := "morphism_datum",
   compatible_with_congruence_of_morphisms := false,
 ),
 
