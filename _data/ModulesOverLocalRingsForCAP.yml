@@ -1,7 +1,7 @@
 name: ModulesOverLocalRingsForCAP
-version: "2022.11-01"
+version: "2022.12-01"
 license: "GPL-2.0-or-later"
-date: 2022-11-02
+date: 2022-12-14
 description: |
     Category of modules over a local ring modeled by Serre quotients for CAP
 
@@ -35,11 +35,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/ModulesOverLocalRingsF
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/ModulesOverLocalRingsForCAP-2022.11-01/ModulesOverLocalRingsForCAP-2022.11-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/ModulesOverLocalRingsForCAP-2022.12-01/ModulesOverLocalRingsForCAP-2022.12-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/ModulesOverLocalRingsForCAP-2022.11-01/ModulesOverLocalRingsForCAP-2022.11-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/ModulesOverLocalRingsForCAP-2022.12-01/ModulesOverLocalRingsForCAP-2022.12-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/ModulesOverLocalRingsForCAP-2022.11-01/ModulesOverLocalRingsForCAP-2022.11-01.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/ModulesOverLocalRingsForCAP-2022.12-01/ModulesOverLocalRingsForCAP-2022.12-01.pdf
 
 abstract: |
 
@@ -50,7 +50,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>Pos22</span>]   <b class='BibAuthor'>Posur, S.</b>,
      <i class='BibTitle'>ModulesOverLocalRingsForCAP, Category of modules over a local ring modeled by Serre quotients for CAP,
-             Version 2022.11-01</i>
+             Version 2022.12-01</i>
      (<span class='BibYear'>2022</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/ModulesOverLocalRingsForCAP">https://homalg-project.github.io/pkg/ModulesOverLocalRingsForCAP</a></span>.
@@ -58,12 +58,12 @@ citeas: |
     
 
 bibtex: |
-    @misc{ ModulesOverLocalRingsForCAP2022.11-01,
+    @misc{ ModulesOverLocalRingsForCAP2022.12-01,
       author =           {Posur, S.},
       title =            {{ModulesOverLocalRingsForCAP},   Category  of  modules
                           over  a local ring modeled by Serre quotients for CAP,
-                          {V}ersion 2022.11-01},
-      month =            {Nov},
+                          {V}ersion 2022.12-01},
+      month =            {Dec},
       year =             {2022},
       note =             {GAP package},
       howpublished =     {\href
