@@ -59,6 +59,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X86EDB84D7E3F0194">1.3-1 CreateCapCategory</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X854CC42E828C120D">1.3-2 CreateCapCategory</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7A1D562178FC3DDF">1.3-3 CreateCapCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8090078F7C5EF5E9">1.3-4 CreateCapCategoryWithDataTypes</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X79CE135F7E6EBFEE">1.4 <span class="Heading">Internal Attributes</span></a>
 </span>
@@ -68,11 +69,14 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7BD6E2B887F86E9C">1.4-3 ObjectFilter</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7F62E0C47C778CBB">1.4-4 MorphismFilter</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X850D0E978090D0C0">1.4-5 TwoCellFilter</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X78D0C0057817DBC3">1.4-6 CommutativeRingOfLinearCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X80AF18E4797A5BB4">1.4-7 RangeCategoryOfHomomorphismStructure</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7CF2F93F8258DAD5">1.4-8 AdditiveGenerators</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7E094E2680348C88">1.4-9 IndecomposableProjectiveObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X85E6A5AF7DDA4F2C">1.4-10 IndecomposableInjectiveObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X834BBE4085A42FAC">1.4-6 ObjectDatumType</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8090D81F78B1F25A">1.4-7 MorphismDatumType</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X850E7C0C807F3402">1.4-8 TwoCellDatumType</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X78D0C0057817DBC3">1.4-9 CommutativeRingOfLinearCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X80AF18E4797A5BB4">1.4-10 RangeCategoryOfHomomorphismStructure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7CF2F93F8258DAD5">1.4-11 AdditiveGenerators</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7E094E2680348C88">1.4-12 IndecomposableProjectiveObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X85E6A5AF7DDA4F2C">1.4-13 IndecomposableInjectiveObjects</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X8305A19E86EC7B67">1.5 <span class="Heading">Logic switcher</span></a>
 </span>
@@ -398,6 +402,15 @@
 
 <p>The argument is a string <span class="SimpleMath">\(s\)</span>. This operation creates a new CAP category from scratch. Its name is set to <span class="SimpleMath">\(s\)</span>. The category, its objects, its morphisms, and its two cells will lie in the corresponding given filters.</p>
 
+<p><a id="X8090078F7C5EF5E9" name="X8090078F7C5EF5E9"></a></p>
+
+<h5>1.3-4 CreateCapCategoryWithDataTypes</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateCapCategoryWithDataTypes</code>( <var class="Arg">s</var>, <var class="Arg">category_filter</var>, <var class="Arg">object_filter</var>, <var class="Arg">morphism_filter</var>, <var class="Arg">two_cell_filter</var>, <var class="Arg">object_datum_type</var>, <var class="Arg">morphism_datum_type</var>, <var class="Arg">two_cell_datum_type</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a category</p>
+
+<p>The argument is a string <span class="SimpleMath">\(s\)</span>. This operation creates a new CAP category from scratch. Its name is set to <span class="SimpleMath">\(s\)</span>. The category, its objects, its morphisms, and its two cells will lie in the corresponding given filters. The data types of the object/morphism/two cell datum can be given as described in <code class="func">CapJitInferredDataTypes</code> (<a href="https://homalg-project.github.io/CAP_project/CompilerForCAP/doc/chap2_mj.html#X821BE2CE7C30674E"><span class="RefLink">CompilerForCAP: CapJitInferredDataTypes</span></a>). As a convenience, simply a filter can be given if this suffices to fully determine the data type. If a data type is not specified, pass <code class="code">fail</code> instead.</p>
+
 <p><a id="X79CE135F7E6EBFEE" name="X79CE135F7E6EBFEE"></a></p>
 
 <h4>1.4 <span class="Heading">Internal Attributes</span></h4>
@@ -449,9 +462,36 @@
 
 <p>The argument is a category <span class="SimpleMath">\(C\)</span>. The output is a filter in which all <span class="SimpleMath">\(2\)</span>-cells of <span class="SimpleMath">\(C\)</span> shall lie.</p>
 
+<p><a id="X834BBE4085A42FAC" name="X834BBE4085A42FAC"></a></p>
+
+<h5>1.4-6 ObjectDatumType</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectDatumType</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a data type or <code class="code">fail</code></p>
+
+<p>The argument is a category <span class="SimpleMath">\(C\)</span>. The output is the data type (see <code class="func">CapJitInferredDataTypes</code> (<a href="https://homalg-project.github.io/CAP_project/CompilerForCAP/doc/chap2_mj.html#X821BE2CE7C30674E"><span class="RefLink">CompilerForCAP: CapJitInferredDataTypes</span></a>)) of object data of <span class="SimpleMath">\(C\)</span> (or <code class="code">fail</code> if this data type is not specified).</p>
+
+<p><a id="X8090D81F78B1F25A" name="X8090D81F78B1F25A"></a></p>
+
+<h5>1.4-7 MorphismDatumType</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismDatumType</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a data type or <code class="code">fail</code></p>
+
+<p>The argument is a category <span class="SimpleMath">\(C\)</span>. The output is the data type (see <code class="func">CapJitInferredDataTypes</code> (<a href="https://homalg-project.github.io/CAP_project/CompilerForCAP/doc/chap2_mj.html#X821BE2CE7C30674E"><span class="RefLink">CompilerForCAP: CapJitInferredDataTypes</span></a>)) of morphism data of <span class="SimpleMath">\(C\)</span> (or <code class="code">fail</code> if this data type is not specified).</p>
+
+<p><a id="X850E7C0C807F3402" name="X850E7C0C807F3402"></a></p>
+
+<h5>1.4-8 TwoCellDatumType</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TwoCellDatumType</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a data type or <code class="code">fail</code></p>
+
+<p>The argument is a category <span class="SimpleMath">\(C\)</span>. The output is the data type (see <code class="func">CapJitInferredDataTypes</code> (<a href="https://homalg-project.github.io/CAP_project/CompilerForCAP/doc/chap2_mj.html#X821BE2CE7C30674E"><span class="RefLink">CompilerForCAP: CapJitInferredDataTypes</span></a>)) of two cell data of <span class="SimpleMath">\(C\)</span> (or <code class="code">fail</code> if this data type is not specified).</p>
+
 <p><a id="X78D0C0057817DBC3" name="X78D0C0057817DBC3"></a></p>
 
-<h5>1.4-6 CommutativeRingOfLinearCategory</h5>
+<h5>1.4-9 CommutativeRingOfLinearCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CommutativeRingOfLinearCategory</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a ring</p>
@@ -460,7 +500,7 @@
 
 <p><a id="X80AF18E4797A5BB4" name="X80AF18E4797A5BB4"></a></p>
 
-<h5>1.4-7 RangeCategoryOfHomomorphismStructure</h5>
+<h5>1.4-10 RangeCategoryOfHomomorphismStructure</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RangeCategoryOfHomomorphismStructure</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a category</p>
@@ -469,7 +509,7 @@
 
 <p><a id="X7CF2F93F8258DAD5" name="X7CF2F93F8258DAD5"></a></p>
 
-<h5>1.4-8 AdditiveGenerators</h5>
+<h5>1.4-11 AdditiveGenerators</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdditiveGenerators</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a list of objects</p>
@@ -478,7 +518,7 @@
 
 <p><a id="X7E094E2680348C88" name="X7E094E2680348C88"></a></p>
 
-<h5>1.4-9 IndecomposableProjectiveObjects</h5>
+<h5>1.4-12 IndecomposableProjectiveObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IndecomposableProjectiveObjects</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a list of objects</p>
@@ -487,7 +527,7 @@
 
 <p><a id="X85E6A5AF7DDA4F2C" name="X85E6A5AF7DDA4F2C"></a></p>
 
-<h5>1.4-10 IndecomposableInjectiveObjects</h5>
+<h5>1.4-13 IndecomposableInjectiveObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IndecomposableInjectiveObjects</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a list of objects</p>
