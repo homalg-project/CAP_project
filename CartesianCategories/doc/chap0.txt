@@ -6,10 +6,10 @@
         [1X Cartesian and cocartesian categories and various subdoctrines [101X
   
   
-                                   2022.12-02
+                                   2022.12-03
   
   
-                                7 December 2022
+                                14 December 2022
   
   
                                 Mohamed Barakat
