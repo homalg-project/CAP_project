@@ -23,7 +23,11 @@ InstallGlobalFunction( MATRIX_CATEGORY,
   function( homalg_field )
     local category;
     
-    category := CreateCapCategory( Concatenation( "Category of matrices over ", RingName( homalg_field ) ) );
+    category := CreateCapCategoryWithDataTypes(
+        Concatenation( "Category of matrices over ", RingName( homalg_field ) ), IsMatrixCategory,
+        IsVectorSpaceObject and HasDimension and HasIsProjective and IsProjective, IsVectorSpaceMorphism and HasUnderlyingMatrix, IsCapCategoryTwoCell,
+        IsInt, IsHomalgMatrix, fail
+    );
     
     category!.category_as_first_argument := true;
     
@@ -46,12 +50,6 @@ InstallGlobalFunction( MATRIX_CATEGORY,
     
     # this cache replaces the KeyDependentOperation caching when using ObjectConstructor directly instead of MatrixCategoryObject
     SetCachingToWeak( category, "ObjectConstructor" );
-    
-    SetFilterObj( category, IsMatrixCategory );
-    
-    AddObjectRepresentation( category, IsVectorSpaceObject and HasDimension and HasIsProjective and IsProjective );
-    
-    AddMorphismRepresentation( category, IsVectorSpaceMorphism and HasUnderlyingMatrix );
     
     category!.field_for_matrix_category := homalg_field;
     
