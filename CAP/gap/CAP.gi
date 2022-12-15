@@ -220,7 +220,6 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     SetObjectFilter( obj, filter );
     SetObjectDatumType( obj, object_datum_type );
     
-    obj!.object_representation := object_filter;
     obj!.object_type := NewType( TheFamilyOfCapCategoryObjects, filter );
     
     # morphism filter
@@ -229,7 +228,6 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     SetMorphismFilter( obj, filter );
     SetMorphismDatumType( obj, morphism_datum_type );
     
-    obj!.morphism_representation := morphism_filter;
     obj!.morphism_type := NewType( TheFamilyOfCapCategoryMorphisms, filter );
     
     # two cell filter

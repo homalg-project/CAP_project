@@ -242,8 +242,7 @@ InstallMethod( AddObjectRepresentation,
         
     fi;
     
-    category!.object_representation := representation;
-    category!.object_type := NewType( TheFamilyOfCapCategoryObjects, representation and ObjectFilter( category ) and HasCapCategory );
+    InstallTrueMethod( representation, ObjectFilter( category ) );
     
 end );
 

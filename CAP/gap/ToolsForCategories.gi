@@ -89,102 +89,195 @@ end );
 ##
 #####################################
 
+InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( string, args... )
+  local category;
+    
+    if not IsString( string ) then
+        
+        Error( string, " is not a string" );
+        
+    fi;
+    
+    if Length( args ) > 1 then
+        
+        Error( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING must be called with at most two arguments" );
+        
+    elif Length( args ) = 1 then
+        
+        category := args[1];
+        
+    else
+        
+        category := false;
+        
+    fi;
+    
+    if string = "bool" then
+        
+        return rec( filter := IsBool );
+        
+    elif string = "integer" then
+        
+        return rec( filter := IsInt );
+        
+    elif string = "nonneg_integer_or_infinity" then
+        
+        return rec( filter := IsCyclotomic );
+        
+    elif string = "category" then
+        
+        return CapJitDataTypeOfCategory( category );
+        
+    elif string = "object" then
+        
+        return CapJitDataTypeOfObjectOfCategory( category );
+        
+    elif string = "morphism" then
+        
+        return CapJitDataTypeOfMorphismOfCategory( category );
+        
+    elif string = "twocell" then
+        
+        return CapJitDataTypeOfTwoCellOfCategory( category );
+        
+    elif string = "list_of_objects" then
+        
+        return rec( filter := IsList, element_type := CapJitDataTypeOfObjectOfCategory( category ) );
+        
+    elif string = "list_of_morphisms" then
+        
+        return rec( filter := IsList, element_type := CapJitDataTypeOfMorphismOfCategory( category ) );
+        
+    elif string = "list_of_twocells" then
+        
+        return rec( filter := IsList, element_type := CapJitDataTypeOfTwoCellOfCategory( category ) );
+        
+    elif string = "object_in_range_category_of_homomorphism_structure" then
+        
+        if category <> false and not HasRangeCategoryOfHomomorphismStructure( category ) then
+            
+            Display( Concatenation( "WARNING: You are calling an Add function for a CAP operation for \"", Name( category ), "\" which is part of a homomorphism structure but the category has no RangeCategoryOfHomomorphismStructure (yet)" ) );
+            
+        fi;
+        
+        if category = false or not HasRangeCategoryOfHomomorphismStructure( category ) then
+            
+            return CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( "object" );
+            
+        else
+            
+            return CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( "object", RangeCategoryOfHomomorphismStructure( category ) );
+            
+        fi;
+        
+    elif string = "morphism_in_range_category_of_homomorphism_structure" then
+        
+        if category <> false and not HasRangeCategoryOfHomomorphismStructure( category ) then
+            
+            Display( Concatenation( "WARNING: You are calling an Add function for a CAP operation for \"", Name( category ), "\" which is part of a homomorphism structure but the category has no RangeCategoryOfHomomorphismStructure (yet)" ) );
+            
+        fi;
+        
+        if category = false or not HasRangeCategoryOfHomomorphismStructure( category ) then
+            
+            return CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( "morphism" );
+            
+        else
+            
+            return CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( "morphism", RangeCategoryOfHomomorphismStructure( category ) );
+            
+        fi;
+        
+    elif string = "other_category" then
+        
+        return CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( "category" );
+        
+    elif string = "other_object" then
+        
+        return CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( "object" );
+        
+    elif string = "other_morphism" then
+        
+        return CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( "morphism" );
+        
+    elif string = "other_twocell" then
+        
+        return CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( "twocell");
+        
+    elif string = "object_datum" then
+        
+        if category <> false then
+            
+            # might be `fail`
+            return ObjectDatumType( category );
+            
+        else
+            
+            return fail;
+            
+        fi;
+        
+    elif string = "morphism_datum" then
+        
+        if category <> false then
+            
+            # might be `fail`
+            return MorphismDatumType( category );
+            
+        else
+            
+            return fail;
+            
+        fi;
+        
+    elif string = "object_or_fail" or string = "morphism_or_fail" then
+        
+        # cannot be express "or fail" yet
+        return fail;
+        
+    else
+        
+        Error( "filter type ", string, " is not recognized, see the documentation for allowed values" );
+        
+    fi;
+    
+end );
+
 InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRING_WITH_FILTER,
   
   function( filter_or_string, args... )
-    local category;
+    local category, data_type;
     
     if Length( args ) > 1 then
+        
         Error( "CAP_INTERNAL_REPLACE_STRING_WITH_FILTER must be called with at most two arguments" );
+        
     elif Length( args ) = 1 then
+        
         category := args[1];
+        
     else
+        
         category := false;
+        
     fi;
     
     if IsFilter( filter_or_string ) then
+        
         return filter_or_string;
+        
     elif IsString( filter_or_string ) then
-        if filter_or_string = "category" then
-            if category <> false then
-                return CategoryFilter( category );
-            else
-                return IsCapCategory;
-            fi;
-        elif filter_or_string = "object" then
-            if category <> false then
-                return ObjectFilter( category );
-            else
-                return IsCapCategoryObject;
-            fi;
-        elif filter_or_string = "morphism" then
-            if category <> false then
-                return MorphismFilter( category );
-            else
-                return IsCapCategoryMorphism;
-            fi;
-        elif filter_or_string = "twocell" then
-            if category <> false then
-                return TwoCellFilter( category );
-            else
-                return IsCapCategoryTwoCell;
-            fi;
-        elif filter_or_string = "object_in_range_category_of_homomorphism_structure" then
+        
+        data_type := CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( filter_or_string, category );
+        
+        if data_type = fail then
             
-            if category <> false and not HasRangeCategoryOfHomomorphismStructure( category ) then
-                
-                Display( Concatenation( "WARNING: You are calling an Add function for a CAP operation for \"", Name( category ), "\" which is part of a homomorphism structure but the category has no RangeCategoryOfHomomorphismStructure (yet)" ) );
-                
-            fi;
+            return IsObject;
             
-            if category <> false and HasRangeCategoryOfHomomorphismStructure( category ) then
-                return ObjectFilter( RangeCategoryOfHomomorphismStructure( category ) );
-            else
-                return IsCapCategoryObject;
-            fi;
-        elif filter_or_string = "morphism_in_range_category_of_homomorphism_structure" then
-            
-            if category <> false and not HasRangeCategoryOfHomomorphismStructure( category ) then
-                
-                Display( Concatenation( "WARNING: You are calling an Add function for a CAP operation for \"", Name( category ), "\" which is part of a homomorphism structure but the category has no RangeCategoryOfHomomorphismStructure (yet)" ) );
-                
-            fi;
-            
-            if category <> false and HasRangeCategoryOfHomomorphismStructure( category ) then
-                return MorphismFilter( RangeCategoryOfHomomorphismStructure( category ) );
-            else
-                return IsCapCategoryMorphism;
-            fi;
-        elif filter_or_string = "other_category" then
-            return IsCapCategory;
-        elif filter_or_string = "other_object" then
-            return IsCapCategoryObject;
-        elif filter_or_string = "other_morphism" then
-            return IsCapCategoryMorphism;
-        elif filter_or_string = "other_twocell" then
-            return IsCapCategoryTwoCell;
-        elif filter_or_string = "list_of_objects" then
-            return IsList;
-        elif filter_or_string = "list_of_morphisms" then
-            return IsList;
-        elif filter_or_string = "object_datum" then
-            if category <> false and ObjectDatumType( category ) <> fail then
-                return ObjectDatumType( category ).filter;
-            else
-                return IsObject;
-            fi;
-        elif filter_or_string = "morphism_datum" then
-            if category <> false and MorphismDatumType( category ) <> fail then
-                return MorphismDatumType( category ).filter;
-            else
-                return IsObject;
-            fi;
-        elif filter_or_string = "list_of_twocells" then
-            return IsList;
-        elif filter_or_string = "nonneg_integer_or_infinity" then
-            return IsCyclotomic;
         else
-            Error( "filter type ", filter_or_string, " is not recognized, see the documentation for allowed values" );
+            
+            return data_type.filter;
+            
         fi;
         
     else
@@ -968,19 +1061,28 @@ end );
 InstallGlobalFunction( CapJitDataTypeOfCategory, function ( cat )
   local type;
     
-    if not IsBound( cat!.compiler_hints ) or not IsBound( cat!.compiler_hints.category_filter ) then
-        
-        Print( "WARNING: The category with name \"", Name( cat ), "\" has no component `cat!.compiler_hints.category_filter`. Using `IsCapCategory` instead.\n" );
+    if cat = false then
         
         type := rec(
             filter := IsCapCategory,
-            category := cat,
         );
         
     else
         
+        if IsBound( cat!.compiler_hints ) and IsBound( cat!.compiler_hints.category_filter ) then
+            
+            if not IsSpecializationOfFilter( cat!.compiler_hints.category_filter, CategoryFilter( cat ) ) then
+                
+                InstallTrueMethod( cat!.compiler_hints.category_filter, CategoryFilter( cat ) );
+                
+            fi;
+            
+            Assert( 0, IsSpecializationOfFilter( cat!.compiler_hints.category_filter, CategoryFilter( cat ) ) );
+            
+        fi;
+        
         type := rec(
-            filter := cat!.compiler_hints.category_filter,
+            filter := CategoryFilter( cat ),
             category := cat,
         );
         
@@ -1000,32 +1102,26 @@ end );
 InstallGlobalFunction( CapJitDataTypeOfObjectOfCategory, function ( cat )
   local type;
     
-    if not IsBound( cat!.compiler_hints ) or not IsBound( cat!.compiler_hints.object_filter ) then
+    if cat = false then
         
-        Print( "WARNING: The category with name \"", Name( cat ), "\" has no component `cat!.compiler_hints.object_filter`. Using the object representation instead.\n" );
-        
-        if not IsBound( cat!.object_representation ) then
-            
-            Print( "WARNING: The category with name \"", Name( cat ), "\" has no component `cat!.object_representation`. Using `IsCapCategoryObject` instead.\n" );
-            
-            type := rec(
-                filter := IsCapCategoryObject,
-                category := cat,
-            );
-            
-        else
-            
-            type := rec(
-                filter := cat!.object_representation,
-                category := cat,
-            );
-            
-        fi;
+        type := rec(
+            filter := IsCapCategoryObject,
+        );
         
     else
         
+        if IsBound( cat!.compiler_hints ) and IsBound( cat!.compiler_hints.object_filter ) then
+            
+            if not IsSpecializationOfFilter( cat!.compiler_hints.object_filter, ObjectFilter( cat ) ) then
+                
+                Error( "ObjectFilter( cat ) does not imply cat!.compiler_hints.object_filter. This is not supported." );
+                
+            fi;
+            
+        fi;
+        
         type := rec(
-            filter := cat!.compiler_hints.object_filter,
+            filter := ObjectFilter( cat ),
             category := cat,
         );
         
@@ -1045,32 +1141,26 @@ end );
 InstallGlobalFunction( CapJitDataTypeOfMorphismOfCategory, function ( cat )
   local type;
     
-    if not IsBound( cat!.compiler_hints ) or not IsBound( cat!.compiler_hints.morphism_filter ) then
+    if cat = false then
         
-        Print( "WARNING: The category with name \"", Name( cat ), "\" has no component `cat!.compiler_hints.morphism_filter`. Using the morphism representation instead.\n" );
-        
-        if not IsBound( cat!.morphism_representation ) then
-            
-            Print( "WARNING: The category with name \"", Name( cat ), "\" has no component `cat!.morphism_representation`. Using `IsCapCategoryMorphism` instead.\n" );
-            
-            type := rec(
-                filter := IsCapCategoryMorphism,
-                category := cat,
-            );
-            
-        else
-            
-            type := rec(
-                filter := cat!.morphism_representation,
-                category := cat,
-            );
-            
-        fi;
+        type := rec(
+            filter := IsCapCategoryMorphism,
+        );
         
     else
         
+        if IsBound( cat!.compiler_hints ) and IsBound( cat!.compiler_hints.morphism_filter ) then
+            
+            if not IsSpecializationOfFilter( cat!.compiler_hints.morphism_filter, MorphismFilter( cat ) ) then
+                
+                Error( "MorphismFilter( cat ) does not imply cat!.compiler_hints.morphism_filter. This is not supported." );
+                
+            fi;
+            
+        fi;
+        
         type := rec(
-            filter := cat!.compiler_hints.morphism_filter,
+            filter := MorphismFilter( cat ),
             category := cat,
         );
         
@@ -1079,6 +1169,35 @@ InstallGlobalFunction( CapJitDataTypeOfMorphismOfCategory, function ( cat )
     if not IsSpecializationOfFilter( IsCapCategoryMorphism, type.filter ) then
         
         Print( "WARNING: filter ", type.filter, " does not imply `IsCapCategoryMorphism`. This will probably cause errors.\n" );
+        
+    fi;
+    
+    return type;
+    
+end );
+
+##
+InstallGlobalFunction( CapJitDataTypeOfTwoCellOfCategory, function ( cat )
+  local type;
+    
+    if cat = false then
+        
+        type := rec(
+            filter := IsCapCategoryTwoCell,
+        );
+        
+    else
+        
+        type := rec(
+            filter := TwoCellFilter( cat ),
+            category := cat,
+        );
+        
+    fi;
+    
+    if not IsSpecializationOfFilter( IsCapCategoryTwoCell, type.filter ) then
+        
+        Print( "WARNING: filter ", type.filter, " does not imply `IsCapCategoryTwoCell`. This will probably cause errors.\n" );
         
     fi;
     

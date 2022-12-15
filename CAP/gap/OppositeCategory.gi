@@ -190,7 +190,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
                     
                     return Concatenation( "MorphismDatum( cat, ", argument_name, " )" );
                     
-                elif filter = IsInt or filter = IsRingElement or filter = IsCyclotomic then
+                elif filter = "integer" or filter = IsRingElement then
                     
                     return argument_name;
                     

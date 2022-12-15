@@ -722,14 +722,14 @@ DirectSum := rec(
 ),
 
 ProjectionInFactorOfDirectSum := rec(
-  filter_list := [ "category", "list_of_objects", IsInt ],
+  filter_list := [ "category", "list_of_objects", "integer" ],
   io_type := [ [ "objects", "k" ], [ "P", "objects_k" ] ],
   with_given_object_position := "Source",
   return_type := "morphism",
   dual_operation := "InjectionOfCofactorOfDirectSum" ),
 
 ProjectionInFactorOfDirectSumWithGivenDirectSum := rec(
-  filter_list := [ "category", "list_of_objects", IsInt, "object" ],
+  filter_list := [ "category", "list_of_objects", "integer", "object" ],
   io_type := [ [ "objects", "k", "P" ], [ "P", "objects_k" ] ],
   return_type := "morphism",
   dual_operation := "InjectionOfCofactorOfDirectSumWithGivenDirectSum" ),
@@ -798,14 +798,14 @@ UniversalMorphismIntoDirectSumWithGivenDirectSum := rec(
 ),
 
 InjectionOfCofactorOfDirectSum := rec(
-  filter_list := [ "category", "list_of_objects", IsInt ],
+  filter_list := [ "category", "list_of_objects", "integer" ],
   io_type := [ [ "objects", "k" ], [ "objects_k", "P" ] ],
   with_given_object_position := "Range",
   return_type := "morphism",
   dual_operation := "ProjectionInFactorOfDirectSum" ),
 
 InjectionOfCofactorOfDirectSumWithGivenDirectSum := rec(
-  filter_list := [ "category", "list_of_objects", IsInt, "object" ],
+  filter_list := [ "category", "list_of_objects", "integer", "object" ],
   io_type := [ [ "objects", "k", "P" ], [ "objects_k", "P" ] ],
   return_type := "morphism",
   dual_operation := "ProjectionInFactorOfDirectSumWithGivenDirectSum" ),
@@ -921,14 +921,14 @@ DirectProduct := rec(
 ),
 
 ProjectionInFactorOfDirectProduct := rec(
-  filter_list := [ "category", "list_of_objects", IsInt ],
+  filter_list := [ "category", "list_of_objects", "integer" ],
   io_type := [ [ "objects", "k" ], [ "P", "objects_k" ] ],
   with_given_object_position := "Source",
   return_type := "morphism",
   dual_operation := "InjectionOfCofactorOfCoproduct" ),
 
 ProjectionInFactorOfDirectProductWithGivenDirectProduct := rec(
-  filter_list := [ "category", "list_of_objects", IsInt, "object" ],
+  filter_list := [ "category", "list_of_objects", "integer", "object" ],
   io_type := [ [ "objects", "k", "P" ], [ "P", "objects_k" ] ],
   return_type := "morphism",
   dual_operation := "InjectionOfCofactorOfCoproductWithGivenCoproduct" ),
@@ -1327,14 +1327,14 @@ Coproduct := rec(
 ),
 
 InjectionOfCofactorOfCoproduct := rec(
-  filter_list := [ "category", "list_of_objects", IsInt ],
+  filter_list := [ "category", "list_of_objects", "integer" ],
   io_type := [ [ "objects", "k" ], [ "objects_k", "P" ] ],
   with_given_object_position := "Range",
   return_type := "morphism",
   dual_operation := "ProjectionInFactorOfDirectProduct" ),
 
 InjectionOfCofactorOfCoproductWithGivenCoproduct := rec(
-  filter_list := [ "category", "list_of_objects", IsInt, "object" ],
+  filter_list := [ "category", "list_of_objects", "integer", "object" ],
   io_type := [ [ "objects", "k", "P" ], [ "objects_k", "P" ] ],
   return_type := "morphism",
   dual_operation := "ProjectionInFactorOfDirectProductWithGivenDirectProduct" ),
@@ -1668,7 +1668,7 @@ FiberProduct := rec(
 ),
 
 ProjectionInFactorOfFiberProduct := rec(
-  filter_list := [ "category", "list_of_morphisms", IsInt ],
+  filter_list := [ "category", "list_of_morphisms", "integer" ],
   io_type := [ [ "morphisms", "k" ], [ "P", "morphisms_k_source" ] ],
   with_given_object_position := "Source",
   dual_operation := "InjectionOfCofactorOfPushout",
@@ -1701,7 +1701,7 @@ ProjectionInFactorOfFiberProduct := rec(
 ),
 
 ProjectionInFactorOfFiberProductWithGivenFiberProduct := rec(
-  filter_list := [ "category", "list_of_morphisms", IsInt, "object" ],
+  filter_list := [ "category", "list_of_morphisms", "integer", "object" ],
   io_type := [ [ "morphisms", "k", "P" ], [ "P", "morphisms_k_source" ] ],
   dual_operation := "InjectionOfCofactorOfPushoutWithGivenPushout",
   
@@ -2112,7 +2112,7 @@ Pushout := rec(
 ),
 
 InjectionOfCofactorOfPushout := rec(
-  filter_list := [ "category", "list_of_morphisms", IsInt ],
+  filter_list := [ "category", "list_of_morphisms", "integer" ],
   io_type := [ [ "morphisms", "k" ], [ "morphisms_k_range", "P" ] ],
   with_given_object_position := "Range",
   dual_operation := "ProjectionInFactorOfFiberProduct",
@@ -2145,7 +2145,7 @@ InjectionOfCofactorOfPushout := rec(
 ),
 
 InjectionOfCofactorOfPushoutWithGivenPushout := rec(
-  filter_list := [ "category", "list_of_morphisms", IsInt, "object" ],
+  filter_list := [ "category", "list_of_morphisms", "integer", "object" ],
   io_type := [ [ "morphisms", "k", "P" ], [ "morphisms_k_range", "P" ] ],
   dual_operation := "ProjectionInFactorOfFiberProductWithGivenFiberProduct",
   
@@ -3332,13 +3332,13 @@ MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject := rec(
   is_merely_set_theoretic := true ),
 
 ComponentOfMorphismIntoDirectSum := rec(
-  filter_list := [ "category", "morphism", "list_of_objects", IsInt ],
+  filter_list := [ "category", "morphism", "list_of_objects", "integer" ],
   io_type := [ [ "alpha", "S", "i" ], [ "alpha_source", "S_i" ] ],
   return_type := "morphism",
   dual_operation := "ComponentOfMorphismFromDirectSum" ),
 
 ComponentOfMorphismFromDirectSum := rec(
-  filter_list := [ "category", "morphism", "list_of_objects", IsInt ],
+  filter_list := [ "category", "morphism", "list_of_objects", "integer" ],
   io_type := [ [ "alpha", "S", "i" ], [ "S_i", "alpha_range" ] ],
   return_type := "morphism",
   dual_operation := "ComponentOfMorphismIntoDirectSum" ),
@@ -3585,35 +3585,35 @@ CoefficientsOfMorphism := rec(
 ),
 
 RandomObjectByInteger := rec(
-  filter_list := [ "category", IsInt ],
+  filter_list := [ "category", "integer" ],
   io_type := [ [ "n" ], [ "A" ] ],
   return_type := "object",
   dual_operation := "RandomObjectByInteger",
 ),
 
 RandomMorphismByInteger := rec(
-  filter_list := [ "category", IsInt ],
+  filter_list := [ "category", "integer" ],
   io_type := [ [ "n" ], [ "A", "B" ] ],
   return_type := "morphism",
   dual_operation := "RandomMorphismByInteger",
 ),
 
 RandomMorphismWithFixedSourceByInteger := rec(
-  filter_list := [ "category", "object", IsInt ],
+  filter_list := [ "category", "object", "integer" ],
   io_type := [ [ "A", "n" ], [ "A", "B" ] ],
   return_type := "morphism",
   dual_operation := "RandomMorphismWithFixedRangeByInteger",
 ),
 
 RandomMorphismWithFixedRangeByInteger := rec(
-  filter_list := [ "category", "object", IsInt ],
+  filter_list := [ "category", "object", "integer" ],
   io_type := [ [ "B", "n" ], [ "A", "B" ] ],
   return_type := "morphism",
   dual_operation := "RandomMorphismWithFixedSourceByInteger",
 ),
 
 RandomMorphismWithFixedSourceAndRangeByInteger := rec(
-  filter_list := [ "category", "object", "object", IsInt ],
+  filter_list := [ "category", "object", "object", "integer" ],
   io_type := [ [ "A", "B", "n" ], [ "A", "B" ] ],
   return_type := "morphism",
   dual_operation := "RandomMorphismWithFixedSourceAndRangeByInteger",
@@ -4414,7 +4414,7 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
         projection_filter_list := Concatenation( [ "category" ], StructuralCopy( limit.diagram_filter_list ) );
         projection_io_type := [ StructuralCopy( limit.diagram_input_type ), [ ] ];
         if limit.number_of_targets > 1 then
-            Add( projection_filter_list, IsInt );
+            Add( projection_filter_list, "integer" );
             Add( projection_io_type[1], "k" );
         fi;
         if limit.target_positions = limit.unbound_object_positions then
@@ -5271,7 +5271,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
         fi;
         
-        if ForAll( current_rec.filter_list, x -> x in [ IsInt, IsRingElement, "category", "object", "object_in_range_category_of_homomorphism_structure", "other_object", "list_of_objects", "nonneg_integer_or_infinity" ] ) then
+        if ForAll( current_rec.filter_list, x -> x in [ IsRingElement, "integer", "nonneg_integer_or_infinity", "category", "object", "object_in_range_category_of_homomorphism_structure", "other_object", "list_of_objects" ] ) then
             
             if not IsBound( current_rec.compatible_with_congruence_of_morphisms ) then
                 
