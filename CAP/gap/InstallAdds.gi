@@ -203,7 +203,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
         local install_func, replaced_filter_list, needs_wrapping, i, is_derivation, is_final_derivation, is_precompiled_derivation, without_given_name, with_given_name,
               without_given_weight, with_given_weight, number_of_proposed_arguments, current_function_number,
               current_function_argument_number, current_additional_filter_list_length, input_human_readable_identifier_getter, input_sanity_check_functions,
-              output_human_readable_identifier_getter, output_sanity_check_function;
+              output_human_readable_identifier_getter, output_sanity_check_function, name;
         
         if IsFinalized( category ) then
             Error( "cannot add methods anymore, category is finalized" );
@@ -615,24 +615,27 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 Display( "WARNING: IsIdenticalObj is used for deciding the equality of objects but the caching is not set to crisp. Thus, probably the specification that equal input gives equal output is not fulfilled. You can suppress this warning by passing the option \"SuppressCacheWarning := true\" to AddIsEqualForObjects." );
             fi;
             
+            # work around https://github.com/gap-system/gap/issues/5259
+            name := ReplacedString( Name( category ), "\"", "'" );
+            
             # set name for debugging purposes
             if NameFunction( i[ 1 ] ) in [ "unknown", "_EVALSTRINGTMP" ] then
                 
                 if is_derivation then
                     
-                    SetNameFunction( i[ 1 ], Concatenation( "Derivation (first added to ", Name( category ), ") of ", function_name ) );
+                    SetNameFunction( i[ 1 ], Concatenation( "Derivation (first added to ", name, ") of ", function_name ) );
                     
                 elif is_final_derivation then
                     
-                    SetNameFunction( i[ 1 ], Concatenation( "Final derivation (first added to ", Name( category ), ") of ", function_name ) );
+                    SetNameFunction( i[ 1 ], Concatenation( "Final derivation (first added to ", name, ") of ", function_name ) );
                     
                 elif is_precompiled_derivation then
                     
-                    SetNameFunction( i[ 1 ], Concatenation( "Precompiled derivation added to ", Name( category ), " for ", function_name ) );
+                    SetNameFunction( i[ 1 ], Concatenation( "Precompiled derivation added to ", name, " for ", function_name ) );
                     
                 else
                     
-                    SetNameFunction( i[ 1 ], Concatenation( "Function added to ", Name( category ), " for ", function_name ) );
+                    SetNameFunction( i[ 1 ], Concatenation( "Function added to ", name, " for ", function_name ) );
                     
                 fi;
                 
