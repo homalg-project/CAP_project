@@ -30,10 +30,6 @@ ReadPackage( "FreydCategoriesForCAP", "gap/CokernelImageClosure.gi" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/AdelmanCategory.gi" );
 
-if IsPackageMarkedForLoading( "QPA", ">= 2.0" ) then
-    ReadPackage( "FreydCategoriesForCAP", "gap/QuiverRows.gi" );
-fi;
-
 ReadPackage( "FreydCategoriesForCAP", "gap/GradedModulePresentationsByFreyd/GradedModulePresentationsByFreyd.gi" );
 
 if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" ) then
