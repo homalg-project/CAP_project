@@ -155,6 +155,8 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82400CA57F0E5585">6.9-9 EqualizerFunctorial</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7804D05C7EFDC5CE">6.9-10 EqualizerFunctorialWithGivenEqualizers</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7DD2167B7836DF62">6.9-11 JointPairwiseDifferencesOfMorphismsIntoDirectProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E8843F17F0F3D14">6.9-12 IsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7A96B57382715059">6.9-13 IsomorphismFromKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProductToEqualizer</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X7BA8F7BD793CC288">6.10 <span class="Heading">Coequalizer</span></a>
 </span>
@@ -170,6 +172,8 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X818C5AD2794A2C7B">6.10-9 CoequalizerFunctorial</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7CB3323C7B44B75F">6.10-10 CoequalizerFunctorialWithGivenCoequalizers</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7AE156547D6F06CE">6.10-11 JointPairwiseDifferencesOfMorphismsFromCoproduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X80AFEE3579EB987A">6.10-12 IsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78A3F1087B86E650">6.10-13 IsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproductToCoequalizer</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X7C5C7D847A89D79C">6.11 <span class="Heading">Fiber Product</span></a>
 </span>
@@ -1413,6 +1417,24 @@
 
 <p>The arguments are an object A and a list of morphisms <span class="Math">D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}</span>. The output is a morphism <span class="Math">A \rightarrow \prod_{i=1}^{n-1} B</span> such that its kernel equalizes the <span class="Math">\beta_i</span>.</p>
 
+<p><a id="X7E8843F17F0F3D14" name="X7E8843F17F0F3D14"></a></p>
+
+<h5>6.9-12 IsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct</code>( <var class="Arg">A</var>, <var class="Arg">D</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{Equalizer}(D), \Delta)</span></p>
+
+<p>The arguments are an object A and a list of morphisms <span class="Math">D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}</span>. The output is a morphism <span class="Math">\mathrm{Equalizer}(D) \rightarrow \Delta</span>, where <span class="Math">\Delta</span> denotes the kernel object equalizing the morphisms <span class="Math">\beta_i</span>.</p>
+
+<p><a id="X7A96B57382715059" name="X7A96B57382715059"></a></p>
+
+<h5>6.9-13 IsomorphismFromKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProductToEqualizer</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProductToEqualizer</code>( <var class="Arg">A</var>, <var class="Arg">D</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\Delta, \mathrm{Equalizer}(D))</span></p>
+
+<p>The arguments are an object A and a list of morphisms <span class="Math">D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}</span>. The output is a morphism <span class="Math">\Delta \rightarrow \mathrm{Equalizer}(D)</span>, where <span class="Math">\Delta</span> denotes the kernel object equalizing the morphisms <span class="Math">\beta_i</span>.</p>
+
 <p><a id="X7BA8F7BD793CC288" name="X7BA8F7BD793CC288"></a></p>
 
 <h4>6.10 <span class="Heading">Coequalizer</span></h4>
@@ -1545,6 +1567,24 @@
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\bigsqcup_{i=1}^{n-1} B, A)</span></p>
 
 <p>The arguments are an object A and a list of morphisms <span class="Math">D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}</span>. The output is a morphism <span class="Math">\bigsqcup_{i=1}^{n-1} B \rightarrow A</span> such that its cokernel coequalizes the <span class="Math">\beta_i</span>.</p>
+
+<p><a id="X80AFEE3579EB987A" name="X80AFEE3579EB987A"></a></p>
+
+<h5>6.10-12 IsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct</code>( <var class="Arg">A</var>, <var class="Arg">D</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{Coequalizer}(D), \Delta)</span></p>
+
+<p>The arguments are an object A and a list of morphisms <span class="Math">D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}</span>. The output is a morphism <span class="Math">\mathrm{Coequalizer}(D) \rightarrow \Delta</span>, where <span class="Math">\Delta</span> denotes the cokernel object coequalizing the morphisms <span class="Math">\beta_i</span>.</p>
+
+<p><a id="X78A3F1087B86E650" name="X78A3F1087B86E650"></a></p>
+
+<h5>6.10-13 IsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproductToCoequalizer</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproductToCoequalizer</code>( <var class="Arg">A</var>, <var class="Arg">D</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\Delta, \mathrm{Coequalizer}(D))</span></p>
+
+<p>The arguments are an object A and a list of morphisms <span class="Math">D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}</span>. The output is a morphism <span class="Math">\Delta \rightarrow \mathrm{Coequalizer}(D)</span>, where <span class="Math">\Delta</span> denotes the cokernel object coequalizing the morphisms <span class="Math">\beta_i</span>.</p>
 
 <p><a id="X7C5C7D847A89D79C" name="X7C5C7D847A89D79C"></a></p>
 

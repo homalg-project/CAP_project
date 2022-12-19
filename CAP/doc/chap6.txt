@@ -1231,6 +1231,26 @@
   \rightarrow  B  )_{i  =  1  \dots n}[123X. The output is a morphism [23XA \rightarrow
   \prod_{i=1}^{n-1} B[123X such that its kernel equalizes the [23X\beta_i[123X.[133X
   
+  [1X6.9-12 IsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct[101X
+  
+  [33X[1;0Y[29X[2XIsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct[102X( [3XA[103X, [3XD[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\mathrm{Equalizer}(D), \Delta)[123X[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  A  and a list of morphisms [23XD = ( \beta_i: A
+  \rightarrow   B   )_{i   =   1   \dots   n}[123X.   The   output  is  a  morphism
+  [23X\mathrm{Equalizer}(D)  \rightarrow  \Delta[123X,  where [23X\Delta[123X denotes the kernel
+  object equalizing the morphisms [23X\beta_i[123X.[133X
+  
+  [1X6.9-13 IsomorphismFromKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProductToEqualizer[101X
+  
+  [33X[1;0Y[29X[2XIsomorphismFromKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProductToEqualizer[102X( [3XA[103X, [3XD[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\Delta, \mathrm{Equalizer}(D))[123X[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  A  and a list of morphisms [23XD = ( \beta_i: A
+  \rightarrow B )_{i = 1 \dots n}[123X. The output is a morphism [23X\Delta \rightarrow
+  \mathrm{Equalizer}(D)[123X, where [23X\Delta[123X denotes the kernel object equalizing the
+  morphisms [23X\beta_i[123X.[133X
+  
   
   [1X6.10 [33X[0;0YCoequalizer[133X[101X
   
@@ -1395,6 +1415,26 @@
   \rightarrow   A   )_{i   =   1   \dots   n}[123X.   The   output  is  a  morphism
   [23X\bigsqcup_{i=1}^{n-1} B \rightarrow A[123X such that its cokernel coequalizes the
   [23X\beta_i[123X.[133X
+  
+  [1X6.10-12 IsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct[101X
+  
+  [33X[1;0Y[29X[2XIsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct[102X( [3XA[103X, [3XD[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\mathrm{Coequalizer}(D), \Delta)[123X[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  A  and a list of morphisms [23XD = ( \beta_i: B
+  \rightarrow   A   )_{i   =   1   \dots   n}[123X.   The   output  is  a  morphism
+  [23X\mathrm{Coequalizer}(D)   \rightarrow   \Delta[123X,  where  [23X\Delta[123X  denotes  the
+  cokernel object coequalizing the morphisms [23X\beta_i[123X.[133X
+  
+  [1X6.10-13 IsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproductToCoequalizer[101X
+  
+  [33X[1;0Y[29X[2XIsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproductToCoequalizer[102X( [3XA[103X, [3XD[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\Delta, \mathrm{Coequalizer}(D))[123X[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  A  and a list of morphisms [23XD = ( \beta_i: B
+  \rightarrow A )_{i = 1 \dots n}[123X. The output is a morphism [23X\Delta \rightarrow
+  \mathrm{Coequalizer}(D)[123X,   where   [23X\Delta[123X   denotes   the   cokernel  object
+  coequalizing the morphisms [23X\beta_i[123X.[133X
   
   
   [1X6.11 [33X[0;0YFiber Product[133X[101X
