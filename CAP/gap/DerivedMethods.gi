@@ -3588,6 +3588,80 @@ AddDerivationToCAP( MereExistenceOfSolutionOfLinearSystemInAbCategory,
   Description := "MereExistenceOfSolutionOfLinearSystemInAbCategory using the homomorphism structure"
 );
 
+## Final methods for Equalizer
+
+##
+AddFinalDerivationBundle( # IsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct
+                    [ [ JointPairwiseDifferencesOfMorphismsIntoDirectProduct, 1 ], 
+                      [ KernelObject, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    [ Equalizer,
+                      EmbeddingOfEqualizer,
+                      EmbeddingOfEqualizerWithGivenEqualizer,
+                      UniversalMorphismIntoEqualizer,
+                      UniversalMorphismIntoEqualizerWithGivenEqualizer,
+                      IsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct,
+                      IsomorphismFromKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProductToEqualizer ],
+[
+  IsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct,
+  function( cat, A, diagram )
+    local kernel_of_pairwise_differences;
+    
+    kernel_of_pairwise_differences := KernelObject( cat, JointPairwiseDifferencesOfMorphismsIntoDirectProduct( cat, A, diagram ) );
+    
+    return IdentityMorphism( cat, kernel_of_pairwise_differences );
+    
+  end
+],
+[
+  IsomorphismFromKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProductToEqualizer,
+  function( cat, A, diagram )
+    local kernel_of_pairwise_differences;
+    
+    kernel_of_pairwise_differences := KernelObject( cat, JointPairwiseDifferencesOfMorphismsIntoDirectProduct( cat, A, diagram ) );
+    
+    return IdentityMorphism( cat, kernel_of_pairwise_differences );
+    
+  end
+] : Description := "IsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct as the identity of the kernel of the pairwise differences" );
+
+## Final methods for Coequalizer
+
+##
+AddFinalDerivationBundle( # IsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct
+                    [ [ JointPairwiseDifferencesOfMorphismsFromCoproduct, 1 ], 
+                      [ CokernelObject, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    [ Coequalizer,
+                      ProjectionOntoCoequalizer,
+                      ProjectionOntoCoequalizerWithGivenCoequalizer,
+                      UniversalMorphismFromCoequalizer,
+                      UniversalMorphismFromCoequalizerWithGivenCoequalizer,
+                      IsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct,
+                      IsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproductToCoequalizer ],
+[
+  IsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct,
+  function( cat, A, diagram )
+    local cokernel_of_pairwise_differences;
+    
+    cokernel_of_pairwise_differences := CokernelObject( cat, JointPairwiseDifferencesOfMorphismsFromCoproduct( cat, A, diagram ) );
+    
+    return IdentityMorphism( cat, cokernel_of_pairwise_differences );
+    
+  end
+],
+[
+  IsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproductToCoequalizer,
+  function( cat, A, diagram )
+    local cokernel_of_pairwise_differences;
+    
+    cokernel_of_pairwise_differences := CokernelObject( cat, JointPairwiseDifferencesOfMorphismsFromCoproduct( cat, A, diagram ) );
+    
+    return IdentityMorphism( cat, cokernel_of_pairwise_differences );
+    
+  end
+] : Description := "IsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct as the identity of the kernel of the pairwise differences" );
+
 ## Final methods for FiberProduct
 
 ##

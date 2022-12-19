@@ -2580,6 +2580,23 @@ end
     , 203 : IsPrecompiledDerivation := true );
     
     ##
+    AddIsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct( cat,
+        
+########
+function ( cat_1, A_1, D_1 )
+    local morphism_attr_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := Length( D_1 );
+    deduped_4_1 := List( D_1, UnderlyingMatrix );
+    deduped_3_1 := UnderlyingRing( cat_1 );
+    deduped_2_1 := Dimension( A_1 );
+    morphism_attr_1_1 := HomalgIdentityMatrix( deduped_2_1 - RowRankOfMatrix( (UnionOfRows( deduped_3_1, deduped_2_1, deduped_4_1{[ 1 .. deduped_5_1 - 1 ]} ) - UnionOfRows( deduped_3_1, deduped_2_1, deduped_4_1{[ 2 .. deduped_5_1 ]} )) ), deduped_3_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+end
+########
+        
+    , 1409 : IsPrecompiledDerivation := true );
+    
+    ##
     AddIsomorphismFromCoimageToCokernelOfKernel( cat,
         
 ########
@@ -2620,6 +2637,23 @@ end
 ########
         
     , 1305 : IsPrecompiledDerivation := true );
+    
+    ##
+    AddIsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproductToCoequalizer( cat,
+        
+########
+function ( cat_1, A_1, D_1 )
+    local morphism_attr_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := Length( D_1 );
+    deduped_4_1 := List( D_1, UnderlyingMatrix );
+    deduped_3_1 := UnderlyingRing( cat_1 );
+    deduped_2_1 := Dimension( A_1 );
+    morphism_attr_1_1 := HomalgIdentityMatrix( deduped_2_1 - RowRankOfMatrix( (UnionOfRows( deduped_3_1, deduped_2_1, deduped_4_1{[ 1 .. deduped_5_1 - 1 ]} ) - UnionOfRows( deduped_3_1, deduped_2_1, deduped_4_1{[ 2 .. deduped_5_1 ]} )) ), deduped_3_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+end
+########
+        
+    , 1409 : IsPrecompiledDerivation := true );
     
     ##
     AddIsomorphismFromCokernelOfKernelToCoimage( cat,
@@ -2697,6 +2731,23 @@ end
 ########
         
     , 203 : IsPrecompiledDerivation := true );
+    
+    ##
+    AddIsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct( cat,
+        
+########
+function ( cat_1, A_1, D_1 )
+    local morphism_attr_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := Length( D_1 );
+    deduped_4_1 := List( D_1, UnderlyingMatrix );
+    deduped_3_1 := UnderlyingRing( cat_1 );
+    deduped_2_1 := Dimension( A_1 );
+    morphism_attr_1_1 := HomalgIdentityMatrix( deduped_2_1 - RowRankOfMatrix( (UnionOfColumns( deduped_3_1, deduped_2_1, deduped_4_1{[ 1 .. deduped_5_1 - 1 ]} ) - UnionOfColumns( deduped_3_1, deduped_2_1, deduped_4_1{[ 2 .. deduped_5_1 ]} )) ), deduped_3_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+end
+########
+        
+    , 1409 : IsPrecompiledDerivation := true );
     
     ##
     AddIsomorphismFromFiberProductToKernelOfDiagonalDifference( cat,
@@ -2970,6 +3021,23 @@ end
 ########
         
     , 1305 : IsPrecompiledDerivation := true );
+    
+    ##
+    AddIsomorphismFromKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProductToEqualizer( cat,
+        
+########
+function ( cat_1, A_1, D_1 )
+    local morphism_attr_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := Length( D_1 );
+    deduped_4_1 := List( D_1, UnderlyingMatrix );
+    deduped_3_1 := UnderlyingRing( cat_1 );
+    deduped_2_1 := Dimension( A_1 );
+    morphism_attr_1_1 := HomalgIdentityMatrix( deduped_2_1 - RowRankOfMatrix( (UnionOfColumns( deduped_3_1, deduped_2_1, deduped_4_1{[ 1 .. deduped_5_1 - 1 ]} ) - UnionOfColumns( deduped_3_1, deduped_2_1, deduped_4_1{[ 2 .. deduped_5_1 ]} )) ), deduped_3_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+end
+########
+        
+    , 1409 : IsPrecompiledDerivation := true );
     
     ##
     AddIsomorphismFromObjectToInternalCoHom( cat,
