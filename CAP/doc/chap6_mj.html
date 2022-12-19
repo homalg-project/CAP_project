@@ -157,6 +157,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7F7191B57D8AA456">6.9-8 UniversalMorphismIntoEqualizerWithGivenEqualizer</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X82400CA57F0E5585">6.9-9 EqualizerFunctorial</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7804D05C7EFDC5CE">6.9-10 EqualizerFunctorialWithGivenEqualizers</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7DD2167B7836DF62">6.9-11 JointPairwiseDifferencesOfMorphismsIntoDirectProduct</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6_mj.html#X7BA8F7BD793CC288">6.10 <span class="Heading">Coequalizer</span></a>
 </span>
@@ -171,6 +172,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X816990198092E8B6">6.10-8 UniversalMorphismFromCoequalizerWithGivenCoequalizer</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X818C5AD2794A2C7B">6.10-9 CoequalizerFunctorial</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7CB3323C7B44B75F">6.10-10 CoequalizerFunctorialWithGivenCoequalizers</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7AE156547D6F06CE">6.10-11 JointPairwiseDifferencesOfMorphismsFromCoproduct</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6_mj.html#X7C5C7D847A89D79C">6.11 <span class="Heading">Fiber Product</span></a>
 </span>
@@ -1405,6 +1407,15 @@
 
 <p>The arguments are an object <span class="SimpleMath">\(s = \mathrm{Equalizer}( ( \beta_i )_{i=1 \dots n} )\)</span>, a list of morphisms <span class="SimpleMath">\(L_s = (\beta_i: A \rightarrow B)_{i = 1 \dots n}\)</span>, a morphism <span class="SimpleMath">\(\mu: A \rightarrow A'\)</span>, and a list of morphisms <span class="SimpleMath">\(L_r = (\beta_i': A' \rightarrow B')_{i = 1 \dots n}\)</span> such that there exists a morphism <span class="SimpleMath">\(\beta: B \rightarrow B'\)</span> such that <span class="SimpleMath">\(\beta_i' \circ \mu \sim_{A,B'} \beta \circ \beta_i\)</span> for <span class="SimpleMath">\(i = 1, \dots, n\)</span>, and an object <span class="SimpleMath">\(r = \mathrm{Equalizer}( ( \beta_i' )_{i=1 \dots n} )\)</span>. The output is the morphism <span class="SimpleMath">\(s \rightarrow r\)</span> given by the functorality of the equalizer.</p>
 
+<p><a id="X7DD2167B7836DF62" name="X7DD2167B7836DF62"></a></p>
+
+<h5>6.9-11 JointPairwiseDifferencesOfMorphismsIntoDirectProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; JointPairwiseDifferencesOfMorphismsIntoDirectProduct</code>( <var class="Arg">A</var>, <var class="Arg">D</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( A, \prod_{i=1}^{n-1} B )\)</span></p>
+
+<p>The arguments are an object A and a list of morphisms <span class="SimpleMath">\(D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}\)</span>. The output is a morphism <span class="SimpleMath">\(A \rightarrow \prod_{i=1}^{n-1} B\)</span> such that its kernel equalizes the <span class="SimpleMath">\(\beta_i\)</span>.</p>
+
 <p><a id="X7BA8F7BD793CC288" name="X7BA8F7BD793CC288"></a></p>
 
 <h4>6.10 <span class="Heading">Coequalizer</span></h4>
@@ -1528,6 +1539,15 @@
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(s, r)\)</span></p>
 
 <p>The arguments are an object <span class="SimpleMath">\(s = \mathrm{Coequalizer}( ( \beta_i )_{i=1}^n )\)</span>, a list of morphisms <span class="SimpleMath">\(L_s = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}\)</span>, a morphism <span class="SimpleMath">\(\mu: A \rightarrow A'\)</span>, and a list of morphisms <span class="SimpleMath">\(L_r = ( \beta_i': B' \rightarrow A' )_{i = 1 \dots n}\)</span> such that there exists a morphism <span class="SimpleMath">\(\beta: B \rightarrow B'\)</span> such that <span class="SimpleMath">\(\beta_i' \circ \beta \sim_{B, A'} \mu \circ \beta_i\)</span> for <span class="SimpleMath">\(i = 1, \dots n\)</span>, and an object <span class="SimpleMath">\(r = \mathrm{Coequalizer}( ( \beta_i' )_{i=1}^n )\)</span>. The output is the morphism <span class="SimpleMath">\(s \rightarrow r\)</span> given by the functorality of the coequalizer.</p>
+
+<p><a id="X7AE156547D6F06CE" name="X7AE156547D6F06CE"></a></p>
+
+<h5>6.10-11 JointPairwiseDifferencesOfMorphismsFromCoproduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; JointPairwiseDifferencesOfMorphismsFromCoproduct</code>( <var class="Arg">A</var>, <var class="Arg">D</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(\bigsqcup_{i=1}^{n-1} B, A)\)</span></p>
+
+<p>The arguments are an object A and a list of morphisms <span class="SimpleMath">\(D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}\)</span>. The output is a morphism <span class="SimpleMath">\(\bigsqcup_{i=1}^{n-1} B \rightarrow A\)</span> such that its cokernel coequalizes the <span class="SimpleMath">\(\beta_i\)</span>.</p>
 
 <p><a id="X7C5C7D847A89D79C" name="X7C5C7D847A89D79C"></a></p>
 
