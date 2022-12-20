@@ -2,55 +2,7 @@
   [1X12 [33X[0;0YExamples and Tests[133X[101X
   
   
-  [1X12.1 [33X[0;0YAdelman 5 lemma[133X[101X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
-    [4X[25Xgap>[125X [27Xquiver := RightQuiver( "Q(8)[a:1->2,b:2->3,c:3->4,d:3->5,e:4->6,f:5->6,g:6->7,h:7->8]" );;[127X[104X
-    [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals();;[127X[104X
-    [4X[25Xgap>[125X [27XA := PathAlgebra( QQ, quiver );;[127X[104X
-    [4X[25Xgap>[125X [27XB := QuotientOfPathAlgebra( A,[127X[104X
-    [4X[25X>[125X [27X[ [127X[104X
-    [4X[25X>[125X [27X    A.ce - A.df,[127X[104X
-    [4X[25X>[125X [27X    A.abd,[127X[104X
-    [4X[25X>[125X [27X    A.egh,[127X[104X
-    [4X[25X>[125X [27X    A.bc,[127X[104X
-    [4X[25X>[125X [27X    A.fg,[127X[104X
-    [4X[25X>[125X [27X    A.ab #since d is supposed to be a mono [127X[104X
-    [4X[25X>[125X [27X] );;[127X[104X
-    [4X[25Xgap>[125X [27XQRowsB := QuiverRowsDescentToZDefinedByBasisPaths( B );;[127X[104X
-    [4X[25Xgap>[125X [27XAdel := AdelmanCategory( QRowsB );;[127X[104X
-    [4X[25Xgap>[125X [27Xa := B.a/QRowsB/Adel;;[127X[104X
-    [4X[25Xgap>[125X [27Xb := B.b/QRowsB/Adel;;[127X[104X
-    [4X[25Xgap>[125X [27Xc := B.c/QRowsB/Adel;;[127X[104X
-    [4X[25Xgap>[125X [27Xd := B.d/QRowsB/Adel;;[127X[104X
-    [4X[25Xgap>[125X [27Xe := B.e/QRowsB/Adel;;[127X[104X
-    [4X[25Xgap>[125X [27Xf := B.f/QRowsB/Adel;;[127X[104X
-    [4X[25Xgap>[125X [27Xg := B.g/QRowsB/Adel;;[127X[104X
-    [4X[25Xgap>[125X [27Xh := B.h/QRowsB/Adel;;[127X[104X
-    [4X[25Xgap>[125X [27Xl := CokernelProjection( a );;[127X[104X
-    [4X[25Xgap>[125X [27Xk := CokernelColift( a, PreCompose( b, d ) );;[127X[104X
-    [4X[25Xgap>[125X [27Xi := KernelEmbedding( h );;[127X[104X
-    [4X[25Xgap>[125X [27Xj := KernelLift( h, PreCompose( e, g ) );;[127X[104X
-    [4X[25Xgap>[125X [27XKd := KernelObject( d );;[127X[104X
-    [4X[25Xgap>[125X [27XHbc := HomologyObject( b, c );;[127X[104X
-    [4X[25Xgap>[125X [27XHcj := HomologyObject( c, j );;[127X[104X
-    [4X[25Xgap>[125X [27XHkf := HomologyObject( k, f );;[127X[104X
-    [4X[25Xgap>[125X [27XHfg := HomologyObject( f, g );;[127X[104X
-    [4X[25Xgap>[125X [27XL := [ Kd, Hbc, Hcj, Hkf, Hfg ];;[127X[104X
-    [4X[25Xgap>[125X [27XK := KernelObject( e );;[127X[104X
-    [4X[25Xgap>[125X [27Xtest_func := MembershipFunctionSerreSubcategoryGeneratedByObjects( L, Adel );;[127X[104X
-    [4X[28XWarning: the provided function returns either true or fail![128X[104X
-    [4X[25Xgap>[125X [27XC := FullSubcategoryByMembershipFunction( Adel, test_func );;[127X[104X
-    [4X[25Xgap>[125X [27XSerre := Adel/C;;[127X[104X
-    [4X[25Xgap>[125X [27XK := K/Serre;;[127X[104X
-    [4X[25Xgap>[125X [27XIsZero( K );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[28X#@fi[128X[104X
-  [4X[32X[104X
-  
-  
-  [1X12.2 [33X[0;0YAdelman category basics for category of rows[133X[101X
+  [1X12.1 [33X[0;0YAdelman category basics for category of rows[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XR := HomalgRingOfIntegers();;[127X[104X
@@ -107,69 +59,7 @@
   [4X[32X[104X
   
   
-  [1X12.3 [33X[0;0YAdelman category basics for for additive closure of algebroids[133X[101X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xquiver := RightQuiver( "Q(9)[a:1->2,b:2->3,c:1->4,d:2->5,e:3->6,f:4->5,g:5->6,h:4->7,i:5->8,j:6->9,k:7->8,l:8->9,m:2->7,n:3->8]" );;[127X[104X
-    [4X[25Xgap>[125X [27XkQ := PathAlgebra( HomalgFieldOfRationals(), quiver );;[127X[104X
-    [4X[25Xgap>[125X [27XAoid := Algebroid( kQ, [ kQ.ad - kQ.cf, [127X[104X
-    [4X[25X>[125X [27X                         kQ.dg - kQ.be, [127X[104X
-    [4X[25X>[125X [27X                         kQ.("fi") - kQ.hk,[127X[104X
-    [4X[25X>[125X [27X                         kQ.gj - kQ.il,[127X[104X
-    [4X[25X>[125X [27X                         kQ.mk + kQ.bn - kQ.di ] );;[127X[104X
-    [4X[25Xgap>[125X [27Xmm := SetOfGeneratingMorphisms( Aoid );;[127X[104X
-    [4X[25Xgap>[125X [27XCapCategorySwitchLogicOff( Aoid );;[127X[104X
-    [4X[25Xgap>[125X [27XAcat := AdditiveClosure( Aoid );;[127X[104X
-    [4X[25Xgap>[125X [27Xa := AsAdditiveClosureMorphism( mm[1] );;[127X[104X
-    [4X[25Xgap>[125X [27Xb := AsAdditiveClosureMorphism( mm[2] );;[127X[104X
-    [4X[25Xgap>[125X [27Xc := AsAdditiveClosureMorphism( mm[3] );;[127X[104X
-    [4X[25Xgap>[125X [27Xd := AsAdditiveClosureMorphism( mm[4] );;[127X[104X
-    [4X[25Xgap>[125X [27Xe := AsAdditiveClosureMorphism( mm[5] );;[127X[104X
-    [4X[25Xgap>[125X [27Xf := AsAdditiveClosureMorphism( mm[6] );;[127X[104X
-    [4X[25Xgap>[125X [27Xg := AsAdditiveClosureMorphism( mm[7] );;[127X[104X
-    [4X[25Xgap>[125X [27Xh := AsAdditiveClosureMorphism( mm[8] );;[127X[104X
-    [4X[25Xgap>[125X [27Xi := AsAdditiveClosureMorphism( mm[9] );;[127X[104X
-    [4X[25Xgap>[125X [27Xj := AsAdditiveClosureMorphism( mm[10] );;[127X[104X
-    [4X[25Xgap>[125X [27Xk := AsAdditiveClosureMorphism( mm[11] );;[127X[104X
-    [4X[25Xgap>[125X [27Xl := AsAdditiveClosureMorphism( mm[12] );;[127X[104X
-    [4X[25Xgap>[125X [27Xm := AsAdditiveClosureMorphism( mm[13] );;[127X[104X
-    [4X[25Xgap>[125X [27Xn := AsAdditiveClosureMorphism( mm[14] );;[127X[104X
-    [4X[25Xgap>[125X [27XAdel := AdelmanCategory( Acat );;[127X[104X
-    [4X[25Xgap>[125X [27XA := AdelmanCategoryObject( a, b );;[127X[104X
-    [4X[25Xgap>[125X [27XB := AdelmanCategoryObject( f, g );;[127X[104X
-    [4X[25Xgap>[125X [27Xalpha := AdelmanCategoryMorphism( A, d, B );;[127X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( alpha );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( KernelEmbedding( alpha ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( CokernelProjection( alpha ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XT := AdelmanCategoryObject( k, l );;[127X[104X
-    [4X[25Xgap>[125X [27Xtau := AdelmanCategoryMorphism( B, i, T );;[127X[104X
-    [4X[25Xgap>[125X [27XIsZeroForMorphisms( PreCompose( alpha, tau ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xcolift := CokernelColift( alpha, tau );;[127X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( colift );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( PreCompose( CokernelProjection( alpha ), colift ), tau );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xlift := KernelLift( tau, alpha );;[127X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( lift );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( PreCompose( lift, KernelEmbedding( tau ) ), alpha );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( ColiftAlongEpimorphism( CokernelProjection( alpha ), tau ), colift );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( LiftAlongMonomorphism( KernelEmbedding( tau ), alpha ), lift );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[28X#@fi[128X[104X
-  [4X[32X[104X
-  
-  
-  [1X12.4 [33X[0;0YAdelman category basics for category of columns[133X[101X
+  [1X12.2 [33X[0;0YAdelman category basics for category of columns[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XR := HomalgRingOfIntegers();;[127X[104X
@@ -223,161 +113,7 @@
   [4X[32X[104X
   
   
-  [1X12.5 [33X[0;0YAdelman category basics[133X[101X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xquiver := RightQuiver( "Q(3)[a:1->2,b:1->2,c:2->3]" );;[127X[104X
-    [4X[25Xgap>[125X [27XkQ := PathAlgebra( HomalgFieldOfRationals(), quiver );;[127X[104X
-    [4X[25Xgap>[125X [27XAoid := Algebroid( kQ );;[127X[104X
-    [4X[25Xgap>[125X [27XSetIsProjective( DistinguishedObjectOfHomomorphismStructure( Aoid ), true );;[127X[104X
-    [4X[25Xgap>[125X [27Xmm := SetOfGeneratingMorphisms( Aoid );;[127X[104X
-    [4X[25Xgap>[125X [27XCapCategorySwitchLogicOff( Aoid );;[127X[104X
-    [4X[25Xgap>[125X [27XAcat := AdditiveClosure( Aoid );;[127X[104X
-    [4X[25Xgap>[125X [27Xa := AsAdditiveClosureMorphism( mm[1] );;[127X[104X
-    [4X[25Xgap>[125X [27Xb := AsAdditiveClosureMorphism( mm[2] );;[127X[104X
-    [4X[25Xgap>[125X [27Xc := AsAdditiveClosureMorphism( mm[3] );;[127X[104X
-    [4X[25Xgap>[125X [27Xa := AsAdelmanCategoryMorphism( a );;[127X[104X
-    [4X[25Xgap>[125X [27Xb := AsAdelmanCategoryMorphism( b );;[127X[104X
-    [4X[25Xgap>[125X [27Xc := AsAdelmanCategoryMorphism( c );;[127X[104X
-    [4X[25Xgap>[125X [27XA := Source( a );;[127X[104X
-    [4X[25Xgap>[125X [27XB := Range( a );;[127X[104X
-    [4X[25Xgap>[125X [27XC := Range( c );;[127X[104X
-    [4X[25Xgap>[125X [27XHomomorphismStructureOnObjects( A, C );;[127X[104X
-    [4X[25Xgap>[125X [27XHomomorphismStructureOnMorphisms( IdentityMorphism( A ), c );;[127X[104X
-    [4X[25Xgap>[125X [27Xmor := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( a );;[127X[104X
-    [4X[25Xgap>[125X [27Xint := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( A, B, mor );;[127X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( int, a );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[28X#@fi[128X[104X
-  [4X[32X[104X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XR := HomalgRingOfIntegers();;[127X[104X
-    [4X[25Xgap>[125X [27XRowsR := CategoryOfRows( R );;[127X[104X
-    [4X[25Xgap>[125X [27Xone := AsCategoryOfRowsMorphism( HomalgMatrix( [ [ 1 ] ], 1, 1, R ), RowsR );;[127X[104X
-    [4X[25Xgap>[125X [27Xtwo := AsCategoryOfRowsMorphism( HomalgMatrix( [ [ 2 ] ], 1, 1, R ), RowsR );;[127X[104X
-    [4X[25Xgap>[125X [27Xfour := AsCategoryOfRowsMorphism( HomalgMatrix( [ [ 4 ] ], 1, 1, R ), RowsR );;[127X[104X
-    [4X[25Xgap>[125X [27Xsource := AdelmanCategoryObject( two, two );;[127X[104X
-    [4X[25Xgap>[125X [27Xrange := AdelmanCategoryObject( two, four );;[127X[104X
-    [4X[25Xgap>[125X [27Xmor := AdelmanCategoryMorphism( source, one, range );;[127X[104X
-    [4X[25Xgap>[125X [27XIsZero( mor );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27Xemb := EmbeddingFunctorIntoFreydCategory( RowsR );;[127X[104X
-    [4X[25Xgap>[125X [27Xind := AdelmanCategoryFunctorInducedByUniversalProperty( emb );;[127X[104X
-    [4X[25Xgap>[125X [27XIsZero( ApplyFunctor( ind, mor ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XM := FreydCategoryObject( AsCategoryOfRowsMorphism( HomalgMatrix( [ [  2, 2, 2 ], [ 4, 4, 6 ] ], 2, 3, R ), RowsR ) );;[127X[104X
-    [4X[25Xgap>[125X [27Xas_tensor := EmbeddingFunctorOfFreydCategoryIntoAdelmanCategory( RowsR );;[127X[104X
-    [4X[25Xgap>[125X [27XMt := ApplyFunctor( as_tensor, M );;[127X[104X
-    [4X[25Xgap>[125X [27Xlsat := LeftSatelliteAsEndofunctorOfAdelmanCategory( RowsR );;[127X[104X
-    [4X[25Xgap>[125X [27Xrsat := RightSatelliteAsEndofunctorOfAdelmanCategory( RowsR );;[127X[104X
-    [4X[25Xgap>[125X [27Xtorsion := ApplyFunctor( ind, ( ApplyFunctor( rsat, ApplyFunctor( lsat, Mt ) ) ) );;[127X[104X
-    [4X[25Xgap>[125X [27Xunit := UnitOfSatelliteAdjunctionOfAdelmanCategory( RowsR );;[127X[104X
-    [4X[25Xgap>[125X [27XIsZero( ApplyNaturalTransformation( unit, Mt ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xcounit := CounitOfSatelliteAdjunctionOfAdelmanCategory( RowsR );;[127X[104X
-    [4X[25Xgap>[125X [27Xt := ApplyNaturalTransformation( counit, Mt );;[127X[104X
-  [4X[32X[104X
-  
-  
-  [1X12.6 [33X[0;0YAdelman snake lemma[133X[101X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XDeactivateDefaultCaching();[127X[104X
-    [4X[25Xgap>[125X [27XSwitchGeneralizedMorphismStandard( "span" );;[127X[104X
-    [4X[25Xgap>[125X [27Xsnake_quiver := RightQuiver( "Q(6)[a:1->2,b:2->3,c:3->4]" );;[127X[104X
-    [4X[25Xgap>[125X [27XkQ := PathAlgebra( HomalgFieldOfRationals(), snake_quiver );;[127X[104X
-    [4X[25Xgap>[125X [27XAoid := Algebroid( kQ, [ kQ.abc ] );;[127X[104X
-    [4X[25Xgap>[125X [27XCapCategorySwitchLogicOff( Aoid );;[127X[104X
-    [4X[25Xgap>[125X [27Xm := SetOfGeneratingMorphisms( Aoid );;[127X[104X
-    [4X[25Xgap>[125X [27Xa := m[1];;[127X[104X
-    [4X[25Xgap>[125X [27Xb := m[2];;[127X[104X
-    [4X[25Xgap>[125X [27Xc := m[3];;[127X[104X
-    [4X[25Xgap>[125X [27Xadd := AdditiveClosure( Aoid );;[127X[104X
-    [4X[25Xgap>[125X [27XDisableInputSanityChecks( add );;[127X[104X
-    [4X[25Xgap>[125X [27Xadelman := AdelmanCategory( add );;[127X[104X
-    [4X[25Xgap>[125X [27Xa := AsAdditiveClosureMorphism( a );;[127X[104X
-    [4X[25Xgap>[125X [27Xb := AsAdditiveClosureMorphism( b );;[127X[104X
-    [4X[25Xgap>[125X [27Xc := AsAdditiveClosureMorphism( c );;[127X[104X
-    [4X[25Xgap>[125X [27Xaa := AsAdelmanCategoryMorphism( a );;[127X[104X
-    [4X[25Xgap>[125X [27Xbb := AsAdelmanCategoryMorphism( b );;[127X[104X
-    [4X[25Xgap>[125X [27Xcc := AsAdelmanCategoryMorphism( c );;[127X[104X
-    [4X[25Xgap>[125X [27Xdd := CokernelProjection( aa );;[127X[104X
-    [4X[25Xgap>[125X [27Xee := CokernelColift( aa, PreCompose( bb, cc ) );;[127X[104X
-    [4X[25Xgap>[125X [27Xff := KernelEmbedding( ee );;[127X[104X
-    [4X[25Xgap>[125X [27Xgg := KernelEmbedding( cc );;[127X[104X
-    [4X[25Xgap>[125X [27Xhh := KernelLift( cc, PreCompose( aa, bb ) );;[127X[104X
-    [4X[25Xgap>[125X [27Xii := CokernelProjection( hh );;[127X[104X
-    [4X[25Xgap>[125X [27Xfff := AsGeneralizedMorphism( ff );;[127X[104X
-    [4X[25Xgap>[125X [27Xddd := AsGeneralizedMorphism( dd );;[127X[104X
-    [4X[25Xgap>[125X [27Xbbb := AsGeneralizedMorphism( bb );;[127X[104X
-    [4X[25Xgap>[125X [27Xggg := AsGeneralizedMorphism( gg );;[127X[104X
-    [4X[25Xgap>[125X [27Xiii := AsGeneralizedMorphism( ii );;[127X[104X
-    [4X[25Xgap>[125X [27Xp := PreCompose( [ fff, PseudoInverse( ddd ), bbb, PseudoInverse( ggg ), iii ] );;[127X[104X
-    [4X[25Xgap>[125X [27XIsHonest( p );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xjj := KernelObjectFunctorial( bb, dd, ee );;[127X[104X
-    [4X[25Xgap>[125X [27Xpp := HonestRepresentative( p );;[127X[104X
-    [4X[25Xgap>[125X [27Xcomp := PreCompose( jj, pp );;[127X[104X
-    [4X[25Xgap>[125X [27XIsZero( comp );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[28X#@fi[128X[104X
-  [4X[32X[104X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
-    [4X[25Xgap>[125X [27XSwitchGeneralizedMorphismStandard( "cospan" );;[127X[104X
-    [4X[25Xgap>[125X [27Xsnake_quiver := RightQuiver( "Q(6)[a:1->2,b:2->3,c:3->4]" );;[127X[104X
-    [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals();;[127X[104X
-    [4X[25Xgap>[125X [27XA := PathAlgebra( QQ, snake_quiver );;[127X[104X
-    [4X[25Xgap>[125X [27XA := QuotientOfPathAlgebra( A, [ A.abc ] );;[127X[104X
-    [4X[25Xgap>[125X [27XQRowsA := QuiverRows( A );;[127X[104X
-    [4X[25Xgap>[125X [27XSetIsProjective( DistinguishedObjectOfHomomorphismStructure( QRowsA ), true );;[127X[104X
-    [4X[25Xgap>[125X [27Xa := AsQuiverRowsMorphism( A.a, QRowsA );;[127X[104X
-    [4X[25Xgap>[125X [27Xb := AsQuiverRowsMorphism( A.b, QRowsA );;[127X[104X
-    [4X[25Xgap>[125X [27Xc := AsQuiverRowsMorphism( A.c, QRowsA );;[127X[104X
-    [4X[25Xgap>[125X [27Xaa := AsAdelmanCategoryMorphism( a );;[127X[104X
-    [4X[25Xgap>[125X [27Xbb := AsAdelmanCategoryMorphism( b );;[127X[104X
-    [4X[25Xgap>[125X [27Xcc := AsAdelmanCategoryMorphism( c );;[127X[104X
-    [4X[25Xgap>[125X [27Xdd := CokernelProjection( aa );;[127X[104X
-    [4X[25Xgap>[125X [27Xee := CokernelColift( aa, PreCompose( bb, cc ) );;[127X[104X
-    [4X[25Xgap>[125X [27Xff := KernelEmbedding( ee );;[127X[104X
-    [4X[25Xgap>[125X [27Xgg := KernelEmbedding( cc );;[127X[104X
-    [4X[25Xgap>[125X [27Xhh := KernelLift( cc, PreCompose( aa, bb ) );;[127X[104X
-    [4X[25Xgap>[125X [27Xii := CokernelProjection( hh );;[127X[104X
-    [4X[25Xgap>[125X [27Xfff := AsGeneralizedMorphism( ff );;[127X[104X
-    [4X[25Xgap>[125X [27Xddd := AsGeneralizedMorphism( dd );;[127X[104X
-    [4X[25Xgap>[125X [27Xbbb := AsGeneralizedMorphism( bb );;[127X[104X
-    [4X[25Xgap>[125X [27Xggg := AsGeneralizedMorphism( gg );;[127X[104X
-    [4X[25Xgap>[125X [27Xiii := AsGeneralizedMorphism( ii );;[127X[104X
-    [4X[25Xgap>[125X [27Xp := PreCompose( [ fff, PseudoInverse( ddd ), bbb, PseudoInverse( ggg ), iii ] );;[127X[104X
-    [4X[25Xgap>[125X [27XIsHonest( p );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xjj := KernelObjectFunctorial( bb, dd, ee );;[127X[104X
-    [4X[25Xgap>[125X [27Xkk := CokernelObjectFunctorial( hh, gg, bb );;[127X[104X
-    [4X[25Xgap>[125X [27Xpp := HonestRepresentative( p );;[127X[104X
-    [4X[25Xgap>[125X [27Xcomp := PreCompose( jj, pp );;[127X[104X
-    [4X[25Xgap>[125X [27XIsZero( comp );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xcomp := PreCompose( pp, kk );;[127X[104X
-    [4X[25Xgap>[125X [27XIsZero( comp );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xhomology := function( alpha, beta ) return CokernelObject( LiftAlongMonomorphism( KernelEmbedding( beta ), ImageEmbedding( alpha ) ) ); end;;[127X[104X
-    [4X[25Xgap>[125X [27XIsZero( homology( jj, pp ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( homology( pp, kk ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[28X#@fi[128X[104X
-  [4X[32X[104X
-  
-  
-  [1X12.7 [33X[0;0YBasics based on category of rows[133X[101X
+  [1X12.3 [33X[0;0YBasics based on category of rows[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XR := HomalgRingOfIntegers();;[127X[104X
@@ -559,56 +295,7 @@
   [4X[32X[104X
   
   
-  [1X12.8 [33X[0;0YBasics of additive closure[133X[101X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27X## Algebroid[127X[104X
-    [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xsnake_quiver := RightQuiver( "Q(6)[a:1->2,b:2->3,c:1->4,d:2->5,e:3->6,f:4->5,g:5->6]" );;[127X[104X
-    [4X[25Xgap>[125X [27XkQ := PathAlgebra( HomalgFieldOfRationalsInSingular(), snake_quiver );;[127X[104X
-    [4X[25Xgap>[125X [27XA := kQ / [ kQ.ad - kQ.cf, kQ.dg - kQ.be, kQ.ab, kQ.fg ];;[127X[104X
-    [4X[25Xgap>[125X [27XAoid := Algebroid( kQ, [ kQ.ad - kQ.cf, kQ.dg - kQ.be, kQ.ab, kQ.fg ] );;[127X[104X
-    [4X[25Xgap>[125X [27Xs := SetOfObjects( Aoid );;[127X[104X
-    [4X[25Xgap>[125X [27Xm := SetOfGeneratingMorphisms( Aoid );;[127X[104X
-    [4X[25Xgap>[125X [27Xinterpretation := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( -m[3] );;[127X[104X
-    [4X[25Xgap>[125X [27XInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( m[3] ), Range( m[3] ), interpretation );;[127X[104X
-    [4X[25Xgap>[125X [27X## additive closure[127X[104X
-    [4X[25X>[125X [27Xadd := AdditiveClosure( Aoid );;[127X[104X
-    [4X[25Xgap>[125X [27Xobj1 := AdditiveClosureObject( [ s[1], s[2] ], add );;[127X[104X
-    [4X[25Xgap>[125X [27Xmor := AdditiveClosureMorphism( obj1, [ [ IdentityMorphism( s[1] ), ZeroMorphism( s[1], s[2] ) ], [ ZeroMorphism( s[2], s[1] ), -IdentityMorphism( s[2] ) ] ], obj1 );;[127X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( mor );;[127X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( PreCompose( mor, mor ), IdentityMorphism( obj1 ) );;[127X[104X
-    [4X[25Xgap>[125X [27Xobj2 := AdditiveClosureObject( [ s[3], s[3] ], add );;[127X[104X
-    [4X[25Xgap>[125X [27Xid := IdentityMorphism( obj2 );;[127X[104X
-    [4X[25Xgap>[125X [27Xobjs1:= AdditiveClosureObject( [ s[1] ], add );;[127X[104X
-    [4X[25Xgap>[125X [27Xobjs2:= AdditiveClosureObject( [ s[2] ], add );;[127X[104X
-    [4X[25Xgap>[125X [27Xids1 := IdentityMorphism( objs1 );;[127X[104X
-    [4X[25Xgap>[125X [27Xids2 := IdentityMorphism( objs2 );;[127X[104X
-    [4X[25Xgap>[125X [27XHomomorphismStructureOnMorphisms( DirectSumFunctorial( [ ids1, ids2 ] ), ids1 );;[127X[104X
-    [4X[25Xgap>[125X [27Xinterpretation := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( mor );;[127X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
-    [4X[25X>[125X [27X  InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( mor ), Range( mor ), interpretation ),[127X[104X
-    [4X[25X>[125X [27X  mor );;[127X[104X
-    [4X[25Xgap>[125X [27Xa := AsAdditiveClosureMorphism( m[1] );;[127X[104X
-    [4X[25Xgap>[125X [27Xb := AsAdditiveClosureMorphism( m[2] );;[127X[104X
-    [4X[25Xgap>[125X [27Xc := AsAdditiveClosureMorphism( m[3] );;[127X[104X
-    [4X[25Xgap>[125X [27Xd := AsAdditiveClosureMorphism( m[4] );;[127X[104X
-    [4X[25Xgap>[125X [27Xe := AsAdditiveClosureMorphism( m[5] );;[127X[104X
-    [4X[25Xgap>[125X [27Xf := AsAdditiveClosureMorphism( m[6] );;[127X[104X
-    [4X[25Xgap>[125X [27Xg := AsAdditiveClosureMorphism( m[7] );;[127X[104X
-    [4X[25Xgap>[125X [27Xl := Lift( PreCompose( a, d ), f );;[127X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( PreCompose( l, f ), PreCompose( a, d ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xl := Colift( c, PreCompose( a, d ) );;[127X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( PreCompose( c, l ), PreCompose( a, d ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[28X#@fi[128X[104X
-  [4X[32X[104X
-  
-  
-  [1X12.9 [33X[0;0YBasics based on category of columns[133X[101X
+  [1X12.4 [33X[0;0YBasics based on category of columns[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XR := HomalgRingOfIntegers();;[127X[104X
@@ -756,7 +443,7 @@
   [4X[32X[104X
   
   
-  [1X12.10 [33X[0;0YCoFreyd category[133X[101X
+  [1X12.5 [33X[0;0YCoFreyd category[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", false );[127X[104X
@@ -844,7 +531,7 @@
   [4X[32X[104X
   
   
-  [1X12.11 [33X[0;0YCokernel image closure in category of rows[133X[101X
+  [1X12.6 [33X[0;0YCokernel image closure in category of rows[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XR := HomalgFieldOfRationalsInSingular() * "x,y,z";;[127X[104X
@@ -909,7 +596,7 @@
   [4X[32X[104X
   
   
-  [1X12.12 [33X[0;0YCokernel image closure in category of columns[133X[101X
+  [1X12.7 [33X[0;0YCokernel image closure in category of columns[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XR := HomalgFieldOfRationalsInSingular() * "x,y,z";;[127X[104X
@@ -974,44 +661,38 @@
   [4X[32X[104X
   
   
-  [1X12.13 [33X[0;0YExactness conditions[133X[101X
+  [1X12.8 [33X[0;0YAdelman category basics[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
-    [4X[25Xgap>[125X [27XReadPackage( "FreydCategoriesForCAP", "examples/SubobjectLatticeFunctions.g" );;[127X[104X
-    [4X[25Xgap>[125X [27Xquiver := RightQuiver( "Q(4)[a:1->2,b:2->3,c:3->4]" );;[127X[104X
-    [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals();;[127X[104X
-    [4X[25Xgap>[125X [27XA := PathAlgebra( QQ, quiver );;[127X[104X
-    [4X[25Xgap>[125X [27XB := QuotientOfPathAlgebra( A, [ A.ab, A.bc ] );;[127X[104X
-    [4X[25Xgap>[125X [27XRowsB := QuiverRowsDescentToZDefinedByBasisPaths( B : overhead := false );;[127X[104X
-    [4X[25Xgap>[125X [27XAdel := AdelmanCategory( RowsB : overhead := false );;[127X[104X
-    [4X[25Xgap>[125X [27Xa := B.a/RowsB/Adel;;[127X[104X
-    [4X[25Xgap>[125X [27Xc := B.c/RowsB/Adel;;[127X[104X
-    [4X[25Xgap>[125X [27XF := CokernelObject( a );;[127X[104X
-    [4X[25Xgap>[125X [27XG := KernelObject( c );;[127X[104X
-    [4X[25Xgap>[125X [27Xeta := AdelmanCategoryMorphism( F, B.b/RowsB, G );;[127X[104X
-    [4X[25Xgap>[125X [27XC := CokernelObject( eta );;[127X[104X
-    [4X[25Xgap>[125X [27XI := ImageObject( eta );;[127X[104X
-    [4X[25Xgap>[125X [27XK := KernelObject( eta );;[127X[104X
-    [4X[25Xgap>[125X [27XIsImagePreserving( I );[127X[104X
+    [4X[25Xgap>[125X [27XR := HomalgRingOfIntegers();;[127X[104X
+    [4X[25Xgap>[125X [27XRowsR := CategoryOfRows( R );;[127X[104X
+    [4X[25Xgap>[125X [27Xone := AsCategoryOfRowsMorphism( HomalgMatrix( [ [ 1 ] ], 1, 1, R ), RowsR );;[127X[104X
+    [4X[25Xgap>[125X [27Xtwo := AsCategoryOfRowsMorphism( HomalgMatrix( [ [ 2 ] ], 1, 1, R ), RowsR );;[127X[104X
+    [4X[25Xgap>[125X [27Xfour := AsCategoryOfRowsMorphism( HomalgMatrix( [ [ 4 ] ], 1, 1, R ), RowsR );;[127X[104X
+    [4X[25Xgap>[125X [27Xsource := AdelmanCategoryObject( two, two );;[127X[104X
+    [4X[25Xgap>[125X [27Xrange := AdelmanCategoryObject( two, four );;[127X[104X
+    [4X[25Xgap>[125X [27Xmor := AdelmanCategoryMorphism( source, one, range );;[127X[104X
+    [4X[25Xgap>[125X [27XIsZero( mor );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xemb := EmbeddingFunctorIntoFreydCategory( RowsR );;[127X[104X
+    [4X[25Xgap>[125X [27Xind := AdelmanCategoryFunctorInducedByUniversalProperty( emb );;[127X[104X
+    [4X[25Xgap>[125X [27XIsZero( ApplyFunctor( ind, mor ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsLeftExact( I );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsRightExact( I );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsMonoPreserving( K );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsEpiPreserving( K );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsMonoPreserving( C );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsEpiPreserving( C );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[28X#@fi[128X[104X
+    [4X[25Xgap>[125X [27XM := FreydCategoryObject( AsCategoryOfRowsMorphism( HomalgMatrix( [ [  2, 2, 2 ], [ 4, 4, 6 ] ], 2, 3, R ), RowsR ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xas_tensor := EmbeddingFunctorOfFreydCategoryIntoAdelmanCategory( RowsR );;[127X[104X
+    [4X[25Xgap>[125X [27XMt := ApplyFunctor( as_tensor, M );;[127X[104X
+    [4X[25Xgap>[125X [27Xlsat := LeftSatelliteAsEndofunctorOfAdelmanCategory( RowsR );;[127X[104X
+    [4X[25Xgap>[125X [27Xrsat := RightSatelliteAsEndofunctorOfAdelmanCategory( RowsR );;[127X[104X
+    [4X[25Xgap>[125X [27Xtorsion := ApplyFunctor( ind, ( ApplyFunctor( rsat, ApplyFunctor( lsat, Mt ) ) ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xunit := UnitOfSatelliteAdjunctionOfAdelmanCategory( RowsR );;[127X[104X
+    [4X[25Xgap>[125X [27XIsZero( ApplyNaturalTransformation( unit, Mt ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xcounit := CounitOfSatelliteAdjunctionOfAdelmanCategory( RowsR );;[127X[104X
+    [4X[25Xgap>[125X [27Xt := ApplyNaturalTransformation( counit, Mt );;[127X[104X
   [4X[32X[104X
   
   
-  [1X12.14 [33X[0;0YGrade filtration[133X[101X
+  [1X12.9 [33X[0;0YGrade filtration[133X[101X
   
   [33X[0;0YThe sequence of modules computed via satellites behaves in a way that is not
   understood in the case when the ring is not Auslander regular.[133X
@@ -1115,7 +796,7 @@
   [4X[32X[104X
   
   
-  [1X12.15 [33X[0;0YGroups as categories[133X[101X
+  [1X12.10 [33X[0;0YGroups as categories[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )[128X[104X
@@ -1154,7 +835,7 @@
   [4X[32X[104X
   
   
-  [1X12.16 [33X[0;0YHomomorphisms between f.p. functors based on category of rows[133X[101X
+  [1X12.11 [33X[0;0YHomomorphisms between f.p. functors based on category of rows[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XR := HomalgFieldOfRationalsInSingular() * "x,y,z";;[127X[104X
@@ -1171,7 +852,7 @@
   [4X[32X[104X
   
   
-  [1X12.17 [33X[0;0YHomomorphisms between f.p. functors based on category of columns[133X[101X
+  [1X12.12 [33X[0;0YHomomorphisms between f.p. functors based on category of columns[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XR := HomalgFieldOfRationalsInSingular() * "x,y,z";;[127X[104X
@@ -1188,7 +869,7 @@
   [4X[32X[104X
   
   
-  [1X12.18 [33X[0;0YLinear closure of categories[133X[101X
+  [1X12.13 [33X[0;0YLinear closure of categories[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )[128X[104X
@@ -1217,7 +898,7 @@
   [4X[32X[104X
   
   
-  [1X12.19 [33X[0;0YMatrices over ZP K[133X[101X
+  [1X12.14 [33X[0;0YMatrices over ZP K[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )[128X[104X
@@ -1262,7 +943,7 @@
   [4X[32X[104X
   
   
-  [1X12.20 [33X[0;0YMatrices over ZG[133X[101X
+  [1X12.15 [33X[0;0YMatrices over ZG[133X[101X
   
   [33X[0;0YConstruction of a tower of categories[133X
   
@@ -1318,7 +999,7 @@
   [4X[32X[104X
   
   
-  [1X12.21 [33X[0;0YOpposite( CategoryOfRow ) as CategoryOfColumns[133X[101X
+  [1X12.16 [33X[0;0YOpposite( CategoryOfRow ) as CategoryOfColumns[133X[101X
   
   [33X[0;0YAssume  that  we  have the constructors [10XCategoryOfRows[110X and [10XCategoryOfColumns[110X
   but   no   constructor   [10XOpposite[110X.   Then   we  can  still  model  [10XOpposite(
@@ -1411,7 +1092,7 @@
   [4X[32X[104X
   
   
-  [1X12.22  [33X[0;0YTesting  if  an  object  is  projective,  injective,  bijective,  and[101X
+  [1X12.17  [33X[0;0YTesting  if  an  object  is  projective,  injective,  bijective,  and[101X
   [1Xcomputing projective/injective dimensions[133X[101X
   
   [4X[32X  Example  [32X[104X
@@ -1453,7 +1134,7 @@
   [4X[32X[104X
   
   
-  [1X12.23 [33X[0;0YProsets[133X[101X
+  [1X12.18 [33X[0;0YProsets[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )[128X[104X
@@ -1494,196 +1175,7 @@
   [4X[32X[104X
   
   
-  [1X12.24 [33X[0;0YQuiver rows bascis[133X[101X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
-    [4X[25Xgap>[125X [27X## quiver without relations[127X[104X
-    [4X[25X>[125X [27XQQ := HomalgFieldOfRationals();;[127X[104X
-    [4X[25Xgap>[125X [27Xquiver := RightQuiver( "Q(3)[a:1->2,b:1->2,c:2->3]" );;[127X[104X
-    [4X[25Xgap>[125X [27XAv := Vertices( quiver );;[127X[104X
-    [4X[25Xgap>[125X [27XA := PathAlgebra( QQ, quiver );;[127X[104X
-    [4X[25Xgap>[125X [27Xa := BasisPaths( CanonicalBasis( A ) );;[127X[104X
-    [4X[25Xgap>[125X [27Xa := List( a, p -> PathAsAlgebraElement( A, p ) );;[127X[104X
-    [4X[25Xgap>[125X [27XzA := Zero( A );;[127X[104X
-    [4X[25Xgap>[125X [27XQRowsA := QuiverRows( A );;[127X[104X
-    [4X[25Xgap>[125X [27Xmat := [ [ a[1], zA ], [ zA, a[6] ], [ a[1], zA ] ];;[127X[104X
-    [4X[25Xgap>[125X [27Xobj1 := QuiverRowsObject( [ [ Av[1], 1 ], [ Av[2], 1 ], [ Av[1], 1 ] ], QRowsA );;[127X[104X
-    [4X[25Xgap>[125X [27Xobj2 := QuiverRowsObject( [ [ Av[1], 1 ], [ Av[3], 1 ] ], QRowsA );;[127X[104X
-    [4X[25Xgap>[125X [27Xalpha := QuiverRowsMorphism( obj1, mat, obj2 );;[127X[104X
-    [4X[25Xgap>[125X [27Xobj3 := QuiverRowsObject( [ [ Av[2], 1 ] ], QRowsA );;[127X[104X
-    [4X[25Xgap>[125X [27Xmat := [ [ a[4] ], [ zA ] ];;[127X[104X
-    [4X[25Xgap>[125X [27Xbeta := QuiverRowsMorphism( obj2, mat, obj3 );;[127X[104X
-    [4X[25Xgap>[125X [27Xpre := PreCompose( alpha, beta );;[127X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( PreCompose( alpha, beta ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsZeroForMorphisms( pre );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27Xze := ZeroMorphism( Source( pre ), Range( pre ) );;[127X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( pre + ze, pre );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( pre + pre, pre );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsZeroForMorphisms( pre - pre );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
-    [4X[25X>[125X [27X    PreCompose([127X[104X
-    [4X[25X>[125X [27X        UniversalMorphismFromZeroObject( obj1 ),[127X[104X
-    [4X[25X>[125X [27X        UniversalMorphismIntoZeroObject( obj1 )[127X[104X
-    [4X[25X>[125X [27X    ),[127X[104X
-    [4X[25X>[125X [27X    IdentityMorphism( ZeroObject( QRowsA ) )[127X[104X
-    [4X[25X>[125X [27X);[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XNrSummands( DirectSum( List( [ 1 .. 1000 ], i -> obj1 ) ) ) = 1000 * NrSummands( obj1 );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XL := [ obj1, obj2, obj3 ];;[127X[104X
-    [4X[25Xgap>[125X [27Xpi := List( [ 1,2,3 ], i -> ProjectionInFactorOfDirectSum( L, i ) );;[127X[104X
-    [4X[25Xgap>[125X [27Xiota := List( [ 1,2,3 ], i -> InjectionOfCofactorOfDirectSum( L, i ) );;[127X[104X
-    [4X[25Xgap>[125X [27XForAll( [1,2,3], i ->[127X[104X
-    [4X[25X>[125X [27X    IsCongruentForMorphisms( [127X[104X
-    [4X[25X>[125X [27X        PreCompose( iota[i], pi[i] ),[127X[104X
-    [4X[25X>[125X [27X        IdentityMorphism( L[i] )[127X[104X
-    [4X[25X>[125X [27X    )[127X[104X
-    [4X[25X>[125X [27X);[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsZeroForMorphisms( PreCompose( iota[2], pi[1] ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( [127X[104X
-    [4X[25X>[125X [27X    UniversalMorphismIntoDirectSum( L, pi ),[127X[104X
-    [4X[25X>[125X [27X    IdentityMorphism( DirectSum( L ) )[127X[104X
-    [4X[25X>[125X [27X);[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( [127X[104X
-    [4X[25X>[125X [27X    UniversalMorphismFromDirectSum( L, iota ),[127X[104X
-    [4X[25X>[125X [27X    IdentityMorphism( DirectSum( L ) )[127X[104X
-    [4X[25X>[125X [27X);[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
-    [4X[25X>[125X [27X    InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( obj1, obj2,[127X[104X
-    [4X[25X>[125X [27X        InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( alpha )[127X[104X
-    [4X[25X>[125X [27X    ),[127X[104X
-    [4X[25X>[125X [27X    alpha[127X[104X
-    [4X[25X>[125X [27X);[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27X## quiver with relations[127X[104X
-    [4X[25X>[125X [27Xquiver := RightQuiver( [127X[104X
-    [4X[25X>[125X [27X"Q(8)[a:1->5,b:2->6,c:3->7,d:4->8,e:1->2,f:2->3,g:3->4,h:5->6,i:6->7,j:7->8]" [127X[104X
-    [4X[25X>[125X [27X);;[127X[104X
-    [4X[25Xgap>[125X [27XBv := Vertices( quiver );;[127X[104X
-    [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals();;[127X[104X
-    [4X[25Xgap>[125X [27XkQ := PathAlgebra( QQ, quiver );;[127X[104X
-    [4X[25Xgap>[125X [27XB := QuotientOfPathAlgebra( kQ,[127X[104X
-    [4X[25X>[125X [27X[ [127X[104X
-    [4X[25X>[125X [27X    kQ.e * kQ.f, kQ.f * kQ.g,[127X[104X
-    [4X[25X>[125X [27X    kQ.h * kQ.i, kQ.i * kQ.j,[127X[104X
-    [4X[25X>[125X [27X    kQ.e * kQ.b - kQ.a * kQ.h,[127X[104X
-    [4X[25X>[125X [27X    kQ.f * kQ.c - kQ.b * kQ.i,[127X[104X
-    [4X[25X>[125X [27X    kQ.g * kQ.d - kQ.c * kQ.j ] [127X[104X
-    [4X[25X>[125X [27X);;[127X[104X
-    [4X[25Xgap>[125X [27Xb := BasisPaths( CanonicalBasis( B ) );;[127X[104X
-    [4X[25Xgap>[125X [27XQRowsB := QuiverRows( B );;[127X[104X
-    [4X[25Xgap>[125X [27Xobj := QuiverRowsObject( [ [ Bv[1], 2 ], [ Bv[1], 4 ], [ Bv[1], 4 ], [ Bv[1], 6 ] ], QRowsB );;[127X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( obj );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIdentityMorphism( obj );;[127X[104X
-    [4X[28X#@fi[128X[104X
-  [4X[32X[104X
-  
-  
-  [1X12.25 [33X[0;0YQuiver rows over the integers[133X[101X
-  
-  [33X[0;0YWell-defined morphisms[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
-    [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals();;[127X[104X
-    [4X[25Xgap>[125X [27Xsnake_quiver := RightQuiver( "Q(4)[a:1->2,b:2->3,c:3->4]" );;[127X[104X
-    [4X[25Xgap>[125X [27Xvertices := Vertices( snake_quiver );;[127X[104X
-    [4X[25Xgap>[125X [27XA := PathAlgebra( QQ, snake_quiver );;[127X[104X
-    [4X[25Xgap>[125X [27XA := QuotientOfPathAlgebra( A, [ A.abc ] );;[127X[104X
-    [4X[25Xgap>[125X [27XQRowsA := QuiverRowsDescentToZDefinedByBasisPaths( A );;[127X[104X
-    [4X[25Xgap>[125X [27Xv1 := AsQuiverRowsObject( vertices[1], QRowsA );;[127X[104X
-    [4X[25Xgap>[125X [27Xv2 := AsQuiverRowsObject( vertices[2], QRowsA );;[127X[104X
-    [4X[25Xgap>[125X [27Xmat := [ [ 1/2*A.a ] ];;[127X[104X
-    [4X[25Xgap>[125X [27Xx := QuiverRowsMorphism( v1, mat, v2 );;[127X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( x );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27Xmat := [ [ 2*A.a ] ];;[127X[104X
-    [4X[25Xgap>[125X [27Xx := QuiverRowsMorphism( v1, mat, v2 );;[127X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( x );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[28X#@fi[128X[104X
-  [4X[32X[104X
-  
-  [33X[0;0YSnake lemma over the integers[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
-    [4X[25Xgap>[125X [27Xa := AsQuiverRowsMorphism( A.a, QRowsA );;[127X[104X
-    [4X[25Xgap>[125X [27Xb := AsQuiverRowsMorphism( A.b, QRowsA );;[127X[104X
-    [4X[25Xgap>[125X [27Xc := AsQuiverRowsMorphism( A.c, QRowsA );;[127X[104X
-    [4X[25Xgap>[125X [27Xaa := AsAdelmanCategoryMorphism( a );;[127X[104X
-    [4X[25Xgap>[125X [27Xbb := AsAdelmanCategoryMorphism( b );;[127X[104X
-    [4X[25Xgap>[125X [27Xcc := AsAdelmanCategoryMorphism( c );;[127X[104X
-    [4X[25Xgap>[125X [27Xdd := CokernelProjection( aa );;[127X[104X
-    [4X[25Xgap>[125X [27Xee := CokernelColift( aa, PreCompose( bb, cc ) );;[127X[104X
-    [4X[25Xgap>[125X [27Xff := KernelEmbedding( ee );;[127X[104X
-    [4X[25Xgap>[125X [27Xgg := KernelEmbedding( cc );;[127X[104X
-    [4X[25Xgap>[125X [27Xhh := KernelLift( cc, PreCompose( aa, bb ) );;[127X[104X
-    [4X[25Xgap>[125X [27Xii := CokernelProjection( hh );;[127X[104X
-    [4X[25Xgap>[125X [27Xfff := AsGeneralizedMorphism( ff );;[127X[104X
-    [4X[25Xgap>[125X [27Xddd := AsGeneralizedMorphism( dd );;[127X[104X
-    [4X[25Xgap>[125X [27Xbbb := AsGeneralizedMorphism( bb );;[127X[104X
-    [4X[25Xgap>[125X [27Xggg := AsGeneralizedMorphism( gg );;[127X[104X
-    [4X[25Xgap>[125X [27Xiii := AsGeneralizedMorphism( ii );;[127X[104X
-    [4X[25Xgap>[125X [27Xp := PreCompose( [ fff, PseudoInverse( ddd ), bbb, PseudoInverse( ggg ), iii ] );;[127X[104X
-    [4X[25Xgap>[125X [27XIsHonest( p );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xjj := KernelObjectFunctorial( bb, dd, ee );;[127X[104X
-    [4X[25Xgap>[125X [27Xkk := CokernelObjectFunctorial( hh, gg, bb );;[127X[104X
-    [4X[25Xgap>[125X [27Xpp := HonestRepresentative( p );;[127X[104X
-    [4X[25Xgap>[125X [27Xcomp := PreCompose( jj, pp );;[127X[104X
-    [4X[25Xgap>[125X [27XIsZero( comp );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xcomp := PreCompose( pp, kk );;[127X[104X
-    [4X[25Xgap>[125X [27XIsZero( comp );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xhomology := function( alpha, beta ) return CokernelObject( LiftAlongMonomorphism( KernelEmbedding( beta ), ImageEmbedding( alpha ) ) ); end;;[127X[104X
-    [4X[25Xgap>[125X [27XIsZero( homology( jj, pp ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( homology( pp, kk ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[28X#@fi[128X[104X
-  [4X[32X[104X
-  
-  [33X[0;0YPhenomena over the integers[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
-    [4X[25Xgap>[125X [27Xquiver := RightQuiver( "Q(2)[a:1->2]" );;[127X[104X
-    [4X[25Xgap>[125X [27Xvertices := Vertices( quiver );;[127X[104X
-    [4X[25Xgap>[125X [27XB := PathAlgebra( QQ, quiver );;[127X[104X
-    [4X[25Xgap>[125X [27XQRowsB := QuiverRows( B );;[127X[104X
-    [4X[25Xgap>[125X [27XQRowsB_overZ := QuiverRowsDescentToZDefinedByBasisPaths( B );;[127X[104X
-    [4X[25Xgap>[125X [27Xa := AsQuiverRowsMorphism( B.a, QRowsB );;[127X[104X
-    [4X[25Xgap>[125X [27Xa_Z := AsQuiverRowsMorphism( B.a, QRowsB_overZ );;[127X[104X
-    [4X[25Xgap>[125X [27Xaa := AsAdelmanCategoryMorphism( a );;[127X[104X
-    [4X[25Xgap>[125X [27Xaa_Z := AsAdelmanCategoryMorphism( a_Z );;[127X[104X
-    [4X[25Xgap>[125X [27Xbb := aa + aa;;[127X[104X
-    [4X[25Xgap>[125X [27Xbb_Z := aa_Z + aa_Z;;[127X[104X
-    [4X[25Xgap>[125X [27XK1 := KernelEmbedding( bb );;[127X[104X
-    [4X[25Xgap>[125X [27XK2 := KernelEmbedding( aa );;[127X[104X
-    [4X[25Xgap>[125X [27XIsEqualAsSubobjects( K1, K2 );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XK1_Z := KernelEmbedding( bb_Z );;[127X[104X
-    [4X[25Xgap>[125X [27XK2_Z := KernelEmbedding( aa_Z );;[127X[104X
-    [4X[25Xgap>[125X [27XIsEqualAsSubobjects( K1_Z, K2_Z );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[28X#@fi[128X[104X
-  [4X[32X[104X
-  
-  
-  [1X12.26 [33X[0;0YTests[133X[101X
+  [1X12.19 [33X[0;0YTests[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", false );[127X[104X
@@ -1728,7 +1220,7 @@
   [4X[32X[104X
   
   
-  [1X12.27 [33X[0;0YCategory of relations[133X[101X
+  [1X12.20 [33X[0;0YCategory of relations[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XF := HomalgRingOfIntegers( 3 );;[127X[104X
@@ -1766,7 +1258,7 @@
   [4X[32X[104X
   
   
-  [1X12.28 [33X[0;0YRings as Ab-categories[133X[101X
+  [1X12.21 [33X[0;0YRings as Ab-categories[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XCR := RingAsCategory( Integers );;[127X[104X
@@ -1841,175 +1333,5 @@
     [4X[28X[ 2, 3, 4, 5 ][128X[104X
     [4X[25Xgap>[125X [27XIsCongruentForMorphisms( alpha, SumOfMorphisms( u, ListN( CoefficientsOfMorphism( alpha ), BasisOfExternalHom( u, u ), { x, y } -> MultiplyWithElementOfCommutativeRingForMorphisms( x, y ) ), u ) );[127X[104X
     [4X[28Xtrue[128X[104X
-  [4X[32X[104X
-  
-  
-  [1X12.29 [33X[0;0YSnake lemma first proof[133X[101X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XDeactivateDefaultCaching();[127X[104X
-    [4X[25Xgap>[125X [27XSwitchGeneralizedMorphismStandard( "cospan" );;[127X[104X
-    [4X[25Xgap>[125X [27Xsnake_quiver := RightQuiver( "Q(6)[a:1->2,b:2->3,c:1->4,d:2->5,e:3->6,f:4->5,g:5->6]" );;[127X[104X
-    [4X[25Xgap>[125X [27XkQ := PathAlgebra( HomalgFieldOfRationals(), snake_quiver );;[127X[104X
-    [4X[25Xgap>[125X [27XAoid := Algebroid( kQ, [ kQ.ad - kQ.cf, kQ.dg - kQ.be, kQ.ab, kQ.fg ] );;[127X[104X
-    [4X[25Xgap>[125X [27Xm := SetOfGeneratingMorphisms( Aoid );;[127X[104X
-    [4X[25Xgap>[125X [27Xa := m[1];;[127X[104X
-    [4X[25Xgap>[125X [27Xb := m[2];;[127X[104X
-    [4X[25Xgap>[125X [27Xc := m[3];;[127X[104X
-    [4X[25Xgap>[125X [27Xd := m[4];;[127X[104X
-    [4X[25Xgap>[125X [27Xe := m[5];;[127X[104X
-    [4X[25Xgap>[125X [27Xf := m[6];;[127X[104X
-    [4X[25Xgap>[125X [27Xg := m[7];;[127X[104X
-    [4X[25Xgap>[125X [27Xcat := Aoid;;[127X[104X
-    [4X[25Xgap>[125X [27XCapCategorySwitchLogicOff( cat );;[127X[104X
-    [4X[25Xgap>[125X [27XDisableInputSanityChecks( cat );;[127X[104X
-    [4X[25Xgap>[125X [27Xcat := AdditiveClosure( cat );;[127X[104X
-    [4X[25Xgap>[125X [27XDisableInputSanityChecks( cat );;[127X[104X
-    [4X[25Xgap>[125X [27Xcat := Opposite( cat );;[127X[104X
-    [4X[25Xgap>[125X [27XDisableInputSanityChecks( cat );;[127X[104X
-    [4X[25Xgap>[125X [27XCapCategorySwitchLogicOff( cat );;[127X[104X
-    [4X[25Xgap>[125X [27XCapCategorySwitchLogicOff( Opposite( cat ) );;[127X[104X
-    [4X[25Xgap>[125X [27Xcat := FreydCategory( cat );;[127X[104X
-    [4X[25Xgap>[125X [27XCapCategorySwitchLogicOff( cat );;[127X[104X
-    [4X[25Xgap>[125X [27Xcat := Opposite( cat );;[127X[104X
-    [4X[25Xgap>[125X [27XCapCategorySwitchLogicOff( cat );;[127X[104X
-    [4X[25Xgap>[125X [27Xaf := AsMorphismInFreeAbelianCategory( m[1] );;[127X[104X
-    [4X[25Xgap>[125X [27Xbf := AsMorphismInFreeAbelianCategory( m[2] );;[127X[104X
-    [4X[25Xgap>[125X [27Xcf := AsMorphismInFreeAbelianCategory( m[3] );;[127X[104X
-    [4X[25Xgap>[125X [27Xdf := AsMorphismInFreeAbelianCategory( m[4] );;[127X[104X
-    [4X[25Xgap>[125X [27Xef := AsMorphismInFreeAbelianCategory( m[5] );;[127X[104X
-    [4X[25Xgap>[125X [27Xff := AsMorphismInFreeAbelianCategory( m[6] );;[127X[104X
-    [4X[25Xgap>[125X [27Xgf := AsMorphismInFreeAbelianCategory( m[7] );;[127X[104X
-    [4X[25Xgap>[125X [27Xbn := CokernelProjection( af );;[127X[104X
-    [4X[25Xgap>[125X [27Xen := CokernelColift( af, PreCompose( df, gf ) );;[127X[104X
-    [4X[25Xgap>[125X [27Xfn := KernelEmbedding( gf );;[127X[104X
-    [4X[25Xgap>[125X [27Xcn := KernelLift( gf, PreCompose( af, df ) );;[127X[104X
-    [4X[25Xgap>[125X [27Xke := KernelEmbedding( en );;[127X[104X
-    [4X[25Xgap>[125X [27Xco := CokernelProjection( cn );;[127X[104X
-    [4X[25Xgap>[125X [27Xgk := AsGeneralizedMorphism( ke );;[127X[104X
-    [4X[25Xgap>[125X [27Xgb := AsGeneralizedMorphism( bn );;[127X[104X
-    [4X[25Xgap>[125X [27Xgd := AsGeneralizedMorphism( df );;[127X[104X
-    [4X[25Xgap>[125X [27Xgf := AsGeneralizedMorphism( fn );;[127X[104X
-    [4X[25Xgap>[125X [27Xgc := AsGeneralizedMorphism( co );;[127X[104X
-    [4X[25Xgap>[125X [27XDirectSumFunctorial( [ af, af ] );;[127X[104X
-    [4X[25Xgap>[125X [27XIsZero( PreCompose( ke, en ));;[127X[104X
-    [4X[25Xgap>[125X [27Xtimestart := Runtimes().user_time;;[127X[104X
-    [4X[25Xgap>[125X [27Xp := PreCompose( [ gk, PseudoInverse( gb ) ] );;[127X[104X
-    [4X[25Xgap>[125X [27Xp2 := PreCompose( p, gd );;[127X[104X
-    [4X[25Xgap>[125X [27Xp3:= PreCompose( p2, PseudoInverse( gf ) );;[127X[104X
-    [4X[25Xgap>[125X [27Xp4:= PreCompose( p3, gc );;[127X[104X
-    [4X[25Xgap>[125X [27XIsHonest( p );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsHonest( p2 );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsHonest( p3 );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsHonest( p4 );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xtimeend := Runtimes().user_time - timestart;;[127X[104X
-    [4X[25Xgap>[125X [27Xh := HonestRepresentative( p4 );;[127X[104X
-    [4X[28X#@fi[128X[104X
-  [4X[32X[104X
-  
-  
-  [1X12.30 [33X[0;0YSnake lemma second proof[133X[101X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XDeactivateDefaultCaching();[127X[104X
-    [4X[25Xgap>[125X [27XSwitchGeneralizedMorphismStandard( "cospan" );;[127X[104X
-    [4X[25Xgap>[125X [27Xsnake_quiver := RightQuiver( "Q(6)[a:1->2,b:2->3,c:3->4]" );;[127X[104X
-    [4X[25Xgap>[125X [27XkQ := PathAlgebra( HomalgFieldOfRationals(), snake_quiver );;[127X[104X
-    [4X[25Xgap>[125X [27XAoid := Algebroid( kQ, [ kQ.abc ] );;[127X[104X
-    [4X[25Xgap>[125X [27Xm := SetOfGeneratingMorphisms( Aoid );;[127X[104X
-    [4X[25Xgap>[125X [27Xa := m[1];;[127X[104X
-    [4X[25Xgap>[125X [27Xb := m[2];;[127X[104X
-    [4X[25Xgap>[125X [27Xc := m[3];;[127X[104X
-    [4X[25Xgap>[125X [27Xcat := Aoid;;[127X[104X
-    [4X[25Xgap>[125X [27XCapCategorySwitchLogicOff( cat );;[127X[104X
-    [4X[25Xgap>[125X [27XDisableInputSanityChecks( cat );;[127X[104X
-    [4X[25Xgap>[125X [27Xcat := AdditiveClosure( cat );;[127X[104X
-    [4X[25Xgap>[125X [27XDisableInputSanityChecks( cat );;[127X[104X
-    [4X[25Xgap>[125X [27Xcat := Opposite( cat );;[127X[104X
-    [4X[25Xgap>[125X [27XDisableInputSanityChecks( cat );;[127X[104X
-    [4X[25Xgap>[125X [27XCapCategorySwitchLogicOff( cat );;[127X[104X
-    [4X[25Xgap>[125X [27XCapCategorySwitchLogicOff( Opposite( cat ) );;[127X[104X
-    [4X[25Xgap>[125X [27Xcat := FreydCategory( cat );;[127X[104X
-    [4X[25Xgap>[125X [27XCapCategorySwitchLogicOff( cat );;[127X[104X
-    [4X[25Xgap>[125X [27Xcat := Opposite( cat );;[127X[104X
-    [4X[25Xgap>[125X [27XCapCategorySwitchLogicOff( cat );;[127X[104X
-    [4X[25Xgap>[125X [27Xa := AsMorphismInFreeAbelianCategory( a );;[127X[104X
-    [4X[25Xgap>[125X [27Xb := AsMorphismInFreeAbelianCategory( b );;[127X[104X
-    [4X[25Xgap>[125X [27Xc := AsMorphismInFreeAbelianCategory( c );;[127X[104X
-    [4X[25Xgap>[125X [27Xcoker_a := CokernelProjection( a );;[127X[104X
-    [4X[25Xgap>[125X [27Xcolift := CokernelColift( a, PreCompose( b, c ) );;[127X[104X
-    [4X[25Xgap>[125X [27Xker_c := KernelEmbedding( c );;[127X[104X
-    [4X[25Xgap>[125X [27Xlift := KernelLift( c, PreCompose( a, b ) );;[127X[104X
-    [4X[25Xgap>[125X [27Xp := PreCompose( [[127X[104X
-    [4X[25X>[125X [27X  AsGeneralizedMorphism( KernelEmbedding( colift ) ), [127X[104X
-    [4X[25X>[125X [27X  GeneralizedInverse( coker_a ),[127X[104X
-    [4X[25X>[125X [27X  AsGeneralizedMorphism( b ),[127X[104X
-    [4X[25X>[125X [27X  GeneralizedInverse( ker_c ),[127X[104X
-    [4X[25X>[125X [27X  AsGeneralizedMorphism( CokernelProjection( lift ) )[127X[104X
-    [4X[25X>[125X [27X] );;[127X[104X
-    [4X[25Xgap>[125X [27XIsHonest( p );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[28X#@fi[128X[104X
-  [4X[32X[104X
-  
-  
-  [1X12.31 [33X[0;0YSubobject lattice[133X[101X
-  
-  [33X[0;0YWe  compute  the  number  of  the  generic  subobject lattice generated by 2
-  independent subobjects y,z and one subobject x of y.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
-    [4X[25Xgap>[125X [27XReadPackage( "FreydCategoriesForCAP", "examples/SubobjectLatticeFunctions.g" );;[127X[104X
-    [4X[25Xgap>[125X [27Xquiver := RightQuiver( "Q(4)[a:1->2,b:2->3,c:1->4]" );;[127X[104X
-    [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals();;[127X[104X
-    [4X[25Xgap>[125X [27XB := PathAlgebra( QQ, quiver );;[127X[104X
-    [4X[25Xgap>[125X [27XRowsB := QuiverRowsDescentToZDefinedByBasisPaths( B : overhead := false );;[127X[104X
-    [4X[25Xgap>[125X [27XAdel := AdelmanCategory( RowsB : overhead := false );;[127X[104X
-    [4X[25Xgap>[125X [27Xa := B.a/RowsB/Adel;;[127X[104X
-    [4X[25Xgap>[125X [27Xb := B.b/RowsB/Adel;;[127X[104X
-    [4X[25Xgap>[125X [27Xc := B.c/RowsB/Adel;;[127X[104X
-    [4X[25Xgap>[125X [27Xx := KernelEmbedding( a );;[127X[104X
-    [4X[25Xgap>[125X [27Xy := KernelEmbedding( PreCompose( a, b ) );;[127X[104X
-    [4X[25Xgap>[125X [27Xz := KernelEmbedding( c );;[127X[104X
-    [4X[25Xgap>[125X [27Xgens := [ x, y, z ];;[127X[104X
-    [4X[25Xgap>[125X [27XSize( GenerateSubobjects( gens ) );[127X[104X
-    [4X[28X8[128X[104X
-    [4X[28X#@fi[128X[104X
-  [4X[32X[104X
-  
-  
-  [1X12.32 [33X[0;0YAdelman category theorem[133X[101X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xquiver := RightQuiver( "Q(9)[a:1->2,b:3->2]" );;[127X[104X
-    [4X[25Xgap>[125X [27XkQ := PathAlgebra( HomalgFieldOfRationals(), quiver );;[127X[104X
-    [4X[25Xgap>[125X [27XAoid := Algebroid( kQ );;[127X[104X
-    [4X[25Xgap>[125X [27Xmm := SetOfGeneratingMorphisms( Aoid );;[127X[104X
-    [4X[25Xgap>[125X [27XCapCategorySwitchLogicOff( Aoid );;[127X[104X
-    [4X[25Xgap>[125X [27XAcat := AdditiveClosure( Aoid );;[127X[104X
-    [4X[25Xgap>[125X [27Xa := AsAdditiveClosureMorphism( mm[1] );;[127X[104X
-    [4X[25Xgap>[125X [27Xb := AsAdditiveClosureMorphism( mm[2] );;[127X[104X
-    [4X[25Xgap>[125X [27Xa := AsAdelmanCategoryMorphism( a );;[127X[104X
-    [4X[25Xgap>[125X [27Xb := AsAdelmanCategoryMorphism( b );;[127X[104X
-    [4X[25Xgap>[125X [27Xpi1 := ProjectionInFactorOfFiberProduct( [ a, b ], 1 );;[127X[104X
-    [4X[25Xgap>[125X [27Xpi2 := ProjectionInFactorOfFiberProduct( [ a, b ], 1 );;[127X[104X
-    [4X[25Xgap>[125X [27Xc := CokernelColift( pi1, PreCompose( a, CokernelProjection( b ) ) );;[127X[104X
-    [4X[25Xgap>[125X [27XIsMonomorphism( c );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   

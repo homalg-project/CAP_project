@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "FreydCategoriesForCAP",
 Subtitle := "Freyd categories - Formal (co)kernels for additive categories",
-Version := "2022.12-03",
-Date := "14/12/2022",
+Version := "2022.12-04",
+Date := "20/12/2022",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -94,7 +94,6 @@ Dependencies := rec(
                            [ "GeneralizedMorphismsForCAP", ">= 2018.06.15" ]
                          ],
   SuggestedOtherPackages := [
-    [ "QPA", ">= 2.0" ],
     [ "FinSetsForCAP", ">= 2022.05-01" ]
    ],
   ExternalConditions := [ ],

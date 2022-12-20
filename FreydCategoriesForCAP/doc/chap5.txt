@@ -233,6 +233,14 @@
   [30X    [33X[0;6Y[2XIsomorphismFromZeroObjectToTerminalObject[102X                        ([14XCAP:
         IsomorphismFromZeroObjectToTerminalObject for IsCapCategory[114X)[133X
   
+  [30X    [33X[0;6Y[2XJointPairwiseDifferencesOfMorphismsFromCoproduct[102X                 ([14XCAP:
+        JointPairwiseDifferencesOfMorphismsFromCoproduct                   for
+        IsCapCategoryObject, IsList[114X)[133X
+  
+  [30X    [33X[0;6Y[2XJointPairwiseDifferencesOfMorphismsIntoDirectProduct[102X             ([14XCAP:
+        JointPairwiseDifferencesOfMorphismsIntoDirectProduct               for
+        IsCapCategoryObject, IsList[114X)[133X
+  
   [30X    [33X[0;6Y[2XLift[102X ([14XCAP: Lift for IsCapCategoryMorphism, IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XLiftAlongMonomorphism[102X       ([14XCAP:       LiftAlongMonomorphism      for
@@ -1214,14 +1222,29 @@
   
   [30X    [33X[0;6Y[2XIsProjective[102X ([14XCAP: IsProjective for IsCapCategoryObject[114X)[133X
   
+  [30X    [33X[0;6Y[2XIsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct[102X
+        ([14XCAP:
+        IsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct
+        for IsCapCategoryObject, IsList[114X)[133X
+  
   [30X    [33X[0;6Y[2XIsomorphismFromCoimageToCokernelOfKernel[102X                         ([14XCAP:
         IsomorphismFromCoimageToCokernelOfKernel for IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XIsomorphismFromCokernelOfDiagonalDifferenceToPushout[102X             ([14XCAP:
         IsomorphismFromCokernelOfDiagonalDifferenceToPushout for IsList[114X)[133X
   
+  [30X    [33X[0;6Y[2XIsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproductToCoequalizer[102X
+        ([14XCAP:
+        IsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproductToCoequalizer
+        for IsCapCategoryObject, IsList[114X)[133X
+  
   [30X    [33X[0;6Y[2XIsomorphismFromCokernelOfKernelToCoimage[102X                         ([14XCAP:
         IsomorphismFromCokernelOfKernelToCoimage for IsCapCategoryMorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XIsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct[102X
+        ([14XCAP:
+        IsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct
+        for IsCapCategoryObject, IsList[114X)[133X
   
   [30X    [33X[0;6Y[2XIsomorphismFromFiberProductToKernelOfDiagonalDifference[102X          ([14XCAP:
         IsomorphismFromFiberProductToKernelOfDiagonalDifference for IsList[114X)[133X
@@ -1244,6 +1267,11 @@
   
   [30X    [33X[0;6Y[2XIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct[102X          ([14XCAP:
         IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct for IsList[114X)[133X
+  
+  [30X    [33X[0;6Y[2XIsomorphismFromKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProductToEqualizer[102X
+        ([14XCAP:
+        IsomorphismFromKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProductToEqualizer
+        for IsCapCategoryObject, IsList[114X)[133X
   
   [30X    [33X[0;6Y[2XIsomorphismFromPushoutToCokernelOfDiagonalDifference[102X             ([14XCAP:
         IsomorphismFromPushoutToCokernelOfDiagonalDifference for IsList[114X)[133X
