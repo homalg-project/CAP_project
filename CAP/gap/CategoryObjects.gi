@@ -236,6 +236,12 @@ InstallMethod( AddObjectRepresentation,
         
     fi;
     
+    if IsBound( category!.initially_known_categorical_properties ) then
+        
+        Error( "calling AddObjectRepresentation after adding functions to the category is not supported" );
+        
+    fi;
+    
     category!.object_representation := representation;
     category!.object_type := NewType( TheFamilyOfCapCategoryObjects, representation and ObjectFilter( category ) and HasCapCategory );
     

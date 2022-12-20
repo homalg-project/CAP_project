@@ -255,6 +255,12 @@ InstallMethod( AddMorphismRepresentation,
         
     fi;
     
+    if IsBound( category!.initially_known_categorical_properties ) then
+        
+        Error( "calling AddMorphismRepresentation after adding functions to the category is not supported" );
+        
+    fi;
+    
     category!.morphism_representation := representation;
     category!.morphism_type := NewType( TheFamilyOfCapCategoryMorphisms, representation and MorphismFilter( category ) and HasSource and HasRange and HasCapCategory );
     

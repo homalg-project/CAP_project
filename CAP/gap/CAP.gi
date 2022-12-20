@@ -164,6 +164,30 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
   function( obj_rec, name, category_filter, object_filter, morphism_filter, two_cell_filter, object_datum_type, morphism_datum_type, two_cell_datum_type )
     local filter, obj, operation_name;
     
+    if not IsSpecializationOfFilter( IsCapCategory, category_filter ) then
+        
+        Error( "the category filter must imply IsCapCategory" );
+        
+    fi;
+    
+    if not IsSpecializationOfFilter( IsCapCategoryObject, object_filter ) then
+        
+        Error( "the object filter must imply IsCapCategoryObject" );
+        
+    fi;
+    
+    if not IsSpecializationOfFilter( IsCapCategoryMorphism, morphism_filter ) then
+        
+        Error( "the morphism filter must imply IsCapCategoryMorphism" );
+        
+    fi;
+    
+    if not IsSpecializationOfFilter( IsCapCategoryTwoCell, two_cell_filter ) then
+        
+        Error( "the two cell filter must imply IsCapCategoryTwoCell" );
+        
+    fi;
+    
     if IsFilter( object_datum_type ) then
         
         object_datum_type := rec( filter := object_datum_type );
