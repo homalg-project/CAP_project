@@ -733,6 +733,7 @@ DeclareGlobalFunction( "DisableAddForCategoricalOperations" );
 #############################################
 
 #!  For finding performance issues in primitive operations, you can collect timing statistics, see <Ref Sect="Section_Timing_statistics" />.
+#!  You can use the package `CompilerForCAP` to compile your code.
 #!  Additionally, CAP has several settings which can improve the performance.
 #!  In the following some of these are listed.
 #!    * <C>DeactivateCachingOfCategory</C> or <C>DeactivateDefaultCaching</C>: see <Ref Sect="Section_Caching" />.
@@ -746,9 +747,6 @@ DeclareGlobalFunction( "DisableAddForCategoricalOperations" );
 #!        instead of <C>AddObject</C> and
 #!        <C>CreateCapCategoryMorphismWithAttributes</C> (<Ref Sect="Section_Adding_Morphisms_to_a_Category" />)
 #!        instead of <C>AddMorphism</C>.
-#!    * Add all attribute testers (<C>Has...</C>) of your objects resp. morphisms to the filters passed to
-#!        <C>AddObjectRepresentation</C> (<Ref Sect="Section_Adding_Objects_to_a_Category" />) resp.
-#!        <C>AddMorphismRepresentation</C> (<Ref Sect="Section_Adding_Morphisms_to_a_Category" />).
 #!    * Pass the option <C>overhead := false</C> to <C>CreateCapCategory</C>.
 #!        Note: this may have unintended effects. Use with care!
 
