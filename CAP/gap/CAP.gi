@@ -208,14 +208,14 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     
     obj_rec!.logical_implication_files := StructuralCopy( CATEGORIES_LOGIC_FILES );
     
-    filter := NewFilter( Concatenation( name, "InternalCategoryFilter" ), category_filter );
+    filter := NewFilter( Concatenation( name, "InstanceCategoryFilter" ), category_filter );
     
     obj := ObjectifyWithAttributes( obj_rec, NewType( TheFamilyOfCapCategories, filter ), Name, name );
     
     SetCategoryFilter( obj, filter );
     
     # object filter
-    filter := NewCategory( Concatenation( name, "ObjectFilter" ), object_filter );
+    filter := NewCategory( Concatenation( name, "InstanceObjectFilter" ), object_filter );
     
     SetObjectFilter( obj, filter );
     SetObjectDatumType( obj, object_datum_type );
@@ -224,7 +224,7 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     obj!.object_type := NewType( TheFamilyOfCapCategoryObjects, filter );
     
     # morphism filter
-    filter := NewCategory( Concatenation( name, "MorphismFilter" ), morphism_filter );
+    filter := NewCategory( Concatenation( name, "InstanceMorphismFilter" ), morphism_filter );
     
     SetMorphismFilter( obj, filter );
     SetMorphismDatumType( obj, morphism_datum_type );
@@ -233,7 +233,7 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     obj!.morphism_type := NewType( TheFamilyOfCapCategoryMorphisms, filter );
     
     # two cell filter
-    filter := NewCategory( Concatenation( name, "TwoCellFilter" ), two_cell_filter );
+    filter := NewCategory( Concatenation( name, "InstanceTwoCellFilter" ), two_cell_filter );
     
     SetTwoCellFilter( obj, filter );
     SetTwoCellDatumType( obj, two_cell_datum_type );
