@@ -22,32 +22,14 @@ BindGlobal( "InfoFreydCategoriesForCAP", NewInfoClass("InfoFreydCategoriesForCAP
 
 ##
 InstallGlobalFunction( FREYD_CATEGORY,
-  function( underlying_category, args... )
+  function( underlying_category )
     local name, freyd_category, conditions;
     
     if not IsValidInputForFreydCategory( underlying_category ) then
         return false;
     fi;
     
-    if Length( args ) = 0 then
-        
-        name := Concatenation( "Freyd( ", Name( underlying_category ), " )" );
-        
-    elif Length( args ) = 1 then
-        
-        if not IsString( args[1] ) then
-            
-            Error( "The second argument of FREYD_CATEGORY must be a string." );
-            
-        fi;
-        
-        name := args[1];
-        
-    else
-        
-        Error( "FREYD_CATEGORY must be called with at most two arguments." );
-        
-    fi;
+    name := Concatenation( "Freyd( ", Name( underlying_category ), " )" );
     
     freyd_category := CreateCapCategory( name );
     

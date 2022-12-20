@@ -373,6 +373,7 @@ DeclareOperation( "AddMorphism",
 
 #! @Arguments category, filter
 #! @Description
+#!  **Deprecated**: use <Ref Func="CreateCapCategoryWithDataTypes" /> instead.
 #!  The argument <A>filter</A> is used to create a morphism type for the
 #!  category <A>category</A>, which is then used in <C>ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes</C>
 #!  to objectify morphisms for this category. <A>filter</A> must imply `IsCapCategoryMorphism`.
@@ -383,7 +384,7 @@ DeclareOperation( "AddMorphismRepresentation",
 #! @Description
 #!  Objectifies the morphism <A>morphism</A> with the type created
 #!  for morphisms in the category <A>category</A>. The type
-#!  is created by passing a representation to <C>AddMorphismRepresentation</C>.
+#!  is created by passing a morphism filter to <Ref Func="CreateCapCategoryWithDataTypes" />.
 #!  Morphisms which are objectified using this method do not have to be passed
 #!  to the <C>AddMorphism</C> function.
 #!  The arguments <C>source</C> and <C>range</C> are assumed to be objectified.

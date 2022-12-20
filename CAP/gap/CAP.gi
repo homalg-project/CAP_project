@@ -164,6 +164,30 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
   function( obj_rec, name, category_filter, object_filter, morphism_filter, two_cell_filter, object_datum_type, morphism_datum_type, two_cell_datum_type )
     local filter, obj, operation_name;
     
+    if not IsSpecializationOfFilter( IsCapCategory, category_filter ) then
+        
+        Error( "the category filter must imply IsCapCategory" );
+        
+    fi;
+    
+    if not IsSpecializationOfFilter( IsCapCategoryObject, object_filter ) then
+        
+        Error( "the object filter must imply IsCapCategoryObject" );
+        
+    fi;
+    
+    if not IsSpecializationOfFilter( IsCapCategoryMorphism, morphism_filter ) then
+        
+        Error( "the morphism filter must imply IsCapCategoryMorphism" );
+        
+    fi;
+    
+    if not IsSpecializationOfFilter( IsCapCategoryTwoCell, two_cell_filter ) then
+        
+        Error( "the two cell filter must imply IsCapCategoryTwoCell" );
+        
+    fi;
+    
     if IsFilter( object_datum_type ) then
         
         object_datum_type := rec( filter := object_datum_type );
@@ -184,14 +208,14 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     
     obj_rec!.logical_implication_files := StructuralCopy( CATEGORIES_LOGIC_FILES );
     
-    filter := NewFilter( Concatenation( name, "InternalCategoryFilter" ), category_filter );
+    filter := NewFilter( Concatenation( name, "InstanceCategoryFilter" ), category_filter );
     
     obj := ObjectifyWithAttributes( obj_rec, NewType( TheFamilyOfCapCategories, filter ), Name, name );
     
     SetCategoryFilter( obj, filter );
     
     # object filter
-    filter := NewCategory( Concatenation( name, "ObjectFilter" ), object_filter );
+    filter := NewCategory( Concatenation( name, "InstanceObjectFilter" ), object_filter );
     
     SetObjectFilter( obj, filter );
     SetObjectDatumType( obj, object_datum_type );
@@ -200,7 +224,7 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     obj!.object_type := NewType( TheFamilyOfCapCategoryObjects, filter );
     
     # morphism filter
-    filter := NewCategory( Concatenation( name, "MorphismFilter" ), morphism_filter );
+    filter := NewCategory( Concatenation( name, "InstanceMorphismFilter" ), morphism_filter );
     
     SetMorphismFilter( obj, filter );
     SetMorphismDatumType( obj, morphism_datum_type );
@@ -209,7 +233,7 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     obj!.morphism_type := NewType( TheFamilyOfCapCategoryMorphisms, filter );
     
     # two cell filter
-    filter := NewCategory( Concatenation( name, "TwoCellFilter" ), two_cell_filter );
+    filter := NewCategory( Concatenation( name, "InstanceTwoCellFilter" ), two_cell_filter );
     
     SetTwoCellFilter( obj, filter );
     SetTwoCellDatumType( obj, two_cell_datum_type );
