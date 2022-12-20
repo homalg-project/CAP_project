@@ -327,10 +327,11 @@
   
   [33X[1;0Y[29X[2XAddMorphismRepresentation[102X( [3Xcategory[103X, [3Xfilter[103X ) [32X operation[133X
   
-  [33X[0;0YThe  argument  [3Xfilter[103X  is  used  to  create a morphism type for the category
-  [3Xcategory[103X,          which          is          then          used          in
-  [10XObjectifyMorphismWithSourceAndRangeForCAPWithAttributes[110X     to     objectify
-  morphisms for this category. [3Xfilter[103X must imply [10XIsCapCategoryMorphism[110X.[133X
+  [33X[0;0Y[13XDeprecated[113X: use [2XCreateCapCategoryWithDataTypes[102X ([14X1.3-4[114X) instead. The argument
+  [3Xfilter[103X is used to create a morphism type for the category [3Xcategory[103X, which is
+  then   used  in  [10XObjectifyMorphismWithSourceAndRangeForCAPWithAttributes[110X  to
+  objectify    morphisms    for    this    category.    [3Xfilter[103X    must   imply
+  [10XIsCapCategoryMorphism[110X.[133X
   
   [1X3.6-4 ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes[101X
   
@@ -338,12 +339,12 @@
   [6XReturns:[106X  [33X[0;10Ya morphism[133X
   
   [33X[0;0YObjectifies the morphism [3Xmorphism[103X with the type created for morphisms in the
-  category  [3Xcategory[103X.  The  type  is  created  by  passing a representation to
-  [10XAddMorphismRepresentation[110X. Morphisms which are objectified using this method
-  do  not  have to be passed to the [10XAddMorphism[110X function. The arguments [10Xsource[110X
-  and  [10Xrange[110X are assumed to be objectified. The optional arguments behave like
-  the  corresponding  arguments  in  [10XObjectifyWithAttributes[110X. Also returns the
-  objectified morphism.[133X
+  category  [3Xcategory[103X.  The  type  is  created  by passing a morphism filter to
+  [2XCreateCapCategoryWithDataTypes[102X  ([14X1.3-4[114X).  Morphisms  which  are  objectified
+  using  this method do not have to be passed to the [10XAddMorphism[110X function. The
+  arguments  [10Xsource[110X  and  [10Xrange[110X  are  assumed  to be objectified. The optional
+  arguments     behave     like     the     corresponding     arguments     in
+  [10XObjectifyWithAttributes[110X. Also returns the objectified morphism.[133X
   
   [1X3.6-5 CreateCapCategoryMorphismWithAttributes[101X
   

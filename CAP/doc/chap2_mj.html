@@ -290,7 +290,7 @@
 <h5>2.6-3 AddObjectRepresentation</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddObjectRepresentation</code>( <var class="Arg">category</var>, <var class="Arg">filter</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>The argument <var class="Arg">filter</var> is used to create an object type for the category <var class="Arg">category</var>, which is then used in <code class="code">ObjectifyObjectForCAPWithAttributes</code> to objectify objects for this category. <var class="Arg">filter</var> must imply <code class="code">IsCapCategoryObject</code>.</p>
+<p><em>Deprecated</em>: use <code class="func">CreateCapCategoryWithDataTypes</code> (<a href="chap1_mj.html#X8090078F7C5EF5E9"><span class="RefLink">1.3-4</span></a>) instead. The argument <var class="Arg">filter</var> is used to create an object type for the category <var class="Arg">category</var>, which is then used in <code class="code">ObjectifyObjectForCAPWithAttributes</code> to objectify objects for this category. <var class="Arg">filter</var> must imply <code class="code">IsCapCategoryObject</code>.</p>
 
 <p><a id="X78095CF37B92F0D9" name="X78095CF37B92F0D9"></a></p>
 
@@ -299,7 +299,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectifyObjectForCAPWithAttributes</code>( <var class="Arg">object</var>, <var class="Arg">category</var>[, <var class="Arg">attribute1</var>, <var class="Arg">value1</var>, <var class="Arg">...</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: an object</p>
 
-<p>Objectifies the object <var class="Arg">object</var> with the type created for objects in the category <var class="Arg">category</var>. The type is created by passing a representation to <code class="code">AddObjectRepresentation</code>. Objects which are objectified using this method do not have to be passed to the <code class="code">AddObject</code> function. The optional arguments behave like the corresponding arguments in <code class="code">ObjectifyWithAttributes</code>. Also returns the objectified object.</p>
+<p>Objectifies the object <var class="Arg">object</var> with the type created for objects in the category <var class="Arg">category</var>. The type is created by passing an object filter to <code class="func">CreateCapCategoryWithDataTypes</code> (<a href="chap1_mj.html#X8090078F7C5EF5E9"><span class="RefLink">1.3-4</span></a>). Objects which are objectified using this method do not have to be passed to the <code class="code">AddObject</code> function. The optional arguments behave like the corresponding arguments in <code class="code">ObjectifyWithAttributes</code>. Also returns the objectified object.</p>
 
 <p><a id="X87BD8BB88206D940" name="X87BD8BB88206D940"></a></p>
 

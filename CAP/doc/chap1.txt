@@ -595,8 +595,9 @@
   [1X1.13 [33X[0;0YPerformance tweaks[133X[101X
   
   [33X[0;0YFor  finding  performance  issues  in  primitive operations, you can collect
-  timing  statistics,  see  [14X1.11[114X. Additionally, CAP has several settings which
-  can improve the performance. In the following some of these are listed.[133X
+  timing  statistics,  see  [14X1.11[114X.  You  can  use the package [10XCompilerForCAP[110X to
+  compile  your code. Additionally, CAP has several settings which can improve
+  the performance. In the following some of these are listed.[133X
   
   [30X    [33X[0;6Y[10XDeactivateCachingOfCategory[110X or [10XDeactivateDefaultCaching[110X: see [14X1.9[114X. This
         can  either  improve  or  degrade  the  performance  depending  on the
@@ -616,10 +617,6 @@
   [30X    [33X[0;6YUse  [10XCreateCapCategoryObjectWithAttributes[110X  ([14X2.6[114X) instead of [10XAddObject[110X
         and    [10XCreateCapCategoryMorphismWithAttributes[110X    ([14X3.6[114X)   instead   of
         [10XAddMorphism[110X.[133X
-  
-  [30X    [33X[0;6YAdd  all attribute testers ([10XHas...[110X) of your objects resp. morphisms to
-        the    filters   passed   to   [10XAddObjectRepresentation[110X   ([14X2.6[114X)   resp.
-        [10XAddMorphismRepresentation[110X ([14X3.6[114X).[133X
   
   [30X    [33X[0;6YPass the option [10Xoverhead := false[110X to [10XCreateCapCategory[110X. Note: this may
         have unintended effects. Use with care![133X

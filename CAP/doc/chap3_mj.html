@@ -524,7 +524,7 @@
 <h5>3.6-3 AddMorphismRepresentation</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismRepresentation</code>( <var class="Arg">category</var>, <var class="Arg">filter</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>The argument <var class="Arg">filter</var> is used to create a morphism type for the category <var class="Arg">category</var>, which is then used in <code class="code">ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes</code> to objectify morphisms for this category. <var class="Arg">filter</var> must imply <code class="code">IsCapCategoryMorphism</code>.</p>
+<p><em>Deprecated</em>: use <code class="func">CreateCapCategoryWithDataTypes</code> (<a href="chap1_mj.html#X8090078F7C5EF5E9"><span class="RefLink">1.3-4</span></a>) instead. The argument <var class="Arg">filter</var> is used to create a morphism type for the category <var class="Arg">category</var>, which is then used in <code class="code">ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes</code> to objectify morphisms for this category. <var class="Arg">filter</var> must imply <code class="code">IsCapCategoryMorphism</code>.</p>
 
 <p><a id="X7D4369A984B1BD3E" name="X7D4369A984B1BD3E"></a></p>
 
@@ -533,7 +533,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes</code>( <var class="Arg">morphism</var>, <var class="Arg">category</var>, <var class="Arg">source</var>, <var class="Arg">range</var>[, <var class="Arg">attr1</var>, <var class="Arg">val1</var>, <var class="Arg">attr2</var>, <var class="Arg">val2</var>, <var class="Arg">...</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism</p>
 
-<p>Objectifies the morphism <var class="Arg">morphism</var> with the type created for morphisms in the category <var class="Arg">category</var>. The type is created by passing a representation to <code class="code">AddMorphismRepresentation</code>. Morphisms which are objectified using this method do not have to be passed to the <code class="code">AddMorphism</code> function. The arguments <code class="code">source</code> and <code class="code">range</code> are assumed to be objectified. The optional arguments behave like the corresponding arguments in <code class="code">ObjectifyWithAttributes</code>. Also returns the objectified morphism.</p>
+<p>Objectifies the morphism <var class="Arg">morphism</var> with the type created for morphisms in the category <var class="Arg">category</var>. The type is created by passing a morphism filter to <code class="func">CreateCapCategoryWithDataTypes</code> (<a href="chap1_mj.html#X8090078F7C5EF5E9"><span class="RefLink">1.3-4</span></a>). Morphisms which are objectified using this method do not have to be passed to the <code class="code">AddMorphism</code> function. The arguments <code class="code">source</code> and <code class="code">range</code> are assumed to be objectified. The optional arguments behave like the corresponding arguments in <code class="code">ObjectifyWithAttributes</code>. Also returns the objectified morphism.</p>
 
 <p><a id="X78005D357A051FC6" name="X78005D357A051FC6"></a></p>
 

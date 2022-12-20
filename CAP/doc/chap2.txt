@@ -173,9 +173,10 @@
   
   [33X[1;0Y[29X[2XAddObjectRepresentation[102X( [3Xcategory[103X, [3Xfilter[103X ) [32X operation[133X
   
-  [33X[0;0YThe  argument  [3Xfilter[103X  is  used  to  create  an object type for the category
-  [3Xcategory[103X,  which  is  then  used  in  [10XObjectifyObjectForCAPWithAttributes[110X to
-  objectify objects for this category. [3Xfilter[103X must imply [10XIsCapCategoryObject[110X.[133X
+  [33X[0;0Y[13XDeprecated[113X: use [2XCreateCapCategoryWithDataTypes[102X ([14X1.3-4[114X) instead. The argument
+  [3Xfilter[103X  is used to create an object type for the category [3Xcategory[103X, which is
+  then  used  in  [10XObjectifyObjectForCAPWithAttributes[110X to objectify objects for
+  this category. [3Xfilter[103X must imply [10XIsCapCategoryObject[110X.[133X
   
   [1X2.6-4 ObjectifyObjectForCAPWithAttributes[101X
   
@@ -183,11 +184,11 @@
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
   [33X[0;0YObjectifies  the  object  [3Xobject[103X  with  the  type created for objects in the
-  category  [3Xcategory[103X.  The  type  is  created  by  passing a representation to
-  [10XAddObjectRepresentation[110X.  Objects which are objectified using this method do
-  not  have  to  be  passed  to the [10XAddObject[110X function. The optional arguments
-  behave  like  the  corresponding  arguments in [10XObjectifyWithAttributes[110X. Also
-  returns the objectified object.[133X
+  category  [3Xcategory[103X.  The  type  is  created  by  passing an object filter to
+  [2XCreateCapCategoryWithDataTypes[102X  ([14X1.3-4[114X). Objects which are objectified using
+  this method do not have to be passed to the [10XAddObject[110X function. The optional
+  arguments     behave     like     the     corresponding     arguments     in
+  [10XObjectifyWithAttributes[110X. Also returns the objectified object.[133X
   
   [1X2.6-5 CreateCapCategoryObjectWithAttributes[101X
   
