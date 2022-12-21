@@ -1821,6 +1821,26 @@ AddDerivationToCAP( IsomorphismFromKernelOfCokernelToImageObject,
 end : Description := "IsomorphismFromKernelOfCokernelToImageObject as the inverse of IsomorphismFromImageObjectToKernelOfCokernel" );
 
 ##
+AddDerivationToCAP( IsomorphismFromKernelOfCokernelToImageObject,
+                    [ [ ImageEmbedding, 1 ],
+                      [ CokernelProjection, 1 ],
+                      [ KernelEmbedding, 1 ],
+                      [ LiftAlongMonomorphism, 1 ] ],
+                      
+  function( cat, mor )
+    local image_embedding, ker_of_coker_embedding;
+    
+    image_embedding := ImageEmbedding( cat, mor );
+    
+    ker_of_coker_embedding := KernelEmbedding( cat, CokernelProjection( cat, mor ) );
+    
+    return LiftAlongMonomorphism( cat, image_embedding, ker_of_coker_embedding );
+    
+  end : CategoryFilter := IsAbelianCategory, ##FIXME: PreAbelian?
+      Description := "IsomorphismFromKernelOfCokernelToImageObject as the unique lift of the kernel of the cokernel along the image embedding"
+);
+
+##
 AddDerivationToCAP( IsomorphismFromImageObjectToKernelOfCokernel,
         
   function( cat, morphism )
@@ -1874,6 +1894,26 @@ AddDerivationToCAP( IsomorphismFromCoimageToCokernelOfKernel,
     return InverseForMorphisms( cat, IsomorphismFromCokernelOfKernelToCoimage( cat, morphism ) );
     
 end : Description := "IsomorphismFromCoimageToCokernelOfKernel as the inverse of IsomorphismFromCokernelOfKernelToCoimage" );
+
+##
+AddDerivationToCAP( IsomorphismFromCoimageToCokernelOfKernel,
+                    [ [ CoimageProjection, 1 ],
+                      [ KernelEmbedding, 1 ],
+                      [ CokernelProjection, 1 ],
+                      [ ColiftAlongEpimorphism, 1 ] ],
+                      
+  function( cat, mor )
+    local coimage_projection, coker_of_ker_projection;
+    
+    coimage_projection := CoimageProjection( cat, mor );
+    
+    coker_of_ker_projection := CokernelProjection( cat, KernelEmbedding( cat, mor ) );
+    
+    return ColiftAlongEpimorphism( cat, coimage_projection, coker_of_ker_projection );
+    
+  end : CategoryFilter := IsAbelianCategory, ##FIXME: PreAbelian?
+      Description := "IsomorphismFromCoimageToCokernelOfKernel as the unique colift of the cokernel of the kernel along the coimage projection"
+);
 
 ##
 AddDerivationToCAP( IsomorphismFromFiberProductToKernelOfDiagonalDifference,
