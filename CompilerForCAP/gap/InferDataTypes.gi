@@ -43,71 +43,6 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_LOAD_DEFERRED_GLOBAL_VARIABLE_FILTERS",
     
 end );
 
-##
-InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_DATA_TYPE_FROM_FILTER_OR_STRING", function ( filter_or_string, category )
-    
-    if IsFilter( filter_or_string ) then
-        
-        if not filter_or_string in [ IsInt ] then
-            
-            #Error( "unknown filter: ", filter_or_string );
-            return fail;
-            
-        fi;
-        
-        return rec( filter := filter_or_string );
-        
-    elif filter_or_string = "bool" then
-        
-        return rec( filter := IsBool );
-        
-    elif filter_or_string = "category" then
-        
-        return CapJitDataTypeOfCategory( category );
-        
-    elif filter_or_string = "object" then
-        
-        return CapJitDataTypeOfObjectOfCategory( category );
-        
-    elif filter_or_string = "morphism" then
-        
-        return CapJitDataTypeOfMorphismOfCategory( category );
-        
-    elif filter_or_string = "list_of_objects" then
-        
-        return rec( filter := IsList, element_type := CapJitDataTypeOfObjectOfCategory( category ) );
-        
-    elif filter_or_string = "list_of_morphisms" then
-        
-        return rec( filter := IsList, element_type := CapJitDataTypeOfMorphismOfCategory( category ) );
-        
-    elif filter_or_string = "object_in_range_category_of_homomorphism_structure" then
-        
-        return CapJitDataTypeOfObjectOfCategory( RangeCategoryOfHomomorphismStructure( category ) );
-        
-    elif filter_or_string = "morphism_in_range_category_of_homomorphism_structure" then
-        
-        return CapJitDataTypeOfMorphismOfCategory( RangeCategoryOfHomomorphismStructure( category ) );
-        
-    elif filter_or_string = "object_datum" then
-        
-        # might be `fail`
-        return ObjectDatumType( category );
-        
-    elif filter_or_string = "morphism_datum" then
-        
-        # might be `fail`
-        return MorphismDatumType( category );
-        
-    else
-        
-        #Error( "unhandled filter string: ", filter_or_string );
-        return fail;
-        
-    fi;
-    
-end );
-
 InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_DATA_TYPE_OF_VALUE", function ( value )
   local element_types, element_type, filters, i;
     
@@ -254,7 +189,15 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_I
             
             Assert( 0, info.filter_list[1] = "category" );
             
-            return CAP_JIT_INTERNAL_GET_DATA_TYPE_FROM_FILTER_OR_STRING( info.return_type, input_types[1].category );
+            if IsString( info.return_type ) then
+                
+                return CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( info.return_type, input_types[1].category );
+                
+            else
+                
+                return fail;
+                
+            fi;
             
         fi;
         
@@ -1496,6 +1439,9 @@ CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "EntriesOfHomalgRowVector",
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "EntriesOfHomalgColumnVector", [ "IsHomalgMatrix" ], "rec( filter := IsList, element_type := rec( filter := IsHomalgRingElement ) )" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "DecideZeroRows", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "DecideZeroColumns", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "SimplifyHomalgMatrixByLeftAndRightMultiplicationWithInvertibleMatrices", [ "IsHomalgMatrix" ], "rec( filter := IsNTuple, element_types := [ rec( filter := IsHomalgMatrix ), rec( filter := IsHomalgMatrix ), rec( filter := IsHomalgMatrix ), rec( filter := IsHomalgMatrix ), rec( filter := IsHomalgMatrix ) ] )" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "SimplifyHomalgMatrixByLeftMultiplicationWithInvertibleMatrix", [ "IsHomalgMatrix" ], "rec( filter := IsNTuple, element_types := [ rec( filter := IsHomalgMatrix ), rec( filter := IsHomalgMatrix ), rec( filter := IsHomalgMatrix ) ] )" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "SimplifyHomalgMatrixByRightMultiplicationWithInvertibleMatrix", [ "IsHomalgMatrix" ], "rec( filter := IsNTuple, element_types := [ rec( filter := IsHomalgMatrix ), rec( filter := IsHomalgMatrix ), rec( filter := IsHomalgMatrix ) ] )" );
 
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "/", [ "IsHomalgRingElement", "IsHomalgRing" ], "IsHomalgRingElement" );
 

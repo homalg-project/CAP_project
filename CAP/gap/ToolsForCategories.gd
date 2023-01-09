@@ -10,10 +10,19 @@
 #!
 DeclareGlobalFunction( "DeclareFamilyProperty" );
 
+#! @Arguments string[, category]
+#! @Returns a record
+#! @Description
+#!  The function takes one of the strings listed under `filter_list` in <Ref Sect="Section_CapInternalInstallAdd" /> as input
+#!  and returns the corresponding data type (see <Ref BookName="CompilerForCAP" Func="CapJitInferredDataTypes" /> for details).
+#!  If no category is given, data types with generic filters (`IsCapCategoryObject`, `IsCapCategoryMorphism` etc.) are returned.
+#!  However, those cannot be used in the context of `CompilerForCAP` because the component `category` cannot be set in this case.
+DeclareGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING" );
+
 #! @Arguments filter_or_string[, category]
 #! @Returns a filter
 #! @Description
-#!  The function takes a filter or one of the strings listed under `filter_list` in <Ref Sect="Section_CapInternalInstallAdd" />.
+#!  The function takes a filter or one of the strings listed under `filter_list` in <Ref Sect="Section_CapInternalInstallAdd" /> as input.
 #!  Filters are returned unchanged. If a string is given, the corresponding filter of the category <A>category</A> is returned.
 #!  If no category is given, generic filters (`IsCapCategoryObject`, `IsCapCategoryMorphism` etc.) are used.
 DeclareGlobalFunction( "CAP_INTERNAL_REPLACE_STRING_WITH_FILTER" );
@@ -200,13 +209,15 @@ DeclareGlobalFunction( "CapJitAddTypeSignatureDeferred" );
 
 #! @BeginGroup
 #! @Description
-#!   (experimental) Returns the data type of the category (or objects or morphisms in the category) <A>category</A>.
+#!   (experimental) Returns the data type of the category (or objects, morphisms, or two cells in the category) <A>category</A>.
 #! @Arguments category
 DeclareGlobalFunction( "CapJitDataTypeOfCategory" );
 #! @Arguments category
 DeclareGlobalFunction( "CapJitDataTypeOfObjectOfCategory" );
 #! @Arguments category
 DeclareGlobalFunction( "CapJitDataTypeOfMorphismOfCategory" );
+#! @Arguments category
+DeclareGlobalFunction( "CapJitDataTypeOfTwoCellOfCategory" );
 #! @EndGroup
 
 #! @Description

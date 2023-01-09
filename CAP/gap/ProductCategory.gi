@@ -143,7 +143,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_PRODUCT_ADDS_FROM_CATEGORY",
         
         current_entry := CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname );
         
-        if not ForAll( current_entry.filter_list, filter -> filter in [ "category", "object", "morphism", "twocell", IsInt, "list_of_objects", "list_of_morphisms", "list_of_twocells" ] ) then
+        if not ForAll( current_entry.filter_list, filter -> filter in [ "category", "object", "morphism", "twocell", "integer", "list_of_objects", "list_of_morphisms", "list_of_twocells" ] ) then
             continue;
         fi;
         

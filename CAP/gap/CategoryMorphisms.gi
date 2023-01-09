@@ -261,8 +261,7 @@ InstallMethod( AddMorphismRepresentation,
         
     fi;
     
-    category!.morphism_representation := representation;
-    category!.morphism_type := NewType( TheFamilyOfCapCategoryMorphisms, representation and MorphismFilter( category ) and HasSource and HasRange and HasCapCategory );
+    InstallTrueMethod( representation, MorphismFilter( category ) );
     
 end );
 

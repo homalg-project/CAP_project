@@ -368,6 +368,12 @@ InstallGlobalFunction( CapInternalInstallAdd,
             elif filter = "morphism_datum" then
                 # The filter is already checked by the method selection. More complicated checks (e.g. the types of list elements) should be checked in a more general way.
                 return ReturnTrue;
+            elif filter = "integer" then
+                return function( arg, i )
+                    if not IsInt( arg ) then
+                        Error( input_human_readable_identifier_getter( i ), " is not an integer. You can access the variable via the local variable 'arg' in a break loop." );
+                    fi;
+                end;
             elif filter = "nonneg_integer_or_infinity" then
                 return function( arg, i )
                     CAP_INTERNAL_ASSERT_IS_NON_NEGATIVE_INTEGER_OR_INFINITY( arg, function( ) return input_human_readable_identifier_getter( i ); end );

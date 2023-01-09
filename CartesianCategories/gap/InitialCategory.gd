@@ -19,24 +19,16 @@ DeclareCategory( "IsInitialCapCategory",
         IsCapCategory );
 
 #! @Description
-#!  The &GAP; type of a cell in an initial category.
-#! @Arguments T
-DeclareCategory( "IsCellInInitialCategory",
-        IsCapCategoryCell );
-
-#! @Description
 #!  The &GAP; type of an object in an initial category.
 #! @Arguments T
-DeclareCategory( "IsObjectInInitialCategory",
-        IsCellInInitialCategory and
-        IsCapCategoryObjectRep );
+DeclareCategory( "IsObjectInInitialCapCategory",
+        IsCapCategoryObject );
 
 #! @Description
 #!  The &GAP; type of a morphism in an initial category.
 #! @Arguments T
-DeclareCategory( "IsMorphismInInitialCategory",
-        IsCellInInitialCategory and
-        IsCapCategoryMorphismRep );
+DeclareCategory( "IsMorphismInInitialCapCategory",
+        IsCapCategoryMorphism );
 
 ####################################
 #

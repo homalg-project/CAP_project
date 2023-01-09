@@ -163,11 +163,31 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
             
             filter_list := args[2];
             
-            arguments_data_types := List( filter_list, filter_or_string -> CAP_JIT_INTERNAL_GET_DATA_TYPE_FROM_FILTER_OR_STRING( filter_or_string, category ) );
+            arguments_data_types := List( filter_list, function ( filter_or_string )
+                
+                if IsString( filter_or_string ) then
+                    
+                    return CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( filter_or_string, category );
+                    
+                else
+                    
+                    return fail;
+                    
+                fi;
+                
+            end );
             
             return_type := args[3];
             
-            return_data_type := CAP_JIT_INTERNAL_GET_DATA_TYPE_FROM_FILTER_OR_STRING( return_type, category );
+            if IsString( return_type ) then
+                
+                return_data_type := CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( return_type, category );
+                
+            else
+                
+                return_data_type := fail;
+                
+            fi;
             
             if fail in arguments_data_types then
                 
