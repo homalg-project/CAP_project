@@ -1841,7 +1841,8 @@ AddDerivationToCAP( IsomorphismFromImageObjectToKernelOfCokernel,
     
     return UniversalMorphismFromImage( cat, morphism, [ morphism_to_kernel, kernel_emb ] );
     
-end : Description := "IsomorphismFromImageObjectToKernelOfCokernel using the universal property of the image" );
+end : CategoryFilter := IsAbelianCategory,
+      Description := "IsomorphismFromImageObjectToKernelOfCokernel using the universal property of the image" );
 
 ##
 AddDerivationToCAP( IsomorphismFromCokernelOfKernelToCoimage,
@@ -1864,7 +1865,8 @@ AddDerivationToCAP( IsomorphismFromCokernelOfKernelToCoimage,
     
     return UniversalMorphismIntoCoimage( cat, morphism, [ cokernel_proj, morphism_from_cokernel ] );
     
-end : Description := "IsomorphismFromCokernelOfKernelToCoimage using the universal property of the coimage" );
+end : CategoryFilter := IsAbelianCategory,
+      Description := "IsomorphismFromCokernelOfKernelToCoimage using the universal property of the coimage" );
 
 ##
 AddDerivationToCAP( IsomorphismFromCoimageToCokernelOfKernel,
@@ -3911,7 +3913,8 @@ AddFinalDerivationBundle( # IsomorphismFromImageObjectToKernelOfCokernel,
     return IdentityMorphism( cat, kernel_of_cokernel );
     
   end,
-] : Description := "IsomorphismFromImageObjectToKernelOfCokernel as the identity of the kernel of the cokernel" );
+] : CategoryFilter := IsAbelianCategory,
+    Description := "IsomorphismFromImageObjectToKernelOfCokernel as the identity of the kernel of the cokernel" );
 
 ##
 AddDerivationToCAP( MorphismFromCoimageToImageWithGivenObjects,
@@ -3993,7 +3996,8 @@ AddFinalDerivationBundle( # IsomorphismFromCoimageToCokernelOfKernel,
     return IdentityMorphism( cat, cokernel_of_kernel );
     
   end,
-] : Description := "IsomorphismFromCoimageToCokernelOfKernel as the identity of the cokernel of the kernel" );
+] : CategoryFilter := IsAbelianCategory,
+    Description := "IsomorphismFromCoimageToCokernelOfKernel as the identity of the cokernel of the kernel" );
 
 ## Final methods for initial object
 
