@@ -87,25 +87,6 @@ InstallMethod( CategoryConstructor,
     
     CC!.compiler_hints := rec( );
     
-    ## set filters and attributes
-    if IsBound( options.category_filter ) then
-        
-        CC!.compiler_hints.category_filter := options.category_filter;
-        
-    fi;
-    
-    if IsBound( options.category_object_filter ) then
-        
-        CC!.compiler_hints.object_filter := options.category_object_filter;
-        
-    fi;
-    
-    if IsBound( options.category_morphism_filter ) then
-        
-        CC!.compiler_hints.morphism_filter := options.category_morphism_filter;
-        
-    fi;
-    
     if IsBound( options.commutative_ring_of_linear_category ) then
         
         SetCommutativeRingOfLinearCategory( CC, options.commutative_ring_of_linear_category );

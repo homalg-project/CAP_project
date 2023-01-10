@@ -13,7 +13,7 @@
 ##
 InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR,
     function( ring, underlying_category, arg... )
-    local category, is_finite, sorting_function, with_nf, cocycle;
+    local name, category, is_finite, sorting_function, with_nf, cocycle;
     
     if not ( HasIsCommutative( ring ) and IsCommutative( ring ) ) then
         
@@ -47,13 +47,15 @@ InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR,
     
     if IsBound( cocycle ) then
         
-        category := CreateCapCategory( Concatenation( "TwistedLinearClosure( ", Name( underlying_category )," )" ) : overhead := false );
+        name := Concatenation( "TwistedLinearClosure( ", Name( underlying_category )," )" );
         
     else
         
-        category := CreateCapCategory( Concatenation( "LinearClosure( ", Name( underlying_category )," )" ) : overhead := false );
+        name := Concatenation( "LinearClosure( ", Name( underlying_category )," )" );
         
     fi;
+    
+    category := CreateCapCategory( name, IsLinearClosure, IsLinearClosureObject, IsLinearClosureMorphism, IsCapCategoryTwoCell : overhead := false );
     
     category!.category_as_first_argument := true;
     
@@ -61,9 +63,6 @@ InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR,
         category_attribute_names := [
             "UnderlyingCategory",
         ],
-        category_filter := IsLinearClosure,
-        object_filter := IsLinearClosureObject,
-        morphism_filter := IsLinearClosureMorphism,
     );
     
     category!.with_nf := with_nf;
@@ -86,15 +85,9 @@ InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR,
     
     SetCommutativeRingOfLinearCategory( category, ring );
     
-    SetFilterObj( category, IsLinearClosure );
-    
     SetUnderlyingRing( category, ring );
     
     SetUnderlyingCategory( category, underlying_category );
-    
-    AddObjectRepresentation( category, IsLinearClosureObject and HasUnderlyingOriginalObject );
-    
-    AddMorphismRepresentation( category, IsLinearClosureMorphism and HasCoefficientsList and HasSupportMorphisms );
     
     INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE( category );
     

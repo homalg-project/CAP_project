@@ -23,7 +23,7 @@ InstallMethod( RING_AS_CATEGORY,
   function( ring )
     local category;
     
-    category := CreateCapCategory( Concatenation( "Ring as category( ", String( ring )," )" ) );
+    category := CreateCapCategory( Concatenation( "Ring as category( ", String( ring )," )" ), IsRingAsCategory, IsRingAsCategoryObject, IsRingAsCategoryMorphism, IsCapCategoryTwoCell );
     
     category!.category_as_first_argument := true;
     
@@ -32,20 +32,11 @@ InstallMethod( RING_AS_CATEGORY,
             "UnderlyingRing",
             "RingAsCategoryUniqueObject",
         ],
-        category_filter := IsRingAsCategory,
-        object_filter := IsRingAsCategoryObject,
-        morphism_filter := IsRingAsCategoryMorphism,
     );
-    
-    SetFilterObj( category, IsRingAsCategory );
     
     SetUnderlyingRing( category, ring );
     
     SetIsAbCategory( category, true );
-    
-    AddObjectRepresentation( category, IsRingAsCategoryObject );
-    
-    AddMorphismRepresentation( category, IsRingAsCategoryMorphism and HasUnderlyingRingElement );
     
     INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY( category );
     

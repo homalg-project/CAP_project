@@ -39,7 +39,7 @@ InstallMethod( AdelmanCategory,
         
     fi;
     
-    adelman_category := CreateCapCategory( Concatenation( "Adelman category( ", Name( underlying_category ), " )" ) );
+    adelman_category := CreateCapCategory( Concatenation( "Adelman category( ", Name( underlying_category ), " )" ), IsAdelmanCategory, IsAdelmanCategoryObject, IsAdelmanCategoryMorphism, IsCapCategoryTwoCell );
     
     adelman_category!.category_as_first_argument := true;
     
@@ -47,12 +47,7 @@ InstallMethod( AdelmanCategory,
         category_attribute_names := [
             "UnderlyingCategory",
         ],
-        category_filter := IsAdelmanCategory,
-        object_filter := IsAdelmanCategoryObject,
-        morphism_filter := IsAdelmanCategoryMorphism,
     );
-    
-    SetFilterObj( adelman_category, IsAdelmanCategory );
     
     ## this is the purpose of the Adelman category
     SetIsAbelianCategory( adelman_category, true );
@@ -73,10 +68,6 @@ InstallMethod( AdelmanCategory,
     fi;
     
     DisableAddForCategoricalOperations( adelman_category );
-    
-    AddObjectRepresentation( adelman_category, IsAdelmanCategoryObject );
-    
-    AddMorphismRepresentation( adelman_category, IsAdelmanCategoryMorphism and HasUnderlyingMorphism );
     
     INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY( adelman_category );
     

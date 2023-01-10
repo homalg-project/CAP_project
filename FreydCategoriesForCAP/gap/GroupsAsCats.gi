@@ -19,7 +19,7 @@ InstallMethod( GroupAsCategory,
   function( group )
     local category, is_finite;
     
-    category := CreateCapCategory( Concatenation( "Group as category( ", String( group )," )" ) : overhead := false );
+    category := CreateCapCategory( Concatenation( "Group as category( ", String( group )," )" ), IsGroupAsCategory, IsGroupAsCategoryObject, IsGroupAsCategoryMorphism, IsCapCategoryTwoCell : overhead := false );
     
     category!.category_as_first_argument := true;
     
@@ -27,18 +27,9 @@ InstallMethod( GroupAsCategory,
         category_attribute_names := [
             "UnderlyingGroup",
         ],
-        category_filter := IsGroupAsCategory,
-        object_filter := IsGroupAsCategoryObject,
-        morphism_filter := IsGroupAsCategoryMorphism,
     );
     
-    SetFilterObj( category, IsGroupAsCategory );
-    
     SetUnderlyingGroup( category, group );
-    
-    AddObjectRepresentation( category, IsGroupAsCategoryObject );
-    
-    AddMorphismRepresentation( category, IsGroupAsCategoryMorphism and HasUnderlyingGroupElement );
     
     is_finite := HasIsFinite( group ) and IsFinite( group );
     
