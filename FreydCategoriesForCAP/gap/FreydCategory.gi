@@ -31,7 +31,7 @@ InstallGlobalFunction( FREYD_CATEGORY,
     
     name := Concatenation( "Freyd( ", Name( underlying_category ), " )" );
     
-    freyd_category := CreateCapCategory( name );
+    freyd_category := CreateCapCategory( name, IsFreydCategory, IsFreydCategoryObject, IsFreydCategoryMorphism, IsCapCategoryTwoCell );
     
     freyd_category!.category_as_first_argument := true;
     
@@ -45,12 +45,7 @@ InstallGlobalFunction( FREYD_CATEGORY,
         category_attribute_names := [
             "UnderlyingCategory",
         ],
-        category_filter := IsFreydCategory,
-        object_filter := IsFreydCategoryObject,
-        morphism_filter := IsFreydCategoryMorphism,
     );
-    
-    SetFilterObj( freyd_category, IsFreydCategory );
     
     SetIsAdditiveCategory( freyd_category, true );
     
@@ -111,10 +106,6 @@ InstallGlobalFunction( FREYD_CATEGORY,
     
     # is a Freyd category always not a strict monoidal category?
     # SetIsStrictMonoidalCategory( freyd_category, false );
-    
-    AddObjectRepresentation( freyd_category, IsFreydCategoryObject and HasRelationMorphism );
-    
-    AddMorphismRepresentation( freyd_category, IsFreydCategoryMorphism and HasUnderlyingMorphism );
     
     INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY( freyd_category );
     

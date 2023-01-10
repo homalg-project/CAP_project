@@ -87,7 +87,7 @@ InstallMethod( ADDITIVE_CLOSURE,
         
     fi;
     
-    category := CreateCapCategory( Concatenation( "Additive closure( ", Name( underlying_category )," )"  ) );
+    category := CreateCapCategory( Concatenation( "Additive closure( ", Name( underlying_category )," )" ), IsAdditiveClosureCategory, IsAdditiveClosureObject, IsAdditiveClosureMorphism, IsCapCategoryTwoCell );
     
     category!.category_as_first_argument := true;
     
@@ -97,9 +97,6 @@ InstallMethod( ADDITIVE_CLOSURE,
         category_attribute_names := [
             "UnderlyingCategory",
         ],
-        category_filter := IsAdditiveClosureCategory,
-        object_filter := IsAdditiveClosureObject,
-        morphism_filter := IsAdditiveClosureMorphism,
     );
     
     if ValueOption( "matrix_element_as_morphism" ) <> fail or ValueOption( "list_list_as_matrix" ) <> fail then
@@ -112,15 +109,9 @@ InstallMethod( ADDITIVE_CLOSURE,
         
     fi;
     
-    SetFilterObj( category, IsAdditiveClosureCategory );
-    
     SetIsAdditiveCategory( category, true );
     
     SetUnderlyingCategory( category, underlying_category );
-    
-    AddObjectRepresentation( category, IsAdditiveClosureObject );
-    
-    AddMorphismRepresentation( category, IsAdditiveClosureMorphism and HasMorphismMatrix );
     
     if HasIsLinearCategoryOverCommutativeRing( underlying_category ) and
         HasCommutativeRingOfLinearCategory( underlying_category ) then

@@ -366,9 +366,6 @@ InstallMethod( Opposite,
         category_attribute_names := [
             "OppositeCategory",
         ],
-        category_filter := WasCreatedAsOppositeCategory,
-        object_filter := IsCapCategoryOppositeObject,
-        morphism_filter := IsCapCategoryOppositeMorphism,
     );
     
     SetOppositeCategory( opposite_category, category );
