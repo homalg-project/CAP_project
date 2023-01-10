@@ -222,7 +222,21 @@ function ( cat_1, alpha_1, beta_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := Opposite( alpha_1 );
     deduped_1_1 := Opposite( beta_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Range( alpha_1 ), Range( beta_1 ), Opposite, CreateCapCategoryMorphismWithAttributes( OppositeCategory( cat_1 ), Source( deduped_1_1 ), Source( deduped_2_1 ), UnderlyingMatrix, RightDivide( UnderlyingMatrix( deduped_1_1 ), UnderlyingMatrix( deduped_2_1 ) ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Range( alpha_1 ), Range( beta_1 ), Opposite, CreateCapCategoryMorphismWithAttributes( OppositeCategory( cat_1 ), Source( deduped_1_1 ), Source( deduped_2_1 ), UnderlyingMatrix, SafeRightDivide( UnderlyingMatrix( deduped_1_1 ), UnderlyingMatrix( deduped_2_1 ) ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddColiftAlongEpimorphism( cat,
+        
+########
+function ( cat_1, epsilon_1, tau_1 )
+    local deduped_1_1, deduped_2_1;
+    deduped_2_1 := Opposite( epsilon_1 );
+    deduped_1_1 := Opposite( tau_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Range( epsilon_1 ), Range( tau_1 ), Opposite, CreateCapCategoryMorphismWithAttributes( OppositeCategory( cat_1 ), Source( deduped_1_1 ), Source( deduped_2_1 ), UnderlyingMatrix, UniqueRightDivide( UnderlyingMatrix( deduped_1_1 ), UnderlyingMatrix( deduped_2_1 ) ) ) );
 end
 ########
         
@@ -629,7 +643,21 @@ function ( cat_1, alpha_1, beta_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := Opposite( alpha_1 );
     deduped_1_1 := Opposite( beta_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Source( beta_1 ), Opposite, CreateCapCategoryMorphismWithAttributes( OppositeCategory( cat_1 ), Range( deduped_1_1 ), Range( deduped_2_1 ), UnderlyingMatrix, LeftDivide( UnderlyingMatrix( deduped_1_1 ), UnderlyingMatrix( deduped_2_1 ) ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Source( beta_1 ), Opposite, CreateCapCategoryMorphismWithAttributes( OppositeCategory( cat_1 ), Range( deduped_1_1 ), Range( deduped_2_1 ), UnderlyingMatrix, SafeLeftDivide( UnderlyingMatrix( deduped_1_1 ), UnderlyingMatrix( deduped_2_1 ) ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddLiftAlongMonomorphism( cat,
+        
+########
+function ( cat_1, iota_1, tau_1 )
+    local deduped_1_1, deduped_2_1;
+    deduped_2_1 := Opposite( tau_1 );
+    deduped_1_1 := Opposite( iota_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( tau_1 ), Source( iota_1 ), Opposite, CreateCapCategoryMorphismWithAttributes( OppositeCategory( cat_1 ), Range( deduped_1_1 ), Range( deduped_2_1 ), UnderlyingMatrix, UniqueLeftDivide( UnderlyingMatrix( deduped_1_1 ), UnderlyingMatrix( deduped_2_1 ) ) ) );
 end
 ########
         

@@ -678,9 +678,20 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
       function( cat, alpha, beta )
         local right_divide;
         
-        right_divide := RightDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) );
+        right_divide := SafeRightDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) );
         
         return CategoryOfRowsMorphism( cat, Source( alpha ), right_divide, Source( beta ) );
+        
+    end );
+    
+    ##
+    AddLiftAlongMonomorphism( category,
+      function( cat, iota, tau )
+        local right_divide;
+        
+        right_divide := UniqueRightDivide( UnderlyingMatrix( tau ), UnderlyingMatrix( iota ) );
+        
+        return CategoryOfRowsMorphism( cat, Source( tau ), right_divide, Source( iota ) );
         
     end );
     
@@ -708,9 +719,20 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
       function( cat, alpha, beta )
         local left_divide;
         
-        left_divide := LeftDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) );
+        left_divide := SafeLeftDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) );
         
         return CategoryOfRowsMorphism( cat, Range( alpha ), left_divide, Range( beta ) );
+        
+    end );
+    
+    ##
+    AddColiftAlongEpimorphism( category,
+      function( cat, epsilon, tau )
+        local left_divide;
+        
+        left_divide := UniqueLeftDivide( UnderlyingMatrix( epsilon ), UnderlyingMatrix( tau ) );
+        
+        return CategoryOfRowsMorphism( cat, Range( epsilon ), left_divide, Range( tau ) );
         
     end );
     
