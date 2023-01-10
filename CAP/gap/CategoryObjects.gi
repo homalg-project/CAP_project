@@ -256,13 +256,22 @@ InstallMethod( RandomObject, [ IsCapCategory, IsList ], RandomObjectByList );
 InstallGlobalFunction( ObjectifyObjectForCAPWithAttributes,
                        
   function( object, category, additional_arguments_list... )
-    local arg_list;
+    local arg_list, obj;
     
     arg_list := Concatenation(
         [ object, category!.object_type, CapCategory, category ], additional_arguments_list
     );
     
-    return CallFuncList( ObjectifyWithAttributes, arg_list );
+    obj := CallFuncList( ObjectifyWithAttributes, arg_list );
+    
+    #= comment for Julia
+    # work around https://github.com/gap-system/gap/issues/3642:
+    # New implications of `ObjectFilter( category )` (e.g. installed via `AddObjectRepresentation`)
+    # are not automatically set in `category!.object_type`.
+    SetFilterObj( obj, ObjectFilter( category ) );
+    # =#
+    
+    return obj;
     
 end );
 
@@ -270,7 +279,7 @@ end );
 InstallGlobalFunction( CreateCapCategoryObjectWithAttributes,
                        
   function( category, additional_arguments_list... )
-    local arg_list;
+    local arg_list, obj;
     
     # inline ObjectifyObjectForCAPWithAttributes( rec( ), category, additional_arguments_list... );
     
@@ -278,7 +287,16 @@ InstallGlobalFunction( CreateCapCategoryObjectWithAttributes,
         [ rec( ), category!.object_type, CapCategory, category ], additional_arguments_list
     );
     
-    return CallFuncList( ObjectifyWithAttributes, arg_list );
+    obj := CallFuncList( ObjectifyWithAttributes, arg_list );
+    
+    #= comment for Julia
+    # work around https://github.com/gap-system/gap/issues/3642:
+    # New implications of `ObjectFilter( category )` (e.g. installed via `AddObjectRepresentation`)
+    # are not automatically set in `category!.object_type`.
+    SetFilterObj( obj, ObjectFilter( category ) );
+    # =#
+    
+    return obj;
     
 end );
 

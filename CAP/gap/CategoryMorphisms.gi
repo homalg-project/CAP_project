@@ -312,6 +312,13 @@ InstallGlobalFunction( ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes,
         INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ objectified_morphism ], range, category );
     fi;
     
+    #= comment for Julia
+    # work around https://github.com/gap-system/gap/issues/3642:
+    # New implications of `MorphismFilter( category )` (e.g. installed via `AddMorphismRepresentation`)
+    # are not automatically set in `category!.morphism_type`.
+    SetFilterObj( objectified_morphism, MorphismFilter( category ) );
+    # =#
+    
     return objectified_morphism;
     
 end );
@@ -334,6 +341,13 @@ InstallGlobalFunction( CreateCapCategoryMorphismWithAttributes,
         INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ objectified_morphism ], source, category );
         INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ objectified_morphism ], range, category );
     fi;
+    
+    #= comment for Julia
+    # work around https://github.com/gap-system/gap/issues/3642:
+    # New implications of `MorphismFilter( category )` (e.g. installed via `AddMorphismRepresentation`)
+    # are not automatically set in `category!.morphism_type`.
+    SetFilterObj( objectified_morphism, MorphismFilter( category ) );
+    # =#
     
     return objectified_morphism;
     
