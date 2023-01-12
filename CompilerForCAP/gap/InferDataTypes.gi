@@ -764,8 +764,41 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INFERRED_DATA_TYPES, function ( tree, in
 end );
 
 InstallGlobalFunction( CapJitInferredDataTypes, function ( tree )
+  local orig_data_type;
     
-    return CAP_JIT_INTERNAL_INFERRED_DATA_TYPES( tree, [ ] );
+    if tree.type <> "EXPR_DECLARATIVE_FUNC" then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        ErrorWithCurrentlyCompiledFunctionLocation( "CapJitInferredDataTypes can only be applied to enhanced syntax trees of functions" );
+        
+    fi;
+    
+    if not CAP_JIT_DATA_TYPE_INFERENCE_ENABLED then
+        
+        return tree;
+        
+    fi;
+    
+    if not IsBound( tree.data_type ) then
+        
+        return tree;
+        
+    fi;
+    
+    orig_data_type := tree.data_type;
+    
+    tree := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES( tree, [ ] );
+    
+    # The tree might lose its type because we avoid partial typings.
+    # However, in many cases it can be typed later in the compilation process (after inlining etc.).
+    # Thus, we add the type back manually here.
+    if not IsBound( tree.data_type ) then
+        
+        tree.data_type := orig_data_type;
+        
+    fi;
+    
+    return tree;
     
 end );
 
