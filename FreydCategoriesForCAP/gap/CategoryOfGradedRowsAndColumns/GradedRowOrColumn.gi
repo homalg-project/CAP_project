@@ -10,20 +10,6 @@
 
 ####################################
 ##
-## GAP Category
-##
-####################################
-
-DeclareRepresentation( "IsGradedRowRep",
-                       IsGradedRow and IsAttributeStoringRep,
-                       [ ] );
-
-DeclareRepresentation( "IsGradedColumnRep",
-                       IsGradedColumn and IsAttributeStoringRep,
-                       [ ] );
-
-####################################
-##
 ## Constructors
 ##
 ####################################

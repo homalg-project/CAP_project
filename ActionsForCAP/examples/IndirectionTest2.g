@@ -7,25 +7,21 @@
 LoadPackage( "LinearAlgebraForCAP", false );
 #! true
 
-DeclareRepresentation( "IsWrappedObjectRep",
-                       IsCapCategoryObjectRep,
-                       [ ] );;
+DeclareFilter( "IsWrappedObject", IsCapCategoryObject );;
 
-DeclareRepresentation( "IsWrappedMorphismRep",
-                       IsCapCategoryMorphismRep,
-                       [ ] );;
+DeclareFilter( "IsWrappedMorphism", IsCapCategoryMorphism );;
 
 DeclareOperation( "WrappedObject",
                   [ IsCapCategoryObject ] );;
 
 DeclareAttribute( "UnderlyingCell",
-                  IsWrappedObjectRep );;
+                  IsWrappedObject );;
 
 DeclareOperation( "WrappedMorphism",
-                  [ IsWrappedObjectRep, IsCapCategoryMorphism, IsWrappedObjectRep ] );;
+                  [ IsWrappedObject, IsCapCategoryMorphism, IsWrappedObject ] );;
 
 DeclareAttribute( "UnderlyingCell",
-                  IsWrappedMorphismRep );;
+                  IsWrappedMorphism );;
 
 
 #################################
@@ -38,11 +34,8 @@ Q := HomalgFieldOfRationals();;
 
 vec := MatrixCategory( Q );;
 
-wrapped_cat := CreateCapCategory( "Wrapped Category" );
+wrapped_cat := CreateCapCategory( "Wrapped Category", IsCapCategory, IsWrappedObject, IsWrappedMorphism, IsCapCategoryTwoCell );
 #! Wrapped Category
-
-AddObjectRepresentation( wrapped_cat, IsWrappedObjectRep );
-AddMorphismRepresentation( wrapped_cat, IsWrappedMorphismRep );
 
 #################################
 ##
@@ -61,7 +54,7 @@ InstallMethod( WrappedObject,
     ); end );
 
 InstallMethod( WrappedMorphism,
-               [ IsWrappedObjectRep, IsCapCategoryMorphism, IsWrappedObjectRep ],
+               [ IsWrappedObject, IsCapCategoryMorphism, IsWrappedObject ],
                   
   function( source, morphism, range )
     
