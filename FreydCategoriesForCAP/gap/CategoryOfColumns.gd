@@ -32,20 +32,41 @@ DeclareCategory( "IsCategoryOfColumns",
 ##
 ####################################
 
+##
 DeclareOperation( "CategoryOfColumns",
                   [ IsHomalgRing ] );
 
+##
 DeclareOperation( "CategoryOfColumnsObject",
                   [ IsInt, IsCategoryOfColumns ] );
 
 KeyDependentOperation( "CategoryOfColumnsObject",
                        IsCategoryOfColumns, IsInt, ReturnTrue );
 
+CapJitAddTypeSignature( "CategoryOfColumnsObject", [ IsCategoryOfColumns, IsInt ], function ( input_types )
+    
+    return CapJitDataTypeOfObjectOfCategory( input_types[1].category );
+    
+end );
+
+##
 DeclareOperation( "AsCategoryOfColumnsMorphism",
                   [ IsHomalgMatrix, IsCategoryOfColumns ] );
 
+CapJitAddTypeSignature( "AsCategoryOfColumnsMorphism", [ IsCategoryOfColumns, IsHomalgMatrix ], function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
+    
+end );
+
 DeclareOperation( "CategoryOfColumnsMorphism",
                   [ IsCategoryOfColumnsObject, IsHomalgMatrix, IsCategoryOfColumnsObject ] );
+
+CapJitAddTypeSignature( "CategoryOfColumnsMorphism", [ IsCategoryOfColumns, IsCategoryOfColumnsObject, IsHomalgMatrix, IsCategoryOfColumnsObject ], function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
+    
+end );
 
 DeclareOperation( "\/",
                   [ IsHomalgMatrix, IsCategoryOfColumns ] );

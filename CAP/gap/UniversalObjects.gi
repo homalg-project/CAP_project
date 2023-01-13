@@ -134,6 +134,13 @@ InstallMethod( DirectSumOp,
     
 end );
 
+# usually the type signatures should be part of the gd file, but `CapJitAddTypeSignature` is not available there
+CapJitAddTypeSignature( "DirectSumFunctorial", [ IsCapCategory, IsList ], function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
+    
+end );
+
 ####################################
 ## Add methods
 ####################################

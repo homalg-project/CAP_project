@@ -171,7 +171,20 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_LOAD_DEFERRED_TYPE_SIGNATURES", functio
 end );
 
 InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_TYPES", function ( gvar, input_types )
-  local input_filters, info, type_signatures, output_type;
+  local input_filters, info, pos, category, type_signatures, output_type;
+    
+    # normalize to the "official" name
+    gvar := NameFunction( ValueGlobal( gvar ) );
+    
+    # in GAP 4.11 and GAP 4.13, "MatElm" points to "[,]", in GAP 4.12 it's the other way round
+    if gvar = "MatElm" then
+        
+        # this code is only executed with GAP 4.12, but coverage information is only uploaded for GAP master
+        Assert( 0, IsIdenticalObj( \[\,\], MatElm ) );
+        
+        gvar := "[,]";
+        
+    fi;
     
     input_filters := List( input_types, type -> type.filter );
     
@@ -195,7 +208,37 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_I
                 
             else
                 
+                #Error( "could not get output_type" );
                 return fail;
+                
+            fi;
+            
+        elif info.install_convenience_without_category and IsSpecializationOfFilterList( info.filter_list{[ 2 .. Length( info.filter_list ) ]}, input_filters ) then
+            
+            pos := PositionProperty( info.filter_list, filter_string -> filter_string in [ "object", "morphism", "twocell", "list_of_objects", "list_of_morphisms", "list_of_twocells" ] );
+            
+            if pos <> fail then
+                
+                if StartsWith( info.filter_list[pos], "list_of_" ) then
+                    
+                    category := input_types[pos - 1].element_type.category;
+                    
+                else
+                    
+                    category := input_types[pos - 1].category;
+                    
+                fi;
+                
+                if IsString( info.return_type ) then
+                    
+                    return CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( info.return_type, category );
+                    
+                else
+                    
+                    #Error( "could not get output_type" );
+                    return fail;
+                    
+                fi;
                 
             fi;
             
@@ -1148,6 +1191,18 @@ CapJitAddTypeSignature( "NTuple", "any", function ( input_types )
     Assert( 0, input_types[1].filter = IsInt );
     
     return rec( filter := IsNTuple, element_types := input_types{[ 2 .. Length( input_types ) ]} );
+    
+end );
+
+CapJitAddTypeSignature( "Pair", [ IsObject, IsObject ], function ( input_types )
+    
+    return rec( filter := IsNTuple, element_types := input_types );
+    
+end );
+
+CapJitAddTypeSignature( "Triple", [ IsObject, IsObject, IsObject ], function ( input_types )
+    
+    return rec( filter := IsNTuple, element_types := input_types );
     
 end );
 

@@ -216,6 +216,12 @@ DeclareAttribute( "WrappingFunctor",
 DeclareOperation( "ModelingObject",
                   [ IsCapCategory, IsCapCategoryObject ] );
 
+CapJitAddTypeSignature( "ModelingObject", [ IsCapCategory, IsCapCategoryObject ], function ( input_types )
+    
+    return CapJitDataTypeOfObjectOfCategory( ModelingCategory( input_types[1].category ) );
+    
+end );
+
 #! @Description
 #!  Returns the object modeled by the object <A>obj</A> in the modeling category of <A>cat</A>.
 #!  <A>cat</A> must be a CAP category which has been created as a wrapper CAP category (but not necessarily uses the default data structure).
@@ -224,6 +230,12 @@ DeclareOperation( "ModelingObject",
 DeclareOperation( "ModeledObject",
                   [ IsCapCategory, IsCapCategoryObject ] );
 
+CapJitAddTypeSignature( "ModeledObject", [ IsCapCategory, IsCapCategoryObject ], function ( input_types )
+    
+    return CapJitDataTypeOfObjectOfCategory( input_types[1].category );
+    
+end );
+
 #! @Description
 #!  Returns the morphism modeling the morphism <A>mor</A> in <A>cat</A>.
 #!  <A>cat</A> must be a CAP category which has been created as a wrapper CAP category (but not necessarily uses the default data structure).
@@ -231,12 +243,24 @@ DeclareOperation( "ModeledObject",
 #! @Returns a CAP category morphism
 DeclareOperation( "ModelingMorphism", [ IsCapCategory, IsCapCategoryMorphism ] );
 
+CapJitAddTypeSignature( "ModelingMorphism", [ IsCapCategory, IsCapCategoryMorphism ], function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( ModelingCategory( input_types[1].category ) );
+    
+end );
+
 #! @Description
 #!  Returns the morphism modeled by the morphism <A>mor</A> in the modeling category of <A>cat</A> with given source and range.
 #!  <A>cat</A> must be a CAP category which has been created as a wrapper CAP category (but not necessarily uses the default data structure).
 #! @Arguments cat, source, obj, range
 #! @Returns a CAP category morphism
 DeclareOperation( "ModeledMorphism", [ IsCapCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+CapJitAddTypeSignature( "ModeledMorphism", [ IsCapCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ], function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
+    
+end );
 
 # helper operations
 # Those should never be used outside of WrapperCategory, but allow to register methods for CompilerForCAP.

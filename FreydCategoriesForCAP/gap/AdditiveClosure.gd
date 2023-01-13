@@ -65,6 +65,12 @@ DeclareOperation( "ADDITIVE_CLOSURE",
 DeclareOperation( "AdditiveClosureObject",
                   [ IsList, IsAdditiveClosureCategory ] );
 
+CapJitAddTypeSignature( "AdditiveClosureObject", [ IsAdditiveClosureCategory, IsList ], function ( input_types )
+    
+    return CapJitDataTypeOfObjectOfCategory( input_types[1].category );
+    
+end );
+
 #! @Description
 #! The argument is an object $A$ in an Ab-category $C$. The output is the image of $A$ under the inclusion functor $\iota:C\to C^\oplus$.
 #! @Arguments A
@@ -80,6 +86,12 @@ DeclareAttribute( "AsAdditiveClosureObject",
 #! @Returns a morphism in $\mathrm{Hom}_{C^\oplus}(A,B)$
 DeclareOperation( "AdditiveClosureMorphism",
                   [ IsAdditiveClosureObject, IsList, IsAdditiveClosureObject ] );
+
+CapJitAddTypeSignature( "AdditiveClosureMorphism", [ IsAdditiveClosureCategory, IsAdditiveClosureObject, IsList, IsAdditiveClosureObject ], function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
+    
+end );
 
 # deprecated
 DeclareOperation( "AdditiveClosureMorphismListList",

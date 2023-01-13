@@ -47,6 +47,12 @@ end );
 DeclareOperation( "RingAsCategoryMorphism",
                   [ IsRingAsCategory, IsRingElement ] );
 
+CapJitAddTypeSignature( "RingAsCategoryMorphism", [ IsRingAsCategory, IsRingElement ], function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
+    
+end );
+
 ####################################
 ##
 #! @Section Attributes

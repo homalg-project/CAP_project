@@ -109,6 +109,12 @@ DeclareAttribute( "AdelmanCategory",
 DeclareOperation( "AdelmanCategoryObject",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+CapJitAddTypeSignature( "AdelmanCategoryObject", [ IsAdelmanCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ], function ( input_types )
+    
+    return CapJitDataTypeOfObjectOfCategory( input_types[1].category );
+    
+end );
+
 #! @Description
 #! Let $A$ be an additive category.
 #! The arguments are
@@ -121,6 +127,12 @@ DeclareOperation( "AdelmanCategoryObject",
 #! @Arguments x, alpha, y
 DeclareOperation( "AdelmanCategoryMorphism",
                   [ IsAdelmanCategoryObject, IsCapCategoryMorphism, IsAdelmanCategoryObject ] );
+
+CapJitAddTypeSignature( "AdelmanCategoryMorphism", [ IsAdelmanCategory, IsAdelmanCategoryObject, IsCapCategoryMorphism, IsAdelmanCategoryObject ], function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
+    
+end );
 
 #! @Description
 #! The argument is an object $a$ of an additive category $A$.
@@ -300,6 +312,7 @@ DeclareAttribute( "WitnessPairForBeingCongruentToZero",
 #! @Arguments alpha
 DeclareAttribute( "MereExistenceOfWitnessPairForBeingCongruentToZero",
                   IsAdelmanCategoryMorphism );
+CapJitAddTypeSignature( "MereExistenceOfWitnessPairForBeingCongruentToZero", [ IsAdelmanCategory, IsAdelmanCategoryMorphism ], IsBool );
 
 DeclareOperation( "HomomorphismStructureOnObjectsForAdelmanCategoryGeneralizedEmbedding",
                   [ IsAdelmanCategoryObject, IsAdelmanCategoryObject ] );
