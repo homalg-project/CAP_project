@@ -303,20 +303,16 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XDeclareRepresentation( "IsWrappedObjectRep",[127X[104X
-    [4X[25X>[125X [27X                       IsCapCategoryObjectRep,[127X[104X
-    [4X[25X>[125X [27X                       [ ] );;[127X[104X
-    [4X[25Xgap>[125X [27XDeclareRepresentation( "IsWrappedMorphismRep",[127X[104X
-    [4X[25X>[125X [27X                       IsCapCategoryMorphismRep,[127X[104X
-    [4X[25X>[125X [27X                       [ ] );;[127X[104X
+    [4X[25Xgap>[125X [27XDeclareFilter( "IsWrappedObject", IsCapCategoryObject );;[127X[104X
+    [4X[25Xgap>[125X [27XDeclareFilter( "IsWrappedMorphism", IsCapCategoryMorphism );;[127X[104X
     [4X[25Xgap>[125X [27XDeclareOperation( "WrappedObject",[127X[104X
     [4X[25X>[125X [27X                  [ IsCapCategoryObject ] );;[127X[104X
     [4X[25Xgap>[125X [27XDeclareAttribute( "UnderlyingCell",[127X[104X
-    [4X[25X>[125X [27X                  IsWrappedObjectRep );;[127X[104X
+    [4X[25X>[125X [27X                  IsWrappedObject );;[127X[104X
     [4X[25Xgap>[125X [27XDeclareOperation( "WrappedMorphism",[127X[104X
-    [4X[25X>[125X [27X                  [ IsWrappedObjectRep, IsCapCategoryMorphism, IsWrappedObjectRep ] );;[127X[104X
+    [4X[25X>[125X [27X                  [ IsWrappedObject, IsCapCategoryMorphism, IsWrappedObject ] );;[127X[104X
     [4X[25Xgap>[125X [27XDeclareAttribute( "UnderlyingCell",[127X[104X
-    [4X[25X>[125X [27X                  IsWrappedMorphismRep );;[127X[104X
+    [4X[25X>[125X [27X                  IsWrappedMorphism );;[127X[104X
     [4X[25Xgap>[125X [27X#################################[127X[104X
     [4X[25X>[125X [27X##[127X[104X
     [4X[25X>[125X [27X## Creation of category[127X[104X
@@ -325,10 +321,8 @@
     [4X[25X>[125X [27X[127X[104X
     [4X[25X>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
     [4X[25Xgap>[125X [27Xvec := MatrixCategory( Q );;[127X[104X
-    [4X[25Xgap>[125X [27Xwrapped_cat := CreateCapCategory( "Wrapped Category" );[127X[104X
+    [4X[25Xgap>[125X [27Xwrapped_cat := CreateCapCategory( "Wrapped Category", IsCapCategory, IsWrappedObject, IsWrappedMorphism, IsCapCategoryTwoCell );[127X[104X
     [4X[28XWrapped Category[128X[104X
-    [4X[25Xgap>[125X [27XAddObjectRepresentation( wrapped_cat, IsWrappedObjectRep );[127X[104X
-    [4X[25Xgap>[125X [27XAddMorphismRepresentation( wrapped_cat, IsWrappedMorphismRep );[127X[104X
     [4X[25Xgap>[125X [27X#################################[127X[104X
     [4X[25X>[125X [27X##[127X[104X
     [4X[25X>[125X [27X## Constructors for objects and morphisms[127X[104X
@@ -345,7 +339,7 @@
     [4X[25X>[125X [27X        UnderlyingCell, obj[127X[104X
     [4X[25X>[125X [27X    ); end );[127X[104X
     [4X[25Xgap>[125X [27XInstallMethod( WrappedMorphism,[127X[104X
-    [4X[25X>[125X [27X               [ IsWrappedObjectRep, IsCapCategoryMorphism, IsWrappedObjectRep ],[127X[104X
+    [4X[25X>[125X [27X               [ IsWrappedObject, IsCapCategoryMorphism, IsWrappedObject ],[127X[104X
     [4X[25X>[125X [27X                  [127X[104X
     [4X[25X>[125X [27X  function( source, morphism, range )[127X[104X
     [4X[25X>[125X [27X    [127X[104X

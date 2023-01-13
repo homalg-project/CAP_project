@@ -336,20 +336,16 @@ Less generators for Category of left presentations of Q[x,y]
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LinearAlgebraForCAP", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DeclareRepresentation( "IsWrappedObjectRep",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                       IsCapCategoryObjectRep,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                       [ ] );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DeclareRepresentation( "IsWrappedMorphismRep",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                       IsCapCategoryMorphismRep,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                       [ ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DeclareFilter( "IsWrappedObject", IsCapCategoryObject );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DeclareFilter( "IsWrappedMorphism", IsCapCategoryMorphism );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DeclareOperation( "WrappedObject",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                  [ IsCapCategoryObject ] );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DeclareAttribute( "UnderlyingCell",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                  IsWrappedObjectRep );;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                  IsWrappedObject );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DeclareOperation( "WrappedMorphism",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                  [ IsWrappedObjectRep, IsCapCategoryMorphism, IsWrappedObjectRep ] );;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                  [ IsWrappedObject, IsCapCategoryMorphism, IsWrappedObject ] );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DeclareAttribute( "UnderlyingCell",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                  IsWrappedMorphismRep );;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                  IsWrappedMorphism );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#################################</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">##</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">## Creation of category</span>
@@ -358,10 +354,8 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput"></span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MatrixCategory( Q );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">wrapped_cat := CreateCapCategory( "Wrapped Category" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">wrapped_cat := CreateCapCategory( "Wrapped Category", IsCapCategory, IsWrappedObject, IsWrappedMorphism, IsCapCategoryTwoCell );</span>
 Wrapped Category
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddObjectRepresentation( wrapped_cat, IsWrappedObjectRep );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddMorphismRepresentation( wrapped_cat, IsWrappedMorphismRep );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#################################</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">##</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">## Constructors for objects and morphisms</span>
@@ -378,7 +372,7 @@ Wrapped Category
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        UnderlyingCell, obj</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    ); end );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InstallMethod( WrappedMorphism,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">               [ IsWrappedObjectRep, IsCapCategoryMorphism, IsWrappedObjectRep ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               [ IsWrappedObject, IsCapCategoryMorphism, IsWrappedObject ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                  </span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( source, morphism, range )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
