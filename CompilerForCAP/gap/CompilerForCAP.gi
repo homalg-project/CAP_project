@@ -163,6 +163,13 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
             
             filter_list := args[2];
             
+            if filter_list[1] <> "category" then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Error( "the first input filter must be \"category\"" );
+                
+            fi;
+            
             arguments_data_types := List( filter_list, function ( filter_or_string )
                 
                 if IsString( filter_or_string ) then

@@ -79,8 +79,8 @@ DeclareInfoClass( "InfoCapJit" );
 #!   Returns a compiled version of the function <A>func</A> with signature <A>type_signature</A> (see <Ref Func="CapJitInferredDataTypes" />).
 #!   If <A>func</A> is an operation or a kernel function, it is returned unchanged.
 #!   If <A>type_signature</A> is not given, all steps which require knowledge about the types of variables are skipped.
-#!   The type signature can also be given by three separate arguments:
-#!   a CAP category, a list of input filters (as in `filter_list` in the method name record) and an output filter (as in `return_type` in the method name record).
+#!   If the first argument of <A>func</A> is a CAP category, the type signature can also be given by three separate arguments:
+#!   an instance of a CAP category, a list of input filters (as in `filter_list` in the method name record) and an output filter (as in `return_type` in the method name record).
 #!   If a full type signature is not available but the first argument of <A>func</A> is a CAP category, an instance of a CAP category can be given as the second argument.
 #!   In this case, the category is used to get the type information required to resolve CAP operations.
 #! @Returns a function
