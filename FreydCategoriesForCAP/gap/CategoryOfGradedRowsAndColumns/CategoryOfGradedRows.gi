@@ -21,13 +21,7 @@ InstallMethod( CategoryOfGradedRows,
     local category;
 
       # construct the category
-      category := CreateCapCategory( Concatenation( "Category of graded rows over ", RingName( homalg_graded_ring ) ) );
-      
-      SetFilterObj( category, IsCategoryOfGradedRows );
-      
-      AddObjectRepresentation( category, IsGradedRowRep );
-      
-      AddMorphismRepresentation( category, IsGradedRowMorphismRep );
+      category := CreateCapCategory( Concatenation( "Category of graded rows over ", RingName( homalg_graded_ring ) ), IsCategoryOfGradedRows, IsGradedRow, IsGradedRowMorphism, IsCapCategoryTwoCell );
       
       SetUnderlyingGradedRing( category, homalg_graded_ring );
       
