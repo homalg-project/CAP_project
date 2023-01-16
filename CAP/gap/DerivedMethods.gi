@@ -619,6 +619,48 @@ AddDerivationToCAP( UniversalMorphismFromCoproduct,
   end : Description := "UniversalMorphismFromCoproduct using UniversalMorphismFromDirectSum" );
 
 ##
+AddDerivationToCAP( UniversalMorphismIntoEqualizer,
+                    [ [ JointPairwiseDifferencesOfMorphismsIntoDirectProduct, 1 ],
+                      [ KernelLift, 1 ],
+                      [ IsomorphismFromKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProductToEqualizer, 1 ],
+                      [ PreCompose, 1 ] ],
+                                       
+  function( cat, A, diagram, test_object, tau )
+    local joint_pairwise_differences, kernel_lift;
+    
+    joint_pairwise_differences := JointPairwiseDifferencesOfMorphismsIntoDirectProduct( cat, A, diagram );
+    
+    kernel_lift := KernelLift( cat, joint_pairwise_differences, test_object, tau );
+    
+    return PreCompose( cat,
+             kernel_lift,
+             IsomorphismFromKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProductToEqualizer( cat, A, diagram )
+           );
+    
+  end : Description := "UniversalMorphismIntoEqualizer using the universality of the kernel representation of the equalizer" );
+
+##
+AddDerivationToCAP( UniversalMorphismFromCoequalizer,
+                    [ [ JointPairwiseDifferencesOfMorphismsFromCoproduct, 1 ],
+                      [ CokernelColift, 1 ],
+                      [ IsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct, 1 ],
+                      [ PreCompose, 1 ] ],
+                            
+  function( cat, A, diagram, test_object, tau )
+    local joint_pairwise_differences, cokernel_colift;
+    
+    joint_pairwise_differences := JointPairwiseDifferencesOfMorphismsFromCoproduct( cat, A, diagram );
+    
+    cokernel_colift := CokernelColift( cat, joint_pairwise_differences, test_object, tau );
+    
+    return PreCompose( cat,
+             IsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct( cat, A, diagram ),
+             cokernel_colift
+           );
+    
+  end : Description := "UniversalMorphismFromCoequalizer using the universality of the cokernel representation of the coequalizer" );
+
+##
 AddDerivationToCAP( UniversalMorphismIntoFiberProduct,
                     [ [ UniversalMorphismIntoDirectSum, 1 ],
                       [ DirectSumDiagonalDifference, 1 ],
@@ -2490,6 +2532,40 @@ AddDerivationToCAP( DirectSumProjectionInPushout,
     return UniversalMorphismFromDirectSum( cat, ranges_of_diagram, Pushout( cat, diagram ), test_sink );
     
 end : Description := "DirectSumProjectionInPushout using the universal property of the direct sum" );
+
+##
+AddDerivationToCAP( EmbeddingOfEqualizer,
+                    [ [ KernelEmbedding, 1 ],
+                      [ JointPairwiseDifferencesOfMorphismsIntoDirectProduct, 1 ],
+                      [ PreCompose, 1 ],
+                      [ IsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct, 1 ] ],
+                    
+  function( cat, A, diagram )
+    local kernel_of_pairwise_differences;
+    
+    kernel_of_pairwise_differences := KernelEmbedding( cat, JointPairwiseDifferencesOfMorphismsIntoDirectProduct( cat, A, diagram ) );
+    
+    return PreCompose( cat, IsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct( cat, A, diagram ),
+                       kernel_of_pairwise_differences );
+    
+end : Description := "EmbeddingOfEqualizer using the kernel embedding of JointPairwiseDifferencesOfMorphismsIntoDirectProduct" );
+
+##
+AddDerivationToCAP( ProjectionOntoCoequalizer,
+                    [ [ CokernelProjection, 1 ],
+                      [ JointPairwiseDifferencesOfMorphismsFromCoproduct, 1 ],
+                      [ PreCompose, 1 ],
+                      [ IsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproductToCoequalizer, 1 ] ],
+                    
+  function( cat, A, diagram )
+    local cokernel_proj_of_pairwise_differences;
+    
+    cokernel_proj_of_pairwise_differences := CokernelProjection( cat, JointPairwiseDifferencesOfMorphismsFromCoproduct( cat, A, diagram ) );
+    
+    return PreCompose( cat, cokernel_proj_of_pairwise_differences,
+                       IsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproductToCoequalizer( cat, A, diagram ) );
+    
+end : Description := "ProjectionOntoCoequalizer using the cokernel projection of JointPairwiseDifferencesOfMorphismsFromCoproduct" );
 
 ##
 AddDerivationToCAP( IsomorphismFromInitialObjectToZeroObject,

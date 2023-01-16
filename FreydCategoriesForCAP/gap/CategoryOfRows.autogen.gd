@@ -336,6 +336,9 @@
 #! * <Ref BookName="CAP" Func="AstrictionToCoimageWithGivenCoimageObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoastrictionToImage" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoastrictionToImageWithGivenImageObject" Label="for Is" />
+#! * <Ref BookName="CAP" Func="Coequalizer" Label="" />
+#! * <Ref BookName="CAP" Func="CoequalizerFunctorial" Label="for Is" />
+#! * <Ref BookName="CAP" Func="CoequalizerFunctorialWithGivenCoequalizers" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoimageObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoimageObjectFunctorial" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoimageObjectFunctorialWithGivenCoimageObjects" Label="for Is" />
@@ -349,8 +352,13 @@
 #! * <Ref BookName="CAP" Func="CokernelProjection" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CokernelProjectionWithGivenCokernelObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="DirectSumProjectionInPushout" Label="for Is" />
+#! * <Ref BookName="CAP" Func="EmbeddingOfEqualizer" Label="for Is" />
+#! * <Ref BookName="CAP" Func="EmbeddingOfEqualizerWithGivenEqualizer" Label="for Is" />
 #! * <Ref BookName="CAP" Func="EpimorphismFromSomeProjectiveObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject" Label="for Is" />
+#! * <Ref BookName="CAP" Func="Equalizer" Label="" />
+#! * <Ref BookName="CAP" Func="EqualizerFunctorial" Label="for Is" />
+#! * <Ref BookName="CAP" Func="EqualizerFunctorialWithGivenEqualizers" Label="for Is" />
 #! * <Ref BookName="CAP" Func="FiberProduct" Label="" />
 #! * <Ref BookName="CAP" Func="FiberProductEmbeddingInDirectSum" Label="for Is" />
 #! * <Ref BookName="CAP" Func="FiberProductFunctorial" Label="for Is" />
@@ -392,26 +400,36 @@
 #! * <Ref BookName="CAP" Func="MonomorphismIntoSomeInjectiveObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MorphismFromCoimageToImageWithGivenObjects" Label="for Is" />
+#! * <Ref BookName="CAP" Func="MorphismFromEqualizerToSink" Label="for Is" />
+#! * <Ref BookName="CAP" Func="MorphismFromEqualizerToSinkWithGivenEqualizer" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MorphismFromFiberProductToSink" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MorphismFromFiberProductToSinkWithGivenFiberProduct" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MorphismFromKernelObjectToSink" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MorphismFromKernelObjectToSinkWithGivenKernelObject" Label="for Is" />
+#! * <Ref BookName="CAP" Func="MorphismFromSourceToCoequalizer" Label="for Is" />
+#! * <Ref BookName="CAP" Func="MorphismFromSourceToCoequalizerWithGivenCoequalizer" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MorphismFromSourceToCokernelObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MorphismFromSourceToCokernelObjectWithGivenCokernelObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MorphismFromSourceToPushout" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MorphismFromSourceToPushoutWithGivenPushout" Label="for Is" />
 #! * <Ref BookName="CAP" Func="ProjectionInFactorOfFiberProduct" Label="for Is" />
 #! * <Ref BookName="CAP" Func="ProjectionInFactorOfFiberProductWithGivenFiberProduct" Label="for Is" />
+#! * <Ref BookName="CAP" Func="ProjectionOntoCoequalizer" Label="for Is" />
+#! * <Ref BookName="CAP" Func="ProjectionOntoCoequalizerWithGivenCoequalizer" Label="for Is" />
 #! * <Ref BookName="CAP" Func="Pushout" Label="for Is" />
 #! * <Ref BookName="CAP" Func="PushoutFunctorial" Label="for Is" />
 #! * <Ref BookName="CAP" Func="PushoutFunctorialWithGivenPushouts" Label="for Is" />
 #! * <Ref BookName="CAP" Func="SomeInjectiveObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="SomeProjectiveObject" Label="for Is" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismFromCoequalizer" Label="for Is" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismFromCoequalizerWithGivenCoequalizer" Label="for Is" />
 #! * <Ref BookName="CAP" Func="UniversalMorphismFromImage" Label="for Is" />
 #! * <Ref BookName="CAP" Func="UniversalMorphismFromImageWithGivenImageObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="UniversalMorphismFromPushout" Label="for Is" />
 #! * <Ref BookName="CAP" Func="UniversalMorphismFromPushoutWithGivenPushout" Label="for Is" />
 #! * <Ref BookName="CAP" Func="UniversalMorphismIntoCoimage" Label="for Is" />
 #! * <Ref BookName="CAP" Func="UniversalMorphismIntoCoimageWithGivenCoimageObject" Label="for Is" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismIntoEqualizer" Label="for Is" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismIntoEqualizerWithGivenEqualizer" Label="for Is" />
 #! * <Ref BookName="CAP" Func="UniversalMorphismIntoFiberProduct" Label="for Is" />
 #! * <Ref BookName="CAP" Func="UniversalMorphismIntoFiberProductWithGivenFiberProduct" Label="for Is" />
