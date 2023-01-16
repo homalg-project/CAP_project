@@ -283,7 +283,8 @@ DeclareOperation( "SafeUniqueEntry", [ IsList, IsFunction ] );
 #! @Returns a list
 DeclareGlobalFunction( "NTuple" );
 
-# this filter is only used for the type system in CompilerForCAP
+# This filter is only used for the type system in CompilerForCAP.
+# It deliberately does not imply `IsList` because we want to treat tuples and lists in different ways in CompilerForCAP.
 DeclareFilter( "IsNTuple" );
 
 #! @Description
