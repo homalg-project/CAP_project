@@ -621,8 +621,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 Display( "WARNING: IsIdenticalObj is used for deciding the equality of objects but the caching is not set to crisp. Thus, probably the specification that equal input gives equal output is not fulfilled. You can suppress this warning by passing the option \"SuppressCacheWarning := true\" to AddIsEqualForObjects." );
             fi;
             
-            # work around https://github.com/gap-system/gap/issues/5259
-            name := ReplacedString( Name( category ), "\"", "'" );
+            name := Name( category );
             
             # set name for debugging purposes
             if NameFunction( i[ 1 ] ) in [ "unknown", "_EVALSTRINGTMP" ] then
