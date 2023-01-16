@@ -274,6 +274,12 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRING_WITH_FILTER,
             
             return IsObject;
             
+        elif IsSpecializationOfFilter( IsNTuple, data_type.filter ) then
+            
+            # `IsNTuple` deliberately does not imply `IsList` because we want to treat tuples and lists in different ways in CompilerForCAP.
+            # However, on the GAP level tuples are just lists.
+            return IsList;
+            
         else
             
             return data_type.filter;

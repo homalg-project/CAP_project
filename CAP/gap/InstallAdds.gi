@@ -462,7 +462,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
             else
                 output_sanity_check_function := function( result )
                     # We only check the filter here. More complicated checks (e.g. the types of list elements) should be checked in a more general way.
-                    if not ObjectDatumType( category ).filter( result ) then
+                    if not CAP_INTERNAL_REPLACE_STRING_WITH_FILTER( "object_datum", category )( result ) then
                         Error( Concatenation( output_human_readable_identifier_getter(), " does not lie in the filter of object data of the category. You can access the result via the local variable 'result' in a break loop." ) );
                     fi;
                 end;
@@ -473,7 +473,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
             else
                 output_sanity_check_function := function( result )
                     # We only check the filter here. More complicated checks (e.g. the types of list elements) should be checked in a more general way.
-                    if not MorphismDatumType( category ).filter( result ) then
+                    if not CAP_INTERNAL_REPLACE_STRING_WITH_FILTER( "morphism_datum", category )( result ) then
                         Error( Concatenation( output_human_readable_identifier_getter(), " does not lie in the filter of morphism data of the category. You can access the result via the local variable 'result' in a break loop." ) );
                     fi;
                 end;
