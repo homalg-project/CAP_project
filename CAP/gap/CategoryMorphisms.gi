@@ -604,6 +604,51 @@ InstallMethod( HomStructure,
 );
 
 ##
+
+# usually the type signatures should be part of the gd file, but `CapJitAddTypeSignature` is not available there
+
+CapJitAddTypeSignature( "HomomorphismStructureOnObjectsExtendedByFullEmbedding", [ IsCapCategory, IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ], function ( input_types )
+    
+    return CapJitDataTypeOfObjectOfCategory( input_types[2].category );
+    
+end );
+
+CapJitAddTypeSignature( "HomomorphismStructureOnMorphismsExtendedByFullEmbedding", [ IsCapCategory, IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ], function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( input_types[2].category );
+    
+end );
+
+CapJitAddTypeSignature( "HomomorphismStructureOnMorphismsWithGivenObjectsExtendedByFullEmbedding", [ IsCapCategory, IsCapCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ], function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( input_types[2].category );
+    
+end );
+
+CapJitAddTypeSignature( "DistinguishedObjectOfHomomorphismStructureExtendedByFullEmbedding", [ IsCapCategory, IsCapCategory ], function ( input_types )
+    
+    return CapJitDataTypeOfObjectOfCategory( input_types[2].category );
+    
+end );
+
+CapJitAddTypeSignature( "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureExtendedByFullEmbedding", [ IsCapCategory, IsCapCategory, IsCapCategoryMorphism ], function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( input_types[2].category );
+    
+end );
+
+CapJitAddTypeSignature( "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjectsExtendedByFullEmbedding", [ IsCapCategory, IsCapCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ], function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( input_types[2].category );
+    
+end );
+
+CapJitAddTypeSignature( "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphismExtendedByFullEmbedding", [ IsCapCategory, IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ], function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
+    
+end );
+
 InstallMethod( ExtendRangeOfHomomorphismStructureByFullEmbedding,
                [ IsCapCategory, IsCapCategory, IsFunction, IsFunction, IsFunction, IsFunction ],
   function ( C, E, object_function, morphism_function, object_function_inverse, morphism_function_inverse )

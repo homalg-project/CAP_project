@@ -30,24 +30,55 @@ DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY" );
 
 DeclareGlobalFunction( "FREYD_CATEGORY" );
 
+##
 DeclareAttribute( "FreydCategory",
                   IsCapCategory );
 
+##
 DeclareAttribute( "FreydCategoryObject",
                   IsCapCategoryMorphism );
 
+CapJitAddTypeSignature( "FreydCategoryObject", [ IsFreydCategory, IsCapCategoryMorphism ], function ( input_types )
+    
+    return CapJitDataTypeOfObjectOfCategory( input_types[1].category );
+    
+end );
+
+##
 DeclareOperation( "FreydCategoryMorphism",
                   [ IsFreydCategoryObject, IsCapCategoryMorphism, IsFreydCategoryObject ] );
 
+CapJitAddTypeSignature( "FreydCategoryMorphism", [ IsFreydCategory, IsFreydCategoryObject, IsCapCategoryMorphism, IsFreydCategoryObject ], function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
+    
+end );
+
+##
 DeclareAttribute( "AsFreydCategoryObject",
                   IsCapCategoryObject );
 
+CapJitAddTypeSignature( "AsFreydCategoryObject", [ IsFreydCategory, IsCapCategoryObject ], function ( input_types )
+    
+    return CapJitDataTypeOfObjectOfCategory( input_types[1].category );
+    
+end );
+
+##
 DeclareAttribute( "AsFreydCategoryMorphism",
                   IsCapCategoryMorphism );
 
+CapJitAddTypeSignature( "AsFreydCategoryMorphism", [ IsFreydCategory, IsCapCategoryMorphism ], function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
+    
+end );
+
+##
 DeclareAttribute( "EmbeddingFunctorIntoFreydCategory",
                   IsCapCategory );
 
+##
 DeclareOperation( "\/",
                   [ IsCapCategoryMorphism, IsFreydCategory ] );
 
@@ -97,8 +128,15 @@ DeclareAttribute( "MorphismWitness",
 DeclareAttribute( "WitnessForBeingCongruentToZero",
                   IsFreydCategoryMorphism );
 
+CapJitAddTypeSignature( "WitnessForBeingCongruentToZero", [ IsFreydCategory, IsFreydCategoryMorphism ], function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) );
+    
+end );
+
 DeclareAttribute( "MereExistenceOfWitnessForBeingCongruentToZero",
                   IsFreydCategoryMorphism );
+CapJitAddTypeSignature( "MereExistenceOfWitnessForBeingCongruentToZero", [ IsFreydCategory, IsFreydCategoryMorphism ], IsBool );
 
 KeyDependentOperation( "FREYD_CATEGORIES_SimplifyObjectTuple", IsFreydCategoryObject, IsObject, ReturnTrue );
 

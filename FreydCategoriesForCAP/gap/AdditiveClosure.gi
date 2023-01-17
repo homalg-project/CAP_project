@@ -303,7 +303,6 @@ InstallMethod( NrRows,
                [ IsAdditiveClosureMorphism ],
                
   function( morphism )
-    #% CAP_JIT_RESOLVE_FUNCTION
     
     return Length( ObjectList( Source( morphism ) ) );
     
@@ -314,7 +313,6 @@ InstallMethod( NrCols,
                [ IsAdditiveClosureMorphism ],
                
   function( morphism )
-    #% CAP_JIT_RESOLVE_FUNCTION
     
     return Length( ObjectList( Range( morphism ) ) );
     
@@ -520,7 +518,6 @@ InstallMethod( \[\,\],
                [ IsAdditiveClosureMorphism, IsInt, IsInt ],
                
   function( morphism, i, j )
-    #% CAP_JIT_RESOLVE_FUNCTION
     
     if not ( i in [ 1 .. NrRows( morphism ) ]
         and j in [ 1 .. NrCols( morphism ) ] ) then

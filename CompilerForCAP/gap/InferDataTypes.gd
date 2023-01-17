@@ -8,7 +8,7 @@
 #! @Section Compilation steps
 
 #! @Description
-#!   Tries to infer the data types of expressions in <A>tree</A> and attaches it as component `data_type`.
+#!   Tries to infer the data types of expressions in the enhanced syntax tree <A>tree</A> of a function with data types.
 #!   A data type is a record with component `filter` (a GAP filter) and, depending on the filter, additional components:
 #!   * `IsFunction` with additional component `signature`: The signature is a list with two entries. The first entry is a list of data types
 #!     of the inputs, the second entry is the data type of the output.

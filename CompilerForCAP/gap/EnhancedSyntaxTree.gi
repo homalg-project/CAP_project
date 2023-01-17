@@ -110,7 +110,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
     fi;
     
     pre_func := function ( tree, additional_arguments )
-      local path, func_stack, new_tree, statements, i, statement, level, pos, lvars, value, to_delete, next_statement, funccall, translation, operation_name, branch, keyvalue, case_expression;
+      local path, func_stack, new_tree, statements, i, statement, level, pos, lvars, value, to_delete, next_statement, funccall, translation, operation_name, can_possibly_be_resolved, info, case_expression, branch;
         
         path := additional_arguments[1];
         func_stack := additional_arguments[2];
@@ -517,11 +517,32 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                 
                 operation_name := NameFunction( ValueGlobal( tree.funcref.gvar ) );
                 
-                if not (
-                    (IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name) ) and Length( tree.args ) = Length( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list ))
-                    or
-                    (IsBound( CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name) ) and ForAny( CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name), x -> Length( tree.args ) = Length( x.filters ) ))
-                    ) then
+                can_possibly_be_resolved := false;
+                
+                if IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name) ) then
+                    
+                    info := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name);
+                    
+                    if Length( tree.args ) = Length( info.filter_list ) then
+                        
+                        can_possibly_be_resolved := true;
+                        
+                    # in proof assistant mode everything should be typed, so we do not necessarily need the category as first argument
+                    elif CAP_JIT_PROOF_ASSISTANT_MODE_ENABLED and info.install_convenience_without_category and Length( tree.args ) = Length( info.filter_list ) - 1 then
+                        
+                        can_possibly_be_resolved := true;
+                        
+                    fi;
+                    
+                fi;
+                
+                if IsBound( CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name) ) and ForAny( CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name), x -> Length( tree.args ) = Length( x.filters ) ) then
+                    
+                    can_possibly_be_resolved := true;
+                    
+                fi;
+                
+                if not can_possibly_be_resolved then
                     
                     # using LocationFunc causes a segfault (https://github.com/gap-system/gap/issues/4507)
                     # COVERAGE_IGNORE_NEXT_LINE
