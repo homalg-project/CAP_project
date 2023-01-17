@@ -2578,20 +2578,32 @@ end : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.su
 
 ##
 AddDerivationToCAP( FiberProductEmbeddingInDirectSum,
-                    [ [ KernelEmbedding, 1 ],
-                      [ DirectSumDiagonalDifference, 1 ],
-                      [ IsomorphismFromFiberProductToKernelOfDiagonalDifference, 1 ],
-                      [ PreCompose, 1 ] ],
+                    [ [ DirectSum, 1 ],
+                      [ PreCompose, 3 ],
+                      [ ProjectionInFactorOfDirectSumWithGivenDirectSum, 2 ],
+                      [ JointPairwiseDifferencesOfMorphismsIntoDirectProduct, 1 ],
+                      [ KernelEmbedding, 1 ],
+                      [ IsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct, 1 ] ],
                     
   function( cat, diagram )
-    local kernel_of_diagonal_difference;
+    local direct_sum_diagram, direct_sum, number_of_morphisms, list_of_morphisms, joint_pairwise_differences, kernel_of_joint_pairwise_differences;
     
-    kernel_of_diagonal_difference := KernelEmbedding( cat, DirectSumDiagonalDifference( cat, diagram ) );
+    direct_sum_diagram := List( diagram, Source );
+
+    direct_sum := DirectSum( cat, direct_sum_diagram );
+
+    number_of_morphisms := Length( diagram );
+
+    list_of_morphisms := List( [ 1 .. number_of_morphisms ], i -> PreCompose( cat, ProjectionInFactorOfDirectSumWithGivenDirectSum( cat, direct_sum_diagram, i, direct_sum ), diagram[ i ] ) );
+
+    joint_pairwise_differences := JointPairwiseDifferencesOfMorphismsIntoDirectProduct( cat, direct_sum, list_of_morphisms );
     
-    return PreCompose( cat, IsomorphismFromFiberProductToKernelOfDiagonalDifference( cat, diagram ),
-                       kernel_of_diagonal_difference );
+    kernel_of_joint_pairwise_differences := KernelEmbedding( cat, joint_pairwise_differences );
     
-end : Description := "FiberProductEmbeddingInDirectSum as the kernel embedding of DirectSumDiagonalDifference" );
+    return PreCompose( cat, IsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct( cat, direct_sum, list_of_morphisms ),
+                       kernel_of_joint_pairwise_differences );
+    
+end : Description := "FiberProductEmbeddingInDirectSum as the kernel embedding of JointPairwiseDifferencesOfMorphismsIntoDirectProduct" );
 
 ##
 AddDerivationToCAP( FiberProductEmbeddingInDirectSum,
@@ -2609,20 +2621,32 @@ end : Description := "FiberProductEmbeddingInDirectSum using the universal prope
 
 ##
 AddDerivationToCAP( DirectSumProjectionInPushout,
-                    [ [ CokernelProjection, 1 ],
-                      [ DirectSumCodiagonalDifference, 1 ],
-                      [ IsomorphismFromCokernelOfDiagonalDifferenceToPushout, 1 ],
-                      [ PreCompose, 1 ] ],
+                    [ [ DirectSum, 1 ],
+                      [ PreCompose, 3 ],
+                      [ InjectionOfCofactorOfDirectSumWithGivenDirectSum, 2 ],
+                      [ JointPairwiseDifferencesOfMorphismsFromCoproduct, 1 ],
+                      [ CokernelProjection, 1 ],
+                      [ IsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproductToCoequalizer, 1 ] ],
                     
   function( cat, diagram )
-    local cokernel_proj_of_diagonal_difference;
+    local direct_sum_diagram, direct_sum, number_of_morphisms, list_of_morphisms, joint_pairwise_differences, cokernel_proj_of_joint_pairwise_differences;
     
-    cokernel_proj_of_diagonal_difference := CokernelProjection( cat, DirectSumCodiagonalDifference( cat, diagram ) );
+    direct_sum_diagram := List( diagram, Range );
     
-    return PreCompose( cat, cokernel_proj_of_diagonal_difference,
-                       IsomorphismFromCokernelOfDiagonalDifferenceToPushout( cat, diagram ) );
+    direct_sum := DirectSum( cat, direct_sum_diagram );
     
-end : Description := "DirectSumProjectionInPushout as the cokernel projection of DirectSumCodiagonalDifference" );
+    number_of_morphisms := Length( diagram );
+    
+    list_of_morphisms := List( [ 1 .. number_of_morphisms ], i -> PreCompose( cat, diagram[ i ], InjectionOfCofactorOfDirectSumWithGivenDirectSum( cat, direct_sum_diagram, i, direct_sum ) ) );
+    
+    joint_pairwise_differences := JointPairwiseDifferencesOfMorphismsFromCoproduct( cat, direct_sum, list_of_morphisms );
+    
+    cokernel_proj_of_joint_pairwise_differences := CokernelProjection( cat, joint_pairwise_differences );
+    
+    return PreCompose( cat, cokernel_proj_of_joint_pairwise_differences,
+                       IsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproductToCoequalizer( cat, direct_sum, list_of_morphisms ) );
+    
+end : Description := "DirectSumProjectionInPushout as the cokernel projection of JointPairwiseDifferencesOfMorphismsFromCoproduct" );
 
 ##
 AddDerivationToCAP( DirectSumProjectionInPushout,

@@ -351,10 +351,12 @@ AddFinalDerivationBundle( # WeakCokernelObject,
 
 ##
 AddFinalDerivationBundle( # WeakBiFiberProductMorphismToDirectSum,
-                    [ [ DirectSumDiagonalDifference, 1 ],
+                    [ [ DirectSum, 1 ],
+                      [ PreCompose, 2 ],
+                      [ ProjectionInFactorOfDirectSumWithGivenDirectSum, 2 ],
+                      [ SubtractionForMorphisms, 1 ],
                       [ WeakKernelEmbedding, 1 ],
                       [ ProjectionInFactorOfDirectSum, 1 ],
-                      [ PreCompose, 1 ],
                       [ UniversalMorphismIntoDirectSum, 1 ],
                       [ WeakKernelLift, 1 ],
                     ],
@@ -368,11 +370,19 @@ AddFinalDerivationBundle( # WeakBiFiberProductMorphismToDirectSum,
 [
   WeakBiFiberProductMorphismToDirectSum,
   function( cat, alpha, beta )
-    local diagonal_difference;
+    local direct_sum_diagram, direct_sum, proj1_alpha, proj2_beta, difference;
     
-    diagonal_difference := DirectSumDiagonalDifference( cat, [ alpha, beta ] );
+    direct_sum_diagram := [ Source( alpha ), Source( beta ) ];
     
-    return WeakKernelEmbedding( cat, diagonal_difference );
+    direct_sum := DirectSum( cat, direct_sum_diagram );
+    
+    proj1_alpha := PreCompose( cat, ProjectionInFactorOfDirectSumWithGivenDirectSum( cat, direct_sum_diagram, 1, direct_sum ), alpha );
+    
+    proj2_beta := PreCompose( cat, ProjectionInFactorOfDirectSumWithGivenDirectSum( cat, direct_sum_diagram, 2, direct_sum ), beta );
+    
+    difference := SubtractionForMorphisms( cat, proj1_alpha, proj2_beta );
+    
+    return WeakKernelEmbedding( cat, difference );
     
   end
 ],
@@ -401,24 +411,34 @@ AddFinalDerivationBundle( # WeakBiFiberProductMorphismToDirectSum,
 [
   UniversalMorphismIntoWeakBiFiberProduct,
   function( cat, alpha, beta, test_mor_1, test_mor_2 )
-    local test_mor, diagonal_difference;
+    local test_mor, direct_sum_diagram, direct_sum, proj1_alpha, proj2_beta, difference;
     
     test_mor := UniversalMorphismIntoDirectSum( cat, [ test_mor_1, test_mor_2 ] );
     
-    diagonal_difference := DirectSumDiagonalDifference( cat, [ alpha, beta ] );
+    direct_sum_diagram := [ Source( alpha ), Source( beta ) ];
     
-    return WeakKernelLift( cat, diagonal_difference, test_mor );
+    direct_sum := DirectSum( cat, direct_sum_diagram );
+    
+    proj1_alpha := PreCompose( cat, ProjectionInFactorOfDirectSumWithGivenDirectSum( cat, direct_sum_diagram, 1, direct_sum ), alpha );
+    
+    proj2_beta := PreCompose( cat, ProjectionInFactorOfDirectSumWithGivenDirectSum( cat, direct_sum_diagram, 2, direct_sum ), beta );
+    
+    difference := SubtractionForMorphisms( cat, proj1_alpha, proj2_beta );
+    
+    return WeakKernelLift( cat, difference, test_mor );
     
   end
-] : Description := "WeakBiFiberProductMorphismToDirectSum as WeakKernelEmbedding of DirectSumDiagonalDifference" );
+] : Description := "WeakBiFiberProductMorphismToDirectSum as WeakKernelEmbedding of JointPairwiseDifferencesOfMorphismsIntoDirectProduct" );
 
 ## weak bi-pushout
 ##
 AddFinalDerivationBundle( # DirectSumMorphismToWeakBiPushout,
-                    [ [ DirectSumCodiagonalDifference, 1 ],
+                    [ [ DirectSum, 1 ],
+                      [ PreCompose, 2 ],
+                      [ InjectionOfCofactorOfDirectSumWithGivenDirectSum, 2 ],
+                      [ SubtractionForMorphisms, 1 ],
                       [ WeakCokernelProjection, 1 ],
                       [ InjectionOfCofactorOfDirectSum, 1 ],
-                      [ PreCompose, 1 ],
                       [ UniversalMorphismFromDirectSum, 1 ],
                       [ WeakCokernelColift, 1 ],
                     ],
@@ -432,11 +452,19 @@ AddFinalDerivationBundle( # DirectSumMorphismToWeakBiPushout,
 [
   DirectSumMorphismToWeakBiPushout,
   function( cat, alpha, beta )
-    local co_diagonal_difference;
+    local direct_sum_diagram, direct_sum, alpha_inj1, beta_inj2, difference;
     
-    co_diagonal_difference := DirectSumCodiagonalDifference( cat, [ alpha, beta ] );
+    direct_sum_diagram := [ Range( alpha ), Range( beta ) ];
     
-    return WeakCokernelProjection( cat, co_diagonal_difference );
+    direct_sum := DirectSum( cat, direct_sum_diagram );
+    
+    alpha_inj1 := PreCompose( cat, alpha, InjectionOfCofactorOfDirectSumWithGivenDirectSum( cat, direct_sum_diagram, 1, direct_sum ) );
+    
+    beta_inj2 := PreCompose( cat, beta, InjectionOfCofactorOfDirectSumWithGivenDirectSum( cat, direct_sum_diagram, 2, direct_sum ) );
+    
+    difference := SubtractionForMorphisms( cat, alpha_inj1, beta_inj2 );
+    
+    return WeakCokernelProjection( cat, difference );
     
 end
 ],
@@ -465,16 +493,24 @@ end
 [
   UniversalMorphismFromWeakBiPushout,
   function( cat, alpha, beta, test_mor_1, test_mor_2 )
-    local test_mor, co_diagonal_difference;
+    local test_mor, direct_sum_diagram, direct_sum, alpha_inj1, beta_inj2, difference;
     
     test_mor := UniversalMorphismFromDirectSum( cat, [ test_mor_1, test_mor_2 ] );
     
-    co_diagonal_difference := DirectSumCodiagonalDifference( cat, [ alpha, beta ] );
+    direct_sum_diagram := [ Range( alpha ), Range( beta ) ];
     
-    return WeakCokernelColift( cat, co_diagonal_difference, test_mor );
+    direct_sum := DirectSum( cat, direct_sum_diagram );
+    
+    alpha_inj1 := PreCompose( cat, alpha, InjectionOfCofactorOfDirectSumWithGivenDirectSum( cat, direct_sum_diagram, 1, direct_sum ) );
+    
+    beta_inj2 := PreCompose( cat, beta, InjectionOfCofactorOfDirectSumWithGivenDirectSum( cat, direct_sum_diagram, 2, direct_sum ) );
+    
+    difference := SubtractionForMorphisms( cat, alpha_inj1, beta_inj2 );
+
+    return WeakCokernelColift( cat, difference, test_mor );
     
   end
-] : Description := "DirectSumMorphismToWeakBiPushout as WeakCokernelProjection of DirectSumCodiagonalDifference" );
+] : Description := "DirectSumMorphismToWeakBiPushout as WeakCokernelProjection of JointPairwiseDifferencesOfMorphismsFromCoproduct" );
 
 ## Final derivation for biased weak fiber products and biased weak pushouts.
 ## Decision: we use a derivation from weak fiber products and weak pushouts
