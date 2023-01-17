@@ -579,9 +579,9 @@
   [33X[1;0Y[29X[2XCapJitInferredDataTypes[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
-  [33X[0;0YTries  to  infer  the  data  types of expressions in [3Xtree[103X and attaches it as
-  component  [10Xdata_type[110X.  A  data type is a record with component [10Xfilter[110X (a GAP
-  filter) and, depending on the filter, additional components:[133X
+  [33X[0;0YTries  to  infer  the  data types of expressions in the enhanced syntax tree
+  [3Xtree[103X  of  a function with data types. A data type is a record with component
+  [10Xfilter[110X (a GAP filter) and, depending on the filter, additional components:[133X
   
   [30X    [33X[0;6Y[10XIsFunction[110X  with  additional  component  [10Xsignature[110X: The signature is a
         list  with two entries. The first entry is a list of data types of the
