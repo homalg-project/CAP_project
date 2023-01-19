@@ -88,6 +88,44 @@ DeclareOperation( "AddCartesianAssociatorRightToLeftWithGivenDirectProducts",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `CartesianDiagonal`.
+#! $F: ( a, n ) \mapsto \mathtt{CartesianDiagonal}(a, n)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCartesianDiagonal",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCartesianDiagonal",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCartesianDiagonal",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCartesianDiagonal",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `CartesianDiagonalWithGivenCartesianPower`.
+#! $F: ( a, n, cartesian_power ) \mapsto \mathtt{CartesianDiagonalWithGivenCartesianPower}(a, n, cartesian_power)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCartesianDiagonalWithGivenCartesianPower",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCartesianDiagonalWithGivenCartesianPower",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCartesianDiagonalWithGivenCartesianPower",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCartesianDiagonalWithGivenCartesianPower",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `CartesianLeftUnitor`.
 #! $F: ( a ) \mapsto \mathtt{CartesianLeftUnitor}(a)$.
 #! @Returns nothing
