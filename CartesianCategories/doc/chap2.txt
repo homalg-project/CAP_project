@@ -187,7 +187,24 @@
   [33X[0;0YThe  arguments  are  an object [23Xa[123X and an object [23Xr = a \sqcup 1[123X. The output is
   the inverse of the right unitor [23X\rho_a^{-1}: a \rightarrow a \sqcup 1[123X.[133X
   
-  [1X2.1-19 LeftCocartesianCodistributivityExpanding[101X
+  [1X2.1-19 CocartesianCodiagonal[101X
+  
+  [33X[1;0Y[29X[2XCocartesianCodiagonal[102X( [3Xa[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\sqcup_{i=1}^n a, a)[123X.[133X
+  
+  [33X[0;0YThe arguments are an object [23Xa[123X and an integer [23Xn[123X. The output is the codiagonal
+  morphism from the [23Xn[123X-fold cocartesian multiple [23X\sqcup_{i=1}^n a[123X to [23Xa[123X.[133X
+  
+  [1X2.1-20 CocartesianCodiagonalWithGivenCocartesianMultiple[101X
+  
+  [33X[1;0Y[29X[2XCocartesianCodiagonalWithGivenCocartesianMultiple[102X( [3Xa[103X, [3Xn[103X, [3Xb[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(b, a)[123X[133X
+  
+  [33X[0;0YThe  arguments  are  an object [23Xa[123X, an integer [23Xn[123X, and an object [23Xb[123X equal to the
+  [23Xn[123X-fold  cocartesian  multiple  [23X\sqcup_{i=1}^n  a[123X  of  [23Xa[123X.  The  output is the
+  codiagonal morphism from [23Xb[123X to [23Xa[123X.[133X
+  
+  [1X2.1-21 LeftCocartesianCodistributivityExpanding[101X
   
   [33X[1;0Y[29X[2XLeftCocartesianCodistributivityExpanding[102X( [3Xa[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}(  a  \sqcup (b_1 \times \dots \times
@@ -197,7 +214,7 @@
   The  output  is  the left distributivity morphism [23Xa \sqcup (b_1 \times \dots
   \times b_n) \rightarrow (a \sqcup b_1) \times \dots \times (a \sqcup b_n)[123X.[133X
   
-  [1X2.1-20 LeftCocartesianCodistributivityExpandingWithGivenObjects[101X
+  [1X2.1-22 LeftCocartesianCodistributivityExpandingWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XLeftCocartesianCodistributivityExpandingWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3XL[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X[133X
@@ -207,7 +224,7 @@
   \sqcup  b_1)  \times  \dots  \times  (a  \sqcup b_n)[123X. The output is the left
   distributivity morphism [23Xs \rightarrow r[123X.[133X
   
-  [1X2.1-21 LeftCocartesianCodistributivityFactoring[101X
+  [1X2.1-23 LeftCocartesianCodistributivityFactoring[101X
   
   [33X[1;0Y[29X[2XLeftCocartesianCodistributivityFactoring[102X( [3Xa[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism in [23X\mathrm{Hom}( (a \sqcup b_1) \times \dots \times (a
@@ -217,7 +234,7 @@
   The  output  is the left distributivity morphism [23X(a \sqcup b_1) \times \dots
   \times (a \sqcup b_n) \rightarrow a \sqcup (b_1 \times \dots \times b_n)[123X.[133X
   
-  [1X2.1-22 LeftCocartesianCodistributivityFactoringWithGivenObjects[101X
+  [1X2.1-24 LeftCocartesianCodistributivityFactoringWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XLeftCocartesianCodistributivityFactoringWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3XL[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X[133X
@@ -227,7 +244,7 @@
   =  a  \sqcup  (b_1  \times  \dots  \times  b_n)[123X.  The  output  is  the  left
   distributivity morphism [23Xs \rightarrow r[123X.[133X
   
-  [1X2.1-23 RightCocartesianCodistributivityExpanding[101X
+  [1X2.1-25 RightCocartesianCodistributivityExpanding[101X
   
   [33X[1;0Y[29X[2XRightCocartesianCodistributivityExpanding[102X( [3XL[103X, [3Xa[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in [23X\mathrm{Hom}( (b_1 \times \dots \times b_n) \sqcup
@@ -237,7 +254,7 @@
   The  output  is  the  right distributivity morphism [23X(b_1 \times \dots \times
   b_n) \sqcup a \rightarrow (b_1 \sqcup a) \times \dots \times (b_n \sqcup a)[123X.[133X
   
-  [1X2.1-24 RightCocartesianCodistributivityExpandingWithGivenObjects[101X
+  [1X2.1-26 RightCocartesianCodistributivityExpandingWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XRightCocartesianCodistributivityExpandingWithGivenObjects[102X( [3Xs[103X, [3XL[103X, [3Xa[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X[133X
@@ -247,7 +264,7 @@
   \sqcup  a)  \times  \dots  \times  (b_n  \sqcup  a)[123X. The output is the right
   distributivity morphism [23Xs \rightarrow r[123X.[133X
   
-  [1X2.1-25 RightCocartesianCodistributivityFactoring[101X
+  [1X2.1-27 RightCocartesianCodistributivityFactoring[101X
   
   [33X[1;0Y[29X[2XRightCocartesianCodistributivityFactoring[102X( [3XL[103X, [3Xa[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}(  (b_1 \sqcup a) \times \dots \times
@@ -257,7 +274,7 @@
   The  output is the right distributivity morphism [23X(b_1 \sqcup a) \times \dots
   \times (b_n \sqcup a) \rightarrow (b_1 \times \dots \times b_n) \sqcup a [123X.[133X
   
-  [1X2.1-26 RightCocartesianCodistributivityFactoringWithGivenObjects[101X
+  [1X2.1-28 RightCocartesianCodistributivityFactoringWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XRightCocartesianCodistributivityFactoringWithGivenObjects[102X( [3Xs[103X, [3XL[103X, [3Xa[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X[133X
@@ -744,7 +761,29 @@
   \mapsto  \mathtt{CocartesianAssociatorRightToLeftWithGivenCoproducts}(s,  a,
   b, c, r)[123X.[133X
   
-  [1X2.4-9 AddCocartesianLeftUnitor[101X
+  [1X2.4-9 AddCocartesianCodiagonal[101X
+  
+  [33X[1;0Y[29X[2XAddCocartesianCodiagonal[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XCocartesianCodiagonal[110X. [23XF: ( a, n ) \mapsto \mathtt{CocartesianCodiagonal}(a,
+  n)[123X.[133X
+  
+  [1X2.4-10 AddCocartesianCodiagonalWithGivenCocartesianMultiple[101X
+  
+  [33X[1;0Y[29X[2XAddCocartesianCodiagonalWithGivenCocartesianMultiple[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XCocartesianCodiagonalWithGivenCocartesianMultiple[110X.     [23XF:     (     a,    n,
+  cocartesian_multiple                        )                        \mapsto
+  \mathtt{CocartesianCodiagonalWithGivenCocartesianMultiple}(a,             n,
+  cocartesian_multiple)[123X.[133X
+  
+  [1X2.4-11 AddCocartesianLeftUnitor[101X
   
   [33X[1;0Y[29X[2XAddCocartesianLeftUnitor[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -753,7 +792,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XCocartesianLeftUnitor[110X. [23XF: ( a ) \mapsto \mathtt{CocartesianLeftUnitor}(a)[123X.[133X
   
-  [1X2.4-10 AddCocartesianLeftUnitorInverse[101X
+  [1X2.4-12 AddCocartesianLeftUnitorInverse[101X
   
   [33X[1;0Y[29X[2XAddCocartesianLeftUnitorInverse[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -763,7 +802,7 @@
   [10XCocartesianLeftUnitorInverse[110X.       [23XF:       (       a       )       \mapsto
   \mathtt{CocartesianLeftUnitorInverse}(a)[123X.[133X
   
-  [1X2.4-11 AddCocartesianLeftUnitorInverseWithGivenCoproduct[101X
+  [1X2.4-13 AddCocartesianLeftUnitorInverseWithGivenCoproduct[101X
   
   [33X[1;0Y[29X[2XAddCocartesianLeftUnitorInverseWithGivenCoproduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -773,7 +812,7 @@
   [10XCocartesianLeftUnitorInverseWithGivenCoproduct[110X.   [23XF:   (   a,  r  )  \mapsto
   \mathtt{CocartesianLeftUnitorInverseWithGivenCoproduct}(a, r)[123X.[133X
   
-  [1X2.4-12 AddCocartesianLeftUnitorWithGivenCoproduct[101X
+  [1X2.4-14 AddCocartesianLeftUnitorWithGivenCoproduct[101X
   
   [33X[1;0Y[29X[2XAddCocartesianLeftUnitorWithGivenCoproduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -783,7 +822,7 @@
   [10XCocartesianLeftUnitorWithGivenCoproduct[110X.    [23XF:    (    a,    s   )   \mapsto
   \mathtt{CocartesianLeftUnitorWithGivenCoproduct}(a, s)[123X.[133X
   
-  [1X2.4-13 AddCocartesianRightUnitor[101X
+  [1X2.4-15 AddCocartesianRightUnitor[101X
   
   [33X[1;0Y[29X[2XAddCocartesianRightUnitor[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -792,7 +831,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XCocartesianRightUnitor[110X. [23XF: ( a ) \mapsto \mathtt{CocartesianRightUnitor}(a)[123X.[133X
   
-  [1X2.4-14 AddCocartesianRightUnitorInverse[101X
+  [1X2.4-16 AddCocartesianRightUnitorInverse[101X
   
   [33X[1;0Y[29X[2XAddCocartesianRightUnitorInverse[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -802,7 +841,7 @@
   [10XCocartesianRightUnitorInverse[110X.       [23XF:       (       a       )      \mapsto
   \mathtt{CocartesianRightUnitorInverse}(a)[123X.[133X
   
-  [1X2.4-15 AddCocartesianRightUnitorInverseWithGivenCoproduct[101X
+  [1X2.4-17 AddCocartesianRightUnitorInverseWithGivenCoproduct[101X
   
   [33X[1;0Y[29X[2XAddCocartesianRightUnitorInverseWithGivenCoproduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -812,7 +851,7 @@
   [10XCocartesianRightUnitorInverseWithGivenCoproduct[110X.   [23XF:   (  a,  r  )  \mapsto
   \mathtt{CocartesianRightUnitorInverseWithGivenCoproduct}(a, r)[123X.[133X
   
-  [1X2.4-16 AddCocartesianRightUnitorWithGivenCoproduct[101X
+  [1X2.4-18 AddCocartesianRightUnitorWithGivenCoproduct[101X
   
   [33X[1;0Y[29X[2XAddCocartesianRightUnitorWithGivenCoproduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -822,7 +861,7 @@
   [10XCocartesianRightUnitorWithGivenCoproduct[110X.    [23XF:    (    a,   s   )   \mapsto
   \mathtt{CocartesianRightUnitorWithGivenCoproduct}(a, s)[123X.[133X
   
-  [1X2.4-17 AddCoproductOnMorphisms[101X
+  [1X2.4-19 AddCoproductOnMorphisms[101X
   
   [33X[1;0Y[29X[2XAddCoproductOnMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -832,7 +871,7 @@
   [10XCoproductOnMorphisms[110X.      [23XF:      (      alpha,      beta     )     \mapsto
   \mathtt{CoproductOnMorphisms}(alpha, beta)[123X.[133X
   
-  [1X2.4-18 AddCoproductOnMorphismsWithGivenCoproducts[101X
+  [1X2.4-20 AddCoproductOnMorphismsWithGivenCoproducts[101X
   
   [33X[1;0Y[29X[2XAddCoproductOnMorphismsWithGivenCoproducts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -842,7 +881,7 @@
   [10XCoproductOnMorphismsWithGivenCoproducts[110X.  [23XF:  (  s, alpha, beta, r ) \mapsto
   \mathtt{CoproductOnMorphismsWithGivenCoproducts}(s, alpha, beta, r)[123X.[133X
   
-  [1X2.4-19 AddCocartesianCoevaluationMorphism[101X
+  [1X2.4-21 AddCocartesianCoevaluationMorphism[101X
   
   [33X[1;0Y[29X[2XAddCocartesianCoevaluationMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -852,7 +891,7 @@
   [10XCocartesianCoevaluationMorphism[110X.     [23XF:     (     a,     b     )     \mapsto
   \mathtt{CocartesianCoevaluationMorphism}(a, b)[123X.[133X
   
-  [1X2.4-20 AddCocartesianCoevaluationMorphismWithGivenSource[101X
+  [1X2.4-22 AddCocartesianCoevaluationMorphismWithGivenSource[101X
   
   [33X[1;0Y[29X[2XAddCocartesianCoevaluationMorphismWithGivenSource[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -862,7 +901,7 @@
   [10XCocartesianCoevaluationMorphismWithGivenSource[110X.  [23XF:  (  a,  b,  s  ) \mapsto
   \mathtt{CocartesianCoevaluationMorphismWithGivenSource}(a, b, s)[123X.[133X
   
-  [1X2.4-21 AddCocartesianDualOnMorphisms[101X
+  [1X2.4-23 AddCocartesianDualOnMorphisms[101X
   
   [33X[1;0Y[29X[2XAddCocartesianDualOnMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -872,7 +911,7 @@
   [10XCocartesianDualOnMorphisms[110X.       [23XF:       (       alpha      )      \mapsto
   \mathtt{CocartesianDualOnMorphisms}(alpha)[123X.[133X
   
-  [1X2.4-22 AddCocartesianDualOnMorphismsWithGivenCocartesianDuals[101X
+  [1X2.4-24 AddCocartesianDualOnMorphismsWithGivenCocartesianDuals[101X
   
   [33X[1;0Y[29X[2XAddCocartesianDualOnMorphismsWithGivenCocartesianDuals[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -883,7 +922,7 @@
   \mapsto      \mathtt{CocartesianDualOnMorphismsWithGivenCocartesianDuals}(s,
   alpha, r)[123X.[133X
   
-  [1X2.4-23 AddCocartesianDualOnObjects[101X
+  [1X2.4-25 AddCocartesianDualOnObjects[101X
   
   [33X[1;0Y[29X[2XAddCocartesianDualOnObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -893,7 +932,7 @@
   [10XCocartesianDualOnObjects[110X.        [23XF:        (        a        )       \mapsto
   \mathtt{CocartesianDualOnObjects}(a)[123X.[133X
   
-  [1X2.4-24 AddCocartesianDualityCoproductCompatibilityMorphism[101X
+  [1X2.4-26 AddCocartesianDualityCoproductCompatibilityMorphism[101X
   
   [33X[1;0Y[29X[2XAddCocartesianDualityCoproductCompatibilityMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -903,7 +942,7 @@
   [10XCocartesianDualityCoproductCompatibilityMorphism[110X.   [23XF:  (  a,  b  )  \mapsto
   \mathtt{CocartesianDualityCoproductCompatibilityMorphism}(a, b)[123X.[133X
   
-  [1X2.4-25 AddCocartesianDualityCoproductCompatibilityMorphismWithGivenObjects[101X
+  [1X2.4-27 AddCocartesianDualityCoproductCompatibilityMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddCocartesianDualityCoproductCompatibilityMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -915,7 +954,7 @@
   \mathtt{CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects}(s,
   a, b, r)[123X.[133X
   
-  [1X2.4-26 AddCocartesianEvaluationForCocartesianDual[101X
+  [1X2.4-28 AddCocartesianEvaluationForCocartesianDual[101X
   
   [33X[1;0Y[29X[2XAddCocartesianEvaluationForCocartesianDual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -925,7 +964,7 @@
   [10XCocartesianEvaluationForCocartesianDual[110X.     [23XF:     (     a     )    \mapsto
   \mathtt{CocartesianEvaluationForCocartesianDual}(a)[123X.[133X
   
-  [1X2.4-27 AddCocartesianEvaluationForCocartesianDualWithGivenCoproduct[101X
+  [1X2.4-29 AddCocartesianEvaluationForCocartesianDualWithGivenCoproduct[101X
   
   [33X[1;0Y[29X[2XAddCocartesianEvaluationForCocartesianDualWithGivenCoproduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -936,7 +975,7 @@
   \mapsto
   \mathtt{CocartesianEvaluationForCocartesianDualWithGivenCoproduct}(s, a, r)[123X.[133X
   
-  [1X2.4-28 AddCocartesianEvaluationMorphism[101X
+  [1X2.4-30 AddCocartesianEvaluationMorphism[101X
   
   [33X[1;0Y[29X[2XAddCocartesianEvaluationMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -946,7 +985,7 @@
   [10XCocartesianEvaluationMorphism[110X.      [23XF:      (     a,     b     )     \mapsto
   \mathtt{CocartesianEvaluationMorphism}(a, b)[123X.[133X
   
-  [1X2.4-29 AddCocartesianEvaluationMorphismWithGivenRange[101X
+  [1X2.4-31 AddCocartesianEvaluationMorphismWithGivenRange[101X
   
   [33X[1;0Y[29X[2XAddCocartesianEvaluationMorphismWithGivenRange[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -956,7 +995,7 @@
   [10XCocartesianEvaluationMorphismWithGivenRange[110X.   [23XF:   (  a,  b,  r  )  \mapsto
   \mathtt{CocartesianEvaluationMorphismWithGivenRange}(a, b, r)[123X.[133X
   
-  [1X2.4-30 AddCocartesianLambdaElimination[101X
+  [1X2.4-32 AddCocartesianLambdaElimination[101X
   
   [33X[1;0Y[29X[2XAddCocartesianLambdaElimination[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -966,7 +1005,7 @@
   [10XCocartesianLambdaElimination[110X.    [23XF:    (    a,    b,    alpha    )   \mapsto
   \mathtt{CocartesianLambdaElimination}(a, b, alpha)[123X.[133X
   
-  [1X2.4-31 AddCocartesianLambdaIntroduction[101X
+  [1X2.4-33 AddCocartesianLambdaIntroduction[101X
   
   [33X[1;0Y[29X[2XAddCocartesianLambdaIntroduction[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -976,7 +1015,7 @@
   [10XCocartesianLambdaIntroduction[110X.      [23XF:      (      alpha      )      \mapsto
   \mathtt{CocartesianLambdaIntroduction}(alpha)[123X.[133X
   
-  [1X2.4-32 AddCocartesianPostCoComposeMorphism[101X
+  [1X2.4-34 AddCocartesianPostCoComposeMorphism[101X
   
   [33X[1;0Y[29X[2XAddCocartesianPostCoComposeMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -986,7 +1025,7 @@
   [10XCocartesianPostCoComposeMorphism[110X.    [23XF:    (    a,    b,    c    )   \mapsto
   \mathtt{CocartesianPostCoComposeMorphism}(a, b, c)[123X.[133X
   
-  [1X2.4-33 AddCocartesianPostCoComposeMorphismWithGivenObjects[101X
+  [1X2.4-35 AddCocartesianPostCoComposeMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddCocartesianPostCoComposeMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -997,7 +1036,7 @@
   \mapsto  \mathtt{CocartesianPostCoComposeMorphismWithGivenObjects}(s,  a, b,
   c, r)[123X.[133X
   
-  [1X2.4-34 AddCocartesianPreCoComposeMorphism[101X
+  [1X2.4-36 AddCocartesianPreCoComposeMorphism[101X
   
   [33X[1;0Y[29X[2XAddCocartesianPreCoComposeMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1007,7 +1046,7 @@
   [10XCocartesianPreCoComposeMorphism[110X.    [23XF:    (    a,    b,    c    )    \mapsto
   \mathtt{CocartesianPreCoComposeMorphism}(a, b, c)[123X.[133X
   
-  [1X2.4-35 AddCocartesianPreCoComposeMorphismWithGivenObjects[101X
+  [1X2.4-37 AddCocartesianPreCoComposeMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddCocartesianPreCoComposeMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1018,7 +1057,7 @@
   \mapsto \mathtt{CocartesianPreCoComposeMorphismWithGivenObjects}(s, a, b, c,
   r)[123X.[133X
   
-  [1X2.4-36 AddCoexponentialCoproductCompatibilityMorphism[101X
+  [1X2.4-38 AddCoexponentialCoproductCompatibilityMorphism[101X
   
   [33X[1;0Y[29X[2XAddCoexponentialCoproductCompatibilityMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1028,7 +1067,7 @@
   [10XCoexponentialCoproductCompatibilityMorphism[110X.    [23XF:    (   list   )   \mapsto
   \mathtt{CoexponentialCoproductCompatibilityMorphism}(list)[123X.[133X
   
-  [1X2.4-37 AddCoexponentialCoproductCompatibilityMorphismWithGivenObjects[101X
+  [1X2.4-39 AddCoexponentialCoproductCompatibilityMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddCoexponentialCoproductCompatibilityMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1040,7 +1079,7 @@
   \mathtt{CoexponentialCoproductCompatibilityMorphismWithGivenObjects}(source,
   list, range)[123X.[133X
   
-  [1X2.4-38 AddCoexponentialOnMorphisms[101X
+  [1X2.4-40 AddCoexponentialOnMorphisms[101X
   
   [33X[1;0Y[29X[2XAddCoexponentialOnMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1050,7 +1089,7 @@
   [10XCoexponentialOnMorphisms[110X.     [23XF:     (     alpha,     beta     )     \mapsto
   \mathtt{CoexponentialOnMorphisms}(alpha, beta)[123X.[133X
   
-  [1X2.4-39 AddCoexponentialOnMorphismsWithGivenCoexponentials[101X
+  [1X2.4-41 AddCoexponentialOnMorphismsWithGivenCoexponentials[101X
   
   [33X[1;0Y[29X[2XAddCoexponentialOnMorphismsWithGivenCoexponentials[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1061,7 +1100,7 @@
   \mapsto  \mathtt{CoexponentialOnMorphismsWithGivenCoexponentials}(s,  alpha,
   beta, r)[123X.[133X
   
-  [1X2.4-40 AddCoexponentialOnObjects[101X
+  [1X2.4-42 AddCoexponentialOnObjects[101X
   
   [33X[1;0Y[29X[2XAddCoexponentialOnObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1071,7 +1110,7 @@
   [10XCoexponentialOnObjects[110X.       [23XF:       (       a,      b      )      \mapsto
   \mathtt{CoexponentialOnObjects}(a, b)[123X.[133X
   
-  [1X2.4-41 AddCoexponentialToCoproductAdjunctionMap[101X
+  [1X2.4-43 AddCoexponentialToCoproductAdjunctionMap[101X
   
   [33X[1;0Y[29X[2XAddCoexponentialToCoproductAdjunctionMap[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1081,7 +1120,7 @@
   [10XCoexponentialToCoproductAdjunctionMap[110X.    [23XF:   (   a,   b,   f   )   \mapsto
   \mathtt{CoexponentialToCoproductAdjunctionMap}(a, b, f)[123X.[133X
   
-  [1X2.4-42 AddCoexponentialToCoproductAdjunctionMapWithGivenCoproduct[101X
+  [1X2.4-44 AddCoexponentialToCoproductAdjunctionMapWithGivenCoproduct[101X
   
   [33X[1;0Y[29X[2XAddCoexponentialToCoproductAdjunctionMapWithGivenCoproduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1092,7 +1131,7 @@
   \mapsto  \mathtt{CoexponentialToCoproductAdjunctionMapWithGivenCoproduct}(a,
   b, f, t)[123X.[133X
   
-  [1X2.4-43 AddCoproductToCoexponentialAdjunctionMap[101X
+  [1X2.4-45 AddCoproductToCoexponentialAdjunctionMap[101X
   
   [33X[1;0Y[29X[2XAddCoproductToCoexponentialAdjunctionMap[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1102,7 +1141,7 @@
   [10XCoproductToCoexponentialAdjunctionMap[110X.    [23XF:   (   c,   b,   g   )   \mapsto
   \mathtt{CoproductToCoexponentialAdjunctionMap}(c, b, g)[123X.[133X
   
-  [1X2.4-44 AddCoproductToCoexponentialAdjunctionMapWithGivenCoexponential[101X
+  [1X2.4-46 AddCoproductToCoexponentialAdjunctionMapWithGivenCoexponential[101X
   
   [33X[1;0Y[29X[2XAddCoproductToCoexponentialAdjunctionMapWithGivenCoexponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1114,7 +1153,7 @@
   \mathtt{CoproductToCoexponentialAdjunctionMapWithGivenCoexponential}(c,   b,
   g, i)[123X.[133X
   
-  [1X2.4-45 AddIsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject[101X
+  [1X2.4-47 AddIsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1126,7 +1165,7 @@
   \mathtt{IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject}(a)
   .[133X
   
-  [1X2.4-46 AddIsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject[101X
+  [1X2.4-48 AddIsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1138,7 +1177,7 @@
   \mathtt{IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject}(a)
   .[133X
   
-  [1X2.4-47 AddIsomorphismFromCoexponentialToObject[101X
+  [1X2.4-49 AddIsomorphismFromCoexponentialToObject[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromCoexponentialToObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1148,7 +1187,7 @@
   [10XIsomorphismFromCoexponentialToObject[110X.      [23XF:      (     a     )     \mapsto
   \mathtt{IsomorphismFromCoexponentialToObject}(a)[123X.[133X
   
-  [1X2.4-48 AddIsomorphismFromCoexponentialToObjectWithGivenCoexponential[101X
+  [1X2.4-50 AddIsomorphismFromCoexponentialToObjectWithGivenCoexponential[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromCoexponentialToObjectWithGivenCoexponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1159,7 +1198,7 @@
   \mapsto
   \mathtt{IsomorphismFromCoexponentialToObjectWithGivenCoexponential}(a, s)[123X.[133X
   
-  [1X2.4-49 AddIsomorphismFromObjectToCoexponential[101X
+  [1X2.4-51 AddIsomorphismFromObjectToCoexponential[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromObjectToCoexponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1169,7 +1208,7 @@
   [10XIsomorphismFromObjectToCoexponential[110X.      [23XF:      (     a     )     \mapsto
   \mathtt{IsomorphismFromObjectToCoexponential}(a)[123X.[133X
   
-  [1X2.4-50 AddIsomorphismFromObjectToCoexponentialWithGivenCoexponential[101X
+  [1X2.4-52 AddIsomorphismFromObjectToCoexponentialWithGivenCoexponential[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromObjectToCoexponentialWithGivenCoexponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1180,7 +1219,7 @@
   \mapsto
   \mathtt{IsomorphismFromObjectToCoexponentialWithGivenCoexponential}(a, r)[123X.[133X
   
-  [1X2.4-51 AddMorphismFromCocartesianBidual[101X
+  [1X2.4-53 AddMorphismFromCocartesianBidual[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromCocartesianBidual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1190,7 +1229,7 @@
   [10XMorphismFromCocartesianBidual[110X.       [23XF:       (       a       )      \mapsto
   \mathtt{MorphismFromCocartesianBidual}(a)[123X.[133X
   
-  [1X2.4-52 AddMorphismFromCocartesianBidualWithGivenCocartesianBidual[101X
+  [1X2.4-54 AddMorphismFromCocartesianBidualWithGivenCocartesianBidual[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromCocartesianBidualWithGivenCocartesianBidual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1200,7 +1239,7 @@
   [10XMorphismFromCocartesianBidualWithGivenCocartesianBidual[110X. [23XF: ( a, s ) \mapsto
   \mathtt{MorphismFromCocartesianBidualWithGivenCocartesianBidual}(a, s)[123X.[133X
   
-  [1X2.4-53 AddMorphismFromCoexponentialToCoproduct[101X
+  [1X2.4-55 AddMorphismFromCoexponentialToCoproduct[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromCoexponentialToCoproduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1210,7 +1249,7 @@
   [10XMorphismFromCoexponentialToCoproduct[110X.     [23XF:    (    a,    b    )    \mapsto
   \mathtt{MorphismFromCoexponentialToCoproduct}(a, b)[123X.[133X
   
-  [1X2.4-54 AddMorphismFromCoexponentialToCoproductWithGivenObjects[101X
+  [1X2.4-56 AddMorphismFromCoexponentialToCoproductWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromCoexponentialToCoproductWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1221,7 +1260,7 @@
   \mapsto  \mathtt{MorphismFromCoexponentialToCoproductWithGivenObjects}(s, a,
   b, r)[123X.[133X
   
-  [1X2.4-55 AddUniversalPropertyOfCocartesianDual[101X
+  [1X2.4-57 AddUniversalPropertyOfCocartesianDual[101X
   
   [33X[1;0Y[29X[2XAddUniversalPropertyOfCocartesianDual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1231,7 +1270,7 @@
   [10XUniversalPropertyOfCocartesianDual[110X.   [23XF:   (   t,   a,   alpha   )   \mapsto
   \mathtt{UniversalPropertyOfCocartesianDual}(t, a, alpha)[123X.[133X
   
-  [1X2.4-56 AddLeftCocartesianCodistributivityExpanding[101X
+  [1X2.4-58 AddLeftCocartesianCodistributivityExpanding[101X
   
   [33X[1;0Y[29X[2XAddLeftCocartesianCodistributivityExpanding[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1241,7 +1280,7 @@
   [10XLeftCocartesianCodistributivityExpanding[110X.    [23XF:    (    a,   L   )   \mapsto
   \mathtt{LeftCocartesianCodistributivityExpanding}(a, L)[123X.[133X
   
-  [1X2.4-57 AddLeftCocartesianCodistributivityExpandingWithGivenObjects[101X
+  [1X2.4-59 AddLeftCocartesianCodistributivityExpandingWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddLeftCocartesianCodistributivityExpandingWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1252,7 +1291,7 @@
   \mapsto \mathtt{LeftCocartesianCodistributivityExpandingWithGivenObjects}(s,
   a, L, r)[123X.[133X
   
-  [1X2.4-58 AddLeftCocartesianCodistributivityFactoring[101X
+  [1X2.4-60 AddLeftCocartesianCodistributivityFactoring[101X
   
   [33X[1;0Y[29X[2XAddLeftCocartesianCodistributivityFactoring[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1262,7 +1301,7 @@
   [10XLeftCocartesianCodistributivityFactoring[110X.    [23XF:    (    a,   L   )   \mapsto
   \mathtt{LeftCocartesianCodistributivityFactoring}(a, L)[123X.[133X
   
-  [1X2.4-59 AddLeftCocartesianCodistributivityFactoringWithGivenObjects[101X
+  [1X2.4-61 AddLeftCocartesianCodistributivityFactoringWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddLeftCocartesianCodistributivityFactoringWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1273,7 +1312,7 @@
   \mapsto \mathtt{LeftCocartesianCodistributivityFactoringWithGivenObjects}(s,
   a, L, r)[123X.[133X
   
-  [1X2.4-60 AddRightCocartesianCodistributivityExpanding[101X
+  [1X2.4-62 AddRightCocartesianCodistributivityExpanding[101X
   
   [33X[1;0Y[29X[2XAddRightCocartesianCodistributivityExpanding[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1283,7 +1322,7 @@
   [10XRightCocartesianCodistributivityExpanding[110X.    [23XF:    (   L,   a   )   \mapsto
   \mathtt{RightCocartesianCodistributivityExpanding}(L, a)[123X.[133X
   
-  [1X2.4-61 AddRightCocartesianCodistributivityExpandingWithGivenObjects[101X
+  [1X2.4-63 AddRightCocartesianCodistributivityExpandingWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddRightCocartesianCodistributivityExpandingWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1295,7 +1334,7 @@
   \mathtt{RightCocartesianCodistributivityExpandingWithGivenObjects}(s,  L, a,
   r)[123X.[133X
   
-  [1X2.4-62 AddRightCocartesianCodistributivityFactoring[101X
+  [1X2.4-64 AddRightCocartesianCodistributivityFactoring[101X
   
   [33X[1;0Y[29X[2XAddRightCocartesianCodistributivityFactoring[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1305,7 +1344,7 @@
   [10XRightCocartesianCodistributivityFactoring[110X.    [23XF:    (   L,   a   )   \mapsto
   \mathtt{RightCocartesianCodistributivityFactoring}(L, a)[123X.[133X
   
-  [1X2.4-63 AddRightCocartesianCodistributivityFactoringWithGivenObjects[101X
+  [1X2.4-65 AddRightCocartesianCodistributivityFactoringWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddRightCocartesianCodistributivityFactoringWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X

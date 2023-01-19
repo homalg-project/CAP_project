@@ -187,7 +187,24 @@
   [33X[0;0YThe  arguments  are  an object [23Xa[123X and an object [23Xr = a \times 1[123X. The output is
   the inverse of the right unitor [23X\rho_a^{-1}: a \rightarrow a \times 1[123X.[133X
   
-  [1X1.1-19 LeftCartesianDistributivityExpanding[101X
+  [1X1.1-19 CartesianDiagonal[101X
+  
+  [33X[1;0Y[29X[2XCartesianDiagonal[102X( [3Xa[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, a^{\times n})[123X.[133X
+  
+  [33X[0;0YThe  arguments  are an object [23Xa[123X and an integer [23Xn[123X. The output is the diagonal
+  morphism from [23Xa[123X to the [23Xn[123X-fold cartesian power [23Xa^{\times n}[123X.[133X
+  
+  [1X1.1-20 CartesianDiagonalWithGivenCartesianPower[101X
+  
+  [33X[1;0Y[29X[2XCartesianDiagonalWithGivenCartesianPower[102X( [3Xa[103X, [3Xn[103X, [3Xb[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, b)[123X[133X
+  
+  [33X[0;0YThe  arguments  are  an object [23Xa[123X, an integer [23Xn[123X, and an object [23Xb[123X equal to the
+  [23Xn[123X-fold  cartesian  power  [23Xa^{\times  n}[123X  of  [23Xa[123X.  The  output is the diagonal
+  morphism from [23Xa[123X to [23Xb[123X.[133X
+  
+  [1X1.1-21 LeftCartesianDistributivityExpanding[101X
   
   [33X[1;0Y[29X[2XLeftCartesianDistributivityExpanding[102X( [3Xa[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}(  a  \times (b_1 \sqcup \dots \sqcup
@@ -197,7 +214,7 @@
   The  output  is  the left distributivity morphism [23Xa \times (b_1 \sqcup \dots
   \sqcup b_n) \rightarrow (a \times b_1) \sqcup \dots \sqcup (a \times b_n)[123X.[133X
   
-  [1X1.1-20 LeftCartesianDistributivityExpandingWithGivenObjects[101X
+  [1X1.1-22 LeftCartesianDistributivityExpandingWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XLeftCartesianDistributivityExpandingWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3XL[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X[133X
@@ -207,7 +224,7 @@
   \times  b_1)  \sqcup  \dots  \sqcup  (a  \times b_n)[123X. The output is the left
   distributivity morphism [23Xs \rightarrow r[123X.[133X
   
-  [1X1.1-21 LeftCartesianDistributivityFactoring[101X
+  [1X1.1-23 LeftCartesianDistributivityFactoring[101X
   
   [33X[1;0Y[29X[2XLeftCartesianDistributivityFactoring[102X( [3Xa[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism in [23X\mathrm{Hom}( (a \times b_1) \sqcup \dots \sqcup (a
@@ -217,7 +234,7 @@
   The  output  is the left distributivity morphism [23X(a \times b_1) \sqcup \dots
   \sqcup (a \times b_n) \rightarrow a \times (b_1 \sqcup \dots \sqcup b_n)[123X.[133X
   
-  [1X1.1-22 LeftCartesianDistributivityFactoringWithGivenObjects[101X
+  [1X1.1-24 LeftCartesianDistributivityFactoringWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XLeftCartesianDistributivityFactoringWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3XL[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X[133X
@@ -227,7 +244,7 @@
   =  a  \times  (b_1  \sqcup  \dots  \sqcup  b_n)[123X.  The  output  is  the  left
   distributivity morphism [23Xs \rightarrow r[123X.[133X
   
-  [1X1.1-23 RightCartesianDistributivityExpanding[101X
+  [1X1.1-25 RightCartesianDistributivityExpanding[101X
   
   [33X[1;0Y[29X[2XRightCartesianDistributivityExpanding[102X( [3XL[103X, [3Xa[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in [23X\mathrm{Hom}( (b_1 \sqcup \dots \sqcup b_n) \times
@@ -237,7 +254,7 @@
   The  output  is  the  right distributivity morphism [23X(b_1 \sqcup \dots \sqcup
   b_n) \times a \rightarrow (b_1 \times a) \sqcup \dots \sqcup (b_n \times a)[123X.[133X
   
-  [1X1.1-24 RightCartesianDistributivityExpandingWithGivenObjects[101X
+  [1X1.1-26 RightCartesianDistributivityExpandingWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XRightCartesianDistributivityExpandingWithGivenObjects[102X( [3Xs[103X, [3XL[103X, [3Xa[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X[133X
@@ -247,7 +264,7 @@
   \times  a)  \sqcup  \dots  \sqcup  (b_n  \times  a)[123X. The output is the right
   distributivity morphism [23Xs \rightarrow r[123X.[133X
   
-  [1X1.1-25 RightCartesianDistributivityFactoring[101X
+  [1X1.1-27 RightCartesianDistributivityFactoring[101X
   
   [33X[1;0Y[29X[2XRightCartesianDistributivityFactoring[102X( [3XL[103X, [3Xa[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}(  (b_1 \times a) \sqcup \dots \sqcup
@@ -257,7 +274,7 @@
   The  output is the right distributivity morphism [23X(b_1 \times a) \sqcup \dots
   \sqcup (b_n \times a) \rightarrow (b_1 \sqcup \dots \sqcup b_n) \times a [123X.[133X
   
-  [1X1.1-26 RightCartesianDistributivityFactoringWithGivenObjects[101X
+  [1X1.1-28 RightCartesianDistributivityFactoringWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XRightCartesianDistributivityFactoringWithGivenObjects[102X( [3Xs[103X, [3XL[103X, [3Xa[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X[133X
@@ -740,7 +757,27 @@
   \mapsto \mathtt{CartesianAssociatorRightToLeftWithGivenDirectProducts}(s, a,
   b, c, r)[123X.[133X
   
-  [1X1.4-9 AddCartesianLeftUnitor[101X
+  [1X1.4-9 AddCartesianDiagonal[101X
+  
+  [33X[1;0Y[29X[2XAddCartesianDiagonal[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given  function [23XF[123X to the category for the basic operation [10XCartesianDiagonal[110X.
+  [23XF: ( a, n ) \mapsto \mathtt{CartesianDiagonal}(a, n)[123X.[133X
+  
+  [1X1.4-10 AddCartesianDiagonalWithGivenCartesianPower[101X
+  
+  [33X[1;0Y[29X[2XAddCartesianDiagonalWithGivenCartesianPower[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XCartesianDiagonalWithGivenCartesianPower[110X.  [23XF:  (  a,  n,  cartesian_power  )
+  \mapsto        \mathtt{CartesianDiagonalWithGivenCartesianPower}(a,       n,
+  cartesian_power)[123X.[133X
+  
+  [1X1.4-11 AddCartesianLeftUnitor[101X
   
   [33X[1;0Y[29X[2XAddCartesianLeftUnitor[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -749,7 +786,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XCartesianLeftUnitor[110X. [23XF: ( a ) \mapsto \mathtt{CartesianLeftUnitor}(a)[123X.[133X
   
-  [1X1.4-10 AddCartesianLeftUnitorInverse[101X
+  [1X1.4-12 AddCartesianLeftUnitorInverse[101X
   
   [33X[1;0Y[29X[2XAddCartesianLeftUnitorInverse[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -759,7 +796,7 @@
   [10XCartesianLeftUnitorInverse[110X.        [23XF:        (       a       )       \mapsto
   \mathtt{CartesianLeftUnitorInverse}(a)[123X.[133X
   
-  [1X1.4-11 AddCartesianLeftUnitorInverseWithGivenDirectProduct[101X
+  [1X1.4-13 AddCartesianLeftUnitorInverseWithGivenDirectProduct[101X
   
   [33X[1;0Y[29X[2XAddCartesianLeftUnitorInverseWithGivenDirectProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -769,7 +806,7 @@
   [10XCartesianLeftUnitorInverseWithGivenDirectProduct[110X.   [23XF:  (  a,  r  )  \mapsto
   \mathtt{CartesianLeftUnitorInverseWithGivenDirectProduct}(a, r)[123X.[133X
   
-  [1X1.4-12 AddCartesianLeftUnitorWithGivenDirectProduct[101X
+  [1X1.4-14 AddCartesianLeftUnitorWithGivenDirectProduct[101X
   
   [33X[1;0Y[29X[2XAddCartesianLeftUnitorWithGivenDirectProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -779,7 +816,7 @@
   [10XCartesianLeftUnitorWithGivenDirectProduct[110X.    [23XF:    (   a,   s   )   \mapsto
   \mathtt{CartesianLeftUnitorWithGivenDirectProduct}(a, s)[123X.[133X
   
-  [1X1.4-13 AddCartesianRightUnitor[101X
+  [1X1.4-15 AddCartesianRightUnitor[101X
   
   [33X[1;0Y[29X[2XAddCartesianRightUnitor[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -788,7 +825,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XCartesianRightUnitor[110X. [23XF: ( a ) \mapsto \mathtt{CartesianRightUnitor}(a)[123X.[133X
   
-  [1X1.4-14 AddCartesianRightUnitorInverse[101X
+  [1X1.4-16 AddCartesianRightUnitorInverse[101X
   
   [33X[1;0Y[29X[2XAddCartesianRightUnitorInverse[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -798,7 +835,7 @@
   [10XCartesianRightUnitorInverse[110X.        [23XF:       (       a       )       \mapsto
   \mathtt{CartesianRightUnitorInverse}(a)[123X.[133X
   
-  [1X1.4-15 AddCartesianRightUnitorInverseWithGivenDirectProduct[101X
+  [1X1.4-17 AddCartesianRightUnitorInverseWithGivenDirectProduct[101X
   
   [33X[1;0Y[29X[2XAddCartesianRightUnitorInverseWithGivenDirectProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -808,7 +845,7 @@
   [10XCartesianRightUnitorInverseWithGivenDirectProduct[110X.  [23XF:  (  a,  r  )  \mapsto
   \mathtt{CartesianRightUnitorInverseWithGivenDirectProduct}(a, r)[123X.[133X
   
-  [1X1.4-16 AddCartesianRightUnitorWithGivenDirectProduct[101X
+  [1X1.4-18 AddCartesianRightUnitorWithGivenDirectProduct[101X
   
   [33X[1;0Y[29X[2XAddCartesianRightUnitorWithGivenDirectProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -818,7 +855,7 @@
   [10XCartesianRightUnitorWithGivenDirectProduct[110X.    [23XF:   (   a,   s   )   \mapsto
   \mathtt{CartesianRightUnitorWithGivenDirectProduct}(a, s)[123X.[133X
   
-  [1X1.4-17 AddDirectProductOnMorphisms[101X
+  [1X1.4-19 AddDirectProductOnMorphisms[101X
   
   [33X[1;0Y[29X[2XAddDirectProductOnMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -828,7 +865,7 @@
   [10XDirectProductOnMorphisms[110X.     [23XF:     (     alpha,     beta     )     \mapsto
   \mathtt{DirectProductOnMorphisms}(alpha, beta)[123X.[133X
   
-  [1X1.4-18 AddDirectProductOnMorphismsWithGivenDirectProducts[101X
+  [1X1.4-20 AddDirectProductOnMorphismsWithGivenDirectProducts[101X
   
   [33X[1;0Y[29X[2XAddDirectProductOnMorphismsWithGivenDirectProducts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -839,7 +876,7 @@
   \mapsto  \mathtt{DirectProductOnMorphismsWithGivenDirectProducts}(s,  alpha,
   beta, r)[123X.[133X
   
-  [1X1.4-19 AddCartesianCoevaluationMorphism[101X
+  [1X1.4-21 AddCartesianCoevaluationMorphism[101X
   
   [33X[1;0Y[29X[2XAddCartesianCoevaluationMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -849,7 +886,7 @@
   [10XCartesianCoevaluationMorphism[110X.      [23XF:      (     a,     b     )     \mapsto
   \mathtt{CartesianCoevaluationMorphism}(a, b)[123X.[133X
   
-  [1X1.4-20 AddCartesianCoevaluationMorphismWithGivenRange[101X
+  [1X1.4-22 AddCartesianCoevaluationMorphismWithGivenRange[101X
   
   [33X[1;0Y[29X[2XAddCartesianCoevaluationMorphismWithGivenRange[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -859,7 +896,7 @@
   [10XCartesianCoevaluationMorphismWithGivenRange[110X.   [23XF:   (  a,  b,  r  )  \mapsto
   \mathtt{CartesianCoevaluationMorphismWithGivenRange}(a, b, r)[123X.[133X
   
-  [1X1.4-21 AddCartesianDualOnMorphisms[101X
+  [1X1.4-23 AddCartesianDualOnMorphisms[101X
   
   [33X[1;0Y[29X[2XAddCartesianDualOnMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -869,7 +906,7 @@
   [10XCartesianDualOnMorphisms[110X.       [23XF:       (       alpha       )       \mapsto
   \mathtt{CartesianDualOnMorphisms}(alpha)[123X.[133X
   
-  [1X1.4-22 AddCartesianDualOnMorphismsWithGivenCartesianDuals[101X
+  [1X1.4-24 AddCartesianDualOnMorphismsWithGivenCartesianDuals[101X
   
   [33X[1;0Y[29X[2XAddCartesianDualOnMorphismsWithGivenCartesianDuals[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -879,7 +916,7 @@
   [10XCartesianDualOnMorphismsWithGivenCartesianDuals[110X.  [23XF: ( s, alpha, r ) \mapsto
   \mathtt{CartesianDualOnMorphismsWithGivenCartesianDuals}(s, alpha, r)[123X.[133X
   
-  [1X1.4-23 AddCartesianDualOnObjects[101X
+  [1X1.4-25 AddCartesianDualOnObjects[101X
   
   [33X[1;0Y[29X[2XAddCartesianDualOnObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -888,7 +925,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XCartesianDualOnObjects[110X. [23XF: ( a ) \mapsto \mathtt{CartesianDualOnObjects}(a)[123X.[133X
   
-  [1X1.4-24 AddCartesianEvaluationForCartesianDual[101X
+  [1X1.4-26 AddCartesianEvaluationForCartesianDual[101X
   
   [33X[1;0Y[29X[2XAddCartesianEvaluationForCartesianDual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -898,7 +935,7 @@
   [10XCartesianEvaluationForCartesianDual[110X.      [23XF:      (      a     )     \mapsto
   \mathtt{CartesianEvaluationForCartesianDual}(a)[123X.[133X
   
-  [1X1.4-25 AddCartesianEvaluationForCartesianDualWithGivenDirectProduct[101X
+  [1X1.4-27 AddCartesianEvaluationForCartesianDualWithGivenDirectProduct[101X
   
   [33X[1;0Y[29X[2XAddCartesianEvaluationForCartesianDualWithGivenDirectProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -909,7 +946,7 @@
   \mapsto
   \mathtt{CartesianEvaluationForCartesianDualWithGivenDirectProduct}(s, a, r)[123X.[133X
   
-  [1X1.4-26 AddCartesianEvaluationMorphism[101X
+  [1X1.4-28 AddCartesianEvaluationMorphism[101X
   
   [33X[1;0Y[29X[2XAddCartesianEvaluationMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -919,7 +956,7 @@
   [10XCartesianEvaluationMorphism[110X.      [23XF:      (      a,      b     )     \mapsto
   \mathtt{CartesianEvaluationMorphism}(a, b)[123X.[133X
   
-  [1X1.4-27 AddCartesianEvaluationMorphismWithGivenSource[101X
+  [1X1.4-29 AddCartesianEvaluationMorphismWithGivenSource[101X
   
   [33X[1;0Y[29X[2XAddCartesianEvaluationMorphismWithGivenSource[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -929,7 +966,7 @@
   [10XCartesianEvaluationMorphismWithGivenSource[110X.   [23XF:   (   a,  b,  s  )  \mapsto
   \mathtt{CartesianEvaluationMorphismWithGivenSource}(a, b, s)[123X.[133X
   
-  [1X1.4-28 AddCartesianLambdaElimination[101X
+  [1X1.4-30 AddCartesianLambdaElimination[101X
   
   [33X[1;0Y[29X[2XAddCartesianLambdaElimination[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -939,7 +976,7 @@
   [10XCartesianLambdaElimination[110X.     [23XF:    (    a,    b,    alpha    )    \mapsto
   \mathtt{CartesianLambdaElimination}(a, b, alpha)[123X.[133X
   
-  [1X1.4-29 AddCartesianLambdaIntroduction[101X
+  [1X1.4-31 AddCartesianLambdaIntroduction[101X
   
   [33X[1;0Y[29X[2XAddCartesianLambdaIntroduction[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -949,7 +986,7 @@
   [10XCartesianLambdaIntroduction[110X.       [23XF:       (      alpha      )      \mapsto
   \mathtt{CartesianLambdaIntroduction}(alpha)[123X.[133X
   
-  [1X1.4-30 AddCartesianPostComposeMorphism[101X
+  [1X1.4-32 AddCartesianPostComposeMorphism[101X
   
   [33X[1;0Y[29X[2XAddCartesianPostComposeMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -959,7 +996,7 @@
   [10XCartesianPostComposeMorphism[110X.     [23XF:     (     a,    b,    c    )    \mapsto
   \mathtt{CartesianPostComposeMorphism}(a, b, c)[123X.[133X
   
-  [1X1.4-31 AddCartesianPostComposeMorphismWithGivenObjects[101X
+  [1X1.4-33 AddCartesianPostComposeMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddCartesianPostComposeMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -969,7 +1006,7 @@
   [10XCartesianPostComposeMorphismWithGivenObjects[110X.  [23XF:  ( s, a, b, c, r ) \mapsto
   \mathtt{CartesianPostComposeMorphismWithGivenObjects}(s, a, b, c, r)[123X.[133X
   
-  [1X1.4-32 AddCartesianPreComposeMorphism[101X
+  [1X1.4-34 AddCartesianPreComposeMorphism[101X
   
   [33X[1;0Y[29X[2XAddCartesianPreComposeMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -979,7 +1016,7 @@
   [10XCartesianPreComposeMorphism[110X.     [23XF:     (     a,     b,    c    )    \mapsto
   \mathtt{CartesianPreComposeMorphism}(a, b, c)[123X.[133X
   
-  [1X1.4-33 AddCartesianPreComposeMorphismWithGivenObjects[101X
+  [1X1.4-35 AddCartesianPreComposeMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddCartesianPreComposeMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -989,7 +1026,7 @@
   [10XCartesianPreComposeMorphismWithGivenObjects[110X.  [23XF:  (  s, a, b, c, r ) \mapsto
   \mathtt{CartesianPreComposeMorphismWithGivenObjects}(s, a, b, c, r)[123X.[133X
   
-  [1X1.4-34 AddDirectProductCartesianDualityCompatibilityMorphism[101X
+  [1X1.4-36 AddDirectProductCartesianDualityCompatibilityMorphism[101X
   
   [33X[1;0Y[29X[2XAddDirectProductCartesianDualityCompatibilityMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -999,7 +1036,7 @@
   [10XDirectProductCartesianDualityCompatibilityMorphism[110X.  [23XF:  (  a,  b  ) \mapsto
   \mathtt{DirectProductCartesianDualityCompatibilityMorphism}(a, b)[123X.[133X
   
-  [1X1.4-35 AddDirectProductCartesianDualityCompatibilityMorphismWithGivenObjects[101X
+  [1X1.4-37 AddDirectProductCartesianDualityCompatibilityMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddDirectProductCartesianDualityCompatibilityMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1011,7 +1048,7 @@
   \mathtt{DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects}(s,
   a, b, r)[123X.[133X
   
-  [1X1.4-36 AddDirectProductExponentialCompatibilityMorphism[101X
+  [1X1.4-38 AddDirectProductExponentialCompatibilityMorphism[101X
   
   [33X[1;0Y[29X[2XAddDirectProductExponentialCompatibilityMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1021,7 +1058,7 @@
   [10XDirectProductExponentialCompatibilityMorphism[110X.   [23XF:   (   list   )   \mapsto
   \mathtt{DirectProductExponentialCompatibilityMorphism}(list)[123X.[133X
   
-  [1X1.4-37 AddDirectProductExponentialCompatibilityMorphismWithGivenObjects[101X
+  [1X1.4-39 AddDirectProductExponentialCompatibilityMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddDirectProductExponentialCompatibilityMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1033,7 +1070,7 @@
   \mathtt{DirectProductExponentialCompatibilityMorphismWithGivenObjects}(source,
   list, range)[123X.[133X
   
-  [1X1.4-38 AddDirectProductToExponentialAdjunctionMap[101X
+  [1X1.4-40 AddDirectProductToExponentialAdjunctionMap[101X
   
   [33X[1;0Y[29X[2XAddDirectProductToExponentialAdjunctionMap[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1043,7 +1080,7 @@
   [10XDirectProductToExponentialAdjunctionMap[110X.   [23XF:   (   a,   b,   f   )  \mapsto
   \mathtt{DirectProductToExponentialAdjunctionMap}(a, b, f)[123X.[133X
   
-  [1X1.4-39 AddDirectProductToExponentialAdjunctionMapWithGivenExponential[101X
+  [1X1.4-41 AddDirectProductToExponentialAdjunctionMapWithGivenExponential[101X
   
   [33X[1;0Y[29X[2XAddDirectProductToExponentialAdjunctionMapWithGivenExponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1055,7 +1092,7 @@
   \mathtt{DirectProductToExponentialAdjunctionMapWithGivenExponential}(a,   b,
   f, i)[123X.[133X
   
-  [1X1.4-40 AddExponentialOnMorphisms[101X
+  [1X1.4-42 AddExponentialOnMorphisms[101X
   
   [33X[1;0Y[29X[2XAddExponentialOnMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1065,7 +1102,7 @@
   [10XExponentialOnMorphisms[110X.      [23XF:      (     alpha,     beta     )     \mapsto
   \mathtt{ExponentialOnMorphisms}(alpha, beta)[123X.[133X
   
-  [1X1.4-41 AddExponentialOnMorphismsWithGivenExponentials[101X
+  [1X1.4-43 AddExponentialOnMorphismsWithGivenExponentials[101X
   
   [33X[1;0Y[29X[2XAddExponentialOnMorphismsWithGivenExponentials[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1076,7 +1113,7 @@
   \mapsto \mathtt{ExponentialOnMorphismsWithGivenExponentials}(s, alpha, beta,
   r)[123X.[133X
   
-  [1X1.4-42 AddExponentialOnObjects[101X
+  [1X1.4-44 AddExponentialOnObjects[101X
   
   [33X[1;0Y[29X[2XAddExponentialOnObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1086,7 +1123,7 @@
   [10XExponentialOnObjects[110X.  [23XF:  ( a, b ) \mapsto \mathtt{ExponentialOnObjects}(a,
   b)[123X.[133X
   
-  [1X1.4-43 AddExponentialToDirectProductAdjunctionMap[101X
+  [1X1.4-45 AddExponentialToDirectProductAdjunctionMap[101X
   
   [33X[1;0Y[29X[2XAddExponentialToDirectProductAdjunctionMap[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1096,7 +1133,7 @@
   [10XExponentialToDirectProductAdjunctionMap[110X.   [23XF:   (   b,   c,   g   )  \mapsto
   \mathtt{ExponentialToDirectProductAdjunctionMap}(b, c, g)[123X.[133X
   
-  [1X1.4-44 AddExponentialToDirectProductAdjunctionMapWithGivenDirectProduct[101X
+  [1X1.4-46 AddExponentialToDirectProductAdjunctionMapWithGivenDirectProduct[101X
   
   [33X[1;0Y[29X[2XAddExponentialToDirectProductAdjunctionMapWithGivenDirectProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1108,7 +1145,7 @@
   \mathtt{ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct}(b, c,
   g, t)[123X.[133X
   
-  [1X1.4-45 AddIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject[101X
+  [1X1.4-47 AddIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1120,7 +1157,7 @@
   \mathtt{IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject}(a)
   .[133X
   
-  [1X1.4-46 AddIsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject[101X
+  [1X1.4-48 AddIsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1132,7 +1169,7 @@
   \mathtt{IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject}(a)
   .[133X
   
-  [1X1.4-47 AddIsomorphismFromExponentialToObject[101X
+  [1X1.4-49 AddIsomorphismFromExponentialToObject[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromExponentialToObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1142,7 +1179,7 @@
   [10XIsomorphismFromExponentialToObject[110X.      [23XF:      (      a      )     \mapsto
   \mathtt{IsomorphismFromExponentialToObject}(a)[123X.[133X
   
-  [1X1.4-48 AddIsomorphismFromExponentialToObjectWithGivenExponential[101X
+  [1X1.4-50 AddIsomorphismFromExponentialToObjectWithGivenExponential[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromExponentialToObjectWithGivenExponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1152,7 +1189,7 @@
   [10XIsomorphismFromExponentialToObjectWithGivenExponential[110X.  [23XF: ( a, s ) \mapsto
   \mathtt{IsomorphismFromExponentialToObjectWithGivenExponential}(a, s)[123X.[133X
   
-  [1X1.4-49 AddIsomorphismFromObjectToExponential[101X
+  [1X1.4-51 AddIsomorphismFromObjectToExponential[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromObjectToExponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1162,7 +1199,7 @@
   [10XIsomorphismFromObjectToExponential[110X.      [23XF:      (      a      )     \mapsto
   \mathtt{IsomorphismFromObjectToExponential}(a)[123X.[133X
   
-  [1X1.4-50 AddIsomorphismFromObjectToExponentialWithGivenExponential[101X
+  [1X1.4-52 AddIsomorphismFromObjectToExponentialWithGivenExponential[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromObjectToExponentialWithGivenExponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1172,7 +1209,7 @@
   [10XIsomorphismFromObjectToExponentialWithGivenExponential[110X.  [23XF: ( a, r ) \mapsto
   \mathtt{IsomorphismFromObjectToExponentialWithGivenExponential}(a, r)[123X.[133X
   
-  [1X1.4-51 AddMorphismFromDirectProductToExponential[101X
+  [1X1.4-53 AddMorphismFromDirectProductToExponential[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromDirectProductToExponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1182,7 +1219,7 @@
   [10XMorphismFromDirectProductToExponential[110X.    [23XF:    (    a,    b    )   \mapsto
   \mathtt{MorphismFromDirectProductToExponential}(a, b)[123X.[133X
   
-  [1X1.4-52 AddMorphismFromDirectProductToExponentialWithGivenObjects[101X
+  [1X1.4-54 AddMorphismFromDirectProductToExponentialWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromDirectProductToExponentialWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1193,7 +1230,7 @@
   \mapsto   \mathtt{MorphismFromDirectProductToExponentialWithGivenObjects}(s,
   a, b, r)[123X.[133X
   
-  [1X1.4-53 AddMorphismToCartesianBidual[101X
+  [1X1.4-55 AddMorphismToCartesianBidual[101X
   
   [33X[1;0Y[29X[2XAddMorphismToCartesianBidual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1203,7 +1240,7 @@
   [10XMorphismToCartesianBidual[110X.        [23XF:        (        a       )       \mapsto
   \mathtt{MorphismToCartesianBidual}(a)[123X.[133X
   
-  [1X1.4-54 AddMorphismToCartesianBidualWithGivenCartesianBidual[101X
+  [1X1.4-56 AddMorphismToCartesianBidualWithGivenCartesianBidual[101X
   
   [33X[1;0Y[29X[2XAddMorphismToCartesianBidualWithGivenCartesianBidual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1213,7 +1250,7 @@
   [10XMorphismToCartesianBidualWithGivenCartesianBidual[110X.  [23XF:  (  a,  r  )  \mapsto
   \mathtt{MorphismToCartesianBidualWithGivenCartesianBidual}(a, r)[123X.[133X
   
-  [1X1.4-55 AddUniversalPropertyOfCartesianDual[101X
+  [1X1.4-57 AddUniversalPropertyOfCartesianDual[101X
   
   [33X[1;0Y[29X[2XAddUniversalPropertyOfCartesianDual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1223,7 +1260,7 @@
   [10XUniversalPropertyOfCartesianDual[110X.    [23XF:    (   t,   a,   alpha   )   \mapsto
   \mathtt{UniversalPropertyOfCartesianDual}(t, a, alpha)[123X.[133X
   
-  [1X1.4-56 AddLeftCartesianDistributivityExpanding[101X
+  [1X1.4-58 AddLeftCartesianDistributivityExpanding[101X
   
   [33X[1;0Y[29X[2XAddLeftCartesianDistributivityExpanding[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1233,7 +1270,7 @@
   [10XLeftCartesianDistributivityExpanding[110X.     [23XF:    (    a,    L    )    \mapsto
   \mathtt{LeftCartesianDistributivityExpanding}(a, L)[123X.[133X
   
-  [1X1.4-57 AddLeftCartesianDistributivityExpandingWithGivenObjects[101X
+  [1X1.4-59 AddLeftCartesianDistributivityExpandingWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddLeftCartesianDistributivityExpandingWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1244,7 +1281,7 @@
   \mapsto  \mathtt{LeftCartesianDistributivityExpandingWithGivenObjects}(s, a,
   L, r)[123X.[133X
   
-  [1X1.4-58 AddLeftCartesianDistributivityFactoring[101X
+  [1X1.4-60 AddLeftCartesianDistributivityFactoring[101X
   
   [33X[1;0Y[29X[2XAddLeftCartesianDistributivityFactoring[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1254,7 +1291,7 @@
   [10XLeftCartesianDistributivityFactoring[110X.     [23XF:    (    a,    L    )    \mapsto
   \mathtt{LeftCartesianDistributivityFactoring}(a, L)[123X.[133X
   
-  [1X1.4-59 AddLeftCartesianDistributivityFactoringWithGivenObjects[101X
+  [1X1.4-61 AddLeftCartesianDistributivityFactoringWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddLeftCartesianDistributivityFactoringWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1265,7 +1302,7 @@
   \mapsto  \mathtt{LeftCartesianDistributivityFactoringWithGivenObjects}(s, a,
   L, r)[123X.[133X
   
-  [1X1.4-60 AddRightCartesianDistributivityExpanding[101X
+  [1X1.4-62 AddRightCartesianDistributivityExpanding[101X
   
   [33X[1;0Y[29X[2XAddRightCartesianDistributivityExpanding[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1275,7 +1312,7 @@
   [10XRightCartesianDistributivityExpanding[110X.    [23XF:    (    L,    a    )    \mapsto
   \mathtt{RightCartesianDistributivityExpanding}(L, a)[123X.[133X
   
-  [1X1.4-61 AddRightCartesianDistributivityExpandingWithGivenObjects[101X
+  [1X1.4-63 AddRightCartesianDistributivityExpandingWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddRightCartesianDistributivityExpandingWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1286,7 +1323,7 @@
   \mapsto \mathtt{RightCartesianDistributivityExpandingWithGivenObjects}(s, L,
   a, r)[123X.[133X
   
-  [1X1.4-62 AddRightCartesianDistributivityFactoring[101X
+  [1X1.4-64 AddRightCartesianDistributivityFactoring[101X
   
   [33X[1;0Y[29X[2XAddRightCartesianDistributivityFactoring[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1296,7 +1333,7 @@
   [10XRightCartesianDistributivityFactoring[110X.    [23XF:    (    L,    a    )    \mapsto
   \mathtt{RightCartesianDistributivityFactoring}(L, a)[123X.[133X
   
-  [1X1.4-63 AddRightCartesianDistributivityFactoringWithGivenObjects[101X
+  [1X1.4-65 AddRightCartesianDistributivityFactoringWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddRightCartesianDistributivityFactoringWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X

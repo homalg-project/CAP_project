@@ -37,6 +37,8 @@
   [33X[1;0Y[29X[2XIsStrictCartesianCategory[102X( [3XC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
+  [33X[0;0YThe property of the category [3XC[103X being strict cartesian.[133X
+  
   [1X5.1-6 IsCartesianClosedCategory[101X
   
   [33X[1;0Y[29X[2XIsCartesianClosedCategory[102X( [3XC[103X ) [32X property[133X
