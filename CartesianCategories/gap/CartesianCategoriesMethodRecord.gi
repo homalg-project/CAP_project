@@ -8,6 +8,26 @@ InstallValue( CARTESIAN_CATEGORIES_METHOD_NAME_RECORD, rec(
 
 ## Basic Operations for Cartesian Categories
 
+CartesianDiagonal := rec(
+  filter_list := [ "category", "object", "integer" ],
+  io_type := [ [ "a", "n" ], [ "a", "cartesian_power" ] ],
+  output_source_getter_string := "a",
+  output_range_getter_string := "DirectProduct( cat, ListWithIdenticalEntries( n, a ) )",
+  return_type := "morphism",
+  dual_operation := "CocartesianCodiagonal",
+  dual_arguments_reversed := false,
+),
+
+CartesianDiagonalWithGivenCartesianPower := rec(
+  filter_list := [ "category", "object", "integer", "object" ],
+  io_type := [ [ "a", "n", "cartesian_power" ], [ "a", "cartesian_power" ] ],
+  output_source_getter_string := "a",
+  output_range_getter_string := "cartesian_power",
+  return_type := "morphism",
+  dual_operation := "CocartesianCodiagonalWithGivenCocartesianMultiple",
+  dual_arguments_reversed := false,
+),
+
 DirectProductOnMorphisms := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   io_type := [ [ "alpha", "beta" ], [ "s", "r" ] ],

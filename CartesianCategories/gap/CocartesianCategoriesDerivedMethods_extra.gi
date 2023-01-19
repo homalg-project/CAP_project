@@ -5,6 +5,47 @@
 #
 
 ##
+AddDerivationToCAP( CocartesianCodiagonalWithGivenCocartesianMultiple,
+  function( cat, a, n, cocartesian_multiple )
+    local id_a;
+    
+    id_a := IdentityMorphism( cat, a );
+    
+    return UniversalMorphismFromCoproductWithGivenCoproduct( cat,
+                   ListWithIdenticalEntries( n, a ),
+                   a,
+                   ListWithIdenticalEntries( n, id_a ),
+                   cocartesian_multiple );
+    
+end : CategoryFilter := IsCocartesianCategory );
+
+##
+AddDerivationToCAP( CocartesianCodiagonal,
+  function( cat, a, n )
+    
+    return CocartesianCodiagonalWithGivenCocartesianMultiple( cat,
+                   a,
+                   n,
+                   Coproduct( cat, ListWithIdenticalEntries( n, a ) ) );
+    
+end : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true );
+
+##
+AddDerivationToCAP( CocartesianCodiagonal,
+  function( cat, a, n )
+    
+    if n = 0 then
+        return UniversalMorphismFromInitialObject( cat, a );
+    fi;
+    
+    return CocartesianCodiagonalWithGivenCocartesianMultiple( cat,
+                   a,
+                   n,
+                   Coproduct( cat, ListWithIdenticalEntries( n, a ) ) );
+    
+end : CategoryFilter := cat -> not ( IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true ) );
+
+##
 AddDerivationToCAP( CoproductOnMorphismsWithGivenCoproducts,
   function( cat, s, alpha, beta, r )
     

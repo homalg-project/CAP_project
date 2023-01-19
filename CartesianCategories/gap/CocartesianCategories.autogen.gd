@@ -88,6 +88,44 @@ DeclareOperation( "AddCocartesianAssociatorRightToLeftWithGivenCoproducts",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `CocartesianCodiagonal`.
+#! $F: ( a, n ) \mapsto \mathtt{CocartesianCodiagonal}(a, n)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCocartesianCodiagonal",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCocartesianCodiagonal",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCocartesianCodiagonal",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCocartesianCodiagonal",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `CocartesianCodiagonalWithGivenCocartesianMultiple`.
+#! $F: ( a, n, cocartesian_multiple ) \mapsto \mathtt{CocartesianCodiagonalWithGivenCocartesianMultiple}(a, n, cocartesian_multiple)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCocartesianCodiagonalWithGivenCocartesianMultiple",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCocartesianCodiagonalWithGivenCocartesianMultiple",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCocartesianCodiagonalWithGivenCocartesianMultiple",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCocartesianCodiagonalWithGivenCocartesianMultiple",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `CocartesianLeftUnitor`.
 #! $F: ( a ) \mapsto \mathtt{CocartesianLeftUnitor}(a)$.
 #! @Returns nothing

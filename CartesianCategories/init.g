@@ -16,6 +16,9 @@ ReadPackage( "CartesianCategories", "gap/InitialCategoryProperties.gd");
 ReadPackage( "CartesianCategories", "gap/CartesianCategories.gd" );
 ReadPackage( "CartesianCategories", "gap/CocartesianCategories.gd" );
 
+ReadPackage( "CartesianCategories", "gap/CartesianCategories_extra.gd" );
+ReadPackage( "CartesianCategories", "gap/CocartesianCategories_extra.gd" );
+
 ReadPackage( "CartesianCategories", "gap/CartesianCategoriesProperties.gd" );
 ReadPackage( "CartesianCategories", "gap/CocartesianCategoriesProperties.gd" );
 

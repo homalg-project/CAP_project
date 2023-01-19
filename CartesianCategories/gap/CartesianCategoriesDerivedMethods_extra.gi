@@ -5,6 +5,47 @@
 #
 
 ##
+AddDerivationToCAP( CartesianDiagonalWithGivenCartesianPower,
+  function( cat, a, n, cartesian_power )
+    local id_a;
+    
+    id_a := IdentityMorphism( cat, a );
+    
+    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat,
+                   ListWithIdenticalEntries( n, a ),
+                   a,
+                   ListWithIdenticalEntries( n, id_a ),
+                   cartesian_power );
+    
+end : CategoryFilter := IsCartesianCategory );
+
+##
+AddDerivationToCAP( CartesianDiagonal,
+  function( cat, a, n )
+    
+    return CartesianDiagonalWithGivenCartesianPower( cat,
+                   a,
+                   n,
+                   DirectProduct( cat, ListWithIdenticalEntries( n, a ) ) );
+    
+end : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true );
+
+##
+AddDerivationToCAP( CartesianDiagonal,
+  function( cat, a, n )
+    
+    if n = 0 then
+        return UniversalMorphismIntoTerminalObject( cat, a );
+    fi;
+    
+    return CartesianDiagonalWithGivenCartesianPower( cat,
+                   a,
+                   n,
+                   DirectProduct( cat, ListWithIdenticalEntries( n, a ) ) );
+    
+end : CategoryFilter := cat -> not ( IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true ) );
+
+##
 AddDerivationToCAP( DirectProductOnMorphismsWithGivenDirectProducts,
   function( cat, s, alpha, beta, r )
     

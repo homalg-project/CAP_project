@@ -8,6 +8,26 @@ InstallValue( COCARTESIAN_CATEGORIES_METHOD_NAME_RECORD, rec(
 
 ## Basic Operations for Cocartesian Categories
 
+CocartesianCodiagonal := rec(
+  filter_list := [ "category", "object", "integer" ],
+  io_type := [ [ "a", "n" ], [ "cocartesian_power", "a" ] ],
+  output_source_getter_string := "Coproduct( cat, ListWithIdenticalEntries( n, a ) )",
+  output_range_getter_string := "a",
+  return_type := "morphism",
+  dual_operation := "CartesianDiagonal",
+  dual_arguments_reversed := false,
+),
+
+CocartesianCodiagonalWithGivenCocartesianMultiple := rec(
+  filter_list := [ "category", "object", "integer", "object" ],
+  io_type := [ [ "a", "n", "cocartesian_multiple" ], [ "cocartesian_multiple", "a" ] ],
+  output_source_getter_string := "cocartesian_multiple",
+  output_range_getter_string := "a",
+  return_type := "morphism",
+  dual_operation := "CartesianDiagonalWithGivenCartesianPower",
+  dual_arguments_reversed := false,
+),
+
 CoproductOnMorphisms := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   io_type := [ [ "alpha", "beta" ], [ "s", "r" ] ],
