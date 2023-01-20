@@ -17,7 +17,26 @@ AddDerivationToCAP( CocartesianCodiagonalWithGivenCocartesianMultiple,
                    ListWithIdenticalEntries( n, id_a ),
                    cocartesian_multiple );
     
-end : CategoryFilter := IsCocartesianCategory );
+end : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true );
+
+##
+AddDerivationToCAP( CocartesianCodiagonalWithGivenCocartesianMultiple,
+  function( cat, a, n, cocartesian_multiple )
+    local id_a;
+    
+    if n = 0 then
+        return UniversalMorphismFromInitialObjectWithGivenInitialObject( cat, a, cocartesian_multiple );
+    fi;
+    
+    id_a := IdentityMorphism( cat, a );
+    
+    return UniversalMorphismFromCoproductWithGivenCoproduct( cat,
+                   ListWithIdenticalEntries( n, a ),
+                   a,
+                   ListWithIdenticalEntries( n, id_a ),
+                   cocartesian_multiple );
+    
+end : CategoryFilter := cat -> not ( IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true ) );
 
 ##
 AddDerivationToCAP( CocartesianCodiagonal,
