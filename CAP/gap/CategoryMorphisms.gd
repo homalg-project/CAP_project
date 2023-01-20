@@ -583,8 +583,8 @@ DeclareOperation( "IsEqualAsFactorobjects",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{2};
-#! \def\h{1};
+#! \def\w{2}
+#! \def\h{1}
 #! \node (a) at (0,\h) {$a$};
 #! \node (b) at (0,-\h) {$b$};
 #! \node (c) at (\w,0) {$c$};
@@ -609,8 +609,8 @@ DeclareOperation( "IsDominating",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{2};
-#! \def\h{1};
+#! \def\w{2}
+#! \def\h{1}
 #! \node (c) at (0,0) {$c$};
 #! \node (a) at (\w,\h) {$a$};
 #! \node (b) at (\w,-\h) {$b$};
@@ -742,8 +742,8 @@ DeclareOperation( "IsWellDefinedForMorphisms",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{2};
-#! \def\h{1};
+#! \def\w{2}
+#! \def\h{1}
 #! \node (a) at (0,\h) {$a$};
 #! \node (b) at (0,-\h) {$b$};
 #! \node (c) at (\w,0) {$c$};
@@ -759,8 +759,8 @@ DeclareOperation( "IsWellDefinedForMorphisms",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{2};
-#! \def\h{1};
+#! \def\w{2}
+#! \def\h{1}
 #! \node (a) at (0,0) {$a$};
 #! \node (c) at (\w,\h) {$c$};
 #! \node (b) at (\w,-\h) {$b$};
@@ -904,8 +904,8 @@ DeclareOperation( "IsColiftable",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{2};
-#! \def\h{1};
+#! \def\w{2}
+#! \def\h{1}
 #! \node (a) at (0,0) {$a$};
 #! \node (b) at (\w,0) {$b$};
 #! \draw[-latex] (a) to node[pos=0.45, above] {$\alpha$} (b);
@@ -1472,8 +1472,8 @@ DeclareAttribute( "Simplify",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{4};
-#! \def\h{2};
+#! \def\w{4}
+#! \def\h{2}
 #! \node (A) at (0,0) {$A$};
 #! \node (B) at (\w,0) {$B$};
 #! \node (Ap) at (0,\h) {$A' \oplus A''$};
@@ -1495,8 +1495,8 @@ DeclareAttribute( "Simplify",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{4};
-#! \def\h{2};
+#! \def\w{4}
+#! \def\h{2}
 #! \node (A) at (0,0) {$A$};
 #! \node (B) at (\w,0) {$B$};
 #! \node (Ap) at (0,\h) {$A'$};
@@ -1514,8 +1514,8 @@ DeclareAttribute( "Simplify",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{4};
-#! \def\h{2};
+#! \def\w{4}
+#! \def\h{2}
 #! \node (A) at (0,0) {$A$};
 #! \node (B) at (\w,0) {$B$};
 #! \node (Ap) at (0,\h) {$A'$};

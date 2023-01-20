@@ -29,7 +29,7 @@
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{2};
+#! \def\w{2}
 #! \node (K) at (-\w,0) {$K$};
 #! \node (T) at (-\w,\w) {$T$};
 #! \node (A) at (0,0) {$A$};
@@ -187,7 +187,7 @@ DeclareOperation( "KernelObjectFunctorialWithGivenKernelObjects",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{2};
+#! \def\w{2}
 #! \node (A) at (0,0) {$A$};
 #! \node (B) at (\w,0) {$B$};
 #! \node (K) at (2*\w,0) {$K$};
@@ -639,8 +639,8 @@ DeclareOperation( "InitialObjectFunctorialWithGivenInitialObjects",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{2};
-#! \def\a{20};
+#! \def\w{2}
+#! \def\a{20}
 #! \node (S) at (0,0) {$S$};
 #! \node (S1) at (-\w,0) {$S_1$};
 #! \node (S2) at (\w,0) {$S_2$};
@@ -659,8 +659,8 @@ DeclareOperation( "InitialObjectFunctorialWithGivenInitialObjects",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{2};
-#! \def\a{20};
+#! \def\w{2}
+#! \def\a{20}
 #! \node (S) at (0,0) {$S$};
 #! \node (S1) at (-\w,0) {$S_1$};
 #! \node (S2) at (\w,0) {$S_2$};
@@ -973,7 +973,7 @@ DeclareOperation( "DirectSumFunctorialWithGivenDirectSums",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{2};
+#! \def\w{2}
 #! \node (I) at (0,0) {$I$};
 #! \node (I1) at (-\w,0) {$I_1$};
 #! \node (I2) at (\w,0) {$I_2$};
@@ -1124,7 +1124,7 @@ DeclareOperation( "CoproductFunctorialWithGivenCoproducts",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{2};
+#! \def\w{2}
 #! \node (P) at (0,0) {$P$};
 #! \node (P1) at (-\w,0) {$P_1$};
 #! \node (P2) at (\w,0) {$P_2$};
@@ -1279,7 +1279,7 @@ DeclareOperation( "DirectProductFunctorialWithGivenDirectProducts",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{2};
+#! \def\w{2}
 #! \node (E) at (-\w,0) {$E$};
 #! \node (T) at (-\w,\w) {$T$};
 #! \node (A) at (0,0) {$A$};
@@ -1488,7 +1488,7 @@ DeclareOperation( "IsomorphismFromKernelOfJointPairwiseDifferencesOfMorphismsInt
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{2};
+#! \def\w{2}
 #! \node (B) at (0,0) {$B$};
 #! \node (A) at (\w,0) {$A$};
 #! \node (C) at (2*\w,0) {$C$};
@@ -1697,7 +1697,7 @@ DeclareOperation( "IsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsF
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{2};
+#! \def\w{2}
 #! \node (T) at (-\w,2*\w) {$T$};
 #! \node (P) at (0,\w) {$P$};
 #! \node (P1) at (0,0) {$P_1$};
@@ -1929,7 +1929,7 @@ DeclareOperation( "FiberProductFunctorialWithGivenFiberProducts",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{2};
+#! \def\w{2}
 #! \node (B) at (0,0) {$B$};
 #! \node (I1) at (\w,0) {$I_1$};
 #! \node (I2) at (0,\w) {$I_2$};
@@ -2151,7 +2151,7 @@ DeclareOperation( "PushoutFunctorialWithGivenPushouts",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{2};
+#! \def\w{2}
 #! \node (A) at (-\w,0) {$A$};
 #! \node (B) at (\w,0) {$B$};
 #! \node (I) at (0,-\w) {$I$};
@@ -2310,7 +2310,7 @@ DeclareOperation( "ImageObjectFunctorialWithGivenImageObjects",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{2};
+#! \def\w{2}
 #! \node (A) at (-\w,0) {$A$};
 #! \node (B) at (\w,0) {$B$};
 #! \node (C) at (0,-\w) {$C$};
