@@ -1122,6 +1122,15 @@
         CoastrictionToImageWithGivenImageObject   for   IsCapCategoryMorphism,
         IsCapCategoryObject[114X)[133X
   
+  [30X    [33X[0;6Y[2XCoequalizer[102X ([14XCAP: Coequalizer[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCoequalizerFunctorial[102X    ([14XCAP:   CoequalizerFunctorial   for   IsList,
+        IsCapCategoryMorphism, IsList[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCoequalizerFunctorialWithGivenCoequalizers[102X                       ([14XCAP:
+        CoequalizerFunctorialWithGivenCoequalizers   for  IsCapCategoryObject,
+        IsList, IsCapCategoryMorphism, IsList, IsCapCategoryObject[114X)[133X
+  
   [30X    [33X[0;6Y[2XCoimageObject[102X ([14XCAP: CoimageObject for IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XCoimageObjectFunctorial[102X      ([14XCAP:     CoimageObjectFunctorial     for
@@ -1163,12 +1172,28 @@
   [30X    [33X[0;6Y[2XDirectSumProjectionInPushout[102X  ([14XCAP:  DirectSumProjectionInPushout  for
         IsList[114X)[133X
   
+  [30X    [33X[0;6Y[2XEmbeddingOfEqualizer[102X        ([14XCAP:       EmbeddingOfEqualizer       for
+        IsCapCategoryObject, IsList[114X)[133X
+  
+  [30X    [33X[0;6Y[2XEmbeddingOfEqualizerWithGivenEqualizer[102X                           ([14XCAP:
+        EmbeddingOfEqualizerWithGivenEqualizer     for    IsCapCategoryObject,
+        IsList, IsCapCategoryObject[114X)[133X
+  
   [30X    [33X[0;6Y[2XEpimorphismFromSomeProjectiveObject[102X                              ([14XCAP:
         EpimorphismFromSomeProjectiveObject for IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject[102X ([14XCAP:
         EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject   for
         IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XEqualizer[102X ([14XCAP: Equalizer[114X)[133X
+  
+  [30X    [33X[0;6Y[2XEqualizerFunctorial[102X     ([14XCAP:    EqualizerFunctorial    for    IsList,
+        IsCapCategoryMorphism, IsList[114X)[133X
+  
+  [30X    [33X[0;6Y[2XEqualizerFunctorialWithGivenEqualizers[102X                           ([14XCAP:
+        EqualizerFunctorialWithGivenEqualizers     for    IsCapCategoryObject,
+        IsList, IsCapCategoryMorphism, IsList, IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XFiberProduct[102X ([14XCAP: FiberProduct[114X)[133X
   
@@ -1309,6 +1334,13 @@
         MorphismFromCoimageToImageWithGivenObjects   for  IsCapCategoryObject,
         IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
   
+  [30X    [33X[0;6Y[2XMorphismFromEqualizerToSink[102X   ([14XCAP:   MorphismFromEqualizerToSink  for
+        IsCapCategoryObject, IsList[114X)[133X
+  
+  [30X    [33X[0;6Y[2XMorphismFromEqualizerToSinkWithGivenEqualizer[102X                    ([14XCAP:
+        MorphismFromEqualizerToSinkWithGivenEqualizer for IsCapCategoryObject,
+        IsList, IsCapCategoryObject[114X)[133X
+  
   [30X    [33X[0;6Y[2XMorphismFromFiberProductToSink[102X   ([14XCAP:  MorphismFromFiberProductToSink
         for IsList[114X)[133X
   
@@ -1322,6 +1354,13 @@
   [30X    [33X[0;6Y[2XMorphismFromKernelObjectToSinkWithGivenKernelObject[102X              ([14XCAP:
         MorphismFromKernelObjectToSinkWithGivenKernelObject                for
         IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XMorphismFromSourceToCoequalizer[102X  ([14XCAP: MorphismFromSourceToCoequalizer
+        for IsCapCategoryObject, IsList[114X)[133X
+  
+  [30X    [33X[0;6Y[2XMorphismFromSourceToCoequalizerWithGivenCoequalizer[102X              ([14XCAP:
+        MorphismFromSourceToCoequalizerWithGivenCoequalizer                for
+        IsCapCategoryObject, IsList, IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XMorphismFromSourceToCokernelObject[102X                               ([14XCAP:
         MorphismFromSourceToCokernelObject for IsCapCategoryMorphism[114X)[133X
@@ -1344,6 +1383,13 @@
         ProjectionInFactorOfFiberProductWithGivenFiberProduct    for   IsList,
         IsInt, IsCapCategoryObject[114X)[133X
   
+  [30X    [33X[0;6Y[2XProjectionOntoCoequalizer[102X    ([14XCAP:    ProjectionOntoCoequalizer    for
+        IsCapCategoryObject, IsList[114X)[133X
+  
+  [30X    [33X[0;6Y[2XProjectionOntoCoequalizerWithGivenCoequalizer[102X                    ([14XCAP:
+        ProjectionOntoCoequalizerWithGivenCoequalizer for IsCapCategoryObject,
+        IsList, IsCapCategoryObject[114X)[133X
+  
   [30X    [33X[0;6Y[2XPushout[102X ([14XCAP: Pushout for IsList[114X)[133X
   
   [30X    [33X[0;6Y[2XPushoutFunctorial[102X ([14XCAP: PushoutFunctorial for IsList, IsList, IsList[114X)[133X
@@ -1356,6 +1402,15 @@
   
   [30X    [33X[0;6Y[2XSomeProjectiveObject[102X        ([14XCAP:       SomeProjectiveObject       for
         IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XUniversalMorphismFromCoequalizer[102X                                 ([14XCAP:
+        UniversalMorphismFromCoequalizer   for   IsCapCategoryObject,  IsList,
+        IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XUniversalMorphismFromCoequalizerWithGivenCoequalizer[102X             ([14XCAP:
+        UniversalMorphismFromCoequalizerWithGivenCoequalizer               for
+        IsCapCategoryObject,            IsList,           IsCapCategoryObject,
+        IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XUniversalMorphismFromImage[102X    ([14XCAP:   UniversalMorphismFromImage   for
         IsCapCategoryMorphism, IsList[114X)[133X
@@ -1377,6 +1432,15 @@
   [30X    [33X[0;6Y[2XUniversalMorphismIntoCoimageWithGivenCoimageObject[102X               ([14XCAP:
         UniversalMorphismIntoCoimageWithGivenCoimageObject                 for
         IsCapCategoryMorphism, IsList, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XUniversalMorphismIntoEqualizer[102X   ([14XCAP:  UniversalMorphismIntoEqualizer
+        for       IsCapCategoryObject,       IsList,      IsCapCategoryObject,
+        IsCapCategoryMorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XUniversalMorphismIntoEqualizerWithGivenEqualizer[102X                 ([14XCAP:
+        UniversalMorphismIntoEqualizerWithGivenEqualizer                   for
+        IsCapCategoryObject,            IsList,           IsCapCategoryObject,
+        IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XUniversalMorphismIntoFiberProduct[102X                                ([14XCAP:
         UniversalMorphismIntoFiberProduct   for  IsList,  IsCapCategoryObject,
