@@ -210,6 +210,10 @@ true
 
 
 <div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "RingsForHomalg", false );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := HomalgRingOfIntegers();;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat := CategoryOfRows( R );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj1 := CategoryOfRowsObject( 1, cat );;</span>
@@ -233,6 +237,12 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 3 ) );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ComponentOfMorphismFromCoproduct( proj, [ obj2, obj1, obj2 ], 1 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( ComponentOfMorphismFromCoproduct( proj, [ obj2, obj1, obj2 ], 2 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ComponentOfMorphismFromCoproduct( proj, [ obj2, obj1, obj2 ], 3 ) );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UniversalMorphismIntoDirectSum( [ alpha, alpha, alpha ] );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">inj := InjectionOfCofactorOfDirectSum( [ obj2, obj2, obj1 ], 2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 1 ) );</span>
@@ -240,6 +250,12 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 2 ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 3 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ComponentOfMorphismIntoDirectProduct( inj, [ obj2, obj2, obj1 ], 1 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( ComponentOfMorphismIntoDirectProduct( inj, [ obj2, obj2, obj1 ], 2 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ComponentOfMorphismIntoDirectProduct( inj, [ obj2, obj2, obj1 ], 3 ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := CategoryOfRowsMorphism( obj2, HomalgMatrix( [ [ 1, 1 ], [ 1, 1 ] ], 2, 2, R ), obj2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsColiftable( beta, gamma );</span>

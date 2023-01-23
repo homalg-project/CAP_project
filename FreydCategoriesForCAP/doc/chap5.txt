@@ -31,9 +31,17 @@
   [30X    [33X[0;6Y[2XColiftOrFail[102X    ([14XCAP:    ColiftOrFail    for    IsCapCategoryMorphism,
         IsCapCategoryMorphism[114X)[133X
   
+  [30X    [33X[0;6Y[2XComponentOfMorphismFromCoproduct[102X                                 ([14XCAP:
+        ComponentOfMorphismFromCoproduct  for  IsCapCategoryMorphism,  IsList,
+        IsInt[114X)[133X
+  
   [30X    [33X[0;6Y[2XComponentOfMorphismFromDirectSum[102X                                 ([14XCAP:
         ComponentOfMorphismFromDirectSum  for  IsCapCategoryMorphism,  IsList,
         IsInt[114X)[133X
+  
+  [30X    [33X[0;6Y[2XComponentOfMorphismIntoDirectProduct[102X                             ([14XCAP:
+        ComponentOfMorphismIntoDirectProduct     for    IsCapCategoryMorphism,
+        IsList, IsInt[114X)[133X
   
   [30X    [33X[0;6Y[2XComponentOfMorphismIntoDirectSum[102X                                 ([14XCAP:
         ComponentOfMorphismIntoDirectSum  for  IsCapCategoryMorphism,  IsList,
