@@ -1098,6 +1098,17 @@ DeclareOperation( "CoproductFunctorial",
 DeclareOperation( "CoproductFunctorialWithGivenCoproducts",
                   [ IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are a morphism $\alpha: I \rightarrow A$,
+#! a list $D = (I_1, \dots, I_n)$ of objects with $I = \bigsqcup_{j=1}^n I_j$,
+#! and an integer $k$.
+#! The output is the component morphism
+#! $I_k \rightarrow A$.
+#! @Returns a morphism in $\mathrm{Hom}(I_k, A)$
+#! @Arguments alpha, D, k
+DeclareOperation( "ComponentOfMorphismFromCoproduct",
+                  [ IsCapCategoryMorphism, IsList, IsInt ] );
+
 #! @Chapter Universal Objects
 
 ####################################
@@ -1244,6 +1255,17 @@ DeclareOperation( "DirectProductFunctorial",
 #! @Arguments s, source_diagram, L, range_diagram r
 DeclareOperation( "DirectProductFunctorialWithGivenDirectProducts",
                   [ IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are a morphism $\alpha: A \rightarrow P$,
+#! a list $D = (P_1, \dots, P_n)$ of objects with $P = \prod_{j=1}^n P_j$,
+#! and an integer $k$.
+#! The output is the component morphism
+#! $A \rightarrow P_k$.
+#! @Returns a morphism in $\mathrm{Hom}(A, P_k)$
+#! @Arguments alpha, D, k
+DeclareOperation( "ComponentOfMorphismIntoDirectProduct",
+                  [ IsCapCategoryMorphism, IsList, IsInt ] );
 
 #! @Chapter Universal Objects
 

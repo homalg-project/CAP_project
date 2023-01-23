@@ -2,10 +2,11 @@
 
 #! @Section Basics based on category of rows
 
-LoadPackage( "FreydCategoriesForCAP" );;
-LoadPackage( "RingsForHomalg" );
-
 #! @Example
+LoadPackage( "FreydCategoriesForCAP", false );
+#! true
+LoadPackage( "RingsForHomalg", false );
+#! true
 R := HomalgRingOfIntegers();;
 cat := CategoryOfRows( R );;
 obj1 := CategoryOfRowsObject( 1, cat );;
@@ -29,6 +30,12 @@ IsOne( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 2 ) );
 #! true
 IsZero( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 3 ) );
 #! true
+IsZero( ComponentOfMorphismFromCoproduct( proj, [ obj2, obj1, obj2 ], 1 ) );
+#! true
+IsOne( ComponentOfMorphismFromCoproduct( proj, [ obj2, obj1, obj2 ], 2 ) );
+#! true
+IsZero( ComponentOfMorphismFromCoproduct( proj, [ obj2, obj1, obj2 ], 3 ) );
+#! true
 UniversalMorphismIntoDirectSum( [ alpha, alpha, alpha ] );;
 inj := InjectionOfCofactorOfDirectSum( [ obj2, obj2, obj1 ], 2 );;
 IsZero( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 1 ) );
@@ -36,6 +43,12 @@ IsZero( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 1 ) );
 IsOne( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 2 ) );
 #! true
 IsZero( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 3 ) );
+#! true
+IsZero( ComponentOfMorphismIntoDirectProduct( inj, [ obj2, obj2, obj1 ], 1 ) );
+#! true
+IsOne( ComponentOfMorphismIntoDirectProduct( inj, [ obj2, obj2, obj1 ], 2 ) );
+#! true
+IsZero( ComponentOfMorphismIntoDirectProduct( inj, [ obj2, obj2, obj1 ], 3 ) );
 #! true
 gamma := CategoryOfRowsMorphism( obj2, HomalgMatrix( [ [ 1, 1 ], [ 1, 1 ] ], 2, 2, R ), obj2 );;
 IsColiftable( beta, gamma );

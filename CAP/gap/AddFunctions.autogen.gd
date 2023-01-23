@@ -563,6 +563,25 @@ DeclareOperation( "AddColiftOrFail",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `ComponentOfMorphismFromCoproduct`.
+#! $F: ( alpha, I, i ) \mapsto \mathtt{ComponentOfMorphismFromCoproduct}(alpha, I, i)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddComponentOfMorphismFromCoproduct",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddComponentOfMorphismFromCoproduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddComponentOfMorphismFromCoproduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddComponentOfMorphismFromCoproduct",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `ComponentOfMorphismFromDirectSum`.
 #! $F: ( alpha, S, i ) \mapsto \mathtt{ComponentOfMorphismFromDirectSum}(alpha, S, i)$.
 #! @Returns nothing
@@ -577,6 +596,25 @@ DeclareOperation( "AddComponentOfMorphismFromDirectSum",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddComponentOfMorphismFromDirectSum",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `ComponentOfMorphismIntoDirectProduct`.
+#! $F: ( alpha, P, i ) \mapsto \mathtt{ComponentOfMorphismIntoDirectProduct}(alpha, P, i)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddComponentOfMorphismIntoDirectProduct",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddComponentOfMorphismIntoDirectProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddComponentOfMorphismIntoDirectProduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddComponentOfMorphismIntoDirectProduct",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
