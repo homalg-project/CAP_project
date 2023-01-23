@@ -131,6 +131,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X85F392E5865012C7">6.7-7 UniversalMorphismFromCoproductWithGivenCoproduct</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7FDE92577EFB6866">6.7-8 CoproductFunctorial</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X85FFAD9E7FAFF9D4">6.7-9 CoproductFunctorialWithGivenCoproducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X82F0CBC179945B84">6.7-10 ComponentOfMorphismFromCoproduct</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6_mj.html#X844C65417FBEA3C7">6.8 <span class="Heading">Direct Product</span></a>
 </span>
@@ -143,6 +144,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X81A27DC180D751B8">6.8-6 UniversalMorphismIntoDirectProductWithGivenDirectProduct</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X79EB76507C8AB4A4">6.8-7 DirectProductFunctorial</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7DD930FE78492D58">6.8-8 DirectProductFunctorialWithGivenDirectProducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7C5769577CEAF2C4">6.8-9 ComponentOfMorphismIntoDirectProduct</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6_mj.html#X824FD8F786D2350D">6.9 <span class="Heading">Equalizer</span></a>
 </span>
@@ -1184,6 +1186,15 @@
 
 <p>The arguments are an object <span class="SimpleMath">\(s = \bigsqcup_{i=1}^n I_i\)</span>, a list of objects <span class="SimpleMath">\((I_i)_{i = 1 \dots n}\)</span>, a list <span class="SimpleMath">\(L = ( \mu_1: I_1 \rightarrow I_1', \dots, \mu_n: I_n \rightarrow I_n' )\)</span>, a list of objects <span class="SimpleMath">\((I_i')_{i = 1 \dots n}\)</span>, and an object <span class="SimpleMath">\(r = \bigsqcup_{i=1}^n I_i'\)</span>. For convenience, <var class="Arg">source_diagram</var> and <var class="Arg">range_diagram</var> can be omitted and are automatically derived from <var class="Arg">L</var> in that case. The output is a morphism <span class="SimpleMath">\(\bigsqcup_{i=1}^n I_i \rightarrow \bigsqcup_{i=1}^n I_i'\)</span> given by the functoriality of the coproduct.</p>
 
+<p><a id="X82F0CBC179945B84" name="X82F0CBC179945B84"></a></p>
+
+<h5>6.7-10 ComponentOfMorphismFromCoproduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ComponentOfMorphismFromCoproduct</code>( <var class="Arg">alpha</var>, <var class="Arg">D</var>, <var class="Arg">k</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(I_k, A)\)</span></p>
+
+<p>The arguments are a morphism <span class="SimpleMath">\(\alpha: I \rightarrow A\)</span>, a list <span class="SimpleMath">\(D = (I_1, \dots, I_n)\)</span> of objects with <span class="SimpleMath">\(I = \bigsqcup_{j=1}^n I_j\)</span>, and an integer <span class="SimpleMath">\(k\)</span>. The output is the component morphism <span class="SimpleMath">\(I_k \rightarrow A\)</span>.</p>
+
 <p><a id="X844C65417FBEA3C7" name="X844C65417FBEA3C7"></a></p>
 
 <h4>6.8 <span class="Heading">Direct Product</span></h4>
@@ -1286,6 +1297,15 @@
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( s, r )\)</span></p>
 
 <p>The arguments are an object <span class="SimpleMath">\(s = \prod_{i=1}^n P_i\)</span>, a list of objects <span class="SimpleMath">\((P_i)_{i = 1 \dots n}\)</span>, a list of morphisms <span class="SimpleMath">\(L = (\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}\)</span>, a list of objects <span class="SimpleMath">\((P_i')_{i = 1 \dots n}\)</span>, and an object <span class="SimpleMath">\(r = \prod_{i=1}^n P_i'\)</span>. For convenience, <var class="Arg">source_diagram</var> and <var class="Arg">range_diagram</var> can be omitted and are automatically derived from <var class="Arg">L</var> in that case. The output is a morphism <span class="SimpleMath">\(\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i'\)</span> given by the functoriality of the direct product.</p>
+
+<p><a id="X7C5769577CEAF2C4" name="X7C5769577CEAF2C4"></a></p>
+
+<h5>6.8-9 ComponentOfMorphismIntoDirectProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ComponentOfMorphismIntoDirectProduct</code>( <var class="Arg">alpha</var>, <var class="Arg">D</var>, <var class="Arg">k</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(A, P_k)\)</span></p>
+
+<p>The arguments are a morphism <span class="SimpleMath">\(\alpha: A \rightarrow P\)</span>, a list <span class="SimpleMath">\(D = (P_1, \dots, P_n)\)</span> of objects with <span class="SimpleMath">\(P = \prod_{j=1}^n P_j\)</span>, and an integer <span class="SimpleMath">\(k\)</span>. The output is the component morphism <span class="SimpleMath">\(A \rightarrow P_k\)</span>.</p>
 
 <p><a id="X824FD8F786D2350D" name="X824FD8F786D2350D"></a></p>
 

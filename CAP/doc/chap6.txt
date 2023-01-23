@@ -953,6 +953,15 @@
   case.   The   output   is   a  morphism  [23X\bigsqcup_{i=1}^n  I_i  \rightarrow
   \bigsqcup_{i=1}^n I_i'[123X given by the functoriality of the coproduct.[133X
   
+  [1X6.7-10 ComponentOfMorphismFromCoproduct[101X
+  
+  [33X[1;0Y[29X[2XComponentOfMorphismFromCoproduct[102X( [3Xalpha[103X, [3XD[103X, [3Xk[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(I_k, A)[123X[133X
+  
+  [33X[0;0YThe  arguments  are  a  morphism  [23X\alpha:  I \rightarrow A[123X, a list [23XD = (I_1,
+  \dots, I_n)[123X of objects with [23XI = \bigsqcup_{j=1}^n I_j[123X, and an integer [23Xk[123X. The
+  output is the component morphism [23XI_k \rightarrow A[123X.[133X
+  
   
   [1X6.8 [33X[0;0YDirect Product[133X[101X
   
@@ -1065,6 +1074,15 @@
   can be omitted and are automatically derived from [3XL[103X in that case. The output
   is  a morphism [23X\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i'[123X given by the
   functoriality of the direct product.[133X
+  
+  [1X6.8-9 ComponentOfMorphismIntoDirectProduct[101X
+  
+  [33X[1;0Y[29X[2XComponentOfMorphismIntoDirectProduct[102X( [3Xalpha[103X, [3XD[103X, [3Xk[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(A, P_k)[123X[133X
+  
+  [33X[0;0YThe  arguments  are  a  morphism  [23X\alpha:  A \rightarrow P[123X, a list [23XD = (P_1,
+  \dots,  P_n)[123X  of  objects  with [23XP = \prod_{j=1}^n P_j[123X, and an integer [23Xk[123X. The
+  output is the component morphism [23XA \rightarrow P_k[123X.[133X
   
   
   [1X6.9 [33X[0;0YEqualizer[133X[101X
