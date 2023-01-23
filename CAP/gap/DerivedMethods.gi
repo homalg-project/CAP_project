@@ -520,6 +520,22 @@ AddDerivationToCAP( UniversalMorphismIntoDirectSum,
   end : Description := "UniversalMorphismIntoDirectSum using UniversalMorphismIntoDirectProduct" );
 
 ##
+AddDerivationToCAP( ComponentOfMorphismIntoDirectSum,
+                    [ [ IsomorphismFromDirectSumToDirectProduct, 1 ],
+                      [ ComponentOfMorphismIntoDirectProduct, 1 ],
+                      [ PreCompose, 1 ] ],
+                   
+  function( cat, alpha, summands, nr )
+    
+    return ComponentOfMorphismIntoDirectProduct( cat,
+        PreCompose( cat, alpha, IsomorphismFromDirectSumToDirectProduct( cat, summands ) ),
+        summands,
+        nr
+    );
+    
+  end : Description := "ComponentOfMorphismIntoDirectSum using ComponentOfMorphismIntoDirectProduct" );
+
+##
 AddDerivationToCAP( InjectionOfCofactorOfDirectSum,
                     [ [ InjectionOfCofactorOfCoproduct, 1 ],
                       [ IsomorphismFromCoproductToDirectSum, 1 ],
@@ -542,6 +558,22 @@ AddDerivationToCAP( UniversalMorphismFromDirectSum,
     return PreCompose( cat, IsomorphismFromDirectSumToCoproduct( cat, diagram ),
                        UniversalMorphismFromCoproduct( cat, diagram, test_object, sink ) );
   end : Description := "UniversalMorphismFromDirectSum using UniversalMorphismFromCoproduct" );
+
+##
+AddDerivationToCAP( ComponentOfMorphismFromDirectSum,
+                    [ [ IsomorphismFromCoproductToDirectSum, 1 ],
+                      [ ComponentOfMorphismFromCoproduct, 1 ],
+                      [ PreCompose, 1 ] ],
+                   
+  function( cat, alpha, summands, nr )
+    
+    return ComponentOfMorphismFromCoproduct( cat,
+        PreCompose( cat, IsomorphismFromCoproductToDirectSum( cat, summands ), alpha ),
+        summands,
+        nr
+    );
+    
+  end : Description := "ComponentOfMorphismFromDirectSum using ComponentOfMorphismFromCoproduct" );
 
 ##
 AddDerivationToCAP( UniversalMorphismIntoTerminalObject,
@@ -595,6 +627,22 @@ AddDerivationToCAP( UniversalMorphismIntoDirectProduct,
   end : Description := "UniversalMorphismIntoDirectProduct using UniversalMorphismIntoDirectSum" );
 
 ##
+AddDerivationToCAP( ComponentOfMorphismIntoDirectProduct,
+                    [ [ IsomorphismFromDirectProductToDirectSum, 1 ],
+                      [ ComponentOfMorphismIntoDirectSum, 1 ],
+                      [ PreCompose, 1 ] ],
+                   
+  function( cat, alpha, factors, nr )
+    
+    return ComponentOfMorphismIntoDirectSum( cat,
+        PreCompose( cat, alpha, IsomorphismFromDirectProductToDirectSum( cat, factors ) ),
+        factors,
+        nr
+    );
+    
+  end : Description := "ComponentOfMorphismIntoDirectProduct using ComponentOfMorphismIntoDirectSum" );
+
+##
 AddDerivationToCAP( InjectionOfCofactorOfCoproduct,
                     [ [ InjectionOfCofactorOfDirectSum, 1 ],
                       [ IsomorphismFromDirectSumToCoproduct, 1 ],
@@ -617,6 +665,22 @@ AddDerivationToCAP( UniversalMorphismFromCoproduct,
     return PreCompose( cat, IsomorphismFromCoproductToDirectSum( cat, diagram ),
                        UniversalMorphismFromDirectSum( cat, diagram, test_object, sink ) );
   end : Description := "UniversalMorphismFromCoproduct using UniversalMorphismFromDirectSum" );
+
+##
+AddDerivationToCAP( ComponentOfMorphismFromCoproduct,
+                    [ [ IsomorphismFromDirectSumToCoproduct, 1 ],
+                      [ ComponentOfMorphismFromDirectSum, 1 ],
+                      [ PreCompose, 1 ] ],
+                   
+  function( cat, alpha, cofactors, nr )
+    
+    return ComponentOfMorphismFromDirectSum( cat,
+        PreCompose( cat, IsomorphismFromDirectSumToCoproduct( cat, cofactors ), alpha ),
+        cofactors,
+        nr
+    );
+    
+  end : Description := "ComponentOfMorphismFromCoproduct using ComponentOfMorphismFromDirectSum" );
 
 ##
 AddDerivationToCAP( UniversalMorphismIntoEqualizer,
@@ -2115,6 +2179,23 @@ AddDerivationToCAP( LiftAlongMonomorphism,
 end : CategoryFilter := IsAbelianCategory, 
       Description := "LiftAlongMonomorphism by inverting the kernel lift from the source to the kernel of the cokernel of a given monomorphism");
 
+##
+AddDerivationToCAP( ComponentOfMorphismIntoDirectProduct,
+                   
+  function( cat, alpha, factors, nr )
+    
+    return PreCompose( cat, alpha, ProjectionInFactorOfDirectProduct( cat, factors, nr ) );
+    
+end : Description := "ComponentOfMorphismIntoDirectProduct by composing with the direct product projection" );
+
+##
+AddDerivationToCAP( ComponentOfMorphismFromCoproduct,
+                   
+  function( cat, alpha, cofactors, nr )
+    
+    return PreCompose( cat, InjectionOfCofactorOfCoproduct( cat, cofactors, nr ), alpha );
+    
+end : Description := "ComponentOfMorphismFromCoproduct by composing with the coproduct injection" );
 
 ##
 AddDerivationToCAP( ComponentOfMorphismIntoDirectSum,

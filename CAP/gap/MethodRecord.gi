@@ -996,6 +996,12 @@ UniversalMorphismIntoDirectProductWithGivenDirectProduct := rec(
   compatible_with_congruence_of_morphisms := true,
 ),
 
+ComponentOfMorphismIntoDirectProduct := rec(
+  filter_list := [ "category", "morphism", "list_of_objects", "integer" ],
+  io_type := [ [ "alpha", "P", "i" ], [ "alpha_source", "P_i" ] ],
+  return_type := "morphism",
+  dual_operation := "ComponentOfMorphismFromCoproduct" ),
+
 IsCongruentForMorphisms := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   well_defined_todo := false,
@@ -1401,6 +1407,12 @@ UniversalMorphismFromCoproductWithGivenCoproduct := rec(
   return_type := "morphism",
   compatible_with_congruence_of_morphisms := true,
 ),
+
+ComponentOfMorphismFromCoproduct := rec(
+  filter_list := [ "category", "morphism", "list_of_objects", "integer" ],
+  io_type := [ [ "alpha", "I", "i" ], [ "I_i", "alpha_range" ] ],
+  return_type := "morphism",
+  dual_operation := "ComponentOfMorphismIntoDirectProduct" ),
 
 IsEqualAsSubobjects := rec(
   filter_list := [ "category", "morphism", "morphism" ],

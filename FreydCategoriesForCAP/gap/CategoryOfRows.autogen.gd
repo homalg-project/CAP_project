@@ -20,7 +20,9 @@
 #! * <Ref BookName="CAP" Func="Colift" Label="for Is" />
 #! * <Ref BookName="CAP" Func="ColiftAlongEpimorphism" Label="for Is" />
 #! * <Ref BookName="CAP" Func="ColiftOrFail" Label="for Is" />
+#! * <Ref BookName="CAP" Func="ComponentOfMorphismFromCoproduct" Label="for Is" />
 #! * <Ref BookName="CAP" Func="ComponentOfMorphismFromDirectSum" Label="for Is" />
+#! * <Ref BookName="CAP" Func="ComponentOfMorphismIntoDirectProduct" Label="for Is" />
 #! * <Ref BookName="CAP" Func="ComponentOfMorphismIntoDirectSum" Label="for Is" />
 #! * <Ref BookName="CAP" Func="Coproduct" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoproductFunctorial" Label="for Is" />

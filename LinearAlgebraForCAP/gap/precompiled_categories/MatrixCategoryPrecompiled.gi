@@ -967,6 +967,20 @@ end
     , 100 );
     
     ##
+    AddComponentOfMorphismFromCoproduct( cat,
+        
+########
+function ( cat_1, alpha_1, I_1, i_1 )
+    local deduped_1_1, deduped_2_1;
+    deduped_2_1 := List( I_1, Dimension );
+    deduped_1_1 := Sum( deduped_2_1{[ 1 .. i_1 - 1 ]} ) + 1;
+    return CreateCapCategoryMorphismWithAttributes( cat_1, I_1[i_1], Range( alpha_1 ), UnderlyingMatrix, CertainRows( UnderlyingMatrix( alpha_1 ), [ deduped_1_1 .. deduped_1_1 - 1 + deduped_2_1[i_1] ] ) );
+end
+########
+        
+    , 402 : IsPrecompiledDerivation := true );
+    
+    ##
     AddComponentOfMorphismFromDirectSum( cat,
         
 ########
@@ -979,6 +993,20 @@ end
 ########
         
     , 100 );
+    
+    ##
+    AddComponentOfMorphismIntoDirectProduct( cat,
+        
+########
+function ( cat_1, alpha_1, P_1, i_1 )
+    local deduped_1_1, deduped_2_1;
+    deduped_2_1 := List( P_1, Dimension );
+    deduped_1_1 := Sum( deduped_2_1{[ 1 .. i_1 - 1 ]} ) + 1;
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), P_1[i_1], UnderlyingMatrix, CertainColumns( UnderlyingMatrix( alpha_1 ), [ deduped_1_1 .. deduped_1_1 - 1 + deduped_2_1[i_1] ] ) );
+end
+########
+        
+    , 402 : IsPrecompiledDerivation := true );
     
     ##
     AddComponentOfMorphismIntoDirectSum( cat,
