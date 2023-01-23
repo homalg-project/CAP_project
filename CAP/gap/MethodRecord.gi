@@ -3133,41 +3133,13 @@ IsWellDefinedForTwoCells := rec(
   
   return_type := "bool" ),
   
-DirectSumDiagonalDifference := rec(
-  filter_list := [ "category", "list_of_morphisms" ],
-  io_type := [ [ "D" ], [ "S", "D_1_range" ] ],
-  return_type := "morphism",
-  dual_operation := "DirectSumCodiagonalDifference",
-),
-
 JointPairwiseDifferencesOfMorphismsIntoDirectProduct := rec(
   filter_list := [ "category", "object", "list_of_morphisms" ],
   io_type := [ [ "A", "D" ], [ "A", "P" ] ],
   return_type := "morphism",
   dual_operation := "JointPairwiseDifferencesOfMorphismsFromCoproduct",
 ),
-  
-FiberProductEmbeddingInDirectSum := rec(
-  filter_list := [ "category", "list_of_morphisms" ],
-  io_type := [ [ "D" ], [ "P", "S" ] ],
-  return_type := "morphism",
-  dual_operation := "DirectSumProjectionInPushout",
-),
-  
-IsomorphismFromFiberProductToKernelOfDiagonalDifference := rec(
-  filter_list := [ "category", "list_of_morphisms" ],
-  io_type := [ [ "D" ], [ "P", "Delta" ] ],
-  return_type := "morphism",
-  dual_operation := "IsomorphismFromCokernelOfDiagonalDifferenceToPushout",
-),
-  
-IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct := rec(
-  filter_list := [ "category", "list_of_morphisms" ],
-  io_type := [ [ "D" ], [ "Delta", "P" ] ],
-  return_type := "morphism",
-  dual_operation := "IsomorphismFromPushoutToCokernelOfDiagonalDifference",
-),
-  
+
 IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram := rec(
   filter_list := [ "category", "list_of_morphisms" ],
   io_type := [ [ "D" ], [ "P", "Delta" ] ],
@@ -3180,20 +3152,6 @@ IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct := rec(
   io_type := [ [ "D" ], [ "Delta", "P" ] ],
   return_type := "morphism",
   dual_operation := "IsomorphismFromPushoutToCoequalizerOfCoproductDiagram",
-),
-  
-IsomorphismFromPushoutToCokernelOfDiagonalDifference := rec(
-  filter_list := [ "category", "list_of_morphisms" ],
-  io_type := [ [ "D" ], [ "I", "Delta" ] ],
-  return_type := "morphism",
-  dual_operation := "IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
-),
-  
-IsomorphismFromCokernelOfDiagonalDifferenceToPushout := rec(
-  filter_list := [ "category", "list_of_morphisms" ],
-  io_type := [ [ "D" ], [ "Delta", "I" ] ],
-  return_type := "morphism",
-  dual_operation := "IsomorphismFromFiberProductToKernelOfDiagonalDifference",
 ),
   
 IsomorphismFromPushoutToCoequalizerOfCoproductDiagram := rec(
@@ -3280,25 +3238,11 @@ IsomorphismFromCoproductToDirectSum := rec(
   dual_operation := "IsomorphismFromDirectSumToDirectProduct",
 ),
 
-DirectSumCodiagonalDifference := rec(
-  io_type := [ [ "D" ], [ "D_1_source", "S" ] ],
-  filter_list := [ "category", "list_of_morphisms" ],
-  return_type := "morphism",
-  dual_operation := "DirectSumDiagonalDifference",
-),
-
 JointPairwiseDifferencesOfMorphismsFromCoproduct := rec(
   filter_list := [ "category", "object", "list_of_morphisms" ],
   io_type := [ [ "A", "D" ], [ "C", "A" ] ],
   return_type := "morphism",
   dual_operation := "JointPairwiseDifferencesOfMorphismsIntoDirectProduct",
-),
-
-DirectSumProjectionInPushout := rec(
-  filter_list := [ "category", "list_of_morphisms" ],
-  io_type := [ [ "D" ], [ "S", "I" ] ],
-  return_type := "morphism",
-  dual_operation := "FiberProductEmbeddingInDirectSum",
 ),
 
 SomeProjectiveObject := rec(

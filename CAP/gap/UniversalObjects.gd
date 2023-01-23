@@ -1743,26 +1743,6 @@ DeclareOperation( "IsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsF
 #! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$.
 #! The output is a morphism
 #! $\mathrm{FiberProduct}(D) \rightarrow \Delta$,
-#! where $\Delta$ denotes the kernel object equalizing the morphisms $\beta_i$.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{FiberProduct}(D), \Delta)$
-#! @Arguments D
-DeclareOperation( "IsomorphismFromFiberProductToKernelOfDiagonalDifference",
-                  [ IsList ] );
-
-#! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$.
-#! The output is a morphism
-#! $\Delta \rightarrow \mathrm{FiberProduct}(D)$,
-#! where $\Delta$ denotes the kernel object equalizing the morphisms $\beta_i$.
-#! @Returns a morphism in $\mathrm{Hom}(\Delta, \mathrm{FiberProduct}(D))$
-#! @Arguments D
-DeclareOperation( "IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
-                  [ IsList ] );
-
-#! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$.
-#! The output is a morphism
-#! $\mathrm{FiberProduct}(D) \rightarrow \Delta$,
 #! where $\Delta$ denotes the equalizer of the product diagram of the morphisms $\beta_i$.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{FiberProduct}(D), \Delta)$
 #! @Arguments D
@@ -1777,16 +1757,6 @@ DeclareOperation( "IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram"
 #! @Returns a morphism in $\mathrm{Hom}(\Delta, \mathrm{FiberProduct}(D))$
 #! @Arguments D
 DeclareOperation( "IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct",
-                  [ IsList ] );
-
-#! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$.
-#! The output is a morphism
-#! $\bigoplus_{i=1}^n P_i \rightarrow \bigoplus_{i=1}^{n-1} B$
-#! such that its kernel equalizes the $\beta_i$.
-#! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n P_i, \bigoplus_{i=1}^{n-1} B )$
-#! @Arguments D
-DeclareOperation( "DirectSumDiagonalDifference",
                   [ IsList ] );
 
 #! @Description
@@ -1972,26 +1942,6 @@ DeclareOperation( "FiberProductFunctorialWithGivenFiberProducts",
 #! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
 #! The output is a morphism
 #! $\mathrm{Pushout}(D) \rightarrow \Delta$,
-#! where $\Delta$ denotes the cokernel object coequalizing the morphisms $\beta_i$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Pushout}(D), \Delta)$
-#! @Arguments D
-DeclareOperation( "IsomorphismFromPushoutToCokernelOfDiagonalDifference",
-                  [ IsList ] );
-
-#! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
-#! The output is a morphism
-#! $\Delta \rightarrow \mathrm{Pushout}(D)$,
-#! where $\Delta$ denotes the cokernel object coequalizing the morphisms $\beta_i$.
-#! @Returns a morphism in $\mathrm{Hom}( \Delta, \mathrm{Pushout}(D))$
-#! @Arguments D
-DeclareOperation( "IsomorphismFromCokernelOfDiagonalDifferenceToPushout",
-                  [ IsList ] );
-
-#! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
-#! The output is a morphism
-#! $\mathrm{Pushout}(D) \rightarrow \Delta$,
 #! where $\Delta$ denotes the coequalizer of the coproduct diagram of the morphisms $\beta_i$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Pushout}(D), \Delta)$
 #! @Arguments D
@@ -2006,16 +1956,6 @@ DeclareOperation( "IsomorphismFromPushoutToCoequalizerOfCoproductDiagram",
 #! @Returns a morphism in $\mathrm{Hom}( \Delta, \mathrm{Pushout}(D))$
 #! @Arguments D
 DeclareOperation( "IsomorphismFromCoequalizerOfCoproductDiagramToPushout",
-                  [ IsList ] );
-
-#! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
-#! The output is a morphism
-#! $\bigoplus_{i=1}^{n-1} B \rightarrow \bigoplus_{i=1}^n I_i$
-#! such that its cokernel coequalizes the $\beta_i$.
-#! @Returns a morphism in $\mathrm{Hom}(\bigoplus_{i=1}^{n-1} B, \bigoplus_{i=1}^n I_i)$
-#! @Arguments D
-DeclareOperation( "DirectSumCodiagonalDifference",
                   [ IsList ] );
 
 #! @Description
