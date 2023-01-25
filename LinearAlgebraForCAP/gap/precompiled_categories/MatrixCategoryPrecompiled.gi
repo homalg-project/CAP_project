@@ -5428,35 +5428,34 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1, arg4_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1;
-    deduped_11_1 := UnderlyingRing( cat_1 );
-    deduped_10_1 := arg2_1[1];
-    deduped_9_1 := [ 1 .. Length( arg2_1 ) ];
-    deduped_8_1 := [ 1 .. Length( deduped_10_1 ) ];
-    hoisted_4_1 := deduped_11_1;
-    hoisted_3_1 := deduped_9_1;
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1;
+    deduped_10_1 := UnderlyingRing( cat_1 );
+    deduped_9_1 := arg2_1[1];
+    deduped_8_1 := [ 1 .. Length( arg2_1 ) ];
+    deduped_7_1 := [ 1 .. Length( deduped_9_1 ) ];
+    hoisted_4_1 := deduped_10_1;
+    hoisted_3_1 := deduped_8_1;
     hoisted_2_1 := arg3_1[1];
-    hoisted_1_1 := deduped_10_1;
-    hoisted_7_1 := SafeRightDivide( UnionOfColumns( deduped_11_1, 1, List( deduped_9_1, function ( logic_new_func_x_2 )
+    hoisted_1_1 := deduped_9_1;
+    hoisted_6_1 := SafeRightDivide( UnionOfColumns( deduped_10_1, 1, List( deduped_8_1, function ( logic_new_func_x_2 )
                 return ConvertMatrixToRow( UnderlyingMatrix( arg4_1[logic_new_func_x_2] ) );
-            end ) ), UnionOfRows( deduped_11_1, Sum( List( deduped_9_1, function ( logic_new_func_x_2 )
+            end ) ), UnionOfRows( deduped_10_1, Sum( List( deduped_8_1, function ( logic_new_func_x_2 )
                   return Dimension( Source( arg2_1[logic_new_func_x_2][1] ) ) * Dimension( Range( arg3_1[logic_new_func_x_2][1] ) );
-              end ) ), List( deduped_8_1, function ( logic_new_func_x_2 )
+              end ) ), List( deduped_7_1, function ( logic_new_func_x_2 )
                 return UnionOfColumns( hoisted_4_1, Dimension( Range( hoisted_1_1[logic_new_func_x_2] ) ) * Dimension( Source( hoisted_2_1[logic_new_func_x_2] ) ), List( hoisted_3_1, function ( logic_new_func_x_3 )
                           return KroneckerMat( TransposedMatrix( UnderlyingMatrix( arg2_1[logic_new_func_x_3][logic_new_func_x_2] ) ), UnderlyingMatrix( arg3_1[logic_new_func_x_3][logic_new_func_x_2] ) );
                       end ) );
             end ) ) );
-    hoisted_6_1 := deduped_8_1;
-    hoisted_5_1 := List( deduped_8_1, function ( logic_new_func_x_2 )
+    hoisted_5_1 := List( deduped_7_1, function ( logic_new_func_x_2 )
             return Dimension( Range( hoisted_1_1[logic_new_func_x_2] ) ) * Dimension( Source( hoisted_2_1[logic_new_func_x_2] ) );
         end );
-    return List( deduped_8_1, function ( j_2 )
+    return List( deduped_7_1, function ( j_2 )
             local deduped_1_2, deduped_2_2, deduped_3_2, deduped_4_2;
-            deduped_4_2 := CAP_JIT_INCOMPLETE_LOGIC( hoisted_6_1[j_2] );
+            deduped_4_2 := CAP_JIT_INCOMPLETE_LOGIC( j_2 );
             deduped_3_2 := Source( hoisted_2_1[j_2] );
             deduped_2_2 := Range( hoisted_1_1[j_2] );
             deduped_1_2 := Sum( hoisted_5_1{[ 1 .. j_2 - 1 ]} ) + 1;
-            return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_2_2, deduped_3_2, UnderlyingMatrix, ConvertRowToMatrix( CertainColumns( hoisted_7_1, [ deduped_1_2 .. deduped_1_2 - 1 + Dimension( Range( hoisted_1_1[deduped_4_2] ) ) * Dimension( Source( hoisted_2_1[deduped_4_2] ) ) ] ), Dimension( deduped_2_2 ), Dimension( deduped_3_2 ) ) );
+            return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_2_2, deduped_3_2, UnderlyingMatrix, ConvertRowToMatrix( CertainColumns( hoisted_6_1, [ deduped_1_2 .. deduped_1_2 - 1 + Dimension( Range( hoisted_1_1[deduped_4_2] ) ) * Dimension( Source( hoisted_2_1[deduped_4_2] ) ) ] ), Dimension( deduped_2_2 ), Dimension( deduped_3_2 ) ) );
         end );
 end
 ########

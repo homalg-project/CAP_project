@@ -484,7 +484,7 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                 domains := rec( );
                 
                 pre_func := function ( tree, func_stack )
-                  local value_of_binding_iterated, is_shorter_than, list_call, domain, simplify, enclosing_domain;
+                  local value_of_binding_iterated, is_shorter_than, list_call, domain, simplify, enclosing_domain, index, resolved_domain, resolved_index, element;
                     
                     value_of_binding_iterated := function ( tree )
                       local func;
@@ -547,6 +547,13 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                         
                     end;
                     
+                    # simplify nested CAP_JIT_INCOMPLETE_LOGIC
+                    while CapJitIsCallToGlobalFunction( tree, "CAP_JIT_INCOMPLETE_LOGIC" ) and CapJitIsCallToGlobalFunction( value_of_binding_iterated( tree.args.1 ), "CAP_JIT_INCOMPLETE_LOGIC" ) do
+                        
+                        tree := tree.args.1;
+                        
+                    od;
+                    
                     if CapJitIsCallToGlobalFunction( tree, "[]" ) then
                         
                         list_call := value_of_binding_iterated( tree.args.1 );
@@ -584,6 +591,39 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                                 changed := true;
                                 
                                 # List( domain, func )[index] => func( CAP_JIT_INCOMPLETE_LOGIC( domain[index] ) )
+                                
+                                index := tree.args.2;
+                                
+                                resolved_domain := value_of_binding_iterated( domain );
+                                resolved_index := value_of_binding_iterated( index );
+                                
+                                # [ 1 .. last ][x] => x
+                                if resolved_domain.type = "EXPR_RANGE" and resolved_domain.first.type = "EXPR_INT" and resolved_domain.first.value = 1 then
+                                    
+                                    element := index;
+                                    
+                                # [ 0 .. last ][1 + x] => x
+                                elif resolved_domain.type = "EXPR_RANGE" and resolved_domain.first.type = "EXPR_INT" and resolved_domain.first.value = 0 and CapJitIsCallToGlobalFunction( resolved_index, "+" ) and resolved_index.args.1.type = "EXPR_INT" and resolved_index.args.1.value = 1 then
+                                    
+                                    element := resolved_index.args.2;
+                                    
+                                else
+                                    
+                                    # domain[index]
+                                    element := rec(
+                                        type := "EXPR_FUNCCALL",
+                                        funcref := rec(
+                                            type := "EXPR_REF_GVAR",
+                                            gvar := "[]",
+                                        ),
+                                        args := AsSyntaxTreeList( [
+                                            CapJitCopyWithNewFunctionIDs( domain ), # domain
+                                            index, # index
+                                        ] ),
+                                    );
+                                    
+                                fi;
+                                
                                 return rec(
                                     type := "EXPR_FUNCCALL",
                                     funcref := CapJitCopyWithNewFunctionIDs( list_call.args.2 ), # func
@@ -595,17 +635,7 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                                                 gvar := "CAP_JIT_INCOMPLETE_LOGIC", # CAP_JIT_INCOMPLETE_LOGIC
                                             ),
                                             args := AsSyntaxTreeList( [
-                                                rec(
-                                                    type := "EXPR_FUNCCALL",
-                                                    funcref := rec(
-                                                        type := "EXPR_REF_GVAR",
-                                                        gvar := "[]",
-                                                    ),
-                                                    args := AsSyntaxTreeList( [
-                                                        CapJitCopyWithNewFunctionIDs( domain ), # domain
-                                                        tree.args.2, # index
-                                                    ] ),
-                                                ),
+                                                element
                                             ] ),
                                         ),
                                     ] ),
