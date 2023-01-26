@@ -81,5 +81,38 @@ function ( L_1, filter_func_1, func_1 )
         end );
 end
 
+# simplify [ 1 .. last ][x]
+gap> func := function ( last, func, index )
+>   
+>   return List( [ 1 .. last ], func )[index];
+>   
+> end;;
+gap> Display( CapJitCompiledFunction( func ) );
+function ( last_1, func_1, index_1 )
+    return func_1( CAP_JIT_INCOMPLETE_LOGIC( index_1 ) );
+end
+
+# simplify [ 0 .. last ][1 + x]
+gap> func := function ( last, func, index )
+>   
+>   return List( [ 0 .. last ], func )[1 + index];
+>   
+> end;;
+gap> Display( CapJitCompiledFunction( func ) );
+function ( last_1, func_1, index_1 )
+    return func_1( CAP_JIT_INCOMPLETE_LOGIC( index_1 ) );
+end
+
+# simplify nested CAP_JIT_INCOMPLETE_LOGIC
+gap> func := function ( last, func, index )
+>   
+>   return List( [ 1 .. last ], x -> List( [ 1 .. last ], func )[x] )[index];
+>   
+> end;;
+gap> Display( CapJitCompiledFunction( func ) );
+function ( last_1, func_1, index_1 )
+    return func_1( CAP_JIT_INCOMPLETE_LOGIC( index_1 ) );
+end
+
 #
 gap> STOP_TEST( "generalized_loop_fusion" );
