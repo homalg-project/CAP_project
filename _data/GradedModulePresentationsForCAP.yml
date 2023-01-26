@@ -1,7 +1,7 @@
 name: GradedModulePresentationsForCAP
-version: "2023.01-01"
+version: "2023.01-02"
 license: "GPL-2.0-or-later"
-date: 2023-01-23
+date: 2023-01-26
 description: |
     Presentations for graded modules
 
@@ -41,11 +41,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/GradedModulePresentati
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-2023.01-01/GradedModulePresentationsForCAP-2023.01-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-2023.01-02/GradedModulePresentationsForCAP-2023.01-02.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-2023.01-01/GradedModulePresentationsForCAP-2023.01-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-2023.01-02/GradedModulePresentationsForCAP-2023.01-02.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-2023.01-01/GradedModulePresentationsForCAP-2023.01-01.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-2023.01-02/GradedModulePresentationsForCAP-2023.01-02.pdf
 
 abstract: |
 
@@ -56,7 +56,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>Gut23</span>]   <b class='BibAuthor'>Gutsche, S.</b>,
      <i class='BibTitle'>GradedModulePresentationsForCAP, Presentations for graded modules,
-             Version 2023.01-01</i>
+             Version 2023.01-02</i>
      (<span class='BibYear'>2023</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/GradedModulePresentationsForCAP">https://homalg-project.github.io/pkg/GradedModulePresentationsForCAP</a></span>.
@@ -64,10 +64,10 @@ citeas: |
     
 
 bibtex: |
-    @misc{ GradedModulePresentationsForCAP2023.01-01,
+    @misc{ GradedModulePresentationsForCAP2023.01-02,
       author =           {Gutsche, S.},
       title =            {{GradedModulePresentationsForCAP},  Presentations  for
-                          graded modules, {V}ersion 2023.01-01},
+                          graded modules, {V}ersion 2023.01-02},
       month =            {Jan},
       year =             {2023},
       note =             {GAP package},
