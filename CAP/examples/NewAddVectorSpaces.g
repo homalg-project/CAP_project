@@ -54,6 +54,8 @@ DeclareOperation( "VectorSpaceMorphism",
 
 vecspaces := CreateCapCategory( "VectorSpaces" );
 
+vecspaces!.category_as_first_argument := false;
+
 SetIsAbelianCategory( vecspaces, true );
 
 VECTORSPACES_FIELD := HomalgFieldOfRationals( );

@@ -50,6 +50,8 @@ InstallMethod( CokernelImageClosure,
     
     cokernel_image_closure := CreateCapCategory( Concatenation( "Cokernel image closure( ", Name( underlying_category ), " )" ) );
     
+    cokernel_image_closure!.category_as_first_argument := false;
+    
     SetFilterObj( cokernel_image_closure, IsCokernelImageClosure );
     
     SetIsAdditiveCategory( cokernel_image_closure, true );

@@ -12,6 +12,7 @@ fi;
 #! @Example
 vecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );
 #! VectorSpacesForGeneralizedMorphismsTest
+vecspaces!.category_as_first_argument := false;;
 ReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );
 #! true
 LoadPackage( "GeneralizedMorphismsForCAP", false );
@@ -91,6 +92,7 @@ Arrow( c1 + c2 );
 #! @Example
 vecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );
 #! VectorSpacesForGeneralizedMorphismsTest
+vecspaces!.category_as_first_argument := false;;
 ReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );
 #! true
 A := QVectorSpace( 1 );
@@ -142,6 +144,7 @@ RangeAid( composition );
 #! @Example
 vecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );
 #! VectorSpacesForGeneralizedMorphismsTest
+vecspaces!.category_as_first_argument := false;;
 ReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );
 #! true
 A := QVectorSpace( 1 );
@@ -196,6 +199,7 @@ SourceAid( composition2 );
 #! @Example
 vecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );
 #! VectorSpacesForGeneralizedMorphismsTest
+vecspaces!.category_as_first_argument := false;;
 ReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );
 #! true
 A := QVectorSpace( 3 );
@@ -343,6 +347,7 @@ RangeAid( p );
 #! @Example
 vecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );
 #! VectorSpacesForGeneralizedMorphismsTest
+vecspaces!.category_as_first_argument := false;;
 ReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );
 #! true
 A := QVectorSpace( 1 );

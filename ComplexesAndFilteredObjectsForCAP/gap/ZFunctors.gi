@@ -55,6 +55,8 @@ InstallMethod( ZFunctorCategory,
     
     z_functor_category := CreateCapCategory( name );
     
+    z_functor_category!.category_as_first_argument := false;
+    
     SetUnderlyingCategory( z_functor_category, category );
     
     SetZFunctorCategory( category, z_functor_category );

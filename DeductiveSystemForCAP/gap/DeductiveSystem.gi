@@ -617,6 +617,8 @@ InstallMethod( DeductiveSystem,
     
     deductive_system := CreateCapCategory( Concatenation( "Deduction system of ", Name( category ) ) );
     
+    deductive_system!.category_as_first_argument := false;
+    
     SetTheoremRecord( deductive_system, TheoremRecord( category ) );
     
     SetUnderlyingCategory( deductive_system, category );

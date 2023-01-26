@@ -21,6 +21,8 @@ InstallMethod( RelCategory,
     
     category := CreateCapCategory( Concatenation( "Rel( ", Name( underlying_category )," )" ) );
     
+    category!.category_as_first_argument := false;
+    
     SetFilterObj( category, IsRelCategory );
     
     SetUnderlyingCategory( category, underlying_category );

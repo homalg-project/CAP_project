@@ -264,6 +264,8 @@ InstallMethod( GeneralizedMorphismCategoryBySpans,
     
     generalized_morphism_category := CreateCapCategory( name );
     
+    generalized_morphism_category!.category_as_first_argument := false;
+    
     AddObjectRepresentation( generalized_morphism_category, IsGeneralizedMorphismCategoryBySpansObject );
     
     AddMorphismRepresentation( generalized_morphism_category, IsGeneralizedMorphismBySpan and HasArrow and HasReversedArrow );

@@ -7,6 +7,7 @@ LoadPackage( "MonoidalCategories" );
 #! true
 vecspaces := CreateCapCategory( "VectorSpaces" );
 #! VectorSpaces
+vecspaces!.category_as_first_argument := false;;
 ReadPackage( "MonoidalCategories",
         "examples/VectorSpacesMonoidalCategory.gi" );
 #! true

@@ -34,6 +34,8 @@ DeclareAttribute( "AsInteger",
 
 integer_category := CreateCapCategory( "Integers" );
 
+integer_category!.category_as_first_argument := false;
+
 #############################
 ##
 ## Constructors

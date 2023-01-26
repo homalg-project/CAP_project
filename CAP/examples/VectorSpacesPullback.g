@@ -11,6 +11,7 @@ fi;
 #! @Example
 vecspaces := CreateCapCategory( "VectorSpacesForFiberProductTest" );
 #! VectorSpacesForFiberProductTest
+vecspaces!.category_as_first_argument := false;;
 ReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );
 #! true
 A := QVectorSpace( 1 );

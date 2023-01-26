@@ -7,6 +7,8 @@ fi;
 
 vecspaces := CreateCapCategory( "VectorSpacesForSpectralSequenceTest" );
 
+vecspaces!.category_as_first_argument := false;
+
 ReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );
 
 LoadPackage( "HomologicalAlgebraForCAP" );

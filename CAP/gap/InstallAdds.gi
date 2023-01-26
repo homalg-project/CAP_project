@@ -256,6 +256,17 @@ InstallGlobalFunction( CapInternalInstallAdd,
         
         ## Nr arguments sanity check
         
+        if not IsBound( category!.category_as_first_argument ) then
+            
+            Print(
+                "WARNING: The category with name \"", Name( category ), "\" has no component `category_as_first_argument`. Please explicitly set this component. ",
+                "Currently, the default value is `false` (which will now be set automatically), but this will change in the future.\n"
+            );
+            
+            category!.category_as_first_argument := false;
+            
+        fi;
+        
         needs_wrapping := record.install_convenience_without_category and not ( ( is_derivation or is_final_derivation ) or ( IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true ) );
         
         # backwards compatibility for categories without category!.category_as_first_argument

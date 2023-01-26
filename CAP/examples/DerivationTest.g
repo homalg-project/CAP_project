@@ -32,6 +32,7 @@ AddDerivation( G, MakeDerivation( "quuux", C,
                                   2, [ f, [] ], IsCapCategory ) );
 
 cat := CreateCapCategory( "test category" );
+cat!.category_as_first_argument := false;
 owl := MakeOperationWeightList( cat, G );
 Print( "Adding A with weight 2\n" );
 AddPrimitiveOperation( owl, "A", 2 );

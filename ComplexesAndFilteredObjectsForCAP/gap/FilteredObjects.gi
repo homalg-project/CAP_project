@@ -56,6 +56,8 @@ InstallMethod( CategoryOfAscendingFilteredObjects,
     
     filtered_objects_category := CreateCapCategory( name );
     
+    filtered_objects_category!.category_as_first_argument := false;
+    
     SetUnderlyingCategory( filtered_objects_category, category );
     
     SetCategoryOfAscendingFilteredObjects( category, filtered_objects_category );
@@ -80,6 +82,8 @@ InstallMethod( CategoryOfDescendingFilteredObjects,
     name := Concatenation( "Descending filtered object category of ", name );
     
     filtered_objects_category := CreateCapCategory( name );
+    
+    filtered_objects_category!.category_as_first_argument := false;
     
     SetUnderlyingCategory( filtered_objects_category, category );
     

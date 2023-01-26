@@ -12,9 +12,11 @@ if not IsBound( VectorSpacesConstructorsLoaded ) then
 fi;
 
 if not IsCapCategory( vecspaces ) then
-  
-  vecspaces := CreateCapCategory( "VectorSpacesK2" );
-  
+    
+    vecspaces := CreateCapCategory( "VectorSpacesK2" );
+    
+    vecspaces!.category_as_first_argument := false;
+    
 fi;
 
 ##

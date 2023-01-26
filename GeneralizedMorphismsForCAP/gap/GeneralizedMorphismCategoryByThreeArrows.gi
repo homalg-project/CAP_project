@@ -286,6 +286,8 @@ InstallMethod( GeneralizedMorphismCategoryByThreeArrows,
     
     generalized_morphism_category := CreateCapCategory( name );
     
+    generalized_morphism_category!.category_as_first_argument := false;
+    
     AddObjectRepresentation( generalized_morphism_category, IsGeneralizedMorphismCategoryByThreeArrowsObject );
     
     AddMorphismRepresentation( generalized_morphism_category, IsGeneralizedMorphismByThreeArrows and HasSourceAid and HasRangeAid and HasArrow );

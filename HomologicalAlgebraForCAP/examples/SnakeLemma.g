@@ -7,6 +7,7 @@ if not IsBound( VectorSpacesConstructorsLoaded ) then
 fi;
 
 vecspaces := CreateCapCategory( "vecspaces" );
+vecspaces!.category_as_first_argument := false;
 ReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );
 
 LoadPackage( "HomologicalAlgebraForCAP" );

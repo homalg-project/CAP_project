@@ -378,6 +378,8 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryByThreeArrows,
     
     serre_category := CreateCapCategory( name );
     
+    serre_category!.category_as_first_argument := false;
+    
     SetFilterObj( serre_category, IsSerreQuotientCategory );
     
     AddObjectRepresentation( serre_category, IsSerreQuotientCategoryByThreeArrowsObject );
