@@ -43,6 +43,8 @@ VECTORSPACES_FIELD := HomalgFieldOfRationals( );
 
 BindGlobal( "QVectorSpaces", CreateCapCategory( "QVectorSpaces" ) );
 
+QVectorSpaces!.category_as_first_argument := false;
+
 ###################################
 ##
 ## Constructors for objects and morphisms

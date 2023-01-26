@@ -5,9 +5,11 @@ if not IsBound( VectorSpacesConstructorsLoaded ) then
 fi;
 
 if not IsCapCategory( vecspaces ) then
-  
-  vecspaces := CreateCapCategory( "VectorSpacesFinalizeTest" );
-  
+    
+    vecspaces := CreateCapCategory( "VectorSpacesFinalizeTest" );
+    
+    vecspaces!.category_as_first_argument := false;
+    
 fi;
 
 SetIsAbelianCategory( vecspaces, true );

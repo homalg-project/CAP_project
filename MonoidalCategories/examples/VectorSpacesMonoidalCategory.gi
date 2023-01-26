@@ -57,6 +57,8 @@ DeclareOperation( "VectorSpaceMorphism",
 ##this has an effect on the constructors below!
 vecspaces := CreateCapCategory( "VectorSpacesMonoidalCategory" );
 
+vecspaces!.category_as_first_argument := false;
+
 ## set all properties of the category in the beginning 
 SetIsAbelianCategory( vecspaces, true );
 

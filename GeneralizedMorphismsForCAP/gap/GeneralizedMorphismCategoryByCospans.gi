@@ -268,6 +268,8 @@ InstallMethod( GeneralizedMorphismCategoryByCospans,
     
     generalized_morphism_category := CreateCapCategory( name );
     
+    generalized_morphism_category!.category_as_first_argument := false;
+    
     AddObjectRepresentation( generalized_morphism_category, IsGeneralizedMorphismCategoryByCospansObject );
     
     AddMorphismRepresentation( generalized_morphism_category, IsGeneralizedMorphismByCospan and HasArrow and HasReversedArrow );

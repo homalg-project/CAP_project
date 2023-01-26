@@ -41,6 +41,8 @@ DeclareOperation( "VectorSpaceMorphism",
 
 BindGlobal( "vecspaces", CreateCapCategory( "VectorSpaces" ) );
 
+vecspaces!.category_as_first_argument := false;
+
 SetIsAbelianCategory( vecspaces, true );
 
 BindGlobal( "VECTORSPACES_FIELD", HomalgFieldOfRationals( ) );

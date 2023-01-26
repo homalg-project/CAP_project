@@ -23,6 +23,8 @@ InstallMethod( CategoryOfGradedRows,
       # construct the category
       category := CreateCapCategory( Concatenation( "Category of graded rows over ", RingName( homalg_graded_ring ) ), IsCategoryOfGradedRows, IsGradedRow, IsGradedRowMorphism, IsCapCategoryTwoCell );
       
+      category!.category_as_first_argument := false;
+      
       SetUnderlyingGradedRing( category, homalg_graded_ring );
       
       # here we can switch internal checks in constructor on or of - true means they are performed and false means they are not

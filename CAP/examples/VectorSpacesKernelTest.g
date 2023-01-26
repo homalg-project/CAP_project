@@ -11,6 +11,7 @@ fi;
 #! @Example
 vecspaces := CreateCapCategory( "VectorSpaces01" );
 #! VectorSpaces01
+vecspaces!.category_as_first_argument := false;;
 ReadPackage( "CAP", "examples/VectorSpacesAddKernel01.g" );
 #! true
 V := QVectorSpace( 2 );
@@ -47,6 +48,7 @@ KernelEmbedding( alpha );
 #! @Example
 vecspaces := CreateCapCategory( "VectorSpaces02" );
 #! VectorSpaces02
+vecspaces!.category_as_first_argument := false;;
 ReadPackage( "CAP", "examples/VectorSpacesAddKernel02.g" );
 #! true
 V := QVectorSpace( 2 );
@@ -79,6 +81,7 @@ HasKernelEmbedding( alpha );
 #! @Example
 vecspaces := CreateCapCategory( "VectorSpaces03" );
 #! VectorSpaces03
+vecspaces!.category_as_first_argument := false;;
 ReadPackage( "CAP", "examples/VectorSpacesAddKernel03.g" );
 #! true
 V := QVectorSpace( 2 );

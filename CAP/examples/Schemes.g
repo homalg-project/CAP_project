@@ -369,6 +369,8 @@ InstallValue( MORPHISM_LOGIC_LIST,
 
 Schemes := CreateCapCategory( "Schemes" );
 
+Schemes!.category_as_first_argument := false;
+
 ## Implementation
 
 InstallGlobalFunction( SCHEMES_INSTALL_TODO_LIST_FOR_MORPHISM,

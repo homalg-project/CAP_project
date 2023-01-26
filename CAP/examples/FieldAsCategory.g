@@ -40,6 +40,8 @@ InstallMethod( FieldAsCategory,
     
     category := CreateCapCategory( Concatenation( "Field as category( ", RingName( field )," )"  ) : overhead := false );
     
+    category!.category_as_first_argument := false;
+    
     SetFilterObj( category, IsFieldAsCategory );
     
     SetUnderlyingFieldForHomalg( category, field );

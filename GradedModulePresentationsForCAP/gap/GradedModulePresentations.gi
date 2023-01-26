@@ -13,6 +13,8 @@ InstallMethod( GradedLeftPresentations,
     
     category := CreateCapCategory( Concatenation( "The category of graded left f.p. modules over ", RingName( ring ) ) );
     
+    category!.category_as_first_argument := false;
+    
     category!.ring_for_representation_category := ring;
     
     category!.underlying_presentation_category := LeftPresentations( ring );
@@ -67,6 +69,8 @@ InstallMethod( GradedRightPresentations,
     local category;
     
     category := CreateCapCategory( Concatenation( "The category of graded right f.p. modules over ", RingName( ring ) ) );
+    
+    category!.category_as_first_argument := false;
     
     category!.ring_for_representation_category := ring;
     

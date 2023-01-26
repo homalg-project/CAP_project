@@ -212,6 +212,8 @@ InstallMethodWithCrispCache( ProductOp,
     
     product_category := CreateCapCategory( namestring );
     
+    product_category!.category_as_first_argument := false;
+    
     SetComponents( product_category, category_list );
     
     SetLength( product_category, Length( category_list ) );

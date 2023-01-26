@@ -671,6 +671,8 @@ InstallGlobalFunction( EnhancementWithAttributes,
         
         structure_record.category_with_attributes := CreateCapCategory( structure_record.category_name );
         
+        structure_record.category_with_attributes!.category_as_first_argument := false;
+        
     fi;
     
     category_with_attributes := structure_record.category_with_attributes;

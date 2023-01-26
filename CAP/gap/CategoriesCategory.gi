@@ -26,6 +26,8 @@ BindGlobal( "CAP_INTERNAL_CREATE_Cat",
     
     cat := CREATE_CAP_CATEGORY_OBJECT( obj_rec, "Cat", IsCapCategory, IsCapCategoryAsCatObject, IsCapFunctor, IsCapNaturalTransformation, fail, fail, fail );
     
+    cat!.category_as_first_argument := false;
+    
     INSTALL_CAP_CAT_FUNCTIONS( cat );
     
     return cat;

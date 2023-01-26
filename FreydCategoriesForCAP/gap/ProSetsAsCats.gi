@@ -54,7 +54,9 @@ InstallMethod( ProSetAsCategory,
     fi;
 
     category := CreateCapCategory( "ProSet" : overhead := false );
-
+    
+    category!.category_as_first_argument := false;
+    
     SetFilterObj( category, IsProSetAsCategory );
 
     SetIncidenceMatrix( category, incidence_matrix );

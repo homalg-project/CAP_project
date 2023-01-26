@@ -2728,6 +2728,8 @@ InstallMethod( SemisimpleCategory,
     
     semisimple_category := CreateCapCategory( name );
     
+    semisimple_category!.category_as_first_argument := false;
+    
     SetIsAbelianCategory( semisimple_category, true );
     
     SetIsRigidSymmetricClosedMonoidalCategory( semisimple_category, true );

@@ -62,6 +62,8 @@ InstallMethod( CocomplexCategory,
     
     cocomplex_category := CreateCapCategory( name );
     
+    cocomplex_category!.category_as_first_argument := false;
+    
     SetUnderlyingCategory( cocomplex_category, category );
     
     SetCocomplexCategory( category, cocomplex_category );
@@ -92,6 +94,8 @@ InstallMethod( ComplexCategory,
     name := Concatenation( "Complex category of ", name );
     
     complex_category := CreateCapCategory( name );
+    
+    complex_category!.category_as_first_argument := false;
     
     SetUnderlyingCategory( complex_category, category );
     

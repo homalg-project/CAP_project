@@ -69,6 +69,8 @@ InstallMethod( StringsAsCategory,
     
     category := CreateCapCategory( "Category of strings up to vowels" );
     
+    category!.category_as_first_argument := false;
+    
     SetFilterObj( category, IsStringsAsCategory );
     
     AddObjectRepresentation( category, IsStringsAsCategoryObject );
