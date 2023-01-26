@@ -1,7 +1,7 @@
 name: ActionsForCAP
-version: "2023.01-01"
+version: "2023.01-02"
 license: "GPL-2.0-or-later"
-date: 2023-01-13
+date: 2023-01-26
 description: |
     Actions and Coactions for CAP
 
@@ -39,11 +39,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/ActionsForCAP/PackageI
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-2023.01-01/ActionsForCAP-2023.01-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-2023.01-02/ActionsForCAP-2023.01-02.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-2023.01-01/ActionsForCAP-2023.01-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-2023.01-02/ActionsForCAP-2023.01-02.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-2023.01-01/ActionsForCAP-2023.01-01.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-2023.01-02/ActionsForCAP-2023.01-02.pdf
 
 abstract: |
 
@@ -54,7 +54,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>GP23</span>]   <b class='BibAuthor'>Gutsche, S. and Posur, S.</b>,
      <i class='BibTitle'>ActionsForCAP, Actions and Coactions for CAP,
-             Version 2023.01-01</i>
+             Version 2023.01-02</i>
      (<span class='BibYear'>2023</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/ActionsForCAP">https://homalg-project.github.io/pkg/ActionsForCAP</a></span>.
@@ -62,10 +62,10 @@ citeas: |
     
 
 bibtex: |
-    @misc{ ActionsForCAP2023.01-01,
+    @misc{ ActionsForCAP2023.01-02,
       author =           {Gutsche, S. and Posur, S.},
       title =            {{ActionsForCAP},   Actions   and  Coactions  for  CAP,
-                          {V}ersion 2023.01-01},
+                          {V}ersion 2023.01-02},
       month =            {Jan},
       year =             {2023},
       note =             {GAP package},

@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "ActionsForCAP",
 Subtitle := "Actions and Coactions for CAP",
-Version := "2023.01-01",
-Date := "13/01/2023",
+Version := "2023.01-02",
+Date := "26/01/2023",
 License := "GPL-2.0-or-later",
 
 Persons := [

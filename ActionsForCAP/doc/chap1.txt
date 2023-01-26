@@ -323,6 +323,7 @@
     [4X[25Xgap>[125X [27Xvec := MatrixCategory( Q );;[127X[104X
     [4X[25Xgap>[125X [27Xwrapped_cat := CreateCapCategory( "Wrapped Category", IsCapCategory, IsWrappedObject, IsWrappedMorphism, IsCapCategoryTwoCell );[127X[104X
     [4X[28XWrapped Category[128X[104X
+    [4X[25Xgap>[125X [27Xwrapped_cat!.category_as_first_argument := false;;[127X[104X
     [4X[25Xgap>[125X [27X#################################[127X[104X
     [4X[25X>[125X [27X##[127X[104X
     [4X[25X>[125X [27X## Constructors for objects and morphisms[127X[104X
