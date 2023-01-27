@@ -168,22 +168,8 @@ InstallGlobalFunction( CapInternalInstallAdd,
                    [ IsCapCategory, IsFunction, IsInt ],
                    
       function( category, func, weight )
-        local wrapped_func;
         
-        if function_name in [ "ZeroObject", "TerminalObject", "InitialObject", "DistinguishedObjectOfHomomorphismStructure" ] and not (IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true) then
-            
-            ## The users do not have to give the category as an argument
-            ## to their functions, but within derivations, the category has
-            ## to be an argument (see any derivation of ZeroObject in DerivedMethods.gi)
-            wrapped_func := function( cat ) return func(); end;
-            
-        else
-            
-            wrapped_func := func;
-            
-        fi;
-        
-        ValueGlobal( add_name )( category, [ [ wrapped_func, [ ] ] ], weight );
+        ValueGlobal( add_name )( category, [ [ func, [ ] ] ], weight );
         
     end );
     
@@ -256,10 +242,10 @@ InstallGlobalFunction( CapInternalInstallAdd,
         
         ## Nr arguments sanity check
         
-        if not IsBound( category!.category_as_first_argument ) then
+        if not category!.category_as_first_argument in [ false, true ] then
             
             Print(
-                "WARNING: The category with name \"", Name( category ), "\" has no component `category_as_first_argument`. Please explicitly set this component. ",
+                "WARNING: Please set the component `category_as_first_argument` of the category with name \"", Name( category ), "\" explicitly to `true` or `false`. ",
                 "Currently, the default value is `false` (which will now be set automatically), but this will change in the future.\n"
             );
             
@@ -267,9 +253,9 @@ InstallGlobalFunction( CapInternalInstallAdd,
             
         fi;
         
-        needs_wrapping := record.install_convenience_without_category and not ( ( is_derivation or is_final_derivation ) or ( IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true ) );
+        # backwards compatibility for categories with `category!.category_as_first_argument = false`
+        needs_wrapping := category!.category_as_first_argument = false and not (is_derivation or is_final_derivation);
         
-        # backwards compatibility for categories without category!.category_as_first_argument
         if needs_wrapping then
             
             number_of_proposed_arguments := Length( filter_list ) - 1;
@@ -289,7 +275,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                        " arguments but should have ", String( number_of_proposed_arguments ) );
             fi;
             
-            if ( is_derivation or is_final_derivation ) or ( IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true ) then
+            if not needs_wrapping then
                 
                 current_additional_filter_list_length := Length( method_list[ current_function_number ][ 2 ] );
                 
@@ -298,10 +284,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                            String( current_additional_filter_list_length ), " but should have length ", String( number_of_proposed_arguments ), " (or 0)" );
                 fi;
                 
-            fi;
-            
-            # backwards compatibility for categories without category!.category_as_first_argument
-            if needs_wrapping then
+            else
                 
                 method_list[ current_function_number ][ 1 ] := CAP_INTERNAL_CREATE_NEW_FUNC_WITH_ONE_MORE_ARGUMENT_WITH_RETURN( method_list[ current_function_number ][ 1 ] );
                 
