@@ -284,10 +284,6 @@ DeclareOperation( "AddCategoryToFamily",
 ##
 ###################################
 
-DeclareGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT" );
-
-DeclareGlobalFunction( "INSTALL_ADD_FUNCTIONS_FOR_CATEGORY" );
-
 #! @Description
 #! Creates a new CAP category from scratch.
 #! It gets a generic name.

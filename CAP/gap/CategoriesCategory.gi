@@ -20,11 +20,9 @@ BindGlobal( "TheTypeOfCapNaturalTransformations",
 BindGlobal( "CAP_INTERNAL_CREATE_Cat",
                
   function(  )
-    local obj_rec, cat;
+    local cat;
     
-    obj_rec := rec( caching_info := rec( ), overhead := true, is_computable := true );
-    
-    cat := CREATE_CAP_CATEGORY_OBJECT( obj_rec, "Cat", IsCapCategory, IsCapCategoryAsCatObject, IsCapFunctor, IsCapNaturalTransformation, fail, fail, fail );
+    cat := CreateCapCategory( "Cat", IsCapCategory, IsCapCategoryAsCatObject, IsCapFunctor, IsCapNaturalTransformation );
     
     cat!.category_as_first_argument := false;
     

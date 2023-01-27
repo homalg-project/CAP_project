@@ -160,10 +160,11 @@ BindGlobal( "TheTypeOfCapCategories",
 #####################################
 
 ##
-InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
-  function( obj_rec, name, category_filter, object_filter, morphism_filter, two_cell_filter, object_datum_type, morphism_datum_type, two_cell_datum_type )
+InstallGlobalFunction( "CreateCapCategoryWithDataTypes",
+  function( name, category_filter, object_filter, morphism_filter, two_cell_filter, object_datum_type, morphism_datum_type, two_cell_datum_type )
     local filter, obj, operation_name;
     
+    ## plausibility checks
     if not IsSpecializationOfFilter( IsCapCategory, category_filter ) then
         
         Error( "the category filter must imply IsCapCategory" );
@@ -206,12 +207,11 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
         
     fi;
     
-    obj_rec!.logical_implication_files := StructuralCopy( CATEGORIES_LOGIC_FILES );
-    
     filter := NewFilter( Concatenation( name, "InstanceCategoryFilter" ), category_filter );
     
-    obj := ObjectifyWithAttributes( obj_rec, NewType( TheFamilyOfCapCategories, filter ), Name, name );
+    obj := ObjectifyWithAttributes( rec( ), NewType( TheFamilyOfCapCategories, filter ), Name, name );
     
+    ## filters
     SetCategoryFilter( obj, filter );
     
     # object filter
@@ -236,7 +236,10 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     SetTwoCellFilter( obj, filter );
     SetTwoCellDatumType( obj, two_cell_datum_type );
     
+    ## misc
     SetIsFinalized( obj, false );
+    
+    obj!.is_computable := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "is_computable", true );
     
     obj!.derivations_weight_list := MakeOperationWeightList( obj, CAP_INTERNAL_DERIVATION_GRAPH );
     
@@ -249,7 +252,7 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     od;
     
     obj!.primitive_operations := rec( );
-
+    
     obj!.added_functions := rec( );
     
     obj!.timing_statistics := rec( );
@@ -263,7 +266,21 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     obj!.predicate_logic_propagation_for_objects := false;
     obj!.predicate_logic_propagation_for_morphisms := false;
     
-    obj!.predicate_logic := true;
+    obj!.logical_implication_files := StructuralCopy( CATEGORIES_LOGIC_FILES );
+    
+    obj!.overhead := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "overhead", true );
+    
+    if obj!.overhead then
+        
+        obj!.predicate_logic := true;
+        
+        AddCategoryToFamily( obj, "general" );
+        
+    else
+        
+        obj!.predicate_logic := false;
+        
+    fi;
     
     obj!.add_primitive_output := false;
     
@@ -540,35 +557,6 @@ InstallMethod( CreateCapCategory,
   function( name, category_filter, object_filter, morphism_filter, two_cell_filter )
     
     return CreateCapCategoryWithDataTypes( name, category_filter, object_filter, morphism_filter, two_cell_filter, fail, fail, fail );
-    
-end );
-
-##
-InstallGlobalFunction( CreateCapCategoryWithDataTypes,
-  function ( name, category_filter, object_filter, morphism_filter, two_cell_filter, object_datum_type, morphism_datum_type, two_cell_datum_type )
-    local overhead, is_computable, category;
-    
-    overhead := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "overhead", true );
-    
-    is_computable := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "is_computable", true );
-    
-    category := CREATE_CAP_CATEGORY_OBJECT( rec( ), name, category_filter, object_filter, morphism_filter, two_cell_filter, object_datum_type, morphism_datum_type, two_cell_datum_type );
-    
-    category!.overhead := overhead;
-    
-    category!.is_computable := is_computable;
-    
-    if overhead then
-        
-        AddCategoryToFamily( category, "general" );
-        
-    else
-        
-        category!.predicate_logic := false;
-        
-    fi;
-    
-    return category;
     
 end );
 
