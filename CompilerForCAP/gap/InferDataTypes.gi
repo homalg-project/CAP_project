@@ -453,10 +453,14 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INFERRED_DATA_TYPES, function ( tree, in
                 
                 if a.type = "EXPR_DECLARATIVE_FUNC" then
                     
-                    a := ShallowCopy( a );
+                    if not IsBound( a.data_type ) then
                     
-                    # signature has to be set from somewhere else
-                    a.data_type := rec( filter := IsFunction );
+                        a := ShallowCopy( a );
+                        
+                        # signature has to be set from somewhere else
+                        a.data_type := rec( filter := IsFunction );
+                        
+                    fi;
                     
                     return a;
                     
@@ -631,24 +635,37 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INFERRED_DATA_TYPES, function ( tree, in
             
             if tree.list.length = 0 then
                 
-                #Error( "cannot infer the type of empty lists" );
-                # there might already be a data type set, but we want to avoid partial typings -> unbind
-                Unbind( tree.data_type );
-                return tree;
+                if IsBound( tree.data_type ) then
+                    
+                    data_type := tree.data_type;
+                    
+                else
+                    
+                    # COVERAGE_IGNORE_BLOCK_START
+                    PrintWithCurrentlyCompiledFunctionLocation( "WARNING: found empty list without data type. Make sure to use CapJitTypedExpression for manually written code and to properly set data types in logic functions creating empty lists." );
+                    
+                    return tree;
+                    # COVERAGE_IGNORE_BLOCK_END
+                    
+                fi;
+                
+            else
+                
+                if not ForAll( tree.list, element -> element.data_type = tree.list.1.data_type ) then
+                    
+                    # COVERAGE_IGNORE_BLOCK_START
+                    Display( "WARNING: list is not homogeneous, this is not supported. Use `NTuple` or its convenience aliases instead. The filters of the element types are:" );
+                    DisplayWithCurrentlyCompiledFunctionLocation( List( AsListMut( tree.list ), element -> element.data_type.filter ) );
+                    # there might already be a data type set, but we want to avoid partial typings -> unbind
+                    Unbind( tree.data_type );
+                    return tree;
+                    # COVERAGE_IGNORE_BLOCK_END
+                    
+                fi;
+                
+                data_type := CapJitDataTypeOfListOf( tree.list.1.data_type );
                 
             fi;
-            
-            if not ForAll( tree.list, element -> element.data_type = tree.list.1.data_type ) then
-                
-                Display( "WARNING: list is not homogeneous, this is not supported. Use `NTuple` or its convenience aliases instead. The filters of the element types are:" );
-                DisplayWithCurrentlyCompiledFunctionLocation( List( AsListMut( tree.list ), element -> element.data_type.filter ) );
-                # there might already be a data type set, but we want to avoid partial typings -> unbind
-                Unbind( tree.data_type );
-                return tree;
-                
-            fi;
-            
-            data_type := CapJitDataTypeOfListOf( tree.list.1.data_type );
             
         elif tree.type = "EXPR_REF_GVAR" then
             

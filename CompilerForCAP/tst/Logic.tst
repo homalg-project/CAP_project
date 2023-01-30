@@ -14,9 +14,9 @@ gap> tree := CapJitAppliedLogic( tree );;
 gap> Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
 function (  )
     return [ function ( x_2 )
-                return x_2^2;
+                return x_2 ^ 2;
             end( 1 ), function ( x_2 )
-                return x_2^2;
+                return x_2 ^ 2;
             end( 2 ) ];
 end
 
@@ -30,9 +30,9 @@ gap> tree := CapJitAppliedLogic( tree );;
 gap> Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
 function ( L1_1, L2_1 )
     return Concatenation( List( L1_1, function ( x_2 )
-              return x_2^2;
+              return x_2 ^ 2;
           end ), List( L2_1, function ( x_2 )
-              return x_2^2;
+              return x_2 ^ 2;
           end ) );
 end
 
@@ -199,6 +199,42 @@ function ( x_1 )
         return AdditiveInverse( 2 );
     fi;
     return;
+end
+
+# Concatenation of an empty list of lists
+gap> func := { } -> Concatenation( CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( IsInt ) ) ) );;
+
+#
+gap> tree := ENHANCED_SYNTAX_TREE( func : type_signature := Pair( [ ], CapJitDataTypeOfListOf( IsInt ) ) );;
+gap> tree := CapJitInferredDataTypes( tree );;
+gap> tree := CapJitAppliedLogic( tree );;
+gap> Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
+function (  )
+    return [  ];
+end
+
+# Concatenation of two empty lists
+gap> func := { } -> Concatenation( CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( IsInt ) ), CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( IsInt ) ) );;
+
+#
+gap> tree := ENHANCED_SYNTAX_TREE( func : type_signature := Pair( [ ], CapJitDataTypeOfListOf( IsInt ) ) );;
+gap> tree := CapJitInferredDataTypes( tree );;
+gap> tree := CapJitAppliedLogic( tree );;
+gap> Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
+function (  )
+    return [  ];
+end
+
+# List of a literal empty list
+gap> func := { } -> List( CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( IsInt ) ), x -> [ x ] );;
+
+#
+gap> tree := ENHANCED_SYNTAX_TREE( func : type_signature := Pair( [ ], CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( IsInt ) ) ) );;
+gap> tree := CapJitInferredDataTypes( tree );;
+gap> tree := CapJitAppliedLogic( tree );;
+gap> Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
+function (  )
+    return [  ];
 end
 
 #

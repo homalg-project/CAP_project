@@ -590,7 +590,7 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                 domains := rec( );
                 
                 pre_func := function ( tree, func_stack )
-                  local value_of_binding_iterated, value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated, is_shorter_than, list_call, domain, simplify, enclosing_domain, index, resolved_domain, resolved_index, element;
+                  local value_of_binding_iterated, value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated, is_shorter_than, list_call, domain, simplify, enclosing_domain, index, resolved_domain, resolved_index, element, element_type;
                     
                     value_of_binding_iterated := function ( tree )
                       local func;
@@ -777,6 +777,38 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                                             index, # index
                                         ] ),
                                     );
+                                    
+                                    if IsBound( domain.data_type ) and IsBound( index.data_type ) then
+                                        
+                                        element_type := CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_TYPES( "[]", [ domain.data_type, index.data_type ] );
+                                        
+                                        if element_type = fail then
+                                            
+                                            #Error( "could not determine element_type" );
+                                            
+                                        elif IsFunction( element_type ) then
+                                            
+                                            #Error( "cannot infer parametric output type by arguments types only" );
+                                            
+                                        # COVERAGE_IGNORE_NEXT_LINE
+                                        else
+                                            
+                                            element.data_type := element_type;
+                                            
+                                            element.funcref.data_type := rec(
+                                                filter := IsFunction,
+                                                signature := Pair(
+                                                    [
+                                                        domain.data_type,
+                                                        index.data_type
+                                                    ],
+                                                    element_type
+                                                )
+                                            );
+                                            
+                                        fi;
+                                        
+                                    fi;
                                     
                                 fi;
                                 
