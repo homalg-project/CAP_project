@@ -150,7 +150,7 @@ AddKernelLift( vecspaces,
    
 end );
 
-## Methods needed for DirectSumProjectionInPushout
+## Methods needed for PushoutProjectionFromDirectSum
 
 ##
 AddCokernelObject( vecspaces,
