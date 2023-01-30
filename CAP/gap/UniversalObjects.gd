@@ -1762,6 +1762,14 @@ DeclareOperation( "IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct"
 #! @Description
 #! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$.
 #! The output is the natural embedding
+#! $\mathrm{FiberProduct}(D) \rightarrow \prod_{i=1}^n P_i$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{FiberProduct}(D), \prod_{i=1}^n P_i )$
+#! @Arguments D
+DeclareOperation( "FiberProductEmbeddingInDirectProduct",
+                  [ IsList ] );
+#! @Description
+#! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$.
+#! The output is the natural embedding
 #! $\mathrm{FiberProduct}(D) \rightarrow \bigoplus_{i=1}^n P_i$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{FiberProduct}(D), \bigoplus_{i=1}^n P_i )$
 #! @Arguments D
@@ -1961,10 +1969,19 @@ DeclareOperation( "IsomorphismFromCoequalizerOfCoproductDiagramToPushout",
 #! @Description
 #! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
 #! The output is the natural projection
+#! $\bigsqcup_{i=1}^n I_i \rightarrow \mathrm{Pushout}(D)$.
+#! @Returns a morphism in $\mathrm{Hom}( \bigsqcup {i=1}^n I_i, \mathrm{Pushout}(D) )$
+#! @Arguments D
+DeclareOperation( "PushoutProjectionFromCoproduct",
+                  [ IsList ] );
+
+#! @Description
+#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
+#! The output is the natural projection
 #! $\bigoplus_{i=1}^n I_i \rightarrow \mathrm{Pushout}(D)$.
 #! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n I_i, \mathrm{Pushout}(D) )$
 #! @Arguments D
-DeclareOperation( "DirectSumProjectionInPushout",
+DeclareOperation( "PushoutProjectionFromDirectSum",
                   [ IsList ] );
 
 #! @Description
