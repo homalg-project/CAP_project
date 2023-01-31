@@ -361,7 +361,7 @@
   
   [33X[1;0Y[29X[2XCocartesianCoevaluationMorphismWithGivenSource[102X( [3Xa[103X, [3Xb[103X, [3Xs[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \mathrm{Coexponential}(a \sqcup b, b),
-            b )[123X.[133X
+            a )[123X.[133X
   
   [33X[0;0YThe  arguments are two objects [23Xa,b[123X and an object [23Xs = \mathrm{Coexponential(a
   \sqcup   b,  b)}[123X.  The  output  is  the  cocartesian  coevaluation  morphism
