@@ -83,7 +83,7 @@ DeclareOperation( "CocartesianCoevaluationMorphism",
 #! The arguments are two objects $a,b$ and an object $s = \mathrm{Coexponential(a \sqcup b, b)}$.
 #! The output is the cocartesian coevaluation morphism $\mathrm{cocacoev}_{a,b}: \mathrm{Coexponential}(a \sqcup b, b) \rightarrow a$, i.e.,
 #! the unit of the coexponential-coproduct adjunction.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Coexponential}(a \sqcup b, b), b )$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Coexponential}(a \sqcup b, b), a )$.
 #! @Arguments a, b, s
 DeclareOperation( "CocartesianCoevaluationMorphismWithGivenSource",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
