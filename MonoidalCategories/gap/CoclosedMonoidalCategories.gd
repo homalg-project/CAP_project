@@ -80,7 +80,7 @@ DeclareOperation( "CoclosedCoevaluationMorphism",
 #! The arguments are two objects $a,b$ and an object $s = \mathrm{\underline{coHom}(a \otimes b, b)}$.
 #! The output is the coclosed coevaluation morphism $\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}}(a \otimes b, b) \rightarrow a$, i.e.,
 #! the unit of the cohom tensor adjunction.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a \otimes b, b), b )$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a \otimes b, b), a )$.
 #! @Arguments a, b, s
 DeclareOperation( "CoclosedCoevaluationMorphismWithGivenSource",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
