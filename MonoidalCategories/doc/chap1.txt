@@ -795,7 +795,7 @@
   
   [33X[1;0Y[29X[2XCoclosedCoevaluationMorphismWithGivenSource[102X( [3Xa[103X, [3Xb[103X, [3Xs[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in [23X\mathrm{Hom}( \mathrm{\underline{coHom}}(a \otimes
-            b, b), b )[123X.[133X
+            b, b), a )[123X.[133X
   
   [33X[0;0YThe    arguments    are    two    objects    [23Xa,b[123X   and   an   object   [23Xs   =
   \mathrm{\underline{coHom}(a  \otimes  b,  b)}[123X.  The  output  is the coclosed
