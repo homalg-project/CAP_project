@@ -575,7 +575,7 @@ DeclareAttribute( "InitialObject",
 #! @Description
 #! The argument is an object $A$.
 #! The output is the universal morphism $u(A): \mathrm{InitialObject} \rightarrow A$.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{InitialObject} \rightarrow A)$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{InitialObject}, A)$.
 #! @Arguments A
 DeclareAttribute( "UniversalMorphismFromInitialObject",
                   IsCapCategoryObject );
@@ -584,7 +584,7 @@ DeclareAttribute( "UniversalMorphismFromInitialObject",
 #! The arguments are an object $A$,
 #! and an object $I = \mathrm{InitialObject}$.
 #! The output is the universal morphism $u(A): \mathrm{InitialObject} \rightarrow A$.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{InitialObject} \rightarrow A)$.
+#! @Returns a morphism in $\mathrm{Hom}(I, A)$.
 #! @Arguments A, I
 DeclareOperation( "UniversalMorphismFromInitialObjectWithGivenInitialObject",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
