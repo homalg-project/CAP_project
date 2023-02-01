@@ -514,7 +514,7 @@
   [1X6.5-3 UniversalMorphismFromInitialObject[101X
   
   [33X[1;0Y[29X[2XUniversalMorphismFromInitialObject[102X( [3XA[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\mathrm{InitialObject} \rightarrow A)[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\mathrm{InitialObject}, A)[123X.[133X
   
   [33X[0;0YThe  argument  is  an  object  [23XA[123X. The output is the universal morphism [23Xu(A):
   \mathrm{InitialObject} \rightarrow A[123X.[133X
@@ -522,7 +522,7 @@
   [1X6.5-4 UniversalMorphismFromInitialObjectWithGivenInitialObject[101X
   
   [33X[1;0Y[29X[2XUniversalMorphismFromInitialObjectWithGivenInitialObject[102X( [3XA[103X, [3XI[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\mathrm{InitialObject} \rightarrow A)[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(I, A)[123X.[133X
   
   [33X[0;0YThe arguments are an object [23XA[123X, and an object [23XI = \mathrm{InitialObject}[123X. The
   output is the universal morphism [23Xu(A): \mathrm{InitialObject} \rightarrow A[123X.[133X
