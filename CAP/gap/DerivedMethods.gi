@@ -120,7 +120,7 @@ AddDerivationToCAP( UniversalMorphismIntoDirectSum,
                     "UniversalMorphismIntoDirectSum using the injections of the direct sum",
                     [ [ PreCompose, 2 ],
                       [ InjectionOfCofactorOfDirectSum, 2 ],
-                      [ ZeroMorphism, 1 ],
+                      [ SumOfMorphisms, 1 ],
                       [ DirectSum, 1 ] ],
                     
   function( cat, diagram, test_object, source )
@@ -128,9 +128,10 @@ AddDerivationToCAP( UniversalMorphismIntoDirectSum,
     
     nr_components := Length( source );
     
-    return Sum(
+    return SumOfMorphisms( cat,
+        test_object,
         List( [ 1 .. nr_components ], i -> PreCompose( cat, source[ i ], InjectionOfCofactorOfDirectSum( cat, diagram, i ) ) ),
-        ZeroMorphism( cat, test_object, DirectSum( cat, diagram ) )
+        DirectSum( cat, diagram )
     );
     
   end : CategoryFilter := IsAdditiveCategory );
@@ -140,16 +141,17 @@ AddDerivationToCAP( UniversalMorphismIntoDirectSumWithGivenDirectSum,
                     "UniversalMorphismIntoDirectSum using the injections of the direct sum",
                     [ [ PreCompose, 2 ],
                       [ InjectionOfCofactorOfDirectSumWithGivenDirectSum, 2 ],
-                      [ ZeroMorphism, 1 ] ],
+                      [ SumOfMorphisms, 1 ] ],
                     
   function( cat, diagram, test_object, source, direct_sum )
     local nr_components;
     
     nr_components := Length( source );
   
-    return Sum(
+    return SumOfMorphisms( cat,
+        test_object,
         List( [ 1 .. nr_components ], i -> PreCompose( cat, source[ i ], InjectionOfCofactorOfDirectSumWithGivenDirectSum( cat, diagram, i, direct_sum ) ) ),
-        ZeroMorphism( cat, test_object, direct_sum )
+        direct_sum
     );
   
 end : CategoryFilter := IsAdditiveCategory );
@@ -159,7 +161,7 @@ AddDerivationToCAP( UniversalMorphismFromDirectSum,
                     "UniversalMorphismFromDirectSum using projections of the direct sum",
                     [ [ PreCompose, 2 ],
                       [ ProjectionInFactorOfDirectSum, 2 ],
-                      [ ZeroMorphism, 1 ],
+                      [ SumOfMorphisms, 1 ],
                       [ DirectSum, 1 ] ],
                     
   function( cat, diagram, test_object, sink )
@@ -167,9 +169,10 @@ AddDerivationToCAP( UniversalMorphismFromDirectSum,
     
     nr_components := Length( sink );
     
-    return Sum(
+    return SumOfMorphisms( cat,
+        DirectSum( cat, diagram ),
         List( [ 1 .. nr_components ], i -> PreCompose( cat, ProjectionInFactorOfDirectSum( cat, diagram, i ), sink[ i ] ) ),
-        ZeroMorphism( cat, DirectSum( cat, diagram ), test_object )
+        test_object
     );
     
   end : CategoryFilter := IsAdditiveCategory );
@@ -179,16 +182,17 @@ AddDerivationToCAP( UniversalMorphismFromDirectSumWithGivenDirectSum,
                     "UniversalMorphismFromDirectSum using projections of the direct sum",
                     [ [ PreCompose, 2 ],
                       [ ProjectionInFactorOfDirectSumWithGivenDirectSum, 2 ],
-                      [ ZeroMorphism, 1 ] ],
+                      [ SumOfMorphisms, 1 ] ],
                     
   function( cat, diagram, test_object, sink, direct_sum )
     local nr_components;
     
     nr_components := Length( sink );
     
-    return Sum(
+    return SumOfMorphisms( cat,
+        direct_sum,
         List( [ 1 .. nr_components ], i -> PreCompose( cat, ProjectionInFactorOfDirectSumWithGivenDirectSum( cat, diagram, i, direct_sum ), sink[ i ] ) ),
-        ZeroMorphism( cat, direct_sum, test_object )
+        test_object
     );
   
 end : CategoryFilter := IsAdditiveCategory );
