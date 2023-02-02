@@ -618,7 +618,7 @@ InstallMethod( CheckConstructivenessOfCategory,
       
     od;
     
-    return result_list;
+    return DuplicateFreeList( result_list );
     
 end );
 
