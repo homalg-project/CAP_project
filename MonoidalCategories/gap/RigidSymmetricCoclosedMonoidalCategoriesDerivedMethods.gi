@@ -413,7 +413,7 @@ AddDerivationToCAP( InternalCoHomTensorProductCompatibilityMorphismInverseWithGi
 
     # Inverse( Cohom( a ⊗ a', b ⊗ b') → Cohom(a,b) ⊗ Cohom(a',b') )
     
-    return InverseForMorphisms( cat, InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects( cat, source, list, range ) );
+    return InverseForMorphisms( cat, InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects( cat, range, list, source ) );
     
 end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory,
       Description := "InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects as the inverse of TensorProductInternalCoHomCompatibilityMorphismWithGivenObjects" );
