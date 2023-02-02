@@ -68,8 +68,7 @@ end : CategoryFilter := cat -> not ( IsBound( cat!.supports_empty_limits ) and c
 AddDerivationToCAP( CoproductOnMorphismsWithGivenCoproducts,
   function( cat, s, alpha, beta, r )
     
-    return CoproductFunctorialWithGivenCoproducts(
-                   cat,
+    return CoproductFunctorialWithGivenCoproducts( cat,
                    s,
                    [ Source( alpha ), Source( beta ) ],
                    [ alpha, beta ],

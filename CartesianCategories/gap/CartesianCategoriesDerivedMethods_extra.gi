@@ -68,8 +68,7 @@ end : CategoryFilter := cat -> not ( IsBound( cat!.supports_empty_limits ) and c
 AddDerivationToCAP( DirectProductOnMorphismsWithGivenDirectProducts,
   function( cat, s, alpha, beta, r )
     
-    return DirectProductFunctorialWithGivenDirectProducts(
-                   cat,
+    return DirectProductFunctorialWithGivenDirectProducts( cat,
                    s,
                    [ Source( alpha ), Source( beta ) ],
                    [ alpha, beta ],
@@ -83,7 +82,7 @@ end : Description := "TensorProductOnMorphisms is DirectProductFunctorial",
 AddDerivationToCAP( CartesianLeftUnitorWithGivenDirectProduct,
   function( cat, a, s )
     
-    return ProjectionInFactorOfDirectProductWithGivenDirectProduct(
+    return ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat,
                    [ TerminalObject( cat ), a ],
                    2,
                    s );
@@ -94,7 +93,7 @@ end : Description := "CartesianLeftUnitorWithGivenDirectProduct using the projec
 AddDerivationToCAP( CartesianRightUnitorWithGivenDirectProduct,
   function( cat, a, s )
     
-    return ProjectionInFactorOfDirectProductWithGivenDirectProduct(
+    return ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat,
                    [ a, TerminalObject( cat ) ],
                    1,
                    s );
