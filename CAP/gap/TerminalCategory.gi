@@ -88,6 +88,9 @@ InstallGlobalFunction( CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY,
     
     T := CategoryConstructor( completed_record );
     
+    SetRangeCategoryOfHomomorphismStructure( T, T );
+    SetIsEquippedWithHomomorphismStructure( T, true );
+    
     ##
     AddIsCongruentForMorphisms( T,
       function( T, morphism1, morphism2 )

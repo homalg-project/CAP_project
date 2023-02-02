@@ -36,6 +36,7 @@ InstallMethod( GroupAsCategory,
     if is_finite then
         
         SetRangeCategoryOfHomomorphismStructure( category, FREYD_CATEGORIES_SkeletalFinSets );
+        SetIsEquippedWithHomomorphismStructure( category, true );
         
     fi;
     

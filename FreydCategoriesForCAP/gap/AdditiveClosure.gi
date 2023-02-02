@@ -1009,6 +1009,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         fi;
         
         SetRangeCategoryOfHomomorphismStructure( category, range_category );
+        SetIsEquippedWithHomomorphismStructure( category, true );
         
         if ForAll( [ "DirectSum" ], f -> CanCompute( range_category, f ) )
            and  ForAll( [ "HomomorphismStructureOnObjects" ], f -> CanCompute( underlying_category, f ) ) then

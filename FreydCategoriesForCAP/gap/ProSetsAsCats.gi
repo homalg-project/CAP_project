@@ -66,7 +66,8 @@ InstallMethod( ProSetAsCategory,
     AddMorphismRepresentation( category, IsProSetAsCategoryMorphism );
 
     SetRangeCategoryOfHomomorphismStructure( category, FREYD_CATEGORIES_SkeletalFinSets );
-
+    SetIsEquippedWithHomomorphismStructure( category, true );
+    
     INSTALL_FUNCTIONS_FOR_PROSET_AS_CATEGORY( category );
 
     Finalize( category );

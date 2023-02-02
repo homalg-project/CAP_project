@@ -498,6 +498,7 @@ InstallMethod( WrapperCategory,
         fi;
         
         SetRangeCategoryOfHomomorphismStructure( D, HC );
+        SetIsEquippedWithHomomorphismStructure( D, true );
         
         if "DistinguishedObjectOfHomomorphismStructure" in list_of_operations_to_install then
             AddDistinguishedObjectOfHomomorphismStructure( D,

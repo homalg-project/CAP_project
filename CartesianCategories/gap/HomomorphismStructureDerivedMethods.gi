@@ -69,14 +69,9 @@ end
     
   end
 ] : CategoryFilter := function( cat )
-      return not HasRangeCategoryOfHomomorphismStructure( cat ) and
-             not ( IsBound( cat!.do_not_use_cartesian_closed_structure_as_homomorphism_structure ) and
-               IsIdenticalObj( cat!.do_not_use_cartesian_closed_structure_as_homomorphism_structure, true ) );
-    end,
-    FunctionCalledBeforeInstallation :=
-      function( cat )
-        SetRangeCategoryOfHomomorphismStructure( cat, cat );
-        SetIsEquippedWithHomomorphismStructure( cat, true );
+      return (HasIsEquippedWithHomomorphismStructure and IsEquippedWithHomomorphismStructure)( cat ) and
+             HasRangeCategoryOfHomomorphismStructure( cat ) and
+             IsIdenticalObj( RangeCategoryOfHomomorphismStructure( cat ), cat );
     end,
     Description := "adding the homomorphism structure using the closed cartesian structure"
 );

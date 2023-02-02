@@ -66,12 +66,9 @@ end
     
   end
 ] : CategoryFilter := function( cat )
-      return not HasRangeCategoryOfHomomorphismStructure( cat );
-    end,
-    FunctionCalledBeforeInstallation :=
-      function( cat )
-        SetRangeCategoryOfHomomorphismStructure( cat, cat );
-        SetIsEquippedWithHomomorphismStructure( cat, true );
+      return (HasIsEquippedWithHomomorphismStructure and IsEquippedWithHomomorphismStructure)( cat ) and
+             HasRangeCategoryOfHomomorphismStructure( cat ) and
+             IsIdenticalObj( RangeCategoryOfHomomorphismStructure( cat ), cat );
     end,
     Description := "adding the homomorphism structure using the closed monoidal structure"
 );
