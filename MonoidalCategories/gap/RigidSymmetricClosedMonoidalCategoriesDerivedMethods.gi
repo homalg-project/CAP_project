@@ -454,7 +454,7 @@ AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphismInverseWithGive
 
     # Inverse( Hom(a,a') ⊗ Hom(b,b') → Hom(a ⊗ b, a' ⊗ b') )
     
-    return InverseForMorphisms( cat, TensorProductInternalHomCompatibilityMorphismWithGivenObjects( cat, source, list, range ) );
+    return InverseForMorphisms( cat, TensorProductInternalHomCompatibilityMorphismWithGivenObjects( cat, range, list, source ) );
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects as the inverse of TensorProductInternalHomCompatibilityMorphismWithGivenObjects" );

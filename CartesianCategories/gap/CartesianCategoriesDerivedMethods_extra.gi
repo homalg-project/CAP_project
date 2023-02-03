@@ -17,26 +17,7 @@ AddDerivationToCAP( CartesianDiagonalWithGivenCartesianPower,
                    ListWithIdenticalEntries( n, id_a ),
                    cartesian_power );
     
-end : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true );
-
-##
-AddDerivationToCAP( CartesianDiagonalWithGivenCartesianPower,
-  function( cat, a, n, cartesian_power )
-    local id_a;
-    
-    if n = 0 then
-        return UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( cat, a, cartesian_power );
-    fi;
-    
-    id_a := IdentityMorphism( cat, a );
-    
-    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat,
-                   ListWithIdenticalEntries( n, a ),
-                   a,
-                   ListWithIdenticalEntries( n, id_a ),
-                   cartesian_power );
-    
-end : CategoryFilter := cat -> not ( IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true ) );
+end );
 
 ##
 AddDerivationToCAP( CartesianDiagonal,
@@ -47,29 +28,13 @@ AddDerivationToCAP( CartesianDiagonal,
                    n,
                    DirectProduct( cat, ListWithIdenticalEntries( n, a ) ) );
     
-end : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true );
-
-##
-AddDerivationToCAP( CartesianDiagonal,
-  function( cat, a, n )
-    
-    if n = 0 then
-        return UniversalMorphismIntoTerminalObject( cat, a );
-    fi;
-    
-    return CartesianDiagonalWithGivenCartesianPower( cat,
-                   a,
-                   n,
-                   DirectProduct( cat, ListWithIdenticalEntries( n, a ) ) );
-    
-end : CategoryFilter := cat -> not ( IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true ) );
+end );
 
 ##
 AddDerivationToCAP( DirectProductOnMorphismsWithGivenDirectProducts,
   function( cat, s, alpha, beta, r )
     
-    return DirectProductFunctorialWithGivenDirectProducts(
-                   cat,
+    return DirectProductFunctorialWithGivenDirectProducts( cat,
                    s,
                    [ Source( alpha ), Source( beta ) ],
                    [ alpha, beta ],
@@ -83,7 +48,7 @@ end : Description := "TensorProductOnMorphisms is DirectProductFunctorial",
 AddDerivationToCAP( CartesianLeftUnitorWithGivenDirectProduct,
   function( cat, a, s )
     
-    return ProjectionInFactorOfDirectProductWithGivenDirectProduct(
+    return ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat,
                    [ TerminalObject( cat ), a ],
                    2,
                    s );
@@ -94,7 +59,7 @@ end : Description := "CartesianLeftUnitorWithGivenDirectProduct using the projec
 AddDerivationToCAP( CartesianRightUnitorWithGivenDirectProduct,
   function( cat, a, s )
     
-    return ProjectionInFactorOfDirectProductWithGivenDirectProduct(
+    return ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat,
                    [ a, TerminalObject( cat ) ],
                    1,
                    s );

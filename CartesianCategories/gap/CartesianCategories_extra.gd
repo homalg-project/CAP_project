@@ -13,8 +13,9 @@
 ####################################
 
 #! @Description
-#!  The arguments are an object $a$ and an integer $n$.
+#!  The arguments are an object $a$ and an integer $n \geq 0$.
 #!  The output is the diagonal morphism from $a$ to the $n$-fold cartesian power $a^{\times n}$.
+#!  If the category does not support empty limits, $n$ must be not be 0.
 #! @Returns a morphism in $\mathrm{Hom}(a, a^{\times n})$.
 #! @Arguments a, n
 DeclareOperation( "CartesianDiagonal",
