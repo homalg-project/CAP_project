@@ -192,8 +192,9 @@
   [33X[1;0Y[29X[2XCocartesianCodiagonal[102X( [3Xa[103X, [3Xn[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\sqcup_{i=1}^n a, a)[123X.[133X
   
-  [33X[0;0YThe arguments are an object [23Xa[123X and an integer [23Xn[123X. The output is the codiagonal
-  morphism from the [23Xn[123X-fold cocartesian multiple [23X\sqcup_{i=1}^n a[123X to [23Xa[123X.[133X
+  [33X[0;0YThe  arguments  are  an  object [23Xa[123X and an integer [23Xn \geq 0[123X. The output is the
+  codiagonal morphism from the [23Xn[123X-fold cocartesian multiple [23X\sqcup_{i=1}^n a[123X to
+  [23Xa[123X. If the category does not support empty limits, [23Xn[123X must be not be 0.[133X
   
   [1X2.1-20 CocartesianCodiagonalWithGivenCocartesianMultiple[101X
   

@@ -192,8 +192,9 @@
   [33X[1;0Y[29X[2XCartesianDiagonal[102X( [3Xa[103X, [3Xn[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, a^{\times n})[123X.[133X
   
-  [33X[0;0YThe  arguments  are an object [23Xa[123X and an integer [23Xn[123X. The output is the diagonal
-  morphism from [23Xa[123X to the [23Xn[123X-fold cartesian power [23Xa^{\times n}[123X.[133X
+  [33X[0;0YThe  arguments  are  an  object [23Xa[123X and an integer [23Xn \geq 0[123X. The output is the
+  diagonal  morphism from [23Xa[123X to the [23Xn[123X-fold cartesian power [23Xa^{\times n}[123X. If the
+  category does not support empty limits, [23Xn[123X must be not be 0.[133X
   
   [1X1.1-20 CartesianDiagonalWithGivenCartesianPower[101X
   
