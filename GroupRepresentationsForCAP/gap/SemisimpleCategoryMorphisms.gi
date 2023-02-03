@@ -70,7 +70,7 @@ InstallMethod( SemisimpleCategoryMorphismSparse,
     morphism_list := Filtered( morphism_list,
                        alpha -> NrRows( UnderlyingMatrix( alpha[1] ) ) <> 0 or NrColumns( UnderlyingMatrix( alpha[1] ) ) <> 0 );
     
-    support := Set( Concatenation( Support( source ), Support( range ) ) );
+    support := Union( Support( source ), Support( range ) );
     
     field := UnderlyingFieldForHomalg( source );
     

@@ -42,7 +42,7 @@ InstallMethod( FunctorByUniversalPropertyOfSemisimpleCategory,
       function( new_source, morphism, new_range )
         local support, list, chi, id, matrix, nr_rows, nr_cols, image_chi;
         
-        support := Set( Concatenation( Support( Source( morphism ) ), Support( Range( morphism ) ) ) );
+        support := Union( Support( Source( morphism ) ), Support( Range( morphism ) ) );
         
         list  := [ ];
         
@@ -482,7 +482,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
         range_list := SemisimpleCategoryObjectList( range );
         
-        union := Set( Concatenation( Support( source ), Support( range ) ) );
+        union := Union( Support( source ), Support( range ) );
         
         morphism_list := SemisimpleCategoryMorphismList( morphism );
         
@@ -583,7 +583,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
             
             range := Range( morphism_2 );
             
-            union := Set( Concatenation( Support( source ), Support( range ) ) );
+            union := Union( Support( source ), Support( range ) );
             
             composition_list := [ ];
             
@@ -687,7 +687,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       function( source, range )
         local union, morphism_list, source_list, range_list, irr, dim_source, dim_range;
         
-        union := Set( Concatenation( Support( source ), Support( range ) ) );
+        union := Union( Support( source ), Support( range ) );
         
         morphism_list := [ ];
         
@@ -821,7 +821,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       function( diagram, test_object, source, direct_sum_object )
         local support, morphism_list, irr, irr_diagram, irr_source;
         
-        support := Set( Concatenation( Support( direct_sum_object ), Support( test_object ) ) );
+        support := Union( Support( direct_sum_object ), Support( test_object ) );
         
         morphism_list := [ ];
         
@@ -871,7 +871,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       function( diagram, test_object, sink, direct_sum_object )
         local support, morphism_list, irr, irr_diagram, irr_sink;
         
-        support := Set( Concatenation( Support( direct_sum_object ), Support( test_object ) ) );
+        support := Union( Support( direct_sum_object ), Support( test_object ) );
         
         morphism_list := [ ];
         
@@ -894,7 +894,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       function( source, source_diagram, diagram, range_diagram, range )
         local support, irr, irr_diagram, morphism_list;
         
-        support := Set( Concatenation( Support( source ), Support( range ) ) );
+        support := Union( Support( source ), Support( range ) );
         
         morphism_list := [ ];
         
@@ -963,7 +963,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
         range := Source( beta );
         
-        support := Set( Concatenation( Support( source ), Support( range ) ) );
+        support := Union( Support( source ), Support( range ) );
         
         morphism_list := List( support, irr ->
                            [ Lift( Component( alpha, irr ), Component( beta, irr ) ), irr ] );
@@ -1024,7 +1024,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
         range := Range( beta );
         
-        support := Set( Concatenation( Support( source ), Support( range ) ) );
+        support := Union( Support( source ), Support( range ) );
         
         morphism_list := List( support, irr ->
                            [ Colift( Component( alpha, irr ), Component( beta, irr ) ), irr ] );
@@ -1133,7 +1133,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
             
         od;
         
-        support := Set( Concatenation( Support( new_source ), Support( new_range ) ) );
+        support := Union( Support( new_source ), Support( new_range ) );
         
         size_support := Size( support );
 
