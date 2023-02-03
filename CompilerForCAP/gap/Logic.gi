@@ -670,7 +670,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
     
     Assert( 0, tree.type = "EXPR_FUNCCALL" );
     Assert( 0, tree.funcref.type = "EXPR_REF_GVAR" );
-    Assert( 0, [ 1 .. tree.args.length ] = Set( Concatenation( [ result_func_index, initial_value_index ], additional_funcs_indices, additional_values_indices ) ) );
+    Assert( 0, [ 1 .. tree.args.length ] = Union( [ result_func_index, initial_value_index ], additional_funcs_indices, additional_values_indices ) );
     Assert( 0, not result_func_index in additional_funcs_indices );
     Assert( 0, not initial_value_index in additional_funcs_indices );
     Assert( 0, not result_func_index in additional_values_indices );
