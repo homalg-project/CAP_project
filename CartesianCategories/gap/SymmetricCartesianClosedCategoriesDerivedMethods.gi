@@ -32,6 +32,33 @@ end : CategoryFilter := IsCartesianClosedCategory,
       Description := "DirectProductToExponentialAdjunctionMap using CartesianCoevaluationMorphism and Exponential" );
 
 ##
+AddDerivationToCAP( DirectProductToExponentialAdjunctionMapWithGivenExponential,
+                    
+  function( cat, a, b, f, i )
+    local coev_ab;
+    
+    # f: a × b → c
+    #
+    #      a
+    #      |
+    #      | coev_ab
+    #      v
+    # Exp(b,a × b)
+    #      |
+    #      | Exp(id_b, f)
+    #      v
+    #   Exp(b,c)
+    
+    coev_ab := CartesianCoevaluationMorphism( cat, a, b );
+    
+    return PreCompose( cat,
+             coev_ab,
+             ExponentialOnMorphismsWithGivenExponentials( cat, Range( coev_ab ), IdentityMorphism( cat, b ), f, i ) );
+    
+end : CategoryFilter := IsCartesianClosedCategory,
+      Description := "DirectProductToExponentialAdjunctionMapWithGivenExponential using CartesianCoevaluationMorphism and Exponential" );
+
+##
 AddDerivationToCAP( ExponentialToDirectProductAdjunctionMap,
                     
   function( cat, b, c, g )

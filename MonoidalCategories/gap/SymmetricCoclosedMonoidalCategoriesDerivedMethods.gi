@@ -29,6 +29,33 @@ end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
       Description := "TensorProductToInternalCoHomAdjunctionMap using CoclosedCoevaluationMorphism and InternalCoHom" );
 
 ##
+AddDerivationToCAP( TensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom,
+
+  function( cat, c, b, g, i )
+    local coclcoev_cb;
+    
+    # g: a → c ⊗ b
+    #
+    #    Cohom(a,b)
+    #        |
+    #        | Cohom(g, id_b)
+    #        v
+    # Cohom(c ⊗ b, b)
+    #        |
+    #        | coclcoev_cb
+    #        v
+    #        c
+    
+    coclcoev_cb := CoclosedCoevaluationMorphism( cat, c, b );
+    
+    return PreCompose( cat,
+             InternalCoHomOnMorphismsWithGivenInternalCoHoms( cat, i, g, IdentityMorphism( cat, b ), Source( coclcoev_cb ) ),
+             coclcoev_cb );
+    
+end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
+      Description := "TensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom using CoclosedCoevaluationMorphism and InternalCoHom" );
+
+##
 AddDerivationToCAP( InternalCoHomToTensorProductAdjunctionMap,
 
   function( cat, a, b, f )

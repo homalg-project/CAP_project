@@ -323,7 +323,9 @@
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductOnMorphismsWithGivenTensorProducts" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductOnObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductToInternalCoHomAdjunctionMap" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="TensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductToInternalHomAdjunctionMap" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="TensorProductToInternalHomAdjunctionMapWithGivenInternalHom" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorUnit" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TraceMap" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="UniversalPropertyOfCoDual" Label="for Is" />

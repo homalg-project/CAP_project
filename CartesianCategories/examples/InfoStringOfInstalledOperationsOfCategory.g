@@ -16,7 +16,7 @@ distributive := DummyCategory( rec(
                   "IsSkeletalCategory" ] ) );;
 
 InfoOfInstalledOperationsOfCategory( distributive );
-#! 19 primitive operations were used to derive 109 operations for this category
+#! 19 primitive operations were used to derive 110 operations for this category
 #! which algorithmically
 #! * IsBicartesianClosedCategory
 #! and furthermore mathematically

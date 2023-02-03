@@ -5854,6 +5854,36 @@ end
     , 5024 : IsPrecompiledDerivation := true );
     
     ##
+    AddTensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom( cat,
+        
+########
+function ( cat_1, c_1, b_1, g_1, i_1 )
+    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1;
+    deduped_10_1 := Dimension( c_1 );
+    deduped_9_1 := UnderlyingRing( cat_1 );
+    deduped_8_1 := Dimension( b_1 );
+    deduped_7_1 := HomalgIdentityMatrix( deduped_10_1, deduped_9_1 );
+    deduped_6_1 := deduped_8_1 * deduped_8_1;
+    deduped_5_1 := deduped_10_1 * deduped_8_1;
+    deduped_4_1 := HomalgIdentityMatrix( deduped_8_1, deduped_9_1 );
+    hoisted_3_1 := deduped_10_1;
+    hoisted_2_1 := deduped_8_1;
+    morphism_attr_1_1 := KroneckerMat( TransposedMatrix( deduped_4_1 ), UnderlyingMatrix( g_1 ) ) * (KroneckerMat( deduped_4_1, HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_5_1 ], function ( i_2 )
+                          local deduped_1_2;
+                          deduped_1_2 := (i_2 - 1);
+                          return (REM_INT( deduped_1_2, hoisted_2_1 ) * hoisted_3_1 + QUO_INT( deduped_1_2, hoisted_2_1 ) + 1);
+                      end ) ), deduped_5_1 ), deduped_5_1, deduped_5_1, deduped_9_1 ) ) * KroneckerMat( HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_6_1 ], function ( i_2 )
+                          local deduped_1_2;
+                          deduped_1_2 := (i_2 - 1);
+                          return (REM_INT( deduped_1_2, hoisted_2_1 ) * hoisted_2_1 + QUO_INT( deduped_1_2, hoisted_2_1 ) + 1);
+                      end ) ), deduped_6_1 ), deduped_6_1, deduped_6_1, deduped_9_1 ), deduped_7_1 ) * KroneckerMat( ConvertMatrixToColumn( deduped_4_1 ), deduped_7_1 ));
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+end
+########
+        
+    , 4419 : IsPrecompiledDerivation := true );
+    
+    ##
     AddTensorProductToInternalHomAdjunctionMap( cat,
         
 ########
@@ -5882,6 +5912,36 @@ end
 ########
         
     , 5024 : IsPrecompiledDerivation := true );
+    
+    ##
+    AddTensorProductToInternalHomAdjunctionMapWithGivenInternalHom( cat,
+        
+########
+function ( cat_1, a_1, b_1, f_1, i_1 )
+    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1;
+    deduped_10_1 := Dimension( a_1 );
+    deduped_9_1 := UnderlyingRing( cat_1 );
+    deduped_8_1 := Dimension( b_1 );
+    deduped_7_1 := deduped_8_1 * deduped_10_1;
+    deduped_6_1 := deduped_8_1 * deduped_8_1;
+    deduped_5_1 := HomalgIdentityMatrix( deduped_10_1, deduped_9_1 );
+    deduped_4_1 := HomalgIdentityMatrix( deduped_8_1, deduped_9_1 );
+    hoisted_3_1 := deduped_10_1;
+    hoisted_2_1 := deduped_8_1;
+    morphism_attr_1_1 := KroneckerMat( ConvertMatrixToRow( deduped_4_1 ), deduped_5_1 ) * KroneckerMat( HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_6_1 ], function ( i_2 )
+                          local deduped_1_2;
+                          deduped_1_2 := (i_2 - 1);
+                          return (REM_INT( deduped_1_2, hoisted_2_1 ) * hoisted_2_1 + QUO_INT( deduped_1_2, hoisted_2_1 ) + 1);
+                      end ) ), deduped_6_1 ), deduped_6_1, deduped_6_1, deduped_9_1 ), deduped_5_1 ) * KroneckerMat( deduped_4_1, HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_7_1 ], function ( i_2 )
+                        local deduped_1_2;
+                        deduped_1_2 := (i_2 - 1);
+                        return (REM_INT( deduped_1_2, hoisted_3_1 ) * hoisted_2_1 + QUO_INT( deduped_1_2, hoisted_3_1 ) + 1);
+                    end ) ), deduped_7_1 ), deduped_7_1, deduped_7_1, deduped_9_1 ) ) * KroneckerMat( TransposedMatrix( deduped_4_1 ), UnderlyingMatrix( f_1 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+end
+########
+        
+    , 4419 : IsPrecompiledDerivation := true );
     
     ##
     AddTensorUnit( cat,
