@@ -428,7 +428,7 @@ AddFinalDerivationBundle( # WeakBiFiberProductMorphismToDirectSum,
     return WeakKernelLift( cat, difference, test_mor );
     
   end
-] : Description := "WeakBiFiberProductMorphismToDirectSum as WeakKernelEmbedding of JointPairwiseDifferencesOfMorphismsIntoDirectProduct" );
+] : Description := "WeakBiFiberProductMorphismToDirectSum via WeakKernelEmbedding and direct sum" );
 
 ## weak bi-pushout
 ##
@@ -510,7 +510,7 @@ end
     return WeakCokernelColift( cat, difference, test_mor );
     
   end
-] : Description := "DirectSumMorphismToWeakBiPushout as WeakCokernelProjection of JointPairwiseDifferencesOfMorphismsFromCoproduct" );
+] : Description := "DirectSumMorphismToWeakBiPushout via WeakCokernelProjection and direct sum" );
 
 ## Final derivation for biased weak fiber products and biased weak pushouts.
 ## Decision: we use a derivation from weak fiber products and weak pushouts

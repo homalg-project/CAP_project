@@ -534,7 +534,7 @@ InstallMethod( FiberProductEmbeddingInDirectSum,
         
   function( diagram )
     
-    return FiberProductEmbeddingInDirectProduct( CapCategory( diagram[1] ), diagram );
+    return FiberProductEmbeddingInDirectSum( CapCategory( diagram[1] ), diagram );
     
 end );
 
