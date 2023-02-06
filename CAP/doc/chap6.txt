@@ -1485,27 +1485,7 @@
   \beta_i[123X for [23Xi = 1, \dots, n[123X) we obtain a morphism [23X\mathrm{FiberProduct}( D )
   \rightarrow \mathrm{FiberProduct}( D' )[123X.[133X
   
-  [1X6.11-1 IsomorphismFromFiberProductToKernelOfDiagonalDifference[101X
-  
-  [33X[1;0Y[29X[2XIsomorphismFromFiberProductToKernelOfDiagonalDifference[102X( [3XD[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\mathrm{FiberProduct}(D), \Delta)[123X[133X
-  
-  [33X[0;0YThe  argument is a list of morphisms [23XD = ( \beta_i: P_i \rightarrow B )_{i =
-  1  \dots  n}[123X.  The output is a morphism [23X\mathrm{FiberProduct}(D) \rightarrow
-  \Delta[123X,  where  [23X\Delta[123X  denotes  the  kernel object equalizing the morphisms
-  [23X\beta_i[123X.[133X
-  
-  [1X6.11-2 IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct[101X
-  
-  [33X[1;0Y[29X[2XIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct[102X( [3XD[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\Delta, \mathrm{FiberProduct}(D))[123X[133X
-  
-  [33X[0;0YThe  argument is a list of morphisms [23XD = ( \beta_i: P_i \rightarrow B )_{i =
-  1    \dots    n}[123X.    The   output   is   a   morphism   [23X\Delta   \rightarrow
-  \mathrm{FiberProduct}(D)[123X,  where [23X\Delta[123X denotes the kernel object equalizing
-  the morphisms [23X\beta_i[123X.[133X
-  
-  [1X6.11-3 IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram[101X
+  [1X6.11-1 IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromFiberProductToEqualizerOfDirectProductDiagram[102X( [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\mathrm{FiberProduct}(D), \Delta)[123X[133X
@@ -1515,7 +1495,7 @@
   \Delta[123X,  where  [23X\Delta[123X  denotes  the equalizer of the product diagram of the
   morphisms [23X\beta_i[123X.[133X
   
-  [1X6.11-4 IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct[101X
+  [1X6.11-2 IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct[102X( [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\Delta, \mathrm{FiberProduct}(D))[123X[133X
@@ -1525,27 +1505,27 @@
   \mathrm{FiberProduct}(D)[123X,  where [23X\Delta[123X denotes the equalizer of the product
   diagram of the morphisms [23X\beta_i[123X.[133X
   
-  [1X6.11-5 DirectSumDiagonalDifference[101X
+  [1X6.11-3 FiberProductEmbeddingInDirectProduct[101X
   
-  [33X[1;0Y[29X[2XDirectSumDiagonalDifference[102X( [3XD[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya     morphism    in    [23X\mathrm{Hom}(    \bigoplus_{i=1}^n    P_i,
-            \bigoplus_{i=1}^{n-1} B )[123X[133X
+  [33X[1;0Y[29X[2XFiberProductEmbeddingInDirectProduct[102X( [3XD[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya     morphism    in    [23X\mathrm{Hom}(    \mathrm{FiberProduct}(D),
+            \prod_{i=1}^n P_i )[123X[133X
   
-  [33X[0;0YThe  argument is a list of morphisms [23XD = ( \beta_i: P_i \rightarrow B )_{i =
-  1  \dots  n}[123X.  The  output  is  a morphism [23X\bigoplus_{i=1}^n P_i \rightarrow
-  \bigoplus_{i=1}^{n-1} B[123X such that its kernel equalizes the [23X\beta_i[123X.[133X
+  [33X[0;0YThis  is  a  convenience  method.  The argument is a list of morphisms [23XD = (
+  \beta_i:  P_i  \rightarrow  B  )_{i  = 1 \dots n}[123X. The output is the natural
+  embedding [23X\mathrm{FiberProduct}(D) \rightarrow \prod_{i=1}^n P_i[123X.[133X
   
-  [1X6.11-6 FiberProductEmbeddingInDirectSum[101X
+  [1X6.11-4 FiberProductEmbeddingInDirectSum[101X
   
   [33X[1;0Y[29X[2XFiberProductEmbeddingInDirectSum[102X( [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya     morphism    in    [23X\mathrm{Hom}(    \mathrm{FiberProduct}(D),
             \bigoplus_{i=1}^n P_i )[123X[133X
   
-  [33X[0;0YThe  argument is a list of morphisms [23XD = ( \beta_i: P_i \rightarrow B )_{i =
-  1  \dots  n}[123X.  The  output is the natural embedding [23X\mathrm{FiberProduct}(D)
-  \rightarrow \bigoplus_{i=1}^n P_i[123X.[133X
+  [33X[0;0YThis  is  a  convenience  method.  The argument is a list of morphisms [23XD = (
+  \beta_i:  P_i  \rightarrow  B  )_{i  = 1 \dots n}[123X. The output is the natural
+  embedding [23X\mathrm{FiberProduct}(D) \rightarrow \bigoplus_{i=1}^n P_i[123X.[133X
   
-  [1X6.11-7 FiberProduct[101X
+  [1X6.11-5 FiberProduct[101X
   
   [33X[1;0Y[29X[2XFiberProduct[102X( [3Xarg[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -1561,7 +1541,7 @@
   
   [33X[0;0YThe output is the fiber product [23X\mathrm{FiberProduct}(D)[123X.[133X
   
-  [1X6.11-8 FiberProductOp[101X
+  [1X6.11-6 FiberProductOp[101X
   
   [33X[1;0Y[29X[2XFiberProductOp[102X( [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -1569,7 +1549,7 @@
   [33X[0;0YThe  argument is a list of morphisms [23XD = ( \beta_i: P_i \rightarrow B )_{i =
   1 \dots n}[123X. The output is the fiber product [23X\mathrm{FiberProduct}(D)[123X.[133X
   
-  [1X6.11-9 ProjectionInFactorOfFiberProduct[101X
+  [1X6.11-7 ProjectionInFactorOfFiberProduct[101X
   
   [33X[1;0Y[29X[2XProjectionInFactorOfFiberProduct[102X( [3XD[103X, [3Xk[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \mathrm{FiberProduct}(D), P_k )[123X[133X
@@ -1578,7 +1558,7 @@
   =  1  \dots  n}[123X and an integer [23Xk[123X. The output is the [23Xk[123X-th projection [23X\pi_{k}:
   \mathrm{FiberProduct}(D) \rightarrow P_k[123X.[133X
   
-  [1X6.11-10 ProjectionInFactorOfFiberProductWithGivenFiberProduct[101X
+  [1X6.11-8 ProjectionInFactorOfFiberProductWithGivenFiberProduct[101X
   
   [33X[1;0Y[29X[2XProjectionInFactorOfFiberProductWithGivenFiberProduct[102X( [3XD[103X, [3Xk[103X, [3XP[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( P, P_k )[123X[133X
@@ -1587,7 +1567,7 @@
   =  1 \dots n}[123X, an integer [23Xk[123X, and an object [23XP = \mathrm{FiberProduct}(D)[123X. The
   output is the [23Xk[123X-th projection [23X\pi_{k}: P \rightarrow P_k[123X.[133X
   
-  [1X6.11-11 MorphismFromFiberProductToSink[101X
+  [1X6.11-9 MorphismFromFiberProductToSink[101X
   
   [33X[1;0Y[29X[2XMorphismFromFiberProductToSink[102X( [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \mathrm{FiberProduct}(D), B )[123X[133X
@@ -1597,7 +1577,7 @@
   \rightarrow   B[123X  of  the  [23X1[123X-st  projection  [23X\pi_1:  \mathrm{FiberProduct}(D)
   \rightarrow P_1[123X and [23X\beta_1[123X.[133X
   
-  [1X6.11-12 MorphismFromFiberProductToSinkWithGivenFiberProduct[101X
+  [1X6.11-10 MorphismFromFiberProductToSinkWithGivenFiberProduct[101X
   
   [33X[1;0Y[29X[2XMorphismFromFiberProductToSinkWithGivenFiberProduct[102X( [3XD[103X, [3XP[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( P, B )[123X[133X
@@ -1607,7 +1587,7 @@
   composition [23X\mu: P \rightarrow B[123X of the [23X1[123X-st projection [23X\pi_1: P \rightarrow
   P_1[123X and [23X\beta_1[123X.[133X
   
-  [1X6.11-13 UniversalMorphismIntoFiberProduct[101X
+  [1X6.11-11 UniversalMorphismIntoFiberProduct[101X
   
   [33X[1;0Y[29X[2XUniversalMorphismIntoFiberProduct[102X( [3XD[103X, [3XT[103X, [3Xtau[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( T, \mathrm{FiberProduct}(D) )[123X[133X
@@ -1620,7 +1600,7 @@
   morphism  [23Xu(  \tau  ):  T  \rightarrow \mathrm{FiberProduct}(D)[123X given by the
   universal property of the fiber product.[133X
   
-  [1X6.11-14 UniversalMorphismIntoFiberProductWithGivenFiberProduct[101X
+  [1X6.11-12 UniversalMorphismIntoFiberProductWithGivenFiberProduct[101X
   
   [33X[1;0Y[29X[2XUniversalMorphismIntoFiberProductWithGivenFiberProduct[102X( [3XD[103X, [3XT[103X, [3Xtau[103X, [3XP[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( T, P )[123X[133X
@@ -1633,7 +1613,7 @@
   from [3Xtau[103X in that case. The output is the morphism [23Xu( \tau ): T \rightarrow P[123X
   given by the universal property of the fiber product.[133X
   
-  [1X6.11-15 FiberProductFunctorial[101X
+  [1X6.11-13 FiberProductFunctorial[101X
   
   [33X[1;0Y[29X[2XFiberProductFunctorial[102X( [3XLs[103X, [3XLm[103X, [3XLr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\mathrm{FiberProduct}( ( \beta_i )_{i=1
@@ -1648,7 +1628,7 @@
   )  \rightarrow  \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} )[123X given by
   the functoriality of the fiber product.[133X
   
-  [1X6.11-16 FiberProductFunctorialWithGivenFiberProducts[101X
+  [1X6.11-14 FiberProductFunctorialWithGivenFiberProducts[101X
   
   [33X[1;0Y[29X[2XFiberProductFunctorialWithGivenFiberProducts[102X( [3Xs[103X, [3XLs[103X, [3XLm[103X, [3XLr[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(s, r)[123X[133X
@@ -1693,25 +1673,7 @@
   we  obtain a morphism [23X\mathrm{Pushout}( D ) \rightarrow \mathrm{Pushout}( D'
   )[123X.[133X
   
-  [1X6.12-1 IsomorphismFromPushoutToCokernelOfDiagonalDifference[101X
-  
-  [33X[1;0Y[29X[2XIsomorphismFromPushoutToCokernelOfDiagonalDifference[102X( [3XD[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \mathrm{Pushout}(D), \Delta)[123X[133X
-  
-  [33X[0;0YThe  argument is a list of morphisms [23XD = ( \beta_i: B \rightarrow I_i )_{i =
-  1 \dots n}[123X. The output is a morphism [23X\mathrm{Pushout}(D) \rightarrow \Delta[123X,
-  where [23X\Delta[123X denotes the cokernel object coequalizing the morphisms [23X\beta_i[123X.[133X
-  
-  [1X6.12-2 IsomorphismFromCokernelOfDiagonalDifferenceToPushout[101X
-  
-  [33X[1;0Y[29X[2XIsomorphismFromCokernelOfDiagonalDifferenceToPushout[102X( [3XD[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \Delta, \mathrm{Pushout}(D))[123X[133X
-  
-  [33X[0;0YThe  argument is a list of morphisms [23XD = ( \beta_i: B \rightarrow I_i )_{i =
-  1 \dots n}[123X. The output is a morphism [23X\Delta \rightarrow \mathrm{Pushout}(D)[123X,
-  where [23X\Delta[123X denotes the cokernel object coequalizing the morphisms [23X\beta_i[123X.[133X
-  
-  [1X6.12-3 IsomorphismFromPushoutToCoequalizerOfCoproductDiagram[101X
+  [1X6.12-1 IsomorphismFromPushoutToCoequalizerOfCoproductDiagram[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromPushoutToCoequalizerOfCoproductDiagram[102X( [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \mathrm{Pushout}(D), \Delta)[123X[133X
@@ -1721,7 +1683,7 @@
   where  [23X\Delta[123X  denotes  the  coequalizer  of  the  coproduct  diagram of the
   morphisms [23X\beta_i[123X.[133X
   
-  [1X6.12-4 IsomorphismFromCoequalizerOfCoproductDiagramToPushout[101X
+  [1X6.12-2 IsomorphismFromCoequalizerOfCoproductDiagramToPushout[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromCoequalizerOfCoproductDiagramToPushout[102X( [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \Delta, \mathrm{Pushout}(D))[123X[133X
@@ -1731,27 +1693,27 @@
   where  [23X\Delta[123X  denotes  the  coequalizer  of  the  coproduct  diagram of the
   morphisms [23X\beta_i[123X.[133X
   
-  [1X6.12-5 DirectSumCodiagonalDifference[101X
+  [1X6.12-3 PushoutProjectionFromCoproduct[101X
   
-  [33X[1;0Y[29X[2XDirectSumCodiagonalDifference[102X( [3XD[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya     morphism     in     [23X\mathrm{Hom}(\bigoplus_{i=1}^{n-1}    B,
-            \bigoplus_{i=1}^n I_i)[123X[133X
+  [33X[1;0Y[29X[2XPushoutProjectionFromCoproduct[102X( [3XD[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya    morphism    in    [23X\mathrm{Hom}(    \bigsqcup   {i=1}^n   I_i,
+            \mathrm{Pushout}(D) )[123X[133X
   
-  [33X[0;0YThe  argument is a list of morphisms [23XD = ( \beta_i: B \rightarrow I_i )_{i =
-  1  \dots  n}[123X.  The  output is a morphism [23X\bigoplus_{i=1}^{n-1} B \rightarrow
-  \bigoplus_{i=1}^n I_i[123X such that its cokernel coequalizes the [23X\beta_i[123X.[133X
+  [33X[0;0YThis  is  a  convenience  method.  The argument is a list of morphisms [23XD = (
+  \beta_i:  B  \rightarrow  I_i  )_{i  = 1 \dots n}[123X. The output is the natural
+  projection [23X\bigsqcup_{i=1}^n I_i \rightarrow \mathrm{Pushout}(D)[123X.[133X
   
-  [1X6.12-6 DirectSumProjectionInPushout[101X
+  [1X6.12-4 PushoutProjectionFromDirectSum[101X
   
-  [33X[1;0Y[29X[2XDirectSumProjectionInPushout[102X( [3XD[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XPushoutProjectionFromDirectSum[102X( [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya     morphism    in    [23X\mathrm{Hom}(    \bigoplus_{i=1}^n    I_i,
             \mathrm{Pushout}(D) )[123X[133X
   
-  [33X[0;0YThe  argument is a list of morphisms [23XD = ( \beta_i: B \rightarrow I_i )_{i =
-  1  \dots  n}[123X.  The  output  is  the natural projection [23X\bigoplus_{i=1}^n I_i
-  \rightarrow \mathrm{Pushout}(D)[123X.[133X
+  [33X[0;0YThis  is  a  convenience  method.  The argument is a list of morphisms [23XD = (
+  \beta_i:  B  \rightarrow  I_i  )_{i  = 1 \dots n}[123X. The output is the natural
+  projection [23X\bigoplus_{i=1}^n I_i \rightarrow \mathrm{Pushout}(D)[123X.[133X
   
-  [1X6.12-7 Pushout[101X
+  [1X6.12-5 Pushout[101X
   
   [33X[1;0Y[29X[2XPushout[102X( [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -1759,7 +1721,7 @@
   [33X[0;0YThe  argument is a list of morphisms [23XD = ( \beta_i: B \rightarrow I_i )_{i =
   1 \dots n}[123X. The output is the pushout [23X\mathrm{Pushout}(D)[123X.[133X
   
-  [1X6.12-8 Pushout[101X
+  [1X6.12-6 Pushout[101X
   
   [33X[1;0Y[29X[2XPushout[102X( [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -1767,7 +1729,7 @@
   [33X[0;0YThis  is  a  convenience  method.  The arguments are a morphism [23X\alpha[123X and a
   morphism [23X\beta[123X. The output is the pushout [23X\mathrm{Pushout}(\alpha, \beta)[123X.[133X
   
-  [1X6.12-9 InjectionOfCofactorOfPushout[101X
+  [1X6.12-7 InjectionOfCofactorOfPushout[101X
   
   [33X[1;0Y[29X[2XInjectionOfCofactorOfPushout[102X( [3XD[103X, [3Xk[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( I_k, \mathrm{Pushout}( D ) )[123X.[133X
@@ -1776,7 +1738,7 @@
   = 1 \dots n}[123X and an integer [23Xk[123X. The output is the [23Xk[123X-th injection [23X\iota_k: I_k
   \rightarrow \mathrm{Pushout}( D )[123X.[133X
   
-  [1X6.12-10 InjectionOfCofactorOfPushoutWithGivenPushout[101X
+  [1X6.12-8 InjectionOfCofactorOfPushoutWithGivenPushout[101X
   
   [33X[1;0Y[29X[2XInjectionOfCofactorOfPushoutWithGivenPushout[102X( [3XD[103X, [3Xk[103X, [3XI[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( I_k, I )[123X.[133X
@@ -1785,7 +1747,7 @@
   =  1  \dots  n}[123X,  an  integer  [23Xk[123X, and an object [23XI = \mathrm{Pushout}(D)[123X. The
   output is the [23Xk[123X-th injection [23X\iota_k: I_k \rightarrow I[123X.[133X
   
-  [1X6.12-11 MorphismFromSourceToPushout[101X
+  [1X6.12-9 MorphismFromSourceToPushout[101X
   
   [33X[1;0Y[29X[2XMorphismFromSourceToPushout[102X( [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( B, \mathrm{Pushout}( D ) )[123X.[133X
@@ -1795,7 +1757,7 @@
   \mathrm{Pushout}(D)[123X   of   [23X\beta_1[123X  and  the  [23X1[123X-st  injection  [23X\iota_1:  I_1
   \rightarrow \mathrm{Pushout}( D )[123X.[133X
   
-  [1X6.12-12 MorphismFromSourceToPushoutWithGivenPushout[101X
+  [1X6.12-10 MorphismFromSourceToPushoutWithGivenPushout[101X
   
   [33X[1;0Y[29X[2XMorphismFromSourceToPushoutWithGivenPushout[102X( [3XD[103X, [3XI[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( B, I )[123X.[133X
@@ -1805,7 +1767,7 @@
   composition  [23X\mu: B \rightarrow I[123X of [23X\beta_1[123X and the [23X1[123X-st injection [23X\iota_1:
   I_1 \rightarrow I[123X.[133X
   
-  [1X6.12-13 UniversalMorphismFromPushout[101X
+  [1X6.12-11 UniversalMorphismFromPushout[101X
   
   [33X[1;0Y[29X[2XUniversalMorphismFromPushout[102X( [3XD[103X, [3XT[103X, [3Xtau[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \mathrm{Pushout}(D), T )[123X[133X
@@ -1818,7 +1780,7 @@
   [23Xu( \tau ): \mathrm{Pushout}(D) \rightarrow T[123X given by the universal property
   of the pushout.[133X
   
-  [1X6.12-14 UniversalMorphismFromPushoutWithGivenPushout[101X
+  [1X6.12-12 UniversalMorphismFromPushoutWithGivenPushout[101X
   
   [33X[1;0Y[29X[2XUniversalMorphismFromPushoutWithGivenPushout[102X( [3XD[103X, [3XT[103X, [3Xtau[103X, [3XI[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( I, T )[123X[133X
@@ -1831,7 +1793,7 @@
   from [3Xtau[103X in that case. The output is the morphism [23Xu( \tau ): I \rightarrow T[123X
   given by the universal property of the pushout.[133X
   
-  [1X6.12-15 PushoutFunctorial[101X
+  [1X6.12-13 PushoutFunctorial[101X
   
   [33X[1;0Y[29X[2XPushoutFunctorial[102X( [3XLs[103X, [3XLm[103X, [3XLr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in [23X\mathrm{Hom}(\mathrm{Pushout}( ( \beta_i )_{i=1}^n
@@ -1846,7 +1808,7 @@
   \rightarrow   \mathrm{Pushout}(   (   \beta_i'  )_{i=1}^n  )[123X  given  by  the
   functoriality of the pushout.[133X
   
-  [1X6.12-16 PushoutFunctorialWithGivenPushouts[101X
+  [1X6.12-14 PushoutFunctorialWithGivenPushouts[101X
   
   [33X[1;0Y[29X[2XPushoutFunctorialWithGivenPushouts[102X( [3Xs[103X, [3XLs[103X, [3XLm[103X, [3XLr[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(s, r)[123X[133X
