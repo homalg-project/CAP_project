@@ -31,8 +31,6 @@
 #! * <Ref BookName="CAP" Func="DirectProductFunctorial" Label="for Is" />
 #! * <Ref BookName="CAP" Func="DirectProductFunctorialWithGivenDirectProducts" Label="for Is" />
 #! * <Ref BookName="CAP" Func="DirectSum" Label="" />
-#! * <Ref BookName="CAP" Func="DirectSumCodiagonalDifference" Label="for Is" />
-#! * <Ref BookName="CAP" Func="DirectSumDiagonalDifference" Label="for Is" />
 #! * <Ref BookName="CAP" Func="DirectSumFunctorial" Label="for Is" />
 #! * <Ref BookName="CAP" Func="DirectSumFunctorialWithGivenDirectSums" Label="for Is" />
 #! * <Ref BookName="FreydCategoriesForCAP" Func="DirectSumMorphismToWeakBiPushout" Label="for Is" />
@@ -353,7 +351,6 @@
 #! * <Ref BookName="CAP" Func="CokernelObjectFunctorialWithGivenCokernelObjects" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CokernelProjection" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CokernelProjectionWithGivenCokernelObject" Label="for Is" />
-#! * <Ref BookName="CAP" Func="DirectSumProjectionInPushout" Label="for Is" />
 #! * <Ref BookName="CAP" Func="EmbeddingOfEqualizer" Label="for Is" />
 #! * <Ref BookName="CAP" Func="EmbeddingOfEqualizerWithGivenEqualizer" Label="for Is" />
 #! * <Ref BookName="CAP" Func="EpimorphismFromSomeProjectiveObject" Label="for Is" />
@@ -362,7 +359,6 @@
 #! * <Ref BookName="CAP" Func="EqualizerFunctorial" Label="for Is" />
 #! * <Ref BookName="CAP" Func="EqualizerFunctorialWithGivenEqualizers" Label="for Is" />
 #! * <Ref BookName="CAP" Func="FiberProduct" Label="" />
-#! * <Ref BookName="CAP" Func="FiberProductEmbeddingInDirectSum" Label="for Is" />
 #! * <Ref BookName="CAP" Func="FiberProductFunctorial" Label="for Is" />
 #! * <Ref BookName="CAP" Func="FiberProductFunctorialWithGivenFiberProducts" Label="for Is" />
 #! * <Ref BookName="CAP" Func="HomologyObject" Label="for Is" />
@@ -378,20 +374,20 @@
 #! * <Ref BookName="CAP" Func="IsBijectiveObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsInjective" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsProjective" Label="for Is" />
+#! * <Ref BookName="CAP" Func="IsomorphismFromCoequalizerOfCoproductDiagramToPushout" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsomorphismFromCoimageToCokernelOfKernel" Label="for Is" />
-#! * <Ref BookName="CAP" Func="IsomorphismFromCokernelOfDiagonalDifferenceToPushout" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproductToCoequalizer" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsomorphismFromCokernelOfKernelToCoimage" Label="for Is" />
+#! * <Ref BookName="CAP" Func="IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct" Label="for Is" />
-#! * <Ref BookName="CAP" Func="IsomorphismFromFiberProductToKernelOfDiagonalDifference" Label="for Is" />
+#! * <Ref BookName="CAP" Func="IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsomorphismFromImageObjectToKernelOfCokernel" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsomorphismFromKernelOfCokernelToImageObject" Label="for Is" />
-#! * <Ref BookName="CAP" Func="IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsomorphismFromKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProductToEqualizer" Label="for Is" />
-#! * <Ref BookName="CAP" Func="IsomorphismFromPushoutToCokernelOfDiagonalDifference" Label="for Is" />
+#! * <Ref BookName="CAP" Func="IsomorphismFromPushoutToCoequalizerOfCoproductDiagram" Label="for Is" />
 #! * <Ref BookName="CAP" Func="KernelEmbedding" Label="for Is" />
 #! * <Ref BookName="CAP" Func="KernelEmbeddingWithGivenKernelObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="KernelLift" Label="for Is" />

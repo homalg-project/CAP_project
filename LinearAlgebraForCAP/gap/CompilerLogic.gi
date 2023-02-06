@@ -44,7 +44,7 @@ CapJitAddLogicTemplate(
     )
 );
 
-# matrix1 + (- matrix2) => matrix1 - matrix2
+# matrix1 + (- matrix2) -> matrix1 - matrix2
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ "matrix1", "matrix2" ],
@@ -52,5 +52,14 @@ CapJitAddLogicTemplate(
         src_template := "matrix1 + (- matrix2)",
         dst_template := "matrix1 - matrix2",
         needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
+    )
+);
+
+# Length( [ 1 .. n ] ) -> n
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "n" ],
+        src_template := "Length( [ 1 .. n ] )",
+        dst_template := "n"
     )
 );

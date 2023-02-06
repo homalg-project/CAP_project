@@ -532,7 +532,7 @@ InstallGlobalFunction( CAP_INTERNAL_DERIVE_STRUCTURE_FUNCTIONS_OF_UNIVERSAL_OBJE
         end );
         
         derivation_record.Pushout := rec(
-          uses := [ "DirectSumProjectionInPushout", "DirectSum" ],
+          uses := [ "PushoutProjectionFromDirectSum", "DirectSum" ],
           derivation := function( diagram, pushout )
               local underlying_diagram, direct_sum_diagram;
               
@@ -540,7 +540,7 @@ InstallGlobalFunction( CAP_INTERNAL_DERIVE_STRUCTURE_FUNCTIONS_OF_UNIVERSAL_OBJE
               
               direct_sum_diagram := List( diagram, Range );
               
-              return colift_operation( DirectSumProjectionInPushout( underlying_diagram ),
+              return colift_operation( PushoutProjectionFromDirectSum( underlying_diagram ),
                                        DirectSum( direct_sum_diagram ) );
               
         end );

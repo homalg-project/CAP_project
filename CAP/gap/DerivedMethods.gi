@@ -373,22 +373,6 @@ AddDerivationToCAP( UniversalMorphismIntoFiberProduct,
   end : Description := "UniversalMorphismIntoFiberProduct as the universal morphism into equalizer of a univeral morphism into direct product" );
 
 ##
-AddDerivationToCAP( ProjectionInFactorOfFiberProduct,
-                    [ [ FiberProductEmbeddingInDirectSum, 1 ],
-                      [ ComponentOfMorphismIntoDirectSum, 1 ] ],
-                      
-  function( cat, diagram, projection_number )
-    local embedding_in_direct_sum, direct_sum_diagram;
-    
-    embedding_in_direct_sum := FiberProductEmbeddingInDirectSum( cat, diagram );
-    
-    direct_sum_diagram := List( diagram, Source );
-    
-    return ComponentOfMorphismIntoDirectSum( cat, embedding_in_direct_sum, direct_sum_diagram, projection_number );
-    
-  end : Description := "ProjectionInFactorOfFiberProduct by composing the direct sum embedding with the direct sum projection" );
-
-##
 AddDerivationToCAP( MorphismFromFiberProductToSink,
                     [ [ ProjectionInFactorOfFiberProduct, 1 ],
                       [ PreCompose, 1 ] ],
@@ -462,22 +446,6 @@ AddDerivationToCAP( UniversalMorphismFromPushout,
     return PreCompose( cat, IsomorphismFromPushoutToCoequalizerOfCoproductDiagram( cat, diagram ), psi );
     
   end : Description := "UniversalMorphismFromPushout as the universal morphism from coequalizer of a univeral morphism from coproduct" );
-
-##
-AddDerivationToCAP( InjectionOfCofactorOfPushout,
-                    [ [ DirectSumProjectionInPushout, 1 ],
-                      [ ComponentOfMorphismFromDirectSum, 1 ] ],
-                                         
-  function( cat, diagram, injection_number )
-    local projection_from_direct_sum, direct_sum_diagram;
-    
-    projection_from_direct_sum := DirectSumProjectionInPushout( cat, diagram );
-    
-    direct_sum_diagram := List( diagram, Range );
-    
-    return ComponentOfMorphismFromDirectSum( cat, projection_from_direct_sum, direct_sum_diagram, injection_number );
-    
-  end : Description := "InjectionOfCofactorOfPushout by composing the direct sum injection with the direct sum projection to the pushout" );
 
 ##
 AddDerivationToCAP( MorphismFromSourceToPushout,
@@ -747,52 +715,6 @@ AddDerivationToCAP( UniversalMorphismFromCoequalizer,
            );
     
   end : Description := "UniversalMorphismFromCoequalizer using the universality of the cokernel representation of the coequalizer" );
-
-##
-AddDerivationToCAP( UniversalMorphismIntoFiberProduct,
-                    [ [ UniversalMorphismIntoDirectSum, 1 ],
-                      [ DirectSumDiagonalDifference, 1 ],
-                      [ KernelLift, 1 ],
-                      [ IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct, 1 ],
-                      [ PreCompose, 1 ] ],
-                                       
-  function( cat, diagram, test_object, source )
-    local test_function, direct_sum_diagonal_difference, kernel_lift;
-    
-    test_function := UniversalMorphismIntoDirectSum( cat, List( source, Range ), test_object, source );
-    
-    direct_sum_diagonal_difference := DirectSumDiagonalDifference( cat, diagram );
-    
-    kernel_lift := KernelLift( cat, direct_sum_diagonal_difference, test_object, test_function );
-    
-    return PreCompose( cat,
-             kernel_lift,
-             IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct( cat, diagram )
-           );
-    
-  end : Description := "UniversalMorphismIntoFiberProduct using the universality of the kernel representation of the pullback" );
-
-##
-AddDerivationToCAP( UniversalMorphismFromPushout,
-                    [ [ UniversalMorphismFromDirectSum, 1 ],
-                      [ DirectSumCodiagonalDifference, 1 ],
-                      [ CokernelColift, 1 ],
-                      [ IsomorphismFromPushoutToCokernelOfDiagonalDifference, 1 ],
-                      [ PreCompose, 1 ] ],
-                            
-  function( cat, diagram, test_object, sink )
-    local test_function, direct_sum_codiagonal_difference, cokernel_colift;
-    
-    test_function := UniversalMorphismFromDirectSum( cat, List( sink, Source ), test_object, sink );
-    
-    direct_sum_codiagonal_difference := DirectSumCodiagonalDifference( cat, diagram );
-    
-    cokernel_colift := CokernelColift( cat, direct_sum_codiagonal_difference, test_object, test_function );
-    
-    return PreCompose( cat, IsomorphismFromPushoutToCokernelOfDiagonalDifference( cat, diagram ),
-                       cokernel_colift );
-    
-  end : Description := "UniversalMorphismFromPushout using the universality of the cokernel representation of the pushout" );
 
 ##
 AddDerivationToCAP( ImageEmbedding,
@@ -2008,90 +1930,6 @@ AddDerivationToCAP( IsomorphismFromCoimageToCokernelOfKernel,
 end : Description := "IsomorphismFromCoimageToCokernelOfKernel as the inverse of IsomorphismFromCokernelOfKernelToCoimage" );
 
 ##
-AddDerivationToCAP( IsomorphismFromFiberProductToKernelOfDiagonalDifference,
-          
-  function( cat, diagram )
-    local direct_sum_diagonal_difference, fiber_product_embedding_in_direct_sum;
-    
-    direct_sum_diagonal_difference := DirectSumDiagonalDifference( cat, diagram );
-    
-    fiber_product_embedding_in_direct_sum := FiberProductEmbeddingInDirectSum( cat, diagram );
-    
-    return KernelLift( cat, direct_sum_diagonal_difference, fiber_product_embedding_in_direct_sum );
-    
-end : Description := "IsomorphismFromFiberProductToKernelOfDiagonalDifference using the universal property of the kernel" );
-
-##
-AddDerivationToCAP( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
-          
-  function( cat, diagram )
-    local kernel_emb, sources_of_diagram, test_source;
-    
-    kernel_emb := KernelEmbedding( cat, DirectSumDiagonalDifference( cat, diagram ) );
-    
-    sources_of_diagram := List( diagram, Source );
-    
-    test_source := List( [ 1 .. Length( diagram ) ],
-                         i -> ComponentOfMorphismIntoDirectSum( cat, kernel_emb, sources_of_diagram, i ) );
-    
-    return UniversalMorphismIntoFiberProduct( cat, diagram, Source( kernel_emb ), test_source );
-    
-end : Description := "IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct using the universal property of the fiber product" );
-
-##
-AddDerivationToCAP( IsomorphismFromPushoutToCokernelOfDiagonalDifference,
-          
-  function( cat, diagram )
-    local cokernel_proj, ranges_of_diagram, test_sink;
-    
-    cokernel_proj := CokernelProjection( cat, DirectSumCodiagonalDifference( cat, diagram ) );
-    
-    ranges_of_diagram := List( diagram, Range );
-    
-    test_sink := List( [ 1 .. Length( diagram ) ],
-                       i -> ComponentOfMorphismFromDirectSum( cat, cokernel_proj, ranges_of_diagram, i ) );
-    
-    return UniversalMorphismFromPushout( cat, diagram, Range( cokernel_proj ), test_sink );
-    
-end : Description := "IsomorphismFromPushoutToCokernelOfDiagonalDifference using the universal property of the pushout" );
-
-##
-AddDerivationToCAP( IsomorphismFromCokernelOfDiagonalDifferenceToPushout,
-          
-  function( cat, diagram )
-    local direct_sum_codiagonal_difference, direct_sum_projection_in_pushout;
-    
-    direct_sum_codiagonal_difference := DirectSumCodiagonalDifference( cat, diagram );
-    
-    direct_sum_projection_in_pushout := DirectSumProjectionInPushout( cat, diagram );
-    
-    return CokernelColift( cat, direct_sum_codiagonal_difference, direct_sum_projection_in_pushout );
-    
-end : Description := "IsomorphismFromCokernelOfDiagonalDifferenceToPushout using the universal property of the cokernel" );
-
-##
-AddDerivationToCAP( IsomorphismFromFiberProductToKernelOfDiagonalDifference,
-                    [ [ IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct, 1 ],
-                      [ InverseForMorphisms, 1 ] ],
-                      
-  function( cat, diagram )
-    
-    return InverseForMorphisms( cat, IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct( cat, diagram ) );
-    
-end : Description := "IsomorphismFromFiberProductToKernelOfDiagonalDifference as the inverse of IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct" );
-
-##
-AddDerivationToCAP( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
-                    [ [ IsomorphismFromFiberProductToKernelOfDiagonalDifference, 1 ],
-                      [ InverseForMorphisms, 1 ] ],
-                      
-  function( cat, diagram )
-    
-    return InverseForMorphisms( cat, IsomorphismFromFiberProductToKernelOfDiagonalDifference( cat, diagram ) );
-    
-end : Description := "IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct as the inverse of IsomorphismFromFiberProductToKernelOfDiagonalDifference" );
-
-##
 AddDerivationToCAP( IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram,
                     [ [ IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct, 1 ],
                       [ InverseForMorphisms, 1 ] ],
@@ -2112,28 +1950,6 @@ AddDerivationToCAP( IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct
     return InverseForMorphisms( cat, IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram( cat, diagram ) );
     
 end : Description := "IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct as the inverse of IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram" );
-
-##
-AddDerivationToCAP( IsomorphismFromPushoutToCokernelOfDiagonalDifference,
-                    [ [ IsomorphismFromCokernelOfDiagonalDifferenceToPushout , 1 ],
-                      [ InverseForMorphisms, 1 ] ],
-                      
-  function( cat, diagram )
-    
-    return InverseForMorphisms( cat, IsomorphismFromCokernelOfDiagonalDifferenceToPushout( cat, diagram ) );
-    
-end : Description := "IsomorphismFromPushoutToCokernelOfDiagonalDifference as the inverse of IsomorphismFromCokernelOfDiagonalDifferenceToPushout" );
-
-##
-AddDerivationToCAP( IsomorphismFromCokernelOfDiagonalDifferenceToPushout,
-                    [ [ IsomorphismFromPushoutToCokernelOfDiagonalDifference, 1 ],
-                      [ InverseForMorphisms, 1 ] ],
-                      
-  function( cat, diagram )
-    
-    return InverseForMorphisms( cat, IsomorphismFromPushoutToCokernelOfDiagonalDifference( cat, diagram ) );
-    
-end : Description := "IsomorphismFromCokernelOfDiagonalDifferenceToPushout as the inverse of IsomorphismFromPushoutToCokernelOfDiagonalDifference" );
 
 ##
 AddDerivationToCAP( IsomorphismFromPushoutToCoequalizerOfCoproductDiagram,
@@ -2337,75 +2153,6 @@ AddDerivationToCAP( ZeroObjectFunctorial,
 end : Description := "ZeroObjectFunctorial using ZeroMorphism" );
 
 ##
-AddDerivationToCAP( DirectSumDiagonalDifference,
-                    [ [ DirectSum, 1 ],
-                      [ PreCompose, 2 ], ## Length( diagram ) would be the correct number here
-                      [ ProjectionInFactorOfDirectSumWithGivenDirectSum, 2 ], ## Length( diagram ) would be the correct number here
-                      [ UniversalMorphismIntoZeroObject, 1 ],
-                      [ UniversalMorphismIntoDirectSum, 2 ], ## 2*(Length( diagram ) - 1) would be the correct number here
-                      [ SubtractionForMorphisms, 1 ],
-                    ],
-                    
-  function( cat, diagram )
-    local direct_sum_diagram, direct_sum, number_of_morphisms, list_of_morphisms, ranges, mor1, mor2;
-    
-    direct_sum_diagram := List( diagram, Source );
-    
-    direct_sum := DirectSum( cat, direct_sum_diagram );
-    
-    number_of_morphisms := Length( diagram );
-    
-    list_of_morphisms := List( [ 1 .. number_of_morphisms ], i -> PreCompose( cat, ProjectionInFactorOfDirectSumWithGivenDirectSum( cat, direct_sum_diagram, i, direct_sum ), diagram[ i ] ) );
-    
-    if number_of_morphisms = 1 then
-        
-        return UniversalMorphismIntoZeroObject( cat, Source( list_of_morphisms[1] ) );
-        
-    fi;
-    
-    ranges := List( diagram, Range );
-    
-    mor1 := UniversalMorphismIntoDirectSum( cat, ranges{[ 1 .. number_of_morphisms - 1 ]}, direct_sum, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
-    
-    mor2 := UniversalMorphismIntoDirectSum( cat, ranges{[ 2 .. number_of_morphisms ]}, direct_sum, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
-    
-    return SubtractionForMorphisms( cat, mor1, mor2 );
-    
-end : CategoryFilter := cat -> not ( IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true ),
-      Description := "DirectSumDiagonalDifference using the operations defining this morphism (without support for empty limits)" );
-
-##
-AddDerivationToCAP( DirectSumDiagonalDifference,
-                    [ [ DirectSum, 1 ],
-                      [ PreCompose, 2 ], ## Length( diagram ) would be the correct number here
-                      [ ProjectionInFactorOfDirectSumWithGivenDirectSum, 2 ], ## Length( diagram ) would be the correct number here
-                      [ UniversalMorphismIntoDirectSum, 2 ], ## 2*(Length( diagram ) - 1) would be the correct number here
-                      [ SubtractionForMorphisms, 1 ],
-                    ],
-                    
-  function( cat, diagram )
-    local direct_sum_diagram, direct_sum, number_of_morphisms, list_of_morphisms, ranges, mor1, mor2;
-    
-    direct_sum_diagram := List( diagram, Source );
-    
-    direct_sum := DirectSum( cat, direct_sum_diagram );
-    
-    number_of_morphisms := Length( diagram );
-    
-    list_of_morphisms := List( [ 1 .. number_of_morphisms ], i -> PreCompose( cat, ProjectionInFactorOfDirectSumWithGivenDirectSum( cat, direct_sum_diagram, i, direct_sum ), diagram[ i ] ) );
-    
-    ranges := List( diagram, Range );
-    
-    mor1 := UniversalMorphismIntoDirectSum( cat, ranges{[ 1 .. number_of_morphisms - 1 ]}, direct_sum, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
-    
-    mor2 := UniversalMorphismIntoDirectSum( cat, ranges{[ 2 .. number_of_morphisms ]}, direct_sum, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
-    
-    return SubtractionForMorphisms( cat, mor1, mor2 );
-    
-end : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true,
-      Description := "DirectSumDiagonalDifference using the operations defining this morphism (with support for empty limits)" );
-
-##
 AddDerivationToCAP( JointPairwiseDifferencesOfMorphismsIntoDirectProduct,
                     [ [ UniversalMorphismIntoTerminalObject, 1 ],
                       [ UniversalMorphismIntoDirectProduct, 2 ], ## 2*(Length( diagram ) - 1) would be the correct number here
@@ -2457,75 +2204,6 @@ end : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.su
       Description := "JointPairwiseDifferencesOfMorphismsIntoDirectProduct using the operations defining this morphism (with support for empty limits)" );
 
 ##
-AddDerivationToCAP( DirectSumCodiagonalDifference,
-                    [ [ DirectSum, 1 ],
-                      [ InjectionOfCofactorOfDirectSumWithGivenDirectSum, 2 ], ## Length( diagram ) would be the correct number
-                      [ PreCompose, 2 ], ## Length( diagram ) would be the correct number
-                      [ UniversalMorphismFromZeroObject, 1 ],
-                      [ UniversalMorphismFromDirectSum, 2 ], ## 2*( Length( diagram ) - 1 ) would be the correct number 
-                      [ SubtractionForMorphisms, 1 ],
-                    ],
-                    
-  function( cat, diagram )
-    local direct_sum_diagram, direct_sum, number_of_morphisms, list_of_morphisms, sources, mor1, mor2;
-    
-    direct_sum_diagram := List( diagram, Range );
-    
-    direct_sum := DirectSum( cat, direct_sum_diagram );
-    
-    number_of_morphisms := Length( diagram );
-    
-    list_of_morphisms := List( [ 1 .. number_of_morphisms ], i -> PreCompose( cat, diagram[ i ], InjectionOfCofactorOfDirectSumWithGivenDirectSum( cat, direct_sum_diagram, i, direct_sum ) ) );
-    
-    if number_of_morphisms = 1 then
-        
-        return UniversalMorphismFromZeroObject( cat, Range( list_of_morphisms[1] ) );
-        
-    fi;
-    
-    sources := List( diagram, Source );
-    
-    mor1 := UniversalMorphismFromDirectSum( cat, sources{[ 1 .. number_of_morphisms - 1 ]}, direct_sum, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
-    
-    mor2 := UniversalMorphismFromDirectSum( cat, sources{[ 2 .. number_of_morphisms ]}, direct_sum, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
-    
-    return SubtractionForMorphisms( cat, mor1, mor2 );
-    
-end : CategoryFilter := cat -> not ( IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true ),
-      Description := "DirectSumCodiagonalDifference using the operations defining this morphism (without support for empty limits)" );
-
-##
-AddDerivationToCAP( DirectSumCodiagonalDifference,
-                    [ [ DirectSum, 1 ],
-                      [ InjectionOfCofactorOfDirectSumWithGivenDirectSum, 2 ], ## Length( diagram ) would be the correct number
-                      [ PreCompose, 2 ], ## Length( diagram ) would be the correct number
-                      [ UniversalMorphismFromDirectSum, 2 ], ## 2*( Length( diagram ) - 1 ) would be the correct number 
-                      [ SubtractionForMorphisms, 1 ],
-                    ],
-                    
-  function( cat, diagram )
-    local direct_sum_diagram, direct_sum, number_of_morphisms, list_of_morphisms, sources, mor1, mor2;
-    
-    direct_sum_diagram := List( diagram, Range );
-    
-    direct_sum := DirectSum( cat, direct_sum_diagram );
-    
-    number_of_morphisms := Length( diagram );
-    
-    list_of_morphisms := List( [ 1 .. number_of_morphisms ], i -> PreCompose( cat, diagram[ i ], InjectionOfCofactorOfDirectSumWithGivenDirectSum( cat, direct_sum_diagram, i, direct_sum ) ) );
-    
-    sources := List( diagram, Source );
-    
-    mor1 := UniversalMorphismFromDirectSum( cat, sources{[ 1 .. number_of_morphisms - 1 ]}, direct_sum, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
-    
-    mor2 := UniversalMorphismFromDirectSum( cat, sources{[ 2 .. number_of_morphisms ]}, direct_sum, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
-    
-    return SubtractionForMorphisms( cat, mor1, mor2 );
-    
-end : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true,
-      Description := "DirectSumCodiagonalDifference using the operations defining this morphism (with support for empty limits)" );
-
-##
 AddDerivationToCAP( JointPairwiseDifferencesOfMorphismsFromCoproduct,
                     [ [ UniversalMorphismFromInitialObject, 1 ],
                       [ UniversalMorphismFromCoproduct, 2 ], ## 2*( Length( diagram ) - 1 ) would be the correct number 
@@ -2575,68 +2253,6 @@ AddDerivationToCAP( JointPairwiseDifferencesOfMorphismsFromCoproduct,
     
 end : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true,
       Description := "JointPairwiseDifferencesOfMorphismsFromCoproduct using the operations defining this morphism (with support for empty limits)" );
-
-##
-AddDerivationToCAP( FiberProductEmbeddingInDirectSum,
-                    [ [ KernelEmbedding, 1 ],
-                      [ DirectSumDiagonalDifference, 1 ],
-                      [ IsomorphismFromFiberProductToKernelOfDiagonalDifference, 1 ],
-                      [ PreCompose, 1 ] ],
-                    
-  function( cat, diagram )
-    local kernel_of_diagonal_difference;
-    
-    kernel_of_diagonal_difference := KernelEmbedding( cat, DirectSumDiagonalDifference( cat, diagram ) );
-    
-    return PreCompose( cat, IsomorphismFromFiberProductToKernelOfDiagonalDifference( cat, diagram ),
-                       kernel_of_diagonal_difference );
-    
-end : Description := "FiberProductEmbeddingInDirectSum as the kernel embedding of DirectSumDiagonalDifference" );
-
-##
-AddDerivationToCAP( FiberProductEmbeddingInDirectSum,
-        
-  function( cat, diagram )
-    local sources_of_diagram, test_source;
-    
-    sources_of_diagram := List( diagram, Source );
-    
-    test_source := List( [ 1 .. Length( diagram ) ], i -> ProjectionInFactorOfFiberProduct( cat, diagram, i ) );
-    
-    return UniversalMorphismIntoDirectSum( cat, sources_of_diagram, FiberProduct( cat, diagram ), test_source );
-
-end : Description := "FiberProductEmbeddingInDirectSum using the universal property of the direct sum" );
-
-##
-AddDerivationToCAP( DirectSumProjectionInPushout,
-                    [ [ CokernelProjection, 1 ],
-                      [ DirectSumCodiagonalDifference, 1 ],
-                      [ IsomorphismFromCokernelOfDiagonalDifferenceToPushout, 1 ],
-                      [ PreCompose, 1 ] ],
-                    
-  function( cat, diagram )
-    local cokernel_proj_of_diagonal_difference;
-    
-    cokernel_proj_of_diagonal_difference := CokernelProjection( cat, DirectSumCodiagonalDifference( cat, diagram ) );
-    
-    return PreCompose( cat, cokernel_proj_of_diagonal_difference,
-                       IsomorphismFromCokernelOfDiagonalDifferenceToPushout( cat, diagram ) );
-    
-end : Description := "DirectSumProjectionInPushout as the cokernel projection of DirectSumCodiagonalDifference" );
-
-##
-AddDerivationToCAP( DirectSumProjectionInPushout,
-        
-  function( cat, diagram )
-    local ranges_of_diagram, test_sink;
-    
-    ranges_of_diagram := List( diagram, Range );
-    
-    test_sink := List( [ 1 .. Length( diagram ) ], i -> InjectionOfCofactorOfPushout( cat, diagram, i ) );
-    
-    return UniversalMorphismFromDirectSum( cat, ranges_of_diagram, Pushout( cat, diagram ), test_sink );
-    
-end : Description := "DirectSumProjectionInPushout using the universal property of the direct sum" );
 
 ##
 AddDerivationToCAP( EmbeddingOfEqualizer,
@@ -3369,26 +2985,6 @@ end : Description := "InitialObject as the range of IsomorphismFromZeroObjectToI
 
 
 ##
-AddDerivationToCAP( FiberProduct,
-                    [ [ FiberProductEmbeddingInDirectSum, 1 ] ],
-                    
-function( cat, diagram )
-    
-    return Source( FiberProductEmbeddingInDirectSum( cat, diagram ) );
-    
-end : Description := "FiberProduct as the source of FiberProductEmbeddingInDirectSum" );
-
-##
-AddDerivationToCAP( Pushout,
-                    [ [ DirectSumProjectionInPushout, 1 ] ],
-                    
-  function( cat, diagram )
-    
-    return Range( DirectSumProjectionInPushout( cat, diagram ) );
-    
-end : Description := "Pushout as the range of DirectSumProjectionInPushout" );
-
-##
 AddDerivationToCAP( ImageObject,
                     [ [ ImageEmbedding, 1 ] ],
                     
@@ -3830,48 +3426,6 @@ AddFinalDerivationBundle( # IsomorphismFromCoequalizerToCokernelOfJointPairwiseD
 ## Final methods for FiberProduct
 
 ##
-AddFinalDerivationBundle( # IsomorphismFromFiberProductToKernelOfDiagonalDifference
-                    [ [ DirectSumDiagonalDifference, 1 ],
-                      [ KernelObject, 1 ],
-                      [ IdentityMorphism, 1 ] ],
-                    [ FiberProduct,
-                      ProjectionInFactorOfFiberProduct,
-                      ProjectionInFactorOfFiberProductWithGivenFiberProduct,
-                      UniversalMorphismIntoFiberProduct,
-                      UniversalMorphismIntoFiberProductWithGivenFiberProduct,
-                      FiberProductEmbeddingInDirectSum,
-                      IsomorphismFromFiberProductToKernelOfDiagonalDifference,
-                      IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct ],
-[
-  IsomorphismFromFiberProductToKernelOfDiagonalDifference,
-  [ [ DirectSumDiagonalDifference, 1 ],
-    [ KernelObject, 1 ],
-    [ IdentityMorphism, 1 ] ],
-  function( cat, diagram )
-    local kernel_of_diagonal_difference;
-    
-    kernel_of_diagonal_difference := KernelObject( cat, DirectSumDiagonalDifference( cat, diagram ) );
-    
-    return IdentityMorphism( cat, kernel_of_diagonal_difference );
-    
-  end,
-],
-[
-  IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
-  [ [ DirectSumDiagonalDifference, 1 ],
-    [ KernelObject, 1 ],
-    [ IdentityMorphism, 1 ] ],
-  function( cat, diagram )
-    local kernel_of_diagonal_difference;
-    
-    kernel_of_diagonal_difference := KernelObject( cat, DirectSumDiagonalDifference( cat, diagram ) );
-    
-    return IdentityMorphism( cat, kernel_of_diagonal_difference );
-    
-  end,
-] : Description := "IsomorphismFromFiberProductToKernelOfDiagonalDifference as the identity of the kernel of diagonal difference" );
-
-##
 AddFinalDerivationBundle( # IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram,
                     [ [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 2 ], ## Length( diagram ) would be the correct number
                       [ PreCompose, 2 ], ## Length( diagram ) would be the correct number
@@ -3931,48 +3485,6 @@ AddFinalDerivationBundle( # IsomorphismFromFiberProductToEqualizerOfDirectProduc
 ] : Description := "IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram as the identity of the equalizer of direct product diagram" );
 
 ## Final methods for Pushout
-
-##
-AddFinalDerivationBundle( # IsomorphismFromPushoutToCokernelOfDiagonalDifference,
-                    [ [ CokernelObject, 1 ],
-                      [ DirectSumCodiagonalDifference, 1 ],
-                      [ IdentityMorphism, 1 ] ],
-                    [ Pushout,
-                      InjectionOfCofactorOfPushout,
-                      InjectionOfCofactorOfPushoutWithGivenPushout,
-                      UniversalMorphismFromPushout,
-                      UniversalMorphismFromPushoutWithGivenPushout,
-                      DirectSumProjectionInPushout,
-                      IsomorphismFromPushoutToCokernelOfDiagonalDifference,
-                      IsomorphismFromCokernelOfDiagonalDifferenceToPushout ],
-[
-  IsomorphismFromPushoutToCokernelOfDiagonalDifference,
-  [ [ CokernelObject, 1 ],
-    [ DirectSumCodiagonalDifference, 1 ],
-    [ IdentityMorphism, 1 ] ],
-  function( cat, diagram )
-    local cokernel_of_diagonal_difference;
-    
-    cokernel_of_diagonal_difference := CokernelObject( cat, DirectSumCodiagonalDifference( cat, diagram ) );
-    
-    return IdentityMorphism( cat, cokernel_of_diagonal_difference );
-    
-  end,
-],
-[
-  IsomorphismFromCokernelOfDiagonalDifferenceToPushout,
-  [ [ CokernelObject, 1 ],
-    [ DirectSumCodiagonalDifference, 1 ],
-    [ IdentityMorphism, 1 ] ],
-  function( cat, diagram )
-    local cokernel_of_diagonal_difference;
-    
-    cokernel_of_diagonal_difference := CokernelObject( cat, DirectSumCodiagonalDifference( cat, diagram ) );
-    
-    return IdentityMorphism( cat, cokernel_of_diagonal_difference );
-    
-  end,
-] : Description := "IsomorphismFromPushoutToCokernelOfDiagonalDifference as the identity of the cokernel of diagonal difference" );
 
 ##
 AddFinalDerivationBundle( # IsomorphismFromPushoutToCoequalizerOfCoproductDiagram,

@@ -503,6 +503,56 @@ InstallGlobalFunction( FiberProduct,
     
 end );
 
+##
+InstallMethod( FiberProductEmbeddingInDirectProduct,
+        [ IsList ],
+        
+  function( diagram )
+    
+    return FiberProductEmbeddingInDirectProduct( CapCategory( diagram[1] ), diagram );
+    
+end );
+
+##
+InstallOtherMethod( FiberProductEmbeddingInDirectProduct,
+        [ IsCapCategory, IsList ],
+        
+  function( cat, diagram )
+    local sources_of_diagram, test_source;
+    
+    sources_of_diagram := List( diagram, Source );
+    
+    test_source := List( [ 1 .. Length( diagram ) ], i -> ProjectionInFactorOfFiberProduct( cat, diagram, i ) );
+    
+    return UniversalMorphismIntoDirectProduct( cat, sources_of_diagram, FiberProduct( cat, diagram ), test_source );
+    
+end );
+
+##
+InstallMethod( FiberProductEmbeddingInDirectSum,
+        [ IsList ],
+        
+  function( diagram )
+    
+    return FiberProductEmbeddingInDirectSum( CapCategory( diagram[1] ), diagram );
+    
+end );
+
+##
+InstallOtherMethod( FiberProductEmbeddingInDirectSum,
+        [ IsCapCategory, IsList ],
+        
+  function( cat, diagram )
+    local sources_of_diagram, test_source;
+    
+    sources_of_diagram := List( diagram, Source );
+    
+    test_source := List( [ 1 .. Length( diagram ) ], i -> ProjectionInFactorOfFiberProduct( cat, diagram, i ) );
+    
+    return UniversalMorphismIntoDirectSum( cat, sources_of_diagram, FiberProduct( cat, diagram ), test_source );
+    
+end );
+
 ####################################
 ##
 ## Coequalizer
@@ -779,6 +829,56 @@ InstallMethod( Pushout,
   function( mor1, mor2 )
     
     return Pushout( CapCategory( mor1 ), [ mor1, mor2 ] );
+    
+end );
+
+##
+InstallMethod( PushoutProjectionFromCoproduct,
+        [ IsList ],
+                    
+  function( diagram )
+    
+    return PushoutProjectionFromCoproduct( CapCategory( diagram[1] ), diagram );
+    
+end );
+
+##
+InstallOtherMethod( PushoutProjectionFromCoproduct,
+        [ IsCapCategory, IsList ],
+                    
+  function( cat, diagram )
+    local ranges_of_diagram, test_sink;
+    
+    ranges_of_diagram := List( diagram, Range );
+    
+    test_sink := List( [ 1 .. Length( diagram ) ], i -> InjectionOfCofactorOfPushout( cat, diagram, i ) );
+    
+    return UniversalMorphismFromCoproduct( cat, ranges_of_diagram, Pushout( cat, diagram ), test_sink );
+    
+end );
+
+##
+InstallMethod( PushoutProjectionFromDirectSum,
+        [ IsList ],
+                    
+  function( diagram )
+    
+    return PushoutProjectionFromDirectSum( CapCategory( diagram[1] ), diagram );
+    
+end );
+
+##
+InstallOtherMethod( PushoutProjectionFromDirectSum,
+        [ IsCapCategory, IsList ],
+                    
+  function( cat, diagram )
+    local ranges_of_diagram, test_sink;
+    
+    ranges_of_diagram := List( diagram, Range );
+    
+    test_sink := List( [ 1 .. Length( diagram ) ], i -> InjectionOfCofactorOfPushout( cat, diagram, i ) );
+    
+    return UniversalMorphismFromDirectSum( cat, ranges_of_diagram, Pushout( cat, diagram ), test_sink );
     
 end );
 

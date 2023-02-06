@@ -772,44 +772,6 @@ DeclareOperation( "AddDirectSum",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `DirectSumCodiagonalDifference`.
-#! $F: ( D ) \mapsto \mathtt{DirectSumCodiagonalDifference}(D)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddDirectSumCodiagonalDifference",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddDirectSumCodiagonalDifference",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddDirectSumCodiagonalDifference",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddDirectSumCodiagonalDifference",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation `DirectSumDiagonalDifference`.
-#! $F: ( D ) \mapsto \mathtt{DirectSumDiagonalDifference}(D)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddDirectSumDiagonalDifference",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddDirectSumDiagonalDifference",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddDirectSumDiagonalDifference",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddDirectSumDiagonalDifference",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
 #! to the category for the basic operation `DirectSumFunctorial`.
 #! $F: ( objects, L, objectsp ) \mapsto \mathtt{DirectSumFunctorial}(objects, L, objectsp)$.
 #! @Returns nothing
@@ -843,25 +805,6 @@ DeclareOperation( "AddDirectSumFunctorialWithGivenDirectSums",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddDirectSumFunctorialWithGivenDirectSums",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation `DirectSumProjectionInPushout`.
-#! $F: ( D ) \mapsto \mathtt{DirectSumProjectionInPushout}(D)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddDirectSumProjectionInPushout",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddDirectSumProjectionInPushout",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddDirectSumProjectionInPushout",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddDirectSumProjectionInPushout",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -1071,25 +1014,6 @@ DeclareOperation( "AddFiberProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddFiberProduct",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation `FiberProductEmbeddingInDirectSum`.
-#! $F: ( D ) \mapsto \mathtt{FiberProductEmbeddingInDirectSum}(D)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddFiberProductEmbeddingInDirectSum",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddFiberProductEmbeddingInDirectSum",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddFiberProductEmbeddingInDirectSum",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddFiberProductEmbeddingInDirectSum",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -2501,25 +2425,6 @@ DeclareOperation( "AddIsomorphismFromCoimageToCokernelOfKernel",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `IsomorphismFromCokernelOfDiagonalDifferenceToPushout`.
-#! $F: ( D ) \mapsto \mathtt{IsomorphismFromCokernelOfDiagonalDifferenceToPushout}(D)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromCokernelOfDiagonalDifferenceToPushout",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsomorphismFromCokernelOfDiagonalDifferenceToPushout",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromCokernelOfDiagonalDifferenceToPushout",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromCokernelOfDiagonalDifferenceToPushout",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
 #! to the category for the basic operation `IsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproductToCoequalizer`.
 #! $F: ( A, D ) \mapsto \mathtt{IsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproductToCoequalizer}(A, D)$.
 #! @Returns nothing
@@ -2691,25 +2596,6 @@ DeclareOperation( "AddIsomorphismFromFiberProductToEqualizerOfDirectProductDiagr
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `IsomorphismFromFiberProductToKernelOfDiagonalDifference`.
-#! $F: ( D ) \mapsto \mathtt{IsomorphismFromFiberProductToKernelOfDiagonalDifference}(D)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromFiberProductToKernelOfDiagonalDifference",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsomorphismFromFiberProductToKernelOfDiagonalDifference",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromFiberProductToKernelOfDiagonalDifference",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromFiberProductToKernelOfDiagonalDifference",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
 #! to the category for the basic operation `IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject`.
 #! $F: ( alpha, beta ) \mapsto \mathtt{IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject}(alpha, beta)$.
 #! @Returns nothing
@@ -2805,25 +2691,6 @@ DeclareOperation( "AddIsomorphismFromKernelOfCokernelToImageObject",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct`.
-#! $F: ( D ) \mapsto \mathtt{IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct}(D)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
 #! to the category for the basic operation `IsomorphismFromKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProductToEqualizer`.
 #! $F: ( A, D ) \mapsto \mathtt{IsomorphismFromKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProductToEqualizer}(A, D)$.
 #! @Returns nothing
@@ -2857,25 +2724,6 @@ DeclareOperation( "AddIsomorphismFromPushoutToCoequalizerOfCoproductDiagram",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddIsomorphismFromPushoutToCoequalizerOfCoproductDiagram",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation `IsomorphismFromPushoutToCokernelOfDiagonalDifference`.
-#! $F: ( D ) \mapsto \mathtt{IsomorphismFromPushoutToCokernelOfDiagonalDifference}(D)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromPushoutToCokernelOfDiagonalDifference",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsomorphismFromPushoutToCokernelOfDiagonalDifference",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromPushoutToCokernelOfDiagonalDifference",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromPushoutToCokernelOfDiagonalDifference",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
