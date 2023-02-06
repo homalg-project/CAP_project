@@ -1933,13 +1933,15 @@ end : Description := "IsomorphismFromCoimageToCokernelOfKernel as the inverse of
 AddDerivationToCAP( IsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct,
           
   function( cat, A, diagram )
-    local joint_pairwise_differences, equalizer_embedding;
+    local joint_pairwise_differences, equalizer, equalizer_embedding;
     
     joint_pairwise_differences := JointPairwiseDifferencesOfMorphismsIntoDirectProduct( cat, A, diagram );
     
-    equalizer_embedding := EmbeddingOfEqualizer( cat, A, diagram );
+    equalizer := Equalizer( cat, A, diagram );
     
-    return KernelLift( cat, joint_pairwise_differences, Source( equalizer_embedding ), equalizer_embedding );
+    equalizer_embedding := EmbeddingOfEqualizerWithGivenEqualizer( cat, A, diagram, equalizer );
+    
+    return KernelLift( cat, joint_pairwise_differences, equalizer, equalizer_embedding );
     
 end : Description := "IsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct using the universal property of the kernel" );
 
@@ -1947,11 +1949,15 @@ end : Description := "IsomorphismFromEqualizerToKernelOfJointPairwiseDifferences
 AddDerivationToCAP( IsomorphismFromKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProductToEqualizer,
           
   function( cat, A, diagram )
-    local kernel_embedding;
+    local joint_pairwise_differences, kernel_object, kernel_embedding;
     
-    kernel_embedding := KernelEmbedding( cat, JointPairwiseDifferencesOfMorphismsIntoDirectProduct( cat, A, diagram ) );
+    joint_pairwise_differences := JointPairwiseDifferencesOfMorphismsIntoDirectProduct( cat, A, diagram );
     
-    return UniversalMorphismIntoEqualizer( cat, A, diagram, Source( kernel_embedding ), kernel_embedding );
+    kernel_object := KernelObject( cat, joint_pairwise_differences );
+    
+    kernel_embedding := KernelEmbeddingWithGivenKernelObject( cat, joint_pairwise_differences, kernel_object );
+    
+    return UniversalMorphismIntoEqualizer( cat, A, diagram, kernel_object, kernel_embedding );
     
 end : Description := "IsomorphismFromKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProductToEqualizer using the universal property of the equalizer" );
 
@@ -1959,11 +1965,15 @@ end : Description := "IsomorphismFromKernelOfJointPairwiseDifferencesOfMorphisms
 AddDerivationToCAP( IsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct,
           
   function( cat, A, diagram )
-    local cokernel_proj;
+    local joint_pairwise_differences, cokernel_object, cokernel_proj;
     
-    cokernel_proj := CokernelProjection( cat, JointPairwiseDifferencesOfMorphismsFromCoproduct( cat, A, diagram ) );
+    joint_pairwise_differences := JointPairwiseDifferencesOfMorphismsFromCoproduct( cat, A, diagram );
     
-    return UniversalMorphismFromCoequalizer( cat, A, diagram, Range( cokernel_proj ), cokernel_proj );
+    cokernel_object := CokernelObject( cat, joint_pairwise_differences );
+    
+    cokernel_proj := CokernelProjectionWithGivenCokernelObject( cat, joint_pairwise_differences, cokernel_object );
+    
+    return UniversalMorphismFromCoequalizer( cat, A, diagram, cokernel_object, cokernel_proj );
     
 end : Description := "IsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct using the universal property of the coequalizer" );
 
@@ -1971,13 +1981,15 @@ end : Description := "IsomorphismFromCoequalizerToCokernelOfJointPairwiseDiffere
 AddDerivationToCAP( IsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproductToCoequalizer,
           
   function( cat, A, diagram )
-    local joint_pairwise_differences, coequalizer_projection;
+    local joint_pairwise_differences, coequalizer, coequalizer_projection;
     
     joint_pairwise_differences := JointPairwiseDifferencesOfMorphismsFromCoproduct( cat, A, diagram );
     
-    coequalizer_projection := ProjectionOntoCoequalizer( cat, A, diagram );
+    coequalizer := Coequalizer( cat, A, diagram );
     
-    return CokernelColift( cat, joint_pairwise_differences, Range( coequalizer_projection ), coequalizer_projection );
+    coequalizer_projection := ProjectionOntoCoequalizerWithGivenCoequalizer( cat, A, diagram, coequalizer );
+    
+    return CokernelColift( cat, joint_pairwise_differences, coequalizer, coequalizer_projection );
     
 end : Description := "IsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproductToCoequalizer using the universal property of the cokernel" );
 
@@ -1986,13 +1998,13 @@ AddDerivationToCAP( IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram
                     [ [ DirectProduct, 1 ],
                       [ PreCompose, 2 ],
                       [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 2 ],
-                      [ ProjectionInFactorOfFiberProduct, 2 ],
+                      [ ProjectionInFactorOfFiberProductWithGivenFiberProduct, 2 ],
                       [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 1 ],
                       [ FiberProduct, 1 ],
                       [ UniversalMorphismIntoEqualizer, 1 ] ],
                       
   function( cat, diagram )
-    local sources_of_diagram, direct_product, direct_product_diagram, test_source, fiber_product_embedding;
+    local sources_of_diagram, direct_product, direct_product_diagram, fiber_product, test_source, fiber_product_embedding;
     
     sources_of_diagram := List( diagram, Source );
     
@@ -2001,11 +2013,13 @@ AddDerivationToCAP( IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram
     direct_product_diagram := List( [ 1.. Length( sources_of_diagram ) ],
                                     i -> PreCompose( cat, ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, sources_of_diagram, i, direct_product ), diagram[ i ] ) );
     
-    test_source := List( [ 1 .. Length( diagram ) ], i -> ProjectionInFactorOfFiberProduct( cat, diagram, i ) );
+    fiber_product := FiberProduct( cat, diagram );
     
-    fiber_product_embedding := UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat, sources_of_diagram, FiberProduct( cat, diagram ), test_source, direct_product );
+    test_source := List( [ 1 .. Length( diagram ) ], i -> ProjectionInFactorOfFiberProductWithGivenFiberProduct( cat, diagram, i, fiber_product ) );
     
-    return UniversalMorphismIntoEqualizer( cat, direct_product, direct_product_diagram, Source( fiber_product_embedding ), fiber_product_embedding );
+    fiber_product_embedding := UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat, sources_of_diagram, fiber_product, test_source, direct_product );
+    
+    return UniversalMorphismIntoEqualizer( cat, direct_product, direct_product_diagram, fiber_product, fiber_product_embedding );
     
 end : Description := "IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram using the universal property of the equalizer" );
 
@@ -2025,11 +2039,12 @@ AddDerivationToCAP( IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct
                     [ [ PreCompose, 4 ],
                       [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 2 ],
                       [ DirectProduct, 1 ],
-                      [ EmbeddingOfEqualizer, 1 ],
+                      [ Equalizer, 1 ],
+                      [ EmbeddingOfEqualizerWithGivenEqualizer, 1 ],
                       [ UniversalMorphismIntoFiberProduct, 1 ] ],
                       
   function( cat, diagram )
-    local sources_of_diagram, direct_product_diagram, direct_product, equalizer_embedding, equalizer_of_direct_product_diagram;
+    local sources_of_diagram, direct_product, direct_product_diagram, equalizer, equalizer_embedding, equalizer_of_direct_product_diagram;
     
     sources_of_diagram := List( diagram, Source );
     
@@ -2038,11 +2053,13 @@ AddDerivationToCAP( IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct
     direct_product_diagram := List( [ 1.. Length( sources_of_diagram ) ],
                                     i -> PreCompose( cat, ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, sources_of_diagram, i, direct_product ), diagram[ i ] ) );
     
-    equalizer_embedding := EmbeddingOfEqualizer( cat, direct_product, direct_product_diagram );
+    equalizer := Equalizer( cat, direct_product, direct_product_diagram );
+    
+    equalizer_embedding := EmbeddingOfEqualizerWithGivenEqualizer( cat, direct_product, direct_product_diagram, equalizer );
     
     equalizer_of_direct_product_diagram := List( [ 1 .. Length( direct_product_diagram ) ], i -> PreCompose( cat, equalizer_embedding, direct_product_diagram[ i ] ) );
     
-    return UniversalMorphismIntoFiberProduct( cat, diagram, Source( equalizer_embedding ), equalizer_of_direct_product_diagram );
+    return UniversalMorphismIntoFiberProduct( cat, diagram, equalizer, equalizer_of_direct_product_diagram );
     
 end : Description := "IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct using the universal property of the fiber product" );
 
@@ -2062,24 +2079,27 @@ AddDerivationToCAP( IsomorphismFromPushoutToCoequalizerOfCoproductDiagram,
                     [ [ Coproduct, 1 ],
                       [ PreCompose, 4 ],
                       [ InjectionOfCofactorOfCoproductWithGivenCoproduct, 2 ],
-                      [ ProjectionOntoCoequalizer, 1 ],
+                      [ Coequalizer, 1 ],
+                      [ ProjectionOntoCoequalizerWithGivenCoequalizer, 1 ],
                       [ UniversalMorphismFromPushout, 1 ] ],
                       
   function( cat, diagram )
-    local ranges_of_diagram, coproduct, coproduct_diagram, coequalizer_projection, coequalizer_of_coproduct_diagram;
+    local ranges_of_diagram, coproduct, coproduct_diagram, coequalizer, coequalizer_projection, coequalizer_of_coproduct_diagram;
     
     ranges_of_diagram := List( diagram, Range );
     
     coproduct := Coproduct( cat, ranges_of_diagram );
     
-    coproduct_diagram := List( [ 1.. Length( ranges_of_diagram ) ],
-                                    i -> PreCompose( cat, diagram[ i ], InjectionOfCofactorOfCoproductWithGivenCoproduct( cat, ranges_of_diagram, i, coproduct ) ) );
+    coproduct_diagram := List( [ 1 .. Length( ranges_of_diagram ) ],
+                               i -> PreCompose( cat, diagram[ i ], InjectionOfCofactorOfCoproductWithGivenCoproduct( cat, ranges_of_diagram, i, coproduct ) ) );
     
-    coequalizer_projection := ProjectionOntoCoequalizer( cat, coproduct, coproduct_diagram );
+    coequalizer := Coequalizer( cat, coproduct, coproduct_diagram );
+    
+    coequalizer_projection := ProjectionOntoCoequalizerWithGivenCoequalizer( cat, coproduct, coproduct_diagram, coequalizer );
     
     coequalizer_of_coproduct_diagram := List( [ 1 .. Length( coproduct_diagram ) ], i -> PreCompose( cat, coproduct_diagram[ i ], coequalizer_projection ) );
     
-    return UniversalMorphismFromPushout( cat, diagram, Range( coequalizer_projection ), coequalizer_of_coproduct_diagram );
+    return UniversalMorphismFromPushout( cat, diagram, coequalizer, coequalizer_of_coproduct_diagram );
     
 end : Description := "IsomorphismFromPushoutToCoequalizerOfCoproductDiagram using the universal property of the pushout" );
 
@@ -2099,26 +2119,28 @@ AddDerivationToCAP( IsomorphismFromCoequalizerOfCoproductDiagramToPushout,
                     [ [ Coproduct, 1 ],
                       [ PreCompose, 2 ],
                       [ InjectionOfCofactorOfCoproductWithGivenCoproduct, 2 ],
-                      [ InjectionOfCofactorOfPushout, 2 ],
+                      [ InjectionOfCofactorOfPushoutWithGivenPushout, 2 ],
                       [ UniversalMorphismFromCoproductWithGivenCoproduct, 1 ],
                       [ Pushout, 1 ],
                       [ UniversalMorphismFromCoequalizer, 1 ] ],
                       
   function( cat, diagram )
-    local ranges_of_diagram, coproduct, coproduct_diagram, test_source, pushout_injection;
+    local ranges_of_diagram, coproduct, coproduct_diagram, pushout, test_sink, pushout_injection;
     
     ranges_of_diagram := List( diagram, Range );
     
     coproduct := Coproduct( cat, ranges_of_diagram );
     
-    coproduct_diagram := List( [ 1.. Length( ranges_of_diagram ) ],
-                                 i -> PreCompose( cat, diagram[ i ], InjectionOfCofactorOfCoproductWithGivenCoproduct( cat, ranges_of_diagram, i, coproduct ) ) );
+    coproduct_diagram := List( [ 1 .. Length( ranges_of_diagram ) ],
+                               i -> PreCompose( cat, diagram[ i ], InjectionOfCofactorOfCoproductWithGivenCoproduct( cat, ranges_of_diagram, i, coproduct ) ) );
     
-    test_source := List( [ 1 .. Length( diagram ) ], i -> InjectionOfCofactorOfPushout( cat, diagram, i ) );
+    pushout := Pushout( cat, diagram );
     
-    pushout_injection := UniversalMorphismFromCoproductWithGivenCoproduct( cat, ranges_of_diagram, Pushout( cat, diagram ), test_source, coproduct );
+    test_sink := List( [ 1 .. Length( diagram ) ], i -> InjectionOfCofactorOfPushoutWithGivenPushout( cat, diagram, i, pushout ) );
     
-    return UniversalMorphismFromCoequalizer( cat, coproduct, coproduct_diagram, Source( pushout_injection ), pushout_injection );
+    pushout_injection := UniversalMorphismFromCoproductWithGivenCoproduct( cat, ranges_of_diagram, pushout, test_sink, coproduct );
+    
+    return UniversalMorphismFromCoequalizer( cat, coproduct, coproduct_diagram, pushout, pushout_injection );
     
 end : Description := "IsomorphismFromCoequalizerOfCoproductDiagramToPushout using the universal property of the coequalizer" );
 
