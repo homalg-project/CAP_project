@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "AttributeCategoryForCAP",
 Subtitle := "Automatic enhancement with attributes of a CAP category",
-Version := "2023.02-01",
+Version := "2023.02-03",
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
 
@@ -81,7 +81,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.12.1",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "CAP", ">= 2021.07-02" ],
+                           [ "CAP", ">= 2023.02-04" ],
                            [ "MonoidalCategories", ">= 2019.01.16" ],
                    ],
   SuggestedOtherPackages := [ ],
