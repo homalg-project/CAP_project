@@ -553,6 +553,15 @@ InstallOtherMethod( FiberProductEmbeddingInDirectSum,
     
 end );
 
+CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
+  rec(
+    FiberProductEmbeddingInDirectSum :=
+      [ [ "ProjectionInFactorOfFiberProduct", 2 ],
+        [ "UniversalMorphismIntoDirectSum", 1 ],
+        [ "FiberProduct", 1 ] ],
+  )
+);
+
 ####################################
 ##
 ## Coequalizer
@@ -881,6 +890,15 @@ InstallOtherMethod( PushoutProjectionFromDirectSum,
     return UniversalMorphismFromDirectSum( cat, ranges_of_diagram, Pushout( cat, diagram ), test_sink );
     
 end );
+
+CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
+  rec(
+    PushoutProjectionFromDirectSum :=
+      [ [ "InjectionOfCofactorOfPushout", 2 ],
+        [ "UniversalMorphismFromDirectSum", 1 ],
+        [ "Pushout", 1 ] ],
+  )
+);
 
 ####################################
 ##

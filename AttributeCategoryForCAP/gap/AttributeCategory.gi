@@ -488,7 +488,7 @@ InstallGlobalFunction( CAP_INTERNAL_DERIVE_STRUCTURE_FUNCTIONS_OF_UNIVERSAL_OBJE
         end );
         
         derivation_record.FiberProduct := rec(
-          uses := [ "FiberProductEmbeddingInDirectSum", "DirectSum" ],
+          uses := Concatenation( List( CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS.FiberProductEmbeddingInDirectSum, a -> a[1] ), [ "DirectSum" ] ),
           derivation := function( diagram, fiber_product )
               local underlying_diagram, direct_sum_diagram;
               
@@ -532,7 +532,7 @@ InstallGlobalFunction( CAP_INTERNAL_DERIVE_STRUCTURE_FUNCTIONS_OF_UNIVERSAL_OBJE
         end );
         
         derivation_record.Pushout := rec(
-          uses := [ "PushoutProjectionFromDirectSum", "DirectSum" ],
+          uses := Concatenation( List( CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS.PushoutProjectionFromDirectSum, a -> a[1] ), [ "DirectSum" ] ),
           derivation := function( diagram, pushout )
               local underlying_diagram, direct_sum_diagram;
               
