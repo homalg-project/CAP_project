@@ -127,7 +127,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
           create_function_morphism_no_new_object, create_function_morphism_new_source,
           create_function_morphism_new_range, attributes, recnames, name, func, pos, function_to_add, add_function,
           create_function_object_no_arguments, create_function_morphism_or_fail, with_given_object_name, entry,
-          no_install_list, installed_operations_of_underlying_category;
+          no_install_list, functorial, installed_operations_of_underlying_category;
     
     category_with_attributes := structure_record.category_with_attributes;
     
@@ -340,6 +340,43 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
         Append( no_install_list, structure_record.NoInstallList );
         
     fi;
+    
+    ## add *WithGiven* to no_install_list if object-part-operation is not supported by AttributeCategory
+    for name in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) do
+        
+        if CAP_INTERNAL_METHOD_NAME_RECORD.(name).return_type = "object" and IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(name).functorial ) then
+            
+            functorial := CAP_INTERNAL_METHOD_NAME_RECORD.(name).functorial;
+            
+            if IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(functorial).with_given_without_given_name_pair ) then
+                
+                functorial := CAP_INTERNAL_METHOD_NAME_RECORD.(functorial).with_given_without_given_name_pair;
+                
+                if IsList( functorial ) and Length( functorial ) = 2 then
+                    
+                    if not IsBound( structure_record.(name) ) and functorial[2] in recnames then
+                        
+                        Add( no_install_list, functorial[2] );
+                        
+                    fi;
+                    
+                fi;
+                
+            fi;
+            
+        elif CAP_INTERNAL_METHOD_NAME_RECORD.(name).return_type = "morphism" and IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(name).with_given_object_name ) then
+            
+            with_given_object_name := CAP_INTERNAL_METHOD_NAME_RECORD.(name).with_given_object_name;
+            
+            if not IsBound( structure_record.(with_given_object_name) ) and name in recnames then
+                
+                Add( no_install_list, name );
+                
+            fi;
+            
+        fi;
+        
+    od;
     
     for func in no_install_list do
         
