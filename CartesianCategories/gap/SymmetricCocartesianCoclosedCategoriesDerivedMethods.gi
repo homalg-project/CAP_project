@@ -32,6 +32,33 @@ end : CategoryFilter := IsCocartesianCoclosedCategory,
       Description := "CoproductToCoexponentialAdjunctionMap using CocartesianCoevaluationMorphism and Coexponential" );
 
 ##
+AddDerivationToCAP( CoproductToCoexponentialAdjunctionMapWithGivenCoexponential,
+
+  function( cat, c, b, g, i )
+    local cocacoev_cb;
+    
+    # g: a → c ⊔ b
+    #
+    #    Coexp(a,b)
+    #        |
+    #        | Coexp(g, id_b)
+    #        v
+    # Coexp(c ⊔ b, b)
+    #        |
+    #        | cocacoev_cb
+    #        v
+    #        c
+    
+    cocacoev_cb := CocartesianCoevaluationMorphism( cat, c, b );
+    
+    return PreCompose( cat,
+             CoexponentialOnMorphismsWithGivenCoexponentials( cat, i, g, IdentityMorphism( cat, b ), Source( cocacoev_cb ) ),
+             cocacoev_cb );
+    
+end : CategoryFilter := IsCocartesianCoclosedCategory,
+      Description := "CoproductToCoexponentialAdjunctionMapWithGivenCoexponential using CocartesianCoevaluationMorphism and Coexponential" );
+
+##
 AddDerivationToCAP( CoexponentialToCoproductAdjunctionMap,
 
   function( cat, a, b, f )
