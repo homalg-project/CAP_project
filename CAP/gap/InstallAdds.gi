@@ -498,10 +498,16 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     
                     if not IsFinalized( category ) then
                         
-                        Display( Concatenation(
-                            "WARNING: You are calling an operation in a unfinalized category with name \"", Name( category ),
-                            "\". This is fine for debugging purposes, but for production use you should finalize the category by calling `Finalize` (with the option `FinalizeCategory := true` if needed)."
-                        ) );
+                        Print(
+                            "WARNING: You are calling an operation in a unfinalized category with name \"", Name( category ), "\".",
+                            " This is fine for debugging purposes, but for production use you should finalize the category by calling `Finalize` (with the option `FinalizeCategory := true` if needed).\n"
+                        );
+                        
+                        if not CanCompute( category, "IsEqualForCacheForObjects" ) or not CanCompute( category, "IsEqualForCacheForMorphisms" ) then
+                            
+                            Print( "You might run into caching related errors because IsEqualForCacheForObjects and/or IsEqualForCacheForMorphisms are not yet installed for this category.\n" );
+                            
+                        fi;
                         
                     fi;
                     

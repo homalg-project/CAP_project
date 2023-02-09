@@ -234,14 +234,22 @@ end );
 InstallMethod( IsEqualForCache,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                
-  { mor1, mor2 } -> IsEqualForCacheForMorphisms( CapCategory( mor1 ), mor1, mor2 ) );
-
-##
-# generic fallback to IsIdenticalObj
-InstallOtherMethod( IsEqualForCacheForMorphisms,
-               [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  { cat, mor1, mor2 } -> IsIdenticalObj( mor1, mor2 ) );
+  function( mor1, mor2 )
+    local cat;
+    
+    cat := CapCategory( mor1 );
+    
+    # convenience functions with cache which can be applied to different categories might compare morphisms from different categories
+    if not IsIdenticalObj( cat, CapCategory( mor2 ) ) then
+        
+        return false;
+        
+    fi;
+    
+    # every finalized category can compute `IsEqualForCacheForMorphisms`
+    return IsEqualForCacheForMorphisms( cat, mor1, mor2 );
+    
+end );
 
 ##
 InstallMethod( AddMorphismRepresentation,

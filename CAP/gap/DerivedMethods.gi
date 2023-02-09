@@ -4132,6 +4132,21 @@ AddFinalDerivationBundle( # IsomorphismFromHomologyObjectToItsConstructionAsAnIm
       Description := "IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject as the identity of the homology object constructed as an image object" );
 
 
+## Final method for IsEqualForCacheForObjects/Morphisms
+##
+AddFinalDerivation( IsEqualForCacheForObjects,
+                    [ ],
+                    [ IsEqualForCacheForObjects ],
+                    
+  { cat, mor1, mor2 } -> IsIdenticalObj( mor1, mor2 ) : Description := "using IsIdenticalObj" );
+
+##
+AddFinalDerivation( IsEqualForCacheForMorphisms,
+                    [ ],
+                    [ IsEqualForCacheForMorphisms ],
+                    
+  { cat, mor1, mor2 } -> IsIdenticalObj( mor1, mor2 ) : Description := "using IsIdenticalObj" );
+
 ## Final method for IsEqualForObjects
 ##
 AddFinalDerivation( IsEqualForObjects,
@@ -4140,7 +4155,7 @@ AddFinalDerivation( IsEqualForObjects,
                     
   ReturnFail );
 
-## Final methods for IsEqual/IsEqualForMorphisms
+## Final methods for IsEqual/IsCongruentForMorphisms
 ##
 AddFinalDerivation( IsCongruentForMorphisms,
                     [ ],

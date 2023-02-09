@@ -10,7 +10,7 @@ IsInitialCategory( I );
 Display( I );
 #! A CAP category with name InitialCategory( ):
 #! 
-#! 5 primitive operations were used to derive 13 operations for this category
+#! 5 primitive operations were used to derive 15 operations for this category
 #! which mathematically
 #! * IsInitialCategory
 OI := Opposite( I );
@@ -20,7 +20,7 @@ IsInitialCategory( OI );
 Display( OI );
 #! A CAP category with name Opposite( InitialCategory( ) ):
 #! 
-#! 17 primitive operations were used to derive 17 operations for this category
+#! 19 primitive operations were used to derive 19 operations for this category
 #! which mathematically
 #! * IsInitialCategory
 #! @EndExample

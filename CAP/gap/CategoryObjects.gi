@@ -215,14 +215,22 @@ IsZeroForObjects );
 InstallMethod( IsEqualForCache,
                [ IsCapCategoryObject, IsCapCategoryObject ],
                
-  { obj1, obj2 } -> IsEqualForCacheForObjects( CapCategory( obj1 ), obj1, obj2 ) );
-
-##
-# generic fallback to IsIdenticalObj
-InstallOtherMethod( IsEqualForCacheForObjects,
-               [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ],
-               
-  { cat, obj1, obj2 } -> IsIdenticalObj( obj1, obj2 ) );
+  function( obj1, obj2 )
+    local cat;
+    
+    cat := CapCategory( obj1 );
+    
+    # convenience functions with cache which can be applied to different categories might compare objects from different categories
+    if not IsIdenticalObj( cat, CapCategory( obj2 ) ) then
+        
+        return false;
+        
+    fi;
+    
+    # every finalized category can compute `IsEqualForCacheForObjects`
+    return IsEqualForCacheForObjects( cat, obj1, obj2 );
+    
+end );
 
 ##
 InstallMethod( AddObjectRepresentation,

@@ -2370,6 +2370,28 @@ end
     , 205 : IsPrecompiledDerivation := true );
     
     ##
+    AddIsEqualForCacheForMorphisms( cat,
+        
+########
+function ( cat_1, arg2_1, arg3_1 )
+    return IS_IDENTICAL_OBJ( arg2_1, arg3_1 );
+end
+########
+        
+    , 1 : IsPrecompiledDerivation := true );
+    
+    ##
+    AddIsEqualForCacheForObjects( cat,
+        
+########
+function ( cat_1, arg2_1, arg3_1 )
+    return IS_IDENTICAL_OBJ( arg2_1, arg3_1 );
+end
+########
+        
+    , 1 : IsPrecompiledDerivation := true );
+    
+    ##
     AddIsEqualForMorphisms( cat,
         
 ########

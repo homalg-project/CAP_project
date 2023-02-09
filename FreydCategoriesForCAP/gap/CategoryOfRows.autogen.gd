@@ -60,6 +60,8 @@
 #! * <Ref BookName="CAP" Func="IsEpimorphism" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsEqualAsFactorobjects" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsEqualAsSubobjects" Label="for Is" />
+#! * <Ref BookName="CAP" Func="IsEqualForCacheForMorphisms" Label="for Is" />
+#! * <Ref BookName="CAP" Func="IsEqualForCacheForObjects" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsEqualForMorphisms" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsEqualForMorphismsOnMor" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsEqualForObjects" Label="for Is" />
