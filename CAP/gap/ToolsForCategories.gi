@@ -1689,3 +1689,41 @@ InstallGlobalFunction( LastWithKeys, function ( list, func )
     return fail;
     
 end );
+
+##
+# Checks if similar methods for `operation` exist.
+# If `operation` is not a operation, "Op" is appended to its name.
+# "similar" means: a method of `operation` with the same number of filters as `filters` and
+# each filter implying or being implied by the corresponding filter in `filters`.
+# Throws an error if the number of similar methods is strictly smaller than `expected_number_of_methods`
+# and displays a warning if the number of similar methods is strictly greater than `expected_number_of_methods`
+# The warning is composed using `warning_message_getter`.
+BindGlobal( "CAP_INTERNAL_WARN_ABOUT_SIMILAR_METHODS", function ( operation, filters, expected_number_of_methods, warning_message_getter )
+  local similar_methods;
+    
+    if not IsOperation( operation ) then
+        
+        operation := ValueGlobal( Concatenation( NameFunction( operation ), "Op" ) );
+        
+    fi;
+    
+    Assert( 0, IsOperation( operation ) );
+    
+    similar_methods := Filtered( MethodsOperation( operation, Length( filters ) ), m -> ForAll( [ 1 .. Length( filters ) ], i ->
+        IS_SUBSET_FLAGS( WITH_IMPS_FLAGS( m.argFilt[i] ), WITH_IMPS_FLAGS( FLAGS_FILTER( filters[i] ) ) ) or
+        IS_SUBSET_FLAGS( WITH_IMPS_FLAGS( FLAGS_FILTER( filters[i] ) ), WITH_IMPS_FLAGS( m.argFilt[i] ) )
+    ) );
+    
+    if Length( similar_methods ) < expected_number_of_methods then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "found fewer methods than expected" );
+        
+    elif Length( similar_methods ) > expected_number_of_methods then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Display( warning_message_getter( NameFunction( operation ) ) );
+        
+    fi;
+    
+end );

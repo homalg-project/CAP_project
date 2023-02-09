@@ -4,46 +4,6 @@
 # Implementations
 #
 
-BindGlobal( "CAP_JIT_INTERNAL_WARN_ABOUT_SIMILAR_METHODS", function ( operation, number_of_arguments, filters, expected_number_of_methods, warning_message_getter )
-  local operation_name, similar_methods;
-    
-    if not IsOperation( operation ) then
-        
-        operation := ValueGlobal( Concatenation( NameFunction( operation ), "Op" ) );
-        
-    fi;
-    
-    Assert( 0, IsOperation( operation ) );
-    
-    operation_name := NameFunction( operation );
-    
-    if operation_name in [ "IsEqualForObjects", "IsEqualForMorphisms", "IsCongruentForMorphisms" ] then
-        
-        # these operations have special fallback installations for objects/morphisms from different categories
-        
-        expected_number_of_methods := expected_number_of_methods + 1;
-        
-    fi;
-    
-    similar_methods := Filtered( MethodsOperation( operation, number_of_arguments ), m -> ForAll( [ 1 .. Length( filters ) ], i ->
-        IS_SUBSET_FLAGS( WITH_IMPS_FLAGS( m.argFilt[i] ), WITH_IMPS_FLAGS( FLAGS_FILTER( filters[i] ) ) ) or
-        IS_SUBSET_FLAGS( WITH_IMPS_FLAGS( FLAGS_FILTER( filters[i] ) ), WITH_IMPS_FLAGS( m.argFilt[i] ) )
-    ) );
-    
-    if Length( similar_methods ) < expected_number_of_methods then
-        
-        # COVERAGE_IGNORE_NEXT_LINE
-        Error( "found fewer methods than expected" );
-        
-    elif Length( similar_methods ) > expected_number_of_methods then
-        
-        # COVERAGE_IGNORE_NEXT_LINE
-        Display( warning_message_getter( operation_name ) );
-        
-    fi;
-    
-end );
-
 InstallGlobalFunction( CapJitResolvedOperations, function ( tree )
   local result_func;
     
@@ -103,7 +63,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree )
                         
                         if pos <> fail then
                             
-                            CAP_JIT_INTERNAL_WARN_ABOUT_SIMILAR_METHODS( operation, Length( info.filter_list ) - 1, filters, 1, { operation_name } -> Concatenation(
+                            CAP_INTERNAL_WARN_ABOUT_SIMILAR_METHODS( operation, filters, 1, { operation_name } -> Concatenation(
                                 # COVERAGE_IGNORE_BLOCK_START
                                 "WARNING: A method for the CAP operation ", operation_name, " without category as first argument was installed which could be confused with the convenience method ",
                                 "deriving the category from the arguments. CompilerForCAP will always resolve the convenience method.\n"
@@ -164,7 +124,9 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree )
                     Info( InfoCapJit, 1, "####" );
                     Info( InfoCapJit, 1, Concatenation( "Resolve CAP operation ", operation_name, ", recurse compilation." ) );
                     
-                    CAP_JIT_INTERNAL_WARN_ABOUT_SIMILAR_METHODS( operation, Length( info.filter_list ), [ CapJitDataTypeOfCategory( category ).filter ], Length( category!.added_functions.(operation_name) ), { operation_name } -> Concatenation(
+                    filters := Concatenation( [ CapJitDataTypeOfCategory( category ).filter ], ListWithIdenticalEntries( Length( info.filter_list ) - 1, IsObject ) );
+                    
+                    CAP_INTERNAL_WARN_ABOUT_SIMILAR_METHODS( operation, filters, Length( category!.added_functions.(operation_name) ), { operation_name } -> Concatenation(
                         # COVERAGE_IGNORE_BLOCK_START
                         "WARNING: A method for the CAP operation ", operation_name, " was installed manually (e.g. using Install(Other)Method), ",
                         "but CompilerForCAP will always resolve the methods installed via CAP's Add-functions.\n"
@@ -211,7 +173,9 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree )
                 
                 known_method := known_methods[1];
                 
-                CAP_JIT_INTERNAL_WARN_ABOUT_SIMILAR_METHODS( operation, tree.args.length, [ known_method.filters[1] ], 1, { operation_name } -> Concatenation(
+                filters := Concatenation( [ known_method.filters[1] ], ListWithIdenticalEntries( tree.args.length - 1, IsObject ) );
+                
+                CAP_INTERNAL_WARN_ABOUT_SIMILAR_METHODS( operation, filters, 1, { operation_name } -> Concatenation(
                     # COVERAGE_IGNORE_BLOCK_START
                     "WARNING: A method for ", operation_name, " with ", String( Length( known_method.filters ) ), " arguments and first filter ", String( known_method.filters[1] ), " was installed using Install(Other)MethodForCompilerForCAP ",
                     "but additional methods with the same number of arguments and the same first filter (or a filter implying or being implied by it) have been installed (using Install(Other)Method). ",

@@ -35,27 +35,6 @@ InstallValue( PROPAGATION_LIST_FOR_EQUAL_OBJECTS,
 ##
 ###################################
 
-# This method should usually not be selected when the two morphisms belong to the same category
-InstallOtherMethod( IsEqualForObjects,
-                    [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ],
-
-  function( cat, object_1, object_2 )
-
-    if not HasCapCategory( object_1 ) then
-        Error( Concatenation( "the object \"", String( object_1 ), "\" has no CAP category" ) );
-    fi;
-    if not HasCapCategory( object_2 ) then
-        Error( Concatenation( "the object \"", String( object_2 ), "\" has no CAP category" ) );
-    fi;
-
-    if not IsIdenticalObj( CapCategory( object_1 ), CapCategory( object_2 ) ) then
-        Error( Concatenation( "the object \"", String( object_1 ), "\" and the object \"", String( object_2 ), "\" do not belong to the same CAP category" ) );
-    else
-        Error( Concatenation( "the object \"", String( object_1 ), "\" and the object \"", String( object_2 ), "\" belong to the same CAP category, but no specific method IsEqualForObjects is installed. Maybe you forgot to finalize the category?" ) );
-    fi;
-    
-end );
-
 ##
 InstallMethod( \=,
                [ IsCapCategoryObject, IsCapCategoryObject ],

@@ -186,7 +186,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                    [ IsCapCategory, IsList, IsInt ],
       
       function( category, method_list, weight )
-        local install_func, replaced_filter_list, needs_wrapping, i, is_derivation, is_final_derivation, is_precompiled_derivation, without_given_name, with_given_name,
+        local install_func, needs_wrapping, i, is_derivation, is_final_derivation, is_precompiled_derivation, without_given_name, with_given_name,
               without_given_weight, with_given_weight, number_of_proposed_arguments, current_function_number,
               current_function_argument_number, current_additional_filter_list_length, input_human_readable_identifier_getter, input_sanity_check_functions,
               output_human_readable_identifier_getter, output_sanity_check_function, name;
@@ -237,8 +237,6 @@ InstallGlobalFunction( CapInternalInstallAdd,
             Error( "at most one of the options `IsDerivation`, `IsFinalDerivation` and `IsPrecompiledDerivation` may be set" );
             
         fi;
-        
-        replaced_filter_list := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( filter_list, category );
         
         ## Nr arguments sanity check
         
@@ -484,9 +482,17 @@ InstallGlobalFunction( CapInternalInstallAdd,
         install_func := function( func_to_install, additional_filters )
           local new_filter_list, index;
             
+            Assert( 0, filter_list[1] = "category" );
+            
+            new_filter_list := Concatenation( [ CategoryFilter( category ) ], ListWithIdenticalEntries( Length( filter_list ) - 1, IsObject ) );
+            
+            CAP_INTERNAL_WARN_ABOUT_SIMILAR_METHODS( ValueGlobal( install_name ), new_filter_list, Length( category!.added_functions.( function_name ) ), { operation_name } -> Concatenation(
+                "WARNING: A method for the CAP operation ", operation_name, " was installed manually (e.g. using Install(Other)Method). This is not supported.\n"
+            ) );
+            
             Add( category!.added_functions.( function_name ), [ func_to_install, additional_filters ] );
             
-            new_filter_list := CAP_INTERNAL_MERGE_FILTER_LISTS( replaced_filter_list, additional_filters );
+            new_filter_list := CAP_INTERNAL_MERGE_FILTER_LISTS( new_filter_list, additional_filters );
             
             if category!.overhead then
                 

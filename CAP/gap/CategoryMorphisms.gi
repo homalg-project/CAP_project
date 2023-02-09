@@ -401,48 +401,6 @@ InstallMethod( CoefficientsOfMorphismWithGivenBasisOfExternalHom,
 ##
 ######################################
 
-# This method should usually not be selected when the two morphisms belong to the same category
-InstallOtherMethod( IsEqualForMorphisms,
-                    [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ],
-
-  function( cat, morphism_1, morphism_2 )
-    
-    if not HasCapCategory( morphism_1 ) then
-        Error( Concatenation( "the morphism \"", String( morphism_1 ), "\" has no CAP category" ) );
-    fi;
-    if not HasCapCategory( morphism_2 ) then
-        Error( Concatenation( "the morphism \"", String( morphism_2 ), "\" has no CAP category" ) );
-    fi;
-    
-    if not IsIdenticalObj( CapCategory( morphism_1 ), CapCategory( morphism_2 ) ) then
-        Error( Concatenation( "the morphism \"", String( morphism_1 ), "\" and the morphism \"", String( morphism_2 ), "\" do not belong to the same CAP category" ) );
-    else
-        Error( Concatenation( "the morphism \"", String( morphism_1 ), "\" and the morphism \"", String( morphism_2 ), "\" belong to the same CAP category, but no specific method IsEqualForMorphisms is installed. Maybe you forgot to finalize the category?" ) );
-    fi;
-    
-end );
-
-# This method should usually not be selected when the two morphisms belong to the same category
-InstallOtherMethod( IsCongruentForMorphisms,
-                    [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ],
-
-  function( cat, morphism_1, morphism_2 )
-    
-    if not HasCapCategory( morphism_1 ) then
-        Error( Concatenation( "the morphism \"", String( morphism_1 ), "\" has no CAP category" ) );
-    fi;
-    if not HasCapCategory( morphism_2 ) then
-        Error( Concatenation( "the morphism \"", String( morphism_2 ), "\" has no CAP category" ) );
-    fi;
-    
-    if not IsIdenticalObj( CapCategory( morphism_1 ), CapCategory( morphism_2 ) ) then
-        Error( Concatenation( "the morphism \"", String( morphism_1 ), "\" and the morphism \"", String( morphism_2 ), "\" do not belong to the same CAP category" ) );
-    else
-        Error( Concatenation( "the morphism \"", String( morphism_1 ), "\" and the morphism \"", String( morphism_2 ), "\" belong to the same CAP category, but no specific method IsCongruentForMorphisms is installed. Maybe you forgot to finalize the category?" ) );
-    fi;
-    
-end );
-
 ##
 InstallMethod( \=,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
