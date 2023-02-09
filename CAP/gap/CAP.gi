@@ -167,25 +167,25 @@ InstallGlobalFunction( "CreateCapCategoryWithDataTypes",
     ## plausibility checks
     if not IsSpecializationOfFilter( IsCapCategory, category_filter ) then
         
-        Error( "the category filter must imply IsCapCategory" );
+        Print( "WARNING: filter ", category_filter, " does not imply `IsCapCategory`. This will probably cause errors.\n" );
         
     fi;
     
     if not IsSpecializationOfFilter( IsCapCategoryObject, object_filter ) then
         
-        Error( "the object filter must imply IsCapCategoryObject" );
+        Print( "WARNING: filter ", object_filter, " does not imply `IsCapCategoryObject`. This will probably cause errors.\n" );
         
     fi;
     
     if not IsSpecializationOfFilter( IsCapCategoryMorphism, morphism_filter ) then
         
-        Error( "the morphism filter must imply IsCapCategoryMorphism" );
+        Print( "WARNING: filter ", morphism_filter, " does not imply `IsCapCategoryMorphism`. This will probably cause errors.\n" );
         
     fi;
     
     if not IsSpecializationOfFilter( IsCapCategoryTwoCell, two_cell_filter ) then
         
-        Error( "the two cell filter must imply IsCapCategoryTwoCell" );
+        Print( "WARNING: filter ", two_cell_filter, " does not imply `IsCapCategoryTwoCell`. This will probably cause errors.\n" );
         
     fi;
     
