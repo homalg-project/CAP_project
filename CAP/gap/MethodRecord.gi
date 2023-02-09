@@ -1304,7 +1304,7 @@ MultiplyWithElementOfCommutativeRingForMorphisms := rec(
   
   pre_function := function( cat, r, morphism )
     
-    if not r in CommutativeRingOfLinearCategory( CapCategory( morphism ) ) then
+    if not r in CommutativeRingOfLinearCategory( cat ) then
       
       return [ false, "the first argument is not an element of the ring of the category of the morphism" ];
       
@@ -2510,16 +2510,13 @@ IsWellDefinedForMorphisms := rec(
   dual_operation := "IsWellDefinedForMorphisms",
   
   redirect_function := function( cat, morphism )
-    local category, source, range;
+    local source, range;
     
     source := Source( morphism );
     
     range := Range( morphism );
     
-    category := CapCategory( morphism );
-    
-    if not ( IsWellDefined( source ) and IsWellDefined( range ) ) or
-       not ( IsIdenticalObj( CapCategory( source ), category ) and IsIdenticalObj( CapCategory( range ), category ) ) then
+    if not ( IsWellDefinedForObjects( cat, source ) and IsWellDefinedForObjects( cat, range ) ) then
       
       return [ true, false ];
       
