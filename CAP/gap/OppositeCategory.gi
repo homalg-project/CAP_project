@@ -89,20 +89,19 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
     
     recnames := AsSortedList( RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) );
     
+    ## No support for twocells
+    recnames := Difference( recnames,
+                        [ "HorizontalPreCompose",
+                          "HorizontalPostCompose",
+                          "VerticalPreCompose",
+                          "VerticalPostCompose",
+                          "IdenticalTwoCell" ] );
+    
     for current_recname in recnames do
         
         current_entry := CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname );
         
         if IsBound( current_entry.no_install ) and current_entry.no_install = true then
-            continue;
-        fi;
-        
-        ## No support for twocells
-        if current_recname in [ "HorizontalPreCompose",
-                                "HorizontalPostCompose",
-                                "VerticalPreCompose",
-                                "VerticalPostCompose",
-                                "IdenticalTwoCell" ] then
             continue;
         fi;
         
