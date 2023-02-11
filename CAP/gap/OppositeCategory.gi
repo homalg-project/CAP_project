@@ -59,8 +59,9 @@ end );
 BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
   
   function( opposite_category, category )
-    local only_primitive_operations, recnames, current_recname, current_entry, dual_operation_name,
-          filter_list, input_arguments_names, return_type, func_string,
+    local only_primitive_operations, recnames, list_of_installed_operations,
+          operations_of_homomorphism_structure, operations_of_external_hom,
+          current_recname, current_entry, dual_operation_name, filter_list, input_arguments_names, return_type, func_string,
           dual_preprocessor_func_string, preprocessor_string, dual_arguments, tmp,
           dual_postprocessor_func_string, postprocessor_string, output_source_getter_string, output_range_getter_string, return_statement,
           func, weight, current_add, list_of_attributes, attr, tester, setter, getter;
@@ -69,7 +70,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
     
     ## Take care of attributes
     ## TODO: if there are more instances, set markers in the MethodRecord
-    list_of_attributes := [ "RangeCategoryOfHomomorphismStructure", "CommutativeRingOfLinearCategory" ];
+    list_of_attributes := [ "CommutativeRingOfLinearCategory" ];
     
     for attr in list_of_attributes do
         
@@ -97,6 +98,30 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
                           "VerticalPostCompose",
                           "IdenticalTwoCell" ] );
     
+    if only_primitive_operations then
+        list_of_installed_operations := ListPrimitivelyInstalledOperationsOfCategory( category );
+    else
+        list_of_installed_operations := ListInstalledOperationsOfCategory( category );
+    fi;
+    
+    operations_of_homomorphism_structure :=
+      [ "DistinguishedObjectOfHomomorphismStructure",
+        "HomomorphismStructureOnObjects",
+        "HomomorphismStructureOnMorphisms",
+        "HomomorphismStructureOnMorphismsWithGivenObjects",
+        "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
+        "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects",
+        "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
+        ];
+    
+    if HasRangeCategoryOfHomomorphismStructure( category ) and
+       not IsEmpty( Intersection( list_of_installed_operations, operations_of_homomorphism_structure ) ) then
+        
+        SetRangeCategoryOfHomomorphismStructure( opposite_category, RangeCategoryOfHomomorphismStructure( category ) );
+        SetIsEquippedWithHomomorphismStructure( opposite_category, true );
+        
+    fi;
+    
     for current_recname in recnames do
         
         current_entry := CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname );
@@ -116,7 +141,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
             continue;
         fi;
         
-        if only_primitive_operations and not dual_operation_name in ListPrimitivelyInstalledOperationsOfCategory( category ) then
+        if not dual_operation_name in list_of_installed_operations then
             continue;
         fi;
         

@@ -12,8 +12,9 @@ ListKnownCategoricalProperties( op );
 #!   "IsAbelianCategoryWithEnoughProjectives", "IsAdditiveCategory",
 #!   "IsBraidedMonoidalCategory", "IsClosedMonoidalCategory",
 #!   "IsCoclosedMonoidalCategory", "IsEnrichedOverCommutativeRegularSemigroup",
-#!   "IsLinearCategoryOverCommutativeRing", "IsMonoidalCategory",
-#!   "IsPreAbelianCategory", "IsRigidSymmetricClosedMonoidalCategory",
+#!   "IsEquippedWithHomomorphismStructure", "IsLinearCategoryOverCommutativeRing",
+#!   "IsMonoidalCategory", "IsPreAbelianCategory",
+#!   "IsRigidSymmetricClosedMonoidalCategory",
 #!   "IsRigidSymmetricCoclosedMonoidalCategory", "IsSkeletalCategory",
 #!   "IsStrictMonoidalCategory", "IsSymmetricClosedMonoidalCategory",
 #!   "IsSymmetricCoclosedMonoidalCategory", "IsSymmetricMonoidalCategory" ]
