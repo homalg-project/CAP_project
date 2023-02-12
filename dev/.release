@@ -1,0 +1,31 @@
+#!/bin/bash
+# This script is intended to be run by the release-gap-package script which is
+# part of the the ReleaseTools for GAP:
+#
+# https://github.com/gap-system/ReleaseTools
+
+set -e
+
+# adjust date
+# Note that we cannot use sed's `-i` option for in-place editing, as
+# that is a non-portable extension of POSIX, which works differently in
+# BSD and GNU make.
+sed "s;Date := .*;Date := \"$(date +%d/%m/%Y)\",;" PackageInfo.g > PackageInfo.g.bak
+mv PackageInfo.g.bak PackageInfo.g
+
+# replace links to packages which are possibly referenced in the documentation, keep this in sync with `Tests.yml.j2`
+for package in CAP_project/CAP CAP_project/CompilerForCAP CAP_project/MonoidalCategories CAP_project/CartesianCategories CAP_project/FreydCategoriesForCAP HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra homalg_project/homalg homalg_project/Modules Toposes; do
+    
+    # adjust links to other manuals
+    # Note that we cannot use sed's `-i` option for in-place editing, as
+    # that is a non-portable extension of POSIX, which works differently in
+    # BSD and GNU make.
+    for f in ./*/*.htm* ; do
+        sed "s;href=\"/home/gap/.gap/pkg/$package/doc/;href=\"https://homalg-project.github.io/$package/doc/;g" "$f" > "$f.bak"
+        mv "$f.bak" "$f"
+    done
+    
+done
+
+# remove dev directory
+rm -rf dev

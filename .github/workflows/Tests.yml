@@ -37,12 +37,10 @@ jobs:
       - run: |
           export HOME="/home/gap"
           cd /home/gap/.gap/pkg/
-          cp ./CAP_project/ci_gaprc /home/gap/.gap/gaprc
-          git clone --depth 1 https://github.com/gap-packages/AutoDoc.git
-          git clone --depth 1 https://github.com/homalg-project/homalg_project.git
-          # set SOURCE_DATE_EPOCH for reproducible PDFs
-          export SOURCE_DATE_EPOCH=0
-          # build documentation of packages which we might want to reference, keep this in sync with `release-gap-package`
+          cp ./CAP_project/dev/ci_gaprc /home/gap/.gap/gaprc
+          git clone --depth 1 -vv https://github.com/gap-packages/AutoDoc.git
+          git clone --depth 1 -vv https://github.com/homalg-project/homalg_project.git
+          # build documentation of packages which we might want to reference, keep this in sync with `dev/.release`
           [ -d "CAP_project/CAP" ] && make -C "CAP_project/CAP" doc
           [ -d "CAP_project/CompilerForCAP" ] && make -C "CAP_project/CompilerForCAP" doc
           [ -d "CAP_project/MonoidalCategories" ] && make -C "CAP_project/MonoidalCategories" doc
@@ -54,18 +52,18 @@ jobs:
           [ -d "Toposes" ] && make -C "Toposes" doc
           make -C CAP_project -j $(nproc) --output-sync ci-test
           cd CAP_project
-          LANG=C.UTF-8 python3 process_coverage.py
-          [ "$GITHUB_EVENT_NAME" != "schedule" ] && [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker-master:latest" ] && ./upload_codecov.sh
+          LANG=C.UTF-8 python3 dev/process_coverage.py
+          [ "$GITHUB_EVENT_NAME" != "schedule" ] && [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker-master:latest" ] && ./dev/upload_codecov.sh
           git config --global user.name "Bot"
           git config --global user.email "empty"
           CUR_SHA=$(git rev-parse --verify HEAD)
+          git fetch origin gh-pages
+          git worktree add gh-pages/ gh-pages || (echo "There was an error. Make sure there is a branch named 'gh-pages'. See https://github.com/homalg-project/PackageJanitor#error-there-was-an-error-make-sure-there-is-a-branch-named-gh-pages"; exit 1)
           if [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker:latest" ] && [ "$CUR_SHA" = "$(git rev-parse origin/master)" ] && [ $(dirname "$GITHUB_REPOSITORY") = "homalg-project" ]; then \
-            git fetch origin gh-pages; \
-            git worktree add gh-pages/ gh-pages || (echo "There was an error. Make sure there is a branch named 'gh-pages'. See https://github.com/homalg-project/PackageJanitor#error-there-was-an-error-make-sure-there-is-a-branch-named-gh-pages"; exit 1); \
             git checkout master; \
-            LANG=C.UTF-8 ./make_dist.sh --token "${{ secrets.GITHUB_TOKEN }}"; \
+            LANG=C.UTF-8 ./dev/make_dist.sh --token "${{ secrets.GITHUB_TOKEN }}"; \
             # publish subsplits
             git subtree split --prefix=FreydCategoriesForCAP -b FreydCategoriesForCAP-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/FreydCategoriesForCAP FreydCategoriesForCAP-split:master; \
           else \
-            echo "Not making a release."; \
+            LANG=C.UTF-8 ./dev/make_dist.sh --token "${{ secrets.GITHUB_TOKEN }}" --only-tarball; \
           fi

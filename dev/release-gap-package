@@ -50,6 +50,7 @@ Paths
   --tmpdir <path>                  path of temporary directory [Default: tmp subdirectory of srcdir]
   --webdir <path>                  path of web directory [Default: gh-pages subdirectory of srcdir]
   --update-script <file>           path of the update script [Default: update.g in webdir]
+  --release-script <file>          path of the release script [Default: .release in srcdir (must be checked into git)]
 
 Custom settings
   --token <oauth>                  GitHub access token
@@ -71,20 +72,37 @@ EOF
 #
 # Various little helper functions
 
+if test -t 1; then
 
-# print notices in green
+    # see if it supports colors...
+    ncolors=$(tput colors)
+
+    if test -n "$ncolors" && test $ncolors -ge 8; then
+        bold="$(tput bold)"
+        underline="$(tput smul)"
+        standout="$(tput smso)"
+        normal="$(tput sgr0)"
+        black="$(tput setaf 0)"
+        red="$(tput setaf 1)"
+        green="$(tput setaf 2)"
+        yellow="$(tput setaf 3)"
+        blue="$(tput setaf 4)"
+        magenta="$(tput setaf 5)"
+        cyan="$(tput setaf 6)"
+        white="$(tput setaf 7)"
+    fi
+fi
+
 notice() {
-    printf '\033[32m%s\033[0m\n' "$*"
+    printf "${green}%s${normal}\n" "$*"
 }
 
-# print warnings in yellow
 warning() {
-    printf '\033[33mWARNING: %s\033[0m\n' "$*"
+    printf "${yellow}WARNING: %s${normal}\n" "$*"
 }
 
-# print error in red and exit
 error() {
-    printf '\033[31mERROR: %s\033[0m\n' "$*"
+    printf "${red}ERROR: %s${normal}\n" "$*" 1>&2
     exit 1
 }
 
@@ -117,12 +135,15 @@ run_gap() {
 # we may end up parsing the same JSON data two times, but that
 # doesn't really matter as it is tiny.
 json_get_key() {
-    echo "$response" | python -c 'import json,sys;obj=json.load(sys.stdin);print(obj.get("'"$1"'",""))'
+    echo "$response" | $PYTHON -c 'import json,sys;obj=json.load(sys.stdin);print(obj.get("'"$1"'",""))'
 }
 
 # On Mac OS X, tar stores extended attributes in ._FOO files inside archives.
 # Setting COPYFILE_DISABLE prevents that. See <http://superuser.com/a/260264>
 export COPYFILE_DISABLE=1
+
+# set SOURCE_DATE_EPOCH for reproducible PDFs
+export SOURCE_DATE_EPOCH=0
 
 
 ######################################################################
@@ -147,11 +168,13 @@ while [ x"$1" != x ]; do
     --webdir ) WEB_DIR="$1"; shift ;;
     --tmpdir ) TMP_DIR="$1"; shift ;;
     --update-script ) UPDATE_SCRIPT="$1"; shift ;;
+    --release-script ) RELEASE_SCRIPT="$1"; shift ;;
 
     --srcdir=*) SRC_DIR=${option#--srcdir=}; shift ;;
     --webdir=*) WEB_DIR=${option#--webdir=}; shift ;;
     --tmpdir=*) TMP_DIR=${option#--tmpdir=}; shift ;;
     --update-script=*) UPDATE_SCRIPT=${option#--update-script=}; shift ;;
+    --release-script=*) RELEASE_SCRIPT=${option#--release-script=}; shift ;;
 
     --token ) TOKEN="$1"; shift ;;
 
@@ -198,6 +221,11 @@ if [ ! -f "$UPDATE_SCRIPT" ] ; then
     error "could not find update script \"${UPDATE_SCRIPT}\""
 fi
 
+# Check for presence of the release script (if given)
+if [ "x$RELEASE_SCRIPT" != x ] && [ ! -f "$RELEASE_SCRIPT" ] ; then
+    error "could not find release script \"${RELEASE_SCRIPT}\""
+fi
+
 # Check whether GAP is usable
 GAP=${GAP:-gap}
 command -v "$GAP" >/dev/null 2>&1 ||
@@ -209,8 +237,18 @@ command -v curl >/dev/null 2>&1 ||
 command -v git >/dev/null 2>&1 ||
     error "the 'git' command was not found, please install it"
 
-command -v python >/dev/null 2>&1 ||
-    error "the 'python' command was not found, please install it"
+if [ "x$PYTHON" != x ] ; then
+    :
+elif command -v python >/dev/null 2>&1; then
+    PYTHON=python
+elif command -v python3 >/dev/null 2>&1; then
+    PYTHON=python3
+elif command -v python2 >/dev/null 2>&1; then
+    PYTHON=python2
+else
+    error "Python not found, please install it and/or set the PYTHON environment variable to the path of a python executable"
+fi
+notice "Using PYTHON = '$PYTHON'"
 
 verify_git_clean
 
@@ -245,7 +283,10 @@ else
     tmp := GAPInfo.PackageInfoCurrent.ArchiveURL;
     Print("GAP_ERROR=\"The ArchiveURL has unexpected value '",tmp,"'\"\n");
 fi;
-Print("PDFFile=\"",GAPInfo.PackageInfoCurrent.PackageDoc.PDFFile,"\"\n");
+docs:=GAPInfo.PackageInfoCurrent.PackageDoc;;
+if not IsList(docs) then docs:=[docs];fi;
+pdffiles:=JoinStringsWithSeparator(List(docs,x->x.PDFFile)," ");;
+Print("PDFFiles=\"",pdffiles,"\"\n");
 EOF
 
 # evaluate the output of GAP, which should be valid shell script code
@@ -268,11 +309,14 @@ esac
 if [ -f makedoc.g ] ; then
     notice "Building GAP package documentation (using makedoc.g)"
     run_gap <<GAPInput
+LogTo("makedoc.log");
 if not IsPackageMarkedForLoading("$PKG", "") then
   SetPackagePath("$PKG", ".");
 fi;
 Read("makedoc.g");
 GAPInput
+    ! grep -E "WARNING: non resolved reference" makedoc.log >/dev/null 2>&1 || error "non resolved reference(s) found in the manual"
+    rm -f makedoc.log
 elif [ -f doc/make_doc ] ; then
     notice "Building GAP package documentation (using doc/make_doc)"
     cd doc && ./make_doc && cd ..
@@ -318,11 +362,18 @@ fi
 #
 notice "Using GitHub repository $REPO"
 
-GITHUB_USER=$(dirname "$REPO")
+if [ "x$GITHUB_USER" = x ] ; then
+    GITHUB_USER=$(git config --get github.user || echo)
+fi
+if [ "x$GITHUB_USER" = x ] ; then
+    GITHUB_USER=$(dirname "$REPO")
+fi
 notice "Using GitHub username $GITHUB_USER"
 
-BRANCH=$(git symbolic-ref -q --short HEAD)
-notice "Using branch $BRANCH"
+if [ "x$ONLY_TARBALL" = xno ] ; then
+    BRANCH=$(git symbolic-ref -q --short HEAD)
+    notice "Using branch $BRANCH"
+fi
 
 
 ######################################################################
@@ -340,7 +391,7 @@ UPLOAD_URL=https://uploads.github.com/repos/$REPO/releases
 verify_git_clean
 
 if git show-ref -q "$TAG" ; then
-    notice "Using git tag $TAG (derived from ArchiveURL in in PackageInfo.g)"
+    notice "Using git tag $TAG (derived from ArchiveURL in PackageInfo.g)"
 else
     notice "Creating git tag $TAG"
     git tag "$TAG"
@@ -358,7 +409,9 @@ if [ "$MESSAGE" = "Not Found" ] ; then
     MESSAGE=  # release does not yet exist -> that's how we like it
 elif [ x"$RELEASE_ID" != x ] ; then
     # release already exists -> skip, error out or delete it
-    if [ "x$SKIP_EXISTING_RELEASE" = xyes ] ; then
+    if [ "x$ONLY_TARBALL" = xyes ] ; then
+        warning "release $TAG already exists on GitHub, but only tarballs were requested, so continue anyway"
+    elif [ "x$SKIP_EXISTING_RELEASE" = xyes ] ; then
         notice "release $TAG already exists on GitHub, skipping release"
         exit 0
     elif [ "x$FORCE" = xyes ] ; then
@@ -378,15 +431,21 @@ fi
 #
 # Validate the tag
 #
-HEAD_REF=$(git rev-parse --verify HEAD)
-TAG_REF=$(git rev-parse --verify "$TAG^{}")
+if [ "x$ONLY_TARBALL" = xno ] ; then
+    HEAD_REF=$(git rev-parse --verify HEAD)
+    TAG_REF=$(git rev-parse --verify "$TAG^{}")
 
-if [ "x$TAG_REF" != "x$HEAD_REF" ] ; then
-    error "tag $TAG is not the HEAD commit -- did you tag the right commit?"
+    if [ "x$TAG_REF" != "x$HEAD_REF" ] ; then
+        if [ "x$FORCE" = xyes ] ; then
+            notice "Force update of git tag $TAG"
+            git tag -f "$TAG"
+        else
+            error "tag $TAG is not the HEAD commit -- did you tag the right commit?"
+        fi
+    fi
+
+    echo ""
 fi
-
-
-echo ""
 
 
 ######################################################################
@@ -409,26 +468,46 @@ git archive --prefix="$BASENAME/" "$TAG" . | tar xf - -C "$TMP_DIR"
 # Build the package documentation, run autoconf, etc.
 cd "$TMP_DIR/$BASENAME"
 
-# adjust date
-# Note that we cannot use sed's `-i` option for in-place editing, as
-# that is a non-portable extension of POSIX, which works differently in
-# BSD and GNU make.
-sed "s;Date := .*;Date := \"$(date +%d/%m/%Y)\",;" PackageInfo.g > PackageInfo.g.bak
-mv PackageInfo.g.bak PackageInfo.g
+if [ -f makedoc.g ] ; then
+    notice "Building GAP package documentation for archives (using makedoc.g)"
+    run_gap <<GAPInput
+LogTo("makedoc.log");
+if not IsPackageMarkedForLoading("$PKG", "") then
+  SetPackagePath("$PKG", ".");
+fi;
+PushOptions(rec(relativePath:="../../.."));
+Read("makedoc.g");
+GAPInput
+    ! grep -E "WARNING: non resolved reference" makedoc.log >/dev/null 2>&1 || error "non resolved reference(s) found in the manual"
+    rm -f makedoc.log
+    rm -f doc/*.tex
+elif [ -f doc/make_doc ] ; then
+    notice "Copying GAP package documentation for archives (using doc/make_doc)"
+    cp -r "$SRC_DIR/doc" .
+    test -d "$SRC_DIR/htm" && cp -r "$SRC_DIR/htm" .  # for packages with a single manual
+    test -d "$SRC_DIR/doc/htm" && cp -r "$SRC_DIR/doc/htm" doc/  # for packages with multiple manual
+fi
 
 notice "Removing unnecessary files"
 # Remove recursively in case there is a .github directory
 rm -rf .git* .hg* .cvs* .circleci
-rm -f .appveyor.yml .codecov.yml .travis.yml
+rm -f .mailmap .clang-format
+rm -f .appveyor.yml .codecov.yml .travis.yml azure-pipelines.yml
+# remove TeX leftovers
+find doc -name '*.aux' -o -name '*.bbl' -o -name '*.blg' -o -name '*.brf' -o -name '*.idx' -o -name '*.ilg' -o -name '*.ind' -o -name '*.log' -o -name '*.out' -o -name '*.pnr' -o -name '*.toc' -o -name '*.tst' | xargs rm -f
+# remove macOS auxiliary files
+find . -name .DS_Store -exec rm -f {} +
 
-# execute .release script, if present
-if [ -f .release ] ; then
-    # the .release script can perform additional preparation, e.g.:
-    # * add files for distribution which are not part of the repository;
-    # * remove further files not intended for distribution (e.g. scripts/ directory);
-    # * build the package manual in a custom way;
-    # * perform additional sanity checks;
-    # * ...
+# execute release script, if present
+# the release script can perform additional preparation, e.g.:
+# * add files for distribution which are not part of the repository;
+# * remove further files not intended for distribution (e.g. scripts/ directory);
+# * build the package manual in a custom way;
+# * perform additional sanity checks;
+# * ...
+if [ "x$RELEASE_SCRIPT" != x ] ; then
+	. "$RELEASE_SCRIPT"
+elif [ -f .release ] ; then
     . ./.release
     rm -f .release
 fi
@@ -439,40 +518,8 @@ if [ -x autogen.sh ] ; then
     rm -rf autom4te.cache
 fi
 
-if [ -f makedoc.g ] ; then
-    notice "Building GAP package documentation for archives (using makedoc.g)"
-    run_gap <<GAPInput
-if not IsPackageMarkedForLoading("$PKG", "") then
-  SetPackagePath("$PKG", ".");
-fi;
-PushOptions(rec(relativePath:="../../.."));
-Read("makedoc.g");
-GAPInput
-    rm -f doc/*.tex
-    rm -f doc/*.aux doc/*.bbl doc/*.blg doc/*.brf doc/*.idx doc/*.ilg doc/*.ind doc/*.log doc/*.out doc/*.pnr doc/*.tst
-elif [ -f doc/make_doc ] ; then
-    notice "Copying GAP package documentation for archives (using doc/make_doc)"
-    cp -r "$SRC_DIR/doc" .
-    cp -r "$SRC_DIR/htm" .
-    rm -f doc/*.aux doc/*.bbl doc/*.blg doc/*.brf doc/*.idx doc/*.ilg doc/*.ind doc/*.log doc/*.out doc/*.pnr doc/*.tst
-fi
-
 # make sure every file is readable
 chmod -R a+r .
-
-# replace links to packages which are possibly referenced in the documentation, keep this in sync with `Tests.yml.j2`
-for package in CAP_project/CAP CAP_project/CompilerForCAP CAP_project/MonoidalCategories CAP_project/CartesianCategories CAP_project/FreydCategoriesForCAP HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra homalg_project/homalg homalg_project/Modules Toposes; do
-    
-    # adjust links to other manuals
-    # Note that we cannot use sed's `-i` option for in-place editing, as
-    # that is a non-portable extension of POSIX, which works differently in
-    # BSD and GNU make.
-    for f in ./*/*.htm* ; do
-        sed "s;href=\"/home/gap/.gap/pkg/$package/doc/;href=\"https://homalg-project.github.io/$package/doc/;g" "$f" > "$f.bak"
-        mv "$f.bak" "$f"
-    done
-    
-done
 
 # basic sanity check
 fgrep -q -r '<a href="/' */*.htm* &&
@@ -618,23 +665,25 @@ done
 
 ######################################################################
 #
-# Upload PDF
+# Upload PDF files
 #
 cd "$TMP_DIR"
 echo ""
 
-FULLNAME="$TMP_DIR/$BASENAME/$PDFFile"
-if [ ! -f "$FULLNAME" ] ; then
-	error "could not find PDF"
-fi
-notice "Uploading PDF"
-response=$(curl --fail --progress-bar -o "$TMP_DIR/upload_pdf.log" \
-	-X POST "$UPLOAD_URL/$RELEASE_ID/assets?name=$BASENAME.pdf" \
-	-H "Accept: application/vnd.github.v3+json" \
-	-H "Authorization: token $TOKEN" \
-	-H "Content-Type: application/pdf" \
-	--data-binary @"$FULLNAME")
-
+for PDFFile in $PDFFiles ; do
+    FULLNAME="$TMP_DIR/$BASENAME/$PDFFile"
+    UPLOADNAME=$(echo "${PDFFile#doc/}" | sed 's;/;-;g')
+    if [ ! -f "$FULLNAME" ] ; then
+        error "could not find PDF"
+    fi
+    notice "Uploading PDF"
+    response=$(curl --fail --progress-bar -o "$TMP_DIR/upload_pdf.log" \
+        -X POST "$UPLOAD_URL/$RELEASE_ID/assets?name=$UPLOADNAME" \
+        -H "Accept: application/vnd.github.v3+json" \
+        -H "Authorization: token $TOKEN" \
+        -H "Content-Type: application/pdf" \
+        --data-binary @"$FULLNAME")
+done
 
 ######################################################################
 #
@@ -649,20 +698,26 @@ cp "$TMP_DIR/$BASENAME/PackageInfo.g" .
 rm -rf doc/ htm/
 if [ -f "$TMP_DIR/$BASENAME/doc/chap0.html" ] ; then
     mkdir -p doc/
-    for ext in css html js txt ; do
-        cp "$TMP_DIR/$BASENAME/doc"/*.$ext doc/
-    done
+    cp $(find "$TMP_DIR/$BASENAME/doc" -name '*.css' -o -name '*.html' -o -name '*.jpg' -o -name '*.js' -o -name '*.png' -o -name '*.txt') doc/    
 fi
 if [ -d "$TMP_DIR/$BASENAME/htm" ] ; then
     cp -r "$TMP_DIR/$BASENAME/htm" .
 fi
+if [ -d "$TMP_DIR/$BASENAME/doc/htm" ] ; then
+    mkdir -p doc
+    cp -r "$TMP_DIR/$BASENAME/doc/htm" doc/
+fi
 
-# adjust links to the GAP manuals
+# adjust links to the GAP manuals and to the GAPDoc manuals.
 # Note that we cannot use sed's `-i` option for in-place editing, as
 # that is a non-portable extension of POSIX, which works differently in
 # BSD and GNU make.
 for f in ./*/*.htm* ; do
-  sed 's;href="../../../doc/;href="https://www.gap-system.org/Manuals/doc/;g' "$f" > "$f.bak"
+  sed \
+    -e 's;href="../../../doc/;href="https://www.gap-system.org/Manuals/doc/;g' \
+    -e 's;href="../../../pkg/GAPDoc[^\/]*/doc/;href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc/doc/;g' \
+    -e 's;href="../../../pkg/gapdoc[^\/]*/doc/;href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc/doc/;g' \
+    "$f" > "$f.bak"
   mv "$f.bak" "$f"
 done
 
