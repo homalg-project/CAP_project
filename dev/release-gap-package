@@ -315,7 +315,7 @@ if not IsPackageMarkedForLoading("$PKG", "") then
 fi;
 Read("makedoc.g");
 GAPInput
-    ! grep -E "WARNING: non resolved reference" makedoc.log >/dev/null 2>&1 || error "non resolved reference(s) found in the manual"
+    ! grep -E "WARNING: non resolved reference" makedoc.log || error "non resolved reference(s) found in the manual"
     rm -f makedoc.log
 elif [ -f doc/make_doc ] ; then
     notice "Building GAP package documentation (using doc/make_doc)"
@@ -478,7 +478,7 @@ fi;
 PushOptions(rec(relativePath:="../../.."));
 Read("makedoc.g");
 GAPInput
-    ! grep -E "WARNING: non resolved reference" makedoc.log >/dev/null 2>&1 || error "non resolved reference(s) found in the manual"
+    ! grep -E "WARNING: non resolved reference" makedoc.log || error "non resolved reference(s) found in the manual"
     rm -f makedoc.log
     rm -f doc/*.tex
 elif [ -f doc/make_doc ] ; then
@@ -522,7 +522,7 @@ fi
 chmod -R a+r .
 
 # basic sanity check
-fgrep -q -r '<a href="/' */*.htm* &&
+fgrep -r '<a href="/' */*.htm* &&
     error "HTML manual contains absolute paths"
 
 
