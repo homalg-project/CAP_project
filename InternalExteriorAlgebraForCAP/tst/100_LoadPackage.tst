@@ -7,9 +7,18 @@
 gap> PushOptions( rec( OnlyNeeded := true ) );
 gap> package_loading_info_level := InfoLevel( InfoPackageLoading );;
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_ERROR );;
+gap> LoadPackage( "IO_ForHomalg", false );
+true
+gap> LoadPackage( "HomologicalAlgebraForCAP", false );
+true
 gap> LoadPackage( "InternalExteriorAlgebraForCAP", false );
 true
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_INFO );;
+gap> LoadPackage( "IO_ForHomalg" );
+true
+gap> LoadPackage( "HomologicalAlgebraForCAP" );
+true
 gap> LoadPackage( "InternalExteriorAlgebraForCAP" );
 true
 gap> SetInfoLevel( InfoPackageLoading, package_loading_info_level );;
+gap> HOMALG_IO.show_banners := false;;
