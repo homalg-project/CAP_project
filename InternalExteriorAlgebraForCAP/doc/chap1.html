@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (InternalExteriorAlgebraForCAP) - Chapter 1: Examples and Tests</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap1"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap1_mj.html">[MathJax on]</a></p>
+<p><a id="X7967FE8E7BBDF485" name="X7967FE8E7BBDF485"></a></p>
+<div class="ChapSects"><a href="chap1.html#X7967FE8E7BBDF485">1 <span class="Heading">Examples and Tests</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X8104A77D7B5CCD4F">1.1 <span class="Heading">Basic Commands</span></a>
+</span>
+</div>
+</div>
+
+<h3>1 <span class="Heading">Examples and Tests</span></h3>
+
+<p><a id="X8104A77D7B5CCD4F" name="X8104A77D7B5CCD4F"></a></p>
+
+<h4>1.1 <span class="Heading">Basic Commands</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "InternalExteriorAlgebraForCAP" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "HomologicalAlgebraForCAP" ); # needed for computing spectral sequences</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RepG := RepresentationCategoryZGraded( SymmetricGroup( 4 ) );</span>
+The skeletal Z-graded representation category of SymmetricGroup( [ 1 .. 4 ] )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := UnderlyingGroupForRepresentationCategory( RepG );</span>
+Sym( [ 1 .. 4 ] )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">irr := Irr( G );</span>
+[ Character( CharacterTable( Sym( [ 1 .. 4 ] ) ), [ 1, -1, 1, 1, -1 ] ),
+  Character( CharacterTable( Sym( [ 1 .. 4 ] ) ), [ 3, -1, -1, 0, 1 ] ),
+  Character( CharacterTable( Sym( [ 1 .. 4 ] ) ), [ 2, 0, 2, -1, 0 ] ),
+  Character( CharacterTable( Sym( [ 1 .. 4 ] ) ), [ 3, 1, -1, 0, -1 ] ),
+  Character( CharacterTable( Sym( [ 1 .. 4 ] ) ), [ 1, 1, 1, 1, 1 ] ) ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v := RepresentationCategoryZGradedObject( -1, irr[2], RepG );</span>
+1*(x_[-1, 2])
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat := EModuleActionCategory( v );</span>
+Module category of the internal exterior algebra modeled
+via right actions of 1*(x_[-1, 2])
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h := RepresentationCategoryZGradedObject( 3, irr[2], RepG );</span>
+1*(x_[3, 2])
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := FreeEModule( h, cat );</span>
+&lt;An object in Module category of the internal exterior algebra modeled
+ via right actions of 1*(x_[-1, 2])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">chi := Support( ActionDomain( F ) )[8];</span>
+&lt;x_[2, 4]&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := ComponentInclusionMorphism( ActionDomain( F ), chi );</span>
+&lt;A morphism in The skeletal Z-graded representation category of
+ SymmetricGroup( [ 1 .. 4 ] )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := UniversalMorphismFromFreeModule( F, c );</span>
+&lt;A morphism in Module category of the internal exterior algebra
+ modeled via right actions of 1*(x_[-1, 2])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := FilteredTateResolution( u );</span>
+&lt;An object in Cocomplex category of Descending filtered object category of
+ The skeletal Z-graded representation category of SymmetricGroup( [ 1 .. 4 ] )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := SpectralSequenceEntryOfDescendingFilteredCocomplex( t, 2, 0, 1 );</span>
+&lt;A morphism in Generalized morphism category of
+ The skeletal Z-graded representation category of SymmetricGroup( [ 1 .. 4 ] )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( UnderlyingHonestObject( Source( s ) ) );</span>
+1*(x_[2, 3]) + 1*(x_[2, 5])
+</pre></div>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

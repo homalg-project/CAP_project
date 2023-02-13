@@ -1,7 +1,7 @@
 name: InternalExteriorAlgebraForCAP
-version: "2022.12-01"
+version: "2023.02-01"
 license: "GPL-2.0-or-later"
-date: 2022-12-14
+date: 2023-02-13
 description: |
     Constructions for Modules over the Internal Exterior Algebra for CAP
 
@@ -35,11 +35,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/InternalExteriorAlgebr
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/InternalExteriorAlgebraForCAP-2022.12-01/InternalExteriorAlgebraForCAP-2022.12-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/InternalExteriorAlgebraForCAP-2023.02-01/InternalExteriorAlgebraForCAP-2023.02-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/InternalExteriorAlgebraForCAP-2022.12-01/InternalExteriorAlgebraForCAP-2022.12-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/InternalExteriorAlgebraForCAP-2023.02-01/InternalExteriorAlgebraForCAP-2023.02-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/InternalExteriorAlgebraForCAP-2022.12-01/InternalExteriorAlgebraForCAP-2022.12-01.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/InternalExteriorAlgebraForCAP-2023.02-01/InternalExteriorAlgebraForCAP-2023.02-01.pdf
 
 abstract: |
 
@@ -48,29 +48,29 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>Pos22</span>]   <b class='BibAuthor'>Posur, S.</b>,
+    [<span class='BibKey'>Pos23</span>]   <b class='BibAuthor'>Posur, S.</b>,
      <i class='BibTitle'>InternalExteriorAlgebraForCAP, Constructions for Modules over the Internal Exterior Algebra for CAP,
-             Version 2022.12-01</i>
-     (<span class='BibYear'>2022</span>)<br />
+             Version 2023.02-01</i>
+     (<span class='BibYear'>2023</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/InternalExteriorAlgebraForCAP">https://homalg-project.github.io/pkg/InternalExteriorAlgebraForCAP</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ InternalExteriorAlgebraForCAP2022.12-01,
+    @misc{ InternalExteriorAlgebraForCAP2023.02-01,
       author =           {Posur, S.},
       title =            {{InternalExteriorAlgebraForCAP},   Constructions   for
                           Modules  over  the  Internal Exterior Algebra for CAP,
-                          {V}ersion 2022.12-01},
-      month =            {Dec},
-      year =             {2022},
+                          {V}ersion 2023.02-01},
+      month =            {Feb},
+      year =             {2023},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/InternalExteriorAlgebraForCAP}
                           {\texttt{https://homalg-project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{InternalExteriorAlgebraForCAP}}},
-      printedkey =       {Pos22}
+      printedkey =       {Pos23}
     }
 

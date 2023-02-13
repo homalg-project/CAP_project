@@ -6,10 +6,10 @@
      [1X Constructions for Modules over the Internal Exterior Algebra for CAP [101X
   
   
-                                   2022.12-01
+                                   2023.02-01
   
   
-                                14 December 2022
+                                13 February 2023
   
   
                                 Sebastian Posur
@@ -32,6 +32,8 @@
   
   [1XContents (InternalExteriorAlgebraForCAP)[101X
   
+  1 [33X[0;0YExamples and Tests[133X
+    1.1 [33X[0;0YBasic Commands[133X
   
   
   [32X
