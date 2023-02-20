@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "CartesianCategories",
 Subtitle := "Cartesian and cocartesian categories and various subdoctrines",
-Version := "2023.02-03",
-Date := "08/02/2023",
-Date := "08/02/2023",
+Version := "2023.02-04",
+Date := "20/02/2023",
+Date := "20/02/2023",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -98,10 +98,10 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.12.1",
   NeededOtherPackages := [
-                [ "CAP", ">= 2022.12-06" ],
+                [ "CAP", ">= 2023.02-09" ],
                 ],
   SuggestedOtherPackages := [
-                [ "MonoidalCategories", ">= 2023.02-03" ],
+                [ "MonoidalCategories", ">= 2023.02-04" ],
                 ],
   ExternalConditions := [ ],
 ),
