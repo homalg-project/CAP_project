@@ -59,7 +59,7 @@ end );
 BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
   
   function( opposite_category, category )
-    local only_primitive_operations, recnames, list_of_installed_operations,
+    local only_primitive_operations, recnames, list_of_underlying_operations,
           operations_of_homomorphism_structure, operations_of_external_hom,
           current_recname, current_entry, dual_operation_name, filter_list, input_arguments_names, return_type, func_string,
           dual_preprocessor_func_string, preprocessor_string, dual_arguments, tmp,
@@ -99,9 +99,9 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
                           "IdenticalTwoCell" ] );
     
     if only_primitive_operations then
-        list_of_installed_operations := ListPrimitivelyInstalledOperationsOfCategory( category );
+        list_of_underlying_operations := ListPrimitivelyInstalledOperationsOfCategory( category );
     else
-        list_of_installed_operations := ListInstalledOperationsOfCategory( category );
+        list_of_underlying_operations := ListInstalledOperationsOfCategory( category );
     fi;
     
     operations_of_homomorphism_structure :=
@@ -114,8 +114,13 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
         "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
         ];
     
-    if HasRangeCategoryOfHomomorphismStructure( category ) and
-       not IsEmpty( Intersection( list_of_installed_operations, operations_of_homomorphism_structure ) ) then
+    if not IsEmpty( Intersection( list_of_underlying_operations, operations_of_homomorphism_structure ) ) then
+        
+        if not HasRangeCategoryOfHomomorphismStructure( category ) then
+            
+            Error( "<category> has operations related to the homomorphism structure but no range category is set. This is not supported." );
+            
+        fi;
         
         SetRangeCategoryOfHomomorphismStructure( opposite_category, RangeCategoryOfHomomorphismStructure( category ) );
         SetIsEquippedWithHomomorphismStructure( opposite_category, true );
@@ -137,11 +142,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
         
         dual_operation_name := current_entry.dual_operation;
         
-        if not CanCompute( category, dual_operation_name ) then
-            continue;
-        fi;
-        
-        if not dual_operation_name in list_of_installed_operations then
+        if not dual_operation_name in list_of_underlying_operations then
             continue;
         fi;
         
