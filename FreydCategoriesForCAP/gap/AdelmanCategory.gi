@@ -802,6 +802,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
            and IsProjective( distinguished_object ) then
             
             SetRangeCategoryOfHomomorphismStructure( category, range_category );
+            SetIsEquippedWithHomomorphismStructure( category, true );
             
             homomorphism_structure_derivation_case := "abelian";
             
@@ -828,6 +829,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
                    f -> CanCompute( range_category, f ) )  then
             
             SetRangeCategoryOfHomomorphismStructure( category, FreydCategory( range_category : FinalizeCategory := true ) );
+            SetIsEquippedWithHomomorphismStructure( category, true );
             
             homomorphism_structure_derivation_case := "apply_freyd";
             

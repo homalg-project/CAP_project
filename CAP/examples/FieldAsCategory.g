@@ -47,6 +47,7 @@ InstallMethod( FieldAsCategory,
     SetUnderlyingFieldForHomalg( category, field );
     
     SetRangeCategoryOfHomomorphismStructure( category, MatrixCategory( field ) );
+    SetIsEquippedWithHomomorphismStructure( category, true );
     
     AddObjectRepresentation( category, IsFieldAsCategoryObject );
     

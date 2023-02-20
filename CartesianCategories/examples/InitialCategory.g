@@ -12,6 +12,7 @@ Display( I );
 #! 
 #! 5 primitive operations were used to derive 13 operations for this category
 #! which mathematically
+#! * IsEquippedWithHomomorphismStructure (but not yet algorithmically)
 #! * IsInitialCategory
 OI := Opposite( I );
 #! Opposite( InitialCategory( ) )
@@ -22,5 +23,6 @@ Display( OI );
 #! 
 #! 17 primitive operations were used to derive 17 operations for this category
 #! which mathematically
+#! * IsEquippedWithHomomorphismStructure (but not yet algorithmically)
 #! * IsInitialCategory
 #! @EndExample

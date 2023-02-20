@@ -1050,6 +1050,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             and IsProjective( distinguished_object ) then
             
             SetRangeCategoryOfHomomorphismStructure( category, underlying_range_category );
+            SetIsEquippedWithHomomorphismStructure( category, true );
             
             homomorphism_structure_derivation_case := "abelian";
             
@@ -1082,6 +1083,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             fi;
             
             SetRangeCategoryOfHomomorphismStructure( category, range_category );
+            SetIsEquippedWithHomomorphismStructure( category, true );
             
             homomorphism_structure_derivation_case := "apply_freyd";
             

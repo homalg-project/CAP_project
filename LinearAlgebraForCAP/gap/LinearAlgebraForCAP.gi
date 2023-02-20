@@ -74,6 +74,7 @@ InstallGlobalFunction( MATRIX_CATEGORY,
     SetCommutativeRingOfLinearCategory( category, homalg_field );
     
     SetRangeCategoryOfHomomorphismStructure( category, category );
+    SetIsEquippedWithHomomorphismStructure( category, true );
     
     if category!.overhead then
         

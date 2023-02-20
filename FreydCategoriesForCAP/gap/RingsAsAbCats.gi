@@ -285,6 +285,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
         
         ##
         SetRangeCategoryOfHomomorphismStructure( category, category );
+        SetIsEquippedWithHomomorphismStructure( category, true );
         
         ##
         AddDistinguishedObjectOfHomomorphismStructure( category, { cat } -> RingAsCategoryUniqueObject( cat ) );
@@ -329,6 +330,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
         SetIsLinearCategoryOverCommutativeRing( category, true );
         
         SetCommutativeRingOfLinearCategory( category, field );
+        
+        SetRangeCategoryOfHomomorphismStructure( category, CategoryOfRows( field ) );
+        SetIsEquippedWithHomomorphismStructure( category, true );
         
         ##
         AddMultiplyWithElementOfCommutativeRingForMorphisms( category,

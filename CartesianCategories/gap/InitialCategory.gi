@@ -17,6 +17,7 @@ InstallGlobalFunction( InitialCategory,
     SetFilterObj( I, IsInitialCategory );
     
     SetRangeCategoryOfHomomorphismStructure( I, I );
+    SetIsEquippedWithHomomorphismStructure( I, true );
     
     ##
     AddIsEqualForObjects( I,

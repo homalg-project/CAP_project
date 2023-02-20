@@ -1130,7 +1130,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
                                         );
 
     end );
-
+    
+    ##
+    SetRangeCategoryOfHomomorphismStructure( category, category );
+    SetIsEquippedWithHomomorphismStructure( category, true );
+    
     fi;
 
 end );

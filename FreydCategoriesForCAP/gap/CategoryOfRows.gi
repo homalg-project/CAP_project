@@ -1403,19 +1403,17 @@ AddFinalDerivationBundle( # DistinguishedObjectOfHomomorphismStructure,
     
   end
 ] :
-  FunctionCalledBeforeInstallation :=
-    function ( cat )
-      SetRangeCategoryOfHomomorphismStructure( cat, CategoryOfRows( CommutativeRingOfLinearCategory( cat ) ) );
-      return;
-  end,
   CategoryFilter :=
     function ( cat )
       
       if not IsCategoryOfRows( cat ) and
-              HasIsLinearCategoryOverCommutativeRing( cat ) and IsLinearCategoryOverCommutativeRing( cat ) and
-                HasCommutativeRingOfLinearCategory( cat ) and IsHomalgRing( CommutativeRingOfLinearCategory( cat ) ) then
-        
-        return true;
+         (HasIsEquippedWithHomomorphismStructure and IsEquippedWithHomomorphismStructure)( cat ) and
+         HasRangeCategoryOfHomomorphismStructure( cat ) and
+         IsCategoryOfRows( RangeCategoryOfHomomorphismStructure( cat ) ) and
+         HasIsLinearCategoryOverCommutativeRing( cat ) and IsLinearCategoryOverCommutativeRing( cat ) and
+         HasCommutativeRingOfLinearCategory( cat ) and IsHomalgRing( CommutativeRingOfLinearCategory( cat ) ) then
+          
+          return true;
         
       fi;
       
