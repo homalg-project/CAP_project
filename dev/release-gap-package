@@ -211,7 +211,7 @@ if [ "x$WEB_DIR" = x ] ; then
     WEB_DIR="$SRC_DIR/gh-pages"
 fi
 if [ ! -d "$WEB_DIR" ] ; then
-    error "could not find 'webdir' with clone of your gh-pages branch"
+    error "could not find webdir \"${WEB_DIR}\" with clone of your gh-pages branch"
 fi
 
 # Check for presence of the update script
