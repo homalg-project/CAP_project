@@ -682,8 +682,9 @@
     [4X[28X  "IsAbelianCategoryWithEnoughProjectives", "IsAdditiveCategory",[128X[104X
     [4X[28X  "IsBraidedMonoidalCategory", "IsClosedMonoidalCategory",[128X[104X
     [4X[28X  "IsCoclosedMonoidalCategory", "IsEnrichedOverCommutativeRegularSemigroup",[128X[104X
-    [4X[28X  "IsLinearCategoryOverCommutativeRing", "IsMonoidalCategory",[128X[104X
-    [4X[28X  "IsPreAbelianCategory", "IsRigidSymmetricClosedMonoidalCategory",[128X[104X
+    [4X[28X  "IsEquippedWithHomomorphismStructure", "IsLinearCategoryOverCommutativeRing",[128X[104X
+    [4X[28X  "IsMonoidalCategory", "IsPreAbelianCategory",[128X[104X
+    [4X[28X  "IsRigidSymmetricClosedMonoidalCategory",[128X[104X
     [4X[28X  "IsRigidSymmetricCoclosedMonoidalCategory", "IsSkeletalCategory",[128X[104X
     [4X[28X  "IsStrictMonoidalCategory", "IsSymmetricClosedMonoidalCategory",[128X[104X
     [4X[28X  "IsSymmetricCoclosedMonoidalCategory", "IsSymmetricMonoidalCategory" ][128X[104X
