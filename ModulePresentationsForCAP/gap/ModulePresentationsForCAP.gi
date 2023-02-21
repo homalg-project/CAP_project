@@ -36,6 +36,9 @@ InstallMethod( LeftPresentations,
       
       SetIsSymmetricClosedMonoidalCategory( category, true );
       
+      SetRangeCategoryOfHomomorphismStructure( category, category );
+      SetIsEquippedWithHomomorphismStructure( category, true );
+      
       SetIsLinearCategoryOverCommutativeRing( category, true );
       
       SetCommutativeRingOfLinearCategory( category, ring );
@@ -132,6 +135,9 @@ InstallMethod( RightPresentations,
     if HasIsCommutative( ring ) and IsCommutative( ring ) then
       
       SetIsSymmetricClosedMonoidalCategory( category, true );
+      
+      SetRangeCategoryOfHomomorphismStructure( category, category );
+      SetIsEquippedWithHomomorphismStructure( category, true );
       
       SetIsLinearCategoryOverCommutativeRing( category, true );
       
