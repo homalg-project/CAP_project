@@ -130,11 +130,41 @@ end
     , 100 );
     
     ##
+    AddIsEqualForObjects( cat,
+        
+########
+function ( cat_1, arg2_1, arg3_1 )
+    local deduped_1_1, deduped_2_1;
+    deduped_2_1 := UnderlyingMatrix( arg3_1 );
+    deduped_1_1 := UnderlyingMatrix( arg2_1 );
+    if NumberColumns( deduped_1_1 ) = NumberColumns( deduped_2_1 ) and NumberRows( deduped_1_1 ) = NumberRows( deduped_2_1 ) then
+        return deduped_1_1 = deduped_2_1;
+    else
+        return false;
+    fi;
+    return;
+end
+########
+        
+    , 100 );
+    
+    ##
     AddIsZeroForMorphisms( cat,
         
 ########
 function ( cat_1, arg2_1 )
     return IsZero( DecideZeroColumns( UnderlyingMatrix( arg2_1 ), UnderlyingMatrix( Range( arg2_1 ) ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddPreCompose( cat,
+        
+########
+function ( cat_1, alpha_1, beta_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Range( beta_1 ), UnderlyingMatrix, UnderlyingMatrix( beta_1 ) * UnderlyingMatrix( alpha_1 ) );
 end
 ########
         

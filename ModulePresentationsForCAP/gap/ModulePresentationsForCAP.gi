@@ -227,9 +227,6 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_PRESENTATION,
     # has special cases
     ADD_PRECOMPOSE_LEFT( category );
     
-    # simpler than the compiled version
-    ADD_EQUAL_FOR_OBJECTS( category );
-    
     # IsWellDefined* should not be compiled
     ADD_IS_WELL_DEFINED_FOR_OBJECTS( category );
     
@@ -273,8 +270,6 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION,
     ADD_KERNEL_RIGHT( category );
     
     ADD_PRECOMPOSE_RIGHT( category );
-    
-    ADD_EQUAL_FOR_OBJECTS( category );
     
     ADD_IS_WELL_DEFINED_FOR_OBJECTS( category );
     
@@ -395,21 +390,6 @@ InstallGlobalFunction( ADD_IS_WELL_DEFINED_FOR_MORPHISM_RIGHT,
 end );
 
 ##
-InstallGlobalFunction( ADD_EQUAL_FOR_OBJECTS,
-                       
-  function( category )
-    
-    AddIsEqualForObjects( category,
-                   
-      function( cat, object1, object2 )
-        
-        return UnderlyingMatrix( object1 ) = UnderlyingMatrix( object2 );
-        
-    end );
-    
-end );
-
-##
 InstallGlobalFunction( ADD_KERNEL_LEFT,
                        
   function( category )
@@ -510,12 +490,6 @@ InstallGlobalFunction( ADD_PRECOMPOSE_LEFT,
     AddPreCompose( category,
                    
       [ 
-        [ function( cat, left_morphism, right_morphism )
-            
-            return PresentationMorphism( Source( left_morphism ), UnderlyingMatrix( left_morphism ) * UnderlyingMatrix( right_morphism ), Range( right_morphism ) );
-            
-          end, [ ] ],
-        
         [ function( cat, left_morphism, identity_morphism )
             
             return left_morphism;
@@ -560,13 +534,6 @@ InstallGlobalFunction( ADD_PRECOMPOSE_RIGHT,
     AddPreCompose( category,
       
       [ 
-        
-        [ function( cat, left_morphism, right_morphism )
-          
-          return PresentationMorphism( Source( left_morphism ), UnderlyingMatrix( right_morphism ) * UnderlyingMatrix( left_morphism ), Range( right_morphism ) );
-          
-          end, [ ] ],
-        
         [ function( cat, left_morphism, identity_morphism )
             
             return left_morphism;
