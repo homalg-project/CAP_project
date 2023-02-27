@@ -152,7 +152,7 @@ GeneratePackageYML:=function(pkg)
         AppendTo(stream, "\n");
     fi;
 
-    AppendTo(stream, "pdf: ", pkg.ArchiveURL, ".pdf\n");
+    AppendTo(stream, "pdf: ", pkg.ArchiveURL, "-manual.pdf\n");
     AppendTo(stream, "\n");
 
     AppendTo(stream, "abstract: |\n");
