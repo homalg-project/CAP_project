@@ -25,7 +25,7 @@
 [tests-url]: https://github.com/homalg-project/CAP_project/actions/workflows/Tests.yml?query=branch%3Amaster
 
 [codecov-img]: https://codecov.io/gh/homalg-project/CAP_project/branch/master/graph/badge.svg?flag=ToricSheaves
-[codecov-url]: https://codecov.io/gh/homalg-project/CAP_project/tree/master/ToricSheaves
+[codecov-url]: https://app.codecov.io/gh/homalg-project/CAP_project/tree/master/ToricSheaves
 
 [code-img]: https://img.shields.io/badge/-View%20code-blue?logo=github
 [code-url]: https://github.com/homalg-project/CAP_project/tree/master/ToricSheaves#top
