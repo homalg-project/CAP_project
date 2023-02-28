@@ -2695,6 +2695,7 @@ AddDerivationToCAP( Lift,
     return InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat, Source( alpha ), Source( beta ), Lift( range_cat, a, b ) );
     
 end : CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
+      CategoryFilter := cat -> HasRangeCategoryOfHomomorphismStructure( cat ),
       Description := "Derive Lift using the homomorphism structure and Lift in the range of the homomorphism structure" );
 
 ##
@@ -2725,6 +2726,7 @@ AddDerivationToCAP( LiftOrFail,
     return InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat, Source( alpha ), Source( beta ), l );
     
 end : CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
+      CategoryFilter := cat -> HasRangeCategoryOfHomomorphismStructure( cat ),
       Description := "Derive LiftOrFail using the homomorphism structure and LiftOrFail in the range of the homomorphism structure" );
 
 ##
@@ -2746,6 +2748,7 @@ AddDerivationToCAP( IsLiftable,
     return IsLiftable( range_cat, a, b );
     
 end : CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
+      CategoryFilter := cat -> HasRangeCategoryOfHomomorphismStructure( cat ),
       Description := "Derive IsLiftable using the homomorphism structure and Liftable in the range of the homomorphism structure" );
 
 ## B ←β- C -α→ A, α•ℓ = β ⇔ ν(ℓ)•H(α,B) = ν(β)
@@ -2769,6 +2772,7 @@ AddDerivationToCAP( Colift,
     return InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat, Range( alpha ), Range( beta ), Lift( range_cat, b, a ) );
     
 end : CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
+      CategoryFilter := cat -> HasRangeCategoryOfHomomorphismStructure( cat ),
       Description := "Derive Colift using the homomorphism structure and Lift in the range of the homomorphism structure" );
 
 ##
@@ -2799,6 +2803,7 @@ AddDerivationToCAP( ColiftOrFail,
     return InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat, Range( alpha ), Range( beta ), l );
     
 end : CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
+      CategoryFilter := cat -> HasRangeCategoryOfHomomorphismStructure( cat ),
       Description := "Derive ColiftOrFail using the homomorphism structure and LiftOrFail in the range of the homomorphism structure" );
 
 ##
@@ -2820,6 +2825,7 @@ AddDerivationToCAP( IsColiftable,
     return IsLiftable( range_cat, b, a );
     
 end : CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
+      CategoryFilter := cat -> HasRangeCategoryOfHomomorphismStructure( cat ),
       Description := "Derive IsColiftable using the homomorphism structure and IsLiftable in the range of the homomorphism structure" );
 
 ##

@@ -72,7 +72,7 @@ end );
 InstallGlobalFunction( AddFinalDerivationBundle,
                
   function( can_compute, cannot_compute, additional_functions... )
-    local weight, description, category_filter, loop_multiplier, category_getters, function_called_before_installation, operations_in_graph, operations_to_install, union_of_collected_lists, derivations, collected_list, used_op_names_with_multiples_and_category_getters, dummy_derivation, final_derivation, i, current_additional_func, x;
+    local weight, description, category_filter, loop_multiplier, category_getters, function_called_before_installation, operations_in_graph, operations_to_install, union_of_collected_lists, derivations, collected_list, used_op_names_with_multiples_and_category_getters, dummy_func, dummy_derivation, final_derivation, i, current_additional_func, x;
     
     if IsEmpty( additional_functions ) then
         
@@ -264,10 +264,15 @@ InstallGlobalFunction( AddFinalDerivationBundle,
         
     fi;
     
+    dummy_func := x -> x;
+    #= comment for Julia
+    SetNameFunction( dummy_func, "internal dummy function of a final derivation" );
+    # =#
+    
     # only used to check if we can install all the derivations in `derivations`
     dummy_derivation := MakeDerivation(
         "dummy derivation",
-        IsEqualForObjects,
+        dummy_func,
         used_op_names_with_multiples_and_category_getters,
         1,
         ReturnTrue,

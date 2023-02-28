@@ -46,6 +46,12 @@ function( name, target_op, used_op_names_with_multiples_and_category_getters, we
         
     fi;
     
+    if ForAny( used_op_names_with_multiples_and_category_getters, x -> x[3] <> fail ) and category_filter = IsCapCategory then
+        
+        Print( "WARNING: A derivation for ", NameFunction( target_op ), " depends on other categories (e.g. RangeCategoryOfHomomorphismStructure) but does no test via the CategoryFilter if the other categories are available (e.g. by testing HasRangeCategoryOfHomomorphismStructure).\n" );
+        
+    fi;
+    
     if IsProperty( category_filter ) then
         
         category_filter := Tester( category_filter ) and category_filter;
