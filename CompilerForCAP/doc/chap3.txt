@@ -252,51 +252,51 @@
     [4X[25X>[125X [27Xoperations_for_arbitrary_ring := [[127X[104X
     [4X[25X>[125X [27X    "AdditionForMorphisms",[127X[104X
     [4X[25X>[125X [27X    "AdditiveInverseForMorphisms",[127X[104X
-    [4X[25X>[125X [27X    #"AssociatorLeftToRightWithGivenTensorProducts",[127X[104X
-    [4X[25X>[125X [27X    #"AssociatorRightToLeftWithGivenTensorProducts",[127X[104X
-    [4X[25X>[125X [27X    #"BraidingWithGivenTensorProducts",[127X[104X
-    [4X[25X>[125X [27X    #"CoevaluationMorphismWithGivenRange",[127X[104X
     [4X[25X>[125X [27X    "CokernelColiftWithGivenCokernelObject",[127X[104X
     [4X[25X>[125X [27X    "CokernelProjection",[127X[104X
-    [4X[25X>[125X [27X    #"Colift",[127X[104X
-    [4X[25X>[125X [27X    #"ColiftOrFail",[127X[104X
     [4X[25X>[125X [27X    "DirectSum",[127X[104X
     [4X[25X>[125X [27X    "EpimorphismFromSomeProjectiveObject",[127X[104X
-    [4X[25X>[125X [27X    #"EvaluationMorphismWithGivenSource",[127X[104X
     [4X[25X>[125X [27X    "IdentityMorphism",[127X[104X
     [4X[25X>[125X [27X    "InjectionOfCofactorOfDirectSumWithGivenDirectSum",[127X[104X
-    [4X[25X>[125X [27X    #"InternalHomOnMorphismsWithGivenInternalHoms",[127X[104X
-    [4X[25X>[125X [27X    #"InternalHomOnObjects",[127X[104X
-    [4X[25X>[125X [27X    #"IsColiftable",[127X[104X
     [4X[25X>[125X [27X    "IsCongruentForMorphisms",[127X[104X
     [4X[25X>[125X [27X    "IsEqualForMorphisms",[127X[104X
-    [4X[25X>[125X [27X    #"IsEqualForObjects",[127X[104X
-    [4X[25X>[125X [27X    #"IsLiftable",[127X[104X
+    [4X[25X>[125X [27X    "IsEqualForObjects",[127X[104X
     [4X[25X>[125X [27X    #"IsWellDefinedForMorphisms",[127X[104X
     [4X[25X>[125X [27X    #"IsWellDefinedForObjects",[127X[104X
     [4X[25X>[125X [27X    "IsZeroForMorphisms",[127X[104X
     [4X[25X>[125X [27X    #"KernelEmbedding",[127X[104X
-    [4X[25X>[125X [27X    #"LeftUnitorWithGivenTensorProduct",[127X[104X
-    [4X[25X>[125X [27X    #"Lift",[127X[104X
     [4X[25X>[125X [27X    #"LiftAlongMonomorphism",[127X[104X
-    [4X[25X>[125X [27X    #"LiftOrFail",[127X[104X
-    [4X[25X>[125X [27X    #"MultiplyWithElementOfCommutativeRingForMorphisms",[127X[104X
-    [4X[25X>[125X [27X    #"PreCompose",[127X[104X
+    [4X[25X>[125X [27X    "PreCompose",[127X[104X
     [4X[25X>[125X [27X    "ProjectionInFactorOfDirectSumWithGivenDirectSum",[127X[104X
-    [4X[25X>[125X [27X    #"RightUnitorWithGivenTensorProduct",[127X[104X
-    [4X[25X>[125X [27X    #"TensorProductOnMorphismsWithGivenTensorProducts",[127X[104X
-    [4X[25X>[125X [27X    #"TensorProductOnObjects",[127X[104X
-    [4X[25X>[125X [27X    #"TensorUnit",[127X[104X
     [4X[25X>[125X [27X    "UniversalMorphismFromDirectSumWithGivenDirectSum",[127X[104X
     [4X[25X>[125X [27X    "UniversalMorphismFromZeroObjectWithGivenZeroObject",[127X[104X
     [4X[25X>[125X [27X    "UniversalMorphismIntoDirectSumWithGivenDirectSum",[127X[104X
     [4X[25X>[125X [27X    "UniversalMorphismIntoZeroObjectWithGivenZeroObject",[127X[104X
     [4X[25X>[125X [27X    "ZeroMorphism",[127X[104X
-    [4X[25X>[125X [27X    "ZeroObject" [127X[104X
+    [4X[25X>[125X [27X    "ZeroObject",[127X[104X
     [4X[25X>[125X [27X];;[127X[104X
     [4X[25Xgap>[125X [27Xoperations_for_commutative_ring := Concatenation([127X[104X
     [4X[25X>[125X [27X    operations_for_arbitrary_ring,[127X[104X
-    [4X[25X>[125X [27X    [ "MultiplyWithElementOfCommutativeRingForMorphisms" ][127X[104X
+    [4X[25X>[125X [27X    [ #"AssociatorLeftToRightWithGivenTensorProducts",[127X[104X
+    [4X[25X>[125X [27X      #"AssociatorRightToLeftWithGivenTensorProducts",[127X[104X
+    [4X[25X>[125X [27X      #"BraidingWithGivenTensorProducts",[127X[104X
+    [4X[25X>[125X [27X      #"CoevaluationMorphismWithGivenRange",[127X[104X
+    [4X[25X>[125X [27X      #"Colift",[127X[104X
+    [4X[25X>[125X [27X      #"ColiftOrFail",[127X[104X
+    [4X[25X>[125X [27X      #"EvaluationMorphismWithGivenSource",[127X[104X
+    [4X[25X>[125X [27X      #"InternalHomOnMorphismsWithGivenInternalHoms",[127X[104X
+    [4X[25X>[125X [27X      #"InternalHomOnObjects",[127X[104X
+    [4X[25X>[125X [27X      #"IsColiftable",[127X[104X
+    [4X[25X>[125X [27X      #"IsLiftable",[127X[104X
+    [4X[25X>[125X [27X      #"LeftUnitorWithGivenTensorProduct",[127X[104X
+    [4X[25X>[125X [27X      #"Lift",[127X[104X
+    [4X[25X>[125X [27X      #"LiftOrFail",[127X[104X
+    [4X[25X>[125X [27X      "MultiplyWithElementOfCommutativeRingForMorphisms",[127X[104X
+    [4X[25X>[125X [27X      #"RightUnitorWithGivenTensorProduct",[127X[104X
+    [4X[25X>[125X [27X      #"TensorProductOnMorphismsWithGivenTensorProducts",[127X[104X
+    [4X[25X>[125X [27X      #"TensorProductOnObjects",[127X[104X
+    [4X[25X>[125X [27X      #"TensorUnit",[127X[104X
+    [4X[25X>[125X [27X    ][127X[104X
     [4X[25X>[125X [27X);;[127X[104X
     [4X[25Xgap>[125X [27Xprecompile_LeftPresentations := function( ring, name, operations )[127X[104X
     [4X[25X>[125X [27X    [127X[104X
