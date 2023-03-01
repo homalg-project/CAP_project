@@ -332,18 +332,6 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 return function( arg, i )
                     CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arg, RangeCategoryOfHomomorphismStructure( category ), function( ) return input_human_readable_identifier_getter( i ); end );
                 end;
-            elif filter = "other_object" then
-                return function( arg, i )
-                    CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arg, false, function( ) return input_human_readable_identifier_getter( i ); end );
-                end;
-            elif filter = "other_morphism" then
-                return function( arg, i )
-                    CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arg, false, function( ) return input_human_readable_identifier_getter( i ); end );
-                end;
-            elif filter = "other_twocell" then
-                return function( arg, i )
-                    CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( arg, false, function( ) return input_human_readable_identifier_getter( i ); end );
-                end;
             elif filter = "list_of_objects" then
                 return function( arg, i )
                     CAP_INTERNAL_ASSERT_IS_LIST_OF_OBJECTS_OF_CATEGORY( arg, category, function( ) return input_human_readable_identifier_getter( i ); end );
@@ -427,14 +415,6 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 if not ( result = true or result = false ) then
                     Error( Concatenation( output_human_readable_identifier_getter(), " is not a boolean (true/false). You can access the result via the local variable 'result' in a break loop." ) );
                 fi;
-            end;
-        elif record.return_type = "other_object" then
-            output_sanity_check_function := function( result )
-                CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( result, false, output_human_readable_identifier_getter );
-            end;
-        elif record.return_type = "other_morphism" then
-            output_sanity_check_function := function( result )
-                CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( result, false, output_human_readable_identifier_getter );
             end;
         elif record.return_type = "list_of_objects" then
             output_sanity_check_function := function( result )

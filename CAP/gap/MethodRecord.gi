@@ -14,8 +14,6 @@ InstallValue( CAP_INTERNAL_VALID_RETURN_TYPES,
         "object_in_range_category_of_homomorphism_structure",
         "morphism_in_range_category_of_homomorphism_structure",
         "bool",
-        "other_object",
-        "other_morphism",
         "list_of_objects",
         "list_of_morphisms",
         "list_of_morphisms_or_fail",
@@ -4857,6 +4855,10 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             Error( "<current_rec> has no return_type" );
         fi;
         
+        if current_rec.return_type in [ "other_object", "other_morphism" ] then
+            Error( "The return types \"other_object\" and \"other_morphism\" are not supported anymore. If you need those, please report this using the CAP_projects's issue tracker." );
+        fi;
+        
         if not ( IsFilter( current_rec.return_type ) or current_rec.return_type in CAP_INTERNAL_VALID_RETURN_TYPES ) then
             Error( "the return_type of <current_rec> is not a filter and does not appear in CAP_INTERNAL_VALID_RETURN_TYPES" );
         fi;
@@ -4875,6 +4877,10 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
             Error( "The first entry of `filter_list` must be the string \"category\". Search for `category_as_first_argument` in the documentation for more details." );
             
+        fi;
+        
+        if ForAny( current_rec.filter_list, x -> x in [ "other_category", "other_object", "other_morphism", "other_twocell" ] ) then
+            Error( "The filters \"other_category\", \"other_object\", \"other_morphism\", and \"other_twocell\" are not supported anymore. If you need those, please report this using the CAP_projects's issue tracker." );
         fi;
         
         if IsBound( current_rec.io_type ) then
@@ -5224,7 +5230,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
         fi;
         
-        if ForAll( current_rec.filter_list, x -> x in [ IsRingElement, "integer", "nonneg_integer_or_infinity", "category", "object", "object_in_range_category_of_homomorphism_structure", "other_object", "list_of_objects" ] ) then
+        if ForAll( current_rec.filter_list, x -> x in [ IsRingElement, "integer", "nonneg_integer_or_infinity", "category", "object", "object_in_range_category_of_homomorphism_structure", "list_of_objects" ] ) then
             
             if not IsBound( current_rec.compatible_with_congruence_of_morphisms ) then
                 
@@ -5323,9 +5329,9 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                 
             fi;
             
-            if not without_given_rec.return_type in [ "morphism", "morphism_in_range_category_of_homomorphism_structure", "other_morphism" ] then
+            if not without_given_rec.return_type in [ "morphism", "morphism_in_range_category_of_homomorphism_structure" ] then
                 
-                Error( "This is a WithoutGiven record, but return_type is neither \"morphism\" nor \"morphism_in_range_category_of_homomorphism_structure\" nor \"other_morphism\". This is not supported." );
+                Error( "This is a WithoutGiven record, but return_type is neither \"morphism\" nor \"morphism_in_range_category_of_homomorphism_structure\". This is not supported." );
                 
             fi;
             
@@ -5337,10 +5343,6 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             elif without_given_rec.return_type = "morphism_in_range_category_of_homomorphism_structure" then
                 
                 with_given_object_filter := "object_in_range_category_of_homomorphism_structure";
-                
-            elif without_given_rec.return_type = "other_morphism" then
-                
-                with_given_object_filter := "other_object";
                 
             else
                 

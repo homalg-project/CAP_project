@@ -188,22 +188,6 @@ InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( stri
             
         fi;
         
-    elif string = "other_category" then
-        
-        return CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( "category" );
-        
-    elif string = "other_object" then
-        
-        return CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( "object" );
-        
-    elif string = "other_morphism" then
-        
-        return CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( "morphism" );
-        
-    elif string = "other_twocell" then
-        
-        return CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( "twocell");
-        
     elif string = "object_datum" then
         
         if category <> false then
@@ -1075,28 +1059,10 @@ InstallGlobalFunction( CapJitDataTypeOfCategory, function ( cat )
         
     else
         
-        if IsBound( cat!.compiler_hints ) and IsBound( cat!.compiler_hints.category_filter ) then
-            
-            if not IsSpecializationOfFilter( cat!.compiler_hints.category_filter, CategoryFilter( cat ) ) then
-                
-                InstallTrueMethod( cat!.compiler_hints.category_filter, CategoryFilter( cat ) );
-                
-            fi;
-            
-            Assert( 0, IsSpecializationOfFilter( cat!.compiler_hints.category_filter, CategoryFilter( cat ) ) );
-            
-        fi;
-        
         type := rec(
             filter := CategoryFilter( cat ),
             category := cat,
         );
-        
-    fi;
-    
-    if not IsSpecializationOfFilter( IsCapCategory, type.filter ) then
-        
-        Print( "WARNING: filter ", type.filter, " does not imply `IsCapCategory`. This will probably cause errors.\n" );
         
     fi;
     
@@ -1116,26 +1082,10 @@ InstallGlobalFunction( CapJitDataTypeOfObjectOfCategory, function ( cat )
         
     else
         
-        if IsBound( cat!.compiler_hints ) and IsBound( cat!.compiler_hints.object_filter ) then
-            
-            if not IsSpecializationOfFilter( cat!.compiler_hints.object_filter, ObjectFilter( cat ) ) then
-                
-                Error( "ObjectFilter( cat ) does not imply cat!.compiler_hints.object_filter. This is not supported." );
-                
-            fi;
-            
-        fi;
-        
         type := rec(
             filter := ObjectFilter( cat ),
             category := cat,
         );
-        
-    fi;
-    
-    if not IsSpecializationOfFilter( IsCapCategoryObject, type.filter ) then
-        
-        Print( "WARNING: filter ", type.filter, " does not imply `IsCapCategoryObject`. This will probably cause errors.\n" );
         
     fi;
     
@@ -1155,26 +1105,10 @@ InstallGlobalFunction( CapJitDataTypeOfMorphismOfCategory, function ( cat )
         
     else
         
-        if IsBound( cat!.compiler_hints ) and IsBound( cat!.compiler_hints.morphism_filter ) then
-            
-            if not IsSpecializationOfFilter( cat!.compiler_hints.morphism_filter, MorphismFilter( cat ) ) then
-                
-                Error( "MorphismFilter( cat ) does not imply cat!.compiler_hints.morphism_filter. This is not supported." );
-                
-            fi;
-            
-        fi;
-        
         type := rec(
             filter := MorphismFilter( cat ),
             category := cat,
         );
-        
-    fi;
-    
-    if not IsSpecializationOfFilter( IsCapCategoryMorphism, type.filter ) then
-        
-        Print( "WARNING: filter ", type.filter, " does not imply `IsCapCategoryMorphism`. This will probably cause errors.\n" );
         
     fi;
     
@@ -1198,12 +1132,6 @@ InstallGlobalFunction( CapJitDataTypeOfTwoCellOfCategory, function ( cat )
             filter := TwoCellFilter( cat ),
             category := cat,
         );
-        
-    fi;
-    
-    if not IsSpecializationOfFilter( IsCapCategoryTwoCell, type.filter ) then
-        
-        Print( "WARNING: filter ", type.filter, " does not imply `IsCapCategoryTwoCell`. This will probably cause errors.\n" );
         
     fi;
     
