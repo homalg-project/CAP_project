@@ -474,6 +474,12 @@ InstallGlobalFunction( "CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER",
         
         return function( value )
             
+            if not filter( value ) then
+                
+                CallFuncList( Error, Concatenation( human_readable_identifier_list, [ " does not lie in the expected filter ", filter, ".", generic_help_string ] ) );
+                
+            fi;
+            
             CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( value, data_type.category, human_readable_identifier_list );
             
         end;
@@ -482,6 +488,12 @@ InstallGlobalFunction( "CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER",
         
         return function( value )
             
+            if not filter( value ) then
+                
+                CallFuncList( Error, Concatenation( human_readable_identifier_list, [ " does not lie in the expected filter ", filter, ".", generic_help_string ] ) );
+                
+            fi;
+            
             CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( value, data_type.category, human_readable_identifier_list );
             
         end;
@@ -489,6 +501,12 @@ InstallGlobalFunction( "CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER",
     elif IsSpecializationOfFilter( IsCapCategoryTwoCell, filter ) then
         
         return function( value )
+            
+            if not filter( value ) then
+                
+                CallFuncList( Error, Concatenation( human_readable_identifier_list, [ " does not lie in the expected filter ", filter, ".", generic_help_string ] ) );
+                
+            fi;
             
             CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( value, data_type.category, human_readable_identifier_list );
             
