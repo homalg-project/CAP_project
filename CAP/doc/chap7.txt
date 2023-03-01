@@ -175,14 +175,6 @@
   
         [30X    [33X[0;12Y[10Xmorphism_in_range_category_of_homomorphism_structure[110X,[133X
   
-        [30X    [33X[0;12Y[10Xother_category[110X,[133X
-  
-        [30X    [33X[0;12Y[10Xother_object[110X,[133X
-  
-        [30X    [33X[0;12Y[10Xother_morphism[110X,[133X
-  
-        [30X    [33X[0;12Y[10Xother_twocell[110X,[133X
-  
         [30X    [33X[0;12Y[10Xlist_of_objects[110X,[133X
   
         [30X    [33X[0;12Y[10Xlist_of_morphisms[110X,[133X
@@ -210,8 +202,6 @@
     [4X        "object_in_range_category_of_homomorphism_structure",[104X
     [4X        "morphism_in_range_category_of_homomorphism_structure",[104X
     [4X        "bool",[104X
-    [4X        "other_object",[104X
-    [4X        "other_morphism",[104X
     [4X        "list_of_objects",[104X
     [4X        "list_of_morphisms",[104X
     [4X        "list_of_morphisms_or_fail",[104X
