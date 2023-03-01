@@ -288,10 +288,6 @@
         morphisms  can be easily created from the morphism datum anyway. Note:
         Some simple expressions like integers are NOT replaced.[133X
   
-  [30X    [33X[0;6Y[10X{category,object,morphism}_filter[110X:           (Deprecated:          Use
-        [10XCreateCapCategoryWithDataTypes[110X  instead)  filters  used  for  the data
-        types of the category and its objects and morphisms.[133X
-  
   [33X[0;0YNote:  The compiler can only discover the hints if the category is the first
   argument of the function.[133X
   
