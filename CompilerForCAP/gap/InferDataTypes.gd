@@ -13,8 +13,9 @@
 #!   * `IsFunction` with additional component `signature`: The signature is a list with two entries. The first entry is a list of data types
 #!     of the inputs, the second entry is the data type of the output.
 #!   * `IsList` with additional component `element_type`: The type of the elements of the list. Only homogeneous lists are supported.
-#!   * filters implying `IsCapCategory`, `IsCapCategoryObject` or `IsCapCategoryMorphism` with additional component `category`:
-#!     The category instance (to which the object or morphism belongs).
+#!   * `IsNTuple` with additional component `element_types`: The types of the elements of the tuple.
+#!   * filters implying `IsCapCategory`, `IsCapCategoryObject`, `IsCapCategoryMorphism`, or `IsCapCategoryTwoCell` with additional component `category`:
+#!     The category instance (to which the object, morphism or two cell belongs).
 #! @Returns a record
 #! @Arguments tree
 DeclareGlobalFunction( "CapJitInferredDataTypes" );
