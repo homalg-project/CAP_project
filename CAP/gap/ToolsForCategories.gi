@@ -188,22 +188,6 @@ InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( stri
             
         fi;
         
-    elif string = "other_category" then
-        
-        return CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( "category" );
-        
-    elif string = "other_object" then
-        
-        return CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( "object" );
-        
-    elif string = "other_morphism" then
-        
-        return CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( "morphism" );
-        
-    elif string = "other_twocell" then
-        
-        return CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( "twocell");
-        
     elif string = "object_datum" then
         
         if category <> false then

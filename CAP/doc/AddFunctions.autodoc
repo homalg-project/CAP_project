@@ -121,10 +121,6 @@ The record can have the following components, most of which can be set in the me
                * <C>twocell</C>,
                * <C>object_in_range_category_of_homomorphism_structure</C>,
                * <C>morphism_in_range_category_of_homomorphism_structure</C>,
-               * <C>other_category</C>,
-               * <C>other_object</C>,
-               * <C>other_morphism</C>,
-               * <C>other_twocell</C>,
                * <C>list_of_objects</C>,
                * <C>list_of_morphisms</C>,
                * <C>list_of_twocells</C>.
