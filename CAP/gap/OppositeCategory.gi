@@ -423,7 +423,7 @@ InstallMethod( Opposite,
       local opposite_object;
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
-        CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( object, OppositeCategory( cat ), {} -> "the object datum given to the object constructor of <cat>" );
+        CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( object, OppositeCategory( cat ), [ "the object datum given to the object constructor of <cat>" ] );
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         if HasOpposite( object ) then
@@ -461,7 +461,7 @@ InstallMethod( Opposite,
       local opposite_morphism;
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
-        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( morphism, OppositeCategory( cat ), {} -> "the morphism datum given to the morphism constructor of <cat>" );
+        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( morphism, OppositeCategory( cat ), [ "the morphism datum given to the morphism constructor of <cat>" ] );
         
         if IsEqualForObjects( OppositeCategory( cat ), Source( morphism ), Opposite( range ) ) = false then
             

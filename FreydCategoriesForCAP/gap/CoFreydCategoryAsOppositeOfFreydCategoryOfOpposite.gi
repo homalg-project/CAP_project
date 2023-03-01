@@ -30,7 +30,7 @@ InstallMethod( CoFreydCategoryAsOppositeOfFreydCategoryOfOpposite,
         underlying_cat := UnderlyingCategory( cat );
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
-        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( co_relation_morphism, underlying_cat, {} -> "the object datum given to the object constructor of <cat>" );
+        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( co_relation_morphism, underlying_cat, [ "the object datum given to the object constructor of <cat>" ] );
         
         return ObjectifyObjectForCAPWithAttributes( rec( ), cat,
                                                     CoRelationMorphism, co_relation_morphism );
@@ -49,7 +49,7 @@ InstallMethod( CoFreydCategoryAsOppositeOfFreydCategoryOfOpposite,
         underlying_cat := OppositeCategory( op1 );
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
-        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( co_relation_morphism, underlying_cat, {} -> "the object datum given to the modeling tower object constructor of <cat>" );
+        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( co_relation_morphism, underlying_cat, [ "the object datum given to the modeling tower object constructor of <cat>" ] );
         
         op1_morphism := MorphismConstructor( op1,
             ObjectConstructor( op1,
@@ -91,7 +91,7 @@ InstallMethod( CoFreydCategoryAsOppositeOfFreydCategoryOfOpposite,
         underlying_cat := UnderlyingCategory( cat );
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
-        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( underlying_morphism, underlying_cat, {} -> "the morphism datum given to the morphism constructor of <cat>" );
+        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( underlying_morphism, underlying_cat, [ "the morphism datum given to the morphism constructor of <cat>" ] );
         
         if IsEqualForObjects( underlying_cat, Source( underlying_morphism ), Source( CoRelationMorphism( source ) ) ) = false then
             
@@ -124,7 +124,7 @@ InstallMethod( CoFreydCategoryAsOppositeOfFreydCategoryOfOpposite,
         underlying_cat := OppositeCategory( op1 );
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
-        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( underlying_morphism, underlying_cat, {} -> "the morphism datum given to the modeling tower morphism constructor of <cat>" );
+        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( underlying_morphism, underlying_cat, [ "the morphism datum given to the modeling tower morphism constructor of <cat>" ] );
         
         if IsEqualForObjects( underlying_cat, Source( underlying_morphism ), Source( Opposite( RelationMorphism( Opposite( source ) ) ) ) ) = false then
             

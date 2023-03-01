@@ -214,7 +214,7 @@ InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( stri
             
         fi;
         
-    elif string = "object_or_fail" or string = "morphism_or_fail" then
+    elif string = "object_or_fail" or string = "morphism_or_fail" or string = "list_or_morphisms_or_fail" then
         
         # cannot be express "or fail" yet
         return fail;
@@ -346,6 +346,165 @@ InstallGlobalFunction( "CAP_INTERNAL_MERGE_FILTER_LISTS",
     return filter_list;
 end );
 
+InstallGlobalFunction( "CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER",
+  
+  function( data_type, human_readable_identifier_list )
+    local generic_help_string, filter, asserts_value_is_of_element_type, generic_assert_value_is_of_element_type;
+    
+    generic_help_string := " You can access the value via the local variable 'value' in a break loop.";
+    
+    filter := data_type.filter;
+    
+    if IsSpecializationOfFilter( IsFunction, filter ) then
+        
+        return function( value )
+            
+            if not filter( value ) then
+                
+                CallFuncList( Error, Concatenation( human_readable_identifier_list, [ " does not lie in the expected filter ", filter, ".", generic_help_string ] ) );
+                
+            fi;
+            
+            if NumberArgumentsFunction( value ) >= 0 and NumberArgumentsFunction( value ) <> Length( data_type.signature[1] ) then
+                
+                CallFuncList( Error, Concatenation( human_readable_identifier_list, [ " has ", NumberArgumentsFunction( value ), " arguments but ", Length( data_type.signature[1] ), " were expected.", generic_help_string ] ) );
+                
+            fi;
+            
+        end;
+        
+    elif IsSpecializationOfFilter( IsList, filter ) and not IsSpecializationOfFilter( IsString, filter ) then
+        
+        # In principle, we have to create an assertion function for each integer to get the human readable identifier correct.
+        # The "correct" approach would be to generate those on demand but that would imply that we have to create assertion functions at runtime.
+        # Thus, we take the pragmatic approach: We generate an assertion function for the first few entries, and a generic assertion function for all other entries.
+        # For nested lists the number of assertion functions grows exponentially, so we choose a quite small number (4).
+        asserts_value_is_of_element_type := List( [ 1 .. 4 ], i -> CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER( data_type.element_type, Concatenation( [ "the ", i, "-th entry of " ], human_readable_identifier_list ) ) );
+        
+        generic_assert_value_is_of_element_type := CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER( data_type.element_type, Concatenation( [ "some entry of " ], human_readable_identifier_list )  );
+        
+        return function( value )
+          local i;
+            
+            if not filter( value ) then
+                
+                CallFuncList( Error, Concatenation( human_readable_identifier_list, [ " does not lie in the expected filter ", filter, ".", generic_help_string ] ) );
+                
+            fi;
+            
+            for i in [ 1 .. Length( value ) ] do
+                
+                if not IsBound( value[i] ) then
+                    
+                    CallFuncList( Error, Concatenation( [ "the ", i, "-th entry of " ], human_readable_identifier_list, [ " is not bound.", generic_help_string ] ) );
+                    
+                fi;
+                
+                if i <= 4 then
+                    
+                    asserts_value_is_of_element_type[i]( value[i] );
+                    
+                else
+                    
+                    generic_assert_value_is_of_element_type( value[i] );
+                    
+                fi;
+                
+            od;
+            
+        end;
+        
+    elif IsSpecializationOfFilter( IsNTuple, filter ) then
+        
+        asserts_value_is_of_element_type := List( [ 1 .. Length( data_type.element_types ) ], i -> CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER( data_type.element_types[i], Concatenation( [ "the ", i, "-th entry of " ], human_readable_identifier_list ) ) );
+        
+        return function( value )
+          local i;
+            
+            # tuples are modeled as lists
+            if not IsList( value ) then
+                
+                CallFuncList( Error, Concatenation( human_readable_identifier_list, [ " does not lie in the expected filter IsList (implementation filter of IsNTuple).", generic_help_string ] ) );
+                
+            fi;
+            
+            if Length( value ) <> Length( data_type.element_types ) then
+                
+                CallFuncList( Error, Concatenation( human_readable_identifier_list, [ " has length ", Length( value ), " but ", Length( data_type.element_types ), " was expected.", generic_help_string ] ) );
+                
+            fi;
+            
+            for i in [ 1 .. Length( value ) ] do
+                
+                if not IsBound( value[i] ) then
+                    
+                    CallFuncList( Error, Concatenation( [ "the ", i, "-th entry of " ], human_readable_identifier_list, [ " is not bound.", generic_help_string ] ) );
+                    
+                fi;
+                
+                asserts_value_is_of_element_type[i]( value[i] );
+                
+            od;
+            
+        end;
+        
+    elif IsSpecializationOfFilter( IsCapCategory, filter ) then
+        
+        return function( value )
+            
+            if not filter( value ) then
+                
+                CallFuncList( Error, Concatenation( human_readable_identifier_list, [ " does not lie in the expected filter ", filter, ".", generic_help_string ] ) );
+                
+            fi;
+            
+            if not IsIdenticalObj( value, data_type.category ) then
+                
+                CallFuncList( Error, Concatenation( human_readable_identifier_list, [ " is not the expected category although it lies in the category filter of the expected category. This should never happen, please report this using the CAP_project's issue tracker.", generic_help_string ] ) );
+                
+            fi;
+            
+        end;
+        
+    elif IsSpecializationOfFilter( IsCapCategoryObject, filter ) then
+        
+        return function( value )
+            
+            CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( value, data_type.category, human_readable_identifier_list );
+            
+        end;
+        
+    elif IsSpecializationOfFilter( IsCapCategoryMorphism, filter ) then
+        
+        return function( value )
+            
+            CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( value, data_type.category, human_readable_identifier_list );
+            
+        end;
+        
+    elif IsSpecializationOfFilter( IsCapCategoryTwoCell, filter ) then
+        
+        return function( value )
+            
+            CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( value, data_type.category, human_readable_identifier_list );
+            
+        end;
+        
+    else
+        
+        return function( value )
+            
+            if not filter( value ) then
+                
+                CallFuncList( Error, Concatenation( human_readable_identifier_list, [ " does not lie in the expected filter ", filter, ".", generic_help_string ] ) );
+                
+            fi;
+            
+        end;
+        
+    fi;
+    
+end );
 
 InstallGlobalFunction( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT,
     

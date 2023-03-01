@@ -188,8 +188,8 @@ InstallGlobalFunction( CapInternalInstallAdd,
       function( category, method_list, weight )
         local install_func, replaced_filter_list, needs_wrapping, i, is_derivation, is_final_derivation, is_precompiled_derivation, without_given_name, with_given_name,
               without_given_weight, with_given_weight, number_of_proposed_arguments, current_function_number,
-              current_function_argument_number, current_additional_filter_list_length, input_human_readable_identifier_getter, input_sanity_check_functions,
-              output_human_readable_identifier_getter, output_sanity_check_function, name;
+              current_function_argument_number, current_additional_filter_list_length, input_sanity_check_functions,
+              output_human_readable_identifier_list, output_data_type, assert_is_value_of_return_type, output_sanity_check_function, name;
         
         if IsFinalized( category ) then
             Error( "cannot add methods anymore, category is finalized" );
@@ -299,166 +299,97 @@ InstallGlobalFunction( CapInternalInstallAdd,
         od;
         
         # prepare input sanity check
-        input_human_readable_identifier_getter := i -> Concatenation( "the ", String(i), "-th argument of the function \033[1m", record.function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" );
-        
         input_sanity_check_functions := List( [ 1 .. Length( record.filter_list ) ], function ( i )
-          local filter;
+          local filter, data_type, assert_is_value_of_type;
             
             filter := record.filter_list[ i ];
-
+            
             if IsFilter( filter ) then
+                
                 # the only check would be that the input lies in the filter, which is already checked by the method selection
                 return ReturnTrue;
-            elif filter = "category" then
-                # the only check would be that the input lies in IsCapCategory, which is already checked by the method selection
-                return ReturnTrue;
-            elif filter = "object" then
-                return function( arg, i )
-                    CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arg, category, function( ) return input_human_readable_identifier_getter( i ); end );
-                end;
-            elif filter = "morphism" then
-                return function( arg, i )
-                    CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arg, category, function( ) return input_human_readable_identifier_getter( i ); end );
-                end;
-            elif filter = "twocell" then
-                return function( arg, i )
-                    CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( arg, category, function( ) return input_human_readable_identifier_getter( i ); end );
-                end;
-            elif filter = "object_in_range_category_of_homomorphism_structure" then
-                return function( arg, i )
-                    CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arg, RangeCategoryOfHomomorphismStructure( category ), function( ) return input_human_readable_identifier_getter( i ); end );
-                end;
-            elif filter = "morphism_in_range_category_of_homomorphism_structure" then
-                return function( arg, i )
-                    CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arg, RangeCategoryOfHomomorphismStructure( category ), function( ) return input_human_readable_identifier_getter( i ); end );
-                end;
-            elif filter = "list_of_objects" then
-                return function( arg, i )
-                    CAP_INTERNAL_ASSERT_IS_LIST_OF_OBJECTS_OF_CATEGORY( arg, category, function( ) return input_human_readable_identifier_getter( i ); end );
-                end;
-            elif filter = "list_of_morphisms" then
-                return function( arg, i )
-                    CAP_INTERNAL_ASSERT_IS_LIST_OF_MORPHISMS_OF_CATEGORY( arg, category, function( ) return input_human_readable_identifier_getter( i ); end );
-                end;
-            elif filter = "list_of_twocells" then
-                return function( arg, i )
-                    CAP_INTERNAL_ASSERT_IS_LIST_OF_TWO_CELLS_OF_CATEGORY( arg, category, function( ) return input_human_readable_identifier_getter( i ); end );
-                end;
-            elif filter = "object_datum" then
-                # The filter is already checked by the method selection. More complicated checks (e.g. the types of list elements) should be checked in a more general way.
-                return ReturnTrue;
-            elif filter = "morphism_datum" then
-                # The filter is already checked by the method selection. More complicated checks (e.g. the types of list elements) should be checked in a more general way.
-                return ReturnTrue;
-            elif filter = "integer" then
-                return function( arg, i )
-                    if not IsInt( arg ) then
-                        Error( input_human_readable_identifier_getter( i ), " is not an integer. You can access the variable via the local variable 'arg' in a break loop." );
-                    fi;
-                end;
-            elif filter = "nonneg_integer_or_infinity" then
-                return function( arg, i )
-                    CAP_INTERNAL_ASSERT_IS_NON_NEGATIVE_INTEGER_OR_INFINITY( arg, function( ) return input_human_readable_identifier_getter( i ); end );
-                end;
+                
+            elif IsString( filter ) then
+                
+                data_type := CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( filter, category );
+                
+                if data_type <> fail then
+                    
+                    return CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER( data_type, [ "the ", i, "-th argument of the function \033[1m", record.function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" ] );
+                    
+                else
+                    
+                    return ReturnTrue;
+                    
+                fi;
+                
             else
-                Display( Concatenation( "Warning: You should add an input sanity check for the following filter: ", String( filter ) ) );
-                return ReturnTrue;
+                
+                Error( "this should never happen" );
+                
             fi;
             
         end );
         
         # prepare output sanity check
-        output_human_readable_identifier_getter := function( )
-            return Concatenation( "the result of the function \033[1m", record.function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" );
-        end;
+        output_human_readable_identifier_list := [ "the result of the function \033[1m", record.function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" ];
         
         if IsFilter( record.return_type ) then
+            
             output_sanity_check_function := function( result )
+                
                 if not record.return_type( result ) then
-                    Error( Concatenation( output_human_readable_identifier_getter(), " does not lie in the required filter. You can access the result and the filter via the local variables 'result' and 'record.return_type' in a break loop." ) );
+                    
+                    CallFuncList( Error, Concatenation( output_human_readable_identifier_list, [ " does not lie in the required filter. You can access the result and the filter via the local variables 'result' and 'record.return_type' in a break loop." ] ) );
+                    
                 fi;
+                
             end;
-        elif record.return_type = "object" then
-            output_sanity_check_function := function( result )
-                CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
-            end;
-        elif record.return_type = "object_or_fail" then
-            output_sanity_check_function := function( result )
-                if result <> fail then
-                    CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
-                fi;
-            end;
-        elif record.return_type = "morphism" then
-            output_sanity_check_function := function( result )
-                CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
-            end;
-        elif record.return_type = "morphism_or_fail" then
-            output_sanity_check_function := function( result )
-                if result <> fail then
-                    CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
-                fi;
-            end;
-        elif record.return_type = "twocell" then
-            output_sanity_check_function := function( result )
-                CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
-            end;
-        elif record.return_type = "object_in_range_category_of_homomorphism_structure" then
-            output_sanity_check_function := function( result )
-                CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( result, RangeCategoryOfHomomorphismStructure( category ), output_human_readable_identifier_getter );
-            end;
-        elif record.return_type = "morphism_in_range_category_of_homomorphism_structure" then
-            output_sanity_check_function := function( result )
-                CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( result, RangeCategoryOfHomomorphismStructure( category ), output_human_readable_identifier_getter );
-            end;
-        elif record.return_type = "bool" then
-            output_sanity_check_function := function( result )
-                if not ( result = true or result = false ) then
-                    Error( Concatenation( output_human_readable_identifier_getter(), " is not a boolean (true/false). You can access the result via the local variable 'result' in a break loop." ) );
-                fi;
-            end;
-        elif record.return_type = "list_of_objects" then
-            output_sanity_check_function := function( result )
-                CAP_INTERNAL_ASSERT_IS_LIST_OF_OBJECTS_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
-            end;
-        elif record.return_type = "list_of_morphisms" then
-            output_sanity_check_function := function( result )
-                CAP_INTERNAL_ASSERT_IS_LIST_OF_MORPHISMS_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
-            end;
-        elif record.return_type = "list_of_morphisms_or_fail" then
-            output_sanity_check_function := function( result )
-                if result <> fail then
-                    CAP_INTERNAL_ASSERT_IS_LIST_OF_MORPHISMS_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
-                fi;
-            end;
-        elif record.return_type = "object_datum" then
-            if ObjectDatumType( category ) = fail then
-                output_sanity_check_function := ReturnTrue;
+            
+        elif IsString( record.return_type ) then
+            
+            if EndsWith( record.return_type, "_or_fail" ) then
+                
+                output_data_type := CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( record.return_type{[ 1 .. Length( record.return_type ) - 8 ]}, category );
+                
             else
-                output_sanity_check_function := function( result )
-                    # We only check the filter here. More complicated checks (e.g. the types of list elements) should be checked in a more general way.
-                    if not CAP_INTERNAL_REPLACE_STRING_WITH_FILTER( "object_datum", category )( result ) then
-                        Error( Concatenation( output_human_readable_identifier_getter(), " does not lie in the filter of object data of the category. You can access the result via the local variable 'result' in a break loop." ) );
-                    fi;
-                end;
+                
+                output_data_type := CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( record.return_type, category );
+                
             fi;
-        elif record.return_type = "morphism_datum" then
-            if MorphismDatumType( category ) = fail then
-                output_sanity_check_function := ReturnTrue;
+            
+            if output_data_type <> fail then
+                
+                assert_is_value_of_return_type := CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER( output_data_type, output_human_readable_identifier_list );
+                
+                if EndsWith( record.return_type, "_or_fail" ) then
+                    
+                    output_sanity_check_function := function( result )
+                        
+                        if result <> fail then
+                            
+                            assert_is_value_of_return_type( result );
+                            
+                        fi;
+                        
+                    end;
+                    
+                else
+                    
+                    output_sanity_check_function := assert_is_value_of_return_type;
+                    
+                fi;
+                
             else
-                output_sanity_check_function := function( result )
-                    # We only check the filter here. More complicated checks (e.g. the types of list elements) should be checked in a more general way.
-                    if not CAP_INTERNAL_REPLACE_STRING_WITH_FILTER( "morphism_datum", category )( result ) then
-                        Error( Concatenation( output_human_readable_identifier_getter(), " does not lie in the filter of morphism data of the category. You can access the result via the local variable 'result' in a break loop." ) );
-                    fi;
-                end;
+                
+                output_sanity_check_function := ReturnTrue;
+                
             fi;
-        elif record.return_type = "nonneg_integer_or_infinity" then
-            output_sanity_check_function := function( result )
-                CAP_INTERNAL_ASSERT_IS_NON_NEGATIVE_INTEGER_OR_INFINITY( result, output_human_readable_identifier_getter );
-            end;
+            
         else
-            Display( Concatenation( "Warning: You should add an output sanity check for the following return_type: ", String( record.return_type ) ) );
-            output_sanity_check_function := ReturnTrue;
+            
+            Error( "this should never happen" );
+            
         fi;
         
         install_func := function( func_to_install, additional_filters )
@@ -501,7 +432,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     
                     if category!.input_sanity_check_level > 0 then
                         for i in [ 1 .. Length( input_sanity_check_functions ) ] do
-                            input_sanity_check_functions[ i ]( arg[ i ], i );
+                            input_sanity_check_functions[ i ]( arg[ i ] );
                         od;
                         
                         pre_func_return := CallFuncList( pre_function, arg );
