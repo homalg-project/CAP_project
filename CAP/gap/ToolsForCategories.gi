@@ -1082,12 +1082,6 @@ InstallGlobalFunction( CapJitDataTypeOfCategory, function ( cat )
         
     fi;
     
-    if not IsSpecializationOfFilter( IsCapCategory, type.filter ) then
-        
-        Print( "WARNING: filter ", type.filter, " does not imply `IsCapCategory`. This will probably cause errors.\n" );
-        
-    fi;
-    
     return type;
     
 end );
@@ -1108,12 +1102,6 @@ InstallGlobalFunction( CapJitDataTypeOfObjectOfCategory, function ( cat )
             filter := ObjectFilter( cat ),
             category := cat,
         );
-        
-    fi;
-    
-    if not IsSpecializationOfFilter( IsCapCategoryObject, type.filter ) then
-        
-        Print( "WARNING: filter ", type.filter, " does not imply `IsCapCategoryObject`. This will probably cause errors.\n" );
         
     fi;
     
@@ -1140,12 +1128,6 @@ InstallGlobalFunction( CapJitDataTypeOfMorphismOfCategory, function ( cat )
         
     fi;
     
-    if not IsSpecializationOfFilter( IsCapCategoryMorphism, type.filter ) then
-        
-        Print( "WARNING: filter ", type.filter, " does not imply `IsCapCategoryMorphism`. This will probably cause errors.\n" );
-        
-    fi;
-    
     return type;
     
 end );
@@ -1166,12 +1148,6 @@ InstallGlobalFunction( CapJitDataTypeOfTwoCellOfCategory, function ( cat )
             filter := TwoCellFilter( cat ),
             category := cat,
         );
-        
-    fi;
-    
-    if not IsSpecializationOfFilter( IsCapCategoryTwoCell, type.filter ) then
-        
-        Print( "WARNING: filter ", type.filter, " does not imply `IsCapCategoryTwoCell`. This will probably cause errors.\n" );
         
     fi;
     
