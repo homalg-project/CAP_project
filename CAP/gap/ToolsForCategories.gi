@@ -148,6 +148,10 @@ InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( stri
         
         return rec( filter := IsList, element_type := CapJitDataTypeOfMorphismOfCategory( category ) );
         
+    elif string = "list_of_lists_of_morphisms" then
+        
+        return rec( filter := IsList, element_type := rec( filter := IsList, element_type := CapJitDataTypeOfMorphismOfCategory( category ) ) );
+        
     elif string = "list_of_twocells" then
         
         return rec( filter := IsList, element_type := CapJitDataTypeOfTwoCellOfCategory( category ) );
