@@ -1075,18 +1075,6 @@ InstallGlobalFunction( CapJitDataTypeOfCategory, function ( cat )
         
     else
         
-        if IsBound( cat!.compiler_hints ) and IsBound( cat!.compiler_hints.category_filter ) then
-            
-            if not IsSpecializationOfFilter( cat!.compiler_hints.category_filter, CategoryFilter( cat ) ) then
-                
-                InstallTrueMethod( cat!.compiler_hints.category_filter, CategoryFilter( cat ) );
-                
-            fi;
-            
-            Assert( 0, IsSpecializationOfFilter( cat!.compiler_hints.category_filter, CategoryFilter( cat ) ) );
-            
-        fi;
-        
         type := rec(
             filter := CategoryFilter( cat ),
             category := cat,
@@ -1116,16 +1104,6 @@ InstallGlobalFunction( CapJitDataTypeOfObjectOfCategory, function ( cat )
         
     else
         
-        if IsBound( cat!.compiler_hints ) and IsBound( cat!.compiler_hints.object_filter ) then
-            
-            if not IsSpecializationOfFilter( cat!.compiler_hints.object_filter, ObjectFilter( cat ) ) then
-                
-                Error( "ObjectFilter( cat ) does not imply cat!.compiler_hints.object_filter. This is not supported." );
-                
-            fi;
-            
-        fi;
-        
         type := rec(
             filter := ObjectFilter( cat ),
             category := cat,
@@ -1154,16 +1132,6 @@ InstallGlobalFunction( CapJitDataTypeOfMorphismOfCategory, function ( cat )
         );
         
     else
-        
-        if IsBound( cat!.compiler_hints ) and IsBound( cat!.compiler_hints.morphism_filter ) then
-            
-            if not IsSpecializationOfFilter( cat!.compiler_hints.morphism_filter, MorphismFilter( cat ) ) then
-                
-                Error( "MorphismFilter( cat ) does not imply cat!.compiler_hints.morphism_filter. This is not supported." );
-                
-            fi;
-            
-        fi;
         
         type := rec(
             filter := MorphismFilter( cat ),
