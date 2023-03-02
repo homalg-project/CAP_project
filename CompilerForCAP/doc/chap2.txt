@@ -590,9 +590,13 @@
   [30X    [33X[0;6Y[10XIsList[110X  with  additional  component  [10Xelement_type[110X:  The  type  of  the
         elements of the list. Only homogeneous lists are supported.[133X
   
-  [30X    [33X[0;6Yfilters     implying     [10XIsCapCategory[110X,     [10XIsCapCategoryObject[110X     or
-        [10XIsCapCategoryMorphism[110X with additional component [10Xcategory[110X: The category
-        instance (to which the object or morphism belongs).[133X
+  [30X    [33X[0;6Y[10XIsNTuple[110X  with  additional  component  [10Xelement_types[110X: The types of the
+        elements of the tuple.[133X
+  
+  [30X    [33X[0;6Yfilters       implying       [10XIsCapCategory[110X,       [10XIsCapCategoryObject[110X,
+        [10XIsCapCategoryMorphism[110X,   or   [10XIsCapCategoryTwoCell[110X   with   additional
+        component  [10Xcategory[110X:  The  category  instance  (to  which  the object,
+        morphism or two cell belongs).[133X
   
   [1X2.5-10 CapJitInlinedArguments[101X
   
