@@ -447,6 +447,16 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
             
             tree := CapJitDeduplicatedExpressions( tree );
             
+            if debug then
+                # COVERAGE_IGNORE_BLOCK_START
+                compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
+                Display( compiled_func );
+                Error( "apply CapJitCleanedUpHoistedAndDeduplicatedExpressions" );
+                # COVERAGE_IGNORE_BLOCK_END
+            fi;
+            
+            tree := CapJitCleanedUpHoistedAndDeduplicatedExpressions( tree );
+            
             # Generalized loop fusion: Simplify `List( list, func )[index]` to `func( list[index] )`
             # We do not want to do this during compilation because of the following situation:
             # expr1 := List( [ 1 .. var1 ], x -> very_expensive_operation( x ) ); expr2 := List( [ 1 .. var2 ], y -> List( [ 1 .. var1 ], x -> expr1[x][y] ) );
@@ -688,6 +698,7 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                 # CapJitInlinedBindingsFully drops unused bindings and the output of CapJitDroppedHandledEdgeCases is still fully inlined -> no new bindings
                 tree := CapJitHoistedExpressions( tree );
                 tree := CapJitDeduplicatedExpressions( tree );
+                tree := CapJitCleanedUpHoistedAndDeduplicatedExpressions( tree );
                 
             od;
             

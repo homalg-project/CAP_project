@@ -43,15 +43,13 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1, deduped_4_1, deduped_5_1, deduped_6_1;
+    local hoisted_1_1, deduped_4_1, deduped_5_1, deduped_6_1;
     deduped_6_1 := RankOfObject( arg2_1 );
     deduped_5_1 := RankOfObject( arg3_1 );
     deduped_4_1 := deduped_5_1 * deduped_6_1;
-    hoisted_3_1 := deduped_6_1;
-    hoisted_2_1 := deduped_5_1;
     hoisted_1_1 := HomalgIdentityMatrix( deduped_4_1, UnderlyingRing( cat_1 ) );
     return List( [ 1 .. deduped_4_1 ], function ( logic_new_func_x_2 )
-            return CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg3_1, UnderlyingMatrix, ConvertRowToMatrix( CertainRows( hoisted_1_1, [ logic_new_func_x_2 ] ), hoisted_2_1, hoisted_3_1 ) );
+            return CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg3_1, UnderlyingMatrix, ConvertRowToMatrix( CertainRows( hoisted_1_1, [ logic_new_func_x_2 ] ), deduped_5_1, deduped_6_1 ) );
         end );
 end
 ########
@@ -63,14 +61,14 @@ end
         
 ########
 function ( cat_1, s_1, a_1, b_1, r_1 )
-    local hoisted_1_1, hoisted_2_1, deduped_3_1;
+    local deduped_1_1, hoisted_2_1, deduped_3_1;
     deduped_3_1 := RankOfObject( s_1 );
     hoisted_2_1 := RankOfObject( a_1 );
-    hoisted_1_1 := RankOfObject( b_1 );
+    deduped_1_1 := RankOfObject( b_1 );
     return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_3_1 ], function ( i_2 )
                     local deduped_1_2;
                     deduped_1_2 := i_2 - 1;
-                    return REM_INT( deduped_1_2, hoisted_1_1 ) * hoisted_2_1 + QUO_INT( deduped_1_2, hoisted_1_1 ) + 1;
+                    return REM_INT( deduped_1_2, deduped_1_1 ) * hoisted_2_1 + QUO_INT( deduped_1_2, deduped_1_1 ) + 1;
                 end ) ), deduped_3_1 ), deduped_3_1, deduped_3_1, UnderlyingRing( cat_1 ) ) );
 end
 ########
