@@ -637,7 +637,7 @@
 <li><p><code class="code">IsNTuple</code> with additional component <code class="code">element_types</code>: The types of the elements of the tuple.</p>
 
 </li>
-<li><p>filters implying <code class="code">IsCapCategory</code>, <code class="code">IsCapCategoryObject</code>, <code class="code">IsCapCategoryMorphism</code>, or <code class="code">IsCapCategoryTwoCell</code> with additional component <code class="code">category</code>: The category instance (to which the object, morphism or two cell belongs).</p>
+<li><p>filters implying <code class="code">IsCapCategory</code>, <code class="code">IsCapCategoryObject</code>, <code class="code">IsCapCategoryMorphism</code>, or <code class="code">IsCapCategoryTwoCell</code> with additional component <code class="code">category</code>: The category instance (to which the object, morphism or two cell belongs). WARNING: <code class="code">IsString</code> implies <code class="code">IsList</code>, so when creating a data type with filter implying <code class="code">IsString</code> one must set <code class="code">element_type</code> to a data type with filter <code class="code">IsChar</code>, or use <code class="code">IsStringRep</code> instead of <code class="code">IsString</code>.</p>
 
 </li>
 </ul>
