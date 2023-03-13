@@ -16,6 +16,8 @@
 #!   * `IsNTuple` with additional component `element_types`: The types of the elements of the tuple.
 #!   * filters implying `IsCapCategory`, `IsCapCategoryObject`, `IsCapCategoryMorphism`, or `IsCapCategoryTwoCell` with additional component `category`:
 #!     The category instance (to which the object, morphism or two cell belongs).
+#!   WARNING: `IsString` implies `IsList`, so when creating a data type with filter implying `IsString` one must set `element_type` to
+#!   a data type with filter `IsChar`, or use `IsStringRep` instead of `IsString`.
 #! @Returns a record
 #! @Arguments tree
 DeclareGlobalFunction( "CapJitInferredDataTypes" );

@@ -373,7 +373,7 @@ InstallGlobalFunction( "CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER",
             
         end;
         
-    elif IsSpecializationOfFilter( IsList, filter ) and not IsSpecializationOfFilter( IsString, filter ) then
+    elif IsSpecializationOfFilter( IsList, filter ) then
         
         # In principle, we have to create an assertion function for each integer to get the human readable identifier correct.
         # The "correct" approach would be to generate those on demand but that would imply that we have to create assertion functions at runtime.
