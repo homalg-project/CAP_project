@@ -86,8 +86,8 @@
   [30X    [33X[0;6YIf  the  pragma  [10XCAP_JIT_DROP_NEXT_STATEMENT[110X  occurs  in  the resolved
         function, the statement following the pragma is removed.[133X
   
-  [33X[0;0YFor      details      see      [2XCapJitResolvedOperations[102X     ([14X2.5-20[114X)     and
-  [2XCapJitResolvedGlobalVariables[102X  ([14X2.5-19[114X).  If no operation or global variable
+  [33X[0;0YFor      details      see      [2XCapJitResolvedOperations[102X     ([14X2.5-21[114X)     and
+  [2XCapJitResolvedGlobalVariables[102X  ([14X2.5-20[114X).  If no operation or global variable
   can be resolved anymore, we continue with the rule phase.[133X
   
   [33X[0;0YIn the rule phase, the tree is optimized using several rules and techniques.
@@ -231,7 +231,7 @@
   [6XReturns:[106X  [33X[0;10Ya function[133X
   
   [33X[0;0YReturns   a   compiled   version   of   the  function  [3Xfunc[103X  with  signature
-  [3Xtype_signature[103X   (see   [2XCapJitInferredDataTypes[102X  ([14X2.5-9[114X)).  If  [3Xfunc[103X  is  an
+  [3Xtype_signature[103X   (see  [2XCapJitInferredDataTypes[102X  ([14X2.5-10[114X)).  If  [3Xfunc[103X  is  an
   operation  or a kernel function, it is returned unchanged. If [3Xtype_signature[103X
   is not given, all steps which require knowledge about the types of variables
   are  skipped.  If  the  first  argument  of [3Xfunc[103X is a CAP category, the type
@@ -407,8 +407,8 @@
   function can only be resolved if it appears as a global variable in the tree
   during  the  resolving  phase  of  the  compilation.  That  is,  it  must be
   referenced  from  a  global  variable from the beginning on, or after global
-  variables  are  resolved by [2XCapJitResolvedGlobalVariables[102X ([14X2.5-19[114X). Possibly
-  you have adapt [2XCapJitResolvedGlobalVariables[102X ([14X2.5-19[114X) to your setting.[133X
+  variables  are  resolved by [2XCapJitResolvedGlobalVariables[102X ([14X2.5-20[114X). Possibly
+  you have adapt [2XCapJitResolvedGlobalVariables[102X ([14X2.5-20[114X) to your setting.[133X
   
   [30X    [33X[0;6YQ:  Why  is  do  I get the error "a local variable with name <name> is
         assigned  more than once (not as a part of a rapid reassignment), this

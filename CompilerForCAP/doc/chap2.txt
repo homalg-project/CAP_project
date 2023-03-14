@@ -26,7 +26,7 @@
   [1X2.1 [33X[0;0YLogic[133X[101X
   
   [33X[0;0YWarning:  When  writing  logic  functions  and  templates  keep in mind that
-  wrapped arguments are outlined, see [2XCapJitOutlinedWrappedArguments[102X ([14X2.5-18[114X).
+  wrapped arguments are outlined, see [2XCapJitOutlinedWrappedArguments[102X ([14X2.5-19[114X).
   This   means   that   for   example   a   logic   template   of   the   form
   [10XCreateCapCategoryObjectWithAttributes(  cat,  attr,  MyFunction(  x ) )[110X will
   never match because [10XMyFunction( x )[110X is outlined to a local variable.[133X
@@ -75,7 +75,7 @@
   [33X[0;0YSemantics:  [10Xsrc_template[110X  is  a  piece  of  code which should be replaced by
   [10Xdst_template[110X:[133X
   
-  [30X    [33X[0;6YThe   function  [2XCapJitAppliedLogicTemplates[102X  ([14X2.5-17[114X)  tries  to  find
+  [30X    [33X[0;6YThe   function  [2XCapJitAppliedLogicTemplates[102X  ([14X2.5-18[114X)  tries  to  find
         occurences  of [10Xsrc_template[110X in a tree and potentially replaces them by
         [10Xdst_template[110X.[133X
   
@@ -87,7 +87,7 @@
         corresponding filters in [10Xvariable_filters[110X.[133X
   
   [30X    [33X[0;6YFor   each   function   in  [10Xdst_template[110X,  [2XCapJitAppliedLogicTemplates[102X
-        ([14X2.5-17[114X)  tries  to find a corresponding function in [10Xsrc_template[110X. The
+        ([14X2.5-18[114X)  tries  to find a corresponding function in [10Xsrc_template[110X. The
         functions  are  matched  by  comparing  the  lists  of  names of local
         variables. If for a function in [10Xdst_template[110X no corresponding function
         in  [10Xsrc_template[110X  exists,  you  have to add the list of names of local
@@ -98,7 +98,7 @@
         [10Xneeded_packages[110X are loaded in the correct versions.[133X
   
   [30X    [33X[0;6Y[10Xdebug[110X   can   be   set   to  [10Xtrue[110X  to  print  more  information  while
-        [2XCapJitAppliedLogicTemplates[102X  ([14X2.5-17[114X)  tries  to  apply  the template.
+        [2XCapJitAppliedLogicTemplates[102X  ([14X2.5-18[114X)  tries  to  apply  the template.
         (Note:  this  causes  informational  break  loops which are not actual
         errors).[133X
   
@@ -222,7 +222,7 @@
   [10Xgiven_arguments[110X,  references  to  the  [10Xi[110X-th  argument  of  the  function are
   replaced   by   references   to   a   global  variable  with  the  value  of
   [10Xgiven_arguments[i][110X  (only  in  case  this  position  is  bound).  If  a type
-  signature  (see  [2XCapJitInferredDataTypes[102X  ([14X2.5-9[114X))  of  [3Xfunc[103X is given as the
+  signature  (see  [2XCapJitInferredDataTypes[102X  ([14X2.5-10[114X))  of [3Xfunc[103X is given as the
   option [10Xtype_signature[110X, it is attached to the resulting tree.[133X
   
   [1X2.2-2 ENHANCED_SYNTAX_TREE_CODE[101X
@@ -504,14 +504,31 @@
   
   [1X2.5 [33X[0;0YCompilation steps[133X[101X
   
-  [1X2.5-1 CapJitAppliedCompilerHints[101X
+  [1X2.5-1 CapJitCleanedUpHoistedAndDeduplicatedExpressions[101X
+  
+  [33X[1;0Y[29X[2XCapJitCleanedUpHoistedAndDeduplicatedExpressions[102X( [3Xtree[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya record[133X
+  
+  [33X[0;0YCleans up variable names after hoisting and deduplication:[133X
+  
+  [30X    [33X[0;6YAssignments  of  the  form [10Xhoisted_xxx := deduped_yyy;[110X are deleted and
+        all   references   to   [10Xhoisted_xxx[110X  are  replaced  by  references  to
+        [10Xdeduped_yyy[110X.[133X
+  
+  [30X    [33X[0;6YIf  [10Xhoisted_xxx[110X  is used more than once, it is renamed to [10Xdeduped_xxx[110X.
+        Note:  Even  if  a  hoisted  value  is  used  more  than  once  during
+        [2XCapJitHoistedExpressions[102X ([14X2.5-8[114X), it is not necessarily used more than
+        once  after  [2XCapJitDeduplicatedExpressions[102X  ([14X2.5-5[114X) because the places
+        where it was used might have been deduplicated themselves.[133X
+  
+  [1X2.5-2 CapJitAppliedCompilerHints[101X
   
   [33X[1;0Y[29X[2XCapJitAppliedCompilerHints[102X( [3Xtree[103X, [3Xcategory[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
   [33X[0;0YApplies all compiler hints (see [14X1.6[114X) to [3Xtree[103X.[133X
   
-  [1X2.5-2 CapJitReplacedGlobalVariablesByCategoryAttributes[101X
+  [1X2.5-3 CapJitReplacedGlobalVariablesByCategoryAttributes[101X
   
   [33X[1;0Y[29X[2XCapJitReplacedGlobalVariablesByCategoryAttributes[102X( [3Xtree[103X, [3Xcategory[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
@@ -519,7 +536,7 @@
   [33X[0;0YApplies  the  compiler  hint  [10Xcategory_attribute_names[110X  (see  [14X1.6[114X)  to [3Xtree[103X.
   Assumes that [3Xcategory[103X is the first argument of the function defined by [3Xtree[103X.[133X
   
-  [1X2.5-3 CapJitReplacedSourceAndRangeAttributes[101X
+  [1X2.5-4 CapJitReplacedSourceAndRangeAttributes[101X
   
   [33X[1;0Y[29X[2XCapJitReplacedSourceAndRangeAttributes[102X( [3Xtree[103X, [3Xcategory[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
@@ -527,7 +544,7 @@
   [33X[0;0YApplies                  the                  compiler                  hint
   [10Xsource_and_range_attributes_from_morphism_attribute[110X (see [14X1.6[114X) to [3Xtree[103X.[133X
   
-  [1X2.5-4 CapJitDeduplicatedExpressions[101X
+  [1X2.5-5 CapJitDeduplicatedExpressions[101X
   
   [33X[1;0Y[29X[2XCapJitDeduplicatedExpressions[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
@@ -535,7 +552,7 @@
   [33X[0;0YDeduplicates expressions occuring at least twice in the enhanced syntax tree
   [3Xtree[103X.[133X
   
-  [1X2.5-5 CapJitDroppedHandledEdgeCases[101X
+  [1X2.5-6 CapJitDroppedHandledEdgeCases[101X
   
   [33X[1;0Y[29X[2XCapJitDroppedHandledEdgeCases[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
@@ -548,7 +565,7 @@
   return  value;  fi;[110X  is  found  later  in  the tree and if [10Xcondition2 = true[110X
   implies [10Xcondition1 = true[110X, the second statement is dropped.[133X
   
-  [1X2.5-6 CapJitDroppedUnusedBindings[101X
+  [1X2.5-7 CapJitDroppedUnusedBindings[101X
   
   [33X[1;0Y[29X[2XCapJitDroppedUnusedBindings[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
@@ -556,25 +573,25 @@
   [33X[0;0YDrops bindings (and names) of variables in functions in [3Xtree[103X which are never
   referenced.[133X
   
-  [1X2.5-7 CapJitHoistedExpressions[101X
+  [1X2.5-8 CapJitHoistedExpressions[101X
   
   [33X[1;0Y[29X[2XCapJitHoistedExpressions[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
   [33X[0;0YHoists  expressions  which  are part of but indepedent of inner functions to
   outer functions. Assumes that there are no unused bindings (i.e., you should
-  use [2XCapJitDroppedUnusedBindings[102X ([14X2.5-6[114X) first).[133X
+  use [2XCapJitDroppedUnusedBindings[102X ([14X2.5-7[114X) first).[133X
   
-  [1X2.5-8 CapJitHoistedBindings[101X
+  [1X2.5-9 CapJitHoistedBindings[101X
   
   [33X[1;0Y[29X[2XCapJitHoistedBindings[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
   [33X[0;0YHoists bindings which are part of but indepedent of inner functions to outer
   functions.  Assumes  that there are no unused bindings (i.e., you should use
-  [2XCapJitDroppedUnusedBindings[102X ([14X2.5-6[114X) first).[133X
+  [2XCapJitDroppedUnusedBindings[102X ([14X2.5-7[114X) first).[133X
   
-  [1X2.5-9 CapJitInferredDataTypes[101X
+  [1X2.5-10 CapJitInferredDataTypes[101X
   
   [33X[1;0Y[29X[2XCapJitInferredDataTypes[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
@@ -601,7 +618,7 @@
         [10Xelement_type[110X  to  a  data  type with filter [10XIsChar[110X, or use [10XIsStringRep[110X
         instead of [10XIsString[110X.[133X
   
-  [1X2.5-10 CapJitInlinedArguments[101X
+  [1X2.5-11 CapJitInlinedArguments[101X
   
   [33X[1;0Y[29X[2XCapJitInlinedArguments[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
@@ -612,7 +629,7 @@
   of  the  function, and drops the arguments (i.e., makes the function a 0-ary
   function).[133X
   
-  [1X2.5-11 CapJitInlinedBindings[101X
+  [1X2.5-12 CapJitInlinedBindings[101X
   
   [33X[1;0Y[29X[2XCapJitInlinedBindings[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
@@ -623,24 +640,24 @@
   function.  If  the  option [10Xinline_var_refs_only[110X is set to [10Xtrue[110X, this is only
   done  if  the  value  is a reference to a (local or global) variable. If the
   option  [10Xinline_fully[110X  is  NOT set to [10Xtrue[110X, wrapped arguments are not inlined
-  (see   [2XCapJitOutlinedWrappedArguments[102X  ([14X2.5-18[114X)).  Also  drops  the  inlined
+  (see   [2XCapJitOutlinedWrappedArguments[102X  ([14X2.5-19[114X)).  Also  drops  the  inlined
   bindings.[133X
   
-  [1X2.5-12 CapJitInlinedBindingsToVariableReferences[101X
+  [1X2.5-13 CapJitInlinedBindingsToVariableReferences[101X
   
   [33X[1;0Y[29X[2XCapJitInlinedBindingsToVariableReferences[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
   [33X[0;0YShort hand for [10XCapJitInlinedBindings( [110X[3Xtree[103X[10X : inline_var_refs_only := true )[110X.[133X
   
-  [1X2.5-13 CapJitInlinedBindingsFully[101X
+  [1X2.5-14 CapJitInlinedBindingsFully[101X
   
   [33X[1;0Y[29X[2XCapJitInlinedBindingsFully[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
   [33X[0;0YShort hand for [10XCapJitInlinedBindings( [110X[3Xtree[103X[10X : inline_fully := true )[110X.[133X
   
-  [1X2.5-14 CapJitInlinedFunctionCalls[101X
+  [1X2.5-15 CapJitInlinedFunctionCalls[101X
   
   [33X[1;0Y[29X[2XCapJitInlinedFunctionCalls[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
@@ -651,7 +668,7 @@
   hand  side  of a variable assignment or a return statement. Inserts the body
   of  the  function right before the variable assignment / return statement to
   avoid  the  function  call.  Assumes  that  arguments  of function calls are
-  inlined (i.e., you should use [2XCapJitInlinedArguments[102X ([14X2.5-10[114X) first). Due to
+  inlined (i.e., you should use [2XCapJitInlinedArguments[102X ([14X2.5-11[114X) first). Due to
   the  nature  of a [10Xreturn[110X statement breaking the execution and having no [10Xgoto[110X
   keyword in GAP, only functions[133X
   
@@ -662,31 +679,31 @@
   
   [33X[0;0Yand not containing other [10Xreturn[110X statements can be inlined.[133X
   
-  [1X2.5-15 CapJitInlinedSimpleFunctionCalls[101X
+  [1X2.5-16 CapJitInlinedSimpleFunctionCalls[101X
   
   [33X[1;0Y[29X[2XCapJitInlinedSimpleFunctionCalls[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
   [33X[0;0YReplaces  function  calls  of  the  form [10X(function() return value; end)()[110X by
   [10Xvalue[110X.  Assumes  that  arguments  of  function  calls are inlined (i.e., you
-  should use [2XCapJitInlinedArguments[102X ([14X2.5-10[114X) first).[133X
+  should use [2XCapJitInlinedArguments[102X ([14X2.5-11[114X) first).[133X
   
-  [1X2.5-16 CapJitAppliedLogic[101X
+  [1X2.5-17 CapJitAppliedLogic[101X
   
   [33X[1;0Y[29X[2XCapJitAppliedLogic[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
   [33X[0;0YApplies  all  logic functions (see [2XCapJitAddLogicFunction[102X ([14X2.1-1[114X)) and logic
-  templates (see [2XCapJitAppliedLogicTemplates[102X ([14X2.5-17[114X)) to [3Xtree[103X.[133X
+  templates (see [2XCapJitAppliedLogicTemplates[102X ([14X2.5-18[114X)) to [3Xtree[103X.[133X
   
-  [1X2.5-17 CapJitAppliedLogicTemplates[101X
+  [1X2.5-18 CapJitAppliedLogicTemplates[101X
   
   [33X[1;0Y[29X[2XCapJitAppliedLogicTemplates[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
   [33X[0;0YApplies all logic templates (see [2XCapJitAddLogicTemplate[102X ([14X2.1-2[114X)) to [3Xtree[103X.[133X
   
-  [1X2.5-18 CapJitOutlinedWrappedArguments[101X
+  [1X2.5-19 CapJitOutlinedWrappedArguments[101X
   
   [33X[1;0Y[29X[2XCapJitOutlinedWrappedArguments[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
@@ -700,7 +717,7 @@
   
   [30X    [33X[0;6Ythe arguments of [10XNTuple[110X (excluding the first argument)[133X
   
-  [1X2.5-19 CapJitResolvedGlobalVariables[101X
+  [1X2.5-20 CapJitResolvedGlobalVariables[101X
   
   [33X[1;0Y[29X[2XCapJitResolvedGlobalVariables[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
@@ -715,7 +732,7 @@
   [30X    [33X[0;6YComputes  attributes  of  categories  stored  in  global variables and
         places the results into global variables again.[133X
   
-  [1X2.5-20 CapJitResolvedOperations[101X
+  [1X2.5-21 CapJitResolvedOperations[101X
   
   [33X[1;0Y[29X[2XCapJitResolvedOperations[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X

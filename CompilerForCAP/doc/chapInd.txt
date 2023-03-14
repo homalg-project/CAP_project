@@ -5,20 +5,21 @@
   [2XCapJitAddBinding[102X 2.4-13 
   [2XCapJitAddLogicFunction[102X 2.1-1 
   [2XCapJitAddLogicTemplate[102X 2.1-2 
-  [2XCapJitAppliedCompilerHints[102X 2.5-1 
-  [2XCapJitAppliedLogic[102X 2.5-16 
-  [2XCapJitAppliedLogicTemplates[102X 2.5-17 
+  [2XCapJitAppliedCompilerHints[102X 2.5-2 
+  [2XCapJitAppliedLogic[102X 2.5-17 
+  [2XCapJitAppliedLogicTemplates[102X 2.5-18 
+  [2XCapJitCleanedUpHoistedAndDeduplicatedExpressions[102X 2.5-1 
   [2XCapJitCompiledCAPOperationAsEnhancedSyntaxTree[102X 1.5-1 
   [2XCapJitCompiledFunction[102X 1.5-2 
   [2XCapJitCompiledFunctionAsEnhancedSyntaxTree[102X 1.5-3 
   [2XCapJitContainsRefToFVAROutsideOfFuncStack[102X 2.4-4 
   [2XCapJitCopyWithNewFunctionIDs[102X 2.4-11 
-  [2XCapJitDeduplicatedExpressions[102X 2.5-4 
+  [2XCapJitDeduplicatedExpressions[102X 2.5-5 
   [2XCapJitDisableDataTypeInference[102X 1.8-1 
   [2XCapJitDisableProofAssistantMode[102X 1.10-1 
   [2XCapJitDisableStepByStepCompilation[102X 1.9-1 
-  [2XCapJitDroppedHandledEdgeCases[102X 2.5-5 
-  [2XCapJitDroppedUnusedBindings[102X 2.5-6 
+  [2XCapJitDroppedHandledEdgeCases[102X 2.5-6 
+  [2XCapJitDroppedUnusedBindings[102X 2.5-7 
   [2XCapJitEnableDataTypeInference[102X 1.8-1 
   [2XCapJitEnableProofAssistantMode[102X 1.10-1 
   [2XCapJitEnableStepByStepCompilation[102X 1.9-1 
@@ -27,30 +28,30 @@
   [2XCapJitGetNextUnusedVariableID[102X 2.4-17 
   [2XCapJitGetNodeByPath[102X 2.4-8 
   [2XCapJitGetOrCreateGlobalVariable[102X 2.4-5 
-  [2XCapJitHoistedBindings[102X 2.5-8 
-  [2XCapJitHoistedExpressions[102X 2.5-7 
-  [2XCapJitInferredDataTypes[102X 2.5-9 
-  [2XCapJitInlinedArguments[102X 2.5-10 
-  [2XCapJitInlinedBindings[102X 2.5-11 
-  [2XCapJitInlinedBindingsFully[102X 2.5-13 
-  [2XCapJitInlinedBindingsToVariableReferences[102X 2.5-12 
-  [2XCapJitInlinedFunctionCalls[102X 2.5-14 
-  [2XCapJitInlinedSimpleFunctionCalls[102X 2.5-15 
+  [2XCapJitHoistedBindings[102X 2.5-9 
+  [2XCapJitHoistedExpressions[102X 2.5-8 
+  [2XCapJitInferredDataTypes[102X 2.5-10 
+  [2XCapJitInlinedArguments[102X 2.5-11 
+  [2XCapJitInlinedBindings[102X 2.5-12 
+  [2XCapJitInlinedBindingsFully[102X 2.5-14 
+  [2XCapJitInlinedBindingsToVariableReferences[102X 2.5-13 
+  [2XCapJitInlinedFunctionCalls[102X 2.5-15 
+  [2XCapJitInlinedSimpleFunctionCalls[102X 2.5-16 
   [2XCapJitIsCallToGlobalFunction[102X 2.4-2 
   [2XCapJitIsEqualForEnhancedSyntaxTrees[102X 2.4-12 
   [2XCapJitIterateOverTree[102X 2.3-1 
   [2XCapJitIterateOverTreeWithCachedBindingResults[102X 2.3-2 
-  [2XCapJitOutlinedWrappedArguments[102X 2.5-18 
+  [2XCapJitOutlinedWrappedArguments[102X 2.5-19 
   [2XCapJitPrecompileCategory[102X 1.4-1 
   [2XCapJitPrecompileCategoryAndCompareResult[102X 1.4-2 
   [2XCapJitPrettyPrintFunction[102X 2.4-10 
   [2XCapJitPrettyPrintSyntaxTree[102X 2.4-1 
   [2XCapJitRemovedReturnFail[102X 2.4-9 
   [2XCapJitReplacedEXPR_REF_FVARByValue[102X 2.4-16 
-  [2XCapJitReplacedGlobalVariablesByCategoryAttributes[102X 2.5-2 
-  [2XCapJitReplacedSourceAndRangeAttributes[102X 2.5-3 
-  [2XCapJitResolvedGlobalVariables[102X 2.5-19 
-  [2XCapJitResolvedOperations[102X 2.5-20 
+  [2XCapJitReplacedGlobalVariablesByCategoryAttributes[102X 2.5-3 
+  [2XCapJitReplacedSourceAndRangeAttributes[102X 2.5-4 
+  [2XCapJitResolvedGlobalVariables[102X 2.5-20 
+  [2XCapJitResolvedOperations[102X 2.5-21 
   [2XCapJitResultFuncCombineChildren[102X 2.4-3 
   [2XCapJitUnbindBinding[102X 2.4-15 
   [2XCapJitValueOfBinding[102X 2.4-14 

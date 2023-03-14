@@ -6,10 +6,10 @@
                    [1X Speed up computations in CAP categories [101X
   
   
-                                   2023.03-03
+                                   2023.03-04
   
   
-                                 13 March 2023
+                                 14 March 2023
   
   
                                 Fabian Zickgraf
@@ -89,26 +89,27 @@
       2.4-20 ErrorWithCurrentlyCompiledFunctionLocation
       2.4-21 EvalStringStrict
     2.5 [33X[0;0YCompilation steps[133X
-      2.5-1 CapJitAppliedCompilerHints
-      2.5-2 CapJitReplacedGlobalVariablesByCategoryAttributes
-      2.5-3 CapJitReplacedSourceAndRangeAttributes
-      2.5-4 CapJitDeduplicatedExpressions
-      2.5-5 CapJitDroppedHandledEdgeCases
-      2.5-6 CapJitDroppedUnusedBindings
-      2.5-7 CapJitHoistedExpressions
-      2.5-8 CapJitHoistedBindings
-      2.5-9 CapJitInferredDataTypes
-      2.5-10 CapJitInlinedArguments
-      2.5-11 CapJitInlinedBindings
-      2.5-12 CapJitInlinedBindingsToVariableReferences
-      2.5-13 CapJitInlinedBindingsFully
-      2.5-14 CapJitInlinedFunctionCalls
-      2.5-15 CapJitInlinedSimpleFunctionCalls
-      2.5-16 CapJitAppliedLogic
-      2.5-17 CapJitAppliedLogicTemplates
-      2.5-18 CapJitOutlinedWrappedArguments
-      2.5-19 CapJitResolvedGlobalVariables
-      2.5-20 CapJitResolvedOperations
+      2.5-1 CapJitCleanedUpHoistedAndDeduplicatedExpressions
+      2.5-2 CapJitAppliedCompilerHints
+      2.5-3 CapJitReplacedGlobalVariablesByCategoryAttributes
+      2.5-4 CapJitReplacedSourceAndRangeAttributes
+      2.5-5 CapJitDeduplicatedExpressions
+      2.5-6 CapJitDroppedHandledEdgeCases
+      2.5-7 CapJitDroppedUnusedBindings
+      2.5-8 CapJitHoistedExpressions
+      2.5-9 CapJitHoistedBindings
+      2.5-10 CapJitInferredDataTypes
+      2.5-11 CapJitInlinedArguments
+      2.5-12 CapJitInlinedBindings
+      2.5-13 CapJitInlinedBindingsToVariableReferences
+      2.5-14 CapJitInlinedBindingsFully
+      2.5-15 CapJitInlinedFunctionCalls
+      2.5-16 CapJitInlinedSimpleFunctionCalls
+      2.5-17 CapJitAppliedLogic
+      2.5-18 CapJitAppliedLogicTemplates
+      2.5-19 CapJitOutlinedWrappedArguments
+      2.5-20 CapJitResolvedGlobalVariables
+      2.5-21 CapJitResolvedOperations
   3 [33X[0;0YExamples and tests[133X
     3.1 [33X[0;0YExamples[133X
     3.2 [33X[0;0YTests[133X
