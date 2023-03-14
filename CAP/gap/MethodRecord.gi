@@ -3295,7 +3295,7 @@ ComponentOfMorphismFromDirectSum := rec(
   dual_operation := "ComponentOfMorphismIntoDirectSum" ),
 
 MorphismBetweenDirectSums := rec(
-  filter_list := [ "category", "list_of_objects", IsList, "list_of_objects" ],
+  filter_list := [ "category", "list_of_objects", "list_of_lists_of_morphisms", "list_of_objects" ],
   input_arguments_names := [ "cat", "source_diagram", "mat", "range_diagram" ],
   return_type := "morphism",
   output_source_getter_string := "DirectSum( cat, source_diagram )",
@@ -3360,7 +3360,7 @@ MorphismBetweenDirectSums := rec(
 ),
 
 MorphismBetweenDirectSumsWithGivenDirectSums := rec(
-  filter_list := [ "category", "object", "list_of_objects", IsList, "list_of_objects", "object" ],
+  filter_list := [ "category", "object", "list_of_objects", "list_of_lists_of_morphisms", "list_of_objects", "object" ],
   io_type := [ [ "S", "source_diagram", "mat", "range_diagram", "T" ], [ "S", "T" ] ],
   return_type := "morphism",
   dual_operation := "MorphismBetweenDirectSumsWithGivenDirectSums",
@@ -3456,7 +3456,7 @@ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism := rec
 ),
 
 SolveLinearSystemInAbCategory := rec(
-  filter_list := [ "category", IsList, IsList, "list_of_morphisms" ],
+  filter_list := [ "category", "list_of_lists_of_morphisms", "list_of_lists_of_morphisms", "list_of_morphisms" ],
   return_type := "list_of_morphisms",
   pre_function := function( cat, left_coeffs, right_coeffs, rhs )
     
@@ -3472,7 +3472,7 @@ SolveLinearSystemInAbCategory := rec(
         return [ false, "the list of left coefficients does not have the same length as the right hand side" ];
     fi;
     
-    if not ForAll( Concatenation( left_coeffs, right_coeffs ), x -> IsList( x ) and Length( x ) = Length( left_coeffs[1] ) and ForAll( x, y -> IsCapCategoryMorphism( y ) and IsIdenticalObj( CapCategory( y ), cat ) ) ) then
+    if not ForAll( Concatenation( left_coeffs, right_coeffs ), x -> IsList( x ) and Length( x ) = Length( left_coeffs[1] ) ) then
         return [ false, "the left coefficients and the right coefficients must be given by lists of lists of the same length containing morphisms in the current category" ];
     fi;
     
@@ -3508,14 +3508,14 @@ SolveLinearSystemInAbCategory := rec(
 ),
 
 SolveLinearSystemInAbCategoryOrFail := rec(
-  filter_list := [ "category", IsList, IsList, "list_of_morphisms" ],
+  filter_list := [ "category", "list_of_lists_of_morphisms", "list_of_lists_of_morphisms", "list_of_morphisms" ],
   return_type := "list_of_morphisms_or_fail",
   pre_function := "SolveLinearSystemInAbCategory",
   pre_function_full := "SolveLinearSystemInAbCategory"
 ),
 
 MereExistenceOfSolutionOfLinearSystemInAbCategory := rec(
-  filter_list := [ "category", IsList, IsList, "list_of_morphisms" ],
+  filter_list := [ "category", "list_of_lists_of_morphisms", "list_of_lists_of_morphisms", "list_of_morphisms" ],
   return_type := "bool",
   pre_function := "SolveLinearSystemInAbCategory",
   pre_function_full := "SolveLinearSystemInAbCategory"
