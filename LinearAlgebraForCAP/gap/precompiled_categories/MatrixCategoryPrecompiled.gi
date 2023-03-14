@@ -5102,7 +5102,7 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1, arg4_1 )
-    local deduped_2_1, hoisted_5_1, hoisted_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1;
+    local deduped_2_1, deduped_5_1, hoisted_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1;
     deduped_10_1 := UnderlyingRing( cat_1 );
     deduped_9_1 := arg2_1[1];
     deduped_8_1 := [ 1 .. Length( arg2_1 ) ];
@@ -5117,16 +5117,15 @@ function ( cat_1, arg2_1, arg3_1, arg4_1 )
                           return KroneckerMat( TransposedMatrix( UnderlyingMatrix( arg2_1[logic_new_func_x_3][logic_new_func_x_2] ) ), UnderlyingMatrix( arg3_1[logic_new_func_x_3][logic_new_func_x_2] ) );
                       end ) );
             end ) ) );
-    hoisted_5_1 := List( deduped_7_1, function ( logic_new_func_x_2 )
+    deduped_5_1 := List( deduped_7_1, function ( logic_new_func_x_2 )
             return Dimension( Range( deduped_9_1[logic_new_func_x_2] ) ) * Dimension( Source( deduped_2_1[logic_new_func_x_2] ) );
         end );
     return List( deduped_7_1, function ( j_2 )
-            local deduped_1_2, deduped_2_2, deduped_3_2, deduped_4_2;
-            deduped_4_2 := CAP_JIT_INCOMPLETE_LOGIC( j_2 );
+            local deduped_1_2, deduped_2_2, deduped_3_2;
             deduped_3_2 := Source( deduped_2_1[j_2] );
             deduped_2_2 := Range( deduped_9_1[j_2] );
-            deduped_1_2 := Sum( hoisted_5_1{[ 1 .. j_2 - 1 ]} ) + 1;
-            return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_2_2, deduped_3_2, UnderlyingMatrix, ConvertRowToMatrix( CertainColumns( hoisted_6_1, [ deduped_1_2 .. deduped_1_2 - 1 + Dimension( Range( deduped_9_1[deduped_4_2] ) ) * Dimension( Source( deduped_2_1[deduped_4_2] ) ) ] ), Dimension( deduped_2_2 ), Dimension( deduped_3_2 ) ) );
+            deduped_1_2 := Sum( deduped_5_1{[ 1 .. j_2 - 1 ]} ) + 1;
+            return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_2_2, deduped_3_2, UnderlyingMatrix, ConvertRowToMatrix( CertainColumns( hoisted_6_1, [ deduped_1_2 .. deduped_1_2 - 1 + deduped_5_1[j_2] ] ), Dimension( deduped_2_2 ), Dimension( deduped_3_2 ) ) );
         end );
 end
 ########

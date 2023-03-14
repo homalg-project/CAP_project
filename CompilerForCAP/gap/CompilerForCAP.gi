@@ -566,7 +566,16 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                     
                     if CapJitIsCallToGlobalFunction( tree, "[]" ) then
                         
-                        list_call := value_of_binding_iterated( tree.args.1 );
+                        list_call := tree.args.1;
+                        
+                        if list_call.type = "EXPR_REF_FVAR" and StartsWith( list_call.name, "deduped_" ) then
+                            
+                            # list call has been deduplicated -> do nothing
+                            return tree;
+                            
+                        fi;
+                        
+                        list_call := value_of_binding_iterated( list_call );
                         
                         if CapJitIsCallToGlobalFunction( list_call, "List" ) and list_call.args.length = 2 then
                             
@@ -586,8 +595,6 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                                 
                                 enclosing_domain := domains.(Last( func_stack ).id);
                                 
-                                # In the future, we should also take into account if the list_call was deduplicated, i.e. appears multiple times.
-                                # In this case, we might not want simplify.
                                 if is_shorter_than( enclosing_domain, domain ) = true then
                                     
                                     simplify := true;
