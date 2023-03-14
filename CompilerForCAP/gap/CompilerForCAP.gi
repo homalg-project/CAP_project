@@ -546,6 +546,19 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                             
                         fi;
                         
+                        # `[ 1 .. Length( list ) ]` is as long as `list`
+                        if domain1.type = "EXPR_RANGE" and domain1.first.type = "EXPR_INT" and domain1.first.value = 1 then
+                            
+                            last := value_of_binding_iterated( domain1.last );
+                            
+                            if CapJitIsCallToGlobalFunction( last, "Length" ) then
+                                
+                                return is_shorter_than( last.args.1, domain2 );
+                                
+                            fi;
+                            
+                        fi;
+                        
                         # `Filtered( list, func )` is shorter than `list`
                         if CapJitIsCallToGlobalFunction( domain1, "Filtered" ) and CapJitIsEqualForEnhancedSyntaxTrees( value_of_binding_iterated( domain1.args.1 ), domain2 ) then
                             
