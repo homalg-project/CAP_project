@@ -231,14 +231,14 @@ InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( stri
     
 end );
 
-InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRING_WITH_FILTER,
+InstallGlobalFunction( CAP_INTERNAL_REPLACED_STRING_WITH_FILTER,
   
   function( filter_or_string, args... )
     local category, data_type;
     
     if Length( args ) > 1 then
         
-        Error( "CAP_INTERNAL_REPLACE_STRING_WITH_FILTER must be called with at most two arguments" );
+        Error( "CAP_INTERNAL_REPLACED_STRING_WITH_FILTER must be called with at most two arguments" );
         
     elif Length( args ) = 1 then
         
@@ -282,30 +282,30 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRING_WITH_FILTER,
     
 end );
 
-InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS,
+InstallGlobalFunction( CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS,
   
   function( list, args... )
       local category;
       
       if Length( args ) > 1 then
-          Error( "CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS must be called with at most two arguments" );
+          Error( "CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS must be called with at most two arguments" );
       elif Length( args ) = 1 then
           category := args[1];
       else
           category := false;
       fi;
       
-      return List( list, l -> CAP_INTERNAL_REPLACE_STRING_WITH_FILTER( l, category ) );
+      return List( list, l -> CAP_INTERNAL_REPLACED_STRING_WITH_FILTER( l, category ) );
       
 end );
 
-InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS_FOR_JULIA,
+InstallGlobalFunction( CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS_FOR_JULIA,
   
   function( list, args... )
     local category;
     
     if Length( args ) > 1 then
-        Error( "CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS_FOR_JULIA must be called with at most two arguments" );
+        Error( "CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS_FOR_JULIA must be called with at most two arguments" );
     elif Length( args ) = 1 then
         category := args[1];
     else
@@ -315,7 +315,7 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS_FOR_JULIA,
     return List( list, function ( l )
       local filter;
         
-        filter := CAP_INTERNAL_REPLACE_STRING_WITH_FILTER( l, category );
+        filter := CAP_INTERNAL_REPLACED_STRING_WITH_FILTER( l, category );
         
         if filter = IsList then
             
@@ -955,8 +955,8 @@ end );
 ##
 InstallGlobalFunction( "IsSpecializationOfFilter", function ( filter1, filter2 )
     
-    filter1 := CAP_INTERNAL_REPLACE_STRING_WITH_FILTER( filter1 );
-    filter2 := CAP_INTERNAL_REPLACE_STRING_WITH_FILTER( filter2 );
+    filter1 := CAP_INTERNAL_REPLACED_STRING_WITH_FILTER( filter1 );
+    filter2 := CAP_INTERNAL_REPLACED_STRING_WITH_FILTER( filter2 );
     
     return IS_SUBSET_FLAGS( WITH_IMPS_FLAGS( FLAGS_FILTER( filter2 ) ), WITH_IMPS_FLAGS( FLAGS_FILTER( filter1 ) ) );
     
