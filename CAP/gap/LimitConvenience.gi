@@ -163,7 +163,7 @@ end );
                 rec(
                     without_given_universal_morphism := universal_morphism_name,
                     with_given_universal_morphism := Concatenation( universal_morphism_name, "WithGiven", object_name ),
-                    diagram_filter_list := List( CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( limit.diagram_filter_list ), NameFunction ),
+                    diagram_filter_list := List( CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS( limit.diagram_filter_list ), NameFunction ),
                     tau_filter := tau_filter,
                     diagram_arguments := limit.diagram_input_type,
                     test_object_position := test_object_position,
@@ -203,7 +203,7 @@ end );
                 range_diagram_arguments_string := Concatenation( "List( ", arguments_string, ", Range )" );
             fi;
             
-            replaced_filter_list := List( CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( filter_list ), NameFunction );
+            replaced_filter_list := List( CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS( filter_list ), NameFunction );
             
             current_string := ReplacedStringViaRecord( """
 ##

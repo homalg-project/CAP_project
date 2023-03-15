@@ -25,15 +25,15 @@ DeclareGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING" );
 #!  The function takes a filter or one of the strings listed under `filter_list` in <Ref Sect="Section_CapInternalInstallAdd" /> as input.
 #!  Filters are returned unchanged. If a string is given, the corresponding filter of the category <A>category</A> is returned.
 #!  If no category is given, generic filters (`IsCapCategoryObject`, `IsCapCategoryMorphism` etc.) are used.
-DeclareGlobalFunction( "CAP_INTERNAL_REPLACE_STRING_WITH_FILTER" );
+DeclareGlobalFunction( "CAP_INTERNAL_REPLACED_STRING_WITH_FILTER" );
 
 #! @Arguments list[, category]
 #! @Returns Replaced list
 #! @Description
-#!  Applies <Ref Func="CAP_INTERNAL_REPLACE_STRING_WITH_FILTER" /> to all elements of <A>list</A> and returns the result.
-DeclareGlobalFunction( "CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS" );
+#!  Applies <Ref Func="CAP_INTERNAL_REPLACED_STRING_WITH_FILTER" /> to all elements of <A>list</A> and returns the result.
+DeclareGlobalFunction( "CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS" );
 
-DeclareGlobalFunction( "CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS_FOR_JULIA" );
+DeclareGlobalFunction( "CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS_FOR_JULIA" );
 
 #! @Arguments list, additional list
 #! @Returns merged lists

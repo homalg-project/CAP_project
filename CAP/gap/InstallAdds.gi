@@ -102,7 +102,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
     # declare operation with category as first argument and install convenience method
     if record.install_convenience_without_category then
         
-        replaced_filter_list := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( filter_list );
+        replaced_filter_list := CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS( filter_list );
         
         if filter_list[2] in [ "object", "morphism", "twocell" ] then
             
@@ -135,7 +135,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
         
         if "list_of_objects" in filter_list or "list_of_morphisms" in filter_list or "list_of_twocells" in filter_list then
             
-            replaced_filter_list := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS_FOR_JULIA( filter_list );
+            replaced_filter_list := CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS_FOR_JULIA( filter_list );
             
             Assert( 0, ValueGlobal( "IsJuliaObject" ) in replaced_filter_list );
             
@@ -238,7 +238,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
             
         fi;
         
-        replaced_filter_list := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( filter_list, category );
+        replaced_filter_list := CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS( filter_list, category );
         
         ## Nr arguments sanity check
         
