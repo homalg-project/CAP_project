@@ -36,8 +36,8 @@
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X87364D2E830F7FAE">9.2-1 DeclareFamilyProperty</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X87857B6887466690">9.2-2 CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X83EC415C82D6FCEC">9.2-3 CAP_INTERNAL_REPLACE_STRING_WITH_FILTER</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X840466B67CFF9CEA">9.2-4 CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X82C6A9FE7BA3CA5B">9.2-3 CAP_INTERNAL_REPLACED_STRING_WITH_FILTER</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7F3826497806B627">9.2-4 CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7F2869657DDE9AC9">9.2-5 CAP_INTERNAL_MERGE_FILTER_LISTS</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X849B851C80D47B4F">9.2-6 CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7C7A71C97DC2FABF">9.2-7 CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION</a></span>
@@ -127,23 +127,23 @@
 
 <p>The function takes one of the strings listed under <code class="code">filter_list</code> in <a href="chap7_mj.html#X7D83FC527EA66166"><span class="RefLink">7.3</span></a> as input and returns the corresponding data type (see <code class="func">CapJitInferredDataTypes</code> (<a href="https://homalg-project.github.io/CAP_project/CompilerForCAP/doc/chap2_mj.html#X821BE2CE7C30674E"><span class="RefLink">CompilerForCAP: CapJitInferredDataTypes</span></a>) for details). If no category is given, data types with generic filters (<code class="code">IsCapCategoryObject</code>, <code class="code">IsCapCategoryMorphism</code> etc.) are returned. However, those cannot be used in the context of <code class="code">CompilerForCAP</code> because the component <code class="code">category</code> cannot be set in this case.</p>
 
-<p><a id="X83EC415C82D6FCEC" name="X83EC415C82D6FCEC"></a></p>
+<p><a id="X82C6A9FE7BA3CA5B" name="X82C6A9FE7BA3CA5B"></a></p>
 
-<h5>9.2-3 CAP_INTERNAL_REPLACE_STRING_WITH_FILTER</h5>
+<h5>9.2-3 CAP_INTERNAL_REPLACED_STRING_WITH_FILTER</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_REPLACE_STRING_WITH_FILTER</code>( <var class="Arg">filter_or_string</var>[, <var class="Arg">category</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_REPLACED_STRING_WITH_FILTER</code>( <var class="Arg">filter_or_string</var>[, <var class="Arg">category</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a filter</p>
 
 <p>The function takes a filter or one of the strings listed under <code class="code">filter_list</code> in <a href="chap7_mj.html#X7D83FC527EA66166"><span class="RefLink">7.3</span></a> as input. Filters are returned unchanged. If a string is given, the corresponding filter of the category <var class="Arg">category</var> is returned. If no category is given, generic filters (<code class="code">IsCapCategoryObject</code>, <code class="code">IsCapCategoryMorphism</code> etc.) are used.</p>
 
-<p><a id="X840466B67CFF9CEA" name="X840466B67CFF9CEA"></a></p>
+<p><a id="X7F3826497806B627" name="X7F3826497806B627"></a></p>
 
-<h5>9.2-4 CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS</h5>
+<h5>9.2-4 CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS</code>( <var class="Arg">list</var>[, <var class="Arg">category</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS</code>( <var class="Arg">list</var>[, <var class="Arg">category</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: Replaced list</p>
 
-<p>Applies <code class="func">CAP_INTERNAL_REPLACE_STRING_WITH_FILTER</code> (<a href="chap9_mj.html#X83EC415C82D6FCEC"><span class="RefLink">9.2-3</span></a>) to all elements of <var class="Arg">list</var> and returns the result.</p>
+<p>Applies <code class="func">CAP_INTERNAL_REPLACED_STRING_WITH_FILTER</code> (<a href="chap9_mj.html#X82C6A9FE7BA3CA5B"><span class="RefLink">9.2-3</span></a>) to all elements of <var class="Arg">list</var> and returns the result.</p>
 
 <p><a id="X7F2869657DDE9AC9" name="X7F2869657DDE9AC9"></a></p>
 

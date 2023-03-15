@@ -6,7 +6,7 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2023.03-05
+                                   2023.03-06
   
   
                                  15 March 2023
@@ -904,8 +904,8 @@
     9.2 [33X[0;0YTools[133X
       9.2-1 DeclareFamilyProperty
       9.2-2 CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING
-      9.2-3 CAP_INTERNAL_REPLACE_STRING_WITH_FILTER
-      9.2-4 CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS
+      9.2-3 CAP_INTERNAL_REPLACED_STRING_WITH_FILTER
+      9.2-4 CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS
       9.2-5 CAP_INTERNAL_MERGE_FILTER_LISTS
       9.2-6 CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT
       9.2-7 CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION

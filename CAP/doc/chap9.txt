@@ -40,9 +40,9 @@
   the  context  of [10XCompilerForCAP[110X because the component [10Xcategory[110X cannot be set
   in this case.[133X
   
-  [1X9.2-3 CAP_INTERNAL_REPLACE_STRING_WITH_FILTER[101X
+  [1X9.2-3 CAP_INTERNAL_REPLACED_STRING_WITH_FILTER[101X
   
-  [33X[1;0Y[29X[2XCAP_INTERNAL_REPLACE_STRING_WITH_FILTER[102X( [3Xfilter_or_string[103X[, [3Xcategory[103X] ) [32X function[133X
+  [33X[1;0Y[29X[2XCAP_INTERNAL_REPLACED_STRING_WITH_FILTER[102X( [3Xfilter_or_string[103X[, [3Xcategory[103X] ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya filter[133X
   
   [33X[0;0YThe  function  takes a filter or one of the strings listed under [10Xfilter_list[110X
@@ -51,12 +51,12 @@
   given, generic filters ([10XIsCapCategoryObject[110X, [10XIsCapCategoryMorphism[110X etc.) are
   used.[133X
   
-  [1X9.2-4 CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS[101X
+  [1X9.2-4 CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS[101X
   
-  [33X[1;0Y[29X[2XCAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS[102X( [3Xlist[103X[, [3Xcategory[103X] ) [32X function[133X
+  [33X[1;0Y[29X[2XCAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS[102X( [3Xlist[103X[, [3Xcategory[103X] ) [32X function[133X
   [6XReturns:[106X  [33X[0;10YReplaced list[133X
   
-  [33X[0;0YApplies  [2XCAP_INTERNAL_REPLACE_STRING_WITH_FILTER[102X  ([14X9.2-3[114X) to all elements of
+  [33X[0;0YApplies  [2XCAP_INTERNAL_REPLACED_STRING_WITH_FILTER[102X ([14X9.2-3[114X) to all elements of
   [3Xlist[103X and returns the result.[133X
   
   [1X9.2-5 CAP_INTERNAL_MERGE_FILTER_LISTS[101X
