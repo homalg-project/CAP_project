@@ -27,8 +27,8 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianCategory  := Concatenatio
 ], CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory );
 
 ## For internal use only:
-## we need an operation name different from `Coproduct`, since CompilerForCAP
-## seems to be unable to compile the CAP operation `Coproduct`
+## we need an operation name different from `DirectProduct`, since CompilerForCAP
+## seems to be unable to compile the CAP operation `DirectProduct`
 ## if declared in a way different from that in the method record
 DeclareOperation( "BinaryDirectProduct",
         [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ] );
