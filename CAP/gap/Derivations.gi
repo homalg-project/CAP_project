@@ -903,7 +903,7 @@ end );
 InstallGlobalFunction( DerivationsOfMethodByCategory,
   
   function( category, name )
-    local category_weight_list, current_weight, current_derivation, currently_installed_funcs, to_delete, weight_list, category_getter_string, possible_derivations, category_filter, weight, i, x;
+    local category_weight_list, current_weight, current_derivation, currently_installed_funcs, to_delete, weight_list, category_getter_string, possible_derivations, category_filter, weight, found, i, x, final_derivation;
     
     if IsFunction( name ) then
         name := NameFunction( name );
@@ -1018,24 +1018,46 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
     
     Print( "Possible derivations are:\n\n" );
     
-    possible_derivations := DerivationsOfOperation( CAP_INTERNAL_DERIVATION_GRAPH, name );
+    possible_derivations := List( DerivationsOfOperation( CAP_INTERNAL_DERIVATION_GRAPH, name ), d -> rec( derivation := d ) );
+    
+    for final_derivation in CAP_INTERNAL_FINAL_DERIVATION_LIST.final_derivation_list do
+        
+        for current_derivation in final_derivation.derivations do
+            
+            if TargetOperation( current_derivation ) = name then
+                
+                Add( possible_derivations, rec(
+                    derivation := current_derivation,
+                    can_compute := UsedOperationsWithMultiplesAndCategoryGetters( final_derivation.dummy_derivation ),
+                    cannot_compute := final_derivation.cannot_compute,
+                ) );
+                
+            fi;
+            
+        od;
+        
+    od;
     
     for current_derivation in possible_derivations do
         
-        category_filter := CategoryFilter( current_derivation );
+        category_filter := CategoryFilter( current_derivation.derivation );
         
+        # `SizeScreen()[1] - 3` is taken from the code for package banners
+        Print( ListWithIdenticalEntries( SizeScreen()[1] - 3, '-' ), "\n" );
         if IsProperty( category_filter ) and Tester( category_filter )( category ) and not category_filter( category ) then
             continue;
         elif IsProperty( category_filter ) and not Tester( category_filter )( category ) then
             Print( "If ", Name( category ), " would be ", JoinStringsWithSeparator( Filtered( NamesFilter( category_filter ), name -> not StartsWith( name, "Has" ) ), " and " ), " then\n" );
             Print( TextAttr.b4, name, TextAttr.reset, " could be derived by\n" );
         elif IsFunction( category_filter ) and not category_filter( category ) then
-            continue;
+            Print( "If ", Name( category ), " would fulfill the conditions given by\n\n" );
+            Display( category_filter );
+            Print( "\nthen ", TextAttr.b4, name, TextAttr.reset, " could be derived by\n" );
         else
             Print( TextAttr.b4, name, TextAttr.reset, " can be derived by\n" );
         fi;
         
-        for x in UsedOperationsWithMultiplesAndCategoryGetters( current_derivation ) do
+        for x in UsedOperationsWithMultiplesAndCategoryGetters( current_derivation.derivation ) do
             
             if x[3] = fail then
                 
@@ -1061,7 +1083,77 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
             
         od;
         
-        Print( "with additional weight ", DerivationWeight( current_derivation ), ".\n\n" );
+        Print( "with additional weight ", DerivationWeight( current_derivation.derivation ) );
+        
+        Assert( 0, IsBound( current_derivation.can_compute ) = IsBound( current_derivation.cannot_compute ) );
+        
+        if IsBound( current_derivation.can_compute ) then
+            
+            Print( "\n\nas a final derivation\nif the following additional operations could be computed\n" );
+            
+            found := false;
+            
+            for x in current_derivation.can_compute do
+                
+                if x[3] = fail then
+                    
+                    weight_list := category_weight_list;
+                    category_getter_string := "";
+                    
+                else
+                    
+                    weight_list := x[3](category)!.derivations_weight_list;
+                    category_getter_string := Concatenation( " in category obtained by applying ", String( x[3] ) );
+                    
+                fi;
+                
+                weight := CurrentOperationWeight( weight_list, x[1] );
+                
+                if weight = infinity then
+                    
+                    Print( "* ", x[1], "\n" );
+                    found := true;
+                    
+                fi;
+                
+            od;
+            
+            if not found then
+                
+                Print( "(none)\n" );
+                
+            fi;
+            
+            Print( "\nand the following additional operations could not be computed\n" );
+            
+            found := false;
+            
+            for x in current_derivation.cannot_compute do
+                
+                weight := CurrentOperationWeight( weight_list, x );
+                
+                if weight < infinity then
+                    
+                    Print( "* ", x, "\n" );
+                    found := true;
+                    
+                fi;
+                
+            od;
+            
+            if not found then
+                
+                Print( "(none)\n" );
+                
+            fi;
+            
+        else
+            
+            Print( ".\n" );
+            
+        fi;
+        
+        Print( "\n" );
         
     od;
     
