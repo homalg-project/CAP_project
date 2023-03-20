@@ -8,6 +8,14 @@
 
 DeclareGlobalVariable( "DEDUCTIVE_SYSTEM_OPTIONS" );
 
+DeclareGlobalVariable( "CATEGORIES_FAMILY_PROPERTIES" );
+
+InstallValue( CATEGORIES_FAMILY_PROPERTIES,
+
+              rec( ) );
+
+DeclareGlobalFunction( "DeclareFamilyProperty" );
+
 DeclareCategory( "IsDeductiveSystemCell",
                  IsCapCategoryCell );
 

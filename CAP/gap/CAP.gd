@@ -69,12 +69,6 @@ DeclareGlobalVariable( "CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST" );
 
 InstallValue( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST, [ ] );
 
-DeclareGlobalVariable( "CATEGORIES_FAMILY_PROPERTIES" );
-
-InstallValue( CATEGORIES_FAMILY_PROPERTIES,
-
-              rec( ) );
-
 ###################################
 ##
 #! @Section Categories

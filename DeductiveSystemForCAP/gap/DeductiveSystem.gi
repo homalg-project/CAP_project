@@ -48,6 +48,86 @@ InstallGlobalFunction( RESOLVE_HISTORY,
     
 end );
 
+##########################################
+##
+## Family property
+##
+##########################################
+
+# see commit 3864a12e3182aa81977836d7946e9a57e05df1c9 for how this was used previously
+InstallGlobalFunction( DeclareFamilyProperty,
+                       
+  function( arg )
+    local name, filter, family, cell_type, reinstall;
+    
+    if Length( arg ) < 2 or Length( arg ) > 4 then
+        
+        Error( "usage DeclareFamilyProperty( name, filter[, family, type of cell ] )" );
+        
+    fi;
+    
+    name := arg[ 1 ];
+    
+    filter := arg[ 2 ];
+    
+    if not IsBound( arg[ 3 ] ) then
+        
+        family := "general";
+        
+    elif IsBound( arg[ 3 ] ) and LowercaseString( arg[ 3 ] ) in [ "object", "morphism", "twocell" ] then
+        
+        arg[ 4 ] := arg[ 3 ];
+        
+        family := "general";
+        
+    else
+        
+        family := LowercaseString( arg[ 3 ] );
+        
+    fi;
+    
+    if Length( arg ) > 3 then
+        
+        cell_type := LowercaseString( arg[ 4 ] );
+        
+    else
+        
+        Error( "the case `cell` is not supported anymore" );
+        
+    fi;
+    
+    if not cell_type in [ "object", "morphism", "twocell" ] then
+        
+        Error( "cell must be object, morphism, or twocell" );
+        
+    fi;
+    
+    if not IsBound( CATEGORIES_FAMILY_PROPERTIES.( family ) ) then
+        
+        CATEGORIES_FAMILY_PROPERTIES.( family ) := rec( );
+        
+    fi;
+    
+    if not IsBound( CATEGORIES_FAMILY_PROPERTIES.( family ).( cell_type ) ) then
+        
+        CATEGORIES_FAMILY_PROPERTIES.( family ).( cell_type ) := [ ];
+        
+    fi;
+    
+    reinstall := ValueOption( "reinstall" );
+    
+    if reinstall <> false then
+        
+        reinstall := true;
+        
+    fi;
+    
+    Add( CATEGORIES_FAMILY_PROPERTIES.( family ).( cell_type ), [ name, reinstall ] );
+    
+    DeclareProperty( name, filter );
+    
+end );
+
 ####################################
 ##
 ## Reps and types
