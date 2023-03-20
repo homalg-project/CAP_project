@@ -245,6 +245,12 @@ InstallGlobalFunction( INSTALL_TODO_FOR_LOGICAL_THEOREMS,
         ## check wether argument list matches here
         current_argument_type := current_theorem!.Variable_list;
         
+        if Length( current_argument_type ) <> Length( arguments ) then
+            
+            Error( "while installing todo for logical theorems: got ", Length( arguments ), " arguments but expected ", Length( current_argument_type ) );
+            
+        fi;
+        
         is_valid_theorem := true;
         
         for i in [ 1 .. Length( current_argument_type ) ] do

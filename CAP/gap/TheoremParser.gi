@@ -460,6 +460,20 @@ BindGlobal( "FIND_PART_WHICH_CONTAINS_FUNCTION",
     
     return_record.Function := func;
     
+    if IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(func) ) then
+        
+        if Length( return_record.Variables ) <> Length( CAP_INTERNAL_METHOD_NAME_RECORD.(func).filter_list ) - 1 then
+            
+            Error( "in logic file: ", func, " gets ", Length( return_record.Variables ), " arguments but ", Length( CAP_INTERNAL_METHOD_NAME_RECORD.(func).filter_list ) - 1, " were expected" );
+            
+        fi;
+        
+    elif func <> "Source" and func <> "Range" then
+        
+        Error( "in logic file: ", func, " is neither a CAP operation nor `Source` or `Range`" );
+        
+    fi;
+    
     return return_record;
     
 end );

@@ -420,11 +420,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                         redirect_return := CallFuncList( redirect_function, arg );
                         if redirect_return[ 1 ] = true then
                             if category!.predicate_logic then
-                                if record!.install_convenience_without_category then
-                                    INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{[ 2 .. Length( arg ) ]}, redirect_return[ 2 ], category );
-                                else
-                                    INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg, redirect_return[ 2 ], category );
-                                fi;
+                                INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{[ 2 .. Length( arg ) ]}, redirect_return[ 2 ], category );
                             fi;
                             return redirect_return[ 2 ];
                         fi;
@@ -468,11 +464,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     fi;
                     
                     if category!.predicate_logic then
-                        if record!.install_convenience_without_category then
-                            INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{[ 2 .. Length( arg ) ]}, result, category );
-                        else
-                            INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg, result, category );
-                        fi;
+                        INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{[ 2 .. Length( arg ) ]}, result, category );
                     fi;
                     
                     if not is_derivation and not is_final_derivation then
