@@ -123,13 +123,11 @@ InstallGlobalFunction( ADD_THEOREM_TO_CATEGORY,
     
     if not IsBound( theorem_record.( name ) ) then
         
-        theorem_record.( name ) := [ implication_record ];
-        
-    else
-        
-        Add( theorem_record.( name ), implication_record );
+        theorem_record.( name ) := [ ];
         
     fi;
+    
+    Add( theorem_record.( name ), implication_record );
     
 end );
 
