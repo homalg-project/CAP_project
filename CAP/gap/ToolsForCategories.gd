@@ -7,9 +7,6 @@
 
 #! @Section Tools
 
-#!
-DeclareGlobalFunction( "DeclareFamilyProperty" );
-
 #! @Arguments string[, category]
 #! @Returns a record
 #! @Description
