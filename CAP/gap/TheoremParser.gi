@@ -454,11 +454,11 @@ BindGlobal( "FIND_PART_WHICH_CONTAINS_FUNCTION",
         
     fi;
     
-    return_record!.TheoremPart := rec( Value := value, ValueFunction := ValueGlobal( NormalizedWhitespace( predicate ) ), Object := "result" );
+    return_record.TheoremPart := rec( Value := value, ValueFunction := ValueGlobal( NormalizedWhitespace( predicate ) ), Object := "result" );
     
-    return_record!.Variables := SANITIZE_ARGUMENT_LIST( variables );
+    return_record.Variables := SANITIZE_ARGUMENT_LIST( variables );
     
-    return_record!.Function := func;
+    return_record.Function := func;
     
     return return_record;
     
