@@ -23,21 +23,75 @@ shasum -a 256 -c codecov.SHA256SUM
 
 # execute
 chmod +x codecov
-./codecov -Z -v -s ../ -F CAP || (sleep 60; ./codecov -Z -v -s ../ -F CAP || (sleep 60; ./codecov -Z -v -s ../ -F CAP))
-./codecov -Z -v -s ../ -F ActionsForCAP || (sleep 60; ./codecov -Z -v -s ../ -F ActionsForCAP || (sleep 60; ./codecov -Z -v -s ../ -F ActionsForCAP))
-./codecov -Z -v -s ../ -F AttributeCategoryForCAP || (sleep 60; ./codecov -Z -v -s ../ -F AttributeCategoryForCAP || (sleep 60; ./codecov -Z -v -s ../ -F AttributeCategoryForCAP))
-./codecov -Z -v -s ../ -F CartesianCategories || (sleep 60; ./codecov -Z -v -s ../ -F CartesianCategories || (sleep 60; ./codecov -Z -v -s ../ -F CartesianCategories))
-./codecov -Z -v -s ../ -F CompilerForCAP || (sleep 60; ./codecov -Z -v -s ../ -F CompilerForCAP || (sleep 60; ./codecov -Z -v -s ../ -F CompilerForCAP))
-./codecov -Z -v -s ../ -F ComplexesAndFilteredObjectsForCAP || (sleep 60; ./codecov -Z -v -s ../ -F ComplexesAndFilteredObjectsForCAP || (sleep 60; ./codecov -Z -v -s ../ -F ComplexesAndFilteredObjectsForCAP))
-./codecov -Z -v -s ../ -F DeductiveSystemForCAP || (sleep 60; ./codecov -Z -v -s ../ -F DeductiveSystemForCAP || (sleep 60; ./codecov -Z -v -s ../ -F DeductiveSystemForCAP))
-./codecov -Z -v -s ../ -F FreydCategoriesForCAP || (sleep 60; ./codecov -Z -v -s ../ -F FreydCategoriesForCAP || (sleep 60; ./codecov -Z -v -s ../ -F FreydCategoriesForCAP))
-./codecov -Z -v -s ../ -F GeneralizedMorphismsForCAP || (sleep 60; ./codecov -Z -v -s ../ -F GeneralizedMorphismsForCAP || (sleep 60; ./codecov -Z -v -s ../ -F GeneralizedMorphismsForCAP))
-./codecov -Z -v -s ../ -F GradedModulePresentationsForCAP || (sleep 60; ./codecov -Z -v -s ../ -F GradedModulePresentationsForCAP || (sleep 60; ./codecov -Z -v -s ../ -F GradedModulePresentationsForCAP))
-./codecov -Z -v -s ../ -F GroupRepresentationsForCAP || (sleep 60; ./codecov -Z -v -s ../ -F GroupRepresentationsForCAP || (sleep 60; ./codecov -Z -v -s ../ -F GroupRepresentationsForCAP))
-./codecov -Z -v -s ../ -F HomologicalAlgebraForCAP || (sleep 60; ./codecov -Z -v -s ../ -F HomologicalAlgebraForCAP || (sleep 60; ./codecov -Z -v -s ../ -F HomologicalAlgebraForCAP))
-./codecov -Z -v -s ../ -F InternalExteriorAlgebraForCAP || (sleep 60; ./codecov -Z -v -s ../ -F InternalExteriorAlgebraForCAP || (sleep 60; ./codecov -Z -v -s ../ -F InternalExteriorAlgebraForCAP))
-./codecov -Z -v -s ../ -F LinearAlgebraForCAP || (sleep 60; ./codecov -Z -v -s ../ -F LinearAlgebraForCAP || (sleep 60; ./codecov -Z -v -s ../ -F LinearAlgebraForCAP))
-./codecov -Z -v -s ../ -F ModulePresentationsForCAP || (sleep 60; ./codecov -Z -v -s ../ -F ModulePresentationsForCAP || (sleep 60; ./codecov -Z -v -s ../ -F ModulePresentationsForCAP))
-./codecov -Z -v -s ../ -F ModulesOverLocalRingsForCAP || (sleep 60; ./codecov -Z -v -s ../ -F ModulesOverLocalRingsForCAP || (sleep 60; ./codecov -Z -v -s ../ -F ModulesOverLocalRingsForCAP))
-./codecov -Z -v -s ../ -F MonoidalCategories || (sleep 60; ./codecov -Z -v -s ../ -F MonoidalCategories || (sleep 60; ./codecov -Z -v -s ../ -F MonoidalCategories))
-./codecov -Z -v -s ../ -F ToricSheaves || (sleep 60; ./codecov -Z -v -s ../ -F ToricSheaves || (sleep 60; ./codecov -Z -v -s ../ -F ToricSheaves))
+while ! ./codecov -Z -v -s ../ -F CAP; do
+    echo "Codecov upload failed, retrying in 60s"
+    sleep 60
+done
+while ! ./codecov -Z -v -s ../ -F ActionsForCAP; do
+    echo "Codecov upload failed, retrying in 60s"
+    sleep 60
+done
+while ! ./codecov -Z -v -s ../ -F AttributeCategoryForCAP; do
+    echo "Codecov upload failed, retrying in 60s"
+    sleep 60
+done
+while ! ./codecov -Z -v -s ../ -F CartesianCategories; do
+    echo "Codecov upload failed, retrying in 60s"
+    sleep 60
+done
+while ! ./codecov -Z -v -s ../ -F CompilerForCAP; do
+    echo "Codecov upload failed, retrying in 60s"
+    sleep 60
+done
+while ! ./codecov -Z -v -s ../ -F ComplexesAndFilteredObjectsForCAP; do
+    echo "Codecov upload failed, retrying in 60s"
+    sleep 60
+done
+while ! ./codecov -Z -v -s ../ -F DeductiveSystemForCAP; do
+    echo "Codecov upload failed, retrying in 60s"
+    sleep 60
+done
+while ! ./codecov -Z -v -s ../ -F FreydCategoriesForCAP; do
+    echo "Codecov upload failed, retrying in 60s"
+    sleep 60
+done
+while ! ./codecov -Z -v -s ../ -F GeneralizedMorphismsForCAP; do
+    echo "Codecov upload failed, retrying in 60s"
+    sleep 60
+done
+while ! ./codecov -Z -v -s ../ -F GradedModulePresentationsForCAP; do
+    echo "Codecov upload failed, retrying in 60s"
+    sleep 60
+done
+while ! ./codecov -Z -v -s ../ -F GroupRepresentationsForCAP; do
+    echo "Codecov upload failed, retrying in 60s"
+    sleep 60
+done
+while ! ./codecov -Z -v -s ../ -F HomologicalAlgebraForCAP; do
+    echo "Codecov upload failed, retrying in 60s"
+    sleep 60
+done
+while ! ./codecov -Z -v -s ../ -F InternalExteriorAlgebraForCAP; do
+    echo "Codecov upload failed, retrying in 60s"
+    sleep 60
+done
+while ! ./codecov -Z -v -s ../ -F LinearAlgebraForCAP; do
+    echo "Codecov upload failed, retrying in 60s"
+    sleep 60
+done
+while ! ./codecov -Z -v -s ../ -F ModulePresentationsForCAP; do
+    echo "Codecov upload failed, retrying in 60s"
+    sleep 60
+done
+while ! ./codecov -Z -v -s ../ -F ModulesOverLocalRingsForCAP; do
+    echo "Codecov upload failed, retrying in 60s"
+    sleep 60
+done
+while ! ./codecov -Z -v -s ../ -F MonoidalCategories; do
+    echo "Codecov upload failed, retrying in 60s"
+    sleep 60
+done
+while ! ./codecov -Z -v -s ../ -F ToricSheaves; do
+    echo "Codecov upload failed, retrying in 60s"
+    sleep 60
+done

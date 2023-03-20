@@ -5,6 +5,8 @@ LoadPackage( "DeductiveSystemForCAP" );
 
 LoadPackage( "MatricesForHomalg" );
 
+LoadPackage( "GaussForHomalg" );
+
 #ProfileFunctionsInGlobalVariables( true );
 #ProfileOperationsAndMethods( true );
 #ProfileGlobalFunctions( true );
@@ -91,7 +93,7 @@ InstallMethod( VectorSpaceMorphism,
                   [ IsHomalgRationalVectorSpaceRep, IsObject, IsHomalgRationalVectorSpaceRep ],
                   
   function( source, matrix, range )
-    local morphism;
+    local morphism, objectified_morphism;
 
     if not IsHomalgMatrix( matrix ) then
     

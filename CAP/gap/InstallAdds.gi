@@ -420,11 +420,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                         redirect_return := CallFuncList( redirect_function, arg );
                         if redirect_return[ 1 ] = true then
                             if category!.predicate_logic then
-                                if record!.install_convenience_without_category then
-                                    INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{[ 2 .. Length( arg ) ]}, redirect_return[ 2 ], category );
-                                else
-                                    INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg, redirect_return[ 2 ], category );
-                                fi;
+                                INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{[ 2 .. Length( arg ) ]}, redirect_return[ 2 ], category );
                             fi;
                             return redirect_return[ 2 ];
                         fi;
@@ -468,11 +464,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     fi;
                     
                     if category!.predicate_logic then
-                        if record!.install_convenience_without_category then
-                            INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{[ 2 .. Length( arg ) ]}, result, category );
-                        else
-                            INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg, result, category );
-                        fi;
+                        INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{[ 2 .. Length( arg ) ]}, result, category );
                     fi;
                     
                     if not is_derivation and not is_final_derivation then
@@ -521,10 +513,6 @@ InstallGlobalFunction( CapInternalInstallAdd,
         fi;
         
         for i in method_list do
-            
-            if record.installation_name = "IsEqualForObjects" and IsIdenticalObj( i[ 1 ], IsIdenticalObj ) and category!.default_cache_type <> "crisp" and not ValueOption( "SuppressCacheWarning" ) = true then
-                Display( "WARNING: IsIdenticalObj is used for deciding the equality of objects but the caching is not set to crisp. Thus, probably the specification that equal input gives equal output is not fulfilled. You can suppress this warning by passing the option \"SuppressCacheWarning := true\" to AddIsEqualForObjects." );
-            fi;
             
             name := Name( category );
             
@@ -694,12 +682,6 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD,
         
         ## keep track of it in method name rec
         CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname ) := current_rec;
-        
-        if IsBound( current_rec.no_install ) and current_rec.no_install = true then
-            
-            continue;
-            
-        fi;
         
         CapInternalInstallAdd( current_rec );
         

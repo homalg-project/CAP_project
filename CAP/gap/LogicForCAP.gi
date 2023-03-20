@@ -123,13 +123,11 @@ InstallGlobalFunction( ADD_THEOREM_TO_CATEGORY,
     
     if not IsBound( theorem_record.( name ) ) then
         
-        theorem_record.( name ) := [ implication_record ];
-        
-    else
-        
-        Add( theorem_record.( name ), implication_record );
+        theorem_record.( name ) := [ ];
         
     fi;
+    
+    Add( theorem_record.( name ), implication_record );
     
 end );
 
@@ -246,6 +244,12 @@ InstallGlobalFunction( INSTALL_TODO_FOR_LOGICAL_THEOREMS,
         
         ## check wether argument list matches here
         current_argument_type := current_theorem!.Variable_list;
+        
+        if Length( current_argument_type ) <> Length( arguments ) then
+            
+            Error( "while installing todo for logical theorems: got ", Length( arguments ), " arguments but expected ", Length( current_argument_type ) );
+            
+        fi;
         
         is_valid_theorem := true;
         
