@@ -151,10 +151,6 @@ BindGlobal( "CAP_INTERNAL_INSTALL_PRODUCT_ADDS_FROM_CATEGORY",
             continue;
         fi;
         
-        if IsBound( current_entry.no_install ) and current_entry.no_install = true then
-            continue;
-        fi;
-        
         if ForAny( category_weight_list, list -> CurrentOperationWeight( list, current_recname ) = infinity ) then
             continue;
         fi;

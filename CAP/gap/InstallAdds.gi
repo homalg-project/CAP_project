@@ -695,12 +695,6 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD,
         ## keep track of it in method name rec
         CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname ) := current_rec;
         
-        if IsBound( current_rec.no_install ) and current_rec.no_install = true then
-            
-            continue;
-            
-        fi;
-        
         CapInternalInstallAdd( current_rec );
         
     od;

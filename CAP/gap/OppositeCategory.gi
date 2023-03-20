@@ -131,10 +131,6 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
         
         current_entry := CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname );
         
-        if IsBound( current_entry.no_install ) and current_entry.no_install = true then
-            continue;
-        fi;
-        
         ## Conservative
         if not IsBound( current_entry.dual_operation ) then
             continue;
