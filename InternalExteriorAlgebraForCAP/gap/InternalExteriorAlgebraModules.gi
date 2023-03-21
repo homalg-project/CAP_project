@@ -989,41 +989,41 @@ end );
 ####################################
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
                [ IsEModuleActionCategoryObject ],
                
   function( object )
     
-    Display( Range( StructureMorphism( object ) ) );
+    return DisplayString( Range( StructureMorphism( object ) ) );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
                [ IsEModuleCoactionCategoryObject ],
                
   function( object )
     
-    Display( Source( StructureMorphism( object ) ) );
+    return DisplayString( Source( StructureMorphism( object ) ) );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
                [ IsEModuleActionCategoryMorphism ],
                
   function( morphism )
     
-    Display( UnderlyingMorphism( morphism ) );
+    return DisplayString( UnderlyingMorphism( morphism ) );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
                [ IsEModuleCoactionCategoryMorphism ],
                
   function( morphism )
     
-    Display( UnderlyingMorphism( morphism ) );
+    return DisplayString( UnderlyingMorphism( morphism ) );
     
 end );

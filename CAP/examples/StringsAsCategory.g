@@ -87,25 +87,22 @@ end );
 
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
                [ IsStringsAsCategoryMorphism ],
 
   function( alpha )
-    ViewObj( Source( alpha ) );
     
-    Print( Concatenation( " -- ", String( UnderlyingString( alpha ) ), " --> " ) );
-    
-    ViewObj( Range( alpha ) );
+    return Concatenation( ViewString( Source( alpha ) ), " -- ", String( UnderlyingString( alpha ) ), " --> ", ViewString( Range( alpha ) ) );
     
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
                [ IsStringsAsCategoryObject ],
 
   function( a )
 
-    Print( String( UnderlyingString( a ) ) );
+    return String( UnderlyingString( a ) );
 
 end );
 

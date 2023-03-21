@@ -310,19 +310,13 @@ end );
 ####################################
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
                [ IsGradedLeftOrRightPresentationMorphism ],
                # FIXME: Fix the rank in GenericView and delete this afterwards
                9999,
                
   function( morphism )
     
-    Display( UnderlyingMatrix( morphism ) );
-    
-    Print( "\n" );
-    
-    Print( String( morphism ) );
-    
-    Print( "\n" );
+    return Concatenation( StringDisplay( UnderlyingMatrix( morphism ) ), "\n", String( morphism ), "\n" );
     
 end );

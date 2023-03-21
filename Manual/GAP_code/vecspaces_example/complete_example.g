@@ -380,25 +380,24 @@ end );
 Finalize( SQVec );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
                [ IsSQVecObj ],
 
   function( a )
 
-    Print( "<An object in SQVec of dimension ",
+    return Concatenation( "<An object in SQVec of dimension ",
            String( Dimension( a ) ), ">" );
 
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
                [ IsSQVecMor ],
 
   function( morphism )
 
-    Print( "A morphism in SQVec with underlying matrix:\n" );
-  
-    Display( UnderlyingMatrix( morphism ) );
+    return Concatenation( "A morphism in SQVec with underlying matrix:\n",
+           StringDisplay( UnderlyingMatrix( morphism ) ) );
 
 end );
 

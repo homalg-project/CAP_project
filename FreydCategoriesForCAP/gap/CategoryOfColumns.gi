@@ -250,12 +250,12 @@ InstallMethod( String,
     
 end );
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
                [ IsCategoryOfColumnsObject ],
 
   function( category_of_columns_object )
 
-    Print( Concatenation( "<", String( category_of_columns_object ), ">" ) );
+    return Concatenation( "<", String( category_of_columns_object ), ">" );
 
 end );
 

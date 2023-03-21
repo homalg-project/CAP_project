@@ -1374,20 +1374,20 @@ end );
 ####################################
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
           [ IsAdditiveClosureMorphism ],
   function( morphism )
-    Print( "<A morphism in ", Name( CapCategory( morphism ) ),
-            " defined by a ", NrRows( morphism ), " x ", NrCols( morphism ), " matrix of underlying morphisms>"
+    return Concatenation( "<A morphism in ", Name( CapCategory( morphism ) ),
+            " defined by a ", String( NrRows( morphism ) ), " x ", String( NrCols( morphism ) ), " matrix of underlying morphisms>"
             );
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
           [ IsAdditiveClosureObject ],
   function( object )
-    Print( "<An object in ", Name( CapCategory( object ) ),
-            " defined by ", Length( ObjectList( object ) ), " underlying objects>"
+    return Concatenation( "<An object in ", Name( CapCategory( object ) ),
+            " defined by ", String( Length( ObjectList( object ) ) ), " underlying objects>"
             );
 end );
 

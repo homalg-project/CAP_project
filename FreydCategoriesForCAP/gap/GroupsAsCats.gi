@@ -115,26 +115,6 @@ InstallMethod( ViewString,
     
 end );
 
-##
-InstallMethod( ViewObj,
-               [ IsGroupAsCategoryMorphism ],
-               
-    function( alpha )
-        
-        Print( ViewString( alpha ) );
-        
-end );
-
-##
-InstallMethod( ViewObj,
-               [ IsGroupAsCategoryObject ],
-               
-    function( obj )
-        
-        Print( ViewString( obj ) );
-        
-end );
-
 ####################################
 ##
 ## Attributes

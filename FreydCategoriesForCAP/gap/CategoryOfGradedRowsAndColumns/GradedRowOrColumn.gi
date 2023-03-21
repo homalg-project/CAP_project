@@ -285,12 +285,12 @@ end );
 ##
 ####################################
 
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
                [ IsGradedRowOrColumn ],
                999, # FIX ME FIX ME
   function( graded_row_or_column )
 
-    Print( Concatenation( "<", String( graded_row_or_column ), ">" ) );
+    return Concatenation( "<", String( graded_row_or_column ), ">" );
 
 end );
 

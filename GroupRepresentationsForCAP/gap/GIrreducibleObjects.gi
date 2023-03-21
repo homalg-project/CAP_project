@@ -249,11 +249,11 @@ InstallMethod( String,
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
                [ IsGIrreducibleObject ],
 
   function( object )
 
-    Print( Concatenation( "<", String( object ), ">" ) );
+    return Concatenation( "<", String( object ), ">" );
 
 end );

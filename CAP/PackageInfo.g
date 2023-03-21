@@ -97,7 +97,7 @@ PackageDoc := rec(
 
 Dependencies := rec(
   GAP := ">= 4.12.1",
-  NeededOtherPackages := [ [ "ToolsForHomalg", ">= 2022.09-06" ],
+  NeededOtherPackages := [ [ "ToolsForHomalg", ">= 2023.03-01" ],
   ],
   SuggestedOtherPackages := [ [ "Browse", ">=0" ],
                               [ "CompilerForCAP", ">= 2021.12-05" ],

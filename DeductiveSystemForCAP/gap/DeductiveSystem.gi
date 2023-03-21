@@ -1115,16 +1115,12 @@ end );
 ##
 #################################
 
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
                [ IsDeductiveSystemObject ],
                
   function( cell )
     
-    Print( "<" );
-    
-    Print( String( cell ) );
-    
-    Print( ">" );
+    return Concatenation( "<", String( cell ), ">" );
     
 end );
 
@@ -1137,16 +1133,12 @@ InstallMethod( String,
      
 end );
 
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
                [ IsDeductiveSystemMorphism ],
                
   function( cell )
     
-    Print( "<" );
-    
-    Print( String( cell ) );
-    
-    Print( ">" );
+    return Concatenation( "<", String( cell ), ">" );
     
 end );
 
@@ -1160,7 +1152,7 @@ InstallMethod( String,
 end );
 
 ## Those two methods can cause errors.
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
                [ IsDeductiveSystemCell ],
                1000000, ##FIXME!!!!
                
@@ -1168,11 +1160,7 @@ InstallMethod( ViewObj,
     
     if HasEvaluation( cell ) then
         
-        Print( "<Deductive system hull of: " );
-        
-        ViewObj( Evaluation( cell ) );
-        
-        Print( ">" );
+        return Concatenation( "<Deductive system hull of: ", ViewString( Evaluation( cell ) ), ">" );
         
     else
         

@@ -393,11 +393,11 @@ InstallMethod( String,
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
                [ IsGZGradedIrreducibleObject ],
 
   function( object )
 
-    Print( Concatenation( "<", String( object ), ">" ) );
+    return Concatenation( "<", String( object ), ">" );
 
 end );

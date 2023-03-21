@@ -348,26 +348,6 @@ InstallMethod( ViewString,
 
 end );
 
-##
-# InstallMethod( ViewObj,
-#                [ IsProSetAsCategoryMorphism ],
-
-#     function( alpha )
-
-#         Print( ViewString( alpha ) );
-
-# end );
-
-##
-InstallMethod( ViewObj,
-               [ IsProSetAsCategoryObject ],
-
-    function( obj )
-
-        Print( ViewString( obj ) );
-
-end );
-
 ####################################
 ##
 ## Down

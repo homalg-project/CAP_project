@@ -113,26 +113,6 @@ InstallMethod( ViewString,
     
 end );
 
-##
-InstallMethod( ViewObj,
-               [ IsRingAsCategoryMorphism ],
-               
-    function( alpha )
-        
-        Print( ViewString( alpha ) );
-        
-end );
-
-##
-InstallMethod( ViewObj,
-               [ IsRingAsCategoryObject ],
-               
-    function( obj )
-        
-        Print( ViewString( obj ) );
-        
-end );
-
 ####################################
 ##
 ## Basic operations
