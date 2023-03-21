@@ -116,19 +116,19 @@
     [4X[25Xgap>[125X [27Xdummy1 := CreateCapCategory( );;[127X[104X
     [4X[25Xgap>[125X [27Xdummy2 := CreateCapCategory( );;[127X[104X
     [4X[25Xgap>[125X [27Xdummy3 := CreateCapCategory( );;[127X[104X
-    [4X[25Xgap>[125X [27XDisplayAndReturn := function ( string )[127X[104X
-    [4X[25X>[125X [27X    Display( string ); return string; end;;[127X[104X
+    [4X[25Xgap>[125X [27XPrintAndReturn := function ( string )[127X[104X
+    [4X[25X>[125X [27X    Print( string, "\n" ); return string; end;;[127X[104X
     [4X[25Xgap>[125X [27Xdummy1!.compiler_hints := rec( );;[127X[104X
     [4X[25Xgap>[125X [27Xdummy1!.compiler_hints.precompiled_towers := [[127X[104X
     [4X[25X>[125X [27X  rec([127X[104X
     [4X[25X>[125X [27X    remaining_constructors_in_tower := [ "Constructor1" ],[127X[104X
     [4X[25X>[125X [27X    precompiled_functions_adder := cat ->[127X[104X
-    [4X[25X>[125X [27X      DisplayAndReturn( "Adding precompiled operations for Constructor1" ),[127X[104X
+    [4X[25X>[125X [27X      PrintAndReturn( "Adding precompiled operations for Constructor1" ),[127X[104X
     [4X[25X>[125X [27X  ),[127X[104X
     [4X[25X>[125X [27X  rec([127X[104X
     [4X[25X>[125X [27X    remaining_constructors_in_tower := [ "Constructor1", "Constructor2" ],[127X[104X
     [4X[25X>[125X [27X    precompiled_functions_adder := cat ->[127X[104X
-    [4X[25X>[125X [27X      DisplayAndReturn( "Adding precompiled operations for Constructor2" ),[127X[104X
+    [4X[25X>[125X [27X      PrintAndReturn( "Adding precompiled operations for Constructor2" ),[127X[104X
     [4X[25X>[125X [27X  ),[127X[104X
     [4X[25X>[125X [27X];;[127X[104X
     [4X[25Xgap>[125X [27XHandlePrecompiledTowers( dummy2, dummy1, "Constructor1" );[127X[104X

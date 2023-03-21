@@ -192,19 +192,19 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dummy1 := CreateCapCategory( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dummy2 := CreateCapCategory( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dummy3 := CreateCapCategory( );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DisplayAndReturn := function ( string )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    Display( string ); return string; end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PrintAndReturn := function ( string )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    Print( string, "\n" ); return string; end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dummy1!.compiler_hints := rec( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dummy1!.compiler_hints.precompiled_towers := [</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  rec(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    remaining_constructors_in_tower := [ "Constructor1" ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    precompiled_functions_adder := cat -&gt;</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">      DisplayAndReturn( "Adding precompiled operations for Constructor1" ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      PrintAndReturn( "Adding precompiled operations for Constructor1" ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  rec(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    remaining_constructors_in_tower := [ "Constructor1", "Constructor2" ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    precompiled_functions_adder := cat -&gt;</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">      DisplayAndReturn( "Adding precompiled operations for Constructor2" ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      PrintAndReturn( "Adding precompiled operations for Constructor2" ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HandlePrecompiledTowers( dummy2, dummy1, "Constructor1" );</span>
