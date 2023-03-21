@@ -101,7 +101,7 @@ end );
 InstallGlobalFunction( CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY,
   
   function( morphism, category, human_readable_identifier_list )
-    local generic_help_string, source_human_readable_identifier_list, range_human_readable_identifier_list;
+    local generic_help_string;
     
     generic_help_string := " You can access the morphism and category via the local variables 'morphism' and 'category' in a break loop.";
     
@@ -125,19 +125,13 @@ InstallGlobalFunction( CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY,
         CallFuncList( Error, Concatenation( human_readable_identifier_list, [ " has no source.", generic_help_string ] ) );
     fi;
     
-    source_human_readable_identifier_list := [ "the source of " ];
-    Append( source_human_readable_identifier_list, human_readable_identifier_list );
-    
-    CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( Source( morphism ), category, source_human_readable_identifier_list );
+    CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( Source( morphism ), category, Concatenation( [ "the source of " ], human_readable_identifier_list ) );
     
     if not HasRange( morphism ) then
         CallFuncList( Error, Concatenation( human_readable_identifier_list, [ " has no range.", generic_help_string ] ) );
     fi;
     
-    range_human_readable_identifier_list := [ "the range of " ];
-    Append( range_human_readable_identifier_list, human_readable_identifier_list );
-    
-    CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( Range( morphism ), category, range_human_readable_identifier_list );
+    CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( Range( morphism ), category, Concatenation( [ "the range of " ], human_readable_identifier_list ) );
     
 end );
 
@@ -145,7 +139,7 @@ end );
 InstallGlobalFunction( CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY,
   
   function( two_cell, category, human_readable_identifier_list )
-    local generic_help_string, source_human_readable_identifier_list, range_human_readable_identifier_list;
+    local generic_help_string;
     
     generic_help_string := " You can access the 2-cell and category via the local variables 'two_cell' and 'category' in a break loop.";
     
@@ -169,19 +163,13 @@ InstallGlobalFunction( CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY,
         CallFuncList( Error, Concatenation( human_readable_identifier_list, [ " has no source.", generic_help_string ] ) );
     fi;
     
-    source_human_readable_identifier_list := [ "the source of " ];
-    Append( source_human_readable_identifier_list, human_readable_identifier_list );
-    
-    CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( Source( two_cell ), category, source_human_readable_identifier_list );
+    CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( Source( two_cell ), category, Concatenation( [ "the source of " ], human_readable_identifier_list ) );
     
     if not HasRange( two_cell ) then
         CallFuncList( Error, Concatenation( human_readable_identifier_list, [ " has no range.", generic_help_string ] ) );
     fi;
     
-    range_human_readable_identifier_list := [ "the range of " ];
-    Append( range_human_readable_identifier_list, human_readable_identifier_list );
-    
-    CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( Range( two_cell ), category, range_human_readable_identifier_list );
+    CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( Range( two_cell ), category, Concatenation( [ "the range of " ], human_readable_identifier_list ) );
     
 end );
 
