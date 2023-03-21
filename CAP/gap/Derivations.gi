@@ -33,6 +33,7 @@ InstallMethod( MakeDerivation,
                [ IsString, IsFunction, IsDenseList, IsPosInt, IsFunction, IsFunction ],
                
 function( name, target_op, used_op_names_with_multiples_and_category_getters, weight, func, category_filter )
+  local wrapped_category_filter;
     
     if PositionSublist( String( category_filter ), "CanCompute" ) <> fail then
         
@@ -54,7 +55,11 @@ function( name, target_op, used_op_names_with_multiples_and_category_getters, we
     
     if IsProperty( category_filter ) then
         
-        category_filter := Tester( category_filter ) and category_filter;
+        wrapped_category_filter := cat -> Tester( category_filter )( cat ) and category_filter( cat );
+        
+    else
+        
+        wrapped_category_filter := category_filter;
         
     fi;
     
@@ -63,7 +68,7 @@ function( name, target_op, used_op_names_with_multiples_and_category_getters, we
         DerivationName, name,
         DerivationWeight, weight,
         DerivationFunction, func,
-        CategoryFilter, category_filter,
+        CategoryFilter, wrapped_category_filter,
         TargetOperation, NameFunction( target_op ),
         UsedOperationsWithMultiplesAndCategoryGetters, used_op_names_with_multiples_and_category_getters
     );
