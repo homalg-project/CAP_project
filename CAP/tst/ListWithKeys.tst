@@ -5,8 +5,8 @@ gap> LoadPackage( "CAP", false );
 true
 
 #
-gap> ListWithKeys( [ 9, 8, 7 ], { key, value } -> [ key, value ] );
-[ [ 1, 9 ], [ 2, 8 ], [ 3, 7 ] ]
+gap> ListWithKeys( [ 9, 8, 7 ], { key, value } -> [ key, value ] ) = [ [ 1, 9 ], [ 2, 8 ], [ 3, 7 ] ];
+true
 gap> SumWithKeys( [ ], { key, value } -> key + value );
 0
 gap> SumWithKeys( [ 9, 8, 7 ], { key, value } -> key + value );
@@ -25,8 +25,8 @@ gap> ForAnyWithKeys( [ 9, 8, 7 ], { key, value } -> key = 3 and value = 7 );
 true
 gap> NumberWithKeys( [ 9, 8, 7 ], { key, value } -> key = 1 or value = 8 );
 2
-gap> FilteredWithKeys( [ 9, 8, 7 ], { key, value } -> key = 1 or value = 8 );
-[ 9, 8 ]
+gap> FilteredWithKeys( [ 9, 8, 7 ], { key, value } -> key = 1 or value = 8 ) = [ 9, 8 ];
+true
 gap> FirstWithKeys( [ 9, 8, 7 ], { key, value } -> key = 1 and value = 7 );
 fail
 gap> FirstWithKeys( [ 9, 8, 7 ], { key, value } -> key = 3 and value = 7 );

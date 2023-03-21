@@ -131,6 +131,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
     fi;
     
     # convenience for Julia lists
+    #= comment for Julia
     if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
         
         if "list_of_objects" in filter_list or "list_of_morphisms" in filter_list or "list_of_twocells" in filter_list then
@@ -154,6 +155,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
         fi;
         
     fi;
+    # =#
     
     InstallMethod( ValueGlobal( add_name ),
                    [ IsCapCategory, IsFunction ],

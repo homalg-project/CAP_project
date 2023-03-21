@@ -315,24 +315,32 @@ end );
 ##
 ###########################
 
-# fallback methods for Julia
-InstallMethod( ViewObj,
+InstallMethod( String,
                [ IsCapCategoryObject ],
                
-  function ( object )
+  function( object )
     
     # avoid space in front of "in" to distinguish it from the keyword "in"
-    Print( "<An object ", "in ", Name( CapCategory( object ) ), ">" );
+    return Concatenation( "An object ", "in ", Name( CapCategory( object ) ) );
     
 end );
 
-InstallMethod( Display,
+# fallback methods for Julia
+InstallMethod( ViewString,
                [ IsCapCategoryObject ],
                
   function ( object )
     
-    # avoid space in front of "in" to distinguish it from the keyword "in"
-    Print( "An object ", "in ", Name( CapCategory( object ) ), ".\n" );
+    return Concatenation( "<", String( object ), ">" );
+    
+end );
+
+InstallMethod( DisplayString,
+               [ IsCapCategoryObject ],
+               
+  function ( object )
+    
+    return Concatenation( String( object ), ".\n" );
     
 end );
 
@@ -374,12 +382,3 @@ end );
 #= comment for Julia
 CAP_INTERNAL_CREATE_OBJECT_PRINT( );
 # =#
-
-InstallMethod( String,
-               [ IsCapCategoryObject ],
-               
-  function( object )
-    
-    return Concatenation( "An object in ", Name( CapCategory( object ) ) );
-    
-end );

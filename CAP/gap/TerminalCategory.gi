@@ -76,14 +76,16 @@ InstallGlobalFunction( CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY,
     ## can still set IsInitialCategory = true manually, if the doctrine is clear from the context.
     Add( excluded_properties, "IsInitialCategory" );
     
-    properties := Filtered( properties, p -> not ForAny( excluded_properties, e -> e = p or e in ListImpliedFilters( FilterByName( p ) ) ) );
+    properties := Filtered( properties, p -> not ForAny( excluded_properties, e -> e = p or e in ListImpliedFilters( ValueGlobal( p ) ) ) );
     
     Add( properties, "IsTerminalCategory" );
     
     completed_record.properties := properties;
     
     if not IsBound( completed_record.commutative_ring_of_linear_category ) then
+        #= comment for Julia
         completed_record.commutative_ring_of_linear_category := Integers;
+        # =#
     fi;
     
     T := CategoryConstructor( completed_record );
@@ -122,9 +124,17 @@ InstallGlobalFunction( TerminalCategoryWithSingleObject,
     
     category_filter := IsCapTerminalCategoryWithSingleObject;
     
-    category_object_filter := IsObjectInCapTerminalCategoryWithSingleObject and HasIsZeroForObjects and IsZeroForObjects;
+    category_object_filter := IsObjectInCapTerminalCategoryWithSingleObject;
     
-    category_morphism_filter := IsMorphismInCapTerminalCategoryWithSingleObject and HasIsZeroForMorphisms and IsZeroForMorphisms and HasIsOne and IsOne;
+    #= comment for Julia
+    category_object_filter := category_object_filter and HasIsZeroForObjects and IsZeroForObjects;
+    # =#
+    
+    category_morphism_filter := IsMorphismInCapTerminalCategoryWithSingleObject;
+    
+    #= comment for Julia
+    category_morphism_filter := category_morphism_filter and HasIsZeroForMorphisms and IsZeroForMorphisms and HasIsOne and IsOne;
+    # =#
     
     ## e.g., ZeroObject, DirectSum
     create_func_object :=
@@ -273,9 +283,17 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
     
     category_filter := IsCapTerminalCategoryWithMultipleObjects;
     
-    category_object_filter := IsObjectInCapTerminalCategoryWithMultipleObjects and HasIsZeroForObjects and IsZeroForObjects;
+    category_object_filter := IsObjectInCapTerminalCategoryWithMultipleObjects;
     
-    category_morphism_filter := IsMorphismInCapTerminalCategoryWithMultipleObjects and HasIsZeroForMorphisms and IsZeroForMorphisms;
+    #= comment for Julia
+    category_object_filter := category_object_filter and HasIsZeroForObjects and IsZeroForObjects;
+    # =#
+    
+    category_morphism_filter := IsMorphismInCapTerminalCategoryWithMultipleObjects;
+    
+    #= comment for Julia
+    category_morphism_filter := category_morphism_filter and HasIsZeroForMorphisms and IsZeroForMorphisms;
+    # =#
     
     ## e.g., ZeroObject, DirectSum
     create_func_object :=

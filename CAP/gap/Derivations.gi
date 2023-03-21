@@ -33,6 +33,7 @@ InstallMethod( MakeDerivation,
                [ IsString, IsFunction, IsDenseList, IsPosInt, IsFunction, IsFunction ],
                
 function( name, target_op, used_op_names_with_multiples_and_category_getters, weight, func, category_filter )
+  local wrapped_category_filter;
     
     if PositionSublist( String( category_filter ), "CanCompute" ) <> fail then
         
@@ -54,7 +55,11 @@ function( name, target_op, used_op_names_with_multiples_and_category_getters, we
     
     if IsProperty( category_filter ) then
         
-        category_filter := Tester( category_filter ) and category_filter;
+        wrapped_category_filter := cat -> Tester( category_filter )( cat ) and category_filter( cat );
+        
+    else
+        
+        wrapped_category_filter := category_filter;
         
     fi;
     
@@ -63,7 +68,7 @@ function( name, target_op, used_op_names_with_multiples_and_category_getters, we
         DerivationName, name,
         DerivationWeight, weight,
         DerivationFunction, func,
-        CategoryFilter, category_filter,
+        CategoryFilter, wrapped_category_filter,
         TargetOperation, NameFunction( target_op ),
         UsedOperationsWithMultiplesAndCategoryGetters, used_op_names_with_multiples_and_category_getters
     );
@@ -77,10 +82,10 @@ function( d )
                         " of operation ", TargetOperation( d ) );
 end );
 
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
                [ IsDerivedMethod ],
 function( d )
-  Print( "<", String( d ), ">" );
+  return Concatenation( "<", String( d ), ">" );
 end );
 
 InstallMethod( IsApplicableToCategory,
@@ -182,10 +187,10 @@ function( G )
   return "derivation graph";
 end );
 
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
                [ IsDerivedMethodGraph ],
 function( G )
-  Print( "<", String( G ), ">" );
+  return Concatenation( "<", String( G ), ">" );
 end );
 
 InstallMethod( AddDerivation,
@@ -439,10 +444,10 @@ function( owl )
                         String( CategoryOfOperationWeightList( owl ) ) );
 end );
 
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
                [ IsOperationWeightList ],
 function( owl )
-  Print( "<", String( owl ), ">" );
+  return Concatenation( "<", String( owl ), ">" );
 end );
 
 InstallMethod( CurrentOperationWeight,
@@ -720,10 +725,10 @@ function( H )
                         String( HeapSize( H ) ) );
 end );
 
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
                [ IsStringMinHeap ],
 function( H )
-  Print( "<", String( H ), ">" );
+  return Concatenation( "<", String( H ), ">" );
 end );
 
 InstallMethod( HeapSize,
