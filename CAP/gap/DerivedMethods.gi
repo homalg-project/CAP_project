@@ -11,7 +11,8 @@
 ###########################
 
 AddDerivationToCAP( IsLiftable,
-        
+                    [ ],
+                    
   function( cat, morphism1, morphism2 )
         
     ## equality of targets is part of the specification of the input and checked by the pre-function
@@ -21,6 +22,8 @@ end : CategoryFilter := IsTerminalCategory,
       Description := "Two morphisms with equal targets are mutually liftable in a terminal category" );
     
 AddDerivationToCAP( IsColiftable,
+                    [ ],
+                    
   function( cat, morphism1, morphism2 )
     
     ## equality of sources is part of the specification of the input and checked by the pre-function
@@ -2324,7 +2327,10 @@ end : CategoryFilter := IsAbelianCategory,
 
 ##
 AddDerivationToCAP( ZeroObjectFunctorial,
-                                  
+                    [ [ ZeroObject, 1 ],
+                      [ ZeroMorphism, 1 ],
+                    ],
+                    
   function( cat )
     local zero_object;
     
