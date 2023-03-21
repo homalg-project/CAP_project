@@ -1393,6 +1393,8 @@ InstallMethod( SafeUniqueEntry,
 end );
 
 ##
+#= comment for Julia
+# We want `args` to be a list but in Julia it's a tuple -> we need a separate implementation for Julia
 InstallGlobalFunction( NTuple, function ( n, args... )
     
     Assert( 0, Length( args ) = n );
@@ -1400,6 +1402,7 @@ InstallGlobalFunction( NTuple, function ( n, args... )
     return args;
     
 end );
+# =#
 
 ##
 InstallGlobalFunction( Pair, function ( first, second )
@@ -1505,11 +1508,16 @@ InstallGlobalFunction( HandlePrecompiledTowers, function ( category, underlying_
         
     fi;
     
+    # return void for Julia
+    return;
+    
 end );
 
 InstallGlobalFunction( CAP_JIT_INCOMPLETE_LOGIC, IdFunc );
 
 ##
+#= comment for Julia
+# Julia does not have non-dense lists and thus needs a separate implementation
 InstallGlobalFunction( ListWithKeys, function ( list, func )
   local res, i;
     
@@ -1533,6 +1541,7 @@ InstallGlobalFunction( ListWithKeys, function ( list, func )
     return res;
     
 end );
+# =#
 
 ##
 InstallGlobalFunction( SumWithKeys, function ( list, func )
@@ -1649,6 +1658,8 @@ InstallGlobalFunction( NumberWithKeys, function ( list, func )
 end );
 
 ##
+#= comment for Julia
+# Julia does not have non-dense lists and thus needs a separate implementation
 InstallGlobalFunction( FilteredWithKeys, function ( list, func )
   local res, i, elm, j;
     
@@ -1675,6 +1686,7 @@ InstallGlobalFunction( FilteredWithKeys, function ( list, func )
     return res;
     
 end );
+# =#
 
 ##
 InstallGlobalFunction( FirstWithKeys, function ( list, func )
