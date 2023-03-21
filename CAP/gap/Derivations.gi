@@ -82,10 +82,10 @@ function( d )
                         " of operation ", TargetOperation( d ) );
 end );
 
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
                [ IsDerivedMethod ],
 function( d )
-  Print( "<", String( d ), ">" );
+  return Concatenation( "<", String( d ), ">" );
 end );
 
 InstallMethod( IsApplicableToCategory,
@@ -187,10 +187,10 @@ function( G )
   return "derivation graph";
 end );
 
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
                [ IsDerivedMethodGraph ],
 function( G )
-  Print( "<", String( G ), ">" );
+  return Concatenation( "<", String( G ), ">" );
 end );
 
 InstallMethod( AddDerivation,
@@ -444,10 +444,10 @@ function( owl )
                         String( CategoryOfOperationWeightList( owl ) ) );
 end );
 
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
                [ IsOperationWeightList ],
 function( owl )
-  Print( "<", String( owl ), ">" );
+  return Concatenation( "<", String( owl ), ">" );
 end );
 
 InstallMethod( CurrentOperationWeight,
@@ -725,10 +725,10 @@ function( H )
                         String( HeapSize( H ) ) );
 end );
 
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
                [ IsStringMinHeap ],
 function( H )
-  Print( "<", String( H ), ">" );
+  return Concatenation( "<", String( H ), ">" );
 end );
 
 InstallMethod( HeapSize,

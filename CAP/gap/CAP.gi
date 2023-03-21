@@ -1043,33 +1043,26 @@ end );
 
 #######################################
 ##
-## ViewObj
+## Print
 ##
 #######################################
-
-InstallMethod( ViewObj,
-               [ IsCapCategory ],
-               
-  function ( category )
-    
-    Print( Name( category ) );
-    
-end );
-
-InstallMethod( Display,
-               [ IsCapCategory ],
-               
-  function ( category )
-    
-    Print( "A CAP category with name ", Name( category ), ":\n\n" );
-    
-    InfoOfInstalledOperationsOfCategory( category );
-    
-end );
 
 InstallMethod( String,
                [ IsCapCategory ],
     Name );
+
+InstallMethod( ViewString,
+               [ IsCapCategory ],
+    Name );
+
+InstallMethod( DisplayString,
+               [ IsCapCategory ],
+               
+  function ( category )
+    
+    return Concatenation( "A CAP category with name ", Name( category ), ":\n\n", InfoStringOfInstalledOperationsOfCategory( category ), "\n" );
+    
+end );
 
 InstallGlobalFunction( DisableAddForCategoricalOperations,
   
