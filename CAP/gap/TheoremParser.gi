@@ -820,6 +820,8 @@ BindGlobal( "RETURN_STRING_BETWEEN_SUBSTRINGS",
     
 end );
 
+#= comment for Julia
+# "$" in strings triggers interpolation in Julia
 BindGlobal( "REMOVE_CHARACTERS_FROM_LATEX",
             
   function( string )
@@ -834,6 +836,7 @@ BindGlobal( "REMOVE_CHARACTERS_FROM_LATEX",
     return string;
     
 end );
+# =#
 
 InstallGlobalFunction( "READ_LOGIC_FILE",
                        
