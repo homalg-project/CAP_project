@@ -568,7 +568,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
 end );
 
 BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR", function( without_given_rec, with_given_rec )
-  local without_given_name, with_given_name, without_given_arguments_names, with_given_arguments_names, with_given_object_position, with_given_via_without_given_function, with_given_arguments_strings, without_given_via_with_given_function;
+  local without_given_name, with_given_name, without_given_arguments_names, with_given_arguments_names, with_given_object_position, with_given_via_without_given_function, with_given_arguments_strings, without_given_via_with_given_function, description;
     
     without_given_name := without_given_rec.function_name;
     with_given_name := with_given_rec.function_name;
@@ -632,12 +632,30 @@ BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR", function( without
     ) );
     
     AddDerivationToCAP( ValueGlobal( with_given_name ),
+      [ [ ValueGlobal( without_given_name ), 1 ] ],
       with_given_via_without_given_function
       : Description := Concatenation( with_given_name, " by calling ", without_given_name, " with the WithGiven argument(s) dropped" ) );
     
-    AddDerivationToCAP( ValueGlobal( without_given_name ),
-      without_given_via_with_given_function
-      : Description := Concatenation( without_given_name, " by calling ", with_given_name, " with the WithGiven object(s)" ) );
+    description := Concatenation( without_given_name, " by calling ", with_given_name, " with the WithGiven object(s)" );
+    
+    if IsBound( with_given_rec.with_given_object_name ) then
+        
+        AddDerivationToCAP(
+            ValueGlobal( without_given_name ),
+            [ [ ValueGlobal( with_given_name ), 1 ], [ ValueGlobal( with_given_rec.with_given_object_name ), 1 ] ],
+            without_given_via_with_given_function
+            : Description := description
+        );
+        
+    else
+        
+        AddDerivationToCAP(
+            ValueGlobal( without_given_name ),
+            without_given_via_with_given_function
+            : Description := description
+        );
+        
+    fi;
     
 end );
 
