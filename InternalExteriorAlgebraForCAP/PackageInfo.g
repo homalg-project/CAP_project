@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "InternalExteriorAlgebraForCAP",
 Subtitle := "Constructions for Modules over the Internal Exterior Algebra for CAP",
-Version := "2023.02-02",
-Date := "2023-02-28",
+Version := "2023.03-01",
+Date := "2023-03-27",
 License := "GPL-2.0-or-later",
 
 Persons := [
