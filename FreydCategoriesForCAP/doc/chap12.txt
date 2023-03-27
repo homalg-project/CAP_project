@@ -239,7 +239,7 @@
     [4X[25Xgap>[125X [27XCokernelProjection( z );;[127X[104X
     [4X[25Xgap>[125X [27XCokernelColift( z, CokernelProjection( z ) );;[127X[104X
     [4X[25Xgap>[125X [27XUniversalMorphismFromZeroObjectWithGivenZeroObject( obj_gamma, ZeroObject( freyd ) );;[127X[104X
-    [4X[25Xgap>[125X [27X(2 / R) * f;;[127X[104X
+    [4X[25Xgap>[125X [27XMultiplyWithElementOfCommutativeRingForMorphisms( 2 / R, f );;[127X[104X
     [4X[25Xgap>[125X [27XS := HomalgFieldOfRationalsInSingular() * "x,y,z";;[127X[104X
     [4X[25Xgap>[125X [27XRows_S := CategoryOfRows( S );;[127X[104X
     [4X[25Xgap>[125X [27XS3 := CategoryOfRowsObject( 3, Rows_S );;[127X[104X

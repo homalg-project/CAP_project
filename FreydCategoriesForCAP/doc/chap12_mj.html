@@ -336,7 +336,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CokernelProjection( z );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CokernelColift( z, CokernelProjection( z ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UniversalMorphismFromZeroObjectWithGivenZeroObject( obj_gamma, ZeroObject( freyd ) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">(2 / R) * f;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MultiplyWithElementOfCommutativeRingForMorphisms( 2 / R, f );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := HomalgFieldOfRationalsInSingular() * "x,y,z";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Rows_S := CategoryOfRows( S );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S3 := CategoryOfRowsObject( 3, Rows_S );;</span>
