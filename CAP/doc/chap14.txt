@@ -406,124 +406,7 @@
   [4X[32X[104X
   
   
-  [1X14.7 [33X[0;0YWrapperCategory[133X[101X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP", false );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );[127X[104X
-    [4X[28XQ[128X[104X
-    [4X[25Xgap>[125X [27XQmat := MATRIX_CATEGORY( Q );[127X[104X
-    [4X[28XCategory of matrices over Q[128X[104X
-    [4X[25Xgap>[125X [27XWrapper := WrapperCategory( Qmat, rec( ) );[127X[104X
-    [4X[28XWrapperCategory( Category of matrices over Q )[128X[104X
-    [4X[25Xgap>[125X [27Xmor := ZeroMorphism( ZeroObject( Wrapper ), ZeroObject( Wrapper ) );;[127X[104X
-    [4X[25Xgap>[125X [27X2 * mor;;[127X[104X
-    [4X[25Xgap>[125X [27XBasisOfExternalHom( Source( mor ), Range( mor ) );;[127X[104X
-    [4X[25Xgap>[125X [27XCoefficientsOfMorphism( mor );;[127X[104X
-    [4X[25Xgap>[125X [27Xdistinguished_object := DistinguishedObjectOfHomomorphismStructure( Wrapper );;[127X[104X
-    [4X[25Xgap>[125X [27Xobject := HomomorphismStructureOnObjects( Source( mor ), Source( mor ) );;[127X[104X
-    [4X[25Xgap>[125X [27XHomomorphismStructureOnMorphisms( mor, mor );;[127X[104X
-    [4X[25Xgap>[125X [27XHomomorphismStructureOnMorphismsWithGivenObjects( object, mor, mor, object );;[127X[104X
-    [4X[25Xgap>[125X [27Xiota := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( mor );;[127X[104X
-    [4X[25Xgap>[125X [27XInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( distinguished_object, mor, object );;[127X[104X
-    [4X[25Xgap>[125X [27Xbeta := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( mor ), Range( mor ), iota );;[127X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( mor, beta );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XQmat2 := MATRIX_CATEGORY( Q );[127X[104X
-    [4X[28XCategory of matrices over Q[128X[104X
-    [4X[25Xgap>[125X [27XWrapper2 := WrapperCategory( Qmat2, rec( wrap_range_of_hom_structure := true ) );[127X[104X
-    [4X[28XWrapperCategory( Category of matrices over Q )[128X[104X
-    [4X[25Xgap>[125X [27Xmor := ZeroMorphism( ZeroObject( Wrapper2 ), ZeroObject( Wrapper2 ) );;[127X[104X
-    [4X[25Xgap>[125X [27Xdistinguished_object := DistinguishedObjectOfHomomorphismStructure( Wrapper2 );;[127X[104X
-    [4X[25Xgap>[125X [27Xobject := HomomorphismStructureOnObjects( Source( mor ), Source( mor ) );;[127X[104X
-    [4X[25Xgap>[125X [27XHomomorphismStructureOnMorphisms( mor, mor );;[127X[104X
-    [4X[25Xgap>[125X [27XHomomorphismStructureOnMorphismsWithGivenObjects( object, mor, mor, object );;[127X[104X
-    [4X[25Xgap>[125X [27Xiota := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( mor );;[127X[104X
-    [4X[25Xgap>[125X [27XInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( distinguished_object, mor, object );;[127X[104X
-    [4X[25Xgap>[125X [27Xbeta := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( mor ), Range( mor ), iota );;[127X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( mor, beta );[127X[104X
-    [4X[28Xtrue[128X[104X
-  [4X[32X[104X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP" );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "GeneralizedMorphismsForCAP", false );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xold_generalized_morphism_standard := CAP_INTERNAL!.generalized_morphism_standard;;[127X[104X
-    [4X[25Xgap>[125X [27XSwitchGeneralizedMorphismStandard( "cospan" );[127X[104X
-    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );[127X[104X
-    [4X[28XQ[128X[104X
-    [4X[25Xgap>[125X [27Xid := HomalgIdentityMatrix( 8, Q );[127X[104X
-    [4X[28X<An unevaluated 8 x 8 identity matrix over an internal ring>[128X[104X
-    [4X[25Xgap>[125X [27Xa := CertainColumns( CertainRows( id, [ 1, 2, 3 ] ), [ 2, 3, 4, 5 ] );[127X[104X
-    [4X[28X<An unevaluated non-zero 3 x 4 matrix over an internal ring>[128X[104X
-    [4X[25Xgap>[125X [27Xb := CertainColumns( CertainRows( id, [ 1, 2, 3, 4 ] ), [ 2, 3, 4, 5, 6 ] );[127X[104X
-    [4X[28X<An unevaluated non-zero 4 x 5 matrix over an internal ring>[128X[104X
-    [4X[25Xgap>[125X [27Xc := CertainColumns( CertainRows( id, [ 1, 2, 3, 4, 5 ] ), [ 3, 4, 5, 6, 7, 8 ] );[127X[104X
-    [4X[28X<An unevaluated non-zero 5 x 6 matrix over an internal ring>[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( a * b );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( b * c );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( a * b * c );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XQmat := MatrixCategory( Q );[127X[104X
-    [4X[28XCategory of matrices over Q[128X[104X
-    [4X[25Xgap>[125X [27XWrapper := WrapperCategory( Qmat, rec( ) );[127X[104X
-    [4X[28XWrapperCategory( Category of matrices over Q )[128X[104X
-    [4X[25Xgap>[125X [27Xa := a / Wrapper;[127X[104X
-    [4X[28X<A morphism in WrapperCategory( Category of matrices over Q )>[128X[104X
-    [4X[25Xgap>[125X [27Xb := b / Wrapper;[127X[104X
-    [4X[28X<A morphism in WrapperCategory( Category of matrices over Q )>[128X[104X
-    [4X[25Xgap>[125X [27Xc := c / Wrapper;[127X[104X
-    [4X[28X<A morphism in WrapperCategory( Category of matrices over Q )>[128X[104X
-    [4X[25Xgap>[125X [27Xd := CokernelProjection( a );[127X[104X
-    [4X[28X<An epimorphism in WrapperCategory( Category of matrices over Q )>[128X[104X
-    [4X[25Xgap>[125X [27Xe := CokernelColift( a, PreCompose( b, c ) );[127X[104X
-    [4X[28X<A morphism in WrapperCategory( Category of matrices over Q )>[128X[104X
-    [4X[25Xgap>[125X [27Xf := KernelEmbedding( e );[127X[104X
-    [4X[28X<A monomorphism in WrapperCategory( Category of matrices over Q )>[128X[104X
-    [4X[25Xgap>[125X [27Xg := KernelEmbedding( c );[127X[104X
-    [4X[28X<A monomorphism in WrapperCategory( Category of matrices over Q )>[128X[104X
-    [4X[25Xgap>[125X [27Xh := KernelLift( c, PreCompose( a, b ) );[127X[104X
-    [4X[28X<A morphism in WrapperCategory( Category of matrices over Q )>[128X[104X
-    [4X[25Xgap>[125X [27Xi := CokernelProjection( h );[127X[104X
-    [4X[28X<An epi morphism in WrapperCategory( Category of matrices over Q )>[128X[104X
-    [4X[25Xgap>[125X [27Xff := AsGeneralizedMorphism( f );[127X[104X
-    [4X[28X<A morphism in Generalized morphism category of[128X[104X
-    [4X[28X WrapperCategory( Category of matrices over Q ) by cospan>[128X[104X
-    [4X[25Xgap>[125X [27Xdd := AsGeneralizedMorphism( d );[127X[104X
-    [4X[28X<A morphism in Generalized morphism category of[128X[104X
-    [4X[28X WrapperCategory( Category of matrices over Q ) by cospan>[128X[104X
-    [4X[25Xgap>[125X [27Xbb := AsGeneralizedMorphism( b );[127X[104X
-    [4X[28X<A morphism in Generalized morphism category of[128X[104X
-    [4X[28X WrapperCategory( Category of matrices over Q ) by cospan>[128X[104X
-    [4X[25Xgap>[125X [27Xgg := AsGeneralizedMorphism( g );[127X[104X
-    [4X[28X<A morphism in Generalized morphism category of[128X[104X
-    [4X[28X WrapperCategory( Category of matrices over Q ) by cospan>[128X[104X
-    [4X[25Xgap>[125X [27Xii := AsGeneralizedMorphism( i );[127X[104X
-    [4X[28X<A morphism in Generalized morphism category of[128X[104X
-    [4X[28X WrapperCategory( Category of matrices over Q ) by cospan>[128X[104X
-    [4X[25Xgap>[125X [27Xss := PreCompose( [ ff, PseudoInverse( dd ), bb, PseudoInverse( gg ), ii ] );[127X[104X
-    [4X[28X<A morphism in Generalized morphism category of[128X[104X
-    [4X[28X WrapperCategory( Category of matrices over Q ) by cospan>[128X[104X
-    [4X[25Xgap>[125X [27Xs := HonestRepresentative( ss );[127X[104X
-    [4X[28X<A morphism in WrapperCategory( Category of matrices over Q )>[128X[104X
-    [4X[25Xgap>[125X [27Xj := KernelObjectFunctorial( b, d, e );[127X[104X
-    [4X[28X<A morphism in WrapperCategory( Category of matrices over Q )>[128X[104X
-    [4X[25Xgap>[125X [27Xk := CokernelObjectFunctorial( h, g, b );[127X[104X
-    [4X[28X<A morphism in WrapperCategory( Category of matrices over Q )>[128X[104X
-    [4X[25Xgap>[125X [27XHK := HomologyObject( j, s );[127X[104X
-    [4X[28X<An object in WrapperCategory( Category of matrices over Q )>[128X[104X
-    [4X[25Xgap>[125X [27XHC := HomologyObject( s, k );[127X[104X
-    [4X[28X<An object in WrapperCategory( Category of matrices over Q )>[128X[104X
-    [4X[25Xgap>[125X [27XSwitchGeneralizedMorphismStandard( old_generalized_morphism_standard );[127X[104X
-  [4X[32X[104X
-  
-  
-  [1X14.8 [33X[0;0YMonoidal Categories[133X[101X
+  [1X14.7 [33X[0;0YMonoidal Categories[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers();;[127X[104X
@@ -626,7 +509,7 @@
   [4X[32X[104X
   
   
-  [1X14.9 [33X[0;0YMorphismFromSourceToPushout and MorphismFromFiberProductToSink[133X[101X
+  [1X14.8 [33X[0;0YMorphismFromSourceToPushout and MorphismFromFiberProductToSink[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xfield := HomalgFieldOfRationals( );;[127X[104X
@@ -671,7 +554,7 @@
   [4X[32X[104X
   
   
-  [1X14.10 [33X[0;0YOpposite category[133X[101X
+  [1X14.9 [33X[0;0YOpposite category[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals();;[127X[104X
@@ -709,6 +592,123 @@
     [4X[25Xgap>[125X [27XIsWellDefined( Opposite( mor ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsOne( UniversalMorphismFromImage( mor, [ CoastrictionToImage( mor ), ImageEmbedding( mor ) ] ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X14.10 [33X[0;0YWrapperCategory[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "GeneralizedMorphismsForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xold_generalized_morphism_standard := CAP_INTERNAL!.generalized_morphism_standard;;[127X[104X
+    [4X[25Xgap>[125X [27XSwitchGeneralizedMorphismStandard( "cospan" );[127X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27Xid := HomalgIdentityMatrix( 8, Q );[127X[104X
+    [4X[28X<An unevaluated 8 x 8 identity matrix over an internal ring>[128X[104X
+    [4X[25Xgap>[125X [27Xa := CertainColumns( CertainRows( id, [ 1, 2, 3 ] ), [ 2, 3, 4, 5 ] );[127X[104X
+    [4X[28X<An unevaluated non-zero 3 x 4 matrix over an internal ring>[128X[104X
+    [4X[25Xgap>[125X [27Xb := CertainColumns( CertainRows( id, [ 1, 2, 3, 4 ] ), [ 2, 3, 4, 5, 6 ] );[127X[104X
+    [4X[28X<An unevaluated non-zero 4 x 5 matrix over an internal ring>[128X[104X
+    [4X[25Xgap>[125X [27Xc := CertainColumns( CertainRows( id, [ 1, 2, 3, 4, 5 ] ), [ 3, 4, 5, 6, 7, 8 ] );[127X[104X
+    [4X[28X<An unevaluated non-zero 5 x 6 matrix over an internal ring>[128X[104X
+    [4X[25Xgap>[125X [27XIsZero( a * b );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsZero( b * c );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsZero( a * b * c );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQmat := MatrixCategory( Q );[127X[104X
+    [4X[28XCategory of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27XWrapper := WrapperCategory( Qmat, rec( ) );[127X[104X
+    [4X[28XWrapperCategory( Category of matrices over Q )[128X[104X
+    [4X[25Xgap>[125X [27Xa := a / Wrapper;[127X[104X
+    [4X[28X<A morphism in WrapperCategory( Category of matrices over Q )>[128X[104X
+    [4X[25Xgap>[125X [27Xb := b / Wrapper;[127X[104X
+    [4X[28X<A morphism in WrapperCategory( Category of matrices over Q )>[128X[104X
+    [4X[25Xgap>[125X [27Xc := c / Wrapper;[127X[104X
+    [4X[28X<A morphism in WrapperCategory( Category of matrices over Q )>[128X[104X
+    [4X[25Xgap>[125X [27Xd := CokernelProjection( a );[127X[104X
+    [4X[28X<An epimorphism in WrapperCategory( Category of matrices over Q )>[128X[104X
+    [4X[25Xgap>[125X [27Xe := CokernelColift( a, PreCompose( b, c ) );[127X[104X
+    [4X[28X<A morphism in WrapperCategory( Category of matrices over Q )>[128X[104X
+    [4X[25Xgap>[125X [27Xf := KernelEmbedding( e );[127X[104X
+    [4X[28X<A monomorphism in WrapperCategory( Category of matrices over Q )>[128X[104X
+    [4X[25Xgap>[125X [27Xg := KernelEmbedding( c );[127X[104X
+    [4X[28X<A monomorphism in WrapperCategory( Category of matrices over Q )>[128X[104X
+    [4X[25Xgap>[125X [27Xh := KernelLift( c, PreCompose( a, b ) );[127X[104X
+    [4X[28X<A morphism in WrapperCategory( Category of matrices over Q )>[128X[104X
+    [4X[25Xgap>[125X [27Xi := CokernelProjection( h );[127X[104X
+    [4X[28X<An epi morphism in WrapperCategory( Category of matrices over Q )>[128X[104X
+    [4X[25Xgap>[125X [27Xff := AsGeneralizedMorphism( f );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of[128X[104X
+    [4X[28X WrapperCategory( Category of matrices over Q ) by cospan>[128X[104X
+    [4X[25Xgap>[125X [27Xdd := AsGeneralizedMorphism( d );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of[128X[104X
+    [4X[28X WrapperCategory( Category of matrices over Q ) by cospan>[128X[104X
+    [4X[25Xgap>[125X [27Xbb := AsGeneralizedMorphism( b );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of[128X[104X
+    [4X[28X WrapperCategory( Category of matrices over Q ) by cospan>[128X[104X
+    [4X[25Xgap>[125X [27Xgg := AsGeneralizedMorphism( g );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of[128X[104X
+    [4X[28X WrapperCategory( Category of matrices over Q ) by cospan>[128X[104X
+    [4X[25Xgap>[125X [27Xii := AsGeneralizedMorphism( i );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of[128X[104X
+    [4X[28X WrapperCategory( Category of matrices over Q ) by cospan>[128X[104X
+    [4X[25Xgap>[125X [27Xss := PreCompose( [ ff, PseudoInverse( dd ), bb, PseudoInverse( gg ), ii ] );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of[128X[104X
+    [4X[28X WrapperCategory( Category of matrices over Q ) by cospan>[128X[104X
+    [4X[25Xgap>[125X [27Xs := HonestRepresentative( ss );[127X[104X
+    [4X[28X<A morphism in WrapperCategory( Category of matrices over Q )>[128X[104X
+    [4X[25Xgap>[125X [27Xj := KernelObjectFunctorial( b, d, e );[127X[104X
+    [4X[28X<A morphism in WrapperCategory( Category of matrices over Q )>[128X[104X
+    [4X[25Xgap>[125X [27Xk := CokernelObjectFunctorial( h, g, b );[127X[104X
+    [4X[28X<A morphism in WrapperCategory( Category of matrices over Q )>[128X[104X
+    [4X[25Xgap>[125X [27XHK := HomologyObject( j, s );[127X[104X
+    [4X[28X<An object in WrapperCategory( Category of matrices over Q )>[128X[104X
+    [4X[25Xgap>[125X [27XHC := HomologyObject( s, k );[127X[104X
+    [4X[28X<An object in WrapperCategory( Category of matrices over Q )>[128X[104X
+    [4X[25Xgap>[125X [27XSwitchGeneralizedMorphismStandard( old_generalized_morphism_standard );[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XQmat := MATRIX_CATEGORY( Q );[127X[104X
+    [4X[28XCategory of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27XWrapper := WrapperCategory( Qmat, rec( ) );[127X[104X
+    [4X[28XWrapperCategory( Category of matrices over Q )[128X[104X
+    [4X[25Xgap>[125X [27Xmor := ZeroMorphism( ZeroObject( Wrapper ), ZeroObject( Wrapper ) );;[127X[104X
+    [4X[25Xgap>[125X [27X2 * mor;;[127X[104X
+    [4X[25Xgap>[125X [27XBasisOfExternalHom( Source( mor ), Range( mor ) );;[127X[104X
+    [4X[25Xgap>[125X [27XCoefficientsOfMorphism( mor );;[127X[104X
+    [4X[25Xgap>[125X [27Xdistinguished_object := DistinguishedObjectOfHomomorphismStructure( Wrapper );;[127X[104X
+    [4X[25Xgap>[125X [27Xobject := HomomorphismStructureOnObjects( Source( mor ), Source( mor ) );;[127X[104X
+    [4X[25Xgap>[125X [27XHomomorphismStructureOnMorphisms( mor, mor );;[127X[104X
+    [4X[25Xgap>[125X [27XHomomorphismStructureOnMorphismsWithGivenObjects( object, mor, mor, object );;[127X[104X
+    [4X[25Xgap>[125X [27Xiota := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( mor );;[127X[104X
+    [4X[25Xgap>[125X [27XInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( distinguished_object, mor, object );;[127X[104X
+    [4X[25Xgap>[125X [27Xbeta := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( mor ), Range( mor ), iota );;[127X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( mor, beta );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQmat2 := MATRIX_CATEGORY( Q );[127X[104X
+    [4X[28XCategory of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27XWrapper2 := WrapperCategory( Qmat2, rec( wrap_range_of_hom_structure := true ) );[127X[104X
+    [4X[28XWrapperCategory( Category of matrices over Q )[128X[104X
+    [4X[25Xgap>[125X [27Xmor := ZeroMorphism( ZeroObject( Wrapper2 ), ZeroObject( Wrapper2 ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xdistinguished_object := DistinguishedObjectOfHomomorphismStructure( Wrapper2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xobject := HomomorphismStructureOnObjects( Source( mor ), Source( mor ) );;[127X[104X
+    [4X[25Xgap>[125X [27XHomomorphismStructureOnMorphisms( mor, mor );;[127X[104X
+    [4X[25Xgap>[125X [27XHomomorphismStructureOnMorphismsWithGivenObjects( object, mor, mor, object );;[127X[104X
+    [4X[25Xgap>[125X [27Xiota := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( mor );;[127X[104X
+    [4X[25Xgap>[125X [27XInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( distinguished_object, mor, object );;[127X[104X
+    [4X[25Xgap>[125X [27Xbeta := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( mor ), Range( mor ), iota );;[127X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( mor, beta );[127X[104X
     [4X[28Xtrue[128X[104X
   [4X[32X[104X
   

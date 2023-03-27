@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2023.03-10
+                                   2023.03-11
   
   
-                                 21 March 2023
+                                 27 March 2023
   
   
                                Sebastian Gutsche
@@ -994,10 +994,10 @@
     14.4 [33X[0;0YHomomorphism structure[133X
     14.5 [33X[0;0YHomology object[133X
     14.6 [33X[0;0YLiftable[133X
-    14.7 [33X[0;0YWrapperCategory[133X
-    14.8 [33X[0;0YMonoidal Categories[133X
-    14.9 [33X[0;0YMorphismFromSourceToPushout and MorphismFromFiberProductToSink[133X
-    14.10 [33X[0;0YOpposite category[133X
+    14.7 [33X[0;0YMonoidal Categories[133X
+    14.8 [33X[0;0YMorphismFromSourceToPushout and MorphismFromFiberProductToSink[133X
+    14.9 [33X[0;0YOpposite category[133X
+    14.10 [33X[0;0YWrapperCategory[133X
     14.11 [33X[0;0YTerminal category[133X
     14.12 [33X[0;0YGeneralized Morphisms Category[133X
     14.13 [33X[0;0YIsWellDefined[133X
