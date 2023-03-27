@@ -863,7 +863,7 @@
   
   [1X6.7-1 Coproduct[101X
   
-  [33X[1;0Y[29X[2XCoproduct[102X( [3XD[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XCoproduct[102X( [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
   [33X[0;0YThe argument is a list of objects [23XD = ( I_1, \dots, I_n )[123X. The output is the
