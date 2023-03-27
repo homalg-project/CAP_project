@@ -1,7 +1,7 @@
 name: DeductiveSystemForCAP
-version: "2023.03-02"
+version: "2023.03-03"
 license: "GPL-2.0-or-later"
-date: 2023-03-20
+date: 2023-03-27
 description: |
     Deductive system for CAP
 
@@ -33,11 +33,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/DeductiveSystemForCAP/
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/DeductiveSystemForCAP-2023.03-02/DeductiveSystemForCAP-2023.03-02.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/DeductiveSystemForCAP-2023.03-03/DeductiveSystemForCAP-2023.03-03.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/DeductiveSystemForCAP-2023.03-02/DeductiveSystemForCAP-2023.03-02.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/DeductiveSystemForCAP-2023.03-03/DeductiveSystemForCAP-2023.03-03.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/DeductiveSystemForCAP-2023.03-02/DeductiveSystemForCAP-2023.03-02-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/DeductiveSystemForCAP-2023.03-03/DeductiveSystemForCAP-2023.03-03-manual.pdf
 
 abstract: |
 
@@ -46,28 +46,28 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>GP20</span>]   <b class='BibAuthor'>Gutsche, S. and Posur, S.</b>,
+    [<span class='BibKey'>GP27</span>]   <b class='BibAuthor'>Gutsche, S. and Posur, S.</b>,
      <i class='BibTitle'>DeductiveSystemForCAP, Deductive system for CAP,
-             Version 2023.03-02</i>
-     (<span class='BibYear'>3-20</span>)<br />
+             Version 2023.03-03</i>
+     (<span class='BibYear'>3-27</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/DeductiveSystemForCAP">https://homalg-project.github.io/pkg/DeductiveSystemForCAP</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ DeductiveSystemForCAP2023.03-02,
+    @misc{ DeductiveSystemForCAP2023.03-03,
       author =           {Gutsche, S. and Posur, S.},
       title =            {{DeductiveSystemForCAP},  Deductive  system  for  CAP,
-                          {V}ersion 2023.03-02},
+                          {V}ersion 2023.03-03},
       month =            {3-},
-      year =             {3-20},
+      year =             {3-27},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/DeductiveSystemForCAP}
                           {\texttt{https://homalg-project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{DeductiveSystemForCAP}}},
-      printedkey =       {GP20}
+      printedkey =       {GP27}
     }
 
