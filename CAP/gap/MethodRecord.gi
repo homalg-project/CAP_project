@@ -4777,15 +4777,16 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
     if not IsAttribute( object_function ) then
     
         return function( arg )
-            local result, object, category;
+          local category, object_args, result, object;
             
             category := arg[ 1 ];
             
+            object_args := arg{ object_arguments_positions };
+            
             result := arg[ Length( arg ) ];
-            Remove( arg );
             object := object_getter( result );
             
-            SET_VALUE_OF_CATEGORY_CACHE( category, object_function_name, cache_key_length, arg{ object_arguments_positions }, object );
+            SET_VALUE_OF_CATEGORY_CACHE( category, object_function_name, cache_key_length, object_args, object );
             
         end;
         
@@ -5062,6 +5063,22 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
         else
             
             Error( "`ValueGlobal( current_recname )` is neither an operation nor a function" );
+            
+        fi;
+        
+        if IsAttribute( ValueGlobal( current_recname ) ) then
+            
+            if Length( current_rec.filter_list ) > 2 then
+                
+                Print( "WARNING: the CAP operation ", current_recname, " was declared as an attribute but gets more than two arguments and can thus probably not be used as an attribute.\n" );
+                
+            fi;
+            
+            if Length( current_rec.filter_list ) = 2 and not IsSpecializationOfFilter( IsAttributeStoringRep, CAP_INTERNAL_REPLACED_STRING_WITH_FILTER( current_rec.filter_list[2] ) ) then
+                
+                Print( "WARNING: the CAP operation ", current_recname, " was declared as an attribute but its second argument is not an attribute storing rep.\n" );
+                
+            fi;
             
         fi;
         

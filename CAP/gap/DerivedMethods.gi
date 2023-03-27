@@ -318,6 +318,7 @@ end : CategoryFilter := IsAdditiveCategory,
 
 ##
 AddDerivationToCAP( FiberProduct,
+                    [ [ IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram, 1 ] ],
       
   function( cat, diagram )
     
@@ -393,6 +394,7 @@ AddDerivationToCAP( MorphismFromFiberProductToSink,
 
 ##
 AddDerivationToCAP( Pushout,
+                    [ [ IsomorphismFromCoequalizerOfCoproductDiagramToPushout, 1 ] ],
       
   function( cat, diagram )
     
@@ -2206,6 +2208,8 @@ end : CategoryFilter := IsAbelianCategory,
 
 ##
 AddDerivationToCAP( ComponentOfMorphismIntoDirectProduct,
+                    [ [ ProjectionInFactorOfDirectProduct, 1 ],
+                      [ PreCompose, 1 ] ],
                    
   function( cat, alpha, factors, nr )
     
@@ -2215,6 +2219,8 @@ end : Description := "ComponentOfMorphismIntoDirectProduct by composing with the
 
 ##
 AddDerivationToCAP( ComponentOfMorphismFromCoproduct,
+                    [ [ InjectionOfCofactorOfCoproduct, 1 ],
+                      [ PreCompose, 1 ] ],
                    
   function( cat, alpha, cofactors, nr )
     
@@ -2224,6 +2230,8 @@ end : Description := "ComponentOfMorphismFromCoproduct by composing with the cop
 
 ##
 AddDerivationToCAP( ComponentOfMorphismIntoDirectSum,
+                    [ [ ProjectionInFactorOfDirectSum, 1 ],
+                      [ PreCompose, 1 ] ],
                     
   function( cat, alpha, summands, nr )
     
@@ -2233,6 +2241,8 @@ end : Description := "ComponentOfMorphismIntoDirectSum by composing with the dir
 
 ##
 AddDerivationToCAP( ComponentOfMorphismFromDirectSum,
+                    [ [ InjectionOfCofactorOfDirectSum, 1 ],
+                      [ PreCompose, 1 ] ],
                     
   function( cat, alpha, summands, nr )
     
@@ -3190,6 +3200,7 @@ end : Description := "ImageObject as the source of ImageEmbedding" );
 
 ##
 AddDerivationToCAP( ImageObject,
+                    [ [ IsomorphismFromImageObjectToKernelOfCokernel, 1 ] ],
                     
   function( cat, morphism )
     
@@ -3199,6 +3210,7 @@ end : Description := "ImageObject as the source of IsomorphismFromImageObjectToK
 
 ##
 AddDerivationToCAP( ImageObject,
+                    [ [ IsomorphismFromKernelOfCokernelToImageObject, 1 ] ],
                   
   function( cat, morphism )
     
@@ -3208,6 +3220,7 @@ end : Description := "ImageObject as the range of IsomorphismFromKernelOfCokerne
 
 ##
 AddDerivationToCAP( CoimageObject,
+                    [ [ CoimageProjection, 1 ] ],
         
   function( cat, morphism )
     
@@ -3217,6 +3230,7 @@ end : Description := "CoimageObject as the range of CoimageProjection" );
 
 ##
 AddDerivationToCAP( CoimageObject,
+                    [ [ IsomorphismFromCokernelOfKernelToCoimage, 1 ] ],
         
   function( cat, morphism )
     
@@ -3226,6 +3240,7 @@ end : Description := "CoimageObject as the range of IsomorphismFromCokernelOfKer
 
 ##
 AddDerivationToCAP( CoimageObject,
+                    [ [ IsomorphismFromCoimageToCokernelOfKernel, 1 ] ],
         
   function( cat, morphism )
     
@@ -3235,6 +3250,7 @@ end : Description := "CoimageObject as the source of IsomorphismFromCoimageToCok
 
 ##
 AddDerivationToCAP( CoimageObject,
+                    [ [ CanonicalIdentificationFromImageObjectToCoimage, 1 ] ],
         
   function( cat, morphism )
     
@@ -3244,6 +3260,7 @@ end : Description := "CoimageObject as the range of CanonicalIdentificationFromI
 
 ##
 AddDerivationToCAP( CoimageObject,
+                    [ [ CanonicalIdentificationFromCoimageToImageObject, 1 ] ],
         
   function( cat, morphism )
     
@@ -3293,6 +3310,7 @@ end : Description := "Coequalizer as the range of ProjectionOntoCoequalizer" );
 
 ##
 AddDerivationToCAP( HomologyObject,
+                    [ [ IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject, 1 ] ],
                     
   function( cat, alpha, beta )
     

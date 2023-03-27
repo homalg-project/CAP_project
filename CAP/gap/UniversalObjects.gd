@@ -995,8 +995,8 @@ DeclareOperation( "DirectSumFunctorialWithGivenDirectSums",
 #! The output is the coproduct $\bigsqcup_{i=1}^n I_i$.
 #! @Returns an object
 #! @Arguments D
-DeclareAttribute( "Coproduct",
-                  IsList );
+DeclareOperation( "Coproduct",
+                  [ IsList ] );
 
 #! @Description
 #! This is a convenience method.
