@@ -104,24 +104,22 @@ end );
 ##
 #################################
 
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
                [ IsHomalgRationalVectorSpaceRep ],
 
   function( obj )
 
-    Print( "<A rational vector space of dimension ", String( Dimension( obj ) ), ">" );
+    return Concatenation( "<A rational vector space of dimension ", String( Dimension( obj ) ), ">" );
 
 end );
 
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
                [ IsHomalgRationalVectorSpaceMorphismRep ],
 
   function( obj )
 
-    Print( "A rational vector space homomorphism with matrix: \n" );
+    return Concatenation( "A rational vector space homomorphism with matrix: \n", StringDisplay( obj!.morphism ) );
   
-    Display( obj!.morphism );
-
 end );
 
 #################################

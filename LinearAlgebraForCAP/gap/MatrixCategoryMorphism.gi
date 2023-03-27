@@ -113,18 +113,12 @@ end );
 ####################################
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
                [ IsVectorSpaceMorphism ],
                
   function( vector_space_morphism )
     
-    Display( UnderlyingMatrix( vector_space_morphism ) );
-    
-    Print( "\n" );
-    
-    Print( StringMutable( vector_space_morphism ) );
-    
-    Print( "\n" );
+    return Concatenation( StringDisplay( UnderlyingMatrix( vector_space_morphism ) ), "\n", StringMutable( vector_space_morphism ), "\n" );
     
 end );
 

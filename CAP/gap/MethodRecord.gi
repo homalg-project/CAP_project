@@ -4807,10 +4807,9 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
             object_args := arg{ object_arguments_positions };
             
             result := arg[ Length( arg ) ];
-            Remove( arg );
             object := object_getter( result );
             
-            SET_VALUE_OF_CATEGORY_CACHE( category, object_function_name, cache_key_length, arg{ object_arguments_positions }, object );
+            SET_VALUE_OF_CATEGORY_CACHE( category, object_function_name, cache_key_length, object_args, object );
             setter_function( object_args[ Length( object_args ) ], object );
             
         end;

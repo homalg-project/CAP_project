@@ -100,12 +100,12 @@ InstallMethod( FieldAsCategoryMorphism,
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
                [ IsFieldAsCategoryMorphism ],
 
   function( alpha )
 
-    Print( String( UnderlyingFieldElement( alpha ) ) );
+    return String( UnderlyingFieldElement( alpha ) );
 
 end );
 

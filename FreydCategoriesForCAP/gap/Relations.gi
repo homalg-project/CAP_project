@@ -234,28 +234,22 @@ end );
 ####################################
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
                [ IsRelCategoryMorphism ],
     
-    function( alpha )
-        
-        Display(  "Reversed arrow: \n" );
-        
-        Display( ReversedArrow( alpha ) );
-        
-        Display( "Arrow: \n" );
-        
-        Display( Arrow( alpha ) );
-        
+  function( alpha )
+    
+    return Concatenation( "Reversed arrow: \n", DisplayString( ReversedArrow( alpha ) ), "Arrow: \n", DisplayString( Arrow( alpha ) ) );
+    
 end );
 
 ##
-InstallMethod(  Display,
+InstallMethod( DisplayString,
                [ IsRelCategoryObject ],
 
   function( obj )
     
-    Display( UnderlyingOriginalObject( obj ) );
+    return DisplayString( UnderlyingOriginalObject( obj ) );
     
 end );
 

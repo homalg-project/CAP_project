@@ -198,11 +198,11 @@ end );
 ####################################
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
                [ IsGradedRowOrColumnMorphism ], 
                999, # FIX ME FIX ME FIX ME!!!
 function( graded_row_or_column_morphism )
 
-      Print( Concatenation( "<", String( graded_row_or_column_morphism ), ">" ) );
+      return Concatenation( "<", String( graded_row_or_column_morphism ), ">" );
 
 end );

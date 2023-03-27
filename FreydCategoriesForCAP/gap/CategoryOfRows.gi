@@ -1464,12 +1464,12 @@ InstallMethod( String,
     
 end );
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
                [ IsCategoryOfRowsObject ],
 
   function( category_of_rows_object )
 
-    Print( Concatenation( "<", String( category_of_rows_object ), ">" ) );
+    return Concatenation( "<", String( category_of_rows_object ), ">" );
 
 end );
 

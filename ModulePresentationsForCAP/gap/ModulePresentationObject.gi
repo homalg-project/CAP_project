@@ -223,19 +223,13 @@ end );
 ####################################
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
                [ IsLeftOrRightPresentation ],
                # FIXME: Fix the rank in GenericView and delete this afterwards
                9999,
                
   function( object )
     
-    Display( UnderlyingMatrix( object ) );
-    
-    Print( "\n" );
-    
-    Print( StringMutable( object ) );
-    
-    Print( "\n" );
+    return Concatenation( StringDisplay( UnderlyingMatrix( object ) ), "\n", StringMutable( object ), "\n" );
     
 end );

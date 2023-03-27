@@ -229,33 +229,21 @@ end );
 ###################################
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
                [ IsHomalgIntegerRep ],
                
   function( integer_obj )
     
-    Print( "<The integer object representing " );
-    
-    Print( String( AsInteger( integer_obj ) ) );
-    
-    Print( ">" );
+    return Concatenation( "<The integer object representing ", String( AsInteger( integer_obj ) ), ">" );
     
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
                [ IsHomalgIntegerMorphismRep ],
                
   function( integer_mor )
     
-    Print( "<" );
-    
-    Print( String( AsInteger( Source( integer_mor ) ) ) );
-    
-    Print( " -> " );
-    
-    Print( String( AsInteger( Range( integer_mor ) ) ) );
-    
-    Print( ">" );
+    return Concatenation( "<", String( AsInteger( Source( integer_mor ) ) ), " -> ", String( AsInteger( Range( integer_mor ) ) ), ">" );
     
 end );

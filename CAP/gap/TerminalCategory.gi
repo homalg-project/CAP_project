@@ -463,23 +463,23 @@ InstallOtherMethod( FunctorFromTerminalCategory,
 #################################
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         [ IsObjectInCapTerminalCategoryWithMultipleObjects ],
 
   function( o )
     
-    Display( String( o ) );
+    # This is just GAP's derivation of DisplayString from PrintString from String,
+    # but CAP installs a method for DisplayString which we want to avoid.
+    return Concatenation( String( o ), "\n" );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         [ IsMorphismInCapTerminalCategoryWithMultipleObjects ],
 
   function( m )
     
-    Display( Source( m ) );
-    Print( "|\n| ", String( m ), "\nv\n" );
-    Display( Range( m ) );
+    return Concatenation( DisplayString( Source( m ) ), "|\n| ", String( m ), "\nv\n", DisplayString( Range( m ) ) );
     
 end );

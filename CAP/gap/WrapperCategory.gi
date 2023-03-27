@@ -610,27 +610,23 @@ end );
 ##################################
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         "for an object in a wrapper CAP category",
         [ IsWrapperCapCategoryObject ],
         
   function( a )
     
-    Display( ObjectDatum( a ) );
-    
-    Print( "\nAn object in ", Name( CapCategory( a ) ), " given by the above data\n" );
+    return Concatenation( DisplayString( ObjectDatum( a ) ), "\nAn object in ", Name( CapCategory( a ) ), " given by the above data\n" );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         "for a morphism in a wrapper CAP category",
         [ IsWrapperCapCategoryMorphism ],
         
   function( phi )
     
-    Display( MorphismDatum( phi ) );
-    
-    Print( "\nA morphism in ", Name( CapCategory( phi ) ), " given by the above data\n" );
+    return Concatenation( DisplayString( MorphismDatum( phi ) ), "\nA morphism in ", Name( CapCategory( phi ) ), " given by the above data\n" );
     
 end );

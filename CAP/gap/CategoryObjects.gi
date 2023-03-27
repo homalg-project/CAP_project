@@ -331,7 +331,9 @@ InstallMethod( ViewString,
                
   function ( object )
     
-    return Concatenation( "<", String( object ), ">" );
+    # avoid space in front of "in" to distinguish it from the keyword "in"
+    # do not reuse `String` because objects might use `String` as the attribute storing the object datum
+    return Concatenation( "<An object ", "in ", Name( CapCategory( object ) ), ">" );
     
 end );
 
@@ -340,7 +342,9 @@ InstallMethod( DisplayString,
                
   function ( object )
     
-    return Concatenation( String( object ), ".\n" );
+    # avoid space in front of "in" to distinguish it from the keyword "in"
+    # do not reuse `String` because objects might use `String` as the attribute storing the object datum
+    return Concatenation( "An object ", "in ", Name( CapCategory( object ) ), ".\n" );
     
 end );
 

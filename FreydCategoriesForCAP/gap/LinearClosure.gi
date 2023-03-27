@@ -909,26 +909,6 @@ InstallMethod( ViewString,
     
 end );
 
-##
-InstallMethod( ViewObj,
-               [ IsLinearClosureMorphism ],
-               
-    function( alpha )
-        
-        Print( ViewString( alpha ) );
-        
-end );
-
-##
-InstallMethod( ViewObj,
-               [ IsLinearClosureObject ],
-               
-    function( obj )
-        
-        Print( ViewString( obj ) );
-        
-end );
-
 ####################################
 ##
 ## Convenience

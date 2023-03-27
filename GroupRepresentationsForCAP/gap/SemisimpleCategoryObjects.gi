@@ -450,22 +450,22 @@ InstallMethod( String,
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
                [ IsSemisimpleCategoryObject ],
                
   function( object )
     
-    Print( String( object ) );
+    return String( object );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
                [ IsSemisimpleCategoryObject ],
                
   function( object )
     
-    Print( Concatenation( String( object ), "\n" ) );
+    return Concatenation( String( object ), "\n" );
     
 end );
 

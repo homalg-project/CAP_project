@@ -823,7 +823,9 @@ InstallMethod( ViewString,
                
   function ( morphism )
     
-    return Concatenation( "<", String( morphism ), ">" );
+    # avoid space in front of "in" to distinguish it from the keyword "in"
+    # do not reuse `String` because morphisms might use `String` as the attribute storing the morphism datum
+    return Concatenation( "<A morphism ", "in ", Name( CapCategory( morphism ) ), ">" );
     
 end );
 
@@ -832,7 +834,9 @@ InstallMethod( DisplayString,
                
   function ( morphism )
     
-    return Concatenation( String( morphism ), ".\n" );
+    # avoid space in front of "in" to distinguish it from the keyword "in"
+    # do not reuse `String` because morphisms might use `String` as the attribute storing the morphism datum
+    return Concatenation( "A morphism ", "in ", Name( CapCategory( morphism ) ), ".\n" );
     
 end );
 

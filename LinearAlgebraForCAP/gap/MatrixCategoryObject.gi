@@ -81,22 +81,22 @@ InstallMethod( String,
     
 end );
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
                [ IsVectorSpaceObject ],
 
   function( vector_space_object )
 
-    Print( Concatenation( "<", String( vector_space_object ), ">" ) );
+    return Concatenation( "<", String( vector_space_object ), ">" );
 
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
                [ IsVectorSpaceObject ],
                
   function( vector_space_object )
     
-    Print( String( vector_space_object ), "\n" );
+    return Concatenation( String( vector_space_object ), "\n" );
     
 end );
 

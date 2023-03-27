@@ -85,28 +85,20 @@ InstallMethod( \/,
                
   SerreQuotientCategory );
 
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
                [ IsSerreQuotientSubcategoryFunctionHandler ],
                
   function( handler )
     
-    Print( "<Subcategory of " );
-    Print( Name( ContainingCategory( handler ) ) );
-    Print( " by " );
-    Print( NameFunction( MembershipFunction( handler ) ) );
-    Print( ">" );
+    return Concatenation( "<Subcategory of ", Name( ContainingCategory( handler ) ), " by ", NameFunction( MembershipFunction( handler ) ), ">" );
     
 end );
 
-InstallMethod( Display,
+InstallMethod( DisplayString,
                [ IsSerreQuotientSubcategoryFunctionHandler ],
                
   function( handler )
     
-    Print( "Subcategory of " );
-    Print( Name( ContainingCategory( handler ) ) );
-    Print( " by " );
-    Print( NameFunction( MembershipFunction( handler ) ) );
-    Print( "." );
+    return Concatenation( "Subcategory of ", Name( ContainingCategory( handler ) ), " by ", NameFunction( MembershipFunction( handler ) ), ".\n" );
     
 end );
