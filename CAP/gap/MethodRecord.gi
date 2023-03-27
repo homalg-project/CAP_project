@@ -4777,15 +4777,16 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
     if not IsAttribute( object_function ) then
     
         return function( arg )
-            local result, object, category;
+          local category, object_args, result, object;
             
             category := arg[ 1 ];
             
+            object_args := arg{ object_arguments_positions };
+            
             result := arg[ Length( arg ) ];
-            Remove( arg );
             object := object_getter( result );
             
-            SET_VALUE_OF_CATEGORY_CACHE( category, object_function_name, cache_key_length, arg{ object_arguments_positions }, object );
+            SET_VALUE_OF_CATEGORY_CACHE( category, object_function_name, cache_key_length, object_args, object );
             
         end;
         
