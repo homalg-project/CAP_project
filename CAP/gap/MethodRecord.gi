@@ -5066,22 +5066,6 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
         fi;
         
-        if IsAttribute( ValueGlobal( current_recname ) ) then
-            
-            if Length( current_rec.filter_list ) > 2 then
-                
-                Print( "WARNING: the CAP operation ", current_recname, " was declared as an attribute but gets more than two arguments and can thus probably not be used as an attribute.\n" );
-                
-            fi;
-            
-            if Length( current_rec.filter_list ) = 2 and not IsSpecializationOfFilter( IsAttributeStoringRep, CAP_INTERNAL_REPLACED_STRING_WITH_FILTER( current_rec.filter_list[2] ) ) then
-                
-                Print( "WARNING: the CAP operation ", current_recname, " was declared as an attribute but its second argument is not an attribute storing rep.\n" );
-                
-            fi;
-            
-        fi;
-        
         if IsBound( current_rec.installation_name ) then
             
             if current_rec.installation_name <> installation_name then
