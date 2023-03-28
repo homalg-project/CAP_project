@@ -393,3 +393,58 @@ CapJitAddLogicTemplate(
         dst_template := "0",
     )
 );
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "freyd", "rows_morphism1", "rows_morphism2" ],
+        src_template := """UnderlyingMatrix( UnderlyingMorphism( INTERNAL_HOM_EMBEDDING( freyd,
+                            CreateCapCategoryObjectWithAttributes( freyd, RelationMorphism, rows_morphism1 ),
+                            CreateCapCategoryObjectWithAttributes( freyd, RelationMorphism, rows_morphism2 )
+                            ) ) )""",
+        dst_template := "UnderlyingMatrix( INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT( AsCategoryOfModulePresentations( freyd ), CreateCapCategoryObjectWithAttributes( AsCategoryOfModulePresentations( freyd ), UnderlyingMatrix, UnderlyingMatrix( rows_morphism1 ) ), CreateCapCategoryObjectWithAttributes( AsCategoryOfModulePresentations( freyd ), UnderlyingMatrix, UnderlyingMatrix( rows_morphism2 ) ) ) )",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "freyd", "rows_morphism1", "rows_morphism2" ],
+        src_template := """RankOfObject( Range( RelationMorphism( Range( INTERNAL_HOM_EMBEDDING( freyd,
+                            CreateCapCategoryObjectWithAttributes( freyd, RelationMorphism, rows_morphism1 ),
+                            CreateCapCategoryObjectWithAttributes( freyd, RelationMorphism, rows_morphism2 )
+                            ) ) ) ) )""",
+        dst_template := "NrColumns( UnderlyingMatrix( Range( INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT( AsCategoryOfModulePresentations( freyd ), CreateCapCategoryObjectWithAttributes( AsCategoryOfModulePresentations( freyd ), UnderlyingMatrix, UnderlyingMatrix( rows_morphism1 ) ), CreateCapCategoryObjectWithAttributes( AsCategoryOfModulePresentations( freyd ), UnderlyingMatrix, UnderlyingMatrix( rows_morphism2 ) ) ) ) ) )",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "freyd", "rows_morphism1", "rows_morphism2" ],
+        src_template := """RankOfObject( Source( RelationMorphism( Range( INTERNAL_HOM_EMBEDDING( freyd,
+                            CreateCapCategoryObjectWithAttributes( freyd, RelationMorphism, rows_morphism1 ),
+                            CreateCapCategoryObjectWithAttributes( freyd, RelationMorphism, rows_morphism2 )
+                            ) ) ) ) )""",
+        dst_template := "NrRows( UnderlyingMatrix( Range( INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT( AsCategoryOfModulePresentations( freyd ), CreateCapCategoryObjectWithAttributes( AsCategoryOfModulePresentations( freyd ), UnderlyingMatrix, UnderlyingMatrix( rows_morphism1 ) ), CreateCapCategoryObjectWithAttributes( AsCategoryOfModulePresentations( freyd ), UnderlyingMatrix, UnderlyingMatrix( rows_morphism2 ) ) ) ) ) )",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "freyd", "rows_morphism1", "rows_morphism2" ],
+        src_template := """RankOfObject( Range( RelationMorphism( Source( INTERNAL_HOM_EMBEDDING( freyd,
+                            CreateCapCategoryObjectWithAttributes( freyd, RelationMorphism, rows_morphism1 ),
+                            CreateCapCategoryObjectWithAttributes( freyd, RelationMorphism, rows_morphism2 )
+                            ) ) ) ) )""",
+        dst_template := "NrColumns( UnderlyingMatrix( Source( INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT( AsCategoryOfModulePresentations( freyd ), CreateCapCategoryObjectWithAttributes( AsCategoryOfModulePresentations( freyd ), UnderlyingMatrix, UnderlyingMatrix( rows_morphism1 ) ), CreateCapCategoryObjectWithAttributes( AsCategoryOfModulePresentations( freyd ), UnderlyingMatrix, UnderlyingMatrix( rows_morphism2 ) ) ) ) ) )",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "freyd", "rows_morphism1", "rows_morphism2" ],
+        src_template := """UnderlyingMatrix( RelationMorphism( Range( INTERNAL_HOM_EMBEDDING( freyd,
+                            CreateCapCategoryObjectWithAttributes( freyd, RelationMorphism, rows_morphism1 ),
+                            CreateCapCategoryObjectWithAttributes( freyd, RelationMorphism, rows_morphism2 )
+                            ) ) ) )""",
+        dst_template := "UnderlyingMatrix( Range( INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT( AsCategoryOfModulePresentations( freyd ), CreateCapCategoryObjectWithAttributes( AsCategoryOfModulePresentations( freyd ), UnderlyingMatrix, UnderlyingMatrix( rows_morphism1 ) ), CreateCapCategoryObjectWithAttributes( AsCategoryOfModulePresentations( freyd ), UnderlyingMatrix, UnderlyingMatrix( rows_morphism2 ) ) ) ) )",
+    )
+);

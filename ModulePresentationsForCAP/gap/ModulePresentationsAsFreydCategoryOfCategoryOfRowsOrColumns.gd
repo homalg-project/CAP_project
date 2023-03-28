@@ -32,3 +32,5 @@ DeclareOperation( "LeftPresentationsAsFreydCategoryOfCategoryOfRows",
 #! @Arguments R
 DeclareOperation( "RightPresentationsAsFreydCategoryOfCategoryOfColumns",
                   [ IsHomalgRing ] );
+
+DeclareAttribute( "AsCategoryOfModulePresentations", IsFreydCategory );

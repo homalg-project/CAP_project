@@ -310,7 +310,7 @@ InstallOtherMethodForCompilerForCAP( MereExistenceOfWitnessForBeingCongruentToZe
     
 end );
 
-InstallMethodForCompilerForCAP( INTERNAL_HOM_EMBEDDING,
+InstallMethod( INTERNAL_HOM_EMBEDDING,
                                   [ IsFreydCategory, IsFreydCategoryObject, IsFreydCategoryObject ],
     function( cat, a, b )
       local source, range, mor;

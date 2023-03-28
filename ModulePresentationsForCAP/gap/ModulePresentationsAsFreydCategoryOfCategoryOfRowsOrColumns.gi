@@ -116,9 +116,12 @@ InstallMethod( LeftPresentationsAsFreydCategoryOfCategoryOfRows,
     
     wrapper!.compiler_hints.category_attribute_names := [
         "UnderlyingRing",
+        "ModelingCategory",
     ];
     
     SetUnderlyingRing( wrapper, ring );
+    
+    SetAsCategoryOfModulePresentations( freyd, wrapper );
     
     wrapper!.ring_for_representation_category := ring;
     

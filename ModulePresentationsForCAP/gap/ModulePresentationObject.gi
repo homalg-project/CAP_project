@@ -155,9 +155,9 @@ end );
 
 ##
 InstallMethodWithCacheFromObject( INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT,
-                                  [ IsLeftOrRightPresentation, IsLeftOrRightPresentation ],
+                                  [ IsCategoryOfLeftPresentations, IsLeftPresentation, IsLeftPresentation ],
                                   
-  function( object_1, object_2 )
+  function( cat, object_1, object_2 )
     local underlying_matrix_1, transposed_underlying_matrix_1, identity_matrix_2, differential_matrix, homalg_ring,
           free_module_source, free_module_range, differential;
     
@@ -186,9 +186,9 @@ end );
 
 ##
 InstallMethodWithCacheFromObject( INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_RIGHT,
-                                  [ IsLeftOrRightPresentation, IsLeftOrRightPresentation ],
+                                  [ IsCategoryOfRightPresentations, IsRightPresentation, IsRightPresentation ],
                                   
-  function( object_1, object_2 )
+  function( cat, object_1, object_2 )
     local underlying_matrix_1, transposed_underlying_matrix_1, identity_matrix_2, differential_matrix, homalg_ring,
           free_module_source, free_module_range, differential;
     

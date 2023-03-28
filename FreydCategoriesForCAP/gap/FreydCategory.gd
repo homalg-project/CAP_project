@@ -278,6 +278,11 @@ DeclareGlobalFunction( "IsValidInputForFreydCategory" );
 DeclareOperation( "INTERNAL_HOM_EMBEDDING",
                            [ IsFreydCategory, IsFreydCategoryObject, IsFreydCategoryObject ] );
 
+CapJitAddTypeSignature( "INTERNAL_HOM_EMBEDDING", [ IsFreydCategory, IsFreydCategoryObject, IsFreydCategoryObject ], function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
+    
+end );
 
 ####################################################################################
 ##

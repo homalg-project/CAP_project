@@ -141,7 +141,7 @@ DeclareAttribute( "Annihilator",
 ##############################################
 
 DeclareOperationWithCache( "INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT",
-                           [ IsLeftOrRightPresentation, IsLeftOrRightPresentation ] );
+                           [ IsCategoryOfLeftPresentations, IsLeftPresentation, IsLeftPresentation ] );
 
 DeclareOperationWithCache( "INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_RIGHT",
-                           [ IsLeftOrRightPresentation, IsLeftOrRightPresentation ] );
+                           [ IsCategoryOfRightPresentations, IsRightPresentation, IsRightPresentation ] );
