@@ -991,19 +991,23 @@ CapJitAddTypeSignature( "ListWithIdenticalEntries", [ IsInt, IsObject ], functio
     
 end );
 
-CapJitAddTypeSignature( "Concatenation", [ IsList ], function ( input_types )
+CapJitAddTypeSignature( "Concatenation", "any", function ( input_types )
+    local l;
     
-    Assert( 0, input_types[1].element_type.filter = IsList );
+    l := Length( input_types );
     
-    return rec( filter := IsList, element_type := input_types[1].element_type.element_type );
-    
-end );
-
-CapJitAddTypeSignature( "Concatenation", [ IsList, IsList ], function ( input_types )
-    
-    Assert( 0, input_types[1] = input_types[2] );
-    
-    return input_types[1];
+    if l = 0 then
+        #Error( "empty Concatenation\n" );
+        return fail;
+    elif l = 1 then
+        Assert( 0, input_types[1].filter = IsList );
+        Assert( 0, input_types[1].element_type.filter = IsList );
+        return rec( filter := IsList, element_type := input_types[1].element_type.element_type );
+    else
+        Assert( 0, input_types[1].filter = IsList );
+        Assert( 0, ForAll( [ 1 .. l - 1 ], i -> input_types[i] = input_types[i+1] ) );
+        return input_types[1];
+    fi;
     
 end );
 
