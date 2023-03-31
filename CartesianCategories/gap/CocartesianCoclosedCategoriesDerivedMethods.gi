@@ -12,7 +12,7 @@
 ####################################
 
 ## Final methods for CocartesianDual
-AddFinalDerivationBundle( # IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject,
+AddFinalDerivationBundle( "IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject as the identity of Coexp(1,a)",
                     [ [ IdentityMorphism, 1 ],
                       [ CoexponentialOnObjects, 1 ],
                       [ InitialObject, 1 ] ],
@@ -47,5 +47,4 @@ AddFinalDerivationBundle( # IsomorphismFromCocartesianDualObjectToCoexponentialF
     return IdentityMorphism( cat, CoexponentialOnObjects( cat, InitialObject( cat ), object ) );
     
   end
-] : CategoryFilter := IsCocartesianCoclosedCategory,
-      Description := "IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject as the identity of Coexp(1,a)" );
+] : CategoryFilter := IsCocartesianCoclosedCategory );

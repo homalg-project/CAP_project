@@ -9,7 +9,7 @@
 ####################################
 
 ## Final methods for CoDual
-AddFinalDerivationBundle( # IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit,
+AddFinalDerivationBundle( "IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit as the identity of coHom(1,a)",
                     [ [ IdentityMorphism, 1 ],
                       [ InternalCoHomOnObjects, 1 ],
                       [ TensorUnit, 1 ] ],
@@ -44,5 +44,4 @@ AddFinalDerivationBundle( # IsomorphismFromCoDualObjectToInternalCoHomFromTensor
     return IdentityMorphism( cat, InternalCoHomOnObjects( cat, TensorUnit( cat ), object ) );
     
   end
-] : CategoryFilter := IsCoclosedMonoidalCategory,
-      Description := "IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit as the identity of coHom(1,a)" );
+] : CategoryFilter := IsCoclosedMonoidalCategory );
