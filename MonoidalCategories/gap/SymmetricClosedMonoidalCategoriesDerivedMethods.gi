@@ -803,7 +803,7 @@ AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphismWithGivenObject
              TensorProductOnObjects( cat, a1, a2 ),
              morphism );
     
-end : CategoryFilter := IsSymmetricClosedMonoidalCategory and IsStrictMonoidalCategory,
+end : CategoryFilter := cat -> HasIsSymmetricClosedMonoidalCategory( cat ) and IsSymmetricClosedMonoidalCategory( cat ) and HasIsStrictMonoidalCategory( cat ) and IsStrictMonoidalCategory( cat ),
       Description := "TensorProductInternalHomCompatibilityMorphismWithGivenObjects using braiding and the evaluation morphism" );
 
 ##
@@ -840,7 +840,7 @@ AddDerivationToCAP( TensorProductDualityCompatibilityMorphismWithGivenObjects,
     
     return morphism;
     
-end : CategoryFilter := IsSymmetricClosedMonoidalCategory and IsStrictMonoidalCategory,
+end : CategoryFilter := cat -> HasIsSymmetricClosedMonoidalCategory( cat ) and IsSymmetricClosedMonoidalCategory( cat ) and HasIsStrictMonoidalCategory( cat ) and IsStrictMonoidalCategory( cat ),
       Description := "TensorProductDualityCompatibilityMorphismWithGivenObjects using compatibility of tensor product and internal hom" );
 
 ##
@@ -893,7 +893,7 @@ AddDerivationToCAP( MonoidalPreComposeMorphismWithGivenObjects,
              a,
              morphism );
     
-end : CategoryFilter := IsSymmetricClosedMonoidalCategory and IsStrictMonoidalCategory,
+end : CategoryFilter := cat -> HasIsSymmetricClosedMonoidalCategory( cat ) and IsSymmetricClosedMonoidalCategory( cat ) and HasIsStrictMonoidalCategory( cat ) and IsStrictMonoidalCategory( cat ),
       Description := "MonoidalPreComposeMorphismWithGivenObjects using, braiding, evaluation, and tensor hom adjunction" );
 
 ##
@@ -932,5 +932,5 @@ AddDerivationToCAP( MonoidalPostComposeMorphismWithGivenObjects,
              a,
              morphism );
     
-end : CategoryFilter := IsSymmetricClosedMonoidalCategory and IsStrictMonoidalCategory,
+end : CategoryFilter := cat -> HasIsSymmetricClosedMonoidalCategory( cat ) and IsSymmetricClosedMonoidalCategory( cat ) and HasIsStrictMonoidalCategory( cat ) and IsStrictMonoidalCategory( cat ),
       Description := "MonoidalPostComposeMorphismWithGivenObjects using evaluation, and tensor hom adjunction" );

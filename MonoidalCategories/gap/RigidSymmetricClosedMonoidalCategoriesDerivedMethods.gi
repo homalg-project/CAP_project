@@ -173,7 +173,7 @@ AddDerivationToCAP( EvaluationMorphismWithGivenSource,
                     
     return morphism;
       
-end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory and IsStrictMonoidalCategory,
+end : CategoryFilter := cat -> HasIsRigidSymmetricClosedMonoidalCategory( cat ) and IsRigidSymmetricClosedMonoidalCategory( cat ) and HasIsStrictMonoidalCategory( cat ) and IsStrictMonoidalCategory( cat ),
       Description := "EvaluationMorphismWithGivenSource using the rigidity and strictness of the monoidal category" );
 
 ##
@@ -287,7 +287,7 @@ AddDerivationToCAP( CoevaluationMorphismWithGivenRange,
     
     return morphism;
     
-end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory and IsStrictMonoidalCategory,
+end : CategoryFilter := cat -> HasIsRigidSymmetricClosedMonoidalCategory( cat ) and IsRigidSymmetricClosedMonoidalCategory( cat ) and HasIsStrictMonoidalCategory( cat ) and IsStrictMonoidalCategory( cat ),
       Description := "CoevaluationMorphismWithGivenRange using the rigidity of the monoidal category" );
 
 ##

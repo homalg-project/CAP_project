@@ -818,7 +818,7 @@ AddDerivationToCAP( CoexponentialCoproductCompatibilityMorphismWithGivenObjects,
              BinaryCoproduct( cat, b1, b2 ),
              morphism );
     
-end : CategoryFilter := IsCocartesianCoclosedCategory and IsStrictCocartesianCategory,
+end : CategoryFilter := cat -> HasIsCocartesianCoclosedCategory( cat ) and IsCocartesianCoclosedCategory( cat ) and HasIsStrictCocartesianCategory( cat ) and IsStrictCocartesianCategory( cat ),
       Description := "CoexponentialCoproductCompatibilityMorphismWithGivenObjects using braiding and the cocartesian evaluation morphism" );
 
 ##
@@ -855,7 +855,7 @@ AddDerivationToCAP( CocartesianDualityCoproductCompatibilityMorphismWithGivenObj
               
     return morphism;
     
-end : CategoryFilter := IsCocartesianCoclosedCategory and IsStrictCocartesianCategory,
+end : CategoryFilter := cat -> HasIsCocartesianCoclosedCategory( cat ) and IsCocartesianCoclosedCategory( cat ) and HasIsStrictCocartesianCategory( cat ) and IsStrictCocartesianCategory( cat ),
       Description := "CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects using compatibility of coexponential and coproduct" );
 
 ##
@@ -908,7 +908,7 @@ AddDerivationToCAP( CocartesianPreCoComposeMorphismWithGivenObjects,
              c,
              morphism );
     
-end : CategoryFilter := IsCocartesianCoclosedCategory and IsStrictCocartesianCategory,
+end : CategoryFilter := cat -> HasIsCocartesianCoclosedCategory( cat ) and IsCocartesianCoclosedCategory( cat ) and HasIsStrictCocartesianCategory( cat ) and IsStrictCocartesianCategory( cat ),
       Description := "CocartesianPreCoComposeMorphismWithGivenObjects using braiding, cocartesian evaluation, and coexponential-coproduct adjunction" );
 
 ##
@@ -947,5 +947,5 @@ AddDerivationToCAP( CocartesianPostCoComposeMorphismWithGivenObjects,
              c,
              morphism );
     
-end : CategoryFilter := IsCocartesianCoclosedCategory and IsStrictCocartesianCategory,
+end : CategoryFilter := cat -> HasIsCocartesianCoclosedCategory( cat ) and IsCocartesianCoclosedCategory( cat ) and HasIsStrictCocartesianCategory( cat ) and IsStrictCocartesianCategory( cat ),
       Description := "CocartesianPostCoComposeMorphismWithGivenObjects using cocartesian evaluation, and coexponential-coproduct adjunction" );

@@ -66,7 +66,8 @@ end
     
   end
 ] : CategoryFilter := function( cat )
-      return (HasIsEquippedWithHomomorphismStructure and IsEquippedWithHomomorphismStructure)( cat ) and
+      return HasIsEquippedWithHomomorphismStructure( cat ) and
+             IsEquippedWithHomomorphismStructure( cat ) and
              HasRangeCategoryOfHomomorphismStructure( cat ) and
              IsIdenticalObj( RangeCategoryOfHomomorphismStructure( cat ), cat );
     end,

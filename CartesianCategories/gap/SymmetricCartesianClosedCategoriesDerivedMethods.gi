@@ -806,7 +806,7 @@ AddDerivationToCAP( DirectProductExponentialCompatibilityMorphismWithGivenObject
              BinaryDirectProduct( cat, a1, a2 ),
              morphism );
     
-end : CategoryFilter := IsCartesianClosedCategory and IsStrictCartesianCategory,
+end : CategoryFilter := cat -> HasIsCartesianClosedCategory( cat ) and IsCartesianClosedCategory( cat ) and HasIsStrictCartesianCategory( cat ) and IsStrictCartesianCategory( cat ),
       Description := "DirectProductExponentialCompatibilityMorphismWithGivenObjects using braiding and the evaluation morphism" );
 
 ##
@@ -843,7 +843,7 @@ AddDerivationToCAP( DirectProductCartesianDualityCompatibilityMorphismWithGivenO
     
     return morphism;
     
-end : CategoryFilter := IsCartesianClosedCategory and IsStrictCartesianCategory,
+end : CategoryFilter := cat -> HasIsCartesianClosedCategory( cat ) and IsCartesianClosedCategory( cat ) and HasIsStrictCartesianCategory( cat ) and IsStrictCartesianCategory( cat ),
       Description := "DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects using compatibility of direct product and exponential" );
 
 ##
@@ -896,7 +896,7 @@ AddDerivationToCAP( CartesianPreComposeMorphismWithGivenObjects,
              a,
              morphism );
     
-end : CategoryFilter := IsCartesianClosedCategory and IsStrictCartesianCategory,
+end : CategoryFilter := cat -> HasIsCartesianClosedCategory( cat ) and IsCartesianClosedCategory( cat ) and HasIsStrictCartesianCategory( cat ) and IsStrictCartesianCategory( cat ),
       Description := "CartesianPreComposeMorphismWithGivenObjects using, braiding, evaluation, and direct product-exponential adjunction" );
 
 ##
@@ -935,5 +935,5 @@ AddDerivationToCAP( CartesianPostComposeMorphismWithGivenObjects,
              a,
              morphism );
     
-end : CategoryFilter := IsCartesianClosedCategory and IsStrictCartesianCategory,
+end : CategoryFilter := cat -> HasIsCartesianClosedCategory( cat ) and IsCartesianClosedCategory( cat ) and HasIsStrictCartesianCategory( cat ) and IsStrictCartesianCategory( cat ),
       Description := "CartesianPostComposeMorphismWithGivenObjects using evaluation, and direct product-exponential adjunction" );
