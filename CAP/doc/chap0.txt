@@ -6,7 +6,7 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2023.03-14
+                                   2023.03-15
   
   
                                  31 March 2023
@@ -864,13 +864,11 @@
       8.3-3 AddOperationsToDerivationGraph
       8.3-4 AddDerivation
       8.3-5 AddDerivation
-      8.3-6 AddDerivation
-      8.3-7 AddDerivation
-      8.3-8 AddDerivationToCAP
-      8.3-9 AddWithGivenDerivationPairToCAP
-      8.3-10 Operations
-      8.3-11 DerivationsUsingOperation
-      8.3-12 DerivationsOfOperation
+      8.3-6 AddDerivationToCAP
+      8.3-7 AddWithGivenDerivationPairToCAP
+      8.3-8 Operations
+      8.3-9 DerivationsUsingOperation
+      8.3-10 DerivationsOfOperation
     8.4 [33X[0;0YManaging Derivations in a Category[133X
       8.4-1 IsOperationWeightList
       8.4-2 MakeOperationWeightList

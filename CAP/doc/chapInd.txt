@@ -47,10 +47,8 @@
   [2XAddCoproductFunctorial[102X, for IsCapCategory, IsFunction 7.6-35 
   [2XAddCoproductFunctorialWithGivenCoproducts[102X, for IsCapCategory, IsFunction 7.6-36 
   [2XAddDerivation[102X, for IsDerivedMethodGraph, IsDerivedMethod 8.3-4 
-      for IsDerivedMethodGraph, IsFunction, IsDenseList 8.3-6 
-      for IsDerivedMethodGraph, IsFunction, IsDenseList, IsObject 8.3-5 
-      for IsDerivedMethodGraph, IsFunction, IsFunction 8.3-7 
-  [2XAddDerivationToCAP[102X 8.3-8 
+      for IsDerivedMethodGraph, IsFunction, IsString, IsDenseList, IsFunction 8.3-5 
+  [2XAddDerivationToCAP[102X 8.3-6 
   [2XAddDirectProduct[102X, for IsCapCategory, IsFunction 7.6-37 
   [2XAddDirectProductFunctorial[102X, for IsCapCategory, IsFunction 7.6-38 
   [2XAddDirectProductFunctorialWithGivenDirectProducts[102X, for IsCapCategory, IsFunction 7.6-39 
@@ -300,7 +298,7 @@
   [2XAddUniversalMorphismIntoZeroObjectWithGivenZeroObject[102X, for IsCapCategory, IsFunction 7.6-271 
   [2XAddVerticalPostCompose[102X, for IsCapCategory, IsFunction 7.6-272 
   [2XAddVerticalPreCompose[102X, for IsCapCategory, IsFunction 7.6-273 
-  [2XAddWithGivenDerivationPairToCAP[102X 8.3-9 
+  [2XAddWithGivenDerivationPairToCAP[102X 8.3-7 
   [2XAddZeroMorphism[102X, for IsCapCategory, IsFunction 7.6-274 
   [2XAddZeroObject[102X, for IsCapCategory, IsFunction 7.6-275 
   [2XAddZeroObjectFunctorial[102X, for IsCapCategory, IsFunction 7.6-276 
@@ -423,8 +421,8 @@
   [2XDerivationInfo[102X 8.1-1 
   [2XDerivationName[102X, for IsDerivedMethod 8.2-3 
   [2XDerivationOfOperation[102X, for IsOperationWeightList, IsString 8.4-7 
-  [2XDerivationsOfOperation[102X, for IsDerivedMethodGraph, IsString 8.3-12 
-  [2XDerivationsUsingOperation[102X, for IsDerivedMethodGraph, IsString 8.3-11 
+  [2XDerivationsOfOperation[102X, for IsDerivedMethodGraph, IsString 8.3-10 
+  [2XDerivationsUsingOperation[102X, for IsDerivedMethodGraph, IsString 8.3-9 
   [2XDerivationWeight[102X, for IsDerivedMethod 8.2-4 
   [2XDirectProduct[102X 6.8-1 
   [2XDirectProductFunctorial[102X, for IsList, IsList, IsList 6.8-7 
@@ -723,7 +721,7 @@
   [2XObjectFilter[102X, for IsCapCategory 1.4-3 
   [2XObjectifyMorphismWithSourceAndRangeForCAPWithAttributes[102X 3.6-4 
   [2XObjectifyObjectForCAPWithAttributes[102X 2.6-4 
-  [2XOperations[102X, for IsDerivedMethodGraph 8.3-10 
+  [2XOperations[102X, for IsDerivedMethodGraph 8.3-8 
   [2XOperationWeightUsingDerivation[102X, for IsOperationWeightList, IsDerivedMethod 8.4-6 
   [2XPackageOfCAPOperation[102X 9.2-27 
   [2XPair[102X 9.2-35 
