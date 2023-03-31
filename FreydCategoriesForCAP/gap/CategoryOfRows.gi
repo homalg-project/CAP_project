@@ -1323,7 +1323,7 @@ end );
 ##
 ## use ExternalHom & CoefficientsOfMorphism to derive Hom-Structure
 ##
-AddFinalDerivationBundle( # DistinguishedObjectOfHomomorphismStructure,
+AddFinalDerivationBundle( "Using BasisOfExternalHom and CoefficientsOfMorphism to equip k-linear categories with a Hom-Structure over the category of k-rows",
                     [
                       [ BasisOfExternalHom, 1 ],
                       [ CoefficientsOfMorphism, 2 ],
@@ -1435,8 +1435,7 @@ AddFinalDerivationBundle( # DistinguishedObjectOfHomomorphismStructure,
       fi;
       
       return false;
-  end,
-  Description := "Using BasisOfExternalHom and CoefficientsOfMorphism to equip k-linear categories with a Hom-Structure over the category of k-rows"
+  end
 );
 
 ####################################

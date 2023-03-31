@@ -3960,7 +3960,7 @@ AddDerivationToCAP( MereExistenceOfSolutionOfLinearSystemInAbCategory,
 ## Final methods for Equalizer
 
 ##
-AddFinalDerivationBundle( # IsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct
+AddFinalDerivationBundle( "IsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct as the identity of the kernel of the pairwise differences",
                     [ [ JointPairwiseDifferencesOfMorphismsIntoDirectProduct, 1 ], 
                       [ KernelObject, 1 ],
                       [ IdentityMorphism, 1 ] ],
@@ -3998,12 +3998,12 @@ AddFinalDerivationBundle( # IsomorphismFromEqualizerToKernelOfJointPairwiseDiffe
     return IdentityMorphism( cat, kernel_of_pairwise_differences );
     
   end
-] : Description := "IsomorphismFromEqualizerToKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProduct as the identity of the kernel of the pairwise differences" );
+] );
 
 ## Final methods for Coequalizer
 
 ##
-AddFinalDerivationBundle( # IsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct
+AddFinalDerivationBundle( "IsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct as the identity of the kernel of the pairwise differences",
                     [ [ JointPairwiseDifferencesOfMorphismsFromCoproduct, 1 ], 
                       [ CokernelObject, 1 ],
                       [ IdentityMorphism, 1 ] ],
@@ -4041,12 +4041,12 @@ AddFinalDerivationBundle( # IsomorphismFromCoequalizerToCokernelOfJointPairwiseD
     return IdentityMorphism( cat, cokernel_of_pairwise_differences );
     
   end
-] : Description := "IsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct as the identity of the kernel of the pairwise differences" );
+] );
 
 ## Final methods for FiberProduct
 
 ##
-AddFinalDerivationBundle( # IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram,
+AddFinalDerivationBundle( "IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram as the identity of the equalizer of direct product diagram",
                     [ [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 2 ], ## Length( diagram ) would be the correct number
                       [ PreCompose, 2 ], ## Length( diagram ) would be the correct number
                       [ DirectProduct, 1 ],
@@ -4102,12 +4102,12 @@ AddFinalDerivationBundle( # IsomorphismFromFiberProductToEqualizerOfDirectProduc
     return IdentityMorphism( cat, equalizer_of_direct_product_diagram );
     
   end,
-] : Description := "IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram as the identity of the equalizer of direct product diagram" );
+] );
 
 ## Final methods for Pushout
 
 ##
-AddFinalDerivationBundle( # IsomorphismFromPushoutToCoequalizerOfCoproductDiagram,
+AddFinalDerivationBundle( "IsomorphismFromPushoutToCoequalizerOfCoproductDiagram as the identity of the coequalizer of coproduct diagram",
                     [ [ InjectionOfCofactorOfCoproductWithGivenCoproduct, 2 ], ## Length( diagram ) would be the correct number
                       [ PreCompose, 2 ], ## Length( diagram ) would be the correct number
                       [ Coproduct, 1 ],
@@ -4163,12 +4163,12 @@ AddFinalDerivationBundle( # IsomorphismFromPushoutToCoequalizerOfCoproductDiagra
     return IdentityMorphism( cat, coequalizer_of_coproduct_diagram );
     
   end,
-] : Description := "IsomorphismFromPushoutToCoequalizerOfCoproductDiagram as the identity of the coequalizer of coproduct diagram" );
+] );
 
 ## Final methods for Image
 
 ##
-AddFinalDerivationBundle( # IsomorphismFromImageObjectToKernelOfCokernel,
+AddFinalDerivationBundle( "IsomorphismFromImageObjectToKernelOfCokernel as the identity of the kernel of the cokernel",
                     [ [ KernelObject, 1 ],
                       [ CokernelProjection, 1 ],
                       [ IdentityMorphism, 1 ] ],
@@ -4208,8 +4208,7 @@ AddFinalDerivationBundle( # IsomorphismFromImageObjectToKernelOfCokernel,
     return IdentityMorphism( cat, kernel_of_cokernel );
     
   end,
-] : CategoryFilter := IsAbelianCategory,
-    Description := "IsomorphismFromImageObjectToKernelOfCokernel as the identity of the kernel of the cokernel" );
+] : CategoryFilter := IsAbelianCategory );
 
 ##
 AddDerivationToCAP( MorphismFromCoimageToImageWithGivenObjects,
@@ -4261,7 +4260,7 @@ end );
 ## Final methods for Coimage
 
 ##
-AddFinalDerivationBundle( # IsomorphismFromCoimageToCokernelOfKernel,
+AddFinalDerivationBundle( "IsomorphismFromCoimageToCokernelOfKernel as the identity of the cokernel of the kernel",
                     [ [ CokernelObject, 1 ],
                       [ KernelEmbedding, 1 ],
                       [ IdentityMorphism, 1 ] ],
@@ -4301,13 +4300,12 @@ AddFinalDerivationBundle( # IsomorphismFromCoimageToCokernelOfKernel,
     return IdentityMorphism( cat, cokernel_of_kernel );
     
   end,
-] : CategoryFilter := IsAbelianCategory,
-    Description := "IsomorphismFromCoimageToCokernelOfKernel as the identity of the cokernel of the kernel" );
+] : CategoryFilter := IsAbelianCategory );
 
 ## Final methods for initial object
 
 ##
-AddFinalDerivationBundle( # IsomorphismFromInitialObjectToZeroObject,
+AddFinalDerivationBundle( "IsomorphismFromInitialObjectToZeroObject as the identity of the zero object",
                     [ [ ZeroObject, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     [ IsomorphismFromInitialObjectToZeroObject,
@@ -4338,12 +4336,12 @@ AddFinalDerivationBundle( # IsomorphismFromInitialObjectToZeroObject,
     return IdentityMorphism( cat, ZeroObject( cat ) );
     
   end,
-] : Description := "IsomorphismFromInitialObjectToZeroObject as the identity of the zero object" );
+] );
 
 ## Final methods for terminal object
 
 ##
-AddFinalDerivationBundle( # IsomorphismFromTerminalObjectToZeroObject,
+AddFinalDerivationBundle( "IsomorphismFromTerminalObjectToZeroObject as the identity of the zero object",
                     [ [ ZeroObject, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     [ IsomorphismFromTerminalObjectToZeroObject,
@@ -4374,12 +4372,12 @@ AddFinalDerivationBundle( # IsomorphismFromTerminalObjectToZeroObject,
     return IdentityMorphism( cat, ZeroObject( cat ) );
     
   end,
-] : Description := "IsomorphismFromTerminalObjectToZeroObject as the identity of the zero object" );
+] );
 
 ## Final methods for product
 
 ##
-AddFinalDerivationBundle( # IsomorphismFromDirectSumToDirectProduct,
+AddFinalDerivationBundle( "IsomorphismFromDirectSumToDirectProduct as the identity of the direct sum",
                     [ [ DirectSum, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     [ IsomorphismFromDirectSumToDirectProduct,
@@ -4409,12 +4407,12 @@ AddFinalDerivationBundle( # IsomorphismFromDirectSumToDirectProduct,
     return IdentityMorphism( cat, DirectSum( cat, diagram ) );
     
   end,
-] : Description := "IsomorphismFromDirectSumToDirectProduct as the identity of the direct sum" );
+] );
 
 ## Final methods for coproduct
 
 ##
-AddFinalDerivationBundle( # IsomorphismFromCoproductToDirectSum,
+AddFinalDerivationBundle( "IsomorphismFromCoproductToDirectSum as the identity of the direct sum",
                     [ [ DirectSum, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     [ IsomorphismFromCoproductToDirectSum,
@@ -4444,14 +4442,14 @@ AddFinalDerivationBundle( # IsomorphismFromCoproductToDirectSum,
     return IdentityMorphism( cat, DirectSum( cat, diagram ) );
     
   end,
-] : Description := "IsomorphismFromCoproductToDirectSum as the identity of the direct sum" );
+] );
 
 ################
 
 ## Final methods for random methods by lists
 
 ##
-AddFinalDerivationBundle( # RandomObjectByList,
+AddFinalDerivationBundle( "Derive all <ByList> random methods from <ByInteger> random methods",
                     [ [ RandomObjectByInteger, 1 ],
                       [ RandomMorphismWithFixedSourceAndRangeByInteger, 1 ],
                       [ RandomMorphismWithFixedSourceByInteger, 1 ],
@@ -4527,12 +4525,12 @@ AddFinalDerivationBundle( # RandomObjectByList,
     return RandomMorphismByInteger( cat, L[1] );
     
   end
-] : Description := "Derive all <ByList> random methods from <ByInteger> random methods" );
+] );
 
 ## Final methods for homology object
 
 ##
-AddFinalDerivationBundle( # IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject,
+AddFinalDerivationBundle( "IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject as the identity of the homology object constructed as an image object",
                     [ [ ImageObject, 1 ],
                       [ PreCompose, 1 ],
                       [ KernelEmbedding, 1 ],
@@ -4574,13 +4572,13 @@ AddFinalDerivationBundle( # IsomorphismFromHomologyObjectToItsConstructionAsAnIm
     return IdentityMorphism( cat, homology_object );
     
   end,
-] : CategoryFilter := IsAbelianCategory,
-      Description := "IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject as the identity of the homology object constructed as an image object" );
+] : CategoryFilter := IsAbelianCategory );
 
 
 ## Final method for IsEqualForObjects
 ##
 AddFinalDerivation( IsEqualForObjects,
+                    "",
                     [ ],
                     [ IsEqualForObjects ],
                     
@@ -4589,6 +4587,7 @@ AddFinalDerivation( IsEqualForObjects,
 ## Final methods for IsEqual/IsEqualForMorphisms
 ##
 AddFinalDerivation( IsCongruentForMorphisms,
+                    "",
                     [ ],
                     [ IsCongruentForMorphisms,
                       IsEqualForMorphisms ],
@@ -4597,6 +4596,7 @@ AddFinalDerivation( IsCongruentForMorphisms,
 
 ##
 AddFinalDerivation( IsEqualForMorphisms,
+                    "",
                     [ ],
                     [ IsCongruentForMorphisms,
                       IsEqualForMorphisms ],
@@ -4605,6 +4605,7 @@ AddFinalDerivation( IsEqualForMorphisms,
 
 ##
 AddFinalDerivation( IsCongruentForMorphisms,
+                    "",
                     [ [ IsEqualForMorphisms, 1 ] ],
                     [ IsCongruentForMorphisms ],
                     
@@ -4612,6 +4613,7 @@ AddFinalDerivation( IsCongruentForMorphisms,
 
 ##
 AddFinalDerivation( IsEqualForMorphisms,
+                    "",
                     [ [ IsCongruentForMorphisms, 1 ] ],
                     [ IsEqualForMorphisms ],
                     
@@ -4620,7 +4622,7 @@ AddFinalDerivation( IsEqualForMorphisms,
 ## Final methods for BasisOfExternalHom & CoefficientsOfMorphism
 
 ##
-AddFinalDerivationBundle( # BasisOfExternalHom,
+AddFinalDerivationBundle( "Adding BasisOfExternalHom and CoefficientsOfMorphism using homomorphism structure",
                     [
                       [ HomomorphismStructureOnObjects, 1 ],
                       [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 2 ],
@@ -4708,6 +4710,5 @@ AddFinalDerivationBundle( # BasisOfExternalHom,
       
       return true;
       
-  end,
-  Description := "Adding BasisOfExternalHom and CoefficientsOfMorphism using homomorphism structure"
+  end
 );

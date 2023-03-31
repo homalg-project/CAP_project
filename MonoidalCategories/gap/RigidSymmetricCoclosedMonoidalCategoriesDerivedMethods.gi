@@ -488,7 +488,7 @@ end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory );
 ## Final methods for InternalCoHom
 
 ##
-AddFinalDerivationBundle( # IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom,
+AddFinalDerivationBundle( "deriving the internal cohom by tensoring with the codual object",
                     [ [ IdentityMorphism, 1 ],
                       [ CoDualOnObjects, 1 ],
                       [ LeftUnitor, 1 ],
@@ -552,6 +552,4 @@ AddFinalDerivationBundle( # IsomorphismFromTensorProductWithCoDualObjectToIntern
     return LeftUnitorInverse( cat, CoDualOnObjects( cat, object ) );
     
   end
-] : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory,
-    Description := "deriving the internal cohom by tensoring with the codual object"
-);
+] : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory );

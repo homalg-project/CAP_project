@@ -9,7 +9,7 @@
 ####################################
 
 ## Final methods for Dual
-AddFinalDerivationBundle( # IsomorphismFromDualObjectToInternalHomIntoTensorUnit,
+AddFinalDerivationBundle( "IsomorphismFromDualObjectToInternalHomIntoTensorUnit and its inverse as the identity of Hom(a,1)",
                     [ [ IdentityMorphism, 1 ],
                       [ InternalHomOnObjects, 1 ],
                       [ TensorUnit, 1 ] ],
@@ -43,5 +43,4 @@ AddFinalDerivationBundle( # IsomorphismFromDualObjectToInternalHomIntoTensorUnit
     return IdentityMorphism( cat, InternalHomOnObjects( cat, object, TensorUnit( cat ) ) );
     
   end
-] : CategoryFilter := IsClosedMonoidalCategory,
-      Description := "IsomorphismFromDualObjectToInternalHomIntoTensorUnit and its inverse as the identity of Hom(a,1)" );
+] : CategoryFilter := IsClosedMonoidalCategory );

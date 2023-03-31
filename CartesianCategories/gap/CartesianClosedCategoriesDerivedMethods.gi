@@ -12,7 +12,7 @@
 ####################################
 
 ## Final methods for CartesianDual
-AddFinalDerivationBundle( # IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject,
+AddFinalDerivationBundle( "IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject and its inverse as the identity of Exp(a,1)",
                     [ [ IdentityMorphism, 1 ],
                       [ ExponentialOnObjects, 1 ],
                       [ TerminalObject, 1 ] ],
@@ -46,5 +46,4 @@ AddFinalDerivationBundle( # IsomorphismFromCartesianDualObjectToExponentialIntoT
     return IdentityMorphism( cat, ExponentialOnObjects( cat, object, TerminalObject( cat ) ) );
     
   end
-] : CategoryFilter := IsCartesianClosedCategory,
-      Description := "IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject and its inverse as the identity of Exp(a,1)" );
+] : CategoryFilter := IsCartesianClosedCategory );

@@ -9,7 +9,7 @@
 ####################################
 
 ##
-AddFinalDerivationBundle( # DistinguishedObjectOfHomomorphismStructure,
+AddFinalDerivationBundle( "adding the homomorphism structure using the closed monoidal structure",
                     [ [ TensorUnit, 1 ],
                       [ InternalHomOnObjects, 1 ],
                       [ InternalHomOnMorphismsWithGivenInternalHoms, 1 ],
@@ -75,6 +75,5 @@ end
              IsEquippedWithHomomorphismStructure( cat ) and
              HasRangeCategoryOfHomomorphismStructure( cat ) and
              IsIdenticalObj( RangeCategoryOfHomomorphismStructure( cat ), cat );
-    end,
-    Description := "adding the homomorphism structure using the closed monoidal structure"
+    end
 );

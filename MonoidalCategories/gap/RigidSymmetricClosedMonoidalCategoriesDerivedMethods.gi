@@ -599,7 +599,7 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory );
 ## Final methods for InternalHom
 
 ##
-AddFinalDerivationBundle( # IsomorphismFromTensorProductWithDualObjectToInternalHom,
+AddFinalDerivationBundle( "deriving the internal hom by tensoring with the dual object",
                     [ [ IdentityMorphism, 1 ],
                       [ DualOnObjects, 1 ],
                       [ RightUnitor, 1 ],
@@ -663,6 +663,4 @@ AddFinalDerivationBundle( # IsomorphismFromTensorProductWithDualObjectToInternal
     return RightUnitorInverse( cat, DualOnObjects( cat, object ) );
     
   end
-] : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-    Description := "deriving the internal hom by tensoring with the dual object"
-);
+] : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory );
