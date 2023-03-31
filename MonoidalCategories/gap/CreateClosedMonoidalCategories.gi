@@ -61,13 +61,13 @@ InstallGlobalFunction( CAP_INTERNAL_FUNC_FOR_CLOSED_MONOIDAL_STRUCTURES,
                    [ Concatenation( PackageInfo( "MonoidalCategories" )[1].PackageName, ": ", PackageInfo( "MonoidalCategories" )[1].Subtitle ),
                      Concatenation( PackageInfo( package_name )[1].PackageName, ": ", PackageInfo( package_name )[1].Subtitle ) ],
                    [ "Closed Monoidal", key_val_rec.ClosedSMonoidal ],
-                   [ "TensorProductOnObjects\( cat,", key_val_rec.TensorProductOnObjectsBCcat ],
+                   [ "TensorProductOnObjects( cat,", key_val_rec.TensorProductOnObjectsBCcat ],
                    [ "METHOD_NAME_RECORD, \"MonoidalCategories\"", key_val_rec.CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE ],
                    ], L );
     
     Add( L, [ "tensor product", key_val_rec.tensorSproduct ] );
     Add( L, [ "tensor hom", key_val_rec.tensor_hom ] );
-    Add( L, [ "\\\underline{Hom}", key_val_rec.Hom ] );
+    Add( L, [ "\\underline{Hom}", key_val_rec.Hom ] );
     
     if IsBound( key_val_rec.replace ) then
         Append( L, key_val_rec.replace );
