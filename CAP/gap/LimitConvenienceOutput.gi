@@ -809,6 +809,8 @@ end : Description := "TerminalObjectFunctorialWithGivenTerminalObjects using the
 
 ##
 AddDerivationToCAP( TerminalObjectFunctorial,
+                    [ [ TerminalObject, 1 ],
+                      [ IdentityMorphism, 1 ] ],
                     
   function( cat )
     
@@ -827,6 +829,8 @@ end : Description := "InitialObjectFunctorialWithGivenInitialObjects using the u
 
 ##
 AddDerivationToCAP( InitialObjectFunctorial,
+                    [ [ InitialObject, 1 ],
+                      [ IdentityMorphism, 1 ] ],
                     
   function( cat )
     
@@ -845,6 +849,8 @@ end : Description := "ZeroObjectFunctorialWithGivenZeroObjects using the univers
 
 ##
 AddDerivationToCAP( ZeroObjectFunctorial,
+                    [ [ ZeroObject, 1 ],
+                      [ IdentityMorphism, 1 ] ],
                     
   function( cat )
     

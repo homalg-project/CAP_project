@@ -25,6 +25,9 @@ AddFinalDerivationBundle( # IsomorphismFromCoDualObjectToInternalCoHomFromTensor
                       ],
 [
   IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit,
+  [ [ IdentityMorphism, 1 ],
+    [ InternalCoHomOnObjects, 1 ],
+    [ TensorUnit, 1 ] ],
   function( cat, object )
     
     return IdentityMorphism( cat, InternalCoHomOnObjects( cat, TensorUnit( cat ), object ) );
@@ -33,6 +36,9 @@ AddFinalDerivationBundle( # IsomorphismFromCoDualObjectToInternalCoHomFromTensor
 ],
 [
   IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject,
+  [ [ IdentityMorphism, 1 ],
+    [ InternalCoHomOnObjects, 1 ],
+    [ TensorUnit, 1 ] ],
   function( cat, object )
     
     return IdentityMorphism( cat, InternalCoHomOnObjects( cat, TensorUnit( cat ), object ) );

@@ -6,6 +6,11 @@
 
 ##
 AddDerivationToCAP( LeftDistributivityExpandingWithGivenObjects,
+                    [ [ IdentityMorphism, 1 ],
+                      [ ProjectionInFactorOfDirectSum, 2 ],
+                      [ TensorProductOnMorphisms, 2 ],
+                      [ TensorProductOnObjects, 2 ],
+                      [ UniversalMorphismIntoDirectSum, 1 ] ],
                     
   function( cat, factored_object, object, summands, expanded_object )
     local nr_summands, projection_list, id, diagram;
@@ -27,6 +32,11 @@ end : CategoryFilter := cat -> HasIsMonoidalCategory( cat ) and IsMonoidalCatego
 
 ##
 AddDerivationToCAP( LeftDistributivityFactoringWithGivenObjects,
+                    [ [ IdentityMorphism, 1 ],
+                      [ InjectionOfCofactorOfDirectSum, 2 ],
+                      [ TensorProductOnMorphisms, 2 ],
+                      [ TensorProductOnObjects, 2 ],
+                      [ UniversalMorphismFromDirectSum, 1 ] ],
                     
   function( cat, expanded_object, object, summands, factored_object )
     local nr_summands, injection_list, id, diagram;
@@ -48,6 +58,11 @@ end : CategoryFilter := cat -> HasIsMonoidalCategory( cat ) and IsMonoidalCatego
 
 ##
 AddDerivationToCAP( RightDistributivityExpandingWithGivenObjects,
+                    [ [ IdentityMorphism, 1 ],
+                      [ ProjectionInFactorOfDirectSum, 2 ],
+                      [ TensorProductOnMorphisms, 2 ],
+                      [ TensorProductOnObjects, 2 ],
+                      [ UniversalMorphismIntoDirectSum, 1 ] ],
                     
   function( cat, factored_object, summands, object, expanded_object )
     local nr_summands, projection_list, id, diagram;
@@ -69,6 +84,11 @@ end : CategoryFilter := cat -> HasIsMonoidalCategory( cat ) and IsMonoidalCatego
 
 ##
 AddDerivationToCAP( RightDistributivityFactoringWithGivenObjects,
+                    [ [ IdentityMorphism, 1 ],
+                      [ InjectionOfCofactorOfDirectSum, 2 ],
+                      [ TensorProductOnMorphisms, 2 ],
+                      [ TensorProductOnObjects, 2 ],
+                      [ UniversalMorphismFromDirectSum, 1 ] ],
                     
   function( cat, expanded_object, summands, object, factored_object )
     local nr_summands, injection_list, id, diagram;

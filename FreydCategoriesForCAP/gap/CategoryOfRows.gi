@@ -1340,6 +1340,7 @@ AddFinalDerivationBundle( # DistinguishedObjectOfHomomorphismStructure,
                     ],
 [
   DistinguishedObjectOfHomomorphismStructure,
+  [ ],
   function ( cat )
     
     return CategoryOfRowsObject( RangeCategoryOfHomomorphismStructure( cat ), 1 );
@@ -1348,6 +1349,9 @@ AddFinalDerivationBundle( # DistinguishedObjectOfHomomorphismStructure,
 ],
 [
   HomomorphismStructureOnObjects,
+  [
+    [ BasisOfExternalHom, 1 ],
+  ],
   function ( cat, a, b )
     
     return CategoryOfRowsObject( RangeCategoryOfHomomorphismStructure( cat ), Length( BasisOfExternalHom( cat, a, b ) ) );
@@ -1356,6 +1360,11 @@ AddFinalDerivationBundle( # DistinguishedObjectOfHomomorphismStructure,
 ],
 [
   HomomorphismStructureOnMorphismsWithGivenObjects,
+  [
+    [ BasisOfExternalHom, 1 ],
+    [ CoefficientsOfMorphism, 2 ],
+    [ PreComposeList, 2 ],
+  ],
     
     #            α
     #      a --------> a'     hom_source := H(a',b) -------> hom_range := H(a,b')
@@ -1381,6 +1390,9 @@ AddFinalDerivationBundle( # DistinguishedObjectOfHomomorphismStructure,
 ],
 [
   InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects,
+  [
+    [ CoefficientsOfMorphism, 1 ],
+  ],
   function ( cat, distinguished_object, alpha, r )
     local m;
     
@@ -1392,6 +1404,11 @@ AddFinalDerivationBundle( # DistinguishedObjectOfHomomorphismStructure,
 ],
 [
   InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism,
+  [
+    [ BasisOfExternalHom, 1 ],
+    [ MultiplyWithElementOfCommutativeRingForMorphisms, 2 ],
+    [ SumOfMorphisms, 1 ]
+  ],
   function ( cat, a, b, iota )
     local coeffs, basis;
     

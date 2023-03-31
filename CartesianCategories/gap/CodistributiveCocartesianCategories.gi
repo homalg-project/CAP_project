@@ -9,7 +9,10 @@
 
 ##
 AddDerivationToCAP( LeftCocartesianCodistributivityExpanding,
-
+                    [ [ Coproduct, 1 ],
+                      [ DirectProduct, 1 ],
+                      [ LeftCocartesianCodistributivityExpandingWithGivenObjects, 1 ] ],
+                    
   function( cat, object, summands_list )
     local source_and_range;
     
@@ -26,7 +29,10 @@ end : CategoryFilter := IsSkeletalCategory,
 
 ##
 AddDerivationToCAP( LeftCocartesianCodistributivityFactoring,
-
+                    [ [ Coproduct, 1 ],
+                      [ DirectProduct, 1 ],
+                      [ LeftCocartesianCodistributivityFactoringWithGivenObjects, 1 ] ],
+                    
   function( cat, object, summands_list )
     local source_and_range;
     
@@ -43,7 +49,10 @@ end : CategoryFilter := IsSkeletalCategory,
 
 ##
 AddDerivationToCAP( RightCocartesianCodistributivityExpanding,
-
+                    [ [ Coproduct, 1 ],
+                      [ DirectProduct, 1 ],
+                      [ RightCocartesianCodistributivityExpandingWithGivenObjects, 1 ] ],
+                    
   function( cat, summands_list, object )
     local source_and_range;
     
@@ -60,7 +69,10 @@ end : CategoryFilter := IsSkeletalCategory,
 
 ##
 AddDerivationToCAP( RightCocartesianCodistributivityFactoring,
-
+                    [ [ Coproduct, 1 ],
+                      [ DirectProduct, 1 ],
+                      [ RightCocartesianCodistributivityFactoringWithGivenObjects, 1 ] ],
+                    
   function( cat, summands_list, object )
     local source_and_range;
     

@@ -28,6 +28,9 @@ AddFinalDerivationBundle( # IsomorphismFromCocartesianDualObjectToCoexponentialF
                       ],
 [
   IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject,
+  [ [ IdentityMorphism, 1 ],
+    [ CoexponentialOnObjects, 1 ],
+    [ InitialObject, 1 ] ],
   function( cat, object )
     
     return IdentityMorphism( cat, CoexponentialOnObjects( cat, InitialObject( cat ), object ) );
@@ -36,6 +39,9 @@ AddFinalDerivationBundle( # IsomorphismFromCocartesianDualObjectToCoexponentialF
 ],
 [
   IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject,
+  [ [ IdentityMorphism, 1 ],
+    [ CoexponentialOnObjects, 1 ],
+    [ InitialObject, 1 ] ],
   function( cat, object )
     
     return IdentityMorphism( cat, CoexponentialOnObjects( cat, InitialObject( cat ), object ) );

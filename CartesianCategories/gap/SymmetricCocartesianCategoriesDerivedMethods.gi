@@ -9,7 +9,8 @@
 
 ##
 AddDerivationToCAP( CocartesianBraidingWithGivenCoproducts,
-                  
+                    [ [ CocartesianBraidingInverseWithGivenCoproducts, 1 ] ],
+                    
   function( cat, object_1_u_object_2, object_1, object_2, object_2_u_object_1 )
     
     return CocartesianBraidingInverseWithGivenCoproducts( cat,
@@ -22,7 +23,8 @@ end : CategoryFilter := IsCocartesianCategory,
 
 ##
 AddDerivationToCAP( CocartesianBraidingInverseWithGivenCoproducts,
-                  
+                    [ [ CocartesianBraidingWithGivenCoproducts, 1 ] ],
+                    
   function( cat, object_2_u_object_1, object_1, object_2, object_1_u_object_2 )
     
     return CocartesianBraidingWithGivenCoproducts( cat,

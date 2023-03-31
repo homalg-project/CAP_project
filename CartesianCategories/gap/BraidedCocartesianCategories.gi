@@ -9,7 +9,9 @@
 
 ##
 AddDerivationToCAP( CocartesianBraiding,
-
+                    [ [ Coproduct, 1 ],
+                      [ CocartesianBraidingWithGivenCoproducts, 1 ] ],
+                    
   function( cat, object_1, object_2 )
     local source_and_range;
     
@@ -22,7 +24,9 @@ end : CategoryFilter := IsSkeletalCategory,
 
 ##
 AddDerivationToCAP( CocartesianBraidingInverse,
-
+                    [ [ Coproduct, 1 ],
+                      [ CocartesianBraidingInverseWithGivenCoproducts, 1 ] ],
+                    
   function( cat, object_1, object_2 )
     local source_and_range;
     

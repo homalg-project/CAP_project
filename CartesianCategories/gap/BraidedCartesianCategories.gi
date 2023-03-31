@@ -9,7 +9,9 @@
 
 ##
 AddDerivationToCAP( CartesianBraiding,
-
+                    [ [ DirectProduct, 1 ],
+                      [ CartesianBraidingWithGivenDirectProducts, 1 ] ],
+                    
   function( cat, object_1, object_2 )
     local source_and_range;
     
@@ -22,7 +24,9 @@ end : CategoryFilter := IsSkeletalCategory,
 
 ##
 AddDerivationToCAP( CartesianBraidingInverse,
-
+                    [ [ DirectProduct, 1 ],
+                      [ CartesianBraidingInverseWithGivenDirectProducts, 1 ] ],
+                    
   function( cat, object_1, object_2 )
     local source_and_range;
     

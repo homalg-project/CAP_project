@@ -27,6 +27,7 @@ AddFinalDerivationBundle( # DistinguishedObjectOfHomomorphismStructure,
                     ],
 [
   DistinguishedObjectOfHomomorphismStructure,
+  [ [ TensorUnit, 1 ] ],
   function ( cat )
     
     return TensorUnit( cat );
@@ -35,6 +36,7 @@ AddFinalDerivationBundle( # DistinguishedObjectOfHomomorphismStructure,
 ],
 [
   HomomorphismStructureOnObjects,
+  [ [ InternalHomOnObjects, 1 ] ],
   function ( cat, a, b )
     
     return InternalHomOnObjects( cat, a, b );
@@ -43,6 +45,7 @@ end
 ],
 [
   HomomorphismStructureOnMorphismsWithGivenObjects,
+  [ [ InternalHomOnMorphismsWithGivenInternalHoms, 1 ] ],
   function ( cat, s, alpha, beta, r )
     
     return InternalHomOnMorphismsWithGivenInternalHoms( cat, s, alpha, beta, r );
@@ -51,6 +54,7 @@ end
 ],
 [
   InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure,
+  [ [ LambdaIntroduction, 1 ] ],
   function( cat, alpha )
     local iota;
     
@@ -60,6 +64,7 @@ end
 ],
 [
   InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism,
+  [ [ LambdaElimination, 1 ] ],
   function ( cat, a, b, iota )
     
     return LambdaElimination( cat, a, b, iota );
