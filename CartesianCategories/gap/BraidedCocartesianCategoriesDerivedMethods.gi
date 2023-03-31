@@ -9,6 +9,7 @@
 
 ##
 AddDerivationToCAP( CocartesianBraidingInverseWithGivenCoproducts,
+                    "CocartesianBraidingInverseWithGivenCoproducts as the inverse of the braiding",
                     [ [ InverseForMorphisms, 1 ],
                       [ CocartesianBraiding, 1 ] ],
                     
@@ -16,11 +17,11 @@ AddDerivationToCAP( CocartesianBraidingInverseWithGivenCoproducts,
     ##TODO: Use CocartesianBraidingWithGiven
     return InverseForMorphisms( cat, CocartesianBraiding( cat, object_1, object_2 ) );
     
-end : CategoryFilter := IsCocartesianCategory,
-      Description := "CocartesianBraidingInverseWithGivenCoproducts as the inverse of the braiding" );
+end : CategoryFilter := IsCocartesianCategory );
 
 ##
 AddDerivationToCAP( CocartesianBraidingWithGivenCoproducts,
+                    "CocartesianBraidingWithGivenCoproducts as the inverse of CocartesianBraidingInverse",
                     [ [ InverseForMorphisms, 1 ],
                       [ CocartesianBraidingInverse, 1 ] ],
                     
@@ -28,5 +29,4 @@ AddDerivationToCAP( CocartesianBraidingWithGivenCoproducts,
     ##TODO: Use CocartesianBraidingInverseWithGiven
     return InverseForMorphisms( cat, CocartesianBraidingInverse( cat, object_1, object_2 ) );
     
-end : CategoryFilter := IsCocartesianCategory,
-      Description := "CocartesianBraidingWithGivenCoproducts as the inverse of CocartesianBraidingInverse" );
+end : CategoryFilter := IsCocartesianCategory );

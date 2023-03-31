@@ -9,6 +9,7 @@
 
 ##
 AddDerivationToCAP( LeftCartesianDistributivityExpanding,
+                    "calling the WithGiven operation in a skeletal setting",
                     [ [ DirectProduct, 1 ],
                       [ Coproduct, 1 ],
                       [ LeftCartesianDistributivityExpandingWithGivenObjects, 1 ] ],
@@ -24,11 +25,11 @@ AddDerivationToCAP( LeftCartesianDistributivityExpanding,
              source_and_range
            );
     
-end : CategoryFilter := IsSkeletalCategory,
-      Description := "calling the WithGiven operation in a skeletal setting" );
+end : CategoryFilter := IsSkeletalCategory );
 
 ##
 AddDerivationToCAP( LeftCartesianDistributivityFactoring,
+                    "calling the WithGiven operation in a skeletal setting",
                     [ [ DirectProduct, 1 ],
                       [ Coproduct, 1 ],
                       [ LeftCartesianDistributivityFactoringWithGivenObjects, 1 ] ],
@@ -44,11 +45,11 @@ AddDerivationToCAP( LeftCartesianDistributivityFactoring,
              source_and_range
            );
     
-end : CategoryFilter := IsSkeletalCategory,
-      Description := "calling the WithGiven operation in a skeletal setting" );
+end : CategoryFilter := IsSkeletalCategory );
 
 ##
 AddDerivationToCAP( RightCartesianDistributivityExpanding,
+                    "calling the WithGiven operation in a skeletal setting",
                     [ [ DirectProduct, 1 ],
                       [ Coproduct, 1 ],
                       [ RightCartesianDistributivityExpandingWithGivenObjects, 1 ] ],
@@ -64,11 +65,11 @@ AddDerivationToCAP( RightCartesianDistributivityExpanding,
              source_and_range
            );
     
-end : CategoryFilter := IsSkeletalCategory,
-      Description := "calling the WithGiven operation in a skeletal setting" );
+end : CategoryFilter := IsSkeletalCategory );
 
 ##
 AddDerivationToCAP( RightCartesianDistributivityFactoring,
+                    "calling the WithGiven operation in a skeletal setting",
                     [ [ DirectProduct, 1 ],
                       [ Coproduct, 1 ],
                       [ RightCartesianDistributivityFactoringWithGivenObjects, 1 ] ],
@@ -84,5 +85,4 @@ AddDerivationToCAP( RightCartesianDistributivityFactoring,
              source_and_range
            );
     
-end : CategoryFilter := IsSkeletalCategory,
-      Description := "calling the WithGiven operation in a skeletal setting" );
+end : CategoryFilter := IsSkeletalCategory );

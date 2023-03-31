@@ -9,6 +9,7 @@
 
 ##
 AddDerivationToCAP( CartesianBraiding,
+                    "calling the WithGiven operation in a skeletal setting",
                     [ [ DirectProduct, 1 ],
                       [ CartesianBraidingWithGivenDirectProducts, 1 ] ],
                     
@@ -19,11 +20,11 @@ AddDerivationToCAP( CartesianBraiding,
     
     return CartesianBraidingWithGivenDirectProducts( cat, source_and_range, object_1, object_2, source_and_range );
     
-end : CategoryFilter := IsSkeletalCategory,
-      Description := "calling the WithGiven operation in a skeletal setting" );
+end : CategoryFilter := IsSkeletalCategory );
 
 ##
 AddDerivationToCAP( CartesianBraidingInverse,
+                    "calling the WithGiven operation in a skeletal setting",
                     [ [ DirectProduct, 1 ],
                       [ CartesianBraidingInverseWithGivenDirectProducts, 1 ] ],
                     
@@ -34,8 +35,7 @@ AddDerivationToCAP( CartesianBraidingInverse,
     
     return CartesianBraidingInverseWithGivenDirectProducts( cat, source_and_range, object_1, object_2, source_and_range );
     
-end : CategoryFilter := IsSkeletalCategory,
-      Description := "calling the WithGiven operation in a skeletal setting" );
+end : CategoryFilter := IsSkeletalCategory );
 
 ##
 InstallMethod( CheckCartesianBraiding,

@@ -9,6 +9,7 @@
 
 ##
 AddDerivationToCAP( CocartesianBraiding,
+                    "calling the WithGiven operation in a skeletal setting",
                     [ [ Coproduct, 1 ],
                       [ CocartesianBraidingWithGivenCoproducts, 1 ] ],
                     
@@ -19,11 +20,11 @@ AddDerivationToCAP( CocartesianBraiding,
     
     return CocartesianBraidingWithGivenCoproducts( cat, source_and_range, object_1, object_2, source_and_range );
     
-end : CategoryFilter := IsSkeletalCategory,
-      Description := "calling the WithGiven operation in a skeletal setting" );
+end : CategoryFilter := IsSkeletalCategory );
 
 ##
 AddDerivationToCAP( CocartesianBraidingInverse,
+                    "calling the WithGiven operation in a skeletal setting",
                     [ [ Coproduct, 1 ],
                       [ CocartesianBraidingInverseWithGivenCoproducts, 1 ] ],
                     
@@ -34,8 +35,7 @@ AddDerivationToCAP( CocartesianBraidingInverse,
     
     return CocartesianBraidingInverseWithGivenCoproducts( cat, source_and_range, object_1, object_2, source_and_range );
     
-end : CategoryFilter := IsSkeletalCategory,
-      Description := "calling the WithGiven operation in a skeletal setting" );
+end : CategoryFilter := IsSkeletalCategory );
 
 ##
 InstallMethod( CheckCocartesianBraiding,

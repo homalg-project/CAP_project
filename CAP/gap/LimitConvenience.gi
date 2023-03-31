@@ -424,12 +424,14 @@ end );
         current_string := ReplacedStringViaRecord( """
 ##
 AddDerivationToCAP( functorial_with_given_name,
+                    "functorial_with_given_name using the universality of the limit_colimit",
+                    fail,
                     
   function( input_arguments... )
     equalizer_preprocessing
     return universal_morphism_with_given( call_arguments... );
     
-end : Description := "functorial_with_given_name using the universality of the limit_colimit" );
+end );
 """,
             rec(
                 functorial_with_given_name := functorial_with_given_name,
@@ -449,6 +451,7 @@ end : Description := "functorial_with_given_name using the universality of the l
             current_string := ReplacedStringViaRecord( """
 ##
 AddDerivationToCAP( functorial_name,
+                    "functorial_name by taking the identity morphism of object_name",
                     [ [ object_name, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     
@@ -456,7 +459,7 @@ AddDerivationToCAP( functorial_name,
     
     return IdentityMorphism( cat, object_name( cat ) );
     
-end : Description := "functorial_name by taking the identity morphism of object_name" );
+end );
 """,
                 rec(
                     functorial_name := functorial_name,

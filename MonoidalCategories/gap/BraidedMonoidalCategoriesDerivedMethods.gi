@@ -6,6 +6,7 @@
 
 ##
 AddDerivationToCAP( BraidingInverseWithGivenTensorProducts,
+                    "BraidingInverseWithGivenTensorProducts as the inverse of the braiding",
                     [ [ InverseForMorphisms, 1 ],
                       [ Braiding, 1 ] ],
                     
@@ -13,11 +14,11 @@ AddDerivationToCAP( BraidingInverseWithGivenTensorProducts,
     ##TODO: Use BraidingWithGiven
     return InverseForMorphisms( cat, Braiding( cat, object_1, object_2 ) );
     
-end : CategoryFilter := IsBraidedMonoidalCategory,
-      Description := "BraidingInverseWithGivenTensorProducts as the inverse of the braiding" );
+end : CategoryFilter := IsBraidedMonoidalCategory );
 
 ##
 AddDerivationToCAP( BraidingWithGivenTensorProducts,
+                    "BraidingWithGivenTensorProducts as the inverse of BraidingInverse",
                     [ [ InverseForMorphisms, 1 ],
                       [ BraidingInverse, 1 ] ],
                     
@@ -25,5 +26,4 @@ AddDerivationToCAP( BraidingWithGivenTensorProducts,
     ##TODO: Use BraidingInverseWithGiven
     return InverseForMorphisms( cat, BraidingInverse( cat, object_1, object_2 ) );
     
-end : CategoryFilter := IsBraidedMonoidalCategory,
-      Description := "BraidingWithGivenTensorProducts as the inverse of BraidingInverse" );
+end : CategoryFilter := IsBraidedMonoidalCategory );

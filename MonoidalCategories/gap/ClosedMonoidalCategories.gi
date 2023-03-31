@@ -6,25 +6,25 @@
 
 ##
 AddDerivationToCAP( IsomorphismFromInternalHomToObject,
+                    "calling the WithGiven operation in a skeletal setting",
                     [ [ IsomorphismFromInternalHomToObjectWithGivenInternalHom, 1 ] ],
                     
   function( cat, object )
     
     return IsomorphismFromInternalHomToObjectWithGivenInternalHom( cat, object, object );
     
-end : CategoryFilter := IsSkeletalCategory,
-      Description := "calling the WithGiven operation in a skeletal setting" );
+end : CategoryFilter := IsSkeletalCategory );
 
 ##
 AddDerivationToCAP( IsomorphismFromObjectToInternalHom,
+                    "calling the WithGiven operation in a skeletal setting",
                     [ [ IsomorphismFromObjectToInternalHomWithGivenInternalHom, 1 ] ],
                     
   function( cat, object )
     
     return IsomorphismFromObjectToInternalHomWithGivenInternalHom( cat, object, object );
     
-end : CategoryFilter := IsSkeletalCategory,
-      Description := "calling the WithGiven operation in a skeletal setting" );
+end : CategoryFilter := IsSkeletalCategory );
 
 ####################################
 # Convenience Methods

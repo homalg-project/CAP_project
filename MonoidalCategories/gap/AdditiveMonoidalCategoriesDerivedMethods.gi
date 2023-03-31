@@ -6,6 +6,7 @@
 
 ##
 AddDerivationToCAP( LeftDistributivityExpandingWithGivenObjects,
+                    "LeftDistributivityExpandingWithGivenObjects using the universal property of the direct sum",
                     [ [ IdentityMorphism, 1 ],
                       [ ProjectionInFactorOfDirectSum, 2 ],
                       [ TensorProductOnMorphisms, 2 ],
@@ -27,11 +28,11 @@ AddDerivationToCAP( LeftDistributivityExpandingWithGivenObjects,
     
     return UniversalMorphismIntoDirectSum( cat, diagram, factored_object, projection_list );
     
-end : CategoryFilter := cat -> HasIsMonoidalCategory( cat ) and IsMonoidalCategory( cat ) and HasIsAdditiveCategory( cat ) and IsAdditiveCategory( cat ),
-      Description := "LeftDistributivityExpandingWithGivenObjects using the universal property of the direct sum" );
+end : CategoryFilter := cat -> HasIsMonoidalCategory( cat ) and IsMonoidalCategory( cat ) and HasIsAdditiveCategory( cat ) and IsAdditiveCategory( cat ) );
 
 ##
 AddDerivationToCAP( LeftDistributivityFactoringWithGivenObjects,
+                    "LeftDistributivityFactoringWithGivenObjects using the universal property of the direct sum",
                     [ [ IdentityMorphism, 1 ],
                       [ InjectionOfCofactorOfDirectSum, 2 ],
                       [ TensorProductOnMorphisms, 2 ],
@@ -53,11 +54,11 @@ AddDerivationToCAP( LeftDistributivityFactoringWithGivenObjects,
     
     return UniversalMorphismFromDirectSum( cat, diagram, factored_object, injection_list );
     
-end : CategoryFilter := cat -> HasIsMonoidalCategory( cat ) and IsMonoidalCategory( cat ) and HasIsAdditiveCategory( cat ) and IsAdditiveCategory( cat ),
-      Description := "LeftDistributivityFactoringWithGivenObjects using the universal property of the direct sum" );
+end : CategoryFilter := cat -> HasIsMonoidalCategory( cat ) and IsMonoidalCategory( cat ) and HasIsAdditiveCategory( cat ) and IsAdditiveCategory( cat ) );
 
 ##
 AddDerivationToCAP( RightDistributivityExpandingWithGivenObjects,
+                    "RightDistributivityExpandingWithGivenObjects using the universal property of the direct sum",
                     [ [ IdentityMorphism, 1 ],
                       [ ProjectionInFactorOfDirectSum, 2 ],
                       [ TensorProductOnMorphisms, 2 ],
@@ -79,11 +80,11 @@ AddDerivationToCAP( RightDistributivityExpandingWithGivenObjects,
     
     return UniversalMorphismIntoDirectSum( cat, diagram, factored_object, projection_list );
     
-end : CategoryFilter := cat -> HasIsMonoidalCategory( cat ) and IsMonoidalCategory( cat ) and HasIsAdditiveCategory( cat ) and IsAdditiveCategory( cat ),
-      Description := "RightDistributivityExpandingWithGivenObjects using the universal property of the direct sum" );
+end : CategoryFilter := cat -> HasIsMonoidalCategory( cat ) and IsMonoidalCategory( cat ) and HasIsAdditiveCategory( cat ) and IsAdditiveCategory( cat ) );
 
 ##
 AddDerivationToCAP( RightDistributivityFactoringWithGivenObjects,
+                    "RightDistributivityFactoringWithGivenObjects using the universal property of the direct sum",
                     [ [ IdentityMorphism, 1 ],
                       [ InjectionOfCofactorOfDirectSum, 2 ],
                       [ TensorProductOnMorphisms, 2 ],
@@ -105,5 +106,4 @@ AddDerivationToCAP( RightDistributivityFactoringWithGivenObjects,
     
     return UniversalMorphismFromDirectSum( cat, diagram, factored_object, injection_list );
     
-end : CategoryFilter := cat -> HasIsMonoidalCategory( cat ) and IsMonoidalCategory( cat ) and HasIsAdditiveCategory( cat ) and IsAdditiveCategory( cat ),
-      Description := "RightDistributivityFactoringWithGivenObjects using the universal property of the direct sum" );
+end : CategoryFilter := cat -> HasIsMonoidalCategory( cat ) and IsMonoidalCategory( cat ) and HasIsAdditiveCategory( cat ) and IsAdditiveCategory( cat ) );

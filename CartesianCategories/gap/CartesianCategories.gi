@@ -11,6 +11,7 @@ InstallTrueMethod( IsCartesianCategory, IsStrictCartesianCategory );
 
 ##
 AddDerivationToCAP( CartesianAssociatorRightToLeft,
+                    "calling the WithGiven operation in a skeletal setting",
                     [ [ DirectProduct, 2 ],
                       [ CartesianAssociatorRightToLeftWithGivenDirectProducts, 1 ] ],
                     
@@ -25,11 +26,11 @@ AddDerivationToCAP( CartesianAssociatorRightToLeft,
              source_and_range
            );
     
-end : CategoryFilter := IsSkeletalCategory,
-      Description := "calling the WithGiven operation in a skeletal setting" );
+end : CategoryFilter := IsSkeletalCategory );
 
 ##
 AddDerivationToCAP( CartesianAssociatorLeftToRight,
+                    "calling the WithGiven operation in a skeletal setting",
                     [ [ DirectProduct, 2 ],
                       [ CartesianAssociatorLeftToRightWithGivenDirectProducts, 1 ] ],
                     
@@ -44,49 +45,48 @@ AddDerivationToCAP( CartesianAssociatorLeftToRight,
              source_and_range
            );
     
-end : CategoryFilter := IsSkeletalCategory,
-      Description := "calling the WithGiven operation in a skeletal setting" );
+end : CategoryFilter := IsSkeletalCategory );
 
 ##
 AddDerivationToCAP( CartesianLeftUnitor,
+                    "calling the WithGiven operation in a skeletal setting",
                     [ [ CartesianLeftUnitorWithGivenDirectProduct, 1 ] ],
                     
   function( cat, object )
     
     return CartesianLeftUnitorWithGivenDirectProduct( cat, object, object );
     
-end : CategoryFilter := IsSkeletalCategory,
-      Description := "calling the WithGiven operation in a skeletal setting" );
+end : CategoryFilter := IsSkeletalCategory );
 
 ##
 AddDerivationToCAP( CartesianLeftUnitorInverse,
+                    "calling the WithGiven operation in a skeletal setting",
                     [ [ CartesianLeftUnitorInverseWithGivenDirectProduct, 1 ] ],
                     
   function( cat, object )
     
     return CartesianLeftUnitorInverseWithGivenDirectProduct( cat, object, object );
     
-end : CategoryFilter := IsSkeletalCategory,
-      Description := "calling the WithGiven operation in a skeletal setting" );
+end : CategoryFilter := IsSkeletalCategory );
 
 ##
 AddDerivationToCAP( CartesianRightUnitor,
+                    "calling the WithGiven operation in a skeletal setting",
                     [ [ CartesianRightUnitorWithGivenDirectProduct, 1 ] ],
                     
   function( cat, object )
     
     return CartesianRightUnitorWithGivenDirectProduct( cat, object, object );
     
-end : CategoryFilter := IsSkeletalCategory,
-      Description := "calling the WithGiven operation in a skeletal setting" );
+end : CategoryFilter := IsSkeletalCategory );
 
 ##
 AddDerivationToCAP( CartesianRightUnitorInverse,
+                    "calling the WithGiven operation in a skeletal setting",
                     [ [ CartesianRightUnitorInverseWithGivenDirectProduct, 1 ] ],
                     
   function( cat, object )
     
     return CartesianRightUnitorInverseWithGivenDirectProduct( cat, object, object );
     
-end : CategoryFilter := IsSkeletalCategory,
-      Description := "calling the WithGiven operation in a skeletal setting" );
+end : CategoryFilter := IsSkeletalCategory );

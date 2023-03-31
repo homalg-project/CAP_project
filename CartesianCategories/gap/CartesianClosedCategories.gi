@@ -9,25 +9,25 @@
 
 ##
 AddDerivationToCAP( IsomorphismFromExponentialToObject,
+                    "calling the WithGiven operation in a skeletal setting",
                     [ [ IsomorphismFromExponentialToObjectWithGivenExponential, 1 ] ],
                     
   function( cat, object )
     
     return IsomorphismFromExponentialToObjectWithGivenExponential( cat, object, object );
     
-end : CategoryFilter := IsSkeletalCategory,
-      Description := "calling the WithGiven operation in a skeletal setting" );
+end : CategoryFilter := IsSkeletalCategory );
 
 ##
 AddDerivationToCAP( IsomorphismFromObjectToExponential,
+                    "calling the WithGiven operation in a skeletal setting",
                     [ [ IsomorphismFromObjectToExponentialWithGivenExponential, 1 ] ],
                     
   function( cat, object )
     
     return IsomorphismFromObjectToExponentialWithGivenExponential( cat, object, object );
     
-end : CategoryFilter := IsSkeletalCategory,
-      Description := "calling the WithGiven operation in a skeletal setting" );
+end : CategoryFilter := IsSkeletalCategory );
 
 ####################################
 # Convenience Methods
