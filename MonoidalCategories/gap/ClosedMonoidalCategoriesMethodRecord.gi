@@ -88,7 +88,7 @@ TensorProductToInternalHomAdjunctionMap := rec(
   # Test in ClosedMonoidalCategoriesTest
 ),
 
-TensorProductToInternalHomAdjunctionMapWithGivenInternalHom:= rec(
+TensorProductToInternalHomAdjunctionMapWithGivenInternalHom := rec(
   filter_list := [ "category", "object", "object", "morphism", "object" ],
   io_type := [ [ "a", "b", "f", "i" ], [ "a", "i" ] ],
   return_type := "morphism",

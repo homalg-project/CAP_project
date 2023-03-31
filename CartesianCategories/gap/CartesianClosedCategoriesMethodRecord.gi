@@ -91,7 +91,7 @@ DirectProductToExponentialAdjunctionMap := rec(
   # Test in CartesianClosedCategoriesTest
 ),
 
-DirectProductToExponentialAdjunctionMapWithGivenExponential:= rec(
+DirectProductToExponentialAdjunctionMapWithGivenExponential := rec(
   filter_list := [ "category", "object", "object", "morphism", "object" ],
   io_type := [ [ "a", "b", "f", "i" ], [ "a", "i" ] ],
   return_type := "morphism",
