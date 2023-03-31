@@ -40,24 +40,25 @@ end );
 InstallGlobalFunction( CapInternalInstallAdd,
   
   function( record )
-    local function_name, install_name, add_name, pre_function, pre_function_full,
+    local function_name, CAP_operation, add_name, add_function, pre_function, pre_function_full,
           redirect_function, post_function, filter_list,
-          add_function, replaced_filter_list,
+          add_value_to_category_function, replaced_filter_list,
           enhanced_filter_list, get_convenience_function;
     
     function_name := record.function_name;
     
     if not IsBound( record.installation_name ) then
         
-        install_name := function_name;
+        CAP_operation := ValueGlobal( function_name );
         
     else
         
-        install_name := record.installation_name;
+        CAP_operation := ValueGlobal( record.installation_name );
         
     fi;
     
     add_name := Concatenation( "Add", function_name );
+    add_function := ValueGlobal( add_name );
     
     if IsBound( record.pre_function ) then
         pre_function := record.pre_function;
@@ -86,17 +87,17 @@ InstallGlobalFunction( CapInternalInstallAdd,
     filter_list := record.filter_list;
     
     if record.return_type = "object" then
-        add_function := AddObject;
+        add_value_to_category_function := AddObject;
     elif record.return_type = "morphism" then
-        add_function := AddMorphism;
+        add_value_to_category_function := AddMorphism;
     elif record.return_type = "twocell" then
-        add_function := AddTwoCell;
+        add_value_to_category_function := AddTwoCell;
     elif record.return_type = "object_or_fail" then
-        add_function := CAP_INTERNAL_ADD_OBJECT_OR_FAIL;
+        add_value_to_category_function := CAP_INTERNAL_ADD_OBJECT_OR_FAIL;
     elif record.return_type = "morphism_or_fail" then
-        add_function := CAP_INTERNAL_ADD_MORPHISM_OR_FAIL;
+        add_value_to_category_function := CAP_INTERNAL_ADD_MORPHISM_OR_FAIL;
     else
-        add_function := ReturnTrue;
+        add_value_to_category_function := ReturnTrue;
     fi;
     
     # declare operation with category as first argument and install convenience method
@@ -122,11 +123,11 @@ InstallGlobalFunction( CapInternalInstallAdd,
             
         else
             
-            Error( Concatenation( "please add a way to derive the category from the arguments of ", install_name ) );
+            Error( Concatenation( "please add a way to derive the category from the arguments of ", function_name ) );
             
         fi;
         
-        InstallMethod( ValueGlobal( install_name ), replaced_filter_list{[ 2 .. Length( replaced_filter_list ) ]}, get_convenience_function( ValueGlobal( install_name ) ) );
+        InstallMethod( CAP_operation, replaced_filter_list{[ 2 .. Length( replaced_filter_list ) ]}, get_convenience_function( CAP_operation ) );
         
     fi;
     
@@ -140,16 +141,16 @@ InstallGlobalFunction( CapInternalInstallAdd,
             
             Assert( 0, ValueGlobal( "IsJuliaObject" ) in replaced_filter_list );
             
-            InstallOtherMethod( ValueGlobal( install_name ),
+            InstallOtherMethod( CAP_operation,
                     replaced_filter_list,
-                    { arg } -> CallFuncList( ValueGlobal( install_name ),
+                    { arg } -> CallFuncList( CAP_operation,
                             List( arg, function( ar ) if ValueGlobal( "IsJuliaObject" )( ar ) then return ValueGlobal( "ConvertJuliaToGAP" )( ar ); fi; return ar; end ) ) );
             
             Assert( 0, record.install_convenience_without_category );
             
-            InstallOtherMethod( ValueGlobal( install_name ),
+            InstallOtherMethod( CAP_operation,
                     replaced_filter_list{[ 2 .. Length( replaced_filter_list ) ]},
-                    { arg } -> CallFuncList( ValueGlobal( install_name ),
+                    { arg } -> CallFuncList( CAP_operation,
                             List( arg, function( ar ) if ValueGlobal( "IsJuliaObject" )( ar ) then return ValueGlobal( "ConvertJuliaToGAP" )( ar ); fi; return ar; end ) ) );
             
         fi;
@@ -157,34 +158,34 @@ InstallGlobalFunction( CapInternalInstallAdd,
     fi;
     # =#
     
-    InstallMethod( ValueGlobal( add_name ),
+    InstallMethod( add_function,
                    [ IsCapCategory, IsFunction ],
                    
       function( category, func )
         
-        ValueGlobal( add_name )( category, func, -1 );
+        add_function( category, func, -1 );
         
     end );
     
-    InstallMethod( ValueGlobal( add_name ),
+    InstallMethod( add_function,
                    [ IsCapCategory, IsFunction, IsInt ],
                    
       function( category, func, weight )
         
-        ValueGlobal( add_name )( category, [ [ func, [ ] ] ], weight );
+        add_function( category, [ [ func, [ ] ] ], weight );
         
     end );
     
-    InstallMethod( ValueGlobal( add_name ),
+    InstallMethod( add_function,
                    [ IsCapCategory, IsList ],
                    
       function( category, func )
         
-        ValueGlobal( add_name )( category, func, -1 );
+        add_function( category, func, -1 );
         
     end );
     
-    InstallMethod( ValueGlobal( add_name ),
+    InstallMethod( add_function,
                    [ IsCapCategory, IsList, IsInt ],
       
       function( category, method_list, weight )
@@ -403,7 +404,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
             
             if category!.overhead then
                 
-                InstallMethodWithCache( ValueGlobal( install_name ),
+                InstallMethodWithCache( CAP_operation,
                                 new_filter_list,
                                 
                   function( arg )
@@ -471,7 +472,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     
                     if not is_derivation and not is_final_derivation then
                         if category!.add_primitive_output then
-                            add_function( category, result );
+                            add_value_to_category_function( category, result );
                         elif category!.output_sanity_check_level > 0 then
                             output_sanity_check_function( result );
                         fi;
@@ -489,7 +490,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
             
             else #category!.overhead = false
                 
-                InstallOtherMethod( ValueGlobal( install_name ),
+                InstallOtherMethod( CAP_operation,
                             new_filter_list,
                     
                     function( arg )

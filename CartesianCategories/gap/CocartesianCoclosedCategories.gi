@@ -9,7 +9,8 @@
 
 ##
 AddDerivationToCAP( IsomorphismFromCoexponentialToObject,
-
+                    [ [ IsomorphismFromCoexponentialToObjectWithGivenCoexponential, 1 ] ],
+                    
   function( cat, object )
 
     return IsomorphismFromCoexponentialToObjectWithGivenCoexponential( cat, object, object );
@@ -19,7 +20,8 @@ end : CategoryFilter := IsSkeletalCategory,
 
 ##
 AddDerivationToCAP( IsomorphismFromObjectToCoexponential,
-
+                    [ [ IsomorphismFromObjectToCoexponentialWithGivenCoexponential, 1 ] ],
+                    
   function( cat, object )
 
     return IsomorphismFromObjectToCoexponentialWithGivenCoexponential( cat, object, object );

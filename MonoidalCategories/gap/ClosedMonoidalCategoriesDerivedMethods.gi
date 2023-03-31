@@ -24,6 +24,9 @@ AddFinalDerivationBundle( # IsomorphismFromDualObjectToInternalHomIntoTensorUnit
                       MorphismFromTensorProductToInternalHomWithGivenObjects ],
 [
   IsomorphismFromDualObjectToInternalHomIntoTensorUnit,
+  [ [ IdentityMorphism, 1 ],
+    [ InternalHomOnObjects, 1 ],
+    [ TensorUnit, 1 ] ],
   function( cat, object )
     
     return IdentityMorphism( cat, InternalHomOnObjects( cat, object, TensorUnit( cat ) ) );
@@ -32,6 +35,9 @@ AddFinalDerivationBundle( # IsomorphismFromDualObjectToInternalHomIntoTensorUnit
 ],
 [
   IsomorphismFromInternalHomIntoTensorUnitToDualObject,
+  [ [ IdentityMorphism, 1 ],
+    [ InternalHomOnObjects, 1 ],
+    [ TensorUnit, 1 ] ],
   function( cat, object )
     
     return IdentityMorphism( cat, InternalHomOnObjects( cat, object, TensorUnit( cat ) ) );

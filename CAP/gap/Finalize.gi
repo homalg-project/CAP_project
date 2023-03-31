@@ -122,6 +122,8 @@ InstallGlobalFunction( AddFinalDerivationBundle,
         
         if Length( current_additional_func ) = 2 then
             
+            Print( "WARNING: a final derivation for ", NameFunction( current_additional_func[1] ), " has no explicit preconditions. Calling AddFinalDerivation(Bundle) without explicit preconditions is deprecated and will not be supported after 2024.03.31.\n" );
+            
             used_op_names_with_multiples_and_category_getters := collected_list;
             
         fi;

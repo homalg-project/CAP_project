@@ -6,6 +6,11 @@
 
 ##
 AddDerivationToCAP( LeftDistributivityExpandingWithGivenObjects,
+                    [ [ IdentityMorphism, 1 ],
+                      [ ProjectionInFactorOfDirectSum, 2 ],
+                      [ TensorProductOnMorphisms, 2 ],
+                      [ TensorProductOnObjects, 2 ],
+                      [ UniversalMorphismIntoDirectSum, 1 ] ],
                     
   function( cat, factored_object, object, summands, expanded_object )
     local nr_summands, projection_list, id, diagram;
@@ -22,11 +27,16 @@ AddDerivationToCAP( LeftDistributivityExpandingWithGivenObjects,
     
     return UniversalMorphismIntoDirectSum( cat, diagram, factored_object, projection_list );
     
-end : CategoryFilter := IsMonoidalCategory and IsAdditiveCategory,
+end : CategoryFilter := cat -> HasIsMonoidalCategory( cat ) and IsMonoidalCategory( cat ) and HasIsAdditiveCategory( cat ) and IsAdditiveCategory( cat ),
       Description := "LeftDistributivityExpandingWithGivenObjects using the universal property of the direct sum" );
 
 ##
 AddDerivationToCAP( LeftDistributivityFactoringWithGivenObjects,
+                    [ [ IdentityMorphism, 1 ],
+                      [ InjectionOfCofactorOfDirectSum, 2 ],
+                      [ TensorProductOnMorphisms, 2 ],
+                      [ TensorProductOnObjects, 2 ],
+                      [ UniversalMorphismFromDirectSum, 1 ] ],
                     
   function( cat, expanded_object, object, summands, factored_object )
     local nr_summands, injection_list, id, diagram;
@@ -43,11 +53,16 @@ AddDerivationToCAP( LeftDistributivityFactoringWithGivenObjects,
     
     return UniversalMorphismFromDirectSum( cat, diagram, factored_object, injection_list );
     
-end : CategoryFilter := IsMonoidalCategory and IsAdditiveCategory,
+end : CategoryFilter := cat -> HasIsMonoidalCategory( cat ) and IsMonoidalCategory( cat ) and HasIsAdditiveCategory( cat ) and IsAdditiveCategory( cat ),
       Description := "LeftDistributivityFactoringWithGivenObjects using the universal property of the direct sum" );
 
 ##
 AddDerivationToCAP( RightDistributivityExpandingWithGivenObjects,
+                    [ [ IdentityMorphism, 1 ],
+                      [ ProjectionInFactorOfDirectSum, 2 ],
+                      [ TensorProductOnMorphisms, 2 ],
+                      [ TensorProductOnObjects, 2 ],
+                      [ UniversalMorphismIntoDirectSum, 1 ] ],
                     
   function( cat, factored_object, summands, object, expanded_object )
     local nr_summands, projection_list, id, diagram;
@@ -64,11 +79,16 @@ AddDerivationToCAP( RightDistributivityExpandingWithGivenObjects,
     
     return UniversalMorphismIntoDirectSum( cat, diagram, factored_object, projection_list );
     
-end : CategoryFilter := IsMonoidalCategory and IsAdditiveCategory,
+end : CategoryFilter := cat -> HasIsMonoidalCategory( cat ) and IsMonoidalCategory( cat ) and HasIsAdditiveCategory( cat ) and IsAdditiveCategory( cat ),
       Description := "RightDistributivityExpandingWithGivenObjects using the universal property of the direct sum" );
 
 ##
 AddDerivationToCAP( RightDistributivityFactoringWithGivenObjects,
+                    [ [ IdentityMorphism, 1 ],
+                      [ InjectionOfCofactorOfDirectSum, 2 ],
+                      [ TensorProductOnMorphisms, 2 ],
+                      [ TensorProductOnObjects, 2 ],
+                      [ UniversalMorphismFromDirectSum, 1 ] ],
                     
   function( cat, expanded_object, summands, object, factored_object )
     local nr_summands, injection_list, id, diagram;
@@ -85,5 +105,5 @@ AddDerivationToCAP( RightDistributivityFactoringWithGivenObjects,
     
     return UniversalMorphismFromDirectSum( cat, diagram, factored_object, injection_list );
     
-end : CategoryFilter := IsMonoidalCategory and IsAdditiveCategory,
+end : CategoryFilter := cat -> HasIsMonoidalCategory( cat ) and IsMonoidalCategory( cat ) and HasIsAdditiveCategory( cat ) and IsAdditiveCategory( cat ),
       Description := "RightDistributivityFactoringWithGivenObjects using the universal property of the direct sum" );

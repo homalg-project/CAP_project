@@ -6,7 +6,10 @@
 
 ##
 AddDerivationToCAP( LeftDistributivityExpanding,
-
+                    [ [ TensorProductOnObjects, 1 ],
+                      [ DirectSum, 1 ],
+                      [ LeftDistributivityExpandingWithGivenObjects, 1 ] ],
+                    
   function( cat, object, summands_list )
     local source_and_range;
     
@@ -23,7 +26,10 @@ end : CategoryFilter := IsSkeletalCategory,
 
 ##
 AddDerivationToCAP( LeftDistributivityFactoring,
-
+                    [ [ TensorProductOnObjects, 1 ],
+                      [ DirectSum, 1 ],
+                      [ LeftDistributivityFactoringWithGivenObjects, 1 ] ],
+                    
   function( cat, object, summands_list )
     local source_and_range;
     
@@ -40,7 +46,10 @@ end : CategoryFilter := IsSkeletalCategory,
 
 ##
 AddDerivationToCAP( RightDistributivityExpanding,
-
+                    [ [ TensorProductOnObjects, 1 ],
+                      [ DirectSum, 1 ],
+                      [ RightDistributivityExpandingWithGivenObjects, 1 ] ],
+                    
   function( cat, summands_list, object )
     local source_and_range;
     
@@ -57,7 +66,10 @@ end : CategoryFilter := IsSkeletalCategory,
 
 ##
 AddDerivationToCAP( RightDistributivityFactoring,
-
+                    [ [ TensorProductOnObjects, 1 ],
+                      [ DirectSum, 1 ],
+                      [ RightDistributivityFactoringWithGivenObjects, 1 ] ],
+                    
   function( cat, summands_list, object )
     local source_and_range;
     

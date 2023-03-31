@@ -6,7 +6,8 @@
 
 ##
 AddDerivationToCAP( IsomorphismFromInternalHomToObject,
-
+                    [ [ IsomorphismFromInternalHomToObjectWithGivenInternalHom, 1 ] ],
+                    
   function( cat, object )
     
     return IsomorphismFromInternalHomToObjectWithGivenInternalHom( cat, object, object );
@@ -16,7 +17,8 @@ end : CategoryFilter := IsSkeletalCategory,
 
 ##
 AddDerivationToCAP( IsomorphismFromObjectToInternalHom,
-
+                    [ [ IsomorphismFromObjectToInternalHomWithGivenInternalHom, 1 ] ],
+                    
   function( cat, object )
     
     return IsomorphismFromObjectToInternalHomWithGivenInternalHom( cat, object, object );

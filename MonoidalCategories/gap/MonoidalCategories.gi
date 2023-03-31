@@ -8,7 +8,9 @@ InstallTrueMethod( IsMonoidalCategory, IsStrictMonoidalCategory );
 
 ##
 AddDerivationToCAP( AssociatorRightToLeft,
-
+                    [ [ TensorProductOnObjects, 2 ],
+                      [ AssociatorRightToLeftWithGivenTensorProducts, 1 ] ],
+                    
   function( cat, object_1, object_2, object_3 )
     local source_and_range;
     
@@ -25,7 +27,9 @@ end : CategoryFilter := IsSkeletalCategory,
 
 ##
 AddDerivationToCAP( AssociatorLeftToRight,
-
+                    [ [ TensorProductOnObjects, 2 ],
+                      [ AssociatorLeftToRightWithGivenTensorProducts, 1 ] ],
+                    
   function( cat, object_1, object_2, object_3 )
     local source_and_range;
     
@@ -42,7 +46,8 @@ end : CategoryFilter := IsSkeletalCategory,
 
 ##
 AddDerivationToCAP( LeftUnitor,
-
+                    [ [ LeftUnitorWithGivenTensorProduct, 1 ] ],
+                    
   function( cat, object )
     
     return LeftUnitorWithGivenTensorProduct( cat, object, object );
@@ -52,7 +57,8 @@ end : CategoryFilter := IsSkeletalCategory,
 
 ##
 AddDerivationToCAP( LeftUnitorInverse,
-
+                    [ [ LeftUnitorInverseWithGivenTensorProduct, 1 ] ],
+                    
   function( cat, object )
     
     return LeftUnitorInverseWithGivenTensorProduct( cat, object, object );
@@ -62,7 +68,8 @@ end : CategoryFilter := IsSkeletalCategory,
 
 ##
 AddDerivationToCAP( RightUnitor,
-
+                    [ [ RightUnitorWithGivenTensorProduct, 1 ] ],
+                    
   function( cat, object )
     
     return RightUnitorWithGivenTensorProduct( cat, object, object );
@@ -72,7 +79,8 @@ end : CategoryFilter := IsSkeletalCategory,
 
 ##
 AddDerivationToCAP( RightUnitorInverse,
-
+                    [ [ RightUnitorInverseWithGivenTensorProduct, 1 ] ],
+                    
   function( cat, object )
     
     return RightUnitorInverseWithGivenTensorProduct( cat, object, object );

@@ -449,6 +449,8 @@ end : Description := "functorial_with_given_name using the universality of the l
             current_string := ReplacedStringViaRecord( """
 ##
 AddDerivationToCAP( functorial_name,
+                    [ [ object_name, 1 ],
+                      [ IdentityMorphism, 1 ] ],
                     
   function( cat )
     

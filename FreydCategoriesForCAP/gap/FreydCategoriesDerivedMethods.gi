@@ -8,6 +8,9 @@
 
 ##
 AddDerivationToCAP( ProjectionInSecondFactorOfWeakBiFiberProduct,
+                    [ [ ProjectionInFirstFactorOfWeakBiFiberProduct, 1 ],
+                      [ Lift, 1 ],
+                      [ PreCompose, 1 ] ],
                     
   function( cat, alpha, beta )
     local first_projection;
@@ -20,6 +23,9 @@ end : Description := "ProjectionInSecondFactorOfWeakBiFiberProduct using Project
 
 ##
 AddDerivationToCAP( ProjectionInFirstFactorOfWeakBiFiberProduct,
+                    [ [ ProjectionInSecondFactorOfWeakBiFiberProduct, 1 ],
+                      [ Lift, 1 ],
+                      [ PreCompose, 1 ] ],
                     
   function( cat, alpha, beta )
     local second_projection;
@@ -32,6 +38,9 @@ end : Description := "ProjectionInFirstFactorOfWeakBiFiberProduct using Projecti
 
 ##
 AddDerivationToCAP( InjectionOfSecondCofactorOfWeakBiPushout,
+                    [ [ InjectionOfFirstCofactorOfWeakBiPushout, 1 ],
+                      [ Colift, 1 ],
+                      [ PreCompose, 1 ] ],
                     
   function( cat, alpha, beta )
     local first_injection;
@@ -44,6 +53,9 @@ end : Description := "InjectionOfSecondCofactorOfWeakBiPushout using InjectionOf
 
 ##
 AddDerivationToCAP( InjectionOfFirstCofactorOfWeakBiPushout,
+                    [ [ InjectionOfSecondCofactorOfWeakBiPushout, 1 ],
+                      [ Colift, 1 ],
+                      [ PreCompose, 1 ] ],
                     
   function( cat, alpha, beta )
     local second_injection;
@@ -56,7 +68,11 @@ end : Description := "InjectionOfFirstCofactorOfWeakBiPushout using InjectionOfS
 
 ##
 AddDerivationToCAP( UniversalMorphismIntoWeakBiFiberProduct,
-                                 
+                    [ [ ProjectionInFirstFactorOfWeakBiFiberProduct, 1 ],
+                      [ ProjectionInSecondFactorOfWeakBiFiberProduct, 1 ],
+                      [ Lift, 1 ],
+                      [ UniversalMorphismIntoDirectSum, 2 ] ],
+                    
   function( cat, alpha, beta, test_mor_1, test_mor_2 )
     local projection_1, projection_2;
     
@@ -71,7 +87,9 @@ end : Description := "UniversalMorphismIntoWeakBiFiberProduct using Lift" );
 
 ##
 AddDerivationToCAP( UniversalMorphismIntoBiasedWeakFiberProduct,
-                                 
+                    [ [ Lift, 1 ],
+                      [ ProjectionOfBiasedWeakFiberProduct, 1 ] ],
+                    
   function( cat, alpha, beta, test_mor )
     
     return Lift( cat,
@@ -83,7 +101,11 @@ end : Description := "UniversalMorphismIntoBiasedWeakFiberProduct using Lift" );
 
 ##
 AddDerivationToCAP( UniversalMorphismFromWeakBiPushout,
-                                 
+                    [ [ InjectionOfFirstCofactorOfWeakBiPushout, 1 ],
+                      [ InjectionOfSecondCofactorOfWeakBiPushout, 1 ],
+                      [ Colift, 1 ],
+                      [ UniversalMorphismFromDirectSum, 2 ] ],
+                    
   function( cat, alpha, beta, test_mor_1, test_mor_2 )
     local injection_1, injection_2;
     
@@ -98,7 +120,9 @@ end : Description := "UniversalMorphismFromWeakBiPushout using Colift" );
 
 ##
 AddDerivationToCAP( UniversalMorphismFromBiasedWeakPushout,
-                                 
+                    [ [ Colift, 1 ],
+                      [ InjectionOfBiasedWeakPushout, 1 ] ],
+                    
   function( cat, alpha, beta, test_mor )
     
     return Colift( cat,
@@ -109,7 +133,9 @@ end : Description := "UniversalMorphismFromBiasedWeakPushout using Colift" );
 
 ##
 AddDerivationToCAP( WeakKernelLift,
-                                 
+                    [ [ Lift, 1 ],
+                      [ WeakKernelEmbedding, 1 ] ],
+                    
   function( cat, mor, test_mor )
     
     return Lift( cat, test_mor, WeakKernelEmbedding( cat, mor ) );
@@ -118,7 +144,9 @@ end : Description := "WeakKernelLift as Lift of WeakKernelEmbedding" );
 
 ##
 AddDerivationToCAP( WeakCokernelColift,
-                                 
+                    [ [ Colift, 1 ],
+                      [ WeakCokernelProjection, 1 ] ],
+                    
   function( cat, mor, test_mor )
     
     return Colift( cat, WeakCokernelProjection( cat, mor ), test_mor );
@@ -129,6 +157,7 @@ end : Description := "WeakCokernelColift as Colift of WeakCokernelProjection" );
 ## Derivations for basic operations without existing WithGiven
 ##
 AddDerivationToCAP( WeakKernelObject,
+                    [ [ WeakKernelEmbedding, 1 ] ],
                     
   function( cat, mor )
     
@@ -138,6 +167,7 @@ end : Description := "WeakKernelObject as the source of WeakKernelEmbedding" );
 
 ##
 AddDerivationToCAP( WeakCokernelObject,
+                    [ [ WeakCokernelProjection, 1 ] ],
                     
   function( cat, mor )
     
@@ -147,6 +177,7 @@ end : Description := "WeakCokernelObject as the range of WeakCokernelProjection"
 
 ##
 AddDerivationToCAP( WeakBiFiberProduct,
+                    [ [ ProjectionInFirstFactorOfWeakBiFiberProduct, 1 ] ],
                     
   function( cat, alpha, beta )
     
@@ -156,6 +187,7 @@ end : Description := "WeakBiFiberProduct as the source of ProjectionInFirstFacto
 
 ##
 AddDerivationToCAP( WeakBiFiberProduct,
+                    [ [ ProjectionInSecondFactorOfWeakBiFiberProduct, 1 ] ],
                     
   function( cat, alpha, beta )
     
@@ -165,6 +197,7 @@ end : Description := "WeakBiFiberProduct as the source of ProjectionInSecondFact
 
 ##
 AddDerivationToCAP( BiasedWeakFiberProduct,
+                    [ [ ProjectionOfBiasedWeakFiberProduct, 1 ] ],
                     
   function( cat, alpha, beta )
     
@@ -175,6 +208,7 @@ end : Description := "BiasedWeakFiberProduct as the source of ProjectionOfBiased
 
 ##
 AddDerivationToCAP( WeakBiPushout,
+                    [ [ InjectionOfFirstCofactorOfWeakBiPushout, 1 ] ],
                     
   function( cat, alpha, beta )
     
@@ -184,6 +218,7 @@ end : Description := "WeakBiPushout as the range of InjectionOfFirstCofactorOfWe
 
 ##
 AddDerivationToCAP( WeakBiPushout,
+                    [ [ InjectionOfSecondCofactorOfWeakBiPushout, 1 ] ],
                     
   function( cat, alpha, beta )
     
@@ -193,6 +228,7 @@ end : Description := "WeakBiPushout as the range of InjectionOfSecondCofactorOfW
 
 ##
 AddDerivationToCAP( BiasedWeakPushout,
+                    [ [ InjectionOfBiasedWeakPushout, 1 ] ],
                     
   function( cat, alpha, beta )
     
@@ -205,6 +241,8 @@ end : Description := "BiasedWeakPushout as the range of InjectionOfBiasedWeakPus
 
 ##
 AddDerivationToCAP( IsMonomorphism,
+                    [ [ IsZeroForMorphisms, 1 ],
+                      [ WeakKernelEmbedding, 1 ] ],
                     
   function( cat, alpha )
       
@@ -214,6 +252,8 @@ end : Description := "IsMonomorphism by deciding whether WeakKernelEmbedding is 
 
 ##
 AddDerivationToCAP( IsEpimorphism,
+                    [ [ IsZeroForMorphisms, 1 ],
+                      [ WeakCokernelProjection, 1 ] ],
                     
   function( cat, alpha )
       
@@ -223,6 +263,7 @@ end : Description := "IsEpimorphism by deciding whether WeakCokernelProjection i
 
 ##
 AddDerivationToCAP( SomeProjectiveObjectForKernelObject,
+                    [ [ EpimorphismFromSomeProjectiveObjectForKernelObject, 1 ] ],
                     
   function( cat, morphism )
     
@@ -232,6 +273,9 @@ end : Description := "SomeProjectiveObjectForKernelObject as the source of Epimo
 
 ##
 AddDerivationToCAP( WeakBiFiberProductMorphismToDirectSum,
+                    [ [ ProjectionInFirstFactorOfWeakBiFiberProduct, 1 ],
+                      [ ProjectionInSecondFactorOfWeakBiFiberProduct, 1 ],
+                      [ UniversalMorphismIntoDirectSum, 1 ] ],
                     
   function( cat, alpha, beta )
     local projection_1, projection_2;
@@ -246,6 +290,9 @@ end : Description := "WeakBiFiberProductMorphismToDirectSum using UniversalMorph
 
 ##
 AddDerivationToCAP( DirectSumMorphismToWeakBiPushout,
+                    [ [ InjectionOfFirstCofactorOfWeakBiPushout, 1 ],
+                      [ InjectionOfSecondCofactorOfWeakBiPushout, 1 ],
+                      [ UniversalMorphismFromDirectSum, 1 ] ],
                     
   function( cat, alpha, beta )
     local injection_1, injection_2;
@@ -260,6 +307,7 @@ end : Description := "DirectSumMorphismToWeakBiPushout using UniversalMorphismFr
 
 ##
 AddDerivationToCAP( WeakBiFiberProduct,
+                    [ [ WeakBiFiberProductMorphismToDirectSum, 1 ] ],
                     
   function( cat, alpha, beta )
     
@@ -269,6 +317,7 @@ end : Description := "WeakBiFiberProduct as the source of WeakBiFiberProductMorp
 
 ##
 AddDerivationToCAP( WeakBiPushout,
+                    [ [ DirectSumMorphismToWeakBiPushout, 1 ] ],
                     
   function( cat, alpha, beta )
     
@@ -289,6 +338,7 @@ AddFinalDerivationBundle( # WeakKernelObject,
                       WeakKernelLift ],
 [
   WeakKernelObject,
+  [ [ KernelObject, 1 ] ],
   function( cat, morphism )
     
     return KernelObject( cat, morphism );
@@ -297,6 +347,7 @@ AddFinalDerivationBundle( # WeakKernelObject,
 ],
 [
   WeakKernelEmbedding,
+  [ [ KernelEmbedding, 1 ] ],
   function( cat, morphism )
     
     return KernelEmbedding( cat, morphism );
@@ -305,6 +356,7 @@ AddFinalDerivationBundle( # WeakKernelObject,
 ],
 [
   WeakKernelLift,
+  [ [ KernelLift, 1 ] ],
   function( cat, morphism, test_mor )
     
     return KernelLift( cat, morphism, test_mor );
@@ -323,6 +375,7 @@ AddFinalDerivationBundle( # WeakCokernelObject,
                       WeakCokernelColift ],
 [
   WeakCokernelObject,
+  [ [ CokernelObject, 1 ] ],
   function( cat, morphism )
     
     return CokernelObject( cat, morphism );
@@ -331,6 +384,7 @@ AddFinalDerivationBundle( # WeakCokernelObject,
 ],
 [
   WeakCokernelProjection,
+  [ [ CokernelProjection, 1 ] ],
   function( cat, morphism )
     
     return CokernelProjection( cat, morphism );
@@ -339,6 +393,7 @@ AddFinalDerivationBundle( # WeakCokernelObject,
 ],
 [
   WeakCokernelColift,
+  [ [ CokernelColift, 1 ] ],
   function( cat, morphism, test_mor )
     
     return CokernelColift( cat, morphism, test_mor );
@@ -369,6 +424,11 @@ AddFinalDerivationBundle( # WeakBiFiberProductMorphismToDirectSum,
                     ],
 [
   WeakBiFiberProductMorphismToDirectSum,
+  [ [ DirectSum, 1 ],
+    [ PreCompose, 2 ],
+    [ ProjectionInFactorOfDirectSumWithGivenDirectSum, 2 ],
+    [ SubtractionForMorphisms, 1 ],
+    [ WeakKernelEmbedding, 1 ] ],
   function( cat, alpha, beta )
     local direct_sum_diagram, direct_sum, proj1_alpha, proj2_beta, difference;
     
@@ -388,6 +448,9 @@ AddFinalDerivationBundle( # WeakBiFiberProductMorphismToDirectSum,
 ],
 [
   ProjectionInFirstFactorOfWeakBiFiberProduct,
+  [ [ WeakBiFiberProductMorphismToDirectSum, 1 ],
+    [ PreCompose, 1 ],
+    [ ProjectionInFactorOfDirectSum, 1 ] ],
   function( cat, alpha, beta )
     local morphism_to_direct_sum;
     
@@ -399,6 +462,9 @@ AddFinalDerivationBundle( # WeakBiFiberProductMorphismToDirectSum,
 ],
 [
   ProjectionInSecondFactorOfWeakBiFiberProduct,
+  [ [ WeakBiFiberProductMorphismToDirectSum, 1 ],
+    [ PreCompose, 1 ],
+    [ ProjectionInFactorOfDirectSum, 1 ] ],
   function( cat, alpha, beta )
     local morphism_to_direct_sum;
     
@@ -410,6 +476,12 @@ AddFinalDerivationBundle( # WeakBiFiberProductMorphismToDirectSum,
 ],
 [
   UniversalMorphismIntoWeakBiFiberProduct,
+  [ [ UniversalMorphismIntoDirectSum, 1 ],
+    [ DirectSum, 1 ],
+    [ PreCompose, 2 ],
+    [ ProjectionInFactorOfDirectSumWithGivenDirectSum, 2 ],
+    [ SubtractionForMorphisms, 1 ],
+    [ WeakKernelLift, 1 ] ],
   function( cat, alpha, beta, test_mor_1, test_mor_2 )
     local test_mor, direct_sum_diagram, direct_sum, proj1_alpha, proj2_beta, difference;
     
@@ -451,6 +523,11 @@ AddFinalDerivationBundle( # DirectSumMorphismToWeakBiPushout,
                     ],
 [
   DirectSumMorphismToWeakBiPushout,
+  [ [ DirectSum, 1 ],
+    [ PreCompose, 2 ],
+    [ InjectionOfCofactorOfDirectSumWithGivenDirectSum, 2 ],
+    [ SubtractionForMorphisms, 1 ],
+    [ WeakCokernelProjection, 1 ] ],
   function( cat, alpha, beta )
     local direct_sum_diagram, direct_sum, alpha_inj1, beta_inj2, difference;
     
@@ -470,6 +547,9 @@ end
 ],
 [
   InjectionOfFirstCofactorOfWeakBiPushout,
+  [ [ DirectSumMorphismToWeakBiPushout, 1 ],
+    [ PreCompose, 1 ],
+    [ InjectionOfCofactorOfDirectSum, 1 ] ],
   function( cat, alpha, beta )
     local direct_sum_morphism;
     
@@ -481,6 +561,9 @@ end
 ],
 [
   InjectionOfSecondCofactorOfWeakBiPushout,
+  [ [ DirectSumMorphismToWeakBiPushout, 1 ],
+    [ PreCompose, 1 ],
+    [ InjectionOfCofactorOfDirectSum, 1 ] ],
   function( cat, alpha, beta )
     local direct_sum_morphism;
     
@@ -492,6 +575,12 @@ end
 ],
 [
   UniversalMorphismFromWeakBiPushout,
+  [ [ UniversalMorphismFromDirectSum, 1 ],
+    [ DirectSum, 1 ],
+    [ PreCompose, 2 ],
+    [ InjectionOfCofactorOfDirectSumWithGivenDirectSum, 2 ],
+    [ SubtractionForMorphisms, 1 ],
+    [ WeakCokernelColift, 1 ] ],
   function( cat, alpha, beta, test_mor_1, test_mor_2 )
     local test_mor, direct_sum_diagram, direct_sum, alpha_inj1, beta_inj2, difference;
     

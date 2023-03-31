@@ -9,6 +9,8 @@
 
 ##
 AddDerivationToCAP( CartesianAssociatorLeftToRightWithGivenDirectProducts,
+                    [ [ InverseForMorphisms, 1 ],
+                      [ CartesianAssociatorRightToLeftWithGivenDirectProducts, 1 ] ],
                     
   function( cat, left_associated_object, object_1, object_2, object_3, right_associated_object )
     
@@ -22,6 +24,8 @@ end : Description := "CartesianAssociatorLeftToRightWithGivenDirectProducts as t
 
 ##
 AddDerivationToCAP( CartesianAssociatorRightToLeftWithGivenDirectProducts,
+                    [ [ InverseForMorphisms, 1 ],
+                      [ CartesianAssociatorLeftToRightWithGivenDirectProducts, 1 ] ],
                     
   function( cat, right_associated_object, object_1, object_2, object_3, left_associated_object )
     
@@ -35,7 +39,9 @@ end : Description := "CartesianAssociatorRightToLeftWithGivenDirectProducts as t
 
 ##
 AddDerivationToCAP( CartesianLeftUnitorWithGivenDirectProduct,
-                  
+                    [ [ InverseForMorphisms, 1 ],
+                      [ CartesianLeftUnitorInverseWithGivenDirectProduct, 1 ] ],
+                    
   function( cat, object, unit_x_object )
     
     return InverseForMorphisms( cat, CartesianLeftUnitorInverseWithGivenDirectProduct( cat, object, unit_x_object ) );
@@ -44,7 +50,9 @@ end : Description := "CartesianLeftUnitorWithGivenDirectProduct as the inverse o
 
 ##
 AddDerivationToCAP( CartesianLeftUnitorInverseWithGivenDirectProduct,
-                  
+                    [ [ InverseForMorphisms, 1 ],
+                      [ CartesianLeftUnitorWithGivenDirectProduct, 1 ] ],
+                    
   function( cat, object, unit_x_object )
     
     return InverseForMorphisms( cat, CartesianLeftUnitorWithGivenDirectProduct( cat, object, unit_x_object ) );
@@ -53,7 +61,9 @@ end : Description := "CartesianLeftUnitorInverseWithGivenDirectProduct as the in
 
 ##
 AddDerivationToCAP( CartesianRightUnitorWithGivenDirectProduct,
-                  
+                    [ [ InverseForMorphisms, 1 ],
+                      [ CartesianRightUnitorInverseWithGivenDirectProduct, 1 ] ],
+                    
   function( cat, object, object_x_unit )
     
     return InverseForMorphisms( cat, CartesianRightUnitorInverseWithGivenDirectProduct( cat, object, object_x_unit ) );
@@ -62,7 +72,9 @@ end : Description := "CartesianRightUnitorWithGivenDirectProduct as the inverse 
 
 ##
 AddDerivationToCAP( CartesianRightUnitorInverseWithGivenDirectProduct,
-                  
+                    [ [ InverseForMorphisms, 1 ],
+                      [ CartesianRightUnitorWithGivenDirectProduct, 1 ] ],
+                    
   function( cat, object, object_x_unit )
     
     return InverseForMorphisms( cat, CartesianRightUnitorWithGivenDirectProduct( cat, object, object_x_unit ) );
@@ -71,6 +83,7 @@ end : Description := "CartesianRightUnitorInverseWithGivenDirectProduct as the i
 
 ##
 AddDerivationToCAP( CartesianAssociatorLeftToRightWithGivenDirectProducts,
+                    [ [ IdentityMorphism, 1 ] ],
                     
   function( cat, left_associated_object, object_1, object_2, object_3, right_associated_object )
     
@@ -81,6 +94,7 @@ end : CategoryFilter := IsStrictCartesianCategory,
 
 ##
 AddDerivationToCAP( CartesianAssociatorRightToLeftWithGivenDirectProducts,
+                    [ [ IdentityMorphism, 1 ] ],
                     
   function( cat, right_associated_object, object_1, object_2, object_3, left_associated_object )
     
@@ -91,6 +105,7 @@ end : CategoryFilter := IsStrictCartesianCategory,
 
 ##
 AddDerivationToCAP( CartesianLeftUnitorWithGivenDirectProduct,
+                    [ [ IdentityMorphism, 1 ] ],
                     
   function( cat, object, unit_x_object )
     
@@ -101,7 +116,8 @@ end : CategoryFilter := IsStrictCartesianCategory,
 
 ##
 AddDerivationToCAP( CartesianLeftUnitorInverseWithGivenDirectProduct,
-                  
+                    [ [ IdentityMorphism, 1 ] ],
+                    
   function( cat, object, unit_x_object )
     
     return IdentityMorphism( cat, object );
@@ -111,6 +127,7 @@ end : CategoryFilter := IsStrictCartesianCategory,
 
 ##
 AddDerivationToCAP( CartesianRightUnitorWithGivenDirectProduct,
+                    [ [ IdentityMorphism, 1 ] ],
                     
   function( cat, object, object_x_unit )
     
@@ -121,6 +138,7 @@ end : CategoryFilter := IsStrictCartesianCategory,
 
 ##
 AddDerivationToCAP( CartesianRightUnitorInverseWithGivenDirectProduct,
+                    [ [ IdentityMorphism, 1 ] ],
                     
   function( cat, object, object_x_unit )
     

@@ -6,7 +6,9 @@
 
 ##
 AddDerivationToCAP( Braiding,
-
+                    [ [ TensorProductOnObjects, 1 ],
+                      [ BraidingWithGivenTensorProducts, 1 ] ],
+                    
   function( cat, object_1, object_2 )
     local source_and_range;
     
@@ -19,7 +21,9 @@ end : CategoryFilter := IsSkeletalCategory,
 
 ##
 AddDerivationToCAP( BraidingInverse,
-
+                    [ [ TensorProductOnObjects, 1 ],
+                      [ BraidingInverseWithGivenTensorProducts, 1 ] ],
+                    
   function( cat, object_1, object_2 )
     local source_and_range;
     

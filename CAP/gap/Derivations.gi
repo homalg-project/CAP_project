@@ -276,6 +276,13 @@ InstallOtherMethod( AddDerivation,
     
     if used_ops_with_multiples_and_category_getters = fail then
         
+        # some automatic derivations do not have preconditions yet
+        if not EndsWith( description, " with the WithGiven object(s)" ) and not EndsWith( description, " using the universality of the limit" ) and not EndsWith( description, " using the universality of the colimit" ) then
+            
+            Print( "WARNING: a derivation for ", NameFunction( target_op ), " has no explicit preconditions. Calling AddDerivation without explicit preconditions is deprecated and will not be supported after 2024.03.31.\n" );
+            
+        fi;
+        
         used_op_names_with_multiples_and_category_getters := collected_list;
         
     fi;
@@ -394,6 +401,8 @@ InstallGlobalFunction( AddWithGivenDerivationPairToCAP,
   
   function( target_op, without_given_func, with_given_func )
     local without_given_name, with_given_name;
+    
+    Print( "WARNING: AddWithGivenDerivationPairToCAP is deprecated and will not be supported after 2024.03.31. Please use AddDerivationToCAP twice instead.\n" );
     
     without_given_name := NameFunction( target_op );
     

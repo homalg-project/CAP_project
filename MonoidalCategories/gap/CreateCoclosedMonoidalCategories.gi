@@ -61,13 +61,13 @@ InstallGlobalFunction( CAP_INTERNAL_FUNC_FOR_COCLOSED_MONOIDAL_STRUCTURES,
                    [ Concatenation( PackageInfo( "MonoidalCategories" )[1].PackageName, ": ", PackageInfo( "MonoidalCategories" )[1].Subtitle ),
                      Concatenation( PackageInfo( package_name )[1].PackageName, ": ", PackageInfo( package_name )[1].Subtitle ) ],
                    [ "Coclosed Monoidal", key_val_rec.CoclosedSMonoidal ],
-                   [ "TensorProductOnObjects\( cat,", key_val_rec.TensorProductOnObjectsBCcat ],
+                   [ "TensorProductOnObjects( cat,", key_val_rec.TensorProductOnObjectsBCcat ],
                    [ "METHOD_NAME_RECORD, \"MonoidalCategories\"", key_val_rec.CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE ],
                    ], L );
     
     Add( L, [ "tensor product", key_val_rec.tensorSproduct ] );
     Add( L, [ "cohom tensor", key_val_rec.cohom_tensor ] );
-    Add( L, [ "\\\underline{coHom}", key_val_rec.coHom ] );
+    Add( L, [ "\\underline{coHom}", key_val_rec.coHom ] );
     
     if IsBound( key_val_rec.replace ) then
         Append( L, key_val_rec.replace );

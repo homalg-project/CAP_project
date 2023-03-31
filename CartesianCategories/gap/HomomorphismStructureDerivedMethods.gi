@@ -30,6 +30,7 @@ AddFinalDerivationBundle( # DistinguishedObjectOfHomomorphismStructure,
                     ],
 [
   DistinguishedObjectOfHomomorphismStructure,
+  [ [ TerminalObject, 1 ] ],
   function ( cat )
     
     return TerminalObject( cat );
@@ -38,6 +39,7 @@ AddFinalDerivationBundle( # DistinguishedObjectOfHomomorphismStructure,
 ],
 [
   HomomorphismStructureOnObjects,
+  [ [ ExponentialOnObjects, 1 ] ],
   function ( cat, a, b )
     
     return ExponentialOnObjects( cat, a, b );
@@ -46,6 +48,7 @@ end
 ],
 [
   HomomorphismStructureOnMorphismsWithGivenObjects,
+  [ [ ExponentialOnMorphismsWithGivenExponentials, 1 ] ],
   function ( cat, s, alpha, beta, r )
     
     return ExponentialOnMorphismsWithGivenExponentials( cat, s, alpha, beta, r );
@@ -54,6 +57,7 @@ end
 ],
 [
   InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure,
+  [ [ CartesianLambdaIntroduction, 1 ] ],
   function( cat, alpha )
     local iota;
     
@@ -63,13 +67,15 @@ end
 ],
 [
   InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism,
+  [ [ CartesianLambdaElimination, 1 ] ],
   function ( cat, a, b, iota )
     
     return CartesianLambdaElimination( cat, a, b, iota );
     
   end
 ] : CategoryFilter := function( cat )
-      return (HasIsEquippedWithHomomorphismStructure and IsEquippedWithHomomorphismStructure)( cat ) and
+      return HasIsEquippedWithHomomorphismStructure( cat ) and
+             IsEquippedWithHomomorphismStructure( cat ) and
              HasRangeCategoryOfHomomorphismStructure( cat ) and
              IsIdenticalObj( RangeCategoryOfHomomorphismStructure( cat ), cat );
     end,

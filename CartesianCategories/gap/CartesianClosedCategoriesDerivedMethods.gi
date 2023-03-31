@@ -27,6 +27,9 @@ AddFinalDerivationBundle( # IsomorphismFromCartesianDualObjectToExponentialIntoT
                       MorphismFromDirectProductToExponentialWithGivenObjects ],
 [
   IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject,
+  [ [ IdentityMorphism, 1 ],
+    [ ExponentialOnObjects, 1 ],
+    [ TerminalObject, 1 ] ],
   function( cat, object )
     
     return IdentityMorphism( cat, ExponentialOnObjects( cat, object, TerminalObject( cat ) ) );
@@ -35,6 +38,9 @@ AddFinalDerivationBundle( # IsomorphismFromCartesianDualObjectToExponentialIntoT
 ],
 [
   IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject,
+  [ [ IdentityMorphism, 1 ],
+    [ ExponentialOnObjects, 1 ],
+    [ TerminalObject, 1 ] ],
   function( cat, object )
     
     return IdentityMorphism( cat, ExponentialOnObjects( cat, object, TerminalObject( cat ) ) );

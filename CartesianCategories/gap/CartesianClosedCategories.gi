@@ -9,7 +9,8 @@
 
 ##
 AddDerivationToCAP( IsomorphismFromExponentialToObject,
-
+                    [ [ IsomorphismFromExponentialToObjectWithGivenExponential, 1 ] ],
+                    
   function( cat, object )
     
     return IsomorphismFromExponentialToObjectWithGivenExponential( cat, object, object );
@@ -19,7 +20,8 @@ end : CategoryFilter := IsSkeletalCategory,
 
 ##
 AddDerivationToCAP( IsomorphismFromObjectToExponential,
-
+                    [ [ IsomorphismFromObjectToExponentialWithGivenExponential, 1 ] ],
+                    
   function( cat, object )
     
     return IsomorphismFromObjectToExponentialWithGivenExponential( cat, object, object );

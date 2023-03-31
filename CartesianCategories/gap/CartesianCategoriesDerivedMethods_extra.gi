@@ -6,6 +6,9 @@
 
 ##
 AddDerivationToCAP( CartesianDiagonalWithGivenCartesianPower,
+                    [ [ IdentityMorphism, 1 ],
+                      [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 1 ] ],
+                    
   function( cat, a, n, cartesian_power )
     local id_a;
     
@@ -21,6 +24,9 @@ end );
 
 ##
 AddDerivationToCAP( CartesianDiagonal,
+                    [ [ CartesianDiagonalWithGivenCartesianPower, 1 ],
+                      [ DirectProduct, 1 ] ],
+                    
   function( cat, a, n )
     
     return CartesianDiagonalWithGivenCartesianPower( cat,
@@ -32,6 +38,8 @@ end );
 
 ##
 AddDerivationToCAP( DirectProductOnMorphismsWithGivenDirectProducts,
+                    [ [ DirectProductFunctorialWithGivenDirectProducts, 1 ] ],
+                    
   function( cat, s, alpha, beta, r )
     
     return DirectProductFunctorialWithGivenDirectProducts( cat,
@@ -46,6 +54,9 @@ end : Description := "TensorProductOnMorphisms is DirectProductFunctorial",
 
 ##
 AddDerivationToCAP( CartesianLeftUnitorWithGivenDirectProduct,
+                    [ [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 1 ],
+                      [ TerminalObject, 1 ] ],
+                    
   function( cat, a, s )
     
     return ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat,
@@ -57,6 +68,9 @@ end : Description := "CartesianLeftUnitorWithGivenDirectProduct using the projec
 
 ##
 AddDerivationToCAP( CartesianRightUnitorWithGivenDirectProduct,
+                    [ [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 1 ],
+                      [ TerminalObject, 1 ] ],
+                    
   function( cat, a, s )
     
     return ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat,
@@ -68,6 +82,11 @@ end : Description := "CartesianRightUnitorWithGivenDirectProduct using the proje
 
 ##
 AddDerivationToCAP( CartesianAssociatorRightToLeftWithGivenDirectProducts,
+                    [ [ DirectProduct, 2 ],
+                      [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 4 ],
+                      [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 2 ],
+                      [ PreCompose, 2 ] ],
+                    
   function( cat, s, a, b, c, r )
     local Db_c, bc, pi_b, pi_c, Da_bc, pi_a, pi_bc, Da_b, ab, pi_ab;
     
@@ -95,6 +114,11 @@ end : Description := "CartesianAssociatorRightToLeftOfDirectProductsWithGivenDir
 
 ##
 AddDerivationToCAP( CartesianAssociatorLeftToRightWithGivenDirectProducts,
+                    [ [ DirectProduct, 2 ],
+                      [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 4 ],
+                      [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 2 ],
+                      [ PreCompose, 2 ] ],
+                    
   function( cat, s, a, b, c, r )
     local Da_b, ab, pi_a, pi_b, Dab_c, pi_ab, pi_c, Db_c, bc, pi_bc;
     
@@ -122,6 +146,9 @@ end : Description := "CartesianAssociatorLeftToRightWithGivenDirectProducts usin
 
 ##
 AddDerivationToCAP( CartesianBraidingWithGivenDirectProducts,
+                    [ [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 2 ],
+                      [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 1 ] ],
+                    
   function( cat, axb, a, b, bxa )
     local p1, p2;
     
@@ -134,6 +161,11 @@ end : Description := "CartesianBraidingWithGivenDirectProducts using the direct 
 
 ##
 AddDerivationToCAP( LeftCartesianDistributivityFactoringWithGivenObjects,
+                    [ [ InjectionOfCofactorOfCoproduct, 2 ],
+                      [ DirectProductOnMorphisms, 2 ],
+                      [ IdentityMorphism, 2 ],
+                      [ UniversalMorphismFromCoproductWithGivenCoproduct, 1 ] ],
+                    
   function( cat, Uk_axLk, a, L, ax_UkLk )
     local l, iotaL, axiotaL;
     
@@ -153,6 +185,11 @@ end : Description := "LeftCartesianDistributivityFactoringWithGivenObjects using
 
 ##
 AddDerivationToCAP( RightCartesianDistributivityFactoringWithGivenObjects,
+                    [ [ InjectionOfCofactorOfCoproduct, 2 ],
+                      [ DirectProductOnMorphisms, 2 ],
+                      [ IdentityMorphism, 2 ],
+                      [ UniversalMorphismFromCoproductWithGivenCoproduct, 1 ] ],
+                    
   function( cat, Uk_Lkxa, L, a, UkLk_xa )
     local l, iotaL, iotaLxa;
     
@@ -172,6 +209,9 @@ end : Description := "RightCartesianDistributivityFactoringWithGivenObjects usin
 
 ##
 AddDerivationToCAP( LeftCartesianDistributivityExpandingWithGivenObjects,
+                    [ [ InverseForMorphisms, 1 ],
+                      [ LeftCartesianDistributivityFactoringWithGivenObjects, 1 ] ],
+                    
   function( cat, ax_UkLk, a, L, Uk_axLk )
     
     return InverseForMorphisms( cat, LeftCartesianDistributivityFactoringWithGivenObjects( cat, Uk_axLk, a, L, ax_UkLk ) );
@@ -181,6 +221,9 @@ end : CategoryFilter := IsDistributiveCategory,
 
 ##
 AddDerivationToCAP( RightCartesianDistributivityExpandingWithGivenObjects,
+                    [ [ InverseForMorphisms, 1 ],
+                      [ RightCartesianDistributivityFactoringWithGivenObjects, 1 ] ],
+                    
   function( cat, UkLk_xa, L, a, Uk_Lkxa )
     
     return InverseForMorphisms( cat, RightCartesianDistributivityFactoringWithGivenObjects( cat, Uk_Lkxa, L, a, UkLk_xa ) );
