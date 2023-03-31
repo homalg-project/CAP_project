@@ -395,6 +395,8 @@ InstallGlobalFunction( AddWithGivenDerivationPairToCAP,
   function( target_op, without_given_func, with_given_func )
     local without_given_name, with_given_name;
     
+    Print( "WARNING: AddWithGivenDerivationPairToCAP is deprecated and will not be supported after 2024.03.31. Please use AddDerivationToCAP twice instead.\n" );
+    
     without_given_name := NameFunction( target_op );
     
     with_given_name := CAP_INTERNAL_METHOD_NAME_RECORD.(without_given_name).with_given_without_given_name_pair[2];

@@ -52,13 +52,15 @@ AddDerivationToCAP( MorphismFromKernelObjectToSink,
   end : Description := "MorphismFromKernelObjectToSink as zero morphism from kernel object to range" );
 
 ##
-AddWithGivenDerivationPairToCAP( KernelLift,
+AddDerivationToCAP( KernelLift,
   function( cat, mor, test_object, test_morphism )
     
     return LiftAlongMonomorphism( cat, KernelEmbedding( cat, mor ), test_morphism );
     
-  end,
-  
+  end : Description := "KernelLift using LiftAlongMonomorphism and KernelEmbedding" );
+
+##
+AddDerivationToCAP( KernelLiftWithGivenKernelObject,
   function( cat, mor, test_object, test_morphism, kernel )
     
     return LiftAlongMonomorphism( cat, KernelEmbeddingWithGivenKernelObject( cat, mor, kernel ), test_morphism );
@@ -80,13 +82,15 @@ AddDerivationToCAP( MorphismFromSourceToCokernelObject,
   end : Description := "MorphismFromSourceToCokernelObject as zero morphism from source to cokernel object" );
 
 ##
-AddWithGivenDerivationPairToCAP( CokernelColift,
+AddDerivationToCAP( CokernelColift,
   function( cat, mor, test_object, test_morphism )
     
     return ColiftAlongEpimorphism( cat, CokernelProjection( cat, mor ), test_morphism );
     
-  end,
+  end : Description := "CokernelColift using ColiftAlongEpimorphism and CokernelProjection" );
 
+##
+AddDerivationToCAP( CokernelColiftWithGivenCokernelObject,
   function( cat, mor, test_object, test_morphism, cokernel )
       
       return ColiftAlongEpimorphism( cat, CokernelProjectionWithGivenCokernelObject( cat, mor, cokernel ), test_morphism );
@@ -94,7 +98,7 @@ AddWithGivenDerivationPairToCAP( CokernelColift,
 end : Description := "CokernelColift using ColiftAlongEpimorphism and CokernelProjection" );
 
 ##
-AddWithGivenDerivationPairToCAP( UniversalMorphismIntoDirectSum,
+AddDerivationToCAP( UniversalMorphismIntoDirectSum,
   function( cat, diagram, test_object, source )
     local nr_components;
     
@@ -105,8 +109,11 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoDirectSum,
         ZeroMorphism( cat, test_object, DirectSum( cat, diagram ) )
     );
     
-  end,
-  
+  end : CategoryFilter := IsAdditiveCategory,
+      Description := "UniversalMorphismIntoDirectSum using the injections of the direct sum" );
+
+##
+AddDerivationToCAP( UniversalMorphismIntoDirectSumWithGivenDirectSum,
   function( cat, diagram, test_object, source, direct_sum )
     local nr_components;
     
@@ -121,7 +128,7 @@ end : CategoryFilter := IsAdditiveCategory,
       Description := "UniversalMorphismIntoDirectSum using the injections of the direct sum" );
 
 ##
-AddWithGivenDerivationPairToCAP( UniversalMorphismFromDirectSum,
+AddDerivationToCAP( UniversalMorphismFromDirectSum,
   
   function( cat, diagram, test_object, sink )
     local nr_components;
@@ -133,8 +140,11 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromDirectSum,
         ZeroMorphism( cat, DirectSum( cat, diagram ), test_object )
     );
     
-  end,
-  
+  end : CategoryFilter := IsAdditiveCategory,
+      Description := "UniversalMorphismFromDirectSum using projections of the direct sum" );
+
+##
+AddDerivationToCAP( UniversalMorphismFromDirectSumWithGivenDirectSum,
   function( cat, diagram, test_object, sink, direct_sum )
     local nr_components;
     
@@ -149,7 +159,7 @@ end : CategoryFilter := IsAdditiveCategory,
       Description := "UniversalMorphismFromDirectSum using projections of the direct sum" );
 
 ##
-AddWithGivenDerivationPairToCAP( ProjectionInFactorOfDirectSum,
+AddDerivationToCAP( ProjectionInFactorOfDirectSum,
   
   function( cat, list, projection_number )
     local morphisms;
@@ -170,8 +180,10 @@ AddWithGivenDerivationPairToCAP( ProjectionInFactorOfDirectSum,
     
     return UniversalMorphismFromDirectSum( cat, list, list[projection_number], morphisms );
     
-  end,
-  
+  end : Description := "ProjectionInFactorOfDirectSum using UniversalMorphismFromDirectSum" );
+
+##
+AddDerivationToCAP( ProjectionInFactorOfDirectSumWithGivenDirectSum,
   function( cat, list, projection_number, direct_sum_object )
     local morphisms;
     
@@ -194,7 +206,7 @@ AddWithGivenDerivationPairToCAP( ProjectionInFactorOfDirectSum,
 end : Description := "ProjectionInFactorOfDirectSum using UniversalMorphismFromDirectSum" );
 
 ##
-AddWithGivenDerivationPairToCAP( InjectionOfCofactorOfDirectSum,
+AddDerivationToCAP( InjectionOfCofactorOfDirectSum,
   
   function( cat, list, injection_number )
     local morphisms;
@@ -215,8 +227,10 @@ AddWithGivenDerivationPairToCAP( InjectionOfCofactorOfDirectSum,
     
     return UniversalMorphismIntoDirectSum( cat, list, list[injection_number], morphisms );
     
-  end,
-  
+  end : Description := "InjectionOfCofactorOfDirectSum using UniversalMorphismIntoDirectSum" );
+
+##
+AddDerivationToCAP( InjectionOfCofactorOfDirectSumWithGivenDirectSum,
   function( cat, list, injection_number, direct_sum_object )
     local morphisms;
     
@@ -239,7 +253,7 @@ AddWithGivenDerivationPairToCAP( InjectionOfCofactorOfDirectSum,
 end : Description := "InjectionOfCofactorOfDirectSum using UniversalMorphismIntoDirectSum" );
 
 ##
-AddWithGivenDerivationPairToCAP( UniversalMorphismIntoTerminalObject,
+AddDerivationToCAP( UniversalMorphismIntoTerminalObject,
   
   function( cat, test_source )
     local terminal_object;
@@ -248,8 +262,11 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoTerminalObject,
     
     return ZeroMorphism( cat, test_source, terminal_object );
     
-  end,
-  
+  end : CategoryFilter := IsAdditiveCategory,
+      Description := "UniversalMorphismIntoTerminalObject computing the zero morphism" );
+
+##
+AddDerivationToCAP( UniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
   function( cat, test_source, terminal_object )
     
     return ZeroMorphism( cat, test_source, terminal_object );
@@ -258,7 +275,7 @@ end : CategoryFilter := IsAdditiveCategory,
       Description := "UniversalMorphismIntoTerminalObject computing the zero morphism" );
 
 ##
-AddWithGivenDerivationPairToCAP( UniversalMorphismFromInitialObject,
+AddDerivationToCAP( UniversalMorphismFromInitialObject,
   
   function( cat, test_sink )
     local initial_object;
@@ -267,8 +284,11 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromInitialObject,
     
     return ZeroMorphism( cat, initial_object, test_sink );
     
-  end,
-                 
+  end : CategoryFilter := IsAdditiveCategory,
+      Description := "UniversalMorphismFromInitialObject computing the zero morphism" );
+
+##
+AddDerivationToCAP( UniversalMorphismFromInitialObjectWithGivenInitialObject,
   function( cat, test_sink, initial_object )
     
     return ZeroMorphism( cat, initial_object, test_sink );
@@ -277,7 +297,7 @@ end : CategoryFilter := IsAdditiveCategory,
       Description := "UniversalMorphismFromInitialObject computing the zero morphism" );
 
 ##
-AddWithGivenDerivationPairToCAP( UniversalMorphismFromZeroObject,
+AddDerivationToCAP( UniversalMorphismFromZeroObject,
   
   function( cat, test_sink )
     local zero_object;
@@ -286,8 +306,11 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromZeroObject,
     
     return ZeroMorphism( cat, zero_object, test_sink );
     
-  end,
-  
+  end : CategoryFilter := IsAdditiveCategory,
+      Description := "UniversalMorphismFromZeroObject computing the zero morphism" );
+
+##
+AddDerivationToCAP( UniversalMorphismFromZeroObjectWithGivenZeroObject,
   function( cat, test_sink, zero_object )
     
     return ZeroMorphism( cat, zero_object, test_sink );
@@ -296,7 +319,7 @@ end : CategoryFilter := IsAdditiveCategory,
       Description := "UniversalMorphismFromZeroObject computing the zero morphism" );
 
 ##
-AddWithGivenDerivationPairToCAP( UniversalMorphismIntoZeroObject,
+AddDerivationToCAP( UniversalMorphismIntoZeroObject,
   
   function( cat, test_source )
     local zero_object;
@@ -305,8 +328,11 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoZeroObject,
     
     return ZeroMorphism( cat, test_source, zero_object );
     
-  end,
-                 
+  end : CategoryFilter := IsAdditiveCategory,
+      Description := "UniversalMorphismIntoZeroObject computing the zero morphism" );
+
+##
+AddDerivationToCAP( UniversalMorphismIntoZeroObjectWithGivenZeroObject,
   function( cat, test_source, zero_object )
     
     return ZeroMorphism( cat, test_source, zero_object );
@@ -774,7 +800,7 @@ AddDerivationToCAP( CoimageProjection,
 end : Description := "CoimageProjection as the coastriction to image" );
 
 ##
-AddWithGivenDerivationPairToCAP( CoastrictionToImage,
+AddDerivationToCAP( CoastrictionToImage,
                       
   function( cat, morphism )
     local image_embedding;
@@ -783,8 +809,10 @@ AddWithGivenDerivationPairToCAP( CoastrictionToImage,
     
     return LiftAlongMonomorphism( cat, image_embedding, morphism );
   
-  end,
-  
+  end : Description := "CoastrictionToImage using that image embedding can be seen as a kernel" );
+
+##
+AddDerivationToCAP( CoastrictionToImageWithGivenImageObject,
   function( cat, morphism, image )
     local image_embedding;
     
@@ -795,7 +823,7 @@ AddWithGivenDerivationPairToCAP( CoastrictionToImage,
 end : Description := "CoastrictionToImage using that image embedding can be seen as a kernel" );
 
 ##
-AddWithGivenDerivationPairToCAP( AstrictionToCoimage,
+AddDerivationToCAP( AstrictionToCoimage,
           
   function( cat, morphism )
     local coimage_projection;
@@ -804,8 +832,10 @@ AddWithGivenDerivationPairToCAP( AstrictionToCoimage,
     
     return ColiftAlongEpimorphism( cat, coimage_projection, morphism );
     
-  end,
-  
+  end : Description := "AstrictionToCoimage using that coimage projection can be seen as a cokernel" );
+
+##
+AddDerivationToCAP( AstrictionToCoimageWithGivenCoimageObject,
   function( cat, morphism, coimage )
     local coimage_projection;
     
@@ -816,7 +846,7 @@ AddWithGivenDerivationPairToCAP( AstrictionToCoimage,
 end : Description := "AstrictionToCoimage using that coimage projection can be seen as a cokernel" );
 
 ##
-AddWithGivenDerivationPairToCAP( AstrictionToCoimage,
+AddDerivationToCAP( AstrictionToCoimage,
           
   function( cat, morphism )
     local image_emb;
@@ -825,8 +855,10 @@ AddWithGivenDerivationPairToCAP( AstrictionToCoimage,
     
     return PreCompose( cat, CanonicalIdentificationFromCoimageToImageObject( cat, morphism ), image_emb );
     
-  end,
-  
+  end : Description := "AstrictionToCoimage as the image embedding" );
+
+##
+AddDerivationToCAP( AstrictionToCoimageWithGivenCoimageObject,
   function( cat, morphism, coimage )
     local image_emb;
     
@@ -837,7 +869,7 @@ AddWithGivenDerivationPairToCAP( AstrictionToCoimage,
 end : Description := "AstrictionToCoimage as the image embedding" );
 
 ##
-AddWithGivenDerivationPairToCAP( UniversalMorphismFromImage,
+AddDerivationToCAP( UniversalMorphismFromImage,
                       
   function( cat, morphism, test_factorization )
     local image_embedding;
@@ -846,8 +878,10 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromImage,
     
     return LiftAlongMonomorphism( cat, test_factorization[2], image_embedding );
     
-  end,
-  
+  end : Description := "UniversalMorphismFromImage using ImageEmbedding and LiftAlongMonomorphism" );
+
+##
+AddDerivationToCAP( UniversalMorphismFromImageWithGivenImageObject,
   function( cat, morphism, test_factorization, image )
     local image_embedding;
     
@@ -858,7 +892,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromImage,
 end : Description := "UniversalMorphismFromImage using ImageEmbedding and LiftAlongMonomorphism" );
 
 ##
-AddWithGivenDerivationPairToCAP( UniversalMorphismIntoCoimage,
+AddDerivationToCAP( UniversalMorphismIntoCoimage,
   
   function( cat, morphism, test_factorization )
     local coimage_projection;
@@ -867,8 +901,10 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoCoimage,
     
     return ColiftAlongEpimorphism( cat, test_factorization[1], coimage_projection );
     
-  end,
-  
+  end : Description := "UniversalMorphismIntoCoimage using CoimageProjection and ColiftAlongEpimorphism" );
+
+##
+AddDerivationToCAP( UniversalMorphismIntoCoimageWithGivenCoimageObject,
   function( cat, morphism, test_factorization, coimage )
     local coimage_projection;
     
@@ -895,13 +931,15 @@ AddDerivationToCAP( UniversalMorphismIntoCoimage,
   end : Description := "UniversalMorphismIntoCoimage using UniversalMorphismFromImage and CanonicalIdentificationFromImageObjectToCoimage" );
 
 ##
-AddWithGivenDerivationPairToCAP( UniversalMorphismIntoEqualizer,
+AddDerivationToCAP( UniversalMorphismIntoEqualizer,
   function( cat, A, diagram, test_object, test_morphism )
     
     return LiftAlongMonomorphism( cat, EmbeddingOfEqualizer( cat, A, diagram ), test_morphism );
     
-  end,
-  
+  end : Description := "UniversalMorphismIntoEqualizer using LiftAlongMonomorphism and EmbeddingOfEqualizer" );
+
+##
+AddDerivationToCAP( UniversalMorphismIntoEqualizerWithGivenEqualizer,
   function( cat, A, diagram, test_object, test_morphism, equalizer )
     
     return LiftAlongMonomorphism( cat, EmbeddingOfEqualizerWithGivenEqualizer( cat, A, diagram, equalizer ), test_morphism );
@@ -923,13 +961,15 @@ AddDerivationToCAP( MorphismFromEqualizerToSink,
   end : Description := "MorphismFromEqualizerToSink by composing the embedding with the first morphism in the diagram" );
 
 ##
-AddWithGivenDerivationPairToCAP( UniversalMorphismFromCoequalizer,
+AddDerivationToCAP( UniversalMorphismFromCoequalizer,
   function( cat, A, diagram, test_object, test_morphism )
     
     return ColiftAlongEpimorphism( cat, ProjectionOntoCoequalizer( cat, A, diagram ), test_morphism );
     
-  end,
+  end : Description := "UniversalMorphismFromCoequalizer using ColiftAlongEpimorphism and ProjectionOntoCoequalizer" );
 
+##
+AddDerivationToCAP( UniversalMorphismFromCoequalizerWithGivenCoequalizer,
   function( cat, A, diagram, test_object, test_morphism, coequalizer )
       
       return ColiftAlongEpimorphism( cat, ProjectionOntoCoequalizerWithGivenCoequalizer( cat, A, diagram, coequalizer ), test_morphism );
