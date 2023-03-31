@@ -6,6 +6,7 @@
 
 ##
 AddDerivationToCAP( Braiding,
+                    "calling the WithGiven operation in a skeletal setting",
                     [ [ TensorProductOnObjects, 1 ],
                       [ BraidingWithGivenTensorProducts, 1 ] ],
                     
@@ -16,11 +17,11 @@ AddDerivationToCAP( Braiding,
     
     return BraidingWithGivenTensorProducts( cat, source_and_range, object_1, object_2, source_and_range );
     
-end : CategoryFilter := IsSkeletalCategory,
-      Description := "calling the WithGiven operation in a skeletal setting" );
+end : CategoryFilter := IsSkeletalCategory );
 
 ##
 AddDerivationToCAP( BraidingInverse,
+                    "calling the WithGiven operation in a skeletal setting",
                     [ [ TensorProductOnObjects, 1 ],
                       [ BraidingInverseWithGivenTensorProducts, 1 ] ],
                     
@@ -31,8 +32,7 @@ AddDerivationToCAP( BraidingInverse,
     
     return BraidingInverseWithGivenTensorProducts( cat, source_and_range, object_1, object_2, source_and_range );
     
-end : CategoryFilter := IsSkeletalCategory,
-      Description := "calling the WithGiven operation in a skeletal setting" );
+end : CategoryFilter := IsSkeletalCategory );
 
 ##
 InstallMethod( CheckBraiding,

@@ -9,6 +9,7 @@
 
 ##
 AddDerivationToCAP( LeftCocartesianCodistributivityExpanding,
+                    "calling the WithGiven operation in a skeletal setting",
                     [ [ Coproduct, 1 ],
                       [ DirectProduct, 1 ],
                       [ LeftCocartesianCodistributivityExpandingWithGivenObjects, 1 ] ],
@@ -24,11 +25,11 @@ AddDerivationToCAP( LeftCocartesianCodistributivityExpanding,
              source_and_range
            );
     
-end : CategoryFilter := IsSkeletalCategory,
-      Description := "calling the WithGiven operation in a skeletal setting" );
+end : CategoryFilter := IsSkeletalCategory );
 
 ##
 AddDerivationToCAP( LeftCocartesianCodistributivityFactoring,
+                    "calling the WithGiven operation in a skeletal setting",
                     [ [ Coproduct, 1 ],
                       [ DirectProduct, 1 ],
                       [ LeftCocartesianCodistributivityFactoringWithGivenObjects, 1 ] ],
@@ -44,11 +45,11 @@ AddDerivationToCAP( LeftCocartesianCodistributivityFactoring,
              source_and_range
            );
     
-end : CategoryFilter := IsSkeletalCategory,
-      Description := "calling the WithGiven operation in a skeletal setting" );
+end : CategoryFilter := IsSkeletalCategory );
 
 ##
 AddDerivationToCAP( RightCocartesianCodistributivityExpanding,
+                    "calling the WithGiven operation in a skeletal setting",
                     [ [ Coproduct, 1 ],
                       [ DirectProduct, 1 ],
                       [ RightCocartesianCodistributivityExpandingWithGivenObjects, 1 ] ],
@@ -64,11 +65,11 @@ AddDerivationToCAP( RightCocartesianCodistributivityExpanding,
              source_and_range
            );
     
-end : CategoryFilter := IsSkeletalCategory,
-      Description := "calling the WithGiven operation in a skeletal setting" );
+end : CategoryFilter := IsSkeletalCategory );
 
 ##
 AddDerivationToCAP( RightCocartesianCodistributivityFactoring,
+                    "calling the WithGiven operation in a skeletal setting",
                     [ [ Coproduct, 1 ],
                       [ DirectProduct, 1 ],
                       [ RightCocartesianCodistributivityFactoringWithGivenObjects, 1 ] ],
@@ -84,5 +85,4 @@ AddDerivationToCAP( RightCocartesianCodistributivityFactoring,
              source_and_range
            );
     
-end : CategoryFilter := IsSkeletalCategory,
-      Description := "calling the WithGiven operation in a skeletal setting" );
+end : CategoryFilter := IsSkeletalCategory );

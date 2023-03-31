@@ -9,25 +9,25 @@
 
 ##
 AddDerivationToCAP( IsomorphismFromCoexponentialToObject,
+                    "calling the WithGiven operation in a skeletal setting",
                     [ [ IsomorphismFromCoexponentialToObjectWithGivenCoexponential, 1 ] ],
                     
   function( cat, object )
 
     return IsomorphismFromCoexponentialToObjectWithGivenCoexponential( cat, object, object );
 
-end : CategoryFilter := IsSkeletalCategory,
-      Description := "calling the WithGiven operation in a skeletal setting" );
+end : CategoryFilter := IsSkeletalCategory );
 
 ##
 AddDerivationToCAP( IsomorphismFromObjectToCoexponential,
+                    "calling the WithGiven operation in a skeletal setting",
                     [ [ IsomorphismFromObjectToCoexponentialWithGivenCoexponential, 1 ] ],
                     
   function( cat, object )
 
     return IsomorphismFromObjectToCoexponentialWithGivenCoexponential( cat, object, object );
 
-end : CategoryFilter := IsSkeletalCategory,
-      Description := "calling the WithGiven operation in a skeletal setting" );
+end : CategoryFilter := IsSkeletalCategory );
 
 ####################################
 # Convenience Methods

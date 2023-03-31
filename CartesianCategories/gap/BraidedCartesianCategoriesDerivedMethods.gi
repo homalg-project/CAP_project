@@ -9,6 +9,7 @@
 
 ##
 AddDerivationToCAP( CartesianBraidingInverseWithGivenDirectProducts,
+                    "CartesianBraidingInverseWithGivenDirectProducts as the inverse of the braiding",
                     [ [ InverseForMorphisms, 1 ],
                       [ CartesianBraiding, 1 ] ],
                     
@@ -16,11 +17,11 @@ AddDerivationToCAP( CartesianBraidingInverseWithGivenDirectProducts,
     ##TODO: Use CartesianBraidingWithGiven
     return InverseForMorphisms( cat, CartesianBraiding( cat, object_1, object_2 ) );
     
-end : CategoryFilter := IsCartesianCategory,
-      Description := "CartesianBraidingInverseWithGivenDirectProducts as the inverse of the braiding" );
+end : CategoryFilter := IsCartesianCategory );
 
 ##
 AddDerivationToCAP( CartesianBraidingWithGivenDirectProducts,
+                    "CartesianBraidingWithGivenDirectProducts as the inverse of CartesianBraidingInverse",
                     [ [ InverseForMorphisms, 1 ],
                       [ CartesianBraidingInverse, 1 ] ],
                     
@@ -28,5 +29,4 @@ AddDerivationToCAP( CartesianBraidingWithGivenDirectProducts,
     ##TODO: Use CartesianBraidingInverseWithGiven
     return InverseForMorphisms( cat, CartesianBraidingInverse( cat, object_1, object_2 ) );
     
-end : CategoryFilter := IsCartesianCategory,
-      Description := "CartesianBraidingWithGivenDirectProducts as the inverse of CartesianBraidingInverse" );
+end : CategoryFilter := IsCartesianCategory );

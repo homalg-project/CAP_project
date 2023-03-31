@@ -6,6 +6,7 @@
 
 ##
 AddDerivationToCAP( InternalHomOnObjects,
+                    "InternalHomOnObjects as the source of IsomorphismFromInternalHomToTensorProductWithDualObject",
                     [ [ IsomorphismFromInternalHomToTensorProductWithDualObject, 1 ] ],
                     
   function( cat, a, b )
@@ -14,11 +15,11 @@ AddDerivationToCAP( InternalHomOnObjects,
 
     return Source( IsomorphismFromInternalHomToTensorProductWithDualObject( cat, a, b ) );
     
-end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-      Description := "InternalHomOnObjects as the source of IsomorphismFromInternalHomToTensorProductWithDualObject" );
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory );
 
 ##
 AddDerivationToCAP( InternalHomOnObjects,
+                    "InternalHomOnObjects as the range of IsomorphismFromTensorProductWithDualObjectToInternalHom",
                     [ [ IsomorphismFromTensorProductWithDualObjectToInternalHom, 1 ] ],
                     
   function( cat, a, b )
@@ -27,11 +28,11 @@ AddDerivationToCAP( InternalHomOnObjects,
     
     return Range( IsomorphismFromTensorProductWithDualObjectToInternalHom( cat, a, b ) );
     
-end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-      Description := "InternalHomOnObjects as the range of IsomorphismFromTensorProductWithDualObjectToInternalHom" );
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory );
 
 ##
 AddDerivationToCAP( InternalHomOnMorphismsWithGivenInternalHoms,
+                    "InternalHomOnMorphismsWithGivenInternalHoms using functoriality of Dual and TensorProduct",
                     [ [ DualOnMorphisms, 1 ],
                       [ PreComposeList, 1 ],
                       [ IsomorphismFromInternalHomToTensorProductWithDualObject, 1 ],
@@ -66,11 +67,11 @@ AddDerivationToCAP( InternalHomOnMorphismsWithGivenInternalHoms,
              IsomorphismFromTensorProductWithDualObjectToInternalHom( cat, Source( alpha ), Range( beta ) )
            ] );
     
-end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-      Description := "InternalHomOnMorphismsWithGivenInternalHoms using functoriality of Dual and TensorProduct" );
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory );
 
 ##
 AddDerivationToCAP( MorphismFromBidualWithGivenBidual,
+                    "MorphismFromBidualWithGivenBidual as the inverse of MorphismToBidualWithGivenBidual",
                     [ [ InverseForMorphisms, 1 ],
                       [ MorphismToBidualWithGivenBidual, 1 ] ],
                     
@@ -80,11 +81,11 @@ AddDerivationToCAP( MorphismFromBidualWithGivenBidual,
     
     return InverseForMorphisms( cat, MorphismToBidualWithGivenBidual( cat, a, bidual ) );
     
-end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-      Description := "MorphismFromBidualWithGivenBidual as the inverse of MorphismToBidualWithGivenBidual" );
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory );
 
 ##
 AddDerivationToCAP( MorphismToBidualWithGivenBidual,
+                    "MorphismToBidualWithGivenBidual as the inverse of MorphismFromBidualWithGivenBidual",
                     [ [ InverseForMorphisms, 1 ],
                       [ MorphismFromBidualWithGivenBidual, 1 ] ],
                     
@@ -94,11 +95,11 @@ AddDerivationToCAP( MorphismToBidualWithGivenBidual,
     
     return InverseForMorphisms( cat, MorphismFromBidualWithGivenBidual( cat, a, bidual ) );
     
-end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-      Description := "MorphismToBidualWithGivenBidual as the inverse of MorphismFromBidualWithGivenBidual" );
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory );
 
 ##
 AddDerivationToCAP( EvaluationMorphismWithGivenSource,
+                    "EvaluationMorphismWithGivenSource using the rigidity of the monoidal category",
                     [ [ PreComposeList, 1 ],
                       [ TensorProductOnMorphisms, 3 ],
                       [ IsomorphismFromInternalHomToTensorProductWithDualObject, 1 ],
@@ -154,11 +155,11 @@ AddDerivationToCAP( EvaluationMorphismWithGivenSource,
       
     return morphism;
     
-end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-      Description := "EvaluationMorphismWithGivenSource using the rigidity of the monoidal category" );
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory );
 
 ##
 AddDerivationToCAP( EvaluationMorphismWithGivenSource,
+                    "EvaluationMorphismWithGivenSource using the rigidity and strictness of the monoidal category",
                     [ [ PreComposeList, 1 ],
                       [ TensorProductOnMorphisms, 3 ],
                       [ IsomorphismFromInternalHomToTensorProductWithDualObject, 1 ],
@@ -200,11 +201,11 @@ AddDerivationToCAP( EvaluationMorphismWithGivenSource,
                     
     return morphism;
       
-end : CategoryFilter := cat -> HasIsRigidSymmetricClosedMonoidalCategory( cat ) and IsRigidSymmetricClosedMonoidalCategory( cat ) and HasIsStrictMonoidalCategory( cat ) and IsStrictMonoidalCategory( cat ),
-      Description := "EvaluationMorphismWithGivenSource using the rigidity and strictness of the monoidal category" );
+end : CategoryFilter := cat -> HasIsRigidSymmetricClosedMonoidalCategory( cat ) and IsRigidSymmetricClosedMonoidalCategory( cat ) and HasIsStrictMonoidalCategory( cat ) and IsStrictMonoidalCategory( cat ) );
 
 ##
 AddDerivationToCAP( CoevaluationMorphismWithGivenRange,
+                    "CoevaluationMorphismWithGivenRange using the rigidity of the monoidal category",
                     [ [ DualOnObjects, 1 ],
                       [ IdentityMorphism, 2 ],
                       [ PreComposeList, 1 ],
@@ -273,11 +274,11 @@ AddDerivationToCAP( CoevaluationMorphismWithGivenRange,
                     
     return morphism;
     
-end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-      Description := "CoevaluationMorphismWithGivenRange using the rigidity of the monoidal category" );
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory );
 
 ##
 AddDerivationToCAP( CoevaluationMorphismWithGivenRange,
+                    "CoevaluationMorphismWithGivenRange using the rigidity of the monoidal category",
                     [ [ DualOnObjects, 1 ],
                       [ IdentityMorphism, 2 ],
                       [ PreComposeList, 1 ],
@@ -332,55 +333,55 @@ AddDerivationToCAP( CoevaluationMorphismWithGivenRange,
     
     return morphism;
     
-end : CategoryFilter := cat -> HasIsRigidSymmetricClosedMonoidalCategory( cat ) and IsRigidSymmetricClosedMonoidalCategory( cat ) and HasIsStrictMonoidalCategory( cat ) and IsStrictMonoidalCategory( cat ),
-      Description := "CoevaluationMorphismWithGivenRange using the rigidity of the monoidal category" );
+end : CategoryFilter := cat -> HasIsRigidSymmetricClosedMonoidalCategory( cat ) and IsRigidSymmetricClosedMonoidalCategory( cat ) and HasIsStrictMonoidalCategory( cat ) and IsStrictMonoidalCategory( cat ) );
 
 ##
 AddDerivationToCAP( MorphismFromTensorProductToInternalHomWithGivenObjects,
+                    "MorphismFromTensorProductToInternalHomWithGivenObjects using IsomorphismFromTensorProductWithDualObjectToInternalHom",
                     [ [ IsomorphismFromTensorProductWithDualObjectToInternalHom, 1 ] ],
                     
   function( cat, tensor_object, a, b, internal_hom )
     
     return IsomorphismFromTensorProductWithDualObjectToInternalHom( cat, a, b );
     
-end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-      Description := "MorphismFromTensorProductToInternalHomWithGivenObjects using IsomorphismFromTensorProductWithDualObjectToInternalHom" );
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory );
 
 ##
 AddDerivationToCAP( MorphismFromInternalHomToTensorProductWithGivenObjects,
+                    "MorphismFromInternalHomToTensorProductWithGivenObjects using IsomorphismFromInternalHomToTensorProductWithDualObject",
                     [ [ IsomorphismFromInternalHomToTensorProductWithDualObject, 1 ] ],
                     
   function( cat, tensor_object, a, b, internal_hom )
     
     return IsomorphismFromInternalHomToTensorProductWithDualObject( cat, a, b );
     
-end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-      Description := "MorphismFromInternalHomToTensorProductWithGivenObjects using IsomorphismFromInternalHomToTensorProductWithDualObject" );
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory );
 
 ##
 AddDerivationToCAP( IsomorphismFromInternalHomToTensorProductWithDualObject,
+                    "IsomorphismFromInternalHomToTensorProductWithDualObject using MorphismFromInternalHomToTensorProduct",
                     [ [ MorphismFromInternalHomToTensorProduct, 1 ] ],
                     
   function( cat, a, b )
     
     return MorphismFromInternalHomToTensorProduct( cat, a, b );
     
-end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-      Description := "IsomorphismFromInternalHomToTensorProductWithDualObject using MorphismFromInternalHomToTensorProduct" );
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory );
 
 ##
 AddDerivationToCAP( IsomorphismFromTensorProductWithDualObjectToInternalHom,
+                    "IsomorphismFromTensorProductWithDualObjectToInternalHom using MorphismFromTensorProductToInternalHom",
                     [ [ MorphismFromTensorProductToInternalHom, 1 ] ],
                     
   function( cat, a, b )
     
     return MorphismFromTensorProductToInternalHom( cat, a, b );
     
-end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-      Description := "IsomorphismFromTensorProductWithDualObjectToInternalHom using MorphismFromTensorProductToInternalHom" );
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory );
 
 ##
 AddDerivationToCAP( MorphismFromInternalHomToTensorProductWithGivenObjects,
+                    "MorphismFromInternalHomToTensorProductWithGivenObjects using TensorProductInternalHomCompatibilityMorphismInverse",
                     [ [ TensorUnit, 1 ],
                       [ PostComposeList, 1 ],
                       [ TensorProductOnMorphisms, 1 ],
@@ -424,11 +425,11 @@ AddDerivationToCAP( MorphismFromInternalHomToTensorProductWithGivenObjects,
                LeftUnitorInverse( cat, b ) ),
            ] );
     
-end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-      Description := "MorphismFromInternalHomToTensorProductWithGivenObjects using TensorProductInternalHomCompatibilityMorphismInverse" );
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory );
 
 ##
 AddDerivationToCAP( CoevaluationForDualWithGivenTensorProduct,
+                    "CoevaluationForDualWithGivenTensorProduct using LambdaIntroduction on the identity and IsomorphismFromInternalHomToTensorProductWithDualObject",
                     [ [ IdentityMorphism, 1 ],
                       [ PreComposeList, 1 ],
                       [ LambdaIntroduction, 1 ],
@@ -463,11 +464,11 @@ AddDerivationToCAP( CoevaluationForDualWithGivenTensorProduct,
                             
     return morphism;
     
-end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-      Description := "CoevaluationForDualWithGivenTensorProduct using LambdaIntroduction on the identity and IsomorphismFromInternalHomToTensorProductWithDualObject" );
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory );
 
 ##
 AddDerivationToCAP( TraceMap,
+                    "TraceMap using LambdaIntroduction and EvaluationForDual",
                     [ [ PreComposeList, 1 ],
                       [ LambdaIntroduction, 1 ],
                       [ IsomorphismFromInternalHomToTensorProductWithDualObject, 1 ],
@@ -502,11 +503,11 @@ AddDerivationToCAP( TraceMap,
     
     return result_morphism;
     
-end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-      Description := "TraceMap using LambdaIntroduction and EvaluationForDual" );
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory );
 
 ##
 AddDerivationToCAP( RankMorphism,
+                    "Rank of an object as the trace of its identity",
                     [ [ TraceMap, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     
@@ -514,11 +515,11 @@ AddDerivationToCAP( RankMorphism,
     
     return TraceMap( cat, IdentityMorphism( cat, a ) );
     
-end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-      Description := "Rank of an object as the trace of its identity" );
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory );
 
 ##
 AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects,
+                    "TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects as the inverse of TensorProductInternalHomCompatibilityMorphismWithGivenObjects",
                     [ [ InverseForMorphisms, 1 ],
                       [ TensorProductInternalHomCompatibilityMorphismWithGivenObjects, 1 ] ],
                     
@@ -528,11 +529,11 @@ AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphismInverseWithGive
     
     return InverseForMorphisms( cat, TensorProductInternalHomCompatibilityMorphismWithGivenObjects( cat, range, list, source ) );
     
-end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-      Description := "TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects as the inverse of TensorProductInternalHomCompatibilityMorphismWithGivenObjects" );
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory );
 
 ##
 AddDerivationToCAP( DualOnMorphismsWithGivenDuals,
+                    "DualOnMorphismsWithGivenDuals via coevaluation and evaluation for duals",
                     [ [ PreComposeList, 1 ],
                       [ RightUnitorInverse, 1 ],
                       [ TensorProductOnMorphisms, 4 ],
@@ -589,8 +590,7 @@ AddDerivationToCAP( DualOnMorphismsWithGivenDuals,
         LeftUnitor( cat, av )
     ] );
     
-end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
-      Description := "DualOnMorphismsWithGivenDuals via coevaluation and evaluation for duals" );
+end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory );
 
 ####################################
 ## Final derived methods

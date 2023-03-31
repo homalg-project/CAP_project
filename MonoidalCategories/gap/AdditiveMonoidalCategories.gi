@@ -6,6 +6,7 @@
 
 ##
 AddDerivationToCAP( LeftDistributivityExpanding,
+                    "calling the WithGiven operation in a skeletal setting",
                     [ [ TensorProductOnObjects, 1 ],
                       [ DirectSum, 1 ],
                       [ LeftDistributivityExpandingWithGivenObjects, 1 ] ],
@@ -21,11 +22,11 @@ AddDerivationToCAP( LeftDistributivityExpanding,
              source_and_range
            );
     
-end : CategoryFilter := IsSkeletalCategory,
-      Description := "calling the WithGiven operation in a skeletal setting" );
+end : CategoryFilter := IsSkeletalCategory );
 
 ##
 AddDerivationToCAP( LeftDistributivityFactoring,
+                    "calling the WithGiven operation in a skeletal setting",
                     [ [ TensorProductOnObjects, 1 ],
                       [ DirectSum, 1 ],
                       [ LeftDistributivityFactoringWithGivenObjects, 1 ] ],
@@ -41,11 +42,11 @@ AddDerivationToCAP( LeftDistributivityFactoring,
              source_and_range
            );
     
-end : CategoryFilter := IsSkeletalCategory,
-      Description := "calling the WithGiven operation in a skeletal setting" );
+end : CategoryFilter := IsSkeletalCategory );
 
 ##
 AddDerivationToCAP( RightDistributivityExpanding,
+                    "calling the WithGiven operation in a skeletal setting",
                     [ [ TensorProductOnObjects, 1 ],
                       [ DirectSum, 1 ],
                       [ RightDistributivityExpandingWithGivenObjects, 1 ] ],
@@ -61,11 +62,11 @@ AddDerivationToCAP( RightDistributivityExpanding,
              source_and_range
            );
     
-end : CategoryFilter := IsSkeletalCategory,
-      Description := "calling the WithGiven operation in a skeletal setting" );
+end : CategoryFilter := IsSkeletalCategory );
 
 ##
 AddDerivationToCAP( RightDistributivityFactoring,
+                    "calling the WithGiven operation in a skeletal setting",
                     [ [ TensorProductOnObjects, 1 ],
                       [ DirectSum, 1 ],
                       [ RightDistributivityFactoringWithGivenObjects, 1 ] ],
@@ -81,5 +82,4 @@ AddDerivationToCAP( RightDistributivityFactoring,
              source_and_range
            );
     
-end : CategoryFilter := IsSkeletalCategory,
-      Description := "calling the WithGiven operation in a skeletal setting" );
+end : CategoryFilter := IsSkeletalCategory );
