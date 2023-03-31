@@ -270,7 +270,7 @@ InstallOtherMethod( AddDerivation,
         
     fi;
     
-    #Print( "WARNING: Calling AddDerivation without a description as the second argument is deprecated and will not be supported after 2024.03.31.\n" );
+    Print( "WARNING: Calling AddDerivation without a description as the second argument is deprecated and will not be supported after 2024.03.31.\n" );
     
     AddDerivation( graph, target_op, CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Description", "" ), used_ops_with_multiples_and_category_getters, func );
     

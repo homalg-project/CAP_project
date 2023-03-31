@@ -70,7 +70,7 @@ InstallGlobalFunction( AddFinalDerivation,
         
     else
         
-        #Print( "WARNING: Calling AddFinalDerivation without a description as the second argument is deprecated and will not be supported after 2024.03.31.\n" );
+        Print( "WARNING: Calling AddFinalDerivation without a description as the second argument is deprecated and will not be supported after 2024.03.31.\n" );
         
         description := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Description", "" );
         can_compute := args[1];
@@ -104,7 +104,7 @@ InstallGlobalFunction( AddFinalDerivationBundle,
         
     else
         
-        #Print( "WARNING: Calling AddFinalDerivationBundle without a description as the first argument is deprecated and will not be supported after 2024.03.31.\n" );
+        Print( "WARNING: Calling AddFinalDerivationBundle without a description as the first argument is deprecated and will not be supported after 2024.03.31.\n" );
         
         description := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Description", "" );
         can_compute := args[1];
