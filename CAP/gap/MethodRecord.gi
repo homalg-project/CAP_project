@@ -4662,14 +4662,18 @@ end );
 
 BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
   
-  function( without_given_name, with_given_name, object_function_name, object_arguments_positions )
-    local object_function, with_given_name_function, record, attribute_tester;
+  function( without_given_name, with_given_name, object_function_name, object_filter_list, object_arguments_positions )
+    local object_function, with_given_name_function, is_attribute, attribute_tester;
     
     object_function := ValueGlobal( object_function_name );
     
     with_given_name_function := ValueGlobal( with_given_name );
     
-    if not IsAttribute( object_function ) then
+    # Check if `object_function` is declared as an attribute and can actually be used as one in our context.
+    # We do not print a warning if somethings is declared as an attribute but cannot be used as one in our context because this might actually happen, see for example `UniqueMorphism`.
+    is_attribute := IsAttribute( object_function ) and Length( object_filter_list ) <= 2 and IsSpecializationOfFilter( IsAttributeStoringRep, CAP_INTERNAL_REPLACED_STRING_WITH_FILTER( Last( object_filter_list ) ) );
+    
+    if not is_attribute then
         
         return function( arg )
           local category, without_given_weight, with_given_weight, object_args, cache, cache_value;
@@ -4759,8 +4763,8 @@ end );
 
 BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
   
-  function( source_range_object, object_function_name, object_arguments_positions )
-    local object_getter, object_function, setter_function, cache_key_length;
+  function( source_range_object, object_function_name, object_filter_list, object_arguments_positions )
+    local object_getter, object_function, cache_key_length, is_attribute, setter_function;
     
     if source_range_object = "Source" then
         object_getter := Source;
@@ -4774,7 +4778,11 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
     
     cache_key_length := Length( object_arguments_positions );
     
-    if not IsAttribute( object_function ) then
+    # Check if `object_function` is declared as an attribute and can actually be used as one in our context.
+    # We do not print a warning if somethings is declared as an attribute but cannot be used as one in our context because this might actually happen, see for example `UniqueMorphism`.
+    is_attribute := IsAttribute( object_function ) and Length( object_filter_list ) <= 2 and IsSpecializationOfFilter( IsAttributeStoringRep, CAP_INTERNAL_REPLACED_STRING_WITH_FILTER( Last( object_filter_list ) ) );
+    
+    if not is_attribute then
     
         return function( arg )
           local category, object_args, result, object;
@@ -5504,7 +5512,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                         
                     else
                         
-                        without_given_rec.redirect_function := CAP_INTERNAL_CREATE_REDIRECTION( without_given_name, with_given_name, object_name, [ 1 .. Length( object_filter_list ) ] );
+                        without_given_rec.redirect_function := CAP_INTERNAL_CREATE_REDIRECTION( without_given_name, with_given_name, object_name, object_filter_list, [ 1 .. Length( object_filter_list ) ] );
                         
                     fi;
                     
@@ -5512,7 +5520,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                 
                 if not IsBound( without_given_rec.post_function ) then
                     
-                    without_given_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( with_given_object_position, object_name, [ 1 .. Length( object_filter_list ) ] );
+                    without_given_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( with_given_object_position, object_name, object_filter_list, [ 1 .. Length( object_filter_list ) ] );
                     
                 fi;
                 
