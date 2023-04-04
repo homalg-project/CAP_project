@@ -569,7 +569,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
 end );
 
 BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR", function( without_given_rec, with_given_rec )
-  local without_given_name, with_given_name, without_given_arguments_names, with_given_arguments_names, with_given_object_position, with_given_via_without_given_function, with_given_arguments_strings, without_given_via_with_given_function, preconditions;
+  local without_given_name, with_given_name, without_given_arguments_names, with_given_arguments_names, with_given_object_position, with_given_via_without_given_function, with_given_arguments_strings, additional_preconditions, x, pos, without_given_via_with_given_function;
     
     without_given_name := without_given_rec.function_name;
     with_given_name := with_given_rec.function_name;
@@ -598,9 +598,27 @@ BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR", function( without
         
         with_given_arguments_strings := Concatenation( without_given_arguments_names, [ without_given_rec.output_source_getter_string ] );
         
+        if not IsBound( without_given_rec.output_source_getter_preconditions ) then
+            
+            Print( "WARNING: Cannot install with given derivation pair for ", without_given_name, " because <without_given_rec.output_source_getter_preconditions> is not set.\n" );
+            return;
+            
+        fi;
+        
+        additional_preconditions := without_given_rec.output_source_getter_preconditions;
+        
     elif with_given_object_position = "Range" then
         
         with_given_arguments_strings := Concatenation( without_given_arguments_names, [ without_given_rec.output_range_getter_string ] );
+        
+        if not IsBound( without_given_rec.output_range_getter_preconditions ) then
+            
+            Print( "WARNING: Cannot install with given derivation pair for ", without_given_name, " because <without_given_rec.output_range_getter_preconditions> is not set.\n" );
+            return;
+            
+        fi;
+        
+        additional_preconditions := without_given_rec.output_range_getter_preconditions;
         
     elif with_given_object_position = "both" then
         
@@ -610,6 +628,39 @@ BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR", function( without
             without_given_arguments_names{[ 2 .. Length( without_given_arguments_names ) ]},
             [ without_given_rec.output_range_getter_string ]
         );
+        
+        if not IsBound( without_given_rec.output_source_getter_preconditions ) then
+            
+            Print( "WARNING: Cannot install with given derivation pair for ", without_given_name, " because <without_given_rec.output_source_getter_preconditions> is not set.\n" );
+            return;
+            
+        fi;
+        
+        if not IsBound( without_given_rec.output_range_getter_preconditions ) then
+            
+            Print( "WARNING: Cannot install with given derivation pair for ", without_given_name, " because <without_given_rec.output_range_getter_preconditions> is not set.\n" );
+            return;
+            
+        fi;
+        
+        # merge output_source_getter_preconditions and output_range_getter_preconditions
+        additional_preconditions := without_given_rec.output_source_getter_preconditions;
+        
+        for x in without_given_rec.output_range_getter_preconditions do
+            
+            pos := PositionProperty( additional_preconditions, y -> y[1] = x[1] );
+            
+            if pos = fail then
+                
+                Add( additional_preconditions, x );
+                
+            else
+                
+                additional_preconditions[pos][2] := additional_preconditions[pos][2] + x[2];
+                
+            fi;
+            
+        od;
         
     else
         
@@ -639,20 +690,10 @@ BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR", function( without
         with_given_via_without_given_function
     );
     
-    if IsBound( with_given_rec.with_given_object_name ) then
-        
-        preconditions := [ [ ValueGlobal( with_given_name ), 1 ], [ ValueGlobal( with_given_rec.with_given_object_name ), 1 ] ];
-        
-    else
-        
-        preconditions := fail;
-        
-    fi;
-    
     AddDerivationToCAP(
         ValueGlobal( without_given_name ),
         Concatenation( without_given_name, " by calling ", with_given_name, " with the WithGiven object(s)" ),
-        preconditions,
+        Concatenation( [ [ ValueGlobal( with_given_name ), 1 ] ], List( additional_preconditions, x -> [ ValueGlobal( x[1] ), x[2] ] ) ),
         without_given_via_with_given_function
     );
     
