@@ -25,8 +25,7 @@ LeftDistributivityExpandingWithGivenObjects := rec(
   io_type := [ [ "s", "a", "L", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "LeftDistributivityFactoringWithGivenObjects",
-  dual_preprocessor_func := { cat, s, a, L, r } -> NTuple( 5, Opposite( cat ), Opposite( r ), Opposite( a ), List( L, Opposite ), Opposite( s ) ),
-  dual_arguments_reversed := false,
+  dual_with_given_objects_reversed := true,
 ),
 
 LeftDistributivityFactoring := rec(
@@ -48,8 +47,7 @@ LeftDistributivityFactoringWithGivenObjects := rec(
   io_type := [ [ "s", "a", "L", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "LeftDistributivityExpandingWithGivenObjects",
-  dual_preprocessor_func := { cat, s, a, L, r } -> NTuple( 5, Opposite( cat ), Opposite( r ), Opposite( a ), List( L, Opposite ), Opposite( s ) ),
-  dual_arguments_reversed := false,
+  dual_with_given_objects_reversed := true,
 ),
 
 RightDistributivityExpanding := rec(
@@ -71,8 +69,7 @@ RightDistributivityExpandingWithGivenObjects := rec(
   io_type := [ [ "s", "L", "a", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "RightDistributivityFactoringWithGivenObjects",
-  dual_preprocessor_func := { cat, s, L, a, r } -> NTuple( 5, Opposite( cat ), Opposite( r ), List( L, Opposite ), Opposite( a ), Opposite( s ) ),
-  dual_arguments_reversed := false,
+  dual_with_given_objects_reversed := true,
 ),
 
 RightDistributivityFactoring := rec(
@@ -94,8 +91,7 @@ RightDistributivityFactoringWithGivenObjects := rec(
   io_type := [ [ "s", "L", "a", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "RightDistributivityExpandingWithGivenObjects",
-  dual_preprocessor_func := { cat, s, L, a, r } -> NTuple( 5, Opposite( cat ), Opposite( r ), List( L, Opposite ), Opposite( a ), Opposite( s ) ),
-  dual_arguments_reversed := false,
+  dual_with_given_objects_reversed := true,
 ),
 
 ) );
