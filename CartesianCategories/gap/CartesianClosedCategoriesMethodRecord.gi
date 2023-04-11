@@ -11,7 +11,7 @@ InstallValue( CARTESIAN_CLOSED_CATEGORIES_METHOD_NAME_RECORD, rec(
 
 ExponentialOnObjects := rec(
   filter_list := [ "category", "object", "object" ],
-  io_type := [ [ "a", "b" ], [ "i" ] ],
+  input_arguments_names := [ "cat", "a", "b" ],
   return_type := "object",
   dual_operation := "CoexponentialOnObjects",
   dual_arguments_reversed := true,
@@ -172,7 +172,7 @@ CartesianPostComposeMorphismWithGivenObjects := rec(
 
 CartesianDualOnObjects := rec(
   filter_list := [ "category", "object" ],
-  io_type := [ [ "a" ], [ "ad" ] ],
+  input_arguments_names := [ "cat", "a" ],
   return_type := "object",
   dual_operation := "CocartesianDualOnObjects",
   # Test in CartesianClosedCategoriesTest

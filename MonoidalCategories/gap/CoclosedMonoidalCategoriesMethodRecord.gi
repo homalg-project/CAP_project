@@ -8,7 +8,7 @@ InstallValue( COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD, rec(
 
 InternalCoHomOnObjects := rec(
   filter_list := [ "category", "object", "object" ],
-  io_type := [ [ "a", "b" ], [ "i" ] ],
+  input_arguments_names := [ "cat", "a", "b" ],
   return_type := "object",
   dual_operation := "InternalHomOnObjects",
   dual_arguments_reversed := true,
@@ -169,7 +169,7 @@ MonoidalPostCoComposeMorphismWithGivenObjects := rec(
 
 CoDualOnObjects := rec(
   filter_list := [ "category", "object" ],
-  io_type := [ [ "a" ], [ "acd" ] ],
+  input_arguments_names := [ "cat", "a" ],
   return_type := "object",
   dual_operation := "DualOnObjects",
   # Test in CoclosedMonoidalCategoriesTest

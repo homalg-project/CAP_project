@@ -3576,7 +3576,7 @@ CoefficientsOfMorphism := rec(
 
 RandomObjectByInteger := rec(
   filter_list := [ "category", "integer" ],
-  io_type := [ [ "n" ], [ "A" ] ],
+  input_arguments_names := [ "cat", "n" ],
   return_type := "object",
   dual_operation := "RandomObjectByInteger",
 ),
@@ -3614,7 +3614,7 @@ RandomMorphismWithFixedSourceAndRangeByInteger := rec(
 
 RandomObjectByList := rec(
   filter_list := [ "category", IsList ],
-  io_type := [ [ "L" ], [ "A" ] ],
+  input_arguments_names := [ "cat", "L" ],
   return_type := "object"
 ),
 
@@ -3644,7 +3644,7 @@ RandomMorphismWithFixedSourceAndRangeByList := rec(
 
 HomologyObject := rec(
   filter_list := [ "category", "morphism", "morphism" ],
-  io_type := [ [ "alpha", "beta" ], [ "H" ] ],
+  input_arguments_names := [ "cat", "alpha", "beta" ],
   return_type := "object",
   pre_function := function( cat, alpha, beta )
       if not IsEqualForObjects( cat, Range( alpha ), Source( beta ) ) then
@@ -3725,7 +3725,7 @@ IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject := rec(
 ## SimplifyObject*
 SimplifyObject := rec(
   filter_list := [ "category", "object", "nonneg_integer_or_infinity" ],
-  io_type := [ [ "A", "n" ], [ "B" ] ],
+  input_arguments_names := [ "cat", "A", "n" ],
   return_type := "object",
   dual_operation := "SimplifyObject",
   redirect_function := function( cat, A, n )
@@ -5185,7 +5185,9 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
         fi;
         
-        if IsBound( current_rec.io_type ) and current_rec.return_type = "morphism" and not IsString( current_rec.io_type[ 2 ] ) and IsList( current_rec.io_type[ 2 ] ) then
+        if IsBound( current_rec.io_type ) then
+            
+            Assert( 0, StartsWith( current_rec.return_type, "morphism" ) and not IsString( current_rec.io_type[ 2 ] ) and IsList( current_rec.io_type[ 2 ] ) );
             
             output_list := current_rec.io_type[ 2 ];
             
