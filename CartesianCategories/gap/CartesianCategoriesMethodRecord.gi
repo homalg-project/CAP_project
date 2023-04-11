@@ -47,9 +47,7 @@ DirectProductOnMorphismsWithGivenDirectProducts := rec(
   io_type := [ [ "s", "alpha", "beta", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "CoproductOnMorphismsWithGivenCoproducts",
-  dual_preprocessor_func :=
-    { cat, s, alpha, beta, r } -> [ Opposite( cat ), Opposite( r ), Opposite( alpha ), Opposite( beta ), Opposite( s ) ],
-  dual_arguments_reversed := false,
+  dual_with_given_objects_reversed := true,
 ),
 
 CartesianAssociatorRightToLeft := rec(
@@ -70,9 +68,7 @@ CartesianAssociatorRightToLeftWithGivenDirectProducts := rec(
   io_type := [ [ "s", "a", "b", "c", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "CocartesianAssociatorLeftToRightWithGivenCoproducts",
-  dual_preprocessor_func :=
-    { cat, s, a, b, c, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( c ), Opposite( s ) ],
-  dual_arguments_reversed := false,
+  dual_with_given_objects_reversed := true,
 ),
 
 CartesianAssociatorLeftToRight := rec(
@@ -93,8 +89,7 @@ CartesianAssociatorLeftToRightWithGivenDirectProducts := rec(
   io_type := [ [ "s", "a", "b", "c", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "CocartesianAssociatorRightToLeftWithGivenCoproducts",
-  dual_preprocessor_func := { cat, s, a, b, c, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( c ), Opposite( s ) ],
-  dual_arguments_reversed := false,
+  dual_with_given_objects_reversed := true,
 ),
 
 CartesianLeftUnitor := rec(

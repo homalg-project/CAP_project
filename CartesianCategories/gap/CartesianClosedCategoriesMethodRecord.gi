@@ -279,8 +279,7 @@ DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects := rec(
   io_type := [ [ "s", "a", "b", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects",
-  dual_preprocessor_func := { cat, s, a, b, r } -> NTuple( 5, Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( s ) ),
-  dual_arguments_reversed := false,
+  dual_with_given_objects_reversed := true,
 ),
 
 MorphismFromDirectProductToExponential := rec(
