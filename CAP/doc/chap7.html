@@ -449,20 +449,33 @@ DeclareOperation( "CapInternalInstallAdd",
                   [ IsRecord ] );
 </pre></div>
 
-<p>The record can have the following components, most of which can be set in the method name record, used as described:</p>
+<p>The record can have the following components:</p>
 
 
-<ul>
-<li><p>function_name: The name of the function. This does not have to coincide with the installation name. It is used for the derivation weight.</p>
+<div class="example"><pre>
+    [
+        "filter_list",
+        "input_arguments_names",
+        "return_type",
+        "output_source_getter_string",
+        "output_source_getter_preconditions",
+        "output_range_getter_string",
+        "output_range_getter_preconditions",
+        "with_given_object_position",
+        "dual_operation",
+        "dual_arguments_reversed",
+        "dual_with_given_objects_reversed",
+        "dual_preprocessor_func",
+        "dual_postprocessor_func",
+        "functorial",
+        "compatible_with_congruence_of_morphisms",
+        "redirect_function",
+        "pre_function",
+        "pre_function_full",
+        "post_function",
+    ]
+</pre></div>
 
-</li>
-</ul>
-
-<ul>
-<li><p>installation_name (optional): A string which is the name of the operation for which the functions given to the Add method are installed as methods.</p>
-
-</li>
-</ul>
 
 <ul>
 <li><p>pre_function (optional): A function which is used as the prefunction of the installed methods, as described above. Can also be the name of another operation. In this case the pre function of the referenced operation is used.</p>
@@ -525,12 +538,6 @@ DeclareOperation( "CapInternalInstallAdd",
 </ul>
 
 <ul>
-<li><p>well_defined_todo (optional): A boolean, default value is true, which states wether there should be to do list entries which propagate well definedness from the input of the installed methods to their output. Please note that true only makes sense if at least one argument and the output of the installed method is a cell.</p>
-
-</li>
-</ul>
-
-<ul>
 <li><p>return_type: The return type can either be a filter or one of the strings in the list below. For objects, morphisms and <span class="Math">2</span>-cells the correct <code class="code">Add</code> function (see above) is used for the result of the computation. Otherwise, no <code class="code">Add</code> function is used after all.</p>
 
 </li>
@@ -557,19 +564,13 @@ DeclareOperation( "CapInternalInstallAdd",
 
 
 <ul>
-<li><p>is_with_given (optional): Boolean, marks whether the function which is to be installed is a with given function or not.</p>
-
-</li>
-</ul>
-
-<ul>
-<li><p>with_given_without_given_name_pair (optional): If the currently installed operation has a corresponding with given operation or is the with given of another operation, the names of both should be in this list.</p>
-
-</li>
-</ul>
-
-<ul>
 <li><p>functorial (optional): If an object has a corresponding functorial function, e.g., <code class="code">KernelObject</code> and <code class="code">KernelObjectFunctorial</code>, the name of the functorial is stored as a string.</p>
+
+</li>
+</ul>
+
+<ul>
+<li><p>dual_operation (optional): Name of the dual operation.</p>
 
 </li>
 </ul>
@@ -581,7 +582,7 @@ DeclareOperation( "CapInternalInstallAdd",
 </ul>
 
 <ul>
-<li><p>dual_with_given_arguments_reversed (optional): Boolean, marks whether for the call of the dual operation the source and range of a with given operation have to be given in reversed order.</p>
+<li><p>dual_with_given_objects_reversed (optional): Boolean, marks whether for the call of the dual operation the source and range of a with given operation have to be given in reversed order.</p>
 
 </li>
 </ul>
@@ -611,7 +612,7 @@ DeclareOperation( "CapInternalInstallAdd",
 </ul>
 
 <ul>
-<li><p>can_always_compute_output_source_getter (optional): Only valid if <code class="code">output_source_getter_string</code> is also set: Whether the code in <code class="code">output_source_getter_string</code> is independent of CAP operations and can thus always be computed without having to check the installed operations of a category.</p>
+<li><p>output_source_getter_preconditions (optional): Only valid if output_source_getter_string is set: The preconditions of output_source_getter_string in the same form as preconditions of derivations but with the CAP operations given as strings.</p>
 
 </li>
 </ul>
@@ -623,7 +624,7 @@ DeclareOperation( "CapInternalInstallAdd",
 </ul>
 
 <ul>
-<li><p>can_always_compute_output_range_getter (optional): Only valid if <code class="code">output_range_getter_string</code> is also set: Whether the code in <code class="code">output_range_getter_string</code> is independent of CAP operations and can thus always be computed without having to check the installed operations of a category.</p>
+<li><p>output_range_getter_preconditions (optional): Only valid if output_range_getter_string is set: The preconditions of output_range_getter_string in the same form as preconditions of derivations but with the CAP operations given as strings.</p>
 
 </li>
 </ul>

@@ -123,16 +123,31 @@
     [4X                  [ IsRecord ] );[104X
   [4X[32X[104X
   
-  [33X[0;0YThe  record  can  have the following components, most of which can be set in
-  the method name record, used as described:[133X
+  [33X[0;0YThe record can have the following components:[133X
   
-  [30X    [33X[0;6Yfunction_name:  The  name  of  the  function.  This  does  not have to
-        coincide  with  the  installation  name. It is used for the derivation
-        weight.[133X
-  
-  [30X    [33X[0;6Yinstallation_name  (optional):  A  string  which  is  the  name of the
-        operation  for  which  the  functions  given  to  the  Add  method are
-        installed as methods.[133X
+  [4X[32X  Code  [32X[104X
+    [4X    [[104X
+    [4X        "filter_list",[104X
+    [4X        "input_arguments_names",[104X
+    [4X        "return_type",[104X
+    [4X        "output_source_getter_string",[104X
+    [4X        "output_source_getter_preconditions",[104X
+    [4X        "output_range_getter_string",[104X
+    [4X        "output_range_getter_preconditions",[104X
+    [4X        "with_given_object_position",[104X
+    [4X        "dual_operation",[104X
+    [4X        "dual_arguments_reversed",[104X
+    [4X        "dual_with_given_objects_reversed",[104X
+    [4X        "dual_preprocessor_func",[104X
+    [4X        "dual_postprocessor_func",[104X
+    [4X        "functorial",[104X
+    [4X        "compatible_with_congruence_of_morphisms",[104X
+    [4X        "redirect_function",[104X
+    [4X        "pre_function",[104X
+    [4X        "pre_function_full",[104X
+    [4X        "post_function",[104X
+    [4X    ][104X
+  [4X[32X[104X
   
   [30X    [33X[0;6Ypre_function  (optional):  A function which is used as the prefunction
         of  the installed methods, as described above. Can also be the name of
@@ -181,12 +196,6 @@
   
         [30X    [33X[0;12Y[10Xlist_of_twocells[110X.[133X
   
-  [30X    [33X[0;6Ywell_defined_todo  (optional): A boolean, default value is true, which
-        states  wether there should be to do list entries which propagate well
-        definedness  from  the input of the installed methods to their output.
-        Please  note  that  true only makes sense if at least one argument and
-        the output of the installed method is a cell.[133X
-  
   [30X    [33X[0;6Yreturn_type:  The  return  type  can  either be a filter or one of the
         strings  in  the  list  below.  For objects, morphisms and [23X2[123X-cells the
         correct  [10XAdd[110X  function  (see  above)  is  used  for  the result of the
@@ -211,23 +220,17 @@
     [4X    ][104X
   [4X[32X[104X
   
-  [30X    [33X[0;6Yis_with_given (optional): Boolean, marks whether the function which is
-        to be installed is a with given function or not.[133X
-  
-  [30X    [33X[0;6Ywith_given_without_given_name_pair   (optional):   If   the  currently
-        installed operation has a corresponding with given operation or is the
-        with  given  of another operation, the names of both should be in this
-        list.[133X
-  
   [30X    [33X[0;6Yfunctorial  (optional):  If  an  object has a corresponding functorial
         function,  e.g.,  [10XKernelObject[110X and [10XKernelObjectFunctorial[110X, the name of
         the functorial is stored as a string.[133X
+  
+  [30X    [33X[0;6Ydual_operation (optional): Name of the dual operation.[133X
   
   [30X    [33X[0;6Ydual_arguments_reversed  (optional):  Boolean,  marks  whether for the
         call  of the dual operation all arguments have to be given in reversed
         order.[133X
   
-  [30X    [33X[0;6Ydual_with_given_arguments_reversed  (optional): Boolean, marks whether
+  [30X    [33X[0;6Ydual_with_given_objects_reversed  (optional):  Boolean,  marks whether
         for  the  call  of  the  dual operation the source and range of a with
         given operation have to be given in reversed order.[133X
   
@@ -249,22 +252,20 @@
         the returned morphism. The input arguments are available via the names
         given in [10Xinput_arguments_names[110X.[133X
   
-  [30X    [33X[0;6Ycan_always_compute_output_source_getter   (optional):  Only  valid  if
-        [10Xoutput_source_getter_string[110X   is   also   set:  Whether  the  code  in
-        [10Xoutput_source_getter_string[110X  is  independent of CAP operations and can
-        thus  always  be  computed  without  having  to  check  the  installed
-        operations of a category.[133X
+  [30X    [33X[0;6Youtput_source_getter_preconditions    (optional):    Only   valid   if
+        output_source_getter_string    is    set:    The    preconditions   of
+        output_source_getter_string  in  the  same  form  as  preconditions of
+        derivations but with the CAP operations given as strings.[133X
   
   [30X    [33X[0;6Youtput_range_getter_string  (optional):  Only  valid  if the operation
         returns  a  morphism:  a piece of GAP code which computes the range of
         the returned morphism. The input arguments are available via the names
         given in [10Xinput_arguments_names[110X.[133X
   
-  [30X    [33X[0;6Ycan_always_compute_output_range_getter   (optional):   Only  valid  if
-        [10Xoutput_range_getter_string[110X   is   also   set:   Whether  the  code  in
-        [10Xoutput_range_getter_string[110X  is  independent  of CAP operations and can
-        thus  always  be  computed  without  having  to  check  the  installed
-        operations of a category.[133X
+  [30X    [33X[0;6Youtput_range_getter_preconditions    (optional):    Only    valid   if
+        output_range_getter_string    is    set:    The    preconditions    of
+        output_range_getter_string  in  the  same  form  as  preconditions  of
+        derivations but with the CAP operations given as strings.[133X
   
   [30X    [33X[0;6Ywith_given_object_position  (optional):  One of the following strings:
         [10X"Source"[110X, [10X"Range"[110X, or [10X"both"[110X. Set for the without given operation in a
