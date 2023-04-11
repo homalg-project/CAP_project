@@ -92,12 +92,8 @@ DeclareOperation( "CapInternalInstallAdd",
 
 @InsertCode CapInternalInstallAdd
 
-The record can have the following components, most of which can be set in the method name record, used as described:
-
-* function_name: The name of the function. This does not have to coincide with the installation name. It is used for the derivation weight.
-
-* installation_name (optional): A string which is the name of the operation for which the
-                                functions given to the Add method are installed as methods.
+The record can have the following components:
+@InsertCode CAP_INTERNAL_VALID_METHOD_NAME_RECORD_COMPONENTS
 
 * pre_function (optional): A function which is used as the prefunction of the installed methods, as described above.
   Can also be the name of another operation. In this case the pre function of the referenced operation is used.
@@ -125,27 +121,19 @@ The record can have the following components, most of which can be set in the me
                * <C>list_of_morphisms</C>,
                * <C>list_of_twocells</C>.
 
-* well_defined_todo (optional): A boolean, default value is true, which states wether there should be to do list entries
-                                which propagate well definedness from the input of the installed methods to their output.
-                                Please note that true only makes sense if at least one argument and the output of the
-                                installed method is a cell.
-
 * return_type: The return type can either be a filter or one of the strings in the list below.
                For objects, morphisms and $2$-cells the correct <C>Add</C> function (see above) is
                used for the result of the computation. Otherwise, no <C>Add</C> function is used after all.
 @InsertCode CAP_INTERNAL_VALID_RETURN_TYPES
 
-* is_with_given (optional): Boolean, marks whether the function which is to be installed is a with given function or not.
-
-* with_given_without_given_name_pair (optional): If the currently installed operation has a corresponding with given operation or
-                                                 is the with given of another operation, the names of both should be in this list.
-
 * functorial (optional): If an object has a corresponding functorial function, e.g., `KernelObject` and `KernelObjectFunctorial`,
                          the name of the functorial is stored as a string.
 
+* dual_operation (optional): Name of the dual operation.
+
 * dual_arguments_reversed (optional): Boolean, marks whether for the call of the dual operation all arguments have to be given in reversed order.
 
-* dual_with_given_arguments_reversed (optional): Boolean, marks whether for the call of the dual operation the source and range of a with given operation have to be given in reversed order.
+* dual_with_given_objects_reversed (optional): Boolean, marks whether for the call of the dual operation the source and range of a with given operation have to be given in reversed order.
 
 * dual_preprocessor_func (optional): let f be an operation with dual operation g. For the automatic installation of g from f,
   the arguments given to g are preprocessed by this given function.

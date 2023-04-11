@@ -24,6 +24,42 @@ InstallValue( CAP_INTERNAL_VALID_RETURN_TYPES,
 #! @EndCode
 );
 
+BindGlobal( "CAP_INTERNAL_VALID_METHOD_NAME_RECORD_COMPONENTS",
+#! @BeginCode CAP_INTERNAL_VALID_METHOD_NAME_RECORD_COMPONENTS
+    [
+        "filter_list",
+        "input_arguments_names",
+        "return_type",
+        "output_source_getter_string",
+        "output_source_getter_preconditions",
+        "output_range_getter_string",
+        "output_range_getter_preconditions",
+        "with_given_object_position",
+        "dual_operation",
+        "dual_arguments_reversed",
+        "dual_with_given_objects_reversed",
+        "dual_preprocessor_func",
+        "dual_postprocessor_func",
+        "functorial",
+        "compatible_with_congruence_of_morphisms",
+        "redirect_function",
+        "pre_function",
+        "pre_function_full",
+        "post_function",
+    ]
+#! @EndCode
+);
+
+# additional components which are deprecated or undocumented
+BindGlobal( "CAP_INTERNAL_LEGACY_METHOD_NAME_RECORD_COMPONENTS",
+    [
+        "property_of",
+        "io_type",
+        "is_merely_set_theoretic",
+        "is_reflected_by_faithful_functor",
+    ]
+);
+
 ##
 InstallGlobalFunction( CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,
   function( args... )
@@ -4866,8 +4902,8 @@ end );
 
 InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
   function( record )
-    local recnames, current_recname, current_rec, io_type, number_of_arguments, func_string,
-          installation_name, output_list, input_list, argument_names, return_list, current_output, input_position, list_position,
+    local recnames, current_recname, current_rec, diff, io_type, number_of_arguments, func_string,
+          output_list, input_list, argument_names, return_list, current_output, input_position, list_position,
           without_given_name, with_given_prefix, with_given_names, with_given_name, without_given_rec, with_given_object_position, object_name,
           object_filter_list, with_given_object_filter, given_source_argument_name, given_range_argument_name, with_given_rec, i,
           collected_list, preconditions, can_always_compute_output_source_getter, can_always_compute_output_range_getter;
@@ -4878,6 +4914,16 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
     for current_recname in recnames do
         
         current_rec := record.(current_recname);
+        
+        diff := Difference( RecNames( current_rec ), CAP_INTERNAL_VALID_METHOD_NAME_RECORD_COMPONENTS );
+        diff := Difference( diff, CAP_INTERNAL_LEGACY_METHOD_NAME_RECORD_COMPONENTS );
+        
+        if not IsEmpty( diff ) then
+            
+            Print( "WARNING: The following method name record components are not known: " );
+            Display( diff );
+            
+        fi;
         
         # validity checks
         if not IsBound( current_rec.return_type ) then
@@ -5095,54 +5141,15 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
         
         if IsOperation( ValueGlobal( current_recname ) ) then
             
-            installation_name := current_recname;
+            current_rec.installation_name := current_recname;
             
         elif IsFunction( ValueGlobal( current_recname ) ) then
             
-            installation_name := Concatenation( current_recname, "Op" );
+            current_rec.installation_name := Concatenation( current_recname, "Op" );
             
         else
             
             Error( "`ValueGlobal( current_recname )` is neither an operation nor a function" );
-            
-        fi;
-        
-        if IsBound( current_rec.installation_name ) then
-            
-            if current_rec.installation_name <> installation_name then
-                
-                Display( Concatenation(
-                    "WARNING: Manually setting installation_name is not supported anymore. You will probably run into errors. ",
-                    "To avoid this warning, remove installation_name from the method record ",
-                    "and make sure your code supports the automatically chosen installation name \"", installation_name, "\"."
-                ) );
-                
-            fi;
-            
-        else
-            
-            current_rec.installation_name := installation_name;
-            
-        fi;
-        
-        if IsBound( current_rec.cache_name ) and current_rec.cache_name <> current_rec.function_name then
-            
-            Display( Concatenation(
-                "WARNING: Manually setting cache_name is not supported anymore. The function name will be used instead. ",
-                "To avoid this warning, remove cache_name from the method record."
-            ) );
-            
-        fi;
-        
-        if IsBound( current_rec.zero_arguments_for_add_method ) then
-            
-            Display( "zero_arguments_for_add_method has no effect anymore, please remove it." );
-            
-        fi;
-        
-        if IsBound( current_rec.number_of_diagram_arguments ) then
-            
-            Display( "number_of_diagram_arguments has no effect anymore, please remove it." );
             
         fi;
         
@@ -5565,9 +5572,23 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
         
         current_rec := record.(current_recname);
         
-        if IsBound( current_rec.dual_with_given_objects_reversed ) and current_rec.dual_with_given_objects_reversed and not current_rec.is_with_given then
+        if IsBound( current_rec.dual_with_given_objects_reversed ) and current_rec.dual_with_given_objects_reversed then
             
-            Error( "dual_with_given_objects_reversed may only be set for with given records" );
+            if not current_rec.is_with_given then
+                
+                Error( "dual_with_given_objects_reversed may only be set for with given records" );
+                
+            fi;
+            
+            without_given_rec := record.(current_rec.with_given_without_given_name_pair[1]);
+            
+            with_given_object_position := without_given_rec.with_given_object_position;
+            
+            if with_given_object_position <> "both" then
+                
+                Error( "dual_with_given_objects_reversed may only be set if both source and range are given" );
+                
+            fi;
             
         fi;
         
