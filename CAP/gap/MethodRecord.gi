@@ -1004,7 +1004,6 @@ ComponentOfMorphismIntoDirectProduct := rec(
 
 IsCongruentForMorphisms := rec(
   filter_list := [ "category", "morphism", "morphism" ],
-  well_defined_todo := false,
   dual_operation := "IsCongruentForMorphisms",
   
   pre_function := function( cat, morphism_1, morphism_2 )
@@ -1074,7 +1073,6 @@ IsCongruentForMorphisms := rec(
 
 IsEqualForMorphisms := rec(
   filter_list := [ "category", "morphism", "morphism" ],
-  well_defined_todo := false,
   dual_operation := "IsEqualForMorphisms",
   
   pre_function := function( cat, morphism_1, morphism_2 )
@@ -1133,7 +1131,6 @@ IsEqualForMorphisms := rec(
 
 IsEqualForMorphismsOnMor := rec(
   filter_list := [ "category", "morphism", "morphism" ],
-  well_defined_todo := false,
   dual_operation := "IsEqualForMorphismsOnMor",
   
   redirect_function := function( cat, morphism_1, morphism_2 )
@@ -1156,7 +1153,6 @@ IsEqualForMorphismsOnMor := rec(
 
 IsEqualForObjects := rec(
   filter_list := [ "category", "object", "object" ],
-  well_defined_todo := false,
   dual_operation := "IsEqualForObjects",
   
   redirect_function := function( cat, object_1, object_2 )
@@ -1189,20 +1185,17 @@ IsEqualForObjects := rec(
 IsEqualForCacheForObjects := rec(
   filter_list := [ "category", "object", "object" ],
   dual_operation := "IsEqualForCacheForObjects",
-  well_defined_todo := false,
   return_type := "bool" ),
 
 IsEqualForCacheForMorphisms := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   dual_operation := "IsEqualForCacheForMorphisms",
-  well_defined_todo := false,
   return_type := "bool",
   compatible_with_congruence_of_morphisms := false,
 ),
   
 IsZeroForMorphisms := rec(
   filter_list := [ "category", "morphism" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsZeroForMorphisms",
   property_of := "morphism",
@@ -1416,7 +1409,6 @@ ComponentOfMorphismFromCoproduct := rec(
 
 IsEqualAsSubobjects := rec(
   filter_list := [ "category", "morphism", "morphism" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsEqualAsFactorobjects",
   compatible_with_congruence_of_morphisms := true,
@@ -1424,7 +1416,6 @@ IsEqualAsSubobjects := rec(
 
 IsEqualAsFactorobjects := rec(
   filter_list := [ "category", "morphism", "morphism" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsEqualAsSubobjects",
   compatible_with_congruence_of_morphisms := true,
@@ -1432,7 +1423,6 @@ IsEqualAsFactorobjects := rec(
 
 IsDominating := rec(
   filter_list := [ "category", "morphism", "morphism" ],
-  well_defined_todo := false,
   dual_operation := "IsCodominating",
   
   pre_function := function( cat, sub1, sub2 )
@@ -1458,7 +1448,6 @@ IsDominating := rec(
 
 IsCodominating := rec(
   filter_list := [ "category", "morphism", "morphism" ],
-  well_defined_todo := false,
   dual_operation := "IsDominating",
   
   pre_function := function( cat, factor1, factor2 )
@@ -2506,7 +2495,6 @@ InverseMorphismFromCoimageToImageWithGivenObjects := rec(
 
 IsWellDefinedForMorphisms := rec(
   filter_list := [ "category", "morphism" ],
-  well_defined_todo := false,
   dual_operation := "IsWellDefinedForMorphisms",
   
   redirect_function := function( cat, morphism )
@@ -2533,20 +2521,17 @@ IsWellDefinedForMorphisms := rec(
 
 IsWellDefinedForObjects := rec(
   filter_list := [ "category", "object" ],
-  well_defined_todo := false,
   dual_operation := "IsWellDefinedForObjects",
   return_type := "bool" ),
 
 IsZeroForObjects := rec(
   filter_list := [ "category", "object" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsZeroForObjects",
   property_of := "object" ),
 
 IsMonomorphism := rec(
   filter_list := [ "category", "morphism" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsEpimorphism",
   property_of := "morphism",
@@ -2554,7 +2539,6 @@ IsMonomorphism := rec(
 
 IsEpimorphism := rec(
   filter_list := [ "category", "morphism" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsMonomorphism",
   property_of := "morphism",
@@ -2562,28 +2546,24 @@ IsEpimorphism := rec(
 
 IsIsomorphism := rec(
   filter_list := [ "category", "morphism" ],
-  well_defined_todo := false,
   dual_operation := "IsIsomorphism",
   return_type := "bool",
   property_of := "morphism" ),
 
 IsEndomorphism := rec(
   filter_list := [ "category", "morphism" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsEndomorphism",
   property_of := "morphism" ),
 
 IsAutomorphism := rec(
   filter_list := [ "category", "morphism" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsAutomorphism",
   property_of := "morphism" ),
 
 IsOne := rec(
   filter_list := [ "category", "morphism" ],
-  well_defined_todo := false,
   return_type := "bool",
   property_of := "morphism",
   dual_operation := "IsOne",
@@ -2609,14 +2589,12 @@ IsOne := rec(
 
 IsSplitMonomorphism := rec(
   filter_list := [ "category", "morphism" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsSplitEpimorphism",
   property_of := "morphism" ),
 
 IsSplitEpimorphism := rec(
   filter_list := [ "category", "morphism" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsSplitMonomorphism",
   property_of := "morphism" ),
@@ -2635,56 +2613,48 @@ IsIdempotent := rec(
     return [ true ];
   end,
   filter_list := [ "category", "morphism" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsIdempotent",
   property_of := "morphism" ),
 
 IsBijectiveObject := rec(
   filter_list := [ "category", "object" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsBijectiveObject",
   property_of := "object" ),
 
 IsProjective := rec(
   filter_list := [ "category", "object" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsInjective",
   property_of := "object" ),
 
 IsInjective := rec(
   filter_list := [ "category", "object" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsProjective",
   property_of := "object" ),
 
 IsTerminal := rec(
   filter_list := [ "category", "object" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsInitial",
   property_of := "object" ),
 
 IsInitial := rec(
   filter_list := [ "category", "object" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsTerminal",
   property_of := "object" ),
 
 IsEqualToIdentityMorphism := rec(
   filter_list := [ "category", "morphism" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsEqualToIdentityMorphism",
   property_of := "morphism" ),
 
 IsEqualToZeroMorphism := rec(
   filter_list := [ "category", "morphism" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsEqualToZeroMorphism",
   property_of := "morphism" ),
@@ -3139,7 +3109,6 @@ IdentityTwoCell := rec(
 
 IsWellDefinedForTwoCells := rec(
   filter_list := [ "category", "twocell" ],
-  well_defined_todo := false,
   dual_operation := "IsWellDefinedForTwoCells",
   
   redirect_function := function( cat, twocell )
