@@ -178,7 +178,7 @@ end );
     end;
     
     generate_functorial_convenience_method := function( limit, limit_colimit, object_name, functorial_name, functorial_with_given_name )
-      local functorial_with_given_record, filter_list, input_type, arguments_string, source_diagram_arguments_string, range_diagram_arguments_string, replaced_filter_list, current_string, input_arguments_names, source_argument_name, range_argument_name, source_diagram_arguments_names, range_diagram_arguments_names, equalizer_preprocessing, test_string, test_arguments, universal_morphism_with_given_name, call_arguments;
+      local functorial_with_given_record, filter_list, input_type, arguments_string, source_diagram_arguments_string, range_diagram_arguments_string, replaced_filter_list, current_string, input_arguments_names, source_argument_name, range_argument_name, source_diagram_arguments_names, range_diagram_arguments_names, equalizer_preprocessing, test_string, additional_preconditions, test_arguments, universal_morphism_with_given_name, call_arguments;
         
         Assert( 0, limit_colimit in [ "limit", "colimit" ] );
         
@@ -330,6 +330,8 @@ end );
                         )
                     );
                     
+                    additional_preconditions := [ "[ PreCompose, 1 ]", Concatenation( "[ ", limit.limit_projection_with_given_name, ", 1 ]" ) ];
+                    
                 elif limit_colimit = "colimit" then
                     
                     test_string := ReplacedStringViaRecord(
@@ -340,6 +342,8 @@ end );
                             range_object := range_argument_name,
                         )
                     );
+                    
+                    additional_preconditions := [ "[ PreCompose, 1 ]", Concatenation( "[ ", limit.colimit_injection_with_given_name, ", 1 ]" ) ];
                     
                 else
                     
@@ -375,6 +379,8 @@ end );
                         )
                     );
                     
+                    additional_preconditions := [ "[ PreCompose, 2 ]", Concatenation( "[ ", limit.limit_projection_with_given_name, ", 2 ]" ) ];
+                    
                 elif limit_colimit = "colimit" then
                     
                     test_string := ReplacedStringViaRecord(
@@ -385,6 +391,8 @@ end );
                             range_object := range_argument_name,
                         )
                     );
+                    
+                    additional_preconditions := [ "[ PreCompose, 2 ]", Concatenation( "[ ", limit.colimit_injection_with_given_name, ", 2 ]" ) ];
                     
                 else
                     
@@ -401,6 +409,8 @@ end );
             Assert( 0, limit.diagram_morphism_input_type = [ ] );
             
             test_arguments := [ ];
+            
+            additional_preconditions := [ ];
             
         fi;
         
@@ -420,12 +430,11 @@ end );
             
         fi;
         
-        
         current_string := ReplacedStringViaRecord( """
 ##
 AddDerivationToCAP( functorial_with_given_name,
                     "functorial_with_given_name using the universality of the limit_colimit",
-                    fail,
+                    [ preconditions... ],
                     
   function( input_arguments... )
     equalizer_preprocessing
@@ -436,6 +445,7 @@ end );
             rec(
                 functorial_with_given_name := functorial_with_given_name,
                 input_arguments := input_arguments_names,
+                preconditions := Concatenation( [ Concatenation( "[", universal_morphism_with_given_name, ", 1 ]" ) ], additional_preconditions ),
                 equalizer_preprocessing := equalizer_preprocessing,
                 universal_morphism_with_given := universal_morphism_with_given_name,
                 call_arguments := call_arguments,

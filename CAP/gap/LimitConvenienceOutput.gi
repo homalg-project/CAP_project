@@ -215,7 +215,7 @@ end );
 ##
 AddDerivationToCAP( DirectProductFunctorialWithGivenDirectProducts,
                     "DirectProductFunctorialWithGivenDirectProducts using the universality of the limit",
-                    fail,
+                    [ [UniversalMorphismIntoDirectProductWithGivenDirectProduct, 1 ], [ PreCompose, 2 ], [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 2 ] ],
                     
   function( cat, P, objects, L, objectsp, Pp )
     
@@ -266,7 +266,7 @@ end );
 ##
 AddDerivationToCAP( CoproductFunctorialWithGivenCoproducts,
                     "CoproductFunctorialWithGivenCoproducts using the universality of the colimit",
-                    fail,
+                    [ [UniversalMorphismFromCoproductWithGivenCoproduct, 1 ], [ PreCompose, 2 ], [ InjectionOfCofactorOfCoproductWithGivenCoproduct, 2 ] ],
                     
   function( cat, P, objects, L, objectsp, Pp )
     
@@ -485,7 +485,7 @@ end );
 ##
 AddDerivationToCAP( DirectSumFunctorialWithGivenDirectSums,
                     "DirectSumFunctorialWithGivenDirectSums using the universality of the limit",
-                    fail,
+                    [ [UniversalMorphismIntoDirectSumWithGivenDirectSum, 1 ], [ PreCompose, 2 ], [ ProjectionInFactorOfDirectSumWithGivenDirectSum, 2 ] ],
                     
   function( cat, P, objects, L, objectsp, Pp )
     
@@ -496,7 +496,7 @@ end );
 ##
 AddDerivationToCAP( DirectSumFunctorialWithGivenDirectSums,
                     "DirectSumFunctorialWithGivenDirectSums using the universality of the colimit",
-                    fail,
+                    [ [UniversalMorphismFromDirectSumWithGivenDirectSum, 1 ], [ PreCompose, 2 ], [ InjectionOfCofactorOfDirectSumWithGivenDirectSum, 2 ] ],
                     
   function( cat, P, objects, L, objectsp, Pp )
     
@@ -587,7 +587,7 @@ end );
 ##
 AddDerivationToCAP( FiberProductFunctorialWithGivenFiberProducts,
                     "FiberProductFunctorialWithGivenFiberProducts using the universality of the limit",
-                    fail,
+                    [ [UniversalMorphismIntoFiberProductWithGivenFiberProduct, 1 ], [ PreCompose, 2 ], [ ProjectionInFactorOfFiberProductWithGivenFiberProduct, 2 ] ],
                     
   function( cat, P, morphisms, L, morphismsp, Pp )
     
@@ -598,7 +598,7 @@ end );
 ##
 AddDerivationToCAP( PushoutFunctorialWithGivenPushouts,
                     "PushoutFunctorialWithGivenPushouts using the universality of the colimit",
-                    fail,
+                    [ [UniversalMorphismFromPushoutWithGivenPushout, 1 ], [ PreCompose, 2 ], [ InjectionOfCofactorOfPushoutWithGivenPushout, 2 ] ],
                     
   function( cat, P, morphisms, L, morphismsp, Pp )
     
@@ -689,7 +689,7 @@ end );
 ##
 AddDerivationToCAP( EqualizerFunctorialWithGivenEqualizers,
                     "EqualizerFunctorialWithGivenEqualizers using the universality of the limit",
-                    fail,
+                    [ [UniversalMorphismIntoEqualizerWithGivenEqualizer, 1 ], [ PreCompose, 1 ], [ EmbeddingOfEqualizerWithGivenEqualizer, 1 ] ],
                     
   function( cat, P, morphisms, mu, morphismsp, Pp )
     local Y, Yp;
@@ -704,7 +704,7 @@ end );
 ##
 AddDerivationToCAP( CoequalizerFunctorialWithGivenCoequalizers,
                     "CoequalizerFunctorialWithGivenCoequalizers using the universality of the colimit",
-                    fail,
+                    [ [UniversalMorphismFromCoequalizerWithGivenCoequalizer, 1 ], [ PreCompose, 1 ], [ ProjectionOntoCoequalizerWithGivenCoequalizer, 1 ] ],
                     
   function( cat, P, morphisms, mu, morphismsp, Pp )
     local Y, Yp;
@@ -799,7 +799,7 @@ end );
 ##
 AddDerivationToCAP( KernelObjectFunctorialWithGivenKernelObjects,
                     "KernelObjectFunctorialWithGivenKernelObjects using the universality of the limit",
-                    fail,
+                    [ [KernelLiftWithGivenKernelObject, 1 ], [ PreCompose, 1 ], [ KernelEmbeddingWithGivenKernelObject, 1 ] ],
                     
   function( cat, P, alpha, mu, alphap, Pp )
     
@@ -810,7 +810,7 @@ end );
 ##
 AddDerivationToCAP( CokernelObjectFunctorialWithGivenCokernelObjects,
                     "CokernelObjectFunctorialWithGivenCokernelObjects using the universality of the colimit",
-                    fail,
+                    [ [CokernelColiftWithGivenCokernelObject, 1 ], [ PreCompose, 1 ], [ CokernelProjectionWithGivenCokernelObject, 1 ] ],
                     
   function( cat, P, alpha, mu, alphap, Pp )
     
@@ -821,7 +821,7 @@ end );
 ##
 AddDerivationToCAP( TerminalObjectFunctorialWithGivenTerminalObjects,
                     "TerminalObjectFunctorialWithGivenTerminalObjects using the universality of the limit",
-                    fail,
+                    [ [UniversalMorphismIntoTerminalObjectWithGivenTerminalObject, 1 ] ],
                     
   function( cat, P, Pp )
     
@@ -844,7 +844,7 @@ end );
 ##
 AddDerivationToCAP( InitialObjectFunctorialWithGivenInitialObjects,
                     "InitialObjectFunctorialWithGivenInitialObjects using the universality of the colimit",
-                    fail,
+                    [ [UniversalMorphismFromInitialObjectWithGivenInitialObject, 1 ] ],
                     
   function( cat, P, Pp )
     
@@ -867,7 +867,7 @@ end );
 ##
 AddDerivationToCAP( ZeroObjectFunctorialWithGivenZeroObjects,
                     "ZeroObjectFunctorialWithGivenZeroObjects using the universality of the limit",
-                    fail,
+                    [ [UniversalMorphismIntoZeroObjectWithGivenZeroObject, 1 ] ],
                     
   function( cat, P, Pp )
     
@@ -890,7 +890,7 @@ end );
 ##
 AddDerivationToCAP( ZeroObjectFunctorialWithGivenZeroObjects,
                     "ZeroObjectFunctorialWithGivenZeroObjects using the universality of the colimit",
-                    fail,
+                    [ [UniversalMorphismFromZeroObjectWithGivenZeroObject, 1 ] ],
                     
   function( cat, P, Pp )
     
