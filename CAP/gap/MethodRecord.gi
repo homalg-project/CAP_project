@@ -24,6 +24,42 @@ InstallValue( CAP_INTERNAL_VALID_RETURN_TYPES,
 #! @EndCode
 );
 
+BindGlobal( "CAP_INTERNAL_VALID_METHOD_NAME_RECORD_COMPONENTS",
+#! @BeginCode CAP_INTERNAL_VALID_METHOD_NAME_RECORD_COMPONENTS
+    [
+        "filter_list",
+        "input_arguments_names",
+        "return_type",
+        "output_source_getter_string",
+        "output_source_getter_preconditions",
+        "output_range_getter_string",
+        "output_range_getter_preconditions",
+        "with_given_object_position",
+        "dual_operation",
+        "dual_arguments_reversed",
+        "dual_with_given_objects_reversed",
+        "dual_preprocessor_func",
+        "dual_postprocessor_func",
+        "functorial",
+        "compatible_with_congruence_of_morphisms",
+        "redirect_function",
+        "pre_function",
+        "pre_function_full",
+        "post_function",
+    ]
+#! @EndCode
+);
+
+# additional components which are deprecated or undocumented
+BindGlobal( "CAP_INTERNAL_LEGACY_METHOD_NAME_RECORD_COMPONENTS",
+    [
+        "property_of",
+        "io_type",
+        "is_merely_set_theoretic",
+        "is_reflected_by_faithful_functor",
+    ]
+);
+
 ##
 InstallGlobalFunction( CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,
   function( args... )
@@ -551,9 +587,9 @@ PreComposeList := rec(
   end,
   return_type := "morphism",
   output_source_getter_string := "Source( list_of_morphisms[1] )",
-  can_always_compute_output_source_getter := true,
+  output_source_getter_preconditions := [ ],
   output_range_getter_string := "Range( Last( list_of_morphisms ) )",
-  can_always_compute_output_range_getter := true,
+  output_range_getter_preconditions := [ ],
   dual_operation := "PostComposeList",
   compatible_with_congruence_of_morphisms := true,
 ),
@@ -618,9 +654,9 @@ PostComposeList := rec(
   end,
   return_type := "morphism",
   output_source_getter_string := "Source( Last( list_of_morphisms ) )",
-  can_always_compute_output_source_getter := true,
+  output_source_getter_preconditions := [ ],
   output_range_getter_string := "Range( list_of_morphisms[1] )",
-  can_always_compute_output_range_getter := true,
+  output_range_getter_preconditions := [ ],
   dual_operation := "PreComposeList",
   compatible_with_congruence_of_morphisms := true,
 ),
@@ -637,7 +673,9 @@ ZeroObjectFunctorial := rec(
   input_arguments_names := [ "cat" ],
   return_type := "morphism",
   output_source_getter_string := "ZeroObject( cat )",
+  output_source_getter_preconditions := [ [ "ZeroObject", 1 ] ],
   output_range_getter_string := "ZeroObject( cat )",
+  output_range_getter_preconditions := [ [ "ZeroObject", 1 ] ],
   with_given_object_position := "both",
   dual_operation := "ZeroObjectFunctorial",
   dual_arguments_reversed := true
@@ -1002,7 +1040,6 @@ ComponentOfMorphismIntoDirectProduct := rec(
 
 IsCongruentForMorphisms := rec(
   filter_list := [ "category", "morphism", "morphism" ],
-  well_defined_todo := false,
   dual_operation := "IsCongruentForMorphisms",
   
   pre_function := function( cat, morphism_1, morphism_2 )
@@ -1072,7 +1109,6 @@ IsCongruentForMorphisms := rec(
 
 IsEqualForMorphisms := rec(
   filter_list := [ "category", "morphism", "morphism" ],
-  well_defined_todo := false,
   dual_operation := "IsEqualForMorphisms",
   
   pre_function := function( cat, morphism_1, morphism_2 )
@@ -1131,7 +1167,6 @@ IsEqualForMorphisms := rec(
 
 IsEqualForMorphismsOnMor := rec(
   filter_list := [ "category", "morphism", "morphism" ],
-  well_defined_todo := false,
   dual_operation := "IsEqualForMorphismsOnMor",
   
   redirect_function := function( cat, morphism_1, morphism_2 )
@@ -1154,7 +1189,6 @@ IsEqualForMorphismsOnMor := rec(
 
 IsEqualForObjects := rec(
   filter_list := [ "category", "object", "object" ],
-  well_defined_todo := false,
   dual_operation := "IsEqualForObjects",
   
   redirect_function := function( cat, object_1, object_2 )
@@ -1187,20 +1221,17 @@ IsEqualForObjects := rec(
 IsEqualForCacheForObjects := rec(
   filter_list := [ "category", "object", "object" ],
   dual_operation := "IsEqualForCacheForObjects",
-  well_defined_todo := false,
   return_type := "bool" ),
 
 IsEqualForCacheForMorphisms := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   dual_operation := "IsEqualForCacheForMorphisms",
-  well_defined_todo := false,
   return_type := "bool",
   compatible_with_congruence_of_morphisms := false,
 ),
   
 IsZeroForMorphisms := rec(
   filter_list := [ "category", "morphism" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsZeroForMorphisms",
   property_of := "morphism",
@@ -1414,7 +1445,6 @@ ComponentOfMorphismFromCoproduct := rec(
 
 IsEqualAsSubobjects := rec(
   filter_list := [ "category", "morphism", "morphism" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsEqualAsFactorobjects",
   compatible_with_congruence_of_morphisms := true,
@@ -1422,7 +1452,6 @@ IsEqualAsSubobjects := rec(
 
 IsEqualAsFactorobjects := rec(
   filter_list := [ "category", "morphism", "morphism" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsEqualAsSubobjects",
   compatible_with_congruence_of_morphisms := true,
@@ -1430,7 +1459,6 @@ IsEqualAsFactorobjects := rec(
 
 IsDominating := rec(
   filter_list := [ "category", "morphism", "morphism" ],
-  well_defined_todo := false,
   dual_operation := "IsCodominating",
   
   pre_function := function( cat, sub1, sub2 )
@@ -1456,7 +1484,6 @@ IsDominating := rec(
 
 IsCodominating := rec(
   filter_list := [ "category", "morphism", "morphism" ],
-  well_defined_todo := false,
   dual_operation := "IsDominating",
   
   pre_function := function( cat, factor1, factor2 )
@@ -2504,7 +2531,6 @@ InverseMorphismFromCoimageToImageWithGivenObjects := rec(
 
 IsWellDefinedForMorphisms := rec(
   filter_list := [ "category", "morphism" ],
-  well_defined_todo := false,
   dual_operation := "IsWellDefinedForMorphisms",
   
   redirect_function := function( cat, morphism )
@@ -2531,20 +2557,17 @@ IsWellDefinedForMorphisms := rec(
 
 IsWellDefinedForObjects := rec(
   filter_list := [ "category", "object" ],
-  well_defined_todo := false,
   dual_operation := "IsWellDefinedForObjects",
   return_type := "bool" ),
 
 IsZeroForObjects := rec(
   filter_list := [ "category", "object" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsZeroForObjects",
   property_of := "object" ),
 
 IsMonomorphism := rec(
   filter_list := [ "category", "morphism" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsEpimorphism",
   property_of := "morphism",
@@ -2552,7 +2575,6 @@ IsMonomorphism := rec(
 
 IsEpimorphism := rec(
   filter_list := [ "category", "morphism" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsMonomorphism",
   property_of := "morphism",
@@ -2560,28 +2582,24 @@ IsEpimorphism := rec(
 
 IsIsomorphism := rec(
   filter_list := [ "category", "morphism" ],
-  well_defined_todo := false,
   dual_operation := "IsIsomorphism",
   return_type := "bool",
   property_of := "morphism" ),
 
 IsEndomorphism := rec(
   filter_list := [ "category", "morphism" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsEndomorphism",
   property_of := "morphism" ),
 
 IsAutomorphism := rec(
   filter_list := [ "category", "morphism" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsAutomorphism",
   property_of := "morphism" ),
 
 IsOne := rec(
   filter_list := [ "category", "morphism" ],
-  well_defined_todo := false,
   return_type := "bool",
   property_of := "morphism",
   dual_operation := "IsOne",
@@ -2607,14 +2625,12 @@ IsOne := rec(
 
 IsSplitMonomorphism := rec(
   filter_list := [ "category", "morphism" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsSplitEpimorphism",
   property_of := "morphism" ),
 
 IsSplitEpimorphism := rec(
   filter_list := [ "category", "morphism" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsSplitMonomorphism",
   property_of := "morphism" ),
@@ -2633,56 +2649,48 @@ IsIdempotent := rec(
     return [ true ];
   end,
   filter_list := [ "category", "morphism" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsIdempotent",
   property_of := "morphism" ),
 
 IsBijectiveObject := rec(
   filter_list := [ "category", "object" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsBijectiveObject",
   property_of := "object" ),
 
 IsProjective := rec(
   filter_list := [ "category", "object" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsInjective",
   property_of := "object" ),
 
 IsInjective := rec(
   filter_list := [ "category", "object" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsProjective",
   property_of := "object" ),
 
 IsTerminal := rec(
   filter_list := [ "category", "object" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsInitial",
   property_of := "object" ),
 
 IsInitial := rec(
   filter_list := [ "category", "object" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsTerminal",
   property_of := "object" ),
 
 IsEqualToIdentityMorphism := rec(
   filter_list := [ "category", "morphism" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsEqualToIdentityMorphism",
   property_of := "morphism" ),
 
 IsEqualToZeroMorphism := rec(
   filter_list := [ "category", "morphism" ],
-  well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsEqualToZeroMorphism",
   property_of := "morphism" ),
@@ -2772,7 +2780,9 @@ KernelObjectFunctorial := rec(
   input_arguments_names := [ "cat", "alpha", "mu", "alphap" ],
   return_type := "morphism",
   output_source_getter_string := "KernelObject( cat, alpha )",
+  output_source_getter_preconditions := [ [ "KernelObject", 1 ] ],
   output_range_getter_string := "KernelObject( cat, alphap )",
+  output_range_getter_preconditions := [ [ "KernelObject", 1 ] ],
   with_given_object_position := "both",
   dual_operation := "CokernelObjectFunctorial",
   dual_arguments_reversed := true,
@@ -2793,7 +2803,9 @@ CokernelObjectFunctorial := rec(
   input_arguments_names := [ "cat", "alpha", "mu", "alphap" ],
   return_type := "morphism",
   output_source_getter_string := "CokernelObject( cat, alpha )",
+  output_source_getter_preconditions := [ [ "CokernelObject", 1 ] ],
   output_range_getter_string := "CokernelObject( cat, alphap )",
+  output_range_getter_preconditions := [ [ "CokernelObject", 1 ] ],
   with_given_object_position := "both",
   dual_operation := "KernelObjectFunctorial",
   dual_arguments_reversed := true,
@@ -2814,7 +2826,9 @@ TerminalObjectFunctorial := rec(
   input_arguments_names := [ "cat" ],
   return_type := "morphism",
   output_source_getter_string := "TerminalObject( cat )",
+  output_source_getter_preconditions := [ [ "TerminalObject", 1 ] ],
   output_range_getter_string := "TerminalObject( cat )",
+  output_range_getter_preconditions := [ [ "TerminalObject", 1 ] ],
   with_given_object_position := "both",
   dual_operation := "InitialObjectFunctorial",
   dual_arguments_reversed := true,
@@ -2833,7 +2847,9 @@ InitialObjectFunctorial := rec(
   input_arguments_names := [ "cat" ],
   return_type := "morphism",
   output_source_getter_string := "InitialObject( cat )",
+  output_source_getter_preconditions := [ [ "InitialObject", 1 ] ],
   output_range_getter_string := "InitialObject( cat )",
+  output_range_getter_preconditions := [ [ "InitialObject", 1 ] ],
   with_given_object_position := "both",
   dual_operation := "TerminalObjectFunctorial",
   dual_arguments_reversed := true,
@@ -2852,7 +2868,9 @@ DirectProductFunctorial := rec(
   input_arguments_names := [ "cat", "objects", "L", "objectsp" ],
   return_type := "morphism",
   output_source_getter_string := "DirectProduct( cat, objects )",
+  output_source_getter_preconditions := [ [ "DirectProduct", 1 ] ],
   output_range_getter_string := "DirectProduct( cat, objectsp )",
+  output_range_getter_preconditions := [ [ "DirectProduct", 1 ] ],
   with_given_object_position := "both",
   dual_operation := "CoproductFunctorial",
   dual_arguments_reversed := true,
@@ -2873,7 +2891,9 @@ CoproductFunctorial := rec(
   input_arguments_names := [ "cat", "objects", "L", "objectsp" ],
   return_type := "morphism",
   output_source_getter_string := "Coproduct( cat, objects )",
+  output_source_getter_preconditions := [ [ "Coproduct", 1 ] ],
   output_range_getter_string := "Coproduct( cat, objectsp )",
+  output_range_getter_preconditions := [ [ "Coproduct", 1 ] ],
   with_given_object_position := "both",
   dual_operation := "DirectProductFunctorial",
   dual_arguments_reversed := true,
@@ -2894,7 +2914,9 @@ DirectSumFunctorial := rec(
   input_arguments_names := [ "cat", "objects", "L", "objectsp" ],
   return_type := "morphism",
   output_source_getter_string := "DirectSum( cat, objects )",
+  output_source_getter_preconditions := [ [ "DirectSum", 1 ] ],
   output_range_getter_string := "DirectSum( cat, objectsp )",
+  output_range_getter_preconditions := [ [ "DirectSum", 1 ] ],
   with_given_object_position := "both",
   dual_operation := "DirectSumFunctorial",
   dual_arguments_reversed := true,
@@ -2915,7 +2937,9 @@ EqualizerFunctorial := rec(
   input_arguments_names := [ "cat", "morphisms", "mu", "morphismsp" ],
   return_type := "morphism",
   output_source_getter_string := "Equalizer( cat, Source( mu ), morphisms )",
+  output_source_getter_preconditions := [ [ "Equalizer", 1 ] ],
   output_range_getter_string := "Equalizer( cat, Range( mu ), morphismsp )",
+  output_range_getter_preconditions := [ [ "Equalizer", 1 ] ],
   with_given_object_position := "both",
   dual_operation := "CoequalizerFunctorial",
   dual_arguments_reversed := true,
@@ -2936,7 +2960,9 @@ CoequalizerFunctorial := rec(
   input_arguments_names := [ "cat", "morphisms", "mu", "morphismsp" ],
   return_type := "morphism",
   output_source_getter_string := "Coequalizer( cat, Source( mu ), morphisms )",
+  output_source_getter_preconditions := [ [ "Coequalizer", 1 ] ],
   output_range_getter_string := "Coequalizer( cat, Range( mu ), morphismsp )",
+  output_range_getter_preconditions := [ [ "Coequalizer", 1 ] ],
   with_given_object_position := "both",
   dual_operation := "EqualizerFunctorial",
   dual_arguments_reversed := true,
@@ -2957,7 +2983,9 @@ FiberProductFunctorial := rec(
   input_arguments_names := [ "cat", "morphisms", "L", "morphismsp" ],
   return_type := "morphism",
   output_source_getter_string := "FiberProduct( cat, morphisms )",
+  output_source_getter_preconditions := [ [ "FiberProduct", 1 ] ],
   output_range_getter_string := "FiberProduct( cat, morphismsp )",
+  output_range_getter_preconditions := [ [ "FiberProduct", 1 ] ],
   with_given_object_position := "both",
   dual_operation := "PushoutFunctorial",
   dual_arguments_reversed := true,
@@ -2978,7 +3006,9 @@ PushoutFunctorial := rec(
   input_arguments_names := [ "cat", "morphisms", "L", "morphismsp" ],
   return_type := "morphism",
   output_source_getter_string := "Pushout( cat, morphisms )",
+  output_source_getter_preconditions := [ [ "Pushout", 1 ] ],
   output_range_getter_string := "Pushout( cat, morphismsp )",
+  output_range_getter_preconditions := [ [ "Pushout", 1 ] ],
   with_given_object_position := "both",
   dual_operation := "FiberProductFunctorial",
   dual_arguments_reversed := true,
@@ -2999,7 +3029,9 @@ ImageObjectFunctorial := rec(
   input_arguments_names := [ "cat", "alpha", "nu", "alphap" ],
   return_type := "morphism",
   output_source_getter_string := "ImageObject( cat, alpha )",
+  output_source_getter_preconditions := [ [ "ImageObject", 1 ] ],
   output_range_getter_string := "ImageObject( cat, alphap )",
+  output_range_getter_preconditions := [ [ "ImageObject", 1 ] ],
   with_given_object_position := "both",
   dual_operation := "CoimageObjectFunctorial",
   dual_arguments_reversed := true,
@@ -3018,7 +3050,9 @@ CoimageObjectFunctorial := rec(
   input_arguments_names := [ "cat", "alpha", "mu", "alphap" ],
   return_type := "morphism",
   output_source_getter_string := "CoimageObject( cat, alpha )",
+  output_source_getter_preconditions := [ [ "CoimageObject", 1 ] ],
   output_range_getter_string := "CoimageObject( cat, alphap )",
+  output_range_getter_preconditions := [ [ "CoimageObject", 1 ] ],
   with_given_object_position := "both",
   dual_operation := "ImageObjectFunctorial",
   dual_arguments_reversed := true,
@@ -3111,7 +3145,6 @@ IdentityTwoCell := rec(
 
 IsWellDefinedForTwoCells := rec(
   filter_list := [ "category", "twocell" ],
-  well_defined_todo := false,
   dual_operation := "IsWellDefinedForTwoCells",
   
   redirect_function := function( cat, twocell )
@@ -3299,7 +3332,9 @@ MorphismBetweenDirectSums := rec(
   input_arguments_names := [ "cat", "source_diagram", "mat", "range_diagram" ],
   return_type := "morphism",
   output_source_getter_string := "DirectSum( cat, source_diagram )",
+  output_source_getter_preconditions := [ [ "DirectSum", 1 ] ],
   output_range_getter_string := "DirectSum( cat, range_diagram )",
+  output_range_getter_preconditions := [ [ "DirectSum", 1 ] ],
   with_given_object_position := "both",
   pre_function := function( cat, source_diagram, listlist, range_diagram )
     local result, i, j;
@@ -3390,7 +3425,9 @@ HomomorphismStructureOnMorphisms := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   input_arguments_names := [ "cat", "alpha", "beta" ],
   output_source_getter_string := "HomomorphismStructureOnObjects( cat, Range( alpha ), Source( beta ) )",
+  output_source_getter_preconditions := [ [ "HomomorphismStructureOnObjects", 1 ] ],
   output_range_getter_string := "HomomorphismStructureOnObjects( cat, Source( alpha ), Range( beta ) )",
+  output_range_getter_preconditions := [ [ "HomomorphismStructureOnObjects", 1 ] ],
   with_given_object_position := "both",
   return_type := "morphism_in_range_category_of_homomorphism_structure",
   dual_operation := "HomomorphismStructureOnMorphisms",
@@ -3423,7 +3460,9 @@ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure := rec
   filter_list := [ "category", "morphism" ],
   input_arguments_names := [ "cat", "alpha" ],
   output_source_getter_string := "DistinguishedObjectOfHomomorphismStructure( cat )",
+  output_source_getter_preconditions := [ [ "DistinguishedObjectOfHomomorphismStructure", 1 ] ],
   output_range_getter_string := "HomomorphismStructureOnObjects( cat, Source( alpha ), Range( alpha ) )",
+  output_range_getter_preconditions := [ [ "HomomorphismStructureOnObjects", 1 ] ],
   with_given_object_position := "both",
   return_type := "morphism_in_range_category_of_homomorphism_structure",
   dual_operation := "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
@@ -3537,7 +3576,7 @@ CoefficientsOfMorphism := rec(
 
 RandomObjectByInteger := rec(
   filter_list := [ "category", "integer" ],
-  io_type := [ [ "n" ], [ "A" ] ],
+  input_arguments_names := [ "cat", "n" ],
   return_type := "object",
   dual_operation := "RandomObjectByInteger",
 ),
@@ -3575,7 +3614,7 @@ RandomMorphismWithFixedSourceAndRangeByInteger := rec(
 
 RandomObjectByList := rec(
   filter_list := [ "category", IsList ],
-  io_type := [ [ "L" ], [ "A" ] ],
+  input_arguments_names := [ "cat", "L" ],
   return_type := "object"
 ),
 
@@ -3605,7 +3644,7 @@ RandomMorphismWithFixedSourceAndRangeByList := rec(
 
 HomologyObject := rec(
   filter_list := [ "category", "morphism", "morphism" ],
-  io_type := [ [ "alpha", "beta" ], [ "H" ] ],
+  input_arguments_names := [ "cat", "alpha", "beta" ],
   return_type := "object",
   pre_function := function( cat, alpha, beta )
       if not IsEqualForObjects( cat, Range( alpha ), Source( beta ) ) then
@@ -3686,7 +3725,7 @@ IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject := rec(
 ## SimplifyObject*
 SimplifyObject := rec(
   filter_list := [ "category", "object", "nonneg_integer_or_infinity" ],
-  io_type := [ [ "A", "n" ], [ "B" ] ],
+  input_arguments_names := [ "cat", "A", "n" ],
   return_type := "object",
   dual_operation := "SimplifyObject",
   redirect_function := function( cat, A, n )
@@ -4349,8 +4388,24 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
             record.output_source_getter_string := ReplacedString( record.output_source_getter_string, limit.limit_object_name, limit.colimit_object_name );
         fi;
         
+        if IsBound( record.output_source_getter_preconditions ) then
+            if record.output_source_getter_preconditions = [ [ limit.limit_object_name, 1 ] ] then
+                record.output_source_getter_preconditions := [ [ limit.colimit_object_name, 1 ] ];
+            else
+                Error( "this case is not supported yet" );
+            fi;
+        fi;
+        
         if IsBound( record.output_range_getter_string ) then
             record.output_range_getter_string := ReplacedString( record.output_range_getter_string, limit.limit_object_name, limit.colimit_object_name );
+        fi;
+        
+        if IsBound( record.output_range_getter_preconditions ) then
+            if record.output_range_getter_preconditions = [ [ limit.limit_object_name, 1 ] ] then
+                record.output_range_getter_preconditions := [ [ limit.colimit_object_name, 1 ] ];
+            else
+                Error( "this case is not supported yet" );
+            fi;
         fi;
         
         return record;
@@ -4467,10 +4522,12 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
                 "object_name( arguments... )",
                 rec( object_name := limit.limit_object_name, arguments := Concatenation( [ "cat" ], limit.functorial_source_diagram_arguments_names ) )
             ),
+            output_source_getter_preconditions := [ [ limit.limit_object_name, 1 ] ],
             output_range_getter_string := ReplacedStringViaRecord(
                 "object_name( arguments... )",
                 rec( object_name := limit.limit_object_name, arguments := Concatenation( [ "cat" ], limit.functorial_range_diagram_arguments_names ) )
             ),
+            output_range_getter_preconditions := [ [ limit.limit_object_name, 1 ] ],
             with_given_object_position := "both",
             dual_operation := limit.colimit_functorial_name,
             dual_arguments_reversed := true,
@@ -4845,11 +4902,11 @@ end );
 
 InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
   function( record )
-    local recnames, current_recname, current_rec, io_type, number_of_arguments, func_string,
-          installation_name, output_list, input_list, argument_names, return_list, current_output, input_position, list_position,
+    local recnames, current_recname, current_rec, diff, io_type, number_of_arguments, func_string,
+          output_list, input_list, argument_names, return_list, current_output, input_position, list_position,
           without_given_name, with_given_prefix, with_given_names, with_given_name, without_given_rec, with_given_object_position, object_name,
           object_filter_list, with_given_object_filter, given_source_argument_name, given_range_argument_name, with_given_rec, i,
-          can_always_compute_output_source_getter, can_always_compute_output_range_getter;
+          collected_list, preconditions, can_always_compute_output_source_getter, can_always_compute_output_range_getter;
     
     recnames := RecNames( record );
     
@@ -4857,6 +4914,16 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
     for current_recname in recnames do
         
         current_rec := record.(current_recname);
+        
+        diff := Difference( RecNames( current_rec ), CAP_INTERNAL_VALID_METHOD_NAME_RECORD_COMPONENTS );
+        diff := Difference( diff, CAP_INTERNAL_LEGACY_METHOD_NAME_RECORD_COMPONENTS );
+        
+        if not IsEmpty( diff ) then
+            
+            Print( "WARNING: The following method name record components are not known: " );
+            Display( diff );
+            
+        fi;
         
         # validity checks
         if not IsBound( current_rec.return_type ) then
@@ -4909,6 +4976,18 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                 Error( "the input type of <current_rec> has the wrong length" );
                 
             fi;
+            
+        fi;
+        
+        if IsBound( current_rec.output_source_getter_preconditions ) and not IsBound( current_rec.output_source_getter_string ) then
+            
+            Error( "output_source_getter_preconditions may only be set if output_source_getter_string is set" );
+            
+        fi;
+        
+        if IsBound( current_rec.output_range_getter_preconditions ) and not IsBound( current_rec.output_range_getter_string ) then
+            
+            Error( "output_range_getter_preconditions may only be set if output_range_getter_string is set" );
             
         fi;
         
@@ -5062,54 +5141,15 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
         
         if IsOperation( ValueGlobal( current_recname ) ) then
             
-            installation_name := current_recname;
+            current_rec.installation_name := current_recname;
             
         elif IsFunction( ValueGlobal( current_recname ) ) then
             
-            installation_name := Concatenation( current_recname, "Op" );
+            current_rec.installation_name := Concatenation( current_recname, "Op" );
             
         else
             
             Error( "`ValueGlobal( current_recname )` is neither an operation nor a function" );
-            
-        fi;
-        
-        if IsBound( current_rec.installation_name ) then
-            
-            if current_rec.installation_name <> installation_name then
-                
-                Display( Concatenation(
-                    "WARNING: Manually setting installation_name is not supported anymore. You will probably run into errors. ",
-                    "To avoid this warning, remove installation_name from the method record ",
-                    "and make sure your code supports the automatically chosen installation name \"", installation_name, "\"."
-                ) );
-                
-            fi;
-            
-        else
-            
-            current_rec.installation_name := installation_name;
-            
-        fi;
-        
-        if IsBound( current_rec.cache_name ) and current_rec.cache_name <> current_rec.function_name then
-            
-            Display( Concatenation(
-                "WARNING: Manually setting cache_name is not supported anymore. The function name will be used instead. ",
-                "To avoid this warning, remove cache_name from the method record."
-            ) );
-            
-        fi;
-        
-        if IsBound( current_rec.zero_arguments_for_add_method ) then
-            
-            Display( "zero_arguments_for_add_method has no effect anymore, please remove it." );
-            
-        fi;
-        
-        if IsBound( current_rec.number_of_diagram_arguments ) then
-            
-            Display( "number_of_diagram_arguments has no effect anymore, please remove it." );
             
         fi;
         
@@ -5145,7 +5185,9 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
         fi;
         
-        if IsBound( current_rec.io_type ) and current_rec.return_type = "morphism" and not IsString( current_rec.io_type[ 2 ] ) and IsList( current_rec.io_type[ 2 ] ) then
+        if IsBound( current_rec.io_type ) then
+            
+            Assert( 0, StartsWith( current_rec.return_type, "morphism" ) and not IsString( current_rec.io_type[ 2 ] ) and IsList( current_rec.io_type[ 2 ] ) );
             
             output_list := current_rec.io_type[ 2 ];
             
@@ -5225,6 +5267,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             if return_list[1] <> fail then
                 
                 current_rec.output_source_getter_string := return_list[1];
+                current_rec.output_source_getter_preconditions := [ ];
                 current_rec.can_always_compute_output_source_getter := true;
                 
             fi;
@@ -5232,6 +5275,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             if return_list[2] <> fail then
                 
                 current_rec.output_range_getter_string := return_list[2];
+                current_rec.output_range_getter_preconditions := [ ];
                 current_rec.can_always_compute_output_range_getter := true;
                 
             fi;
@@ -5299,6 +5343,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                     if not IsBound( without_given_rec.output_source_getter_string ) then
                         
                         without_given_rec.output_source_getter_string := Concatenation( object_name, "( ", JoinStringsWithSeparator( without_given_rec.input_arguments_names{[ 1 .. Length( object_filter_list ) ]}, ", " ), " )" );
+                        without_given_rec.output_source_getter_preconditions := [ [ object_name, 1 ] ];
                         
                     fi;
                     
@@ -5309,6 +5354,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                     if not IsBound( without_given_rec.output_range_getter_string ) then
                         
                         without_given_rec.output_range_getter_string := Concatenation( object_name, "( ", JoinStringsWithSeparator( without_given_rec.input_arguments_names{[ 1 .. Length( object_filter_list ) ]}, ", " ), " )" );
+                        without_given_rec.output_range_getter_preconditions := [ [ object_name, 1 ] ];
                         
                     fi;
                     
@@ -5381,12 +5427,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                 
                 with_given_rec.filter_list := Concatenation( without_given_rec.filter_list, [ with_given_object_filter ] );
                 with_given_rec.input_arguments_names := Concatenation( without_given_rec.input_arguments_names, [ given_source_argument_name ] );
-                
-                if IsBound( record.(with_given_name).output_source_getter_string ) then
-                    
-                    with_given_rec.output_source_getter_string := given_source_argument_name;
-                    
-                fi;
+                with_given_rec.output_source_getter_string := given_source_argument_name;
                 
                 if IsBound( without_given_rec.output_range_getter_string ) then
                     
@@ -5394,20 +5435,27 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                     
                 fi;
                 
+                if IsBound( without_given_rec.output_range_getter_preconditions ) then
+                    
+                    with_given_rec.output_range_getter_preconditions := without_given_rec.output_range_getter_preconditions;
+                    
+                fi;
+                
             elif with_given_object_position = "Range" then
                 
                 with_given_rec.filter_list := Concatenation( without_given_rec.filter_list, [ with_given_object_filter ] );
                 with_given_rec.input_arguments_names := Concatenation( without_given_rec.input_arguments_names, [ given_range_argument_name ] );
-                
-                if IsBound( record.(with_given_name).output_range_getter_string ) then
-                    
-                    with_given_rec.output_range_getter_string := given_range_argument_name;
-                    
-                fi;
+                with_given_rec.output_range_getter_string := given_range_argument_name;
                 
                 if IsBound( without_given_rec.output_source_getter_string ) then
                     
                     with_given_rec.output_source_getter_string := without_given_rec.output_source_getter_string;
+                    
+                fi;
+                
+                if IsBound( without_given_rec.output_source_getter_preconditions ) then
+                    
+                    with_given_rec.output_source_getter_preconditions := without_given_rec.output_source_getter_preconditions;
                     
                 fi;
                 
@@ -5426,17 +5474,8 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                     [ given_range_argument_name ]
                 );
                 
-                if IsBound( record.(with_given_name).output_source_getter_string ) then
-                    
-                    with_given_rec.output_source_getter_string := given_source_argument_name;
-                    
-                fi;
-                
-                if IsBound( record.(with_given_name).output_range_getter_string ) then
-                    
-                    with_given_rec.output_range_getter_string := given_range_argument_name;
-                    
-                fi;
+                with_given_rec.output_source_getter_string := given_source_argument_name;
+                with_given_rec.output_range_getter_string := given_range_argument_name;
                 
             else
                 
@@ -5535,9 +5574,23 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
         
         current_rec := record.(current_recname);
         
-        if IsBound( current_rec.dual_with_given_objects_reversed ) and current_rec.dual_with_given_objects_reversed and not current_rec.is_with_given then
+        if IsBound( current_rec.dual_with_given_objects_reversed ) and current_rec.dual_with_given_objects_reversed then
             
-            Error( "dual_with_given_objects_reversed may only be set for with given records" );
+            if not current_rec.is_with_given then
+                
+                Error( "dual_with_given_objects_reversed may only be set for with given records" );
+                
+            fi;
+            
+            without_given_rec := record.(current_rec.with_given_without_given_name_pair[1]);
+            
+            with_given_object_position := without_given_rec.with_given_object_position;
+            
+            if with_given_object_position <> "both" then
+                
+                Error( "dual_with_given_objects_reversed may only be set if both source and range are given" );
+                
+            fi;
             
         fi;
         
@@ -5552,32 +5605,61 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                 )
             ) );
             
-            # Test if output_source_getter_string contains a CAP operation.
-            # If not, it can always be computed (independent of the concrete category).
-            
-            can_always_compute_output_source_getter := fail;
-            
             if current_rec.output_source_getter_string in current_rec.input_arguments_names then
                 
-                can_always_compute_output_source_getter := true;
+                if not IsBound( current_rec.output_source_getter_preconditions ) then
+                    
+                    current_rec.output_source_getter_preconditions := [ ];
+                    
+                fi;
                 
-            else
+                if not IsEmpty( current_rec.output_source_getter_preconditions ) then
+                    
+                    Error( "<current_rec.output_source_getter_preconditions> does not match the automatically detected value" );
+                    
+                fi;
                 
-                #= comment for Julia
-                can_always_compute_output_source_getter := IsEmpty(
-                    CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION(
+            fi;
+            
+            #= comment for Julia
+            if IsBound( current_rec.output_source_getter_preconditions ) then
+                
+                if ForAny( current_rec.output_source_getter_preconditions, x -> IsList( x ) and Length( x ) = 3 ) then
+                    
+                    Print( "WARNING: preconditions in other categories are not yet supported, please report this using the CAP_projects's issue tracker.\n" );
+                    
+                fi;
+                
+                if ForAny( current_rec.output_source_getter_preconditions, x -> not IsList( x ) or Length( x ) <> 2 or not IsString( x[1] ) or not IsInt( x[2] ) ) then
+                    
+                    Error( "Preconditions must be pairs of names of CAP operations and integers." );
+                    
+                fi;
+                
+                collected_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION(
                         current_rec.output_source_getter,
                         Concatenation( recnames, RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) ),
                         2,
                         CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS,
                         rec( )
-                    )
                 );
-                # =#
+                
+                Assert( 0, ForAll( collected_list, x -> Length( x ) = 3 and x[3] = fail ) );
+                
+                preconditions := Set( List( collected_list, x -> [ x[1], x[2] ] ) );
+                
+                if Set( current_rec.output_source_getter_preconditions ) <> preconditions then
+                    
+                    Error( "output_source_getter_preconditions of ", current_recname, " is ", current_rec.output_source_getter_preconditions, " but expected ", preconditions );
+                    
+                fi;
                 
             fi;
+            # =#
             
-            if can_always_compute_output_source_getter <> fail then
+            if IsBound( current_rec.output_source_getter_preconditions ) then
+                
+                can_always_compute_output_source_getter := IsEmpty( current_rec.output_source_getter_preconditions );
                 
                 if IsBound( current_rec.can_always_compute_output_source_getter ) then
                     
@@ -5607,32 +5689,61 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                 )
             ) );
             
-            # Test if output_range_getter_string contains a CAP operation.
-            # If not, it can always be computed (independent of the concrete category).
-            
-            can_always_compute_output_range_getter := fail;
-            
             if current_rec.output_range_getter_string in current_rec.input_arguments_names then
                 
-                can_always_compute_output_range_getter := true;
+                if not IsBound( current_rec.output_range_getter_preconditions ) then
+                    
+                    current_rec.output_range_getter_preconditions := [ ];
+                    
+                fi;
                 
-            else
+                if not IsEmpty( current_rec.output_range_getter_preconditions ) then
+                    
+                    Error( "<current_rec.output_range_getter_preconditions> does not match the automatically detected value" );
+                    
+                fi;
                 
-                #= comment for Julia
-                can_always_compute_output_range_getter := IsEmpty(
-                    CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION(
+            fi;
+            
+            #= comment for Julia
+            if IsBound( current_rec.output_range_getter_preconditions ) then
+                
+                if ForAny( current_rec.output_range_getter_preconditions, x -> IsList( x ) and Length( x ) = 3 ) then
+                    
+                    Print( "WARNING: preconditions in other categories are not yet supported, please report this using the CAP_projects's issue tracker.\n" );
+                    
+                fi;
+                
+                if ForAny( current_rec.output_range_getter_preconditions, x -> not IsList( x ) or Length( x ) <> 2 or not IsString( x[1] ) or not IsInt( x[2] ) ) then
+                    
+                    Error( "Preconditions must be pairs of names of CAP operations and integers." );
+                    
+                fi;
+                
+                collected_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION(
                         current_rec.output_range_getter,
                         Concatenation( recnames, RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) ),
                         2,
                         CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS,
                         rec( )
-                    )
                 );
-                # =#
+                
+                Assert( 0, ForAll( collected_list, x -> Length( x ) = 3 and x[3] = fail ) );
+                
+                preconditions := Set( List( collected_list, x -> [ x[1], x[2] ] ) );
+                
+                if Set( current_rec.output_range_getter_preconditions ) <> preconditions then
+                    
+                    Error( "output_range_getter_preconditions of ", current_recname, " is ", current_rec.output_range_getter_preconditions, " but expected ", preconditions );
+                    
+                fi;
                 
             fi;
+            # =#
             
-            if can_always_compute_output_range_getter <> fail then
+            if IsBound( current_rec.output_range_getter_preconditions ) then
+                
+                can_always_compute_output_range_getter := IsEmpty( current_rec.output_range_getter_preconditions );
                 
                 if IsBound( current_rec.can_always_compute_output_range_getter ) then
                     

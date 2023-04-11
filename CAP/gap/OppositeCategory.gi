@@ -157,7 +157,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
                 
                 postprocessor_string
                 
-                return_statement;
+                return_statement
                 
             end
             """;
@@ -267,7 +267,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
             
             postprocessor_string := Concatenation( "dual_postprocessor_func := ", dual_postprocessor_func_string, ";" );
             
-            return_statement := "return dual_postprocessor_func( result )";
+            return_statement := "return dual_postprocessor_func( result );";
             
         else
             
@@ -275,11 +275,11 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
             
             if return_type = "object" then
                 
-                return_statement := "return ObjectConstructor( cat, result )";
+                return_statement := "return ObjectConstructor( cat, result );";
                 
             elif return_type = "morphism" then
                 
-                return_statement := "return MorphismConstructor( cat, output_source_getter, result, output_range_getter )";
+                return_statement := "return MorphismConstructor( cat, output_source_getter, result, output_range_getter );";
                 
                 if IsBound( current_entry.output_source_getter_string ) and IsBound( current_entry.can_always_compute_output_source_getter ) and current_entry.can_always_compute_output_source_getter then
                     
@@ -308,27 +308,39 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
                 
             elif return_type = "object_or_fail" then
                 
-                return_statement := "if result = fail then return fail; else return ObjectConstructor( cat, result ); fi";
+                return_statement := """
+                    if result = fail then
+                        return fail;
+                    else
+                        return ObjectConstructor( cat, result );
+                    fi;
+                """;
                 
             elif return_type = "morphism_or_fail" then
                 
-                return_statement := "if result = fail then return fail; else return MorphismConstructor( cat, ObjectConstructor( cat, Range( result ) ), result, ObjectConstructor( cat, Source( result ) ) ); fi";
+                return_statement := """
+                    if result = fail then
+                        return fail;
+                    else
+                        return MorphismConstructor( cat, ObjectConstructor( cat, Range( result ) ), result, ObjectConstructor( cat, Source( result ) ) );
+                    fi;
+                """;
                 
             elif return_type = "list_of_morphisms" then
                 
-                return_statement := "return List( result, mor -> MorphismConstructor( cat, ObjectConstructor( cat, Range( mor ) ), mor, ObjectConstructor( cat, Source( mor ) ) ) )";
+                return_statement := "return List( result, mor -> MorphismConstructor( cat, ObjectConstructor( cat, Range( mor ) ), mor, ObjectConstructor( cat, Source( mor ) ) ) );";
                 
             elif return_type = "list_of_objects" then
                 
-                return_statement := "return List( result, obj -> ObjectConstructor( cat, obj ) )";
+                return_statement := "return List( result, obj -> ObjectConstructor( cat, obj ) );";
                 
             elif return_type = "bool" then
                 
-                return_statement := "return result";
+                return_statement := "return result;";
                 
             elif return_type = "nonneg_integer_or_infinity" then
                 
-                return_statement := "return result";
+                return_statement := "return result;";
 
             else
                 

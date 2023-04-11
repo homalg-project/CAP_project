@@ -4,12 +4,14 @@
 # Reading the implementation part of the package.
 #
 
+#= comment for Julia
 if IsBound( WriteFileForMonoidalStructure ) then
-ReadPackage( "CartesianCategories", "gap/Tools.gi");
+ReadPackage( "CartesianCategories", "gap/Tools.gi" );
 fi;
+# =#
 
 ## Initial category
-ReadPackage( "CartesianCategories", "gap/InitialCategory.gi");
+ReadPackage( "CartesianCategories", "gap/InitialCategory.gi" );
 
 ## Cartesian and Cocartesian
 ReadPackage( "CartesianCategories", "gap/CartesianCategoriesMethodRecord.gi" );
@@ -77,4 +79,4 @@ ReadPackage( "CartesianCategories", "gap/CartesianClosedCategoriesTest.gi" );
 ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategoriesTest.gi" );
 
 ## Homomorphism structure
-ReadPackage( "CartesianCategories", "gap/HomomorphismStructureDerivedMethods.gi");
+ReadPackage( "CartesianCategories", "gap/HomomorphismStructureDerivedMethods.gi" );

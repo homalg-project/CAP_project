@@ -4,13 +4,15 @@
 # Reading the declaration part of the package.
 #
 
+#= comment for Julia
 if IsBound( WriteFileForMonoidalStructure ) then
-ReadPackage( "CartesianCategories", "gap/Tools.gd");
+ReadPackage( "CartesianCategories", "gap/Tools.gd" );
 fi;
+# =#
 
 ## Initial category
-ReadPackage( "CartesianCategories", "gap/InitialCategory.gd");
-ReadPackage( "CartesianCategories", "gap/InitialCategoryProperties.gd");
+ReadPackage( "CartesianCategories", "gap/InitialCategory.gd" );
+ReadPackage( "CartesianCategories", "gap/InitialCategoryProperties.gd" );
 
 ## Cartesian and Cocartesian
 ReadPackage( "CartesianCategories", "gap/CartesianCategories.gd" );
