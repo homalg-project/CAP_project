@@ -3129,7 +3129,7 @@ AddDerivationToCAP( Colift,
     
     b := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat, beta );
     
-    a := HomomorphismStructureOnMorphisms( cat, alpha, IdentityMorphism( Range( beta ) ) );
+    a := HomomorphismStructureOnMorphisms( cat, alpha, IdentityMorphism( cat, Range( beta ) ) );
     
     return InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat, Range( alpha ), Range( beta ), Lift( range_cat, b, a ) );
     
