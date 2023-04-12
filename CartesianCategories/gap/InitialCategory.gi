@@ -13,8 +13,7 @@ InstallGlobalFunction( InitialCategory,
     
     I!.category_as_first_argument := true;
     
-    SetFilterObj( I, IsInitialCapCategory );
-    SetFilterObj( I, IsInitialCategory );
+    SetIsInitialCategory( I, true );
     
     SetRangeCategoryOfHomomorphismStructure( I, I );
     SetIsEquippedWithHomomorphismStructure( I, true );
