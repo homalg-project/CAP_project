@@ -40,6 +40,63 @@ BindGlobal( "CAP_JIT_INTERNAL_OPERATION_TO_SYNTAX_TREE_TRANSLATIONS", rec(
 
 Assert( 0, Length( RecNames( CAP_JIT_INTERNAL_SYNTAX_TREE_TO_OPERATION_TRANSLATIONS ) ) = Length( RecNames( CAP_JIT_INTERNAL_OPERATION_TO_SYNTAX_TREE_TRANSLATIONS ) ) );
 
+BindGlobal( "CAP_JIT_INTERNAL_NEGATED_TYPES", rec(
+    EXPR_EQ := "EXPR_NE",
+    EXPR_LT := "EXPR_GE",
+    EXPR_LE := "EXPR_GT",
+    #
+    EXPR_NE := "EXPR_EQ",
+    EXPR_GE := "EXPR_LT",
+    EXPR_GT := "EXPR_LE",
+) );
+
+BindGlobal( "CAP_JIT_INTERNAL_NORMALIZE_NOT_FOR_JULIA", function ( tree )
+    
+    # "!" in Julia binds much stronger than "not" in GAP, so we have to take special precautions to make sure semantics do not change during conversion to Julia.
+    
+    if tree.type = "EXPR_NOT" then
+        
+        if tree.op.type in [ "EXPR_REF_LVAR", "EXPR_REF_HVAR", "EXPR_REF_GVAR" ] then
+            
+            # We are in the case "not var" respectively "! var".
+            # This is fine because there is no ambiguity.
+            
+        elif tree.op.type in [ "EXPR_AND", "EXPR_OR" ] then
+            
+            # We are in the case "not x and y" respectively "! x && y" or "not x or y" respectively "! x || y".
+            # This is fine because "not" binds stronger than "and" and "or" and "!" binds stronger than "&&" and "||".
+            
+        elif StartsWith( tree.op.type, "EXPR_FUNCCALL_" ) then
+            
+            # We are in the case "not func( x )" respectively "! func( x )".
+            # This is fine: We have (!func)(x) = !(func(x)), so the binding strength of "!" does not matter.
+            
+        elif tree.op.type = "EXPR_IN" then
+            
+            # We are in the case "not x in L" respectively "! x in L".
+            # This is handled by gap_to_julia which replaces "in" by a symbol binding stronger than "!".
+            
+        elif IsBound( CAP_JIT_INTERNAL_NEGATED_TYPES.(tree.op.type) ) then
+            
+            tree := rec(
+                type := CAP_JIT_INTERNAL_NEGATED_TYPES.(tree.op.type),
+                left := tree.op.left,
+                right := tree.op.right,
+            );
+            
+        else
+            
+            # COVERAGE_IGNORE_NEXT_LINE
+            Print( "WARNING: You are negating a syntax tree of type ", tree.op.type, ". This might cause problems when converting the code to Julia because \"!\" binds much stronger in Julia than \"not\" does in GAP.\n" );
+            
+        fi;
+        
+    fi;
+    
+    return tree;
+    
+end );
+
 InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
   local ErrorWithFuncLocation, globalize_hvars, only_if_CAP_JIT_RESOLVE_FUNCTION, given_arguments, type_signature, remove_depth_numbering, tree, orig_tree, pre_func, result_func, additional_arguments_func;
     
@@ -623,6 +680,8 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                 
             fi;
             
+            tree := CAP_JIT_INTERNAL_NORMALIZE_NOT_FOR_JULIA( tree );
+            
         else
             
             # COVERAGE_IGNORE_NEXT_LINE
@@ -854,7 +913,7 @@ end );
 CAP_JIT_INTERNAL_TREE_TO_CODE := rec( );
 
 InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
-  local orig_tree, is_dummy_function, seen_function_ids, stat, pre_func, additional_arguments_func, func;
+  local orig_tree, is_dummy_function, seen_function_ids, stat, pre_func, result_func, additional_arguments_func, func;
     
     # to simplify debugging in break loops, we keep a reference to the original input
     orig_tree := tree;
@@ -1420,6 +1479,36 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
         
     end;
     
+    result_func := function ( tree, result, keys, additional_arguments )
+      local key;
+        
+        if IsList( result ) then
+            
+            return result;
+            
+        elif IsRecord( result ) then
+            
+            tree := ShallowCopy( tree );
+            
+            for key in keys do
+                
+                tree.(key) := result.(key);
+                
+            od;
+            
+            tree := CAP_JIT_INTERNAL_NORMALIZE_NOT_FOR_JULIA( tree );
+            
+            return tree;
+            
+        else
+            
+            # COVERAGE_IGNORE_NEXT_LINE
+            Error( "this should never happen" );
+            
+        fi;
+        
+    end;
+    
     additional_arguments_func := function ( tree, key, additional_arguments )
       local path, func_stack;
         
@@ -1440,7 +1529,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
         
     end;
     
-    tree := CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, additional_arguments_func, [ [ ], [ ] ] );
+    tree := CapJitIterateOverTree( tree, pre_func, result_func, additional_arguments_func, [ [ ], [ ] ] );
     
     # We work around https://github.com/oscar-system/GAP.jl/issues/814 by calling SYNTAX_TREE_CODE inside an `EvalString`
     CAP_JIT_INTERNAL_TREE_TO_CODE := tree;
