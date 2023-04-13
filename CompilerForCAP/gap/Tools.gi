@@ -34,29 +34,15 @@ end );
 InstallGlobalFunction( CapJitResultFuncCombineChildren, function ( tree, result, keys, additional_arguments )
   local key;
     
-    # when unenhancing an enhanced syntax tree, the "list" case can still occur
-    if IsList( result ) then
+    tree := ShallowCopy( tree );
+    
+    for key in keys do
         
-        return result;
+        tree.(key) := result.(key);
         
-    elif IsRecord( result ) then
-        
-        tree := ShallowCopy( tree );
-        
-        for key in keys do
-            
-            tree.(key) := result.(key);
-            
-        od;
-        
-        return tree;
-        
-    else
-        
-        # COVERAGE_IGNORE_NEXT_LINE
-        Error( "this should never happen" );
-        
-    fi;
+    od;
+    
+    return tree;
     
 end );
 

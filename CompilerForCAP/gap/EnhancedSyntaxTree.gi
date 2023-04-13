@@ -854,7 +854,7 @@ end );
 CAP_JIT_INTERNAL_TREE_TO_CODE := rec( );
 
 InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
-  local orig_tree, is_dummy_function, seen_function_ids, stat, pre_func, additional_arguments_func, func;
+  local orig_tree, is_dummy_function, seen_function_ids, stat, pre_func, result_func, additional_arguments_func, func;
     
     # to simplify debugging in break loops, we keep a reference to the original input
     orig_tree := tree;
@@ -1420,6 +1420,34 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
         
     end;
     
+    result_func := function ( tree, result, keys, additional_arguments )
+      local key;
+        
+        if IsList( result ) then
+            
+            return result;
+            
+        elif IsRecord( result ) then
+            
+            tree := ShallowCopy( tree );
+            
+            for key in keys do
+                
+                tree.(key) := result.(key);
+                
+            od;
+            
+            return tree;
+            
+        else
+            
+            # COVERAGE_IGNORE_NEXT_LINE
+            Error( "this should never happen" );
+            
+        fi;
+        
+    end;
+    
     additional_arguments_func := function ( tree, key, additional_arguments )
       local path, func_stack;
         
@@ -1440,7 +1468,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
         
     end;
     
-    tree := CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, additional_arguments_func, [ [ ], [ ] ] );
+    tree := CapJitIterateOverTree( tree, pre_func, result_func, additional_arguments_func, [ [ ], [ ] ] );
     
     # We work around https://github.com/oscar-system/GAP.jl/issues/814 by calling SYNTAX_TREE_CODE inside an `EvalString`
     CAP_JIT_INTERNAL_TREE_TO_CODE := tree;
