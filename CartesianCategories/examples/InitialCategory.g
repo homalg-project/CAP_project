@@ -10,7 +10,7 @@ IsInitialCategory( I );
 Display( I );
 #! A CAP category with name InitialCategory( ):
 #! 
-#! 5 primitive operations were used to derive 13 operations for this category
+#! 5 primitive operations were used to derive 13 operations for this category \
 #! which mathematically
 #! * IsEquippedWithHomomorphismStructure (but not yet algorithmically)
 #! * IsInitialCategory
@@ -21,7 +21,7 @@ IsInitialCategory( OI );
 Display( OI );
 #! A CAP category with name Opposite( InitialCategory( ) ):
 #! 
-#! 17 primitive operations were used to derive 17 operations for this category
+#! 17 primitive operations were used to derive 17 operations for this category \
 #! which mathematically
 #! * IsEquippedWithHomomorphismStructure (but not yet algorithmically)
 #! * IsInitialCategory
