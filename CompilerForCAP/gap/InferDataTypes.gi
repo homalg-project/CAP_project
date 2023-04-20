@@ -962,6 +962,7 @@ CapJitAddTypeSignature( "IS_IDENTICAL_OBJ", [ IsObject, IsObject ], IsBool );
 CapJitAddTypeSignature( "^", [ IsPerm, IsInt ], IsPerm );
 CapJitAddTypeSignature( "PermList", [ IsList ], IsPerm );
 CapJitAddTypeSignature( "PermutationMat", [ IsPerm, IsInt ], rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsInt ) ) ) );
+CapJitAddTypeSignature( "BigInt", [ IsInt ], IsBigInt );
 
 CapJitAddTypeSignature( "ID_FUNC", [ IsObject ], function ( input_types )
     
