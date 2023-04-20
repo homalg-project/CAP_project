@@ -346,3 +346,11 @@ DeclareGlobalFunction( "FirstWithKeys" );
 #! @Arguments list, func
 #! @Returns a list
 DeclareGlobalFunction( "LastWithKeys" );
+
+#= comment for Julia
+# In Julia we have to distinguish between (small) integers and big integers. In GAP there is no difference.
+DeclareSynonym( "IsBigInt", IsInt );
+# CompilerForCAP has to distinguish between BigInt and IdFunc
+DeclareGlobalFunction( "BigInt" );
+InstallGlobalFunction( BigInt, IdFunc );
+# =#
