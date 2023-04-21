@@ -65,7 +65,7 @@ jobs:
           if [ -d "CategoricalTowers/Toposes" ]; then make -C "CategoricalTowers/Toposes" doc; fi
       - name: Test CAP_project
         run: |
-          make -C CAP_project -j $(nproc) --output-sync ci-test
+          make -C CAP_project --trace -j $(nproc) --output-sync ci-test
       - name: Release package or simulate release
         run: |
           cd CAP_project

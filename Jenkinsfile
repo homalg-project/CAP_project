@@ -17,7 +17,7 @@ pipeline {
 				}
 
 				dir('pkg/CAP_project') {
-					sh 'make -j $(nproc) --output-sync ci-test'
+					sh 'make --trace -j $(nproc) --output-sync ci-test'
 				}
 			}
 		}
