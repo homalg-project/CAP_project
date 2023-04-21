@@ -1123,7 +1123,7 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
             
             for x in current_derivation.cannot_compute do
                 
-                weight := CurrentOperationWeight( weight_list, x );
+                weight := CurrentOperationWeight( category_weight_list, x );
                 
                 if weight < infinity then
                     
