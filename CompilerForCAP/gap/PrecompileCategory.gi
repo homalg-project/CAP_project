@@ -165,7 +165,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         if PositionSublist( function_string, "CAP_JIT_INTERNAL_GLOBAL_VARIABLE_" ) <> fail then
             
             # COVERAGE_IGNORE_NEXT_LINE
-            Error( "Could not get rid of all global variables, see <function_string>. You should use category_hints.category_attribute_names." );
+            Error( "Could not get rid of all global variables, see <function_string>. You should use compiler_hints.category_attribute_names." );
             
         fi;
         

@@ -1170,7 +1170,7 @@ DeclareOperation( "HomStructure",
 #! * `object_function` gets the categories $C$ and $E$ and an object in $D$.
 #! * `morphism_function` gets the categories $C$ and $E$, an object in $E$, a morphism in $D$ and another object in $E$.
 #!   The objects are the results of `object_function` applied to the source and range of the morphism.
-#! * `object_function_inverse` gets the categories $C$ and $E$ and a morphism in $E$.
+#! * `object_function_inverse` gets the categories $C$ and $E$ and an object in $E$.
 #! * `morphism_function_inverse` gets the categories $C$ and $E$, an object in $D$, a morphism in $E$ and another object in $D$.
 #!   The objects are the results of `object_function_inverse` applied to the source and range of the morphism.
 #! `object_function` and `morphism_function` define the embedding. `object_function_inverse` and `morphism_function_inverse` define
