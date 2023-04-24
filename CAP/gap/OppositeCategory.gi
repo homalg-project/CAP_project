@@ -402,9 +402,15 @@ InstallMethod( Opposite,
     );
     
     SetOppositeCategory( opposite_category, category );
-    
     SetOpposite( opposite_category, category );
-    SetOpposite( category, opposite_category );
+    
+    # A category might have multiple different instances of opposite categories.
+    # Only the first instance is used for attributes (of the category and its objects and morphisms).
+    if not HasOpposite( category ) then
+        
+        SetOpposite( category, opposite_category );
+        
+    fi;
     
     known_properties := ListKnownCategoricalProperties( category );
     
@@ -433,8 +439,10 @@ InstallMethod( Opposite,
         #% CAP_JIT_DROP_NEXT_STATEMENT
         CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( object, OppositeCategory( cat ), [ "the object datum given to the object constructor of <cat>" ] );
         
+        # A category might have multiple different instances of opposite categories.
+        # Only the first instance is used for attributes (of the category and its objects and morphisms).
         #% CAP_JIT_DROP_NEXT_STATEMENT
-        if HasOpposite( object ) then
+        if HasOpposite( object ) and IsIdenticalObj( Opposite( OppositeCategory( cat ) ), cat ) then
             
             return Opposite( object );
             
@@ -452,8 +460,14 @@ InstallMethod( Opposite,
             
         fi;
         
+        # A category might have multiple different instances of opposite categories.
+        # Only the first instance is used for attributes (of the category and its objects and morphisms).
         #% CAP_JIT_DROP_NEXT_STATEMENT
-        SetOpposite( object, opposite_object );
+        if IsIdenticalObj( Opposite( OppositeCategory( cat ) ), cat ) then
+            
+            SetOpposite( object, opposite_object );
+            
+        fi;
         
         return opposite_object;
         
@@ -483,8 +497,10 @@ InstallMethod( Opposite,
             
         fi;
         
+        # A category might have multiple different instances of opposite categories.
+        # Only the first instance is used for attributes (of the category and its objects and morphisms).
         #% CAP_JIT_DROP_NEXT_STATEMENT
-        if HasOpposite( morphism ) then
+        if HasOpposite( morphism ) and IsIdenticalObj( Opposite( OppositeCategory( cat ) ), cat ) then
             
             return Opposite( morphism );
             
@@ -503,8 +519,14 @@ InstallMethod( Opposite,
             
         fi;
         
+        # A category might have multiple different instances of opposite categories.
+        # Only the first instance is used for attributes (of the category and its objects and morphisms).
         #% CAP_JIT_DROP_NEXT_STATEMENT
-        SetOpposite( morphism, opposite_morphism );
+        if IsIdenticalObj( Opposite( OppositeCategory( cat ) ), cat ) then
+            
+            SetOpposite( morphism, opposite_morphism );
+            
+        fi;
         
         return opposite_morphism;
         
