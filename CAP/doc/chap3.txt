@@ -975,7 +975,7 @@
         morphism  in [23XD[123X and another object in [23XE[123X. The objects are the results of
         [10Xobject_function[110X applied to the source and range of the morphism.[133X
   
-  [30X    [33X[0;6Y[10Xobject_function_inverse[110X  gets the categories [23XC[123X and [23XE[123X and a morphism in
+  [30X    [33X[0;6Y[10Xobject_function_inverse[110X  gets  the categories [23XC[123X and [23XE[123X and an object in
         [23XE[123X.[133X
   
   [30X    [33X[0;6Y[10Xmorphism_function_inverse[110X gets the categories [23XC[123X and [23XE[123X, an object in [23XD[123X,
