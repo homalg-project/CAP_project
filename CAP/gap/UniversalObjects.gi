@@ -910,16 +910,6 @@ CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
 ## Convenience methods
 ####################################
 
-# deprecated legacy aliases
-InstallDeprecatedAlias( "Coimage", "CoimageObject", "2023.03.29" );
-InstallDeprecatedAlias( "CoimageProjectionWithGivenCoimage", "CoimageProjectionWithGivenCoimageObject", "2023.03.29" );
-InstallDeprecatedAlias( "AstrictionToCoimageWithGivenCoimage", "AstrictionToCoimageWithGivenCoimageObject", "2023.03.29" );
-InstallDeprecatedAlias( "UniversalMorphismIntoCoimageWithGivenCoimage", "UniversalMorphismIntoCoimageWithGivenCoimageObject", "2023.03.29" );
-InstallDeprecatedAlias( "AddCoimage", "AddCoimageObject", "2023.03.29" );
-InstallDeprecatedAlias( "AddCoimageProjectionWithGivenCoimage", "AddCoimageProjectionWithGivenCoimageObject", "2023.03.29" );
-InstallDeprecatedAlias( "AddAstrictionToCoimageWithGivenCoimage", "AddAstrictionToCoimageWithGivenCoimageObject", "2023.03.29" );
-InstallDeprecatedAlias( "AddUniversalMorphismIntoCoimageWithGivenCoimage", "AddUniversalMorphismIntoCoimageWithGivenCoimageObject", "2023.03.29" );
-
 ##
 InstallMethod( MorphismFromCoimageToImage,
                [ IsCapCategoryMorphism ],

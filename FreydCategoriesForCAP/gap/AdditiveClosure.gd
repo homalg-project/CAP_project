@@ -93,10 +93,6 @@ CapJitAddTypeSignature( "AdditiveClosureMorphism", [ IsAdditiveClosureCategory, 
     
 end );
 
-# deprecated
-DeclareOperation( "AdditiveClosureMorphismListList",
-                  [ IsAdditiveClosureObject, IsList, IsAdditiveClosureObject ] );
-
 #! @Description
 #! The argument is a morphism $\alpha$ in an Ab-category $C$. The output is the image of $\alpha$ under the inclusion functor $\iota:C\to C^\oplus$.
 #! @Arguments alpha

@@ -213,18 +213,6 @@ InstallOtherMethodForCompilerForCAP( AdditiveClosureMorphism,
 end );
 
 ##
-InstallMethod( AdditiveClosureMorphismListList,
-               [ IsAdditiveClosureObject, IsList, IsAdditiveClosureObject ],
-               
-  function( source, listlist, range )
-    
-    Display( "WARNING: AdditiveClosureMorphismListList is deprecated and will not be supported after 2022.11.16. Please use AdditiveClosureMorphism instead." );
-    
-    return AdditiveClosureMorphism( source, listlist, range );
-    
-end );
-
-##
 InstallOtherMethod( \/,
                [ IsList, IsAdditiveClosureCategory ],
                
