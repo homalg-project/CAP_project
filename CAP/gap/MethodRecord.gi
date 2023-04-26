@@ -20,6 +20,7 @@ InstallValue( CAP_INTERNAL_VALID_RETURN_TYPES,
         "object_datum",
         "morphism_datum",
         "nonneg_integer_or_infinity",
+        "list_of_elements_of_commutative_ring_of_linear_structure",
     ]
 #! @EndCode
 );
@@ -3569,7 +3570,7 @@ BasisOfExternalHom := rec(
 
 CoefficientsOfMorphism := rec(
   filter_list := [ "category", "morphism" ],
-  return_type := IsList,
+  return_type := "list_of_elements_of_commutative_ring_of_linear_structure",
   dual_operation := "CoefficientsOfMorphism",
   dual_postprocessor_func := IdFunc
 ),
