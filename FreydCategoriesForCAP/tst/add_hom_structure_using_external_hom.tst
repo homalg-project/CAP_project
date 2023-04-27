@@ -9,11 +9,11 @@ gap> dummy := DummyCategory( rec(
 >                    "PreComposeList",
 >                    "SumOfMorphisms" ],
 >                properties := [ "IsLinearCategoryOverCommutativeRing" ] ) : FinalizeCategory := false );;
-gap> AddBasisOfExternalHom( dummy, ReturnNothing );
-gap> AddCoefficientsOfMorphism( dummy, ReturnNothing );
 gap> field := HomalgFieldOfRationals( );
 Q
 gap> SetCommutativeRingOfLinearCategory( dummy, field );
+gap> AddBasisOfExternalHom( dummy, ReturnNothing );
+gap> AddCoefficientsOfMorphism( dummy, ReturnNothing );
 gap> SetRangeCategoryOfHomomorphismStructure( dummy, CategoryOfRows( field ) );
 gap> SetIsEquippedWithHomomorphismStructure( dummy, true );
 gap> Finalize( dummy );;

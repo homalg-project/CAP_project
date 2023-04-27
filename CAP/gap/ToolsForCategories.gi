@@ -11,7 +11,7 @@
 #####################################
 
 InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( string, args... )
-  local category;
+  local category, is_ring_element, ring;
     
     if not IsString( string ) then
         
@@ -143,6 +143,41 @@ InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( stri
         
         # cannot be express "or fail" yet
         return fail;
+        
+    elif string = "list_of_elements_of_commutative_ring_of_linear_structure" then
+        
+        if category <> false and not HasCommutativeRingOfLinearCategory( category ) then
+            
+            Print( "WARNING: You are calling an Add function for a CAP operation for \"", Name( category ), "\" which is part of the linear structure over a commutative ring but the category has no CommutativeRingOfLinearCategory (yet).\n" );
+            
+        fi;
+        
+        if category = false or not HasCommutativeRingOfLinearCategory( category ) then
+            
+            is_ring_element := IsRingElement;
+            
+        else
+            
+            ring := CommutativeRingOfLinearCategory( category );
+            
+            if IsBoundGlobal( "IsHomalgRing" ) and ValueGlobal( "IsHomalgRing" )( ring ) then
+                
+                is_ring_element := ValueGlobal( "IsHomalgRingElement" );
+                
+            else
+                
+                is_ring_element := IsRingElement;
+                
+            fi;
+            
+        fi;
+        
+        return rec(
+            filter := IsList,
+            element_type := rec(
+                filter := is_ring_element,
+            ),
+        );
         
     else
         
@@ -430,6 +465,19 @@ InstallGlobalFunction( "CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER",
             fi;
             
             CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( value, data_type.category, human_readable_identifier_list );
+            
+        end;
+        
+    elif IsBoundGlobal( "IsHomalgRingElement" ) and IsSpecializationOfFilter( ValueGlobal( "IsHomalgRingElement" ), filter ) then
+        
+        return function( value )
+            
+            # Some things (e.g. integers) do not lie in the filter `IsHomalgRingElement` but are actually elements of homalg rings (e.g. `HomalgRingOfIntegers( )`).
+            if not IsRingElement( value ) then
+                
+                CallFuncList( Error, Concatenation( human_readable_identifier_list, [ " does not lie in the expected filter IsRingElement.", generic_help_string ] ) );
+                
+            fi;
             
         end;
         
