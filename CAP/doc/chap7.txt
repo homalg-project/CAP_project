@@ -217,6 +217,7 @@
     [4X        "object_datum",[104X
     [4X        "morphism_datum",[104X
     [4X        "nonneg_integer_or_infinity",[104X
+    [4X        "list_of_elements_of_commutative_ring_of_linear_structure",[104X
     [4X    ][104X
   [4X[32X[104X
   
