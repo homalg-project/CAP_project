@@ -1784,7 +1784,7 @@ end );
 ##
 AddDerivationToCAP( PreComposeList,
                     "PreComposeList by iterating PreCompose",
-                    [ [ PreCompose, 1 ] ],
+                    [ [ PreCompose, 2 ] ],
                     
   function( cat, morphism_list )
     
@@ -1806,7 +1806,7 @@ end );
 ##
 AddDerivationToCAP( PostComposeList,
                     "PostComposeList by iterating PostCompose",
-                    [ [ PostCompose, 1 ] ],
+                    [ [ PostCompose, 2 ] ],
                     
   function( cat, morphism_list )
     
@@ -1917,12 +1917,15 @@ end : CategoryFilter := IsAbCategory );
 ##
 AddDerivationToCAP( SumOfMorphisms,
                     "SumOfMorphisms using AdditionForMorphisms and ZeroMorphism",
-                    [ [ AdditionForMorphisms, 1 ],
+                    [ [ AdditionForMorphisms, 2 ],
                       [ ZeroMorphism, 1 ] ],
                     
   function( cat, obj1, mors, obj2 )
+    local zero_morphism;
     
-    return Iterated( mors, { alpha, beta } -> AdditionForMorphisms( cat, alpha, beta ), ZeroMorphism( cat, obj1, obj2 ) );
+    zero_morphism := ZeroMorphism( cat, obj1, obj2 );
+    
+    return Iterated( mors, { alpha, beta } -> AdditionForMorphisms( cat, alpha, beta ), zero_morphism );
     
 end : CategoryFilter := IsAbCategory );
 

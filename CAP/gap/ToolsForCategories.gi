@@ -623,11 +623,12 @@ InstallGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION",
         
     fi;
     
-    ## Make List, Perform, Apply look like loops
-    ## Beginning space (or new line) is important here, to avoid scanning things like CallFuncList
-    for i in [ " List(", "\nList(", " ListN(", "\nListN(", " Perform(", "\nPerform(", "\nApply(", " Apply(" ] do
+    # make List etc. look like loops
+    for i in [ "List", "ListN", "Perform", "Apply", "Iterated" ] do
         
-        func_as_string := ReplacedString( func_as_string, i, " CAP_INTERNAL_FUNCTIONAL_LOOP" );
+        # beginning space or new line is important here to avoid scanning things like CallFuncList
+        func_as_string := ReplacedString( func_as_string, Concatenation( " ", i, "(" ), " CAP_INTERNAL_FUNCTIONAL_LOOP" );
+        func_as_string := ReplacedString( func_as_string, Concatenation( "\n", i, "(" ), " CAP_INTERNAL_FUNCTIONAL_LOOP" );
         
     od;
     
