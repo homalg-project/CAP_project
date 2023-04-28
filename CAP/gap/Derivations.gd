@@ -52,7 +52,7 @@ DeclareCategory( "IsDerivedMethod", IsAttributeStoringRep );
 #!  entry must be installed for the derivation to be considered valid.
 #!  The argument <A>weight</A> is an additional number to add
 #!  when calculating the resulting weight of the target operation
-#!  using this derivation.  Unless there is any particular reason
+#!  using this derivation. Unless there is any particular reason
 #!  to regard the derivation as exceedingly expensive, this number
 #!  should be <C>1</C>.
 #!  The argument <A>func</A> contains the actual implementation of the

@@ -326,7 +326,7 @@ InstallMethod( Finalize,
                [ IsCapCategory ],
   
   function( category )
-    local derivation_list, weight_list, current_install, current_final_derivation, filter, category_operation_weights, weight, operation_weights, operation_name, operation_weight, add_name, old_weights, categorical_properties, diff, properties_with_logic, property, i, x, derivation, property_name;
+    local derivation_list, weight_list, current_install, current_final_derivation, weight, old_weights, categorical_properties, diff, properties_with_logic, property, i, derivation, property_name;
     
     if IsFinalized( category ) then
         
@@ -415,7 +415,14 @@ InstallMethod( Finalize,
                 
                 Assert( 0, weight <> infinity );
                 
-                InstallDerivationForCategory( derivation, weight, category : IsFinalDerivation := true );
+                # When installing a final derivation bundle, the installation of the first operations in the bundle
+                # might trigger (normal) derivations of later operations it the bundle, which might be cheaper then
+                # the derivations provided in the bundle.
+                if weight <= CurrentOperationWeight( weight_list, TargetOperation( derivation ) ) then
+                    
+                    InstallDerivationForCategory( derivation, weight, category : IsFinalDerivation := true );
+                    
+                fi;
                 
             od;
             

@@ -282,6 +282,8 @@ InstallMethod( AddDerivation,
   function( graph, target_op, description, used_ops_with_multiples_and_category_getters, func )
     local weight, category_filter, loop_multiplier, category_getters, function_called_before_installation, operations_in_graph, collected_list, used_op_names_with_multiples_and_category_getters, derivation, x;
     
+    # When compiling categories, a derivation does not cause overhead anymore, so we would like to simply set `Weight` to 0.
+    # However, the weight 1 is currently needed to prevent the installation of cyclic derivations.
     weight := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Weight", 1 );
     category_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryFilter", IsCapCategory );
     loop_multiplier := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "WeightLoopMultiple", 2 );
