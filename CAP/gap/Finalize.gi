@@ -415,7 +415,14 @@ InstallMethod( Finalize,
                 
                 Assert( 0, weight <> infinity );
                 
-                InstallDerivationForCategory( derivation, weight, category : IsFinalDerivation := true );
+                # When installing a final derivation bundle, the installation of the first operations in the bundle
+                # might trigger (normal) derivations of later operations it the bundle, which might be cheaper then
+                # the derivations provided in the bundle.
+                if weight <= CurrentOperationWeight( weight_list, TargetOperation( derivation ) ) then
+                    
+                    InstallDerivationForCategory( derivation, weight, category : IsFinalDerivation := true );
+                    
+                fi;
                 
             od;
             
