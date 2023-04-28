@@ -189,10 +189,10 @@ InstallGlobalFunction( CapInternalInstallAdd,
                    [ IsCapCategory, IsList, IsInt ],
       
       function( category, method_list, weight )
-        local install_func, replaced_filter_list, needs_wrapping, i, is_derivation, is_final_derivation, is_precompiled_derivation, without_given_name, with_given_name,
-              without_given_weight, with_given_weight, number_of_proposed_arguments, current_function_number,
-              current_function_argument_number, current_additional_filter_list_length, input_sanity_check_functions,
-              output_human_readable_identifier_list, output_data_type, assert_is_value_of_return_type, output_sanity_check_function, name;
+        local is_derivation, is_final_derivation, is_precompiled_derivation, replaced_filter_list, needs_wrapping,
+            number_of_proposed_arguments, current_function_argument_number, current_additional_filter_list_length,
+            input_sanity_check_functions, output_human_readable_identifier_list, output_sanity_check_function,
+            output_data_type, assert_is_value_of_return_type, install_func, name, current_function_number, i;
         
         if IsFinalized( category ) then
             Error( "cannot add methods anymore, category is finalized" );
