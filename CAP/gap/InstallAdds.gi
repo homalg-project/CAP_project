@@ -435,12 +435,12 @@ InstallGlobalFunction( CapInternalInstallAdd,
                   function( arg )
                     local redirect_return, pre_func_return, collect_timing_statistics, start_time, result, end_time, i;
                     
-                    if not IsFinalized( category ) then
+                    if not IsFinalized( category ) and not category!.primitive_operations.( function_name ) then
                         
-                        Display( Concatenation(
-                            "WARNING: You are calling an operation in a unfinalized category with name \"", Name( category ),
-                            "\". This is fine for debugging purposes, but for production use you should finalize the category by calling `Finalize` (with the option `FinalizeCategory := true` if needed)."
-                        ) );
+                        Print(
+                            "WARNING: You are calling an operation in an unfinalized category with name \"", Name( category ),
+                            "\". This is fine for debugging purposes, but for production use you should finalize the category by calling `Finalize` (with the option `FinalizeCategory := true` if needed).\n"
+                        );
                         
                     fi;
                     
