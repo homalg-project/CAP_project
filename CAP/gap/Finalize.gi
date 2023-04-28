@@ -326,7 +326,7 @@ InstallMethod( Finalize,
                [ IsCapCategory ],
   
   function( category )
-    local derivation_list, weight_list, current_install, current_final_derivation, filter, category_operation_weights, weight, operation_weights, operation_name, operation_weight, add_name, old_weights, categorical_properties, diff, properties_with_logic, property, i, x, derivation, property_name;
+    local derivation_list, weight_list, current_install, current_final_derivation, weight, old_weights, categorical_properties, diff, properties_with_logic, property, i, derivation, property_name;
     
     if IsFinalized( category ) then
         
