@@ -84,7 +84,7 @@ InstallMethod( FreydCategory,
         
     end;
     
-    wrapper := WrapperCategory( freyd, rec(
+    wrapper := ReinterpretationOfCategory( freyd, rec(
         name := Concatenation( "Category of f.p. graded left modules over ", RingName( graded_ring ) ),
         category_filter := IsFreydCategory and IsFpGradedLeftModules,
         category_object_filter := IsFreydCategoryObject and HasRelationMorphism and IsFpGradedLeftModulesObject,
@@ -97,9 +97,6 @@ InstallMethod( FreydCategory,
         modeling_tower_object_datum := modeling_tower_object_datum,
         modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
         modeling_tower_morphism_datum := modeling_tower_morphism_datum,
-        # enforce defaults
-        only_primitive_operations := false,
-        wrap_range_of_hom_structure := false,
     ) );
     
     SetUnderlyingCategory( wrapper, underlying_category );
@@ -177,7 +174,7 @@ InstallMethod( FreydCategory,
         
     end;
     
-    wrapper := WrapperCategory( freyd, rec(
+    wrapper := ReinterpretationOfCategory( freyd, rec(
         name := Concatenation( "Category of f.p. graded right modules over ", RingName( graded_ring ) ),
         category_filter := IsFreydCategory and IsFpGradedRightModules,
         category_object_filter := IsFreydCategoryObject and HasRelationMorphism and IsFpGradedRightModulesObject,
@@ -190,9 +187,6 @@ InstallMethod( FreydCategory,
         modeling_tower_object_datum := modeling_tower_object_datum,
         modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
         modeling_tower_morphism_datum := modeling_tower_morphism_datum,
-        # enforce defaults
-        only_primitive_operations := false,
-        wrap_range_of_hom_structure := false,
     ) );
     
     SetUnderlyingCategory( wrapper, underlying_category );

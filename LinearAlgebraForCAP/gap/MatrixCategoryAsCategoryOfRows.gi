@@ -131,7 +131,7 @@ InstallMethod( MatrixCategoryAsCategoryOfRows,
         
     end;
     
-    wrapper := WrapperCategory( rows, rec(
+    wrapper := ReinterpretationOfCategory( rows, rec(
         name := Concatenation( "Category of matrices over ", RingName( homalg_ring ) ),
         category_filter := IsMatrixCategory,
         category_object_filter := IsVectorSpaceObject and HasDimension and HasIsProjective and IsProjective,
@@ -145,7 +145,6 @@ InstallMethod( MatrixCategoryAsCategoryOfRows,
         modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
         modeling_tower_morphism_datum := modeling_tower_morphism_datum,
         only_primitive_operations := true,
-        wrap_range_of_hom_structure := true,
     ) : FinalizeCategory := false );
     
     SetUnderlyingRing( wrapper, homalg_ring );

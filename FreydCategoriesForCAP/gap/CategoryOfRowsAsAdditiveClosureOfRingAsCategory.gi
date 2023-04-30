@@ -189,7 +189,7 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
         
     fi;
     
-    wrapper := WrapperCategory( add, rec(
+    wrapper := ReinterpretationOfCategory( add, rec(
         name := Concatenation( "Rows( ", RingName( homalg_ring )," )" ),
         category_filter := IsCategoryOfRows,
         category_object_filter := category_object_filter,
@@ -203,7 +203,6 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
         modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
         modeling_tower_morphism_datum := modeling_tower_morphism_datum,
         only_primitive_operations := true,
-        wrap_range_of_hom_structure := HasRangeCategoryOfHomomorphismStructure( add ) and IsIdenticalObj( add, RangeCategoryOfHomomorphismStructure( add ) ),
     ) : FinalizeCategory := false );
     
     SetUnderlyingRing( wrapper, homalg_ring );

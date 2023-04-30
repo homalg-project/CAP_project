@@ -50,6 +50,8 @@ ReadPackage( "CAP", "gap/CategoryConstructor.gi" );
 
 ReadPackage( "CAP", "gap/TerminalCategory.gi" );
 
+ReadPackage( "CAP", "gap/ReinterpretationOfCategory.gi" );
+
 ReadPackage( "CAP", "gap/WrapperCategory.gi" );
 
 ReadPackage( "CAP", "gap/DummyCategory.gi" );
