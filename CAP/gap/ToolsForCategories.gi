@@ -152,11 +152,13 @@ InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( stri
         
     elif string = "element_of_commutative_ring_of_linear_structure" then
         
+        #= comment for Julia
         if category <> false and not HasCommutativeRingOfLinearCategory( category ) then
             
             Print( "WARNING: You are calling an Add function for a CAP operation for \"", Name( category ), "\" which is part of the linear structure over a commutative ring but the category has no CommutativeRingOfLinearCategory (yet).\n" );
             
         fi;
+        # =#
         
         if category = false or not HasCommutativeRingOfLinearCategory( category ) then
             
