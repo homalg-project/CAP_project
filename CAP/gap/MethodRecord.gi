@@ -1329,7 +1329,7 @@ SubtractionForMorphisms := rec(
 ),
 
 MultiplyWithElementOfCommutativeRingForMorphisms := rec(
-  filter_list := [ "category", IsRingElement, "morphism" ],
+  filter_list := [ "category", "element_of_commutative_ring_of_linear_structure", "morphism" ],
   io_type := [ [ "r", "a" ], [ "a_source", "a_range" ] ],
   
   pre_function := function( cat, r, morphism )
@@ -2450,7 +2450,7 @@ AstrictionToCoimageWithGivenCoimageObject := rec(
   dual_operation := "CoastrictionToImageWithGivenImageObject" ),
 
 UniversalMorphismIntoCoimage := rec(
-  filter_list := [ "category", "morphism", "list_of_morphisms" ],
+  filter_list := [ "category", "morphism", "pair_of_morphisms" ],
   io_type := [ [ "alpha", "tau" ], [ "tau_1_range", "C" ] ],
   with_given_object_position := "Range",
   dual_preprocessor_func := CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,
@@ -2484,7 +2484,7 @@ UniversalMorphismIntoCoimage := rec(
   dual_operation := "UniversalMorphismFromImage" ),
 
 UniversalMorphismIntoCoimageWithGivenCoimageObject := rec(
-  filter_list := [ "category", "morphism", "list_of_morphisms", "object" ],
+  filter_list := [ "category", "morphism", "pair_of_morphisms", "object" ],
   io_type := [ [ "alpha", "tau", "C" ], [ "tau_1_range", "C" ] ],
   dual_preprocessor_func := CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,
   pre_function := function( cat, morphism, test_factorization, image )
@@ -2710,7 +2710,7 @@ CoastrictionToImageWithGivenImageObject := rec(
   dual_operation := "AstrictionToCoimageWithGivenCoimageObject" ),
 
 UniversalMorphismFromImage := rec(
-  filter_list := [ "category", "morphism", "list_of_morphisms" ],
+  filter_list := [ "category", "morphism", "pair_of_morphisms" ],
   io_type := [ [ "alpha", "tau" ], [ "I", "tau_1_range" ] ],
   with_given_object_position := "Source",
   dual_operation := "UniversalMorphismIntoCoimage",
@@ -2744,7 +2744,7 @@ UniversalMorphismFromImage := rec(
   return_type := "morphism" ),
 
 UniversalMorphismFromImageWithGivenImageObject := rec(
-  filter_list := [ "category", "morphism", "list_of_morphisms", "object" ],
+  filter_list := [ "category", "morphism", "pair_of_morphisms", "object" ],
   io_type := [ [ "alpha", "tau", "I" ], [ "I", "tau_1_range" ] ],
   dual_operation := "UniversalMorphismIntoCoimageWithGivenCoimageObject",
   dual_preprocessor_func := CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,
@@ -3614,31 +3614,31 @@ RandomMorphismWithFixedSourceAndRangeByInteger := rec(
 ),
 
 RandomObjectByList := rec(
-  filter_list := [ "category", IsList ],
+  filter_list := [ "category", "arbitrary_list" ],
   input_arguments_names := [ "cat", "L" ],
   return_type := "object"
 ),
 
 RandomMorphismByList := rec(
-  filter_list := [ "category", IsList ],
+  filter_list := [ "category", "arbitrary_list" ],
   io_type := [ [ "L" ], [ "A", "B" ] ],
   return_type := "morphism"
 ),
 
 RandomMorphismWithFixedSourceByList := rec(
-  filter_list := [ "category", "object", IsList ],
+  filter_list := [ "category", "object", "arbitrary_list" ],
   io_type := [ [ "A", "L" ], [ "A", "B" ] ],
   return_type := "morphism",
 ),
 
 RandomMorphismWithFixedRangeByList := rec(
-  filter_list := [ "category", "object", IsList ],
+  filter_list := [ "category", "object", "arbitrary_list" ],
   io_type := [ [ "B", "L" ], [ "A", "B" ] ],
   return_type := "morphism"
 ),
 
 RandomMorphismWithFixedSourceAndRangeByList := rec(
-  filter_list := [ "category", "object", "object", IsList ],
+  filter_list := [ "category", "object", "object", "arbitrary_list" ],
   io_type := [ [ "A", "B", "L" ], [ "A", "B" ] ],
   return_type := "morphism"
 ),
@@ -3662,7 +3662,7 @@ HomologyObject := rec(
 ),
 
 HomologyObjectFunctorialWithGivenHomologyObjects := rec(
-  filter_list := [ "category", "object", IsList, "object" ],
+  filter_list := [ "category", "object", "5_tuple_of_morphisms", "object" ],
   io_type := [ [ "H_1", "L", "H_2" ], [ "H_1", "H_2" ] ],
   return_type := "morphism",
   pre_function := function( cat, H_1, L, H2 )
@@ -5283,7 +5283,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
         fi;
         
-        if ForAll( current_rec.filter_list, x -> x in [ IsRingElement, "integer", "nonneg_integer_or_infinity", "category", "object", "object_in_range_category_of_homomorphism_structure", "list_of_objects" ] ) then
+        if ForAll( current_rec.filter_list, x -> x in [ "element_of_commutative_ring_of_linear_structure", "integer", "nonneg_integer_or_infinity", "category", "object", "object_in_range_category_of_homomorphism_structure", "list_of_objects" ] ) then
             
             if not IsBound( current_rec.compatible_with_congruence_of_morphisms ) then
                 

@@ -5,13 +5,13 @@ gap> LoadPackage( "FreydCategoriesForCAP", false );
 true
 gap> dummy := DummyCategory( rec(
 >                list_of_operations_to_install :=  [
->                    "MultiplyWithElementOfCommutativeRingForMorphisms",
 >                    "PreComposeList",
 >                    "SumOfMorphisms" ],
 >                properties := [ "IsLinearCategoryOverCommutativeRing" ] ) : FinalizeCategory := false );;
 gap> field := HomalgFieldOfRationals( );
 Q
 gap> SetCommutativeRingOfLinearCategory( dummy, field );
+gap> AddMultiplyWithElementOfCommutativeRingForMorphisms( dummy, ReturnNothing );
 gap> AddBasisOfExternalHom( dummy, ReturnNothing );
 gap> AddCoefficientsOfMorphism( dummy, ReturnNothing );
 gap> SetRangeCategoryOfHomomorphismStructure( dummy, CategoryOfRows( field ) );

@@ -211,7 +211,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
                     
                     return Concatenation( "MorphismDatum( cat, ", argument_name, " )" );
                     
-                elif filter = "integer" or filter = IsRingElement then
+                elif filter = "integer" or filter = "element_of_commutative_ring_of_linear_structure" or filter = "nonneg_integer_or_infinity" then
                     
                     return argument_name;
                     
@@ -222,10 +222,6 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
                 elif filter = "list_of_morphisms" then
                     
                     return Concatenation( "List( ", argument_name, ", x -> MorphismDatum( cat, x ) )" );
-                    
-                elif filter = "nonneg_integer_or_infinity" then
-                    
-                    return argument_name;
                     
                 else
                     

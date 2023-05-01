@@ -403,6 +403,16 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
         
     fi;
     
+    if "MultiplyWithElementOfCommutativeRingForMorphisms" in recnames and
+       HasIsLinearCategoryOverCommutativeRing( underlying_category ) and
+       IsLinearCategoryOverCommutativeRing( underlying_category ) and
+       HasCommutativeRingOfLinearCategory( underlying_category ) then
+        
+        # we assume that `category_with_attributes` is linear over the same ring as `underlying_category`
+        SetCommutativeRingOfLinearCategory( category_with_attributes, CommutativeRingOfLinearCategory( underlying_category ) );
+        
+    fi;
+    
     for name in recnames do
         
         entry := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
