@@ -245,9 +245,32 @@ InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( stri
     
 end );
 
+InstallGlobalFunction( CAP_INTERNAL_GET_DATA_TYPES_FROM_STRINGS,
+  
+  function( list, args... )
+    local category;
+    
+    if Length( args ) > 1 then
+        
+        Error( "CAP_INTERNAL_GET_DATA_TYPES_FROM_STRINGS must be called with at most two arguments" );
+        
+    elif Length( args ) = 1 then
+        
+        category := args[1];
+        
+    else
+        
+        category := false;
+        
+    fi;
+    
+    return List( list, l -> CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( l, category ) );
+    
+end );
+
 InstallGlobalFunction( CAP_INTERNAL_REPLACED_STRING_WITH_FILTER,
   
-  function( filter_or_string, args... )
+  function( filter_string, args... )
     local category, data_type;
     
     if Length( args ) > 1 then
@@ -264,38 +287,26 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACED_STRING_WITH_FILTER,
         
     fi;
     
-    if IsFilter( filter_or_string ) then
+    data_type := CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( filter_string, category );
+    
+    if data_type = fail then
         
-        return filter_or_string;
+        return IsObject;
         
-    elif IsString( filter_or_string ) then
+    elif IsSpecializationOfFilter( IsNTuple, data_type.filter ) then
         
-        data_type := CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( filter_or_string, category );
+        # `IsNTuple` deliberately does not imply `IsList` because we want to treat tuples and lists in different ways in CompilerForCAP.
+        # However, on the GAP level tuples are just lists.
+        return IsList;
         
-        if data_type = fail then
-            
-            return IsObject;
-            
-        elif IsSpecializationOfFilter( IsNTuple, data_type.filter ) then
-            
-            # `IsNTuple` deliberately does not imply `IsList` because we want to treat tuples and lists in different ways in CompilerForCAP.
-            # However, on the GAP level tuples are just lists.
-            return IsList;
-            
-        elif IsBoundGlobal( "IsHomalgRingElement" ) and IsSpecializationOfFilter( ValueGlobal( "IsHomalgRingElement" ), data_type.filter ) then
-            
-            # Some things (e.g. integers) do not lie in the filter `IsHomalgRingElement` but are actually elements of homalg rings (e.g. `HomalgRingOfIntegers( )`).
-            return IsRingElement;
-            
-        else
-            
-            return data_type.filter;
-            
-        fi;
+    elif IsBoundGlobal( "IsHomalgRingElement" ) and IsSpecializationOfFilter( ValueGlobal( "IsHomalgRingElement" ), data_type.filter ) then
+        
+        # Some things (e.g. integers) do not lie in the filter `IsHomalgRingElement` but are actually elements of homalg rings (e.g. `HomalgRingOfIntegers( )`).
+        return IsRingElement;
         
     else
         
-        Error( "the first argument must be a string or filter" );
+        return data_type.filter;
         
     fi;
     
@@ -304,18 +315,24 @@ end );
 InstallGlobalFunction( CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS,
   
   function( list, args... )
-      local category;
-      
-      if Length( args ) > 1 then
-          Error( "CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS must be called with at most two arguments" );
-      elif Length( args ) = 1 then
-          category := args[1];
-      else
-          category := false;
-      fi;
-      
-      return List( list, l -> CAP_INTERNAL_REPLACED_STRING_WITH_FILTER( l, category ) );
-      
+    local category;
+    
+    if Length( args ) > 1 then
+        
+        Error( "CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS must be called with at most two arguments" );
+        
+    elif Length( args ) = 1 then
+        
+        category := args[1];
+        
+    else
+        
+        category := false;
+        
+    fi;
+    
+    return List( list, l -> CAP_INTERNAL_REPLACED_STRING_WITH_FILTER( l, category ) );
+    
 end );
 
 InstallGlobalFunction( CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS_FOR_JULIA,
@@ -324,11 +341,17 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS_FOR_JULIA,
     local category;
     
     if Length( args ) > 1 then
+        
         Error( "CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS_FOR_JULIA must be called with at most two arguments" );
+        
     elif Length( args ) = 1 then
+        
         category := args[1];
+        
     else
+        
         category := false;
+        
     fi;
     
     return List( list, function ( l )
@@ -988,8 +1011,17 @@ end );
 ##
 InstallGlobalFunction( "IsSpecializationOfFilter", function ( filter1, filter2 )
     
-    filter1 := CAP_INTERNAL_REPLACED_STRING_WITH_FILTER( filter1 );
-    filter2 := CAP_INTERNAL_REPLACED_STRING_WITH_FILTER( filter2 );
+    if IsString( filter1 ) then
+        
+        filter1 := CAP_INTERNAL_REPLACED_STRING_WITH_FILTER( filter1 );
+        
+    fi;
+    
+    if IsString( filter2 ) then
+        
+        filter2 := CAP_INTERNAL_REPLACED_STRING_WITH_FILTER( filter2 );
+        
+    fi;
     
     return IS_SUBSET_FLAGS( WITH_IMPS_FLAGS( FLAGS_FILTER( filter2 ) ), WITH_IMPS_FLAGS( FLAGS_FILTER( filter1 ) ) );
     

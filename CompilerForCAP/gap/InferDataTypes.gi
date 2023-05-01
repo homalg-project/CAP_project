@@ -202,16 +202,7 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_I
             
             Assert( 0, info.filter_list[1] = "category" );
             
-            if IsString( info.return_type ) then
-                
-                return CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( info.return_type, input_types[1].category );
-                
-            else
-                
-                #Error( "could not get output_type" );
-                return fail;
-                
-            fi;
+            return CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( info.return_type, input_types[1].category );
             
         elif info.install_convenience_without_category and IsSpecializationOfFilterList( info.filter_list{[ 2 .. Length( info.filter_list ) ]}, input_filters ) then
             
@@ -229,16 +220,7 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_I
                     
                 fi;
                 
-                if IsString( info.return_type ) then
-                    
-                    return CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( info.return_type, category );
-                    
-                else
-                    
-                    #Error( "could not get output_type" );
-                    return fail;
-                    
-                fi;
+                return CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( info.return_type, category );
                 
             fi;
             

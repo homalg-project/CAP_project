@@ -260,7 +260,7 @@ InstallMethod( CategoryConstructor,
             
         fi;
         
-        if not IsString( info.return_type ) or not IsBound( default_func_strings.(info.return_type) ) then
+        if not IsBound( default_func_strings.(info.return_type) ) then
             
             Info( InfoCategoryConstructor, 3, "cannot yet handle return_type=\"", info.return_type, "\" required for ", name );
             continue;

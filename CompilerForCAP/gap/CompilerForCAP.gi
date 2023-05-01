@@ -96,7 +96,7 @@ CAP_JIT_INTERNAL_COMPILATION_IN_PROGRESS := false;
 BindGlobal( "CAP_JIT_INTERNAL_COMPILED_FUNCTIONS_STACK", [ ] );
 
 InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( func, with_or_without_post_processing, args... )
-  local debug, debug_idempotence, category_as_first_argument, category, type_signature, filter_list, arguments_data_types, return_type, return_data_type, tree, resolving_phase_functions, orig_tree, compiled_func, tmp, rule_phase_functions, tree_without_post_processing, changed, pre_func, domains, additional_arguments_func, f;
+  local debug, debug_idempotence, category_as_first_argument, category, type_signature, filter_list, arguments_data_types, return_data_type, tree, resolving_phase_functions, orig_tree, compiled_func, tmp, rule_phase_functions, tree_without_post_processing, changed, pre_func, domains, additional_arguments_func, f;
     
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, "Start compilation." );
@@ -170,31 +170,9 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                 
             fi;
             
-            arguments_data_types := List( filter_list, function ( filter_or_string )
-                
-                if IsString( filter_or_string ) then
-                    
-                    return CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( filter_or_string, category );
-                    
-                else
-                    
-                    return fail;
-                    
-                fi;
-                
-            end );
+            arguments_data_types := CAP_INTERNAL_GET_DATA_TYPES_FROM_STRINGS( filter_list, category );
             
-            return_type := args[3];
-            
-            if IsString( return_type ) then
-                
-                return_data_type := CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( return_type, category );
-                
-            else
-                
-                return_data_type := fail;
-                
-            fi;
+            return_data_type := CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( args[3], category );
             
             if fail in arguments_data_types then
                 
