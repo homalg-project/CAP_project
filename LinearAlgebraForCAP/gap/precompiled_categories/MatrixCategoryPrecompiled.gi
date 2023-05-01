@@ -5855,10 +5855,10 @@ end
         
 ########
 function ( cat_1, alpha_1, tau_1 )
-    local deduped_1_1, deduped_2_1;
-    deduped_2_1 := CAP_JIT_INCOMPLETE_LOGIC( tau_1[2] );
-    deduped_1_1 := UniqueRightDivide( BasisOfRows( UnderlyingMatrix( alpha_1 ) ), UnderlyingMatrix( deduped_2_1 ) );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( deduped_1_1 ) ), Source( deduped_2_1 ), UnderlyingMatrix, deduped_1_1 );
+    local morphism_attr_1_1, deduped_2_1;
+    deduped_2_1 := tau_1[2];
+    morphism_attr_1_1 := UniqueRightDivide( BasisOfRows( UnderlyingMatrix( alpha_1 ) ), UnderlyingMatrix( deduped_2_1 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), Source( deduped_2_1 ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
@@ -5870,7 +5870,7 @@ end
 ########
 function ( cat_1, alpha_1, tau_1, I_1 )
     local deduped_1_1;
-    deduped_1_1 := CAP_JIT_INCOMPLETE_LOGIC( tau_1[2] );
+    deduped_1_1 := tau_1[2];
     return CreateCapCategoryMorphismWithAttributes( cat_1, I_1, Source( deduped_1_1 ), UnderlyingMatrix, UniqueRightDivide( BasisOfRows( UnderlyingMatrix( alpha_1 ) ), UnderlyingMatrix( deduped_1_1 ) ) );
 end
 ########
@@ -5978,10 +5978,10 @@ end
         
 ########
 function ( cat_1, alpha_1, tau_1 )
-    local deduped_1_1, deduped_2_1;
-    deduped_2_1 := CAP_JIT_INCOMPLETE_LOGIC( tau_1[1] );
-    deduped_1_1 := UniqueLeftDivide( UnderlyingMatrix( deduped_2_1 ), BasisOfColumns( UnderlyingMatrix( alpha_1 ) ) );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Range( deduped_2_1 ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( deduped_1_1 ) ), UnderlyingMatrix, deduped_1_1 );
+    local morphism_attr_1_1, deduped_2_1;
+    deduped_2_1 := tau_1[1];
+    morphism_attr_1_1 := UniqueLeftDivide( UnderlyingMatrix( deduped_2_1 ), BasisOfColumns( UnderlyingMatrix( alpha_1 ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Range( deduped_2_1 ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
@@ -5993,7 +5993,7 @@ end
 ########
 function ( cat_1, alpha_1, tau_1, C_1 )
     local deduped_1_1;
-    deduped_1_1 := CAP_JIT_INCOMPLETE_LOGIC( tau_1[1] );
+    deduped_1_1 := tau_1[1];
     return CreateCapCategoryMorphismWithAttributes( cat_1, Range( deduped_1_1 ), C_1, UnderlyingMatrix, UniqueLeftDivide( UnderlyingMatrix( deduped_1_1 ), BasisOfColumns( UnderlyingMatrix( alpha_1 ) ) ) );
 end
 ########

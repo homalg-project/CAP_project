@@ -11,7 +11,7 @@
 #####################################
 
 InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( string, args... )
-  local category, is_ring_element, ring;
+  local category, is_ring_element, ring, n;
     
     if not IsString( string ) then
         
@@ -30,6 +30,12 @@ InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( stri
     else
         
         category := false;
+        
+    fi;
+    
+    if string = "pair_of_morphisms" then
+        
+        string := "2_tuple_of_morphisms";
         
     fi;
     
@@ -144,6 +150,38 @@ InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( stri
         # cannot be express "or fail" yet
         return fail;
         
+    elif string = "element_of_commutative_ring_of_linear_structure" then
+        
+        if category <> false and not HasCommutativeRingOfLinearCategory( category ) then
+            
+            Print( "WARNING: You are calling an Add function for a CAP operation for \"", Name( category ), "\" which is part of the linear structure over a commutative ring but the category has no CommutativeRingOfLinearCategory (yet).\n" );
+            
+        fi;
+        
+        if category = false or not HasCommutativeRingOfLinearCategory( category ) then
+            
+            is_ring_element := IsRingElement;
+            
+        else
+            
+            ring := CommutativeRingOfLinearCategory( category );
+            
+            if IsBoundGlobal( "IsHomalgRing" ) and ValueGlobal( "IsHomalgRing" )( ring ) then
+                
+                is_ring_element := ValueGlobal( "IsHomalgRingElement" );
+                
+            else
+                
+                is_ring_element := IsRingElement;
+                
+            fi;
+            
+        fi;
+        
+        return rec(
+            filter := is_ring_element,
+        );
+        
     elif string = "list_of_elements_of_commutative_ring_of_linear_structure" then
         
         if category <> false and not HasCommutativeRingOfLinearCategory( category ) then
@@ -177,6 +215,24 @@ InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( stri
             element_type := rec(
                 filter := is_ring_element,
             ),
+        );
+        
+    elif string = "arbitrary_list" then
+        
+        return rec(
+            filter := IsList,
+            element_type := rec(
+                filter := IsObject,
+            )
+        );
+        
+    elif EndsWith( string, "_tuple_of_morphisms" ) and ForAll( string{[ 1 .. Length( string ) - Length( "_tuple_of_morphisms" ) ]}, IsDigitChar ) then
+        
+        n := Int( string{[ 1 .. Length( string ) - Length( "_tuple_of_morphisms" ) ]} );
+        
+        return rec(
+            filter := IsNTuple,
+            element_types := ListWithIdenticalEntries( n, CapJitDataTypeOfMorphismOfCategory( category ) ),
         );
         
     else
@@ -223,6 +279,11 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACED_STRING_WITH_FILTER,
             # `IsNTuple` deliberately does not imply `IsList` because we want to treat tuples and lists in different ways in CompilerForCAP.
             # However, on the GAP level tuples are just lists.
             return IsList;
+            
+        elif IsBoundGlobal( "IsHomalgRingElement" ) and IsSpecializationOfFilter( ValueGlobal( "IsHomalgRingElement" ), data_type.filter ) then
+            
+            # Some things (e.g. integers) do not lie in the filter `IsHomalgRingElement` but are actually elements of homalg rings (e.g. `HomalgRingOfIntegers( )`).
+            return IsRingElement;
             
         else
             

@@ -373,6 +373,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     is_magma_ring := IsHomalgExternalRingInMAGMARep( field );
     
+    SetIsLinearCategoryOverCommutativeRing( category, true );
     SetCommutativeRingOfLinearCategory( category, field );
     
     membership_function := MembershipFunctionForSemisimpleCategory( category );
