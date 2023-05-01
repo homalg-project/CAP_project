@@ -17,6 +17,11 @@ pipeline {
 				}
 
 				dir('pkg/CAP_project') {
+					sh 'make -C CAP doc'
+					sh 'make -C CompilerForCAP doc'
+					sh 'make -C MonoidalCategories doc'
+					sh 'make -C CartesianCategories doc'
+					sh 'make -C FreydCategoriesForCAP doc'
 					sh 'make --trace -j $(nproc) --output-sync ci-test'
 				}
 			}
