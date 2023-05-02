@@ -260,9 +260,8 @@ CapJitAddTypeSignature( "ReinterpretationOfMorphism", [ IsCapCategory, IsCapCate
     
 end );
 
-# backwards compatibility
-BindGlobal( "ModeledObject", ReinterpretationOfObject );
-BindGlobal( "ModeledMorphism", ReinterpretationOfMorphism );
+InstallDeprecatedAlias( "ModeledObject", "ReinterpretationOfObject", "2024.05.02" );
+InstallDeprecatedAlias( "ModeledMorphism", "ReinterpretationOfMorphism", "2024.05.02" );
 
 # helper operations
 # Those should never be used outside of ReinterpretationOfCategory, but allow to register methods for CompilerForCAP.

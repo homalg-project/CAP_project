@@ -162,9 +162,13 @@ InstallMethod( WrapperCategory,
         options := ShallowCopy( options );
         Unbind( options.wrap_range_of_hom_structure );
         
+        Print( "WARNING: The option wrap_range_of_hom_structure is deprecated and will not be supported after 2024.05.02.\n" );
+        
     fi;
     
     if IsBound( options.object_constructor ) then
+        
+        Print( "WARNING: Setting object_constructor etc. for WrapperCategory is deprecated and will not be supported after 2024.05.02. Use ReinterpretationOfCategory instead.\n" );
         
         return ReinterpretationOfCategory( C, options );
         
