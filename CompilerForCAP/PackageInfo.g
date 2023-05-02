@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "CompilerForCAP",
 Subtitle := "Speed up computations in CAP categories",
-Version := "2023.04-03",
+Version := "2023.05-01",
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
 License := "GPL-2.0-or-later",
 
@@ -70,7 +70,7 @@ Dependencies := rec(
   GAP := ">= 4.12.1",
   NeededOtherPackages := [
       [ "ToolsForHomalg", ">= 2022.09-04" ],
-      [ "CAP", ">= 2022.09-15" ],
+      [ "CAP", ">= 2023.05-02" ],
   ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],

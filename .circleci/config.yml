@@ -14,6 +14,11 @@ jobs:
           git clone --depth 1 https://github.com/gap-packages/AutoDoc.git
           git clone --depth 1 https://github.com/homalg-project/homalg_project.git
           cd CAP_project
+          make -C CAP doc
+          make -C CompilerForCAP doc
+          make -C MonoidalCategories doc
+          make -C CartesianCategories doc
+          make -C FreydCategoriesForCAP doc
           make --trace -j 4 --output-sync ci-test
 workflows:
   version: 2

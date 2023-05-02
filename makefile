@@ -1,6 +1,6 @@
 all: doc test
 
-ci-test: doc ci-test_all_packages
+ci-test: ci-test_all_packages
 
 # BEGIN PACKAGE JANITOR
 ################################

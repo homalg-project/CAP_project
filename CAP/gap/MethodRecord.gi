@@ -4935,8 +4935,8 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             Error( "The return types \"other_object\" and \"other_morphism\" are not supported anymore. If you need those, please report this using the CAP_projects's issue tracker." );
         fi;
         
-        if not ( IsFilter( current_rec.return_type ) or current_rec.return_type in CAP_INTERNAL_VALID_RETURN_TYPES ) then
-            Error( "the return_type of <current_rec> is not a filter and does not appear in CAP_INTERNAL_VALID_RETURN_TYPES" );
+        if not current_rec.return_type in CAP_INTERNAL_VALID_RETURN_TYPES then
+            Error( "The return_type of <current_rec> does not appear in CAP_INTERNAL_VALID_RETURN_TYPES. Note that proper filters are not supported anymore." );
         fi;
         
         if IsBound( current_rec.argument_list ) then
@@ -5058,8 +5058,8 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             Error( "the dual preprocessor function of ", current_recname, " has the wrong number of arguments" );
         fi;
         
-        if not ForAll( current_rec.filter_list, x -> IsString( x ) or IsFilter( x ) ) then
-            Error( "the filter list of ", current_recname, " does not fulfill the requirements" );
+        if not ForAll( current_rec.filter_list, IsString ) then
+            Error( "Not all entries of filter_list of ", current_recname, " are strings. This is not supported anymore." );
         fi;
         
         if not IsBound( current_rec.install_convenience_without_category ) then

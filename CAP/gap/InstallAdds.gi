@@ -328,32 +328,19 @@ InstallGlobalFunction( CapInternalInstallAdd,
         
         # prepare input sanity check
         input_sanity_check_functions := List( [ 1 .. Length( record.filter_list ) ], function ( i )
-          local filter, data_type, assert_is_value_of_type;
+          local filter_string, data_type, assert_is_value_of_type;
             
-            filter := record.filter_list[ i ];
+            filter_string := record.filter_list[ i ];
             
-            if IsFilter( filter ) then
+            data_type := CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( filter_string, category );
+            
+            if data_type <> fail then
                 
-                # the only check would be that the input lies in the filter, which is already checked by the method selection
-                return ReturnTrue;
-                
-            elif IsString( filter ) then
-                
-                data_type := CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( filter, category );
-                
-                if data_type <> fail then
-                    
-                    return CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER( data_type, [ "the ", i, "-th argument of the function \033[1m", record.function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" ] );
-                    
-                else
-                    
-                    return ReturnTrue;
-                    
-                fi;
+                return CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER( data_type, [ "the ", i, "-th argument of the function \033[1m", record.function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" ] );
                 
             else
                 
-                Error( "this should never happen" );
+                return ReturnTrue;
                 
             fi;
             
@@ -362,61 +349,41 @@ InstallGlobalFunction( CapInternalInstallAdd,
         # prepare output sanity check
         output_human_readable_identifier_list := [ "the result of the function \033[1m", record.function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" ];
         
-        if IsFilter( record.return_type ) then
+        if EndsWith( record.return_type, "_or_fail" ) then
             
-            output_sanity_check_function := function( result )
-                
-                if not record.return_type( result ) then
-                    
-                    CallFuncList( Error, Concatenation( output_human_readable_identifier_list, [ " does not lie in the required filter. You can access the result and the filter via the local variables 'result' and 'record.return_type' in a break loop." ] ) );
-                    
-                fi;
-                
-            end;
+            output_data_type := CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( record.return_type{[ 1 .. Length( record.return_type ) - 8 ]}, category );
             
-        elif IsString( record.return_type ) then
+        else
+            
+            output_data_type := CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( record.return_type, category );
+            
+        fi;
+        
+        if output_data_type <> fail then
+            
+            assert_is_value_of_return_type := CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER( output_data_type, output_human_readable_identifier_list );
             
             if EndsWith( record.return_type, "_or_fail" ) then
                 
-                output_data_type := CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( record.return_type{[ 1 .. Length( record.return_type ) - 8 ]}, category );
+                output_sanity_check_function := function( result )
+                    
+                    if result <> fail then
+                        
+                        assert_is_value_of_return_type( result );
+                        
+                    fi;
+                    
+                end;
                 
             else
                 
-                output_data_type := CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( record.return_type, category );
-                
-            fi;
-            
-            if output_data_type <> fail then
-                
-                assert_is_value_of_return_type := CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER( output_data_type, output_human_readable_identifier_list );
-                
-                if EndsWith( record.return_type, "_or_fail" ) then
-                    
-                    output_sanity_check_function := function( result )
-                        
-                        if result <> fail then
-                            
-                            assert_is_value_of_return_type( result );
-                            
-                        fi;
-                        
-                    end;
-                    
-                else
-                    
-                    output_sanity_check_function := assert_is_value_of_return_type;
-                    
-                fi;
-                
-            else
-                
-                output_sanity_check_function := ReturnTrue;
+                output_sanity_check_function := assert_is_value_of_return_type;
                 
             fi;
             
         else
             
-            Error( "this should never happen" );
+            output_sanity_check_function := ReturnTrue;
             
         fi;
         

@@ -59,7 +59,7 @@ InstallGlobalFunction( "CapJitCompiledCAPOperationAsEnhancedSyntaxTree", functio
         
         return_type := info.return_type;
         
-        if IsString( return_type ) and EndsWith( return_type, "fail" ) then
+        if EndsWith( return_type, "fail" ) then
             
             Display( Concatenation(
                 "WARNING: Compiling CAP operation ", operation_name, " with return_type ", return_type, ". ",

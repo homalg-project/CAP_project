@@ -7,7 +7,7 @@
 
 #! @Section Tools
 
-#! @Arguments string[, category]
+#! @Arguments filter_string[, category]
 #! @Returns a record
 #! @Description
 #!  The function takes one of the strings listed under `filter_list` in <Ref Sect="Section_CapInternalInstallAdd" /> as input
@@ -16,11 +16,17 @@
 #!  However, those cannot be used in the context of `CompilerForCAP` because the component `category` cannot be set in this case.
 DeclareGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING" );
 
-#! @Arguments filter_or_string[, category]
+#! @Arguments list_of_strings[, category]
+#! @Returns a list
+#! @Description
+#!  Applies <Ref Func="CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING" /> to all elements of <A>list</A> and returns the result.
+DeclareGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPES_FROM_STRINGS" );
+
+#! @Arguments filter_string[, category]
 #! @Returns a filter
 #! @Description
-#!  The function takes a filter or one of the strings listed under `filter_list` in <Ref Sect="Section_CapInternalInstallAdd" /> as input.
-#!  Filters are returned unchanged. If a string is given, the corresponding filter of the category <A>category</A> is returned.
+#!  The function takes one of the strings listed under `filter_list` in <Ref Sect="Section_CapInternalInstallAdd" /> as input.
+#!  The corresponding filter of the category <A>category</A> is returned.
 #!  If no category is given, generic filters (`IsCapCategoryObject`, `IsCapCategoryMorphism` etc.) are used.
 DeclareGlobalFunction( "CAP_INTERNAL_REPLACED_STRING_WITH_FILTER" );
 
