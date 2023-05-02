@@ -1019,8 +1019,8 @@
   
   [33X[0;0YAssume  that  we  have the constructors [10XCategoryOfRows[110X and [10XCategoryOfColumns[110X
   but   no   constructor   [10XOpposite[110X.   Then   we  can  still  model  [10XOpposite(
-  CategoryOfRows  )[110X  as  [10XCategoryOfColumns[110X  using [10XWrapperCategory[110X. This can be
-  achieved  up  to  minor  modifications  by  swapping  [10Xobject_constructor[110X and
+  CategoryOfRows )[110X as [10XCategoryOfColumns[110X using [10XReinterpretationOfCategory[110X. This
+  can be achieved up to minor modifications by swapping [10Xobject_constructor[110X and
   [10Xmodeling_tower_object_constructor[110X         and         so        on        in
   [10XCategoryOfColumsAsOppositeOfCategoryOfRows[110X. With this, objects and morphisms
   indeed  have  the  attribute  [10XOpposite[110X  as  desired. Getting [10XObjectDatum[110X and
@@ -1067,7 +1067,7 @@
     [4X[25X>[125X [27X        );;[127X[104X
     [4X[25Xgap>[125X [27Xmorphism_datum := { cat, mor } -> UnderlyingMatrix( Opposite( mor ) );;[127X[104X
     [4X[25Xgap>[125X [27Xmodeling_tower_morphism_datum := { cat, mor } -> UnderlyingMatrix( mor );;[127X[104X
-    [4X[25Xgap>[125X [27Xop := WrapperCategory( cols, rec([127X[104X
+    [4X[25Xgap>[125X [27Xop := ReinterpretationOfCategory( cols, rec([127X[104X
     [4X[25X>[125X [27X    name := Concatenation( "Opposite( ", Name( rows )," )" ),[127X[104X
     [4X[25X>[125X [27X    category_filter := WasCreatedAsOppositeCategory,[127X[104X
     [4X[25X>[125X [27X    category_object_filter := IsCapCategoryOppositeObject,[127X[104X
