@@ -109,7 +109,7 @@ InstallMethod( CategoryOfColumnsAsOppositeOfCategoryOfRows,
         
     fi;
     
-    wrapper := WrapperCategory( op, rec(
+    wrapper := ReinterpretationOfCategory( op, rec(
         name := Concatenation( "Columns( ", RingName( homalg_ring )," )" ),
         category_filter := IsCategoryOfColumns,
         category_object_filter := category_object_filter,

@@ -98,7 +98,7 @@ InstallMethod( LeftPresentationsAsFreydCategoryOfCategoryOfRows,
         
     end;
     
-    wrapper := WrapperCategory( freyd, rec(
+    wrapper := ReinterpretationOfCategory( freyd, rec(
         name := Concatenation( "Category of left presentations of ", RingName( ring ) ),
         category_filter := IsCategoryOfLeftPresentations,
         category_object_filter := IsLeftPresentation,
@@ -237,7 +237,7 @@ InstallMethod( RightPresentationsAsFreydCategoryOfCategoryOfColumns,
         
     end;
     
-    wrapper := WrapperCategory( freyd, rec(
+    wrapper := ReinterpretationOfCategory( freyd, rec(
         name := Concatenation( "Category of right presentations of ", RingName( ring ) ),
         category_filter := IsCategoryOfRightPresentations,
         category_object_filter := IsRightPresentation,

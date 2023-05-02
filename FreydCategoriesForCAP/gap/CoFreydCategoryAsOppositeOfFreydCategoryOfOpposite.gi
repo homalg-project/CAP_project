@@ -171,7 +171,7 @@ InstallMethod( CoFreydCategoryAsOppositeOfFreydCategoryOfOpposite,
         
     end;
     
-    wrapper := WrapperCategory( op2, rec(
+    wrapper := ReinterpretationOfCategory( op2, rec(
         name := Concatenation( "CoFreyd( ", Name( underlying_category )," )" ),
         category_filter := IsCoFreydCategory,
         category_object_filter := IsCoFreydCategoryObject,

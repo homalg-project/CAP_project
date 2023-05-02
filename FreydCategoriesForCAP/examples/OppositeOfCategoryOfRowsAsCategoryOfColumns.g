@@ -3,7 +3,7 @@
 #! @Section Opposite( CategoryOfRow ) as CategoryOfColumns
 
 #! Assume that we have the constructors `CategoryOfRows` and `CategoryOfColumns` but no constructor `Opposite`.
-#! Then we can still model `Opposite( CategoryOfRows )` as `CategoryOfColumns` using `WrapperCategory`.
+#! Then we can still model `Opposite( CategoryOfRows )` as `CategoryOfColumns` using `ReinterpretationOfCategory`.
 #! This can be achieved up to minor modifications by swapping `object_constructor` and `modeling_tower_object_constructor` and so on in `CategoryOfColumsAsOppositeOfCategoryOfRows`.
 #! With this, objects and morphisms indeed have the attribute `Opposite` as desired.
 #! Getting `ObjectDatum` and `MorphismDatum` to return this attribute would also be possible, but would require more effort than simply swapping `object_constructor` and `modeling_tower_object_constructor` and so.
@@ -49,7 +49,7 @@ modeling_tower_morphism_constructor :=
         );;
 morphism_datum := { cat, mor } -> UnderlyingMatrix( Opposite( mor ) );;
 modeling_tower_morphism_datum := { cat, mor } -> UnderlyingMatrix( mor );;
-op := WrapperCategory( cols, rec(
+op := ReinterpretationOfCategory( cols, rec(
     name := Concatenation( "Opposite( ", Name( rows )," )" ),
     category_filter := WasCreatedAsOppositeCategory,
     category_object_filter := IsCapCategoryOppositeObject,
