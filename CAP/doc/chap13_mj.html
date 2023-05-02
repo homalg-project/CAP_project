@@ -8,7 +8,7 @@
 <script type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<title>GAP (CAP) - Chapter 13: Dummy categories</title>
+<title>GAP (CAP) - Chapter 13: Create wrapper hulls of a category</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -18,80 +18,165 @@
 <body class="chap13"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chap14_mj.html">14</a>  <a href="chap15_mj.html">15</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chap14_mj.html">14</a>  <a href="chap15_mj.html">15</a>  <a href="chap16_mj.html">16</a>  <a href="chapInd_mj.html">Ind</a>  </div>
 
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap12_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap14_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap13.html">[MathJax off]</a></p>
-<p><a id="X82A623E78640E822" name="X82A623E78640E822"></a></p>
-<div class="ChapSects"><a href="chap13_mj.html#X82A623E78640E822">13 <span class="Heading">Dummy categories</span></a>
+<p><a id="X85EE0CDD7D162BC7" name="X85EE0CDD7D162BC7"></a></p>
+<div class="ChapSects"><a href="chap13_mj.html#X85EE0CDD7D162BC7">13 <span class="Heading">Create wrapper hulls of a category</span></a>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap13_mj.html#X7D03633A7D98026B">13.1 <span class="Heading">GAP categories</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X872B304F85971287">13.1-1 IsDummyCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7FB7ED298101C4C5">13.1-2 IsDummyCategoryObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X86ED2D2D84900225">13.1-3 IsDummyCategoryMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X82BF68357D8889C4">13.1-1 IsWrapperCapCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7E59F7CB7F1D9569">13.1-2 IsWrapperCapCategoryObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7B2D95DA7D635FD7">13.1-3 IsWrapperCapCategoryMorphism</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap13_mj.html#X86EC0F0A78ECBC10">13.2 <span class="Heading">Constructors</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap13_mj.html#X7C701DBF7BAE649A">13.2 <span class="Heading">Attributes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X85EFD8FA7CA98ECB">13.2-1 DummyCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X81829E6386E43EF3">13.2-1 UnderlyingCell</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7AA0358D85F1CD9F">13.2-2 UnderlyingCell</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap13_mj.html#X86EC0F0A78ECBC10">13.3 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X83886A588035ED96">13.3-1 AsObjectInWrapperCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X832CBD5A80B84DDF">13.3-2 AsMorphismInWrapperCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7A95EED57AD2AF78">13.3-3 AsMorphismInWrapperCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7BF21C4587D89462">13.3-4 /</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7C22BC7182777CF4">13.3-5 WrapperCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X86932DDE8378A2AF">13.3-6 WrappingFunctor</a></span>
 </div></div>
 </div>
 
-<h3>13 <span class="Heading">Dummy categories</span></h3>
-
-<p>A dummy category pretends to support certain CAP operations but has not actual implementation. This is useful for testing or compiling against a certain set of CAP operations.</p>
+<h3>13 <span class="Heading">Create wrapper hulls of a category</span></h3>
 
 <p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
 
 <h4>13.1 <span class="Heading">GAP categories</span></h4>
 
-<p><a id="X872B304F85971287" name="X872B304F85971287"></a></p>
+<p><a id="X82BF68357D8889C4" name="X82BF68357D8889C4"></a></p>
 
-<h5>13.1-1 IsDummyCategory</h5>
+<h5>13.1-1 IsWrapperCapCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDummyCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsWrapperCapCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of a dummy CAP category.</p>
+<p>The <strong class="pkg">GAP</strong> category of a wrapper CAP category.</p>
 
-<p><a id="X7FB7ED298101C4C5" name="X7FB7ED298101C4C5"></a></p>
+<p><a id="X7E59F7CB7F1D9569" name="X7E59F7CB7F1D9569"></a></p>
 
-<h5>13.1-2 IsDummyCategoryObject</h5>
+<h5>13.1-2 IsWrapperCapCategoryObject</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDummyCategoryObject</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsWrapperCapCategoryObject</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of objects in a dummy CAP category.</p>
+<p>The <strong class="pkg">GAP</strong> category of objects in a wrapper CAP category.</p>
 
-<p><a id="X86ED2D2D84900225" name="X86ED2D2D84900225"></a></p>
+<p><a id="X7B2D95DA7D635FD7" name="X7B2D95DA7D635FD7"></a></p>
 
-<h5>13.1-3 IsDummyCategoryMorphism</h5>
+<h5>13.1-3 IsWrapperCapCategoryMorphism</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDummyCategoryMorphism</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsWrapperCapCategoryMorphism</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<p>The <strong class="pkg">GAP</strong> category of morphisms in a dummy CAP category.</p>
+<p>The <strong class="pkg">GAP</strong> category of morphisms in a wrapper CAP category.</p>
+
+<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
+
+<h4>13.2 <span class="Heading">Attributes</span></h4>
+
+<p><a id="X81829E6386E43EF3" name="X81829E6386E43EF3"></a></p>
+
+<h5>13.2-1 UnderlyingCell</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCell</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a category object</p>
+
+<p>The cell underlying the wrapper category object <var class="Arg">object</var>.</p>
+
+<p><a id="X7AA0358D85F1CD9F" name="X7AA0358D85F1CD9F"></a></p>
+
+<h5>13.2-2 UnderlyingCell</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCell</code>( <var class="Arg">morphism</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a category morphism</p>
+
+<p>The cell underlying the wrapper category morphism <var class="Arg">morphism</var>.</p>
 
 <p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
 
-<h4>13.2 <span class="Heading">Constructors</span></h4>
+<h4>13.3 <span class="Heading">Constructors</span></h4>
 
-<p><a id="X85EFD8FA7CA98ECB" name="X85EFD8FA7CA98ECB"></a></p>
+<p><a id="X83886A588035ED96" name="X83886A588035ED96"></a></p>
 
-<h5>13.2-1 DummyCategory</h5>
+<h5>13.3-1 AsObjectInWrapperCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DummyCategory</code>( <var class="Arg">options</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsObjectInWrapperCategory</code>( <var class="Arg">category</var>, <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>Wrap an object <var class="Arg">object</var> (in the category underlying the wrapper category <var class="Arg">category</var>) to form an object in <var class="Arg">category</var>.</p>
+
+<p><a id="X832CBD5A80B84DDF" name="X832CBD5A80B84DDF"></a></p>
+
+<h5>13.3-2 AsMorphismInWrapperCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsMorphismInWrapperCategory</code>( <var class="Arg">source</var>, <var class="Arg">morphism</var>, <var class="Arg">range</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>Wrap a morphism <var class="Arg">morphism</var> (in the category underlying the wrapper category <code class="code">CapCategory(</code><var class="Arg">source</var><code class="code">)</code>) to form a morphism in <code class="code">CapCategory(</code><var class="Arg">source</var><code class="code">)</code> with given source and range.</p>
+
+<p><a id="X7A95EED57AD2AF78" name="X7A95EED57AD2AF78"></a></p>
+
+<h5>13.3-3 AsMorphismInWrapperCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsMorphismInWrapperCategory</code>( <var class="Arg">category</var>, <var class="Arg">morphism</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>Wrap a morphism <var class="Arg">morphism</var> (in the category underlying the wrapper category <var class="Arg">category</var>) to form a morphism in <var class="Arg">category</var>.</p>
+
+<p><a id="X7BF21C4587D89462" name="X7BF21C4587D89462"></a></p>
+
+<h5>13.3-4 /</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; /</code>( <var class="Arg">cell</var>, <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Convenience method for <code class="func">AsObjectInWrapperCategory</code> (<a href="chap13_mj.html#X83886A588035ED96"><span class="RefLink">13.3-1</span></a>) and <code class="func">AsMorphismInWrapperCategory</code> (<a href="chap13_mj.html#X7A95EED57AD2AF78"><span class="RefLink">13.3-3</span></a>).</p>
+
+<p><a id="X7C22BC7182777CF4" name="X7C22BC7182777CF4"></a></p>
+
+<h5>13.3-5 WrapperCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WrapperCategory</code>( <var class="Arg">category</var>, <var class="Arg">options</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a category</p>
 
-<p>Creates a dummy category subject to the options given via <var class="Arg">options</var>, which is a record passed on to <code class="func">CategoryConstructor</code> (<a href="chap11_mj.html#X8070F8B48111E8A7"><span class="RefLink">11.2-1</span></a>). Note that the options <code class="code">{category,object,morphism}_filter</code> will be set to <code class="code">IsDummyCategory{,Object,Morphism}</code> and the options <code class="code">{object,morphism}_{constructor,datum}</code> and <code class="code">create_func_*</code> will be set to dummy implementations (throwing errors when actually called). The dummy category will pretend to support empty limits by default.</p>
+<p>Wraps a category <var class="Arg">category</var> to form a new category subject to the options given via <var class="Arg">options</var>, which is a record with the following keys:</p>
+
+
+<ul>
+<li><p><code class="code">name</code> (optional): the name of the wrapper category</p>
+
+</li>
+<li><p><code class="code">only_primitive_operations</code> (optional, default <code class="code">false</code>): whether to only wrap primitive operations or all operations</p>
+
+</li>
+</ul>
+<p>Additionally, the following options of <code class="func">CategoryConstructor</code> (<a href="chap11_mj.html#X8070F8B48111E8A7"><span class="RefLink">11.2-1</span></a>) are supported: <code class="code">category_filter</code>, <code class="code">category_object_filter</code>, <code class="code">category_morphism_filter</code>. The filters must imply <code class="code">IsWrapperCapCategory</code>, <code class="code">IsWrapperCapCategoryObject</code>, and <code class="code">IsWrapperCapCategoryMorphism</code>, respectively.</p>
+
+<p><a id="X86932DDE8378A2AF" name="X86932DDE8378A2AF"></a></p>
+
+<h5>13.3-6 WrappingFunctor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WrappingFunctor</code>( <var class="Arg">W</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a functor</p>
+
+<p>Return the functor from the wrapped category <code class="code">ModelingCategory</code>(<var class="Arg">W</var>) to the wrapper category <var class="Arg">W</var> which simply wraps objects/morphisms.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap12_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap14_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
 
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chap14_mj.html">14</a>  <a href="chap15_mj.html">15</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chap14_mj.html">14</a>  <a href="chap15_mj.html">15</a>  <a href="chap16_mj.html">16</a>  <a href="chapInd_mj.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>

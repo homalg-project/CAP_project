@@ -6,7 +6,7 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2023.05-02
+                                   2023.05-03
   
   
                                    2 May 2023
@@ -959,66 +959,75 @@
       11.1-1 InfoCategoryConstructor
     11.2 [33X[0;0YConstructors[133X
       11.2-1 CategoryConstructor
-  12 [33X[0;0YCreate wrapper hulls of a category[133X
-    12.1 [33X[0;0YGAP categories[133X
-      12.1-1 IsWrapperCapCategory
-      12.1-2 IsWrapperCapCategoryObject
-      12.1-3 IsWrapperCapCategoryMorphism
-    12.2 [33X[0;0YAttributes[133X
-      12.2-1 ModelingCategory
-      12.2-2 UnderlyingCell
-      12.2-3 UnderlyingCell
-    12.3 [33X[0;0YConstructors[133X
-      12.3-1 AsObjectInWrapperCategory
-      12.3-2 AsMorphismInWrapperCategory
-      12.3-3 AsMorphismInWrapperCategory
-      12.3-4 /
-      12.3-5 WrapperCategory
-      12.3-6 WrappingFunctor
-      12.3-7 ModelingObject
-      12.3-8 ModeledObject
-      12.3-9 ModelingMorphism
-      12.3-10 ModeledMorphism
-  13 [33X[0;0YDummy categories[133X
+  12 [33X[0;0YReinterpretations of categories[133X
+    12.1 [33X[0;0YIntroduction[133X
+    12.2 [33X[0;0YTutorial[133X
+    12.3 [33X[0;0YImplementation details[133X
+    12.4 [33X[0;0YRelation to [10XCompilerForCAP[110X[133X
+    12.5 [33X[0;0YAttributes[133X
+      12.5-1 ModelingCategory
+    12.6 [33X[0;0YConstructors[133X
+      12.6-1 ReinterpretationOfCategory
+      12.6-2 ReinterpretationFunctor
+      12.6-3 ModelingObject
+      12.6-4 ReinterpretationOfObject
+      12.6-5 ModelingMorphism
+      12.6-6 ReinterpretationOfMorphism
+  13 [33X[0;0YCreate wrapper hulls of a category[133X
     13.1 [33X[0;0YGAP categories[133X
-      13.1-1 IsDummyCategory
-      13.1-2 IsDummyCategoryObject
-      13.1-3 IsDummyCategoryMorphism
-    13.2 [33X[0;0YConstructors[133X
-      13.2-1 DummyCategory
-  14 [33X[0;0YExamples and Tests[133X
-    14.1 [33X[0;0YDummy category[133X
-    14.2 [33X[0;0YFunctors[133X
-    14.3 [33X[0;0YHandlePrecompiledTowers[133X
-    14.4 [33X[0;0YHomomorphism structure[133X
-    14.5 [33X[0;0YHomology object[133X
-    14.6 [33X[0;0YLiftable[133X
-    14.7 [33X[0;0YMonoidal Categories[133X
-    14.8 [33X[0;0YMorphismFromSourceToPushout and MorphismFromFiberProductToSink[133X
-    14.9 [33X[0;0YOpposite category[133X
-    14.10 [33X[0;0YWrapperCategory[133X
-    14.11 [33X[0;0YTerminal category[133X
-    14.12 [33X[0;0YGeneralized Morphisms Category[133X
-    14.13 [33X[0;0YIsWellDefined[133X
-    14.14 [33X[0;0YKernel[133X
-    14.15 [33X[0;0YFiberProduct[133X
-  15 [33X[0;0YTerminal category[133X
-    15.1 [33X[0;0Y[5XGAP[105X Categories[133X
-      15.1-1 IsCapTerminalCategoryWithSingleObject
-      15.1-2 IsObjectInCapTerminalCategoryWithSingleObject
-      15.1-3 IsMorphismInCapTerminalCategoryWithSingleObject
-      15.1-4 IsCapTerminalCategoryWithMultipleObjects
-      15.1-5 IsObjectInCapTerminalCategoryWithMultipleObjects
-      15.1-6 IsMorphismInCapTerminalCategoryWithMultipleObjects
-      15.1-7 IsTerminalCategory
-    15.2 [33X[0;0YConstructors[133X
-      15.2-1 TerminalCategoryWithSingleObject
-      15.2-2 TerminalCategoryWithMultipleObjects
-      15.2-3 CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY
-    15.3 [33X[0;0YAttributes[133X
-      15.3-1 UniqueObject
-      15.3-2 UniqueMorphism
-      15.3-3 FunctorFromTerminalCategory
+      13.1-1 IsWrapperCapCategory
+      13.1-2 IsWrapperCapCategoryObject
+      13.1-3 IsWrapperCapCategoryMorphism
+    13.2 [33X[0;0YAttributes[133X
+      13.2-1 UnderlyingCell
+      13.2-2 UnderlyingCell
+    13.3 [33X[0;0YConstructors[133X
+      13.3-1 AsObjectInWrapperCategory
+      13.3-2 AsMorphismInWrapperCategory
+      13.3-3 AsMorphismInWrapperCategory
+      13.3-4 /
+      13.3-5 WrapperCategory
+      13.3-6 WrappingFunctor
+  14 [33X[0;0YDummy categories[133X
+    14.1 [33X[0;0YGAP categories[133X
+      14.1-1 IsDummyCategory
+      14.1-2 IsDummyCategoryObject
+      14.1-3 IsDummyCategoryMorphism
+    14.2 [33X[0;0YConstructors[133X
+      14.2-1 DummyCategory
+  15 [33X[0;0YExamples and Tests[133X
+    15.1 [33X[0;0YDummy category[133X
+    15.2 [33X[0;0YFunctors[133X
+    15.3 [33X[0;0YHandlePrecompiledTowers[133X
+    15.4 [33X[0;0YHomomorphism structure[133X
+    15.5 [33X[0;0YHomology object[133X
+    15.6 [33X[0;0YLiftable[133X
+    15.7 [33X[0;0YMonoidal Categories[133X
+    15.8 [33X[0;0YMorphismFromSourceToPushout and MorphismFromFiberProductToSink[133X
+    15.9 [33X[0;0YOpposite category[133X
+    15.10 [33X[0;0YWrapperCategory[133X
+    15.11 [33X[0;0YTerminal category[133X
+    15.12 [33X[0;0YGeneralized Morphisms Category[133X
+    15.13 [33X[0;0YIsWellDefined[133X
+    15.14 [33X[0;0YKernel[133X
+    15.15 [33X[0;0YFiberProduct[133X
+  16 [33X[0;0YTerminal category[133X
+    16.1 [33X[0;0Y[5XGAP[105X Categories[133X
+      16.1-1 IsCapTerminalCategoryWithSingleObject
+      16.1-2 IsObjectInCapTerminalCategoryWithSingleObject
+      16.1-3 IsMorphismInCapTerminalCategoryWithSingleObject
+      16.1-4 IsCapTerminalCategoryWithMultipleObjects
+      16.1-5 IsObjectInCapTerminalCategoryWithMultipleObjects
+      16.1-6 IsMorphismInCapTerminalCategoryWithMultipleObjects
+      16.1-7 IsTerminalCategory
+    16.2 [33X[0;0YConstructors[133X
+      16.2-1 TerminalCategoryWithSingleObject
+      16.2-2 TerminalCategoryWithMultipleObjects
+      16.2-3 CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY
+    16.3 [33X[0;0YAttributes[133X
+      16.3-1 UniqueObject
+      16.3-2 UniqueMorphism
+      16.3-3 FunctorFromTerminalCategory
   
   
   [32X

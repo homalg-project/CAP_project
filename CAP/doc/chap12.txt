@@ -1,13 +1,17 @@
   
-  [1X12 [33X[0;0YCreate wrapper hulls of a category[133X[101X
+  [1X12 [33X[0;0YReinterpretations of categories[133X[101X
+  
+  
+  [1X12.1 [33X[0;0YIntroduction[133X[101X
   
   [33X[0;0YThe  support for building towers of category constructors is one of the main
   design  features  of  CAP.  Many  categories  that  appear  in  the  various
   applications can be modeled by towers of multiple category constructors. The
-  wrapper  category  constructor  allows  adding  one  last layer on top which
-  allows  expressing  the desired (re)interpretation of such a modeling tower.
-  In  particular,  the wrapper category constructor allows specifying the name
-  of the category together with customized methods for the operations[133X
+  category  constructor  [2XReinterpretationOfCategory[102X ([14X12.6-1[114X) allows adding one
+  last  layer on top which allows expressing the desired (re)interpretation of
+  such  a  modeling  tower.  In  particular,  this category constructor allows
+  specifying the name of the category together with customized methods for the
+  operations[133X
   
   [30X    [33X[0;6YObjectConstructor[133X
   
@@ -17,12 +21,12 @@
   
   [30X    [33X[0;6YMorphismDatum[133X
   
-  [33X[0;0Yin order to reflect the desired interpretation with a user-interface that is
-  independent  of  the  modeling  tower.  Note  that the same tower might have
-  multiple interpretations.[133X
+  [33X[0;0Yin  order  to  reflect  the desired (re)interpretation with a user-interface
+  that is independent of the modeling tower (see below for details). Note that
+  the same tower might have multiple interpretations.[133X
   
       ┌─────────────────────────────────────────────────────────┐
-      │              [10XW := WrapperCategory( cat_n )[110X              │ 
+      │        [10XR := ReinterpretationOfCategory( cat_n )[110X         │ 
       ├─────────────────────────────────────────────────────────┤
       │       [10Xcat_n := CategoryConstructor_n( cat_{n-1} )[110X       │ 
       ├─────────────────────────────────────────────────────────┤
@@ -31,180 +35,227 @@
       │ [10Xcat_1 := CategoryConstructor_1( non_categorical_input )[110X │ 
       └─────────────────────────────────────────────────────────┘
   
-       [1XTable:[101X A tower of categories modeling the category [10XW[110X
+       [1XTable:[101X A tower of categories modeling the category [10XR[110X
   
   
-  [33X[0;0YThe  wrapper  category  [10XW[110X  is by construction equivalent to the top category
-  [10Xcat_n[110X  in the tower. In practice, the word [21Xtower[121X stands more generally for a
-  finite poset with a greatest element.[133X
+  [33X[0;0YThe reinterpretation [10XR[110X is isomorphic to the top category [10Xcat_n[110X in the tower.
+  In  practice, the word [21Xtower[121X stands more generally for a finite poset with a
+  greatest element.[133X
   
   
-  [1X12.1 [33X[0;0YGAP categories[133X[101X
+  [1X12.2 [33X[0;0YTutorial[133X[101X
   
-  [1X12.1-1 IsWrapperCapCategory[101X
+  [33X[0;0YWe  will  show how one can reinterpret a category with the following guiding
+  example:    We    reinterpret   [10XOpposite(   CategoryOfRows(   R   )   )[110X   as
+  [10XCategoryOfColumns(  R  )[110X  using [2XReinterpretationOfCategory[102X ([14X12.6-1[114X) with the
+  options         described         in        the        following        (see
+  [10XCategoryOfColumnsAsOppositeOfCategoryOfRows.gi[110X  in [10XFreydCategoriesForCAP[110X for
+  a full implementation).[133X
   
-  [33X[1;0Y[29X[2XIsWrapperCapCategory[102X( [3Xarg[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  [31X1[131X   [33X[0;6YSet   the   options   [10Xcategory_filter[110X,   [10Xcategory_object_filter[110X,   and
+        [10Xcategory_morphism_filter[110X  to  the  filters  corresponding  to the data
+        structure  of  the desired reinterpretation, e.g. [10XIsCategoryOfColumns[110X,
+        [10XIsCategoryOfColumsObject[110X, and [10XIsCategoryOfColumsMorphism[110X.[133X
   
-  [33X[0;0YThe  [5XGAP[105X  category  of  a  wrapper  CAP  category  (using  the  default data
-  structure).[133X
+  [31X2[131X   [33X[0;6YSet   [10Xobject_constructor[110X,   [10Xobject_datum[110X,   [10Xmorphism_constructor[110X,  and
+        [10Xmorphism_datum[110X  to the functions one would write for [10XObjectConstructor[110X
+        and   so   on   for   a   primitive   implementation  of  the  desired
+        reinterpretation.   In   our  example,  [10Xobject_constructor[110X  takes  the
+        reinterpretation  [10XR[110X  (which  lies  in  [10XIsCategoryOfColumns[110X  due to the
+        filter set in the first step) and an integer, and returns a CAP object
+        in  the  category with attribute [10XRankOfObject[110X set to the integer, just
+        like a primitive implementation of [10XCategoryOfColumns[110X would do.[133X
   
-  [1X12.1-2 IsWrapperCapCategoryObject[101X
+  [31X3[131X   [33X[0;6YSet   [10Xmodeling_tower_object_constructor[110X,  [10Xmodeling_tower_object_datum[110X,
+        [10Xmodeling_tower_morphism_constructor[110X,                               and
+        [10Xmodeling_tower_morphism_datum[110X:  [10Xmodeling_tower_object_constructor[110X gets
+        the same input as [10Xobject_constructor[110X but must return the corresponding
+        object  in  the  tower [10Xcat_n[110X. [10Xmodeling_tower_object_datum[110X has the same
+        output  as  [10Xobject_datum[110X but gets the reinterpretation [10XR[110X and an object
+        in    the    tower    [10Xcat_n[110X    as    an   input.   In   our   example,
+        [10Xmodeling_tower_object_constructor[110X  gets  the reinterpretation [10XR[110X and an
+        integer  as  in step 2 and wraps the integer as a [10XCategoryOfRowsObject[110X
+        and   the   result   as   an   object   in   the   opposite  category.
+        [10Xmodeling_tower_object_datum[110X  gets the reinterpretation [10XR[110X and an object
+        in  [10XOpposite(  CategoryOfRows(  R  ) )[110X (that is, an integer boxed as a
+        category  of  rows object boxed as an object in the opposite category)
+        and          returns          the          underlying         integer.
+        [10Xmodeling_tower_morphism_constructor[110X  and [10Xmodeling_tower_morphism_datum[110X
+        are given analogously.[133X
   
-  [33X[1;0Y[29X[2XIsWrapperCapCategoryObject[102X( [3Xarg[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  [33X[0;0YBy   composing   [10Xmodeling_tower_object_datum[110X   with  [10Xobject_constructor[110X  and
+  [10Xmodeling_tower_morphism_datum[110X   with   [10Xmorphism_constructor[110X  (with  suitable
+  source    and   range),   [10XReinterpretationOfCategory[110X   defines   a   functor
+  "Reinterpretation"  from [10Xcat_n[110X to [10XR[110X. Similarly, it defines a functor "Model"
+  from      [10XR[110X      to     [10Xcat_n[110X     by     composing     [10Xobject_datum[110X     with
+  [10Xmodeling_tower_object_constructor[110X        and       [10Xmorphism_datum[110X       with
+  [10Xmodeling_tower_morphism_constructor[110X   (with   suitable  source  and  range).
+  "Reinterpretation"  should  be  an  isomorphism  of  categories with inverse
+  "Model". More precisely, one has to take care of the following things:[133X
   
-  [33X[0;0YThe [5XGAP[105X category of objects in a wrapper CAP category.[133X
+  [30X    [33X[0;6YSince  [10XR[110X  should just be a reinterpretation of [10Xcat_n[110X with a nicer data
+        structure,  we  certainly want "Reinterpretation" to be an equivalence
+        of categories with pseudo-inverse "Model".[133X
   
-  [1X12.1-3 IsWrapperCapCategoryMorphism[101X
+  [30X    [33X[0;6Y[10XReinterpretationOfCategory[110X  copies  all  properties  from  [10Xcat_n[110X to [10XR[110X,
+        including properties like [10XIsSkeletalCategory[110X which are not necessarily
+        preserved by mere equivalences.[133X
   
-  [33X[1;0Y[29X[2XIsWrapperCapCategoryMorphism[102X( [3Xarg[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  [30X    [33X[0;6YTo fulfill the specification of WithGiven operations, reinterpreting a
+        WithGiven  object  [10XA[110X  in  [10Xcat_n[110X as an object in [10XR[110X and taking its model
+        again  must  give  an  object  equal  to  [10XA[110X.  So  we  require applying
+        "Reinterpretation"  and then "Model" to give the identity. Conversely,
+        let  [10XB_1[110X  be  an  object  in [10XR[110X. We take its model and reinterpret this
+        again  to  form  an  object [10XB_2[110X. By construction of [10XR[110X, [10XB_1[110X and [10XB_2[110X are
+        equal  if  and  only  if  their  models  are equal. But since applying
+        "Reinterpretation"  and  then  "Model"  gives the identity, taking the
+        model  of  [10XB_2[110X simply gives an object equal to the model of [10XB_1[110X. Thus,
+        also  [10XB_1[110X  and  [10XB_2[110X  are equal. Hence, "Reinterpretation" has to be an
+        equivalence  which is a bijection on objects, and hence an isomorphism
+        (although   "Model"   is   not   necessarily   its   inverse).   Note:
+        Alternatively,  one  can  make sure that WithGiven operations in [10Xcat_n[110X
+        are  only  called  via  the  corresponding  non-WithGiven operation in
+        [10Xcat_n[110X.  This can be achieved by reinterpreting all operations of [10Xcat_n[110X
+        (i.e.  creating  [10XR[110X with [10Xonly_primitive_operations := false[110X), disabling
+        redirect functions (i.e. creating [10XR[110X with the option [10Xoverhead := false[110X)
+        and not calling WithGiven operations of [10XR[110X manually.[133X
   
-  [33X[0;0YThe [5XGAP[105X category of morphisms in a wrapper CAP category.[133X
+  
+  [1X12.3 [33X[0;0YImplementation details[133X[101X
+  
+  [33X[0;0YOperations in [10XReinterpretationOfCategory[110X are implemented as follows:[133X
+  
+  [31X1[131X   [33X[0;6YApply  [10Xobject_datum[110X  and  [10Xmorphism_datum[110X  to  the  input  to  get  the
+        underlying data.[133X
+  
+  [31X2[131X   [33X[0;6YApply               [10Xmodeling_tower_object_constructor[110X              and
+        [10Xmodeling_tower_morphism_constructor[110X  to  the  underlying  data  to get
+        objects and morphisms in the tower [10Xcat_n[110X.[133X
+  
+  [31X3[131X   [33X[0;6YApply the operation of the tower [10Xcat_n[110X.[133X
+  
+  [31X4[131X   [33X[0;6YApply  [10Xmodeling_tower_object_datum[110X or [10Xmodeling_tower_morphism_datum[110X to
+        the result to get the underlying data.[133X
+  
+  [31X5[131X   [33X[0;6YApply  [10Xobject_constructor[110X  or  [10Xmorphism_constructor[110X  to the underlying
+        data to get an object or a morphism in the reinterpretation [10XR[110X.[133X
+  
+  [33X[0;0YThe first two steps define the functor "Model" and the last two steps define
+  the  functor "Reinterpretation". "Reinterpretation" on objects and morphisms
+  is  called  [10XReinterpretationOfObject[110X  and  [10XReinterpretationOfMorphism[110X in the
+  code.  "Model"  on  objects  and  morphisms  is  called  [10XModelingObject[110X  and
+  [10XModelingMorphism[110X in the code.[133X
   
   
-  [1X12.2 [33X[0;0YAttributes[133X[101X
+  [1X12.4 [33X[0;0YRelation to [10XCompilerForCAP[110X[101X[1X[133X[101X
   
-  [1X12.2-1 ModelingCategory[101X
+  [33X[0;0YThe  operation of the tower [10Xcat_n[110X (step 3 above) usually unboxes objects and
+  morphisms,  operates  on  the  underlying  data,  and  boxes the result. The
+  unboxing  usually  cancels  with step 2 above, and boxing the result usually
+  cancels  with  step  4  above.  If  one  now  compiles the operations of the
+  reinterpretation [10XR[110X, only the following steps remain:[133X
   
-  [33X[1;0Y[29X[2XModelingCategory[102X( [3Xcategory[103X ) [32X attribute[133X
+  [31X1[131X   [33X[0;6YApply  [10Xobject_datum[110X  and  [10Xmorphism_datum[110X  to  the  input  to  get  the
+        underlying data.[133X
+  
+  [31X2[131X   [33X[0;6YOperate on the underlying data. (previously part of step 3)[133X
+  
+  [31X3[131X   [33X[0;6YApply  [10Xobject_constructor[110X  or  [10Xmorphism_constructor[110X  to the underlying
+        data  to  get  an  object  or  a  morphism  in the reinterpretation [10XR[110X.
+        (previously step 5)[133X
+  
+  [33X[0;0YThis  is  exactly  what a primitive implementation would look like. Thus, in
+  many  cases  compiling  a  reinterpretation  immediately  gives  a primitive
+  implementation with no remaining references to the tower [10Xcat_n[110X.[133X
+  
+  
+  [1X12.5 [33X[0;0YAttributes[133X[101X
+  
+  [1X12.5-1 ModelingCategory[101X
+  
+  [33X[1;0Y[29X[2XModelingCategory[102X( [3XR[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya category[133X
   
-  [33X[0;0YThe category used to model the wrapper category [3Xcategory[103X.[133X
-  
-  [1X12.2-2 UnderlyingCell[101X
-  
-  [33X[1;0Y[29X[2XUnderlyingCell[102X( [3Xobject[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya category object[133X
-  
-  [33X[0;0YThe cell underlying the wrapper category object [3Xobject[103X.[133X
-  
-  [1X12.2-3 UnderlyingCell[101X
-  
-  [33X[1;0Y[29X[2XUnderlyingCell[102X( [3Xmorphism[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya category morphism[133X
-  
-  [33X[0;0YThe cell underlying the wrapper category morphism [3Xmorphism[103X.[133X
+  [33X[0;0YThe tower [10Xcat_n[110X modeling the reinterpretation [3XR[103X.[133X
   
   
-  [1X12.3 [33X[0;0YConstructors[133X[101X
+  [1X12.6 [33X[0;0YConstructors[133X[101X
   
-  [1X12.3-1 AsObjectInWrapperCategory[101X
+  [1X12.6-1 ReinterpretationOfCategory[101X
   
-  [33X[1;0Y[29X[2XAsObjectInWrapperCategory[102X( [3Xcategory[103X, [3Xobject[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Yan object[133X
-  
-  [33X[0;0YWrap  an  object  [3Xobject[103X  (in  the  category underlying the wrapper category
-  [3Xcategory[103X) to form an object in [3Xcategory[103X.[133X
-  
-  [1X12.3-2 AsMorphismInWrapperCategory[101X
-  
-  [33X[1;0Y[29X[2XAsMorphismInWrapperCategory[102X( [3Xsource[103X, [3Xmorphism[103X, [3Xrange[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism[133X
-  
-  [33X[0;0YWrap  a  morphism  [3Xmorphism[103X (in the category underlying the wrapper category
-  [10XCapCategory([110X[3Xsource[103X[10X)[110X)  to  form  a morphism in [10XCapCategory([110X[3Xsource[103X[10X)[110X with given
-  source and range.[133X
-  
-  [1X12.3-3 AsMorphismInWrapperCategory[101X
-  
-  [33X[1;0Y[29X[2XAsMorphismInWrapperCategory[102X( [3Xcategory[103X, [3Xmorphism[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism[133X
-  
-  [33X[0;0YWrap  a  morphism  [3Xmorphism[103X (in the category underlying the wrapper category
-  [3Xcategory[103X) to form a morphism in [3Xcategory[103X.[133X
-  
-  [1X12.3-4 /[101X
-  
-  [33X[1;0Y[29X[2X/[102X( [3Xcell[103X, [3Xcategory[103X ) [32X operation[133X
-  
-  [33X[0;0YConvenience    method    for    [2XAsObjectInWrapperCategory[102X    ([14X12.3-1[114X)    and
-  [2XAsMorphismInWrapperCategory[102X ([14X12.3-3[114X).[133X
-  
-  [1X12.3-5 WrapperCategory[101X
-  
-  [33X[1;0Y[29X[2XWrapperCategory[102X( [3Xcategory[103X, [3Xoptions[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XReinterpretationOfCategory[102X( [3Xcategory[103X, [3Xoptions[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya category[133X
   
-  [33X[0;0YWraps  a  category  [3Xcategory[103X  to  form a new category subject to the options
-  given via [3Xoptions[103X, which is a record with the following keys:[133X
+  [33X[0;0YReinterprets  a  category  [3Xcategory[103X  (the "modeling category") to form a new
+  category  [10XR[110X  (the  "reinterpretation")  subject  to  the  options  given via
+  [3Xoptions[103X, which is a record with the following keys:[133X
   
-  [30X    [33X[0;6Y[10Xname[110X (optional): the name of the wrapper category[133X
+  [30X    [33X[0;6Y[10Xname[110X: the name of the reinterpretation [10XR[110X,[133X
   
-  [30X    [33X[0;6Y[10Xonly_primitive_operations[110X  (optional,  default [10Xfalse[110X): whether to only
-        wrap primitive operations or all operations[133X
+  [30X    [33X[0;6Y[10Xcategory_filter[110X,   [10Xcategory_object_filter[110X,   [10Xcategory_morphism_filter[110X,
+        [10Xobject_constructor[110X,         [10Xobject_datum[110X,        [10Xmorphism_constructor[110X,
+        [10Xmorphism_datum[110X:  same  meaning  as  for  [2XCategoryConstructor[102X ([14X11.2-1[114X),
+        which is used to create the reinterpretation [10XR[110X,[133X
   
-  [30X    [33X[0;6Y[10Xwrap_range_of_hom_structure[110X (optional, default [10Xfalse[110X): whether to wrap
-        the range category of the homomorphism structure[133X
+  [30X    [33X[0;6Y[10Xmodeling_tower_object_constructor[110X:   a   function   which   gets   the
+        reinterpretation  [10XR[110X and an object datum (in the sense of [10Xobject_datum[110X)
+        and   returns  the  corresponding  modeling  object  in  the  modeling
+        category,[133X
   
-  [33X[0;0YAdditionally,  the  following  options  of  [2XCategoryConstructor[102X ([14X11.2-1[114X) are
-  supported:              [10Xcategory_filter[110X,             [10Xcategory_object_filter[110X,
-  [10Xcategory_morphism_filter[110X,          [10Xobject_constructor[110X,         [10Xobject_datum[110X,
-  [10Xmorphism_constructor[110X,  [10Xmorphism_datum[110X.  To avoid inconsistencies, either all
-  or  none of those options should be set. If they are set, also the following
-  options should be set:[133X
-  
-  [30X    [33X[0;6Y[10Xmodeling_tower_object_constructor[110X:  a  function which gets the wrapper
-        category  and  an  object  datum  (in  the  sense of [10Xobject_datum[110X) and
-        returns the corresponding modeling object in the modeling category,[133X
-  
-  [30X    [33X[0;6Y[10Xmodeling_tower_object_datum[110X:   a   function  which  gets  the  wrapper
+  [30X    [33X[0;6Y[10Xmodeling_tower_object_datum[110X:  a function which gets the interpretation
         category  and  an  object  in  the  modeling  category and returns the
         corresponding object datum (in the sense of [10Xobject_datum[110X),[133X
   
-  [30X    [33X[0;6Y[10Xmodeling_tower_morphism_constructor[110X: a function which gets the wrapper
-        category,  a source in the modeling category, a morphism datum (in the
-        sense  of  [10Xmorphism_datum[110X),  and  a range in the modeling category and
-        returns the corresponding modeling morphism in the modeling category,[133X
+  [30X    [33X[0;6Y[10Xmodeling_tower_morphism_constructor[110X:   a   function   which  gets  the
+        interpretation category, a source in the modeling category, a morphism
+        datum  (in  the  sense of [10Xmorphism_datum[110X), and a range in the modeling
+        category  and  returns  the  corresponding  modeling  morphism  in the
+        modeling category,[133X
   
-  [30X    [33X[0;6Y[10Xmodeling_tower_morphism_datum[110X:  a  function  which  gets  the  wrapper
-        category  and  a  morphism  in  the  modeling category and returns the
-        corresponding morphism datum (in the sense of [10Xmorphism_datum[110X),[133X
+  [30X    [33X[0;6Y[10Xmodeling_tower_morphism_datum[110X:    a    function    which    gets   the
+        interpretation  category  and  a morphism in the modeling category and
+        returns   the   corresponding   morphism   datum   (in  the  sense  of
+        [10Xmorphism_datum[110X),[133X
   
-  [1X12.3-6 WrappingFunctor[101X
+  [30X    [33X[0;6Y[10Xonly_primitive_operations[110X  (optional,  default [10Xfalse[110X): whether to only
+        reinterpret primitive operations or all operations.[133X
   
-  [33X[1;0Y[29X[2XWrappingFunctor[102X( [3XW[103X ) [32X attribute[133X
+  [1X12.6-2 ReinterpretationFunctor[101X
+  
+  [33X[1;0Y[29X[2XReinterpretationFunctor[102X( [3XR[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya functor[133X
   
-  [33X[0;0YReturn  the  functor  from  the  wrapped category [10XModelingCategory[110X([3XW[103X) to the
-  wrapper  category  [3XW[103X.  The  functor maps each wrapped object/morphism to its
-  wrapping object/morphism.[133X
+  [33X[0;0YReturns  the  functor  from the modeling category [10XModelingCategory[110X([3XR[103X) to the
+  reinterpretation [3XR[103X which maps each object/morphism to its reinterpretation.[133X
   
-  [1X12.3-7 ModelingObject[101X
+  [1X12.6-3 ModelingObject[101X
   
-  [33X[1;0Y[29X[2XModelingObject[102X( [3Xcat[103X, [3Xobj[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XModelingObject[102X( [3XR[103X, [3Xobj[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya CAP category object[133X
   
-  [33X[0;0YReturns  the  object  modeling  the  object  [3Xobj[103X  in  [3Xcat[103X. [3Xcat[103X must be a CAP
-  category  which  has  been  created  as  a  wrapper  CAP  category  (but not
-  necessarily uses the default data structure).[133X
+  [33X[0;0YReturns  the  object  in  [10XModelingCategory[110X([3XR[103X) modeling the object [3Xobj[103X in the
+  reinterpretation [3XR[103X.[133X
   
-  [1X12.3-8 ModeledObject[101X
+  [1X12.6-4 ReinterpretationOfObject[101X
   
-  [33X[1;0Y[29X[2XModeledObject[102X( [3Xcat[103X, [3Xobj[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XReinterpretationOfObject[102X( [3XR[103X, [3Xobj[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya CAP category object[133X
   
-  [33X[0;0YReturns  the  object  modeled  by the object [3Xobj[103X in the modeling category of
-  [3Xcat[103X.  [3Xcat[103X  must  be  a  CAP category which has been created as a wrapper CAP
-  category (but not necessarily uses the default data structure).[133X
+  [33X[0;0YReturns the reinterpretation in [10XR[110X of an object [3Xobj[103X in [10XModelingCategory[110X([3XR[103X).[133X
   
-  [1X12.3-9 ModelingMorphism[101X
+  [1X12.6-5 ModelingMorphism[101X
   
-  [33X[1;0Y[29X[2XModelingMorphism[102X( [3Xcat[103X, [3Xmor[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XModelingMorphism[102X( [3XR[103X, [3Xmor[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya CAP category morphism[133X
   
-  [33X[0;0YReturns  the  morphism  modeling  the morphism [3Xmor[103X in [3Xcat[103X. [3Xcat[103X must be a CAP
-  category  which  has  been  created  as  a  wrapper  CAP  category  (but not
-  necessarily uses the default data structure).[133X
+  [33X[0;0YReturns the morphism in [10XModelingCategory[110X([3XR[103X) modeling the morphism [3Xmor[103X in the
+  reinterpretation [3XR[103X.[133X
   
-  [1X12.3-10 ModeledMorphism[101X
+  [1X12.6-6 ReinterpretationOfMorphism[101X
   
-  [33X[1;0Y[29X[2XModeledMorphism[102X( [3Xcat[103X, [3Xsource[103X, [3Xobj[103X, [3Xrange[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XReinterpretationOfMorphism[102X( [3XR[103X, [3Xsource[103X, [3Xobj[103X, [3Xrange[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya CAP category morphism[133X
   
-  [33X[0;0YReturns the morphism modeled by the morphism [3Xmor[103X in the modeling category of
-  [3Xcat[103X  with  given source and range. [3Xcat[103X must be a CAP category which has been
-  created as a wrapper CAP category (but not necessarily uses the default data
-  structure).[133X
+  [33X[0;0YReturns  the reinterpretation in [10XR[110X with given source and range of a morphism
+  [3Xmor[103X in [10XModelingCategory[110X([3XR[103X).[133X
   

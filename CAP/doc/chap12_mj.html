@@ -8,7 +8,7 @@
 <script type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<title>GAP (CAP) - Chapter 12: Create wrapper hulls of a category</title>
+<title>GAP (CAP) - Chapter 12: Reinterpretations of categories</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -18,46 +18,49 @@
 <body class="chap12"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chap14_mj.html">14</a>  <a href="chap15_mj.html">15</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chap14_mj.html">14</a>  <a href="chap15_mj.html">15</a>  <a href="chap16_mj.html">16</a>  <a href="chapInd_mj.html">Ind</a>  </div>
 
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap11_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap13_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap12.html">[MathJax off]</a></p>
-<p><a id="X85EE0CDD7D162BC7" name="X85EE0CDD7D162BC7"></a></p>
-<div class="ChapSects"><a href="chap12_mj.html#X85EE0CDD7D162BC7">12 <span class="Heading">Create wrapper hulls of a category</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X7D03633A7D98026B">12.1 <span class="Heading">GAP categories</span></a>
+<p><a id="X786E618B7E5FA5FA" name="X786E618B7E5FA5FA"></a></p>
+<div class="ChapSects"><a href="chap12_mj.html#X786E618B7E5FA5FA">12 <span class="Heading">Reinterpretations of categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X7DFB63A97E67C0A1">12.1 <span class="Heading">Introduction</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X81932F777898AD72">12.2 <span class="Heading">Tutorial</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X7AB84A0B83B2C1F1">12.3 <span class="Heading">Implementation details</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X856FF3B57FF7C2FD">12.4 <span class="Heading">Relation to <code class="code">CompilerForCAP</code></span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X7C701DBF7BAE649A">12.5 <span class="Heading">Attributes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12_mj.html#X82BF68357D8889C4">12.1-1 IsWrapperCapCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12_mj.html#X7E59F7CB7F1D9569">12.1-2 IsWrapperCapCategoryObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12_mj.html#X7B2D95DA7D635FD7">12.1-3 IsWrapperCapCategoryMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12_mj.html#X811A167F7DABD0F9">12.5-1 ModelingCategory</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X7C701DBF7BAE649A">12.2 <span class="Heading">Attributes</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X86EC0F0A78ECBC10">12.6 <span class="Heading">Constructors</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12_mj.html#X811A167F7DABD0F9">12.2-1 ModelingCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12_mj.html#X81829E6386E43EF3">12.2-2 UnderlyingCell</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12_mj.html#X7AA0358D85F1CD9F">12.2-3 UnderlyingCell</a></span>
-</div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X86EC0F0A78ECBC10">12.3 <span class="Heading">Constructors</span></a>
-</span>
-<div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12_mj.html#X83886A588035ED96">12.3-1 AsObjectInWrapperCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12_mj.html#X832CBD5A80B84DDF">12.3-2 AsMorphismInWrapperCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12_mj.html#X7A95EED57AD2AF78">12.3-3 AsMorphismInWrapperCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12_mj.html#X7BF21C4587D89462">12.3-4 /</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12_mj.html#X7C22BC7182777CF4">12.3-5 WrapperCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12_mj.html#X86932DDE8378A2AF">12.3-6 WrappingFunctor</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12_mj.html#X7D2C2C3D7A342007">12.3-7 ModelingObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12_mj.html#X82896F3A81CFFF57">12.3-8 ModeledObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12_mj.html#X7C8C515B7E679556">12.3-9 ModelingMorphism</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12_mj.html#X8616A636859481E0">12.3-10 ModeledMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12_mj.html#X81D06FCA7ECE38C4">12.6-1 ReinterpretationOfCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12_mj.html#X7ACECA6387E9F29D">12.6-2 ReinterpretationFunctor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12_mj.html#X7D2C2C3D7A342007">12.6-3 ModelingObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12_mj.html#X79C8914E86186004">12.6-4 ReinterpretationOfObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12_mj.html#X7C8C515B7E679556">12.6-5 ModelingMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12_mj.html#X85D9773186C8969A">12.6-6 ReinterpretationOfMorphism</a></span>
 </div></div>
 </div>
 
-<h3>12 <span class="Heading">Create wrapper hulls of a category</span></h3>
+<h3>12 <span class="Heading">Reinterpretations of categories</span></h3>
 
-<p>The support for building towers of category constructors is one of the main design features of CAP. Many categories that appear in the various applications can be modeled by towers of multiple category constructors. The wrapper category constructor allows adding one last layer on top which allows expressing the desired (re)interpretation of such a modeling tower. In particular, the wrapper category constructor allows specifying the name of the category together with customized methods for the operations</p>
+<p><a id="X7DFB63A97E67C0A1" name="X7DFB63A97E67C0A1"></a></p>
+
+<h4>12.1 <span class="Heading">Introduction</span></h4>
+
+<p>The support for building towers of category constructors is one of the main design features of CAP. Many categories that appear in the various applications can be modeled by towers of multiple category constructors. The category constructor <code class="func">ReinterpretationOfCategory</code> (<a href="chap12_mj.html#X81D06FCA7ECE38C4"><span class="RefLink">12.6-1</span></a>) allows adding one last layer on top which allows expressing the desired (re)interpretation of such a modeling tower. In particular, this category constructor allows specifying the name of the category together with customized methods for the operations</p>
 
 
 <ul>
@@ -74,12 +77,12 @@
 
 </li>
 </ul>
-<p>in order to reflect the desired interpretation with a user-interface that is independent of the modeling tower. Note that the same tower might have multiple interpretations.</p>
+<p>in order to reflect the desired (re)interpretation with a user-interface that is independent of the modeling tower (see below for details). Note that the same tower might have multiple interpretations.</p>
 
 <div class="pcenter"><table class="GAPDocTable">
-<caption class="GAPDocTable"><b>Table: </b>A tower of categories modeling the category <code class="code">W</code></caption>
+<caption class="GAPDocTable"><b>Table: </b>A tower of categories modeling the category <code class="code">R</code></caption>
 <tr>
-<td class="tdcenter"><code class="code">W := WrapperCategory( cat_n )</code></td>
+<td class="tdcenter"><code class="code">R := ReinterpretationOfCategory( cat_n )</code></td>
 </tr>
 <tr>
 <td class="tdcenter"><code class="code">cat_n := CategoryConstructor_n( cat_{n-1} )</code></td>
@@ -93,196 +96,183 @@
 </table><br />
 </div>
 
-<p>The wrapper category <code class="code">W</code> is by construction equivalent to the top category <code class="code">cat_n</code> in the tower. In practice, the word "tower" stands more generally for a finite poset with a greatest element.</p>
+<p>The reinterpretation <code class="code">R</code> is isomorphic to the top category <code class="code">cat_n</code> in the tower. In practice, the word "tower" stands more generally for a finite poset with a greatest element.</p>
 
-<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+<p><a id="X81932F777898AD72" name="X81932F777898AD72"></a></p>
 
-<h4>12.1 <span class="Heading">GAP categories</span></h4>
+<h4>12.2 <span class="Heading">Tutorial</span></h4>
 
-<p><a id="X82BF68357D8889C4" name="X82BF68357D8889C4"></a></p>
+<p>We will show how one can reinterpret a category with the following guiding example: We reinterpret <code class="code">Opposite( CategoryOfRows( R ) )</code> as <code class="code">CategoryOfColumns( R )</code> using <code class="func">ReinterpretationOfCategory</code> (<a href="chap12_mj.html#X81D06FCA7ECE38C4"><span class="RefLink">12.6-1</span></a>) with the options described in the following (see <code class="code">CategoryOfColumnsAsOppositeOfCategoryOfRows.gi</code> in <code class="code">FreydCategoriesForCAP</code> for a full implementation).</p>
 
-<h5>12.1-1 IsWrapperCapCategory</h5>
+<ol>
+<li><p>Set the options <code class="code">category_filter</code>, <code class="code">category_object_filter</code>, and <code class="code">category_morphism_filter</code> to the filters corresponding to the data structure of the desired reinterpretation, e.g. <code class="code">IsCategoryOfColumns</code>, <code class="code">IsCategoryOfColumsObject</code>, and <code class="code">IsCategoryOfColumsMorphism</code>.</p>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsWrapperCapCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+</li>
+<li><p>Set <code class="code">object_constructor</code>, <code class="code">object_datum</code>, <code class="code">morphism_constructor</code>, and <code class="code">morphism_datum</code> to the functions one would write for <code class="code">ObjectConstructor</code> and so on for a primitive implementation of the desired reinterpretation. In our example, <code class="code">object_constructor</code> takes the reinterpretation <code class="code">R</code> (which lies in <code class="code">IsCategoryOfColumns</code> due to the filter set in the first step) and an integer, and returns a CAP object in the category with attribute <code class="code">RankOfObject</code> set to the integer, just like a primitive implementation of <code class="code">CategoryOfColumns</code> would do.</p>
 
-<p>The <strong class="pkg">GAP</strong> category of a wrapper CAP category (using the default data structure).</p>
+</li>
+<li><p>Set <code class="code">modeling_tower_object_constructor</code>, <code class="code">modeling_tower_object_datum</code>, <code class="code">modeling_tower_morphism_constructor</code>, and <code class="code">modeling_tower_morphism_datum</code>: <code class="code">modeling_tower_object_constructor</code> gets the same input as <code class="code">object_constructor</code> but must return the corresponding object in the tower <code class="code">cat_n</code>. <code class="code">modeling_tower_object_datum</code> has the same output as <code class="code">object_datum</code> but gets the reinterpretation <code class="code">R</code> and an object in the tower <code class="code">cat_n</code> as an input. In our example, <code class="code">modeling_tower_object_constructor</code> gets the reinterpretation <code class="code">R</code> and an integer as in step 2 and wraps the integer as a <code class="code">CategoryOfRowsObject</code> and the result as an object in the opposite category. <code class="code">modeling_tower_object_datum</code> gets the reinterpretation <code class="code">R</code> and an object in <code class="code">Opposite( CategoryOfRows( R ) )</code> (that is, an integer boxed as a category of rows object boxed as an object in the opposite category) and returns the underlying integer. <code class="code">modeling_tower_morphism_constructor</code> and <code class="code">modeling_tower_morphism_datum</code> are given analogously.</p>
 
-<p><a id="X7E59F7CB7F1D9569" name="X7E59F7CB7F1D9569"></a></p>
+</li>
+</ol>
+<p>By composing <code class="code">modeling_tower_object_datum</code> with <code class="code">object_constructor</code> and <code class="code">modeling_tower_morphism_datum</code> with <code class="code">morphism_constructor</code> (with suitable source and range), <code class="code">ReinterpretationOfCategory</code> defines a functor "Reinterpretation" from <code class="code">cat_n</code> to <code class="code">R</code>. Similarly, it defines a functor "Model" from <code class="code">R</code> to <code class="code">cat_n</code> by composing <code class="code">object_datum</code> with <code class="code">modeling_tower_object_constructor</code> and <code class="code">morphism_datum</code> with <code class="code">modeling_tower_morphism_constructor</code> (with suitable source and range). "Reinterpretation" should be an isomorphism of categories with inverse "Model". More precisely, one has to take care of the following things:</p>
 
-<h5>12.1-2 IsWrapperCapCategoryObject</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsWrapperCapCategoryObject</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+<ul>
+<li><p>Since <code class="code">R</code> should just be a reinterpretation of <code class="code">cat_n</code> with a nicer data structure, we certainly want "Reinterpretation" to be an equivalence of categories with pseudo-inverse "Model".</p>
 
-<p>The <strong class="pkg">GAP</strong> category of objects in a wrapper CAP category.</p>
+</li>
+<li><p><code class="code">ReinterpretationOfCategory</code> copies all properties from <code class="code">cat_n</code> to <code class="code">R</code>, including properties like <code class="code">IsSkeletalCategory</code> which are not necessarily preserved by mere equivalences.</p>
 
-<p><a id="X7B2D95DA7D635FD7" name="X7B2D95DA7D635FD7"></a></p>
+</li>
+<li><p>To fulfill the specification of WithGiven operations, reinterpreting a WithGiven object <code class="code">A</code> in <code class="code">cat_n</code> as an object in <code class="code">R</code> and taking its model again must give an object equal to <code class="code">A</code>. So we require applying "Reinterpretation" and then "Model" to give the identity. Conversely, let <code class="code">B_1</code> be an object in <code class="code">R</code>. We take its model and reinterpret this again to form an object <code class="code">B_2</code>. By construction of <code class="code">R</code>, <code class="code">B_1</code> and <code class="code">B_2</code> are equal if and only if their models are equal. But since applying "Reinterpretation" and then "Model" gives the identity, taking the model of <code class="code">B_2</code> simply gives an object equal to the model of <code class="code">B_1</code>. Thus, also <code class="code">B_1</code> and <code class="code">B_2</code> are equal. Hence, "Reinterpretation" has to be an equivalence which is a bijection on objects, and hence an isomorphism (although "Model" is not necessarily its inverse). Note: Alternatively, one can make sure that WithGiven operations in <code class="code">cat_n</code> are only called via the corresponding non-WithGiven operation in <code class="code">cat_n</code>. This can be achieved by reinterpreting all operations of <code class="code">cat_n</code> (i.e. creating <code class="code">R</code> with <code class="code">only_primitive_operations := false</code>), disabling redirect functions (i.e. creating <code class="code">R</code> with the option <code class="code">overhead := false</code>) and not calling WithGiven operations of <code class="code">R</code> manually.</p>
 
-<h5>12.1-3 IsWrapperCapCategoryMorphism</h5>
+</li>
+</ul>
+<p><a id="X7AB84A0B83B2C1F1" name="X7AB84A0B83B2C1F1"></a></p>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsWrapperCapCategoryMorphism</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+<h4>12.3 <span class="Heading">Implementation details</span></h4>
 
-<p>The <strong class="pkg">GAP</strong> category of morphisms in a wrapper CAP category.</p>
+<p>Operations in <code class="code">ReinterpretationOfCategory</code> are implemented as follows:</p>
+
+<ol>
+<li><p>Apply <code class="code">object_datum</code> and <code class="code">morphism_datum</code> to the input to get the underlying data.</p>
+
+</li>
+<li><p>Apply <code class="code">modeling_tower_object_constructor</code> and <code class="code">modeling_tower_morphism_constructor</code> to the underlying data to get objects and morphisms in the tower <code class="code">cat_n</code>.</p>
+
+</li>
+<li><p>Apply the operation of the tower <code class="code">cat_n</code>.</p>
+
+</li>
+<li><p>Apply <code class="code">modeling_tower_object_datum</code> or <code class="code">modeling_tower_morphism_datum</code> to the result to get the underlying data.</p>
+
+</li>
+<li><p>Apply <code class="code">object_constructor</code> or <code class="code">morphism_constructor</code> to the underlying data to get an object or a morphism in the reinterpretation <code class="code">R</code>.</p>
+
+</li>
+</ol>
+<p>The first two steps define the functor "Model" and the last two steps define the functor "Reinterpretation". "Reinterpretation" on objects and morphisms is called <code class="code">ReinterpretationOfObject</code> and <code class="code">ReinterpretationOfMorphism</code> in the code. "Model" on objects and morphisms is called <code class="code">ModelingObject</code> and <code class="code">ModelingMorphism</code> in the code.</p>
+
+<p><a id="X856FF3B57FF7C2FD" name="X856FF3B57FF7C2FD"></a></p>
+
+<h4>12.4 <span class="Heading">Relation to <code class="code">CompilerForCAP</code></span></h4>
+
+<p>The operation of the tower <code class="code">cat_n</code> (step 3 above) usually unboxes objects and morphisms, operates on the underlying data, and boxes the result. The unboxing usually cancels with step 2 above, and boxing the result usually cancels with step 4 above. If one now compiles the operations of the reinterpretation <code class="code">R</code>, only the following steps remain:</p>
+
+<ol>
+<li><p>Apply <code class="code">object_datum</code> and <code class="code">morphism_datum</code> to the input to get the underlying data.</p>
+
+</li>
+<li><p>Operate on the underlying data. (previously part of step 3)</p>
+
+</li>
+<li><p>Apply <code class="code">object_constructor</code> or <code class="code">morphism_constructor</code> to the underlying data to get an object or a morphism in the reinterpretation <code class="code">R</code>. (previously step 5)</p>
+
+</li>
+</ol>
+<p>This is exactly what a primitive implementation would look like. Thus, in many cases compiling a reinterpretation immediately gives a primitive implementation with no remaining references to the tower <code class="code">cat_n</code>.</p>
 
 <p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
 
-<h4>12.2 <span class="Heading">Attributes</span></h4>
+<h4>12.5 <span class="Heading">Attributes</span></h4>
 
 <p><a id="X811A167F7DABD0F9" name="X811A167F7DABD0F9"></a></p>
 
-<h5>12.2-1 ModelingCategory</h5>
+<h5>12.5-1 ModelingCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ModelingCategory</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ModelingCategory</code>( <var class="Arg">R</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a category</p>
 
-<p>The category used to model the wrapper category <var class="Arg">category</var>.</p>
-
-<p><a id="X81829E6386E43EF3" name="X81829E6386E43EF3"></a></p>
-
-<h5>12.2-2 UnderlyingCell</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCell</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a category object</p>
-
-<p>The cell underlying the wrapper category object <var class="Arg">object</var>.</p>
-
-<p><a id="X7AA0358D85F1CD9F" name="X7AA0358D85F1CD9F"></a></p>
-
-<h5>12.2-3 UnderlyingCell</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCell</code>( <var class="Arg">morphism</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a category morphism</p>
-
-<p>The cell underlying the wrapper category morphism <var class="Arg">morphism</var>.</p>
+<p>The tower <code class="code">cat_n</code> modeling the reinterpretation <var class="Arg">R</var>.</p>
 
 <p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
 
-<h4>12.3 <span class="Heading">Constructors</span></h4>
+<h4>12.6 <span class="Heading">Constructors</span></h4>
 
-<p><a id="X83886A588035ED96" name="X83886A588035ED96"></a></p>
+<p><a id="X81D06FCA7ECE38C4" name="X81D06FCA7ECE38C4"></a></p>
 
-<h5>12.3-1 AsObjectInWrapperCategory</h5>
+<h5>12.6-1 ReinterpretationOfCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsObjectInWrapperCategory</code>( <var class="Arg">category</var>, <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: an object</p>
-
-<p>Wrap an object <var class="Arg">object</var> (in the category underlying the wrapper category <var class="Arg">category</var>) to form an object in <var class="Arg">category</var>.</p>
-
-<p><a id="X832CBD5A80B84DDF" name="X832CBD5A80B84DDF"></a></p>
-
-<h5>12.3-2 AsMorphismInWrapperCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsMorphismInWrapperCategory</code>( <var class="Arg">source</var>, <var class="Arg">morphism</var>, <var class="Arg">range</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism</p>
-
-<p>Wrap a morphism <var class="Arg">morphism</var> (in the category underlying the wrapper category <code class="code">CapCategory(</code><var class="Arg">source</var><code class="code">)</code>) to form a morphism in <code class="code">CapCategory(</code><var class="Arg">source</var><code class="code">)</code> with given source and range.</p>
-
-<p><a id="X7A95EED57AD2AF78" name="X7A95EED57AD2AF78"></a></p>
-
-<h5>12.3-3 AsMorphismInWrapperCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsMorphismInWrapperCategory</code>( <var class="Arg">category</var>, <var class="Arg">morphism</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism</p>
-
-<p>Wrap a morphism <var class="Arg">morphism</var> (in the category underlying the wrapper category <var class="Arg">category</var>) to form a morphism in <var class="Arg">category</var>.</p>
-
-<p><a id="X7BF21C4587D89462" name="X7BF21C4587D89462"></a></p>
-
-<h5>12.3-4 /</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; /</code>( <var class="Arg">cell</var>, <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Convenience method for <code class="func">AsObjectInWrapperCategory</code> (<a href="chap12_mj.html#X83886A588035ED96"><span class="RefLink">12.3-1</span></a>) and <code class="func">AsMorphismInWrapperCategory</code> (<a href="chap12_mj.html#X7A95EED57AD2AF78"><span class="RefLink">12.3-3</span></a>).</p>
-
-<p><a id="X7C22BC7182777CF4" name="X7C22BC7182777CF4"></a></p>
-
-<h5>12.3-5 WrapperCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WrapperCategory</code>( <var class="Arg">category</var>, <var class="Arg">options</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ReinterpretationOfCategory</code>( <var class="Arg">category</var>, <var class="Arg">options</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a category</p>
 
-<p>Wraps a category <var class="Arg">category</var> to form a new category subject to the options given via <var class="Arg">options</var>, which is a record with the following keys:</p>
+<p>Reinterprets a category <var class="Arg">category</var> (the "modeling category") to form a new category <code class="code">R</code> (the "reinterpretation") subject to the options given via <var class="Arg">options</var>, which is a record with the following keys:</p>
 
 
 <ul>
-<li><p><code class="code">name</code> (optional): the name of the wrapper category</p>
+<li><p><code class="code">name</code>: the name of the reinterpretation <code class="code">R</code>,</p>
 
 </li>
-<li><p><code class="code">only_primitive_operations</code> (optional, default <code class="code">false</code>): whether to only wrap primitive operations or all operations</p>
+<li><p><code class="code">category_filter</code>, <code class="code">category_object_filter</code>, <code class="code">category_morphism_filter</code>, <code class="code">object_constructor</code>, <code class="code">object_datum</code>, <code class="code">morphism_constructor</code>, <code class="code">morphism_datum</code>: same meaning as for <code class="func">CategoryConstructor</code> (<a href="chap11_mj.html#X8070F8B48111E8A7"><span class="RefLink">11.2-1</span></a>), which is used to create the reinterpretation <code class="code">R</code>,</p>
 
 </li>
-<li><p><code class="code">wrap_range_of_hom_structure</code> (optional, default <code class="code">false</code>): whether to wrap the range category of the homomorphism structure</p>
+<li><p><code class="code">modeling_tower_object_constructor</code>: a function which gets the reinterpretation <code class="code">R</code> and an object datum (in the sense of <code class="code">object_datum</code>) and returns the corresponding modeling object in the modeling category,</p>
 
 </li>
-</ul>
-<p>Additionally, the following options of <code class="func">CategoryConstructor</code> (<a href="chap11_mj.html#X8070F8B48111E8A7"><span class="RefLink">11.2-1</span></a>) are supported: <code class="code">category_filter</code>, <code class="code">category_object_filter</code>, <code class="code">category_morphism_filter</code>, <code class="code">object_constructor</code>, <code class="code">object_datum</code>, <code class="code">morphism_constructor</code>, <code class="code">morphism_datum</code>. To avoid inconsistencies, either all or none of those options should be set. If they are set, also the following options should be set:</p>
-
-
-<ul>
-<li><p><code class="code">modeling_tower_object_constructor</code>: a function which gets the wrapper category and an object datum (in the sense of <code class="code">object_datum</code>) and returns the corresponding modeling object in the modeling category,</p>
+<li><p><code class="code">modeling_tower_object_datum</code>: a function which gets the interpretation category and an object in the modeling category and returns the corresponding object datum (in the sense of <code class="code">object_datum</code>),</p>
 
 </li>
-<li><p><code class="code">modeling_tower_object_datum</code>: a function which gets the wrapper category and an object in the modeling category and returns the corresponding object datum (in the sense of <code class="code">object_datum</code>),</p>
+<li><p><code class="code">modeling_tower_morphism_constructor</code>: a function which gets the interpretation category, a source in the modeling category, a morphism datum (in the sense of <code class="code">morphism_datum</code>), and a range in the modeling category and returns the corresponding modeling morphism in the modeling category,</p>
 
 </li>
-<li><p><code class="code">modeling_tower_morphism_constructor</code>: a function which gets the wrapper category, a source in the modeling category, a morphism datum (in the sense of <code class="code">morphism_datum</code>), and a range in the modeling category and returns the corresponding modeling morphism in the modeling category,</p>
+<li><p><code class="code">modeling_tower_morphism_datum</code>: a function which gets the interpretation category and a morphism in the modeling category and returns the corresponding morphism datum (in the sense of <code class="code">morphism_datum</code>),</p>
 
 </li>
-<li><p><code class="code">modeling_tower_morphism_datum</code>: a function which gets the wrapper category and a morphism in the modeling category and returns the corresponding morphism datum (in the sense of <code class="code">morphism_datum</code>),</p>
+<li><p><code class="code">only_primitive_operations</code> (optional, default <code class="code">false</code>): whether to only reinterpret primitive operations or all operations.</p>
 
 </li>
 </ul>
-<p><a id="X86932DDE8378A2AF" name="X86932DDE8378A2AF"></a></p>
+<p><a id="X7ACECA6387E9F29D" name="X7ACECA6387E9F29D"></a></p>
 
-<h5>12.3-6 WrappingFunctor</h5>
+<h5>12.6-2 ReinterpretationFunctor</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WrappingFunctor</code>( <var class="Arg">W</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ReinterpretationFunctor</code>( <var class="Arg">R</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a functor</p>
 
-<p>Return the functor from the wrapped category <code class="code">ModelingCategory</code>(<var class="Arg">W</var>) to the wrapper category <var class="Arg">W</var>. The functor maps each wrapped object/morphism to its wrapping object/morphism.</p>
+<p>Returns the functor from the modeling category <code class="code">ModelingCategory</code>(<var class="Arg">R</var>) to the reinterpretation <var class="Arg">R</var> which maps each object/morphism to its reinterpretation.</p>
 
 <p><a id="X7D2C2C3D7A342007" name="X7D2C2C3D7A342007"></a></p>
 
-<h5>12.3-7 ModelingObject</h5>
+<h5>12.6-3 ModelingObject</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ModelingObject</code>( <var class="Arg">cat</var>, <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ModelingObject</code>( <var class="Arg">R</var>, <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a CAP category object</p>
 
-<p>Returns the object modeling the object <var class="Arg">obj</var> in <var class="Arg">cat</var>. <var class="Arg">cat</var> must be a CAP category which has been created as a wrapper CAP category (but not necessarily uses the default data structure).</p>
+<p>Returns the object in <code class="code">ModelingCategory</code>(<var class="Arg">R</var>) modeling the object <var class="Arg">obj</var> in the reinterpretation <var class="Arg">R</var>.</p>
 
-<p><a id="X82896F3A81CFFF57" name="X82896F3A81CFFF57"></a></p>
+<p><a id="X79C8914E86186004" name="X79C8914E86186004"></a></p>
 
-<h5>12.3-8 ModeledObject</h5>
+<h5>12.6-4 ReinterpretationOfObject</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ModeledObject</code>( <var class="Arg">cat</var>, <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ReinterpretationOfObject</code>( <var class="Arg">R</var>, <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a CAP category object</p>
 
-<p>Returns the object modeled by the object <var class="Arg">obj</var> in the modeling category of <var class="Arg">cat</var>. <var class="Arg">cat</var> must be a CAP category which has been created as a wrapper CAP category (but not necessarily uses the default data structure).</p>
+<p>Returns the reinterpretation in <code class="code">R</code> of an object <var class="Arg">obj</var> in <code class="code">ModelingCategory</code>(<var class="Arg">R</var>).</p>
 
 <p><a id="X7C8C515B7E679556" name="X7C8C515B7E679556"></a></p>
 
-<h5>12.3-9 ModelingMorphism</h5>
+<h5>12.6-5 ModelingMorphism</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ModelingMorphism</code>( <var class="Arg">cat</var>, <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ModelingMorphism</code>( <var class="Arg">R</var>, <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a CAP category morphism</p>
 
-<p>Returns the morphism modeling the morphism <var class="Arg">mor</var> in <var class="Arg">cat</var>. <var class="Arg">cat</var> must be a CAP category which has been created as a wrapper CAP category (but not necessarily uses the default data structure).</p>
+<p>Returns the morphism in <code class="code">ModelingCategory</code>(<var class="Arg">R</var>) modeling the morphism <var class="Arg">mor</var> in the reinterpretation <var class="Arg">R</var>.</p>
 
-<p><a id="X8616A636859481E0" name="X8616A636859481E0"></a></p>
+<p><a id="X85D9773186C8969A" name="X85D9773186C8969A"></a></p>
 
-<h5>12.3-10 ModeledMorphism</h5>
+<h5>12.6-6 ReinterpretationOfMorphism</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ModeledMorphism</code>( <var class="Arg">cat</var>, <var class="Arg">source</var>, <var class="Arg">obj</var>, <var class="Arg">range</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ReinterpretationOfMorphism</code>( <var class="Arg">R</var>, <var class="Arg">source</var>, <var class="Arg">obj</var>, <var class="Arg">range</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a CAP category morphism</p>
 
-<p>Returns the morphism modeled by the morphism <var class="Arg">mor</var> in the modeling category of <var class="Arg">cat</var> with given source and range. <var class="Arg">cat</var> must be a CAP category which has been created as a wrapper CAP category (but not necessarily uses the default data structure).</p>
+<p>Returns the reinterpretation in <code class="code">R</code> with given source and range of a morphism <var class="Arg">mor</var> in <code class="code">ModelingCategory</code>(<var class="Arg">R</var>).</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap11_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap13_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
 
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chap14_mj.html">14</a>  <a href="chap15_mj.html">15</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chap14_mj.html">14</a>  <a href="chap15_mj.html">15</a>  <a href="chap16_mj.html">16</a>  <a href="chapInd_mj.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
