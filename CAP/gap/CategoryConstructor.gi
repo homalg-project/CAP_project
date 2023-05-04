@@ -17,9 +17,7 @@ InstallMethod( CategoryConstructor,
         category_filter := IsFilter,
         category_object_filter := IsFilter,
         category_morphism_filter := IsFilter,
-        #= comment for Julia
-        commutative_ring_of_linear_category := IsRing and HasIsCommutative and IsCommutative,
-        # =#
+        commutative_ring_of_linear_category := R -> IsRing( R ) and HasIsCommutative( R ) and IsCommutative( R ),
         properties := IsList,
         object_constructor := IsFunction,
         object_datum := IsFunction,
