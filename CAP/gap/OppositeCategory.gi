@@ -64,25 +64,23 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
           current_recname, current_entry, dual_operation_name, filter_list, input_arguments_names, return_type, func_string,
           dual_preprocessor_func_string, preprocessor_string, dual_arguments, tmp,
           dual_postprocessor_func_string, postprocessor_string, output_source_getter_string, output_range_getter_string, return_statement,
-          func, weight, current_add, list_of_attributes, attr, tester, setter, getter;
+          func, weight, current_add, list_of_attributes, attr, tester, setter;
     
     only_primitive_operations := ValueOption( "only_primitive_operations" ) = true;
     
     ## Take care of attributes
     ## TODO: if there are more instances, set markers in the MethodRecord
-    list_of_attributes := [ "CommutativeRingOfLinearCategory" ];
+    list_of_attributes := [ CommutativeRingOfLinearCategory ];
     
     for attr in list_of_attributes do
         
-        tester := ValueGlobal( Concatenation( "Has", attr ) );
+        tester := Tester( attr );
         
         if not tester( opposite_category ) and tester( category ) then
             
-            setter := ValueGlobal( Concatenation( "Set", attr ) );
+            setter := Setter( attr );
             
-            getter := ValueGlobal( attr );
-            
-            setter( opposite_category, getter( category ) );
+            setter( opposite_category, attr( category ) );
             
         fi;
         

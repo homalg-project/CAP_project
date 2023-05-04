@@ -295,9 +295,7 @@ InstallGlobalFunction( AddFinalDerivationBundle,
     fi;
     
     dummy_func := x -> x;
-    #= comment for Julia
     SetNameFunction( dummy_func, "internal dummy function of a final derivation" );
-    # =#
     
     # only used to check if we can install all the derivations in `derivations`
     dummy_derivation := MakeDerivation(

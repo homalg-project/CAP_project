@@ -83,9 +83,7 @@ InstallGlobalFunction( CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY,
     completed_record.properties := properties;
     
     if not IsBound( completed_record.commutative_ring_of_linear_category ) then
-        #= comment for Julia
         completed_record.commutative_ring_of_linear_category := Integers;
-        # =#
     fi;
     
     T := CategoryConstructor( completed_record );
