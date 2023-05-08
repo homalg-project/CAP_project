@@ -44,7 +44,7 @@ InstallGlobalFunction( "CartesianCategoriesTest",
         
         verbose := ValueOption( "verbose" ) = true;
         
-        if CanCompute( cat, "DirectProductOnMorphisms" ) then 
+        if CanCompute( cat, "DirectProductOnMorphisms" ) then
             
             if verbose then
                 

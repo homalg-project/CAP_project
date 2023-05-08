@@ -41,7 +41,7 @@ InstallGlobalFunction( "MonoidalCategoriesTest",
         
         verbose := ValueOption( "verbose" ) = true;
         
-        if CanCompute( cat, "TensorProductOnMorphisms" ) then 
+        if CanCompute( cat, "TensorProductOnMorphisms" ) then
             
             if verbose then
                 

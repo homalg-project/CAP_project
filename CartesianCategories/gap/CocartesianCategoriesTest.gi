@@ -44,7 +44,7 @@ InstallGlobalFunction( "CocartesianCategoriesTest",
         
         verbose := ValueOption( "verbose" ) = true;
         
-        if CanCompute( cat, "CoproductOnMorphisms" ) then 
+        if CanCompute( cat, "CoproductOnMorphisms" ) then
             
             if verbose then
                 
