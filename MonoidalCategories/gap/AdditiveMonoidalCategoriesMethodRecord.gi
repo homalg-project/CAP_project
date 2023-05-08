@@ -27,7 +27,6 @@ LeftDistributivityExpandingWithGivenObjects := rec(
   dual_operation := "LeftDistributivityFactoringWithGivenObjects",
   dual_preprocessor_func := { cat, s, a, L, r } -> NTuple( 5, Opposite( cat ), Opposite( r ), Opposite( a ), List( L, Opposite ), Opposite( s ) ),
   dual_arguments_reversed := false,
-  # Test in AdditiveMonoidalCategoriesTest
 ),
 
 LeftDistributivityFactoring := rec(
@@ -51,7 +50,6 @@ LeftDistributivityFactoringWithGivenObjects := rec(
   dual_operation := "LeftDistributivityExpandingWithGivenObjects",
   dual_preprocessor_func := { cat, s, a, L, r } -> NTuple( 5, Opposite( cat ), Opposite( r ), Opposite( a ), List( L, Opposite ), Opposite( s ) ),
   dual_arguments_reversed := false,
-  # Test in AdditiveMonoidalCategoriesTest
 ),
 
 RightDistributivityExpanding := rec(
@@ -75,7 +73,6 @@ RightDistributivityExpandingWithGivenObjects := rec(
   dual_operation := "RightDistributivityFactoringWithGivenObjects",
   dual_preprocessor_func := { cat, s, L, a, r } -> NTuple( 5, Opposite( cat ), Opposite( r ), List( L, Opposite ), Opposite( a ), Opposite( s ) ),
   dual_arguments_reversed := false,
-  # Test in AdditiveMonoidalCategoriesTest
 ),
 
 RightDistributivityFactoring := rec(
@@ -99,7 +96,6 @@ RightDistributivityFactoringWithGivenObjects := rec(
   dual_operation := "RightDistributivityExpandingWithGivenObjects",
   dual_preprocessor_func := { cat, s, L, a, r } -> NTuple( 5, Opposite( cat ), Opposite( r ), List( L, Opposite ), Opposite( a ), Opposite( s ) ),
   dual_arguments_reversed := false,
-  # Test in AdditiveMonoidalCategoriesTest
 ),
 
 ) );
