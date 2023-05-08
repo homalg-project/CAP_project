@@ -9,14 +9,12 @@
 
 InstallGlobalFunction( "BraidedCocartesianCategoriesTest",
     
-    function( cat, a, b )
+    function( cat, opposite, a, b )
         
-        local opposite, verbose,
+        local verbose,
               
               a_op, braiding_a_b, braiding_a_b_op, braiding_inverse_a_b, braiding_inverse_a_b_op, 
               b_op, braiding_b_a, braiding_b_a_op, braiding_inverse_b_a, braiding_inverse_b_a_op;
-        
-        opposite := Opposite( cat, "Opposite" );
         
         a_op := Opposite( opposite, a );
         b_op := Opposite( opposite, b );

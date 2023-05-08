@@ -6,9 +6,9 @@
 
 InstallGlobalFunction( "CoclosedMonoidalCategoriesTest",
     
-    function( cat, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta )
+    function( cat, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta )
     
-        local opposite, verbose,
+        local verbose,
               
               a_op, c_op,
               b_op, d_op,
@@ -74,8 +74,6 @@ InstallGlobalFunction( "CoclosedMonoidalCategoriesTest",
               
               isomorphism_from_a_to_cohom, isomorphism_from_cohom_to_a, isomorphism_from_a_to_hom_op, isomorphism_from_hom_to_a_op,
               isomorphism_from_b_to_cohom, isomorphism_from_cohom_to_b, isomorphism_from_b_to_hom_op, isomorphism_from_hom_to_b_op;
-        
-        opposite := Opposite( cat, "Opposite" );
         
         a_op := Opposite( opposite, a );
         b_op := Opposite( opposite, b );

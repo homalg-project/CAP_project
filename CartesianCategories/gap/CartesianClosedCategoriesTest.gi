@@ -9,9 +9,9 @@
 
 InstallGlobalFunction( "CartesianClosedCategoriesTest",
     
-    function( cat, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta )
+    function( cat, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta )
         
-        local opposite, verbose,
+        local verbose,
               
               a_op, c_op,
               b_op, d_op,
@@ -77,8 +77,6 @@ InstallGlobalFunction( "CartesianClosedCategoriesTest",
               
               isomorphism_from_a_to_hom, isomorphism_from_exp_to_a, isomorphism_from_a_to_coexp_op, isomorphism_from_coexp_to_a_op,
               isomorphism_from_b_to_hom, isomorphism_from_exp_to_b, isomorphism_from_b_to_coexp_op, isomorphism_from_coexp_to_b_op;
-        
-        opposite := Opposite( cat, "Opposite" );
         
         a_op := Opposite( opposite, a );
         b_op := Opposite( opposite, b );

@@ -11,6 +11,8 @@ true
 
 #
 gap> T := TerminalCategoryWithMultipleObjects( );;
+gap> opposite := Opposite( T, "Opposite with all operations" );;
+gap> opposite_primitive := Opposite( T, "Opposite with primitive operations" : only_primitive_operations := true );;
 
 #
 ##############################################
@@ -21,19 +23,19 @@ gap> a := "a" / T;;
 gap> b := "b" / T;;
 
 #
-gap> MonoidalCategoriesTensorProductAndUnitTest( T, a, b );;
-gap> MonoidalCategoriesTensorProductAndUnitTest( T, a, b : only_primitive_operations := true );;
+gap> MonoidalCategoriesTensorProductAndUnitTest( T, opposite, a, b );;
+gap> MonoidalCategoriesTensorProductAndUnitTest( T, opposite_primitive, a, b );;
 
 #
 gap> z := ZeroObject( T );;
 
 #
-gap> MonoidalCategoriesTensorProductAndUnitTest( T, z, b );;
-gap> MonoidalCategoriesTensorProductAndUnitTest( T, z, b : only_primitive_operations := true );;
+gap> MonoidalCategoriesTensorProductAndUnitTest( T, opposite, z, b );;
+gap> MonoidalCategoriesTensorProductAndUnitTest( T, opposite_primitive, z, b );;
 
 #
-gap> MonoidalCategoriesTensorProductAndUnitTest( T, a, z );;
-gap> MonoidalCategoriesTensorProductAndUnitTest( T, a, z : only_primitive_operations := true );;
+gap> MonoidalCategoriesTensorProductAndUnitTest( T, opposite, a, z );;
+gap> MonoidalCategoriesTensorProductAndUnitTest( T, opposite_primitive, a, z );;
 
 #
 ##############################################
@@ -50,8 +52,8 @@ gap> alpha := MorphismConstructor( a, "f_ab", b );;
 gap> beta := MorphismConstructor( c, "f_cd", d );;
 
 #
-gap> MonoidalCategoriesTest( T, a, b, c, alpha, beta );;
-gap> MonoidalCategoriesTest( T, a, b, c, alpha, beta : only_primitive_operations := true );;
+gap> MonoidalCategoriesTest( T, opposite, a, b, c, alpha, beta );;
+gap> MonoidalCategoriesTest( T, opposite_primitive, a, b, c, alpha, beta );;
 
 #
 gap> z := ZeroObject( T );;
@@ -61,12 +63,12 @@ gap> alpha := UniversalMorphismFromZeroObject( a );;
 gap> beta := UniversalMorphismIntoZeroObject( a );;
 
 #
-gap> MonoidalCategoriesTest( T, z, a, a, alpha, beta );;
-gap> MonoidalCategoriesTest( T, z, a, a, alpha, beta : only_primitive_operations := true );;
+gap> MonoidalCategoriesTest( T, opposite, z, a, a, alpha, beta );;
+gap> MonoidalCategoriesTest( T, opposite_primitive, z, a, a, alpha, beta );;
 
 #
-gap> MonoidalCategoriesTest( T, a, z, z, beta, alpha );;
-gap> MonoidalCategoriesTest( T, a, z, z, beta, alpha : only_primitive_operations := true );;
+gap> MonoidalCategoriesTest( T, opposite, a, z, z, beta, alpha );;
+gap> MonoidalCategoriesTest( T, opposite_primitive, a, z, z, beta, alpha );;
 
 #
 ##############################################
@@ -77,8 +79,8 @@ gap> a := "a" / T;;
 gap> L := [ "b" / T, "c" / T, "d" / T ];;
 
 #
-gap> AdditiveMonoidalCategoriesTest( T, a, L );;
-gap> AdditiveMonoidalCategoriesTest( T, a, L : only_primitive_operations := true );;
+gap> AdditiveMonoidalCategoriesTest( T, opposite, a, L );;
+gap> AdditiveMonoidalCategoriesTest( T, opposite_primitive, a, L );;
 
 #
 ##############################################
@@ -89,23 +91,23 @@ gap> a := "a" / T;;
 gap> b := "b" / T;;
 
 #
-gap> BraidedMonoidalCategoriesTest( T, a, b );;
-gap> BraidedMonoidalCategoriesTest( T, a, b : only_primitive_operations := true );;
+gap> BraidedMonoidalCategoriesTest( T, opposite, a, b );;
+gap> BraidedMonoidalCategoriesTest( T, opposite_primitive, a, b );;
 
 #
-gap> BraidedMonoidalCategoriesTest( T, b, a );;
-gap> BraidedMonoidalCategoriesTest( T, b, a : only_primitive_operations := true );;
+gap> BraidedMonoidalCategoriesTest( T, opposite, b, a );;
+gap> BraidedMonoidalCategoriesTest( T, opposite_primitive, b, a );;
 
 #
 gap> z := ZeroObject( T );;
 
 #
-gap> BraidedMonoidalCategoriesTest( T, z, a );;
-gap> BraidedMonoidalCategoriesTest( T, z, a : only_primitive_operations := true );;
+gap> BraidedMonoidalCategoriesTest( T, opposite, z, a );;
+gap> BraidedMonoidalCategoriesTest( T, opposite_primitive, z, a );;
 
 #
-gap> BraidedMonoidalCategoriesTest( T, a, z );;
-gap> BraidedMonoidalCategoriesTest( T, a, z : only_primitive_operations := true );;
+gap> BraidedMonoidalCategoriesTest( T, opposite, a, z );;
+gap> BraidedMonoidalCategoriesTest( T, opposite_primitive, a, z );;
 
 #
 ##############################################
@@ -137,8 +139,8 @@ gap> epsilon := MorphismConstructor( u, "f_uhomab", hom_ab );;
 gap> zeta := MorphismConstructor( u, "f_uhomcd", hom_cd );;
 
 #
-gap> ClosedMonoidalCategoriesTest( T, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
-gap> ClosedMonoidalCategoriesTest( T, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta : only_primitive_operations := true );;
+gap> ClosedMonoidalCategoriesTest( T, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
+gap> ClosedMonoidalCategoriesTest( T, opposite_primitive, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
 
 #
 gap> z := ZeroObject( T );;
@@ -160,8 +162,8 @@ gap> epsilon := MorphismConstructor( u, "f_uhomza", hom_za );;
 gap> zeta := MorphismConstructor( u, "f_uhomaz", hom_az );;
 
 #
-gap> ClosedMonoidalCategoriesTest( T, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
-gap> ClosedMonoidalCategoriesTest( T, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta : only_primitive_operations := true );;
+gap> ClosedMonoidalCategoriesTest( T, opposite, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
+gap> ClosedMonoidalCategoriesTest( T, opposite_primitive, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
 
 #
 ##############################################
@@ -193,8 +195,8 @@ gap> epsilon := MorphismConstructor( cohom_ab, "f_cohomabu", u );;
 gap> zeta := MorphismConstructor( cohom_cd, "f_cohomcdu", u);;
 
 #
-gap> CoclosedMonoidalCategoriesTest( T, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
-gap> CoclosedMonoidalCategoriesTest( T, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta : only_primitive_operations := true );;
+gap> CoclosedMonoidalCategoriesTest( T, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
+gap> CoclosedMonoidalCategoriesTest( T, opposite_primitive, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
 
 #
 gap> z := ZeroObject( T );;
@@ -216,8 +218,8 @@ gap> epsilon := MorphismConstructor( cohom_za, "f_cohomzau", u );;
 gap> zeta := MorphismConstructor( cohom_az, "cohomazu", u );;
 
 #
-gap> CoclosedMonoidalCategoriesTest( T, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
-gap> CoclosedMonoidalCategoriesTest( T, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta : only_primitive_operations := true );;
+gap> CoclosedMonoidalCategoriesTest( T, opposite, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
+gap> CoclosedMonoidalCategoriesTest( T, opposite_primitive, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
 
 #
 ##############################################
@@ -233,8 +235,8 @@ gap> d := "d" / T;;
 gap> alpha := IdentityMorphism( a );;
 
 #
-gap> RigidSymmetricClosedMonoidalCategoriesTest( T, a, b, c, d, alpha );;
-gap> RigidSymmetricClosedMonoidalCategoriesTest( T, a, b, c, d, alpha : only_primitive_operations := true );;
+gap> RigidSymmetricClosedMonoidalCategoriesTest( T, opposite, a, b, c, d, alpha );;
+gap> RigidSymmetricClosedMonoidalCategoriesTest( T, opposite_primitive, a, b, c, d, alpha );;
 
 #
 gap> z := ZeroObject( T );;
@@ -243,8 +245,8 @@ gap> z := ZeroObject( T );;
 gap> alpha := IdentityMorphism( a );;
 
 #
-gap> RigidSymmetricClosedMonoidalCategoriesTest( T, z, b, c, z, alpha );;
-gap> RigidSymmetricClosedMonoidalCategoriesTest( T, z, b, c, z, alpha : only_primitive_operations := true );;
+gap> RigidSymmetricClosedMonoidalCategoriesTest( T, opposite, z, b, c, z, alpha );;
+gap> RigidSymmetricClosedMonoidalCategoriesTest( T, opposite_primitive, z, b, c, z, alpha );;
 
 #
 ##############################################
@@ -260,8 +262,8 @@ gap> d := "d" / T;;
 gap> alpha := IdentityMorphism( a );;
 
 #
-gap> RigidSymmetricCoclosedMonoidalCategoriesTest( T, a, b, c, d, alpha );;
-gap> RigidSymmetricCoclosedMonoidalCategoriesTest( T, a, b, c, d, alpha : only_primitive_operations := true );;
+gap> RigidSymmetricCoclosedMonoidalCategoriesTest( T, opposite, a, b, c, d, alpha );;
+gap> RigidSymmetricCoclosedMonoidalCategoriesTest( T, opposite_primitive, a, b, c, d, alpha );;
 
 #
 gap> z := ZeroObject( T );;
@@ -270,8 +272,8 @@ gap> z := ZeroObject( T );;
 gap> alpha := IdentityMorphism( a );;
 
 #
-gap> RigidSymmetricCoclosedMonoidalCategoriesTest( T, a, b, c, d, alpha );;
-gap> RigidSymmetricCoclosedMonoidalCategoriesTest( T, a, b, c, d, alpha : only_primitive_operations := true );;
+gap> RigidSymmetricCoclosedMonoidalCategoriesTest( T, opposite, a, b, c, d, alpha );;
+gap> RigidSymmetricCoclosedMonoidalCategoriesTest( T, opposite_primitive, a, b, c, d, alpha );;
 
 #
 ##############################################
