@@ -38,7 +38,6 @@ ExponentialOnMorphismsWithGivenExponentials := rec(
   return_type := "morphism",
   dual_operation := "CoexponentialOnMorphismsWithGivenCoexponentials",
   dual_arguments_reversed := true,
-  # Test in CartesianClosedCategoriesTest
 ),
 
 CartesianEvaluationMorphism := rec(
@@ -61,7 +60,6 @@ CartesianEvaluationMorphismWithGivenSource := rec(
   dual_operation := "CocartesianEvaluationMorphismWithGivenRange",
   dual_preprocessor_func := { cat, a, b, s } -> NTuple( 4, Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( s ) ),
   dual_arguments_reversed := false,
-  # Test in CartesianClosedCategoriesTest
 ),
 
 CartesianCoevaluationMorphism := rec(
@@ -83,7 +81,6 @@ CartesianCoevaluationMorphismWithGivenRange := rec(
   return_type := "morphism",
   dual_operation := "CocartesianCoevaluationMorphismWithGivenSource",
   dual_arguments_reversed := false,
-  # Test in CartesianClosedCategoriesTest
 ),
 
 DirectProductToExponentialAdjunctionMap := rec(
@@ -101,7 +98,6 @@ DirectProductToExponentialAdjunctionMapWithGivenExponential := rec(
   return_type := "morphism",
   dual_operation := "CoproductToCoexponentialAdjunctionMapWithGivenCoexponential",
   dual_arguments_reversed := false,
-  # Test in CartesianClosedCategoriesTest
 ),
 
 ExponentialToDirectProductAdjunctionMap := rec(
@@ -121,7 +117,6 @@ ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct := rec(
   dual_operation := "CoexponentialToCoproductAdjunctionMapWithGivenCoproduct",
   dual_preprocessor_func := { cat, a, b, g, t } -> NTuple( 4, Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( g ),Opposite( t ) ),
   dual_arguments_reversed := false,
-  # Test in CartesianClosedCategoriesTest
 ),
 
 CartesianPreComposeMorphism := rec(
@@ -144,7 +139,6 @@ CartesianPreComposeMorphismWithGivenObjects := rec(
   return_type := "morphism",
   dual_operation := "CocartesianPreCoComposeMorphismWithGivenObjects",
   dual_arguments_reversed := true,
-  # Test in CartesianClosedCategoriesTest
 ),
 
 CartesianPostComposeMorphism := rec(
@@ -167,7 +161,6 @@ CartesianPostComposeMorphismWithGivenObjects := rec(
   return_type := "morphism",
   dual_operation := "CocartesianPostCoComposeMorphismWithGivenObjects",
   dual_arguments_reversed := true,
-  # Test in CartesianClosedCategoriesTest
 ),
 
 CartesianDualOnObjects := rec(
@@ -197,7 +190,6 @@ CartesianDualOnMorphismsWithGivenCartesianDuals := rec(
   return_type := "morphism",
   dual_operation := "CocartesianDualOnMorphismsWithGivenCocartesianDuals",
   dual_arguments_reversed := true,
-  # Test in CartesianClosedCategoriesTest
 ),
 
 CartesianEvaluationForCartesianDual := rec(
@@ -219,7 +211,6 @@ CartesianEvaluationForCartesianDualWithGivenDirectProduct := rec(
   return_type := "morphism",
   dual_operation := "CocartesianEvaluationForCocartesianDualWithGivenCoproduct",
   dual_arguments_reversed := true,
-  # Test in CartesianClosedCategoriesTest
 ),
 
 MorphismToCartesianBidual := rec(
@@ -240,7 +231,6 @@ MorphismToCartesianBidualWithGivenCartesianBidual := rec(
   return_type := "morphism",
   dual_operation := "MorphismFromCocartesianBidualWithGivenCocartesianBidual",
   dual_arguments_reversed := false,
-  # Test in CartesianClosedCategoriesTest
 ),
 
 DirectProductExponentialCompatibilityMorphism := rec(
@@ -268,7 +258,6 @@ DirectProductExponentialCompatibilityMorphismWithGivenObjects := rec(
   dual_preprocessor_func :=
     { cat, s, list, r } -> NTuple( 4, Opposite( cat ), Opposite( r ), [ Opposite( list[2] ), Opposite( list[4] ), Opposite( list[1] ), Opposite( list[3] ) ], Opposite( s ) ),
   dual_arguments_reversed := false,
-  # Test in CartesianClosedCategoriesTest
 ),
 
 DirectProductCartesianDualityCompatibilityMorphism := rec(
@@ -292,7 +281,6 @@ DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects := rec(
   dual_operation := "CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects",
   dual_preprocessor_func := { cat, s, a, b, r } -> NTuple( 5, Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( s ) ),
   dual_arguments_reversed := false,
-  # Test in CartesianClosedCategoriesTest
 ),
 
 MorphismFromDirectProductToExponential := rec(
@@ -315,7 +303,6 @@ MorphismFromDirectProductToExponentialWithGivenObjects := rec(
   return_type := "morphism",
   dual_operation := "MorphismFromCoexponentialToCoproductWithGivenObjects",
   dual_arguments_reversed := true,
-  # Test in CartesianClosedCategoriesTest
 ),
 
 IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject := rec(
@@ -387,7 +374,6 @@ IsomorphismFromObjectToExponentialWithGivenExponential := rec(
   return_type := "morphism",
   dual_operation := "IsomorphismFromCoexponentialToObjectWithGivenCoexponential",
   dual_arguments_reversed := false,
-  # Test in CartesianClosedCategoriesTest
 ),
 
 IsomorphismFromExponentialToObject := rec(
@@ -408,7 +394,6 @@ IsomorphismFromExponentialToObjectWithGivenExponential := rec(
   return_type := "morphism",
   dual_operation := "IsomorphismFromObjectToCoexponentialWithGivenCoexponential",
   dual_arguments_reversed := false,
-  # Test in CartesianClosedCategoriesTest
 ),
 
 ) );
