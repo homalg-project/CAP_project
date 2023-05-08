@@ -24,8 +24,7 @@ CocartesianBraidingWithGivenCoproducts := rec(
   io_type := [ [ "s", "a", "b", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "CartesianBraidingInverseWithGivenDirectProducts",
-  dual_preprocessor_func := { cat, s, a, b, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( s ) ],
-  dual_arguments_reversed := false,
+  dual_with_given_objects_reversed := true,
 ),
 
 CocartesianBraidingInverse := rec(
@@ -46,8 +45,7 @@ CocartesianBraidingInverseWithGivenCoproducts := rec(
   io_type := [ [ "s", "a", "b", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "CartesianBraidingWithGivenDirectProducts",
-  dual_preprocessor_func := { cat, s, a, b, r } -> [ Opposite( cat ), Opposite( s ), Opposite( a ), Opposite( b ), Opposite( r ) ],
-  dual_arguments_reversed := false,
+  dual_with_given_objects_reversed := true,
 ),
 
 ) );

@@ -28,7 +28,6 @@ TensorProductOnMorphismsWithGivenTensorProducts := rec(
   io_type := [ [ "s", "alpha", "beta", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "TensorProductOnMorphismsWithGivenTensorProducts",
-  dual_arguments_reversed := false,
   dual_with_given_objects_reversed := true,
   compatible_with_congruence_of_morphisms := true,
 ),
@@ -52,9 +51,7 @@ AssociatorRightToLeftWithGivenTensorProducts := rec(
   io_type := [ [ "s", "a", "b", "c", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "AssociatorLeftToRightWithGivenTensorProducts",
-  dual_preprocessor_func :=
-    { cat, s, a, b, c, r } -> NTuple( 6, Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( c ), Opposite( s ) ),
-  dual_arguments_reversed := false,
+  dual_with_given_objects_reversed := true,
 ),
 
 AssociatorLeftToRight := rec(
@@ -76,8 +73,7 @@ AssociatorLeftToRightWithGivenTensorProducts := rec(
   io_type := [ [ "s", "a", "b", "c", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "AssociatorRightToLeftWithGivenTensorProducts",
-  dual_preprocessor_func := { cat, s, a, b, c, r } -> NTuple( 6, Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( c ), Opposite( s ) ),
-  dual_arguments_reversed := false,
+  dual_with_given_objects_reversed := true,
 ),
 
 LeftUnitor := rec(

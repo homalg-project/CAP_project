@@ -62,7 +62,7 @@ end
 ########
 function ( cat_1, s_1, a_1, b_1, r_1 )
     local deduped_1_1, hoisted_2_1, deduped_3_1;
-    deduped_3_1 := RankOfObject( s_1 );
+    deduped_3_1 := RankOfObject( r_1 );
     hoisted_2_1 := RankOfObject( a_1 );
     deduped_1_1 := RankOfObject( b_1 );
     return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_3_1 ], function ( i_2 )

@@ -28,8 +28,7 @@ LeftCocartesianCodistributivityExpandingWithGivenObjects := rec(
   io_type := [ [ "s", "a", "L", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "LeftCartesianDistributivityFactoringWithGivenObjects",
-  dual_preprocessor_func := { cat, s, a, L, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), List( L, Opposite ), Opposite( s ) ],
-  dual_arguments_reversed := false,
+  dual_with_given_objects_reversed := true,
   # Test in CodistributiveCocartesianCategoriesTest
 ),
 
@@ -52,8 +51,7 @@ LeftCocartesianCodistributivityFactoringWithGivenObjects := rec(
   io_type := [ [ "s", "a", "L", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "LeftCartesianDistributivityExpandingWithGivenObjects",
-  dual_preprocessor_func := { cat, s, a, L, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), List( L, Opposite ), Opposite( s ) ],
-  dual_arguments_reversed := false,
+  dual_with_given_objects_reversed := true,
   # Test in CodistributiveCocartesianCategoriesTest
 ),
 
@@ -76,8 +74,7 @@ RightCocartesianCodistributivityExpandingWithGivenObjects := rec(
   io_type := [ [ "s", "L", "a", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "RightCartesianDistributivityFactoringWithGivenObjects",
-  dual_preprocessor_func := { cat, s, L, a, r } -> [ Opposite( cat ), Opposite( r ), List( L, Opposite ), Opposite( a ), Opposite( s ) ],
-  dual_arguments_reversed := false,
+  dual_with_given_objects_reversed := true,
   # Test in CodistributiveCocartesianCategoriesTest
 ),
 
@@ -100,8 +97,7 @@ RightCocartesianCodistributivityFactoringWithGivenObjects := rec(
   io_type := [ [ "s", "L", "a", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "RightCartesianDistributivityExpandingWithGivenObjects",
-  dual_preprocessor_func := { cat, s, L, a, r } -> [ Opposite( cat ), Opposite( r ), List( L, Opposite ), Opposite( a ), Opposite( s ) ],
-  dual_arguments_reversed := false,
+  dual_with_given_objects_reversed := true,
   # Test in CodistributiveCocartesianCategoriesTest
 ),
 
