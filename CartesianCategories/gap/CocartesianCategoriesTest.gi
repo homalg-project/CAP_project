@@ -32,15 +32,15 @@ InstallGlobalFunction( "CocartesianCategoriesTest",
               
               associator_left_to_right_abc, associator_left_to_right_abc_op, associator_right_to_left_abc, associator_right_to_left_abc_op,
               associator_left_to_right_cba, associator_left_to_right_cba_op, associator_right_to_left_cba, associator_right_to_left_cba_op;
-
+        
         opposite := Opposite( cat );
         
-        a_op := Opposite( a );
-        b_op := Opposite( b );
-        c_op := Opposite( c );
+        a_op := Opposite( opposite, a );
+        b_op := Opposite( opposite, b );
+        c_op := Opposite( opposite, c );
         
-        alpha_op := Opposite( alpha );
-        beta_op := Opposite( beta );
+        alpha_op := Opposite( opposite, alpha );
+        beta_op := Opposite( opposite, beta );
         
         verbose := ValueOption( "verbose" ) = true;
         
@@ -59,8 +59,8 @@ InstallGlobalFunction( "CocartesianCategoriesTest",
             alpha_tensor_beta_op := DirectProductOnMorphisms( opposite, alpha_op, beta_op );
             beta_tensor_alpha_op := DirectProductOnMorphisms( opposite, beta_op, alpha_op );
             
-            Assert( 0, IsCongruentForMorphisms( alpha_tensor_beta_op, Opposite( alpha_tensor_beta ) ) );
-            Assert( 0, IsCongruentForMorphisms( beta_tensor_alpha_op, Opposite( beta_tensor_alpha ) ) );
+            Assert( 0, IsCongruentForMorphisms( alpha_tensor_beta_op, Opposite( opposite, alpha_tensor_beta ) ) );
+            Assert( 0, IsCongruentForMorphisms( beta_tensor_alpha_op, Opposite( opposite, beta_tensor_alpha ) ) );
             
             # Opposite must be self-inverse
             
@@ -84,8 +84,8 @@ InstallGlobalFunction( "CocartesianCategoriesTest",
             left_unitor_inverse_a_op := CartesianLeftUnitorInverse( opposite, a_op );
             left_unitor_inverse_b_op := CartesianLeftUnitorInverse( opposite, b_op );
             
-            Assert( 0, IsCongruentForMorphisms( left_unitor_inverse_a_op, Opposite( left_unitor_a ) ) );
-            Assert( 0, IsCongruentForMorphisms( left_unitor_inverse_b_op, Opposite( left_unitor_b ) ) );
+            Assert( 0, IsCongruentForMorphisms( left_unitor_inverse_a_op, Opposite( opposite, left_unitor_a ) ) );
+            Assert( 0, IsCongruentForMorphisms( left_unitor_inverse_b_op, Opposite( opposite, left_unitor_b ) ) );
             
         fi;
         
@@ -104,8 +104,8 @@ InstallGlobalFunction( "CocartesianCategoriesTest",
             right_unitor_inverse_a_op := CartesianRightUnitorInverse( opposite, a_op );
             right_unitor_inverse_b_op := CartesianRightUnitorInverse( opposite, b_op );
             
-            Assert( 0, IsCongruentForMorphisms( right_unitor_inverse_a_op, Opposite( right_unitor_a ) ) );
-            Assert( 0, IsCongruentForMorphisms( right_unitor_inverse_b_op, Opposite( right_unitor_b ) ) );
+            Assert( 0, IsCongruentForMorphisms( right_unitor_inverse_a_op, Opposite( opposite, right_unitor_a ) ) );
+            Assert( 0, IsCongruentForMorphisms( right_unitor_inverse_b_op, Opposite( opposite, right_unitor_b ) ) );
             
         fi;
         
@@ -124,8 +124,8 @@ InstallGlobalFunction( "CocartesianCategoriesTest",
             left_unitor_a_op := CartesianLeftUnitor( opposite, a_op );
             left_unitor_b_op := CartesianLeftUnitor( opposite, b_op );
             
-            Assert( 0, IsCongruentForMorphisms( left_unitor_a_op, Opposite( left_unitor_inverse_a ) ) );
-            Assert( 0, IsCongruentForMorphisms( left_unitor_b_op, Opposite( left_unitor_inverse_b ) ) );
+            Assert( 0, IsCongruentForMorphisms( left_unitor_a_op, Opposite( opposite, left_unitor_inverse_a ) ) );
+            Assert( 0, IsCongruentForMorphisms( left_unitor_b_op, Opposite( opposite, left_unitor_inverse_b ) ) );
             
         fi;
         
@@ -144,8 +144,8 @@ InstallGlobalFunction( "CocartesianCategoriesTest",
             right_unitor_a_op := CartesianRightUnitor( opposite, a_op );
             right_unitor_b_op := CartesianRightUnitor( opposite, b_op );
             
-            Assert( 0, IsCongruentForMorphisms( right_unitor_a_op, Opposite( right_unitor_inverse_a ) ) );
-            Assert( 0, IsCongruentForMorphisms( right_unitor_b_op, Opposite( right_unitor_inverse_b ) ) );
+            Assert( 0, IsCongruentForMorphisms( right_unitor_a_op, Opposite( opposite, right_unitor_inverse_a ) ) );
+            Assert( 0, IsCongruentForMorphisms( right_unitor_b_op, Opposite( opposite, right_unitor_inverse_b ) ) );
             
         fi;
         
@@ -164,8 +164,8 @@ InstallGlobalFunction( "CocartesianCategoriesTest",
             associator_right_to_left_abc_op := CartesianAssociatorRightToLeft( opposite, a_op, b_op, c_op );
             associator_right_to_left_cba_op := CartesianAssociatorRightToLeft( opposite, c_op, b_op, a_op );
             
-            Assert( 0, IsCongruentForMorphisms( associator_right_to_left_abc_op, Opposite( associator_left_to_right_abc ) ) );
-            Assert( 0, IsCongruentForMorphisms( associator_right_to_left_cba_op, Opposite( associator_left_to_right_cba ) ) );
+            Assert( 0, IsCongruentForMorphisms( associator_right_to_left_abc_op, Opposite( opposite, associator_left_to_right_abc ) ) );
+            Assert( 0, IsCongruentForMorphisms( associator_right_to_left_cba_op, Opposite( opposite, associator_left_to_right_cba ) ) );
             
         fi;
         
@@ -184,8 +184,8 @@ InstallGlobalFunction( "CocartesianCategoriesTest",
             associator_left_to_right_abc_op := CartesianAssociatorLeftToRight( opposite, a_op, b_op, c_op );
             associator_left_to_right_cba_op := CartesianAssociatorLeftToRight( opposite, c_op, b_op, a_op );
             
-            Assert( 0, IsCongruentForMorphisms( associator_left_to_right_abc_op, Opposite( associator_right_to_left_abc ) ) );
-            Assert( 0, IsCongruentForMorphisms( associator_left_to_right_cba_op, Opposite( associator_right_to_left_cba ) ) );
+            Assert( 0, IsCongruentForMorphisms( associator_left_to_right_abc_op, Opposite( opposite, associator_right_to_left_abc ) ) );
+            Assert( 0, IsCongruentForMorphisms( associator_left_to_right_cba_op, Opposite( opposite, associator_right_to_left_cba ) ) );
             
         fi;
 

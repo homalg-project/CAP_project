@@ -31,7 +31,6 @@ TensorProductOnMorphismsWithGivenTensorProducts := rec(
   dual_arguments_reversed := false,
   dual_with_given_objects_reversed := true,
   compatible_with_congruence_of_morphisms := true,
-  # Test in MonoidalCategoriesTest
 ),
 
 AssociatorRightToLeft := rec(
@@ -56,7 +55,6 @@ AssociatorRightToLeftWithGivenTensorProducts := rec(
   dual_preprocessor_func :=
     { cat, s, a, b, c, r } -> NTuple( 6, Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( c ), Opposite( s ) ),
   dual_arguments_reversed := false,
-  # Test in MonoidalCategoriesTest
 ),
 
 AssociatorLeftToRight := rec(
@@ -80,7 +78,6 @@ AssociatorLeftToRightWithGivenTensorProducts := rec(
   dual_operation := "AssociatorRightToLeftWithGivenTensorProducts",
   dual_preprocessor_func := { cat, s, a, b, c, r } -> NTuple( 6, Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( c ), Opposite( s ) ),
   dual_arguments_reversed := false,
-  # Test in MonoidalCategoriesTest
 ),
 
 LeftUnitor := rec(
@@ -101,7 +98,6 @@ LeftUnitorWithGivenTensorProduct := rec(
   return_type := "morphism",
   dual_operation := "LeftUnitorInverseWithGivenTensorProduct",
   dual_arguments_reversed := false,
-  # Test in MonoidalCategoriesTest
 ),
 
 LeftUnitorInverse := rec(
@@ -122,7 +118,6 @@ LeftUnitorInverseWithGivenTensorProduct := rec(
   return_type := "morphism",
   dual_operation := "LeftUnitorWithGivenTensorProduct",
   dual_arguments_reversed := false,
-  # Test in MonoidalCategoriesTest
 ),
 
 RightUnitor := rec(
@@ -143,7 +138,6 @@ RightUnitorWithGivenTensorProduct := rec(
   return_type := "morphism",
   dual_operation := "RightUnitorInverseWithGivenTensorProduct",
   dual_arguments_reversed := false,
-  # Test in MonoidalCategoriesTest
 ),
 
 RightUnitorInverse := rec(
@@ -164,7 +158,6 @@ RightUnitorInverseWithGivenTensorProduct := rec(
   return_type := "morphism",
   dual_operation := "RightUnitorWithGivenTensorProduct",
   dual_arguments_reversed := false,
-  # Test in MonoidalCategoriesTest
 ),
 
 ) );

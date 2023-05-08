@@ -35,14 +35,14 @@ InstallGlobalFunction( "RigidSymmetricCoclosedMonoidalCategoriesTest",
               morphism_to_cobidual_a, morphism_from_bidual_a_op,
               morphism_to_cobidual_b, morphism_from_bidual_b_op;
               
-        opposite := Opposite( cat );
+        opposite := Opposite( cat, "Opposite" );
         
-        a_op := Opposite( a );
-        b_op := Opposite( b );
-        c_op := Opposite( c );
-        d_op := Opposite( d );
+        a_op := Opposite( opposite, a );
+        b_op := Opposite( opposite, b );
+        c_op := Opposite( opposite, c );
+        d_op := Opposite( opposite, d );
         
-        alpha_op := Opposite( alpha );
+        alpha_op := Opposite( opposite, alpha );
         
         verbose := ValueOption( "verbose" ) = true;
         
@@ -61,8 +61,8 @@ InstallGlobalFunction( "RigidSymmetricCoclosedMonoidalCategoriesTest",
             isomorphism_from_hom_to_tensor_ab_op := IsomorphismFromInternalHomToTensorProductWithDualObject( a_op, b_op );
             isomorphism_from_hom_to_tensor_ba_op := IsomorphismFromInternalHomToTensorProductWithDualObject( b_op, a_op );
             
-            Assert( 0, IsCongruentForMorphisms( isomorphism_from_hom_to_tensor_ab_op, Opposite( isomorphism_from_tensor_to_cohom_ab ) ) );
-            Assert( 0, IsCongruentForMorphisms( isomorphism_from_hom_to_tensor_ba_op, Opposite( isomorphism_from_tensor_to_cohom_ba ) ) );
+            Assert( 0, IsCongruentForMorphisms( isomorphism_from_hom_to_tensor_ab_op, Opposite( opposite, isomorphism_from_tensor_to_cohom_ab ) ) );
+            Assert( 0, IsCongruentForMorphisms( isomorphism_from_hom_to_tensor_ba_op, Opposite( opposite, isomorphism_from_tensor_to_cohom_ba ) ) );
             
         fi;
         
@@ -81,8 +81,8 @@ InstallGlobalFunction( "RigidSymmetricCoclosedMonoidalCategoriesTest",
             isomorphism_from_tensor_to_hom_ab_op := IsomorphismFromTensorProductWithDualObjectToInternalHom( a_op, b_op );
             isomorphism_from_tensor_to_hom_ba_op := IsomorphismFromTensorProductWithDualObjectToInternalHom( b_op, a_op );
             
-            Assert( 0, IsCongruentForMorphisms( isomorphism_from_tensor_to_hom_ab_op, Opposite( isomorphism_from_cohom_to_tensor_ba ) ) );
-            Assert( 0, IsCongruentForMorphisms( isomorphism_from_tensor_to_hom_ba_op, Opposite( isomorphism_from_cohom_to_tensor_ab ) ) );
+            Assert( 0, IsCongruentForMorphisms( isomorphism_from_tensor_to_hom_ab_op, Opposite( opposite, isomorphism_from_cohom_to_tensor_ba ) ) );
+            Assert( 0, IsCongruentForMorphisms( isomorphism_from_tensor_to_hom_ba_op, Opposite( opposite, isomorphism_from_cohom_to_tensor_ab ) ) );
             
         fi;
         
@@ -101,8 +101,8 @@ InstallGlobalFunction( "RigidSymmetricCoclosedMonoidalCategoriesTest",
             morphism_from_hom_to_tensor_product_ab_op := MorphismFromInternalHomToTensorProduct( a_op, b_op );
             morphism_from_hom_to_tensor_product_ba_op := MorphismFromInternalHomToTensorProduct( b_op, a_op );
             
-            Assert( 0, IsCongruentForMorphisms( morphism_from_hom_to_tensor_product_ab_op, Opposite( morphism_from_tensor_product_to_cohom_ab ) ) );
-            Assert( 0, IsCongruentForMorphisms( morphism_from_hom_to_tensor_product_ba_op, Opposite( morphism_from_tensor_product_to_cohom_ba ) ) );
+            Assert( 0, IsCongruentForMorphisms( morphism_from_hom_to_tensor_product_ab_op, Opposite( opposite, morphism_from_tensor_product_to_cohom_ab ) ) );
+            Assert( 0, IsCongruentForMorphisms( morphism_from_hom_to_tensor_product_ba_op, Opposite( opposite, morphism_from_tensor_product_to_cohom_ba ) ) );
             
         fi;
         
@@ -128,10 +128,10 @@ InstallGlobalFunction( "RigidSymmetricCoclosedMonoidalCategoriesTest",
             tensor_to_hom_compatibility_inverse_cadb_op := TensorProductInternalHomCompatibilityMorphismInverse( [ c_op, a_op, d_op, b_op ] );
             
             # Hom( a ⊗ c, b ⊗ d ) → Hom( a, b ) ⊗ Hom( c, d )  ==  op( Cohom( b, a ) ⊗ Cohom( d, c ) → Cohom( b ⊗ d, a ⊗ c ) )
-            Assert( 0, IsCongruentForMorphisms( tensor_to_hom_compatibility_inverse_abcd_op, Opposite( cohom_to_tensor_compatibility_inverse_bdac ) ) );
+            Assert( 0, IsCongruentForMorphisms( tensor_to_hom_compatibility_inverse_abcd_op, Opposite( opposite, cohom_to_tensor_compatibility_inverse_bdac ) ) );
             
             # Hom( c ⊗ d, a ⊗ b ) → Hom( c, a ) ⊗ Hom( d, b )  ==  op( Cohom( a, c ) ⊗ Cohom( b, d ) → Cohom( a ⊗ b, c ⊗ d ) )
-            Assert( 0, IsCongruentForMorphisms( tensor_to_hom_compatibility_inverse_cadb_op, Opposite( cohom_to_tensor_compatibility_inverse_abcd ) ) );
+            Assert( 0, IsCongruentForMorphisms( tensor_to_hom_compatibility_inverse_cadb_op, Opposite( opposite, cohom_to_tensor_compatibility_inverse_abcd ) ) );
             
         fi;
         
@@ -150,8 +150,8 @@ InstallGlobalFunction( "RigidSymmetricCoclosedMonoidalCategoriesTest",
             coev_for_dual_a_op := CoevaluationForDual( a_op );
             coev_for_dual_b_op := CoevaluationForDual( b_op );
             
-            Assert( 0, IsCongruentForMorphisms( coev_for_dual_a_op, Opposite( cocl_coev_for_codual_a ) ) );
-            Assert( 0, IsCongruentForMorphisms( coev_for_dual_b_op, Opposite( cocl_coev_for_codual_b ) ) );
+            Assert( 0, IsCongruentForMorphisms( coev_for_dual_a_op, Opposite( opposite, cocl_coev_for_codual_a ) ) );
+            Assert( 0, IsCongruentForMorphisms( coev_for_dual_b_op, Opposite( opposite, cocl_coev_for_codual_b ) ) );
             
         fi;
         
@@ -168,7 +168,7 @@ InstallGlobalFunction( "RigidSymmetricCoclosedMonoidalCategoriesTest",
             
             trace_alpha_op := TraceMap( alpha_op );
             
-            Assert( 0, IsCongruentForMorphisms( trace_alpha_op, Opposite( cotrace_alpha ) ) );
+            Assert( 0, IsCongruentForMorphisms( trace_alpha_op, Opposite( opposite, cotrace_alpha ) ) );
             
         fi;
         
@@ -187,8 +187,8 @@ InstallGlobalFunction( "RigidSymmetricCoclosedMonoidalCategoriesTest",
             rank_morphism_a_op := RankMorphism( a_op );
             rank_morphism_b_op := RankMorphism( b_op );
             
-            Assert( 0, IsCongruentForMorphisms( rank_morphism_a_op, Opposite( corank_morphism_a ) ) );
-            Assert( 0, IsCongruentForMorphisms( rank_morphism_b_op, Opposite( corank_morphism_b ) ) );
+            Assert( 0, IsCongruentForMorphisms( rank_morphism_a_op, Opposite( opposite, corank_morphism_a ) ) );
+            Assert( 0, IsCongruentForMorphisms( rank_morphism_b_op, Opposite( opposite, corank_morphism_b ) ) );
             
         fi;
         
@@ -207,8 +207,8 @@ InstallGlobalFunction( "RigidSymmetricCoclosedMonoidalCategoriesTest",
             morphism_from_bidual_a_op := MorphismFromBidual( a_op );
             morphism_from_bidual_b_op := MorphismFromBidual( b_op );
             
-            Assert( 0, IsCongruentForMorphisms( morphism_from_bidual_a_op, Opposite( morphism_to_cobidual_a ) ) );
-            Assert( 0, IsCongruentForMorphisms( morphism_from_bidual_b_op, Opposite( morphism_to_cobidual_b ) ) );
+            Assert( 0, IsCongruentForMorphisms( morphism_from_bidual_a_op, Opposite( opposite, morphism_to_cobidual_a ) ) );
+            Assert( 0, IsCongruentForMorphisms( morphism_from_bidual_b_op, Opposite( opposite, morphism_to_cobidual_b ) ) );
             
         fi;
         

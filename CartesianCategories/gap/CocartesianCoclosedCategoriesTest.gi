@@ -78,16 +78,15 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
               isomorphism_from_a_to_cohom, isomorphism_from_coexp_to_a, isomorphism_from_a_to_exp_op, isomorphism_from_exp_to_a_op,
               isomorphism_from_b_to_cohom, isomorphism_from_coexp_to_b, isomorphism_from_b_to_exp_op, isomorphism_from_exp_to_b_op;
         
+        opposite := Opposite( cat, "Opposite" );
         
-        opposite := Opposite( cat );
+        a_op := Opposite( opposite, a );
+        b_op := Opposite( opposite, b );
+        c_op := Opposite( opposite, c );
+        d_op := Opposite( opposite, d );
         
-        a_op := Opposite( a );
-        b_op := Opposite( b );
-        c_op := Opposite( c );
-        d_op := Opposite( d );
-        
-        alpha_op := Opposite( alpha );
-        beta_op := Opposite( beta );
+        alpha_op := Opposite( opposite, alpha );
+        beta_op := Opposite( opposite, beta );
         
         verbose := ValueOption( "verbose" ) = true;
         
@@ -106,8 +105,8 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             exp_ab_op := ExponentialOnObjects( a_op, b_op );
             exp_ba_op := ExponentialOnObjects( b_op, a_op );
             
-            Assert( 0, IsEqualForObjects( exp_ab_op, Opposite( coexp_ba ) ) );
-            Assert( 0, IsEqualForObjects( exp_ba_op, Opposite( coexp_ab ) ) );
+            Assert( 0, IsEqualForObjects( exp_ab_op, Opposite( opposite, coexp_ba ) ) );
+            Assert( 0, IsEqualForObjects( exp_ba_op, Opposite( opposite, coexp_ab ) ) );
             
             # Opposite must be self-inverse
             
@@ -136,8 +135,8 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             exp_alpha_beta_op := ExponentialOnMorphisms( alpha_op, beta_op );
             exp_beta_alpha_op := ExponentialOnMorphisms( beta_op, alpha_op );
             
-            Assert( 0, IsCongruentForMorphisms( exp_alpha_beta_op, Opposite( coexp_beta_alpha ) ) );
-            Assert( 0, IsCongruentForMorphisms( exp_beta_alpha_op, Opposite( coexp_alpha_beta ) ) );
+            Assert( 0, IsCongruentForMorphisms( exp_alpha_beta_op, Opposite( opposite, coexp_beta_alpha ) ) );
+            Assert( 0, IsCongruentForMorphisms( exp_beta_alpha_op, Opposite( opposite, coexp_alpha_beta ) ) );
             
             # Opposite must be self-inverse
             
@@ -187,8 +186,8 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             coev_ab_op := CartesianCoevaluationMorphism( a_op, b_op );
             coev_ba_op := CartesianCoevaluationMorphism( b_op, a_op );
             
-            Assert( 0, IsCongruentForMorphisms( coev_ab_op, Opposite( coca_coev_ab ) ) );
-            Assert( 0, IsCongruentForMorphisms( coev_ba_op, Opposite( coca_coev_ba ) ) );
+            Assert( 0, IsCongruentForMorphisms( coev_ab_op, Opposite( opposite, coca_coev_ab ) ) );
+            Assert( 0, IsCongruentForMorphisms( coev_ba_op, Opposite( opposite, coca_coev_ba ) ) );
             
         fi;
         
@@ -237,10 +236,10 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             tensor_to_exp_adjunction_on_beta_tensor_alpha_op := DirectProductToExponentialAdjunctionMap( d_op, b_op, beta_tensor_alpha_op );
             
             # Coexp( b ⊔ d, c ) → a  ==  op( a → Exp( c, b ⊔ d ) )
-            Assert( 0, IsCongruentForMorphisms( tensor_to_exp_adjunction_on_alpha_tensor_beta_op, Opposite( tensor_to_coexp_adjunction_on_alpha_tensor_beta ) ) );
+            Assert( 0, IsCongruentForMorphisms( tensor_to_exp_adjunction_on_alpha_tensor_beta_op, Opposite( opposite, tensor_to_coexp_adjunction_on_alpha_tensor_beta ) ) );
             
             # Coexp( d ⊔ b, a ) → c  ==  op( c → Exp( a, d ⊔ b ) )
-            Assert( 0, IsCongruentForMorphisms( tensor_to_exp_adjunction_on_beta_tensor_alpha_op, Opposite( tensor_to_coexp_adjunction_on_beta_tensor_alpha ) ) );
+            Assert( 0, IsCongruentForMorphisms( tensor_to_exp_adjunction_on_beta_tensor_alpha_op, Opposite( opposite, tensor_to_coexp_adjunction_on_beta_tensor_alpha ) ) );
             
         fi;
         
@@ -284,10 +283,10 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             exp_to_tensor_adjunction_on_exp_beta_alpha_op := ExponentialToDirectProductAdjunctionMap( d_op, a_op, exp_beta_alpha_op );
             
             # b → Coexp( a, d ) ⊔ c  ==  op( Exp( d, a ) ⊔ c → b )
-            Assert( 0, IsCongruentForMorphisms( exp_to_tensor_adjunction_on_exp_alpha_beta_op, Opposite( coexp_to_tensor_adjunction_on_coexp_beta_alpha ) ) );
+            Assert( 0, IsCongruentForMorphisms( exp_to_tensor_adjunction_on_exp_alpha_beta_op, Opposite( opposite, coexp_to_tensor_adjunction_on_coexp_beta_alpha ) ) );
             
             # d → Coexp( c, b ) ⊔ a  ==  op( Exp( b, c ) ⊔ a → d )
-            Assert( 0, IsCongruentForMorphisms( exp_to_tensor_adjunction_on_exp_beta_alpha_op, Opposite( coexp_to_tensor_adjunction_on_coexp_alpha_beta ) ) );
+            Assert( 0, IsCongruentForMorphisms( exp_to_tensor_adjunction_on_exp_beta_alpha_op, Opposite( opposite, coexp_to_tensor_adjunction_on_coexp_alpha_beta ) ) );
             
         fi;
         
@@ -306,8 +305,8 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             precompose_abc_op := CartesianPreComposeMorphism( a_op, b_op, c_op );
             precompose_cba_op := CartesianPreComposeMorphism( c_op, b_op, a_op );
             
-            Assert( 0, IsCongruentForMorphisms( precompose_abc_op, Opposite( precocompose_cba ) ) );
-            Assert( 0, IsCongruentForMorphisms( precompose_cba_op, Opposite( precocompose_abc ) ) );
+            Assert( 0, IsCongruentForMorphisms( precompose_abc_op, Opposite( opposite, precocompose_cba ) ) );
+            Assert( 0, IsCongruentForMorphisms( precompose_cba_op, Opposite( opposite, precocompose_abc ) ) );
         
         fi;
         
@@ -326,8 +325,8 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             postcompose_abc_op := CartesianPostComposeMorphism( a_op, b_op, c_op );
             postcompose_cba_op := CartesianPostComposeMorphism( c_op, b_op, a_op );
             
-            Assert( 0, IsCongruentForMorphisms( postcompose_abc_op, Opposite( postcocompose_cba ) ) );
-            Assert( 0, IsCongruentForMorphisms( postcompose_cba_op, Opposite( postcocompose_abc ) ) );
+            Assert( 0, IsCongruentForMorphisms( postcompose_abc_op, Opposite( opposite, postcocompose_cba ) ) );
+            Assert( 0, IsCongruentForMorphisms( postcompose_cba_op, Opposite( opposite, postcocompose_abc ) ) );
             
         fi;
         
@@ -346,8 +345,8 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             a_dual_op := CartesianDualOnObjects( a_op );
             b_dual_op := CartesianDualOnObjects( b_op );
             
-            Assert( 0, IsEqualForObjects( a_dual_op, Opposite( a_codual ) ) );
-            Assert( 0, IsEqualForObjects( b_dual_op, Opposite( b_codual ) ) );
+            Assert( 0, IsEqualForObjects( a_dual_op, Opposite( opposite, a_codual ) ) );
+            Assert( 0, IsEqualForObjects( b_dual_op, Opposite( opposite, b_codual ) ) );
             
         fi;
         
@@ -366,8 +365,8 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             dual_alpha_op := CartesianDualOnMorphisms( alpha_op );
             dual_beta_op := CartesianDualOnMorphisms( beta_op );
             
-            Assert( 0, IsCongruentForMorphisms( dual_alpha_op, Opposite( codual_alpha ) ) );
-            Assert( 0, IsCongruentForMorphisms( dual_beta_op, Opposite( codual_beta ) ) );
+            Assert( 0, IsCongruentForMorphisms( dual_alpha_op, Opposite( opposite, codual_alpha ) ) );
+            Assert( 0, IsCongruentForMorphisms( dual_beta_op, Opposite( opposite, codual_beta ) ) );
             
         fi;
         
@@ -386,8 +385,8 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             ev_for_dual_a_op := CartesianEvaluationForCartesianDual( a_op );
             ev_for_dual_b_op := CartesianEvaluationForCartesianDual( b_op );
             
-            Assert( 0, IsCongruentForMorphisms( ev_for_dual_a_op, Opposite( coca_ev_for_codual_a ) ) );
-            Assert( 0, IsCongruentForMorphisms( ev_for_dual_b_op, Opposite( coca_ev_for_codual_b ) ) );
+            Assert( 0, IsCongruentForMorphisms( ev_for_dual_a_op, Opposite( opposite, coca_ev_for_codual_a ) ) );
+            Assert( 0, IsCongruentForMorphisms( ev_for_dual_b_op, Opposite( opposite, coca_ev_for_codual_b ) ) );
             
         fi;
         
@@ -406,8 +405,8 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             morphism_to_bidual_a_op := MorphismToCartesianBidual( a_op );
             morphism_to_bidual_b_op := MorphismToCartesianBidual( b_op );
             
-            Assert( 0, IsCongruentForMorphisms( morphism_to_bidual_a_op, Opposite( morphism_from_cobidual_a ) ) );
-            Assert( 0, IsCongruentForMorphisms( morphism_to_bidual_b_op, Opposite( morphism_from_cobidual_b ) ) );
+            Assert( 0, IsCongruentForMorphisms( morphism_to_bidual_a_op, Opposite( opposite, morphism_from_cobidual_a ) ) );
+            Assert( 0, IsCongruentForMorphisms( morphism_to_bidual_b_op, Opposite( opposite, morphism_from_cobidual_b ) ) );
             
         fi;
         
@@ -433,10 +432,10 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             tensor_to_exp_compatibility_cadb_op := DirectProductExponentialCompatibilityMorphism( [ c_op, a_op, d_op, b_op ] );
             
             # Exp( a, b ) ⊔ Exp( c, d ) → Exp( a ⊔ c, b ⊔ d )  ==  op( Coexp( b ⊔ d, a ⊔ c ) → Coexp( b, a ) ⊔ Coexp( d, c ) )
-            Assert( 0, IsCongruentForMorphisms( tensor_to_exp_compatibility_abcd_op, Opposite( coexp_to_tensor_compatibility_bdac ) ) );
+            Assert( 0, IsCongruentForMorphisms( tensor_to_exp_compatibility_abcd_op, Opposite( opposite, coexp_to_tensor_compatibility_bdac ) ) );
             
             # Exp( c, a ) ⊔ Exp( d, b ) → Exp( c ⊔ d, a ⊔ b )  ==  op( Coexp( a ⊔ b, c ⊔ d ) → Coexp( a, c ) ⊔ Coexp( b, d ) )
-            Assert( 0, IsCongruentForMorphisms( tensor_to_exp_compatibility_cadb_op, Opposite( coexp_to_tensor_compatibility_abcd ) ) );
+            Assert( 0, IsCongruentForMorphisms( tensor_to_exp_compatibility_cadb_op, Opposite( opposite, coexp_to_tensor_compatibility_abcd ) ) );
             
         fi;
         
@@ -462,10 +461,10 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             coproduct_duality_compatibility_ba_op := DirectProductCartesianDualityCompatibilityMorphism( b_op, a_op );
             
             # a^v ⊔ b^v → (a ⊔ b)^v  == op( (a ⊔ b)_v → a_v ⊔ b_v )
-            Assert( 0, IsCongruentForMorphisms( coproduct_duality_compatibility_ab_op, Opposite( coduality_coproduct_compatibility_ab ) ) );
+            Assert( 0, IsCongruentForMorphisms( coproduct_duality_compatibility_ab_op, Opposite( opposite, coduality_coproduct_compatibility_ab ) ) );
             
             # b^v ⊔ a^v → (b ⊔ a)^v  ==  op( (b ⊔ a)_v → b_v ⊔ a_v )
-            Assert( 0, IsCongruentForMorphisms( coproduct_duality_compatibility_ba_op, Opposite( coduality_coproduct_compatibility_ba ) ) );
+            Assert( 0, IsCongruentForMorphisms( coproduct_duality_compatibility_ba_op, Opposite( opposite, coduality_coproduct_compatibility_ba ) ) );
             
         fi;
         
@@ -484,8 +483,8 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             morphism_from_coproduct_to_exp_ab_op := MorphismFromDirectProductToExponential( a_op, b_op );
             morphism_from_coproduct_to_exp_ba_op := MorphismFromDirectProductToExponential( b_op, a_op );
             
-            Assert( 0, IsCongruentForMorphisms( morphism_from_coproduct_to_exp_ab_op, Opposite( morphism_from_coexp_to_coproduct_ba ) ) );
-            Assert( 0, IsCongruentForMorphisms( morphism_from_coproduct_to_exp_ba_op, Opposite( morphism_from_coexp_to_coproduct_ab ) ) );
+            Assert( 0, IsCongruentForMorphisms( morphism_from_coproduct_to_exp_ab_op, Opposite( opposite, morphism_from_coexp_to_coproduct_ba ) ) );
+            Assert( 0, IsCongruentForMorphisms( morphism_from_coproduct_to_exp_ba_op, Opposite( opposite, morphism_from_coexp_to_coproduct_ab ) ) );
             
         fi;
         
@@ -504,8 +503,8 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             isomorphism_from_dual_to_exp_a_op := IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject( a_op );
             isomorphism_from_dual_to_exp_b_op := IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject( b_op );
             
-            Assert( 0, IsCongruentForMorphisms( isomorphism_from_dual_to_exp_a_op, Opposite( isomorphism_from_coexp_to_codual_a ) ) );
-            Assert( 0, IsCongruentForMorphisms( isomorphism_from_dual_to_exp_b_op, Opposite( isomorphism_from_coexp_to_codual_b ) ) );
+            Assert( 0, IsCongruentForMorphisms( isomorphism_from_dual_to_exp_a_op, Opposite( opposite, isomorphism_from_coexp_to_codual_a ) ) );
+            Assert( 0, IsCongruentForMorphisms( isomorphism_from_dual_to_exp_b_op, Opposite( opposite, isomorphism_from_coexp_to_codual_b ) ) );
             
         fi;
         
@@ -524,8 +523,8 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             isomorphism_from_exp_to_dual_a_op := IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject( a_op );
             isomorphism_from_exp_to_dual_b_op := IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject( b_op );
             
-            Assert( 0, IsCongruentForMorphisms( isomorphism_from_exp_to_dual_a_op, Opposite( isomorphism_from_codual_to_coexp_a ) ) );
-            Assert( 0, IsCongruentForMorphisms( isomorphism_from_exp_to_dual_b_op, Opposite( isomorphism_from_codual_to_coexp_b ) ) );
+            Assert( 0, IsCongruentForMorphisms( isomorphism_from_exp_to_dual_a_op, Opposite( opposite, isomorphism_from_codual_to_coexp_a ) ) );
+            Assert( 0, IsCongruentForMorphisms( isomorphism_from_exp_to_dual_b_op, Opposite( opposite, isomorphism_from_codual_to_coexp_b ) ) );
             
         fi;
         
@@ -538,8 +537,8 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
                 
             fi;
             
-            gamma_op := Opposite( gamma );
-            delta_op := Opposite( delta );
+            gamma_op := Opposite( opposite, gamma );
+            delta_op := Opposite( opposite, delta );
             
             universal_property_of_codual_gamma := UniversalPropertyOfCocartesianDual( a, b, gamma );
             universal_property_of_codual_delta := UniversalPropertyOfCocartesianDual( c, d, delta );
@@ -547,8 +546,8 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             universal_property_of_dual_gamma_op := UniversalPropertyOfCartesianDual( a_op, b_op, gamma_op );
             universal_property_of_dual_delta_op := UniversalPropertyOfCartesianDual( c_op, d_op, delta_op );
             
-            Assert( 0, IsCongruentForMorphisms( universal_property_of_dual_gamma_op, Opposite( universal_property_of_codual_gamma ) ) );
-            Assert( 0, IsCongruentForMorphisms( universal_property_of_dual_delta_op, Opposite( universal_property_of_codual_delta ) ) );
+            Assert( 0, IsCongruentForMorphisms( universal_property_of_dual_gamma_op, Opposite( opposite, universal_property_of_codual_gamma ) ) );
+            Assert( 0, IsCongruentForMorphisms( universal_property_of_dual_delta_op, Opposite( opposite, universal_property_of_codual_delta ) ) );
             
         fi;
         
@@ -567,8 +566,8 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             lambda_intro_alpha_op := CartesianLambdaIntroduction( alpha_op );
             lambda_intro_beta_op := CartesianLambdaIntroduction( beta_op );
             
-            Assert( 0, IsCongruentForMorphisms( lambda_intro_alpha_op, Opposite( colambda_intro_alpha ) ) );
-            Assert( 0, IsCongruentForMorphisms( lambda_intro_beta_op, Opposite( colambda_intro_beta ) ) );
+            Assert( 0, IsCongruentForMorphisms( lambda_intro_alpha_op, Opposite( opposite, colambda_intro_alpha ) ) );
+            Assert( 0, IsCongruentForMorphisms( lambda_intro_beta_op, Opposite( opposite, colambda_intro_beta ) ) );
             
         fi;
         
@@ -581,8 +580,8 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
                 
             fi;
             
-            epsilon_op := Opposite( epsilon );
-            zeta_op := Opposite( zeta );
+            epsilon_op := Opposite( opposite, epsilon );
+            zeta_op := Opposite( opposite, zeta );
             
             colambda_elim_epsilon := CocartesianLambdaElimination( a, b, epsilon );
             colambda_elim_zeta := CocartesianLambdaElimination( c, d, zeta );
@@ -590,8 +589,8 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             lambda_elim_epsilon_op := CartesianLambdaElimination( b_op, a_op, epsilon_op );
             lambda_elim_zeta_op := CartesianLambdaElimination( d_op, c_op, zeta_op );
             
-            Assert( 0, IsCongruentForMorphisms( lambda_elim_epsilon_op, Opposite( colambda_elim_epsilon ) ) );
-            Assert( 0, IsCongruentForMorphisms( lambda_elim_zeta_op, Opposite( colambda_elim_zeta ) ) );
+            Assert( 0, IsCongruentForMorphisms( lambda_elim_epsilon_op, Opposite( opposite, colambda_elim_epsilon ) ) );
+            Assert( 0, IsCongruentForMorphisms( lambda_elim_zeta_op, Opposite( opposite, colambda_elim_zeta ) ) );
             
         fi;
         
@@ -610,8 +609,8 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             isomorphism_from_exp_to_a_op := IsomorphismFromExponentialToObject( a_op );
             isomorphism_from_exp_to_b_op := IsomorphismFromExponentialToObject( b_op );
             
-            Assert( 0, IsCongruentForMorphisms( isomorphism_from_exp_to_a_op, Opposite( isomorphism_from_a_to_cohom ) ) );
-            Assert( 0, IsCongruentForMorphisms( isomorphism_from_exp_to_b_op, Opposite( isomorphism_from_b_to_cohom ) ) );
+            Assert( 0, IsCongruentForMorphisms( isomorphism_from_exp_to_a_op, Opposite( opposite, isomorphism_from_a_to_cohom ) ) );
+            Assert( 0, IsCongruentForMorphisms( isomorphism_from_exp_to_b_op, Opposite( opposite, isomorphism_from_b_to_cohom ) ) );
             
         fi;
         
@@ -630,8 +629,8 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             isomorphism_from_a_to_exp_op := IsomorphismFromObjectToExponential( a_op );
             isomorphism_from_b_to_exp_op := IsomorphismFromObjectToExponential( b_op );
             
-            Assert( 0, IsCongruentForMorphisms( isomorphism_from_a_to_exp_op, Opposite( isomorphism_from_coexp_to_a ) ) );
-            Assert( 0, IsCongruentForMorphisms( isomorphism_from_b_to_exp_op, Opposite( isomorphism_from_coexp_to_b ) ) );
+            Assert( 0, IsCongruentForMorphisms( isomorphism_from_a_to_exp_op, Opposite( opposite, isomorphism_from_coexp_to_a ) ) );
+            Assert( 0, IsCongruentForMorphisms( isomorphism_from_b_to_exp_op, Opposite( opposite, isomorphism_from_coexp_to_b ) ) );
             
         fi;
         

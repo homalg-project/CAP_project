@@ -13,10 +13,10 @@ InstallGlobalFunction( "AdditiveMonoidalCategoriesTest",
               a_op, left_expanding_a_L, left_expanding_a_L_op, left_factoring_a_L, left_factoring_a_L_op, 
               L_op, right_expanding_L_a, right_expanding_L_a_op, right_factoring_L_a, right_factoring_L_a_op;
         
-        opposite := Opposite( cat );
+        opposite := Opposite( cat, "Opposite" );
         
-        a_op := Opposite( a );
-        L_op := List( L, l -> Opposite( l ) );
+        a_op := Opposite( opposite, a );
+        L_op := List( L, l -> Opposite( opposite, l ) );
         
         verbose := ValueOption( "verbose" ) = true;
         

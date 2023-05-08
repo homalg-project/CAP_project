@@ -16,10 +16,10 @@ InstallGlobalFunction( "BraidedCartesianCategoriesTest",
               a_op, braiding_a_b, braiding_a_b_op, braiding_inverse_a_b, braiding_inverse_a_b_op, 
               b_op, braiding_b_a, braiding_b_a_op, braiding_inverse_b_a, braiding_inverse_b_a_op;
         
-        opposite := Opposite( cat );
+        opposite := Opposite( cat, "Opposite" );
         
-        a_op := Opposite( a );
-        b_op := Opposite( b );
+        a_op := Opposite( opposite, a );
+        b_op := Opposite( opposite, b );
         
         verbose := ValueOption( "verbose" ) = true;
         
@@ -38,8 +38,8 @@ InstallGlobalFunction( "BraidedCartesianCategoriesTest",
             braiding_inverse_a_b_op := CocartesianBraidingInverse( opposite, a_op, b_op );
             braiding_inverse_b_a_op := CocartesianBraidingInverse( opposite, b_op, a_op );
             
-            Assert( 0, IsCongruentForMorphisms( braiding_inverse_a_b_op, Opposite( braiding_a_b ) ) );
-            Assert( 0, IsCongruentForMorphisms( braiding_inverse_b_a_op, Opposite( braiding_b_a ) ) );
+            Assert( 0, IsCongruentForMorphisms( braiding_inverse_a_b_op, Opposite( opposite, braiding_a_b ) ) );
+            Assert( 0, IsCongruentForMorphisms( braiding_inverse_b_a_op, Opposite( opposite, braiding_b_a ) ) );
             
         fi;
         
@@ -58,8 +58,8 @@ InstallGlobalFunction( "BraidedCartesianCategoriesTest",
             braiding_a_b_op := CocartesianBraiding( opposite, a_op, b_op );
             braiding_b_a_op := CocartesianBraiding( opposite, b_op, a_op );
             
-            Assert( 0, IsCongruentForMorphisms( braiding_a_b_op, Opposite( braiding_inverse_a_b ) ) );
-            Assert( 0, IsCongruentForMorphisms( braiding_b_a_op, Opposite( braiding_inverse_b_a ) ) );
+            Assert( 0, IsCongruentForMorphisms( braiding_a_b_op, Opposite( opposite, braiding_inverse_a_b ) ) );
+            Assert( 0, IsCongruentForMorphisms( braiding_b_a_op, Opposite( opposite, braiding_inverse_b_a ) ) );
             
         fi;
 
