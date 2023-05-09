@@ -389,3 +389,29 @@ InstallMethod( ReinterpretationFunctor,
     return F;
     
 end );
+
+##
+InstallOtherMethod( ModelingObject,
+        "for a CAP object",
+        [ IsCapCategoryObject ],
+        
+  function( obj )
+    
+    Display( "WARNING: calling `ModelingObject` without the category as first argument should only be done for debugging purposes." );
+    
+    return ModelingObject( CapCategory( obj ), obj );
+    
+end );
+
+##
+InstallOtherMethod( ModelingMorphism,
+        "for a CAP morphism",
+        [ IsCapCategoryMorphism ],
+        
+  function( mor )
+    
+    Display( "WARNING: calling `ModelingMorphism` without the category as first argument should only be done for debugging purposes." );
+    
+    return ModelingMorphism( CapCategory( mor ), mor );
+    
+end );
