@@ -25,7 +25,9 @@ ReadPackage( "CAP", "gap/UniversalObjects.gd" );
 
 ReadPackage( "CAP", "gap/InstallAdds.gd" );
 
+#= comment for Julia
 ReadPackage( "CAP", "gap/TheoremParser.gd" );
+# =#
 
 ReadPackage( "CAP", "gap/LogicForCAP.gd" );
 

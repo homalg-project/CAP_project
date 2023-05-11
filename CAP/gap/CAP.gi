@@ -841,7 +841,7 @@ InstallGlobalFunction( "DisplayTimingStatistics",
     
 end );
 
-if IsPackageMarkedForLoading( "Browse", ">=0" ) and IsBound( NCurses ) and IsBound( NCurses.BrowseDenseList ) then
+if IsPackageMarkedForLoading( "Browse", ">= 1.5" ) then
     
     InstallGlobalFunction( "BrowseTimingStatistics",
       function( category )
