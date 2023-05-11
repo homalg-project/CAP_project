@@ -99,7 +99,7 @@ Dependencies := rec(
   GAP := ">= 4.12.1",
   NeededOtherPackages := [ [ "ToolsForHomalg", ">= 2023.03-01" ],
   ],
-  SuggestedOtherPackages := [ [ "Browse", ">=0" ],
+  SuggestedOtherPackages := [ [ "Browse", ">= 1.5" ],
                               [ "CompilerForCAP", ">= 2021.12-05" ],
   ],
   ExternalConditions := []
