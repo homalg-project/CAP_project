@@ -294,8 +294,8 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACED_STRING_WITH_FILTER,
     elif IsSpecializationOfFilter( IsNTuple, data_type.filter ) then
         
         # `IsNTuple` deliberately does not imply `IsList` because we want to treat tuples and lists in different ways in CompilerForCAP.
-        # However, on the GAP level tuples are just lists.
-        return IsList;
+        # However, on the GAP level tuples are just dense lists.
+        return IsDenseList;
         
     elif IsBoundGlobal( "IsHomalgRingElement" ) and IsSpecializationOfFilter( ValueGlobal( "IsHomalgRingElement" ), data_type.filter ) then
         
@@ -438,11 +438,14 @@ InstallGlobalFunction( "CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER",
             
             for i in [ 1 .. Length( value ) ] do
                 
+                #= comment for Julia
+                # Julia does not have non-dense lists
                 if not IsBound( value[i] ) then
                     
                     CallFuncList( Error, Concatenation( [ "the ", i, "-th entry of " ], human_readable_identifier_list, [ " is not bound.", generic_help_string ] ) );
                     
                 fi;
+                # =#
                 
                 if i <= 4 then
                     
@@ -466,9 +469,9 @@ InstallGlobalFunction( "CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER",
           local i;
             
             # tuples are modeled as lists
-            if not IsList( value ) then
+            if not IsDenseList( value ) then
                 
-                CallFuncList( Error, Concatenation( human_readable_identifier_list, [ " does not lie in the expected filter IsList (implementation filter of IsNTuple).", generic_help_string ] ) );
+                CallFuncList( Error, Concatenation( human_readable_identifier_list, [ " does not lie in the expected filter IsDenseList (implementation filter of IsNTuple).", generic_help_string ] ) );
                 
             fi;
             
@@ -479,12 +482,6 @@ InstallGlobalFunction( "CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER",
             fi;
             
             for i in [ 1 .. Length( value ) ] do
-                
-                if not IsBound( value[i] ) then
-                    
-                    CallFuncList( Error, Concatenation( [ "the ", i, "-th entry of " ], human_readable_identifier_list, [ " is not bound.", generic_help_string ] ) );
-                    
-                fi;
                 
                 asserts_value_is_of_element_type[i]( value[i] );
                 
