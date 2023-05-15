@@ -57,7 +57,12 @@ function( name, target_op, used_op_names_with_multiples_and_category_getters, we
     
     if IsProperty( category_filter ) then
         
+        # for Julia
         wrapped_category_filter := cat -> Tester( category_filter )( cat ) and category_filter( cat );
+        
+        #= comment for Julia
+        wrapped_category_filter := Tester( category_filter ) and category_filter;
+        # =#
         
     else
         
