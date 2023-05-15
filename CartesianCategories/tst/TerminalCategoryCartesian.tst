@@ -8,8 +8,6 @@ gap> START_TEST( "TerminalCategoryCartesian" );
 #
 gap> LoadPackage( "CartesianCategories", false );
 true
-gap> LoadPackage( "MonoidalCategories", false );
-true
 
 #
 gap> T := TerminalCategoryWithMultipleObjects( );;
@@ -97,15 +95,15 @@ gap> c := "c" / T;;
 gap> d := "d" / T;;
 
 #
-gap> u := TensorUnit( T );;
+gap> u := TerminalObject( T );;
 
 #
-gap> a_product_b := TensorProduct( a, b );;
-gap> c_product_d := TensorProduct( c, d );;
+gap> a_product_b := DirectProduct( a, b );;
+gap> c_product_d := DirectProduct( c, d );;
 
 #
-gap> hom_ab := InternalHom( a, b );;
-gap> hom_cd := InternalHom( c, d );;
+gap> hom_ab := ExponentialOnObjects( a, b );;
+gap> hom_cd := ExponentialOnObjects( c, d );;
 
 #
 gap> alpha := MorphismConstructor( a, "f_ab", b );;
@@ -123,12 +121,12 @@ gap> CartesianClosedCategoriesTest( T, a, b, c, d, alpha, beta, gamma, delta, ep
 gap> z := ZeroObject( T );;
 
 #
-gap> z_product_a := TensorProduct( z, a );;
-gap> a_product_z := TensorProduct( a, z );;
+gap> z_product_a := DirectProduct( z, a );;
+gap> a_product_z := DirectProduct( a, z );;
 
 #
-gap> hom_za := InternalHom( z, a );;
-gap> hom_az := InternalHom( a, z );;
+gap> hom_za := ExponentialOnObjects( z, a );;
+gap> hom_az := ExponentialOnObjects( a, z );;
 
 #
 gap> alpha := MorphismConstructor( z, "f_za", a );;

@@ -8,8 +8,6 @@ gap> START_TEST( "TerminalCategoryCocartesian" );
 #
 gap> LoadPackage( "CartesianCategories", false );
 true
-gap> LoadPackage( "MonoidalCategories", false );
-true
 
 #
 gap> T := TerminalCategoryWithMultipleObjects( );;
@@ -97,15 +95,15 @@ gap> c := "c" / T;;
 gap> d := "d" / T;;
 
 #
-gap> u := TensorUnit( T );;
+gap> u := InitialObject( T );;
 
 #
-gap> a_product_b := TensorProduct( a, b );;
-gap> c_product_d := TensorProduct( c, d );;
+gap> a_product_b := Coproduct( a, b );;
+gap> c_product_d := Coproduct( c, d );;
 
 #
-gap> hom_ab := InternalHom( a, b );;
-gap> hom_cd := InternalHom( c, d );;
+gap> hom_ab := CoexponentialOnObjects( a, b );;
+gap> hom_cd := CoexponentialOnObjects( c, d );;
 
 #
 gap> alpha := MorphismConstructor( a, "f_ab", b );;
@@ -123,12 +121,12 @@ gap> CocartesianCoclosedCategoriesTest( T, a, b, c, d, alpha, beta, gamma, delta
 gap> z := ZeroObject( T );;
 
 #
-gap> z_product_a := TensorProduct( z, a );;
-gap> a_product_z := TensorProduct( a, z );;
+gap> z_product_a := Coproduct( z, a );;
+gap> a_product_z := Coproduct( a, z );;
 
 #
-gap> hom_za := InternalHom( z, a );;
-gap> hom_az := InternalHom( a, z );;
+gap> hom_za := CoexponentialOnObjects( z, a );;
+gap> hom_az := CoexponentialOnObjects( a, z );;
 
 #
 gap> alpha := MorphismConstructor( z, "f_za", a );;
