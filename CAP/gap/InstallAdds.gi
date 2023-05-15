@@ -202,35 +202,6 @@ InstallGlobalFunction( CapInternalInstallAdd,
             Error( "you must pass at least one function to the add method" );
         fi;
         
-        # prepare for the checks in Finalize
-        if not IsBound( category!.initially_known_categorical_properties ) then
-            
-            category!.initially_known_categorical_properties := ShallowCopy( ListKnownCategoricalProperties( category ) );
-            
-            InstallDerivationsUsingOperation( category!.derivations_weight_list, "none" );
-            
-        fi;
-        
-        if weight = -1 then
-            weight := 100;
-        fi;
-        
-        # If there already is a faster method: do nothing but display a warning because this should not happen usually.
-        if weight > CurrentOperationWeight( category!.derivations_weight_list, function_name ) then
-            
-            # * Not all derivations are properly dualized, so it can happen that a derivation for the dual of an operation is cheaper then the operation.
-            #   This would automatically be fixed by https://github.com/homalg-project/CAP_project/issues/1078.
-            # * There are some derivations of weight 1 for thin categories which are triggered immediately and which CategoryConstructor tries to overwrite with weight 100.
-            if not WasCreatedAsOppositeCategory( category ) and CurrentOperationWeight( category!.derivations_weight_list, function_name ) <> 1 then
-                
-                Print( "WARNING: Ignoring a function added for ", function_name, " with weight ", weight, " to \"", Name( category ), "\" because there already is a function installed with weight ", CurrentOperationWeight( category!.derivations_weight_list, function_name ), ".\n" );
-                
-            fi;
-            
-            return;
-            
-        fi;
-        
         is_derivation := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "IsDerivation", false );
         
         is_final_derivation := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "IsFinalDerivation", false );
@@ -252,6 +223,43 @@ InstallGlobalFunction( CapInternalInstallAdd,
             
         fi;
         
+        # prepare for the checks in Finalize
+        if not IsBound( category!.initially_known_categorical_properties ) then
+            
+            category!.initially_known_categorical_properties := ShallowCopy( ListKnownCategoricalProperties( category ) );
+            
+            InstallDerivationsUsingOperation( category!.derivations_weight_list, "none" );
+            
+        fi;
+        
+        if weight = -1 then
+            weight := 100;
+        fi;
+        
+        # If there already is a faster method: do nothing but display a warning because this should not happen usually.
+        if weight > CurrentOperationWeight( category!.derivations_weight_list, function_name ) then
+            
+            # * Not all derivations are properly dualized, so it can happen that a derivation for the dual of an operation is cheaper then the operation.
+            #   This would automatically be fixed by https://github.com/homalg-project/CAP_project/issues/1078.
+            # * There are some derivations of weight 1 for thin categories which are triggered immediately and which CategoryConstructor tries to overwrite with weight 100.
+            if not WasCreatedAsOppositeCategory( category ) and CurrentOperationWeight( category!.derivations_weight_list, function_name ) <> 1 then
+                
+                Print( "WARNING: Ignoring a function added for ", function_name, " with weight ", weight, " to \"", Name( category ), "\" because there already is a function installed with weight ", CurrentOperationWeight( category!.derivations_weight_list, function_name ), "." );
+                
+                if is_precompiled_derivation then
+                    
+                    Print( " Probably you have to rerun the precompilation to adjust the weights in the precompiled code." );
+                    
+                fi;
+                
+                Print( "\n" );
+                
+            fi;
+            
+            return;
+            
+        fi;
+        
         # Display a warning when overwriting primitive operations with derivations.
         if (is_derivation or is_final_derivation or is_precompiled_derivation) and IsBound( category!.primitive_operations.( function_name ) ) and category!.primitive_operations.( function_name ) then
             
@@ -260,7 +268,15 @@ InstallGlobalFunction( CapInternalInstallAdd,
             # * There is a test in Locales creating a category via CategoryConstructor (which uses weight 100) and then installs a really cheap method for UniqueMorphism which triggers a bunch of cheap derivations.
             if not WasCreatedAsOppositeCategory( category ) and weight > 4 then
                 
-                Print( "WARNING: Overriding a function for ", function_name, " primitively added to \"", Name( category ), "\" with a derivation.\n" );
+                Print( "WARNING: Overriding a function for ", function_name, " primitively added to \"", Name( category ), "\" with a derivation." );
+                
+                if is_precompiled_derivation then
+                    
+                    Print( " Probably you have to rerun the precompilation to adjust the weights in the precompiled code." );
+                    
+                fi;
+                
+                Print( "\n" );
                 
             fi;
             
