@@ -822,7 +822,7 @@ AddEvaluationForDualWithGivenTensorProduct( vecspaces,
       
     od;
     
-    if dimension > 0 then 
+    if dimension > 0 then
       
       Add( row, 1 );
       
@@ -855,7 +855,7 @@ AddCoevaluationForDualWithGivenTensorProduct( vecspaces,
       
     od;
     
-    if dimension > 0 then 
+    if dimension > 0 then
       
       Add( row, 1 );
       

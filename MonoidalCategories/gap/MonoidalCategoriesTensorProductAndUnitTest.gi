@@ -6,17 +6,15 @@
 
 InstallGlobalFunction( "MonoidalCategoriesTensorProductAndUnitTest",
     
-    function( cat, a, b )
+    function( cat, opposite, a, b )
         
-        local opposite, verbose,
+        local verbose,
               
               u, u_op,
               a_op, b_op,
               
               a_tensor_b, a_tensor_b_op,
               b_tensor_a, b_tensor_a_op;
-        
-        opposite := Opposite( cat, "Opposite" );
         
         a_op := Opposite( opposite, a );
         b_op := Opposite( opposite, b );

@@ -6,9 +6,9 @@
 
 InstallGlobalFunction( "MonoidalCategoriesTest",
     
-    function( cat, a, b, c, alpha, beta )
+    function( cat, opposite, a, b, c, alpha, beta )
     
-        local opposite, verbose,
+        local verbose,
               
               a_op,
               b_op,
@@ -30,8 +30,6 @@ InstallGlobalFunction( "MonoidalCategoriesTest",
               associator_left_to_right_abc, associator_left_to_right_abc_op, associator_right_to_left_abc, associator_right_to_left_abc_op,
               associator_left_to_right_cba, associator_left_to_right_cba_op, associator_right_to_left_cba, associator_right_to_left_cba_op;
         
-        opposite := Opposite( cat );
-        
         a_op := Opposite( opposite, a );
         b_op := Opposite( opposite, b );
         c_op := Opposite( opposite, c );
@@ -41,7 +39,7 @@ InstallGlobalFunction( "MonoidalCategoriesTest",
         
         verbose := ValueOption( "verbose" ) = true;
         
-        if CanCompute( cat, "TensorProductOnMorphisms" ) then 
+        if CanCompute( cat, "TensorProductOnMorphisms" ) then
             
             if verbose then
                 

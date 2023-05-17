@@ -9,6 +9,7 @@ true
 
 gap> Q := HomalgFieldOfRationals();;
 gap> mc := MatrixCategory( Q );;
+gap> opposite := Opposite( mc );;
 
 ##############################################
 # MonoidalCategoriesTensorProductAndUnitTest
@@ -17,17 +18,17 @@ gap> mc := MatrixCategory( Q );;
 gap> a := 2 / mc;;
 gap> b := 3 / mc;;
 
-gap> MonoidalCategoriesTensorProductAndUnitTest( mc, a, b );;
+gap> MonoidalCategoriesTensorProductAndUnitTest( mc, opposite, a, b );;
 
 gap> a := 0 / mc;;
 gap> b := 2 / mc;;
 
-gap> MonoidalCategoriesTensorProductAndUnitTest( mc, a, b );;
+gap> MonoidalCategoriesTensorProductAndUnitTest( mc, opposite, a, b );;
 
 gap> a := 3 / mc;;
 gap> b := 0 / mc;;
 
-gap> MonoidalCategoriesTensorProductAndUnitTest( mc, a, b );;
+gap> MonoidalCategoriesTensorProductAndUnitTest( mc, opposite, a, b );;
 
 ##############################################
 # MonoidalCategoriesTest
@@ -41,21 +42,21 @@ gap> d := 4 / mc;;
 gap> alpha := VectorSpaceMorphism( a, HomalgMatrix( [ 2 .. 7 ], Dimension( a ), Dimension( b ), Q ), b );;
 gap> beta := VectorSpaceMorphism( c, HomalgMatrix( [ 8 .. 31 ], Dimension( c ), Dimension( d ), Q ), d );;
 
-gap> MonoidalCategoriesTest( mc, a, b, c, alpha, beta );;
+gap> MonoidalCategoriesTest( mc, opposite, a, b, c, alpha, beta );;
 
 gap> a := 0 / mc;;
 gap> b := 3 / mc;;
 
 gap> alpha := ZeroMorphism( a, b );;
 
-gap> MonoidalCategoriesTest( mc, a, b, c, alpha, beta );;
+gap> MonoidalCategoriesTest( mc, opposite, a, b, c, alpha, beta );;
 
 gap> a := 3 / mc;;
 gap> b := 0 / mc;;
 
 gap> alpha := ZeroMorphism( a, b );;
 
-gap> MonoidalCategoriesTest( mc, a, b, c, alpha, beta );;
+gap> MonoidalCategoriesTest( mc, opposite, a, b, c, alpha, beta );;
 
 ##############################################
 # AdditiveMonoidalCategoriesTest
@@ -64,17 +65,17 @@ gap> MonoidalCategoriesTest( mc, a, b, c, alpha, beta );;
 gap> a := 2 / mc;;
 gap> L := [ 3 / mc, 4 / mc, 5 / mc ];;
 
-gap> AdditiveMonoidalCategoriesTest( mc, a, L );;
+gap> AdditiveMonoidalCategoriesTest( mc, opposite, a, L );;
 
 gap> a := 0 / mc;;
 gap> L := [ 3 / mc, 4 / mc, 5 / mc ];;
 
-gap> AdditiveMonoidalCategoriesTest( mc, a, L );;
+gap> AdditiveMonoidalCategoriesTest( mc, opposite, a, L );;
 
 gap> a := 2 / mc;;
 gap> L := [ 3 / mc, 0 / mc, 5 / mc ];;
 
-gap> AdditiveMonoidalCategoriesTest( mc, a, L );;
+gap> AdditiveMonoidalCategoriesTest( mc, opposite, a, L );;
 
 ##############################################
 # BraidedMonoidalCategoriesTest
@@ -83,17 +84,17 @@ gap> AdditiveMonoidalCategoriesTest( mc, a, L );;
 gap> a := 2 / mc;;
 gap> b := 3 / mc;;
 
-gap> BraidedMonoidalCategoriesTest( mc, a, b );;
+gap> BraidedMonoidalCategoriesTest( mc, opposite, a, b );;
 
 gap> a := 0 / mc;;
 gap> b := 2 / mc;;
 
-gap> BraidedMonoidalCategoriesTest( mc, a, b );;
+gap> BraidedMonoidalCategoriesTest( mc, opposite, a, b );;
 
 gap> a := 2 / mc;;
 gap> b := 0 / mc;;
 
-gap> BraidedMonoidalCategoriesTest( mc, a, b );;
+gap> BraidedMonoidalCategoriesTest( mc, opposite, a, b );;
 
 ##############################################
 # ClosedMonoidalCategoriesTest
@@ -119,7 +120,7 @@ gap> delta := VectorSpaceMorphism( c_tensor_d, HomalgMatrix( [ 8 .. 31 ], Dimens
 gap> epsilon := VectorSpaceMorphism( u, HomalgMatrix( [ 2 .. 7 ], Dimension( u ), Dimension( hom_ab ), Q ), hom_ab );;
 gap> zeta := VectorSpaceMorphism( u, HomalgMatrix( [ 8 .. 31 ], Dimension( u ), Dimension( hom_cd ), Q ), hom_cd );;
 
-gap> ClosedMonoidalCategoriesTest( mc, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
+gap> ClosedMonoidalCategoriesTest( mc, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
 
 gap> a = 0 / mc;;
 gap> d = 0 / mc;;
@@ -137,7 +138,7 @@ gap> delta := ZeroMorphism( c_tensor_d, u );;
 gap> epsilon := ZeroMorphism( u, hom_ab );;
 gap> zeta := ZeroMorphism( u, hom_cd );;
 
-gap> ClosedMonoidalCategoriesTest( mc, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
+gap> ClosedMonoidalCategoriesTest( mc, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
 
 ##############################################
 # CoclosedMonoidalCategoriesTest
@@ -163,7 +164,7 @@ gap> delta := VectorSpaceMorphism( u, HomalgMatrix( [ 8 .. 31 ], Dimension( u ),
 gap> epsilon := VectorSpaceMorphism( cohom_ab, HomalgMatrix( [ 2 .. 7 ], Dimension( cohom_ab ), Dimension( u ), Q ), u );;
 gap> zeta := VectorSpaceMorphism( cohom_cd, HomalgMatrix( [ 8 .. 31 ], Dimension( cohom_cd ), Dimension( u ), Q ), u );;
 
-gap> CoclosedMonoidalCategoriesTest( mc, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
+gap> CoclosedMonoidalCategoriesTest( mc, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
 
 gap> a = 0 / mc;;
 gap> d = 0 / mc;;
@@ -181,7 +182,7 @@ gap> delta := ZeroMorphism( u, c_tensor_d );;
 gap> epsilon := ZeroMorphism( cohom_ab, u );;
 gap> zeta := ZeroMorphism( cohom_cd, u );;
 
-gap> CoclosedMonoidalCategoriesTest( mc, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
+gap> CoclosedMonoidalCategoriesTest( mc, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
 
 ##############################################
 # RigidSymmetricClosedMonoidalCategoriesTest
@@ -194,14 +195,14 @@ gap> d := 4 / mc;;
 
 gap> alpha := IdentityMorphism( a );;
 
-gap> RigidSymmetricClosedMonoidalCategoriesTest( mc, a, b, c, d, alpha );;
+gap> RigidSymmetricClosedMonoidalCategoriesTest( mc, opposite, a, b, c, d, alpha );;
 
 gap> a := 0 / mc;;
 gap> d := 0 / mc;;
 
 gap> alpha := IdentityMorphism( a );;
 
-gap> RigidSymmetricClosedMonoidalCategoriesTest( mc, a, b, c, d, alpha );;
+gap> RigidSymmetricClosedMonoidalCategoriesTest( mc, opposite, a, b, c, d, alpha );;
 
 ##############################################
 # RigidSymmetricCoclosedMonoidalCategoriesTest
@@ -214,14 +215,14 @@ gap> d := 4 / mc;;
 
 gap> alpha := IdentityMorphism( a );;
 
-gap> RigidSymmetricCoclosedMonoidalCategoriesTest( mc, a, b, a, b, alpha );;
+gap> RigidSymmetricCoclosedMonoidalCategoriesTest( mc, opposite, a, b, a, b, alpha );;
 
 gap> a := 0 / mc;;
 gap> d := 0 / mc;;
 
 gap> alpha := IdentityMorphism( a );;
 
-gap> RigidSymmetricCoclosedMonoidalCategoriesTest( mc, a, b, a, b, alpha );;
+gap> RigidSymmetricCoclosedMonoidalCategoriesTest( mc, opposite, a, b, a, b, alpha );;
 
 ##############################################
 

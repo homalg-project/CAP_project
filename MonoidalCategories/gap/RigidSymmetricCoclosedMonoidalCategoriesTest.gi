@@ -6,9 +6,9 @@
 
 InstallGlobalFunction( "RigidSymmetricCoclosedMonoidalCategoriesTest",
     
-    function( cat, a, b, c, d, alpha )
+    function( cat, opposite, a, b, c, d, alpha )
         
-        local opposite, verbose,
+        local verbose,
               
               a_op, c_op,
               b_op, d_op,
@@ -35,8 +35,6 @@ InstallGlobalFunction( "RigidSymmetricCoclosedMonoidalCategoriesTest",
               morphism_to_cobidual_a, morphism_from_bidual_a_op,
               morphism_to_cobidual_b, morphism_from_bidual_b_op;
               
-        opposite := Opposite( cat, "Opposite" );
-        
         a_op := Opposite( opposite, a );
         b_op := Opposite( opposite, b );
         c_op := Opposite( opposite, c );

@@ -8,11 +8,11 @@ gap> START_TEST( "TerminalCategoryCocartesian" );
 #
 gap> LoadPackage( "CartesianCategories", false );
 true
-gap> LoadPackage( "MonoidalCategories", false );
-true
 
 #
 gap> T := TerminalCategoryWithMultipleObjects( );;
+gap> opposite := Opposite( T, "Opposite with all operations" );;
+gap> opposite_primitive := Opposite( T, "Opposite with primitive operations" : only_primitive_operations := true );;
 
 #
 ##############################################
@@ -29,8 +29,8 @@ gap> alpha := MorphismConstructor( a, "f_ab", b );;
 gap> beta := MorphismConstructor( c, "f_cd", d );;
 
 #
-gap> CocartesianCategoriesTest( T, a, b, c, alpha, beta );;
-gap> CocartesianCategoriesTest( T, a, b, c, alpha, beta : only_primitive_operations := true );;
+gap> CocartesianCategoriesTest( T, opposite, a, b, c, alpha, beta );;
+gap> CocartesianCategoriesTest( T, opposite_primitive, a, b, c, alpha, beta );;
 
 #
 gap> z := ZeroObject( T );;
@@ -40,12 +40,12 @@ gap> alpha := UniversalMorphismFromZeroObject( a );;
 gap> beta := UniversalMorphismIntoZeroObject( a );;
 
 #
-gap> CocartesianCategoriesTest( T, z, a, a, alpha, beta );;
-gap> CocartesianCategoriesTest( T, z, a, a, alpha, beta : only_primitive_operations := true );;
+gap> CocartesianCategoriesTest( T, opposite, z, a, a, alpha, beta );;
+gap> CocartesianCategoriesTest( T, opposite_primitive, z, a, a, alpha, beta );;
 
 #
-gap> CocartesianCategoriesTest( T, a, z, z, beta, alpha );;
-gap> CocartesianCategoriesTest( T, a, z, z, beta, alpha : only_primitive_operations := true );;
+gap> CocartesianCategoriesTest( T, opposite, a, z, z, beta, alpha );;
+gap> CocartesianCategoriesTest( T, opposite_primitive, a, z, z, beta, alpha );;
 
 #
 ##############################################
@@ -56,8 +56,8 @@ gap> a := "a" / T;;
 gap> L := [ "b" / T, "c" / T, "d" / T ];;
 
 #
-gap> CodistributiveCocartesianCategoriesTest( T, a, L );;
-gap> CodistributiveCocartesianCategoriesTest( T, a, L : only_primitive_operations := true );;
+gap> CodistributiveCocartesianCategoriesTest( T, opposite, a, L );;
+gap> CodistributiveCocartesianCategoriesTest( T, opposite_primitive, a, L );;
 
 #
 ##############################################
@@ -68,23 +68,23 @@ gap> a := "a" / T;;
 gap> b := "b" / T;;
 
 #
-gap> BraidedCocartesianCategoriesTest( T, a, b );;
-gap> BraidedCocartesianCategoriesTest( T, a, b : only_primitive_operations := true );;
+gap> BraidedCocartesianCategoriesTest( T, opposite, a, b );;
+gap> BraidedCocartesianCategoriesTest( T, opposite_primitive, a, b );;
 
 #
-gap> BraidedCocartesianCategoriesTest( T, b, a );;
-gap> BraidedCocartesianCategoriesTest( T, b, a : only_primitive_operations := true );;
+gap> BraidedCocartesianCategoriesTest( T, opposite, b, a );;
+gap> BraidedCocartesianCategoriesTest( T, opposite_primitive, b, a );;
 
 #
 gap> z := ZeroObject( T );;
 
 #
-gap> BraidedCocartesianCategoriesTest( T, z, a );;
-gap> BraidedCocartesianCategoriesTest( T, z, a : only_primitive_operations := true );;
+gap> BraidedCocartesianCategoriesTest( T, opposite, z, a );;
+gap> BraidedCocartesianCategoriesTest( T, opposite_primitive, z, a );;
 
 #
-gap> BraidedCocartesianCategoriesTest( T, a, z );;
-gap> BraidedCocartesianCategoriesTest( T, a, z : only_primitive_operations := true );;
+gap> BraidedCocartesianCategoriesTest( T, opposite, a, z );;
+gap> BraidedCocartesianCategoriesTest( T, opposite_primitive, a, z );;
 
 #
 ##############################################
@@ -97,15 +97,15 @@ gap> c := "c" / T;;
 gap> d := "d" / T;;
 
 #
-gap> u := TensorUnit( T );;
+gap> u := InitialObject( T );;
 
 #
-gap> a_product_b := TensorProduct( a, b );;
-gap> c_product_d := TensorProduct( c, d );;
+gap> a_product_b := Coproduct( a, b );;
+gap> c_product_d := Coproduct( c, d );;
 
 #
-gap> hom_ab := InternalHom( a, b );;
-gap> hom_cd := InternalHom( c, d );;
+gap> hom_ab := CoexponentialOnObjects( a, b );;
+gap> hom_cd := CoexponentialOnObjects( c, d );;
 
 #
 gap> alpha := MorphismConstructor( a, "f_ab", b );;
@@ -116,19 +116,19 @@ gap> epsilon := MorphismConstructor( u, "f_uhomab", hom_ab );;
 gap> zeta := MorphismConstructor( u, "f_uhomcd", hom_cd );;
 
 #
-gap> CocartesianCoclosedCategoriesTest( T, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
-gap> CocartesianCoclosedCategoriesTest( T, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta : only_primitive_operations := true );;
+gap> CocartesianCoclosedCategoriesTest( T, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
+gap> CocartesianCoclosedCategoriesTest( T, opposite_primitive, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
 
 #
 gap> z := ZeroObject( T );;
 
 #
-gap> z_product_a := TensorProduct( z, a );;
-gap> a_product_z := TensorProduct( a, z );;
+gap> z_product_a := Coproduct( z, a );;
+gap> a_product_z := Coproduct( a, z );;
 
 #
-gap> hom_za := InternalHom( z, a );;
-gap> hom_az := InternalHom( a, z );;
+gap> hom_za := CoexponentialOnObjects( z, a );;
+gap> hom_az := CoexponentialOnObjects( a, z );;
 
 #
 gap> alpha := MorphismConstructor( z, "f_za", a );;
@@ -139,8 +139,8 @@ gap> epsilon := MorphismConstructor( u, "f_uhomza", hom_za );;
 gap> zeta := MorphismConstructor( u, "f_uhomaz", hom_az );;
 
 #
-gap> CocartesianCoclosedCategoriesTest( T, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
-gap> CocartesianCoclosedCategoriesTest( T, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta : only_primitive_operations := true );;
+gap> CocartesianCoclosedCategoriesTest( T, opposite, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
+gap> CocartesianCoclosedCategoriesTest( T, opposite_primitive, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
 
 #
 ##############################################
