@@ -40,7 +40,9 @@ BindGlobal( "CAP_INTERNAL_VALID_METHOD_NAME_RECORD_COMPONENTS",
         "dual_arguments_reversed",
         "dual_with_given_objects_reversed",
         "dual_preprocessor_func",
+        "dual_preprocessor_func_string",
         "dual_postprocessor_func",
+        "dual_postprocessor_func_string",
         "functorial",
         "compatible_with_congruence_of_morphisms",
         "redirect_function",
@@ -5137,6 +5139,46 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                            ) ) >= 2 then
             
             Error( "dual_preprocessor_func, dual_arguments_reversed = true and dual_with_given_objects_reversed = true are mutually exclusive" );
+            
+        fi;
+        
+        if IsBound( current_rec.dual_preprocessor_func ) then
+            
+            if IsBound( current_rec.dual_preprocessor_func_string ) then
+                
+                Error( "dual_preprocessor_func and dual_preprocessor_func_string are mutually exclusive" );
+                
+            fi;
+            
+            if IsOperation( current_rec.dual_preprocessor_func ) or IsKernelFunction( current_rec.dual_preprocessor_func ) then
+                
+                current_rec.dual_preprocessor_func_string := NameFunction( current_rec.dual_preprocessor_func );
+                
+            else
+                
+                current_rec.dual_preprocessor_func_string := String( current_rec.dual_preprocessor_func );
+                
+            fi;
+            
+        fi;
+        
+        if IsBound( current_rec.dual_postprocessor_func ) then
+            
+            if IsBound( current_rec.dual_postprocessor_func_string ) then
+                
+                Error( "dual_postprocessor_func and dual_postprocessor_func_string are mutually exclusive" );
+                
+            fi;
+            
+            if IsOperation( current_rec.dual_postprocessor_func ) or IsKernelFunction( current_rec.dual_postprocessor_func ) then
+                
+                current_rec.dual_postprocessor_func_string := NameFunction( current_rec.dual_postprocessor_func );
+                
+            else
+                
+                current_rec.dual_postprocessor_func_string := String( current_rec.dual_postprocessor_func );
+                
+            fi;
             
         fi;
         
