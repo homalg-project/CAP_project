@@ -135,11 +135,11 @@ The record can have the following components:
 
 * dual_with_given_objects_reversed (optional): Boolean, marks whether for the call of the dual operation the source and range of a with given operation have to be given in reversed order.
 
-* dual_preprocessor_func (optional): let f be an operation with dual operation g. For the automatic installation of g from f,
-  the arguments given to g are preprocessed by this given function.
+* dual_preprocessor_func[_string] (optional): let f be an operation with dual operation g. For the automatic installation of g from f,
+  the arguments given to g are preprocessed by this given function. The function can also be given as a string.
 
-* dual_postprocessor_func (optional): let f be an operation with dual operation g. For the automatic installation of g from f,
-  the computed value of f is postprocessed by the given function.
+* dual_postprocessor_func[_string] (optional): let f be an operation with dual operation g. For the automatic installation of g from f,
+  the computed value of f is postprocessed by the given function. The function can also be given as a string.
 
 * input_arguments_names (optional): A duplicate free list (of the same length as `filter_list`) of strings.
   For example, these strings will be used as the names of the arguments when automatically generating functions for this operation, e.g. in the opposite category.
