@@ -466,7 +466,9 @@ DeclareOperation( "CapInternalInstallAdd",
         "dual_arguments_reversed",
         "dual_with_given_objects_reversed",
         "dual_preprocessor_func",
+        "dual_preprocessor_func_string",
         "dual_postprocessor_func",
+        "dual_postprocessor_func_string",
         "functorial",
         "compatible_with_congruence_of_morphisms",
         "redirect_function",
@@ -589,13 +591,13 @@ DeclareOperation( "CapInternalInstallAdd",
 </ul>
 
 <ul>
-<li><p>dual_preprocessor_func (optional): let f be an operation with dual operation g. For the automatic installation of g from f, the arguments given to g are preprocessed by this given function.</p>
+<li><p>dual_preprocessor_func[_string] (optional): let f be an operation with dual operation g. For the automatic installation of g from f, the arguments given to g are preprocessed by this given function. The function can also be given as a string.</p>
 
 </li>
 </ul>
 
 <ul>
-<li><p>dual_postprocessor_func (optional): let f be an operation with dual operation g. For the automatic installation of g from f, the computed value of f is postprocessed by the given function.</p>
+<li><p>dual_postprocessor_func[_string] (optional): let f be an operation with dual operation g. For the automatic installation of g from f, the computed value of f is postprocessed by the given function. The function can also be given as a string.</p>
 
 </li>
 </ul>

@@ -139,7 +139,9 @@
     [4X        "dual_arguments_reversed",[104X
     [4X        "dual_with_given_objects_reversed",[104X
     [4X        "dual_preprocessor_func",[104X
+    [4X        "dual_preprocessor_func_string",[104X
     [4X        "dual_postprocessor_func",[104X
+    [4X        "dual_postprocessor_func_string",[104X
     [4X        "functorial",[104X
     [4X        "compatible_with_congruence_of_morphisms",[104X
     [4X        "redirect_function",[104X
@@ -235,13 +237,15 @@
         for  the  call  of  the  dual operation the source and range of a with
         given operation have to be given in reversed order.[133X
   
-  [30X    [33X[0;6Ydual_preprocessor_func  (optional):  let  f  be an operation with dual
-        operation g. For the automatic installation of g from f, the arguments
-        given to g are preprocessed by this given function.[133X
+  [30X    [33X[0;6Ydual_preprocessor_func[_string] (optional): let f be an operation with
+        dual  operation  g.  For  the  automatic installation of g from f, the
+        arguments  given  to  g  are  preprocessed by this given function. The
+        function can also be given as a string.[133X
   
-  [30X    [33X[0;6Ydual_postprocessor_func  (optional):  let  f be an operation with dual
-        operation  g. For the automatic installation of g from f, the computed
-        value of f is postprocessed by the given function.[133X
+  [30X    [33X[0;6Ydual_postprocessor_func[_string]  (optional):  let  f  be an operation
+        with dual operation g. For the automatic installation of g from f, the
+        computed  value  of  f  is  postprocessed  by  the given function. The
+        function can also be given as a string.[133X
   
   [30X    [33X[0;6Yinput_arguments_names  (optional):  A duplicate free list (of the same
         length  as [10Xfilter_list[110X) of strings. For example, these strings will be
