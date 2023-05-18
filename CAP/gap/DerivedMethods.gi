@@ -4586,37 +4586,37 @@ AddFinalDerivation( IsEqualForObjects,
 ## Final methods for IsEqual/IsEqualForMorphisms
 ##
 AddFinalDerivation( IsCongruentForMorphisms,
-                    "",
+                    "Only IsIdenticalObj for comparing",
                     [ ],
                     [ IsCongruentForMorphisms,
                       IsEqualForMorphisms ],
                       
-  ReturnFail : Description := "Only IsIdenticalObj for comparing" );
+  ReturnFail );
 
 ##
 AddFinalDerivation( IsEqualForMorphisms,
-                    "",
+                    "Only IsIdenticalObj for comparing",
                     [ ],
                     [ IsCongruentForMorphisms,
                       IsEqualForMorphisms ],
                       
-  ReturnFail : Description := "Only IsIdenticalObj for comparing" );
+  ReturnFail );
 
 ##
 AddFinalDerivation( IsCongruentForMorphisms,
-                    "",
+                    "Use IsEqualForMorphisms for IsCongruentForMorphisms",
                     [ [ IsEqualForMorphisms, 1 ] ],
                     [ IsCongruentForMorphisms ],
                     
-  { cat, mor1, mor2 } -> IsEqualForMorphisms( cat, mor1, mor2 ) : Description := "Use IsEqualForMorphisms for IsCongruentForMorphisms" );
+  { cat, mor1, mor2 } -> IsEqualForMorphisms( cat, mor1, mor2 ) );
 
 ##
 AddFinalDerivation( IsEqualForMorphisms,
-                    "",
+                    "Use IsCongruentForMorphisms for IsEqualForMorphisms",
                     [ [ IsCongruentForMorphisms, 1 ] ],
                     [ IsEqualForMorphisms ],
                     
-  { cat, mor1, mor2 } -> IsCongruentForMorphisms( cat, mor1, mor2 ) : Description := "Use IsCongruentForMorphisms for IsEqualForMorphisms" );
+  { cat, mor1, mor2 } -> IsCongruentForMorphisms( cat, mor1, mor2 ) );
 
 ## Final methods for BasisOfExternalHom & CoefficientsOfMorphism
 
