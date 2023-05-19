@@ -18,7 +18,7 @@ InstallMethod( LeftPresentationsAsFreydCategoryOfCategoryOfRows,
     local object_constructor, object_datum, morphism_constructor, morphism_datum,
           rows, freyd,
           modeling_tower_object_constructor, modeling_tower_object_datum, modeling_tower_morphism_datum, modeling_tower_morphism_constructor,
-          wrapper;
+          left_presentations;
     
     ##
     object_constructor := function( cat, matrix )
@@ -102,7 +102,7 @@ InstallMethod( LeftPresentationsAsFreydCategoryOfCategoryOfRows,
         
     end;
     
-    wrapper := ReinterpretationOfCategory( freyd, rec(
+    left_presentations := ReinterpretationOfCategory( freyd, rec(
         name := Concatenation( "Category of left presentations of ", RingName( ring ) ),
         category_filter := IsCategoryOfLeftPresentations,
         category_object_filter := IsLeftPresentation,
@@ -118,38 +118,38 @@ InstallMethod( LeftPresentationsAsFreydCategoryOfCategoryOfRows,
         only_primitive_operations := true,
     ) : FinalizeCategory := false );
     
-    wrapper!.compiler_hints.category_attribute_names := [
+    left_presentations!.compiler_hints.category_attribute_names := [
         "UnderlyingRing",
     ];
     
-    SetUnderlyingRing( wrapper, ring );
+    SetUnderlyingRing( left_presentations, ring );
     
-    wrapper!.ring_for_representation_category := ring;
+    left_presentations!.ring_for_representation_category := ring;
     
-    AddCategoryToFamily( wrapper, "ModuleCategory" );
+    AddCategoryToFamily( left_presentations, "ModuleCategory" );
     
     ## TODO: avoid code duplication (see RightPresentations)
-    AddTheoremFileToCategory( wrapper,
+    AddTheoremFileToCategory( left_presentations,
       Filename(
         DirectoriesPackageLibrary( "ModulePresentationsForCAP", "LogicForModulePresentations" ),
         "PropositionsForGeneralModuleCategories.tex" )
     );
     
-    AddPredicateImplicationFileToCategory( wrapper,
+    AddPredicateImplicationFileToCategory( left_presentations,
       Filename(
         DirectoriesPackageLibrary( "ModulePresentationsForCAP", "LogicForModulePresentations" ),
         "PredicateImplicationsForGeneralModuleCategories.tex" )
      );
     
-    AddEvalRuleFileToCategory( wrapper,
+    AddEvalRuleFileToCategory( left_presentations,
       Filename(
         DirectoriesPackageLibrary( "ModulePresentationsForCAP", "LogicForModulePresentations" ),
         "RelationsForGeneralModuleCategories.tex" )
     );
     
-    Finalize( wrapper );
+    Finalize( left_presentations );
     
-    return wrapper;
+    return left_presentations;
     
 end );
 
@@ -161,7 +161,7 @@ InstallMethod( RightPresentationsAsFreydCategoryOfCategoryOfColumns,
     local object_constructor, object_datum, morphism_constructor, morphism_datum,
           cols, freyd,
           modeling_tower_object_constructor, modeling_tower_object_datum, modeling_tower_morphism_datum, modeling_tower_morphism_constructor,
-          wrapper;
+          right_presentations;
     
     ##
     object_constructor := function( cat, matrix)
@@ -245,7 +245,7 @@ InstallMethod( RightPresentationsAsFreydCategoryOfCategoryOfColumns,
         
     end;
     
-    wrapper := ReinterpretationOfCategory( freyd, rec(
+    right_presentations := ReinterpretationOfCategory( freyd, rec(
         name := Concatenation( "Category of right presentations of ", RingName( ring ) ),
         category_filter := IsCategoryOfRightPresentations,
         category_object_filter := IsRightPresentation,
@@ -261,37 +261,37 @@ InstallMethod( RightPresentationsAsFreydCategoryOfCategoryOfColumns,
         only_primitive_operations := true,
     ) : FinalizeCategory := false );
     
-    wrapper!.compiler_hints.category_attribute_names := [
+    right_presentations!.compiler_hints.category_attribute_names := [
         "UnderlyingRing",
     ];
     
-    SetUnderlyingRing( wrapper, ring );
+    SetUnderlyingRing( right_presentations, ring );
     
-    wrapper!.ring_for_representation_category := ring;
+    right_presentations!.ring_for_representation_category := ring;
     
-    AddCategoryToFamily( wrapper, "ModuleCategory" );
+    AddCategoryToFamily( right_presentations, "ModuleCategory" );
     
     ## TODO: avoid code duplication (see LeftPresentations)
-    AddTheoremFileToCategory( wrapper,
+    AddTheoremFileToCategory( right_presentations,
       Filename(
         DirectoriesPackageLibrary( "ModulePresentationsForCAP", "LogicForModulePresentations" ),
         "PropositionsForGeneralModuleCategories.tex" )
     );
     
-    AddPredicateImplicationFileToCategory( wrapper,
+    AddPredicateImplicationFileToCategory( right_presentations,
       Filename(
         DirectoriesPackageLibrary( "ModulePresentationsForCAP", "LogicForModulePresentations" ),
         "PredicateImplicationsForGeneralModuleCategories.tex" )
      );
     
-    AddEvalRuleFileToCategory( wrapper,
+    AddEvalRuleFileToCategory( right_presentations,
       Filename(
         DirectoriesPackageLibrary( "ModulePresentationsForCAP", "LogicForModulePresentations" ),
         "RelationsForGeneralModuleCategories.tex" )
     );
     
-    Finalize( wrapper );
+    Finalize( right_presentations );
     
-    return wrapper;
+    return right_presentations;
     
 end );
