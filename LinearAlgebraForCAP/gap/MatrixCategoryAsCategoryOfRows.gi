@@ -101,13 +101,13 @@ InstallMethod( MatrixCategoryAsCategoryOfRows,
             
         fi;
         
-        if NrRows( homalg_matrix ) <> ObjectDatum( cat, source ) then
+        if NrRows( homalg_matrix ) <> ObjectDatum( ModelingCategory( cat ), source ) then
             
             Error( "the number of rows has to be equal to the dimension of the source" );
             
         fi;
         
-        if NrColumns( homalg_matrix ) <> ObjectDatum( cat, range ) then
+        if NrColumns( homalg_matrix ) <> ObjectDatum( ModelingCategory( cat ), range ) then
             
             Error( "the number of columns has to be equal to the dimension of the range" );
             
