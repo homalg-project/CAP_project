@@ -29,11 +29,7 @@ InstallMethod( LeftPresentationsAsFreydCategoryOfCategoryOfRows,
     end;
     
     ##
-    object_datum := function( cat, obj )
-        
-        return UnderlyingMatrix( obj );
-        
-    end;
+    object_datum := { cat, obj } ->  UnderlyingMatrix( obj );
     
     ##
     morphism_constructor := function( cat, source, matrix, range )
@@ -46,12 +42,8 @@ InstallMethod( LeftPresentationsAsFreydCategoryOfCategoryOfRows,
     end;
     
     ##
-    morphism_datum := function( cat, mor )
-        
-        return UnderlyingMatrix( mor );
-        
-    end;
-
+    morphism_datum := { cat, mor } -> UnderlyingMatrix( mor );
+    
     ## building the categorical tower:
     rows := CategoryOfRows( ring : FinalizeCategory := true );
     
@@ -172,11 +164,7 @@ InstallMethod( RightPresentationsAsFreydCategoryOfCategoryOfColumns,
     end;
     
     ##
-    object_datum := function( cat, obj )
-        
-        return UnderlyingMatrix( obj );
-        
-    end;
+    object_datum := { cat, obj } ->  UnderlyingMatrix( obj );
     
     ##
     morphism_constructor := function( cat, source, matrix, range )
@@ -189,11 +177,7 @@ InstallMethod( RightPresentationsAsFreydCategoryOfCategoryOfColumns,
     end;
     
     ##
-    morphism_datum := function( cat, mor )
-        
-        return UnderlyingMatrix( mor );
-        
-    end;
+    morphism_datum := { cat, mor } -> UnderlyingMatrix( mor );
     
     ## building the categorical tower:
     cols := CategoryOfColumns( ring : FinalizeCategory := true );
