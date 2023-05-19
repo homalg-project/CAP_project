@@ -12,18 +12,18 @@ InstallTrueMethod( IsBicartesianCategory, IsCartesianCategory and IsCocartesianC
 
 # https://ncatlab.org/nlab/show/bicartesian+closed+category
 #= comment for Julia
-InstallTrueMethod( IsBicartesianClosedCategory, IsCartesianClosedCategory and IsCocartesianCategory );
+InstallTrueMethod( IsBicartesianClosedCategory, IsBicartesianCategory and IsCartesianClosedCategory );
 # =#
+InstallTrueMethod( IsBicartesianCategory, IsBicartesianClosedCategory );
 InstallTrueMethod( IsCartesianClosedCategory, IsBicartesianClosedCategory );
-InstallTrueMethod( IsCocartesianCategory, IsBicartesianClosedCategory );
 InstallTrueMethod( IsDistributiveCategory, IsBicartesianClosedCategory );
 
 # https://ncatlab.org/nlab/show/bicartesian+coclosed+category
 #= comment for Julia
-InstallTrueMethod( IsBicartesianCoclosedCategory, IsCocartesianCoclosedCategory and IsCartesianCategory );
+InstallTrueMethod( IsBicartesianCoclosedCategory, IsBicartesianCategory and IsCocartesianCoclosedCategory );
 # =#
+InstallTrueMethod( IsBicartesianCategory, IsBicartesianCoclosedCategory );
 InstallTrueMethod( IsCocartesianCoclosedCategory, IsBicartesianCoclosedCategory );
-InstallTrueMethod( IsCartesianCategory, IsBicartesianClosedCategory );
 InstallTrueMethod( IsCodistributiveCategory, IsBicartesianCoclosedCategory );
 
 InstallTrueMethod( IsCartesianCategory, IsFiniteCompleteCategory );
