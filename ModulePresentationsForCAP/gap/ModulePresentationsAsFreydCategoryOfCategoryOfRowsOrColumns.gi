@@ -23,8 +23,8 @@ InstallMethod( LeftPresentationsAsFreydCategoryOfCategoryOfRows,
     ##
     object_constructor := function( cat, matrix )
         
-        return ObjectifyObjectForCAPWithAttributes( rec(), cat,
-                                                    UnderlyingMatrix, matrix );
+        return CreateCapCategoryObjectWithAttributes( cat,
+                       UnderlyingMatrix, matrix );
     
     end;
     
@@ -38,10 +38,10 @@ InstallMethod( LeftPresentationsAsFreydCategoryOfCategoryOfRows,
     ##
     morphism_constructor := function( cat, source, matrix, range )
         
-        return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(), cat,
-                                                                        source,
-                                                                        range,
-                                                                        UnderlyingMatrix, matrix );
+        return CreateCapCategoryMorphismWithAttributes( cat,
+                       source,
+                       range,
+                       UnderlyingMatrix, matrix );
         
     end;
     
@@ -166,8 +166,8 @@ InstallMethod( RightPresentationsAsFreydCategoryOfCategoryOfColumns,
     ##
     object_constructor := function( cat, matrix)
         
-        return ObjectifyObjectForCAPWithAttributes( rec(), cat,
-                                                    UnderlyingMatrix, matrix );
+        return CreateCapCategoryObjectWithAttributes( cat,
+                       UnderlyingMatrix, matrix );
     
     end;
     
@@ -181,10 +181,10 @@ InstallMethod( RightPresentationsAsFreydCategoryOfCategoryOfColumns,
     ##
     morphism_constructor := function( cat, source, matrix, range )
         
-        return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(), cat,
-                                                                        source,
-                                                                        range,
-                                                                        UnderlyingMatrix, matrix );
+        return CreateCapCategoryMorphismWithAttributes( cat,
+                       source,
+                       range,
+                       UnderlyingMatrix, matrix );
         
     end;
     
