@@ -1,5 +1,5 @@
 name: LinearAlgebraForCAP
-version: "2023.05-04"
+version: "2023.05-05"
 license: "GPL-2.0-or-later"
 date: 2023-05-19
 description: |
@@ -47,11 +47,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/LinearAlgebraForCAP/Pa
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2023.05-04/LinearAlgebraForCAP-2023.05-04.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2023.05-05/LinearAlgebraForCAP-2023.05-05.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2023.05-04/LinearAlgebraForCAP-2023.05-04.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2023.05-05/LinearAlgebraForCAP-2023.05-05.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2023.05-04/LinearAlgebraForCAP-2023.05-04-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2023.05-05/LinearAlgebraForCAP-2023.05-05-manual.pdf
 
 abstract: |
     <span class="pkgname">LinearAlgebraForCAP</span> provides a skeletal model of the category of finite dimensional vector spaces over a computable field.
@@ -63,7 +63,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>GP19</span>]   <b class='BibAuthor'>Gutsche, S. and Posur, S.</b>,
      <i class='BibTitle'>LinearAlgebraForCAP, Category of Matrices over a Field for CAP,
-             Version 2023.05-04</i>
+             Version 2023.05-05</i>
      (<span class='BibYear'>5-19</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/LinearAlgebraForCAP">https://homalg-project.github.io/pkg/LinearAlgebraForCAP</a></span>.
@@ -71,10 +71,10 @@ citeas: |
     
 
 bibtex: |
-    @misc{ LinearAlgebraForCAP2023.05-04,
+    @misc{ LinearAlgebraForCAP2023.05-05,
       author =           {Gutsche, S. and Posur, S.},
       title =            {{LinearAlgebraForCAP},  Category  of  Matrices  over a
-                          Field for CAP, {V}ersion 2023.05-04},
+                          Field for CAP, {V}ersion 2023.05-05},
       month =            {3-},
       year =             {5-19},
       note =             {GAP package},

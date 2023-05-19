@@ -40,6 +40,7 @@
     [4X[25Xgap>[125X [27XCokernelObject( alpha );[127X[104X
     [4X[28X<A vector space object over Q of dimension 1>[128X[104X
     [4X[25Xgap>[125X [27Xc := CokernelProjection( alpha );;[127X[104X
+    [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true[128X[104X
     [4X[25Xgap>[125X [27XDisplay( c );[127X[104X
     [4X[28X[ [     0 ],[128X[104X
     [4X[28X  [     1 ],[128X[104X
@@ -47,6 +48,7 @@
     [4X[28X  [     1 ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XA split epimorphism in Category of matrices over Q[128X[104X
+    [4X[28X#@fi[128X[104X
     [4X[25Xgap>[125X [27Xgamma := UniversalMorphismIntoDirectSum( [ c, c ] );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( gamma );[127X[104X
     [4X[28X[ [     0,     0 ],[128X[104X

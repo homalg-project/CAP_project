@@ -73,6 +73,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CokernelObject( alpha );</span>
 &lt;A vector space object over Q of dimension 1&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := CokernelProjection( alpha );;</span>
+#@if ValueOption( "no_precompiled_code" ) &lt;&gt; true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( c );</span>
 [ [     0 ],
   [     1 ],
@@ -80,6 +81,7 @@ true
   [     1 ] ]
 
 A split epimorphism in Category of matrices over Q
+#@fi
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := UniversalMorphismIntoDirectSum( [ c, c ] );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( gamma );</span>
 [ [     0,     0 ],
