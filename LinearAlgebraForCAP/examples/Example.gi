@@ -40,6 +40,7 @@ beta := VectorSpaceMorphism( a, homalg_matrix, b );
 CokernelObject( alpha );
 #! <A vector space object over Q of dimension 1>
 c := CokernelProjection( alpha );;
+#! #@if ValueOption( "no_precompiled_code" ) <> true
 Display( c );
 #! [ [     0 ],
 #!   [     1 ],
@@ -47,6 +48,7 @@ Display( c );
 #!   [     1 ] ]
 #!
 #! A split epimorphism in Category of matrices over Q
+#! #@fi
 gamma := UniversalMorphismIntoDirectSum( [ c, c ] );;
 Display( gamma );
 #! [ [     0,     0 ],
