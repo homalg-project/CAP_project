@@ -59,14 +59,23 @@ InstallMethod( LeftPresentationsAsFreydCategoryOfCategoryOfRows,
     
     ## from the raw object data to the object in the modeling category
     modeling_tower_object_constructor := function( cat, matrix )
-        local freyd, rows;
+        local freyd, rows, source_rows, range_rows;
         
         freyd := ModelingCategory( cat );
         
         rows := UnderlyingCategory( freyd );
         
-        return FreydCategoryObject( freyd,
-                                    AsCategoryOfRowsMorphism( rows, matrix ) );
+        source_rows := ObjectConstructor( rows,
+                               NrRows( matrix ) );
+        
+        range_rows := ObjectConstructor( rows,
+                              NrColumns( matrix ) );
+        
+        return ObjectConstructor( freyd,
+                       MorphismConstructor( rows,
+                               source_rows,
+                               matrix,
+                               range_rows ) );
         
     end;
     
@@ -89,9 +98,15 @@ InstallMethod( LeftPresentationsAsFreydCategoryOfCategoryOfRows,
         
         range_rows := Range( RelationMorphism( range ) );
         
-        rows_morphism := CategoryOfRowsMorphism( rows, source_rows, matrix, range_rows );
+        rows_morphism := MorphismConstructor( rows,
+                                 source_rows,
+                                 matrix,
+                                 range_rows );
         
-        return FreydCategoryMorphism( freyd, source, rows_morphism, range );
+        return MorphismConstructor( freyd,
+                       source,
+                       rows_morphism,
+                       range );
         
     end;
     
@@ -202,14 +217,23 @@ InstallMethod( RightPresentationsAsFreydCategoryOfCategoryOfColumns,
     
     ## from the raw object data to the object in the modeling category
     modeling_tower_object_constructor := function( cat, matrix )
-        local freyd, cols;
+        local freyd, cols, source_cols, range_cols;
         
         freyd := ModelingCategory( cat );
         
         cols := UnderlyingCategory( freyd );
         
-        return FreydCategoryObject( freyd,
-                                    AsCategoryOfColumnsMorphism( cols, matrix ) );
+        source_cols := ObjectConstructor( cols,
+                               NrColumns( matrix ) );
+        
+        range_cols := ObjectConstructor( cols,
+                              NrRows( matrix ) );
+        
+        return ObjectConstructor( freyd,
+                       MorphismConstructor( cols,
+                               source_cols,
+                               matrix,
+                               range_cols ) );
         
     end;
     
@@ -232,9 +256,15 @@ InstallMethod( RightPresentationsAsFreydCategoryOfCategoryOfColumns,
         
         range_cols := Range( RelationMorphism( range ) );
         
-        cols_morphism := CategoryOfColumnsMorphism( cols, source_cols, matrix, range_cols );
+        cols_morphism := MorphismConstructor( cols,
+                                 source_cols,
+                                 matrix,
+                                 range_cols );
         
-        return FreydCategoryMorphism( freyd, source, cols_morphism, range );
+        return MorphismConstructor( freyd,
+                       source,
+                       cols_morphism,
+                       range );
         
     end;
     
