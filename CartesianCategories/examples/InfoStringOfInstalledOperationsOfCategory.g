@@ -12,8 +12,7 @@ distributive := DummyCategory( rec(
     Concatenation(
       CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianClosedCategory,
       CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory  ),
-  properties := [ "IsCartesianClosedCategory", "IsCocartesianCategory",
-                  "IsSkeletalCategory" ] ) );;
+  properties := [ "IsBicartesianClosedCategory", "IsSkeletalCategory" ] ) );;
 
 InfoOfInstalledOperationsOfCategory( distributive );
 #! 19 primitive operations were used to derive 110 operations for this category \
