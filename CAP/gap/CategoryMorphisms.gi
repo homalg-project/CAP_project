@@ -812,8 +812,7 @@ InstallMethod( String,
                
   function( morphism )
     
-    # avoid space in front of "in" to distinguish it from the keyword "in"
-    return Concatenation( "A morphism ", "in ", Name( CapCategory( morphism ) ) );
+    return Concatenation( "A morphism in ", Name( CapCategory( morphism ) ) );
     
 end );
 
@@ -823,9 +822,8 @@ InstallMethod( ViewString,
                
   function ( morphism )
     
-    # avoid space in front of "in" to distinguish it from the keyword "in"
     # do not reuse `String` because morphisms might use `String` as the attribute storing the morphism datum
-    return Concatenation( "<A morphism ", "in ", Name( CapCategory( morphism ) ), ">" );
+    return Concatenation( "<A morphism in ", Name( CapCategory( morphism ) ), ">" );
     
 end );
 
@@ -834,9 +832,8 @@ InstallMethod( DisplayString,
                
   function ( morphism )
     
-    # avoid space in front of "in" to distinguish it from the keyword "in"
     # do not reuse `String` because morphisms might use `String` as the attribute storing the morphism datum
-    return Concatenation( "A morphism ", "in ", Name( CapCategory( morphism ) ), ".\n" );
+    return Concatenation( "A morphism in ", Name( CapCategory( morphism ) ), ".\n" );
     
 end );
 
