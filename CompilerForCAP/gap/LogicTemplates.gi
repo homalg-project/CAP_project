@@ -202,28 +202,21 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
     # Match functions in dst_template_tree to those in src_template_tree and set function IDs accordingly.
     # Functions from src_template_tree can appear multiple times in dst_template_tree, so in dst_template_tree the same function ID can occur multiple times.
     # However, we do not allow the same ID to occur multiple times in a single function stack, as this would cause ambiguities.
+    
+    template.new_funcs_corresponding_src_funcs := [ ];
+    
     pre_func := function ( tree, func_id_stack )
-      local dst_func, new_nams, condition_func, src_template_path, src_func;
+      local dst_func, pos, condition_func, src_template_path, src_func, pre_func;
         
         if tree.type = "EXPR_DECLARATIVE_FUNC" then
             
             dst_func := tree;
             
-            # tree is a subtree of dst_tree_template. dst_tree_template should not have seen any inlining etc., so RETURN_VALUE should still be the last variable
-            Assert( 0, Last( dst_func.nams ) = "RETURN_VALUE" );
+            pos := Position( template.new_funcs, dst_func.nams{[ 1 .. dst_func.narg ]} );
             
-            # the entries of new_funcs do not include RETURN_VALUE
-            if dst_func.nams{[ 1 .. Length( dst_func.nams ) - 1 ]} in template.new_funcs then
+            # if this is not a new function, find matching function in src_template_tree
+            if pos = fail then
                 
-                # dst_func already has a unique ID, so we can keep it, but we want new nams
-                new_nams := List( dst_func.nams, nam -> Concatenation( "logic_new_func_", nam ) );
-                new_nams[Length( new_nams )] := "RETURN_VALUE";
-                
-                dst_func := CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( dst_func, dst_func.id, new_nams );
-                
-            else
-                
-                # find matching function in src_template_tree
                 condition_func := function ( tree, path )
                     
                     return tree.type = "EXPR_DECLARATIVE_FUNC" and tree.nams = dst_func.nams;
@@ -255,6 +248,74 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
             fi;
             
             return dst_func;
+            
+        fi;
+        
+        # detect `List( SYNTAX_TREE_VARIABLE, x -> ... )` where `x -> ...` is a new function
+        if CapJitIsCallToGlobalFunction( tree, "List" ) and tree.args.1.type = "SYNTAX_TREE_VARIABLE" and tree.args.2.type = "EXPR_DECLARATIVE_FUNC" then
+            
+            dst_func := tree.args.2;
+            
+            pos := Position( template.new_funcs, dst_func.nams{[ 1 .. dst_func.narg ]} );
+            
+            if pos <> fail then
+                
+                # detect `List( SYNTAX_TREE_VARIABLE, func )` in src_template_tree
+                pre_func := function ( src_tree, additional_arguments )
+                    
+                    if IsBound( template.new_funcs_corresponding_src_funcs[pos] ) then
+                        
+                        return fail;
+                        
+                    fi;
+                    
+                    if CapJitIsCallToGlobalFunction( src_tree, "List" ) and src_tree.args.1.type = "SYNTAX_TREE_VARIABLE" and src_tree.args.1.id = tree.args.1.id and src_tree.args.2.type in [ "SYNTAX_TREE_VARIABLE", "EXPR_DECLARATIVE_FUNC" ] then
+                        
+                        template.new_funcs_corresponding_src_funcs[pos] := src_tree.args.2;
+                        
+                    fi;
+                    
+                    return src_tree;
+                    
+                end;
+                
+                CapJitIterateOverTree( template.src_template_tree, pre_func, ReturnTrue, ReturnTrue, true );
+                
+            fi;
+            
+        fi;
+        
+        # detect `ListN( SYNTAX_TREE_VARIABLE_1, SYNTAX_TREE_VARIABLE_2, { x, y } -> ... )` where `{ x, y } -> ...` is a new function
+        if CapJitIsCallToGlobalFunction( tree, "ListN" ) and tree.args.1.type = "SYNTAX_TREE_VARIABLE" and tree.args.2.type = "SYNTAX_TREE_VARIABLE" and tree.args.3.type = "EXPR_DECLARATIVE_FUNC" then
+            
+            dst_func := tree.args.3;
+            
+            pos := Position( template.new_funcs, dst_func.nams{[ 1 .. dst_func.narg ]} );
+            
+            if pos <> fail then
+                
+                # detect `ListN( SYNTAX_TREE_VARIABLE_1, SYNTAX_TREE_VARIABLE_2, func )` in src_template_tree
+                pre_func := function ( src_tree, additional_arguments )
+                    
+                    if IsBound( template.new_funcs_corresponding_src_funcs[pos] ) then
+                        
+                        return fail;
+                        
+                    fi;
+                    
+                    if CapJitIsCallToGlobalFunction( src_tree, "ListN" ) and src_tree.args.1.type = "SYNTAX_TREE_VARIABLE" and src_tree.args.1.id = tree.args.1.id and src_tree.args.2.type = "SYNTAX_TREE_VARIABLE" and src_tree.args.2.id = tree.args.2.id and src_tree.args.3.type in [ "SYNTAX_TREE_VARIABLE", "EXPR_DECLARATIVE_FUNC" ] then
+                        
+                        template.new_funcs_corresponding_src_funcs[pos] := src_tree.args.3;
+                        
+                    fi;
+                    
+                    return src_tree;
+                    
+                end;
+                
+                CapJitIterateOverTree( template.src_template_tree, pre_func, ReturnTrue, ReturnTrue, true );
+                
+            fi;
             
         fi;
         
@@ -460,7 +521,9 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
             
         fi;
         
-        if template_tree.type = "EXPR_DECLARATIVE_FUNC" and tree.type = "EXPR_DECLARATIVE_FUNC" then
+        if template_tree.type = "EXPR_DECLARATIVE_FUNC" then
+            
+            Assert( 0, tree.type = "EXPR_DECLARATIVE_FUNC" );
             
             # we are only interested in two cases:
             # a) the functions actually only differ by ID, i.e. the names of all local variables and bindings agree
@@ -767,7 +830,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATES, function ( tree
                 
                 # adjust function IDs and insert variables in dst_template_tree
                 pre_func := function ( tree, func_id_stack )
-                  local replacement;
+                  local pos, replacement, new_nams, src_func, old_func;
                     
                     if not well_defined then
                         
@@ -776,11 +839,68 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATES, function ( tree
                         
                     fi;
                     
-                    if tree.type = "EXPR_DECLARATIVE_FUNC" and IsBound( func_id_replacements.(tree.id) ) then
+                    if tree.type = "EXPR_DECLARATIVE_FUNC" then
                         
-                        replacement := func_id_replacements.(tree.id);
+                        pos := Position( template.new_funcs, tree.nams{[ 1 .. tree.narg ]} );
                         
-                        return CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( tree, replacement.func_id, replacement.nams );
+                        if pos = fail then
+                            
+                            Assert( 0, IsBound( func_id_replacements.(tree.id) ) );
+                            
+                            replacement := func_id_replacements.(tree.id);
+                            
+                            return CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( tree, replacement.func_id, replacement.nams );
+                            
+                        else
+                            
+                            new_nams := ShallowCopy( tree.nams );
+                            
+                            # try to get the names of the function arguments from an existing function
+                            if IsBound( template.new_funcs_corresponding_src_funcs[pos] ) then
+                                
+                                src_func := template.new_funcs_corresponding_src_funcs[pos];
+                                
+                                if src_func.type = "SYNTAX_TREE_VARIABLE" then
+                                    
+                                    old_func := variables[src_func.id];
+                                    
+                                    if old_func.type = "EXPR_DECLARATIVE_FUNC" then
+                                        
+                                        Assert( 0, tree.narg = old_func.narg );
+                                        
+                                        new_nams{[ 1 .. tree.narg ]} := old_func.nams{[ 1 .. tree.narg ]};
+                                        
+                                        return CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( tree, tree.id, new_nams );
+                                        
+                                    fi;
+                                    
+                                elif src_func.type = "EXPR_DECLARATIVE_FUNC" then
+                                    
+                                    Assert( 0, tree.narg = src_func.narg );
+                                    
+                                    Assert( 0, IsBound( func_id_replacements.(src_func.id) ) );
+                                    
+                                    replacement := func_id_replacements.(src_func.id);
+                                    
+                                    new_nams{[ 1 .. tree.narg ]} := replacement.nams{[ 1 .. tree.narg ]};
+                                    
+                                    return CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( tree, tree.id, new_nams );
+                                    
+                                else
+                                    
+                                    # COVERAGE_IGNORE_NEXT_LINE
+                                    Error( "this should never happen" );
+                                    
+                                fi;
+                                
+                            fi;
+                            
+                            # if we cannot find a suitable existing function, prepend "logic_new_func_" to the names of arguments
+                            new_nams{[ 1 .. tree.narg ]} := List( tree.nams{[ 1 .. tree.narg ]}, nam -> Concatenation( "logic_new_func_", nam ) );
+                            
+                            return CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( tree, tree.id, new_nams );
+                            
+                        fi;
                         
                     fi;
                     
