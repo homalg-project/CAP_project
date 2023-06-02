@@ -42,18 +42,18 @@ DeclareGlobalFunction( "CapJitContainsRefToFVAROutsideOfFuncStack" );
 DeclareGlobalFunction( "CapJitGetOrCreateGlobalVariable" );
 
 #! @Description
-#!   Finds a node in <A>tree</A> for which <A>condition_func</A> returns `true`.
+#!   Finds a node in <A>tree</A> for which <A>condition_func</A> returns `true` and returns the path of this node.
 #!   For each node, <A>condition_func</A> is called with the node and current path as arguments, and must return a boolean.
 #!   If multiple nodes are found, children are preferred over their parents (i.e. a "deep" node is returned).
 #!   If no node can be found, `fail` is returned.
-#! @Returns a record or fail
+#! @Returns a list or fail
 #! @Arguments tree, condition_func
 DeclareGlobalFunction( "CapJitFindNodeDeep" );
 
 #! @Description
 #!   Finds all nodes in <A>tree</A> for which <A>condition_func</A> returns `true`.
 #!   For each node, <A>condition_func</A> is called with the node and current path as arguments, and must return a boolean.
-#!   Returns a list of nodes for which this call yields true.
+#!   Returns a list of paths of nodes for which this call yields true.
 #! @Returns a list
 #! @Arguments tree, condition_func
 DeclareGlobalFunction( "CapJitFindNodes" );
