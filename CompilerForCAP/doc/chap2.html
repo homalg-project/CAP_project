@@ -401,9 +401,9 @@
 <h5>2.4-6 CapJitFindNodeDeep</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitFindNodeDeep</code>( <var class="Arg">tree</var>, <var class="Arg">condition_func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Returns: a record or fail</p>
+<p>Returns: a list or fail</p>
 
-<p>Finds a node in <var class="Arg">tree</var> for which <var class="Arg">condition_func</var> returns <code class="code">true</code>. For each node, <var class="Arg">condition_func</var> is called with the node and current path as arguments, and must return a boolean. If multiple nodes are found, children are preferred over their parents (i.e. a "deep" node is returned). If no node can be found, <code class="code">fail</code> is returned.</p>
+<p>Finds a node in <var class="Arg">tree</var> for which <var class="Arg">condition_func</var> returns <code class="code">true</code> and returns the path of this node. For each node, <var class="Arg">condition_func</var> is called with the node and current path as arguments, and must return a boolean. If multiple nodes are found, children are preferred over their parents (i.e. a "deep" node is returned). If no node can be found, <code class="code">fail</code> is returned.</p>
 
 <p><a id="X7ACEA9D087F47BE6" name="X7ACEA9D087F47BE6"></a></p>
 
@@ -412,7 +412,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitFindNodes</code>( <var class="Arg">tree</var>, <var class="Arg">condition_func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list</p>
 
-<p>Finds all nodes in <var class="Arg">tree</var> for which <var class="Arg">condition_func</var> returns <code class="code">true</code>. For each node, <var class="Arg">condition_func</var> is called with the node and current path as arguments, and must return a boolean. Returns a list of nodes for which this call yields true.</p>
+<p>Finds all nodes in <var class="Arg">tree</var> for which <var class="Arg">condition_func</var> returns <code class="code">true</code>. For each node, <var class="Arg">condition_func</var> is called with the node and current path as arguments, and must return a boolean. Returns a list of paths of nodes for which this call yields true.</p>
 
 <p><a id="X7B97567F7B56CBFA" name="X7B97567F7B56CBFA"></a></p>
 

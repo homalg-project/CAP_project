@@ -1,7 +1,7 @@
 name: CompilerForCAP
-version: "2023.05-03"
+version: "2023.06-01"
 license: "GPL-2.0-or-later"
-date: 2023-05-18
+date: 2023-06-03
 description: |
     Speed up computations in CAP categories
 
@@ -29,11 +29,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/CompilerForCAP/Package
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2023.05-03/CompilerForCAP-2023.05-03.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2023.06-01/CompilerForCAP-2023.06-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2023.05-03/CompilerForCAP-2023.05-03.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2023.06-01/CompilerForCAP-2023.06-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2023.05-03/CompilerForCAP-2023.05-03-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2023.06-01/CompilerForCAP-2023.06-01-manual.pdf
 
 abstract: |
 
@@ -42,28 +42,28 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>Zic18</span>]   <b class='BibAuthor'>Zickgraf, F.</b>,
+    [<span class='BibKey'>Zic03</span>]   <b class='BibAuthor'>Zickgraf, F.</b>,
      <i class='BibTitle'>CompilerForCAP, Speed up computations in CAP categories,
-             Version 2023.05-03</i>
-     (<span class='BibYear'>5-18</span>)<br />
+             Version 2023.06-01</i>
+     (<span class='BibYear'>6-03</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/CompilerForCAP">https://homalg-project.github.io/pkg/CompilerForCAP</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ CompilerForCAP2023.05-03,
+    @misc{ CompilerForCAP2023.06-01,
       author =           {Zickgraf, F.},
       title =            {{CompilerForCAP},   Speed   up   computations  in  CAP
-                          categories, {V}ersion 2023.05-03},
+                          categories, {V}ersion 2023.06-01},
       month =            {3-},
-      year =             {5-18},
+      year =             {6-03},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/CompilerForCAP}
                           {\texttt{https://homalg-project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{CompilerForCAP}}},
-      printedkey =       {Zic18}
+      printedkey =       {Zic03}
     }
 

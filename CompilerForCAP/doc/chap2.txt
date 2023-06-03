@@ -371,13 +371,13 @@
   [1X2.4-6 CapJitFindNodeDeep[101X
   
   [33X[1;0Y[29X[2XCapJitFindNodeDeep[102X( [3Xtree[103X, [3Xcondition_func[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya record or fail[133X
+  [6XReturns:[106X  [33X[0;10Ya list or fail[133X
   
-  [33X[0;0YFinds  a  node in [3Xtree[103X for which [3Xcondition_func[103X returns [10Xtrue[110X. For each node,
-  [3Xcondition_func[103X  is  called  with the node and current path as arguments, and
-  must  return  a boolean. If multiple nodes are found, children are preferred
-  over  their  parents  (i.e.  a  "deep"  node is returned). If no node can be
-  found, [10Xfail[110X is returned.[133X
+  [33X[0;0YFinds  a  node in [3Xtree[103X for which [3Xcondition_func[103X returns [10Xtrue[110X and returns the
+  path of this node. For each node, [3Xcondition_func[103X is called with the node and
+  current  path as arguments, and must return a boolean. If multiple nodes are
+  found,  children  are  preferred  over  their parents (i.e. a "deep" node is
+  returned). If no node can be found, [10Xfail[110X is returned.[133X
   
   [1X2.4-7 CapJitFindNodes[101X
   
@@ -386,8 +386,8 @@
   
   [33X[0;0YFinds  all  nodes  in  [3Xtree[103X  for which [3Xcondition_func[103X returns [10Xtrue[110X. For each
   node,  [3Xcondition_func[103X is called with the node and current path as arguments,
-  and  must  return  a  boolean.  Returns  a list of nodes for which this call
-  yields true.[133X
+  and  must  return a boolean. Returns a list of paths of nodes for which this
+  call yields true.[133X
   
   [1X2.4-8 CapJitGetNodeByPath[101X
   
