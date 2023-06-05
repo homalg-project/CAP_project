@@ -15,21 +15,49 @@ InstallMethod( LeftPresentationsAsFreydCategoryOfCategoryOfRows,
                [ IsHomalgRing ],
                
   function( ring )
-    local rows, freyd, object_constructor, modeling_tower_object_constructor, object_datum, modeling_tower_object_datum, morphism_constructor, modeling_tower_morphism_datum, morphism_datum, modeling_tower_morphism_constructor, wrapper;
-    
-    rows := CategoryOfRows( ring : FinalizeCategory := true );
-    
-    freyd := FREYD_CATEGORY( rows : FinalizeCategory := true );
+    local object_constructor, object_datum, morphism_constructor, morphism_datum,
+          rows, freyd,
+          modeling_tower_object_constructor, modeling_tower_object_datum, modeling_tower_morphism_datum, modeling_tower_morphism_constructor,
+          wrapper;
     
     ##
-    object_constructor := function( cat, matrix)
+    object_constructor := function( cat, matrix )
         
-        return ObjectifyObjectForCAPWithAttributes( rec(), cat,
-                                                    UnderlyingMatrix, matrix );
+        return CreateCapCategoryObjectWithAttributes( cat,
+                       UnderlyingMatrix, matrix );
     
     end;
     
     ##
+    object_datum := function( cat, obj )
+        
+        return UnderlyingMatrix( obj );
+        
+    end;
+    
+    ##
+    morphism_constructor := function( cat, source, matrix, range )
+        
+        return CreateCapCategoryMorphismWithAttributes( cat,
+                       source,
+                       range,
+                       UnderlyingMatrix, matrix );
+        
+    end;
+    
+    ##
+    morphism_datum := function( cat, mor )
+        
+        return UnderlyingMatrix( mor );
+        
+    end;
+
+    ## building the categorical tower:
+    rows := CategoryOfRows( ring : FinalizeCategory := true );
+    
+    freyd := FREYD_CATEGORY( rows : FinalizeCategory := true );
+    
+    ## from the raw object data to the object in the modeling category
     modeling_tower_object_constructor := function( cat, matrix )
         local freyd, rows;
         
@@ -42,31 +70,14 @@ InstallMethod( LeftPresentationsAsFreydCategoryOfCategoryOfRows,
         
     end;
     
-    ##
-    object_datum := function( cat, obj )
-        
-        return UnderlyingMatrix( obj );
-        
-    end;
-    
-    ##
+    ## from the object in the modeling category to the raw object data
     modeling_tower_object_datum := function( cat, obj )
       
       return UnderlyingMatrix( RelationMorphism( obj ) );
         
     end;
     
-    ##
-    morphism_constructor := function( cat, source, matrix, range )
-        
-        return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(), cat,
-                                                                        source,
-                                                                        range,
-                                                                        UnderlyingMatrix, matrix );
-        
-    end;
-    
-    ##
+    ## from the raw morphism data to the morphism in the modeling category
     modeling_tower_morphism_constructor := function( cat, source, matrix, range )
         local freyd, rows, source_rows, range_rows, rows_morphism;
         
@@ -84,14 +95,7 @@ InstallMethod( LeftPresentationsAsFreydCategoryOfCategoryOfRows,
         
     end;
     
-    ##
-    morphism_datum := function( cat, mor )
-        
-        return UnderlyingMatrix( mor );
-        
-    end;
-    
-    ##
+    ## from the morphism in the modeling category to the raw morphism data
     modeling_tower_morphism_datum := function( cat, mor )
         
         return UnderlyingMatrix( UnderlyingMorphism( mor ) );
@@ -154,21 +158,49 @@ InstallMethod( RightPresentationsAsFreydCategoryOfCategoryOfColumns,
                [ IsHomalgRing ],
                
   function( ring )
-    local cols, freyd, object_constructor, modeling_tower_object_constructor, object_datum, modeling_tower_object_datum, morphism_constructor, modeling_tower_morphism_datum, morphism_datum, modeling_tower_morphism_constructor, wrapper;
-    
-    cols := CategoryOfColumns( ring : FinalizeCategory := true );
-    
-    freyd := FREYD_CATEGORY( cols : FinalizeCategory := true );
+    local object_constructor, object_datum, morphism_constructor, morphism_datum,
+          cols, freyd,
+          modeling_tower_object_constructor, modeling_tower_object_datum, modeling_tower_morphism_datum, modeling_tower_morphism_constructor,
+          wrapper;
     
     ##
     object_constructor := function( cat, matrix)
         
-        return ObjectifyObjectForCAPWithAttributes( rec(), cat,
-                                                    UnderlyingMatrix, matrix );
+        return CreateCapCategoryObjectWithAttributes( cat,
+                       UnderlyingMatrix, matrix );
     
     end;
     
     ##
+    object_datum := function( cat, obj )
+        
+        return UnderlyingMatrix( obj );
+        
+    end;
+    
+    ##
+    morphism_constructor := function( cat, source, matrix, range )
+        
+        return CreateCapCategoryMorphismWithAttributes( cat,
+                       source,
+                       range,
+                       UnderlyingMatrix, matrix );
+        
+    end;
+    
+    ##
+    morphism_datum := function( cat, mor )
+        
+        return UnderlyingMatrix( mor );
+        
+    end;
+    
+    ## building the categorical tower:
+    cols := CategoryOfColumns( ring : FinalizeCategory := true );
+    
+    freyd := FREYD_CATEGORY( cols : FinalizeCategory := true );
+    
+    ## from the raw object data to the object in the modeling category
     modeling_tower_object_constructor := function( cat, matrix )
         local freyd, cols;
         
@@ -181,31 +213,14 @@ InstallMethod( RightPresentationsAsFreydCategoryOfCategoryOfColumns,
         
     end;
     
-    ##
-    object_datum := function( cat, obj )
-        
-        return UnderlyingMatrix( obj );
-        
-    end;
-    
-    ##
+    ## from the object in the modeling category to the raw object data
     modeling_tower_object_datum := function( cat, obj )
       
       return UnderlyingMatrix( RelationMorphism( obj ) );
         
     end;
     
-    ##
-    morphism_constructor := function( cat, source, matrix, range )
-        
-        return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(), cat,
-                                                                        source,
-                                                                        range,
-                                                                        UnderlyingMatrix, matrix );
-        
-    end;
-    
-    ##
+    ## from the raw morphism data to the morphism in the modeling category
     modeling_tower_morphism_constructor := function( cat, source, matrix, range )
         local freyd, cols, source_cols, range_cols, cols_morphism;
         
@@ -223,14 +238,7 @@ InstallMethod( RightPresentationsAsFreydCategoryOfCategoryOfColumns,
         
     end;
     
-    ##
-    morphism_datum := function( cat, mor )
-        
-        return UnderlyingMatrix( mor );
-        
-    end;
-    
-    ##
+    ## from the morphism in the modeling category to the raw morphism data
     modeling_tower_morphism_datum := function( cat, mor )
         
         return UnderlyingMatrix( UnderlyingMorphism( mor ) );
