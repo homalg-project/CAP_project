@@ -6,6 +6,8 @@
 
 LoadPackage( "FreydCategoriesForCAP", false );
 #! true
+LoadPackage( "LinearAlgebraForCAP", false );
+#! true
 
 Q := HomalgFieldOfRationals();;
 vec := MatrixCategoryAsCategoryOfRows( Q : no_precompiled_code := true );;
@@ -42,11 +44,9 @@ Display( compiled_func2 );
 #!     deduped_2_1 := UnderlyingRing( cat_1 );
 #!     return CreateCapCategoryMorphismWithAttributes( cat_1, S_1, T_1, 
 #!        UnderlyingMatrix, UnionOfRows( deduped_2_1, Dimension( T_1 ), 
-#!          ListN( diagram_S_1, morphism_matrix_1, 
-#!            function ( logic_new_func_x_2, logic_new_func_y_2 )
-#!                 return 
-#!                  UnionOfColumns( deduped_2_1, Dimension( logic_new_func_x_2 )
-#!                     , List( logic_new_func_y_2, UnderlyingMatrix ) );
+#!          ListN( diagram_S_1, morphism_matrix_1, function ( source_2, row_2 )
+#!                 return UnionOfColumns( deduped_2_1, Dimension( source_2 ), 
+#!                    List( row_2, UnderlyingMatrix ) );
 #!             end ) ) );
 #! end
 

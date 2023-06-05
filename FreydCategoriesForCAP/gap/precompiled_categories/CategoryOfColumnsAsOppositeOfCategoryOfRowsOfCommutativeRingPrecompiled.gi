@@ -48,8 +48,8 @@ function ( cat_1, arg2_1, arg3_1 )
     deduped_5_1 := RankOfObject( arg3_1 );
     deduped_4_1 := deduped_5_1 * deduped_6_1;
     hoisted_1_1 := HomalgIdentityMatrix( deduped_4_1, UnderlyingRing( cat_1 ) );
-    return List( [ 1 .. deduped_4_1 ], function ( logic_new_func_x_2 )
-            return CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg3_1, UnderlyingMatrix, ConvertRowToMatrix( CertainRows( hoisted_1_1, [ logic_new_func_x_2 ] ), deduped_5_1, deduped_6_1 ) );
+    return List( [ 1 .. deduped_4_1 ], function ( i_2 )
+            return CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg3_1, UnderlyingMatrix, ConvertRowToMatrix( CertainRows( hoisted_1_1, [ i_2 ] ), deduped_5_1, deduped_6_1 ) );
         end );
 end
 ########

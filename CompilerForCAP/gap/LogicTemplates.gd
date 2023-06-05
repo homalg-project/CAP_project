@@ -31,8 +31,8 @@ DeclareGlobalFunction( "CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE" );
 #!       multiple times, the corresponding parts of the tree must be equal.
 #!       The template is only applied if all values match the corresponding filters in `variable_filters`.
 #!     * For each function in `dst_template`, <Ref Func="CapJitAppliedLogicTemplates" /> tries to find a corresponding function in
-#!       `src_template`. The functions are matched by comparing the lists of names of local variables. If for a function in
-#!       `dst_template` no corresponding function in `src_template` exists, you have to add the list of names of local variables
+#!       `src_template`. The functions are matched by comparing the lists of names of function arguments. If for a function in
+#!       `dst_template` no corresponding function in `src_template` exists, you have to add the list of names of function arguments
 #!       of this function to `new_funcs`.
 #!     * `needed_packages` has the same format as `NeededOtherPackages` in `PackageInfo.g`. The template is only evaluated if
 #!       the packages in `needed_packages` are loaded in the correct versions.
