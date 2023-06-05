@@ -88,10 +88,10 @@
   
   [30X    [33X[0;6YFor   each   function   in  [10Xdst_template[110X,  [2XCapJitAppliedLogicTemplates[102X
         ([14X2.5-18[114X)  tries  to find a corresponding function in [10Xsrc_template[110X. The
-        functions  are  matched  by  comparing  the  lists  of  names of local
-        variables. If for a function in [10Xdst_template[110X no corresponding function
-        in  [10Xsrc_template[110X  exists,  you  have to add the list of names of local
-        variables of this function to [10Xnew_funcs[110X.[133X
+        functions  are  matched  by  comparing  the lists of names of function
+        arguments. If for a function in [10Xdst_template[110X no corresponding function
+        in  [10Xsrc_template[110X exists, you have to add the list of names of function
+        arguments of this function to [10Xnew_funcs[110X.[133X
   
   [30X    [33X[0;6Y[10Xneeded_packages[110X   has   the  same  format  as  [10XNeededOtherPackages[110X  in
         [10XPackageInfo.g[110X.  The  template  is  only  evaluated  if the packages in

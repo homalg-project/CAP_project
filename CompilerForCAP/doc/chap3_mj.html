@@ -43,6 +43,8 @@
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP", false );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LinearAlgebraForCAP", false );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MatrixCategoryAsCategoryOfRows( Q : no_precompiled_code := true );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := MatrixCategoryObject( vec, 2 );;</span>
@@ -75,11 +77,9 @@ function ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )
     deduped_2_1 := UnderlyingRing( cat_1 );
     return CreateCapCategoryMorphismWithAttributes( cat_1, S_1, T_1, 
        UnderlyingMatrix, UnionOfRows( deduped_2_1, Dimension( T_1 ), 
-         ListN( diagram_S_1, morphism_matrix_1, 
-           function ( logic_new_func_x_2, logic_new_func_y_2 )
-                return 
-                 UnionOfColumns( deduped_2_1, Dimension( logic_new_func_x_2 )
-                    , List( logic_new_func_y_2, UnderlyingMatrix ) );
+         ListN( diagram_S_1, morphism_matrix_1, function ( source_2, row_2 )
+                return UnionOfColumns( deduped_2_1, Dimension( source_2 ), 
+                   List( row_2, UnderlyingMatrix ) );
             end ) ) );
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ENHANCED_SYNTAX_TREE_CODE(</span>
