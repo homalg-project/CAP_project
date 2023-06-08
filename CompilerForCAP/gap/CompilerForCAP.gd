@@ -73,6 +73,16 @@ DeclareGlobalFunction( "CapJitDisableProofAssistantMode" );
 #!   Info class used for info messsages of the CAP compiler.
 DeclareInfoClass( "InfoCapJit" );
 
+DeclareGlobalName( "CAP_JIT_INTERNAL_DEBUG_LEVEL" );
+CAP_JIT_INTERNAL_DEBUG_LEVEL := 0;
+
+#! @Description
+#!   Set the debug level. At level 0, no debug information is printed. At level 1 (or higher), compiled functions are printed at the beginning of the compilation,
+#!   before the resolving phase, before the rule phase, before the post-processing starts, and at the end of the compilation. At level 2 (or higher), compiled functions
+#!   are printed after every compilation step. These levels are not fixed and may change in the future.
+#! @Arguments level
+DeclareGlobalFunction( "CapJitSetDebugLevel" );
+
 #! @Section Compiling a function manually
 
 #! @Description
