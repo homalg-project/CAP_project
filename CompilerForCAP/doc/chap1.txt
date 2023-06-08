@@ -382,6 +382,17 @@
   
   [33X[0;0YInfo class used for info messsages of the CAP compiler.[133X
   
+  [1X1.11-2 CapJitSetDebugLevel[101X
+  
+  [33X[1;0Y[29X[2XCapJitSetDebugLevel[102X( [3Xlevel[103X ) [32X function[133X
+  
+  [33X[0;0YSet the debug level. At level 0, no debug information is printed. At level 1
+  (or  higher),  compiled  functions  are  printed  at  the  beginning  of the
+  compilation,  before  the resolving phase, before the rule phase, before the
+  post-processing  starts,  and  at the end of the compilation. At level 2 (or
+  higher),  compiled functions are printed after every compilation step. These
+  levels are not fixed and may change in the future.[133X
+  
   
   [1X1.12 [33X[0;0YFAQ[133X[101X
   

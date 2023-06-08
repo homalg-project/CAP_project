@@ -77,6 +77,7 @@
 </span>
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8202365E84A044DC">1.11-1 InfoCapJit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X83CA158B7F828620">1.11-2 CapJitSetDebugLevel</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X780099B481AB3AB7">1.12 <span class="Heading">FAQ</span></a>
 </span>
@@ -387,6 +388,13 @@
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InfoCapJit</code></td><td class="tdright">(&nbsp;info class&nbsp;)</td></tr></table></div>
 <p>Info class used for info messsages of the CAP compiler.</p>
+
+<p><a id="X83CA158B7F828620" name="X83CA158B7F828620"></a></p>
+
+<h5>1.11-2 CapJitSetDebugLevel</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitSetDebugLevel</code>( <var class="Arg">level</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Set the debug level. At level 0, no debug information is printed. At level 1 (or higher), compiled functions are printed at the beginning of the compilation, before the resolving phase, before the rule phase, before the post-processing starts, and at the end of the compilation. At level 2 (or higher), compiled functions are printed after every compilation step. These levels are not fixed and may change in the future.</p>
 
 <p><a id="X780099B481AB3AB7" name="X780099B481AB3AB7"></a></p>
 

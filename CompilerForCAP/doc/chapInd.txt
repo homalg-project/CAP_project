@@ -53,6 +53,7 @@
   [2XCapJitResolvedGlobalVariables[102X 2.5-20 
   [2XCapJitResolvedOperations[102X 2.5-21 
   [2XCapJitResultFuncCombineChildren[102X 2.4-3 
+  [2XCapJitSetDebugLevel[102X 1.11-2 
   [2XCapJitUnbindBinding[102X 2.4-15 
   [2XCapJitValueOfBinding[102X 2.4-14 
   [2XContinueCompilationAtCategory[102X 1.7-2 

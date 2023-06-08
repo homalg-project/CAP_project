@@ -9,15 +9,13 @@
   
   [33X[0;0YFor debugging you can:[133X
   
+  [30X    [33X[0;6Yuse [2XCapJitSetDebugLevel[102X ([14X1.11-2[114X),[133X
+  
   [30X    [33X[0;6Yuse  [2XENHANCED_SYNTAX_TREE_CODE[102X  ([14X2.2-2[114X)  to  view the tree as GAP code
         ([10XENHANCED_SYNTAX_TREE_CODE[110X( [3Xtree[103X )),[133X
   
   [30X    [33X[0;6Yuse  [2XCapJitPrettyPrintSyntaxTree[102X  ([14X2.4-1[114X)  to  view the tree in a more
         readable formatting ([10XCapJitPrettyPrintSyntaxTree[110X( [3Xtree[103X )),[133X
-  
-  [30X    [33X[0;6Yset       [10Xdebug[110X       to       [10Xtrue[110X      in      the      code      of
-        [2XCapJitCompiledFunctionAsEnhancedSyntaxTree[102X  ([14X1.5-3[114X) (Note: this causes
-        informational break loops which are not actual errors),[133X
   
   [30X    [33X[0;6Yuse  the  [10Xdebug[110X  and [10Xdebug_path[110X record entries of logic templates (see
         [2XCapJitAddLogicTemplate[102X ([14X2.1-2[114X)).[133X
