@@ -604,7 +604,7 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                 domains := rec( );
                 
                 pre_func := function ( tree, func_stack )
-                  local value_of_binding_iterated, is_shorter_than, list_call, domain, simplify, enclosing_domain, index, resolved_domain, resolved_index, element;
+                  local value_of_binding_iterated, value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated, is_shorter_than, list_call, domain, simplify, enclosing_domain, index, resolved_domain, resolved_index, element;
                     
                     value_of_binding_iterated := function ( tree )
                       local func;
@@ -625,11 +625,36 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                         
                     end;
                     
+                    value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated := function ( tree )
+                      local func;
+                        
+                        if CapJitIsCallToGlobalFunction( tree, "CAP_JIT_INCOMPLETE_LOGIC" ) then
+                            
+                            return value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( tree.args.1 );
+                            
+                        fi;
+                        
+                        if tree.type = "EXPR_REF_FVAR" then
+                            
+                            func := SafeUniqueEntry( func_stack, f -> f.id = tree.func_id );
+                            
+                            if SafeUniquePosition( func.nams, tree.name ) > func.narg then
+                                
+                                return value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( CapJitValueOfBinding( func.bindings, tree.name ) );
+                                
+                            fi;
+                            
+                        fi;
+                        
+                        return tree;
+                        
+                    end;
+                    
                     is_shorter_than := function ( domain1, domain2 )
                       local last, minuend;
                         
-                        domain1 := value_of_binding_iterated( domain1 );
-                        domain2 := value_of_binding_iterated( domain2 );
+                        domain1 := value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( domain1 );
+                        domain2 := value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( domain2 );
                         
                         if CapJitIsEqualForEnhancedSyntaxTrees( domain1, domain2 ) then
                             
@@ -640,11 +665,11 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                         # `[ 0 .. Length( list ) - 1 ]` is as long as `list`
                         if domain1.type = "EXPR_RANGE" and domain1.first.type = "EXPR_INT" and domain1.first.value = 0 then
                             
-                            last := value_of_binding_iterated( domain1.last );
+                            last := value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( domain1.last );
                             
                             if CapJitIsCallToGlobalFunction( last, "-" ) and last.args.2.type = "EXPR_INT" and last.args.2.value = 1 then
                                 
-                                minuend := value_of_binding_iterated( last.args.1 );
+                                minuend := value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( last.args.1 );
                                 
                                 if CapJitIsCallToGlobalFunction( minuend, "Length" ) then
                                     
@@ -659,7 +684,7 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                         # `[ 1 .. Length( list ) ]` is as long as `list`
                         if domain1.type = "EXPR_RANGE" and domain1.first.type = "EXPR_INT" and domain1.first.value = 1 then
                             
-                            last := value_of_binding_iterated( domain1.last );
+                            last := value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( domain1.last );
                             
                             if CapJitIsCallToGlobalFunction( last, "Length" ) then
                                 
@@ -670,7 +695,7 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                         fi;
                         
                         # `Filtered( list, func )` is shorter than `list`
-                        if CapJitIsCallToGlobalFunction( domain1, "Filtered" ) and CapJitIsEqualForEnhancedSyntaxTrees( value_of_binding_iterated( domain1.args.1 ), domain2 ) then
+                        if CapJitIsCallToGlobalFunction( domain1, "Filtered" ) and CapJitIsEqualForEnhancedSyntaxTrees( value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( domain1.args.1 ), domain2 ) then
                             
                             return true;
                             
@@ -698,7 +723,7 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                             
                         fi;
                         
-                        list_call := value_of_binding_iterated( list_call );
+                        list_call := value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( list_call );
                         
                         if CapJitIsCallToGlobalFunction( list_call, "List" ) and list_call.args.length = 2 then
                             
@@ -706,10 +731,11 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                             
                             simplify := false;
                             
-                            # case: no enclosing domain, i.e. not hoisted, and not deduplicated
+                            # If domain is hoisted and wrapped in `CAP_JIT_INCOMPLETE_LOGIC`, `CAP_JIT_INCOMPLETE_LOGIC` is also hoisted,
+                            # so to distinguish between the hoisted and non-hoisted case, we do not have to take `CAP_JIT_INCOMPLETE_LOGIC` into account.
+                            
+                            # case: no enclosing domain, i.e. not hoisted
                             if tree.args.1.type <> "EXPR_REF_FVAR" then
-                                
-                                Assert( 0, IsIdenticalObj( list_call, tree.args.1 ) );
                                 
                                 simplify := true;
                                 
@@ -730,12 +756,16 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                                 
                                 changed := true;
                                 
-                                # List( domain, func )[index] => func( CAP_JIT_INCOMPLETE_LOGIC( domain[index] ) )
+                                # List( domain, func )[index] => func( domain[index] )
+                                # This might open up opportunities for more optimizations: e.g. `domain[index]` could be simplified further,
+                                # or the return value of `func` could be used for simplifications in the surrounding context.
+                                # However, we do not apply logic anymore (see comment above).
+                                # To make the user aware of this, we wrap `func( domain[index] )` and `domain[index]` in calls to `CAP_JIT_INCOMPLETE_LOGIC`.
                                 
                                 index := tree.args.2;
                                 
-                                resolved_domain := value_of_binding_iterated( domain );
-                                resolved_index := value_of_binding_iterated( index );
+                                resolved_domain := value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( domain );
+                                resolved_index := value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( index );
                                 
                                 # [ 1 .. last ][x] => x
                                 if resolved_domain.type = "EXPR_RANGE" and resolved_domain.first.type = "EXPR_INT" and resolved_domain.first.value = 1 then
@@ -766,16 +796,25 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                                 
                                 return rec(
                                     type := "EXPR_FUNCCALL",
-                                    funcref := CapJitCopyWithNewFunctionIDs( list_call.args.2 ), # func
+                                    funcref := rec(
+                                        type := "EXPR_REF_GVAR",
+                                        gvar := "CAP_JIT_INCOMPLETE_LOGIC", # CAP_JIT_INCOMPLETE_LOGIC
+                                    ),
                                     args := AsSyntaxTreeList( [
                                         rec(
                                             type := "EXPR_FUNCCALL",
-                                            funcref := rec(
-                                                type := "EXPR_REF_GVAR",
-                                                gvar := "CAP_JIT_INCOMPLETE_LOGIC", # CAP_JIT_INCOMPLETE_LOGIC
-                                            ),
+                                            funcref := CapJitCopyWithNewFunctionIDs( list_call.args.2 ), # func
                                             args := AsSyntaxTreeList( [
-                                                element
+                                                rec(
+                                                    type := "EXPR_FUNCCALL",
+                                                    funcref := rec(
+                                                        type := "EXPR_REF_GVAR",
+                                                        gvar := "CAP_JIT_INCOMPLETE_LOGIC", # CAP_JIT_INCOMPLETE_LOGIC
+                                                    ),
+                                                    args := AsSyntaxTreeList( [
+                                                        element,
+                                                    ] ),
+                                                ),
                                             ] ),
                                         ),
                                     ] ),
