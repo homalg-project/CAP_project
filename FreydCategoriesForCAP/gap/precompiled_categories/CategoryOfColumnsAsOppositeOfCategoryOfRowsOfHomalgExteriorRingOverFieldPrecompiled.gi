@@ -224,7 +224,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
                 return List( hoisted_6_1, function ( j_3 )
                         local deduped_1_3;
                         deduped_1_3 := Sum( ListWithIdenticalEntries( hoisted_1_2 + CAP_JIT_INCOMPLETE_LOGIC( j_3 ) - 1, deduped_2_1 ) ) + 1;
-                        return EntriesOfHomalgMatrix( CoercedMatrix( deduped_9_1, CertainColumns( hoisted_3_1, [ deduped_1_3 .. (deduped_1_3 - 1 + deduped_2_1) ] ) ) * deduped_10_1 )[1];
+                        return EntriesOfHomalgMatrix( CoercedMatrix( deduped_9_1, CAP_JIT_INCOMPLETE_LOGIC( CertainColumns( hoisted_3_1, [ deduped_1_3 .. (deduped_1_3 - 1 + deduped_2_1) ] ) ) ) * deduped_10_1 )[1];
                     end );
             end ), deduped_7_1, deduped_8_1, deduped_9_1 ) );
 end

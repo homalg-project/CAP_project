@@ -12,7 +12,9 @@ gap> func := function ( L, func, index )
 > end;;
 gap> Display( CapJitCompiledFunction( func ) );
 function ( L_1, func_1, index_1 )
-    return func_1( CAP_JIT_INCOMPLETE_LOGIC( L_1[index_1] ) );
+    return 
+     CAP_JIT_INCOMPLETE_LOGIC( 
+       func_1( CAP_JIT_INCOMPLETE_LOGIC( L_1[index_1] ) ) );
 end
 
 # case: enclosing domain with unkown size
@@ -43,7 +45,9 @@ gap> func := function ( L, func )
 gap> Display( CapJitCompiledFunction( func ) );
 function ( L_1, func_1 )
     return List( L_1, function ( l_2 )
-            return func_1( CAP_JIT_INCOMPLETE_LOGIC( L_1[l_2] ) );
+            return 
+             CAP_JIT_INCOMPLETE_LOGIC( 
+               func_1( CAP_JIT_INCOMPLETE_LOGIC( L_1[l_2] ) ) );
         end );
 end
 
@@ -58,7 +62,9 @@ gap> func := function ( L, func )
 gap> Display( CapJitCompiledFunction( func ) );
 function ( L_1, func_1 )
     return Filtered( L_1, function ( l_2 )
-            return func_1( CAP_JIT_INCOMPLETE_LOGIC( L_1[l_2] ) );
+            return 
+             CAP_JIT_INCOMPLETE_LOGIC( 
+               func_1( CAP_JIT_INCOMPLETE_LOGIC( L_1[l_2] ) ) );
         end );
 end
 
@@ -77,7 +83,9 @@ gap> Display( CapJitCompiledFunction( func ) );
 function ( L_1, filter_func_1, func_1 )
     return List( [ 0 .. Length( Filtered( L_1, filter_func_1 ) ) - 1 ], 
        function ( l_2 )
-            return func_1( CAP_JIT_INCOMPLETE_LOGIC( L_1[l_2] ) );
+            return 
+             CAP_JIT_INCOMPLETE_LOGIC( 
+               func_1( CAP_JIT_INCOMPLETE_LOGIC( L_1[l_2] ) ) );
         end );
 end
 
@@ -89,7 +97,9 @@ gap> func := function ( last, func, index )
 > end;;
 gap> Display( CapJitCompiledFunction( func ) );
 function ( last_1, func_1, index_1 )
-    return func_1( CAP_JIT_INCOMPLETE_LOGIC( index_1 ) );
+    return 
+     CAP_JIT_INCOMPLETE_LOGIC( func_1( CAP_JIT_INCOMPLETE_LOGIC( index_1 ) ) )
+     ;
 end
 
 # simplify [ 0 .. last ][1 + x]
@@ -100,7 +110,9 @@ gap> func := function ( last, func, index )
 > end;;
 gap> Display( CapJitCompiledFunction( func ) );
 function ( last_1, func_1, index_1 )
-    return func_1( CAP_JIT_INCOMPLETE_LOGIC( index_1 ) );
+    return 
+     CAP_JIT_INCOMPLETE_LOGIC( func_1( CAP_JIT_INCOMPLETE_LOGIC( index_1 ) ) )
+     ;
 end
 
 # simplify nested CAP_JIT_INCOMPLETE_LOGIC
@@ -111,7 +123,9 @@ gap> func := function ( last, func, index )
 > end;;
 gap> Display( CapJitCompiledFunction( func ) );
 function ( last_1, func_1, index_1 )
-    return func_1( CAP_JIT_INCOMPLETE_LOGIC( index_1 ) );
+    return 
+     CAP_JIT_INCOMPLETE_LOGIC( func_1( CAP_JIT_INCOMPLETE_LOGIC( index_1 ) ) )
+     ;
 end
 
 #
