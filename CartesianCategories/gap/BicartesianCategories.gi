@@ -9,6 +9,8 @@ InstallTrueMethod( IsCocartesianCategory, IsBicartesianCategory );
 #= comment for Julia
 InstallTrueMethod( IsBicartesianCategory, IsCartesianCategory and IsCocartesianCategory );
 # =#
+InstallTrueMethod( IsBicartesianCategory, IsDistributiveCategory );
+InstallTrueMethod( IsBicartesianCategory, IsCodistributiveCategory );
 
 # https://ncatlab.org/nlab/show/bicartesian+closed+category
 #= comment for Julia
