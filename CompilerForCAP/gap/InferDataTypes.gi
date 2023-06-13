@@ -115,6 +115,13 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_DATA_TYPE_OF_VALUE", function ( val
         
         return CapJitDataTypeOfMorphismOfCategory( CapCategory( value ) );
         
+    elif IsBoundGlobal( "IsQuiverVertex" ) and ValueGlobal( "IsQuiverVertex" )( value ) then
+        
+        # Every quiver vertex also lies in IsPath, which is listed in CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS.
+        # We want to strictly distinguish between vertices and paths (see QuiverVertexAsIdentityPath),
+        # so we have to handle quiver vertices as a special case here.
+        return rec( filter := ValueGlobal( "IsQuiverVertex" ) );
+        
     fi;
     
     filters := Filtered( CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS, filter -> filter( value ) );
