@@ -99,8 +99,8 @@ gap> Display( applied_logic_template_to_func(
 >     template,
 >     [
 >         [
->             rec( filter := IsList, element_type := rec( filter := IsInt ) ),
->             rec( filter := IsList, element_type := rec( filter := IsInt ) ),
+>             CapJitDataTypeOfListOf( IsInt ),
+>             CapJitDataTypeOfListOf( IsInt ),
 >         ],
 >         fail,
 >     ]

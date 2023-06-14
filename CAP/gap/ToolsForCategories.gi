@@ -69,19 +69,19 @@ InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( stri
         
     elif string = "list_of_objects" then
         
-        return rec( filter := IsList, element_type := CapJitDataTypeOfObjectOfCategory( category ) );
+        return CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( category ) );
         
     elif string = "list_of_morphisms" then
         
-        return rec( filter := IsList, element_type := CapJitDataTypeOfMorphismOfCategory( category ) );
+        return CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( category ) );
         
     elif string = "list_of_lists_of_morphisms" then
         
-        return rec( filter := IsList, element_type := rec( filter := IsList, element_type := CapJitDataTypeOfMorphismOfCategory( category ) ) );
+        return CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( category ) ) );
         
     elif string = "list_of_twocells" then
         
-        return rec( filter := IsList, element_type := CapJitDataTypeOfTwoCellOfCategory( category ) );
+        return CapJitDataTypeOfListOf( CapJitDataTypeOfTwoCellOfCategory( category ) );
         
     elif string = "object_in_range_category_of_homomorphism_structure" then
         
@@ -210,21 +210,11 @@ InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( stri
             
         fi;
         
-        return rec(
-            filter := IsList,
-            element_type := rec(
-                filter := is_ring_element,
-            ),
-        );
+        return CapJitDataTypeOfListOf( is_ring_element );
         
     elif string = "arbitrary_list" then
         
-        return rec(
-            filter := IsList,
-            element_type := rec(
-                filter := IsObject,
-            )
-        );
+        return CapJitDataTypeOfListOf( IsObject );
         
     elif EndsWith( string, "_tuple_of_morphisms" ) and ForAll( string{[ 1 .. Length( string ) - Length( "_tuple_of_morphisms" ) ]}, IsDigitChar ) then
         
@@ -1285,6 +1275,26 @@ InstallGlobalFunction( "CapJitAddTypeSignatureDeferred", function ( package_name
     fi;
     
     Add( CAP_JIT_INTERNAL_TYPE_SIGNATURES_DEFERRED.(package_name), [ name, input_filters, output_data_type ] );
+    
+end );
+
+##
+InstallGlobalFunction( CapJitDataTypeOfListOf, function ( element_type )
+    
+    if IsFilter( element_type ) then
+        
+        element_type := rec( filter := element_type );
+        
+    fi;
+    
+    if not IsRecord( element_type ) then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "<element_type> must be a filter or a record" );
+        
+    fi;
+    
+    return rec( filter := IsList, element_type := element_type );
     
 end );
 
