@@ -328,6 +328,14 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGU
     elif funcref.type = "EXPR_DECLARATIVE_FUNC" then
         
         func := ShallowCopy( funcref );
+        
+        if func.narg <> Length( arguments_types ) then
+            
+            # COVERAGE_IGNORE_NEXT_LINE
+            ErrorWithCurrentlyCompiledFunctionLocation( "applying literal function to a wrong number of arguments" );
+            
+        fi;
+        
         func.data_type := rec( filter := IsFunction, signature := [ arguments_types, fail ] );
         
         func := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES( func, func_stack );
