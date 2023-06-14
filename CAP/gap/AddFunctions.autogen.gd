@@ -13,7 +13,7 @@
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `AdditionForMorphisms`.
-#! $F: ( a, b ) \mapsto \mathtt{AdditionForMorphisms}(a, b)$.
+#! $F: ( alpha, beta ) \mapsto \mathtt{AdditionForMorphisms}(alpha, beta)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddAdditionForMorphisms",
@@ -51,7 +51,7 @@ DeclareOperation( "AddAdditiveGenerators",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `AdditiveInverseForMorphisms`.
-#! $F: ( a ) \mapsto \mathtt{AdditiveInverseForMorphisms}(a)$.
+#! $F: ( alpha ) \mapsto \mathtt{AdditiveInverseForMorphisms}(alpha)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddAdditiveInverseForMorphisms",
@@ -222,7 +222,7 @@ DeclareOperation( "AddCoefficientsOfMorphism",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `Coequalizer`.
-#! $F: ( arg2, arg3 ) \mapsto \mathtt{Coequalizer}(arg2, arg3)$.
+#! $F: ( Y, morphisms ) \mapsto \mathtt{Coequalizer}(Y, morphisms)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddCoequalizer",
@@ -412,7 +412,7 @@ DeclareOperation( "AddCokernelColiftWithGivenCokernelObject",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `CokernelObject`.
-#! $F: ( arg2 ) \mapsto \mathtt{CokernelObject}(arg2)$.
+#! $F: ( alpha ) \mapsto \mathtt{CokernelObject}(alpha)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddCokernelObject",
@@ -640,7 +640,7 @@ DeclareOperation( "AddComponentOfMorphismIntoDirectSum",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `Coproduct`.
-#! $F: ( arg2 ) \mapsto \mathtt{Coproduct}(arg2)$.
+#! $F: ( objects ) \mapsto \mathtt{Coproduct}(objects)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddCoproduct",
@@ -697,7 +697,7 @@ DeclareOperation( "AddCoproductFunctorialWithGivenCoproducts",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `DirectProduct`.
-#! $F: ( arg2 ) \mapsto \mathtt{DirectProduct}(arg2)$.
+#! $F: ( objects ) \mapsto \mathtt{DirectProduct}(objects)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddDirectProduct",
@@ -754,7 +754,7 @@ DeclareOperation( "AddDirectProductFunctorialWithGivenDirectProducts",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `DirectSum`.
-#! $F: ( arg2 ) \mapsto \mathtt{DirectSum}(arg2)$.
+#! $F: ( objects ) \mapsto \mathtt{DirectSum}(objects)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddDirectSum",
@@ -944,7 +944,7 @@ DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjective
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `Equalizer`.
-#! $F: ( arg2, arg3 ) \mapsto \mathtt{Equalizer}(arg2, arg3)$.
+#! $F: ( Y, morphisms ) \mapsto \mathtt{Equalizer}(Y, morphisms)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddEqualizer",
@@ -1001,7 +1001,7 @@ DeclareOperation( "AddEqualizerFunctorialWithGivenEqualizers",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `FiberProduct`.
-#! $F: ( arg2 ) \mapsto \mathtt{FiberProduct}(arg2)$.
+#! $F: ( morphisms ) \mapsto \mathtt{FiberProduct}(morphisms)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddFiberProduct",
@@ -2901,7 +2901,7 @@ DeclareOperation( "AddKernelLiftWithGivenKernelObject",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `KernelObject`.
-#! $F: ( arg2 ) \mapsto \mathtt{KernelObject}(arg2)$.
+#! $F: ( alpha ) \mapsto \mathtt{KernelObject}(alpha)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddKernelObject",
@@ -3433,7 +3433,7 @@ DeclareOperation( "AddMorphismFromSourceToPushoutWithGivenPushout",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `MultiplyWithElementOfCommutativeRingForMorphisms`.
-#! $F: ( r, a ) \mapsto \mathtt{MultiplyWithElementOfCommutativeRingForMorphisms}(r, a)$.
+#! $F: ( r, alpha ) \mapsto \mathtt{MultiplyWithElementOfCommutativeRingForMorphisms}(r, alpha)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddMultiplyWithElementOfCommutativeRingForMorphisms",
@@ -3813,7 +3813,7 @@ DeclareOperation( "AddProjectiveLift",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `Pushout`.
-#! $F: ( arg2 ) \mapsto \mathtt{Pushout}(arg2)$.
+#! $F: ( morphisms ) \mapsto \mathtt{Pushout}(morphisms)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddPushout",
@@ -4535,7 +4535,7 @@ DeclareOperation( "AddSomeReductionBySplitEpiSummand_MorphismToInputRange",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `SubtractionForMorphisms`.
-#! $F: ( a, b ) \mapsto \mathtt{SubtractionForMorphisms}(a, b)$.
+#! $F: ( alpha, beta ) \mapsto \mathtt{SubtractionForMorphisms}(alpha, beta)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddSubtractionForMorphisms",

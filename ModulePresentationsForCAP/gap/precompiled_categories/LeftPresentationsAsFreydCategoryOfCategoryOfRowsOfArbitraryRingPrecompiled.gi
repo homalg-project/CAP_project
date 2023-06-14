@@ -9,8 +9,8 @@ BindGlobal( "ADD_FUNCTIONS_FOR_LeftPresentationsAsFreydCategoryOfCategoryOfRowsO
     AddAdditionForMorphisms( cat,
         
 ########
-function ( cat_1, a_1, b_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), UnderlyingMatrix, UnderlyingMatrix( a_1 ) + UnderlyingMatrix( b_1 ) );
+function ( cat_1, alpha_1, beta_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Range( alpha_1 ), UnderlyingMatrix, UnderlyingMatrix( alpha_1 ) + UnderlyingMatrix( beta_1 ) );
 end
 ########
         
@@ -20,8 +20,8 @@ end
     AddAdditiveInverseForMorphisms( cat,
         
 ########
-function ( cat_1, a_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), UnderlyingMatrix, - UnderlyingMatrix( a_1 ) );
+function ( cat_1, alpha_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Range( alpha_1 ), UnderlyingMatrix, - UnderlyingMatrix( alpha_1 ) );
 end
 ########
         
@@ -58,8 +58,8 @@ end
     AddDirectSum( cat,
         
 ########
-function ( cat_1, arg2_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, UnderlyingMatrix, DiagMat( UnderlyingRing( cat_1 ), List( arg2_1, UnderlyingMatrix ) ) );
+function ( cat_1, objects_1 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, UnderlyingMatrix, DiagMat( UnderlyingRing( cat_1 ), List( objects_1, UnderlyingMatrix ) ) );
 end
 ########
         

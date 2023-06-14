@@ -9,10 +9,10 @@ BindGlobal( "ADD_FUNCTIONS_FOR_OppositeOfMatrixCategoryPrecompiled", function ( 
     AddAdditionForMorphisms( cat,
         
 ########
-function ( cat_1, a_1, b_1 )
+function ( cat_1, alpha_1, beta_1 )
     local deduped_1_1;
-    deduped_1_1 := Opposite( a_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), Opposite, CreateCapCategoryMorphismWithAttributes( OppositeCategory( cat_1 ), Source( deduped_1_1 ), Range( deduped_1_1 ), UnderlyingMatrix, UnderlyingMatrix( deduped_1_1 ) + UnderlyingMatrix( Opposite( b_1 ) ) ) );
+    deduped_1_1 := Opposite( alpha_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Range( alpha_1 ), Opposite, CreateCapCategoryMorphismWithAttributes( OppositeCategory( cat_1 ), Source( deduped_1_1 ), Range( deduped_1_1 ), UnderlyingMatrix, UnderlyingMatrix( deduped_1_1 ) + UnderlyingMatrix( Opposite( beta_1 ) ) ) );
 end
 ########
         
@@ -33,10 +33,10 @@ end
     AddAdditiveInverseForMorphisms( cat,
         
 ########
-function ( cat_1, a_1 )
+function ( cat_1, alpha_1 )
     local deduped_1_1;
-    deduped_1_1 := Opposite( a_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), Opposite, CreateCapCategoryMorphismWithAttributes( OppositeCategory( cat_1 ), Source( deduped_1_1 ), Range( deduped_1_1 ), UnderlyingMatrix, - UnderlyingMatrix( deduped_1_1 ) ) );
+    deduped_1_1 := Opposite( alpha_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Range( alpha_1 ), Opposite, CreateCapCategoryMorphismWithAttributes( OppositeCategory( cat_1 ), Source( deduped_1_1 ), Range( deduped_1_1 ), UnderlyingMatrix, - UnderlyingMatrix( deduped_1_1 ) ) );
 end
 ########
         
@@ -184,9 +184,9 @@ end
     AddCokernelObject( cat,
         
 ########
-function ( cat_1, arg2_1 )
+function ( cat_1, alpha_1 )
     local deduped_1_1;
-    deduped_1_1 := Opposite( arg2_1 );
+    deduped_1_1 := Opposite( alpha_1 );
     return CreateCapCategoryObjectWithAttributes( cat_1, Opposite, CreateCapCategoryObjectWithAttributes( OppositeCategory( cat_1 ), Dimension, Dimension( Source( deduped_1_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( deduped_1_1 ) ) ) );
 end
 ########
@@ -277,8 +277,8 @@ end
     AddDirectSum( cat,
         
 ########
-function ( cat_1, arg2_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, Opposite, CreateCapCategoryObjectWithAttributes( OppositeCategory( cat_1 ), Dimension, Sum( List( arg2_1, function ( x_2 )
+function ( cat_1, objects_1 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Opposite, CreateCapCategoryObjectWithAttributes( OppositeCategory( cat_1 ), Dimension, Sum( List( objects_1, function ( x_2 )
                   return Dimension( Opposite( x_2 ) );
               end ) ) ) );
 end
@@ -621,9 +621,9 @@ end
     AddKernelObject( cat,
         
 ########
-function ( cat_1, arg2_1 )
+function ( cat_1, alpha_1 )
     local deduped_1_1;
-    deduped_1_1 := Opposite( arg2_1 );
+    deduped_1_1 := Opposite( alpha_1 );
     return CreateCapCategoryObjectWithAttributes( cat_1, Opposite, CreateCapCategoryObjectWithAttributes( OppositeCategory( cat_1 ), Dimension, Dimension( Range( deduped_1_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( deduped_1_1 ) ) ) );
 end
 ########
@@ -726,10 +726,10 @@ end
     AddMultiplyWithElementOfCommutativeRingForMorphisms( cat,
         
 ########
-function ( cat_1, r_1, a_1 )
+function ( cat_1, r_1, alpha_1 )
     local deduped_1_1;
-    deduped_1_1 := Opposite( a_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), Opposite, CreateCapCategoryMorphismWithAttributes( OppositeCategory( cat_1 ), Source( deduped_1_1 ), Range( deduped_1_1 ), UnderlyingMatrix, r_1 * UnderlyingMatrix( deduped_1_1 ) ) );
+    deduped_1_1 := Opposite( alpha_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Range( alpha_1 ), Opposite, CreateCapCategoryMorphismWithAttributes( OppositeCategory( cat_1 ), Source( deduped_1_1 ), Range( deduped_1_1 ), UnderlyingMatrix, r_1 * UnderlyingMatrix( deduped_1_1 ) ) );
 end
 ########
         
