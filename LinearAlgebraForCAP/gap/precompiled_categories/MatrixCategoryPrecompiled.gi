@@ -9,8 +9,8 @@ BindGlobal( "ADD_FUNCTIONS_FOR_MatrixCategoryPrecompiled", function ( cat )
     AddAdditionForMorphisms( cat,
         
 ########
-function ( cat_1, a_1, b_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), UnderlyingMatrix, UnderlyingMatrix( a_1 ) + UnderlyingMatrix( b_1 ) );
+function ( cat_1, alpha_1, beta_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Range( alpha_1 ), UnderlyingMatrix, UnderlyingMatrix( alpha_1 ) + UnderlyingMatrix( beta_1 ) );
 end
 ########
         
@@ -31,8 +31,8 @@ end
     AddAdditiveInverseForMorphisms( cat,
         
 ########
-function ( cat_1, a_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), UnderlyingMatrix, - UnderlyingMatrix( a_1 ) );
+function ( cat_1, alpha_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Range( alpha_1 ), UnderlyingMatrix, - UnderlyingMatrix( alpha_1 ) );
 end
 ########
         
@@ -631,12 +631,12 @@ end
     AddCoequalizer( cat,
         
 ########
-function ( cat_1, arg2_1, arg3_1 )
+function ( cat_1, Y_1, morphisms_1 )
     local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
-    deduped_4_1 := Length( arg3_1 );
-    deduped_3_1 := List( arg3_1, UnderlyingMatrix );
+    deduped_4_1 := Length( morphisms_1 );
+    deduped_3_1 := List( morphisms_1, UnderlyingMatrix );
     deduped_2_1 := UnderlyingRing( cat_1 );
-    deduped_1_1 := Dimension( arg2_1 );
+    deduped_1_1 := Dimension( Y_1 );
     return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, deduped_1_1 - RowRankOfMatrix( (UnionOfRows( deduped_2_1, deduped_1_1, deduped_3_1{[ 1 .. deduped_4_1 - 1 ]} ) - UnionOfRows( deduped_2_1, deduped_1_1, deduped_3_1{[ 2 .. deduped_4_1 ]} )) ) );
 end
 ########
@@ -852,8 +852,8 @@ end
     AddCokernelObject( cat,
         
 ########
-function ( cat_1, arg2_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, Dimension( Range( arg2_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( arg2_1 ) ) );
+function ( cat_1, alpha_1 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, Dimension( Range( alpha_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( alpha_1 ) ) );
 end
 ########
         
@@ -993,8 +993,8 @@ end
     AddCoproduct( cat,
         
 ########
-function ( cat_1, arg2_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, Sum( List( arg2_1, Dimension ) ) );
+function ( cat_1, objects_1 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, Sum( List( objects_1, Dimension ) ) );
 end
 ########
         
@@ -1044,8 +1044,8 @@ end
     AddDirectProduct( cat,
         
 ########
-function ( cat_1, arg2_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, Sum( List( arg2_1, Dimension ) ) );
+function ( cat_1, objects_1 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, Sum( List( objects_1, Dimension ) ) );
 end
 ########
         
@@ -1095,8 +1095,8 @@ end
     AddDirectSum( cat,
         
 ########
-function ( cat_1, arg2_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, Sum( List( arg2_1, Dimension ) ) );
+function ( cat_1, objects_1 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, Sum( List( objects_1, Dimension ) ) );
 end
 ########
         
@@ -1230,12 +1230,12 @@ end
     AddEqualizer( cat,
         
 ########
-function ( cat_1, arg2_1, arg3_1 )
+function ( cat_1, Y_1, morphisms_1 )
     local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
-    deduped_4_1 := Length( arg3_1 );
-    deduped_3_1 := List( arg3_1, UnderlyingMatrix );
+    deduped_4_1 := Length( morphisms_1 );
+    deduped_3_1 := List( morphisms_1, UnderlyingMatrix );
     deduped_2_1 := UnderlyingRing( cat_1 );
-    deduped_1_1 := Dimension( arg2_1 );
+    deduped_1_1 := Dimension( Y_1 );
     return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, deduped_1_1 - RowRankOfMatrix( (UnionOfColumns( deduped_2_1, deduped_1_1, deduped_3_1{[ 1 .. deduped_4_1 - 1 ]} ) - UnionOfColumns( deduped_2_1, deduped_1_1, deduped_3_1{[ 2 .. deduped_4_1 ]} )) ) );
 end
 ########
@@ -1354,18 +1354,18 @@ end
     AddFiberProduct( cat,
         
 ########
-function ( cat_1, arg2_1 )
+function ( cat_1, morphisms_1 )
     local deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1;
-    deduped_8_1 := Length( arg2_1 );
+    deduped_8_1 := Length( morphisms_1 );
     deduped_7_1 := UnderlyingRing( cat_1 );
-    deduped_6_1 := List( arg2_1, function ( logic_new_func_x_2 )
+    deduped_6_1 := List( morphisms_1, function ( logic_new_func_x_2 )
             return Dimension( Source( logic_new_func_x_2 ) );
         end );
     deduped_5_1 := Sum( deduped_6_1 );
     deduped_4_1 := List( [ 1 .. deduped_8_1 ], function ( i_2 )
             local deduped_1_2;
             deduped_1_2 := deduped_6_1[i_2];
-            return UnionOfRows( HomalgZeroMatrix( Sum( deduped_6_1{[ 1 .. (i_2 - 1) ]} ), deduped_1_2, deduped_7_1 ), HomalgIdentityMatrix( deduped_1_2, deduped_7_1 ), HomalgZeroMatrix( Sum( deduped_6_1{[ (i_2 + 1) .. deduped_8_1 ]} ), deduped_1_2, deduped_7_1 ) ) * CAP_JIT_INCOMPLETE_LOGIC( UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( arg2_1[i_2] ) ) );
+            return UnionOfRows( HomalgZeroMatrix( Sum( deduped_6_1{[ 1 .. (i_2 - 1) ]} ), deduped_1_2, deduped_7_1 ), HomalgIdentityMatrix( deduped_1_2, deduped_7_1 ), HomalgZeroMatrix( Sum( deduped_6_1{[ (i_2 + 1) .. deduped_8_1 ]} ), deduped_1_2, deduped_7_1 ) ) * CAP_JIT_INCOMPLETE_LOGIC( UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( morphisms_1[i_2] ) ) );
         end );
     return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, deduped_5_1 - RowRankOfMatrix( (UnionOfColumns( deduped_7_1, deduped_5_1, deduped_4_1{[ 1 .. deduped_8_1 - 1 ]} ) - UnionOfColumns( deduped_7_1, deduped_5_1, deduped_4_1{[ 2 .. deduped_8_1 ]} )) ) );
 end
@@ -3256,8 +3256,8 @@ end
     AddKernelObject( cat,
         
 ########
-function ( cat_1, arg2_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, Dimension( Source( arg2_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( arg2_1 ) ) );
+function ( cat_1, alpha_1 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, Dimension( Source( alpha_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( alpha_1 ) ) );
 end
 ########
         
@@ -4428,8 +4428,8 @@ end
     AddMultiplyWithElementOfCommutativeRingForMorphisms( cat,
         
 ########
-function ( cat_1, r_1, a_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), UnderlyingMatrix, r_1 * UnderlyingMatrix( a_1 ) );
+function ( cat_1, r_1, alpha_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Range( alpha_1 ), UnderlyingMatrix, r_1 * UnderlyingMatrix( alpha_1 ) );
 end
 ########
         
@@ -4697,18 +4697,18 @@ end
     AddPushout( cat,
         
 ########
-function ( cat_1, arg2_1 )
+function ( cat_1, morphisms_1 )
     local deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1;
-    deduped_8_1 := Length( arg2_1 );
+    deduped_8_1 := Length( morphisms_1 );
     deduped_7_1 := UnderlyingRing( cat_1 );
-    deduped_6_1 := List( arg2_1, function ( logic_new_func_x_2 )
+    deduped_6_1 := List( morphisms_1, function ( logic_new_func_x_2 )
             return Dimension( Range( logic_new_func_x_2 ) );
         end );
     deduped_5_1 := Sum( deduped_6_1 );
     deduped_4_1 := List( [ 1 .. deduped_8_1 ], function ( i_2 )
             local deduped_1_2;
             deduped_1_2 := deduped_6_1[i_2];
-            return CAP_JIT_INCOMPLETE_LOGIC( UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( arg2_1[i_2] ) ) ) * UnionOfColumns( HomalgZeroMatrix( deduped_1_2, Sum( deduped_6_1{[ 1 .. (i_2 - 1) ]} ), deduped_7_1 ), HomalgIdentityMatrix( deduped_1_2, deduped_7_1 ), HomalgZeroMatrix( deduped_1_2, Sum( deduped_6_1{[ (i_2 + 1) .. deduped_8_1 ]} ), deduped_7_1 ) );
+            return CAP_JIT_INCOMPLETE_LOGIC( UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( morphisms_1[i_2] ) ) ) * UnionOfColumns( HomalgZeroMatrix( deduped_1_2, Sum( deduped_6_1{[ 1 .. (i_2 - 1) ]} ), deduped_7_1 ), HomalgIdentityMatrix( deduped_1_2, deduped_7_1 ), HomalgZeroMatrix( deduped_1_2, Sum( deduped_6_1{[ (i_2 + 1) .. deduped_8_1 ]} ), deduped_7_1 ) );
         end );
     return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, deduped_5_1 - RowRankOfMatrix( (UnionOfRows( deduped_7_1, deduped_5_1, deduped_4_1{[ 1 .. deduped_8_1 - 1 ]} ) - UnionOfRows( deduped_7_1, deduped_5_1, deduped_4_1{[ 2 .. deduped_8_1 ]} )) ) );
 end
@@ -5211,8 +5211,8 @@ end
     AddSubtractionForMorphisms( cat,
         
 ########
-function ( cat_1, a_1, b_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), UnderlyingMatrix, UnderlyingMatrix( a_1 ) - UnderlyingMatrix( b_1 ) );
+function ( cat_1, alpha_1, beta_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Range( alpha_1 ), UnderlyingMatrix, UnderlyingMatrix( alpha_1 ) - UnderlyingMatrix( beta_1 ) );
 end
 ########
         

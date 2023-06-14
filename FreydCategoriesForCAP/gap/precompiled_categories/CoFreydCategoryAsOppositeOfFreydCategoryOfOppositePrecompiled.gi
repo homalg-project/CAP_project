@@ -9,8 +9,8 @@ BindGlobal( "ADD_FUNCTIONS_FOR_CoFreydCategoryAsOppositeOfFreydCategoryOfOpposit
     AddAdditionForMorphisms( cat,
         
 ########
-function ( cat_1, a_1, b_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), UnderlyingMorphism, AdditionForMorphisms( UnderlyingCategory( cat_1 ), UnderlyingMorphism( a_1 ), UnderlyingMorphism( b_1 ) ) );
+function ( cat_1, alpha_1, beta_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Range( alpha_1 ), UnderlyingMorphism, AdditionForMorphisms( UnderlyingCategory( cat_1 ), UnderlyingMorphism( alpha_1 ), UnderlyingMorphism( beta_1 ) ) );
 end
 ########
         
@@ -20,8 +20,8 @@ end
     AddAdditiveInverseForMorphisms( cat,
         
 ########
-function ( cat_1, a_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), UnderlyingMorphism, AdditiveInverseForMorphisms( UnderlyingCategory( cat_1 ), UnderlyingMorphism( a_1 ) ) );
+function ( cat_1, alpha_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Range( alpha_1 ), UnderlyingMorphism, AdditiveInverseForMorphisms( UnderlyingCategory( cat_1 ), UnderlyingMorphism( alpha_1 ) ) );
 end
 ########
         
@@ -31,10 +31,10 @@ end
     AddDirectSum( cat,
         
 ########
-function ( cat_1, arg2_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, CoRelationMorphism, DirectSumFunctorial( UnderlyingCategory( cat_1 ), List( arg2_1, function ( x_2 )
+function ( cat_1, objects_1 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, CoRelationMorphism, DirectSumFunctorial( UnderlyingCategory( cat_1 ), List( objects_1, function ( x_2 )
                 return Source( CoRelationMorphism( x_2 ) );
-            end ), List( arg2_1, CoRelationMorphism ), List( arg2_1, function ( x_2 )
+            end ), List( objects_1, CoRelationMorphism ), List( objects_1, function ( x_2 )
                 return Range( CoRelationMorphism( x_2 ) );
             end ) ) );
 end

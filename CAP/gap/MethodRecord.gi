@@ -382,6 +382,7 @@ PostInverseForMorphisms := rec(
 
 KernelObject := rec(
   filter_list := [ "category", "morphism" ],
+  input_arguments_names := [ "cat", "alpha" ],
   return_type := "object",
   dual_operation := "CokernelObject",
   compatible_with_congruence_of_morphisms := false,
@@ -441,6 +442,7 @@ KernelLiftWithGivenKernelObject := rec(
 
 CokernelObject := rec(
   filter_list := [ "category", "morphism" ],
+  input_arguments_names := [ "cat", "alpha" ],
   return_type := "object",
   dual_operation := "KernelObject",
   compatible_with_congruence_of_morphisms := false,
@@ -667,6 +669,7 @@ PostComposeList := rec(
 
 ZeroObject := rec(
   filter_list := [ "category" ],
+  input_arguments_names := [ "cat" ],
   return_type := "object",
   dual_operation := "ZeroObject",
   functorial := "ZeroObjectFunctorial",
@@ -756,6 +759,7 @@ ZeroMorphism := rec(
 
 DirectSum := rec(
   filter_list := [ "category", "list_of_objects" ],
+  input_arguments_names := [ "cat", "objects" ],
   return_type := "object",
   dual_operation := "DirectSum",
   functorial := "DirectSumFunctorial",
@@ -915,6 +919,7 @@ UniversalMorphismFromDirectSumWithGivenDirectSum := rec(
 
 TerminalObject := rec(
   filter_list := [ "category" ],
+  input_arguments_names := [ "cat" ],
   return_type := "object",
   dual_operation := "InitialObject",
   functorial := "TerminalObjectFunctorial",
@@ -935,6 +940,7 @@ UniversalMorphismIntoTerminalObjectWithGivenTerminalObject := rec(
 
 InitialObject := rec(
   filter_list := [ "category" ],
+  input_arguments_names := [ "cat" ],
   return_type := "object",
   dual_operation := "TerminalObject",
   functorial := "InitialObjectFunctorial",
@@ -955,6 +961,7 @@ UniversalMorphismFromInitialObjectWithGivenInitialObject := rec(
 
 DirectProduct := rec(
   filter_list := [ "category", "list_of_objects" ],
+  input_arguments_names := [ "cat", "objects" ],
   return_type := "object",
   dual_operation := "Coproduct",
   functorial := "DirectProductFunctorial",
@@ -1245,7 +1252,7 @@ IsZeroForMorphisms := rec(
 
 AdditionForMorphisms := rec(
   filter_list := [ "category", "morphism", "morphism" ],
-  io_type := [ [ "a", "b" ], [ "a_source", "a_range" ] ],
+  io_type := [ [ "alpha", "beta" ], [ "alpha_source", "alpha_range" ] ],
   dual_operation := "AdditionForMorphisms",
   
   pre_function := function( cat, morphism_1, morphism_2 )
@@ -1289,7 +1296,7 @@ AdditionForMorphisms := rec(
 
 SubtractionForMorphisms := rec(
   filter_list := [ "category", "morphism", "morphism" ],
-  io_type := [ [ "a", "b" ], [ "a_source", "a_range" ] ],
+  io_type := [ [ "alpha", "beta" ], [ "alpha_source", "alpha_range" ] ],
   dual_operation := "SubtractionForMorphisms",
   
   pre_function := function( cat, morphism_1, morphism_2 )
@@ -1333,7 +1340,7 @@ SubtractionForMorphisms := rec(
 
 MultiplyWithElementOfCommutativeRingForMorphisms := rec(
   filter_list := [ "category", "element_of_commutative_ring_of_linear_structure", "morphism" ],
-  io_type := [ [ "r", "a" ], [ "a_source", "a_range" ] ],
+  io_type := [ [ "r", "alpha" ], [ "alpha_source", "alpha_range" ] ],
   
   pre_function := function( cat, r, morphism )
     
@@ -1352,7 +1359,7 @@ MultiplyWithElementOfCommutativeRingForMorphisms := rec(
 
 AdditiveInverseForMorphisms := rec(
   filter_list := [ "category", "morphism" ],
-  io_type := [ [ "a" ], [ "a_source", "a_range" ] ],
+  io_type := [ [ "alpha" ], [ "alpha_source", "alpha_range" ] ],
   dual_operation := "AdditiveInverseForMorphisms",
   return_type := "morphism",
   compatible_with_congruence_of_morphisms := true,
@@ -1360,6 +1367,7 @@ AdditiveInverseForMorphisms := rec(
 
 Coproduct := rec(
   filter_list := [ "category", "list_of_objects" ],
+  input_arguments_names := [ "cat", "objects" ],
   return_type := "object",
   dual_operation := "DirectProduct",
   functorial := "CoproductFunctorial",
@@ -1513,6 +1521,7 @@ IsCodominating := rec(
 
 Equalizer := rec(
   filter_list := [ "category", "object", "list_of_morphisms" ],
+  input_arguments_names := [ "cat", "Y", "morphisms" ],
   return_type := "object",
   dual_operation := "Coequalizer",
   
@@ -1676,6 +1685,7 @@ IsomorphismFromKernelOfJointPairwiseDifferencesOfMorphismsIntoDirectProductToEqu
 
 FiberProduct := rec(
   filter_list := [ "category", "list_of_morphisms" ],
+  input_arguments_names := [ "cat", "morphisms" ],
   dual_operation := "Pushout",
   
   pre_function := function( cat, diagram )
@@ -1957,6 +1967,7 @@ UniversalMorphismIntoFiberProductWithGivenFiberProduct := rec(
 
 Coequalizer := rec(
   filter_list := [ "category", "object", "list_of_morphisms" ],
+  input_arguments_names := [ "cat", "Y", "morphisms" ],
   return_type := "object",
   dual_operation := "Equalizer",
   
@@ -2120,6 +2131,7 @@ IsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproductToCoequ
 
 Pushout := rec(
   filter_list := [ "category", "list_of_morphisms" ],
+  input_arguments_names := [ "cat", "morphisms" ],
   dual_operation := "FiberProduct",
   
   pre_function := function( cat, diagram )
@@ -4336,7 +4348,7 @@ end );
 
 InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
   function ( method_name_record, limits )
-    local make_record_with_given, make_colimit, object_filter_list, projection_filter_list, projection_io_type, morphism_to_sink_filter_list, morphism_to_sink_io_type, universal_morphism_filter_list, universal_morphism_io_type, object_record, projection_record, morphism_to_sink_record, filter_list, io_type, with_given_object_position, return_type, dual_operation, universal_morphism_record, functorial_record, functorial_with_given_record, limit;
+    local make_record_with_given, make_colimit, object_filter_list, object_input_arguments_names, projection_filter_list, projection_io_type, morphism_to_sink_filter_list, morphism_to_sink_io_type, universal_morphism_filter_list, universal_morphism_io_type, object_record, projection_record, morphism_to_sink_record, filter_list, io_type, with_given_object_position, return_type, dual_operation, universal_morphism_record, functorial_record, functorial_with_given_record, limit;
     
     #### helper functions
     make_record_with_given := function ( record, object_name, coobject_name )
@@ -4419,6 +4431,7 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
         
         #### get filter lists and io types
         object_filter_list := Concatenation( [ "category" ], StructuralCopy( limit.diagram_filter_list ) );
+        object_input_arguments_names := Concatenation( [ "cat" ], limit.diagram_input_type );
         
         # only used if limit.number_of_targets > 0
         projection_filter_list := Concatenation( [ "category" ], StructuralCopy( limit.diagram_filter_list ) );
@@ -4480,6 +4493,7 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
         object_record :=  rec(
             function_name := limit.limit_object_name,
             filter_list := object_filter_list,
+            input_arguments_names := object_input_arguments_names,
             return_type := "object",
             dual_operation := limit.colimit_object_name,
             functorial := limit.limit_functorial_name,
