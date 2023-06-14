@@ -216,6 +216,7 @@
     [4X        "list_of_objects",[104X
     [4X        "list_of_morphisms",[104X
     [4X        "list_of_morphisms_or_fail",[104X
+    [4X        "list_of_lists_of_morphisms",[104X
     [4X        "object_datum",[104X
     [4X        "morphism_datum",[104X
     [4X        "nonneg_integer_or_infinity",[104X
