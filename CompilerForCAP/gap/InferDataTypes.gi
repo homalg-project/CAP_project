@@ -99,7 +99,7 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_DATA_TYPE_OF_VALUE", function ( val
             
         fi;
         
-        return rec( filter := IsList, element_type := element_type );
+        return CapJitDataTypeOfListOf( element_type );
         
     fi;
     
@@ -611,7 +611,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INFERRED_DATA_TYPES, function ( tree, in
             
         elif tree.type = "EXPR_RANGE" then
             
-            data_type := rec( filter := IsList, element_type := rec( filter := IsInt ) );
+            data_type := CapJitDataTypeOfListOf( IsInt );
             
         elif tree.type = "EXPR_LIST" then
             
@@ -634,7 +634,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INFERRED_DATA_TYPES, function ( tree, in
                 
             fi;
             
-            data_type := rec( filter := IsList, element_type := tree.list.1.data_type );
+            data_type := CapJitDataTypeOfListOf( tree.list.1.data_type );
             
         elif tree.type = "EXPR_REF_GVAR" then
             
@@ -952,7 +952,7 @@ CapJitAddTypeSignature( "IsZero", [ IsInt ], IsBool );
 CapJitAddTypeSignature( "IS_IDENTICAL_OBJ", [ IsObject, IsObject ], IsBool );
 CapJitAddTypeSignature( "^", [ IsPerm, IsInt ], IsPerm );
 CapJitAddTypeSignature( "PermList", [ IsList ], IsPerm );
-CapJitAddTypeSignature( "PermutationMat", [ IsPerm, IsInt ], rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsInt ) ) ) );
+CapJitAddTypeSignature( "PermutationMat", [ IsPerm, IsInt ], CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( IsInt ) ) );
 CapJitAddTypeSignature( "BigInt", [ IsInt ], IsBigInt );
 
 CapJitAddTypeSignature( "ID_FUNC", [ IsObject ], function ( input_types )
@@ -979,7 +979,7 @@ end );
 
 CapJitAddTypeSignature( "ListWithIdenticalEntries", [ IsInt, IsObject ], function ( input_types )
     
-    return rec( filter := IsList, element_type := input_types[2] );
+    return CapJitDataTypeOfListOf( input_types[2] );
     
 end );
 
@@ -994,7 +994,7 @@ CapJitAddTypeSignature( "Concatenation", "any", function ( input_types )
     elif l = 1 then
         Assert( 0, input_types[1].filter = IsList );
         Assert( 0, input_types[1].element_type.filter = IsList );
-        return rec( filter := IsList, element_type := input_types[1].element_type.element_type );
+        return CapJitDataTypeOfListOf( input_types[1].element_type.element_type );
     else
         Assert( 0, input_types[1].filter = IsList );
         Assert( 0, ForAll( [ 1 .. l - 1 ], i -> input_types[i] = input_types[i+1] ) );
@@ -1021,8 +1021,7 @@ end );
 
 CapJitAddTypeSignature( "Combinations", [ IsList, IsInt ], function ( input_types )
     
-    return rec( filter := IsList,
-                element_type := input_types[1] );
+    return CapJitDataTypeOfListOf( input_types[1] );
     
 end );
 
@@ -1144,7 +1143,7 @@ CapJitAddTypeSignature( "Positions", [ IsList, IsObject ], function ( input_type
     
     Assert( 0, input_types[1].element_type = input_types[2] );
     
-    return rec( filter := IsList, element_type := rec( filter := IsInt ) );
+    return CapJitDataTypeOfListOf( IsInt );
     
 end );
 
@@ -1217,7 +1216,7 @@ end );
 
 CapJitAddTypeSignature( "Tuples", [ IsList, IsInt ], function ( input_types )
     
-    return rec( filter := IsList, element_type := input_types[1] );
+    return CapJitDataTypeOfListOf( input_types[1] );
     
 end );
 
@@ -1252,11 +1251,11 @@ CapJitAddTypeSignature( "*", [ IsInt, IsList ], function ( input_types )
     
     if input_types[2].element_type.filter = IsList then
         
-        return rec( filter := IsList, element_type := rec( filter := IsList, element_type := element_type ) );
+        return CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( element_type ) );
         
     else
         
-        return rec( filter := IsList, element_type := element_type );
+        return CapJitDataTypeOfListOf( element_type );
         
     fi;
     
@@ -1283,7 +1282,7 @@ CapJitAddTypeSignature( "LazyHList", [ IsList, IsFunction ], function ( args, fu
         
     fi;
     
-    return rec( args := args, output_type := rec( filter := IsList, element_type := args.2.data_type.signature[2] ) );
+    return rec( args := args, output_type := CapJitDataTypeOfListOf( args.2.data_type.signature[2] ) );
     
 end );
 
@@ -1300,7 +1299,7 @@ CapJitAddTypeSignature( "List", [ IsList, IsFunction ], function ( args, func_st
         
     fi;
     
-    return rec( args := args, output_type := rec( filter := IsList, element_type := args.2.data_type.signature[2] ) );
+    return rec( args := args, output_type := CapJitDataTypeOfListOf( args.2.data_type.signature[2] ) );
     
 end );
 
@@ -1374,7 +1373,7 @@ CapJitAddTypeSignature( "ListN", [ IsList, IsList, IsFunction ], function ( args
         
     fi;
     
-    return rec( args := args, output_type := rec( filter := IsList, element_type := args.3.data_type.signature[2] ) );
+    return rec( args := args, output_type := CapJitDataTypeOfListOf( args.3.data_type.signature[2] ) );
     
 end );
 
@@ -1391,7 +1390,7 @@ CapJitAddTypeSignature( "ListX", [ IsList, IsList, IsFunction ], function ( args
         
     fi;
     
-    return rec( args := args, output_type := rec( filter := IsList, element_type := args.3.data_type.signature[2] ) );
+    return rec( args := args, output_type := CapJitDataTypeOfListOf( args.3.data_type.signature[2] ) );
     
 end );
 
@@ -1536,10 +1535,10 @@ CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "CoefficientsWithGivenMonom
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "CoercedMatrix", [ "IsHomalgRing", "IsHomalgRing", "IsHomalgMatrix" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "CoercedMatrix", [ "IsHomalgRing", "IsHomalgMatrix" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "Pullback", [ "IsHomalgRingMap", "IsHomalgMatrix" ], "IsHomalgMatrix" );
-CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "EntriesOfHomalgMatrix", [ "IsHomalgMatrix" ], "rec( filter := IsList, element_type := rec( filter := IsHomalgRingElement ) )" );
-CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "EntriesOfHomalgMatrixAsListList", [ "IsHomalgMatrix" ], "rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsHomalgRingElement ) ) )" );
-CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "EntriesOfHomalgRowVector", [ "IsHomalgMatrix" ], "rec( filter := IsList, element_type := rec( filter := IsHomalgRingElement ) )" );
-CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "EntriesOfHomalgColumnVector", [ "IsHomalgMatrix" ], "rec( filter := IsList, element_type := rec( filter := IsHomalgRingElement ) )" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "EntriesOfHomalgMatrix", [ "IsHomalgMatrix" ], "CapJitDataTypeOfListOf( IsHomalgRingElement )" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "EntriesOfHomalgMatrixAsListList", [ "IsHomalgMatrix" ], "CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( IsHomalgRingElement ) )" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "EntriesOfHomalgRowVector", [ "IsHomalgMatrix" ], "CapJitDataTypeOfListOf( IsHomalgRingElement )" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "EntriesOfHomalgColumnVector", [ "IsHomalgMatrix" ], "CapJitDataTypeOfListOf( IsHomalgRingElement )" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "DecideZeroRows", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "DecideZeroColumns", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "SimplifyHomalgMatrixByLeftAndRightMultiplicationWithInvertibleMatrices", [ "IsHomalgMatrix" ], "rec( filter := IsNTuple, element_types := [ rec( filter := IsHomalgMatrix ), rec( filter := IsHomalgMatrix ), rec( filter := IsHomalgMatrix ), rec( filter := IsHomalgMatrix ), rec( filter := IsHomalgMatrix ) ] )" );
@@ -1563,7 +1562,7 @@ CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "*", [ "IsHomalgMatrix", "I
 
 # QPA operations
 CapJitAddTypeSignatureDeferred( "QPA", "VertexIndex", [ "IsQuiverVertex" ], "IsInt" );
-CapJitAddTypeSignatureDeferred( "QPA", "Paths", [ "IsQuiverAlgebraElement" ], "rec( filter := IsList, element_type := rec( filter := IsPath ) )" );
+CapJitAddTypeSignatureDeferred( "QPA", "Paths", [ "IsQuiverAlgebraElement" ], "CapJitDataTypeOfListOf( IsPath )" );
 CapJitAddTypeSignatureDeferred( "QPA", "AlgebraOfElement", [ "IsQuiverAlgebraElement" ], "IsQuiverAlgebra" );
 CapJitAddTypeSignatureDeferred( "QPA", "ZeroImmutable", [ "IsQuiverAlgebra" ], "IsQuiverAlgebraElement" );
 CapJitAddTypeSignatureDeferred( "QPA", "PathAsAlgebraElement", [ "IsQuiverAlgebra", "IsPath" ], "IsQuiverAlgebraElement" );

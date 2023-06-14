@@ -189,6 +189,12 @@ DeclareGlobalFunction( "CapJitAddTypeSignature" );
 #! @Arguments package_name, name, input_filters, output_data_type
 DeclareGlobalFunction( "CapJitAddTypeSignatureDeferred" );
 
+#! @Description
+#!   (experimental) Returns the data type of a list whose elements are of type <A>element_type</A>.
+#!   <A>element_type</A> must be a filter or a data type.
+#! @Arguments element_type
+DeclareGlobalFunction( "CapJitDataTypeOfListOf" );
+
 #! @BeginGroup
 #! @Description
 #!   (experimental) Returns the data type of the category (or objects, morphisms, or two cells in the category) <A>category</A>.

@@ -8,21 +8,8 @@ true
 gap> func := { list1, list2 } -> List( list1, x -> Sum( list2[x] ) );;
 gap> type_signature := [
 >     [
->         rec(
->             filter := IsList,
->             element_type := rec(
->                 filter := IsInt,
->             ),
->         ),
->         rec(
->             filter := IsList,
->             element_type := rec(
->                 filter := IsList,
->                 element_type := rec(
->                     filter := IsInt,
->                 ),
->             ),
->         ),
+>         CapJitDataTypeOfListOf( IsInt ),
+>         CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( IsInt ) ),
 >     ],
 >     fail,
 > ];;

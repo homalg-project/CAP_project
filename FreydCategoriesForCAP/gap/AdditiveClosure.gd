@@ -173,7 +173,7 @@ CapJitAddTypeSignature( "ObjectList", [ IsAdditiveClosureObject ], function ( in
     
     Assert( 0, IsAdditiveClosureCategory( input_types[1].category ) );
     
-    return rec( filter := IsList, element_type := CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ) );
+    return CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ) );
     
 end );
 
@@ -189,7 +189,7 @@ CapJitAddTypeSignature( "MorphismMatrix", [ IsAdditiveClosureMorphism ], functio
     
     Assert( 0, IsAdditiveClosureCategory( input_types[1].category ) );
     
-    return rec( filter := IsList, element_type := rec( filter := IsList, element_type := CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ) ) );
+    return CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ) ) );
     
 end );
 
@@ -354,7 +354,7 @@ fi;
 #! @Description
 #!   A (faster) version of `NullMat` returning an immutable matrix.
 DeclareGlobalFunction( "NullMatImmutable" );
-CapJitAddTypeSignature( "NullMatImmutable", [ IsInt, IsInt ], rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsInt ) ) ) );
+CapJitAddTypeSignature( "NullMatImmutable", [ IsInt, IsInt ], CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( rec( filter := IsInt ) ) ) );
 
 #! @Description
 #!   Stacks the matrices (lists of lists) in the list <A>L</A>. The matrices must have `nr_cols` columns.
