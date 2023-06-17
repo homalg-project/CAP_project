@@ -185,6 +185,7 @@ InstallGlobalFunction( TerminalCategoryWithSingleObject,
     
     T := CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY( rec(
                  name := name,
+                 supports_empty_limits := true,
                  category_filter := category_filter,
                  category_object_filter := category_object_filter,
                  category_morphism_filter := category_morphism_filter,
@@ -355,6 +356,7 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
     
     T := CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY( rec(
                  name := name,
+                 supports_empty_limits := true,
                  category_filter := category_filter,
                  category_object_filter := category_object_filter,
                  category_morphism_filter := category_morphism_filter,

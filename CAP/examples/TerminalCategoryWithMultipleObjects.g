@@ -140,4 +140,12 @@ Display( colift );
 #! | Colift
 #! v
 #! b
+DirectProduct( T, [ ] );
+#! <A zero object in TerminalCategoryWithMultipleObjects( )>
+Equalizer( T, z, [ ] );
+#! <A zero object in TerminalCategoryWithMultipleObjects( )>
+Coproduct( T, [ ] );
+#! <A zero object in TerminalCategoryWithMultipleObjects( )>
+Coequalizer( T, z, [ ] );
+#! <A zero object in TerminalCategoryWithMultipleObjects( )>
 #! @EndExample
