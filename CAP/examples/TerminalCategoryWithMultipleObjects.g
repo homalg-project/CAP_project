@@ -110,15 +110,15 @@ m = id;
 #! false
 id = MorphismConstructor( a, "xyz", a );
 #! true
-z := ZeroMorphism( a, a );
+zero := ZeroMorphism( a, a );
 #! <A zero, isomorphism in TerminalCategoryWithMultipleObjects( )>
-Display( z );
+Display( zero );
 #! a
 #! |
 #! | ZeroMorphism
 #! v
 #! a
-id = z;
+id = zero;
 #! true
 IsLiftable( m, n );
 #! true
