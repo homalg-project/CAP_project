@@ -18,8 +18,9 @@ InfoOfInstalledOperationsOfCategory( distributive );
 #! 19 primitive operations were used to derive 112 operations for this category \
 #! which algorithmically
 #! * IsBicartesianClosedCategory
+#! and not yet algorithmically
+#! * IsDistributiveCategory
 #! and furthermore mathematically
-#! * IsDistributiveCategory (but not yet algorithmically)
 #! * IsSkeletalCategory
 
 #! @EndExample

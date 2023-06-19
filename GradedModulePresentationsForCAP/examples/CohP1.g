@@ -22,8 +22,8 @@ Display( Sgrmod );
 #! which algorithmically
 #! * IsMonoidalCategory
 #! * IsAbelianCategoryWithEnoughProjectives
-#! and furthermore mathematically
-#! * IsSymmetricClosedMonoidalCategory (but not yet algorithmically)
+#! and not yet algorithmically
+#! * IsSymmetricClosedMonoidalCategory
 #ListPrimitivelyInstalledOperationsOfCategory( Sgrmod );
 M := GradedFreeLeftPresentation( 2, S, [ 1, 1 ] );
 #! <An object in The category of graded left f.p. modules over Q[x,y]

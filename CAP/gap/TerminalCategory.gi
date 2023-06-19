@@ -76,7 +76,7 @@ InstallGlobalFunction( CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY,
     ## can still set IsInitialCategory = true manually, if the doctrine is clear from the context.
     Add( excluded_properties, "IsInitialCategory" );
     
-    properties := Filtered( properties, p -> not ForAny( excluded_properties, e -> e = p or e in ListImpliedFilters( ValueGlobal( p ) ) ) );
+    properties := Filtered( properties, p -> not ForAny( excluded_properties, e -> e in ListImpliedFilters( ValueGlobal( p ) ) ) );
     
     Add( properties, "IsTerminalCategory" );
     
