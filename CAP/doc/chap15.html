@@ -903,15 +903,15 @@ a
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id = MorphismConstructor( a, "xyz", a );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z := ZeroMorphism( a, a );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">zero := ZeroMorphism( a, a );</span>
 &lt;A zero, isomorphism in TerminalCategoryWithMultipleObjects( )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( z );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( zero );</span>
 a
 |
 | ZeroMorphism
 v
 a
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id = z;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id = zero;</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsLiftable( m, n );</span>
 true
@@ -933,6 +933,14 @@ b
 | Colift
 v
 b
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectProduct( T, [ ] );</span>
+&lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Equalizer( T, z, [ ] );</span>
+&lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Coproduct( T, [ ] );</span>
+&lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Coequalizer( T, z, [ ] );</span>
+&lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
 </pre></div>
 
 
@@ -996,6 +1004,14 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Colift( id_z, fn_z );</span>
 &lt;A zero, identity morphism in TerminalCategoryWithSingleObject( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectProduct( T, [ ] );</span>
+&lt;A zero object in TerminalCategoryWithSingleObject( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Equalizer( T, z, [ ] );</span>
+&lt;A zero object in TerminalCategoryWithSingleObject( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Coproduct( T, [ ] );</span>
+&lt;A zero object in TerminalCategoryWithSingleObject( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Coequalizer( T, z, [ ] );</span>
+&lt;A zero object in TerminalCategoryWithSingleObject( )&gt;
 </pre></div>
 
 <p><a id="X86FB477C7908A3A6" name="X86FB477C7908A3A6"></a></p>
