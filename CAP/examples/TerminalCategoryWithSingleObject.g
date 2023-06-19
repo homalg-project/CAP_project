@@ -62,4 +62,12 @@ IsColiftable( id_z, fn_z );
 #! true
 Colift( id_z, fn_z );
 #! <A zero, identity morphism in TerminalCategoryWithSingleObject( )>
+DirectProduct( T, [ ] );
+#! <A zero object in TerminalCategoryWithSingleObject( )>
+Equalizer( T, z, [ ] );
+#! <A zero object in TerminalCategoryWithSingleObject( )>
+Coproduct( T, [ ] );
+#! <A zero object in TerminalCategoryWithSingleObject( )>
+Coequalizer( T, z, [ ] );
+#! <A zero object in TerminalCategoryWithSingleObject( )>
 #! @EndExample
