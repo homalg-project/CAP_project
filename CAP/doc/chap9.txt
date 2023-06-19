@@ -210,11 +210,20 @@
   
   [33X[1;0Y[29X[2XCapJitAddKnownMethod[102X( [3Xoperation[103X, [3Xfilters[103X, [3Xmethod[103X ) [32X function[133X
   
-  [33X[0;0YAdds  a  method  to  the  list  of  methods known to the compiler. The first
-  argument  of the method must be a CAP category. Method selection happens via
-  the  number  of arguments and the category filter. In particular, adding two
-  methods  (or  a convenience method for a CAP operation) with the same number
-  of arguments and one category filter implying the other is not supported.[133X
+  [33X[0;0YAdds  a  method  to  the list of methods known to the compiler. If the first
+  filter  implies  [10XIsCapCategory[110X,  method  selection  only takes the number of
+  arguments  and  the  first  filter  into  account.  This  allows  to resolve
+  operations  even  in the case that the syntax tree cannot fully be typed. If
+  the  first  filter  does not imply [10XIsCapCategory[110X, method selection takes all
+  filters  into  account.  To  strictly  distinguish  between  the  two cases,
+  [10XIsCapCategory[110X must not imply the first filter (except if the first filter is
+  equal  to  [10XIsCapCategory[110X).  Method selection is strict in the sense that two
+  different  methods  for  the same operation must not be comparable. That is,
+  they  must have a different number of filters or the filters at at least one
+  position  must  not  be  related  via implication. In particular, adding two
+  methods with a CAP category as first argument (or a convenience method for a
+  CAP  operation)  with  the  same number of arguments and one category filter
+  implying the other is not supported.[133X
   
   [1X9.2-22 CapJitAddTypeSignature[101X
   
