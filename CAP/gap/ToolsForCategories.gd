@@ -163,9 +163,17 @@ DeclareGlobalFunction( "InstallOtherMethodForCompilerForCAP" );
 
 #! @Description
 #!   Adds a method to the list of methods known to the compiler.
-#!   The first argument of the method must be a CAP category.
-#!   Method selection happens via the number of arguments and the category filter.
-#!   In particular, adding two methods (or a convenience method for a CAP operation)
+#!   If the first filter implies `IsCapCategory`,
+#!   method selection only takes the number of arguments and the first filter into account.
+#!   This allows to resolve operations even in the case that the syntax tree cannot fully be typed.
+#!   If the first filter does not imply `IsCapCategory`,
+#!   method selection takes all filters into account.
+#!   To strictly distinguish between the two cases, `IsCapCategory` must not imply the first filter
+#!   (except if the first filter is equal to `IsCapCategory`).
+#!   Method selection is strict in the sense that two different methods for the same operation
+#!   must not be comparable. That is, they must have a different number of filters or the filters
+#!   at at least one position must not be related via implication.
+#!   In particular, adding two methods with a CAP category as first argument (or a convenience method for a CAP operation)
 #!   with the same number of arguments and one category filter implying the other is not supported.
 #! @Arguments operation, filters, method
 DeclareGlobalFunction( "CapJitAddKnownMethod" );

@@ -4,6 +4,12 @@ gap> START_TEST( "CapJitResolvedOperations" );
 gap> LoadPackage( "CompilerForCAP", false );
 true
 
+# function call without arguments
+gap> Display( CapJitCompiledFunction( {} -> ReturnTrue( ) ) );
+function (  )
+    return RETURN_TRUE(  );
+end
+
 #
 gap> CapJitEnableProofAssistantMode( );
 
