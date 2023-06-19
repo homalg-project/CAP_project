@@ -65,7 +65,8 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree )
             
             operation_name := NameFunction( operation );
             
-            # all CAP operations and known methods get a category as first argument
+            # all CAP operations get the category or at least one argument from which the category can be derived
+            # known methods without arguments are not supported
             if tree.args.length = 0 then
                 
                 return tree;
@@ -74,6 +75,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree )
             
             resolved_tree := fail;
             
+            # resolve CAP operations
             if IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name) ) then
                 
                 info := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name);
@@ -185,11 +187,10 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree )
                 
             fi;
             
-            if resolved_tree = fail and IsBound( CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name) ) and tree.args.1.type = "EXPR_REF_GVAR" then
+            # resolve known categorical methods
+            if resolved_tree = fail and IsBound( CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name) ) and tree.args.1.type = "EXPR_REF_GVAR" and IsCapCategory( ValueGlobal( tree.args.1.gvar ) ) then
                 
                 category := ValueGlobal( tree.args.1.gvar );
-                
-                Assert( 0, IsCapCategory( category ) );
                 
                 if IsBound( category!.stop_compilation ) and category!.stop_compilation = true then
                     
@@ -198,7 +199,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree )
                 fi;
                 
                 Info( InfoCapJit, 1, "####" );
-                Info( InfoCapJit, 1, Concatenation( "Try to resolve ", operation_name, " by searching for known method." ) );
+                Info( InfoCapJit, 1, Concatenation( "Try to resolve ", operation_name, " by searching for known categorical methods." ) );
                 
                 known_methods := Filtered( CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name),
                     m -> Length( m.filters ) = tree.args.length and m.filters[1]( category )
@@ -248,6 +249,45 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree )
                 fi;
                 
                 resolved_tree := CapJitCopyWithNewFunctionIDs( category!.compiled_known_methods_trees.(operation_name)[tree.args.length] );
+                
+            fi;
+            
+            # resolve known non-categorical methods
+            if resolved_tree = fail and IsBound( CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name) ) and IsBound( tree.data_type ) and not IsSpecializationOfFilter( "category", tree.args.1.data_type.filter ) then
+                
+                Info( InfoCapJit, 1, "####" );
+                Info( InfoCapJit, 1, Concatenation( "Try to resolve ", operation_name, " by searching for known non-categorical methods." ) );
+                
+                filters := AsListMut( List( tree.args, x -> x.data_type.filter ) );
+                
+                known_methods := Filtered( CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name),
+                    m -> Length( m.filters ) = tree.args.length and IsSpecializationOfFilterList( m.filters, filters )
+                );
+                
+                if IsEmpty( known_methods ) then
+                    
+                    return tree;
+                    
+                fi;
+                
+                if Length( known_methods ) > 1 then
+                    
+                    # COVERAGE_IGNORE_NEXT_LINE
+                    Error( "Found more than one known method for ", operation_name, " with correct length and filters" );
+                    
+                fi;
+                
+                known_method := known_methods[1];
+                
+                CAP_JIT_INTERNAL_WARN_ABOUT_SIMILAR_METHODS( operation, tree.args.length, known_method.filters, 1, { operation_name } -> Concatenation(
+                    # COVERAGE_IGNORE_BLOCK_START
+                    "WARNING: A method for ", operation_name, " with ", String( Length( known_method.filters ) ), " arguments was installed using Install(Other)MethodForCompilerForCAP ",
+                    "but additional methods with the same number of arguments and a comparable filter list have been installed (using Install(Other)Method). ",
+                    "If such an additional method is used in the code, CompilerForCAP will resolve the wrong method.\n"
+                    # COVERAGE_IGNORE_BLOCK_END
+                ) );
+                
+                resolved_tree := ENHANCED_SYNTAX_TREE( known_method.method );
                 
             fi;
             

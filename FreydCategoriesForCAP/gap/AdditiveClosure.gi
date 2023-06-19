@@ -287,8 +287,8 @@ end );
 ####################################
 
 ##
-InstallMethod( NrRows,
-               [ IsAdditiveClosureMorphism ],
+InstallMethodForCompilerForCAP( NrRows,
+                                [ IsAdditiveClosureMorphism ],
                
   function( morphism )
     
@@ -297,8 +297,8 @@ InstallMethod( NrRows,
 end );
 
 ##
-InstallMethod( NrCols,
-               [ IsAdditiveClosureMorphism ],
+InstallMethodForCompilerForCAP( NrCols,
+                                [ IsAdditiveClosureMorphism ],
                
   function( morphism )
     
@@ -502,8 +502,8 @@ end );
 ####################################
 
 ##
-InstallMethod( \[\,\],
-               [ IsAdditiveClosureMorphism, IsInt, IsInt ],
+InstallMethodForCompilerForCAP( \[\,\],
+                                [ IsAdditiveClosureMorphism, IsInt, IsInt ],
                
   function( morphism, i, j )
     
@@ -519,8 +519,8 @@ InstallMethod( \[\,\],
 end );
 
 ##
-InstallMethod( \[\],
-               [ IsAdditiveClosureObject, IsInt ],
+InstallMethodForCompilerForCAP( \[\],
+                                [ IsAdditiveClosureObject, IsInt ],
                
   function( object, i )
     local obj_list;

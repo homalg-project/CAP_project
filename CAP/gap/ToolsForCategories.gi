@@ -1109,14 +1109,7 @@ InstallGlobalFunction( CapJitAddKnownMethod,
     if IsEmpty( filters ) then
         
         # COVERAGE_IGNORE_NEXT_LINE
-        Error( "there must be at least one filter" );
-        
-    fi;
-    
-    if not IsSpecializationOfFilter( IsCapCategory, filters[1] ) then
-        
-        # COVERAGE_IGNORE_NEXT_LINE
-        Error( "the first filter must imply IsCapCategory" );
+        Error( "installing methods without filters is currently not supported" );
         
     fi;
     
@@ -1150,10 +1143,32 @@ InstallGlobalFunction( CapJitAddKnownMethod,
     
     known_methods := CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name);
     
-    if ForAny( known_methods, m -> Length( m.filters ) = Length( filters ) and ( IsSpecializationOfFilter( m.filters[1], filters[1] ) or IsSpecializationOfFilter( filters[1], m.filters[1] ) ) ) then
+    if IsSpecializationOfFilter( "category", filters[1] ) then
         
-        # COVERAGE_IGNORE_NEXT_LINE
-        Error( "there is already a method known for ", operation_name, " with a category filter which implies the current category filter or is implied by it" );
+        if ForAny( known_methods, m -> Length( m.filters ) = Length( filters ) and ( IsSpecializationOfFilter( m.filters[1], filters[1] ) or IsSpecializationOfFilter( filters[1], m.filters[1] ) ) ) then
+            
+            # COVERAGE_IGNORE_NEXT_LINE
+            Error( "there is already a method known for ", operation_name, " with a category filter which implies the current category filter or is implied by it" );
+            
+        fi;
+        
+    else
+        
+        if IsSpecializationOfFilter( filters[1], "category" ) then
+            
+            # COVERAGE_IGNORE_NEXT_LINE
+            Error( "The first filter is implied by `IsCapCategory`, this is not supported." );
+            
+        fi;
+        
+        if ForAny( known_methods,
+            m -> Length( m.filters ) = Length( filters ) and ForAll( [ 1 .. Length( filters ) ], i -> IsSpecializationOfFilter( m.filters[i], filters[i] ) or IsSpecializationOfFilter( filters[i], m.filters[i] ) )
+        ) then
+            
+            # COVERAGE_IGNORE_NEXT_LINE
+            Error( "there is already a method known for ", operation_name, " with a comparable filter list (see documentation of `CapJitAddKnownMethod`)" );
+            
+        fi;
         
     fi;
     
