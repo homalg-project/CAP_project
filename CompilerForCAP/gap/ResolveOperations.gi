@@ -253,7 +253,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree )
             fi;
             
             # resolve known non-categorical methods
-            if resolved_tree = fail and IsBound( CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name) ) and IsBound( tree.data_type ) and not IsSpecializationOfFilter( "category", tree.args.1.data_type.filter ) then
+            if resolved_tree = fail and IsBound( CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name) ) and ForAll( tree.args, a -> IsBound( a.data_type ) ) and not IsSpecializationOfFilter( "category", tree.args.1.data_type.filter ) then
                 
                 Info( InfoCapJit, 1, "####" );
                 Info( InfoCapJit, 1, Concatenation( "Try to resolve ", operation_name, " by searching for known non-categorical methods." ) );
