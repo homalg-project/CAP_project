@@ -1,7 +1,7 @@
 name: CompilerForCAP
-version: "2023.06-09"
+version: "2023.06-10"
 license: "GPL-2.0-or-later"
-date: 2023-06-20
+date: 2023-06-26
 description: |
     Speed up computations in CAP categories
 
@@ -20,7 +20,7 @@ needed-pkgs:
       version: ">= 2022.09-04"
       url: "https://homalg-project.github.io/pkg/ToolsForHomalg"
     - name: "CAP"
-      version: ">= 2023.05-02"
+      version: ">= 2023.06-06"
       url: "https://homalg-project.github.io/pkg/CAP"
 
 www: https://homalg-project.github.io/pkg/CompilerForCAP
@@ -29,11 +29,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/CompilerForCAP/Package
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2023.06-09/CompilerForCAP-2023.06-09.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2023.06-10/CompilerForCAP-2023.06-10.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2023.06-09/CompilerForCAP-2023.06-09.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2023.06-10/CompilerForCAP-2023.06-10.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2023.06-09/CompilerForCAP-2023.06-09-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2023.06-10/CompilerForCAP-2023.06-10-manual.pdf
 
 abstract: |
 
@@ -42,28 +42,28 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>Zic20</span>]   <b class='BibAuthor'>Zickgraf, F.</b>,
+    [<span class='BibKey'>Zic26</span>]   <b class='BibAuthor'>Zickgraf, F.</b>,
      <i class='BibTitle'>CompilerForCAP, Speed up computations in CAP categories,
-             Version 2023.06-09</i>
-     (<span class='BibYear'>6-20</span>)<br />
+             Version 2023.06-10</i>
+     (<span class='BibYear'>6-26</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/CompilerForCAP">https://homalg-project.github.io/pkg/CompilerForCAP</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ CompilerForCAP2023.06-09,
+    @misc{ CompilerForCAP2023.06-10,
       author =           {Zickgraf, F.},
       title =            {{CompilerForCAP},   Speed   up   computations  in  CAP
-                          categories, {V}ersion 2023.06-09},
+                          categories, {V}ersion 2023.06-10},
       month =            {3-},
-      year =             {6-20},
+      year =             {6-26},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/CompilerForCAP}
                           {\texttt{https://homalg-project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{CompilerForCAP}}},
-      printedkey =       {Zic20}
+      printedkey =       {Zic26}
     }
 
