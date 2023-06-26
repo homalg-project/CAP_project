@@ -203,6 +203,12 @@ DeclareGlobalFunction( "CapJitAddTypeSignatureDeferred" );
 #! @Arguments element_type
 DeclareGlobalFunction( "CapJitDataTypeOfListOf" );
 
+#! @Description
+#!   (experimental) Returns the data type of an <A>n</A>-tuple whose entries are of types corresponding to <A>element_types</A>.
+#!   <A>element_types...</A> must be filters or data types.
+#! @Arguments n, element_types...
+DeclareGlobalFunction( "CapJitDataTypeOfNTupleOf" );
+
 #! @BeginGroup
 #! @Description
 #!   (experimental) Returns the data type of the category (or objects, morphisms, or two cells in the category) <A>category</A>.

@@ -103,11 +103,4 @@ CapJitAddTypeSignature( "UnderlyingMatrix", [ IsCategoryOfColumnsMorphism ], IsH
 DeclareAttribute( "CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple",
                   IsCategoryOfColumnsMorphism );
 
-CapJitAddTypeSignature( "CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple", [ IsCategoryOfColumnsMorphism ], rec(
-    filter := IsNTuple,
-    element_types := [
-        rec( filter := IsHomalgMatrix ),
-        rec( filter := IsHomalgMatrix ),
-        rec( filter := IsHomalgMatrix ),
-    ],
-) );
+CapJitAddTypeSignature( "CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple", [ IsCategoryOfColumnsMorphism ], CapJitDataTypeOfNTupleOf( 3, IsHomalgMatrix, IsHomalgMatrix, IsHomalgMatrix ) );
