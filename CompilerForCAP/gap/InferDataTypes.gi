@@ -1541,9 +1541,9 @@ CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "EntriesOfHomalgRowVector",
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "EntriesOfHomalgColumnVector", [ "IsHomalgMatrix" ], "CapJitDataTypeOfListOf( IsHomalgRingElement )" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "DecideZeroRows", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "DecideZeroColumns", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
-CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "SimplifyHomalgMatrixByLeftAndRightMultiplicationWithInvertibleMatrices", [ "IsHomalgMatrix" ], "rec( filter := IsNTuple, element_types := [ rec( filter := IsHomalgMatrix ), rec( filter := IsHomalgMatrix ), rec( filter := IsHomalgMatrix ), rec( filter := IsHomalgMatrix ), rec( filter := IsHomalgMatrix ) ] )" );
-CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "SimplifyHomalgMatrixByLeftMultiplicationWithInvertibleMatrix", [ "IsHomalgMatrix" ], "rec( filter := IsNTuple, element_types := [ rec( filter := IsHomalgMatrix ), rec( filter := IsHomalgMatrix ), rec( filter := IsHomalgMatrix ) ] )" );
-CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "SimplifyHomalgMatrixByRightMultiplicationWithInvertibleMatrix", [ "IsHomalgMatrix" ], "rec( filter := IsNTuple, element_types := [ rec( filter := IsHomalgMatrix ), rec( filter := IsHomalgMatrix ), rec( filter := IsHomalgMatrix ) ] )" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "SimplifyHomalgMatrixByLeftAndRightMultiplicationWithInvertibleMatrices", [ "IsHomalgMatrix" ], "CapJitDataTypeOfNTupleOf( 5, IsHomalgMatrix, IsHomalgMatrix, IsHomalgMatrix, IsHomalgMatrix, IsHomalgMatrix )" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "SimplifyHomalgMatrixByLeftMultiplicationWithInvertibleMatrix", [ "IsHomalgMatrix" ], "CapJitDataTypeOfNTupleOf( 3, IsHomalgMatrix, IsHomalgMatrix, IsHomalgMatrix )" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "SimplifyHomalgMatrixByRightMultiplicationWithInvertibleMatrix", [ "IsHomalgMatrix" ], "CapJitDataTypeOfNTupleOf( 3, IsHomalgMatrix, IsHomalgMatrix, IsHomalgMatrix )" );
 
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "/", [ "IsHomalgRingElement", "IsHomalgRing" ], "IsHomalgRingElement" );
 

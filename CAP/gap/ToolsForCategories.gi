@@ -1314,6 +1314,36 @@ InstallGlobalFunction( CapJitDataTypeOfListOf, function ( element_type )
 end );
 
 ##
+InstallGlobalFunction( CapJitDataTypeOfNTupleOf, function ( n, element_types... )
+    
+    Assert( 0, Length( element_types ) = n );
+    
+    element_types := List( element_types, function ( t )
+        
+        if IsFilter( t ) then
+            
+            return rec( filter := t );
+            
+        else
+            
+            return t;
+            
+        fi;
+        
+    end );
+    
+    if not ForAll( element_types, t -> IsRecord( t ) ) then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "<element_types...> must be filters or records" );
+        
+    fi;
+    
+    return rec( filter := IsNTuple, element_types := element_types );
+    
+end );
+
+##
 InstallGlobalFunction( CapJitDataTypeOfCategory, function ( cat )
   local type;
     
