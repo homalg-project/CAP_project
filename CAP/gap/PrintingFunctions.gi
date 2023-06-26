@@ -7,7 +7,8 @@ InstallGlobalFunction( InfoStringOfInstalledOperationsOfCategory,
   
   function( category )
     local list_of_mathematical_properties, list_of_potential_algorithmic_properties,
-          list_of_algorithmic_properties, list_of_maximal_algorithmic_properties, property, result;
+          list_of_algorithmic_properties, list_of_maximal_algorithmic_properties, property, result,
+          list_of_non_algorithmic_mathematical_properties, list_of_maximal_non_algorithmic_mathematical_properties;
     
     if not IsCapCategory( category ) then
         Error( "first argument must be a category" );
@@ -15,12 +16,10 @@ InstallGlobalFunction( InfoStringOfInstalledOperationsOfCategory,
     fi;
     
     list_of_mathematical_properties := ListKnownCategoricalProperties( category );
-
+    
     list_of_potential_algorithmic_properties := RecNames( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD );
     
-    list_of_algorithmic_properties := Intersection( list_of_mathematical_properties, list_of_potential_algorithmic_properties );
-    
-    list_of_algorithmic_properties := Filtered( list_of_algorithmic_properties, p -> IsEmpty( CheckConstructivenessOfCategory( category, p ) ) );
+    list_of_algorithmic_properties := Filtered( list_of_mathematical_properties, p -> p in list_of_potential_algorithmic_properties and IsEmpty( CheckConstructivenessOfCategory( category, p ) ) );
     
     list_of_maximal_algorithmic_properties := MaximalObjects( list_of_algorithmic_properties, { p1, p2 } ->
                                                IsSubset( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.( p2 ), CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.( p1 ) ) or
@@ -34,31 +33,31 @@ InstallGlobalFunction( InfoStringOfInstalledOperationsOfCategory,
     result := Concatenation( result, " operations for this category" );
     if not IsEmpty( list_of_maximal_algorithmic_properties ) then
         result := Concatenation( result, " which algorithmically" );
+        for property in list_of_maximal_algorithmic_properties do
+            result := Concatenation( result, "\n* " );
+            result := Concatenation( result, property );
+        od;
     fi;
-    for property in list_of_maximal_algorithmic_properties do
-        result := Concatenation( result, "\n* " );
-        result := Concatenation( result, property );
-    od;
     
-    list_of_mathematical_properties := Difference( list_of_mathematical_properties, list_of_algorithmic_properties );
+    list_of_non_algorithmic_mathematical_properties := Difference( list_of_mathematical_properties, list_of_algorithmic_properties );
     
-    list_of_mathematical_properties := MaximalObjects( list_of_mathematical_properties, { p1, p2 } -> p1 in ListImpliedFilters( ValueGlobal( p2 ) ) );
+    list_of_maximal_non_algorithmic_mathematical_properties := MaximalObjects( list_of_non_algorithmic_mathematical_properties, { p1, p2 } -> p1 in ListImpliedFilters( ValueGlobal( p2 ) ) );
     
-    if not IsEmpty( list_of_mathematical_properties ) then
-        if not IsEmpty( list_of_algorithmic_properties ) then
+    if not IsEmpty( list_of_maximal_non_algorithmic_mathematical_properties ) then
+        if not IsEmpty( list_of_maximal_algorithmic_properties ) then
             result := Concatenation( result, "\nand furthermore" );
         else
             result := Concatenation( result, " which" );
         fi;
         result := Concatenation( result, " mathematically" );
+        for property in list_of_maximal_non_algorithmic_mathematical_properties do
+            result := Concatenation( result, "\n* " );
+            result := Concatenation( result, property );
+            if property in list_of_potential_algorithmic_properties then
+                result := Concatenation( result, " (but not yet algorithmically)" );
+            fi;
+        od;
     fi;
-    for property in list_of_mathematical_properties do
-        result := Concatenation( result, "\n* " );
-        result := Concatenation( result, property );
-        if property in Difference( list_of_potential_algorithmic_properties, list_of_algorithmic_properties ) then
-            result := Concatenation( result, " (but not yet algorithmically)" );
-        fi;
-    od;
     
     return result;
     
