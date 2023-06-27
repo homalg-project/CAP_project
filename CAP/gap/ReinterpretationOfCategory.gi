@@ -101,6 +101,8 @@ InstallMethod( ReinterpretationOfCategory,
         morphism_datum := options.morphism_datum,
     );
     
+    category_constructor_options.is_computable := C!.is_computable;
+    
     if HasCommutativeRingOfLinearCategory( C ) then
         
         category_constructor_options.commutative_ring_of_linear_category := CommutativeRingOfLinearCategory( C );

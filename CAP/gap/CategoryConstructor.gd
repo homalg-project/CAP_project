@@ -36,6 +36,7 @@ DeclareInfoClass( "InfoCategoryConstructor" );
 #!  * `morphism_constructor` (optional): function added as an installation of <Ref Oper="MorphismConstructor" Label="for IsCapCategoryObject, IsObject, IsCapCategoryObject" /> to the category
 #!  * `morphism_datum` (optional): function added as an installation of <Ref Oper="MorphismDatum" Label="for IsCapCategoryMorphism" /> to the category
 #!  * `list_of_operations_to_install` (mandatory): a list of names of &CAP; operations which should be installed for the category
+#!  * `is_computable` (optional): whether the category can decide `IsCongruentForMorphisms`
 #!  * `supports_empty_limits` (optional): whether the category supports empty lists in inputs to operations of limits and colimits
 #!  * `underlying_category_getter_string` (optional): see below
 #!  * `underlying_object_getter_string` (optional): see below

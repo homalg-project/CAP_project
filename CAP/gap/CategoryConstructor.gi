@@ -9,7 +9,7 @@ InstallMethod( CategoryConstructor,
                [ IsRecord ],
                
   function( options )
-    local known_options_with_filters, name, filter, CC, default_func_strings, info, unknown_filters, create_func_name, create_func, func_string, underlying_arguments, add, func, option_name, prop;
+    local known_options_with_filters, name, is_computable, filter, CC, default_func_strings, info, unknown_filters, create_func_name, create_func, func_string, underlying_arguments, add, func, option_name, prop;
     
     ## check given options
     known_options_with_filters := rec(
@@ -24,6 +24,7 @@ InstallMethod( CategoryConstructor,
         morphism_constructor := IsFunction,
         morphism_datum := IsFunction,
         list_of_operations_to_install := IsList,
+        is_computable := IsBool,
         supports_empty_limits := IsBool,
         underlying_category_getter_string := IsString,
         underlying_object_getter_string := IsString,
@@ -73,7 +74,18 @@ InstallMethod( CategoryConstructor,
         
     fi;
     
-    CC := CreateCapCategory( name, options.category_filter, options.category_object_filter, options.category_morphism_filter, IsCapCategoryTwoCell );
+    if IsBound( options.is_computable ) then
+        
+        is_computable := options.is_computable;
+        
+    else
+        
+        # use default value in CreateCapCategory
+        is_computable := fail;
+        
+    fi;
+    
+    CC := CreateCapCategory( name, options.category_filter, options.category_object_filter, options.category_morphism_filter, IsCapCategoryTwoCell : is_computable := is_computable );
     
     CC!.category_as_first_argument := true;
     
