@@ -1181,6 +1181,23 @@ CapJitAddTypeSignature( "SafeUniquePositionProperty", [ IsList, IsFunction ], fu
     
 end );
 
+CapJitAddTypeSignature( "PositionsProperty", [ IsList, IsFunction ], function ( args, func_stack )
+    
+    args := ShallowCopy( args );
+    
+    args.2 := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS_TYPES( args.2, [ args.1.data_type.element_type ], func_stack );
+    
+    if args.2 = fail then
+        
+        #Error( "could not determine output type" );
+        return fail;
+        
+    fi;
+    
+    return rec( args := args, output_type := CapJitDataTypeOfListOf( IsInt ) );
+    
+end );
+
 CapJitAddTypeSignature( "NTuple", "any", function ( input_types )
     
     Assert( 0, input_types[1].filter = IsInt );
