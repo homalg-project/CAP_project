@@ -27,6 +27,8 @@ BindGlobal( "TheFamilyOfCapCategoryTwoCells",
 
 InstallTrueMethod( IsEnrichedOverCommutativeRegularSemigroup, IsAbCategory );
 
+InstallTrueMethod( IsAbCategory, IsLinearCategoryOverCommutativeRing );
+
 InstallTrueMethod( IsAbCategory, IsAdditiveCategory );
 
 InstallTrueMethod( IsAdditiveCategory, IsPreAbelianCategory );
