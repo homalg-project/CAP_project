@@ -638,8 +638,8 @@
   function.  If  the  option [10Xinline_var_refs_only[110X is set to [10Xtrue[110X, this is only
   done  if  the  value  is a reference to a (local or global) variable. If the
   option  [10Xinline_fully[110X  is  NOT set to [10Xtrue[110X, wrapped arguments are not inlined
-  (see   [2XCapJitOutlinedWrappedArguments[102X  ([14X2.5-19[114X)).  Also  drops  the  inlined
-  bindings.[133X
+  (see  [2XCapJitOutlinedWrappedArguments[102X  ([14X2.5-19[114X)). Simple values like integers
+  are always inlined. Also drops the inlined bindings.[133X
   
   [1X2.5-13 CapJitInlinedBindingsToVariableReferences[101X
   
