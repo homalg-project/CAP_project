@@ -59,4 +59,31 @@ gap> tree = tree2;
 true
 
 #
+#
+# check that simple values are always inlined
+gap> func := function ( )
+>   local int1, int2, list1, list2;
+>   
+>   int1 := 1;
+>   int2 := int1;
+>   
+>   list1 := [ 1 ];
+>   list2 := list1;
+>   
+>   return NTuple( 2, int2, list2 );
+> end;;
+
+#
+gap> tree := ENHANCED_SYNTAX_TREE( func );;
+
+#
+gap> tree := CapJitInlinedBindingsToVariableReferences( tree );;
+gap> Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
+function (  )
+    local list1_1;
+    list1_1 := [ 1 ];
+    return NTuple( 2, 1, list1_1 );
+end
+
+#
 gap> STOP_TEST( "CapJitInlinedBindings" );
