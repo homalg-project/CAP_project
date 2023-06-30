@@ -11,16 +11,10 @@ InstallGlobalFunction( CapJitInlinedBindings, function ( tree )
 end );
 
 InstallGlobalFunction( CAP_JIT_INTERNAL_INLINED_BINDINGS, function ( tree, initial_func_stack, inline_var_refs_only, inline_fully )
-  local pre_func, new_bindings, result_func, additional_arguments_func;
+  local pre_func, result_func, additional_arguments_func;
     
     pre_func := function ( tree, func_stack )
-      local new_bindings, value, func, info, name, i;
-        
-        if IsBound( tree.CAP_JIT_DO_NOT_INLINE ) and tree.CAP_JIT_DO_NOT_INLINE = true then
-            
-            return fail;
-            
-        fi;
+      local new_bindings, value, func, inline_simple_values_only, info, name, i;
         
         # `new_bindings` will be attached to functions
         if tree.type = "EXPR_DECLARATIVE_FUNC" then
@@ -47,7 +41,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INLINED_BINDINGS, function ( tree, initi
                 value := CapJitValueOfBinding( tree, name );
                 
                 # RETURN_VALUE and those not inlined below should be kept
-                if name = "RETURN_VALUE" or not (not inline_var_refs_only or value.type = "EXPR_REF_GVAR" or value.type = "EXPR_REF_FVAR") then
+                if name = "RETURN_VALUE" or (inline_var_refs_only and not value.type in [ "EXPR_INT", "EXPR_STRING", "EXPR_CHAR", "EXPR_TRUE", "EXPR_FALSE", "EXPR_REF_GVAR", "EXPR_REF_FVAR" ]) then
                     
                     CapJitAddBinding( new_bindings, name, value );
                     
@@ -71,16 +65,26 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INLINED_BINDINGS, function ( tree, initi
                     
                     value := CapJitValueOfBinding( func.bindings, tree.name );
                     
-                    if not inline_var_refs_only or value.type = "EXPR_REF_GVAR" or value.type = "EXPR_REF_FVAR" then
+                    inline_simple_values_only := IsBound( tree.CAP_JIT_INLINE_SIMPLE_VALUES_ONLY ) and tree.CAP_JIT_INLINE_SIMPLE_VALUES_ONLY = true;
+                    
+                    if (inline_var_refs_only or inline_simple_values_only) and not value.type in [ "EXPR_INT", "EXPR_STRING", "EXPR_CHAR", "EXPR_TRUE", "EXPR_FALSE", "EXPR_REF_GVAR", "EXPR_REF_FVAR" ] then
                         
-                        Info( InfoCapJit, 1, "####" );
-                        Info( InfoCapJit, 1, "Inline binding with name ", tree.name, "." );
-                        
-                        tree := CapJitCopyWithNewFunctionIDs( value );
-                        
-                        continue;
+                        break;
                         
                     fi;
+                    
+                    Info( InfoCapJit, 1, "####" );
+                    Info( InfoCapJit, 1, "Inline binding with name ", tree.name, "." );
+                    
+                    tree := CapJitCopyWithNewFunctionIDs( value );
+                    
+                    if inline_simple_values_only then
+                        
+                        tree.CAP_JIT_INLINE_SIMPLE_VALUES_ONLY := true;
+                        
+                    fi;
+                    
+                    continue;
                     
                 fi;
                 
@@ -103,7 +107,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INLINED_BINDINGS, function ( tree, initi
                     
                     tree.(info.key).(i) := ShallowCopy( tree.(info.key).(i) );
                     
-                    tree.(info.key).(i).CAP_JIT_DO_NOT_INLINE := true;
+                    tree.(info.key).(i).CAP_JIT_INLINE_SIMPLE_VALUES_ONLY := true;
                     
                 od;
                 
@@ -118,13 +122,11 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INLINED_BINDINGS, function ( tree, initi
     result_func := function ( tree, result, keys, func_stack )
       local info, key, fvar, func, value, new_nams, name, i;
         
-        if result = fail then
+        if IsBound( tree.CAP_JIT_INLINE_SIMPLE_VALUES_ONLY ) then
             
-            Assert( 0, IsBound( tree.CAP_JIT_DO_NOT_INLINE ) and tree.CAP_JIT_DO_NOT_INLINE = true );
+            Assert( 0, tree.CAP_JIT_INLINE_SIMPLE_VALUES_ONLY = true );
             
-            Unbind( tree.CAP_JIT_DO_NOT_INLINE );
-            
-            return tree;
+            Unbind( tree.CAP_JIT_INLINE_SIMPLE_VALUES_ONLY );
             
         fi;
         
@@ -136,6 +138,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INLINED_BINDINGS, function ( tree, initi
             
         od;
         
+        # make sure that bindings for outlined arguments are kept
         if not inline_fully and not inline_var_refs_only then
             
             info := CAP_JIT_INTERNAL_GET_KEY_AND_POSITIONS_TO_OUTLINE( tree, func_stack );
