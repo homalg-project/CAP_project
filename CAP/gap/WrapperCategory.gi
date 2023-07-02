@@ -206,6 +206,8 @@ InstallMethod( WrapperCategory,
     od;
     
     reinterpretation_options := rec(
+        object_datum_type := CapJitDataTypeOfObjectOfCategory( C ),
+        morphism_datum_type := CapJitDataTypeOfMorphismOfCategory( C ),
         object_constructor := { cat, d } -> AsObjectInWrapperCategory( cat, d ),
         object_datum := { D, o } -> UnderlyingCell( o ),
         morphism_constructor := { D, s, d, t } -> AsMorphismInWrapperCategory( D, s, d, t ),

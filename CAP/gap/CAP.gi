@@ -291,7 +291,7 @@ InstallGlobalFunction( "CreateCapCategoryWithDataTypes",
     # convenience for Julia lists
     if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
         
-        if object_datum_type <> fail and object_datum_type.filter = IsList then
+        if object_datum_type <> fail and object_datum_type.filter in [ IsList, IsNTuple ] then
             
             InstallOtherMethod( ObjectConstructor,
                                 [ CategoryFilter( obj ), ValueGlobal( "IsJuliaObject" ) ],
@@ -304,7 +304,7 @@ InstallGlobalFunction( "CreateCapCategoryWithDataTypes",
             
         fi;
         
-        if morphism_datum_type <> fail and morphism_datum_type.filter = IsList then
+        if morphism_datum_type <> fail and morphism_datum_type.filter in [ IsList, IsNTuple ] then
             
             InstallOtherMethod( MorphismConstructor,
                                 [ ObjectFilter( obj ), ValueGlobal( "IsJuliaObject" ), ObjectFilter( obj ) ],

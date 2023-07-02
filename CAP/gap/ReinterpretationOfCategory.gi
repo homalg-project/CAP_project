@@ -18,6 +18,8 @@ InstallMethod( ReinterpretationOfCategory,
         category_filter := IsFilter,
         category_object_filter := IsFilter,
         category_morphism_filter := IsFilter,
+        object_datum_type := IsObject, # IsFilter or IsRecord
+        morphism_datum_type := IsObject, # IsFilter or IsRecord
         object_constructor := IsFunction,
         object_datum := IsFunction,
         morphism_constructor := IsFunction,
@@ -99,9 +101,20 @@ InstallMethod( ReinterpretationOfCategory,
         object_datum := options.object_datum,
         morphism_constructor := options.morphism_constructor,
         morphism_datum := options.morphism_datum,
+        is_computable := C!.is_computable,
     );
     
-    category_constructor_options.is_computable := C!.is_computable;
+    if IsBound( options.object_datum_type ) then
+        
+        category_constructor_options.object_datum_type := options.object_datum_type;
+        
+    fi;
+    
+    if IsBound( options.morphism_datum_type ) then
+        
+        category_constructor_options.morphism_datum_type := options.morphism_datum_type;
+        
+    fi;
     
     if HasCommutativeRingOfLinearCategory( C ) then
         
