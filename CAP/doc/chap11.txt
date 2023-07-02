@@ -23,14 +23,11 @@
   
   [30X    [33X[0;6Y[10Xname[110X (optional): name of the category[133X
   
-  [30X    [33X[0;6Y[10Xcategory_filter[110X   (optional):   filter   set   for  the  category  via
-        [10XSetFilterObj[110X[133X
+  [30X    [33X[0;6Y[10Xcategory_filter[110X,    [10Xcategory_object_filter[110X,   [10Xcategory_morphism_filter[110X
+        (mandatory): passed to [2XCreateCapCategoryWithDataTypes[102X ([14X1.3-4[114X)[133X
   
-  [30X    [33X[0;6Y[10Xcategory_object_filter[110X      (optional):      filter      added     via
-        [2XAddObjectRepresentation[102X ([14X2.6-3[114X) to the category[133X
-  
-  [30X    [33X[0;6Y[10Xcategory_morphism_filter[110X      (optional):     filter     added     via
-        [2XAddMorphismRepresentation[102X ([14X3.6-3[114X) to the category[133X
+  [30X    [33X[0;6Y[10Xobject_datum_type[110X,    [10Xmorphism_datum_type[110X    (optional):   passed   to
+        [2XCreateCapCategoryWithDataTypes[102X ([14X1.3-4[114X)[133X
   
   [30X    [33X[0;6Y[10Xcommutative_ring_of_linear_category[110X   (optional):   ring  attached  as
         [2XCommutativeRingOfLinearCategory[102X ([14X1.4-9[114X) to the category[133X
