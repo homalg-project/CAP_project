@@ -408,6 +408,29 @@ DeclareAttribute( "TwoCellDatumType",
 DeclareAttribute( "CommutativeRingOfLinearCategory",
                   IsCapCategory );
 
+# display a warning when trying to overwrite an existing CommutativeRingOfLinearCategory with a different one
+InstallMethod( SetCommutativeRingOfLinearCategory,
+               [ IsCapCategory, IsObject ],
+               
+  function( category, ring )
+    
+    if not (IsRing( ring ) and HasIsCommutative( ring ) and IsCommutative( ring )) then
+        
+        Error( "CommutativeRingOfLinearCategory must be a commutative ring" );
+        
+    fi;
+    
+    if HasCommutativeRingOfLinearCategory( category ) and not IsIdenticalObj( ring, CommutativeRingOfLinearCategory( category ) ) then
+        
+        Print( "WARNING: Trying to set CommutativeRingOfLinearCategory to a ring with name \"", String( ring ), "\" but a different ring with name \"", String( CommutativeRingOfLinearCategory( category ) ), "\" is already set.\n" );
+        
+    fi;
+    
+    # delegate to system setter
+    TryNextMethod( );
+    
+end );
+
 #! @Description
 #! The argument is a category $C$ which is expected to lie in the
 #! filter <C>IsEquippedWithHomomorphismStructure</C>.
@@ -417,6 +440,29 @@ DeclareAttribute( "CommutativeRingOfLinearCategory",
 #! @Returns a category
 DeclareAttribute( "RangeCategoryOfHomomorphismStructure",
                   IsCapCategory );
+
+# display a warning when trying to overwrite an existing RangeCategoryOfHomomorphismStructure with a different one
+InstallMethod( SetRangeCategoryOfHomomorphismStructure,
+               [ IsCapCategory, IsObject ],
+               
+  function( category, range_category )
+    
+    if not IsCapCategory( range_category ) then
+        
+        Error( "RangeCategoryOfHomomorphismStructure must be a CAP category" );
+        
+    fi;
+    
+    if HasRangeCategoryOfHomomorphismStructure( category ) and not IsIdenticalObj( range_category, RangeCategoryOfHomomorphismStructure( category ) ) then
+        
+        Print( "WARNING: Trying to set RangeCategoryOfHomomorphismStructure to a category with name \"", Name( range_category ), "\" but a different range category with name \"", Name( RangeCategoryOfHomomorphismStructure( category ) ), "\" is already set.\n" );
+        
+    fi;
+    
+    # delegate to system setter
+    TryNextMethod( );
+    
+end );
 
 #! @Description
 #! The argument is an additive category $C$.
