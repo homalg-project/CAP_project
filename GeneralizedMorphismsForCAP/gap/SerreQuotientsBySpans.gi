@@ -422,15 +422,17 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryBySpans,
     
     name := Concatenation( "The Serre quotient category of ", name, " by ", function_name );
     
-    serre_category := CreateCapCategory( name );
+    serre_category := CreateCapCategoryWithDataTypes(
+                              name,
+                              IsSerreQuotientCategory,
+                              IsSerreQuotientCategoryBySpansObject,
+                              IsSerreQuotientCategoryBySpansMorphism and HasUnderlyingGeneralizedMorphism,
+                              IsCapCategoryTwoCell,
+                              fail,
+                              fail,
+                              fail );
     
     serre_category!.category_as_first_argument := false;
-    
-    SetFilterObj( serre_category, IsSerreQuotientCategory );
-    
-    AddObjectRepresentation( serre_category, IsSerreQuotientCategoryBySpansObject );
-    
-    AddMorphismRepresentation( serre_category, IsSerreQuotientCategoryBySpansMorphism and HasUnderlyingGeneralizedMorphism );
     
     serre_category!.predicate_logic := category!.predicate_logic;
     
