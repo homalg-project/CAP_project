@@ -97,7 +97,7 @@ continue directly with Subsection \ref{subsection:skeletal_vec_computation}.
 We start by loading \texttt{CAP} and the package \texttt{RingsForHomalg} of the \texttt{homalg} project.
 In contrast to the groups example of Section \ref{section:groups}, we won't use existing data structures for the objects and morphisms
 in $\Svec$, but we will create them on our own. Thus, we declare
-a \GAP category for objects in $\Svec$ and for morphisms in $\Svec$.
+a \GAP category for $\Svec$, a \GAP category for the objects in $\Svec$ and a \GAP category for the morphisms in $\Svec$.
 
 After that, we declare the dimension as an attribute for objects in $\Svec$,
 and an underlying matrix as an attribute for morphisms in $\Svec$.
@@ -110,10 +110,13 @@ which should be added to the category needs the \GAP attributes \texttt{Source} 
 objects of the same category.
 
 After the declarations of the constructors we create a global category \GAP object, which will be the category $\Svec$.
+The call of \texttt{CreateCapCategory} lets \CapPkg create a category with name
+``\texttt{Skeletal category of rational vector spaces}'' which lies in the filter \texttt{IsSQVecCat}
+such that every \GAP object which is an object of $\Svec$ lies in the filter \texttt{IsSQVecObj}
+and every \GAP object which is a morphism of $\Svec$ lies in the filter \texttt{IsSQVecMor}.
+We do not want to consider two cells in $\Svec$, so we simply pass the generic filter \texttt{IsCapCategoryTwoCell}.
 Since we are going to create an Abelian category, we tell the system that we are doing this, to have all the computational
-properties of an Abelian category. 
-Next, we tell \CapPkg that every \GAP object which lies in the filter \texttt{IsSQVecObj} is an object of $\Svec$,
-and every \GAP object which lies in the filter \texttt{IsSQVecMor} is a morphism of $\Svec$.
+properties of an Abelian category.
 Last, we bind the field $\Q$ to a global variable.
 
 \input{GAP_tex/vecspaces_example/Declarations2}
