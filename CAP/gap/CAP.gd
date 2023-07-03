@@ -409,6 +409,7 @@ DeclareAttribute( "CommutativeRingOfLinearCategory",
                   IsCapCategory );
 
 # display a warning when trying to overwrite an existing CommutativeRingOfLinearCategory with a different one
+#= comment for Julia, which does not have "TryNextMethod"
 InstallMethod( SetCommutativeRingOfLinearCategory,
                [ IsCapCategory, IsObject ],
                
@@ -430,6 +431,7 @@ InstallMethod( SetCommutativeRingOfLinearCategory,
     TryNextMethod( );
     
 end );
+# =#
 
 #! @Description
 #! The argument is a category $C$ which is expected to lie in the
@@ -442,6 +444,7 @@ DeclareAttribute( "RangeCategoryOfHomomorphismStructure",
                   IsCapCategory );
 
 # display a warning when trying to overwrite an existing RangeCategoryOfHomomorphismStructure with a different one
+#= comment for Julia, which does not have "TryNextMethod"
 InstallMethod( SetRangeCategoryOfHomomorphismStructure,
                [ IsCapCategory, IsObject ],
                
@@ -463,6 +466,7 @@ InstallMethod( SetRangeCategoryOfHomomorphismStructure,
     TryNextMethod( );
     
 end );
+# =#
 
 #! @Description
 #! The argument is an additive category $C$.
