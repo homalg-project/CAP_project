@@ -1,10 +1,13 @@
 LoadPackage( "CAP" );
 
 ##
-DeclareCategory( "IsStringsAsCategoryObject",
+DeclareCategory( "IsStringsAsCategory",
+                 IsCapCategory );
+
+DeclareCategory( "IsObjectInStringsAsCategory",
                  IsCapCategoryObject );
 
-DeclareCategory( "IsStringsAsCategoryMorphism",
+DeclareCategory( "IsMorphismInStringsAsCategory",
                  IsCapCategoryMorphism );
 
 DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY" );
@@ -15,9 +18,6 @@ DeclareGlobalFunction( "DeleteVowels" );
 
 DeclareGlobalVariable( "STRINGS_AS_CATEGORY" );
 
-DeclareCategory( "IsStringsAsCategory",
-                 IsCapCategory );
-
 ## Constructors
 DeclareOperation( "StringsAsCategory",
                   [] );
@@ -26,15 +26,15 @@ DeclareOperation( "StringsAsCategoryObject",
                   [ IsString, IsCapCategory ] );
 
 DeclareOperation( "StringsAsCategoryMorphism",
-                  [ IsStringsAsCategoryObject, IsString, IsStringsAsCategoryObject ] );
+                  [ IsObjectInStringsAsCategory, IsString, IsObjectInStringsAsCategory ] );
 
 ## Attributes
 
 DeclareAttribute( "UnderlyingString",
-                  IsStringsAsCategoryObject );
+                  IsObjectInStringsAsCategory );
 
 DeclareAttribute( "UnderlyingString",
-                  IsStringsAsCategoryMorphism );
+                  IsMorphismInStringsAsCategory );
 
 ## Constructors
 
@@ -67,16 +67,18 @@ InstallMethod( StringsAsCategory,
   function( )
     local category;
     
-    category := CreateCapCategory( "Category of strings up to vowels" );
+    category := CreateCapCategoryWithDataTypes(
+                        "Category of strings up to vowels",
+                        IsStringsAsCategory,
+                        IsObjectInStringsAsCategory,
+                        IsMorphismInStringsAsCategory,
+                        IsCapCategoryTwoCell,
+                        IsStringRep,
+                        IsStringRep,
+                        fail );
     
     category!.category_as_first_argument := false;
     
-    SetFilterObj( category, IsStringsAsCategory );
-    
-    AddObjectRepresentation( category, IsStringsAsCategoryObject );
-    
-    AddMorphismRepresentation( category, IsStringsAsCategoryMorphism and HasUnderlyingString );
-
     INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY( category );
     
     Finalize( category );
@@ -85,10 +87,9 @@ InstallMethod( StringsAsCategory,
     
 end );
 
-
 ##
 InstallMethod( ViewString,
-               [ IsStringsAsCategoryMorphism ],
+               [ IsMorphismInStringsAsCategory ],
 
   function( alpha )
     
@@ -98,7 +99,7 @@ end );
 
 ##
 InstallMethod( ViewString,
-               [ IsStringsAsCategoryObject ],
+               [ IsObjectInStringsAsCategory ],
 
   function( a )
 
@@ -497,7 +498,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
     
 end );
 
-
 ##
 InstallMethod( StringsAsCategoryObject,
                [ IsString, IsCapCategory ],
@@ -517,7 +517,7 @@ end );
 
 ##
 InstallMethod( StringsAsCategoryMorphism,
-               [ IsStringsAsCategoryObject, IsString, IsStringsAsCategoryObject ],
+               [ IsObjectInStringsAsCategory, IsString, IsObjectInStringsAsCategory ],
                
   function( source, string, range )
     local morphism, category;
