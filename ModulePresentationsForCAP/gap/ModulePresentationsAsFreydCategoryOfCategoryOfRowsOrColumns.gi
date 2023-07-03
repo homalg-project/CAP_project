@@ -72,8 +72,8 @@ InstallMethod( LeftPresentationsAsFreydCategoryOfCategoryOfRows,
     
     ## from the object in the modeling category to the raw object data
     modeling_tower_object_datum := function( cat, obj )
-      
-      return UnderlyingMatrix( RelationMorphism( obj ) );
+        
+        return UnderlyingMatrix( RelationMorphism( obj ) );
         
     end;
     
@@ -215,8 +215,8 @@ InstallMethod( RightPresentationsAsFreydCategoryOfCategoryOfColumns,
     
     ## from the object in the modeling category to the raw object data
     modeling_tower_object_datum := function( cat, obj )
-      
-      return UnderlyingMatrix( RelationMorphism( obj ) );
+        
+        return UnderlyingMatrix( RelationMorphism( obj ) );
         
     end;
     
