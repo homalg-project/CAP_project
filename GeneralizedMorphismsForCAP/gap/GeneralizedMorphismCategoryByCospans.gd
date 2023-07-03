@@ -13,6 +13,13 @@
 ####################################
 
 #! @Description
+#! The GAP category of the category of
+#! generalized morphisms by cospans.
+#! @Arguments object
+DeclareCategory( "IsGeneralizedMorphismCategoryByCospans",
+                  IsGeneralizedMorphismCategory );
+
+#! @Description
 #! The GAP category of objects in the
 #! generalized morphism category by cospans.
 #! @Arguments object
