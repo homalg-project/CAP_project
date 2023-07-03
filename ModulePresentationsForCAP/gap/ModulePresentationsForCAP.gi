@@ -14,17 +14,19 @@ InstallMethod( LeftPresentations,
     # Since `FreydCategoriesForCAP` is not deposited, we cannot simply return `LeftPresentationsAsFreydCategoryOfCategoryOfRows( ring )`
     # but have to construct the category manually.
     
-    category := CreateCapCategory( Concatenation( "Category of left presentations of ", RingName( ring ) ) );
+    category := CreateCapCategoryWithDataTypes(
+                        Concatenation( "Category of left presentations of ", RingName( ring ) ),
+                        IsCategoryOfLeftPresentations,
+                        IsLeftPresentation,
+                        IsLeftPresentationMorphism and HasUnderlyingMatrix,
+                        IsCapCategoryTwoCell,
+                        fail,
+                        fail,
+                        fail );
     
     category!.category_as_first_argument := true;
     
-    AddObjectRepresentation( category, IsLeftPresentation );
-    
-    AddMorphismRepresentation( category, IsLeftPresentationMorphism and HasUnderlyingMatrix );
-    
     category!.ring_for_representation_category := ring;
-    
-    SetFilterObj( category, IsCategoryOfLeftPresentations );
     
     SetUnderlyingRing( category, ring );
     
@@ -114,17 +116,19 @@ InstallMethod( RightPresentations,
     # Since `FreydCategoriesForCAP` is not deposited, we cannot simply return `RightPresentationsAsFreydCategoryOfCategoryOfColumns( ring )`
     # but have to construct the category manually.
     
-    category := CreateCapCategory( Concatenation( "Category of right presentations of ", RingName( ring ) ) );
+    category := CreateCapCategoryWithDataTypes(
+                        Concatenation( "Category of right presentations of ", RingName( ring ) ),
+                        IsCategoryOfRightPresentations,
+                        IsRightPresentation,
+                        IsRightPresentationMorphism and HasUnderlyingMatrix,
+                        IsCapCategoryTwoCell,
+                        fail,
+                        fail,
+                        fail );
     
     category!.category_as_first_argument := true;
     
-    AddObjectRepresentation( category, IsRightPresentation );
-    
-    AddMorphismRepresentation( category, IsRightPresentationMorphism and HasUnderlyingMatrix );
-    
     category!.ring_for_representation_category := ring;
-    
-    SetFilterObj( category, IsCategoryOfRightPresentations );
     
     SetUnderlyingRing( category, ring );
     
