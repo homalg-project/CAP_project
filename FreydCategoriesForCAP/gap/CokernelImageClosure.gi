@@ -48,11 +48,17 @@ InstallMethod( CokernelImageClosure,
         
     fi;
     
-    cokernel_image_closure := CreateCapCategory( Concatenation( "Cokernel image closure( ", Name( underlying_category ), " )" ) );
+    cokernel_image_closure := CreateCapCategoryWithDataTypes(
+                                      Concatenation( "Cokernel image closure( ", Name( underlying_category ), " )" ),
+                                      IsCokernelImageClosure,
+                                      IsCokernelImageClosureObject,
+                                      IsCokernelImageClosureMorphism and HasMorphismDatum,
+                                      IsCapCategoryTwoCell,
+                                      fail,
+                                      fail,
+                                      fail );
     
     cokernel_image_closure!.category_as_first_argument := false;
-    
-    SetFilterObj( cokernel_image_closure, IsCokernelImageClosure );
     
     SetIsAdditiveCategory( cokernel_image_closure, true );
     
@@ -64,10 +70,6 @@ InstallMethod( CokernelImageClosure,
         SetIsAbelianCategory( cokernel_image_closure, true );
         
     fi;
-    
-    AddObjectRepresentation( cokernel_image_closure, IsCokernelImageClosureObject );
-    
-    AddMorphismRepresentation( cokernel_image_closure, IsCokernelImageClosureMorphism and HasMorphismDatum );
     
     INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE( cokernel_image_closure );
     

@@ -53,25 +53,28 @@ InstallMethod( ProSetAsCategory,
 
     fi;
 
-    category := CreateCapCategory( "ProSet" : overhead := false );
+    category := CreateCapCategoryWithDataTypes(
+                        "ProSet",
+                        IsProSetAsCategory,
+                        IsProSetAsCategoryObject,
+                        IsProSetAsCategoryMorphism,
+                        IsCapCategoryTwoCell,
+                        IsInt,
+                        fail,
+                        fail
+                        : overhead := false );
     
     category!.category_as_first_argument := false;
     
-    SetFilterObj( category, IsProSetAsCategory );
-
     SetIncidenceMatrix( category, incidence_matrix );
-
-    AddObjectRepresentation( category, IsProSetAsCategoryObject );
-
-    AddMorphismRepresentation( category, IsProSetAsCategoryMorphism );
-
+    
     SetRangeCategoryOfHomomorphismStructure( category, FREYD_CATEGORIES_SkeletalFinSets );
     SetIsEquippedWithHomomorphismStructure( category, true );
     
     INSTALL_FUNCTIONS_FOR_PROSET_AS_CATEGORY( category );
-
+    
     Finalize( category );
-
+    
     return category;
 
 end );

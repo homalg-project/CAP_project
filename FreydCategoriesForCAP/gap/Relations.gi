@@ -19,17 +19,19 @@ InstallMethod( RelCategory,
     
     ## TODO: is underlying_category regular?
     
-    category := CreateCapCategory( Concatenation( "Rel( ", Name( underlying_category )," )" ) );
+    category := CreateCapCategoryWithDataTypes(
+                        Concatenation( "Rel( ", Name( underlying_category )," )" ),
+                        IsRelCategory,
+                        IsRelCategoryObject,
+                        IsRelCategoryMorphism,
+                        IsCapCategoryTwoCell,
+                        fail,
+                        fail,
+                        fail );
     
     category!.category_as_first_argument := false;
     
-    SetFilterObj( category, IsRelCategory );
-    
     SetUnderlyingCategory( category, underlying_category );
-    
-    AddObjectRepresentation( category, IsRelCategoryObject );
-    
-    AddMorphismRepresentation( category, IsRelCategoryMorphism );
     
     INSTALL_FUNCTIONS_FOR_RELATIONS_CATEGORY( category );
     
