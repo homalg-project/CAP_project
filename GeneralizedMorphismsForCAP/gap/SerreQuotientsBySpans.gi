@@ -470,9 +470,9 @@ InstallMethodWithCacheFromObject( AsSerreQuotientCategoryBySpansObject,
         
     fi;
     
-    serre_object := ObjectifyObjectForCAPWithAttributes( rec( ), serre_category,
-                             UnderlyingHonestObject, object,
-                             UnderlyingGeneralizedObject, GeneralizedMorphismBySpansObject( object ) );
+    serre_object := CreateCapCategoryObjectWithAttributes( serre_category,
+                                                           UnderlyingHonestObject, object,
+                                                           UnderlyingGeneralizedObject, GeneralizedMorphismBySpansObject( object ) );
     
     if HasSpecializedObjectFilterForSerreQuotients( serre_category ) then
         

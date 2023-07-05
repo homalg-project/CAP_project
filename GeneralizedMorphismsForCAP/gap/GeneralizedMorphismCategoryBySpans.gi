@@ -304,8 +304,8 @@ InstallMethod( GeneralizedMorphismBySpansObject,
     
     generalized_category := GeneralizedMorphismCategoryBySpans( CapCategory( object ) );
     
-    return ObjectifyObjectForCAPWithAttributes( rec( ), generalized_category,
-                             UnderlyingHonestObject, object );
+    return CreateCapCategoryObjectWithAttributes( generalized_category,
+                                                  UnderlyingHonestObject, object );
     
 end );
 
