@@ -59,8 +59,8 @@ InstallMethod( WrappedMorphism,
                   
   function( source, morphism, range )
     
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
-        rec( ), wrapped_cat,
+    return CreateCapCategoryMorphismWithAttributes(
+        wrapped_cat,
         Source, source,
         Range, range,
         UnderlyingCell, morphism
