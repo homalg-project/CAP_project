@@ -88,11 +88,10 @@ InstallMethod( FieldAsCategoryMorphism,
     
     unique_object := FieldAsCategoryUniqueObject( category );
     
-    morphism := ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), category,
-                                           unique_object,
-                                           unique_object,
-                                           UnderlyingFieldElement, element
-    );
+    morphism := CreateCapCategoryMorphismWithAttributes( category,
+                                                         unique_object,
+                                                         unique_object,
+                                                         UnderlyingFieldElement, element );
     
     Add( category, morphism );
     
