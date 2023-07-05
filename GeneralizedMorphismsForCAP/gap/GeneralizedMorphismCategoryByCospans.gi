@@ -328,11 +328,11 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismByCospan,
     
     generalized_category := GeneralizedMorphismCategoryByCospans( CapCategory( arrow ) );
     
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), generalized_category,
-                             GeneralizedMorphismByCospansObject( Source( arrow ) ),
-                             GeneralizedMorphismByCospansObject( Source( reversed_arrow ) ),
-                             Arrow, arrow,
-                             ReversedArrow, reversed_arrow );
+    return CreateCapCategoryMorphismWithAttributes( generalized_category,
+                                                    GeneralizedMorphismByCospansObject( Source( arrow ) ),
+                                                    GeneralizedMorphismByCospansObject( Source( reversed_arrow ) ),
+                                                    Arrow, arrow,
+                                                    ReversedArrow, reversed_arrow );
     
 end );
 
