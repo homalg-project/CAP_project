@@ -403,9 +403,9 @@ InstallMethodWithCacheFromObject( AsSerreQuotientCategoryByCospansObject,
         
     fi;
     
-    serre_object := ObjectifyObjectForCAPWithAttributes( rec( ), serre_category,
-                                                         UnderlyingHonestObject, object,
-                                                         UnderlyingGeneralizedObject, GeneralizedMorphismByCospansObject( object ) );
+    serre_object := CreateCapCategoryObjectWithAttributes( serre_category,
+                                                           UnderlyingHonestObject, object,
+                                                           UnderlyingGeneralizedObject, GeneralizedMorphismByCospansObject( object ) );
     
     if HasSpecializedObjectFilterForSerreQuotients( serre_category ) then
         

@@ -91,8 +91,8 @@ InstallMethodForCompilerForCAP( CategoryOfRowsObjectOp,
         
     fi;
     
-    return ObjectifyObjectForCAPWithAttributes( rec( ), category,
-                                                RankOfObject, rank );
+    return CreateCapCategoryObjectWithAttributes( category,
+                                                  RankOfObject, rank );
     
 end );
 

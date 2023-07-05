@@ -29,8 +29,8 @@ InstallMethodForCompilerForCAP( AsObjectInWrapperCategory,
     #% CAP_JIT_DROP_NEXT_STATEMENT
     CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( object, ModelingCategory( D ), [ "the object given to AsObjectInWrapperCategory" ] );
     
-    return ObjectifyObjectForCAPWithAttributes( rec( ), D,
-            UnderlyingCell, object );
+    return CreateCapCategoryObjectWithAttributes( D,
+                                                  UnderlyingCell, object );
     
 end );
 

@@ -71,9 +71,7 @@ InstallMethod( FieldAsCategoryUniqueObject,
   function( category )
     local unique_object;
     
-    unique_object := ObjectifyObjectForCAPWithAttributes( rec( ),
-                                                          category
-    );
+    unique_object := CreateCapCategoryObjectWithAttributes( category );
     
     Add( category, unique_object );
     

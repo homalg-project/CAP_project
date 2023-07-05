@@ -52,9 +52,7 @@ InstallMethod( RingAsCategoryUniqueObject,
                
   function( category )
     
-    return ObjectifyObjectForCAPWithAttributes( rec( ),
-                                                category
-    );
+    return CreateCapCategoryObjectWithAttributes( category );
     
 end );
 

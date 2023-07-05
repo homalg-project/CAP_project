@@ -32,8 +32,8 @@ InstallMethod( CoFreydCategoryAsOppositeOfFreydCategoryOfOpposite,
         #% CAP_JIT_DROP_NEXT_STATEMENT
         CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( co_relation_morphism, underlying_cat, [ "the object datum given to the object constructor of <cat>" ] );
         
-        return ObjectifyObjectForCAPWithAttributes( rec( ), cat,
-                                                    CoRelationMorphism, co_relation_morphism );
+        return CreateCapCategoryObjectWithAttributes( cat,
+                                                      CoRelationMorphism, co_relation_morphism );
         
     end;
     

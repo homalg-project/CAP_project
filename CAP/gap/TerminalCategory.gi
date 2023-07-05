@@ -165,8 +165,7 @@ InstallGlobalFunction( TerminalCategoryWithSingleObject,
     ##
     object_constructor := function( cat, input )
         
-        return ObjectifyObjectForCAPWithAttributes(
-                       rec( ), cat );
+        return CreateCapCategoryObjectWithAttributes( cat );
         
     end;
     
@@ -325,9 +324,8 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
     ##
     object_constructor := function( cat, string )
         
-        return ObjectifyObjectForCAPWithAttributes(
-                       rec( ), cat,
-                       String, string );
+        return CreateCapCategoryObjectWithAttributes( cat,
+                                                      String, string );
         
     end;
     

@@ -98,12 +98,10 @@ InstallGlobalFunction( GradedRowOrColumn,
         
     fi;
     
-    return ObjectifyObjectForCAPWithAttributes(
-      rec( ), category,
-      DegreeList, degree_list,
-      RankOfObject, rank,
-      UnderlyingHomalgGradedRing, homalg_graded_ring
-    );
+    return CreateCapCategoryObjectWithAttributes( category,
+                                                  DegreeList, degree_list,
+                                                  RankOfObject, rank,
+                                                  UnderlyingHomalgGradedRing, homalg_graded_ring );
     
 end );
 
@@ -157,12 +155,10 @@ InstallGlobalFunction( GradedRowOrColumnLazy,
         
     fi;
     
-    return ObjectifyObjectForCAPWithAttributes(
-      rec( ), category,
-      DegreeList, degree_list,
-      RankOfObject, rank,
-      UnderlyingHomalgGradedRing, homalg_graded_ring
-    );
+    return CreateCapCategoryObjectWithAttributes( category,
+                                                  DegreeList, degree_list,
+                                                  RankOfObject, rank,
+                                                  UnderlyingHomalgGradedRing, homalg_graded_ring );
     
 end );
 
