@@ -50,8 +50,8 @@ end
 
 ## inspired by UniversalMorphismIntoDirectProductWithGivenDirectProduct in SkeletalFinSets
 gap> func :=  function ( cat_1, objects_1, T_1, tau_1, P_1 )
->     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
->        rec( ), cat_1,
+>     return CreateCapCategoryMorphismWithAttributes(
+>        cat_1,
 >        T_1, P_1,
 >        AsList, List( [ 1 .. Length( T_1 ) ], i_2 ->
 >            Sum( [ 1 .. Length( objects_1 ) ], j_3 ->
