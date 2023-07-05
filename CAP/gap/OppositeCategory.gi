@@ -447,8 +447,8 @@ InstallMethod( Opposite,
             
         fi;
         
-        opposite_object := ObjectifyObjectForCAPWithAttributes( rec( ), cat,
-                                                                Opposite, object );
+        opposite_object := CreateCapCategoryObjectWithAttributes( cat,
+                                                                  Opposite, object );
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         if CapCategory( object )!.predicate_logic then

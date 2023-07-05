@@ -93,9 +93,8 @@ InstallMethod( StringsAsCategoryObject,
   function( string, category )
     local object;
     
-    object := ObjectifyObjectForCAPWithAttributes( rec( ), category,
-                                                   UnderlyingString, string
-    );
+    object := CreateCapCategoryObjectWithAttributes( category,
+                                                     UnderlyingString, string );
     
     Add( category, object );
     
