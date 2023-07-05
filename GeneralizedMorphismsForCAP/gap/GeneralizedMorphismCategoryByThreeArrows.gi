@@ -284,23 +284,27 @@ InstallMethod( GeneralizedMorphismCategoryByThreeArrows,
     
     name := Concatenation( "Generalized morphism category of ", name );
     
-    generalized_morphism_category := CreateCapCategory( name );
+    generalized_morphism_category := CreateCapCategoryWithDataTypes(
+                                             name,
+                                             IsGeneralizedMorphismCategoryByThreeArrows,
+                                             IsGeneralizedMorphismCategoryByThreeArrowsObject,
+                                             IsGeneralizedMorphismByThreeArrows and HasSourceAid and HasRangeAid and HasArrow,
+                                             IsCapCategoryTwoCell,
+                                             fail,
+                                             fail,
+                                             fail );
     
     generalized_morphism_category!.category_as_first_argument := false;
-    
-    AddObjectRepresentation( generalized_morphism_category, IsGeneralizedMorphismCategoryByThreeArrowsObject );
-    
-    AddMorphismRepresentation( generalized_morphism_category, IsGeneralizedMorphismByThreeArrows and HasSourceAid and HasRangeAid and HasArrow );
     
     generalized_morphism_category!.predicate_logic := category!.predicate_logic;
     
     SetUnderlyingHonestCategory( generalized_morphism_category, category );
     
-    INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROWS_CATEGORY( generalized_morphism_category );
-    
     SetIsEnrichedOverCommutativeRegularSemigroup( generalized_morphism_category, true );
     
     SetFilterObj( generalized_morphism_category, WasCreatedAsGeneralizedMorphismCategoryByThreeArrows );
+    
+    INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROWS_CATEGORY( generalized_morphism_category );
     
     AddPredicateImplicationFileToCategory( generalized_morphism_category,
       Filename(

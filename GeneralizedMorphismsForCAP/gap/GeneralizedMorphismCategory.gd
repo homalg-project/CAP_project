@@ -16,6 +16,13 @@
 ####################################
 
 #! @Description
+#! The GAP category of the category of
+#! generalized morphisms.
+#! @Arguments object
+DeclareCategory( "IsGeneralizedMorphismCategory",
+                 IsCapCategory );
+
+#! @Description
 #! The GAP category of objects in the
 #! generalized morphism category.
 #! @Arguments object

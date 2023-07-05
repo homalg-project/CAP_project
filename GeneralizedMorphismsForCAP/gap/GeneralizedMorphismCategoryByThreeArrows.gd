@@ -13,6 +13,13 @@
 ####################################
 
 #! @Description
+#! The GAP category of the category of
+#! generalized morphisms by three arrows.
+#! @Arguments object
+DeclareCategory( "IsGeneralizedMorphismCategoryByThreeArrows",
+                 IsGeneralizedMorphismCategory );
+
+#! @Description
 #! The GAP category of objects in the
 #! generalized morphism category by three arrows.
 #! @Arguments object

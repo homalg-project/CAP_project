@@ -1,16 +1,16 @@
 LoadPackage( "LinearAlgebraForCAP" );
 
 ##
-DeclareCategory( "IsFieldAsCategoryObject",
+DeclareCategory( "IsFieldAsCategory",
+                 IsCapCategory and IsAbCategory );
+
+DeclareCategory( "IsObjectInFieldAsCategory",
                  IsCapCategoryObject );
 
-DeclareCategory( "IsFieldAsCategoryMorphism",
+DeclareCategory( "IsMorphismInFieldAsCategory",
                  IsCapCategoryMorphism );
 
 DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_FIELD_AS_CATEGORY" );
-
-DeclareCategory( "IsFieldAsCategory",
-                 IsCapCategory and IsAbCategory );
 
 ## Constructors
 DeclareAttribute( "FieldAsCategory",
@@ -24,7 +24,7 @@ DeclareOperation( "FieldAsCategoryMorphism",
 
 ## Attributes
 DeclareAttribute( "UnderlyingFieldElement",
-                  IsFieldAsCategoryMorphism );
+                  IsMorphismInFieldAsCategory );
 
 DeclareAttribute( "UnderlyingFieldForHomalg",
                   IsFieldAsCategory );
@@ -38,21 +38,24 @@ InstallMethod( FieldAsCategory,
   function( field )
     local category;
     
-    category := CreateCapCategory( Concatenation( "Field as category( ", RingName( field )," )"  ) : overhead := false );
+    category := CreateCapCategoryWithDataTypes(
+                        Concatenation( "Field as category( ", RingName( field )," )"  ),
+                        IsFieldAsCategory,
+                        IsObjectInFieldAsCategory,
+                        IsMorphismInFieldAsCategory and HasUnderlyingFieldElement,
+                        IsCapCategoryTwoCell,
+                        fail,
+                        IsRingElement,
+                        fail
+                        : overhead := false );
     
     category!.category_as_first_argument := false;
-    
-    SetFilterObj( category, IsFieldAsCategory );
     
     SetUnderlyingFieldForHomalg( category, field );
     
     SetRangeCategoryOfHomomorphismStructure( category, MatrixCategory( field ) );
     SetIsEquippedWithHomomorphismStructure( category, true );
     
-    AddObjectRepresentation( category, IsFieldAsCategoryObject );
-    
-    AddMorphismRepresentation( category, IsFieldAsCategoryMorphism and HasUnderlyingFieldElement );
-
     INSTALL_FUNCTIONS_FOR_FIELD_AS_CATEGORY( category );
     
     Finalize( category );
@@ -101,7 +104,7 @@ end );
 
 ##
 InstallMethod( ViewString,
-               [ IsFieldAsCategoryMorphism ],
+               [ IsMorphismInFieldAsCategory ],
 
   function( alpha )
 

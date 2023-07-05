@@ -13,6 +13,13 @@
 ####################################
 
 #! @Description
+#! The GAP category of the category of
+#! generalized morphisms by spans.
+#! @Arguments object
+DeclareCategory( "IsGeneralizedMorphismCategoryBySpans",
+                 IsGeneralizedMorphismCategory );
+
+#! @Description
 #! The GAP category of objects in the
 #! generalized morphism category by spans.
 #! @Arguments object

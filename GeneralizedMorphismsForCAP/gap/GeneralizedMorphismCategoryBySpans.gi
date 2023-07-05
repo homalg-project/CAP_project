@@ -262,23 +262,27 @@ InstallMethod( GeneralizedMorphismCategoryBySpans,
     
     name := Concatenation( "Generalized morphism category of ", name, " by span" );
     
-    generalized_morphism_category := CreateCapCategory( name );
+    generalized_morphism_category := CreateCapCategoryWithDataTypes(
+                                             name,
+                                             IsGeneralizedMorphismCategoryBySpans,
+                                             IsGeneralizedMorphismCategoryBySpansObject,
+                                             IsGeneralizedMorphismBySpan and HasArrow and HasReversedArrow,
+                                             IsCapCategoryTwoCell,
+                                             fail,
+                                             fail,
+                                             fail );
     
     generalized_morphism_category!.category_as_first_argument := false;
-    
-    AddObjectRepresentation( generalized_morphism_category, IsGeneralizedMorphismCategoryBySpansObject );
-    
-    AddMorphismRepresentation( generalized_morphism_category, IsGeneralizedMorphismBySpan and HasArrow and HasReversedArrow );
     
     generalized_morphism_category!.predicate_logic := category!.predicate_logic;
     
     SetUnderlyingHonestCategory( generalized_morphism_category, category );
     
-    INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_SPANS( generalized_morphism_category );
-    
     SetIsEnrichedOverCommutativeRegularSemigroup( generalized_morphism_category, true );
     
     SetFilterObj( generalized_morphism_category, WasCreatedAsGeneralizedMorphismCategoryBySpans );
+    
+    INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_SPANS( generalized_morphism_category );
     
     AddPredicateImplicationFileToCategory( generalized_morphism_category,
       Filename(
