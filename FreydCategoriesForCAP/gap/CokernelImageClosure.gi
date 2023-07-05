@@ -152,12 +152,10 @@ InstallMethod( CokernelImageClosureMorphism,
     
     category := CapCategory( source );
 
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
-                             rec( ), category,
-                             source,
-                             range,
-                             MorphismDatum, morphism_datum
-    );
+    return CreateCapCategoryMorphismWithAttributes( category,
+                                                    source,
+                                                    range,
+                                                    MorphismDatum, morphism_datum );
     
 end );
 

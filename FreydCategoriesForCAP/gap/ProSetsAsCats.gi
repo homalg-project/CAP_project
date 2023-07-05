@@ -109,11 +109,9 @@ InstallMethod( ProSetAsCategoryMorphism,
 
     category := CapCategory( source );
 
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
-                             rec( ), category,
-                             source,
-                             range
-    );
+    return CreateCapCategoryMorphismWithAttributes( category,
+                                                    source,
+                                                    range );
 
 end );
 

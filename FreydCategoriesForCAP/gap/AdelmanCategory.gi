@@ -158,12 +158,10 @@ InstallOtherMethodForCompilerForCAP( AdelmanCategoryMorphism,
         
     fi;
     
-    adelman_category_morphism := ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
-                             rec( ), category,
-                             source,
-                             range,
-                             UnderlyingMorphism, morphism_datum
-    );
+    adelman_category_morphism := CreateCapCategoryMorphismWithAttributes( category,
+                                                                          source,
+                                                                          range,
+                                                                          UnderlyingMorphism, morphism_datum );
     
     return adelman_category_morphism;
     

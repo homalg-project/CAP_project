@@ -95,13 +95,11 @@ InstallMethod( GradedRowOrColumnMorphism,
     fi;
     
     # now create the morphism
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
-      rec( ), category,
-      source,
-      range,
-      UnderlyingHomalgGradedRing, homalg_graded_ring,
-      UnderlyingHomalgMatrix, homalg_matrix
-    );
+    return CreateCapCategoryMorphismWithAttributes( category,
+                                                    source,
+                                                    range,
+                                                    UnderlyingHomalgGradedRing, homalg_graded_ring,
+                                                    UnderlyingHomalgMatrix, homalg_matrix );
     
 end );
 
@@ -121,13 +119,11 @@ InstallMethod( GradedRowOrColumnMorphism,
     homalg_graded_ring := HomalgRing( homalg_matrix );
     
     # construct the morphism
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
-      rec( ), category,
-      source,
-      range,
-      UnderlyingHomalgGradedRing, homalg_graded_ring,
-      UnderlyingHomalgMatrix, homalg_matrix
-    );
+    return CreateCapCategoryMorphismWithAttributes( category,
+                                                    source,
+                                                    range,
+                                                    UnderlyingHomalgGradedRing, homalg_graded_ring,
+                                                    UnderlyingHomalgMatrix, homalg_matrix );
     
 end );
 
