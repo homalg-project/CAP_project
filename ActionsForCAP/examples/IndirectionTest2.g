@@ -50,8 +50,7 @@ InstallMethod( WrappedObject,
                
   function( obj )
     
-    return ObjectifyObjectForCAPWithAttributes(
-        rec( ), wrapped_cat,
+    return CreateCapCategoryObjectWithAttributes( wrapped_cat,
         UnderlyingCell, obj
     ); end );
 
