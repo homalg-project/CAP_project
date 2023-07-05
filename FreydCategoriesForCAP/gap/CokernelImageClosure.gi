@@ -94,9 +94,9 @@ InstallMethod( CokernelImageClosureObject,
 
     category := CokernelImageClosure( CapCategory( relation_morphism ) );
 
-    return ObjectifyObjectForCAPWithAttributes( rec( ), category,
-                                                GeneratorMorphism, generator_morphism,
-                                                RelationMorphism, relation_morphism );
+    return CreateCapCategoryObjectWithAttributes( category,
+                                                  GeneratorMorphism, generator_morphism,
+                                                  RelationMorphism, relation_morphism );
     
 end );
 

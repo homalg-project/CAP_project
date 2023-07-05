@@ -47,9 +47,8 @@ InstallMethod( RelCategoryObject,
                
   function( original_object, rel )
     
-    return ObjectifyObjectForCAPWithAttributes( rec( ), rel,
-                                                UnderlyingOriginalObject, original_object
-    );
+    return CreateCapCategoryObjectWithAttributes( rel,
+                                                  UnderlyingOriginalObject, original_object );
     
 end );
 

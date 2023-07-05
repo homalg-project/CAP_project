@@ -158,10 +158,8 @@ InstallOtherMethodForCompilerForCAP( AdditiveClosureObject,
                                      
   function( category, list_of_objects )
     
-    return ObjectifyObjectForCAPWithAttributes(
-                             rec( ), category,
-                             ObjectList, list_of_objects
-    );
+    return CreateCapCategoryObjectWithAttributes( category,
+                                                  ObjectList, list_of_objects );
     
 end );
 

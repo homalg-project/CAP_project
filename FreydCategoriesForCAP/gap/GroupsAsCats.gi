@@ -54,9 +54,7 @@ InstallMethod( GroupAsCategoryUniqueObject,
                
   function( category )
     
-    return ObjectifyObjectForCAPWithAttributes( rec( ),
-                                                category
-    );
+    return CreateCapCategoryObjectWithAttributes( category );
     
 end );
 

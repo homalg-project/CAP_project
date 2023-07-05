@@ -102,9 +102,9 @@ InstallOtherMethodForCompilerForCAP( AdelmanCategoryObject,
     
     fi;
     
-    return ObjectifyObjectForCAPWithAttributes( rec( ), category,
-                                                RelationMorphism, relation_morphism,
-                                                CorelationMorphism, corelation_morphism );
+    return CreateCapCategoryObjectWithAttributes( category,
+                                                  RelationMorphism, relation_morphism,
+                                                  CorelationMorphism, corelation_morphism );
     
 end );
 

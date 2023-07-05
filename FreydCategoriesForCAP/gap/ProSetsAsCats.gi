@@ -96,9 +96,8 @@ InstallMethod( ProSetAsCategoryObject,
   function( number_object, category )
     ## TODO: sanity check: is number_object in the range [ 1 .. n ]?
 
-    return ObjectifyObjectForCAPWithAttributes( rec( ), category,
-                                                UnderlyingInteger, number_object
-    );
+    return CreateCapCategoryObjectWithAttributes( category,
+                                                  UnderlyingInteger, number_object );
 
 end );
 

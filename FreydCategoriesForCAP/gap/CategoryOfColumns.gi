@@ -75,8 +75,8 @@ InstallMethodForCompilerForCAP( CategoryOfColumnsObjectOp,
         
     fi;
     
-    return ObjectifyObjectForCAPWithAttributes( rec( ), cat,
-                                                RankOfObject, rank );
+    return CreateCapCategoryObjectWithAttributes( cat,
+                                                  RankOfObject, rank );
     
 end );
 

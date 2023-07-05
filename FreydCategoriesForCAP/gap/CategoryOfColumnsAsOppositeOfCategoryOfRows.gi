@@ -24,8 +24,8 @@ InstallMethod( CategoryOfColumnsAsOppositeOfCategoryOfRows,
     ##
     object_constructor := function( cat, rank )
         
-        return ObjectifyObjectForCAPWithAttributes( rec( ), cat,
-                                                    RankOfObject, rank );
+        return CreateCapCategoryObjectWithAttributes( cat,
+                                                      RankOfObject, rank );
         
     end;
     

@@ -158,10 +158,8 @@ InstallMethod( LinearClosureObject,
                
   function( category, object )
     
-    return ObjectifyObjectForCAPWithAttributes( rec( ),
-                                                category,
-                                                UnderlyingOriginalObject, object
-    );
+    return CreateCapCategoryObjectWithAttributes( category,
+                                                  UnderlyingOriginalObject, object );
     
 end );
 

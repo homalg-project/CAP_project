@@ -17,14 +17,12 @@ QQ := HomalgFieldOfRationals( );;
 cols := CategoryOfColumns( QQ );;
 rows := CategoryOfRows( QQ );;
 object_constructor :=
-    { cat, rank } -> ObjectifyObjectForCAPWithAttributes(
-        rec( ), cat,
-        Opposite, CategoryOfRowsObject( Opposite( cat ), rank )
+    { cat, rank } -> CreateCapCategoryObjectWithAttributes( cat,
+                                                            Opposite, CategoryOfRowsObject( Opposite( cat ), rank )
     );;
 modeling_tower_object_constructor :=
-    { cat, rank } -> ObjectifyObjectForCAPWithAttributes(
-        rec( ), ModelingCategory( cat ),
-        RankOfObject, rank
+    { cat, rank } -> CreateCapCategoryObjectWithAttributes( ModelingCategory( cat ),
+                                                            RankOfObject, rank
     );;
 object_datum := { cat, obj } -> RankOfObject( Opposite( obj ) );;
 modeling_tower_object_datum := { cat, obj } -> RankOfObject( obj );;
