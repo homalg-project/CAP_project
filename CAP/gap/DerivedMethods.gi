@@ -4599,7 +4599,7 @@ AddFinalDerivation( IsCongruentForMorphisms,
                     [ [ IsEqualForMorphisms, 1 ] ],
                     [ IsCongruentForMorphisms ],
                     
-  { cat, mor1, mor2 } -> IsEqualForMorphisms( cat, mor1, mor2 ) );
+  { cat, mor1, mor2 } -> IsEqualForMorphisms( cat, mor1, mor2 ) : CategoryFilter := cat -> cat!.is_computable );
 
 ##
 AddFinalDerivation( IsEqualForMorphisms,
