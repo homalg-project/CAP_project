@@ -11,7 +11,7 @@ fi;
 
 if not IsCapCategory( vecspaces ) then
     
-    vecspaces := CreateCapCategory( "VectorSpacesK3" );
+    vecspaces := CreateCapCategory( "VectorSpacesK3" : is_computable := false );
     
     vecspaces!.category_as_first_argument := false;
     

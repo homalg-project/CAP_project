@@ -7,6 +7,7 @@ true
 #
 gap> dummy := DummyCategory( rec(
 >     list_of_operations_to_install := [
+>         "IsCongruentForMorphisms",
 >         "IdentityMorphism",
 >         "ZeroObject",
 >         "KernelObject",

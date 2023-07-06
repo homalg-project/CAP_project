@@ -22,7 +22,7 @@ BindGlobal( "CAP_INTERNAL_CREATE_Cat",
   function(  )
     local cat;
     
-    cat := CreateCapCategory( "Cat", IsCapCategory, IsCapCategoryAsCatObject, IsCapFunctor, IsCapNaturalTransformation );
+    cat := CreateCapCategory( "Cat", IsCapCategory, IsCapCategoryAsCatObject, IsCapFunctor, IsCapNaturalTransformation : is_computable := false );
     
     cat!.category_as_first_argument := false;
     

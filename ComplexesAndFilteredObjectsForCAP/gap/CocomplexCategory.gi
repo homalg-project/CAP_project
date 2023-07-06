@@ -60,7 +60,7 @@ InstallMethod( CocomplexCategory,
     
     name := Concatenation( "Cocomplex category of ", name );
     
-    cocomplex_category := CreateCapCategory( name );
+    cocomplex_category := CreateCapCategory( name : is_computable := false );
     
     cocomplex_category!.category_as_first_argument := false;
     
@@ -93,7 +93,7 @@ InstallMethod( ComplexCategory,
     
     name := Concatenation( "Complex category of ", name );
     
-    complex_category := CreateCapCategory( name );
+    complex_category := CreateCapCategory( name : is_computable := false );
     
     complex_category!.category_as_first_argument := false;
     

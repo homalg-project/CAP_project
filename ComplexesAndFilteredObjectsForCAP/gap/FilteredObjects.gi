@@ -54,7 +54,7 @@ InstallMethod( CategoryOfAscendingFilteredObjects,
     
     name := Concatenation( "Ascending filtered object category of ", name );
     
-    filtered_objects_category := CreateCapCategory( name );
+    filtered_objects_category := CreateCapCategory( name : is_computable := false );
     
     filtered_objects_category!.category_as_first_argument := false;
     
@@ -81,7 +81,7 @@ InstallMethod( CategoryOfDescendingFilteredObjects,
     
     name := Concatenation( "Descending filtered object category of ", name );
     
-    filtered_objects_category := CreateCapCategory( name );
+    filtered_objects_category := CreateCapCategory( name : is_computable := false );
     
     filtered_objects_category!.category_as_first_argument := false;
     

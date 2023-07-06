@@ -5,6 +5,7 @@ gap> LoadPackage( "FreydCategoriesForCAP", false );
 true
 gap> dummy := DummyCategory( rec(
 >                list_of_operations_to_install :=  [
+>                    "IsCongruentForMorphisms",
 >                    "PreComposeList",
 >                    "SumOfMorphisms" ],
 >                properties := [ "IsLinearCategoryOverCommutativeRing" ] ) : FinalizeCategory := false );;

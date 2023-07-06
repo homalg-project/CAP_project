@@ -4583,16 +4583,7 @@ AddFinalDerivation( IsEqualForObjects,
                     
   ReturnFail );
 
-## Final methods for IsEqual/IsEqualForMorphisms
-##
-AddFinalDerivation( IsCongruentForMorphisms,
-                    "Only IsIdenticalObj for comparing",
-                    [ ],
-                    [ IsCongruentForMorphisms,
-                      IsEqualForMorphisms ],
-                      
-  ReturnFail );
-
+## Final methods for IsEqual/IsCongruentForMorphisms
 ##
 AddFinalDerivation( IsEqualForMorphisms,
                     "Only IsIdenticalObj for comparing",
