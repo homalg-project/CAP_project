@@ -11,9 +11,7 @@ InstallGlobalFunction( WEAK_BI_FIBER_PRODUCT_PREFUNCTION,
     
     current_value := IsEqualForObjects( Range( morphism_1 ), Range( morphism_2 ) );
     
-    if current_value = fail then
-        return [ false, "cannot decide whether the given morphisms have equal ranges" ];
-    elif current_value = false then
+    if current_value = false then
         return [ false, "the given morphisms must have equal ranges" ];
     fi;
     
@@ -29,17 +27,13 @@ InstallGlobalFunction( UNIVERSAL_MORPHISM_INTO_WEAK_BI_FIBER_PRODUCT_PREFUNCTION
     
     current_value := IsEqualForObjects( Range( morphism_1 ), Range( morphism_2 ) );
     
-    if current_value = fail then
-        return [ false, "cannot decide whether the first two morphisms have equal ranges" ];
-    elif current_value = false then
+    if current_value = false then
         return [ false, "the first two morphisms must have equal ranges" ];
     fi;
     
     current_value := IsEqualForObjects( Source( test_morphism_1 ), Source( test_morphism_2 ) );
     
-    if current_value = fail then
-        return [ false, "cannot decide whether the last two morphisms have equal sources" ];
-    elif current_value = false then
+    if current_value = false then
         return [ false, "the last two morphisms must have equal sources" ];
     fi;
     
@@ -55,17 +49,13 @@ InstallGlobalFunction( UNIVERSAL_MORPHISM_INTO_BIASED_WEAK_FIBER_PRODUCT_PREFUNC
     
     current_value := IsEqualForObjects( Range( morphism_1 ), Range( morphism_2 ) );
     
-    if current_value = fail then
-        return [ false, "cannot decide whether the first two morphisms have equal ranges" ];
-    elif current_value = false then
+    if current_value = false then
         return [ false, "the first two morphisms must have equal ranges" ];
     fi;
     
     current_value := IsEqualForObjects( Source( morphism_1 ), Range( test_morphism ) );
     
-    if current_value = fail then
-        return [ false, "cannot decide whether the range of the test morphism is equal to the source of the first morphism " ];
-    elif current_value = false then
+    if current_value = false then
         return [ false, "the range of the test morphism must equal the source of the first morphism" ];
     fi;
     
@@ -82,9 +72,7 @@ InstallGlobalFunction( WEAK_BI_PUSHOUT_PREFUNCTION,
     
     current_value := IsEqualForObjects( Source( morphism_1 ), Source( morphism_2 ) );
     
-    if current_value = fail then
-        return [ false, "cannot decide whether the given morphisms have equal sources" ];
-    elif current_value = false then
+    if current_value = false then
         return [ false, "the given morphisms must have equal sources" ];
     fi;
     
@@ -100,17 +88,13 @@ InstallGlobalFunction( UNIVERSAL_MORPHISM_FROM_WEAK_BI_PUSHOUT_PREFUNCTION,
     
     current_value := IsEqualForObjects( Source( morphism_1 ), Source( morphism_2 ) );
     
-    if current_value = fail then
-        return [ false, "cannot decide whether the first two morphisms have equal sources" ];
-    elif current_value = false then
+    if current_value = false then
         return [ false, "the first two morphisms must have equal sources" ];
     fi;
     
     current_value := IsEqualForObjects( Range( test_morphism_1 ), Range( test_morphism_2 ) );
     
-    if current_value = fail then
-        return [ false, "cannot decide whether the last two morphisms have equal ranges" ];
-    elif current_value = false then
+    if current_value = false then
         return [ false, "the last two morphisms must have equal ranges" ];
     fi;
     
@@ -126,17 +110,13 @@ InstallGlobalFunction( UNIVERSAL_MORPHISM_FROM_BIASED_WEAK_PUSHOUT_PREFUNCTION,
     
     current_value := IsEqualForObjects( Source( morphism_1 ), Source( morphism_2 ) );
     
-    if current_value = fail then
-        return [ false, "cannot decide whether the first two morphisms have equal sources" ];
-    elif current_value = false then
+    if current_value = false then
         return [ false, "the first two morphisms must have equal sources" ];
     fi;
     
     current_value := IsEqualForObjects( Range( morphism_1 ), Source( test_morphism ) );
     
-    if current_value = fail then
-        return [ false, "cannot decide whether the range of the first morphism equals the source of the test morphism" ];
-    elif current_value = false then
+    if current_value = false then
         return [ false, "the range of the first morphism must equal the source of the test morphism" ];
     fi;
     

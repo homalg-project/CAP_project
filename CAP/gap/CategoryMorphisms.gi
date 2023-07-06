@@ -393,44 +393,88 @@ InstallMethod( CoefficientsOfMorphismWithGivenBasisOfExternalHom,
 ##
 ######################################
 
-# This method should usually not be selected when the two morphisms belong to the same category
+# This method should usually not be selected when the two morphisms belong to the same category and the category can compute IsEqualForMorphisms.
 InstallOtherMethod( IsEqualForMorphisms,
                     [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ],
 
   function( cat, morphism_1, morphism_2 )
     
     if not HasCapCategory( morphism_1 ) then
+        
         Error( Concatenation( "the morphism \"", String( morphism_1 ), "\" has no CAP category" ) );
+        
     fi;
+    
     if not HasCapCategory( morphism_2 ) then
+        
         Error( Concatenation( "the morphism \"", String( morphism_2 ), "\" has no CAP category" ) );
+        
     fi;
     
     if not IsIdenticalObj( CapCategory( morphism_1 ), CapCategory( morphism_2 ) ) then
+        
         Error( Concatenation( "the morphism \"", String( morphism_1 ), "\" and the morphism \"", String( morphism_2 ), "\" do not belong to the same CAP category" ) );
+        
     else
-        Error( Concatenation( "the morphism \"", String( morphism_1 ), "\" and the morphism \"", String( morphism_2 ), "\" belong to the same CAP category, but no specific method IsEqualForMorphisms is installed. Maybe you forgot to finalize the category?" ) );
+        
+        # convenience: as long as the morphisms are identical, everything "just works"
+        if IsIdenticalObj( morphism_1, morphism_2 ) then
+            
+            return true;
+            
+        else
+            
+            Error( "Cannot decide whether the morphism \"", String( morphism_1 ), "\" and the morphism \"", String( morphism_2 ), "\" are equal. You can fix this error by installing `IsEqualForMorphisms` in <cat> or possibly avoid it by enabling strict caching." );
+            
+        fi;
+        
     fi;
     
 end );
 
-# This method should usually not be selected when the two morphisms belong to the same category
+# This method should usually not be selected when the two morphisms belong to the same category and the category can compute IsCongruentForMorphisms.
 InstallOtherMethod( IsCongruentForMorphisms,
                     [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ],
 
   function( cat, morphism_1, morphism_2 )
     
     if not HasCapCategory( morphism_1 ) then
+        
         Error( Concatenation( "the morphism \"", String( morphism_1 ), "\" has no CAP category" ) );
+        
     fi;
+    
     if not HasCapCategory( morphism_2 ) then
+        
         Error( Concatenation( "the morphism \"", String( morphism_2 ), "\" has no CAP category" ) );
+        
     fi;
     
     if not IsIdenticalObj( CapCategory( morphism_1 ), CapCategory( morphism_2 ) ) then
+        
         Error( Concatenation( "the morphism \"", String( morphism_1 ), "\" and the morphism \"", String( morphism_2 ), "\" do not belong to the same CAP category" ) );
+        
     else
-        Error( Concatenation( "the morphism \"", String( morphism_1 ), "\" and the morphism \"", String( morphism_2 ), "\" belong to the same CAP category, but no specific method IsCongruentForMorphisms is installed. Maybe you forgot to finalize the category?" ) );
+        
+        if CapCategory( morphism_1 )!.is_computable then
+            
+            # convenience: as long as the morphisms are identical, everything "just works"
+            if IsIdenticalObj( morphism_1, morphism_2 ) then
+                
+                return true;
+                
+            else
+                
+                Error( "Cannot decide whether the morphism \"", String( morphism_1 ), "\" and the morphism \"", String( morphism_2 ), "\" are congruent. You can fix this error by installing `IsCongruentForMorphisms` in <cat>." );
+                
+            fi;
+            
+        else
+            
+            Error( "cannot decide congruence of morphisms in a non-computable category" );
+            
+        fi;
+        
     fi;
     
 end );
