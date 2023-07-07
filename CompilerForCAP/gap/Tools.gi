@@ -466,6 +466,24 @@ InstallGlobalFunction( CapJitGetNextUnusedVariableID, function ( func )
     
 end );
 
+InstallGlobalFunction( CapJitDataTypeIsNestedListOfSimpleLiterals, function ( data_type )
+    
+    if data_type.filter in [ IsInt, IsBool, IsStringRep, IsChar ] then
+        
+        return true;
+        
+    elif data_type.filter = IsList then
+        
+        return CapJitDataTypeIsNestedListOfSimpleLiterals( data_type.element_type );
+        
+    else
+        
+        return false;
+        
+    fi;
+    
+end );
+
 ## allow to handle SYNTAX_TREE_LISTs like lists
 InstallMethod( AsSyntaxTreeList,
                [ IsList ],
