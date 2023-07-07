@@ -3,7 +3,7 @@
 ##
 AddCokernelProjection( SQVec,
 
-  function( alpha )
+  function( cat, alpha )
     local cokernel_proj, cokernel_obj;
 
     cokernel_proj := SyzygiesOfColumns( UnderlyingMatrix( alpha ) );
@@ -18,7 +18,7 @@ end );
 ##
 AddColiftAlongEpimorphism( SQVec,
   
-  function( epsilon, tau )
+  function( cat, epsilon, tau )
     
     return SQVecMor( Range( epsilon ),
             LeftDivide(
