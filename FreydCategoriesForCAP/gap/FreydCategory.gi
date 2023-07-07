@@ -421,12 +421,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             
         fi;
         
-        return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
-                                 rec( ), cat,
-                                 source,
-                                 range,
-                                 UnderlyingMorphism, morphism_datum
-        );
+        return CreateCapCategoryMorphismWithAttributes( cat,
+                                                        source,
+                                                        range,
+                                                        UnderlyingMorphism, morphism_datum );
         
     end );
     

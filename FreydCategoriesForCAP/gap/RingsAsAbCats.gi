@@ -65,13 +65,10 @@ InstallMethodForCompilerForCAP( RingAsCategoryMorphism,
     
     unique_object := RingAsCategoryUniqueObject( category );
     
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
-        rec(),
-        category,
-        unique_object,
-        unique_object,
-        UnderlyingRingElement, element
-    );
+    return CreateCapCategoryMorphismWithAttributes( category,
+                                                    unique_object,
+                                                    unique_object,
+                                                    UnderlyingRingElement, element );
     
 end );
 

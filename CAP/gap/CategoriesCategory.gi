@@ -96,23 +96,21 @@ InstallMethod( CapFunctor,
                [ IsString, IsList, IsCapCategory ],
                
   function( name, source_list, range )
-    local source, functor, objectified_functor;
-    
-    functor := rec( );
+    local source, objectified_functor;
     
     source_list := CAP_INTERNAL_NICE_FUNCTOR_INPUT_LIST( source_list );
     
-    functor.input_source_list := source_list;
-    
-    functor.number_arguments := Length( source_list );
-    
     source := CAP_INTERNAL_CREATE_FUNCTOR_SOURCE( source_list );
     
-    objectified_functor := ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( functor, CapCat,
-                                                    AsCatObject( source ),
-                                                    AsCatObject( range ),
-                                                    Name, name,
-                                                    InputSignature, source_list );
+    objectified_functor := CreateCapCategoryMorphismWithAttributes( CapCat,
+                                                                    AsCatObject( source ),
+                                                                    AsCatObject( range ),
+                                                                    Name, name,
+                                                                    InputSignature, source_list );
+    
+    objectified_functor!.input_source_list := source_list;
+    
+    objectified_functor!.number_arguments := Length( source_list );
     
     return objectified_functor;
     

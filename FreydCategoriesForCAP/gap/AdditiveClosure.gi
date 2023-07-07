@@ -201,12 +201,10 @@ InstallOtherMethodForCompilerForCAP( AdditiveClosureMorphism,
         
     fi;
     
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
-                             rec( ), category,
-                             source,
-                             range,
-                             MorphismMatrix, listlist
-    );
+    return CreateCapCategoryMorphismWithAttributes( category,
+                                                    source,
+                                                    range,
+                                                    MorphismMatrix, listlist );
     
 end );
 

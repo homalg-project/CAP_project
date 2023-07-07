@@ -429,10 +429,10 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryByCospansMorphism,
         
     fi;
     
-    serre_morphism := ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), serre_category,
-                             AsSerreQuotientCategoryByCospansObject( serre_category, UnderlyingHonestObject( Source( gen_morphism ) ) ),
-                             AsSerreQuotientCategoryByCospansObject( serre_category, UnderlyingHonestObject( Range( gen_morphism ) ) ),
-                             UnderlyingGeneralizedMorphism, gen_morphism );
+    serre_morphism := CreateCapCategoryMorphismWithAttributes( serre_category,
+                                                               AsSerreQuotientCategoryByCospansObject( serre_category, UnderlyingHonestObject( Source( gen_morphism ) ) ),
+                                                               AsSerreQuotientCategoryByCospansObject( serre_category, UnderlyingHonestObject( Range( gen_morphism ) ) ),
+                                                               UnderlyingGeneralizedMorphism, gen_morphism );
     
     if HasSpecializedMorphismFilterForSerreQuotients( serre_category ) then
         

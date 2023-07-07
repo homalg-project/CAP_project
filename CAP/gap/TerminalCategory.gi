@@ -173,10 +173,9 @@ InstallGlobalFunction( TerminalCategoryWithSingleObject,
     
     morphism_constructor := function( cat, source, input, range )
         
-        return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
-                       rec( ), cat,
-                       source,
-                       range );
+        return CreateCapCategoryMorphismWithAttributes( cat,
+                                                        source,
+                                                        range );
         
     end;
     
@@ -333,11 +332,10 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
     
     morphism_constructor := function( cat, source, string, range )
         
-        return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
-                       rec( ), cat,
-                       source,
-                       range,
-                       String, string );
+        return CreateCapCategoryMorphismWithAttributes( cat,
+                                                        source,
+                                                        range,
+                                                        String, string );
         
     end;
     

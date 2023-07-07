@@ -111,11 +111,10 @@ InstallMethod( StringsAsCategoryMorphism,
     
     category := CapCategory( source );
     
-    morphism := ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), category,
-                                           source,
-                                           range,
-                                           UnderlyingString, string
-    );
+    morphism := CreateCapCategoryMorphismWithAttributes( category,
+                                                         source,
+                                                         range,
+                                                         UnderlyingString, string );
     
     Add( category, morphism );
     

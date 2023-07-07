@@ -61,13 +61,11 @@ InstallMethod( RelCategoryMorphism,
     
     rel := CapCategory( source );
     
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
-                             rec( ), rel,
-                             source,
-                             range,
-                             Arrow, arrow,
-                             ReversedArrow, reversed_arrow
-    );
+    return CreateCapCategoryMorphismWithAttributes( rel,
+                                                    source,
+                                                    range,
+                                                    Arrow, arrow,
+                                                    ReversedArrow, reversed_arrow );
     
 end );
 

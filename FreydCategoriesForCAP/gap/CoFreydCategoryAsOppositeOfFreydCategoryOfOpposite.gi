@@ -105,10 +105,10 @@ InstallMethod( CoFreydCategoryAsOppositeOfFreydCategoryOfOpposite,
             
         fi;
         
-        return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), cat,
-                source,
-                range,
-                UnderlyingMorphism, underlying_morphism );
+        return CreateCapCategoryMorphismWithAttributes( cat,
+                                                        source,
+                                                        range,
+                                                        UnderlyingMorphism, underlying_morphism );
         
     end;
     

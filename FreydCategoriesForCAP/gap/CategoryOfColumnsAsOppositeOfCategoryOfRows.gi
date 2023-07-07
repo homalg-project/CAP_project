@@ -56,10 +56,10 @@ InstallMethod( CategoryOfColumnsAsOppositeOfCategoryOfRows,
     ##
     morphism_constructor := function( cat, source, underlying_matrix, range )
         
-        return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), cat,
-                source,
-                range,
-                UnderlyingMatrix, underlying_matrix );
+        return CreateCapCategoryMorphismWithAttributes( cat,
+                                                        source,
+                                                        range,
+                                                        UnderlyingMatrix, underlying_matrix );
         
     end;
     

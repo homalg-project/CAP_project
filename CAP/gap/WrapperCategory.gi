@@ -55,10 +55,10 @@ InstallOtherMethodForCompilerForCAP( AsMorphismInWrapperCategory,
     #% CAP_JIT_DROP_NEXT_STATEMENT
     CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( morphism, ModelingCategory( D ), [ "the morphism given to AsMorphismInWrapperCategory" ] );
     
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), D,
-            source,
-            range,
-            UnderlyingCell, morphism );
+    return CreateCapCategoryMorphismWithAttributes( D,
+                                                    source,
+                                                    range,
+                                                    UnderlyingCell, morphism );
     
 end );
 

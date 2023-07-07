@@ -350,12 +350,12 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismByThreeArrows,
     
     generalized_category := GeneralizedMorphismCategoryByThreeArrows( CapCategory( morphism_aid ) );
     
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), generalized_category,
-                             GeneralizedMorphismByThreeArrowsObject( Range( source_aid ) ),
-                             GeneralizedMorphismByThreeArrowsObject( Source( range_aid ) ),
-                             SourceAid, source_aid,
-                             RangeAid, range_aid,
-                             Arrow, morphism_aid );
+    return CreateCapCategoryMorphismWithAttributes( generalized_category,
+                                                    GeneralizedMorphismByThreeArrowsObject( Range( source_aid ) ),
+                                                    GeneralizedMorphismByThreeArrowsObject( Source( range_aid ) ),
+                                                    SourceAid, source_aid,
+                                                    RangeAid, range_aid,
+                                                    Arrow, morphism_aid );
     
 end );
 

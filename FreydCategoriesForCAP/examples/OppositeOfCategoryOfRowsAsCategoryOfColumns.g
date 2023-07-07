@@ -28,8 +28,8 @@ object_datum := { cat, obj } -> RankOfObject( Opposite( obj ) );;
 modeling_tower_object_datum := { cat, obj } -> RankOfObject( obj );;
 morphism_constructor :=
     { cat, source, underlying_matrix, range } ->
-        ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
-            rec( ), cat,
+        CreateCapCategoryMorphismWithAttributes(
+            cat,
             source, range,
             Opposite, CategoryOfRowsMorphism(
                 Opposite( cat ),
@@ -40,8 +40,8 @@ morphism_constructor :=
         );;
 modeling_tower_morphism_constructor :=
     { cat, source, underlying_matrix, range } ->
-        ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
-            rec( ), ModelingCategory( cat ),
+        CreateCapCategoryMorphismWithAttributes(
+            ModelingCategory( cat ),
             source, range,
             UnderlyingMatrix, underlying_matrix
         );;

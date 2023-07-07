@@ -505,9 +505,9 @@ InstallMethod( Opposite,
             
         fi;
         
-        opposite_morphism := ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), cat,
-                                                                                      source, range,
-                                                                                      Opposite, morphism );
+        opposite_morphism := CreateCapCategoryMorphismWithAttributes( cat,
+                                                                      source, range,
+                                                                      Opposite, morphism );
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         if CapCategory( morphism )!.predicate_logic then

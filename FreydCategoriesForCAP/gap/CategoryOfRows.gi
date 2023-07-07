@@ -161,11 +161,10 @@ InstallOtherMethodForCompilerForCAP( CategoryOfRowsMorphism,
         
     fi;
     
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), cat,
-                                           source,
-                                           range,
-                                           UnderlyingMatrix, homalg_matrix
-    );
+    return CreateCapCategoryMorphismWithAttributes( cat,
+                                                    source,
+                                                    range,
+                                                    UnderlyingMatrix, homalg_matrix );
     
 end );
 
