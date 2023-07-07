@@ -949,11 +949,28 @@ CapJitAddTypeSignature( "^", [ IsInt, IsInt ], IsInt );
 CapJitAddTypeSignature( "REM_INT", [ IsInt, IsInt ], IsInt );
 CapJitAddTypeSignature( "QUO_INT", [ IsInt, IsInt ], IsInt );
 CapJitAddTypeSignature( "IsZero", [ IsInt ], IsBool );
-CapJitAddTypeSignature( "IS_IDENTICAL_OBJ", [ IsObject, IsObject ], IsBool );
 CapJitAddTypeSignature( "^", [ IsPerm, IsInt ], IsPerm );
 CapJitAddTypeSignature( "PermList", [ IsList ], IsPerm );
 CapJitAddTypeSignature( "PermutationMat", [ IsPerm, IsInt ], CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( IsInt ) ) );
 CapJitAddTypeSignature( "BigInt", [ IsInt ], IsBigInt );
+
+CapJitAddTypeSignature( "IS_IDENTICAL_OBJ", [ IsObject, IsObject ], function ( input_types )
+    
+    if IsSpecializationOfFilter( IsCapCategory, input_types[1].filter ) then
+        
+        return rec( filter := IsBool );
+        
+    else
+        
+        # COVERAGE_IGNORE_BLOCK_START
+        PrintWithCurrentlyCompiledFunctionLocation( "WARNING: `IsIdenticalObj` should only be used for CAP categories." );
+        
+        return fail;
+        # COVERAGE_IGNORE_BLOCK_END
+        
+    fi;
+    
+end );
 
 CapJitAddTypeSignature( "ID_FUNC", [ IsObject ], function ( input_types )
     
@@ -1127,7 +1144,19 @@ CapJitAddTypeSignature( "SafePosition", [ IsList, IsObject ], function ( input_t
     
     Assert( 0, input_types[1].element_type = input_types[2] );
     
-    return rec( filter := IsInt );
+    if CapJitDataTypeIsNestedListOfSimpleLiterals( input_types[2] ) then
+        
+        return rec( filter := IsInt );
+        
+    else
+        
+        # COVERAGE_IGNORE_BLOCK_START
+        PrintWithCurrentlyCompiledFunctionLocation( "WARNING: `SafePosition` should only be used for integers, strings, characters or (nested) lists thereof." );
+        
+        return fail;
+        # COVERAGE_IGNORE_BLOCK_END
+        
+    fi;
     
 end );
 
@@ -1135,7 +1164,19 @@ CapJitAddTypeSignature( "SafeUniquePosition", [ IsList, IsObject ], function ( i
     
     Assert( 0, input_types[1].element_type = input_types[2] );
     
-    return rec( filter := IsInt );
+    if CapJitDataTypeIsNestedListOfSimpleLiterals( input_types[2] ) then
+        
+        return rec( filter := IsInt );
+        
+    else
+        
+        # COVERAGE_IGNORE_BLOCK_START
+        PrintWithCurrentlyCompiledFunctionLocation( "WARNING: `SafeUniquePosition` should only be used for integers, strings, characters or (nested) lists thereof." );
+        
+        return fail;
+        # COVERAGE_IGNORE_BLOCK_END
+        
+    fi;
     
 end );
 
@@ -1143,7 +1184,19 @@ CapJitAddTypeSignature( "Positions", [ IsList, IsObject ], function ( input_type
     
     Assert( 0, input_types[1].element_type = input_types[2] );
     
-    return CapJitDataTypeOfListOf( IsInt );
+    if CapJitDataTypeIsNestedListOfSimpleLiterals( input_types[2] ) then
+        
+        return CapJitDataTypeOfListOf( IsInt );
+        
+    else
+        
+        # COVERAGE_IGNORE_BLOCK_START
+        PrintWithCurrentlyCompiledFunctionLocation( "WARNING: `Positions` should only be used for integers, strings, characters or (nested) lists thereof." );
+        
+        return fail;
+        # COVERAGE_IGNORE_BLOCK_END
+        
+    fi;
     
 end );
 

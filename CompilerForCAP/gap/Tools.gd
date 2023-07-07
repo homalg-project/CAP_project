@@ -124,6 +124,12 @@ DeclareGlobalFunction( "CapJitReplacedEXPR_REF_FVARByValue" );
 #! @Arguments func
 DeclareGlobalFunction( "CapJitGetNextUnusedVariableID" );
 
+#! @Description
+#!   Returns whether the data type is a nested list of integers, booleans, strings, or characters.
+#!   The nesting can be arbitrarily deep, including the degenerate case of no list at all.
+#! @Arguments data_type
+DeclareGlobalFunction( "CapJitDataTypeIsNestedListOfSimpleLiterals" );
+
 ## allow to handle SYNTAX_TREE_LISTs like lists
 # Declare attributes as mutable because we want to modify them (after taking StructuralCopy, which preserves mutability).
 DeclareAttribute( "AsSyntaxTreeList", IsList, "mutable" );
