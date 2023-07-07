@@ -6,10 +6,10 @@
                    [1X Speed up computations in CAP categories [101X
   
   
-                                   2023.06-12
+                                   2023.07-01
   
   
-                                  30 June 2023
+                                  7 July 2023
   
   
                                 Fabian Zickgraf
@@ -85,10 +85,11 @@
       2.4-15 CapJitUnbindBinding
       2.4-16 CapJitReplacedEXPR_REF_FVARByValue
       2.4-17 CapJitGetNextUnusedVariableID
-      2.4-18 PrintWithCurrentlyCompiledFunctionLocation
-      2.4-19 DisplayWithCurrentlyCompiledFunctionLocation
-      2.4-20 ErrorWithCurrentlyCompiledFunctionLocation
-      2.4-21 EvalStringStrict
+      2.4-18 CapJitDataTypeIsNestedListOfSimpleLiterals
+      2.4-19 PrintWithCurrentlyCompiledFunctionLocation
+      2.4-20 DisplayWithCurrentlyCompiledFunctionLocation
+      2.4-21 ErrorWithCurrentlyCompiledFunctionLocation
+      2.4-22 EvalStringStrict
     2.5 [33X[0;0YCompilation steps[133X
       2.5-1 CapJitCleanedUpHoistedAndDeduplicatedExpressions
       2.5-2 CapJitAppliedCompilerHints
