@@ -124,18 +124,15 @@ Last, we bind the field $\Q$ to a global variable.
 The first constructor creates the objects of $\Svec$.
 Here, the \CapPkg command
 \begin{itemize}
-  \item \texttt{ObjectifyObjectForCAPWithAttributes}
+  \item \texttt{CreateCapCategoryObjectWithAttributes}
 \end{itemize}
-creates a \GAP object that resides as an object in the category\footnote{
-  Note that the usual creation of \GAP types is done automatically by \CapPkg.
-One may think of the \GAP type being replaced by the category $\Svec$.
-}
+creates a \GAP object that resides as an object in the category
 $\Svec$ with attribute \texttt{Dimension} set to \texttt{dim}.
 
 The second constructor creates the morphisms of $\Svec$.
 Here, the \CapPkg command
 \begin{itemize}
-  \item \texttt{ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes}
+  \item \texttt{CreateCapCategoryMorphismWithAttributes}
 \end{itemize}
 creates a \GAP object that resides as a morphism in the category
 $\Svec$ with attribute \texttt{UnderlyingMatrix} set to \texttt{underlying\_matrix},

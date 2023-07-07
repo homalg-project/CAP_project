@@ -44,10 +44,8 @@ InstallMethod( SQVecObj,
             Error( "the given integer must be non-negative");
         fi;
         
-        return ObjectifyObjectForCAPWithAttributes(
-            rec( ), SQVec,
-            Dimension, dim
-        );
+        return CreateCapCategoryObjectWithAttributes( SQVec,
+                                                      Dimension, dim );
         
 end );
 
@@ -72,12 +70,10 @@ InstallMethod( SQVecMor,
 
     fi;
     
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
-      rec( ), SQVec,
-      source,
-      range,
-      UnderlyingMatrix, underlying_matrix
-    );
+    return CreateCapCategoryMorphismWithAttributes( SQVec,
+                                                    source,
+                                                    range,
+                                                    UnderlyingMatrix, underlying_matrix );
     
 end );
 
