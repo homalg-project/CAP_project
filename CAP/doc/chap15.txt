@@ -12,6 +12,7 @@
     [4X[25X>[125X [27X    "MorphismConstructor",[127X[104X
     [4X[25X>[125X [27X    "ObjectDatum",[127X[104X
     [4X[25X>[125X [27X    "MorphismDatum",[127X[104X
+    [4X[25X>[125X [27X    "IsCongruentForMorphisms",[127X[104X
     [4X[25X>[125X [27X    "PreCompose",[127X[104X
     [4X[25X>[125X [27X    "IdentityMorphism",[127X[104X
     [4X[25X>[125X [27X    "DirectSum",[127X[104X
@@ -1326,7 +1327,7 @@
   [1X15.14 [33X[0;0YKernel[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpaces01" );[127X[104X
+    [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpaces01" : is_computable := false );[127X[104X
     [4X[28XVectorSpaces01[128X[104X
     [4X[25Xgap>[125X [27Xvecspaces!.category_as_first_argument := false;;[127X[104X
     [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/VectorSpacesAddKernel01.g" );[127X[104X
@@ -1363,7 +1364,7 @@
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpaces02" );[127X[104X
+    [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpaces02" : is_computable := false );[127X[104X
     [4X[28XVectorSpaces02[128X[104X
     [4X[25Xgap>[125X [27Xvecspaces!.category_as_first_argument := false;;[127X[104X
     [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/VectorSpacesAddKernel02.g" );[127X[104X
@@ -1396,7 +1397,7 @@
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpaces03" );[127X[104X
+    [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpaces03" : is_computable := false );[127X[104X
     [4X[28XVectorSpaces03[128X[104X
     [4X[25Xgap>[125X [27Xvecspaces!.category_as_first_argument := false;;[127X[104X
     [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/VectorSpacesAddKernel03.g" );[127X[104X
