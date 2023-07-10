@@ -1,23 +1,24 @@
-AddKernelEmbedding( vecspaces,
+AddKernelEmbedding( SQVec,
 
-  function( cat, morphism )
+  function( cat, alpha )
     local kernel_emb, kernel_obj;
     
-    kernel_emb := SyzygiesOfRows( morphism!.morphism );
+    kernel_emb := SyzygiesOfRows( UnderlyingMatrix( alpha ) );
     
-    kernel_obj := QVectorSpace( NrRows( kernel_emb ) );
+    kernel_obj := SQVecObj( NrRows( kernel_emb ) );
     
-    return VectorSpaceMorphism( kernel_obj, kernel_emb, Source( morphism ) );
+    return SQVecMor( kernel_obj, kernel_emb, Source( alpha ) );
     
 end );
 
-AddLiftAlongMonomorphism( vecspaces,
+AddLiftAlongMonomorphism( SQVec,
 
-  function( cat, monomorphism, test_morphism )
+  function( cat, mu, tau )
 
-    return VectorSpaceMorphism(
-             Source( test_morphism ),
-             RightDivide( test_morphism!.morphism, monomorphism!.morphism ),
-             Source( monomorphism ) );
+    return SQVecMor(
+             Source( tau ),
+             RightDivide( UnderlyingMatrix( tau ), UnderlyingMatrix( mu ) ),
+             Source( mu ) );
 
 end );
+
