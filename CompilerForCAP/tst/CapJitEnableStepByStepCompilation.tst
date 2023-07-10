@@ -13,6 +13,7 @@ gap> CapJitEnableStepByStepCompilation( );
 #
 gap> dummy := DummyCategory( rec(
 >     list_of_operations_to_install := [
+>         "IsCongruentForMorphisms",
 >         "ZeroObject",
 >         "ZeroMorphism",
 >     ],
@@ -51,6 +52,7 @@ gap> CapJitDisableStepByStepCompilation( );
 #
 gap> dummy := DummyCategory( rec(
 >     list_of_operations_to_install := [
+>         "IsCongruentForMorphisms",
 >         "ZeroObject",
 >         "ZeroMorphism",
 >     ],

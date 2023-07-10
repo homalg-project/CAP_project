@@ -53,7 +53,7 @@ InstallMethod( ZFunctorCategory,
     
     name := Concatenation( "Functors from integers into ", name );
     
-    z_functor_category := CreateCapCategory( name );
+    z_functor_category := CreateCapCategory( name : is_computable := false );
     
     z_functor_category!.category_as_first_argument := false;
     

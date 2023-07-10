@@ -12,6 +12,7 @@ list_of_operations_to_install := [
     "MorphismConstructor",
     "ObjectDatum",
     "MorphismDatum",
+    "IsCongruentForMorphisms",
     "PreCompose",
     "IdentityMorphism",
     "DirectSum",

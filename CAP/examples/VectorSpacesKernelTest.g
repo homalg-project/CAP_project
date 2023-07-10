@@ -9,7 +9,7 @@ if not IsBound( VectorSpacesConstructorsLoaded ) then
 fi;
 
 #! @Example
-vecspaces := CreateCapCategory( "VectorSpaces01" );
+vecspaces := CreateCapCategory( "VectorSpaces01" : is_computable := false );
 #! VectorSpaces01
 vecspaces!.category_as_first_argument := false;;
 ReadPackage( "CAP", "examples/VectorSpacesAddKernel01.g" );
@@ -46,7 +46,7 @@ KernelEmbedding( alpha );
 #! @EndExample
 
 #! @Example
-vecspaces := CreateCapCategory( "VectorSpaces02" );
+vecspaces := CreateCapCategory( "VectorSpaces02" : is_computable := false );
 #! VectorSpaces02
 vecspaces!.category_as_first_argument := false;;
 ReadPackage( "CAP", "examples/VectorSpacesAddKernel02.g" );
@@ -79,7 +79,7 @@ HasKernelEmbedding( alpha );
 #! @EndExample
 
 #! @Example
-vecspaces := CreateCapCategory( "VectorSpaces03" );
+vecspaces := CreateCapCategory( "VectorSpaces03" : is_computable := false );
 #! VectorSpaces03
 vecspaces!.category_as_first_argument := false;;
 ReadPackage( "CAP", "examples/VectorSpacesAddKernel03.g" );

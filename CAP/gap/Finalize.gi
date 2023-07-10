@@ -359,6 +359,14 @@ InstallMethod( Finalize,
         
     fi;
     
+    # Warn about categories marked as being computable but not having an implementation of IsCongruentForMorphisms.
+    # Since IsCongruentForMorphisms currently is derived from IsEqualForMorphisms, the latter also has to be taken into account.
+    if category!.is_computable and not CanCompute( category, "IsEqualForMorphisms" ) and not CanCompute( category, "IsCongruentForMorphisms") then
+        
+        Print( "WARNING: The category with name \"", Name( category ), "\" is marked as being computable but has no implementation of `IsCongruentForMorphisms`.\n" );
+        
+    fi;
+    
     derivation_list := ShallowCopy( CAP_INTERNAL_FINAL_DERIVATION_LIST.final_derivation_list );
     
     if not category!.is_computable then
