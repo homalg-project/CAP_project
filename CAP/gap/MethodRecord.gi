@@ -109,11 +109,8 @@ LiftAlongMonomorphism := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   io_type := [ [ "iota", "tau" ], [ "tau_source", "iota_source" ] ],
   pre_function := function( cat, iota, tau )
-    local value, category;
     
-    value := IsEqualForObjects( cat, Range( iota ), Range( tau ) );
-    
-    if value = false then
+    if not IsEqualForObjects( cat, Range( iota ), Range( tau ) ) then
         
         return [ false, "the two morphisms must have equal ranges" ];
         
@@ -129,11 +126,8 @@ LiftAlongMonomorphism := rec(
 IsLiftableAlongMonomorphism := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   pre_function := function( cat, iota, tau )
-    local value;
     
-    value := IsEqualForObjects( cat, Range( iota ), Range( tau ) );
-    
-    if value = false then
+    if not IsEqualForObjects( cat, Range( iota ), Range( tau ) ) then
         
         return [ false, "the two morphisms must have equal ranges" ];
         
@@ -150,11 +144,8 @@ ColiftAlongEpimorphism := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   io_type := [ [ "epsilon", "tau" ], [ "epsilon_range", "tau_range" ] ],
   pre_function := function( cat, epsilon, tau )
-    local value, category;
     
-    value := IsEqualForObjects( cat, Source( epsilon ), Source( tau ) );
-    
-    if value = false then
+    if not IsEqualForObjects( cat, Source( epsilon ), Source( tau ) ) then
         
         return [ false, "the two morphisms must have equal sources" ];
         
@@ -170,11 +161,8 @@ ColiftAlongEpimorphism := rec(
 IsColiftableAlongEpimorphism := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   pre_function := function( cat, epsilon, tau )
-    local value;
     
-    value := IsEqualForObjects( cat, Source( epsilon ), Source( tau ) );
-    
-    if value = false then
+    if not IsEqualForObjects( cat, Source( epsilon ), Source( tau ) ) then
         
         return [ false, "the two morphisms must have equal sources" ];
         
@@ -191,11 +179,8 @@ Lift := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   io_type := [ [ "alpha", "beta" ], [ "alpha_source", "beta_source" ] ],
   pre_function := function( cat, iota, tau )
-    local value;
     
-    value := IsEqualForObjects( cat, Range( iota ), Range( tau ) );
-    
-    if value = false then
+    if not IsEqualForObjects( cat, Range( iota ), Range( tau ) ) then
         
         return [ false, "the two morphisms must have equal ranges" ];
         
@@ -234,11 +219,8 @@ Colift := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   io_type := [ [ "alpha", "beta" ], [ "alpha_range", "beta_range" ] ],
   pre_function := function( cat, epsilon, tau )
-    local value;
     
-    value := IsEqualForObjects( cat, Source( epsilon ), Source( tau ) );
-    
-    if value = false then
+    if not IsEqualForObjects( cat, Source( epsilon ), Source( tau ) ) then
         
         return [ false, "the two morphisms must have equal sources" ];
         
@@ -277,11 +259,8 @@ ProjectiveLift := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   io_type := [ [ "alpha", "beta" ], [ "alpha_source", "beta_source" ] ],
   pre_function := function( cat, iota, tau )
-    local value;
     
-    value := IsEqualForObjects( cat, Range( iota ), Range( tau ) );
-    
-    if value = false then
+    if not IsEqualForObjects( cat, Range( iota ), Range( tau ) ) then
         
         return [ false, "the two morphisms must have equal ranges" ];
         
@@ -299,11 +278,8 @@ InjectiveColift := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   io_type := [ [ "alpha", "beta" ], [ "alpha_range", "beta_range" ] ],
   pre_function := function( cat, epsilon, tau )
-    local value;
     
-    value := IsEqualForObjects( cat, Source( epsilon ), Source( tau ) );
-    
-    if value = false then
+    if not IsEqualForObjects( cat, Source( epsilon ), Source( tau ) ) then
         
         return [ false, "the two morphisms must have equal sources" ];
         
@@ -473,11 +449,8 @@ PreCompose := rec(
   io_type := [ [ "alpha", "beta" ], [ "alpha_source", "beta_range" ] ],
   
   pre_function := function( cat, mor_left, mor_right )
-    local is_equal_for_objects;
     
-    is_equal_for_objects := IsEqualForObjects( cat, Range( mor_left ), Source( mor_right ) );
-    
-    if is_equal_for_objects = false then
+    if not IsEqualForObjects( cat, Range( mor_left ), Source( mor_right ) ) then
         
         return [ false, "morphisms not composable" ];
         
@@ -494,14 +467,11 @@ SumOfMorphisms := rec(
   filter_list := [ "category", "object", "list_of_morphisms", "object" ],
   input_arguments_names := [ "cat", "source", "list_of_morphisms", "range" ],
   pre_function := function( cat, source, list_of_morphisms, range )
-    local m, is_equal_for_sources, is_equal_for_ranges;
+    local m;
     
     for m in list_of_morphisms do
         
-        is_equal_for_sources := IsEqualForObjects( cat, source, Source( m ) );
-        is_equal_for_ranges := IsEqualForObjects( cat, range, Range( m ) );
-        
-        if is_equal_for_sources = false or is_equal_for_ranges = false then
+        if not IsEqualForObjects( cat, source, Source( m ) ) or not IsEqualForObjects( cat, range, Range( m ) ) then
             
             return [ false, "some of the morphisms are not compatible with the provided source and range objects" ];
             
@@ -524,7 +494,7 @@ PreComposeList := rec(
   filter_list := [ "category", "list_of_morphisms" ],
   input_arguments_names := [ "cat", "list_of_morphisms" ],
   pre_function := function( cat, list_of_morphisms )
-    local is_equal_for_objects, i;
+    local i;
     
     if IsEmpty( list_of_morphisms ) then
         
@@ -534,9 +504,7 @@ PreComposeList := rec(
     
     for i in [ 1 .. Length( list_of_morphisms ) - 1 ] do
         
-        is_equal_for_objects := IsEqualForObjects( cat, Range( list_of_morphisms[i] ), Source( list_of_morphisms[i + 1] ) );
-        
-        if is_equal_for_objects = false then
+        if not IsEqualForObjects( cat, Range( list_of_morphisms[i] ), Source( list_of_morphisms[i + 1] ) ) then
             
             return [ false, "morphisms not composable" ];
             
@@ -561,11 +529,8 @@ PostCompose := rec(
   io_type := [ [ "beta", "alpha" ], [ "alpha_source", "beta_range" ] ],
   
   pre_function := function( cat, mor_right, mor_left )
-    local is_equal_for_objects;
     
-    is_equal_for_objects := IsEqualForObjects( cat, Range( mor_left ), Source( mor_right ) );
-    
-    if is_equal_for_objects = false then
+    if not IsEqualForObjects( cat, Range( mor_left ), Source( mor_right ) ) then
         
         return [ false, "morphisms not composable" ];
         
@@ -583,7 +548,7 @@ PostComposeList := rec(
   filter_list := [ "category", "list_of_morphisms" ],
   input_arguments_names := [ "cat", "list_of_morphisms" ],
   pre_function := function( cat, list_of_morphisms )
-    local is_equal_for_objects, i;
+    local i;
     
     if IsEmpty( list_of_morphisms ) then
         
@@ -593,9 +558,7 @@ PostComposeList := rec(
     
     for i in [ 1 .. Length( list_of_morphisms ) - 1 ] do
         
-        is_equal_for_objects := IsEqualForObjects( cat, Range( list_of_morphisms[i + 1] ), Source( list_of_morphisms[i] ) );
-        
-        if is_equal_for_objects = false then
+        if not IsEqualForObjects( cat, Range( list_of_morphisms[i + 1] ), Source( list_of_morphisms[i] ) ) then
             
             return [ false, "morphisms not composable" ];
             
@@ -733,13 +696,11 @@ UniversalMorphismIntoDirectSum := rec(
   dual_operation := "UniversalMorphismFromDirectSum",
   
   pre_function := function( cat, diagram, test_object, source )
-    local current_morphism, current_return;
+    local current_morphism;
     
     for current_morphism in source do
         
-        current_return := IsEqualForObjects( cat, Source( current_morphism ), test_object );
-        
-        if current_return = false then
+        if not IsEqualForObjects( cat, Source( current_morphism ), test_object ) then
             
             return [ false, "sources of morphisms must be equal to the test object in given source diagram" ];
             
@@ -760,13 +721,11 @@ UniversalMorphismIntoDirectSumWithGivenDirectSum := rec(
   dual_operation := "UniversalMorphismFromDirectSumWithGivenDirectSum",
   
   pre_function := function( cat, diagram, test_object, source, direct_sum )
-    local current_morphism, current_return;
+    local current_morphism;
     
     for current_morphism in source do
         
-        current_return := IsEqualForObjects( cat, Source( current_morphism ), test_object );
-        
-        if current_return = false then
+        if not IsEqualForObjects( cat, Source( current_morphism ), test_object ) then
             
             return [ false, "sources of morphisms must be equal to the test object in given source diagram" ];
             
@@ -801,13 +760,11 @@ UniversalMorphismFromDirectSum := rec(
   dual_operation := "UniversalMorphismIntoDirectSum",
   
   pre_function := function( cat, diagram, test_object, sink )
-    local current_morphism, current_return;
+    local current_morphism;
     
     for current_morphism in sink do
         
-        current_return := IsEqualForObjects( cat, Range( current_morphism ), test_object );
-        
-        if current_return = false then
+        if not IsEqualForObjects( cat, Range( current_morphism ), test_object ) then
             
             return [ false, "ranges of morphisms must be equal to the test object in given sink diagram" ];
             
@@ -828,13 +785,11 @@ UniversalMorphismFromDirectSumWithGivenDirectSum := rec(
   dual_operation := "UniversalMorphismIntoDirectSumWithGivenDirectSum",
   
   pre_function := function( cat, diagram, test_object, sink, direct_sum )
-    local current_morphism, current_return;
+    local current_morphism;
     
     for current_morphism in sink do
         
-        current_return := IsEqualForObjects( cat, Range( current_morphism ), test_object );
-        
-        if current_return = false then
+        if not IsEqualForObjects( cat, Range( current_morphism ), test_object ) then
             
             return [ false, "ranges of morphisms must be equal to the test object in given sink diagram" ];
             
@@ -919,13 +874,11 @@ UniversalMorphismIntoDirectProduct := rec(
   dual_operation := "UniversalMorphismFromCoproduct",
   
   pre_function := function( cat, diagram, test_object, source )
-    local current_morphism, current_return;
+    local current_morphism;
     
     for current_morphism in source do
         
-        current_return := IsEqualForObjects( cat, Source( current_morphism ), test_object );
-        
-        if current_return = false then
+        if not IsEqualForObjects( cat, Source( current_morphism ), test_object ) then
             
             return [ false, "sources of morphisms must be equal to the test object in given source diagram" ];
             
@@ -946,13 +899,11 @@ UniversalMorphismIntoDirectProductWithGivenDirectProduct := rec(
   dual_operation := "UniversalMorphismFromCoproductWithGivenCoproduct",
   
   pre_function := function( cat, diagram, test_object, source, direct_product )
-    local current_morphism, current_return;
+    local current_morphism;
     
     for current_morphism in source do
         
-        current_return := IsEqualForObjects( cat, Source( current_morphism ), test_object );
-        
-        if current_return = false then
+        if not IsEqualForObjects( cat, Source( current_morphism ), test_object ) then
             
             return [ false, "sources of morphisms must be equal to the test object in given source diagram" ];
             
@@ -978,25 +929,20 @@ IsCongruentForMorphisms := rec(
   dual_operation := "IsCongruentForMorphisms",
   
   pre_function := function( cat, morphism_1, morphism_2 )
-    local value_1, value_2;
     
-    value_1 := IsEqualForObjects( cat, Source( morphism_1 ), Source( morphism_2 ) );
-    
-    value_2 := IsEqualForObjects( cat, Range( morphism_1 ), Range( morphism_2 ) );
-    
-    if value_1 and value_2 then
-        
-        return [ true ];
-        
-    elif value_1 then
-        
-        return [ false, "ranges are not equal" ];
-        
-    else
+    if not IsEqualForObjects( cat, Source( morphism_1 ), Source( morphism_2 ) ) then
         
         return [ false, "sources are not equal" ];
         
     fi;
+        
+    if not IsEqualForObjects( cat, Range( morphism_1 ), Range( morphism_2 ) ) then
+        
+        return [ false, "ranges are not equal" ];
+        
+    fi;
+    
+    return [ true ];
     
   end,
   
@@ -1034,25 +980,20 @@ IsEqualForMorphisms := rec(
   dual_operation := "IsEqualForMorphisms",
   
   pre_function := function( cat, morphism_1, morphism_2 )
-    local value_1, value_2;
     
-    value_1 := IsEqualForObjects( cat, Source( morphism_1 ), Source( morphism_2 ) );
-    
-    value_2 := IsEqualForObjects( cat, Range( morphism_1 ), Range( morphism_2 ) );
-    
-    if value_1 and value_2 then
-        
-        return [ true ];
-        
-    elif value_1 then
-        
-        return [ false, "ranges are not equal" ];
-        
-    else
+    if not IsEqualForObjects( cat, Source( morphism_1 ), Source( morphism_2 ) ) then
         
         return [ false, "sources are not equal" ];
         
     fi;
+        
+    if not IsEqualForObjects( cat, Range( morphism_1 ), Range( morphism_2 ) ) then
+        
+        return [ false, "ranges are not equal" ];
+        
+    fi;
+    
+    return [ true ];
     
   end,
   
@@ -1154,25 +1095,20 @@ AdditionForMorphisms := rec(
   dual_operation := "AdditionForMorphisms",
   
   pre_function := function( cat, morphism_1, morphism_2 )
-    local value_1, value_2;
     
-    value_1 := IsEqualForObjects( cat, Source( morphism_1 ), Source( morphism_2 ) );
-    
-    value_2 := IsEqualForObjects( cat, Range( morphism_1 ), Range( morphism_2 ) );
-    
-    if value_1 and value_2 then
-        
-        return [ true ];
-        
-    elif value_1 then
-        
-        return [ false, "ranges are not equal" ];
-        
-    else
+    if not IsEqualForObjects( cat, Source( morphism_1 ), Source( morphism_2 ) ) then
         
         return [ false, "sources are not equal" ];
         
     fi;
+        
+    if not IsEqualForObjects( cat, Range( morphism_1 ), Range( morphism_2 ) ) then
+        
+        return [ false, "ranges are not equal" ];
+        
+    fi;
+    
+    return [ true ];
     
   end,
   return_type := "morphism",
@@ -1185,25 +1121,20 @@ SubtractionForMorphisms := rec(
   dual_operation := "SubtractionForMorphisms",
   
   pre_function := function( cat, morphism_1, morphism_2 )
-    local value_1, value_2;
     
-    value_1 := IsEqualForObjects( cat, Source( morphism_1 ), Source( morphism_2 ) );
-    
-    value_2 := IsEqualForObjects( cat, Range( morphism_1 ), Range( morphism_2 ) );
-    
-    if value_1 and value_2 then
-        
-        return [ true ];
-        
-    elif value_1 then
-        
-        return [ false, "ranges are not equal" ];
-        
-    else
+    if not IsEqualForObjects( cat, Source( morphism_1 ), Source( morphism_2 ) ) then
         
         return [ false, "sources are not equal" ];
         
     fi;
+        
+    if not IsEqualForObjects( cat, Range( morphism_1 ), Range( morphism_2 ) ) then
+        
+        return [ false, "ranges are not equal" ];
+        
+    fi;
+    
+    return [ true ];
     
   end,
   return_type := "morphism",
@@ -1265,13 +1196,11 @@ UniversalMorphismFromCoproduct := rec(
   dual_operation := "UniversalMorphismIntoDirectProduct",
   
   pre_function := function( cat, diagram, test_object, sink )
-    local current_morphism, current_return;
+    local current_morphism;
     
     for current_morphism in sink do
         
-        current_return := IsEqualForObjects( cat, Range( current_morphism ), test_object );
-        
-        if current_return = false then
+        if not IsEqualForObjects( cat, Range( current_morphism ), test_object ) then
             
             return [ false, "ranges of morphisms must be equal to the test object in given sink diagram" ];
             
@@ -1292,13 +1221,11 @@ UniversalMorphismFromCoproductWithGivenCoproduct := rec(
   dual_operation := "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
   
   pre_function := function( cat, diagram, test_object, sink, coproduct )
-    local current_morphism, current_return;
+    local current_morphism;
     
     for current_morphism in sink do
         
-        current_return := IsEqualForObjects( cat, Range( current_morphism ), test_object );
-        
-        if current_return = false then
+        if not IsEqualForObjects( cat, Range( current_morphism ), test_object ) then
             
             return [ false, "ranges of morphisms must be equal to the test object in given sink diagram" ];
             
@@ -1338,11 +1265,8 @@ IsDominating := rec(
   dual_operation := "IsCodominating",
   
   pre_function := function( cat, sub1, sub2 )
-    local is_equal_for_objects;
     
-    is_equal_for_objects := IsEqualForObjects( cat, Range( sub1 ), Range( sub2 ) );
-    
-    if is_equal_for_objects = false then
+    if not IsEqualForObjects( cat, Range( sub1 ), Range( sub2 ) ) then
         
         return [ false, "subobjects of different objects are not comparable by dominates" ];
         
@@ -1359,11 +1283,8 @@ IsCodominating := rec(
   dual_operation := "IsDominating",
   
   pre_function := function( cat, factor1, factor2 )
-    local is_equal_for_objects;
     
-    is_equal_for_objects := IsEqualForObjects( cat, Source( factor1 ), Source( factor2 ) );
-    
-    if is_equal_for_objects = false then
+    if not IsEqualForObjects( cat, Source( factor1 ), Source( factor2 ) ) then
         
         return [ false, "factors of different objects are not comparable by codominates" ];
         
@@ -1382,7 +1303,7 @@ Equalizer := rec(
   dual_operation := "Coequalizer",
   
   pre_function := function( cat, cobase, diagram )
-    local base, current_morphism, current_value;
+    local base, current_morphism;
     
     if IsEmpty( diagram ) then
         
@@ -1392,9 +1313,7 @@ Equalizer := rec(
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
         
-        current_value := IsEqualForObjects( cat, Source( current_morphism ), cobase );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Source( current_morphism ), cobase ) then
             return [ false, "the given morphisms of the equalizer diagram must have equal sources" ];
         fi;
         
@@ -1404,9 +1323,7 @@ Equalizer := rec(
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
         
-        current_value := IsEqualForObjects( cat, Range( current_morphism ), base );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Range( current_morphism ), base ) then
             return [ false, "the given morphisms of the equalizer diagram must have equal ranges" ];
         fi;
         
@@ -1462,7 +1379,7 @@ UniversalMorphismIntoEqualizer := rec(
   dual_operation := "UniversalMorphismFromCoequalizer",
   
   pre_function := function( cat, cobase, diagram, test_object, tau )
-    local base, current_morphism, current_value, current_morphism_position;
+    local base, current_morphism, current_morphism_position;
     
     if IsEmpty( diagram ) then
         
@@ -1472,9 +1389,7 @@ UniversalMorphismIntoEqualizer := rec(
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
         
-        current_value := IsEqualForObjects( cat, Source( current_morphism ), cobase );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Source( current_morphism ), cobase ) then
             return [ false, "the given morphisms of the equalizer diagram must have equal sources" ];
         fi;
         
@@ -1484,9 +1399,7 @@ UniversalMorphismIntoEqualizer := rec(
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
         
-        current_value := IsEqualForObjects( cat, Range( current_morphism ), base );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Range( current_morphism ), base ) then
             return [ false, "the given morphisms of the equalizer diagram must have equal ranges" ];
         fi;
         
@@ -1494,9 +1407,7 @@ UniversalMorphismIntoEqualizer := rec(
     
     for current_morphism_position in [ 1 .. Length( diagram ) ] do
         
-        current_value := IsEqualForObjects( cat, Source( diagram[ current_morphism_position ] ), Range( tau ) );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Source( diagram[ current_morphism_position ] ), Range( tau ) ) then
             return [ false, Concatenation( "in diagram position ", String( current_morphism_position ), ": source and range are not equal" ) ];
         fi;
         
@@ -1535,7 +1446,7 @@ FiberProduct := rec(
   dual_operation := "Pushout",
   
   pre_function := function( cat, diagram )
-    local base, current_morphism, current_value;
+    local base, current_morphism;
     
     if IsEmpty( diagram ) then
         
@@ -1547,9 +1458,7 @@ FiberProduct := rec(
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
         
-        current_value := IsEqualForObjects( cat, Range( current_morphism ), base );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Range( current_morphism ), base ) then
             return [ false, "the given morphisms of the fiber product diagram must have equal ranges" ];
         fi;
         
@@ -1569,7 +1478,7 @@ ProjectionInFactorOfFiberProduct := rec(
   dual_operation := "InjectionOfCofactorOfPushout",
   
   pre_function := function( cat, diagram, projection_number )
-    local base, current_morphism, current_value;
+    local base, current_morphism;
     
     if projection_number < 1 or projection_number > Length( diagram ) then
         return[ false, Concatenation( "there does not exist a ", String( projection_number ), "th projection" ) ];
@@ -1579,9 +1488,7 @@ ProjectionInFactorOfFiberProduct := rec(
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
         
-        current_value := IsEqualForObjects( cat, Range( current_morphism ), base );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Range( current_morphism ), base ) then
             return [ false, "the given morphisms of the fiber product diagram must have equal ranges" ];
         fi;
         
@@ -1599,7 +1506,7 @@ ProjectionInFactorOfFiberProductWithGivenFiberProduct := rec(
   dual_operation := "InjectionOfCofactorOfPushoutWithGivenPushout",
   
   pre_function := function( cat, diagram, projection_number, pullback )
-    local base, current_morphism, current_value;
+    local base, current_morphism;
     
     if projection_number < 1 or projection_number > Length( diagram ) then
         return[ false, Concatenation( "there does not exist a ", String( projection_number ), "th projection" ) ];
@@ -1609,9 +1516,7 @@ ProjectionInFactorOfFiberProductWithGivenFiberProduct := rec(
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
         
-        current_value := IsEqualForObjects( cat, Range( current_morphism ), base );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Range( current_morphism ), base ) then
             return [ false, "the given morphisms of the fiber product diagram must have equal ranges" ];
         fi;
         
@@ -1630,15 +1535,13 @@ MorphismFromFiberProductToSink := rec(
   dual_operation := "MorphismFromSourceToPushout",
   
   pre_function := function( cat, diagram )
-    local base, current_morphism, current_value;
+    local base, current_morphism;
     
     base := Range( diagram[1] );
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
         
-        current_value := IsEqualForObjects( cat, Range( current_morphism ), base );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Range( current_morphism ), base ) then
             return [ false, "the given morphisms of the fiber product diagram must have equal ranges" ];
         fi;
         
@@ -1656,15 +1559,13 @@ MorphismFromFiberProductToSinkWithGivenFiberProduct := rec(
   dual_operation := "MorphismFromSourceToPushoutWithGivenPushout",
   
   pre_function := function( cat, diagram, pullback )
-    local base, current_morphism, current_value;
+    local base, current_morphism;
     
     base := Range( diagram[1] );
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
         
-        current_value := IsEqualForObjects( cat, Range( current_morphism ), base );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Range( current_morphism ), base ) then
             return [ false, "the given morphisms of the fiber product diagram must have equal ranges" ];
         fi;
         
@@ -1683,7 +1584,7 @@ UniversalMorphismIntoFiberProduct := rec(
   dual_operation := "UniversalMorphismFromPushout",
   
   pre_function := function( cat, diagram, test_object, source )
-    local base, current_morphism, current_value, current_morphism_position;
+    local base, current_morphism, current_morphism_position;
     
     if Length( diagram ) <> Length( source ) then
         return [ false, "fiber product diagram and test diagram must have equal length" ];
@@ -1699,9 +1600,7 @@ UniversalMorphismIntoFiberProduct := rec(
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
         
-        current_value := IsEqualForObjects( cat, Range( current_morphism ), base );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Range( current_morphism ), base ) then
             return [ false, "the given morphisms of the fiber product diagram must have equal ranges" ];
         fi;
         
@@ -1709,9 +1608,7 @@ UniversalMorphismIntoFiberProduct := rec(
     
     for current_morphism in source do
         
-        current_value := IsEqualForObjects( cat, Source( current_morphism ), test_object );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Source( current_morphism ), test_object ) then
             return [ false, "the given morphisms of the test source do not have sources equal to the test object" ];
         fi;
         
@@ -1719,9 +1616,7 @@ UniversalMorphismIntoFiberProduct := rec(
     
     for current_morphism_position in [ 1 .. Length( diagram ) ] do
         
-        current_value := IsEqualForObjects( cat, Source( diagram[ current_morphism_position ] ), Range( source[ current_morphism_position ] ) );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Source( diagram[ current_morphism_position ] ), Range( source[ current_morphism_position ] ) ) then
             return [ false, Concatenation( "in diagram position ", String( current_morphism_position ), ": source and range are not equal" ) ];
         fi;
         
@@ -1739,7 +1634,7 @@ UniversalMorphismIntoFiberProductWithGivenFiberProduct := rec(
   dual_operation := "UniversalMorphismFromPushoutWithGivenPushout",
   
   pre_function := function( cat, diagram, test_object, source, pullback )
-    local base, current_morphism, current_value, current_morphism_position;
+    local base, current_morphism, current_morphism_position;
     
     if Length( diagram ) <> Length( source ) then
         return [ false, "fiber product diagram and test diagram must have equal length" ];
@@ -1755,9 +1650,7 @@ UniversalMorphismIntoFiberProductWithGivenFiberProduct := rec(
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
         
-        current_value := IsEqualForObjects( cat, Range( current_morphism ), base );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Range( current_morphism ), base ) then
             return [ false, "the given morphisms of the fiber product diagram must have equal ranges" ];
         fi;
         
@@ -1765,9 +1658,7 @@ UniversalMorphismIntoFiberProductWithGivenFiberProduct := rec(
     
     for current_morphism in source do
         
-        current_value := IsEqualForObjects( cat, Source( current_morphism ), test_object );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Source( current_morphism ), test_object ) then
             return [ false, "the given morphisms of the test source do not have sources equal to the test object" ];
         fi;
         
@@ -1775,9 +1666,7 @@ UniversalMorphismIntoFiberProductWithGivenFiberProduct := rec(
     
     for current_morphism_position in [ 1 .. Length( diagram ) ] do
         
-        current_value := IsEqualForObjects( cat, Source( diagram[ current_morphism_position ] ), Range( source[ current_morphism_position ] ) );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Source( diagram[ current_morphism_position ] ), Range( source[ current_morphism_position ] ) ) then
             return [ false, Concatenation( "in diagram position ", String( current_morphism_position ), ": source and range are not equal" ) ];
         fi;
         
@@ -1796,7 +1685,7 @@ Coequalizer := rec(
   dual_operation := "Equalizer",
   
   pre_function := function( cat, cobase, diagram )
-    local base, current_morphism, current_value;
+    local base, current_morphism;
     
     if IsEmpty( diagram ) then
         
@@ -1808,9 +1697,7 @@ Coequalizer := rec(
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
         
-        current_value := IsEqualForObjects( cat, Source( current_morphism ), base );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Source( current_morphism ), base ) then
             return [ false, "the given morphisms of the coequalizer diagram must have equal sources" ];
         fi;
         
@@ -1818,9 +1705,7 @@ Coequalizer := rec(
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
         
-        current_value := IsEqualForObjects( cat, Range( current_morphism ), cobase );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Range( current_morphism ), cobase ) then
             return [ false, "the given morphisms of the coequalizer diagram must have equal ranges" ];
         fi;
         
@@ -1876,7 +1761,7 @@ UniversalMorphismFromCoequalizer := rec(
   dual_operation := "UniversalMorphismIntoEqualizer",
   
   pre_function := function( cat, cobase, diagram, test_object, tau )
-    local base, current_morphism, current_value, current_morphism_position;
+    local base, current_morphism, current_morphism_position;
     
     if IsEmpty( diagram ) then
         
@@ -1888,9 +1773,7 @@ UniversalMorphismFromCoequalizer := rec(
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
         
-        current_value := IsEqualForObjects( cat, Source( current_morphism ), base );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Source( current_morphism ), base ) then
             return [ false, "the given morphisms of the coequalizer diagram must have equal sources" ];
         fi;
         
@@ -1898,9 +1781,7 @@ UniversalMorphismFromCoequalizer := rec(
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
         
-        current_value := IsEqualForObjects( cat, Range( current_morphism ), cobase );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Range( current_morphism ), cobase ) then
             return [ false, "the given morphisms of the coequalizer diagram must have equal ranges" ];
         fi;
         
@@ -1908,9 +1789,7 @@ UniversalMorphismFromCoequalizer := rec(
     
     for current_morphism_position in [ 1 .. Length( diagram ) ] do
         
-        current_value := IsEqualForObjects( cat, Range( diagram[ current_morphism_position ] ), Source( tau ) );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Range( diagram[ current_morphism_position ] ), Source( tau ) ) then
             return [ false, Concatenation( "in diagram position ", String( current_morphism_position ), ": range and source are not equal" ) ];
         fi;
         
@@ -1949,7 +1828,7 @@ Pushout := rec(
   dual_operation := "FiberProduct",
   
   pre_function := function( cat, diagram )
-    local cobase, current_morphism, current_value;
+    local cobase, current_morphism;
     
     if IsEmpty( diagram ) then
         
@@ -1961,9 +1840,7 @@ Pushout := rec(
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
         
-        current_value := IsEqualForObjects( cat, Source( current_morphism ), cobase );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Source( current_morphism ), cobase ) then
             return [ false, "the given morphisms of the pushout diagram must have equal sources" ];
         fi;
         
@@ -1983,7 +1860,7 @@ InjectionOfCofactorOfPushout := rec(
   dual_operation := "ProjectionInFactorOfFiberProduct",
   
   pre_function := function( cat, diagram, injection_number )
-    local cobase, current_morphism, current_value;
+    local cobase, current_morphism;
     
     if injection_number < 1 or injection_number > Length( diagram ) then
         return[ false, Concatenation( "there does not exist a ", String( injection_number ), "th injection" ) ];
@@ -1993,9 +1870,7 @@ InjectionOfCofactorOfPushout := rec(
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
         
-        current_value := IsEqualForObjects( cat, Source( current_morphism ), cobase );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Source( current_morphism ), cobase ) then
             return [ false, "the given morphisms of the pushout diagram must have equal sources" ];
         fi;
         
@@ -2013,7 +1888,7 @@ InjectionOfCofactorOfPushoutWithGivenPushout := rec(
   dual_operation := "ProjectionInFactorOfFiberProductWithGivenFiberProduct",
   
   pre_function := function( cat, diagram, injection_number, pushout )
-    local cobase, current_morphism, current_value;
+    local cobase, current_morphism;
     
     if injection_number < 1 or injection_number > Length( diagram ) then
         return[ false, Concatenation( "there does not exist a ", String( injection_number ), "th injection" ) ];
@@ -2023,9 +1898,7 @@ InjectionOfCofactorOfPushoutWithGivenPushout := rec(
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
         
-        current_value := IsEqualForObjects( cat, Source( current_morphism ), cobase );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Source( current_morphism ), cobase ) then
             return [ false, "the given morphisms of the pushout diagram must have equal sources" ];
         fi;
         
@@ -2044,15 +1917,13 @@ MorphismFromSourceToPushout := rec(
   dual_operation := "MorphismFromFiberProductToSink",
   
   pre_function := function( cat, diagram )
-    local cobase, current_morphism, current_value;
+    local cobase, current_morphism;
     
     cobase := Source( diagram[1] );
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
         
-        current_value := IsEqualForObjects( cat, Source( current_morphism ), cobase );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Source( current_morphism ), cobase ) then
             return [ false, "the given morphisms of the pushout diagram must have equal sources" ];
         fi;
         
@@ -2070,15 +1941,13 @@ MorphismFromSourceToPushoutWithGivenPushout := rec(
   dual_operation := "MorphismFromFiberProductToSinkWithGivenFiberProduct",
   
   pre_function := function( cat, diagram, pushout )
-    local cobase, current_morphism, current_value;
+    local cobase, current_morphism;
     
     cobase := Source( diagram[1] );
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
         
-        current_value := IsEqualForObjects( cat, Source( current_morphism ), cobase );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Source( current_morphism ), cobase ) then
             return [ false, "the given morphisms of the pushout diagram must have equal sources" ];
         fi;
         
@@ -2097,7 +1966,7 @@ UniversalMorphismFromPushout := rec(
   dual_operation := "UniversalMorphismIntoFiberProduct",
   
   pre_function := function( cat, diagram, test_object, sink )
-    local cobase, current_morphism, current_value, current_morphism_position;
+    local cobase, current_morphism, current_morphism_position;
     
     if Length( diagram ) <> Length( sink ) then
         return [ false, "pushout diagram and test diagram must have equal length" ];
@@ -2113,9 +1982,7 @@ UniversalMorphismFromPushout := rec(
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
         
-        current_value := IsEqualForObjects( cat, Source( current_morphism ), cobase );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Source( current_morphism ), cobase ) then
             return [ false, "the given morphisms of the fiber pushout must have equal sources" ];
         fi;
         
@@ -2123,9 +1990,7 @@ UniversalMorphismFromPushout := rec(
     
     for current_morphism in sink do
         
-        current_value := IsEqualForObjects( cat, Range( current_morphism ), test_object );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Range( current_morphism ), test_object ) then
             return [ false, "the given morphisms of the test sink do not have ranges equal to the test object" ];
         fi;
         
@@ -2133,9 +1998,7 @@ UniversalMorphismFromPushout := rec(
     
     for current_morphism_position in [ 1 .. Length( diagram ) ] do
         
-        current_value := IsEqualForObjects( cat, Range( diagram[ current_morphism_position ] ), Source( sink[ current_morphism_position ] ) );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Range( diagram[ current_morphism_position ] ), Source( sink[ current_morphism_position ] ) ) then
             return [ false, Concatenation( "in diagram position ", String( current_morphism_position ), ": source and range are not equal" ) ];
         fi;
         
@@ -2153,7 +2016,7 @@ UniversalMorphismFromPushoutWithGivenPushout := rec(
   dual_operation := "UniversalMorphismIntoFiberProductWithGivenFiberProduct",
   
   pre_function := function( cat, diagram, test_object, sink, pushout )
-    local cobase, current_morphism, current_value, current_morphism_position;
+    local cobase, current_morphism, current_morphism_position;
     
     if Length( diagram ) <> Length( sink ) then
         return [ false, "pushout diagram and test diagram must have equal length" ];
@@ -2169,9 +2032,7 @@ UniversalMorphismFromPushoutWithGivenPushout := rec(
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
         
-        current_value := IsEqualForObjects( cat, Source( current_morphism ), cobase );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Source( current_morphism ), cobase ) then
             return [ false, "the given morphisms of the fiber pushout must have equal sources" ];
         fi;
         
@@ -2179,9 +2040,7 @@ UniversalMorphismFromPushoutWithGivenPushout := rec(
     
     for current_morphism in sink do
         
-        current_value := IsEqualForObjects( cat, Range( current_morphism ), test_object );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Range( current_morphism ), test_object ) then
             return [ false, "the given morphisms of the test sink do not have ranges equal to the test object" ];
         fi;
         
@@ -2189,9 +2048,7 @@ UniversalMorphismFromPushoutWithGivenPushout := rec(
     
     for current_morphism_position in [ 1 .. Length( diagram ) ] do
         
-        current_value := IsEqualForObjects( cat, Range( diagram[ current_morphism_position ] ), Source( sink[ current_morphism_position ] ) );
-        
-        if current_value = false then
+        if not IsEqualForObjects( cat, Range( diagram[ current_morphism_position ] ), Source( sink[ current_morphism_position ] ) ) then
             return [ false, Concatenation( "in diagram position ", String( current_morphism_position ), ": source and range are not equal" ) ];
         fi;
         
@@ -2262,20 +2119,16 @@ UniversalMorphismIntoCoimage := rec(
   with_given_object_position := "Range",
   dual_preprocessor_func := CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,
   pre_function := function( cat, morphism, test_factorization )
-    local value;
     
-    value := IsEqualForObjects( cat, Source( morphism ), Source( test_factorization[ 1 ] ) );
-    if value = false then
+    if not IsEqualForObjects( cat, Source( morphism ), Source( test_factorization[ 1 ] ) ) then
         return [ false, "source of morphism and test factorization are not equal" ];
     fi;
     
-    value := IsEqualForObjects( cat, Range( morphism ), Range( test_factorization[ 2 ] ) );
-    if value = false then
+    if not IsEqualForObjects( cat, Range( morphism ), Range( test_factorization[ 2 ] ) ) then
         return [ false, "range of morphism and test factorization are not equal" ];
     fi;
     
-    value := IsEqualForObjects( cat, Range( test_factorization[ 1 ] ), Source( test_factorization[ 2 ] ) );
-    if value = false then
+    if not IsEqualForObjects( cat, Range( test_factorization[ 1 ] ), Source( test_factorization[ 2 ] ) ) then
         return [ false, "source and range of test factorization are not equal" ];
     fi;
     
@@ -2289,20 +2142,16 @@ UniversalMorphismIntoCoimageWithGivenCoimageObject := rec(
   io_type := [ [ "alpha", "tau", "C" ], [ "tau_1_range", "C" ] ],
   dual_preprocessor_func := CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,
   pre_function := function( cat, morphism, test_factorization, image )
-    local value;
     
-    value := IsEqualForObjects( cat, Source( morphism ), Source( test_factorization[ 1 ] ) );
-    if value = false then
+    if not IsEqualForObjects( cat, Source( morphism ), Source( test_factorization[ 1 ] ) ) then
         return [ false, "source of morphism and test factorization are not equal" ];
     fi;
     
-    value := IsEqualForObjects( cat, Range( morphism ), Range( test_factorization[ 2 ] ) );
-    if value = false then
+    if not IsEqualForObjects( cat, Range( morphism ), Range( test_factorization[ 2 ] ) ) then
         return [ false, "range of morphism and test factorization are not equal" ];
     fi;
     
-    value := IsEqualForObjects( cat, Range( test_factorization[ 1 ] ), Source( test_factorization[ 2 ] ) );
-    if value = false then
+    if not IsEqualForObjects( cat, Range( test_factorization[ 1 ] ), Source( test_factorization[ 2 ] ) ) then
         return [ false, "source and range of test factorization are not equal" ];
     fi;
     
@@ -2400,11 +2249,8 @@ IsOne := rec(
   property_of := "morphism",
   dual_operation := "IsOne",
   pre_function := function( cat, morphism )
-    local is_equal_for_objects;
     
-    is_equal_for_objects := IsEqualForObjects( cat, Source( morphism ), Range( morphism ) );
-    
-    if is_equal_for_objects = false then
+    if not IsEqualForObjects( cat, Source( morphism ), Range( morphism ) ) then
         
         return [ false, "source and range of the given morphism are not equal" ];
         
@@ -2505,20 +2351,16 @@ UniversalMorphismFromImage := rec(
   dual_operation := "UniversalMorphismIntoCoimage",
   dual_preprocessor_func := CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,
   pre_function := function( cat, morphism, test_factorization )
-    local value;
     
-    value := IsEqualForObjects( cat, Source( morphism ), Source( test_factorization[ 1 ] ) );
-    if value = false then
+    if not IsEqualForObjects( cat, Source( morphism ), Source( test_factorization[ 1 ] ) ) then
         return [ false, "source of morphism and test factorization are not equal" ];
     fi;
     
-    value := IsEqualForObjects( cat, Range( morphism ), Range( test_factorization[ 2 ] ) );
-    if value = false then
+    if not IsEqualForObjects( cat, Range( morphism ), Range( test_factorization[ 2 ] ) ) then
         return [ false, "range of morphism and test factorization are not equal" ];
     fi;
     
-    value := IsEqualForObjects( cat, Range( test_factorization[ 1 ] ), Source( test_factorization[ 2 ] ) );
-    if value = false then
+    if not IsEqualForObjects( cat, Range( test_factorization[ 1 ] ), Source( test_factorization[ 2 ] ) ) then
         return [ false, "source and range of test factorization are not equal" ];
     fi;
     
@@ -2532,20 +2374,16 @@ UniversalMorphismFromImageWithGivenImageObject := rec(
   dual_operation := "UniversalMorphismIntoCoimageWithGivenCoimageObject",
   dual_preprocessor_func := CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,
   pre_function := function( cat, morphism, test_factorization, image )
-    local value;
     
-    value := IsEqualForObjects( cat, Source( morphism ), Source( test_factorization[ 1 ] ) );
-    if value = false then
+    if not IsEqualForObjects( cat, Source( morphism ), Source( test_factorization[ 1 ] ) ) then
         return [ false, "source of morphism and test factorization are not equal" ];
     fi;
     
-    value := IsEqualForObjects( cat, Range( morphism ), Range( test_factorization[ 2 ] ) );
-    if value = false then
+    if not IsEqualForObjects( cat, Range( morphism ), Range( test_factorization[ 2 ] ) ) then
         return [ false, "range of morphism and test factorization are not equal" ];
     fi;
     
-    value := IsEqualForObjects( cat, Range( test_factorization[ 1 ] ), Source( test_factorization[ 2 ] ) );
-    if value = false then
+    if not IsEqualForObjects( cat, Range( test_factorization[ 1 ] ), Source( test_factorization[ 2 ] ) ) then
         return [ false, "source and range of test factorization are not equal" ];
     fi;
     
@@ -2849,10 +2687,8 @@ HorizontalPreCompose := rec(
   dual_operation := "HorizontalPostCompose",
   
   pre_function := function( cat, twocell_1, twocell_2 )
-    local value;
     
-    value := IsEqualForObjects( cat, Range( Source( twocell_1 ) ), Source( Source( twocell_2 ) ) );
-    if value = false then
+    if not IsEqualForObjects( cat, Range( Source( twocell_1 ) ), Source( Source( twocell_2 ) ) ) then
         return [ false, "2-cells are not horizontally composable" ];
     fi;
     
@@ -2865,10 +2701,8 @@ HorizontalPostCompose := rec(
   dual_operation := "HorizontalPreCompose",
   
   pre_function := function( cat, twocell_2, twocell_1 )
-    local value;
     
-    value := IsEqualForObjects( cat, Range( Source( twocell_1 ) ), Source( Source( twocell_2 ) ) );
-    if value = false then
+    if not IsEqualForObjects( cat, Range( Source( twocell_1 ) ), Source( Source( twocell_2 ) ) ) then
         return [ false, "2-cells are not horizontally composable" ];
     fi;
     
@@ -2881,10 +2715,8 @@ VerticalPreCompose := rec(
   dual_operation := "VerticalPostCompose",
   
   pre_function := function( cat, twocell_1, twocell_2 )
-    local value;
     
-    value := IsEqualForMorphisms( Range( twocell_1 ), Source( twocell_2 ) );
-    if value = false then
+    if not IsEqualForMorphisms( Range( twocell_1 ), Source( twocell_2 ) ) then
         return [ false, "2-cells are not vertically composable" ];
     fi;
     
@@ -2897,10 +2729,8 @@ VerticalPostCompose := rec(
   dual_operation := "VerticalPreCompose",
   
   pre_function := function( cat, twocell_2, twocell_1 )
-    local value;
     
-    value := IsEqualForMorphisms( Range( twocell_1 ), Source( twocell_2 ) );
-    if value = false then
+    if not IsEqualForMorphisms( Range( twocell_1 ), Source( twocell_2 ) ) then
         return [ false, "2-cells are not vertically composable" ];
     fi;
     
@@ -3107,7 +2937,7 @@ MorphismBetweenDirectSums := rec(
   output_range_getter_preconditions := [ [ "DirectSum", 1 ] ],
   with_given_object_position := "both",
   pre_function := function( cat, source_diagram, listlist, range_diagram )
-    local result, i, j;
+    local i, j;
       
       if Length( listlist ) <> Length( source_diagram ) then
           
@@ -3125,17 +2955,13 @@ MorphismBetweenDirectSums := rec(
           
           for j in [ 1 .. Length( range_diagram ) ] do
               
-              result := IsEqualForObjects( cat, source_diagram[i], Source( listlist[i][j] ) );
-              
-              if result = false then
+              if not IsEqualForObjects( cat, source_diagram[i], Source( listlist[i][j] ) ) then
                   
                   return [ false, Concatenation( "the sources of the morphisms in the ", String(i), "-th row must be equal to the ", String(i), "-th entry of the source diagram" ) ];
                   
               fi;
               
-              result := IsEqualForObjects( cat, range_diagram[j], Range( listlist[i][j] ) );
-              
-              if result = false then
+              if not IsEqualForObjects( cat, range_diagram[j], Range( listlist[i][j] ) ) then
                   
                   return [ false, Concatenation( "the ranges of the morphisms in the ", String(j), "-th column must be equal to the ", String(j), "-th entry of the range diagram" ) ];
                   

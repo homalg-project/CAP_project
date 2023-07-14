@@ -93,13 +93,13 @@ InstallMethod( CoFreydCategoryAsOppositeOfFreydCategoryOfOpposite,
         #% CAP_JIT_DROP_NEXT_STATEMENT
         CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( underlying_morphism, underlying_cat, [ "the morphism datum given to the morphism constructor of <cat>" ] );
         
-        if IsEqualForObjects( underlying_cat, Source( underlying_morphism ), Source( CoRelationMorphism( source ) ) ) = false then
+        if not IsEqualForObjects( underlying_cat, Source( underlying_morphism ), Source( CoRelationMorphism( source ) ) ) then
             
             Error( "the source of the morphism datum must be equal to the source of the co-relation morphism of the given source object" );
             
         fi;
         
-        if IsEqualForObjects( underlying_cat, Range( underlying_morphism ), Source( CoRelationMorphism( range ) ) ) = false then
+        if not IsEqualForObjects( underlying_cat, Range( underlying_morphism ), Source( CoRelationMorphism( range ) ) ) then
             
             Error( "the range of the morphism datum must be equal to the source of the co-relation morphism of the given range object" );
             
@@ -126,13 +126,13 @@ InstallMethod( CoFreydCategoryAsOppositeOfFreydCategoryOfOpposite,
         #% CAP_JIT_DROP_NEXT_STATEMENT
         CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( underlying_morphism, underlying_cat, [ "the morphism datum given to the modeling tower morphism constructor of <cat>" ] );
         
-        if IsEqualForObjects( underlying_cat, Source( underlying_morphism ), Source( Opposite( RelationMorphism( Opposite( source ) ) ) ) ) = false then
+        if not IsEqualForObjects( underlying_cat, Source( underlying_morphism ), Source( Opposite( RelationMorphism( Opposite( source ) ) ) ) ) then
             
             Error( "the source of the morphism datum must be equal to the source of the co-relation morphism of the given source object" );
             
         fi;
         
-        if IsEqualForObjects( underlying_cat, Range( underlying_morphism ), Source( Opposite( RelationMorphism( Opposite( range ) ) ) ) ) = false then
+        if not IsEqualForObjects( underlying_cat, Range( underlying_morphism ), Source( Opposite( RelationMorphism( Opposite( range ) ) ) ) ) then
             
             Error( "the range of the morphism datum must be equal to the source of the co-relation morphism of the given range object" );
             
