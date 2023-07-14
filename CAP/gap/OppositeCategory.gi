@@ -484,13 +484,13 @@ InstallMethod( Opposite,
         #% CAP_JIT_DROP_NEXT_STATEMENT
         CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( morphism, OppositeCategory( cat ), [ "the morphism datum given to the morphism constructor of <cat>" ] );
         
-        if IsEqualForObjects( OppositeCategory( cat ), Source( morphism ), Opposite( range ) ) = false then
+        if not IsEqualForObjects( OppositeCategory( cat ), Source( morphism ), Opposite( range ) ) then
             
             Error( "the source of the morphism datum must be equal to <Opposite( range )>" );
             
         fi;
         
-        if IsEqualForObjects( OppositeCategory( cat ), Range( morphism ), Opposite( source ) ) = false then
+        if not IsEqualForObjects( OppositeCategory( cat ), Range( morphism ), Opposite( source ) ) then
             
             Error( "the range of the morphism datum must be equal to <Opposite( source )>" );
             
