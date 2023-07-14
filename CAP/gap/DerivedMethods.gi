@@ -1388,16 +1388,6 @@ AddDerivationToCAP( IsEqualForMorphismsOnMor,
     
     value_2 := IsEqualForObjects( cat, Range( morphism_1 ), Range( morphism_2 ) );
     
-    # See https://github.com/homalg-project/CAP_project/issues/595 for a discussion
-    # why we might (not) want to allow IsEqualForObjects to return fail.
-    # In any case, this currently is not officially supported, so CompilerForCAP can ignore this case.
-    #% CAP_JIT_DROP_NEXT_STATEMENT
-    if value_1 = fail or value_2 = fail then
-        
-        return fail;
-        
-    fi;
-    
     if value_1 and value_2 then
         
         return IsEqualForMorphisms( cat, morphism_1, morphism_2 );
@@ -4573,26 +4563,7 @@ AddFinalDerivationBundle( "IsomorphismFromHomologyObjectToItsConstructionAsAnIma
   end,
 ] : CategoryFilter := IsAbelianCategory );
 
-
-## Final method for IsEqualForObjects
-##
-AddFinalDerivation( IsEqualForObjects,
-                    "",
-                    [ ],
-                    [ IsEqualForObjects ],
-                    
-  ReturnFail );
-
 ## Final methods for IsEqual/IsCongruentForMorphisms
-##
-AddFinalDerivation( IsEqualForMorphisms,
-                    "Only IsIdenticalObj for comparing",
-                    [ ],
-                    [ IsCongruentForMorphisms,
-                      IsEqualForMorphisms ],
-                      
-  ReturnFail );
-
 ##
 AddFinalDerivation( IsCongruentForMorphisms,
                     "Use IsEqualForMorphisms for IsCongruentForMorphisms",
