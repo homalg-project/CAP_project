@@ -389,7 +389,20 @@ InstallGlobalFunction( "CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER",
     
     filter := data_type.filter;
     
-    if IsSpecializationOfFilter( IsFunction, filter ) then
+    # `IsBool( fail ) = true`, but we do not want to include `fail`
+    if IsSpecializationOfFilter( IsBool, filter ) then
+        
+        return function( value )
+            
+            if not (value = true or value = false) then
+                
+                CallFuncList( Error, Concatenation( human_readable_identifier_list, [ " is neither `true` nor `false`.", generic_help_string ] ) );
+                
+            fi;
+            
+        end;
+        
+    elif IsSpecializationOfFilter( IsFunction, filter ) then
         
         return function( value )
             
