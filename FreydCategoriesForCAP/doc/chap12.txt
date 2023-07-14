@@ -1035,21 +1035,19 @@
     [4X[25Xgap>[125X [27Xcols := CategoryOfColumns( QQ );;[127X[104X
     [4X[25Xgap>[125X [27Xrows := CategoryOfRows( QQ );;[127X[104X
     [4X[25Xgap>[125X [27Xobject_constructor :=[127X[104X
-    [4X[25X>[125X [27X    { cat, rank } -> ObjectifyObjectForCAPWithAttributes([127X[104X
-    [4X[25X>[125X [27X        rec( ), cat,[127X[104X
-    [4X[25X>[125X [27X        Opposite, CategoryOfRowsObject( Opposite( cat ), rank )[127X[104X
+    [4X[25X>[125X [27X    { cat, rank } -> CreateCapCategoryObjectWithAttributes( cat,[127X[104X
+    [4X[25X>[125X [27X                                                            Opposite, CategoryOfRowsObject( Opposite( cat ), rank )[127X[104X
     [4X[25X>[125X [27X    );;[127X[104X
     [4X[25Xgap>[125X [27Xmodeling_tower_object_constructor :=[127X[104X
-    [4X[25X>[125X [27X    { cat, rank } -> ObjectifyObjectForCAPWithAttributes([127X[104X
-    [4X[25X>[125X [27X        rec( ), ModelingCategory( cat ),[127X[104X
-    [4X[25X>[125X [27X        RankOfObject, rank[127X[104X
+    [4X[25X>[125X [27X    { cat, rank } -> CreateCapCategoryObjectWithAttributes( ModelingCategory( cat ),[127X[104X
+    [4X[25X>[125X [27X                                                            RankOfObject, rank[127X[104X
     [4X[25X>[125X [27X    );;[127X[104X
     [4X[25Xgap>[125X [27Xobject_datum := { cat, obj } -> RankOfObject( Opposite( obj ) );;[127X[104X
     [4X[25Xgap>[125X [27Xmodeling_tower_object_datum := { cat, obj } -> RankOfObject( obj );;[127X[104X
     [4X[25Xgap>[125X [27Xmorphism_constructor :=[127X[104X
     [4X[25X>[125X [27X    { cat, source, underlying_matrix, range } ->[127X[104X
-    [4X[25X>[125X [27X        ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes([127X[104X
-    [4X[25X>[125X [27X            rec( ), cat,[127X[104X
+    [4X[25X>[125X [27X        CreateCapCategoryMorphismWithAttributes([127X[104X
+    [4X[25X>[125X [27X            cat,[127X[104X
     [4X[25X>[125X [27X            source, range,[127X[104X
     [4X[25X>[125X [27X            Opposite, CategoryOfRowsMorphism([127X[104X
     [4X[25X>[125X [27X                Opposite( cat ),[127X[104X
@@ -1060,8 +1058,8 @@
     [4X[25X>[125X [27X        );;[127X[104X
     [4X[25Xgap>[125X [27Xmodeling_tower_morphism_constructor :=[127X[104X
     [4X[25X>[125X [27X    { cat, source, underlying_matrix, range } ->[127X[104X
-    [4X[25X>[125X [27X        ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes([127X[104X
-    [4X[25X>[125X [27X            rec( ), ModelingCategory( cat ),[127X[104X
+    [4X[25X>[125X [27X        CreateCapCategoryMorphismWithAttributes([127X[104X
+    [4X[25X>[125X [27X            ModelingCategory( cat ),[127X[104X
     [4X[25X>[125X [27X            source, range,[127X[104X
     [4X[25X>[125X [27X            UnderlyingMatrix, underlying_matrix[127X[104X
     [4X[25X>[125X [27X        );;[127X[104X

@@ -1151,21 +1151,19 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cols := CategoryOfColumns( QQ );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rows := CategoryOfRows( QQ );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">object_constructor :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    { cat, rank } -&gt; ObjectifyObjectForCAPWithAttributes(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        rec( ), cat,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        Opposite, CategoryOfRowsObject( Opposite( cat ), rank )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    { cat, rank } -&gt; CreateCapCategoryObjectWithAttributes( cat,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                                            Opposite, CategoryOfRowsObject( Opposite( cat ), rank )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">modeling_tower_object_constructor :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    { cat, rank } -&gt; ObjectifyObjectForCAPWithAttributes(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        rec( ), ModelingCategory( cat ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        RankOfObject, rank</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    { cat, rank } -&gt; CreateCapCategoryObjectWithAttributes( ModelingCategory( cat ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                                            RankOfObject, rank</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">object_datum := { cat, obj } -&gt; RankOfObject( Opposite( obj ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">modeling_tower_object_datum := { cat, obj } -&gt; RankOfObject( obj );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">morphism_constructor :=</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    { cat, source, underlying_matrix, range } -&gt;</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            rec( ), cat,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        CreateCapCategoryMorphismWithAttributes(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            cat,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            source, range,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            Opposite, CategoryOfRowsMorphism(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                Opposite( cat ),</span>
@@ -1176,8 +1174,8 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">modeling_tower_morphism_constructor :=</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    { cat, source, underlying_matrix, range } -&gt;</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            rec( ), ModelingCategory( cat ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        CreateCapCategoryMorphismWithAttributes(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            ModelingCategory( cat ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            source, range,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            UnderlyingMatrix, underlying_matrix</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        );;</span>
