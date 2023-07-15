@@ -25,13 +25,13 @@ DeclareAttribute( "UnderlyingInteger",
 ##
 ############################
 
-integer_category := CreateCapCategory( "Integers",
+integer_category := CreateCapCategory( "HomalgIntegers",
                                        IsCategoryOfHomalgIntegers,
                                        IsObjectInCategoryOfHomalgIntegers,
                                        IsMorphismInCategoryOfHomalgIntegers,
                                        IsCapCategoryTwoCell );
 
-integer_category!.category_as_first_argument := false;
+integer_category!.category_as_first_argument := true;
 
 #############################
 ##
@@ -47,12 +47,9 @@ InstallMethodWithCache( HomalgInteger,
                         [ IsInt ],
                         
   function( integer )
-    local homalg_integer;
     
-    homalg_integer := CreateCapCategoryObjectWithAttributes( integer_category,
-                                                             UnderlyingInteger, integer );
-    
-    return homalg_integer;
+    return CreateCapCategoryObjectWithAttributes( integer_category,
+                                                  UnderlyingInteger, integer );
     
 end );
 
@@ -77,7 +74,6 @@ InstallMethodWithCache( HomalgIntegerMorphism,
                         [ IsObjectInCategoryOfHomalgIntegers, IsObjectInCategoryOfHomalgIntegers ],
                         
   function( source, range )
-    local morphism;
     
     if UnderlyingInteger( range ) < UnderlyingInteger( source ) then
         
@@ -85,23 +81,25 @@ InstallMethodWithCache( HomalgIntegerMorphism,
         
     fi;
     
-    morphism := CreateCapCategoryMorphismWithAttributes( integer_category,
-                                                         source,
-                                                         range );
-    
-    return morphism;
+    return CreateCapCategoryMorphismWithAttributes( integer_category,
+                                                    source,
+                                                    range );
     
 end );
 
 ##
 AddIsCongruentForMorphisms( integer_category,
                          
-  ReturnTrue );
+  function( cat, mor1, mor2 )
+      
+      return true;
+      
+end );
 
 ##
 AddIsZeroForMorphisms( integer_category,
                        
-  function( a )
+  function( cat, a )
     
     return true;
     
@@ -110,7 +108,7 @@ end );
 ##
 AddAdditionForMorphisms( integer_category,
                          
-  function( a, b )
+  function( cat, a, b )
     
     return a;
     
@@ -119,12 +117,16 @@ end );
 ##
 AddAdditiveInverseForMorphisms( integer_category,
                                 
-  IdFunc );
+  function( cat, mor )
+
+    return mor;
+  
+end );
 
 ##
 AddZeroMorphism( integer_category,
                  
-  function( a, b )
+  function( cat, a, b )
     
     return HomalgIntegerMorphism( a, b );
     
@@ -133,7 +135,7 @@ end );
 ##
 AddIdentityMorphism( integer_category,
                      
-  function( obj )
+  function( cat, obj )
     
     return HomalgIntegerMorphism( obj, obj );
     
@@ -142,7 +144,7 @@ end );
 ##
 AddPreCompose( integer_category,
                
-  function( mor1, mor2 )
+  function( cat, mor1, mor2 )
     
     return HomalgIntegerMorphism( Source( mor1 ), Range( mor2 ) );
     
@@ -151,7 +153,7 @@ end );
 #
 AddFiberProduct( integer_category,
              
-  function( product_mor )
+  function( cat, product_mor )
     local pullback;
     
     pullback := Gcd( List( product_mor, i -> UnderlyingInteger( Source( i ) ) ) );
@@ -163,7 +165,7 @@ end );
 ##
 AddProjectionInFactorOfFiberProductWithGivenFiberProduct( integer_category,
                                  
-  function( product_morx, coordinate, pullback )
+  function( cat, product_morx, coordinate, pullback )
     local range;
     
     range := Source( product_morx[ coordinate ] );
@@ -172,11 +174,10 @@ AddProjectionInFactorOfFiberProductWithGivenFiberProduct( integer_category,
     
 end );
 
-
 ##
 AddPushout( integer_category,
             
-  function( product_mor )
+  function( cat, product_mor )
     local pushout;
     
     pushout := Lcm( List( product_mor, i -> UnderlyingInteger( Range( i ) ) ) );
@@ -188,7 +189,7 @@ end );
 ##
 AddInjectionOfCofactorOfPushoutWithGivenPushout( integer_category,
                                  
-  function( product_mor, coordinate, pushout )
+  function( cat, product_mor, coordinate, pushout )
     local source;
     
     source := Range( product_mor[ coordinate ] );
@@ -200,14 +201,11 @@ end );
 ##
 AddLiftAlongMonomorphism( integer_category,
                      
-  function( monomorphism, test_morphism )
+  function( cat, monomorphism, test_morphism )
     
     return HomalgIntegerMorphism( Source( test_morphism ), Source( monomorphism ) );
     
 end );
-
-##
-
 
 ###################################
 ##
@@ -234,3 +232,4 @@ InstallMethod( ViewString,
     return Concatenation( "<", String( UnderlyingInteger( Source( integer_mor ) ) ), " -> ", String( UnderlyingInteger( Range( integer_mor ) ) ), ">" );
     
 end );
+
