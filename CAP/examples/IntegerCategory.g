@@ -1,21 +1,14 @@
 
 LoadPackage( "CAP" );
 
-DeclareRepresentation( "IsHomalgIntegerRep",
-                       IsCapCategoryObjectRep,
-                       [ ] );
+DeclareCategory( "IsCategoryOfHomalgIntegers",
+                 IsCapCategory );
 
-BindGlobal( "TheTypeOfHomalgIntegers",
-        NewType( TheFamilyOfCapCategoryObjects,
-                IsHomalgIntegerRep ) );
+DeclareCategory( "IsObjectInCategoryOfHomalgIntegers",
+                 IsCapCategoryObject );
 
-DeclareRepresentation( "IsHomalgIntegerMorphismRep",
-                       IsCapCategoryMorphismRep,
-                       [ ] );
-
-BindGlobal( "TheTypeOfHomalgIntegerMorphism",
-        NewType( TheFamilyOfCapCategoryMorphisms,
-                IsHomalgIntegerMorphismRep ) );
+DeclareCategory( "IsMorphismInCategoryOfHomalgIntegers",
+                 IsCapCategoryMorphism );
 
 ############################
 ##
@@ -23,8 +16,8 @@ BindGlobal( "TheTypeOfHomalgIntegerMorphism",
 ##
 ############################
 
-DeclareAttribute( "AsInteger",
-                  IsHomalgIntegerRep );
+DeclareAttribute( "UnderlyingInteger",
+                  IsObjectInCategoryOfHomalgIntegers );
 
 ############################
 ##
@@ -32,7 +25,11 @@ DeclareAttribute( "AsInteger",
 ##
 ############################
 
-integer_category := CreateCapCategory( "Integers" );
+integer_category := CreateCapCategory( "Integers",
+                                       IsCategoryOfHomalgIntegers,
+                                       IsObjectInCategoryOfHomalgIntegers,
+                                       IsMorphismInCategoryOfHomalgIntegers,
+                                       IsCapCategoryTwoCell );
 
 integer_category!.category_as_first_argument := false;
 
@@ -52,10 +49,8 @@ InstallMethodWithCache( HomalgInteger,
   function( integer )
     local homalg_integer;
     
-    homalg_integer := ObjectifyWithAttributes( rec( ), TheTypeOfHomalgIntegers,
-                                               AsInteger, integer );
-    
-    Add( integer_category, homalg_integer );
+    homalg_integer := CreateCapCategoryObjectWithAttributes( integer_category,
+                                                             UnderlyingInteger, integer );
     
     return homalg_integer;
     
@@ -70,37 +65,29 @@ InstallMethod( HomalgIntegerMorphism,
                
   function( source, range )
     
-    if range < source then
-        
-        Error( "such a morphism does not exist" );
-        
-    fi;
-    
     return HomalgIntegerMorphism( HomalgInteger( source ), HomalgInteger( range ) );
     
 end );
 
 DeclareOperation( "HomalgIntegerMorphism",
-                  [ IsHomalgIntegerRep, IsHomalgIntegerRep ] );
+                  [ IsObjectInCategoryOfHomalgIntegers, IsObjectInCategoryOfHomalgIntegers ] );
 
 ##
 InstallMethodWithCache( HomalgIntegerMorphism,
-                        [ IsHomalgIntegerRep, IsHomalgIntegerRep ],
+                        [ IsObjectInCategoryOfHomalgIntegers, IsObjectInCategoryOfHomalgIntegers ],
                         
   function( source, range )
     local morphism;
     
-    if AsInteger( range ) < AsInteger( source ) then
+    if UnderlyingInteger( range ) < UnderlyingInteger( source ) then
         
         Error( "such a morphism does not exist" );
         
     fi;
     
-    morphism := ObjectifyWithAttributes( rec( ), TheTypeOfHomalgIntegerMorphism,
-                                         Source, source,
-                                         Range, range );
-    
-    Add( integer_category, morphism );
+    morphism := CreateCapCategoryMorphismWithAttributes( integer_category,
+                                                         source,
+                                                         range );
     
     return morphism;
     
@@ -167,7 +154,7 @@ AddFiberProduct( integer_category,
   function( product_mor )
     local pullback;
     
-    pullback := Gcd( List( product_mor, i -> AsInteger( Source( i ) ) ) );
+    pullback := Gcd( List( product_mor, i -> UnderlyingInteger( Source( i ) ) ) );
     
     return HomalgInteger( pullback );
     
@@ -179,7 +166,7 @@ AddProjectionInFactorOfFiberProductWithGivenFiberProduct( integer_category,
   function( product_morx, coordinate, pullback )
     local range;
     
-    range := Source( product_mor[ coordinate ] );
+    range := Source( product_morx[ coordinate ] );
     
     return HomalgIntegerMorphism( pullback, range );
     
@@ -192,7 +179,7 @@ AddPushout( integer_category,
   function( product_mor )
     local pushout;
     
-    pushout := Lcm( List( product_mor, i -> AsInteger( Range( i ) ) ) );
+    pushout := Lcm( List( product_mor, i -> UnderlyingInteger( Range( i ) ) ) );
     
     return HomalgInteger( pushout );
     
@@ -230,20 +217,20 @@ end );
 
 ##
 InstallMethod( ViewString,
-               [ IsHomalgIntegerRep ],
+               [ IsObjectInCategoryOfHomalgIntegers ],
                
   function( integer_obj )
     
-    return Concatenation( "<The integer object representing ", String( AsInteger( integer_obj ) ), ">" );
+    return Concatenation( "<The integer object representing ", String( UnderlyingInteger( integer_obj ) ), ">" );
     
 end );
 
 ##
 InstallMethod( ViewString,
-               [ IsHomalgIntegerMorphismRep ],
+               [ IsMorphismInCategoryOfHomalgIntegers ],
                
   function( integer_mor )
     
-    return Concatenation( "<", String( AsInteger( Source( integer_mor ) ) ), " -> ", String( AsInteger( Range( integer_mor ) ) ), ">" );
+    return Concatenation( "<", String( UnderlyingInteger( Source( integer_mor ) ) ), " -> ", String( UnderlyingInteger( Range( integer_mor ) ) ), ">" );
     
 end );
