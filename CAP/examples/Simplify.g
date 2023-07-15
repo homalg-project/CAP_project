@@ -5,9 +5,9 @@
 #! @Example
 ReadPackage( "CAP", "examples/StringsAsCategory.g" );;
 C := StringsAsCategory();;
-obj1 := StringsAsCategoryObject( "qaeiou", C );;
-obj2 := StringsAsCategoryObject( "qxayeziouT", C );;
-mor := StringsAsCategoryMorphism( obj1, "xyzaTe", obj2 );;
+obj1 := StringsAsCategoryObject( C, "qaeiou" );;
+obj2 := StringsAsCategoryObject( C, "qxayeziouT" );;
+mor := StringsAsCategoryMorphism( C, obj1, "xyzaTe", obj2 );;
 IsWellDefined( mor );
 #! true
 
@@ -93,7 +93,7 @@ IsCongruentForMorphisms(
 #! true
 
 ## Test SimplifyEndo
-endo := StringsAsCategoryMorphism( obj1, "uoiea", obj1 );;
+endo := StringsAsCategoryMorphism( C, obj1, "uoiea", obj1 );;
 IsWellDefined( endo );
 #! true
 IsEqualForMorphismsOnMor( SimplifyEndo( endo, 0 ), endo );
