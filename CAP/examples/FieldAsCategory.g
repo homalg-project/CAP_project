@@ -20,7 +20,7 @@ DeclareAttribute( "FieldAsCategoryUniqueObject",
                   IsFieldAsCategory );
 
 DeclareOperation( "FieldAsCategoryMorphism",
-                  [ IsRingElement, IsFieldAsCategory ] );
+                  [ IsFieldAsCategory, IsRingElement ] );
 
 ## Attributes
 DeclareAttribute( "UnderlyingFieldElement",
@@ -49,7 +49,7 @@ InstallMethod( FieldAsCategory,
                         fail
                         : overhead := false );
     
-    category!.category_as_first_argument := false;
+    category!.category_as_first_argument := true;
     
     SetUnderlyingFieldForHomalg( category, field );
     
@@ -73,17 +73,15 @@ InstallMethod( FieldAsCategoryUniqueObject,
     
     unique_object := CreateCapCategoryObjectWithAttributes( category );
     
-    Add( category, unique_object );
-    
     return unique_object;
     
 end );
 
 ##
 InstallMethod( FieldAsCategoryMorphism,
-               [ IsRingElement, IsFieldAsCategory ],
+               [ IsFieldAsCategory, IsRingElement ],
                
-  function( element, category )
+  function( category, element )
     local morphism, unique_object;
     
     unique_object := FieldAsCategoryUniqueObject( category );
@@ -92,8 +90,6 @@ InstallMethod( FieldAsCategoryMorphism,
                                                          unique_object,
                                                          unique_object,
                                                          UnderlyingFieldElement, element );
-    
-    Add( category, morphism );
     
     return morphism;
     
@@ -120,7 +116,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FIELD_AS_CATEGORY,
     
     ##
     AddIsEqualForObjects( category,
-      function( a, b )
+      function( cat, a, b )
       
         return true;
       
@@ -128,7 +124,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FIELD_AS_CATEGORY,
     
     ##
     AddIsEqualForMorphisms( category,
-      function( alpha, beta )
+      function( cat, alpha, beta )
         
         return UnderlyingFieldElement( alpha ) = UnderlyingFieldElement( beta );
         
@@ -136,34 +132,31 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FIELD_AS_CATEGORY,
     
     ##
     AddPreCompose( category,
-      function( alpha, beta )
+      function( cat, alpha, beta )
             
-        return FieldAsCategoryMorphism( 
-            UnderlyingFieldElement( alpha ) * UnderlyingFieldElement( beta ),
-            category
-        );
+        return FieldAsCategoryMorphism(
+                 cat,
+                 UnderlyingFieldElement( alpha ) * UnderlyingFieldElement( beta ) );
             
     end );
     
     ##
     AddIdentityMorphism( category,
-      function( a )
+      function( cat, a )
         
         return FieldAsCategoryMorphism(
-            One( field ),
-            category
-        );
+                 cat,
+                 One( field ) );
         
     end );
     
     ##
     AddAdditionForMorphisms( category,
-      function( alpha, beta )
+      function( cat, alpha, beta )
             
         return FieldAsCategoryMorphism( 
-            UnderlyingFieldElement( alpha ) + UnderlyingFieldElement( beta ),
-            category
-        );
+                 cat,
+                 UnderlyingFieldElement( alpha ) + UnderlyingFieldElement( beta ) );
             
     end );
     
@@ -173,14 +166,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FIELD_AS_CATEGORY,
     
     ## Homomorphism structure
     AddHomomorphismStructureOnObjects( category,
-      function( a, b )
+      function( cat, a, b )
         
         return tunit;
         
     end );
     
     AddHomomorphismStructureOnMorphisms( category,
-      function( alpha, beta )
+      function( cat, alpha, beta )
         
         return VectorSpaceMorphism( 
             tunit,
@@ -191,14 +184,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FIELD_AS_CATEGORY,
     end );
     
     AddDistinguishedObjectOfHomomorphismStructure( category,
-      function()
+      function( cat )
         
         return tunit;
         
     end );
     
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
-      function( alpha )
+      function( cat, alpha )
         
         return VectorSpaceMorphism(
             tunit,
@@ -209,12 +202,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FIELD_AS_CATEGORY,
     end );
     
     AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
-      function( a, b, mor )
+      function( cat, a, b, mor )
         
         return FieldAsCategoryMorphism(
-            EntriesOfHomalgMatrix( UnderlyingMatrix( mor ) )[1],
-            category
-        );
+                 cat,
+                 EntriesOfHomalgMatrix( UnderlyingMatrix( mor ) )[1] );
         
     end );
     
