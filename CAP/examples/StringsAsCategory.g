@@ -1,6 +1,11 @@
 LoadPackage( "CAP" );
 
+#############################
 ##
+## Categories
+##
+#############################
+
 DeclareCategory( "IsStringsAsCategory",
                  IsCapCategory );
 
@@ -10,13 +15,12 @@ DeclareCategory( "IsObjectInStringsAsCategory",
 DeclareCategory( "IsMorphismInStringsAsCategory",
                  IsCapCategoryMorphism );
 
-DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY" );
-
-DeclareGlobalFunction( "RemovedCharacters" );
-
-DeclareGlobalFunction( "DeleteVowels" );
-
+#############################
+##
 ## Constructors
+##
+#############################
+
 DeclareOperation( "StringsAsCategory",
                   [] );
 
@@ -26,14 +30,29 @@ DeclareOperation( "StringsAsCategoryObject",
 DeclareOperation( "StringsAsCategoryMorphism",
                   [ IsStringsAsCategory, IsObjectInStringsAsCategory, IsString, IsObjectInStringsAsCategory ] );
 
+#############################
+##
 ## Attributes
+##
+#############################
+
 DeclareAttribute( "UnderlyingString",
                   IsObjectInStringsAsCategory );
 
 DeclareAttribute( "UnderlyingString",
                   IsMorphismInStringsAsCategory );
 
+#############################
+##
 ## Constructors
+##
+#############################
+
+DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY" );
+
+DeclareGlobalFunction( "RemovedCharacters" );
+
+DeclareGlobalFunction( "DeleteVowels" );
 
 InstallGlobalFunction( RemovedCharacters,
     function( str, chars )
@@ -64,15 +83,14 @@ InstallMethod( StringsAsCategory,
   function( )
     local category;
     
-    category := CreateCapCategoryWithDataTypes(
-                        "Category of strings up to vowels",
-                        IsStringsAsCategory,
-                        IsObjectInStringsAsCategory,
-                        IsMorphismInStringsAsCategory,
-                        IsCapCategoryTwoCell,
-                        IsStringRep,
-                        IsStringRep,
-                        fail );
+    category := CreateCapCategoryWithDataTypes( "Category of strings up to vowels",
+                                                IsStringsAsCategory,
+                                                IsObjectInStringsAsCategory,
+                                                IsMorphismInStringsAsCategory,
+                                                IsCapCategoryTwoCell,
+                                                IsStringRep,
+                                                IsStringRep,
+                                                fail );
     
     category!.category_as_first_argument := true;
     
@@ -108,7 +126,11 @@ InstallMethod( StringsAsCategoryMorphism,
     
 end );
 
+#############################
+##
 ## Basic operations
+##
+#############################
 
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
   
@@ -161,12 +183,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
     AddPreCompose( category,
       function( cat, alpha, beta )
         
-        return StringsAsCategoryMorphism(
-                cat,
-                Source( alpha ),
-                Concatenation( UnderlyingString( alpha ), UnderlyingString( beta ) ),
-                Range( beta )
-        );
+        return StringsAsCategoryMorphism( cat,
+                                          Source( alpha ),
+                                          Concatenation( UnderlyingString( alpha ), UnderlyingString( beta ) ),
+                                          Range( beta ) );
         
     end );
     
@@ -174,12 +194,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
     AddIdentityMorphism( category,
       function( cat, a )
         
-        return StringsAsCategoryMorphism(
-            cat,
-            a,
-            "",
-            a
-        );
+        return StringsAsCategoryMorphism( cat, a, "", a );
         
     end );
     
@@ -207,11 +222,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
                 Print( "this case must not be handled here" );
             fi;
             
-            return StringsAsCategoryMorphism( 
-                        cat,
-                        a,
-                        "",
-                        SimplifyObject( a, n ) );
+            return StringsAsCategoryMorphism( cat, a, "", SimplifyObject( a, n ) );
             
     end );
     
@@ -223,12 +234,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
                 Print( "this case must not be handled here" );
             fi;
             
-            return StringsAsCategoryMorphism( 
-                cat,
-                SimplifyObject( a, n ),
-                "",
-                a
-            );
+            return StringsAsCategoryMorphism( cat, SimplifyObject( a, n ), "", a);
             
     end );
     
@@ -244,12 +250,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
             
             min := Minimum( Length( vowels ), n );
             
-            return StringsAsCategoryMorphism( 
-                    cat,
-                    Source( alpha ),
-                    RemovedCharacters( UnderlyingString( alpha ) , vowels{[1..min]} ),
-                    Range( alpha )
-             );
+            return StringsAsCategoryMorphism( cat,
+                                              Source( alpha ),
+                                              RemovedCharacters( UnderlyingString( alpha ) , vowels{[1..min]} ),
+                                              Range( alpha ) );
             
     end );
     
@@ -265,12 +269,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
             
             new_source := StringsAsCategoryObject( cat, DeleteVowels( UnderlyingString( Source( alpha ) ), n ) );
             
-            return StringsAsCategoryMorphism(
-                    cat,
-                    new_source,
-                    UnderlyingString( alpha ),
-                    Range( alpha )
-             );
+            return StringsAsCategoryMorphism( cat,
+                                              new_source,
+                                              UnderlyingString( alpha ),
+                                              Range( alpha ) );
             
     end );
     
@@ -282,12 +284,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
                 Print( "this case must not be handled here" );
             fi;
             
-            return StringsAsCategoryMorphism( 
-                cat,
-                Source( SimplifySource( alpha, n ) ),
-                "",
-                Source( alpha )
-            );
+            return StringsAsCategoryMorphism( cat,
+                                              Source( SimplifySource( alpha, n ) ),
+                                              "",
+                                              Source( alpha ) );
             
     end );
     
@@ -299,12 +299,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
                 Print( "this case must not be handled here" );
             fi;
             
-            return StringsAsCategoryMorphism( 
-                cat,
-                Source( alpha ),
-                "",
-                Source( SimplifySource( alpha, n ) )
-            );
+            return StringsAsCategoryMorphism( cat,
+                                              Source( alpha ),
+                                              "",
+                                              Source( SimplifySource( alpha, n ) ) );
             
     end );
     
@@ -320,13 +318,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
             
             new_range := StringsAsCategoryObject( cat, DeleteVowels( UnderlyingString( Range( alpha ) ), n ) );
             
-            return StringsAsCategoryMorphism( 
-                    cat,
-                    Source( alpha ),
-                    UnderlyingString( alpha ),
-                    new_range
-                    
-             );
+            return StringsAsCategoryMorphism( cat,
+                                              Source( alpha ),
+                                              UnderlyingString( alpha ),
+                                              new_range );
             
     end );
     
@@ -338,12 +333,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
                 Print( "this case must not be handled here" );
             fi;
             
-            return StringsAsCategoryMorphism( 
-                cat,
-                Range( SimplifyRange( alpha, n ) ),
-                "",
-                Range( alpha )
-            );
+            return StringsAsCategoryMorphism( cat,
+                                              Range( SimplifyRange( alpha, n ) ),
+                                              "",
+                                              Range( alpha ) );
             
     end );
     
@@ -355,12 +348,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
                 Print( "this case must not be handled here" );
             fi;
             
-            return StringsAsCategoryMorphism( 
-                cat,
-                Range( alpha ),
-                "",
-                Range( SimplifyRange( alpha, n ) )
-            );
+            return StringsAsCategoryMorphism( cat,
+                                              Range( alpha ),
+                                              "",
+                                              Range( SimplifyRange( alpha, n ) ) );
             
     end );
     
@@ -378,12 +369,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
             
             new_range := StringsAsCategoryObject( cat, DeleteVowels( UnderlyingString( Range( alpha ) ), n ) );
             
-            return StringsAsCategoryMorphism( 
-                    cat,
-                    new_source,
-                    UnderlyingString( alpha ),
-                    new_range
-                    );
+            return StringsAsCategoryMorphism( cat,
+                                              new_source,
+                                              UnderlyingString( alpha ),
+                                              new_range );
             
     end );
     
@@ -395,12 +384,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
                 Print( "this case must not be handled here" );
             fi;
             
-            return StringsAsCategoryMorphism(
-                cat,
-                Source( SimplifySourceAndRange( alpha, n ) ),
-                "",
-                Source( alpha )
-            );
+            return StringsAsCategoryMorphism( cat,
+                                              Source( SimplifySourceAndRange( alpha, n ) ),
+                                              "",
+                                              Source( alpha ) );
             
     end );
     
@@ -412,12 +399,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
                 Print( "this case must not be handled here" );
             fi;
             
-            return StringsAsCategoryMorphism(
-                cat,
-                Source( alpha ),
-                "",
-                Source( SimplifySourceAndRange( alpha, n ) )
-            );
+            return StringsAsCategoryMorphism( cat,
+                                              Source( alpha ),
+                                              "",
+                                              Source( SimplifySourceAndRange( alpha, n ) ) );
             
     end );
     
@@ -429,12 +414,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
                 Print( "this case must not be handled here" );
             fi;
             
-            return StringsAsCategoryMorphism(
-                cat,
-                Range( SimplifySourceAndRange( alpha, n ) ),
-                "",
-                Range( alpha )
-            );
+            return StringsAsCategoryMorphism( cat,
+                                              Range( SimplifySourceAndRange( alpha, n ) ),
+                                              "",
+                                              Range( alpha ) );
             
     end );
     
@@ -446,12 +429,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
                 Print( "this case must not be handled here" );
             fi;
             
-            return StringsAsCategoryMorphism(
-                cat,
-                Range( alpha ),
-                "",
-                Range( SimplifySourceAndRange( alpha, n ) )
-            );
+            return StringsAsCategoryMorphism( cat,
+                                              Range( alpha ),
+                                              "",
+                                              Range( SimplifySourceAndRange( alpha, n ) ) );
             
     end );
     
@@ -467,13 +448,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
             
             new_object := StringsAsCategoryObject( category, DeleteVowels( UnderlyingString( Source( endo ) ), n ) );
             
-            return StringsAsCategoryMorphism(
-                    cat,
-                    new_object,
-                    UnderlyingString( endo ),
-                    new_object
-                    
-             );
+            return StringsAsCategoryMorphism( cat,
+                                              new_object,
+                                              UnderlyingString( endo ),
+                                              new_object );
             
     end );
     
@@ -485,12 +463,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
                 Print( "this case must not be handled here" );
             fi;
             
-            return StringsAsCategoryMorphism(
-                cat,
-                Source( SimplifyEndo( endo, n ) ),
-                "",
-                Source( endo )
-            );
+            return StringsAsCategoryMorphism( cat,
+                                              Source( SimplifyEndo( endo, n ) ),
+                                              "",
+                                              Source( endo ) );
             
     end );
     
@@ -502,18 +478,20 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
                 Print( "this case must not be handled here" );
             fi;
             
-            return StringsAsCategoryMorphism(
-                cat,
-                Source( endo ),
-                "",
-                Source( SimplifyEndo( endo, n ) )
-            );
+            return StringsAsCategoryMorphism( cat,
+                                              Source( endo ),
+                                              "",
+                                              Source( SimplifyEndo( endo, n ) ) );
             
     end );
     
 end );
 
+#############################
+##
 ## View
+##
+#############################
 
 ##
 InstallMethod( ViewString,
