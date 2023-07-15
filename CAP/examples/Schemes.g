@@ -4,31 +4,18 @@ LoadPackage( "CAP" );
 
 ###################################
 ##
-## Types and Representations
+## Categories
 ##
 ###################################
+
+DeclareCategory( "IsCategoryOfSchemes",
+                 IsCapCategory );
 
 DeclareCategory( "IsScheme",
                  IsCapCategoryObject );
 
-DeclareRepresentation( "IsSchemeRep",
-                       IsScheme and IsCapCategoryObjectRep,
-                       [ ] );
-
-BindGlobal( "TheTypeOfSchemes",
-        NewType( TheFamilyOfCapCategoryObjects,
-                IsSchemeRep ) );
-
 DeclareCategory( "IsSchemeMorphism",
                  IsCapCategoryMorphism );
-
-DeclareRepresentation( "IsSchemeMorphismRep",
-                       IsSchemeMorphism and IsCapCategoryObjectRep,
-                       [ ] );
-
-BindGlobal( "TheTypeOfSchemeMorphisms",
-        NewType( TheFamilyOfCapCategoryMorphisms,
-                IsSchemeMorphismRep ) );
 
 #######################################
 ##
@@ -180,10 +167,10 @@ DeclareProperty( "IsQuasiSeparated",
 #######################################
 
 DeclareOperation( "Scheme",
-                  [ ] );
+                  [ IsCategoryOfSchemes ] );
 
 DeclareOperation( "SchemeMorphism",
-                  [ IsScheme, IsScheme ] );
+                  [ IsCategoryOfSchemes, IsScheme, IsScheme ] );
 
 #######################################
 ##
@@ -367,10 +354,6 @@ InstallValue( MORPHISM_LOGIC_LIST,
     
   ] );  
 
-Schemes := CreateCapCategory( "Schemes" );
-
-Schemes!.category_as_first_argument := false;
-
 ## Implementation
 
 InstallGlobalFunction( SCHEMES_INSTALL_TODO_LIST_FOR_MORPHISM,
@@ -378,7 +361,7 @@ InstallGlobalFunction( SCHEMES_INSTALL_TODO_LIST_FOR_MORPHISM,
   function( scheme_morphism )
     local list_of_implications, implication, entry;
     
-    list_of_implications :=  MORPHISM_LOGIC_LIST;
+    list_of_implications := MORPHISM_LOGIC_LIST;
   
     for implication in list_of_implications do
     
@@ -407,32 +390,25 @@ end );
 #######################################
 
 InstallMethod( Scheme,
-               [ ],
+               [ IsCategoryOfSchemes ],
 
-  function( )
-    local scheme;
+  function( cat )
     
-    scheme := ObjectifyWithAttributes( rec( ), TheTypeOfSchemes );
+    return CreateCapCategoryObjectWithAttributes( cat );
     
-    Add( Schemes, scheme );
-    
-    return scheme;
-  
 end );
 
 # InstallTrueMethod( IsOpenImmersion, IsSchemeMorphism and IsIsomorphism );
 
 InstallMethod( SchemeMorphism,
-               [ IsSchemeRep, IsSchemeRep ],
+               [ IsCategoryOfSchemes, IsScheme, IsScheme ],
 
-  function( source, range )
+  function( cat, source, range )
     local scheme_morphism, entry, entry2;
     
-    scheme_morphism := ObjectifyWithAttributes( rec( ), TheTypeOfSchemeMorphisms,
-                                                Source, source,
-                                                Range, range );
-    
-    Add( Schemes, scheme_morphism );
+    scheme_morphism := CreateCapCategoryMorphismWithAttributes( cat,
+                                                                Source, source,
+                                                                Range, range );
     
     SCHEMES_INSTALL_TODO_LIST_FOR_MORPHISM( scheme_morphism );
     
@@ -446,8 +422,17 @@ end );
 ##
 #######################################
 
-A := Scheme( );
+category_of_schemes := CreateCapCategory( "Schemes",
+                                          IsCategoryOfSchemes,
+                                          IsScheme,
+                                          IsSchemeMorphism,
+                                          IsCapCategoryTwoCell );
 
-B := Scheme( );
+category_of_schemes!.category_as_first_argument := true;
 
-alpha := SchemeMorphism( A, B );
+A := Scheme( category_of_schemes );
+
+B := Scheme( category_of_schemes );
+
+alpha := SchemeMorphism( category_of_schemes, A, B );
+
