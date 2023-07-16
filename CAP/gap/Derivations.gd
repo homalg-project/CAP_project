@@ -41,15 +41,18 @@ DeclareCategory( "IsDerivedMethod", IsAttributeStoringRep );
 #!  purposes.
 #!  The argument <A>target_op</A> is the operation which
 #!  the derived method implements.
-#!  The argument <A>used_ops_with_multiples</A> contains the name of each
-#!  operation used by the derived method, together with a positive
-#!  integer specifying how many times that operation is used and
-#!  optionally a category getter.
+#!  The argument <A>used_ops_with_multiples</A> contains
+#!  
+#!  * the name of each operation used by the derived method,
+#!  * together with a positive integer specifying how many times that operation is used and
+#!  * either a category getter or <C>fail</C>.
+#!  
 #!  This is given as a list of lists, where each sublist has as
 #!  first entry the name of an operation, as second entry an integer and as
-#!  third entry optionally a function. This function should accept the
-#!  category and return a category for which the operation in the first
-#!  entry must be installed for the derivation to be considered valid.
+#!  third entry either a function or <C>fail</C>. This function should accept the
+#!  category for which this derivation will be installed,
+#!  and return a category for which the operation in the first
+#!  entry must be installed for the derivation to be considered applicable.
 #!  The argument <A>weight</A> is an additional number to add
 #!  when calculating the resulting weight of the target operation
 #!  using this derivation. Unless there is any particular reason
@@ -58,7 +61,7 @@ DeclareCategory( "IsDerivedMethod", IsAttributeStoringRep );
 #!  The argument <A>func</A> contains the actual implementation of the
 #!  derived method.
 #!  The argument <A>category_filter</A> is a filter (or function) describing
-#!  which categories the derivation is valid for.  If it is valid
+#!  which categories the derivation is valid for. If it is valid
 #!  for all categories, then this argument should have the value
 #!  <C>IsCapCategory</C>. The output of <A>category_filter</A> must not
 #!  change during the installation of operations. In particular, it must
