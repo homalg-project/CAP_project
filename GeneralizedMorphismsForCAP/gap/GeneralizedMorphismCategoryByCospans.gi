@@ -18,36 +18,34 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_CO
     
     underlying_honest_category := UnderlyingHonestCategory( category );
     
-    ##
-    AddIsEqualForCacheForObjects( category, IsIdenticalObj );
-    
-    ##
-    AddIsEqualForCacheForMorphisms( category, IsIdenticalObj );
-    
     AddIsEqualForObjects( category,
       
-      function( object_1, object_2 )
+      function( cat, object_1, object_2 )
           
-          return IsEqualForObjects( UnderlyingHonestObject( object_1 ), UnderlyingHonestObject( object_2 ) );
+          return IsEqualForObjects( UnderlyingHonestCategory( cat ), UnderlyingHonestObject( object_1 ), UnderlyingHonestObject( object_2 ) );
           
     end );
     
     AddIsCongruentForMorphisms( category,
                                 
-      function( morphism1, morphism2 )
-        local arrow_tuple, pullback_diagram1, pullback_diagram2, subobject1, subobject2;
+      function( cat, morphism1, morphism2 )
+        local honest_category, arrow_tuple, pullback_diagram1, pullback_diagram2, subobject1, subobject2;
+        
+        honest_category := UnderlyingHonestCategory( cat );
         
         arrow_tuple := [ Arrow( morphism1 ), ReversedArrow( morphism1 ) ];
         
-        pullback_diagram1 := [ ProjectionInFactorOfFiberProduct( arrow_tuple, 1 ), ProjectionInFactorOfFiberProduct( arrow_tuple, 2 ) ];
+        pullback_diagram1 := [ ProjectionInFactorOfFiberProduct( honest_category, arrow_tuple, 1 ),
+                               ProjectionInFactorOfFiberProduct( honest_category, arrow_tuple, 2 ) ];
         
         arrow_tuple := [ Arrow( morphism2 ), ReversedArrow( morphism2 ) ];
         
-        pullback_diagram2 := [ ProjectionInFactorOfFiberProduct( arrow_tuple, 1 ), ProjectionInFactorOfFiberProduct( arrow_tuple, 2 ) ];
+        pullback_diagram2 := [ ProjectionInFactorOfFiberProduct( honest_category, arrow_tuple, 1 ),
+                               ProjectionInFactorOfFiberProduct( honest_category, arrow_tuple, 2 ) ];
         
-        subobject1 := UniversalMorphismIntoDirectSum( pullback_diagram1 );
+        subobject1 := UniversalMorphismIntoDirectSum( honest_category, pullback_diagram1 );
         
-        subobject2 := UniversalMorphismIntoDirectSum( pullback_diagram2 );
+        subobject2 := UniversalMorphismIntoDirectSum( honest_category, pullback_diagram2 );
         
         ## TODO: added more logic to make the following line obsolete
         Assert( 4, IsMonomorphism( subobject1 ) );
@@ -56,94 +54,108 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_CO
         Assert( 4, IsMonomorphism( subobject2 ) );
         SetIsMonomorphism( subobject2, true );
         
-        return IsEqualAsSubobjects( subobject1, subobject2 );
+        return IsEqualAsSubobjects( honest_category, subobject1, subobject2 );
         
     end );
     
-    ## PreCompose
     
+    ## PreCompose
     
     AddPreCompose( category, [
       
-      [ function( morphism1, morphism2 )
-          local pushout_diagram, injection_left, injection_right;
+      [ function( cat, morphism1, morphism2 )
+          local honest_category, pushout_diagram, injection_left, injection_right;
+          
+          honest_category := UnderlyingHonestCategory( cat );
           
           pushout_diagram := [ ReversedArrow( morphism1 ), Arrow( morphism2 ) ];
           
-          injection_left := InjectionOfCofactorOfPushout( pushout_diagram, 1 );
+          injection_left := InjectionOfCofactorOfPushout( honest_category, pushout_diagram, 1 );
           
-          injection_right := InjectionOfCofactorOfPushout( pushout_diagram, 2 );
+          injection_right := InjectionOfCofactorOfPushout( honest_category, pushout_diagram, 2 );
           
-          return GeneralizedMorphismByCospan( PreCompose( Arrow( morphism1 ), injection_left ), PreCompose( ReversedArrow( morphism2 ), injection_right ) );
+          return GeneralizedMorphismByCospan( PreCompose( honest_category, Arrow( morphism1 ), injection_left ),
+                                              PreCompose( honest_category, ReversedArrow( morphism2 ), injection_right ) );
           
       end, [ ] ],
       
-      [ function( morphism1, morphism2 )
-          local arrow, reversed_arrow;
+      [ function( cat, morphism1, morphism2 )
+          local honest_category, arrow, reversed_arrow;
           
-          arrow := PreCompose( Arrow( morphism1 ), Arrow( morphism2 ) );
+          honest_category := UnderlyingHonestCategory( cat );
+          
+          arrow := PreCompose( honest_category, Arrow( morphism1 ), Arrow( morphism2 ) );
           
           return AsGeneralizedMorphismByCospan( arrow );
           
-      end, [ HasIdentityAsReversedArrow, HasIdentityAsReversedArrow ] ],
+      end, [ IsGeneralizedMorphismCategoryByCospans, HasIdentityAsReversedArrow, HasIdentityAsReversedArrow ] ],
       
-      [ function( morphism1, morphism2 )
-          local arrow;
+      [ function( cat, morphism1, morphism2 )
+          local honest_category, arrow;
           
-          arrow := PreCompose( Arrow( morphism1 ), Arrow( morphism2 ) );
+          honest_category := UnderlyingHonestCategory( cat );
+          
+          arrow := PreCompose( honest_category, Arrow( morphism1 ), Arrow( morphism2 ) );
           
           return GeneralizedMorphismByCospan( arrow, ReversedArrow( morphism2 ) );
           
-      end, [ HasIdentityAsReversedArrow, ] ] ] );
+      end, [ IsGeneralizedMorphismCategoryByCospans, HasIdentityAsReversedArrow, IsGeneralizedMorphismByCospan ] ] ] );
     
     
     ## AdditionForMorphisms
     
     AddAdditionForMorphisms( category, [
                              
-      [ function( morphism1, morphism2 )
-          local pushout_diagram, pushout_left, pushout_right, arrow, reversed_arrow;
+      [ function( cat, morphism1, morphism2 )
+          local honest_category, pushout_diagram, pushout_left, pushout_right, arrow, reversed_arrow;
+          
+          honest_category := UnderlyingHonestCategory( cat );
           
           pushout_diagram := [ ReversedArrow( morphism1 ), ReversedArrow( morphism2 ) ];
           
-          pushout_left := InjectionOfCofactorOfPushout( pushout_diagram, 1 );
+          pushout_left := InjectionOfCofactorOfPushout( honest_category, pushout_diagram, 1 );
           
-          pushout_right := InjectionOfCofactorOfPushout( pushout_diagram, 2 );
+          pushout_right := InjectionOfCofactorOfPushout( honest_category, pushout_diagram, 2 );
           
-          arrow := AdditionForMorphisms( PreCompose( Arrow( morphism1 ), pushout_left ), PreCompose( Arrow( morphism2 ), pushout_right ) );
+          arrow := AdditionForMorphisms( honest_category,
+                                         PreCompose( honest_category, Arrow( morphism1 ), pushout_left ),
+                                         PreCompose( honest_category, Arrow( morphism2 ), pushout_right ) );
           
-          reversed_arrow := PreCompose( pushout_diagram[ 1 ], pushout_left );
+          reversed_arrow := PreCompose( honest_category, pushout_diagram[ 1 ], pushout_left );
           
           return GeneralizedMorphismByCospan( arrow, reversed_arrow );
           
       end, [ ] ],
       
-      [ function( morphism1, morphism2 )
+      [ function( cat, morphism1, morphism2 )
           
-          return AsGeneralizedMorphismByCospan( AdditionForMorphisms( Arrow( morphism1 ),  Arrow( morphism2 ) ) );
+          return AsGeneralizedMorphismByCospan( AdditionForMorphisms( UnderlyingHonestCategory( cat ), Arrow( morphism1 ), Arrow( morphism2 ) ) );
           
-      end, [ HasIdentityAsReversedArrow, HasIdentityAsReversedArrow ] ] ] );
+      end, [ IsGeneralizedMorphismCategoryByCospans, HasIdentityAsReversedArrow, HasIdentityAsReversedArrow ] ] ] );
       
     AddAdditiveInverseForMorphisms( category, [
                                     
-      [ function( morphism )
+      [ function( cat, morphism )
            
-         return GeneralizedMorphismByCospan( AdditiveInverseForMorphisms( Arrow( morphism ) ), ReversedArrow( morphism ) );
+         return GeneralizedMorphismByCospan( AdditiveInverseForMorphisms( UnderlyingHonestCategory( cat ), Arrow( morphism ) ),
+                                             ReversedArrow( morphism ) );
          
       end, [ ] ],
       
-      [ function( morphism )
+      [ function( cat, morphism )
           
-          return AsGeneralizedMorphismByCospan( AdditiveInverseForMorphisms( Arrow( morphism ) ) );
+          return AsGeneralizedMorphismByCospan( AdditiveInverseForMorphisms( UnderlyingHonestCategory( cat ), Arrow( morphism ) ) );
           
-      end, [ HasIdentityAsReversedArrow ] ] ] );
+      end, [ IsGeneralizedMorphismCategoryByCospans, HasIdentityAsReversedArrow ] ] ] );
     
     AddZeroMorphism( category,
       
-      function( obj1, obj2 )
-        local morphism;
-        
-        morphism := ZeroMorphism( UnderlyingHonestObject( obj1 ), UnderlyingHonestObject( obj2 ) );
+      function( cat, obj1, obj2 )
+        local honest_category, morphism;
+         
+        honest_category := UnderlyingHonestCategory( cat );
+          
+        morphism := ZeroMorphism( honest_category, UnderlyingHonestObject( obj1 ), UnderlyingHonestObject( obj2 ) );
         
         return AsGeneralizedMorphismByCospan( morphism );
         
@@ -154,10 +166,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_CO
     
     AddIdentityMorphism( category,
     
-      function( generalized_object )
-        local identity_morphism;
-        
-        identity_morphism := IdentityMorphism( UnderlyingHonestObject( generalized_object ) );
+      function( cat, generalized_object )
+        local honest_category, identity_morphism;
+         
+        honest_category := UnderlyingHonestCategory( cat );
+          
+        identity_morphism := IdentityMorphism( honest_category, UnderlyingHonestObject( generalized_object ) );
         
         return AsGeneralizedMorphismByCospan( identity_morphism );
         
@@ -167,9 +181,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_CO
         
         AddIsWellDefinedForObjects( category,
           
-          function( object )
+          function( cat, object )
               
-              return IsWellDefined( UnderlyingHonestObject( object ) );
+              return IsWellDefinedForObjects( UnderlyingHonestCategory( cat ), UnderlyingHonestObject( object ) );
               
           end );
           
@@ -179,20 +193,20 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_CO
         
         AddIsWellDefinedForMorphisms( category,
                                       
-          function( generalized_morphism )
-            local category;
+          function( cat, generalized_morphism )
+            local honest_category;
             
-            category := CapCategory( Arrow( generalized_morphism ) );
-            
+            honest_category := UnderlyingHonestCategory( cat );
+          
             if not ForAll( [ Arrow( generalized_morphism ), ReversedArrow( generalized_morphism ) ],
-                        x -> IsIdenticalObj( CapCategory( x ), category ) ) then
+                        x -> IsIdenticalObj( CapCategory( x ), honest_category ) ) then
               
               return false;
               
             fi;
             
             if not ( ForAll( [ Arrow( generalized_morphism ), ReversedArrow( generalized_morphism ) ],
-                    IsWellDefined ) ) then
+                    IsWellDefinedForMorphisms ) ) then
               
               return false;
               
@@ -276,7 +290,7 @@ InstallMethod( GeneralizedMorphismCategoryByCospans,
                                              fail,
                                              fail );
     
-    generalized_morphism_category!.category_as_first_argument := false;
+    generalized_morphism_category!.category_as_first_argument := true;
     
     generalized_morphism_category!.predicate_logic := category!.predicate_logic;
     
