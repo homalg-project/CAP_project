@@ -13,7 +13,7 @@
 BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
   
   function( category )
-    local membership_function;
+    local honest_category, membership_function;
     
     membership_function := SubcategoryMembershipTestFunctionForSerreQuotient( category );
     
@@ -21,19 +21,21 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
     
     AddIsCongruentForMorphisms( category,
       
-      function( morphism1, morphism2 )
-        local underlying_general, new_general, sum_general,
+      function( cat, morphism1, morphism2 )
+        local underlying_generalized_category, underlying_general, new_general, sum_general,
               sum_associated, sum_image;
+        
+        underlying_generalized_category := UnderlyingGeneralizedMorphismCategory( cat );
         
         underlying_general := UnderlyingGeneralizedMorphism( morphism2 );
         
-        new_general := AdditiveInverse( underlying_general );
+        new_general := AdditiveInverse( underlying_generalized_category, underlying_general );
         
-        sum_general := AdditionForMorphisms( UnderlyingGeneralizedMorphism( morphism1 ), new_general );
+        sum_general := AdditionForMorphisms( underlying_generalized_category, UnderlyingGeneralizedMorphism( morphism1 ), new_general );
         
         sum_associated := AssociatedMorphism( sum_general );
         
-        sum_image := ImageObject( sum_associated );
+        sum_image := ImageObject( underlying_generalized_category, sum_associated );
         
         return membership_function( sum_image );
         
@@ -41,20 +43,17 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
     
     AddIsEqualForObjects( category,
       
-      function( obj1, obj2 )
+      function( cat, obj1, obj2 )
         
-        return IsEqualForObjects( UnderlyingHonestObject( obj1 ), UnderlyingHonestObject( obj2 ) );
+        return IsEqualForObjects( UnderlyingHonestCategory( cat ), UnderlyingHonestObject( obj1 ), UnderlyingHonestObject( obj2 ) );
         
     end );
-    
-    AddIsEqualForCacheForObjects( category, IsIdenticalObj );
-    AddIsEqualForCacheForMorphisms( category, IsIdenticalObj );
     
     ## Is Zero
     
     AddIsZeroForObjects( category,
       
-      function( obj )
+      function( cat, obj )
         
         return membership_function( UnderlyingHonestObject( obj ) );
         
@@ -64,13 +63,16 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
     
     AddPreCompose( category,
       
-      function( morphism1, morphism2 )
-        local composition;
+      function( cat, morphism1, morphism2 )
+        local underlying_generalized_category, composition;
         
-        composition := PreCompose( UnderlyingGeneralizedMorphism( morphism1 ),
+        underlying_generalized_category := UnderlyingGeneralizedMorphismCategory( cat );
+        
+        composition := PreCompose( underlying_generalized_category,
+                                   UnderlyingGeneralizedMorphism( morphism1 ),
                                    UnderlyingGeneralizedMorphism( morphism2 ) );
         
-        return SerreQuotientCategoryBySpansMorphism( category, composition );
+        return SerreQuotientCategoryBySpansMorphism( cat, composition );
         
     end );
     
@@ -78,9 +80,11 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
     
     AddIdentityMorphism( category,
       
-      function( object )
+      function( cat, object )
         
-        return AsSerreQuotientCategoryBySpansMorphism( category, IdentityMorphism( UnderlyingHonestObject( object ) ) );
+        return AsSerreQuotientCategoryBySpansMorphism( cat,
+                                                       IdentityMorphism( UnderlyingHonestCategory( cat ),
+                                                       UnderlyingHonestObject( object ) ) );
         
     end );
     
@@ -88,16 +92,20 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
     
     AddAdditionForMorphisms( category,
       
-      function( morphism1, morphism2 )
-        local underlying_generalized, common_restriction, new_arrow;
+      function( cat, morphism1, morphism2 )
+        local underlying_generalized_category, underlying_generalized, common_restriction, new_arrow;
+        
+        underlying_generalized_category := UnderlyingHonestCategory( cat );
         
         underlying_generalized := List( [ morphism1, morphism2 ], UnderlyingGeneralizedMorphism );
         
         common_restriction := CommonRestriction( underlying_generalized );
         
-        new_arrow := AdditionForMorphisms( Arrow( common_restriction[ 1 ] ), Arrow( common_restriction[ 2 ] ) );
+        new_arrow := AdditionForMorphisms( underlying_generalized_category,
+                                           Arrow( common_restriction[ 1 ] ),
+                                           Arrow( common_restriction[ 2 ] ) );
         
-        return SerreQuotientCategoryBySpansMorphism( category, ReversedArrow( common_restriction[ 1 ] ), new_arrow );
+        return SerreQuotientCategoryBySpansMorphism( cat, ReversedArrow( common_restriction[ 1 ] ), new_arrow );
         
     end );
     
@@ -105,12 +113,14 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
     ## Can be derived, but there might be a faster solution
 #     AddIsZeroForMorphisms( category,
 #       
-#       function( morphism )
-#         local associated, image;
+#       function( cat, morphism )
+#         local honest_category, associated, image;
+#         
+#         honest_category := UnderlyingHonestCategory( cat );
 #         
 #         associated := AssociatedMorphism( UnderlyingGeneralizedMorphism( morphism ) );
 #         
-#         image := ImageObject( associated );
+#         image := ImageObject( honest_category, associated );
 #         
 #         return membership_function( image );
 #         
@@ -120,12 +130,16 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
     
     AddAdditiveInverseForMorphisms( category,
       
-      function( morphism )
-        local general;
+      function( cat, morphism )
+        local underlying_generalized_category, general;
+        
+        underlying_generalized_category := UnderlyingGeneralizedMorphismCategory( cat );
         
         general := UnderlyingGeneralizedMorphism( morphism );
         
-        return SerreQuotientCategoryBySpansMorphism( category, ReversedArrow( general ), AdditiveInverseForMorphisms( Arrow( general ) ) );
+        return SerreQuotientCategoryBySpansMorphism( cat,
+                                                     ReversedArrow( general ),
+                                                     AdditiveInverseForMorphisms( underlying_generalized_category, Arrow( general ) ) );
         
     end );
     
@@ -133,12 +147,16 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
     
     AddZeroMorphism( category,
       
-      function( source, range )
-        local new_general;
+      function( cat, source, range )
+        local honest_category, new_general;
         
-        new_general := ZeroMorphism( UnderlyingHonestObject( source ), UnderlyingHonestObject( range ) );
+        honest_category := UnderlyingHonestCategory( cat );
         
-        return AsSerreQuotientCategoryBySpansMorphism( category, new_general );
+        new_general := ZeroMorphism( honest_category,
+                                     UnderlyingHonestObject( source ),
+                                     UnderlyingHonestObject( range ) );
+        
+        return AsSerreQuotientCategoryBySpansMorphism( cat, new_general );
         
     end );
     
@@ -146,12 +164,12 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
     
     AddZeroObject( category,
       
-      function( )
+      function( cat )
         local generalized_zero;
         
-        generalized_zero := ZeroObject( UnderlyingHonestCategory( category ) );
+        generalized_zero := ZeroObject( UnderlyingHonestCategory( cat ) );
         
-        return AsSerreQuotientCategoryBySpansObject( category, generalized_zero );
+        return AsSerreQuotientCategoryBySpansObject( cat, generalized_zero );
         
     end );
     
@@ -159,47 +177,59 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
     
     AddDirectSum( category,
       
-      function( obj_list )
-        local honest_list, honest_sum;
+      function( cat, obj_list )
+        local honest_category, honest_list, honest_sum;
+        
+        honest_category := UnderlyingHonestCategory( cat );
         
         honest_list := List( obj_list, UnderlyingHonestObject );
         
-        honest_sum := DirectSum( honest_list );
+        honest_sum := DirectSum( honest_category, honest_list );
         
-        return AsSerreQuotientCategoryBySpansObject( category, honest_sum );
+        return AsSerreQuotientCategoryBySpansObject( cat, honest_sum );
         
     end );
     
     AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
       
-      function( product_object, component_number, direct_sum_object )
-        local underlying_objects, honest_projection;
+      function( cat, product_object, component_number, direct_sum_object )
+        local honest_category, underlying_objects, honest_projection;
+        
+        honest_category := UnderlyingHonestCategory( cat );
         
         underlying_objects := List( product_object, UnderlyingHonestObject );
         
-        honest_projection := ProjectionInFactorOfDirectSum( underlying_objects, component_number );
+        honest_projection := ProjectionInFactorOfDirectSum( honest_category,
+                                                            underlying_objects,
+                                                            component_number );
         
-        return AsSerreQuotientCategoryBySpansMorphism( category, honest_projection );
+        return AsSerreQuotientCategoryBySpansMorphism( cat, honest_projection );
         
     end );
     
     AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
       
-      function( object_product_list, injection_number, direct_sum_object )
-        local underlying_objects, honest_injection;
+      function( cat, object_product_list, injection_number, direct_sum_object )
+        local honest_category, underlying_objects, honest_injection;
+        
+        honest_category := UnderlyingHonestCategory( cat );
         
         underlying_objects := List( object_product_list, UnderlyingHonestObject );
         
-        honest_injection := InjectionOfCofactorOfDirectSum( underlying_objects, injection_number );
+        honest_injection := InjectionOfCofactorOfDirectSum( honest_category,
+                                                            underlying_objects,
+                                                            injection_number );
         
-        return AsSerreQuotientCategoryBySpansMorphism( category, honest_injection );
+        return AsSerreQuotientCategoryBySpansMorphism( cat, honest_injection );
         
     end );
     
     AddUniversalMorphismIntoDirectSum( category,
       
-      function( diagram, test_object, morphism_list )
-        local generalized_list, arrow_list, reversedarrow_list, new_arrow, new_reversed_arrow, object_list;
+      function( cat, diagram, test_object, morphism_list )
+        local honest_category, generalized_list, arrow_list, reversedarrow_list, new_arrow, new_reversed_arrow, object_list;
+        
+        honest_category := UnderlyingHonestCategory( cat );
         
         generalized_list := List( morphism_list, UnderlyingGeneralizedMorphism );
         
@@ -209,16 +239,18 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
         
         arrow_list := List( generalized_list, Arrow );
         
-        new_arrow := UniversalMorphismIntoDirectSum( List( diagram, UnderlyingHonestObject ), arrow_list );
+        new_arrow := UniversalMorphismIntoDirectSum( honest_category, List( diagram, UnderlyingHonestObject ), arrow_list );
         
-        return SerreQuotientCategoryBySpansMorphism( category, new_reversed_arrow, new_arrow );
+        return SerreQuotientCategoryBySpansMorphism( cat, new_reversed_arrow, new_arrow );
         
     end );
     
     AddUniversalMorphismFromDirectSum( category,
       
-      function( diagram, test_object, morphism_list )
-        local generalized_list, arrow_list, reversedarrow_list, new_arrow, new_reversed_arrow, object_list;
+      function( cat, diagram, test_object, morphism_list )
+        local honest_category, generalized_list, arrow_list, reversedarrow_list, new_arrow, new_reversed_arrow, object_list;
+        
+        honest_category := UnderlyingHonestCategory( cat );
         
         generalized_list := List( morphism_list, UnderlyingGeneralizedMorphism );
         
@@ -226,11 +258,11 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
         
         reversedarrow_list := List( generalized_list, ReversedArrow );
         
-        new_arrow := UniversalMorphismFromDirectSum( List( arrow_list, Source ), arrow_list );
+        new_arrow := UniversalMorphismFromDirectSum( honest_category, List( arrow_list, Source ), arrow_list );
         
-        new_reversed_arrow := DirectSumFunctorial( reversedarrow_list );
+        new_reversed_arrow := DirectSumFunctorial( honest_category, reversedarrow_list );
         
-        return SerreQuotientCategoryBySpansMorphism( category, new_reversed_arrow, new_arrow );
+        return SerreQuotientCategoryBySpansMorphism( cat, new_reversed_arrow, new_arrow );
         
     end );
     
@@ -238,29 +270,33 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
     
     AddKernelEmbedding( category,
       
-      function( morphism )
-        local underlying_general, kernel_mor;
+      function( cat, morphism )
+        local honest_category, underlying_general, kernel_mor;
+        
+        honest_category := UnderlyingHonestCategory( cat );
         
         underlying_general := UnderlyingGeneralizedMorphism( morphism );
         
 #         underlying_general := NormalizedSpan( underlying_general );
         
-        kernel_mor := KernelEmbedding( Arrow( underlying_general ) );
+        kernel_mor := KernelEmbedding( honest_category, Arrow( underlying_general ) );
         
-        return AsSerreQuotientCategoryBySpansMorphism( category, PreCompose( kernel_mor, ReversedArrow( underlying_general ) ) );
+        return AsSerreQuotientCategoryBySpansMorphism( cat, PreCompose( honest_category, kernel_mor, ReversedArrow( underlying_general ) ) );
         
     end );
     
     AddLiftAlongMonomorphism( category,
       
-      function( monomorphism, test_morphism )
-        local inverse_of_mono, composition;
+      function( cat, monomorphism, test_morphism )
+        local underlying_generalized_category, inverse_of_mono, composition;
+        
+        underlying_generalized_category := UnderlyingGeneralizedMorphismCategory( cat );
         
         inverse_of_mono := PseudoInverse( UnderlyingGeneralizedMorphism( monomorphism ) );
         
-        composition := PreCompose( UnderlyingGeneralizedMorphism( test_morphism ), inverse_of_mono );
+        composition := PreCompose( underlying_generalized_category, UnderlyingGeneralizedMorphism( test_morphism ), inverse_of_mono );
         
-        return SerreQuotientCategoryBySpansMorphism( category, composition );
+        return SerreQuotientCategoryBySpansMorphism( cat, composition );
         
     end );
     
@@ -268,36 +304,42 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
     
     AddCokernelProjection( category,
       
-      function( morphism )
-        local underlying_general, cokernel_mor;
+      function( cat, morphism )
+        local honest_category, underlying_general, cokernel_mor;
+        
+        honest_category := UnderlyingHonestCategory( cat );
         
         underlying_general := UnderlyingGeneralizedMorphism( morphism );
         
 #         underlying_general := NormalizedSpan( underlying_general );
         
-        cokernel_mor := CokernelProjection( Arrow( underlying_general ) );
+        cokernel_mor := CokernelProjection( honest_category, Arrow( underlying_general ) );
         
-        return AsSerreQuotientCategoryBySpansMorphism( category, cokernel_mor );
+        return AsSerreQuotientCategoryBySpansMorphism( cat, cokernel_mor );
         
     end );
     
     AddColiftAlongEpimorphism( category,
       
-      function( epimorphism, test_morphism )
-        local inverse_of_epi, composition;
+      function( cat, epimorphism, test_morphism )
+        local underlying_generalized_category, inverse_of_epi, composition;
+        
+        underlying_generalized_category := UnderlyingGeneralizedMorphismCategory( cat );
         
         inverse_of_epi := PseudoInverse( UnderlyingGeneralizedMorphism( epimorphism ) );
         
-        composition := PreCompose( inverse_of_epi, UnderlyingGeneralizedMorphism( test_morphism ) );
+        composition := PreCompose( underlying_generalized_category, inverse_of_epi, UnderlyingGeneralizedMorphism( test_morphism ) );
         
-        return SerreQuotientCategoryBySpansMorphism( category, composition );
+        return SerreQuotientCategoryBySpansMorphism( cat, composition );
         
     end );
     
     AddLift( category,
       
-      function( test_morphism, monomorphism )
-        local inverse_of_mono, composition;
+      function( cat, test_morphism, monomorphism )
+        local honest_category, inverse_of_mono, composition;
+        
+        honest_category := UnderlyingHonestCategory( cat );
         
         test_morphism := UnderlyingGeneralizedMorphism( test_morphism );
         monomorphism := UnderlyingGeneralizedMorphism( monomorphism );
@@ -309,52 +351,55 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
         test_morphism := HonestRepresentative( test_morphism );
         monomorphism := HonestRepresentative( monomorphism );
         
-        composition := Lift( test_morphism, monomorphism );
+        composition := Lift( honest_category, test_morphism, monomorphism );
         
         if composition = fail then
             return fail;
         fi;
         
-        return AsSerreQuotientCategoryBySpansMorphism( category, composition );
+        return AsSerreQuotientCategoryBySpansMorphism( cat, composition );
         
     end );
     
     AddDualOnObjects( category,
       
-      function( object )
+      function( cat, object )
         
-        return AsSerreQuotientCategoryBySpansObject( category, DualOnObjects( UnderlyingHonestObject( object ) ) );
+        return AsSerreQuotientCategoryBySpansObject( cat, DualOnObjects( UnderlyingHonestCategory( cat ),
+                                                                         UnderlyingHonestObject( object ) ) );
         
     end );
     
     AddDualOnMorphismsWithGivenDuals( category,
       
-      function( new_source, morphism, new_range )
-        local arrow, reversed_arrow, new_arrow, new_reversed_arrow;
+      function( cat, new_source, morphism, new_range )
+        local honest_category, arrow, reversed_arrow, new_arrow, new_reversed_arrow;
+        
+        honest_category := UnderlyingHonestCategory( cat );
         
         arrow := Arrow( UnderlyingGeneralizedMorphism( morphism ) );
         reversed_arrow := ReversedArrow( UnderlyingGeneralizedMorphism( morphism ) );
         
-        arrow := DualOnMorphisms( arrow );
-        reversed_arrow := DualOnMorphisms( reversed_arrow );
+        arrow := DualOnMorphisms( honest_category, arrow );
+        reversed_arrow := DualOnMorphisms( honest_category, reversed_arrow );
         
-        new_reversed_arrow := ProjectionInFactorOfFiberProduct( [ reversed_arrow, arrow ], 2 );
-        new_arrow := ProjectionInFactorOfFiberProduct( [ reversed_arrow, arrow ], 1 );
+        new_reversed_arrow := ProjectionInFactorOfFiberProduct( honest_category, [ reversed_arrow, arrow ], 2 );
+        new_arrow := ProjectionInFactorOfFiberProduct( honest_category, [ reversed_arrow, arrow ], 1 );
         
-        return SerreQuotientCategoryBySpansMorphism( category, new_reversed_arrow, new_arrow );
+        return SerreQuotientCategoryBySpansMorphism( cat, new_reversed_arrow, new_arrow );
         
     end );
     
     AddInverseForMorphisms( category,
       
-      function( morphism )
+      function( cat, morphism )
         local underlying_general, inverse;
         
         underlying_general := UnderlyingGeneralizedMorphism( morphism );
         
         inverse := PseudoInverse( underlying_general );
         
-        return SerreQuotientCategoryBySpansMorphism( category, inverse );
+        return SerreQuotientCategoryBySpansMorphism( cat, inverse );
         
     end );
     
@@ -432,7 +477,7 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryBySpans,
                               fail,
                               fail );
     
-    serre_category!.category_as_first_argument := false;
+    serre_category!.category_as_first_argument := true;
     
     serre_category!.predicate_logic := category!.predicate_logic;
     
