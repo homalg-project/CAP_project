@@ -70,15 +70,15 @@ InstallGlobalFunction( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT",
 
     AddIsWellDefinedForObjects( category,
       
-      function( object )
-        
-        return IsWellDefined( UnderlyingHonestObject( object ) );
+      function( cat, object )
+
+        return IsWellDefined( UnderlyingHonestCategory( cat ), UnderlyingHonestObject( object ) );
         
     end );
     
     AddIsWellDefinedForMorphisms( category,
       
-      function( morphism )
+      function( cat, morphism )
         local generalized_morphism;
         
         generalized_morphism := UnderlyingGeneralizedMorphism( morphism );
