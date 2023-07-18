@@ -70,31 +70,31 @@ category_with_attributes_record := rec(
   DirectSum :=
     { obj_list, underlying_direct_sum } -> [ "a string for indirection" ],
   
-  KernelObject := 
+  KernelObject :=
     { diagram, underlying_kernel_object } -> [ "a string for indirection" ],
       
-  ImageObject := 
+  ImageObject :=
     { diagram, underlying_image_object } -> [ "a string for indirection" ],
       
-  FiberProduct := 
+  FiberProduct :=
     { diagram, underlying_fiber_product } -> [ "a string for indirection" ],
       
-  CokernelObject := 
+  CokernelObject :=
     { diagram, underlying_cokernel_object } -> [ "a string for indirection" ],
   
-  CoimageObject := 
+  CoimageObject :=
     { diagram, underlying_coimage_object } -> [ "a string for indirection" ],
   
-  Pushout := 
+  Pushout :=
     { diagram, underlying_pushout_object } -> [ "a string for indirection" ],
 );;
 triple := EnhancementWithAttributes( category_with_attributes_record );;
 indirection_category := triple[1];;
 SetIsAbelianCategory( indirection_category, true );;
 Reevaluate( indirection_category!.derivations_weight_list );
-AddIsEqualForObjects( indirection_category, function( obj1, obj2 ) return UnderlyingCell( obj1 ) = UnderlyingCell( obj2 ); end );;
-AddIsEqualForMorphisms( indirection_category, IsIdenticalObj );;
-AddIsCongruentForMorphisms( indirection_category, function( mor1, mor2 ) return UnderlyingCell( mor1 ) = UnderlyingCell( mor2 ); end );;
+AddIsEqualForObjects( indirection_category, function( cat, obj1, obj2 ) return UnderlyingCell( obj1 ) = UnderlyingCell( obj2 ); end );;
+AddIsEqualForMorphisms( indirection_category, function( cat, mor1, mor2 ) return IsIdenticalObj( mor1, mor2 ); end );;
+AddIsCongruentForMorphisms( indirection_category, function( cat, mor1, mor2 ) return UnderlyingCell( mor1 ) = UnderlyingCell( mor2 ); end );;
 Finalize( indirection_category );;
 Object_Constructor := triple[2];;
 Morphism_Constructor := triple[3];;

@@ -53,7 +53,7 @@ InstallMethod( LeftActionsCategory,
     
     left_actions_category := CreateCapCategory( name );
     
-    left_actions_category!.category_as_first_argument := false;
+    left_actions_category!.category_as_first_argument := true;
     
     ## WARNING: This should be adjusted
     if HasIsAbelianCategory( underlying_monoidal_category )
@@ -310,7 +310,7 @@ InstallMethod( RightActionsCategory,
     
     right_actions_category := CreateCapCategory( name );
     
-    right_actions_category!.category_as_first_argument := false;
+    right_actions_category!.category_as_first_argument := true;
     
     ## WARNING: This should be adjusted
     if HasIsAbelianCategory( underlying_monoidal_category )
@@ -565,7 +565,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_ACTIONS_CATEGORY,
     
     ##
     AddIsEqualForObjects( category,
-      function( action_object_1, action_object_2 )
+      function( cat, action_object_1, action_object_2 )
         
         return IsEqualForObjects( ActionDomain( action_object_1 ), ActionDomain( action_object_2 ) )
                and
@@ -575,7 +575,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_ACTIONS_CATEGORY,
     
     ##
     AddIsEqualForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         
         return IsEqualForMorphisms( UnderlyingCell( morphism_1 ), UnderlyingCell( morphism_2 ) );
         
@@ -583,7 +583,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_ACTIONS_CATEGORY,
     
     ##
     AddIsCongruentForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         
         return IsCongruentForMorphisms( UnderlyingCell( morphism_1 ), UnderlyingCell( morphism_2 ) );
         
@@ -594,10 +594,20 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_ACTIONS_CATEGORY,
         SetCachingOfCategoryCrisp( category );
         
         ##
-        AddIsEqualForObjects( category, IsIdenticalObj );
+        AddIsEqualForObjects( category, 
+          function( cat, action_object_1, action_object_2 )
+          
+            return IsIdenticalObj( action_object_1, action_object_2 );
+        
+        end );
         
         ##
-        AddIsEqualForMorphisms( category, IsIdenticalObj );
+        AddIsEqualForMorphisms( category,
+          function( cat, morphism_1, morphism_2 )
+          
+            return IsIdenticalObj( morphism_1, morphism_2 );
+        
+        end );
         
         ## cannot AddIsCongruentForMorphisms
         category!.is_computable := false;
@@ -618,7 +628,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_LEFT_ACTIONS_CATEGORY,
     
     ##
     AddIsWellDefinedForObjects( left_actions_category,
-      function( object )
+      function( cat, object )
         local underlying_category, action_domain, structure_morphism;
         
         underlying_category := UnderlyingCategory( object );
@@ -638,7 +648,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_LEFT_ACTIONS_CATEGORY,
     
     ##
     AddIsWellDefinedForMorphisms( left_actions_category,
-      function( morphism )
+      function( cat, morphism )
         local underlying_morphism, source, range;
         
         underlying_morphism := UnderlyingMorphism( morphism );
@@ -673,7 +683,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_RIGHT_ACTIONS_CATEGORY,
     
     ##
     AddIsWellDefinedForObjects( right_actions_category,
-      function( object )
+      function( cat, object )
         local underlying_category, action_domain, structure_morphism;
         
         underlying_category := UnderlyingCategory( object );
@@ -693,7 +703,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_RIGHT_ACTIONS_CATEGORY,
     
     ##
     AddIsWellDefinedForMorphisms( right_actions_category,
-      function( morphism )
+      function( cat, morphism )
         local underlying_morphism, source, range;
         
         underlying_morphism := UnderlyingMorphism( morphism );

@@ -37,7 +37,7 @@ vec := MatrixCategory( Q );;
 wrapped_cat := CreateCapCategory( "Wrapped Category", IsCapCategory, IsWrappedObject, IsWrappedMorphism, IsCapCategoryTwoCell : is_computable := false );
 #! Wrapped Category
 
-wrapped_cat!.category_as_first_argument := false;;
+wrapped_cat!.category_as_first_argument := true;;
 
 #################################
 ##
@@ -67,7 +67,7 @@ InstallMethod( WrappedMorphism,
     ); end );
 
 AddKernelEmbedding( wrapped_cat,
-  function( diagram )
+  function( cat, diagram )
     
     # avoid semicolons so AutoDoc does not start a new statement
     return ({ underlying_kernel_embedding } ->

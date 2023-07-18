@@ -52,7 +52,7 @@ InstallMethod( LeftCoactionsCategory,
     
     left_coactions_category := CreateCapCategory( name );
     
-    left_coactions_category!.category_as_first_argument := false;
+    left_coactions_category!.category_as_first_argument := true;
     
     ## WARNING: This should be adjusted
     if HasIsAbelianCategory( underlying_monoidal_category )
@@ -288,7 +288,7 @@ InstallMethod( RightCoactionsCategory,
     
     right_coactions_category := CreateCapCategory( name );
     
-    right_coactions_category!.category_as_first_argument := false;
+    right_coactions_category!.category_as_first_argument := true;
     
     ## WARNING: This should be adjusted
     if HasIsAbelianCategory( underlying_monoidal_category )
@@ -522,7 +522,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_COACTIONS_CATEGORY,
     
     ##
     AddIsEqualForObjects( category,
-      function( coaction_object_1, coaction_object_2 )
+      function( cat, coaction_object_1, coaction_object_2 )
         
         return IsEqualForObjects( CoactionDomain( coaction_object_1 ), CoactionDomain( coaction_object_2 ) )
                and
@@ -532,7 +532,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_COACTIONS_CATEGORY,
     
     ##
     AddIsEqualForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         
         return IsEqualForMorphisms( UnderlyingCell( morphism_1 ), UnderlyingCell( morphism_2 ) );
         
@@ -540,7 +540,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_COACTIONS_CATEGORY,
     
     ##
     AddIsCongruentForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         
         return IsCongruentForMorphisms( UnderlyingCell( morphism_1 ), UnderlyingCell( morphism_2 ) );
         
@@ -551,10 +551,20 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_COACTIONS_CATEGORY,
         SetCachingOfCategoryCrisp( category );
         
         ##
-        AddIsEqualForObjects( category, IsIdenticalObj );
+        AddIsEqualForObjects( category,
+          function( cat, coaction_object_1, coaction_object_2 )
+          
+            return IsIdenticalObj( coaction_object_1, coaction_object_2 );
+        
+        end );
         
         ##
-        AddIsEqualForMorphisms( category, IsIdenticalObj );
+        AddIsEqualForMorphisms( category,
+          function( cat, morphism_1, morphism_2 )
+          
+            return IsIdenticalObj( morphism_1, morphism_2 );
+        
+        end );
         
         ## cannot AddIsCongruentForMorphisms
         category!.is_computable := false;
@@ -575,7 +585,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_LEFT_COACTIONS_CATEGORY,
     
     ##
     AddIsWellDefinedForObjects( left_coactions_category,
-      function( object )
+      function( cat, object )
         local underlying_category, coaction_domain, structure_morphism;
         
         underlying_category := UnderlyingCategory( object );
@@ -595,7 +605,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_LEFT_COACTIONS_CATEGORY,
     
     ##
     AddIsWellDefinedForMorphisms( left_coactions_category,
-      function( morphism )
+      function( cat, morphism )
         local underlying_morphism, source, range;
         
         underlying_morphism := UnderlyingMorphism( morphism );
@@ -630,7 +640,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_RIGHT_COACTIONS_CATEGORY,
     
     ##
     AddIsWellDefinedForObjects( right_coactions_category,
-      function( object )
+      function( cat, object )
         local underlying_category, coaction_domain, structure_morphism;
         
         underlying_category := UnderlyingCategory( object );
@@ -650,7 +660,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_RIGHT_COACTIONS_CATEGORY,
     
     ##
     AddIsWellDefinedForMorphisms( right_coactions_category,
-      function( morphism )
+      function( cat, morphism )
         local underlying_morphism, source, range;
         
         underlying_morphism := UnderlyingMorphism( morphism );
