@@ -144,7 +144,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
         operation := ValueGlobal( operation_name );
         
         return
-          function( arg )
+          function( cat, arg... )
             local underlying_arg;
             
             underlying_arg := List( arg, UnderlyingCell );
@@ -162,7 +162,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
         operation := ValueGlobal( operation_name );
         
         return
-          function( arg )
+          function( cat, arg... )
             local underlying_arg, underlying_return, attributes;
             
             underlying_arg := List( arg, UnderlyingCell );
@@ -184,7 +184,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
         operation := ValueGlobal( operation_name );
         
         return
-          function( )
+          function( cat )
             local underlying_return, attributes;
             
             underlying_return := CallFuncList( operation, [ underlying_category ] );
@@ -207,7 +207,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
         output_range_getter := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).output_range_getter;
         
         return
-          function( arg )
+          function( cat, arg... )
             local underlying_arg, underlying_return, source, range;
             
             underlying_arg:= List( arg, UnderlyingCell );
@@ -235,7 +235,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
         output_range_getter := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).output_range_getter;
         
         return
-          function( arg )
+          function( cat, arg... )
             local underlying_arg, underlying_return, source, range;
             
             underlying_arg:= List( arg, UnderlyingCell );
@@ -267,7 +267,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
         output_range_getter := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).output_range_getter;
         
         return
-          function( arg )
+          function( cat, arg... )
             local underlying_arg, underlying_return, range, attributes, source;
             
             underlying_arg:= List( arg, UnderlyingCell );
@@ -295,7 +295,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
         output_source_getter := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).output_source_getter;
         
         return
-          function( arg )
+          function( cat, arg... )
             local underlying_arg, underlying_return, source, attributes, range;
             
             underlying_arg:= List( arg, UnderlyingCell );
@@ -421,7 +421,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
         
         add_function := ValueGlobal( Concatenation( "Add", name ) );
         
-        if entry.return_type = "bool" 
+        if entry.return_type = "bool"
            and IsBound( entry.is_reflected_by_faithful_functor )
            and entry.is_reflected_by_faithful_functor then
             
@@ -494,7 +494,7 @@ end );
 ##
 InstallGlobalFunction( CAP_INTERNAL_DERIVE_STRUCTURE_FUNCTIONS_OF_UNIVERSAL_OBJECTS_FOR_CATEGORY_WITH_ATTRIBUTES,
   function( structure_record )
-    local list_of_installed_operations, lift_operation, colift_operation, function_record, 
+    local list_of_installed_operations, lift_operation, colift_operation, function_record,
           derivation_record, rec_names, current_name, function_record_entry, filter_list, operation;
     
     function_record := CAP_INTERNAL_STRUCTURE_FUNCTION_RECORD_FOR_CATEGORY_WITH_ATTRIBUTES;
@@ -539,7 +539,7 @@ InstallGlobalFunction( CAP_INTERNAL_DERIVE_STRUCTURE_FUNCTIONS_OF_UNIVERSAL_OBJE
               direct_sum_diagram := List( diagram, Source );
               
               return lift_operation( FiberProductEmbeddingInDirectSum( underlying_diagram ),
-                                      DirectSum( direct_sum_diagram ) );
+                                     DirectSum( direct_sum_diagram ) );
               
         end );
         
@@ -713,7 +713,7 @@ InstallGlobalFunction( EnhancementWithAttributes,
         
         structure_record.category_with_attributes := CreateCapCategory( structure_record.category_name );
         
-        structure_record.category_with_attributes!.category_as_first_argument := false;
+        structure_record.category_with_attributes!.category_as_first_argument := true;
         
     fi;
     
@@ -744,6 +744,7 @@ InstallGlobalFunction( EnhancementWithAttributes,
     if IsBound( structure_record.Lift ) then
         
         structure_record.Lift := FunctionWithCache( structure_record.Lift );
+        
     fi;
     
     if IsBound( structure_record.Colift ) then
