@@ -18,38 +18,36 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_SP
     
     underlying_honest_category := UnderlyingHonestCategory( category );
     
-    ##
-    AddIsEqualForCacheForObjects( category, IsIdenticalObj );
-    
-    ##
-    AddIsEqualForCacheForMorphisms( category, IsIdenticalObj );
-    
     AddIsEqualForObjects( category,
       
-      function( object_1, object_2 )
+      function( cat, object_1, object_2 )
           
-          return IsEqualForObjects( UnderlyingHonestObject( object_1 ), UnderlyingHonestObject( object_2 ) );
+          return IsEqualForObjects( UnderlyingHonestCategory( cat ), UnderlyingHonestObject( object_1 ), UnderlyingHonestObject( object_2 ) );
           
     end );
     
     AddIsCongruentForMorphisms( category,
                                 
-      function( morphism1, morphism2 )
-        local arrow_tuple, pushout_diagram1, pushout_diagram2, factorobject1, factorobject2;
+      function( cat, morphism1, morphism2 )
+        local honest_category, arrow_tuple, pushout_diagram1, pushout_diagram2, factorobject1, factorobject2;
+        
+        honest_category := UnderlyingHonestCategory( cat );
         
         arrow_tuple := [ Arrow( morphism1 ), ReversedArrow( morphism1 ) ];
         
-        pushout_diagram1 := [ InjectionOfCofactorOfPushout( arrow_tuple, 1 ), InjectionOfCofactorOfPushout( arrow_tuple, 2 ) ];
+        pushout_diagram1 := [ InjectionOfCofactorOfPushout( honest_category, arrow_tuple, 1 ),
+                              InjectionOfCofactorOfPushout( honest_category, arrow_tuple, 2 ) ];
         
         arrow_tuple := [ Arrow( morphism2 ), ReversedArrow( morphism2 ) ];
         
-        pushout_diagram2 := [ InjectionOfCofactorOfPushout( arrow_tuple, 1 ), InjectionOfCofactorOfPushout( arrow_tuple, 2 ) ];
+        pushout_diagram2 := [ InjectionOfCofactorOfPushout( honest_category, arrow_tuple, 1 ),
+                              InjectionOfCofactorOfPushout( honest_category, arrow_tuple, 2 ) ];
         
-        factorobject1 := UniversalMorphismFromDirectSum( pushout_diagram1 );
+        factorobject1 := UniversalMorphismFromDirectSum( honest_category, pushout_diagram1 );
         
-        factorobject2 := UniversalMorphismFromDirectSum( pushout_diagram2 );
+        factorobject2 := UniversalMorphismFromDirectSum( honest_category, pushout_diagram2 );
         
-        return IsEqualAsFactorobjects( factorobject1, factorobject2 );
+        return IsEqualAsFactorobjects( honest_category, factorobject1, factorobject2 );
         
     end );
     
@@ -58,85 +56,99 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_SP
     
     AddPreCompose( category, [
       
-      [ function( morphism1, morphism2 )
-          local pullback_diagram, projection_left, projection_right;
+      [ function( cat, morphism1, morphism2 )
+          local honest_category, pullback_diagram, projection_left, projection_right;
+          
+          honest_category := UnderlyingHonestCategory( cat );
           
           pullback_diagram := [ Arrow( morphism1 ), ReversedArrow( morphism2 ) ];
           
-          projection_left := ProjectionInFactorOfFiberProduct( pullback_diagram, 1 );
+          projection_left := ProjectionInFactorOfFiberProduct( honest_category, pullback_diagram, 1 );
           
-          projection_right := ProjectionInFactorOfFiberProduct( pullback_diagram, 2 );
+          projection_right := ProjectionInFactorOfFiberProduct( honest_category, pullback_diagram, 2 );
           
-          return GeneralizedMorphismBySpan( PreCompose( projection_left, ReversedArrow( morphism1 ) ), PreCompose( projection_right, Arrow( morphism2 ) ) );
+          return GeneralizedMorphismBySpan( PreCompose( honest_category, projection_left, ReversedArrow( morphism1 ) ),
+                                            PreCompose( projection_right, Arrow( morphism2 ) ) );
           
       end, [ ] ],
       
-      [ function( morphism1, morphism2 )
-          local arrow;
+      [ function( cat, morphism1, morphism2 )
+          local honest_category, arrow;
           
-          arrow := PreCompose( Arrow( morphism1 ), Arrow( morphism2 ) );
+          honest_category := UnderlyingHonestCategory( cat );
+          
+          arrow := PreCompose( honest_category, Arrow( morphism1 ), Arrow( morphism2 ) );
           
           return AsGeneralizedMorphismBySpan( arrow );
           
-      end, [ HasIdentityAsReversedArrow, HasIdentityAsReversedArrow ] ],
+      end, [ IsGeneralizedMorphismCategoryBySpans, HasIdentityAsReversedArrow, HasIdentityAsReversedArrow ] ],
       
-      [ function( morphism1, morphism2 )
-          local arrow;
+      [ function( cat, morphism1, morphism2 )
+          local honest_category, arrow;
           
-          arrow := PreCompose( Arrow( morphism1 ), Arrow( morphism2 ) );
+          honest_category := UnderlyingHonestCategory( cat );
+          
+          arrow := PreCompose( honest_category, Arrow( morphism1 ), Arrow( morphism2 ) );
           
           return GeneralizedMorphismBySpan( ReversedArrow( morphism1 ), arrow );
           
-      end, [ , HasIdentityAsReversedArrow ] ] ] );
+      end, [ IsGeneralizedMorphismCategoryBySpans, IsGeneralizedMorphismBySpan, HasIdentityAsReversedArrow ] ] ] );
     
     
     ## AdditionForMorphisms
     
     AddAdditionForMorphisms( category, [
                              
-      [ function( morphism1, morphism2 )
-          local pullback_diagram, pullback_left, pullback_right, arrow, reversed_arrow;
+      [ function( cat, morphism1, morphism2 )
+          local honest_category, pullback_diagram, pullback_left, pullback_right, arrow, reversed_arrow;
+          
+          honest_category := UnderlyingHonestCategory( cat );
           
           pullback_diagram := [ ReversedArrow( morphism1 ), ReversedArrow( morphism2 ) ];
           
-          pullback_left := ProjectionInFactorOfFiberProduct( pullback_diagram, 1 );
+          pullback_left := ProjectionInFactorOfFiberProduct( honest_category, pullback_diagram, 1 );
           
-          pullback_right := ProjectionInFactorOfFiberProduct( pullback_diagram, 2 );
+          pullback_right := ProjectionInFactorOfFiberProduct( honest_category, pullback_diagram, 2 );
           
-          arrow := AdditionForMorphisms( PreCompose( pullback_left, Arrow( morphism1 ) ), PreCompose( pullback_right, Arrow( morphism2 ) ) );
+          arrow := AdditionForMorphisms( honest_category,
+                                         PreCompose( honest_category, pullback_left, Arrow( morphism1 ) ),
+                                         PreCompose( honest_category, pullback_right, Arrow( morphism2 ) ) );
           
-          reversed_arrow := PreCompose( pullback_left, pullback_diagram[ 1 ] );
+          reversed_arrow := PreCompose( honest_category, pullback_left, pullback_diagram[ 1 ] );
           
           return GeneralizedMorphismBySpan( reversed_arrow, arrow );
           
       end, [ ] ],
       
-      [ function( morphism1, morphism2 )
+      [ function( cat, morphism1, morphism2 )
           
-          return AsGeneralizedMorphismBySpan( AdditionForMorphisms( Arrow( morphism1 ), Arrow( morphism2 ) ) );
+          return AsGeneralizedMorphismBySpan( AdditionForMorphisms( UnderlyingHonestCategory( cat ), Arrow( morphism1 ), Arrow( morphism2 ) ) );
           
-      end, [ HasIdentityAsReversedArrow, HasIdentityAsReversedArrow ] ] ] );
+      end, [ IsGeneralizedMorphismCategoryBySpans, HasIdentityAsReversedArrow, HasIdentityAsReversedArrow ] ] ] );
       
     AddAdditiveInverseForMorphisms( category, [
                                     
-      [ function( morphism )
+      [ function( cat, morphism )
            
-         return GeneralizedMorphismBySpan( ReversedArrow( morphism ), AdditiveInverseForMorphisms( Arrow( morphism ) ) );
+         return GeneralizedMorphismBySpan( ReversedArrow( morphism ),
+                                           AdditiveInverseForMorphisms( UnderlyingHonestCategory( cat ), Arrow( morphism ) ) );
          
       end, [ ] ],
       
-      [ function( morphism )
+      [ function( cat, morphism )
           
-          return AsGeneralizedMorphismBySpan( AdditiveInverseForMorphisms( Arrow( morphism ) ) );
+          return AsGeneralizedMorphismBySpan( AdditiveInverseForMorphisms( UnderlyingHonestCategory( cat ), Arrow( morphism ) ) );
           
-      end, [ HasIdentityAsReversedArrow ] ] ] );
+      end, [ IsGeneralizedMorphismCategoryBySpans, HasIdentityAsReversedArrow ] ] ] );
     
     AddZeroMorphism( category,
       
-      function( obj1, obj2 )
-        local morphism;
+      function( cat, obj1, obj2 )
+        local honest_category, morphism;
         
-        morphism := ZeroMorphism( UnderlyingHonestObject( obj1 ), UnderlyingHonestObject( obj2 ) );
+        honest_category := UnderlyingHonestCategory( cat );
+          
+        morphism := ZeroMorphism( honest_category, UnderlyingHonestObject( obj1 ), UnderlyingHonestObject( obj2 ) );
         
         return AsGeneralizedMorphismBySpan( morphism );
         
@@ -147,10 +159,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_SP
     
     AddIdentityMorphism( category,
     
-      function( generalized_object )
-        local identity_morphism;
+      function( cat, generalized_object )
+        local honest_category, identity_morphism;
         
-        identity_morphism := IdentityMorphism( UnderlyingHonestObject( generalized_object ) );
+        honest_category := UnderlyingHonestCategory( cat );
+          
+        identity_morphism := IdentityMorphism( honest_category, UnderlyingHonestObject( generalized_object ) );
         
         return AsGeneralizedMorphismBySpan( identity_morphism );
         
@@ -160,9 +174,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_SP
         
         AddIsWellDefinedForObjects( category,
           
-          function( object )
+          function( cat, object )
               
-              return IsWellDefined( UnderlyingHonestObject( object ) );
+              return IsWellDefinedForObjects( UnderlyingHonestCategory( cat ), UnderlyingHonestObject( object ) );
               
           end );
           
@@ -172,20 +186,20 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_SP
         
         AddIsWellDefinedForMorphisms( category,
                                       
-          function( generalized_morphism )
-            local category;
+          function( cat, generalized_morphism )
+            local honest_category;
             
-            category := CapCategory( Arrow( generalized_morphism ) );
-            
+            honest_category := UnderlyingHonestCategory( cat );
+          
             if not ForAll( [ Arrow( generalized_morphism ), ReversedArrow( generalized_morphism ) ],
-                        x -> IsIdenticalObj( CapCategory( x ), category ) ) then
+                        x -> IsIdenticalObj( CapCategory( x ), honest_category ) ) then
               
               return false;
               
             fi;
             
             if not ( ForAll( [ Arrow( generalized_morphism ), ReversedArrow( generalized_morphism ) ],
-                    IsWellDefined ) ) then
+                    IsWellDefinedForMorphisms ) ) then
               
               return false;
               
@@ -272,7 +286,7 @@ InstallMethod( GeneralizedMorphismCategoryBySpans,
                                              fail,
                                              fail );
     
-    generalized_morphism_category!.category_as_first_argument := false;
+    generalized_morphism_category!.category_as_first_argument := true;
     
     generalized_morphism_category!.predicate_logic := category!.predicate_logic;
     
