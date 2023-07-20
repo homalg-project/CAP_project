@@ -18,30 +18,26 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
     
     underlying_honest_category := UnderlyingHonestCategory( category );
     
-    ##
-    AddIsEqualForCacheForObjects( category, IsIdenticalObj );
-    
-    ##
-    AddIsEqualForCacheForMorphisms( category, IsIdenticalObj );
-    
     AddIsEqualForObjects( category,
       
-      function( object_1, object_2 )
+      function( cat, object_1, object_2 )
           
-          return IsEqualForObjects( UnderlyingHonestObject( object_1 ), UnderlyingHonestObject( object_2 ) );
+          return IsEqualForObjects( UnderlyingHonestCategory( cat ), UnderlyingHonestObject( object_1 ), UnderlyingHonestObject( object_2 ) );
           
     end );
     
     AddIsCongruentForMorphisms( category,
                                 
-      function( generalized_morphism1, generalized_morphism2 )
-        local subobject1, subobject2, factorobject1, factorobject2, isomorphism_of_subobjects, isomorphism_of_factorobjects;
+      function( cat, generalized_morphism1, generalized_morphism2 )
+        local honest_category, subobject1, subobject2, factorobject1, factorobject2, isomorphism_of_subobjects, isomorphism_of_factorobjects;
         
+        honest_category := UnderlyingHonestCategory( cat );
+
         subobject1 := DomainEmbedding( generalized_morphism1 );
         
         subobject2 := DomainEmbedding( generalized_morphism2 );
         
-        if not IsEqualAsSubobjects( subobject1, subobject2 ) then
+        if not IsEqualAsSubobjects( honest_category, subobject1, subobject2 ) then
           
           return false;
           
@@ -51,78 +47,94 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
         
         factorobject2 := CodomainProjection( generalized_morphism2 );
         
-        if not IsEqualAsFactorobjects( factorobject1, factorobject2 ) then
+        if not IsEqualAsFactorobjects( honest_category, factorobject1, factorobject2 ) then
         
           return false;
         
         fi;
         
-        isomorphism_of_subobjects := LiftAlongMonomorphism( subobject2, subobject1 );
+        isomorphism_of_subobjects := LiftAlongMonomorphism( honest_category, subobject2, subobject1 );
         
-        isomorphism_of_factorobjects := ColiftAlongEpimorphism( factorobject2, factorobject1 );
+        isomorphism_of_factorobjects := ColiftAlongEpimorphism( honest_category, factorobject2, factorobject1 );
         
-        return IsCongruentForMorphisms( AssociatedMorphism( generalized_morphism1 ), 
-                                  PreCompose( PreCompose( isomorphism_of_subobjects, AssociatedMorphism( generalized_morphism2 ) ), isomorphism_of_factorobjects ) 
-                                  );
+        return IsCongruentForMorphisms( honest_category,
+                                        AssociatedMorphism( generalized_morphism1 ),
+                                        PreCompose( honest_category,
+                                                    PreCompose( honest_category, isomorphism_of_subobjects, AssociatedMorphism( generalized_morphism2 ) ),
+                                                    isomorphism_of_factorobjects ) );
   
     end );
     
-    ## PreCompose
     
+    ## PreCompose
     
     AddPreCompose( category, [
       
-      [ function( mor1, mor2 )
+      [ function( cat, mor1, mor2 )
           
-          return GeneralizedMorphismByThreeArrows( SourceAid( mor1 ), PreCompose( Arrow( mor1 ), Arrow( mor2 ) ), RangeAid( mor2 ) );
+          return GeneralizedMorphismByThreeArrows( SourceAid( mor1 ),
+                                                   PreCompose( UnderlyingHonestCategory( cat ), Arrow( mor1 ), Arrow( mor2 ) ),
+                                                   RangeAid( mor2 ) );
           
-      end, [ HasIdentityAsRangeAid, HasIdentityAsSourceAid ] ],
+      end, [ IsGeneralizedMorphismCategoryByThreeArrows, HasIdentityAsRangeAid, HasIdentityAsSourceAid ] ],
       
       
-      [ function( mor1, mor2 )
-          local category, pullback_diagram, new_source_aid, new_morphism_aid;
+      [ function( cat, mor1, mor2 )
+          local honest_category, category, pullback_diagram, new_source_aid, new_morphism_aid;
+          
+          honest_category := UnderlyingHonestCategory( cat );
           
           pullback_diagram := [ Arrow( mor1 ), SourceAid( mor2 ) ];
           
-          new_source_aid := PreCompose( ProjectionInFactorOfFiberProduct( pullback_diagram, 1 ), SourceAid( mor1 ) );
+          new_source_aid := PreCompose( honest_category,
+                                        ProjectionInFactorOfFiberProduct( honest_category, pullback_diagram, 1 ),
+                                        SourceAid( mor1 ) );
           
-          new_morphism_aid := PreCompose( ProjectionInFactorOfFiberProduct( pullback_diagram, 2 ), Arrow( mor2 ) );
+          new_morphism_aid := PreCompose( honest_category,
+                                          ProjectionInFactorOfFiberProduct( honest_category, pullback_diagram, 2 ),
+                                          Arrow( mor2 ) );
           
           return GeneralizedMorphismByThreeArrowsWithSourceAid( new_source_aid, new_morphism_aid );
           
-      end, [ HasIdentityAsRangeAid, HasIdentityAsRangeAid ] ],
+      end, [ IsGeneralizedMorphismCategoryByThreeArrows, HasIdentityAsRangeAid, HasIdentityAsRangeAid ] ],
       
       
-      [ function( mor1, mor2 )
-          local category, diagram, injection_of_cofactor1, injection_of_cofactor2, new_morphism_aid, new_range_aid;
+      [ function( cat, mor1, mor2 )
+          local honest_category, category, diagram, injection_of_cofactor1, injection_of_cofactor2, new_morphism_aid, new_range_aid;
+          
+          honest_category := UnderlyingHonestCategory( cat );
           
           diagram := [ RangeAid( mor1 ), Arrow( mor2 ) ];
           
-          injection_of_cofactor1 :=
-            InjectionOfCofactorOfPushout( diagram, 1 );
+          injection_of_cofactor1 := InjectionOfCofactorOfPushout( honest_category, diagram, 1 );
           
-          injection_of_cofactor2 :=
-            InjectionOfCofactorOfPushout( diagram, 2 );
+          injection_of_cofactor2 := InjectionOfCofactorOfPushout( honest_category, diagram, 2 );
           
-          new_morphism_aid := PreCompose( Arrow( mor1 ), injection_of_cofactor1 );
+          new_morphism_aid := PreCompose( honest_category, Arrow( mor1 ), injection_of_cofactor1 );
           
-          new_range_aid := PreCompose( RangeAid( mor2 ), injection_of_cofactor2 );
+          new_range_aid := PreCompose( honest_category, RangeAid( mor2 ), injection_of_cofactor2 );
           
           return GeneralizedMorphismByThreeArrowsWithRangeAid( new_morphism_aid, new_range_aid );
           
-      end, [ HasIdentityAsSourceAid, HasIdentityAsSourceAid ] ],
+      end, [ IsGeneralizedMorphismCategoryByThreeArrows, HasIdentityAsSourceAid, HasIdentityAsSourceAid ] ],
       
       
-      [ function( mor1, mor2 )
-          local category;
+      [ function( cat, mor1, mor2 )
+          local honest_category, category;
           
-          return AsGeneralizedMorphismByThreeArrows( PreCompose( Arrow( mor1 ), Arrow( mor2 ) ) );
+          honest_category := UnderlyingHonestCategory( cat );
           
-      end, [ HasIdentityAsRangeAid and HasIdentityAsSourceAid, HasIdentityAsRangeAid and HasIdentityAsSourceAid ] ],
+          return AsGeneralizedMorphismByThreeArrows( PreCompose( honest_category, Arrow( mor1 ), Arrow( mor2 ) ) );
+          
+      end, [ IsGeneralizedMorphismCategoryByThreeArrows,
+             HasIdentityAsRangeAid and HasIdentityAsSourceAid,
+             HasIdentityAsRangeAid and HasIdentityAsSourceAid ] ],
       
       
-      [ function( mor1, mor2 )
-          local generalized_mor_factor_sub, pullback_diagram, pushout_diagram, new_associated, new_source_aid, new_range_aid;
+      [ function( cat, mor1, mor2 )
+          local honest_category, generalized_mor_factor_sub, pullback_diagram, pushout_diagram, new_associated, new_source_aid, new_range_aid;
+          
+          honest_category := UnderlyingHonestCategory( cat );
           
           generalized_mor_factor_sub := GeneralizedMorphismFromFactorToSubobjectByThreeArrows( RangeAid( mor1 ), SourceAid( mor2 ) );
           
@@ -130,11 +142,17 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
           
           pushout_diagram := [ RangeAid( generalized_mor_factor_sub ), Arrow( mor2 ) ];
           
-          new_source_aid := PreCompose( ProjectionInFactorOfFiberProduct( pullback_diagram, 1 ), SourceAid( mor1 ) );
+          new_source_aid := PreCompose( honest_category,
+                                        ProjectionInFactorOfFiberProduct( honest_category, pullback_diagram, 1 ),
+                                        SourceAid( mor1 ) );
           
-          new_associated := PreCompose( ProjectionInFactorOfFiberProduct( pullback_diagram, 2 ), InjectionOfCofactorOfPushout( pushout_diagram, 1 ) );
+          new_associated := PreCompose( honest_category,
+                                        ProjectionInFactorOfFiberProduct( honest_category, pullback_diagram, 2 ),
+                                        InjectionOfCofactorOfPushout( honest_category, pushout_diagram, 1 ) );
           
-          new_range_aid := PreCompose( RangeAid( mor2 ), InjectionOfCofactorOfPushout( pushout_diagram, 2 ) );
+          new_range_aid := PreCompose( honest_category,
+                                       RangeAid( mor2 ),
+                                       InjectionOfCofactorOfPushout( honest_category, pushout_diagram, 2 ) );
           
           return GeneralizedMorphismByThreeArrows( new_source_aid, new_associated, new_range_aid );
           
@@ -145,26 +163,38 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
     
     AddAdditionForMorphisms( category,
                              
-      function( mor1, mor2 )
-        local return_value, pullback_of_sourceaids_diagram, pushout_of_rangeaids_diagram, restricted_mor1, restricted_mor2;
+      function( cat, mor1, mor2 )
+        local honest_category, return_value, pullback_of_sourceaids_diagram, pushout_of_rangeaids_diagram, restricted_mor1, restricted_mor2;
         
+        honest_category := UnderlyingHonestCategory( cat );
+
         pullback_of_sourceaids_diagram := [ SourceAid( mor1 ), SourceAid( mor2 ) ];
         
         pushout_of_rangeaids_diagram := [ RangeAid( mor1 ), RangeAid( mor2 ) ];
         
-        restricted_mor1 := PreCompose( ProjectionInFactorOfFiberProduct( pullback_of_sourceaids_diagram, 1 ), Arrow( mor1 ) );
+        restricted_mor1 := PreCompose( honest_category,
+                                       ProjectionInFactorOfFiberProduct( honest_category, pullback_of_sourceaids_diagram, 1 ),
+                                       Arrow( mor1 ) );
         
-        restricted_mor1 := PreCompose( restricted_mor1, InjectionOfCofactorOfPushout( pushout_of_rangeaids_diagram, 1 ) );
+        restricted_mor1 := PreCompose( honest_category,
+                                       restricted_mor1,
+                                       InjectionOfCofactorOfPushout( honest_category, pushout_of_rangeaids_diagram, 1 ) );
         
-        restricted_mor2 := PreCompose( ProjectionInFactorOfFiberProduct( pullback_of_sourceaids_diagram, 2 ), Arrow( mor2 ) );
+        restricted_mor2 := PreCompose( honest_category,
+                                       ProjectionInFactorOfFiberProduct( honest_category, pullback_of_sourceaids_diagram, 2 ),
+                                       Arrow( mor2 ) );
         
-        restricted_mor2 := PreCompose( restricted_mor2, InjectionOfCofactorOfPushout( pushout_of_rangeaids_diagram, 2 ) );
+        restricted_mor2 := PreCompose( honest_category,
+                                       restricted_mor2,
+                                       InjectionOfCofactorOfPushout( honest_category, pushout_of_rangeaids_diagram, 2 ) );
         
-        return_value := GeneralizedMorphismByThreeArrows(
-                          PreCompose( ProjectionInFactorOfFiberProduct( pullback_of_sourceaids_diagram, 1 ), SourceAid( mor1 ) ),
-                          AdditionForMorphisms( restricted_mor1, restricted_mor2 ),
-                          PreCompose( RangeAid( mor1 ), InjectionOfCofactorOfPushout( pushout_of_rangeaids_diagram, 1 ) )
-                        );
+        return_value := GeneralizedMorphismByThreeArrows( PreCompose( honest_category,
+                                                                      ProjectionInFactorOfFiberProduct( honest_category, pullback_of_sourceaids_diagram, 1 ),
+                                                                      SourceAid( mor1 ) ),
+                                                          AdditionForMorphisms( honest_category, restricted_mor1, restricted_mor2 ),
+                                                          PreCompose( honest_category,
+                                                                      RangeAid( mor1 ),
+                                                                      InjectionOfCofactorOfPushout( honest_category, pushout_of_rangeaids_diagram, 1 ) ) );
         
         return return_value;
       
@@ -175,10 +205,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
     
     AddIdentityMorphism( category,
     
-      function( generalized_object )
-        local identity_morphism;
+      function( cat, generalized_object )
+        local honest_category, identity_morphism;
         
-        identity_morphism := IdentityMorphism( UnderlyingHonestObject( generalized_object ) );
+        honest_category := UnderlyingHonestCategory( cat );
+
+        identity_morphism := IdentityMorphism( honest_category, UnderlyingHonestObject( generalized_object ) );
         
         return AsGeneralizedMorphismByThreeArrows( identity_morphism );
         
@@ -188,9 +220,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
         
         AddIsWellDefinedForObjects( category,
           
-          function( object )
+          function( cat, object )
               
-              return IsWellDefined( UnderlyingHonestObject( object ) );
+              return IsWellDefinedForObjects( UnderlyingHonestCategory( cat ), UnderlyingHonestObject( object ) );
               
           end );
           
@@ -200,20 +232,20 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
         
         AddIsWellDefinedForMorphisms( category,
                                       
-          function( generalized_morphism )
-            local category;
+          function( cat, generalized_morphism )
+            local honest_category;
             
-            category := CapCategory( SourceAid( generalized_morphism ) );
+            honest_category := UnderlyingHonestCategory( cat );
             
             if not ForAll( [ Arrow( generalized_morphism ), RangeAid( generalized_morphism ) ],
-                        x -> IsIdenticalObj( CapCategory( x ), category ) ) then
+                        x -> IsIdenticalObj( CapCategory( x ), honest_category ) ) then
               
               return false;
               
             fi;
             
             if not ( ForAll( [ SourceAid( generalized_morphism ), Arrow( generalized_morphism ), RangeAid( generalized_morphism ) ],
-                    IsWellDefined ) ) then
+                    IsWellDefinedForMorphisms ) ) then
               
               return false;
               
@@ -294,7 +326,7 @@ InstallMethod( GeneralizedMorphismCategoryByThreeArrows,
                                              fail,
                                              fail );
     
-    generalized_morphism_category!.category_as_first_argument := false;
+    generalized_morphism_category!.category_as_first_argument := true;
     
     generalized_morphism_category!.predicate_logic := category!.predicate_logic;
     
