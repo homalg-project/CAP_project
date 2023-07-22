@@ -21,21 +21,27 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
     
     AddIsCongruentForMorphisms( category,
       
-      function( morphism1, morphism2 )
-        local underlying_general, new_morphism_aid, new_general, sum_general,
+      function( cat, morphism1, morphism2 )
+        local underlying_generalized_category, underlying_general, new_morphism_aid, new_general, sum_general,
               sum_associated, sum_image;
+        
+        underlying_generalized_category := UnderlyingGeneralizedMorphismCategory( cat );
         
         underlying_general := UnderlyingGeneralizedMorphism( morphism2 );
         
         new_morphism_aid := AdditiveInverse( Arrow( underlying_general ) );
         
-        new_general := GeneralizedMorphismByThreeArrows( SourceAid( underlying_general ), new_morphism_aid, RangeAid( underlying_general ) );
+        new_general := GeneralizedMorphismByThreeArrows( SourceAid( underlying_general ),
+                                                         new_morphism_aid,
+                                                         RangeAid( underlying_general ) );
         
-        sum_general := AdditionForMorphisms( UnderlyingGeneralizedMorphism( morphism1 ), new_general );
+        sum_general := AdditionForMorphisms( underlying_generalized_category,
+                                             UnderlyingGeneralizedMorphism( morphism1 ),
+                                             new_general );
         
         sum_associated := AssociatedMorphism( sum_general );
         
-        sum_image := ImageObject( sum_associated );
+        sum_image := ImageObject( underlying_generalized_category, sum_associated );
         
         return membership_function( sum_image );
         
@@ -43,9 +49,9 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
     
     AddIsEqualForObjects( category,
       
-      function( obj1, obj2 )
+      function( cat, obj1, obj2 )
         
-        return IsEqualForObjects( UnderlyingHonestObject( obj1 ), UnderlyingHonestObject( obj2 ) );
+        return IsEqualForObjects( UnderlyingHonestCategory( cat ), UnderlyingHonestObject( obj1 ), UnderlyingHonestObject( obj2 ) );
         
     end );
     
@@ -53,7 +59,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
     
     AddIsZeroForObjects( category,
       
-      function( obj )
+      function( cat, obj )
         
         return membership_function( UnderlyingHonestObject( obj ) );
         
@@ -63,13 +69,16 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
     
     AddPreCompose( category,
       
-      function( morphism1, morphism2 )
-        local composition;
+      function( cat, morphism1, morphism2 )
+        local underlying_generalized_category, composition;
         
-        composition := PreCompose( UnderlyingGeneralizedMorphism( morphism1 ),
+        underlying_generalized_category := UnderlyingGeneralizedMorphismCategory( cat );
+        
+        composition := PreCompose( underlying_generalized_category,
+                                   UnderlyingGeneralizedMorphism( morphism1 ),
                                    UnderlyingGeneralizedMorphism( morphism2 ) );
         
-        return SerreQuotientCategoryByThreeArrowsMorphism( category, composition );
+        return SerreQuotientCategoryByThreeArrowsMorphism( cat, composition );
         
     end );
     
@@ -77,9 +86,10 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
     
     AddIdentityMorphism( category,
       
-      function( object )
+      function( cat, object )
         
-        return AsSerreQuotientCategoryByThreeArrowsMorphism( category, IdentityMorphism( UnderlyingHonestObject( object ) ) );
+        return AsSerreQuotientCategoryByThreeArrowsMorphism( cat, IdentityMorphism( UnderlyingHonestCategory( cat ),
+                                                                                    UnderlyingHonestObject( object ) ) );
         
     end );
     
@@ -87,13 +97,16 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
     
     AddAdditionForMorphisms( category,
       
-      function( morphism1, morphism2 )
-        local sum;
+      function( cat, morphism1, morphism2 )
+        local underlying_generalized_category, sum;
         
-        sum := AdditionForMorphisms( UnderlyingGeneralizedMorphism( morphism1 ),
+        underlying_generalized_category := UnderlyingGeneralizedMorphismCategory( cat );
+        
+        sum := AdditionForMorphisms( underlying_generalized_category,
+                                     UnderlyingGeneralizedMorphism( morphism1 ),
                                      UnderlyingGeneralizedMorphism( morphism2 ) );
         
-        return SerreQuotientCategoryByThreeArrowsMorphism( category, sum );
+        return SerreQuotientCategoryByThreeArrowsMorphism( cat, sum );
         
     end );
     
@@ -101,12 +114,14 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
     
     AddIsZeroForMorphisms( category,
       
-      function( morphism )
-        local associated, image;
+      function( cat, morphism )
+        local honest_category, associated, image;
+        
+        honest_category := UnderlyingHonestCategory( cat );
         
         associated := AssociatedMorphism( UnderlyingGeneralizedMorphism( morphism ) );
         
-        image := ImageObject( associated );
+        image := ImageObject( honest_category, associated );
         
         return membership_function( image );
         
@@ -116,16 +131,20 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
     
     AddAdditiveInverseForMorphisms( category,
       
-      function( morphism )
-        local underlying_general, new_morphism_aid, new_general;
+      function( cat, morphism )
+        local honest_category, underlying_general, new_morphism_aid, new_general;
+        
+        honest_category := UnderlyingHonestCategory( cat );
         
         underlying_general := UnderlyingGeneralizedMorphism( morphism );
         
-        new_morphism_aid := AdditiveInverse( Arrow( underlying_general ) );
+        new_morphism_aid := AdditiveInverse( honest_category, Arrow( underlying_general ) );
         
-        new_general := GeneralizedMorphismByThreeArrows( SourceAid( underlying_general ), new_morphism_aid, RangeAid( underlying_general ) );
+        new_general := GeneralizedMorphismByThreeArrows( SourceAid( underlying_general ),
+                                                         new_morphism_aid,
+                                                         RangeAid( underlying_general ) );
         
-        return SerreQuotientCategoryByThreeArrowsMorphism( category, new_general );
+        return SerreQuotientCategoryByThreeArrowsMorphism( cat, new_general );
         
     end );
     
@@ -133,20 +152,22 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
     
     AddZeroMorphism( category,
       
-      function( source, range )
-        local source_aid, range_aid, morphism_aid;
+      function( cat, source, range )
+        local honest_category, source_aid, range_aid, morphism_aid;
+        
+        honest_category := UnderlyingHonestCategory( cat );
         
         source := UnderlyingHonestObject( source );
         
         range := UnderlyingHonestObject( range );
         
-        source_aid := IdentityMorphism( source );
+        source_aid := IdentityMorphism( honest_category, source );
         
-        range_aid := IdentityMorphism( range );
+        range_aid := IdentityMorphism( honest_category, range );
         
-        morphism_aid := ZeroMorphism( source, range );
+        morphism_aid := ZeroMorphism( honest_category, source, range );
         
-        return SerreQuotientCategoryByThreeArrowsMorphism( category, source_aid, morphism_aid, range_aid );
+        return SerreQuotientCategoryByThreeArrowsMorphism( cat, source_aid, morphism_aid, range_aid );
         
     end );
     
@@ -154,12 +175,12 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
     
     AddZeroObject( category,
       
-      function( )
+      function( cat )
         local generalized_zero;
         
         generalized_zero := ZeroObject( UnderlyingHonestCategory( category ) );
         
-        return AsSerreQuotientCategoryByThreeArrowsObject( category, generalized_zero );
+        return AsSerreQuotientCategoryByThreeArrowsObject( cat, generalized_zero );
         
     end );
     
@@ -167,51 +188,65 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
     
     AddDirectSum( category,
       
-      function( obj_list )
-        local honest_list, honest_sum;
+      function( cat, obj_list )
+        local honest_category, honest_list, honest_sum;
+        
+        honest_category := UnderlyingHonestCategory( cat );
         
         honest_list := List( obj_list, UnderlyingHonestObject );
         
-        honest_sum := CallFuncList( DirectSum, honest_list );
+        honest_sum := DirectSum( honest_category, honest_list );
         
-        return AsSerreQuotientCategoryByThreeArrowsObject( category, honest_sum );
+        return AsSerreQuotientCategoryByThreeArrowsObject( cat, honest_sum );
         
     end );
     
     AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
       
-      function( product_object, component_number, direct_sum_object )
-        local underlying_objects, underlying_direct_sum, honest_projection;
+      function( cat, product_object, component_number, direct_sum_object )
+        local honest_category, underlying_objects, underlying_direct_sum, honest_projection;
+        
+        honest_category := UnderlyingHonestCategory( cat );
         
         underlying_objects := List( product_object, UnderlyingHonestObject );
         
         underlying_direct_sum := UnderlyingHonestObject( direct_sum_object );
         
-        honest_projection := ProjectionInFactorOfDirectSumWithGivenDirectSum( underlying_objects, component_number, underlying_direct_sum );
+        honest_projection := ProjectionInFactorOfDirectSumWithGivenDirectSum( honest_category,
+                                                                              underlying_objects,
+                                                                              component_number,
+                                                                              underlying_direct_sum );
         
-        return AsSerreQuotientCategoryByThreeArrowsMorphism( category, honest_projection );
+        return AsSerreQuotientCategoryByThreeArrowsMorphism( cat, honest_projection );
         
     end );
     
     AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
       
-      function( object_product_list, injection_number, direct_sum_object )
-        local underlying_objects, underlying_direct_sum, honest_injection;
+      function( cat, object_product_list, injection_number, direct_sum_object )
+        local honest_category, underlying_objects, underlying_direct_sum, honest_injection;
+        
+        honest_category := UnderlyingHonestCategory( cat );
         
         underlying_objects := List( object_product_list, UnderlyingHonestObject );
         
         underlying_direct_sum := UnderlyingHonestObject( direct_sum_object );
         
-        honest_injection := InjectionOfCofactorOfDirectSumWithGivenDirectSum( underlying_objects, injection_number, underlying_direct_sum );
+        honest_injection := InjectionOfCofactorOfDirectSumWithGivenDirectSum( honest_category,
+                                                                              underlying_objects,
+                                                                              injection_number,
+                                                                              underlying_direct_sum );
         
-        return AsSerreQuotientCategoryByThreeArrowsMorphism( category, honest_injection );
+        return AsSerreQuotientCategoryByThreeArrowsMorphism( cat, honest_injection );
         
     end );
     
     AddUniversalMorphismIntoDirectSum( category,
       
-      function( diagram, test_object, morphism_list )
-        local generalized_morphisms, source_aid, associated, range_aid, associated_list;
+      function( cat, diagram, test_object, morphism_list )
+        local honest_category, generalized_morphisms, source_aid, associated, range_aid, associated_list;
+        
+        honest_category := UnderlyingHonestCategory( cat );
         
         generalized_morphisms := List( morphism_list, UnderlyingGeneralizedMorphism );
         
@@ -223,18 +258,20 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
         
         associated_list := List( generalized_morphisms, i -> i[ 2 ] );
         
-        associated := UniversalMorphismIntoDirectSum( associated_list );
+        associated := UniversalMorphismIntoDirectSum( honest_category, associated_list );
         
-        range_aid := DirectSumFunctorial( List( generalized_morphisms, i -> i[ 3 ] ) );
+        range_aid := DirectSumFunctorial( honest_category, List( generalized_morphisms, i -> i[ 3 ] ) );
         
-        return SerreQuotientCategoryByThreeArrowsMorphism( category, source_aid, associated, range_aid );
+        return SerreQuotientCategoryByThreeArrowsMorphism( cat, source_aid, associated, range_aid );
         
     end );
     
     AddUniversalMorphismFromDirectSum( category,
       
-      function( diagram, test_object, morphism_list )
-        local generalized_morphisms, source_aid, associated, range_aid;
+      function( cat, diagram, test_object, morphism_list )
+        local honest_category, generalized_morphisms, source_aid, associated, range_aid;
+        
+        honest_category := UnderlyingHonestCategory( cat );
         
         generalized_morphisms := List( morphism_list, UnderlyingGeneralizedMorphism );
         
@@ -244,11 +281,11 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
         
         range_aid := generalized_morphisms[ 1 ][ 3 ];
         
-        associated := UniversalMorphismFromDirectSum( List( generalized_morphisms, i -> i[ 2 ] ) );
+        associated := UniversalMorphismFromDirectSum( honest_category, List( generalized_morphisms, i -> i[ 2 ] ) );
         
-        source_aid := DirectSumFunctorial( List( generalized_morphisms, i -> i[ 1 ] ) );
+        source_aid := DirectSumFunctorial( honest_category, List( generalized_morphisms, i -> i[ 1 ] ) );
         
-        return SerreQuotientCategoryByThreeArrowsMorphism( category, source_aid, associated, range_aid );
+        return SerreQuotientCategoryByThreeArrowsMorphism( cat, source_aid, associated, range_aid );
         
     end );
     
@@ -256,29 +293,33 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
     
     AddKernelEmbedding( category,
       
-      function( morphism )
-        local underlying_general, kernel_mor;
+      function( cat, morphism )
+        local honest_category, underlying_general, kernel_mor;
+        
+        honest_category := UnderlyingHonestCategory( cat );
         
         underlying_general := UnderlyingGeneralizedMorphism( morphism );
         
-        kernel_mor := KernelEmbedding( AssociatedMorphism( underlying_general ) );
+        kernel_mor := KernelEmbedding( honest_category, AssociatedMorphism( underlying_general ) );
         
-        kernel_mor := PreCompose( kernel_mor, DomainEmbedding( underlying_general ) );
+        kernel_mor := PreCompose( honest_category, kernel_mor, DomainEmbedding( underlying_general ) );
         
-        return AsSerreQuotientCategoryByThreeArrowsMorphism( category, kernel_mor );
+        return AsSerreQuotientCategoryByThreeArrowsMorphism( cat, kernel_mor );
         
     end );
     
     AddLiftAlongMonomorphism( category,
       
-      function( monomorphism, test_morphism )
-        local inverse_of_mono, composition;
+      function( cat, monomorphism, test_morphism )
+        local underlying_generalized_category, inverse_of_mono, composition;
+        
+        underlying_generalized_category := UnderlyingGeneralizedMorphismCategory( cat );
         
         inverse_of_mono := PseudoInverse( UnderlyingGeneralizedMorphism( monomorphism ) );
         
-        composition := PreCompose( UnderlyingGeneralizedMorphism( test_morphism ), inverse_of_mono );
+        composition := PreCompose( underlying_generalized_category, UnderlyingGeneralizedMorphism( test_morphism ), inverse_of_mono );
         
-        return SerreQuotientCategoryByThreeArrowsMorphism( category, composition );
+        return SerreQuotientCategoryByThreeArrowsMorphism( cat, composition );
         
     end );
     
@@ -286,29 +327,33 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
     
     AddCokernelProjection( category,
       
-      function( morphism )
-        local underlying_general, cokernel_mor;
+      function( cat, morphism )
+        local honest_category, underlying_general, cokernel_mor;
+        
+        honest_category := UnderlyingHonestCategory( cat );
         
         underlying_general := UnderlyingGeneralizedMorphism( morphism );
         
-        cokernel_mor := CokernelProjection( AssociatedMorphism( underlying_general ) );
+        cokernel_mor := CokernelProjection( honest_category, AssociatedMorphism( underlying_general ) );
         
-        cokernel_mor := PreCompose( CodomainProjection( underlying_general ), cokernel_mor );
+        cokernel_mor := PreCompose( honest_category, CodomainProjection( underlying_general ), cokernel_mor );
         
-        return AsSerreQuotientCategoryByThreeArrowsMorphism( category, cokernel_mor );
+        return AsSerreQuotientCategoryByThreeArrowsMorphism( cat, cokernel_mor );
         
     end );
     
     AddColiftAlongEpimorphism( category,
       
-      function( epimorphism, test_morphism )
-        local inverse_of_epi, composition;
+      function( cat, epimorphism, test_morphism )
+        local underlying_generalized_category, inverse_of_epi, composition;
+        
+        underlying_generalized_category := UnderlyingGeneralizedMorphismCategory( cat );
         
         inverse_of_epi := PseudoInverse( UnderlyingGeneralizedMorphism( epimorphism ) );
         
-        composition := PreCompose( inverse_of_epi, UnderlyingGeneralizedMorphism( test_morphism ) );
+        composition := PreCompose( underlying_generalized_category, inverse_of_epi, UnderlyingGeneralizedMorphism( test_morphism ) );
         
-        return SerreQuotientCategoryByThreeArrowsMorphism( category, composition );
+        return SerreQuotientCategoryByThreeArrowsMorphism( cat, composition );
         
     end );
     
@@ -386,7 +431,7 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryByThreeArrows,
                               fail,
                               fail );
     
-    serre_category!.category_as_first_argument := false;
+    serre_category!.category_as_first_argument := true;
     
     serre_category!.predicate_logic := category!.predicate_logic;
     
