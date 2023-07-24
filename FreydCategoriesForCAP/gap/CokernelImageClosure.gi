@@ -58,7 +58,7 @@ InstallMethod( CokernelImageClosure,
                                       fail,
                                       fail );
     
-    cokernel_image_closure!.category_as_first_argument := false;
+    cokernel_image_closure!.category_as_first_argument := true;
     
     SetIsAdditiveCategory( cokernel_image_closure, true );
     
@@ -242,18 +242,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
 
     underlying_category := UnderlyingCategory( category );
     
-    ##
-    AddIsEqualForCacheForObjects( category,
-      IsIdenticalObj );
-    
-    ##
-    AddIsEqualForCacheForMorphisms( category,
-      IsIdenticalObj );
-
     ## Well-defined for objects and morphisms
     ##
     AddIsWellDefinedForObjects( category,
-      function( object )
+      function( cat, object )
         local relation_morphism, generator_morphism;
 
         relation_morphism := RelationMorphism( object );
@@ -280,7 +272,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
     
     ##
     AddIsWellDefinedForMorphisms( category,
-      function( morphism )
+      function( cat, morphism )
         local alpha;
         
         alpha := PreCompose( [ 
@@ -303,7 +295,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
     ## Equality Basic Operations for Objects and Morphisms
     ##
     AddIsEqualForObjects( category,
-      function( object_1, object_2 )
+      function( cat, object_1, object_2 )
 
         return IsEqualForMorphismsOnMor( RelationMorphism( object_1 ), RelationMorphism( object_2 ) ) 
                and 
@@ -313,7 +305,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
     
     ##
     AddIsEqualForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         
         return IsEqualForMorphisms( MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) );
         
@@ -321,14 +313,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
     
     ##
     AddIsCongruentForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         
         return MereExistenceOfWitnessForBeingCongruentToZero( SubtractionForMorphisms( morphism_1, morphism_2 ) );
         
     end );
 
     AddIdentityMorphism( category,
-      function( object )
+      function( cat, object )
 
         return CokernelImageClosureMorphism(
             object,
@@ -341,7 +333,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
     ##
     AddPreCompose( category,
       
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         local composition;
         
         composition := PreCompose( MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) );
@@ -354,7 +346,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
 
     ##
     AddAdditionForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         local addition;
         
         addition := CokernelImageClosureMorphism(
@@ -369,7 +361,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
 
     ##
     AddSubtractionForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         local substraction;
         
         substraction := CokernelImageClosureMorphism(
@@ -384,7 +376,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
     
     ##
     AddAdditiveInverseForMorphisms( category,
-      function( morphism )
+      function( cat, morphism )
         local additive_inverse;
         
         additive_inverse := CokernelImageClosureMorphism(
@@ -399,7 +391,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
     
     ##
     AddZeroMorphism( category,
-      function( source, range )
+      function( cat, source, range )
         local zero_morphism;
         
         zero_morphism := CokernelImageClosureMorphism(
@@ -414,7 +406,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
     
     ##
     AddZeroObject( category,
-      function( )
+      function( cat )
         
         return AsCokernelImageClosureObject( ZeroObject( underlying_category ) );
         
@@ -422,7 +414,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
     
     ##
     AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( category,
-      function( sink, zero_object )
+      function( cat, sink, zero_object )
         local universal_morphism;
         
         universal_morphism := CokernelImageClosureMorphism(
@@ -437,7 +429,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
     
     ##
     AddUniversalMorphismFromZeroObjectWithGivenZeroObject( category,
-      function( source, zero_object )
+      function( cat, source, zero_object )
         local universal_morphism;
         
         universal_morphism := CokernelImageClosureMorphism(
@@ -452,7 +444,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
 
     ##
     AddDirectSum( category,
-      function( object_list )
+      function( cat, object_list )
         
         return CokernelImageClosureObject( 
                 DirectSumFunctorial( List( object_list, GeneratorMorphism ) ),
@@ -463,7 +455,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
     
     ##
     AddDirectSumFunctorialWithGivenDirectSums( category,
-      function( direct_sum_source, source_diagram, diagram, range_diagram, direct_sum_range )
+      function( cat, direct_sum_source, source_diagram, diagram, range_diagram, direct_sum_range )
         
         return CokernelImageClosureMorphism(
                     direct_sum_source,
@@ -475,7 +467,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
     
     ##
     AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
-      function( object_list, projection_number, direct_sum_object )
+      function( cat, object_list, projection_number, direct_sum_object )
         
         return CokernelImageClosureMorphism( 
                 direct_sum_object,
@@ -487,7 +479,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
     
     ##
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
-      function( diagram, test_object, source, direct_sum_object )
+      function( cat, diagram, test_object, source, direct_sum_object )
         
         return CokernelImageClosureMorphism(
                 Source( source[1] ),
@@ -502,7 +494,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
     
     ##
     AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
-      function( object_list, injection_number, direct_sum_object )
+      function( cat, object_list, injection_number, direct_sum_object )
         
         return CokernelImageClosureMorphism(
                 object_list[injection_number],
@@ -514,7 +506,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
     
     ##
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
-      function( diagram, test_object, sink, direct_sum_object )
+      function( cat, diagram, test_object, sink, direct_sum_object )
         
         return CokernelImageClosureMorphism(
                 direct_sum_object,
@@ -528,7 +520,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
     ##
     AddCokernelProjection( category,
                      
-      function( morphism )
+      function( cat, morphism )
         local range, relation_morphism, generator_morphism, cokernel_object, cokernel_projection;
         
         range := Range( morphism );
@@ -560,7 +552,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
     ##
     AddCokernelColiftWithGivenCokernelObject( category,
       
-      function( morphism, test_object, test_morphism, cokernel_object )
+      function( cat, morphism, test_object, test_morphism, cokernel_object )
         
         return 
             CokernelImageClosureMorphism( 
@@ -574,7 +566,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
     ##
     AddImageObject( category,
       
-      function( morphism )
+      function( cat, morphism )
         local range;
 
         range := Range( morphism );
@@ -589,7 +581,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
     ##
     AddImageEmbeddingWithGivenImageObject( category,
       
-      function( morphism, image )
+      function( cat, morphism, image )
         
         return
             CokernelImageClosureMorphism(
@@ -602,7 +594,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
     ##
     AddCoastrictionToImageWithGivenImageObject( category,
       
-      function( morphism, image )
+      function( cat, morphism, image )
         local source;
 
         source := Source( morphism );
@@ -619,7 +611,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
     ##
     AddUniversalMorphismFromImageWithGivenImageObject( category,
       
-      function( morphism, test_factorization, image )
+      function( cat, morphism, test_factorization, image )
         local tau;
 
         tau := test_factorization[1];
@@ -638,7 +630,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
         ##
         AddKernelEmbedding( category,
           
-          function( morphism )
+          function( cat, morphism )
             local range, projection, source, kernel;
 
             range := Range( morphism );
@@ -667,7 +659,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
         ##
         AddKernelLiftWithGivenKernelObject( category,
           
-          function( morphism, test_object, test_morphism, kernel )
+          function( cat, morphism, test_object, test_morphism, kernel )
             local range, u;
 
             range := Range( morphism );
@@ -689,7 +681,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
         ##
         AddEpimorphismFromSomeProjectiveObject( category,
           
-          function( object ) 
+          function( cat, object ) 
             local proj_object;
 
             proj_object := Source( GeneratorMorphism( object ) );
@@ -705,7 +697,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
         ##
         AddLiftAlongMonomorphism( category,
           
-          function( alpha, tau )
+          function( cat, alpha, tau )
             local A,B, gamma_B, rho_B, lift, Au, RBu;
 
             A := Source( alpha );
