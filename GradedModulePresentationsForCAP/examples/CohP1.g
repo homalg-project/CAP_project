@@ -18,7 +18,7 @@ Display( Sgrmod );
 #! A CAP category with name
 #! The category of graded left f.p. modules over Q[x,y] (with weights [ 1, 1 ]):
 #! 
-#! 40 primitive operations were used to derive 227 operations for this category
+#! 38 primitive operations were used to derive 225 operations for this category
 #! which algorithmically
 #! * IsMonoidalCategory
 #! * IsAbelianCategoryWithEnoughProjectives

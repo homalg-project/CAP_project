@@ -13,7 +13,7 @@ InstallMethod( GradedLeftPresentations,
     
     category := CreateCapCategory( Concatenation( "The category of graded left f.p. modules over ", RingName( ring ) ) );
     
-    category!.category_as_first_argument := false;
+    category!.category_as_first_argument := true;
     
     category!.ring_for_representation_category := ring;
     
@@ -70,7 +70,7 @@ InstallMethod( GradedRightPresentations,
     
     category := CreateCapCategory( Concatenation( "The category of graded right f.p. modules over ", RingName( ring ) ) );
     
-    category!.category_as_first_argument := false;
+    category!.category_as_first_argument := true;
     
     category!.ring_for_representation_category := ring;
     
@@ -320,7 +320,7 @@ InstallGlobalFunction( ADD_GRADED_IS_WELL_DEFINED_FOR_OBJECTS_LEFT,
     
     AddIsWellDefinedForObjects( category,
       
-      function( object )
+      function( cat, object )
         local relation_degrees, generator_degrees, relation_entries;
         
         if not IsHomalgMatrix( UnderlyingMatrix( object ) ) or not IsHomalgRing( UnderlyingHomalgRing( object ) ) then
@@ -344,7 +344,7 @@ InstallGlobalFunction( ADD_GRADED_IS_WELL_DEFINED_FOR_OBJECTS_RIGHT,
     
     AddIsWellDefinedForObjects( category,
       
-      function( object )
+      function( cat, object )
         local relation_degrees, generator_degrees, relation_entries;
         
         if not IsWellDefined( UnderlyingPresentationObject( object ) ) then
@@ -368,7 +368,7 @@ InstallGlobalFunction( ADD_GRADED_IS_WELL_DEFINED_FOR_MORPHISM_LEFT,
     
     AddIsWellDefinedForMorphisms( category,
       
-      function( morphism )
+      function( cat, morphism )
         local matrix, matrix_entries, matrix_entries_degrees, required_degrees;
         
         if not IsWellDefined( UnderlyingPresentationMorphism( morphism ) ) then
@@ -394,27 +394,31 @@ end );
 ##
 InstallGlobalFunction( ADD_GRADED_IS_WELL_DEFINED_FOR_MORPHISM_RIGHT,
 
-function( category )
-    AddIsWellDefinedForMorphisms( category,
-      function( morphism )
-        local matrix, matrix_entries, matrix_entries_degrees, required_degrees;
+  function( category )
+      
+      AddIsWellDefinedForMorphisms( category,
         
-        if not IsWellDefined( UnderlyingPresentationMorphism( morphism ) ) then
-            return false;
-        fi;
+        function( cat, morphism )
+          local matrix, matrix_entries, matrix_entries_degrees, required_degrees;
+          
+          if not IsWellDefined( UnderlyingPresentationMorphism( morphism ) ) then
+              return false;
+          fi;
+          
+          matrix := UnderlyingMatrix( UnderlyingPresentationMorphism( morphism ) );
+          
+          matrix_entries := Flat( EntriesOfHomalgMatrixAsListList( matrix ) );
+          
+          matrix_entries_degrees := Flat( DegreesOfEntries( matrix ) );
+          
+          required_degrees := Flat( List( GeneratorDegrees( Range( morphism ) ), i -> 
+                                      List( GeneratorDegrees( Source( morphism ) ), j -> j - i ) ) );
+                                      
+          return ForAll( [ 1 .. Length( matrix_entries ) ], 
+                      i -> IsZero( matrix_entries[ i ] ) or ( matrix_entries_degrees[ i ] = required_degrees[ i ] ) );
         
-        matrix := UnderlyingMatrix( UnderlyingPresentationMorphism( morphism ) );
-        
-        matrix_entries := Flat( EntriesOfHomalgMatrixAsListList( matrix ) );
-        
-        matrix_entries_degrees := Flat( DegreesOfEntries( matrix ) );
-        
-        required_degrees := Flat( List( GeneratorDegrees( Range( morphism ) ), i -> 
-                                    List( GeneratorDegrees( Source( morphism ) ), j -> j - i ) ) );
-                                    
-        return ForAll( [ 1 .. Length( matrix_entries ) ], 
-                    i -> IsZero( matrix_entries[ i ] ) or ( matrix_entries_degrees[ i ] = required_degrees[ i ] ) );
     end );
+    
 end );
 
 ##
@@ -424,15 +428,11 @@ InstallGlobalFunction( ADD_GRADED_IS_IDENTICAL_FOR_MORPHISMS,
     
     AddIsEqualForMorphisms( category,
     
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         
         return UnderlyingMatrix( morphism_1 ) = UnderlyingMatrix( morphism_2 );
         
     end );
-    
-    AddIsEqualForCacheForObjects( category, IsIdenticalObj );
-    
-    AddIsEqualForCacheForMorphisms( category, IsIdenticalObj );
     
 end );
 
@@ -443,7 +443,7 @@ InstallGlobalFunction( ADD_GRADED_EQUAL_FOR_OBJECTS,
     
     AddIsEqualForObjects( category,
                    
-      function( object1, object2 )
+      function( cat, object1, object2 )
         
         if UnderlyingMatrix( object1 ) = UnderlyingMatrix( object2 ) then
             return GeneratorDegrees( object1 ) = GeneratorDegrees( object2 );
@@ -460,7 +460,7 @@ InstallGlobalFunction( ADD_GRADED_KERNEL_LEFT,
     
     AddKernelEmbedding( category,
       
-      function( morphism )
+      function( cat, morphism )
         local underlying_embedding, kernel_object, range_degrees, new_degrees;
         
         underlying_embedding := KernelEmbedding( UnderlyingPresentationMorphism( morphism ) );
@@ -477,7 +477,7 @@ InstallGlobalFunction( ADD_GRADED_KERNEL_LEFT,
     
     AddKernelEmbeddingWithGivenKernelObject( category,
       
-      function( morphism, kernel )
+      function( cat, morphism, kernel )
         local underlying_embedding;
         
         underlying_embedding := KernelEmbedding( UnderlyingPresentationMorphism( morphism ) );
@@ -488,7 +488,7 @@ InstallGlobalFunction( ADD_GRADED_KERNEL_LEFT,
     
     AddKernelLift( category,
     
-      function( morphism, test_object, tau )
+      function( cat, morphism, test_object, tau )
       local underlying_lift;
         
       underlying_lift := KernelLift( UnderlyingPresentationMorphism( morphism ), UnderlyingPresentationMorphism( tau ) );
@@ -507,7 +507,7 @@ InstallGlobalFunction( ADD_GRADED_KERNEL_RIGHT,
     
     AddKernelEmbedding( category,
       
-      function( morphism )
+      function( cat, morphism )
         local underlying_embedding, kernel_object, new_degrees, range_degrees;
         
         underlying_embedding := KernelEmbedding( UnderlyingPresentationMorphism( morphism ) );
@@ -524,7 +524,7 @@ InstallGlobalFunction( ADD_GRADED_KERNEL_RIGHT,
     
     AddKernelEmbeddingWithGivenKernelObject( category,
       
-      function( morphism, kernel )
+      function( cat, morphism, kernel )
         local underlying_embedding;
         
         underlying_embedding := KernelEmbedding( UnderlyingPresentationMorphism( morphism ) );
@@ -535,12 +535,12 @@ InstallGlobalFunction( ADD_GRADED_KERNEL_RIGHT,
     
     AddKernelLift( category,
     
-    function( morphism, test_object, tau )
+      function( cat, morphism, test_object, tau )
         local underlying_lift;
-        
-      underlying_lift := KernelLift( UnderlyingPresentationMorphism( morphism ), UnderlyingPresentationMorphism( tau ) );
-        
-      return GradedPresentationMorphism( Source( tau ), underlying_lift, KernelObject( morphism ) );
+          
+        underlying_lift := KernelLift( UnderlyingPresentationMorphism( morphism ), UnderlyingPresentationMorphism( tau ) );
+          
+        return GradedPresentationMorphism( Source( tau ), underlying_lift, KernelObject( morphism ) );
         
     end );
     
@@ -553,7 +553,7 @@ InstallGlobalFunction( ADD_GRADED_LIFT,
     
     AddLift( category,
       
-      function( alpha, beta )
+      function( cat, alpha, beta )
         local lift, required_degrees;
         
         lift := Lift( UnderlyingPresentationMorphism( alpha ), UnderlyingPresentationMorphism( beta ) );
@@ -589,7 +589,7 @@ InstallGlobalFunction( ADD_GRADED_COLIFT,
     
     AddColift( category,
       
-      function( alpha, beta )
+      function( cat, alpha, beta )
         local colift, required_degrees;
         
         colift := Colift( UnderlyingPresentationMorphism( alpha ), UnderlyingPresentationMorphism( beta ) );
@@ -622,7 +622,13 @@ InstallGlobalFunction( ADD_GRADED_EPIMORPHISM_FROM_SOME_PROJECTIVE_OBJECT,
     
   function( category )
     
-    AddEpimorphismFromSomeProjectiveObject( category, CoverByProjective );
+    AddEpimorphismFromSomeProjectiveObject( category,
+    
+      function( cat, object )
+      
+        return CoverByProjective( object );
+    
+    end );
     
 end );
 
@@ -633,7 +639,7 @@ InstallGlobalFunction( ADD_GRADED_PRECOMPOSE,
     
     AddPreCompose( category,
       
-      function( left_morphism, right_morphism )
+      function( cat, left_morphism, right_morphism )
         
         return GradedPresentationMorphism( Source( left_morphism ),
                                            PreCompose( UnderlyingPresentationMorphism( left_morphism ),
@@ -651,7 +657,7 @@ InstallGlobalFunction( ADD_GRADED_ADDITION_FOR_MORPHISMS,
     
     AddAdditionForMorphisms( category,
                              
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         
         return GradedPresentationMorphism( Source( morphism_1 ), UnderlyingPresentationMorphism( morphism_1 ) 
                                                                + UnderlyingPresentationMorphism( morphism_2 ), Range( morphism_1 ) );
@@ -667,7 +673,7 @@ InstallGlobalFunction( ADD_GRADED_ADDITIVE_INVERSE_FOR_MORPHISMS,
     
     AddAdditiveInverseForMorphisms( category,
                                     
-      function( morphism_1 )
+      function( cat, morphism_1 )
         
         return GradedPresentationMorphism( Source( morphism_1 ), - UnderlyingPresentationMorphism( morphism_1 ), Range( morphism_1 ) );
         
@@ -682,7 +688,7 @@ InstallGlobalFunction( ADD_GRADED_ZERO_MORPHISM,
     
     AddZeroMorphism( category,
                      
-      function( source, range )
+      function( cat, source, range )
         local morphism;
         
         morphism := ZeroMorphism( UnderlyingPresentationObject( source ), UnderlyingPresentationObject( range ) );
@@ -700,7 +706,7 @@ InstallGlobalFunction( ADD_GRADED_EQUAL_FOR_MORPHISMS,
     
     AddIsCongruentForMorphisms( category,
                             
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         
         return IsCongruentForMorphisms( UnderlyingPresentationMorphism( morphism_1 ), UnderlyingPresentationMorphism( morphism_2 ) );
         
@@ -724,7 +730,7 @@ InstallGlobalFunction( ADD_GRADED_COKERNEL,
     
 #     AddCokernelProjection( category,
 #                      
-#       function( morphism )
+#       function( cat, morphism )
 #         local result, range_morphism, new_range;
 #         
 #         result := CokernelProjection( UnderlyingPresentationMorphism( morphism ) );
@@ -739,7 +745,7 @@ InstallGlobalFunction( ADD_GRADED_COKERNEL,
     
     AddCokernelObject( category,
                       
-      function( object )
+      function( cat, object )
         local result;
         
         result := CokernelObject( UnderlyingPresentationMorphism( object ) );
@@ -750,7 +756,7 @@ InstallGlobalFunction( ADD_GRADED_COKERNEL,
     
     AddCokernelProjectionWithGivenCokernelObject( category,
                      
-      function( morphism, cokernel_object )
+      function( cat, morphism, cokernel_object )
         local projection;
         
         projection := CokernelProjectionWithGivenCokernelObject( UnderlyingPresentationMorphism( morphism ),
@@ -762,7 +768,7 @@ InstallGlobalFunction( ADD_GRADED_COKERNEL,
     
     AddCokernelColiftWithGivenCokernelObject( category,
       
-      function( morphism, test_object, test_morphism, cokernel_object )
+      function( cat, morphism, test_object, test_morphism, cokernel_object )
         local lift;
         
         lift := CokernelColiftWithGivenCokernelObject( UnderlyingPresentationMorphism( morphism ),
@@ -789,7 +795,7 @@ InstallGlobalFunction( ADD_GRADED_DIRECT_SUM,
     
     AddDirectSum( category,
                   
-      function( product_object )
+      function( cat, product_object )
         local objects, degrees;
         
         objects := DirectSum( List( product_object, UnderlyingPresentationObject ) );
@@ -802,7 +808,7 @@ InstallGlobalFunction( ADD_GRADED_DIRECT_SUM,
     
     AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
                                                  
-      function( product_object, component_number, direct_sum_object )
+      function( cat, product_object, component_number, direct_sum_object )
         local underlying_objects, underlying_direct_sum, projection;
         
         underlying_objects := List( product_object, UnderlyingPresentationObject );
@@ -817,7 +823,7 @@ InstallGlobalFunction( ADD_GRADED_DIRECT_SUM,
     
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
                                                                  
-      function( diagram, test_object, product_morphism, direct_sum )
+      function( cat, diagram, test_object, product_morphism, direct_sum )
         local underlying_diagram, underlying_product_morphism, underlying_direct_sum, universal_morphism;
         
         underlying_diagram := List( diagram, UnderlyingPresentationObject );
@@ -836,7 +842,7 @@ InstallGlobalFunction( ADD_GRADED_DIRECT_SUM,
     
     AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
                                               
-      function( product_object, component_number, direct_sum_object )
+      function( cat, product_object, component_number, direct_sum_object )
         local underlying_objects, underlying_direct_sum, injection;
         
         underlying_objects := List( product_object, UnderlyingPresentationObject );
@@ -851,7 +857,7 @@ InstallGlobalFunction( ADD_GRADED_DIRECT_SUM,
     
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
                                                          
-      function( diagram, test_object, product_morphism, direct_sum )
+      function( cat, diagram, test_object, product_morphism, direct_sum )
         local underlying_diagram, underlying_product_morphism, underlying_direct_sum, universal_morphism;
         
         underlying_diagram := List( diagram, UnderlyingPresentationObject );
@@ -886,7 +892,7 @@ InstallGlobalFunction( ADD_GRADED_ZERO_OBJECT,
     
     AddZeroObject( category,
                    
-      function( )
+      function( cat )
         local zero_object;
         
         zero_object := ZeroObject( underlying_presentation_category );
@@ -897,7 +903,7 @@ InstallGlobalFunction( ADD_GRADED_ZERO_OBJECT,
     
     AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( category,
                                                                    
-      function( object, terminal_object )
+      function( cat, object, terminal_object )
         local morphism;
         
         morphism := UniversalMorphismIntoZeroObjectWithGivenZeroObject( UnderlyingPresentationObject( object ),
@@ -909,7 +915,7 @@ InstallGlobalFunction( ADD_GRADED_ZERO_OBJECT,
     
     AddUniversalMorphismFromZeroObjectWithGivenZeroObject( category,
                                                                  
-      function( object, initial_object )
+      function( cat, object, initial_object )
         local morphism;
         
         morphism := UniversalMorphismFromZeroObjectWithGivenZeroObject( UnderlyingPresentationObject( object ),
@@ -928,7 +934,7 @@ InstallGlobalFunction( ADD_GRADED_IDENTITY,
     
     AddIdentityMorphism( category,
                          
-      function( object )
+      function( cat, object )
         local morphism;
         
         morphism := IdentityMorphism( UnderlyingPresentationObject( object ) );
@@ -946,7 +952,7 @@ InstallGlobalFunction( ADD_GRADED_LIFT_ALONG_MONOMORPHISM,
     
     AddLiftAlongMonomorphism( category,
 
-      function( iota, tau )
+      function( cat, iota, tau )
         local lift;
 
         lift := LiftAlongMonomorphism( UnderlyingPresentationMorphism( iota ), UnderlyingPresentationMorphism( tau ) );
@@ -964,7 +970,7 @@ InstallGlobalFunction( ADD_GRADED_COLIFT_ALONG_EPIMORPHISM,
 
     AddColiftAlongEpimorphism( category,
 
-      function( epsilon, tau )
+      function( cat, epsilon, tau )
         local colift;
 
         colift := ColiftAlongEpimorphism( UnderlyingPresentationMorphism( epsilon ), UnderlyingPresentationMorphism( tau ) );
@@ -989,7 +995,7 @@ InstallGlobalFunction( ADD_GRADED_TENSOR_PRODUCT_ON_OBJECTS,
     
     AddTensorProductOnObjects( category,
       
-      function( object_1, object_2 )
+      function( cat, object_1, object_2 )
         local new_object, degrees_1, degrees_2, new_degrees, i, j;
         
         new_object := TensorProductOnObjects( UnderlyingPresentationObject( object_1 ),
@@ -1019,7 +1025,7 @@ InstallGlobalFunction( ADD_GRADED_TENSOR_PRODUCT_ON_MORPHISMS,
     
     AddTensorProductOnMorphismsWithGivenTensorProducts( category,
       
-      function( new_source, morphism_1, morphism_2, new_range )
+      function( cat, new_source, morphism_1, morphism_2, new_range )
         local new_morphism;
         
         new_morphism := TensorProductOnMorphismsWithGivenTensorProducts( UnderlyingPresentationObject( new_source ),
@@ -1050,7 +1056,7 @@ InstallGlobalFunction( ADD_GRADED_TENSOR_UNIT,
     
     AddTensorUnit( category,
       
-      function( )
+      function( cat )
         local unit, new_degrees;
         
         unit := TensorUnit( underlying_presentation_category );
@@ -1070,7 +1076,7 @@ InstallGlobalFunction( ADD_GRADED_INTERNAL_HOM_ON_OBJECTS_LEFT,
     ## WARNING: The given function uses basic operations.
     AddInternalHomOnObjects( category,
       
-      function( object_1, object_2 )
+      function( cat, object_1, object_2 )
         
         return Source( INTERNAL_GRADED_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT( object_1, object_2 ) );
     
@@ -1086,7 +1092,7 @@ InstallGlobalFunction( ADD_GRADED_INTERNAL_HOM_ON_OBJECTS_RIGHT,
     ## WARNING: The given function uses basic operations.
     AddInternalHomOnObjects( category,
       
-      function( object_1, object_2 )
+      function( cat, object_1, object_2 )
         
         return Source( INTERNAL_GRADED_HOM_EMBEDDING_IN_TENSOR_PRODUCT_RIGHT( object_1, object_2 ) );
     
@@ -1102,7 +1108,7 @@ InstallGlobalFunction( ADD_GRADED_INTERNAL_HOM_ON_MORPHISMS_LEFT,
     ## WARNING: The given function uses basic operations.
     AddInternalHomOnMorphismsWithGivenInternalHoms( category,
       
-      function( new_source, morphism_1, morphism_2, new_range )
+      function( cat, new_source, morphism_1, morphism_2, new_range )
         local internal_hom_embedding_source, internal_hom_embedding_range, morphism_between_tensor_products;
         
         internal_hom_embedding_source := 
@@ -1133,7 +1139,7 @@ InstallGlobalFunction( ADD_GRADED_INTERNAL_HOM_ON_MORPHISMS_RIGHT,
     ## WARNING: The given function uses basic operations.
     AddInternalHomOnMorphismsWithGivenInternalHoms( category,
       
-      function( new_source, morphism_1, morphism_2, new_range )
+      function( cat, new_source, morphism_1, morphism_2, new_range )
         local internal_hom_embedding_source, internal_hom_embedding_range, morphism_between_tensor_products;
         
         internal_hom_embedding_source := 
@@ -1162,7 +1168,7 @@ InstallGlobalFunction( ADD_GRADED_UNITOR,
   function( category )
     local unitor_func;
     
-    unitor_func := function( A, B )
+    unitor_func := function( cat, A, B )
         return IdentityMorphism( A );
     end;
     
@@ -1180,7 +1186,7 @@ InstallGlobalFunction( ADD_GRADED_ASSOCIATOR_LEFT,
     
     homalg_ring := category!.ring_for_representation_category;
     
-    associator_func := function( source, A, B, C, range )
+    associator_func := function( cat, source, A, B, C, range )
         
         return GradedPresentationMorphism(
                   source,
@@ -1208,7 +1214,7 @@ InstallGlobalFunction( ADD_GRADED_ASSOCIATOR_RIGHT,
     
     homalg_ring := category!.ring_for_representation_category;
     
-    associator_func := function( source, A, B, C, range )
+    associator_func := function( cat, source, A, B, C, range )
         
         return GradedPresentationMorphism(
                   source,
@@ -1235,7 +1241,7 @@ end );
 #     
 #     AddBraidingWithGivenTensorProducts( category,
 #       
-#       function( object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
+#       function( cat, object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
 #         local homalg_ring, permutation_matrix, rank_1, rank_2, rank;
 #         
 #         homalg_ring := UnderlyingHomalgRing( object_1 );
@@ -1266,7 +1272,7 @@ end );
 #     
 #     AddBraidingWithGivenTensorProducts( category,
 #       
-#       function( object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
+#       function( cat, object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
 #         local homalg_ring, permutation_matrix, rank_1, rank_2, rank;
 #         
 #         homalg_ring := UnderlyingHomalgRing( object_1 );
@@ -1300,7 +1306,7 @@ end );
 #     
 #     AddEvaluationMorphismWithGivenSource( category,
 #       
-#       function( object_1, object_2, internal_hom_tensored_object_1 )
+#       function( cat, object_1, object_2, internal_hom_tensored_object_1 )
 #         local internal_hom_embedding, rank_1, morphism, free_module,
 #               column, zero_column, i, matrix, rank_2, lifted_evaluation;
 #         
@@ -1357,7 +1363,7 @@ end );
 #     
 #     AddEvaluationMorphismWithGivenSource( category,
 #       
-#       function( object_1, object_2, internal_hom_tensored_object_1 )
+#       function( cat, object_1, object_2, internal_hom_tensored_object_1 )
 #         local internal_hom_embedding, rank_1, morphism, free_module,
 #               row, zero_row, i, matrix, rank_2, lifted_evaluation;
 #         
@@ -1414,7 +1420,7 @@ end );
 #     
 #     AddCoevaluationMorphismWithGivenRange( category,
 #       
-#       function( object_1, object_2, internal_hom )
+#       function( cat, object_1, object_2, internal_hom )
 #         local object_1_tensored_object_2, internal_hom_embedding, rank_2, free_module, morphism,
 #               row, zero_row, i, matrix, rank_1, lifted_coevaluation;
 #         
@@ -1472,7 +1478,7 @@ end );
 #     
 #     AddCoevaluationMorphismWithGivenRange( category,
 #       
-#       function( object_1, object_2, internal_hom )
+#       function( cat, object_1, object_2, internal_hom )
 #         local object_1_tensored_object_2, internal_hom_embedding, rank_2, free_module, morphism,
 #               column, zero_column, i, matrix, rank_1, lifted_coevaluation;
 #         
