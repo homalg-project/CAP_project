@@ -23,7 +23,7 @@ InstallMethod( CategoryOfGradedColumns,
       # create category
       category := CreateCapCategory( Concatenation( "Category of graded columns over ", RingName( homalg_graded_ring ) ), IsCategoryOfGradedColumns, IsGradedColumn, IsGradedColumnMorphism, IsCapCategoryTwoCell );
       
-      category!.category_as_first_argument := false;
+      category!.category_as_first_argument := true;
       
       SetUnderlyingGradedRing( category, homalg_graded_ring );
       
@@ -73,9 +73,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Description
     # Checks if the given object is well-defined.
     # @Returns true or false
-    # @Arguments object    
+    # @Arguments object
     AddIsWellDefinedForObjects( category,
-      function( object )
+      function( cat, object )
         local i, A, power;
       
         # the zero object must be represented by the empty list
@@ -132,7 +132,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Returns true or false
     # @Arguments morphism
     AddIsWellDefinedForMorphisms( category,
-      function( morphism )
+      function( cat, morphism )
         local source, range, morphism_matrix, morphism_matrix_entries, func, degrees_of_entries_matrix, degree_group, 
              source_degrees, range_degrees, buffer_row, dummy_range_degrees, i, j;
         
@@ -256,7 +256,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Returns true or false
     # @Arguments object1, object2
     AddIsEqualForObjects( category,
-      function( object1, object2 )
+      function( cat, object1, object2 )
       local deg_list1, deg_list2;
       
         return DegreeList( object1 ) = DegreeList( object2 );
@@ -271,7 +271,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Returns true or false
     # @Arguments morphism1, morphism2
     AddIsEqualForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
 
         return UnderlyingHomalgMatrix( morphism_1 ) = UnderlyingHomalgMatrix( morphism_2 );
 
@@ -283,7 +283,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Arguments morphism1, morphism2
     AddPreCompose( category,
 
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         local composition;
 
         composition := UnderlyingHomalgMatrix( morphism_2 ) * UnderlyingHomalgMatrix( morphism_1 );
@@ -302,7 +302,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Arguments object
     AddIdentityMorphism( category,
       
-      function( object )
+      function( cat, object )
         
         return GradedRowOrColumnMorphism( object,
                                           HomalgIdentityMatrix( Rank( object ), underlying_graded_ring ),
@@ -326,7 +326,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Returns a morphism
     # @Arguments morphism1, morphism2
     AddAdditionForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         
         return GradedRowOrColumnMorphism( Source( morphism_1 ),
                                           UnderlyingHomalgMatrix( morphism_1 ) + UnderlyingHomalgMatrix( morphism_2 ),
@@ -341,7 +341,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Returns a morphism
     # @Arguments morphism
     AddAdditiveInverseForMorphisms( category,
-      function( morphism )
+      function( cat, morphism )
         
         return GradedRowOrColumnMorphism( Source( morphism ),
                                           MinusOne( UnderlyingHomalgGradedRing( morphism ) ) * UnderlyingHomalgMatrix( morphism ),
@@ -355,7 +355,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Returns true or false
     # @Arguments morphism
     AddIsZeroForMorphisms( category,
-      function( morphism )
+      function( cat, morphism )
         
         return IsZero( UnderlyingHomalgMatrix( morphism ) );
         
@@ -367,7 +367,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Returns a morphism
     # @Arguments source_object, range_object
     AddIsZeroForObjects( category,
-      function( object )
+      function( cat, object )
       
         return Rank( object ) = 0;
       
@@ -379,7 +379,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Returns a morphism
     # @Arguments source, range
     AddZeroMorphism( category,
-      function( source, range )
+      function( cat, source, range )
         
         return GradedRowOrColumnMorphism( source,
                                           HomalgZeroMatrix( Rank( range ), Rank( source ), underlying_graded_ring ),
@@ -394,7 +394,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Returns an object
     # @Arguments 
     AddZeroObject( category,
-      function( )
+      function( cat )
         
         return GradedColumn( [ ],
                              underlying_graded_ring,
@@ -408,7 +408,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Returns a morphism
     # @Arguments object, zero_object
     AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( category,
-      function( object, zero_object )
+      function( cat, object, zero_object )
         local morphism;
         
         morphism := GradedRowOrColumnMorphism( object,
@@ -426,7 +426,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Returns a morphism
     # @Arguments object, zero_object
     AddUniversalMorphismFromZeroObjectWithGivenZeroObject( category,
-      function( object, zero_object )
+      function( cat, object, zero_object )
         local morphism;
         
         morphism := GradedRowOrColumnMorphism( zero_object,
@@ -444,7 +444,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Returns an object
     # @Arguments object_list
     AddDirectSum( category,
-      function( object_list )
+      function( cat, object_list )
       local degree_list_list, degree_list_of_direct_sum_object;
       
       # then the degree_list of the direct sum object
@@ -465,7 +465,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Returns a morphism
     # @Arguments object_list, projection_number, direct_sum_object
     AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
-      function( object_list, projection_number, direct_sum_object )
+      function( cat, object_list, projection_number, direct_sum_object )
         local rank_pre, rank_post, rank_factor, number_of_objects, projection_in_factor;
         
         # and the number of objects that were 'added'
@@ -497,7 +497,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Returns a morphism
     # @Arguments diagram, sink, direct_sum
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
-      function( diagram, test_object, sink, direct_sum )
+      function( cat, diagram, test_object, sink, direct_sum )
         local underlying_matrix_of_universal_morphism;
         
         # construct the homalg matrix to represent the universal morphism
@@ -517,7 +517,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Returns a morphism
     # @Arguments object_list, injection_number, coproduct_object
     AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
-      function( object_list, injection_number, coproduct )
+      function( cat, object_list, injection_number, coproduct )
         local rank_pre, rank_post, rank_cofactor, number_of_objects, injection_of_cofactor;
         
         # and the number of objects
@@ -549,7 +549,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Returns a morphism
     # @Arguments diagram, sink, coproduct
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
-      function( diagram, test_object, sink, coproduct )
+      function( cat, diagram, test_object, sink, coproduct )
         local underlying_matrix_of_universal_morphism;
         
         underlying_matrix_of_universal_morphism := UnionOfColumns( List( sink, s -> UnderlyingHomalgMatrix( s ) ) );
@@ -576,7 +576,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Returns a morphism
     # @Arguments morphism1, morphism2
     AddLift( category,
-      function( morphism1, morphism2 )
+      function( cat, morphism1, morphism2 )
         local left_divide, required_degrees, lift;
 
         # try to find a lift
@@ -597,7 +597,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     end );    
 
     AddLiftOrFail( category,
-      function( morphism1, morphism2 )
+      function( cat, morphism1, morphism2 )
         local left_divide, required_degrees, lift;
 
         # try to find a lift
@@ -625,7 +625,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     end );    
 
     AddIsLiftable( category,
-      function( morphism1, morphism2 )
+      function( cat, morphism1, morphism2 )
         
         return IsZero( DecideZeroColumns( UnderlyingHomalgMatrix( morphism1 ), UnderlyingHomalgMatrix( morphism2 ) ) );
         
@@ -637,7 +637,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Returns a morphism
     # @Arguments morphism1, morphism2
     AddColift( category,
-      function( morphism1, morphism2 )
+      function( cat, morphism1, morphism2 )
         local right_divide, required_degrees, colift;
         
         # try to find a matrix that performs the colift
@@ -657,7 +657,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     end );
 
     AddColiftOrFail( category,
-      function( morphism1, morphism2 )
+      function( cat, morphism1, morphism2 )
         local right_divide, required_degrees, colift;
         
         # try to find a matrix that performs the colift
@@ -684,7 +684,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     end );
 
     AddIsColiftable( category,
-      function( morphism1, morphism2 )
+      function( cat, morphism1, morphism2 )
         
         return IsZero( DecideZeroRows( UnderlyingHomalgMatrix( morphism2 ), UnderlyingHomalgMatrix( morphism1 ) ) );
         
@@ -701,7 +701,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Returns a morphism
     # @Arguments morphism    
     AddWeakKernelEmbedding( category,
-      function( morphism )
+      function( cat, morphism )
         local kernel_matrix;
              
         # then compute the syzygies of rows, which form the 'kernel matrix'
@@ -717,7 +717,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Returns a morphism
     # @Arguments morphism
     AddWeakCokernelProjection( category,
-      function( morphism )
+      function( cat, morphism )
         local cokernel_matrix;
              
         # then compute the syzygies of rows, which form the 'kernel matrix'
@@ -738,7 +738,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     
     ##
     AddProjectionInFirstFactorOfWeakBiFiberProduct( category,
-      function( alpha, beta )
+      function( cat, alpha, beta )
         local morphism_list, projection_number, projection_matrix;
         
         morphism_list := [ alpha, beta ];
@@ -754,7 +754,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     
     ##
     AddProjectionInSecondFactorOfWeakBiFiberProduct( category,
-      function( alpha, beta )
+      function( cat, alpha, beta )
         local morphism_list, projection_number, projection_matrix;
         
         morphism_list := [ alpha, beta ];
@@ -776,7 +776,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     
     ##
     AddInjectionOfFirstCofactorOfWeakBiPushout( category,
-      function( alpha, beta )
+      function( cat, alpha, beta )
         local morphism_list, injection_number, embedding_matrix;
         
         morphism_list := [ alpha, beta ];
@@ -791,7 +791,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     
     ##
     AddInjectionOfSecondCofactorOfWeakBiPushout( category,
-      function( alpha, beta )
+      function( cat, alpha, beta )
         local morphism_list, injection_number, embedding_matrix;
         
         morphism_list := [ alpha, beta ];
@@ -826,7 +826,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # exists a morphism T -> C which makes the corresponding square commute, there exists a morphism
     # u: T -> P such that g \circ u = tau. Note that u is not unique in this setup!
     AddProjectionOfBiasedWeakFiberProduct( category,
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         local homalg_matrix, weak_cokernel_object;
         
         homalg_matrix := ReducedSyzygiesOfColumns( UnderlyingHomalgMatrix( morphism_1 ),
@@ -853,7 +853,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # u: P -> T such that u \circ g = tau. Note that u is not unique in this setup!
     ##
     AddInjectionOfBiasedWeakPushout( category,
-        function( morphism_1, morphism_2 )
+        function( cat, morphism_1, morphism_2 )
         local homalg_matrix, weak_cokernel_object;
 
         homalg_matrix := ReducedSyzygiesOfRows( UnderlyingHomalgMatrix( morphism_1 ),
@@ -879,7 +879,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Returns an object
     # @Arguments object1, object2
     AddTensorProductOnObjects( category,
-      function( object1, object2 )
+      function( cat, object1, object2 )
         local degree_list1, degree_list2, degree_list1_extended, degree_list_tensor_object, i, j, buffer_list;
 
         # check if one of the objects is the zero object
@@ -934,7 +934,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Arguments source = Source( morphism1 ) \otimes Source( morphism2 ), morphism1, morphism2, 
     #            range = Range( morphism1 ) \otimes Range( morphism2 )
     AddTensorProductOnMorphismsWithGivenTensorProducts( category,
-      function( source, morphism1, morphism2, range )
+      function( cat, source, morphism1, morphism2, range )
                 
         return GradedRowOrColumnMorphism( source,
                                        KroneckerMat( UnderlyingHomalgMatrix( morphism1 ), UnderlyingHomalgMatrix( morphism2 ) ),
@@ -950,7 +950,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Returns an object
     # @Arguments     
     AddTensorUnit( category,
-      function( )
+      function( cat )
         
         return GradedColumn( [ [ TheZeroElement( DegreeGroup( underlying_graded_ring ) ) , 1 ] ],
                              underlying_graded_ring,
@@ -973,7 +973,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Returns a morphism
     # @Arguments object1_tensored_object2, object1, object2, object2_tensored_object1
     AddBraidingWithGivenTensorProducts( category,
-      function( object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
+      function( cat, object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
         local rank_1, rank_2, rank, permutation_matrix;
         
         rank_1 := Rank( object_1 );
@@ -1011,7 +1011,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Returns an object
     # @Arguments object
     AddDualOnObjects( category,
-      function( object )
+      function( cat, object )
         local degree_list_dual_object;
                 
         # the dual is given by taking the inverse of all degrees but leaving the multiplicities unchanged
@@ -1031,7 +1031,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Returns a morphism
     # @Arguments source, morphism, range
     AddDualOnMorphismsWithGivenDuals( category,
-      function( source, morphism, range )
+      function( cat, source, morphism, range )
     
       # simply transpose the mapping matrix and return the result
       return GradedRowOrColumnMorphism( source,
@@ -1047,7 +1047,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Returns a morphism
     # @Arguments tensor_object = Dual( object) \otimes object, object, unit
     AddEvaluationForDualWithGivenTensorProduct( category,
-      function( tensor_object, object, unit )
+      function( cat, tensor_object, object, unit )
         local rank, column, zero_column, i;
 
         # collect and initialise the necessary information
@@ -1084,7 +1084,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Returns a morphism
     # @Arguments unit, object, tensor_object = Object \otimes Dual( object )
     AddCoevaluationForDualWithGivenTensorProduct( category,
-      function( unit, object, tensor_object )
+      function( cat, unit, object, tensor_object )
         local rank, column, zero_column, i;
         
         # collect and initialise the necessary information
@@ -1121,7 +1121,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Returns a morphism
     # @Arguments object, bidual_object = Dual(Dual(object))
     AddMorphismToBidualWithGivenBidual( category,
-      function( object, bidual_object )
+      function( cat, object, bidual_object )
       
         return GradedRowOrColumnMorphism( object,
                                           HomalgIdentityMatrix( Rank( object ), underlying_graded_ring ),
