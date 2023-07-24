@@ -29,7 +29,7 @@ InstallMethod( RelCategory,
                         fail,
                         fail );
     
-    category!.category_as_first_argument := false;
+    category!.category_as_first_argument := true;
     
     SetUnderlyingCategory( category, underlying_category );
     
@@ -56,7 +56,7 @@ end );
 InstallMethod( RelCategoryMorphism,
                [ IsRelCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsRelCategoryObject ],
                
-  function( source, reversed_arrow, arrow, range ) 
+  function( source, reversed_arrow, arrow, range )
     local rel;
     
     rel := CapCategory( source );
@@ -75,7 +75,7 @@ InstallMethod( PseudoInverse,
                
   function( mor )
     
-    return RelCategoryMorphism( 
+    return RelCategoryMorphism(
         Range( mor ),
         Arrow( mor ),
         ReversedArrow( mor ),
@@ -108,7 +108,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RELATIONS_CATEGORY,
     
     ##
     AddIsEqualForObjects( category,
-      function( a, b ) 
+      function( cat, a, b )
         
         return IsEqualForObjects( UnderlyingOriginalObject( a ), UnderlyingOriginalObject( b ) );
         
@@ -116,7 +116,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RELATIONS_CATEGORY,
     
     ##
     AddIsEqualForMorphisms( category,
-      function( alpha, beta ) 
+      function( cat, alpha, beta )
         local arrow_alpha, arrow_beta;
         
         arrow_alpha := Arrow( alpha );
@@ -134,9 +134,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RELATIONS_CATEGORY,
     
     ##
     AddIsCongruentForMorphisms( category,
-      function( alpha, beta ) 
+      function( cat, alpha, beta )
         
-        return IsEqualAsSubobjects( 
+        return IsEqualAsSubobjects(
           AssociatedSubobject( alpha ),
           AssociatedSubobject( beta )
         );
@@ -145,15 +145,15 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RELATIONS_CATEGORY,
     
     ##
     AddIsWellDefinedForObjects( category,
-      function( object )
+      function( cat, object )
         
         return IsWellDefinedForObjects( UnderlyingOriginalObject( object ) );
         
     end );
     
     ##
-    AddIsWellDefinedForMorphisms( category, 
-      function( alpha ) 
+    AddIsWellDefinedForMorphisms( category,
+      function( cat, alpha )
         local arrow, reversed;
         
         arrow := Arrow( alpha );
@@ -196,7 +196,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RELATIONS_CATEGORY,
     
     ##
     AddPreCompose( category,
-      function( alpha, beta )
+      function( cat, alpha, beta )
         local diagram, pi_left, pi_right;
         
         diagram := [ Arrow( alpha ), ReversedArrow( beta ) ];
@@ -215,7 +215,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RELATIONS_CATEGORY,
     
     ##
     AddIdentityMorphism( category,
-      function( object )
+      function( cat, object )
         local id;
         
         id := IdentityMorphism( UnderlyingOriginalObject( object ) );
