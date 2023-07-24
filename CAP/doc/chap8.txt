@@ -37,15 +37,22 @@
   [33X[0;0YCreates a new derivation object. The argument [3Xname[103X is an arbitrary name used
   to  identify this derivation, and is useful only for debugging purposes. The
   argument [3Xtarget_op[103X is the operation which the derived method implements. The
-  argument [3Xused_ops_with_multiples[103X contains the name of each operation used by
-  the  derived  method,  together  with a positive integer specifying how many
-  times that operation is used and optionally a category getter. This is given
-  as  a  list  of  lists, where each sublist has as first entry the name of an
-  operation,  as  second  entry  an  integer  and  as third entry optionally a
-  function. This function should accept the category and return a category for
-  which  the operation in the first entry must be installed for the derivation
-  to  be  considered valid. The argument [3Xweight[103X is an additional number to add
-  when  calculating  the  resulting  weight of the target operation using this
+  argument [3Xused_ops_with_multiples[103X contains[133X
+  
+  [30X    [33X[0;6Ythe name of each operation used by the derived method,[133X
+  
+  [30X    [33X[0;6Ytogether  with  a  positive  integer  specifying  how  many times that
+        operation is used and[133X
+  
+  [30X    [33X[0;6Yeither a category getter or [10Xfail[110X.[133X
+  
+  [33X[0;0YThis  is given as a list of lists, where each sublist has as first entry the
+  name of an operation, as second entry an integer and as third entry either a
+  function  or  [10Xfail[110X.  This function should accept the category for which this
+  derivation  will be installed, and return a category for which the operation
+  in  the  first  entry  must be installed for the derivation to be considered
+  applicable.  The  argument  [3Xweight[103X  is  an  additional  number  to  add when
+  calculating  the  resulting  weight  of  the  target  operation  using  this
   derivation.  Unless  there is any particular reason to regard the derivation
   as  exceedingly  expensive,  this  number  should  be  [10X1[110X.  The argument [3Xfunc[103X
   contains  the  actual  implementation  of  the  derived method. The argument
