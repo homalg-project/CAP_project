@@ -3037,7 +3037,7 @@ AddDerivationToCAP( Lift,
     
     a := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat, alpha );
     
-    b := HomomorphismStructureOnMorphisms( cat, IdentityMorphism( Source( alpha ) ), beta );
+    b := HomomorphismStructureOnMorphisms( cat, IdentityMorphism( cat, Source( alpha ) ), beta );
     
     return InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat, Source( alpha ), Source( beta ), Lift( range_cat, a, b ) );
     
@@ -3060,7 +3060,7 @@ AddDerivationToCAP( LiftOrFail,
     
     a := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat, alpha );
     
-    b := HomomorphismStructureOnMorphisms( cat, IdentityMorphism( Source( alpha ) ), beta );
+    b := HomomorphismStructureOnMorphisms( cat, IdentityMorphism( cat, Source( alpha ) ), beta );
     
     l := LiftOrFail( range_cat, a, b );
     
@@ -3090,7 +3090,7 @@ AddDerivationToCAP( IsLiftable,
     
     a := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat, alpha );
     
-    b := HomomorphismStructureOnMorphisms( cat, IdentityMorphism( Source( alpha ) ), beta );
+    b := HomomorphismStructureOnMorphisms( cat, IdentityMorphism( cat, Source( alpha ) ), beta );
     
     return IsLiftable( range_cat, a, b );
     
@@ -3137,7 +3137,7 @@ AddDerivationToCAP( ColiftOrFail,
     
     b := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat, beta );
     
-    a := HomomorphismStructureOnMorphisms( cat, alpha, IdentityMorphism( Range( beta ) ) );
+    a := HomomorphismStructureOnMorphisms( cat, alpha, IdentityMorphism( cat, Range( beta ) ) );
     
     l := LiftOrFail( range_cat, b, a );
     
@@ -3167,7 +3167,7 @@ AddDerivationToCAP( IsColiftable,
     
     b := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat, beta );
     
-    a := HomomorphismStructureOnMorphisms( cat, alpha, IdentityMorphism( Range( beta ) ) );
+    a := HomomorphismStructureOnMorphisms( cat, alpha, IdentityMorphism( cat, Range( beta ) ) );
     
     return IsLiftable( range_cat, b, a );
     
