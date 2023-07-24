@@ -378,18 +378,10 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     membership_function := MembershipFunctionForSemisimpleCategory( category );
     
-    ##
-    AddIsEqualForCacheForObjects( category,
-      IsIdenticalObj );
-    
-    ##
-    AddIsEqualForCacheForMorphisms( category,
-      IsIdenticalObj );
-    
     ## Equality Basic Operations for Objects and Morphisms
     ##
     AddIsEqualForObjects( category,
-      function( object_1, object_2 )
+      function( cat, object_1, object_2 )
         local object_1_list, object_2_list, size;
         
         object_1_list := SemisimpleCategoryObjectList( object_1 );
@@ -412,7 +404,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     AddIsCongruentForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         local morphism_1_list, morphism_2_list, size;
         
         morphism_1_list := SemisimpleCategoryMorphismList( morphism_1 );
@@ -427,7 +419,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     AddIsWellDefinedForObjects( category,
-      function( object )
+      function( cat, object )
         local object_list, last_irr, elem;
         
         object_list := SemisimpleCategoryObjectList( object );
@@ -471,7 +463,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     AddIsWellDefinedForMorphisms( category,
-      function( morphism )
+      function( cat, morphism )
         local source, range, source_list, range_list, union, irr, morphism_list,
               irr_nr, dim_source, dim_range;
         
@@ -557,7 +549,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     ##
     AddIdentityMorphism( category,
       
-      function( object )
+      function( cat, object )
         local object_list, morphism_list;
         
         object_list := SemisimpleCategoryObjectList( object );
@@ -573,7 +565,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     AddPreCompose( category,
       
       [ 
-        [ function( morphism_1, morphism_2 )
+        [ function( cat, morphism_1, morphism_2 )
             local mor_1_list, mor_2_list, source, range, union, composition_list, irr, mor_1, mor_2;
             
             mor_1_list := SemisimpleCategoryMorphismList( morphism_1 );
@@ -617,17 +609,17 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
             
           end, [ , ] ],
         
-        [ function( left_morphism, identity_morphism )
+        [ function( cat, left_morphism, identity_morphism )
             
             return left_morphism;
             
-          end, [ , IsEqualToIdentityMorphism ] ],
+          end, [ IsSemisimpleCategory, IsSemisimpleCategoryMorphism, IsEqualToIdentityMorphism ] ],
         
-        [ function( identity_morphism, right_morphism )
+        [ function( cat, identity_morphism, right_morphism )
             
             return right_morphism;
             
-          end, [ IsEqualToIdentityMorphism, ] ],
+          end, [ IsSemisimpleCategory, IsEqualToIdentityMorphism, IsSemisimpleCategoryMorphism] ],
         
       ]
     
@@ -636,7 +628,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     ## Basic Operations for an Additive Category
     ##
     AddIsZeroForMorphisms( category,
-      function( morphism )
+      function( cat, morphism )
         local morphism_list;
         
         morphism_list := SemisimpleCategoryMorphismList( morphism );
@@ -647,7 +639,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     AddAdditionForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         local source, range, morphism_1_list, morphism_2_list, result_morphism_list, size;
         
         source := Source( morphism_1 );
@@ -668,7 +660,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     AddAdditiveInverseForMorphisms( category,
-      function( morphism )
+      function( cat, morphism )
         local source, range, morphism_list, result_morphism_list;
         
         source := Source( morphism );
@@ -685,7 +677,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     AddZeroMorphism( category,
-      function( source, range )
+      function( cat, source, range )
         local union, morphism_list, source_list, range_list, irr, dim_source, dim_range;
         
         union := Union( Support( source ), Support( range ) );
@@ -731,7 +723,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     end );
     
     AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
-      function( r, morphism )
+      function( cat, r, morphism )
         
         return SemisimpleCategoryMorphism( Source( morphism ),
                        List( SemisimpleCategoryMorphismList( morphism ), elem -> [ MultiplyWithElementOfCommutativeRingForMorphisms( r, elem[1] ), elem[2] ] ),
@@ -741,7 +733,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     AddZeroObject( category,
-      function( )
+      function( cat )
         
         return SemisimpleCategoryObject( [ ], category );
         
@@ -749,7 +741,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( category,
-      function( sink, zero_object )
+      function( cat, sink, zero_object )
         local sink_object_list, result_morphism_list;
         
         sink_object_list := SemisimpleCategoryObjectList( sink );
@@ -763,7 +755,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     AddUniversalMorphismFromZeroObjectWithGivenZeroObject( category,
-      function( source, zero_object )
+      function( cat, source, zero_object )
         local source_object_list, result_morphism_list;
         
         source_object_list := SemisimpleCategoryObjectList( source );
@@ -777,7 +769,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     AddDirectSum( category,
-      function( semisimple_objects_list )
+      function( cat, semisimple_objects_list )
       local object_list;
       
       object_list := List( semisimple_objects_list, SemisimpleCategoryObjectList );
@@ -798,7 +790,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
-      function( semisimple_objects_list, projection_number, direct_sum_object )
+      function( cat, semisimple_objects_list, projection_number, direct_sum_object )
         local support, morphism_list, irr, objects_list, elem;
         
         support := Support( direct_sum_object );
@@ -819,7 +811,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
-      function( diagram, test_object, source, direct_sum_object )
+      function( cat, diagram, test_object, source, direct_sum_object )
         local support, morphism_list, irr, irr_diagram, irr_source;
         
         support := Union( Support( direct_sum_object ), Support( test_object ) );
@@ -842,7 +834,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
-      function( semisimple_objects_list, injection_number, direct_sum_object )
+      function( cat, semisimple_objects_list, injection_number, direct_sum_object )
         local support, morphism_list, irr, objects_list, elem;
         
         support := Support( direct_sum_object );
@@ -869,7 +861,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
-      function( diagram, test_object, sink, direct_sum_object )
+      function( cat, diagram, test_object, sink, direct_sum_object )
         local support, morphism_list, irr, irr_diagram, irr_sink;
         
         support := Union( Support( direct_sum_object ), Support( test_object ) );
@@ -892,7 +884,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     AddDirectSumFunctorialWithGivenDirectSums( category,
-      function( source, source_diagram, diagram, range_diagram, range )
+      function( cat, source, source_diagram, diagram, range_diagram, range )
         local support, irr, irr_diagram, morphism_list;
         
         support := Union( Support( source ), Support( range ) );
@@ -914,7 +906,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     ## Basic Operations for an Abelian category
     ##
     AddKernelObject( category,
-      function( morphism )
+      function( cat, morphism )
         local support, object_list;
         
         support := Support( Source( morphism ) );
@@ -927,7 +919,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     AddKernelEmbedding( category,
-      function( morphism )
+      function( cat, morphism )
         local support, result_morphism_list, kernel_object_list, kernel_object;
         
         support := Support( Source( morphism ) );
@@ -944,7 +936,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     AddKernelEmbeddingWithGivenKernelObject( category,
-      function( morphism, kernel_object )
+      function( cat, morphism, kernel_object )
         local support, result_morphism_list;
         
         support := Support( Source( morphism ) );
@@ -957,7 +949,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     AddLift( category,
-      function( alpha, beta )
+      function( cat, alpha, beta )
         local source, range, support, morphism_list;
         
         source := Source( alpha );
@@ -975,7 +967,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     AddCokernelObject( category,
-      function( morphism )
+      function( cat, morphism )
         local support, object_list;
         
         support := Support( Range( morphism ) );
@@ -988,7 +980,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     AddCokernelProjection( category,
-      function( morphism )
+      function( cat, morphism )
         local support, result_morphism_list, cokernel_object_list, cokernel_object;
         
         support := Support( Range( morphism ) );
@@ -1005,7 +997,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     AddCokernelProjectionWithGivenCokernelObject( category,
-      function( morphism, cokernel_object )
+      function( cat, morphism, cokernel_object )
         local support, result_morphism_list;
         
         support := Support( Range( morphism ) );
@@ -1018,7 +1010,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     AddColift( category,
-      function( alpha, beta )
+      function( cat, alpha, beta )
         local source, range, support, morphism_list;
         
         source := Range( alpha );
@@ -1037,7 +1029,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     ## Basic Operation Properties
     ##
     AddIsZeroForObjects( category,
-      function( object )
+      function( cat, object )
       
         return IsEmpty( SemisimpleCategoryObjectList( object ) );
       
@@ -1047,7 +1039,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     ##
     AddTensorProductOnObjects( category,
       [
-        [ function( object_1, object_2 )
+        [ function( cat, object_1, object_2 )
             local object_1_list, object_2_list, object_list, elem_1, elem_2, prod, multiplicity;
             
             object_1_list := SemisimpleCategoryObjectList( object_1 );
@@ -1076,28 +1068,28 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
           
           [ ] ],
         
-        [ function( object_1, object_2 )
+        [ function( cat, object_1, object_2 )
             
             return object_1;
             
           end,
           
-          [ IsZeroForObjects, ] ],
+          [ IsSemisimpleCategory, IsZeroForObjects, IsSemisimpleCategoryObject ] ],
          
-        [ function( object_1, object_2 )
+        [ function( cat, object_1, object_2 )
             
             return object_2;
             
           end,
           
-          [ , IsZeroForObjects ] ]
+          [ IsSemisimpleCategory, IsSemisimpleCategoryObject, IsZeroForObjects ] ]
       ]
     
     );
     
     AddTensorUnit( category,
       
-      function( )
+      function( cat )
         
         return SemisimpleCategoryObject( [ [ 1, tensor_unit ] ], category );
         
@@ -1106,7 +1098,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     ##
     AddTensorProductOnMorphismsWithGivenTensorProducts( category,
       
-      function( new_source, morphism_1, morphism_2, new_range )
+      function( cat, new_source, morphism_1, morphism_2, new_range )
         local morphism_1_list, morphism_2_list, size_1, size_2, tensor_products, i, j,
               support, size_support, morphism_list, chi, i_list, j_list, multiplicity,
               object;
@@ -1359,7 +1351,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     ##
     AddRightDistributivityExpandingWithGivenObjects( category,
       
-      function( new_source, list_of_objects, object_b, new_range )
+      function( cat, new_source, list_of_objects, object_b, new_range )
           
           return distributivity_function(
                    new_source, object_b, list_of_objects, new_range, right_distributivity_expanding_permutation, true );
@@ -1370,7 +1362,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     ##
     AddRightDistributivityFactoringWithGivenObjects( category,
       
-      function( new_source, list_of_objects, object_b, new_range )
+      function( cat, new_source, list_of_objects, object_b, new_range )
           
           return distributivity_function(
                    new_source, object_b, list_of_objects, new_range, right_distributivity_expanding_permutation, false );
@@ -1380,7 +1372,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     ##
     AddLeftDistributivityExpandingWithGivenObjects( category,
       
-      function( new_source, object_b, list_of_objects, new_range )
+      function( cat, new_source, object_b, list_of_objects, new_range )
           
           return distributivity_function(
                    new_source, object_b, list_of_objects, new_range, left_distributivity_expanding_permutation, true );
@@ -1390,7 +1382,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     ##
     AddLeftDistributivityFactoringWithGivenObjects( category,
       
-      function( new_source, object_b, list_of_objects, new_range )
+      function( cat, new_source, object_b, list_of_objects, new_range )
           
           return distributivity_function(
                    new_source, object_b, list_of_objects, new_range, left_distributivity_expanding_permutation, false );
@@ -1725,7 +1717,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
 
     ##
     AddAssociatorLeftToRightWithGivenTensorProducts( category,
-      function( new_source, object_a, object_b, object_c, new_range )
+      function( cat, new_source, object_a, object_b, object_c, new_range )
         local object_a_list, object_b_list, object_c_list, result_morphism,
               object_a_expanded_list, object_b_expanded_list, object_c_expanded_list,
               elem, morphism, summand_list, inner_summand_list, outer_summand_list, innermost_summand_list,
@@ -2289,7 +2281,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     AddBraidingWithGivenTensorProducts( category,
-      function( object_a_tensored_object_b, object_a, object_b, object_b_tensored_object_a )
+      function( cat, object_a_tensored_object_b, object_a, object_b, object_b_tensored_object_a )
         local object_a_list, object_b_list, result_morphism, object_a_expanded_list, object_b_expanded_list,
               morphism, outer_summand_list, inner_summand_list, summand_list, elem, elem_a, elem_b;
         
@@ -2396,14 +2388,14 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     end );
     
     AddLeftUnitorWithGivenTensorProduct( category,
-      function( object, tensor_product )
+      function( cat, object, tensor_product )
         
         return IdentityMorphism( object );
         
     end );
     
     AddRightUnitorWithGivenTensorProduct( category,
-      function( object, tensor_product )
+      function( cat, object, tensor_product )
         
         return IdentityMorphism( object );
         
@@ -2412,7 +2404,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     AddDualOnObjects( category, 
-      function( object )
+      function( cat, object )
         local object_list, dual_list, elem;
         
         object_list := SemisimpleCategoryObjectList( object );
@@ -2431,7 +2423,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     AddDualOnMorphismsWithGivenDuals( category,
-      function( dual_source, morphism, dual_range )
+      function( cat, dual_source, morphism, dual_range )
         local morphism_list;
         
         morphism_list := SemisimpleCategoryMorphismList( morphism );
@@ -2447,7 +2439,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     AddCoevaluationForDualWithGivenTensorProduct( category,
-      function( unit, object, tensor_object )
+      function( cat, unit, object, tensor_object )
         local object_list, dual_object, dual_object_list, object_expanded_list, elem,
               dual_object_expanded_list, dim, matrix_list, zero_list,
               summand_list, trivial_chi, vector_space, vector_space_morphism,
@@ -2533,7 +2525,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       
     ##
     AddEvaluationForDualWithGivenTensorProduct( category,
-      function( tensor_object, object, unit )
+      function( cat, tensor_object, object, unit )
         local object_list, dual_object, dual_object_list, object_expanded_list, elem,
               dual_object_expanded_list, trivial_chi, dim, vector_space, vector_space_morphism,
               result_morphism, summand_list, morphism, string, string_entry, i, zero_list;
@@ -2626,7 +2618,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
 #     ##
 #     AddMorphismToBidualWithGivenBidual( category,
-#       function( object, bidual_of_object )
+#       function( cat, object, bidual_of_object )
 #         
 #         return VectorSpaceMorphism( object,
 #                                     HomalgIdentityMatrix( Dimension( object ), homalg_field ),
@@ -2729,7 +2721,7 @@ InstallMethod( SemisimpleCategory,
     
     semisimple_category := CreateCapCategory( name );
     
-    semisimple_category!.category_as_first_argument := false;
+    semisimple_category!.category_as_first_argument := true;
     
     SetIsAbelianCategory( semisimple_category, true );
     
