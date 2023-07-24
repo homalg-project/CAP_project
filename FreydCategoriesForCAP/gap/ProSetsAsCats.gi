@@ -64,7 +64,7 @@ InstallMethod( ProSetAsCategory,
                         fail
                         : overhead := false );
     
-    category!.category_as_first_argument := false;
+    category!.category_as_first_argument := true;
     
     SetIncidenceMatrix( category, incidence_matrix );
     
@@ -131,43 +131,51 @@ end );
 ##
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_PROSET_AS_CATEGORY,
 
-
-
   function( category )
     local emptySet, OneElementSet;
 
     emptySet := InitialObject( FREYD_CATEGORIES_SkeletalFinSets );
     OneElementSet := TerminalObject( FREYD_CATEGORIES_SkeletalFinSets );
+
     ##
     AddIsEqualForObjects( category,
-        function( a, b )
+      function( cat, a, b )
 
-            return UnderlyingInteger( a ) = UnderlyingInteger( b );
+        return UnderlyingInteger( a ) = UnderlyingInteger( b );
 
     end );
 
     ##
-    AddIsEqualForMorphisms( category, ReturnTrue );
+    AddIsEqualForMorphisms( category,
+      function( cat, alpha, beta )
+
+        return true;
+
+    end );
 
     ##
-    AddIsCongruentForMorphisms( category, ReturnTrue );
+    AddIsCongruentForMorphisms( category,
+      function( cat, alpha, beta )
+
+        return true;
+
+    end );
 
     ##
     AddIsWellDefinedForObjects( category,
-      function( obj )
+      function( cat, obj )
 
         return UnderlyingInteger( obj ) in [1 .. Size( category )];
+
     end );
 
     ##
     AddIsWellDefinedForMorphisms( category,
-      function( alpha )
+      function( cat, alpha )
+        local m;
 
         ## tests if the morphism satisfies our specification
-        local m;
         m := IncidenceMatrix( category );
-
-
 
         return m[UnderlyingInteger(Source(alpha))][UnderlyingInteger(Range(alpha))] = 1;
 
@@ -175,7 +183,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_PROSET_AS_CATEGORY,
 
     ##
     AddPreCompose( category,
-      function( alpha, beta )
+      function( cat, alpha, beta )
 
         ## a -- alpha --> b -- beta --> c
         return ProSetAsCategoryMorphism( Source( alpha ), Range( beta ) );
@@ -184,7 +192,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_PROSET_AS_CATEGORY,
 
     ##
     AddIdentityMorphism( category,
-      function( obj )
+      function( cat, obj )
 
         ## Id( obj )
         return ProSetAsCategoryMorphism( obj , obj );
@@ -193,92 +201,104 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_PROSET_AS_CATEGORY,
 
     ##
     AddInverseForMorphisms( category,
-      function( alpha )
+      function( cat, alpha )
 
          return ProSetAsCategoryMorphism(Range(alpha), Source(alpha));
 
-
-  end );
+    end );
 
     ##
     AddIsIsomorphism( category,
-      function( alpha )
+      function( cat, alpha )
         local m, s, r;
-          ## check if inverse exists
-          m := IncidenceMatrix(category);
-          s := UnderlyingInteger(Source(alpha));
-          r := UnderlyingInteger(Range(alpha));
 
-          if m[r][s] = 1 then
-            return true;
-          else return false;
-          fi;
+        ## check if inverse exists
+        m := IncidenceMatrix(category);
+        s := UnderlyingInteger(Source(alpha));
+        r := UnderlyingInteger(Range(alpha));
 
+        if m[r][s] = 1 then
+          return true;
+        else return false;
+        fi;
 
     end );
 
     ##
-    AddIsEpimorphism( category, ReturnTrue );
+    AddIsEpimorphism( category,
+      function( cat, alpha )
+
+        return true;
+
+    end );
 
     ##
-    AddIsMonomorphism( category,ReturnTrue);
+    AddIsMonomorphism( category,
+      function( cat, alpha )
+
+        return true;
+
+    end );
 
     ##
     AddIsLiftable( category,
-      function( alpha, beta )
+      function( cat, alpha, beta )
+        local s_alpha, s_beta;
 
-      ## decision: if the lift exists
-      local s_alpha, s_beta;
-      s_alpha := UnderlyingInteger( Source( alpha ) );
-      s_beta := UnderlyingInteger( Source( beta ) );
-      return IncidenceMatrix( category )[ s_alpha ][s_beta] = 1;
+        ## decision: if the lift exists
+        s_alpha := UnderlyingInteger( Source( alpha ) );
+        s_beta := UnderlyingInteger( Source( beta ) );
+
+        return IncidenceMatrix( category )[ s_alpha ][s_beta] = 1;
 
     end );
 
     ##
-    AddIsColiftable( category, function( alpha, beta )
+    AddIsColiftable( category,
+      function( cat, alpha, beta )
+        local r_alpha, r_beta;
 
-      ## decision: if the colift exists
-      local r_alpha, r_beta;
-      r_alpha := UnderlyingInteger( Range( alpha ) );
-      r_beta := UnderlyingInteger( Range( beta ) );
-      return IncidenceMatrix( category )[ r_alpha ][r_beta] = 1;
+        ## decision: if the colift exists
+        r_alpha := UnderlyingInteger( Range( alpha ) );
+        r_beta := UnderlyingInteger( Range( beta ) );
+
+        return IncidenceMatrix( category )[ r_alpha ][r_beta] = 1;
 
     end );
 
     ##
     AddLift( category,
-        function( alpha, beta )
+      function( cat, alpha, beta )
 
-      ## decision: if the lift exists
+        ## decision: if the lift exists
 
-      ##  if it exists -> output the lift
-      if IsLiftable(alpha, beta) then
-        return ProSetAsCategoryMorphism( Source( alpha ) , Source( beta ) );
-      ## if it does not exist -> fail
-      else return fail;
-      fi;
+        ##  if it exists -> output the lift
+        if IsLiftable(alpha, beta) then
+          return ProSetAsCategoryMorphism( Source( alpha ) , Source( beta ) );
+        ## if it does not exist -> fail
+        else return fail;
+        fi;
 
     end );
 
     ##
     AddColift( category,
-        function( alpha, beta )
+      function( cat, alpha, beta )
 
-      ## decision: if the colift exists
+        ## decision: if the colift exists
 
-      ##  if it exists -> output the colift
-      if IsColiftable(alpha, beta) then
-        return ProSetAsCategoryMorphism( Range( alpha ) , Range( beta ) );
-      ## if it does not exist -> fail
-      else return fail;
-      fi;
+        ##  if it exists -> output the colift
+        if IsColiftable(alpha, beta) then
+          return ProSetAsCategoryMorphism( Range( alpha ) , Range( beta ) );
+        ## if it does not exist -> fail
+        else return fail;
+        fi;
 
     end );
 
     ## Homomorphism structure
     AddHomomorphismStructureOnObjects( category,
-      function( a, b )
+      function( cat, a, b )
         local m;
 
         m := IncidenceMatrix(category);
@@ -291,31 +311,38 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_PROSET_AS_CATEGORY,
 
     ##
     AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
-      function( source, alpha, beta, range )
+      function( cat, source, alpha, beta, range )
+
         if IsEqualForObjects(source, OneElementSet )then
           return IdentityMorphism( source );
 
         else return UniversalMorphismFromInitialObject( range );
         fi;
+
     end );
 
     ##
     AddDistinguishedObjectOfHomomorphismStructure( category,
-      function()
+      function( cat )
+
         return OneElementSet;
+
     end );
 
     ##
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
-      function( alpha )
+      function( cat, alpha )
+
         return IdentityMorphism( OneElementSet );
 
     end );
 
     ##
     AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
-      function( a, b, mor )
+      function( cat, a, b, mor )
+
           return ProSetAsCategoryMorphism( a, b );
+
     end );
 
 end );
