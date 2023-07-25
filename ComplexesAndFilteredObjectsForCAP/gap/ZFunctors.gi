@@ -55,7 +55,7 @@ InstallMethod( ZFunctorCategory,
     
     z_functor_category := CreateCapCategory( name : is_computable := false );
     
-    z_functor_category!.category_as_first_argument := false;
+    z_functor_category!.category_as_first_argument := true;
     
     SetUnderlyingCategory( z_functor_category, category );
     
@@ -201,7 +201,7 @@ BindGlobal( "ADD_PRECOMPOSE_IN_Z_FUNCTORS",
       
       AddPreCompose( ZFunctorCategory( category ),
           
-          function( mor_left, mor_right )
+          function( cat, mor_left, mor_right )
               
               morphism_func := function( index )
                   
@@ -225,7 +225,7 @@ BindGlobal( "ADD_IDENTITY_MORPHISM_IN_Z_FUNCTORS",
       
       AddIdentityMorphism( ZFunctorCategory( category ),
           
-          function( object )
+          function( cat, object )
               
               morphism_func := function( index )
                   
@@ -249,7 +249,7 @@ BindGlobal( "ADD_INVERSE_IN_Z_FUNCTORS",
     
     AddInverseForMorphisms( ZFunctorCategory( category ),
         
-        function( isomorphism )
+        function( cat, isomorphism )
             
             morphism_func := function( index )
                 
@@ -273,7 +273,7 @@ BindGlobal( "ADD_MONO_AS_KERNEL_LIFT_IN_Z_FUNCTORS",
     
     AddLiftAlongMonomorphism( ZFunctorCategory( category ),
                          
-      function( monomorphism, test_morphism )
+      function( cat, monomorphism, test_morphism )
         
         morphism_func := function( index ) return LiftAlongMonomorphism( monomorphism[ index ], test_morphism[ index ] );
         
@@ -295,7 +295,7 @@ BindGlobal( "ADD_EPI_AS_COKERNEL_COLIFT_IN_Z_FUNCTORS",
     
     AddColiftAlongEpimorphism( ZFunctorCategory( category ),
                          
-      function( epimorphism, test_morphism )
+      function( cat, epimorphism, test_morphism )
         
         morphism_func := function( index ) return ColiftAlongEpimorphism( epimorphism[ index ], test_morphism[ index ] );
         
@@ -317,7 +317,7 @@ BindGlobal( "ADD_KERNEL_OBJECT_IN_Z_FUNCTORS",
 
       AddKernelObject( ZFunctorCategory( category ),
         
-        function( morphism )
+        function( cat, morphism )
           
           object_func := function( index )
               
@@ -356,7 +356,7 @@ BindGlobal( "ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS",
 
       AddKernelEmbeddingWithGivenKernelObject( ZFunctorCategory( category ),
         
-        function( morphism, kernel )
+        function( cat, morphism, kernel )
           
           morphism_func := function( index )
               
@@ -379,7 +379,7 @@ BindGlobal( "ADD_KERNEL_LIFT_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS",
 
       AddKernelLiftWithGivenKernelObject( ZFunctorCategory( category ),
         
-        function( morphism, test_object, test_morphism, kernel )
+        function( cat, morphism, test_object, test_morphism, kernel )
           
           morphism_func := function( index )
               
@@ -403,7 +403,7 @@ BindGlobal( "ADD_COKERNEL_IN_Z_FUNCTORS",
 
       AddCokernelObject( ZFunctorCategory( category ),
         
-        function( morphism )
+        function( cat, morphism )
           
           object_func := function( index )
               
@@ -442,7 +442,7 @@ BindGlobal( "ADD_COKERNEL_PROJ_WITH_GIVEN_COKERNEL_IN_Z_FUNCTORS",
 
       AddCokernelProjectionWithGivenCokernelObject( ZFunctorCategory( category ),
         
-        function( morphism, cokernel )
+        function( cat, morphism, cokernel )
           
           morphism_func := function( index )
               
@@ -465,7 +465,7 @@ BindGlobal( "ADD_COKERNEL_COLIFT_WITH_GIVEN_COKERNEL_IN_Z_FUNCTORS",
 
       AddCokernelColiftWithGivenCokernelObject( ZFunctorCategory( category ),
         
-        function( morphism, test_object, test_morphism, cokernel )
+        function( cat, morphism, test_object, test_morphism, cokernel )
           
           morphism_func := function( index )
               
@@ -489,7 +489,7 @@ BindGlobal( "ADD_ZERO_OBJECT_IN_Z_FUNCTORS",
     
     AddZeroObject( ZFunctorCategory( category ),
       
-      function( )
+      function( cat )
         
         object_func := function( index ) return ZeroObject( category ); end;
         
@@ -512,7 +512,7 @@ BindGlobal( "ADD_TERMINAL_OBJECT_IN_Z_FUNCTORS",
     
     AddTerminalObject( ZFunctorCategory( category ),
       
-      function( )
+      function( cat )
         
         object_func := function( index ) return TerminalObject( category ); end;
         
@@ -534,7 +534,7 @@ BindGlobal( "ADD_UNIVERSAL_MORPHISM_INTO_TERMINAL_OBJECT_WITH_GIVEN_TERMINAL_OBJ
     
     AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( ZFunctorCategory( category ),
       
-      function( object, terminal_object )
+      function( cat, object, terminal_object )
         
         morphism_func := function( index ) return UniversalMorphismIntoTerminalObject( object[ index ] ); end;
         
@@ -555,7 +555,7 @@ BindGlobal( "ADD_INITIAL_OBJECT_IN_Z_FUNCTORS",
     
     AddInitialObject( ZFunctorCategory( category ),
       
-      function( )
+      function( cat )
         
         object_func := function( index ) return InitialObject( category ); end;
         
@@ -577,7 +577,7 @@ BindGlobal( "ADD_UNIVERSAL_MORPHISM_FROM_INITIAL_OBJECT_WITH_GIVEN_INITIAL_OBJEC
     
     AddUniversalMorphismFromInitialObjectWithGivenInitialObject( ZFunctorCategory( category ),
       
-      function( object, initial_object )
+      function( cat, object, initial_object )
         
         morphism_func := function( index ) return UniversalMorphismFromInitialObject( object[ index ] ); end;
         
@@ -598,7 +598,7 @@ BindGlobal( "ADD_DIRECT_PRODUCT_IN_Z_FUNCTORS",
       
       AddDirectProduct( ZFunctorCategory( category ),
         
-        function( object_list )
+        function( cat, object_list )
             
             object_func := function( index ) return DirectProduct( List( object_list, obj -> obj[ index ] ) ); end;
             
@@ -619,7 +619,7 @@ BindGlobal( "ADD_PROJECTION_IN_FACTOR_OF_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUC
       
       AddProjectionInFactorOfDirectProductWithGivenDirectProduct( ZFunctorCategory( category ),
         
-        function( object_list, projection_number, direct_product )
+        function( cat, object_list, projection_number, direct_product )
           
           differential_func := function( index )
             
@@ -642,7 +642,7 @@ BindGlobal( "ADD_UNIVERSAL_MORPHISM_INTO_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUC
       
       AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( ZFunctorCategory( category ),
         
-        function( diagram, test_object, source, direct_product )
+        function( cat, diagram, test_object, source, direct_product )
           
           differential_func := function( index )
               
@@ -670,7 +670,7 @@ BindGlobal( "ADD_COPRODUCT_IN_Z_FUNCTORS",
       
       AddCoproduct( ZFunctorCategory( category ),
         
-        function( object_list )
+        function( cat, object_list )
             
             object_func := function( index ) return Coproduct( List( object_list, obj -> obj[ index ] ) ); end;
             
@@ -691,7 +691,7 @@ BindGlobal( "ADD_INJECTION_OF_COFACTOR_OF_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_Z_FU
       
       AddInjectionOfCofactorOfCoproductWithGivenCoproduct( ZFunctorCategory( category ),
         
-        function( object_list, injection_number, coproduct )
+        function( cat, object_list, injection_number, coproduct )
           
           differential_func := function( index )
             
@@ -714,7 +714,7 @@ BindGlobal( "ADD_UNIVERSAL_MORPHISM_FROM_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_Z_FUN
       
       AddUniversalMorphismFromCoproductWithGivenCoproduct( ZFunctorCategory( category ),
         
-        function( diagram, test_object, sink, coproduct )
+        function( cat, diagram, test_object, sink, coproduct )
           
           differential_func := function( index )
               
@@ -742,7 +742,7 @@ BindGlobal( "ADD_DIRECT_SUM_IN_Z_FUNCTORS",
     
     AddDirectSum( ZFunctorCategory( category ),
       
-      function( object_list )
+      function( cat, object_list )
         
         object_func := function( index ) return DirectSum( List( object_list, obj -> obj[ index ] ) ); end;
         
@@ -764,7 +764,7 @@ BindGlobal( "ADD_FIBER_PRODUCT_IN_Z_FUNCTORS",
       
       AddFiberProduct( ZFunctorCategory( category ),
         
-        function( morphism_list )
+        function( cat, morphism_list )
             
             object_func := function( index ) return FiberProduct( List( morphism_list, mor -> mor[ index ] ) ); end;
             
@@ -793,7 +793,7 @@ BindGlobal( "ADD_PROJECTION_IN_FACTOR_OF_PULLBACK_WITH_GIVEN_PULLBACK_IN_Z_FUNCT
       
       AddProjectionInFactorOfFiberProductWithGivenFiberProduct( ZFunctorCategory( category ),
         
-        function( morphism_list, projection_number, pullback )
+        function( cat, morphism_list, projection_number, pullback )
           
           differential_func := function( index )
             
@@ -816,7 +816,7 @@ BindGlobal( "ADD_UNIVERSAL_MORPHISM_INTO_PULLBACK_WITH_GIVEN_PULLBACK_IN_Z_FUNCT
       
       AddUniversalMorphismIntoFiberProductWithGivenFiberProduct( ZFunctorCategory( category ),
         
-        function( diagram, test_object, source, pullback )
+        function( cat, diagram, test_object, source, pullback )
           
           differential_func := function( index )
               
@@ -844,7 +844,7 @@ BindGlobal( "ADD_PUSHOUT_IN_Z_FUNCTORS",
       
       AddPushout( ZFunctorCategory( category ),
         
-        function( morphism_list )
+        function( cat, morphism_list )
             
             object_func := function( index ) return Pushout( List( morphism_list, mor -> mor[ index ] ) ); end;
             
@@ -873,7 +873,7 @@ BindGlobal( "ADD_INJECTION_OF_COFACTOR_OF_PUSHOUT_WITH_GIVEN_PUSHOUT_IN_Z_FUNCTO
       
       AddInjectionOfCofactorOfPushoutWithGivenPushout( ZFunctorCategory( category ),
         
-        function( morphism_list, injection_number, pushout )
+        function( cat, morphism_list, injection_number, pushout )
           
           differential_func := function( index )
             
@@ -896,7 +896,7 @@ BindGlobal( "ADD_UNIVERSAL_MORPHISM_FROM_PUSHOUT_WITH_GIVEN_PUSHOUT_IN_Z_FUNCTOR
       
       AddUniversalMorphismFromPushoutWithGivenPushout( ZFunctorCategory( category ),
         
-        function( diagram, test_object, sink, pushout )
+        function( cat, diagram, test_object, sink, pushout )
           
           differential_func := function( index )
               
@@ -924,7 +924,7 @@ BindGlobal( "ADD_ADDITION_FOR_MORPHISMS_IN_Z_FUNCTORS",
       
       AddAdditionForMorphisms( ZFunctorCategory( category ),
       
-        function( morphism1, morphism2 )
+        function( cat, morphism1, morphism2 )
           
           differential_func := function( index )
               
@@ -949,7 +949,7 @@ BindGlobal( "ADD_ADDITIVE_INVERSE_FOR_MORPHISMS_IN_Z_FUNCTORS",
       
       AddAdditiveInverseForMorphisms( ZFunctorCategory( category ),
                                     
-        function( morphism )
+        function( cat, morphism )
           
           differential_func := function( index ) return AdditiveInverse( morphism[ index ] ); end;
           
@@ -970,7 +970,7 @@ BindGlobal( "ADD_ZERO_MORPHISM_IN_Z_FUNCTORS",
 
       AddZeroMorphism( ZFunctorCategory( category ),
                      
-        function( source, range )
+        function( cat, source, range )
           
           differential_func := function( index ) return ZeroMorphism( source[ index ], range[ index ] ); end;
           

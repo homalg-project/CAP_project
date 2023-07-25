@@ -62,7 +62,7 @@ InstallMethod( CocomplexCategory,
     
     cocomplex_category := CreateCapCategory( name : is_computable := false );
     
-    cocomplex_category!.category_as_first_argument := false;
+    cocomplex_category!.category_as_first_argument := true;
     
     SetUnderlyingCategory( cocomplex_category, category );
     
@@ -95,7 +95,7 @@ InstallMethod( ComplexCategory,
     
     complex_category := CreateCapCategory( name : is_computable := false );
     
-    complex_category!.category_as_first_argument := false;
+    complex_category!.category_as_first_argument := true;
     
     SetUnderlyingCategory( complex_category, category );
     
@@ -128,7 +128,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
         
         AddPreCompose( category_getter( category ),
               
-          function( mor_left, mor_right )
+          function( cat, mor_left, mor_right )
             local source, range;
             
             source := Source( mor_left );
@@ -149,7 +149,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
           
           AddIdentityMorphism( category_getter( category ),
               
-              function( object )
+              function( cat, object )
                 
                 return morphism_constructor( object, IdentityMorphism( UnderlyingZFunctorCell( object ) ), object );
                 
@@ -165,7 +165,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
         
         AddInverseForMorphisms( category_getter( category ),
             
-            function( isomorphism )
+            function( cat, isomorphism )
               local source, range;
               
               source := Range( isomorphism );
@@ -186,7 +186,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
         
         AddLiftAlongMonomorphism( category_getter( category ),
             
-            function( monomorphism, test_morphism )
+            function( cat, monomorphism, test_morphism )
               local source, range;
               
               source := Source( test_morphism );
@@ -207,7 +207,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
         
         AddColiftAlongEpimorphism( category_getter( category ),
                              
-          function( epimorphism, test_morphism )
+          function( cat, epimorphism, test_morphism )
             local source, range;
             
             source := Range( epimorphism );
@@ -228,7 +228,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
 
           AddKernelObject( category_getter( category ),
             
-            function( morphism )
+            function( cat, morphism )
               
               return object_constructor( KernelObject( UnderlyingZFunctorCell( morphism ) ) );
               
@@ -243,7 +243,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
 
           AddKernelEmbeddingWithGivenKernelObject( category_getter( category ),
             
-            function( morphism, kernel )
+            function( cat, morphism, kernel )
               local range;
               
               range := Source( morphism );
@@ -261,7 +261,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
 
           AddKernelLiftWithGivenKernelObject( category_getter( category ),
             
-            function( morphism, test_object, test_morphism, kernel )
+            function( cat, morphism, test_object, test_morphism, kernel )
               local source;
               
               source := Source( test_morphism );
@@ -280,7 +280,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
 
           AddCokernelObject( category_getter( category ),
             
-            function( morphism )
+            function( cat, morphism )
               
               return object_constructor( CokernelObject( UnderlyingZFunctorCell( morphism ) ) );
               
@@ -295,7 +295,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
 
           AddCokernelProjectionWithGivenCokernelObject( category_getter( category ),
             
-            function( morphism, cokernel )
+            function( cat, morphism, cokernel )
               local source;
               
               source := Range( morphism );
@@ -313,7 +313,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
 
           AddCokernelColiftWithGivenCokernelObject( category_getter( category ),
             
-            function( morphism, test_object, test_morphism, cokernel )
+            function( cat, morphism, test_object, test_morphism, cokernel )
               local range;
               
               range := Range( test_morphism );
@@ -332,7 +332,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
         
         AddZeroObject( category_getter( category ),
           
-          function( )
+          function( cat )
             
             return object_constructor( ZeroObject( ZFunctorCategory( category ) ) );
             
@@ -348,7 +348,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
         
         AddTerminalObject( category_getter( category ),
           
-          function( )
+          function( cat )
             
             return object_constructor( TerminalObject( ZFunctorCategory( category ) ) );
             
@@ -363,7 +363,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
         
         AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( category_getter( category ),
           
-          function( object, terminal_object )
+          function( cat, object, terminal_object )
             
             return morphism_constructor( object,
                      UniversalMorphismIntoTerminalObjectWithGivenTerminalObject(
@@ -381,7 +381,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
         
         AddInitialObject( category_getter( category ),
           
-          function( )
+          function( cat )
             
             return object_constructor( InitialObject( ZFunctorCategory( category ) ) );
             
@@ -396,7 +396,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
         
         AddUniversalMorphismFromInitialObjectWithGivenInitialObject( category_getter( category ),
           
-          function( object, initial_object )
+          function( cat, object, initial_object )
             
             return morphism_constructor( initial_object,
                      UniversalMorphismFromInitialObjectWithGivenInitialObject(
@@ -414,7 +414,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
           
           AddDirectProduct( category_getter( category ),
             
-            function( object_list )
+            function( cat, object_list )
               
               return object_constructor( DirectProduct( List( object_list, obj -> UnderlyingZFunctorCell( obj ) ) ) );
               
@@ -429,7 +429,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
           
           AddProjectionInFactorOfDirectProductWithGivenDirectProduct( category_getter( category ),
             
-            function( object_list, projection_number, direct_product )
+            function( cat, object_list, projection_number, direct_product )
               local range;
               
               range := object_list[ projection_number ];
@@ -449,7 +449,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
           
           AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( category_getter( category ),
             
-            function( diagram, test_object, source, direct_product )
+            function( cat, diagram, test_object, source, direct_product )
               
               return morphism_constructor( Source( source[1] ),
                        UniversalMorphismIntoDirectProductWithGivenDirectProduct(
@@ -471,7 +471,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
           
           AddCoproduct( category_getter( category ),
             
-            function( object_list )
+            function( cat, object_list )
               
               return object_constructor( Coproduct( List( object_list, obj -> UnderlyingZFunctorCell( obj ) ) ) );
               
@@ -486,7 +486,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
           
           AddInjectionOfCofactorOfCoproductWithGivenCoproduct( category_getter( category ),
             
-            function( object_list, injection_number, coproduct )
+            function( cat, object_list, injection_number, coproduct )
               local source;
               
               source := object_list[ injection_number ];
@@ -506,7 +506,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
           
           AddUniversalMorphismFromCoproductWithGivenCoproduct( category_getter( category ),
             
-            function( diagram, test_object, sink, coproduct )
+            function( cat, diagram, test_object, sink, coproduct )
               
               return morphism_constructor( coproduct,
                        UniversalMorphismFromCoproductWithGivenCoproduct(
@@ -528,7 +528,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
         
         AddDirectSum( category_getter( category ),
           
-          function( object_list )
+          function( cat, object_list )
             
             return object_constructor( DirectSum( List( object_list, obj -> UnderlyingZFunctorCell( obj ) ) ) );
             
@@ -544,7 +544,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
           
           AddFiberProduct( category_getter( category ),
             
-            function( morphism_list )
+            function( cat, morphism_list )
               
               return object_constructor( FiberProduct( List( morphism_list, mor -> UnderlyingZFunctorCell( mor ) ) ) );
               
@@ -559,7 +559,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
           
           AddProjectionInFactorOfFiberProductWithGivenFiberProduct( category_getter( category ),
             
-            function( morphism_list, projection_number, pullback )
+            function( cat, morphism_list, projection_number, pullback )
               local range;
               
               range := Source( morphism_list[ projection_number ] );
@@ -584,7 +584,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
           
           AddUniversalMorphismIntoFiberProductWithGivenFiberProduct( category_getter( category ),
             
-            function( diagram, test_object, source, pullback )
+            function( cat, diagram, test_object, source, pullback )
               
               return morphism_constructor( Source( source[1] ),
                        UniversalMorphismIntoFiberProductWithGivenFiberProduct(
@@ -606,7 +606,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
           
           AddPushout( category_getter( category ),
             
-            function( morphism_list )
+            function( cat, morphism_list )
               
               return object_constructor( Pushout( List( morphism_list, mor -> UnderlyingZFunctorCell( mor ) ) ) );
               
@@ -621,7 +621,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
           
           AddInjectionOfCofactorOfPushoutWithGivenPushout( category_getter( category ),
             
-            function( morphism_list, injection_number, pushout )
+            function( cat, morphism_list, injection_number, pushout )
               local source;
               
               source := Range( morphism_list[ injection_number ] );
@@ -646,7 +646,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
           
           AddUniversalMorphismFromPushoutWithGivenPushout( category_getter( category ),
             
-            function( diagram, test_object, sink, pushout )
+            function( cat, diagram, test_object, sink, pushout )
 
               return morphism_constructor( pushout,
                        UniversalMorphismFromPushoutWithGivenPushout(
@@ -668,7 +668,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
           
           AddAdditionForMorphisms( category_getter( category ),
           
-            function( morphism1, morphism2 )
+            function( cat, morphism1, morphism2 )
               
               return morphism_constructor( Source( morphism1 ),
                      UnderlyingZFunctorCell( morphism1 ) + UnderlyingZFunctorCell( morphism2 ),
@@ -687,7 +687,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
           
           AddAdditiveInverseForMorphisms( category_getter( category ),
                                         
-            function( morphism )
+            function( cat, morphism )
               
               return morphism_constructor( Source( morphism ), -UnderlyingZFunctorCell( morphism ), Range( morphism ) );
               
@@ -704,7 +704,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
 
           AddZeroMorphism( category_getter( category ),
                          
-            function( source, range )
+            function( cat, source, range )
               
               return morphism_constructor( source, ZeroMorphism( UnderlyingZFunctorCell( source ), UnderlyingZFunctorCell( range ) ), range );
               

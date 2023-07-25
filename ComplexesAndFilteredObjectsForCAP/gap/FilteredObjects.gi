@@ -56,7 +56,7 @@ InstallMethod( CategoryOfAscendingFilteredObjects,
     
     filtered_objects_category := CreateCapCategory( name : is_computable := false );
     
-    filtered_objects_category!.category_as_first_argument := false;
+    filtered_objects_category!.category_as_first_argument := true;
     
     SetUnderlyingCategory( filtered_objects_category, category );
     
@@ -83,7 +83,7 @@ InstallMethod( CategoryOfDescendingFilteredObjects,
     
     filtered_objects_category := CreateCapCategory( name : is_computable := false );
     
-    filtered_objects_category!.category_as_first_argument := false;
+    filtered_objects_category!.category_as_first_argument := true;
     
     SetUnderlyingCategory( filtered_objects_category, category );
     
@@ -116,7 +116,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
         
         AddPreCompose( category_getter( category ),
               
-          function( mor_left, mor_right )
+          function( cat, mor_left, mor_right )
             local source, range;
             
             source := Source( mor_left );
@@ -137,7 +137,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
           
           AddIdentityMorphism( category_getter( category ),
               
-              function( object )
+              function( cat, object )
                 
                 return morphism_constructor( object, IdentityMorphism( UnderlyingZFunctorCell( object ) ), object );
                 
@@ -153,7 +153,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
         
         AddInverseForMorphisms( category_getter( category ),
             
-            function( isomorphism )
+            function( cat, isomorphism )
               local source, range;
               
               source := Range( isomorphism );
@@ -174,7 +174,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
         
         AddLiftAlongMonomorphism( category_getter( category ),
             
-            function( monomorphism, test_morphism )
+            function( cat, monomorphism, test_morphism )
               local source, range;
               
               source := Source( test_morphism );
@@ -195,7 +195,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
 
           AddKernelObject( category_getter( category ),
             
-            function( morphism )
+            function( cat, morphism )
               
               return object_constructor( KernelObject( UnderlyingZFunctorCell( morphism ) ) );
               
@@ -210,7 +210,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
 
           AddKernelEmbeddingWithGivenKernelObject( category_getter( category ),
             
-            function( morphism, kernel )
+            function( cat, morphism, kernel )
               local range;
               
               range := Source( morphism );
@@ -228,7 +228,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
 
           AddKernelLiftWithGivenKernelObject( category_getter( category ),
             
-            function( morphism, test_object, test_morphism, kernel )
+            function( cat, morphism, test_object, test_morphism, kernel )
               local source;
               
               source := Source( test_morphism );
@@ -247,7 +247,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
         
         AddZeroObject( category_getter( category ),
           
-          function( )
+          function( cat )
             
             return object_constructor( ZeroObject( ZFunctorCategory( category ) ) );
             
@@ -263,7 +263,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
         
         AddTerminalObject( category_getter( category ),
           
-          function( )
+          function( cat )
             
             return object_constructor( TerminalObject( ZFunctorCategory( category ) ) );
             
@@ -278,7 +278,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
         
         AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( category_getter( category ),
           
-          function( object, terminal_object )
+          function( cat, object, terminal_object )
             
             return morphism_constructor( object, UniversalMorphismIntoTerminalObject( UnderlyingZFunctorCell( object ) ), terminal_object );
             
@@ -294,7 +294,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
         
         AddInitialObject( category_getter( category ),
           
-          function( )
+          function( cat )
             
             return object_constructor( InitialObject( ZFunctorCategory( category ) ) );
             
@@ -309,7 +309,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
         
         AddUniversalMorphismFromInitialObjectWithGivenInitialObject( category_getter( category ),
           
-          function( object, initial_object )
+          function( cat, object, initial_object )
             
             return morphism_constructor( initial_object, UniversalMorphismFromInitialObject( UnderlyingZFunctorCell( object ) ), object );
         
@@ -325,7 +325,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
           
           AddDirectProduct( category_getter( category ),
             
-            function( object_list )
+            function( cat, object_list )
               
               return object_constructor( DirectProduct( List( object_list, obj -> UnderlyingZFunctorCell( obj ) ) ) );
               
@@ -340,7 +340,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
           
           AddProjectionInFactorOfDirectProductWithGivenDirectProduct( category_getter( category ),
             
-            function( object_list, projection_number, direct_product )
+            function( cat, object_list, projection_number, direct_product )
               local range;
               
               range := object_list[ projection_number ];
@@ -360,7 +360,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
           
           AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( category_getter( category ),
             
-            function( diagram, test_object, source, direct_product )
+            function( cat, diagram, test_object, source, direct_product )
               
               return morphism_constructor( Source( source[1] ),
                        UniversalMorphismIntoDirectProduct(
@@ -382,7 +382,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
           
           AddFiberProduct( category_getter( category ),
             
-            function( morphism_list )
+            function( cat, morphism_list )
               
               return object_constructor( FiberProduct( List( morphism_list, mor -> UnderlyingZFunctorCell( mor ) ) ) );
               
@@ -397,7 +397,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
           
           AddProjectionInFactorOfFiberProductWithGivenFiberProduct( category_getter( category ),
             
-            function( morphism_list, projection_number, pullback )
+            function( cat, morphism_list, projection_number, pullback )
               local range;
               
               range := Source( morphism_list[ projection_number ] );
@@ -422,7 +422,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
           
           AddUniversalMorphismIntoFiberProductWithGivenFiberProduct( category_getter( category ),
             
-            function( diagram, test_object, source, pullback )
+            function( cat, diagram, test_object, source, pullback )
               
               return morphism_constructor( Source( source[1] ),
                        UniversalMorphismIntoFiberProduct(
@@ -444,7 +444,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
           
           AddAdditionForMorphisms( category_getter( category ),
           
-            function( morphism1, morphism2 )
+            function( cat, morphism1, morphism2 )
               
               return morphism_constructor( Source( morphism1 ),
                      UnderlyingZFunctorCell( morphism1 ) + UnderlyingZFunctorCell( morphism2 ),
@@ -463,7 +463,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
           
           AddAdditiveInverseForMorphisms( category_getter( category ),
                                         
-            function( morphism )
+            function( cat, morphism )
               
               return morphism_constructor( Source( morphism ), -UnderlyingZFunctorCell( morphism ), Range( morphism ) );
               
@@ -480,7 +480,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
 
           AddZeroMorphism( category_getter( category ),
                          
-            function( source, range )
+            function( cat, source, range )
               
               return morphism_constructor( source, ZeroMorphism( UnderlyingZFunctorCell( source ), UnderlyingZFunctorCell( range ) ), range );
               
