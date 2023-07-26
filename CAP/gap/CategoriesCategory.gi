@@ -22,7 +22,12 @@ BindGlobal( "CAP_INTERNAL_CREATE_Cat",
   function(  )
     local cat;
     
-    cat := CreateCapCategory( "Cat", IsCapCategory, IsCapCategoryAsCatObject, IsCapFunctor, IsCapNaturalTransformation : is_computable := false );
+    cat := CreateCapCategory( "Cat",
+                              IsCapCategory,
+                              IsCapCategoryAsCatObject,
+                              IsCapFunctor,
+                              IsCapNaturalTransformation
+                              : is_computable := false );
     
     cat!.category_as_first_argument := true;
     
@@ -40,7 +45,7 @@ InstallMethod( AsCatObject,
     local cat_obj;
     
     cat_obj := CreateCapCategoryObjectWithAttributes( CapCat,
-                                        AsCapCategory, category );
+                                                      AsCapCategory, category );
     
     SetIsWellDefined( cat_obj, true );
     
@@ -507,12 +512,9 @@ AddPreCompose( category,
   function( cat, left_functor, right_functor )
     local new_functor;
     
-    new_functor := CapFunctor( Concatenation( "Precomposition of ",
-                                                 Name( left_functor ),
-                                                 " and ",
-                                                 Name( right_functor ) ),
-                                  AsCapCategory( Source( left_functor ) ),
-                                  AsCapCategory( Range( right_functor ) ) );
+    new_functor := CapFunctor( Concatenation( "Precomposition of ", Name( left_functor ), " and ", Name( right_functor ) ),
+                               AsCapCategory( Source( left_functor ) ),
+                               AsCapCategory( Range( right_functor ) ) );
     
     AddObjectFunction( new_functor,
       
