@@ -170,7 +170,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddPreCompose( deductive_system,
                    
-      function( left_morphism, right_morphism )
+      function( cat, left_morphism, right_morphism )
         
         return DeductiveSystemMorphism( Source( left_morphism ), "PreCompose", [ left_morphism, right_morphism ], Range( right_morphism ) );
         
@@ -178,7 +178,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddIdentityMorphism( deductive_system,
                          
-      function( object )
+      function( cat, object )
         
         return DeductiveSystemMorphism( object, "IdentityMorphism", [ object ], object );
         
@@ -186,7 +186,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddInverseForMorphisms( deductive_system,
                 
-      function( morphism )
+      function( cat, morphism )
         
         return DeductiveSystemMorphism( Range( morphism ), "Inverse", [ morphism ], Source( morphism ) );
         
@@ -194,7 +194,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddLiftAlongMonomorphism( deductive_system,
                          
-      function( monomorphism, test_morphism )
+      function( cat, monomorphism, test_morphism )
         
         return DeductiveSystemMorphism( Source( test_morphism ), "LiftAlongMonomorphism", [ monomorphism, test_morphism ], Source( monomorphism ) );
         
@@ -202,7 +202,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddColiftAlongEpimorphism( deductive_system,
                             
-      function( epimorphism, test_morphism )
+      function( cat, epimorphism, test_morphism )
         
         return DeductiveSystemMorphism( Range( epimorphism ), "ColiftAlongEpimorphism", [ epimorphism, test_morphism ], Range( test_morphism ) );
         
@@ -210,7 +210,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddIsMonomorphism( deductive_system,
                        
-      function( morphism )
+      function( cat, morphism )
         
         return IsMonomorphism( Evaluation( morphism ) );
         
@@ -218,7 +218,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddIsEpimorphism( deductive_system,
                       
-      function( morphism )
+      function( cat, morphism )
         
         return IsEpimorphism( Evaluation( morphism ) );
         
@@ -226,7 +226,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddIsIsomorphism( deductive_system,
                       
-      function( morphism )
+      function( cat, morphism )
         
         return IsIsomorphism( Evaluation( morphism ) );
         
@@ -234,7 +234,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddIsDominating( deductive_system,
                   
-      function( subobject1, subobject2 )
+      function( cat, subobject1, subobject2 )
         
         return IsDominating( Evaluation( subobject1 ), Evaluation( subobject2 ) );
         
@@ -242,7 +242,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddIsCodominating( deductive_system,
                     
-      function( factorobject1, factorobject2 )
+      function( cat, factorobject1, factorobject2 )
         
         return IsCodominating( Evaluation( factorobject1 ), Evaluation( factorobject2 ) );
         
@@ -250,7 +250,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddIsCongruentForMorphisms( deductive_system,
                             
-      function( morphism1, morphism2 )
+      function( cat, morphism1, morphism2 )
         
         return IsCongruentForMorphisms( Evaluation( morphism1 ), Evaluation( morphism2 ) );
         
@@ -258,7 +258,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddIsZeroForMorphisms( deductive_system,
                            
-      function( morphism )
+      function( cat, morphism )
         
         return IsZero( Evaluation( morphism ) );
         
@@ -266,7 +266,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddAdditionForMorphisms( deductive_system,
                              
-      function( morphism1, morphism2 )
+      function( cat, morphism1, morphism2 )
         
         return DeductiveSystemMorphism( Source( morphism1 ), "\+", [ morphism1, morphism2 ], Range( morphism1 ) );
         
@@ -274,7 +274,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddAdditiveInverseForMorphisms( deductive_system,
                                     
-      function( morphism )
+      function( cat, morphism )
         
         return DeductiveSystemMorphism( Source( morphism ), "AdditiveInverse", [ morphism ], Range( morphism ) );
         
@@ -282,7 +282,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddZeroMorphism( deductive_system,
                      
-      function( source, range )
+      function( cat, source, range )
         
         return DeductiveSystemMorphism( source, "ZeroMorphism", [ source, range ], range );
         
@@ -292,7 +292,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddKernelObject( deductive_system,
                
-      function( morphism )
+      function( cat, morphism )
         
         return DeductiveSystemObject( "KernelObject", [ morphism ] );
         
@@ -300,7 +300,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddKernelEmbedding( deductive_system,
                   
-      function( morphism )
+      function( cat, morphism )
         
         return DeductiveSystemMorphism( KernelObject( morphism ), "KernelEmbedding", [ morphism ], Source( morphism ) );
         
@@ -308,7 +308,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddKernelEmbeddingWithGivenKernelObject( deductive_system,
                                  
-      function( morphism, kernel )
+      function( cat, morphism, kernel )
         
         return DeductiveSystemMorphism( kernel, "KernelEmbedding", [ morphism ], Source( morphism ) );
         
@@ -316,7 +316,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddKernelLift( deductive_system,
                    
-      function( morphism, test_object, test_morphism )
+      function( cat, morphism, test_object, test_morphism )
         
         return DeductiveSystemMorphism( Source( test_morphism ), "KernelLift", [ morphism, test_object, test_morphism ], KernelObject( morphism ) );
         
@@ -324,7 +324,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddKernelLiftWithGivenKernelObject( deductive_system,
                                   
-      function( morphism, test_object, test_morphism, kernel )
+      function( cat, morphism, test_object, test_morphism, kernel )
         
         return DeductiveSystemMorphism( Source( test_morphism ), "KernelLift", [ morphism, test_object, test_morphism ], kernel );
         
@@ -332,7 +332,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddCokernelObject( deductive_system,
                  
-      function( morphism )
+      function( cat, morphism )
         
         return DeductiveSystemObject( "CokernelObject", [ morphism ] );
         
@@ -340,7 +340,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddCokernelProjection( deductive_system,
                      
-      function( morphism )
+      function( cat, morphism )
         
         return DeductiveSystemMorphism( Range( morphism ), "CokernelProjection", [ morphism ], CokernelObject( morphism ) );
         
@@ -348,7 +348,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddCokernelProjectionWithGivenCokernelObject( deductive_system,
                                       
-      function( morphism, cokernel )
+      function( cat, morphism, cokernel )
         
         return DeductiveSystemMorphism( Range( morphism ), "CokernelProjection", [ morphism ], cokernel );
         
@@ -356,7 +356,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddCokernelColift( deductive_system,
                        
-      function( morphism, test_object, test_morphism )
+      function( cat, morphism, test_object, test_morphism )
         
         return DeductiveSystemMorphism( CokernelObject( morphism ), "CokernelColift", [ morphism, test_object, test_morphism ], Range( test_morphism ) );
         
@@ -364,7 +364,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddCokernelColiftWithGivenCokernelObject( deductive_system,
                                         
-      function( morphism, test_object, test_morphism, cokernel )
+      function( cat, morphism, test_object, test_morphism, cokernel )
         
         return DeductiveSystemMorphism( cokernel, "CokernelColift", [ morphism, test_object, test_morphism ], Range( test_morphism ) );
         
@@ -372,7 +372,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddZeroObject( deductive_system,
                    
-      function( ) 
+      function( cat )
         
         return DeductiveSystemObject( "ZeroObject", [ category ] );
         
@@ -380,7 +380,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddTerminalObject( deductive_system,
                        
-      function( )
+      function( cat )
         
         return DeductiveSystemObject( "TerminalObject", [ category ] );
         
@@ -388,7 +388,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddUniversalMorphismIntoTerminalObject( deductive_system,
                                             
-      function( object )
+      function( cat, object )
         
         return DeductiveSystemMorphism( object, "UniversalMorphismIntoTerminalObject", [ object ], TerminalObject( deductive_system ) );
         
@@ -396,7 +396,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( deductive_system,
                                             
-      function( object, terminal_object )
+      function( cat, object, terminal_object )
         
         return DeductiveSystemMorphism( object, "UniversalMorphismIntoTerminalObject", [ object ], terminal_object );
         
@@ -404,7 +404,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddInitialObject( deductive_system,
                       
-      function( )
+      function( cat )
         
         return DeductiveSystemObject( "InitialObject", [ category ] );
         
@@ -412,7 +412,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddUniversalMorphismFromInitialObject( deductive_system,
                                            
-      function( object )
+      function( cat, object )
         
         return DeductiveSystemMorphism( InitialObject( object ), "UniversalMorphismFromInitialObject", [ object ], object );
         
@@ -420,7 +420,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddUniversalMorphismFromInitialObjectWithGivenInitialObject( deductive_system,
                                                                  
-      function( object, initial_object )
+      function( cat, object, initial_object )
         
         return DeductiveSystemMorphism( initial_object, "UniversalMorphismFromInitialObject", [ object ], object );
         
@@ -428,7 +428,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddDirectSum( deductive_system,
                   
-      function( object_product_list )
+      function( cat, object_product_list )
         
         return DeductiveSystemObject( "DirectSum", [ object_product_list ] );
         
@@ -436,7 +436,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddCoproduct( deductive_system,
                   
-      function( object_product_list )
+      function( cat, object_product_list )
         
         return DeductiveSystemObject( "Coproduct", [ object_product_list ] );
         
@@ -444,7 +444,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddInjectionOfCofactorOfCoproduct( deductive_system,
                             
-      function( object_product_list, injection_number )
+      function( cat, object_product_list, injection_number )
         local coproduct;
         
         coproduct := Coproduct( object_product_list );
@@ -455,7 +455,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddInjectionOfCofactorOfCoproductWithGivenCoproduct( deductive_system,
                                               
-      function( object_product_list, injection_number, coproduct )
+      function( cat, object_product_list, injection_number, coproduct )
         
         return DeductiveSystemMorphism( object_product_list[ injection_number ], "InjectionOfCofactorOfCoproduct", [ object_product_list, injection_number ], coproduct );
         
@@ -463,7 +463,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddUniversalMorphismFromCoproduct( deductive_system,
                                        
-      function( diagram, test_object, sink )
+      function( cat, diagram, test_object, sink )
         local coproduct;
         
         coproduct := Coproduct( List( sink, Source ) );
@@ -474,7 +474,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddUniversalMorphismFromCoproductWithGivenCoproduct( deductive_system,
                                                          
-      function( diagram, test_object, sink, coproduct )
+      function( cat, diagram, test_object, sink, coproduct )
         
         return DeductiveSystemMorphism( coproduct, "UniversalMorphismFromCoproduct", [ diagram, test_object, sink ], Source( sink[ 1 ] ) );
         
@@ -482,7 +482,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddDirectProduct( deductive_system,
                       
-      function( object_product_list )
+      function( cat, object_product_list )
         
         return DeductiveSystemObject( "DirectProduct", [ object_product_list ] );
         
@@ -490,7 +490,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddProjectionInFactorOfDirectProduct( deductive_system,
                            
-      function( object_product_list, projection_number )
+      function( cat, object_product_list, projection_number )
         local direct_product;
         
         direct_product := DirectProduct( object_product_list );
@@ -501,7 +501,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddProjectionInFactorOfDirectProductWithGivenDirectProduct( deductive_system,
                                                  
-      function( object_product_list, projection_number, direct_product )
+      function( cat, object_product_list, projection_number, direct_product )
         
         return DeductiveSystemMorphism( direct_product, "ProjectionInFactorOfDirectProduct", [ object_product_list, projection_number ], object_product_list[ projection_number ] );
         
@@ -509,7 +509,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddUniversalMorphismIntoDirectProduct( deductive_system,
                                            
-      function( diagram, test_object, source )
+      function( cat, diagram, test_object, source )
         local direct_product;
         
         direct_product := DirectProduct( List( source, Range ) );
@@ -520,7 +520,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( deductive_system,
                                            
-      function( diagram, test_object, source, direct_product )
+      function( cat, diagram, test_object, source, direct_product )
         
         return DeductiveSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoDirectProduct", [ diagram, test_object, source ], direct_product );
         
@@ -528,7 +528,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddFiberProduct( deductive_system,
                  
-      function( diagram )
+      function( cat, diagram )
         
         return DeductiveSystemObject( "FiberProduct", [ diagram ] );
         
@@ -536,7 +536,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddProjectionInFactorOfFiberProduct( deductive_system,
                                      
-      function( diagram, projection_number )
+      function( cat, diagram, projection_number )
         local pullback;
         
         pullback := FiberProduct( diagram );
@@ -547,7 +547,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddProjectionInFactorOfFiberProductWithGivenFiberProduct( deductive_system,
                                      
-      function( diagram, projection_number, pullback )
+      function( cat, diagram, projection_number, pullback )
         
         return DeductiveSystemMorphism( pullback, "ProjectionInFactorOfFiberProduct", [ diagram, projection_number ], Source( diagram[ projection_number ] ) );
         
@@ -555,7 +555,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddUniversalMorphismIntoFiberProduct( deductive_system,
                                       
-      function( diagram, test_object, source )
+      function( cat, diagram, test_object, source )
         local pullback;
         
         pullback := FiberProduct( diagram );
@@ -566,7 +566,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddUniversalMorphismIntoFiberProductWithGivenFiberProduct( deductive_system,
                                       
-      function( diagram, test_object, source, pullback )
+      function( cat, diagram, test_object, source, pullback )
         
         return DeductiveSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoFiberProduct", [ diagram, test_object, source ], pullback );
         
@@ -574,7 +574,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddPushout( deductive_system,
                 
-      function( diagram )
+      function( cat, diagram )
         
         return DeductiveSystemObject( "Pushout", [ diagram ] );
         
@@ -582,7 +582,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddInjectionOfCofactorOfPushout( deductive_system,
                                      
-      function( diagram, injection_number )
+      function( cat, diagram, injection_number )
         local pushout;
         
         pushout := Pushout( diagram );
@@ -593,7 +593,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddInjectionOfCofactorOfPushoutWithGivenPushout( deductive_system,
                                      
-      function( diagram, injection_number, pushout )
+      function( cat, diagram, injection_number, pushout )
         
         return DeductiveSystemMorphism( Range( diagram[ injection_number ] ), "InjectionOfCofactorOfPushout", [ diagram, injection_number ], pushout );
         
@@ -601,7 +601,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddUniversalMorphismFromPushout( deductive_system,
                                      
-      function( diagram, test_object, sink )
+      function( cat, diagram, test_object, sink )
         local pushout;
         
         pushout := Pushout( diagram );
@@ -612,7 +612,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddUniversalMorphismFromPushoutWithGivenPushout( deductive_system,
                                      
-      function( diagram, test_object, sink, pushout )
+      function( cat, diagram, test_object, sink, pushout )
         
         return DeductiveSystemMorphism( pushout, "UniversalMorphismFromPushout", [ diagram, test_object, sink ], Range( sink[ 1 ] ) );
         
@@ -620,7 +620,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddImageObject( deductive_system,
               
-      function( morphism )
+      function( cat, morphism )
         
         return DeductiveSystemObject( "ImageObject", [ morphism ] );
         
@@ -628,7 +628,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddImageEmbedding( deductive_system,
                        
-      function( morphism )
+      function( cat, morphism )
         local image_object;
         
         image_object := ImageObject( morphism );
@@ -639,7 +639,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddImageEmbeddingWithGivenImageObject( deductive_system,
                                      
-      function( morphism, image_object )
+      function( cat, morphism, image_object )
         
         return DeductiveSystemMorphism( image_object, "ImageEmbedding", [ morphism ], Range( morphism ) );
         
@@ -647,7 +647,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddCoastrictionToImage( deductive_system,
                             
-      function( morphism )
+      function( cat, morphism )
         local image_object;
         
         image_object := ImageObject( morphism );
@@ -658,7 +658,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddCoastrictionToImageWithGivenImageObject( deductive_system,
                             
-      function( morphism, image_object )
+      function( cat, morphism, image_object )
         
         return DeductiveSystemMorphism( Source( morphism ), "CoastrictionToImage", [ morphism ], image_object );
         
@@ -666,7 +666,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddUniversalMorphismFromImage( deductive_system,
                                    
-      function( morphism, test_factorization )
+      function( cat, morphism, test_factorization )
         local image_object;
         
         image_object := ImageObject( morphism );
@@ -676,7 +676,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddUniversalMorphismFromImageWithGivenImageObject( deductive_system,
                                    
-      function( morphism, test_factorization, image_object )
+      function( cat, morphism, test_factorization, image_object )
         
         return DeductiveSystemMorphism( image_object, "UniversalMorphismFromImage", [ morphism, test_factorization ], Source( test_factorization[1] ) );
     end );
@@ -697,7 +697,7 @@ InstallMethod( DeductiveSystem,
     
     deductive_system := CreateCapCategory( Concatenation( "Deduction system of ", Name( category ) ) );
     
-    deductive_system!.category_as_first_argument := false;
+    deductive_system!.category_as_first_argument := true;
     
     SetTheoremRecord( deductive_system, TheoremRecord( category ) );
     
