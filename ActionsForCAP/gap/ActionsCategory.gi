@@ -559,14 +559,6 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_ACTIONS_CATEGORY,
   function( category )
     local underlying_category;
     
-    ##
-    AddIsEqualForCacheForObjects( category,
-      IsIdenticalObj );
-    
-    ##
-    AddIsEqualForCacheForMorphisms( category,
-      IsIdenticalObj );
-    
     underlying_category := UnderlyingCategory( category );
     
     if CanCompute( underlying_category, "IsCongruentForMorphisms" ) then

@@ -119,14 +119,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FIELD_AS_CATEGORY,
     field := UnderlyingFieldForHomalg( category );
     
     ##
-    AddIsEqualForCacheForObjects( category,
-      IsIdenticalObj );
-    
-    ##
-    AddIsEqualForCacheForMorphisms( category,
-      IsIdenticalObj );
-    
-    ##
     AddIsEqualForObjects( category,
       function( a, b )
       

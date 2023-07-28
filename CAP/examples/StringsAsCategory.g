@@ -132,14 +132,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
     vowels := "aeiou";
     
     ##
-    AddIsEqualForCacheForObjects( category,
-      IsIdenticalObj );
-    
-    ##
-    AddIsEqualForCacheForMorphisms( category,
-      IsIdenticalObj );
-    
-    ##
     AddIsEqualForObjects( category,
       function( a, b )
       
