@@ -72,8 +72,6 @@ DeclareGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION" );
 #!  lists only contains this pair once, with the higher multiple from both lists.
 DeclareGlobalFunction( "CAP_INTERNAL_MERGE_PRECONDITIONS_LIST" );
 
-DeclareGlobalFunction( "CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS" );
-
 #! @Arguments data_type, human_readable_identifier_list
 #! @Description
 #!  Returns a unary function which throws an error if its argument is not of type <A>data_type</A>.

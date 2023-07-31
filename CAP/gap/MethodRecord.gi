@@ -4910,6 +4910,9 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                 
             fi;
             
+            # io_type is deprecated -> make sure it is not used except here
+            Unbind( current_rec.io_type );
+            
         fi;
         
         if ForAll( current_rec.filter_list, x -> x in [ "element_of_commutative_ring_of_linear_structure", "integer", "nonneg_integer_or_infinity", "category", "object", "object_in_range_category_of_homomorphism_structure", "list_of_objects" ] ) then

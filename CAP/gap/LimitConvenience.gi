@@ -301,7 +301,7 @@ end );
         Assert( 0, Length( limit.diagram_morphism_filter_list ) <= 1 );
         Assert( 0, Length( limit.diagram_morphism_input_type ) <= 1 );
         
-        input_arguments_names := Concatenation( [ "cat" ], functorial_with_given_record.io_type[1] );
+        input_arguments_names := functorial_with_given_record.input_arguments_names;
         
         source_argument_name := input_arguments_names[2];
         range_argument_name := Last( input_arguments_names );
