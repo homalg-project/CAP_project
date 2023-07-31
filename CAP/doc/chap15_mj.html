@@ -226,8 +226,8 @@ Adding precompiled operations for Constructor2
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "CAP", "examples/FieldAsCategory.g" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Qoid := FieldAsCategory( Q );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := FieldAsCategoryMorphism( 1/2, Qoid );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := FieldAsCategoryMorphism( -2/3, Qoid );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := FieldAsCategoryMorphism( Qoid, 1/2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := FieldAsCategoryMorphism( Qoid, -2/3 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := FieldAsCategoryUniqueObject( Qoid );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( a,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(</span>
@@ -242,8 +242,8 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForObjects( HomStructure( Qoid ), DistinguishedObjectOfHomomorphismStructure( Qoid ) );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := FieldAsCategoryMorphism( 3, Qoid );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d := FieldAsCategoryMorphism( 0, Qoid );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := FieldAsCategoryMorphism( Qoid, 3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d := FieldAsCategoryMorphism( Qoid, 0 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">left_coeffs := [ [ a, b ], [ c, d ] ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">right_coeffs := [ [ PreCompose( a, b ), PreCompose( b, c ) ], [ c, PreCompose( a, a ) ] ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">right_side := [ a, b ];;</span>

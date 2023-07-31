@@ -145,8 +145,8 @@
     [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/FieldAsCategory.g" );;[127X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
     [4X[25Xgap>[125X [27XQoid := FieldAsCategory( Q );;[127X[104X
-    [4X[25Xgap>[125X [27Xa := FieldAsCategoryMorphism( 1/2, Qoid );;[127X[104X
-    [4X[25Xgap>[125X [27Xb := FieldAsCategoryMorphism( -2/3, Qoid );;[127X[104X
+    [4X[25Xgap>[125X [27Xa := FieldAsCategoryMorphism( Qoid, 1/2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xb := FieldAsCategoryMorphism( Qoid, -2/3 );;[127X[104X
     [4X[25Xgap>[125X [27Xu := FieldAsCategoryUniqueObject( Qoid );;[127X[104X
     [4X[25Xgap>[125X [27XIsCongruentForMorphisms( a,[127X[104X
     [4X[25X>[125X [27X    InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism([127X[104X
@@ -161,8 +161,8 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsEqualForObjects( HomStructure( Qoid ), DistinguishedObjectOfHomomorphismStructure( Qoid ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xc := FieldAsCategoryMorphism( 3, Qoid );;[127X[104X
-    [4X[25Xgap>[125X [27Xd := FieldAsCategoryMorphism( 0, Qoid );;[127X[104X
+    [4X[25Xgap>[125X [27Xc := FieldAsCategoryMorphism( Qoid, 3 );;[127X[104X
+    [4X[25Xgap>[125X [27Xd := FieldAsCategoryMorphism( Qoid, 0 );;[127X[104X
     [4X[25Xgap>[125X [27Xleft_coeffs := [ [ a, b ], [ c, d ] ];;[127X[104X
     [4X[25Xgap>[125X [27Xright_coeffs := [ [ PreCompose( a, b ), PreCompose( b, c ) ], [ c, PreCompose( a, a ) ] ];;[127X[104X
     [4X[25Xgap>[125X [27Xright_side := [ a, b ];;[127X[104X
