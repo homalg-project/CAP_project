@@ -199,25 +199,24 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
     
     create_function_morphism_no_new_object :=
       function( operation_name )
-        local operation, type;
+        local operation, output_source_getter, output_range_getter;
         
         operation := ValueGlobal( operation_name );
         
-        type := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).io_type;
+        output_source_getter := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).output_source_getter;
+        output_range_getter := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).output_range_getter;
         
         return
           function( arg )
-            local underlying_arg, underlying_return, source_range_pair, source, range;
+            local underlying_arg, underlying_return, source, range;
             
             underlying_arg:= List( arg, UnderlyingCell );
             
             underlying_return := CallFuncList( operation, underlying_arg );
             
-            source_range_pair := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
+            source := CallFuncList( output_source_getter, Concatenation( [ category_with_attributes ], arg ) );
             
-            source := source_range_pair[1];
-            
-            range := source_range_pair[2];
+            range := CallFuncList( output_range_getter, Concatenation( [ category_with_attributes ], arg ) );
             
             return CallFuncList( morphism_constructor, [ source, underlying_return, range ] );
             
@@ -228,15 +227,16 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
     ## assumes that no new object is created
     create_function_morphism_or_fail :=
       function( operation_name )
-        local operation, type;
+        local operation, output_source_getter, output_range_getter;
         
         operation := ValueGlobal( operation_name );
         
-        type := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).io_type;
+        output_source_getter := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).output_source_getter;
+        output_range_getter := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).output_range_getter;
         
         return
           function( arg )
-            local underlying_arg, underlying_return, source_range_pair, source, range;
+            local underlying_arg, underlying_return, source, range;
             
             underlying_arg:= List( arg, UnderlyingCell );
             
@@ -248,11 +248,9 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
                 
             fi;
             
-            source_range_pair := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
+            source := CallFuncList( output_source_getter, Concatenation( [ category_with_attributes ], arg ) );
             
-            source := source_range_pair[1];
-            
-            range := source_range_pair[2];
+            range := CallFuncList( output_range_getter, Concatenation( [ category_with_attributes ], arg ) );
             
             return CallFuncList( morphism_constructor, [ source, underlying_return, range ] );
             
@@ -262,23 +260,21 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
     
     create_function_morphism_new_source :=
       function( operation_name, attributes_function )
-        local operation, type;
+        local operation, output_range_getter;
         
         operation := ValueGlobal( operation_name );
         
-        type := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).io_type;
+        output_range_getter := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).output_range_getter;
         
         return
           function( arg )
-            local underlying_arg, underlying_return, source_range_pair, source, range;
+            local underlying_arg, underlying_return, range, attributes, source;
             
             underlying_arg:= List( arg, UnderlyingCell );
             
             underlying_return := CallFuncList( operation, underlying_arg );
             
-            source_range_pair := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
-            
-            range := source_range_pair[2];
+            range := CallFuncList( output_range_getter, Concatenation( [ category_with_attributes ], arg ) );
             
             attributes := CallFuncList( attributes_function, Concatenation( arg, [ Source( underlying_return ) ] ) );
             
@@ -292,23 +288,21 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
     
     create_function_morphism_new_range :=
       function( operation_name, attributes_function )
-        local operation, type;
+        local operation, output_source_getter;
         
         operation := ValueGlobal( operation_name );
         
-        type := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).io_type;
+        output_source_getter := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).output_source_getter;
         
         return
           function( arg )
-            local underlying_arg, underlying_return, source_range_pair, source, range;
+            local underlying_arg, underlying_return, source, attributes, range;
             
             underlying_arg:= List( arg, UnderlyingCell );
             
             underlying_return := CallFuncList( operation, underlying_arg );
             
-            source_range_pair := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
-            
-            source := source_range_pair[1];
+            source := CallFuncList( output_source_getter, Concatenation( [ category_with_attributes ], arg ) );
             
             attributes := CallFuncList( attributes_function, Concatenation( arg, [ Range( underlying_return ) ] ) );
             
@@ -332,7 +326,15 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
             "IsEqualForMorphisms",
             "IsCongruentForMorphisms",
             "IsEqualForCacheForObjects",
-            "IsEqualForCacheForMorphisms"
+            "IsEqualForCacheForMorphisms",
+            # homomorphism structure
+            "DistinguishedObjectOfHomomorphismStructure",
+            "HomomorphismStructureOnObjects",
+            "HomomorphismStructureOnMorphisms",
+            "HomomorphismStructureOnMorphismsWithGivenObjects",
+            "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
+            "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects",
+            "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
             ];
     
     if IsBound( structure_record.NoInstallList ) then
@@ -444,15 +446,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
              
         elif entry.return_type = "morphism" then
             
-            if not IsBound( entry.io_type ) then
-                
-                ## if there is no io_type we cannot do anything
-                continue;
-                
-            fi;
-            
-            if IsBound( entry.output_source_getter_string ) and entry.can_always_compute_output_source_getter and
-               IsBound( entry.output_range_getter_string ) and entry.can_always_compute_output_range_getter then
+            if IsBound( entry.output_source_getter ) and entry.can_always_compute_output_source_getter and
+               IsBound( entry.output_range_getter ) and entry.can_always_compute_output_range_getter then
                 
                 function_to_add := create_function_morphism_no_new_object( name );
                 
