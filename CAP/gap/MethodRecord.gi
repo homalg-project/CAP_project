@@ -58,7 +58,6 @@ BindGlobal( "CAP_INTERNAL_VALID_METHOD_NAME_RECORD_COMPONENTS",
 BindGlobal( "CAP_INTERNAL_LEGACY_METHOD_NAME_RECORD_COMPONENTS",
     [
         "property_of",
-        "io_type",
         "is_merely_set_theoretic",
         "is_reflected_by_faithful_functor",
     ]
@@ -4529,7 +4528,7 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
                 projection_range_getter_string := "Range( morphisms[k] )";
             fi;
         else
-            Error( "Warning: cannot express io_type" );
+            Error( "Warning: cannot express range getter" );
         fi;
 
         # only used if limit.number_of_nontargets = 1
@@ -4994,10 +4993,9 @@ end );
 
 InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
   function( record )
-    local recnames, current_recname, current_rec, diff, io_type, number_of_arguments, func_string,
-          output_list, input_list, argument_names, return_list, current_output, input_position, list_position,
+    local recnames, current_recname, current_rec, diff, number_of_arguments,
           without_given_name, with_given_prefix, with_given_names, with_given_name, without_given_rec, with_given_object_position, object_name,
-          object_filter_list, with_given_object_filter, given_source_argument_name, given_range_argument_name, with_given_rec, i,
+          object_filter_list, with_given_object_filter, given_source_argument_name, given_range_argument_name, with_given_rec,
           collected_list, preconditions, can_always_compute_output_source_getter, can_always_compute_output_range_getter;
     
     recnames := RecNames( record );
@@ -5048,27 +5046,6 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
         
         if ForAny( current_rec.filter_list, x -> x in [ "other_category", "other_object", "other_morphism", "other_twocell" ] ) then
             Error( "The filters \"other_category\", \"other_object\", \"other_morphism\", and \"other_twocell\" are not supported anymore. If you need those, please report this using the CAP_projects's issue tracker." );
-        fi;
-        
-        if IsBound( current_rec.io_type ) then
-            
-            io_type := current_rec.io_type;
-            
-            if not IsList( io_type ) or Length( io_type ) <> 2 then
-                Error( "the io_type of <current_rec> is not a list of length 2" );
-            fi;
-            
-            if not ForAll( io_type[1], x -> IsString( x ) ) then
-                Error( "the input type of <current_rec> contains non-strings" );
-            fi;
-            
-            # the category is excluded in the io_type
-            if Length( io_type[1] ) <> Length( current_rec.filter_list ) - 1 then
-                
-                Error( "the input type of <current_rec> has the wrong length" );
-                
-            fi;
-            
         fi;
         
         if IsBound( current_rec.output_source_getter_preconditions ) and not IsBound( current_rec.output_source_getter_string ) then
@@ -5287,15 +5264,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
         
         if not IsBound( current_rec.input_arguments_names ) then
             
-            if IsBound( current_rec.io_type ) then
-                
-                current_rec.input_arguments_names := Concatenation( [ "cat" ], current_rec.io_type[1] );
-                
-            else
-                
-                current_rec.input_arguments_names := Concatenation( [ "cat" ], List( [ 2 .. Length( current_rec.filter_list ) ], i -> Concatenation( "arg", String( i ) ) ) );
-                
-            fi;
+            current_rec.input_arguments_names := Concatenation( [ "cat" ], List( [ 2 .. Length( current_rec.filter_list ) ], i -> Concatenation( "arg", String( i ) ) ) );
             
         fi;
         
@@ -5314,106 +5283,6 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
         if not IsDuplicateFreeList( current_rec.input_arguments_names ) then
             
             Error( "input_arguments_names must be duplicate free, please adjust the method record entry of ", current_recname );
-            
-        fi;
-        
-        if IsBound( current_rec.io_type ) then
-            
-            Assert( 0, StartsWith( current_rec.return_type, "morphism" ) and not IsString( current_rec.io_type[ 2 ] ) and IsList( current_rec.io_type[ 2 ] ) );
-            
-            output_list := current_rec.io_type[ 2 ];
-            
-            if Length( output_list ) <> 2 then
-                
-                Error( "the output type is not a list of length 2" );
-                
-            fi;
-            
-            output_list := List( output_list, i -> SplitString( i, "_" ) );
-            
-            input_list := current_rec.io_type[ 1 ];
-            
-            argument_names := input_list;
-            
-            return_list := List( [ 1 .. Length( output_list ) ], function ( i )
-              local current_output, input_position, list_position;
-                
-                current_output := output_list[ i ];
-                
-                input_position := Position( input_list, current_output[ 1 ] );
-                
-                if input_position = fail then
-                    
-                    return fail;
-                    
-                fi;
-                
-                if Length( current_output ) = 1 then
-                    
-                   return argument_names[ input_position ];
-                   
-                elif Length( current_output ) = 2 then
-                    
-                    if LowercaseString( current_output[ 2 ] ) = "source" then
-                        return Concatenation( "Source( ", argument_names[ input_position ], " )" );
-                    elif LowercaseString( current_output[ 2 ] ) = "range" then
-                        return Concatenation( "Range( ", argument_names[ input_position ], " )" );
-                    elif Position( input_list, current_output[ 2 ] ) <> fail then
-                        return Concatenation( argument_names[ input_position ], "[", argument_names[ Position( input_list, current_output[ 2 ] ) ], "]" );
-                    else
-                        Error( "wrong input type" );
-                    fi;
-                    
-                elif Length( current_output ) = 3 then
-                    
-                    if ForAll( current_output[ 2 ], i -> i in "0123456789" ) then
-                        list_position := String( Int( current_output[ 2 ] ) );
-                    else
-                        list_position := Position( input_list, current_output[ 2 ] );
-                        if list_position = fail then
-                            Error( "unable to find ", current_output[ 2 ], " in input_list" );
-                        fi;
-                        list_position := argument_names[ list_position ];
-                    fi;
-                    
-                    if list_position = fail then
-                        Error( "list index variable not found" );
-                    fi;
-                    
-                    if LowercaseString( current_output[ 3 ] ) = "source" then
-                        return Concatenation( "Source( ", argument_names[ input_position ], "[", list_position, "] )" );
-                    elif LowercaseString( current_output[ 3 ] ) = "range" then
-                        return Concatenation( "Range( ", argument_names[ input_position ], "[", list_position, "] )" );
-                    else
-                        Error( "wrong output syntax" );
-                    fi;
-                    
-                else
-                    
-                    Error( "wrong entry length" );
-                    
-                fi;
-                
-            end );
-            
-            if return_list[1] <> fail then
-                
-                current_rec.output_source_getter_string := return_list[1];
-                current_rec.output_source_getter_preconditions := [ ];
-                current_rec.can_always_compute_output_source_getter := true;
-                
-            fi;
-            
-            if return_list[2] <> fail then
-                
-                current_rec.output_range_getter_string := return_list[2];
-                current_rec.output_range_getter_preconditions := [ ];
-                current_rec.can_always_compute_output_range_getter := true;
-                
-            fi;
-            
-            # io_type is deprecated -> make sure it is not used except here
-            Unbind( current_rec.io_type );
             
         fi;
         
