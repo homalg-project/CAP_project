@@ -8,7 +8,7 @@ InstallValue( BRAIDED_COCARTESIAN_CATEGORIES_METHOD_NAME_RECORD, rec(
 
 CocartesianBraiding := rec(
   filter_list := [ "category", "object", "object" ],
-  io_type := [ [ "a", "b" ], [ "s", "r" ] ],
+  input_arguments_names := [ "cat", "a", "b" ],
   output_source_getter_string := "BinaryCoproduct( cat, a, b )",
   output_source_getter_preconditions := [ [ "Coproduct", 1 ] ],
   output_range_getter_string := "BinaryCoproduct( cat, b, a )",
@@ -21,7 +21,11 @@ CocartesianBraiding := rec(
 
 CocartesianBraidingWithGivenCoproducts := rec(
   filter_list := [ "category", "object", "object", "object", "object" ],
-  io_type := [ [ "s", "a", "b", "r" ], [ "s", "r" ] ],
+  input_arguments_names := [ "cat", "s", "a", "b", "r" ],
+  output_source_getter_string := "s",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "r",
+  output_range_getter_preconditions := [ ],
   return_type := "morphism",
   dual_operation := "CartesianBraidingInverseWithGivenDirectProducts",
   dual_with_given_objects_reversed := true,
@@ -29,7 +33,7 @@ CocartesianBraidingWithGivenCoproducts := rec(
 
 CocartesianBraidingInverse := rec(
   filter_list := [ "category", "object", "object" ],
-  io_type := [ [ "a", "b" ], [ "s", "r" ] ],
+  input_arguments_names := [ "cat", "a", "b" ],
   output_source_getter_string := "BinaryCoproduct( cat, b, a )",
   output_source_getter_preconditions := [ [ "Coproduct", 1 ] ],
   output_range_getter_string := "BinaryCoproduct( cat, a, b )",
@@ -42,7 +46,11 @@ CocartesianBraidingInverse := rec(
 
 CocartesianBraidingInverseWithGivenCoproducts := rec(
   filter_list := [ "category", "object", "object", "object", "object" ],
-  io_type := [ [ "s", "a", "b", "r" ], [ "s", "r" ] ],
+  input_arguments_names := [ "cat", "s", "a", "b", "r" ],
+  output_source_getter_string := "s",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "r",
+  output_range_getter_preconditions := [ ],
   return_type := "morphism",
   dual_operation := "CartesianBraidingWithGivenDirectProducts",
   dual_with_given_objects_reversed := true,
