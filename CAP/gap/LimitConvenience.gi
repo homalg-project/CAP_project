@@ -6,7 +6,7 @@
 
 InstallGlobalFunction( "CAP_INTERNAL_GENERATE_CONVENIENCE_METHODS_FOR_LIMITS",
   function ( package_name, method_name_record, limits )
-    local output_string, generate_universal_morphism_convenience, generate_functorial_convenience_method, number_of_diagram_arguments, functorial_record, filter_list, input_type, replaced_filter_list, arguments_string, source_diagram_arguments_string, range_diagram_arguments_string, source_diagram_input_type, range_diagram_input_type, limit, output_path;
+    local output_string, generate_universal_morphism_convenience, generate_functorial_convenience_method, number_of_diagram_arguments, limit, output_path;
     
     output_string :=
 """# SPDX-License-Identifier: GPL-2.0-or-later
@@ -165,7 +165,7 @@ end );
                     with_given_universal_morphism := Concatenation( universal_morphism_name, "WithGiven", object_name ),
                     diagram_filter_list := List( CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS( limit.diagram_filter_list ), NameFunction ),
                     tau_filter := tau_filter,
-                    diagram_arguments := limit.diagram_input_type,
+                    diagram_arguments := limit.diagram_arguments_names,
                     test_object_position := test_object_position,
                     selected_tau := Concatenation( "tau", list_selector ),
                 )
@@ -178,7 +178,7 @@ end );
     end;
     
     generate_functorial_convenience_method := function( limit, limit_colimit, object_name, functorial_name, functorial_with_given_name )
-      local functorial_with_given_record, filter_list, input_type, arguments_string, source_diagram_arguments_string, range_diagram_arguments_string, replaced_filter_list, current_string, input_arguments_names, source_argument_name, range_argument_name, source_diagram_arguments_names, range_diagram_arguments_names, equalizer_preprocessing, test_string, additional_preconditions, test_arguments, universal_morphism_with_given_name, call_arguments;
+      local functorial_with_given_record, filter_list, arguments_names, arguments_string, source_diagram_arguments_string, range_diagram_arguments_string, replaced_filter_list, current_string, input_arguments_names, source_argument_name, range_argument_name, source_diagram_arguments_names, range_diagram_arguments_names, equalizer_preprocessing, test_string, additional_preconditions, test_arguments, universal_morphism_with_given_name, call_arguments;
         
         Assert( 0, limit_colimit in [ "limit", "colimit" ] );
         
@@ -188,12 +188,12 @@ end );
             
             # convenience: derive diagrams from arguments
             filter_list := limit.diagram_morphism_filter_list;
-            input_type := limit.diagram_morphism_input_type;
+            arguments_names := limit.diagram_morphism_arguments_names;
             
             Assert( 0, Length( filter_list ) = 1 );
-            Assert( 0, Length( input_type ) = 1 );
+            Assert( 0, Length( arguments_names ) = 1 );
             
-            arguments_string := JoinStringsWithSeparator( input_type, ", " );
+            arguments_string := JoinStringsWithSeparator( arguments_names, ", " );
             
             if limit.number_of_targets = 1 then
                 source_diagram_arguments_string := Concatenation( "Source( ", arguments_string, " )" );
@@ -219,7 +219,7 @@ end );
                 rec(
                     functorial_name := functorial_name,
                     filter_list := replaced_filter_list,
-                    input_arguments := input_type,
+                    input_arguments := arguments_names,
                     source_diagram_arguments := source_diagram_arguments_string,
                     range_diagram_arguments := range_diagram_arguments_string,
                 )
@@ -242,7 +242,7 @@ end );
                 rec(
                     functorial_name := functorial_name,
                     filter_list := replaced_filter_list,
-                    input_arguments := input_type,
+                    input_arguments := arguments_names,
                     source_diagram_arguments := source_diagram_arguments_string,
                     range_diagram_arguments := range_diagram_arguments_string,
                 )
@@ -264,7 +264,7 @@ end );
                 rec(
                     functorial_with_given_name := functorial_with_given_name,
                     filter_list := replaced_filter_list,
-                    input_arguments := input_type,
+                    input_arguments := arguments_names,
                     source_diagram_arguments := source_diagram_arguments_string,
                     range_diagram_arguments := range_diagram_arguments_string,
                 )
@@ -287,7 +287,7 @@ end );
                 rec(
                     functorial_with_given_name := functorial_with_given_name,
                     filter_list := replaced_filter_list,
-                    input_arguments := input_type,
+                    input_arguments := arguments_names,
                     source_diagram_arguments := source_diagram_arguments_string,
                     range_diagram_arguments := range_diagram_arguments_string,
                 )
@@ -299,7 +299,7 @@ end );
         
         # derive functorials from the universality of the limit/colimit
         Assert( 0, Length( limit.diagram_morphism_filter_list ) <= 1 );
-        Assert( 0, Length( limit.diagram_morphism_input_type ) <= 1 );
+        Assert( 0, Length( limit.diagram_morphism_arguments_names ) <= 1 );
         
         input_arguments_names := functorial_with_given_record.input_arguments_names;
         
@@ -317,7 +317,7 @@ end );
             
             if limit.number_of_targets = 1 then
                 
-                Assert( 0, limit.diagram_morphism_input_type = [ "mu" ] );
+                Assert( 0, limit.diagram_morphism_arguments_names = [ "mu" ] );
                 
                 if limit_colimit = "limit" then
                     
@@ -366,7 +366,7 @@ end );
                 
             else
                 
-                Assert( 0, limit.diagram_morphism_input_type = [ "L" ] );
+                Assert( 0, limit.diagram_morphism_arguments_names = [ "L" ] );
                 
                 if limit_colimit = "limit" then
                     
@@ -406,7 +406,7 @@ end );
             
         else
             
-            Assert( 0, limit.diagram_morphism_input_type = [ ] );
+            Assert( 0, limit.diagram_morphism_arguments_names = [ ] );
             
             test_arguments := [ ];
             
