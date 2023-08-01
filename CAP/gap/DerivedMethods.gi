@@ -1920,6 +1920,21 @@ AddDerivationToCAP( SumOfMorphisms,
 end : CategoryFilter := IsAbCategory );
 
 ##
+AddDerivationToCAP( LinearCombinationOfMorphisms,
+                    "LinearCombinationOfMorphisms using SumOfMorphisms and MultiplyWithElementOfCommutativeRingForMorphisms",
+                    [ [ MultiplyWithElementOfCommutativeRingForMorphisms, 2 ],
+                      [ SumOfMorphisms, 1 ] ],
+                    
+  function( cat, obj1, coeffs, mors, obj2 )
+    local morphisms;
+    
+    morphisms := ListN( coeffs, mors, { r, alpha } -> MultiplyWithElementOfCommutativeRingForMorphisms( cat, r, alpha ) );
+    
+    return SumOfMorphisms( cat, obj1, morphisms, obj2 );
+    
+end : CategoryFilter := IsLinearCategoryOverCommutativeRing );
+
+##
 AddDerivationToCAP( LiftAlongMonomorphism,
                     "LiftAlongMonomorphism using Lift",
                     [ [ Lift, 1 ] ],

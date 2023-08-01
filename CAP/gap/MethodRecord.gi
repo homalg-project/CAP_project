@@ -576,6 +576,43 @@ SumOfMorphisms := rec(
   compatible_with_congruence_of_morphisms := true,
 ),
 
+LinearCombinationOfMorphisms := rec(
+  filter_list := [ "category", "object", "list_of_elements_of_commutative_ring_of_linear_structure", "list_of_morphisms", "object" ],
+  input_arguments_names := [ "cat", "source", "list_of_ring_elements", "list_of_morphisms", "range" ],
+  pre_function := function( cat, source, list_of_ring_elements, list_of_morphisms, range )
+    local m;
+    
+    if not Length( list_of_ring_elements ) = Length( list_of_morphisms ) then
+        
+        return [ false, "the length of the lists of coefficients and morphisms must be the same" ];
+        
+    fi;
+    
+    for m in list_of_morphisms do
+        
+        if not IsEqualForObjects( cat, source, Source( m ) ) or not IsEqualForObjects( cat, range, Range( m ) ) then
+            
+            return [ false, "some of the morphisms are not compatible with the provided source and range objects" ];
+            
+        fi;
+        
+    od;
+    
+    return [ true ];
+    
+  end,
+  return_type := "morphism",
+  output_source_getter_string := "source",
+  output_range_getter_string := "range",
+  dual_operation := "LinearCombinationOfMorphisms",
+  dual_preprocessor_func := function( arg )
+      local list;
+      list := CAP_INTERNAL_OPPOSITE_RECURSIVE( arg );
+      return NTuple( 5, list[1], list[5], list[3], list[4], list[2] );
+  end,
+  compatible_with_congruence_of_morphisms := true,
+),
+
 PreComposeList := rec(
   filter_list := [ "category", "list_of_morphisms" ],
   input_arguments_names := [ "cat", "list_of_morphisms" ],

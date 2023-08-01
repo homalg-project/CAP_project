@@ -3014,6 +3014,25 @@ DeclareOperation( "AddLiftOrFail",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `LinearCombinationOfMorphisms`.
+#! $F: ( source, list_of_ring_elements, list_of_morphisms, range ) \mapsto \mathtt{LinearCombinationOfMorphisms}(source, list_of_ring_elements, list_of_morphisms, range)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddLinearCombinationOfMorphisms",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddLinearCombinationOfMorphisms",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddLinearCombinationOfMorphisms",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddLinearCombinationOfMorphisms",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `MereExistenceOfSolutionOfLinearSystemInAbCategory`.
 #! $F: ( arg2, arg3, arg4 ) \mapsto \mathtt{MereExistenceOfSolutionOfLinearSystemInAbCategory}(arg2, arg3, arg4)$.
 #! @Returns nothing

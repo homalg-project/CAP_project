@@ -40,7 +40,7 @@ BasisOfExternalHom( u, u );
 #! [ <1> ]
 CoefficientsOfMorphism( alpha );
 #! [ 2 ]
-IsCongruentForMorphisms( alpha, SumOfMorphisms( u, ListN( CoefficientsOfMorphism( alpha ), BasisOfExternalHom( u, u ), { x, y } -> MultiplyWithElementOfCommutativeRingForMorphisms( x, y ) ), u ) );
+IsCongruentForMorphisms( alpha, LinearCombinationOfMorphisms( u, CoefficientsOfMorphism( alpha ), BasisOfExternalHom( u, u ), u ) );
 #! true
 
 EEE := KoszulDualRing( HomalgFieldOfRationalsInSingular( ) * "x,y" );;
@@ -72,11 +72,19 @@ Lift( alpha * alpha, alpha );
 #! <5*e0*e1+3*e0+4*e1+2>
 Colift( alpha, alpha * alpha );
 #! <5*e0*e1+3*e0+4*e1+2>
-BasisOfExternalHom( u, u );
+basis := BasisOfExternalHom( u, u );
 #! [ <1>, <e0>, <e1>, <e0*e1> ]
-CoefficientsOfMorphism( alpha );
+coeffs := CoefficientsOfMorphism( alpha );
 #! [ 2, 3, 4, 5 ]
-IsCongruentForMorphisms( alpha, SumOfMorphisms( u, ListN( CoefficientsOfMorphism( alpha ), BasisOfExternalHom( u, u ), { x, y } -> MultiplyWithElementOfCommutativeRingForMorphisms( x, y ) ), u ) );
+IsCongruentForMorphisms( alpha, LinearCombinationOfMorphisms( u, coeffs, basis, u ) );
 #! true
-
+u_op := Opposite( u );
+#! <An object in Opposite( Ring as category( Q{e0,e1} ) )>
+alpha_op := Opposite( alpha );
+#! <A morphism in Opposite( Ring as category( Q{e0,e1} ) )>
+basis := BasisOfExternalHom( u_op, u_op );;
+coeffs := CoefficientsOfMorphism( alpha_op );
+#! [ 2, 3, 4, 5 ]
+IsCongruentForMorphisms( alpha_op, LinearCombinationOfMorphisms( u_op, coeffs, basis, u_op ) );
+#! true
 #! @EndExample
