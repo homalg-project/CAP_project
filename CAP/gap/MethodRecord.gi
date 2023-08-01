@@ -4765,11 +4765,19 @@ InstallValue( CAP_INTERNAL_FIND_OPPOSITE_PROPERTY_PAIRS_IN_METHOD_NAME_RECORD,
         
         if current_rec.filter_list[2] = "object" then
             
-            AddSet( CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_OBJECTS, current_entry );
+            if not current_entry in CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_OBJECTS then
+                
+                Add( CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_OBJECTS, current_entry );
+                
+            fi;
             
         elif current_rec.filter_list[2] = "morphism" then
             
-            AddSet( CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_MORPHISMS, current_entry );
+            if not current_entry in CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_MORPHISMS then
+                
+                Add( CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_MORPHISMS, current_entry );
+                
+            fi;
             
         fi;
         
