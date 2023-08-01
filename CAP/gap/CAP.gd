@@ -267,9 +267,6 @@ AddCategoricalProperty( [ "IsLocallyOfFiniteInjectiveDimension", "IsLocallyOfFin
 DeclareAttribute( "TheoremRecord",
                   IsCapCategory, "mutable" );
 
-DeclareOperation( "AddCategoryToFamily",
-                  [ IsCapCategory, IsString ] );
-
 ###################################
 ##
 #! @Section Constructor

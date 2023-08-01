@@ -276,8 +276,6 @@ InstallGlobalFunction( "CreateCapCategoryWithDataTypes",
         
         obj!.predicate_logic := true;
         
-        AddCategoryToFamily( obj, "general" );
-        
     else
         
         obj!.predicate_logic := false;
@@ -338,27 +336,6 @@ InstallMethod( TheoremRecord,
   function( category )
     
     return rec( );
-    
-end );
-
-######################################################
-##
-## Add functions
-##
-######################################################
-
-InstallMethod( AddCategoryToFamily,
-               [ IsCapCategory, IsString ],
-               
-  function( category, family )
-    
-    if not IsBound( category!.families ) then
-        
-        category!.families := [ ];
-        
-    fi;
-    
-    Add( category!.families, LowercaseString( family ) );
     
 end );
 

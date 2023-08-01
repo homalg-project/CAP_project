@@ -141,8 +141,6 @@ InstallMethod( LeftPresentationsAsFreydCategoryOfCategoryOfRows,
     
     left_presentations!.ring_for_representation_category := ring;
     
-    AddCategoryToFamily( left_presentations, "ModuleCategory" );
-    
     ## TODO: avoid code duplication (see RightPresentations)
     AddTheoremFileToCategory( left_presentations,
       Filename(
@@ -298,8 +296,6 @@ InstallMethod( RightPresentationsAsFreydCategoryOfCategoryOfColumns,
     SetUnderlyingRing( right_presentations, ring );
     
     right_presentations!.ring_for_representation_category := ring;
-    
-    AddCategoryToFamily( right_presentations, "ModuleCategory" );
     
     ## TODO: avoid code duplication (see LeftPresentations)
     AddTheoremFileToCategory( right_presentations,
