@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "HomologicalAlgebraForCAP",
 Subtitle := "Homological algebra algorithms for CAP",
-Version := "2023.03-01",
-Date := "2023-03-27",
+Version := "2023.08-01",
+Date := "2023-08-01",
 License := "GPL-2.0-or-later",
 
 Persons := [
