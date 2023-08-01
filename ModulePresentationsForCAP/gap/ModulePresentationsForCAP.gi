@@ -79,8 +79,6 @@ InstallMethod( LeftPresentations,
     
     ADD_FUNCTIONS_FOR_LEFT_PRESENTATION( category );
     
-    AddCategoryToFamily( category, "ModuleCategory" );
-    
     ## TODO: avoid code duplication (see RightPresentations)
     AddTheoremFileToCategory( category,
       Filename(
@@ -180,8 +178,6 @@ InstallMethod( RightPresentations,
     fi;
     
     ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION( category );
-    
-    AddCategoryToFamily( category, "ModuleCategory" );
     
     ## TODO: avoid code duplication (see LeftPresentations)
     AddTheoremFileToCategory( category,

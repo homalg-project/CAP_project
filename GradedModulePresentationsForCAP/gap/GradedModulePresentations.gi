@@ -33,9 +33,6 @@ InstallMethod( GradedLeftPresentations,
     
     ADD_GRADED_FUNCTIONS_FOR_LEFT_PRESENTATION( category );
     
-    AddCategoryToFamily( category, "ModuleCategory" );
-    
-    
     ## TODO: avoid code duplication (see RightPresentations)
 #     AddTheoremFileToCategory( category,
 #       Filename(
@@ -89,8 +86,6 @@ InstallMethod( GradedRightPresentations,
     fi;
     
     ADD_GRADED_FUNCTIONS_FOR_RIGHT_PRESENTATION( category );
-    
-    AddCategoryToFamily( category, "ModuleCategory" );
     
 #     ## TODO: avoid code duplication (see LeftPresentations)
 #     AddTheoremFileToCategory( category,
