@@ -216,7 +216,7 @@
     [4X[28XA CAP category with name[128X[104X
     [4X[28XThe category of graded left f.p. modules over Q[x,y] (with weights [ 1, 1 ]):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X40 primitive operations were used to derive 227 operations for this category[128X[104X
+    [4X[28X38 primitive operations were used to derive 225 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsMonoidalCategory[128X[104X
     [4X[28X* IsAbelianCategoryWithEnoughProjectives[128X[104X
