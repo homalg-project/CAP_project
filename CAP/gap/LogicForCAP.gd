@@ -52,6 +52,3 @@ DeclareGlobalFunction( "ADD_EVAL_RULES_TO_CATEGORY" );
 #############################
 
 DeclareGlobalFunction( "INSTALL_LOGICAL_IMPLICATIONS_HELPER" );
-
-DeclareAttribute( "CAP_CATEGORY_SOURCE_RANGE_THEOREM_INSTALL_HELPER",
-                  IsCapCategoryMorphism );
