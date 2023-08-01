@@ -46,8 +46,6 @@ ReadPackage( "CAP", "gap/PrintingFunctions.gi" );
 
 ReadPackage( "CAP", "gap/PrepareFunctions.gi" );
 
-ReadPackage( "CAP", "gap/PreFunctions.gi" );
-
 ReadPackage( "CAP", "gap/CategoryConstructor.gi" );
 
 ReadPackage( "CAP", "gap/TerminalCategory.gi" );
