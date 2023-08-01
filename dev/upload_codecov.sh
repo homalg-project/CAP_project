@@ -47,10 +47,6 @@ while ! ./codecov -Z -v -s ../ -F ComplexesAndFilteredObjectsForCAP; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F DeductiveSystemForCAP; do
-    echo "Codecov upload failed, retrying in 60s"
-    sleep 60
-done
 while ! ./codecov -Z -v -s ../ -F FreydCategoriesForCAP; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60

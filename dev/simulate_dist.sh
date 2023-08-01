@@ -32,11 +32,6 @@ echo "Simulate release of ComplexesAndFilteredObjectsForCAP"
 GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --srcdir "$PWD/ComplexesAndFilteredObjectsForCAP" --webdir "$PWD/gh-pages/ComplexesAndFilteredObjectsForCAP" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
 echo ""
 
-# DeductiveSystemForCAP
-echo "Simulate release of DeductiveSystemForCAP"
-GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --srcdir "$PWD/DeductiveSystemForCAP" --webdir "$PWD/gh-pages/DeductiveSystemForCAP" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
-echo ""
-
 # FreydCategoriesForCAP
 echo "Simulate release of FreydCategoriesForCAP"
 GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --srcdir "$PWD/FreydCategoriesForCAP" --webdir "$PWD/gh-pages/FreydCategoriesForCAP" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball

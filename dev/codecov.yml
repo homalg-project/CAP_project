@@ -2,7 +2,7 @@ codecov:
   disable_default_path_fixes: true
   require_ci_to_pass: false
 comment:
-  after_n_builds: 18
+  after_n_builds: 17
 flags:
   CAP:
     paths:
@@ -22,9 +22,6 @@ flags:
   ComplexesAndFilteredObjectsForCAP:
     paths:
       - "ComplexesAndFilteredObjectsForCAP/"
-  DeductiveSystemForCAP:
-    paths:
-      - "DeductiveSystemForCAP/"
   FreydCategoriesForCAP:
     paths:
       - "FreydCategoriesForCAP/"

@@ -57,7 +57,6 @@ BindGlobal( "CAP_INTERNAL_VALID_METHOD_NAME_RECORD_COMPONENTS",
 # additional components which are deprecated or undocumented
 BindGlobal( "CAP_INTERNAL_LEGACY_METHOD_NAME_RECORD_COMPONENTS",
     [
-        "property_of",
         "is_merely_set_theoretic",
         "is_reflected_by_faithful_functor",
     ]
@@ -1243,7 +1242,6 @@ IsZeroForMorphisms := rec(
   filter_list := [ "category", "morphism" ],
   return_type := "bool",
   dual_operation := "IsZeroForMorphisms",
-  property_of := "morphism",
   is_reflected_by_faithful_functor := true,
   compatible_with_congruence_of_morphisms := true,
 ),
@@ -2504,44 +2502,43 @@ IsZeroForObjects := rec(
   filter_list := [ "category", "object" ],
   return_type := "bool",
   dual_operation := "IsZeroForObjects",
-  property_of := "object" ),
+),
 
 IsMonomorphism := rec(
   filter_list := [ "category", "morphism" ],
   return_type := "bool",
   dual_operation := "IsEpimorphism",
-  property_of := "morphism",
-  is_reflected_by_faithful_functor := true ),
+  is_reflected_by_faithful_functor := true,
+),
 
 IsEpimorphism := rec(
   filter_list := [ "category", "morphism" ],
   return_type := "bool",
   dual_operation := "IsMonomorphism",
-  property_of := "morphism",
-  is_reflected_by_faithful_functor := true ),
+  is_reflected_by_faithful_functor := true,
+),
 
 IsIsomorphism := rec(
   filter_list := [ "category", "morphism" ],
   dual_operation := "IsIsomorphism",
   return_type := "bool",
-  property_of := "morphism" ),
+),
 
 IsEndomorphism := rec(
   filter_list := [ "category", "morphism" ],
   return_type := "bool",
   dual_operation := "IsEndomorphism",
-  property_of := "morphism" ),
+),
 
 IsAutomorphism := rec(
   filter_list := [ "category", "morphism" ],
   return_type := "bool",
   dual_operation := "IsAutomorphism",
-  property_of := "morphism" ),
+),
 
 IsOne := rec(
   filter_list := [ "category", "morphism" ],
   return_type := "bool",
-  property_of := "morphism",
   dual_operation := "IsOne",
   pre_function := function( cat, morphism )
     
@@ -2552,19 +2549,20 @@ IsOne := rec(
     fi;
     
     return [ true ];
-  end ),
+  end,
+),
 
 IsSplitMonomorphism := rec(
   filter_list := [ "category", "morphism" ],
   return_type := "bool",
   dual_operation := "IsSplitEpimorphism",
-  property_of := "morphism" ),
+),
 
 IsSplitEpimorphism := rec(
   filter_list := [ "category", "morphism" ],
   return_type := "bool",
   dual_operation := "IsSplitMonomorphism",
-  property_of := "morphism" ),
+),
 
 IsIdempotent := rec(
    pre_function := function( cat, morphism )
@@ -2582,49 +2580,49 @@ IsIdempotent := rec(
   filter_list := [ "category", "morphism" ],
   return_type := "bool",
   dual_operation := "IsIdempotent",
-  property_of := "morphism" ),
+),
 
 IsBijectiveObject := rec(
   filter_list := [ "category", "object" ],
   return_type := "bool",
   dual_operation := "IsBijectiveObject",
-  property_of := "object" ),
+),
 
 IsProjective := rec(
   filter_list := [ "category", "object" ],
   return_type := "bool",
   dual_operation := "IsInjective",
-  property_of := "object" ),
+),
 
 IsInjective := rec(
   filter_list := [ "category", "object" ],
   return_type := "bool",
   dual_operation := "IsProjective",
-  property_of := "object" ),
+),
 
 IsTerminal := rec(
   filter_list := [ "category", "object" ],
   return_type := "bool",
   dual_operation := "IsInitial",
-  property_of := "object" ),
+),
 
 IsInitial := rec(
   filter_list := [ "category", "object" ],
   return_type := "bool",
   dual_operation := "IsTerminal",
-  property_of := "object" ),
+),
 
 IsEqualToIdentityMorphism := rec(
   filter_list := [ "category", "morphism" ],
   return_type := "bool",
   dual_operation := "IsEqualToIdentityMorphism",
-  property_of := "morphism" ),
+),
 
 IsEqualToZeroMorphism := rec(
   filter_list := [ "category", "morphism" ],
   return_type := "bool",
   dual_operation := "IsEqualToZeroMorphism",
-  property_of := "morphism" ),
+),
 
 CoastrictionToImage := rec(
   filter_list := [ "category", "morphism" ],
@@ -4746,7 +4744,11 @@ InstallValue( CAP_INTERNAL_FIND_OPPOSITE_PROPERTY_PAIRS_IN_METHOD_NAME_RECORD,
         
         current_rec := method_name_record.( current_recname );
         
-        if not IsBound( current_rec.property_of ) then
+        if not (current_rec.return_type = "bool" and Length( current_rec.filter_list ) = 2) then
+            continue;
+        fi;
+        
+        if current_recname in [ "IsWellDefinedForObjects", "IsWellDefinedForMorphisms", "IsWellDefinedForTwoCells" ] then
             continue;
         fi;
         
@@ -4761,25 +4763,13 @@ InstallValue( CAP_INTERNAL_FIND_OPPOSITE_PROPERTY_PAIRS_IN_METHOD_NAME_RECORD,
             
         fi;
         
-        if method_name_record.( current_recname ).property_of = "object" then
+        if current_rec.filter_list[2] = "object" then
             
-            if not current_entry in CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_OBJECTS then
-                
-                Add( CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_OBJECTS, current_entry );
-                
-            fi;
+            AddSet( CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_OBJECTS, current_entry );
             
-        elif method_name_record.( current_recname ).property_of = "morphism" then
+        elif current_rec.filter_list[2] = "morphism" then
             
-            if not current_entry in CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_MORPHISMS then
-                
-                Add( CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_MORPHISMS, current_entry );
-                
-            fi;
-            
-        else
-            
-            Error( "this should never happen" );
+            AddSet( CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_MORPHISMS, current_entry );
             
         fi;
         

@@ -4,7 +4,7 @@ ci-test: ci-test_all_packages
 
 # BEGIN PACKAGE JANITOR
 ################################
-doc: doc_CAP doc_ActionsForCAP doc_AttributeCategoryForCAP doc_CartesianCategories doc_CompilerForCAP doc_ComplexesAndFilteredObjectsForCAP doc_DeductiveSystemForCAP doc_FreydCategoriesForCAP doc_GeneralizedMorphismsForCAP doc_GradedModulePresentationsForCAP doc_GroupRepresentationsForCAP doc_HomologicalAlgebraForCAP doc_InternalExteriorAlgebraForCAP doc_LinearAlgebraForCAP doc_ModulePresentationsForCAP doc_ModulesOverLocalRingsForCAP doc_MonoidalCategories doc_ToricSheaves
+doc: doc_CAP doc_ActionsForCAP doc_AttributeCategoryForCAP doc_CartesianCategories doc_CompilerForCAP doc_ComplexesAndFilteredObjectsForCAP doc_FreydCategoriesForCAP doc_GeneralizedMorphismsForCAP doc_GradedModulePresentationsForCAP doc_GroupRepresentationsForCAP doc_HomologicalAlgebraForCAP doc_InternalExteriorAlgebraForCAP doc_LinearAlgebraForCAP doc_ModulePresentationsForCAP doc_ModulesOverLocalRingsForCAP doc_MonoidalCategories doc_ToricSheaves
 
 doc_CAP:
 	$(MAKE) -C CAP doc
@@ -23,9 +23,6 @@ doc_CompilerForCAP:
 
 doc_ComplexesAndFilteredObjectsForCAP:
 	$(MAKE) -C ComplexesAndFilteredObjectsForCAP doc
-
-doc_DeductiveSystemForCAP:
-	$(MAKE) -C DeductiveSystemForCAP doc
 
 doc_FreydCategoriesForCAP:
 	$(MAKE) -C FreydCategoriesForCAP doc
@@ -61,7 +58,7 @@ doc_ToricSheaves:
 	$(MAKE) -C ToricSheaves doc
 
 ################################
-test: doc test_CAP test_ActionsForCAP test_AttributeCategoryForCAP test_CartesianCategories test_CompilerForCAP test_ComplexesAndFilteredObjectsForCAP test_DeductiveSystemForCAP test_FreydCategoriesForCAP test_GeneralizedMorphismsForCAP test_GradedModulePresentationsForCAP test_GroupRepresentationsForCAP test_HomologicalAlgebraForCAP test_InternalExteriorAlgebraForCAP test_LinearAlgebraForCAP test_ModulePresentationsForCAP test_ModulesOverLocalRingsForCAP test_MonoidalCategories test_ToricSheaves
+test: doc test_CAP test_ActionsForCAP test_AttributeCategoryForCAP test_CartesianCategories test_CompilerForCAP test_ComplexesAndFilteredObjectsForCAP test_FreydCategoriesForCAP test_GeneralizedMorphismsForCAP test_GradedModulePresentationsForCAP test_GroupRepresentationsForCAP test_HomologicalAlgebraForCAP test_InternalExteriorAlgebraForCAP test_LinearAlgebraForCAP test_ModulePresentationsForCAP test_ModulesOverLocalRingsForCAP test_MonoidalCategories test_ToricSheaves
 
 test_CAP:
 	$(MAKE) -C CAP test
@@ -80,9 +77,6 @@ test_CompilerForCAP:
 
 test_ComplexesAndFilteredObjectsForCAP:
 	$(MAKE) -C ComplexesAndFilteredObjectsForCAP test
-
-test_DeductiveSystemForCAP:
-	$(MAKE) -C DeductiveSystemForCAP test
 
 test_FreydCategoriesForCAP:
 	$(MAKE) -C FreydCategoriesForCAP test
@@ -118,7 +112,7 @@ test_ToricSheaves:
 	$(MAKE) -C ToricSheaves test
 
 ################################
-ci-test_all_packages: ci-test_CAP ci-test_ActionsForCAP ci-test_AttributeCategoryForCAP ci-test_CartesianCategories ci-test_CompilerForCAP ci-test_ComplexesAndFilteredObjectsForCAP ci-test_DeductiveSystemForCAP ci-test_FreydCategoriesForCAP ci-test_GeneralizedMorphismsForCAP ci-test_GradedModulePresentationsForCAP ci-test_GroupRepresentationsForCAP ci-test_HomologicalAlgebraForCAP ci-test_InternalExteriorAlgebraForCAP ci-test_LinearAlgebraForCAP ci-test_ModulePresentationsForCAP ci-test_ModulesOverLocalRingsForCAP ci-test_MonoidalCategories ci-test_ToricSheaves
+ci-test_all_packages: ci-test_CAP ci-test_ActionsForCAP ci-test_AttributeCategoryForCAP ci-test_CartesianCategories ci-test_CompilerForCAP ci-test_ComplexesAndFilteredObjectsForCAP ci-test_FreydCategoriesForCAP ci-test_GeneralizedMorphismsForCAP ci-test_GradedModulePresentationsForCAP ci-test_GroupRepresentationsForCAP ci-test_HomologicalAlgebraForCAP ci-test_InternalExteriorAlgebraForCAP ci-test_LinearAlgebraForCAP ci-test_ModulePresentationsForCAP ci-test_ModulesOverLocalRingsForCAP ci-test_MonoidalCategories ci-test_ToricSheaves
 
 ci-test_CAP:
 	$(MAKE) -C CAP ci-test
@@ -137,9 +131,6 @@ ci-test_CompilerForCAP:
 
 ci-test_ComplexesAndFilteredObjectsForCAP:
 	$(MAKE) -C ComplexesAndFilteredObjectsForCAP ci-test
-
-ci-test_DeductiveSystemForCAP:
-	$(MAKE) -C DeductiveSystemForCAP ci-test
 
 ci-test_FreydCategoriesForCAP:
 	$(MAKE) -C FreydCategoriesForCAP ci-test
