@@ -27,7 +27,6 @@ Please take a look at our [manual](https://github.com/homalg-project/CAP_project
 | [CartesianCategories](CartesianCategories#readme) | Cartesian and cocartesian categories and various subdoctrines | [![HTML stable documentation][html-CartesianCategories-img]][html-CartesianCategories-url] [![PDF stable documentation][pdf-CartesianCategories-img]][pdf-CartesianCategories-url] |
 | [CompilerForCAP](CompilerForCAP#readme) | Speed up computations in CAP categories | [![HTML stable documentation][html-CompilerForCAP-img]][html-CompilerForCAP-url] [![PDF stable documentation][pdf-CompilerForCAP-img]][pdf-CompilerForCAP-url] |
 | [ComplexesAndFilteredObjectsForCAP](ComplexesAndFilteredObjectsForCAP#readme) | Implementation of complexes, cocomplexes and filtered objects for CAP | [![HTML stable documentation][html-ComplexesAndFilteredObjectsForCAP-img]][html-ComplexesAndFilteredObjectsForCAP-url] [![PDF stable documentation][pdf-ComplexesAndFilteredObjectsForCAP-img]][pdf-ComplexesAndFilteredObjectsForCAP-url] |
-| [DeductiveSystemForCAP](DeductiveSystemForCAP#readme) | Deductive system for CAP | [![HTML stable documentation][html-DeductiveSystemForCAP-img]][html-DeductiveSystemForCAP-url] [![PDF stable documentation][pdf-DeductiveSystemForCAP-img]][pdf-DeductiveSystemForCAP-url] |
 | [FreydCategoriesForCAP](FreydCategoriesForCAP#readme) | Freyd categories - Formal (co)kernels for additive categories | [![HTML stable documentation][html-FreydCategoriesForCAP-img]][html-FreydCategoriesForCAP-url] [![PDF stable documentation][pdf-FreydCategoriesForCAP-img]][pdf-FreydCategoriesForCAP-url] |
 | [GeneralizedMorphismsForCAP](GeneralizedMorphismsForCAP#readme) | Implementations of generalized morphisms for the CAP project | [![HTML stable documentation][html-GeneralizedMorphismsForCAP-img]][html-GeneralizedMorphismsForCAP-url] [![PDF stable documentation][pdf-GeneralizedMorphismsForCAP-img]][pdf-GeneralizedMorphismsForCAP-url] |
 | [GradedModulePresentationsForCAP](GradedModulePresentationsForCAP#readme) | Presentations for graded modules | [![HTML stable documentation][html-GradedModulePresentationsForCAP-img]][html-GradedModulePresentationsForCAP-url] [![PDF stable documentation][pdf-GradedModulePresentationsForCAP-img]][pdf-GradedModulePresentationsForCAP-url] |
@@ -80,13 +79,6 @@ Please take a look at our [manual](https://github.com/homalg-project/CAP_project
 
 [pdf-ComplexesAndFilteredObjectsForCAP-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-ComplexesAndFilteredObjectsForCAP-url]: https://homalg-project.github.io/CAP_project/ComplexesAndFilteredObjectsForCAP/download_pdf.html
-
-
-[html-DeductiveSystemForCAP-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
-[html-DeductiveSystemForCAP-url]: https://homalg-project.github.io/CAP_project/DeductiveSystemForCAP/doc/chap0_mj.html
-
-[pdf-DeductiveSystemForCAP-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
-[pdf-DeductiveSystemForCAP-url]: https://homalg-project.github.io/CAP_project/DeductiveSystemForCAP/download_pdf.html
 
 
 [html-FreydCategoriesForCAP-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
