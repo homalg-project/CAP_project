@@ -854,7 +854,7 @@ InstallMethodWithCache( ExtendFunctorToLinearClosureOfSource,
         
         supp := List( supp, m -> ApplyFunctor( F, m ) );
         
-        return Sum( ListN( coeffs, supp, MultiplyWithElementOfCommutativeRingForMorphisms ) );
+        return LinearCombinationOfMorphisms( s, coeffs, supp, r );
         
     end );
     

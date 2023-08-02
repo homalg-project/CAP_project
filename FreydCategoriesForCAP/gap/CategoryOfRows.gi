@@ -1326,9 +1326,8 @@ AddFinalDerivationBundle( "Using BasisOfExternalHom and CoefficientsOfMorphism t
                     [
                       [ BasisOfExternalHom, 1 ],
                       [ CoefficientsOfMorphism, 2 ],
-                      [ MultiplyWithElementOfCommutativeRingForMorphisms, 2 ],
-                      [ PreComposeList, 2 ],
-                      [ SumOfMorphisms, 1 ]
+                      [ LinearCombinationOfMorphisms, 1 ],
+                      [ PreComposeList, 2 ]
                     ],
                     [
                       HomomorphismStructureOnObjects,
@@ -1405,8 +1404,7 @@ AddFinalDerivationBundle( "Using BasisOfExternalHom and CoefficientsOfMorphism t
   InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism,
   [
     [ BasisOfExternalHom, 1 ],
-    [ MultiplyWithElementOfCommutativeRingForMorphisms, 2 ],
-    [ SumOfMorphisms, 1 ]
+    [ LinearCombinationOfMorphisms, 1 ],
   ],
   function ( cat, a, b, iota )
     local coeffs, basis;
@@ -1415,7 +1413,7 @@ AddFinalDerivationBundle( "Using BasisOfExternalHom and CoefficientsOfMorphism t
     
     basis := BasisOfExternalHom( cat, a, b );
     
-    return SumOfMorphisms( cat, a, ListN( coeffs, basis, { c, m } -> MultiplyWithElementOfCommutativeRingForMorphisms( cat, c, m ) ), b );
+    return LinearCombinationOfMorphisms( cat, a, coeffs, basis, b );
     
   end
 ] :
