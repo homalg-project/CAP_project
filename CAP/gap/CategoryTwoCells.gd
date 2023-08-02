@@ -27,6 +27,14 @@ DeclareAttribute( "Source",
 DeclareAttribute( "Range",
                   IsCapCategoryTwoCell );
 
+#! @Description
+#! The argument is a $2$-cell $c: \alpha \rightarrow \beta$.
+#! The output is its target $\beta$.
+#! @Returns a morphism
+#! @Arguments c
+DeclareAttribute( "Target",
+                  IsCapCategoryTwoCell );
+
 ###################################
 ##
 ## Properties

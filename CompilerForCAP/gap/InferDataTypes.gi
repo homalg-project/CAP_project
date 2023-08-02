@@ -937,6 +937,12 @@ CapJitAddTypeSignature( "Range", [ IsCapCategoryMorphism ], function ( input_typ
     
 end );
 
+CapJitAddTypeSignature( "Target", [ IsCapCategoryMorphism ], function ( input_types )
+    
+    return CapJitDataTypeOfObjectOfCategory( input_types[1].category );
+    
+end );
+
 # GAP operations
 CapJitAddTypeSignature( "RETURN_TRUE", [ IsObject, IsObject ], IsBool );
 CapJitAddTypeSignature( "Length", [ IsList ], IsInt );

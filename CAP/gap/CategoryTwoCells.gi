@@ -8,9 +8,14 @@ BindGlobal( "IsCapCategoryTwoCellRep", IsCapCategoryTwoCell );
 
 ####################################
 ##
-## Add function
+## Operations
 ##
 ####################################
+
+InstallMethod( Target,
+               [ IsCapCategoryTwoCell ],
+               
+  Range );
 
 ##
 InstallMethod( Add,

@@ -58,6 +58,11 @@ InstallValue( PROPAGATION_LIST_FOR_EQUAL_MORPHISMS,
 ##
 ######################################
 
+InstallMethod( Target,
+               [ IsCapCategoryMorphism ],
+               
+  Range );
+
 InstallMethod( Add,
                [ IsCapCategory, IsCapCategoryMorphism ],
                

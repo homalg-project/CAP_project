@@ -477,9 +477,16 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
                 
             fi;
             
-            if template_tree.funcref.type = "EXPR_REF_GVAR" and not IsIdenticalObj( ValueGlobal( tree.funcref.gvar ), ValueGlobal( template_tree.funcref.gvar ) ) then
+            if template_tree.funcref.type = "EXPR_REF_GVAR" then
                 
-                return fail;
+                if
+                    not IsIdenticalObj( ValueGlobal( tree.funcref.gvar ), ValueGlobal( template_tree.funcref.gvar ) ) and
+                    not (template_tree.funcref.gvar in [ "Range", "Target" ] and tree.funcref.gvar in [ "Range", "Target" ] and IsBound( tree.funcref.data_type ) and IsSpecializationOfFilter( IsCapCategoryMorphism, tree.funcref.data_type.signature[1][1].filter ))
+                then
+                    
+                    return fail;
+                    
+                fi;
                 
             fi;
             
@@ -647,6 +654,15 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
                     if debug then
                         # COVERAGE_IGNORE_NEXT_LINE
                         Display( "match: gvars point to identical values" );
+                    fi;
+                    
+                    continue;
+                    
+                elif template_tree.gvar in [ "Range", "Target" ] and tree.gvar in [ "Range", "Target" ] and IsBound( tree.data_type ) and IsSpecializationOfFilter( IsCapCategoryMorphism, tree.data_type.signature[1][1].filter ) then
+                    
+                    if debug then
+                        # COVERAGE_IGNORE_NEXT_LINE
+                        Display( "match: gvars are both Range resp. Target of a morphism" );
                     fi;
                     
                     continue;

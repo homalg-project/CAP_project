@@ -509,7 +509,7 @@ CapJitAddLogicFunction( function ( tree )
                     
                     return object.args.2;
                     
-                elif attribute_name = "Range" then
+                elif attribute_name = "Range" or attribute_name = "Target" then
                     
                     return object.args.3;
                     
@@ -723,7 +723,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                     # Source can be recovered from initial_value
                     CapJitIsCallToGlobalFunction( source, "Source" ) and source.args.length = 1 and source.args.1.type = "EXPR_REF_FVAR" and source.args.1.func_id = result_func.id and source.args.1.name = result_func.nams[1] and
                     # Range can be recovered from initial_value
-                    CapJitIsCallToGlobalFunction( range, "Range" ) and range.args.length = 1 and range.args.1.type = "EXPR_REF_FVAR" and range.args.1.func_id = result_func.id and range.args.1.name = result_func.nams[1]
+                    CapJitIsCallToGlobalFunction( range, gvar -> gvar in [ "Range", "Target" ] ) and range.args.length = 1 and range.args.1.type = "EXPR_REF_FVAR" and range.args.1.func_id = result_func.id and range.args.1.name = result_func.nams[1]
                 then
                     
                     case := "from_initial_value";
