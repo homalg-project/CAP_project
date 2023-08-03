@@ -43,7 +43,13 @@ DeclareAttribute( "Source",
 DeclareAttribute( "Range",
                   IsCapCategoryMorphism );
 
-# this attribute is also an implied operation
+#! @Description
+#! The argument is a morphism $\alpha: a \rightarrow b$.
+#! The output is its target $b$.
+#! @Returns an object
+#! @Arguments alpha
+DeclareAttribute( "Target",
+                  IsCapCategoryMorphism );
 
 ###################################
 ##
