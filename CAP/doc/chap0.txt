@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2023.08-03
+                                   2023.08-04
   
   
-                                 1 August 2023
+                                 3 August 2023
   
   
                                Sebastian Gutsche
@@ -184,6 +184,7 @@
       3.1-1 CapCategory
       3.1-2 Source
       3.1-3 Range
+      3.1-4 Target
     3.2 [33X[0;0YMorphism constructors[133X
       3.2-1 MorphismConstructor
       3.2-2 MorphismDatum
@@ -311,6 +312,7 @@
     4.1 [33X[0;0YAttributes for the Type of 2-Cells[133X
       4.1-1 Source
       4.1-2 Range
+      4.1-3 Target
     4.2 [33X[0;0YIdentity 2-Cell and Composition of 2-Cells[133X
       4.2-1 IdentityTwoCell
       4.2-2 HorizontalPreCompose

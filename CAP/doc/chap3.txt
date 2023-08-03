@@ -35,6 +35,14 @@
   [33X[0;0YThe  argument is a morphism [23X\alpha: a \rightarrow b[123X. The output is its range
   [23Xb[123X.[133X
   
+  [1X3.1-4 Target[101X
+  
+  [33X[1;0Y[29X[2XTarget[102X( [3Xalpha[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe argument is a morphism [23X\alpha: a \rightarrow b[123X. The output is its target
+  [23Xb[123X.[133X
+  
   
   [1X3.2 [33X[0;0YMorphism constructors[133X[101X
   

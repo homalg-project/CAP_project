@@ -20,6 +20,14 @@
   [33X[0;0YThe  argument  is  a  [23X2[123X-cell  [23Xc: \alpha \rightarrow \beta[123X. The output is its
   range [23X\beta[123X.[133X
   
+  [1X4.1-3 Target[101X
+  
+  [33X[1;0Y[29X[2XTarget[102X( [3Xc[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YThe  argument  is  a  [23X2[123X-cell  [23Xc: \alpha \rightarrow \beta[123X. The output is its
+  target [23X\beta[123X.[133X
+  
   
   [1X4.2 [33X[0;0YIdentity 2-Cell and Composition of 2-Cells[133X[101X
   

@@ -835,6 +835,8 @@
   [2XSumOfMorphisms[102X, for IsCapCategoryObject, IsList, IsCapCategoryObject 3.10-8 
   [2XSumWithKeys[102X 9.2-43 
   [2XSwap[102X, for IsStringMinHeap, IsPosInt, IsPosInt 8.5-9 
+  [2XTarget[102X, for IsCapCategoryMorphism 3.1-4 
+      for IsCapCategoryTwoCell 4.1-3 
   [2XTargetOperation[102X, for IsDerivedMethod 8.2-8 
   [2XTerminalCategoryWithMultipleObjects[102X 16.2-2 
   [2XTerminalCategoryWithSingleObject[102X 16.2-1 
