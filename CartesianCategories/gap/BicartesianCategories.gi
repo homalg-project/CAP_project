@@ -31,7 +31,8 @@ InstallTrueMethod( IsCodistributiveCategory, IsBicartesianCoclosedCategory );
 InstallTrueMethod( IsCartesianCategory, IsFiniteCompleteCategory );
 InstallTrueMethod( IsCocartesianCategory, IsFiniteCocompleteCategory );
 
-InstallTrueMethod( IsBicartesianCategory, IsAbelianCategory );
+InstallTrueMethod( IsBicartesianCategory, IsAdditiveCategory );
+
 InstallTrueMethod( IsFiniteCompleteCategory, IsAbelianCategory );
 InstallTrueMethod( IsFiniteCocompleteCategory, IsAbelianCategory );
 
