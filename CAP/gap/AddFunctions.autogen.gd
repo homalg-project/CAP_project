@@ -2102,6 +2102,25 @@ DeclareOperation( "AddIsInjective",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `IsIsomorphicForObjects`.
+#! $F: ( object_1, object_2 ) \mapsto \mathtt{IsIsomorphicForObjects}(object_1, object_2)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsIsomorphicForObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsIsomorphicForObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsIsomorphicForObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsIsomorphicForObjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `IsIsomorphism`.
 #! $F: ( arg2 ) \mapsto \mathtt{IsIsomorphism}(arg2)$.
 #! @Returns nothing
@@ -4453,6 +4472,25 @@ DeclareOperation( "AddSomeInjectiveObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddSomeInjectiveObject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `SomeIsomorphismBetweenObjects`.
+#! $F: ( object_1, object_2 ) \mapsto \mathtt{SomeIsomorphismBetweenObjects}(object_1, object_2)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSomeIsomorphismBetweenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSomeIsomorphismBetweenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSomeIsomorphismBetweenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSomeIsomorphismBetweenObjects",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

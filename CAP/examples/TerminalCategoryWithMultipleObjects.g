@@ -10,7 +10,7 @@ T := TerminalCategoryWithMultipleObjects( );
 Display( T );
 #! A CAP category with name TerminalCategoryWithMultipleObjects( ):
 #! 
-#! 63 primitive operations were used to derive 304 operations for this category \
+#! 65 primitive operations were used to derive 306 operations for this category \
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
@@ -58,14 +58,22 @@ aa := ObjectConstructor( T, "a" );
 #! <A zero object in TerminalCategoryWithMultipleObjects( )>
 Display( aa );
 #! a
-a = aa;
+IsEqualForObjects( a, aa );
+#! true
+IsIsomorphicForObjects( a, aa );
+#! true
+IsIsomorphism( SomeIsomorphismBetweenObjects( a, aa ) );
 #! true
 b := "b" / T;
 #! <A zero object in TerminalCategoryWithMultipleObjects( )>
 Display( b );
 #! b
-a = b;
+IsEqualForObjects( a, b );
 #! false
+IsIsomorphicForObjects( a, b );
+#! true
+IsIsomorphism( SomeIsomorphismBetweenObjects( a, b ) );
+#! true
 t := TensorProduct( a, b );
 #! <A zero object in TerminalCategoryWithMultipleObjects( )>
 Display( t );

@@ -1237,7 +1237,46 @@ IsEqualForCacheForMorphisms := rec(
   return_type := "bool",
   compatible_with_congruence_of_morphisms := false,
 ),
-  
+
+IsIsomorphicForObjects := rec(
+  filter_list := [ "category", "object", "object" ],
+  input_arguments_names := [ "cat", "object_1", "object_2" ],
+  return_type := "bool",
+  dual_operation := "IsIsomorphicForObjects",
+  # The witness SomeIsomorphismBetweenObjects needs reversed arguments.
+  # This shows that reversing the arguments is the correct dualization,
+  # even if the relation is symmetric.
+  dual_arguments_reversed := true,
+  redirect_function := function( cat, object_1, object_2 )
+    
+    # As any CAP operation, IsIsomorphicForObjects must be compatible with IsEqualForObjects.
+    # This implies that IsIsomorphicForObjects must be coarser than IsEqualForObjects:
+    # One can see this by first choosing object_2 := object_1 and the varying one argument with regard to IsEqualForObjects.
+    if IsEqualForObjects( object_1, object_2 ) then
+        
+        return [ true, true ];
+        
+    else
+        
+        return [ false ];
+        
+    fi;
+    
+  end,
+),
+
+SomeIsomorphismBetweenObjects := rec(
+  filter_list := [ "category", "object", "object" ],
+  input_arguments_names := [ "cat", "object_1", "object_2" ],
+  return_type := "morphism",
+  output_source_getter_string := "object_1",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "object_2",
+  output_range_getter_preconditions := [ ],
+  dual_operation := "SomeIsomorphismBetweenObjects",
+  dual_arguments_reversed := true,
+),
+
 IsZeroForMorphisms := rec(
   filter_list := [ "category", "morphism" ],
   return_type := "bool",

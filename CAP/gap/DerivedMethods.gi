@@ -1204,6 +1204,28 @@ end );
 ###########################
 
 ##
+AddDerivationToCAP( IsEqualForObjects,
+                    "skeletality",
+                    [ [ IsIsomorphicForObjects, 1 ] ],
+                    
+  function( cat, object_1, object_2 )
+    
+    return IsIsomorphicForObjects( cat, object_1, object_2 );
+    
+end : CategoryFilter := IsSkeletalCategory );
+
+##
+AddDerivationToCAP( IsIsomorphicForObjects,
+                    "skeletality",
+                    [ [ IsEqualForObjects, 1 ] ],
+                    
+  function( cat, object_1, object_2 )
+    
+    return IsEqualForObjects( cat, object_1, object_2 );
+    
+end : CategoryFilter := IsSkeletalCategory );
+
+##
 AddDerivationToCAP( IsBijectiveObject,
                     "IsBijectiveObject by checking if the object is both projective and injective",
                     [ [ IsProjective, 1 ],
@@ -1713,6 +1735,17 @@ end );
 ## Methods returning a morphism where the source and range can directly be read of from the input
 ##
 ###########################
+
+##
+AddDerivationToCAP( SomeIsomorphismBetweenObjects,
+                    "skeletality",
+                    [ [ IdentityMorphism, 1 ] ],
+                    
+  function( cat, object_1, object_2 )
+    
+    return IdentityMorphism( cat, object_1 );
+    
+end : CategoryFilter := IsSkeletalCategory );
 
 ##
 AddDerivationToCAP( ZeroMorphism,

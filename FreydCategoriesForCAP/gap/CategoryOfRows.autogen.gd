@@ -254,6 +254,7 @@
 #! * <Ref BookName="MonoidalCategories" Func="InternalHomOnMorphismsWithGivenInternalHoms" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="InternalHomOnObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="InternalHomToTensorProductAdjunctionMap" Label="for Is" />
+#! * <Ref BookName="CAP" Func="IsIsomorphicForObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="IsomorphismFromDualObjectToInternalHomIntoTensorUnit" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject" Label="for Is" />
@@ -313,6 +314,7 @@
 #! * <Ref BookName="MonoidalCategories" Func="RightUnitorInverse" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="RightUnitorInverseWithGivenTensorProduct" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="RightUnitorWithGivenTensorProduct" Label="for Is" />
+#! * <Ref BookName="CAP" Func="SomeIsomorphismBetweenObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductDualityCompatibilityMorphism" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductDualityCompatibilityMorphismWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductInternalHomCompatibilityMorphism" Label="for Is" />
