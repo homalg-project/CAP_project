@@ -212,6 +212,12 @@ InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( stri
         
         return CapJitDataTypeOfListOf( is_ring_element );
         
+    elif string = "list_of_integers_and_list_of_morphisms" then
+        
+        return CapJitDataTypeOfNTupleOf( 2,
+                       CapJitDataTypeOfListOf( rec( filter := IsInt ) ),
+                       CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( category ) ) );
+        
     elif string = "arbitrary_list" then
         
         return CapJitDataTypeOfListOf( IsObject );
