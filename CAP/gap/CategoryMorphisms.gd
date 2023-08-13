@@ -673,14 +673,15 @@ DeclareOperation( "PreCompose",
                   [ IsList ] );
 
 #! @Description
-#! The argument is a list of morphisms
+#! The arguments are two objects <A>s</A> = $a_1$, <A>r</A> = $a_{n+1}$, and a list of morphisms
 #! $L = ( \alpha_1: a_1 \rightarrow a_2, \alpha_2: a_2 \rightarrow a_3, \dots, \alpha_n: a_n \rightarrow a_{n+1} )$ in $C$.
 #! The output is the composition
 #! $\alpha_{n} \circ ( \alpha_{n-1} \circ ( \dots ( \alpha_2 \circ \alpha_1 ) ) )$.
-#! @Returns a morphism in $\mathrm{Hom}(a_1, a_{n+1})$
-#! @Arguments C, L
+#! If $L$ is empty, then $s$ must be equal to $r$ and the output is congruent to the identity morphism of $s$.
+#! @Returns a morphism in $\mathrm{Hom}(s, r)$
+#! @Arguments s, L, r
 DeclareOperation( "PreComposeList",
-                  [ IsList ] );
+                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
 
 #! @Description
@@ -703,14 +704,15 @@ DeclareOperation( "PostCompose",
                   [ IsList ] );
 
 #! @Description
-#! The argument is a list of morphisms
+#! The arguments are two objects <A>s</A> = $a_1$, <A>r</A> = $a_{n+1}$, and a list of morphisms
 #! $L = ( \alpha_n: a_n \rightarrow a_{n+1}, \alpha_{n-1}: a_{n-1} \rightarrow a_n, \dots, \alpha_1: a_1 \rightarrow a_2 )$.
 #! The output is the composition
 #! $((\alpha_{n} \circ  \alpha_{n-1}) \circ \dots  \alpha_2) \circ \alpha_1$.
-#! @Returns a morphism in $\mathrm{Hom}(a_1, a_{n+1})$
-#! @Arguments C, L
+#! If $L$ is empty, then $s$ must be equal to $r$ and the output is congruent to the identity morphism of $s$.
+#! @Returns a morphism in $\mathrm{Hom}(s, r)$
+#! @Arguments s, L, r
 DeclareOperation( "PostComposeList",
-                  [ IsList ] );
+                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are two objects <A>s</A>, <A>r</A> and a list <A>morphisms</A> of morphisms from <A>s</A> to <A>r</A>.

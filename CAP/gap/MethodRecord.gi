@@ -614,14 +614,30 @@ LinearCombinationOfMorphisms := rec(
 ),
 
 PreComposeList := rec(
-  filter_list := [ "category", "list_of_morphisms" ],
-  input_arguments_names := [ "cat", "list_of_morphisms" ],
-  pre_function := function( cat, list_of_morphisms )
+  filter_list := [ "category", "object", "list_of_morphisms", "object" ],
+  input_arguments_names := [ "cat", "source", "list_of_morphisms", "range" ],
+  pre_function := function( cat, source, list_of_morphisms, range )
     local i;
     
     if IsEmpty( list_of_morphisms ) then
         
-        return [ false, "the list of morphisms must not be empty" ];
+        if not IsEqualForObjects( cat, source, range ) then
+            
+            return [ false, "the given source and range are not equal while the given list of morphisms to compose is empty" ];
+            
+        fi;
+        
+    else
+        
+        if not IsEqualForObjects( cat, source, Source( First( list_of_morphisms ) ) ) then
+            
+            return [ false, "the given source is not equal to the source of the first morphism" ];
+            
+        elif not IsEqualForObjects( cat, range, Range( Last( list_of_morphisms ) ) ) then
+            
+            return [ false, "the given range is not equal to the range of the last morphism" ];
+            
+        fi;
         
     fi;
     
@@ -639,11 +655,10 @@ PreComposeList := rec(
     
   end,
   return_type := "morphism",
-  output_source_getter_string := "Source( list_of_morphisms[1] )",
-  output_source_getter_preconditions := [ ],
-  output_range_getter_string := "Range( Last( list_of_morphisms ) )",
-  output_range_getter_preconditions := [ ],
+  output_source_getter_string := "source",
+  output_range_getter_string := "range",
   dual_operation := "PostComposeList",
+  dual_arguments_reversed := true,
   compatible_with_congruence_of_morphisms := true,
 ),
 
@@ -672,14 +687,30 @@ PostCompose := rec(
 ),
 
 PostComposeList := rec(
-  filter_list := [ "category", "list_of_morphisms" ],
-  input_arguments_names := [ "cat", "list_of_morphisms" ],
-  pre_function := function( cat, list_of_morphisms )
+  filter_list := [ "category", "object", "list_of_morphisms", "object" ],
+  input_arguments_names := [ "cat", "source", "list_of_morphisms", "range" ],
+  pre_function := function( cat, source, list_of_morphisms, range )
     local i;
     
     if IsEmpty( list_of_morphisms ) then
         
-        return [ false, "the list of morphisms must not be empty" ];
+        if not IsEqualForObjects( cat, source, range ) then
+            
+            return [ false, "the given source and range are not equal while the given list of morphisms to compose is empty" ];
+            
+        fi;
+        
+    else
+        
+        if not IsEqualForObjects( cat, source, Source( Last( list_of_morphisms ) ) ) then
+            
+            return [ false, "the given source is not equal to the source of the last morphism" ];
+            
+        elif not IsEqualForObjects( cat, range, Range( First( list_of_morphisms ) ) ) then
+            
+            return [ false, "the given range is not equal to the range of the first morphism" ];
+            
+        fi;
         
     fi;
     
@@ -697,11 +728,10 @@ PostComposeList := rec(
     
   end,
   return_type := "morphism",
-  output_source_getter_string := "Source( Last( list_of_morphisms ) )",
-  output_source_getter_preconditions := [ ],
-  output_range_getter_string := "Range( list_of_morphisms[1] )",
-  output_range_getter_preconditions := [ ],
+  output_source_getter_string := "source",
+  output_range_getter_string := "range",
   dual_operation := "PreComposeList",
+  dual_arguments_reversed := true,
   compatible_with_congruence_of_morphisms := true,
 ),
 

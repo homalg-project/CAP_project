@@ -19,16 +19,16 @@ gap> cat := DummyCategory( rec( list_of_operations_to_install := [ "IsCongruentF
 gap> StopCompilationAtPrimitivelyInstalledOperationsOfCategory( cat );
 gap> Display( CapJitCompiledFunction( func, cat, [ "category", "morphism", "morphism" ], "morphism" ) );
 function ( cat_1, mor1_1, mor2_1 )
-    return PreComposeList( cat_1, [ mor1_1, mor2_1 ] );
+    return PreComposeList( cat_1, Source( mor1_1 ), [ mor1_1, mor2_1 ], Range( mor2_1 ) );
 end
 
 # resolve CAP operations without category as first argument (list input)
-gap> func := { cat, mor1, mor2 } -> PreComposeList( [ mor1, mor2 ] );;
-gap> cat := DummyCategory( rec( list_of_operations_to_install := [ "IsCongruentForMorphisms", "PreCompose" ] ) );;
+gap> func := { cat, obj1, obj2 } -> DirectProduct( [ obj1, obj2 ] );;
+gap> cat := DummyCategory( rec( properties := [ "IsAdditiveCategory" ], list_of_operations_to_install := [ "IsCongruentForMorphisms", "IsomorphismFromDirectProductToDirectSum" ] ) );;
 gap> StopCompilationAtPrimitivelyInstalledOperationsOfCategory( cat );
-gap> Display( CapJitCompiledFunction( func, cat, [ "category", "morphism", "morphism" ], "morphism" ) );
-function ( cat_1, mor1_1, mor2_1 )
-    return PreCompose( cat_1, mor1_1, mor2_1 );
+gap> Display( CapJitCompiledFunction( func, cat, [ "category", "object", "object" ], "object" ) );
+function ( cat_1, obj1_1, obj2_1 )
+    return Source( IsomorphismFromDirectProductToDirectSum( cat_1, [ obj1_1, obj2_1 ] ) );
 end
 
 #
