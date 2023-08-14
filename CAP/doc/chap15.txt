@@ -710,7 +710,7 @@
     [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
     [4X[28XA CAP category with name TerminalCategoryWithMultipleObjects( ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X63 primitive operations were used to derive 304 operations for this category \[128X[104X
+    [4X[28X65 primitive operations were used to derive 306 operations for this category \[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
@@ -758,14 +758,22 @@
     [4X[28X<A zero object in TerminalCategoryWithMultipleObjects( )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( aa );[127X[104X
     [4X[28Xa[128X[104X
-    [4X[25Xgap>[125X [27Xa = aa;[127X[104X
+    [4X[25Xgap>[125X [27XIsEqualForObjects( a, aa );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphicForObjects( a, aa );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( SomeIsomorphismBetweenObjects( a, aa ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xb := "b" / T;[127X[104X
     [4X[28X<A zero object in TerminalCategoryWithMultipleObjects( )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( b );[127X[104X
     [4X[28Xb[128X[104X
-    [4X[25Xgap>[125X [27Xa = b;[127X[104X
+    [4X[25Xgap>[125X [27XIsEqualForObjects( a, b );[127X[104X
     [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphicForObjects( a, b );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( SomeIsomorphismBetweenObjects( a, b ) );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xt := TensorProduct( a, b );[127X[104X
     [4X[28X<A zero object in TerminalCategoryWithMultipleObjects( )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( t );[127X[104X
@@ -858,7 +866,7 @@
     [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
     [4X[28XA CAP category with name TerminalCategoryWithSingleObject( ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X63 primitive operations were used to derive 304 operations for this category \[128X[104X
+    [4X[28X63 primitive operations were used to derive 306 operations for this category \[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X

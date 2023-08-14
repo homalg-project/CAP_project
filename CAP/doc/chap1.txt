@@ -162,7 +162,8 @@
   [33X[1;0Y[29X[2XIsSkeletalCategory[102X( [3XC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe property of the category [3XC[103X being skeletal.[133X
+  [33X[0;0YThe   property   of   the  category  [3XC[103X  being  skeletal,  that  is,  whether
+  [10XIsEqualForObjects[110X and [10XIsIsomorphicForObjects[110X coincide.[133X
   
   [1X1.2-7 IsAbCategory[101X
   

@@ -20,7 +20,7 @@
   [23Xa[123X was added.[133X
   
   
-  [1X2.2 [33X[0;0YEquality for Objects[133X[101X
+  [1X2.2 [33X[0;0YEqualities for Objects[133X[101X
   
   [1X2.2-1 IsEqualForObjects[101X
   
@@ -29,6 +29,23 @@
   
   [33X[0;0YThe  arguments  are  two  objects  [23Xa[123X  and  [23Xb[123X.  The  output is [10Xtrue[110X if [23Xa = b[123X,
   otherwise the output is [10Xfalse[110X.[133X
+  
+  [1X2.2-2 IsIsomorphicForObjects[101X
+  
+  [33X[1;0Y[29X[2XIsIsomorphicForObjects[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  arguments  are  two  objects [23Xa[123X and [23Xb[123X. The output is [10Xtrue[110X if [23Xa[123X and [23Xb[123X are
+  isomorphic,  that  is, if there exists an isomorphism [23Xa \to b[123X, otherwise the
+  output is [10Xfalse[110X.[133X
+  
+  [1X2.2-3 SomeIsomorphismBetweenObjects[101X
+  
+  [33X[1;0Y[29X[2XSomeIsomorphismBetweenObjects[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan isomorphism in [23X\mathrm{Hom}(a,b)[123X[133X
+  
+  [33X[0;0YThe  arguments  are  two  isomorphic  objects  [23Xa[123X  and  [23Xb[123X.  The  output is an
+  isomorphism [23Xa \to b[123X.[133X
   
   
   [1X2.3 [33X[0;0YCategorical Properties of Objects[133X[101X

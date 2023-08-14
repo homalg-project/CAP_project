@@ -807,7 +807,7 @@ TerminalCategoryWithMultipleObjects( )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( T );</span>
 A CAP category with name TerminalCategoryWithMultipleObjects( ):
 
-63 primitive operations were used to derive 304 operations for this category \
+65 primitive operations were used to derive 306 operations for this category \
 which algorithmically
 * IsCategoryWithDecidableColifts
 * IsCategoryWithDecidableLifts
@@ -855,14 +855,22 @@ true
 &lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( aa );</span>
 a
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a = aa;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForObjects( a, aa );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphicForObjects( a, aa );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism( SomeIsomorphismBetweenObjects( a, aa ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := "b" / T;</span>
 &lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( b );</span>
 b
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a = b;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForObjects( a, b );</span>
 false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphicForObjects( a, b );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism( SomeIsomorphismBetweenObjects( a, b ) );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := TensorProduct( a, b );</span>
 &lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( t );</span>
@@ -956,7 +964,7 @@ TerminalCategoryWithSingleObject( )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( T );</span>
 A CAP category with name TerminalCategoryWithSingleObject( ):
 
-63 primitive operations were used to derive 304 operations for this category \
+63 primitive operations were used to derive 306 operations for this category \
 which algorithmically
 * IsCategoryWithDecidableColifts
 * IsCategoryWithDecidableLifts

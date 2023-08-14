@@ -30,10 +30,12 @@
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7C3B8C3D865002C8">2.1-1 CapCategory</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7B4B807A848111AA">2.2 <span class="Heading">Equality for Objects</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X87FC6F8A78E599E0">2.2 <span class="Heading">Equalities for Objects</span></a>
 </span>
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8337569D81C0BBEC">2.2-1 IsEqualForObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7C34D06C7ABE563F">2.2-2 IsIsomorphicForObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7D3407D68401C878">2.2-3 SomeIsomorphismBetweenObjects</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X86CCD70884952468">2.3 <span class="Heading">Categorical Properties of Objects</span></a>
 </span>
@@ -129,9 +131,9 @@
 
 <p>The argument is an object <span class="SimpleMath">\(a\)</span>. The output is the category <span class="SimpleMath">\(\mathbf{C}\)</span> to which <span class="SimpleMath">\(a\)</span> was added.</p>
 
-<p><a id="X7B4B807A848111AA" name="X7B4B807A848111AA"></a></p>
+<p><a id="X87FC6F8A78E599E0" name="X87FC6F8A78E599E0"></a></p>
 
-<h4>2.2 <span class="Heading">Equality for Objects</span></h4>
+<h4>2.2 <span class="Heading">Equalities for Objects</span></h4>
 
 <p><a id="X8337569D81C0BBEC" name="X8337569D81C0BBEC"></a></p>
 
@@ -141,6 +143,24 @@
 <p>Returns: a boolean</p>
 
 <p>The arguments are two objects <span class="SimpleMath">\(a\)</span> and <span class="SimpleMath">\(b\)</span>. The output is <code class="code">true</code> if <span class="SimpleMath">\(a = b\)</span>, otherwise the output is <code class="code">false</code>.</p>
+
+<p><a id="X7C34D06C7ABE563F" name="X7C34D06C7ABE563F"></a></p>
+
+<h5>2.2-2 IsIsomorphicForObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsIsomorphicForObjects</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The arguments are two objects <span class="SimpleMath">\(a\)</span> and <span class="SimpleMath">\(b\)</span>. The output is <code class="code">true</code> if <span class="SimpleMath">\(a\)</span> and <span class="SimpleMath">\(b\)</span> are isomorphic, that is, if there exists an isomorphism <span class="SimpleMath">\(a \to b\)</span>, otherwise the output is <code class="code">false</code>.</p>
+
+<p><a id="X7D3407D68401C878" name="X7D3407D68401C878"></a></p>
+
+<h5>2.2-3 SomeIsomorphismBetweenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SomeIsomorphismBetweenObjects</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an isomorphism in <span class="SimpleMath">\(\mathrm{Hom}(a,b)\)</span></p>
+
+<p>The arguments are two isomorphic objects <span class="SimpleMath">\(a\)</span> and <span class="SimpleMath">\(b\)</span>. The output is an isomorphism <span class="SimpleMath">\(a \to b\)</span>.</p>
 
 <p><a id="X86CCD70884952468" name="X86CCD70884952468"></a></p>
 
