@@ -10,7 +10,7 @@ AddDerivationToCAP( InternalCoHomOnObjects,
                     [ [ IsomorphismFromInternalCoHomToTensorProductWithCoDualObject, 1 ] ],
                     
   function( cat, a, b )
-
+    
     # Source( Cohom(a,b) → b_v ⊗ a )
     
     return Source( IsomorphismFromInternalCoHomToTensorProductWithCoDualObject( cat, a, b ) );
@@ -23,7 +23,7 @@ AddDerivationToCAP( InternalCoHomOnObjects,
                     [ [ IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom, 1 ] ],
                     
   function( cat, a, b )
-
+    
     # Range( b_v ⊗ a → Cohom(a,b) )
     
     return Range( IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom( cat, b, a ) );
@@ -41,7 +41,7 @@ AddDerivationToCAP( InternalCoHomOnMorphismsWithGivenInternalCoHoms,
                     
   function( cat, internal_cohom_source, alpha, beta, internal_cohom_range )
     local codual_beta;
-
+    
     # alpha: a → a'
     # beta: b → b'
     #
@@ -76,7 +76,7 @@ AddDerivationToCAP( MorphismToCoBidualWithGivenCoBidual,
                       [ MorphismFromCoBidualWithGivenCoBidual, 1 ] ],
                     
   function( cat, a, cobidual )
-
+    
     # Inverse( (a_v)_v → a )
     
     return InverseForMorphisms( cat, MorphismFromCoBidualWithGivenCoBidual( cat, a, cobidual ) );
@@ -90,7 +90,7 @@ AddDerivationToCAP( MorphismFromCoBidualWithGivenCoBidual,
                       [ MorphismToCoBidualWithGivenCoBidual, 1 ] ],
                     
   function( cat, a, cobidual )
-
+    
     # Inverse( a → (a_v)_v )
     
     return InverseForMorphisms( cat, MorphismToCoBidualWithGivenCoBidual( cat, a, cobidual ) );
@@ -112,7 +112,7 @@ AddDerivationToCAP( CoclosedEvaluationMorphismWithGivenRange,
                     
   function( cat, a, b, internal_cohom_tensored_b )
     local morphism;
-
+    
     #      a
     #      |
     #      | (ρ_a)^-1
@@ -170,7 +170,7 @@ AddDerivationToCAP( CoclosedEvaluationMorphismWithGivenRange,
                     
   function( cat, a, b, internal_cohom_tensored_b )
     local morphism;
-
+    
     #    a ⊗ 1
     #      |
     #      | id_a ⊗ coclev_b
@@ -200,7 +200,7 @@ AddDerivationToCAP( CoclosedEvaluationMorphismWithGivenRange,
                 ] );
                     
     return morphism;
-      
+    
 end : CategoryFilter := cat -> HasIsRigidSymmetricCoclosedMonoidalCategory( cat ) and IsRigidSymmetricCoclosedMonoidalCategory( cat ) and HasIsStrictMonoidalCategory( cat ) and IsStrictMonoidalCategory( cat ) );
 
 ##
@@ -219,7 +219,7 @@ AddDerivationToCAP( CoclosedCoevaluationMorphismWithGivenSource,
                     
   function( cat, a, b, internal_cohom )
     local morphism, codual_b, id_a;
-
+    
     # Cohom(a ⊗ b, b)
     #       |
     #       | Isomorphism
@@ -290,7 +290,7 @@ AddDerivationToCAP( CoclosedCoevaluationMorphismWithGivenSource,
                     
   function( cat, a, b, internal_cohom )
     local morphism, codual_b, id_a;
-
+    
     # Cohom(a ⊗ b, b)
     #       |
     #       | Isomorphism
@@ -391,7 +391,7 @@ AddDerivationToCAP( CoclosedCoevaluationForCoDualWithGivenTensorProduct,
                     
   function( cat, tensor_object, a, unit )
     local morphism;
-
+    
     # a ⊗ a_v
     #    |
     #    | B_( a, a_v )
@@ -428,7 +428,7 @@ AddDerivationToCAP( CoTraceMap,
                     
   function( cat, alpha )
     local a;
-
+    
     # alpha: a → a
     #
     #    1
@@ -474,7 +474,7 @@ AddDerivationToCAP( InternalCoHomTensorProductCompatibilityMorphismInverseWithGi
                       [ InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects, 1 ] ],
                     
   function( cat, source, list, range )
-
+    
     # Inverse( Cohom( a ⊗ a', b ⊗ b') → Cohom(a,b) ⊗ Cohom(a',b') )
     
     return InverseForMorphisms( cat, InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects( cat, range, list, source ) );
