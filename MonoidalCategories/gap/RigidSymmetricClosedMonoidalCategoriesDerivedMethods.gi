@@ -23,7 +23,7 @@ AddDerivationToCAP( InternalHomOnObjects,
                     [ [ IsomorphismFromTensorProductWithDualObjectToInternalHom, 1 ] ],
                     
   function( cat, a, b )
-
+    
     # Range( a^v ⊗ b → Hom(a,b) )
     
     return Range( IsomorphismFromTensorProductWithDualObjectToInternalHom( cat, a, b ) );
@@ -41,7 +41,7 @@ AddDerivationToCAP( InternalHomOnMorphismsWithGivenInternalHoms,
                     
   function( cat, internal_hom_source, alpha, beta, internal_hom_range )
     local dual_alpha;
-
+    
     # alpha: a → a'
     # beta: b → b'
     #
@@ -76,7 +76,7 @@ AddDerivationToCAP( MorphismFromBidualWithGivenBidual,
                       [ MorphismToBidualWithGivenBidual, 1 ] ],
                     
   function( cat, a, bidual )
-
+    
     # Inverse( a → (a^v)^v )
     
     return InverseForMorphisms( cat, MorphismToBidualWithGivenBidual( cat, a, bidual ) );
@@ -90,7 +90,7 @@ AddDerivationToCAP( MorphismToBidualWithGivenBidual,
                       [ MorphismFromBidualWithGivenBidual, 1 ] ],
                     
   function( cat, a, bidual )
-
+    
     # Inverse( (a^v)^v → a )
     
     return InverseForMorphisms( cat, MorphismFromBidualWithGivenBidual( cat, a, bidual ) );
@@ -112,7 +112,7 @@ AddDerivationToCAP( EvaluationMorphismWithGivenSource,
                     
   function( cat, a, b, internal_hom_tensored_a )
     local morphism;
-
+    
     # Hom(a,b) ⊗ a
     #      |
     #      | Isomorphism ⊗ id_a
@@ -170,7 +170,7 @@ AddDerivationToCAP( EvaluationMorphismWithGivenSource,
                     
   function( cat, a, b, internal_hom_tensored_a )
     local morphism;
-
+    
     # Hom(a,b) ⊗ a
     #      |
     #      | Isomorphism ⊗ id_a
@@ -200,7 +200,7 @@ AddDerivationToCAP( EvaluationMorphismWithGivenSource,
                 ] );
                     
     return morphism;
-      
+    
 end : CategoryFilter := cat -> HasIsRigidSymmetricClosedMonoidalCategory( cat ) and IsRigidSymmetricClosedMonoidalCategory( cat ) and HasIsStrictMonoidalCategory( cat ) and IsStrictMonoidalCategory( cat ) );
 
 ##
@@ -219,7 +219,7 @@ AddDerivationToCAP( CoevaluationMorphismWithGivenRange,
                     
   function( cat, a, b, internal_hom )
     local morphism, dual_b, id_a;
-
+    
     #      a
     #      |
     #      | (λ_a)^-1
@@ -290,7 +290,7 @@ AddDerivationToCAP( CoevaluationMorphismWithGivenRange,
                     
   function( cat, a, b, internal_hom )
     local morphism, dual_b, id_a;
-
+    
     # 1 ⊗ a
     #   |
     #   | coev_b ⊗ id_a
@@ -439,7 +439,7 @@ AddDerivationToCAP( CoevaluationForDualWithGivenTensorProduct,
                     
   function( cat, unit, a, tensor_object )
     local morphism;
-
+    
     #    1
     #    |
     #    | LambdaIntro( id_a )
@@ -476,7 +476,7 @@ AddDerivationToCAP( TraceMap,
                     
   function( cat, alpha )
     local result_morphism, a;
-
+    
     # alpha: a → a
     #
     #    1
@@ -524,7 +524,7 @@ AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphismInverseWithGive
                       [ TensorProductInternalHomCompatibilityMorphismWithGivenObjects, 1 ] ],
                     
   function( cat, source, list, range )
-
+    
     # Inverse( Hom(a,a') ⊗ Hom(b,b') → Hom(a ⊗ b, a' ⊗ b') )
     
     return InverseForMorphisms( cat, TensorProductInternalHomCompatibilityMorphismWithGivenObjects( cat, range, list, source ) );

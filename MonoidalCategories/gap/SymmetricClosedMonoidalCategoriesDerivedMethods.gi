@@ -155,7 +155,7 @@ AddDerivationToCAP( MorphismToBidualWithGivenBidual,
                     
   function( cat, a, avv )
     local morphism, av, tensor_unit;
-
+    
     #        a
     #        |
     #        | coev_(a,a^v)
@@ -227,7 +227,7 @@ AddDerivationToCAP( DualOnMorphismsWithGivenDuals,
                       [ IsomorphismFromInternalHomIntoTensorUnitToDualObject, 1 ] ],
                     
   function( cat, s, alpha, r )
-
+    
     # alpha: a → b
     #
     #   b^v
@@ -380,7 +380,7 @@ AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphismWithGivenObject
     #
     #
     # Adjoint[ (Hom(a1,b1) ⊗ Hom(a2,b2)) ⊗ (a1 ⊗ a2) → b1 ⊗ b2 ] = [ Hom(a1,b1) ⊗ Hom(a2,b2) → Hom(a1 ⊗ a2, b1 ⊗ b2) ]
-
+    
     a1 := list[1];
     b1 := list[2];
     a2 := list[3];
@@ -450,7 +450,7 @@ AddDerivationToCAP( TensorProductDualityCompatibilityMorphismWithGivenObjects,
                     
   function( cat, s, a, b, r )
     local morphism, unit, tensor_product_on_a_and_b;
-
+    
     #      a^v ⊗ b^v
     #          |
     #          v
@@ -532,7 +532,7 @@ AddDerivationToCAP( IsomorphismFromObjectToInternalHomWithGivenInternalHom,
                     
   function( cat, a, internal_hom )
     local unit;
-
+    
     # ρ_a: a ⊗ 1 → a
     #
     # Adjoint( ρ_a ) = ( a → Hom(1,a) )
@@ -569,7 +569,7 @@ AddDerivationToCAP( IsomorphismFromInternalHomToObjectWithGivenInternalHom,
                     
   function( cat, a, internal_hom )
     local unit;
-
+    
     #  Hom(1,a)
     #      |
     #      | ( ρ_Hom(1,a) )^-1
@@ -615,7 +615,7 @@ AddDerivationToCAP( MorphismFromTensorProductToInternalHomWithGivenObjects,
                     
   function( cat, tensor_object, a, b, internal_hom )
     local unit;
-
+    
     #      a^v ⊗ b
     #          |
     #          v
@@ -628,7 +628,7 @@ AddDerivationToCAP( MorphismFromTensorProductToInternalHomWithGivenObjects,
     #          | Hom((ρ_a)^-1, λ_b)
     #          v
     #       Hom(a,b)
-
+    
     unit := TensorUnit( cat );
     
     return PreComposeList( cat, [
@@ -696,7 +696,7 @@ AddDerivationToCAP( MonoidalPreComposeMorphismWithGivenObjects,
                     
   function( cat, source, a, b, c, range )
     local hom_a_b, hom_b_c, morphism;
-
+    
     # (Hom(a,b) ⊗ Hom(b,c)) ⊗ a
     #           |
     #           | α_( ( Hom(a,b), Hom(b,c) ), a)
@@ -769,7 +769,7 @@ AddDerivationToCAP( MonoidalPostComposeMorphismWithGivenObjects,
                     
   function( cat, source, a, b, c, range )
     local hom_a_b, hom_b_c, morphism;
-
+    
     # (Hom(b,c) ⊗ Hom(a,b)) ⊗ a
     #            |
     #            | α_( ( Hom(b,c), Hom(a,b) ), c )
@@ -876,7 +876,7 @@ AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphismWithGivenObject
                     
   function( cat, source, list, range )
     local a1, b1, a2, b2, morphism, int_hom_a1_b1, int_hom_a2_b2, id_a2, tensor_product_on_objects_int_hom_a1_b1_int_hom_a2_b2;
-
+    
     # Hom(a1,b1) ⊗ Hom(a2,b2) ⊗ a1 ⊗ a2
     #                 |
     #                 | id_Hom(a1,b1) ⊗ B_( Hom(a2,b2), a1 ) ⊗ id_a2
@@ -946,7 +946,7 @@ AddDerivationToCAP( TensorProductDualityCompatibilityMorphismWithGivenObjects,
                     
   function( cat, source, a, b, range )
     local morphism, unit, tensor_product_on_a_and_b;
-
+    
     #      a^v ⊗ b^v
     #          |
     #          v
@@ -1051,7 +1051,7 @@ AddDerivationToCAP( MonoidalPostComposeMorphismWithGivenObjects,
                     
   function( cat, source, a, b, c, range )
     local hom_a_b, hom_b_c, morphism;
-
+    
     # Hom(b,c) ⊗ Hom(a,b) ⊗ a
     #            |
     #            | id_Hom(b,c) ⊗ ev_ab
