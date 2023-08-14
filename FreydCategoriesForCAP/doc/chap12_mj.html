@@ -221,6 +221,12 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat := CategoryOfRows( R );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj1 := CategoryOfRowsObject( 1, cat );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj2 := CategoryOfRowsObject( 2, cat );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphicForObjects( obj1, obj2 );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphicForObjects( obj2, obj2 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism( SomeIsomorphismBetweenObjects( obj2, obj2 ) );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id := IdentityMorphism( obj2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := CategoryOfRowsMorphism( obj1, HomalgMatrix( [ [ 1, 2 ] ], 1, 2, R ), obj2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := CategoryOfRowsMorphism( obj2, HomalgMatrix( [ [ 1, 2 ], [ 3, 4 ] ], 2, 2, R ), obj2 );;</span>

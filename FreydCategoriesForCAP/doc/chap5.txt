@@ -809,6 +809,9 @@
         InternalHomToTensorProductAdjunctionMap    for    IsCapCategoryObject,
         IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
   
+  [30X    [33X[0;6Y[2XIsIsomorphicForObjects[102X      ([14XCAP:      IsIsomorphicForObjects      for
+        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
   [30X    [33X[0;6Y[2XIsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit[102X
         ([14XMonoidalCategories:
         IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit           for
@@ -1047,6 +1050,9 @@
   [30X    [33X[0;6Y[2XRightUnitorWithGivenTensorProduct[102X                 ([14XMonoidalCategories:
         RightUnitorWithGivenTensorProduct       for       IsCapCategoryObject,
         IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XSomeIsomorphismBetweenObjects[102X  ([14XCAP: SomeIsomorphismBetweenObjects for
+        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XTensorProductDualityCompatibilityMorphism[102X         ([14XMonoidalCategories:
         TensorProductDualityCompatibilityMorphism   for   IsCapCategoryObject,
