@@ -61,11 +61,10 @@ AddDerivationToCAP( InternalCoHomOnMorphismsWithGivenInternalCoHoms,
     
     codual_beta := CoDualOnMorphisms( cat, beta );
     
-    return PreComposeList( cat, [
-             IsomorphismFromInternalCoHomToTensorProductWithCoDualObject( cat, Source( alpha ), Range( beta ) ),
-             TensorProductOnMorphisms( cat, codual_beta, alpha ),
-             IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom( cat, Range( alpha ), Source( beta ) )
-           ] );
+    return PreComposeList( cat,
+                   [ IsomorphismFromInternalCoHomToTensorProductWithCoDualObject( cat, Source( alpha ), Range( beta ) ),
+                     TensorProductOnMorphisms( cat, codual_beta, alpha ),
+                     IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom( cat, Range( alpha ), Source( beta ) ) ] );
     
 end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory );
 
@@ -135,24 +134,23 @@ AddDerivationToCAP( CoclosedEvaluationMorphismWithGivenRange,
     #      v
     # Cohom(a,b) ⊗ b
     
-    morphism := PreComposeList( cat, [
-                  RightUnitorInverse( cat, a ),
-                  
-                  TensorProductOnMorphisms( cat,
-                    IdentityMorphism( cat, a ),
-                    CoclosedEvaluationForCoDual( cat, b ) ),
-
-                  AssociatorRightToLeft( cat, a, CoDualOnObjects( cat, b ), b ),
-                  
-                  TensorProductOnMorphisms( cat,
-                    Braiding( cat, a, CoDualOnObjects( cat, b ) ),
-                    IdentityMorphism( cat, b ) ),
-                  
-                  TensorProductOnMorphisms( cat,
-                    IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom( cat, b, a ),
-                    IdentityMorphism( cat, b ) )
-                ] );
-                    
+    morphism := PreComposeList( cat,
+                        [  RightUnitorInverse( cat, a ),
+                           
+                           TensorProductOnMorphisms( cat,
+                                   IdentityMorphism( cat, a ),
+                                   CoclosedEvaluationForCoDual( cat, b ) ),
+                           
+                           AssociatorRightToLeft( cat, a, CoDualOnObjects( cat, b ), b ),
+                           
+                           TensorProductOnMorphisms( cat,
+                                   Braiding( cat, a, CoDualOnObjects( cat, b ) ),
+                                   IdentityMorphism( cat, b ) ),
+                           
+                           TensorProductOnMorphisms( cat,
+                                   IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom( cat, b, a ),
+                                   IdentityMorphism( cat, b ) ) ] );
+    
     return morphism;
     
 end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory );
@@ -185,20 +183,19 @@ AddDerivationToCAP( CoclosedEvaluationMorphismWithGivenRange,
     #      v
     # Cohom(a,b) ⊗ b
     
-    morphism := PreComposeList( cat, [
-                  TensorProductOnMorphisms( cat,
-                    IdentityMorphism( cat, a ),
-                    CoclosedEvaluationForCoDual( cat, b ) ),
-                  
-                  TensorProductOnMorphisms( cat,
-                    Braiding( cat, a, CoDualOnObjects( cat, b ) ),
-                    IdentityMorphism( cat, b ) ),
-                  
-                  TensorProductOnMorphisms( cat,
-                    IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom( cat, b, a ),
-                    IdentityMorphism( cat, b ) )
-                ] );
-                    
+    morphism := PreComposeList( cat,
+                        [ TensorProductOnMorphisms( cat,
+                                IdentityMorphism( cat, a ),
+                                CoclosedEvaluationForCoDual( cat, b ) ),
+                          
+                          TensorProductOnMorphisms( cat,
+                                  Braiding( cat, a, CoDualOnObjects( cat, b ) ),
+                                  IdentityMorphism( cat, b ) ),
+                          
+                          TensorProductOnMorphisms( cat,
+                                  IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom( cat, b, a ),
+                                  IdentityMorphism( cat, b ) ) ] );
+    
     return morphism;
     
 end : CategoryFilter := cat -> HasIsRigidSymmetricCoclosedMonoidalCategory( cat ) and IsRigidSymmetricCoclosedMonoidalCategory( cat ) and HasIsStrictMonoidalCategory( cat ) and IsStrictMonoidalCategory( cat ) );
@@ -250,28 +247,27 @@ AddDerivationToCAP( CoclosedCoevaluationMorphismWithGivenSource,
     
     id_a := IdentityMorphism( cat, a );
     
-    morphism := PreComposeList( cat, [
-                  IsomorphismFromInternalCoHomToTensorProductWithCoDualObject( cat,
-                    TensorProductOnObjects( cat, a, b ),
-                    b),
-                  
-                  TensorProductOnMorphisms( cat,
-                    IdentityMorphism( cat, codual_b ),
-                    Braiding( cat, a, b ) ),
-                  
-                  AssociatorRightToLeft( cat, codual_b, b, a ),
-                  
-                  TensorProductOnMorphisms( cat,
-                    Braiding( cat, codual_b, b ),
-                    id_a ),
-                  
-                  TensorProductOnMorphisms( cat,
-                    CoclosedCoevaluationForCoDual( cat, b ),
-                    id_a ),
-                  
-                  LeftUnitor( cat, a )
-                ] );
-                    
+    morphism := PreComposeList( cat,
+                        [ IsomorphismFromInternalCoHomToTensorProductWithCoDualObject( cat,
+                                TensorProductOnObjects( cat, a, b ),
+                                b),
+                          
+                          TensorProductOnMorphisms( cat,
+                                  IdentityMorphism( cat, codual_b ),
+                                  Braiding( cat, a, b ) ),
+                          
+                          AssociatorRightToLeft( cat, codual_b, b, a ),
+                          
+                          TensorProductOnMorphisms( cat,
+                                  Braiding( cat, codual_b, b ),
+                                  id_a ),
+                          
+                          TensorProductOnMorphisms( cat,
+                                  CoclosedCoevaluationForCoDual( cat, b ),
+                                  id_a ),
+                          
+                          LeftUnitor( cat, a ) ] );
+    
     return morphism;
     
 end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory );
@@ -313,24 +309,23 @@ AddDerivationToCAP( CoclosedCoevaluationMorphismWithGivenSource,
     
     id_a := IdentityMorphism( cat, a );
     
-    morphism := PreComposeList( cat, [
-                  IsomorphismFromInternalCoHomToTensorProductWithCoDualObject( cat,
-                    TensorProductOnObjects( cat, a, b ),
-                    b),
-                  
-                  TensorProductOnMorphisms( cat,
-                    IdentityMorphism( cat, codual_b ),
-                    Braiding( cat, a, b ) ),
-                  
-                  TensorProductOnMorphisms( cat,
-                    Braiding( cat, codual_b, b ),
-                    id_a ),
-                  
-                  TensorProductOnMorphisms( cat,
-                    CoclosedCoevaluationForCoDual( cat, b ),
-                    id_a ),
-                ] );
-                    
+    morphism := PreComposeList( cat,
+                        [ IsomorphismFromInternalCoHomToTensorProductWithCoDualObject( cat,
+                                TensorProductOnObjects( cat, a, b ),
+                                b ),
+                          
+                          TensorProductOnMorphisms( cat,
+                                  IdentityMorphism( cat, codual_b ),
+                                  Braiding( cat, a, b ) ),
+                          
+                          TensorProductOnMorphisms( cat,
+                                  Braiding( cat, codual_b, b ),
+                                  id_a ),
+                          
+                          TensorProductOnMorphisms( cat,
+                                  CoclosedCoevaluationForCoDual( cat, b ),
+                                  id_a ) ] );
+    
     return morphism;
     
 end : CategoryFilter := cat -> HasIsRigidSymmetricCoclosedMonoidalCategory( cat ) and IsRigidSymmetricCoclosedMonoidalCategory( cat ) and HasIsStrictMonoidalCategory( cat ) and IsStrictMonoidalCategory( cat ) );
@@ -408,12 +403,11 @@ AddDerivationToCAP( CoclosedCoevaluationForCoDualWithGivenTensorProduct,
     
     morphism := IdentityMorphism( cat, a );
     
-    morphism := PreComposeList( cat, [
-                  Braiding( cat, a, CoDualOnObjects( cat, a ) ),
-                  IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom( cat, a, a ),
-                  CoLambdaIntroduction( cat, morphism ) 
-                ] );
-                            
+    morphism := PreComposeList( cat,
+                        [ Braiding( cat, a, CoDualOnObjects( cat, a ) ),
+                          IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom( cat, a, a ),
+                          CoLambdaIntroduction( cat, morphism ) ] );
+    
     return morphism;
     
 end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory );
@@ -447,11 +441,10 @@ AddDerivationToCAP( CoTraceMap,
     
     a := Source( alpha );
     
-    return PreComposeList( cat, [
-             CoclosedEvaluationForCoDual( cat, a ) ,
-             IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom( cat, a, a ),
-             CoLambdaIntroduction( cat, alpha )
-           ] );
+    return PreComposeList( cat,
+                   [ CoclosedEvaluationForCoDual( cat, a ) ,
+                     IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom( cat, a, a ),
+                     CoLambdaIntroduction( cat, alpha ) ] );
     
 end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory );
 
