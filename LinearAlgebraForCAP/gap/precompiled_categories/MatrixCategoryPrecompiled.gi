@@ -2365,6 +2365,17 @@ end
     , 100 );
     
     ##
+    AddIsIsomorphicForObjects( cat,
+        
+########
+function ( cat_1, object_1_1, object_2_1 )
+    return Dimension( object_1_1 ) = Dimension( object_2_1 );
+end
+########
+        
+    , 101 : IsPrecompiledDerivation := true );
+    
+    ##
     AddIsIsomorphism( cat,
         
 ########
@@ -5155,6 +5166,17 @@ end
 ########
         
     , 100 );
+    
+    ##
+    AddSomeIsomorphismBetweenObjects( cat,
+        
+########
+function ( cat_1, object_1_1, object_2_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, object_1_1, object_1_1, UnderlyingMatrix, HomalgIdentityMatrix( Dimension( object_1_1 ), UnderlyingRing( cat_1 ) ) );
+end
+########
+        
+    , 101 : IsPrecompiledDerivation := true );
     
     ##
     AddSomeProjectiveObject( cat,

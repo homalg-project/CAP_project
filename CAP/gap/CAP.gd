@@ -195,7 +195,7 @@ DeclareProperty( "IsEnrichedOverCommutativeRegularSemigroup", IsCapCategory );
 AddCategoricalProperty( [ "IsEnrichedOverCommutativeRegularSemigroup", "IsEnrichedOverCommutativeRegularSemigroup" ] );
 
 #! @Description
-#!  The property of the category <A>C</A> being skeletal.
+#!  The property of the category <A>C</A> being skeletal, that is, whether `IsEqualForObjects` and `IsIsomorphicForObjects` coincide.
 #! @Arguments C
 DeclareProperty( "IsSkeletalCategory", IsCapCategory );
 

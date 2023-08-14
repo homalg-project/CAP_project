@@ -11,6 +11,12 @@ R := HomalgRingOfIntegers();;
 cat := CategoryOfRows( R );;
 obj1 := CategoryOfRowsObject( 1, cat );;
 obj2 := CategoryOfRowsObject( 2, cat );;
+IsIsomorphicForObjects( obj1, obj2 );
+#! false
+IsIsomorphicForObjects( obj2, obj2 );
+#! true
+IsIsomorphism( SomeIsomorphismBetweenObjects( obj2, obj2 ) );
+#! true
 id := IdentityMorphism( obj2 );;
 alpha := CategoryOfRowsMorphism( obj1, HomalgMatrix( [ [ 1, 2 ] ], 1, 2, R ), obj2 );;
 beta := CategoryOfRowsMorphism( obj2, HomalgMatrix( [ [ 1, 2 ], [ 3, 4 ] ], 2, 2, R ), obj2 );;

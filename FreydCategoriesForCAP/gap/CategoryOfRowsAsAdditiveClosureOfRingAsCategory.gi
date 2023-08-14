@@ -19,7 +19,36 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
     
     ring_as_category := RING_AS_CATEGORY( homalg_ring : FinalizeCategory := true );
     
-    add := ADDITIVE_CLOSURE( ring_as_category : FinalizeCategory := true );
+    add := ADDITIVE_CLOSURE( ring_as_category : FinalizeCategory := false );
+    
+    # Depending on the properties `HasInvariantBasisProperty` and `IsFieldForHomalg` of `homalg_ring`,
+    # the additive closure is skeletal and/or Abelian.
+    # These ring properties should actually be propagated to some categorical properties of `ring_as_category`
+    # which the AdditiveClosure can use generically.
+    # However, such categorical properties do not (yet) exist, so we have to set the categorical properties
+    # a posteriori here. Afterwards, we have to reevaluate the derivations because they might have changed
+    # by setting the properties.
+    if HasHasInvariantBasisProperty( homalg_ring ) and HasInvariantBasisProperty( homalg_ring ) then
+        
+        SetIsSkeletalCategory( add, true );
+        
+    fi;
+    
+    if HasIsFieldForHomalg( homalg_ring ) and IsFieldForHomalg( homalg_ring ) then
+        
+        SetIsAbelianCategory( add, true );
+        
+        SetIsAbelianCategoryWithEnoughProjectives( add, true );
+        
+        SetIsAbelianCategoryWithEnoughInjectives( add, true );
+        
+    fi;
+    
+    Reevaluate( add!.derivations_weight_list );
+    
+    Finalize( add : FinalizeCategory := true );
+    
+    
     
     object_constructor := function ( cat, rank )
         
@@ -223,22 +252,6 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
         SetBasisOfRingOverBaseFieldAsColumnVector( wrapper, BasisOverBaseFieldAsColumnVector( ring_as_category ) );
         
         Add( wrapper!.compiler_hints.category_attribute_names, "BasisOfRingOverBaseFieldAsColumnVector" );
-        
-    fi;
-    
-    if HasHasInvariantBasisProperty( homalg_ring ) and HasInvariantBasisProperty( homalg_ring ) then
-        
-        SetIsSkeletalCategory( wrapper, true );
-        
-    fi;
-    
-    if HasIsFieldForHomalg( homalg_ring ) and IsFieldForHomalg( homalg_ring ) then
-        
-        SetIsAbelianCategory( wrapper, true );
-        
-        SetIsAbelianCategoryWithEnoughProjectives( wrapper, true );
-        
-        SetIsAbelianCategoryWithEnoughInjectives( wrapper, true );
         
     fi;
     

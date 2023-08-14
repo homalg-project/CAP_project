@@ -44,7 +44,7 @@ DeclareGlobalVariable( "PROPAGATION_LIST_FOR_EQUAL_OBJECTS" );
 
 ###################################
 ##
-#! @Section Equality for Objects
+#! @Section Equalities for Objects
 ##
 ###################################
 
@@ -60,6 +60,24 @@ DeclareOperation( "IsEqualForObjects",
 ## adds the given string to PROPAGATION_LIST_FOR_EQUAL_OBJECTS
 DeclareOperation( "AddPropertyToMatchAtIsEqualForObjects",
                   [ IsCapCategory, IsString ] );
+
+#! @Description
+#! The arguments are two objects $a$ and $b$.
+#! The output is <C>true</C> if $a$ and $b$ are isomorphic,
+#! that is, if there exists an isomorphism $a \to b$,
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments a,b
+DeclareOperation( "IsIsomorphicForObjects",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are two isomorphic objects $a$ and $b$.
+#! The output is an isomorphism $a \to b$.
+#! @Returns an isomorphism in $\mathrm{Hom}(a,b)$
+#! @Arguments a,b
+DeclareOperation( "SomeIsomorphismBetweenObjects",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 ###################################
 ##

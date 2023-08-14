@@ -399,6 +399,22 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
         
     end );
     
+    ##
+    AddIsIsomorphicForObjects( T,
+      function( T, object_1, object_2 )
+        
+        return true;
+        
+    end );
+    
+    ##
+    AddSomeIsomorphismBetweenObjects( T,
+      function( T, object_1, object_2 )
+        
+        return MorphismConstructor( T, object_1, "SomeIsomorphismBetweenObjects", object_2 );
+        
+    end );
+    
     Finalize( T );
     
     return T;
