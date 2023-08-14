@@ -588,6 +588,17 @@
   to  [3Xr[103X.  The  output  is  the  sum  of  all  elements  in  [3Xmorphisms[103X,  or the
   zero-morphism from [3Xs[103X to [3Xr[103X if [3Xmorphisms[103X is empty.[133X
   
+  [1X3.10-9 LinearCombinationOfMorphisms[101X
+  
+  [33X[1;0Y[29X[2XLinearCombinationOfMorphisms[102X( [3Xs[103X, [3Xcoeffs[103X, [3Xmors[103X, [3Xr[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(s,r)[123X[133X
+  
+  [33X[0;0YThe  arguments are two objects [3Xs[103X, [3Xr[103X in some linear category over a ring [23XR[123X, a
+  list  [3Xcoeffs[103X of ring elements in [23XR[123X and a list [3Xmors[103X of morphisms from [3Xs[103X to [3Xr[103X.
+  The  output  is the linear combination of the morphisms in [3Xmors[103X with respect
+  to  the coefficients list [3Xcoeffs[103X, or the zero morphism from [3Xs[103X to [3Xr[103X if [3Xcoeffs[103X
+  and [3Xmors[103X are the empty lists.[133X
+  
   
   [1X3.11 [33X[0;0YWell-Definedness of Morphisms[133X[101X
   
