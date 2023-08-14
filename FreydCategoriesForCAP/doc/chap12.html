@@ -1439,7 +1439,7 @@ true
 [ &lt;1&gt; ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoefficientsOfMorphism( alpha );</span>
 [ 2 ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( alpha, SumOfMorphisms( u, ListN( CoefficientsOfMorphism( alpha ), BasisOfExternalHom( u, u ), { x, y } -&gt; MultiplyWithElementOfCommutativeRingForMorphisms( x, y ) ), u ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( alpha, LinearCombinationOfMorphisms( u, CoefficientsOfMorphism( alpha ), BasisOfExternalHom( u, u ), u ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EEE := KoszulDualRing( HomalgFieldOfRationalsInSingular( ) * "x,y" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CE := RingAsCategory( EEE );;</span>
@@ -1470,11 +1470,20 @@ true
 &lt;5*e0*e1+3*e0+4*e1+2&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Colift( alpha, alpha * alpha );</span>
 &lt;5*e0*e1+3*e0+4*e1+2&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">BasisOfExternalHom( u, u );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">basis := BasisOfExternalHom( u, u );</span>
 [ &lt;1&gt;, &lt;e0&gt;, &lt;e1&gt;, &lt;e0*e1&gt; ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoefficientsOfMorphism( alpha );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coeffs := CoefficientsOfMorphism( alpha );</span>
 [ 2, 3, 4, 5 ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( alpha, SumOfMorphisms( u, ListN( CoefficientsOfMorphism( alpha ), BasisOfExternalHom( u, u ), { x, y } -&gt; MultiplyWithElementOfCommutativeRingForMorphisms( x, y ) ), u ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( alpha, LinearCombinationOfMorphisms( u, coeffs, basis, u ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u_op := Opposite( u );</span>
+&lt;An object in Opposite( Ring as category( Q{e0,e1} ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha_op := Opposite( alpha );</span>
+&lt;A morphism in Opposite( Ring as category( Q{e0,e1} ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">basis := BasisOfExternalHom( u_op, u_op );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coeffs := CoefficientsOfMorphism( alpha_op );</span>
+[ 2, 3, 4, 5 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( alpha_op, LinearCombinationOfMorphisms( u_op, coeffs, basis, u_op ) );</span>
 true
 </pre></div>
 

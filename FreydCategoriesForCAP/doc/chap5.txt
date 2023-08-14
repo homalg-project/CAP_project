@@ -614,6 +614,9 @@
         InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
         for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
   
+  [30X    [33X[0;6Y[2XLinearCombinationOfMorphisms[102X  ([14XCAP:  LinearCombinationOfMorphisms  for
+        IsCapCategoryObject, IsList, IsList, IsCapCategoryObject[114X)[133X
+  
   [30X    [33X[0;6Y[2XMereExistenceOfSolutionOfLinearSystemInAbCategory[102X                ([14XCAP:
         MereExistenceOfSolutionOfLinearSystemInAbCategory  for IsList, IsList,
         IsList[114X)[133X

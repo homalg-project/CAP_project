@@ -1316,7 +1316,7 @@
     [4X[28X[ <1> ][128X[104X
     [4X[25Xgap>[125X [27XCoefficientsOfMorphism( alpha );[127X[104X
     [4X[28X[ 2 ][128X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( alpha, SumOfMorphisms( u, ListN( CoefficientsOfMorphism( alpha ), BasisOfExternalHom( u, u ), { x, y } -> MultiplyWithElementOfCommutativeRingForMorphisms( x, y ) ), u ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( alpha, LinearCombinationOfMorphisms( u, CoefficientsOfMorphism( alpha ), BasisOfExternalHom( u, u ), u ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XEEE := KoszulDualRing( HomalgFieldOfRationalsInSingular( ) * "x,y" );;[127X[104X
     [4X[25Xgap>[125X [27XCE := RingAsCategory( EEE );;[127X[104X
@@ -1347,11 +1347,20 @@
     [4X[28X<5*e0*e1+3*e0+4*e1+2>[128X[104X
     [4X[25Xgap>[125X [27XColift( alpha, alpha * alpha );[127X[104X
     [4X[28X<5*e0*e1+3*e0+4*e1+2>[128X[104X
-    [4X[25Xgap>[125X [27XBasisOfExternalHom( u, u );[127X[104X
+    [4X[25Xgap>[125X [27Xbasis := BasisOfExternalHom( u, u );[127X[104X
     [4X[28X[ <1>, <e0>, <e1>, <e0*e1> ][128X[104X
-    [4X[25Xgap>[125X [27XCoefficientsOfMorphism( alpha );[127X[104X
+    [4X[25Xgap>[125X [27Xcoeffs := CoefficientsOfMorphism( alpha );[127X[104X
     [4X[28X[ 2, 3, 4, 5 ][128X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( alpha, SumOfMorphisms( u, ListN( CoefficientsOfMorphism( alpha ), BasisOfExternalHom( u, u ), { x, y } -> MultiplyWithElementOfCommutativeRingForMorphisms( x, y ) ), u ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( alpha, LinearCombinationOfMorphisms( u, coeffs, basis, u ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xu_op := Opposite( u );[127X[104X
+    [4X[28X<An object in Opposite( Ring as category( Q{e0,e1} ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xalpha_op := Opposite( alpha );[127X[104X
+    [4X[28X<A morphism in Opposite( Ring as category( Q{e0,e1} ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xbasis := BasisOfExternalHom( u_op, u_op );;[127X[104X
+    [4X[25Xgap>[125X [27Xcoeffs := CoefficientsOfMorphism( alpha_op );[127X[104X
+    [4X[28X[ 2, 3, 4, 5 ][128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( alpha_op, LinearCombinationOfMorphisms( u_op, coeffs, basis, u_op ) );[127X[104X
     [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
