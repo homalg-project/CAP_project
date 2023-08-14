@@ -721,6 +721,16 @@ DeclareOperation( "PostComposeList",
 DeclareOperation( "SumOfMorphisms",
                   [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are two objects <A>s</A>, <A>r</A> in some linear category over a ring $R$,
+#! a list <A>coeffs</A> of ring elements in $R$ and a list <A>mors</A> of morphisms from <A>s</A> to <A>r</A>.
+#! The output is the linear combination of the morphisms in <A>mors</A> with respect to the coefficients list <A>coeffs</A>,
+#! or the zero morphism from <A>s</A> to <A>r</A> if <A>coeffs</A> and <A>mors</A> are the empty lists.
+#! @Returns a morphism in $\mathrm{Hom}(s,r)$
+#! @Arguments s, coeffs, mors, r
+DeclareOperation( "LinearCombinationOfMorphisms",
+                  [ IsCapCategoryObject, IsList, IsList, IsCapCategoryObject ] );
+
 ###################################
 ##
 #! @Section Well-Definedness of Morphisms

@@ -198,6 +198,7 @@
 #! * <Ref BookName="CAP" Func="InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" Label="for Is" />
 #! * <Ref BookName="CAP" Func="InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="CAP" Func="InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" Label="for Is" />
+#! * <Ref BookName="CAP" Func="LinearCombinationOfMorphisms" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MereExistenceOfSolutionOfLinearSystemInAbCategory" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MultiplyWithElementOfCommutativeRingForMorphisms" Label="for Is" />
 #! * <Ref BookName="CAP" Func="SolveLinearSystemInAbCategory" Label="for Is" />
