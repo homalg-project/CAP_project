@@ -124,7 +124,7 @@ DeclareOperation( "InternalCoHomToTensorProductAdjunctionMapWithGivenTensorProdu
 #! @Description
 #! The arguments are three objects $a,b,c$.
 #! The output is the precocomposition morphism
-#! $\mathrm{MonoidalPreCoComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{\underline{coHom}}(a,c) \rightarrow \mathrm{\underline{coHom}}(b,c) \otimes \mathrm{\underline{coHom}}(a,b)$.
+#! $\mathrm{MonoidalPreCoComposeMorphism}_{a,b,c}: \mathrm{\underline{coHom}}(a,c) \rightarrow \mathrm{\underline{coHom}}(b,c) \otimes \mathrm{\underline{coHom}}(a,b)$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a,c), \mathrm{\underline{coHom}}(b,c) \otimes \mathrm{\underline{coHom}}(a,b) )$.
 #! @Arguments a,b,c
 DeclareOperation( "MonoidalPreCoComposeMorphism",
@@ -145,7 +145,7 @@ DeclareOperation( "MonoidalPreCoComposeMorphismWithGivenObjects",
 #! @Description
 #! The arguments are three objects $a,b,c$.
 #! The output is the postcocomposition morphism
-#! $\mathrm{MonoidalPostCoComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{\underline{coHom}}(a,c) \rightarrow \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(b,c)$.
+#! $\mathrm{MonoidalPostCoComposeMorphism}_{a,b,c}: \mathrm{\underline{coHom}}(a,c) \rightarrow \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(b,c)$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a,c), \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(b,c) )$.
 #! @Arguments a,b,c
 DeclareOperation( "MonoidalPostCoComposeMorphism",
@@ -229,7 +229,7 @@ DeclareOperation( "MorphismFromCoBidualWithGivenCoBidual",
 #! @Description
 #! The argument is a list of four objects $[ a, a', b, b' ]$.
 #! The output is the natural morphism
-#! $\mathrm{InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}: \mathrm{\underline{coHom}}(a \otimes a', b \otimes b') \rightarrow \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(a',b')$.
+#! $\mathrm{InternalCoHomTensorProductCompatibilityMorphism}_{a,a',b,b'}: \mathrm{\underline{coHom}}(a \otimes a', b \otimes b') \rightarrow \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(a',b')$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a \otimes a', b \otimes b'), \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(a',b'))$.
 #! @Arguments list
 DeclareOperation( "InternalCoHomTensorProductCompatibilityMorphism",
@@ -248,7 +248,7 @@ DeclareOperation( "InternalCoHomTensorProductCompatibilityMorphismWithGivenObjec
 #! @Description
 #! The arguments are two objects $a,b$.
 #! The output is the natural morphism
-#! $\mathrm{CoDualityTensorProductCompatibilityMorphismWithGivenObjects}: (a \otimes b)_{\vee} \rightarrow a_{\vee} \otimes b_{\vee}$.
+#! $\mathrm{CoDualityTensorProductCompatibilityMorphism}: (a \otimes b)_{\vee} \rightarrow a_{\vee} \otimes b_{\vee}$.
 #! @Returns a morphism in $\mathrm{Hom}( (a \otimes b)_{\vee}, a_{\vee} \otimes b_{\vee} )$.
 #! @Arguments a,b
 DeclareOperation( "CoDualityTensorProductCompatibilityMorphism",
@@ -267,7 +267,7 @@ DeclareOperation( "CoDualityTensorProductCompatibilityMorphismWithGivenObjects",
 
 #! @Description
 #! The arguments are two objects $a,b$.
-#! The output is the natural morphism $\mathrm{MorphismFromInternalCoHomToTensorProductWithGivenObjects}_{a,b}: \mathrm{\underline{coHom}}(a,b) \rightarrow b_{\vee} \otimes a$.
+#! The output is the natural morphism $\mathrm{MorphismFromInternalCoHomToTensorProduct}_{a,b}: \mathrm{\underline{coHom}}(a,b) \rightarrow b_{\vee} \otimes a$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a,b), b_{\vee} \otimes a )$.
 #! @Arguments a,b
 DeclareOperation( "MorphismFromInternalCoHomToTensorProduct",

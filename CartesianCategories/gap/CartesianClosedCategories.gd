@@ -129,7 +129,7 @@ DeclareOperation( "ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct
 #! @Description
 #! The arguments are three objects $a,b,c$.
 #! The output is the precomposition morphism
-#! $\mathrm{CartesianPreComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{Exponential}(a,b) \times \mathrm{Exponential}(b,c) \rightarrow \mathrm{Exponential}(a,c)$.
+#! $\mathrm{CartesianPreComposeMorphism}_{a,b,c}: \mathrm{Exponential}(a,b) \times \mathrm{Exponential}(b,c) \rightarrow \mathrm{Exponential}(a,c)$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Exponential}(a,b) \times \mathrm{Exponential}(b,c), \mathrm{Exponential}(a,c) )$.
 #! @Arguments a,b,c
 DeclareOperation( "CartesianPreComposeMorphism",
@@ -150,7 +150,7 @@ DeclareOperation( "CartesianPreComposeMorphismWithGivenObjects",
 #! @Description
 #! The arguments are three objects $a,b,c$.
 #! The output is the postcomposition morphism
-#! $\mathrm{CartesianPostComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{Exponential}(b,c) \times \mathrm{Exponential}(a,b) \rightarrow \mathrm{Exponential}(a,c)$.
+#! $\mathrm{CartesianPostComposeMorphism}_{a,b,c}: \mathrm{Exponential}(b,c) \times \mathrm{Exponential}(a,b) \rightarrow \mathrm{Exponential}(a,c)$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Exponential}(b,c) \times \mathrm{Exponential}(a,b), \mathrm{Exponential}(a,c) )$.
 #! @Arguments a,b,c
 DeclareOperation( "CartesianPostComposeMorphism",
@@ -234,7 +234,7 @@ DeclareOperation( "MorphismToCartesianBidualWithGivenCartesianBidual",
 #! @Description
 #! The argument is a list of four objects $[ a, a', b, b' ]$.
 #! The output is the natural morphism
-#! $\mathrm{DirectProductExponentialCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}: \mathrm{Exponential}(a,a') \times \mathrm{Exponential}(b,b') \rightarrow \mathrm{Exponential}(a \times b,a' \times b')$.
+#! $\mathrm{DirectProductExponentialCompatibilityMorphism}_{a,a',b,b'}: \mathrm{Exponential}(a,a') \times \mathrm{Exponential}(b,b') \rightarrow \mathrm{Exponential}(a \times b,a' \times b')$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Exponential}(a,a') \times \mathrm{Exponential}(b,b'), \mathrm{Exponential}(a \times b,a' \times b'))$.
 #! @Arguments list
 DeclareOperation( "DirectProductExponentialCompatibilityMorphism",
@@ -254,7 +254,7 @@ DeclareOperation( "DirectProductExponentialCompatibilityMorphismWithGivenObjects
 #! @Description
 #! The arguments are two objects $a,b$.
 #! The output is the natural morphism
-#! $\mathrm{DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects}: a^{\vee} \times b^{\vee} \rightarrow (a \times b)^{\vee}$.
+#! $\mathrm{DirectProductCartesianDualityCompatibilityMorphism}: a^{\vee} \times b^{\vee} \rightarrow (a \times b)^{\vee}$.
 #! @Returns a morphism in $\mathrm{Hom}( a^{\vee} \times b^{\vee}, (a \times b)^{\vee} )$.
 #! @Arguments a,b
 DeclareOperation( "DirectProductCartesianDualityCompatibilityMorphism",
@@ -273,7 +273,7 @@ DeclareOperation( "DirectProductCartesianDualityCompatibilityMorphismWithGivenOb
 
 #! @Description
 #! The arguments are two objects $a,b$.
-#! The output is the natural morphism $\mathrm{MorphismFromDirectProductToExponentialWithGivenObjects}_{a,b}: a^{\vee} \times b \rightarrow \mathrm{Exponential}(a,b)$.
+#! The output is the natural morphism $\mathrm{MorphismFromDirectProductToExponential}_{a,b}: a^{\vee} \times b \rightarrow \mathrm{Exponential}(a,b)$.
 #! @Returns a morphism in $\mathrm{Hom}( a^{\vee} \times b, \mathrm{Exponential}(a,b) )$.
 #! @Arguments a,b
 DeclareOperation( "MorphismFromDirectProductToExponential",

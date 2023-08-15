@@ -127,7 +127,7 @@ DeclareOperation( "CoexponentialToCoproductAdjunctionMapWithGivenCoproduct",
 #! @Description
 #! The arguments are three objects $a,b,c$.
 #! The output is the precocomposition morphism
-#! $\mathrm{CocartesianPreCoComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{Coexponential}(a,c) \rightarrow \mathrm{Coexponential}(b,c) \sqcup \mathrm{Coexponential}(a,b)$.
+#! $\mathrm{CocartesianPreCoComposeMorphism}_{a,b,c}: \mathrm{Coexponential}(a,c) \rightarrow \mathrm{Coexponential}(b,c) \sqcup \mathrm{Coexponential}(a,b)$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Coexponential}(a,c), \mathrm{Coexponential}(b,c) \sqcup \mathrm{Coexponential}(a,b) )$.
 #! @Arguments a,b,c
 DeclareOperation( "CocartesianPreCoComposeMorphism",
@@ -148,7 +148,7 @@ DeclareOperation( "CocartesianPreCoComposeMorphismWithGivenObjects",
 #! @Description
 #! The arguments are three objects $a,b,c$.
 #! The output is the postcocomposition morphism
-#! $\mathrm{CocartesianPostCoComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{Coexponential}(a,c) \rightarrow \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(b,c)$.
+#! $\mathrm{CocartesianPostCoComposeMorphism}_{a,b,c}: \mathrm{Coexponential}(a,c) \rightarrow \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(b,c)$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Coexponential}(a,c), \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(b,c) )$.
 #! @Arguments a,b,c
 DeclareOperation( "CocartesianPostCoComposeMorphism",
@@ -232,7 +232,7 @@ DeclareOperation( "MorphismFromCocartesianBidualWithGivenCocartesianBidual",
 #! @Description
 #! The argument is a list of four objects $[ a, a', b, b' ]$.
 #! The output is the natural morphism
-#! $\mathrm{CoexponentialCoproductCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}: \mathrm{Coexponential}(a \sqcup a', b \sqcup b') \rightarrow \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(a',b')$.
+#! $\mathrm{CoexponentialCoproductCompatibilityMorphism}_{a,a',b,b'}: \mathrm{Coexponential}(a \sqcup a', b \sqcup b') \rightarrow \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(a',b')$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Coexponential}(a \sqcup a', b \sqcup b'), \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(a',b'))$.
 #! @Arguments list
 DeclareOperation( "CoexponentialCoproductCompatibilityMorphism",
@@ -251,7 +251,7 @@ DeclareOperation( "CoexponentialCoproductCompatibilityMorphismWithGivenObjects",
 #! @Description
 #! The arguments are two objects $a,b$.
 #! The output is the natural morphism
-#! $\mathrm{CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects}: (a \sqcup b)_{\vee} \rightarrow a_{\vee} \sqcup b_{\vee}$.
+#! $\mathrm{CocartesianDualityCoproductCompatibilityMorphism}: (a \sqcup b)_{\vee} \rightarrow a_{\vee} \sqcup b_{\vee}$.
 #! @Returns a morphism in $\mathrm{Hom}( (a \sqcup b)_{\vee}, a_{\vee} \sqcup b_{\vee} )$.
 #! @Arguments a,b
 DeclareOperation( "CocartesianDualityCoproductCompatibilityMorphism",
@@ -270,7 +270,7 @@ DeclareOperation( "CocartesianDualityCoproductCompatibilityMorphismWithGivenObje
 
 #! @Description
 #! The arguments are two objects $a,b$.
-#! The output is the natural morphism $\mathrm{MorphismFromCoexponentialToCoproductWithGivenObjects}_{a,b}: \mathrm{Coexponential}(a,b) \rightarrow b_{\vee} \sqcup a$.
+#! The output is the natural morphism $\mathrm{MorphismFromCoexponentialToCoproduct}_{a,b}: \mathrm{Coexponential}(a,b) \rightarrow b_{\vee} \sqcup a$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Coexponential}(a,b), b_{\vee} \sqcup a )$.
 #! @Arguments a,b
 DeclareOperation( "MorphismFromCoexponentialToCoproduct",
