@@ -444,7 +444,7 @@ AddDerivationToCAP( TensorProductDualityCompatibilityMorphismWithGivenObjects,
                       [ IsomorphismFromInternalHomIntoTensorUnitToDualObject, 1 ] ],
                     
   function( cat, s, a, b, r )
-    local morphism, unit, tensor_product_on_a_and_b;
+    local unit, tensor_product_on_a_and_b, morphism;
     
     #      a^v ⊗ b^v
     #          |

@@ -214,7 +214,7 @@ AddDerivationToCAP( CoevaluationMorphismWithGivenRange,
                       [ TensorProductOnObjects, 1 ] ],
                     
   function( cat, a, b, internal_hom )
-    local morphism, dual_b, id_a;
+    local dual_b, id_a, morphism;
     
     #      a
     #      |
@@ -284,7 +284,7 @@ AddDerivationToCAP( CoevaluationMorphismWithGivenRange,
                       [ TensorProductOnObjects, 1 ] ],
                     
   function( cat, a, b, internal_hom )
-    local morphism, dual_b, id_a;
+    local dual_b, id_a, morphism;
     
     # 1 ⊗ a
     #   |
@@ -468,7 +468,7 @@ AddDerivationToCAP( TraceMap,
                       [ EvaluationForDual, 1 ] ],
                     
   function( cat, alpha )
-    local result_morphism, a;
+    local a, result_morphism;
     
     # alpha: a → a
     #

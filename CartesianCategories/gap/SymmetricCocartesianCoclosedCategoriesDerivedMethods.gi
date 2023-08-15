@@ -457,7 +457,7 @@ AddDerivationToCAP( CocartesianDualityCoproductCompatibilityMorphismWithGivenObj
                       [ IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject, 2 ] ],
                     
   function( cat, s, a, b, r )
-    local morphism, unit, coproduct_on_a_and_b;
+    local unit, coproduct_on_a_and_b, morphism;
     
     #         (a ⊔ b)_v
     #            |
