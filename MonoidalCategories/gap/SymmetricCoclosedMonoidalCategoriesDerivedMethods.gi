@@ -156,7 +156,7 @@ AddDerivationToCAP( MorphismFromCoBidualWithGivenCoBidual,
                       [ CoclosedCoevaluationMorphism, 1 ] ],
                     
   function( cat, a, avv )
-    local morphism, av, tensor_unit;
+    local av, morphism;
     
     #     Cohom(1, a_v)
     #          |
@@ -174,11 +174,9 @@ AddDerivationToCAP( MorphismFromCoBidualWithGivenCoBidual,
     
     av := CoDualOnObjects( cat, a );
     
-    tensor_unit := TensorUnit( cat );
-    
     morphism := PreComposeList( cat,
                         [ InternalCoHomOnMorphisms( cat,
-                                CoclosedEvaluationMorphism( cat, tensor_unit, a ),
+                                CoclosedEvaluationMorphism( cat, TensorUnit( cat ), a ),
                                 IdentityMorphism( cat, av ) ),
                           
                           InternalCoHomOnMorphisms( cat,
@@ -521,11 +519,11 @@ AddDerivationToCAP( IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom,
     unit := TensorUnit( cat );
     
     return PreCompose( cat,
-             InternalCoHomOnMorphisms( cat,
-               RightUnitorInverse( cat, a ),
-               IdentityMorphism( cat, unit ) ),
-               
-             CoclosedCoevaluationMorphism( cat, a, unit ));
+                   InternalCoHomOnMorphisms( cat,
+                           RightUnitorInverse( cat, a ),
+                           IdentityMorphism( cat, unit ) ),
+                   
+                   CoclosedCoevaluationMorphism( cat, a, unit ) );
     
 end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory );
 
@@ -537,18 +535,15 @@ AddDerivationToCAP( IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom,
                       [ RightUnitorInverse, 1 ] ],
                     
   function( cat, a, internal_cohom )
-    local unit;
     
     # (ρ_a)^-1: a → a ⊗ 1
     #
     # Adjoint( (ρ_a)^-1 ) = ( Cohom(a,1) → a )
     
-    unit := TensorUnit( cat );
-    
     return TensorProductToInternalCoHomAdjunctionMap( cat,
-             a,
-             unit,
-             RightUnitorInverse( cat, a ) );
+                   a,
+                   TensorUnit( cat ),
+                   RightUnitorInverse( cat, a ) );
     
 end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory );
 
@@ -574,7 +569,6 @@ AddDerivationToCAP( IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom,
                       [ RightUnitor, 1 ] ],
                     
   function( cat, a, internal_cohom )
-    local unit;
     
     #       a
     #       |
@@ -586,10 +580,9 @@ AddDerivationToCAP( IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom,
     #       v
     #   Cohom(a,1)
     
-    unit := TensorUnit( cat );
-    
-    return PreCompose( cat, CoclosedEvaluationMorphism( cat, a, unit ),
-                       RightUnitor( cat, internal_cohom ) );
+    return PreCompose( cat,
+                   CoclosedEvaluationMorphism( cat, a, TensorUnit( cat ) ),
+                   RightUnitor( cat, internal_cohom ) );
     
 end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory );
 
@@ -948,7 +941,7 @@ AddDerivationToCAP( CoDualityTensorProductCompatibilityMorphismWithGivenObjects,
                       [ IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject, 2 ] ],
                     
   function( cat, source, a, b, range )
-    local morphism, unit, tensor_product_on_a_and_b;
+    local unit, morphism;
     
     #         (a ⊗ b)_v
     #            |
@@ -964,10 +957,8 @@ AddDerivationToCAP( CoDualityTensorProductCompatibilityMorphismWithGivenObjects,
     
     unit := TensorUnit( cat );
     
-    tensor_product_on_a_and_b := TensorProductOnObjects( cat, a, b );
-    
     morphism := PreComposeList( cat,
-                        [ IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit( cat, tensor_product_on_a_and_b ),
+                        [ IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit( cat, TensorProductOnObjects( cat, a, b ) ),
                           
                           InternalCoHomTensorProductCompatibilityMorphism( cat, [ unit, unit, a, b ] ),
                           

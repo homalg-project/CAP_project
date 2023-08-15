@@ -159,7 +159,7 @@ AddDerivationToCAP( MorphismFromCocartesianBidualWithGivenCocartesianBidual,
                       [ CocartesianCoevaluationMorphism, 1 ] ],
                     
   function( cat, a, avv )
-    local morphism, av, tensor_unit;
+    local av, morphism;
     
     #     Coexp(1, a_v)
     #          |
@@ -177,11 +177,9 @@ AddDerivationToCAP( MorphismFromCocartesianBidualWithGivenCocartesianBidual,
     
     av := CocartesianDualOnObjects( cat, a );
     
-    tensor_unit := InitialObject( cat );
-    
     morphism := PreComposeList( cat,
                         [ CoexponentialOnMorphisms( cat,
-                                CocartesianEvaluationMorphism( cat, tensor_unit, a ),
+                                CocartesianEvaluationMorphism( cat, InitialObject( cat ), a ),
                                 IdentityMorphism( cat, av ) ),
                           
                           CoexponentialOnMorphisms( cat,
@@ -411,12 +409,12 @@ AddDerivationToCAP( CoexponentialCoproductCompatibilityMorphismWithGivenObjects,
                                 IdentityMorphism( cat, a1 ),
                                 CocartesianEvaluationMorphism( cat, a2, b2 ) ),
                           
-                          CocartesianAssociatorRightToLeft( cat, a1, coexp_a2_b2, b2),
+                          CocartesianAssociatorRightToLeft( cat, a1, coexp_a2_b2, b2 ),
                           
                           CoproductOnMorphisms( cat,
                                   CoproductOnMorphisms( cat,
                                           CocartesianEvaluationMorphism( cat, a1, b1 ),
-                                          IdentityMorphism( cat, coexp_a2_b2)),
+                                          IdentityMorphism( cat, coexp_a2_b2 ) ),
                                   id_b2 ),
                           
                           CoproductOnMorphisms( cat,
@@ -524,11 +522,11 @@ AddDerivationToCAP( IsomorphismFromCoexponentialToObjectWithGivenCoexponential,
     unit := InitialObject( cat );
     
     return PreCompose( cat,
-             CoexponentialOnMorphisms( cat,
-               CocartesianRightUnitorInverse( cat, a ),
-               IdentityMorphism( cat, unit ) ),
-               
-             CocartesianCoevaluationMorphism( cat, a, unit ));
+                   CoexponentialOnMorphisms( cat,
+                           CocartesianRightUnitorInverse( cat, a ),
+                           IdentityMorphism( cat, unit ) ),
+                   
+                   CocartesianCoevaluationMorphism( cat, a, unit ) );
     
 end : CategoryFilter := IsCocartesianCoclosedCategory );
 
@@ -540,18 +538,15 @@ AddDerivationToCAP( IsomorphismFromCoexponentialToObjectWithGivenCoexponential,
                       [ CocartesianRightUnitorInverse, 1 ] ],
                     
   function( cat, a, internal_cohom )
-    local unit;
     
     # (ρ_a)^-1: a → a ⊔ 1
     #
     # Adjoint( (ρ_a)^-1 ) = ( Coexp(a,1) → a )
     
-    unit := InitialObject( cat );
-    
     return CoproductToCoexponentialAdjunctionMap( cat,
-             a,
-             unit,
-             CocartesianRightUnitorInverse( cat, a ) );
+                   a,
+                   InitialObject( cat ),
+                   CocartesianRightUnitorInverse( cat, a ) );
     
 end : CategoryFilter := IsCocartesianCoclosedCategory );
 
@@ -577,7 +572,6 @@ AddDerivationToCAP( IsomorphismFromObjectToCoexponentialWithGivenCoexponential,
                       [ CocartesianRightUnitor, 1 ] ],
                     
   function( cat, a, internal_cohom )
-    local unit;
     
     #       a
     #       |
@@ -589,10 +583,9 @@ AddDerivationToCAP( IsomorphismFromObjectToCoexponentialWithGivenCoexponential,
     #       v
     #   Coexp(a,1)
     
-    unit := InitialObject( cat );
-    
-    return PreCompose( cat, CocartesianEvaluationMorphism( cat, a, unit ),
-                       CocartesianRightUnitor( cat, internal_cohom ) );
+    return PreCompose( cat,
+                   CocartesianEvaluationMorphism( cat, a, InitialObject( cat ) ),
+                   CocartesianRightUnitor( cat, internal_cohom ) );
     
 end : CategoryFilter := IsCocartesianCoclosedCategory );
 
@@ -923,12 +916,12 @@ AddDerivationToCAP( CoexponentialCoproductCompatibilityMorphismWithGivenObjects,
                           CoproductOnMorphisms( cat,
                                   CoproductOnMorphisms( cat,
                                           CocartesianEvaluationMorphism( cat, a1, b1 ),
-                                          IdentityMorphism( cat, coexp_a2_b2)),
+                                          IdentityMorphism( cat, coexp_a2_b2 ) ),
                                   id_b2 ),
                           
                           CoproductOnMorphisms( cat,
                                   CoproductOnMorphisms( cat,
-                                          IdentityMorphism( cat, coexp_a1_b1),
+                                          IdentityMorphism( cat, coexp_a1_b1 ),
                                           CocartesianBraiding( cat, b1, coexp_a2_b2 ) ),
                                   id_b2 ) ] );
     
@@ -951,7 +944,7 @@ AddDerivationToCAP( CocartesianDualityCoproductCompatibilityMorphismWithGivenObj
                       [ IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject, 2 ] ],
                     
   function( cat, source, a, b, range )
-    local morphism, unit, coproduct_on_a_and_b;
+    local unit, morphism;
     
     #         (a ⊔ b)_v
     #            |
@@ -967,10 +960,8 @@ AddDerivationToCAP( CocartesianDualityCoproductCompatibilityMorphismWithGivenObj
     
     unit := InitialObject( cat );
     
-    coproduct_on_a_and_b := BinaryCoproduct( cat, a, b );
-    
     morphism := PreComposeList( cat,
-                        [ IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject( cat, coproduct_on_a_and_b ),
+                        [ IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject( cat, BinaryCoproduct( cat, a, b ) ),
                           
                           CoexponentialCoproductCompatibilityMorphism( cat, [ unit, unit, a, b ] ),
                           
