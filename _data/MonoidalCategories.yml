@@ -1,5 +1,5 @@
 name: MonoidalCategories
-version: "2023.08-01"
+version: "2023.08-02"
 license: "GPL-2.0-or-later"
 date: 2023-08-15
 description: |
@@ -41,11 +41,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/MonoidalCategories/Pac
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2023.08-01/MonoidalCategories-2023.08-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2023.08-02/MonoidalCategories-2023.08-02.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2023.08-01/MonoidalCategories-2023.08-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2023.08-02/MonoidalCategories-2023.08-02.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2023.08-01/MonoidalCategories-2023.08-01-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2023.08-02/MonoidalCategories-2023.08-02-manual.pdf
 
 abstract: |
 
@@ -58,7 +58,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BGPK15</span>]   <b class='BibAuthor'>Barakat, M., Gutsche, S., Posur, S. and Kuhmichel, T.</b>,
      <i class='BibTitle'>MonoidalCategories, Monoidal and monoidal (co)closed categories,
-             Version 2023.08-01</i>
+             Version 2023.08-02</i>
      (<span class='BibYear'>8-15</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/MonoidalCategories">https://homalg-project.github.io/pkg/MonoidalCategories</a></span>.
@@ -66,11 +66,11 @@ citeas: |
     
 
 bibtex: |
-    @misc{ MonoidalCategories2023.08-01,
+    @misc{ MonoidalCategories2023.08-02,
       author =           {Barakat,   M.  and  Gutsche,  S.  and  Posur,  S.  and
                           Kuhmichel, T.},
       title =            {{MonoidalCategories}, Monoidal and monoidal (co)closed
-                          categories, {V}ersion 2023.08-01},
+                          categories, {V}ersion 2023.08-02},
       month =            {3-},
       year =             {8-15},
       note =             {GAP package},
