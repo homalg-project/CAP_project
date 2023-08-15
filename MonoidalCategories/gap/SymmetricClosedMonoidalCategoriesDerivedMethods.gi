@@ -339,7 +339,7 @@ AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphismWithGivenObject
                       [ AssociatorLeftToRight, 2 ],
                       [ Braiding, 1 ],
                       [ EvaluationMorphism, 2 ],
-                      [ TensorProductToInternalHomAdjunctionMap, 1 ] ],
+                      [ TensorProductToInternalHomAdjunctionMapWithGivenInternalHom, 1 ] ],
                     
   function( cat, source, list, range )
     local a1, b1, a2, b2, a1a2, int_hom_a1_b1, int_hom_a2_b2, id_a2, morphism;
@@ -421,10 +421,11 @@ AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphismWithGivenObject
                                   IdentityMorphism( cat, b1 ),
                                   EvaluationMorphism( cat, a2, b2 ) ) ] );
     
-    return TensorProductToInternalHomAdjunctionMap( cat,
+    return TensorProductToInternalHomAdjunctionMapWithGivenInternalHom( cat,
                    source,
                    a1a2,
-                   morphism );
+                   morphism,
+                   range );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory );
 
@@ -677,7 +678,7 @@ AddDerivationToCAP( MonoidalPreComposeMorphismWithGivenObjects,
                       [ Braiding, 2 ],
                       [ AssociatorRightToLeft, 1 ],
                       [ EvaluationMorphism, 2 ],
-                      [ TensorProductToInternalHomAdjunctionMap, 1 ] ],
+                      [ TensorProductToInternalHomAdjunctionMapWithGivenInternalHom, 1 ] ],
                     
   function( cat, source, a, b, c, range )
     local hom_a_b, hom_b_c, morphism;
@@ -732,10 +733,11 @@ AddDerivationToCAP( MonoidalPreComposeMorphismWithGivenObjects,
                           
                           EvaluationMorphism( cat, b, c ) ] );
     
-    return TensorProductToInternalHomAdjunctionMap( cat,
+    return TensorProductToInternalHomAdjunctionMapWithGivenInternalHom( cat,
                    source,
                    a,
-                   morphism );
+                   morphism,
+                   range );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory );
 
@@ -748,7 +750,7 @@ AddDerivationToCAP( MonoidalPostComposeMorphismWithGivenObjects,
                       [ TensorProductOnMorphisms, 1 ],
                       [ IdentityMorphism, 1 ],
                       [ EvaluationMorphism, 2 ],
-                      [ TensorProductToInternalHomAdjunctionMap, 1 ] ],
+                      [ TensorProductToInternalHomAdjunctionMapWithGivenInternalHom, 1 ] ],
                     
   function( cat, source, a, b, c, range )
     local hom_a_b, hom_b_c, morphism;
@@ -783,10 +785,11 @@ AddDerivationToCAP( MonoidalPostComposeMorphismWithGivenObjects,
                           
                           EvaluationMorphism( cat, b, c ) ] );
     
-    return TensorProductToInternalHomAdjunctionMap( cat,
+    return TensorProductToInternalHomAdjunctionMapWithGivenInternalHom( cat,
                    source,
                    a,
-                   morphism );
+                   morphism,
+                   range );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory );
 
@@ -854,7 +857,7 @@ AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphismWithGivenObject
                       [ TensorProductOnMorphisms, 5 ],
                       [ Braiding, 1 ],
                       [ EvaluationMorphism, 2 ],
-                      [ TensorProductToInternalHomAdjunctionMap, 1 ] ],
+                      [ TensorProductToInternalHomAdjunctionMapWithGivenInternalHom, 1 ] ],
                     
   function( cat, source, list, range )
     local a1, b1, a2, b2, a1a2, int_hom_a1_b1, int_hom_a2_b2, id_a2, morphism;
@@ -906,10 +909,11 @@ AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphismWithGivenObject
                                   IdentityMorphism( cat, b1 ),
                                   EvaluationMorphism( cat, a2, b2 ) ) ] );
     
-    return TensorProductToInternalHomAdjunctionMap( cat,
+    return TensorProductToInternalHomAdjunctionMapWithGivenInternalHom( cat,
                    source,
                    a1a2,
-                   morphism );
+                   morphism,
+                   range );
     
 end : CategoryFilter := cat -> HasIsSymmetricClosedMonoidalCategory( cat ) and IsSymmetricClosedMonoidalCategory( cat ) and HasIsStrictMonoidalCategory( cat ) and IsStrictMonoidalCategory( cat ) );
 
@@ -964,7 +968,7 @@ AddDerivationToCAP( MonoidalPreComposeMorphismWithGivenObjects,
                       [ IdentityMorphism, 2 ],
                       [ Braiding, 2 ],
                       [ EvaluationMorphism, 2 ],
-                      [ TensorProductToInternalHomAdjunctionMap, 1 ] ],
+                      [ TensorProductToInternalHomAdjunctionMapWithGivenInternalHom, 1 ] ],
                     
   function( cat, source, a, b, c, range )
     local hom_a_b, hom_b_c, morphism;
@@ -1007,10 +1011,11 @@ AddDerivationToCAP( MonoidalPreComposeMorphismWithGivenObjects,
                           
                           EvaluationMorphism( cat, b, c ) ] );
     
-    return TensorProductToInternalHomAdjunctionMap( cat,
+    return TensorProductToInternalHomAdjunctionMapWithGivenInternalHom( cat,
                    source,
                    a,
-                   morphism );
+                   morphism,
+                   range );
     
 end : CategoryFilter := cat -> HasIsSymmetricClosedMonoidalCategory( cat ) and IsSymmetricClosedMonoidalCategory( cat ) and HasIsStrictMonoidalCategory( cat ) and IsStrictMonoidalCategory( cat ) );
 
@@ -1022,7 +1027,7 @@ AddDerivationToCAP( MonoidalPostComposeMorphismWithGivenObjects,
                       [ TensorProductOnMorphisms, 1 ],
                       [ IdentityMorphism, 1 ],
                       [ EvaluationMorphism, 2 ],
-                      [ TensorProductToInternalHomAdjunctionMap, 1 ] ],
+                      [ TensorProductToInternalHomAdjunctionMapWithGivenInternalHom, 1 ] ],
                     
   function( cat, source, a, b, c, range )
     local morphism;
@@ -1047,9 +1052,10 @@ AddDerivationToCAP( MonoidalPostComposeMorphismWithGivenObjects,
                           
                           EvaluationMorphism( cat, b, c ) ] );
     
-    return TensorProductToInternalHomAdjunctionMap( cat,
+    return TensorProductToInternalHomAdjunctionMapWithGivenInternalHom( cat,
                    source,
                    a,
-                   morphism );
+                   morphism,
+                   range );
     
 end : CategoryFilter := cat -> HasIsSymmetricClosedMonoidalCategory( cat ) and IsSymmetricClosedMonoidalCategory( cat ) and HasIsStrictMonoidalCategory( cat ) and IsStrictMonoidalCategory( cat ) );

@@ -342,7 +342,7 @@ AddDerivationToCAP( DirectProductExponentialCompatibilityMorphismWithGivenObject
                       [ CartesianAssociatorLeftToRight, 2 ],
                       [ CartesianBraiding, 1 ],
                       [ CartesianEvaluationMorphism, 2 ],
-                      [ DirectProductToExponentialAdjunctionMap, 1 ] ],
+                      [ DirectProductToExponentialAdjunctionMapWithGivenExponential, 1 ] ],
                     
   function( cat, source, list, range )
     local a1, b1, a2, b2, a1a2, exp_a1_b1, exp_a2_b2, id_a2, morphism;
@@ -424,10 +424,11 @@ AddDerivationToCAP( DirectProductExponentialCompatibilityMorphismWithGivenObject
                                   IdentityMorphism( cat, b1 ),
                                   CartesianEvaluationMorphism( cat, a2, b2 ) ) ] );
     
-    return DirectProductToExponentialAdjunctionMap( cat,
+    return DirectProductToExponentialAdjunctionMapWithGivenExponential( cat,
                    source,
                    a1a2,
-                   morphism );
+                   morphism,
+                   range );
     
 end : CategoryFilter := IsCartesianClosedCategory );
 
@@ -680,7 +681,7 @@ AddDerivationToCAP( CartesianPreComposeMorphismWithGivenObjects,
                       [ CartesianBraiding, 2 ],
                       [ CartesianAssociatorRightToLeft, 1 ],
                       [ CartesianEvaluationMorphism, 2 ],
-                      [ DirectProductToExponentialAdjunctionMap, 1 ] ],
+                      [ DirectProductToExponentialAdjunctionMapWithGivenExponential, 1 ] ],
                     
   function( cat, source, a, b, c, range )
     local exp_a_b, exp_b_c, morphism;
@@ -735,10 +736,11 @@ AddDerivationToCAP( CartesianPreComposeMorphismWithGivenObjects,
                           
                           CartesianEvaluationMorphism( cat, b, c ) ] );
     
-    return DirectProductToExponentialAdjunctionMap( cat,
+    return DirectProductToExponentialAdjunctionMapWithGivenExponential( cat,
                    source,
                    a,
-                   morphism );
+                   morphism,
+                   range );
     
 end : CategoryFilter := IsCartesianClosedCategory );
 
@@ -751,7 +753,7 @@ AddDerivationToCAP( CartesianPostComposeMorphismWithGivenObjects,
                       [ DirectProductOnMorphisms, 1 ],
                       [ IdentityMorphism, 1 ],
                       [ CartesianEvaluationMorphism, 2 ],
-                      [ DirectProductToExponentialAdjunctionMap, 1 ] ],
+                      [ DirectProductToExponentialAdjunctionMapWithGivenExponential, 1 ] ],
                     
   function( cat, source, a, b, c, range )
     local exp_a_b, exp_b_c, morphism;
@@ -786,10 +788,11 @@ AddDerivationToCAP( CartesianPostComposeMorphismWithGivenObjects,
                           
                           CartesianEvaluationMorphism( cat, b, c ) ] );
     
-    return DirectProductToExponentialAdjunctionMap( cat,
+    return DirectProductToExponentialAdjunctionMapWithGivenExponential( cat,
                    source,
                    a,
-                   morphism );
+                   morphism,
+                   range );
     
 end : CategoryFilter := IsCartesianClosedCategory );
 
@@ -857,7 +860,7 @@ AddDerivationToCAP( DirectProductExponentialCompatibilityMorphismWithGivenObject
                       [ DirectProductOnMorphisms, 5 ],
                       [ CartesianBraiding, 1 ],
                       [ CartesianEvaluationMorphism, 2 ],
-                      [ DirectProductToExponentialAdjunctionMap, 1 ] ],
+                      [ DirectProductToExponentialAdjunctionMapWithGivenExponential, 1 ] ],
                     
   function( cat, source, list, range )
     local a1, b1, a2, b2, a1a2, exp_a1_b1, exp_a2_b2, id_a2, morphism;
@@ -909,10 +912,11 @@ AddDerivationToCAP( DirectProductExponentialCompatibilityMorphismWithGivenObject
                                   IdentityMorphism( cat, b1 ),
                                   CartesianEvaluationMorphism( cat, a2, b2 ) ) ] );
     
-    return DirectProductToExponentialAdjunctionMap( cat,
+    return DirectProductToExponentialAdjunctionMapWithGivenExponential( cat,
                    source,
                    a1a2,
-                   morphism );
+                   morphism,
+                   range );
     
 end : CategoryFilter := cat -> HasIsCartesianClosedCategory( cat ) and IsCartesianClosedCategory( cat ) and HasIsStrictCartesianCategory( cat ) and IsStrictCartesianCategory( cat ) );
 
@@ -967,7 +971,7 @@ AddDerivationToCAP( CartesianPreComposeMorphismWithGivenObjects,
                       [ IdentityMorphism, 2 ],
                       [ CartesianBraiding, 2 ],
                       [ CartesianEvaluationMorphism, 2 ],
-                      [ DirectProductToExponentialAdjunctionMap, 1 ] ],
+                      [ DirectProductToExponentialAdjunctionMapWithGivenExponential, 1 ] ],
                     
   function( cat, source, a, b, c, range )
     local exp_a_b, exp_b_c, morphism;
@@ -1010,10 +1014,11 @@ AddDerivationToCAP( CartesianPreComposeMorphismWithGivenObjects,
                           
                           CartesianEvaluationMorphism( cat, b, c ) ] );
     
-    return DirectProductToExponentialAdjunctionMap( cat,
+    return DirectProductToExponentialAdjunctionMapWithGivenExponential( cat,
                    source,
                    a,
-                   morphism );
+                   morphism,
+                   range );
     
 end : CategoryFilter := cat -> HasIsCartesianClosedCategory( cat ) and IsCartesianClosedCategory( cat ) and HasIsStrictCartesianCategory( cat ) and IsStrictCartesianCategory( cat ) );
 
@@ -1025,7 +1030,7 @@ AddDerivationToCAP( CartesianPostComposeMorphismWithGivenObjects,
                       [ DirectProductOnMorphisms, 1 ],
                       [ IdentityMorphism, 1 ],
                       [ CartesianEvaluationMorphism, 2 ],
-                      [ DirectProductToExponentialAdjunctionMap, 1 ] ],
+                      [ DirectProductToExponentialAdjunctionMapWithGivenExponential, 1 ] ],
                     
   function( cat, source, a, b, c, range )
     local morphism;
@@ -1050,9 +1055,10 @@ AddDerivationToCAP( CartesianPostComposeMorphismWithGivenObjects,
                           
                           CartesianEvaluationMorphism( cat, b, c ) ] );
     
-    return DirectProductToExponentialAdjunctionMap( cat,
+    return DirectProductToExponentialAdjunctionMapWithGivenExponential( cat,
                    source,
                    a,
-                   morphism );
+                   morphism,
+                   range );
     
 end : CategoryFilter := cat -> HasIsCartesianClosedCategory( cat ) and IsCartesianClosedCategory( cat ) and HasIsStrictCartesianCategory( cat ) and IsStrictCartesianCategory( cat ) );
