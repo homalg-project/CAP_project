@@ -422,7 +422,7 @@ AddDerivationToCAP( CoexponentialCoproductCompatibilityMorphismWithGivenObjects,
                           
                           CoproductOnMorphisms( cat,
                                   CoproductOnMorphisms( cat,
-                                          IdentityMorphism( cat, coexp_a1_b1),
+                                          IdentityMorphism( cat, coexp_a1_b1 ),
                                           CocartesianBraiding( cat, b1, coexp_a2_b2 ) ),
                                   id_b2 ),
                           

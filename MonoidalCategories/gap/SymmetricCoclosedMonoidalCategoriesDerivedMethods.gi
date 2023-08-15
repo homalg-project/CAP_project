@@ -419,7 +419,7 @@ AddDerivationToCAP( InternalCoHomTensorProductCompatibilityMorphismWithGivenObje
                           
                           TensorProductOnMorphisms( cat,
                                   TensorProductOnMorphisms( cat,
-                                          IdentityMorphism( cat, int_cohom_a1_b1),
+                                          IdentityMorphism( cat, int_cohom_a1_b1 ),
                                           Braiding( cat, b1, int_cohom_a2_b2 ) ),
                                   id_b2 ),
                           
