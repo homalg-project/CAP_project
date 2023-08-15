@@ -454,7 +454,7 @@ AddDerivationToCAP( CoDualityTensorProductCompatibilityMorphismWithGivenObjects,
                       [ IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject, 2 ] ],
                     
   function( cat, s, a, b, r )
-    local morphism, unit, tensor_product_on_a_and_b;
+    local unit, tensor_product_on_a_and_b, morphism;
     
     #         (a ⊗ b)_v
     #            |

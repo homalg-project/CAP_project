@@ -215,7 +215,7 @@ AddDerivationToCAP( CoclosedCoevaluationMorphismWithGivenSource,
                       [ LeftUnitor, 1 ] ],
                     
   function( cat, a, b, internal_cohom )
-    local morphism, codual_b, id_a;
+    local codual_b, id_a, morphism;
     
     # Cohom(a ⊗ b, b)
     #       |
@@ -285,7 +285,7 @@ AddDerivationToCAP( CoclosedCoevaluationMorphismWithGivenSource,
                       [ CoclosedCoevaluationForCoDual, 1 ] ],
                     
   function( cat, a, b, internal_cohom )
-    local morphism, codual_b, id_a;
+    local codual_b, id_a, morphism;
     
     # Cohom(a ⊗ b, b)
     #       |
