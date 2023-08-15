@@ -47,7 +47,7 @@ DeclareOperation( "ExponentialOnMorphisms",
 #! and an object $r = \mathrm{Exponential}(a,b')$.
 #! The output is the exponential morphism
 #! $\mathrm{Exponential}(\alpha,\beta): \mathrm{Exponential}(a',b) \rightarrow \mathrm{Exponential}(a,b')$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Exponential}(a',b), \mathrm{Exponential}(a,b') )$
+#! @Returns a morphism in $\mathrm{Hom}( s, r )$
 #! @Arguments s, alpha, beta, r
 DeclareOperation( "ExponentialOnMorphismsWithGivenExponentials",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
@@ -66,7 +66,7 @@ DeclareOperation( "CartesianEvaluationMorphism",
 #! The arguments are two objects $a,b$ and an object $s = \mathrm{Exponential}(a,b) \times a$.
 #! The output is the evaluation morphism $\mathrm{ev}_{a,b}: \mathrm{Exponential}(a,b) \times a \rightarrow b$, i.e.,
 #! the counit of the direct product-exponential adjunction.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Exponential}(a,b) \times a, b )$.
+#! @Returns a morphism in $\mathrm{Hom}( s, b )$.
 #! @Arguments a, b, s
 DeclareOperation( "CartesianEvaluationMorphismWithGivenSource",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
@@ -85,7 +85,7 @@ DeclareOperation( "CartesianCoevaluationMorphism",
 #! The arguments are two objects $a,b$ and an object $r = \mathrm{Exponential}(b, a \times b)$.
 #! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: a \rightarrow \mathrm{Exponential}(b, a \times b)$, i.e.,
 #! the unit of the direct product-exponential adjunction.
-#! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{Exponential}(b, a \times b) )$.
+#! @Returns a morphism in $\mathrm{Hom}( a, r )$.
 #! @Arguments a, b, r
 DeclareOperation( "CartesianCoevaluationMorphismWithGivenRange",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
@@ -103,7 +103,7 @@ DeclareOperation( "DirectProductToExponentialAdjunctionMap",
 #! The arguments are two objects $a,b$, a morphism $f: a \times b \rightarrow c$ and an object $i = \mathrm{Exponential}(b,c)$.
 #! The output is a morphism $g: a \rightarrow \mathrm{Exponential}(b,c)$
 #! corresponding to $f$ under the direct product-exponential adjunction.
-#! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{Exponential}(b,c) )$.
+#! @Returns a morphism in $\mathrm{Hom}( a, i )$.
 #! @Arguments a, b, f, i
 DeclareOperation( "DirectProductToExponentialAdjunctionMapWithGivenExponential",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
@@ -121,7 +121,7 @@ DeclareOperation( "ExponentialToDirectProductAdjunctionMap",
 #! The arguments are two objects $b,c$, a morphism $g: a \rightarrow \mathrm{Exponential}(b,c)$ and an object $t = a \times b$.
 #! The output is a morphism $f: a \times b \rightarrow c$ corresponding to $g$ under the
 #! direct product-exponential adjunction.
-#! @Returns a morphism in $\mathrm{Hom}(a \times b, c)$.
+#! @Returns a morphism in $\mathrm{Hom}(t, c)$.
 #! @Arguments b, c, g, t
 DeclareOperation( "ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
@@ -129,7 +129,7 @@ DeclareOperation( "ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct
 #! @Description
 #! The arguments are three objects $a,b,c$.
 #! The output is the precomposition morphism
-#! $\mathrm{CartesianPreComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{Exponential}(a,b) \times \mathrm{Exponential}(b,c) \rightarrow \mathrm{Exponential}(a,c)$.
+#! $\mathrm{CartesianPreComposeMorphism}_{a,b,c}: \mathrm{Exponential}(a,b) \times \mathrm{Exponential}(b,c) \rightarrow \mathrm{Exponential}(a,c)$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Exponential}(a,b) \times \mathrm{Exponential}(b,c), \mathrm{Exponential}(a,c) )$.
 #! @Arguments a,b,c
 DeclareOperation( "CartesianPreComposeMorphism",
@@ -142,7 +142,7 @@ DeclareOperation( "CartesianPreComposeMorphism",
 #! and an object $r = \mathrm{Exponential}(a,c)$.
 #! The output is the precomposition morphism
 #! $\mathrm{CartesianPreComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{Exponential}(a,b) \times \mathrm{Exponential}(b,c) \rightarrow \mathrm{Exponential}(a,c)$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Exponential}(a,b) \times \mathrm{Exponential}(b,c), \mathrm{Exponential}(a,c) )$.
+#! @Returns a morphism in $\mathrm{Hom}( s, r )$.
 #! @Arguments s,a,b,c,r
 DeclareOperation( "CartesianPreComposeMorphismWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
@@ -150,7 +150,7 @@ DeclareOperation( "CartesianPreComposeMorphismWithGivenObjects",
 #! @Description
 #! The arguments are three objects $a,b,c$.
 #! The output is the postcomposition morphism
-#! $\mathrm{CartesianPostComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{Exponential}(b,c) \times \mathrm{Exponential}(a,b) \rightarrow \mathrm{Exponential}(a,c)$.
+#! $\mathrm{CartesianPostComposeMorphism}_{a,b,c}: \mathrm{Exponential}(b,c) \times \mathrm{Exponential}(a,b) \rightarrow \mathrm{Exponential}(a,c)$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Exponential}(b,c) \times \mathrm{Exponential}(a,b), \mathrm{Exponential}(a,c) )$.
 #! @Arguments a,b,c
 DeclareOperation( "CartesianPostComposeMorphism",
@@ -163,7 +163,7 @@ DeclareOperation( "CartesianPostComposeMorphism",
 #! and an object $r = \mathrm{Exponential}(a,c)$.
 #! The output is the postcomposition morphism
 #! $\mathrm{CartesianPostComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{Exponential}(b,c) \times \mathrm{Exponential}(a,b) \rightarrow \mathrm{Exponential}(a,c)$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Exponential}(b,c) \times \mathrm{Exponential}(a,b), \mathrm{Exponential}(a,c) )$.
+#! @Returns a morphism in $\mathrm{Hom}( s, r )$.
 #! @Arguments s,a,b,c,r
 DeclareOperation( "CartesianPostComposeMorphismWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
@@ -189,7 +189,7 @@ DeclareAttribute( "CartesianDualOnMorphisms",
 #! a morphism $\alpha: a \rightarrow b$,
 #! and an object $r = a^{\vee}$.
 #! The output is the dual morphism $\alpha^{\vee}: b^{\vee} \rightarrow a^{\vee}$.
-#! @Returns a morphism in $\mathrm{Hom}( b^{\vee}, a^{\vee} )$.
+#! @Returns a morphism in $\mathrm{Hom}( s, r )$.
 #! @Arguments s,alpha,r
 DeclareOperation( "CartesianDualOnMorphismsWithGivenCartesianDuals",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
@@ -207,7 +207,7 @@ DeclareAttribute( "CartesianEvaluationForCartesianDual",
 #! an object $a$,
 #! and an object $r = 1$.
 #! The output is the evaluation morphism $\mathrm{ev}_{a}: a^{\vee} \times a \rightarrow 1$.
-#! @Returns a morphism in $\mathrm{Hom}( a^{\vee} \times a, 1 )$.
+#! @Returns a morphism in $\mathrm{Hom}( s, r )$.
 #! @Arguments s,a,r
 DeclareOperation( "CartesianEvaluationForCartesianDualWithGivenDirectProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
@@ -224,7 +224,7 @@ DeclareAttribute( "MorphismToCartesianBidual",
 #! The arguments are an object $a$,
 #! and an object $r = (a^{\vee})^{\vee}$.
 #! The output is the morphism to the bidual $a \rightarrow (a^{\vee})^{\vee}$.
-#! @Returns a morphism in $\mathrm{Hom}(a, (a^{\vee})^{\vee})$.
+#! @Returns a morphism in $\mathrm{Hom}(a, r)$.
 #! @Arguments a, r
 DeclareOperation( "MorphismToCartesianBidualWithGivenCartesianBidual",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
@@ -234,7 +234,7 @@ DeclareOperation( "MorphismToCartesianBidualWithGivenCartesianBidual",
 #! @Description
 #! The argument is a list of four objects $[ a, a', b, b' ]$.
 #! The output is the natural morphism
-#! $\mathrm{DirectProductExponentialCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}: \mathrm{Exponential}(a,a') \times \mathrm{Exponential}(b,b') \rightarrow \mathrm{Exponential}(a \times b,a' \times b')$.
+#! $\mathrm{DirectProductExponentialCompatibilityMorphism}_{a,a',b,b'}: \mathrm{Exponential}(a,a') \times \mathrm{Exponential}(b,b') \rightarrow \mathrm{Exponential}(a \times b,a' \times b')$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Exponential}(a,a') \times \mathrm{Exponential}(b,b'), \mathrm{Exponential}(a \times b,a' \times b'))$.
 #! @Arguments list
 DeclareOperation( "DirectProductExponentialCompatibilityMorphism",
@@ -246,7 +246,7 @@ DeclareOperation( "DirectProductExponentialCompatibilityMorphism",
 #! and two objects $s = \mathrm{Exponential}(a,a') \times \mathrm{Exponential}(b,b')$ and $r = \mathrm{Exponential}(a \times b,a' \times b')$.
 #! The output is the natural morphism
 #! $\mathrm{DirectProductExponentialCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}: \mathrm{Exponential}(a,a') \times \mathrm{Exponential}(b,b') \rightarrow \mathrm{Exponential}(a \times b,a' \times b')$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Exponential}(a,a') \times \mathrm{Exponential}(b,b'), \mathrm{Exponential}(a \times b,a' \times b'))$.
+#! @Returns a morphism in $\mathrm{Hom}( s, r )$.
 #! @Arguments s, list, r
 DeclareOperation( "DirectProductExponentialCompatibilityMorphismWithGivenObjects",
                   [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
@@ -254,7 +254,7 @@ DeclareOperation( "DirectProductExponentialCompatibilityMorphismWithGivenObjects
 #! @Description
 #! The arguments are two objects $a,b$.
 #! The output is the natural morphism
-#! $\mathrm{DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects}: a^{\vee} \times b^{\vee} \rightarrow (a \times b)^{\vee}$.
+#! $\mathrm{DirectProductCartesianDualityCompatibilityMorphism}: a^{\vee} \times b^{\vee} \rightarrow (a \times b)^{\vee}$.
 #! @Returns a morphism in $\mathrm{Hom}( a^{\vee} \times b^{\vee}, (a \times b)^{\vee} )$.
 #! @Arguments a,b
 DeclareOperation( "DirectProductCartesianDualityCompatibilityMorphism",
@@ -266,14 +266,14 @@ DeclareOperation( "DirectProductCartesianDualityCompatibilityMorphism",
 #! and an object $r = (a \times b)^{\vee}$.
 #! The output is the natural morphism
 #! $\mathrm{DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects}_{a,b}: a^{\vee} \times b^{\vee} \rightarrow (a \times b)^{\vee}$.
-#! @Returns a morphism in $\mathrm{Hom}( a^{\vee} \times b^{\vee}, (a \times b)^{\vee} )$.
+#! @Returns a morphism in $\mathrm{Hom}( s, r )$.
 #! @Arguments s,a,b,r
 DeclareOperation( "DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are two objects $a,b$.
-#! The output is the natural morphism $\mathrm{MorphismFromDirectProductToExponentialWithGivenObjects}_{a,b}: a^{\vee} \times b \rightarrow \mathrm{Exponential}(a,b)$.
+#! The output is the natural morphism $\mathrm{MorphismFromDirectProductToExponential}_{a,b}: a^{\vee} \times b \rightarrow \mathrm{Exponential}(a,b)$.
 #! @Returns a morphism in $\mathrm{Hom}( a^{\vee} \times b, \mathrm{Exponential}(a,b) )$.
 #! @Arguments a,b
 DeclareOperation( "MorphismFromDirectProductToExponential",
@@ -284,7 +284,7 @@ DeclareOperation( "MorphismFromDirectProductToExponential",
 #! two objects $a,b$,
 #! and an object $r = \mathrm{Exponential}(a,b)$.
 #! The output is the natural morphism $\mathrm{MorphismFromDirectProductToExponentialWithGivenObjects}_{a,b}: a^{\vee} \times b \rightarrow \mathrm{Exponential}(a,b)$.
-#! @Returns a morphism in $\mathrm{Hom}( a^{\vee} \times b, \mathrm{Exponential}(a,b) )$.
+#! @Returns a morphism in $\mathrm{Hom}( s, r )$.
 #! @Arguments s,a,b,r
 DeclareOperation( "MorphismFromDirectProductToExponentialWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
@@ -354,7 +354,7 @@ DeclareAttribute( "IsomorphismFromObjectToExponential",
 #! The argument is an object $a$,
 #! and an object $r = \mathrm{Exponential}(1,a)$.
 #! The output is the natural isomorphism $a \rightarrow \mathrm{Exponential}(1,a)$.
-#! @Returns a morphism in $\mathrm{Hom}(a, \mathrm{Exponential}(1,a))$.
+#! @Returns a morphism in $\mathrm{Hom}(a, r)$.
 #! @Arguments a,r
 DeclareOperation( "IsomorphismFromObjectToExponentialWithGivenExponential",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
@@ -371,7 +371,7 @@ DeclareAttribute( "IsomorphismFromExponentialToObject",
 #! The argument is an object $a$,
 #! and an object $s = \mathrm{Exponential}(1,a)$.
 #! The output is the natural isomorphism $\mathrm{Exponential}(1,a) \rightarrow a$.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{Exponential}(1,a),a)$.
+#! @Returns a morphism in $\mathrm{Hom}(s,a)$.
 #! @Arguments a,s
 DeclareOperation( "IsomorphismFromExponentialToObjectWithGivenExponential",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
