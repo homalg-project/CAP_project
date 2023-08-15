@@ -157,7 +157,7 @@ AddDerivationToCAP( MorphismToCartesianBidualWithGivenCartesianBidual,
                       [ CartesianEvaluationMorphism, 1 ] ],
                     
   function( cat, a, avv )
-    local morphism, av, tensor_unit;
+    local av, morphism;
     
     #        a
     #        |
@@ -175,8 +175,6 @@ AddDerivationToCAP( MorphismToCartesianBidualWithGivenCartesianBidual,
     
     av := CartesianDualOnObjects( cat, a );
     
-    tensor_unit := TerminalObject( cat );
-
     morphism := PreComposeList( cat,
                         [ CartesianCoevaluationMorphism( cat, a, av ),
                           
@@ -186,7 +184,7 @@ AddDerivationToCAP( MorphismToCartesianBidualWithGivenCartesianBidual,
                           
                           ExponentialOnMorphisms( cat,
                                   IdentityMorphism( cat, av ),
-                                  CartesianEvaluationMorphism( cat, a, tensor_unit ) ) ] );
+                                  CartesianEvaluationMorphism( cat, a, TerminalObject( cat ) ) ) ] );
     
     return morphism;
     
@@ -500,7 +498,7 @@ AddDerivationToCAP( IsomorphismFromObjectToExponentialWithGivenExponential,
                     
   function( cat, a, internal_hom )
     local unit;
-
+    
     #       a
     #       |
     #       | coev_(a,1)
@@ -529,18 +527,15 @@ AddDerivationToCAP( IsomorphismFromObjectToExponentialWithGivenExponential,
                       [ CartesianRightUnitor, 1 ] ],
                     
   function( cat, a, internal_hom )
-    local unit;
     
     # ρ_a: a × 1 → a
     #
     # Adjoint( ρ_a ) = ( a → Exp(1,a) )
     
-    unit := TerminalObject( cat );
-    
     return DirectProductToExponentialAdjunctionMap( cat,
-             a,
-             unit,
-             CartesianRightUnitor( cat, a ) );
+                   a,
+                   TerminalObject( cat ),
+                   CartesianRightUnitor( cat, a ) );
     
 end : CategoryFilter := IsCartesianClosedCategory );
 
@@ -566,7 +561,6 @@ AddDerivationToCAP( IsomorphismFromExponentialToObjectWithGivenExponential,
                       [ CartesianEvaluationMorphism, 1 ] ],
                     
   function( cat, a, internal_hom )
-    local unit;
     
     #  Exp(1,a)
     #      |
@@ -578,10 +572,9 @@ AddDerivationToCAP( IsomorphismFromExponentialToObjectWithGivenExponential,
     #      v
     #      a
     
-    unit := TerminalObject( cat );
-    
-    return PreCompose( cat, CartesianRightUnitorInverse( cat, internal_hom ),
-                       CartesianEvaluationMorphism( cat, unit, a ) );
+    return PreCompose( cat,
+                   CartesianRightUnitorInverse( cat, internal_hom ),
+                   CartesianEvaluationMorphism( cat, TerminalObject( cat ), a ) );
     
 end : CategoryFilter := IsCartesianClosedCategory );
 
@@ -939,7 +932,7 @@ AddDerivationToCAP( DirectProductCartesianDualityCompatibilityMorphismWithGivenO
                       [ IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject, 1 ] ],
                     
   function( cat, source, a, b, range )
-    local morphism, unit, direct_product_on_a_and_b;
+    local unit, morphism;
     
     #      a^v × b^v
     #          |
@@ -955,8 +948,6 @@ AddDerivationToCAP( DirectProductCartesianDualityCompatibilityMorphismWithGivenO
     
     unit := TerminalObject( cat );
     
-    direct_product_on_a_and_b := BinaryDirectProduct( cat, a, b );
-    
     morphism := PreComposeList( cat,
                         [ DirectProductOnMorphisms( cat,
                                 IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject( cat, a ),
@@ -964,7 +955,8 @@ AddDerivationToCAP( DirectProductCartesianDualityCompatibilityMorphismWithGivenO
                           
                           DirectProductExponentialCompatibilityMorphism( cat, [ a, unit, b, unit ] ),
                           
-                          IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject( cat, direct_product_on_a_and_b ) ] );
+                          IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject( cat,
+                                  BinaryDirectProduct( cat, a, b ) ) ] );
     
     return morphism;
     
