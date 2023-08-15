@@ -316,8 +316,7 @@
   [1X1.2-3 ExponentialOnMorphismsWithGivenExponentials[101X
   
   [33X[1;0Y[29X[2XExponentialOnMorphismsWithGivenExponentials[102X( [3Xs[103X, [3Xalpha[103X, [3Xbeta[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya    morphism    in    [23X\mathrm{Hom}(   \mathrm{Exponential}(a',b),
-            \mathrm{Exponential}(a,b') )[123X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X[133X
   
   [33X[0;0YThe  arguments  are  an object [23Xs = \mathrm{Exponential}(a',b)[123X, two morphisms
   [23X\alpha:  a  \rightarrow  a',  \beta:  b  \rightarrow  b'[123X,  and an object [23Xr =
@@ -338,8 +337,7 @@
   [1X1.2-5 CartesianEvaluationMorphismWithGivenSource[101X
   
   [33X[1;0Y[29X[2XCartesianEvaluationMorphismWithGivenSource[102X( [3Xa[103X, [3Xb[103X, [3Xs[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya  morphism in [23X\mathrm{Hom}( \mathrm{Exponential}(a,b) \times a, b
-            )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, b )[123X.[133X
   
   [33X[0;0YThe    arguments    are    two    objects    [23Xa,b[123X   and   an   object   [23Xs   =
   \mathrm{Exponential}(a,b)  \times  a[123X.  The output is the evaluation morphism
@@ -359,8 +357,7 @@
   [1X1.2-7 CartesianCoevaluationMorphismWithGivenRange[101X
   
   [33X[1;0Y[29X[2XCartesianCoevaluationMorphismWithGivenRange[102X( [3Xa[103X, [3Xb[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, \mathrm{Exponential}(b, a \times b)
-            )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, r )[123X.[133X
   
   [33X[0;0YThe  arguments are two objects [23Xa,b[123X and an object [23Xr = \mathrm{Exponential}(b,
   a  \times b)[123X. The output is the coevaluation morphism [23X\mathrm{coev}_{a,b}: a
@@ -379,7 +376,7 @@
   [1X1.2-9 DirectProductToExponentialAdjunctionMapWithGivenExponential[101X
   
   [33X[1;0Y[29X[2XDirectProductToExponentialAdjunctionMapWithGivenExponential[102X( [3Xa[103X, [3Xb[103X, [3Xf[103X, [3Xi[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, \mathrm{Exponential}(b,c) )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, i )[123X.[133X
   
   [33X[0;0YThe  arguments  are  two objects [23Xa,b[123X, a morphism [23Xf: a \times b \rightarrow c[123X
   and  an  object [23Xi = \mathrm{Exponential}(b,c)[123X. The output is a morphism [23Xg: a
@@ -399,7 +396,7 @@
   [1X1.2-11 ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct[101X
   
   [33X[1;0Y[29X[2XExponentialToDirectProductAdjunctionMapWithGivenDirectProduct[102X( [3Xb[103X, [3Xc[103X, [3Xg[103X, [3Xt[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \times b, c)[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(t, c)[123X.[133X
   
   [33X[0;0YThe   arguments   are   two   objects  [23Xb,c[123X,  a  morphism  [23Xg:  a  \rightarrow
   \mathrm{Exponential}(b,c)[123X  and  an  object  [23Xt  = a \times b[123X. The output is a
@@ -413,15 +410,14 @@
             \mathrm{Exponential}(b,c), \mathrm{Exponential}(a,c) )[123X.[133X
   
   [33X[0;0YThe  arguments  are  three  objects  [23Xa,b,c[123X. The output is the precomposition
-  morphism       [23X\mathrm{CartesianPreComposeMorphismWithGivenObjects}_{a,b,c}:
+  morphism                       [23X\mathrm{CartesianPreComposeMorphism}_{a,b,c}:
   \mathrm{Exponential}(a,b)   \times   \mathrm{Exponential}(b,c)   \rightarrow
   \mathrm{Exponential}(a,c)[123X.[133X
   
   [1X1.2-13 CartesianPreComposeMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XCartesianPreComposeMorphismWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya   morphism  in  [23X\mathrm{Hom}(  \mathrm{Exponential}(a,b)  \times
-            \mathrm{Exponential}(b,c), \mathrm{Exponential}(a,c) )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X.[133X
   
   [33X[0;0YThe   arguments   are   an   object  [23Xs  =  \mathrm{Exponential}(a,b)  \times
   \mathrm{Exponential}(b,c)[123X,   three   objects   [23Xa,b,c[123X,  and  an  object  [23Xr  =
@@ -437,15 +433,14 @@
             \mathrm{Exponential}(a,b), \mathrm{Exponential}(a,c) )[123X.[133X
   
   [33X[0;0YThe  arguments  are  three  objects [23Xa,b,c[123X. The output is the postcomposition
-  morphism      [23X\mathrm{CartesianPostComposeMorphismWithGivenObjects}_{a,b,c}:
+  morphism                      [23X\mathrm{CartesianPostComposeMorphism}_{a,b,c}:
   \mathrm{Exponential}(b,c)   \times   \mathrm{Exponential}(a,b)   \rightarrow
   \mathrm{Exponential}(a,c)[123X.[133X
   
   [1X1.2-15 CartesianPostComposeMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XCartesianPostComposeMorphismWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya   morphism  in  [23X\mathrm{Hom}(  \mathrm{Exponential}(b,c)  \times
-            \mathrm{Exponential}(a,b), \mathrm{Exponential}(a,c) )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X.[133X
   
   [33X[0;0YThe   arguments   are   an   object  [23Xs  =  \mathrm{Exponential}(b,c)  \times
   \mathrm{Exponential}(a,b)[123X,   three   objects   [23Xa,b,c[123X,  and  an  object  [23Xr  =
@@ -472,7 +467,7 @@
   [1X1.2-18 CartesianDualOnMorphismsWithGivenCartesianDuals[101X
   
   [33X[1;0Y[29X[2XCartesianDualOnMorphismsWithGivenCartesianDuals[102X( [3Xs[103X, [3Xalpha[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( b^{\vee}, a^{\vee} )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X.[133X
   
   [33X[0;0YThe  argument is an object [23Xs = b^{\vee}[123X, a morphism [23X\alpha: a \rightarrow b[123X,
   and  an  object [23Xr = a^{\vee}[123X. The output is the dual morphism [23X\alpha^{\vee}:
@@ -489,7 +484,7 @@
   [1X1.2-20 CartesianEvaluationForCartesianDualWithGivenDirectProduct[101X
   
   [33X[1;0Y[29X[2XCartesianEvaluationForCartesianDualWithGivenDirectProduct[102X( [3Xs[103X, [3Xa[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a^{\vee} \times a, 1 )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X.[133X
   
   [33X[0;0YThe  arguments  are  an  object  [23Xs  = a^{\vee} \times a[123X, an object [23Xa[123X, and an
   object  [23Xr  =  1[123X.  The  output  is  the  evaluation morphism [23X\mathrm{ev}_{a}:
@@ -506,7 +501,7 @@
   [1X1.2-22 MorphismToCartesianBidualWithGivenCartesianBidual[101X
   
   [33X[1;0Y[29X[2XMorphismToCartesianBidualWithGivenCartesianBidual[102X( [3Xa[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, (a^{\vee})^{\vee})[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, r)[123X.[133X
   
   [33X[0;0YThe  arguments  are  an  object  [23Xa[123X, and an object [23Xr = (a^{\vee})^{\vee}[123X. The
   output is the morphism to the bidual [23Xa \rightarrow (a^{\vee})^{\vee}[123X.[133X
@@ -520,16 +515,14 @@
   
   [33X[0;0YThe  argument  is a list of four objects [23X[ a, a', b, b' ][123X. The output is the
   natural                                                             morphism
-  [23X\mathrm{DirectProductExponentialCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}:
+  [23X\mathrm{DirectProductExponentialCompatibilityMorphism}_{a,a',b,b'}:
   \mathrm{Exponential}(a,a')   \times  \mathrm{Exponential}(b,b')  \rightarrow
   \mathrm{Exponential}(a \times b,a' \times b')[123X.[133X
   
   [1X1.2-24 DirectProductExponentialCompatibilityMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XDirectProductExponentialCompatibilityMorphismWithGivenObjects[102X( [3Xs[103X, [3Xlist[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}(  \mathrm{Exponential}(a,a')  \times
-            \mathrm{Exponential}(b,b'),   \mathrm{Exponential}(a  \times  b,a'
-            \times b'))[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X.[133X
   
   [33X[0;0YThe arguments are a list of four objects [23X[ a, a', b, b' ][123X, and two objects [23Xs
   =  \mathrm{Exponential}(a,a')  \times  \mathrm{Exponential}(b,b')[123X  and  [23Xr  =
@@ -546,14 +539,13 @@
             b)^{\vee} )[123X.[133X
   
   [33X[0;0YThe  arguments  are  two  objects  [23Xa,b[123X.  The  output is the natural morphism
-  [23X\mathrm{DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects}:
-  a^{\vee} \times b^{\vee} \rightarrow (a \times b)^{\vee}[123X.[133X
+  [23X\mathrm{DirectProductCartesianDualityCompatibilityMorphism}: a^{\vee} \times
+  b^{\vee} \rightarrow (a \times b)^{\vee}[123X.[133X
   
   [1X1.2-26 DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XDirectProductCartesianDualityCompatibilityMorphismWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3Xb[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}( a^{\vee} \times b^{\vee}, (a \times
-            b)^{\vee} )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X.[133X
   
   [33X[0;0YThe  arguments  are an object [23Xs = a^{\vee} \times b^{\vee}[123X, two objects [23Xa,b[123X,
   and  an  object  [23Xr = (a \times b)^{\vee}[123X. The output is the natural morphism
@@ -567,14 +559,13 @@
             \mathrm{Exponential}(a,b) )[123X.[133X
   
   [33X[0;0YThe  arguments  are  two  objects  [23Xa,b[123X.  The  output is the natural morphism
-  [23X\mathrm{MorphismFromDirectProductToExponentialWithGivenObjects}_{a,b}:
-  a^{\vee} \times b \rightarrow \mathrm{Exponential}(a,b)[123X.[133X
+  [23X\mathrm{MorphismFromDirectProductToExponential}_{a,b}:   a^{\vee}  \times  b
+  \rightarrow \mathrm{Exponential}(a,b)[123X.[133X
   
   [1X1.2-28 MorphismFromDirectProductToExponentialWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XMorphismFromDirectProductToExponentialWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3Xb[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya     morphism     in    [23X\mathrm{Hom}(    a^{\vee}    \times    b,
-            \mathrm{Exponential}(a,b) )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X.[133X
   
   [33X[0;0YThe  arguments  are an object [23Xs = a^{\vee} \times b[123X, two objects [23Xa,b[123X, and an
   object  [23Xr  =  \mathrm{Exponential}(a,b)[123X.  The output is the natural morphism
@@ -637,7 +628,7 @@
   [1X1.2-35 IsomorphismFromObjectToExponentialWithGivenExponential[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromObjectToExponentialWithGivenExponential[102X( [3Xa[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, \mathrm{Exponential}(1,a))[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, r)[123X.[133X
   
   [33X[0;0YThe  argument  is  an object [23Xa[123X, and an object [23Xr = \mathrm{Exponential}(1,a)[123X.
   The     output     is     the     natural    isomorphism    [23Xa    \rightarrow
@@ -654,7 +645,7 @@
   [1X1.2-37 IsomorphismFromExponentialToObjectWithGivenExponential[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromExponentialToObjectWithGivenExponential[102X( [3Xa[103X, [3Xs[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\mathrm{Exponential}(1,a),a)[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(s,a)[123X.[133X
   
   [33X[0;0YThe  argument  is  an object [23Xa[123X, and an object [23Xs = \mathrm{Exponential}(1,a)[123X.
   The  output is the natural isomorphism [23X\mathrm{Exponential}(1,a) \rightarrow

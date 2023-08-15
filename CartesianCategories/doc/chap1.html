@@ -503,7 +503,7 @@
 <h5>1.2-3 ExponentialOnMorphismsWithGivenExponentials</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExponentialOnMorphismsWithGivenExponentials</code>( <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Exponential}(a',b), \mathrm{Exponential}(a,b') )</span></p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span></p>
 
 <p>The arguments are an object <span class="Math">s = \mathrm{Exponential}(a',b)</span>, two morphisms <span class="Math">\alpha: a \rightarrow a', \beta: b \rightarrow b'</span>, and an object <span class="Math">r = \mathrm{Exponential}(a,b')</span>. The output is the exponential morphism <span class="Math">\mathrm{Exponential}(\alpha,\beta): \mathrm{Exponential}(a',b) \rightarrow \mathrm{Exponential}(a,b')</span>.</p>
 
@@ -521,7 +521,7 @@
 <h5>1.2-5 CartesianEvaluationMorphismWithGivenSource</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianEvaluationMorphismWithGivenSource</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Exponential}(a,b) \times a, b )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, b )</span>.</p>
 
 <p>The arguments are two objects <span class="Math">a,b</span> and an object <span class="Math">s = \mathrm{Exponential}(a,b) \times a</span>. The output is the evaluation morphism <span class="Math">\mathrm{ev}_{a,b}: \mathrm{Exponential}(a,b) \times a \rightarrow b</span>, i.e., the counit of the direct product-exponential adjunction.</p>
 
@@ -539,7 +539,7 @@
 <h5>1.2-7 CartesianCoevaluationMorphismWithGivenRange</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianCoevaluationMorphismWithGivenRange</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, \mathrm{Exponential}(b, a \times b) )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, r )</span>.</p>
 
 <p>The arguments are two objects <span class="Math">a,b</span> and an object <span class="Math">r = \mathrm{Exponential}(b, a \times b)</span>. The output is the coevaluation morphism <span class="Math">\mathrm{coev}_{a,b}: a \rightarrow \mathrm{Exponential}(b, a \times b)</span>, i.e., the unit of the direct product-exponential adjunction.</p>
 
@@ -557,7 +557,7 @@
 <h5>1.2-9 DirectProductToExponentialAdjunctionMapWithGivenExponential</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DirectProductToExponentialAdjunctionMapWithGivenExponential</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">f</var>, <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, \mathrm{Exponential}(b,c) )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, i )</span>.</p>
 
 <p>The arguments are two objects <span class="Math">a,b</span>, a morphism <span class="Math">f: a \times b \rightarrow c</span> and an object <span class="Math">i = \mathrm{Exponential}(b,c)</span>. The output is a morphism <span class="Math">g: a \rightarrow \mathrm{Exponential}(b,c)</span> corresponding to <span class="Math">f</span> under the direct product-exponential adjunction.</p>
 
@@ -575,7 +575,7 @@
 <h5>1.2-11 ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct</code>( <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">g</var>, <var class="Arg">t</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a \times b, c)</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(t, c)</span>.</p>
 
 <p>The arguments are two objects <span class="Math">b,c</span>, a morphism <span class="Math">g: a \rightarrow \mathrm{Exponential}(b,c)</span> and an object <span class="Math">t = a \times b</span>. The output is a morphism <span class="Math">f: a \times b \rightarrow c</span> corresponding to <span class="Math">g</span> under the direct product-exponential adjunction.</p>
 
@@ -586,14 +586,14 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianPreComposeMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Exponential}(a,b) \times \mathrm{Exponential}(b,c), \mathrm{Exponential}(a,c) )</span>.</p>
 
-<p>The arguments are three objects <span class="Math">a,b,c</span>. The output is the precomposition morphism <span class="Math">\mathrm{CartesianPreComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{Exponential}(a,b) \times \mathrm{Exponential}(b,c) \rightarrow \mathrm{Exponential}(a,c)</span>.</p>
+<p>The arguments are three objects <span class="Math">a,b,c</span>. The output is the precomposition morphism <span class="Math">\mathrm{CartesianPreComposeMorphism}_{a,b,c}: \mathrm{Exponential}(a,b) \times \mathrm{Exponential}(b,c) \rightarrow \mathrm{Exponential}(a,c)</span>.</p>
 
 <p><a id="X8756757C86AAC7D7" name="X8756757C86AAC7D7"></a></p>
 
 <h5>1.2-13 CartesianPreComposeMorphismWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianPreComposeMorphismWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Exponential}(a,b) \times \mathrm{Exponential}(b,c), \mathrm{Exponential}(a,c) )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = \mathrm{Exponential}(a,b) \times \mathrm{Exponential}(b,c)</span>, three objects <span class="Math">a,b,c</span>, and an object <span class="Math">r = \mathrm{Exponential}(a,c)</span>. The output is the precomposition morphism <span class="Math">\mathrm{CartesianPreComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{Exponential}(a,b) \times \mathrm{Exponential}(b,c) \rightarrow \mathrm{Exponential}(a,c)</span>.</p>
 
@@ -604,14 +604,14 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianPostComposeMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Exponential}(b,c) \times \mathrm{Exponential}(a,b), \mathrm{Exponential}(a,c) )</span>.</p>
 
-<p>The arguments are three objects <span class="Math">a,b,c</span>. The output is the postcomposition morphism <span class="Math">\mathrm{CartesianPostComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{Exponential}(b,c) \times \mathrm{Exponential}(a,b) \rightarrow \mathrm{Exponential}(a,c)</span>.</p>
+<p>The arguments are three objects <span class="Math">a,b,c</span>. The output is the postcomposition morphism <span class="Math">\mathrm{CartesianPostComposeMorphism}_{a,b,c}: \mathrm{Exponential}(b,c) \times \mathrm{Exponential}(a,b) \rightarrow \mathrm{Exponential}(a,c)</span>.</p>
 
 <p><a id="X84612F4F842F84B5" name="X84612F4F842F84B5"></a></p>
 
 <h5>1.2-15 CartesianPostComposeMorphismWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianPostComposeMorphismWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Exponential}(b,c) \times \mathrm{Exponential}(a,b), \mathrm{Exponential}(a,c) )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = \mathrm{Exponential}(b,c) \times \mathrm{Exponential}(a,b)</span>, three objects <span class="Math">a,b,c</span>, and an object <span class="Math">r = \mathrm{Exponential}(a,c)</span>. The output is the postcomposition morphism <span class="Math">\mathrm{CartesianPostComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{Exponential}(b,c) \times \mathrm{Exponential}(a,b) \rightarrow \mathrm{Exponential}(a,c)</span>.</p>
 
@@ -638,7 +638,7 @@
 <h5>1.2-18 CartesianDualOnMorphismsWithGivenCartesianDuals</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianDualOnMorphismsWithGivenCartesianDuals</code>( <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( b^{\vee}, a^{\vee} )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span>.</p>
 
 <p>The argument is an object <span class="Math">s = b^{\vee}</span>, a morphism <span class="Math">\alpha: a \rightarrow b</span>, and an object <span class="Math">r = a^{\vee}</span>. The output is the dual morphism <span class="Math">\alpha^{\vee}: b^{\vee} \rightarrow a^{\vee}</span>.</p>
 
@@ -656,7 +656,7 @@
 <h5>1.2-20 CartesianEvaluationForCartesianDualWithGivenDirectProduct</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianEvaluationForCartesianDualWithGivenDirectProduct</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a^{\vee} \times a, 1 )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = a^{\vee} \times a</span>, an object <span class="Math">a</span>, and an object <span class="Math">r = 1</span>. The output is the evaluation morphism <span class="Math">\mathrm{ev}_{a}: a^{\vee} \times a \rightarrow 1</span>.</p>
 
@@ -674,7 +674,7 @@
 <h5>1.2-22 MorphismToCartesianBidualWithGivenCartesianBidual</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismToCartesianBidualWithGivenCartesianBidual</code>( <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a, (a^{\vee})^{\vee})</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a, r)</span>.</p>
 
 <p>The arguments are an object <span class="Math">a</span>, and an object <span class="Math">r = (a^{\vee})^{\vee}</span>. The output is the morphism to the bidual <span class="Math">a \rightarrow (a^{\vee})^{\vee}</span>.</p>
 
@@ -685,14 +685,14 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DirectProductExponentialCompatibilityMorphism</code>( <var class="Arg">list</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Exponential}(a,a') \times \mathrm{Exponential}(b,b'), \mathrm{Exponential}(a \times b,a' \times b'))</span>.</p>
 
-<p>The argument is a list of four objects <span class="Math">[ a, a', b, b' ]</span>. The output is the natural morphism <span class="Math">\mathrm{DirectProductExponentialCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}: \mathrm{Exponential}(a,a') \times \mathrm{Exponential}(b,b') \rightarrow \mathrm{Exponential}(a \times b,a' \times b')</span>.</p>
+<p>The argument is a list of four objects <span class="Math">[ a, a', b, b' ]</span>. The output is the natural morphism <span class="Math">\mathrm{DirectProductExponentialCompatibilityMorphism}_{a,a',b,b'}: \mathrm{Exponential}(a,a') \times \mathrm{Exponential}(b,b') \rightarrow \mathrm{Exponential}(a \times b,a' \times b')</span>.</p>
 
 <p><a id="X7A1F1E1E832BCE73" name="X7A1F1E1E832BCE73"></a></p>
 
 <h5>1.2-24 DirectProductExponentialCompatibilityMorphismWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DirectProductExponentialCompatibilityMorphismWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">list</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Exponential}(a,a') \times \mathrm{Exponential}(b,b'), \mathrm{Exponential}(a \times b,a' \times b'))</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span>.</p>
 
 <p>The arguments are a list of four objects <span class="Math">[ a, a', b, b' ]</span>, and two objects <span class="Math">s = \mathrm{Exponential}(a,a') \times \mathrm{Exponential}(b,b')</span> and <span class="Math">r = \mathrm{Exponential}(a \times b,a' \times b')</span>. The output is the natural morphism <span class="Math">\mathrm{DirectProductExponentialCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}: \mathrm{Exponential}(a,a') \times \mathrm{Exponential}(b,b') \rightarrow \mathrm{Exponential}(a \times b,a' \times b')</span>.</p>
 
@@ -703,14 +703,14 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DirectProductCartesianDualityCompatibilityMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a^{\vee} \times b^{\vee}, (a \times b)^{\vee} )</span>.</p>
 
-<p>The arguments are two objects <span class="Math">a,b</span>. The output is the natural morphism <span class="Math">\mathrm{DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects}: a^{\vee} \times b^{\vee} \rightarrow (a \times b)^{\vee}</span>.</p>
+<p>The arguments are two objects <span class="Math">a,b</span>. The output is the natural morphism <span class="Math">\mathrm{DirectProductCartesianDualityCompatibilityMorphism}: a^{\vee} \times b^{\vee} \rightarrow (a \times b)^{\vee}</span>.</p>
 
 <p><a id="X7EEBA52B78DD3C43" name="X7EEBA52B78DD3C43"></a></p>
 
 <h5>1.2-26 DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a^{\vee} \times b^{\vee}, (a \times b)^{\vee} )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = a^{\vee} \times b^{\vee}</span>, two objects <span class="Math">a,b</span>, and an object <span class="Math">r = (a \times b)^{\vee}</span>. The output is the natural morphism <span class="Math">\mathrm{DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects}_{a,b}: a^{\vee} \times b^{\vee} \rightarrow (a \times b)^{\vee}</span>.</p>
 
@@ -721,14 +721,14 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromDirectProductToExponential</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a^{\vee} \times b, \mathrm{Exponential}(a,b) )</span>.</p>
 
-<p>The arguments are two objects <span class="Math">a,b</span>. The output is the natural morphism <span class="Math">\mathrm{MorphismFromDirectProductToExponentialWithGivenObjects}_{a,b}: a^{\vee} \times b \rightarrow \mathrm{Exponential}(a,b)</span>.</p>
+<p>The arguments are two objects <span class="Math">a,b</span>. The output is the natural morphism <span class="Math">\mathrm{MorphismFromDirectProductToExponential}_{a,b}: a^{\vee} \times b \rightarrow \mathrm{Exponential}(a,b)</span>.</p>
 
 <p><a id="X79905A217884A6D5" name="X79905A217884A6D5"></a></p>
 
 <h5>1.2-28 MorphismFromDirectProductToExponentialWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromDirectProductToExponentialWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a^{\vee} \times b, \mathrm{Exponential}(a,b) )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = a^{\vee} \times b</span>, two objects <span class="Math">a,b</span>, and an object <span class="Math">r = \mathrm{Exponential}(a,b)</span>. The output is the natural morphism <span class="Math">\mathrm{MorphismFromDirectProductToExponentialWithGivenObjects}_{a,b}: a^{\vee} \times b \rightarrow \mathrm{Exponential}(a,b)</span>.</p>
 
@@ -791,7 +791,7 @@
 <h5>1.2-35 IsomorphismFromObjectToExponentialWithGivenExponential</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromObjectToExponentialWithGivenExponential</code>( <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a, \mathrm{Exponential}(1,a))</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a, r)</span>.</p>
 
 <p>The argument is an object <span class="Math">a</span>, and an object <span class="Math">r = \mathrm{Exponential}(1,a)</span>. The output is the natural isomorphism <span class="Math">a \rightarrow \mathrm{Exponential}(1,a)</span>.</p>
 
@@ -809,7 +809,7 @@
 <h5>1.2-37 IsomorphismFromExponentialToObjectWithGivenExponential</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromExponentialToObjectWithGivenExponential</code>( <var class="Arg">a</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{Exponential}(1,a),a)</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(s,a)</span>.</p>
 
 <p>The argument is an object <span class="Math">a</span>, and an object <span class="Math">s = \mathrm{Exponential}(1,a)</span>. The output is the natural isomorphism <span class="Math">\mathrm{Exponential}(1,a) \rightarrow a</span>.</p>
 

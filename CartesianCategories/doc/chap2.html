@@ -503,7 +503,7 @@
 <h5>2.2-3 CoexponentialOnMorphismsWithGivenCoexponentials</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoexponentialOnMorphismsWithGivenCoexponentials</code>( <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Coexponential}(a,b'), \mathrm{Coexponential}(a',b) )</span></p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span></p>
 
 <p>The arguments are an object <span class="Math">s = \mathrm{Coexponential}(a,b')</span>, two morphisms <span class="Math">\alpha: a \rightarrow a', \beta: b \rightarrow b'</span>, and an object <span class="Math">r = \mathrm{Coexponential}(a',b)</span>. The output is the coexponential morphism <span class="Math">\mathrm{Coexponential}(\alpha,\beta): \mathrm{Coexponential}(a,b') \rightarrow \mathrm{Coexponential}(a',b)</span>.</p>
 
@@ -521,7 +521,7 @@
 <h5>2.2-5 CocartesianEvaluationMorphismWithGivenRange</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianEvaluationMorphismWithGivenRange</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, \mathrm{Coexponential}(a,b) \sqcup b )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, r )</span>.</p>
 
 <p>The arguments are two objects <span class="Math">a,b</span> and an object <span class="Math">r = \mathrm{Coexponential}(a,b) \sqcup b</span>. The output is the cocartesian evaluation morphism <span class="Math">\mathrm{cocaev}_{a,b}: a \rightarrow \mathrm{Coexponential}(a,b) \sqcup b</span>, i.e., the unit of the coexponential-coproduct adjunction.</p>
 
@@ -539,7 +539,7 @@
 <h5>2.2-7 CocartesianCoevaluationMorphismWithGivenSource</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianCoevaluationMorphismWithGivenSource</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Coexponential}(a \sqcup b, b), a )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, a )</span>.</p>
 
 <p>The arguments are two objects <span class="Math">a,b</span> and an object <span class="Math">s = \mathrm{Coexponential(a \sqcup b, b)}</span>. The output is the cocartesian coevaluation morphism <span class="Math">\mathrm{cocacoev}_{a,b}: \mathrm{Coexponential}(a \sqcup b, b) \rightarrow a</span>, i.e., the unit of the coexponential-coproduct adjunction.</p>
 
@@ -557,7 +557,7 @@
 <h5>2.2-9 CoproductToCoexponentialAdjunctionMapWithGivenCoexponential</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoproductToCoexponentialAdjunctionMapWithGivenCoexponential</code>( <var class="Arg">c</var>, <var class="Arg">b</var>, <var class="Arg">g</var>, <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Coexponential}(a,b), c )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( i, c )</span>.</p>
 
 <p>The arguments are two objects <span class="Math">c,b</span>, a morphism <span class="Math">g: a \rightarrow c \sqcup b</span> and an object <span class="Math">i = \mathrm{Coexponential(a,b)}</span>. The output is a morphism <span class="Math">f: \mathrm{Coexponential}(a,b) \rightarrow c</span> corresponding to <span class="Math">g</span> under the coexponential-coproduct adjunction.</p>
 
@@ -575,7 +575,7 @@
 <h5>2.2-11 CoexponentialToCoproductAdjunctionMapWithGivenCoproduct</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoexponentialToCoproductAdjunctionMapWithGivenCoproduct</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">f</var>, <var class="Arg">t</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a, c \sqcup b)</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, t )</span>.</p>
 
 <p>The arguments are two objects <span class="Math">a,b</span>, a morphism <span class="Math">f: \mathrm{Coexponential}(a,b) \rightarrow c</span> and an object <span class="Math">t = c \sqcup b</span>. The output is a morphism <span class="Math">g: a \rightarrow c \sqcup b</span> corresponding to <span class="Math">f</span> under the coexponential-coproduct adjunction.</p>
 
@@ -586,14 +586,14 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianPreCoComposeMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Coexponential}(a,c), \mathrm{Coexponential}(b,c) \sqcup \mathrm{Coexponential}(a,b) )</span>.</p>
 
-<p>The arguments are three objects <span class="Math">a,b,c</span>. The output is the precocomposition morphism <span class="Math">\mathrm{CocartesianPreCoComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{Coexponential}(a,c) \rightarrow \mathrm{Coexponential}(b,c) \sqcup \mathrm{Coexponential}(a,b)</span>.</p>
+<p>The arguments are three objects <span class="Math">a,b,c</span>. The output is the precocomposition morphism <span class="Math">\mathrm{CocartesianPreCoComposeMorphism}_{a,b,c}: \mathrm{Coexponential}(a,c) \rightarrow \mathrm{Coexponential}(b,c) \sqcup \mathrm{Coexponential}(a,b)</span>.</p>
 
 <p><a id="X8107634778D34794" name="X8107634778D34794"></a></p>
 
 <h5>2.2-13 CocartesianPreCoComposeMorphismWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianPreCoComposeMorphismWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Coexponential}(a,c), \mathrm{Coexponential}(b,c) \sqcup \mathrm{Coexponential}(a,b) )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = \mathrm{Coexponential}(a,c)</span>, three objects <span class="Math">a,b,c</span>, and an object <span class="Math">r = \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(b,c)</span>. The output is the precocomposition morphism <span class="Math">\mathrm{CocartesianPreCoComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{Coexponential}(a,c) \rightarrow \mathrm{Coexponential}(b,c) \sqcup \mathrm{Coexponential}(a,b)</span>.</p>
 
@@ -604,14 +604,14 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianPostCoComposeMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Coexponential}(a,c), \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(b,c) )</span>.</p>
 
-<p>The arguments are three objects <span class="Math">a,b,c</span>. The output is the postcocomposition morphism <span class="Math">\mathrm{CocartesianPostCoComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{Coexponential}(a,c) \rightarrow \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(b,c)</span>.</p>
+<p>The arguments are three objects <span class="Math">a,b,c</span>. The output is the postcocomposition morphism <span class="Math">\mathrm{CocartesianPostCoComposeMorphism}_{a,b,c}: \mathrm{Coexponential}(a,c) \rightarrow \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(b,c)</span>.</p>
 
 <p><a id="X82B515B07F69072C" name="X82B515B07F69072C"></a></p>
 
 <h5>2.2-15 CocartesianPostCoComposeMorphismWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianPostCoComposeMorphismWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Coexponential}(a,c), \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(b,c) )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = \mathrm{Coexponential}(a,c)</span>, three objects <span class="Math">a,b,c</span>, and an object <span class="Math">r = \mathrm{Coexponential}(b,c) \sqcup \mathrm{Coexponential}(a,b)</span>. The output is the postcocomposition morphism <span class="Math">\mathrm{CocartesianPostCoComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{Coexponential}(a,c) \rightarrow \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(b,c)</span>.</p>
 
@@ -638,7 +638,7 @@
 <h5>2.2-18 CocartesianDualOnMorphismsWithGivenCocartesianDuals</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianDualOnMorphismsWithGivenCocartesianDuals</code>( <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( b_{\vee}, a_{\vee} )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span>.</p>
 
 <p>The argument is an object <span class="Math">s = b_{\vee}</span>, a morphism <span class="Math">\alpha: a \rightarrow b</span>, and an object <span class="Math">r = a_{\vee}</span>. The output is the dual morphism <span class="Math">\alpha_{\vee}: b^{\vee} \rightarrow a^{\vee}</span>.</p>
 
@@ -656,7 +656,7 @@
 <h5>2.2-20 CocartesianEvaluationForCocartesianDualWithGivenCoproduct</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianEvaluationForCocartesianDualWithGivenCoproduct</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( 1, a_{\vee} \sqcup a )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = 1</span>, an object <span class="Math">a</span>, and an object <span class="Math">r = a_{\vee} \sqcup a</span>. The output is the cocartesian evaluation morphism <span class="Math">\mathrm{cocaev}_{a}: 1 \rightarrow a_{\vee} \sqcup a</span>.</p>
 
@@ -674,7 +674,7 @@
 <h5>2.2-22 MorphismFromCocartesianBidualWithGivenCocartesianBidual</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromCocartesianBidualWithGivenCocartesianBidual</code>( <var class="Arg">a</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}((a_{\vee})_{\vee}, a)</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(s, a)</span>.</p>
 
 <p>The arguments are an object <span class="Math">a</span>, and an object <span class="Math">s = (a_{\vee})_{\vee}</span>. The output is the morphism from the cobidual <span class="Math">(a_{\vee})_{\vee} \rightarrow a</span>.</p>
 
@@ -685,14 +685,14 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoexponentialCoproductCompatibilityMorphism</code>( <var class="Arg">list</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Coexponential}(a \sqcup a', b \sqcup b'), \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(a',b'))</span>.</p>
 
-<p>The argument is a list of four objects <span class="Math">[ a, a', b, b' ]</span>. The output is the natural morphism <span class="Math">\mathrm{CoexponentialCoproductCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}: \mathrm{Coexponential}(a \sqcup a', b \sqcup b') \rightarrow \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(a',b')</span>.</p>
+<p>The argument is a list of four objects <span class="Math">[ a, a', b, b' ]</span>. The output is the natural morphism <span class="Math">\mathrm{CoexponentialCoproductCompatibilityMorphism}_{a,a',b,b'}: \mathrm{Coexponential}(a \sqcup a', b \sqcup b') \rightarrow \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(a',b')</span>.</p>
 
 <p><a id="X7EABD2E17C2FEE30" name="X7EABD2E17C2FEE30"></a></p>
 
 <h5>2.2-24 CoexponentialCoproductCompatibilityMorphismWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoexponentialCoproductCompatibilityMorphismWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">list</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Coexponential}(a \sqcup a', b \sqcup b'), \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(a',b') )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span>.</p>
 
 <p>The arguments are a list of four objects <span class="Math">[ a, a', b, b' ]</span>, and two objects <span class="Math">s = \mathrm{Coexponential}(a \sqcup a', b \sqcup b')</span> and <span class="Math">r = \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(a',b')</span>. The output is the natural morphism <span class="Math">\mathrm{CoexponentialCoproductCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}: \mathrm{Coexponential}(a \sqcup a', b \sqcup b') \rightarrow \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(a',b')</span>.</p>
 
@@ -703,14 +703,14 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianDualityCoproductCompatibilityMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( (a \sqcup b)_{\vee}, a_{\vee} \sqcup b_{\vee} )</span>.</p>
 
-<p>The arguments are two objects <span class="Math">a,b</span>. The output is the natural morphism <span class="Math">\mathrm{CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects}: (a \sqcup b)_{\vee} \rightarrow a_{\vee} \sqcup b_{\vee}</span>.</p>
+<p>The arguments are two objects <span class="Math">a,b</span>. The output is the natural morphism <span class="Math">\mathrm{CocartesianDualityCoproductCompatibilityMorphism}: (a \sqcup b)_{\vee} \rightarrow a_{\vee} \sqcup b_{\vee}</span>.</p>
 
 <p><a id="X7BC3879A7E34C141" name="X7BC3879A7E34C141"></a></p>
 
 <h5>2.2-26 CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( (a \sqcup b)_{\vee}, a_{\vee} \sqcup b_{\vee} )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = (a \sqcup b)_{\vee}</span>, two objects <span class="Math">a,b</span>, and an object <span class="Math">r = a_{\vee} \sqcup b_{\vee}</span>. The output is the natural morphism <span class="Math">\mathrm{CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects}_{a,b}: (a \sqcup b)_{\vee} \rightarrow a_{\vee} \sqcup b_{\vee}</span>.</p>
 
@@ -721,14 +721,14 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromCoexponentialToCoproduct</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Coexponential}(a,b), b_{\vee} \sqcup a )</span>.</p>
 
-<p>The arguments are two objects <span class="Math">a,b</span>. The output is the natural morphism <span class="Math">\mathrm{MorphismFromCoexponentialToCoproductWithGivenObjects}_{a,b}: \mathrm{Coexponential}(a,b) \rightarrow b_{\vee} \sqcup a</span>.</p>
+<p>The arguments are two objects <span class="Math">a,b</span>. The output is the natural morphism <span class="Math">\mathrm{MorphismFromCoexponentialToCoproduct}_{a,b}: \mathrm{Coexponential}(a,b) \rightarrow b_{\vee} \sqcup a</span>.</p>
 
 <p><a id="X7EAA87FE865A70C4" name="X7EAA87FE865A70C4"></a></p>
 
 <h5>2.2-28 MorphismFromCoexponentialToCoproductWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromCoexponentialToCoproductWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Coexponential}(a,b), a \sqcup b_{\vee} )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = \mathrm{Coexponential}(a,b)</span>, two objects <span class="Math">a,b</span>, and an object <span class="Math">r = b_{\vee} \sqcup a</span>. The output is the natural morphism <span class="Math">\mathrm{MorphismFromCoexponentialToCoproductWithGivenObjects}_{a,b}: \mathrm{Coexponential}(a,b) \rightarrow a \sqcup b_{\vee}</span>.</p>
 
@@ -791,7 +791,7 @@
 <h5>2.2-35 IsomorphismFromObjectToCoexponentialWithGivenCoexponential</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromObjectToCoexponentialWithGivenCoexponential</code>( <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a, \mathrm{Coexponential}(a,1))</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a, r)</span>.</p>
 
 <p>The argument is an object <span class="Math">a</span>, and an object <span class="Math">r = \mathrm{Coexponential}(a,1)</span>. The output is the natural isomorphism <span class="Math">a \rightarrow \mathrm{Coexponential}(a,1)</span>.</p>
 
@@ -809,7 +809,7 @@
 <h5>2.2-37 IsomorphismFromCoexponentialToObjectWithGivenCoexponential</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromCoexponentialToObjectWithGivenCoexponential</code>( <var class="Arg">a</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{Coexponential}(a,1), a)</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(s, a)</span>.</p>
 
 <p>The argument is an object <span class="Math">a</span>, and an object <span class="Math">s = \mathrm{Coexponential}(a,1)</span>. The output is the natural isomorphism <span class="Math">\mathrm{Coexponential}(a,1) \rightarrow a</span>.</p>
 

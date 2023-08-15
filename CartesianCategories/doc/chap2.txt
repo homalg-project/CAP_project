@@ -316,8 +316,7 @@
   [1X2.2-3 CoexponentialOnMorphismsWithGivenCoexponentials[101X
   
   [33X[1;0Y[29X[2XCoexponentialOnMorphismsWithGivenCoexponentials[102X( [3Xs[103X, [3Xalpha[103X, [3Xbeta[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya    morphism   in   [23X\mathrm{Hom}(   \mathrm{Coexponential}(a,b'),
-            \mathrm{Coexponential}(a',b) )[123X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X[133X
   
   [33X[0;0YThe  arguments are an object [23Xs = \mathrm{Coexponential}(a,b')[123X, two morphisms
   [23X\alpha:  a  \rightarrow  a',  \beta:  b  \rightarrow  b'[123X,  and an object [23Xr =
@@ -338,8 +337,7 @@
   [1X2.2-5 CocartesianEvaluationMorphismWithGivenRange[101X
   
   [33X[1;0Y[29X[2XCocartesianEvaluationMorphismWithGivenRange[102X( [3Xa[103X, [3Xb[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya  morphism in [23X\mathrm{Hom}( a, \mathrm{Coexponential}(a,b) \sqcup
-            b )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, r )[123X.[133X
   
   [33X[0;0YThe    arguments    are    two    objects    [23Xa,b[123X   and   an   object   [23Xr   =
   \mathrm{Coexponential}(a,b)   \sqcup   b[123X.  The  output  is  the  cocartesian
@@ -361,8 +359,7 @@
   [1X2.2-7 CocartesianCoevaluationMorphismWithGivenSource[101X
   
   [33X[1;0Y[29X[2XCocartesianCoevaluationMorphismWithGivenSource[102X( [3Xa[103X, [3Xb[103X, [3Xs[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \mathrm{Coexponential}(a \sqcup b, b),
-            a )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, a )[123X.[133X
   
   [33X[0;0YThe  arguments are two objects [23Xa,b[123X and an object [23Xs = \mathrm{Coexponential(a
   \sqcup   b,  b)}[123X.  The  output  is  the  cocartesian  coevaluation  morphism
@@ -381,7 +378,7 @@
   [1X2.2-9 CoproductToCoexponentialAdjunctionMapWithGivenCoexponential[101X
   
   [33X[1;0Y[29X[2XCoproductToCoexponentialAdjunctionMapWithGivenCoexponential[102X( [3Xc[103X, [3Xb[103X, [3Xg[103X, [3Xi[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \mathrm{Coexponential}(a,b), c )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( i, c )[123X.[133X
   
   [33X[0;0YThe  arguments  are  two objects [23Xc,b[123X, a morphism [23Xg: a \rightarrow c \sqcup b[123X
   and  an  object [23Xi = \mathrm{Coexponential(a,b)}[123X. The output is a morphism [23Xf:
@@ -401,7 +398,7 @@
   [1X2.2-11 CoexponentialToCoproductAdjunctionMapWithGivenCoproduct[101X
   
   [33X[1;0Y[29X[2XCoexponentialToCoproductAdjunctionMapWithGivenCoproduct[102X( [3Xa[103X, [3Xb[103X, [3Xf[103X, [3Xt[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, c \sqcup b)[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, t )[123X.[133X
   
   [33X[0;0YThe arguments are two objects [23Xa,b[123X, a morphism [23Xf: \mathrm{Coexponential}(a,b)
   \rightarrow  c[123X  and  an object [23Xt = c \sqcup b[123X. The output is a morphism [23Xg: a
@@ -415,15 +412,14 @@
             \mathrm{Coexponential}(b,c) \sqcup \mathrm{Coexponential}(a,b) )[123X.[133X
   
   [33X[0;0YThe  arguments  are  three objects [23Xa,b,c[123X. The output is the precocomposition
-  morphism   [23X\mathrm{CocartesianPreCoComposeMorphismWithGivenObjects}_{a,b,c}:
+  morphism                   [23X\mathrm{CocartesianPreCoComposeMorphism}_{a,b,c}:
   \mathrm{Coexponential}(a,c)  \rightarrow  \mathrm{Coexponential}(b,c) \sqcup
   \mathrm{Coexponential}(a,b)[123X.[133X
   
   [1X2.2-13 CocartesianPreCoComposeMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XCocartesianPreCoComposeMorphismWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya    morphism    in   [23X\mathrm{Hom}(   \mathrm{Coexponential}(a,c),
-            \mathrm{Coexponential}(b,c) \sqcup \mathrm{Coexponential}(a,b) )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X.[133X
   
   [33X[0;0YThe  arguments  are an object [23Xs = \mathrm{Coexponential}(a,c)[123X, three objects
   [23Xa,b,c[123X,    and    an    object   [23Xr   =   \mathrm{Coexponential}(a,b)   \sqcup
@@ -439,15 +435,14 @@
             \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(b,c) )[123X.[133X
   
   [33X[0;0YThe  arguments  are three objects [23Xa,b,c[123X. The output is the postcocomposition
-  morphism  [23X\mathrm{CocartesianPostCoComposeMorphismWithGivenObjects}_{a,b,c}:
+  morphism                  [23X\mathrm{CocartesianPostCoComposeMorphism}_{a,b,c}:
   \mathrm{Coexponential}(a,c)  \rightarrow  \mathrm{Coexponential}(a,b) \sqcup
   \mathrm{Coexponential}(b,c)[123X.[133X
   
   [1X2.2-15 CocartesianPostCoComposeMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XCocartesianPostCoComposeMorphismWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya    morphism    in   [23X\mathrm{Hom}(   \mathrm{Coexponential}(a,c),
-            \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(b,c) )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X.[133X
   
   [33X[0;0YThe  arguments  are an object [23Xs = \mathrm{Coexponential}(a,c)[123X, three objects
   [23Xa,b,c[123X,    and    an    object   [23Xr   =   \mathrm{Coexponential}(b,c)   \sqcup
@@ -474,7 +469,7 @@
   [1X2.2-18 CocartesianDualOnMorphismsWithGivenCocartesianDuals[101X
   
   [33X[1;0Y[29X[2XCocartesianDualOnMorphismsWithGivenCocartesianDuals[102X( [3Xs[103X, [3Xalpha[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( b_{\vee}, a_{\vee} )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X.[133X
   
   [33X[0;0YThe  argument is an object [23Xs = b_{\vee}[123X, a morphism [23X\alpha: a \rightarrow b[123X,
   and  an  object [23Xr = a_{\vee}[123X. The output is the dual morphism [23X\alpha_{\vee}:
@@ -491,7 +486,7 @@
   [1X2.2-20 CocartesianEvaluationForCocartesianDualWithGivenCoproduct[101X
   
   [33X[1;0Y[29X[2XCocartesianEvaluationForCocartesianDualWithGivenCoproduct[102X( [3Xs[103X, [3Xa[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( 1, a_{\vee} \sqcup a )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X.[133X
   
   [33X[0;0YThe  arguments  are an object [23Xs = 1[123X, an object [23Xa[123X, and an object [23Xr = a_{\vee}
   \sqcup    a[123X.   The   output   is   the   cocartesian   evaluation   morphism
@@ -508,7 +503,7 @@
   [1X2.2-22 MorphismFromCocartesianBidualWithGivenCocartesianBidual[101X
   
   [33X[1;0Y[29X[2XMorphismFromCocartesianBidualWithGivenCocartesianBidual[102X( [3Xa[103X, [3Xs[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}((a_{\vee})_{\vee}, a)[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(s, a)[123X.[133X
   
   [33X[0;0YThe  arguments  are  an  object  [23Xa[123X, and an object [23Xs = (a_{\vee})_{\vee}[123X. The
   output is the morphism from the cobidual [23X(a_{\vee})_{\vee} \rightarrow a[123X.[133X
@@ -522,16 +517,14 @@
   
   [33X[0;0YThe  argument  is a list of four objects [23X[ a, a', b, b' ][123X. The output is the
   natural                                                             morphism
-  [23X\mathrm{CoexponentialCoproductCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}:
+  [23X\mathrm{CoexponentialCoproductCompatibilityMorphism}_{a,a',b,b'}:
   \mathrm{Coexponential}(a    \sqcup    a',    b    \sqcup   b')   \rightarrow
   \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(a',b')[123X.[133X
   
   [1X2.2-24 CoexponentialCoproductCompatibilityMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XCoexponentialCoproductCompatibilityMorphismWithGivenObjects[102X( [3Xs[103X, [3Xlist[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya  morphism in [23X\mathrm{Hom}( \mathrm{Coexponential}(a \sqcup a', b
-            \sqcup        b'),        \mathrm{Coexponential}(a,b)       \sqcup
-            \mathrm{Coexponential}(a',b') )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X.[133X
   
   [33X[0;0YThe arguments are a list of four objects [23X[ a, a', b, b' ][123X, and two objects [23Xs
   =   \mathrm{Coexponential}(a   \sqcup   a',   b   \sqcup   b')[123X   and   [23Xr   =
@@ -548,14 +541,13 @@
             b_{\vee} )[123X.[133X
   
   [33X[0;0YThe  arguments  are  two  objects  [23Xa,b[123X.  The  output is the natural morphism
-  [23X\mathrm{CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects}:
-  (a \sqcup b)_{\vee} \rightarrow a_{\vee} \sqcup b_{\vee}[123X.[133X
+  [23X\mathrm{CocartesianDualityCoproductCompatibilityMorphism}:     (a     \sqcup
+  b)_{\vee} \rightarrow a_{\vee} \sqcup b_{\vee}[123X.[133X
   
   [1X2.2-26 CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XCocartesianDualityCoproductCompatibilityMorphismWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3Xb[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya  morphism  in [23X\mathrm{Hom}( (a \sqcup b)_{\vee}, a_{\vee} \sqcup
-            b_{\vee} )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X.[133X
   
   [33X[0;0YThe arguments are an object [23Xs = (a \sqcup b)_{\vee}[123X, two objects [23Xa,b[123X, and an
   object  [23Xr  =  a_{\vee}  \sqcup  b_{\vee}[123X. The output is the natural morphism
@@ -569,14 +561,13 @@
             \sqcup a )[123X.[133X
   
   [33X[0;0YThe  arguments  are  two  objects  [23Xa,b[123X.  The  output is the natural morphism
-  [23X\mathrm{MorphismFromCoexponentialToCoproductWithGivenObjects}_{a,b}:
+  [23X\mathrm{MorphismFromCoexponentialToCoproduct}_{a,b}:
   \mathrm{Coexponential}(a,b) \rightarrow b_{\vee} \sqcup a[123X.[133X
   
   [1X2.2-28 MorphismFromCoexponentialToCoproductWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XMorphismFromCoexponentialToCoproductWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3Xb[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya  morphism in [23X\mathrm{Hom}( \mathrm{Coexponential}(a,b), a \sqcup
-            b_{\vee} )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X.[133X
   
   [33X[0;0YThe  arguments  are  an  object [23Xs = \mathrm{Coexponential}(a,b)[123X, two objects
   [23Xa,b[123X, and an object [23Xr = b_{\vee} \sqcup a[123X. The output is the natural morphism
@@ -640,7 +631,7 @@
   [1X2.2-35 IsomorphismFromObjectToCoexponentialWithGivenCoexponential[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromObjectToCoexponentialWithGivenCoexponential[102X( [3Xa[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, \mathrm{Coexponential}(a,1))[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, r)[123X.[133X
   
   [33X[0;0YThe  argument is an object [23Xa[123X, and an object [23Xr = \mathrm{Coexponential}(a,1)[123X.
   The     output     is     the     natural    isomorphism    [23Xa    \rightarrow
@@ -657,7 +648,7 @@
   [1X2.2-37 IsomorphismFromCoexponentialToObjectWithGivenCoexponential[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromCoexponentialToObjectWithGivenCoexponential[102X( [3Xa[103X, [3Xs[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\mathrm{Coexponential}(a,1), a)[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(s, a)[123X.[133X
   
   [33X[0;0YThe  argument is an object [23Xa[123X, and an object [23Xs = \mathrm{Coexponential}(a,1)[123X.
   The   output   is   the   natural   isomorphism  [23X\mathrm{Coexponential}(a,1)
