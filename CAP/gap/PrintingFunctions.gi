@@ -6,14 +6,22 @@
 InstallGlobalFunction( InfoStringOfInstalledOperationsOfCategory,
   
   function( category )
-    local MaximalPropertiesWithRegardToImplication, list_of_mathematical_properties, list_of_potential_algorithmic_properties,
-          list_of_algorithmic_properties, list_of_maximal_algorithmic_properties, property, result,
-          list_of_non_algorithmic_mathematical_properties, list_of_maximal_non_algorithmic_mathematical_properties;
+    local result, MaximalPropertiesWithRegardToImplication, list_of_mathematical_properties,
+          list_of_potential_algorithmic_properties, list_of_algorithmic_and_not_yet_algorithmic_properties,
+          list_of_algorithmic_properties, list_of_maximal_algorithmic_properties,
+          list_of_not_yet_algorithmic_properties, list_of_maximal_not_yet_algorithmic_properties,
+          property,
+          list_of_mathematical_properties_not_implied_by_algorithmic_or_not_yet_algorithmic_properties, list_of_maximal_mathematical_properties_not_implied_by_algorithmic_or_not_yet_algorithmic_properties;
     
     if not IsCapCategory( category ) then
         Error( "first argument must be a category" );
         return;
     fi;
+    
+    result := String( Length( ListPrimitivelyInstalledOperationsOfCategory( category ) ) );
+    result := Concatenation( result, " primitive operations were used to derive " );
+    result := Concatenation( result, String( Length( ListInstalledOperationsOfCategory( category ) ) ) );
+    result := Concatenation( result, " operations for this category" );
     
     MaximalPropertiesWithRegardToImplication := function ( list_of_properties )
         
@@ -23,44 +31,73 @@ InstallGlobalFunction( InfoStringOfInstalledOperationsOfCategory,
     
     list_of_mathematical_properties := ListKnownCategoricalProperties( category );
     
-    list_of_potential_algorithmic_properties := RecNames( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD );
+    list_of_potential_algorithmic_properties := SortedList( RecNames( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD ) );
     
-    list_of_algorithmic_properties := Filtered( list_of_mathematical_properties, p -> p in list_of_potential_algorithmic_properties and IsEmpty( CheckConstructivenessOfCategory( category, p ) ) );
+    list_of_algorithmic_and_not_yet_algorithmic_properties := Intersection( list_of_mathematical_properties, list_of_potential_algorithmic_properties );
+    
+    list_of_algorithmic_properties := Filtered( list_of_algorithmic_and_not_yet_algorithmic_properties, p -> IsEmpty( CheckConstructivenessOfCategory( category, p ) ) );
     
     list_of_maximal_algorithmic_properties := MaximalPropertiesWithRegardToImplication( list_of_algorithmic_properties );
     
     StableSortBy( list_of_maximal_algorithmic_properties, p -> Length( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.( p ) ) );
     
-    result := String( Length( ListPrimitivelyInstalledOperationsOfCategory( category ) ) );
-    result := Concatenation( result, " primitive operations were used to derive " );
-    result := Concatenation( result, String( Length( ListInstalledOperationsOfCategory( category ) ) ) );
-    result := Concatenation( result, " operations for this category" );
     if not IsEmpty( list_of_maximal_algorithmic_properties ) then
+        
         result := Concatenation( result, " which algorithmically" );
+        
         for property in list_of_maximal_algorithmic_properties do
+            
             result := Concatenation( result, "\n* " );
             result := Concatenation( result, property );
+            
         od;
     fi;
     
-    list_of_non_algorithmic_mathematical_properties := Difference( list_of_mathematical_properties, list_of_algorithmic_properties );
+    list_of_not_yet_algorithmic_properties := Difference( list_of_algorithmic_and_not_yet_algorithmic_properties, list_of_algorithmic_properties );
     
-    list_of_maximal_non_algorithmic_mathematical_properties := MaximalPropertiesWithRegardToImplication( list_of_non_algorithmic_mathematical_properties );
+    list_of_maximal_not_yet_algorithmic_properties := MaximalPropertiesWithRegardToImplication( list_of_not_yet_algorithmic_properties );
     
-    if not IsEmpty( list_of_maximal_non_algorithmic_mathematical_properties ) then
-        if not IsEmpty( list_of_maximal_algorithmic_properties ) then
-            result := Concatenation( result, "\nand furthermore" );
-        else
+    StableSortBy( list_of_maximal_not_yet_algorithmic_properties, p -> Length( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.( p ) ) );
+    
+    if not IsEmpty( list_of_maximal_not_yet_algorithmic_properties ) then
+        
+        if IsEmpty( list_of_maximal_algorithmic_properties ) then
             result := Concatenation( result, " which" );
+        else
+            result := Concatenation( result, "\nand" );
         fi;
-        result := Concatenation( result, " mathematically" );
-        for property in list_of_maximal_non_algorithmic_mathematical_properties do
+        
+        result := Concatenation( result, " not yet algorithmically" );
+        
+        for property in list_of_maximal_not_yet_algorithmic_properties do
             result := Concatenation( result, "\n* " );
             result := Concatenation( result, property );
-            if property in list_of_potential_algorithmic_properties then
-                result := Concatenation( result, " (but not yet algorithmically)" );
-            fi;
         od;
+        
+    fi;
+    
+    ## Finally, capture the remaining mathematical properties influencing the derivation mechanism:
+    list_of_mathematical_properties_not_implied_by_algorithmic_or_not_yet_algorithmic_properties :=
+      Difference( list_of_mathematical_properties,
+              Concatenation( List( list_of_algorithmic_and_not_yet_algorithmic_properties, p -> ListImpliedFilters( ValueGlobal( p ) ) ) ) );
+    
+    list_of_maximal_mathematical_properties_not_implied_by_algorithmic_or_not_yet_algorithmic_properties :=
+      MaximalPropertiesWithRegardToImplication( list_of_mathematical_properties_not_implied_by_algorithmic_or_not_yet_algorithmic_properties );
+    
+    if not IsEmpty( list_of_maximal_mathematical_properties_not_implied_by_algorithmic_or_not_yet_algorithmic_properties ) then
+        
+        if IsEmpty( list_of_maximal_algorithmic_properties ) and IsEmpty( list_of_maximal_not_yet_algorithmic_properties ) then
+            result := Concatenation( result, " which" );
+        else
+            result := Concatenation( result, "\nand furthermore" );
+        fi;
+        result := Concatenation( result, " mathematically" );
+        
+        for property in list_of_maximal_mathematical_properties_not_implied_by_algorithmic_or_not_yet_algorithmic_properties do
+            result := Concatenation( result, "\n* " );
+            result := Concatenation( result, property );
+        od;
+        
     fi;
     
     return result;
