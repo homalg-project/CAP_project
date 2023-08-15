@@ -705,7 +705,7 @@
 <h5>1.5-3 InternalHomOnMorphismsWithGivenInternalHoms</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalHomOnMorphismsWithGivenInternalHoms</code>( <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{Hom}}(a',b), \mathrm{\underline{Hom}}(a,b') )</span></p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span></p>
 
 <p>The arguments are an object <span class="Math">s = \mathrm{\underline{Hom}}(a',b)</span>, two morphisms <span class="Math">\alpha: a \rightarrow a', \beta: b \rightarrow b'</span>, and an object <span class="Math">r = \mathrm{\underline{Hom}}(a,b')</span>. The output is the internal hom morphism <span class="Math">\mathrm{\underline{Hom}}(\alpha,\beta): \mathrm{\underline{Hom}}(a',b) \rightarrow \mathrm{\underline{Hom}}(a,b')</span>.</p>
 
@@ -723,7 +723,7 @@
 <h5>1.5-5 EvaluationMorphismWithGivenSource</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EvaluationMorphismWithGivenSource</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b) \otimes a, b )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, b )</span>.</p>
 
 <p>The arguments are two objects <span class="Math">a,b</span> and an object <span class="Math">s = \mathrm{\underline{Hom}}(a,b) \otimes a</span>. The output is the evaluation morphism <span class="Math">\mathrm{ev}_{a,b}: \mathrm{\underline{Hom}}(a,b) \otimes a \rightarrow b</span>, i.e., the counit of the tensor hom adjunction.</p>
 
@@ -741,7 +741,7 @@
 <h5>1.5-7 CoevaluationMorphismWithGivenRange</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoevaluationMorphismWithGivenRange</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, \mathrm{\underline{Hom}}(b, a \otimes b) )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, r )</span>.</p>
 
 <p>The arguments are two objects <span class="Math">a,b</span> and an object <span class="Math">r = \mathrm{\underline{Hom}}(b, a \otimes b)</span>. The output is the coevaluation morphism <span class="Math">\mathrm{coev}_{a,b}: a \rightarrow \mathrm{\underline{Hom}}(b, a \otimes b)</span>, i.e., the unit of the tensor hom adjunction.</p>
 
@@ -759,7 +759,7 @@
 <h5>1.5-9 TensorProductToInternalHomAdjunctionMapWithGivenInternalHom</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductToInternalHomAdjunctionMapWithGivenInternalHom</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">f</var>, <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, \mathrm{\underline{Hom}}(b,c) )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, i )</span>.</p>
 
 <p>The arguments are two objects <span class="Math">a,b</span>, a morphism <span class="Math">f: a \otimes b \rightarrow c</span> and an object <span class="Math">i = \mathrm{\underline{Hom}}(b,c)</span>. The output is a morphism <span class="Math">g: a \rightarrow \mathrm{\underline{Hom}}(b,c)</span> corresponding to <span class="Math">f</span> under the tensor hom adjunction.</p>
 
@@ -777,7 +777,7 @@
 <h5>1.5-11 InternalHomToTensorProductAdjunctionMapWithGivenTensorProduct</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalHomToTensorProductAdjunctionMapWithGivenTensorProduct</code>( <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">g</var>, <var class="Arg">t</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a \otimes b, c)</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(t, c)</span>.</p>
 
 <p>The arguments are two objects <span class="Math">b,c</span>, a morphism <span class="Math">g: a \rightarrow \mathrm{\underline{Hom}}(b,c)</span> and an object <span class="Math">t = a \otimes b</span>. The output is a morphism <span class="Math">f: a \otimes b \rightarrow c</span> corresponding to <span class="Math">g</span> under the tensor hom adjunction.</p>
 
@@ -788,14 +788,14 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MonoidalPreComposeMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b) \otimes \mathrm{\underline{Hom}}(b,c), \mathrm{\underline{Hom}}(a,c) )</span>.</p>
 
-<p>The arguments are three objects <span class="Math">a,b,c</span>. The output is the precomposition morphism <span class="Math">\mathrm{MonoidalPreComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{\underline{Hom}}(a,b) \otimes \mathrm{\underline{Hom}}(b,c) \rightarrow \mathrm{\underline{Hom}}(a,c)</span>.</p>
+<p>The arguments are three objects <span class="Math">a,b,c</span>. The output is the precomposition morphism <span class="Math">\mathrm{MonoidalPreComposeMorphism}_{a,b,c}: \mathrm{\underline{Hom}}(a,b) \otimes \mathrm{\underline{Hom}}(b,c) \rightarrow \mathrm{\underline{Hom}}(a,c)</span>.</p>
 
 <p><a id="X7FE4A52284060F20" name="X7FE4A52284060F20"></a></p>
 
 <h5>1.5-13 MonoidalPreComposeMorphismWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MonoidalPreComposeMorphismWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b) \otimes \mathrm{\underline{Hom}}(b,c), \mathrm{\underline{Hom}}(a,c) )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = \mathrm{\underline{Hom}}(a,b) \otimes \mathrm{\underline{Hom}}(b,c)</span>, three objects <span class="Math">a,b,c</span>, and an object <span class="Math">r = \mathrm{\underline{Hom}}(a,c)</span>. The output is the precomposition morphism <span class="Math">\mathrm{MonoidalPreComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{\underline{Hom}}(a,b) \otimes \mathrm{\underline{Hom}}(b,c) \rightarrow \mathrm{\underline{Hom}}(a,c)</span>.</p>
 
@@ -806,14 +806,14 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MonoidalPostComposeMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{Hom}}(b,c) \otimes \mathrm{\underline{Hom}}(a,b), \mathrm{\underline{Hom}}(a,c) )</span>.</p>
 
-<p>The arguments are three objects <span class="Math">a,b,c</span>. The output is the postcomposition morphism <span class="Math">\mathrm{MonoidalPostComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{\underline{Hom}}(b,c) \otimes \mathrm{\underline{Hom}}(a,b) \rightarrow \mathrm{\underline{Hom}}(a,c)</span>.</p>
+<p>The arguments are three objects <span class="Math">a,b,c</span>. The output is the postcomposition morphism <span class="Math">\mathrm{MonoidalPostComposeMorphism}_{a,b,c}: \mathrm{\underline{Hom}}(b,c) \otimes \mathrm{\underline{Hom}}(a,b) \rightarrow \mathrm{\underline{Hom}}(a,c)</span>.</p>
 
 <p><a id="X7E6933B8816EE4E3" name="X7E6933B8816EE4E3"></a></p>
 
 <h5>1.5-15 MonoidalPostComposeMorphismWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MonoidalPostComposeMorphismWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{Hom}}(b,c) \otimes \mathrm{\underline{Hom}}(a,b), \mathrm{\underline{Hom}}(a,c) )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = \mathrm{\underline{Hom}}(b,c) \otimes \mathrm{\underline{Hom}}(a,b)</span>, three objects <span class="Math">a,b,c</span>, and an object <span class="Math">r = \mathrm{\underline{Hom}}(a,c)</span>. The output is the postcomposition morphism <span class="Math">\mathrm{MonoidalPostComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{\underline{Hom}}(b,c) \otimes \mathrm{\underline{Hom}}(a,b) \rightarrow \mathrm{\underline{Hom}}(a,c)</span>.</p>
 
@@ -840,7 +840,7 @@
 <h5>1.5-18 DualOnMorphismsWithGivenDuals</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DualOnMorphismsWithGivenDuals</code>( <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( b^{\vee}, a^{\vee} )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span>.</p>
 
 <p>The argument is an object <span class="Math">s = b^{\vee}</span>, a morphism <span class="Math">\alpha: a \rightarrow b</span>, and an object <span class="Math">r = a^{\vee}</span>. The output is the dual morphism <span class="Math">\alpha^{\vee}: b^{\vee} \rightarrow a^{\vee}</span>.</p>
 
@@ -858,7 +858,7 @@
 <h5>1.5-20 EvaluationForDualWithGivenTensorProduct</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EvaluationForDualWithGivenTensorProduct</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a^{\vee} \otimes a, 1 )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = a^{\vee} \otimes a</span>, an object <span class="Math">a</span>, and an object <span class="Math">r = 1</span>. The output is the evaluation morphism <span class="Math">\mathrm{ev}_{a}: a^{\vee} \otimes a \rightarrow 1</span>.</p>
 
@@ -876,7 +876,7 @@
 <h5>1.5-22 MorphismToBidualWithGivenBidual</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismToBidualWithGivenBidual</code>( <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a, (a^{\vee})^{\vee})</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a, r)</span>.</p>
 
 <p>The arguments are an object <span class="Math">a</span>, and an object <span class="Math">r = (a^{\vee})^{\vee}</span>. The output is the morphism to the bidual <span class="Math">a \rightarrow (a^{\vee})^{\vee}</span>.</p>
 
@@ -887,14 +887,14 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductInternalHomCompatibilityMorphism</code>( <var class="Arg">list</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'), \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b'))</span>.</p>
 
-<p>The argument is a list of four objects <span class="Math">[ a, a', b, b' ]</span>. The output is the natural morphism <span class="Math">\mathrm{TensorProductInternalHomCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}: \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b') \rightarrow \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b')</span>.</p>
+<p>The argument is a list of four objects <span class="Math">[ a, a', b, b' ]</span>. The output is the natural morphism <span class="Math">\mathrm{TensorProductInternalHomCompatibilityMorphism}_{a,a',b,b'}: \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b') \rightarrow \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b')</span>.</p>
 
 <p><a id="X7B0194A07AB73486" name="X7B0194A07AB73486"></a></p>
 
 <h5>1.5-24 TensorProductInternalHomCompatibilityMorphismWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductInternalHomCompatibilityMorphismWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">list</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'), \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b'))</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span>.</p>
 
 <p>The arguments are a list of four objects <span class="Math">[ a, a', b, b' ]</span>, and two objects <span class="Math">s = \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b')</span> and <span class="Math">r = \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b')</span>. The output is the natural morphism <span class="Math">\mathrm{TensorProductInternalHomCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}: \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b') \rightarrow \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b')</span>.</p>
 
@@ -905,14 +905,14 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductDualityCompatibilityMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a^{\vee} \otimes b^{\vee}, (a \otimes b)^{\vee} )</span>.</p>
 
-<p>The arguments are two objects <span class="Math">a,b</span>. The output is the natural morphism <span class="Math">\mathrm{TensorProductDualityCompatibilityMorphismWithGivenObjects}: a^{\vee} \otimes b^{\vee} \rightarrow (a \otimes b)^{\vee}</span>.</p>
+<p>The arguments are two objects <span class="Math">a,b</span>. The output is the natural morphism <span class="Math">\mathrm{TensorProductDualityCompatibilityMorphism}: a^{\vee} \otimes b^{\vee} \rightarrow (a \otimes b)^{\vee}</span>.</p>
 
 <p><a id="X794ED97782B8DF76" name="X794ED97782B8DF76"></a></p>
 
 <h5>1.5-26 TensorProductDualityCompatibilityMorphismWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductDualityCompatibilityMorphismWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a^{\vee} \otimes b^{\vee}, (a \otimes b)^{\vee} )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = a^{\vee} \otimes b^{\vee}</span>, two objects <span class="Math">a,b</span>, and an object <span class="Math">r = (a \otimes b)^{\vee}</span>. The output is the natural morphism <span class="Math">\mathrm{TensorProductDualityCompatibilityMorphismWithGivenObjects}_{a,b}: a^{\vee} \otimes b^{\vee} \rightarrow (a \otimes b)^{\vee}</span>.</p>
 
@@ -923,14 +923,14 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromTensorProductToInternalHom</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a^{\vee} \otimes b, \mathrm{\underline{Hom}}(a,b) )</span>.</p>
 
-<p>The arguments are two objects <span class="Math">a,b</span>. The output is the natural morphism <span class="Math">\mathrm{MorphismFromTensorProductToInternalHomWithGivenObjects}_{a,b}: a^{\vee} \otimes b \rightarrow \mathrm{\underline{Hom}}(a,b)</span>.</p>
+<p>The arguments are two objects <span class="Math">a,b</span>. The output is the natural morphism <span class="Math">\mathrm{MorphismFromTensorProductToInternalHom}_{a,b}: a^{\vee} \otimes b \rightarrow \mathrm{\underline{Hom}}(a,b)</span>.</p>
 
 <p><a id="X8473D28B7F3A5E20" name="X8473D28B7F3A5E20"></a></p>
 
 <h5>1.5-28 MorphismFromTensorProductToInternalHomWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromTensorProductToInternalHomWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a^{\vee} \otimes b, \mathrm{\underline{Hom}}(a,b) )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = a^{\vee} \otimes b</span>, two objects <span class="Math">a,b</span>, and an object <span class="Math">r = \mathrm{\underline{Hom}}(a,b)</span>. The output is the natural morphism <span class="Math">\mathrm{MorphismFromTensorProductToInternalHomWithGivenObjects}_{a,b}: a^{\vee} \otimes b \rightarrow \mathrm{\underline{Hom}}(a,b)</span>.</p>
 
@@ -993,7 +993,7 @@
 <h5>1.5-35 IsomorphismFromObjectToInternalHomWithGivenInternalHom</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromObjectToInternalHomWithGivenInternalHom</code>( <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a, \mathrm{\underline{Hom}}(1,a))</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a, r)</span>.</p>
 
 <p>The argument is an object <span class="Math">a</span>, and an object <span class="Math">r = \mathrm{\underline{Hom}}(1,a)</span>. The output is the natural isomorphism <span class="Math">a \rightarrow \mathrm{\underline{Hom}}(1,a)</span>.</p>
 
@@ -1011,7 +1011,7 @@
 <h5>1.5-37 IsomorphismFromInternalHomToObjectWithGivenInternalHom</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromInternalHomToObjectWithGivenInternalHom</code>( <var class="Arg">a</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{\underline{Hom}}(1,a),a)</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(s,a)</span>.</p>
 
 <p>The argument is an object <span class="Math">a</span>, and an object <span class="Math">s = \mathrm{\underline{Hom}}(1,a)</span>. The output is the natural isomorphism <span class="Math">\mathrm{\underline{Hom}}(1,a) \rightarrow a</span>.</p>
 
@@ -1048,7 +1048,7 @@
 <h5>1.6-3 InternalCoHomOnMorphismsWithGivenInternalCoHoms</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalCoHomOnMorphismsWithGivenInternalCoHoms</code>( <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{coHom}}(a,b'), \mathrm{\underline{coHom}}(a',b) )</span></p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span></p>
 
 <p>The arguments are an object <span class="Math">s = \mathrm{\underline{coHom}}(a,b')</span>, two morphisms <span class="Math">\alpha: a \rightarrow a', \beta: b \rightarrow b'</span>, and an object <span class="Math">r = \mathrm{\underline{coHom}}(a',b)</span>. The output is the internal cohom morphism <span class="Math">\mathrm{\underline{coHom}}(\alpha,\beta): \mathrm{\underline{coHom}}(a,b') \rightarrow \mathrm{\underline{coHom}}(a',b)</span>.</p>
 
@@ -1066,7 +1066,7 @@
 <h5>1.6-5 CoclosedEvaluationMorphismWithGivenRange</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoclosedEvaluationMorphismWithGivenRange</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, \mathrm{\underline{coHom}}(a,b) \otimes b )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, r )</span>.</p>
 
 <p>The arguments are two objects <span class="Math">a,b</span> and an object <span class="Math">r = \mathrm{\underline{coHom}}(a,b) \otimes b</span>. The output is the coclosed evaluation morphism <span class="Math">\mathrm{coclev}_{a,b}: a \rightarrow \mathrm{\underline{coHom}}(a,b) \otimes b</span>, i.e., the unit of the cohom tensor adjunction.</p>
 
@@ -1084,7 +1084,7 @@
 <h5>1.6-7 CoclosedCoevaluationMorphismWithGivenSource</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoclosedCoevaluationMorphismWithGivenSource</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{coHom}}(a \otimes b, b), a )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, a )</span>.</p>
 
 <p>The arguments are two objects <span class="Math">a,b</span> and an object <span class="Math">s = \mathrm{\underline{coHom}(a \otimes b, b)}</span>. The output is the coclosed coevaluation morphism <span class="Math">\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}}(a \otimes b, b) \rightarrow a</span>, i.e., the unit of the cohom tensor adjunction.</p>
 
@@ -1102,7 +1102,7 @@
 <h5>1.6-9 TensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom</code>( <var class="Arg">c</var>, <var class="Arg">b</var>, <var class="Arg">g</var>, <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{coHom}}(a,b), c )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( i, c )</span>.</p>
 
 <p>The arguments are two objects <span class="Math">c,b</span>, a morphism <span class="Math">g: a \rightarrow c \otimes b</span> and an object <span class="Math">i = \mathrm{\underline{coHom}(a,b)}</span>. The output is a morphism <span class="Math">f: \mathrm{\underline{coHom}}(a,b) \rightarrow c</span> corresponding to <span class="Math">g</span> under the cohom tensor adjunction.</p>
 
@@ -1120,7 +1120,7 @@
 <h5>1.6-11 InternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">f</var>, <var class="Arg">t</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a, c \otimes b)</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, t )</span>.</p>
 
 <p>The arguments are two objects <span class="Math">a,b</span>, a morphism <span class="Math">f: \mathrm{\underline{coHom}}(a,b) \rightarrow c</span> and an object <span class="Math">t = c \otimes b</span>. The output is a morphism <span class="Math">g: a \rightarrow c \otimes b</span> corresponding to <span class="Math">f</span> under the cohom tensor adjunction.</p>
 
@@ -1131,14 +1131,14 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MonoidalPreCoComposeMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{coHom}}(a,c), \mathrm{\underline{coHom}}(b,c) \otimes \mathrm{\underline{coHom}}(a,b) )</span>.</p>
 
-<p>The arguments are three objects <span class="Math">a,b,c</span>. The output is the precocomposition morphism <span class="Math">\mathrm{MonoidalPreCoComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{\underline{coHom}}(a,c) \rightarrow \mathrm{\underline{coHom}}(b,c) \otimes \mathrm{\underline{coHom}}(a,b)</span>.</p>
+<p>The arguments are three objects <span class="Math">a,b,c</span>. The output is the precocomposition morphism <span class="Math">\mathrm{MonoidalPreCoComposeMorphism}_{a,b,c}: \mathrm{\underline{coHom}}(a,c) \rightarrow \mathrm{\underline{coHom}}(b,c) \otimes \mathrm{\underline{coHom}}(a,b)</span>.</p>
 
 <p><a id="X82A183B0807A0A01" name="X82A183B0807A0A01"></a></p>
 
 <h5>1.6-13 MonoidalPreCoComposeMorphismWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MonoidalPreCoComposeMorphismWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{coHom}}(a,c), \mathrm{\underline{coHom}}(b,c) \otimes \mathrm{\underline{coHom}}(a,b) )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = \mathrm{\underline{coHom}}(a,c)</span>, three objects <span class="Math">a,b,c</span>, and an object <span class="Math">r = \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(b,c)</span>. The output is the precocomposition morphism <span class="Math">\mathrm{MonoidalPreCoComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{\underline{coHom}}(a,c) \rightarrow \mathrm{\underline{coHom}}(b,c) \otimes \mathrm{\underline{coHom}}(a,b)</span>.</p>
 
@@ -1149,14 +1149,14 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MonoidalPostCoComposeMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{coHom}}(a,c), \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(b,c) )</span>.</p>
 
-<p>The arguments are three objects <span class="Math">a,b,c</span>. The output is the postcocomposition morphism <span class="Math">\mathrm{MonoidalPostCoComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{\underline{coHom}}(a,c) \rightarrow \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(b,c)</span>.</p>
+<p>The arguments are three objects <span class="Math">a,b,c</span>. The output is the postcocomposition morphism <span class="Math">\mathrm{MonoidalPostCoComposeMorphism}_{a,b,c}: \mathrm{\underline{coHom}}(a,c) \rightarrow \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(b,c)</span>.</p>
 
 <p><a id="X805DF38880B1E9E0" name="X805DF38880B1E9E0"></a></p>
 
 <h5>1.6-15 MonoidalPostCoComposeMorphismWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MonoidalPostCoComposeMorphismWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{coHom}}(a,c), \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(b,c) )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = \mathrm{\underline{coHom}}(a,c)</span>, three objects <span class="Math">a,b,c</span>, and an object <span class="Math">r = \mathrm{\underline{coHom}}(b,c) \otimes \mathrm{\underline{coHom}}(a,b)</span>. The output is the postcocomposition morphism <span class="Math">\mathrm{MonoidalPostCoComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{\underline{coHom}}(a,c) \rightarrow \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(b,c)</span>.</p>
 
@@ -1183,7 +1183,7 @@
 <h5>1.6-18 CoDualOnMorphismsWithGivenCoDuals</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoDualOnMorphismsWithGivenCoDuals</code>( <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( b_{\vee}, a_{\vee} )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span>.</p>
 
 <p>The argument is an object <span class="Math">s = b_{\vee}</span>, a morphism <span class="Math">\alpha: a \rightarrow b</span>, and an object <span class="Math">r = a_{\vee}</span>. The output is the dual morphism <span class="Math">\alpha_{\vee}: b^{\vee} \rightarrow a^{\vee}</span>.</p>
 
@@ -1201,7 +1201,7 @@
 <h5>1.6-20 CoclosedEvaluationForCoDualWithGivenTensorProduct</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoclosedEvaluationForCoDualWithGivenTensorProduct</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( 1, a_{\vee} \otimes a )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = 1</span>, an object <span class="Math">a</span>, and an object <span class="Math">r = a_{\vee} \otimes a</span>. The output is the coclosed evaluation morphism <span class="Math">\mathrm{coclev}_{a}: 1 \rightarrow a_{\vee} \otimes a</span>.</p>
 
@@ -1219,7 +1219,7 @@
 <h5>1.6-22 MorphismFromCoBidualWithGivenCoBidual</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromCoBidualWithGivenCoBidual</code>( <var class="Arg">a</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}((a_{\vee})_{\vee}, a)</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(s, a)</span>.</p>
 
 <p>The arguments are an object <span class="Math">a</span>, and an object <span class="Math">s = (a_{\vee})_{\vee}</span>. The output is the morphism from the cobidual <span class="Math">(a_{\vee})_{\vee} \rightarrow a</span>.</p>
 
@@ -1230,14 +1230,14 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalCoHomTensorProductCompatibilityMorphism</code>( <var class="Arg">list</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{coHom}}(a \otimes a', b \otimes b'), \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(a',b'))</span>.</p>
 
-<p>The argument is a list of four objects <span class="Math">[ a, a', b, b' ]</span>. The output is the natural morphism <span class="Math">\mathrm{InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}: \mathrm{\underline{coHom}}(a \otimes a', b \otimes b') \rightarrow \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(a',b')</span>.</p>
+<p>The argument is a list of four objects <span class="Math">[ a, a', b, b' ]</span>. The output is the natural morphism <span class="Math">\mathrm{InternalCoHomTensorProductCompatibilityMorphism}_{a,a',b,b'}: \mathrm{\underline{coHom}}(a \otimes a', b \otimes b') \rightarrow \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(a',b')</span>.</p>
 
 <p><a id="X81E9DC8D7FCD361F" name="X81E9DC8D7FCD361F"></a></p>
 
 <h5>1.6-24 InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">list</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{coHom}}(a \otimes a', b \otimes b'), \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(a',b') )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span>.</p>
 
 <p>The arguments are a list of four objects <span class="Math">[ a, a', b, b' ]</span>, and two objects <span class="Math">s = \mathrm{\underline{coHom}}(a \otimes a', b \otimes b')</span> and <span class="Math">r = \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(a',b')</span>. The output is the natural morphism <span class="Math">\mathrm{InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}: \mathrm{\underline{coHom}}(a \otimes a', b \otimes b') \rightarrow \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(a',b')</span>.</p>
 
@@ -1248,14 +1248,14 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoDualityTensorProductCompatibilityMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( (a \otimes b)_{\vee}, a_{\vee} \otimes b_{\vee} )</span>.</p>
 
-<p>The arguments are two objects <span class="Math">a,b</span>. The output is the natural morphism <span class="Math">\mathrm{CoDualityTensorProductCompatibilityMorphismWithGivenObjects}: (a \otimes b)_{\vee} \rightarrow a_{\vee} \otimes b_{\vee}</span>.</p>
+<p>The arguments are two objects <span class="Math">a,b</span>. The output is the natural morphism <span class="Math">\mathrm{CoDualityTensorProductCompatibilityMorphism}: (a \otimes b)_{\vee} \rightarrow a_{\vee} \otimes b_{\vee}</span>.</p>
 
 <p><a id="X82119ED686D3874C" name="X82119ED686D3874C"></a></p>
 
 <h5>1.6-26 CoDualityTensorProductCompatibilityMorphismWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoDualityTensorProductCompatibilityMorphismWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( (a \otimes b)_{\vee}, a_{\vee} \otimes b_{\vee} )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = (a \otimes b)_{\vee}</span>, two objects <span class="Math">a,b</span>, and an object <span class="Math">r = a_{\vee} \otimes b_{\vee}</span>. The output is the natural morphism <span class="Math">\mathrm{CoDualityTensorProductCompatibilityMorphismWithGivenObjects}_{a,b}: (a \otimes b)_{\vee} \rightarrow a_{\vee} \otimes b_{\vee}</span>.</p>
 
@@ -1266,14 +1266,14 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromInternalCoHomToTensorProduct</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{coHom}}(a,b), b_{\vee} \otimes a )</span>.</p>
 
-<p>The arguments are two objects <span class="Math">a,b</span>. The output is the natural morphism <span class="Math">\mathrm{MorphismFromInternalCoHomToTensorProductWithGivenObjects}_{a,b}: \mathrm{\underline{coHom}}(a,b) \rightarrow b_{\vee} \otimes a</span>.</p>
+<p>The arguments are two objects <span class="Math">a,b</span>. The output is the natural morphism <span class="Math">\mathrm{MorphismFromInternalCoHomToTensorProduct}_{a,b}: \mathrm{\underline{coHom}}(a,b) \rightarrow b_{\vee} \otimes a</span>.</p>
 
 <p><a id="X7B60FB927C37E125" name="X7B60FB927C37E125"></a></p>
 
 <h5>1.6-28 MorphismFromInternalCoHomToTensorProductWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromInternalCoHomToTensorProductWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{coHom}}(a,b), a \otimes b_{\vee} )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = \mathrm{\underline{coHom}}(a,b)</span>, two objects <span class="Math">a,b</span>, and an object <span class="Math">r = b_{\vee} \otimes a</span>. The output is the natural morphism <span class="Math">\mathrm{MorphismFromInternalCoHomToTensorProductWithGivenObjects}_{a,b}: \mathrm{\underline{coHom}}(a,b) \rightarrow a \otimes b_{\vee}</span>.</p>
 
@@ -1336,7 +1336,7 @@
 <h5>1.6-35 IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom</code>( <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a, \mathrm{\underline{coHom}}(a,1))</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a, r)</span>.</p>
 
 <p>The argument is an object <span class="Math">a</span>, and an object <span class="Math">r = \mathrm{\underline{coHom}}(a,1)</span>. The output is the natural isomorphism <span class="Math">a \rightarrow \mathrm{\underline{coHom}}(a,1)</span>.</p>
 
@@ -1354,7 +1354,7 @@
 <h5>1.6-37 IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom</code>( <var class="Arg">a</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{\underline{coHom}}(a,1), a)</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(s, a)</span>.</p>
 
 <p>The argument is an object <span class="Math">a</span>, and an object <span class="Math">s = \mathrm{\underline{coHom}}(a,1)</span>. The output is the natural isomorphism <span class="Math">\mathrm{\underline{coHom}}(a,1) \rightarrow a</span>.</p>
 
