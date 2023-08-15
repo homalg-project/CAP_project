@@ -1,5 +1,5 @@
 name: CartesianCategories
-version: "2023.08-10"
+version: "2023.08-11"
 license: "GPL-2.0-or-later"
 date: 2023-08-15
 description: |
@@ -25,7 +25,7 @@ GAP: ">= 4.12.1"
 
 needed-pkgs:
     - name: "CAP"
-      version: ">= 2023.02-09"
+      version: ">= 2023.08-08"
       url: "https://homalg-project.github.io/pkg/CAP"
 
 suggested-pkgs:
@@ -39,11 +39,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/CartesianCategories/Pa
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/CartesianCategories-2023.08-10/CartesianCategories-2023.08-10.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/CartesianCategories-2023.08-11/CartesianCategories-2023.08-11.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/CartesianCategories-2023.08-10/CartesianCategories-2023.08-10.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/CartesianCategories-2023.08-11/CartesianCategories-2023.08-11.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/CartesianCategories-2023.08-10/CartesianCategories-2023.08-10-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/CartesianCategories-2023.08-11/CartesianCategories-2023.08-11-manual.pdf
 
 abstract: |
 
@@ -56,7 +56,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BZK15</span>]   <b class='BibAuthor'>Barakat, M., Zickgraf, F. and Kuhmichel, T.</b>,
      <i class='BibTitle'>CartesianCategories, Cartesian and cocartesian categories and various subdoctrines,
-             Version 2023.08-10</i>
+             Version 2023.08-11</i>
      (<span class='BibYear'>8-15</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/CartesianCategories">https://homalg-project.github.io/pkg/CartesianCategories</a></span>.
@@ -64,11 +64,11 @@ citeas: |
     
 
 bibtex: |
-    @misc{ CartesianCategories2023.08-10,
+    @misc{ CartesianCategories2023.08-11,
       author =           {Barakat, M. and Zickgraf, F. and Kuhmichel, T.},
       title =            {{CartesianCategories},   Cartesian   and   cocartesian
                           categories   and   various   subdoctrines,   {V}ersion
-                          2023.08-10},
+                          2023.08-11},
       month =            {3-},
       year =             {8-15},
       note =             {GAP package},

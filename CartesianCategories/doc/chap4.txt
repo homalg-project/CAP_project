@@ -19,8 +19,9 @@
     [4X[28XA CAP category with name InitialCategory( ):[128X[104X
     [4X[28X[128X[104X
     [4X[28X5 primitive operations were used to derive 13 operations for this category \[128X[104X
-    [4X[28Xwhich mathematically[128X[104X
-    [4X[28X* IsEquippedWithHomomorphismStructure (but not yet algorithmically)[128X[104X
+    [4X[28Xwhich not yet algorithmically[128X[104X
+    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28Xand furthermore mathematically[128X[104X
     [4X[28X* IsInitialCategory[128X[104X
     [4X[25Xgap>[125X [27XOI := Opposite( I );[127X[104X
     [4X[28XOpposite( InitialCategory( ) )[128X[104X
@@ -30,8 +31,9 @@
     [4X[28XA CAP category with name Opposite( InitialCategory( ) ):[128X[104X
     [4X[28X[128X[104X
     [4X[28X17 primitive operations were used to derive 17 operations for this category \[128X[104X
-    [4X[28Xwhich mathematically[128X[104X
-    [4X[28X* IsEquippedWithHomomorphismStructure (but not yet algorithmically)[128X[104X
+    [4X[28Xwhich not yet algorithmically[128X[104X
+    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28Xand furthermore mathematically[128X[104X
     [4X[28X* IsInitialCategory[128X[104X
   [4X[32X[104X
   
