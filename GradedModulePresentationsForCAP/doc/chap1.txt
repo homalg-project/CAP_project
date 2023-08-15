@@ -220,8 +220,8 @@
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsMonoidalCategory[128X[104X
     [4X[28X* IsAbelianCategoryWithEnoughProjectives[128X[104X
-    [4X[28Xand furthermore mathematically[128X[104X
-    [4X[28X* IsSymmetricClosedMonoidalCategory (but not yet algorithmically)[128X[104X
+    [4X[28Xand not yet algorithmically[128X[104X
+    [4X[28X* IsSymmetricClosedMonoidalCategory[128X[104X
     [4X[25Xgap>[125X [27X#ListPrimitivelyInstalledOperationsOfCategory( Sgrmod );[127X[104X
     [4X[25Xgap>[125X [27XM := GradedFreeLeftPresentation( 2, S, [ 1, 1 ] );[127X[104X
     [4X[28X<An object in The category of graded left f.p. modules over Q[x,y][128X[104X
