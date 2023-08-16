@@ -288,7 +288,7 @@ InstallMethod( CategoryConstructor,
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
         
         # check if filters and return_type are known
-        unknown_filters := Filtered( info.filter_list, filter -> not filter in [ "category", "object", "morphism", "integer", "element_of_commutative_ring_of_linear_structure", "nonneg_integer_or_infinity", "list_of_objects", "list_of_morphisms", "pair_of_morphisms", "list_of_integers_and_list_of_morphisms" ] );
+        unknown_filters := Filtered( info.filter_list, filter -> not filter in [ "category", "object", "morphism", "integer", "element_of_commutative_ring_of_linear_structure", "nonneg_integer_or_infinity", "list_of_objects", "list_of_morphisms", "list_of_lists_of_morphisms", "pair_of_morphisms", "list_of_integers_and_list_of_morphisms" ] );
         
         if not IsEmpty( unknown_filters ) then
             
@@ -382,6 +382,10 @@ InstallMethod( CategoryConstructor,
                 elif filter = "list_of_morphisms" then
                     
                     return Concatenation( "List( ", argument_name, ", x -> ", options.underlying_morphism_getter_string, "( cat, x ) )" );
+                    
+                elif filter = "list_of_lists_of_morphisms" then
+                    
+                    return Concatenation( "List( ", argument_name, ", x -> List( x, y -> ", options.underlying_morphism_getter_string, "( cat, y ) ) )" );
                     
                 elif filter = "pair_of_morphisms" then
                     
