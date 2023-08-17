@@ -285,9 +285,9 @@ fail
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "CAP", "examples/StringsAsCategory.g" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := StringsAsCategory();;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj1 := StringsAsCategoryObject( "qaeiou", C );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj2 := StringsAsCategoryObject( "qxayeziouT", C );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor := StringsAsCategoryMorphism( obj1, "xyzaTe", obj2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj1 := StringsAsCategoryObject( C, "qaeiou" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj2 := StringsAsCategoryObject( C, "qxayeziouT" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor := StringsAsCategoryMorphism( C, obj1, "xyzaTe", obj2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( mor );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## Test SimplifyObject</span>
@@ -366,7 +366,7 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## Test SimplifyEndo</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">endo := StringsAsCategoryMorphism( obj1, "uoiea", obj1 );;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">endo := StringsAsCategoryMorphism( C, obj1, "uoiea", obj1 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( endo );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphismsOnMor( SimplifyEndo( endo, 0 ), endo );</span>
@@ -666,6 +666,10 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V3 := DirectSum( V1, V2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V4 := DirectSum( V1, V3 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V5 := DirectSum( V1, V4 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( MorphismBetweenDirectSums( op, [ ], [ ], [ V1 ] ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( MorphismBetweenDirectSums( op, [ V1 ], [ [ ] ], [ ] ) );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha13 := InjectionOfCofactorOfDirectSum( [ V1, V2 ], 1 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha14 := InjectionOfCofactorOfDirectSum( [ V1, V2, V1 ], 3 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha15 := InjectionOfCofactorOfDirectSum( [ V2, V1, V2 ], 2 );;</span>

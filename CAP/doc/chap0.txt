@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2023.08-09
+                                   2023.08-10
   
   
-                                 16 August 2023
+                                 17 August 2023
   
   
                                Sebastian Gutsche
@@ -947,17 +947,18 @@
       9.2-37 NTuple
       9.2-38 Pair
       9.2-39 Triple
-      9.2-40 HandlePrecompiledTowers
-      9.2-41 CAP_JIT_INCOMPLETE_LOGIC
-      9.2-42 ListWithKeys
-      9.2-43 SumWithKeys
-      9.2-44 ProductWithKeys
-      9.2-45 ForAllWithKeys
-      9.2-46 ForAnyWithKeys
-      9.2-47 NumberWithKeys
-      9.2-48 FilteredWithKeys
-      9.2-49 FirstWithKeys
-      9.2-50 LastWithKeys
+      9.2-40 TransposedMatWithGivenDimensions
+      9.2-41 HandlePrecompiledTowers
+      9.2-42 CAP_JIT_INCOMPLETE_LOGIC
+      9.2-43 ListWithKeys
+      9.2-44 SumWithKeys
+      9.2-45 ProductWithKeys
+      9.2-46 ForAllWithKeys
+      9.2-47 ForAnyWithKeys
+      9.2-48 NumberWithKeys
+      9.2-49 FilteredWithKeys
+      9.2-50 FirstWithKeys
+      9.2-51 LastWithKeys
   10 [33X[0;0YLimits and Colimits[133X
     10.1 [33X[0;0YSpecification of Limits and Colimits[133X
     10.2 [33X[0;0YEnhancing Limit Specifications[133X

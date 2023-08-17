@@ -206,9 +206,9 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/StringsAsCategory.g" );;[127X[104X
     [4X[25Xgap>[125X [27XC := StringsAsCategory();;[127X[104X
-    [4X[25Xgap>[125X [27Xobj1 := StringsAsCategoryObject( "qaeiou", C );;[127X[104X
-    [4X[25Xgap>[125X [27Xobj2 := StringsAsCategoryObject( "qxayeziouT", C );;[127X[104X
-    [4X[25Xgap>[125X [27Xmor := StringsAsCategoryMorphism( obj1, "xyzaTe", obj2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xobj1 := StringsAsCategoryObject( C, "qaeiou" );;[127X[104X
+    [4X[25Xgap>[125X [27Xobj2 := StringsAsCategoryObject( C, "qxayeziouT" );;[127X[104X
+    [4X[25Xgap>[125X [27Xmor := StringsAsCategoryMorphism( C, obj1, "xyzaTe", obj2 );;[127X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( mor );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27X## Test SimplifyObject[127X[104X
@@ -287,7 +287,7 @@
     [4X[25X>[125X [27X);[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27X## Test SimplifyEndo[127X[104X
-    [4X[25X>[125X [27Xendo := StringsAsCategoryMorphism( obj1, "uoiea", obj1 );;[127X[104X
+    [4X[25X>[125X [27Xendo := StringsAsCategoryMorphism( C, obj1, "uoiea", obj1 );;[127X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( endo );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsEqualForMorphismsOnMor( SimplifyEndo( endo, 0 ), endo );[127X[104X
@@ -577,6 +577,10 @@
     [4X[25Xgap>[125X [27XV3 := DirectSum( V1, V2 );;[127X[104X
     [4X[25Xgap>[125X [27XV4 := DirectSum( V1, V3 );;[127X[104X
     [4X[25Xgap>[125X [27XV5 := DirectSum( V1, V4 );;[127X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( MorphismBetweenDirectSums( op, [ ], [ ], [ V1 ] ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( MorphismBetweenDirectSums( op, [ V1 ], [ [ ] ], [ ] ) );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xalpha13 := InjectionOfCofactorOfDirectSum( [ V1, V2 ], 1 );;[127X[104X
     [4X[25Xgap>[125X [27Xalpha14 := InjectionOfCofactorOfDirectSum( [ V1, V2, V1 ], 3 );;[127X[104X
     [4X[25Xgap>[125X [27Xalpha15 := InjectionOfCofactorOfDirectSum( [ V2, V1, V2 ], 2 );;[127X[104X
