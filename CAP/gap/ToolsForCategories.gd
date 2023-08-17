@@ -300,6 +300,14 @@ DeclareGlobalFunction( "Pair" );
 DeclareGlobalFunction( "Triple" );
 
 #! @Description
+#!  The arguments are two integers <A>nr_rows</A>, <A>nr_cols</A> and a list of lists <A>listlist</A> such that
+#!  <A>nr_rows</A> = <C>Length</C>(<A>listlist</A>) and <A>nr_cols</A> = <C>Length</C>(<A>listlist</A>$[i]$) for $i=1$ to <A>nr_rows</A>.
+#!  The output is the transpose of <A>listlist</A> as a list consisting of <A>nr_cols</A> rows and <A>nr_rows</A> columns.
+#! @Arguments nr_rows, nr_cols, listlist
+#! @Returns a list (of lists)
+DeclareGlobalFunction( "TransposedMatWithGivenDimensions" );
+
+#! @Description
 #!   Handles the information stored in `<A>underlying_category</A>!.compiler_hints.precompiled_towers` (if bound) which is a list of records with components:
 #!   * `remaining_constructors_in_tower`: a non-empty list of strings (names of category constructors)
 #!   * `precompiled_functions_adder`: a function accepting a CAP category as input
