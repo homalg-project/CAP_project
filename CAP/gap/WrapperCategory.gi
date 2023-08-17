@@ -55,6 +55,14 @@ InstallOtherMethodForCompilerForCAP( AsMorphismInWrapperCategory,
     #% CAP_JIT_DROP_NEXT_STATEMENT
     CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( morphism, ModelingCategory( D ), [ "the morphism given to AsMorphismInWrapperCategory" ] );
     
+    if not IsEqualForObjects( ModelingCategory( D ), ObjectDatum( D, source ), Source( morphism ) ) then
+        Error( "ObjectDatum( source ) and Source( morphism ) do not coincide\n" );
+    fi;
+    
+    if not IsEqualForObjects( ModelingCategory( D ), ObjectDatum( D, range ), Range( morphism ) ) then
+        Error( "ObjectDatum( range ) and Range( morphism ) do not coincide\n" );
+    fi;
+    
     return CreateCapCategoryMorphismWithAttributes( D,
                                                     source,
                                                     range,
