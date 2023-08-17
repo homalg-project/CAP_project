@@ -3435,7 +3435,8 @@ MorphismBetweenDirectSums := rec(
   dual_preprocessor_func := function( arg )
       local list;
       list := CAP_INTERNAL_OPPOSITE_RECURSIVE( arg );
-      return NTuple( 4, list[1], list[4], TransposedMat( list[3] ), list[2] );
+      
+      return NTuple( 4, list[1], list[4], TransposedMatWithGivenDimensions( Length( list[2] ), Length( list[4] ), list[3] ), list[2] );
   end
 ),
 
@@ -3451,7 +3452,7 @@ MorphismBetweenDirectSumsWithGivenDirectSums := rec(
   dual_preprocessor_func := function( arg )
       local list;
       list := CAP_INTERNAL_OPPOSITE_RECURSIVE( arg );
-      return NTuple( 6, list[1], list[6], list[5], TransposedMat( list[4] ), list[3], list[2] );
+      return NTuple( 6, list[1], list[6], list[5], TransposedMatWithGivenDimensions( Length( list[3] ), Length( list[5] ), list[4] ), list[3], list[2] );
   end
 ),
 
