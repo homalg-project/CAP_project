@@ -100,3 +100,12 @@ CapJitAddLogicTemplate(
         dst_template := "0"
     )
 );
+
+# List( [ 1 .. n ], i -> REM_INT( i - 1, n ) + QUO_INT( i - 1, n ) + 1 ) -> [ 1 .. n ]
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "n" ],
+        src_template := "List( [ 1 .. n ], i -> REM_INT( i - 1, n ) + QUO_INT( i - 1, n ) + 1 )",
+        dst_template := "[ 1 .. n ]"
+    )
+);
