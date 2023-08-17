@@ -123,6 +123,7 @@ InstallMethod( DisplayString,
 end );
 
 ##
+#= comment for Julia
 InstallMethod( LaTeXOutput,
           [ IsVectorSpaceMorphism ],
           
@@ -152,6 +153,7 @@ InstallMethod( LaTeXOutput,
     fi;
     
 end );
+# =#
 
 ####################################
 ##

@@ -57,25 +57,42 @@ For all details, see the list of compilations steps in <Ref Sect="Section_Compil
 
 @Section Requirements
 
-There are some requirements for the steps described above to be correct:
+There are some requirements for the steps described above to be correct.
+
+The code must be **purely functional**, that is, it must have the following properties:
 * The code must not depend on side effects (otherwise dropping "unused" variables or inlining variables could change results).
-* Technically, the result is only valid for the concrete CAP category which was used to resolve CAP operations and get typing information.
-  That is, for parametric categories you must check manually for which parameters the result is valid.
 * Only assignments to local variables, if/elif/else statements, and return statements are allowed as statements in functions.
-* All branches of any given if/elif/else statement must end with a return statement or the assignment to the same local variable.
+* All branches of any given if/elif/else statement must end with a return statement or the assignment to the same local variable
+  (so if/elif/else statements can be handled as expressions).
 * If statements must always have an else statement, except if all branches end with a return statement. In the latter case, the
   statements following the if statement are automatically put into an else statement.
-* Nested if/elif/else statements are not allowed.
-* Function arguments or local variables must not be called `RETURN_VALUE`, as this name is used internally.
 * Local variables must be assigned at most once (this includes function arguments, which are assigned at least once,
   namely when the function is called). An exception is made for "rapid reassignments": if the same variable
   is assigned and then reassigned immediately in the next statement, this only counts as a single assignment.
 * Since the compiler might change the order of statements, checking if a local variable (or list entry etc.) is bound is not safe.
+
+GAP has **strict semantics**, that is, the evaluation of an expression first evaluates all subexpressions, and if an error occurs during
+the evaluation of a subexpression, the evaluation of the outer expression also stops.
+However, CompilerForCAP has some optimizations which are only valid with non-strict semantics.
+These optimizations produce subexpression which are not computed in the original code and are not needed for the final result.
+With GAP's strict semantics, those subexpressions are still evaluated despite not being needed for the final result.
+Hence, those subexpressions must not throw an error when evaluated.
+In particular:
 * For performance optimizations, the compiler might move expressions out of if/else statements, e.g. if they occur inside a (potentially
   expensive) `List` call. Thus, code inside if/else statements must execute without error even if moved outside of the if/else statement.
-* Non-dense lists are not supported.
+* More generally, hoisting expressions might lead to subexpressions being evaluated which were not being evaluated before.
+  For example, the subexpression `mat[i]` in the uncompiled code `i -> List( [ ], j -> mat[i][j] )` is never evaluated due to the domain
+  of `j` being empty, but CompilerForCAP will hoist `mat[i]` out of the `List` call, so after compilation `mat[i]` might be evaluated.
+* Functions which are applied to an element of a list must be applicable to all elements of this list.
 
-Additionally, there is no detection for recursive function calls, so resolving such a function call leads to an infinite loop.
+Furthermore, there are some technical restrictions:
+* Nested if/elif/else statements are not allowed.
+* Function arguments or local variables must not be called `RETURN_VALUE`, as this name is used internally.
+* Non-dense lists are not supported.
+* There is no detection for recursive function calls, so resolving such a function call leads to an infinite loop.
+
+Also note that technically the result of the compilation is only valid for the concrete CAP category which was used to resolve CAP operations and get typing information.
+That is, for parametric categories you must check manually for which parameters the result is valid.
 
 @Section Precompiling categories
 

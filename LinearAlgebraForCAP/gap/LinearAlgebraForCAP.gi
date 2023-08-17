@@ -73,6 +73,7 @@ InstallGlobalFunction( MATRIX_CATEGORY,
     SetRangeCategoryOfHomomorphismStructure( category, category );
     SetIsEquippedWithHomomorphismStructure( category, true );
     
+    #= comment for Julia
     if category!.overhead then
         
         ## TODO: Logic for MatrixCategory
@@ -83,6 +84,7 @@ InstallGlobalFunction( MATRIX_CATEGORY,
         );
         
     fi;
+    # =#
     
     if ValueOption( "no_precompiled_code" ) = true then
         
