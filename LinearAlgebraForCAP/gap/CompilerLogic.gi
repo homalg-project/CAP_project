@@ -73,6 +73,24 @@ CapJitAddLogicTemplate(
     )
 );
 
+#
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "ring" ],
+        src_template := "ConvertMatrixToRow( HomalgIdentityMatrix( 1, ring ) )",
+        dst_template := "HomalgIdentityMatrix( 1, ring )",
+    )
+);
+
+#
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "ring" ],
+        src_template := "ConvertMatrixToColumn( HomalgIdentityMatrix( 1, ring ) )",
+        dst_template := "HomalgIdentityMatrix( 1, ring )",
+    )
+);
+
 # 0 + n -> n
 CapJitAddLogicTemplate(
     rec(
