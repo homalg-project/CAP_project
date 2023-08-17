@@ -55,6 +55,24 @@ CapJitAddLogicTemplate(
     )
 );
 
+#
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "n", "ring" ],
+        src_template := "HomalgMatrix( PermutationMat( PermList( [ 1 .. n ] ), n ), n, n, ring )",
+        dst_template := "HomalgIdentityMatrix( n, ring )",
+    )
+);
+
+#
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "ring" ],
+        src_template := "HomalgMatrix( PermutationMat( PermList( [ 1 ] ), 1 ), 1, 1, ring )",
+        dst_template := "HomalgIdentityMatrix( 1, ring )",
+    )
+);
+
 # 0 + n -> n
 CapJitAddLogicTemplate(
     rec(
