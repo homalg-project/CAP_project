@@ -54,3 +54,21 @@ CapJitAddLogicTemplate(
         needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
+
+# 1 * n -> n
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "n" ],
+        src_template := "1 * n",
+        dst_template := "n"
+    )
+);
+
+# n * 1 -> n
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "n" ],
+        src_template := "n * 1",
+        dst_template := "n"
+    )
+);
