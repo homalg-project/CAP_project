@@ -162,29 +162,22 @@
 
 <h4>1.3 <span class="Heading">Requirements</span></h4>
 
-<p>There are some requirements for the steps described above to be correct:</p>
+<p>There are some requirements for the steps described above to be correct.</p>
+
+<p>The code must be <em>purely functional</em>, that is, it must have the following properties:</p>
 
 
 <ul>
 <li><p>The code must not depend on side effects (otherwise dropping "unused" variables or inlining variables could change results).</p>
 
 </li>
-<li><p>Technically, the result is only valid for the concrete CAP category which was used to resolve CAP operations and get typing information. That is, for parametric categories you must check manually for which parameters the result is valid.</p>
-
-</li>
 <li><p>Only assignments to local variables, if/elif/else statements, and return statements are allowed as statements in functions.</p>
 
 </li>
-<li><p>All branches of any given if/elif/else statement must end with a return statement or the assignment to the same local variable.</p>
+<li><p>All branches of any given if/elif/else statement must end with a return statement or the assignment to the same local variable (so if/elif/else statements can be handled as expressions).</p>
 
 </li>
 <li><p>If statements must always have an else statement, except if all branches end with a return statement. In the latter case, the statements following the if statement are automatically put into an else statement.</p>
-
-</li>
-<li><p>Nested if/elif/else statements are not allowed.</p>
-
-</li>
-<li><p>Function arguments or local variables must not be called <code class="code">RETURN_VALUE</code>, as this name is used internally.</p>
 
 </li>
 <li><p>Local variables must be assigned at most once (this includes function arguments, which are assigned at least once, namely when the function is called). An exception is made for "rapid reassignments": if the same variable is assigned and then reassigned immediately in the next statement, this only counts as a single assignment.</p>
@@ -193,14 +186,39 @@
 <li><p>Since the compiler might change the order of statements, checking if a local variable (or list entry etc.) is bound is not safe.</p>
 
 </li>
+</ul>
+<p>GAP has <em>strict semantics</em>, that is, the evaluation of an expression first evaluates all subexpressions, and if an error occurs during the evaluation of a subexpression, the evaluation of the outer expression also stops. However, CompilerForCAP has some optimizations which are only valid with non-strict semantics. These optimizations produce subexpression which are not computed in the original code and are not needed for the final result. With GAP's strict semantics, those subexpressions are still evaluated despite not being needed for the final result. Hence, those subexpressions must not throw an error when evaluated. In particular:</p>
+
+
+<ul>
 <li><p>For performance optimizations, the compiler might move expressions out of if/else statements, e.g. if they occur inside a (potentially expensive) <code class="code">List</code> call. Thus, code inside if/else statements must execute without error even if moved outside of the if/else statement.</p>
+
+</li>
+<li><p>More generally, hoisting expressions might lead to subexpressions being evaluated which were not being evaluated before. For example, the subexpression <code class="code">mat[i]</code> in the uncompiled code <code class="code">i -&gt; List( [ ], j -&gt; mat[i][j] )</code> is never evaluated due to the domain of <code class="code">j</code> being empty, but CompilerForCAP will hoist <code class="code">mat[i]</code> out of the <code class="code">List</code> call, so after compilation <code class="code">mat[i]</code> might be evaluated.</p>
+
+</li>
+<li><p>Functions which are applied to an element of a list must be applicable to all elements of this list.</p>
+
+</li>
+</ul>
+<p>Furthermore, there are some technical restrictions:</p>
+
+
+<ul>
+<li><p>Nested if/elif/else statements are not allowed.</p>
+
+</li>
+<li><p>Function arguments or local variables must not be called <code class="code">RETURN_VALUE</code>, as this name is used internally.</p>
 
 </li>
 <li><p>Non-dense lists are not supported.</p>
 
 </li>
+<li><p>There is no detection for recursive function calls, so resolving such a function call leads to an infinite loop.</p>
+
+</li>
 </ul>
-<p>Additionally, there is no detection for recursive function calls, so resolving such a function call leads to an infinite loop.</p>
+<p>Also note that technically the result of the compilation is only valid for the concrete CAP category which was used to resolve CAP operations and get typing information. That is, for parametric categories you must check manually for which parameters the result is valid.</p>
 
 <p><a id="X8307AD6B823FB122" name="X8307AD6B823FB122"></a></p>
 

@@ -104,31 +104,25 @@
   
   [1X1.3 [33X[0;0YRequirements[133X[101X
   
-  [33X[0;0YThere are some requirements for the steps described above to be correct:[133X
+  [33X[0;0YThere are some requirements for the steps described above to be correct.[133X
+  
+  [33X[0;0YThe  code  must  be  [13Xpurely  functional[113X, that is, it must have the following
+  properties:[133X
   
   [30X    [33X[0;6YThe  code must not depend on side effects (otherwise dropping "unused"
         variables or inlining variables could change results).[133X
-  
-  [30X    [33X[0;6YTechnically,  the  result  is only valid for the concrete CAP category
-        which  was  used to resolve CAP operations and get typing information.
-        That  is,  for parametric categories you must check manually for which
-        parameters the result is valid.[133X
   
   [30X    [33X[0;6YOnly  assignments  to  local  variables,  if/elif/else statements, and
         return statements are allowed as statements in functions.[133X
   
   [30X    [33X[0;6YAll  branches  of  any  given  if/elif/else  statement must end with a
-        return statement or the assignment to the same local variable.[133X
+        return  statement  or  the  assignment  to the same local variable (so
+        if/elif/else statements can be handled as expressions).[133X
   
   [30X    [33X[0;6YIf  statements  must  always  have  an  else  statement, except if all
         branches  end  with  a  return  statement.  In  the  latter  case, the
         statements  following  the  if statement are automatically put into an
         else statement.[133X
-  
-  [30X    [33X[0;6YNested if/elif/else statements are not allowed.[133X
-  
-  [30X    [33X[0;6YFunction arguments or local variables must not be called [10XRETURN_VALUE[110X,
-        as this name is used internally.[133X
   
   [30X    [33X[0;6YLocal  variables must be assigned at most once (this includes function
         arguments,  which are assigned at least once, namely when the function
@@ -139,15 +133,47 @@
   [30X    [33X[0;6YSince the compiler might change the order of statements, checking if a
         local variable (or list entry etc.) is bound is not safe.[133X
   
+  [33X[0;0YGAP  has  [13Xstrict  semantics[113X,  that is, the evaluation of an expression first
+  evaluates  all  subexpressions, and if an error occurs during the evaluation
+  of  a  subexpression,  the  evaluation  of  the outer expression also stops.
+  However,  CompilerForCAP  has  some  optimizations which are only valid with
+  non-strict  semantics.  These  optimizations produce subexpression which are
+  not  computed  in the original code and are not needed for the final result.
+  With  GAP's  strict  semantics,  those  subexpressions  are  still evaluated
+  despite  not  being needed for the final result. Hence, those subexpressions
+  must not throw an error when evaluated. In particular:[133X
+  
   [30X    [33X[0;6YFor performance optimizations, the compiler might move expressions out
         of  if/else  statements,  e.g.  if  they  occur  inside a (potentially
         expensive)  [10XList[110X  call.  Thus,  code  inside  if/else  statements must
         execute without error even if moved outside of the if/else statement.[133X
   
+  [30X    [33X[0;6YMore  generally,  hoisting  expressions  might  lead to subexpressions
+        being  evaluated  which  were not being evaluated before. For example,
+        the  subexpression  [10Xmat[i][110X in the uncompiled code [10Xi -> List( [ ], j ->
+        mat[i][j] )[110X is never evaluated due to the domain of [10Xj[110X being empty, but
+        CompilerForCAP  will  hoist  [10Xmat[i][110X  out  of  the  [10XList[110X call, so after
+        compilation [10Xmat[i][110X might be evaluated.[133X
+  
+  [30X    [33X[0;6YFunctions which are applied to an element of a list must be applicable
+        to all elements of this list.[133X
+  
+  [33X[0;0YFurthermore, there are some technical restrictions:[133X
+  
+  [30X    [33X[0;6YNested if/elif/else statements are not allowed.[133X
+  
+  [30X    [33X[0;6YFunction arguments or local variables must not be called [10XRETURN_VALUE[110X,
+        as this name is used internally.[133X
+  
   [30X    [33X[0;6YNon-dense lists are not supported.[133X
   
-  [33X[0;0YAdditionally,  there  is  no  detection  for  recursive  function  calls, so
-  resolving such a function call leads to an infinite loop.[133X
+  [30X    [33X[0;6YThere  is no detection for recursive function calls, so resolving such
+        a function call leads to an infinite loop.[133X
+  
+  [33X[0;0YAlso  note  that technically the result of the compilation is only valid for
+  the  concrete  CAP category which was used to resolve CAP operations and get
+  typing  information.  That  is,  for  parametric  categories  you must check
+  manually for which parameters the result is valid.[133X
   
   
   [1X1.4 [33X[0;0YPrecompiling categories[133X[101X
