@@ -2,6 +2,9 @@ LoadPackage( "CAP" );
 
 LoadPackage( "RingsForHomalg" );
 
+DeclareCategory( "IsSQVecCat",
+                 IsCapCategory );
+
 DeclareCategory( "IsSQVecObj",
                  IsCapCategoryObject );
 
@@ -20,13 +23,14 @@ DeclareOperation( "SQVecObj",
 DeclareOperation( "SQVecMor",
                   [ IsSQVecObj, IsObject, IsSQVecObj ] );
 
-BindGlobal( "SQVec", CreateCapCategory( "Skeletal category of rational vector spaces" ) );
+BindGlobal( "SQVec", CreateCapCategory(
+                             "Skeletal category of rational vector spaces",
+                             IsSQVecCat,
+                             IsSQVecObj,
+                             IsSQVecMor,
+                             IsCapCategoryTwoCell ) );
 
 SetIsAbelianCategory( SQVec, true );
-
-AddObjectRepresentation( SQVec, IsSQVecObj );
-
-AddMorphismRepresentation( SQVec, IsSQVecMor );
 
 BindGlobal( "QQ", HomalgFieldOfRationals( ) );
 
@@ -40,10 +44,8 @@ InstallMethod( SQVecObj,
             Error( "the given integer must be non-negative");
         fi;
         
-        return ObjectifyObjectForCAPWithAttributes(
-            rec( ), SQVec,
-            Dimension, dim
-        );
+        return CreateCapCategoryObjectWithAttributes( SQVec,
+                                                      Dimension, dim );
         
 end );
 
@@ -68,12 +70,10 @@ InstallMethod( SQVecMor,
 
     fi;
     
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
-      rec( ), SQVec,
-      source,
-      range,
-      UnderlyingMatrix, underlying_matrix
-    );
+    return CreateCapCategoryMorphismWithAttributes( SQVec,
+                                                    source,
+                                                    range,
+                                                    UnderlyingMatrix, underlying_matrix );
     
 end );
 
