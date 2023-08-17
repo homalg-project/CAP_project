@@ -1,6 +1,11 @@
 LoadPackage( "CAP" );
 
+#############################
 ##
+## Categories
+##
+#############################
+
 DeclareCategory( "IsStringsAsCategory",
                  IsCapCategory );
 
@@ -10,32 +15,44 @@ DeclareCategory( "IsObjectInStringsAsCategory",
 DeclareCategory( "IsMorphismInStringsAsCategory",
                  IsCapCategoryMorphism );
 
-DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY" );
-
-DeclareGlobalFunction( "RemovedCharacters" );
-
-DeclareGlobalFunction( "DeleteVowels" );
-
-DeclareGlobalVariable( "STRINGS_AS_CATEGORY" );
-
+#############################
+##
 ## Constructors
+##
+#############################
+
 DeclareOperation( "StringsAsCategory",
                   [] );
 
 DeclareOperation( "StringsAsCategoryObject",
-                  [ IsString, IsCapCategory ] );
+                  [ IsStringsAsCategory, IsString ] );
 
 DeclareOperation( "StringsAsCategoryMorphism",
-                  [ IsObjectInStringsAsCategory, IsString, IsObjectInStringsAsCategory ] );
+                  [ IsStringsAsCategory, IsObjectInStringsAsCategory, IsString, IsObjectInStringsAsCategory ] );
 
+#############################
+##
 ## Attributes
+##
+#############################
+
 DeclareAttribute( "UnderlyingString",
                   IsObjectInStringsAsCategory );
 
 DeclareAttribute( "UnderlyingString",
                   IsMorphismInStringsAsCategory );
 
+#############################
+##
 ## Constructors
+##
+#############################
+
+DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY" );
+
+DeclareGlobalFunction( "RemovedCharacters" );
+
+DeclareGlobalFunction( "DeleteVowels" );
 
 InstallGlobalFunction( RemovedCharacters,
     function( str, chars )
@@ -66,17 +83,16 @@ InstallMethod( StringsAsCategory,
   function( )
     local category;
     
-    category := CreateCapCategoryWithDataTypes(
-                        "Category of strings up to vowels",
-                        IsStringsAsCategory,
-                        IsObjectInStringsAsCategory,
-                        IsMorphismInStringsAsCategory,
-                        IsCapCategoryTwoCell,
-                        IsStringRep,
-                        IsStringRep,
-                        fail );
+    category := CreateCapCategoryWithDataTypes( "Category of strings up to vowels",
+                                                IsStringsAsCategory,
+                                                IsObjectInStringsAsCategory,
+                                                IsMorphismInStringsAsCategory,
+                                                IsCapCategoryTwoCell,
+                                                IsStringRep,
+                                                IsStringRep,
+                                                fail );
     
-    category!.category_as_first_argument := false;
+    category!.category_as_first_argument := true;
     
     INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY( category );
     
@@ -88,41 +104,33 @@ end );
 
 ##
 InstallMethod( StringsAsCategoryObject,
-               [ IsString, IsCapCategory ],
+               [ IsStringsAsCategory, IsString ],
                
-  function( string, category )
-    local object;
+  function( cat, string )
     
-    object := CreateCapCategoryObjectWithAttributes( category,
-                                                     UnderlyingString, string );
-    
-    Add( category, object );
-    
-    return object;
+    return CreateCapCategoryObjectWithAttributes( cat,
+                                                  UnderlyingString, string );
     
 end );
 
 ##
 InstallMethod( StringsAsCategoryMorphism,
-               [ IsObjectInStringsAsCategory, IsString, IsObjectInStringsAsCategory ],
+               [ IsStringsAsCategory, IsObjectInStringsAsCategory, IsString, IsObjectInStringsAsCategory ],
                
-  function( source, string, range )
-    local morphism, category;
+  function( cat, source, string, range )
     
-    category := CapCategory( source );
-    
-    morphism := CreateCapCategoryMorphismWithAttributes( category,
-                                                         source,
-                                                         range,
-                                                         UnderlyingString, string );
-    
-    Add( category, morphism );
-    
-    return morphism;
+    return CreateCapCategoryMorphismWithAttributes( cat,
+                                                    source,
+                                                    range,
+                                                    UnderlyingString, string );
     
 end );
 
+#############################
+##
 ## Basic operations
+##
+#############################
 
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
   
@@ -133,7 +141,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
     
     ##
     AddIsEqualForObjects( category,
-      function( a, b )
+      function( cat, a, b )
       
         return UnderlyingString( a ) = UnderlyingString( b );
       
@@ -141,7 +149,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
     
     ##
     AddIsEqualForMorphisms( category,
-      function( alpha, beta )
+      function( cat, alpha, beta )
         
         return UnderlyingString( alpha ) = UnderlyingString( beta );
         
@@ -149,17 +157,22 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
     
     ##
     AddIsCongruentForMorphisms( category,
-      function( alpha, beta )
+      function( cat, alpha, beta )
         
         return RemovedCharacters( UnderlyingString( alpha ), vowels ) = RemovedCharacters( UnderlyingString( beta ), vowels );
       
     end );
     
-    AddIsWellDefinedForObjects( category, ReturnTrue );
+    AddIsWellDefinedForObjects( category,
+      function( cat, a )
+          
+          return true;
+          
+    end);
     
     ##
     AddIsWellDefinedForMorphisms( category,
-        function( alpha )
+        function( cat, alpha )
             
             return RemovedCharacters( Concatenation( UnderlyingString( Source( alpha ) ), UnderlyingString( alpha ) ), vowels )
                 = RemovedCharacters( UnderlyingString( Range( alpha ) ), vowels );
@@ -168,32 +181,27 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
     
     ##
     AddPreCompose( category,
-      function( alpha, beta )
+      function( cat, alpha, beta )
         
-        return StringsAsCategoryMorphism(
-                Source( alpha ),
-                Concatenation( UnderlyingString( alpha ), UnderlyingString( beta ) ),
-                Range( beta )
-        );
+        return StringsAsCategoryMorphism( cat,
+                                          Source( alpha ),
+                                          Concatenation( UnderlyingString( alpha ), UnderlyingString( beta ) ),
+                                          Range( beta ) );
         
     end );
     
     ##
     AddIdentityMorphism( category,
-      function( a )
+      function( cat, a )
         
-        return StringsAsCategoryMorphism(
-           a,
-           "",
-           a
-        );
+        return StringsAsCategoryMorphism( cat, a, "", a );
         
     end );
     
     ## SimplifyObject*
     ##
     AddSimplifyObject( category,
-        function( a, n )
+        function( cat, a, n )
             local min;
             
             if n = 0 then
@@ -202,46 +210,38 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
             
             min := Minimum( Length( vowels ), n );
             
-            return StringsAsCategoryObject( RemovedCharacters( UnderlyingString( a ) , vowels{[1..min]} ), category );
+            return StringsAsCategoryObject( cat, RemovedCharacters( UnderlyingString( a ) , vowels{[1..min]} ) );
             
     end );
     
     ##
     AddSimplifyObject_IsoFromInputObject( category,
-        function( a, n )
+        function( cat, a, n )
             
             if n = 0 then
                 Print( "this case must not be handled here" );
             fi;
             
-            return StringsAsCategoryMorphism( 
-                a,
-                "",
-                SimplifyObject( a, n )
-            );
+            return StringsAsCategoryMorphism( cat, a, "", SimplifyObject( a, n ) );
             
     end );
     
     ##
     AddSimplifyObject_IsoToInputObject( category,
-        function( a, n )
+        function( cat, a, n )
             
             if n = 0 then
                 Print( "this case must not be handled here" );
             fi;
             
-            return StringsAsCategoryMorphism( 
-                SimplifyObject( a, n ),
-                "",
-                a
-            );
+            return StringsAsCategoryMorphism( cat, SimplifyObject( a, n ), "", a);
             
     end );
     
     ## SimplifyMorphism
     ##
     AddSimplifyMorphism( category,
-        function( alpha, n )
+        function( cat, alpha, n )
             local min;
             
             if n = 0 then
@@ -250,262 +250,248 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
             
             min := Minimum( Length( vowels ), n );
             
-            return StringsAsCategoryMorphism( 
-                    Source( alpha ),
-                    RemovedCharacters( UnderlyingString( alpha ) , vowels{[1..min]} ),
-                    Range( alpha )
-             );
+            return StringsAsCategoryMorphism( cat,
+                                              Source( alpha ),
+                                              RemovedCharacters( UnderlyingString( alpha ) , vowels{[1..min]} ),
+                                              Range( alpha ) );
             
     end );
     
     ## SimplifySource
     ##
     AddSimplifySource( category,
-        function( alpha, n )
+        function( cat, alpha, n )
             local new_source;
             
             if n = 0 then
                 Print( "this case must not be handled here" );
             fi;
             
-            new_source := StringsAsCategoryObject( DeleteVowels( UnderlyingString( Source( alpha ) ), n ), category );
+            new_source := StringsAsCategoryObject( cat, DeleteVowels( UnderlyingString( Source( alpha ) ), n ) );
             
-            return StringsAsCategoryMorphism( 
-                    new_source,
-                    UnderlyingString( alpha ),
-                    Range( alpha )
-             );
+            return StringsAsCategoryMorphism( cat,
+                                              new_source,
+                                              UnderlyingString( alpha ),
+                                              Range( alpha ) );
             
     end );
     
     ##
     AddSimplifySource_IsoToInputObject( category,
-        function( alpha, n )
+        function( cat, alpha, n )
             
             if n = 0 then
                 Print( "this case must not be handled here" );
             fi;
             
-            return StringsAsCategoryMorphism( 
-                Source( SimplifySource( alpha, n ) ),
-                "",
-                Source( alpha )
-            );
+            return StringsAsCategoryMorphism( cat,
+                                              Source( SimplifySource( alpha, n ) ),
+                                              "",
+                                              Source( alpha ) );
             
     end );
     
     ##
     AddSimplifySource_IsoFromInputObject( category,
-        function( alpha, n )
+        function( cat, alpha, n )
             
             if n = 0 then
                 Print( "this case must not be handled here" );
             fi;
             
-            return StringsAsCategoryMorphism( 
-                Source( alpha ),
-                "",
-                Source( SimplifySource( alpha, n ) )
-            );
+            return StringsAsCategoryMorphism( cat,
+                                              Source( alpha ),
+                                              "",
+                                              Source( SimplifySource( alpha, n ) ) );
             
     end );
     
     ## SimplifyRange
     ##
     AddSimplifyRange( category,
-        function( alpha, n )
+        function( cat, alpha, n )
             local new_range;
             
             if n = 0 then
                 Print( "this case must not be handled here" );
             fi;
             
-            new_range := StringsAsCategoryObject( DeleteVowels( UnderlyingString( Range( alpha ) ), n ), category );
+            new_range := StringsAsCategoryObject( cat, DeleteVowels( UnderlyingString( Range( alpha ) ), n ) );
             
-            return StringsAsCategoryMorphism( 
-                    Source( alpha ),
-                    UnderlyingString( alpha ),
-                    new_range
-                    
-             );
+            return StringsAsCategoryMorphism( cat,
+                                              Source( alpha ),
+                                              UnderlyingString( alpha ),
+                                              new_range );
             
     end );
     
     ##
     AddSimplifyRange_IsoToInputObject( category,
-        function( alpha, n )
+        function( cat, alpha, n )
             
             if n = 0 then
                 Print( "this case must not be handled here" );
             fi;
             
-            return StringsAsCategoryMorphism( 
-                Range( SimplifyRange( alpha, n ) ),
-                "",
-                Range( alpha )
-            );
+            return StringsAsCategoryMorphism( cat,
+                                              Range( SimplifyRange( alpha, n ) ),
+                                              "",
+                                              Range( alpha ) );
             
     end );
     
     ##
     AddSimplifyRange_IsoFromInputObject( category,
-        function( alpha, n )
+        function( cat, alpha, n )
             
             if n = 0 then
                 Print( "this case must not be handled here" );
             fi;
             
-            return StringsAsCategoryMorphism( 
-                Range( alpha ),
-                "",
-                Range( SimplifyRange( alpha, n ) )
-            );
+            return StringsAsCategoryMorphism( cat,
+                                              Range( alpha ),
+                                              "",
+                                              Range( SimplifyRange( alpha, n ) ) );
             
     end );
     
     ## SimplifySourceAndRange
     ##
     AddSimplifySourceAndRange( category,
-        function( alpha, n )
+        function( cat, alpha, n )
             local new_source, new_range;
             
             if n = 0 then
                 Print( "this case must not be handled here" );
             fi;
             
-            new_source := StringsAsCategoryObject( DeleteVowels( UnderlyingString( Source( alpha ) ), n ), category ); 
+            new_source := StringsAsCategoryObject( cat, DeleteVowels( UnderlyingString( Source( alpha ) ), n ) );
             
-            new_range := StringsAsCategoryObject( DeleteVowels( UnderlyingString( Range( alpha ) ), n ), category );
+            new_range := StringsAsCategoryObject( cat, DeleteVowels( UnderlyingString( Range( alpha ) ), n ) );
             
-            return StringsAsCategoryMorphism( 
-                    new_source,
-                    UnderlyingString( alpha ),
-                    new_range
-                    
-             );
+            return StringsAsCategoryMorphism( cat,
+                                              new_source,
+                                              UnderlyingString( alpha ),
+                                              new_range );
             
     end );
     
     ##
     AddSimplifySourceAndRange_IsoToInputSource( category,
-        function( alpha, n )
+        function( cat, alpha, n )
             
             if n = 0 then
                 Print( "this case must not be handled here" );
             fi;
             
-            return StringsAsCategoryMorphism( 
-                Source( SimplifySourceAndRange( alpha, n ) ),
-                "",
-                Source( alpha )
-            );
+            return StringsAsCategoryMorphism( cat,
+                                              Source( SimplifySourceAndRange( alpha, n ) ),
+                                              "",
+                                              Source( alpha ) );
             
     end );
     
     ##
     AddSimplifySourceAndRange_IsoFromInputSource( category,
-        function( alpha, n )
+        function( cat, alpha, n )
             
             if n = 0 then
                 Print( "this case must not be handled here" );
             fi;
             
-            return StringsAsCategoryMorphism( 
-                Source( alpha ),
-                "",
-                Source( SimplifySourceAndRange( alpha, n ) )
-            );
+            return StringsAsCategoryMorphism( cat,
+                                              Source( alpha ),
+                                              "",
+                                              Source( SimplifySourceAndRange( alpha, n ) ) );
             
     end );
     
     ##
     AddSimplifySourceAndRange_IsoToInputRange( category,
-        function( alpha, n )
+        function( cat, alpha, n )
             
             if n = 0 then
                 Print( "this case must not be handled here" );
             fi;
             
-            return StringsAsCategoryMorphism( 
-                Range( SimplifySourceAndRange( alpha, n ) ),
-                "",
-                Range( alpha )
-            );
+            return StringsAsCategoryMorphism( cat,
+                                              Range( SimplifySourceAndRange( alpha, n ) ),
+                                              "",
+                                              Range( alpha ) );
             
     end );
     
     ##
     AddSimplifySourceAndRange_IsoFromInputRange( category,
-        function( alpha, n )
+        function( cat, alpha, n )
             
             if n = 0 then
                 Print( "this case must not be handled here" );
             fi;
             
-            return StringsAsCategoryMorphism( 
-                Range( alpha ),
-                "",
-                Range( SimplifySourceAndRange( alpha, n ) )
-            );
+            return StringsAsCategoryMorphism( cat,
+                                              Range( alpha ),
+                                              "",
+                                              Range( SimplifySourceAndRange( alpha, n ) ) );
             
     end );
     
     ## SimplifyEndo
     ##
     AddSimplifyEndo( category,
-        function( endo, n )
+        function( cat, endo, n )
             local new_object;
             
             if n = 0 then
                 Print( "this case must not be handled here" );
             fi;
             
-            new_object := StringsAsCategoryObject( DeleteVowels( UnderlyingString( Source( endo ) ), n ), category ); 
+            new_object := StringsAsCategoryObject( category, DeleteVowels( UnderlyingString( Source( endo ) ), n ) );
             
-            return StringsAsCategoryMorphism( 
-                    new_object,
-                    UnderlyingString( endo ),
-                    new_object
-                    
-             );
+            return StringsAsCategoryMorphism( cat,
+                                              new_object,
+                                              UnderlyingString( endo ),
+                                              new_object );
             
     end );
     
      ##
     AddSimplifyEndo_IsoToInputObject( category,
-        function( endo, n )
+        function( cat, endo, n )
             
             if n = 0 then
                 Print( "this case must not be handled here" );
             fi;
             
-            return StringsAsCategoryMorphism( 
-                Source( SimplifyEndo( endo, n ) ),
-                "",
-                Source( endo )
-            );
+            return StringsAsCategoryMorphism( cat,
+                                              Source( SimplifyEndo( endo, n ) ),
+                                              "",
+                                              Source( endo ) );
             
     end );
     
     ##
     AddSimplifyEndo_IsoFromInputObject( category,
-        function( endo, n )
+        function( cat, endo, n )
             
             if n = 0 then
                 Print( "this case must not be handled here" );
             fi;
             
-            return StringsAsCategoryMorphism( 
-                Source( endo ),
-                "",
-                Source( SimplifyEndo( endo, n ) )
-            );
+            return StringsAsCategoryMorphism( cat,
+                                              Source( endo ),
+                                              "",
+                                              Source( SimplifyEndo( endo, n ) ) );
             
     end );
     
 end );
 
+#############################
+##
 ## View
+##
+#############################
 
 ##
 InstallMethod( ViewString,
@@ -526,3 +512,4 @@ InstallMethod( ViewString,
     return String( UnderlyingString( a ) );
 
 end );
+
