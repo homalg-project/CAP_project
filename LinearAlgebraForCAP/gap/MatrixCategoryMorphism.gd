@@ -41,7 +41,7 @@ DeclareOperation( "VectorSpaceMorphism",
 
 DeclareAttribute( "AsVectorSpaceMorphism", IsHomalgMatrix );
 
-DeclareOperation( "\/",
+DeclareOperation( "/",
                   [ IsHomalgMatrix, IsMatrixCategory ] );
 
 ####################################
