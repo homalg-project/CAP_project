@@ -52,6 +52,12 @@ DeclareAttribute( "AsCoFreydCategoryMorphism",
 DeclareAttribute( "UnderlyingCategory",
                   IsCoFreydCategory );
 
+CapJitAddTypeSignature( "UnderlyingCategory", [ IsCoFreydCategory ], function ( input_types )
+    
+    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
+    
+end );
+
 DeclareAttribute( "CoRelationMorphism",
                   IsCoFreydCategoryObject );
 
