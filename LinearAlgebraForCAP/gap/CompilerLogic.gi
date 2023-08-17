@@ -72,3 +72,21 @@ CapJitAddLogicTemplate(
         dst_template := "n"
     )
 );
+
+# QUO_INT( n, 1 ) -> n
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "n" ],
+        src_template := "QUO_INT( n, 1 )",
+        dst_template := "n"
+    )
+);
+
+# REM_INT( n, 1 ) -> n
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "n" ],
+        src_template := "REM_INT( n, 1 )",
+        dst_template := "0"
+    )
+);
