@@ -23,6 +23,10 @@ V2 := DirectSum( V1, V1 );;
 V3 := DirectSum( V1, V2 );;
 V4 := DirectSum( V1, V3 );;
 V5 := DirectSum( V1, V4 );;
+IsWellDefined( MorphismBetweenDirectSums( op, [ ], [ ], [ V1 ] ) );
+#! true
+IsWellDefined( MorphismBetweenDirectSums( op, [ V1 ], [ [ ] ], [ ] ) );
+#! true
 alpha13 := InjectionOfCofactorOfDirectSum( [ V1, V2 ], 1 );;
 alpha14 := InjectionOfCofactorOfDirectSum( [ V1, V2, V1 ], 3 );;
 alpha15 := InjectionOfCofactorOfDirectSum( [ V2, V1, V2 ], 2 );;
