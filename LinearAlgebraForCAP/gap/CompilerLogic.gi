@@ -55,6 +55,15 @@ CapJitAddLogicTemplate(
     )
 );
 
+# 0 + n -> n
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "n" ],
+        src_template := "0 + n",
+        dst_template := "n"
+    )
+);
+
 # 0 * n -> 0
 CapJitAddLogicTemplate(
     rec(
