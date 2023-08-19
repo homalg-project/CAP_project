@@ -54,7 +54,7 @@ underlying_category := MatrixCategory( Q );;
 ## We create a "void" CapCategory here and set its properties (abelian, monoidal) in the beginning
 category_of_objects_with_endomorphism := CreateCapCategory( "Category of objects with endomorphisms" );;
 
-category_of_objects_with_endomorphism!.category_as_first_argument := false;;
+category_of_objects_with_endomorphism!.category_as_first_argument := true;;
 
 SetIsAbelianCategory( category_of_objects_with_endomorphism, true );;
 
@@ -141,13 +141,13 @@ morphism_constructor := triple[3];;
 
 ## Install equality/ congruence functions manually since they cannot be deduced automatically
 AddIsEqualForObjects( category_of_objects_with_endomorphism,
-  function( object1, object2 )
+  function( cat, object1, object2 )
     
     return IsEqualForObjects( UnderlyingCell( object1 ), UnderlyingCell( object2 ) )
            and IsCongruentForMorphisms( ObjectAttributesAsList( object1 )[1], ObjectAttributesAsList( object2 )[1] ); end );;
 
 AddIsEqualForMorphisms( category_of_objects_with_endomorphism,
-  function( morphism1, morphism2 )
+  function( cat, morphism1, morphism2 )
     
     return IsCongruentForMorphisms( UnderlyingCell( morphism1 ), UnderlyingCell( morphism2 ) ); end );;
 
