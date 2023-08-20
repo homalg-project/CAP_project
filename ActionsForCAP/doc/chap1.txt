@@ -155,33 +155,31 @@
     [4X[25X>[125X [27X  DirectSum :=[127X[104X
     [4X[25X>[125X [27X    { obj_list, underlying_direct_sum } -> [ "a string for indirection" ],[127X[104X
     [4X[25X>[125X [27X  [127X[104X
-    [4X[25X>[125X [27X  KernelObject := [127X[104X
+    [4X[25X>[125X [27X  KernelObject :=[127X[104X
     [4X[25X>[125X [27X    { diagram, underlying_kernel_object } -> [ "a string for indirection" ],[127X[104X
     [4X[25X>[125X [27X      [127X[104X
-    [4X[25X>[125X [27X  ImageObject := [127X[104X
+    [4X[25X>[125X [27X  ImageObject :=[127X[104X
     [4X[25X>[125X [27X    { diagram, underlying_image_object } -> [ "a string for indirection" ],[127X[104X
     [4X[25X>[125X [27X      [127X[104X
-    [4X[25X>[125X [27X  FiberProduct := [127X[104X
+    [4X[25X>[125X [27X  FiberProduct :=[127X[104X
     [4X[25X>[125X [27X    { diagram, underlying_fiber_product } -> [ "a string for indirection" ],[127X[104X
     [4X[25X>[125X [27X      [127X[104X
-    [4X[25X>[125X [27X  CokernelObject := [127X[104X
+    [4X[25X>[125X [27X  CokernelObject :=[127X[104X
     [4X[25X>[125X [27X    { diagram, underlying_cokernel_object } -> [ "a string for indirection" ],[127X[104X
     [4X[25X>[125X [27X  [127X[104X
-    [4X[25X>[125X [27X  CoimageObject := [127X[104X
+    [4X[25X>[125X [27X  CoimageObject :=[127X[104X
     [4X[25X>[125X [27X    { diagram, underlying_coimage_object } -> [ "a string for indirection" ],[127X[104X
     [4X[25X>[125X [27X  [127X[104X
-    [4X[25X>[125X [27X  Pushout := [127X[104X
+    [4X[25X>[125X [27X  Pushout :=[127X[104X
     [4X[25X>[125X [27X    { diagram, underlying_pushout_object } -> [ "a string for indirection" ],[127X[104X
     [4X[25X>[125X [27X);;[127X[104X
     [4X[25Xgap>[125X [27Xtriple := EnhancementWithAttributes( category_with_attributes_record );;[127X[104X
     [4X[25Xgap>[125X [27Xindirection_category := triple[1];;[127X[104X
     [4X[25Xgap>[125X [27XSetIsAbelianCategory( indirection_category, true );;[127X[104X
     [4X[25Xgap>[125X [27XReevaluate( indirection_category!.derivations_weight_list );[127X[104X
-    [4X[25Xgap>[125X [27XAddIsEqualForCacheForObjects( indirection_category, IsIdenticalObj );;[127X[104X
-    [4X[25Xgap>[125X [27XAddIsEqualForObjects( indirection_category, function( obj1, obj2 ) return UnderlyingCell( obj1 ) = UnderlyingCell( obj2 ); end );;[127X[104X
-    [4X[25Xgap>[125X [27XAddIsEqualForCacheForMorphisms( indirection_category, IsIdenticalObj );;[127X[104X
-    [4X[25Xgap>[125X [27XAddIsEqualForMorphisms( indirection_category, IsIdenticalObj );;[127X[104X
-    [4X[25Xgap>[125X [27XAddIsCongruentForMorphisms( indirection_category, function( mor1, mor2 ) return UnderlyingCell( mor1 ) = UnderlyingCell( mor2 ); end );;[127X[104X
+    [4X[25Xgap>[125X [27XAddIsEqualForObjects( indirection_category, function( cat, obj1, obj2 ) return UnderlyingCell( obj1 ) = UnderlyingCell( obj2 ); end );;[127X[104X
+    [4X[25Xgap>[125X [27XAddIsEqualForMorphisms( indirection_category, function( cat, mor1, mor2 ) return IsIdenticalObj( mor1, mor2 ); end );;[127X[104X
+    [4X[25Xgap>[125X [27XAddIsCongruentForMorphisms( indirection_category, function( cat, mor1, mor2 ) return UnderlyingCell( mor1 ) = UnderlyingCell( mor2 ); end );;[127X[104X
     [4X[25Xgap>[125X [27XFinalize( indirection_category );;[127X[104X
     [4X[25Xgap>[125X [27XObject_Constructor := triple[2];;[127X[104X
     [4X[25Xgap>[125X [27XMorphism_Constructor := triple[3];;[127X[104X
@@ -321,9 +319,9 @@
     [4X[25X>[125X [27X[127X[104X
     [4X[25X>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
     [4X[25Xgap>[125X [27Xvec := MatrixCategory( Q );;[127X[104X
-    [4X[25Xgap>[125X [27Xwrapped_cat := CreateCapCategory( "Wrapped Category", IsCapCategory, IsWrappedObject, IsWrappedMorphism, IsCapCategoryTwoCell );[127X[104X
+    [4X[25Xgap>[125X [27Xwrapped_cat := CreateCapCategory( "Wrapped Category", IsCapCategory, IsWrappedObject, IsWrappedMorphism, IsCapCategoryTwoCell : is_computable := false );[127X[104X
     [4X[28XWrapped Category[128X[104X
-    [4X[25Xgap>[125X [27Xwrapped_cat!.category_as_first_argument := false;;[127X[104X
+    [4X[25Xgap>[125X [27Xwrapped_cat!.category_as_first_argument := true;;[127X[104X
     [4X[25Xgap>[125X [27X#################################[127X[104X
     [4X[25X>[125X [27X##[127X[104X
     [4X[25X>[125X [27X## Constructors for objects and morphisms[127X[104X
@@ -335,8 +333,7 @@
     [4X[25X>[125X [27X               [127X[104X
     [4X[25X>[125X [27X  function( obj )[127X[104X
     [4X[25X>[125X [27X    [127X[104X
-    [4X[25X>[125X [27X    return ObjectifyObjectForCAPWithAttributes([127X[104X
-    [4X[25X>[125X [27X        rec( ), wrapped_cat,[127X[104X
+    [4X[25X>[125X [27X    return CreateCapCategoryObjectWithAttributes( wrapped_cat,[127X[104X
     [4X[25X>[125X [27X        UnderlyingCell, obj[127X[104X
     [4X[25X>[125X [27X    ); end );[127X[104X
     [4X[25Xgap>[125X [27XInstallMethod( WrappedMorphism,[127X[104X
@@ -344,14 +341,14 @@
     [4X[25X>[125X [27X                  [127X[104X
     [4X[25X>[125X [27X  function( source, morphism, range )[127X[104X
     [4X[25X>[125X [27X    [127X[104X
-    [4X[25X>[125X [27X    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes([127X[104X
-    [4X[25X>[125X [27X        rec( ), wrapped_cat,[127X[104X
+    [4X[25X>[125X [27X    return CreateCapCategoryMorphismWithAttributes([127X[104X
+    [4X[25X>[125X [27X        wrapped_cat,[127X[104X
     [4X[25X>[125X [27X        Source, source,[127X[104X
     [4X[25X>[125X [27X        Range, range,[127X[104X
     [4X[25X>[125X [27X        UnderlyingCell, morphism[127X[104X
     [4X[25X>[125X [27X    ); end );[127X[104X
     [4X[25Xgap>[125X [27XAddKernelEmbedding( wrapped_cat,[127X[104X
-    [4X[25X>[125X [27X  function( diagram )[127X[104X
+    [4X[25X>[125X [27X  function( cat, diagram )[127X[104X
     [4X[25X>[125X [27X    [127X[104X
     [4X[25X>[125X [27X    # avoid semicolons so AutoDoc does not start a new statement[127X[104X
     [4X[25X>[125X [27X    return ({ underlying_kernel_embedding } ->[127X[104X

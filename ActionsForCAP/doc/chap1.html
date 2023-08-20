@@ -187,33 +187,31 @@ Q[x,y]
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  DirectSum :=</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    { obj_list, underlying_direct_sum } -&gt; [ "a string for indirection" ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  KernelObject := </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  KernelObject :=</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    { diagram, underlying_kernel_object } -&gt; [ "a string for indirection" ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">      </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  ImageObject := </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  ImageObject :=</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    { diagram, underlying_image_object } -&gt; [ "a string for indirection" ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">      </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  FiberProduct := </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  FiberProduct :=</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    { diagram, underlying_fiber_product } -&gt; [ "a string for indirection" ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">      </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  CokernelObject := </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  CokernelObject :=</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    { diagram, underlying_cokernel_object } -&gt; [ "a string for indirection" ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  CoimageObject := </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  CoimageObject :=</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    { diagram, underlying_coimage_object } -&gt; [ "a string for indirection" ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  Pushout := </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  Pushout :=</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    { diagram, underlying_pushout_object } -&gt; [ "a string for indirection" ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">triple := EnhancementWithAttributes( category_with_attributes_record );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">indirection_category := triple[1];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetIsAbelianCategory( indirection_category, true );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Reevaluate( indirection_category!.derivations_weight_list );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddIsEqualForCacheForObjects( indirection_category, IsIdenticalObj );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddIsEqualForObjects( indirection_category, function( obj1, obj2 ) return UnderlyingCell( obj1 ) = UnderlyingCell( obj2 ); end );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddIsEqualForCacheForMorphisms( indirection_category, IsIdenticalObj );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddIsEqualForMorphisms( indirection_category, IsIdenticalObj );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddIsCongruentForMorphisms( indirection_category, function( mor1, mor2 ) return UnderlyingCell( mor1 ) = UnderlyingCell( mor2 ); end );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddIsEqualForObjects( indirection_category, function( cat, obj1, obj2 ) return UnderlyingCell( obj1 ) = UnderlyingCell( obj2 ); end );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddIsEqualForMorphisms( indirection_category, function( cat, mor1, mor2 ) return IsIdenticalObj( mor1, mor2 ); end );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddIsCongruentForMorphisms( indirection_category, function( cat, mor1, mor2 ) return UnderlyingCell( mor1 ) = UnderlyingCell( mor2 ); end );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Finalize( indirection_category );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Object_Constructor := triple[2];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Morphism_Constructor := triple[3];;</span>
@@ -354,9 +352,9 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput"></span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MatrixCategory( Q );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">wrapped_cat := CreateCapCategory( "Wrapped Category", IsCapCategory, IsWrappedObject, IsWrappedMorphism, IsCapCategoryTwoCell );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">wrapped_cat := CreateCapCategory( "Wrapped Category", IsCapCategory, IsWrappedObject, IsWrappedMorphism, IsCapCategoryTwoCell : is_computable := false );</span>
 Wrapped Category
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">wrapped_cat!.category_as_first_argument := false;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">wrapped_cat!.category_as_first_argument := true;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#################################</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">##</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">## Constructors for objects and morphisms</span>
@@ -368,8 +366,7 @@ Wrapped Category
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">               </span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( obj )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return ObjectifyObjectForCAPWithAttributes(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        rec( ), wrapped_cat,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return CreateCapCategoryObjectWithAttributes( wrapped_cat,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        UnderlyingCell, obj</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    ); end );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InstallMethod( WrappedMorphism,</span>
@@ -377,14 +374,14 @@ Wrapped Category
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                  </span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( source, morphism, range )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        rec( ), wrapped_cat,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return CreateCapCategoryMorphismWithAttributes(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        wrapped_cat,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        Source, source,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        Range, range,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        UnderlyingCell, morphism</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    ); end );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddKernelEmbedding( wrapped_cat,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( diagram )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( cat, diagram )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    # avoid semicolons so AutoDoc does not start a new statement</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    return ({ underlying_kernel_embedding } -&gt;</span>
