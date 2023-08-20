@@ -73,7 +73,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">underlying_category := MatrixCategory( Q );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## We create a "void" CapCategory here and set its properties (abelian, monoidal) in the beginning</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">category_of_objects_with_endomorphism := CreateCapCategory( "Category of objects with endomorphisms" );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_of_objects_with_endomorphism!.category_as_first_argument := false;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_of_objects_with_endomorphism!.category_as_first_argument := true;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetIsAbelianCategory( category_of_objects_with_endomorphism, true );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetIsRigidSymmetricClosedMonoidalCategory( category_of_objects_with_endomorphism, true );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetIsStrictMonoidalCategory( category_of_objects_with_endomorphism, true );;</span>
@@ -139,12 +139,12 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">morphism_constructor := triple[3];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## Install equality/ congruence functions manually since they cannot be deduced automatically</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">AddIsEqualForObjects( category_of_objects_with_endomorphism,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( object1, object2 )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( cat, object1, object2 )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    return IsEqualForObjects( UnderlyingCell( object1 ), UnderlyingCell( object2 ) )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">           and IsCongruentForMorphisms( ObjectAttributesAsList( object1 )[1], ObjectAttributesAsList( object2 )[1] ); end );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddIsEqualForMorphisms( category_of_objects_with_endomorphism,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( morphism1, morphism2 )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( cat, morphism1, morphism2 )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    return IsCongruentForMorphisms( UnderlyingCell( morphism1 ), UnderlyingCell( morphism2 ) ); end );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## Finalize the category</span>
