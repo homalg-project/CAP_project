@@ -1576,7 +1576,7 @@ Equalizer := rec(
         
     fi;
     
-    for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
+    for current_morphism in diagram{[ 1 .. Length( diagram ) ]} do
         
         if not IsEqualForObjects( cat, Source( current_morphism ), cobase ) then
             return [ false, "the given morphisms of the equalizer diagram must have equal sources" ];
@@ -1666,7 +1666,7 @@ UniversalMorphismIntoEqualizer := rec(
         
     fi;
     
-    for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
+    for current_morphism in diagram{[ 1 .. Length( diagram ) ]} do
         
         if not IsEqualForObjects( cat, Source( current_morphism ), cobase ) then
             return [ false, "the given morphisms of the equalizer diagram must have equal sources" ];
@@ -2004,7 +2004,7 @@ Coequalizer := rec(
         
     od;
     
-    for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
+    for current_morphism in diagram{[ 1 .. Length( diagram ) ]} do
         
         if not IsEqualForObjects( cat, Range( current_morphism ), cobase ) then
             return [ false, "the given morphisms of the coequalizer diagram must have equal ranges" ];
@@ -2094,7 +2094,7 @@ UniversalMorphismFromCoequalizer := rec(
         
     od;
     
-    for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
+    for current_morphism in diagram{[ 1 .. Length( diagram ) ]} do
         
         if not IsEqualForObjects( cat, Range( current_morphism ), cobase ) then
             return [ false, "the given morphisms of the coequalizer diagram must have equal ranges" ];
