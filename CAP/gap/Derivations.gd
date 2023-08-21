@@ -123,10 +123,6 @@ DeclareAttribute( "UsedOperationsWithMultiplesAndCategoryGetters", IsDerivedMeth
 DeclareOperation( "InstallDerivationForCategory",
                   [ IsDerivedMethod, IsPosInt, IsCapCategory ] );
 
-# deprecated
-DeclareOperation( "DerivationResultWeight",
-                  [ IsDerivedMethod, IsDenseList ] );
-
 #! @Description
 #! Input is a derived method. Output is a unary function that takes as an input
 #! a category and does not output anything. This function is always called before
@@ -208,7 +204,7 @@ DeclareOperation( "DerivationsOfOperation", [ IsDerivedMethodGraph, IsString ] )
 #!  given a weight to assign to this operation.  It will then automatically install
 #!  all possible derived methods for $C$ in such a way that every operation has the
 #!  smallest possible weight (the weight of a derived method is computed by using
-#!  the weights of the operations it uses; see <C>DerivationResultWeight</C>).
+#!  the weights of the operations it uses).
 DeclareCategory( "IsOperationWeightList", IsAttributeStoringRep );
 
 #! @Description

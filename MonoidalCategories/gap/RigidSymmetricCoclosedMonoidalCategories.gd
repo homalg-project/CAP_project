@@ -22,9 +22,6 @@ DeclareGlobalVariable( "RIGID_SYMMETRIC_COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME
 DeclareOperation( "IsomorphismFromInternalCoHomToTensorProductWithCoDualObject",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
-InstallDeprecatedAlias( "IsomorphismFromInternalCoHomToTensorProduct", "IsomorphismFromInternalCoHomToTensorProductWithCoDualObject", "2023.06.14" );
-InstallDeprecatedAlias( "AddIsomorphismFromInternalCoHomToTensorProduct", "AddIsomorphismFromInternalCoHomToTensorProductWithCoDualObject", "2023.06.14" );
-
 #! @Description
 #! The arguments are two objects $a,b$.
 #! The output is the inverse of $\mathrm{IsomorphismFromInternalCoHomToTensorProductWithCoDualObject}$, namely
@@ -33,9 +30,6 @@ InstallDeprecatedAlias( "AddIsomorphismFromInternalCoHomToTensorProduct", "AddIs
 #! @Arguments a,b
 DeclareOperation( "IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
-
-InstallDeprecatedAlias( "IsomorphismFromTensorProductToInternalCoHom", "IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom", "2023.06.14" );
-InstallDeprecatedAlias( "AddIsomorphismFromTensorProductToInternalCoHom", "AddIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom", "2023.06.14" );
 
 #! @Description
 #! The arguments are two objects $a,b$.

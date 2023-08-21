@@ -295,9 +295,6 @@ DeclareOperation( "MorphismFromCoexponentialToCoproductWithGivenObjects",
 DeclareAttribute( "IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject",
                   IsCapCategoryObject );
 
-InstallDeprecatedAlias( "IsomorphismFromCocartesianDualToCoexponential", "IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject", "2023.06.14" );
-InstallDeprecatedAlias( "AddIsomorphismFromCocartesianDualToCoexponential", "AddIsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject", "2023.06.14" );
-
 #! @Description
 #! The argument is an object $a$.
 #! The output is the isomorphism
@@ -306,9 +303,6 @@ InstallDeprecatedAlias( "AddIsomorphismFromCocartesianDualToCoexponential", "Add
 #! @Arguments a
 DeclareAttribute( "IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject",
                   IsCapCategoryObject );
-
-InstallDeprecatedAlias( "IsomorphismFromCoexponentialToCocartesianDual", "IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject", "2023.06.14" );
-InstallDeprecatedAlias( "AddIsomorphismFromCoexponentialToCocartesianDual", "AddIsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject", "2023.06.14" );
 
 #! @Description
 #! The arguments are two objects $t,a$,

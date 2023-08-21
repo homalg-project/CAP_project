@@ -292,9 +292,6 @@ DeclareOperation( "MorphismFromInternalCoHomToTensorProductWithGivenObjects",
 DeclareAttribute( "IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit",
                   IsCapCategoryObject );
 
-InstallDeprecatedAlias( "IsomorphismFromCoDualToInternalCoHom", "IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit", "2023.06.14" );
-InstallDeprecatedAlias( "AddIsomorphismFromCoDualToInternalCoHom", "AddIsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit", "2023.06.14" );
-
 #! @Description
 #! The argument is an object $a$.
 #! The output is the isomorphism
@@ -303,9 +300,6 @@ InstallDeprecatedAlias( "AddIsomorphismFromCoDualToInternalCoHom", "AddIsomorphi
 #! @Arguments a
 DeclareAttribute( "IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject",
                   IsCapCategoryObject );
-
-InstallDeprecatedAlias( "IsomorphismFromInternalCoHomToCoDual", "IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject", "2023.06.14" );
-InstallDeprecatedAlias( "AddIsomorphismFromInternalCoHomToCoDual", "AddIsomorphismFromInternalCoHomFromTensorUnitToCoDualObject", "2023.06.14" );
 
 #! @Description
 #! The arguments are two objects $t,a$,

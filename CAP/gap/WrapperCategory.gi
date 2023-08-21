@@ -5,21 +5,6 @@
 #
 
 ##
-InstallMethod( UnderlyingCategory,
-        "for a wrapper CAP category",
-        [ IsWrapperCapCategory ],
-        
-  function( D )
-    
-    Print(
-      "WARNING: UnderlyingCategory for IsWrapperCapCategory is deprecated and will not be supported after 2023.06.13. Please use ModelingCategory instead.\n"
-    );
-    
-    return ModelingCategory( D );
-    
-end );
-
-##
 InstallMethodForCompilerForCAP( AsObjectInWrapperCategory,
         "for a wrapper CAP category and a CAP object",
         [ IsWrapperCapCategory, IsCapCategoryObject ],

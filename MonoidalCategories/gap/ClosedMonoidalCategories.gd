@@ -295,9 +295,6 @@ DeclareOperation( "MorphismFromTensorProductToInternalHomWithGivenObjects",
 DeclareAttribute( "IsomorphismFromDualObjectToInternalHomIntoTensorUnit",
                   IsCapCategoryObject );
 
-InstallDeprecatedAlias( "IsomorphismFromDualToInternalHom", "IsomorphismFromDualObjectToInternalHomIntoTensorUnit", "2023.06.14" );
-InstallDeprecatedAlias( "AddIsomorphismFromDualToInternalHom", "AddIsomorphismFromDualObjectToInternalHomIntoTensorUnit", "2023.06.14" );
-
 #! @Description
 #! The argument is an object $a$.
 #! The output is the isomorphism
@@ -306,9 +303,6 @@ InstallDeprecatedAlias( "AddIsomorphismFromDualToInternalHom", "AddIsomorphismFr
 #! @Arguments a
 DeclareAttribute( "IsomorphismFromInternalHomIntoTensorUnitToDualObject",
                   IsCapCategoryObject );
-
-InstallDeprecatedAlias( "IsomorphismFromInternalHomToDual", "IsomorphismFromInternalHomIntoTensorUnitToDualObject", "2023.06.14" );
-InstallDeprecatedAlias( "AddIsomorphismFromInternalHomToDual", "AddIsomorphismFromInternalHomIntoTensorUnitToDualObject", "2023.06.14" );
 
 #! @Description
 #! The arguments are two objects $t,a$,
