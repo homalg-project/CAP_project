@@ -212,8 +212,7 @@
   and  given  a weight to assign to this operation. It will then automatically
   install  all  possible  derived  methods  for  [23XC[123X  in  such  a way that every
   operation  has  the smallest possible weight (the weight of a derived method
-  is   computed   by  using  the  weights  of  the  operations  it  uses;  see
-  [10XDerivationResultWeight[110X).[133X
+  is computed by using the weights of the operations it uses).[133X
   
   [1X8.4-2 MakeOperationWeightList[101X
   
