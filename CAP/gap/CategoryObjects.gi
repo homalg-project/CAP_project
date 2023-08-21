@@ -285,6 +285,7 @@ InstallGlobalFunction( ObjectifyObjectForCAPWithAttributes,
     obj := CallFuncList( ObjectifyWithAttributes, arg_list );
     
     #= comment for Julia
+    # This can be removed once AddObjectRepresentation is removed.
     # work around https://github.com/gap-system/gap/issues/3642:
     # New implications of `ObjectFilter( category )` (e.g. installed via `AddObjectRepresentation`)
     # are not automatically set in `category!.object_type`.
@@ -310,6 +311,7 @@ InstallGlobalFunction( CreateCapCategoryObjectWithAttributes,
     obj := CallFuncList( ObjectifyWithAttributes, arg_list );
     
     #= comment for Julia
+    # This can be removed once AddObjectRepresentation is removed.
     # work around https://github.com/gap-system/gap/issues/3642:
     # New implications of `ObjectFilter( category )` (e.g. installed via `AddObjectRepresentation`)
     # are not automatically set in `category!.object_type`.
