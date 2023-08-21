@@ -298,9 +298,6 @@ DeclareOperation( "MorphismFromDirectProductToExponentialWithGivenObjects",
 DeclareAttribute( "IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject",
                   IsCapCategoryObject );
 
-InstallDeprecatedAlias( "IsomorphismFromCartesianDualToExponential", "IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject", "2023.06.14" );
-InstallDeprecatedAlias( "AddIsomorphismFromCartesianDualToExponential", "AddIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject", "2023.06.14" );
-
 #! @Description
 #! The argument is an object $a$.
 #! The output is the isomorphism
@@ -309,9 +306,6 @@ InstallDeprecatedAlias( "AddIsomorphismFromCartesianDualToExponential", "AddIsom
 #! @Arguments a
 DeclareAttribute( "IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject",
                   IsCapCategoryObject );
-
-InstallDeprecatedAlias( "IsomorphismFromExponentialToCartesianDual", "IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject", "2023.06.14" );
-InstallDeprecatedAlias( "AddIsomorphismFromExponentialToCartesianDual", "AddIsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject", "2023.06.14" );
 
 #! @Description
 #! The arguments are two objects $t,a$,

@@ -422,10 +422,7 @@ InstallMethod( CategoryConstructor,
                     
                 else
                     
-                    Display( "WARNING: option `top_object_getter_string` is not set in a call to `CategoryConstructor`, using default value `ObjectConstructor`. This fallback will not be supported after 2023.08.12." );
-                    func_string := ReplacedStringViaRecord( func_string, rec(
-                        top_object_getter := "ObjectConstructor",
-                    ) );
+                    Error( "option `top_object_getter_string` must be set in a call to `CategoryConstructor`" );
                     
                 fi;
                 
@@ -481,10 +478,7 @@ InstallMethod( CategoryConstructor,
                     
                 else
                     
-                    Display( "WARNING: option `top_morphism_getter_string` is not set in a call to `CategoryConstructor`, using default value `MorphismConstructor`. This fallback will not be supported after 2023.08.12." );
-                    func_string := ReplacedStringViaRecord( func_string, rec(
-                        top_morphism_getter := "MorphismConstructor",
-                    ) );
+                    Error( "option `top_morphism_getter_string` must be set in a call to `CategoryConstructor`" );
                     
                 fi;
                 

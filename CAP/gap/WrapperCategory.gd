@@ -33,9 +33,6 @@ DeclareCategory( "IsWrapperCapCategoryMorphism",
 #
 ####################################
 
-DeclareAttribute( "UnderlyingCategory",
-        IsWrapperCapCategory );
-
 #! @Description
 #!  The cell underlying the wrapper category object <A>object</A>.
 #! @Arguments object

@@ -248,6 +248,8 @@ InstallMethod( AddObjectRepresentation,
                
   function( category, representation )
     
+    Print( "WARNING: AddObjectRepresentation is deprecated and will not be supported after 2024.08.21. Please use CreateCapCategory with four arguments instead.\n" );
+    
     if not IsSpecializationOfFilter( IsCapCategoryObject, representation ) then
         
         Error( "the object representation must imply IsCapCategoryObject" );

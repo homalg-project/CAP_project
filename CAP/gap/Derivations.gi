@@ -132,24 +132,6 @@ function( d, weight, C )
   
 end );
 
-InstallMethod( DerivationResultWeight,
-               [ IsDerivedMethod, IsDenseList ],
-function( d, op_weights )
-  local w, used_op_multiples, i, op_w, mult;
-  Display( "WARNING: DerivationResultWeight is deprecated and will not be supported after 2023.08.26.\n" );
-  w := DerivationWeight( d );
-  used_op_multiples := UsedOperationsWithMultiplesAndCategoryGetters( d );
-  for i in [ 1 .. Length( used_op_multiples ) ] do
-    op_w := op_weights[ i ];
-    mult := used_op_multiples[ i ][ 2 ];
-    if op_w = infinity then
-      return infinity;
-    fi;
-    w := w + op_w * mult;
-  od;
-  return w;
-end );
-
 InstallMethod( MakeDerivationGraph,
                [ IsDenseList ],
 function( operations )

@@ -254,6 +254,8 @@ InstallMethod( AddMorphismRepresentation,
                
   function( category, representation )
     
+    Print( "WARNING: AddMorphismRepresentation is deprecated and will not be supported after 2024.08.21. Please use CreateCapCategory with four arguments instead.\n" );
+    
     if not IsSpecializationOfFilter( IsCapCategoryMorphism, representation ) then
         
         Error( "the morphism representation must imply IsCapCategoryMorphism" );
@@ -550,12 +552,6 @@ InstallMethod( AddPropertyToMatchAtIsCongruentForMorphisms,
     fi;
     
 end );
-
-# deprecated legacy aliases
-InstallDeprecatedAlias( "IsIdenticalToIdentityMorphism", "IsEqualToIdentityMorphism", "2023.05.17" );
-InstallDeprecatedAlias( "AddIsIdenticalToIdentityMorphism", "AddIsEqualToIdentityMorphism", "2023.05.17" );
-InstallDeprecatedAlias( "IsIdenticalToZeroMorphism", "IsEqualToZeroMorphism", "2023.05.17" );
-InstallDeprecatedAlias( "AddIsIdenticalToZeroMorphism", "AddIsEqualToZeroMorphism", "2023.05.17" );
 
 ######################################
 ##
