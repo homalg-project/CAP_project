@@ -254,6 +254,8 @@ InstallMethod( AddMorphismRepresentation,
                
   function( category, representation )
     
+    Print( "WARNING: AddMorphismRepresentation is deprecated and will not be supported after 2024.08.21. Please use CreateCapCategory with four arguments instead.\n" );
+    
     if not IsSpecializationOfFilter( IsCapCategoryMorphism, representation ) then
         
         Error( "the morphism representation must imply IsCapCategoryMorphism" );
