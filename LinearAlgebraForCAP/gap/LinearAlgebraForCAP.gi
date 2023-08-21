@@ -73,24 +73,11 @@ InstallGlobalFunction( MATRIX_CATEGORY,
     SetRangeCategoryOfHomomorphismStructure( category, category );
     SetIsEquippedWithHomomorphismStructure( category, true );
     
-    #= comment for Julia
-    if category!.overhead then
-        
-        ## TODO: Logic for MatrixCategory
-        AddPredicateImplicationFileToCategory( category,
-          Filename(
-            DirectoriesPackageLibrary( "LinearAlgebraForCAP", "LogicForMatrixCategory" ),
-            "PredicateImplicationsForMatrixCategory.tex" )
-        );
-        
-    fi;
-    # =#
-    
     if ValueOption( "no_precompiled_code" ) = true then
         
         if IsPackageMarkedForLoading( "FreydCategoriesForCAP", ">= 2022.10-14" ) then
             
-            return MatrixCategoryAsCategoryOfRows( homalg_field );
+            category := MatrixCategoryAsCategoryOfRows( homalg_field );
             
         else
             
@@ -103,6 +90,19 @@ InstallGlobalFunction( MATRIX_CATEGORY,
         ADD_FUNCTIONS_FOR_MatrixCategoryPrecompiled( category );
         
     fi;
+    
+    #= comment for Julia
+    if category!.overhead then
+        
+        ## TODO: Logic for MatrixCategory
+        AddPredicateImplicationFileToCategory( category,
+          Filename(
+            DirectoriesPackageLibrary( "LinearAlgebraForCAP", "LogicForMatrixCategory" ),
+            "PredicateImplicationsForMatrixCategory.tex" )
+        );
+        
+    fi;
+    # =#
     
     Finalize( category );
     
