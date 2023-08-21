@@ -320,6 +320,7 @@ InstallGlobalFunction( ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes,
     fi;
     
     #= comment for Julia
+    # This can be removed once AddMorphismRepresentation is removed.
     # work around https://github.com/gap-system/gap/issues/3642:
     # New implications of `MorphismFilter( category )` (e.g. installed via `AddMorphismRepresentation`)
     # are not automatically set in `category!.morphism_type`.
@@ -350,6 +351,7 @@ InstallGlobalFunction( CreateCapCategoryMorphismWithAttributes,
     fi;
     
     #= comment for Julia
+    # This can be removed once AddMorphismRepresentation is removed.
     # work around https://github.com/gap-system/gap/issues/3642:
     # New implications of `MorphismFilter( category )` (e.g. installed via `AddMorphismRepresentation`)
     # are not automatically set in `category!.morphism_type`.
