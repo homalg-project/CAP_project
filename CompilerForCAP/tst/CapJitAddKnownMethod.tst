@@ -11,8 +11,8 @@ gap> DeclareFilter( "IsMyCat2", IsCapCategory );;
 #
 gap> DeclareOperation( "MyOperation", [ IsMyCat1 ] );;
 gap> DeclareOperation( "MyOperation", [ IsMyCat2 ] );;
-gap> DeclareOperation( "MyOperation", [ IsInt, IsString ] );;
-gap> CapJitAddTypeSignature( "MyOperation", [ IsInt, IsString ], IsInt );
+gap> DeclareOperation( "MyOperation", [ IsInt, IsStringRep ] );;
+gap> CapJitAddTypeSignature( "MyOperation", [ IsInt, IsStringRep ], IsInt );
 gap> DeclareOperation( "MyOperation", [ IsInt, IsInt ] );;
 gap> CapJitAddTypeSignature( "MyOperation", [ IsInt, IsInt ], IsInt );
 
@@ -24,7 +24,7 @@ gap> InstallOtherMethodForCompilerForCAP(
 >     [ IsMyCat2, IsInt ],
 >     { cat, int } -> 3
 > );
-gap> InstallMethodForCompilerForCAP( MyOperation, [ IsInt, IsString ], { int, string } -> 4 );
+gap> InstallMethodForCompilerForCAP( MyOperation, [ IsInt, IsStringRep ], { int, string } -> 4 );
 gap> InstallMethod( MyOperation, [ IsInt, IsInt ], { int, int2 } -> 5 );
 
 #

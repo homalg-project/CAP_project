@@ -524,7 +524,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INFERRED_DATA_TYPES, function ( tree, in
             
         elif tree.type = "EXPR_STRING" then
             
-            data_type := rec( filter := IsString );
+            data_type := rec( filter := IsStringRep );
             
         elif tree.type = "EXPR_CHAR" then
             
