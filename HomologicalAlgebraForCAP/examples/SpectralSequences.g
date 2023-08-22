@@ -1,19 +1,10 @@
-if not IsBound( VectorSpacesConstructorsLoaded ) then
-
-  ReadPackage( "CAP", "examples/VectorSpacesConstructors.g" );;
-
-fi;
-
-
-vecspaces := CreateCapCategory( "VectorSpacesForSpectralSequenceTest" );
-
-vecspaces!.category_as_first_argument := false;
-
-ReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );
-
 LoadPackage( "HomologicalAlgebraForCAP" );
 
-A := QVectorSpace( 2 );
+LoadPackage( "LinearAlgebraForCAP" );
+
+Q := HomalgFieldOfRationals();
+
+A := VectorSpaceObject( 2, Q );
 
 CA := AsPointedCocomplex( A, 0 );
 

@@ -3,36 +3,28 @@
 #! @Section Basics
 
 #! @Example
-LoadPackage( "MonoidalCategories" );
+LoadPackage( "MonoidalCategories", false );
 #! true
-vecspaces := CreateCapCategory( "VectorSpaces" );
-#! VectorSpaces
-vecspaces!.category_as_first_argument := false;;
-ReadPackage( "MonoidalCategories",
-        "examples/VectorSpacesMonoidalCategory.gi" );
+LoadPackage( "LinearAlgebraForCAP", false );
 #! true
-z := ZeroObject( vecspaces );
-#! <A rational vector space of dimension 0>
-a := QVectorSpace( 1 );
-#! <A rational vector space of dimension 1>
-b := QVectorSpace( 2 );
-#! <A rational vector space of dimension 2>
-c := QVectorSpace( 3 );
-#! <A rational vector space of dimension 3>
+Q := HomalgFieldOfRationals();
+#! Q
+a := VectorSpaceObject( 1, Q );
+#! <A vector space object over Q of dimension 1>
+b := VectorSpaceObject( 2, Q );
+#! <A vector space object over Q of dimension 2>
+c := VectorSpaceObject( 3, Q );
+#! <A vector space object over Q of dimension 3>
+z := ZeroObject( CapCategory( a ) );
+#! <A vector space object over Q of dimension 0>
 alpha := VectorSpaceMorphism( a, [ [ 1, 0 ] ], b );
-#! A rational vector space homomorphism with matrix:
-#! [ [  1,  0 ] ]
+#! <A morphism in Category of matrices over Q>
 beta := VectorSpaceMorphism( b,
                 [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], c );
-#! A rational vector space homomorphism with matrix:
-#! [ [  1,  0,  0 ],
-#!   [  0,  1,  0 ] ]
+#! <A morphism in Category of matrices over Q>
 gamma := VectorSpaceMorphism( c,
                  [ [ 0, 1, 1 ], [ 1, 0, 1 ], [ 1, 1, 0 ] ], c );
-#! A rational vector space homomorphism with matrix:
-#! [ [  0,  1,  1 ],
-#!   [  1,  0,  1 ],
-#!   [  1,  1,  0 ] ]
+#! <A morphism in Category of matrices over Q>
 IsCongruentForMorphisms(
         TensorProductOnMorphisms( alpha, beta ),
         TensorProductOnMorphisms( beta, alpha ) );
