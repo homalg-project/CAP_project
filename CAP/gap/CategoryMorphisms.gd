@@ -399,7 +399,7 @@ DeclareOperation( "AddMorphismRepresentation",
 #! @Returns a morphism
 DeclareGlobalFunction( "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" );
 
-#! @Arguments morphism, category, source, range[, attr1, val1, attr2, val2, ...]
+#! @Arguments category, source, range[, attr1, val1, attr2, val2, ...]
 #! @Description
 #!  Shorthand for `ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), category, source, range[, attr1, val1, attr2, val2, ...] )`.
 #! @Returns a morphism
