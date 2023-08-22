@@ -157,7 +157,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_PRODUCT_ADDS_FROM_CATEGORY",
         
         create_func := function( current_name )
             
-            return function( arg )
+            return function( cat, arg... )
                 local product_args, result_list;
                 
                 product_args := CAP_INTERNAL_CREATE_PRODUCT_ARGUMENT_LIST( arg );
@@ -208,7 +208,7 @@ InstallMethodWithCrispCache( ProductOp,
     
     product_category := CreateCapCategory( namestring );
     
-    product_category!.category_as_first_argument := false;
+    product_category!.category_as_first_argument := true;
     
     SetComponents( product_category, category_list );
     
