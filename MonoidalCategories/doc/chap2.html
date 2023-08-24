@@ -312,36 +312,28 @@
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "MonoidalCategories" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "MonoidalCategories", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vecspaces := CreateCapCategory( "VectorSpaces" );</span>
-VectorSpaces
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vecspaces!.category_as_first_argument := false;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "MonoidalCategories",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "examples/VectorSpacesMonoidalCategory.gi" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LinearAlgebraForCAP", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z := ZeroObject( vecspaces );</span>
-&lt;A rational vector space of dimension 0&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := QVectorSpace( 1 );</span>
-&lt;A rational vector space of dimension 1&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := QVectorSpace( 2 );</span>
-&lt;A rational vector space of dimension 2&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := QVectorSpace( 3 );</span>
-&lt;A rational vector space of dimension 3&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();</span>
+Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := VectorSpaceObject( 1, Q );</span>
+&lt;A vector space object over Q of dimension 1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := VectorSpaceObject( 2, Q );</span>
+&lt;A vector space object over Q of dimension 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := VectorSpaceObject( 3, Q );</span>
+&lt;A vector space object over Q of dimension 3&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z := ZeroObject( CapCategory( a ) );</span>
+&lt;A vector space object over Q of dimension 0&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := VectorSpaceMorphism( a, [ [ 1, 0 ] ], b );</span>
-A rational vector space homomorphism with matrix:
-[ [  1,  0 ] ]
+&lt;A morphism in Category of matrices over Q&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := VectorSpaceMorphism( b,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], c );</span>
-A rational vector space homomorphism with matrix:
-[ [  1,  0,  0 ],
-  [  0,  1,  0 ] ]
+&lt;A morphism in Category of matrices over Q&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := VectorSpaceMorphism( c,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                 [ [ 0, 1, 1 ], [ 1, 0, 1 ], [ 1, 1, 0 ] ], c );</span>
-A rational vector space homomorphism with matrix:
-[ [  0,  1,  1 ],
-  [  1,  0,  1 ],
-  [  1,  1,  0 ] ]
+&lt;A morphism in Category of matrices over Q&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        TensorProductOnMorphisms( alpha, beta ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        TensorProductOnMorphisms( beta, alpha ) );</span>
