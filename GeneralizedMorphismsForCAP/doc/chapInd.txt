@@ -84,14 +84,18 @@
   [2XIdempotentDefinedBySubobjectByCospan[102X, for IsCapCategoryMorphism 2.3-7 
   [2XIdempotentDefinedBySubobjectBySpan[102X, for IsCapCategoryMorphism 3.3-7 
   [2XIdempotentDefinedBySubobjectByThreeArrows[102X, for IsCapCategoryMorphism 4.3-7 
-  [2XIsGeneralizedMorphism[102X, for IsCapCategoryMorphism 1.1-2 
-  [2XIsGeneralizedMorphismByCospan[102X, for IsGeneralizedMorphism 2.1-2 
-  [2XIsGeneralizedMorphismBySpan[102X, for IsGeneralizedMorphism 3.1-2 
-  [2XIsGeneralizedMorphismByThreeArrows[102X, for IsGeneralizedMorphism 4.1-2 
-  [2XIsGeneralizedMorphismCategoryByCospansObject[102X, for IsGeneralizedMorphismCategoryObject 2.1-1 
-  [2XIsGeneralizedMorphismCategoryBySpansObject[102X, for IsGeneralizedMorphismCategoryObject 3.1-1 
-  [2XIsGeneralizedMorphismCategoryByThreeArrowsObject[102X, for IsGeneralizedMorphismCategoryObject 4.1-1 
-  [2XIsGeneralizedMorphismCategoryObject[102X, for IsCapCategoryObject 1.1-1 
+  [2XIsGeneralizedMorphism[102X, for IsCapCategoryMorphism 1.1-3 
+  [2XIsGeneralizedMorphismByCospan[102X, for IsGeneralizedMorphism 2.1-3 
+  [2XIsGeneralizedMorphismBySpan[102X, for IsGeneralizedMorphism 3.1-3 
+  [2XIsGeneralizedMorphismByThreeArrows[102X, for IsGeneralizedMorphism 4.1-3 
+  [2XIsGeneralizedMorphismCategory[102X, for IsCapCategory 1.1-1 
+  [2XIsGeneralizedMorphismCategoryByCospans[102X, for IsGeneralizedMorphismCategory 2.1-1 
+  [2XIsGeneralizedMorphismCategoryByCospansObject[102X, for IsGeneralizedMorphismCategoryObject 2.1-2 
+  [2XIsGeneralizedMorphismCategoryBySpans[102X, for IsGeneralizedMorphismCategory 3.1-1 
+  [2XIsGeneralizedMorphismCategoryBySpansObject[102X, for IsGeneralizedMorphismCategoryObject 3.1-2 
+  [2XIsGeneralizedMorphismCategoryByThreeArrows[102X, for IsGeneralizedMorphismCategory 4.1-1 
+  [2XIsGeneralizedMorphismCategoryByThreeArrowsObject[102X, for IsGeneralizedMorphismCategoryObject 4.1-2 
+  [2XIsGeneralizedMorphismCategoryObject[102X, for IsCapCategoryObject 1.1-2 
   [2XIsHonest[102X, for IsGeneralizedMorphism 1.4-1 
   [2XIsSerreQuotientCategoryMorphism[102X, for IsCapCategoryMorphism 7.1-2 
   [2XIsSerreQuotientCategoryObject[102X, for IsCapCategoryObject 7.1-1 

@@ -31,7 +31,16 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap9_mj.html#X8769971A878B6648">9.2 <span class="Heading">Intersection of Nodal Curve and Cusp</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap9_mj.html#X8325B23C86E16E76">9.3 <span class="Heading">Sweep</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap9_mj.html#X8245BF297DF9A3E7">9.3 <span class="Heading">WrapperCategory</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap9_mj.html#X8325B23C86E16E76">9.4 <span class="Heading">Sweep</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap9_mj.html#X86FB477C7908A3A6">9.5 <span class="Heading">Generalized Morphisms Category</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap9_mj.html#X7E8AFE5085FF7E15">9.6 <span class="Heading">IsWellDefined</span></a>
 </span>
 </div>
 </div>
@@ -72,9 +81,90 @@ true
 
 <p>We are going to intersect the nodal curve <span class="SimpleMath">\(f = y^2 - x^2(x+1)\)</span> and the cusp <span class="SimpleMath">\(g = (x+y)^2 - (y-x)^3\)</span>. The two curves are arranged in a way such that they intersect at <span class="SimpleMath">\((0,0)\)</span> with intersection number as high as possible. We are going to compute this intersection number using the definition of the intersection number as the length of the module <span class="SimpleMath">\(R/(f,g)\)</span> localized at <span class="SimpleMath">\((0,0)\)</span>. In order to model modules over the localization of <span class="SimpleMath">\(Q[x,y]\)</span> at <span class="SimpleMath">\((0,0)\)</span>, we use a suitable Serre quotient category. 1 2 1 1 true We are going to intersect the nodal curve <span class="SimpleMath">\(f = y^2 - x^2(x+1)\)</span> and the cusp <span class="SimpleMath">\(g = (x+y)^2 - (y-x)^3\)</span>. The two curves are arranged in a way such that they intersect at <span class="SimpleMath">\((0,0)\)</span> with intersection number as high as possible. We are going to compute this intersection number using the definition of the intersection number as the length of the module <span class="SimpleMath">\(R/(f,g)\)</span> localized at <span class="SimpleMath">\((0,0)\)</span>. In order to model modules over the localization of <span class="SimpleMath">\(Q[x,y]\)</span> at <span class="SimpleMath">\((0,0)\)</span>, we use a suitable Serre quotient category. 1 2 1 1 true We are going to intersect the nodal curve <span class="SimpleMath">\(f = y^2 - x^2(x+1)\)</span> and the cusp <span class="SimpleMath">\(g = (x+y)^2 - (y-x)^3\)</span>. The two curves are arranged in a way such that they intersect at <span class="SimpleMath">\((0,0)\)</span> with intersection number as high as possible. We are going to compute this intersection number using the definition of the intersection number as the length of the module <span class="SimpleMath">\(R/(f,g)\)</span> localized at <span class="SimpleMath">\((0,0)\)</span>. In order to model modules over the localization of <span class="SimpleMath">\(Q[x,y]\)</span> at <span class="SimpleMath">\((0,0)\)</span>, we use a suitable Serre quotient category. 1 2 1 1 true</p>
 
+<p><a id="X8245BF297DF9A3E7" name="X8245BF297DF9A3E7"></a></p>
+
+<h4>9.3 <span class="Heading">WrapperCategory</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LinearAlgebraForCAP" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "GeneralizedMorphismsForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">old_generalized_morphism_standard := CAP_INTERNAL!.generalized_morphism_standard;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SwitchGeneralizedMorphismStandard( "cospan" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals( );</span>
+Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id := HomalgIdentityMatrix( 8, Q );</span>
+&lt;An unevaluated 8 x 8 identity matrix over an internal ring&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := CertainColumns( CertainRows( id, [ 1, 2, 3 ] ), [ 2, 3, 4, 5 ] );</span>
+&lt;An unevaluated non-zero 3 x 4 matrix over an internal ring&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := CertainColumns( CertainRows( id, [ 1, 2, 3, 4 ] ), [ 2, 3, 4, 5, 6 ] );</span>
+&lt;An unevaluated non-zero 4 x 5 matrix over an internal ring&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := CertainColumns( CertainRows( id, [ 1, 2, 3, 4, 5 ] ), [ 3, 4, 5, 6, 7, 8 ] );</span>
+&lt;An unevaluated non-zero 5 x 6 matrix over an internal ring&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( a * b );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( b * c );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( a * b * c );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Qmat := MatrixCategory( Q );</span>
+Category of matrices over Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Wrapper := WrapperCategory( Qmat, rec( ) );</span>
+WrapperCategory( Category of matrices over Q )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := a / Wrapper;</span>
+&lt;A morphism in WrapperCategory( Category of matrices over Q )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := b / Wrapper;</span>
+&lt;A morphism in WrapperCategory( Category of matrices over Q )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := c / Wrapper;</span>
+&lt;A morphism in WrapperCategory( Category of matrices over Q )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d := CokernelProjection( a );</span>
+&lt;An epimorphism in WrapperCategory( Category of matrices over Q )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e := CokernelColift( a, PreCompose( b, c ) );</span>
+&lt;A morphism in WrapperCategory( Category of matrices over Q )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f := KernelEmbedding( e );</span>
+&lt;A monomorphism in WrapperCategory( Category of matrices over Q )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">g := KernelEmbedding( c );</span>
+&lt;A monomorphism in WrapperCategory( Category of matrices over Q )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h := KernelLift( c, PreCompose( a, b ) );</span>
+&lt;A morphism in WrapperCategory( Category of matrices over Q )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i := CokernelProjection( h );</span>
+&lt;An epi morphism in WrapperCategory( Category of matrices over Q )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ff := AsGeneralizedMorphism( f );</span>
+&lt;A morphism in Generalized morphism category of
+ WrapperCategory( Category of matrices over Q ) by cospan&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dd := AsGeneralizedMorphism( d );</span>
+&lt;A morphism in Generalized morphism category of
+ WrapperCategory( Category of matrices over Q ) by cospan&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">bb := AsGeneralizedMorphism( b );</span>
+&lt;A morphism in Generalized morphism category of
+ WrapperCategory( Category of matrices over Q ) by cospan&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gg := AsGeneralizedMorphism( g );</span>
+&lt;A morphism in Generalized morphism category of
+ WrapperCategory( Category of matrices over Q ) by cospan&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ii := AsGeneralizedMorphism( i );</span>
+&lt;A morphism in Generalized morphism category of
+ WrapperCategory( Category of matrices over Q ) by cospan&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ss := PreCompose( [ ff, PseudoInverse( dd ), bb, PseudoInverse( gg ), ii ] );</span>
+&lt;A morphism in Generalized morphism category of
+ WrapperCategory( Category of matrices over Q ) by cospan&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := HonestRepresentative( ss );</span>
+&lt;A morphism in WrapperCategory( Category of matrices over Q )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">j := KernelObjectFunctorial( b, d, e );</span>
+&lt;A morphism in WrapperCategory( Category of matrices over Q )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := CokernelObjectFunctorial( h, g, b );</span>
+&lt;A morphism in WrapperCategory( Category of matrices over Q )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HK := HomologyObject( j, s );</span>
+&lt;An object in WrapperCategory( Category of matrices over Q )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HC := HomologyObject( s, k );</span>
+&lt;An object in WrapperCategory( Category of matrices over Q )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SwitchGeneralizedMorphismStandard( old_generalized_morphism_standard );</span>
+</pre></div>
+
 <p><a id="X8325B23C86E16E76" name="X8325B23C86E16E76"></a></p>
 
-<h4>9.3 <span class="Heading">Sweep</span></h4>
+<h4>9.4 <span class="Heading">Sweep</span></h4>
 
 <p><span class="SimpleMath">\(\href{https://terrytao.wordpress.com/2015/10/07/sweeping-a-matrix-rotates-its-graph/}{\textrm{Geometric interpretation of sweeping a matrix by Terence Tao.}}\)</span></p>
 
@@ -128,6 +218,266 @@ A morphism in Category of matrices over Q
   [  3,  2,  1 ] ]
 
 A morphism in Category of matrices over Q
+</pre></div>
+
+<p><a id="X86FB477C7908A3A6" name="X86FB477C7908A3A6"></a></p>
+
+<h4>9.5 <span class="Heading">Generalized Morphisms Category</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();</span>
+Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := VectorSpaceObject( 2, Q );</span>
+&lt;A vector space object over Q of dimension 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := VectorSpaceObject( 3, Q );</span>
+&lt;A vector space object over Q of dimension 3&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B_1 := VectorSpaceObject( 1, Q );</span>
+&lt;A vector space object over Q of dimension 1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C_1 := VectorSpaceObject( 2, Q );</span>
+&lt;A vector space object over Q of dimension 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c1_source_aid := VectorSpaceMorphism( B_1, [ [ 1, 0 ] ], B );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetIsSubobject( c1_source_aid, true );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c1_range_aid := VectorSpaceMorphism( C, [ [ 1, 0 ], [ 0, 1 ], [ 0, 0 ] ], C_1 );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetIsFactorobject( c1_range_aid, true );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c1_associated := VectorSpaceMorphism( B_1, [ [ 1, 1 ] ], C_1 );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c1 := GeneralizedMorphism( c1_source_aid, c1_associated, c1_range_aid );</span>
+&lt;A morphism in Generalized morphism category of Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B_2 := VectorSpaceObject( 1, Q );</span>
+&lt;A vector space object over Q of dimension 1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C_2 := VectorSpaceObject( 2, Q );</span>
+&lt;A vector space object over Q of dimension 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c2_source_aid := VectorSpaceMorphism( B_2, [ [ 2, 0 ] ], B );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetIsSubobject( c2_source_aid, true );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c2_range_aid := VectorSpaceMorphism( C, [ [ 3, 0 ], [ 0, 3 ], [ 0, 0 ] ], C_2 );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetIsFactorobject( c2_range_aid, true );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c2_associated := VectorSpaceMorphism( B_2, [ [ 6, 6 ] ], C_2 );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c2 := GeneralizedMorphism( c2_source_aid, c2_associated, c2_range_aid );</span>
+&lt;A morphism in Generalized morphism category of Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( c1, c2 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( c1, c1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c3_associated := VectorSpaceMorphism( B_1, [ [ 2, 2 ] ], C_1 );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c3 := GeneralizedMorphism( c1_source_aid, c3_associated, c1_range_aid );</span>
+&lt;A morphism in Generalized morphism category of Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( c1, c3 );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( c2, c3 );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c1 + c2;</span>
+&lt;A morphism in Generalized morphism category of Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Arrow( c1 + c2 );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+</pre></div>
+
+<p>First composition test:</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();</span>
+Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := VectorSpaceObject( 1, Q );</span>
+&lt;A vector space object over Q of dimension 1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := VectorSpaceObject( 2, Q );</span>
+&lt;A vector space object over Q of dimension 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := VectorSpaceObject( 3, Q );</span>
+&lt;A vector space object over Q of dimension 3&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">phi_tilde_associated := VectorSpaceMorphism( A, [ [ 1, 2, 0 ] ], C );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">phi_tilde_source_aid := VectorSpaceMorphism( A, [ [ 1, 2 ] ], B );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">phi_tilde := GeneralizedMorphismWithSourceAid( phi_tilde_source_aid, phi_tilde_associated );</span>
+&lt;A morphism in Generalized morphism category of Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi_tilde_associated := IdentityMorphism( B );</span>
+&lt;An identity morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi_tilde_source_aid := VectorSpaceMorphism( B, [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], C );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi_tilde := GeneralizedMorphismWithSourceAid( psi_tilde_source_aid, psi_tilde_associated );</span>
+&lt;A morphism in Generalized morphism category of Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">composition := PreCompose( phi_tilde, psi_tilde );</span>
+&lt;A morphism in Generalized morphism category of Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Arrow( composition );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SourceAid( composition );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RangeAid( composition );</span>
+&lt;An identity morphism in Category of matrices over Q&gt;
+</pre></div>
+
+<p>Second composition test</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();</span>
+Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := VectorSpaceObject( 1, Q );</span>
+&lt;A vector space object over Q of dimension 1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := VectorSpaceObject( 2, Q );</span>
+&lt;A vector space object over Q of dimension 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := VectorSpaceObject( 3, Q );</span>
+&lt;A vector space object over Q of dimension 3&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">phi2_tilde_associated := VectorSpaceMorphism( A, [ [ 1, 5 ] ], B );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">phi2_tilde_range_aid := VectorSpaceMorphism( C, [ [ 1, 0 ], [ 0, 1 ], [ 1, 1 ] ], B );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">phi2_tilde := GeneralizedMorphismWithRangeAid( phi2_tilde_associated, phi2_tilde_range_aid );</span>
+&lt;A morphism in Generalized morphism category of Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi2_tilde_associated := VectorSpaceMorphism( C, [ [ 1 ], [ 3 ], [ 4 ] ], A );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi2_tilde_range_aid := VectorSpaceMorphism( B, [ [ 1 ], [ 1 ] ], A );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi2_tilde := GeneralizedMorphismWithRangeAid( psi2_tilde_associated, psi2_tilde_range_aid );</span>
+&lt;A morphism in Generalized morphism category of Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">composition2 := PreCompose( phi2_tilde, psi2_tilde );</span>
+&lt;A morphism in Generalized morphism category of Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Arrow( composition2 );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RangeAid( composition2 );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SourceAid( composition2 );</span>
+&lt;An identity morphism in Category of matrices over Q&gt;
+</pre></div>
+
+<p>Third composition test</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();</span>
+Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := VectorSpaceObject( 3, Q );</span>
+&lt;A vector space object over Q of dimension 3&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Asub := VectorSpaceObject( 2, Q );</span>
+&lt;A vector space object over Q of dimension 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := VectorSpaceObject( 3, Q );</span>
+&lt;A vector space object over Q of dimension 3&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Bfac := VectorSpaceObject( 1, Q );</span>
+&lt;A vector space object over Q of dimension 1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Bsub := VectorSpaceObject( 2, Q );</span>
+&lt;A vector space object over Q of dimension 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := VectorSpaceObject( 3, Q );</span>
+&lt;A vector space object over Q of dimension 3&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Cfac := VectorSpaceObject( 1, Q );</span>
+&lt;A vector space object over Q of dimension 1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Asub_into_A := VectorSpaceMorphism( Asub, [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], A );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Asub_to_Bfac := VectorSpaceMorphism( Asub, [ [ 1 ], [ 1 ] ], Bfac );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B_onto_Bfac := VectorSpaceMorphism( B, [ [ 1 ], [ 1 ], [ 1 ] ], Bfac );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Bsub_into_B := VectorSpaceMorphism( Bsub, [ [ 2, 2, 0 ], [ 0, 2, 2 ] ], B );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Bsub_to_Cfac := VectorSpaceMorphism( Bsub, [ [ 3 ], [ 0 ] ], Cfac );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C_onto_Cfac := VectorSpaceMorphism( C, [ [ 1 ], [ 2 ], [ 3 ] ], Cfac );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">generalized_morphism1 := GeneralizedMorphism( Asub_into_A, Asub_to_Bfac, B_onto_Bfac );</span>
+&lt;A morphism in Generalized morphism category of Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">generalized_morphism2 := GeneralizedMorphism( Bsub_into_B, Bsub_to_Cfac, C_onto_Cfac );</span>
+&lt;A morphism in Generalized morphism category of Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( generalized_morphism1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( generalized_morphism2 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">p := PreCompose( generalized_morphism1, generalized_morphism2 );</span>
+&lt;A morphism in Generalized morphism category of Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SourceAid( p );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Arrow( p );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RangeAid( p );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := VectorSpaceObject( 3, Q );</span>
+&lt;A vector space object over Q of dimension 3&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Asub := VectorSpaceObject( 2, Q );</span>
+&lt;A vector space object over Q of dimension 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := VectorSpaceObject( 3, Q );</span>
+&lt;A vector space object over Q of dimension 3&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Bfac := VectorSpaceObject( 1, Q );</span>
+&lt;A vector space object over Q of dimension 1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Bsub := VectorSpaceObject( 2, Q );</span>
+&lt;A vector space object over Q of dimension 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := VectorSpaceObject( 3, Q );</span>
+&lt;A vector space object over Q of dimension 3&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Cfac := VectorSpaceObject( 2, Q );</span>
+&lt;A vector space object over Q of dimension 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Bsub_to_Cfac := VectorSpaceMorphism( Bsub, [ [ 3, 3 ], [ 0, 0 ] ], Cfac );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C_onto_Cfac := VectorSpaceMorphism( C, [ [ 1, 0 ], [ 0, 2 ], [ 3, 3 ] ], Cfac );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">generalized_morphism1 := GeneralizedMorphism( Asub_into_A, Asub_to_Bfac, B_onto_Bfac );</span>
+&lt;A morphism in Generalized morphism category of Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">generalized_morphism2 := GeneralizedMorphism( Bsub_into_B, Bsub_to_Cfac, C_onto_Cfac );</span>
+&lt;A morphism in Generalized morphism category of Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( generalized_morphism1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( generalized_morphism2 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">p := PreCompose( generalized_morphism1, generalized_morphism2 );</span>
+&lt;A morphism in Generalized morphism category of Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SourceAid( p );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Arrow( p );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RangeAid( p );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+</pre></div>
+
+<p>Honest representative test</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();</span>
+Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := VectorSpaceObject( 1, Q );</span>
+&lt;A vector space object over Q of dimension 1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := VectorSpaceObject( 2, Q );</span>
+&lt;A vector space object over Q of dimension 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">phi_tilde_source_aid := VectorSpaceMorphism( A, [ [ 2 ] ], A );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">phi_tilde_associated := VectorSpaceMorphism( A, [ [ 1, 1 ] ], B );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">phi_tilde_range_aid := VectorSpaceMorphism( B, [ [ 1, 2 ], [ 3, 4 ] ], B );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">phi_tilde := GeneralizedMorphism( phi_tilde_source_aid, phi_tilde_associated, phi_tilde_range_aid );</span>
+&lt;A morphism in Generalized morphism category of Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HonestRepresentative( phi_tilde );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( phi_tilde );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( psi_tilde );</span>
+true
+</pre></div>
+
+<p><a id="X7E8AFE5085FF7E15" name="X7E8AFE5085FF7E15"></a></p>
+
+<h4>9.6 <span class="Heading">IsWellDefined</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();</span>
+Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := VectorSpaceObject( 1, Q );</span>
+&lt;A vector space object over Q of dimension 1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := VectorSpaceObject( 2, Q );</span>
+&lt;A vector space object over Q of dimension 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := VectorSpaceMorphism( A, [ [ 1, 2 ] ], B );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">g := GeneralizedMorphism( alpha, alpha, alpha );</span>
+&lt;A morphism in Generalized morphism category of Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( alpha );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( g );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForObjects( A, B );</span>
+false
 </pre></div>
 
 

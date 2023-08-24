@@ -7,14 +7,21 @@
   
   [1X1.1 [33X[0;0YGAP Categories[133X[101X
   
-  [1X1.1-1 IsGeneralizedMorphismCategoryObject[101X
+  [1X1.1-1 IsGeneralizedMorphismCategory[101X
+  
+  [33X[1;0Y[29X[2XIsGeneralizedMorphismCategory[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe GAP category of the category of generalized morphisms.[133X
+  
+  [1X1.1-2 IsGeneralizedMorphismCategoryObject[101X
   
   [33X[1;0Y[29X[2XIsGeneralizedMorphismCategoryObject[102X( [3Xobject[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe GAP category of objects in the generalized morphism category.[133X
   
-  [1X1.1-2 IsGeneralizedMorphism[101X
+  [1X1.1-3 IsGeneralizedMorphism[101X
   
   [33X[1;0Y[29X[2XIsGeneralizedMorphism[102X( [3Xobject[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
