@@ -281,3 +281,101 @@
     [4X[28XA morphism in Category of matrices over Q[128X[104X
   [4X[32X[104X
   
+  
+  [1X2.3 [33X[0;0YKernel[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XV := VectorSpaceObject( 2, Q );[127X[104X
+    [4X[28X<A vector space object over Q of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27XW := VectorSpaceObject( 3, Q );[127X[104X
+    [4X[28X<A vector space object over Q of dimension 3>[128X[104X
+    [4X[25Xgap>[125X [27Xalpha := VectorSpaceMorphism( V, [ [ 1, 1, 1 ], [ -1, -1, -1 ] ], W );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27Xk := KernelObject( alpha );[127X[104X
+    [4X[28X<A vector space object over Q of dimension 1>[128X[104X
+    [4X[25Xgap>[125X [27XT := VectorSpaceObject( 2, Q );[127X[104X
+    [4X[28X<A vector space object over Q of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27Xtau := VectorSpaceMorphism( T, [ [ 2, 2 ], [ 2, 2 ] ], V );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27Xk_lift := KernelLift( alpha, tau );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27XHasKernelEmbedding( alpha );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XKernelEmbedding( alpha );[127X[104X
+    [4X[28X<A split monomorphism in Category of matrices over Q>[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XV := VectorSpaceObject( 2, Q );[127X[104X
+    [4X[28X<A vector space object over Q of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27XW := VectorSpaceObject( 3, Q );[127X[104X
+    [4X[28X<A vector space object over Q of dimension 3>[128X[104X
+    [4X[25Xgap>[125X [27Xalpha := VectorSpaceMorphism( V, [ [ 1, 1, 1 ], [ -1, -1, -1 ] ], W );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27Xk := KernelObject( alpha );[127X[104X
+    [4X[28X<A vector space object over Q of dimension 1>[128X[104X
+    [4X[25Xgap>[125X [27XT := VectorSpaceObject( 2, Q );[127X[104X
+    [4X[28X<A vector space object over Q of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27Xtau := VectorSpaceMorphism( T, [ [ 2, 2 ], [ 2, 2 ] ], V );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27Xk_lift := KernelLift( alpha, tau );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27XHasKernelEmbedding( alpha );[127X[104X
+    [4X[28Xfalse[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XV := VectorSpaceObject( 2, Q );[127X[104X
+    [4X[28X<A vector space object over Q of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27XW := VectorSpaceObject( 3, Q );[127X[104X
+    [4X[28X<A vector space object over Q of dimension 3>[128X[104X
+    [4X[25Xgap>[125X [27Xalpha := VectorSpaceMorphism( V, [ [ 1, 1, 1 ], [ -1, -1, -1 ] ], W );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27Xk := KernelObject( alpha );[127X[104X
+    [4X[28X<A vector space object over Q of dimension 1>[128X[104X
+    [4X[25Xgap>[125X [27Xk_emb := KernelEmbedding( alpha );[127X[104X
+    [4X[28X<A split monomorphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForObjects( Source( k_emb ), k );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XV := VectorSpaceObject( 2, Q );[127X[104X
+    [4X[28X<A vector space object over Q of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27XW := VectorSpaceObject( 3, Q );[127X[104X
+    [4X[28X<A vector space object over Q of dimension 3>[128X[104X
+    [4X[25Xgap>[125X [27Xbeta := VectorSpaceMorphism( V, [ [ 1, 1, 1 ], [ -1, -1, -1 ] ], W );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27Xk_emb := KernelEmbedding( beta );[127X[104X
+    [4X[28X<A split monomorphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( Source( k_emb ), KernelObject( beta ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X2.4 [33X[0;0YFiberProduct[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XA := VectorSpaceObject( 1, Q );[127X[104X
+    [4X[28X<A vector space object over Q of dimension 1>[128X[104X
+    [4X[25Xgap>[125X [27XB := VectorSpaceObject( 2, Q );[127X[104X
+    [4X[28X<A vector space object over Q of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27XC := VectorSpaceObject( 3, Q );[127X[104X
+    [4X[28X<A vector space object over Q of dimension 3>[128X[104X
+    [4X[25Xgap>[125X [27XAtoC := VectorSpaceMorphism( A, [ [ 1, 2, 0 ] ], C );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27XBtoC := VectorSpaceMorphism( B, [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], C );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27XP := FiberProduct( AtoC, BtoC );[127X[104X
+    [4X[28X<A vector space object over Q of dimension 1>[128X[104X
+    [4X[25Xgap>[125X [27Xp1 := ProjectionInFactorOfFiberProduct( [ AtoC, BtoC ], 1 );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27Xp2 := ProjectionInFactorOfFiberProduct( [ AtoC, BtoC ], 2 );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+  [4X[32X[104X
+  
