@@ -356,7 +356,7 @@
   
   [1X3.6-5 CreateCapCategoryMorphismWithAttributes[101X
   
-  [33X[1;0Y[29X[2XCreateCapCategoryMorphismWithAttributes[102X( [3Xmorphism[103X, [3Xcategory[103X, [3Xsource[103X, [3Xrange[103X[, [3Xattr1[103X, [3Xval1[103X, [3Xattr2[103X, [3Xval2[103X, [3X...[103X] ) [32X function[133X
+  [33X[1;0Y[29X[2XCreateCapCategoryMorphismWithAttributes[102X( [3Xcategory[103X, [3Xsource[103X, [3Xrange[103X[, [3Xattr1[103X, [3Xval1[103X, [3Xattr2[103X, [3Xval2[103X, [3X...[103X] ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya morphism[133X
   
   [33X[0;0YShorthand  for [10XObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
