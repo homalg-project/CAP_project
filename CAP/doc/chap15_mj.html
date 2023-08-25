@@ -52,10 +52,13 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap15_mj.html#X84410C637B3C1D0E">15.9 <span class="Heading">Opposite category</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap15_mj.html#X7EA29B7D7BA60F42">15.10 <span class="Heading">Terminal category</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap15_mj.html#X7F34E29281DF3FCE">15.10 <span class="Heading">PreComposeList and PostComposeList</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap15_mj.html#X8245BF297DF9A3E7">15.11 <span class="Heading">WrapperCategory</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap15_mj.html#X7EA29B7D7BA60F42">15.11 <span class="Heading">Terminal category</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap15_mj.html#X8245BF297DF9A3E7">15.12 <span class="Heading">WrapperCategory</span></a>
 </span>
 </div>
 </div>
@@ -680,9 +683,37 @@ true
 true
 </pre></div>
 
+<p><a id="X7F34E29281DF3FCE" name="X7F34E29281DF3FCE"></a></p>
+
+<h4>15.10 <span class="Heading">PreComposeList and PostComposeList</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">field := HomalgFieldOfRationals( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := VectorSpaceObject( 1, field );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := VectorSpaceObject( 2, field );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := VectorSpaceObject( 3, field );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := VectorSpaceMorphism( A, HomalgMatrix( [ [ 1, 0, 0 ] ], 1, 3, field ), C );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := VectorSpaceMorphism( C, HomalgMatrix( [ [ 1, 0 ], [ 1, 1 ], [ 1, 2 ] ], 3, 2, field ), B );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( PreCompose( alpha, beta ), PostCompose( beta, alpha ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreComposeList( A, [ ], A ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( PreComposeList( A, [ alpha ], C ), alpha );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( PreComposeList( A, [ alpha, beta ], B ), PreCompose( alpha, beta ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PostComposeList( A, [ ], A ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( PostComposeList( A, [ alpha ], C ), alpha );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( PostComposeList( A, [ beta, alpha ], B ), PostCompose( beta, alpha ) );</span>
+true
+</pre></div>
+
 <p><a id="X7EA29B7D7BA60F42" name="X7EA29B7D7BA60F42"></a></p>
 
-<h4>15.10 <span class="Heading">Terminal category</span></h4>
+<h4>15.11 <span class="Heading">Terminal category</span></h4>
 
 
 <div class="example"><pre>
@@ -914,7 +945,7 @@ true
 
 <p><a id="X8245BF297DF9A3E7" name="X8245BF297DF9A3E7"></a></p>
 
-<h4>15.11 <span class="Heading">WrapperCategory</span></h4>
+<h4>15.12 <span class="Heading">WrapperCategory</span></h4>
 
 
 <div class="example"><pre>

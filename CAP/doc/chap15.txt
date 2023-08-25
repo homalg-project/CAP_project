@@ -601,7 +601,33 @@
   [4X[32X[104X
   
   
-  [1X15.10 [33X[0;0YTerminal category[133X[101X
+  [1X15.10 [33X[0;0YPreComposeList and PostComposeList[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xfield := HomalgFieldOfRationals( );;[127X[104X
+    [4X[25Xgap>[125X [27XA := VectorSpaceObject( 1, field );;[127X[104X
+    [4X[25Xgap>[125X [27XB := VectorSpaceObject( 2, field );;[127X[104X
+    [4X[25Xgap>[125X [27XC := VectorSpaceObject( 3, field );;[127X[104X
+    [4X[25Xgap>[125X [27Xalpha := VectorSpaceMorphism( A, HomalgMatrix( [ [ 1, 0, 0 ] ], 1, 3, field ), C );;[127X[104X
+    [4X[25Xgap>[125X [27Xbeta := VectorSpaceMorphism( C, HomalgMatrix( [ [ 1, 0 ], [ 1, 1 ], [ 1, 2 ] ], 3, 2, field ), B );;[127X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( PreCompose( alpha, beta ), PostCompose( beta, alpha ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( PreComposeList( A, [ ], A ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( PreComposeList( A, [ alpha ], C ), alpha );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( PreComposeList( A, [ alpha, beta ], B ), PreCompose( alpha, beta ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( PostComposeList( A, [ ], A ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( PostComposeList( A, [ alpha ], C ), alpha );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( PostComposeList( A, [ beta, alpha ], B ), PostCompose( beta, alpha ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X15.11 [33X[0;0YTerminal category[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "MonoidalCategories" );[127X[104X
@@ -830,7 +856,7 @@
   [4X[32X[104X
   
   
-  [1X15.11 [33X[0;0YWrapperCategory[133X[101X
+  [1X15.12 [33X[0;0YWrapperCategory[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP", false );[127X[104X

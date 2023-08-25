@@ -733,11 +733,11 @@
   [2XPair[102X 9.2-38 
   [2XPostCompose[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.10-5 
       for IsList 3.10-6 
-  [2XPostComposeList[102X, for IsList 3.10-7 
+  [2XPostComposeList[102X, for IsCapCategoryObject, IsList, IsCapCategoryObject 3.10-7 
   [2XPostInverseForMorphisms[102X, for IsCapCategoryMorphism 3.13-3 
   [2XPreCompose[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.10-2 
       for IsList 3.10-3 
-  [2XPreComposeList[102X, for IsList 3.10-4 
+  [2XPreComposeList[102X, for IsCapCategoryObject, IsList, IsCapCategoryObject 3.10-4 
   [2XPreInverseForMorphisms[102X, for IsCapCategoryMorphism 3.13-2 
   [2XPrintDerivationTree[102X, for IsOperationWeightList, IsString 8.4-12 
   [2XPrintTree[102X, for IsObject, IsFunction, IsFunction 8.4-13 

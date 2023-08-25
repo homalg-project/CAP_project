@@ -109,10 +109,10 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C9F3D8086238443">3.10-1 IdentityMorphism</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8244F7A0868BE27D">3.10-2 PreCompose</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83CB57FB81931CFE">3.10-3 PreCompose</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X87A7BCFA7C2D8F5B">3.10-4 PreComposeList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X87A5FFE97BB5190A">3.10-4 PreComposeList</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X84293B8381256A08">3.10-5 PostCompose</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X81222A1084A4F637">3.10-6 PostCompose</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8107D27F7B62D023">3.10-7 PostComposeList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7BD83BF3835870E9">3.10-7 PostComposeList</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7D50F754822C30D7">3.10-8 SumOfMorphisms</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C101B5C7AC9089C">3.10-9 LinearCombinationOfMorphisms</a></span>
 </div></div>
@@ -723,14 +723,14 @@
 
 <p>This is a convenience method. The argument is a list of morphisms <span class="Math">L = ( \alpha_1: a_1 \rightarrow a_2, \alpha_2: a_2 \rightarrow a_3, \dots, \alpha_n: a_n \rightarrow a_{n+1} )</span>. The output is the composition <span class="Math">\alpha_{n} \circ ( \alpha_{n-1} \circ ( \dots ( \alpha_2 \circ \alpha_1 ) ) )</span>.</p>
 
-<p><a id="X87A7BCFA7C2D8F5B" name="X87A7BCFA7C2D8F5B"></a></p>
+<p><a id="X87A5FFE97BB5190A" name="X87A5FFE97BB5190A"></a></p>
 
 <h5>3.10-4 PreComposeList</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PreComposeList</code>( <var class="Arg">C</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a_1, a_{n+1})</span></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PreComposeList</code>( <var class="Arg">s</var>, <var class="Arg">L</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(s, r)</span></p>
 
-<p>The argument is a list of morphisms <span class="Math">L = ( \alpha_1: a_1 \rightarrow a_2, \alpha_2: a_2 \rightarrow a_3, \dots, \alpha_n: a_n \rightarrow a_{n+1} )</span> in <span class="Math">C</span>. The output is the composition <span class="Math">\alpha_{n} \circ ( \alpha_{n-1} \circ ( \dots ( \alpha_2 \circ \alpha_1 ) ) )</span>.</p>
+<p>The arguments are two objects <var class="Arg">s</var> = <span class="Math">a_1</span>, <var class="Arg">r</var> = <span class="Math">a_{n+1}</span>, and a list of morphisms <span class="Math">L = ( \alpha_1: a_1 \rightarrow a_2, \alpha_2: a_2 \rightarrow a_3, \dots, \alpha_n: a_n \rightarrow a_{n+1} )</span> in <span class="Math">C</span>. The output is the composition <span class="Math">\alpha_{n} \circ ( \alpha_{n-1} \circ ( \dots ( \alpha_2 \circ \alpha_1 ) ) )</span>. If <span class="Math">L</span> is empty, then <span class="Math">s</span> must be equal to <span class="Math">r</span> and the output is congruent to the identity morphism of <span class="Math">s</span>.</p>
 
 <p><a id="X84293B8381256A08" name="X84293B8381256A08"></a></p>
 
@@ -750,14 +750,14 @@
 
 <p>This is a convenience method. The argument is a list of morphisms <span class="Math">L = ( \alpha_n: a_n \rightarrow a_{n+1}, \alpha_{n-1}: a_{n-1} \rightarrow a_n, \dots, \alpha_1: a_1 \rightarrow a_2 )</span>. The output is the composition <span class="Math">((\alpha_{n} \circ \alpha_{n-1}) \circ \dots \alpha_2) \circ \alpha_1</span>.</p>
 
-<p><a id="X8107D27F7B62D023" name="X8107D27F7B62D023"></a></p>
+<p><a id="X7BD83BF3835870E9" name="X7BD83BF3835870E9"></a></p>
 
 <h5>3.10-7 PostComposeList</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PostComposeList</code>( <var class="Arg">C</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a_1, a_{n+1})</span></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PostComposeList</code>( <var class="Arg">s</var>, <var class="Arg">L</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(s, r)</span></p>
 
-<p>The argument is a list of morphisms <span class="Math">L = ( \alpha_n: a_n \rightarrow a_{n+1}, \alpha_{n-1}: a_{n-1} \rightarrow a_n, \dots, \alpha_1: a_1 \rightarrow a_2 )</span>. The output is the composition <span class="Math">((\alpha_{n} \circ \alpha_{n-1}) \circ \dots \alpha_2) \circ \alpha_1</span>.</p>
+<p>The arguments are two objects <var class="Arg">s</var> = <span class="Math">a_1</span>, <var class="Arg">r</var> = <span class="Math">a_{n+1}</span>, and a list of morphisms <span class="Math">L = ( \alpha_n: a_n \rightarrow a_{n+1}, \alpha_{n-1}: a_{n-1} \rightarrow a_n, \dots, \alpha_1: a_1 \rightarrow a_2 )</span>. The output is the composition <span class="Math">((\alpha_{n} \circ \alpha_{n-1}) \circ \dots \alpha_2) \circ \alpha_1</span>. If <span class="Math">L</span> is empty, then <span class="Math">s</span> must be equal to <span class="Math">r</span> and the output is congruent to the identity morphism of <span class="Math">s</span>.</p>
 
 <p><a id="X7D50F754822C30D7" name="X7D50F754822C30D7"></a></p>
 

@@ -2229,7 +2229,8 @@
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given function [23XF[123X to the category for the basic operation [10XPostComposeList[110X. [23XF:
-  ( list_of_morphisms ) \mapsto \mathtt{PostComposeList}(list_of_morphisms)[123X.[133X
+  (        source,        list_of_morphisms,       range       )       \mapsto
+  \mathtt{PostComposeList}(source, list_of_morphisms, range)[123X.[133X
   
   [1X7.6-188 AddPostInverseForMorphisms[101X
   
@@ -2257,7 +2258,8 @@
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given  function [23XF[123X to the category for the basic operation [10XPreComposeList[110X. [23XF:
-  ( list_of_morphisms ) \mapsto \mathtt{PreComposeList}(list_of_morphisms)[123X.[133X
+  ( source, list_of_morphisms, range ) \mapsto \mathtt{PreComposeList}(source,
+  list_of_morphisms, range)[123X.[133X
   
   [1X7.6-191 AddPreInverseForMorphisms[101X
   
