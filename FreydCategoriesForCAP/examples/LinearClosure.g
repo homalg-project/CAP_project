@@ -5,7 +5,7 @@
 LoadPackage( "FreydCategoriesForCAP" );;
 
 #! @Example
-#! #@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )
+#! #@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )
 G := SymmetricGroup( 3 );;
 CG := GroupAsCategory( G );;
 compare_func := function( g, h ) return UnderlyingGroupElement( g ) < UnderlyingGroupElement( h ); end;;

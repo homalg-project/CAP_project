@@ -31,7 +31,7 @@ ReadPackage( "FreydCategoriesForCAP", "gap/AdelmanCategory.gd" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/GradedModulePresentationsByFreyd/GradedModulePresentationsByFreyd.gd" );
 
-if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" ) then
+if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" ) then
     ReadPackage( "FreydCategoriesForCAP", "gap/GroupsAsCats.gd" );
     
     ReadPackage( "FreydCategoriesForCAP", "gap/LinearClosure.gd" );
