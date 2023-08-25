@@ -1378,7 +1378,7 @@ AddFinalDerivationBundle( "Using BasisOfExternalHom and CoefficientsOfMorphism t
     
     basis := BasisOfExternalHom( cat, Range( alpha ), Source( beta ) );
     
-    basis := List( basis, ell -> CoefficientsOfMorphism( cat, PreComposeList( cat, [ alpha, ell, beta ] ) ) );
+    basis := List( basis, ell -> CoefficientsOfMorphism( cat, PreComposeList( cat, Source( alpha ), [ alpha, ell, beta ], Range( beta ) ) ) );
     
     m := HomalgMatrixListList( basis, RankOfObject( hom_source ), RankOfObject( hom_range ), CommutativeRingOfLinearCategory( cat ) );
     

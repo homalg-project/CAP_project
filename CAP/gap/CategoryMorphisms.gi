@@ -573,6 +573,62 @@ end );
 # end );
 
 ##
+InstallOtherMethod( PreComposeList,
+               [ IsCapCategory, IsList ],
+               
+  function( cat, morphism_list )
+    
+    if IsEmpty( morphism_list ) then
+        Error( "the given list of morphisms is empty\n" );
+    fi;
+    
+    return PreComposeList( cat, Source( First( morphism_list ) ), morphism_list, Range( Last( morphism_list ) ) );
+    
+end );
+
+##
+InstallOtherMethod( PostComposeList,
+               [ IsCapCategory, IsList ],
+               
+  function( cat, morphism_list )
+    
+    if IsEmpty( morphism_list ) then
+        Error( "the given list of morphisms is empty\n" );
+    fi;
+    
+    return PostComposeList( cat, Source( Last( morphism_list ) ), morphism_list, Range( First( morphism_list ) ) );
+    
+end );
+
+##
+InstallOtherMethod( PreComposeList,
+               [ IsList ],
+               
+  function( morphism_list )
+    
+    if IsEmpty( morphism_list ) then
+        Error( "the given list of morphisms is empty\n" );
+    fi;
+    
+    return PreComposeList( CapCategory( morphism_list[1] ), morphism_list );
+    
+end );
+
+##
+InstallOtherMethod( PostComposeList,
+               [ IsList ],
+               
+  function( morphism_list )
+    
+    if IsEmpty( morphism_list ) then
+        Error( "the given list of morphisms is empty\n" );
+    fi;
+    
+    return PostComposeList( CapCategory( morphism_list[1] ), morphism_list );
+    
+end );
+
+##
 InstallMethod( PreCompose,
                [ IsList ],
                

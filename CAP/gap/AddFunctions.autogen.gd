@@ -3547,7 +3547,7 @@ DeclareOperation( "AddPostCompose",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `PostComposeList`.
-#! $F: ( list_of_morphisms ) \mapsto \mathtt{PostComposeList}(list_of_morphisms)$.
+#! $F: ( source, list_of_morphisms, range ) \mapsto \mathtt{PostComposeList}(source, list_of_morphisms, range)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddPostComposeList",
@@ -3604,7 +3604,7 @@ DeclareOperation( "AddPreCompose",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `PreComposeList`.
-#! $F: ( list_of_morphisms ) \mapsto \mathtt{PreComposeList}(list_of_morphisms)$.
+#! $F: ( source, list_of_morphisms, range ) \mapsto \mathtt{PreComposeList}(source, list_of_morphisms, range)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddPreComposeList",
