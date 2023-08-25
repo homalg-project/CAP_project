@@ -588,7 +588,7 @@ InstallGlobalFunction( Coequalizer,
      fi;
     
     if Length( arg ) = 2 and
-       IsCapCategoryObject( arg[2] ) and
+       IsCapCategoryObject( arg[1] ) and
        IsList( arg[2] ) and
        ForAll( arg[2], IsCapCategoryMorphism ) then
        
