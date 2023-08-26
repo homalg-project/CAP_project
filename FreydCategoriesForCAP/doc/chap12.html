@@ -929,7 +929,7 @@ true
 
 
 <div class="example"><pre>
-#@if IsPackageMarkedForLoading( "FinSetsForCAP", "&gt;= 2019.09.20" )
+#@if IsPackageMarkedForLoading( "FinSetsForCAP", "&gt;= 2023.07-03" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := SymmetricGroup( 3 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CG := GroupAsCategory( G );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := GroupAsCategoryUniqueObject( CG );;</span>
@@ -1008,7 +1008,7 @@ false
 
 
 <div class="example"><pre>
-#@if IsPackageMarkedForLoading( "FinSetsForCAP", "&gt;= 2019.09.20" )
+#@if IsPackageMarkedForLoading( "FinSetsForCAP", "&gt;= 2023.07-03" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := SymmetricGroup( 3 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CG := GroupAsCategory( G );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compare_func := function( g, h ) return UnderlyingGroupElement( g ) &lt; UnderlyingGroupElement( h ); end;;</span>
@@ -1039,7 +1039,7 @@ false
 
 
 <div class="example"><pre>
-#@if IsPackageMarkedForLoading( "FinSetsForCAP", "&gt;= 2019.09.20" )
+#@if IsPackageMarkedForLoading( "FinSetsForCAP", "&gt;= 2023.07-03" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#Incidence matrix of our proset</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">K := [ [1, 1, 1], [0, 1, 1], [0, 1, 1] ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#Construction of a tower of categories</span>
@@ -1088,7 +1088,7 @@ true
 
 
 <div class="example"><pre>
-#@if IsPackageMarkedForLoading( "FinSetsForCAP", "&gt;= 2019.09.20" )
+#@if IsPackageMarkedForLoading( "FinSetsForCAP", "&gt;= 2023.07-03" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := SymmetricGroup( 3 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CG := GroupAsCategory( G );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ := HomalgRingOfIntegers( );;</span>
@@ -1101,7 +1101,7 @@ true
 
 
 <div class="example"><pre>
-#@if IsPackageMarkedForLoading( "FinSetsForCAP", "&gt;= 2019.09.20" )
+#@if IsPackageMarkedForLoading( "FinSetsForCAP", "&gt;= 2023.07-03" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := (1,2)/CG/ZCG;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := (2,3)/CG/ZCG;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e := ()/CG/ZCG;;</span>
@@ -1117,7 +1117,7 @@ true
 
 
 <div class="example"><pre>
-#@if IsPackageMarkedForLoading( "FinSetsForCAP", "&gt;= 2019.09.20" )
+#@if IsPackageMarkedForLoading( "FinSetsForCAP", "&gt;= 2023.07-03" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">elem := Elements( G );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">elem := List( elem, x -&gt; x/CG/ZCG );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rand_elem := function() local coeffs; coeffs := List( [ 1 .. 6 ], i -&gt; Random( [ -20 .. 20 ] ) ); if ForAll( coeffs, IsZero ) then return ZeroMorphism( v, v ); fi; return Sum( List( [ 1 .. 6 ], i -&gt; Random( [ -20 .. 20 ] ) * One( ZZ ) * elem[i] ) ); end;;</span>
@@ -1273,7 +1273,7 @@ true
 
 
 <div class="example"><pre>
-#@if IsPackageMarkedForLoading( "FinSetsForCAP", "&gt;= 2019.09.20" )
+#@if IsPackageMarkedForLoading( "FinSetsForCAP", "&gt;= 2023.07-03" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := [ [1, 1, 1], [0, 1, 1], [0, 1, 1] ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := [ [1, 1, 0], [0, 1, 1], [0, 0, 1] ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P_K := ProSetAsCategory(K);;</span>
@@ -1382,7 +1382,7 @@ false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := HomalgFieldOfRationalsInSingular() * "t";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := IndeterminatesOfPolynomialRing( R )[1];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cocycle := function( a, b, c ) local e; e := CoastrictionToImage( UniversalMorphismIntoDirectSum( [ ReversedArrow( c ), Arrow( c ) ] ) ); return t^RankOfObject( KernelObject( e ) ); end;;</span>
-#@if IsPackageMarkedForLoading( "FinSetsForCAP", "&gt;= 2019.09.20" )
+#@if IsPackageMarkedForLoading( "FinSetsForCAP", "&gt;= 2023.07-03" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TwistedLinearClosure( R, rel, cocycle );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := beta/T;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">delta := ZeroMorphism( 1/vec, 1/vec )/rel/T;;</span>

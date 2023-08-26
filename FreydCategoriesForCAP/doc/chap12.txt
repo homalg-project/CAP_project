@@ -821,7 +821,7 @@
   [1X12.10 [33X[0;0YGroups as categories[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )[128X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )[128X[104X
     [4X[25Xgap>[125X [27XG := SymmetricGroup( 3 );;[127X[104X
     [4X[25Xgap>[125X [27XCG := GroupAsCategory( G );;[127X[104X
     [4X[25Xgap>[125X [27Xu := GroupAsCategoryUniqueObject( CG );;[127X[104X
@@ -894,7 +894,7 @@
   [1X12.13 [33X[0;0YLinear closure of categories[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )[128X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )[128X[104X
     [4X[25Xgap>[125X [27XG := SymmetricGroup( 3 );;[127X[104X
     [4X[25Xgap>[125X [27XCG := GroupAsCategory( G );;[127X[104X
     [4X[25Xgap>[125X [27Xcompare_func := function( g, h ) return UnderlyingGroupElement( g ) < UnderlyingGroupElement( h ); end;;[127X[104X
@@ -923,7 +923,7 @@
   [1X12.14 [33X[0;0YMatrices over ZP K[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )[128X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )[128X[104X
     [4X[25Xgap>[125X [27X#Incidence matrix of our proset[127X[104X
     [4X[25X>[125X [27XK := [ [1, 1, 1], [0, 1, 1], [0, 1, 1] ];;[127X[104X
     [4X[25Xgap>[125X [27X#Construction of a tower of categories[127X[104X
@@ -970,7 +970,7 @@
   [33X[0;0YConstruction of a tower of categories[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )[128X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )[128X[104X
     [4X[25Xgap>[125X [27XG := SymmetricGroup( 3 );;[127X[104X
     [4X[25Xgap>[125X [27XCG := GroupAsCategory( G );;[127X[104X
     [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );;[127X[104X
@@ -982,7 +982,7 @@
   [33X[0;0YConstruction of elements[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )[128X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )[128X[104X
     [4X[25Xgap>[125X [27Xa := (1,2)/CG/ZCG;;[127X[104X
     [4X[25Xgap>[125X [27Xb := (2,3)/CG/ZCG;;[127X[104X
     [4X[25Xgap>[125X [27Xe := ()/CG/ZCG;;[127X[104X
@@ -997,7 +997,7 @@
   [33X[0;0YA random lifting problem over ZG[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )[128X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )[128X[104X
     [4X[25Xgap>[125X [27Xelem := Elements( G );;[127X[104X
     [4X[25Xgap>[125X [27Xelem := List( elem, x -> x/CG/ZCG );;[127X[104X
     [4X[25Xgap>[125X [27Xrand_elem := function() local coeffs; coeffs := List( [ 1 .. 6 ], i -> Random( [ -20 .. 20 ] ) ); if ForAll( coeffs, IsZero ) then return ZeroMorphism( v, v ); fi; return Sum( List( [ 1 .. 6 ], i -> Random( [ -20 .. 20 ] ) * One( ZZ ) * elem[i] ) ); end;;[127X[104X
@@ -1157,7 +1157,7 @@
   [1X12.18 [33X[0;0YProsets[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )[128X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )[128X[104X
     [4X[25Xgap>[125X [27XK := [ [1, 1, 1], [0, 1, 1], [0, 1, 1] ];;[127X[104X
     [4X[25Xgap>[125X [27XL := [ [1, 1, 0], [0, 1, 1], [0, 0, 1] ];;[127X[104X
     [4X[25Xgap>[125X [27XP_K := ProSetAsCategory(K);;[127X[104X
@@ -1261,7 +1261,7 @@
     [4X[25Xgap>[125X [27XR := HomalgFieldOfRationalsInSingular() * "t";;[127X[104X
     [4X[25Xgap>[125X [27Xt := IndeterminatesOfPolynomialRing( R )[1];;[127X[104X
     [4X[25Xgap>[125X [27Xcocycle := function( a, b, c ) local e; e := CoastrictionToImage( UniversalMorphismIntoDirectSum( [ ReversedArrow( c ), Arrow( c ) ] ) ); return t^RankOfObject( KernelObject( e ) ); end;;[127X[104X
-    [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )[128X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )[128X[104X
     [4X[25Xgap>[125X [27XT := TwistedLinearClosure( R, rel, cocycle );;[127X[104X
     [4X[25Xgap>[125X [27Xgamma := beta/T;;[127X[104X
     [4X[25Xgap>[125X [27Xdelta := ZeroMorphism( 1/vec, 1/vec )/rel/T;;[127X[104X
