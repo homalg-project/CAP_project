@@ -647,7 +647,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
          "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ],
          f -> CanCompute( underlying_category, f ) )
          and
-         IsCategoryOfSkeletalFinSets( RangeCategoryOfHomomorphismStructure( underlying_category ) )
+         IsSkeletalCategoryOfFiniteSets( RangeCategoryOfHomomorphismStructure( underlying_category ) )
          and
          with_nf
          then

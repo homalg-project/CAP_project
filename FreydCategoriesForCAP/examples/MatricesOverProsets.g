@@ -5,7 +5,7 @@
 LoadPackage( "FreydCategoriesForCAP" );;
 
 #! @Example
-#! #@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )
+#! #@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )
 #Incidence matrix of our proset
 K := [ [1, 1, 1], [0, 1, 1], [0, 1, 1] ];;
 #Construction of a tower of categories
