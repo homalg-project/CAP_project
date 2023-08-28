@@ -3,7 +3,7 @@
 ##
 AddKernelEmbedding( SQVec,
 
-  function( alpha )
+  function( cat, alpha )
     local kernel_emb, kernel_obj;
     
     kernel_emb := SyzygiesOfRows( UnderlyingMatrix( alpha ) );
@@ -17,11 +17,12 @@ end );
 ##
 AddLiftAlongMonomorphism( SQVec,
 
-  function( mu, tau )
+  function( cat, mu, tau )
 
-    return SQVecMor( Source( tau ),
-            RightDivide( UnderlyingMatrix( tau ), UnderlyingMatrix( mu ) ),
-            Source( mu ) );
+    return SQVecMor(
+             Source( tau ),
+             RightDivide( UnderlyingMatrix( tau ), UnderlyingMatrix( mu ) ),
+             Source( mu ) );
 
 end );
 \end{Verbatim}

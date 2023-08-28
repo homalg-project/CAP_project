@@ -32,6 +32,8 @@ BindGlobal( "SQVec", CreateCapCategory(
 
 SetIsAbelianCategory( SQVec, true );
 
+SQVec!.category_as_first_argument := true;
+
 BindGlobal( "QQ", HomalgFieldOfRationals( ) );
 
 ##
@@ -79,19 +81,17 @@ end );
 
 AddIdentityMorphism( SQVec,
                      
-  function( a )
+  function( cat, a )
     
-    return SQVecMor(
-            a,
-            HomalgIdentityMatrix( Dimension( a ), QQ ),
-            a
-    );
+    return SQVecMor( a,
+                     HomalgIdentityMatrix( Dimension( a ), QQ ),
+                     a );
     
 end );
 
 AddPreCompose( SQVec,
 
-  function( alpha, beta )
+  function( cat, alpha, beta )
     local composition;
 
     composition := UnderlyingMatrix( alpha ) * UnderlyingMatrix( beta );
@@ -102,13 +102,13 @@ end );
 
 AddIsEqualForObjects( SQVec,
   
-  function( a, b )
+  function( cat, a, b )
     
     return Dimension( a ) = Dimension( b );
     
 end );
 
-equality_function := function( alpha, beta )
+equality_function := function( cat, alpha, beta )
   return UnderlyingMatrix( alpha ) = UnderlyingMatrix( beta );
 end;
 
@@ -118,7 +118,7 @@ AddIsCongruentForMorphisms( SQVec, equality_function );
 
 AddKernelEmbedding( SQVec,
 
-  function( alpha )
+  function( cat, alpha )
     local kernel_emb, kernel_obj;
     
     kernel_emb := SyzygiesOfRows( UnderlyingMatrix( alpha ) );
@@ -131,7 +131,7 @@ end );
 
 AddKernelLift( SQVec,
 
-  function( alpha, test_object, tau )
+  function( cat, alpha, test_object, tau )
     local kernel_matrix;
     
     kernel_matrix := SyzygiesOfRows( UnderlyingMatrix( alpha ) );
@@ -145,46 +145,47 @@ end );
 ##
 AddLiftAlongMonomorphism( SQVec,
 
-  function( mu, tau )
+  function( cat, mu, tau )
 
     return SQVecMor( Source( tau ),
-            RightDivide( UnderlyingMatrix( tau ), UnderlyingMatrix( mu ) ),
-            Source( mu ) );
+                     RightDivide( UnderlyingMatrix( tau ), UnderlyingMatrix( mu ) ),
+                     Source( mu ) );
 
 end );
 
 ##
 AddCokernelProjection( SQVec,
 
-  function( alpha )
+  function( cat, alpha )
     local cokernel_proj, cokernel_obj;
 
     cokernel_proj := SyzygiesOfColumns( UnderlyingMatrix( alpha ) );
 
     cokernel_obj := SQVecObj( NrColumns( cokernel_proj ) );
 
-    return SQVecMor( Range( alpha ), 
-              cokernel_proj, cokernel_obj );
+    return SQVecMor( Range( alpha ),
+                     cokernel_proj,
+                     cokernel_obj );
 
 end );
 
 ##
 AddColiftAlongEpimorphism( SQVec,
   
-  function( epsilon, tau )
+  function( cat, epsilon, tau )
     
     return SQVecMor( Range( epsilon ),
-            LeftDivide(
-              UnderlyingMatrix( epsilon ),
-              UnderlyingMatrix( tau ) ),
-            Range( tau ) );
+                     LeftDivide(
+                       UnderlyingMatrix( epsilon ),
+                       UnderlyingMatrix( tau ) ),
+                     Range( tau ) );
     
 end );
 
 ##
 AddZeroObject( SQVec,
 
-  function( )
+  function( cat )
 
     return SQVecObj( 0 );
 
@@ -193,86 +194,86 @@ end );
 ##
 AddUniversalMorphismIntoZeroObject( SQVec,
 
-  function( source )
+  function( cat, source )
 
     return SQVecMor( source,
-              HomalgZeroMatrix( Dimension( source ), 0, QQ ),
-              SQVecObj( 0 ) );
+                     HomalgZeroMatrix( Dimension( source ), 0, QQ ),
+                     SQVecObj( 0 ) );
     
 end );
 
 ##
 AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( SQVec,
 
-  function( source, terminal_object )
+  function( cat, source, terminal_object )
 
     return SQVecMor( source,
-              HomalgZeroMatrix( Dimension( source ), 0, QQ ),
-              terminal_object );
+                     HomalgZeroMatrix( Dimension( source ), 0, QQ ),
+                     terminal_object );
     
 end );
 
 ##
 AddUniversalMorphismFromZeroObject( SQVec,
 
-  function( sink )
+  function( cat, sink )
     
     return SQVecMor( SQVecObj( 0 ),
-              HomalgZeroMatrix( 0, Dimension( sink ), QQ ),
-              sink );
+                     HomalgZeroMatrix( 0, Dimension( sink ), QQ ),
+                     sink );
     
 end );
 
 ##
 AddUniversalMorphismFromZeroObjectWithGivenZeroObject( SQVec,
 
-  function( sink, initial_object )
+  function( cat, sink, initial_object )
     
     return SQVecMor( initial_object,
-                   HomalgZeroMatrix( 0, Dimension( sink ), QQ ),
-                   sink );
+                     HomalgZeroMatrix( 0, Dimension( sink ), QQ ),
+                     sink );
     
 end );
 
 ##
 AddAdditionForMorphisms( SQVec,
                          
-  function( alpha, beta )
+  function( cat, alpha, beta )
     
     return SQVecMor( Source( alpha ),
-              UnderlyingMatrix( alpha ) + UnderlyingMatrix( beta ),
-              Range( alpha ) );
+                     UnderlyingMatrix( alpha ) + UnderlyingMatrix( beta ),
+                     Range( alpha ) );
     
 end );
 
 ##
 AddAdditiveInverseForMorphisms( SQVec,
                                 
-  function( alpha )
+  function( cat, alpha )
     
     return SQVecMor( Source( alpha ),
-              - UnderlyingMatrix( alpha ),
-              Range( alpha ) );
+                     - UnderlyingMatrix( alpha ),
+                     Range( alpha ) );
     
 end );
 
 ##
 AddZeroMorphism( SQVec,
                      
-  function( alpha, beta )
+  function( cat, alpha, beta )
     
     return SQVecMor( alpha,
-              HomalgZeroMatrix( Dimension( alpha ),
-                                Dimension( beta ),
-                                QQ ),
-              beta );
+                     HomalgZeroMatrix( Dimension( alpha ),
+                                       Dimension( beta ),
+                                       QQ ),
+                     beta );
     
 end );
 
 ##
 AddDirectSum( SQVec,
 
-  function( object_product_list )
+  function( cat, object_product_list )
     local dim;
     
     dim := Sum( List( object_product_list, c -> Dimension( c ) ) );
@@ -283,7 +284,7 @@ end );
 
 ##
 AddProjectionInFactorOfDirectSumWithGivenDirectSum( SQVec,
-  function( object_list, projection_number, direct_sum_object )
+  function( cat, object_list, projection_number, direct_sum_object )
     local rank_pre, rank_post, rank_factor, number_of_objects,
     projection_in_factor;
     
@@ -314,7 +315,7 @@ end );
 
 ##
 AddUniversalMorphismIntoDirectSumWithGivenDirectSum( SQVec,
-  function( diagram, test_object, sink, direct_sum )
+  function( cat, diagram, test_object, sink, direct_sum )
     local underlying_matrix_of_universal_morphism;
     
     underlying_matrix_of_universal_morphism :=
@@ -331,7 +332,7 @@ end );
 
 ##
 AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( SQVec,
-  function( object_list, injection_number, coproduct )
+  function( cat, object_list, injection_number, coproduct )
     local rank_pre, rank_post, rank_cofactor, number_of_objects,
           injection_of_cofactor;
     
@@ -362,7 +363,7 @@ end );
 
 ##
 AddUniversalMorphismFromDirectSumWithGivenDirectSum( SQVec,
-  function( diagram, test_object, sink, coproduct )
+  function( cat, diagram, test_object, sink, coproduct )
     local underlying_matrix_of_universal_morphism;
     
     underlying_matrix_of_universal_morphism :=
@@ -370,10 +371,9 @@ AddUniversalMorphismFromDirectSumWithGivenDirectSum( SQVec,
         List( sink, UnderlyingMatrix )
     );
     
-    return
-      SQVecMor( coproduct,
-                underlying_matrix_of_universal_morphism,
-                Range( sink[1] ) );
+    return SQVecMor( coproduct,
+                     underlying_matrix_of_universal_morphism,
+                     Range( sink[1] ) );
     
 end );
 

@@ -3,7 +3,7 @@
 ##
 AddDirectSum( SQVec,
 
-  function( object_product_list )
+  function( cat, object_product_list )
     local dim;
     
     dim := Sum( List( object_product_list, c -> Dimension( c ) ) );
@@ -14,7 +14,7 @@ end );
 
 ##
 AddProjectionInFactorOfDirectSumWithGivenDirectSum( SQVec,
-  function( object_list, projection_number, direct_sum_object )
+  function( cat, object_list, projection_number, direct_sum_object )
     local rank_pre, rank_post, rank_factor, number_of_objects,
     projection_in_factor;
     
@@ -36,16 +36,15 @@ AddProjectionInFactorOfDirectSumWithGivenDirectSum( SQVec,
                    HomalgZeroMatrix( rank_post, rank_factor, QQ )
       );
     
-    return
-      SQVecMor( direct_sum_object,
-                projection_in_factor,
-                object_list[ projection_number ] );
+    return SQVecMor( direct_sum_object,
+                     projection_in_factor,
+                     object_list[ projection_number ] );
     
 end );
 
 ##
 AddUniversalMorphismIntoDirectSumWithGivenDirectSum( SQVec,
-  function( diagram, test_object, sink, direct_sum )
+  function( cat, diagram, test_object, sink, direct_sum )
     local underlying_matrix_of_universal_morphism;
     
     underlying_matrix_of_universal_morphism :=
@@ -53,16 +52,15 @@ AddUniversalMorphismIntoDirectSumWithGivenDirectSum( SQVec,
         List( sink, UnderlyingMatrix )
     );
     
-    return
-      SQVecMor( Source( sink[1] ), 
-                underlying_matrix_of_universal_morphism, 
-                direct_sum );
+    return SQVecMor( Source( sink[1] ),
+                     underlying_matrix_of_universal_morphism,
+                     direct_sum );
   
 end );
 
 ##
 AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( SQVec,
-  function( object_list, injection_number, coproduct )
+  function( cat, object_list, injection_number, coproduct )
     local rank_pre, rank_post, rank_cofactor, number_of_objects,
           injection_of_cofactor;
     
@@ -84,16 +82,15 @@ AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( SQVec,
                       HomalgZeroMatrix( rank_cofactor, rank_post, QQ )
       );
     
-    return
-      SQVecMor( object_list[ injection_number ],
-                injection_of_cofactor,
-                coproduct );
+    return SQVecMor( object_list[ injection_number ],
+                     injection_of_cofactor,
+                     coproduct );
     
 end );
 
 ##
 AddUniversalMorphismFromDirectSumWithGivenDirectSum( SQVec,
-  function( diagram, test_object, sink, coproduct )
+  function( cat, diagram, test_object, sink, coproduct )
     local underlying_matrix_of_universal_morphism;
     
     underlying_matrix_of_universal_morphism :=
@@ -101,10 +98,9 @@ AddUniversalMorphismFromDirectSumWithGivenDirectSum( SQVec,
         List( sink, UnderlyingMatrix )
     );
     
-    return
-      SQVecMor( coproduct,
-                underlying_matrix_of_universal_morphism,
-                Range( sink[1] ) );
+    return SQVecMor( coproduct,
+                     underlying_matrix_of_universal_morphism,
+                     Range( sink[1] ) );
     
 end );
 \end{Verbatim}

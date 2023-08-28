@@ -3,35 +3,37 @@
 ##
 AddAdditionForMorphisms( SQVec,
                          
-  function( alpha, beta )
+  function( cat, alpha, beta )
     
-    return SQVecMor( Source( alpha ),
-              UnderlyingMatrix( alpha ) + UnderlyingMatrix( beta ),
-              Range( alpha ) );
+    return SQVecMor(
+             Source( alpha ),
+             UnderlyingMatrix( alpha ) + UnderlyingMatrix( beta ),
+             Range( alpha ) );
     
 end );
 
 ##
 AddAdditiveInverseForMorphisms( SQVec,
                                 
-  function( alpha )
+  function( cat, alpha )
     
     return SQVecMor( Source( alpha ),
-              - UnderlyingMatrix( alpha ),
-              Range( alpha ) );
+                     - UnderlyingMatrix( alpha ),
+                     Range( alpha ) );
     
 end );
 
 ##
 AddZeroMorphism( SQVec,
                      
-  function( alpha, beta )
+  function( cat, alpha, beta )
     
-    return SQVecMor( alpha,
-              HomalgZeroMatrix( Dimension( alpha ),
-                                Dimension( beta ),
-                                QQ ),
-              beta );
+    return SQVecMor(
+             alpha,
+             HomalgZeroMatrix( Dimension( alpha ),
+                               Dimension( beta ),
+                               QQ ),
+             beta );
     
 end );
 \end{Verbatim}

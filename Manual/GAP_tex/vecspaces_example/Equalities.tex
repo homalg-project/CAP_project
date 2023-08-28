@@ -2,13 +2,13 @@
 \begin{Verbatim}[frame=single]
 AddIsEqualForObjects( SQVec,
   
-  function( a, b )
+  function( cat, a, b )
     
     return Dimension( a ) = Dimension( b );
   
 end );
 
-equality_function := function( alpha, beta )
+equality_function := function( cat, alpha, beta )
   return UnderlyingMatrix( alpha ) = UnderlyingMatrix( beta );
 end;
 
