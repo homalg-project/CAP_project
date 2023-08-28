@@ -1,6 +1,6 @@
 AddKernelEmbedding( vecspaces,
 
-  function( morphism )
+  function( cat, morphism )
     local kernel_emb, kernel_obj;
     
     kernel_emb := SyzygiesOfRows( morphism!.morphism );
@@ -13,10 +13,11 @@ end );
 
 AddLiftAlongMonomorphism( vecspaces,
 
-  function( monomorphism, test_morphism )
+  function( cat, monomorphism, test_morphism )
 
-    return VectorSpaceMorphism( Source( test_morphism ),
-           RightDivide( test_morphism!.morphism, monomorphism!.morphism ),
-           Source( monomorphism ) );
+    return VectorSpaceMorphism(
+             Source( test_morphism ),
+             RightDivide( test_morphism!.morphism, monomorphism!.morphism ),
+             Source( monomorphism ) );
 
 end );
