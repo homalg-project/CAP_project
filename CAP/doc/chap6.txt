@@ -780,20 +780,7 @@
   [33X[0;0YThe    output    is    the   morphism   [23X\bigoplus_{i=1}^{m}A_i   \rightarrow
   \bigoplus_{j=1}^n B_j[123X defined by the matrix [23XM[123X.[133X
   
-  [1X6.6-18 MorphismBetweenDirectSums[101X
-  
-  [33X[1;0Y[29X[2XMorphismBetweenDirectSums[102X( [3XM[103X, [3Xm[103X, [3Xn[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya       morphism      in      [23X\mathrm{Hom}(\bigoplus_{i=1}^{m}A_i,
-            \bigoplus_{j=1}^n B_j)[123X[133X
-  
-  [33X[0;0YThis  is  a  deprecated  convenience  method. The arguments are a list [23XM = (
-  \phi_{1,1},  \phi_{1,2},  \dots, \phi_{1,n}, \phi_{2,1}, \dots, \phi_{m,n} )[123X
-  of  morphisms  [23X\phi_{i,j}: A_i \rightarrow B_j[123X, an integer [23Xm[123X, and an integer
-  [23Xn[123X.   The   output   is   the   morphism  [23X\bigoplus_{i=1}^{m}A_i  \rightarrow
-  \bigoplus_{j=1}^n  B_j[123X  defined  by  the  list  [23XM[123X  regarded  as  a matrix of
-  dimension [23Xm \times n[123X.[133X
-  
-  [1X6.6-19 ComponentOfMorphismIntoDirectSum[101X
+  [1X6.6-18 ComponentOfMorphismIntoDirectSum[101X
   
   [33X[1;0Y[29X[2XComponentOfMorphismIntoDirectSum[102X( [3Xalpha[103X, [3XD[103X, [3Xk[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(A, S_k)[123X[133X
@@ -802,7 +789,7 @@
   \dots, S_n)[123X of objects with [23XS = \bigoplus_{j=1}^n S_j[123X, and an integer [23Xk[123X. The
   output is the component morphism [23XA \rightarrow S_k[123X.[133X
   
-  [1X6.6-20 ComponentOfMorphismFromDirectSum[101X
+  [1X6.6-19 ComponentOfMorphismFromDirectSum[101X
   
   [33X[1;0Y[29X[2XComponentOfMorphismFromDirectSum[102X( [3Xalpha[103X, [3XD[103X, [3Xk[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(S_k, A)[123X[133X
@@ -811,7 +798,7 @@
   \dots, S_n)[123X of objects with [23XS = \bigoplus_{j=1}^n S_j[123X, and an integer [23Xk[123X. The
   output is the component morphism [23XS_k \rightarrow A[123X.[133X
   
-  [1X6.6-21 DirectSumFunctorial[101X
+  [1X6.6-20 DirectSumFunctorial[101X
   
   [33X[1;0Y[29X[2XDirectSumFunctorial[102X( [3Xsource_diagram[103X, [3XL[103X, [3Xrange_diagram[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya     morphism    in    [23X\mathrm{Hom}(    \bigoplus_{i=1}^n    S_i,
@@ -825,7 +812,7 @@
   \rightarrow  \bigoplus_{i=1}^n S_i'[123X given by the functoriality of the direct
   sum.[133X
   
-  [1X6.6-22 DirectSumFunctorialWithGivenDirectSums[101X
+  [1X6.6-21 DirectSumFunctorialWithGivenDirectSums[101X
   
   [33X[1;0Y[29X[2XDirectSumFunctorialWithGivenDirectSums[102X( [3Xd_1[103X, [3Xsource_diagram[103X, [3XL[103X, [3Xrange_diagram[103X, [3Xd_2[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( d_1, d_2 )[123X[133X

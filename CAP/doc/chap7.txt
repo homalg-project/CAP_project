@@ -175,10 +175,7 @@
         the time the add method is called. The first entry of [10Xfilter_list[110X must
         be  the  string  [10Xcategory[110X.  If  the  category can be inferred from the
         remaining  arguments, a convenience method without the category as the
-        first  argument is installed automatically. Additionally, the category
-        is   not   passed   to   primitively   added   functions,   except  if
-        [10Xcategory!.category_as_first_argument[110X   is   set  to  [10Xtrue[110X  (this  will
-        probably change to be the default in the future).[133X
+        first argument is installed automatically.[133X
   
         [30X    [33X[0;12Y[10Xcategory[110X,[133X
   

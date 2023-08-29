@@ -402,9 +402,9 @@
   [2XColiftOrFail[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-9 
   [2XCommutativeRingOfLinearCategory[102X, for IsCapCategory 1.4-9 
   [2XComponentOfMorphismFromCoproduct[102X, for IsCapCategoryMorphism, IsList, IsInt 6.7-10 
-  [2XComponentOfMorphismFromDirectSum[102X, for IsCapCategoryMorphism, IsList, IsInt 6.6-20 
+  [2XComponentOfMorphismFromDirectSum[102X, for IsCapCategoryMorphism, IsList, IsInt 6.6-19 
   [2XComponentOfMorphismIntoDirectProduct[102X, for IsCapCategoryMorphism, IsList, IsInt 6.8-9 
-  [2XComponentOfMorphismIntoDirectSum[102X, for IsCapCategoryMorphism, IsList, IsInt 6.6-19 
+  [2XComponentOfMorphismIntoDirectSum[102X, for IsCapCategoryMorphism, IsList, IsInt 6.6-18 
   [2XContains[102X, for IsStringMinHeap, IsString 8.5-8 
   [2XCoproduct[102X, for IsCapCategoryObject, IsCapCategoryObject 6.7-2 
       for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 6.7-3 
@@ -435,8 +435,8 @@
   [2XDirectProductFunctorialWithGivenDirectProducts[102X, for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject 6.8-8 
   [2XDirectProductOp[102X, for IsList 6.8-2 
   [2XDirectSum[102X 6.6-1 
-  [2XDirectSumFunctorial[102X, for IsList, IsList, IsList 6.6-21 
-  [2XDirectSumFunctorialWithGivenDirectSums[102X, for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject 6.6-22 
+  [2XDirectSumFunctorial[102X, for IsList, IsList, IsList 6.6-20 
+  [2XDirectSumFunctorialWithGivenDirectSums[102X, for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject 6.6-21 
   [2XDirectSumOp[102X, for IsList 6.6-2 
   [2XDisableAddForCategoricalOperations[102X 1.12-1 
   [2XDisableInputSanityChecks[102X 1.10-1 
@@ -688,7 +688,6 @@
   [2XMonomorphismIntoSomeInjectiveObject[102X, for IsCapCategoryObject 2.10-2 
   [2XMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject[102X, for IsCapCategoryObject, IsCapCategoryObject 2.10-3 
   [2XMorphismBetweenDirectSums[102X, for IsList 6.6-16 
-      for IsList, IsInt, IsInt 6.6-18 
       for IsList, IsList, IsList 6.6-15 
   [2XMorphismBetweenDirectSumsWithGivenDirectSums[102X, for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject 6.6-17 
   [2XMorphismCache[102X, for IsCapFunctor 9.1-2 

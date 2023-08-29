@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2023.08-17
+                                   2023.08-18
   
   
-                                 25 August 2023
+                                 29 August 2023
   
   
                                Sebastian Gutsche
@@ -431,11 +431,10 @@
       6.6-15 MorphismBetweenDirectSums
       6.6-16 MorphismBetweenDirectSums
       6.6-17 MorphismBetweenDirectSumsWithGivenDirectSums
-      6.6-18 MorphismBetweenDirectSums
-      6.6-19 ComponentOfMorphismIntoDirectSum
-      6.6-20 ComponentOfMorphismFromDirectSum
-      6.6-21 DirectSumFunctorial
-      6.6-22 DirectSumFunctorialWithGivenDirectSums
+      6.6-18 ComponentOfMorphismIntoDirectSum
+      6.6-19 ComponentOfMorphismFromDirectSum
+      6.6-20 DirectSumFunctorial
+      6.6-21 DirectSumFunctorialWithGivenDirectSums
     6.7 [33X[0;0YCoproduct[133X
       6.7-1 Coproduct
       6.7-2 Coproduct

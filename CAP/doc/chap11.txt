@@ -124,6 +124,3 @@
         strings    and    are   replaced   by   [10Xtop_object_getter_string[110X   and
         [10Xtop_morphism_getter_string[110X, respectively.[133X
   
-  [33X[0;0YNote  that  the  category  is created with [10Xcategory_as_first_argument[110X set to
-  [10Xtrue[110X (see [14X7.3[114X).[133X
-  

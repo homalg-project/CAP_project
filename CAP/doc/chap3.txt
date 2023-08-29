@@ -346,21 +346,14 @@
   [33X[1;0Y[29X[2XObjectifyMorphismWithSourceAndRangeForCAPWithAttributes[102X( [3Xmorphism[103X, [3Xcategory[103X, [3Xsource[103X, [3Xrange[103X[, [3Xattr1[103X, [3Xval1[103X, [3Xattr2[103X, [3Xval2[103X, [3X...[103X] ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya morphism[133X
   
-  [33X[0;0YObjectifies the morphism [3Xmorphism[103X with the type created for morphisms in the
-  category  [3Xcategory[103X.  The  type  is  created  by passing a morphism filter to
-  [2XCreateCapCategoryWithDataTypes[102X  ([14X1.3-4[114X).  Morphisms  which  are  objectified
-  using  this method do not have to be passed to the [10XAddMorphism[110X function. The
-  arguments  [10Xsource[110X  and  [10Xrange[110X  are  assumed  to be objectified. The optional
-  arguments     behave     like     the     corresponding     arguments     in
-  [10XObjectifyWithAttributes[110X. Also returns the objectified morphism.[133X
+  [33X[0;0Y[13XDeprecated[113X: use [2XCreateCapCategoryMorphismWithAttributes[102X ([14X3.6-5[114X) instead.[133X
   
   [1X3.6-5 CreateCapCategoryMorphismWithAttributes[101X
   
   [33X[1;0Y[29X[2XCreateCapCategoryMorphismWithAttributes[102X( [3Xcategory[103X, [3Xsource[103X, [3Xrange[103X[, [3Xattr1[103X, [3Xval1[103X, [3Xattr2[103X, [3Xval2[103X, [3X...[103X] ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya morphism[133X
   
-  [33X[0;0YShorthand  for [10XObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-  ), category, source, range[, attr1, val1, attr2, val2, ...] )[110X.[133X
+  [33X[0;0YCreates a morphism in [3Xcategory[103X with the given attributes.[133X
   
   
   [1X3.7 [33X[0;0YEquality and Congruence for Morphisms[133X[101X

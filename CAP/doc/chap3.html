@@ -541,7 +541,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes</code>( <var class="Arg">morphism</var>, <var class="Arg">category</var>, <var class="Arg">source</var>, <var class="Arg">range</var>[, <var class="Arg">attr1</var>, <var class="Arg">val1</var>, <var class="Arg">attr2</var>, <var class="Arg">val2</var>, <var class="Arg">...</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism</p>
 
-<p>Objectifies the morphism <var class="Arg">morphism</var> with the type created for morphisms in the category <var class="Arg">category</var>. The type is created by passing a morphism filter to <code class="func">CreateCapCategoryWithDataTypes</code> (<a href="chap1.html#X8090078F7C5EF5E9"><span class="RefLink">1.3-4</span></a>). Morphisms which are objectified using this method do not have to be passed to the <code class="code">AddMorphism</code> function. The arguments <code class="code">source</code> and <code class="code">range</code> are assumed to be objectified. The optional arguments behave like the corresponding arguments in <code class="code">ObjectifyWithAttributes</code>. Also returns the objectified morphism.</p>
+<p><em>Deprecated</em>: use <code class="func">CreateCapCategoryMorphismWithAttributes</code> (<a href="chap3.html#X78005D357A051FC6"><span class="RefLink">3.6-5</span></a>) instead.</p>
 
 <p><a id="X78005D357A051FC6" name="X78005D357A051FC6"></a></p>
 
@@ -550,7 +550,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateCapCategoryMorphismWithAttributes</code>( <var class="Arg">category</var>, <var class="Arg">source</var>, <var class="Arg">range</var>[, <var class="Arg">attr1</var>, <var class="Arg">val1</var>, <var class="Arg">attr2</var>, <var class="Arg">val2</var>, <var class="Arg">...</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism</p>
 
-<p>Shorthand for <code class="code">ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), category, source, range[, attr1, val1, attr2, val2, ...] )</code>.</p>
+<p>Creates a morphism in <var class="Arg">category</var> with the given attributes.</p>
 
 <p><a id="X850CFDD48773998E" name="X850CFDD48773998E"></a></p>
 

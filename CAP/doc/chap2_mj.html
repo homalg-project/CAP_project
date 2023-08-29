@@ -319,7 +319,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectifyObjectForCAPWithAttributes</code>( <var class="Arg">object</var>, <var class="Arg">category</var>[, <var class="Arg">attribute1</var>, <var class="Arg">value1</var>, <var class="Arg">...</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: an object</p>
 
-<p>Objectifies the object <var class="Arg">object</var> with the type created for objects in the category <var class="Arg">category</var>. The type is created by passing an object filter to <code class="func">CreateCapCategoryWithDataTypes</code> (<a href="chap1_mj.html#X8090078F7C5EF5E9"><span class="RefLink">1.3-4</span></a>). Objects which are objectified using this method do not have to be passed to the <code class="code">AddObject</code> function. The optional arguments behave like the corresponding arguments in <code class="code">ObjectifyWithAttributes</code>. Also returns the objectified object.</p>
+<p><em>Deprecated</em>: use <code class="func">CreateCapCategoryObjectWithAttributes</code> (<a href="chap2_mj.html#X87BD8BB88206D940"><span class="RefLink">2.6-5</span></a>) instead.</p>
 
 <p><a id="X87BD8BB88206D940" name="X87BD8BB88206D940"></a></p>
 
@@ -328,7 +328,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateCapCategoryObjectWithAttributes</code>( <var class="Arg">category</var>[, <var class="Arg">attribute1</var>, <var class="Arg">value1</var>, <var class="Arg">...</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: an object</p>
 
-<p>Shorthand for <code class="code">ObjectifyObjectForCAPWithAttributes( rec( ), category[, attribute1, value1, ...] )</code>.</p>
+<p>Creates an object in <var class="Arg">category</var> with the given attributes.</p>
 
 <p><a id="X824C0CC579E8DD7F" name="X824C0CC579E8DD7F"></a></p>
 
