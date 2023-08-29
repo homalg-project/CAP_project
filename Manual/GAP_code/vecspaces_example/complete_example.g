@@ -32,8 +32,6 @@ BindGlobal( "SQVec", CreateCapCategory(
 
 SetIsAbelianCategory( SQVec, true );
 
-SQVec!.category_as_first_argument := true;
-
 BindGlobal( "QQ", HomalgFieldOfRationals( ) );
 
 ##

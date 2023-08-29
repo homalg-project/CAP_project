@@ -24,8 +24,6 @@ InstallMethod( LeftPresentations,
                         fail,
                         fail );
     
-    category!.category_as_first_argument := true;
-    
     category!.ring_for_representation_category := ring;
     
     SetUnderlyingRing( category, ring );
@@ -123,8 +121,6 @@ InstallMethod( RightPresentations,
                         fail,
                         fail,
                         fail );
-    
-    category!.category_as_first_argument := true;
     
     category!.ring_for_representation_category := ring;
     

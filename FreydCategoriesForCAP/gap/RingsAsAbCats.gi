@@ -25,8 +25,6 @@ InstallMethod( RING_AS_CATEGORY,
     
     category := CreateCapCategory( Concatenation( "Ring as category( ", String( ring )," )" ), IsRingAsCategory, IsRingAsCategoryObject, IsRingAsCategoryMorphism, IsCapCategoryTwoCell );
     
-    category!.category_as_first_argument := true;
-    
     category!.compiler_hints := rec(
         category_attribute_names := [
             "UnderlyingRing",

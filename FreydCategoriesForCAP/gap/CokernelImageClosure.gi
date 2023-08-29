@@ -58,8 +58,6 @@ InstallMethod( CokernelImageClosure,
                                       fail,
                                       fail );
     
-    cokernel_image_closure!.category_as_first_argument := true;
-    
     SetIsAdditiveCategory( cokernel_image_closure, true );
     
     SetUnderlyingCategory( cokernel_image_closure, underlying_category );

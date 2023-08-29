@@ -109,8 +109,7 @@ The record can have the following components:
 * filter_list: A list containing the basic filters for the methods installed by the add methods. Possible entries are filters, or
                the strings listed below, which will be replaced by appropriate filters at the time the add method is called.
                The first entry of `filter_list` must be the string `category`. If the category can be inferred from the remaining arguments, a convenience method without the category
-               as the first argument is installed automatically. Additionally, the category is not passed to primitively added functions, except if
-               `category!.category_as_first_argument` is set to `true` (this will probably change to be the default in the future).
+               as the first argument is installed automatically.
                * <C>category</C>,
                * <C>object</C>,
                * <C>morphism</C>,

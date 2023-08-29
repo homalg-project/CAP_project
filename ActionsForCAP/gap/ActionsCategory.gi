@@ -53,8 +53,6 @@ InstallMethod( LeftActionsCategory,
     
     left_actions_category := CreateCapCategory( name );
     
-    left_actions_category!.category_as_first_argument := true;
-    
     ## WARNING: This should be adjusted
     if HasIsAbelianCategory( underlying_monoidal_category )
        and IsAbelianCategory( underlying_monoidal_category )
@@ -309,8 +307,6 @@ InstallMethod( RightActionsCategory,
     fi;
     
     right_actions_category := CreateCapCategory( name );
-    
-    right_actions_category!.category_as_first_argument := true;
     
     ## WARNING: This should be adjusted
     if HasIsAbelianCategory( underlying_monoidal_category )

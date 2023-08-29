@@ -29,8 +29,6 @@ InstallGlobalFunction( MATRIX_CATEGORY,
         IsInt, IsHomalgMatrix, fail
     );
     
-    category!.category_as_first_argument := true;
-    
     category!.supports_empty_limits := true;
     
     category!.compiler_hints := rec(

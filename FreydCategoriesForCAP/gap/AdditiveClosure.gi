@@ -89,8 +89,6 @@ InstallMethod( ADDITIVE_CLOSURE,
     
     category := CreateCapCategory( Concatenation( "Additive closure( ", Name( underlying_category )," )" ), IsAdditiveClosureCategory, IsAdditiveClosureObject, IsAdditiveClosureMorphism, IsCapCategoryTwoCell );
     
-    category!.category_as_first_argument := true;
-    
     category!.supports_empty_limits := true;
     
     category!.compiler_hints := rec(

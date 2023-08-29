@@ -5133,19 +5133,9 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             Error( "The return_type of <current_rec> does not appear in CAP_INTERNAL_VALID_RETURN_TYPES. Note that proper filters are not supported anymore." );
         fi;
         
-        if IsBound( current_rec.argument_list ) then
-            
-            Display( Concatenation( 
-                "WARNING: the functionality previously provided by `argument_list` was removed. You will probably run into errors. ",
-                "Please use the category as the first argument instead of method selections objects/morphisms and adjust pre, post and redirect functions as well as derivations appropriately. ",
-                "Search for `category_as_first_argument` in the documentation for more details."
-            ) );
-            
-        fi;
-        
         if current_rec.filter_list[1] <> "category" then
             
-            Error( "The first entry of `filter_list` must be the string \"category\". Search for `category_as_first_argument` in the documentation for more details." );
+            Error( "The first entry of `filter_list` must be the string \"category\"." );
             
         fi;
         

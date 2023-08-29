@@ -431,8 +431,6 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryByThreeArrows,
                               fail,
                               fail );
     
-    serre_category!.category_as_first_argument := true;
-    
     serre_category!.predicate_logic := category!.predicate_logic;
     
     SetFilterObj( serre_category, WasCreatedAsSerreQuotientCategoryByThreeArrows );

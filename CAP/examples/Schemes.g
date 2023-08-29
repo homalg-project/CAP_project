@@ -428,8 +428,6 @@ category_of_schemes := CreateCapCategory( "Schemes",
                                           IsSchemeMorphism,
                                           IsCapCategoryTwoCell );
 
-category_of_schemes!.category_as_first_argument := true;
-
 A := Scheme( category_of_schemes );
 
 B := Scheme( category_of_schemes );

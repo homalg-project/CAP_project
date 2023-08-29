@@ -286,21 +286,12 @@ InstallGlobalFunction( CapInternalInstallAdd,
         
         ## Nr arguments sanity check
         
-        if not category!.category_as_first_argument in [ false, true ] then
-            
-            Print(
-                "WARNING: Please set the component `category_as_first_argument` of the category with name \"", Name( category ), "\" explicitly to `true` or `false`. ",
-                "Currently, the default value is `false` (which will now be set automatically), but this will change in the future.\n"
-            );
-            
-            category!.category_as_first_argument := false;
-            
-        fi;
-        
         # backwards compatibility for categories with `category!.category_as_first_argument = false`
-        needs_wrapping := category!.category_as_first_argument = false and not (is_derivation or is_final_derivation);
+        needs_wrapping := IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = false and not (is_derivation or is_final_derivation);
         
         if needs_wrapping then
+            
+            Print( "WARNING: Setting `category!.category_as_first_argument` to `false` is deprecated and will not be supported after 2024.08.29.\n" );
             
             number_of_proposed_arguments := Length( filter_list ) - 1;
             

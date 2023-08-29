@@ -54,8 +54,6 @@ underlying_category := MatrixCategory( Q );;
 ## We create a "void" CapCategory here and set its properties (abelian, monoidal) in the beginning
 category_of_objects_with_endomorphism := CreateCapCategory( "Category of objects with endomorphisms" );;
 
-category_of_objects_with_endomorphism!.category_as_first_argument := true;;
-
 SetIsAbelianCategory( category_of_objects_with_endomorphism, true );;
 
 SetIsRigidSymmetricClosedMonoidalCategory( category_of_objects_with_endomorphism, true );;

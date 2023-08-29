@@ -41,8 +41,6 @@ InstallMethod( AdelmanCategory,
     
     adelman_category := CreateCapCategory( Concatenation( "Adelman category( ", Name( underlying_category ), " )" ), IsAdelmanCategory, IsAdelmanCategoryObject, IsAdelmanCategoryMorphism, IsCapCategoryTwoCell );
     
-    adelman_category!.category_as_first_argument := true;
-    
     adelman_category!.compiler_hints := rec(
         category_attribute_names := [
             "UnderlyingCategory",

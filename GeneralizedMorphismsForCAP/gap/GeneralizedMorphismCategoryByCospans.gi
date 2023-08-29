@@ -290,8 +290,6 @@ InstallMethod( GeneralizedMorphismCategoryByCospans,
                                              fail,
                                              fail );
     
-    generalized_morphism_category!.category_as_first_argument := true;
-    
     generalized_morphism_category!.predicate_logic := category!.predicate_logic;
     
     SetUnderlyingHonestCategory( generalized_morphism_category, category );

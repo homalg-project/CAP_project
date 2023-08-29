@@ -21,8 +21,6 @@ InstallMethod( GroupAsCategory,
     
     category := CreateCapCategory( Concatenation( "Group as category( ", String( group )," )" ), IsGroupAsCategory, IsGroupAsCategoryObject, IsGroupAsCategoryMorphism, IsCapCategoryTwoCell : overhead := false );
     
-    category!.category_as_first_argument := true;
-    
     category!.compiler_hints := rec(
         category_attribute_names := [
             "UnderlyingGroup",

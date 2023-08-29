@@ -6,13 +6,6 @@
 InstallGlobalFunction( "CapJitCompiledCAPOperationAsEnhancedSyntaxTree", function ( cat, operation_name, post_processing_enabled )
   local index, function_to_compile, global_variable_name, info, return_type, trees;
     
-    if cat!.category_as_first_argument <> true then
-        
-        # COVERAGE_IGNORE_NEXT_LINE
-        Error( "only CAP operations of categories with `cat!.category_as_first_argument = true` can be compiled" );
-        
-    fi;
-    
     # find the last added function with no additional filters
     index := Last( PositionsProperty( cat!.added_functions.(operation_name), f -> Length( f[2] ) = 0 ) );
     

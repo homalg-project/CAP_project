@@ -92,8 +92,6 @@ InstallMethod( StringsAsCategory,
                                                 IsStringRep,
                                                 fail );
     
-    category!.category_as_first_argument := true;
-    
     INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY( category );
     
     Finalize( category );

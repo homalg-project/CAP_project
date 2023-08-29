@@ -29,8 +29,6 @@ InstallMethod( RelCategory,
                         fail,
                         fail );
     
-    category!.category_as_first_argument := true;
-    
     SetUnderlyingCategory( category, underlying_category );
     
     INSTALL_FUNCTIONS_FOR_RELATIONS_CATEGORY( category );

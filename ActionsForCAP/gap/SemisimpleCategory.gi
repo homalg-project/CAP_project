@@ -64,8 +64,6 @@ InstallMethod( SemisimpleCategory,
     
     semisimple_category := CreateCapCategory( name );
     
-    semisimple_category!.category_as_first_argument := true;
-    
     SetUnderlyingCategoryForSemisimpleCategory( semisimple_category, underlying_category );
     
     SetMembershipFunctionForSemisimpleCategory( semisimple_category, membership_function );

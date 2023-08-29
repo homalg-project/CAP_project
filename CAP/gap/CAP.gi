@@ -282,8 +282,6 @@ InstallGlobalFunction( "CreateCapCategoryWithDataTypes",
         
     fi;
     
-    obj!.category_as_first_argument := fail;
-    
     obj!.add_primitive_output := false;
     
     # convenience for Julia lists
