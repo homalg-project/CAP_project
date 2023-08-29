@@ -880,21 +880,6 @@ DeclareOperation( "MorphismBetweenDirectSumsWithGivenDirectSums",
                   [ IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject ] );
 
 #! @Description
-#! This is a deprecated convenience method.
-#! The arguments are a list
-#! $M = ( \phi_{1,1}, \phi_{1,2}, \dots, \phi_{1,n}, \phi_{2,1}, \dots, \phi_{m,n} )$
-#! of morphisms $\phi_{i,j}: A_i \rightarrow B_j$,
-#! an integer $m$,
-#! and an integer $n$.
-#! The output is the morphism
-#! $\bigoplus_{i=1}^{m}A_i \rightarrow \bigoplus_{j=1}^n B_j$
-#! defined by the list $M$ regarded as a matrix of dimension $m \times n$.
-#! @Returns a morphism in $\mathrm{Hom}(\bigoplus_{i=1}^{m}A_i, \bigoplus_{j=1}^n B_j)$
-#! @Arguments M, m, n
-DeclareOperation( "MorphismBetweenDirectSums",
-                           [ IsList, IsInt, IsInt ] );
-
-#! @Description
 #! The arguments are a morphism $\alpha: A \rightarrow S$,
 #! a list $D = (S_1, \dots, S_n)$ of objects with $S = \bigoplus_{j=1}^n S_j$,
 #! and an integer $k$.
