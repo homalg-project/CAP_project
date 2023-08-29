@@ -3,7 +3,7 @@
 ##
 AddKernelEmbedding( SQVec,
 
-  function( alpha )
+  function( cat, alpha )
     local kernel_emb, kernel_obj;
     
     kernel_emb := SyzygiesOfRows( UnderlyingMatrix( alpha ) );
@@ -17,7 +17,7 @@ end );
 ##
 AddKernelLift( SQVec,
 
-  function( alpha, T, tau )
+  function( cat, alpha, T, tau )
     local kernel_matrix;
     
     kernel_matrix := SyzygiesOfRows( UnderlyingMatrix( alpha ) );

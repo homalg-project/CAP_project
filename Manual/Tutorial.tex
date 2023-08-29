@@ -16,9 +16,9 @@ in \CapPkg is presented by a category \GAP object. We start by creating this obj
 
 \input{GAP_tex/group_example/CreateCategory_main}
 
-The string is just the name of the category we have created, and the object the variable
-\texttt{grps} refers to stores information about the category. We can now continue by
-telling the category how operations on the objects or morphisms are performed by adding
+The string is just the name of the category we create. For legacy reasons,\\
+``\texttt{category\_as\_first\_argument := true}'' has to be set and will not be required in the future.
+We can now continue by telling the category how operations on the objects or morphisms are performed by adding
 functions the category. First, there should be a compose method for morphisms. In \GAP
 morphisms of groups are composed via the \texttt{*} operator, so we use the two
 argument function \texttt{\textbackslash *} as function for \textrm{PreCompose}.
@@ -116,7 +116,7 @@ such that every \GAP object which is an object of $\Svec$ lies in the filter \te
 and every \GAP object which is a morphism of $\Svec$ lies in the filter \texttt{IsSQVecMor}.
 We do not want to consider two cells in $\Svec$, so we simply pass the generic filter \texttt{IsCapCategoryTwoCell}.
 Since we are going to create an Abelian category, we tell the system that we are doing this, to have all the computational
-properties of an Abelian category.
+properties of an Abelian category. For legacy reasons, ``\texttt{category\_as\_first\_argument := true}'' has to be set and will not be required in the future.
 Last, we bind the field $\Q$ to a global variable.
 
 \input{GAP_tex/vecspaces_example/Declarations2}

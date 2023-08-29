@@ -1,8 +1,8 @@
 LoadPackage( "CAP" );
-LoadPackage( "CAP" );
 grps := CreateCapCategory( "groups" );
-AddPreCompose( grps, \* );
-identity_func := grp -> GroupHomomorphismByImages( grp, grp );
+grps!.category_as_first_argument := true;
+AddPreCompose( grps, { cat, mor1, mor2 } -> mor1 * mor2 );
+identity_func := { cat, grp } -> GroupHomomorphismByImages( grp, grp );
 AddIdentityMorphism( grps, identity_func );
 EnableAddForCategoricalOperations( grps );
 Finalize( grps );
