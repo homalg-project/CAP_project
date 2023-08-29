@@ -43,7 +43,6 @@
     [4X[25Xgap>[125X [27Xunderlying_category := MatrixCategory( Q );;[127X[104X
     [4X[25Xgap>[125X [27X## We create a "void" CapCategory here and set its properties (abelian, monoidal) in the beginning[127X[104X
     [4X[25X>[125X [27Xcategory_of_objects_with_endomorphism := CreateCapCategory( "Category of objects with endomorphisms" );;[127X[104X
-    [4X[25Xgap>[125X [27Xcategory_of_objects_with_endomorphism!.category_as_first_argument := true;;[127X[104X
     [4X[25Xgap>[125X [27XSetIsAbelianCategory( category_of_objects_with_endomorphism, true );;[127X[104X
     [4X[25Xgap>[125X [27XSetIsRigidSymmetricClosedMonoidalCategory( category_of_objects_with_endomorphism, true );;[127X[104X
     [4X[25Xgap>[125X [27XSetIsStrictMonoidalCategory( category_of_objects_with_endomorphism, true );;[127X[104X
