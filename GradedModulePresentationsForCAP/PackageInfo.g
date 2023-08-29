@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "GradedModulePresentationsForCAP",
 Subtitle := "Presentations for graded modules",
-Version := "2023.08-02",
-Date := "2023-08-15",
+Version := "2023.08-03",
+Date := "2023-08-29",
 License := "GPL-2.0-or-later",
 
 Persons := [

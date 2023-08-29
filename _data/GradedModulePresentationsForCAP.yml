@@ -1,7 +1,7 @@
 name: GradedModulePresentationsForCAP
-version: "2023.08-02"
+version: "2023.08-03"
 license: "GPL-2.0-or-later"
-date: 2023-08-15
+date: 2023-08-29
 description: |
     Presentations for graded modules
 
@@ -41,11 +41,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/GradedModulePresentati
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-2023.08-02/GradedModulePresentationsForCAP-2023.08-02.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-2023.08-03/GradedModulePresentationsForCAP-2023.08-03.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-2023.08-02/GradedModulePresentationsForCAP-2023.08-02.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-2023.08-03/GradedModulePresentationsForCAP-2023.08-03.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-2023.08-02/GradedModulePresentationsForCAP-2023.08-02-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-2023.08-03/GradedModulePresentationsForCAP-2023.08-03-manual.pdf
 
 abstract: |
 
@@ -54,28 +54,28 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>Gut15</span>]   <b class='BibAuthor'>Gutsche, S.</b>,
+    [<span class='BibKey'>Gut29</span>]   <b class='BibAuthor'>Gutsche, S.</b>,
      <i class='BibTitle'>GradedModulePresentationsForCAP, Presentations for graded modules,
-             Version 2023.08-02</i>
-     (<span class='BibYear'>8-15</span>)<br />
+             Version 2023.08-03</i>
+     (<span class='BibYear'>8-29</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/GradedModulePresentationsForCAP">https://homalg-project.github.io/pkg/GradedModulePresentationsForCAP</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ GradedModulePresentationsForCAP2023.08-02,
+    @misc{ GradedModulePresentationsForCAP2023.08-03,
       author =           {Gutsche, S.},
       title =            {{GradedModulePresentationsForCAP},  Presentations  for
-                          graded modules, {V}ersion 2023.08-02},
+                          graded modules, {V}ersion 2023.08-03},
       month =            {3-},
-      year =             {8-15},
+      year =             {8-29},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/GradedModulePresentationsForCAP}
                           {\texttt{https://homalg-project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{GradedModulePresentationsForCAP}}},
-      printedkey =       {Gut15}
+      printedkey =       {Gut29}
     }
 
