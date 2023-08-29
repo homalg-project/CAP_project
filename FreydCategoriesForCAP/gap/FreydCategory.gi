@@ -33,8 +33,6 @@ InstallGlobalFunction( FREYD_CATEGORY,
     
     freyd_category := CreateCapCategory( name, IsFreydCategory, IsFreydCategoryObject, IsFreydCategoryMorphism, IsCapCategoryTwoCell );
     
-    freyd_category!.category_as_first_argument := true;
-    
     if IsBound( underlying_category!.supports_empty_limits ) then
         
         freyd_category!.supports_empty_limits := underlying_category!.supports_empty_limits;

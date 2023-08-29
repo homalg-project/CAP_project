@@ -11,17 +11,14 @@ It might be neccessary to create \CapPkg's documentation by running \texttt{make
 
 When implementing a category in \CapPkg, one should always have the corresponding classical
 category in mind. In this example we start with the category of groups. The objects in this
-category will be the groups, the morphisms will be the homomorphisms of groups. Every category
-in \CapPkg is presented by a category \GAP object. We start by creating this object.
+category will be the groups, the morphisms will be the homomorphisms of groups.
+We start by creating a \CapPkg category with a suitable name:
 
 \input{GAP_tex/group_example/CreateCategory_main}
 
-The string is just the name of the category we create. For legacy reasons,\\
-``\texttt{category\_as\_first\_argument := true}'' has to be set and will not be required in the future.
-We can now continue by telling the category how operations on the objects or morphisms are performed by adding
+We continue by telling the category how operations on the objects or morphisms are performed by adding
 functions the category. First, there should be a compose method for morphisms. In \GAP
-morphisms of groups are composed via the \texttt{*} operator, so we use the two
-argument function \texttt{\textbackslash *} as function for \textrm{PreCompose}.
+morphisms of groups are composed via the \texttt{*} operator, so we use it for \textrm{PreCompose}.
 
 \input{GAP_tex/group_example/AddPreCompose_main}
 
@@ -116,7 +113,7 @@ such that every \GAP object which is an object of $\Svec$ lies in the filter \te
 and every \GAP object which is a morphism of $\Svec$ lies in the filter \texttt{IsSQVecMor}.
 We do not want to consider two cells in $\Svec$, so we simply pass the generic filter \texttt{IsCapCategoryTwoCell}.
 Since we are going to create an Abelian category, we tell the system that we are doing this, to have all the computational
-properties of an Abelian category. For legacy reasons, ``\texttt{category\_as\_first\_argument := true}'' has to be set and will not be required in the future.
+properties of an Abelian category.
 Last, we bind the field $\Q$ to a global variable.
 
 \input{GAP_tex/vecspaces_example/Declarations2}
@@ -127,7 +124,7 @@ Here, the \CapPkg command
   \item \texttt{CreateCapCategoryObjectWithAttributes}
 \end{itemize}
 creates a \GAP object that resides as an object in the category
-$\Svec$ with attribute \texttt{Dimension} set to \texttt{dim}.
+$\Svec$, with the attribute \texttt{Dimension} set to \texttt{dim}.
 
 The second constructor creates the morphisms of $\Svec$.
 Here, the \CapPkg command

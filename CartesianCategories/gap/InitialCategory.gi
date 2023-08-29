@@ -11,8 +11,6 @@ InstallGlobalFunction( InitialCategory,
     
     I := CreateCapCategory( "InitialCategory( )", IsInitialCapCategory, IsObjectInInitialCapCategory, IsMorphismInInitialCapCategory, IsCapCategoryTwoCell );
     
-    I!.category_as_first_argument := true;
-    
     SetIsInitialCategory( I, true );
     
     SetRangeCategoryOfHomomorphismStructure( I, I );

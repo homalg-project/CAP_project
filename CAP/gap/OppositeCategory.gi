@@ -390,8 +390,6 @@ InstallMethod( Opposite,
     
     opposite_category := CreateCapCategory( name, WasCreatedAsOppositeCategory, IsCapCategoryOppositeObject, IsCapCategoryOppositeMorphism, IsCapCategoryTwoCell : is_computable := category!.is_computable );
     
-    opposite_category!.category_as_first_argument := true;
-    
     if IsBound( category!.supports_empty_limits ) then
         
         opposite_category!.supports_empty_limits := category!.supports_empty_limits;

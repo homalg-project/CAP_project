@@ -64,8 +64,6 @@ InstallMethod( ProSetAsCategory,
                         fail
                         : overhead := false );
     
-    category!.category_as_first_argument := true;
-    
     SetIncidenceMatrix( category, incidence_matrix );
     
     SetRangeCategoryOfHomomorphismStructure( category, FREYD_CATEGORIES_SkeletalFinSets );

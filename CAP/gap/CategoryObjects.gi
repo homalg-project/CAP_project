@@ -278,6 +278,8 @@ InstallGlobalFunction( ObjectifyObjectForCAPWithAttributes,
   function( object, category, additional_arguments_list... )
     local arg_list, obj;
     
+    Print( "WARNING: ObjectifyObjectForCAPWithAttributes is deprecated and will not be supported after 2024.08.29. Please use CreateCapCategoryObjectWithAttributes instead.\n" );
+    
     arg_list := Concatenation(
         [ object, category!.object_type, CapCategory, category ], additional_arguments_list
     );
@@ -301,8 +303,6 @@ InstallGlobalFunction( CreateCapCategoryObjectWithAttributes,
                        
   function( category, additional_arguments_list... )
     local arg_list, obj;
-    
-    # inline ObjectifyObjectForCAPWithAttributes( rec( ), category, additional_arguments_list... );
     
     arg_list := Concatenation(
         [ rec( ), category!.object_type, CapCategory, category ], additional_arguments_list

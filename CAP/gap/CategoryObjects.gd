@@ -239,19 +239,13 @@ DeclareOperation( "AddObjectRepresentation",
 
 #! @Arguments object, category[, attribute1, value1, ...]
 #! @Description
-#!  Objectifies the object <A>object</A> with the type created
-#!  for objects in the category <A>category</A>. The type
-#!  is created by passing an object filter to <Ref Func="CreateCapCategoryWithDataTypes" />.
-#!  Objects which are objectified using this method do not have to be passed
-#!  to the <C>AddObject</C> function.
-#!  The optional arguments behave like the corresponding arguments in <C>ObjectifyWithAttributes</C>.
-#!  Also returns the objectified object.
+#!  **Deprecated**: use <Ref Func="CreateCapCategoryObjectWithAttributes" /> instead.
 #! @Returns an object
 DeclareGlobalFunction( "ObjectifyObjectForCAPWithAttributes" );
 
 #! @Arguments category, [attribute1, value1, ...]
 #! @Description
-#!  Shorthand for `ObjectifyObjectForCAPWithAttributes( rec( ), category[, attribute1, value1, ...] )`.
+#!  Creates an object in <A>category</A> with the given attributes.
 #! @Returns an object
 DeclareGlobalFunction( "CreateCapCategoryObjectWithAttributes" );
 

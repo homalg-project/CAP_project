@@ -31,8 +31,6 @@ integer_category := CreateCapCategory( "HomalgIntegers",
                                        IsMorphismInCategoryOfHomalgIntegers,
                                        IsCapCategoryTwoCell );
 
-integer_category!.category_as_first_argument := true;
-
 #############################
 ##
 ## Constructors

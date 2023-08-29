@@ -57,8 +57,6 @@ InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR,
     
     category := CreateCapCategory( name, IsLinearClosure, IsLinearClosureObject, IsLinearClosureMorphism, IsCapCategoryTwoCell : overhead := false );
     
-    category!.category_as_first_argument := true;
-    
     category!.compiler_hints := rec(
         category_attribute_names := [
             "UnderlyingCategory",

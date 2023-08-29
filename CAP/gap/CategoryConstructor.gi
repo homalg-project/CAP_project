@@ -114,8 +114,6 @@ InstallMethod( CategoryConstructor,
         : is_computable := is_computable
     );
     
-    CC!.category_as_first_argument := true;
-    
     if IsBound( options.supports_empty_limits ) then
         
         CC!.supports_empty_limits := options.supports_empty_limits;

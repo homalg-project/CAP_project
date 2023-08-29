@@ -68,8 +68,6 @@ DeclareInfoClass( "InfoCategoryConstructor" );
 #!    In some categories, source and range can always be obtained in a generic way (e.g. from the morphism datum). In this case, `generic_output_source_getter_string` and `generic_output_range_getter_string`
 #!    can be set and are used if the required information is not available in the method name record.
 #!  * `top_object_getter` and `top_morphism_getter` are used in the `"default"` strings and are replaced by `top_object_getter_string` and `top_morphism_getter_string`, respectively.
-#!
-#!  Note that the category is created with `category_as_first_argument` set to `true` (see <Ref Sect="Section_CapInternalInstallAdd" />).
 #! @Arguments options
 #! @Returns a &CAP; category
 DeclareOperation( "CategoryConstructor",

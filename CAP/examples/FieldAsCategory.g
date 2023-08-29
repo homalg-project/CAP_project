@@ -49,8 +49,6 @@ InstallMethod( FieldAsCategory,
                         fail
                         : overhead := false );
     
-    category!.category_as_first_argument := true;
-    
     SetUnderlyingFieldForHomalg( category, field );
     
     SetRangeCategoryOfHomomorphismStructure( category, MatrixCategory( field ) );

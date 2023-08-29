@@ -37,8 +37,6 @@ vec := MatrixCategory( Q );;
 wrapped_cat := CreateCapCategory( "Wrapped Category", IsCapCategory, IsWrappedObject, IsWrappedMorphism, IsCapCategoryTwoCell : is_computable := false );
 #! Wrapped Category
 
-wrapped_cat!.category_as_first_argument := true;;
-
 #################################
 ##
 ## Constructors for objects and morphisms
