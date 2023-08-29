@@ -308,6 +308,8 @@ InstallGlobalFunction( ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes,
   function( morphism, category, source, range, additional_arguments_list... )
     local arg_list, objectified_morphism;
     
+    Print( "WARNING: ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes is deprecated and will not be supported after 2024.08.29. Please use CreateCapCategoryMorphismWithAttributes instead.\n" );
+    
     arg_list := Concatenation(
         [ morphism, category!.morphism_type, CapCategory, category, Source, source, Range, range ], additional_arguments_list
     );
@@ -336,8 +338,6 @@ InstallGlobalFunction( CreateCapCategoryMorphismWithAttributes,
                        
   function( category, source, range, additional_arguments_list... )
     local arg_list, objectified_morphism;
-    
-    # inline ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), category, source, range, additional_arguments_list... );
     
     arg_list := Concatenation(
         [ rec( ), category!.morphism_type, CapCategory, category, Source, source, Range, range ], additional_arguments_list

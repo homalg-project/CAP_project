@@ -388,20 +388,13 @@ DeclareOperation( "AddMorphismRepresentation",
 
 #! @Arguments morphism, category, source, range[, attr1, val1, attr2, val2, ...]
 #! @Description
-#!  Objectifies the morphism <A>morphism</A> with the type created
-#!  for morphisms in the category <A>category</A>. The type
-#!  is created by passing a morphism filter to <Ref Func="CreateCapCategoryWithDataTypes" />.
-#!  Morphisms which are objectified using this method do not have to be passed
-#!  to the <C>AddMorphism</C> function.
-#!  The arguments <C>source</C> and <C>range</C> are assumed to be objectified.
-#!  The optional arguments behave like the corresponding arguments in <C>ObjectifyWithAttributes</C>.
-#!  Also returns the objectified morphism.
+#!  **Deprecated**: use <Ref Func="CreateCapCategoryMorphismWithAttributes" /> instead.
 #! @Returns a morphism
 DeclareGlobalFunction( "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" );
 
 #! @Arguments category, source, range[, attr1, val1, attr2, val2, ...]
 #! @Description
-#!  Shorthand for `ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), category, source, range[, attr1, val1, attr2, val2, ...] )`.
+#!  Creates a morphism in <A>category</A> with the given attributes.
 #! @Returns a morphism
 DeclareGlobalFunction( "CreateCapCategoryMorphismWithAttributes" );
 
