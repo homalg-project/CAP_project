@@ -50,18 +50,18 @@
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ := HomalgRingOfIntegersInSingular();;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M1 := AsLeftPresentation( HomalgMatrix( [ [ "2" ] ], ZZ ) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M2 := AsLeftPresentation( HomalgMatrix( [ [ "3" ] ], ZZ ) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M3 := AsLeftPresentation( HomalgMatrix( [ [ "4" ] ], ZZ ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZZ := HomalgRingOfIntegersInSingular();;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M1 := AsLeftPresentation( HomalgMatrix( [ [ "2" ] ], ZZZ ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M2 := AsLeftPresentation( HomalgMatrix( [ [ "3" ] ], ZZZ ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M3 := AsLeftPresentation( HomalgMatrix( [ [ "4" ] ], ZZZ ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := DirectSum( M1, M2, M3 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Annihilator( M ) );</span>
 12
 
 A monomorphism in Category of left presentations of Z
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M1 := AsRightPresentation( HomalgMatrix( [ [ "2" ] ], ZZ ) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M2 := AsRightPresentation( HomalgMatrix( [ [ "3" ] ], ZZ ) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M3 := AsRightPresentation( HomalgMatrix( [ [ "4" ] ], ZZ ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M1 := AsRightPresentation( HomalgMatrix( [ [ "2" ] ], ZZZ ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M2 := AsRightPresentation( HomalgMatrix( [ [ "3" ] ], ZZZ ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M3 := AsRightPresentation( HomalgMatrix( [ [ "4" ] ], ZZZ ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := DirectSum( M1, M2, M3 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Annihilator( M ) );</span>
 12

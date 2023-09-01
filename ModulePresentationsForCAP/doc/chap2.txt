@@ -5,18 +5,18 @@
   [1X2.1 [33X[0;0YAnnihilator[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegersInSingular();;[127X[104X
-    [4X[25Xgap>[125X [27XM1 := AsLeftPresentation( HomalgMatrix( [ [ "2" ] ], ZZ ) );;[127X[104X
-    [4X[25Xgap>[125X [27XM2 := AsLeftPresentation( HomalgMatrix( [ [ "3" ] ], ZZ ) );;[127X[104X
-    [4X[25Xgap>[125X [27XM3 := AsLeftPresentation( HomalgMatrix( [ [ "4" ] ], ZZ ) );;[127X[104X
+    [4X[25Xgap>[125X [27XZZZ := HomalgRingOfIntegersInSingular();;[127X[104X
+    [4X[25Xgap>[125X [27XM1 := AsLeftPresentation( HomalgMatrix( [ [ "2" ] ], ZZZ ) );;[127X[104X
+    [4X[25Xgap>[125X [27XM2 := AsLeftPresentation( HomalgMatrix( [ [ "3" ] ], ZZZ ) );;[127X[104X
+    [4X[25Xgap>[125X [27XM3 := AsLeftPresentation( HomalgMatrix( [ [ "4" ] ], ZZZ ) );;[127X[104X
     [4X[25Xgap>[125X [27XM := DirectSum( M1, M2, M3 );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( Annihilator( M ) );[127X[104X
     [4X[28X12[128X[104X
     [4X[28X[128X[104X
     [4X[28XA monomorphism in Category of left presentations of Z[128X[104X
-    [4X[25Xgap>[125X [27XM1 := AsRightPresentation( HomalgMatrix( [ [ "2" ] ], ZZ ) );;[127X[104X
-    [4X[25Xgap>[125X [27XM2 := AsRightPresentation( HomalgMatrix( [ [ "3" ] ], ZZ ) );;[127X[104X
-    [4X[25Xgap>[125X [27XM3 := AsRightPresentation( HomalgMatrix( [ [ "4" ] ], ZZ ) );;[127X[104X
+    [4X[25Xgap>[125X [27XM1 := AsRightPresentation( HomalgMatrix( [ [ "2" ] ], ZZZ ) );;[127X[104X
+    [4X[25Xgap>[125X [27XM2 := AsRightPresentation( HomalgMatrix( [ [ "3" ] ], ZZZ ) );;[127X[104X
+    [4X[25Xgap>[125X [27XM3 := AsRightPresentation( HomalgMatrix( [ [ "4" ] ], ZZZ ) );;[127X[104X
     [4X[25Xgap>[125X [27XM := DirectSum( M1, M2, M3 );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( Annihilator( M ) );[127X[104X
     [4X[28X12[128X[104X
