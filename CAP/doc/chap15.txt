@@ -410,10 +410,10 @@
   [1X15.7 [33X[0;0YMonoidal Categories[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers();;[127X[104X
-    [4X[25Xgap>[125X [27XMl := AsLeftPresentation( HomalgMatrix( [ [ 2 ] ], 1, 1, ZZ ) );[127X[104X
+    [4X[25Xgap>[125X [27XZZZ := HomalgRingOfIntegers();;[127X[104X
+    [4X[25Xgap>[125X [27XMl := AsLeftPresentation( HomalgMatrix( [ [ 2 ] ], 1, 1, ZZZ ) );[127X[104X
     [4X[28X<An object in Category of left presentations of Z>[128X[104X
-    [4X[25Xgap>[125X [27XNl := AsLeftPresentation( HomalgMatrix( [ [ 3 ] ], 1, 1, ZZ ) );[127X[104X
+    [4X[25Xgap>[125X [27XNl := AsLeftPresentation( HomalgMatrix( [ [ 3 ] ], 1, 1, ZZZ ) );[127X[104X
     [4X[28X<An object in Category of left presentations of Z>[128X[104X
     [4X[25Xgap>[125X [27XTl := TensorProductOnObjects( Ml, Nl );[127X[104X
     [4X[28X<An object in Category of left presentations of Z>[128X[104X
@@ -460,9 +460,9 @@
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XIsCongruentForMorphisms( LambdaIntroduction( morphism_l2 ), generator_l2 );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XMr := AsRightPresentation( HomalgMatrix( [ [ 2 ] ], 1, 1, ZZ ) );[127X[104X
+    [4X[25Xgap>[125X [27XMr := AsRightPresentation( HomalgMatrix( [ [ 2 ] ], 1, 1, ZZZ ) );[127X[104X
     [4X[28X<An object in Category of right presentations of Z>[128X[104X
-    [4X[25Xgap>[125X [27XNr := AsRightPresentation( HomalgMatrix( [ [ 3 ] ], 1, 1, ZZ ) );[127X[104X
+    [4X[25Xgap>[125X [27XNr := AsRightPresentation( HomalgMatrix( [ [ 3 ] ], 1, 1, ZZZ ) );[127X[104X
     [4X[28X<An object in Category of right presentations of Z>[128X[104X
     [4X[25Xgap>[125X [27XTr := TensorProductOnObjects( Mr, Nr );[127X[104X
     [4X[28X<An object in Category of right presentations of Z>[128X[104X
