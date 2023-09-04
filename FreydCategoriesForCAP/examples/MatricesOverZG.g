@@ -10,8 +10,8 @@ LoadPackage( "FreydCategoriesForCAP" );;
 #! #@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )
 G := SymmetricGroup( 3 );;
 CG := GroupAsCategory( G );;
-ZZ := HomalgRingOfIntegers( );;
-ZCG := LinearClosure( ZZ, CG );;
+ZZZ := HomalgRingOfIntegers( );;
+ZCG := LinearClosure( ZZZ, CG );;
 RowsG := AdditiveClosure( ZCG );;
 #! #@fi
 #! @EndExample
