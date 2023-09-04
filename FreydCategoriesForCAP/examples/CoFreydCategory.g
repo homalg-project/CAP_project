@@ -7,13 +7,13 @@
 LoadPackage( "FreydCategoriesForCAP", false );
 #! true
 
-ZZ := HomalgRingOfIntegers( );;
-rows := CategoryOfRows( ZZ );;
+ZZZ := HomalgRingOfIntegers( );;
+rows := CategoryOfRows( ZZZ );;
 co_freyd := CoFreydCategory( rows );
 #! CoFreyd( Rows( Z ) )
-rows_obj := CategoryOfRowsObject( rows, 1 );; # ZZ^1
-co_freyd_obj := AsCoFreydCategoryObject( rows_obj );; # ZZ^1 -> 0
-rows_mor := CategoryOfRowsMorphism( rows, rows_obj, HomalgMatrix( [ 2 ], 1, 1, ZZ ), rows_obj );; # ZZ^1 --2-> ZZ^1
+rows_obj := CategoryOfRowsObject( rows, 1 );; # ZZZ^1
+co_freyd_obj := AsCoFreydCategoryObject( rows_obj );; # ZZZ^1 -> 0
+rows_mor := CategoryOfRowsMorphism( rows, rows_obj, HomalgMatrix( [ 2 ], 1, 1, ZZZ ), rows_obj );; # ZZZ^1 --2-> ZZZ^1
 co_freyd_mor := CoFreydCategoryMorphism( co_freyd_obj, rows_mor, co_freyd_obj );;
 IsWellDefined( co_freyd_mor );
 #! true

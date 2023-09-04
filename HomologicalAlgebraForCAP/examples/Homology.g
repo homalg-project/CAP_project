@@ -9,17 +9,17 @@ LoadPackage( "RingsForHomalg" );
 
 #ActivateDerivationInfo();
 #! @Example
-ZZ := HomalgRingOfIntegersInSingular( );
+ZZZ := HomalgRingOfIntegersInSingular( );
 #! Z
-C1 := FreeLeftPresentation( 1, ZZ );;
-C2 := FreeLeftPresentation( 2, ZZ );;
-h1 := PresentationMorphism( C2, HomalgMatrix( [ [ 0 ], [ 4 ] ], ZZ ), C1 );
+C1 := FreeLeftPresentation( 1, ZZZ );;
+C2 := FreeLeftPresentation( 2, ZZZ );;
+h1 := PresentationMorphism( C2, HomalgMatrix( [ [ 0 ], [ 4 ] ], ZZZ ), C1 );
 #! <A morphism in Category of left presentations of Z>
-h2 := PresentationMorphism( C2, HomalgMatrix( [ [ 0 ], [ 2 ] ], ZZ ), C1 );
+h2 := PresentationMorphism( C2, HomalgMatrix( [ [ 0 ], [ 2 ] ], ZZZ ), C1 );
 #! <A morphism in Category of left presentations of Z>
-v1 := PresentationMorphism( C2, HomalgMatrix( [ [ 2, 0 ], [ 1, 2 ] ], ZZ ), C2 );
+v1 := PresentationMorphism( C2, HomalgMatrix( [ [ 2, 0 ], [ 1, 2 ] ], ZZZ ), C2 );
 #! <A morphism in Category of left presentations of Z>
-v2 := PresentationMorphism( C1, HomalgMatrix( [ [ 4 ] ], ZZ ), C1 );
+v2 := PresentationMorphism( C1, HomalgMatrix( [ [ 4 ] ], ZZZ ), C1 );
 #! <A morphism in Category of left presentations of Z>
 cocomplex_h1 := CocomplexFromMorphismList( [ h1 ] );
 #! <An object in Cocomplex category of Category of left presentations of Z>

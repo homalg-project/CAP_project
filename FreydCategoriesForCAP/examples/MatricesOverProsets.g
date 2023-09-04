@@ -10,8 +10,8 @@ LoadPackage( "FreydCategoriesForCAP" );;
 K := [ [1, 1, 1], [0, 1, 1], [0, 1, 1] ];;
 #Construction of a tower of categories
 CP_K := ProSetAsCategory( K );;
-ZZ := HomalgRingOfIntegers( );;
-ZP_K := LinearClosure( ZZ, CP_K, ReturnTrue );;
+ZZZ := HomalgRingOfIntegers( );;
+ZP_K := LinearClosure( ZZZ, CP_K, ReturnTrue );;
 RowsP_K := AdditiveClosure( ZP_K );;
 
 a := ProSetAsCategoryObject( 1, CP_K );;
