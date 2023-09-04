@@ -139,10 +139,10 @@
     [4X[25Xgap>[125X [27XY2 := AsLeftPresentation( Y2 );;[127X[104X
     [4X[25Xgap>[125X [27XY := CokernelObject( Annihilator( DirectSum( Y1, Y2 ) ) );;[127X[104X
     [4X[25Xgap>[125X [27XY := AsSerreQuotientCategoryObject( category, Y );;[127X[104X
-    [4X[25Xgap>[125X [27XZZ := HomalgMatrix( "[ x-z, y-w ]", 2, 1, R );;[127X[104X
-    [4X[25Xgap>[125X [27XZZ := AsLeftPresentation( ZZ );;[127X[104X
-    [4X[25Xgap>[125X [27XZZ := AsSerreQuotientCategoryObject( category, ZZ );;[127X[104X
-    [4X[25Xgap>[125X [27XT := TorComplex( ZZ, Y );;[127X[104X
+    [4X[25Xgap>[125X [27XZZZ := HomalgMatrix( "[ x-z, y-w ]", 2, 1, R );;[127X[104X
+    [4X[25Xgap>[125X [27XZZZ := AsLeftPresentation( ZZZ );;[127X[104X
+    [4X[25Xgap>[125X [27XZZZ := AsSerreQuotientCategoryObject( category, ZZZ );;[127X[104X
+    [4X[25Xgap>[125X [27XT := TorComplex( ZZZ, Y );;[127X[104X
     [4X[25Xgap>[125X [27XH0 := HomologyFunctor( category, 0 );;[127X[104X
     [4X[25Xgap>[125X [27XH1 := HomologyFunctor( category, 1 );;[127X[104X
     [4X[25Xgap>[125X [27XH2 := HomologyFunctor( category, 2 );;[127X[104X

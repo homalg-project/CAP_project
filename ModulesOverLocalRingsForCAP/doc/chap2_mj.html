@@ -181,10 +181,10 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Y2 := AsLeftPresentation( Y2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Y := CokernelObject( Annihilator( DirectSum( Y1, Y2 ) ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Y := AsSerreQuotientCategoryObject( category, Y );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ := HomalgMatrix( "[ x-z, y-w ]", 2, 1, R );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ := AsLeftPresentation( ZZ );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ := AsSerreQuotientCategoryObject( category, ZZ );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TorComplex( ZZ, Y );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZZ := HomalgMatrix( "[ x-z, y-w ]", 2, 1, R );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZZ := AsLeftPresentation( ZZZ );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZZ := AsSerreQuotientCategoryObject( category, ZZZ );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TorComplex( ZZZ, Y );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H0 := HomologyFunctor( category, 0 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H1 := HomologyFunctor( category, 1 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H2 := HomologyFunctor( category, 2 );;</span>
