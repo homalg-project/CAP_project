@@ -571,13 +571,13 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ := HomalgRingOfIntegers( );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rows := CategoryOfRows( ZZ );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZZ := HomalgRingOfIntegers( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rows := CategoryOfRows( ZZZ );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">co_freyd := CoFreydCategory( rows );</span>
 CoFreyd( Rows( Z ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rows_obj := CategoryOfRowsObject( rows, 1 );; # ZZ^1</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">co_freyd_obj := AsCoFreydCategoryObject( rows_obj );; # ZZ^1 -&gt; 0</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rows_mor := CategoryOfRowsMorphism( rows, rows_obj, HomalgMatrix( [ 2 ], 1, 1, ZZ ), rows_obj );; # ZZ^1 --2-&gt; ZZ^1</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rows_obj := CategoryOfRowsObject( rows, 1 );; # ZZZ^1</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">co_freyd_obj := AsCoFreydCategoryObject( rows_obj );; # ZZZ^1 -&gt; 0</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rows_mor := CategoryOfRowsMorphism( rows, rows_obj, HomalgMatrix( [ 2 ], 1, 1, ZZZ ), rows_obj );; # ZZZ^1 --2-&gt; ZZZ^1</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">co_freyd_mor := CoFreydCategoryMorphism( co_freyd_obj, rows_mor, co_freyd_obj );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( co_freyd_mor );</span>
 true
@@ -1015,8 +1015,8 @@ false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := SymmetricGroup( 3 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CG := GroupAsCategory( G );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compare_func := function( g, h ) return UnderlyingGroupElement( g ) &lt; UnderlyingGroupElement( h ); end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ := HomalgRingOfIntegers();;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZCG := LinearClosure( ZZ, CG, compare_func );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZZ := HomalgRingOfIntegers();;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZCG := LinearClosure( ZZZ, CG, compare_func );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := GroupAsCategoryUniqueObject( CG );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">g := GroupAsCategoryMorphism( (1,2,3), CG );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h := GroupAsCategoryMorphism( (1,2), CG );;</span>
@@ -1047,8 +1047,8 @@ false
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">K := [ [1, 1, 1], [0, 1, 1], [0, 1, 1] ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#Construction of a tower of categories</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">CP_K := ProSetAsCategory( K );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ := HomalgRingOfIntegers( );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZP_K := LinearClosure( ZZ, CP_K, ReturnTrue );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZZ := HomalgRingOfIntegers( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZP_K := LinearClosure( ZZZ, CP_K, ReturnTrue );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RowsP_K := AdditiveClosure( ZP_K );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := ProSetAsCategoryObject( 1, CP_K );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := ProSetAsCategoryObject( 2, CP_K );;</span>
@@ -1094,8 +1094,8 @@ true
 #@if IsPackageMarkedForLoading( "FinSetsForCAP", "&gt;= 2023.07-03" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := SymmetricGroup( 3 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CG := GroupAsCategory( G );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ := HomalgRingOfIntegers( );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZCG := LinearClosure( ZZ, CG );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZZ := HomalgRingOfIntegers( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZCG := LinearClosure( ZZZ, CG );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RowsG := AdditiveClosure( ZCG );;</span>
 #@fi
 </pre></div>

@@ -470,13 +470,13 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );;[127X[104X
-    [4X[25Xgap>[125X [27Xrows := CategoryOfRows( ZZ );;[127X[104X
+    [4X[25Xgap>[125X [27XZZZ := HomalgRingOfIntegers( );;[127X[104X
+    [4X[25Xgap>[125X [27Xrows := CategoryOfRows( ZZZ );;[127X[104X
     [4X[25Xgap>[125X [27Xco_freyd := CoFreydCategory( rows );[127X[104X
     [4X[28XCoFreyd( Rows( Z ) )[128X[104X
-    [4X[25Xgap>[125X [27Xrows_obj := CategoryOfRowsObject( rows, 1 );; # ZZ^1[127X[104X
-    [4X[25Xgap>[125X [27Xco_freyd_obj := AsCoFreydCategoryObject( rows_obj );; # ZZ^1 -> 0[127X[104X
-    [4X[25Xgap>[125X [27Xrows_mor := CategoryOfRowsMorphism( rows, rows_obj, HomalgMatrix( [ 2 ], 1, 1, ZZ ), rows_obj );; # ZZ^1 --2-> ZZ^1[127X[104X
+    [4X[25Xgap>[125X [27Xrows_obj := CategoryOfRowsObject( rows, 1 );; # ZZZ^1[127X[104X
+    [4X[25Xgap>[125X [27Xco_freyd_obj := AsCoFreydCategoryObject( rows_obj );; # ZZZ^1 -> 0[127X[104X
+    [4X[25Xgap>[125X [27Xrows_mor := CategoryOfRowsMorphism( rows, rows_obj, HomalgMatrix( [ 2 ], 1, 1, ZZZ ), rows_obj );; # ZZZ^1 --2-> ZZZ^1[127X[104X
     [4X[25Xgap>[125X [27Xco_freyd_mor := CoFreydCategoryMorphism( co_freyd_obj, rows_mor, co_freyd_obj );;[127X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( co_freyd_mor );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -898,8 +898,8 @@
     [4X[25Xgap>[125X [27XG := SymmetricGroup( 3 );;[127X[104X
     [4X[25Xgap>[125X [27XCG := GroupAsCategory( G );;[127X[104X
     [4X[25Xgap>[125X [27Xcompare_func := function( g, h ) return UnderlyingGroupElement( g ) < UnderlyingGroupElement( h ); end;;[127X[104X
-    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers();;[127X[104X
-    [4X[25Xgap>[125X [27XZCG := LinearClosure( ZZ, CG, compare_func );;[127X[104X
+    [4X[25Xgap>[125X [27XZZZ := HomalgRingOfIntegers();;[127X[104X
+    [4X[25Xgap>[125X [27XZCG := LinearClosure( ZZZ, CG, compare_func );;[127X[104X
     [4X[25Xgap>[125X [27Xu := GroupAsCategoryUniqueObject( CG );;[127X[104X
     [4X[25Xgap>[125X [27Xg := GroupAsCategoryMorphism( (1,2,3), CG );;[127X[104X
     [4X[25Xgap>[125X [27Xh := GroupAsCategoryMorphism( (1,2), CG );;[127X[104X
@@ -928,8 +928,8 @@
     [4X[25X>[125X [27XK := [ [1, 1, 1], [0, 1, 1], [0, 1, 1] ];;[127X[104X
     [4X[25Xgap>[125X [27X#Construction of a tower of categories[127X[104X
     [4X[25X>[125X [27XCP_K := ProSetAsCategory( K );;[127X[104X
-    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );;[127X[104X
-    [4X[25Xgap>[125X [27XZP_K := LinearClosure( ZZ, CP_K, ReturnTrue );;[127X[104X
+    [4X[25Xgap>[125X [27XZZZ := HomalgRingOfIntegers( );;[127X[104X
+    [4X[25Xgap>[125X [27XZP_K := LinearClosure( ZZZ, CP_K, ReturnTrue );;[127X[104X
     [4X[25Xgap>[125X [27XRowsP_K := AdditiveClosure( ZP_K );;[127X[104X
     [4X[25Xgap>[125X [27Xa := ProSetAsCategoryObject( 1, CP_K );;[127X[104X
     [4X[25Xgap>[125X [27Xb := ProSetAsCategoryObject( 2, CP_K );;[127X[104X
@@ -973,8 +973,8 @@
     [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )[128X[104X
     [4X[25Xgap>[125X [27XG := SymmetricGroup( 3 );;[127X[104X
     [4X[25Xgap>[125X [27XCG := GroupAsCategory( G );;[127X[104X
-    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );;[127X[104X
-    [4X[25Xgap>[125X [27XZCG := LinearClosure( ZZ, CG );;[127X[104X
+    [4X[25Xgap>[125X [27XZZZ := HomalgRingOfIntegers( );;[127X[104X
+    [4X[25Xgap>[125X [27XZCG := LinearClosure( ZZZ, CG );;[127X[104X
     [4X[25Xgap>[125X [27XRowsG := AdditiveClosure( ZCG );;[127X[104X
     [4X[28X#@fi[128X[104X
   [4X[32X[104X
