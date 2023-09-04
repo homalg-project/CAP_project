@@ -5,17 +5,17 @@
   [1X1.1 [33X[0;0YSpectral Sequences[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegersInSingular( );[127X[104X
+    [4X[25Xgap>[125X [27XZZZ := HomalgRingOfIntegersInSingular( );[127X[104X
     [4X[28XZ[128X[104X
-    [4X[25Xgap>[125X [27XC1 := FreeLeftPresentation( 1, ZZ );;[127X[104X
-    [4X[25Xgap>[125X [27XC2 := FreeLeftPresentation( 2, ZZ );;[127X[104X
-    [4X[25Xgap>[125X [27Xh1 := PresentationMorphism( C2, HomalgMatrix( [ [ 0 ], [ 4 ] ], ZZ ), C1 );[127X[104X
+    [4X[25Xgap>[125X [27XC1 := FreeLeftPresentation( 1, ZZZ );;[127X[104X
+    [4X[25Xgap>[125X [27XC2 := FreeLeftPresentation( 2, ZZZ );;[127X[104X
+    [4X[25Xgap>[125X [27Xh1 := PresentationMorphism( C2, HomalgMatrix( [ [ 0 ], [ 4 ] ], ZZZ ), C1 );[127X[104X
     [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
-    [4X[25Xgap>[125X [27Xh2 := PresentationMorphism( C2, HomalgMatrix( [ [ 0 ], [ 2 ] ], ZZ ), C1 );[127X[104X
+    [4X[25Xgap>[125X [27Xh2 := PresentationMorphism( C2, HomalgMatrix( [ [ 0 ], [ 2 ] ], ZZZ ), C1 );[127X[104X
     [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
-    [4X[25Xgap>[125X [27Xv1 := PresentationMorphism( C2, HomalgMatrix( [ [ 2, 0 ], [ 1, 2 ] ], ZZ ), C2 );[127X[104X
+    [4X[25Xgap>[125X [27Xv1 := PresentationMorphism( C2, HomalgMatrix( [ [ 2, 0 ], [ 1, 2 ] ], ZZZ ), C2 );[127X[104X
     [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
-    [4X[25Xgap>[125X [27Xv2 := PresentationMorphism( C1, HomalgMatrix( [ [ 4 ] ], ZZ ), C1 );[127X[104X
+    [4X[25Xgap>[125X [27Xv2 := PresentationMorphism( C1, HomalgMatrix( [ [ 4 ] ], ZZZ ), C1 );[127X[104X
     [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
     [4X[25Xgap>[125X [27Xcocomplex_h1 := CocomplexFromMorphismList( [ h1 ] );[127X[104X
     [4X[28X<An object in Cocomplex category of Category of left presentations of Z>[128X[104X

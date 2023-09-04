@@ -35,17 +35,17 @@
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ := HomalgRingOfIntegersInSingular( );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZZ := HomalgRingOfIntegersInSingular( );</span>
 Z
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C1 := FreeLeftPresentation( 1, ZZ );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C2 := FreeLeftPresentation( 2, ZZ );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h1 := PresentationMorphism( C2, HomalgMatrix( [ [ 0 ], [ 4 ] ], ZZ ), C1 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C1 := FreeLeftPresentation( 1, ZZZ );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C2 := FreeLeftPresentation( 2, ZZZ );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h1 := PresentationMorphism( C2, HomalgMatrix( [ [ 0 ], [ 4 ] ], ZZZ ), C1 );</span>
 &lt;A morphism in Category of left presentations of Z&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h2 := PresentationMorphism( C2, HomalgMatrix( [ [ 0 ], [ 2 ] ], ZZ ), C1 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h2 := PresentationMorphism( C2, HomalgMatrix( [ [ 0 ], [ 2 ] ], ZZZ ), C1 );</span>
 &lt;A morphism in Category of left presentations of Z&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v1 := PresentationMorphism( C2, HomalgMatrix( [ [ 2, 0 ], [ 1, 2 ] ], ZZ ), C2 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v1 := PresentationMorphism( C2, HomalgMatrix( [ [ 2, 0 ], [ 1, 2 ] ], ZZZ ), C2 );</span>
 &lt;A morphism in Category of left presentations of Z&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v2 := PresentationMorphism( C1, HomalgMatrix( [ [ 4 ] ], ZZ ), C1 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v2 := PresentationMorphism( C1, HomalgMatrix( [ [ 4 ] ], ZZZ ), C1 );</span>
 &lt;A morphism in Category of left presentations of Z&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cocomplex_h1 := CocomplexFromMorphismList( [ h1 ] );</span>
 &lt;An object in Cocomplex category of Category of left presentations of Z&gt;

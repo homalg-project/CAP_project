@@ -1,7 +1,7 @@
 name: HomologicalAlgebraForCAP
-version: "2023.08-01"
+version: "2023.09-01"
 license: "GPL-2.0-or-later"
-date: 2023-08-01
+date: 2023-09-04
 description: |
     Homological algebra algorithms for CAP
 
@@ -36,11 +36,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/HomologicalAlgebraForC
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/HomologicalAlgebraForCAP-2023.08-01/HomologicalAlgebraForCAP-2023.08-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/HomologicalAlgebraForCAP-2023.09-01/HomologicalAlgebraForCAP-2023.09-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/HomologicalAlgebraForCAP-2023.08-01/HomologicalAlgebraForCAP-2023.08-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/HomologicalAlgebraForCAP-2023.09-01/HomologicalAlgebraForCAP-2023.09-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/HomologicalAlgebraForCAP-2023.08-01/HomologicalAlgebraForCAP-2023.08-01-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/HomologicalAlgebraForCAP-2023.09-01/HomologicalAlgebraForCAP-2023.09-01-manual.pdf
 
 abstract: |
 
@@ -49,28 +49,28 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>PG01</span>]   <b class='BibAuthor'>Posur, S. and Gutsche, S.</b>,
+    [<span class='BibKey'>PG04</span>]   <b class='BibAuthor'>Posur, S. and Gutsche, S.</b>,
      <i class='BibTitle'>HomologicalAlgebraForCAP, Homological algebra algorithms for CAP,
-             Version 2023.08-01</i>
-     (<span class='BibYear'>8-01</span>)<br />
+             Version 2023.09-01</i>
+     (<span class='BibYear'>9-04</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/HomologicalAlgebraForCAP">https://homalg-project.github.io/pkg/HomologicalAlgebraForCAP</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ HomologicalAlgebraForCAP2023.08-01,
+    @misc{ HomologicalAlgebraForCAP2023.09-01,
       author =           {Posur, S. and Gutsche, S.},
       title =            {{HomologicalAlgebraForCAP},     Homological    algebra
-                          algorithms for CAP, {V}ersion 2023.08-01},
+                          algorithms for CAP, {V}ersion 2023.09-01},
       month =            {3-},
-      year =             {8-01},
+      year =             {9-04},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/HomologicalAlgebraForCAP}
                           {\texttt{https://homalg-project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{HomologicalAlgebraForCAP}}},
-      printedkey =       {PG01}
+      printedkey =       {PG04}
     }
 
