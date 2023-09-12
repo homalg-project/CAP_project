@@ -836,6 +836,11 @@ InstallMethod( ExtendRangeOfHomomorphismStructureByIdentityAsFullEmbedding,
   function ( C )
     local object_function, morphism_function, object_function_inverse, morphism_function_inverse;
     
+    if IsBound( C!.range_category_of_hom_structure_already_extended_by_identity ) then
+        ## the range of the hom-structure has already been extended by identity
+        return;
+    fi;
+    
     object_function := function ( category, range_category, object )
         #% CAP_JIT_RESOLVE_FUNCTION
         
@@ -865,6 +870,8 @@ InstallMethod( ExtendRangeOfHomomorphismStructureByIdentityAsFullEmbedding,
     end;
     
     ExtendRangeOfHomomorphismStructureByFullEmbedding( C, RangeCategoryOfHomomorphismStructure( C ), object_function, morphism_function, object_function_inverse, morphism_function_inverse );
+    
+    C!.range_category_of_hom_structure_already_extended_by_identity := true;
     
 end );
 
