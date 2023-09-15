@@ -192,9 +192,9 @@ end );
 #!  * `name`: the name of the reinterpretation `R`,
 #!  * `category_filter`, `category_object_filter`, `category_morphism_filter`, `object_datum_type`, `morphism_datum_type`, `object_constructor`, `object_datum`, `morphism_constructor`, `morphism_datum`: same meaning as for <Ref Oper="CategoryConstructor" Label="for IsRecord" />, which is used to create the reinterpretation `R`,
 #!  * `modeling_tower_object_constructor`: a function which gets the reinterpretation `R` and an object datum (in the sense of `object_datum`) and returns the corresponding modeling object in the modeling category,
-#!  * `modeling_tower_object_datum`: a function which gets the interpretation category and an object in the modeling category and returns the corresponding object datum (in the sense of `object_datum`),
-#!  * `modeling_tower_morphism_constructor`: a function which gets the interpretation category, a source in the modeling category, a morphism datum (in the sense of `morphism_datum`), and a range in the modeling category and returns the corresponding modeling morphism in the modeling category,
-#!  * `modeling_tower_morphism_datum`: a function which gets the interpretation category and a morphism in the modeling category and returns the corresponding morphism datum (in the sense of `morphism_datum`),
+#!  * `modeling_tower_object_datum`: a function which gets the reinterpretation `R` and an object in the modeling category and returns the corresponding object datum (in the sense of `object_datum`),
+#!  * `modeling_tower_morphism_constructor`: a function which gets the reinterpretation `R`, a source in the modeling category, a morphism datum (in the sense of `morphism_datum`), and a range in the modeling category and returns the corresponding modeling morphism in the modeling category,
+#!  * `modeling_tower_morphism_datum`: a function which gets the reinterpretation `R` and a morphism in the modeling category and returns the corresponding morphism datum (in the sense of `morphism_datum`),
 #!  * `only_primitive_operations` (optional, default `false`): whether to only reinterpret primitive operations or all operations.
 #! @Arguments category, options
 #! @Returns a category
