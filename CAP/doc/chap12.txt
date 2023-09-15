@@ -203,20 +203,19 @@
         and   returns  the  corresponding  modeling  object  in  the  modeling
         category,[133X
   
-  [30X    [33X[0;6Y[10Xmodeling_tower_object_datum[110X:  a function which gets the interpretation
-        category  and  an  object  in  the  modeling  category and returns the
-        corresponding object datum (in the sense of [10Xobject_datum[110X),[133X
+  [30X    [33X[0;6Y[10Xmodeling_tower_object_datum[110X:     a    function    which    gets    the
+        reinterpretation  [10XR[110X and an object in the modeling category and returns
+        the corresponding object datum (in the sense of [10Xobject_datum[110X),[133X
   
   [30X    [33X[0;6Y[10Xmodeling_tower_morphism_constructor[110X:   a   function   which  gets  the
-        interpretation category, a source in the modeling category, a morphism
+        reinterpretation  [10XR[110X,  a  source  in  the modeling category, a morphism
         datum  (in  the  sense of [10Xmorphism_datum[110X), and a range in the modeling
         category  and  returns  the  corresponding  modeling  morphism  in the
         modeling category,[133X
   
   [30X    [33X[0;6Y[10Xmodeling_tower_morphism_datum[110X:    a    function    which    gets   the
-        interpretation  category  and  a morphism in the modeling category and
-        returns   the   corresponding   morphism   datum   (in  the  sense  of
-        [10Xmorphism_datum[110X),[133X
+        reinterpretation [10XR[110X and a morphism in the modeling category and returns
+        the corresponding morphism datum (in the sense of [10Xmorphism_datum[110X),[133X
   
   [30X    [33X[0;6Y[10Xonly_primitive_operations[110X  (optional,  default [10Xfalse[110X): whether to only
         reinterpret primitive operations or all operations.[133X
