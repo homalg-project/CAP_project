@@ -35,7 +35,7 @@ HomStructure( u, omega );;
 #! #@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )
 elem := Elements( G );;
 elem := List( elem, x -> x/CG/ZCG );;
-rand_elem := function() local coeffs; coeffs := List( [ 1 .. 6 ], i -> Random( [ -20 .. 20 ] ) ); if ForAll( coeffs, IsZero ) then return ZeroMorphism( v, v ); fi; return Sum( List( [ 1 .. 6 ], i -> Random( [ -20 .. 20 ] ) * One( ZZ ) * elem[i] ) ); end;;
+rand_elem := function() local coeffs; coeffs := List( [ 1 .. 6 ], i -> Random( [ -20 .. 20 ] ) ); if ForAll( coeffs, IsZero ) then return ZeroMorphism( v, v ); fi; return Sum( List( [ 1 .. 6 ], i -> Random( [ -20 .. 20 ] ) * One( ZZZ ) * elem[i] ) ); end;;
 mat10_11 := List( [ 1 .. 10 ], i ->
         List( [ 1 .. 11 ], j ->
             rand_elem()
