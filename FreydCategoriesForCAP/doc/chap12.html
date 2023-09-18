@@ -1120,7 +1120,7 @@ true
 #@if IsPackageMarkedForLoading( "FinSetsForCAP", "&gt;= 2023.07-03" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">elem := Elements( G );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">elem := List( elem, x -&gt; x/CG/ZCG );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rand_elem := function() local coeffs; coeffs := List( [ 1 .. 6 ], i -&gt; Random( [ -20 .. 20 ] ) ); if ForAll( coeffs, IsZero ) then return ZeroMorphism( v, v ); fi; return Sum( List( [ 1 .. 6 ], i -&gt; Random( [ -20 .. 20 ] ) * One( ZZ ) * elem[i] ) ); end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rand_elem := function() local coeffs; coeffs := List( [ 1 .. 6 ], i -&gt; Random( [ -20 .. 20 ] ) ); if ForAll( coeffs, IsZero ) then return ZeroMorphism( v, v ); fi; return Sum( List( [ 1 .. 6 ], i -&gt; Random( [ -20 .. 20 ] ) * One( ZZZ ) * elem[i] ) ); end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mat10_11 := List( [ 1 .. 10 ], i -&gt;</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        List( [ 1 .. 11 ], j -&gt;</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            rand_elem()</span>

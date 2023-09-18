@@ -1000,7 +1000,7 @@
     [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )[128X[104X
     [4X[25Xgap>[125X [27Xelem := Elements( G );;[127X[104X
     [4X[25Xgap>[125X [27Xelem := List( elem, x -> x/CG/ZCG );;[127X[104X
-    [4X[25Xgap>[125X [27Xrand_elem := function() local coeffs; coeffs := List( [ 1 .. 6 ], i -> Random( [ -20 .. 20 ] ) ); if ForAll( coeffs, IsZero ) then return ZeroMorphism( v, v ); fi; return Sum( List( [ 1 .. 6 ], i -> Random( [ -20 .. 20 ] ) * One( ZZ ) * elem[i] ) ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xrand_elem := function() local coeffs; coeffs := List( [ 1 .. 6 ], i -> Random( [ -20 .. 20 ] ) ); if ForAll( coeffs, IsZero ) then return ZeroMorphism( v, v ); fi; return Sum( List( [ 1 .. 6 ], i -> Random( [ -20 .. 20 ] ) * One( ZZZ ) * elem[i] ) ); end;;[127X[104X
     [4X[25Xgap>[125X [27Xmat10_11 := List( [ 1 .. 10 ], i ->[127X[104X
     [4X[25X>[125X [27X        List( [ 1 .. 11 ], j ->[127X[104X
     [4X[25X>[125X [27X            rand_elem()[127X[104X
