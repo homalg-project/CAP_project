@@ -454,22 +454,6 @@ AddDerivationToCAP( ImageEmbedding,
   end : CategoryFilter := IsAbelianCategory ); ##FIXME: PreAbelian?
 
 ##
-AddDerivationToCAP( CoimageProjection,
-                    "CoimageProjection as the coastriction to image",
-                    [ [ CanonicalIdentificationFromImageObjectToCoimage, 1 ],
-                      [ CoastrictionToImage, 1 ],
-                      [ PreCompose, 1 ] ],
-                    
-  function( cat, mor )
-    local iso;
-    
-    iso := CanonicalIdentificationFromImageObjectToCoimage( cat, mor );
-    
-    return PreCompose( cat, CoastrictionToImage( cat, mor ), iso );
-    
-end );
-
-##
 AddDerivationToCAP( CoastrictionToImage,
                     "CoastrictionToImage using that image embedding can be seen as a kernel",
                     [ [ ImageEmbedding, 1 ],
@@ -497,38 +481,6 @@ AddDerivationToCAP( CoastrictionToImageWithGivenImageObject,
     
     return LiftAlongMonomorphism( cat, image_embedding, morphism );
   
-end );
-
-##
-AddDerivationToCAP( AstrictionToCoimage,
-                    "AstrictionToCoimage as the image embedding",
-                    [ [ ImageEmbedding, 1 ],
-                      [ PreCompose, 1 ],
-                      [ CanonicalIdentificationFromCoimageToImageObject, 1 ] ],
-                    
-  function( cat, morphism )
-    local image_emb;
-    
-    image_emb := ImageEmbedding( cat, morphism );
-    
-    return PreCompose( cat, CanonicalIdentificationFromCoimageToImageObject( cat, morphism ), image_emb );
-    
-  end );
-
-##
-AddDerivationToCAP( AstrictionToCoimageWithGivenCoimageObject,
-                    "AstrictionToCoimage as the image embedding",
-                    [ [ ImageEmbedding, 1 ],
-                      [ PreCompose, 1 ],
-                      [ CanonicalIdentificationFromCoimageToImageObject, 1 ] ],
-                    
-  function( cat, morphism, coimage )
-    local image_emb;
-    
-    image_emb := ImageEmbedding( cat, morphism );
-    
-    return PreCompose( cat, CanonicalIdentificationFromCoimageToImageObject( cat, morphism ), image_emb );
-    
 end );
 
 ##
@@ -560,23 +512,6 @@ AddDerivationToCAP( UniversalMorphismFromImageWithGivenImageObject,
     return LiftAlongMonomorphism( cat, test_factorization[2], image_embedding );
     
 end );
-
-##
-AddDerivationToCAP( UniversalMorphismIntoCoimage,
-                    "UniversalMorphismIntoCoimage using UniversalMorphismFromImage and CanonicalIdentificationFromImageObjectToCoimage",
-                    [ [ UniversalMorphismFromImage, 1 ],
-                      [ CanonicalIdentificationFromImageObjectToCoimage, 1 ],
-                      [ InverseForMorphisms, 1 ],
-                      [ PreCompose, 1 ] ],
-                    
-  function( cat, morphism, test_factorization )
-    local induced_mor;
-    
-    induced_mor := UniversalMorphismFromImage( cat, morphism, test_factorization );
-    
-    return PreCompose( cat, InverseForMorphisms( cat, induced_mor ), CanonicalIdentificationFromImageObjectToCoimage( cat, morphism ) );
-    
-  end );
 
 ##
 AddDerivationToCAP( UniversalMorphismIntoEqualizer,
@@ -2440,28 +2375,6 @@ AddDerivationToCAP( ImageObject,
 end );
 
 ##
-AddDerivationToCAP( CoimageObject,
-                    "CoimageObject as the range of CanonicalIdentificationFromImageObjectToCoimage",
-                    [ [ CanonicalIdentificationFromImageObjectToCoimage, 1 ] ],
-                    
-  function( cat, morphism )
-    
-    return Range( CanonicalIdentificationFromImageObjectToCoimage( cat, morphism ) );
-    
-end );
-
-##
-AddDerivationToCAP( CoimageObject,
-                    "CoimageObject as the source of CanonicalIdentificationFromCoimageToImageObject",
-                    [ [ CanonicalIdentificationFromCoimageToImageObject, 1 ] ],
-                    
-  function( cat, morphism )
-    
-    return Source( CanonicalIdentificationFromCoimageToImageObject( cat, morphism ) );
-    
-end );
-
-##
 AddDerivationToCAP( SomeProjectiveObject,
                     "SomeProjectiveObject as the source of EpimorphismFromSomeProjectiveObject",
                     [ [ EpimorphismFromSomeProjectiveObject, 1 ] ],
@@ -3025,18 +2938,6 @@ AddDerivationToCAP( InverseMorphismFromCoimageToImageWithGivenObjects,
     return InverseForMorphisms( cat, MorphismFromCoimageToImageWithGivenObjects( cat, coimage, morphism, image ) );
     
 end : CategoryFilter := IsAbelianCategory );
-
-##
-AddDerivationToCAP( CanonicalIdentificationFromCoimageToImageObject,
-                    "CanonicalIdentificationFromCoimageToImageObject as the inverse of CanonicalIdentificationFromImageObjectToCoimage",
-                    [ [ InverseForMorphisms, 1 ],
-                      [ CanonicalIdentificationFromImageObjectToCoimage, 1 ] ],
-                    
-  function( cat, morphism )
-    
-    return InverseForMorphisms( cat, CanonicalIdentificationFromImageObjectToCoimage( cat, morphism ) );
-    
-end );
 
 ## Final methods for Coimage
 
