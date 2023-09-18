@@ -1007,7 +1007,7 @@ AddDerivationToCAP( UniversalMorphismFromImage,
 
 ##
 AddDerivationToCAP( UniversalMorphismFromImageWithGivenImageObject,
-                    "UniversalMorphismFromImage using ImageEmbedding and LiftAlongMonomorphism",
+                    "UniversalMorphismFromImageWithGivenImageObject using ImageEmbeddingWithGivenImageObject and LiftAlongMonomorphism",
                     [ [ ImageEmbeddingWithGivenImageObject, 1 ],
                       [ LiftAlongMonomorphism, 1 ] ],
                     
@@ -1037,7 +1037,7 @@ AddDerivationToCAP( UniversalMorphismIntoCoimage,
 
 ##
 AddDerivationToCAP( UniversalMorphismIntoCoimageWithGivenCoimageObject,
-                    "UniversalMorphismIntoCoimage using CoimageProjection and ColiftAlongEpimorphism",
+                    "UniversalMorphismIntoCoimageWithGivenCoimageObject using CoimageProjectionWithGivenCoimageObject and ColiftAlongEpimorphism",
                     [ [ CoimageProjectionWithGivenCoimageObject, 1 ],
                       [ ColiftAlongEpimorphism, 1 ] ],
                     
@@ -1460,7 +1460,7 @@ AddDerivationToCAP( IsMonomorphism,
       
       identity := IdentityMorphism( cat, Source( morphism ) );
       
-      diagonal_morphism := UniversalMorphismIntoFiberProduct( cat, pullback_diagram, [ identity, identity ] );
+      diagonal_morphism := UniversalMorphismIntoFiberProduct( cat, pullback_diagram, Source( morphism ), [ identity, identity ] );
       
       return IsIsomorphism( cat, diagonal_morphism );
     
@@ -1492,7 +1492,7 @@ AddDerivationToCAP( IsEpimorphism,
       
       identity := IdentityMorphism( cat, Range( morphism ) );
       
-      codiagonal_morphism := UniversalMorphismFromPushout( cat, pushout_diagram, [ identity, identity ] );
+      codiagonal_morphism := UniversalMorphismFromPushout( cat, pushout_diagram, Range( morphism ), [ identity, identity ] );
       
       return IsIsomorphism( cat, codiagonal_morphism );
     
@@ -1923,11 +1923,11 @@ AddDerivationToCAP( AdditionForMorphisms,
     
     B := Range( mor1 );
     
-    componentwise_morphism := UniversalMorphismIntoDirectSum( cat, [ mor1, mor2 ] );
+    componentwise_morphism := UniversalMorphismIntoDirectSum( cat, [ B, B ], Source( mor1 ), [ mor1, mor2 ] );
     
     identity_morphism_B := IdentityMorphism( cat, B );
     
-    addition_morphism := UniversalMorphismFromDirectSum( cat, [ identity_morphism_B, identity_morphism_B ] );
+    addition_morphism := UniversalMorphismFromDirectSum( cat, [ B, B ], B, [ identity_morphism_B, identity_morphism_B ] );
     
     return PreCompose( cat, componentwise_morphism, addition_morphism );
     
@@ -2516,10 +2516,10 @@ AddDerivationToCAP( ColiftAlongEpimorphism,
     kernel_emb := KernelEmbedding( cat, epimorphism );
     
     cokernel_colift_to_range_of_epimorphism :=
-      CokernelColift( cat, kernel_emb, epimorphism );
+      CokernelColift( cat, kernel_emb, Range( epimorphism ), epimorphism );
       
     cokernel_colift_to_range_of_test_morphism :=
-      CokernelColift( cat, kernel_emb, test_morphism );
+      CokernelColift( cat, kernel_emb, Range( test_morphism ), test_morphism );
     
     return PreCompose( cat, InverseForMorphisms( cat, cokernel_colift_to_range_of_epimorphism ), cokernel_colift_to_range_of_test_morphism );
     
@@ -2539,10 +2539,10 @@ AddDerivationToCAP( LiftAlongMonomorphism,
     cokernel_proj := CokernelProjection( cat, monomorphism );
     
     kernel_lift_from_source_of_monomorphism :=
-      KernelLift( cat, cokernel_proj, monomorphism );
+      KernelLift( cat, cokernel_proj, Source( monomorphism ), monomorphism );
       
     kernel_lift_from_source_of_test_morphism :=
-      KernelLift( cat, cokernel_proj, test_morphism );
+      KernelLift( cat, cokernel_proj, Source( test_morphism ), test_morphism );
     
     return PreCompose( cat, kernel_lift_from_source_of_test_morphism, InverseForMorphisms( cat, kernel_lift_from_source_of_monomorphism ) );
     
