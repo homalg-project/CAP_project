@@ -329,6 +329,13 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGU
         
         func := ShallowCopy( funcref );
         
+        if func.variadic then
+            
+            #Error( "cannot handle variadic functions yet" );
+            return fail;
+            
+        fi;
+        
         if func.narg <> Length( arguments_types ) then
             
             # COVERAGE_IGNORE_NEXT_LINE

@@ -32,8 +32,18 @@ InstallGlobalFunction( CapJitInlinedArguments, function ( tree )
             if func.variadic then
                 
                 args.(func.narg) := rec(
-                    type := "EXPR_LIST",
-                    list := Sublist( args, [ func.narg .. args.length ] ),
+                    type := "EXPR_FUNCCALL",
+                    funcref := rec(
+                        type := "EXPR_REF_GVAR",
+                        gvar := "NTuple",
+                    ),
+                    args := ConcatenationForSyntaxTreeLists( [
+                        AsSyntaxTreeList( [ rec(
+                            type := "EXPR_INT",
+                            value := args.length - func.narg + 1,
+                        ) ] ),
+                        Sublist( args, [ func.narg .. args.length ] )
+                    ] ),
                 );
                 
             fi;

@@ -62,23 +62,6 @@ BindGlobal( "CAP_INTERNAL_LEGACY_METHOD_NAME_RECORD_COMPONENTS",
     ]
 );
 
-##
-InstallGlobalFunction( CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,
-  function( args... )
-    local list;
-      
-    list := CAP_INTERNAL_OPPOSITE_RECURSIVE( args );
-      
-    return List( list, function( l )
-        if IsList( l ) then
-            return Reversed( l );
-        else
-            return l;
-        fi;
-    end );
-
-end );
-
 InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD, rec(
 ObjectConstructor := rec(
   filter_list := [ "category", "object_datum" ],
@@ -2504,7 +2487,9 @@ UniversalMorphismIntoCoimage := rec(
   output_source_getter_string := "Range( tau[1] )",
   output_source_getter_preconditions := [ ],
   with_given_object_position := "Range",
-  dual_preprocessor_func := CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,
+  dual_preprocessor_func := function( cat, alpha, tau )
+    return Triple( OppositeCategory( cat ), Opposite( alpha ), Pair( Opposite( tau[2] ), Opposite( tau[1] ) ) );
+  end,
   pre_function := function( cat, morphism, test_factorization )
     
     if not IsEqualForObjects( cat, Source( morphism ), Source( test_factorization[ 1 ] ) ) then
@@ -2531,7 +2516,9 @@ UniversalMorphismIntoCoimageWithGivenCoimageObject := rec(
   output_source_getter_preconditions := [ ],
   output_range_getter_string := "C",
   output_range_getter_preconditions := [ ],
-  dual_preprocessor_func := CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,
+  dual_preprocessor_func := function( cat, alpha, tau, C )
+    return NTuple( 4, OppositeCategory( cat ), Opposite( alpha ), Pair( Opposite( tau[2] ), Opposite( tau[1] ) ), Opposite( C ) );
+  end,
   pre_function := function( cat, morphism, test_factorization, image )
     
     if not IsEqualForObjects( cat, Source( morphism ), Source( test_factorization[ 1 ] ) ) then
@@ -2756,7 +2743,9 @@ UniversalMorphismFromImage := rec(
   output_range_getter_preconditions := [ ],
   with_given_object_position := "Source",
   dual_operation := "UniversalMorphismIntoCoimage",
-  dual_preprocessor_func := CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,
+  dual_preprocessor_func := function( cat, alpha, tau )
+    return Triple( OppositeCategory( cat ), Opposite( alpha ), Pair( Opposite( tau[2] ), Opposite( tau[1] ) ) );
+  end,
   pre_function := function( cat, morphism, test_factorization )
     
     if not IsEqualForObjects( cat, Source( morphism ), Source( test_factorization[ 1 ] ) ) then
@@ -2783,7 +2772,9 @@ UniversalMorphismFromImageWithGivenImageObject := rec(
   output_range_getter_string := "Range( tau[1] )",
   output_range_getter_preconditions := [ ],
   dual_operation := "UniversalMorphismIntoCoimageWithGivenCoimageObject",
-  dual_preprocessor_func := CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,
+  dual_preprocessor_func := function( cat, alpha, tau, I )
+    return NTuple( 4, OppositeCategory( cat ), Opposite( alpha ), Pair( Opposite( tau[2] ), Opposite( tau[1] ) ), Opposite( I ) );
+  end,
   pre_function := function( cat, morphism, test_factorization, image )
     
     if not IsEqualForObjects( cat, Source( morphism ), Source( test_factorization[ 1 ] ) ) then
