@@ -2129,7 +2129,7 @@ function ( cat_1, C_1, alpha_1, I_1 )
 end
 ########
         
-    , 1811 : IsPrecompiledDerivation := true );
+    , 1610 : IsPrecompiledDerivation := true );
     
     ##
     AddIsAutomorphism( cat,
@@ -4068,7 +4068,7 @@ function ( cat_1, C_1, alpha_1, I_1 )
 end
 ########
         
-    , 1609 : IsPrecompiledDerivation := true );
+    , 1408 : IsPrecompiledDerivation := true );
     
     ##
     AddMorphismFromEqualizerToSink( cat,
