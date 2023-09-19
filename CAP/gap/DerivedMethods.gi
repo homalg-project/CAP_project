@@ -200,18 +200,20 @@ end : CategoryFilter := IsAdditiveCategory );
 ##
 AddDerivationToCAP( ProjectionInFactorOfDirectSum,
                     "ProjectionInFactorOfDirectSum using UniversalMorphismFromDirectSum",
-                    [ [ IdentityMorphism, 2 ],
+                    [ [ IdentityMorphism, 1 ],
                       [ ZeroMorphism, 2 ],
                       [ UniversalMorphismFromDirectSum, 1 ] ],
                     
   function( cat, list, projection_number )
-    local morphisms;
+    local id, morphisms;
+    
+    id := IdentityMorphism( cat, list[projection_number] );
     
     morphisms := List( [ 1 .. Length( list ) ], function( i )
         
         if i = projection_number then
             
-            return IdentityMorphism( cat, list[projection_number] );
+            return id;
             
         else
             
@@ -228,18 +230,20 @@ AddDerivationToCAP( ProjectionInFactorOfDirectSum,
 ##
 AddDerivationToCAP( ProjectionInFactorOfDirectSumWithGivenDirectSum,
                     "ProjectionInFactorOfDirectSum using UniversalMorphismFromDirectSum",
-                    [ [ IdentityMorphism, 2 ],
+                    [ [ IdentityMorphism, 1 ],
                       [ ZeroMorphism, 2 ],
                       [ UniversalMorphismFromDirectSumWithGivenDirectSum, 1 ] ],
                     
   function( cat, list, projection_number, direct_sum_object )
-    local morphisms;
+    local id, morphisms;
+    
+    id := IdentityMorphism( cat, list[projection_number] );
     
     morphisms := List( [ 1 .. Length( list ) ], function( i )
         
         if i = projection_number then
             
-            return IdentityMorphism( cat, list[projection_number] );
+            return id;
             
         else
             
@@ -256,18 +260,20 @@ end );
 ##
 AddDerivationToCAP( InjectionOfCofactorOfDirectSum,
                     "InjectionOfCofactorOfDirectSum using UniversalMorphismIntoDirectSum",
-                    [ [ IdentityMorphism, 2 ],
+                    [ [ IdentityMorphism, 1 ],
                       [ ZeroMorphism, 2 ],
                       [ UniversalMorphismIntoDirectSum, 1 ] ],
                     
   function( cat, list, injection_number )
-    local morphisms;
+    local id, morphisms;
+    
+    id := IdentityMorphism( cat, list[injection_number] );
     
     morphisms := List( [ 1 .. Length( list ) ], function( i )
         
         if i = injection_number then
             
-            return IdentityMorphism( cat, list[injection_number] );
+            return id;
             
         else
             
@@ -284,18 +290,20 @@ AddDerivationToCAP( InjectionOfCofactorOfDirectSum,
 ##
 AddDerivationToCAP( InjectionOfCofactorOfDirectSumWithGivenDirectSum,
                     "InjectionOfCofactorOfDirectSum using UniversalMorphismIntoDirectSum",
-                    [ [ IdentityMorphism, 2 ],
+                    [ [ IdentityMorphism, 1 ],
                       [ ZeroMorphism, 2 ],
                       [ UniversalMorphismIntoDirectSumWithGivenDirectSum, 1 ] ],
                     
   function( cat, list, injection_number, direct_sum_object )
-    local morphisms;
+    local id, morphisms;
+    
+    id := IdentityMorphism( cat, list[injection_number] );
     
     morphisms := List( [ 1 .. Length( list ) ], function( i )
         
         if i = injection_number then
             
-            return IdentityMorphism( cat, list[injection_number] );
+            return id;
             
         else
             
@@ -4259,18 +4267,15 @@ AddFinalDerivationBundle( "IsomorphismFromImageObjectToKernelOfCokernel as the i
 AddDerivationToCAP( MorphismFromCoimageToImageWithGivenObjects,
                     "MorphismFromCoimageToImageWithGivenObjects using that images are given by kernels of cokernels",
                     [ [ CokernelProjection, 1 ],
-                      [ CoimageProjection, 1 ],
                       [ KernelLift, 1 ],
                       [ AstrictionToCoimageWithGivenCoimageObject, 1 ],
                       [ PreCompose, 1 ],
                       [ IsomorphismFromKernelOfCokernelToImageObject, 1 ] ],
                     
   function( cat, coimage, morphism, image )
-    local coimage_projection, cokernel_projection, kernel_lift;
+    local cokernel_projection, kernel_lift;
     
     cokernel_projection := CokernelProjection( cat, morphism );
-    
-    coimage_projection := CoimageProjection( cat, morphism );
     
     kernel_lift := KernelLift( cat, cokernel_projection, coimage, AstrictionToCoimageWithGivenCoimageObject( cat, morphism, coimage ) );
     
