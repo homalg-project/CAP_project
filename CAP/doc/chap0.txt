@@ -6,7 +6,7 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2023.09-06
+                                   2023.09-07
   
   
                                20 September 2023
@@ -935,29 +935,30 @@
       9.2-26 CapJitDataTypeOfCategory
       9.2-27 CapFixpoint
       9.2-28 Iterated
-      9.2-29 TransitivelyNeededOtherPackages
-      9.2-30 PackageOfCAPOperation
-      9.2-31 SafePosition
-      9.2-32 SafeUniquePosition
-      9.2-33 SafePositionProperty
-      9.2-34 SafeUniquePositionProperty
-      9.2-35 SafeFirst
-      9.2-36 SafeUniqueEntry
-      9.2-37 NTuple
-      9.2-38 Pair
-      9.2-39 Triple
-      9.2-40 TransposedMatWithGivenDimensions
-      9.2-41 HandlePrecompiledTowers
-      9.2-42 CAP_JIT_INCOMPLETE_LOGIC
-      9.2-43 ListWithKeys
-      9.2-44 SumWithKeys
-      9.2-45 ProductWithKeys
-      9.2-46 ForAllWithKeys
-      9.2-47 ForAnyWithKeys
-      9.2-48 NumberWithKeys
-      9.2-49 FilteredWithKeys
-      9.2-50 FirstWithKeys
-      9.2-51 LastWithKeys
+      9.2-29 Iterated
+      9.2-30 TransitivelyNeededOtherPackages
+      9.2-31 PackageOfCAPOperation
+      9.2-32 SafePosition
+      9.2-33 SafeUniquePosition
+      9.2-34 SafePositionProperty
+      9.2-35 SafeUniquePositionProperty
+      9.2-36 SafeFirst
+      9.2-37 SafeUniqueEntry
+      9.2-38 NTuple
+      9.2-39 Pair
+      9.2-40 Triple
+      9.2-41 TransposedMatWithGivenDimensions
+      9.2-42 HandlePrecompiledTowers
+      9.2-43 CAP_JIT_INCOMPLETE_LOGIC
+      9.2-44 ListWithKeys
+      9.2-45 SumWithKeys
+      9.2-46 ProductWithKeys
+      9.2-47 ForAllWithKeys
+      9.2-48 ForAnyWithKeys
+      9.2-49 NumberWithKeys
+      9.2-50 FilteredWithKeys
+      9.2-51 FirstWithKeys
+      9.2-52 LastWithKeys
   10 [33X[0;0YLimits and Colimits[133X
     10.1 [33X[0;0YSpecification of Limits and Colimits[133X
     10.2 [33X[0;0YEnhancing Limit Specifications[133X
