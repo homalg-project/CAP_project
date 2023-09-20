@@ -601,46 +601,6 @@ InstallGlobalFunction( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT,
     return value;
 end );
 
-##
-BindGlobal( "CAP_INTERNAL_MAKE_LOOP_SYMBOL_LOOK_LIKE_LOOP",
-  
-  function( function_string, loop_symbol )
-    local current_position, current_scan_position, bracket_count;
-    
-    current_position := PositionSublist( function_string, loop_symbol );
-    
-    while current_position <> fail do
-        
-        current_scan_position := current_position + Length( loop_symbol ) + 1;
-        
-        bracket_count := 1;
-        
-        while bracket_count <> 0 do
-            
-            if function_string[ current_scan_position ] = '(' then
-                
-                bracket_count := bracket_count + 1;
-                
-            elif function_string[ current_scan_position ] = ')' then
-                
-                bracket_count := bracket_count - 1;
-                
-            fi;
-            
-            current_scan_position := current_scan_position + 1;
-            
-        od;
-        
-        function_string := Concatenation( function_string{[ 1 .. current_scan_position - 1 ]}, " od ", function_string{[ current_scan_position .. Length( function_string ) ]} );
-        
-        current_position := PositionSublist( function_string, loop_symbol, current_position + 1 );
-        
-    od;
-    
-    return function_string;
-    
-end );
-
 BindGlobal( "CAP_INTERNAL_REPLACE_ADDITIONAL_SYMBOL_APPEARANCE",
   
   function( appearance_list, replacement_record )
@@ -713,17 +673,6 @@ InstallGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION",
         
     fi;
     
-    # make List etc. look like loops
-    for i in [ "List", "ListN", "Perform", "Apply", "Iterated" ] do
-        
-        # beginning space or new line is important here to avoid scanning things like CallFuncList
-        func_as_string := ReplacedString( func_as_string, Concatenation( " ", i, "(" ), " CAP_INTERNAL_FUNCTIONAL_LOOP" );
-        func_as_string := ReplacedString( func_as_string, Concatenation( "\n", i, "(" ), " CAP_INTERNAL_FUNCTIONAL_LOOP" );
-        
-    od;
-    
-    func_as_string := CAP_INTERNAL_MAKE_LOOP_SYMBOL_LOOK_LIKE_LOOP( func_as_string, "CAP_INTERNAL_FUNCTIONAL_LOOP" );
-    
     RemoveCharacters( func_as_string, "()[];," );
     
     NormalizeWhitespace( func_as_string );
@@ -735,6 +684,12 @@ InstallGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION",
     symbol_appearance_list := [ ];
     
     symbol_list := Concatenation( symbol_list, RecNames( replacement_record ) );
+    
+    # remove first "function" and last "end"
+    Assert( 0, func_as_list[1] = "function" );
+    Assert( 0, Last( func_as_list ) = "end" );
+    
+    func_as_list := func_as_list{[ 2 .. Length( func_as_list ) - 1 ]};
     
     for i in [ 1 .. Length( func_as_list ) ] do
         
@@ -767,11 +722,15 @@ InstallGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION",
                 
             fi;
             
-        elif current_symbol in [ "for", "while", "CAP_INTERNAL_FUNCTIONAL_LOOP" ] then
+        # Technically, the head of a "for" loop is only executed once.
+        # We could simply start the detection at "do", but this would exclude the header of "while" loops
+        # which indeed is executed multiple times.
+        elif current_symbol in [ "for", "while", "repeat", "function" ] then
             
             loop_power := loop_power + 1;
             
-        elif current_symbol = "od" then
+        # Technically, the part after "until" is also executed multiple times.
+        elif current_symbol in [ "od", "until", "end" ] then
             
             loop_power := loop_power - 1;
             
