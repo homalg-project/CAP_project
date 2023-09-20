@@ -895,7 +895,7 @@ AddDerivationToCAP( IsDominating,
     
     cokernel_projection_2 := CokernelProjection( cat, sub2 );
     
-    return IsCodominating( cat, cokernel_projection_1, cokernel_projection_2 );
+    return IsCodominating( cat, cokernel_projection_2, cokernel_projection_1 );
     
 end );
 
