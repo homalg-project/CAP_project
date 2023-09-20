@@ -1359,6 +1359,16 @@ InstallMethod( Iterated,
 end );
 
 ##
+InstallMethod( Iterated,
+               [ IsList, IsFunction, IsObject, IsObject ],
+               
+  function( list, func, initial_value, terminal_value )
+    
+    return Iterated( Concatenation( [ initial_value ], list, [ terminal_value ] ), func );
+    
+end );
+
+##
 InstallGlobalFunction( TransitivelyNeededOtherPackages, function ( package_name )
   local collected_dependencies, package_info, dep, p;
     

@@ -454,6 +454,33 @@ CapJitAddLogicTemplate(
     )
 );
 
+# Iterated: function always choosing first value
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "list", "initial_value" ],
+        src_template := "Iterated( list, { x, y } -> x, initial_value )",
+        dst_template := "initial_value",
+    )
+);
+
+# Iterated: function always choosing first value
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "list", "initial_value", "terminal_value" ],
+        src_template := "Iterated( list, { x, y } -> x, initial_value, terminal_value )",
+        dst_template := "initial_value",
+    )
+);
+
+# Iterated: function always choosing last value
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "list", "initial_value", "terminal_value" ],
+        src_template := "Iterated( list, { x, y } -> y, initial_value, terminal_value )",
+        dst_template := "terminal_value",
+    )
+);
+
 InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( tree, template_tree, variable_filters, debug )
   local i, variables, func_id_replacements, pre_func, result_func, additional_arguments_func, result;
     
