@@ -14,7 +14,15 @@ InstallGlobalFunction( CapJitIsCallToGlobalFunction, function ( tree, condition 
     
     if IsString( condition ) then
         
-        condition_func := gvar -> gvar = condition;
+        if condition = "Range" or condition = "Target" then
+            
+            condition_func := gvar -> gvar = "Range" or gvar = "Target";
+            
+        else
+            
+            condition_func := gvar -> gvar = condition;
+            
+        fi;
         
     elif IsFunction( condition ) then
         

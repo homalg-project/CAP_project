@@ -464,3 +464,14 @@ CapJitAddLogicTemplate(
         needed_packages := [ [ "MatricesForHomalg", ">= 2020.06.27" ] ],
     )
 );
+
+# homalg_ring_element * One( homalg_ring ) -> homalg_ring_element
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "ring", "r" ],
+        variable_filters := [ "IsHomalgRing", "IsHomalgRingElement" ],
+        src_template := "r * OneImmutable( ring )",
+        dst_template := "r",
+        needed_packages := [ [ "MatricesForHomalg", ">= 2020.06.27" ] ],
+    )
+);

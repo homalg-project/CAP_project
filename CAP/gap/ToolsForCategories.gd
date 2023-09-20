@@ -232,6 +232,11 @@ DeclareGlobalFunction( "CapFixpoint" );
 DeclareOperation( "Iterated", [ IsList, IsFunction, IsObject ] );
 
 #! @Description
+#!   Shorthand for `Iterated( Concatenation( [ <A>initial_value</A> ], <A>list</A>, [ <A>terminal_value</A> ] ), <A>func</A> )`.
+#! @Arguments list, func, initial_value, terminal_value
+DeclareOperation( "Iterated", [ IsList, IsFunction, IsObject, IsObject ] );
+
+#! @Description
 #!   Returns a list of package names which are transitively needed other packages of the package <A>package_name</A>.
 #! @Arguments package_name
 DeclareGlobalFunction( "TransitivelyNeededOtherPackages" );

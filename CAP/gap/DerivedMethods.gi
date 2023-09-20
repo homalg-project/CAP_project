@@ -1815,15 +1815,17 @@ end );
 ##
 AddDerivationToCAP( PreComposeList,
                     "PreComposeList by iterating PreCompose",
-                    [ [ IdentityMorphism, 1 ],
+                    [ [ IdentityMorphism, 2 ],
                       [ PreCompose, 2 ] ],
                     
   function( cat, source, morphism_list, range )
-    local id_source;
+    local id_source, id_range;
     
     id_source := IdentityMorphism( cat, source );
     
-    return Iterated( morphism_list, { alpha, beta } -> PreCompose( cat, alpha, beta ), id_source );
+    id_range := IdentityMorphism( cat, range );
+    
+    return Iterated( morphism_list, { alpha, beta } -> PreCompose( cat, alpha, beta ), id_source, id_range );
     
 end );
 
@@ -1841,15 +1843,17 @@ end );
 ##
 AddDerivationToCAP( PostComposeList,
                     "PostComposeList by iterating PostCompose",
-                    [ [ IdentityMorphism, 1 ],
+                    [ [ IdentityMorphism, 2 ],
                       [ PostCompose, 2 ] ],
                     
   function( cat, source, morphism_list, range )
-    local id_range;
+    local id_source, id_range;
+    
+    id_source := IdentityMorphism( cat, source );
     
     id_range := IdentityMorphism( cat, range );
     
-    return Iterated( morphism_list, { beta, alpha } -> PostCompose( cat, beta, alpha ), id_range );
+    return Iterated( morphism_list, { beta, alpha } -> PostCompose( cat, beta, alpha ), id_range, id_source );
     
 end );
 
