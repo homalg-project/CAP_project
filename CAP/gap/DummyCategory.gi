@@ -16,6 +16,7 @@ InstallMethod( DummyCategory,
     category_constructor_options.category_filter := IsDummyCategory;
     category_constructor_options.category_object_filter := IsDummyCategoryObject;
     category_constructor_options.category_morphism_filter := IsDummyCategoryMorphism;
+    category_constructor_options.is_computable := "IsCongruentForMorphisms" in options.list_of_operations_to_install;
     category_constructor_options.supports_empty_limits := true;
     
     if "ObjectConstructor" in options.list_of_operations_to_install then
