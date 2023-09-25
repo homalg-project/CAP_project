@@ -889,21 +889,42 @@ InstallGlobalFunction( InstallDeprecatedAlias,
 end );
 
 ##
-InstallGlobalFunction( "IsSpecializationOfFilter", function ( filter1, filter2 )
+InstallGlobalFunction( "IsSpecializationOfFilter", function ( filter_1, filter_2 )
+  local data_type_1, data_type_2;
     
-    if IsString( filter1 ) then
+    if IsString( filter_1 ) then
         
-        filter1 := CAP_INTERNAL_REPLACED_STRING_WITH_FILTER( filter1 );
+        data_type_1 := CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( filter_1 );
+        
+        if data_type_1 = fail then
+            
+            filter_1 := IsObject;
+            
+        else
+            
+            filter_1 := data_type_1.filter;
+            
+        fi;
         
     fi;
     
-    if IsString( filter2 ) then
+    if IsString( filter_2 ) then
         
-        filter2 := CAP_INTERNAL_REPLACED_STRING_WITH_FILTER( filter2 );
+        data_type_2 := CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( filter_2 );
+        
+        if data_type_2 = fail then
+            
+            filter_2 := IsObject;
+            
+        else
+            
+            filter_2 := data_type_2.filter;
+            
+        fi;
         
     fi;
     
-    return IS_SUBSET_FLAGS( WITH_IMPS_FLAGS( FLAGS_FILTER( filter2 ) ), WITH_IMPS_FLAGS( FLAGS_FILTER( filter1 ) ) );
+    return IS_SUBSET_FLAGS( WITH_IMPS_FLAGS( FLAGS_FILTER( filter_2 ) ), WITH_IMPS_FLAGS( FLAGS_FILTER( filter_1 ) ) );
     
 end );
 
