@@ -36,6 +36,8 @@ ReadPackage( "CAP", "gap/DerivedMethods.gi" );
 
 ReadPackage( "CAP", "gap/LimitConvenienceOutput.gi" );
 
+ReadPackage( "CAP", "gap/DerivedMethods.autogen.gi" );
+
 ReadPackage( "CAP", "gap/OppositeCategory.gi" );
 
 ReadPackage( "CAP", "gap/ProductCategory.gi" );

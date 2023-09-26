@@ -298,29 +298,30 @@ end );
             
         fi;
         
-        # derive functorials from the universality of the limit/colimit
-        Assert( 0, Length( limit.diagram_morphism_filter_list ) <= 1 );
-        Assert( 0, Length( limit.diagram_morphism_arguments_names ) <= 1 );
-        
-        input_arguments_names := functorial_with_given_record.input_arguments_names;
-        
-        source_argument_name := input_arguments_names[2];
-        range_argument_name := Last( input_arguments_names );
-        
-        source_diagram_arguments_names := limit.functorial_source_diagram_arguments_names;
-        range_diagram_arguments_names := limit.functorial_range_diagram_arguments_names;
-        
-        # EqualizerFunctorialWithGivenEqualizers would have 8 arguments if the source objects would be given
-        # -> we have to work around this and derive the source objects from the morphism between the diagrams.
-        equalizer_preprocessing := "";
-        
-        if Length( limit.diagram_filter_list ) > 0 then
+        # derive functorials from the universality of the limit
+        # only do this for limits, colimits will be handled by the automatic dualization of derivations
+        if limit_colimit = "limit" then
             
-            if limit.number_of_targets = 1 then
+            Assert( 0, Length( limit.diagram_morphism_filter_list ) <= 1 );
+            Assert( 0, Length( limit.diagram_morphism_arguments_names ) <= 1 );
+            
+            input_arguments_names := functorial_with_given_record.input_arguments_names;
+            
+            source_argument_name := input_arguments_names[2];
+            range_argument_name := Last( input_arguments_names );
+            
+            source_diagram_arguments_names := limit.functorial_source_diagram_arguments_names;
+            range_diagram_arguments_names := limit.functorial_range_diagram_arguments_names;
+            
+            # EqualizerFunctorialWithGivenEqualizers would have 8 arguments if the source objects would be given
+            # -> we have to work around this and derive the source objects from the morphism between the diagrams.
+            equalizer_preprocessing := "";
+            
+            if Length( limit.diagram_filter_list ) > 0 then
                 
-                Assert( 0, limit.diagram_morphism_arguments_names = [ "mu" ] );
-                
-                if limit_colimit = "limit" then
+                if limit.number_of_targets = 1 then
+                    
+                    Assert( 0, limit.diagram_morphism_arguments_names = [ "mu" ] );
                     
                     test_string := ReplacedStringViaRecord(
                         "PreCompose( cat, projection_with_given( cat, source_diagram..., source_object ), mu )",
@@ -332,44 +333,23 @@ end );
                     );
                     
                     additional_preconditions := [ "[ PreCompose, 1 ]", Concatenation( "[ ", limit.limit_projection_with_given_name, ", 1 ]" ) ];
-                    
-                elif limit_colimit = "colimit" then
-                    
-                    test_string := ReplacedStringViaRecord(
-                        "PreCompose( cat, mu, injection_with_given( cat, range_diagram..., range_object ) )",
-                        rec(
-                            injection_with_given := limit.colimit_injection_with_given_name,
-                            range_diagram := range_diagram_arguments_names,
-                            range_object := range_argument_name,
-                        )
-                    );
-                    
-                    additional_preconditions := [ "[ PreCompose, 1 ]", Concatenation( "[ ", limit.colimit_injection_with_given_name, ", 1 ]" ) ];
-                    
-                else
-                    
-                    Error( "this should never happen" );
-                    
-                fi;
-                
-                if limit.number_of_unbound_morphisms > 1 then
-                    
-                    if limit.limit_object_name <> "Equalizer" then
                         
-                        Error( "This is a hack which might not be valid in general." );
+                    if limit.number_of_unbound_morphisms > 1 then
+                        
+                        if limit.limit_object_name <> "Equalizer" then
+                            
+                            Error( "This is a hack which might not be valid in general." );
+                            
+                        fi;
+                        
+                        # we are in the Equalizer case, which needs special handling (see above)
+                        equalizer_preprocessing := "local Y, Yp;\n    \n    Y := Source( mu );\n    Yp := Range( mu );\n    ";
                         
                     fi;
                     
-                    # we are in the Equalizer case, which needs special handling (see above)
-                    equalizer_preprocessing := "local Y, Yp;\n    \n    Y := Source( mu );\n    Yp := Range( mu );\n    ";
+                else
                     
-                fi;
-                
-            else
-                
-                Assert( 0, limit.diagram_morphism_arguments_names = [ "L" ] );
-                
-                if limit_colimit = "limit" then
+                    Assert( 0, limit.diagram_morphism_arguments_names = [ "L" ] );
                     
                     test_string := ReplacedStringViaRecord(
                         "List( [ 1 .. Length( L ) ], i -> PreCompose( cat, projection_with_given( cat, source_diagram..., i, source_object ), L[i] ) )",
@@ -382,56 +362,24 @@ end );
                     
                     additional_preconditions := [ "[ PreCompose, 2 ]", Concatenation( "[ ", limit.limit_projection_with_given_name, ", 2 ]" ) ];
                     
-                elif limit_colimit = "colimit" then
-                    
-                    test_string := ReplacedStringViaRecord(
-                        "List( [ 1 .. Length( L ) ], i -> PreCompose( cat, L[i], injection_with_given( cat, range_diagram..., i, range_object ) ) )",
-                        rec(
-                            injection_with_given := limit.colimit_injection_with_given_name,
-                            range_diagram := range_diagram_arguments_names,
-                            range_object := range_argument_name,
-                        )
-                    );
-                    
-                    additional_preconditions := [ "[ PreCompose, 2 ]", Concatenation( "[ ", limit.colimit_injection_with_given_name, ", 2 ]" ) ];
-                    
-                else
-                    
-                    Error( "this should never happen" );
-                    
                 fi;
                 
+                test_arguments := [ test_string ];
+                
+            else
+                
+                Assert( 0, limit.diagram_morphism_arguments_names = [ ] );
+                
+                test_arguments := [ ];
+                
+                additional_preconditions := [ ];
+                
             fi;
-            
-            test_arguments := [ test_string ];
-            
-        else
-            
-            Assert( 0, limit.diagram_morphism_arguments_names = [ ] );
-            
-            test_arguments := [ ];
-            
-            additional_preconditions := [ ];
-            
-        fi;
-        
-        if limit_colimit = "limit" then
             
             universal_morphism_with_given_name := limit.limit_universal_morphism_with_given_name;
             call_arguments := Concatenation( [ "cat" ], range_diagram_arguments_names, [ source_argument_name ], test_arguments, [ range_argument_name ] );
             
-        elif limit_colimit = "colimit" then
-            
-            universal_morphism_with_given_name := limit.colimit_universal_morphism_with_given_name;
-            call_arguments := Concatenation( [ "cat" ], source_diagram_arguments_names, [ range_argument_name ], test_arguments, [ source_argument_name ] );
-            
-        else
-            
-            Error( "this should never happen" );
-            
-        fi;
-        
-        current_string := ReplacedStringViaRecord( """
+            current_string := ReplacedStringViaRecord( """
 ##
 AddDerivationToCAP( functorial_with_given_name,
                     "functorial_with_given_name using the universality of the limit_colimit",
@@ -443,23 +391,23 @@ AddDerivationToCAP( functorial_with_given_name,
     
 end );
 """,
-            rec(
-                functorial_with_given_name := functorial_with_given_name,
-                input_arguments := input_arguments_names,
-                preconditions := Concatenation( [ Concatenation( "[", universal_morphism_with_given_name, ", 1 ]" ) ], additional_preconditions ),
-                equalizer_preprocessing := equalizer_preprocessing,
-                universal_morphism_with_given := universal_morphism_with_given_name,
-                call_arguments := call_arguments,
-                limit_colimit := limit_colimit,
-            )
-        );
-        
-        output_string := Concatenation( output_string, current_string );
-        
-        # derive functorial of empty limits from IdentityMorphism
-        if Length( limit.diagram_filter_list ) = 0 and (limit.limit_object_name <> limit.colimit_object_name or limit_colimit = "limit") then
+                rec(
+                    functorial_with_given_name := functorial_with_given_name,
+                    input_arguments := input_arguments_names,
+                    preconditions := Concatenation( [ Concatenation( "[", universal_morphism_with_given_name, ", 1 ]" ) ], additional_preconditions ),
+                    equalizer_preprocessing := equalizer_preprocessing,
+                    universal_morphism_with_given := universal_morphism_with_given_name,
+                    call_arguments := call_arguments,
+                    limit_colimit := limit_colimit,
+                )
+            );
             
-            current_string := ReplacedStringViaRecord( """
+            output_string := Concatenation( output_string, current_string );
+            
+            # derive functorial of empty limits from IdentityMorphism
+            if Length( limit.diagram_filter_list ) = 0 then
+                
+                current_string := ReplacedStringViaRecord( """
 ##
 AddDerivationToCAP( functorial_name,
                     "functorial_name by taking the identity morphism of object_name",
@@ -472,13 +420,15 @@ AddDerivationToCAP( functorial_name,
     
 end );
 """,
-                rec(
-                    functorial_name := functorial_name,
-                    object_name := object_name,
-                )
-            );
-            
-            output_string := Concatenation( output_string, current_string );
+                    rec(
+                        functorial_name := functorial_name,
+                        object_name := object_name,
+                    )
+                );
+                
+                output_string := Concatenation( output_string, current_string );
+                
+            fi;
             
         fi;
         

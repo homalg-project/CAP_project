@@ -265,17 +265,6 @@ InstallOtherMethodForCompilerForCAP( CoproductFunctorialWithGivenCoproducts,
 end );
 
 ##
-AddDerivationToCAP( CoproductFunctorialWithGivenCoproducts,
-                    "CoproductFunctorialWithGivenCoproducts using the universality of the colimit",
-                    [ [UniversalMorphismFromCoproductWithGivenCoproduct, 1 ], [ PreCompose, 2 ], [ InjectionOfCofactorOfCoproductWithGivenCoproduct, 2 ] ],
-                    
-  function( cat, P, objects, L, objectsp, Pp )
-    
-    return UniversalMorphismFromCoproductWithGivenCoproduct( cat, objects, Pp, List( [ 1 .. Length( L ) ], i -> PreCompose( cat, L[i], InjectionOfCofactorOfCoproductWithGivenCoproduct( cat, objectsp, i, Pp ) ) ), P );
-    
-end );
-
-##
 InstallMethod( UniversalMorphismIntoDirectSum,
                [ IsList ],
                
@@ -494,17 +483,6 @@ AddDerivationToCAP( DirectSumFunctorialWithGivenDirectSums,
     
 end );
 
-##
-AddDerivationToCAP( DirectSumFunctorialWithGivenDirectSums,
-                    "DirectSumFunctorialWithGivenDirectSums using the universality of the colimit",
-                    [ [UniversalMorphismFromDirectSumWithGivenDirectSum, 1 ], [ PreCompose, 2 ], [ InjectionOfCofactorOfDirectSumWithGivenDirectSum, 2 ] ],
-                    
-  function( cat, P, objects, L, objectsp, Pp )
-    
-    return UniversalMorphismFromDirectSumWithGivenDirectSum( cat, objects, Pp, List( [ 1 .. Length( L ) ], i -> PreCompose( cat, L[i], InjectionOfCofactorOfDirectSumWithGivenDirectSum( cat, objectsp, i, Pp ) ) ), P );
-    
-end );
-
 InstallOtherMethod( UniversalMorphismIntoFiberProduct,
                     [ IsList, IsList ],
                     
@@ -593,17 +571,6 @@ AddDerivationToCAP( FiberProductFunctorialWithGivenFiberProducts,
   function( cat, P, morphisms, L, morphismsp, Pp )
     
     return UniversalMorphismIntoFiberProductWithGivenFiberProduct( cat, morphismsp, P, List( [ 1 .. Length( L ) ], i -> PreCompose( cat, ProjectionInFactorOfFiberProductWithGivenFiberProduct( cat, morphisms, i, P ), L[i] ) ), Pp );
-    
-end );
-
-##
-AddDerivationToCAP( PushoutFunctorialWithGivenPushouts,
-                    "PushoutFunctorialWithGivenPushouts using the universality of the colimit",
-                    [ [UniversalMorphismFromPushoutWithGivenPushout, 1 ], [ PreCompose, 2 ], [ InjectionOfCofactorOfPushoutWithGivenPushout, 2 ] ],
-                    
-  function( cat, P, morphisms, L, morphismsp, Pp )
-    
-    return UniversalMorphismFromPushoutWithGivenPushout( cat, morphisms, Pp, List( [ 1 .. Length( L ) ], i -> PreCompose( cat, L[i], InjectionOfCofactorOfPushoutWithGivenPushout( cat, morphismsp, i, Pp ) ) ), P );
     
 end );
 
@@ -702,21 +669,6 @@ AddDerivationToCAP( EqualizerFunctorialWithGivenEqualizers,
     
 end );
 
-##
-AddDerivationToCAP( CoequalizerFunctorialWithGivenCoequalizers,
-                    "CoequalizerFunctorialWithGivenCoequalizers using the universality of the colimit",
-                    [ [UniversalMorphismFromCoequalizerWithGivenCoequalizer, 1 ], [ PreCompose, 1 ], [ ProjectionOntoCoequalizerWithGivenCoequalizer, 1 ] ],
-                    
-  function( cat, P, morphisms, mu, morphismsp, Pp )
-    local Y, Yp;
-    
-    Y := Source( mu );
-    Yp := Range( mu );
-    
-    return UniversalMorphismFromCoequalizerWithGivenCoequalizer( cat, Y, morphisms, Pp, PreCompose( cat, mu, ProjectionOntoCoequalizerWithGivenCoequalizer( cat, Yp, morphismsp, Pp ) ), P );
-    
-end );
-
 InstallOtherMethod( KernelLift,
                     [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                     
@@ -809,17 +761,6 @@ AddDerivationToCAP( KernelObjectFunctorialWithGivenKernelObjects,
 end );
 
 ##
-AddDerivationToCAP( CokernelObjectFunctorialWithGivenCokernelObjects,
-                    "CokernelObjectFunctorialWithGivenCokernelObjects using the universality of the colimit",
-                    [ [CokernelColiftWithGivenCokernelObject, 1 ], [ PreCompose, 1 ], [ CokernelProjectionWithGivenCokernelObject, 1 ] ],
-                    
-  function( cat, P, alpha, mu, alphap, Pp )
-    
-    return CokernelColiftWithGivenCokernelObject( cat, alpha, Pp, PreCompose( cat, mu, CokernelProjectionWithGivenCokernelObject( cat, alphap, Pp ) ), P );
-    
-end );
-
-##
 AddDerivationToCAP( TerminalObjectFunctorialWithGivenTerminalObjects,
                     "TerminalObjectFunctorialWithGivenTerminalObjects using the universality of the limit",
                     [ [UniversalMorphismIntoTerminalObjectWithGivenTerminalObject, 1 ] ],
@@ -843,29 +784,6 @@ AddDerivationToCAP( TerminalObjectFunctorial,
 end );
 
 ##
-AddDerivationToCAP( InitialObjectFunctorialWithGivenInitialObjects,
-                    "InitialObjectFunctorialWithGivenInitialObjects using the universality of the colimit",
-                    [ [UniversalMorphismFromInitialObjectWithGivenInitialObject, 1 ] ],
-                    
-  function( cat, P, Pp )
-    
-    return UniversalMorphismFromInitialObjectWithGivenInitialObject( cat, Pp, P );
-    
-end );
-
-##
-AddDerivationToCAP( InitialObjectFunctorial,
-                    "InitialObjectFunctorial by taking the identity morphism of InitialObject",
-                    [ [ InitialObject, 1 ],
-                      [ IdentityMorphism, 1 ] ],
-                    
-  function( cat )
-    
-    return IdentityMorphism( cat, InitialObject( cat ) );
-    
-end );
-
-##
 AddDerivationToCAP( ZeroObjectFunctorialWithGivenZeroObjects,
                     "ZeroObjectFunctorialWithGivenZeroObjects using the universality of the limit",
                     [ [UniversalMorphismIntoZeroObjectWithGivenZeroObject, 1 ] ],
@@ -885,16 +803,5 @@ AddDerivationToCAP( ZeroObjectFunctorial,
   function( cat )
     
     return IdentityMorphism( cat, ZeroObject( cat ) );
-    
-end );
-
-##
-AddDerivationToCAP( ZeroObjectFunctorialWithGivenZeroObjects,
-                    "ZeroObjectFunctorialWithGivenZeroObjects using the universality of the colimit",
-                    [ [UniversalMorphismFromZeroObjectWithGivenZeroObject, 1 ] ],
-                    
-  function( cat, P, Pp )
-    
-    return UniversalMorphismFromZeroObjectWithGivenZeroObject( cat, Pp, P );
     
 end );

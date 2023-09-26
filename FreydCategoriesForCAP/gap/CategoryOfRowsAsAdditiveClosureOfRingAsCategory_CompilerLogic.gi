@@ -89,15 +89,6 @@ CapJitAddLogicTemplate(
     )
 );
 
-# Length( [ 1 .. n ] ) => n
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "n" ],
-        src_template := "Length( [ 1 .. n ] )",
-        dst_template := "n",
-    )
-);
-
 # n - 1 + 1 => n
 CapJitAddLogicTemplate(
     rec(
@@ -131,15 +122,6 @@ CapJitAddLogicTemplate(
         variable_names := [ "list1", "list2", "list3", "index1", "index2", "entry" ],
         src_template := "List( list1, x -> List( list2, y -> List( list3, z -> [ entry ] ) ) )[index1][index2][1][1]",
         dst_template := "(x -> (y -> (z -> entry)(list3[1]))(list2[index2]))(list1[index1])",
-    )
-);
-
-# List( L, x -> x ) => L
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "list" ],
-        src_template := "List( list, x -> x )",
-        dst_template := "list",
     )
 );
 

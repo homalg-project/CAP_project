@@ -6,7 +6,7 @@ true
 
 #
 gap> func := function ( )
->   return List( [ 1, 2 ], x -> x ); end;;
+>   return List( [ 1, 2 ], x -> x^2 ); end;;
 
 #
 gap> tree := ENHANCED_SYNTAX_TREE( func );;
@@ -14,15 +14,15 @@ gap> tree := CapJitAppliedLogic( tree );;
 gap> Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
 function (  )
     return [ function ( x_2 )
-                return x_2;
+                return x_2^2;
             end( 1 ), function ( x_2 )
-                return x_2;
+                return x_2^2;
             end( 2 ) ];
 end
 
 #
 gap> func := function ( L1, L2 )
->   return List( Concatenation( L1, L2 ), x -> x ); end;;
+>   return List( Concatenation( L1, L2 ), x -> x^2 ); end;;
 
 #
 gap> tree := ENHANCED_SYNTAX_TREE( func );;
@@ -30,9 +30,9 @@ gap> tree := CapJitAppliedLogic( tree );;
 gap> Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
 function ( L1_1, L2_1 )
     return Concatenation( List( L1_1, function ( x_2 )
-              return x_2;
+              return x_2^2;
           end ), List( L2_1, function ( x_2 )
-              return x_2;
+              return x_2^2;
           end ) );
 end
 
@@ -164,13 +164,13 @@ function ( list1_1, list2_1, list3_1 )
 end
 
 #
-gap> func := cat -> CapCategory( CreateCapCategoryObjectWithAttributes( cat ) );;
+gap> func := { cat, size } -> CapCategory( CreateCapCategoryObjectWithAttributes( cat, Size, 1 ) );;
 
 #
 gap> tree := ENHANCED_SYNTAX_TREE( func );;
 gap> tree := CapJitAppliedLogic( tree );;
 gap> Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
-function ( cat_1 )
+function ( cat_1, size_1 )
     return cat_1;
 end
 

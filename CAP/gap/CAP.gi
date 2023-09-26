@@ -243,7 +243,16 @@ InstallGlobalFunction( "CreateCapCategoryWithDataTypes",
     
     obj!.is_computable := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "is_computable", true );
     
-    obj!.derivations_weight_list := MakeOperationWeightList( obj, CAP_INTERNAL_DERIVATION_GRAPH );
+    if ValueOption( "disable_derivations" ) = true then
+        
+        # use an empty derivation graph
+        obj!.derivations_weight_list := MakeOperationWeightList( obj, MakeDerivationGraph( Operations( CAP_INTERNAL_DERIVATION_GRAPH ) ) );
+        
+    else
+        
+        obj!.derivations_weight_list := MakeOperationWeightList( obj, CAP_INTERNAL_DERIVATION_GRAPH );
+        
+    fi;
     
     obj!.caches := rec( );
     
