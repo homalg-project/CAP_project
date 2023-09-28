@@ -28,6 +28,10 @@ Another thing every category needs is a function to compute the identity morphis
 \input{GAP_tex/group_example/AddIdentityMorphism_main}
 
 The command used above exactly creates the identity morphism of a group.
+Additionally, we want to decide the mathematical equality of morphisms, which in CAP is called ``congruence of morphisms''.
+
+\input{GAP_tex/group_example/AddIsCongruentForMorphisms_main}
+
 Next, we tell \CapPkg that every output of a basic operation for the category \texttt{grps} should automatically be added to the category \texttt{grps}.
 This step is necessary since in this example, we simply integrate already existing algorithms and data structures of \GAP to
 \CapPkg's infrastructure.
