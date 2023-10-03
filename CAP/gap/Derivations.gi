@@ -1064,12 +1064,29 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
                 
             else
                 
-                weight_list := x[3](category)!.derivations_weight_list;
+                if category_filter( category ) then
+                    
+                    weight_list := x[3](category)!.derivations_weight_list;
+                    
+                else
+                    
+                    weight_list := fail;
+                    
+                fi;
+                
                 category_getter_string := Concatenation( " in the category obtained by applying ", String( x[3] ) );
                 
             fi;
             
-            weight := CurrentOperationWeight( weight_list, x[1] );
+            if weight_list = fail then
+                
+                weight := infinity;
+                
+            else
+                
+                weight := CurrentOperationWeight( weight_list, x[1] );
+                
+            fi;
             
             if weight < infinity then
                 Print( "* ", TextAttr.b2, x[1], TextAttr.reset, " (", x[2], "x)", category_getter_string, ", (already installed with weight ", weight,")" );
@@ -1100,12 +1117,29 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
                     
                 else
                     
-                    weight_list := x[3](category)!.derivations_weight_list;
+                    if category_filter( category ) then
+                        
+                        weight_list := x[3](category)!.derivations_weight_list;
+                        
+                    else
+                        
+                        weight_list := fail;
+                        
+                    fi;
+                
                     category_getter_string := Concatenation( " in the category obtained by applying ", String( x[3] ) );
                     
                 fi;
                 
-                weight := CurrentOperationWeight( weight_list, x[1] );
+                if weight_list = fail then
+                    
+                    weight := infinity;
+                    
+                else
+                    
+                    weight := CurrentOperationWeight( weight_list, x[1] );
+                    
+                fi;
                 
                 if weight = infinity then
                     
