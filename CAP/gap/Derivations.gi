@@ -1043,17 +1043,16 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
         
         # `SizeScreen()[1] - 3` is taken from the code for package banners
         Print( ListWithIdenticalEntries( SizeScreen()[1] - 3, '-' ), "\n" );
-        if IsProperty( category_filter ) and Tester( category_filter )( category ) and not category_filter( category ) then
-            continue;
-        elif IsProperty( category_filter ) and not Tester( category_filter )( category ) then
-            Print( "If ", Name( category ), " would be ", JoinStringsWithSeparator( Filtered( NamesFilter( category_filter ), name -> not StartsWith( name, "Has" ) ), " and " ), " then\n" );
-            Print( TextAttr.b4, name, TextAttr.reset, " could be derived by\n" );
-        elif IsFunction( category_filter ) and not category_filter( category ) then
-            Print( "If ", Name( category ), " would fulfill the conditions given by\n\n" );
-            Display( category_filter );
-            Print( "\nthen ", TextAttr.b4, name, TextAttr.reset, " could be derived by\n" );
-        else
+        if category_filter( category ) then
             Print( TextAttr.b4, name, TextAttr.reset, " can be derived by\n" );
+        else
+            if IsFilter( category_filter ) then
+                Print( "If ", Name( category ), " would be ", JoinStringsWithSeparator( Filtered( NamesFilter( category_filter ), name -> not StartsWith( name, "Has" ) ), " and " ) );
+            else
+                Print( "If ", Name( category ), " would fulfill the conditions given by\n\n" );
+                Display( category_filter );
+            fi;
+            Print( "\nthen ", TextAttr.b4, name, TextAttr.reset, " could be derived by\n" );
         fi;
         
         for x in UsedOperationsWithMultiplesAndCategoryGetters( current_derivation.derivation ) do
