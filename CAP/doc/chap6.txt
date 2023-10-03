@@ -2090,27 +2090,7 @@
   canonical   morphism   is   an   isomorphism,   we  call  it  the  [13Xcanonical
   identification[113X (between image and coimage).[133X
   
-  [1X6.14-14 CanonicalIdentificationFromImageObjectToCoimage[101X
-  
-  [33X[1;0Y[29X[2XCanonicalIdentificationFromImageObjectToCoimage[102X( [3Xalpha[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya  morphism  in [23X\mathrm{Hom}(\mathrm{im}( \alpha ), \mathrm{coim}(
-            \alpha ) )[123X[133X
-  
-  [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  A  \rightarrow B[123X. The output is the
-  canonical identification [23Xc: \mathrm{im}( \alpha ) \rightarrow \mathrm{coim}(
-  \alpha )[123X.[133X
-  
-  [1X6.14-15 CanonicalIdentificationFromCoimageToImageObject[101X
-  
-  [33X[1;0Y[29X[2XCanonicalIdentificationFromCoimageToImageObject[102X( [3Xalpha[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya  morphism  in [23X\mathrm{Hom}(\mathrm{coim}( \alpha ), \mathrm{im}(
-            \alpha ) )[123X[133X
-  
-  [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  A  \rightarrow B[123X. The output is the
-  canonical identification [23Xc: \mathrm{coim}( \alpha ) \rightarrow \mathrm{im}(
-  \alpha )[123X.[133X
-  
-  [1X6.14-16 CoimageObjectFunctorial[101X
+  [1X6.14-14 CoimageObjectFunctorial[101X
   
   [33X[1;0Y[29X[2XCoimageObjectFunctorial[102X( [3Xalpha[103X, [3Xmu[103X, [3Xalpha_prime[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya   morphism  in  [23X\mathrm{Hom}(\mathrm{CoimageObject}(  \alpha  ),
@@ -2121,7 +2101,7 @@
   [23X\mathrm{CoimageObject}( \alpha ) \rightarrow \mathrm{CoimageObject}( \alpha'
   )[123X given by the functoriality of the coimage.[133X
   
-  [1X6.14-17 CoimageObjectFunctorialWithGivenCoimageObjects[101X
+  [1X6.14-15 CoimageObjectFunctorialWithGivenCoimageObjects[101X
   
   [33X[1;0Y[29X[2XCoimageObjectFunctorialWithGivenCoimageObjects[102X( [3Xs[103X, [3Xalpha[103X, [3Xmu[103X, [3Xalpha_prime[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(s, r)[123X[133X

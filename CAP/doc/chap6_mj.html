@@ -246,10 +246,8 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X78AC1C7384A60A5E">6.14-11 AstrictionToCoimageWithGivenCoimageObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7D051DDF7A68BFFB">6.14-12 UniversalMorphismIntoCoimage</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X87AACC0083B6D49F">6.14-13 UniversalMorphismIntoCoimageWithGivenCoimageObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7D1114D97D8179BD">6.14-14 CanonicalIdentificationFromImageObjectToCoimage</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X8471140B7DF55646">6.14-15 CanonicalIdentificationFromCoimageToImageObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X852EFBA87E7F6831">6.14-16 CoimageObjectFunctorial</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7FB58F087D65DB38">6.14-17 CoimageObjectFunctorialWithGivenCoimageObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X852EFBA87E7F6831">6.14-14 CoimageObjectFunctorial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7FB58F087D65DB38">6.14-15 CoimageObjectFunctorialWithGivenCoimageObjects</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6_mj.html#X87F38F8284D3137C">6.15 <span class="Heading">Homology objects</span></a>
 </span>
@@ -2162,27 +2160,9 @@
 
 <p>Whenever the <code class="code">CoastrictionToImage</code> is an epi, or the <code class="code">AstrictionToCoimage</code> is a mono, there is a canonical morphism from the image to the coimage. If this canonical morphism is an isomorphism, we call it the <em>canonical identification</em> (between image and coimage).</p>
 
-<p><a id="X7D1114D97D8179BD" name="X7D1114D97D8179BD"></a></p>
-
-<h5>6.14-14 CanonicalIdentificationFromImageObjectToCoimage</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CanonicalIdentificationFromImageObjectToCoimage</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(\mathrm{im}( \alpha ), \mathrm{coim}( \alpha ) )\)</span></p>
-
-<p>The argument is a morphism <span class="SimpleMath">\(\alpha: A \rightarrow B\)</span>. The output is the canonical identification <span class="SimpleMath">\(c: \mathrm{im}( \alpha ) \rightarrow \mathrm{coim}( \alpha )\)</span>.</p>
-
-<p><a id="X8471140B7DF55646" name="X8471140B7DF55646"></a></p>
-
-<h5>6.14-15 CanonicalIdentificationFromCoimageToImageObject</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CanonicalIdentificationFromCoimageToImageObject</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(\mathrm{coim}( \alpha ), \mathrm{im}( \alpha ) )\)</span></p>
-
-<p>The argument is a morphism <span class="SimpleMath">\(\alpha: A \rightarrow B\)</span>. The output is the canonical identification <span class="SimpleMath">\(c: \mathrm{coim}( \alpha ) \rightarrow \mathrm{im}( \alpha )\)</span>.</p>
-
 <p><a id="X852EFBA87E7F6831" name="X852EFBA87E7F6831"></a></p>
 
-<h5>6.14-16 CoimageObjectFunctorial</h5>
+<h5>6.14-14 CoimageObjectFunctorial</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoimageObjectFunctorial</code>( <var class="Arg">alpha</var>, <var class="Arg">mu</var>, <var class="Arg">alpha_prime</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(\mathrm{CoimageObject}( \alpha ), \mathrm{CoimageObject}( \alpha' ))\)</span></p>
@@ -2191,7 +2171,7 @@
 
 <p><a id="X7FB58F087D65DB38" name="X7FB58F087D65DB38"></a></p>
 
-<h5>6.14-17 CoimageObjectFunctorialWithGivenCoimageObjects</h5>
+<h5>6.14-15 CoimageObjectFunctorialWithGivenCoimageObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoimageObjectFunctorialWithGivenCoimageObjects</code>( <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">mu</var>, <var class="Arg">alpha_prime</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(s, r)\)</span></p>
