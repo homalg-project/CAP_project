@@ -12,7 +12,9 @@
 \maketitle
 
 \begin{Verbatim}[commandchars=!@\%,frame=single]
-!color@blue%@gap>%!color@red%@ AddPreCompose( grps, { cat, mor1, mor2 } -> mor1 * mor2 );%
+!color@blue%@gap>%!color@red%@ congruence_func := { cat, mor1, mor2 } -> mor1 = mor2;%
+function( grp ) ... end
+!color@blue%@gap>%!color@red%@ AddIsCongruentForMorphisms( grps, congruence_func );%
 \end{Verbatim}
 
 \end{document}

@@ -3,6 +3,8 @@ grps := CreateCapCategory( "groups" );
 AddPreCompose( grps, { cat, mor1, mor2 } -> mor1 * mor2 );
 identity_func := { cat, grp } -> GroupHomomorphismByImages( grp, grp );
 AddIdentityMorphism( grps, identity_func );
+congruence_func := { cat, mor1, mor2 } -> mor1 = mor2;
+AddIsCongruentForMorphisms( grps, congruence_func );
 EnableAddForCategoricalOperations( grps );
 Finalize( grps );
 S3 := SymmetricGroup( 3 );
