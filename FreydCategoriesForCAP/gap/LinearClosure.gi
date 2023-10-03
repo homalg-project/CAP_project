@@ -901,7 +901,7 @@ InstallMethod( ViewString,
 
   function( obj )
     
-    return Concatenation( "LinearClosure(", ViewString( UnderlyingOriginalObject( obj ) ), ")" );
+    return Concatenation( "LinearClosureObject(", ViewString( UnderlyingOriginalObject( obj ) ), ")" );
     
 end );
 
