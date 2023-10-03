@@ -267,13 +267,20 @@ InstallMethod( LinearClosureMorphismNC,
     
     category := CapCategory( source );
     
-    ## this is a "compiled" version of ObjectifyMorphismForCAPWithAttributes
-    return ObjectifyWithAttributes( rec( ), category!.morphism_type,
-        Source, source,
-        Range, range,
+    return LinearClosureMorphismNC( category, source, coefficients, support_morphisms, range );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( LinearClosureMorphismNC,
+                                     [ IsLinearClosure, IsLinearClosureObject, IsList, IsList, IsLinearClosureObject ],
+  function( category, source, coefficients, support_morphisms, range )
+    
+    return CreateCapCategoryMorphismWithAttributes( category,
+        source, range,
         CoefficientsList, coefficients,
-        SupportMorphisms, support_morphisms,
-        CapCategory, category );
+        SupportMorphisms, support_morphisms
+    );
     
 end );
 
@@ -358,7 +365,7 @@ end );
 
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
     function( category )
-        local ring, underlying_category, sorting_function, mul_coeffs, mul_supp, one, zero, minus_one, with_nf,
+        local ring, underlying_category, sorting_function, mul_coeffs, mul_supp, with_nf,
               equality_func, finsets, rows, t_obj, t_finsets, FunctorMor, FunctorObj, cocycle;
     
     ring := UnderlyingRing( category );
@@ -372,12 +379,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
         sorting_function := category!.sorting_function;
         
     fi;
-    
-    one := One( ring );
-    
-    zero := Zero( ring );
-    
-    minus_one := MinusOne( ring );
     
     ##
     AddIsEqualForObjects( category, {cat, a, b} -> IsEqualForObjects( UnderlyingOriginalObject( a ), UnderlyingOriginalObject( b ) ) );
@@ -544,7 +545,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
     AddIdentityMorphism( category,
       function( cat, object )
         
-        return LinearClosureMorphismNC( object, [ one ], [ IdentityMorphism( UnderlyingOriginalObject( object ) ) ], object );
+        return LinearClosureMorphismNC( cat, object, [ One( ring ) ], [ IdentityMorphism( UnderlyingCategory( cat ), UnderlyingOriginalObject( object ) ) ], object );
         
     end );
     
@@ -552,7 +553,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
     AddZeroMorphism( category,
       function( cat, a, b )
         
-        return LinearClosureMorphismNC( a, [ ], [ ], b );
+        return LinearClosureMorphismNC( cat, a, [ ], [ ], b );
         
     end );
     
@@ -595,7 +596,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
       function( cat, alpha )
         return LinearClosureMorphism(
             Source( alpha ),
-            List( CoefficientsList( alpha ), c -> minus_one * c ),
+            List( CoefficientsList( alpha ), c -> MinusOne( ring ) * c ),
             SupportMorphisms( alpha ),
             Range( alpha )
         );
@@ -606,7 +607,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
       function( cat, alpha, beta )
         return LinearClosureMorphism(
             Source( alpha ),
-            Concatenation( CoefficientsList( alpha ), List( CoefficientsList( beta ), c -> minus_one * c ) ),
+            Concatenation( CoefficientsList( alpha ), List( CoefficientsList( beta ), c -> MinusOne( ring ) * c ) ),
             Concatenation( SupportMorphisms( alpha ), SupportMorphisms( beta ) ),
             Range( alpha )
         );
