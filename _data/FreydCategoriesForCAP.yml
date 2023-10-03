@@ -1,7 +1,7 @@
 name: FreydCategoriesForCAP
-version: "2023.09-03"
+version: "2023.10-01"
 license: "GPL-2.0-or-later"
-date: 2023-09-26
+date: 2023-10-03
 description: |
     Freyd categories - Formal (co)kernels for additive categories
 
@@ -46,11 +46,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2023.09-03/FreydCategoriesForCAP-2023.09-03.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2023.10-01/FreydCategoriesForCAP-2023.10-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2023.09-03/FreydCategoriesForCAP-2023.09-03.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2023.10-01/FreydCategoriesForCAP-2023.10-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2023.09-03/FreydCategoriesForCAP-2023.09-03-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2023.10-01/FreydCategoriesForCAP-2023.10-01-manual.pdf
 
 abstract: |
 
@@ -59,29 +59,29 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>PB26</span>]   <b class='BibAuthor'>Posur, S. and Bies, M.</b>,
+    [<span class='BibKey'>PB03</span>]   <b class='BibAuthor'>Posur, S. and Bies, M.</b>,
      <i class='BibTitle'>FreydCategoriesForCAP, Freyd categories - Formal (co)kernels for additive categories,
-             Version 2023.09-03</i>
-     (<span class='BibYear'>9-26</span>)<br />
+             Version 2023.10-01</i>
+     (<span class='BibYear'>0-03</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FreydCategoriesForCAP">https://homalg-project.github.io/pkg/FreydCategoriesForCAP</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ FreydCategoriesForCAP2023.09-03,
+    @misc{ FreydCategoriesForCAP2023.10-01,
       author =           {Posur, S. and Bies, M.},
       title =            {{FreydCategoriesForCAP},  Freyd  categories  -  Formal
                           (co)kernels   for   additive   categories,   {V}ersion
-                          2023.09-03},
+                          2023.10-01},
       month =            {3-},
-      year =             {9-26},
+      year =             {0-03},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/FreydCategoriesForCAP}
                           {\texttt{https://homalg-project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{FreydCategoriesForCAP}}},
-      printedkey =       {PB26}
+      printedkey =       {PB03}
     }
 
