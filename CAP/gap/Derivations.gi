@@ -1065,7 +1065,7 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
             else
                 
                 weight_list := x[3](category)!.derivations_weight_list;
-                category_getter_string := Concatenation( " in category obtained by applying ", String( x[3] ) );
+                category_getter_string := Concatenation( " in the category obtained by applying ", String( x[3] ) );
                 
             fi;
             
@@ -1101,7 +1101,7 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
                 else
                     
                     weight_list := x[3](category)!.derivations_weight_list;
-                    category_getter_string := Concatenation( " in category obtained by applying ", String( x[3] ) );
+                    category_getter_string := Concatenation( " in the category obtained by applying ", String( x[3] ) );
                     
                 fi;
                 
