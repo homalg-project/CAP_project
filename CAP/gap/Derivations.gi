@@ -1043,17 +1043,16 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
         
         # `SizeScreen()[1] - 3` is taken from the code for package banners
         Print( ListWithIdenticalEntries( SizeScreen()[1] - 3, '-' ), "\n" );
-        if IsProperty( category_filter ) and Tester( category_filter )( category ) and not category_filter( category ) then
-            continue;
-        elif IsProperty( category_filter ) and not Tester( category_filter )( category ) then
-            Print( "If ", Name( category ), " would be ", JoinStringsWithSeparator( Filtered( NamesFilter( category_filter ), name -> not StartsWith( name, "Has" ) ), " and " ), " then\n" );
-            Print( TextAttr.b4, name, TextAttr.reset, " could be derived by\n" );
-        elif IsFunction( category_filter ) and not category_filter( category ) then
-            Print( "If ", Name( category ), " would fulfill the conditions given by\n\n" );
-            Display( category_filter );
-            Print( "\nthen ", TextAttr.b4, name, TextAttr.reset, " could be derived by\n" );
-        else
+        if category_filter( category ) then
             Print( TextAttr.b4, name, TextAttr.reset, " can be derived by\n" );
+        else
+            if IsFilter( category_filter ) then
+                Print( "If ", Name( category ), " would be ", JoinStringsWithSeparator( Filtered( NamesFilter( category_filter ), name -> not StartsWith( name, "Has" ) ), " and " ) );
+            else
+                Print( "If ", Name( category ), " would fulfill the conditions given by\n\n" );
+                Display( category_filter );
+            fi;
+            Print( "\nthen ", TextAttr.b4, name, TextAttr.reset, " could be derived by\n" );
         fi;
         
         for x in UsedOperationsWithMultiplesAndCategoryGetters( current_derivation.derivation ) do
@@ -1065,12 +1064,29 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
                 
             else
                 
-                weight_list := x[3](category)!.derivations_weight_list;
-                category_getter_string := Concatenation( " in category obtained by applying ", String( x[3] ) );
+                if category_filter( category ) then
+                    
+                    weight_list := x[3](category)!.derivations_weight_list;
+                    
+                else
+                    
+                    weight_list := fail;
+                    
+                fi;
+                
+                category_getter_string := Concatenation( " in the category obtained by applying ", String( x[3] ) );
                 
             fi;
             
-            weight := CurrentOperationWeight( weight_list, x[1] );
+            if weight_list = fail then
+                
+                weight := infinity;
+                
+            else
+                
+                weight := CurrentOperationWeight( weight_list, x[1] );
+                
+            fi;
             
             if weight < infinity then
                 Print( "* ", TextAttr.b2, x[1], TextAttr.reset, " (", x[2], "x)", category_getter_string, ", (already installed with weight ", weight,")" );
@@ -1101,16 +1117,33 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
                     
                 else
                     
-                    weight_list := x[3](category)!.derivations_weight_list;
-                    category_getter_string := Concatenation( " in category obtained by applying ", String( x[3] ) );
+                    if category_filter( category ) then
+                        
+                        weight_list := x[3](category)!.derivations_weight_list;
+                        
+                    else
+                        
+                        weight_list := fail;
+                        
+                    fi;
+                
+                    category_getter_string := Concatenation( " in the category obtained by applying ", String( x[3] ) );
                     
                 fi;
                 
-                weight := CurrentOperationWeight( weight_list, x[1] );
+                if weight_list = fail then
+                    
+                    weight := infinity;
+                    
+                else
+                    
+                    weight := CurrentOperationWeight( weight_list, x[1] );
+                    
+                fi;
                 
                 if weight = infinity then
                     
-                    Print( "* ", x[1], "\n" );
+                    Print( "* ", x[1], category_getter_string, "\n" );
                     found := true;
                     
                 fi;
