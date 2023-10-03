@@ -866,37 +866,25 @@ CapJitAddTypeSignature( "CapFixpoint", [ IsFunction, IsFunction, IsObject ], fun
 end );
 
 # CreateCapCategory*WithAttributes
-CapJitAddTypeSignature( "CreateCapCategoryObjectWithAttributes", [ IsCapCategory ], function ( input_types )
+CapJitAddTypeSignature( "CreateCapCategoryObjectWithAttributes", "any", function ( input_types )
+    
+    Assert( 0, Length( input_types ) >= 1 );
+    Assert( 0, IsOddInt( Length( input_types ) ) );
+    Assert( 0, IsSpecializationOfFilter( IsCapCategory, input_types[1].filter ) );
+    Assert( 0, ForAll( [ 2, 4 .. Length( input_types ) - 1 ], i -> IsSpecializationOfFilter( IsFunction, input_types[i].filter ) ) );
     
     return CapJitDataTypeOfObjectOfCategory( input_types[1].category );
     
 end );
 
-CapJitAddTypeSignature( "CreateCapCategoryObjectWithAttributes", [ IsCapCategory, IsFunction, IsObject ], function ( input_types )
+CapJitAddTypeSignature( "CreateCapCategoryMorphismWithAttributes", "any", function ( input_types )
     
-    return CapJitDataTypeOfObjectOfCategory( input_types[1].category );
-    
-end );
-
-CapJitAddTypeSignature( "CreateCapCategoryObjectWithAttributes", [ IsCapCategory, IsFunction, IsObject, IsFunction, IsObject ], function ( input_types )
-    
-    return CapJitDataTypeOfObjectOfCategory( input_types[1].category );
-    
-end );
-
-CapJitAddTypeSignature( "CreateCapCategoryObjectWithAttributes", [ IsCapCategory, IsFunction, IsObject, IsFunction, IsObject, IsFunction, IsObject ], function ( input_types )
-    
-    return CapJitDataTypeOfObjectOfCategory( input_types[1].category );
-    
-end );
-
-CapJitAddTypeSignature( "CreateCapCategoryMorphismWithAttributes", [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ], function ( input_types )
-    
-    return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
-    
-end );
-
-CapJitAddTypeSignature( "CreateCapCategoryMorphismWithAttributes", [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsFunction, IsObject ], function ( input_types )
+    Assert( 0, Length( input_types ) >= 3 );
+    Assert( 0, IsOddInt( Length( input_types ) ) );
+    Assert( 0, IsSpecializationOfFilter( IsCapCategory, input_types[1].filter ) );
+    Assert( 0, IsSpecializationOfFilter( IsCapCategoryObject, input_types[2].filter ) );
+    Assert( 0, IsSpecializationOfFilter( IsCapCategoryObject, input_types[3].filter ) );
+    Assert( 0, ForAll( [ 4, 6 .. Length( input_types ) - 1 ], i -> IsSpecializationOfFilter( IsFunction, input_types[i].filter ) ) );
     
     return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
     
