@@ -288,7 +288,7 @@ end : CategoryFilter := IsSymmetricClosedMonoidalCategory );
 ##
 AddDerivationToCAP( EvaluationForDualWithGivenTensorProduct,
                     "EvaluationForDualWithGivenTensorProduct using the tensor hom adjunction and IsomorphismFromDualObjectToInternalHomIntoTensorUnit",
-                    [ [ InternalHomToTensorProductAdjunctionMap, 1 ],
+                    [ [ InternalHomToTensorProductAdjunctionMapWithGivenTensorProduct, 1 ],
                       [ IsomorphismFromDualObjectToInternalHomIntoTensorUnit, 1 ] ],
                     
   function( cat, s, a, r )
@@ -297,8 +297,11 @@ AddDerivationToCAP( EvaluationForDualWithGivenTensorProduct,
     #
     # Adjoint( a^v → Hom(a,1) ) = ( a^v ⊗ a → 1 )
     
-    return InternalHomToTensorProductAdjunctionMap( cat, a, r,
-                                                    IsomorphismFromDualObjectToInternalHomIntoTensorUnit( cat, a ) );
+    return InternalHomToTensorProductAdjunctionMapWithGivenTensorProduct( cat,
+                a,
+                r,
+                IsomorphismFromDualObjectToInternalHomIntoTensorUnit( cat, a ),
+                s );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory );
 
@@ -679,7 +682,7 @@ end : CategoryFilter := IsSymmetricClosedMonoidalCategory );
 ##
 AddDerivationToCAP( EvaluationMorphismWithGivenSource,
                     "EvaluationMorphismWithGivenSource using the tensor hom adjunction on the identity",
-                    [ [ InternalHomToTensorProductAdjunctionMap, 1 ],
+                    [ [ InternalHomToTensorProductAdjunctionMapWithGivenTensorProduct, 1 ],
                       [ IdentityMorphism, 1 ],
                       [ InternalHomOnObjects, 1 ] ],
                     
@@ -687,16 +690,18 @@ AddDerivationToCAP( EvaluationMorphismWithGivenSource,
 
     # Adjoint( id_Hom(a,b): Hom(a,b) → Hom(a,b) ) = ( Hom(a,b) ⊗ a → b )
     
-    return InternalHomToTensorProductAdjunctionMap( cat,
-             a, b,
-             IdentityMorphism( cat, InternalHomOnObjects( cat, a, b ) ) );
+    return InternalHomToTensorProductAdjunctionMapWithGivenTensorProduct( cat,
+             a,
+             b,
+             IdentityMorphism( cat, InternalHomOnObjects( cat, a, b ) ),
+             tensor_object );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory );
 
 ##
 AddDerivationToCAP( CoevaluationMorphismWithGivenRange,
                     "CoevaluationMorphismWithGivenRange using the tensor hom adjunction on the identity",
-                    [ [ TensorProductToInternalHomAdjunctionMap, 1 ],
+                    [ [ TensorProductToInternalHomAdjunctionMapWithGivenInternalHom, 1 ],
                       [ IdentityMorphism, 1 ],
                       [ TensorProductOnObjects, 1 ] ],
                     
@@ -704,9 +709,11 @@ AddDerivationToCAP( CoevaluationMorphismWithGivenRange,
     
     # Adjoint( id_(a ⊗ b): a ⊗ b → a ⊗ b ) = ( a → Hom(b, a ⊗ b) )
 
-    return TensorProductToInternalHomAdjunctionMap( cat,
-             a, b,
-             IdentityMorphism( cat, TensorProductOnObjects( cat, a, b ) ) );
+    return TensorProductToInternalHomAdjunctionMapWithGivenInternalHom( cat,
+             a,
+             b,
+             IdentityMorphism( cat, TensorProductOnObjects( cat, a, b ) ),
+             internal_hom );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory );
 

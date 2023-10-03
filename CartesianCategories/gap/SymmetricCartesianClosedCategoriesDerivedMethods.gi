@@ -291,7 +291,7 @@ end : CategoryFilter := IsCartesianClosedCategory );
 ##
 AddDerivationToCAP( CartesianEvaluationForCartesianDualWithGivenDirectProduct,
                     "CartesianEvaluationForCartesianDualWithGivenDirectProduct using the direct product-exponential adjunction and IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject",
-                    [ [ ExponentialToDirectProductAdjunctionMap, 1 ],
+                    [ [ ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct, 1 ],
                       [ IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject, 1 ] ],
                     
   function( cat, s, a, r )
@@ -300,8 +300,11 @@ AddDerivationToCAP( CartesianEvaluationForCartesianDualWithGivenDirectProduct,
     #
     # Adjoint( a^v → Exp(a,1) ) = ( a^v × a → 1 )
     
-    return ExponentialToDirectProductAdjunctionMap( cat, a, r,
-                                                    IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject( cat, a ) );
+    return ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct( cat,
+                a,
+                r,
+                IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject( cat, a ),
+                s );
     
 end : CategoryFilter := IsCartesianClosedCategory );
 
@@ -682,7 +685,7 @@ end : CategoryFilter := IsCartesianClosedCategory );
 ##
 AddDerivationToCAP( CartesianEvaluationMorphismWithGivenSource,
                     "CartesianEvaluationMorphismWithGivenSource using the direct product-exponential adjunction on the identity",
-                    [ [ ExponentialToDirectProductAdjunctionMap, 1 ],
+                    [ [ ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct, 1 ],
                       [ IdentityMorphism, 1 ],
                       [ ExponentialOnObjects, 1 ] ],
                     
@@ -690,16 +693,18 @@ AddDerivationToCAP( CartesianEvaluationMorphismWithGivenSource,
 
     # Adjoint( id_Exp(a,b): Exp(a,b) → Exp(a,b) ) = ( Exp(a,b) × a → b )
     
-    return ExponentialToDirectProductAdjunctionMap( cat,
-             a, b,
-             IdentityMorphism( cat, ExponentialOnObjects( cat, a, b ) ) );
+    return ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct( cat,
+             a,
+             b,
+             IdentityMorphism( cat, ExponentialOnObjects( cat, a, b ) ),
+             direct_product_object );
     
 end : CategoryFilter := IsCartesianClosedCategory );
 
 ##
 AddDerivationToCAP( CartesianCoevaluationMorphismWithGivenRange,
                     "CartesianCoevaluationMorphismWithGivenRange using the direct product-exponential adjunction on the identity",
-                    [ [ DirectProductToExponentialAdjunctionMap, 1 ],
+                    [ [ DirectProductToExponentialAdjunctionMapWithGivenExponential, 1 ],
                       [ IdentityMorphism, 1 ],
                       [ DirectProduct, 1 ] ],
                     
@@ -707,9 +712,11 @@ AddDerivationToCAP( CartesianCoevaluationMorphismWithGivenRange,
     
     # Adjoint( id_(a × b): a × b → a × b ) = ( a → Exp(b, a × b) )
 
-    return DirectProductToExponentialAdjunctionMap( cat,
-             a, b,
-             IdentityMorphism( cat, BinaryDirectProduct( cat, a, b ) ) );
+    return DirectProductToExponentialAdjunctionMapWithGivenExponential( cat,
+             a,
+             b,
+             IdentityMorphism( cat, BinaryDirectProduct( cat, a, b ) ),
+             internal_hom );
     
 end : CategoryFilter := IsCartesianClosedCategory );
 
