@@ -126,44 +126,6 @@ DeclareOperation( "AddBasisOfExternalHom",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `CanonicalIdentificationFromCoimageToImageObject`.
-#! $F: ( alpha ) \mapsto \mathtt{CanonicalIdentificationFromCoimageToImageObject}(alpha)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCanonicalIdentificationFromCoimageToImageObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCanonicalIdentificationFromCoimageToImageObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCanonicalIdentificationFromCoimageToImageObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCanonicalIdentificationFromCoimageToImageObject",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation `CanonicalIdentificationFromImageObjectToCoimage`.
-#! $F: ( alpha ) \mapsto \mathtt{CanonicalIdentificationFromImageObjectToCoimage}(alpha)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCanonicalIdentificationFromImageObjectToCoimage",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCanonicalIdentificationFromImageObjectToCoimage",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCanonicalIdentificationFromImageObjectToCoimage",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCanonicalIdentificationFromImageObjectToCoimage",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
 #! to the category for the basic operation `CoastrictionToImage`.
 #! $F: ( alpha ) \mapsto \mathtt{CoastrictionToImage}(alpha)$.
 #! @Returns nothing

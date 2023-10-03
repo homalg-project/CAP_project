@@ -2434,24 +2434,6 @@ DeclareOperation( "UniversalMorphismIntoCoimageWithGivenCoimageObject",
 
 
 #! @Description
-#! The argument is a morphism $\alpha: A \rightarrow B$.
-#! The output is the canonical identification
-#! $c: \mathrm{im}( \alpha ) \rightarrow \mathrm{coim}( \alpha )$.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{im}( \alpha ), \mathrm{coim}( \alpha ) )$
-#! @Arguments alpha
-DeclareAttribute( "CanonicalIdentificationFromImageObjectToCoimage",
-                  IsCapCategoryMorphism );
-
-#! @Description
-#! The argument is a morphism $\alpha: A \rightarrow B$.
-#! The output is the canonical identification
-#! $c: \mathrm{coim}( \alpha ) \rightarrow \mathrm{im}( \alpha )$.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{coim}( \alpha ), \mathrm{im}( \alpha ) )$
-#! @Arguments alpha
-DeclareAttribute( "CanonicalIdentificationFromCoimageToImageObject",
-                  IsCapCategoryMorphism );
-
-#! @Description
 #! The arguments are three morphisms
 #! $\alpha: A \rightarrow B, \mu: A \rightarrow A', \alpha': A' \rightarrow B'$.
 #! The output is the morphism
