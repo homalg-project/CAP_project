@@ -151,8 +151,8 @@ InstallMethod( TwistedLinearClosure,
 end );
 
 ##
-InstallMethod( LinearClosureObject,
-               [ IsLinearClosure, IsCapCategoryObject ],
+InstallMethodForCompilerForCAP( LinearClosureObject,
+                                [ IsLinearClosure, IsCapCategoryObject ],
                
   function( category, object )
     
