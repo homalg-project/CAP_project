@@ -381,6 +381,38 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
     fi;
     
     ##
+    AddObjectConstructor( category,
+      function( cat, underlying_object )
+        
+        return LinearClosureObject( cat, underlying_object );
+        
+    end );
+    
+    ##
+    AddObjectDatum( category,
+      function( cat, object )
+        
+        return UnderlyingOriginalObject( object );
+        
+    end );
+    
+    ##
+    AddMorphismConstructor( category,
+      function( cat, source, pair, range )
+        
+        return LinearClosureMorphismNC( cat, source, pair[1], pair[2], range );
+        
+    end );
+    
+    ##
+    AddMorphismDatum( category,
+      function( cat, morphism )
+        
+        return Pair( CoefficientsList( morphism ), SupportMorphisms( morphism ) );
+        
+    end );
+    
+    ##
     AddIsEqualForObjects( category, {cat, a, b} -> IsEqualForObjects( UnderlyingOriginalObject( a ), UnderlyingOriginalObject( b ) ) );
     
     equality_func := function( alpha, beta, equal_or_cong )
