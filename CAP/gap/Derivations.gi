@@ -1143,7 +1143,7 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
                 
                 if weight = infinity then
                     
-                    Print( "* ", x[1], "\n" );
+                    Print( "* ", x[1], category_getter_string, "\n" );
                     found := true;
                     
                 fi;
