@@ -4,7 +4,7 @@
 InstallMethod( SQVecObj,
                [ IsInt ],
                
-  function( cat, dim )
+  function( dim )
         
         if dim < 0 then
             Error( "the given integer must be non-negative");
@@ -37,7 +37,7 @@ InstallMethod( SQVecMor,
 
     fi;
     
-    return CreateCapCategoryMorphismWithAttribute(
+    return CreateCapCategoryMorphismWithAttributes(
              SQVec,
              source,
              range,
