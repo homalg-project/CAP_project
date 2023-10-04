@@ -2309,7 +2309,7 @@ DeclareAttribute( "MorphismFromCoimageToImage",
 #! The output is the canonical morphism (in a preabelian category)
 #! $C \rightarrow I$.
 #! @Returns a morphism in $\mathrm{Hom}(C,I)$
-#! @Arguments alpha
+#! @Arguments C, alpha, I
 DeclareOperation( "MorphismFromCoimageToImageWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
