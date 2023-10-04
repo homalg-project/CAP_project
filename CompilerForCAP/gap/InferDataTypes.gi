@@ -1092,6 +1092,12 @@ CapJitAddTypeSignature( "SSortedList", [ IsList ], function ( input_types )
     
 end );
 
+CapJitAddTypeSignature( "DuplicateFreeList", [ IsList ], function ( input_types )
+    
+    return input_types[1];
+    
+end );
+
 CapJitAddTypeSignature( "First", [ IsList, IsFunction ], function ( args, func_stack )
     
     # COVERAGE_IGNORE_BLOCK_START
