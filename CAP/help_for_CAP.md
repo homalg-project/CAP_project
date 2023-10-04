@@ -1,7 +1,7 @@
 ## CAP info functions
 
 * CanCompute( category, string )
-  Returns true if the the function with name <string> is computable in <category>.
+  Returns true if the operation with name <string> is computable in <category>.
 
 * CheckConstructivenessOfCategory( category, string )
   Returns a list of names of basic operations which are not computable in <category> but
@@ -28,3 +28,7 @@
 * PrintAutomaticallyGeneratedInstallationsForLimits( string )
   Prints all installations of the method with name <string> which are automatically generated
   by the (co)limit mechanism. If no method name is given, all such installations are printed.
+
+* PackageOfCAPOperation( string )
+  Returns the package where the operation with name <string> is defined.
+  
