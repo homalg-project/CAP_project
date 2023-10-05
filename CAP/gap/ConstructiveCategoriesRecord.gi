@@ -157,6 +157,7 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsAbelianCategory := Concatenation(
     [
         "LiftAlongMonomorphism",
         "ColiftAlongEpimorphism",
+        "InverseOfMorphismFromCoimageToImage",
     ]
 );
 
