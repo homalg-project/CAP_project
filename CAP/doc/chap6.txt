@@ -1975,7 +1975,7 @@
   
   [1X6.14-2 MorphismFromCoimageToImageWithGivenObjects[101X
   
-  [33X[1;0Y[29X[2XMorphismFromCoimageToImageWithGivenObjects[102X( [3Xalpha[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XMorphismFromCoimageToImageWithGivenObjects[102X( [3XC[103X, [3Xalpha[103X, [3XI[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(C,I)[123X[133X
   
   [33X[0;0YThe  argument  is  an object [23XC = \mathrm{coim}(\alpha)[123X, a morphism [23X\alpha: A
