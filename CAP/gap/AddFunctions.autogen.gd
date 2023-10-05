@@ -1627,20 +1627,20 @@ DeclareOperation( "AddInverseForMorphisms",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `InverseMorphismFromCoimageToImageWithGivenObjects`.
-#! $F: ( C, alpha, I ) \mapsto \mathtt{InverseMorphismFromCoimageToImageWithGivenObjects}(C, alpha, I)$.
+#! to the category for the basic operation `InverseOfMorphismFromCoimageToImageWithGivenObjects`.
+#! $F: ( I, alpha, C ) \mapsto \mathtt{InverseOfMorphismFromCoimageToImageWithGivenObjects}(I, alpha, C)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddInverseMorphismFromCoimageToImageWithGivenObjects",
+DeclareOperation( "AddInverseOfMorphismFromCoimageToImageWithGivenObjects",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddInverseMorphismFromCoimageToImageWithGivenObjects",
+DeclareOperation( "AddInverseOfMorphismFromCoimageToImageWithGivenObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddInverseMorphismFromCoimageToImageWithGivenObjects",
+DeclareOperation( "AddInverseOfMorphismFromCoimageToImageWithGivenObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddInverseMorphismFromCoimageToImageWithGivenObjects",
+DeclareOperation( "AddInverseOfMorphismFromCoimageToImageWithGivenObjects",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

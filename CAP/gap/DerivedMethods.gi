@@ -2928,12 +2928,12 @@ AddDerivationToCAP( MorphismFromCoimageToImageWithGivenObjects,
 end : CategoryFilter := IsPreAbelianCategory );
 
 ##
-AddDerivationToCAP( InverseMorphismFromCoimageToImageWithGivenObjects,
-                    "InverseMorphismFromCoimageToImageWithGivenObjects as the inverse of MorphismFromCoimageToImage",
+AddDerivationToCAP( InverseOfMorphismFromCoimageToImageWithGivenObjects,
+                    "InverseOfMorphismFromCoimageToImageWithGivenObjects as the inverse of MorphismFromCoimageToImage",
                     [ [ InverseForMorphisms, 1 ],
                       [ MorphismFromCoimageToImageWithGivenObjects, 1 ] ],
                     
-  function( cat, coimage, morphism, image )
+  function( cat, image, morphism, coimage )
     
     return InverseForMorphisms( cat, MorphismFromCoimageToImageWithGivenObjects( cat, coimage, morphism, image ) );
     

@@ -917,12 +917,12 @@ InstallMethod( MorphismFromCoimageToImage,
 end );
 
 ##
-InstallMethod( InverseMorphismFromCoimageToImage,
+InstallMethod( InverseOfMorphismFromCoimageToImage,
                [ IsCapCategoryMorphism ],
                
   function( morphism )
     
-    return InverseMorphismFromCoimageToImageWithGivenObjects( CoimageObject( morphism ), morphism, ImageObject( morphism ) );
+    return InverseOfMorphismFromCoimageToImageWithGivenObjects( ImageObject( morphism ), morphism, CoimageObject( morphism ) );
     
 end );
 
@@ -932,10 +932,10 @@ CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
       [ [ "MorphismFromCoimageToImageWithGivenObjects", 1 ],
         [ "CoimageObject", 1 ],
         [ "ImageObject", 1 ] ],
-    InverseMorphismFromCoimageToImage :=
-      [ [ "InverseMorphismFromCoimageToImageWithGivenObjects", 1 ],
-        [ "CoimageObject", 1 ],
-        [ "ImageObject", 1 ] ],
+    InverseOfMorphismFromCoimageToImage :=
+      [ [ "InverseOfMorphismFromCoimageToImageWithGivenObjects", 1 ],
+        [ "ImageObject", 1 ],
+        [ "CoimageObject", 1 ] ],
   )
  );
 

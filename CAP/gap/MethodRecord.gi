@@ -2549,14 +2549,14 @@ MorphismFromCoimageToImageWithGivenObjects := rec(
   dual_arguments_reversed := true,
   return_type := "morphism" ),
 
-InverseMorphismFromCoimageToImageWithGivenObjects := rec(
+InverseOfMorphismFromCoimageToImageWithGivenObjects := rec(
   filter_list := [ "category", "object", "morphism", "object" ],
-  input_arguments_names := [ "cat", "C", "alpha", "I" ],
+  input_arguments_names := [ "cat", "I", "alpha", "C" ],
   output_source_getter_string := "I",
   output_source_getter_preconditions := [ ],
   output_range_getter_string := "C",
   output_range_getter_preconditions := [ ],
-  dual_operation := "InverseMorphismFromCoimageToImageWithGivenObjects",
+  dual_operation := "InverseOfMorphismFromCoimageToImageWithGivenObjects",
   dual_arguments_reversed := true,
   return_type := "morphism" ),
 

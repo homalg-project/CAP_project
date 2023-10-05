@@ -2104,10 +2104,10 @@ end
     , 201 : IsPrecompiledDerivation := true );
     
     ##
-    AddInverseMorphismFromCoimageToImageWithGivenObjects( cat,
+    AddInverseOfMorphismFromCoimageToImageWithGivenObjects( cat,
         
 ########
-function ( cat_1, C_1, alpha_1, I_1 )
+function ( cat_1, I_1, alpha_1, C_1 )
     local morphism_attr_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
     deduped_4_1 := UnderlyingRing( cat_1 );
     deduped_3_1 := UnderlyingMatrix( alpha_1 );
