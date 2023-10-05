@@ -375,6 +375,7 @@
 #! * <Ref BookName="CAP" Func="ImageObjectFunctorialWithGivenImageObjects" Label="for Is" />
 #! * <Ref BookName="CAP" Func="InjectionOfCofactorOfPushout" Label="for Is" />
 #! * <Ref BookName="CAP" Func="InjectionOfCofactorOfPushoutWithGivenPushout" Label="for Is" />
+#! * <Ref BookName="CAP" Func="InverseOfMorphismFromCoimageToImage" Label="for Is" />
 #! * <Ref BookName="CAP" Func="InverseOfMorphismFromCoimageToImageWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsBijectiveObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsInjective" Label="for Is" />
@@ -402,6 +403,7 @@
 #! * <Ref BookName="CAP" Func="KernelObjectFunctorialWithGivenKernelObjects" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MonomorphismIntoSomeInjectiveObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject" Label="for Is" />
+#! * <Ref BookName="CAP" Func="MorphismFromCoimageToImage" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MorphismFromCoimageToImageWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MorphismFromEqualizerToSink" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MorphismFromEqualizerToSinkWithGivenEqualizer" Label="for Is" />

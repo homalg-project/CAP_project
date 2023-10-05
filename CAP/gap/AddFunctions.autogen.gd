@@ -1627,6 +1627,25 @@ DeclareOperation( "AddInverseForMorphisms",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `InverseOfMorphismFromCoimageToImage`.
+#! $F: ( alpha ) \mapsto \mathtt{InverseOfMorphismFromCoimageToImage}(alpha)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddInverseOfMorphismFromCoimageToImage",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInverseOfMorphismFromCoimageToImage",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInverseOfMorphismFromCoimageToImage",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInverseOfMorphismFromCoimageToImage",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `InverseOfMorphismFromCoimageToImageWithGivenObjects`.
 #! $F: ( I, alpha, C ) \mapsto \mathtt{InverseOfMorphismFromCoimageToImageWithGivenObjects}(I, alpha, C)$.
 #! @Returns nothing
@@ -3180,6 +3199,25 @@ DeclareOperation( "AddMorphismDatum",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddMorphismDatum",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `MorphismFromCoimageToImage`.
+#! $F: ( alpha ) \mapsto \mathtt{MorphismFromCoimageToImage}(alpha)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMorphismFromCoimageToImage",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismFromCoimageToImage",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismFromCoimageToImage",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismFromCoimageToImage",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
