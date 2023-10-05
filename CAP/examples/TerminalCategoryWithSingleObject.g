@@ -10,7 +10,7 @@ T := TerminalCategoryWithSingleObject( );
 Display( T );
 #! A CAP category with name TerminalCategoryWithSingleObject( ):
 #! 
-#! 63 primitive operations were used to derive 309 operations for this category \
+#! 62 primitive operations were used to derive 309 operations for this category \
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts

@@ -94,8 +94,7 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPreAbelianCategory := Concatenatio
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsAbelianCategory := Concatenation(
     CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPreAbelianCategory,
     [
-        "LiftAlongMonomorphism",
-        "ColiftAlongEpimorphism",
+        "InverseOfMorphismFromCoimageToImage",
     ]
 );
 
