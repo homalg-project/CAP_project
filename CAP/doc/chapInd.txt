@@ -98,7 +98,7 @@
   [2XAddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects[102X, for IsCapCategory, IsFunction 7.6-83 
   [2XAddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism[102X, for IsCapCategory, IsFunction 7.6-84 
   [2XAddInverseForMorphisms[102X, for IsCapCategory, IsFunction 7.6-85 
-  [2XAddInverseMorphismFromCoimageToImageWithGivenObjects[102X, for IsCapCategory, IsFunction 7.6-86 
+  [2XAddInverseOfMorphismFromCoimageToImageWithGivenObjects[102X, for IsCapCategory, IsFunction 7.6-86 
   [2XAddIsAutomorphism[102X, for IsCapCategory, IsFunction 7.6-87 
   [2XAddIsBijectiveObject[102X, for IsCapCategory, IsFunction 7.6-88 
   [2XAddIsCodominating[102X, for IsCapCategory, IsFunction 7.6-89 
@@ -545,8 +545,8 @@
   [2XInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 3.16-7 
   [2XInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphismExtendedByFullEmbedding[102X, for IsCapCategory, IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 3.16-18 
   [2XInverseForMorphisms[102X, for IsCapCategoryMorphism 3.13-1 
-  [2XInverseMorphismFromCoimageToImage[102X, for IsCapCategoryMorphism 6.14-3 
-  [2XInverseMorphismFromCoimageToImageWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 6.14-4 
+  [2XInverseOfMorphismFromCoimageToImage[102X, for IsCapCategoryMorphism 6.14-3 
+  [2XInverseOfMorphismFromCoimageToImageWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 6.14-4 
   [2XIsAbCategory[102X, for IsCapCategory 1.2-7 
   [2XIsAbelianCategory[102X, for IsCapCategory 1.2-11 
   [2XIsAbelianCategoryWithEnoughInjectives[102X, for IsCapCategory 1.2-13 

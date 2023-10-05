@@ -6,7 +6,7 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2023.10-02
+                                   2023.10-03
   
   
                                  5 October 2023
@@ -529,8 +529,8 @@
     6.14 [33X[0;0YCoimage[133X
       6.14-1 MorphismFromCoimageToImage
       6.14-2 MorphismFromCoimageToImageWithGivenObjects
-      6.14-3 InverseMorphismFromCoimageToImage
-      6.14-4 InverseMorphismFromCoimageToImageWithGivenObjects
+      6.14-3 InverseOfMorphismFromCoimageToImage
+      6.14-4 InverseOfMorphismFromCoimageToImageWithGivenObjects
       6.14-5 IsomorphismFromCoimageToCokernelOfKernel
       6.14-6 IsomorphismFromCokernelOfKernelToCoimage
       6.14-7 CoimageObject
@@ -651,7 +651,7 @@
       7.6-83 AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects
       7.6-84 AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
       7.6-85 AddInverseForMorphisms
-      7.6-86 AddInverseMorphismFromCoimageToImageWithGivenObjects
+      7.6-86 AddInverseOfMorphismFromCoimageToImageWithGivenObjects
       7.6-87 AddIsAutomorphism
       7.6-88 AddIsBijectiveObject
       7.6-89 AddIsCodominating

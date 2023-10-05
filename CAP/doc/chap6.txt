@@ -1982,9 +1982,9 @@
   \rightarrow  B[123X,  and  an  object  [23XI = \mathrm{im}(\alpha)[123X. The output is the
   canonical morphism (in a preabelian category) [23XC \rightarrow I[123X.[133X
   
-  [1X6.14-3 InverseMorphismFromCoimageToImage[101X
+  [1X6.14-3 InverseOfMorphismFromCoimageToImage[101X
   
-  [33X[1;0Y[29X[2XInverseMorphismFromCoimageToImage[102X( [3Xalpha[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XInverseOfMorphismFromCoimageToImage[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya        morphism       in       [23X\mathrm{Hom}(\mathrm{im}(\alpha),
             \mathrm{coim}(\alpha))[123X[133X
   
@@ -1992,9 +1992,9 @@
   inverse    of    the   canonical   morphism   (in   an   abelian   category)
   [23X\mathrm{im}(\alpha) \rightarrow \mathrm{coim}(\alpha)[123X.[133X
   
-  [1X6.14-4 InverseMorphismFromCoimageToImageWithGivenObjects[101X
+  [1X6.14-4 InverseOfMorphismFromCoimageToImageWithGivenObjects[101X
   
-  [33X[1;0Y[29X[2XInverseMorphismFromCoimageToImageWithGivenObjects[102X( [3XC[103X, [3Xalpha[103X, [3XI[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XInverseOfMorphismFromCoimageToImageWithGivenObjects[102X( [3XI[103X, [3Xalpha[103X, [3XC[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(I,C)[123X[133X
   
   [33X[0;0YThe  argument  is  an object [23XC = \mathrm{coim}(\alpha)[123X, a morphism [23X\alpha: A

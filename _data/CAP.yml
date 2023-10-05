@@ -1,5 +1,5 @@
 name: CAP
-version: "2023.10-02"
+version: "2023.10-03"
 license: "GPL-2.0-or-later"
 date: 2023-10-05
 description: |
@@ -42,11 +42,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/CAP/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2023.10-02/CAP-2023.10-02.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2023.10-03/CAP-2023.10-03.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2023.10-02/CAP-2023.10-02.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2023.10-03/CAP-2023.10-03.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/CAP-2023.10-02/CAP-2023.10-02-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/CAP-2023.10-03/CAP-2023.10-03-manual.pdf
 
 abstract: |
     <span class="pkgname">CAP</span> (Categories, Algorithms, Programming) is a package for category theory.
@@ -60,7 +60,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>GPS05</span>]   <b class='BibAuthor'>Gutsche, S., Posur, S. and Skartsæterhagen, Ø.</b>,
      <i class='BibTitle'>CAP, Categories, Algorithms, Programming,
-             Version 2023.10-02</i>
+             Version 2023.10-03</i>
      (<span class='BibYear'>0-05</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/CAP">https://homalg-project.github.io/pkg/CAP</a></span>.
@@ -68,11 +68,11 @@ citeas: |
     
 
 bibtex: |
-    @misc{ CAP2023.10-02,
+    @misc{ CAP2023.10-03,
       author =           {Gutsche,  S.  and  Posur,  S. and Skarts{\ae}terhagen,
                           {\O}.},
       title =            {{CAP},  Categories, Algorithms, Programming, {V}ersion
-                          2023.10-02},
+                          2023.10-03},
       month =            {3-},
       year =             {0-05},
       note =             {GAP package},

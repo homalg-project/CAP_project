@@ -1210,16 +1210,16 @@
   [10XInverseForMorphisms[110X.        [23XF:        (        alpha        )        \mapsto
   \mathtt{InverseForMorphisms}(alpha)[123X.[133X
   
-  [1X7.6-86 AddInverseMorphismFromCoimageToImageWithGivenObjects[101X
+  [1X7.6-86 AddInverseOfMorphismFromCoimageToImageWithGivenObjects[101X
   
-  [33X[1;0Y[29X[2XAddInverseMorphismFromCoimageToImageWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddInverseOfMorphismFromCoimageToImageWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XInverseMorphismFromCoimageToImageWithGivenObjects[110X.   [23XF:  (  C,  alpha,  I  )
-  \mapsto \mathtt{InverseMorphismFromCoimageToImageWithGivenObjects}(C, alpha,
-  I)[123X.[133X
+  [10XInverseOfMorphismFromCoimageToImageWithGivenObjects[110X.  [23XF:  (  I,  alpha,  C )
+  \mapsto      \mathtt{InverseOfMorphismFromCoimageToImageWithGivenObjects}(I,
+  alpha, C)[123X.[133X
   
   [1X7.6-87 AddIsAutomorphism[101X
   
