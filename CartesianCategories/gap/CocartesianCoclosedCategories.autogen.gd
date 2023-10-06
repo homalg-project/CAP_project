@@ -711,3 +711,22 @@ DeclareOperation( "AddUniversalPropertyOfCocartesianDual",
 
 DeclareOperation( "AddUniversalPropertyOfCocartesianDual",
                   [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `UniversalPropertyOfCocartesianDualWithGivenCocartesianDualObject`.
+#! $F: ( t, a, alpha, c ) \mapsto \mathtt{UniversalPropertyOfCocartesianDualWithGivenCocartesianDualObject}(t, a, alpha, c)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddUniversalPropertyOfCocartesianDualWithGivenCocartesianDualObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalPropertyOfCocartesianDualWithGivenCocartesianDualObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalPropertyOfCocartesianDualWithGivenCocartesianDualObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalPropertyOfCocartesianDualWithGivenCocartesianDualObject",
+                  [ IsCapCategory, IsList ] );

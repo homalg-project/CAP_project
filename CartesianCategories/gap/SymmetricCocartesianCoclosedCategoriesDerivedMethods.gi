@@ -151,7 +151,7 @@ AddDerivationToCAP( MorphismFromCocartesianBidualWithGivenCocartesianBidual,
                       [ CocartesianEvaluationForCocartesianDual, 1 ],
                       [ CocartesianBraiding, 1 ],
                       [ CocartesianDualOnObjects, 2 ],
-                      [ UniversalPropertyOfCocartesianDual, 1 ] ],
+                      [ UniversalPropertyOfCocartesianDualWithGivenCocartesianDualObject, 1 ] ],
                     
   function( cat, a, avv )
     local alpha;
@@ -173,7 +173,7 @@ AddDerivationToCAP( MorphismFromCocartesianBidualWithGivenCocartesianBidual,
                   CocartesianEvaluationForCocartesianDual( cat, a ),
                   CocartesianBraiding( cat, CocartesianDualOnObjects( cat, a ), a ) );
                   
-    return UniversalPropertyOfCocartesianDual( cat, a, CocartesianDualOnObjects( cat, a ), alpha );
+    return UniversalPropertyOfCocartesianDualWithGivenCocartesianDualObject( cat, a, CocartesianDualOnObjects( cat, a ), alpha, avv );
     
 end : CategoryFilter := IsCocartesianCoclosedCategory );
 

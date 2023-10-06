@@ -318,6 +318,17 @@ DeclareOperation( "UniversalPropertyOfCartesianDual",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
+#! The arguments are two objects $t,a$,
+#! a morphism $\alpha: t \times a \rightarrow 1$ and
+#! the dual object $d = a^{\vee}$.
+#! The output is the morphism $t \rightarrow a^{\vee}$
+#! given by the universal property of $a^{\vee}$.
+#! @Returns a morphism in $\mathrm{Hom}(t, a^{\vee})$.
+#! @Arguments t, a, alpha, d
+DeclareOperation( "UniversalPropertyOfCartesianDualWithGivenCartesianDualObject",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
 #! The argument is a morphism $\alpha: a \rightarrow b$.
 #! The output is the corresponding morphism $1 \rightarrow \mathrm{Exponential}(a,b)$
 #! under the direct product-exponential adjunction.
