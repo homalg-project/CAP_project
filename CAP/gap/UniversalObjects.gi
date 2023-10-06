@@ -898,50 +898,6 @@ CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
 
 ####################################
 ##
-## Coimage
-##
-####################################
-
-####################################
-## Convenience methods
-####################################
-
-##
-InstallMethod( MorphismFromCoimageToImage,
-               [ IsCapCategoryMorphism ],
-               
-  function( morphism )
-    
-    return MorphismFromCoimageToImageWithGivenObjects( CoimageObject( morphism ), morphism, ImageObject( morphism ) );
-    
-end );
-
-##
-InstallMethod( InverseOfMorphismFromCoimageToImage,
-               [ IsCapCategoryMorphism ],
-               
-  function( morphism )
-    
-    return InverseOfMorphismFromCoimageToImageWithGivenObjects( ImageObject( morphism ), morphism, CoimageObject( morphism ) );
-    
-end );
-
-CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
-  rec(
-    MorphismFromCoimageToImage :=
-      [ [ "MorphismFromCoimageToImageWithGivenObjects", 1 ],
-        [ "CoimageObject", 1 ],
-        [ "ImageObject", 1 ] ],
-    InverseOfMorphismFromCoimageToImage :=
-      [ [ "InverseOfMorphismFromCoimageToImageWithGivenObjects", 1 ],
-        [ "ImageObject", 1 ],
-        [ "CoimageObject", 1 ] ],
-  )
- );
-
-
-####################################
-##
 ## Homology object
 ##
 ####################################

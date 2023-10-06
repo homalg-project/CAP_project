@@ -2104,6 +2104,22 @@ end
     , 201 : IsPrecompiledDerivation := true );
     
     ##
+    AddInverseOfMorphismFromCoimageToImage( cat,
+        
+########
+function ( cat_1, alpha_1 )
+    local morphism_attr_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
+    deduped_4_1 := UnderlyingRing( cat_1 );
+    deduped_3_1 := UnderlyingMatrix( alpha_1 );
+    deduped_2_1 := SyzygiesOfRows( SyzygiesOfColumns( deduped_3_1 ) );
+    morphism_attr_1_1 := UniqueRightDivide( HomalgIdentityMatrix( RowRankOfMatrix( deduped_3_1 ), deduped_4_1 ), UniqueRightDivide( UniqueLeftDivide( BasisOfColumns( deduped_3_1 ), deduped_3_1 ), deduped_2_1 ) * UniqueRightDivide( HomalgIdentityMatrix( NumberRows( deduped_2_1 ), deduped_4_1 ), UniqueRightDivide( BasisOfRows( deduped_3_1 ), deduped_2_1 ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+end
+########
+        
+    , 1811 : IsPrecompiledDerivation := true );
+    
+    ##
     AddInverseOfMorphismFromCoimageToImageWithGivenObjects( cat,
         
 ########
@@ -4033,6 +4049,21 @@ end
 ########
         
     , 100 );
+    
+    ##
+    AddMorphismFromCoimageToImage( cat,
+        
+########
+function ( cat_1, alpha_1 )
+    local morphism_attr_1_1, deduped_2_1, deduped_3_1;
+    deduped_3_1 := UnderlyingMatrix( alpha_1 );
+    deduped_2_1 := SyzygiesOfRows( SyzygiesOfColumns( deduped_3_1 ) );
+    morphism_attr_1_1 := UniqueRightDivide( UniqueLeftDivide( BasisOfColumns( deduped_3_1 ), deduped_3_1 ), deduped_2_1 ) * UniqueRightDivide( HomalgIdentityMatrix( NumberRows( deduped_2_1 ), UnderlyingRing( cat_1 ) ), UniqueRightDivide( BasisOfRows( deduped_3_1 ), deduped_2_1 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+end
+########
+        
+    , 1609 : IsPrecompiledDerivation := true );
     
     ##
     AddMorphismFromCoimageToImageWithGivenObjects( cat,

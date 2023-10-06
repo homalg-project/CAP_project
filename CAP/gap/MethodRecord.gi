@@ -2538,6 +2538,17 @@ UniversalMorphismIntoCoimageWithGivenCoimageObject := rec(
   return_type := "morphism",
   dual_operation := "UniversalMorphismFromImageWithGivenImageObject" ),
 
+MorphismFromCoimageToImage := rec(
+  filter_list := [ "category", "morphism" ],
+  input_arguments_names := [ "cat", "alpha" ],
+  output_source_getter_string := "CoimageObject( cat, alpha )",
+  output_source_getter_preconditions := [ [ "CoimageObject", 1 ] ],
+  output_range_getter_string := "ImageObject( cat, alpha )",
+  output_range_getter_preconditions := [ [ "ImageObject", 1 ] ],
+  with_given_object_position := "both",
+  dual_operation := "MorphismFromCoimageToImage",
+  return_type := "morphism" ),
+
 MorphismFromCoimageToImageWithGivenObjects := rec(
   filter_list := [ "category", "object", "morphism", "object" ],
   input_arguments_names := [ "cat", "C", "alpha", "I" ],
@@ -2547,6 +2558,17 @@ MorphismFromCoimageToImageWithGivenObjects := rec(
   output_range_getter_preconditions := [ ],
   dual_operation := "MorphismFromCoimageToImageWithGivenObjects",
   dual_arguments_reversed := true,
+  return_type := "morphism" ),
+
+InverseOfMorphismFromCoimageToImage := rec(
+  filter_list := [ "category", "morphism" ],
+  input_arguments_names := [ "cat", "alpha" ],
+  output_source_getter_string := "ImageObject( cat, alpha )",
+  output_source_getter_preconditions := [ [ "ImageObject", 1 ] ],
+  output_range_getter_string := "CoimageObject( cat, alpha )",
+  output_range_getter_preconditions := [ [ "CoimageObject", 1 ] ],
+  with_given_object_position := "both",
+  dual_operation := "InverseOfMorphismFromCoimageToImage",
   return_type := "morphism" ),
 
 InverseOfMorphismFromCoimageToImageWithGivenObjects := rec(
