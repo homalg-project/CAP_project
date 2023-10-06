@@ -540,13 +540,15 @@ AddDerivationToCAP( IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom,
                     "IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom using the coclosed coevaluation morphism",
                     [ [ TensorUnit, 1 ],
                       [ PreCompose, 1 ],
-                      [ InternalCoHomOnMorphisms, 1 ],
-                      [ RightUnitorInverse, 1 ],
+                      [ TensorProductOnObjects, 1 ],
+                      [ InternalCoHomOnObjects, 1 ],
+                      [ InternalCoHomOnMorphismsWithGivenInternalCoHoms, 1 ],
+                      [ RightUnitorInverseWithGivenTensorProduct, 1 ],
                       [ IdentityMorphism, 1 ],
-                      [ CoclosedCoevaluationMorphism, 1 ] ],
+                      [ CoclosedCoevaluationMorphismWithGivenSource, 1 ] ],
                     
   function( cat, a, internal_cohom )
-    local unit;
+    local unit, a_x_1, cohom_a1_1;
     
     #     Cohom(a, 1)
     #         |
@@ -559,13 +561,16 @@ AddDerivationToCAP( IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom,
     #         a
     
     unit := TensorUnit( cat );
+    a_x_1 := TensorProductOnObjects( cat, a, unit );
+    cohom_a1_1 := InternalCoHomOnObjects( cat, a_x_1, unit );
     
     return PreCompose( cat,
-                   InternalCoHomOnMorphisms( cat,
-                           RightUnitorInverse( cat, a ),
-                           IdentityMorphism( cat, unit ) ),
-                   
-                   CoclosedCoevaluationMorphism( cat, a, unit ) );
+                       InternalCoHomOnMorphismsWithGivenInternalCoHoms( cat,
+                               internal_cohom,
+                               RightUnitorInverseWithGivenTensorProduct( cat, a, a_x_1 ),
+                               IdentityMorphism( cat, unit ),
+                               cohom_a1_1 ),
+                       CoclosedCoevaluationMorphismWithGivenSource( cat, a, unit, cohom_a1_1 ) );
     
 end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory );
 
@@ -573,7 +578,7 @@ end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory );
 AddDerivationToCAP( IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom,
                     "IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom as the adjoint of the right inverse unitor",
                     [ [ TensorUnit, 1 ],
-                      [ TensorProductToInternalCoHomAdjunctionMap, 1 ],
+                      [ TensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom, 1 ],
                       [ RightUnitorInverse, 1 ] ],
                     
   function( cat, a, internal_cohom )
@@ -582,10 +587,11 @@ AddDerivationToCAP( IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom,
     #
     # Adjoint( (ρ_a)^-1 ) = ( Cohom(a,1) → a )
     
-    return TensorProductToInternalCoHomAdjunctionMap( cat,
+    return TensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom( cat,
                    a,
                    TensorUnit( cat ),
-                   RightUnitorInverse( cat, a ) );
+                   RightUnitorInverse( cat, a ),
+                   internal_cohom );
     
 end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory );
 
@@ -607,11 +613,12 @@ AddDerivationToCAP( IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom,
                     "IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom using the coclosed evaluation morphism",
                     [ [ TensorUnit, 1 ],
                       [ PreCompose, 1 ],
-                      [ CoclosedEvaluationMorphism, 1 ],
-                      [ RightUnitor, 1 ] ],
+                      [ InternalCoHomOnObjects, 1 ],
+                      [ CoclosedEvaluationMorphismWithGivenRange, 1 ],
+                      [ RightUnitorWithGivenTensorProduct, 1 ] ],
                     
   function( cat, a, internal_cohom )
-    
+    local unit, cohom_a1_x_1;
     #       a
     #       |
     #       | coclev_(a,1)
@@ -622,9 +629,12 @@ AddDerivationToCAP( IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom,
     #       v
     #   Cohom(a,1)
     
+    unit := TensorUnit( cat );
+    cohom_a1_x_1 := InternalCoHomOnObjects( cat, internal_cohom, unit );
+    
     return PreCompose( cat,
-                   CoclosedEvaluationMorphism( cat, a, TensorUnit( cat ) ),
-                   RightUnitor( cat, internal_cohom ) );
+                       CoclosedEvaluationMorphismWithGivenRange( cat, a, unit, cohom_a1_x_1 ),
+                       RightUnitorWithGivenTensorProduct( cat, internal_cohom, cohom_a1_x_1 ) );
     
 end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory );
 
