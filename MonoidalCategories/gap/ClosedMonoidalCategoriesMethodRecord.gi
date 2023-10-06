@@ -400,6 +400,18 @@ UniversalPropertyOfDual := rec(
   # Test in ClosedMonoidalCategoriesTest
 ),
 
+UniversalPropertyOfDualWithGivenDualObject:= rec(
+  filter_list := [ "category", "object", "object", "morphism", "object" ],
+  input_arguments_names := [ "cat", "t", "a", "alpha", "d" ],
+  output_source_getter_string := "t",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "d",
+  output_range_getter_preconditions := [ ],
+  return_type := "morphism",
+  dual_operation := "UniversalPropertyOfCoDualWithGivenCoDualObject",
+  dual_arguments_reversed := false,
+),
+
 LambdaIntroduction := rec(
   filter_list := [ "category", "morphism" ],
   return_type := "morphism",
