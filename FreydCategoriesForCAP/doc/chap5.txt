@@ -1256,6 +1256,9 @@
         InjectionOfCofactorOfPushoutWithGivenPushout    for   IsList,   IsInt,
         IsCapCategoryObject[114X)[133X
   
+  [30X    [33X[0;6Y[2XInverseOfMorphismFromCoimageToImage[102X                              ([14XCAP:
+        InverseOfMorphismFromCoimageToImage for IsCapCategoryMorphism[114X)[133X
+  
   [30X    [33X[0;6Y[2XInverseOfMorphismFromCoimageToImageWithGivenObjects[102X              ([14XCAP:
         InverseOfMorphismFromCoimageToImageWithGivenObjects                for
         IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
@@ -1350,6 +1353,9 @@
   [30X    [33X[0;6Y[2XMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject[102X  ([14XCAP:
         MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject    for
         IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XMorphismFromCoimageToImage[102X    ([14XCAP:   MorphismFromCoimageToImage   for
+        IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XMorphismFromCoimageToImageWithGivenObjects[102X                       ([14XCAP:
         MorphismFromCoimageToImageWithGivenObjects   for  IsCapCategoryObject,
