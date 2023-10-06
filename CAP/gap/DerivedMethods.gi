@@ -897,7 +897,7 @@ AddDerivationToCAP( IsDominating,
     
     return IsCodominating( cat, cokernel_projection_2, cokernel_projection_1 );
     
-end );
+end : CategoryFilter := IsAbelianCategory );
 
 ##
 AddDerivationToCAP( IsDominating,
