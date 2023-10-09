@@ -11,11 +11,11 @@
 AddDerivationToCAP( CartesianBraidingInverseWithGivenDirectProducts,
                     "CartesianBraidingInverseWithGivenDirectProducts as the inverse of the braiding",
                     [ [ InverseForMorphisms, 1 ],
-                      [ CartesianBraiding, 1 ] ],
+                      [ CartesianBraidingWithGivenDirectProducts, 1 ] ],
                     
   function( cat, object_2_x_object_1, object_1, object_2, object_1_x_object_2 )
-    ##TODO: Use CartesianBraidingWithGiven
-    return InverseForMorphisms( cat, CartesianBraiding( cat, object_1, object_2 ) );
+    
+    return InverseForMorphisms( cat, CartesianBraidingWithGivenDirectProducts( cat, object_1_x_object_2, object_1, object_2, object_2_x_object_1 ) );
     
 end : CategoryFilter := IsCartesianCategory );
 
@@ -23,10 +23,11 @@ end : CategoryFilter := IsCartesianCategory );
 AddDerivationToCAP( CartesianBraidingWithGivenDirectProducts,
                     "CartesianBraidingWithGivenDirectProducts as the inverse of CartesianBraidingInverse",
                     [ [ InverseForMorphisms, 1 ],
-                      [ CartesianBraidingInverse, 1 ] ],
+                      [ CartesianBraidingInverseWithGivenDirectProducts, 1 ] ],
                     
   function( cat, object_1_x_object_2, object_1, object_2, object_2_x_object_1 )
-    ##TODO: Use CartesianBraidingInverseWithGiven
-    return InverseForMorphisms( cat, CartesianBraidingInverse( cat, object_1, object_2 ) );
+    
+    return InverseForMorphisms( cat, CartesianBraidingInverseWithGivenDirectProducts( cat, object_2_x_object_1, object_1, object_2, object_1_x_object_2 ) );
     
 end : CategoryFilter := IsCartesianCategory );
+
