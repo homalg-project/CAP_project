@@ -859,13 +859,14 @@ end : CategoryFilter := IsCartesianClosedCategory );
 ##
 AddDerivationToCAP( CartesianPostComposeMorphismWithGivenObjects,
                     "CartesianPostComposeMorphismWithGivenObjects using CartesianPreComposeMorphism and braiding",
-                    [ [ CartesianBraiding, 1 ],
+                    [ [ CartesianBraidingWithGivenDirectProducts, 1 ],
                       [ ExponentialOnObjects, 2 ],
                       [ PreCompose, 1 ],
-                      [ CartesianPreComposeMorphism, 1 ] ],
+                      [ DirectProduct, 1],
+                      [ CartesianPreComposeMorphismWithGivenObjects, 1 ] ],
                     
   function( cat, source, a, b, c, range )
-    local braiding;
+    local exp_ab, exp_bc, exp_ab_x_exp_bc, braiding;
 
     # Exp(b,c) × Exp(a,b)
     #          |
@@ -877,22 +878,27 @@ AddDerivationToCAP( CartesianPostComposeMorphismWithGivenObjects,
     #          v
     #       Exp(a,c)
     
-    braiding := CartesianBraiding( cat, ExponentialOnObjects( cat, b, c ), ExponentialOnObjects( cat, a, b ) );
+    exp_ab := ExponentialOnObjects( cat, a, b );
+    exp_bc := ExponentialOnObjects( cat, b, c );
+    exp_ab_x_exp_bc := BinaryDirectProduct( cat, exp_ab, exp_bc );
+
+    braiding := CartesianBraidingWithGivenDirectProducts( cat, source, exp_bc, exp_ab, exp_ab_x_exp_bc );
     
-    return PreCompose( cat, braiding, CartesianPreComposeMorphism( cat, a, b, c ) );
+    return PreCompose( cat, braiding, CartesianPreComposeMorphismWithGivenObjects( cat, exp_ab_x_exp_bc, a, b, c, range ) );
     
 end : CategoryFilter := IsCartesianClosedCategory );
 
 ##
 AddDerivationToCAP( CartesianPreComposeMorphismWithGivenObjects,
                     "CartesianPreComposeMorphismWithGivenObjects using CartesianPostComposeMorphism and braiding",
-                    [ [ CartesianBraiding, 1 ],
+                    [ [ CartesianBraidingWithGivenDirectProducts, 1 ],
                       [ ExponentialOnObjects, 2 ],
                       [ PreCompose, 1 ],
-                      [ CartesianPostComposeMorphism, 1 ] ],
+                      [ DirectProduct, 1],
+                      [ CartesianPostComposeMorphismWithGivenObjects, 1 ] ],
                     
   function( cat, source, a, b, c, range )
-    local braiding;
+    local exp_ab, exp_bc, exp_bc_x_exp_ab, braiding;
 
     # Exp(a,b) × Exp(b,c)
     #          |
@@ -904,9 +910,13 @@ AddDerivationToCAP( CartesianPreComposeMorphismWithGivenObjects,
     #          v
     #       Exp(a,c)
     
-    braiding := CartesianBraiding( cat, ExponentialOnObjects( cat, a, b ), ExponentialOnObjects( cat, b, c ) );
+    exp_ab := ExponentialOnObjects( cat, a, b );
+    exp_bc := ExponentialOnObjects( cat, b, c );
+    exp_bc_x_exp_ab := BinaryDirectProduct( cat, exp_bc, exp_ab );
     
-    return PreCompose( cat, braiding, CartesianPostComposeMorphism( cat, a, b, c ) );
+    braiding := CartesianBraidingWithGivenDirectProducts( cat, source, exp_bc, exp_ab, exp_bc_x_exp_ab );
+    
+    return PreCompose( cat, braiding, CartesianPostComposeMorphismWithGivenObjects( cat, exp_bc_x_exp_ab, a, b, c, range ) );
     
 end : CategoryFilter := IsCartesianClosedCategory );
 

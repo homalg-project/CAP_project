@@ -864,13 +864,14 @@ end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory );
 ##
 AddDerivationToCAP( MonoidalPostCoComposeMorphismWithGivenObjects,
                     "MonoidalPostCoComposeMorphismWithGivenObjects using MonoidalPreCoComposeMorphism and braiding",
-                    [ [ Braiding, 1 ],
+                    [ [ BraidingWithGivenTensorProducts, 1 ],
                       [ InternalCoHomOnObjects, 2 ],
                       [ PreCompose, 1 ],
-                      [ MonoidalPreCoComposeMorphism, 1 ] ],
+                      [ TensorProductOnObjects, 1 ],
+                      [ MonoidalPreCoComposeMorphismWithGivenObjects, 1 ] ],
                     
   function( cat, source, a, b, c, range )
-    local braiding;
+    local cohom_ab, cohom_bc, cohom_bc_x_cohom_ab, braiding;
     
     #       Cohom(a,c)
     #            |
@@ -882,22 +883,27 @@ AddDerivationToCAP( MonoidalPostCoComposeMorphismWithGivenObjects,
     #            v
     # Cohom(a,b) ⊗ Cohom(b,c)
     
-    braiding := Braiding( cat, InternalCoHomOnObjects( cat, b, c ), InternalCoHomOnObjects( cat, a, b ) );
+    cohom_ab := InternalCoHomOnObjects( cat, a, b );
+    cohom_bc := InternalCoHomOnObjects( cat, b, c );
+    cohom_bc_x_cohom_ab := TensorProductOnObjects( cat, cohom_bc, cohom_ab );
     
-    return PreCompose( cat, MonoidalPreCoComposeMorphism( cat, a, b, c ), braiding );
+    braiding := BraidingWithGivenTensorProducts( cat, cohom_bc_x_cohom_ab, cohom_bc, cohom_ab, range );
+    
+    return PreCompose( cat, MonoidalPreCoComposeMorphismWithGivenObjects( cat, source, a, b, c, cohom_bc_x_cohom_ab ), braiding );
     
 end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory );
 
 ##
 AddDerivationToCAP( MonoidalPreCoComposeMorphismWithGivenObjects,
                     "MonoidalPreCoComposeMorphismWithGivenObjects using MonoidalPostCoComposeMorphism and braiding",
-                    [ [ Braiding, 1 ],
+                    [ [ BraidingWithGivenTensorProducts, 1 ],
                       [ InternalCoHomOnObjects, 2 ],
                       [ PreCompose, 1 ],
-                      [ MonoidalPostCoComposeMorphism, 1 ] ],
+                      [ TensorProductOnObjects, 1 ],
+                      [ MonoidalPostCoComposeMorphismWithGivenObjects, 1 ] ],
                     
   function( cat, source, a, b, c, range )
-    local braiding;
+    local cohom_ab, cohom_bc, cohom_ab_x_cohom_bc, braiding;
     
     #       Cohom(a,c)
     #            |
@@ -908,10 +914,14 @@ AddDerivationToCAP( MonoidalPreCoComposeMorphismWithGivenObjects,
     #            | B_( Cohom(a,b), Cohom(b,c) )
     #            v
     # Cohom(b,c) ⊗ Cohom(a,b)
-
-    braiding := Braiding( cat, InternalCoHomOnObjects( cat, a, b ), InternalCoHomOnObjects( cat, b, c ) );
     
-    return PreCompose( cat, MonoidalPostCoComposeMorphism( cat, a, b, c ), braiding );
+    cohom_ab := InternalCoHomOnObjects( cat, a, b );
+    cohom_bc := InternalCoHomOnObjects( cat, b, c );
+    cohom_ab_x_cohom_bc := TensorProductOnObjects( cat, cohom_ab, cohom_bc );
+    
+    braiding := BraidingWithGivenTensorProducts( cat, cohom_ab_x_cohom_bc, cohom_ab, cohom_bc, range );
+    
+    return PreCompose( cat, MonoidalPostCoComposeMorphismWithGivenObjects( cat, source, a, b, c, cohom_ab_x_cohom_bc ), braiding );
     
 end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory );
 

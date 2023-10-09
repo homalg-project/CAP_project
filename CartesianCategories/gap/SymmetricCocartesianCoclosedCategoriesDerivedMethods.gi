@@ -867,13 +867,14 @@ end : CategoryFilter := IsCocartesianCoclosedCategory );
 ##
 AddDerivationToCAP( CocartesianPostCoComposeMorphismWithGivenObjects,
                     "CocartesianPostCoComposeMorphismWithGivenObjects using CocartesianPreCoComposeMorphism and braiding",
-                    [ [ CocartesianBraiding, 1 ],
+                    [ [ CocartesianBraidingWithGivenCoproducts, 1 ],
                       [ CoexponentialOnObjects, 2 ],
                       [ PreCompose, 1 ],
-                      [ CocartesianPreCoComposeMorphism, 1 ] ],
+                      [ Coproduct, 1 ],
+                      [ CocartesianPreCoComposeMorphismWithGivenObjects, 1 ] ],
                     
   function( cat, source, a, b, c, range )
-    local braiding;
+    local coexp_ab, coexp_bc, coexp_bc_x_coexp_ab, braiding;
     
     #       Coexp(a,c)
     #            |
@@ -885,22 +886,27 @@ AddDerivationToCAP( CocartesianPostCoComposeMorphismWithGivenObjects,
     #            v
     # Coexp(a,b) ⊔ Coexp(b,c)
     
-    braiding := CocartesianBraiding( cat, CoexponentialOnObjects( cat, b, c ), CoexponentialOnObjects( cat, a, b ) );
+    coexp_ab := CoexponentialOnObjects( cat, a, b );
+    coexp_bc := CoexponentialOnObjects( cat, b, c );
+    coexp_bc_x_coexp_ab := BinaryCoproduct( cat, coexp_bc, coexp_ab );
     
-    return PreCompose( cat, CocartesianPreCoComposeMorphism( cat, a, b, c ), braiding );
+    braiding := CocartesianBraidingWithGivenCoproducts( cat, coexp_bc_x_coexp_ab, coexp_bc, coexp_ab, range );
+    
+    return PreCompose( cat, CocartesianPreCoComposeMorphismWithGivenObjects( cat, source, a, b, c, coexp_bc_x_coexp_ab ), braiding );
     
 end : CategoryFilter := IsCocartesianCoclosedCategory );
 
 ##
 AddDerivationToCAP( CocartesianPreCoComposeMorphismWithGivenObjects,
                     "CocartesianPreCoComposeMorphismWithGivenObjects using CocartesianPostCoComposeMorphism and braiding",
-                    [ [ CocartesianBraiding, 1 ],
+                    [ [ CocartesianBraidingWithGivenCoproducts, 1 ],
                       [ CoexponentialOnObjects, 2 ],
                       [ PreCompose, 1 ],
-                      [ CocartesianPostCoComposeMorphism, 1 ] ],
+                      [ Coproduct, 1 ],
+                      [ CocartesianPostCoComposeMorphismWithGivenObjects, 1 ] ],
                     
   function( cat, source, a, b, c, range )
-    local braiding;
+    local coexp_ab, coexp_bc, coexp_ab_x_coexp_bc, braiding;
     
     #       Coexp(a,c)
     #            |
@@ -911,10 +917,14 @@ AddDerivationToCAP( CocartesianPreCoComposeMorphismWithGivenObjects,
     #            | B_( Coexp(a,b), Coexp(b,c) )
     #            v
     # Coexp(b,c) ⊔ Coexp(a,b)
-
-    braiding := CocartesianBraiding( cat, CoexponentialOnObjects( cat, a, b ), CoexponentialOnObjects( cat, b, c ) );
     
-    return PreCompose( cat, CocartesianPostCoComposeMorphism( cat, a, b, c ), braiding );
+    coexp_ab := CoexponentialOnObjects( cat, a, b );
+    coexp_bc := CoexponentialOnObjects( cat, b, c );
+    coexp_ab_x_coexp_bc := BinaryCoproduct( cat, coexp_ab, coexp_bc );
+    
+    braiding := CocartesianBraidingWithGivenCoproducts( cat, coexp_ab_x_coexp_bc, coexp_ab, coexp_bc, range );
+    
+    return PreCompose( cat, CocartesianPostCoComposeMorphismWithGivenObjects( cat, source, a, b, c, coexp_ab_x_coexp_bc ), braiding );
     
 end : CategoryFilter := IsCocartesianCoclosedCategory );
 
