@@ -1547,11 +1547,12 @@ end : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.su
 AddDerivationToCAP( HomologyObjectFunctorialWithGivenHomologyObjects,
                     "HomologyObjectFunctorialWithGivenHomologyObjects using functoriality of (co)kernels and images in abelian categories",
                     [ [ ImageEmbedding, 2 ],
-                      [ PreCompose, 5 ],
+                      [ PreCompose, 3 ],
                       [ KernelEmbedding, 2 ],
                       [ CokernelProjection, 2 ],
                       [ CokernelObjectFunctorial, 1 ],
                       [ LiftAlongMonomorphism, 1 ],
+                      [ PreComposeList, 1 ],
                       [ IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject, 1 ],
                       [ IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject, 1 ] ],
                     
@@ -1583,12 +1584,14 @@ AddDerivationToCAP( HomologyObjectFunctorialWithGivenHomologyObjects,
         image_emb_range, PreCompose( cat, image_emb_source, cok_functorial )
       );
     
-    return PreCompose( cat,
-        IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject( cat, alpha, beta ),
-        PreCompose( cat,
+    return PreComposeList( cat,
+        homology_source,
+        [
+            IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject( cat, alpha, beta ),
             functorial_mor,
-            IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject( cat, gamma, delta )
-        )
+            IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject( cat, gamma, delta ),
+        ],
+        homology_range
     );
     
 end : CategoryFilter := IsAbelianCategory );

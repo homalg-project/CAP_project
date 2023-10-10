@@ -1464,15 +1464,14 @@ end
         
 ########
 function ( cat_1, H_1_1, L_1, H_2_1 )
-    local morphism_attr_1_1, deduped_2_1, deduped_3_1;
-    deduped_3_1 := SyzygiesOfColumns( UnderlyingMatrix( L_1[4] ) );
-    deduped_2_1 := SyzygiesOfColumns( UnderlyingMatrix( L_1[1] ) );
-    morphism_attr_1_1 := UniqueRightDivide( BasisOfRows( SyzygiesOfRows( UnderlyingMatrix( L_1[2] ) ) * deduped_2_1 ) * UniqueLeftDivide( deduped_2_1, (UnderlyingMatrix( L_1[3] ) * deduped_3_1) ), BasisOfRows( SyzygiesOfRows( UnderlyingMatrix( L_1[5] ) ) * deduped_3_1 ) );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+    local deduped_1_1, deduped_2_1;
+    deduped_2_1 := SyzygiesOfColumns( UnderlyingMatrix( L_1[4] ) );
+    deduped_1_1 := SyzygiesOfColumns( UnderlyingMatrix( L_1[1] ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, H_1_1, H_2_1, UnderlyingMatrix, UniqueRightDivide( BasisOfRows( SyzygiesOfRows( UnderlyingMatrix( L_1[2] ) ) * deduped_1_1 ) * UniqueLeftDivide( deduped_1_1, (UnderlyingMatrix( L_1[3] ) * deduped_2_1) ), BasisOfRows( SyzygiesOfRows( UnderlyingMatrix( L_1[5] ) ) * deduped_2_1 ) ) );
 end
 ########
         
-    , 3011 : IsPrecompiledDerivation := true );
+    , 3212 : IsPrecompiledDerivation := true );
     
     ##
     AddHomomorphismStructureOnMorphisms( cat,

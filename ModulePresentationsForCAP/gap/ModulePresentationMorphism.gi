@@ -15,51 +15,87 @@ InstallMethod( PresentationMorphism,
                [ IsLeftOrRightPresentation, IsHomalgMatrix, IsLeftOrRightPresentation ],
                
   function( source, matrix, range )
-    local category, left;
     
-    category := CapCategory( source );
+    return PresentationMorphism( CapCategory( source ), source, matrix, range );
     
-    left := IsLeftPresentation( source );
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( PresentationMorphism,
+                                     [ IsCategoryOfLeftPresentations, IsLeftPresentation, IsHomalgMatrix, IsLeftPresentation ],
+                                     
+  function( category, source, matrix, range )
     
-    if not IsCapCategory( source ) = IsCapCategory( range ) then
+    if not IsIdenticalObj( CapCategory( source ), category ) then
         
-        Error( "source and range must lie in the same category" );
+        Error( "<source> does not lie in <category>" );
         
     fi;
     
-    if not IsIdenticalObj( UnderlyingHomalgRing( source ), HomalgRing( matrix ) ) then
+    if not IsIdenticalObj( CapCategory( range ), category ) then
+        
+        Error( "<range> does not lie in <category>" );
+        
+    fi;
+    
+    if not IsIdenticalObj( UnderlyingRing( category ), HomalgRing( matrix ) ) then
         
         Error( "matrix can not present a morphism between these objects" );
         
     fi;
     
-    if left then
+    if NrRows( matrix ) <> NrColumns( UnderlyingMatrix( source ) ) then
         
-        if NrRows( matrix ) <> NrColumns( UnderlyingMatrix( source ) ) then
-            
-            Error( "the number of rows of the given matrix is incorrect" );
-            
-        fi;
+        Error( "the number of rows of the given matrix is incorrect" );
         
-        if NrColumns( matrix ) <> NrColumns( UnderlyingMatrix( range ) ) then
-            
-            Error( "the number of columns of the given matrix is incorrect" );
-            
-        fi;
+    fi;
+    
+    if NrColumns( matrix ) <> NrColumns( UnderlyingMatrix( range ) ) then
         
-    else
+        Error( "the number of columns of the given matrix is incorrect" );
         
-        if NrColumns( matrix ) <> NrRows( UnderlyingMatrix( source ) ) then
-            
-            Error( "the number of columns of the given matrix is incorrect" );
-            
-        fi;
+    fi;
+    
+    return CreateCapCategoryMorphismWithAttributes( category,
+                             source,
+                             range,
+                             UnderlyingMatrix, matrix );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( PresentationMorphism,
+                                     [ IsCategoryOfRightPresentations, IsRightPresentation, IsHomalgMatrix, IsRightPresentation ],
+                                     
+  function( category, source, matrix, range )
+    
+    if not IsIdenticalObj( CapCategory( source ), category ) then
         
-        if NrRows( matrix ) <> NrRows( UnderlyingMatrix( range ) ) then
-            
-            Error( "the number of rows of the given matrix is incorrect" );
-            
-        fi;
+        Error( "<source> does not lie in <category>" );
+        
+    fi;
+    
+    if not IsIdenticalObj( CapCategory( range ), category ) then
+        
+        Error( "<range> does not lie in <category>" );
+        
+    fi;
+    
+    if not IsIdenticalObj( UnderlyingRing( category ), HomalgRing( matrix ) ) then
+        
+        Error( "matrix can not present a morphism between these objects" );
+        
+    fi;
+    
+    if NrColumns( matrix ) <> NrRows( UnderlyingMatrix( source ) ) then
+        
+        Error( "the number of columns of the given matrix is incorrect" );
+        
+    fi;
+    
+    if NrRows( matrix ) <> NrRows( UnderlyingMatrix( range ) ) then
+        
+        Error( "the number of rows of the given matrix is incorrect" );
         
     fi;
     

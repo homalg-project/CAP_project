@@ -53,6 +53,8 @@ DeclareAttribute( "RightPresentations",
 DeclareAttribute( "UnderlyingRing",
                   IsCategoryOfLeftOrRightPresentations );
 
+CapJitAddTypeSignature( "UnderlyingRing", [ IsCategoryOfLeftOrRightPresentations ], IsHomalgRing );
+
 ##############################################
 ##
 ## Add methods
