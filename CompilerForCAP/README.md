@@ -9,8 +9,8 @@
 
 <!-- END HEADER -->
 
-Using the notions of category theory initially comes with a measurable performance overhead when implementing algorithms on a computer.
-The main reason for this is the excessive amount of superfluous wrapping and unwrapping occurring during complex computations once we use several category constructors.
+Using the notions of category theory initially comes with a measurable performance overhead when implementing algorithms in CAP.
+The most obvious reason for this is the excessive amount of superfluous boxing and unboxing occurring during complex computations once we use several category constructors.
 As an example, consider the category
 
 <p align="center">
@@ -23,13 +23,13 @@ We can visualize a computation in this category consisting of three operations a
 
 <img src="img/example_computation.svg" width="80%">
 
-We start with an input in the top category and first have to successively unwrap it to get the defining data in the ring where the actual computation is done.
-When this computation is finished, the result is successively wrapped again so we can interpret it in the top category, producing the first intermediate result.
-Now this intermediate result has to be immediately unwrapped again to perform the computations for the second operation, and the result of these computations is wrapped again producing the second intermediate result.
+We start with an input in the top category and first have to successively unbox it to get the defining data in the ring where the actual computation is done.
+When this computation is finished, the result is successively boxed again so we can interpret it in the top category, producing the first intermediate result.
+Now this intermediate result has to be immediately unboxed again to perform the computations for the second operation, and the result of these computations is boxed again producing the second intermediate result.
 This process is repeated once more to get the final result.
 
-`CompilerForCAP` was started to avoid repeatedly wrapping and then subsequently unwrapping the same data during a computation.
-It rewrites code so objects and morphisms in the input only have to be unwrapped once at the beginning of a computation and wrapped again once the computation is finished:
+`CompilerForCAP` was started to avoid repeatedly boxing and then subsequently unboxing the same data during a computation.
+It rewrites code so objects and morphisms in the input only have to be unboxed once at the beginning of a computation and boxed again once the computation is finished:
 
 <img src="img/compilation_process.svg" width="100%">
 
