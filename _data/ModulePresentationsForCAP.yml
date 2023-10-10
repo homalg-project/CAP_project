@@ -1,7 +1,7 @@
 name: ModulePresentationsForCAP
-version: "2023.09-01"
+version: "2023.10-01"
 license: "GPL-2.0-or-later"
-date: 2023-09-01
+date: 2023-10-10
 description: |
     Category R-pres for CAP
 
@@ -44,11 +44,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/ModulePresentationsFor
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2023.09-01/ModulePresentationsForCAP-2023.09-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2023.10-01/ModulePresentationsForCAP-2023.10-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2023.09-01/ModulePresentationsForCAP-2023.09-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2023.10-01/ModulePresentationsForCAP-2023.10-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2023.09-01/ModulePresentationsForCAP-2023.09-01-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2023.10-01/ModulePresentationsForCAP-2023.10-01-manual.pdf
 
 abstract: |
     <span class="pkgname">ModulePresentationsForCAP</span> provides the category of finitely presented modules over a computable ring.
@@ -58,28 +58,28 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>GP01</span>]   <b class='BibAuthor'>Gutsche, S. and Posur, S.</b>,
+    [<span class='BibKey'>GP10</span>]   <b class='BibAuthor'>Gutsche, S. and Posur, S.</b>,
      <i class='BibTitle'>ModulePresentationsForCAP, Category R-pres for CAP,
-             Version 2023.09-01</i>
-     (<span class='BibYear'>9-01</span>)<br />
+             Version 2023.10-01</i>
+     (<span class='BibYear'>0-10</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/ModulePresentationsForCAP">https://homalg-project.github.io/pkg/ModulePresentationsForCAP</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ ModulePresentationsForCAP2023.09-01,
+    @misc{ ModulePresentationsForCAP2023.10-01,
       author =           {Gutsche, S. and Posur, S.},
       title =            {{ModulePresentationsForCAP},  Category R-pres for CAP,
-                          {V}ersion 2023.09-01},
+                          {V}ersion 2023.10-01},
       month =            {3-},
-      year =             {9-01},
+      year =             {0-10},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/ModulePresentationsForCAP}
                           {\texttt{https://homalg-project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{ModulePresentationsForCAP}}},
-      printedkey =       {GP01}
+      printedkey =       {GP10}
     }
 

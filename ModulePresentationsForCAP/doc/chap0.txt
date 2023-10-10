@@ -6,10 +6,10 @@
                            [1X Category R-pres for CAP [101X
   
   
-                                   2023.09-01
+                                   2023.10-01
   
   
-                                1 September 2023
+                                10 October 2023
   
   
                                Sebastian Gutsche
@@ -69,16 +69,15 @@
       1.3-3 AsMorphismBetweenFreeRightPresentations
       1.3-4 AsLeftPresentation
       1.3-5 AsRightPresentation
-      1.3-6 AsLeftOrRightPresentation
-      1.3-7 FreeLeftPresentation
-      1.3-8 FreeRightPresentation
-      1.3-9 UnderlyingMatrix
-      1.3-10 UnderlyingHomalgRing
-      1.3-11 Annihilator
-      1.3-12 LeftPresentationsAsFreydCategoryOfCategoryOfRows
-      1.3-13 RightPresentationsAsFreydCategoryOfCategoryOfColumns
-      1.3-14 LeftPresentations
-      1.3-15 RightPresentations
+      1.3-6 FreeLeftPresentation
+      1.3-7 FreeRightPresentation
+      1.3-8 UnderlyingMatrix
+      1.3-9 UnderlyingHomalgRing
+      1.3-10 Annihilator
+      1.3-11 LeftPresentationsAsFreydCategoryOfCategoryOfRows
+      1.3-12 RightPresentationsAsFreydCategoryOfCategoryOfColumns
+      1.3-13 LeftPresentations
+      1.3-14 RightPresentations
     1.4 [33X[0;0YAttributes[133X
       1.4-1 UnderlyingHomalgRing
       1.4-2 UnderlyingMatrix

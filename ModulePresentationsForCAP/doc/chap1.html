@@ -54,16 +54,15 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7F1AD55C852BE617">1.3-3 AsMorphismBetweenFreeRightPresentations</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7BE01A1381744627">1.3-4 AsLeftPresentation</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X780443B07F43AA1C">1.3-5 AsRightPresentation</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X815FF28D8474BEEB">1.3-6 AsLeftOrRightPresentation</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7F345A2A87ABE417">1.3-7 FreeLeftPresentation</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X85536E4E85D15252">1.3-8 FreeRightPresentation</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X86F926B27C579E66">1.3-9 UnderlyingMatrix</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7D8E30E486A08439">1.3-10 UnderlyingHomalgRing</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7B5539AB8541F618">1.3-11 Annihilator</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7F774C0C79A838C2">1.3-12 LeftPresentationsAsFreydCategoryOfCategoryOfRows</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8147CE4979AE5346">1.3-13 RightPresentationsAsFreydCategoryOfCategoryOfColumns</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X87946F997AD1005A">1.3-14 LeftPresentations</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7BDF988F7FFEAB8C">1.3-15 RightPresentations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7F345A2A87ABE417">1.3-6 FreeLeftPresentation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X85536E4E85D15252">1.3-7 FreeRightPresentation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X86F926B27C579E66">1.3-8 UnderlyingMatrix</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7D8E30E486A08439">1.3-9 UnderlyingHomalgRing</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7B5539AB8541F618">1.3-10 Annihilator</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7F774C0C79A838C2">1.3-11 LeftPresentationsAsFreydCategoryOfCategoryOfRows</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8147CE4979AE5346">1.3-12 RightPresentationsAsFreydCategoryOfCategoryOfColumns</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X87946F997AD1005A">1.3-13 LeftPresentations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7BDF988F7FFEAB8C">1.3-14 RightPresentations</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7C701DBF7BAE649A">1.4 <span class="Heading">Attributes</span></a>
 </span>
@@ -294,18 +293,9 @@
 
 <p>The argument is a homalg matrix <span class="Math">M</span> over a ring <span class="Math">R</span>. The output is an object in the category of right presentations over <span class="Math">R</span>. This object has <span class="Math">M</span> as its underlying matrix.</p>
 
-<p><a id="X815FF28D8474BEEB" name="X815FF28D8474BEEB"></a></p>
-
-<h5>1.3-6 AsLeftOrRightPresentation</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsLeftOrRightPresentation</code>( <var class="Arg">M</var>, <var class="Arg">l</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Returns: an object</p>
-
-<p>The arguments are a homalg matrix <span class="Math">M</span> and a boolean <span class="Math">l</span>. If <span class="Math">l</span> is <code class="code">true</code>, the output is an object in the category of left presentations. If <span class="Math">l</span> is <code class="code">false</code>, the output is an object in the category of right presentations. In both cases, the underlying matrix of the result is <span class="Math">M</span>.</p>
-
 <p><a id="X7F345A2A87ABE417" name="X7F345A2A87ABE417"></a></p>
 
-<h5>1.3-7 FreeLeftPresentation</h5>
+<h5>1.3-6 FreeLeftPresentation</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FreeLeftPresentation</code>( <var class="Arg">r</var>, <var class="Arg">R</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: an object</p>
@@ -314,7 +304,7 @@
 
 <p><a id="X85536E4E85D15252" name="X85536E4E85D15252"></a></p>
 
-<h5>1.3-8 FreeRightPresentation</h5>
+<h5>1.3-7 FreeRightPresentation</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FreeRightPresentation</code>( <var class="Arg">r</var>, <var class="Arg">R</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: an object</p>
@@ -323,7 +313,7 @@
 
 <p><a id="X86F926B27C579E66" name="X86F926B27C579E66"></a></p>
 
-<h5>1.3-9 UnderlyingMatrix</h5>
+<h5>1.3-8 UnderlyingMatrix</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingMatrix</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a homalg matrix</p>
@@ -332,7 +322,7 @@
 
 <p><a id="X7D8E30E486A08439" name="X7D8E30E486A08439"></a></p>
 
-<h5>1.3-10 UnderlyingHomalgRing</h5>
+<h5>1.3-9 UnderlyingHomalgRing</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingHomalgRing</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a homalg ring</p>
@@ -341,7 +331,7 @@
 
 <p><a id="X7B5539AB8541F618" name="X7B5539AB8541F618"></a></p>
 
-<h5>1.3-11 Annihilator</h5>
+<h5>1.3-10 Annihilator</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Annihilator</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(I, F)</span></p>
@@ -350,7 +340,7 @@
 
 <p><a id="X7F774C0C79A838C2" name="X7F774C0C79A838C2"></a></p>
 
-<h5>1.3-12 LeftPresentationsAsFreydCategoryOfCategoryOfRows</h5>
+<h5>1.3-11 LeftPresentationsAsFreydCategoryOfCategoryOfRows</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftPresentationsAsFreydCategoryOfCategoryOfRows</code>( <var class="Arg">R</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a category</p>
@@ -359,7 +349,7 @@
 
 <p><a id="X8147CE4979AE5346" name="X8147CE4979AE5346"></a></p>
 
-<h5>1.3-13 RightPresentationsAsFreydCategoryOfCategoryOfColumns</h5>
+<h5>1.3-12 RightPresentationsAsFreydCategoryOfCategoryOfColumns</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightPresentationsAsFreydCategoryOfCategoryOfColumns</code>( <var class="Arg">R</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a category</p>
@@ -368,7 +358,7 @@
 
 <p><a id="X87946F997AD1005A" name="X87946F997AD1005A"></a></p>
 
-<h5>1.3-14 LeftPresentations</h5>
+<h5>1.3-13 LeftPresentations</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftPresentations</code>( <var class="Arg">R</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a category</p>
@@ -377,7 +367,7 @@
 
 <p><a id="X7BDF988F7FFEAB8C" name="X7BDF988F7FFEAB8C"></a></p>
 
-<h5>1.3-15 RightPresentations</h5>
+<h5>1.3-14 RightPresentations</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightPresentations</code>( <var class="Arg">R</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a category</p>

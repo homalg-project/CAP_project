@@ -187,17 +187,7 @@
   the  category  of  right  presentations  over  [23XR[123X.  This  object has [23XM[123X as its
   underlying matrix.[133X
   
-  [1X1.3-6 AsLeftOrRightPresentation[101X
-  
-  [33X[1;0Y[29X[2XAsLeftOrRightPresentation[102X( [3XM[103X, [3Xl[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Yan object[133X
-  
-  [33X[0;0YThe  arguments  are  a  homalg  matrix  [23XM[123X and a boolean [23Xl[123X. If [23Xl[123X is [10Xtrue[110X, the
-  output  is  an  object in the category of left presentations. If [23Xl[123X is [10Xfalse[110X,
-  the  output  is  an  object  in the category of right presentations. In both
-  cases, the underlying matrix of the result is [23XM[123X.[133X
-  
-  [1X1.3-7 FreeLeftPresentation[101X
+  [1X1.3-6 FreeLeftPresentation[101X
   
   [33X[1;0Y[29X[2XFreeLeftPresentation[102X( [3Xr[103X, [3XR[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -206,7 +196,7 @@
   is an object in the category of left presentations over [23XR[123X. It is represented
   by the [23X0 \times r[123X matrix and thus it is free of rank [23Xr[123X.[133X
   
-  [1X1.3-8 FreeRightPresentation[101X
+  [1X1.3-7 FreeRightPresentation[101X
   
   [33X[1;0Y[29X[2XFreeRightPresentation[102X( [3Xr[103X, [3XR[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -215,7 +205,7 @@
   is  an  object  in  the  category  of  right  presentations  over  [23XR[123X.  It is
   represented by the [23Xr \times 0[123X matrix and thus it is free of rank [23Xr[123X.[133X
   
-  [1X1.3-9 UnderlyingMatrix[101X
+  [1X1.3-8 UnderlyingMatrix[101X
   
   [33X[1;0Y[29X[2XUnderlyingMatrix[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya homalg matrix[133X
@@ -223,7 +213,7 @@
   [33X[0;0YThe  argument  is an object [23XA[123X in the category of left or right presentations
   over a homalg ring [23XR[123X. The output is the underlying matrix which presents [23XA[123X.[133X
   
-  [1X1.3-10 UnderlyingHomalgRing[101X
+  [1X1.3-9 UnderlyingHomalgRing[101X
   
   [33X[1;0Y[29X[2XUnderlyingHomalgRing[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya homalg ring[133X
@@ -231,7 +221,7 @@
   [33X[0;0YThe  argument  is an object [23XA[123X in the category of left or right presentations
   over a homalg ring [23XR[123X. The output is [23XR[123X.[133X
   
-  [1X1.3-11 Annihilator[101X
+  [1X1.3-10 Annihilator[101X
   
   [33X[1;0Y[29X[2XAnnihilator[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(I, F)[123X[133X
@@ -241,7 +231,7 @@
   of  rank [23X1[123X. In particular, the annihilator itself is seen as a left or right
   presentation.[133X
   
-  [1X1.3-12 LeftPresentationsAsFreydCategoryOfCategoryOfRows[101X
+  [1X1.3-11 LeftPresentationsAsFreydCategoryOfCategoryOfRows[101X
   
   [33X[1;0Y[29X[2XLeftPresentationsAsFreydCategoryOfCategoryOfRows[102X( [3XR[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya category[133X
@@ -251,7 +241,7 @@
   [10XCategoryOfRows[110X  of [3XR[103X. Only available if the package [10XFreydCategoriesForCAP[110X is
   available.[133X
   
-  [1X1.3-13 RightPresentationsAsFreydCategoryOfCategoryOfColumns[101X
+  [1X1.3-12 RightPresentationsAsFreydCategoryOfCategoryOfColumns[101X
   
   [33X[1;0Y[29X[2XRightPresentationsAsFreydCategoryOfCategoryOfColumns[102X( [3XR[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya category[133X
@@ -261,7 +251,7 @@
   [10XCategoryOfColumns[110X  of [3XR[103X. Only available if the package [10XFreydCategoriesForCAP[110X
   is available.[133X
   
-  [1X1.3-14 LeftPresentations[101X
+  [1X1.3-13 LeftPresentations[101X
   
   [33X[1;0Y[29X[2XLeftPresentations[102X( [3XR[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya category[133X
@@ -269,7 +259,7 @@
   [33X[0;0YThe  argument  is  a  homalg  ring  [23XR[123X.  The  output  is the category of left
   presentations over [23XR[123X.[133X
   
-  [1X1.3-15 RightPresentations[101X
+  [1X1.3-14 RightPresentations[101X
   
   [33X[1;0Y[29X[2XRightPresentations[102X( [3XR[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya category[133X
