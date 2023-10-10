@@ -57,17 +57,6 @@ DeclareOperation( "AsRightPresentation",
                   [ IsHomalgMatrix ] );
 
 #! @Description
-#! The arguments are a homalg matrix $M$ and a boolean $l$.
-#! If $l$ is <C>true</C>, the output is an object in the category
-#! of left presentations.
-#! If $l$ is <C>false</C>, the output is an object in the category
-#! of right presentations.
-#! In both cases, the underlying matrix of the result is $M$.
-#! @Returns an object
-#! @Arguments M, l
-DeclareGlobalFunction( "AsLeftOrRightPresentation" );
-
-#! @Description
 #! The arguments are a non-negative integer $r$
 #! and a homalg ring $R$.
 #! The output is an object in the category of left presentations

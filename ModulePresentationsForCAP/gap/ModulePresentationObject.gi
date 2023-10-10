@@ -10,23 +10,6 @@
 ##
 #############################
 
-InstallGlobalFunction( AsLeftOrRightPresentation,
-               
-  function( matrix, left )
-    local ring, presentation_category;
-    
-    ring := HomalgRing( matrix );
-    
-    if left = true then
-        presentation_category := LeftPresentations( ring );
-    else
-        presentation_category := RightPresentations( ring );
-    fi;
-    
-    return CreateCapCategoryObjectWithAttributes( presentation_category, UnderlyingMatrix, matrix );
-    
-end );
-
 ##
 InstallMethod( UnderlyingHomalgRing,
                [ IsLeftOrRightPresentation ],
@@ -37,13 +20,41 @@ InstallMethod( UnderlyingHomalgRing,
 InstallMethod( AsLeftPresentation,
                [ IsHomalgMatrix ],
                
-  matrix -> AsLeftOrRightPresentation( matrix, true ) );
+  function ( matrix )
+    
+    return AsLeftPresentation( LeftPresentations( HomalgRing( matrix ) ), matrix );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( AsLeftPresentation,
+                                     [ IsCategoryOfLeftPresentations, IsHomalgMatrix ],
+                                     
+  function( cat, matrix )
+    
+    return CreateCapCategoryObjectWithAttributes( cat, UnderlyingMatrix, matrix );
+    
+end );
 
 ##
 InstallMethod( AsRightPresentation,
                [ IsHomalgMatrix ],
                
-  matrix -> AsLeftOrRightPresentation( matrix, false ) );
+  function ( matrix )
+    
+    return AsRightPresentation( RightPresentations( HomalgRing( matrix ) ), matrix );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( AsRightPresentation,
+                                     [ IsCategoryOfRightPresentations, IsHomalgMatrix ],
+                                     
+  function( cat, matrix )
+    
+    return CreateCapCategoryObjectWithAttributes( cat, UnderlyingMatrix, matrix );
+    
+end );
 
 ##
 InstallMethod( FreeLeftPresentation,
