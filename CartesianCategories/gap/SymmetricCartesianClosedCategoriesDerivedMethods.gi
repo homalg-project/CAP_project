@@ -95,6 +95,37 @@ AddDerivationToCAP( ExponentialToDirectProductAdjunctionMap,
 end : CategoryFilter := IsCartesianClosedCategory );
 
 ##
+AddDerivationToCAP( ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct,
+                    "ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct using DirectProductOnMorphisms and CartesianEvaluationMorphism",
+                    [ [ PreCompose, 1 ],
+                      [ DirectProductOnMorphismsWithGivenDirectProducts, 1 ],
+                      [ IdentityMorphism, 1 ],
+                      [ CartesianEvaluationMorphism, 1 ] ],
+                    
+  function( cat, b, c, g, t )
+    local ev_bc;
+    
+    # g: a → Exp(b,c)
+    #
+    #    a × b
+    #      |
+    #      | g × id_b
+    #      v
+    # Exp(b,c) × b
+    #      |
+    #      | ev_bc
+    #      v
+    #      c
+     
+    ev_bc := CartesianEvaluationMorphism( cat, b, c );
+     
+    return PreCompose( cat,
+             DirectProductOnMorphismsWithGivenDirectProducts( cat, t, g, IdentityMorphism( cat, b ), Source( ev_bc ) ),
+             ev_bc );
+    
+end : CategoryFilter := IsCartesianClosedCategory );
+
+##
 AddDerivationToCAP( UniversalPropertyOfCartesianDual,
                     "UniversalPropertyOfCartesianDual using the direct product-exponential adjunction",
                     [ [ PreCompose, 1 ],

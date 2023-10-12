@@ -1998,6 +1998,27 @@ end
     , 3513 : IsPrecompiledDerivation := true );
     
     ##
+    AddInternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct( cat,
+        
+########
+function ( cat_1, a_1, b_1, f_1, t_1 )
+    local deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1;
+    deduped_7_1 := Dimension( b_1 );
+    deduped_6_1 := UnderlyingRing( cat_1 );
+    deduped_5_1 := Dimension( a_1 );
+    deduped_4_1 := deduped_5_1 * deduped_7_1;
+    deduped_3_1 := HomalgIdentityMatrix( deduped_7_1, deduped_6_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, t_1, UnderlyingMatrix, KroneckerMat( HomalgIdentityMatrix( deduped_5_1, deduped_6_1 ), ConvertMatrixToRow( deduped_3_1 ) ) * KroneckerMat( HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_4_1 ], function ( i_2 )
+                            local deduped_1_2;
+                            deduped_1_2 := (i_2 - 1);
+                            return (REM_INT( deduped_1_2, deduped_7_1 ) * deduped_5_1 + QUO_INT( deduped_1_2, deduped_7_1 ) + 1);
+                        end ) ), deduped_4_1 ), deduped_4_1, deduped_4_1, deduped_6_1 ), deduped_3_1 ) * KroneckerMat( HomalgIdentityMatrix( (deduped_7_1 * deduped_5_1), deduped_6_1 ), deduped_3_1 ) * KroneckerMat( UnderlyingMatrix( f_1 ), deduped_3_1 ) );
+end
+########
+        
+    , 3312 : IsPrecompiledDerivation := true );
+    
+    ##
     AddInternalHomOnMorphisms( cat,
         
 ########
@@ -2053,6 +2074,27 @@ end
 ########
         
     , 3513 : IsPrecompiledDerivation := true );
+    
+    ##
+    AddInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct( cat,
+        
+########
+function ( cat_1, b_1, c_1, g_1, t_1 )
+    local deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1;
+    deduped_7_1 := Dimension( c_1 );
+    deduped_6_1 := UnderlyingRing( cat_1 );
+    deduped_5_1 := Dimension( b_1 );
+    deduped_4_1 := deduped_5_1 * deduped_7_1;
+    deduped_3_1 := HomalgIdentityMatrix( deduped_5_1, deduped_6_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, t_1, c_1, UnderlyingMatrix, KroneckerMat( UnderlyingMatrix( g_1 ), deduped_3_1 ) * (KroneckerMat( HomalgIdentityMatrix( deduped_4_1, deduped_6_1 ), deduped_3_1 ) * KroneckerMat( HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_4_1 ], function ( i_2 )
+                            local deduped_1_2;
+                            deduped_1_2 := (i_2 - 1);
+                            return (REM_INT( deduped_1_2, deduped_7_1 ) * deduped_5_1 + QUO_INT( deduped_1_2, deduped_7_1 ) + 1);
+                        end ) ), deduped_4_1 ), deduped_4_1, deduped_4_1, deduped_6_1 ), deduped_3_1 ) * KroneckerMat( HomalgIdentityMatrix( deduped_7_1, deduped_6_1 ), ConvertMatrixToColumn( deduped_3_1 ) )) );
+end
+########
+        
+    , 3312 : IsPrecompiledDerivation := true );
     
     ##
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat,

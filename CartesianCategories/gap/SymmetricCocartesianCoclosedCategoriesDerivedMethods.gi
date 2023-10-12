@@ -95,6 +95,37 @@ AddDerivationToCAP( CoexponentialToCoproductAdjunctionMap,
 end : CategoryFilter := IsCocartesianCoclosedCategory );
 
 ##
+AddDerivationToCAP( CoexponentialToCoproductAdjunctionMapWithGivenCoproduct,
+                    "CoexponentialToCoproductAdjunctionMapWithGivenCoproduct using CoproductOnMorphisms and CocartesianEvaluationMorphism",
+                    [ [ PreCompose, 1 ],
+                      [ CocartesianEvaluationMorphism, 1 ],
+                      [ CoproductOnMorphismsWithGivenCoproducts, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    
+  function( cat, a, b, f, t )
+    local cocaev_bc;
+    
+    # f: Coexp(a,b) → c
+    #
+    #        a
+    #        |
+    #        | cocaev_ab
+    #        v
+    # Coexp(a,b) ⊔ b
+    #        |
+    #        | f ⊔ id_b
+    #        v
+    #      c ⊔ b
+    
+    cocaev_bc := CocartesianEvaluationMorphism( cat, a, b );
+    
+    return PreCompose( cat,
+             cocaev_bc,
+             CoproductOnMorphismsWithGivenCoproducts( cat, Range( cocaev_bc ), f, IdentityMorphism( cat, b ), t ) );
+             
+end : CategoryFilter := IsCocartesianCoclosedCategory );
+
+##
 AddDerivationToCAP( UniversalPropertyOfCocartesianDual,
                     "UniversalPropertyOfCocartesianDual using the coexponential-coproduct adjunction",
                     [ [ PreCompose, 1 ],

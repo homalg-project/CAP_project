@@ -92,6 +92,37 @@ AddDerivationToCAP( InternalCoHomToTensorProductAdjunctionMap,
 end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory );
 
 ##
+AddDerivationToCAP( InternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct,
+                    "InternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct using TensorProductOnMorphisms and CoclosedEvaluationMorphism",
+                    [ [ PreCompose, 1 ],
+                      [ CoclosedEvaluationMorphism, 1 ],
+                      [ TensorProductOnMorphismsWithGivenTensorProducts, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    
+  function( cat, a, b, f, t )
+    local coclev_bc;
+    
+    # f: Cohom(a,b) → c
+    #
+    #        a
+    #        |
+    #        | coclev_ab
+    #        v
+    # Cohom(a,b) ⊗ b
+    #        |
+    #        | f ⊗ id_b
+    #        v
+    #      c ⊗ b
+    
+    coclev_bc := CoclosedEvaluationMorphism( cat, a, b );
+    
+    return PreCompose( cat,
+             coclev_bc,
+             TensorProductOnMorphismsWithGivenTensorProducts( cat, Range( coclev_bc ), f, IdentityMorphism( cat, b ), t ) );
+             
+end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory );
+
+##
 AddDerivationToCAP( UniversalPropertyOfCoDual,
                     "UniversalPropertyOfCoDual using the cohom tensor adjunction",
                     [ [ PreCompose, 1 ],
