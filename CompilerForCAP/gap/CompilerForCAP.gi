@@ -153,7 +153,7 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
             
             type_signature := args[1];
             
-            if NumberArgumentsFunction( func ) > 0 and type_signature[1][1].filter = IsCapCategory then
+            if NumberArgumentsFunction( func ) > 0 and IsSpecializationOfFilter( IsCapCategory, type_signature[1][1].filter ) then
                 
                 category_as_first_argument := true;
                 category := type_signature[1][1].category;
