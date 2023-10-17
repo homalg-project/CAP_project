@@ -92,6 +92,37 @@ AddDerivationToCAP( InternalHomToTensorProductAdjunctionMap,
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory );
 
 ##
+AddDerivationToCAP( InternalHomToTensorProductAdjunctionMapWithGivenTensorProduct,
+                    "InternalHomToTensorProductAdjunctionMapWithGivenTensorProduct using TensorProductOnMorphisms and EvaluationMorphism",
+                    [ [ PreCompose, 1 ],
+                      [ TensorProductOnMorphismsWithGivenTensorProducts, 1 ],
+                      [ IdentityMorphism, 1 ],
+                      [ EvaluationMorphism, 1 ] ],
+                    
+  function( cat, b, c, g, t )
+    local ev_bc;
+    
+    # g: a → Hom(b,c)
+    #
+    #    a ⊗ b
+    #      |
+    #      | g ⊗ id_b
+    #      v
+    # Hom(b,c) ⊗ b
+    #      |
+    #      | ev_bc
+    #      v
+    #      c
+     
+    ev_bc := EvaluationMorphism( cat, b, c );
+     
+    return PreCompose( cat,
+             TensorProductOnMorphismsWithGivenTensorProducts( cat, t, g, IdentityMorphism( cat, b ), Source( ev_bc ) ),
+             ev_bc );
+    
+end : CategoryFilter := IsSymmetricClosedMonoidalCategory );
+
+##
 AddDerivationToCAP( UniversalPropertyOfDual,
                     "UniversalPropertyOfDual using the tensor hom adjunction",
                     [ [ PreCompose, 1 ],
