@@ -437,6 +437,36 @@ AddDerivationToCAP( UniversalMorphismIntoEqualizer,
 
 ##
 AddDerivationToCAP( ImageEmbedding,
+                    "ImageEmbedding as the colift along the coastriction to image",
+                    [ [ CoastrictionToImage, 1 ],
+                      [ ColiftAlongEpimorphism, 1 ] ],
+                    
+  function( cat, mor )
+    local coastriction_to_image;
+    
+    coastriction_to_image := CoastrictionToImage( cat, mor );
+    
+    return ColiftAlongEpimorphism( cat, coastriction_to_image, mor );
+    
+  end : CategoryFilter := IsAbelianCategory ); ##FIXME: PreAbelian?
+
+##
+AddDerivationToCAP( ImageEmbeddingWithGivenImageObject,
+                    "ImageEmbeddingWithGivenImageObject as the colift along the coastriction to image",
+                    [ [ CoastrictionToImageWithGivenImageObject, 1 ],
+                      [ ColiftAlongEpimorphism, 1 ] ],
+                    
+  function( cat, mor, image_object )
+    local coastriction_to_image;
+    
+    coastriction_to_image := CoastrictionToImageWithGivenImageObject( cat, mor, image_object );
+    
+    return ColiftAlongEpimorphism( cat, coastriction_to_image, mor );
+    
+  end : CategoryFilter := IsAbelianCategory ); ##FIXME: PreAbelian?
+
+##
+AddDerivationToCAP( ImageEmbedding,
                     "ImageEmbedding as the kernel embedding of the cokernel projection",
                     [ [ CokernelProjection, 1 ],
                       [ KernelEmbedding, 1 ],
