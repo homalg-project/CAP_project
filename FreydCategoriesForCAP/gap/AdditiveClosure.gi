@@ -1398,6 +1398,8 @@ InstallMethod( Display,
         
     od;
     
+    Print( "\n" );
+    
 end );
 
 ##
