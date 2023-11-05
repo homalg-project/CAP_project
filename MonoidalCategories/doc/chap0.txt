@@ -6,7 +6,7 @@
                  [1X Monoidal and monoidal (co)closed categories [101X
   
   
-                                   2023.11-01
+                                   2023.11-02
   
   
                                 5 November 2023
