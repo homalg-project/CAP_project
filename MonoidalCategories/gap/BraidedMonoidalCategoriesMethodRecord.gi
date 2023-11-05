@@ -8,13 +8,13 @@ InstallValue( BRAIDED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD, rec(
 
 Braiding := rec(
   filter_list := [ "category", "object", "object" ],
+  return_type := "morphism",
   input_arguments_names := [ "cat", "a", "b" ],
   output_source_getter_string := "TensorProductOnObjects( cat, a, b )",
   output_source_getter_preconditions := [ [ "TensorProductOnObjects", 1 ] ],
   output_range_getter_string := "TensorProductOnObjects( cat, b, a )",
   output_range_getter_preconditions := [ [ "TensorProductOnObjects", 1 ] ],
   with_given_object_position := "both",
-  return_type := "morphism",
   dual_operation := "BraidingInverse",
   dual_arguments_reversed := false,
   # Test in BraidedMonoidalCategoriesTest
@@ -22,25 +22,25 @@ Braiding := rec(
 
 BraidingWithGivenTensorProducts := rec(
   filter_list := [ "category", "object", "object", "object", "object" ],
+  return_type := "morphism",
   input_arguments_names := [ "cat", "s", "a", "b", "r" ],
   output_source_getter_string := "s",
   output_source_getter_preconditions := [ ],
   output_range_getter_string := "r",
   output_range_getter_preconditions := [ ],
-  return_type := "morphism",
   dual_operation := "BraidingInverseWithGivenTensorProducts",
   dual_with_given_objects_reversed := true,
 ),
 
 BraidingInverse := rec(
   filter_list := [ "category", "object", "object" ],
+  return_type := "morphism",
   input_arguments_names := [ "cat", "a", "b" ],
   output_source_getter_string := "TensorProductOnObjects( cat, b, a )",
   output_source_getter_preconditions := [ [ "TensorProductOnObjects", 1 ] ],
   output_range_getter_string := "TensorProductOnObjects( cat, a, b )",
   output_range_getter_preconditions := [ [ "TensorProductOnObjects", 1 ] ],
   with_given_object_position := "both",
-  return_type := "morphism",
   dual_operation := "Braiding",
   dual_arguments_reversed := false,
   # Test in BraidedMonoidalCategoriesTest
@@ -48,12 +48,12 @@ BraidingInverse := rec(
 
 BraidingInverseWithGivenTensorProducts := rec(
   filter_list := [ "category", "object", "object", "object", "object" ],
+  return_type := "morphism",
   input_arguments_names := [ "cat", "s", "a", "b", "r" ],
   output_source_getter_string := "s",
   output_source_getter_preconditions := [ ],
   output_range_getter_string := "r",
   output_range_getter_preconditions := [ ],
-  return_type := "morphism",
   dual_operation := "BraidingWithGivenTensorProducts",
   dual_with_given_objects_reversed := true,
 ),

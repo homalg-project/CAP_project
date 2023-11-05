@@ -8,13 +8,13 @@ InstallValue( DISTRIBUTIVE_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD, rec(
 
 LeftDistributivityExpanding := rec(
   filter_list := [ "category", "object", "list_of_objects" ],
+  return_type := "morphism",
   input_arguments_names := [ "cat", "a", "L" ],
   output_source_getter_string := "TensorProductOnObjects( cat, a, DirectSum( cat, L ) )",
   output_source_getter_preconditions := [ [ "TensorProductOnObjects", 1 ], [ "DirectSum", 1 ] ],
   output_range_getter_string := "DirectSum( cat, List( L, summand -> TensorProductOnObjects( cat, a, summand ) ) )",
   output_range_getter_preconditions := [ [ "DirectSum", 1 ], [ "TensorProductOnObjects", 2 ] ],
   with_given_object_position := "both",
-  return_type := "morphism",
   dual_operation := "LeftDistributivityFactoring",
   dual_arguments_reversed := false,
   # Test in AdditiveMonoidalCategoriesTest
@@ -22,25 +22,25 @@ LeftDistributivityExpanding := rec(
 
 LeftDistributivityExpandingWithGivenObjects := rec(
   filter_list := [ "category", "object", "object", "list_of_objects", "object" ],
+  return_type := "morphism",
   input_arguments_names := [ "cat", "s", "a", "L", "r" ],
   output_source_getter_string := "s",
   output_source_getter_preconditions := [ ],
   output_range_getter_string := "r",
   output_range_getter_preconditions := [ ],
-  return_type := "morphism",
   dual_operation := "LeftDistributivityFactoringWithGivenObjects",
   dual_with_given_objects_reversed := true,
 ),
 
 LeftDistributivityFactoring := rec(
   filter_list := [ "category", "object", "list_of_objects" ],
+  return_type := "morphism",
   input_arguments_names := [ "cat", "a", "L" ],
   output_source_getter_string := "DirectSum( cat, List( L, summand -> TensorProductOnObjects( cat, a, summand ) ) )",
   output_source_getter_preconditions := [ [ "DirectSum", 1 ], [ "TensorProductOnObjects", 2 ] ],
   output_range_getter_string := "TensorProductOnObjects( cat, a, DirectSum( cat, L ) )",
   output_range_getter_preconditions := [ [ "TensorProductOnObjects", 1 ], [ "DirectSum", 1 ] ],
   with_given_object_position := "both",
-  return_type := "morphism",
   dual_operation := "LeftDistributivityExpanding",
   dual_arguments_reversed := false,
   # Test in AdditiveMonoidalCategoriesTest
@@ -48,25 +48,25 @@ LeftDistributivityFactoring := rec(
 
 LeftDistributivityFactoringWithGivenObjects := rec(
   filter_list := [ "category", "object", "object", "list_of_objects", "object" ],
+  return_type := "morphism",
   input_arguments_names := [ "cat", "s", "a", "L", "r" ],
   output_source_getter_string := "s",
   output_source_getter_preconditions := [ ],
   output_range_getter_string := "r",
   output_range_getter_preconditions := [ ],
-  return_type := "morphism",
   dual_operation := "LeftDistributivityExpandingWithGivenObjects",
   dual_with_given_objects_reversed := true,
 ),
 
 RightDistributivityExpanding := rec(
   filter_list := [ "category", "list_of_objects", "object" ],
+  return_type := "morphism",
   input_arguments_names := [ "cat", "L", "a" ],
   output_source_getter_string := "TensorProductOnObjects( cat, DirectSum( cat, L ), a )",
   output_source_getter_preconditions := [ [ "TensorProductOnObjects", 1 ], [ "DirectSum", 1 ] ],
   output_range_getter_string := "DirectSum( cat, List( L, summand -> TensorProductOnObjects( cat, summand, a ) ) )",
   output_range_getter_preconditions := [ [ "DirectSum", 1 ], [ "TensorProductOnObjects", 2 ] ],
   with_given_object_position := "both",
-  return_type := "morphism",
   dual_operation := "RightDistributivityFactoring",
   dual_arguments_reversed := false,
   # Test in AdditiveMonoidalCategoriesTest
@@ -74,25 +74,25 @@ RightDistributivityExpanding := rec(
 
 RightDistributivityExpandingWithGivenObjects := rec(
   filter_list := [ "category", "object", "list_of_objects", "object", "object" ],
+  return_type := "morphism",
   input_arguments_names := [ "cat", "s", "L", "a", "r" ],
   output_source_getter_string := "s",
   output_source_getter_preconditions := [ ],
   output_range_getter_string := "r",
   output_range_getter_preconditions := [ ],
-  return_type := "morphism",
   dual_operation := "RightDistributivityFactoringWithGivenObjects",
   dual_with_given_objects_reversed := true,
 ),
 
 RightDistributivityFactoring := rec(
   filter_list := [ "category", "list_of_objects", "object" ],
+  return_type := "morphism",
   input_arguments_names := [ "cat", "L", "a" ],
   output_source_getter_string := "DirectSum( cat, List( L, summand -> TensorProductOnObjects( cat, summand, a ) ) )",
   output_source_getter_preconditions := [ [ "DirectSum", 1 ], [ "TensorProductOnObjects", 2 ] ],
   output_range_getter_string := "TensorProductOnObjects( cat, DirectSum( cat, L ), a )",
   output_range_getter_preconditions := [ [ "TensorProductOnObjects", 1 ], [ "DirectSum", 1 ] ],
   with_given_object_position := "both",
-  return_type := "morphism",
   dual_operation := "RightDistributivityExpanding",
   dual_arguments_reversed := false,
   # Test in AdditiveMonoidalCategoriesTest
@@ -100,12 +100,12 @@ RightDistributivityFactoring := rec(
 
 RightDistributivityFactoringWithGivenObjects := rec(
   filter_list := [ "category", "object", "list_of_objects", "object", "object" ],
+  return_type := "morphism",
   input_arguments_names := [ "cat", "s", "L", "a", "r" ],
   output_source_getter_string := "s",
   output_source_getter_preconditions := [ ],
   output_range_getter_string := "r",
   output_range_getter_preconditions := [ ],
-  return_type := "morphism",
   dual_operation := "RightDistributivityExpandingWithGivenObjects",
   dual_with_given_objects_reversed := true,
 ),
