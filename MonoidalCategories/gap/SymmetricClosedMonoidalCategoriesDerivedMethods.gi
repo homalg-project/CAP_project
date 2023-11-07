@@ -634,6 +634,8 @@ AddDerivationToCAP( MorphismFromTensorProductToInternalHomWithGivenObjects,
                     "MorphismFromTensorProductToInternalHomWithGivenObjects using TensorProductInternalHomCompatibilityMorphism",
                     [ [ TensorUnit, 1 ],
                       [ PreComposeList, 1 ],
+                      [ Braiding, 1 ],
+                      [ DualOnObjects, 1 ],
                       [ TensorProductOnMorphisms, 1 ],
                       [ IsomorphismFromDualObjectToInternalHomIntoTensorUnit, 1 ],
                       [ IsomorphismFromObjectToInternalHom, 1 ],
@@ -645,6 +647,10 @@ AddDerivationToCAP( MorphismFromTensorProductToInternalHomWithGivenObjects,
   function( cat, tensor_object, a, b, internal_hom )
     local unit;
     
+    #      b ⊗ a^v
+    #          |
+    #          | B_( b, a^v )
+    #          v
     #      a^v ⊗ b
     #          |
     #          v
@@ -662,7 +668,9 @@ AddDerivationToCAP( MorphismFromTensorProductToInternalHomWithGivenObjects,
     
     return PreComposeList( cat,
                    tensor_object,
-                   [ TensorProductOnMorphisms( cat,
+                   [ Braiding( cat, b, DualOnObjects( cat, a ) ),
+                     
+                     TensorProductOnMorphisms( cat,
                            IsomorphismFromDualObjectToInternalHomIntoTensorUnit( cat, a ),
                            IsomorphismFromObjectToInternalHom( cat, b ) ),
                      
