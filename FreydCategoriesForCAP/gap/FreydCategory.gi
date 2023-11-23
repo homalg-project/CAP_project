@@ -913,7 +913,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             
             right_side := [ ZeroMorphism( underlying_category, R_A, C ), alpha ];
             
-            return [ left_coefficients, right_coefficients, right_side ];
+            return Triple( left_coefficients, right_coefficients, right_side );
             
         end;
     
@@ -959,7 +959,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             
             right_side := [ ZeroMorphism( underlying_category, R_A, C ), gamma ];
             
-            return [ left_coefficients, right_coefficients, right_side ];
+            return Triple( left_coefficients, right_coefficients, right_side );
             
         end;
     
