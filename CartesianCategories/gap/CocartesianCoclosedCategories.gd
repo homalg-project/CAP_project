@@ -315,6 +315,17 @@ DeclareOperation( "UniversalPropertyOfCocartesianDual",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
+#! The arguments are two objects $t,a$,
+#! a morphism $\alpha: 1 \rightarrow t \sqcup a$ and
+#! the codual object $c = a_{\vee}$.
+#! The output is the morphism $a_{\vee} \rightarrow t$
+#! given by the universal property of $a_{\vee}$.
+#! @Returns a morphism in $\mathrm{Hom}(a_{\vee}, t)$.
+#! @Arguments t, a, alpha, c
+DeclareOperation( "UniversalPropertyOfCocartesianDualWithGivenCocartesianDualObject",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject] );
+
+#! @Description
 #! The argument is a morphism $\alpha: a \rightarrow b$.
 #! The output is the corresponding morphism $ \mathrm{Coexponential}(a,b) \rightarrow 1$
 #! under the coexponential-coproduct adjunction.

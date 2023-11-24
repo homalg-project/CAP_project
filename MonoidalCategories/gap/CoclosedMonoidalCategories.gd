@@ -312,6 +312,17 @@ DeclareOperation( "UniversalPropertyOfCoDual",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
+#! The arguments are two objects $t,a$,
+#! a morphism $\alpha: 1 \rightarrow t \otimes a$ and
+#! the codual object $c = a_{\vee}$.
+#! The output is the morphism $a_{\vee} \rightarrow t$
+#! given by the universal property of $a_{\vee}$.
+#! @Returns a morphism in $\mathrm{Hom}(a_{\vee}, t)$.
+#! @Arguments t, a, alpha, c
+DeclareOperation( "UniversalPropertyOfCoDualWithGivenCoDualObject",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject] );
+
+#! @Description
 #! The argument is a morphism $\alpha: a \rightarrow b$.
 #! The output is the corresponding morphism $ \mathrm{\underline{coHom}}(a,b) \rightarrow 1$
 #! under the cohom tensor adjunction.

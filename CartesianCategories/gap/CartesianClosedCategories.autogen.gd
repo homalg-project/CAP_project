@@ -711,3 +711,22 @@ DeclareOperation( "AddUniversalPropertyOfCartesianDual",
 
 DeclareOperation( "AddUniversalPropertyOfCartesianDual",
                   [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `UniversalPropertyOfCartesianDualWithGivenCartesianDualObject`.
+#! $F: ( t, a, alpha, d ) \mapsto \mathtt{UniversalPropertyOfCartesianDualWithGivenCartesianDualObject}(t, a, alpha, d)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddUniversalPropertyOfCartesianDualWithGivenCartesianDualObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalPropertyOfCartesianDualWithGivenCartesianDualObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalPropertyOfCartesianDualWithGivenCartesianDualObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalPropertyOfCartesianDualWithGivenCartesianDualObject",
+                  [ IsCapCategory, IsList ] );

@@ -148,7 +148,7 @@ AddDerivationToCAP( MorphismFromCoBidualWithGivenCoBidual,
                       [ CoclosedEvaluationForCoDual, 1 ],
                       [ Braiding, 1 ],
                       [ CoDualOnObjects, 2 ],
-                      [ UniversalPropertyOfCoDual, 1 ] ],
+                      [ UniversalPropertyOfCoDualWithGivenCoDualObject, 1 ] ],
                     
   function( cat, a, avv )
     local alpha;
@@ -170,7 +170,7 @@ AddDerivationToCAP( MorphismFromCoBidualWithGivenCoBidual,
                   CoclosedEvaluationForCoDual( cat, a ),
                   Braiding( cat, CoDualOnObjects( cat, a ), a ) );
                   
-    return UniversalPropertyOfCoDual( cat, a, CoDualOnObjects( cat, a ), alpha );
+    return UniversalPropertyOfCoDualWithGivenCoDualObject( cat, a, CoDualOnObjects( cat, a ), alpha, avv );
     
 end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory );
 

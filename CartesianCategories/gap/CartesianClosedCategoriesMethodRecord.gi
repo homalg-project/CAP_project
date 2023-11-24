@@ -403,6 +403,18 @@ UniversalPropertyOfCartesianDual := rec(
   # Test in CartesianClosedCategoriesTest
 ),
 
+UniversalPropertyOfCartesianDualWithGivenCartesianDualObject:= rec(
+  filter_list := [ "category", "object", "object", "morphism", "object" ],
+  input_arguments_names := [ "cat", "t", "a", "alpha", "d" ],
+  output_source_getter_string := "t",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "d",
+  output_range_getter_preconditions := [ ],
+  return_type := "morphism",
+  dual_operation := "UniversalPropertyOfCocartesianDualWithGivenCocartesianDualObject",
+  dual_arguments_reversed := false,
+),
+
 CartesianLambdaIntroduction := rec(
   filter_list := [ "category", "morphism" ],
   return_type := "morphism",

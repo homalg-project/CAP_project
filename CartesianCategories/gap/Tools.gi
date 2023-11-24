@@ -311,6 +311,8 @@ WriteFileForClosedMonoidalStructure(
                                ## UniversalPropertyOfDual
                                [ "dual_operation := \"UniversalPropertyOfCoDual\"",
                                  "dual_operation := \"UniversalPropertyOfCocartesianDual\"" ],
+                               [ "dual_operation := \"UniversalPropertyOfCoDualWithGivenCoDualObject\"",
+                                 "dual_operation := \"UniversalPropertyOfCocartesianDualWithGivenCocartesianDualObject\"" ],
                                ##############################
                                ## Safe replacements for Tests
                                ##############################
@@ -703,6 +705,8 @@ WriteFileForCoclosedMonoidalStructure(
                                ## UniversalPropertyOfCoDual
                                [ "dual_operation := \"UniversalPropertyOfDual\"",
                                  "dual_operation := \"UniversalPropertyOfCartesianDual\"" ],
+                               [ "dual_operation := \"UniversalPropertyOfDualWithGivenDualObject\"",
+                                 "dual_operation := \"UniversalPropertyOfCartesianDualWithGivenCartesianDualObject\"" ],
                                [ "CLOSED_AND_COCLOSED_MONOIDAL_CATEGORIES",
                                  "CARTESIAN_CLOSED_AND_COCARTESIAN_COCLOSED_CATEGORIES" ],
                                [ "COCLOSED_MONOIDAL_CATEGORIES_METHOD",

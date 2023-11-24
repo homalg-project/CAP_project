@@ -711,3 +711,22 @@ DeclareOperation( "AddUniversalPropertyOfCoDual",
 
 DeclareOperation( "AddUniversalPropertyOfCoDual",
                   [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `UniversalPropertyOfCoDualWithGivenCoDualObject`.
+#! $F: ( t, a, alpha, c ) \mapsto \mathtt{UniversalPropertyOfCoDualWithGivenCoDualObject}(t, a, alpha, c)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddUniversalPropertyOfCoDualWithGivenCoDualObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalPropertyOfCoDualWithGivenCoDualObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalPropertyOfCoDualWithGivenCoDualObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalPropertyOfCoDualWithGivenCoDualObject",
+                  [ IsCapCategory, IsList ] );

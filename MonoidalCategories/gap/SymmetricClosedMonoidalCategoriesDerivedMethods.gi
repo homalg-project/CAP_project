@@ -148,7 +148,7 @@ AddDerivationToCAP( MorphismToBidualWithGivenBidual,
                       [ Braiding, 1 ],
                       [ DualOnObjects, 2 ],
                       [ EvaluationForDual, 1 ],
-                      [ UniversalPropertyOfDual, 1 ] ],
+                      [ UniversalPropertyOfDualWithGivenDualObject, 1 ] ],
                     
   function( cat, a, avv )
     local alpha;
@@ -168,7 +168,7 @@ AddDerivationToCAP( MorphismToBidualWithGivenBidual,
     alpha := PreCompose( cat, Braiding( cat, a, DualOnObjects( cat, a ) ),
                             EvaluationForDual( cat, a ) );
     
-    return UniversalPropertyOfDual( cat, a, DualOnObjects( cat, a ), alpha );
+    return UniversalPropertyOfDualWithGivenDualObject( cat, a, DualOnObjects( cat, a ), alpha, avv );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory );
 

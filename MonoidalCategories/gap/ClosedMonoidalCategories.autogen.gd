@@ -711,3 +711,22 @@ DeclareOperation( "AddUniversalPropertyOfDual",
 
 DeclareOperation( "AddUniversalPropertyOfDual",
                   [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `UniversalPropertyOfDualWithGivenDualObject`.
+#! $F: ( t, a, alpha, d ) \mapsto \mathtt{UniversalPropertyOfDualWithGivenDualObject}(t, a, alpha, d)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddUniversalPropertyOfDualWithGivenDualObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalPropertyOfDualWithGivenDualObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalPropertyOfDualWithGivenDualObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalPropertyOfDualWithGivenDualObject",
+                  [ IsCapCategory, IsList ] );

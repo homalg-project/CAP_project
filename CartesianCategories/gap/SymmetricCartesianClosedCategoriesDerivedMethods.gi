@@ -151,7 +151,7 @@ AddDerivationToCAP( MorphismToCartesianBidualWithGivenCartesianBidual,
                       [ CartesianBraiding, 1 ],
                       [ CartesianDualOnObjects, 2 ],
                       [ CartesianEvaluationForCartesianDual, 1 ],
-                      [ UniversalPropertyOfCartesianDual, 1 ] ],
+                      [ UniversalPropertyOfCartesianDualWithGivenCartesianDualObject, 1 ] ],
                     
   function( cat, a, avv )
     local alpha;
@@ -171,7 +171,7 @@ AddDerivationToCAP( MorphismToCartesianBidualWithGivenCartesianBidual,
     alpha := PreCompose( cat, CartesianBraiding( cat, a, CartesianDualOnObjects( cat, a ) ),
                             CartesianEvaluationForCartesianDual( cat, a ) );
     
-    return UniversalPropertyOfCartesianDual( cat, a, CartesianDualOnObjects( cat, a ), alpha );
+    return UniversalPropertyOfCartesianDualWithGivenCartesianDualObject( cat, a, CartesianDualOnObjects( cat, a ), alpha, avv );
     
 end : CategoryFilter := IsCartesianClosedCategory );
 
