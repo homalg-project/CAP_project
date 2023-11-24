@@ -685,8 +685,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
             
         finsets := RangeCategoryOfHomomorphismStructure( underlying_category );
             
-        rows := CategoryOfRows( ring : overhead := false );
-            
+        rows := CategoryOfRows( ring : overhead := false, FinalizeCategory := true );
+        
         SetRangeCategoryOfHomomorphismStructure( category, rows );
         SetIsEquippedWithHomomorphismStructure( category, true );
         
