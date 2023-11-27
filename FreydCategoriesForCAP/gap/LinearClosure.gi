@@ -11,9 +11,11 @@
 ####################################
 
 ##
-InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR,
-    function( ring, underlying_category, arg... )
-    local name, category, is_finite, sorting_function, with_nf, cocycle;
+InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows,
+  function( rows, underlying_category, arg... ) ## rows = CategoryOfRows( ... )
+    local ring, name, category, is_finite, sorting_function, with_nf, cocycle;
+    
+    ring := UnderlyingRing( rows );
     
     if not ( HasIsCommutative( ring ) and IsCommutative( ring ) ) then
         
@@ -87,11 +89,76 @@ InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR,
     
     SetUnderlyingCategory( category, underlying_category );
     
-    INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE( category );
+    INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE( rows, category );
     
     Finalize( category );
     
     return category;
+    
+end );
+
+##
+InstallMethod( LinearClosure,
+               [ IsCategoryOfRows, IsCapCategory, IsFunction ],
+               LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows );
+
+##
+InstallMethod( LinearClosure,
+               [ IsCategoryOfRows, IsCapCategory ],
+               LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows );
+
+##
+InstallMethod( TwistedLinearClosure,
+               [ IsCategoryOfRows, IsCapCategory, IsFunction ],
+  function( rows, category, cocycle )
+    
+    return LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows( rows, category, cocycle, false );
+    
+end );
+
+##
+InstallMethod( TwistedLinearClosure,
+               [ IsCategoryOfRows, IsCapCategory, IsFunction, IsFunction ],
+  function( rows, category, cocycle, sorting_function )
+    
+    return LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows( rows, category, cocycle, true, sorting_function );
+    
+end );
+
+## Special cases for groups
+##
+InstallMethod( LinearClosure,
+               [ IsCategoryOfRows, IsGroupAsCategory ],
+  function( rows, group_as_category )
+    local compare_func;
+    
+    compare_func := function( g, h ) return UnderlyingGroupElement( g ) < UnderlyingGroupElement( h ); end;;
+    
+    return LinearClosure( rows, group_as_category, compare_func );
+    
+end );
+
+##
+InstallMethod( TwistedLinearClosure,
+               [ IsCategoryOfRows, IsGroupAsCategory, IsFunction ],
+  function( rows, category, cocycle )
+    local compare_func;
+    
+    compare_func := function( g, h ) return UnderlyingGroupElement( g ) < UnderlyingGroupElement( h ); end;;
+    
+    return LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows( rows, category, cocycle, true, compare_func );
+    
+end );
+
+##
+InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR,
+  function( ring, underlying_category, arg... )
+    local rows;
+    
+    rows := CategoryOfRows( ring : overhead := false, FinalizeCategory := true );
+    
+    return CallFuncList( LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows,
+                   Concatenation( [ rows, underlying_category ], arg ) );
     
 end );
 
@@ -364,9 +431,13 @@ end );
 
 
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
-    function( category )
-        local ring, underlying_category, sorting_function, mul_coeffs, mul_supp, with_nf,
-              equality_func, finsets, rows, t_obj, t_finsets, FunctorMor, FunctorObj, cocycle;
+  function( rows, category )
+    local ring, underlying_category, sorting_function, mul_coeffs, mul_supp, with_nf,
+          equality_func, finsets, t_obj, t_finsets, FunctorMor, FunctorObj, cocycle;
+    
+    if not IsCategoryOfRows( rows ) then
+        Error( "the first argument `rows` must be a category of rows\n" );
+    fi;
     
     ring := UnderlyingRing( category );
     
@@ -684,8 +755,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
          then
             
         finsets := RangeCategoryOfHomomorphismStructure( underlying_category );
-            
-        rows := CategoryOfRows( ring : overhead := false, FinalizeCategory := true );
         
         SetRangeCategoryOfHomomorphismStructure( category, rows );
         SetIsEquippedWithHomomorphismStructure( category, true );

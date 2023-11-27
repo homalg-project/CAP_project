@@ -21,6 +21,8 @@ DeclareCategory( "IsLinearClosureMorphism",
 DeclareCategory( "IsLinearClosure",
                  IsCapCategory );
 
+DeclareGlobalFunction( "LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows" );
+
 DeclareGlobalFunction( "LINEAR_CLOSURE_CONSTRUCTOR" );
 
 DeclareGlobalFunction( "LINEAR_CLOSURE_MORPHISM_SIMPLIFY" );
@@ -32,6 +34,18 @@ DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE" );
 #! @Section Constructors
 ##
 ####################################
+
+DeclareOperation( "TwistedLinearClosure",
+                  [ IsCategoryOfRows, IsCapCategory, IsFunction, IsFunction ] );
+
+DeclareOperation( "TwistedLinearClosure",
+                  [ IsCategoryOfRows, IsCapCategory, IsFunction ] );
+
+DeclareOperation( "LinearClosure",
+                  [ IsCategoryOfRows, IsCapCategory ] );
+
+DeclareOperation( "LinearClosure",
+                  [ IsCategoryOfRows, IsCapCategory, IsFunction ] );
 
 DeclareOperation( "TwistedLinearClosure",
                   [ IsHomalgRing, IsCapCategory, IsFunction, IsFunction ] );
