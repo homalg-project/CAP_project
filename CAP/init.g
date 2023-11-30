@@ -56,4 +56,4 @@ ReadPackage( "CAP", "gap/ReinterpretationOfCategory.gd" );
 
 ReadPackage( "CAP", "gap/WrapperCategory.gd" );
 
-ReadPackage( "CAP", "gap/DummyCategory.gd" );
+ReadPackage( "CAP", "gap/DummyImplementations.gd" );

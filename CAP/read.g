@@ -56,7 +56,7 @@ ReadPackage( "CAP", "gap/ReinterpretationOfCategory.gi" );
 
 ReadPackage( "CAP", "gap/WrapperCategory.gi" );
 
-ReadPackage( "CAP", "gap/DummyCategory.gi" );
+ReadPackage( "CAP", "gap/DummyImplementations.gi" );
 
 ReadPackage( "CAP", "gap/ToolsForCategories_AfterLoading.gi" );
 
