@@ -166,9 +166,9 @@ InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( stri
             
             ring := CommutativeRingOfLinearCategory( category );
             
-            if IsBoundGlobal( "IsHomalgRing" ) and ValueGlobal( "IsHomalgRing" )( ring ) then
+            if HasRingElementFilter( ring ) then
                 
-                is_ring_element := ValueGlobal( "IsHomalgRingElement" );
+                is_ring_element := RingElementFilter( ring );
                 
             else
                 
@@ -198,9 +198,9 @@ InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( stri
             
             ring := CommutativeRingOfLinearCategory( category );
             
-            if IsBoundGlobal( "IsHomalgRing" ) and ValueGlobal( "IsHomalgRing" )( ring ) then
+            if HasRingElementFilter( ring ) then
                 
-                is_ring_element := ValueGlobal( "IsHomalgRingElement" );
+                is_ring_element := RingElementFilter( ring );
                 
             else
                 
@@ -292,11 +292,6 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACED_STRING_WITH_FILTER,
         # `IsNTuple` deliberately does not imply `IsList` because we want to treat tuples and lists in different ways in CompilerForCAP.
         # However, on the GAP level tuples are just dense lists.
         return IsDenseList;
-        
-    elif IsBoundGlobal( "IsHomalgRingElement" ) and IsSpecializationOfFilter( ValueGlobal( "IsHomalgRingElement" ), data_type.filter ) then
-        
-        # Some things (e.g. integers) do not lie in the filter `IsHomalgRingElement` but are actually elements of homalg rings (e.g. `HomalgRingOfIntegers( )`).
-        return IsRingElement;
         
     else
         
@@ -555,19 +550,6 @@ InstallGlobalFunction( "CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER",
             fi;
             
             CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( value, data_type.category, human_readable_identifier_list );
-            
-        end;
-        
-    elif IsBoundGlobal( "IsHomalgRingElement" ) and IsSpecializationOfFilter( ValueGlobal( "IsHomalgRingElement" ), filter ) then
-        
-        return function( value )
-            
-            # Some things (e.g. integers) do not lie in the filter `IsHomalgRingElement` but are actually elements of homalg rings (e.g. `HomalgRingOfIntegers( )`).
-            if not IsRingElement( value ) then
-                
-                CallFuncList( Error, Concatenation( human_readable_identifier_list, [ " does not lie in the expected filter IsRingElement.", generic_help_string ] ) );
-                
-            fi;
             
         end;
         
