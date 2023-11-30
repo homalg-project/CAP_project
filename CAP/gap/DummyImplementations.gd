@@ -23,6 +23,9 @@
 #
 ####################################
 
+#= comment for Julia
+# IsRingElement(WithOne) is a union of types, which we cannot subtype
+
 #! @Description
 #!  The &GAP; filter of dummy rings.
 DeclareFilter( "IsDummyRing",
@@ -52,6 +55,7 @@ DeclareFilter( "IsDummyField",
 #!  The &GAP; filter of elements of a dummy commutative ring.
 DeclareFilter( "IsDummyFieldElement",
         IsDummyCommutativeRingElement );
+# =#
 
 ####################################
 #
