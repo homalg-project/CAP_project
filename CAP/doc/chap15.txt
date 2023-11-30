@@ -2,7 +2,10 @@
   [1X15 [33X[0;0YExamples and Tests[133X[101X
   
   
-  [1X15.1 [33X[0;0YDummy category[133X[101X
+  [1X15.1 [33X[0;0YDummy implementations[133X[101X
+  
+  
+  [1X15.1-1 [33X[0;0YDummy categories[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "CAP", false );[127X[104X
@@ -24,6 +27,36 @@
     [4X[25Xgap>[125X [27XForAll( list_of_operations_to_install, o -> CanCompute( dummy, o ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsAdditiveCategory( dummy );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X15.1-2 [33X[0;0YDummy rings[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDummyRing( );[127X[104X
+    [4X[28XDummy ring 1[128X[104X
+    [4X[25Xgap>[125X [27XDummyRing( );[127X[104X
+    [4X[28XDummy ring 2[128X[104X
+    [4X[25Xgap>[125X [27XIsRing( DummyRing( ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDummyCommutativeRing( );[127X[104X
+    [4X[28XDummy commutative ring 1[128X[104X
+    [4X[25Xgap>[125X [27XDummyCommutativeRing( );[127X[104X
+    [4X[28XDummy commutative ring 2[128X[104X
+    [4X[25Xgap>[125X [27XIsRing( DummyCommutativeRing( ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCommutative( DummyCommutativeRing( ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDummyField( );[127X[104X
+    [4X[28XDummy field 1[128X[104X
+    [4X[25Xgap>[125X [27XDummyField( );[127X[104X
+    [4X[28XDummy field 2[128X[104X
+    [4X[25Xgap>[125X [27XIsRing( DummyField( ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsField( DummyField( ) );[127X[104X
     [4X[28Xtrue[128X[104X
   [4X[32X[104X
   

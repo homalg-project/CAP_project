@@ -22,9 +22,14 @@
 <p id="mathjaxlink" class="pcenter"><a href="chap15_mj.html">[MathJax on]</a></p>
 <p><a id="X7967FE8E7BBDF485" name="X7967FE8E7BBDF485"></a></p>
 <div class="ChapSects"><a href="chap15.html#X7967FE8E7BBDF485">15 <span class="Heading">Examples and Tests</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap15.html#X86538A6887270B3C">15.1 <span class="Heading">Dummy category</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap15.html#X7CA5B46383A5CE09">15.1 <span class="Heading">Dummy implementations</span></a>
 </span>
-</div>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X82A623E78640E822">15.1-1 <span class="Heading">Dummy categories</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap15.html#X7B19E3AE7AB1B31B">15.1-2 <span class="Heading">Dummy rings</span></a>
+</span>
+</div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap15.html#X78D1062D78BE08C1">15.2 <span class="Heading">Functors</span></a>
 </span>
 </div>
@@ -62,9 +67,13 @@
 
 <h3>15 <span class="Heading">Examples and Tests</span></h3>
 
-<p><a id="X86538A6887270B3C" name="X86538A6887270B3C"></a></p>
+<p><a id="X7CA5B46383A5CE09" name="X7CA5B46383A5CE09"></a></p>
 
-<h4>15.1 <span class="Heading">Dummy category</span></h4>
+<h4>15.1 <span class="Heading">Dummy implementations</span></h4>
+
+<p><a id="X82A623E78640E822" name="X82A623E78640E822"></a></p>
+
+<h5>15.1-1 <span class="Heading">Dummy categories</span></h5>
 
 
 <div class="example"><pre>
@@ -87,6 +96,38 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ForAll( list_of_operations_to_install, o -&gt; CanCompute( dummy, o ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsAdditiveCategory( dummy );</span>
+true
+</pre></div>
+
+<p><a id="X7B19E3AE7AB1B31B" name="X7B19E3AE7AB1B31B"></a></p>
+
+<h5>15.1-2 <span class="Heading">Dummy rings</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DummyRing( );</span>
+Dummy ring 1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DummyRing( );</span>
+Dummy ring 2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsRing( DummyRing( ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DummyCommutativeRing( );</span>
+Dummy commutative ring 1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DummyCommutativeRing( );</span>
+Dummy commutative ring 2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsRing( DummyCommutativeRing( ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCommutative( DummyCommutativeRing( ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DummyField( );</span>
+Dummy field 1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DummyField( );</span>
+Dummy field 2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsRing( DummyField( ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsField( DummyField( ) );</span>
 true
 </pre></div>
 

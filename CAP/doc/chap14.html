@@ -5,7 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<title>GAP (CAP) - Chapter 14: Dummy categories</title>
+<title>GAP (CAP) - Chapter 14: Dummy implementations</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -20,33 +20,109 @@
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap13.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap15.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap14_mj.html">[MathJax on]</a></p>
-<p><a id="X82A623E78640E822" name="X82A623E78640E822"></a></p>
-<div class="ChapSects"><a href="chap14.html#X82A623E78640E822">14 <span class="Heading">Dummy categories</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X7D03633A7D98026B">14.1 <span class="Heading">GAP categories</span></a>
+<p><a id="X7CA5B46383A5CE09" name="X7CA5B46383A5CE09"></a></p>
+<div class="ChapSects"><a href="chap14.html#X7CA5B46383A5CE09">14 <span class="Heading">Dummy implementations</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X7B19E3AE7AB1B31B">14.1 <span class="Heading">Dummy rings</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14.html#X872B304F85971287">14.1-1 IsDummyCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14.html#X7FB7ED298101C4C5">14.1-2 IsDummyCategoryObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14.html#X86ED2D2D84900225">14.1-3 IsDummyCategoryMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14.html#X86A21A2379AA70E4">14.1-1 IsDummyRing</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14.html#X7D89EFE77FC37A85">14.1-2 IsDummyRingElement</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14.html#X87E7CFFB81611DED">14.1-3 IsDummyCommutativeRing</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14.html#X79CB0F12853487F4">14.1-4 IsDummyCommutativeRingElement</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14.html#X7F1159E287E0850B">14.1-5 IsDummyField</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14.html#X7A227A6D7F366CDE">14.1-6 IsDummyFieldElement</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14.html#X82B6E6F780AB19FA">14.1-7 DummyRing</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14.html#X823C63568160007F">14.1-8 DummyCommutativeRing</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14.html#X8675D79684AD56D0">14.1-9 DummyField</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X86EC0F0A78ECBC10">14.2 <span class="Heading">Constructors</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X82A623E78640E822">14.2 <span class="Heading">Dummy categories</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14.html#X85EFD8FA7CA98ECB">14.2-1 DummyCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14.html#X872B304F85971287">14.2-1 IsDummyCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14.html#X7FB7ED298101C4C5">14.2-2 IsDummyCategoryObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14.html#X86ED2D2D84900225">14.2-3 IsDummyCategoryMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14.html#X85EFD8FA7CA98ECB">14.2-4 DummyCategory</a></span>
 </div></div>
 </div>
 
-<h3>14 <span class="Heading">Dummy categories</span></h3>
+<h3>14 <span class="Heading">Dummy implementations</span></h3>
 
-<p>A dummy category pretends to support certain CAP operations but has not actual implementation. This is useful for testing or compiling against a certain set of CAP operations.</p>
+<p>A dummy implementation of a concept seems to provide an interface for the concept, but calling any operation in this interface will simply signal an error. Hence, when using a dummy implementation, we can be sure that we only rely on the abstract interface but not on any implementation details, for the simple reason that there is no actual implementation. This is useful for testing or compilation against a generic implementation of a concept.</p>
 
-<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+<p><a id="X7B19E3AE7AB1B31B" name="X7B19E3AE7AB1B31B"></a></p>
 
-<h4>14.1 <span class="Heading">GAP categories</span></h4>
+<h4>14.1 <span class="Heading">Dummy rings</span></h4>
+
+<p><a id="X86A21A2379AA70E4" name="X86A21A2379AA70E4"></a></p>
+
+<h5>14.1-1 IsDummyRing</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDummyRing</code></td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>The <strong class="pkg">GAP</strong> filter of dummy rings.</p>
+
+<p><a id="X7D89EFE77FC37A85" name="X7D89EFE77FC37A85"></a></p>
+
+<h5>14.1-2 IsDummyRingElement</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDummyRingElement</code></td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>The <strong class="pkg">GAP</strong> filter of elements of a dummy ring.</p>
+
+<p><a id="X87E7CFFB81611DED" name="X87E7CFFB81611DED"></a></p>
+
+<h5>14.1-3 IsDummyCommutativeRing</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDummyCommutativeRing</code></td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>The <strong class="pkg">GAP</strong> filter of dummy commutative rings.</p>
+
+<p><a id="X79CB0F12853487F4" name="X79CB0F12853487F4"></a></p>
+
+<h5>14.1-4 IsDummyCommutativeRingElement</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDummyCommutativeRingElement</code></td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>The <strong class="pkg">GAP</strong> filter of elements of a dummy commutative ring.</p>
+
+<p><a id="X7F1159E287E0850B" name="X7F1159E287E0850B"></a></p>
+
+<h5>14.1-5 IsDummyField</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDummyField</code></td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>The <strong class="pkg">GAP</strong> filter of dummy fields.</p>
+
+<p><a id="X7A227A6D7F366CDE" name="X7A227A6D7F366CDE"></a></p>
+
+<h5>14.1-6 IsDummyFieldElement</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDummyFieldElement</code></td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>The <strong class="pkg">GAP</strong> filter of elements of a dummy commutative ring.</p>
+
+<p><a id="X82B6E6F780AB19FA" name="X82B6E6F780AB19FA"></a></p>
+
+<h5>14.1-7 DummyRing</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DummyRing</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a dummy ring</p>
+
+<p><a id="X823C63568160007F" name="X823C63568160007F"></a></p>
+
+<h5>14.1-8 DummyCommutativeRing</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DummyCommutativeRing</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a dummy commutative ring</p>
+
+<p><a id="X8675D79684AD56D0" name="X8675D79684AD56D0"></a></p>
+
+<h5>14.1-9 DummyField</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DummyField</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a dummy field</p>
+
+<p><a id="X82A623E78640E822" name="X82A623E78640E822"></a></p>
+
+<h4>14.2 <span class="Heading">Dummy categories</span></h4>
 
 <p><a id="X872B304F85971287" name="X872B304F85971287"></a></p>
 
-<h5>14.1-1 IsDummyCategory</h5>
+<h5>14.2-1 IsDummyCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDummyCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
@@ -55,7 +131,7 @@
 
 <p><a id="X7FB7ED298101C4C5" name="X7FB7ED298101C4C5"></a></p>
 
-<h5>14.1-2 IsDummyCategoryObject</h5>
+<h5>14.2-2 IsDummyCategoryObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDummyCategoryObject</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
@@ -64,20 +140,16 @@
 
 <p><a id="X86ED2D2D84900225" name="X86ED2D2D84900225"></a></p>
 
-<h5>14.1-3 IsDummyCategoryMorphism</h5>
+<h5>14.2-3 IsDummyCategoryMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDummyCategoryMorphism</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
 <p>The <strong class="pkg">GAP</strong> category of morphisms in a dummy CAP category.</p>
 
-<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
-
-<h4>14.2 <span class="Heading">Constructors</span></h4>
-
 <p><a id="X85EFD8FA7CA98ECB" name="X85EFD8FA7CA98ECB"></a></p>
 
-<h5>14.2-1 DummyCategory</h5>
+<h5>14.2-4 DummyCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DummyCategory</code>( <var class="Arg">options</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a category</p>

@@ -6,7 +6,7 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2023.11-01
+                                   2023.11-02
   
   
                                 30 November 2023
@@ -997,15 +997,26 @@
       13.3-4 /
       13.3-5 WrapperCategory
       13.3-6 WrappingFunctor
-  14 [33X[0;0YDummy categories[133X
-    14.1 [33X[0;0YGAP categories[133X
-      14.1-1 IsDummyCategory
-      14.1-2 IsDummyCategoryObject
-      14.1-3 IsDummyCategoryMorphism
-    14.2 [33X[0;0YConstructors[133X
-      14.2-1 DummyCategory
+  14 [33X[0;0YDummy implementations[133X
+    14.1 [33X[0;0YDummy rings[133X
+      14.1-1 IsDummyRing
+      14.1-2 IsDummyRingElement
+      14.1-3 IsDummyCommutativeRing
+      14.1-4 IsDummyCommutativeRingElement
+      14.1-5 IsDummyField
+      14.1-6 IsDummyFieldElement
+      14.1-7 DummyRing
+      14.1-8 DummyCommutativeRing
+      14.1-9 DummyField
+    14.2 [33X[0;0YDummy categories[133X
+      14.2-1 IsDummyCategory
+      14.2-2 IsDummyCategoryObject
+      14.2-3 IsDummyCategoryMorphism
+      14.2-4 DummyCategory
   15 [33X[0;0YExamples and Tests[133X
-    15.1 [33X[0;0YDummy category[133X
+    15.1 [33X[0;0YDummy implementations[133X
+      15.1-1 [33X[0;0YDummy categories[133X
+      15.1-2 [33X[0;0YDummy rings[133X
     15.2 [33X[0;0YFunctors[133X
     15.3 [33X[0;0YHandlePrecompiledTowers[133X
     15.4 [33X[0;0YHomomorphism structure[133X
