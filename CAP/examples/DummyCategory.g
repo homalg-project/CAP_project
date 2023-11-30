@@ -1,6 +1,8 @@
 #! @Chapter Examples and Tests
 
-#! @Section Dummy category
+#! @Section Dummy implementations
+
+#! @Subsection Dummy categories
 
 #! @Example
 
