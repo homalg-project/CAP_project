@@ -12,7 +12,7 @@ LoadPackage( "LinearAlgebraForCAP", false );
 ReadPackage( "LinearAlgebraForCAP", "gap/CompilerLogic.gi" );
 #! true
 
-QQ := HomalgFieldOfRationals( );;
+QQ := HomalgFieldOfRationalsInSingular( );;
 
 category_constructor := field -> MatrixCategoryAsCategoryOfRows( field );;
 given_arguments := [ QQ ];;

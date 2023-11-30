@@ -63,9 +63,9 @@ DeclareAttribute( "UnderlyingRingElement",
                   IsRingAsCategoryMorphism );
 CapJitAddTypeSignature( "UnderlyingRingElement", [ IsRingAsCategoryMorphism ], function ( input_types )
     
-    if IsHomalgRing( UnderlyingRing( input_types[1].category ) ) then
+    if HasRingElementFilter( UnderlyingRing( input_types[1].category ) ) then
         
-        return rec( filter := IsHomalgRingElement );
+        return rec( filter := RingElementFilter( UnderlyingRing( input_types[1].category ) ) );
         
     else
         
@@ -80,9 +80,9 @@ DeclareAttribute( "UnderlyingRing",
 
 CapJitAddTypeSignature( "UnderlyingRing", [ IsRingAsCategory ], function ( input_types )
     
-    if IsHomalgRing( UnderlyingRing( input_types[1].category ) ) then
+    if HasRingFilter( UnderlyingRing( input_types[1].category ) ) then
         
-        return rec( filter := IsHomalgRing );
+        return rec( filter := RingFilter( UnderlyingRing( input_types[1].category ) ) );
         
     else
         

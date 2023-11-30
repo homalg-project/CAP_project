@@ -909,9 +909,9 @@ CapJitAddTypeSignature( "CommutativeRingOfLinearCategory", [ IsCapCategory ], fu
     
     ring := CommutativeRingOfLinearCategory( input_types[1].category );
     
-    if IsBoundGlobal( "IsHomalgRing" ) and ValueGlobal( "IsHomalgRing" )( ring ) then
+    if HasRingFilter( ring ) then
         
-        return rec( filter := ValueGlobal( "IsHomalgRing" ) );
+        return rec( filter := RingFilter( ring ) );
         
     else
         
@@ -1569,6 +1569,8 @@ CapJitAddTypeSignature( "Iterated", [ IsList, IsFunction, IsObject, IsObject ], 
 end );
 
 # homalg operations
+# These rules only hold for external homalg rings.
+# For example, `Zero( HomalgRingOfIntegers( ) )` does not lie in `IsHomalgRingElement`.
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "ZeroImmutable", [ "IsHomalgRing" ], "IsHomalgRingElement" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "OneImmutable", [ "IsHomalgRing" ], "IsHomalgRingElement" );
 
@@ -1576,21 +1578,21 @@ CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgMatrix", [ "IsList",
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgMatrixListList", [ "IsList", "IsInt", "IsInt", "IsHomalgRing" ], """function( input_types )
     
     Assert( 0, input_types[1].element_type.filter = IsList );
-    Assert( 0, input_types[1].element_type.element_type.filter in [ IsHomalgRingElement, IsInt, IsRat ] );
+    Assert( 0, input_types[1].element_type.element_type.filter = IsHomalgRingElement );
     
     return rec( filter := IsHomalgMatrix );
     
 end""" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgRowVector", [ "IsList", "IsInt", "IsHomalgRing" ], """function( input_types )
     
-    Assert( 0, input_types[1].element_type.filter in [ IsHomalgRingElement, IsInt, IsRat ] );
+    Assert( 0, input_types[1].element_type.filter = IsHomalgRingElement );
     
     return rec( filter := IsHomalgMatrix );
     
 end""" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgColumnVector", [ "IsList", "IsInt", "IsHomalgRing" ], """function( input_types )
     
-    Assert( 0, input_types[1].element_type.filter in [ IsHomalgRingElement, IsInt, IsRat ] );
+    Assert( 0, input_types[1].element_type.filter = IsHomalgRingElement );
     
     return rec( filter := IsHomalgMatrix );
     

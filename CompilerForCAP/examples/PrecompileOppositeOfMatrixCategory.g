@@ -7,7 +7,7 @@
 LoadPackage( "LinearAlgebraForCAP", false );
 #! true
 
-QQ := HomalgFieldOfRationals( );;
+QQ := HomalgFieldOfRationalsInSingular( );;
 
 # be careful not to use `MatrixCategory` because attributes are not supported
 category_constructor := function( field )
