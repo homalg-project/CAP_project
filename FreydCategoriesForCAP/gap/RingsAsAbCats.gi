@@ -120,7 +120,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
     ring := UnderlyingRing( category );
     
     ##
-    AddIsEqualForObjects( category, ReturnTrue );
+    AddIsEqualForObjects( category, {cat, A, B} -> true );
     
     equality_func := {cat, alpha, beta} -> UnderlyingRingElement( alpha ) = UnderlyingRingElement( beta );
     
@@ -158,7 +158,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
         
         return RingAsCategoryMorphism(
             category,
-            One( ring )
+            One( UnderlyingRing( cat ) )
         );
         
     end );
@@ -177,7 +177,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
         
         return RingAsCategoryMorphism(
             category,
-            Zero( ring )
+            Zero( UnderlyingRing( cat ) )
         );
         
     end );
@@ -227,7 +227,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
         end );
         
         ##
-        AddBasisOfExternalHom( category, { cat, a, b } -> [ RingAsCategoryMorphism( category, One( ring ) ) ] );
+        AddBasisOfExternalHom( category, { cat, a, b } -> [ RingAsCategoryMorphism( category, One( UnderlyingRing( cat ) ) ) ] );
         
         ##
         AddCoefficientsOfMorphism( category, { cat, mor } -> [ UnderlyingRingElement( mor ) ] );
@@ -336,7 +336,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
         AddBasisOfExternalHom( category, { cat, a, b } -> List( EntriesOfHomalgColumnVector( basis_over_base_field_as_column_vector ), x -> RingAsCategoryMorphism( cat, x ) ) );
         
         ##
-        AddCoefficientsOfMorphism( category, { cat, r } -> EntriesOfHomalgRowVector( CoercedMatrix( ring, field, CoefficientsWithGivenMonomials( HomalgMatrix( [ UnderlyingRingElement( r ) ], 1, 1, ring ), basis_over_base_field_as_column_vector ) ) ) );
+        AddCoefficientsOfMorphism( category, { cat, r } -> EntriesOfHomalgRowVector( CoercedMatrix( UnderlyingRing( cat ), field, CoefficientsWithGivenMonomials( HomalgMatrix( [ UnderlyingRingElement( r ) ], 1, 1, UnderlyingRing( cat ) ), basis_over_base_field_as_column_vector ) ) ) );
         
     fi;
     
@@ -346,7 +346,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
       { cat, n } -> RingAsCategoryUniqueObject( cat ) );
     
     AddRandomMorphismWithFixedSourceAndRangeByInteger( category,
-      { cat, S, R, n } ->  RingAsCategoryMorphism( cat, Sum( [ 1 .. n ], i -> Random( ring ), Zero( ring ) ) ) );
+      { cat, S, R, n } ->  RingAsCategoryMorphism( cat, Sum( [ 1 .. n ], i -> Random( UnderlyingRing( cat ) ), Zero( UnderlyingRing( cat ) ) ) ) );
     
 end );
 
