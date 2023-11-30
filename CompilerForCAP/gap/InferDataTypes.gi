@@ -1578,7 +1578,7 @@ CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgMatrix", [ "IsList",
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgMatrixListList", [ "IsList", "IsInt", "IsInt", "IsHomalgRing" ], """function( input_types )
     
     Assert( 0, input_types[1].element_type.filter = IsList );
-    Assert( 0, input_types[1].element_type.element_type.filter = IsHomalgRingElement );
+    Assert( 0, input_types[1].element_type.element_type.filter in [ IsHomalgRingElement, IsInt, IsRat ] ); # for example, integers appear in AddZeroMorphism in FreydCategoriesForCAP/gap/CategoryOfRowsAsAdditiveClosureOfRingAsCategory.gi
     
     return rec( filter := IsHomalgMatrix );
     
@@ -1660,7 +1660,7 @@ CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "AdditiveInverseSameMutabil
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "-", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
 
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "*", [ "IsHomalgRingElement", "IsHomalgRingElement" ], "IsHomalgRingElement" );
-CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "*", [ "IsInt", "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "*", [ "IsRat", "IsHomalgMatrix" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "*", [ "IsHomalgMatrix", "IsInt" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "*", [ "IsHomalgRingElement", "IsHomalgMatrix" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "*", [ "IsHomalgMatrix", "IsHomalgRingElement" ], "IsHomalgMatrix" );
@@ -1677,6 +1677,7 @@ CapJitAddTypeSignatureDeferred( "QPA", "IsZero", [ "IsQuiverAlgebraElement" ], "
 CapJitAddTypeSignatureDeferred( "QPA", "+", [ "IsQuiverAlgebraElement", "IsQuiverAlgebraElement" ], "IsQuiverAlgebraElement" );
 CapJitAddTypeSignatureDeferred( "QPA", "AdditiveInverseSameMutability", [ "IsQuiverAlgebraElement" ], "IsQuiverAlgebraElement" );
 CapJitAddTypeSignatureDeferred( "QPA", "*", [ "IsQuiverAlgebraElement", "IsQuiverAlgebraElement" ], "IsQuiverAlgebraElement" );
+CapJitAddTypeSignatureDeferred( "QPA", "*", [ "IsRat", "IsQuiverAlgebraElement" ], "IsQuiverAlgebraElement" );
 CapJitAddTypeSignatureDeferred( "QPA", "QuiverOfPath", [ "IsPath" ], "IsQuiver" );
 CapJitAddTypeSignatureDeferred( "QPA", "Source", [ "IsPath" ], "IsQuiverVertex" );
 CapJitAddTypeSignatureDeferred( "QPA", "Target", [ "IsPath" ], "IsQuiverVertex" );
