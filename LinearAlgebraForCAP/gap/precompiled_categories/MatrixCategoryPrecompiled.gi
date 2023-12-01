@@ -2525,12 +2525,12 @@ end
     AddIsWellDefinedForMorphisms( cat,
         
 ########
-function ( cat_1, arg2_1 )
+function ( cat_1, alpha_1 )
     local deduped_1_1;
-    deduped_1_1 := UnderlyingMatrix( arg2_1 );
-    if NumberRows( deduped_1_1 ) <> Dimension( Source( arg2_1 ) ) then
+    deduped_1_1 := UnderlyingMatrix( alpha_1 );
+    if NumberRows( deduped_1_1 ) <> Dimension( Source( alpha_1 ) ) then
         return false;
-    elif NumberColumns( deduped_1_1 ) <> Dimension( Range( arg2_1 ) ) then
+    elif NumberColumns( deduped_1_1 ) <> Dimension( Range( alpha_1 ) ) then
         return false;
     else
         return true;
@@ -2540,6 +2540,30 @@ end
 ########
         
     , 100 );
+    
+    ##
+    AddIsWellDefinedForMorphismsWithGivenSourceAndRange( cat,
+        
+########
+function ( cat_1, source_1, alpha_1, range_1 )
+    local deduped_1_1, deduped_2_1, deduped_3_1;
+    deduped_3_1 := UnderlyingMatrix( alpha_1 );
+    deduped_2_1 := Dimension( Range( alpha_1 ) );
+    deduped_1_1 := Dimension( Source( alpha_1 ) );
+    return deduped_1_1 = Dimension( source_1 ) and deduped_2_1 = Dimension( range_1 ) and CAP_JIT_EXPR_CASE_WRAPPER( function (  )
+                if NumberRows( deduped_3_1 ) <> deduped_1_1 then
+                    return false;
+                elif NumberColumns( deduped_3_1 ) <> deduped_2_1 then
+                    return false;
+                else
+                    return true;
+                fi;
+                return;
+            end )(  );
+end
+########
+        
+    , 301 : IsPrecompiledDerivation := true );
     
     ##
     AddIsWellDefinedForObjects( cat,

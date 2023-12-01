@@ -291,12 +291,12 @@ end
     AddIsWellDefinedForMorphisms( cat,
         
 ########
-function ( cat_1, arg2_1 )
+function ( cat_1, alpha_1 )
     local deduped_1_1;
-    deduped_1_1 := UnderlyingMatrix( arg2_1 );
-    if NumberRows( deduped_1_1 ) <> RankOfObject( Source( arg2_1 ) ) then
+    deduped_1_1 := UnderlyingMatrix( alpha_1 );
+    if NumberRows( deduped_1_1 ) <> RankOfObject( Source( alpha_1 ) ) then
         return false;
-    elif NumberColumns( deduped_1_1 ) <> RankOfObject( Range( arg2_1 ) ) then
+    elif NumberColumns( deduped_1_1 ) <> RankOfObject( Range( alpha_1 ) ) then
         return false;
     else
         return true;

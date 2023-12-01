@@ -120,13 +120,13 @@ end
     AddIsWellDefinedForMorphisms( cat,
         
 ########
-function ( cat_1, arg2_1 )
+function ( cat_1, alpha_1 )
     local deduped_1_1, deduped_2_1;
-    deduped_2_1 := UnderlyingMorphism( arg2_1 );
+    deduped_2_1 := UnderlyingMorphism( alpha_1 );
     deduped_1_1 := UnderlyingCategory( cat_1 );
     if not IsWellDefinedForMorphisms( deduped_1_1, deduped_2_1 ) then
         return false;
-    elif not IsColiftable( deduped_1_1, CoRelationMorphism( Source( arg2_1 ) ), PreCompose( deduped_1_1, deduped_2_1, CoRelationMorphism( Range( arg2_1 ) ) ) ) then
+    elif not IsColiftable( deduped_1_1, CoRelationMorphism( Source( alpha_1 ) ), PreCompose( deduped_1_1, deduped_2_1, CoRelationMorphism( Range( alpha_1 ) ) ) ) then
         return false;
     else
         return true;

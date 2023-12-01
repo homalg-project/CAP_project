@@ -546,9 +546,9 @@ end
     AddIsWellDefinedForMorphisms( cat,
         
 ########
-function ( cat_1, arg2_1 )
+function ( cat_1, alpha_1 )
     local deduped_1_1, deduped_2_1;
-    deduped_2_1 := Opposite( arg2_1 );
+    deduped_2_1 := Opposite( alpha_1 );
     deduped_1_1 := UnderlyingMatrix( deduped_2_1 );
     if NumberRows( deduped_1_1 ) <> Dimension( Source( deduped_2_1 ) ) then
         return false;

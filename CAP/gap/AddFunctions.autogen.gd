@@ -2274,7 +2274,7 @@ DeclareOperation( "AddIsTerminal",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `IsWellDefinedForMorphisms`.
-#! $F: ( arg2 ) \mapsto \mathtt{IsWellDefinedForMorphisms}(arg2)$.
+#! $F: ( alpha ) \mapsto \mathtt{IsWellDefinedForMorphisms}(alpha)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddIsWellDefinedForMorphisms",
@@ -2287,6 +2287,25 @@ DeclareOperation( "AddIsWellDefinedForMorphisms",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddIsWellDefinedForMorphisms",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `IsWellDefinedForMorphismsWithGivenSourceAndRange`.
+#! $F: ( source, alpha, range ) \mapsto \mathtt{IsWellDefinedForMorphismsWithGivenSourceAndRange}(source, alpha, range)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsWellDefinedForMorphismsWithGivenSourceAndRange",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsWellDefinedForMorphismsWithGivenSourceAndRange",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsWellDefinedForMorphismsWithGivenSourceAndRange",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsWellDefinedForMorphismsWithGivenSourceAndRange",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

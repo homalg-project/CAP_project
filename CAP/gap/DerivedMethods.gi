@@ -744,6 +744,20 @@ AddDerivationToCAP( IsTerminal,
 end );
 
 ##
+AddDerivationToCAP( IsWellDefinedForMorphismsWithGivenSourceAndRange,
+                    "checking that source and range coincide with the given ones and then checking well-definedness as usual",
+                    [ [ IsEqualForObjects, 2 ],
+                      [ IsWellDefinedForMorphisms, 1 ] ],
+                    
+  function( cat, source, morphism, range )
+    
+    return IsEqualForObjects( cat, Source( morphism ), source ) and
+           IsEqualForObjects( cat, Range( morphism ), range ) and
+           IsWellDefinedForMorphisms( cat, morphism );
+    
+end );
+
+##
 AddDerivationToCAP( IsEqualForMorphismsOnMor,
                     "IsEqualForMorphismsOnMor using IsEqualForMorphisms",
                     [ [ IsEqualForMorphisms, 1 ],

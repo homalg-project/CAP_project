@@ -2584,6 +2584,7 @@ InverseOfMorphismFromCoimageToImageWithGivenObjects := rec(
 
 IsWellDefinedForMorphisms := rec(
   filter_list := [ "category", "morphism" ],
+  input_arguments_names := [ "cat", "alpha" ],
   dual_operation := "IsWellDefinedForMorphisms",
   
   redirect_function := function( cat, morphism )
@@ -2607,6 +2608,14 @@ IsWellDefinedForMorphisms := rec(
   end,
   
   return_type := "bool" ),
+
+IsWellDefinedForMorphismsWithGivenSourceAndRange := rec(
+  filter_list := [ "category", "object", "morphism", "object" ],
+  input_arguments_names := [ "cat", "source", "alpha", "range" ],
+  return_type := "bool",
+  dual_operation := "IsWellDefinedForMorphismsWithGivenSourceAndRange",
+  dual_arguments_reversed := true,
+),
 
 IsWellDefinedForObjects := rec(
   filter_list := [ "category", "object" ],
