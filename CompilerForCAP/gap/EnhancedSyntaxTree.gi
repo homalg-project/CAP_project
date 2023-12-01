@@ -755,6 +755,21 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
             
         fi;
         
+        # drop CAP_JIT_EXPR_CASE_WRAPPER
+        # must be done after introduction of "EXPR_CASE"
+        if tree.type = "EXPR_FUNCCALL" and CapJitIsCallToGlobalFunction( tree.funcref, "CAP_JIT_EXPR_CASE_WRAPPER" ) then
+            
+            Assert( 0, tree.args.length = 0 );
+            Assert( 0, tree.funcref.args.length = 1 );
+            Assert( 0, tree.funcref.args.1.type = "EXPR_DECLARATIVE_FUNC" );
+            Assert( 0, tree.funcref.args.1.narg = 0 );
+            Assert( 0, tree.funcref.args.1.bindings.names = [ "RETURN_VALUE" ] );
+            Assert( 0, tree.funcref.args.1.bindings.BINDING_RETURN_VALUE.type = "EXPR_CASE" );
+            
+            tree := tree.funcref.args.1.bindings.BINDING_RETURN_VALUE;
+            
+        fi;
+        
         return tree;
         
     end;
@@ -1328,8 +1343,8 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
             
             if tree.type = "EXPR_CASE" then
                 
-                # code as IdFunc( function( ) if ... then return ...; else return ...; fi; end )()
-                # the IdFunc is required because the GAP syntax `function() return ...; end()` is not valid in Julia
+                # code as CAP_JIT_EXPR_CASE_WRAPPER( function( ) if ... then return ...; else return ...; fi; end )()
+                # the wrapper is necessary because the GAP syntax `function() return ...; end()` is not valid in Julia
                 tree := rec(
                     type := "EXPR_FUNCCALL_0ARGS",
                     args := AsSyntaxTreeList( [ ] ),
@@ -1337,7 +1352,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                         type := "EXPR_FUNCCALL",
                         funcref := rec(
                             type := "EXPR_REF_GVAR",
-                            gvar := "IdFunc",
+                            gvar := "CAP_JIT_EXPR_CASE_WRAPPER",
                         ),
                         args := AsSyntaxTreeList( [ rec(
                             type := "EXPR_FUNC",

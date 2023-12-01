@@ -33,7 +33,6 @@ gap> tree2 := rec(
 >     variadic := false,
 >     bindings := rec(
 >         type := "FVAR_BINDING_SEQ",
->         length := 1,
 >         names := [ "RETURN_VALUE" ],
 >         BINDING_RETURN_VALUE := rec(
 >             type := "EXPR_FUNCCALL",
@@ -76,7 +75,7 @@ gap> tree2 := rec(
 gap> coded_func2 := ENHANCED_SYNTAX_TREE_CODE( tree2 );;
 gap> Display( coded_func2 );
 function (  )
-    return MY_ID_FUNC( IdFunc( function (  )
+    return MY_ID_FUNC( CAP_JIT_EXPR_CASE_WRAPPER( function (  )
                 if false then
                     return 1;
                 else
@@ -89,6 +88,10 @@ end
 #
 gap> coded_func2();
 2
+
+#
+gap> ENHANCED_SYNTAX_TREE( coded_func2 ).bindings = tree2.bindings;
+true
 
 #
 #
