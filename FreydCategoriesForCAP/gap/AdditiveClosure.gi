@@ -686,10 +686,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
             
             return false;
             
-        elif nr_rows_1 = 0 or nr_cols_1 = 0 then
-            
-            return true;
-            
         fi;
         
         return ForAll( [ 1 .. nr_rows_1 ], i ->
