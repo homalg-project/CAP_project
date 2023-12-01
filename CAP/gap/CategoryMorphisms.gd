@@ -398,6 +398,34 @@ DeclareGlobalFunction( "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes"
 #! @Returns a morphism
 DeclareGlobalFunction( "CreateCapCategoryMorphismWithAttributes" );
 
+#! @Arguments category, source, value, range
+#! @Description
+#!  EXPERIMENTAL: This specification might change any time without prior notice.
+#!  Views <A>value</A> as a morphism from <A>source</A> to <A>range</A> in <A>category</A>.
+#! @Returns a morphism
+DeclareGlobalFunction( "AsCapCategoryMorphism" );
+
+#! @BeginGroup
+#! @Description
+#!  EXPERIMENTAL: This specification might change any time without prior notice.
+#!  Views a morphism obtained via <Ref Func="AsCapCategoryMorphism" /> as a primitive value again.
+#!  Here, the word **primitive** means **primitive from the perspective of the category**.
+#!  For example, from the perspective of an opposite category, morphisms of the underlying category
+#!  are primitive values.
+#!  The attribute is chosen according to the morphism datum type:
+#!  * For `IsInt`, the attribute `AsInteger` is used.
+#!  * For `IsHomalgMatrix`, the attribute `AsHomalgMatrix` is used.
+#!  
+#!  In all other cases or if no morphism datum type is given, the attribute `AsPrimitiveValue` is used.
+#! @Returns a value
+#! @Arguments morphism
+DeclareAttribute( "AsPrimitiveValue", IsCapCategoryMorphism );
+#! @Arguments morphism
+DeclareAttribute( "AsInteger", IsCapCategoryMorphism );
+#! @Arguments morphism
+DeclareAttribute( "AsHomalgMatrix", IsCapCategoryMorphism );
+#! @EndGroup
+
 ###################################
 ##
 #! @Section Equality and Congruence for Morphisms

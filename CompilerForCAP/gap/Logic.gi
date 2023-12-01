@@ -568,8 +568,50 @@ CapJitAddLogicFunction( function ( tree )
                 
             fi;
             
-        fi;
+            if CapJitIsCallToGlobalFunction( object, "AsCapCategoryObject" ) then
+                
+                # special case
+                if attribute_name = "CapCategory" then
+                    
+                    return object.args.1;
+                    
+                fi;
+                
+                if IsBound( object.args.1.data_type ) and object.args.1.data_type.category!.object_attribute_name = attribute_name then
+                    
+                    return object.args.2;
+                    
+                fi;
+                
+            fi;
             
+            if CapJitIsCallToGlobalFunction( object, "AsCapCategoryMorphism" ) then
+                
+                # special cases
+                if attribute_name = "CapCategory" then
+                    
+                    return object.args.1;
+                    
+                elif attribute_name = "Source" then
+                    
+                    return object.args.2;
+                    
+                elif attribute_name = "Range" or attribute_name = "Target" then
+                    
+                    return object.args.4;
+                    
+                fi;
+                
+                if IsBound( object.args.1.data_type ) and object.args.1.data_type.category!.morphism_attribute_name = attribute_name then
+                    
+                    return object.args.3;
+                    
+                fi;
+                
+            fi;
+            
+        fi;
+        
         return tree;
         
     end;
@@ -639,6 +681,64 @@ CapJitAddLogicFunction( function ( tree )
     
 end );
 
+# AsCapCategoryObject( cat, Attribute( obj ) ) => obj
+# Note: Attribute( obj ) is outlined!
+CapJitAddLogicFunction( function ( tree )
+  local pre_func, additional_arguments_func;
+    
+    Info( InfoCapJit, 1, "####" );
+    Info( InfoCapJit, 1, "Apply logic for unwrapping and immediately re-wrapping a CAP category object." );
+    
+    pre_func := function ( tree, func_stack )
+      local func, value;
+        
+        # Attribute( obj ) is outlined!
+        if CapJitIsCallToGlobalFunction( tree, "AsCapCategoryObject" ) and tree.args.1.type = "EXPR_REF_GVAR" and IsBound( tree.args.1.data_type ) and tree.args.2.type = "EXPR_REF_FVAR" then
+            
+            func := SafeUniqueEntry( func_stack, func -> func.id = tree.args.2.func_id );
+            
+            # check if tree.args.2 references a binding, not an argument
+            if SafeUniquePosition( func.nams, tree.args.2.name ) > func.narg then
+                
+                value := CapJitValueOfBinding( func.bindings, tree.args.2.name );
+                
+                if CapJitIsCallToGlobalFunction( value, tree.args.1.data_type.category!.object_attribute_name ) and value.args.length = 1 and IsBound( value.args.1.data_type ) then
+                    
+                    Assert( 0, IsSpecializationOfFilter( IsCapCategory, tree.args.1.data_type.filter ) );
+                    
+                    if value.args.1.data_type = CapJitDataTypeOfObjectOfCategory( tree.args.1.data_type.category ) then
+                        
+                        return value.args.1;
+                        
+                    fi;
+                    
+                fi;
+                
+            fi;
+            
+        fi;
+        
+        return tree;
+        
+    end;
+    
+    additional_arguments_func := function ( tree, key, func_stack )
+        
+        if tree.type = "EXPR_DECLARATIVE_FUNC" then
+            
+            return Concatenation( func_stack, [ tree ] );
+            
+        else
+            
+            return func_stack;
+            
+        fi;
+        
+    end;
+    
+    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, additional_arguments_func, [ ] );
+    
+end );
 
 # EXPR_CASE with all branches having the same value
 CapJitAddLogicFunction( function ( tree )
@@ -717,7 +817,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
         
         return_obj := result_func.bindings.BINDING_RETURN_VALUE;
         
-        if CapJitIsCallToGlobalFunction( return_obj, gvar -> gvar in [ "CreateCapCategoryObjectWithAttributes", "CreateCapCategoryMorphismWithAttributes" ] ) and return_obj.args.1.type = "EXPR_REF_GVAR" then
+        if CapJitIsCallToGlobalFunction( return_obj, gvar -> gvar in [ "CreateCapCategoryObjectWithAttributes", "CreateCapCategoryMorphismWithAttributes", "AsCapCategoryObject", "AsCapCategoryMorphism" ] ) and return_obj.args.1.type = "EXPR_REF_GVAR" then
             
             cat := ValueGlobal( return_obj.args.1.gvar );
             
@@ -737,6 +837,16 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                 
                 attributes_names := [ return_obj.args.4.gvar, "Source", "Range" ];
                 attributes_values := [ return_obj.args.5, return_obj.args.2, return_obj.args.3 ];
+                
+            elif return_obj.funcref.gvar = "AsCapCategoryObject" then
+                
+                attributes_names := [ cat!.object_attribute_name ];
+                attributes_values := [ return_obj.args.2 ];
+                
+            elif return_obj.funcref.gvar = "AsCapCategoryMorphism" then
+                
+                attributes_names := [ cat!.morphism_attribute_name, "Source", "Range" ];
+                attributes_values := [ return_obj.args.3, return_obj.args.2, return_obj.args.4 ];
                 
             else
                 
@@ -804,7 +914,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                 if problematic_access then
                     
                     # try to obtain source or range from compiler hints
-                    if return_obj.funcref.gvar = "CreateCapCategoryMorphismWithAttributes" and return_obj.args.length = 5 and attribute_name in [ "Source", "Range" ] then
+                    if ((return_obj.funcref.gvar = "CreateCapCategoryMorphismWithAttributes" and return_obj.args.length = 5) or return_obj.funcref.gvar = "AsCapCategoryMorphism") and attribute_name in [ "Source", "Range" ] then
                         
                         if IsBound( cat!.compiler_hints ) and IsBound( cat!.compiler_hints.source_and_range_attributes_from_morphism_attribute ) then
                             
@@ -981,6 +1091,48 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                         return_obj.args.4,
                         # the func call with new args
                         new_attributes_values[1],
+                    ] ),
+                );
+                
+            elif return_obj.funcref.gvar = "AsCapCategoryObject" then
+                
+                # func call to AsCapCategoryObject
+                new_tree := rec(
+                    type := "EXPR_FUNCCALL",
+                    funcref := rec(
+                        type := "EXPR_REF_GVAR",
+                        gvar := "AsCapCategoryObject"
+                    ),
+                    args := AsSyntaxTreeList( [
+                        # the category
+                        return_obj.args.1,
+                        # the func call with new args
+                        new_attributes_values[1],
+                    ] ),
+                );
+                
+            elif return_obj.funcref.gvar = "AsCapCategoryMorphism" then
+                
+                Assert( 0, Length( attributes_names ) = 3 );
+                Assert( 0, attributes_names[2] = "Source" );
+                Assert( 0, attributes_names[3] = "Range" );
+                
+                # func call to AsCapCategoryMorphism
+                new_tree := rec(
+                    type := "EXPR_FUNCCALL",
+                    funcref := rec(
+                        type := "EXPR_REF_GVAR",
+                        gvar := "AsCapCategoryMorphism"
+                    ),
+                    args := AsSyntaxTreeList( [
+                        # the category
+                        return_obj.args.1,
+                        # the source
+                        new_attributes_values[2],
+                        # the func call with new args
+                        new_attributes_values[1],
+                        # the range
+                        new_attributes_values[3],
                     ] ),
                 );
                 

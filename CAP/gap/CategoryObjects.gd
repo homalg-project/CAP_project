@@ -249,6 +249,34 @@ DeclareGlobalFunction( "ObjectifyObjectForCAPWithAttributes" );
 #! @Returns an object
 DeclareGlobalFunction( "CreateCapCategoryObjectWithAttributes" );
 
+#! @Arguments category, value
+#! @Description
+#!  EXPERIMENTAL: This specification might change any time without prior notice.
+#!  Views <A>value</A> as an object in <A>category</A>.
+#! @Returns an object
+DeclareGlobalFunction( "AsCapCategoryObject" );
+
+#! @BeginGroup
+#! @Description
+#!  EXPERIMENTAL: This specification might change any time without prior notice.
+#!  Views an object obtained via <Ref Func="AsCapCategoryObject" /> as a primitive value again.
+#!  Here, the word **primitive** means **primitive from the perspective of the category**.
+#!  For example, from the perspective of an opposite category, objects of the underlying category
+#!  are primitive values.
+#!  The attribute is chosen according to the object datum type:
+#!  * For `IsInt`, the attribute `AsInteger` is used.
+#!  * For `IsHomalgMatrix`, the attribute `AsHomalgMatrix` is used.
+#!  
+#!  In all other cases or if no object datum type is given, the attribute `AsPrimitiveValue` is used.
+#! @Returns a value
+#! @Arguments object
+DeclareAttribute( "AsPrimitiveValue", IsCapCategoryObject );
+#! @Arguments object
+DeclareAttribute( "AsInteger", IsCapCategoryObject );
+#! @Arguments object
+DeclareAttribute( "AsHomalgMatrix", IsCapCategoryObject );
+#! @EndGroup
+
 ###################################
 ##
 #! @Section Object constructors

@@ -23,12 +23,11 @@ does not hold. This might cause errors.
 gap> Display( compiled_func );
 function ( cat_1, mor_1, test_mor_1 )
     local morphism_attr_1_1;
-    morphism_attr_1_1 := SafeRightDivide( UnderlyingMatrix( test_mor_1 ), 
-       SyzygiesOfRows( UnderlyingMatrix( mor_1 ) ) );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, 
-       Source( test_mor_1 ), CreateCapCategoryObjectWithAttributes( cat_1, 
-         Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, 
-       morphism_attr_1_1 );
+    morphism_attr_1_1 := SafeRightDivide( AsHomalgMatrix( test_mor_1 ), 
+       SyzygiesOfRows( AsHomalgMatrix( mor_1 ) ) );
+    return AsCapCategoryMorphism( cat_1, Source( test_mor_1 ), 
+       morphism_attr_1_1, 
+       AsCapCategoryObject( cat_1, NumberColumns( morphism_attr_1_1 ) ) );
 end
 
 #

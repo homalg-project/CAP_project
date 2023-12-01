@@ -27,7 +27,7 @@ InstallMethod( MatrixCategoryAsCategoryOfRows,
             
         fi;
         
-        return CreateCapCategoryObjectWithAttributes( cat, Dimension, dimension );
+        return AsCapCategoryObject( cat, dimension );
         
     end;
     
@@ -45,7 +45,7 @@ InstallMethod( MatrixCategoryAsCategoryOfRows,
     
     object_datum := function ( cat, object )
         
-        return Dimension( object );
+        return AsInteger( object );
         
     end;
     
@@ -81,9 +81,7 @@ InstallMethod( MatrixCategoryAsCategoryOfRows,
             
         fi;
         
-        return CreateCapCategoryMorphismWithAttributes( cat, source, range,
-                                                        UnderlyingMatrix, homalg_matrix
-        );
+        return AsCapCategoryMorphism( cat, source, homalg_matrix, range );
         
     end;
     
@@ -121,7 +119,7 @@ InstallMethod( MatrixCategoryAsCategoryOfRows,
     
     morphism_datum := function ( cat, morphism )
         
-        return UnderlyingMatrix( morphism );
+        return AsHomalgMatrix( morphism );
         
     end;
     
@@ -134,8 +132,10 @@ InstallMethod( MatrixCategoryAsCategoryOfRows,
     wrapper := ReinterpretationOfCategory( rows, rec(
         name := Concatenation( "Category of matrices over ", RingName( homalg_ring ) ),
         category_filter := IsMatrixCategory,
-        category_object_filter := IsVectorSpaceObject and HasDimension and HasIsProjective and IsProjective,
-        category_morphism_filter := IsVectorSpaceMorphism and HasUnderlyingMatrix,
+        category_object_filter := IsVectorSpaceObject and HasAsInteger and HasIsProjective and IsProjective,
+        category_morphism_filter := IsVectorSpaceMorphism and HasAsHomalgMatrix,
+        object_datum_type := IsInt,
+        morphism_datum_type := IsHomalgMatrix,
         object_constructor := object_constructor,
         object_datum := object_datum,
         morphism_constructor := morphism_constructor,
@@ -154,8 +154,8 @@ InstallMethod( MatrixCategoryAsCategoryOfRows,
     ];
     
     wrapper!.compiler_hints.source_and_range_attributes_from_morphism_attribute := rec(
-        object_attribute_name := "Dimension",
-        morphism_attribute_name := "UnderlyingMatrix",
+        object_attribute_name := "AsInteger",
+        morphism_attribute_name := "AsHomalgMatrix",
         source_attribute_getter_name := "NumberRows",
         range_attribute_getter_name := "NumberColumns",
     );

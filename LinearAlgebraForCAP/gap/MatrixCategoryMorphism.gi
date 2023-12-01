@@ -37,7 +37,7 @@ InstallMethod( VectorSpaceMorphism,
     
     field := UnderlyingRing( CapCategory( source ) );
     
-    homalg_matrix := HomalgMatrix( element_list, Dimension( source ), Dimension( range ), field );
+    homalg_matrix := HomalgMatrix( element_list, AsInteger( source ), AsInteger( range ), field );
     
     return VectorSpaceMorphism( source, homalg_matrix, range );
     
@@ -72,21 +72,19 @@ InstallOtherMethodForCompilerForCAP( VectorSpaceMorphism,
         
     fi;
     
-    if NrRows( homalg_matrix ) <> Dimension( source ) then
+    if NrRows( homalg_matrix ) <> AsInteger( source ) then
         
         Error( "the number of rows has to be equal to the dimension of the source" );
         
     fi;
     
-    if NrColumns( homalg_matrix ) <> Dimension( range ) then
+    if NrColumns( homalg_matrix ) <> AsInteger( range ) then
         
         Error( "the number of columns has to be equal to the dimension of the range" );
         
     fi;
     
-    return CreateCapCategoryMorphismWithAttributes( cat, source, range,
-                                                    UnderlyingMatrix, homalg_matrix
-    );
+    return AsCapCategoryMorphism( cat, source, homalg_matrix, range );
     
 end );
 
@@ -106,6 +104,16 @@ InstallMethod( UnderlyingFieldForHomalg,
     
 end );
 
+##
+InstallMethod( UnderlyingMatrix,
+               [ IsVectorSpaceMorphism ],
+               
+  function( morphism )
+    
+    return AsHomalgMatrix( morphism );
+    
+end );
+
 ####################################
 ##
 ## View
@@ -118,7 +126,7 @@ InstallMethod( DisplayString,
                
   function( vector_space_morphism )
     
-    return Concatenation( StringDisplay( UnderlyingMatrix( vector_space_morphism ) ), "\n", StringMutable( vector_space_morphism ), "\n" );
+    return Concatenation( StringDisplay( AsHomalgMatrix( vector_space_morphism ) ), "\n", StringMutable( vector_space_morphism ), "\n" );
     
 end );
 
@@ -130,7 +138,7 @@ InstallMethod( LaTeXOutput,
   function( vector_space_morphism )
     local matrix;
     
-    matrix := LaTeXOutput( UnderlyingMatrix( vector_space_morphism ) );
+    matrix := LaTeXOutput( AsHomalgMatrix( vector_space_morphism ) );
     
     if ValueOption( "OnlyDatum" ) = true then
        
