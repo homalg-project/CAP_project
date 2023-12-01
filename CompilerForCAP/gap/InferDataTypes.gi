@@ -1675,6 +1675,14 @@ CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "+", [ "IsHomalgMatrix", "I
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "AdditiveInverseSameMutability", [ "IsHomalgRingElement" ], "IsHomalgRingElement" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "AdditiveInverseSameMutability", [ "IsHomalgMatrix" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "-", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "Sum", [ "IsList", "IsHomalgMatrix" ], """function ( input_types )
+    
+    Assert( 0, input_types[1].element_type = input_types[2] );
+    
+    return input_types[2];
+    
+end""" );
+
 
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "*", [ "IsHomalgRingElement", "IsHomalgRingElement" ], "IsHomalgRingElement" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "*", [ "IsRat", "IsHomalgMatrix" ], "IsHomalgMatrix" );

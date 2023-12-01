@@ -459,6 +459,19 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     end );
     
     ##
+    AddSumOfMorphisms( category,
+      function( cat, source, morphisms, range )
+        
+        return CategoryOfRowsMorphism( cat, source,
+                                       Sum(
+                                            List( morphisms, UnderlyingMatrix ),
+                                            HomalgZeroMatrix( RankOfObject( source ), RankOfObject( range ), ring )
+                                       ),
+                                       range );
+        
+    end );
+    
+    ##
     AddAdditiveInverseForMorphisms( category,
       function( cat, morphism )
         

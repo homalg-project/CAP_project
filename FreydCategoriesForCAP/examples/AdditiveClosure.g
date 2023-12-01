@@ -37,6 +37,16 @@ IsWellDefined( delta );
 IsCongruentForMorphisms( gamma, PreCompose( delta, beta ) );
 #! true
 
+IsCongruentForMorphisms(
+    SumOfMorphisms( A, [ alpha, alpha, alpha ], B ),
+    AdditionForMorphisms( alpha, AdditionForMorphisms( alpha, alpha ) )
+);
+#! true
+IsCongruentForMorphisms(
+    SumOfMorphisms( A, [ ], B ),
+    ZeroMorphism( A, B )
+);
+#! true
 
 # E and EE are both occupied by GAP
 EEE := KoszulDualRing( R );;
@@ -67,6 +77,17 @@ delta := SolveLinearSystemInAbCategory( [ [ IdentityMorphism( A ) ] ], [ [ beta 
 IsWellDefined( delta );
 #! true
 IsCongruentForMorphisms( gamma, PreCompose( delta, beta ) );
+#! true
+
+IsCongruentForMorphisms(
+    SumOfMorphisms( A, [ alpha, alpha, alpha ], B ),
+    AdditionForMorphisms( alpha, AdditionForMorphisms( alpha, alpha ) )
+);
+#! true
+IsCongruentForMorphisms(
+    SumOfMorphisms( A, [ ], B ),
+    ZeroMorphism( A, B )
+);
 #! true
 
 #! @EndExample
