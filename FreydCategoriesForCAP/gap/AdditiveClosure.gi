@@ -575,86 +575,96 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         
     end );
     
-    ## Well-defined for objects and morphisms
-    ##
-    AddIsWellDefinedForObjects( category,
-      function( cat, object )
+    if CanCompute( underlying_category, "IsWellDefinedForObjects" ) then
         
-        if not ForAll( ObjectList( object ), obj -> IsIdenticalObj( UnderlyingCategory( cat ), CapCategory( obj ) ) and IsWellDefinedForObjects( UnderlyingCategory( cat ), obj ) ) then
+        ##
+        AddIsWellDefinedForObjects( category,
+          function( cat, object )
             
-            return false;
+            if not ForAll( ObjectList( object ), obj -> IsIdenticalObj( UnderlyingCategory( cat ), CapCategory( obj ) ) and IsWellDefinedForObjects( UnderlyingCategory( cat ), obj ) ) then
+                
+                return false;
+                
+            fi;
             
-        fi;
+            # all tests passed, so it is well-defined
+            return true;
+            
+        end );
         
-        # all tests passed, so it is well-defined
-        return true;
-        
-    end );
+    fi;
     
-    ##
-    AddIsWellDefinedForMorphisms( category,
-      function( cat, morphism )
-        local nr_rows, nr_cols, source_list, range_list;
+    if CanCompute( underlying_category, "IsWellDefinedForMorphisms" ) and CanCompute( underlying_category, "IsEqualForObjects" ) then
         
-        nr_rows := Length( ObjectList( Source( morphism ) ) );
-        
-        nr_cols := Length( ObjectList( Range( morphism ) ) );
-        
-        source_list := ObjectList( Source( morphism ) );
-        
-        range_list := ObjectList( Range( morphism ) );
-        
-        if IsMatrixObj( MorphismMatrix( morphism ) ) and not ( nr_rows = NrRows( MorphismMatrix( morphism ) ) and nr_cols = NrCols( MorphismMatrix( morphism ) ) ) then
+        ##
+        AddIsWellDefinedForMorphisms( category,
+          function( cat, morphism )
+            local nr_rows, nr_cols, source_list, range_list;
             
-            return false;
+            nr_rows := Length( ObjectList( Source( morphism ) ) );
             
-        elif not ForAll( [ 1 .. nr_rows ], i ->
-                 ForAll( [ 1 .. nr_cols ], j ->
-                   # is a well-defined CAP category morphism in the underlying category
-                   IsCapCategoryMorphism( morphism[i, j] ) and IsIdenticalObj( UnderlyingCategory( cat ), CapCategory( morphism[i, j] ) ) and IsWellDefinedForMorphisms( UnderlyingCategory( cat ), morphism[i, j] )
-                 ) 
-               ) then
+            nr_cols := Length( ObjectList( Range( morphism ) ) );
             
-            return false;
+            source_list := ObjectList( Source( morphism ) );
             
-        elif not ForAll( [ 1 .. nr_rows ], i ->
-                 ForAll( [ 1 .. nr_cols ], j ->
-                   IsEqualForObjects( UnderlyingCategory( cat ), Source( morphism[i, j] ), source_list[i] ) and IsEqualForObjects( UnderlyingCategory( cat ), Range( morphism[i, j] ), range_list[j] )
-                 )
-               ) then
+            range_list := ObjectList( Range( morphism ) );
             
-            return false;
+            if IsMatrixObj( MorphismMatrix( morphism ) ) and not ( nr_rows = NrRows( MorphismMatrix( morphism ) ) and nr_cols = NrCols( MorphismMatrix( morphism ) ) ) then
+                
+                return false;
+                
+            elif not ForAll( [ 1 .. nr_rows ], i ->
+                     ForAll( [ 1 .. nr_cols ], j ->
+                       # is a well-defined CAP category morphism in the underlying category
+                       IsCapCategoryMorphism( morphism[i, j] ) and IsIdenticalObj( UnderlyingCategory( cat ), CapCategory( morphism[i, j] ) ) and IsWellDefinedForMorphisms( UnderlyingCategory( cat ), morphism[i, j] )
+                     )
+                   ) then
+                
+                return false;
+                
+            elif not ForAll( [ 1 .. nr_rows ], i ->
+                     ForAll( [ 1 .. nr_cols ], j ->
+                       IsEqualForObjects( UnderlyingCategory( cat ), Source( morphism[i, j] ), source_list[i] ) and IsEqualForObjects( UnderlyingCategory( cat ), Range( morphism[i, j] ), range_list[j] )
+                     )
+                   ) then
+                
+                return false;
+                
+            fi;
             
-        fi;
+            # all tests passed, so it is well-defined
+            return true;
+            
+        end );
         
-        # all tests passed, so it is well-defined
-        return true;
-        
-    end );
+    fi;
     
-    ## Equality Basic Operations for Objects and Morphisms
-    ##
-    AddIsEqualForObjects( category,
-      function( cat, object_1, object_2 )
-        local list_1, list_2, size_1, size_2;
+    if CanCompute( underlying_category, "IsEqualForObjects" ) then
         
-        list_1 := ObjectList( object_1 );
-        
-        list_2 := ObjectList( object_2 );
-        
-        size_1 := Length( list_1 );
-        
-        size_2 := Length( list_2 );
-        
-        if size_1 <> size_2 then
+        ##
+        AddIsEqualForObjects( category,
+          function( cat, object_1, object_2 )
+            local list_1, list_2, size_1, size_2;
             
-            return false;
+            list_1 := ObjectList( object_1 );
             
-        fi;
+            list_2 := ObjectList( object_2 );
+            
+            size_1 := Length( list_1 );
+            
+            size_2 := Length( list_2 );
+            
+            if size_1 <> size_2 then
+                
+                return false;
+                
+            fi;
+            
+            return ForAll( [ 1 .. size_1 ], i -> IsEqualForObjects( UnderlyingCategory( cat ), list_1[i], list_2[i] ) );
+            
+        end );
         
-        return ForAll( [ 1 .. size_1 ], i -> IsEqualForObjects( UnderlyingCategory( cat ), list_1[i], list_2[i] ) );
-      
-    end );
+    fi;
     
     compare_morphisms := function( cat, morphism_1, morphism_2, comparison_function )
       local nr_rows_1, nr_rows_2, nr_cols_1, nr_cols_2;
@@ -671,7 +681,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         if nr_rows_1 <> nr_rows_2 then
             
             return false;
-        
+            
         elif nr_cols_1 <> nr_cols_2 then
             
             return false;
@@ -688,143 +698,173 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         
     end;
     
-    ##
-    AddIsEqualForMorphisms( category,
-      function( cat, morphism_1, morphism_2 )
+    if CanCompute( underlying_category, "IsEqualForMorphisms" ) then
         
-        return compare_morphisms( cat, morphism_1, morphism_2, IsEqualForMorphisms );
+        ##
+        AddIsEqualForMorphisms( category,
+          function( cat, morphism_1, morphism_2 )
+            
+            return compare_morphisms( cat, morphism_1, morphism_2, IsEqualForMorphisms );
+            
+        end );
         
-    end );
+    fi;
     
-    ##
-    AddIsCongruentForMorphisms( category,
-      function( cat, morphism_1, morphism_2 )
+    if CanCompute( underlying_category, "IsCongruentForMorphisms" ) then
         
-        return compare_morphisms( cat, morphism_1, morphism_2, IsCongruentForMorphisms );
+        ##
+        AddIsCongruentForMorphisms( category,
+          function( cat, morphism_1, morphism_2 )
+            
+            return compare_morphisms( cat, morphism_1, morphism_2, IsCongruentForMorphisms );
+            
+        end );
         
-    end );
+    fi;
     
-    ## Basic Operations for a Category
-    ##
-    AddIdentityMorphism( category,
-      function( cat, object )
-        local object_list, size, listlist, i, j;
+    if CanCompute( underlying_category, "IdentityMorphism" ) and CanCompute( underlying_category, "ZeroMorphism" ) then
         
-        object_list := ObjectList( object );
-        
-        size := Length( object_list );
-        
-        listlist := List( [ 1 .. size ], i ->
-                        List( [ 1 .. size ], function( j )
-                            
-                            if i = j then
+        ##
+        AddIdentityMorphism( category,
+          function( cat, object )
+            local object_list, size, listlist, i, j;
+            
+            object_list := ObjectList( object );
+            
+            size := Length( object_list );
+            
+            listlist := List( [ 1 .. size ], i ->
+                            List( [ 1 .. size ], function( j )
                                 
-                                return IdentityMorphism( UnderlyingCategory( cat ), object_list[i] );
+                                if i = j then
+                                    
+                                    return IdentityMorphism( UnderlyingCategory( cat ), object_list[i] );
+                                    
+                                else
+                                    
+                                    return ZeroMorphism( UnderlyingCategory( cat ), object_list[i], object_list[j] );
+                                    
+                                fi;
                                 
-                            else
-                                
-                                return ZeroMorphism( UnderlyingCategory( cat ), object_list[i], object_list[j] );
-                                
-                            fi;
-                            
-                        end )
-                    );
+                            end )
+                        );
+            
+            return AdditiveClosureMorphism( cat, object, listlist, object );
+            
+        end );
         
-        return AdditiveClosureMorphism( cat, object, listlist, object );
-        
-    end );
+    fi;
     
-    ##
-    AddZeroMorphism( category,
-      function( cat, source, range )
-        local object_list_source, object_list_range, size_list_source, size_list_range, listlist, i, j;
+    if CanCompute( underlying_category, "ZeroMorphism" ) then
         
-        object_list_source := ObjectList( source );
-        
-        object_list_range := ObjectList( range );
-        
-        size_list_source := Length( object_list_source );
-        
-        size_list_range := Length( object_list_range );
-        
-        listlist := List( [ 1 .. size_list_source ], i ->
-                        List( [ 1 .. size_list_range ], j ->
-                            ZeroMorphism( UnderlyingCategory( cat ), object_list_source[i], object_list_range[j] )
-                        )
-                    );
-        
-        return AdditiveClosureMorphism( cat, source, listlist, range );
-        
-    end );
-    
-    ##
-    AddPreCompose( category,
-      function( cat, morphism_1, morphism_2 )
-        local nr_rows_1, nr_cols_1, nr_rows_2, nr_cols_2, listlist, i, j;
-        
-        nr_rows_1 := NrRows( morphism_1 );
-        
-        nr_cols_1 := NrCols( morphism_1 );
-        
-        nr_rows_2 := NrRows( morphism_2 );
-        
-        nr_cols_2 := NrCols( morphism_2 );
-        
-        #% CAP_JIT_DROP_NEXT_STATEMENT
-        Assert( 0, nr_cols_1 = nr_rows_2 ); # already checked by the pre function
-        
-        listlist := List( [ 1 .. nr_rows_1 ], i ->
-                        List( [ 1 .. nr_cols_2 ], j ->
-                            SumOfMorphisms( UnderlyingCategory( cat ),
-                                Source( morphism_1 )[i],
-                                List( [ 1 .. nr_cols_1 ], k -> PreCompose( UnderlyingCategory( cat ), morphism_1[i, k], morphism_2[k, j] ) ),
-                                Range( morphism_2 )[j]
+        ##
+        AddZeroMorphism( category,
+          function( cat, source, range )
+            local object_list_source, object_list_range, size_list_source, size_list_range, listlist, i, j;
+            
+            object_list_source := ObjectList( source );
+            
+            object_list_range := ObjectList( range );
+            
+            size_list_source := Length( object_list_source );
+            
+            size_list_range := Length( object_list_range );
+            
+            listlist := List( [ 1 .. size_list_source ], i ->
+                            List( [ 1 .. size_list_range ], j ->
+                                ZeroMorphism( UnderlyingCategory( cat ), object_list_source[i], object_list_range[j] )
                             )
-                        )
-                    );
+                        );
+            
+            return AdditiveClosureMorphism( cat, source, listlist, range );
+            
+        end );
         
-        return AdditiveClosureMorphism( cat, Source( morphism_1 ), listlist, Range( morphism_2 ) );
-        
-    end );
+    fi;
     
-    ## Basic Operations for an Additive Category
-    ##
-    AddIsZeroForMorphisms( category,
-      function( cat, morphism )
+    if CanCompute( underlying_category, "PreCompose" ) and CanCompute( underlying_category, "SumOfMorphisms" ) then
         
-        return ForAll( [ 1 .. NrRows( morphism ) ], i -> ForAll( [ 1 .. NrCols( morphism ) ], j -> IsZeroForMorphisms( UnderlyingCategory( cat ), morphism[i, j] ) ) );
+        ##
+        AddPreCompose( category,
+          function( cat, morphism_1, morphism_2 )
+            local nr_rows_1, nr_cols_1, nr_rows_2, nr_cols_2, listlist, i, j;
+            
+            nr_rows_1 := NrRows( morphism_1 );
+            
+            nr_cols_1 := NrCols( morphism_1 );
+            
+            nr_rows_2 := NrRows( morphism_2 );
+            
+            nr_cols_2 := NrCols( morphism_2 );
+            
+            #% CAP_JIT_DROP_NEXT_STATEMENT
+            Assert( 0, nr_cols_1 = nr_rows_2 ); # already checked by the pre function
+            
+            listlist := List( [ 1 .. nr_rows_1 ], i ->
+                            List( [ 1 .. nr_cols_2 ], j ->
+                                SumOfMorphisms( UnderlyingCategory( cat ),
+                                    Source( morphism_1 )[i],
+                                    List( [ 1 .. nr_cols_1 ], k -> PreCompose( UnderlyingCategory( cat ), morphism_1[i, k], morphism_2[k, j] ) ),
+                                    Range( morphism_2 )[j]
+                                )
+                            )
+                        );
+            
+            return AdditiveClosureMorphism( cat, Source( morphism_1 ), listlist, Range( morphism_2 ) );
+            
+        end );
         
-    end );
+    fi;
     
-    ##
-    AddAdditionForMorphisms( category,
-      function( cat, morphism_1, morphism_2 )
-        local listlist;
+    if CanCompute( underlying_category, "IsZeroForMorphisms" ) then
         
-        listlist := List( [ 1 .. NrRows( morphism_1 ) ],
-                        i -> List( [ 1 .. NrCols( morphism_1 ) ],
-                            j -> AdditionForMorphisms( UnderlyingCategory( cat ), morphism_1[i, j], morphism_2[i, j] ) ) );
+        ##
+        AddIsZeroForMorphisms( category,
+          function( cat, morphism )
+            
+            return ForAll( [ 1 .. NrRows( morphism ) ], i -> ForAll( [ 1 .. NrCols( morphism ) ], j -> IsZeroForMorphisms( UnderlyingCategory( cat ), morphism[i, j] ) ) );
+            
+        end );
         
-        return AdditiveClosureMorphism( cat, Source( morphism_1 ),
-                                        listlist,
-                                        Range( morphism_1 ) );
-        
-    end );
+    fi;
     
-    ##
-    AddAdditiveInverseForMorphisms( category,
-      function( cat, morphism )
-        local listlist;
+    if CanCompute( underlying_category, "AdditionForMorphisms" ) then
         
-        listlist := List( [ 1 .. NrRows( morphism ) ],
-                        i -> List( [ 1 .. NrCols( morphism ) ],
-                            j -> AdditiveInverseForMorphisms( UnderlyingCategory( cat ), morphism[i, j] ) ) );
+        ##
+        AddAdditionForMorphisms( category,
+          function( cat, morphism_1, morphism_2 )
+            local listlist;
+            
+            listlist := List( [ 1 .. NrRows( morphism_1 ) ],
+                            i -> List( [ 1 .. NrCols( morphism_1 ) ],
+                                j -> AdditionForMorphisms( UnderlyingCategory( cat ), morphism_1[i, j], morphism_2[i, j] ) ) );
+            
+            return AdditiveClosureMorphism( cat, Source( morphism_1 ),
+                                            listlist,
+                                            Range( morphism_1 ) );
+            
+        end );
         
-        return AdditiveClosureMorphism( cat, Source( morphism ),
-                                        listlist,
-                                        Range( morphism ) );
+    fi;
+    
+    if CanCompute( underlying_category, "AdditiveInverseForMorphisms" ) then
         
-    end );
+        ##
+        AddAdditiveInverseForMorphisms( category,
+          function( cat, morphism )
+            local listlist;
+            
+            listlist := List( [ 1 .. NrRows( morphism ) ],
+                            i -> List( [ 1 .. NrCols( morphism ) ],
+                                j -> AdditiveInverseForMorphisms( UnderlyingCategory( cat ), morphism[i, j] ) ) );
+            
+            return AdditiveClosureMorphism( cat, Source( morphism ),
+                                            listlist,
+                                            Range( morphism ) );
+            
+        end );
+        
+    fi;
     
     ##
     AddZeroObject( category,
@@ -1168,8 +1208,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
             
         fi;
         
-        if ForAll( [ "UniversalMorphismIntoZeroObject",
-                     "UniversalMorphismIntoDirectSum" ],
+        if ForAll( [ "UniversalMorphismIntoDirectSum" ],
                      f -> CanCompute( range_category, f ) )
            and ForAll( [ "DistinguishedObjectOfHomomorphismStructure",
                          "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" ],
