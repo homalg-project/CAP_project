@@ -871,6 +871,19 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATES, function ( tree
         
         for template in templates do
             
+            # make sure that the outermost function is not turned into a non-literal function
+            if IsEmpty( func_id_stack ) then
+                
+                Assert( 0, tree.type = "EXPR_DECLARATIVE_FUNC" );
+                
+                if template.dst_template_tree.type <> "EXPR_DECLARATIVE_FUNC" then
+                    
+                    continue;
+                    
+                fi;
+                
+            fi;
+            
             # Try to apply the same logic template multiple times.
             # If it does not match multiple times, this does not increase the runtime noticeably
             # but if it does, the runtime improves noticeably.

@@ -255,5 +255,43 @@ function ( L_1 )
           end );
 end
 
+# check that the outermost function is not turned into a non-literal function
+gap> template1 := rec(
+>     variable_names := [ ],
+>     src_template := "x -> x + 1 - 1",
+>     dst_template := "IdFunc",
+> );;
+gap> CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE( template1 );
+gap> template2 := rec(
+>     variable_names := [ ],
+>     src_template := "x -> x + 1 - 1",
+>     dst_template := "x -> x",
+> );;
+gap> CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE( template2 );
+
+#
+gap> func1 := y -> (x -> x + 1 - 1);;
+gap> func2 := x -> x + 1 - 1;;
+
+#
+gap> Display( applied_logic_template_to_func( func1, template1, fail ) );
+function ( y_1 )
+    return IdFunc;
+end
+gap> Display( applied_logic_template_to_func( func1, template2, fail ) );
+function ( y_1 )
+    return function ( x_2 )
+          return x_2;
+      end;
+end
+gap> Display( applied_logic_template_to_func( func2, template1, fail ) );
+function ( x_1 )
+    return x_1 + 1 - 1;
+end
+gap> Display( applied_logic_template_to_func( func2, template2, fail ) );
+function ( x_1 )
+    return x_1;
+end
+
 #
 gap> STOP_TEST( "LogicTemplates" );
