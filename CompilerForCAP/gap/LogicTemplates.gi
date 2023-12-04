@@ -852,7 +852,7 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree )
         
     od;
     
-    return CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATES( tree, Filtered( CAP_JIT_LOGIC_TEMPLATES, t -> IsBound( template.is_fully_enhanced ) and template.is_fully_enhanced = true ) );
+    return CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATES( tree, Filtered( CAP_JIT_LOGIC_TEMPLATES, t -> IsBound( t.is_fully_enhanced ) and t.is_fully_enhanced = true ) );
     
 end );
 

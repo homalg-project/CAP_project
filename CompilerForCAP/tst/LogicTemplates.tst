@@ -5,16 +5,22 @@ gap> LoadPackage( "CompilerForCAP", false );
 true
 
 # example testing needed_packages
-gap> template := rec(
+gap> template1 := rec(
 >     variable_names := [ "name" ],
 >     variable_filters := [ "THIS_SHOULD_NOT_BE_PARSED" ],
 >     src_template := "THIS_SHOULD_NOT_BE_PARSED_TOO",
 >     dst_template := "THIS_SHOULD_NOT_BE_PARSED_EITHER",
 >     needed_packages := [ [ "NON_EXISTING_PACKAGE", ">= 9999" ] ],
 > );;
+gap> template2 := rec(
+>     variable_names := [ ],
+>     src_template := "1 + 1",
+>     dst_template := "2",
+> );;
 
 #
-gap> Add( CAP_JIT_LOGIC_TEMPLATES, template );
+gap> Add( CAP_JIT_LOGIC_TEMPLATES, template1 );
+gap> Add( CAP_JIT_LOGIC_TEMPLATES, template2 );
 
 #
 gap> Display( CapJitCompiledFunction( x -> x ) );
@@ -23,7 +29,9 @@ function ( x_1 )
 end
 
 #
-gap> IsIdenticalObj( Remove( CAP_JIT_LOGIC_TEMPLATES ), template );
+gap> IsIdenticalObj( Remove( CAP_JIT_LOGIC_TEMPLATES ), template2 );
+true
+gap> IsIdenticalObj( Remove( CAP_JIT_LOGIC_TEMPLATES ), template1 );
 true
 
 #
