@@ -216,7 +216,7 @@
     [4X[28XA CAP category with name[128X[104X
     [4X[28XThe category of graded left f.p. modules over Q[x,y] (with weights [ 1, 1 ]):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X38 primitive operations were used to derive 227 operations for this category[128X[104X
+    [4X[28X38 primitive operations were used to derive 228 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsMonoidalCategory[128X[104X
     [4X[28X* IsAbelianCategoryWithEnoughProjectives[128X[104X
@@ -278,7 +278,7 @@
     [4X[28XThe Serre quotient category of The category of graded left f.p. modules[128X[104X
     [4X[28Xover Q[x,y] (with weights [ 1, 1 ]) by test function with name: is_artinian:[128X[104X
     [4X[28X[128X[104X
-    [4X[28X21 primitive operations were used to derive 186 operations for this category[128X[104X
+    [4X[28X21 primitive operations were used to derive 187 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsAbelianCategory[128X[104X
     [4X[25Xgap>[125X [27XSh := CanonicalProjection( CohP1 );[127X[104X
