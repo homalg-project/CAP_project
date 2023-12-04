@@ -301,5 +301,28 @@ function ( x_1 )
     return x_1;
 end
 
+# limit number of applications
+gap> orig_number_of_logic_templates := Length( CAP_JIT_LOGIC_TEMPLATES );;
+gap> CapJitAddLogicTemplate( rec(
+>     variable_names := [ ],
+>     src_template := "1 + 1",
+>     dst_template := "2",
+>     number_of_applications := 2,
+> ) );
+gap> Length( CAP_JIT_LOGIC_TEMPLATES ) = orig_number_of_logic_templates + 1;
+true
+
+#
+gap> Display( CapJitCompiledFunction( x -> [ 1 + 1, 1 + 1, 1 + 1, 1 + 1 ] ) );
+function ( x_1 )
+    local deduped_1_1;
+    deduped_1_1 := 1 + 1;
+    return [ 2, 2, deduped_1_1, deduped_1_1 ];
+end
+
+#
+gap> Length( CAP_JIT_LOGIC_TEMPLATES ) = orig_number_of_logic_templates;
+true
+
 #
 gap> STOP_TEST( "LogicTemplates" );
