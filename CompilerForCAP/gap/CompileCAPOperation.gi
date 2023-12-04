@@ -6,6 +6,8 @@
 InstallGlobalFunction( "CapJitCompiledCAPOperationAsEnhancedSyntaxTree", function ( cat, operation_name, post_processing_enabled )
   local index, function_to_compile, global_variable_name, info, return_type, trees;
     
+    Assert( 0, CanCompute( cat, operation_name ) );
+    
     # find the last added function with no additional filters
     index := Last( PositionsProperty( cat!.added_functions.(operation_name), f -> Length( f[2] ) = 0 ) );
     
