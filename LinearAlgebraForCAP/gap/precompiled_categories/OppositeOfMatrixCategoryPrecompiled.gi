@@ -550,9 +550,11 @@ function ( cat_1, alpha_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := Opposite( alpha_1 );
     deduped_1_1 := UnderlyingMatrix( deduped_2_1 );
-    if NumberRows( deduped_1_1 ) <> Dimension( Source( deduped_2_1 ) ) then
+    if not IsHomalgMatrix( deduped_1_1 ) then
         return false;
-    elif NumberColumns( deduped_1_1 ) <> Dimension( Range( deduped_2_1 ) ) then
+    elif not NumberRows( deduped_1_1 ) = Dimension( Source( deduped_2_1 ) ) then
+        return false;
+    elif not NumberColumns( deduped_1_1 ) = Dimension( Range( deduped_2_1 ) ) then
         return false;
     else
         return true;
@@ -568,7 +570,11 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    if Dimension( Opposite( arg2_1 ) ) < 0 then
+    local deduped_1_1;
+    deduped_1_1 := Dimension( Opposite( arg2_1 ) );
+    if not IsInt( deduped_1_1 ) then
+        return false;
+    elif not deduped_1_1 >= 0 then
         return false;
     else
         return true;

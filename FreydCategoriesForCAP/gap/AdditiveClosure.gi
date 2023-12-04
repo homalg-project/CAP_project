@@ -581,7 +581,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         AddIsWellDefinedForObjects( category,
           function( cat, object )
             
-            if not ForAll( ObjectList( object ), obj -> IsIdenticalObj( UnderlyingCategory( cat ), CapCategory( obj ) ) and IsWellDefinedForObjects( UnderlyingCategory( cat ), obj ) ) then
+            if not IsList( ObjectList( object ) ) then
+                
+                return false;
+                
+            elif not ForAll( ObjectList( object ), obj -> IsWellDefinedForObjects( UnderlyingCategory( cat ), obj ) ) then
                 
                 return false;
                 
@@ -599,24 +603,31 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         ##
         AddIsWellDefinedForMorphisms( category,
           function( cat, morphism )
-            local nr_rows, nr_cols, source_list, range_list;
-            
-            nr_rows := Length( ObjectList( Source( morphism ) ) );
-            
-            nr_cols := Length( ObjectList( Range( morphism ) ) );
+            local source_list, range_list, nr_rows, nr_cols;
             
             source_list := ObjectList( Source( morphism ) );
-            
             range_list := ObjectList( Range( morphism ) );
             
-            if IsMatrixObj( MorphismMatrix( morphism ) ) and not ( nr_rows = NrRows( MorphismMatrix( morphism ) ) and nr_cols = NrCols( MorphismMatrix( morphism ) ) ) then
+            nr_rows := Length( source_list );
+            nr_cols := Length( range_list );
+            
+            # we currently allow m x 0 matrices to be encoded as empty lists
+            if nr_cols = 0 and MorphismMatrix( morphism ) = [ ] then
+                
+                return true;
+                
+            elif not (IsList( MorphismMatrix( morphism ) ) and Length( MorphismMatrix( morphism ) ) = nr_rows) then
+                
+                return false;
+                
+            elif not ForAll( [ 1 .. nr_rows ], i -> IsList( MorphismMatrix( morphism )[i] ) and Length( MorphismMatrix( morphism )[i] ) = nr_cols ) then
                 
                 return false;
                 
             elif not ForAll( [ 1 .. nr_rows ], i ->
                      ForAll( [ 1 .. nr_cols ], j ->
                        # is a well-defined CAP category morphism from `source_list[i]` to `range_list[j]` in the underlying category
-                       IsCapCategoryMorphism( morphism[i, j] ) and IsIdenticalObj( UnderlyingCategory( cat ), CapCategory( morphism[i, j] ) ) and IsWellDefinedForMorphismsWithGivenSourceAndRange( UnderlyingCategory( cat ), source_list[i], morphism[i, j], range_list[j] )
+                       IsWellDefinedForMorphismsWithGivenSourceAndRange( UnderlyingCategory( cat ), source_list[i], morphism[i, j], range_list[j] )
                      )
                    ) then
                 

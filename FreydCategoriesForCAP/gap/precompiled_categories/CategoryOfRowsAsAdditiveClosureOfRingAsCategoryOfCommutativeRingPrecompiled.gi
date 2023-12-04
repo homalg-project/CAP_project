@@ -402,9 +402,11 @@ end
 function ( cat_1, alpha_1 )
     local deduped_1_1;
     deduped_1_1 := UnderlyingMatrix( alpha_1 );
-    if NumberRows( deduped_1_1 ) <> RankOfObject( Source( alpha_1 ) ) then
+    if not IsHomalgMatrix( deduped_1_1 ) then
         return false;
-    elif NumberColumns( deduped_1_1 ) <> RankOfObject( Range( alpha_1 ) ) then
+    elif not NumberRows( deduped_1_1 ) = RankOfObject( Source( alpha_1 ) ) then
+        return false;
+    elif not NumberColumns( deduped_1_1 ) = RankOfObject( Range( alpha_1 ) ) then
         return false;
     else
         return true;
@@ -420,7 +422,11 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    if RankOfObject( arg2_1 ) < 0 then
+    local deduped_1_1;
+    deduped_1_1 := RankOfObject( arg2_1 );
+    if not IsInt( deduped_1_1 ) then
+        return false;
+    elif not deduped_1_1 >= 0 then
         return false;
     else
         return true;
