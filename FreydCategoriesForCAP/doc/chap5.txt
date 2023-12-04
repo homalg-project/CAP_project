@@ -204,6 +204,10 @@
   [30X    [33X[0;6Y[2XIsWellDefinedForMorphisms[102X    ([14XCAP:    IsWellDefinedForMorphisms    for
         IsCapCategoryMorphism[114X)[133X
   
+  [30X    [33X[0;6Y[2XIsWellDefinedForMorphismsWithGivenSourceAndRange[102X                 ([14XCAP:
+        IsWellDefinedForMorphismsWithGivenSourceAndRange                   for
+        IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
+  
   [30X    [33X[0;6Y[2XIsWellDefinedForObjects[102X      ([14XCAP:     IsWellDefinedForObjects     for
         IsCapCategoryObject[114X)[133X
   
