@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# CompilerForCAP: Speed up computations in CAP categories
+# CompilerForCAP: Speed up and verify categorical algorithms
 #
 # Reading the declaration part of the package.
 #
@@ -49,3 +49,5 @@ ReadPackage( "CompilerForCAP", "gap/DeduplicateExpressions.gd" );
 ReadPackage( "CompilerForCAP", "gap/CleanUpHoistedAndDeduplicatedExpressions.gd" );
 
 ReadPackage( "CompilerForCAP", "gap/PrecompileCategory.gd" );
+
+ReadPackage( "CompilerForCAP", "gap/ProofAssistant.gd" );

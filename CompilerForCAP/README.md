@@ -1,7 +1,7 @@
 <!-- BEGIN HEADER -->
 # CompilerForCAP&ensp;<sup><sup>[![View code][code-img]][code-url]</sup></sup>
 
-### Speed up computations in CAP categories
+### Speed up and verify categorical algorithms
 
 | Documentation | Latest Release | Build Status of [CAP_project](/../../) | Code Coverage |
 | ------------- | -------------- | ------------ | ------------- |

@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# CompilerForCAP: Speed up computations in CAP categories
+# CompilerForCAP: Speed up and verify categorical algorithms
 #
 # This file contains package meta data. For additional information on
 # the meaning and correct usage of these fields, please consult the
@@ -9,8 +9,8 @@
 SetPackageInfo( rec(
 
 PackageName := "CompilerForCAP",
-Subtitle := "Speed up computations in CAP categories",
-Version := "2023.12-03",
+Subtitle := "Speed up and verify categorical algorithms",
+Version := "2023.12-04",
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
 License := "GPL-2.0-or-later",
 
@@ -63,7 +63,7 @@ PackageDoc := rec(
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
   SixFile   := "doc/manual.six",
-  LongTitle := "Speed up computations in CAP categories",
+  LongTitle := "Speed up and verify categorical algorithms",
 ),
 
 Dependencies := rec(

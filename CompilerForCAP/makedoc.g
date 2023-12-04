@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# CompilerForCAP: Speed up computations in CAP categories
+# CompilerForCAP: Speed up and verify categorical algorithms
 #
 # This file is a script which compiles the package manual.
 #
