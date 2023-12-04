@@ -331,6 +331,12 @@ DeclareGlobalFunction( "HandlePrecompiledTowers" );
 DeclareGlobalFunction( "CAP_JIT_INCOMPLETE_LOGIC" );
 
 #! @Description
+#!   Simply returns <A>func</A>, which must be a literal function without arguments only containing an `if-elif-else` statement with each branch consisting of a single `return` statement.
+#!   Used to write expressions of the form `function() if-elif-else end()` as `CAP_JIT_EXPR_CASE_WRAPPER(function() if-elif-else end)()` because the former is not valid in Julia.
+#! @Arguments func
+DeclareGlobalFunction( "CAP_JIT_EXPR_CASE_WRAPPER" );
+
+#! @Description
 #!   Same as `List( <A>list</A>, <A>func</A> )` but <A>func</A> gets both the key `i` and `<A>list</A>[i]` as arguments.
 #! @Arguments list, func
 #! @Returns a list
