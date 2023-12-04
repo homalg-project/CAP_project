@@ -206,7 +206,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
     template.new_funcs_corresponding_src_funcs := [ ];
     
     pre_func := function ( tree, func_id_stack )
-      local dst_func, pos, condition_func, src_template_path, src_func, pre_func;
+      local dst_func, pos, condition_func, src_template_paths, src_func, pre_func;
         
         if tree.type = "EXPR_DECLARATIVE_FUNC" then
             
@@ -223,16 +223,21 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
                     
                 end;
                 
-                src_template_path := CapJitFindNodeDeep( template.src_template_tree, condition_func );
+                src_template_paths := CapJitFindNodes( template.src_template_tree, condition_func );
                 
-                if src_template_path = fail then
+                if Length( src_template_paths ) = 0 then
                     
                     # COVERAGE_IGNORE_NEXT_LINE
                     Error( "could not find matching func in src_template" );
                     
+                elif Length( src_template_paths ) > 1 then
+                    
+                    # COVERAGE_IGNORE_NEXT_LINE
+                    Error( "found multiple matching funcs in src_template" );
+                    
                 fi;
                 
-                src_func := CapJitGetNodeByPath( template.src_template_tree, src_template_path );
+                src_func := CapJitGetNodeByPath( template.src_template_tree, src_template_paths[1] );
                 
                 Assert( 0, src_func.nams = dst_func.nams );
                 
