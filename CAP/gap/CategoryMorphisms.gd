@@ -741,6 +741,15 @@ DeclareOperation( "LinearCombinationOfMorphisms",
 DeclareOperation( "IsWellDefinedForMorphisms",
                   [ IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are two well-defined objects $S$ and $T$ and a morphism $\alpha$.
+#! The output is <C>true</C> if $\alpha$ is a well-defined morphism from $S$ to $T$,
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments source, alpha, range
+DeclareOperation( "IsWellDefinedForMorphismsWithGivenSourceAndRange",
+                  [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
 ###################################
 ##
 #! @Section Lift/Colift
