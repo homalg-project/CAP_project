@@ -32,6 +32,7 @@ InstallGlobalFunction( DummyRing, function( )
     CapJitAddTypeSignature( "ZeroImmutable", [ ring_filter ], ring_element_filter );
     CapJitAddTypeSignature( "AdditiveInverseSameMutability", [ ring_element_filter ], ring_element_filter );
     CapJitAddTypeSignature( "*", [ ring_element_filter, ring_element_filter ], ring_element_filter );
+    CapJitAddTypeSignature( "OneImmutable", [ ring_filter ], ring_element_filter );
     
     return ring;
     
@@ -66,6 +67,7 @@ InstallGlobalFunction( DummyCommutativeRing, function( )
     CapJitAddTypeSignature( "ZeroImmutable", [ ring_filter ], ring_element_filter );
     CapJitAddTypeSignature( "AdditiveInverseSameMutability", [ ring_element_filter ], ring_element_filter );
     CapJitAddTypeSignature( "*", [ ring_element_filter, ring_element_filter ], ring_element_filter );
+    CapJitAddTypeSignature( "OneImmutable", [ ring_filter ], ring_element_filter );
     
     return ring;
     
@@ -100,6 +102,7 @@ InstallGlobalFunction( DummyField, function( )
     CapJitAddTypeSignature( "ZeroImmutable", [ ring_filter ], ring_element_filter );
     CapJitAddTypeSignature( "AdditiveInverseSameMutability", [ ring_element_filter ], ring_element_filter );
     CapJitAddTypeSignature( "*", [ ring_element_filter, ring_element_filter ], ring_element_filter );
+    CapJitAddTypeSignature( "OneImmutable", [ ring_filter ], ring_element_filter );
     
     return ring;
     
