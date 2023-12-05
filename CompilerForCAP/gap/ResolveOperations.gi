@@ -17,7 +17,7 @@ BindGlobal( "CAP_JIT_INTERNAL_WARN_ABOUT_SIMILAR_METHODS", function ( operation,
     
     operation_name := NameFunction( operation );
     
-    if operation_name in [ "IsEqualForObjects", "IsEqualForMorphisms", "IsCongruentForMorphisms" ] then
+    if operation_name in [ "IsEqualForObjects", "IsEqualForMorphisms", "IsCongruentForMorphisms" ] and number_of_arguments = 3 and Length( filters ) > 0 and IsSpecializationOfFilter( "category", filters[1] ) then
         
         # these operations have special fallback installations for objects/morphisms from different categories
         
