@@ -457,3 +457,13 @@ CapJitAddLogicTemplate(
         needed_packages := [ [ "MatricesForHomalg", ">= 2020.06.27" ] ],
     )
 );
+
+# Sum( ListWithIdenticalEntries( n, entry ) ) -> n * entry
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "n", "entry" ],
+        variable_filters := [ "IsInt", "IsInt" ],
+        src_template := "Sum( ListWithIdenticalEntries( n, entry ) )",
+        dst_template := "n * entry",
+    )
+);
