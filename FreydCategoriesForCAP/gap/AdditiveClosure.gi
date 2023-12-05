@@ -1037,9 +1037,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
               function( cat, object_1, object_2 )
                 
                 return DirectSum( range_category,
-                          Concatenation(
-                            List( ObjectList( object_1 ), obj_i ->
-                              List( ObjectList( object_2 ), obj_j -> HomomorphismStructureOnObjectsExtendedByFullEmbedding( UnderlyingCategory( cat ), range_category, obj_i, obj_j ) )
+                          List( [ 1 .. Length( ObjectList( object_1 ) ) ], j ->
+                            DirectSum( range_category,
+                              List( [ 1 .. Length( ObjectList( object_2 ) ) ], s -> HomomorphismStructureOnObjectsExtendedByFullEmbedding( UnderlyingCategory( cat ), range_category, ObjectList( object_1 )[j], ObjectList( object_2 )[s] ) )
                             )
                           )
                         );
