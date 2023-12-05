@@ -420,9 +420,13 @@ InstallOtherMethod( IsEqualForMorphisms,
         
     fi;
     
-    if not IsIdenticalObj( CapCategory( morphism_1 ), CapCategory( morphism_2 ) ) then
+    if not IsIdenticalObj( CapCategory( morphism_1 ), cat ) then
         
-        Error( Concatenation( "the morphism \"", String( morphism_1 ), "\" and the morphism \"", String( morphism_2 ), "\" do not belong to the same CAP category" ) );
+        Error( Concatenation( "the morphism \"", String( morphism_1 ), "\" does not belong to the CAP category <cat>" ) );
+        
+    elif not IsIdenticalObj( CapCategory( morphism_2 ), cat ) then
+        
+        Error( Concatenation( "the morphism \"", String( morphism_2 ), "\" does not belong to the CAP category <cat>" ) );
         
     else
         
@@ -459,9 +463,13 @@ InstallOtherMethod( IsCongruentForMorphisms,
         
     fi;
     
-    if not IsIdenticalObj( CapCategory( morphism_1 ), CapCategory( morphism_2 ) ) then
+    if not IsIdenticalObj( CapCategory( morphism_1 ), cat ) then
         
-        Error( Concatenation( "the morphism \"", String( morphism_1 ), "\" and the morphism \"", String( morphism_2 ), "\" do not belong to the same CAP category" ) );
+        Error( Concatenation( "the morphism \"", String( morphism_1 ), "\" does not belong to the CAP category <cat>" ) );
+        
+    elif not IsIdenticalObj( CapCategory( morphism_2 ), cat ) then
+        
+        Error( Concatenation( "the morphism \"", String( morphism_2 ), "\" does not belong to the CAP category <cat>" ) );
         
     else
         
