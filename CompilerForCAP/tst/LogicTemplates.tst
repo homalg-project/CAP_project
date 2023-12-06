@@ -324,5 +324,26 @@ end
 gap> Length( CAP_JIT_LOGIC_TEMPLATES ) = orig_number_of_logic_templates;
 true
 
+# test full data types in variable_filters
+gap> template := rec(
+>     variable_names := [ "list" ],
+>     variable_filters := [ CapJitDataTypeOfListOf( IsStringRep ) ],
+>     src_template := "list{[ 1 ]}",
+>     dst_template := "[ list[1] ]",
+> );;
+gap> CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE( template );
+
+#
+gap> Display( applied_logic_template_to_func( { } -> [ "1", "2" ]{[ 1 ]}, template, Pair( [ ], fail ) ) );
+function (  )
+    return [ [ "1", "2" ][1] ];
+end
+
+#
+gap> Display( applied_logic_template_to_func( { } -> [ 1, 2 ]{[ 1 ]}, template, Pair( [ ], fail ) ) );
+function (  )
+    return [ 1, 2 ]{[ 1 ]};
+end
+
 #
 gap> STOP_TEST( "LogicTemplates" );

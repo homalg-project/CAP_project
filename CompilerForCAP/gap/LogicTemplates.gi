@@ -60,13 +60,6 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
         
     od;
     
-    if IsBound( template.variable_filters ) and Length( template.variable_names ) <> Length( template.variable_filters ) then
-        
-        # COVERAGE_IGNORE_NEXT_LINE
-        Error( "the length of the record entries variable_names and variable_filters of a logic template must be equal" );
-        
-    fi;
-    
     if Last( NormalizedWhitespace( template.src_template ) ) = ';' then
         
         # COVERAGE_IGNORE_NEXT_LINE
@@ -109,6 +102,20 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
         
         # default variable filters: IsObject
         template.variable_filters := ListWithIdenticalEntries( Length( template.variable_names ), IsObject );
+        
+    fi;
+    
+    if Length( template.variable_names ) <> Length( template.variable_filters ) then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "the length of the record entries variable_names and variable_filters of a logic template must be equal" );
+        
+    fi;
+    
+    if not ForAll( template.variable_filters, f -> IsFilter( f ) or IsRecord( f ) ) then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "the entries of variable_filters must be filters or records" );
         
     fi;
     
@@ -636,7 +643,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
     end;
     
     result_func := function ( template_tree, result, keys, tree )
-      local var_number, filter, key;
+      local var_number, filter_or_data_type, key;
         
         if debug then
             # COVERAGE_IGNORE_BLOCK_START
@@ -661,30 +668,67 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
             
             if not IsBound( variables[var_number] ) then
                 
-                filter := variable_filters[var_number];
+                filter_or_data_type := variable_filters[var_number];
                 
-                if IsIdenticalObj( filter, IsObject ) or (IsBound( tree.data_type ) and IsSpecializationOfFilter( filter, tree.data_type.filter )) then
+                if IsRecord( filter_or_data_type ) then
                     
-                    variables[var_number] := tree;
-                    
-                    if debug then
-                        # COVERAGE_IGNORE_BLOCK_START
-                        Display( "matched via variable1" );
-                        Display( true );
-                        # COVERAGE_IGNORE_BLOCK_END
+                    if IsBound( tree.data_type ) and tree.data_type = filter_or_data_type then
+                        
+                        variables[var_number] := tree;
+                        
+                        if debug then
+                            # COVERAGE_IGNORE_BLOCK_START
+                            Display( "matched via new variable with data type" );
+                            Display( true );
+                            # COVERAGE_IGNORE_BLOCK_END
+                        fi;
+                        
+                        return true;
+                        
+                    else
+                        
+                        if debug then
+                            # COVERAGE_IGNORE_BLOCK_START
+                            Display( "type could not be inferred or did not match" );
+                            # COVERAGE_IGNORE_BLOCK_END
+                        fi;
+                        
+                        return false;
+                        
                     fi;
                     
-                    return true;
+                    
+                elif IsFilter( filter_or_data_type ) then
+                    
+                    if IsIdenticalObj( filter_or_data_type, IsObject ) or (IsBound( tree.data_type ) and IsSpecializationOfFilter( filter_or_data_type, tree.data_type.filter )) then
+                        
+                        variables[var_number] := tree;
+                        
+                        if debug then
+                            # COVERAGE_IGNORE_BLOCK_START
+                            Display( "matched via new variable with filter" );
+                            Display( true );
+                            # COVERAGE_IGNORE_BLOCK_END
+                        fi;
+                        
+                        return true;
+                        
+                    else
+                        
+                        if debug then
+                            # COVERAGE_IGNORE_BLOCK_START
+                            Display( "type could not be inferred or did not match" );
+                            # COVERAGE_IGNORE_BLOCK_END
+                        fi;
+                        
+                        return false;
+                        
+                    fi;
                     
                 else
                     
-                    if debug then
-                        # COVERAGE_IGNORE_BLOCK_START
-                        Display( "type could not be inferred or did not match" );
-                        # COVERAGE_IGNORE_BLOCK_END
-                    fi;
-                    
-                    return false;
+                    # COVERAGE_IGNORE_NEXT_LINE
+                    Error( "this should never happen" );
                     
                 fi;
                 
@@ -692,7 +736,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
                 
                 if debug then
                     # COVERAGE_IGNORE_BLOCK_START
-                    Display( "matched via variable2" );
+                    Display( "matched via existing variable" );
                     Display( CapJitIsEqualForEnhancedSyntaxTrees( variables[var_number], tree ) );
                     # COVERAGE_IGNORE_BLOCK_END
                 fi;

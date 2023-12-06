@@ -17,7 +17,8 @@ DeclareGlobalFunction( "CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE" );
 #!   Logic templates are records with the following entries:
 #!     * `src_template` and `dst_template` (required): strings containing valid GAP code defining expressions
 #!     * `variable_names` (required): a list of strings (which must not be keywords in GAP)
-#!     * `variable_filters` (optional): a list of filters with the same length as `variable_names`, defaults to a list of `IsObject`
+#!     * `variable_filters` (optional): a list of filters or data types (see <Ref Func="CapJitInferredDataTypes" />)
+#!        with the same length as `variable_names`, defaults to a list of `IsObject`
 #!     * `new_funcs` (optional): a list of lists of strings, defaults to the empty list
 #!     * `needed_packages` (optional): a list of pairs (i.e. lists with two entries) of strings, defaults to the empty list
 #!     * `debug` (optional): a boolean
@@ -29,7 +30,7 @@ DeclareGlobalFunction( "CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE" );
 #!     * When trying to find an occurence of `src_template` in a tree, all strings occuring in the list `variable_names`
 #!       are considered as variables, i.e., they match any value in the tree. If a variable occurs
 #!       multiple times, the corresponding parts of the tree must be equal.
-#!       The template is only applied if all values match the corresponding filters in `variable_filters`.
+#!       The template is only applied if all values match the corresponding filters or data types in `variable_filters`.
 #!     * For each function in `dst_template`, <Ref Func="CapJitAppliedLogicTemplates" /> tries to find a corresponding function in
 #!       `src_template`. The functions are matched by comparing the lists of names of function arguments. If for a function in
 #!       `dst_template` no corresponding function in `src_template` exists, you have to add the list of names of function arguments
