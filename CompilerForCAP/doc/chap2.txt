@@ -57,7 +57,8 @@
   [30X    [33X[0;6Y[10Xvariable_names[110X  (required):  a  list  of  strings  (which  must not be
         keywords in GAP)[133X
   
-  [30X    [33X[0;6Y[10Xvariable_filters[110X (optional): a list of filters with the same length as
+  [30X    [33X[0;6Y[10Xvariable_filters[110X  (optional):  a  list  of  filters or data types (see
+        [2XCapJitInferredDataTypes[102X    ([14X2.5-10[114X))   with   the   same   length   as
         [10Xvariable_names[110X, defaults to a list of [10XIsObject[110X[133X
   
   [30X    [33X[0;6Y[10Xnew_funcs[110X  (optional):  a  list  of  lists of strings, defaults to the
@@ -82,7 +83,7 @@
         variables,  i.e.,  they  match  any  value  in the tree. If a variable
         occurs  multiple  times,  the  corresponding parts of the tree must be
         equal.   The  template  is  only  applied  if  all  values  match  the
-        corresponding filters in [10Xvariable_filters[110X.[133X
+        corresponding filters or data types in [10Xvariable_filters[110X.[133X
   
   [30X    [33X[0;6YFor   each   function   in  [10Xdst_template[110X,  [2XCapJitAppliedLogicTemplates[102X
         ([14X2.5-18[114X)  tries  to find a corresponding function in [10Xsrc_template[110X. The
