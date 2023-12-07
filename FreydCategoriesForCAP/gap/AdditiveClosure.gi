@@ -1264,46 +1264,52 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
             
             ##
             AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
-              function( cat, A, B, morphism )
-                local obj_list_A, obj_list_B, size_i, size_j, listlist, summands;
+              function( cat, B, C, morphism )
+                local size_j, size_s, H_B_C, direct_sums, blocks, listlist;
                 
-                obj_list_A := ObjectList( A );
+                size_j := Length( ObjectList( B ) );
                 
-                obj_list_B := ObjectList( B );
+                size_s := Length( ObjectList( C ) );
                 
-                size_i := Length( obj_list_A );
+                H_B_C :=
+                    List( [ 1 .. size_j ], j ->
+                        List( [ 1 .. size_s ], s ->
+                            HomomorphismStructureOnObjectsExtendedByFullEmbedding( UnderlyingCategory( cat ), range_category, B[j], C[s] )
+                        )
+                    );
                 
-                size_j := Length( obj_list_B );
+                direct_sums := List( [ 1 .. size_j ], j -> DirectSum( range_category, List( [ 1 .. size_s ], s -> H_B_C[j][s] ) ) );
                 
-                summands := 
-                  Concatenation(
-                            List( obj_list_A, obj_i ->
-                                List( obj_list_B, obj_j -> HomomorphismStructureOnObjectsExtendedByFullEmbedding( UnderlyingCategory( cat ), range_category, obj_i, obj_j ) )
+                blocks := List( [ 1 .. size_j ], j ->
+                            ComponentOfMorphismIntoDirectSum( range_category,
+                              morphism,
+                              direct_sums,
+                              j
                             )
                           );
                 
-                listlist := List( [ 1 .. size_i ], i ->
-                            List( [ 1 .. size_j ], j ->
+                listlist := List( [ 1 .. size_j ], j ->
+                            List( [ 1 .. size_s ], s ->
                               ComponentOfMorphismIntoDirectSum( range_category,
-                                morphism,
-                                summands,
-                                size_j * (i - 1) + j
+                                blocks[j],
+                                H_B_C[j],
+                                s
                               )
                             )
                           );
                 
                 return AdditiveClosureMorphism( cat,
-                        A,
-                        List( [ 1 .. size_i ], i ->
-                          List( [ 1 .. size_j ], j ->
+                        B,
+                        List( [ 1 .. size_j ], j ->
+                          List( [ 1 .. size_s ], s ->
                             InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphismExtendedByFullEmbedding( UnderlyingCategory( cat ), range_category,
-                              obj_list_A[i],
-                              obj_list_B[j],
-                              listlist[i][j]
+                              B[j],
+                              C[s],
+                              listlist[j][s]
                             )
                           )
                         ),
-                        B
+                        C
                       );
                 
             end );
