@@ -148,6 +148,13 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
         
         if tree.type = "EXPR_REF_FVAR" and tree.func_id = outer_func_id then
             
+            if IsBound( tree.data_type ) then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Error( "using CapJitTypeExpression with logic template variables is currently not supported, use variable_filters instead" );
+                
+            fi;
+            
             id := SafeUniquePosition( template.variable_names, tree.name );
             
             AddSet( syntax_tree_variables_ids, id );
@@ -717,7 +724,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
                         
                         if debug then
                             # COVERAGE_IGNORE_BLOCK_START
-                            Display( "type could not be inferred or did not match" );
+                            Display( "data type could not be inferred or did not match (variable_filters)" );
                             # COVERAGE_IGNORE_BLOCK_END
                         fi;
                         
@@ -757,8 +764,25 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
                 # COVERAGE_IGNORE_BLOCK_END
             fi;
             
+            if key = "data_type" then
+                
+                if not IsBound( tree.data_type ) or tree.data_type <> template_tree.data_type then
+                    
+                    if debug then
+                        # COVERAGE_IGNORE_NEXT_LINE
+                        Display( "data type could not be inferred or did not match (typed template tree)" );
+                    fi;
+                    
+                    return false;
+                    
+                fi;
+                
+                continue;
+                
+            fi;
+            
             # ignore these keys
-            if key = "data_type" or key = "CAP_JIT_NOT_RESOLVABLE" then
+            if key = "CAP_JIT_NOT_RESOLVABLE" then
                 
                 continue;
                 

@@ -221,6 +221,18 @@ DeclareGlobalFunction( "CapJitDataTypeOfTwoCellOfCategory" );
 #! @EndGroup
 
 #! @Description
+#!   (experimental) Simply returns <A>value</A>, but allows to specify the data type of <A>value</A> for CompilerForCAP.
+#!   <A>data_type_getter</A> must be a literal function or a global variable pointing to a function.
+#!   The function must accept no arguments or a single argument, and return a valid data type.
+#!   If the function accepts a single argument, it must be inside a CAP operation or method known to CompilerForCAP (for example, see <Ref Func="InstallMethodForCompilerForCAP" />),
+#!   and the current category (i.e. the first argument of the CAP operation or method known to CompilerForCAP) will be passed to the function.
+#!   IMPORTANT: If <A>data_type_getter</A> is a literal function, it must not contain references to variables in its context.
+#!   Otherwise the code might access random memory locations.
+#!   See <Ref BookName="CompilerForCAP" Func="CapJitInferredDataTypes" /> for more details on data types.
+#! @Arguments value, data_type_getter
+DeclareGlobalFunction( "CapJitTypedExpression" );
+
+#! @Description
 #!   Computes a fixpoint of <A>func</A> with regard to equality given by <A>predicate</A>, starting with <A>initial_value</A>.
 #!   If no such fixpoint exists, the execution does not terminate.
 #! @Arguments predicate, func, initial_value

@@ -116,7 +116,7 @@ end
 # Iterated with empty literal list and initial_value
 gap> func := { cat, source } ->
 >     Iterated(
->         [ ],
+>         CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( cat ) ) ),
 >         { alpha, beta } -> PreCompose( cat, alpha, beta ),
 >         IdentityMorphism( cat, source )
 >     );;
@@ -133,7 +133,7 @@ end
 # Iterated with empty literal list, initial_value, and terminal_value
 gap> func := { cat, source, range } ->
 >     Iterated(
->         [ ],
+>         CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( cat ) ) ),
 >         { alpha, beta } -> PreCompose( cat, alpha, beta ),
 >         IdentityMorphism( cat, source ),
 >         IdentityMorphism( cat, range )

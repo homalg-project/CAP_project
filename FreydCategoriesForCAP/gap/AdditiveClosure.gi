@@ -866,7 +866,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     AddZeroObject( category,
       function( cat )
         
-        return AdditiveClosureObject( cat, [ ] );
+        return AdditiveClosureObject( cat, CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( cat ) ) ) ) );
         
     end );
     
