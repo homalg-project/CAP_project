@@ -464,9 +464,10 @@ CapJitAddLogicTemplate(
     )
 );
 
-# func( L )[index] => List( L, func )[index]
+# func( L[index] ) => List( L, func )[index]
 # Note: We always "push down" the function, because:
 # If L is a `Concatenation`, we cannot resolve the index on the left hand side, but we can push the function further down on the right hand side.
+# Moreover, `index` often introduces new variables, so the right hand side allows more hoisting and deduplication.
 # This causes some minor overhead if the index is fixed (e.g. for ProjectionInFactorOfDirectSum) because f is applied to the whole list
 # instead of only the element given by the index, but such examples are rare.
 # Additionally, this should only trigger for homogeneous lists, i.e. `func` must be applicable to all elements of `L`.
