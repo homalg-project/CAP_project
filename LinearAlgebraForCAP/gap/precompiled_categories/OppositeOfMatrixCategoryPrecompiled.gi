@@ -248,8 +248,8 @@ function ( cat_1, alpha_1, S_1, i_1 )
     deduped_2_1 := List( S_1, function ( x_2 )
             return Dimension( Opposite( x_2 ) );
         end );
-    deduped_1_1 := Sum( deduped_2_1{[ 1 .. i_1 - 1 ]} ) + 1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_3_1, Range( alpha_1 ), Opposite, CreateCapCategoryMorphismWithAttributes( OppositeCategory( cat_1 ), Source( deduped_4_1 ), CAP_JIT_INCOMPLETE_LOGIC( Opposite( CAP_JIT_INCOMPLETE_LOGIC( deduped_3_1 ) ) ), UnderlyingMatrix, CertainColumns( UnderlyingMatrix( deduped_4_1 ), [ deduped_1_1 .. deduped_1_1 - 1 + deduped_2_1[i_1] ] ) ) );
+    deduped_1_1 := Sum( deduped_2_1{[ 1 .. i_1 - 1 ]} );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_3_1, Range( alpha_1 ), Opposite, CreateCapCategoryMorphismWithAttributes( OppositeCategory( cat_1 ), Source( deduped_4_1 ), CAP_JIT_INCOMPLETE_LOGIC( Opposite( CAP_JIT_INCOMPLETE_LOGIC( deduped_3_1 ) ) ), UnderlyingMatrix, CertainColumns( UnderlyingMatrix( deduped_4_1 ), [ deduped_1_1 + 1 .. deduped_1_1 + deduped_2_1[i_1] ] ) ) );
 end
 ########
         
@@ -266,8 +266,8 @@ function ( cat_1, alpha_1, S_1, i_1 )
     deduped_2_1 := List( S_1, function ( x_2 )
             return Dimension( Opposite( x_2 ) );
         end );
-    deduped_1_1 := Sum( deduped_2_1{[ 1 .. i_1 - 1 ]} ) + 1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), deduped_3_1, Opposite, CreateCapCategoryMorphismWithAttributes( OppositeCategory( cat_1 ), CAP_JIT_INCOMPLETE_LOGIC( Opposite( CAP_JIT_INCOMPLETE_LOGIC( deduped_3_1 ) ) ), Range( deduped_4_1 ), UnderlyingMatrix, CertainRows( UnderlyingMatrix( deduped_4_1 ), [ deduped_1_1 .. deduped_1_1 - 1 + deduped_2_1[i_1] ] ) ) );
+    deduped_1_1 := Sum( deduped_2_1{[ 1 .. i_1 - 1 ]} );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), deduped_3_1, Opposite, CreateCapCategoryMorphismWithAttributes( OppositeCategory( cat_1 ), CAP_JIT_INCOMPLETE_LOGIC( Opposite( CAP_JIT_INCOMPLETE_LOGIC( deduped_3_1 ) ) ), Range( deduped_4_1 ), UnderlyingMatrix, CertainRows( UnderlyingMatrix( deduped_4_1 ), [ deduped_1_1 + 1 .. deduped_1_1 + deduped_2_1[i_1] ] ) ) );
 end
 ########
         

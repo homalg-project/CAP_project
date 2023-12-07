@@ -67,8 +67,8 @@ end
 function ( cat_1, alpha_1, S_1, i_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := List( S_1, RankOfObject );
-    deduped_1_1 := Sum( deduped_2_1{[ 1 .. i_1 - 1 ]} ) + 1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, S_1[i_1], Range( alpha_1 ), UnderlyingMatrix, CertainColumns( UnderlyingMatrix( alpha_1 ), [ deduped_1_1 .. deduped_1_1 - 1 + deduped_2_1[i_1] ] ) );
+    deduped_1_1 := Sum( deduped_2_1{[ 1 .. i_1 - 1 ]} );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, S_1[i_1], Range( alpha_1 ), UnderlyingMatrix, CertainColumns( UnderlyingMatrix( alpha_1 ), [ deduped_1_1 + 1 .. deduped_1_1 + deduped_2_1[i_1] ] ) );
 end
 ########
         
@@ -81,8 +81,8 @@ end
 function ( cat_1, alpha_1, S_1, i_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := List( S_1, RankOfObject );
-    deduped_1_1 := Sum( deduped_2_1{[ 1 .. i_1 - 1 ]} ) + 1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), S_1[i_1], UnderlyingMatrix, CertainRows( UnderlyingMatrix( alpha_1 ), [ deduped_1_1 .. deduped_1_1 - 1 + deduped_2_1[i_1] ] ) );
+    deduped_1_1 := Sum( deduped_2_1{[ 1 .. i_1 - 1 ]} );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), S_1[i_1], UnderlyingMatrix, CertainRows( UnderlyingMatrix( alpha_1 ), [ deduped_1_1 + 1 .. deduped_1_1 + deduped_2_1[i_1] ] ) );
 end
 ########
         
