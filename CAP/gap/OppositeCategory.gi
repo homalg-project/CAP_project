@@ -388,7 +388,12 @@ InstallMethod( Opposite,
         Error( "Input category must be finalized to create opposite category" );
     fi;
     
-    opposite_category := CreateCapCategory( name, WasCreatedAsOppositeCategory, IsCapCategoryOppositeObject, IsCapCategoryOppositeMorphism, IsCapCategoryTwoCell : is_computable := category!.is_computable );
+    opposite_category := CreateCapCategoryWithDataTypes(
+        name, WasCreatedAsOppositeCategory,
+        IsCapCategoryOppositeObject, IsCapCategoryOppositeMorphism, IsCapCategoryTwoCell,
+        CapJitDataTypeOfObjectOfCategory( category ), CapJitDataTypeOfMorphismOfCategory( category ), CapJitDataTypeOfTwoCellOfCategory( category )
+        : is_computable := category!.is_computable
+    );
     
     if IsBound( category!.supports_empty_limits ) then
         
