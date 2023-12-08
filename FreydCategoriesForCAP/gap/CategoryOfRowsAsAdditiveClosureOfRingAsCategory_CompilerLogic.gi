@@ -116,12 +116,21 @@ CapJitAddLogicTemplate(
     )
 );
 
-# List( list1, x -> List( list2, y -> List( list3, z -> [ entry ] ) ) )[index1][index2][1][1]
+# list{[ from + 1 .. to ]}[i] => list[from + i]
 CapJitAddLogicTemplate(
     rec(
-        variable_names := [ "list1", "list2", "list3", "index1", "index2", "entry" ],
-        src_template := "List( list1, x -> List( list2, y -> List( list3, z -> [ entry ] ) ) )[index1][index2][1][1]",
-        dst_template := "(x -> (y -> (z -> entry)(list3[1]))(list2[index2]))(list1[index1])",
+        variable_names := [ "list", "from", "to", "i" ],
+        src_template := "(list{[ from + 1 .. to ]})[i]",
+        dst_template := "list[from + i]",
+    )
+);
+
+# List( list1, x -> List( list2, y -> List( list4, w -> List( list3, z -> [ entry ] ) )[x] ) )[index1][index2][1][1]
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "list1", "list2", "list4", "list3", "index1", "index2", "entry" ],
+        src_template := "List( list1, x -> List( list2, y -> List( list4, w -> List( list3, z -> [ entry ] ) )[x] ) )[index1][index2][1][1]",
+        dst_template := "(x -> (y -> (w -> (z -> entry)(list3[1]))(x))(list2[index2]))(list1[index1])",
     )
 );
 
@@ -389,7 +398,7 @@ CapJitAddLogicTemplate(
             HomalgMatrixListList(
                 List( [ 1 .. nr_rows ], i ->
                     List( [ 1 .. nr_cols ], j ->
-                        matrix[1, nr_cols * (i - 1) + j]
+                        matrix[1, (i - 1) * nr_cols + j]
                     )
                 ),
                 nr_rows,
@@ -465,5 +474,28 @@ CapJitAddLogicTemplate(
         variable_filters := [ "IsInt", "IsInt" ],
         src_template := "Sum( ListWithIdenticalEntries( n, entry ) )",
         dst_template := "n * entry",
+    )
+);
+
+# CertainColumns( List( ... )[i] )
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "list", "func", "i", "range" ],
+        variable_filters := [ "IsList", "IsFunction", "IsInt", "IsList" ],
+        src_template := "CertainColumns( List( list, func )[i], range )",
+        dst_template := "List( list, x -> CertainColumns( func( x ), range ) )[i]",
+        new_funcs := [ [ "x" ] ],
+        needed_packages := [ [ "MatricesForHomalg", ">= 2020.06.27" ] ],
+    )
+);
+
+# CertainColumns( CertainColumns( ... ) )
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "matrix", "from1", "to1", "from2", "to2" ],
+        variable_filters := [ "IsHomalgMatrix", "IsInt", "IsInt", "IsInt", "IsInt" ],
+        src_template := "CertainColumns( CertainColumns( matrix, [ from1 + 1 .. to1 ] ), [ from2 .. to2 ] )",
+        dst_template := "CertainColumns( matrix, [ from1 + from2 .. from1 + to2 ] )",
+        needed_packages := [ [ "MatricesForHomalg", ">= 2020.06.27" ] ],
     )
 );
