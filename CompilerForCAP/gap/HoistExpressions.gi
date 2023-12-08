@@ -214,6 +214,12 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_HOISTED_EXPRESSIONS_OR_BINDINGS, functio
                                 name := new_variable_name,
                             );
                             
+                            if IsBound( expr.data_type ) then
+                                
+                                info2.parent.(info2.key).data_type := expr.data_type;
+                                
+                            fi;
+                            
                         fi;
                         
                         Add( to_delete, i );

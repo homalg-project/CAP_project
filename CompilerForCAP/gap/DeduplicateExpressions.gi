@@ -142,6 +142,12 @@ InstallGlobalFunction( CapJitDeduplicatedExpressions, function ( tree )
                             name := new_variable_name,
                         );
                         
+                        if IsBound( expr.data_type ) then
+                            
+                            info2.parent.(info2.key).data_type := expr.data_type;
+                            
+                        fi;
+                        
                         if i > 1 then
                             
                             Add( ignored_paths, info2.path );
