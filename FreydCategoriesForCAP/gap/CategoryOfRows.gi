@@ -600,13 +600,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     ##
     AddComponentOfMorphismIntoDirectSum( category,
       function( cat, morphism, summands, nr )
-        local ranks, start, stop;
+        local ranks, offset, start, stop;
         
         ranks := List( summands, RankOfObject );
         
-        start := Sum( ranks{[ 1 .. nr-1 ]} ) + 1;
+        offset := Sum( ranks{[ 1 .. nr - 1 ]} );
         
-        stop := (start - 1) + ranks[nr];
+        start := offset + 1;
+        stop := offset + ranks[nr];
         
         return CategoryOfRowsMorphism( cat, Source( morphism ),
                                        CertainColumns( UnderlyingMatrix( morphism ), [ start .. stop ] ),
@@ -617,13 +618,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     ##
     AddComponentOfMorphismFromDirectSum( category,
       function( cat, morphism, summands, nr )
-        local ranks, start, stop;
+        local ranks, offset, start, stop;
         
         ranks := List( summands, RankOfObject );
         
-        start := Sum( ranks{[ 1 .. nr-1 ]} ) + 1;
+        offset := Sum( ranks{[ 1 .. nr - 1 ]} );
         
-        stop := (start - 1) + ranks[nr];
+        start := offset + 1;
+        stop := offset + ranks[nr];
         
         return CategoryOfRowsMorphism( cat, summands[nr],
                                        CertainRows( UnderlyingMatrix( morphism ), [ start .. stop ] ),

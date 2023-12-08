@@ -907,13 +907,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     ##
     AddComponentOfMorphismIntoDirectSum( category,
       function( cat, morphism, summands, nr )
-        local lengths, start, stop;
+        local lengths, offset, start, stop;
         
         lengths := List( summands, s -> Length( ObjectList( s ) ) );
         
-        start := Sum( lengths{[ 1 .. nr-1 ]} ) + 1;
+        offset := Sum( lengths{[ 1 .. nr-1 ]} );
         
-        stop := (start - 1) + lengths[nr];
+        start := offset + 1;
+        stop := offset + lengths[nr];
         
         return AdditiveClosureMorphism( cat, Source( morphism ),
                                         List( MorphismMatrix( morphism ), row -> row{[ start .. stop ]} ), # CertainColumns
@@ -924,13 +925,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     ##
     AddComponentOfMorphismFromDirectSum( category,
       function( cat, morphism, summands, nr )
-        local lengths, start, stop;
+        local lengths, offset, start, stop;
         
         lengths := List( summands, s -> Length( ObjectList( s ) ) );
         
-        start := Sum( lengths{[ 1 .. nr-1 ]} ) + 1;
+        offset := Sum( lengths{[ 1 .. nr-1 ]} );
         
-        stop := (start - 1) + lengths[nr];
+        start := offset + 1;
+        stop := offset + lengths[nr];
         
         return AdditiveClosureMorphism( cat, summands[nr],
                                         MorphismMatrix( morphism ){[ start .. stop ]}, # CertainRows
