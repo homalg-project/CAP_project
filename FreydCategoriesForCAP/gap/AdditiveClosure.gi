@@ -846,6 +846,25 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         
     fi;
     
+    if CanCompute( underlying_category, "SumOfMorphisms" ) then
+        
+        ##
+        AddSumOfMorphisms( category,
+          function( cat, source, morphisms, range )
+            local listlist;
+            
+            listlist := List( [ 1 .. Length( ObjectList( source ) ) ],
+                            i -> List( [ 1 .. Length( ObjectList( range ) ) ],
+                                j -> SumOfMorphisms( UnderlyingCategory( cat ), source[i], List( morphisms, m -> m[i, j] ), range[j] ) ) );
+            
+            return AdditiveClosureMorphism( cat, source,
+                                            listlist,
+                                            range );
+            
+        end );
+        
+    fi;
+    
     if CanCompute( underlying_category, "AdditiveInverseForMorphisms" ) then
         
         ##

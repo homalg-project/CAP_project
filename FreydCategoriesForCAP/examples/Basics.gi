@@ -27,6 +27,16 @@ IsZero( zero );;
 ZeroObject( cat );;
 UniversalMorphismIntoZeroObject( obj2 );;
 UniversalMorphismFromZeroObject( obj1 );;
+IsCongruentForMorphisms(
+    SumOfMorphisms( obj1, [ alpha, alpha, alpha ], obj2 ),
+    AdditionForMorphisms( alpha, AdditionForMorphisms( alpha, alpha ) )
+);
+#! true
+IsCongruentForMorphisms(
+    SumOfMorphisms( obj1, [ ], obj2 ),
+    ZeroMorphism( obj1, obj2 )
+);
+#! true
 DirectSum( obj1, obj2 );;
 DirectSumFunctorial( [ alpha, beta, id ] );;
 proj := ProjectionInFactorOfDirectSum( [ obj2, obj1, obj2 ], 2 );;

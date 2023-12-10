@@ -932,6 +932,17 @@ end
     , 100 );
     
     ##
+    AddSumOfMorphisms( cat,
+        
+########
+function ( cat_1, source_1, list_of_morphisms_1, range_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, UnderlyingMatrix, Sum( List( list_of_morphisms_1, UnderlyingMatrix ), HomalgZeroMatrix( RankOfObject( range_1 ), RankOfObject( source_1 ), UnderlyingRing( cat_1 ) ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddTensorProductOnMorphismsWithGivenTensorProducts( cat,
         
 ########

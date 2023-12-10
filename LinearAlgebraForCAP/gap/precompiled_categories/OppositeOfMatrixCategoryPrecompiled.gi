@@ -974,6 +974,23 @@ end
     , 100 );
     
     ##
+    AddSumOfMorphisms( cat,
+        
+########
+function ( cat_1, source_1, list_of_morphisms_1, range_1 )
+    local deduped_1_1, deduped_2_1, deduped_3_1;
+    deduped_3_1 := Opposite( source_1 );
+    deduped_2_1 := Opposite( range_1 );
+    deduped_1_1 := OppositeCategory( cat_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, Opposite, CreateCapCategoryMorphismWithAttributes( deduped_1_1, deduped_2_1, deduped_3_1, UnderlyingMatrix, Sum( List( list_of_morphisms_1, function ( x_2 )
+                  return UnderlyingMatrix( Opposite( x_2 ) );
+              end ), HomalgZeroMatrix( Dimension( deduped_2_1 ), Dimension( deduped_3_1 ), UnderlyingRing( deduped_1_1 ) ) ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddTensorProductOnMorphismsWithGivenTensorProducts( cat,
         
 ########

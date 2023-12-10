@@ -3578,15 +3578,13 @@ end
         
 ########
 function ( cat_1, source_1, list_of_ring_elements_1, list_of_morphisms_1, range_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, UnderlyingMatrix, Iterated( ListN( list_of_ring_elements_1, list_of_morphisms_1, function ( r_2, alpha_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, UnderlyingMatrix, Sum( ListN( list_of_ring_elements_1, list_of_morphisms_1, function ( r_2, alpha_2 )
                 return r_2 * UnderlyingMatrix( alpha_2 );
-            end ), function ( alpha_2, beta_2 )
-              return alpha_2 + beta_2;
-          end, HomalgZeroMatrix( Dimension( source_1 ), Dimension( range_1 ), UnderlyingRing( cat_1 ) ) ) );
+            end ), HomalgZeroMatrix( Dimension( source_1 ), Dimension( range_1 ), UnderlyingRing( cat_1 ) ) ) );
 end
 ########
         
-    , 502 : IsPrecompiledDerivation := true );
+    , 301 : IsPrecompiledDerivation := true );
     
     ##
     AddMereExistenceOfSolutionOfLinearSystemInAbCategory( cat,
@@ -5344,13 +5342,11 @@ end
         
 ########
 function ( cat_1, source_1, list_of_morphisms_1, range_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, UnderlyingMatrix, Iterated( List( list_of_morphisms_1, UnderlyingMatrix ), function ( alpha_2, beta_2 )
-              return alpha_2 + beta_2;
-          end, HomalgZeroMatrix( Dimension( source_1 ), Dimension( range_1 ), UnderlyingRing( cat_1 ) ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, UnderlyingMatrix, Sum( List( list_of_morphisms_1, UnderlyingMatrix ), HomalgZeroMatrix( Dimension( source_1 ), Dimension( range_1 ), UnderlyingRing( cat_1 ) ) ) );
 end
 ########
         
-    , 301 : IsPrecompiledDerivation := true );
+    , 100 );
     
     ##
     AddTensorProductDualityCompatibilityMorphism( cat,
