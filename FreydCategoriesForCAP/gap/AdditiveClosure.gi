@@ -611,12 +611,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
             nr_rows := Length( source_list );
             nr_cols := Length( range_list );
             
-            # we currently allow m x 0 matrices to be encoded as empty lists
-            if nr_cols = 0 and MorphismMatrix( morphism ) = [ ] then
-                
-                return true;
-                
-            elif not (IsList( MorphismMatrix( morphism ) ) and Length( MorphismMatrix( morphism ) ) = nr_rows) then
+            if not (IsList( MorphismMatrix( morphism ) ) and Length( MorphismMatrix( morphism ) ) = nr_rows) then
                 
                 return false;
                 
