@@ -31,6 +31,16 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsCongruentForMorphisms( gamma, PreCompose( delta, beta ) );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
+    [4X[25X>[125X [27X    SumOfMorphisms( A, [ alpha, alpha, alpha ], B ),[127X[104X
+    [4X[25X>[125X [27X    AdditionForMorphisms( alpha, AdditionForMorphisms( alpha, alpha ) )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
+    [4X[25X>[125X [27X    SumOfMorphisms( A, [ ], B ),[127X[104X
+    [4X[25X>[125X [27X    ZeroMorphism( A, B )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27X# E and EE are both occupied by GAP[127X[104X
     [4X[25X>[125X [27XEEE := KoszulDualRing( R );;[127X[104X
     [4X[25Xgap>[125X [27Xrows := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( EEE );;[127X[104X
@@ -56,6 +66,16 @@
     [4X[25Xgap>[125X [27XIsWellDefined( delta );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsCongruentForMorphisms( gamma, PreCompose( delta, beta ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
+    [4X[25X>[125X [27X    SumOfMorphisms( A, [ alpha, alpha, alpha ], B ),[127X[104X
+    [4X[25X>[125X [27X    AdditionForMorphisms( alpha, AdditionForMorphisms( alpha, alpha ) )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
+    [4X[25X>[125X [27X    SumOfMorphisms( A, [ ], B ),[127X[104X
+    [4X[25X>[125X [27X    ZeroMorphism( A, B )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
     [4X[28Xtrue[128X[104X
   [4X[32X[104X
   

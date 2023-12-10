@@ -237,6 +237,16 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZeroObject( cat );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UniversalMorphismIntoZeroObject( obj2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UniversalMorphismFromZeroObject( obj1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    SumOfMorphisms( obj1, [ alpha, alpha, alpha ], obj2 ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    AdditionForMorphisms( alpha, AdditionForMorphisms( alpha, alpha ) )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    SumOfMorphisms( obj1, [ ], obj2 ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ZeroMorphism( obj1, obj2 )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectSum( obj1, obj2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectSumFunctorial( [ alpha, beta, id ] );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">proj := ProjectionInFactorOfDirectSum( [ obj2, obj1, obj2 ], 2 );;</span>

@@ -61,6 +61,16 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( gamma, PreCompose( delta, beta ) );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    SumOfMorphisms( A, [ alpha, alpha, alpha ], B ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    AdditionForMorphisms( alpha, AdditionForMorphisms( alpha, alpha ) )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    SumOfMorphisms( A, [ ], B ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ZeroMorphism( A, B )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># E and EE are both occupied by GAP</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">EEE := KoszulDualRing( R );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rows := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( EEE );;</span>
@@ -86,6 +96,16 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( delta );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( gamma, PreCompose( delta, beta ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    SumOfMorphisms( A, [ alpha, alpha, alpha ], B ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    AdditionForMorphisms( alpha, AdditionForMorphisms( alpha, alpha ) )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    SumOfMorphisms( A, [ ], B ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ZeroMorphism( A, B )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
 true
 </pre></div>
 
