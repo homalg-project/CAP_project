@@ -312,10 +312,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     AddIsWellDefinedForObjects( category,
       function( cat, object )
         
-        if RankOfObject( object ) < 0 then
-          
-          return false;
-          
+        if not IsInt( RankOfObject( object ) ) then
+            
+            return false;
+            
+        elif not (RankOfObject( object ) >= 0) then
+            
+            return false;
+            
         fi;
         
         # all tests passed, so it is well-defined
@@ -327,14 +331,18 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     AddIsWellDefinedForMorphisms( category,
       function( cat, morphism )
         
-        if NrRows( UnderlyingMatrix( morphism ) ) <> RankOfObject( Source( morphism ) ) then
-          
-          return false;
-          
-        elif NrColumns( UnderlyingMatrix( morphism ) ) <> RankOfObject( Range( morphism ) ) then
-          
-          return false;
-          
+        if not IsHomalgMatrix( UnderlyingMatrix( morphism ) ) then
+            
+            return false;
+            
+        elif not (NrRows( UnderlyingMatrix( morphism ) ) = RankOfObject( Source( morphism ) )) then
+            
+            return false;
+            
+        elif not (NrColumns( UnderlyingMatrix( morphism ) ) = RankOfObject( Range( morphism ) )) then
+            
+            return false;
+            
         fi;
         
         # all tests passed, so it is well-defined

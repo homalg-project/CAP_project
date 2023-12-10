@@ -2528,9 +2528,11 @@ end
 function ( cat_1, alpha_1 )
     local deduped_1_1;
     deduped_1_1 := UnderlyingMatrix( alpha_1 );
-    if NumberRows( deduped_1_1 ) <> Dimension( Source( alpha_1 ) ) then
+    if not IsHomalgMatrix( deduped_1_1 ) then
         return false;
-    elif NumberColumns( deduped_1_1 ) <> Dimension( Range( alpha_1 ) ) then
+    elif not NumberRows( deduped_1_1 ) = Dimension( Source( alpha_1 ) ) then
+        return false;
+    elif not NumberColumns( deduped_1_1 ) = Dimension( Range( alpha_1 ) ) then
         return false;
     else
         return true;
@@ -2551,9 +2553,11 @@ function ( cat_1, source_1, alpha_1, range_1 )
     deduped_2_1 := Dimension( Range( alpha_1 ) );
     deduped_1_1 := Dimension( Source( alpha_1 ) );
     return CAP_JIT_EXPR_CASE_WRAPPER( function (  )
-                  if NumberRows( deduped_3_1 ) <> deduped_1_1 then
+                  if not IsHomalgMatrix( deduped_3_1 ) then
                       return false;
-                  elif NumberColumns( deduped_3_1 ) <> deduped_2_1 then
+                  elif not NumberRows( deduped_3_1 ) = deduped_1_1 then
+                      return false;
+                  elif not NumberColumns( deduped_3_1 ) = deduped_2_1 then
                       return false;
                   else
                       return true;
@@ -2570,7 +2574,11 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    if Dimension( arg2_1 ) < 0 then
+    local deduped_1_1;
+    deduped_1_1 := Dimension( arg2_1 );
+    if not IsInt( deduped_1_1 ) then
+        return false;
+    elif not deduped_1_1 >= 0 then
         return false;
     else
         return true;

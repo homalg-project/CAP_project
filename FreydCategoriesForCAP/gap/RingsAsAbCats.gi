@@ -131,7 +131,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
     AddIsCongruentForMorphisms( category, equality_func );
     
     ##
-    AddIsWellDefinedForObjects( category, {cat, x} -> IsIdenticalObj( category, CapCategory( x ) ) );
+    AddIsWellDefinedForObjects( category, {cat, x} -> true );
     
     ##
     AddIsWellDefinedForMorphisms( category,
