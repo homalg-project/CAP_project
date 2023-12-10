@@ -656,7 +656,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
     AddZeroMorphism( category,
       function( cat, a, b )
         
-        return LinearClosureMorphismNC( cat, a, [ ], [ ], b );
+        return LinearClosureMorphismNC( cat,
+                       a,
+                       CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( RingElementFilter( CommutativeRingOfLinearCategory( cat ) ) ) ),
+                       CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( cat ) ) ) ),
+                       b );
         
     end );
     
