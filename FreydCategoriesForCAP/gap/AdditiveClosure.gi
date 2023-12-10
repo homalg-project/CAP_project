@@ -594,7 +594,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         
     fi;
     
-    if CanCompute( underlying_category, "IsWellDefinedForMorphisms" ) and CanCompute( underlying_category, "IsEqualForObjects" ) then
+    if CanCompute( underlying_category, "IsWellDefinedForMorphismsWithGivenSourceAndRange" ) then
         
         ##
         AddIsWellDefinedForMorphisms( category,
@@ -615,16 +615,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                 
             elif not ForAll( [ 1 .. nr_rows ], i ->
                      ForAll( [ 1 .. nr_cols ], j ->
-                       # is a well-defined CAP category morphism in the underlying category
-                       IsCapCategoryMorphism( morphism[i, j] ) and IsIdenticalObj( UnderlyingCategory( cat ), CapCategory( morphism[i, j] ) ) and IsWellDefinedForMorphisms( UnderlyingCategory( cat ), morphism[i, j] )
-                     )
-                   ) then
-                
-                return false;
-                
-            elif not ForAll( [ 1 .. nr_rows ], i ->
-                     ForAll( [ 1 .. nr_cols ], j ->
-                       IsEqualForObjects( UnderlyingCategory( cat ), Source( morphism[i, j] ), source_list[i] ) and IsEqualForObjects( UnderlyingCategory( cat ), Range( morphism[i, j] ), range_list[j] )
+                       # is a well-defined CAP category morphism from `source_list[i]` to `range_list[j]` in the underlying category
+                       IsCapCategoryMorphism( morphism[i, j] ) and IsIdenticalObj( UnderlyingCategory( cat ), CapCategory( morphism[i, j] ) ) and IsWellDefinedForMorphismsWithGivenSourceAndRange( UnderlyingCategory( cat ), source_list[i], morphism[i, j], range_list[j] )
                      )
                    ) then
                 
