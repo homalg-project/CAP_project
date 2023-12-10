@@ -2550,16 +2550,16 @@ function ( cat_1, source_1, alpha_1, range_1 )
     deduped_3_1 := UnderlyingMatrix( alpha_1 );
     deduped_2_1 := Dimension( Range( alpha_1 ) );
     deduped_1_1 := Dimension( Source( alpha_1 ) );
-    return deduped_1_1 = Dimension( source_1 ) and deduped_2_1 = Dimension( range_1 ) and CAP_JIT_EXPR_CASE_WRAPPER( function (  )
-                if NumberRows( deduped_3_1 ) <> deduped_1_1 then
-                    return false;
-                elif NumberColumns( deduped_3_1 ) <> deduped_2_1 then
-                    return false;
-                else
-                    return true;
-                fi;
-                return;
-            end )(  );
+    return CAP_JIT_EXPR_CASE_WRAPPER( function (  )
+                  if NumberRows( deduped_3_1 ) <> deduped_1_1 then
+                      return false;
+                  elif NumberColumns( deduped_3_1 ) <> deduped_2_1 then
+                      return false;
+                  else
+                      return true;
+                  fi;
+                  return;
+              end )(  ) and deduped_1_1 = Dimension( source_1 ) and deduped_2_1 = Dimension( range_1 );
 end
 ########
         

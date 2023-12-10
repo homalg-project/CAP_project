@@ -751,9 +751,13 @@ AddDerivationToCAP( IsWellDefinedForMorphismsWithGivenSourceAndRange,
                     
   function( cat, source, morphism, range )
     
-    return IsEqualForObjects( cat, Source( morphism ), source ) and
-           IsEqualForObjects( cat, Range( morphism ), range ) and
-           IsWellDefinedForMorphisms( cat, morphism );
+    # Mathematically, we would first like to check if `morphism` has the expected source and range.
+    # However, `IsEqualForObjects` expects well-defined objects, so we first have to check if source and range
+    # of `morphism` are well-defined. We do this via `IsWellDefinedForMorphisms`, which checks well-definedness of
+    # source and range via a redirect function.
+    return IsWellDefinedForMorphisms( cat, morphism ) and
+           IsEqualForObjects( cat, Source( morphism ), source ) and
+           IsEqualForObjects( cat, Range( morphism ), range );
     
 end );
 
