@@ -3351,7 +3351,7 @@ AddFinalDerivationBundle( "Adding BasisOfExternalHom and CoefficientsOfMorphism 
     function( cat )
       local range_cat, required_methods;
       
-      if not ( HasIsLinearCategoryOverCommutativeRing( cat ) and IsLinearCategoryOverCommutativeRing( cat ) ) then
+      if not ( HasIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( cat ) and IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( cat ) ) then
         
         return false;
         
@@ -3371,7 +3371,7 @@ AddFinalDerivationBundle( "Adding BasisOfExternalHom and CoefficientsOfMorphism 
         
       fi;
       
-      if not ( HasIsLinearCategoryOverCommutativeRing( range_cat ) and IsLinearCategoryOverCommutativeRing( range_cat ) ) then
+      if not ( HasIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( range_cat ) and IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( range_cat ) ) then
         
         return false;
         

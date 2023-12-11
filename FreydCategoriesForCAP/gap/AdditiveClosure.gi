@@ -111,13 +111,23 @@ InstallMethod( ADDITIVE_CLOSURE,
     
     SetUnderlyingCategory( category, underlying_category );
     
-    if HasIsLinearCategoryOverCommutativeRing( underlying_category ) and
+    if HasIsLinearCategoryOverCommutativeRing( underlying_category ) and IsLinearCategoryOverCommutativeRing( underlying_category ) and
         HasCommutativeRingOfLinearCategory( underlying_category ) then
         
         SetIsLinearCategoryOverCommutativeRing( category, true );
         
         SetCommutativeRingOfLinearCategory( category, CommutativeRingOfLinearCategory( underlying_category ) );
-    
+        
+        if HasIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( underlying_category ) and
+           IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( underlying_category ) then
+            
+            SetIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( category, true );
+            
+            # BasisOfExternalHom and CoefficientsOfMorphism can possibly be derived from the hom structure
+            # see https://github.com/homalg-project/CAP_project/pull/652 for a primitive implementation
+            
+        fi;
+        
     fi;
     
     INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE( category );

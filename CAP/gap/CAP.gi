@@ -29,6 +29,8 @@ InstallTrueMethod( IsEnrichedOverCommutativeRegularSemigroup, IsAbCategory );
 
 InstallTrueMethod( IsAbCategory, IsLinearCategoryOverCommutativeRing );
 
+InstallTrueMethod( IsLinearCategoryOverCommutativeRing, IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms );
+
 InstallTrueMethod( IsAbCategory, IsAdditiveCategory );
 
 InstallTrueMethod( IsAdditiveCategory, IsPreAbelianCategory );
