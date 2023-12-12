@@ -20,8 +20,9 @@ Display( T );
 #! * IsAbelianCategoryWithEnoughProjectives
 #! * IsRigidSymmetricClosedMonoidalCategory
 #! * IsRigidSymmetricCoclosedMonoidalCategory
-#! and furthermore mathematically
+#! and not yet algorithmically
 #! * IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms
+#! and furthermore mathematically
 #! * IsLocallyOfFiniteInjectiveDimension
 #! * IsLocallyOfFiniteProjectiveDimension
 #! * IsTerminalCategory
