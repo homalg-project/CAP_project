@@ -23,7 +23,7 @@ BindGlobal( "InfoFreydCategoriesForCAP", NewInfoClass("InfoFreydCategoriesForCAP
 ##
 InstallGlobalFunction( FREYD_CATEGORY,
   function( underlying_category )
-    local name, freyd_category, conditions;
+    local name, freyd_category, commutative_ring, conditions;
     
     if not IsValidInputForFreydCategory( underlying_category ) then
         return false;
@@ -49,14 +49,27 @@ InstallGlobalFunction( FREYD_CATEGORY,
     
     SetUnderlyingCategory( freyd_category, underlying_category );
     
-    if HasIsLinearCategoryOverCommutativeRing( underlying_category )
-        and IsLinearCategoryOverCommutativeRing( underlying_category )
-          and HasCommutativeRingOfLinearCategory( underlying_category ) then
-      
-      SetIsLinearCategoryOverCommutativeRing( freyd_category, true );
-      
-      SetCommutativeRingOfLinearCategory( freyd_category, CommutativeRingOfLinearCategory( underlying_category ) );
-       
+    if HasIsLinearCategoryOverCommutativeRing( underlying_category ) and
+       IsLinearCategoryOverCommutativeRing( underlying_category ) and
+       HasCommutativeRingOfLinearCategory( underlying_category ) then
+        
+        SetIsLinearCategoryOverCommutativeRing( freyd_category, true );
+        
+        commutative_ring := CommutativeRingOfLinearCategory( underlying_category );
+        
+        SetCommutativeRingOfLinearCategory( freyd_category, commutative_ring );
+        
+        if HasIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( underlying_category ) and
+           IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( underlying_category ) then
+            
+            if HasIsFieldForHomalg( commutative_ring ) and IsFieldForHomalg( commutative_ring ) then
+                
+                SetIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( freyd_category, true );
+                
+            fi;
+            
+        fi;
+        
     fi;
     
     ## Freyd's theorem
