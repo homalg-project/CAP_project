@@ -1,7 +1,7 @@
 name: CompilerForCAP
-version: "2023.12-11"
+version: "2023.12-12"
 license: "GPL-2.0-or-later"
-date: 2023-12-08
+date: 2023-12-12
 description: |
     Speed up and verify categorical algorithms
 
@@ -29,11 +29,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/CompilerForCAP/Package
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2023.12-11/CompilerForCAP-2023.12-11.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2023.12-12/CompilerForCAP-2023.12-12.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2023.12-11/CompilerForCAP-2023.12-11.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2023.12-12/CompilerForCAP-2023.12-12.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2023.12-11/CompilerForCAP-2023.12-11-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2023.12-12/CompilerForCAP-2023.12-12-manual.pdf
 
 abstract: |
 
@@ -42,28 +42,28 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>Zic08</span>]   <b class='BibAuthor'>Zickgraf, F.</b>,
+    [<span class='BibKey'>Zic12</span>]   <b class='BibAuthor'>Zickgraf, F.</b>,
      <i class='BibTitle'>CompilerForCAP, Speed up and verify categorical algorithms,
-             Version 2023.12-11</i>
-     (<span class='BibYear'>2-08</span>)<br />
+             Version 2023.12-12</i>
+     (<span class='BibYear'>2-12</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/CompilerForCAP">https://homalg-project.github.io/pkg/CompilerForCAP</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ CompilerForCAP2023.12-11,
+    @misc{ CompilerForCAP2023.12-12,
       author =           {Zickgraf, F.},
       title =            {{CompilerForCAP},  Speed  up  and  verify  categorical
-                          algorithms, {V}ersion 2023.12-11},
+                          algorithms, {V}ersion 2023.12-12},
       month =            {3-},
-      year =             {2-08},
+      year =             {2-12},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/CompilerForCAP}
                           {\texttt{https://homalg-project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{CompilerForCAP}}},
-      printedkey =       {Zic08}
+      printedkey =       {Zic12}
     }
 
