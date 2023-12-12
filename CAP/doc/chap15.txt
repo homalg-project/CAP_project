@@ -682,8 +682,9 @@
     [4X[28X* IsAbelianCategoryWithEnoughProjectives[128X[104X
     [4X[28X* IsRigidSymmetricClosedMonoidalCategory[128X[104X
     [4X[28X* IsRigidSymmetricCoclosedMonoidalCategory[128X[104X
-    [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28Xand not yet algorithmically[128X[104X
     [4X[28X* IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms[128X[104X
+    [4X[28Xand furthermore mathematically[128X[104X
     [4X[28X* IsLocallyOfFiniteInjectiveDimension[128X[104X
     [4X[28X* IsLocallyOfFiniteProjectiveDimension[128X[104X
     [4X[28X* IsTerminalCategory[128X[104X
@@ -839,8 +840,9 @@
     [4X[28X* IsAbelianCategoryWithEnoughProjectives[128X[104X
     [4X[28X* IsRigidSymmetricClosedMonoidalCategory[128X[104X
     [4X[28X* IsRigidSymmetricCoclosedMonoidalCategory[128X[104X
-    [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28Xand not yet algorithmically[128X[104X
     [4X[28X* IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms[128X[104X
+    [4X[28Xand furthermore mathematically[128X[104X
     [4X[28X* IsLocallyOfFiniteInjectiveDimension[128X[104X
     [4X[28X* IsLocallyOfFiniteProjectiveDimension[128X[104X
     [4X[28X* IsSkeletalCategory[128X[104X
