@@ -277,7 +277,8 @@ true
 
 # test CAP_JIT_INTERNAL_EXPR_CASE
 gap> func := { } -> CAP_JIT_INTERNAL_EXPR_CASE( 1 <> 1, 1, true, 2 );;
-gap> tree := ENHANCED_SYNTAX_TREE( func : type_signature := [ [ ], rec( filter := IsInt ) ] );;
+gap> tree := ENHANCED_SYNTAX_TREE( func );;
+gap> tree.data_type := rec( filter := IsFunction, signature := Pair( [ ], rec( filter := IsInt ) ) );;
 gap> CapJitPrettyPrintSyntaxTree( tree );
 rec(
   0_type := "EXPR_DECLARATIVE_FUNC",

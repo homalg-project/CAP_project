@@ -205,7 +205,8 @@ end
 gap> func := { } -> Concatenation( CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( IsInt ) ) ) );;
 
 #
-gap> tree := ENHANCED_SYNTAX_TREE( func : type_signature := Pair( [ ], CapJitDataTypeOfListOf( IsInt ) ) );;
+gap> tree := ENHANCED_SYNTAX_TREE( func );;
+gap> tree.data_type := rec( filter := IsFunction, signature := Pair( [ ], CapJitDataTypeOfListOf( IsInt ) ) );;
 gap> tree := CapJitInferredDataTypes( tree );;
 gap> tree := CapJitAppliedLogic( tree );;
 gap> Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
@@ -217,7 +218,8 @@ end
 gap> func := { } -> Concatenation( CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( IsInt ) ), CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( IsInt ) ) );;
 
 #
-gap> tree := ENHANCED_SYNTAX_TREE( func : type_signature := Pair( [ ], CapJitDataTypeOfListOf( IsInt ) ) );;
+gap> tree := ENHANCED_SYNTAX_TREE( func );;
+gap> tree.data_type := rec( filter := IsFunction, signature := Pair( [ ], CapJitDataTypeOfListOf( IsInt ) ) );;
 gap> tree := CapJitInferredDataTypes( tree );;
 gap> tree := CapJitAppliedLogic( tree );;
 gap> Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
@@ -229,7 +231,8 @@ end
 gap> func := { } -> List( CapJitTypedExpression( [ ], { } -> CapJitDataTypeOfListOf( IsInt ) ), x -> [ x ] );;
 
 #
-gap> tree := ENHANCED_SYNTAX_TREE( func : type_signature := Pair( [ ], CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( IsInt ) ) ) );;
+gap> tree := ENHANCED_SYNTAX_TREE( func );;
+gap> tree.data_type := rec( filter := IsFunction, signature := Pair( [ ], CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( IsInt ) ) ) );;
 gap> tree := CapJitInferredDataTypes( tree );;
 gap> tree := CapJitAppliedLogic( tree );;
 gap> Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );

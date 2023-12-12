@@ -179,7 +179,7 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                 
             else
                 
-                type_signature := [ arguments_data_types, return_data_type ];
+                type_signature := Pair( arguments_data_types, return_data_type );
                 
             fi;
             
@@ -199,11 +199,22 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
     
     if category_as_first_argument then
         
-        tree := ENHANCED_SYNTAX_TREE( func : globalize_hvars := true, given_arguments := [ category ], type_signature := type_signature );
+        tree := ENHANCED_SYNTAX_TREE( func : globalize_hvars := true, given_arguments := [ category ] );
         
     else
         
-        tree := ENHANCED_SYNTAX_TREE( func : globalize_hvars := true, type_signature := type_signature );
+        tree := ENHANCED_SYNTAX_TREE( func : globalize_hvars := true );
+        
+    fi;
+    
+    if type_signature <> fail then
+        
+        Assert( 0, IsList( type_signature ) and Length( type_signature ) = 2 and IsList( type_signature[1] ) and Length( type_signature[1] ) = tree.narg and (type_signature[2] = fail or IsRecord( type_signature[2] )) );
+        
+        tree.data_type := rec(
+            filter := IsFunction,
+            signature := type_signature
+        );
         
     fi;
     
