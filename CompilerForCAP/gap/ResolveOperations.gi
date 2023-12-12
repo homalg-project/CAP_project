@@ -144,21 +144,6 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree )
                     Assert( 0, CanCompute( category, operation_name ) );
                     Assert( 0, tree.args.length = Length( info.filter_list ) );
                     
-                    if CAP_JIT_PROOF_ASSISTANT_MODE_ENABLED then
-                        
-                        if not IsBound( info.compatible_with_congruence_of_morphisms ) then
-                            
-                            # COVERAGE_IGNORE_NEXT_LINE
-                            Print( "WARNING: please check if the CAP operation ", operation_name, " is compatible with the congruence of morphisms and add this information to the method name record.\n" );
-                            
-                        elif info.compatible_with_congruence_of_morphisms <> true then
-                            
-                            Print( "WARNING: the CAP operation ", operation_name, " is not compatible with the congruence of morphisms. Keep this in mind when writing logic templates.\n" );
-                            
-                        fi;
-                        
-                    fi;
-                    
                     if IsBound( category!.stop_compilation ) and category!.stop_compilation = true then
                         
                         return tree;
