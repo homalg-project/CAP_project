@@ -8,7 +8,7 @@ gap> dummy := DummyCategory( rec(
 >                    "IsCongruentForMorphisms",
 >                    "PreComposeList",
 >                    "SumOfMorphisms" ],
->                properties := [ "IsLinearCategoryOverCommutativeRing" ] ) : FinalizeCategory := false );;
+>                properties := [ "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms" ] ) : FinalizeCategory := false );;
 gap> field := HomalgFieldOfRationals( );
 Q
 gap> SetCommutativeRingOfLinearCategory( dummy, field );

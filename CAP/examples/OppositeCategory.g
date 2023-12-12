@@ -8,15 +8,17 @@ QQ := HomalgFieldOfRationals();;
 vec := MatrixCategory( QQ );;
 op := Opposite( vec );;
 ListKnownCategoricalProperties( op );
-#! [ "IsAbCategory", "IsAbelianCategory", "IsAbelianCategoryWithEnoughInjectives",
-#!   "IsAbelianCategoryWithEnoughProjectives", "IsAdditiveCategory",
-#!   "IsBraidedMonoidalCategory", "IsClosedMonoidalCategory",
-#!   "IsCoclosedMonoidalCategory", "IsEnrichedOverCommutativeRegularSemigroup",
-#!   "IsEquippedWithHomomorphismStructure", "IsLinearCategoryOverCommutativeRing",
-#!   "IsMonoidalCategory", "IsPreAbelianCategory",
-#!   "IsRigidSymmetricClosedMonoidalCategory",
-#!   "IsRigidSymmetricCoclosedMonoidalCategory", "IsSkeletalCategory",
-#!   "IsStrictMonoidalCategory", "IsSymmetricClosedMonoidalCategory",
+#! [ "IsAbCategory", "IsAbelianCategory", "IsAbelianCategoryWithEnoughInjectives"
+#!     , "IsAbelianCategoryWithEnoughProjectives", "IsAdditiveCategory", 
+#!   "IsBraidedMonoidalCategory", "IsClosedMonoidalCategory", 
+#!   "IsCoclosedMonoidalCategory", "IsEnrichedOverCommutativeRegularSemigroup", 
+#!   "IsEquippedWithHomomorphismStructure", "IsLinearCategoryOverCommutativeRing"
+#!     , 
+#!   "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms", 
+#!   "IsMonoidalCategory", "IsPreAbelianCategory", 
+#!   "IsRigidSymmetricClosedMonoidalCategory", 
+#!   "IsRigidSymmetricCoclosedMonoidalCategory", "IsSkeletalCategory", 
+#!   "IsStrictMonoidalCategory", "IsSymmetricClosedMonoidalCategory", 
 #!   "IsSymmetricCoclosedMonoidalCategory", "IsSymmetricMonoidalCategory" ]
 V1 := Opposite( TensorUnit( vec ) );;
 V2 := DirectSum( V1, V1 );;

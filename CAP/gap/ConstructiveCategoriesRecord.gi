@@ -65,6 +65,14 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsLinearCategoryOverCommutativeRing 
     ]
 );
 
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsLinearCategoryOverCommutativeRingWithFiniteFreeHomSpaces := Concatenation(
+    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsLinearCategoryOverCommutativeRing,
+    [
+        "BasisOfExternalHom",
+        "CoefficientsOfMorphism",
+    ]
+);
+
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsAdditiveCategory := Concatenation(
     CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsAbCategory,
     [

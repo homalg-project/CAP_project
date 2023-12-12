@@ -64,7 +64,7 @@ InstallGlobalFunction( MATRIX_CATEGORY,
     
     SetIsStrictMonoidalCategory( category, true );
     
-    SetIsLinearCategoryOverCommutativeRing( category, true );
+    SetIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( category, true );
     
     SetCommutativeRingOfLinearCategory( category, homalg_field );
     

@@ -214,7 +214,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
     
     if HasIsCommutative( ring ) and IsCommutative( ring ) then
         
-        SetIsLinearCategoryOverCommutativeRing( category, true );
+        SetIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( category, true );
         
         SetCommutativeRingOfLinearCategory( category, ring );
         
@@ -300,7 +300,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
         
         field := BaseRing( ring );
         
-        SetIsLinearCategoryOverCommutativeRing( category, true );
+        SetIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( category, true );
         
         SetCommutativeRingOfLinearCategory( category, field );
         

@@ -931,7 +931,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     if HasIsCommutative( ring ) and IsCommutative( ring ) then
         
-        Assert( 0, IsLinearCategoryOverCommutativeRing( category ) );
+        Assert( 0, IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( category ) );
         
         Assert( 0, IsIdenticalObj( CommutativeRingOfLinearCategory( category ), ring ) );
         
@@ -1447,7 +1447,7 @@ AddFinalDerivationBundle( "Using BasisOfExternalHom and CoefficientsOfMorphism t
          (HasIsEquippedWithHomomorphismStructure and IsEquippedWithHomomorphismStructure)( cat ) and
          HasRangeCategoryOfHomomorphismStructure( cat ) and
          IsCategoryOfRows( RangeCategoryOfHomomorphismStructure( cat ) ) and
-         HasIsLinearCategoryOverCommutativeRing( cat ) and IsLinearCategoryOverCommutativeRing( cat ) and
+         HasIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( cat ) and IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( cat ) and
          HasCommutativeRingOfLinearCategory( cat ) and IsHomalgRing( CommutativeRingOfLinearCategory( cat ) ) then
           
           return true;
