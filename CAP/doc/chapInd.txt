@@ -556,10 +556,10 @@
   [2XInverseOfMorphismFromCoimageToImage[102X, for IsCapCategoryMorphism 6.14-3 
   [2XInverseOfMorphismFromCoimageToImageWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 6.14-4 
   [2XIsAbCategory[102X, for IsCapCategory 1.2-7 
-  [2XIsAbelianCategory[102X, for IsCapCategory 1.2-11 
-  [2XIsAbelianCategoryWithEnoughInjectives[102X, for IsCapCategory 1.2-13 
-  [2XIsAbelianCategoryWithEnoughProjectives[102X, for IsCapCategory 1.2-12 
-  [2XIsAdditiveCategory[102X, for IsCapCategory 1.2-9 
+  [2XIsAbelianCategory[102X, for IsCapCategory 1.2-12 
+  [2XIsAbelianCategoryWithEnoughInjectives[102X, for IsCapCategory 1.2-14 
+  [2XIsAbelianCategoryWithEnoughProjectives[102X, for IsCapCategory 1.2-13 
+  [2XIsAdditiveCategory[102X, for IsCapCategory 1.2-10 
   [2XIsApplicableToCategory[102X, for IsDerivedMethod, IsCapCategory 8.2-7 
   [2XIsAutomorphism[102X, for IsCapCategoryMorphism 3.5-4 
   [2XIsBijectiveObject[102X, for IsCapCategoryObject 2.3-1 
@@ -614,8 +614,9 @@
   [2XIsLiftable[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-7 
   [2XIsLiftableAlongMonomorphism[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-3 
   [2XIsLinearCategoryOverCommutativeRing[102X, for IsCapCategory 1.2-8 
-  [2XIsLocallyOfFiniteInjectiveDimension[102X, for IsCapCategory 1.2-15 
-  [2XIsLocallyOfFiniteProjectiveDimension[102X, for IsCapCategory 1.2-14 
+  [2XIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms[102X, for IsCapCategory 1.2-9 
+  [2XIsLocallyOfFiniteInjectiveDimension[102X, for IsCapCategory 1.2-16 
+  [2XIsLocallyOfFiniteProjectiveDimension[102X, for IsCapCategory 1.2-15 
   [2XIsMonomorphism[102X, for IsCapCategoryMorphism 3.3-1 
   [2XIsMorphismInCapTerminalCategoryWithMultipleObjects[102X, for IsCapCategoryMorphism 16.1-6 
   [2XIsMorphismInCapTerminalCategoryWithSingleObject[102X, for IsCapCategoryMorphism 16.1-3 
@@ -645,7 +646,7 @@
   [2XIsomorphismFromZeroObjectToTerminalObject[102X, for IsCapCategory 6.3-11 
   [2XIsOne[102X, for IsCapCategoryMorphism 3.3-6 
   [2XIsOperationWeightList[102X, for IsAttributeStoringRep 8.4-1 
-  [2XIsPreAbelianCategory[102X, for IsCapCategory 1.2-10 
+  [2XIsPreAbelianCategory[102X, for IsCapCategory 1.2-11 
   [2XIsProjective[102X, for IsCapCategoryObject 2.3-2 
   [2XIsSkeletalCategory[102X, for IsCapCategory 1.2-6 
   [2XIsSpecializationOfFilter[102X 9.2-17 

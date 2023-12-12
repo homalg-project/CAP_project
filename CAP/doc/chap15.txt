@@ -595,15 +595,17 @@
     [4X[25Xgap>[125X [27Xvec := MatrixCategory( QQ );;[127X[104X
     [4X[25Xgap>[125X [27Xop := Opposite( vec );;[127X[104X
     [4X[25Xgap>[125X [27XListKnownCategoricalProperties( op );[127X[104X
-    [4X[28X[ "IsAbCategory", "IsAbelianCategory", "IsAbelianCategoryWithEnoughInjectives",[128X[104X
-    [4X[28X  "IsAbelianCategoryWithEnoughProjectives", "IsAdditiveCategory",[128X[104X
-    [4X[28X  "IsBraidedMonoidalCategory", "IsClosedMonoidalCategory",[128X[104X
-    [4X[28X  "IsCoclosedMonoidalCategory", "IsEnrichedOverCommutativeRegularSemigroup",[128X[104X
-    [4X[28X  "IsEquippedWithHomomorphismStructure", "IsLinearCategoryOverCommutativeRing",[128X[104X
-    [4X[28X  "IsMonoidalCategory", "IsPreAbelianCategory",[128X[104X
-    [4X[28X  "IsRigidSymmetricClosedMonoidalCategory",[128X[104X
-    [4X[28X  "IsRigidSymmetricCoclosedMonoidalCategory", "IsSkeletalCategory",[128X[104X
-    [4X[28X  "IsStrictMonoidalCategory", "IsSymmetricClosedMonoidalCategory",[128X[104X
+    [4X[28X[ "IsAbCategory", "IsAbelianCategory", "IsAbelianCategoryWithEnoughInjectives"[128X[104X
+    [4X[28X    , "IsAbelianCategoryWithEnoughProjectives", "IsAdditiveCategory", [128X[104X
+    [4X[28X  "IsBraidedMonoidalCategory", "IsClosedMonoidalCategory", [128X[104X
+    [4X[28X  "IsCoclosedMonoidalCategory", "IsEnrichedOverCommutativeRegularSemigroup", [128X[104X
+    [4X[28X  "IsEquippedWithHomomorphismStructure", "IsLinearCategoryOverCommutativeRing"[128X[104X
+    [4X[28X    , [128X[104X
+    [4X[28X  "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms", [128X[104X
+    [4X[28X  "IsMonoidalCategory", "IsPreAbelianCategory", [128X[104X
+    [4X[28X  "IsRigidSymmetricClosedMonoidalCategory", [128X[104X
+    [4X[28X  "IsRigidSymmetricCoclosedMonoidalCategory", "IsSkeletalCategory", [128X[104X
+    [4X[28X  "IsStrictMonoidalCategory", "IsSymmetricClosedMonoidalCategory", [128X[104X
     [4X[28X  "IsSymmetricCoclosedMonoidalCategory", "IsSymmetricMonoidalCategory" ][128X[104X
     [4X[25Xgap>[125X [27XV1 := Opposite( TensorUnit( vec ) );;[127X[104X
     [4X[25Xgap>[125X [27XV2 := DirectSum( V1, V1 );;[127X[104X
@@ -681,6 +683,7 @@
     [4X[28X* IsRigidSymmetricClosedMonoidalCategory[128X[104X
     [4X[28X* IsRigidSymmetricCoclosedMonoidalCategory[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28X* IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms[128X[104X
     [4X[28X* IsLocallyOfFiniteInjectiveDimension[128X[104X
     [4X[28X* IsLocallyOfFiniteProjectiveDimension[128X[104X
     [4X[28X* IsTerminalCategory[128X[104X
@@ -837,6 +840,7 @@
     [4X[28X* IsRigidSymmetricClosedMonoidalCategory[128X[104X
     [4X[28X* IsRigidSymmetricCoclosedMonoidalCategory[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28X* IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms[128X[104X
     [4X[28X* IsLocallyOfFiniteInjectiveDimension[128X[104X
     [4X[28X* IsLocallyOfFiniteProjectiveDimension[128X[104X
     [4X[28X* IsSkeletalCategory[128X[104X

@@ -45,13 +45,14 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7DBCD7237CF9100A">1.2-6 IsSkeletalCategory</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X79295B4680B0F22B">1.2-7 IsAbCategory</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X861DBAC181A15E1F">1.2-8 IsLinearCategoryOverCommutativeRing</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X87C4C37D7F75E681">1.2-9 IsAdditiveCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7A64E2B978685471">1.2-10 IsPreAbelianCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X79DB288F84457967">1.2-11 IsAbelianCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X83EDCC4886FEE4B1">1.2-12 IsAbelianCategoryWithEnoughProjectives</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X860EB7977F78EE3F">1.2-13 IsAbelianCategoryWithEnoughInjectives</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X87AA6D6282FD1C02">1.2-14 IsLocallyOfFiniteProjectiveDimension</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7EDD2B4386ABE96E">1.2-15 IsLocallyOfFiniteInjectiveDimension</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X86D45F0D7804F023">1.2-9 IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X87C4C37D7F75E681">1.2-10 IsAdditiveCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7A64E2B978685471">1.2-11 IsPreAbelianCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X79DB288F84457967">1.2-12 IsAbelianCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X83EDCC4886FEE4B1">1.2-13 IsAbelianCategoryWithEnoughProjectives</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X860EB7977F78EE3F">1.2-14 IsAbelianCategoryWithEnoughInjectives</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X87AA6D6282FD1C02">1.2-15 IsLocallyOfFiniteProjectiveDimension</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7EDD2B4386ABE96E">1.2-16 IsLocallyOfFiniteInjectiveDimension</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7ABF649E831D4D8E">1.3 <span class="Heading">Constructor</span></a>
 </span>
@@ -308,9 +309,18 @@
 
 <p>The property of the category <var class="Arg">C</var> being linear over a commutative ring.</p>
 
+<p><a id="X86D45F0D7804F023" name="X86D45F0D7804F023"></a></p>
+
+<h5>1.2-9 IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The property of the category <var class="Arg">C</var> being linear over a commutative ring <span class="SimpleMath">\(k\)</span> such that all external homs are finitely generated free <span class="SimpleMath">\(k\)</span>-modules.</p>
+
 <p><a id="X87C4C37D7F75E681" name="X87C4C37D7F75E681"></a></p>
 
-<h5>1.2-9 IsAdditiveCategory</h5>
+<h5>1.2-10 IsAdditiveCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsAdditiveCategory</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
@@ -319,7 +329,7 @@
 
 <p><a id="X7A64E2B978685471" name="X7A64E2B978685471"></a></p>
 
-<h5>1.2-10 IsPreAbelianCategory</h5>
+<h5>1.2-11 IsPreAbelianCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsPreAbelianCategory</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
@@ -328,7 +338,7 @@
 
 <p><a id="X79DB288F84457967" name="X79DB288F84457967"></a></p>
 
-<h5>1.2-11 IsAbelianCategory</h5>
+<h5>1.2-12 IsAbelianCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsAbelianCategory</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
@@ -337,7 +347,7 @@
 
 <p><a id="X83EDCC4886FEE4B1" name="X83EDCC4886FEE4B1"></a></p>
 
-<h5>1.2-12 IsAbelianCategoryWithEnoughProjectives</h5>
+<h5>1.2-13 IsAbelianCategoryWithEnoughProjectives</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsAbelianCategoryWithEnoughProjectives</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
@@ -346,7 +356,7 @@
 
 <p><a id="X860EB7977F78EE3F" name="X860EB7977F78EE3F"></a></p>
 
-<h5>1.2-13 IsAbelianCategoryWithEnoughInjectives</h5>
+<h5>1.2-14 IsAbelianCategoryWithEnoughInjectives</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsAbelianCategoryWithEnoughInjectives</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
@@ -355,7 +365,7 @@
 
 <p><a id="X87AA6D6282FD1C02" name="X87AA6D6282FD1C02"></a></p>
 
-<h5>1.2-14 IsLocallyOfFiniteProjectiveDimension</h5>
+<h5>1.2-15 IsLocallyOfFiniteProjectiveDimension</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsLocallyOfFiniteProjectiveDimension</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
@@ -364,7 +374,7 @@
 
 <p><a id="X7EDD2B4386ABE96E" name="X7EDD2B4386ABE96E"></a></p>
 
-<h5>1.2-15 IsLocallyOfFiniteInjectiveDimension</h5>
+<h5>1.2-16 IsLocallyOfFiniteInjectiveDimension</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsLocallyOfFiniteInjectiveDimension</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
