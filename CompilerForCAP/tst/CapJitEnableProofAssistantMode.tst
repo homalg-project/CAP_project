@@ -26,10 +26,6 @@ gap> func :=
 
 #
 gap> Display( CapJitCompiledFunction( func, dummy ) );
-WARNING: the CAP operation KernelObject is not compatible with the congruence \
-of morphisms. Keep this in mind when writing logic templates.
-WARNING: the CAP operation KernelObject is not compatible with the congruence \
-of morphisms. Keep this in mind when writing logic templates.
 function ( cat_1 )
     return KernelObject( cat_1, IdentityMorphism( cat_1, ZeroObject( cat_1 ) 
          ) );
