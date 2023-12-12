@@ -41,7 +41,7 @@ BindGlobal( "CAP_JIT_INTERNAL_OPERATION_TO_SYNTAX_TREE_TRANSLATIONS", rec(
 Assert( 0, Length( RecNames( CAP_JIT_INTERNAL_SYNTAX_TREE_TO_OPERATION_TRANSLATIONS ) ) = Length( RecNames( CAP_JIT_INTERNAL_OPERATION_TO_SYNTAX_TREE_TRANSLATIONS ) ) );
 
 InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
-  local WarnWithFuncLocation, ErrorWithFuncLocation, globalize_hvars, only_if_CAP_JIT_RESOLVE_FUNCTION, given_arguments, type_signature, remove_depth_numbering, tree, orig_tree, pre_func, result_func, additional_arguments_func;
+  local WarnWithFuncLocation, ErrorWithFuncLocation, globalize_hvars, only_if_CAP_JIT_RESOLVE_FUNCTION, given_arguments, remove_depth_numbering, tree, orig_tree, pre_func, result_func, additional_arguments_func;
     
     WarnWithFuncLocation := function ( args... )
         
@@ -874,25 +874,6 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
     end;
     
     tree := CapJitIterateOverTree( tree, pre_func, result_func, additional_arguments_func, [ [ ], [ ] ] );
-    
-    type_signature := ValueOption( "type_signature" );
-    
-    if type_signature = fail then
-        
-        #Error( "you must provide a type signature" );
-        
-    else
-        
-        if not IsList( type_signature ) or Length( type_signature ) <> 2 or not IsList( type_signature[1] ) or Length( type_signature[1] ) <> NumberArgumentsFunction( func ) then
-            
-            # COVERAGE_IGNORE_NEXT_LINE
-            Error( "the option \"type_signature\" must be a pair with a list of length equal to the number of function arguments as the first entry" );
-            
-        fi;
-        
-        tree.data_type := rec( filter := IsFunction, signature := type_signature );
-        
-    fi;
     
     return tree;
     

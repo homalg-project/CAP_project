@@ -35,19 +35,27 @@ gap> IsIdenticalObj( Remove( CAP_JIT_LOGIC_TEMPLATES ), template1 );
 true
 
 #
-gap> applied_logic_template_to_func :=
->     { func, template, type_signature } ->
->         ENHANCED_SYNTAX_TREE_CODE(
->             CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATES(
->                 CapJitInferredDataTypes(
->                     ENHANCED_SYNTAX_TREE(
->                         func :
->                         type_signature := type_signature
->                     )
->                 ),
->                 [ template ]
->             )
->         );;
+gap> applied_logic_template_to_func := function ( func, template, type_signature )
+>   local tree;
+>   
+>   tree := ENHANCED_SYNTAX_TREE( func );
+>   
+>   if type_signature <> fail then
+>       
+>       tree.data_type := rec(
+>           filter := IsFunction,
+>           signature := type_signature
+>       );
+>       
+>   fi;
+>   
+>   tree := CapJitInferredDataTypes( tree );
+>   
+>   tree := CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATES( tree, [ template ] );
+>   
+>   return ENHANCED_SYNTAX_TREE_CODE( tree );
+>   
+> end;;
 
 # some general example
 gap> template := rec(
