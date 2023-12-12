@@ -6,7 +6,7 @@
 InstallGlobalFunction( InfoStringOfInstalledOperationsOfCategory,
   
   function( category )
-    local result, MaximalPropertiesWithRegardToImplication, list_of_mathematical_properties,
+    local result, MaximalPropertiesWithRegardToImplication, list_of_potential_categorical_properties, list_of_mathematical_properties,
           list_of_potential_algorithmic_properties, list_of_algorithmic_and_not_yet_algorithmic_properties,
           list_of_algorithmic_properties, list_of_maximal_algorithmic_properties,
           list_of_not_yet_algorithmic_properties, list_of_maximal_not_yet_algorithmic_properties,
@@ -29,9 +29,14 @@ InstallGlobalFunction( InfoStringOfInstalledOperationsOfCategory,
         
     end;
     
+    list_of_potential_categorical_properties := Set( Filtered( Concatenation( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST ), x -> x <> fail ) );
+    
     list_of_mathematical_properties := ListKnownCategoricalProperties( category );
     
     list_of_potential_algorithmic_properties := SortedList( RecNames( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD ) );
+    
+    # check that all potential algorithmic properties except "EveryCategory" are potential categorical properties
+    Assert( 0, Difference( list_of_potential_algorithmic_properties, list_of_potential_categorical_properties ) = [ "EveryCategory" ] );
     
     list_of_algorithmic_and_not_yet_algorithmic_properties := Intersection( list_of_mathematical_properties, list_of_potential_algorithmic_properties );
     
