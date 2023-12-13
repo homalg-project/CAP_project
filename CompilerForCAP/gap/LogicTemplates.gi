@@ -40,7 +40,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
         
     fi;
     
-    diff := Difference( RecNames( template ), [ "variable_names", "variable_filters", "src_template", "src_template_tree", "dst_template", "dst_template_tree", "new_funcs", "number_of_applications", "needed_packages", "debug", "debug_path" ] );
+    diff := Difference( RecNames( template ), [ "variable_names", "variable_filters", "src_template", "src_template_tree", "dst_template", "dst_template_tree", "new_funcs", "number_of_applications", "apply_in_proof_assistant_mode", "needed_packages", "debug", "debug_path" ] );
     
     if not IsEmpty( diff ) then
         
@@ -130,6 +130,20 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
     if not IsBound( template.number_of_applications ) then
         
         template.number_of_applications := infinity;
+        
+    fi;
+    
+    # apply in proof assistant mode by default
+    if not IsBound( template.apply_in_proof_assistant_mode ) then
+        
+        template.apply_in_proof_assistant_mode := "yes";
+        
+    fi;
+    
+    if not template.apply_in_proof_assistant_mode in [ "yes", "no", "only" ] then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "apply_in_proof_assistant_mode must be \"yes\", \"no\", or \"only\"" );
         
     fi;
     
@@ -477,6 +491,7 @@ CapJitAddLogicTemplate(
         variable_filters := [ IsList, IsFunction, IsInt ],
         src_template := "func( list[index] )",
         dst_template := "List( list, func )[index]",
+        apply_in_proof_assistant_mode := "no",
     )
 );
 
@@ -488,6 +503,20 @@ CapJitAddLogicTemplate(
         src_template := "List( list_of_lists[index], func )",
         dst_template := "List( list_of_lists, list -> List( list, func ) )[index]",
         new_funcs := [ [ "list" ] ],
+        apply_in_proof_assistant_mode := "no",
+    )
+);
+
+# In proof assistant mode, performance (and in particular hoisting and deduplication) is irrelevant.
+# Instead, evaluating a function applied to a list at a given index makes the code more readable.
+# Hence, we apply the reverse of the above templates.
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "list", "func", "index" ],
+        variable_filters := [ IsList, IsFunction, IsInt ],
+        src_template := "List( list, func )[index]",
+        dst_template := "func( list[index] )",
+        apply_in_proof_assistant_mode := "only",
     )
 );
 
@@ -928,7 +957,12 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree )
         
     od;
     
-    tree := CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATES( tree, Filtered( CAP_JIT_LOGIC_TEMPLATES, t -> IsBound( t.is_fully_enhanced ) and t.is_fully_enhanced = true ) );
+    tree := CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATES( tree, Filtered( CAP_JIT_LOGIC_TEMPLATES, t ->
+        IsBound( t.is_fully_enhanced ) and t.is_fully_enhanced = true and (
+            (CAP_JIT_PROOF_ASSISTANT_MODE_ENABLED and t.apply_in_proof_assistant_mode <> "no") or
+            (not CAP_JIT_PROOF_ASSISTANT_MODE_ENABLED and t.apply_in_proof_assistant_mode <> "only")
+        )
+    ) );
     
     MakeReadWriteGlobal( "CAP_JIT_LOGIC_TEMPLATES" );
     
