@@ -64,6 +64,12 @@
   [30X    [33X[0;6Y[10Xnew_funcs[110X  (optional):  a  list  of  lists of strings, defaults to the
         empty list[133X
   
+  [30X    [33X[0;6Y[10Xnumber_of_applications[110X  (optional):  a  positive  integer or infinity,
+        defaults to infinity[133X
+  
+  [30X    [33X[0;6Y[10Xapply_in_proof_assistant_mode[110X  (optional):  one  of the strings [10X"yes"[110X,
+        [10X"no"[110X, or [10X"only"[110X, defaults to [10X"yes"[110X[133X
+  
   [30X    [33X[0;6Y[10Xneeded_packages[110X  (optional):  a  list  of  pairs  (i.e. lists with two
         entries) of strings, defaults to the empty list[133X
   
@@ -91,6 +97,14 @@
         arguments. If for a function in [10Xdst_template[110X no corresponding function
         in  [10Xsrc_template[110X exists, you have to add the list of names of function
         arguments of this function to [10Xnew_funcs[110X.[133X
+  
+  [30X    [33X[0;6YIf  [10Xnumber_of_applications[110X is a positive integer [23Xn[123X, the logic template
+        will be applied at most [23Xn[123X times and ignored afterwards.[133X
+  
+  [30X    [33X[0;6Y[10Xapply_in_proof_assistant_mode[110X  determines  if  the  logic  template is
+        applied  in  proof  assistant  mode, is not applied in proof assistant
+        mode,  or  is  [13Xonly[113X  applied in proof assistant mode but not in normal
+        mode.[133X
   
   [30X    [33X[0;6Y[10Xneeded_packages[110X   has   the  same  format  as  [10XNeededOtherPackages[110X  in
         [10XPackageInfo.g[110X.  The  template  is  only  evaluated  if the packages in

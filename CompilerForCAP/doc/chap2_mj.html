@@ -151,6 +151,12 @@
 <li><p><code class="code">new_funcs</code> (optional): a list of lists of strings, defaults to the empty list</p>
 
 </li>
+<li><p><code class="code">number_of_applications</code> (optional): a positive integer or infinity, defaults to infinity</p>
+
+</li>
+<li><p><code class="code">apply_in_proof_assistant_mode</code> (optional): one of the strings <code class="code">"yes"</code>, <code class="code">"no"</code>, or <code class="code">"only"</code>, defaults to <code class="code">"yes"</code></p>
+
+</li>
 <li><p><code class="code">needed_packages</code> (optional): a list of pairs (i.e. lists with two entries) of strings, defaults to the empty list</p>
 
 </li>
@@ -172,6 +178,12 @@
 
 </li>
 <li><p>For each function in <code class="code">dst_template</code>, <code class="func">CapJitAppliedLogicTemplates</code> (<a href="chap2_mj.html#X7AE756B8878FD449"><span class="RefLink">2.5-18</span></a>) tries to find a corresponding function in <code class="code">src_template</code>. The functions are matched by comparing the lists of names of function arguments. If for a function in <code class="code">dst_template</code> no corresponding function in <code class="code">src_template</code> exists, you have to add the list of names of function arguments of this function to <code class="code">new_funcs</code>.</p>
+
+</li>
+<li><p>If <code class="code">number_of_applications</code> is a positive integer <span class="SimpleMath">\(n\)</span>, the logic template will be applied at most <span class="SimpleMath">\(n\)</span> times and ignored afterwards.</p>
+
+</li>
+<li><p><code class="code">apply_in_proof_assistant_mode</code> determines if the logic template is applied in proof assistant mode, is not applied in proof assistant mode, or is <em>only</em> applied in proof assistant mode but not in normal mode.</p>
 
 </li>
 <li><p><code class="code">needed_packages</code> has the same format as <code class="code">NeededOtherPackages</code> in <code class="code">PackageInfo.g</code>. The template is only evaluated if the packages in <code class="code">needed_packages</code> are loaded in the correct versions.</p>
