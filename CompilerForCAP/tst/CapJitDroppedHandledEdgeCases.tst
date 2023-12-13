@@ -80,5 +80,31 @@ function ( x_1 )
     return;
 end
 
+# symmetry of equality
+gap> func := function( x, y )
+>   
+>   if x = y then
+>       
+>       return 1;
+>       
+>   elif y = x then
+>       
+>       return 2;
+>       
+>   else
+>       
+>       return 1;
+>       
+>   fi;
+>   
+> end;;
+
+#
+gap> compiled_func := CapJitCompiledFunction( func );;
+gap> Display( compiled_func );
+function ( x_1, y_1 )
+    return 1;
+end
+
 #
 gap> STOP_TEST( "CapJitDroppedHandledEdgeCases" );
