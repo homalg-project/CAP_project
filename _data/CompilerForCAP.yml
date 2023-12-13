@@ -1,5 +1,5 @@
 name: CompilerForCAP
-version: "2023.12-15"
+version: "2023.12-16"
 license: "GPL-2.0-or-later"
 date: 2023-12-13
 description: |
@@ -29,11 +29,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/CompilerForCAP/Package
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2023.12-15/CompilerForCAP-2023.12-15.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2023.12-16/CompilerForCAP-2023.12-16.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2023.12-15/CompilerForCAP-2023.12-15.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2023.12-16/CompilerForCAP-2023.12-16.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2023.12-15/CompilerForCAP-2023.12-15-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2023.12-16/CompilerForCAP-2023.12-16-manual.pdf
 
 abstract: |
 
@@ -44,7 +44,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>Zic13</span>]   <b class='BibAuthor'>Zickgraf, F.</b>,
      <i class='BibTitle'>CompilerForCAP, Speed up and verify categorical algorithms,
-             Version 2023.12-15</i>
+             Version 2023.12-16</i>
      (<span class='BibYear'>2-13</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/CompilerForCAP">https://homalg-project.github.io/pkg/CompilerForCAP</a></span>.
@@ -52,10 +52,10 @@ citeas: |
     
 
 bibtex: |
-    @misc{ CompilerForCAP2023.12-15,
+    @misc{ CompilerForCAP2023.12-16,
       author =           {Zickgraf, F.},
       title =            {{CompilerForCAP},  Speed  up  and  verify  categorical
-                          algorithms, {V}ersion 2023.12-15},
+                          algorithms, {V}ersion 2023.12-16},
       month =            {3-},
       year =             {2-13},
       note =             {GAP package},
