@@ -133,6 +133,13 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
         
     fi;
     
+    if not (IsPosInt( template.number_of_applications ) or IsInfinity( template.number_of_applications )) then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "number_of_applications must be a positive integer or infinity" );
+        
+    fi;
+    
     # apply in proof assistant mode by default
     if not IsBound( template.apply_in_proof_assistant_mode ) then
         

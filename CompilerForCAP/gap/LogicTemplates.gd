@@ -20,6 +20,8 @@ DeclareGlobalFunction( "CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE" );
 #!     * `variable_filters` (optional): a list of filters or data types (see <Ref Func="CapJitInferredDataTypes" />)
 #!        with the same length as `variable_names`, defaults to a list of `IsObject`
 #!     * `new_funcs` (optional): a list of lists of strings, defaults to the empty list
+#!     * `number_of_applications` (optional): a positive integer or infinity, defaults to infinity
+#!     * `apply_in_proof_assistant_mode` (optional): one of the strings `"yes"`, `"no"`, or `"only"`, defaults to `"yes"`
 #!     * `needed_packages` (optional): a list of pairs (i.e. lists with two entries) of strings, defaults to the empty list
 #!     * `debug` (optional): a boolean
 #!     * `debug_path` (optional): a path
@@ -35,6 +37,9 @@ DeclareGlobalFunction( "CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE" );
 #!       `src_template`. The functions are matched by comparing the lists of names of function arguments. If for a function in
 #!       `dst_template` no corresponding function in `src_template` exists, you have to add the list of names of function arguments
 #!       of this function to `new_funcs`.
+#!     * If `number_of_applications` is a positive integer $n$, the logic template will be applied at most $n$ times and ignored afterwards.
+#!     * `apply_in_proof_assistant_mode` determines if the logic template is applied in proof assistant mode, is not applied in proof assistant mode,
+#!       or is **only** applied in proof assistant mode but not in normal mode.
 #!     * `needed_packages` has the same format as `NeededOtherPackages` in `PackageInfo.g`. The template is only evaluated if
 #!       the packages in `needed_packages` are loaded in the correct versions.
 #!     * `debug` can be set to `true` to print more information while <Ref Func="CapJitAppliedLogicTemplates" /> tries to apply the template.
