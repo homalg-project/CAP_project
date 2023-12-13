@@ -42,6 +42,11 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_CONDITION_IMPLIES_CONDITION, function ( 
         
         return true;
         
+    # symmetry of equality: also check equality of syntax trees with swapped arguments
+    elif cond1.type = "EXPR_EQ" and cond2.type = "EXPR_EQ" and CapJitIsEqualForEnhancedSyntaxTrees( cond1.left, cond2.right ) and CapJitIsEqualForEnhancedSyntaxTrees( cond1.right, cond2.left ) then
+        
+        return true;
+        
     fi;
     
     return fail;
