@@ -126,15 +126,14 @@ end
         
 ########
 function ( cat_1, source_1, alpha_1, beta_1, range_1 )
-    local deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1;
-    deduped_6_1 := UnderlyingMatrix( beta_1 );
-    deduped_5_1 := BasisOfRingOverBaseFieldAsColumnVector( cat_1 );
-    deduped_4_1 := UnderlyingMatrix( alpha_1 );
-    deduped_3_1 := UnderlyingRing( cat_1 );
-    deduped_2_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
-    return CreateCapCategoryMorphismWithAttributes( deduped_2_1, source_1, range_1, UnderlyingMatrix, CoercedMatrix( deduped_3_1, UnderlyingRing( deduped_2_1 ), CoefficientsWithGivenMonomials( KroneckerMat( TransposedMatrix( deduped_4_1 ), DualKroneckerMat( UnionOfRows( deduped_3_1, NumberColumns( deduped_5_1 ), List( EntriesOfHomalgColumnVector( deduped_5_1 ), function ( x_2 )
-                        return COMPILATION_HELPER_HomalgMatrixFromRingElement( x_2, deduped_3_1 );
-                    end ) ), deduped_6_1 ) ), DiagMat( deduped_3_1, ListWithIdenticalEntries( NumberRows( deduped_4_1 ), DiagMat( deduped_3_1, ListWithIdenticalEntries( NumberColumns( deduped_6_1 ), deduped_5_1 ) ) ) ) ) ) );
+    local deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := UnderlyingMatrix( beta_1 );
+    deduped_4_1 := BasisOfRingOverBaseFieldAsColumnVector( cat_1 );
+    deduped_3_1 := UnderlyingMatrix( alpha_1 );
+    deduped_2_1 := UnderlyingRing( cat_1 );
+    return CreateCapCategoryMorphismWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), source_1, range_1, UnderlyingMatrix, CoercedMatrix( deduped_2_1, CommutativeRingOfLinearCategory( cat_1 ), CoefficientsWithGivenMonomials( KroneckerMat( TransposedMatrix( deduped_3_1 ), DualKroneckerMat( UnionOfRows( deduped_2_1, NumberColumns( deduped_4_1 ), List( EntriesOfHomalgColumnVector( deduped_4_1 ), function ( x_2 )
+                        return COMPILATION_HELPER_HomalgMatrixFromRingElement( x_2, deduped_2_1 );
+                    end ) ), deduped_5_1 ) ), DiagMat( deduped_2_1, ListWithIdenticalEntries( NumberRows( deduped_3_1 ), DiagMat( deduped_2_1, ListWithIdenticalEntries( NumberColumns( deduped_5_1 ), deduped_4_1 ) ) ) ) ) ) );
 end
 ########
         
@@ -195,11 +194,10 @@ end
         
 ########
 function ( cat_1, source_1, alpha_1, range_1 )
-    local deduped_1_1, deduped_2_1, deduped_3_1;
-    deduped_3_1 := UnderlyingMatrix( alpha_1 );
-    deduped_2_1 := UnderlyingRing( cat_1 );
-    deduped_1_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
-    return CreateCapCategoryMorphismWithAttributes( deduped_1_1, source_1, range_1, UnderlyingMatrix, CoercedMatrix( deduped_2_1, UnderlyingRing( deduped_1_1 ), CoefficientsWithGivenMonomials( ConvertMatrixToRow( deduped_3_1 ), DiagMat( deduped_2_1, ListWithIdenticalEntries( NumberRows( deduped_3_1 ), DiagMat( deduped_2_1, ListWithIdenticalEntries( NumberColumns( deduped_3_1 ), BasisOfRingOverBaseFieldAsColumnVector( cat_1 ) ) ) ) ) ) ) );
+    local deduped_1_1, deduped_2_1;
+    deduped_2_1 := UnderlyingMatrix( alpha_1 );
+    deduped_1_1 := UnderlyingRing( cat_1 );
+    return CreateCapCategoryMorphismWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), source_1, range_1, UnderlyingMatrix, CoercedMatrix( deduped_1_1, CommutativeRingOfLinearCategory( cat_1 ), CoefficientsWithGivenMonomials( ConvertMatrixToRow( deduped_2_1 ), DiagMat( deduped_1_1, ListWithIdenticalEntries( NumberRows( deduped_2_1 ), DiagMat( deduped_1_1, ListWithIdenticalEntries( NumberColumns( deduped_2_1 ), BasisOfRingOverBaseFieldAsColumnVector( cat_1 ) ) ) ) ) ) ) );
 end
 ########
         
