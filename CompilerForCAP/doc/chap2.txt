@@ -220,9 +220,7 @@
   thrown  if  such  higher  variables  exist. If a list is given as the option
   [10Xgiven_arguments[110X,  references  to  the  [10Xi[110X-th  argument  of  the  function are
   replaced   by   references   to   a   global  variable  with  the  value  of
-  [10Xgiven_arguments[i][110X  (only  in  case  this  position  is  bound).  If  a type
-  signature  (see  [2XCapJitInferredDataTypes[102X  ([14X2.5-10[114X))  of [3Xfunc[103X is given as the
-  option [10Xtype_signature[110X, it is attached to the resulting tree.[133X
+  [10Xgiven_arguments[i][110X (only in case this position is bound).[133X
   
   [1X2.2-2 ENHANCED_SYNTAX_TREE_CODE[101X
   
