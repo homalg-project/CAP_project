@@ -92,21 +92,7 @@ CAP_JIT_INTERNAL_COMPILATION_IN_PROGRESS := false;
 BindGlobal( "CAP_JIT_INTERNAL_COMPILED_FUNCTIONS_STACK", [ ] );
 
 InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( func, with_or_without_post_processing, args... )
-  local debug_idempotence, category_as_first_argument, category, type_signature, filter_list, arguments_data_types, return_data_type, tree, resolving_phase_functions, orig_tree, compiled_func, tmp, rule_phase_functions, tree_without_post_processing, changed, pre_func, domains, additional_arguments_func, f;
-    
-    Info( InfoCapJit, 1, "####" );
-    Info( InfoCapJit, 1, "Start compilation." );
-    
-    if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 1 then
-        
-        # COVERAGE_IGNORE_BLOCK_START
-        Print( "######## Start compilation of\n" );
-        Print( "# ", NameFunction( func ), "\n" );
-        Display( CapJitPrettyPrintFunction( func ) );
-        Print( "\n" );
-        # COVERAGE_IGNORE_BLOCK_END
-        
-    fi;
+  local category, type_signature, filter_list, arguments_data_types, return_data_type, tree;
     
     Add( CAP_JIT_INTERNAL_COMPILED_FUNCTIONS_STACK, func );
     
@@ -117,9 +103,6 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
         
     fi;
     
-    debug_idempotence := false;
-    
-    category_as_first_argument := false;
     category := fail;
     
     if Length( args ) = 0 then
@@ -132,7 +115,6 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
             
             type_signature := fail;
             
-            category_as_first_argument := true;
             category := args[1];
             
         elif IsList( args[1] ) and Length( args[1] ) = 2 and IsList( args[1][1] ) and Length( args[1][1] ) = NumberArgumentsFunction( func ) then
@@ -141,7 +123,6 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
             
             if NumberArgumentsFunction( func ) > 0 and IsSpecializationOfFilter( IsCapCategory, type_signature[1][1].filter ) then
                 
-                category_as_first_argument := true;
                 category := type_signature[1][1].category;
                 
             fi;
@@ -157,7 +138,6 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
         
         if IsCapCategory( args[1] ) and IsList( args[2] ) and Length( args[2] ) = NumberArgumentsFunction( func ) then
             
-            category_as_first_argument := true;
             category := args[1];
             
             filter_list := args[2];
@@ -197,7 +177,7 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
         
     fi;
     
-    if category_as_first_argument then
+    if category <> fail then
         
         tree := ENHANCED_SYNTAX_TREE( func : globalize_hvars := true, given_arguments := [ category ] );
         
@@ -217,6 +197,25 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
         );
         
     fi;
+    
+    tree := CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE( tree, with_or_without_post_processing, category );
+    
+    Remove( CAP_JIT_INTERNAL_COMPILED_FUNCTIONS_STACK );
+    
+    return tree;
+    
+end );
+    
+InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function ( tree, with_or_without_post_processing, category )
+  local debug_idempotence, func, resolving_phase_functions, orig_tree, tmp, rule_phase_functions, tree_without_post_processing, changed, pre_func, domains, additional_arguments_func, f;
+    
+    debug_idempotence := false;
+    
+    Assert( 0, tree.type = "EXPR_DECLARATIVE_FUNC" );
+    
+    Assert( 0, not IsEmpty( CAP_JIT_INTERNAL_COMPILED_FUNCTIONS_STACK ) );
+    
+    func := Last( CAP_JIT_INTERNAL_COMPILED_FUNCTIONS_STACK );
     
     if CAP_JIT_RESOLVE_ONE_LEVEL_ONLY then
         
@@ -242,6 +241,20 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
             CAP_JIT_INTERNAL_COMPILATION_IN_PROGRESS := true;
             
         fi;
+        
+    fi;
+    
+    Info( InfoCapJit, 1, "####" );
+    Info( InfoCapJit, 1, "Start compilation." );
+    
+    if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 1 then
+        
+        # COVERAGE_IGNORE_BLOCK_START
+        Print( "######## Start compilation of\n" );
+        Print( "# ", NameFunction( func ), "\n" );
+        Display( CapJitPrettyPrintFunction( func ) );
+        Print( "\n" );
+        # COVERAGE_IGNORE_BLOCK_END
         
     fi;
     
@@ -439,7 +452,7 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
             
         fi;
         
-        if category_as_first_argument then
+        if category <> fail then
             
             if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
                 
@@ -953,8 +966,6 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
         # COVERAGE_IGNORE_BLOCK_END
         
     fi;
-    
-    Remove( CAP_JIT_INTERNAL_COMPILED_FUNCTIONS_STACK );
     
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, "Compilation finished." );

@@ -72,6 +72,9 @@ DeclareGlobalFunction( "CapJitSetDebugLevel" );
 
 #! @Section Compiling a function manually
 
+# helper
+DeclareGlobalFunction( "CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE" );
+
 #! @Description
 #!   Returns a compiled version of the function <A>func</A> with signature <A>type_signature</A> (see <Ref Func="CapJitInferredDataTypes" />).
 #!   If <A>func</A> is an operation or a kernel function, it is returned unchanged.
