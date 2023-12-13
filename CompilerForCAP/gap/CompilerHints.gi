@@ -222,6 +222,12 @@ InstallGlobalFunction( CapJitReplacedGlobalVariablesByCategoryAttributes, functi
             
         fi;
         
+        if HasCommutativeRingOfLinearCategory( cat ) then
+            
+            Add( attribute_names, "CommutativeRingOfLinearCategory" );
+            
+        fi;
+        
         for name in attribute_names do
             
             value := ValueGlobal( name )( cat );
