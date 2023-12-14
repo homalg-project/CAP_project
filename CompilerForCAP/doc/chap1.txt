@@ -396,6 +396,60 @@
   congruence   of   morphisms,   and   expressions  will  not  be  hoisted  or
   deduplicated.[133X
   
+  [1X1.10-2 StateLemma[101X
+  
+  [33X[1;0Y[29X[2XStateLemma[102X( [3Xdescription[103X, [3Xclaim[103X, [3Xcategory[103X, [3Xfilter_strings[103X, [3Xpreconditions[103X ) [32X operation[133X
+  
+  [33X[0;0Y(experimental)  States  a  new  categorical  lemma  to  be  proven  in proof
+  assistant mode.[133X
+  
+  [30X    [33X[0;6Y[3Xdescription[103X is a human readable version of the statement[133X
+  
+  [30X    [33X[0;6Y[3Xclaim[103X is a function formalizing the statement, that is, returning [9Xtrue[109X
+        if and only if the statement holds[133X
+  
+  [30X    [33X[0;6Y[3Xcategory[103X  is the category for which the statement shall be proven; the
+        category must be the first argument of [10Xclaim[110X[133X
+  
+  [30X    [33X[0;6Y[3Xfilter_strings[103X  is  a  list  of  filter  strings as in the method name
+        record[133X
+  
+  [30X    [33X[0;6Y[3Xpreconditions[103X  is  a  list of records of the form [10Xrec( src_template :=
+        <string>,  dst_template  :=  <string>  )[110X;  the  template  strings  are
+        interpreted  in  the  context  of  [10Xclaim[110X  and  can be used to describe
+        relations between the arguments of [10Xclaim[110X[133X
+  
+  [33X[0;0YThe  aim  is to reduce the function [3Xclaim[103X to [10X{...} -> true[110X by applying logic
+  templates via [2XApplyLogicTemplate[102X ([14X1.10-4[114X).[133X
+  
+  [1X1.10-3 PrintLemma[101X
+  
+  [33X[1;0Y[29X[2XPrintLemma[102X(  ) [32X operation[133X
+  
+  [33X[0;0Y(experimental) Prints the state of the current lemma.[133X
+  
+  [1X1.10-4 ApplyLogicTemplate[101X
+  
+  [33X[1;0Y[29X[2XApplyLogicTemplate[102X( [3Xlogic_template[103X ) [32X operation[133X
+  
+  [33X[0;0Y(experimental)  Applies  a logic template to the state of the current lemma.
+  If [10Xnumber_of_applications[110X is not set, it defaults to [10X1[110X.[133X
+  
+  [1X1.10-5 ApplyLogicTemplateNTimes[101X
+  
+  [33X[1;0Y[29X[2XApplyLogicTemplateNTimes[102X( [3Xn[103X, [3Xlogic_template[103X ) [32X operation[133X
+  
+  [33X[0;0Y(experimental)  Applies a logic template [3Xn[103X times to the state of the current
+  lemma. Note: [10Xnumber_of_applications[110X must not be set.[133X
+  
+  [1X1.10-6 AssertLemma[101X
+  
+  [33X[1;0Y[29X[2XAssertLemma[102X(  ) [32X operation[133X
+  
+  [33X[0;0Y(experimental)  Asserts  that the current lemma is proven, that is, that the
+  state  of  the  current  lemma  is  [10X{...}  -> true[110X. If this is the case, the
+  current lemma is cleared, which allows a new lemma to be stated.[133X
+  
   
   [1X1.11 [33X[0;0YGetting information about the compilation process[133X[101X
   

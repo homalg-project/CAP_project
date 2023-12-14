@@ -2,6 +2,9 @@
   
   [1XIndex[101X
   
+  [2XApplyLogicTemplate[102X, for IsRecord 1.10-4 
+  [2XApplyLogicTemplateNTimes[102X, for IsPosInt, IsRecord 1.10-5 
+  [2XAssertLemma[102X 1.10-6 
   [2XCapJitAddBinding[102X 2.4-13 
   [2XCapJitAddLogicFunction[102X 2.1-1 
   [2XCapJitAddLogicTemplate[102X 2.1-2 
@@ -57,6 +60,7 @@
   [2XCapJitSetDebugLevel[102X 1.11-2 
   [2XCapJitUnbindBinding[102X 2.4-15 
   [2XCapJitValueOfBinding[102X 2.4-14 
+  [2XConcatenationOfStringsAsEnumerationWithAnd[102X 2.4-23 
   [2XContinueCompilationAtCategory[102X 1.7-2 
   [2XContinueCompilationAtPrimitivelyInstalledOperationsOfCategory[102X 1.7-4 
   [2XDisplayWithCurrentlyCompiledFunctionLocation[102X 2.4-20 
@@ -65,7 +69,9 @@
   [2XErrorWithCurrentlyCompiledFunctionLocation[102X 2.4-21 
   [2XEvalStringStrict[102X 2.4-22 
   [2XInfoCapJit[102X 1.11-1 
+  [2XPrintLemma[102X 1.10-3 
   [2XPrintWithCurrentlyCompiledFunctionLocation[102X 2.4-19 
+  [2XStateLemma[102X, for IsString, IsFunction, IsCapCategory, IsList, IsList 1.10-2 
   [2XStopCompilationAtCategory[102X 1.7-1 
   [2XStopCompilationAtPrimitivelyInstalledOperationsOfCategory[102X 1.7-3 
   

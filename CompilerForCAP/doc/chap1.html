@@ -69,6 +69,11 @@
 </span>
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X795104B985A220EE">1.10-1 CapJitEnableProofAssistantMode</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7EB255567AF094DA">1.10-2 StateLemma</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8434101E7B6EE619">1.10-3 PrintLemma</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X808B685A86A2F034">1.10-4 ApplyLogicTemplate</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8474951D8027E03C">1.10-5 ApplyLogicTemplateNTimes</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8713ECB6806939C0">1.10-6 AssertLemma</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7B946AD083F7CEEA">1.11 <span class="Heading">Getting information about the compilation process</span></a>
 </span>
@@ -390,6 +395,61 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitEnableProofAssistantMode</code>(  )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitDisableProofAssistantMode</code>(  )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>(experimental) Enables or disables the (experimental) proof assistant mode. For example, in this mode the compiler will display warnings if the code involves CAP operations which are not known to be compatible with the congruence of morphisms, and expressions will not be hoisted or deduplicated.</p>
+
+<p><a id="X7EB255567AF094DA" name="X7EB255567AF094DA"></a></p>
+
+<h5>1.10-2 StateLemma</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; StateLemma</code>( <var class="Arg">description</var>, <var class="Arg">claim</var>, <var class="Arg">category</var>, <var class="Arg">filter_strings</var>, <var class="Arg">preconditions</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>(experimental) States a new categorical lemma to be proven in proof assistant mode.</p>
+
+
+<ul>
+<li><p><var class="Arg">description</var> is a human readable version of the statement</p>
+
+</li>
+<li><p><var class="Arg">claim</var> is a function formalizing the statement, that is, returning <code class="keyw">true</code> if and only if the statement holds</p>
+
+</li>
+<li><p><var class="Arg">category</var> is the category for which the statement shall be proven; the category must be the first argument of <code class="code">claim</code></p>
+
+</li>
+<li><p><var class="Arg">filter_strings</var> is a list of filter strings as in the method name record</p>
+
+</li>
+<li><p><var class="Arg">preconditions</var> is a list of records of the form <code class="code">rec( src_template := &lt;string&gt;, dst_template := &lt;string&gt; )</code>; the template strings are interpreted in the context of <code class="code">claim</code> and can be used to describe relations between the arguments of <code class="code">claim</code></p>
+
+</li>
+</ul>
+<p>The aim is to reduce the function <var class="Arg">claim</var> to <code class="code">{...} -&gt; true</code> by applying logic templates via <code class="func">ApplyLogicTemplate</code> (<a href="chap1.html#X808B685A86A2F034"><span class="RefLink">1.10-4</span></a>).</p>
+
+<p><a id="X8434101E7B6EE619" name="X8434101E7B6EE619"></a></p>
+
+<h5>1.10-3 PrintLemma</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PrintLemma</code>(  )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>(experimental) Prints the state of the current lemma.</p>
+
+<p><a id="X808B685A86A2F034" name="X808B685A86A2F034"></a></p>
+
+<h5>1.10-4 ApplyLogicTemplate</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ApplyLogicTemplate</code>( <var class="Arg">logic_template</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>(experimental) Applies a logic template to the state of the current lemma. If <code class="code">number_of_applications</code> is not set, it defaults to <code class="code">1</code>.</p>
+
+<p><a id="X8474951D8027E03C" name="X8474951D8027E03C"></a></p>
+
+<h5>1.10-5 ApplyLogicTemplateNTimes</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ApplyLogicTemplateNTimes</code>( <var class="Arg">n</var>, <var class="Arg">logic_template</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>(experimental) Applies a logic template <var class="Arg">n</var> times to the state of the current lemma. Note: <code class="code">number_of_applications</code> must not be set.</p>
+
+<p><a id="X8713ECB6806939C0" name="X8713ECB6806939C0"></a></p>
+
+<h5>1.10-6 AssertLemma</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssertLemma</code>(  )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>(experimental) Asserts that the current lemma is proven, that is, that the state of the current lemma is <code class="code">{...} -&gt; true</code>. If this is the case, the current lemma is cleared, which allows a new lemma to be stated.</p>
 
 <p><a id="X7B946AD083F7CEEA" name="X7B946AD083F7CEEA"></a></p>
 

@@ -6,10 +6,10 @@
                   [1X Speed up and verify categorical algorithms [101X
   
   
-                                   2023.12-20
+                                   2023.12-21
   
   
-                                13 December 2023
+                                14 December 2023
   
   
                                 Fabian Zickgraf
@@ -53,6 +53,11 @@
       1.9-1 CapJitEnableStepByStepCompilation
     1.10 [33X[0;0YProof assistant mode[133X
       1.10-1 CapJitEnableProofAssistantMode
+      1.10-2 StateLemma
+      1.10-3 PrintLemma
+      1.10-4 ApplyLogicTemplate
+      1.10-5 ApplyLogicTemplateNTimes
+      1.10-6 AssertLemma
     1.11 [33X[0;0YGetting information about the compilation process[133X
       1.11-1 InfoCapJit
       1.11-2 CapJitSetDebugLevel
@@ -90,6 +95,7 @@
       2.4-20 DisplayWithCurrentlyCompiledFunctionLocation
       2.4-21 ErrorWithCurrentlyCompiledFunctionLocation
       2.4-22 EvalStringStrict
+      2.4-23 ConcatenationOfStringsAsEnumerationWithAnd
     2.5 [33X[0;0YCompilation steps[133X
       2.5-1 CapJitCleanedUpHoistedAndDeduplicatedExpressions
       2.5-2 CapJitAppliedCompilerHints
