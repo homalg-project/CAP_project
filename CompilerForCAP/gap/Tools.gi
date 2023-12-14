@@ -906,3 +906,23 @@ InstallGlobalFunction( EvalStringStrict, function ( string )
     return EvalString( string );
     
 end );
+
+InstallGlobalFunction( "ConcatenationOfStringsAsEnumerationWithAnd", function ( parts )
+    
+    Assert( 0, Length( parts ) > 0 );
+    
+    if Length( parts ) = 1 then
+        
+        return parts[1];
+        
+    elif Length( parts ) = 2 then
+        
+        return Concatenation( parts[1], " and ", parts[2] );
+        
+    else
+        
+        return Concatenation( JoinStringsWithSeparator( parts{[ 1 .. Length( parts ) - 1 ]}, ", " ), ", and ", Last( parts ) );
+        
+    fi;
+    
+end );

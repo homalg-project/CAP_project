@@ -169,3 +169,8 @@ DeclareGlobalFunction( "ErrorWithCurrentlyCompiledFunctionLocation" );
 #!   Same as `EvalString`, but enters a break-loop when encountering syntax errors.
 #! @Arguments string
 DeclareGlobalFunction( "EvalStringStrict" );
+
+#! @Description
+#!   Concatenates `[ "apples", "bananas", "oranges" ]` as `"apples, bananas, and oranges"`.
+#! @Arguments list_of_strings
+DeclareGlobalFunction( "ConcatenationOfStringsAsEnumerationWithAnd" );
