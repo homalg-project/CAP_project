@@ -42,6 +42,14 @@ DeclareOperation( "StateLemma", [ IsString, IsFunction, IsCapCategory, IsList, I
 DeclareOperation( "PrintLemma", [ ] );
 
 #! @Description
+#!   (experimental) Lets the user attest that all arguments in function calls in the state of the current lemma
+#!   form valid inputs for the functions, for example, that two morphisms passed to `PreCompose` are actually composable.
+#!   This allows CompilerForCAP to simplify type checks, for example, that the return value of the call to `PreCompose`
+#!   is a well-defined morphism.
+#! @Arguments
+DeclareOperation( "AttestValidInputs", [ ] );
+
+#! @Description
 #!   (experimental) Applies a logic template to the state of the current lemma.
 #!   If `number_of_applications` is not set, it defaults to `1`.
 #! @Arguments logic_template
@@ -58,3 +66,24 @@ DeclareOperation( "ApplyLogicTemplateNTimes", [ IsPosInt, IsRecord ] );
 #!   If this is the case, the current lemma is cleared, which allows a new lemma to be stated.
 #! @Arguments
 DeclareOperation( "AssertLemma", [ ] );
+
+DeclareGlobalName( "CAP_JIT_PROOF_ASSISTANT_ACTIVE_PROPOSITION" );
+
+#! @Description
+#!   (experimental) States a new proposition to be proven for the category <A>category</A>.
+#!   Valid IDs are the entries of `RecNames( CAP_JIT_INTERNAL_PROOF_ASSISTANT_PROPOSITIONS )`.
+#!   A proposition is a collection of lemmata which can be stated using <Ref Func="StateNextLemma" />
+#!   and can then be proven in the same way as a lemma stated using <Ref Func="StateLemma" Label="for IsString, IsFunction, IsCapCategory, IsList, IsList" />.
+#! @Arguments category, proposition_id
+DeclareOperation( "StateProposition", [ IsCapCategory, IsString ] );
+
+#! @Description
+#!   (experimental) States the next lemma of the current proposition.
+#! @Arguments
+DeclareOperation( "StateNextLemma", [ ] );
+
+#! @Description
+#!   (experimental) Asserts that the current proposition is proven, that is, that all lemmata of the current proposition
+#!   are proven.
+#! @Arguments
+DeclareOperation( "AssertProposition", [ ] );

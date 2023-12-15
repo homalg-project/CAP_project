@@ -34,11 +34,11 @@ gap> StateLemma(
 >     [ "category", "object", "object", "object", "object", "morphism", "morphism", "morphism" ],
 >     [
 >         rec( src_template := "Source( m )", dst_template := "A" ),
->         rec( src_template := "Target( m )", dst_template := "B" ),
+>         rec( src_template := "Range( m )", dst_template := "B" ),
 >         rec( src_template := "Source( n )", dst_template := "B" ),
->         rec( src_template := "Target( n )", dst_template := "C" ),
+>         rec( src_template := "Range( n )", dst_template := "C" ),
 >         rec( src_template := "Source( l )", dst_template := "C" ),
->         rec( src_template := "Target( l )", dst_template := "D" ),
+>         rec( src_template := "Range( l )", dst_template := "D" ),
 >     ]
 > );
 In RingAsCategory( Dummy ring 1 ), composition is associative:
@@ -73,7 +73,10 @@ gap> ApplyLogicTemplate(
 
 #
 gap> AssertLemma( );
-With this, the claim follows.
+With this, the claim follows. ∎
+
+#
+gap> CapJitDisableProofAssistantMode( );
 
 #
 gap> STOP_TEST( "proof_MonoidAsCategory_has_associative_composition" );
