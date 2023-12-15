@@ -71,9 +71,13 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X795104B985A220EE">1.10-1 CapJitEnableProofAssistantMode</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7EB255567AF094DA">1.10-2 StateLemma</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8434101E7B6EE619">1.10-3 PrintLemma</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X808B685A86A2F034">1.10-4 ApplyLogicTemplate</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8474951D8027E03C">1.10-5 ApplyLogicTemplateNTimes</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8713ECB6806939C0">1.10-6 AssertLemma</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X81348DC479E3E23A">1.10-4 AttestValidInputs</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X808B685A86A2F034">1.10-5 ApplyLogicTemplate</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8474951D8027E03C">1.10-6 ApplyLogicTemplateNTimes</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8713ECB6806939C0">1.10-7 AssertLemma</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7BA4D059800749B3">1.10-8 StateProposition</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X80E20DF57D20BB5B">1.10-9 StateNextLemma</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X79477D7D783D70D3">1.10-10 AssertProposition</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7B946AD083F7CEEA">1.11 <span class="Heading">Getting information about the compilation process</span></a>
 </span>
@@ -421,7 +425,7 @@
 
 </li>
 </ul>
-<p>The aim is to reduce the function <var class="Arg">claim</var> to <code class="code">{...} -&gt; true</code> by applying logic templates via <code class="func">ApplyLogicTemplate</code> (<a href="chap1.html#X808B685A86A2F034"><span class="RefLink">1.10-4</span></a>).</p>
+<p>The aim is to reduce the function <var class="Arg">claim</var> to <code class="code">{...} -&gt; true</code> by applying logic templates via <code class="func">ApplyLogicTemplate</code> (<a href="chap1.html#X808B685A86A2F034"><span class="RefLink">1.10-5</span></a>).</p>
 
 <p><a id="X8434101E7B6EE619" name="X8434101E7B6EE619"></a></p>
 
@@ -430,26 +434,54 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PrintLemma</code>(  )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>(experimental) Prints the state of the current lemma.</p>
 
+<p><a id="X81348DC479E3E23A" name="X81348DC479E3E23A"></a></p>
+
+<h5>1.10-4 AttestValidInputs</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AttestValidInputs</code>(  )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>(experimental) Lets the user attest that all arguments in function calls in the state of the current lemma form valid inputs for the functions, for example, that two morphisms passed to <code class="code">PreCompose</code> are actually composable. This allows CompilerForCAP to simplify type checks, for example, that the return value of the call to <code class="code">PreCompose</code> is a well-defined morphism.</p>
+
 <p><a id="X808B685A86A2F034" name="X808B685A86A2F034"></a></p>
 
-<h5>1.10-4 ApplyLogicTemplate</h5>
+<h5>1.10-5 ApplyLogicTemplate</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ApplyLogicTemplate</code>( <var class="Arg">logic_template</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>(experimental) Applies a logic template to the state of the current lemma. If <code class="code">number_of_applications</code> is not set, it defaults to <code class="code">1</code>.</p>
 
 <p><a id="X8474951D8027E03C" name="X8474951D8027E03C"></a></p>
 
-<h5>1.10-5 ApplyLogicTemplateNTimes</h5>
+<h5>1.10-6 ApplyLogicTemplateNTimes</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ApplyLogicTemplateNTimes</code>( <var class="Arg">n</var>, <var class="Arg">logic_template</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>(experimental) Applies a logic template <var class="Arg">n</var> times to the state of the current lemma. Note: <code class="code">number_of_applications</code> must not be set.</p>
 
 <p><a id="X8713ECB6806939C0" name="X8713ECB6806939C0"></a></p>
 
-<h5>1.10-6 AssertLemma</h5>
+<h5>1.10-7 AssertLemma</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssertLemma</code>(  )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>(experimental) Asserts that the current lemma is proven, that is, that the state of the current lemma is <code class="code">{...} -&gt; true</code>. If this is the case, the current lemma is cleared, which allows a new lemma to be stated.</p>
+
+<p><a id="X7BA4D059800749B3" name="X7BA4D059800749B3"></a></p>
+
+<h5>1.10-8 StateProposition</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; StateProposition</code>( <var class="Arg">category</var>, <var class="Arg">proposition_id</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>(experimental) States a new proposition to be proven for the category <var class="Arg">category</var>. Valid IDs are the entries of <code class="code">RecNames( CAP_JIT_INTERNAL_PROOF_ASSISTANT_PROPOSITIONS )</code>. A proposition is a collection of lemmata which can be stated using <code class="func">StateNextLemma</code> (<a href="chap1.html#X80E20DF57D20BB5B"><span class="RefLink">1.10-9</span></a>) and can then be proven in the same way as a lemma stated using <code class="func">StateLemma</code> (<a href="chap1.html#X7EB255567AF094DA"><span class="RefLink">1.10-2</span></a>).</p>
+
+<p><a id="X80E20DF57D20BB5B" name="X80E20DF57D20BB5B"></a></p>
+
+<h5>1.10-9 StateNextLemma</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; StateNextLemma</code>(  )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>(experimental) States the next lemma of the current proposition.</p>
+
+<p><a id="X79477D7D783D70D3" name="X79477D7D783D70D3"></a></p>
+
+<h5>1.10-10 AssertProposition</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssertProposition</code>(  )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>(experimental) Asserts that the current proposition is proven, that is, that all lemmata of the current proposition are proven.</p>
 
 <p><a id="X7B946AD083F7CEEA" name="X7B946AD083F7CEEA"></a></p>
 

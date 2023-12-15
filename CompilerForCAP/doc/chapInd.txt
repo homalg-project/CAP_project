@@ -2,9 +2,11 @@
   
   [1XIndex[101X
   
-  [2XApplyLogicTemplate[102X, for IsRecord 1.10-4 
-  [2XApplyLogicTemplateNTimes[102X, for IsPosInt, IsRecord 1.10-5 
-  [2XAssertLemma[102X 1.10-6 
+  [2XApplyLogicTemplate[102X, for IsRecord 1.10-5 
+  [2XApplyLogicTemplateNTimes[102X, for IsPosInt, IsRecord 1.10-6 
+  [2XAssertLemma[102X 1.10-7 
+  [2XAssertProposition[102X 1.10-10 
+  [2XAttestValidInputs[102X 1.10-4 
   [2XCapJitAddBinding[102X 2.4-13 
   [2XCapJitAddLogicFunction[102X 2.1-1 
   [2XCapJitAddLogicTemplate[102X 2.1-2 
@@ -72,6 +74,8 @@
   [2XPrintLemma[102X 1.10-3 
   [2XPrintWithCurrentlyCompiledFunctionLocation[102X 2.4-19 
   [2XStateLemma[102X, for IsString, IsFunction, IsCapCategory, IsList, IsList 1.10-2 
+  [2XStateNextLemma[102X 1.10-9 
+  [2XStateProposition[102X, for IsCapCategory, IsString 1.10-8 
   [2XStopCompilationAtCategory[102X 1.7-1 
   [2XStopCompilationAtPrimitivelyInstalledOperationsOfCategory[102X 1.7-3 
   

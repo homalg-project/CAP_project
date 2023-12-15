@@ -420,7 +420,7 @@
         relations between the arguments of [10Xclaim[110X[133X
   
   [33X[0;0YThe  aim  is to reduce the function [3Xclaim[103X to [10X{...} -> true[110X by applying logic
-  templates via [2XApplyLogicTemplate[102X ([14X1.10-4[114X).[133X
+  templates via [2XApplyLogicTemplate[102X ([14X1.10-5[114X).[133X
   
   [1X1.10-3 PrintLemma[101X
   
@@ -428,27 +428,61 @@
   
   [33X[0;0Y(experimental) Prints the state of the current lemma.[133X
   
-  [1X1.10-4 ApplyLogicTemplate[101X
+  [1X1.10-4 AttestValidInputs[101X
+  
+  [33X[1;0Y[29X[2XAttestValidInputs[102X(  ) [32X operation[133X
+  
+  [33X[0;0Y(experimental)  Lets the user attest that all arguments in function calls in
+  the  state  of  the  current  lemma form valid inputs for the functions, for
+  example,  that  two  morphisms passed to [10XPreCompose[110X are actually composable.
+  This  allows  CompilerForCAP  to simplify type checks, for example, that the
+  return value of the call to [10XPreCompose[110X is a well-defined morphism.[133X
+  
+  [1X1.10-5 ApplyLogicTemplate[101X
   
   [33X[1;0Y[29X[2XApplyLogicTemplate[102X( [3Xlogic_template[103X ) [32X operation[133X
   
   [33X[0;0Y(experimental)  Applies  a logic template to the state of the current lemma.
   If [10Xnumber_of_applications[110X is not set, it defaults to [10X1[110X.[133X
   
-  [1X1.10-5 ApplyLogicTemplateNTimes[101X
+  [1X1.10-6 ApplyLogicTemplateNTimes[101X
   
   [33X[1;0Y[29X[2XApplyLogicTemplateNTimes[102X( [3Xn[103X, [3Xlogic_template[103X ) [32X operation[133X
   
   [33X[0;0Y(experimental)  Applies a logic template [3Xn[103X times to the state of the current
   lemma. Note: [10Xnumber_of_applications[110X must not be set.[133X
   
-  [1X1.10-6 AssertLemma[101X
+  [1X1.10-7 AssertLemma[101X
   
   [33X[1;0Y[29X[2XAssertLemma[102X(  ) [32X operation[133X
   
   [33X[0;0Y(experimental)  Asserts  that the current lemma is proven, that is, that the
   state  of  the  current  lemma  is  [10X{...}  -> true[110X. If this is the case, the
   current lemma is cleared, which allows a new lemma to be stated.[133X
+  
+  [1X1.10-8 StateProposition[101X
+  
+  [33X[1;0Y[29X[2XStateProposition[102X( [3Xcategory[103X, [3Xproposition_id[103X ) [32X operation[133X
+  
+  [33X[0;0Y(experimental)  States  a  new  proposition  to  be  proven for the category
+  [3Xcategory[103X.     Valid     IDs     are     the     entries     of     [10XRecNames(
+  CAP_JIT_INTERNAL_PROOF_ASSISTANT_PROPOSITIONS   )[110X.   A   proposition   is  a
+  collection  of lemmata which can be stated using [2XStateNextLemma[102X ([14X1.10-9[114X) and
+  can  then  be  proven  in  the  same  way as a lemma stated using [2XStateLemma[102X
+  ([14X1.10-2[114X).[133X
+  
+  [1X1.10-9 StateNextLemma[101X
+  
+  [33X[1;0Y[29X[2XStateNextLemma[102X(  ) [32X operation[133X
+  
+  [33X[0;0Y(experimental) States the next lemma of the current proposition.[133X
+  
+  [1X1.10-10 AssertProposition[101X
+  
+  [33X[1;0Y[29X[2XAssertProposition[102X(  ) [32X operation[133X
+  
+  [33X[0;0Y(experimental) Asserts that the current proposition is proven, that is, that
+  all lemmata of the current proposition are proven.[133X
   
   
   [1X1.11 [33X[0;0YGetting information about the compilation process[133X[101X
