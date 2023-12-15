@@ -1419,6 +1419,110 @@ BindGlobal( "CAP_JIT_INTERNAL_PROOF_ASSISTANT_LEMMATA", rec(
             ),
         ],
     ),
+    KernelObject := rec(
+        lemmata := [
+            rec(
+                description := "kernel objects are objects",
+                input_types := [ "category", "object", "object", "morphism" ],
+                func := function ( cat, A, B, alpha )
+                    
+                    return IsWellDefinedForObjects( cat, KernelObject( cat, alpha ) );
+                    
+                end,
+                preconditions := [
+                    rec( src_template := "Source( alpha )", dst_template := "A" ),
+                    rec( src_template := "Range( alpha )", dst_template := "B" ),
+                ],
+            ),
+        ],
+    ),
+    KernelEmbedding := rec(
+        lemmata := [
+            rec(
+                description := "kernel embeddings define morphisms",
+                input_types := [ "category", "object", "object", "morphism" ],
+                func := function ( cat, A, B, alpha )
+                    
+                    return IsWellDefinedForMorphismsWithGivenSourceAndRange( cat, KernelObject( cat, alpha ), KernelEmbedding( cat, alpha ), A );
+                    
+                end,
+                preconditions := [
+                    rec( src_template := "Source( alpha )", dst_template := "A" ),
+                    rec( src_template := "Range( alpha )", dst_template := "B" ),
+                ],
+            ),
+            rec(
+                description := "the kernel embedding composes to zero",
+                input_types := [ "category", "object", "object", "morphism" ],
+                func := function ( cat, A, B, alpha )
+                    
+                    return IsZeroForMorphisms( cat, PreCompose( cat, KernelEmbedding( cat, alpha ), alpha ) );
+                    
+                end,
+                preconditions := [
+                    rec( src_template := "Source( alpha )", dst_template := "A" ),
+                    rec( src_template := "Range( alpha )", dst_template := "B" ),
+                ],
+            ),
+        ],
+    ),
+    KernelLift := rec(
+        lemmata := [
+            rec(
+                description := "kernel lifts define morphisms",
+                input_types := [ "category", "object", "object", "object", "morphism", "morphism" ],
+                func := function ( cat, A, B, T, alpha, tau )
+                    
+                    return IsWellDefinedForMorphismsWithGivenSourceAndRange( cat, T, KernelLift( cat, alpha, T, tau ), KernelObject( cat, alpha ) );
+                    
+                end,
+                preconditions := [
+                    rec( src_template := "Source( alpha )", dst_template := "A" ),
+                    rec( src_template := "Range( alpha )", dst_template := "B" ),
+                    rec( src_template := "Source( tau )", dst_template := "T" ),
+                    rec( src_template := "Range( tau )", dst_template := "A" ),
+                    rec( src_template := "PreCompose( cat, tau, alpha )", dst_template := "ZeroMorphism( cat, T, B )" ),
+                ],
+            ),
+            rec(
+                description := "taking the kernel lift is an injective operation",
+                input_types := [ "category", "object", "object", "object", "morphism", "morphism" ],
+                func := function ( cat, A, B, T, alpha, tau )
+                    
+                    return IsCongruentForMorphisms( cat,
+                        PreCompose( cat, KernelLift( cat, alpha, T, tau ), KernelEmbedding( cat, alpha ) ),
+                        tau
+                    );
+                    
+                end,
+                preconditions := [
+                    rec( src_template := "Source( alpha )", dst_template := "A" ),
+                    rec( src_template := "Range( alpha )", dst_template := "B" ),
+                    rec( src_template := "Source( tau )", dst_template := "T" ),
+                    rec( src_template := "Range( tau )", dst_template := "A" ),
+                    rec( src_template := "PreCompose( cat, tau, alpha )", dst_template := "ZeroMorphism( cat, T, B )" ),
+                ],
+            ),
+            rec(
+                description := "taking the kernel lift is a surjective operation",
+                input_types := [ "category", "object", "object", "object", "morphism", "morphism" ],
+                func := function ( cat, A, B, T, alpha, u )
+                    
+                    return IsCongruentForMorphisms( cat,
+                        KernelLift( cat, alpha, T, PreCompose( cat, u, KernelEmbedding( cat, alpha ) ) ),
+                        u
+                    );
+                    
+                end,
+                preconditions := [
+                    rec( src_template := "Source( alpha )", dst_template := "A" ),
+                    rec( src_template := "Range( alpha )", dst_template := "B" ),
+                    rec( src_template := "Source( u )", dst_template := "T" ),
+                    rec( src_template := "Range( u )", dst_template := "KernelObject( cat, alpha )" ),
+                ],
+            ),
+        ],
+    ),
     DistinguishedObjectOfHomomorphismStructure := rec(
         lemmata := [
             rec(
@@ -1670,6 +1774,10 @@ BindGlobal( "CAP_JIT_INTERNAL_PROOF_ASSISTANT_PROPOSITIONS", rec(
     has_zero_object := rec(
         description := "has a zero object",
         operations := [ "ZeroObject", "UniversalMorphismIntoZeroObject", "UniversalMorphismFromZeroObject" ],
+    ),
+    has_kernels := rec(
+        description := "has kernels",
+        operations := [ "KernelObject", "KernelEmbedding", "KernelLift" ],
     ),
     is_equipped_with_hom_structure := rec(
         description := "is equipped with a homomorphism structure",
