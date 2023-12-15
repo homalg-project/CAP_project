@@ -953,6 +953,13 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function 
             
         fi;
         
+        if CAP_JIT_PROOF_ASSISTANT_MODE_ENABLED then
+            
+            # the post-processing steps might not set data types, but in proof assistant mode having data types is important
+            tree := CapJitInferredDataTypes( tree );
+            
+        fi;
+        
     fi;
     
     if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 1 then
