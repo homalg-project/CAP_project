@@ -165,6 +165,16 @@ CapJitAddLogicTemplate(
     )
 );
 
+# expr <> expr => false
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "expr" ],
+        src_template := "expr <> expr",
+        dst_template := "false",
+        apply_in_proof_assistant_mode := "only",
+    )
+);
+
 # IsEqualForObjects( expr, expr ) => true
 CapJitAddLogicTemplate(
     rec(
@@ -290,6 +300,48 @@ CapJitAddLogicFunction( function ( tree )
     return tree;
     
 end );
+
+# globalize categories
+CapJitAddLogicFunction( function ( tree )
+  local pre_func;
+    
+    if not CAP_JIT_PROOF_ASSISTANT_MODE_ENABLED then
+        
+        return tree;
+        
+    fi;
+    
+    Info( InfoCapJit, 1, "####" );
+    Info( InfoCapJit, 1, "Globalize categories." );
+    
+    pre_func := function ( tree, additional_arguments )
+        
+        if StartsWith( tree.type, "EXPR_" ) and IsBound( tree.data_type ) and IsSpecializationOfFilter( "category", tree.data_type.filter ) then
+            
+            if tree.type <> "EXPR_REF_GVAR" then
+                
+                tree := rec(
+                    type := "EXPR_REF_GVAR",
+                    gvar := CapJitGetOrCreateGlobalVariable( tree.data_type.category ),
+                );
+                
+            fi;
+            
+        fi;
+        
+        return tree;
+        
+    end;
+    
+    tree := CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+    
+    # after globalizing categories, attributes can now be resolved
+    tree := CapJitResolvedGlobalVariables( tree );
+    
+    return tree;
+    
+end );
+
 CAP_JIT_PROOF_ASSISTANT_ACTIVE_LEMMA := fail;
 
 InstallMethod( StateLemma,
