@@ -3,7 +3,7 @@
 * CanCompute( category, string )
   Returns true if the operation with name <string> is computable in <category>.
 
-* CheckConstructivenessOfCategory( category, string )
+* MissingOperationsForConstructivenessOfCategory( category, string )
   Returns a list of names of basic operations which are not computable in <category> but
   needed to have the categorical property <string> completely constructive.
 

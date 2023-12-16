@@ -582,7 +582,7 @@ InstallMethod( CanCompute,
 end );
 
 ##
-InstallMethod( CheckConstructivenessOfCategory,
+InstallMethod( MissingOperationsForConstructivenessOfCategory,
                [ IsCapCategory, IsString ],
                
   function( category, string )
@@ -609,6 +609,8 @@ InstallMethod( CheckConstructivenessOfCategory,
     return result_list;
     
 end );
+
+InstallDeprecatedAlias( "CheckConstructivenessOfCategory", "MissingOperationsForConstructivenessOfCategory", "2024.12.18" );
 
 ####################################
 ##
