@@ -16,7 +16,7 @@ gap> k!.RingElementFilter := IsHomalgRingElement;;
 #
 gap> cat := CategoryOfRows( k );;
 
-# set a humand readable name
+# set a human readable name
 gap> cat!.Name := "a category of rows over a field";;
 
 #
