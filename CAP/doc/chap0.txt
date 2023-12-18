@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2023.12-10
+                                   2023.12-11
   
   
-                                12 December 2023
+                                18 December 2023
   
   
                                Sebastian Gutsche
@@ -109,7 +109,7 @@
       1.5-8 CapCategorySwitchLogicOff
     1.6 [33X[0;0YTool functions[133X
       1.6-1 CanCompute
-      1.6-2 CheckConstructivenessOfCategory
+      1.6-2 MissingOperationsForConstructivenessOfCategory
     1.7 [33X[0;0YWell-Definedness of Cells[133X
       1.7-1 IsWellDefined
     1.8 [33X[0;0YUnpacking data structures[133X

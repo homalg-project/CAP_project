@@ -1,7 +1,7 @@
 name: CAP
-version: "2023.12-10"
+version: "2023.12-11"
 license: "GPL-2.0-or-later"
-date: 2023-12-12
+date: 2023-12-18
 description: |
     Categories, Algorithms, Programming
 
@@ -42,11 +42,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/CAP/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2023.12-10/CAP-2023.12-10.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2023.12-11/CAP-2023.12-11.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2023.12-10/CAP-2023.12-10.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2023.12-11/CAP-2023.12-11.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/CAP-2023.12-10/CAP-2023.12-10-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/CAP-2023.12-11/CAP-2023.12-11-manual.pdf
 
 abstract: |
     <span class="pkgname">CAP</span> (Categories, Algorithms, Programming) is a package for category theory.
@@ -58,27 +58,27 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>GPS12</span>]   <b class='BibAuthor'>Gutsche, S., Posur, S. and Skartsæterhagen, Ø.</b>,
+    [<span class='BibKey'>GPS18</span>]   <b class='BibAuthor'>Gutsche, S., Posur, S. and Skartsæterhagen, Ø.</b>,
      <i class='BibTitle'>CAP, Categories, Algorithms, Programming,
-             Version 2023.12-10</i>
-     (<span class='BibYear'>2-12</span>)<br />
+             Version 2023.12-11</i>
+     (<span class='BibYear'>2-18</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/CAP">https://homalg-project.github.io/pkg/CAP</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ CAP2023.12-10,
+    @misc{ CAP2023.12-11,
       author =           {Gutsche,  S.  and  Posur,  S. and Skarts{\ae}terhagen,
                           {\O}.},
       title =            {{CAP},  Categories, Algorithms, Programming, {V}ersion
-                          2023.12-10},
+                          2023.12-11},
       month =            {3-},
-      year =             {2-12},
+      year =             {2-18},
       note =             {GAP package},
       howpublished =     {\href       {https://homalg-project.github.io/pkg/CAP}
                           {\texttt{https://homalg-project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary {}{}{}\texttt{CAP}}},
-      printedkey =       {GPS12}
+      printedkey =       {GPS18}
     }
 

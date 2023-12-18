@@ -375,7 +375,6 @@
   [2XCategoryFilter[102X, for IsCapCategory 1.4-2 
       for IsDerivedMethod 8.2-6 
   [2XCategoryOfOperationWeightList[102X, for IsOperationWeightList 8.4-4 
-  [2XCheckConstructivenessOfCategory[102X, for IsCapCategory, IsString 1.6-2 
   [2XCoastrictionToImage[102X, for IsCapCategoryMorphism 6.13-6 
   [2XCoastrictionToImageWithGivenImageObject[102X, for IsCapCategoryMorphism, IsCapCategoryObject 6.13-7 
   [2XCoefficientsOfMorphism[102X, for IsCapCategoryMorphism 3.16-22 
@@ -693,6 +692,7 @@
   [2XMakeDerivationGraph[102X, for IsDenseList 8.3-2 
   [2XMakeOperationWeightList[102X, for IsCapCategory, IsDerivedMethodGraph 8.4-2 
   [2XMereExistenceOfSolutionOfLinearSystemInAbCategory[102X, for IsList, IsList, IsList 3.16-10 
+  [2XMissingOperationsForConstructivenessOfCategory[102X, for IsCapCategory, IsString 1.6-2 
   [2XModelingCategory[102X, for IsCapCategory 12.5-1 
   [2XModelingMorphism[102X, for IsCapCategory, IsCapCategoryMorphism 12.6-5 
   [2XModelingObject[102X, for IsCapCategory, IsCapCategoryObject 12.6-3 

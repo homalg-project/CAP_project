@@ -466,9 +466,9 @@
   of  a CAP operation, an error is raised. For debugging purposes one can also
   pass the CAP operation instead of its name.[133X
   
-  [1X1.6-2 CheckConstructivenessOfCategory[101X
+  [1X1.6-2 MissingOperationsForConstructivenessOfCategory[101X
   
-  [33X[1;0Y[29X[2XCheckConstructivenessOfCategory[102X( [3XC[103X, [3Xs[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XMissingOperationsForConstructivenessOfCategory[102X( [3XC[103X, [3Xs[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
   
   [33X[0;0YThe  arguments  are  a  category  [23XC[123X  and  a  string [23Xs[123X. If [23Xs[123X is a categorical
