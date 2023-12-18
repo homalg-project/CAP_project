@@ -577,7 +577,7 @@ DeclareOperation( "CanCompute",
 #! If $s$ is not a categorical property, an error is raised.
 #! @Returns a list
 #! @Arguments C,s
-DeclareOperation( "CheckConstructivenessOfCategory",
+DeclareOperation( "MissingOperationsForConstructivenessOfCategory",
                   [ IsCapCategory, IsString ] );
 
 #############################################

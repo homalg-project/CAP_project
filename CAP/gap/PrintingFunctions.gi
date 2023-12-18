@@ -40,7 +40,7 @@ InstallGlobalFunction( InfoStringOfInstalledOperationsOfCategory,
     
     list_of_algorithmic_and_not_yet_algorithmic_properties := Intersection( list_of_mathematical_properties, list_of_potential_algorithmic_properties );
     
-    list_of_algorithmic_properties := Filtered( list_of_algorithmic_and_not_yet_algorithmic_properties, p -> IsEmpty( CheckConstructivenessOfCategory( category, p ) ) );
+    list_of_algorithmic_properties := Filtered( list_of_algorithmic_and_not_yet_algorithmic_properties, p -> IsEmpty( MissingOperationsForConstructivenessOfCategory( category, p ) ) );
     
     list_of_maximal_algorithmic_properties := MaximalPropertiesWithRegardToImplication( list_of_algorithmic_properties );
     
