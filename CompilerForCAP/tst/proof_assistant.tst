@@ -57,6 +57,42 @@ gap> AssertLemma( );
 With this, the claim follows. ∎
 
 #
+gap> statement := function ( cat, a )
+>     
+>     return a in Integers;
+>     
+> end;;
+
+#
+gap> StateLemma(
+>     "a test statement",
+>     statement,
+>     cat,
+>     [ "category", "integer" ],
+>     [ ]
+> );
+In RingAsCategory( Dummy commutative ring 1 ), a test statement:
+For an integer a we have
+function ( cat, a )
+    return a in Integers;
+end
+
+#
+gap> PrintLemma( );
+We have to show
+function ( cat_1, a_1 )
+    return a_1 in Integers;
+end
+
+#
+gap> AttestValidInputs( );
+We let CompilerForCAP assume that all inputs are valid.
+
+#
+gap> AssertLemma( );
+With this, the claim follows. ∎
+
+#
 gap> CapJitDisableProofAssistantMode( );
 
 #

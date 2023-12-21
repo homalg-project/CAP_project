@@ -9,6 +9,8 @@ BindGlobal( "CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS", [
 ] );
 
 BindGlobal( "CAP_JIT_INTERNAL_DEFERRED_GLOBAL_VARIABLE_FILTERS", [
+    # GAP
+    "IsIntegers",
     # homalg
     "IsHomalgRing",
     "IsHomalgRingElement",
@@ -974,6 +976,7 @@ CapJitAddTypeSignature( "^", [ IsInt, IsInt ], IsInt );
 CapJitAddTypeSignature( "REM_INT", [ IsInt, IsInt ], IsInt );
 CapJitAddTypeSignature( "QUO_INT", [ IsInt, IsInt ], IsInt );
 CapJitAddTypeSignature( "IsZero", [ IsInt ], IsBool );
+CapJitAddTypeSignature( "OneImmutable", [ IsIntegers ], IsInt );
 CapJitAddTypeSignature( "^", [ IsPerm, IsInt ], IsPerm );
 CapJitAddTypeSignature( "PermList", [ IsList ], IsPerm );
 CapJitAddTypeSignature( "PermutationMat", [ IsPerm, IsInt ], CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( IsInt ) ) );
