@@ -6,11 +6,10 @@
 
 BindGlobal( "CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS", [
     IsInt,
+    IsIntegers,
 ] );
 
 BindGlobal( "CAP_JIT_INTERNAL_DEFERRED_GLOBAL_VARIABLE_FILTERS", [
-    # GAP
-    "IsIntegers",
     # homalg
     "IsHomalgRing",
     "IsHomalgRingElement",
