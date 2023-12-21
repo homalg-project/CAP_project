@@ -496,7 +496,13 @@ InstallMethod( StateLemma,
                 
             fi;
             
-            if filter = "element_of_commutative_ring_of_linear_structure" then
+            if filter = "integer" then
+                
+                part := Concatenation( numeral, " integer", plural, " ", ConcatenationOfStringsAsEnumerationWithAnd( names{positions} ) );
+                
+                part := ReplacedString( part, "a integer ", "an integer " );
+                
+            elif filter = "element_of_commutative_ring_of_linear_structure" then
                 
                 part := Concatenation( numeral, " element", plural, " ", ConcatenationOfStringsAsEnumerationWithAnd( names{positions} ), " of the commutative ring of the linear structure" );
                 
@@ -782,15 +788,25 @@ InstallMethod( AttestValidInputs,
         # `in` for rings corresponds to `IsWellDefined` for categories
         if tree.type = "EXPR_IN" and IsSpecializationOfFilter( IsRingElement, tree.left.data_type.filter ) and IsSpecializationOfFilter( IsRing, tree.right.data_type.filter ) then
             
+            ring := fail;
+            
             # In the future, the ring should be part of the data type.
-            # For now, we can only consider attributes of categories.
-            if CapJitIsCallToGlobalFunction( tree.right, gvar -> true ) and tree.right.args.length = 1 and IsSpecializationOfFilter( "category", tree.right.args.1.data_type.filter ) then
+            # For now, we can only consider global variables and attributes of categories.
+            if tree.right.type = "EXPR_REF_GVAR" then
+                
+                ring := ValueGlobal( tree.right.gvar );
+                
+            elif CapJitIsCallToGlobalFunction( tree.right, gvar -> true ) and tree.right.args.length = 1 and IsSpecializationOfFilter( "category", tree.right.args.1.data_type.filter ) then
                 
                 category := tree.right.args.1.data_type.category;
                 
                 attribute := ValueGlobal( tree.right.funcref.gvar );
                 
                 ring := attribute( category );
+                
+            fi;
+            
+            if ring <> fail then
                 
                 Assert( 0, IsRing( ring ) );
                 
