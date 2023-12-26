@@ -41,6 +41,11 @@ function ( cat, A, B, r, alpha )
     return IsWellDefinedForMorphismsWithGivenSourceAndRange( cat, A, 
        MultiplyWithElementOfCommutativeRingForMorphisms( cat, r, alpha ), B );
 end
+gap> PrintLemma( );
+We have to show
+function ( cat_1, A_1, B_1, r_1, alpha_1 )
+    return r_1 * UnderlyingRingElement( alpha_1 ) in UnderlyingRing( cat_1 );
+end
 gap> AttestValidInputs( );
 We let CompilerForCAP assume that all inputs are valid.
 gap> AssertLemma( );
