@@ -226,6 +226,14 @@ InstallGlobalFunction( TerminalCategoryWithSingleObject,
         
     end );
     
+    ##
+    AddMorphismsOfExternalHom( T,
+      function( T, object_1, object_2 )
+        
+        return [ UniqueMorphism( T ) ];
+        
+    end );
+    
     Finalize( T );
     
     return T;

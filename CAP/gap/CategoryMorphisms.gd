@@ -1239,6 +1239,13 @@ DeclareOperation( "InterpretMorphismFromDistinguishedObjectToHomomorphismStructu
 DeclareOperation( "ExtendRangeOfHomomorphismStructureByIdentityAsFullEmbedding",
                   [ IsCapCategory ] );
 
+#! @Description
+#! The argument are two objects <A>a</A>, <A>b</A>.
+#! The output is a list of all morphisms from <A>a</A> to <A>b</A>.
+#! @Returns a list of morphisms in $\mathrm{Hom}( a, b )$
+#! @Arguments a, b
+DeclareOperation( "MorphismsOfExternalHom",
+        [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are objects $a,b$ in a $k$-linear category $C$.
@@ -1269,7 +1276,6 @@ DeclareOperation( "CoefficientsOfMorphismWithGivenBasisOfExternalHom",
 #! @Arguments alpha
 DeclareAttribute( "CoefficientsOfMorphism",
                   IsCapCategoryMorphism );
-
 
 ###################################
 ##

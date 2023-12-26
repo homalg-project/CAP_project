@@ -20,6 +20,7 @@ InstallMethod( CategoryConstructor,
         object_datum_type := IsObject, # IsFilter or IsRecord
         morphism_datum_type := IsObject, # IsFilter or IsRecord
         commutative_ring_of_linear_category := R -> IsRing( R ) and HasIsCommutative( R ) and IsCommutative( R ),
+        range_category_of_homomorphism_structure := cat -> IsCapCategory( cat ) or cat = "self",
         properties := IsList,
         object_constructor := IsFunction,
         object_datum := IsFunction,
@@ -41,7 +42,6 @@ InstallMethod( CategoryConstructor,
         create_func_morphism := IsObject,
         create_func_morphism_or_fail := IsObject,
         create_func_list_of_objects := IsObject,
-        range_category_of_homomorphism_structure := cat -> IsCapCategory( cat ) or cat = "self",
     );
     
     for option_name in RecNames( options ) do
