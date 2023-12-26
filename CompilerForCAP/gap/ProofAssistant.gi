@@ -604,7 +604,15 @@ InstallMethod( StateLemma,
             
             for replacement in local_replacements do
                 
-                text := Concatenation( text, "• ", replacement.src_template, " = ", replacement.dst_template, ",\n" );
+                if replacement.dst_template = "true" then
+                    
+                    text := Concatenation( text, "• ", replacement.src_template, ",\n" );
+                    
+                else
+                    
+                    text := Concatenation( text, "• ", replacement.src_template, " = ", replacement.dst_template, ",\n" );
+                    
+                fi;
                 
             od;
             
@@ -1497,7 +1505,7 @@ BindGlobal( "CAP_JIT_INTERNAL_PROOF_ASSISTANT_LEMMATA", rec(
                     rec( src_template := "Range( alpha )", dst_template := "B" ),
                     rec( src_template := "Source( tau )", dst_template := "T" ),
                     rec( src_template := "Range( tau )", dst_template := "A" ),
-                    rec( src_template := "PreCompose( cat, tau, alpha )", dst_template := "ZeroMorphism( cat, T, B )" ),
+                    rec( src_template := "IsZeroForMorphisms( cat, PreCompose( cat, tau, alpha ) )", dst_template := "true" ),
                 ],
             ),
             rec(
@@ -1516,7 +1524,7 @@ BindGlobal( "CAP_JIT_INTERNAL_PROOF_ASSISTANT_LEMMATA", rec(
                     rec( src_template := "Range( alpha )", dst_template := "B" ),
                     rec( src_template := "Source( tau )", dst_template := "T" ),
                     rec( src_template := "Range( tau )", dst_template := "A" ),
-                    rec( src_template := "PreCompose( cat, tau, alpha )", dst_template := "ZeroMorphism( cat, T, B )" ),
+                    rec( src_template := "IsZeroForMorphisms( cat, PreCompose( cat, tau, alpha ) )", dst_template := "true" ),
                 ],
             ),
             rec(
