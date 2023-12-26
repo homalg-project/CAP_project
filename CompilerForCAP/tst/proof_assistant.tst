@@ -69,10 +69,12 @@ gap> StateLemma(
 >     statement,
 >     cat,
 >     [ "category", "integer" ],
->     [ ]
+>     [ rec( src_template := "a", dst_template := "0" ) ]
 > );
 In RingAsCategory( Dummy commutative ring 1 ), a test statement:
-For an integer a we have
+For an integer a such that
+• a = 0,
+we have
 function ( cat, a )
     return a in Integers;
 end
@@ -81,7 +83,7 @@ end
 gap> PrintLemma( );
 We have to show
 function ( cat_1, a_1 )
-    return a_1 in Integers;
+    return 0 in Integers;
 end
 
 #

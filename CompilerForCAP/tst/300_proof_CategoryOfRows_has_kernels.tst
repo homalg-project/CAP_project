@@ -197,7 +197,7 @@ Lemma 4:
 In a category of rows over a field, kernel lifts define morphisms:
 For three objects A, B, and T and two morphisms alpha : A → B and tau : T → A\
 such that
-• PreCompose( cat, tau, alpha ) = ZeroMorphism( cat, T, B ),
+• IsZeroForMorphisms( cat, PreCompose( cat, tau, alpha ) ),
 we have
 function ( cat, A, B, T, alpha, tau )
     return IsWellDefinedForMorphismsWithGivenSourceAndRange( cat, T, 
@@ -303,7 +303,7 @@ In a category of rows over a field, taking the kernel lift is an injective ope\
 ration:
 For three objects A, B, and T and two morphisms alpha : A → B and tau : T → A\
 such that
-• PreCompose( cat, tau, alpha ) = ZeroMorphism( cat, T, B ),
+• IsZeroForMorphisms( cat, PreCompose( cat, tau, alpha ) ),
 we have
 function ( cat, A, B, T, alpha, tau )
     return 
