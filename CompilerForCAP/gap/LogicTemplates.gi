@@ -172,7 +172,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
             if IsBound( tree.data_type ) then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Error( "using CapJitTypeExpression with logic template variables is currently not supported, use variable_filters instead" );
+                Error( "using CapJitTypedExpression with logic template variables is currently not supported, use variable_filters instead" );
                 
             fi;
             

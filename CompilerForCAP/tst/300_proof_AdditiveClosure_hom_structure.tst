@@ -372,15 +372,7 @@ gap> # hom structure on zero in the underlying category
 >         variable_names := [ "cat", "A", "B", "mor" ],
 >         variable_filters := [ IsDummyCategory, IsDummyCategoryObject, IsDummyCategoryObject, IsDummyCategoryMorphism ],
 >         src_template := "HomomorphismStructureOnMorphisms( cat, ZeroMorphism( cat, A, B ), mor )",
->         dst_template := "ZeroMorphism( RangeCategoryOfHomomorphismStructure( cat ), HomomorphismStructureOnObjects( cat, B, Source( mor ) ), HomomorphismStructureOnObjects( A, Range( mor ) ) )",
->     )
-> );
-gap> # eliminate case distinction
-> ApplyLogicTemplate(
->     rec(
->         variable_names := [ "k", "l", "list" ],
->         src_template := "CAP_JIT_INTERNAL_EXPR_CASE( k = l, list[k], true, list[l] )",
->         dst_template := "list[l]",
+>         dst_template := "ZeroMorphism( RangeCategoryOfHomomorphismStructure( cat ), HomomorphismStructureOnObjects( cat, B, Source( mor ) ), HomomorphismStructureOnObjects( cat, A, Range( mor ) ) )",
 >     )
 > );
 gap> AssertLemma( );
