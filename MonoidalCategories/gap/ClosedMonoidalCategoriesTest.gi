@@ -24,6 +24,8 @@ InstallGlobalFunction( "ClosedMonoidalCategoriesTest",
               ev_ab, coev_ab, cocl_ev_ab_op, cocl_coev_ab_op,
               ev_ba, coev_ba, cocl_ev_ba_op, cocl_coev_ba_op,
               
+              raiso, laiso, H_ab_ba_c,
+              
               alpha_tensor_beta, alpha_tensor_beta_op,
               beta_tensor_alpha, beta_tensor_alpha_op,
               
@@ -224,6 +226,72 @@ InstallGlobalFunction( "ClosedMonoidalCategoriesTest",
             
             Assert( 0, IsCongruentForMorphisms( cocl_coev_ab_op, Opposite( opposite, coev_ab ) ) );
             Assert( 0, IsCongruentForMorphisms( cocl_coev_ba_op, Opposite( opposite, coev_ba ) ) );
+            
+        fi;
+        
+        if CanCompute( cat, "TensorProductToInternalHomRightAdjunctionIsomorphism" ) then
+            
+            if verbose then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Display( "Testing 'TensorProductToInternalHomRightAdjunctionIsomorphism' ..." );
+                
+            fi;
+            
+            raiso := TensorProductToInternalHomRightAdjunctionIsomorphism( a, b, c );
+            
+            Assert( 0, IsIsomorphism( raiso ) );
+            
+            if CanCompute( cat, "TensorProductToInternalHomLeftAdjunctionIsomorphism" ) then
+                
+                laiso := TensorProductToInternalHomLeftAdjunctionIsomorphism( b, a, c );
+                
+                Assert( 0, IsIsomorphism( laiso ) );
+                
+                if CanCompute( cat, "Braiding" ) then
+                    
+                    H_ab_ba_c := HomStructure( Braiding( a, b ), c );
+                    
+                    Assert( 0, IsIsomorphism( H_ab_ba_c ) );
+                    
+                    Assert( 0, IsEqualForMorphisms( laiso, PreCompose( H_ab_ba_c, raiso ) ) );
+                    
+                fi;
+                
+            fi;
+            
+        fi;
+        
+        if CanCompute( cat, "InternalHomToTensorProductRightAdjunctionIsomorphism" ) then
+            
+            if verbose then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Display( "Testing 'InternalHomToTensorProductRightAdjunctionIsomorphism' ..." );
+                
+            fi;
+            
+            raiso := InternalHomToTensorProductRightAdjunctionIsomorphism( a, b, c );
+            
+            Assert( 0, IsIsomorphism( raiso ) );
+            
+            if CanCompute( cat, "InternalHomToTensorProductLeftAdjunctionIsomorphism" ) then
+                
+                laiso := InternalHomToTensorProductLeftAdjunctionIsomorphism( b, a, c );
+                
+                Assert( 0, IsIsomorphism( laiso ) );
+                
+                if CanCompute( cat, "Braiding" ) then
+                    
+                    H_ab_ba_c := HomStructure( Braiding( a, b ), c );
+                    
+                    Assert( 0, IsIsomorphism( H_ab_ba_c ) );
+                    
+                    Assert( 0, IsEqualForMorphisms( raiso, PreCompose( H_ab_ba_c, laiso ) ) );
+                    
+                fi;
+                
+            fi;
             
         fi;
         

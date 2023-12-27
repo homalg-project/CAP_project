@@ -119,6 +119,28 @@ TensorProductToInternalHomRightAdjunctMorphismWithGivenInternalHom := rec(
   dual_arguments_reversed := false,
 ),
 
+TensorProductToInternalHomRightAdjunctionIsomorphism := rec(
+  filter_list := [ "category", "object", "object", "object" ],
+  return_type := "morphism_in_range_category_of_homomorphism_structure",
+  input_arguments_names := [ "cat", "a", "b", "c" ],
+  output_source_getter_string := "HomomorphismStructureOnObjects( cat, TensorProductOnObjects( cat, a, b ), c )",
+  output_source_getter_preconditions := [ [ "TensorProductOnObjects", 1 ], [ "HomomorphismStructureOnObjects", 1 ] ],
+  output_range_getter_string := "HomomorphismStructureOnObjects( cat, b, InternalHomOnObjects( cat, a, c ) )",
+  output_range_getter_preconditions := [ [ "InternalHomOnObjects", 1 ], [ "HomomorphismStructureOnObjects", 1 ] ],
+  with_given_object_position := "both",
+  # Test in ClosedMonoidalCategoriesTest
+),
+
+TensorProductToInternalHomRightAdjunctionIsomorphismWithGivenObjects := rec(
+  filter_list := [ "category", "object_in_range_category_of_homomorphism_structure", "object", "object", "object", "object_in_range_category_of_homomorphism_structure" ],
+  return_type := "morphism_in_range_category_of_homomorphism_structure",
+  input_arguments_names := [ "cat", "s", "a", "b", "c", "r" ],
+  output_source_getter_string := "s",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "r",
+  output_range_getter_preconditions := [ ],
+),
+
 InternalHomToTensorProductRightAdjunctMorphism := rec(
   filter_list := [ "category", "object", "object", "morphism" ],
   return_type := "morphism",
@@ -146,6 +168,28 @@ InternalHomToTensorProductRightAdjunctMorphismWithGivenTensorProduct := rec(
   dual_preprocessor_func := { cat, a, c, g, s } -> NTuple( 5, Opposite( cat ), Opposite( c ), Opposite( a ), Opposite( g ), Opposite( s ) ),
   dual_arguments_reversed := false,
   # Test in ClosedMonoidalCategoriesTestWithGiven
+),
+
+InternalHomToTensorProductRightAdjunctionIsomorphism := rec(
+  filter_list := [ "category", "object", "object", "object" ],
+  return_type := "morphism_in_range_category_of_homomorphism_structure",
+  input_arguments_names := [ "cat", "a", "b", "c" ],
+  output_source_getter_string := "HomomorphismStructureOnObjects( cat, b, InternalHomOnObjects( cat, a, c ) )",
+  output_source_getter_preconditions := [ [ "InternalHomOnObjects", 1 ], [ "HomomorphismStructureOnObjects", 1 ] ],
+  output_range_getter_string := "HomomorphismStructureOnObjects( cat, TensorProductOnObjects( cat, a, b ), c )",
+  output_range_getter_preconditions := [ [ "TensorProductOnObjects", 1 ], [ "HomomorphismStructureOnObjects", 1 ] ],
+  with_given_object_position := "both",
+  # Test in ClosedMonoidalCategoriesTest
+),
+
+InternalHomToTensorProductRightAdjunctionIsomorphismWithGivenObjects := rec(
+  filter_list := [ "category", "object_in_range_category_of_homomorphism_structure", "object", "object", "object", "object_in_range_category_of_homomorphism_structure" ],
+  return_type := "morphism_in_range_category_of_homomorphism_structure",
+  input_arguments_names := [ "cat", "s", "a", "b", "c", "r" ],
+  output_source_getter_string := "s",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "r",
+  output_range_getter_preconditions := [ ],
 ),
 
 ClosedMonoidalLeftEvaluationMorphism := rec(
@@ -226,6 +270,28 @@ TensorProductToInternalHomLeftAdjunctMorphismWithGivenInternalHom := rec(
   dual_arguments_reversed := false,
 ),
 
+TensorProductToInternalHomLeftAdjunctionIsomorphism := rec(
+  filter_list := [ "category", "object", "object", "object" ],
+  return_type := "morphism_in_range_category_of_homomorphism_structure",
+  input_arguments_names := [ "cat", "a", "b", "c" ],
+  output_source_getter_string := "HomomorphismStructureOnObjects( cat, TensorProductOnObjects( cat, a, b ), c )",
+  output_source_getter_preconditions := [ [ "TensorProductOnObjects", 1 ], [ "HomomorphismStructureOnObjects", 1 ] ],
+  output_range_getter_string := "HomomorphismStructureOnObjects( cat, a, InternalHomOnObjects( cat, b, c ) )",
+  output_range_getter_preconditions := [ [ "InternalHomOnObjects", 1 ], [ "HomomorphismStructureOnObjects", 1 ] ],
+  with_given_object_position := "both",
+  # Test in ClosedMonoidalCategoriesTest
+),
+
+TensorProductToInternalHomLeftAdjunctionIsomorphismWithGivenObjects := rec(
+  filter_list := [ "category", "object_in_range_category_of_homomorphism_structure", "object", "object", "object", "object_in_range_category_of_homomorphism_structure" ],
+  return_type := "morphism_in_range_category_of_homomorphism_structure",
+  input_arguments_names := [ "cat", "s", "a", "b", "c", "r" ],
+  output_source_getter_string := "s",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "r",
+  output_range_getter_preconditions := [ ],
+),
+
 InternalHomToTensorProductLeftAdjunctMorphism := rec(
   filter_list := [ "category", "object", "object", "morphism" ],
   return_type := "morphism",
@@ -252,6 +318,28 @@ InternalHomToTensorProductLeftAdjunctMorphismWithGivenTensorProduct := rec(
   dual_operation := "InternalCoHomToTensorProductLeftAdjunctMorphismWithGivenTensorProduct",
   dual_preprocessor_func := { cat, a, b, g, s } -> NTuple( 5, Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( g ), Opposite( s ) ),
   dual_arguments_reversed := false,
+),
+
+InternalHomToTensorProductLeftAdjunctionIsomorphism := rec(
+  filter_list := [ "category", "object", "object", "object" ],
+  return_type := "morphism_in_range_category_of_homomorphism_structure",
+  input_arguments_names := [ "cat", "a", "b", "c" ],
+  output_source_getter_string := "HomomorphismStructureOnObjects( cat, a, InternalHomOnObjects( cat, b, c ) )",
+  output_source_getter_preconditions := [ [ "InternalHomOnObjects", 1 ], [ "HomomorphismStructureOnObjects", 1 ] ],
+  output_range_getter_string := "HomomorphismStructureOnObjects( cat, TensorProductOnObjects( cat, a, b ), c )",
+  output_range_getter_preconditions := [ [ "TensorProductOnObjects", 1 ], [ "HomomorphismStructureOnObjects", 1 ] ],
+  with_given_object_position := "both",
+  # Test in ClosedMonoidalCategoriesTest
+),
+
+InternalHomToTensorProductLeftAdjunctionIsomorphismWithGivenObjects := rec(
+  filter_list := [ "category", "object_in_range_category_of_homomorphism_structure", "object", "object", "object", "object_in_range_category_of_homomorphism_structure" ],
+  return_type := "morphism_in_range_category_of_homomorphism_structure",
+  input_arguments_names := [ "cat", "s", "a", "b", "c", "r" ],
+  output_source_getter_string := "s",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "r",
+  output_range_getter_preconditions := [ ],
 ),
 
 MonoidalPreComposeMorphism := rec(

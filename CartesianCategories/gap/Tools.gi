@@ -335,6 +335,9 @@ WriteFileForClosedMonoidalStructure(
                                ## UniversalPropertyOfDual
                                [ "dual_operation := \"UniversalPropertyOfCoDual\"",
                                  "dual_operation := \"UniversalPropertyOfCocartesianDual\"" ],
+                               ## MorphismsOfExternalHom
+                               [ "MorphismsOfExternalHom",
+                                 "MorphismsOfExternalHom" ],
                                ##############################
                                ## Safe replacements for Tests
                                ##############################

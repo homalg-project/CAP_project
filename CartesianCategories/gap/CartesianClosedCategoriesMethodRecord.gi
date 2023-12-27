@@ -122,6 +122,28 @@ DirectProductToExponentialRightAdjunctMorphismWithGivenExponential := rec(
   dual_arguments_reversed := false,
 ),
 
+DirectProductToExponentialRightAdjunctionIsomorphism := rec(
+  filter_list := [ "category", "object", "object", "object" ],
+  return_type := "morphism_in_range_category_of_homomorphism_structure",
+  input_arguments_names := [ "cat", "a", "b", "c" ],
+  output_source_getter_string := "HomomorphismStructureOnObjects( cat, BinaryDirectProduct( cat, a, b ), c )",
+  output_source_getter_preconditions := [ [ "DirectProduct", 1 ], [ "HomomorphismStructureOnObjects", 1 ] ],
+  output_range_getter_string := "HomomorphismStructureOnObjects( cat, b, ExponentialOnObjects( cat, a, c ) )",
+  output_range_getter_preconditions := [ [ "ExponentialOnObjects", 1 ], [ "HomomorphismStructureOnObjects", 1 ] ],
+  with_given_object_position := "both",
+  # Test in CartesianClosedCategoriesTest
+),
+
+DirectProductToExponentialRightAdjunctionIsomorphismWithGivenObjects := rec(
+  filter_list := [ "category", "object_in_range_category_of_homomorphism_structure", "object", "object", "object", "object_in_range_category_of_homomorphism_structure" ],
+  return_type := "morphism_in_range_category_of_homomorphism_structure",
+  input_arguments_names := [ "cat", "s", "a", "b", "c", "r" ],
+  output_source_getter_string := "s",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "r",
+  output_range_getter_preconditions := [ ],
+),
+
 ExponentialToDirectProductRightAdjunctMorphism := rec(
   filter_list := [ "category", "object", "object", "morphism" ],
   return_type := "morphism",
@@ -149,6 +171,28 @@ ExponentialToDirectProductRightAdjunctMorphismWithGivenDirectProduct := rec(
   dual_preprocessor_func := { cat, a, c, g, s } -> NTuple( 5, Opposite( cat ), Opposite( c ), Opposite( a ), Opposite( g ), Opposite( s ) ),
   dual_arguments_reversed := false,
   # Test in CartesianClosedCategoriesTestWithGiven
+),
+
+ExponentialToDirectProductRightAdjunctionIsomorphism := rec(
+  filter_list := [ "category", "object", "object", "object" ],
+  return_type := "morphism_in_range_category_of_homomorphism_structure",
+  input_arguments_names := [ "cat", "a", "b", "c" ],
+  output_source_getter_string := "HomomorphismStructureOnObjects( cat, b, ExponentialOnObjects( cat, a, c ) )",
+  output_source_getter_preconditions := [ [ "ExponentialOnObjects", 1 ], [ "HomomorphismStructureOnObjects", 1 ] ],
+  output_range_getter_string := "HomomorphismStructureOnObjects( cat, BinaryDirectProduct( cat, a, b ), c )",
+  output_range_getter_preconditions := [ [ "DirectProduct", 1 ], [ "HomomorphismStructureOnObjects", 1 ] ],
+  with_given_object_position := "both",
+  # Test in CartesianClosedCategoriesTest
+),
+
+ExponentialToDirectProductRightAdjunctionIsomorphismWithGivenObjects := rec(
+  filter_list := [ "category", "object_in_range_category_of_homomorphism_structure", "object", "object", "object", "object_in_range_category_of_homomorphism_structure" ],
+  return_type := "morphism_in_range_category_of_homomorphism_structure",
+  input_arguments_names := [ "cat", "s", "a", "b", "c", "r" ],
+  output_source_getter_string := "s",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "r",
+  output_range_getter_preconditions := [ ],
 ),
 
 CartesianLeftEvaluationMorphism := rec(
@@ -229,6 +273,28 @@ DirectProductToExponentialLeftAdjunctMorphismWithGivenExponential := rec(
   dual_arguments_reversed := false,
 ),
 
+DirectProductToExponentialLeftAdjunctionIsomorphism := rec(
+  filter_list := [ "category", "object", "object", "object" ],
+  return_type := "morphism_in_range_category_of_homomorphism_structure",
+  input_arguments_names := [ "cat", "a", "b", "c" ],
+  output_source_getter_string := "HomomorphismStructureOnObjects( cat, BinaryDirectProduct( cat, a, b ), c )",
+  output_source_getter_preconditions := [ [ "DirectProduct", 1 ], [ "HomomorphismStructureOnObjects", 1 ] ],
+  output_range_getter_string := "HomomorphismStructureOnObjects( cat, a, ExponentialOnObjects( cat, b, c ) )",
+  output_range_getter_preconditions := [ [ "ExponentialOnObjects", 1 ], [ "HomomorphismStructureOnObjects", 1 ] ],
+  with_given_object_position := "both",
+  # Test in CartesianClosedCategoriesTest
+),
+
+DirectProductToExponentialLeftAdjunctionIsomorphismWithGivenObjects := rec(
+  filter_list := [ "category", "object_in_range_category_of_homomorphism_structure", "object", "object", "object", "object_in_range_category_of_homomorphism_structure" ],
+  return_type := "morphism_in_range_category_of_homomorphism_structure",
+  input_arguments_names := [ "cat", "s", "a", "b", "c", "r" ],
+  output_source_getter_string := "s",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "r",
+  output_range_getter_preconditions := [ ],
+),
+
 ExponentialToDirectProductLeftAdjunctMorphism := rec(
   filter_list := [ "category", "object", "object", "morphism" ],
   return_type := "morphism",
@@ -255,6 +321,28 @@ ExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct := rec(
   dual_operation := "CoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduct",
   dual_preprocessor_func := { cat, a, b, g, s } -> NTuple( 5, Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( g ), Opposite( s ) ),
   dual_arguments_reversed := false,
+),
+
+ExponentialToDirectProductLeftAdjunctionIsomorphism := rec(
+  filter_list := [ "category", "object", "object", "object" ],
+  return_type := "morphism_in_range_category_of_homomorphism_structure",
+  input_arguments_names := [ "cat", "a", "b", "c" ],
+  output_source_getter_string := "HomomorphismStructureOnObjects( cat, a, ExponentialOnObjects( cat, b, c ) )",
+  output_source_getter_preconditions := [ [ "ExponentialOnObjects", 1 ], [ "HomomorphismStructureOnObjects", 1 ] ],
+  output_range_getter_string := "HomomorphismStructureOnObjects( cat, BinaryDirectProduct( cat, a, b ), c )",
+  output_range_getter_preconditions := [ [ "DirectProduct", 1 ], [ "HomomorphismStructureOnObjects", 1 ] ],
+  with_given_object_position := "both",
+  # Test in CartesianClosedCategoriesTest
+),
+
+ExponentialToDirectProductLeftAdjunctionIsomorphismWithGivenObjects := rec(
+  filter_list := [ "category", "object_in_range_category_of_homomorphism_structure", "object", "object", "object", "object_in_range_category_of_homomorphism_structure" ],
+  return_type := "morphism_in_range_category_of_homomorphism_structure",
+  input_arguments_names := [ "cat", "s", "a", "b", "c", "r" ],
+  output_source_getter_string := "s",
+  output_source_getter_preconditions := [ ],
+  output_range_getter_string := "r",
+  output_range_getter_preconditions := [ ],
 ),
 
 CartesianPreComposeMorphism := rec(

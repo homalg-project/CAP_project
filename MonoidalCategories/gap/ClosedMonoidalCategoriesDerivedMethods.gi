@@ -905,6 +905,310 @@ AddDerivationToCAP( MonoidalPostComposeMorphismWithGivenObjects,
     
 end : CategoryFilter := cat -> HasIsClosedMonoidalCategory( cat ) and IsClosedMonoidalCategory( cat ) and HasIsStrictMonoidalCategory( cat ) and IsStrictMonoidalCategory( cat ) );
 
+##
+AddDerivationToCAP( TensorProductToInternalHomRightAdjunctionIsomorphismWithGivenObjects,
+                    "TensorProductToInternalHomRightAdjunctionIsomorphismWithGivenObjects as inverse of InternalHomToTensorProductRightAdjunctionIsomorphismWithGivenObjects",
+                    [ [ InternalHomToTensorProductRightAdjunctionIsomorphismWithGivenObjects, 1 ],
+                      [ InverseForMorphisms, 1, RangeCategoryOfHomomorphismStructure ] ],
+        
+  function( cat, H_a_tensor_b_c, a, b, c, H_b_hom_ac )
+    local H;
+    
+    H := RangeCategoryOfHomomorphismStructure( cat );
+    
+    return InverseForMorphisms( H,
+                   InternalHomToTensorProductRightAdjunctionIsomorphismWithGivenObjects( cat,
+                           H_b_hom_ac,
+                           a,
+                           b,
+                           c,
+                           H_a_tensor_b_c ) );
+    
+end : CategoryGetters := rec( H := RangeCategoryOfHomomorphismStructure ),
+      CategoryFilter := HasRangeCategoryOfHomomorphismStructure );
+
+##
+AddDerivationToCAP( InternalHomToTensorProductRightAdjunctionIsomorphismWithGivenObjects,
+                    "InternalHomToTensorProductRightAdjunctionIsomorphismWithGivenObjects as inverse of TensorProductToInternalHomRightAdjunctionIsomorphismWithGivenObjects",
+                    [ [ TensorProductToInternalHomRightAdjunctionIsomorphismWithGivenObjects, 1 ],
+                      [ InverseForMorphisms, 1, RangeCategoryOfHomomorphismStructure ] ],
+        
+  function( cat, H_b_hom_ac, a, b, c, H_a_tensor_b_c )
+    local H;
+    
+    H := RangeCategoryOfHomomorphismStructure( cat );
+    
+    return InverseForMorphisms( H,
+                   TensorProductToInternalHomRightAdjunctionIsomorphismWithGivenObjects( cat,
+                           H_a_tensor_b_c,
+                           a,
+                           b,
+                           c,
+                           H_b_hom_ac ) );
+    
+end : CategoryGetters := rec( H := RangeCategoryOfHomomorphismStructure ),
+      CategoryFilter := HasRangeCategoryOfHomomorphismStructure );
+
+##
+AddDerivationToCAP( TensorProductToInternalHomRightAdjunctMorphismWithGivenInternalHom,
+                    "TensorProductToInternalHomRightAdjunctMorphismWithGivenInternalHom using TensorProductToInternalHomRightAdjunctionIsomorphismWithGivenObjects",
+                    [ [ HomomorphismStructureOnObjects, 2 ],
+                      [ TensorProductOnObjects, 1 ],
+                      [ TensorProductToInternalHomRightAdjunctionIsomorphismWithGivenObjects, 1 ],
+                      [ DistinguishedObjectOfHomomorphismStructure, 1 ],
+                      [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects, 1 ],
+                      [ PreCompose, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 1 ] ],
+        
+  function( cat, a, b, f, hom_ac )
+    local H, c, H_a_tensor_b_c, H_b_hom_ac, iso, distinguished_object, f_name, g_name;
+    
+    H := RangeCategoryOfHomomorphismStructure( cat );
+    
+    c := Range( f );
+    
+    H_a_tensor_b_c := HomomorphismStructureOnObjects( cat,
+                              TensorProductOnObjects( cat, a, b ),
+                              c );
+    
+    H_b_hom_ac := HomomorphismStructureOnObjects( cat,
+                          b,
+                          hom_ac );
+    
+    iso := TensorProductToInternalHomRightAdjunctionIsomorphismWithGivenObjects( cat,
+                   H_a_tensor_b_c,
+                   a,
+                   b,
+                   c,
+                   H_b_hom_ac );
+    
+    distinguished_object := DistinguishedObjectOfHomomorphismStructure( cat );
+    
+    f_name := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( cat,
+                      distinguished_object,
+                      f,
+                      H_a_tensor_b_c );
+    
+    ## the name of the adjunct of f:
+    g_name := PreCompose( H,
+                      f_name,
+                      iso );
+    
+    return InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
+                   b,
+                   hom_ac,
+                   g_name );
+    
+end : CategoryFilter := IsClosedMonoidalCategory,
+      CategoryGetters := rec( H := RangeCategoryOfHomomorphismStructure ) );
+
+##
+AddDerivationToCAP( InternalHomToTensorProductRightAdjunctMorphismWithGivenTensorProduct,
+                    "InternalHomToTensorProductRightAdjunctMorphismWithGivenTensorProduct using InternalHomToTensorProductRightAdjunctionIsomorphismWithGivenObjects",
+                    [ [ InternalHomOnObjects, 1 ],
+                      [ HomomorphismStructureOnObjects, 2 ],
+                      [ InternalHomToTensorProductRightAdjunctionIsomorphismWithGivenObjects, 1 ],
+                      [ DistinguishedObjectOfHomomorphismStructure, 1 ],
+                      [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects, 1 ],
+                      [ PreCompose, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 1 ] ],
+        
+  function( cat, a, c, g, a_tensor_b )
+    local H, b, H_b_hom_ac, H_a_tensor_b_c, iso, distinguished_object, g_name, f_name;
+    
+    H := RangeCategoryOfHomomorphismStructure( cat );
+    
+    b := Source( g );
+    
+    H_b_hom_ac := HomomorphismStructureOnObjects( cat,
+                          b,
+                          InternalHomOnObjects( cat,
+                                  a,
+                                  c ) );
+    
+    H_a_tensor_b_c := HomomorphismStructureOnObjects( cat,
+                              a_tensor_b,
+                              c );
+    
+    iso := InternalHomToTensorProductRightAdjunctionIsomorphismWithGivenObjects( cat,
+                   H_b_hom_ac,
+                   a,
+                   b,
+                   c,
+                   H_a_tensor_b_c );
+    
+    distinguished_object := DistinguishedObjectOfHomomorphismStructure( cat );
+    
+    g_name := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( cat,
+                      distinguished_object,
+                      g,
+                      H_b_hom_ac );
+    
+    ## the name of the adjunct of g:
+    f_name := PreCompose( H,
+                      g_name,
+                      iso );
+    
+    return InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
+                   a_tensor_b,
+                   c,
+                   f_name );
+    
+end : CategoryFilter := IsClosedMonoidalCategory,
+      CategoryGetters := rec( H := RangeCategoryOfHomomorphismStructure ) );
+
+##
+AddDerivationToCAP( TensorProductToInternalHomLeftAdjunctionIsomorphismWithGivenObjects,
+                    "TensorProductToInternalHomLeftAdjunctionIsomorphismWithGivenObjects as inverse of InternalHomToTensorProductLeftAdjunctionIsomorphismWithGivenObjects",
+                    [ [ InternalHomToTensorProductLeftAdjunctionIsomorphismWithGivenObjects, 1 ],
+                      [ InverseForMorphisms, 1, RangeCategoryOfHomomorphismStructure ] ],
+        
+  function( cat, H_a_tensor_b_c, a, b, c, H_a_hom_bc )
+    local H;
+    
+    H := RangeCategoryOfHomomorphismStructure( cat );
+    
+    return InverseForMorphisms( H,
+                   InternalHomToTensorProductLeftAdjunctionIsomorphismWithGivenObjects( cat,
+                           H_a_hom_bc,
+                           a,
+                           b,
+                           c,
+                           H_a_tensor_b_c ) );
+    
+end : CategoryGetters := rec( H := RangeCategoryOfHomomorphismStructure ),
+      CategoryFilter := HasRangeCategoryOfHomomorphismStructure );
+
+##
+AddDerivationToCAP( InternalHomToTensorProductLeftAdjunctionIsomorphismWithGivenObjects,
+                    "InternalHomToTensorProductLeftAdjunctionIsomorphismWithGivenObjects as inverse of TensorProductToInternalHomLeftAdjunctionIsomorphismWithGivenObjects",
+                    [ [ TensorProductToInternalHomLeftAdjunctionIsomorphismWithGivenObjects, 1 ],
+                      [ InverseForMorphisms, 1, RangeCategoryOfHomomorphismStructure ] ],
+        
+  function( cat, H_a_hom_bc, a, b, c, H_a_tensor_b_c )
+    local H;
+    
+    H := RangeCategoryOfHomomorphismStructure( cat );
+    
+    return InverseForMorphisms( H,
+                   TensorProductToInternalHomLeftAdjunctionIsomorphismWithGivenObjects( cat,
+                           H_a_tensor_b_c,
+                           a,
+                           b,
+                           c,
+                           H_a_hom_bc ) );
+    
+end : CategoryGetters := rec( H := RangeCategoryOfHomomorphismStructure ),
+      CategoryFilter := HasRangeCategoryOfHomomorphismStructure );
+
+##
+AddDerivationToCAP( TensorProductToInternalHomLeftAdjunctMorphismWithGivenInternalHom,
+                    "TensorProductToInternalHomLeftAdjunctMorphismWithGivenInternalHom using TensorProductToInternalHomLeftAdjunctionIsomorphismWithGivenObjects",
+                    [ [ HomomorphismStructureOnObjects, 2 ],
+                      [ TensorProductOnObjects, 1 ],
+                      [ TensorProductToInternalHomLeftAdjunctionIsomorphismWithGivenObjects, 1 ],
+                      [ DistinguishedObjectOfHomomorphismStructure, 1 ],
+                      [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects, 1 ],
+                      [ PreCompose, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 1 ] ],
+        
+  function( cat, a, b, f, hom_bc )
+    local H, c, H_a_tensor_b_c, H_a_hom_bc, iso, distinguished_object, f_name, g_name;
+    
+    H := RangeCategoryOfHomomorphismStructure( cat );
+    
+    c := Range( f );
+    
+    H_a_tensor_b_c := HomomorphismStructureOnObjects( cat,
+                              TensorProductOnObjects( cat, a, b ),
+                              c );
+    
+    H_a_hom_bc := HomomorphismStructureOnObjects( cat,
+                          a,
+                          hom_bc );
+    
+    iso := TensorProductToInternalHomLeftAdjunctionIsomorphismWithGivenObjects( cat,
+                   H_a_tensor_b_c,
+                   a,
+                   b,
+                   c,
+                   H_a_hom_bc );
+    
+    distinguished_object := DistinguishedObjectOfHomomorphismStructure( cat );
+    
+    f_name := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( cat,
+                      distinguished_object,
+                      f,
+                      H_a_tensor_b_c );
+    
+    ## the name of the adjunct of f:
+    g_name := PreCompose( H,
+                      f_name,
+                      iso );
+    
+    return InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
+                   a,
+                   hom_bc,
+                   g_name );
+    
+end : CategoryFilter := IsClosedMonoidalCategory,
+      CategoryGetters := rec( H := RangeCategoryOfHomomorphismStructure ) );
+
+##
+AddDerivationToCAP( InternalHomToTensorProductLeftAdjunctMorphismWithGivenTensorProduct,
+                    "InternalHomToTensorProductLeftAdjunctMorphismWithGivenTensorProduct using InternalHomToTensorProductLeftAdjunctionIsomorphismWithGivenObjects",
+                    [ [ InternalHomOnObjects, 1 ],
+                      [ HomomorphismStructureOnObjects, 2 ],
+                      [ InternalHomToTensorProductLeftAdjunctionIsomorphismWithGivenObjects, 1 ],
+                      [ DistinguishedObjectOfHomomorphismStructure, 1 ],
+                      [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects, 1 ],
+                      [ PreCompose, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 1 ] ],
+        
+  function( cat, b, c, g, a_tensor_b )
+    local H, a, H_a_hom_bc, H_a_tensor_b_c, iso, distinguished_object, g_name, f_name;
+    
+    H := RangeCategoryOfHomomorphismStructure( cat );
+    
+    a := Source( g );
+    
+    H_a_hom_bc := HomomorphismStructureOnObjects( cat,
+                          a,
+                          InternalHomOnObjects( cat,
+                                  b,
+                                  c ) );
+    
+    H_a_tensor_b_c := HomomorphismStructureOnObjects( cat,
+                              a_tensor_b,
+                              c );
+    
+    iso := InternalHomToTensorProductLeftAdjunctionIsomorphismWithGivenObjects( cat,
+                   H_a_hom_bc,
+                   a,
+                   b,
+                   c,
+                   H_a_tensor_b_c );
+    
+    distinguished_object := DistinguishedObjectOfHomomorphismStructure( cat );
+    
+    g_name := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( cat,
+                      distinguished_object,
+                      g,
+                      H_a_hom_bc );
+    
+    ## the name of the adjunct of g:
+    f_name := PreCompose( H,
+                      g_name,
+                      iso );
+    
+    return InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
+                   a_tensor_b,
+                   c,
+                   f_name );
+    
+end : CategoryFilter := IsClosedMonoidalCategory,
+      CategoryGetters := rec( H := RangeCategoryOfHomomorphismStructure ) );
+
 ####################################
 ## Final derived methods
 ####################################
