@@ -342,6 +342,93 @@ CapJitAddLogicFunction( function ( tree )
     
 end );
 
+# use equality of variables to merge if-then-else cases
+CapJitAddLogicFunction( function ( tree )
+  local replaced_fvar, pre_func;
+    
+    if not CAP_JIT_PROOF_ASSISTANT_MODE_ENABLED then
+        
+        return tree;
+        
+    fi;
+    
+    Info( InfoCapJit, 1, "####" );
+    Info( InfoCapJit, 1, "Use equality of variables to merge if-then-else cases." );
+    
+    replaced_fvar := function ( tree, from_fvar, to_fvar )
+      local pre_func;
+        
+        pre_func := function ( tree, additional_arguments )
+            
+            if tree.type = "EXPR_REF_FVAR" and tree.func_id = from_fvar.func_id and tree.name = from_fvar.name then
+                
+                return ShallowCopy( to_fvar );
+                
+            fi;
+            
+            return tree;
+            
+        end;
+        
+        return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+        
+    end;
+    
+    pre_func := function ( tree, additional_arguments )
+      local condition, if_value, else_value, fvar_i, fvar_j, if_value_normalized, else_value_normalized;
+        
+        # detect if-elif-else with second to last condition `i = j`, where `i` and `j` are integers
+        if tree.type = "EXPR_CASE" and tree.branches.length > 1 then
+            
+            Assert( 0, tree.branches.(tree.branches.length).condition.type = "EXPR_TRUE" );
+            
+            condition := tree.branches.(tree.branches.length - 1).condition;
+            
+            if condition.type = "EXPR_EQ" and
+               condition.left.type = "EXPR_REF_FVAR" and IsBound( condition.left.data_type ) and condition.left.data_type.filter = IsInt and
+               condition.right.type = "EXPR_REF_FVAR" and IsBound( condition.right.data_type ) and condition.right.data_type.filter = IsInt then
+                
+                if_value := tree.branches.(tree.branches.length - 1).value;
+                else_value := tree.branches.(tree.branches.length).value;
+                
+                fvar_i := condition.left;
+                fvar_j := condition.right;
+                
+                if_value_normalized := replaced_fvar( if_value, fvar_i, fvar_j );
+                else_value_normalized := replaced_fvar( else_value, fvar_i, fvar_j );
+                
+                if CapJitIsEqualForEnhancedSyntaxTrees( if_value_normalized, else_value_normalized ) then
+                    
+                    # drop (el)if branch
+                    tree := ShallowCopy( tree );
+                    tree.branches := ShallowCopy( tree.branches );
+                    tree.branches.(tree.branches.length - 1) := tree.branches.(tree.branches.length);
+                    Unbind( tree.branches.(tree.branches.length) );
+                    tree.branches.length := tree.branches.length - 1;
+                    
+                    # normalize
+                    if tree.branches.length = 1 then
+                        
+                        Assert( 0, tree.branches.1.condition.type = "EXPR_TRUE" );
+                        
+                        tree := tree.branches.1.value;
+                        
+                    fi;
+                    
+                fi;
+                
+            fi;
+            
+        fi;
+        
+        return tree;
+        
+    end;
+    
+    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+    
+end );
+
 CAP_JIT_PROOF_ASSISTANT_ACTIVE_LEMMA := fail;
 
 InstallMethod( StateLemma,
