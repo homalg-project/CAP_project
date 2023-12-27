@@ -1006,6 +1006,24 @@ InstallMethod( ApplyLogicTemplate,
         Display( ENHANCED_SYNTAX_TREE_CODE( new_tree ) );
         
         Error( "applying the logic template did not change the tree; you can 'return;' to continue anyway" );
+        
+        MakeReadWriteGlobal( "CAP_JIT_LOGIC_TEMPLATES" );
+        
+        CAP_JIT_LOGIC_TEMPLATES := Filtered( CAP_JIT_LOGIC_TEMPLATES, function ( t )
+            
+            if not (IsBound( t.is_fully_enhanced ) and t.is_fully_enhanced = true) then
+                
+                return true;
+                
+            else
+                
+                return t.number_of_applications = infinity;
+                
+            fi;
+            
+        end );
+        
+        MakeReadOnlyGlobal( "CAP_JIT_LOGIC_TEMPLATES" );
         # COVERAGE_IGNORE_BLOCK_END
         
     elif ForAny( CAP_JIT_LOGIC_TEMPLATES, t -> IsBound( t.is_fully_enhanced ) and t.is_fully_enhanced = true and t.number_of_applications <> infinity ) then
