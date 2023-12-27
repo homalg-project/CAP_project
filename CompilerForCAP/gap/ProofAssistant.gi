@@ -277,8 +277,8 @@ CapJitAddLogicFunction( function ( tree )
     Info( InfoCapJit, 1, "Apply local replacements." );
     
     local_templates := List( CAP_JIT_PROOF_ASSISTANT_ACTIVE_LEMMA.local_replacements, x -> rec(
-        variable_names := [ ],
-        variable_filters := [ ],
+        variable_names := x.variable_names,
+        variable_filters := x.variable_filters,
         src_template := Concatenation( x.src_template, " (local replacement)" ),
         src_template_tree := x.src_template_tree,
         dst_template := Concatenation( x.dst_template, " (local replacement)" ),
@@ -435,7 +435,7 @@ InstallMethod( StateLemma,
                [ IsString, IsFunction, IsCapCategory, IsList, IsList ],
                
   function ( description, func, cat, input_filters, preconditions )
-    local tree, arguments_data_types, tmp_tree, src_template_tree, dst_template_tree, text, names, handled_input_filters, parts, local_replacements, filter, positions, plural, numerals, numeral, part, morphisms, name, source, range, to_remove, replacement, function_string, i, j;
+    local tree, arguments_data_types, pre_func_identify_syntax_tree_variables, additional_arguments_func_identify_syntax_tree_variables, additional_variable_names, additional_variable_filters, variable_names, tmp_tree, src_template_tree, dst_template_tree, text, names, handled_input_filters, parts, local_replacements, filter, positions, plural, numerals, numeral, part, morphisms, name, source, range, to_remove, replacement, function_string, i, j;
     
     if not CAP_JIT_PROOF_ASSISTANT_MODE_ENABLED then
         
@@ -489,32 +489,87 @@ InstallMethod( StateLemma,
         ),
     );
     
+    pre_func_identify_syntax_tree_variables := function ( tree, outer_func )
+      local id;
+        
+        if tree.type = "EXPR_REF_FVAR" and tree.func_id = outer_func.id then
+            
+            if IsBound( tree.data_type ) then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Error( "using CapJitTypedExpression with logic template variables is currently not supported, use variable_filters instead" );
+                
+            fi;
+            
+            if tree.name in outer_func.nams then
+                
+                return tree;
+                
+            fi;
+            
+            id := SafeUniquePosition( additional_variable_names, tree.name );
+            
+            return rec(
+                type := "SYNTAX_TREE_VARIABLE",
+                id := id,
+            );
+            
+        fi;
+        
+        return tree;
+        
+    end;
+    
+    additional_arguments_func_identify_syntax_tree_variables := function ( tree, key, outer_func )
+        
+        return outer_func;
+        
+    end;
+    
     for replacement in preconditions do
+        
+        if IsBound( replacement.variable_names ) then
+            
+            additional_variable_names := replacement.variable_names;
+            additional_variable_filters := replacement.variable_filters;
+            
+        else
+            
+            additional_variable_names := [ ];
+            additional_variable_filters := [ ];
+            
+        fi;
+        
+        Assert( 0, Length( additional_variable_names ) = Length( additional_variable_filters ) );
+        
+        variable_names := Concatenation( tree.nams{[ 1 .. tree.narg ]}, additional_variable_names );
         
         # src_template
         Assert( 0, input_filters[1] = "category" );
         
-        tmp_tree := ENHANCED_SYNTAX_TREE( EvalStringStrict( Concatenation( "{ ", JoinStringsWithSeparator( tree.nams{[ 1 .. tree.narg ]}, ", " ), " } -> ", replacement.src_template ) ) : given_arguments := [ cat ] );
+        tmp_tree := ENHANCED_SYNTAX_TREE( EvalStringStrict( Concatenation( "{ ", JoinStringsWithSeparator( variable_names, ", " ), " } -> ", replacement.src_template ) ) : given_arguments := [ cat ] );
         
         tmp_tree := CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( tmp_tree, tree.id, tmp_tree.nams );
         
         Assert( 0, tmp_tree.bindings.names = [ "RETURN_VALUE" ] );
         
-        src_template_tree := CapJitValueOfBinding( tmp_tree.bindings, "RETURN_VALUE" );
+        src_template_tree := CapJitIterateOverTree( CapJitValueOfBinding( tmp_tree.bindings, "RETURN_VALUE" ), pre_func_identify_syntax_tree_variables, CapJitResultFuncCombineChildren, additional_arguments_func_identify_syntax_tree_variables, tree );
         
         # dst_template
         Assert( 0, input_filters[1] = "category" );
         
-        tmp_tree := ENHANCED_SYNTAX_TREE( EvalStringStrict( Concatenation( "{ ", JoinStringsWithSeparator( tree.nams{[ 1 .. tree.narg ]}, ", " ), " } -> ", replacement.dst_template ) ) : given_arguments := [ cat ] );
+        tmp_tree := ENHANCED_SYNTAX_TREE( EvalStringStrict( Concatenation( "{ ", JoinStringsWithSeparator( variable_names, ", " ), " } -> ", replacement.dst_template ) ) : given_arguments := [ cat ] );
         
         tmp_tree := CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( tmp_tree, tree.id, tmp_tree.nams );
         
         Assert( 0, tmp_tree.bindings.names = [ "RETURN_VALUE" ] );
         
-        dst_template_tree := CapJitValueOfBinding( tmp_tree.bindings, "RETURN_VALUE" );
+        dst_template_tree := CapJitIterateOverTree( CapJitValueOfBinding( tmp_tree.bindings, "RETURN_VALUE" ), pre_func_identify_syntax_tree_variables, CapJitResultFuncCombineChildren, additional_arguments_func_identify_syntax_tree_variables, tree );
         
         #
         Add( CAP_JIT_PROOF_ASSISTANT_ACTIVE_LEMMA.local_replacements, rec(
+            variable_names := additional_variable_names,
+            variable_filters := additional_variable_filters,
             src_template := replacement.src_template,
             src_template_tree := src_template_tree,
             dst_template := replacement.dst_template,
@@ -600,7 +655,15 @@ InstallMethod( StateLemma,
                 part := Concatenation( numeral, " object", plural, " ", ConcatenationOfStringsAsEnumerationWithAnd( names{positions} ) );
                 
                 part := ReplacedString( part, "a object ", "an object " );
-            
+                
+            elif filter = "list_of_objects" then
+                
+                part := Concatenation( numeral, " list", plural, " of objects ", ConcatenationOfStringsAsEnumerationWithAnd( names{positions} ) );
+                
+            elif filter = "list_of_morphisms" then
+                
+                part := Concatenation( numeral, " list", plural, " of morphisms ", ConcatenationOfStringsAsEnumerationWithAnd( names{positions} ) );
+                
             elif filter = "morphism" or filter = "morphism_in_range_category_of_homomorphism_structure" then
                 
                 morphisms := [ ];
@@ -1652,6 +1715,168 @@ BindGlobal( "CAP_JIT_INTERNAL_PROOF_ASSISTANT_LEMMATA", rec(
             ),
         ],
     ),
+    DirectSum := rec(
+        lemmata := [
+            rec(
+                description := "direct sum objects are objects",
+                input_types := [ "category", "list_of_objects" ],
+                func := function ( cat, D )
+                    
+                    return IsWellDefinedForObjects( cat, DirectSum( cat, D ) );
+                    
+                end,
+                preconditions := [
+                ],
+            ),
+        ],
+    ),
+    ProjectionInFactorOfDirectSum := rec(
+        lemmata := [
+            rec(
+                description := "projections in factors of direct sums define morphisms",
+                input_types := [ "category", "list_of_objects", "integer" ],
+                func := function ( cat, D, i )
+                    
+                    return IsWellDefinedForMorphismsWithGivenSourceAndRange( cat, DirectSum( cat, D ), ProjectionInFactorOfDirectSum( cat, D, i ), D[i] );
+                    
+                end,
+                preconditions := [
+                    rec( src_template := "1 <= i", dst_template := "true" ),
+                    rec( src_template := "i <= Length( D )", dst_template := "true" ),
+                ],
+            ),
+            # for more, see InjectionOfCofactorOfDirectSum
+        ],
+    ),
+    InjectionOfCofactorOfDirectSum := rec(
+        lemmata := [
+            rec(
+                description := "injections in cofactors of direct sums define morphisms",
+                input_types := [ "category", "list_of_objects", "integer" ],
+                func := function ( cat, D, i )
+                    
+                    return IsWellDefinedForMorphismsWithGivenSourceAndRange( cat, D[i], InjectionOfCofactorOfDirectSum( cat, D, i ), DirectSum( cat, D ) );
+                    
+                end,
+                preconditions := [
+                    rec( src_template := "1 <= i", dst_template := "true" ),
+                    rec( src_template := "i <= Length( D )", dst_template := "true" ),
+                ],
+            ),
+            rec(
+                description := "the identity on a direct sum can be written as a sum of projections followed by injections",
+                input_types := [ "category", "list_of_objects" ],
+                func := function ( cat, D )
+                    
+                    return IsCongruentForMorphisms( cat,
+                        SumOfMorphisms( cat,
+                            DirectSum( cat, D ),
+                            List( [ 1 .. Length( D ) ], i -> PreCompose( cat, ProjectionInFactorOfDirectSum( cat, D, i ), InjectionOfCofactorOfDirectSum( cat, D, i ) ) ),
+                            DirectSum( cat, D )
+                        ),
+                        IdentityMorphism( cat, DirectSum( cat, D ) )
+                    );
+                    
+                end,
+                preconditions := [
+                ],
+            ),
+            rec(
+                description := "injections in cofactors of direct sums followed by projections are zeros or identities",
+                input_types := [ "category", "list_of_objects", "integer", "integer" ],
+                func := function ( cat, D, i, j )
+                    
+                    return IsCongruentForMorphisms( cat,
+                        PreCompose( cat, InjectionOfCofactorOfDirectSum( cat, D, i ), ProjectionInFactorOfDirectSum( cat, D, j ) ),
+                        CAP_JIT_INTERNAL_EXPR_CASE( i = j, IdentityMorphism( cat, D[i] ), true, ZeroMorphism( cat, D[i], D[j] ) )
+                    );
+                    
+                end,
+                preconditions := [
+                    rec( src_template := "1 <= i", dst_template := "true" ),
+                    rec( src_template := "i <= Length( D )", dst_template := "true" ),
+                    rec( src_template := "1 <= j", dst_template := "true" ),
+                    rec( src_template := "j <= Length( D )", dst_template := "true" ),
+                ],
+            ),
+        ],
+    ),
+    UniversalMorphismIntoDirectSum := rec(
+        lemmata := [
+            rec(
+                description := "universal morphisms into direct sums define morphisms",
+                input_types := [ "category", "list_of_objects", "object", "list_of_morphisms" ],
+                func := function ( cat, D, T, tau )
+                    
+                    return IsWellDefinedForMorphismsWithGivenSourceAndRange( cat, T, UniversalMorphismIntoDirectSum( cat, D, T, tau ), DirectSum( cat, D ) );
+                    
+                end,
+                preconditions := [
+                    rec( src_template := "Length( tau )", dst_template := "Length( D )" ),
+                    rec( variable_names := [ "i" ], variable_filters := [ IsInt ] , src_template := "Source( tau[i] )", dst_template := "T" ),
+                    rec( variable_names := [ "i" ], variable_filters := [ IsInt ] , src_template := "Range( tau[i] )", dst_template := "D[i]" ),
+                ],
+            ),
+            rec(
+                description := "composing a universal morphism into a direct sum with a projection gives a component",
+                input_types := [ "category", "list_of_objects", "object", "list_of_morphisms" ],
+                func := function ( cat, D, T, tau )
+                    
+                    return ForAll( [ 1 .. Length( D ) ], i ->
+                        IsCongruentForMorphisms( cat,
+                            PreCompose( cat, UniversalMorphismIntoDirectSum( cat, D, T, tau ), ProjectionInFactorOfDirectSum( cat, D, i ) ),
+                            tau[i]
+                        )
+                    );
+                    
+                end,
+                preconditions := [
+                    rec( src_template := "Length( tau )", dst_template := "Length( D )" ),
+                    rec( variable_names := [ "i" ], variable_filters := [ IsInt ] , src_template := "Source( tau[i] )", dst_template := "T" ),
+                    rec( variable_names := [ "i" ], variable_filters := [ IsInt ] , src_template := "Range( tau[i] )", dst_template := "D[i]" ),
+                ],
+            ),
+            # uniqueness follows from the decompositon of the identity on a direct sum as a sum of projections followed by injections
+        ],
+    ),
+    UniversalMorphismFromDirectSum := rec(
+        lemmata := [
+            rec(
+                description := "universal morphisms from direct sums define morphisms",
+                input_types := [ "category", "list_of_objects", "object", "list_of_morphisms" ],
+                func := function ( cat, D, T, tau )
+                    
+                    return IsWellDefinedForMorphismsWithGivenSourceAndRange( cat, DirectSum( cat, D ), UniversalMorphismFromDirectSum( cat, D, T, tau ), T );
+                    
+                end,
+                preconditions := [
+                    rec( src_template := "Length( tau )", dst_template := "Length( D )" ),
+                    rec( variable_names := [ "i" ], variable_filters := [ IsInt ] , src_template := "Source( tau[i] )", dst_template := "D[i]" ),
+                    rec( variable_names := [ "i" ], variable_filters := [ IsInt ] , src_template := "Range( tau[i] )", dst_template := "T" ),
+                ],
+            ),
+            rec(
+                description := "composing an injection of a cofactor of a direct sum with a universal morphism from a direct sum gives a component",
+                input_types := [ "category", "list_of_objects", "object", "list_of_morphisms" ],
+                func := function ( cat, D, T, tau )
+                    
+                    return ForAll( [ 1 .. Length( D ) ], i ->
+                        IsCongruentForMorphisms( cat,
+                            PreCompose( cat, InjectionOfCofactorOfDirectSum( cat, D, i ), UniversalMorphismFromDirectSum( cat, D, T, tau ) ),
+                            tau[i]
+                        )
+                    );
+                    
+                end,
+                preconditions := [
+                    rec( src_template := "Length( tau )", dst_template := "Length( D )" ),
+                    rec( variable_names := [ "i" ], variable_filters := [ IsInt ] , src_template := "Source( tau[i] )", dst_template := "D[i]" ),
+                    rec( variable_names := [ "i" ], variable_filters := [ IsInt ] , src_template := "Range( tau[i] )", dst_template := "T" ),
+                ],
+            ),
+            # uniqueness follows from the decompositon of the identity on a direct sum as a sum of projections followed by injections
+        ],
+    ),
     DistinguishedObjectOfHomomorphismStructure := rec(
         lemmata := [
             rec(
@@ -1904,6 +2129,10 @@ BindGlobal( "CAP_JIT_INTERNAL_PROOF_ASSISTANT_PROPOSITIONS", rec(
         description := "has a zero object",
         operations := [ "ZeroObject", "UniversalMorphismIntoZeroObject", "UniversalMorphismFromZeroObject" ],
     ),
+    has_direct_sums := rec(
+        description := "has direct sums",
+        operations := [ "DirectSum", "ProjectionInFactorOfDirectSum", "InjectionOfCofactorOfDirectSum", "UniversalMorphismIntoDirectSum", "UniversalMorphismFromDirectSum" ],
+    ),
     has_kernels := rec(
         description := "has kernels",
         operations := [ "KernelObject", "KernelEmbedding", "KernelLift" ],
@@ -1915,12 +2144,37 @@ BindGlobal( "CAP_JIT_INTERNAL_PROOF_ASSISTANT_PROPOSITIONS", rec(
 ) );
 
 BindGlobal( "CAP_JIT_INTERNAL_PROOF_ASSISTANT_ENHANCE_PROPOSITIONS", function ( propositions )
-  local cat, obj, mor, prop, specification, test_arguments, id, operation_name, lemma;
+  local cat, obj, mor, old_CAP_JIT_INTERNAL_EXPR_CASE, prop, specification, test_arguments, id, operation_name, lemma;
     
     # use a terminal category for plausibility tests
     cat := TerminalCategoryWithSingleObject( );
     obj := UniqueObject( cat );
     mor := UniqueMorphism( cat );
+    
+    # CAP_JIT_INTERNAL_EXPR_CASE has no implementation because it should not be called by regular code
+    old_CAP_JIT_INTERNAL_EXPR_CASE := CAP_JIT_INTERNAL_EXPR_CASE;
+    MakeReadWriteGlobal( "CAP_JIT_INTERNAL_EXPR_CASE" );
+    CAP_JIT_INTERNAL_EXPR_CASE := function ( args... )
+      local i;
+        
+        Assert( 0, not IsEmpty( args ) );
+        Assert( 0, IsEvenInt( Length( args ) ) );
+        Assert( 0, args[Length( args ) - 1] );
+        
+        for i in [ 1, 3 .. Length( args ) - 1 ] do
+            
+            if args[i] then
+                
+                return args[i + 1];
+                
+            fi;
+            
+        od;
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "we should never get here" );
+        
+    end;
     
     for id in RecNames( propositions ) do
         
@@ -1967,7 +2221,15 @@ BindGlobal( "CAP_JIT_INTERNAL_PROOF_ASSISTANT_ENHANCE_PROPOSITIONS", function ( 
                             
                             return mor;
                             
-                        elif type = "element_of_commutative_ring_of_linear_structure" then
+                        elif type = "list_of_objects" then
+                            
+                            return [ obj, obj, obj ];
+                            
+                        elif type = "list_of_morphisms" then
+                            
+                            return [ mor, mor, mor ];
+                            
+                        elif type = "integer" or type = "element_of_commutative_ring_of_linear_structure" then
                             
                             return 2;
                             
@@ -1991,6 +2253,9 @@ BindGlobal( "CAP_JIT_INTERNAL_PROOF_ASSISTANT_ENHANCE_PROPOSITIONS", function ( 
         od;
         
     od;
+    
+    CAP_JIT_INTERNAL_EXPR_CASE := old_CAP_JIT_INTERNAL_EXPR_CASE;
+    MakeReadOnlyGlobal( "CAP_JIT_INTERNAL_EXPR_CASE" );
     
 end );
 
