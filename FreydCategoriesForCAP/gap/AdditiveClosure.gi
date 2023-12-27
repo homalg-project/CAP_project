@@ -899,9 +899,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     
     ##
     AddDirectSum( category,
-      function( cat, list )
+      function( cat, diagram )
         
-        return AdditiveClosureObject( cat, Concatenation( List( list, ObjectList ) ) );
+        return AdditiveClosureObject( cat, Concatenation( List( [ 1 .. Length( diagram ) ], i -> ObjectList( diagram[i] ) ) ) );
         
     end );
     
