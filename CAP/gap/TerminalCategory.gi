@@ -88,9 +88,6 @@ InstallGlobalFunction( CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY,
     
     T := CategoryConstructor( completed_record );
     
-    SetRangeCategoryOfHomomorphismStructure( T, T );
-    SetIsEquippedWithHomomorphismStructure( T, true );
-    
     ##
     AddIsCongruentForMorphisms( T,
       function( T, morphism1, morphism2 )
@@ -193,7 +190,8 @@ InstallGlobalFunction( TerminalCategoryWithSingleObject,
                  object_constructor := object_constructor,
                  object_datum := object_datum,
                  morphism_constructor := morphism_constructor,
-                 morphism_datum := morphism_datum
+                 morphism_datum := morphism_datum,
+                 range_category_of_homomorphism_structure := "self",
                  ) );
     
     ##
@@ -274,7 +272,8 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
     local name, category_filter, category_object_filter, category_morphism_filter,
           create_func_object, create_func_morphism,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
-          properties, excluded_properties, excluded_skeletal_properties, excluded_strict_properties, T;
+          properties, excluded_properties, excluded_skeletal_properties, excluded_strict_properties,
+          range_cat, T;
           
     name := "TerminalCategoryWithMultipleObjects( )";
     
@@ -350,6 +349,8 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
     
     excluded_properties := Concatenation( excluded_strict_properties, excluded_skeletal_properties );
     
+    range_cat := TerminalCategoryWithSingleObject( );
+    
     T := CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY( rec(
                  name := name,
                  supports_empty_limits := true,
@@ -363,7 +364,8 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
                  object_constructor := object_constructor,
                  object_datum := object_datum,
                  morphism_constructor := morphism_constructor,
-                 morphism_datum := morphism_datum
+                 morphism_datum := morphism_datum,
+                 range_category_of_homomorphism_structure := range_cat,
                  ) );
     
     ##
@@ -412,6 +414,41 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
       function( T, object_1, object_2 )
         
         return MorphismConstructor( T, object_1, "SomeIsomorphismBetweenObjects", object_2 );
+        
+    end );
+    
+    AddDistinguishedObjectOfHomomorphismStructure( T,
+      function( T )
+        
+        return UniqueObject( RangeCategoryOfHomomorphismStructure( T ) );
+        
+    end );
+    
+    AddHomomorphismStructureOnObjects( T,
+      function( T, source, target )
+        
+        return UniqueObject( RangeCategoryOfHomomorphismStructure( T ) );
+        
+    end );
+    
+    AddHomomorphismStructureOnMorphismsWithGivenObjects( T,
+      function( T, source, morphism_1, morphism_2, target )
+        
+        return UniqueMorphism( RangeCategoryOfHomomorphismStructure( T ) );
+        
+    end );
+    
+    AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( T,
+      function( T, distinguished_object, morphism, target )
+        
+        return UniqueMorphism( RangeCategoryOfHomomorphismStructure( T ) );
+        
+    end );
+    
+    AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( T,
+      function( T, source, target, iota  )
+        
+        return MorphismConstructor( T, source, "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism", target );
         
     end );
     
