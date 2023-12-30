@@ -1,5 +1,9 @@
 gap> START_TEST( "proof_MonoidAsCategory_has_associative_composition" );
 
+# avoid wrapping the output
+gap> old_screen_width := SizeScreen( )[1];;
+gap> SizeScreen( [ 4096 ] );;
+
 #
 gap> LoadPackage( "FreydCategoriesForCAP", false );
 true
@@ -42,8 +46,7 @@ gap> StateLemma(
 >     ]
 > );
 In RingAsCategory( Dummy ring 1 ), composition is associative:
-For four objects A, B, C, and D and three morphisms m : A → B, n : B → C, \
-and l : C → D we have
+For four objects A, B, C, and D and three morphisms m : A → B, n : B → C, and l : C → D we have
 function ( cat, A, B, C, D, m, n, l )
     local left, right;
     left := PreCompose( PreCompose( m, n ), l );
@@ -55,10 +58,7 @@ end
 gap> PrintLemma( );
 We have to show
 function ( cat_1, A_1, B_1, C_1, D_1, m_1, n_1, l_1 )
-    return UnderlyingRingElement( m_1 ) * UnderlyingRingElement( n_1 ) 
-        * UnderlyingRingElement( l_1 ) 
-      = UnderlyingRingElement( m_1 ) * (UnderlyingRingElement( n_1 ) 
-          * UnderlyingRingElement( l_1 ));
+    return UnderlyingRingElement( m_1 ) * UnderlyingRingElement( n_1 ) * UnderlyingRingElement( l_1 ) = UnderlyingRingElement( m_1 ) * (UnderlyingRingElement( n_1 ) * UnderlyingRingElement( l_1 ));
 end
 
 #
@@ -77,6 +77,9 @@ With this, the claim follows. ∎
 
 #
 gap> CapJitDisableProofAssistantMode( );
+
+#
+gap> SizeScreen( [ old_screen_width ] );;
 
 #
 gap> STOP_TEST( "proof_MonoidAsCategory_has_associative_composition" );

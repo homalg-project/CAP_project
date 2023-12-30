@@ -1,5 +1,9 @@
 gap> START_TEST( "AdditiveClosure_has_a_zero_object" );
 
+# avoid wrapping the output
+gap> old_screen_width := SizeScreen( )[1];;
+gap> SizeScreen( [ 4096 ] );;
+
 #
 gap> LoadPackage( "FreydCategoriesForCAP", false );
 true
@@ -42,8 +46,7 @@ gap> StateNextLemma( );
 
 
 Lemma 1:
-In the additive closure of a preadditive category, the zero object is an objec\
-t:
+In the additive closure of a preadditive category, the zero object is an object:
 We have
 function ( cat )
     return IsWellDefinedForObjects( cat, ZeroObject( cat ) );
@@ -58,12 +61,10 @@ gap> StateNextLemma( );
 
 
 Lemma 2:
-In the additive closure of a preadditive category, the universal morphism into\
- the zero objects defines a morphism:
+In the additive closure of a preadditive category, the universal morphism into the zero objects defines a morphism:
 For an object A we have
 function ( cat, A )
-    return IsWellDefinedForMorphismsWithGivenSourceAndRange( cat, A, 
-       UniversalMorphismIntoZeroObject( cat, A ), ZeroObject( cat ) );
+    return IsWellDefinedForMorphismsWithGivenSourceAndRange( cat, A, UniversalMorphismIntoZeroObject( cat, A ), ZeroObject( cat ) );
 end
 gap> AttestValidInputs( );
 We let CompilerForCAP assume that all inputs are valid.
@@ -75,13 +76,10 @@ gap> StateNextLemma( );
 
 
 Lemma 3:
-In the additive closure of a preadditive category, the universal morphism into\
- the zero object is unique:
+In the additive closure of a preadditive category, the universal morphism into the zero object is unique:
 For an object A and a morphism u : A → ZeroObject( cat ) we have
 function ( cat, A, u )
-    return 
-     IsCongruentForMorphisms( cat, UniversalMorphismIntoZeroObject( cat, A ), 
-       u );
+    return IsCongruentForMorphisms( cat, UniversalMorphismIntoZeroObject( cat, A ), u );
 end
 This is immediate from the construction.
 
@@ -90,12 +88,10 @@ gap> StateNextLemma( );
 
 
 Lemma 4:
-In the additive closure of a preadditive category, the universal morphism from\
- the zero objects defines a morphism:
+In the additive closure of a preadditive category, the universal morphism from the zero objects defines a morphism:
 For an object B we have
 function ( cat, B )
-    return IsWellDefinedForMorphismsWithGivenSourceAndRange( cat, 
-       ZeroObject( cat ), UniversalMorphismFromZeroObject( cat, B ), B );
+    return IsWellDefinedForMorphismsWithGivenSourceAndRange( cat, ZeroObject( cat ), UniversalMorphismFromZeroObject( cat, B ), B );
 end
 gap> AttestValidInputs( );
 We let CompilerForCAP assume that all inputs are valid.
@@ -107,13 +103,10 @@ gap> StateNextLemma( );
 
 
 Lemma 5:
-In the additive closure of a preadditive category, the universal morphism from\
- the zero object is unique:
+In the additive closure of a preadditive category, the universal morphism from the zero object is unique:
 For an object B and a morphism u : ZeroObject( cat ) → B we have
 function ( cat, B, u )
-    return 
-     IsCongruentForMorphisms( cat, UniversalMorphismFromZeroObject( cat, B ), 
-       u );
+    return IsCongruentForMorphisms( cat, UniversalMorphismFromZeroObject( cat, B ), u );
 end
 This is immediate from the construction.
 gap> AssertProposition( );
@@ -124,6 +117,9 @@ The additive closure of a preadditive category has a zero object. ∎
 
 #
 gap> CapJitDisableProofAssistantMode( );
+
+#
+gap> SizeScreen( [ old_screen_width ] );;
 
 #
 gap> STOP_TEST( "AdditiveClosure_has_a_zero_object" );

@@ -1,5 +1,9 @@
 gap> START_TEST( "proof_CategoryOfRows_has_kernels" );
 
+# avoid wrapping the output
+gap> old_screen_width := SizeScreen( )[1];;
+gap> SizeScreen( [ 4096 ] );;
+
 #
 gap> LoadPackage( "FreydCategoriesForCAP", false );
 true
@@ -44,13 +48,9 @@ end
 gap> PrintLemma( );
 We have to show
 function ( cat_1, A_1, B_1, alpha_1 )
-    if
-     not IsInt( RankOfObject( A_1 ) 
-             - RowRankOfMatrix( UnderlyingMatrix( alpha_1 ) ) ) then
+    if not IsInt( RankOfObject( A_1 ) - RowRankOfMatrix( UnderlyingMatrix( alpha_1 ) ) ) then
         return false;
-    elif
-     not RankOfObject( A_1 ) - RowRankOfMatrix( UnderlyingMatrix( alpha_1 ) ) 
-           >= 0 then
+    elif not RankOfObject( A_1 ) - RowRankOfMatrix( UnderlyingMatrix( alpha_1 ) ) >= 0 then
         return false;
     else
         return true;
@@ -62,9 +62,7 @@ We let CompilerForCAP assume that all inputs are valid.
 gap> PrintLemma( );
 We have to show
 function ( cat_1, A_1, B_1, alpha_1 )
-    if
-     not RankOfObject( A_1 ) - RowRankOfMatrix( UnderlyingMatrix( alpha_1 ) ) 
-           >= 0 then
+    if not RankOfObject( A_1 ) - RowRankOfMatrix( UnderlyingMatrix( alpha_1 ) ) >= 0 then
         return false;
     else
         return true;
@@ -91,32 +89,21 @@ Lemma 2:
 In a category of rows over a field, kernel embeddings define morphisms:
 For two objects A and B and a morphism alpha : A → B we have
 function ( cat, A, B, alpha )
-    return IsWellDefinedForMorphismsWithGivenSourceAndRange( cat, 
-       KernelObject( cat, alpha ), KernelEmbedding( cat, alpha ), A );
+    return IsWellDefinedForMorphismsWithGivenSourceAndRange( cat, KernelObject( cat, alpha ), KernelEmbedding( cat, alpha ), A );
 end
 gap> PrintLemma( );
 We have to show
 function ( cat_1, A_1, B_1, alpha_1 )
     return CAP_JIT_EXPR_CASE_WRAPPER( function (  )
-                if
-                 not IsHomalgMatrix( 
-                        SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ) then
+                if not IsHomalgMatrix( SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ) then
                     return false;
-                elif
-                 
-                    not
-                       
-                       NumberColumns( SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) 
-                            ) ) = RankOfObject( A_1 ) then
+                elif not NumberColumns( SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ) = RankOfObject( A_1 ) then
                     return false;
                 else
                     return true;
                 fi;
                 return;
-            end )(  ) 
-      and NumberRows( SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ) 
-        = RankOfObject( A_1 ) - RowRankOfMatrix( UnderlyingMatrix( alpha_1 ) )
-     ;
+            end )(  ) and NumberRows( SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ) = RankOfObject( A_1 ) - RowRankOfMatrix( UnderlyingMatrix( alpha_1 ) );
 end
 gap> AttestValidInputs( );
 We let CompilerForCAP assume that all inputs are valid.
@@ -171,9 +158,7 @@ Lemma 3:
 In a category of rows over a field, the kernel embedding composes to zero:
 For two objects A and B and a morphism alpha : A → B we have
 function ( cat, A, B, alpha )
-    return 
-     IsZeroForMorphisms( cat, PreCompose( cat, KernelEmbedding( cat, alpha ), 
-         alpha ) );
+    return IsZeroForMorphisms( cat, PreCompose( cat, KernelEmbedding( cat, alpha ), alpha ) );
 end
 
 #
@@ -195,50 +180,27 @@ gap> StateNextLemma( );
 
 Lemma 4:
 In a category of rows over a field, kernel lifts define morphisms:
-For three objects A, B, and T and two morphisms alpha : A → B and tau : T → A\
-such that
+For three objects A, B, and T and two morphisms alpha : A → B and tau : T → A such that
 • IsZeroForMorphisms( cat, PreCompose( cat, tau, alpha ) ),
 we have
 function ( cat, A, B, T, alpha, tau )
-    return IsWellDefinedForMorphismsWithGivenSourceAndRange( cat, T, 
-       KernelLift( cat, alpha, T, tau ), KernelObject( cat, alpha ) );
+    return IsWellDefinedForMorphismsWithGivenSourceAndRange( cat, T, KernelLift( cat, alpha, T, tau ), KernelObject( cat, alpha ) );
 end
 gap> PrintLemma( );
 We have to show
 function ( cat_1, A_1, B_1, T_1, alpha_1, tau_1 )
     return CAP_JIT_EXPR_CASE_WRAPPER( function (  )
-                if
-                 not IsHomalgMatrix( 
-                        UniqueRightDivide( UnderlyingMatrix( tau_1 ), 
-                          SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ) )
-                    then
+                if not IsHomalgMatrix( UniqueRightDivide( UnderlyingMatrix( tau_1 ), SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ) ) then
                     return false;
-                elif
-                 
-                    not
-                       
-                       NumberRows( UniqueRightDivide( UnderlyingMatrix( tau_1 ), 
-                            SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ) ) 
-                       = RankOfObject( T_1 ) then
+                elif not NumberRows( UniqueRightDivide( UnderlyingMatrix( tau_1 ), SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ) ) = RankOfObject( T_1 ) then
                     return false;
-                elif
-                 
-                    not
-                       
-                       NumberColumns( 
-                          UniqueRightDivide( UnderlyingMatrix( tau_1 ), 
-                            SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ) ) 
-                       = NumberRows( 
-                          SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ) then
+                elif not NumberColumns( UniqueRightDivide( UnderlyingMatrix( tau_1 ), SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ) ) = NumberRows( SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ) then
                     return false;
                 else
                     return true;
                 fi;
                 return;
-            end )(  ) 
-      and NumberRows( SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ) 
-        = RankOfObject( A_1 ) - RowRankOfMatrix( UnderlyingMatrix( alpha_1 ) )
-     ;
+            end )(  ) and NumberRows( SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ) = RankOfObject( A_1 ) - RowRankOfMatrix( UnderlyingMatrix( alpha_1 ) );
 end
 gap> AttestValidInputs( );
 We let CompilerForCAP assume that all inputs are valid.
@@ -299,17 +261,12 @@ gap> StateNextLemma( );
 
 
 Lemma 5:
-In a category of rows over a field, taking the kernel lift is an injective ope\
-ration:
-For three objects A, B, and T and two morphisms alpha : A → B and tau : T → A\
-such that
+In a category of rows over a field, taking the kernel lift is an injective operation:
+For three objects A, B, and T and two morphisms alpha : A → B and tau : T → A such that
 • IsZeroForMorphisms( cat, PreCompose( cat, tau, alpha ) ),
 we have
 function ( cat, A, B, T, alpha, tau )
-    return 
-     IsCongruentForMorphisms( cat, 
-       PreCompose( cat, KernelLift( cat, alpha, T, tau ), 
-         KernelEmbedding( cat, alpha ) ), tau );
+    return IsCongruentForMorphisms( cat, PreCompose( cat, KernelLift( cat, alpha, T, tau ), KernelEmbedding( cat, alpha ) ), tau );
 end
 
 #
@@ -330,15 +287,10 @@ gap> StateNextLemma( );
 
 
 Lemma 6:
-In a category of rows over a field, taking the kernel lift is a surjective ope\
-ration:
-For three objects A, B, and T and two morphisms alpha : A → B and u : T → \
-KernelObject( cat, alpha ) we have
+In a category of rows over a field, taking the kernel lift is a surjective operation:
+For three objects A, B, and T and two morphisms alpha : A → B and u : T → KernelObject( cat, alpha ) we have
 function ( cat, A, B, T, alpha, u )
-    return 
-     IsCongruentForMorphisms( cat, 
-       KernelLift( cat, alpha, T, 
-         PreCompose( cat, u, KernelEmbedding( cat, alpha ) ) ), u );
+    return IsCongruentForMorphisms( cat, KernelLift( cat, alpha, T, PreCompose( cat, u, KernelEmbedding( cat, alpha ) ) ), u );
 end
 
 #
@@ -369,6 +321,9 @@ A category of rows over a field has kernels. ∎
 
 #
 gap> CapJitDisableProofAssistantMode( );
+
+#
+gap> SizeScreen( [ old_screen_width ] );;
 
 #
 gap> STOP_TEST( "proof_CategoryOfRows_has_kernels" );

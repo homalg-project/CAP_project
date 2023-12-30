@@ -1,5 +1,9 @@
 gap> START_TEST( "AdditiveClosure_has_direct_sums" );
 
+# avoid wrapping the output
+gap> old_screen_width := SizeScreen( )[1];;
+gap> SizeScreen( [ 4096 ] );;
+
 #
 gap> LoadPackage( "FreydCategoriesForCAP", false );
 true
@@ -49,17 +53,14 @@ end
 gap> PrintLemma( );
 We have to show
 function ( cat_1, D_1 )
-    if
-     not IsList( Concatenation( List( [ 1 .. Length( D_1 ) ], function ( i_2 )
+    if not IsList( Concatenation( List( [ 1 .. Length( D_1 ) ], function ( i_2 )
                      return ObjectList( D_1[i_2] );
                  end ) ) ) then
         return false;
-    elif
-     not ForAll( Concatenation( List( [ 1 .. Length( D_1 ) ], function ( i_2 )
+    elif not ForAll( Concatenation( List( [ 1 .. Length( D_1 ) ], function ( i_2 )
                      return ObjectList( D_1[i_2] );
                  end ) ), function ( obj_2 )
-                 return IsWellDefinedForObjects( UnderlyingCategory( cat_1 ), 
-                    obj_2 );
+                 return IsWellDefinedForObjects( UnderlyingCategory( cat_1 ), obj_2 );
              end ) then
         return false;
     else
@@ -77,324 +78,134 @@ gap> StateNextLemma( );
 
 
 Lemma 2:
-In AdditiveClosure( a preadditive category ), projections in factors of direct\
- sums define morphisms:
+In AdditiveClosure( a preadditive category ), projections in factors of direct sums define morphisms:
 For a list of objects D and an integer i such that
 • 1 <= i,
 • i <= Length( D ),
 we have
 function ( cat, D, i )
-    return IsWellDefinedForMorphismsWithGivenSourceAndRange( cat, 
-       DirectSum( cat, D ), ProjectionInFactorOfDirectSum( cat, D, i ), D[i] )
-     ;
+    return IsWellDefinedForMorphismsWithGivenSourceAndRange( cat, DirectSum( cat, D ), ProjectionInFactorOfDirectSum( cat, D, i ), D[i] );
 end
 gap> PrintLemma( );
 We have to show
 function ( cat_1, D_1, i_1 )
-    if
-     not (IsList( UnionOfRowsListList( Length( ObjectList( D_1[i_1] ) ), 
-                List( [ 1 .. Length( D_1 ) ], function ( i_2 )
+    if not (IsList( UnionOfRowsListList( Length( ObjectList( D_1[i_1] ) ), List( [ 1 .. Length( D_1 ) ], function ( i_2 )
                        if i_2 = i_1 then
-                           return 
-                            List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], 
-                              function ( i_3 )
-                                   return 
-                                    List( 
-                                      [ 1 .. Length( ObjectList( D_1[i_1] ) ) 
-                                        ], function ( j_4 )
+                           return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_3 )
+                                   return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( j_4 )
                                            if i_3 = j_4 then
-                                               return 
-                                                IdentityMorphism( 
-                                                  UnderlyingCategory( cat_1 )
-                                                   , 
-                                                  ObjectList( D_1[i_1] )[i_3] 
-                                                  );
+                                               return IdentityMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_3] );
                                            else
-                                               return 
-                                                ZeroMorphism( 
-                                                  UnderlyingCategory( cat_1 )
-                                                   , 
-                                                  ObjectList( D_1[i_1] )[i_3]
-                                                   , 
-                                                  ObjectList( D_1[i_1] )[j_4] 
-                                                  );
+                                               return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_3], ObjectList( D_1[i_1] )[j_4] );
                                            fi;
                                            return;
                                        end );
                                end );
                        else
-                           return 
-                            List( [ 1 .. Length( ObjectList( D_1[i_2] ) ) ], 
-                              function ( i_3 )
-                                   return 
-                                    List( 
-                                      [ 1 .. Length( ObjectList( D_1[i_1] ) ) 
-                                        ], function ( j_4 )
-                                           return 
-                                            ZeroMorphism( 
-                                              UnderlyingCategory( cat_1 ), 
-                                              ObjectList( D_1[i_2] )[i_3], 
-                                              ObjectList( D_1[i_1] )[j_4] );
+                           return List( [ 1 .. Length( ObjectList( D_1[i_2] ) ) ], function ( i_3 )
+                                   return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( j_4 )
+                                           return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_2] )[i_3], ObjectList( D_1[i_1] )[j_4] );
                                        end );
                                end );
                        fi;
                        return;
-                   end ) ) ) 
-           and 
-             Length( UnionOfRowsListList( Length( ObjectList( D_1[i_1] ) ), 
-                  List( [ 1 .. Length( D_1 ) ], function ( i_2 )
+                   end ) ) ) and Length( UnionOfRowsListList( Length( ObjectList( D_1[i_1] ) ), List( [ 1 .. Length( D_1 ) ], function ( i_2 )
                          if (i_2 = i_1) then
-                             return 
-                              List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ]
-                                 , function ( i_3 )
-                                     return 
-                                      List( 
-                                        [ 1 .. 
-                                           Length( ObjectList( D_1[i_1] ) ) ]
-                                         , function ( j_4 )
+                             return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_3 )
+                                     return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( j_4 )
                                              if (i_3 = j_4) then
-                                                 return 
-                                                  IdentityMorphism( 
-                                                    UnderlyingCategory( cat_1 
-                                                      ), 
-                                                    ObjectList( D_1[i_1] )[i_3
-                                                      ] );
+                                                 return IdentityMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_3] );
                                              else
-                                                 return 
-                                                  ZeroMorphism( 
-                                                    UnderlyingCategory( cat_1 
-                                                      ), 
-                                                    ObjectList( D_1[i_1] )[i_3
-                                                      ], 
-                                                    ObjectList( D_1[i_1] )[j_4
-                                                      ] );
+                                                 return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_3], ObjectList( D_1[i_1] )[j_4] );
                                              fi;
                                              return;
                                          end );
                                  end );
                          else
-                             return 
-                              List( [ 1 .. Length( ObjectList( D_1[i_2] ) ) ]
-                                 , function ( i_3 )
-                                     return 
-                                      List( 
-                                        [ 1 .. 
-                                           Length( ObjectList( D_1[i_1] ) ) ]
-                                         , function ( j_4 )
-                                             return 
-                                              ZeroMorphism( 
-                                                UnderlyingCategory( cat_1 ), 
-                                                ObjectList( D_1[i_2] )[i_3], 
-                                                ObjectList( D_1[i_1] )[j_4] );
+                             return List( [ 1 .. Length( ObjectList( D_1[i_2] ) ) ], function ( i_3 )
+                                     return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( j_4 )
+                                             return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_2] )[i_3], ObjectList( D_1[i_1] )[j_4] );
                                          end );
                                  end );
                          fi;
                          return;
-                     end ) ) ) 
-             = Sum( List( [ 1 .. Length( D_1 ) ], function ( i_2 )
+                     end ) ) ) = Sum( List( [ 1 .. Length( D_1 ) ], function ( i_2 )
                        return Length( ObjectList( D_1[i_2] ) );
                    end ) )) then
         return false;
-    elif
-     not ForAll( [ 1 .. Sum( List( [ 1 .. Length( D_1 ) ], function ( i_2 )
+    elif not ForAll( [ 1 .. Sum( List( [ 1 .. Length( D_1 ) ], function ( i_2 )
                          return Length( ObjectList( D_1[i_2] ) );
                      end ) ) ], function ( i_2 )
-                 return 
-                  (
-                    IsList( 
-                      UnionOfRowsListList( Length( ObjectList( D_1[i_1] ) ), 
-                          List( [ 1 .. Length( D_1 ) ], function ( i_3 )
+                 return (IsList( UnionOfRowsListList( Length( ObjectList( D_1[i_1] ) ), List( [ 1 .. Length( D_1 ) ], function ( i_3 )
                                  if i_3 = i_1 then
-                                     return 
-                                      List( 
-                                        [ 1 .. 
-                                           Length( ObjectList( D_1[i_1] ) ) ]
-                                         , function ( i_4 )
-                                             return 
-                                              List( 
-                                                [ 1 .. 
-                                                   Length( 
-                                                      ObjectList( D_1[i_1] ) 
-                                                      ) ], function ( j_5 )
+                                     return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_4 )
+                                             return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( j_5 )
                                                      if i_4 = j_5 then
-                                                         return 
-                                                          IdentityMorphism( 
-                                                            UnderlyingCategory
-                                                               ( cat_1 ), 
-                                                            ObjectList( 
-                                                                D_1[i_1] )[i_4
-                                                              ] );
+                                                         return IdentityMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_4] );
                                                      else
-                                                         return 
-                                                          ZeroMorphism( 
-                                                            UnderlyingCategory
-                                                               ( cat_1 ), 
-                                                            ObjectList( 
-                                                                D_1[i_1] )[i_4
-                                                              ], 
-                                                            ObjectList( 
-                                                                D_1[i_1] )[j_5
-                                                              ] );
+                                                         return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_4], ObjectList( D_1[i_1] )[j_5] );
                                                      fi;
                                                      return;
                                                  end );
                                          end );
                                  else
-                                     return 
-                                      List( 
-                                        [ 1 .. 
-                                           Length( ObjectList( D_1[i_3] ) ) ]
-                                         , function ( i_4 )
-                                             return 
-                                              List( 
-                                                [ 1 .. 
-                                                   Length( 
-                                                      ObjectList( D_1[i_1] ) 
-                                                      ) ], function ( j_5 )
-                                                     return 
-                                                      ZeroMorphism( 
-                                                        UnderlyingCategory( 
-                                                          cat_1 ), 
-                                                        ObjectList( D_1[i_3] )
-                                                           [i_4], 
-                                                        ObjectList( D_1[i_1] )
-                                                           [j_5] );
+                                     return List( [ 1 .. Length( ObjectList( D_1[i_3] ) ) ], function ( i_4 )
+                                             return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( j_5 )
+                                                     return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_3] )[i_4], ObjectList( D_1[i_1] )[j_5] );
                                                  end );
                                          end );
                                  fi;
                                  return;
-                             end ) )[i_2] ) 
-                   and 
-                     Length( 
-                        UnionOfRowsListList( Length( ObjectList( D_1[i_1] ) )
-                             , List( [ 1 .. Length( D_1 ) ], function ( i_3 )
+                             end ) )[i_2] ) and Length( UnionOfRowsListList( Length( ObjectList( D_1[i_1] ) ), List( [ 1 .. Length( D_1 ) ], function ( i_3 )
                                    if (i_3 = i_1) then
-                                       return 
-                                        List( 
-                                          [ 1 .. 
-                                             Length( ObjectList( D_1[i_1] ) ) 
-                                            ], function ( i_4 )
-                                               return 
-                                                List( 
-                                                  [ 1 .. 
-                                                     Length( 
-                                                        ObjectList( D_1[i_1] 
-                                                          ) ) ], 
-                                                  function ( j_5 )
+                                       return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_4 )
+                                               return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( j_5 )
                                                        if (i_4 = j_5) then
-                                                           return 
-                                                            IdentityMorphism( 
-                                                              UnderlyingCatego\
-ry( cat_1 ), ObjectList( D_1[i_1] )[i_4] );
+                                                           return IdentityMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_4] );
                                                        else
-                                                           return 
-                                                            ZeroMorphism( 
-                                                              UnderlyingCatego\
-ry( cat_1 ), ObjectList( D_1[i_1] )[i_4], ObjectList( D_1[i_1] )[j_5] );
+                                                           return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_4], ObjectList( D_1[i_1] )[j_5] );
                                                        fi;
                                                        return;
                                                    end );
                                            end );
                                    else
-                                       return 
-                                        List( 
-                                          [ 1 .. 
-                                             Length( ObjectList( D_1[i_3] ) ) 
-                                            ], function ( i_4 )
-                                               return 
-                                                List( 
-                                                  [ 1 .. 
-                                                     Length( 
-                                                        ObjectList( D_1[i_1] 
-                                                          ) ) ], 
-                                                  function ( j_5 )
-                                                       return 
-                                                        ZeroMorphism( 
-                                                          UnderlyingCategory( 
-                                                            cat_1 ), 
-                                                          ObjectList( 
-                                                              D_1[i_3] )[i_4]
-                                                           , 
-                                                          ObjectList( 
-                                                              D_1[i_1] )[j_5] 
-                                                          );
+                                       return List( [ 1 .. Length( ObjectList( D_1[i_3] ) ) ], function ( i_4 )
+                                               return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( j_5 )
+                                                       return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_3] )[i_4], ObjectList( D_1[i_1] )[j_5] );
                                                    end );
                                            end );
                                    fi;
                                    return;
-                               end ) )[i_2] ) 
-                     = Length( ObjectList( D_1[i_1] ) ));
+                               end ) )[i_2] ) = Length( ObjectList( D_1[i_1] ) ));
              end ) then
         return false;
-    elif
-     not ForAll( [ 1 .. Sum( List( [ 1 .. Length( D_1 ) ], function ( i_2 )
+    elif not ForAll( [ 1 .. Sum( List( [ 1 .. Length( D_1 ) ], function ( i_2 )
                          return Length( ObjectList( D_1[i_2] ) );
                      end ) ) ], function ( i_2 )
-                 return ForAll( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], 
-                    function ( j_3 )
-                         return 
-                          IsWellDefinedForMorphismsWithGivenSourceAndRange( 
-                            UnderlyingCategory( cat_1 ), 
-                            Concatenation( 
-                                List( [ 1 .. Length( D_1 ) ], function ( i_4 )
+                 return ForAll( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( j_3 )
+                         return IsWellDefinedForMorphismsWithGivenSourceAndRange( UnderlyingCategory( cat_1 ), Concatenation( List( [ 1 .. Length( D_1 ) ], function ( i_4 )
                                        return ObjectList( D_1[i_4] );
-                                   end ) )[i_2], 
-                            UnionOfRowsListList( 
-                                  Length( ObjectList( D_1[i_1] ) ), 
-                                  List( [ 1 .. Length( D_1 ) ], 
-                                    function ( i_4 )
+                                   end ) )[i_2], UnionOfRowsListList( Length( ObjectList( D_1[i_1] ) ), List( [ 1 .. Length( D_1 ) ], function ( i_4 )
                                          if i_4 = i_1 then
-                                             return 
-                                              List( 
-                                                [ 1 .. 
-                                                   Length( 
-                                                      ObjectList( D_1[i_1] ) 
-                                                      ) ], function ( i_5 )
-                                                     return 
-                                                      List( 
-                                                        [ 1 .. 
-                                                           Length( 
-                                                              ObjectList( 
-                                                                D_1[i_1] ) ) ]
-                                                         , function ( j_6 )
+                                             return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_5 )
+                                                     return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( j_6 )
                                                              if i_5 = j_6 then
-                                                                 return 
-                                                                  IdentityMorp\
-hism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_5] );
+                                                                 return IdentityMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_5] );
                                                              else
-                                                                 return 
-                                                                  ZeroMorphism
-                                                                     ( 
-                                                                    Underlying\
-Category( cat_1 ), ObjectList( D_1[i_1] )[i_5], ObjectList( D_1[i_1] )[j_6] );
+                                                                 return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_5], ObjectList( D_1[i_1] )[j_6] );
                                                              fi;
                                                              return;
                                                          end );
                                                  end );
                                          else
-                                             return 
-                                              List( 
-                                                [ 1 .. 
-                                                   Length( 
-                                                      ObjectList( D_1[i_4] ) 
-                                                      ) ], function ( i_5 )
-                                                     return 
-                                                      List( 
-                                                        [ 1 .. 
-                                                           Length( 
-                                                              ObjectList( 
-                                                                D_1[i_1] ) ) ]
-                                                         , function ( j_6 )
-                                                             return 
-                                                              ZeroMorphism( 
-                                                                UnderlyingCate\
-gory( cat_1 ), ObjectList( D_1[i_4] )[i_5], ObjectList( D_1[i_1] )[j_6] );
+                                             return List( [ 1 .. Length( ObjectList( D_1[i_4] ) ) ], function ( i_5 )
+                                                     return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( j_6 )
+                                                             return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_4] )[i_5], ObjectList( D_1[i_1] )[j_6] );
                                                          end );
                                                  end );
                                          fi;
                                          return;
-                                     end ) )[i_2][j_3], 
-                            ObjectList( D_1[i_1] )[j_3] );
+                                     end ) )[i_2][j_3], ObjectList( D_1[i_1] )[j_3] );
                      end );
              end ) then
         return false;
@@ -534,320 +345,130 @@ gap> StateNextLemma( );
 
 
 Lemma 3:
-In AdditiveClosure( a preadditive category ), injections in cofactors of direc\
-t sums define morphisms:
+In AdditiveClosure( a preadditive category ), injections in cofactors of direct sums define morphisms:
 For a list of objects D and an integer i such that
 • 1 <= i,
 • i <= Length( D ),
 we have
 function ( cat, D, i )
-    return IsWellDefinedForMorphismsWithGivenSourceAndRange( cat, D[i], 
-       InjectionOfCofactorOfDirectSum( cat, D, i ), DirectSum( cat, D ) );
+    return IsWellDefinedForMorphismsWithGivenSourceAndRange( cat, D[i], InjectionOfCofactorOfDirectSum( cat, D, i ), DirectSum( cat, D ) );
 end
 gap> PrintLemma( );
 We have to show
 function ( cat_1, D_1, i_1 )
-    if
-     not (IsList( UnionOfColumnsListList( Length( ObjectList( D_1[i_1] ) ), 
-                List( [ 1 .. Length( D_1 ) ], function ( i_2 )
+    if not (IsList( UnionOfColumnsListList( Length( ObjectList( D_1[i_1] ) ), List( [ 1 .. Length( D_1 ) ], function ( i_2 )
                        if i_2 = i_1 then
-                           return 
-                            List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], 
-                              function ( i_3 )
-                                   return 
-                                    List( 
-                                      [ 1 .. Length( ObjectList( D_1[i_1] ) ) 
-                                        ], function ( j_4 )
+                           return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_3 )
+                                   return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( j_4 )
                                            if i_3 = j_4 then
-                                               return 
-                                                IdentityMorphism( 
-                                                  UnderlyingCategory( cat_1 )
-                                                   , 
-                                                  ObjectList( D_1[i_1] )[i_3] 
-                                                  );
+                                               return IdentityMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_3] );
                                            else
-                                               return 
-                                                ZeroMorphism( 
-                                                  UnderlyingCategory( cat_1 )
-                                                   , 
-                                                  ObjectList( D_1[i_1] )[i_3]
-                                                   , 
-                                                  ObjectList( D_1[i_1] )[j_4] 
-                                                  );
+                                               return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_3], ObjectList( D_1[i_1] )[j_4] );
                                            fi;
                                            return;
                                        end );
                                end );
                        else
-                           return 
-                            List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], 
-                              function ( i_3 )
-                                   return 
-                                    List( 
-                                      [ 1 .. Length( ObjectList( D_1[i_2] ) ) 
-                                        ], function ( j_4 )
-                                           return 
-                                            ZeroMorphism( 
-                                              UnderlyingCategory( cat_1 ), 
-                                              ObjectList( D_1[i_1] )[i_3], 
-                                              ObjectList( D_1[i_2] )[j_4] );
+                           return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_3 )
+                                   return List( [ 1 .. Length( ObjectList( D_1[i_2] ) ) ], function ( j_4 )
+                                           return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_3], ObjectList( D_1[i_2] )[j_4] );
                                        end );
                                end );
                        fi;
                        return;
-                   end ) ) ) 
-           and 
-             Length( UnionOfColumnsListList( Length( ObjectList( D_1[i_1] ) )
-                   , List( [ 1 .. Length( D_1 ) ], function ( i_2 )
+                   end ) ) ) and Length( UnionOfColumnsListList( Length( ObjectList( D_1[i_1] ) ), List( [ 1 .. Length( D_1 ) ], function ( i_2 )
                          if (i_2 = i_1) then
-                             return 
-                              List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ]
-                                 , function ( i_3 )
-                                     return 
-                                      List( 
-                                        [ 1 .. 
-                                           Length( ObjectList( D_1[i_1] ) ) ]
-                                         , function ( j_4 )
+                             return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_3 )
+                                     return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( j_4 )
                                              if (i_3 = j_4) then
-                                                 return 
-                                                  IdentityMorphism( 
-                                                    UnderlyingCategory( cat_1 
-                                                      ), 
-                                                    ObjectList( D_1[i_1] )[i_3
-                                                      ] );
+                                                 return IdentityMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_3] );
                                              else
-                                                 return 
-                                                  ZeroMorphism( 
-                                                    UnderlyingCategory( cat_1 
-                                                      ), 
-                                                    ObjectList( D_1[i_1] )[i_3
-                                                      ], 
-                                                    ObjectList( D_1[i_1] )[j_4
-                                                      ] );
+                                                 return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_3], ObjectList( D_1[i_1] )[j_4] );
                                              fi;
                                              return;
                                          end );
                                  end );
                          else
-                             return 
-                              List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ]
-                                 , function ( i_3 )
-                                     return 
-                                      List( 
-                                        [ 1 .. 
-                                           Length( ObjectList( D_1[i_2] ) ) ]
-                                         , function ( j_4 )
-                                             return 
-                                              ZeroMorphism( 
-                                                UnderlyingCategory( cat_1 ), 
-                                                ObjectList( D_1[i_1] )[i_3], 
-                                                ObjectList( D_1[i_2] )[j_4] );
+                             return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_3 )
+                                     return List( [ 1 .. Length( ObjectList( D_1[i_2] ) ) ], function ( j_4 )
+                                             return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_3], ObjectList( D_1[i_2] )[j_4] );
                                          end );
                                  end );
                          fi;
                          return;
                      end ) ) ) = Length( ObjectList( D_1[i_1] ) )) then
         return false;
-    elif
-     not ForAll( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_2 )
-                 return 
-                  (
-                    IsList( 
-                      UnionOfColumnsListList( Length( ObjectList( D_1[i_1] ) )
-                           , List( [ 1 .. Length( D_1 ) ], function ( i_3 )
+    elif not ForAll( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_2 )
+                 return (IsList( UnionOfColumnsListList( Length( ObjectList( D_1[i_1] ) ), List( [ 1 .. Length( D_1 ) ], function ( i_3 )
                                  if i_3 = i_1 then
-                                     return 
-                                      List( 
-                                        [ 1 .. 
-                                           Length( ObjectList( D_1[i_1] ) ) ]
-                                         , function ( i_4 )
-                                             return 
-                                              List( 
-                                                [ 1 .. 
-                                                   Length( 
-                                                      ObjectList( D_1[i_1] ) 
-                                                      ) ], function ( j_5 )
+                                     return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_4 )
+                                             return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( j_5 )
                                                      if i_4 = j_5 then
-                                                         return 
-                                                          IdentityMorphism( 
-                                                            UnderlyingCategory
-                                                               ( cat_1 ), 
-                                                            ObjectList( 
-                                                                D_1[i_1] )[i_4
-                                                              ] );
+                                                         return IdentityMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_4] );
                                                      else
-                                                         return 
-                                                          ZeroMorphism( 
-                                                            UnderlyingCategory
-                                                               ( cat_1 ), 
-                                                            ObjectList( 
-                                                                D_1[i_1] )[i_4
-                                                              ], 
-                                                            ObjectList( 
-                                                                D_1[i_1] )[j_5
-                                                              ] );
+                                                         return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_4], ObjectList( D_1[i_1] )[j_5] );
                                                      fi;
                                                      return;
                                                  end );
                                          end );
                                  else
-                                     return 
-                                      List( 
-                                        [ 1 .. 
-                                           Length( ObjectList( D_1[i_1] ) ) ]
-                                         , function ( i_4 )
-                                             return 
-                                              List( 
-                                                [ 1 .. 
-                                                   Length( 
-                                                      ObjectList( D_1[i_3] ) 
-                                                      ) ], function ( j_5 )
-                                                     return 
-                                                      ZeroMorphism( 
-                                                        UnderlyingCategory( 
-                                                          cat_1 ), 
-                                                        ObjectList( D_1[i_1] )
-                                                           [i_4], 
-                                                        ObjectList( D_1[i_3] )
-                                                           [j_5] );
+                                     return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_4 )
+                                             return List( [ 1 .. Length( ObjectList( D_1[i_3] ) ) ], function ( j_5 )
+                                                     return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_4], ObjectList( D_1[i_3] )[j_5] );
                                                  end );
                                          end );
                                  fi;
                                  return;
-                             end ) )[i_2] ) 
-                   and 
-                     Length( 
-                        UnionOfColumnsListList( 
-                            Length( ObjectList( D_1[i_1] ) ), 
-                            List( [ 1 .. Length( D_1 ) ], function ( i_3 )
+                             end ) )[i_2] ) and Length( UnionOfColumnsListList( Length( ObjectList( D_1[i_1] ) ), List( [ 1 .. Length( D_1 ) ], function ( i_3 )
                                    if (i_3 = i_1) then
-                                       return 
-                                        List( 
-                                          [ 1 .. 
-                                             Length( ObjectList( D_1[i_1] ) ) 
-                                            ], function ( i_4 )
-                                               return 
-                                                List( 
-                                                  [ 1 .. 
-                                                     Length( 
-                                                        ObjectList( D_1[i_1] 
-                                                          ) ) ], 
-                                                  function ( j_5 )
+                                       return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_4 )
+                                               return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( j_5 )
                                                        if (i_4 = j_5) then
-                                                           return 
-                                                            IdentityMorphism( 
-                                                              UnderlyingCatego\
-ry( cat_1 ), ObjectList( D_1[i_1] )[i_4] );
+                                                           return IdentityMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_4] );
                                                        else
-                                                           return 
-                                                            ZeroMorphism( 
-                                                              UnderlyingCatego\
-ry( cat_1 ), ObjectList( D_1[i_1] )[i_4], ObjectList( D_1[i_1] )[j_5] );
+                                                           return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_4], ObjectList( D_1[i_1] )[j_5] );
                                                        fi;
                                                        return;
                                                    end );
                                            end );
                                    else
-                                       return 
-                                        List( 
-                                          [ 1 .. 
-                                             Length( ObjectList( D_1[i_1] ) ) 
-                                            ], function ( i_4 )
-                                               return 
-                                                List( 
-                                                  [ 1 .. 
-                                                     Length( 
-                                                        ObjectList( D_1[i_3] 
-                                                          ) ) ], 
-                                                  function ( j_5 )
-                                                       return 
-                                                        ZeroMorphism( 
-                                                          UnderlyingCategory( 
-                                                            cat_1 ), 
-                                                          ObjectList( 
-                                                              D_1[i_1] )[i_4]
-                                                           , 
-                                                          ObjectList( 
-                                                              D_1[i_3] )[j_5] 
-                                                          );
+                                       return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_4 )
+                                               return List( [ 1 .. Length( ObjectList( D_1[i_3] ) ) ], function ( j_5 )
+                                                       return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_4], ObjectList( D_1[i_3] )[j_5] );
                                                    end );
                                            end );
                                    fi;
                                    return;
-                               end ) )[i_2] ) 
-                     = Sum( List( [ 1 .. Length( D_1 ) ], function ( i_3 )
+                               end ) )[i_2] ) = Sum( List( [ 1 .. Length( D_1 ) ], function ( i_3 )
                                return Length( ObjectList( D_1[i_3] ) );
                            end ) ));
              end ) then
         return false;
-    elif
-     not ForAll( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_2 )
-                 return 
-                  ForAll( 
-                    [ 1 .. Sum( List( [ 1 .. Length( D_1 ) ], function ( i_3 )
+    elif not ForAll( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_2 )
+                 return ForAll( [ 1 .. Sum( List( [ 1 .. Length( D_1 ) ], function ( i_3 )
                                  return Length( ObjectList( D_1[i_3] ) );
                              end ) ) ], function ( j_3 )
-                         return 
-                          IsWellDefinedForMorphismsWithGivenSourceAndRange( 
-                            UnderlyingCategory( cat_1 ), 
-                            ObjectList( D_1[i_1] )[i_2], 
-                            UnionOfColumnsListList( 
-                                  Length( ObjectList( D_1[i_1] ) ), 
-                                  List( [ 1 .. Length( D_1 ) ], 
-                                    function ( i_4 )
+                         return IsWellDefinedForMorphismsWithGivenSourceAndRange( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_2], UnionOfColumnsListList( Length( ObjectList( D_1[i_1] ) ), List( [ 1 .. Length( D_1 ) ], function ( i_4 )
                                          if i_4 = i_1 then
-                                             return 
-                                              List( 
-                                                [ 1 .. 
-                                                   Length( 
-                                                      ObjectList( D_1[i_1] ) 
-                                                      ) ], function ( i_5 )
-                                                     return 
-                                                      List( 
-                                                        [ 1 .. 
-                                                           Length( 
-                                                              ObjectList( 
-                                                                D_1[i_1] ) ) ]
-                                                         , function ( j_6 )
+                                             return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_5 )
+                                                     return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( j_6 )
                                                              if i_5 = j_6 then
-                                                                 return 
-                                                                  IdentityMorp\
-hism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_5] );
+                                                                 return IdentityMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_5] );
                                                              else
-                                                                 return 
-                                                                  ZeroMorphism
-                                                                     ( 
-                                                                    Underlying\
-Category( cat_1 ), ObjectList( D_1[i_1] )[i_5], ObjectList( D_1[i_1] )[j_6] );
+                                                                 return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_5], ObjectList( D_1[i_1] )[j_6] );
                                                              fi;
                                                              return;
                                                          end );
                                                  end );
                                          else
-                                             return 
-                                              List( 
-                                                [ 1 .. 
-                                                   Length( 
-                                                      ObjectList( D_1[i_1] ) 
-                                                      ) ], function ( i_5 )
-                                                     return 
-                                                      List( 
-                                                        [ 1 .. 
-                                                           Length( 
-                                                              ObjectList( 
-                                                                D_1[i_4] ) ) ]
-                                                         , function ( j_6 )
-                                                             return 
-                                                              ZeroMorphism( 
-                                                                UnderlyingCate\
-gory( cat_1 ), ObjectList( D_1[i_1] )[i_5], ObjectList( D_1[i_4] )[j_6] );
+                                             return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_5 )
+                                                     return List( [ 1 .. Length( ObjectList( D_1[i_4] ) ) ], function ( j_6 )
+                                                             return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_5], ObjectList( D_1[i_4] )[j_6] );
                                                          end );
                                                  end );
                                          fi;
                                          return;
-                                     end ) )[i_2][j_3], 
-                            Concatenation( 
-                                List( [ 1 .. Length( D_1 ) ], function ( i_4 )
+                                     end ) )[i_2][j_3], Concatenation( List( [ 1 .. Length( D_1 ) ], function ( i_4 )
                                        return ObjectList( D_1[i_4] );
                                    end ) )[j_3] );
                      end );
@@ -996,18 +617,12 @@ gap> StateNextLemma( );
 
 
 Lemma 4:
-In AdditiveClosure( a preadditive category ), the identity on a direct sum can\
- be written as a sum of projections followed by injections:
+In AdditiveClosure( a preadditive category ), the identity on a direct sum can be written as a sum of projections followed by injections:
 For a list of objects D we have
 function ( cat, D )
-    return 
-     IsCongruentForMorphisms( cat, SumOfMorphisms( cat, DirectSum( cat, D ), 
-         List( [ 1 .. Length( D ) ], function ( i )
-                return 
-                 PreCompose( cat, ProjectionInFactorOfDirectSum( cat, D, i ), 
-                   InjectionOfCofactorOfDirectSum( cat, D, i ) );
-            end ), DirectSum( cat, D ) ), 
-       IdentityMorphism( cat, DirectSum( cat, D ) ) );
+    return IsCongruentForMorphisms( cat, SumOfMorphisms( cat, DirectSum( cat, D ), List( [ 1 .. Length( D ) ], function ( i )
+                return PreCompose( cat, ProjectionInFactorOfDirectSum( cat, D, i ), InjectionOfCofactorOfDirectSum( cat, D, i ) );
+            end ), DirectSum( cat, D ) ), IdentityMorphism( cat, DirectSum( cat, D ) ) );
 end
 gap> # UnionOfRowsListList( nr_cols, L )[i][j]
 > ApplyLogicTemplate(
@@ -1102,255 +717,56 @@ gap> # composition of identites and zero morphisms
 gap> PrintLemma( );
 We have to show
 function ( cat_1, D_1 )
-    return ForAll( [ 1 .. Length( D_1 ) ], 
-       function ( logic_new_func_i_major_2 )
-            return 
-             ForAll( 
-               [ 1 .. Length( ObjectList( D_1[logic_new_func_i_major_2] ) ) ]
-                , function ( logic_new_func_i_minor_3 )
-                    return ForAll( [ 1 .. Length( D_1 ) ], 
-                       function ( logic_new_func_j_major_4 )
-                            return 
-                             ForAll( 
-                               [ 1 .. 
-                                  Length( 
-                                     ObjectList( 
-                                       D_1[logic_new_func_j_major_4] ) ) ], 
-                               function ( logic_new_func_j_minor_5 )
-                                    return 
-                                     IsCongruentForMorphisms( 
-                                       UnderlyingCategory( cat_1 ), 
-                                       SumOfMorphisms( 
-                                         UnderlyingCategory( cat_1 ), 
-                                         Concatenation( 
-                                             List( [ 1 .. Length( D_1 ) ], 
-                                               function ( i_6 )
-                                                    return 
-                                                     ObjectList( D_1[i_6] );
-                                                end ) )[
-                                           Sum( 
-                                              List( 
-                                                [ 1 .. 
-                                                   logic_new_func_i_major_2 
-                                                     - 1 ], function ( i_6 )
-                                                     return 
-                                                      Length( 
-                                                        ObjectList( D_1[i_6] 
-                                                          ) );
-                                                 end ) ) 
-                                           + logic_new_func_i_minor_3], 
-                                         List( [ 1 .. Length( D_1 ) ], 
-                                           function ( i_6 )
-                                                return 
-                                                 SumOfMorphisms( 
-                                                   UnderlyingCategory( cat_1 )
-                                                    , 
-                                                   Concatenation( 
-                                                       List( 
-                                                         [ 1 .. Length( D_1 ) 
-                                                           ], function ( i_7 )
-                                                              return 
-                                                               ObjectList( 
-                                                                 D_1[i_7] );
-                                                          end ) )[
-                                                     Sum( 
-                                                        List( 
-                                                          [ 1 .. 
-                                                             logic_new_func_i_\
-major_2 - 1 ], function ( i_7 )
-                                                               return 
-                                                                Length( 
-                                                                  ObjectList( 
-                                                                    D_1[i_7] 
-                                                                    ) );
-                                                           end ) ) 
-                                                     +
-                                                        logic_new_func_i_minor_3
-                                                     ], 
-                                                   List( 
-                                                     [ 1 .. 
-                                                        Length( 
-                                                           ObjectList( 
-                                                             D_1[i_6] ) ) ], 
-                                                     function ( k_7 )
-                                                          if
-                                                           logic_new_func_i_ma\
-jor_2 = i_6 and logic_new_func_i_minor_3 = k_7 and (logic_new_func_j_major_4 
-                                                                  = i_6 
-                                                                and k_7 
-                                                                  =
-                                                                     
-                                                                     logic_new_fu\
-nc_j_minor_5) then
-                                                              return 
-                                                               IdentityMorphis\
-m( UnderlyingCategory( cat_1 ), ObjectList( D_1[logic_new_func_i_major_2] )
-                                                                    [logic_new\
-_func_i_minor_3] );
+    return ForAll( [ 1 .. Length( D_1 ) ], function ( logic_new_func_i_major_2 )
+            return ForAll( [ 1 .. Length( ObjectList( D_1[logic_new_func_i_major_2] ) ) ], function ( logic_new_func_i_minor_3 )
+                    return ForAll( [ 1 .. Length( D_1 ) ], function ( logic_new_func_j_major_4 )
+                            return ForAll( [ 1 .. Length( ObjectList( D_1[logic_new_func_j_major_4] ) ) ], function ( logic_new_func_j_minor_5 )
+                                    return IsCongruentForMorphisms( UnderlyingCategory( cat_1 ), SumOfMorphisms( UnderlyingCategory( cat_1 ), Concatenation( List( [ 1 .. Length( D_1 ) ], function ( i_6 )
+                                                    return ObjectList( D_1[i_6] );
+                                                end ) )[Sum( List( [ 1 .. logic_new_func_i_major_2 - 1 ], function ( i_6 )
+                                                     return Length( ObjectList( D_1[i_6] ) );
+                                                 end ) ) + logic_new_func_i_minor_3], List( [ 1 .. Length( D_1 ) ], function ( i_6 )
+                                                return SumOfMorphisms( UnderlyingCategory( cat_1 ), Concatenation( List( [ 1 .. Length( D_1 ) ], function ( i_7 )
+                                                              return ObjectList( D_1[i_7] );
+                                                          end ) )[Sum( List( [ 1 .. logic_new_func_i_major_2 - 1 ], function ( i_7 )
+                                                               return Length( ObjectList( D_1[i_7] ) );
+                                                           end ) ) + logic_new_func_i_minor_3], List( [ 1 .. Length( ObjectList( D_1[i_6] ) ) ], function ( k_7 )
+                                                          if logic_new_func_i_major_2 = i_6 and logic_new_func_i_minor_3 = k_7 and (logic_new_func_j_major_4 = i_6 and k_7 = logic_new_func_j_minor_5) then
+                                                              return IdentityMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[logic_new_func_i_major_2] )[logic_new_func_i_minor_3] );
                                                           else
-                                                              return 
-                                                               ZeroMorphism( 
-                                                                 UnderlyingCat\
-egory( cat_1 ), ObjectList( D_1[logic_new_func_i_major_2] )[logic_new_func_i_m\
-inor_3], ObjectList( D_1[logic_new_func_j_major_4] )[logic_new_func_j_minor_5
-                                                                   ] );
+                                                              return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[logic_new_func_i_major_2] )[logic_new_func_i_minor_3], ObjectList( D_1[logic_new_func_j_major_4] )[logic_new_func_j_minor_5] );
                                                           fi;
                                                           return;
-                                                      end ), 
-                                                   Concatenation( 
-                                                       List( 
-                                                         [ 1 .. Length( D_1 ) 
-                                                           ], function ( i_7 )
-                                                              return 
-                                                               ObjectList( 
-                                                                 D_1[i_7] );
-                                                          end ) )[
-                                                     Sum( 
-                                                        List( 
-                                                          [ 1 .. 
-                                                             logic_new_func_j_\
-major_4 - 1 ], function ( i_7 )
-                                                               return 
-                                                                Length( 
-                                                                  ObjectList( 
-                                                                    D_1[i_7] 
-                                                                    ) );
-                                                           end ) ) 
-                                                     +
-                                                        logic_new_func_j_minor_5
-                                                     ] );
-                                            end ), 
-                                         Concatenation( 
-                                             List( [ 1 .. Length( D_1 ) ], 
-                                               function ( i_6 )
-                                                    return 
-                                                     ObjectList( D_1[i_6] );
-                                                end ) )[
-                                           Sum( 
-                                              List( 
-                                                [ 1 .. 
-                                                   logic_new_func_j_major_4 
-                                                     - 1 ], function ( i_6 )
-                                                     return 
-                                                      Length( 
-                                                        ObjectList( D_1[i_6] 
-                                                          ) );
-                                                 end ) ) 
-                                           + logic_new_func_j_minor_5] ), 
-                                       CAP_JIT_EXPR_CASE_WRAPPER( 
-                                           function (  )
-                                                if
-                                                 Sum( List( 
-                                                           [ 1 .. 
-                                                              logic_new_func_i\
-_major_2 - 1 ], function ( i_7 )
-                                                                return 
-                                                                 Length( 
-                                                                   ObjectList
-                                                                      ( 
-                                                                     D_1[i_7] 
-                                                                     ) );
-                                                            end ) ) 
-                                                      +
-                                                         
-                                                         logic_new_func_i_minor_3
-                                                    = Sum( 
-                                                         List( 
-                                                           [ 1 .. 
-                                                              logic_new_func_j\
-_major_4 - 1 ], function ( i_7 )
-                                                                return 
-                                                                 Length( 
-                                                                   ObjectList
-                                                                      ( 
-                                                                     D_1[i_7] 
-                                                                     ) );
-                                                            end ) ) 
-                                                      +
-                                                         
-                                                         logic_new_func_j_minor_5
-                                                   then
-                                                    return 
-                                                     IdentityMorphism( 
-                                                       UnderlyingCategory( 
-                                                         cat_1 ), 
-                                                       Concatenation( 
-                                                           List( 
-                                                             [ 1 .. 
-                                                                Length( D_1 ) 
-                                                               ], 
-                                                             function ( i_7 )
-                                                                  return 
-                                                                   ObjectList
-                                                                      ( 
-                                                                     D_1[i_7] 
-                                                                     );
-                                                              end ) )[
-                                                         Sum( 
-                                                            List( 
-                                                              [ 1 .. 
-                                                                 logic_new_fun\
-c_i_major_2 - 1 ], function ( i_7 )
-                                                                   return 
-                                                                    Length( 
-                                                                      ObjectLi\
-st( D_1[i_7] ) );
-                                                               end ) ) 
-                                                         +
-                                                            
-                                                            logic_new_func_i_mino\
-r_3] );
+                                                      end ), Concatenation( List( [ 1 .. Length( D_1 ) ], function ( i_7 )
+                                                              return ObjectList( D_1[i_7] );
+                                                          end ) )[Sum( List( [ 1 .. logic_new_func_j_major_4 - 1 ], function ( i_7 )
+                                                               return Length( ObjectList( D_1[i_7] ) );
+                                                           end ) ) + logic_new_func_j_minor_5] );
+                                            end ), Concatenation( List( [ 1 .. Length( D_1 ) ], function ( i_6 )
+                                                    return ObjectList( D_1[i_6] );
+                                                end ) )[Sum( List( [ 1 .. logic_new_func_j_major_4 - 1 ], function ( i_6 )
+                                                     return Length( ObjectList( D_1[i_6] ) );
+                                                 end ) ) + logic_new_func_j_minor_5] ), CAP_JIT_EXPR_CASE_WRAPPER( function (  )
+                                                if Sum( List( [ 1 .. logic_new_func_i_major_2 - 1 ], function ( i_7 )
+                                                                return Length( ObjectList( D_1[i_7] ) );
+                                                            end ) ) + logic_new_func_i_minor_3 = Sum( List( [ 1 .. logic_new_func_j_major_4 - 1 ], function ( i_7 )
+                                                                return Length( ObjectList( D_1[i_7] ) );
+                                                            end ) ) + logic_new_func_j_minor_5 then
+                                                    return IdentityMorphism( UnderlyingCategory( cat_1 ), Concatenation( List( [ 1 .. Length( D_1 ) ], function ( i_7 )
+                                                                  return ObjectList( D_1[i_7] );
+                                                              end ) )[Sum( List( [ 1 .. logic_new_func_i_major_2 - 1 ], function ( i_7 )
+                                                                   return Length( ObjectList( D_1[i_7] ) );
+                                                               end ) ) + logic_new_func_i_minor_3] );
                                                 else
-                                                    return 
-                                                     ZeroMorphism( 
-                                                       UnderlyingCategory( 
-                                                         cat_1 ), 
-                                                       Concatenation( 
-                                                           List( 
-                                                             [ 1 .. 
-                                                                Length( D_1 ) 
-                                                               ], 
-                                                             function ( i_7 )
-                                                                  return 
-                                                                   ObjectList
-                                                                      ( 
-                                                                     D_1[i_7] 
-                                                                     );
-                                                              end ) )[
-                                                         Sum( 
-                                                            List( 
-                                                              [ 1 .. 
-                                                                 logic_new_fun\
-c_i_major_2 - 1 ], function ( i_7 )
-                                                                   return 
-                                                                    Length( 
-                                                                      ObjectLi\
-st( D_1[i_7] ) );
-                                                               end ) ) 
-                                                         +
-                                                            
-                                                            logic_new_func_i_mino\
-r_3], Concatenation( List( [ 1 .. Length( D_1 ) ], function ( i_7 )
-                                                                  return 
-                                                                   ObjectList
-                                                                      ( 
-                                                                     D_1[i_7] 
-                                                                     );
-                                                              end ) )[
-                                                         Sum( 
-                                                            List( 
-                                                              [ 1 .. 
-                                                                 logic_new_fun\
-c_j_major_4 - 1 ], function ( i_7 )
-                                                                   return 
-                                                                    Length( 
-                                                                      ObjectLi\
-st( D_1[i_7] ) );
-                                                               end ) ) 
-                                                         +
-                                                            
-                                                            logic_new_func_j_mino\
-r_5] );
+                                                    return ZeroMorphism( UnderlyingCategory( cat_1 ), Concatenation( List( [ 1 .. Length( D_1 ) ], function ( i_7 )
+                                                                  return ObjectList( D_1[i_7] );
+                                                              end ) )[Sum( List( [ 1 .. logic_new_func_i_major_2 - 1 ], function ( i_7 )
+                                                                   return Length( ObjectList( D_1[i_7] ) );
+                                                               end ) ) + logic_new_func_i_minor_3], Concatenation( List( [ 1 .. Length( D_1 ) ], function ( i_7 )
+                                                                  return ObjectList( D_1[i_7] );
+                                                              end ) )[Sum( List( [ 1 .. logic_new_func_j_major_4 - 1 ], function ( i_7 )
+                                                                   return Length( ObjectList( D_1[i_7] ) );
+                                                               end ) ) + logic_new_func_j_minor_5] );
                                                 fi;
                                                 return;
                                             end )(  ) );
@@ -1371,203 +787,46 @@ gap> # drop zeros in sum
 gap> PrintLemma( );
 We have to show
 function ( cat_1, D_1 )
-    return ForAll( [ 1 .. Length( D_1 ) ], 
-       function ( logic_new_func_i_major_2 )
-            return 
-             ForAll( 
-               [ 1 .. Length( ObjectList( D_1[logic_new_func_i_major_2] ) ) ]
-                , function ( logic_new_func_i_minor_3 )
-                    return ForAll( [ 1 .. Length( D_1 ) ], 
-                       function ( logic_new_func_j_major_4 )
-                            return 
-                             ForAll( 
-                               [ 1 .. 
-                                  Length( 
-                                     ObjectList( 
-                                       D_1[logic_new_func_j_major_4] ) ) ], 
-                               function ( logic_new_func_j_minor_5 )
-                                    return 
-                                     IsCongruentForMorphisms( 
-                                       UnderlyingCategory( cat_1 ), 
-                                       SumOfMorphisms( 
-                                         UnderlyingCategory( cat_1 ), 
-                                         Concatenation( 
-                                             List( [ 1 .. Length( D_1 ) ], 
-                                               function ( i_6 )
-                                                    return 
-                                                     ObjectList( D_1[i_6] );
-                                                end ) )[
-                                           Sum( 
-                                              List( 
-                                                [ 1 .. 
-                                                   logic_new_func_i_major_2 
-                                                     - 1 ], function ( i_6 )
-                                                     return 
-                                                      Length( 
-                                                        ObjectList( D_1[i_6] 
-                                                          ) );
-                                                 end ) ) 
-                                           + logic_new_func_i_minor_3], 
-                                         List( [ 1 .. Length( D_1 ) ], 
-                                           function ( i_6 )
-                                                if
-                                                 logic_new_func_i_major_2 
-                                                        = i_6 
-                                                      and 
-                                                        logic_new_func_j_major\
-_4 = i_6 and logic_new_func_i_minor_3 = logic_new_func_j_minor_5 then
-                                                    return 
-                                                     IdentityMorphism( 
-                                                       UnderlyingCategory( 
-                                                         cat_1 ), 
-                                                       ObjectList( 
-                                                           D_1
-                                                              [logic_new_func_i\
-_major_2] )[logic_new_func_i_minor_3] );
+    return ForAll( [ 1 .. Length( D_1 ) ], function ( logic_new_func_i_major_2 )
+            return ForAll( [ 1 .. Length( ObjectList( D_1[logic_new_func_i_major_2] ) ) ], function ( logic_new_func_i_minor_3 )
+                    return ForAll( [ 1 .. Length( D_1 ) ], function ( logic_new_func_j_major_4 )
+                            return ForAll( [ 1 .. Length( ObjectList( D_1[logic_new_func_j_major_4] ) ) ], function ( logic_new_func_j_minor_5 )
+                                    return IsCongruentForMorphisms( UnderlyingCategory( cat_1 ), SumOfMorphisms( UnderlyingCategory( cat_1 ), Concatenation( List( [ 1 .. Length( D_1 ) ], function ( i_6 )
+                                                    return ObjectList( D_1[i_6] );
+                                                end ) )[Sum( List( [ 1 .. logic_new_func_i_major_2 - 1 ], function ( i_6 )
+                                                     return Length( ObjectList( D_1[i_6] ) );
+                                                 end ) ) + logic_new_func_i_minor_3], List( [ 1 .. Length( D_1 ) ], function ( i_6 )
+                                                if logic_new_func_i_major_2 = i_6 and logic_new_func_j_major_4 = i_6 and logic_new_func_i_minor_3 = logic_new_func_j_minor_5 then
+                                                    return IdentityMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[logic_new_func_i_major_2] )[logic_new_func_i_minor_3] );
                                                 else
-                                                    return 
-                                                     ZeroMorphism( 
-                                                       UnderlyingCategory( 
-                                                         cat_1 ), 
-                                                       ObjectList( 
-                                                           D_1
-                                                              [logic_new_func_i\
-_major_2] )[logic_new_func_i_minor_3], ObjectList( D_1[logic_new_func_j_major_\
-4] )[logic_new_func_j_minor_5] );
+                                                    return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[logic_new_func_i_major_2] )[logic_new_func_i_minor_3], ObjectList( D_1[logic_new_func_j_major_4] )[logic_new_func_j_minor_5] );
                                                 fi;
                                                 return;
-                                            end ), 
-                                         Concatenation( 
-                                             List( [ 1 .. Length( D_1 ) ], 
-                                               function ( i_6 )
-                                                    return 
-                                                     ObjectList( D_1[i_6] );
-                                                end ) )[
-                                           Sum( 
-                                              List( 
-                                                [ 1 .. 
-                                                   logic_new_func_j_major_4 
-                                                     - 1 ], function ( i_6 )
-                                                     return 
-                                                      Length( 
-                                                        ObjectList( D_1[i_6] 
-                                                          ) );
-                                                 end ) ) 
-                                           + logic_new_func_j_minor_5] ), 
-                                       CAP_JIT_EXPR_CASE_WRAPPER( 
-                                           function (  )
-                                                if
-                                                 Sum( List( 
-                                                           [ 1 .. 
-                                                              logic_new_func_i\
-_major_2 - 1 ], function ( i_7 )
-                                                                return 
-                                                                 Length( 
-                                                                   ObjectList
-                                                                      ( 
-                                                                     D_1[i_7] 
-                                                                     ) );
-                                                            end ) ) 
-                                                      +
-                                                         
-                                                         logic_new_func_i_minor_3
-                                                    = Sum( 
-                                                         List( 
-                                                           [ 1 .. 
-                                                              logic_new_func_j\
-_major_4 - 1 ], function ( i_7 )
-                                                                return 
-                                                                 Length( 
-                                                                   ObjectList
-                                                                      ( 
-                                                                     D_1[i_7] 
-                                                                     ) );
-                                                            end ) ) 
-                                                      +
-                                                         
-                                                         logic_new_func_j_minor_5
-                                                   then
-                                                    return 
-                                                     IdentityMorphism( 
-                                                       UnderlyingCategory( 
-                                                         cat_1 ), 
-                                                       Concatenation( 
-                                                           List( 
-                                                             [ 1 .. 
-                                                                Length( D_1 ) 
-                                                               ], 
-                                                             function ( i_7 )
-                                                                  return 
-                                                                   ObjectList
-                                                                      ( 
-                                                                     D_1[i_7] 
-                                                                     );
-                                                              end ) )[
-                                                         Sum( 
-                                                            List( 
-                                                              [ 1 .. 
-                                                                 logic_new_fun\
-c_i_major_2 - 1 ], function ( i_7 )
-                                                                   return 
-                                                                    Length( 
-                                                                      ObjectLi\
-st( D_1[i_7] ) );
-                                                               end ) ) 
-                                                         +
-                                                            
-                                                            logic_new_func_i_mino\
-r_3] );
+                                            end ), Concatenation( List( [ 1 .. Length( D_1 ) ], function ( i_6 )
+                                                    return ObjectList( D_1[i_6] );
+                                                end ) )[Sum( List( [ 1 .. logic_new_func_j_major_4 - 1 ], function ( i_6 )
+                                                     return Length( ObjectList( D_1[i_6] ) );
+                                                 end ) ) + logic_new_func_j_minor_5] ), CAP_JIT_EXPR_CASE_WRAPPER( function (  )
+                                                if Sum( List( [ 1 .. logic_new_func_i_major_2 - 1 ], function ( i_7 )
+                                                                return Length( ObjectList( D_1[i_7] ) );
+                                                            end ) ) + logic_new_func_i_minor_3 = Sum( List( [ 1 .. logic_new_func_j_major_4 - 1 ], function ( i_7 )
+                                                                return Length( ObjectList( D_1[i_7] ) );
+                                                            end ) ) + logic_new_func_j_minor_5 then
+                                                    return IdentityMorphism( UnderlyingCategory( cat_1 ), Concatenation( List( [ 1 .. Length( D_1 ) ], function ( i_7 )
+                                                                  return ObjectList( D_1[i_7] );
+                                                              end ) )[Sum( List( [ 1 .. logic_new_func_i_major_2 - 1 ], function ( i_7 )
+                                                                   return Length( ObjectList( D_1[i_7] ) );
+                                                               end ) ) + logic_new_func_i_minor_3] );
                                                 else
-                                                    return 
-                                                     ZeroMorphism( 
-                                                       UnderlyingCategory( 
-                                                         cat_1 ), 
-                                                       Concatenation( 
-                                                           List( 
-                                                             [ 1 .. 
-                                                                Length( D_1 ) 
-                                                               ], 
-                                                             function ( i_7 )
-                                                                  return 
-                                                                   ObjectList
-                                                                      ( 
-                                                                     D_1[i_7] 
-                                                                     );
-                                                              end ) )[
-                                                         Sum( 
-                                                            List( 
-                                                              [ 1 .. 
-                                                                 logic_new_fun\
-c_i_major_2 - 1 ], function ( i_7 )
-                                                                   return 
-                                                                    Length( 
-                                                                      ObjectLi\
-st( D_1[i_7] ) );
-                                                               end ) ) 
-                                                         +
-                                                            
-                                                            logic_new_func_i_mino\
-r_3], Concatenation( List( [ 1 .. Length( D_1 ) ], function ( i_7 )
-                                                                  return 
-                                                                   ObjectList
-                                                                      ( 
-                                                                     D_1[i_7] 
-                                                                     );
-                                                              end ) )[
-                                                         Sum( 
-                                                            List( 
-                                                              [ 1 .. 
-                                                                 logic_new_fun\
-c_j_major_4 - 1 ], function ( i_7 )
-                                                                   return 
-                                                                    Length( 
-                                                                      ObjectLi\
-st( D_1[i_7] ) );
-                                                               end ) ) 
-                                                         +
-                                                            
-                                                            logic_new_func_j_mino\
-r_5] );
+                                                    return ZeroMorphism( UnderlyingCategory( cat_1 ), Concatenation( List( [ 1 .. Length( D_1 ) ], function ( i_7 )
+                                                                  return ObjectList( D_1[i_7] );
+                                                              end ) )[Sum( List( [ 1 .. logic_new_func_i_major_2 - 1 ], function ( i_7 )
+                                                                   return Length( ObjectList( D_1[i_7] ) );
+                                                               end ) ) + logic_new_func_i_minor_3], Concatenation( List( [ 1 .. Length( D_1 ) ], function ( i_7 )
+                                                                  return ObjectList( D_1[i_7] );
+                                                              end ) )[Sum( List( [ 1 .. logic_new_func_j_major_4 - 1 ], function ( i_7 )
+                                                                   return Length( ObjectList( D_1[i_7] ) );
+                                                               end ) ) + logic_new_func_j_minor_5] );
                                                 fi;
                                                 return;
                                             end )(  ) );
@@ -1596,108 +855,26 @@ gap> # Concatenation[i_major * ... + i_minor]
 gap> PrintLemma( );
 We have to show
 function ( cat_1, D_1 )
-    return ForAll( [ 1 .. Length( D_1 ) ], 
-       function ( logic_new_func_i_major_2 )
-            return 
-             ForAll( 
-               [ 1 .. Length( ObjectList( D_1[logic_new_func_i_major_2] ) ) ]
-                , function ( logic_new_func_i_minor_3 )
-                    return ForAll( [ 1 .. Length( D_1 ) ], 
-                       function ( logic_new_func_j_major_4 )
-                            return 
-                             ForAll( 
-                               [ 1 .. 
-                                  Length( 
-                                     ObjectList( 
-                                       D_1[logic_new_func_j_major_4] ) ) ], 
-                               function ( logic_new_func_j_minor_5 )
-                                    return 
-                                     IsCongruentForMorphisms( 
-                                       UnderlyingCategory( cat_1 ), 
-                                       CAP_JIT_EXPR_CASE_WRAPPER( 
-                                           function (  )
-                                                if
-                                                 logic_new_func_i_major_2 
-                                                      =
-                                                         
-                                                         logic_new_func_j_major_4
-                                                    and 
-                                                      logic_new_func_i_minor_3
-                                                      = logic_new_func_j_minor\
-_5 then
-                                                    return 
-                                                     IdentityMorphism( 
-                                                       UnderlyingCategory( 
-                                                         cat_1 ), 
-                                                       ObjectList( 
-                                                           D_1
-                                                              [logic_new_func_i\
-_major_2] )[logic_new_func_i_minor_3] );
+    return ForAll( [ 1 .. Length( D_1 ) ], function ( logic_new_func_i_major_2 )
+            return ForAll( [ 1 .. Length( ObjectList( D_1[logic_new_func_i_major_2] ) ) ], function ( logic_new_func_i_minor_3 )
+                    return ForAll( [ 1 .. Length( D_1 ) ], function ( logic_new_func_j_major_4 )
+                            return ForAll( [ 1 .. Length( ObjectList( D_1[logic_new_func_j_major_4] ) ) ], function ( logic_new_func_j_minor_5 )
+                                    return IsCongruentForMorphisms( UnderlyingCategory( cat_1 ), CAP_JIT_EXPR_CASE_WRAPPER( function (  )
+                                                if logic_new_func_i_major_2 = logic_new_func_j_major_4 and logic_new_func_i_minor_3 = logic_new_func_j_minor_5 then
+                                                    return IdentityMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[logic_new_func_i_major_2] )[logic_new_func_i_minor_3] );
                                                 else
-                                                    return 
-                                                     ZeroMorphism( 
-                                                       UnderlyingCategory( 
-                                                         cat_1 ), 
-                                                       ObjectList( 
-                                                           D_1
-                                                              [logic_new_func_i\
-_major_2] )[logic_new_func_i_minor_3], ObjectList( D_1[logic_new_func_j_major_\
-4] )[logic_new_func_j_minor_5] );
+                                                    return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[logic_new_func_i_major_2] )[logic_new_func_i_minor_3], ObjectList( D_1[logic_new_func_j_major_4] )[logic_new_func_j_minor_5] );
                                                 fi;
                                                 return;
-                                            end )(  ), 
-                                       CAP_JIT_EXPR_CASE_WRAPPER( 
-                                           function (  )
-                                                if
-                                                 Sum( List( 
-                                                           [ 1 .. 
-                                                              logic_new_func_i\
-_major_2 - 1 ], function ( i_7 )
-                                                                return 
-                                                                 Length( 
-                                                                   ObjectList
-                                                                      ( 
-                                                                     D_1[i_7] 
-                                                                     ) );
-                                                            end ) ) 
-                                                      +
-                                                         
-                                                         logic_new_func_i_minor_3
-                                                    = Sum( 
-                                                         List( 
-                                                           [ 1 .. 
-                                                              logic_new_func_j\
-_major_4 - 1 ], function ( i_7 )
-                                                                return 
-                                                                 Length( 
-                                                                   ObjectList
-                                                                      ( 
-                                                                     D_1[i_7] 
-                                                                     ) );
-                                                            end ) ) 
-                                                      +
-                                                         
-                                                         logic_new_func_j_minor_5
-                                                   then
-                                                    return 
-                                                     IdentityMorphism( 
-                                                       UnderlyingCategory( 
-                                                         cat_1 ), 
-                                                       ObjectList( 
-                                                           D_1
-                                                              [logic_new_func_i\
-_major_2] )[logic_new_func_i_minor_3] );
+                                            end )(  ), CAP_JIT_EXPR_CASE_WRAPPER( function (  )
+                                                if Sum( List( [ 1 .. logic_new_func_i_major_2 - 1 ], function ( i_7 )
+                                                                return Length( ObjectList( D_1[i_7] ) );
+                                                            end ) ) + logic_new_func_i_minor_3 = Sum( List( [ 1 .. logic_new_func_j_major_4 - 1 ], function ( i_7 )
+                                                                return Length( ObjectList( D_1[i_7] ) );
+                                                            end ) ) + logic_new_func_j_minor_5 then
+                                                    return IdentityMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[logic_new_func_i_major_2] )[logic_new_func_i_minor_3] );
                                                 else
-                                                    return 
-                                                     ZeroMorphism( 
-                                                       UnderlyingCategory( 
-                                                         cat_1 ), 
-                                                       ObjectList( 
-                                                           D_1
-                                                              [logic_new_func_i\
-_major_2] )[logic_new_func_i_minor_3], D_1[logic_new_func_j_major_4]
-                                                          [logic_new_func_j_mi\
-nor_5] );
+                                                    return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[logic_new_func_i_major_2] )[logic_new_func_i_minor_3], D_1[logic_new_func_j_major_4][logic_new_func_j_minor_5] );
                                                 fi;
                                                 return;
                                             end )(  ) );
@@ -1723,8 +900,7 @@ gap> StateNextLemma( );
 
 
 Lemma 5:
-In AdditiveClosure( a preadditive category ), injections in cofactors of direc\
-t sums followed by projections are zeros or identities:
+In AdditiveClosure( a preadditive category ), injections in cofactors of direct sums followed by projections are zeros or identities:
 For a list of objects D and two integers i and j such that
 • 1 <= i,
 • i <= Length( D ),
@@ -1732,12 +908,7 @@ For a list of objects D and two integers i and j such that
 • j <= Length( D ),
 we have
 function ( cat, D, i, j )
-    return 
-     IsCongruentForMorphisms( cat, 
-       PreCompose( cat, InjectionOfCofactorOfDirectSum( cat, D, i ), 
-         ProjectionInFactorOfDirectSum( cat, D, j ) ), 
-       CAP_JIT_INTERNAL_EXPR_CASE( i = j, IdentityMorphism( cat, D[i] ), 
-         true, ZeroMorphism( cat, D[i], D[j] ) ) );
+    return IsCongruentForMorphisms( cat, PreCompose( cat, InjectionOfCofactorOfDirectSum( cat, D, i ), ProjectionInFactorOfDirectSum( cat, D, j ) ), CAP_JIT_INTERNAL_EXPR_CASE( i = j, IdentityMorphism( cat, D[i] ), true, ZeroMorphism( cat, D[i], D[j] ) ) );
 end
 gap> # UnionOfRowsListList( nr_cols, L )[i][j]
 > ApplyLogicTemplate(
@@ -1823,101 +994,32 @@ gap> PrintLemma( );
 We have to show
 function ( cat_1, D_1, i_1, j_1 )
     return ForAll( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_2 )
-            return ForAll( [ 1 .. Length( ObjectList( D_1[j_1] ) ) ], 
-               function ( j_3 )
-                    return 
-                     IsCongruentForMorphisms( UnderlyingCategory( cat_1 ), 
-                       SumOfMorphisms( UnderlyingCategory( cat_1 ), 
-                         ObjectList( D_1[i_1] )[i_2], 
-                         List( [ 1 .. Length( D_1 ) ], 
-                           function ( logic_new_func_i_major_4 )
-                                return 
-                                 SumOfMorphisms( UnderlyingCategory( cat_1 ), 
-                                   ObjectList( D_1[i_1] )[i_2], 
-                                   List( 
-                                     [ 1 .. 
-                                        Length( 
-                                           ObjectList( 
-                                             D_1[logic_new_func_i_major_4] ) 
-                                           ) ], 
-                                     function ( logic_new_func_i_minor_5 )
-                                          if
-                                           logic_new_func_i_major_4 = i_1 
-                                                and i_2 
-                                                  = logic_new_func_i_minor_5 
-                                              and 
-                                                (logic_new_func_i_major_4 
-                                                  = j_1 
-                                                and logic_new_func_i_minor_5 
-                                                  = j_3) then
-                                              return 
-                                               IdentityMorphism( 
-                                                 UnderlyingCategory( cat_1 ), 
-                                                 ObjectList( D_1[i_1] )[i_2] )
-                                               ;
+            return ForAll( [ 1 .. Length( ObjectList( D_1[j_1] ) ) ], function ( j_3 )
+                    return IsCongruentForMorphisms( UnderlyingCategory( cat_1 ), SumOfMorphisms( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_2], List( [ 1 .. Length( D_1 ) ], function ( logic_new_func_i_major_4 )
+                                return SumOfMorphisms( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_2], List( [ 1 .. Length( ObjectList( D_1[logic_new_func_i_major_4] ) ) ], function ( logic_new_func_i_minor_5 )
+                                          if logic_new_func_i_major_4 = i_1 and i_2 = logic_new_func_i_minor_5 and (logic_new_func_i_major_4 = j_1 and logic_new_func_i_minor_5 = j_3) then
+                                              return IdentityMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_2] );
                                           else
-                                              return 
-                                               ZeroMorphism( 
-                                                 UnderlyingCategory( cat_1 ), 
-                                                 ObjectList( D_1[i_1] )[i_2], 
-                                                 ObjectList( D_1[j_1] )[j_3] )
-                                               ;
+                                              return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_2], ObjectList( D_1[j_1] )[j_3] );
                                           fi;
                                           return;
                                       end ), ObjectList( D_1[j_1] )[j_3] );
-                            end ), ObjectList( D_1[j_1] )[j_3] ), 
-                       CAP_JIT_EXPR_CASE_WRAPPER( function (  )
+                            end ), ObjectList( D_1[j_1] )[j_3] ), CAP_JIT_EXPR_CASE_WRAPPER( function (  )
                                     if i_1 = j_1 then
-                                        return 
-                                         List( 
-                                           [ 1 .. 
-                                              Length( ObjectList( D_1[i_1] ) 
-                                                 ) ], function ( i_5 )
-                                                return 
-                                                 List( 
-                                                   [ 1 .. 
-                                                      Length( 
-                                                         ObjectList( D_1[i_1] 
-                                                           ) ) ], 
-                                                   function ( j_6 )
+                                        return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_5 )
+                                                return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( j_6 )
                                                         if i_5 = j_6 then
-                                                            return 
-                                                             IdentityMorphism
-                                                                ( 
-                                                               UnderlyingCateg\
-ory( cat_1 ), ObjectList( D_1[i_1] )[i_5] );
+                                                            return IdentityMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_5] );
                                                         else
-                                                            return 
-                                                             ZeroMorphism( 
-                                                               UnderlyingCateg\
-ory( cat_1 ), ObjectList( D_1[i_1] )[i_5], ObjectList( D_1[i_1] )[j_6] );
+                                                            return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_5], ObjectList( D_1[i_1] )[j_6] );
                                                         fi;
                                                         return;
                                                     end );
                                             end );
                                     else
-                                        return 
-                                         List( 
-                                           [ 1 .. 
-                                              Length( ObjectList( D_1[i_1] ) 
-                                                 ) ], function ( i_5 )
-                                                return 
-                                                 List( 
-                                                   [ 1 .. 
-                                                      Length( 
-                                                         ObjectList( D_1[j_1] 
-                                                           ) ) ], 
-                                                   function ( j_6 )
-                                                        return 
-                                                         ZeroMorphism( 
-                                                           UnderlyingCategory
-                                                              ( cat_1 ), 
-                                                           ObjectList( 
-                                                               D_1[i_1] )[i_5]
-                                                            , 
-                                                           ObjectList( 
-                                                               D_1[j_1] )[j_6
-                                                             ] );
+                                        return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_5 )
+                                                return List( [ 1 .. Length( ObjectList( D_1[j_1] ) ) ], function ( j_6 )
+                                                        return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_5], ObjectList( D_1[j_1] )[j_6] );
                                                     end );
                                             end );
                                     fi;
@@ -1939,82 +1041,30 @@ gap> PrintLemma( );
 We have to show
 function ( cat_1, D_1, i_1, j_1 )
     return ForAll( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_2 )
-            return ForAll( [ 1 .. Length( ObjectList( D_1[j_1] ) ) ], 
-               function ( j_3 )
-                    return 
-                     IsCongruentForMorphisms( UnderlyingCategory( cat_1 ), 
-                       SumOfMorphisms( UnderlyingCategory( cat_1 ), 
-                         ObjectList( D_1[i_1] )[i_2], 
-                         List( [ 1 .. Length( D_1 ) ], 
-                           function ( logic_new_func_i_major_4 )
-                                if
-                                 logic_new_func_i_major_4 = i_1 
-                                      and logic_new_func_i_major_4 = j_1 
-                                    and i_2 = j_3 then
-                                    return 
-                                     IdentityMorphism( 
-                                       UnderlyingCategory( cat_1 ), 
-                                       ObjectList( D_1[i_1] )[i_2] );
+            return ForAll( [ 1 .. Length( ObjectList( D_1[j_1] ) ) ], function ( j_3 )
+                    return IsCongruentForMorphisms( UnderlyingCategory( cat_1 ), SumOfMorphisms( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_2], List( [ 1 .. Length( D_1 ) ], function ( logic_new_func_i_major_4 )
+                                if logic_new_func_i_major_4 = i_1 and logic_new_func_i_major_4 = j_1 and i_2 = j_3 then
+                                    return IdentityMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_2] );
                                 else
-                                    return 
-                                     ZeroMorphism( UnderlyingCategory( cat_1 )
-                                        , ObjectList( D_1[i_1] )[i_2], 
-                                       ObjectList( D_1[j_1] )[j_3] );
+                                    return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_2], ObjectList( D_1[j_1] )[j_3] );
                                 fi;
                                 return;
-                            end ), ObjectList( D_1[j_1] )[j_3] ), 
-                       CAP_JIT_EXPR_CASE_WRAPPER( function (  )
+                            end ), ObjectList( D_1[j_1] )[j_3] ), CAP_JIT_EXPR_CASE_WRAPPER( function (  )
                                     if i_1 = j_1 then
-                                        return 
-                                         List( 
-                                           [ 1 .. 
-                                              Length( ObjectList( D_1[i_1] ) 
-                                                 ) ], function ( i_5 )
-                                                return 
-                                                 List( 
-                                                   [ 1 .. 
-                                                      Length( 
-                                                         ObjectList( D_1[i_1] 
-                                                           ) ) ], 
-                                                   function ( j_6 )
+                                        return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_5 )
+                                                return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( j_6 )
                                                         if i_5 = j_6 then
-                                                            return 
-                                                             IdentityMorphism
-                                                                ( 
-                                                               UnderlyingCateg\
-ory( cat_1 ), ObjectList( D_1[i_1] )[i_5] );
+                                                            return IdentityMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_5] );
                                                         else
-                                                            return 
-                                                             ZeroMorphism( 
-                                                               UnderlyingCateg\
-ory( cat_1 ), ObjectList( D_1[i_1] )[i_5], ObjectList( D_1[i_1] )[j_6] );
+                                                            return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_5], ObjectList( D_1[i_1] )[j_6] );
                                                         fi;
                                                         return;
                                                     end );
                                             end );
                                     else
-                                        return 
-                                         List( 
-                                           [ 1 .. 
-                                              Length( ObjectList( D_1[i_1] ) 
-                                                 ) ], function ( i_5 )
-                                                return 
-                                                 List( 
-                                                   [ 1 .. 
-                                                      Length( 
-                                                         ObjectList( D_1[j_1] 
-                                                           ) ) ], 
-                                                   function ( j_6 )
-                                                        return 
-                                                         ZeroMorphism( 
-                                                           UnderlyingCategory
-                                                              ( cat_1 ), 
-                                                           ObjectList( 
-                                                               D_1[i_1] )[i_5]
-                                                            , 
-                                                           ObjectList( 
-                                                               D_1[j_1] )[j_6
-                                                             ] );
+                                        return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_5 )
+                                                return List( [ 1 .. Length( ObjectList( D_1[j_1] ) ) ], function ( j_6 )
+                                                        return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_5], ObjectList( D_1[j_1] )[j_6] );
                                                     end );
                                             end );
                                     fi;
@@ -2056,59 +1106,31 @@ gap> StateNextLemma( );
 
 
 Lemma 6:
-In AdditiveClosure( a preadditive category ), universal morphisms into direct \
-sums define morphisms:
+In AdditiveClosure( a preadditive category ), universal morphisms into direct sums define morphisms:
 For a list of objects D, an object T, and a list of morphisms tau such that
 • Length( tau ) = Length( D ),
 • Source( tau[i] ) = T,
 • Range( tau[i] ) = D[i],
 we have
 function ( cat, D, T, tau )
-    return IsWellDefinedForMorphismsWithGivenSourceAndRange( cat, T, 
-       UniversalMorphismIntoDirectSum( cat, D, T, tau ), DirectSum( cat, D ) )
-     ;
+    return IsWellDefinedForMorphismsWithGivenSourceAndRange( cat, T, UniversalMorphismIntoDirectSum( cat, D, T, tau ), DirectSum( cat, D ) );
 end
 gap> PrintLemma( );
 We have to show
 function ( cat_1, D_1, T_1, tau_1 )
-    if
-     not (IsList( UnionOfColumnsListList( Length( ObjectList( T_1 ) ), 
-                List( tau_1, MorphismMatrix ) ) ) 
-           and 
-             Length( UnionOfColumnsListList( Length( ObjectList( T_1 ) ), 
-                  List( tau_1, MorphismMatrix ) ) ) 
-             = Length( ObjectList( T_1 ) )) then
+    if not (IsList( UnionOfColumnsListList( Length( ObjectList( T_1 ) ), List( tau_1, MorphismMatrix ) ) ) and Length( UnionOfColumnsListList( Length( ObjectList( T_1 ) ), List( tau_1, MorphismMatrix ) ) ) = Length( ObjectList( T_1 ) )) then
         return false;
     elif not ForAll( [ 1 .. Length( ObjectList( T_1 ) ) ], function ( i_2 )
-                 return 
-                  (
-                    IsList( 
-                      UnionOfColumnsListList( Length( ObjectList( T_1 ) ), 
-                          List( tau_1, MorphismMatrix ) )[i_2] ) 
-                   and 
-                     Length( 
-                        UnionOfColumnsListList( Length( ObjectList( T_1 ) ), 
-                            List( tau_1, MorphismMatrix ) )[i_2] ) 
-                     = Sum( List( [ 1 .. Length( D_1 ) ], function ( i_3 )
+                 return (IsList( UnionOfColumnsListList( Length( ObjectList( T_1 ) ), List( tau_1, MorphismMatrix ) )[i_2] ) and Length( UnionOfColumnsListList( Length( ObjectList( T_1 ) ), List( tau_1, MorphismMatrix ) )[i_2] ) = Sum( List( [ 1 .. Length( D_1 ) ], function ( i_3 )
                                return Length( ObjectList( D_1[i_3] ) );
                            end ) ));
              end ) then
         return false;
     elif not ForAll( [ 1 .. Length( ObjectList( T_1 ) ) ], function ( i_2 )
-                 return 
-                  ForAll( 
-                    [ 1 .. Sum( List( [ 1 .. Length( D_1 ) ], function ( i_3 )
+                 return ForAll( [ 1 .. Sum( List( [ 1 .. Length( D_1 ) ], function ( i_3 )
                                  return Length( ObjectList( D_1[i_3] ) );
                              end ) ) ], function ( j_3 )
-                         return 
-                          IsWellDefinedForMorphismsWithGivenSourceAndRange( 
-                            UnderlyingCategory( cat_1 ), 
-                            ObjectList( T_1 )[i_2], 
-                            UnionOfColumnsListList( 
-                                  Length( ObjectList( T_1 ) ), 
-                                  List( tau_1, MorphismMatrix ) )[i_2][j_3], 
-                            Concatenation( 
-                                List( [ 1 .. Length( D_1 ) ], function ( i_4 )
+                         return IsWellDefinedForMorphismsWithGivenSourceAndRange( UnderlyingCategory( cat_1 ), ObjectList( T_1 )[i_2], UnionOfColumnsListList( Length( ObjectList( T_1 ) ), List( tau_1, MorphismMatrix ) )[i_2][j_3], Concatenation( List( [ 1 .. Length( D_1 ) ], function ( i_4 )
                                        return ObjectList( D_1[i_4] );
                                    end ) )[j_3] );
                      end );
@@ -2214,8 +1236,7 @@ gap> StateNextLemma( );
 
 
 Lemma 7:
-In AdditiveClosure( a preadditive category ), composing a universal morphism i\
-nto a direct sum with a projection gives a component:
+In AdditiveClosure( a preadditive category ), composing a universal morphism into a direct sum with a projection gives a component:
 For a list of objects D, an object T, and a list of morphisms tau such that
 • Length( tau ) = Length( D ),
 • Source( tau[i] ) = T,
@@ -2223,11 +1244,7 @@ For a list of objects D, an object T, and a list of morphisms tau such that
 we have
 function ( cat, D, T, tau )
     return ForAll( [ 1 .. Length( D ) ], function ( i )
-            return 
-             IsCongruentForMorphisms( cat, 
-               PreCompose( cat, UniversalMorphismIntoDirectSum( cat, D, T, 
-                   tau ), ProjectionInFactorOfDirectSum( cat, D, i ) ), 
-               tau[i] );
+            return IsCongruentForMorphisms( cat, PreCompose( cat, UniversalMorphismIntoDirectSum( cat, D, T, tau ), ProjectionInFactorOfDirectSum( cat, D, i ) ), tau[i] );
         end );
 end
 gap> # normalize List( tau, func )
@@ -2299,96 +1316,31 @@ gap> PrintLemma( );
 We have to show
 function ( cat_1, D_1, T_1, tau_1 )
     return ForAll( [ 1 .. Length( D_1 ) ], function ( i_2 )
-            return ForAll( [ 1 .. Length( ObjectList( T_1 ) ) ], 
-               function ( i_3 )
-                    return ForAll( [ 1 .. Length( ObjectList( D_1[i_2] ) ) ], 
-                       function ( j_4 )
-                            return 
-                             IsCongruentForMorphisms( 
-                               UnderlyingCategory( cat_1 ), 
-                               SumOfMorphisms( UnderlyingCategory( cat_1 ), 
-                                 ObjectList( T_1 )[i_3], 
-                                 List( [ 1 .. Length( D_1 ) ], 
-                                   function ( logic_new_func_i_major_5 )
-                                        return 
-                                         SumOfMorphisms( 
-                                           UnderlyingCategory( cat_1 ), 
-                                           ObjectList( T_1 )[i_3], 
-                                           List( 
-                                             [ 1 .. 
-                                                Length( 
-                                                   ObjectList( 
-                                                     D_1
-                                                        [logic_new_func_i_major\
-_5] ) ) ], function ( logic_new_func_i_minor_6 )
-                                                  return 
-                                                   PreCompose( 
-                                                     UnderlyingCategory( 
-                                                       cat_1 ), 
-                                                     Concatenation( 
-                                                         List( 
-                                                           [ 1 .. 
-                                                              Length( D_1 ) ]
-                                                            , 
-                                                           function ( 
-                                                                logic_new_func\
-_i_7 )
-                                                                return 
-                                                                 MorphismMatri\
-x( tau_1[logic_new_func_i_7] )[i_3];
-                                                            end ) )[
-                                                       Sum( 
-                                                          List( 
-                                                            [ 1 .. 
-                                                               logic_new_func_\
-i_major_5 - 1 ], function ( i_7 )
-                                                                 return 
-                                                                  Length( 
-                                                                    ObjectList
-                                                                       ( 
-                                                                      D_1[i_7
-                                                                        ] ) );
-                                                             end ) ) 
-                                                       +
-                                                          
-                                                          logic_new_func_i_minor_\
-6], CAP_JIT_EXPR_CASE_WRAPPER( function (  )
-                                                              if
-                                                               logic_new_func_\
-i_major_5 = i_2 then
-                                                                  return 
-                                                                   CAP_JIT_EXP\
-R_CASE_WRAPPER( function (  )
-                                                                            if
-                                                                            lo\
-gic_new_func_i_minor_6 = j_4 then
-                                                                                \
-return IdentityMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_2] )[l\
-ogic_new_func_i_minor_6] );
-                                                                            el\
-se
-                                                                                \
-return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_2] )[logic\
-_new_func_i_minor_6], ObjectList( D_1[i_2] )[j_4] );
-                                                                            fi\
-;
-                                                                            re\
-turn;
-                                                                        end )
-                                                                      (  );
+            return ForAll( [ 1 .. Length( ObjectList( T_1 ) ) ], function ( i_3 )
+                    return ForAll( [ 1 .. Length( ObjectList( D_1[i_2] ) ) ], function ( j_4 )
+                            return IsCongruentForMorphisms( UnderlyingCategory( cat_1 ), SumOfMorphisms( UnderlyingCategory( cat_1 ), ObjectList( T_1 )[i_3], List( [ 1 .. Length( D_1 ) ], function ( logic_new_func_i_major_5 )
+                                        return SumOfMorphisms( UnderlyingCategory( cat_1 ), ObjectList( T_1 )[i_3], List( [ 1 .. Length( ObjectList( D_1[logic_new_func_i_major_5] ) ) ], function ( logic_new_func_i_minor_6 )
+                                                  return PreCompose( UnderlyingCategory( cat_1 ), Concatenation( List( [ 1 .. Length( D_1 ) ], function ( logic_new_func_i_7 )
+                                                                return MorphismMatrix( tau_1[logic_new_func_i_7] )[i_3];
+                                                            end ) )[Sum( List( [ 1 .. logic_new_func_i_major_5 - 1 ], function ( i_7 )
+                                                                 return Length( ObjectList( D_1[i_7] ) );
+                                                             end ) ) + logic_new_func_i_minor_6], CAP_JIT_EXPR_CASE_WRAPPER( function (  )
+                                                              if logic_new_func_i_major_5 = i_2 then
+                                                                  return CAP_JIT_EXPR_CASE_WRAPPER( function (  )
+                                                                            if logic_new_func_i_minor_6 = j_4 then
+                                                                                return IdentityMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_2] )[logic_new_func_i_minor_6] );
+                                                                            else
+                                                                                return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_2] )[logic_new_func_i_minor_6], ObjectList( D_1[i_2] )[j_4] );
+                                                                            fi;
+                                                                            return;
+                                                                        end )(  );
                                                               else
-                                                                  return 
-                                                                   ZeroMorphis\
-m( UnderlyingCategory( cat_1 ), ObjectList( D_1[logic_new_func_i_major_5] )
-                                                                        [logic\
-_new_func_i_minor_6], ObjectList( D_1[i_2] )[j_4] );
+                                                                  return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[logic_new_func_i_major_5] )[logic_new_func_i_minor_6], ObjectList( D_1[i_2] )[j_4] );
                                                               fi;
                                                               return;
                                                           end )(  ) );
-                                              end ), 
-                                           ObjectList( D_1[i_2] )[j_4] );
-                                    end ), ObjectList( D_1[i_2] )[j_4] ), 
-                               MorphismMatrix( tau_1[i_2] )[i_3][j_4] );
+                                              end ), ObjectList( D_1[i_2] )[j_4] );
+                                    end ), ObjectList( D_1[i_2] )[j_4] ), MorphismMatrix( tau_1[i_2] )[i_3][j_4] );
                         end );
                 end );
         end );
@@ -2431,54 +1383,18 @@ gap> PrintLemma( );
 We have to show
 function ( cat_1, D_1, T_1, tau_1 )
     return ForAll( [ 1 .. Length( D_1 ) ], function ( i_2 )
-            return ForAll( [ 1 .. Length( ObjectList( T_1 ) ) ], 
-               function ( i_3 )
-                    return ForAll( [ 1 .. Length( ObjectList( D_1[i_2] ) ) ], 
-                       function ( j_4 )
-                            return 
-                             IsCongruentForMorphisms( 
-                               UnderlyingCategory( cat_1 ), 
-                               SumOfMorphisms( UnderlyingCategory( cat_1 ), 
-                                 ObjectList( T_1 )[i_3], 
-                                 List( [ 1 .. Length( D_1 ) ], 
-                                   function ( logic_new_func_i_major_5 )
-                                        return 
-                                         SumOfMorphisms( 
-                                           UnderlyingCategory( cat_1 ), 
-                                           ObjectList( T_1 )[i_3], 
-                                           List( 
-                                             [ 1 .. 
-                                                Length( 
-                                                   ObjectList( 
-                                                     D_1
-                                                        [logic_new_func_i_major\
-_5] ) ) ], function ( logic_new_func_i_minor_6 )
-                                                  if
-                                                   logic_new_func_i_major_5 
-                                                        = i_2 
-                                                      and 
-                                                        logic_new_func_i_minor\
-_6 = j_4 then
-                                                      return 
-                                                       MorphismMatrix( 
-                                                             tau_1
-                                                                [logic_new_fun\
-c_i_major_5] )[i_3][logic_new_func_i_minor_6];
+            return ForAll( [ 1 .. Length( ObjectList( T_1 ) ) ], function ( i_3 )
+                    return ForAll( [ 1 .. Length( ObjectList( D_1[i_2] ) ) ], function ( j_4 )
+                            return IsCongruentForMorphisms( UnderlyingCategory( cat_1 ), SumOfMorphisms( UnderlyingCategory( cat_1 ), ObjectList( T_1 )[i_3], List( [ 1 .. Length( D_1 ) ], function ( logic_new_func_i_major_5 )
+                                        return SumOfMorphisms( UnderlyingCategory( cat_1 ), ObjectList( T_1 )[i_3], List( [ 1 .. Length( ObjectList( D_1[logic_new_func_i_major_5] ) ) ], function ( logic_new_func_i_minor_6 )
+                                                  if logic_new_func_i_major_5 = i_2 and logic_new_func_i_minor_6 = j_4 then
+                                                      return MorphismMatrix( tau_1[logic_new_func_i_major_5] )[i_3][logic_new_func_i_minor_6];
                                                   else
-                                                      return 
-                                                       ZeroMorphism( 
-                                                         UnderlyingCategory( 
-                                                           cat_1 ), 
-                                                         ObjectList( T_1 )[i_3
-                                                           ], 
-                                                         ObjectList( D_1[i_2] 
-                                                             )[j_4] );
+                                                      return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( T_1 )[i_3], ObjectList( D_1[i_2] )[j_4] );
                                                   fi;
                                                   return;
-                                              end ), 
-                                           ObjectList( D_1[i_2] )[j_4] );
-                                    end ), ObjectList( D_1[i_2] )[j_4] ), 
-                               MorphismMatrix( tau_1[i_2] )[i_3][j_4] );
+                                              end ), ObjectList( D_1[i_2] )[j_4] );
+                                    end ), ObjectList( D_1[i_2] )[j_4] ), MorphismMatrix( tau_1[i_2] )[i_3][j_4] );
                         end );
                 end );
         end );
@@ -2496,33 +1412,16 @@ gap> PrintLemma( );
 We have to show
 function ( cat_1, D_1, T_1, tau_1 )
     return ForAll( [ 1 .. Length( D_1 ) ], function ( i_2 )
-            return ForAll( [ 1 .. Length( ObjectList( T_1 ) ) ], 
-               function ( i_3 )
-                    return ForAll( [ 1 .. Length( ObjectList( D_1[i_2] ) ) ], 
-                       function ( j_4 )
-                            return 
-                             IsCongruentForMorphisms( 
-                               UnderlyingCategory( cat_1 ), 
-                               SumOfMorphisms( UnderlyingCategory( cat_1 ), 
-                                 ObjectList( T_1 )[i_3], 
-                                 List( [ 1 .. Length( D_1 ) ], 
-                                   function ( logic_new_func_i_major_5 )
+            return ForAll( [ 1 .. Length( ObjectList( T_1 ) ) ], function ( i_3 )
+                    return ForAll( [ 1 .. Length( ObjectList( D_1[i_2] ) ) ], function ( j_4 )
+                            return IsCongruentForMorphisms( UnderlyingCategory( cat_1 ), SumOfMorphisms( UnderlyingCategory( cat_1 ), ObjectList( T_1 )[i_3], List( [ 1 .. Length( D_1 ) ], function ( logic_new_func_i_major_5 )
                                         if logic_new_func_i_major_5 = i_2 then
-                                            return 
-                                             MorphismMatrix( 
-                                                   tau_1
-                                                      [logic_new_func_i_major_\
-5] )[i_3][j_4];
+                                            return MorphismMatrix( tau_1[logic_new_func_i_major_5] )[i_3][j_4];
                                         else
-                                            return 
-                                             ZeroMorphism( 
-                                               UnderlyingCategory( cat_1 ), 
-                                               ObjectList( T_1 )[i_3], 
-                                               ObjectList( D_1[i_2] )[j_4] );
+                                            return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( T_1 )[i_3], ObjectList( D_1[i_2] )[j_4] );
                                         fi;
                                         return;
-                                    end ), ObjectList( D_1[i_2] )[j_4] ), 
-                               MorphismMatrix( tau_1[i_2] )[i_3][j_4] );
+                                    end ), ObjectList( D_1[i_2] )[j_4] ), MorphismMatrix( tau_1[i_2] )[i_3][j_4] );
                         end );
                 end );
         end );
@@ -2544,63 +1443,35 @@ gap> StateNextLemma( );
 
 
 Lemma 8:
-In AdditiveClosure( a preadditive category ), universal morphisms from direct \
-sums define morphisms:
+In AdditiveClosure( a preadditive category ), universal morphisms from direct sums define morphisms:
 For a list of objects D, an object T, and a list of morphisms tau such that
 • Length( tau ) = Length( D ),
 • Source( tau[i] ) = D[i],
 • Range( tau[i] ) = T,
 we have
 function ( cat, D, T, tau )
-    return IsWellDefinedForMorphismsWithGivenSourceAndRange( cat, 
-       DirectSum( cat, D ), UniversalMorphismFromDirectSum( cat, D, T, tau ), 
-       T );
+    return IsWellDefinedForMorphismsWithGivenSourceAndRange( cat, DirectSum( cat, D ), UniversalMorphismFromDirectSum( cat, D, T, tau ), T );
 end
 gap> PrintLemma( );
 We have to show
 function ( cat_1, D_1, T_1, tau_1 )
-    if
-     not (IsList( UnionOfRowsListList( Length( ObjectList( T_1 ) ), 
-                List( tau_1, MorphismMatrix ) ) ) 
-           and 
-             Length( UnionOfRowsListList( Length( ObjectList( T_1 ) ), 
-                  List( tau_1, MorphismMatrix ) ) ) 
-             = Sum( List( [ 1 .. Length( D_1 ) ], function ( i_2 )
+    if not (IsList( UnionOfRowsListList( Length( ObjectList( T_1 ) ), List( tau_1, MorphismMatrix ) ) ) and Length( UnionOfRowsListList( Length( ObjectList( T_1 ) ), List( tau_1, MorphismMatrix ) ) ) = Sum( List( [ 1 .. Length( D_1 ) ], function ( i_2 )
                        return Length( ObjectList( D_1[i_2] ) );
                    end ) )) then
         return false;
-    elif
-     not ForAll( [ 1 .. Sum( List( [ 1 .. Length( D_1 ) ], function ( i_2 )
+    elif not ForAll( [ 1 .. Sum( List( [ 1 .. Length( D_1 ) ], function ( i_2 )
                          return Length( ObjectList( D_1[i_2] ) );
                      end ) ) ], function ( i_2 )
-                 return 
-                  (
-                    IsList( 
-                      UnionOfRowsListList( Length( ObjectList( T_1 ) ), 
-                          List( tau_1, MorphismMatrix ) )[i_2] ) 
-                   and 
-                     Length( 
-                        UnionOfRowsListList( Length( ObjectList( T_1 ) ), 
-                            List( tau_1, MorphismMatrix ) )[i_2] ) 
-                     = Length( ObjectList( T_1 ) ));
+                 return (IsList( UnionOfRowsListList( Length( ObjectList( T_1 ) ), List( tau_1, MorphismMatrix ) )[i_2] ) and Length( UnionOfRowsListList( Length( ObjectList( T_1 ) ), List( tau_1, MorphismMatrix ) )[i_2] ) = Length( ObjectList( T_1 ) ));
              end ) then
         return false;
-    elif
-     not ForAll( [ 1 .. Sum( List( [ 1 .. Length( D_1 ) ], function ( i_2 )
+    elif not ForAll( [ 1 .. Sum( List( [ 1 .. Length( D_1 ) ], function ( i_2 )
                          return Length( ObjectList( D_1[i_2] ) );
                      end ) ) ], function ( i_2 )
-                 return ForAll( [ 1 .. Length( ObjectList( T_1 ) ) ], 
-                    function ( j_3 )
-                         return 
-                          IsWellDefinedForMorphismsWithGivenSourceAndRange( 
-                            UnderlyingCategory( cat_1 ), 
-                            Concatenation( 
-                                List( [ 1 .. Length( D_1 ) ], function ( i_4 )
+                 return ForAll( [ 1 .. Length( ObjectList( T_1 ) ) ], function ( j_3 )
+                         return IsWellDefinedForMorphismsWithGivenSourceAndRange( UnderlyingCategory( cat_1 ), Concatenation( List( [ 1 .. Length( D_1 ) ], function ( i_4 )
                                        return ObjectList( D_1[i_4] );
-                                   end ) )[i_2], 
-                            UnionOfRowsListList( Length( ObjectList( T_1 ) ), 
-                                  List( tau_1, MorphismMatrix ) )[i_2][j_3], 
-                            ObjectList( T_1 )[j_3] );
+                                   end ) )[i_2], UnionOfRowsListList( Length( ObjectList( T_1 ) ), List( tau_1, MorphismMatrix ) )[i_2][j_3], ObjectList( T_1 )[j_3] );
                      end );
              end ) then
         return false;
@@ -2703,9 +1574,7 @@ gap> StateNextLemma( );
 
 
 Lemma 9:
-In AdditiveClosure( a preadditive category ), composing an injection of a cofa\
-ctor of a direct sum with a universal morphism from a direct sum gives a compo\
-nent:
+In AdditiveClosure( a preadditive category ), composing an injection of a cofactor of a direct sum with a universal morphism from a direct sum gives a component:
 For a list of objects D, an object T, and a list of morphisms tau such that
 • Length( tau ) = Length( D ),
 • Source( tau[i] ) = D[i],
@@ -2713,10 +1582,7 @@ For a list of objects D, an object T, and a list of morphisms tau such that
 we have
 function ( cat, D, T, tau )
     return ForAll( [ 1 .. Length( D ) ], function ( i )
-            return 
-             IsCongruentForMorphisms( cat, 
-               PreCompose( cat, InjectionOfCofactorOfDirectSum( cat, D, i ), 
-                 UniversalMorphismFromDirectSum( cat, D, T, tau ) ), tau[i] );
+            return IsCongruentForMorphisms( cat, PreCompose( cat, InjectionOfCofactorOfDirectSum( cat, D, i ), UniversalMorphismFromDirectSum( cat, D, T, tau ) ), tau[i] );
         end );
 end
 gap> # normalize List( tau, func )
@@ -2790,101 +1656,33 @@ gap> PrintLemma( );
 We have to show
 function ( cat_1, D_1, T_1, tau_1 )
     return ForAll( [ 1 .. Length( D_1 ) ], function ( i_2 )
-            return ForAll( [ 1 .. Length( ObjectList( D_1[i_2] ) ) ], 
-               function ( i_3 )
-                    return ForAll( [ 1 .. Length( ObjectList( T_1 ) ) ], 
-                       function ( j_4 )
-                            return 
-                             IsCongruentForMorphisms( 
-                               UnderlyingCategory( cat_1 ), 
-                               SumOfMorphisms( UnderlyingCategory( cat_1 ), 
-                                 ObjectList( D_1[i_2] )[i_3], 
-                                 List( [ 1 .. Length( D_1 ) ], 
-                                   function ( logic_new_func_i_major_5 )
-                                        return 
-                                         SumOfMorphisms( 
-                                           UnderlyingCategory( cat_1 ), 
-                                           ObjectList( D_1[i_2] )[i_3], 
-                                           List( 
-                                             [ 1 .. 
-                                                Length( 
-                                                   ObjectList( 
-                                                     D_1
-                                                        [logic_new_func_i_major\
-_5] ) ) ], function ( logic_new_func_i_minor_6 )
-                                                  return 
-                                                   PreCompose( 
-                                                     UnderlyingCategory( 
-                                                       cat_1 ), 
-                                                     CAP_JIT_EXPR_CASE_WRAPPER
-                                                          ( function (  )
-                                                              if
-                                                               logic_new_func_\
-i_major_5 = i_2 then
-                                                                  return 
-                                                                   CAP_JIT_EXP\
-R_CASE_WRAPPER( function (  )
-                                                                            if
-                                                                            i_\
-3 = logic_new_func_i_minor_6 then
-                                                                                \
-return IdentityMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_2] )[i\
-_3] );
-                                                                            el\
-se
-                                                                                \
-return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_2] )[i_3],\
- ObjectList( D_1[i_2] )[logic_new_func_i_minor_6] );
-                                                                            fi\
-;
-                                                                            re\
-turn;
-                                                                        end )
-                                                                      (  );
+            return ForAll( [ 1 .. Length( ObjectList( D_1[i_2] ) ) ], function ( i_3 )
+                    return ForAll( [ 1 .. Length( ObjectList( T_1 ) ) ], function ( j_4 )
+                            return IsCongruentForMorphisms( UnderlyingCategory( cat_1 ), SumOfMorphisms( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_2] )[i_3], List( [ 1 .. Length( D_1 ) ], function ( logic_new_func_i_major_5 )
+                                        return SumOfMorphisms( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_2] )[i_3], List( [ 1 .. Length( ObjectList( D_1[logic_new_func_i_major_5] ) ) ], function ( logic_new_func_i_minor_6 )
+                                                  return PreCompose( UnderlyingCategory( cat_1 ), CAP_JIT_EXPR_CASE_WRAPPER( function (  )
+                                                              if logic_new_func_i_major_5 = i_2 then
+                                                                  return CAP_JIT_EXPR_CASE_WRAPPER( function (  )
+                                                                            if i_3 = logic_new_func_i_minor_6 then
+                                                                                return IdentityMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_2] )[i_3] );
+                                                                            else
+                                                                                return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_2] )[i_3], ObjectList( D_1[i_2] )[logic_new_func_i_minor_6] );
+                                                                            fi;
+                                                                            return;
+                                                                        end )(  );
                                                               else
-                                                                  return 
-                                                                   ZeroMorphis\
-m( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_2] )[i_3], ObjectList( D_1[l\
-ogic_new_func_i_major_5] )[logic_new_func_i_minor_6] );
+                                                                  return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_2] )[i_3], ObjectList( D_1[logic_new_func_i_major_5] )[logic_new_func_i_minor_6] );
                                                               fi;
                                                               return;
-                                                          end )(  ), 
-                                                     Concatenation( 
-                                                         List( 
-                                                           [ 1 .. 
-                                                              Length( D_1 ) ]
-                                                            , 
-                                                           function ( 
-                                                                logic_new_func\
-_i_7 )
-                                                                return 
-                                                                 List( 
-                                                                   MorphismMat\
-rix( tau_1[logic_new_func_i_7] ), function ( logic_new_func_row_8 )
-                                                                        return
-                                                                         logic\
-_new_func_row_8[j_4];
+                                                          end )(  ), Concatenation( List( [ 1 .. Length( D_1 ) ], function ( logic_new_func_i_7 )
+                                                                return List( MorphismMatrix( tau_1[logic_new_func_i_7] ), function ( logic_new_func_row_8 )
+                                                                        return logic_new_func_row_8[j_4];
                                                                     end );
-                                                            end ) )[
-                                                       Sum( 
-                                                          List( 
-                                                            [ 1 .. 
-                                                               logic_new_func_\
-i_major_5 - 1 ], function ( i_7 )
-                                                                 return 
-                                                                  Length( 
-                                                                    ObjectList
-                                                                       ( 
-                                                                      D_1[i_7
-                                                                        ] ) );
-                                                             end ) ) 
-                                                       +
-                                                          
-                                                          logic_new_func_i_minor_\
-6] );
+                                                            end ) )[Sum( List( [ 1 .. logic_new_func_i_major_5 - 1 ], function ( i_7 )
+                                                                 return Length( ObjectList( D_1[i_7] ) );
+                                                             end ) ) + logic_new_func_i_minor_6] );
                                               end ), ObjectList( T_1 )[j_4] );
-                                    end ), ObjectList( T_1 )[j_4] ), 
-                               MorphismMatrix( tau_1[i_2] )[i_3][j_4] );
+                                    end ), ObjectList( T_1 )[j_4] ), MorphismMatrix( tau_1[i_2] )[i_3][j_4] );
                         end );
                 end );
         end );
@@ -2927,55 +1725,18 @@ gap> PrintLemma( );
 We have to show
 function ( cat_1, D_1, T_1, tau_1 )
     return ForAll( [ 1 .. Length( D_1 ) ], function ( i_2 )
-            return ForAll( [ 1 .. Length( ObjectList( D_1[i_2] ) ) ], 
-               function ( i_3 )
-                    return ForAll( [ 1 .. Length( ObjectList( T_1 ) ) ], 
-                       function ( j_4 )
-                            return 
-                             IsCongruentForMorphisms( 
-                               UnderlyingCategory( cat_1 ), 
-                               SumOfMorphisms( UnderlyingCategory( cat_1 ), 
-                                 ObjectList( D_1[i_2] )[i_3], 
-                                 List( [ 1 .. Length( D_1 ) ], 
-                                   function ( logic_new_func_i_major_5 )
-                                        return 
-                                         SumOfMorphisms( 
-                                           UnderlyingCategory( cat_1 ), 
-                                           ObjectList( D_1[i_2] )[i_3], 
-                                           List( 
-                                             [ 1 .. 
-                                                Length( 
-                                                   ObjectList( 
-                                                     D_1
-                                                        [logic_new_func_i_major\
-_5] ) ) ], function ( logic_new_func_i_minor_6 )
-                                                  if
-                                                   logic_new_func_i_major_5 
-                                                        = i_2 
-                                                      and i_3 
-                                                        =
-                                                           
-                                                           logic_new_func_i_minor\
-_6 then
-                                                      return 
-                                                       MorphismMatrix( 
-                                                             tau_1
-                                                                [logic_new_fun\
-c_i_major_5] )[logic_new_func_i_minor_6][j_4];
+            return ForAll( [ 1 .. Length( ObjectList( D_1[i_2] ) ) ], function ( i_3 )
+                    return ForAll( [ 1 .. Length( ObjectList( T_1 ) ) ], function ( j_4 )
+                            return IsCongruentForMorphisms( UnderlyingCategory( cat_1 ), SumOfMorphisms( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_2] )[i_3], List( [ 1 .. Length( D_1 ) ], function ( logic_new_func_i_major_5 )
+                                        return SumOfMorphisms( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_2] )[i_3], List( [ 1 .. Length( ObjectList( D_1[logic_new_func_i_major_5] ) ) ], function ( logic_new_func_i_minor_6 )
+                                                  if logic_new_func_i_major_5 = i_2 and i_3 = logic_new_func_i_minor_6 then
+                                                      return MorphismMatrix( tau_1[logic_new_func_i_major_5] )[logic_new_func_i_minor_6][j_4];
                                                   else
-                                                      return 
-                                                       ZeroMorphism( 
-                                                         UnderlyingCategory( 
-                                                           cat_1 ), 
-                                                         ObjectList( D_1[i_2] 
-                                                             )[i_3], 
-                                                         ObjectList( T_1 )[j_4
-                                                           ] );
+                                                      return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_2] )[i_3], ObjectList( T_1 )[j_4] );
                                                   fi;
                                                   return;
                                               end ), ObjectList( T_1 )[j_4] );
-                                    end ), ObjectList( T_1 )[j_4] ), 
-                               MorphismMatrix( tau_1[i_2] )[i_3][j_4] );
+                                    end ), ObjectList( T_1 )[j_4] ), MorphismMatrix( tau_1[i_2] )[i_3][j_4] );
                         end );
                 end );
         end );
@@ -2993,33 +1754,16 @@ gap> PrintLemma( );
 We have to show
 function ( cat_1, D_1, T_1, tau_1 )
     return ForAll( [ 1 .. Length( D_1 ) ], function ( i_2 )
-            return ForAll( [ 1 .. Length( ObjectList( D_1[i_2] ) ) ], 
-               function ( i_3 )
-                    return ForAll( [ 1 .. Length( ObjectList( T_1 ) ) ], 
-                       function ( j_4 )
-                            return 
-                             IsCongruentForMorphisms( 
-                               UnderlyingCategory( cat_1 ), 
-                               SumOfMorphisms( UnderlyingCategory( cat_1 ), 
-                                 ObjectList( D_1[i_2] )[i_3], 
-                                 List( [ 1 .. Length( D_1 ) ], 
-                                   function ( logic_new_func_i_major_5 )
+            return ForAll( [ 1 .. Length( ObjectList( D_1[i_2] ) ) ], function ( i_3 )
+                    return ForAll( [ 1 .. Length( ObjectList( T_1 ) ) ], function ( j_4 )
+                            return IsCongruentForMorphisms( UnderlyingCategory( cat_1 ), SumOfMorphisms( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_2] )[i_3], List( [ 1 .. Length( D_1 ) ], function ( logic_new_func_i_major_5 )
                                         if logic_new_func_i_major_5 = i_2 then
-                                            return 
-                                             MorphismMatrix( 
-                                                   tau_1
-                                                      [logic_new_func_i_major_\
-5] )[i_3][j_4];
+                                            return MorphismMatrix( tau_1[logic_new_func_i_major_5] )[i_3][j_4];
                                         else
-                                            return 
-                                             ZeroMorphism( 
-                                               UnderlyingCategory( cat_1 ), 
-                                               ObjectList( D_1[i_2] )[i_3], 
-                                               ObjectList( T_1 )[j_4] );
+                                            return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_2] )[i_3], ObjectList( T_1 )[j_4] );
                                         fi;
                                         return;
-                                    end ), ObjectList( T_1 )[j_4] ), 
-                               MorphismMatrix( tau_1[i_2] )[i_3][j_4] );
+                                    end ), ObjectList( T_1 )[j_4] ), MorphismMatrix( tau_1[i_2] )[i_3][j_4] );
                         end );
                 end );
         end );
@@ -3042,6 +1786,9 @@ gap> AssertProposition( );
 
 Summing up, we have shown:
 AdditiveClosure( a preadditive category ) has direct sums. ∎
+
+#
+gap> SizeScreen( [ old_screen_width ] );;
 
 #
 gap> STOP_TEST( "AdditiveClosure_has_direct_sums" );
