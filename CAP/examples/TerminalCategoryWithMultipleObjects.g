@@ -10,7 +10,7 @@ T := TerminalCategoryWithMultipleObjects( );
 Display( T );
 #! A CAP category with name TerminalCategoryWithMultipleObjects( ):
 #! 
-#! 65 primitive operations were used to derive 312 operations for this category \
+#! 70 primitive operations were used to derive 313 operations for this category \
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
@@ -74,8 +74,28 @@ IsEqualForObjects( a, b );
 #! false
 IsIsomorphicForObjects( a, b );
 #! true
-IsIsomorphism( SomeIsomorphismBetweenObjects( a, b ) );
+mor_ab := SomeIsomorphismBetweenObjects( a, b );
+#! <A zero, isomorphism in TerminalCategoryWithMultipleObjects( )>
+IsIsomorphism( mor_ab );
 #! true
+Display( mor_ab );
+#! a
+#! |
+#! | SomeIsomorphismBetweenObjects
+#! v
+#! b
+Hom_ab := MorphismsOfExternalHom( a, b );
+#! [ <A zero, isomorphism in TerminalCategoryWithMultipleObjects( )> ]
+Display( Hom_ab[1] );
+#! a
+#! |
+#! | InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
+#! v
+#! b
+Hom_ab[1] = mor_ab;
+#! true
+HomStructure( mor_ab );
+#! <A zero, identity morphism in TerminalCategoryWithSingleObject( )>
 t := TensorProduct( a, b );
 #! <A zero object in TerminalCategoryWithMultipleObjects( )>
 Display( t );
@@ -108,6 +128,8 @@ IsCongruentForMorphisms( m, n );
 #! true
 m = n;
 #! true
+hom_mn := HomStructure( m, n );
+#! <A zero, identity morphism in TerminalCategoryWithSingleObject( )>
 id := IdentityMorphism( a );
 #! <A zero, identity morphism in TerminalCategoryWithMultipleObjects( )>
 Display( id );

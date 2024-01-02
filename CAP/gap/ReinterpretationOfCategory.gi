@@ -208,6 +208,18 @@ InstallMethod( ReinterpretationOfCategory,
         
     end );
     
+    if "MorphismsOfExternalHom" in list_of_operations_to_install then
+        
+        AddMorphismsOfExternalHom( D,
+          function( cat, a, b )
+            
+            return List( MorphismsOfExternalHom( ModelingCategory( cat ), ModelingObject( cat, a ), ModelingObject( cat, b ) ),
+                         mor -> ReinterpretationOfMorphism( cat, a, mor, b ) );
+            
+        end );
+        
+    fi;
+    
     if "BasisOfExternalHom" in list_of_operations_to_install then
         
         AddBasisOfExternalHom( D,

@@ -3648,6 +3648,13 @@ MereExistenceOfSolutionOfLinearSystemInAbCategory := rec(
   pre_function_full := "SolveLinearSystemInAbCategory"
 ),
 
+MorphismsOfExternalHom := rec(
+  filter_list := [ "category", "object", "object" ],
+  return_type := "list_of_morphisms",
+  dual_operation := "MorphismsOfExternalHom",
+  dual_arguments_reversed := true
+),
+
 BasisOfExternalHom := rec(
   filter_list := [ "category", "object", "object" ],
   return_type := "list_of_morphisms",

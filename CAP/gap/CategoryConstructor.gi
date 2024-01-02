@@ -20,6 +20,7 @@ InstallMethod( CategoryConstructor,
         object_datum_type := IsObject, # IsFilter or IsRecord
         morphism_datum_type := IsObject, # IsFilter or IsRecord
         commutative_ring_of_linear_category := R -> IsRing( R ) and HasIsCommutative( R ) and IsCommutative( R ),
+        range_category_of_homomorphism_structure := cat -> IsCapCategory( cat ) or cat = "self",
         properties := IsList,
         object_constructor := IsFunction,
         object_datum := IsFunction,
@@ -125,6 +126,16 @@ InstallMethod( CategoryConstructor,
     if IsBound( options.commutative_ring_of_linear_category ) then
         
         SetCommutativeRingOfLinearCategory( CC, options.commutative_ring_of_linear_category );
+        
+    fi;
+    
+    if IsBound( options.range_category_of_homomorphism_structure ) then
+        
+        if options.range_category_of_homomorphism_structure = "self" then
+            SetRangeCategoryOfHomomorphismStructure( CC, CC );
+        else
+            SetRangeCategoryOfHomomorphismStructure( CC, options.range_category_of_homomorphism_structure );
+        fi;
         
     fi;
     
