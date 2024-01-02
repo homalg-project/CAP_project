@@ -1788,6 +1788,9 @@ Summing up, we have shown:
 AdditiveClosure( a preadditive category ) has direct sums. ∎
 
 #
+gap> CapJitDisableProofAssistantMode( );
+
+#
 gap> SizeScreen( [ old_screen_width ] );;
 
 #

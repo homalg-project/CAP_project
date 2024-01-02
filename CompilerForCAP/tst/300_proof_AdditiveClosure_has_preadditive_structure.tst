@@ -420,6 +420,9 @@ Summing up, we have shown:
 AdditiveClosure( a preadditive category ) is equipped with a preadditive structure. ∎
 
 #
+gap> CapJitDisableProofAssistantMode( );
+
+#
 gap> SizeScreen( [ old_screen_width ] );;
 
 #
