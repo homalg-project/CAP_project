@@ -764,7 +764,7 @@ TerminalCategoryWithMultipleObjects( )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( T );</span>
 A CAP category with name TerminalCategoryWithMultipleObjects( ):
 
-65 primitive operations were used to derive 312 operations for this category \
+70 primitive operations were used to derive 313 operations for this category \
 which algorithmically
 * IsCategoryWithDecidableColifts
 * IsCategoryWithDecidableLifts
@@ -828,8 +828,28 @@ b
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphicForObjects( a, b );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism( SomeIsomorphismBetweenObjects( a, b ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor_ab := SomeIsomorphismBetweenObjects( a, b );</span>
+&lt;A zero, isomorphism in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism( mor_ab );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( mor_ab );</span>
+a
+|
+| SomeIsomorphismBetweenObjects
+v
+b
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Hom_ab := MorphismsOfExternalHom( a, b );</span>
+[ &lt;A zero, isomorphism in TerminalCategoryWithMultipleObjects( )&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Hom_ab[1] );</span>
+a
+|
+| InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
+v
+b
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Hom_ab[1] = mor_ab;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( mor_ab );</span>
+&lt;A zero, identity morphism in TerminalCategoryWithSingleObject( )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := TensorProduct( a, b );</span>
 &lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( t );</span>
@@ -862,6 +882,8 @@ false
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m = n;</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_mn := HomStructure( m, n );</span>
+&lt;A zero, identity morphism in TerminalCategoryWithSingleObject( )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id := IdentityMorphism( a );</span>
 &lt;A zero, identity morphism in TerminalCategoryWithMultipleObjects( )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( id );</span>
@@ -923,7 +945,7 @@ TerminalCategoryWithSingleObject( )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( T );</span>
 A CAP category with name TerminalCategoryWithSingleObject( ):
 
-63 primitive operations were used to derive 312 operations for this category \
+64 primitive operations were used to derive 313 operations for this category \
 which algorithmically
 * IsCategoryWithDecidableColifts
 * IsCategoryWithDecidableLifts

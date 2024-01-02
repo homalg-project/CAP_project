@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2023.12-11
+                                   2023.12-14
   
   
-                                18 December 2023
+                                 2 January 2024
   
   
                                Sebastian Gutsche
@@ -289,9 +289,10 @@
       3.16-17 HomStructure
       3.16-18 ExtendRangeOfHomomorphismStructureByFullEmbedding
       3.16-19 ExtendRangeOfHomomorphismStructureByIdentityAsFullEmbedding
-      3.16-20 BasisOfExternalHom
-      3.16-21 CoefficientsOfMorphismWithGivenBasisOfExternalHom
-      3.16-22 CoefficientsOfMorphism
+      3.16-20 MorphismsOfExternalHom
+      3.16-21 BasisOfExternalHom
+      3.16-22 CoefficientsOfMorphismWithGivenBasisOfExternalHom
+      3.16-23 CoefficientsOfMorphism
     3.17 [33X[0;0YSimplified Morphisms[133X
       3.17-1 SimplifyMorphism
       3.17-2 SimplifySource
@@ -751,104 +752,105 @@
       7.6-181 AddMorphismFromSourceToCokernelObjectWithGivenCokernelObject
       7.6-182 AddMorphismFromSourceToPushout
       7.6-183 AddMorphismFromSourceToPushoutWithGivenPushout
-      7.6-184 AddMultiplyWithElementOfCommutativeRingForMorphisms
-      7.6-185 AddObjectConstructor
-      7.6-186 AddObjectDatum
-      7.6-187 AddPostCompose
-      7.6-188 AddPostComposeList
-      7.6-189 AddPostInverseForMorphisms
-      7.6-190 AddPreCompose
-      7.6-191 AddPreComposeList
-      7.6-192 AddPreInverseForMorphisms
-      7.6-193 AddProjectionInFactorOfDirectProduct
-      7.6-194 AddProjectionInFactorOfDirectProductWithGivenDirectProduct
-      7.6-195 AddProjectionInFactorOfDirectSum
-      7.6-196 AddProjectionInFactorOfDirectSumWithGivenDirectSum
-      7.6-197 AddProjectionInFactorOfFiberProduct
-      7.6-198 AddProjectionInFactorOfFiberProductWithGivenFiberProduct
-      7.6-199 AddProjectionOntoCoequalizer
-      7.6-200 AddProjectionOntoCoequalizerWithGivenCoequalizer
-      7.6-201 AddProjectiveCoverObject
-      7.6-202 AddProjectiveDimension
-      7.6-203 AddProjectiveLift
-      7.6-204 AddPushout
-      7.6-205 AddPushoutFunctorial
-      7.6-206 AddPushoutFunctorialWithGivenPushouts
-      7.6-207 AddRandomMorphismByInteger
-      7.6-208 AddRandomMorphismByList
-      7.6-209 AddRandomMorphismWithFixedRangeByInteger
-      7.6-210 AddRandomMorphismWithFixedRangeByList
-      7.6-211 AddRandomMorphismWithFixedSourceAndRangeByInteger
-      7.6-212 AddRandomMorphismWithFixedSourceAndRangeByList
-      7.6-213 AddRandomMorphismWithFixedSourceByInteger
-      7.6-214 AddRandomMorphismWithFixedSourceByList
-      7.6-215 AddRandomObjectByInteger
-      7.6-216 AddRandomObjectByList
-      7.6-217 AddSimplifyEndo
-      7.6-218 AddSimplifyEndo_IsoFromInputObject
-      7.6-219 AddSimplifyEndo_IsoToInputObject
-      7.6-220 AddSimplifyMorphism
-      7.6-221 AddSimplifyObject
-      7.6-222 AddSimplifyObject_IsoFromInputObject
-      7.6-223 AddSimplifyObject_IsoToInputObject
-      7.6-224 AddSimplifyRange
-      7.6-225 AddSimplifyRange_IsoFromInputObject
-      7.6-226 AddSimplifyRange_IsoToInputObject
-      7.6-227 AddSimplifySource
-      7.6-228 AddSimplifySourceAndRange
-      7.6-229 AddSimplifySourceAndRange_IsoFromInputRange
-      7.6-230 AddSimplifySourceAndRange_IsoFromInputSource
-      7.6-231 AddSimplifySourceAndRange_IsoToInputRange
-      7.6-232 AddSimplifySourceAndRange_IsoToInputSource
-      7.6-233 AddSimplifySource_IsoFromInputObject
-      7.6-234 AddSimplifySource_IsoToInputObject
-      7.6-235 AddSolveLinearSystemInAbCategory
-      7.6-236 AddSolveLinearSystemInAbCategoryOrFail
-      7.6-237 AddSomeInjectiveObject
-      7.6-238 AddSomeIsomorphismBetweenObjects
-      7.6-239 AddSomeProjectiveObject
-      7.6-240 AddSomeReductionBySplitEpiSummand
-      7.6-241 AddSomeReductionBySplitEpiSummand_MorphismFromInputRange
-      7.6-242 AddSomeReductionBySplitEpiSummand_MorphismToInputRange
-      7.6-243 AddSubtractionForMorphisms
-      7.6-244 AddSumOfMorphisms
-      7.6-245 AddTerminalObject
-      7.6-246 AddTerminalObjectFunctorial
-      7.6-247 AddTerminalObjectFunctorialWithGivenTerminalObjects
-      7.6-248 AddUniversalMorphismFromCoequalizer
-      7.6-249 AddUniversalMorphismFromCoequalizerWithGivenCoequalizer
-      7.6-250 AddUniversalMorphismFromCoproduct
-      7.6-251 AddUniversalMorphismFromCoproductWithGivenCoproduct
-      7.6-252 AddUniversalMorphismFromDirectSum
-      7.6-253 AddUniversalMorphismFromDirectSumWithGivenDirectSum
-      7.6-254 AddUniversalMorphismFromImage
-      7.6-255 AddUniversalMorphismFromImageWithGivenImageObject
-      7.6-256 AddUniversalMorphismFromInitialObject
-      7.6-257 AddUniversalMorphismFromInitialObjectWithGivenInitialObject
-      7.6-258 AddUniversalMorphismFromPushout
-      7.6-259 AddUniversalMorphismFromPushoutWithGivenPushout
-      7.6-260 AddUniversalMorphismFromZeroObject
-      7.6-261 AddUniversalMorphismFromZeroObjectWithGivenZeroObject
-      7.6-262 AddUniversalMorphismIntoCoimage
-      7.6-263 AddUniversalMorphismIntoCoimageWithGivenCoimageObject
-      7.6-264 AddUniversalMorphismIntoDirectProduct
-      7.6-265 AddUniversalMorphismIntoDirectProductWithGivenDirectProduct
-      7.6-266 AddUniversalMorphismIntoDirectSum
-      7.6-267 AddUniversalMorphismIntoDirectSumWithGivenDirectSum
-      7.6-268 AddUniversalMorphismIntoEqualizer
-      7.6-269 AddUniversalMorphismIntoEqualizerWithGivenEqualizer
-      7.6-270 AddUniversalMorphismIntoFiberProduct
-      7.6-271 AddUniversalMorphismIntoFiberProductWithGivenFiberProduct
-      7.6-272 AddUniversalMorphismIntoTerminalObject
-      7.6-273 AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject
-      7.6-274 AddUniversalMorphismIntoZeroObject
-      7.6-275 AddUniversalMorphismIntoZeroObjectWithGivenZeroObject
-      7.6-276 AddVerticalPostCompose
-      7.6-277 AddVerticalPreCompose
-      7.6-278 AddZeroMorphism
-      7.6-279 AddZeroObject
-      7.6-280 AddZeroObjectFunctorial
-      7.6-281 AddZeroObjectFunctorialWithGivenZeroObjects
+      7.6-184 AddMorphismsOfExternalHom
+      7.6-185 AddMultiplyWithElementOfCommutativeRingForMorphisms
+      7.6-186 AddObjectConstructor
+      7.6-187 AddObjectDatum
+      7.6-188 AddPostCompose
+      7.6-189 AddPostComposeList
+      7.6-190 AddPostInverseForMorphisms
+      7.6-191 AddPreCompose
+      7.6-192 AddPreComposeList
+      7.6-193 AddPreInverseForMorphisms
+      7.6-194 AddProjectionInFactorOfDirectProduct
+      7.6-195 AddProjectionInFactorOfDirectProductWithGivenDirectProduct
+      7.6-196 AddProjectionInFactorOfDirectSum
+      7.6-197 AddProjectionInFactorOfDirectSumWithGivenDirectSum
+      7.6-198 AddProjectionInFactorOfFiberProduct
+      7.6-199 AddProjectionInFactorOfFiberProductWithGivenFiberProduct
+      7.6-200 AddProjectionOntoCoequalizer
+      7.6-201 AddProjectionOntoCoequalizerWithGivenCoequalizer
+      7.6-202 AddProjectiveCoverObject
+      7.6-203 AddProjectiveDimension
+      7.6-204 AddProjectiveLift
+      7.6-205 AddPushout
+      7.6-206 AddPushoutFunctorial
+      7.6-207 AddPushoutFunctorialWithGivenPushouts
+      7.6-208 AddRandomMorphismByInteger
+      7.6-209 AddRandomMorphismByList
+      7.6-210 AddRandomMorphismWithFixedRangeByInteger
+      7.6-211 AddRandomMorphismWithFixedRangeByList
+      7.6-212 AddRandomMorphismWithFixedSourceAndRangeByInteger
+      7.6-213 AddRandomMorphismWithFixedSourceAndRangeByList
+      7.6-214 AddRandomMorphismWithFixedSourceByInteger
+      7.6-215 AddRandomMorphismWithFixedSourceByList
+      7.6-216 AddRandomObjectByInteger
+      7.6-217 AddRandomObjectByList
+      7.6-218 AddSimplifyEndo
+      7.6-219 AddSimplifyEndo_IsoFromInputObject
+      7.6-220 AddSimplifyEndo_IsoToInputObject
+      7.6-221 AddSimplifyMorphism
+      7.6-222 AddSimplifyObject
+      7.6-223 AddSimplifyObject_IsoFromInputObject
+      7.6-224 AddSimplifyObject_IsoToInputObject
+      7.6-225 AddSimplifyRange
+      7.6-226 AddSimplifyRange_IsoFromInputObject
+      7.6-227 AddSimplifyRange_IsoToInputObject
+      7.6-228 AddSimplifySource
+      7.6-229 AddSimplifySourceAndRange
+      7.6-230 AddSimplifySourceAndRange_IsoFromInputRange
+      7.6-231 AddSimplifySourceAndRange_IsoFromInputSource
+      7.6-232 AddSimplifySourceAndRange_IsoToInputRange
+      7.6-233 AddSimplifySourceAndRange_IsoToInputSource
+      7.6-234 AddSimplifySource_IsoFromInputObject
+      7.6-235 AddSimplifySource_IsoToInputObject
+      7.6-236 AddSolveLinearSystemInAbCategory
+      7.6-237 AddSolveLinearSystemInAbCategoryOrFail
+      7.6-238 AddSomeInjectiveObject
+      7.6-239 AddSomeIsomorphismBetweenObjects
+      7.6-240 AddSomeProjectiveObject
+      7.6-241 AddSomeReductionBySplitEpiSummand
+      7.6-242 AddSomeReductionBySplitEpiSummand_MorphismFromInputRange
+      7.6-243 AddSomeReductionBySplitEpiSummand_MorphismToInputRange
+      7.6-244 AddSubtractionForMorphisms
+      7.6-245 AddSumOfMorphisms
+      7.6-246 AddTerminalObject
+      7.6-247 AddTerminalObjectFunctorial
+      7.6-248 AddTerminalObjectFunctorialWithGivenTerminalObjects
+      7.6-249 AddUniversalMorphismFromCoequalizer
+      7.6-250 AddUniversalMorphismFromCoequalizerWithGivenCoequalizer
+      7.6-251 AddUniversalMorphismFromCoproduct
+      7.6-252 AddUniversalMorphismFromCoproductWithGivenCoproduct
+      7.6-253 AddUniversalMorphismFromDirectSum
+      7.6-254 AddUniversalMorphismFromDirectSumWithGivenDirectSum
+      7.6-255 AddUniversalMorphismFromImage
+      7.6-256 AddUniversalMorphismFromImageWithGivenImageObject
+      7.6-257 AddUniversalMorphismFromInitialObject
+      7.6-258 AddUniversalMorphismFromInitialObjectWithGivenInitialObject
+      7.6-259 AddUniversalMorphismFromPushout
+      7.6-260 AddUniversalMorphismFromPushoutWithGivenPushout
+      7.6-261 AddUniversalMorphismFromZeroObject
+      7.6-262 AddUniversalMorphismFromZeroObjectWithGivenZeroObject
+      7.6-263 AddUniversalMorphismIntoCoimage
+      7.6-264 AddUniversalMorphismIntoCoimageWithGivenCoimageObject
+      7.6-265 AddUniversalMorphismIntoDirectProduct
+      7.6-266 AddUniversalMorphismIntoDirectProductWithGivenDirectProduct
+      7.6-267 AddUniversalMorphismIntoDirectSum
+      7.6-268 AddUniversalMorphismIntoDirectSumWithGivenDirectSum
+      7.6-269 AddUniversalMorphismIntoEqualizer
+      7.6-270 AddUniversalMorphismIntoEqualizerWithGivenEqualizer
+      7.6-271 AddUniversalMorphismIntoFiberProduct
+      7.6-272 AddUniversalMorphismIntoFiberProductWithGivenFiberProduct
+      7.6-273 AddUniversalMorphismIntoTerminalObject
+      7.6-274 AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject
+      7.6-275 AddUniversalMorphismIntoZeroObject
+      7.6-276 AddUniversalMorphismIntoZeroObjectWithGivenZeroObject
+      7.6-277 AddVerticalPostCompose
+      7.6-278 AddVerticalPreCompose
+      7.6-279 AddZeroMorphism
+      7.6-280 AddZeroObject
+      7.6-281 AddZeroObjectFunctorial
+      7.6-282 AddZeroObjectFunctorialWithGivenZeroObjects
   8 [33X[0;0YManaging Derived Methods[133X
     8.1 [33X[0;0YInfo Class[133X
       8.1-1 DerivationInfo

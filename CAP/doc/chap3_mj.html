@@ -178,9 +178,10 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8705DA127E089709">3.16-17 HomStructure</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X873E91D180B3057C">3.16-18 ExtendRangeOfHomomorphismStructureByFullEmbedding</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7C551C8F7BA2F3F1">3.16-19 ExtendRangeOfHomomorphismStructureByIdentityAsFullEmbedding</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7CC9C1A487AE6086">3.16-20 BasisOfExternalHom</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X82DE981C839D9F71">3.16-21 CoefficientsOfMorphismWithGivenBasisOfExternalHom</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8636593C845B23D2">3.16-22 CoefficientsOfMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8510A7E08672FD73">3.16-20 MorphismsOfExternalHom</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7CC9C1A487AE6086">3.16-21 BasisOfExternalHom</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X82DE981C839D9F71">3.16-22 CoefficientsOfMorphismWithGivenBasisOfExternalHom</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8636593C845B23D2">3.16-23 CoefficientsOfMorphism</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7B39E2927B533D10">3.17 <span class="Heading">Simplified Morphisms</span></a>
 </span>
@@ -1174,9 +1175,18 @@
 
 <p>Chooses the identity on <span class="SimpleMath">\(D\)</span> as the full embedding in <code class="func">ExtendRangeOfHomomorphismStructureByFullEmbedding</code> (<a href="chap3_mj.html#X873E91D180B3057C"><span class="RefLink">3.16-18</span></a>). This is useful to handle this case as a degenerate case of <code class="func">ExtendRangeOfHomomorphismStructureByFullEmbedding</code> (<a href="chap3_mj.html#X873E91D180B3057C"><span class="RefLink">3.16-18</span></a>).</p>
 
+<p><a id="X8510A7E08672FD73" name="X8510A7E08672FD73"></a></p>
+
+<h5>3.16-20 MorphismsOfExternalHom</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismsOfExternalHom</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a list of morphisms in <span class="SimpleMath">\(\mathrm{Hom}( a, b )\)</span></p>
+
+<p>The argument are two objects <var class="Arg">a</var>, <var class="Arg">b</var>. The output is a list of all morphisms from <var class="Arg">a</var> to <var class="Arg">b</var>.</p>
+
 <p><a id="X7CC9C1A487AE6086" name="X7CC9C1A487AE6086"></a></p>
 
-<h5>3.16-20 BasisOfExternalHom</h5>
+<h5>3.16-21 BasisOfExternalHom</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BasisOfExternalHom</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a list of morphisms in <span class="SimpleMath">\(\mathrm{Hom}_{C}(a,b)\)</span></p>
@@ -1185,7 +1195,7 @@
 
 <p><a id="X82DE981C839D9F71" name="X82DE981C839D9F71"></a></p>
 
-<h5>3.16-21 CoefficientsOfMorphismWithGivenBasisOfExternalHom</h5>
+<h5>3.16-22 CoefficientsOfMorphismWithGivenBasisOfExternalHom</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoefficientsOfMorphismWithGivenBasisOfExternalHom</code>( <var class="Arg">alpha</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a list of elements in <span class="SimpleMath">\(k\)</span></p>
@@ -1194,7 +1204,7 @@
 
 <p><a id="X8636593C845B23D2" name="X8636593C845B23D2"></a></p>
 
-<h5>3.16-22 CoefficientsOfMorphism</h5>
+<h5>3.16-23 CoefficientsOfMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoefficientsOfMorphism</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a list of elements in <span class="SimpleMath">\(k\)</span></p>

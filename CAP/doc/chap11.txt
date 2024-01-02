@@ -32,6 +32,10 @@
   [30X    [33X[0;6Y[10Xcommutative_ring_of_linear_category[110X   (optional):   ring  attached  as
         [2XCommutativeRingOfLinearCategory[102X ([14X1.4-9[114X) to the category[133X
   
+  [30X    [33X[0;6Y[10Xrange_category_of_homomorphism_structure[110X (optional): category attached
+        as  [2XRangeCategoryOfHomomorphismStructure[102X  ([14X1.4-10[114X) to the category (or
+        the string "self" to attach the category to itself)[133X
+  
   [30X    [33X[0;6Y[10Xproperties[110X  (optional):  list  of  categorical properties the category
         will have, see [10XCAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST[110X[133X
   

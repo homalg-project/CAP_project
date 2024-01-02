@@ -1022,7 +1022,15 @@
   to      handle     this     case     as     a     degenerate     case     of
   [2XExtendRangeOfHomomorphismStructureByFullEmbedding[102X ([14X3.16-18[114X).[133X
   
-  [1X3.16-20 BasisOfExternalHom[101X
+  [1X3.16-20 MorphismsOfExternalHom[101X
+  
+  [33X[1;0Y[29X[2XMorphismsOfExternalHom[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list of morphisms in [23X\mathrm{Hom}( a, b )[123X[133X
+  
+  [33X[0;0YThe  argument  are  two  objects [3Xa[103X, [3Xb[103X. The output is a list of all morphisms
+  from [3Xa[103X to [3Xb[103X.[133X
+  
+  [1X3.16-21 BasisOfExternalHom[101X
   
   [33X[1;0Y[29X[2XBasisOfExternalHom[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list of morphisms in [23X\mathrm{Hom}_{C}(a,b)[123X[133X
@@ -1033,7 +1041,7 @@
   combination       of       [23XL[123X       with       the       coefficients      in
   [10XCoefficientsOfMorphismWithGivenBasisOfExternalHom[110X([23X\alpha,L[123X).[133X
   
-  [1X3.16-21 CoefficientsOfMorphismWithGivenBasisOfExternalHom[101X
+  [1X3.16-22 CoefficientsOfMorphismWithGivenBasisOfExternalHom[101X
   
   [33X[1;0Y[29X[2XCoefficientsOfMorphismWithGivenBasisOfExternalHom[102X( [3Xalpha[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list of elements in [23Xk[123X[133X
@@ -1042,7 +1050,7 @@
   list  [3XL[103X[10X=BasisOfExternalHom[110X([23Xa,b[123X).  The  output  is  a list of coefficients of
   [23X\alpha[123X with respect to [23XL[123X.[133X
   
-  [1X3.16-22 CoefficientsOfMorphism[101X
+  [1X3.16-23 CoefficientsOfMorphism[101X
   
   [33X[1;0Y[29X[2XCoefficientsOfMorphism[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya list of elements in [23Xk[123X[133X

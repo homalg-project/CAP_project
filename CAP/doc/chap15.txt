@@ -672,7 +672,7 @@
     [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
     [4X[28XA CAP category with name TerminalCategoryWithMultipleObjects( ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X65 primitive operations were used to derive 312 operations for this category \[128X[104X
+    [4X[28X70 primitive operations were used to derive 313 operations for this category \[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
@@ -736,8 +736,28 @@
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XIsIsomorphicForObjects( a, b );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsIsomorphism( SomeIsomorphismBetweenObjects( a, b ) );[127X[104X
+    [4X[25Xgap>[125X [27Xmor_ab := SomeIsomorphismBetweenObjects( a, b );[127X[104X
+    [4X[28X<A zero, isomorphism in TerminalCategoryWithMultipleObjects( )>[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( mor_ab );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( mor_ab );[127X[104X
+    [4X[28Xa[128X[104X
+    [4X[28X|[128X[104X
+    [4X[28X| SomeIsomorphismBetweenObjects[128X[104X
+    [4X[28Xv[128X[104X
+    [4X[28Xb[128X[104X
+    [4X[25Xgap>[125X [27XHom_ab := MorphismsOfExternalHom( a, b );[127X[104X
+    [4X[28X[ <A zero, isomorphism in TerminalCategoryWithMultipleObjects( )> ][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Hom_ab[1] );[127X[104X
+    [4X[28Xa[128X[104X
+    [4X[28X|[128X[104X
+    [4X[28X| InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism[128X[104X
+    [4X[28Xv[128X[104X
+    [4X[28Xb[128X[104X
+    [4X[25Xgap>[125X [27XHom_ab[1] = mor_ab;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XHomStructure( mor_ab );[127X[104X
+    [4X[28X<A zero, identity morphism in TerminalCategoryWithSingleObject( )>[128X[104X
     [4X[25Xgap>[125X [27Xt := TensorProduct( a, b );[127X[104X
     [4X[28X<A zero object in TerminalCategoryWithMultipleObjects( )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( t );[127X[104X
@@ -770,6 +790,8 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xm = n;[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xhom_mn := HomStructure( m, n );[127X[104X
+    [4X[28X<A zero, identity morphism in TerminalCategoryWithSingleObject( )>[128X[104X
     [4X[25Xgap>[125X [27Xid := IdentityMorphism( a );[127X[104X
     [4X[28X<A zero, identity morphism in TerminalCategoryWithMultipleObjects( )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( id );[127X[104X
@@ -830,7 +852,7 @@
     [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
     [4X[28XA CAP category with name TerminalCategoryWithSingleObject( ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X63 primitive operations were used to derive 312 operations for this category \[128X[104X
+    [4X[28X64 primitive operations were used to derive 313 operations for this category \[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
