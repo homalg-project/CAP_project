@@ -186,6 +186,9 @@ Summing up, we have shown:
 Ring as category( a k-algebra ) is equipped with a linear structure. ∎
 
 #
+gap> CapJitDisableProofAssistantMode( );
+
+#
 gap> SizeScreen( [ old_screen_width ] );;
 
 #
