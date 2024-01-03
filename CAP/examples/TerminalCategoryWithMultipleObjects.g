@@ -84,8 +84,11 @@ Display( mor_ab );
 #! | SomeIsomorphismBetweenObjects
 #! v
 #! b
-Hom_ab := MorphismsOfExternalHom( a, b );
-#! [ <A zero, isomorphism in TerminalCategoryWithMultipleObjects( )> ]
+Hom_ab := MorphismsOfExternalHom( a, b );;
+Length( Hom_ab );
+#! 1
+Hom_ab[1];
+#! <A zero, isomorphism in TerminalCategoryWithMultipleObjects( )>
 Display( Hom_ab[1] );
 #! a
 #! |
