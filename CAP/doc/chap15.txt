@@ -746,8 +746,11 @@
     [4X[28X| SomeIsomorphismBetweenObjects[128X[104X
     [4X[28Xv[128X[104X
     [4X[28Xb[128X[104X
-    [4X[25Xgap>[125X [27XHom_ab := MorphismsOfExternalHom( a, b );[127X[104X
-    [4X[28X[ <A zero, isomorphism in TerminalCategoryWithMultipleObjects( )> ][128X[104X
+    [4X[25Xgap>[125X [27XHom_ab := MorphismsOfExternalHom( a, b );;[127X[104X
+    [4X[25Xgap>[125X [27XLength( Hom_ab );[127X[104X
+    [4X[28X1[128X[104X
+    [4X[25Xgap>[125X [27XHom_ab[1];[127X[104X
+    [4X[28X<A zero, isomorphism in TerminalCategoryWithMultipleObjects( )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( Hom_ab[1] );[127X[104X
     [4X[28Xa[128X[104X
     [4X[28X|[128X[104X

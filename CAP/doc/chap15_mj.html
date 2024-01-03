@@ -841,8 +841,11 @@ a
 | SomeIsomorphismBetweenObjects
 v
 b
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Hom_ab := MorphismsOfExternalHom( a, b );</span>
-[ &lt;A zero, isomorphism in TerminalCategoryWithMultipleObjects( )&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Hom_ab := MorphismsOfExternalHom( a, b );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( Hom_ab );</span>
+1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Hom_ab[1];</span>
+&lt;A zero, isomorphism in TerminalCategoryWithMultipleObjects( )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Hom_ab[1] );</span>
 a
 |
