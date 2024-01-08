@@ -39,12 +39,12 @@
     [4X[28Xfunction ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )[128X[104X
     [4X[28X    local deduped_2_1;[128X[104X
     [4X[28X    deduped_2_1 := UnderlyingRing( cat_1 );[128X[104X
-    [4X[28X    return CreateCapCategoryMorphismWithAttributes( cat_1, S_1, T_1, [128X[104X
-    [4X[28X       UnderlyingMatrix, UnionOfRows( deduped_2_1, Dimension( T_1 ), [128X[104X
+    [4X[28X    return AsCapCategoryMorphism( cat_1, S_1, [128X[104X
+    [4X[28X       UnionOfRows( deduped_2_1, AsInteger( T_1 ), [128X[104X
     [4X[28X         ListN( diagram_S_1, morphism_matrix_1, function ( source_2, row_2 )[128X[104X
-    [4X[28X                return UnionOfColumns( deduped_2_1, Dimension( source_2 ), [128X[104X
-    [4X[28X                   List( row_2, UnderlyingMatrix ) );[128X[104X
-    [4X[28X            end ) ) );[128X[104X
+    [4X[28X                return UnionOfColumns( deduped_2_1, AsInteger( source_2 ), [128X[104X
+    [4X[28X                   List( row_2, AsHomalgMatrix ) );[128X[104X
+    [4X[28X            end ) ), T_1 );[128X[104X
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE([127X[104X
     [4X[25X>[125X [27X    CapJitCompiledCAPOperationAsEnhancedSyntaxTree([127X[104X
@@ -53,11 +53,11 @@
     [4X[25X>[125X [27X) );[127X[104X
     [4X[28Xfunction ( cat_1, alpha_1 )[128X[104X
     [4X[28X    local morphism_attr_1_1;[128X[104X
-    [4X[28X    morphism_attr_1_1 := SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) );[128X[104X
-    [4X[28X    return CreateCapCategoryMorphismWithAttributes( cat_1, [128X[104X
-    [4X[28X       CreateCapCategoryObjectWithAttributes( cat_1, Dimension, [128X[104X
-    [4X[28X         NumberRows( morphism_attr_1_1 ) ), Source( alpha_1 ), [128X[104X
-    [4X[28X       UnderlyingMatrix, morphism_attr_1_1 );[128X[104X
+    [4X[28X    morphism_attr_1_1 := SyzygiesOfRows( AsHomalgMatrix( alpha_1 ) );[128X[104X
+    [4X[28X    return [128X[104X
+    [4X[28X     AsCapCategoryMorphism( cat_1, [128X[104X
+    [4X[28X       AsCapCategoryObject( cat_1, NumberRows( morphism_attr_1_1 ) ), [128X[104X
+    [4X[28X       morphism_attr_1_1, Source( alpha_1 ) );[128X[104X
     [4X[28Xend[128X[104X
   [4X[32X[104X
   

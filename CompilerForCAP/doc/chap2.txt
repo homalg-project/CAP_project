@@ -736,10 +736,11 @@
   
   [33X[0;0YOutlines wrapped arguments to local variables. This includes:[133X
   
-  [30X    [33X[0;6Ythe attribute values in [10XCreateCapCategoryObjectWithAttributes[110X[133X
+  [30X    [33X[0;6Ythe  attribute  value(s)  in [10XCreateCapCategoryObjectWithAttributes[110X and
+        [10XAsCapCategoryObject[110X[133X
   
   [30X    [33X[0;6Ythe  attribute  values  (including  the arguments [10Xsource[110X and [10Xrange[110X) in
-        [10XCreateCapCategoryMorphismWithAttributes[110X[133X
+        [10XCreateCapCategoryMorphismWithAttributes[110X and [10XAsCapCategoryMorphism[110X[133X
   
   [30X    [33X[0;6Ythe arguments of [10XNTuple[110X (excluding the first argument)[133X
   
