@@ -311,10 +311,18 @@
   [2XApplyFunctor[102X 5.4-9 
   [2XApplyNaturalTransformation[102X 5.5-4 
   [2XAsCapCategory[102X, for IsCapCategoryAsCatObject 5.3-2 
+  [2XAsCapCategoryMorphism[102X 3.6-6 
+  [2XAsCapCategoryObject[102X 2.6-6 
   [2XAsCatObject[102X, for IsCapCategory 5.3-1 
+  [2XAsHomalgMatrix[102X, for IsCapCategoryMorphism 3.6-7 
+      for IsCapCategoryObject 2.6-7 
+  [2XAsInteger[102X, for IsCapCategoryMorphism 3.6-7 
+      for IsCapCategoryObject 2.6-7 
   [2XAsMorphismInWrapperCategory[102X, for IsWrapperCapCategory, IsCapCategoryMorphism 13.3-3 
       for IsWrapperCapCategoryObject, IsCapCategoryMorphism, IsWrapperCapCategoryObject 13.3-2 
   [2XAsObjectInWrapperCategory[102X, for IsWrapperCapCategory, IsCapCategoryObject 13.3-1 
+  [2XAsPrimitiveValue[102X, for IsCapCategoryMorphism 3.6-7 
+      for IsCapCategoryObject 2.6-7 
   [2XAstrictionToCoimage[102X, for IsCapCategoryMorphism 6.14-10 
   [2XAstrictionToCoimageWithGivenCoimageObject[102X, for IsCapCategoryMorphism, IsCapCategoryObject 6.14-11 
   [2XBasisOfExternalHom[102X, for IsCapCategoryObject, IsCapCategoryObject 3.16-21 

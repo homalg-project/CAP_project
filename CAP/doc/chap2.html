@@ -66,6 +66,8 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7A68365C82BDA4E7">2.6-3 AddObjectRepresentation</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X78095CF37B92F0D9">2.6-4 ObjectifyObjectForCAPWithAttributes</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X87BD8BB88206D940">2.6-5 CreateCapCategoryObjectWithAttributes</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7F5D75377B0D54A6">2.6-6 AsCapCategoryObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7FAE21CF84BD7986">2.6-7 AsPrimitiveValue</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X824C0CC579E8DD7F">2.7 <span class="Heading">Object constructors</span></a>
 </span>
@@ -326,6 +328,37 @@
 <p>Returns: an object</p>
 
 <p>Creates an object in <var class="Arg">category</var> with the given attributes.</p>
+
+<p><a id="X7F5D75377B0D54A6" name="X7F5D75377B0D54A6"></a></p>
+
+<h5>2.6-6 AsCapCategoryObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsCapCategoryObject</code>( <var class="Arg">category</var>, <var class="Arg">value</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>EXPERIMENTAL: This specification might change any time without prior notice. Views <var class="Arg">value</var> as an object in <var class="Arg">category</var>.</p>
+
+<p><a id="X7FAE21CF84BD7986" name="X7FAE21CF84BD7986"></a></p>
+
+<h5>2.6-7 AsPrimitiveValue</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsPrimitiveValue</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsInteger</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsHomalgMatrix</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a value</p>
+
+<p>EXPERIMENTAL: This specification might change any time without prior notice. Views an object obtained via <code class="func">AsCapCategoryObject</code> (<a href="chap2.html#X7F5D75377B0D54A6"><span class="RefLink">2.6-6</span></a>) as a primitive value again. Here, the word <em>primitive</em> means <em>primitive from the perspective of the category</em>. For example, from the perspective of an opposite category, objects of the underlying category are primitive values. The attribute is chosen according to the object datum type:</p>
+
+
+<ul>
+<li><p>For <code class="code">IsInt</code>, the attribute <code class="code">AsInteger</code> is used.</p>
+
+</li>
+<li><p>For <code class="code">IsHomalgMatrix</code>, the attribute <code class="code">AsHomalgMatrix</code> is used.</p>
+
+</li>
+</ul>
+<p>In all other cases or if no object datum type is given, the attribute <code class="code">AsPrimitiveValue</code> is used.</p>
 
 <p><a id="X824C0CC579E8DD7F" name="X824C0CC579E8DD7F"></a></p>
 

@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "CAP",
 Subtitle := "Categories, Algorithms, Programming",
-Version := "2024.01-01",
-Date := "2024-01-03",
+Version := "2024.01-02",
+Date := "2024-01-08",
 License := "GPL-2.0-or-later",
 
 Persons := [

@@ -355,6 +355,35 @@
   
   [33X[0;0YCreates a morphism in [3Xcategory[103X with the given attributes.[133X
   
+  [1X3.6-6 AsCapCategoryMorphism[101X
+  
+  [33X[1;0Y[29X[2XAsCapCategoryMorphism[102X( [3Xcategory[103X, [3Xsource[103X, [3Xvalue[103X, [3Xrange[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YEXPERIMENTAL: This specification might change any time without prior notice.
+  Views [3Xvalue[103X as a morphism from [3Xsource[103X to [3Xrange[103X in [3Xcategory[103X.[133X
+  
+  [1X3.6-7 AsPrimitiveValue[101X
+  
+  [33X[1;0Y[29X[2XAsPrimitiveValue[102X( [3Xmorphism[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XAsInteger[102X( [3Xmorphism[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XAsHomalgMatrix[102X( [3Xmorphism[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya value[133X
+  
+  [33X[0;0YEXPERIMENTAL: This specification might change any time without prior notice.
+  Views  a  morphism obtained via [2XAsCapCategoryMorphism[102X ([14X3.6-6[114X) as a primitive
+  value  again.  Here, the word [13Xprimitive[113X means [13Xprimitive from the perspective
+  of  the category[113X. For example, from the perspective of an opposite category,
+  morphisms  of the underlying category are primitive values. The attribute is
+  chosen according to the morphism datum type:[133X
+  
+  [30X    [33X[0;6YFor [10XIsInt[110X, the attribute [10XAsInteger[110X is used.[133X
+  
+  [30X    [33X[0;6YFor [10XIsHomalgMatrix[110X, the attribute [10XAsHomalgMatrix[110X is used.[133X
+  
+  [33X[0;0YIn  all  other  cases  or  if no morphism datum type is given, the attribute
+  [10XAsPrimitiveValue[110X is used.[133X
+  
   
   [1X3.7 [33X[0;0YEquality and Congruence for Morphisms[133X[101X
   

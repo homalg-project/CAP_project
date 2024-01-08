@@ -76,6 +76,8 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X812F94E5790616EC">3.6-3 AddMorphismRepresentation</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7D4369A984B1BD3E">3.6-4 ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X78005D357A051FC6">3.6-5 CreateCapCategoryMorphismWithAttributes</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7AE302BE7C2E829F">3.6-6 AsCapCategoryMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7893F08182290038">3.6-7 AsPrimitiveValue</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X850CFDD48773998E">3.7 <span class="Heading">Equality and Congruence for Morphisms</span></a>
 </span>
@@ -553,6 +555,37 @@
 <p>Returns: a morphism</p>
 
 <p>Creates a morphism in <var class="Arg">category</var> with the given attributes.</p>
+
+<p><a id="X7AE302BE7C2E829F" name="X7AE302BE7C2E829F"></a></p>
+
+<h5>3.6-6 AsCapCategoryMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsCapCategoryMorphism</code>( <var class="Arg">category</var>, <var class="Arg">source</var>, <var class="Arg">value</var>, <var class="Arg">range</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>EXPERIMENTAL: This specification might change any time without prior notice. Views <var class="Arg">value</var> as a morphism from <var class="Arg">source</var> to <var class="Arg">range</var> in <var class="Arg">category</var>.</p>
+
+<p><a id="X7893F08182290038" name="X7893F08182290038"></a></p>
+
+<h5>3.6-7 AsPrimitiveValue</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsPrimitiveValue</code>( <var class="Arg">morphism</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsInteger</code>( <var class="Arg">morphism</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsHomalgMatrix</code>( <var class="Arg">morphism</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a value</p>
+
+<p>EXPERIMENTAL: This specification might change any time without prior notice. Views a morphism obtained via <code class="func">AsCapCategoryMorphism</code> (<a href="chap3.html#X7AE302BE7C2E829F"><span class="RefLink">3.6-6</span></a>) as a primitive value again. Here, the word <em>primitive</em> means <em>primitive from the perspective of the category</em>. For example, from the perspective of an opposite category, morphisms of the underlying category are primitive values. The attribute is chosen according to the morphism datum type:</p>
+
+
+<ul>
+<li><p>For <code class="code">IsInt</code>, the attribute <code class="code">AsInteger</code> is used.</p>
+
+</li>
+<li><p>For <code class="code">IsHomalgMatrix</code>, the attribute <code class="code">AsHomalgMatrix</code> is used.</p>
+
+</li>
+</ul>
+<p>In all other cases or if no morphism datum type is given, the attribute <code class="code">AsPrimitiveValue</code> is used.</p>
 
 <p><a id="X850CFDD48773998E" name="X850CFDD48773998E"></a></p>
 
