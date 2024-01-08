@@ -9,8 +9,8 @@
 
 #! @Description
 #!   Outlines wrapped arguments to local variables. This includes:
-#!     * the attribute values in `CreateCapCategoryObjectWithAttributes`
-#!     * the attribute values (including the arguments `source` and `range`) in `CreateCapCategoryMorphismWithAttributes`
+#!     * the attribute value(s) in `CreateCapCategoryObjectWithAttributes` and `AsCapCategoryObject`
+#!     * the attribute values (including the arguments `source` and `range`) in `CreateCapCategoryMorphismWithAttributes` and `AsCapCategoryMorphism`
 #!     * the arguments of `NTuple` (excluding the first argument)
 #! @Returns a record
 #! @Arguments tree

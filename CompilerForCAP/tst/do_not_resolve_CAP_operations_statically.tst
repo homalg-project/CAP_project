@@ -16,7 +16,7 @@ gap> func := function ( cat, x )
 # make sure that ZeroObject( cat ) is not resolved to a global variable
 gap> Display( CapJitCompiledFunction( { cat, x } -> func( cat, x ), vec ) );
 function ( cat_1, x_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 0 );
+    return AsCapCategoryObject( cat_1, 0 );
 end
 
 #

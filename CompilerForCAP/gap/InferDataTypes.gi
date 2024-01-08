@@ -890,7 +890,7 @@ CapJitAddTypeSignature( "CapFixpoint", [ IsFunction, IsFunction, IsObject ], fun
     
 end );
 
-# CreateCapCategory*WithAttributes
+# creating CAP category objects and morphisms
 CapJitAddTypeSignature( "CreateCapCategoryObjectWithAttributes", "any", function ( input_types )
     
     Assert( 0, Length( input_types ) >= 1 );
@@ -912,6 +912,64 @@ CapJitAddTypeSignature( "CreateCapCategoryMorphismWithAttributes", "any", functi
     Assert( 0, ForAll( [ 4, 6 .. Length( input_types ) - 1 ], i -> IsSpecializationOfFilter( IsFunction, input_types[i].filter ) ) );
     
     return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
+    
+end );
+
+CapJitAddTypeSignature( "AsCapCategoryObject", [ IsCapCategory, IsObject ], function ( input_types )
+  local category;
+    
+    category := input_types[1].category;
+    
+    Assert( 0, input_types[2] = CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( "object_datum", category ) );
+    
+    return CapJitDataTypeOfObjectOfCategory( input_types[1].category );
+    
+end );
+
+CapJitAddTypeSignature( "AsCapCategoryMorphism", [ IsCapCategory, IsCapCategoryObject, IsObject, IsCapCategoryObject ], function ( input_types )
+  local category;
+    
+    category := input_types[1].category;
+    
+    Assert( 0, IsIdenticalObj( input_types[2].category, category ) );
+    Assert( 0, IsIdenticalObj( input_types[4].category, category ) );
+    Assert( 0, input_types[3] = CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( "morphism_datum", category ) );
+    
+    return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
+    
+end );
+
+CapJitAddTypeSignature( "AsInteger", [ IsCapCategoryObject ], function ( input_types )
+    
+    Assert( 0, input_types[1].category!.object_attribute_name = "AsInteger" );
+    
+    return rec( filter := IsInt );
+    
+end );
+
+CapJitAddTypeSignature( "AsInteger", [ IsCapCategoryMorphism ], function ( input_types )
+    
+    Assert( 0, input_types[1].category!.morphism_attribute_name = "AsInteger" );
+    
+    return rec( filter := IsInt );
+    
+end );
+
+CapJitAddTypeSignature( "AsHomalgMatrix", [ IsCapCategoryObject ], function ( input_types )
+    
+    Assert( 0, input_types[1].category!.object_attribute_name = "AsHomalgMatrix" );
+    Assert( 0, IsBoundGlobal( "IsHomalgMatrix" ) );
+    
+    return rec( filter := ValueGlobal( "IsHomalgMatrix" ) );
+    
+end );
+
+CapJitAddTypeSignature( "AsHomalgMatrix", [ IsCapCategoryMorphism ], function ( input_types )
+    
+    Assert( 0, input_types[1].category!.morphism_attribute_name = "AsHomalgMatrix" );
+    Assert( 0, IsBoundGlobal( "IsHomalgMatrix" ) );
+    
+    return rec( filter := ValueGlobal( "IsHomalgMatrix" ) );
     
 end );
 

@@ -9,6 +9,8 @@ BindGlobal( "CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES", [
     "ListN",
     "CreateCapCategoryObjectWithAttributes",
     "CreateCapCategoryMorphismWithAttributes",
+    "AsCapCategoryObject",
+    "AsCapCategoryMorphism",
     "CAP_JIT_INCOMPLETE_LOGIC",
     # we do not want to simplify (Is)BigInt to IsInt resp. IdFunc to keep the distinction for Julia
     "IsBigInt",

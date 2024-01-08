@@ -25,18 +25,16 @@ function ( cat_1, matrix_1 )
     morphism_attr_2_1 := matrix_1;
     morphism_attr_1_1 := matrix_1;
     return 
-     [ CreateCapCategoryMorphismWithAttributes( cat_1, 
-           CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 
-             NumberRows( morphism_attr_1_1 ) ), 
-           CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 
-             NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, 
-           morphism_attr_1_1 ), 
-        CreateCapCategoryMorphismWithAttributes( cat_1, 
-           CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 
-             NumberRows( morphism_attr_2_1 ) ), 
-           CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 
-             NumberColumns( morphism_attr_2_1 ) ), UnderlyingMatrix, 
-           morphism_attr_2_1 ) ];
+     [ 
+        AsCapCategoryMorphism( cat_1, 
+           AsCapCategoryObject( cat_1, NumberRows( morphism_attr_1_1 ) ), 
+           morphism_attr_1_1, 
+           AsCapCategoryObject( cat_1, NumberColumns( morphism_attr_1_1 ) ) ),
+        AsCapCategoryMorphism( cat_1, 
+           AsCapCategoryObject( cat_1, NumberRows( morphism_attr_2_1 ) ), 
+           morphism_attr_2_1, 
+           AsCapCategoryObject( cat_1, NumberColumns( morphism_attr_2_1 ) ) ) 
+       ];
 end
 
 #

@@ -42,12 +42,12 @@ Display( compiled_func2 );
 #! function ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )
 #!     local deduped_2_1;
 #!     deduped_2_1 := UnderlyingRing( cat_1 );
-#!     return CreateCapCategoryMorphismWithAttributes( cat_1, S_1, T_1, 
-#!        UnderlyingMatrix, UnionOfRows( deduped_2_1, Dimension( T_1 ), 
+#!     return AsCapCategoryMorphism( cat_1, S_1, 
+#!        UnionOfRows( deduped_2_1, AsInteger( T_1 ), 
 #!          ListN( diagram_S_1, morphism_matrix_1, function ( source_2, row_2 )
-#!                 return UnionOfColumns( deduped_2_1, Dimension( source_2 ), 
-#!                    List( row_2, UnderlyingMatrix ) );
-#!             end ) ) );
+#!                 return UnionOfColumns( deduped_2_1, AsInteger( source_2 ), 
+#!                    List( row_2, AsHomalgMatrix ) );
+#!             end ) ), T_1 );
 #! end
 
 Display( ENHANCED_SYNTAX_TREE_CODE(
@@ -57,11 +57,11 @@ Display( ENHANCED_SYNTAX_TREE_CODE(
 ) );
 #! function ( cat_1, alpha_1 )
 #!     local morphism_attr_1_1;
-#!     morphism_attr_1_1 := SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) );
-#!     return CreateCapCategoryMorphismWithAttributes( cat_1, 
-#!        CreateCapCategoryObjectWithAttributes( cat_1, Dimension, 
-#!          NumberRows( morphism_attr_1_1 ) ), Source( alpha_1 ), 
-#!        UnderlyingMatrix, morphism_attr_1_1 );
+#!     morphism_attr_1_1 := SyzygiesOfRows( AsHomalgMatrix( alpha_1 ) );
+#!     return 
+#!      AsCapCategoryMorphism( cat_1, 
+#!        AsCapCategoryObject( cat_1, NumberRows( morphism_attr_1_1 ) ), 
+#!        morphism_attr_1_1, Source( alpha_1 ) );
 #! end
 
 #! @EndExample

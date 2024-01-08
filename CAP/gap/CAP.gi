@@ -166,7 +166,29 @@ BindGlobal( "TheTypeOfCapCategories",
 ##
 InstallGlobalFunction( "CreateCapCategoryWithDataTypes",
   function( name, category_filter, object_filter, morphism_filter, two_cell_filter, object_datum_type, morphism_datum_type, two_cell_datum_type )
-    local filter, obj, operation_name;
+    local get_attribute_name_for_data_type, filter, obj, operation_name;
+    
+    get_attribute_name_for_data_type := function ( data_type )
+        
+        if data_type = fail then
+            
+            return "AsPrimitiveValue";
+            
+        elif data_type.filter = IsInt then
+            
+            return "AsInteger";
+            
+        elif IsBoundGlobal( "IsHomalgMatrix" ) and data_type.filter = ValueGlobal( "IsHomalgMatrix" ) then
+            
+            return "AsHomalgMatrix";
+            
+        else
+            
+            return "AsPrimitiveValue";
+            
+        fi;
+        
+    end;
     
     ## plausibility checks
     if not IsSpecializationOfFilter( IsCapCategory, category_filter ) then
@@ -226,6 +248,9 @@ InstallGlobalFunction( "CreateCapCategoryWithDataTypes",
     
     obj!.object_type := NewType( TheFamilyOfCapCategoryObjects, filter );
     
+    obj!.object_attribute_name := get_attribute_name_for_data_type( object_datum_type );
+    obj!.object_attribute := ValueGlobal( obj!.object_attribute_name );
+    
     # morphism filter
     filter := NewCategory( Concatenation( name, "InstanceMorphismFilter" ), morphism_filter );
     
@@ -233,6 +258,9 @@ InstallGlobalFunction( "CreateCapCategoryWithDataTypes",
     SetMorphismDatumType( obj, morphism_datum_type );
     
     obj!.morphism_type := NewType( TheFamilyOfCapCategoryMorphisms, filter );
+    
+    obj!.morphism_attribute_name := get_attribute_name_for_data_type( morphism_datum_type );
+    obj!.morphism_attribute := ValueGlobal( obj!.morphism_attribute_name );
     
     # two cell filter
     filter := NewCategory( Concatenation( name, "InstanceTwoCellFilter" ), two_cell_filter );

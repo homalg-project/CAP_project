@@ -5,6 +5,8 @@ gap> LoadPackage( "CompilerForCAP", false );
 true
 gap> LoadPackage( "FreydCategoriesForCAP", false );
 true
+gap> LoadPackage( "LinearAlgebraForCAP", false );
+true
 
 #
 gap> ReadPackage( "LinearAlgebraForCAP", "gap/CompilerLogic.gi" );
@@ -13,8 +15,9 @@ true
 #
 gap> QQ := HomalgFieldOfRationals( );;
 gap> cat := CategoryOfRows( QQ );;
+gap> mat := MatrixCategory( QQ );;
 
-# CapFixpoint with object
+# CapFixpoint with CreateCapCategoryObject
 gap> func := function( cat )
 >   local predicate, func, initial_value;
 >     
@@ -33,10 +36,38 @@ gap> func( cat );
 <A row module over Q of rank 2>
 
 #
-gap> Display( CapJitCompiledFunction( func, cat ) );
+gap> Display( CapJitCompiledFunction( func, cat, [ "category" ], "object" ) );
 function ( cat_1 )
     return CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, 
        CapFixpoint( function ( x_2, y_2 )
+              return x_2 = 3 and y_2 = 2;
+          end, function ( x_2 )
+              return x_2 - 1;
+          end, 10 ) );
+end
+
+# CapFixpoint with AsCapCategoryObject
+gap> func := function( cat )
+>   local predicate, func, initial_value;
+>     
+>     predicate := { x, y } -> AsInteger( x ) = 3 and AsInteger( y ) = 2;
+>     
+>     func := x -> AsCapCategoryObject( cat, AsInteger( x ) - 1 );
+>     
+>     initial_value := AsCapCategoryObject( cat, 10 );
+>     
+>     return CapFixpoint( predicate, func, initial_value );
+>     
+> end;;
+
+#
+gap> func( mat );
+<A vector space object over Q of dimension 2>
+
+#
+gap> Display( CapJitCompiledFunction( func, mat, [ "category" ], "object" ) );
+function ( cat_1 )
+    return AsCapCategoryObject( cat_1, CapFixpoint( function ( x_2, y_2 )
               return x_2 = 3 and y_2 = 2;
           end, function ( x_2 )
               return x_2 - 1;

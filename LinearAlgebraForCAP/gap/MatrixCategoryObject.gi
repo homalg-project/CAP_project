@@ -33,7 +33,7 @@ InstallMethodForCompilerForCAP( MatrixCategoryObjectOp,
         
     fi;
     
-    return CreateCapCategoryObjectWithAttributes( cat, Dimension, dimension );
+    return AsCapCategoryObject( cat, dimension );
     
 end );
 
@@ -64,6 +64,16 @@ InstallMethod( UnderlyingFieldForHomalg,
     
 end );
 
+##
+InstallMethod( Dimension,
+               [ IsVectorSpaceObject ],
+               
+  function( object )
+    
+    return AsInteger( object );
+    
+end );
+
 ####################################
 ##
 ## View
@@ -77,7 +87,7 @@ InstallMethod( String,
     
     return Concatenation( "A vector space object over ",
                           RingName( UnderlyingRing( CapCategory( vector_space_object ) ) ),
-                          " of dimension ", String( Dimension( vector_space_object ) ) );
+                          " of dimension ", String( AsInteger( vector_space_object ) ) );
     
 end );
 ##
@@ -106,6 +116,6 @@ InstallMethod( LaTeXOutput,
                
   function( vector_space_object )
     
-    return Concatenation( LaTeXOutput( UnderlyingRing( CapCategory( vector_space_object ) ) ), "^{1 \\times ", String( Dimension( vector_space_object ) ), "}" );
+    return Concatenation( LaTeXOutput( UnderlyingRing( CapCategory( vector_space_object ) ) ), "^{1 \\times ", String( AsInteger( vector_space_object ) ), "}" );
     
 end );

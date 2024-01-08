@@ -25,7 +25,7 @@ InstallGlobalFunction( MATRIX_CATEGORY,
     
     category := CreateCapCategoryWithDataTypes(
         Concatenation( "Category of matrices over ", RingName( homalg_field ) ), IsMatrixCategory,
-        IsVectorSpaceObject and HasDimension and HasIsProjective and IsProjective, IsVectorSpaceMorphism and HasUnderlyingMatrix, IsCapCategoryTwoCell,
+        IsVectorSpaceObject and HasAsInteger and HasIsProjective and IsProjective, IsVectorSpaceMorphism and HasAsHomalgMatrix, IsCapCategoryTwoCell,
         IsInt, IsHomalgMatrix, fail
     );
     
@@ -36,8 +36,8 @@ InstallGlobalFunction( MATRIX_CATEGORY,
             "UnderlyingRing",
         ],
         source_and_range_attributes_from_morphism_attribute := rec(
-            object_attribute_name := "Dimension",
-            morphism_attribute_name := "UnderlyingMatrix",
+            object_attribute_name := "AsInteger",
+            morphism_attribute_name := "AsHomalgMatrix",
             source_attribute_getter_name := "NumberRows",
             range_attribute_getter_name := "NumberColumns",
         ),

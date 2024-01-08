@@ -19,7 +19,7 @@
 #!   Else all installed operations (excluding operations which are part of suggested dependencies) of the category are precompiled.
 #!   Furthermore, the options `number_of_objectified_objects_in_data_structure_of_object`, `number_of_objectified_morphisms_in_data_structure_of_object`,
 #!   `number_of_objectified_objects_in_data_structure_of_morphism`, and `number_of_objectified_morphisms_in_data_structure_of_morphism` can optionally be set to allow the compiler
-#!   to warn about about bad compilation results. For example, `number_of_objectified_objects_in_data_structure_of_object` should be the number of calls to `CreateCapCategoryObjectWithAttributes`
+#!   to warn about about bad compilation results. For example, `number_of_objectified_objects_in_data_structure_of_object` should be the number of calls to `CreateCapCategoryObjectWithAttributes` or `AsCapCategoryObject`
 #!   required for creating an object in the tower defined by <A>category_constructor</A>, e.g. 1 if the tower has height one, or 2 if the tower has height two and the objects of the category at the top are given by
 #!   objects in the category one level below. Warnings will be displayed if this number is exceeded (because this implies that not all wrap-unwrap-pairs could be canceled).
 #!   Technical requirements:

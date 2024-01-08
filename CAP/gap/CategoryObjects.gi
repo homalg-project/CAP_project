@@ -327,6 +327,32 @@ InstallGlobalFunction( CreateCapCategoryObjectWithAttributes,
 end );
 
 ##
+InstallGlobalFunction( AsCapCategoryObject,
+                       
+  function( category, object_datum )
+    local object_datum_type, obj;
+    
+    object_datum_type := CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( "object_datum", category );
+    
+    if object_datum_type <> fail then
+        
+        CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER( object_datum_type, [ "the second argument of `AsCapCategoryObject`" ] )( object_datum );
+        
+    fi;
+    
+    obj := ObjectifyWithAttributes( rec( ), category!.object_type, CapCategory, category, category!.object_attribute, object_datum );
+    
+    if not IsIdenticalObj( category!.object_attribute( obj ), object_datum ) then
+        
+        Print( "WARNING: <object_datum> is not identical to `", category!.object_attribute_name, "( <obj> )`. You might want to make <object_datum> immutable.\n" );
+        
+    fi;
+    
+    return obj;
+    
+end );
+
+##
 InstallMethod( Simplify,
                [ IsCapCategoryObject ],
   function( object )
