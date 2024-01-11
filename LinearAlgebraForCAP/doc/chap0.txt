@@ -6,15 +6,17 @@
                   [1X Category of Matrices over a Field for CAP [101X
   
   
-                                   2024.01-01
+                                   2024.01-02
   
   
-                                 8 January 2024
+                                11 January 2024
   
   
                                Sebastian Gutsche
   
                                 Sebastian Posur
+  
+                                Fabian Zickgraf
   
   
   
@@ -34,6 +36,14 @@
       Address:  [33X[0;14YDepartment Mathematik[133X
                 [33X[0;14YUniversität Siegen[133X
                 [33X[0;14YWalter-Flex-Straße 3[133X
+                [33X[0;14Y57068 Siegen[133X
+                [33X[0;14YGermany[133X
+  
+  
+  Fabian Zickgraf
+      Email:    [7Xmailto:fabian.zickgraf@uni-siegen.de[107X
+      Homepage: [7Xhttps://github.com/zickgraf/[107X
+      Address:  [33X[0;14YWalter-Flex-Str. 3[133X
                 [33X[0;14Y57068 Siegen[133X
                 [33X[0;14YGermany[133X
   
