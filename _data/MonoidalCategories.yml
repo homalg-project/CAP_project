@@ -1,7 +1,7 @@
 name: MonoidalCategories
-version: "2023.12-01"
+version: "2024.01-01"
 license: "GPL-2.0-or-later"
-date: 2023-12-27
+date: 2024-01-11
 description: |
     Monoidal and monoidal (co)closed categories
 
@@ -14,6 +14,8 @@ authors:
       url: http://algebra.mathematik.uni-siegen.de/posur/
     - name: Tom Kuhmichel
       url: https://github.com/TKuh
+    - name: Fabian Zickgraf
+      url: https://github.com/zickgraf/
 
 maintainers:
     - name: Mohamed Barakat
@@ -24,6 +26,8 @@ maintainers:
       url: http://algebra.mathematik.uni-siegen.de/posur/
     - name: Tom Kuhmichel
       url: https://github.com/TKuh
+    - name: Fabian Zickgraf
+      url: https://github.com/zickgraf/
 
 GAP: ">= 4.12.1"
 
@@ -41,11 +45,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/MonoidalCategories/Pac
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2023.12-01/MonoidalCategories-2023.12-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2024.01-01/MonoidalCategories-2024.01-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2023.12-01/MonoidalCategories-2023.12-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2024.01-01/MonoidalCategories-2024.01-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2023.12-01/MonoidalCategories-2023.12-01-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2024.01-01/MonoidalCategories-2024.01-01-manual.pdf
 
 abstract: |
 
@@ -56,23 +60,23 @@ keywords: |
     monoidal categories, monoidal closed categories, monoidal coclosed categories, tensor-Hom adjunction, coHom-tensor adjunction.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BGPK27</span>]   <b class='BibAuthor'>Barakat, M., Gutsche, S., Posur, S. and Kuhmichel, T.</b>,
+    [<span class='BibKey'>BGPKZ11</span>]   <b class='BibAuthor'>Barakat, M., Gutsche, S., Posur, S., Kuhmichel, T. and Zickgraf, F.</b>,
      <i class='BibTitle'>MonoidalCategories, Monoidal and monoidal (co)closed categories,
-             Version 2023.12-01</i>
-     (<span class='BibYear'>2-27</span>)<br />
+             Version 2024.01-01</i>
+     (<span class='BibYear'>1-11</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/MonoidalCategories">https://homalg-project.github.io/pkg/MonoidalCategories</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ MonoidalCategories2023.12-01,
+    @misc{ MonoidalCategories2024.01-01,
       author =           {Barakat,   M.  and  Gutsche,  S.  and  Posur,  S.  and
-                          Kuhmichel, T.},
+                          Kuhmichel, T. and Zickgraf, F.},
       title =            {{MonoidalCategories}, Monoidal and monoidal (co)closed
-                          categories, {V}ersion 2023.12-01},
-      month =            {3-},
-      year =             {2-27},
+                          categories, {V}ersion 2024.01-01},
+      month =            {4-},
+      year =             {1-11},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/MonoidalCategories}
@@ -82,6 +86,6 @@ bibtex: |
       keywords =         {monoidal   categories;   monoidal  closed  categories;
                           monoidal  coclosed  categories; tensor-Hom adjunction;
                           coHom-tensor adjunction},
-      printedkey =       {BGPK27}
+      printedkey =       {BGPKZ11}
     }
 
