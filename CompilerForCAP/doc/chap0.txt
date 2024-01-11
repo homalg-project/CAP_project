@@ -6,10 +6,10 @@
                   [1X Speed up and verify categorical algorithms [101X
   
   
-                                   2024.01-02
+                                   2024.01-03
   
   
-                                 8 January 2024
+                                11 January 2024
   
   
                                 Fabian Zickgraf
@@ -19,7 +19,7 @@
   Fabian Zickgraf
       Email:    [7Xmailto:fabian.zickgraf@uni-siegen.de[107X
       Homepage: [7Xhttps://github.com/zickgraf/[107X
-      Address:  [33X[0;14YWalter-Flex-Straße 3[133X
+      Address:  [33X[0;14YWalter-Flex-Str. 3[133X
                 [33X[0;14Y57068 Siegen[133X
                 [33X[0;14YGermany[133X
   

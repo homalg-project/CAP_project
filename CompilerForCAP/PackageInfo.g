@@ -10,20 +10,20 @@ SetPackageInfo( rec(
 
 PackageName := "CompilerForCAP",
 Subtitle := "Speed up and verify categorical algorithms",
-Version := "2024.01-02",
-Date := "2024-01-08",
+Version := "2024.01-03",
+Date := "2024-01-11",
 License := "GPL-2.0-or-later",
 
 Persons := [
   rec(
+    IsAuthor := true,
+    IsMaintainer := true,
     FirstNames := "Fabian",
     LastName := "Zickgraf",
     WWWHome := "https://github.com/zickgraf/",
     Email := "fabian.zickgraf@uni-siegen.de",
-    IsAuthor := true,
-    IsMaintainer := true,
     PostalAddress := Concatenation(
-               "Walter-Flex-Straße 3\n",
+               "Walter-Flex-Str. 3\n",
                "57068 Siegen\n",
                "Germany" ),
     Place := "Siegen",
