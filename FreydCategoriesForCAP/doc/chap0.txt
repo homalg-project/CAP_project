@@ -6,15 +6,17 @@
         [1X Freyd categories - Formal (co)kernels for additive categories [101X
   
   
-                                   2023.12-15
+                                   2024.01-01
   
   
-                                27 December 2023
+                                11 January 2024
   
   
                                 Sebastian Posur
   
                                   Martin Bies
+  
+                                Fabian Zickgraf
   
   
   
@@ -37,6 +39,14 @@
                 [33X[0;14YBuilding NO - Level 6 - Office O.6.111[133X
                 [33X[0;14Y1050 Brussels[133X
                 [33X[0;14YBelgium[133X
+  
+  
+  Fabian Zickgraf
+      Email:    [7Xmailto:fabian.zickgraf@uni-siegen.de[107X
+      Homepage: [7Xhttps://github.com/zickgraf/[107X
+      Address:  [33X[0;14YWalter-Flex-Str. 3[133X
+                [33X[0;14Y57068 Siegen[133X
+                [33X[0;14YGermany[133X
   
   
   
