@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "CAP",
 Subtitle := "Categories, Algorithms, Programming",
-Version := "2024.01-02",
-Date := "2024-01-08",
+Version := "2024.01-03",
+Date := "2024-01-11",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -62,6 +62,20 @@ Persons := [
     Place := "Trondheim",
     Institution := "Norges teknisk-naturvitenskapelige universitet",
    ),
+  rec(
+    IsAuthor := true,
+    IsMaintainer := true,
+    FirstNames := "Fabian",
+    LastName := "Zickgraf",
+    WWWHome := "https://github.com/zickgraf/",
+    Email := "fabian.zickgraf@uni-siegen.de",
+    PostalAddress := Concatenation(
+               "Walter-Flex-Str. 3\n",
+               "57068 Siegen\n",
+               "Germany" ),
+    Place := "Siegen",
+    Institution := "University of Siegen",
+  ),
 ],
 
 Status := "deposited",
