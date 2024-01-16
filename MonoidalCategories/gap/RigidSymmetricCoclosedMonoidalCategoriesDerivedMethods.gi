@@ -51,7 +51,7 @@ AddDerivationToCAP( InternalCoHomOnMorphismsWithGivenInternalCoHoms,
     #     v
     # b'^v ⊗ a
     #     |
-    #     | Codual(beta) ⊗ alpha
+    #     | coDual(beta) ⊗ alpha
     #     v
     # b^v ⊗ a'
     #     |
@@ -128,7 +128,7 @@ AddDerivationToCAP( CoclosedEvaluationMorphismWithGivenRange,
     #      v
     # (a ⊗ b_v) ⊗ b
     #      |
-    #      | B_( a, Codual(b) ) ⊗ id_b
+    #      | B_( a, coDual(b) ) ⊗ id_b
     #      v
     # (b_v ⊗ a) ⊗ b
     #      |
@@ -179,7 +179,7 @@ AddDerivationToCAP( CoclosedEvaluationMorphismWithGivenRange,
     #      v
     # a ⊗ b_v ⊗ b
     #      |
-    #      | B_( a, Codual(b) ) ⊗ id_b
+    #      | B_( a, coDual(b) ) ⊗ id_b
     #      v
     # b_v ⊗ a ⊗ b
     #      |
