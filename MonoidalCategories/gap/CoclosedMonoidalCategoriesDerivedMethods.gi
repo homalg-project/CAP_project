@@ -16,11 +16,11 @@ AddDerivationToCAP( TensorProductToInternalCoHomAdjunctionMap,
     
     # g: a → c ⊗ b
     #
-    #    Cohom(a,b)
+    #    coHom(a,b)
     #        |
-    #        | Cohom(g, id_b)
+    #        | coHom(g, id_b)
     #        v
-    # Cohom(c ⊗ b, b)
+    # coHom(c ⊗ b, b)
     #        |
     #        | coclcoev_cb
     #        v
@@ -45,11 +45,11 @@ AddDerivationToCAP( TensorProductToInternalCoHomAdjunctionMapWithGivenInternalCo
     
     # g: a → c ⊗ b
     #
-    #    Cohom(a,b)
+    #    coHom(a,b)
     #        |
-    #        | Cohom(g, id_b)
+    #        | coHom(g, id_b)
     #        v
-    # Cohom(c ⊗ b, b)
+    # coHom(c ⊗ b, b)
     #        |
     #        | coclcoev_cb
     #        v
@@ -73,13 +73,13 @@ AddDerivationToCAP( InternalCoHomToTensorProductAdjunctionMap,
                     
   function( cat, a, b, f )
     
-    # f: Cohom(a,b) → c
+    # f: coHom(a,b) → c
     #
     #        a
     #        |
     #        | coclev_ab
     #        v
-    # Cohom(a,b) ⊗ b
+    # coHom(a,b) ⊗ b
     #        |
     #        | f ⊗ id_b
     #        v
@@ -102,13 +102,13 @@ AddDerivationToCAP( InternalCoHomToTensorProductAdjunctionMapWithGivenTensorProd
   function( cat, a, b, f, t )
     local coclev_bc;
     
-    # f: Cohom(a,b) → c
+    # f: coHom(a,b) → c
     #
     #        a
     #        |
     #        | coclev_ab
     #        v
-    # Cohom(a,b) ⊗ b
+    # coHom(a,b) ⊗ b
     #        |
     #        | f ⊗ id_b
     #        v

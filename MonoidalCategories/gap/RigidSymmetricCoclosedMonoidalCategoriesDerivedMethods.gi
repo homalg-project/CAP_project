@@ -11,7 +11,7 @@ AddDerivationToCAP( InternalCoHomOnObjects,
                     
   function( cat, a, b )
     
-    # Source( Cohom(a,b) → b_v ⊗ a )
+    # Source( coHom(a,b) → b_v ⊗ a )
     
     return Source( IsomorphismFromInternalCoHomToTensorProductWithCoDualObject( cat, a, b ) );
     
@@ -24,7 +24,7 @@ AddDerivationToCAP( InternalCoHomOnObjects,
                     
   function( cat, a, b )
     
-    # Range( b_v ⊗ a → Cohom(a,b) )
+    # Range( b_v ⊗ a → coHom(a,b) )
     
     return Range( IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom( cat, b, a ) );
     
@@ -45,7 +45,7 @@ AddDerivationToCAP( InternalCoHomOnMorphismsWithGivenInternalCoHoms,
     # alpha: a → a'
     # beta: b → b'
     #
-    # Cohom(a,b')
+    # coHom(a,b')
     #     |
     #     |
     #     v
@@ -57,7 +57,7 @@ AddDerivationToCAP( InternalCoHomOnMorphismsWithGivenInternalCoHoms,
     #     |
     #     |
     #     v
-    # Cohom(a',b)
+    # coHom(a',b)
     
     codual_beta := CoDualOnMorphisms( cat, beta );
     
@@ -134,7 +134,7 @@ AddDerivationToCAP( CoclosedEvaluationMorphismWithGivenRange,
     #      |
     #      | Isomorphism ⊗ id_b
     #      v
-    # Cohom(a,b) ⊗ b
+    # coHom(a,b) ⊗ b
     
     morphism := PreComposeList( cat,
                         a,
@@ -185,7 +185,7 @@ AddDerivationToCAP( CoclosedEvaluationMorphismWithGivenRange,
     #      |
     #      | Isomorphism ⊗ id_b
     #      v
-    # Cohom(a,b) ⊗ b
+    # coHom(a,b) ⊗ b
     
     morphism := PreComposeList( cat,
                         a,
@@ -223,7 +223,7 @@ AddDerivationToCAP( CoclosedCoevaluationMorphismWithGivenSource,
   function( cat, a, b, internal_cohom )
     local codual_b, id_a, morphism;
     
-    # Cohom(a ⊗ b, b)
+    # coHom(a ⊗ b, b)
     #       |
     #       | Isomorphism
     #       v
@@ -295,7 +295,7 @@ AddDerivationToCAP( CoclosedCoevaluationMorphismWithGivenSource,
   function( cat, a, b, internal_cohom )
     local codual_b, id_a, morphism;
     
-    # Cohom(a ⊗ b, b)
+    # coHom(a ⊗ b, b)
     #       |
     #       | Isomorphism
     #       v
@@ -405,7 +405,7 @@ AddDerivationToCAP( CoclosedCoevaluationForCoDualWithGivenTensorProduct,
     #    |
     #    | Isomorphism
     #    v
-    # Cohom(a,a)
+    # coHom(a,a)
     #    |
     #    | CoLambdaIntro( id_a )
     #    v
@@ -446,7 +446,7 @@ AddDerivationToCAP( CoTraceMap,
     #    |
     #    | Isomorphism
     #    v
-    # Cohom(a,a)
+    # coHom(a,a)
     #    |
     #    | CoLambdaIntro( alpha )
     #    v
@@ -485,7 +485,7 @@ AddDerivationToCAP( InternalCoHomTensorProductCompatibilityMorphismInverseWithGi
                     
   function( cat, source, list, range )
     
-    # Inverse( Cohom( a ⊗ a', b ⊗ b') → Cohom(a,b) ⊗ Cohom(a',b') )
+    # Inverse( coHom( a ⊗ a', b ⊗ b') → coHom(a,b) ⊗ coHom(a',b') )
     
     return InverseForMorphisms( cat, InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects( cat, range, list, source ) );
     

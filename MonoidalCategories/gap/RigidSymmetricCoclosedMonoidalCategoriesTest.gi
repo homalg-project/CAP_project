@@ -113,10 +113,10 @@ InstallGlobalFunction( "RigidSymmetricCoclosedMonoidalCategoriesTest",
                 
             fi;
             
-            # Cohom( a, c ) ⊗ Cohom( b, d ) → Cohom( a ⊗ b, c ⊗ d )
+            # coHom( a, c ) ⊗ coHom( b, d ) → coHom( a ⊗ b, c ⊗ d )
             cohom_to_tensor_compatibility_inverse_abcd := InternalCoHomTensorProductCompatibilityMorphismInverse( [ a, b, c, d ] );
             
-            # Cohom( b, a ) ⊗ Cohom( d, c ) → Cohom( b ⊗ d, a ⊗ c )
+            # coHom( b, a ) ⊗ coHom( d, c ) → coHom( b ⊗ d, a ⊗ c )
             cohom_to_tensor_compatibility_inverse_bdac := InternalCoHomTensorProductCompatibilityMorphismInverse( [ b, d, a, c ] );
             
             # Hom( a ⊗ c, b ⊗ d ) → Hom( a, b ) ⊗ Hom( c, d )
@@ -125,10 +125,10 @@ InstallGlobalFunction( "RigidSymmetricCoclosedMonoidalCategoriesTest",
             # Hom( c ⊗ d, a ⊗ b ) → Hom( c, a ) ⊗ Hom( d, b )
             tensor_to_hom_compatibility_inverse_cadb_op := TensorProductInternalHomCompatibilityMorphismInverse( [ c_op, a_op, d_op, b_op ] );
             
-            # Hom( a ⊗ c, b ⊗ d ) → Hom( a, b ) ⊗ Hom( c, d )  ==  op( Cohom( b, a ) ⊗ Cohom( d, c ) → Cohom( b ⊗ d, a ⊗ c ) )
+            # Hom( a ⊗ c, b ⊗ d ) → Hom( a, b ) ⊗ Hom( c, d )  ==  op( coHom( b, a ) ⊗ coHom( d, c ) → coHom( b ⊗ d, a ⊗ c ) )
             Assert( 0, IsCongruentForMorphisms( tensor_to_hom_compatibility_inverse_abcd_op, Opposite( opposite, cohom_to_tensor_compatibility_inverse_bdac ) ) );
             
-            # Hom( c ⊗ d, a ⊗ b ) → Hom( c, a ) ⊗ Hom( d, b )  ==  op( Cohom( a, c ) ⊗ Cohom( b, d ) → Cohom( a ⊗ b, c ⊗ d ) )
+            # Hom( c ⊗ d, a ⊗ b ) → Hom( c, a ) ⊗ Hom( d, b )  ==  op( coHom( a, c ) ⊗ coHom( b, d ) → coHom( a ⊗ b, c ⊗ d ) )
             Assert( 0, IsCongruentForMorphisms( tensor_to_hom_compatibility_inverse_cadb_op, Opposite( opposite, cohom_to_tensor_compatibility_inverse_abcd ) ) );
             
         fi;

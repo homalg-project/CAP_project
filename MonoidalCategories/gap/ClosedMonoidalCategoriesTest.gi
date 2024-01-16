@@ -224,16 +224,16 @@ InstallGlobalFunction( "ClosedMonoidalCategoriesTest",
             # Adjoint( c ⊗ a → d ⊗ b )  ==  c → Hom( a, d ⊗ b )
             tensor_to_hom_adjunction_on_beta_tensor_alpha := TensorProductToInternalHomAdjunctionMap( c, a, beta_tensor_alpha );
             
-            # Adjoint( b ⊗ d → a ⊗ c )  ==  Cohom( b ⊗ d, c ) → a
+            # Adjoint( b ⊗ d → a ⊗ c )  ==  coHom( b ⊗ d, c ) → a
             tensor_to_cohom_adjunction_on_alpha_tensor_beta_op := TensorProductToInternalCoHomAdjunctionMap( a_op, c_op, alpha_tensor_beta_op );
             
-            # Adjoint( d ⊗ b → c ⊗ a )  ==  Cohom( d ⊗ b, a ) → c
+            # Adjoint( d ⊗ b → c ⊗ a )  ==  coHom( d ⊗ b, a ) → c
             tensor_to_cohom_adjunction_on_beta_tensor_alpha_op := TensorProductToInternalCoHomAdjunctionMap( c_op, a_op, beta_tensor_alpha_op );
             
-            # Cohom( b ⊗ d, c ) → a  ==  op( a → Hom( c, b ⊗ d ) )
+            # coHom( b ⊗ d, c ) → a  ==  op( a → Hom( c, b ⊗ d ) )
             Assert( 0, IsCongruentForMorphisms( tensor_to_cohom_adjunction_on_alpha_tensor_beta_op, Opposite( opposite, tensor_to_hom_adjunction_on_alpha_tensor_beta ) ) );
             
-            # Cohom( d ⊗ b, a ) → c  ==  op( c → Hom( a, d ⊗ b ) )
+            # coHom( d ⊗ b, a ) → c  ==  op( c → Hom( a, d ⊗ b ) )
             Assert( 0, IsCongruentForMorphisms( tensor_to_cohom_adjunction_on_beta_tensor_alpha_op, Opposite( opposite, tensor_to_hom_adjunction_on_beta_tensor_alpha ) ) );
             
         fi;
@@ -257,11 +257,11 @@ InstallGlobalFunction( "ClosedMonoidalCategoriesTest",
             #
             #####################################################
             #
-            # cohom_alpha_beta: Cohom( a, d ) → Cohom( b, c )
-            # cohom_beta_alpha: Cohom( c, b ) → Cohom( d, a )
+            # cohom_alpha_beta: coHom( a, d ) → coHom( b, c )
+            # cohom_beta_alpha: coHom( c, b ) → coHom( d, a )
             #
-            # cohom_alpha_beta_op: Cohom( b, c ) → Cohom( a, d )
-            # cohom_beta_alpha_op: Cohom( d, a ) → Cohom( c, b )
+            # cohom_alpha_beta_op: coHom( b, c ) → coHom( a, d )
+            # cohom_beta_alpha_op: coHom( d, a ) → coHom( c, b )
             #
             #####################################################
             
@@ -271,16 +271,16 @@ InstallGlobalFunction( "ClosedMonoidalCategoriesTest",
             # Adjoint( Hom( d, a ) → Hom( c, b ) )  ==  Hom( d, a ) ⊗ c → b
             hom_to_tensor_adjunction_on_hom_beta_alpha := InternalHomToTensorProductAdjunctionMap( c, b, hom_beta_alpha );
             
-            # Adjoint( Cohom( b, c ) → Cohom( a, d ) )  ==  b → Cohom( a, d ) ⊗ c
+            # Adjoint( coHom( b, c ) → coHom( a, d ) )  ==  b → coHom( a, d ) ⊗ c
             cohom_to_tensor_adjunction_on_cohom_alpha_beta_op := InternalCoHomToTensorProductAdjunctionMap( b_op, c_op, cohom_alpha_beta_op );
             
-            # Adjoint( Cohom( d, a ) → Cohom( c, b ) )  ==  d → Cohom( c, b ) ⊗ a
+            # Adjoint( coHom( d, a ) → coHom( c, b ) )  ==  d → coHom( c, b ) ⊗ a
             cohom_to_tensor_adjunction_on_cohom_beta_alpha_op := InternalCoHomToTensorProductAdjunctionMap( d_op, a_op, cohom_beta_alpha_op );
             
-            # b → Cohom( a, d ) ⊗ c  ==  op( Hom( d, a ) ⊗ c → b )
+            # b → coHom( a, d ) ⊗ c  ==  op( Hom( d, a ) ⊗ c → b )
             Assert( 0, IsCongruentForMorphisms( cohom_to_tensor_adjunction_on_cohom_alpha_beta_op, Opposite( opposite, hom_to_tensor_adjunction_on_hom_beta_alpha ) ) );
             
-            # d → Cohom( c, b ) ⊗ a  ==  op( Hom( b, c ) ⊗ a → d )
+            # d → coHom( c, b ) ⊗ a  ==  op( Hom( b, c ) ⊗ a → d )
             Assert( 0, IsCongruentForMorphisms( cohom_to_tensor_adjunction_on_cohom_beta_alpha_op, Opposite( opposite, hom_to_tensor_adjunction_on_hom_alpha_beta ) ) );
             
         fi;
@@ -420,16 +420,16 @@ InstallGlobalFunction( "ClosedMonoidalCategoriesTest",
             # Hom( c, a ) ⊗ Hom( d, b ) → Hom( c ⊗ d, a ⊗ b )
             tensor_to_hom_compatibility_cadb := TensorProductInternalHomCompatibilityMorphism( [ c, a, d, b ] );
             
-            # Cohom( a ⊗ b, c ⊗ d ) → Cohom( a, c ) ⊗ Cohom( b, d )
+            # coHom( a ⊗ b, c ⊗ d ) → coHom( a, c ) ⊗ coHom( b, d )
             cohom_to_tensor_compatibility_abcd_op := InternalCoHomTensorProductCompatibilityMorphism( [ a_op, b_op, c_op, d_op ] );
             
-            # Cohom( b ⊗ d, a ⊗ c ) → Cohom( b, a ) ⊗ Cohom( d, c )
+            # coHom( b ⊗ d, a ⊗ c ) → coHom( b, a ) ⊗ coHom( d, c )
             cohom_to_tensor_compatibility_bdac_op := InternalCoHomTensorProductCompatibilityMorphism( [ b_op, d_op, a_op, c_op ] );
             
-            # Cohom( a ⊗ b, c ⊗ d ) → Cohom( a, c ) ⊗ Cohom( b, d )  ==  op( Hom( c, a ) ⊗ Hom( d, b ) → Hom( c ⊗ d, a ⊗ b ) )
+            # coHom( a ⊗ b, c ⊗ d ) → coHom( a, c ) ⊗ coHom( b, d )  ==  op( Hom( c, a ) ⊗ Hom( d, b ) → Hom( c ⊗ d, a ⊗ b ) )
             Assert( 0, IsCongruentForMorphisms( cohom_to_tensor_compatibility_abcd_op, Opposite( opposite, tensor_to_hom_compatibility_cadb ) ) );
             
-            # Cohom( b ⊗ d, a ⊗ c ) → Cohom( b, a ) ⊗ Cohom( d, c )  ==  op( Hom( a, b ) ⊗ Hom( c, d ) → Hom( a ⊗ c, b ⊗ d ) )
+            # coHom( b ⊗ d, a ⊗ c ) → coHom( b, a ) ⊗ coHom( d, c )  ==  op( Hom( a, b ) ⊗ Hom( c, d ) → Hom( a ⊗ c, b ⊗ d ) )
             Assert( 0, IsCongruentForMorphisms( cohom_to_tensor_compatibility_bdac_op, Opposite( opposite, tensor_to_hom_compatibility_abcd ) ) );
             
         fi;
