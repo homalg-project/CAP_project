@@ -771,7 +771,7 @@ InstallGlobalFunction( ADD_INTERNAL_HOM_ON_OBJECTS_LEFT,
   function( category )
     
     ## WARNING: The given function uses basic operations.
-    AddInternalHomOnObjects( category,
+    AddLeftInternalHomOnObjects( category,
       
       function( cat, object_1, object_2 )
         
@@ -787,7 +787,7 @@ InstallGlobalFunction( ADD_INTERNAL_HOM_ON_OBJECTS_RIGHT,
   function( category )
     
     ## WARNING: The given function uses basic operations.
-    AddInternalHomOnObjects( category,
+    AddLeftInternalHomOnObjects( category,
       
       function( cat, object_1, object_2 )
         
@@ -803,7 +803,7 @@ InstallGlobalFunction( ADD_INTERNAL_HOM_ON_MORPHISMS_LEFT,
   function( category )
     
     ## WARNING: The given function uses basic operations.
-    AddInternalHomOnMorphismsWithGivenInternalHoms( category,
+    AddLeftInternalHomOnMorphismsWithGivenLeftInternalHoms( category,
       
       function( cat, new_source, morphism_1, morphism_2, new_range )
         local internal_hom_embedding_source, internal_hom_embedding_range, morphism_between_tensor_products;
@@ -834,7 +834,7 @@ InstallGlobalFunction( ADD_INTERNAL_HOM_ON_MORPHISMS_RIGHT,
   function( category )
     
     ## WARNING: The given function uses basic operations.
-    AddInternalHomOnMorphismsWithGivenInternalHoms( category,
+    AddLeftInternalHomOnMorphismsWithGivenLeftInternalHoms( category,
       
       function( cat, new_source, morphism_1, morphism_2, new_range )
         local internal_hom_embedding_source, internal_hom_embedding_range, morphism_between_tensor_products;
@@ -929,7 +929,7 @@ InstallGlobalFunction( ADD_EVALUATION_MORPHISM_LEFT,
     
     homalg_ring := category!.ring_for_representation_category;
     
-    AddEvaluationMorphismWithGivenSource( category,
+    AddLeftClosedMonoidalEvaluationMorphismWithGivenSource( category,
       
       function( cat, object_1, object_2, internal_hom_tensored_object_1 )
         local internal_hom_embedding, rank_1, morphism, free_module,
@@ -986,7 +986,7 @@ InstallGlobalFunction( ADD_EVALUATION_MORPHISM_RIGHT,
     
     homalg_ring := category!.ring_for_representation_category;
     
-    AddEvaluationMorphismWithGivenSource( category,
+    AddLeftClosedMonoidalEvaluationMorphismWithGivenSource( category,
       
       function( cat, object_1, object_2, internal_hom_tensored_object_1 )
         local internal_hom_embedding, rank_1, morphism, free_module,
@@ -1043,7 +1043,7 @@ InstallGlobalFunction( ADD_COEVALUATION_MORPHISM_LEFT,
     
     homalg_ring := category!.ring_for_representation_category;
     
-    AddCoevaluationMorphismWithGivenRange( category,
+    AddLeftClosedMonoidalCoevaluationMorphismWithGivenRange( category,
       
       function( cat, object_1, object_2, internal_hom )
         local object_1_tensored_object_2, internal_hom_embedding, rank_2, free_module, morphism,
@@ -1101,7 +1101,7 @@ InstallGlobalFunction( ADD_COEVALUATION_MORPHISM_RIGHT,
     
     homalg_ring := category!.ring_for_representation_category;
     
-    AddCoevaluationMorphismWithGivenRange( category,
+    AddLeftClosedMonoidalCoevaluationMorphismWithGivenRange( category,
       
       function( cat, object_1, object_2, internal_hom )
         local object_1_tensored_object_2, internal_hom_embedding, rank_2, free_module, morphism,

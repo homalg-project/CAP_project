@@ -104,11 +104,11 @@ InstallGlobalFunction( FREYD_CATEGORY,
     
     fi;
     
-    conditions := Concatenation( conditions, [ "InternalHomOnMorphismsWithGivenInternalHoms",
+    conditions := Concatenation( conditions, [ "LeftInternalHomOnMorphismsWithGivenLeftInternalHoms",
                                                 "ProjectionOfBiasedWeakFiberProduct",
                                                 "UniversalMorphismIntoBiasedWeakFiberProduct",
-                                                "EvaluationMorphismWithGivenSource",
-                                                "CoevaluationMorphismWithGivenRange" ] );
+                                                "LeftClosedMonoidalEvaluationMorphismWithGivenSource",
+                                                "LeftClosedMonoidalCoevaluationMorphismWithGivenRange" ] );
     if ForAll( conditions, f -> CanCompute( underlying_category, f ) ) then
       
       SetIsSymmetricClosedMonoidalCategory( freyd_category, true );
@@ -327,17 +327,17 @@ InstallMethodWithCacheFromObject( INTERNAL_HOM_EMBEDDING,
       local source, range, mor;
 
       # compute source
-      source := InternalHomOnMorphisms( UnderlyingCategory( cat ), IdentityMorphism( UnderlyingCategory( cat ), Range( ObjectDatum( cat, a ) ) ),
+      source := LeftInternalHomOnMorphisms( UnderlyingCategory( cat ), IdentityMorphism( UnderlyingCategory( cat ), Range( ObjectDatum( cat, a ) ) ),
                                         ObjectDatum( cat, b ) );
       source := FreydCategoryObject( cat, source );
       
       # compute range
-      range := InternalHomOnMorphisms( UnderlyingCategory( cat ), IdentityMorphism( UnderlyingCategory( cat ), Source( ObjectDatum( cat, a ) ) ),
+      range := LeftInternalHomOnMorphisms( UnderlyingCategory( cat ), IdentityMorphism( UnderlyingCategory( cat ), Source( ObjectDatum( cat, a ) ) ),
                                        ObjectDatum( cat, b ) );
       range := FreydCategoryObject( cat, range );
       
       # compute mapping
-      mor := InternalHomOnMorphisms( UnderlyingCategory( cat ), ObjectDatum( cat, a ),
+      mor := LeftInternalHomOnMorphisms( UnderlyingCategory( cat ), ObjectDatum( cat, a ),
                                      IdentityMorphism( UnderlyingCategory( cat ), Range( ObjectDatum( cat, b ) ) ) );
 
       # construct hom embedding
@@ -1511,10 +1511,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     #
     # Of this morphism we compute the kernel
     
-    if is_possible_to_install( "InternalHomOnObjects", 
-                               [ "InternalHomOnMorphismsWithGivenInternalHoms", "ProjectionOfBiasedWeakFiberProduct", "UniversalMorphismIntoBiasedWeakFiberProduct" ] ) then
+    if is_possible_to_install( "LeftInternalHomOnObjects", 
+                               [ "LeftInternalHomOnMorphismsWithGivenLeftInternalHoms", "ProjectionOfBiasedWeakFiberProduct", "UniversalMorphismIntoBiasedWeakFiberProduct" ] ) then
         
-        AddInternalHomOnObjects( category,
+        AddLeftInternalHomOnObjects( category,
             function( cat, a, b )
             
             return Source( INTERNAL_HOM_EMBEDDING( cat, a, b ) );
@@ -1548,15 +1548,15 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     # This we achieve by using the morphism datums of alpha, beta. These are
     # MorphismDatum( alpha ) = A -> A'
     # MorphismDatum( beta ) = B -> B'
-    # Consequently InternalHomOnMorphisms( MorphismDatum( alpha ), MorphismDatum( beta ) ) is exactly
+    # Consequently LeftInternalHomOnMorphisms( MorphismDatum( alpha ), MorphismDatum( beta ) ) is exactly
     # the morphism that we are looking for. It gives rise to a morphism rho in FreydCategory.
     #
     # Finally, Lift( rho \circ kernel1, kernel2 ) produces the required mapping mu: Hom( a',b) -> Hom( a, b')
     
-    if is_possible_to_install( "InternalHomOnMorphismsWithGivenInternalHoms", 
-                               [ "InternalHomOnMorphismsWithGivenInternalHoms", "ProjectionOfBiasedWeakFiberProduct", "UniversalMorphismIntoBiasedWeakFiberProduct" ] ) then
+    if is_possible_to_install( "LeftInternalHomOnMorphismsWithGivenLeftInternalHoms", 
+                               [ "LeftInternalHomOnMorphismsWithGivenLeftInternalHoms", "ProjectionOfBiasedWeakFiberProduct", "UniversalMorphismIntoBiasedWeakFiberProduct" ] ) then
                                
-        AddInternalHomOnMorphismsWithGivenInternalHoms( category,
+        AddLeftInternalHomOnMorphismsWithGivenLeftInternalHoms( category,
             function( cat, s, alpha, beta, r )
                 local kernel1, kernel2, mor, bridge_mapping;
                 
@@ -1565,7 +1565,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                 kernel2 := INTERNAL_HOM_EMBEDDING( cat, Source( alpha ), Range( beta ) );
                 
                 # (2) construct the bridge_mapping A^vee \otimes B -> A'^\vee \otimes b'
-                mor := InternalHomOnMorphisms( underlying_category, MorphismDatum( cat, alpha ), MorphismDatum( cat, beta ) );
+                mor := LeftInternalHomOnMorphisms( underlying_category, MorphismDatum( cat, alpha ), MorphismDatum( cat, beta ) );
                 bridge_mapping := FreydCategoryMorphism( cat, Range( kernel1 ), mor, Range( kernel2 ) );
                 
                 # (3) finally return the lift of the corresponding diagram
@@ -1601,12 +1601,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     # The composition of the Hom_embedding "Hom_emb" and of the colift "c" is the evaluation morphism.
     # Below we denote alpha beta as epi_concat and gamma delta as eval_concat.
     
-    if is_possible_to_install( "EvaluationMorphismWithGivenSource",
-                                [ "InternalHomOnMorphismsWithGivenInternalHoms", "ProjectionOfBiasedWeakFiberProduct", 
+    if is_possible_to_install( "LeftClosedMonoidalEvaluationMorphismWithGivenSource",
+                                [ "LeftInternalHomOnMorphismsWithGivenLeftInternalHoms", "ProjectionOfBiasedWeakFiberProduct", 
                                   "UniversalMorphismIntoBiasedWeakFiberProduct", "TensorProductOnObjects",
-                                  "TensorProductOnMorphismsWithGivenTensorProducts", "EvaluationMorphismWithGivenSource" ] ) then
+                                  "TensorProductOnMorphismsWithGivenTensorProducts", "LeftClosedMonoidalEvaluationMorphismWithGivenSource" ] ) then
         
-        AddEvaluationMorphismWithGivenSource( category,
+        AddLeftClosedMonoidalEvaluationMorphismWithGivenSource( category,
             function( cat, A, B, S )
                 local a, b, emb_a, emb_b, proj_A, proj_B, id_emb_a, Hom_embedding1, Hom_embedding2, Hom_emb_aB, epi_concat, eval_concat, colift_along_epi;
                 
@@ -1620,16 +1620,16 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                 id_emb_a := IdentityMorphism( cat, emb_a );
                 
                 # (1) the hom-embedding
-                Hom_embedding1 := InternalHomOnMorphisms( cat, proj_A, IdentityMorphism( cat, B ) );
+                Hom_embedding1 := LeftInternalHomOnMorphisms( cat, proj_A, IdentityMorphism( cat, B ) );
                 Hom_emb_aB := Range( Hom_embedding1 );
                 Hom_embedding2 := TensorProductOnMorphisms( cat, Hom_embedding1, IdentityMorphism( cat, A ) );
                 
                 # (2) concatenation of epis
-                epi_concat := TensorProductOnMorphisms( cat, InternalHomOnMorphisms( cat, id_emb_a, proj_B ), id_emb_a );
+                epi_concat := TensorProductOnMorphisms( cat, LeftInternalHomOnMorphisms( cat, id_emb_a, proj_B ), id_emb_a );
                 epi_concat := PreCompose( cat, epi_concat, TensorProductOnMorphisms( cat, IdentityMorphism( cat, Hom_emb_aB ), proj_A ) );
                 
                 # (3) compute "evaluation" fom Hom( emb_a,b ) \otimes emb_a -> b
-                eval_concat := PreCompose( cat, AsFreydCategoryMorphism( cat, EvaluationMorphism( underlying_category, a, b ) ), proj_B );
+                eval_concat := PreCompose( cat, AsFreydCategoryMorphism( cat, LeftClosedMonoidalEvaluationMorphism( underlying_category, a, b ) ), proj_B );
                 
                 # (4) colift along epi
                 colift_along_epi := ColiftAlongEpimorphism( cat, epi_concat, eval_concat );
@@ -1657,12 +1657,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     # We compute the Lift and use its morphism datum to construct the co_evaluation morphism.
     # Below we denote the concatenation of coev and beta by tau.
     
-    if is_possible_to_install( "CoevaluationMorphismWithGivenRange",
-                                [ "InternalHomOnMorphismsWithGivenInternalHoms", "ProjectionOfBiasedWeakFiberProduct", 
+    if is_possible_to_install( "LeftClosedMonoidalCoevaluationMorphismWithGivenRange",
+                                [ "LeftInternalHomOnMorphismsWithGivenLeftInternalHoms", "ProjectionOfBiasedWeakFiberProduct", 
                                   "UniversalMorphismIntoBiasedWeakFiberProduct", "TensorProductOnObjects",
-                                  "TensorProductOnMorphismsWithGivenTensorProducts", "CoevaluationMorphismWithGivenRange" ] ) then
+                                  "TensorProductOnMorphismsWithGivenTensorProducts", "LeftClosedMonoidalCoevaluationMorphismWithGivenRange" ] ) then
         
-        AddCoevaluationMorphismWithGivenRange( category,
+        AddLeftClosedMonoidalCoevaluationMorphismWithGivenRange( category,
             function( cat, A, B, R )
                 local a, b, emb_b, proj_B, A_tensor_B, proj_A_tensor_B, mono, tau, lift;
 
@@ -1675,10 +1675,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                 proj_A_tensor_B := EpimorphismFromSomeProjectiveObject( cat, A_tensor_B );
                 
                 # (1) construct monomorphism
-                mono := InternalHomOnMorphisms( cat, proj_B, IdentityMorphism( cat, A_tensor_B ) );
+                mono := LeftInternalHomOnMorphisms( cat, proj_B, IdentityMorphism( cat, A_tensor_B ) );
             
                 # (2) construct morphism from coevaluation in underlying category
-                tau := PreCompose( cat, AsFreydCategoryMorphism( cat, CoevaluationMorphism( underlying_category, a, b ) ), InternalHomOnMorphisms( cat, IdentityMorphism( cat, emb_b ), proj_A_tensor_B ) );
+                tau := PreCompose( cat, AsFreydCategoryMorphism( cat, LeftClosedMonoidalCoevaluationMorphism( underlying_category, a, b ) ), LeftInternalHomOnMorphisms( cat, IdentityMorphism( cat, emb_b ), proj_A_tensor_B ) );
                 
                 # (3) compute lift along mono
                 lift := LiftAlongMonomorphism( cat, mono, tau );

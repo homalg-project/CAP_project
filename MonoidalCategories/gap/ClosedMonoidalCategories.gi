@@ -5,24 +5,24 @@
 #
 
 ##
-AddDerivationToCAP( IsomorphismFromInternalHomToObject,
+AddDerivationToCAP( IsomorphismFromLeftInternalHomToObject,
                     "calling the WithGiven operation in a skeletal setting",
-                    [ [ IsomorphismFromInternalHomToObjectWithGivenInternalHom, 1 ] ],
+                    [ [ IsomorphismFromLeftInternalHomToObjectWithGivenLeftInternalHom, 1 ] ],
                     
   function( cat, object )
     
-    return IsomorphismFromInternalHomToObjectWithGivenInternalHom( cat, object, object );
+    return IsomorphismFromLeftInternalHomToObjectWithGivenLeftInternalHom( cat, object, object );
     
 end : CategoryFilter := IsSkeletalCategory );
 
 ##
-AddDerivationToCAP( IsomorphismFromObjectToInternalHom,
+AddDerivationToCAP( IsomorphismFromObjectToLeftInternalHom,
                     "calling the WithGiven operation in a skeletal setting",
-                    [ [ IsomorphismFromObjectToInternalHomWithGivenInternalHom, 1 ] ],
+                    [ [ IsomorphismFromObjectToLeftInternalHomWithGivenLeftInternalHom, 1 ] ],
                     
   function( cat, object )
     
-    return IsomorphismFromObjectToInternalHomWithGivenInternalHom( cat, object, object );
+    return IsomorphismFromObjectToLeftInternalHomWithGivenLeftInternalHom( cat, object, object );
     
 end : CategoryFilter := IsSkeletalCategory );
 
@@ -31,33 +31,33 @@ end : CategoryFilter := IsSkeletalCategory );
 ####################################
 
 ##
-InstallMethod( InternalHom,
+InstallMethod( LeftInternalHom,
         [ IsCapCategoryObject, IsCapCategoryObject ],
         
-  InternalHomOnObjects );
+  LeftInternalHomOnObjects );
 
 ##
-InstallMethod( InternalHom,
+InstallMethod( LeftInternalHom,
         [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
         
-  InternalHomOnMorphisms );
+  LeftInternalHomOnMorphisms );
 
 ##
-InstallMethod( InternalHom,
+InstallMethod( LeftInternalHom,
         [ IsCapCategoryObject, IsCapCategoryMorphism ],
         
   function( a, beta )
     
-    return InternalHomOnMorphisms( IdentityMorphism( a ), beta );
+    return LeftInternalHomOnMorphisms( IdentityMorphism( a ), beta );
     
 end );
 
 ##
-InstallMethod( InternalHom,
+InstallMethod( LeftInternalHom,
         [ IsCapCategoryMorphism, IsCapCategoryObject ],
         
   function( alpha, b )
     
-    return InternalHomOnMorphisms( alpha, IdentityMorphism( b ) );
+    return LeftInternalHomOnMorphisms( alpha, IdentityMorphism( b ) );
     
 end );

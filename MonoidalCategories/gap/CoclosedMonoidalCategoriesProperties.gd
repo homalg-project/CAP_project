@@ -7,6 +7,6 @@
 #! @Description
 #!  The property of the category <A>C</A> being coclosed monoidal.
 #! @Arguments C
-DeclareProperty( "IsCoclosedMonoidalCategory", IsCapCategory );
+DeclareProperty( "IsLeftCoclosedMonoidalCategory", IsCapCategory );
 
-AddCategoricalProperty( [ "IsCoclosedMonoidalCategory", "IsClosedMonoidalCategory" ] );
+AddCategoricalProperty( [ "IsLeftCoclosedMonoidalCategory", "IsLeftClosedMonoidalCategory" ] );

@@ -111,7 +111,7 @@ gap> BraidedMonoidalCategoriesTest( T, opposite_primitive, a, z );;
 
 #
 ##############################################
-# ClosedMonoidalCategoriesTest
+# LeftClosedMonoidalCategoriesTest
 ##############################################
 #
 gap> a := "a" / T;;
@@ -139,8 +139,8 @@ gap> epsilon := MorphismConstructor( u, "f_uhomab", hom_ab );;
 gap> zeta := MorphismConstructor( u, "f_uhomcd", hom_cd );;
 
 #
-gap> ClosedMonoidalCategoriesTest( T, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
-gap> ClosedMonoidalCategoriesTest( T, opposite_primitive, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
+gap> LeftClosedMonoidalCategoriesTest( T, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
+gap> LeftClosedMonoidalCategoriesTest( T, opposite_primitive, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
 
 #
 gap> z := ZeroObject( T );;
@@ -162,12 +162,12 @@ gap> epsilon := MorphismConstructor( u, "f_uhomza", hom_za );;
 gap> zeta := MorphismConstructor( u, "f_uhomaz", hom_az );;
 
 #
-gap> ClosedMonoidalCategoriesTest( T, opposite, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
-gap> ClosedMonoidalCategoriesTest( T, opposite_primitive, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
+gap> LeftClosedMonoidalCategoriesTest( T, opposite, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
+gap> LeftClosedMonoidalCategoriesTest( T, opposite_primitive, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
 
 #
 ##############################################
-# CoclosedMonoidalCategoriesTest
+# LeftCoclosedMonoidalCategoriesTest
 ##############################################
 #
 gap> a := "a" / T;;
@@ -195,8 +195,8 @@ gap> epsilon := MorphismConstructor( cohom_ab, "f_cohomabu", u );;
 gap> zeta := MorphismConstructor( cohom_cd, "f_cohomcdu", u);;
 
 #
-gap> CoclosedMonoidalCategoriesTest( T, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
-gap> CoclosedMonoidalCategoriesTest( T, opposite_primitive, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
+gap> LeftCoclosedMonoidalCategoriesTest( T, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
+gap> LeftCoclosedMonoidalCategoriesTest( T, opposite_primitive, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
 
 #
 gap> z := ZeroObject( T );;
@@ -218,8 +218,8 @@ gap> epsilon := MorphismConstructor( cohom_za, "f_cohomzau", u );;
 gap> zeta := MorphismConstructor( cohom_az, "cohomazu", u );;
 
 #
-gap> CoclosedMonoidalCategoriesTest( T, opposite, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
-gap> CoclosedMonoidalCategoriesTest( T, opposite_primitive, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
+gap> LeftCoclosedMonoidalCategoriesTest( T, opposite, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
+gap> LeftCoclosedMonoidalCategoriesTest( T, opposite_primitive, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
 
 #
 ##############################################

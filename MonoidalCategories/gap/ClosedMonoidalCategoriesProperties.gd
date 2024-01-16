@@ -5,8 +5,8 @@
 #
 
 #! @Description
-#!  The property of the category <A>C</A> being closed monoidal.
+#!  The property of the category <A>C</A> being left closed monoidal.
 #! @Arguments C
-DeclareProperty( "IsClosedMonoidalCategory", IsCapCategory );
+DeclareProperty( "IsLeftClosedMonoidalCategory", IsCapCategory );
 
-AddCategoricalProperty( [ "IsClosedMonoidalCategory", "IsCoclosedMonoidalCategory" ] );
+AddCategoricalProperty( [ "IsLeftClosedMonoidalCategory", "IsLeftCoclosedMonoidalCategory" ] );

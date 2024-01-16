@@ -361,16 +361,16 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
         
     end );
     
-    AddDualOnObjects( category,
+    AddLeftDualOnObjects( category,
       
       function( cat, object )
         
-        return AsSerreQuotientCategoryBySpansObject( cat, DualOnObjects( UnderlyingHonestCategory( cat ),
+        return AsSerreQuotientCategoryBySpansObject( cat, LeftDualOnObjects( UnderlyingHonestCategory( cat ),
                                                                          UnderlyingHonestObject( object ) ) );
         
     end );
     
-    AddDualOnMorphismsWithGivenDuals( category,
+    AddLeftDualOnMorphismsWithGivenLeftDuals( category,
       
       function( cat, new_source, morphism, new_range )
         local honest_category, arrow, reversed_arrow, new_arrow, new_reversed_arrow;
@@ -380,8 +380,8 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
         arrow := Arrow( UnderlyingGeneralizedMorphism( morphism ) );
         reversed_arrow := ReversedArrow( UnderlyingGeneralizedMorphism( morphism ) );
         
-        arrow := DualOnMorphisms( honest_category, arrow );
-        reversed_arrow := DualOnMorphisms( honest_category, reversed_arrow );
+        arrow := LeftDualOnMorphisms( honest_category, arrow );
+        reversed_arrow := LeftDualOnMorphisms( honest_category, reversed_arrow );
         
         new_reversed_arrow := ProjectionInFactorOfFiberProduct( honest_category, [ reversed_arrow, arrow ], 2 );
         new_arrow := ProjectionInFactorOfFiberProduct( honest_category, [ reversed_arrow, arrow ], 1 );

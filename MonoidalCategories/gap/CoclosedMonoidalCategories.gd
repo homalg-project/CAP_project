@@ -8,159 +8,159 @@
 ##
 #! @Chapter Monoidal Categories
 ##
-#! @Section Coclosed Monoidal Categories
+#! @Section Left Coclosed Monoidal Categories
 ##
 ####################################
 
-DeclareGlobalVariable( "COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD" );
+DeclareGlobalVariable( "LEFT_COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD" );
 
-CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoclosedMonoidalCategory  := Concatenation( [
-"InternalCoHomOnObjects",
-"InternalCoHomOnMorphismsWithGivenInternalCoHoms",
-"CoclosedEvaluationMorphismWithGivenRange",
-"CoclosedCoevaluationMorphismWithGivenSource"
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsLeftCoclosedMonoidalCategory  := Concatenation( [
+"LeftInternalCoHomOnObjects",
+"LeftInternalCoHomOnMorphismsWithGivenLeftInternalCoHoms",
+"LeftCoclosedMonoidalEvaluationMorphismWithGivenRange",
+"LeftCoclosedMonoidalCoevaluationMorphismWithGivenSource"
 ], CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalCategory );
 
 #! @Description
 #! The arguments are two objects $a,b$.
-#! The output is the internal cohom object $\mathrm{\underline{coHom}}(a,b)$.
+#! The output is the internal cohom object $\mathrm{\underline{coHom}_\ell}(a,b)$.
 #! @Returns an object
 #! @Arguments a, b
-DeclareOperation( "InternalCoHomOnObjects",
+DeclareOperation( "LeftInternalCoHomOnObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are two morphisms $\alpha: a \rightarrow a', \beta: b \rightarrow b'$.
 #! The output is the internal cohom morphism
-#! $\mathrm{\underline{coHom}}(\alpha,\beta): \mathrm{\underline{coHom}}(a,b') \rightarrow \mathrm{\underline{coHom}}(a',b)$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a,b'), \mathrm{\underline{coHom}}(a',b) )$
+#! $\mathrm{\underline{coHom}_\ell}(\alpha,\beta): \mathrm{\underline{coHom}_\ell}(a,b') \rightarrow \mathrm{\underline{coHom}_\ell}(a',b)$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}_\ell}(a,b'), \mathrm{\underline{coHom}_\ell}(a',b) )$
 #! @Arguments alpha, beta
-DeclareOperation( "InternalCoHomOnMorphisms",
+DeclareOperation( "LeftInternalCoHomOnMorphisms",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
-#! The arguments are an object $s = \mathrm{\underline{coHom}}(a,b')$,
+#! The arguments are an object $s = \mathrm{\underline{coHom}_\ell}(a,b')$,
 #! two morphisms $\alpha: a \rightarrow a', \beta: b \rightarrow b'$,
-#! and an object $r = \mathrm{\underline{coHom}}(a',b)$.
+#! and an object $r = \mathrm{\underline{coHom}_\ell}(a',b)$.
 #! The output is the internal cohom morphism
-#! $\mathrm{\underline{coHom}}(\alpha,\beta): \mathrm{\underline{coHom}}(a,b') \rightarrow \mathrm{\underline{coHom}}(a',b)$.
+#! $\mathrm{\underline{coHom}_\ell}(\alpha,\beta): \mathrm{\underline{coHom}_\ell}(a,b') \rightarrow \mathrm{\underline{coHom}_\ell}(a',b)$.
 #! @Returns a morphism in $\mathrm{Hom}( s, r )$
 #! @Arguments s, alpha, beta, r
-DeclareOperation( "InternalCoHomOnMorphismsWithGivenInternalCoHoms",
+DeclareOperation( "LeftInternalCoHomOnMorphismsWithGivenLeftInternalCoHoms",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are two objects $a, b$.
-#! The output is the coclosed evaluation morphism $\mathrm{coclev}_{a,b}: a \rightarrow \mathrm{\underline{coHom}}(a,b) \otimes b$, i.e.,
+#! The output is the coclosed evaluation morphism $\mathrm{coclev}_{a,b}: a \rightarrow \mathrm{\underline{coHom}_\ell}(a,b) \otimes b$, i.e.,
 #! the unit of the cohom tensor adjunction.
-#! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{\underline{coHom}}(a,b) \otimes b )$.
+#! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{\underline{coHom}_\ell}(a,b) \otimes b )$.
 #! @Arguments a, b
-DeclareOperation( "CoclosedEvaluationMorphism",
+DeclareOperation( "LeftCoclosedMonoidalEvaluationMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are two objects $a,b$ and an object $r = \mathrm{\underline{coHom}}(a,b) \otimes b$.
-#! The output is the coclosed evaluation morphism $\mathrm{coclev}_{a,b}: a \rightarrow \mathrm{\underline{coHom}}(a,b) \otimes b$, i.e.,
+#! The arguments are two objects $a,b$ and an object $r = \mathrm{\underline{coHom}_\ell}(a,b) \otimes b$.
+#! The output is the coclosed evaluation morphism $\mathrm{coclev}_{a,b}: a \rightarrow \mathrm{\underline{coHom}_\ell}(a,b) \otimes b$, i.e.,
 #! the unit of the cohom tensor adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( a, r )$.
 #! @Arguments a, b, r
-DeclareOperation( "CoclosedEvaluationMorphismWithGivenRange",
+DeclareOperation( "LeftCoclosedMonoidalEvaluationMorphismWithGivenRange",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are two objects $a,b$.
-#! The output is the coclosed coevaluation morphism $\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}}(a \otimes b, b) \rightarrow a$, i.e.,
+#! The output is the coclosed coevaluation morphism $\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}_\ell}(a \otimes b, b) \rightarrow a$, i.e.,
 #! the counit of the cohom tensor adjunction.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a \otimes b, b), a )$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}_\ell}(a \otimes b, b), a )$.
 #! @Arguments a, b
-DeclareOperation( "CoclosedCoevaluationMorphism",
+DeclareOperation( "LeftCoclosedMonoidalCoevaluationMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are two objects $a,b$ and an object $s = \mathrm{\underline{coHom}}(a \otimes b, b)$.
-#! The output is the coclosed coevaluation morphism $\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}}(a \otimes b, b) \rightarrow a$, i.e.,
+#! The arguments are two objects $a,b$ and an object $s = \mathrm{\underline{coHom}_\ell}(a \otimes b, b)$.
+#! The output is the coclosed coevaluation morphism $\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}_\ell}(a \otimes b, b) \rightarrow a$, i.e.,
 #! the unit of the cohom tensor adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( s, a )$.
 #! @Arguments a, b, s
-DeclareOperation( "CoclosedCoevaluationMorphismWithGivenSource",
+DeclareOperation( "LeftCoclosedMonoidalCoevaluationMorphismWithGivenSource",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are two objects $c,b$ and a morphism $g: a \rightarrow c \otimes b$.
-#! The output is a morphism $f: \mathrm{\underline{coHom}}(a,b) \rightarrow c$
+#! The output is a morphism $f: \mathrm{\underline{coHom}_\ell}(a,b) \rightarrow c$
 #! corresponding to $g$ under the cohom tensor adjunction.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a,b), c )$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}_\ell}(a,b), c )$.
 #! @Arguments c, b, g
-DeclareOperation( "TensorProductToInternalCoHomAdjunctionMap",
+DeclareOperation( "TensorProductToLeftInternalCoHomAdjunctionMap",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
-#! The arguments are two objects $c,b$, a morphism $g: a \rightarrow c \otimes b$ and an object $i = \mathrm{\underline{coHom}}(a,b)$.
-#! The output is a morphism $f: \mathrm{\underline{coHom}}(a,b) \rightarrow c$
+#! The arguments are two objects $c,b$, a morphism $g: a \rightarrow c \otimes b$ and an object $i = \mathrm{\underline{coHom}_\ell}(a,b)$.
+#! The output is a morphism $f: \mathrm{\underline{coHom}_\ell}(a,b) \rightarrow c$
 #! corresponding to $g$ under the cohom tensor adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( i, c )$.
 #! @Arguments c, b, g, i
-DeclareOperation( "TensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom",
+DeclareOperation( "TensorProductToLeftInternalCoHomAdjunctionMapWithGivenLeftInternalCoHom",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are two objects $a,b$ and a morphism $f: \mathrm{\underline{coHom}}(a,b) \rightarrow c$.
+#! The arguments are two objects $a,b$ and a morphism $f: \mathrm{\underline{coHom}_\ell}(a,b) \rightarrow c$.
 #! The output is a morphism $g: a \rightarrow c \otimes b$ corresponding to $f$ under the
 #! cohom tensor adjunction.
 #! @Returns a morphism in $\mathrm{Hom}(a, c \otimes b)$.
 #! @Arguments a, b, f
-DeclareOperation( "InternalCoHomToTensorProductAdjunctionMap",
+DeclareOperation( "LeftInternalCoHomToTensorProductAdjunctionMap",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
-#! The arguments are two objects $a,b$, a morphism $f: \mathrm{\underline{coHom}}(a,b) \rightarrow c$ and an object $t = c \otimes b$.
+#! The arguments are two objects $a,b$, a morphism $f: \mathrm{\underline{coHom}_\ell}(a,b) \rightarrow c$ and an object $t = c \otimes b$.
 #! The output is a morphism $g: a \rightarrow c \otimes b$ corresponding to $f$ under the
 #! cohom tensor adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( a, t )$.
 #! @Arguments a, b, f, t
-DeclareOperation( "InternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct",
+DeclareOperation( "LeftInternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are three objects $a,b,c$.
 #! The output is the precocomposition morphism
-#! $\mathrm{MonoidalPreCoComposeMorphism}_{a,b,c}: \mathrm{\underline{coHom}}(a,c) \rightarrow \mathrm{\underline{coHom}}(b,c) \otimes \mathrm{\underline{coHom}}(a,b)$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a,c), \mathrm{\underline{coHom}}(b,c) \otimes \mathrm{\underline{coHom}}(a,b) )$.
+#! $\mathrm{LeftCoclosedMonoidalPreCoComposeMorphism}_{a,b,c}: \mathrm{\underline{coHom}_\ell}(a,c) \rightarrow \mathrm{\underline{coHom}_\ell}(b,c) \otimes \mathrm{\underline{coHom}_\ell}(a,b)$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}_\ell}(a,c), \mathrm{\underline{coHom}_\ell}(b,c) \otimes \mathrm{\underline{coHom}_\ell}(a,b) )$.
 #! @Arguments a,b,c
-DeclareOperation( "MonoidalPreCoComposeMorphism",
+DeclareOperation( "LeftCoclosedMonoidalPreCoComposeMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are
-#! an object $s = \mathrm{\underline{coHom}}(a,c)$,
+#! an object $s = \mathrm{\underline{coHom}_\ell}(a,c)$,
 #! three objects $a,b,c$,
-#! and an object $r = \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(b,c)$.
+#! and an object $r = \mathrm{\underline{coHom}_\ell}(a,b) \otimes \mathrm{\underline{coHom}_\ell}(b,c)$.
 #! The output is the precocomposition morphism
-#! $\mathrm{MonoidalPreCoComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{\underline{coHom}}(a,c) \rightarrow \mathrm{\underline{coHom}}(b,c) \otimes \mathrm{\underline{coHom}}(a,b)$.
+#! $\mathrm{LeftCoclosedMonoidalPreCoComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{\underline{coHom}_\ell}(a,c) \rightarrow \mathrm{\underline{coHom}_\ell}(b,c) \otimes \mathrm{\underline{coHom}_\ell}(a,b)$.
 #! @Returns a morphism in $\mathrm{Hom}( s, r )$.
 #! @Arguments s,a,b,c,r
-DeclareOperation( "MonoidalPreCoComposeMorphismWithGivenObjects",
+DeclareOperation( "LeftCoclosedMonoidalPreCoComposeMorphismWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are three objects $a,b,c$.
 #! The output is the postcocomposition morphism
-#! $\mathrm{MonoidalPostCoComposeMorphism}_{a,b,c}: \mathrm{\underline{coHom}}(a,c) \rightarrow \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(b,c)$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a,c), \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(b,c) )$.
+#! $\mathrm{LeftCoclosedMonoidalPostCoComposeMorphism}_{a,b,c}: \mathrm{\underline{coHom}_\ell}(a,c) \rightarrow \mathrm{\underline{coHom}_\ell}(a,b) \otimes \mathrm{\underline{coHom}_\ell}(b,c)$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}_\ell}(a,c), \mathrm{\underline{coHom}_\ell}(a,b) \otimes \mathrm{\underline{coHom}_\ell}(b,c) )$.
 #! @Arguments a,b,c
-DeclareOperation( "MonoidalPostCoComposeMorphism",
+DeclareOperation( "LeftCoclosedMonoidalPostCoComposeMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are
-#! an object $s = \mathrm{\underline{coHom}}(a,c)$,
+#! an object $s = \mathrm{\underline{coHom}_\ell}(a,c)$,
 #! three objects $a,b,c$,
-#! and an object $r = \mathrm{\underline{coHom}}(b,c) \otimes \mathrm{\underline{coHom}}(a,b)$.
+#! and an object $r = \mathrm{\underline{coHom}_\ell}(b,c) \otimes \mathrm{\underline{coHom}_\ell}(a,b)$.
 #! The output is the postcocomposition morphism
-#! $\mathrm{MonoidalPostCoComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{\underline{coHom}}(a,c) \rightarrow \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(b,c)$.
+#! $\mathrm{LeftCoclosedMonoidalPostCoComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{\underline{coHom}_\ell}(a,c) \rightarrow \mathrm{\underline{coHom}_\ell}(a,b) \otimes \mathrm{\underline{coHom}_\ell}(b,c)$.
 #! @Returns a morphism in $\mathrm{Hom}( s, r )$.
 #! @Arguments s,a,b,c,r
-DeclareOperation( "MonoidalPostCoComposeMorphismWithGivenObjects",
+DeclareOperation( "LeftCoclosedMonoidalPostCoComposeMorphismWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
@@ -168,7 +168,7 @@ DeclareOperation( "MonoidalPostCoComposeMorphismWithGivenObjects",
 #! The output is its codual object $a_{\vee}$.
 #! @Returns an object
 #! @Arguments a
-DeclareAttribute( "CoDualOnObjects",
+DeclareAttribute( "LeftCoDualOnObjects",
                   IsCapCategoryObject );
 
 #! @Description
@@ -176,7 +176,7 @@ DeclareAttribute( "CoDualOnObjects",
 #! The output is its codual morphism $\alpha_{\vee}: b_{\vee} \rightarrow a_{\vee}$.
 #! @Returns a morphism in $\mathrm{Hom}( b_{\vee}, a_{\vee} )$.
 #! @Arguments alpha
-DeclareAttribute( "CoDualOnMorphisms",
+DeclareAttribute( "LeftCoDualOnMorphisms",
                   IsCapCategoryMorphism );
 
 #! @Description
@@ -186,7 +186,7 @@ DeclareAttribute( "CoDualOnMorphisms",
 #! The output is the dual morphism $\alpha_{\vee}: b^{\vee} \rightarrow a^{\vee}$.
 #! @Returns a morphism in $\mathrm{Hom}( s, r )$.
 #! @Arguments s,alpha,r
-DeclareOperation( "CoDualOnMorphismsWithGivenCoDuals",
+DeclareOperation( "LeftCoDualOnMorphismsWithGivenLeftCoDuals",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
@@ -194,7 +194,7 @@ DeclareOperation( "CoDualOnMorphismsWithGivenCoDuals",
 #! The output is the coclosed evaluation morphism $\mathrm{coclev}_{a}: 1 \rightarrow a_{\vee} \otimes a$.
 #! @Returns a morphism in $\mathrm{Hom}( 1, a_{\vee} \otimes a )$.
 #! @Arguments a
-DeclareAttribute( "CoclosedEvaluationForCoDual",
+DeclareAttribute( "LeftCoclosedMonoidalEvaluationForLeftCoDual",
                   IsCapCategoryObject );
 
 #! @Description
@@ -204,7 +204,7 @@ DeclareAttribute( "CoclosedEvaluationForCoDual",
 #! The output is the coclosed evaluation morphism $\mathrm{coclev}_{a}: 1 \rightarrow a_{\vee} \otimes a$.
 #! @Returns a morphism in $\mathrm{Hom}( s, r )$.
 #! @Arguments s,a,r
-DeclareOperation( "CoclosedEvaluationForCoDualWithGivenTensorProduct",
+DeclareOperation( "LeftCoclosedMonoidalEvaluationForLeftCoDualWithGivenTensorProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
@@ -212,7 +212,7 @@ DeclareOperation( "CoclosedEvaluationForCoDualWithGivenTensorProduct",
 #! The output is the morphism from the cobidual $(a_{\vee})_{\vee} \rightarrow a$.
 #! @Returns a morphism in $\mathrm{Hom}((a_{\vee})_{\vee}, a)$.
 #! @Arguments a
-DeclareAttribute( "MorphismFromCoBidual",
+DeclareAttribute( "MorphismFromLeftCoBidual",
                   IsCapCategoryObject );
 
 #! @Description
@@ -221,7 +221,7 @@ DeclareAttribute( "MorphismFromCoBidual",
 #! The output is the morphism from the cobidual $(a_{\vee})_{\vee} \rightarrow a$.
 #! @Returns a morphism in $\mathrm{Hom}(s, a)$.
 #! @Arguments a, s
-DeclareOperation( "MorphismFromCoBidualWithGivenCoBidual",
+DeclareOperation( "MorphismFromLeftCoBidualWithGivenLeftCoBidual",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 ## The four objects are given as a list because otherwise the WithGiven operation would
@@ -229,29 +229,29 @@ DeclareOperation( "MorphismFromCoBidualWithGivenCoBidual",
 #! @Description
 #! The argument is a list of four objects $[ a, a', b, b' ]$.
 #! The output is the natural morphism
-#! $\mathrm{InternalCoHomTensorProductCompatibilityMorphism}_{a,a',b,b'}: \mathrm{\underline{coHom}}(a \otimes a', b \otimes b') \rightarrow \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(a',b')$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a \otimes a', b \otimes b'), \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(a',b'))$.
+#! $\mathrm{LeftInternalCoHomTensorProductCompatibilityMorphism}_{a,a',b,b'}: \mathrm{\underline{coHom}_\ell}(a \otimes a', b \otimes b') \rightarrow \mathrm{\underline{coHom}_\ell}(a,b) \otimes \mathrm{\underline{coHom}_\ell}(a',b')$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}_\ell}(a \otimes a', b \otimes b'), \mathrm{\underline{coHom}_\ell}(a,b) \otimes \mathrm{\underline{coHom}_\ell}(a',b'))$.
 #! @Arguments list
-DeclareOperation( "InternalCoHomTensorProductCompatibilityMorphism",
+DeclareOperation( "LeftInternalCoHomTensorProductCompatibilityMorphism",
                   [ IsList ] );
 
 #! @Description
 #! The arguments are a list of four objects $[ a, a', b, b' ]$,
-#! and two objects $s = \mathrm{\underline{coHom}}(a \otimes a', b \otimes b')$ and $r = \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(a',b')$.
+#! and two objects $s = \mathrm{\underline{coHom}_\ell}(a \otimes a', b \otimes b')$ and $r = \mathrm{\underline{coHom}_\ell}(a,b) \otimes \mathrm{\underline{coHom}_\ell}(a',b')$.
 #! The output is the natural morphism
-#! $\mathrm{InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}: \mathrm{\underline{coHom}}(a \otimes a', b \otimes b') \rightarrow \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(a',b')$.
+#! $\mathrm{LeftInternalCoHomTensorProductCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}: \mathrm{\underline{coHom}_\ell}(a \otimes a', b \otimes b') \rightarrow \mathrm{\underline{coHom}_\ell}(a,b) \otimes \mathrm{\underline{coHom}_\ell}(a',b')$.
 #! @Returns a morphism in $\mathrm{Hom}( s, r )$.
 #! @Arguments s, list, r
-DeclareOperation( "InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects",
+DeclareOperation( "LeftInternalCoHomTensorProductCompatibilityMorphismWithGivenObjects",
                   [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are two objects $a,b$.
 #! The output is the natural morphism
-#! $\mathrm{CoDualityTensorProductCompatibilityMorphism}: (a \otimes b)_{\vee} \rightarrow a_{\vee} \otimes b_{\vee}$.
+#! $\mathrm{LeftCoDualityTensorProductCompatibilityMorphism}: (a \otimes b)_{\vee} \rightarrow a_{\vee} \otimes b_{\vee}$.
 #! @Returns a morphism in $\mathrm{Hom}( (a \otimes b)_{\vee}, a_{\vee} \otimes b_{\vee} )$.
 #! @Arguments a,b
-DeclareOperation( "CoDualityTensorProductCompatibilityMorphism",
+DeclareOperation( "LeftCoDualityTensorProductCompatibilityMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
@@ -259,46 +259,46 @@ DeclareOperation( "CoDualityTensorProductCompatibilityMorphism",
 #! two objects $a,b$,
 #! and an object $r = a_{\vee} \otimes b_{\vee}$.
 #! The output is the natural morphism
-#! $\mathrm{CoDualityTensorProductCompatibilityMorphismWithGivenObjects}_{a,b}: (a \otimes b)_{\vee} \rightarrow a_{\vee} \otimes b_{\vee}$.
+#! $\mathrm{LeftCoDualityTensorProductCompatibilityMorphismWithGivenObjects}_{a,b}: (a \otimes b)_{\vee} \rightarrow a_{\vee} \otimes b_{\vee}$.
 #! @Returns a morphism in $\mathrm{Hom}( s, r )$.
 #! @Arguments s,a,b,r
-DeclareOperation( "CoDualityTensorProductCompatibilityMorphismWithGivenObjects",
+DeclareOperation( "LeftCoDualityTensorProductCompatibilityMorphismWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are two objects $a,b$.
-#! The output is the natural morphism $\mathrm{MorphismFromInternalCoHomToTensorProduct}_{a,b}: \mathrm{\underline{coHom}}(a,b) \rightarrow b_{\vee} \otimes a$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a,b), b_{\vee} \otimes a )$.
+#! The output is the natural morphism $\mathrm{MorphismFromLeftInternalCoHomToTensorProduct}_{a,b}: \mathrm{\underline{coHom}_\ell}(a,b) \rightarrow b_{\vee} \otimes a$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}_\ell}(a,b), b_{\vee} \otimes a )$.
 #! @Arguments a,b
-DeclareOperation( "MorphismFromInternalCoHomToTensorProduct",
+DeclareOperation( "MorphismFromLeftInternalCoHomToTensorProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are an object $s = \mathrm{\underline{coHom}}(a,b)$,
+#! The arguments are an object $s = \mathrm{\underline{coHom}_\ell}(a,b)$,
 #! two objects $a,b$,
 #! and an object $r = b_{\vee} \otimes a$.
-#! The output is the natural morphism $\mathrm{MorphismFromInternalCoHomToTensorProductWithGivenObjects}_{a,b}: \mathrm{\underline{coHom}}(a,b) \rightarrow a \otimes b_{\vee}$.
+#! The output is the natural morphism $\mathrm{MorphismFromLeftInternalCoHomToTensorProductWithGivenObjects}_{a,b}: \mathrm{\underline{coHom}_\ell}(a,b) \rightarrow a \otimes b_{\vee}$.
 #! @Returns a morphism in $\mathrm{Hom}( s, r )$.
 #! @Arguments s,a,b,r
-DeclareOperation( "MorphismFromInternalCoHomToTensorProductWithGivenObjects",
+DeclareOperation( "MorphismFromLeftInternalCoHomToTensorProductWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The argument is an object $a$.
 #! The output is the isomorphism
-#! $\mathrm{IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit}_{a}: a_{\vee} \rightarrow \mathrm{\underline{coHom}}(1,a)$.
-#! @Returns a morphism in $\mathrm{Hom}(a_{\vee}, \mathrm{\underline{coHom}}(1,a))$.
+#! $\mathrm{IsomorphismFromLeftCoDualObjectToLeftInternalCoHomFromTensorUnit}_{a}: a_{\vee} \rightarrow \mathrm{\underline{coHom}_\ell}(1,a)$.
+#! @Returns a morphism in $\mathrm{Hom}(a_{\vee}, \mathrm{\underline{coHom}_\ell}(1,a))$.
 #! @Arguments a
-DeclareAttribute( "IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit",
+DeclareAttribute( "IsomorphismFromLeftCoDualObjectToLeftInternalCoHomFromTensorUnit",
                   IsCapCategoryObject );
 
 #! @Description
 #! The argument is an object $a$.
 #! The output is the isomorphism
-#! $\mathrm{IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject}_{a}: \mathrm{\underline{coHom}}(1,a) \rightarrow a_{\vee}$.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{\underline{coHom}}(1,a), a_{\vee})$.
+#! $\mathrm{IsomorphismFromLeftInternalCoHomFromTensorUnitToLeftCoDualObject}_{a}: \mathrm{\underline{coHom}_\ell}(1,a) \rightarrow a_{\vee}$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{\underline{coHom}_\ell}(1,a), a_{\vee})$.
 #! @Arguments a
-DeclareAttribute( "IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject",
+DeclareAttribute( "IsomorphismFromLeftInternalCoHomFromTensorUnitToLeftCoDualObject",
                   IsCapCategoryObject );
 
 #! @Description
@@ -308,60 +308,60 @@ DeclareAttribute( "IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject",
 #! given by the universal property of $a_{\vee}$.
 #! @Returns a morphism in $\mathrm{Hom}(a_{\vee}, t)$.
 #! @Arguments t, a, alpha
-DeclareOperation( "UniversalPropertyOfCoDual",
+DeclareOperation( "UniversalPropertyOfLeftCoDual",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
 #! The argument is a morphism $\alpha: a \rightarrow b$.
-#! The output is the corresponding morphism $ \mathrm{\underline{coHom}}(a,b) \rightarrow 1$
+#! The output is the corresponding morphism $ \mathrm{\underline{coHom}_\ell}(a,b) \rightarrow 1$
 #! under the cohom tensor adjunction.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a,b), 1 )$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}_\ell}(a,b), 1 )$.
 #! @Arguments alpha
-DeclareAttribute( "CoLambdaIntroduction",
+DeclareAttribute( "LeftCoclosedMonoidalLambdaIntroduction",
                   IsCapCategoryMorphism );
 
 #! @Description
 #! The arguments are two objects $a,b$,
-#! and a morphism $\alpha: \mathrm{\underline{coHom}}(a,b) \rightarrow 1$.
+#! and a morphism $\alpha: \mathrm{\underline{coHom}_\ell}(a,b) \rightarrow 1$.
 #! The output is a morphism $a \rightarrow b$ corresponding to $\alpha$
 #! under the cohom tensor adjunction.
 #! @Returns a morphism in $\mathrm{Hom}(a,b)$.
 #! @Arguments a,b,alpha
-DeclareOperation( "CoLambdaElimination",
+DeclareOperation( "LeftCoclosedMonoidalLambdaElimination",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
 #! The argument is an object $a$.
-#! The output is the natural isomorphism $a \rightarrow \mathrm{\underline{coHom}}(a,1)$.
-#! @Returns a morphism in $\mathrm{Hom}(a, \mathrm{\underline{coHom}}(a,1))$.
+#! The output is the natural isomorphism $a \rightarrow \mathrm{\underline{coHom}_\ell}(a,1)$.
+#! @Returns a morphism in $\mathrm{Hom}(a, \mathrm{\underline{coHom}_\ell}(a,1))$.
 #! @Arguments a
-DeclareAttribute( "IsomorphismFromObjectToInternalCoHom",
+DeclareAttribute( "IsomorphismFromObjectToLeftInternalCoHom",
                   IsCapCategoryObject );
 
 #! @Description
 #! The argument is an object $a$,
-#! and an object $r = \mathrm{\underline{coHom}}(a,1)$.
-#! The output is the natural isomorphism $a \rightarrow \mathrm{\underline{coHom}}(a,1)$.
+#! and an object $r = \mathrm{\underline{coHom}_\ell}(a,1)$.
+#! The output is the natural isomorphism $a \rightarrow \mathrm{\underline{coHom}_\ell}(a,1)$.
 #! @Returns a morphism in $\mathrm{Hom}(a, r)$.
 #! @Arguments a,r
-DeclareOperation( "IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom",
+DeclareOperation( "IsomorphismFromObjectToLeftInternalCoHomWithGivenLeftInternalCoHom",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The argument is an object $a$.
-#! The output is the natural isomorphism $\mathrm{\underline{coHom}}(a,1) \rightarrow a$.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{\underline{coHom}}(a,1), a)$.
+#! The output is the natural isomorphism $\mathrm{\underline{coHom}_\ell}(a,1) \rightarrow a$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{\underline{coHom}_\ell}(a,1), a)$.
 #! @Arguments a
-DeclareAttribute( "IsomorphismFromInternalCoHomToObject",
+DeclareAttribute( "IsomorphismFromLeftInternalCoHomToObject",
                   IsCapCategoryObject );
 
 #! @Description
 #! The argument is an object $a$,
-#! and an object $s = \mathrm{\underline{coHom}}(a,1)$.
-#! The output is the natural isomorphism $\mathrm{\underline{coHom}}(a,1) \rightarrow a$.
+#! and an object $s = \mathrm{\underline{coHom}_\ell}(a,1)$.
+#! The output is the natural isomorphism $\mathrm{\underline{coHom}_\ell}(a,1) \rightarrow a$.
 #! @Returns a morphism in $\mathrm{Hom}(s, a)$.
 #! @Arguments a,s
-DeclareOperation( "IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom",
+DeclareOperation( "IsomorphismFromLeftInternalCoHomToObjectWithGivenLeftInternalCoHom",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 ####################################
@@ -376,10 +376,10 @@ DeclareOperation( "IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom",
 #! The arguments are two cells $a,b$.
 #! The output is the internal cohom cell.
 #! If $a,b$ are two CAP objects the output is the internal cohom object
-#! $\mathrm{\underline{coHom}}(a,b)$.
+#! $\mathrm{\underline{coHom}_\ell}(a,b)$.
 #! If at least one of the arguments is a CAP morphism the output is a CAP morphism,
 #! namely the internal cohom on morphisms, where any object is replaced by its identity morphism.
 #! @Returns a cell
 #! @Arguments a, b
-DeclareOperation( "InternalCoHom",
+DeclareOperation( "LeftInternalCoHom",
                   [ IsCapCategoryCell, IsCapCategoryCell ] );
