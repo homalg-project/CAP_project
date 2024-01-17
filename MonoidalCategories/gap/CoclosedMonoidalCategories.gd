@@ -77,7 +77,7 @@ DeclareOperation( "CoclosedCoevaluationMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are two objects $a,b$ and an object $s = \mathrm{\underline{coHom}(a \otimes b, b)}$.
+#! The arguments are two objects $a,b$ and an object $s = \mathrm{\underline{coHom}}(a \otimes b, b)$.
 #! The output is the coclosed coevaluation morphism $\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}}(a \otimes b, b) \rightarrow a$, i.e.,
 #! the unit of the cohom tensor adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( s, a )$.
@@ -95,7 +95,7 @@ DeclareOperation( "TensorProductToInternalCoHomAdjunctionMap",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
-#! The arguments are two objects $c,b$, a morphism $g: a \rightarrow c \otimes b$ and an object $i = \mathrm{\underline{coHom}(a,b)}$.
+#! The arguments are two objects $c,b$, a morphism $g: a \rightarrow c \otimes b$ and an object $i = \mathrm{\underline{coHom}}(a,b)$.
 #! The output is a morphism $f: \mathrm{\underline{coHom}}(a,b) \rightarrow c$
 #! corresponding to $g$ under the cohom tensor adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( i, c )$.
