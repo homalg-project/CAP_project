@@ -5,24 +5,24 @@
 #
 
 ##
-AddDerivationToCAP( IsomorphismFromInternalCoHomToObject,
+AddDerivationToCAP( IsomorphismFromLeftInternalCoHomToObject,
                     "calling the WithGiven operation in a skeletal setting",
-                    [ [ IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom, 1 ] ],
+                    [ [ IsomorphismFromLeftInternalCoHomToObjectWithGivenLeftInternalCoHom, 1 ] ],
                     
   function( cat, object )
 
-    return IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom( cat, object, object );
+    return IsomorphismFromLeftInternalCoHomToObjectWithGivenLeftInternalCoHom( cat, object, object );
 
 end : CategoryFilter := IsSkeletalCategory );
 
 ##
-AddDerivationToCAP( IsomorphismFromObjectToInternalCoHom,
+AddDerivationToCAP( IsomorphismFromObjectToLeftInternalCoHom,
                     "calling the WithGiven operation in a skeletal setting",
-                    [ [ IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom, 1 ] ],
+                    [ [ IsomorphismFromObjectToLeftInternalCoHomWithGivenLeftInternalCoHom, 1 ] ],
                     
   function( cat, object )
 
-    return IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom( cat, object, object );
+    return IsomorphismFromObjectToLeftInternalCoHomWithGivenLeftInternalCoHom( cat, object, object );
 
 end : CategoryFilter := IsSkeletalCategory );
 
@@ -31,33 +31,33 @@ end : CategoryFilter := IsSkeletalCategory );
 ####################################
 
 ##
-InstallMethod( InternalCoHom,
+InstallMethod( LeftInternalCoHom,
         [ IsCapCategoryObject, IsCapCategoryObject ],
         
-  InternalCoHomOnObjects );
+  LeftInternalCoHomOnObjects );
 
 ##
-InstallMethod( InternalCoHom,
+InstallMethod( LeftInternalCoHom,
         [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
         
-  InternalCoHomOnMorphisms );
+  LeftInternalCoHomOnMorphisms );
 
 ##
-InstallMethod( InternalCoHom,
+InstallMethod( LeftInternalCoHom,
         [ IsCapCategoryObject, IsCapCategoryMorphism ],
         
   function( a, beta )
     
-    return InternalCoHomOnMorphisms( IdentityMorphism( a ), beta );
+    return LeftInternalCoHomOnMorphisms( IdentityMorphism( a ), beta );
     
 end );
 
 ##
-InstallMethod( InternalCoHom,
+InstallMethod( LeftInternalCoHom,
         [ IsCapCategoryMorphism, IsCapCategoryObject ],
         
   function( alpha, b )
     
-    return InternalCoHomOnMorphisms( alpha, IdentityMorphism( b ) );
+    return LeftInternalCoHomOnMorphisms( alpha, IdentityMorphism( b ) );
     
 end );

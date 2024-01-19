@@ -1005,10 +1005,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Description
     # This method computes the dual of a graded column <A>object</A> (c.f. dual of vector spaces).
     # Note that this dualisation is used to compute the internal homs via 
-    # Hom( object1, object2 ) = Dual( object1 ) \otimes object2.
+    # Hom( object1, object2 ) = LeftDual( object1 ) \otimes object2.
     # @Returns an object
     # @Arguments object
-    AddDualOnObjects( category,
+    AddLeftDualOnObjects( category,
       function( cat, object )
         local degree_list_dual_object;
                 
@@ -1028,7 +1028,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # This method computes the dual of a morphism of graded columns (c.f. dual of vector space morphism).
     # @Returns a morphism
     # @Arguments source, morphism, range
-    AddDualOnMorphismsWithGivenDuals( category,
+    AddLeftDualOnMorphismsWithGivenLeftDuals( category,
       function( cat, source, morphism, range )
     
       # simply transpose the mapping matrix and return the result
@@ -1041,10 +1041,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
 
     # @Description
     # This method computes the evaluation morphism for a graded column <A>object</A>. This is it computes a
-    # morphism <A>Dual(object)</A> \otimes <A>object</A> to the tensor unit.
+    # morphism <A>LeftDual(object)</A> \otimes <A>object</A> to the tensor unit.
     # @Returns a morphism
-    # @Arguments tensor_object = Dual( object) \otimes object, object, unit
-    AddEvaluationForDualWithGivenTensorProduct( category,
+    # @Arguments tensor_object = LeftDual( object) \otimes object, object, unit
+    AddLeftClosedMonoidalEvaluationForLeftDualWithGivenTensorProduct( category,
       function( cat, tensor_object, object, unit )
         local rank, column, zero_column, i;
 
@@ -1078,10 +1078,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
 
     # @Description
     # This method computes the coevaluation morphism for a graded column <A>object</A>. This is it computes a
-    # morphism tensor unit to <A>Dual(object)</A> \otimes <A>object</A>.
+    # morphism tensor unit to <A>LeftDual(object)</A> \otimes <A>object</A>.
     # @Returns a morphism
-    # @Arguments unit, object, tensor_object = Object \otimes Dual( object )
-    AddCoevaluationForDualWithGivenTensorProduct( category,
+    # @Arguments unit, object, tensor_object = Object \otimes LeftDual( object )
+    AddCoevaluationForLeftDualWithGivenTensorProduct( category,
       function( cat, unit, object, tensor_object )
         local rank, column, zero_column, i;
         
@@ -1115,10 +1115,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
 
     # @Description
     # Given an <A>object</A>, this method computes the morphism to the bidual, i.e. the morphism
-    # <A>object</A> to <A>Dual(Dual(object))</A>. In the category at hand this is just the identity morphism.
+    # <A>object</A> to <A>LeftDual(LeftDual(object))</A>. In the category at hand this is just the identity morphism.
     # @Returns a morphism
-    # @Arguments object, bidual_object = Dual(Dual(object))
-    AddMorphismToBidualWithGivenBidual( category,
+    # @Arguments object, bidual_object = LeftDual(LeftDual(object))
+    AddMorphismToLeftBidualWithGivenLeftBidual( category,
       function( cat, object, bidual_object )
       
         return GradedRowOrColumnMorphism( object,

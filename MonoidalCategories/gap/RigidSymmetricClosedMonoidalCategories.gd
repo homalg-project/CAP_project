@@ -12,43 +12,43 @@
 ##
 ####################################
 
-DeclareGlobalVariable( "RIGID_SYMMETRIC_CLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD" );
+DeclareGlobalVariable( "RIGID_SYMMETRIC_LEFT_CLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD" );
 
 #! @Description
 #! The arguments are two objects $a,b$.
-#! The output is the natural morphism $\mathrm{IsomorphismFromTensorProductWithDualObjectToInternalHom}_{a,b}: a^{\vee} \otimes b \rightarrow \mathrm{\underline{Hom}}(a,b)$.
-#! @Returns a morphism in $\mathrm{Hom}( a^{\vee} \otimes b, \mathrm{\underline{Hom}}(a,b) )$.
+#! The output is the natural morphism $\mathrm{IsomorphismFromTensorProductWithLeftDualObjectToLeftInternalHom}_{a,b}: a^{\vee} \otimes b \rightarrow \mathrm{\underline{Hom}_\ell}(a,b)$.
+#! @Returns a morphism in $\mathrm{Hom}( a^{\vee} \otimes b, \mathrm{\underline{Hom}_\ell}(a,b) )$.
 #! @Arguments a,b
-DeclareOperation( "IsomorphismFromTensorProductWithDualObjectToInternalHom",
+DeclareOperation( "IsomorphismFromTensorProductWithLeftDualObjectToLeftInternalHom",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are two objects $a,b$.
-#! The output is the inverse of $\mathrm{IsomorphismFromTensorProductWithDualObjectToInternalHom}$, namely
-#! $\mathrm{IsomorphismFromInternalHomToTensorProductWithDualObject}_{a,b}: \mathrm{\underline{Hom}}(a,b) \rightarrow a^{\vee} \otimes b$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b), a^{\vee} \otimes b )$.
+#! The output is the inverse of $\mathrm{IsomorphismFromTensorProductWithLeftDualObjectToLeftInternalHom}$, namely
+#! $\mathrm{IsomorphismFromLeftInternalHomToTensorProductWithLeftDualObject}_{a,b}: \mathrm{\underline{Hom}_\ell}(a,b) \rightarrow a^{\vee} \otimes b$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}_\ell}(a,b), a^{\vee} \otimes b )$.
 #! @Arguments a,b
-DeclareOperation( "IsomorphismFromInternalHomToTensorProductWithDualObject",
+DeclareOperation( "IsomorphismFromLeftInternalHomToTensorProductWithLeftDualObject",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are two objects $a,b$.
-#! The output is the inverse of $\mathrm{MorphismFromTensorProductToInternalHomWithGivenObjects}$, namely
-#! $\mathrm{MorphismFromInternalHomToTensorProductWithGivenObjects}_{a,b}: \mathrm{\underline{Hom}}(a,b) \rightarrow a^{\vee} \otimes b$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b), a^{\vee} \otimes b )$.
+#! The output is the inverse of $\mathrm{MorphismFromTensorProductToLeftInternalHomWithGivenObjects}$, namely
+#! $\mathrm{MorphismFromLeftInternalHomToTensorProductWithGivenObjects}_{a,b}: \mathrm{\underline{Hom}_\ell}(a,b) \rightarrow a^{\vee} \otimes b$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}_\ell}(a,b), a^{\vee} \otimes b )$.
 #! @Arguments a,b
-DeclareOperation( "MorphismFromInternalHomToTensorProduct",
+DeclareOperation( "MorphismFromLeftInternalHomToTensorProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are an object $s = \mathrm{\underline{Hom}}(a,b)$,
+#! The arguments are an object $s = \mathrm{\underline{Hom}_\ell}(a,b)$,
 #! two objects $a,b$,
 #! and an object $r = a^{\vee} \otimes b$.
-#! The output is the inverse of $\mathrm{MorphismFromTensorProductToInternalHomWithGivenObjects}$, namely
-#! $\mathrm{MorphismFromInternalHomToTensorProductWithGivenObjects}_{a,b}: \mathrm{\underline{Hom}}(a,b) \rightarrow a^{\vee} \otimes b$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b), a^{\vee} \otimes b )$.
+#! The output is the inverse of $\mathrm{MorphismFromTensorProductToLeftInternalHomWithGivenObjects}$, namely
+#! $\mathrm{MorphismFromLeftInternalHomToTensorProductWithGivenObjects}_{a,b}: \mathrm{\underline{Hom}_\ell}(a,b) \rightarrow a^{\vee} \otimes b$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}_\ell}(a,b), a^{\vee} \otimes b )$.
 #! @Arguments s,a,b,r
-DeclareOperation( "MorphismFromInternalHomToTensorProductWithGivenObjects",
+DeclareOperation( "MorphismFromLeftInternalHomToTensorProductWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 ## The four objects are given as a list because otherwise the WithGiven operation would
@@ -56,20 +56,20 @@ DeclareOperation( "MorphismFromInternalHomToTensorProductWithGivenObjects",
 #! @Description
 #! The argument is a list of four objects $[ a, a', b, b' ]$.
 #! The output is the natural morphism
-#! $\mathrm{TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects}_{a,a',b,b'}: \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b') \rightarrow \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b')$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b'), \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b') )$.
+#! $\mathrm{TensorProductLeftInternalHomCompatibilityMorphismInverseWithGivenObjects}_{a,a',b,b'}: \mathrm{\underline{Hom}_\ell}(a \otimes b,a' \otimes b') \rightarrow \mathrm{\underline{Hom}_\ell}(a,a') \otimes \mathrm{\underline{Hom}_\ell}(b,b')$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}_\ell}(a \otimes b,a' \otimes b'), \mathrm{\underline{Hom}_\ell}(a,a') \otimes \mathrm{\underline{Hom}_\ell}(b,b') )$.
 #! @Arguments list
-DeclareOperation( "TensorProductInternalHomCompatibilityMorphismInverse",
+DeclareOperation( "TensorProductLeftInternalHomCompatibilityMorphismInverse",
                   [ IsList ] );
 
 #! @Description
 #! The arguments are a list of four objects $[ a, a', b, b' ]$,
-#! and two objects $s = \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b')$ and $r = \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b')$.
+#! and two objects $s = \mathrm{\underline{Hom}_\ell}(a \otimes b,a' \otimes b')$ and $r = \mathrm{\underline{Hom}_\ell}(a,a') \otimes \mathrm{\underline{Hom}_\ell}(b,b')$.
 #! The output is the natural morphism
-#! $\mathrm{TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects}_{a,a',b,b'}: \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b') \rightarrow \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b')$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b'), \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b') )$.
+#! $\mathrm{TensorProductLeftInternalHomCompatibilityMorphismInverseWithGivenObjects}_{a,a',b,b'}: \mathrm{\underline{Hom}_\ell}(a \otimes b,a' \otimes b') \rightarrow \mathrm{\underline{Hom}_\ell}(a,a') \otimes \mathrm{\underline{Hom}_\ell}(b,b')$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}_\ell}(a \otimes b,a' \otimes b'), \mathrm{\underline{Hom}_\ell}(a,a') \otimes \mathrm{\underline{Hom}_\ell}(b,b') )$.
 #! @Arguments s, list, r
-DeclareOperation( "TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects",
+DeclareOperation( "TensorProductLeftInternalHomCompatibilityMorphismInverseWithGivenObjects",
                   [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
 #! @Description
@@ -77,7 +77,7 @@ DeclareOperation( "TensorProductInternalHomCompatibilityMorphismInverseWithGiven
 #! The output is the coevaluation morphism $\mathrm{coev}_{a}:1 \rightarrow a \otimes a^{\vee}$.
 #! @Returns a morphism in $\mathrm{Hom}(1,a \otimes a^{\vee})$.
 #! @Arguments a
-DeclareAttribute( "CoevaluationForDual",
+DeclareAttribute( "CoevaluationForLeftDual",
                   IsCapCategoryObject );
 
 #! @Description
@@ -87,7 +87,7 @@ DeclareAttribute( "CoevaluationForDual",
 #! The output is the coevaluation morphism $\mathrm{coev}_{a}:1 \rightarrow a \otimes a^{\vee}$.
 #! @Returns a morphism in $\mathrm{Hom}(1,a \otimes a^{\vee})$.
 #! @Arguments s,a,r
-DeclareOperation( "CoevaluationForDualWithGivenTensorProduct",
+DeclareOperation( "CoevaluationForLeftDualWithGivenTensorProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
@@ -111,7 +111,7 @@ DeclareAttribute( "RankMorphism",
 #! The output is the inverse of the morphism to the bidual $(a^{\vee})^{\vee} \rightarrow a$.
 #! @Returns a morphism in $\mathrm{Hom}((a^{\vee})^{\vee},a)$.
 #! @Arguments a
-DeclareAttribute( "MorphismFromBidual",
+DeclareAttribute( "MorphismFromLeftBidual",
                   IsCapCategoryObject );
 
 #! @Description
@@ -120,5 +120,5 @@ DeclareAttribute( "MorphismFromBidual",
 #! The output is the inverse of the morphism to the bidual $(a^{\vee})^{\vee} \rightarrow a$.
 #! @Returns a morphism in $\mathrm{Hom}((a^{\vee})^{\vee},a)$.
 #! @Arguments a, s
-DeclareOperation( "MorphismFromBidualWithGivenBidual",
+DeclareOperation( "MorphismFromLeftBidualWithGivenLeftBidual",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );

@@ -364,7 +364,7 @@ InstallMethod( TestZigZagIdentitiesForDual,
     
     id_object := IdentityMorphism( object );
     
-    dual_object := DualOnObjects( object );
+    dual_object := LeftDualOnObjects( object );
     
     id_dual_object := IdentityMorphism( dual_object );
     

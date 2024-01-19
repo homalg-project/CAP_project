@@ -5,11 +5,11 @@
 #
 
 ##
-AddDerivationToCAP( TensorProductToInternalHomAdjunctionMap,
-                    "TensorProductToInternalHomAdjunctionMap using CoevaluationMorphism and InternalHom",
+AddDerivationToCAP( TensorProductToLeftInternalHomAdjunctionMap,
+                    "TensorProductToLeftInternalHomAdjunctionMap using LeftClosedMonoidalCoevaluationMorphism and LeftInternalHom",
                     [ [ PreCompose, 1 ],
-                      [ CoevaluationMorphism, 1 ],
-                      [ InternalHomOnMorphisms, 1 ],
+                      [ LeftClosedMonoidalCoevaluationMorphism, 1 ],
+                      [ LeftInternalHomOnMorphisms, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     
   function( cat, a, b, f )
@@ -27,17 +27,17 @@ AddDerivationToCAP( TensorProductToInternalHomAdjunctionMap,
     #   Hom(b,c)
 
     return PreCompose( cat,
-             CoevaluationMorphism( cat, a, b ),
-             InternalHomOnMorphisms( cat, IdentityMorphism( cat, b ), f ) );
+             LeftClosedMonoidalCoevaluationMorphism( cat, a, b ),
+             LeftInternalHomOnMorphisms( cat, IdentityMorphism( cat, b ), f ) );
     
-end : CategoryFilter := IsClosedMonoidalCategory );
+end : CategoryFilter := IsLeftClosedMonoidalCategory );
 
 ##
-AddDerivationToCAP( TensorProductToInternalHomAdjunctionMapWithGivenInternalHom,
-                    "TensorProductToInternalHomAdjunctionMapWithGivenInternalHom using CoevaluationMorphism and InternalHom",
-                    [ [ CoevaluationMorphism, 1 ],
+AddDerivationToCAP( TensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom,
+                    "TensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom using LeftClosedMonoidalCoevaluationMorphism and LeftInternalHom",
+                    [ [ LeftClosedMonoidalCoevaluationMorphism, 1 ],
                       [ PreCompose, 1 ],
-                      [ InternalHomOnMorphismsWithGivenInternalHoms, 1 ],
+                      [ LeftInternalHomOnMorphismsWithGivenLeftInternalHoms, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     
   function( cat, a, b, f, i )
@@ -55,21 +55,21 @@ AddDerivationToCAP( TensorProductToInternalHomAdjunctionMapWithGivenInternalHom,
     #      v
     #   Hom(b,c)
     
-    coev_ab := CoevaluationMorphism( cat, a, b );
+    coev_ab := LeftClosedMonoidalCoevaluationMorphism( cat, a, b );
     
     return PreCompose( cat,
              coev_ab,
-             InternalHomOnMorphismsWithGivenInternalHoms( cat, Range( coev_ab ), IdentityMorphism( cat, b ), f, i ) );
+             LeftInternalHomOnMorphismsWithGivenLeftInternalHoms( cat, Range( coev_ab ), IdentityMorphism( cat, b ), f, i ) );
     
-end : CategoryFilter := IsClosedMonoidalCategory );
+end : CategoryFilter := IsLeftClosedMonoidalCategory );
 
 ##
-AddDerivationToCAP( InternalHomToTensorProductAdjunctionMap,
-                    "InternalHomToTensorProductAdjunctionMap using TensorProductOnMorphisms and EvaluationMorphism",
+AddDerivationToCAP( LeftInternalHomToTensorProductAdjunctionMap,
+                    "LeftInternalHomToTensorProductAdjunctionMap using TensorProductOnMorphisms and LeftClosedMonoidalEvaluationMorphism",
                     [ [ PreCompose, 1 ],
                       [ TensorProductOnMorphisms, 1 ],
                       [ IdentityMorphism, 1 ],
-                      [ EvaluationMorphism, 1 ] ],
+                      [ LeftClosedMonoidalEvaluationMorphism, 1 ] ],
                     
   function( cat, b, c, g )
 
@@ -87,17 +87,17 @@ AddDerivationToCAP( InternalHomToTensorProductAdjunctionMap,
 
     return PreCompose( cat,
              TensorProductOnMorphisms( cat, g, IdentityMorphism( cat, b ) ),
-             EvaluationMorphism( cat, b, c ) );
+             LeftClosedMonoidalEvaluationMorphism( cat, b, c ) );
     
-end : CategoryFilter := IsClosedMonoidalCategory );
+end : CategoryFilter := IsLeftClosedMonoidalCategory );
 
 ##
-AddDerivationToCAP( InternalHomToTensorProductAdjunctionMapWithGivenTensorProduct,
-                    "InternalHomToTensorProductAdjunctionMapWithGivenTensorProduct using TensorProductOnMorphisms and EvaluationMorphism",
+AddDerivationToCAP( LeftInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct,
+                    "LeftInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct using TensorProductOnMorphisms and LeftClosedMonoidalEvaluationMorphism",
                     [ [ PreCompose, 1 ],
                       [ TensorProductOnMorphismsWithGivenTensorProducts, 1 ],
                       [ IdentityMorphism, 1 ],
-                      [ EvaluationMorphism, 1 ] ],
+                      [ LeftClosedMonoidalEvaluationMorphism, 1 ] ],
                     
   function( cat, b, c, g, t )
     local ev_bc;
@@ -114,51 +114,51 @@ AddDerivationToCAP( InternalHomToTensorProductAdjunctionMapWithGivenTensorProduc
     #      v
     #      c
      
-    ev_bc := EvaluationMorphism( cat, b, c );
+    ev_bc := LeftClosedMonoidalEvaluationMorphism( cat, b, c );
      
     return PreCompose( cat,
              TensorProductOnMorphismsWithGivenTensorProducts( cat, t, g, IdentityMorphism( cat, b ), Source( ev_bc ) ),
              ev_bc );
     
-end : CategoryFilter := IsClosedMonoidalCategory );
+end : CategoryFilter := IsLeftClosedMonoidalCategory );
 
 ####################################
 ## Final derived methods
 ####################################
 
-## Final methods for Dual
-AddFinalDerivationBundle( "IsomorphismFromDualObjectToInternalHomIntoTensorUnit and its inverse as the identity of Hom(a,1)",
+## Final methods for LeftDual
+AddFinalDerivationBundle( "IsomorphismFromLeftDualObjectToLeftInternalHomIntoTensorUnit and its inverse as the identity of Hom(a,1)",
                     [ [ IdentityMorphism, 1 ],
-                      [ InternalHomOnObjects, 1 ],
+                      [ LeftInternalHomOnObjects, 1 ],
                       [ TensorUnit, 1 ] ],
-                    [ DualOnObjects,
-                      DualOnMorphismsWithGivenDuals,
-                      MorphismToBidualWithGivenBidual,
-                      IsomorphismFromDualObjectToInternalHomIntoTensorUnit,
-                      IsomorphismFromInternalHomIntoTensorUnitToDualObject,
-                      UniversalPropertyOfDual,
-                      TensorProductDualityCompatibilityMorphismWithGivenObjects,
-                      EvaluationForDualWithGivenTensorProduct,
-                      MorphismFromTensorProductToInternalHomWithGivenObjects ],
+                    [ LeftDualOnObjects,
+                      LeftDualOnMorphismsWithGivenLeftDuals,
+                      MorphismToLeftBidualWithGivenLeftBidual,
+                      IsomorphismFromLeftDualObjectToLeftInternalHomIntoTensorUnit,
+                      IsomorphismFromLeftInternalHomIntoTensorUnitToLeftDualObject,
+                      UniversalPropertyOfLeftDual,
+                      TensorProductLeftDualityCompatibilityMorphismWithGivenObjects,
+                      LeftClosedMonoidalEvaluationForLeftDualWithGivenTensorProduct,
+                      MorphismFromTensorProductToLeftInternalHomWithGivenObjects ],
 [
-  IsomorphismFromDualObjectToInternalHomIntoTensorUnit,
+  IsomorphismFromLeftDualObjectToLeftInternalHomIntoTensorUnit,
   [ [ IdentityMorphism, 1 ],
-    [ InternalHomOnObjects, 1 ],
+    [ LeftInternalHomOnObjects, 1 ],
     [ TensorUnit, 1 ] ],
   function( cat, object )
     
-    return IdentityMorphism( cat, InternalHomOnObjects( cat, object, TensorUnit( cat ) ) );
+    return IdentityMorphism( cat, LeftInternalHomOnObjects( cat, object, TensorUnit( cat ) ) );
     
   end
 ],
 [
-  IsomorphismFromInternalHomIntoTensorUnitToDualObject,
+  IsomorphismFromLeftInternalHomIntoTensorUnitToLeftDualObject,
   [ [ IdentityMorphism, 1 ],
-    [ InternalHomOnObjects, 1 ],
+    [ LeftInternalHomOnObjects, 1 ],
     [ TensorUnit, 1 ] ],
   function( cat, object )
     
-    return IdentityMorphism( cat, InternalHomOnObjects( cat, object, TensorUnit( cat ) ) );
+    return IdentityMorphism( cat, LeftInternalHomOnObjects( cat, object, TensorUnit( cat ) ) );
     
   end
-] : CategoryFilter := IsClosedMonoidalCategory );
+] : CategoryFilter := IsLeftClosedMonoidalCategory );

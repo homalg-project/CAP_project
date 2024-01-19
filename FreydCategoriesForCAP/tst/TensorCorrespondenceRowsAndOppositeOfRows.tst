@@ -97,7 +97,7 @@ gap> b := 0 / rows;;
 gap> BraidedMonoidalCategoriesTest( rows, opposite, a, b );;
 
 ##############################################
-# ClosedMonoidalCategoriesTest
+# LeftClosedMonoidalCategoriesTest
 ##############################################
 
 gap> u := TensorUnit( rows );;
@@ -120,7 +120,7 @@ gap> delta := CategoryOfRowsMorphism( c_tensor_d, HomalgMatrix( [ 8 .. 31 ], Ran
 gap> epsilon := CategoryOfRowsMorphism( u, HomalgMatrix( [ 2 .. 7], RankOfObject( u ), RankOfObject( hom_ab ), Q ), hom_ab );;
 gap> zeta := CategoryOfRowsMorphism( u, HomalgMatrix( [ 8 .. 31 ], RankOfObject( u ), RankOfObject( hom_cd ), Q ), hom_cd );;
 
-gap> ClosedMonoidalCategoriesTest( rows, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
+gap> LeftClosedMonoidalCategoriesTest( rows, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
 
 gap> a = 0 / rows;;
 gap> d = 0 / rows;;
@@ -138,10 +138,10 @@ gap> delta := ZeroMorphism( c_tensor_d, u );;
 gap> epsilon := ZeroMorphism( u, hom_ab );;
 gap> zeta := ZeroMorphism( u, hom_cd );;
 
-gap> ClosedMonoidalCategoriesTest( rows, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
+gap> LeftClosedMonoidalCategoriesTest( rows, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
 
 ##############################################
-# CoclosedMonoidalCategoriesTest
+# LeftCoclosedMonoidalCategoriesTest
 ##############################################
 
 gap> u := TensorUnit( rows );;
@@ -164,7 +164,7 @@ gap> delta := CategoryOfRowsMorphism( u, HomalgMatrix( [ 8 .. 31 ], RankOfObject
 gap> epsilon := CategoryOfRowsMorphism( cohom_ab, HomalgMatrix( [ 2 .. 7 ], RankOfObject( cohom_ab ), RankOfObject( u ), Q ), u );;
 gap> zeta := CategoryOfRowsMorphism( cohom_cd, HomalgMatrix( [ 8 .. 31 ], RankOfObject( cohom_cd ), RankOfObject( u ), Q ), u );;
 
-gap> CoclosedMonoidalCategoriesTest( rows, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
+gap> LeftCoclosedMonoidalCategoriesTest( rows, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
 
 gap> a = 0 / rows;;
 gap> d = 0 / rows;;
@@ -182,7 +182,7 @@ gap> delta := ZeroMorphism( u, c_tensor_d );;
 gap> epsilon := ZeroMorphism( cohom_ab, u );;
 gap> zeta := ZeroMorphism( cohom_cd, u );;
 
-gap> CoclosedMonoidalCategoriesTest( rows, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
+gap> LeftCoclosedMonoidalCategoriesTest( rows, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
 
 ##############################################
 # RigidSymmetricClosedMonoidalCategoriesTest

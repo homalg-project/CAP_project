@@ -41,26 +41,26 @@ if $B_{a,b}^{-1} \sim B_{b,a}$.
 The corresponding GAP property is given by
 <C>IsSymmetricMonoidalCategory</C>.
 
-@Section Closed Monoidal Categories
+@Section Left Closed Monoidal Categories
 
 A monoidal category $\mathbf{C}$
 which has for each functor $- \otimes b: \mathbf{C} \rightarrow \mathbf{C}$
-a right adjoint (denoted by $\mathrm{\underline{Hom}}(b,-)$)
-is called a <Emph>closed monoidal category</Emph>.
+a right adjoint (denoted by $\mathrm{\underline{Hom}_\ell}(b,-)$)
+is called a <Emph>left closed monoidal category</Emph>.
 
-If no operations involving duals are installed manually, the dual objects will be derived as $a^\vee \coloneqq \mathrm{\underline{Hom}}(a,1)$.
+If no operations involving left duals are installed manually, the left dual objects will be derived as $a^\vee \coloneqq \mathrm{\underline{Hom}_\ell}(a,1)$.
 
 The corresponding GAP property is called
 <C>IsClosedMonoidalCategory</C>.
 
-@Section Coclosed Monoidal Categories
+@Section Left Coclosed Monoidal Categories
 
 A monoidal category $\mathbf{C}$
 which has for each functor $- \otimes b: \mathbf{C} \rightarrow \mathbf{C}$
 a left adjoint (denoted by $\mathrm{\underline{coHom}}(-,b)$)
-is called a <Emph>coclosed monoidal category</Emph>.
+is called a <Emph>left coclosed monoidal category</Emph>.
 
-If no operations involving coduals are installed manually, the codual objects will be derived as $a_\vee \coloneqq \mathrm{\underline{coHom}}(1,a)$.
+If no operations involving left coduals are installed manually, the left codual objects will be derived as $a_\vee \coloneqq \mathrm{\underline{coHom}}(1,a)$.
 
 The corresponding GAP property is called
 <C>IsCoclosedMonoidalCategory</C>.
@@ -87,15 +87,15 @@ The corresponding GAP property is given by
 
 A symmetric closed monoidal category $\mathbf{C}$ satisfying
 * the natural morphism
- $\mathrm{\underline{Hom}}(a, a') \otimes \mathrm{\underline{Hom}}(b, b') \rightarrow \mathrm{\underline{Hom}}(a \otimes b, a' \otimes b')$
+ $\mathrm{\underline{Hom}_\ell}(a, a') \otimes \mathrm{\underline{Hom}_\ell}(b, b') \rightarrow \mathrm{\underline{Hom}_\ell}(a \otimes b, a' \otimes b')$
  is an isomorphism,
 * the natural morphism
- $a \rightarrow \mathrm{\underline{Hom}}(\mathrm{\underline{Hom}}(a, 1), 1)$
+ $a \rightarrow \mathrm{\underline{Hom}_\ell}(\mathrm{\underline{Hom}_\ell}(a, 1), 1)$
  is an isomorphism
 is called a <Emph>rigid symmetric closed monoidal category</Emph>.
 
 If no operations involving the closed structure are installed manually, the internal hom objects will be derived as
-$\mathrm{\underline{Hom}}(a,b) \coloneqq a^\vee \otimes b$ and, in particular, $\mathrm{\underline{Hom}}(a,1) \coloneqq a^\vee \otimes 1$.
+$\mathrm{\underline{Hom}_\ell}(a,b) \coloneqq a^\vee \otimes b$ and, in particular, $\mathrm{\underline{Hom}_\ell}(a,1) \coloneqq a^\vee \otimes 1$.
 
 The corresponding GAP property is given by
 <C>IsRigidSymmetricClosedMonoidalCategory</C>.
@@ -146,3 +146,5 @@ provided by &CAP; or any &CAP;-based package.
 @Section Constructors
 
 @Section &GAP; Categories
+
+@Chapter Synonyms

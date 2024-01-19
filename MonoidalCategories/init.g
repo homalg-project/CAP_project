@@ -57,6 +57,9 @@ ReadPackage( "MonoidalCategories", "gap/CreateMonoidalCategories.gd" );
 ReadPackage( "MonoidalCategories", "gap/CreateClosedMonoidalCategories.gd" );
 ReadPackage( "MonoidalCategories", "gap/CreateCoclosedMonoidalCategories.gd" );
 
+## Synonyms
+ReadPackage( "MonoidalCategories", "gap/Synonyms.gd" );
+
 ## Test methods
 
 ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesTensorProductAndUnitTest.gd" );

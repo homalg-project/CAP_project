@@ -5,7 +5,7 @@
 #
 
 ##
-InstallGlobalFunction( CAP_INTERNAL_FUNC_FOR_COCLOSED_MONOIDAL_STRUCTURES,
+InstallGlobalFunction( CAP_INTERNAL_FUNC_FOR_LEFT_COCLOSED_MONOIDAL_STRUCTURES,
   function( key_val_rec, package_name )
     local L, name;
     
@@ -13,7 +13,7 @@ InstallGlobalFunction( CAP_INTERNAL_FUNC_FOR_COCLOSED_MONOIDAL_STRUCTURES,
            "IsStrictMonoidalCategory",
            "IsBraidedMonoidalCategory",
            "IsSymmetricMonoidalCategory",
-           "IsCoclosedMonoidalCategory",
+           "IsLeftCoclosedMonoidalCategory",
            "IsSymmetricCoclosedMonoidalCategory",
            "AdditiveMonoidal",
            "TensorProductOnObjects",
@@ -24,15 +24,15 @@ InstallGlobalFunction( CAP_INTERNAL_FUNC_FOR_COCLOSED_MONOIDAL_STRUCTURES,
            "RightUnitor",
            "Distributivity",
            "Braiding",
-           "CoLambda",
-           "CoclosedEvaluation",
-           "CoclosedCoevaluation",
-           "InternalCoHom",
-           "CoDual",
-           "CoBidual",
-           "CoclosedMonoidalCategories",
-           "COCLOSED_MONOIDAL",
-           "CoclosedMonoidal",
+           "LeftCoclosedMonoidalLambda",
+           "LeftCoclosedMonoidalEvaluation",
+           "LeftCoclosedMonoidalCoevaluation",
+           "LeftInternalCoHom",
+           "LeftCoDual",
+           "LeftCoBidual",
+           "LeftCoclosedMonoidalCategories",
+           "LEFT_COCLOSED_MONOIDAL",
+           "LeftCoclosedMonoidal",
            "MONOIDAL",
            "Monoidal",
            "monoidal",
@@ -60,14 +60,14 @@ InstallGlobalFunction( CAP_INTERNAL_FUNC_FOR_COCLOSED_MONOIDAL_STRUCTURES,
                  [ [ "\"MonoidalCategories\",", Concatenation( "\"", package_name, "\"," ) ],
                    [ Concatenation( PackageInfo( "MonoidalCategories" )[1].PackageName, ": ", PackageInfo( "MonoidalCategories" )[1].Subtitle ),
                      Concatenation( PackageInfo( package_name )[1].PackageName, ": ", PackageInfo( package_name )[1].Subtitle ) ],
-                   [ "Coclosed Monoidal", key_val_rec.CoclosedSMonoidal ],
+                   [ "Left Coclosed Monoidal", key_val_rec.CoclosedSMonoidal ],
                    [ "TensorProductOnObjects( cat,", key_val_rec.TensorProductOnObjectsBCcat ],
                    [ "METHOD_NAME_RECORD, \"MonoidalCategories\"", key_val_rec.CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE ],
                    ], L );
     
     Add( L, [ "tensor product", key_val_rec.tensorSproduct ] );
     Add( L, [ "cohom tensor", key_val_rec.cohom_tensor ] );
-    Add( L, [ "\\underline{coHom}", key_val_rec.coHom ] );
+    Add( L, [ "\\underline{coHom}_\\ell", key_val_rec.coHom ] );
     
     if IsBound( key_val_rec.replace ) then
         Append( L, key_val_rec.replace );
@@ -85,11 +85,11 @@ InstallGlobalFunction( CAP_INTERNAL_FUNC_FOR_COCLOSED_MONOIDAL_STRUCTURES,
 end );
 
 ##
-InstallGlobalFunction( WriteFileForCoclosedMonoidalStructure,
+InstallGlobalFunction( WriteFileForLeftCoclosedMonoidalStructure,
   function( key_val_rec, package_name, files_rec )
     local dir, L, files, header, file, source, target;
     
-    L := CAP_INTERNAL_FUNC_FOR_COCLOSED_MONOIDAL_STRUCTURES( key_val_rec, package_name );
+    L := CAP_INTERNAL_FUNC_FOR_LEFT_COCLOSED_MONOIDAL_STRUCTURES( key_val_rec, package_name );
     
     dir := Concatenation( PackageInfo( "MonoidalCategories" )[1].InstallationPath, "/gap/" );
     

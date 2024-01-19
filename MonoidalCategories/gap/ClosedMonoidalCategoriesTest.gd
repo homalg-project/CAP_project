@@ -19,7 +19,7 @@
 #! * a morphism $\epsilon: 1 \rightarrow \mathrm{Hom}(a,b)$
 #! * a morphism $\zeta: 1 \rightarrow \mathrm{Hom}(c,d)$
 #! This function checks for every operation
-#! declared in ClosedMonoidalCategories.gd
+#! declared in LeftClosedMonoidalCategories.gd
 #! if it is computable in the CAP category $cat$.
 #! If yes, then the operation is executed
 #! with the parameters given above and
@@ -35,4 +35,4 @@
 #!    The advantage is, that more derivations might be tested.
 #!    On the downside, this might test fewer dual_pre/postprocessor_funcs.
 #! @Arguments cat, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta
-DeclareGlobalFunction( "ClosedMonoidalCategoriesTest" );
+DeclareGlobalFunction( "LeftClosedMonoidalCategoriesTest" );

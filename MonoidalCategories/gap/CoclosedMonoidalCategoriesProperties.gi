@@ -4,4 +4,4 @@
 # Implementations
 #
 
-InstallTrueMethod( IsMonoidalCategory, IsCoclosedMonoidalCategory );
+InstallTrueMethod( IsMonoidalCategory, IsLeftCoclosedMonoidalCategory );
