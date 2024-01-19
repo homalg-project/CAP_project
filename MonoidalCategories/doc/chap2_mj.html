@@ -18,7 +18,7 @@
 <body class="chap2"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chapInd_mj.html">Ind</a>  </div>
 
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
@@ -30,8 +30,8 @@
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8131040685BBC24E">2.1-1 AdditiveMonoidalCategoriesTest</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7D87D6737E0B485F">2.1-2 BraidedMonoidalCategoriesTest</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7CDDEF3E87731A54">2.1-3 ClosedMonoidalCategoriesTest</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X83E919E984B367B1">2.1-4 CoclosedMonoidalCategoriesTest</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7B0D72D07AAA7B9B">2.1-3 LeftClosedMonoidalCategoriesTest</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X865E82AA7FB9B0BE">2.1-4 LeftCoclosedMonoidalCategoriesTest</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X86C037637DDEB70A">2.1-5 MonoidalCategoriesTensorProductAndUnitTest</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7BCAF88A806E562D">2.1-6 MonoidalCategoriesTest</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X78CAAAE77DC5CF4F">2.1-7 RigidSymmetricClosedMonoidalCategoriesTest</a></span>
@@ -105,11 +105,11 @@
 
 </li>
 </ul>
-<p><a id="X7CDDEF3E87731A54" name="X7CDDEF3E87731A54"></a></p>
+<p><a id="X7B0D72D07AAA7B9B" name="X7B0D72D07AAA7B9B"></a></p>
 
-<h5>2.1-3 ClosedMonoidalCategoriesTest</h5>
+<h5>2.1-3 LeftClosedMonoidalCategoriesTest</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ClosedMonoidalCategoriesTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">d</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">gamma</var>, <var class="Arg">delta</var>, <var class="Arg">epsilon</var>, <var class="Arg">zeta</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftClosedMonoidalCategoriesTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">d</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">gamma</var>, <var class="Arg">delta</var>, <var class="Arg">epsilon</var>, <var class="Arg">zeta</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>The arguments are</p>
 
 
@@ -139,7 +139,7 @@
 
 </li>
 </ul>
-<p>This function checks for every operation declared in ClosedMonoidalCategories.gd if it is computable in the CAP category <span class="SimpleMath">\(cat\)</span>. If yes, then the operation is executed with the parameters given above and compared to the equivalent computation in the opposite category of <span class="SimpleMath">\(cat\)</span>. Pass the options</p>
+<p>This function checks for every operation declared in LeftClosedMonoidalCategories.gd if it is computable in the CAP category <span class="SimpleMath">\(cat\)</span>. If yes, then the operation is executed with the parameters given above and compared to the equivalent computation in the opposite category of <span class="SimpleMath">\(cat\)</span>. Pass the options</p>
 
 
 <ul>
@@ -150,11 +150,11 @@
 
 </li>
 </ul>
-<p><a id="X83E919E984B367B1" name="X83E919E984B367B1"></a></p>
+<p><a id="X865E82AA7FB9B0BE" name="X865E82AA7FB9B0BE"></a></p>
 
-<h5>2.1-4 CoclosedMonoidalCategoriesTest</h5>
+<h5>2.1-4 LeftCoclosedMonoidalCategoriesTest</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoclosedMonoidalCategoriesTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">d</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">gamma</var>, <var class="Arg">delta</var>, <var class="Arg">epsilon</var>, <var class="Arg">zeta</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftCoclosedMonoidalCategoriesTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">d</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">gamma</var>, <var class="Arg">delta</var>, <var class="Arg">epsilon</var>, <var class="Arg">zeta</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>The arguments are a CAP category <span class="SimpleMath">\(cat\)</span> objects <span class="SimpleMath">\(a, b, c, d\)</span></p>
 
 
@@ -178,7 +178,7 @@
 
 </li>
 </ul>
-<p>This function checks for every operation declared in CoclosedMonoidalCategories.gd if it is computable in the CAP category <span class="SimpleMath">\(cat\)</span>. If yes, then the operation is executed with the parameters given above and compared to the equivalent computation in the opposite category of <span class="SimpleMath">\(cat\)</span>. Pass the options</p>
+<p>This function checks for every operation declared in LeftCoclosedMonoidalCategories.gd if it is computable in the CAP category <span class="SimpleMath">\(cat\)</span>. If yes, then the operation is executed with the parameters given above and compared to the equivalent computation in the opposite category of <span class="SimpleMath">\(cat\)</span>. Pass the options</p>
 
 
 <ul>
@@ -361,7 +361,7 @@ true
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
 
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chapInd_mj.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>

@@ -18,7 +18,7 @@
 <body class="chap3"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chapInd_mj.html">Ind</a>  </div>
 
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap4_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
@@ -33,12 +33,12 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7BC682067A30E580">3.2 <span class="Heading">Closed Monoidal Categories</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7EF7CDED85FB1CA1">3.2-1 WriteFileForClosedMonoidalStructure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B1E6E95839A2EB7">3.2-1 WriteFileForLeftClosedMonoidalStructure</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X8197D69B805349AC">3.3 <span class="Heading">Coclosed Monoidal Categories</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83DBF79278AD1D37">3.3-1 WriteFileForCoclosedMonoidalStructure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7DAEDDFF84783E19">3.3-1 WriteFileForLeftCoclosedMonoidalStructure</a></span>
 </div></div>
 </div>
 
@@ -61,33 +61,33 @@
 
 <h4>3.2 <span class="Heading">Closed Monoidal Categories</span></h4>
 
-<p><a id="X7EF7CDED85FB1CA1" name="X7EF7CDED85FB1CA1"></a></p>
+<p><a id="X7B1E6E95839A2EB7" name="X7B1E6E95839A2EB7"></a></p>
 
-<h5>3.2-1 WriteFileForClosedMonoidalStructure</h5>
+<h5>3.2-1 WriteFileForLeftClosedMonoidalStructure</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WriteFileForClosedMonoidalStructure</code>( <var class="Arg">key_val_rec</var>, <var class="Arg">package_name</var>, <var class="Arg">files_rec</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WriteFileForLeftClosedMonoidalStructure</code>( <var class="Arg">key_val_rec</var>, <var class="Arg">package_name</var>, <var class="Arg">files_rec</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>This functions uses the dictionary <var class="Arg">key_val_rec</var> to create a new closed monoidal structure. It generates the necessary files in the package <var class="Arg">package_name</var> using the file-correspondence table <var class="Arg">files_rec</var>. See the implementation for details.</p>
+<p>This functions uses the dictionary <var class="Arg">key_val_rec</var> to create a new left closed monoidal structure. It generates the necessary files in the package <var class="Arg">package_name</var> using the file-correspondence table <var class="Arg">files_rec</var>. See the implementation for details.</p>
 
 <p><a id="X8197D69B805349AC" name="X8197D69B805349AC"></a></p>
 
 <h4>3.3 <span class="Heading">Coclosed Monoidal Categories</span></h4>
 
-<p><a id="X83DBF79278AD1D37" name="X83DBF79278AD1D37"></a></p>
+<p><a id="X7DAEDDFF84783E19" name="X7DAEDDFF84783E19"></a></p>
 
-<h5>3.3-1 WriteFileForCoclosedMonoidalStructure</h5>
+<h5>3.3-1 WriteFileForLeftCoclosedMonoidalStructure</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WriteFileForCoclosedMonoidalStructure</code>( <var class="Arg">key_val_rec</var>, <var class="Arg">package_name</var>, <var class="Arg">files_rec</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WriteFileForLeftCoclosedMonoidalStructure</code>( <var class="Arg">key_val_rec</var>, <var class="Arg">package_name</var>, <var class="Arg">files_rec</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>This functions uses the dictionary <var class="Arg">key_val_rec</var> to create a new coclosed monoidal structure. It generates the necessary files in the package <var class="Arg">package_name</var> using the file-correspondence table <var class="Arg">files_rec</var>. See the implementation for details.</p>
+<p>This functions uses the dictionary <var class="Arg">key_val_rec</var> to create a new left coclosed monoidal structure. It generates the necessary files in the package <var class="Arg">package_name</var> using the file-correspondence table <var class="Arg">files_rec</var>. See the implementation for details.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap4_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
 
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chapInd_mj.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>

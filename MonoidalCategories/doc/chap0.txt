@@ -6,10 +6,10 @@
                  [1X Monoidal and monoidal (co)closed categories [101X
   
   
-                                   2024.01-01
+                                   2024.01-03
   
   
-                                11 January 2024
+                                19 January 2024
   
   
                                 Mohamed Barakat
@@ -111,113 +111,113 @@
       1.3-3 BraidingInverse
       1.3-4 BraidingInverseWithGivenTensorProducts
     1.4 [33X[0;0YSymmetric Monoidal Categories[133X
-    1.5 [33X[0;0YClosed Monoidal Categories[133X
-      1.5-1 InternalHomOnObjects
-      1.5-2 InternalHomOnMorphisms
-      1.5-3 InternalHomOnMorphismsWithGivenInternalHoms
-      1.5-4 EvaluationMorphism
-      1.5-5 EvaluationMorphismWithGivenSource
-      1.5-6 CoevaluationMorphism
-      1.5-7 CoevaluationMorphismWithGivenRange
-      1.5-8 TensorProductToInternalHomAdjunctionMap
-      1.5-9 TensorProductToInternalHomAdjunctionMapWithGivenInternalHom
-      1.5-10 InternalHomToTensorProductAdjunctionMap
-      1.5-11 InternalHomToTensorProductAdjunctionMapWithGivenTensorProduct
-      1.5-12 MonoidalPreComposeMorphism
-      1.5-13 MonoidalPreComposeMorphismWithGivenObjects
-      1.5-14 MonoidalPostComposeMorphism
-      1.5-15 MonoidalPostComposeMorphismWithGivenObjects
-      1.5-16 DualOnObjects
-      1.5-17 DualOnMorphisms
-      1.5-18 DualOnMorphismsWithGivenDuals
-      1.5-19 EvaluationForDual
-      1.5-20 EvaluationForDualWithGivenTensorProduct
-      1.5-21 MorphismToBidual
-      1.5-22 MorphismToBidualWithGivenBidual
-      1.5-23 TensorProductInternalHomCompatibilityMorphism
-      1.5-24 TensorProductInternalHomCompatibilityMorphismWithGivenObjects
-      1.5-25 TensorProductDualityCompatibilityMorphism
-      1.5-26 TensorProductDualityCompatibilityMorphismWithGivenObjects
-      1.5-27 MorphismFromTensorProductToInternalHom
-      1.5-28 MorphismFromTensorProductToInternalHomWithGivenObjects
-      1.5-29 IsomorphismFromDualObjectToInternalHomIntoTensorUnit
-      1.5-30 IsomorphismFromInternalHomIntoTensorUnitToDualObject
-      1.5-31 UniversalPropertyOfDual
-      1.5-32 LambdaIntroduction
-      1.5-33 LambdaElimination
-      1.5-34 IsomorphismFromObjectToInternalHom
-      1.5-35 IsomorphismFromObjectToInternalHomWithGivenInternalHom
-      1.5-36 IsomorphismFromInternalHomToObject
-      1.5-37 IsomorphismFromInternalHomToObjectWithGivenInternalHom
-    1.6 [33X[0;0YCoclosed Monoidal Categories[133X
-      1.6-1 InternalCoHomOnObjects
-      1.6-2 InternalCoHomOnMorphisms
-      1.6-3 InternalCoHomOnMorphismsWithGivenInternalCoHoms
-      1.6-4 CoclosedEvaluationMorphism
-      1.6-5 CoclosedEvaluationMorphismWithGivenRange
-      1.6-6 CoclosedCoevaluationMorphism
-      1.6-7 CoclosedCoevaluationMorphismWithGivenSource
-      1.6-8 TensorProductToInternalCoHomAdjunctionMap
-      1.6-9 TensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom
-      1.6-10 InternalCoHomToTensorProductAdjunctionMap
-      1.6-11 InternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct
-      1.6-12 MonoidalPreCoComposeMorphism
-      1.6-13 MonoidalPreCoComposeMorphismWithGivenObjects
-      1.6-14 MonoidalPostCoComposeMorphism
-      1.6-15 MonoidalPostCoComposeMorphismWithGivenObjects
-      1.6-16 CoDualOnObjects
-      1.6-17 CoDualOnMorphisms
-      1.6-18 CoDualOnMorphismsWithGivenCoDuals
-      1.6-19 CoclosedEvaluationForCoDual
-      1.6-20 CoclosedEvaluationForCoDualWithGivenTensorProduct
-      1.6-21 MorphismFromCoBidual
-      1.6-22 MorphismFromCoBidualWithGivenCoBidual
-      1.6-23 InternalCoHomTensorProductCompatibilityMorphism
-      1.6-24 InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects
-      1.6-25 CoDualityTensorProductCompatibilityMorphism
-      1.6-26 CoDualityTensorProductCompatibilityMorphismWithGivenObjects
-      1.6-27 MorphismFromInternalCoHomToTensorProduct
-      1.6-28 MorphismFromInternalCoHomToTensorProductWithGivenObjects
-      1.6-29 IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit
-      1.6-30 IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject
-      1.6-31 UniversalPropertyOfCoDual
-      1.6-32 CoLambdaIntroduction
-      1.6-33 CoLambdaElimination
-      1.6-34 IsomorphismFromObjectToInternalCoHom
-      1.6-35 IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom
-      1.6-36 IsomorphismFromInternalCoHomToObject
-      1.6-37 IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom
+    1.5 [33X[0;0YLeft Closed Monoidal Categories[133X
+      1.5-1 LeftInternalHomOnObjects
+      1.5-2 LeftInternalHomOnMorphisms
+      1.5-3 LeftInternalHomOnMorphismsWithGivenLeftInternalHoms
+      1.5-4 LeftClosedMonoidalEvaluationMorphism
+      1.5-5 LeftClosedMonoidalEvaluationMorphismWithGivenSource
+      1.5-6 LeftClosedMonoidalCoevaluationMorphism
+      1.5-7 LeftClosedMonoidalCoevaluationMorphismWithGivenRange
+      1.5-8 TensorProductToLeftInternalHomAdjunctionMap
+      1.5-9 TensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom
+      1.5-10 LeftInternalHomToTensorProductAdjunctionMap
+      1.5-11 LeftInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct
+      1.5-12 LeftClosedMonoidalPreComposeMorphism
+      1.5-13 LeftClosedMonoidalPreComposeMorphismWithGivenObjects
+      1.5-14 LeftClosedMonoidalPostComposeMorphism
+      1.5-15 LeftClosedMonoidalPostComposeMorphismWithGivenObjects
+      1.5-16 LeftDualOnObjects
+      1.5-17 LeftDualOnMorphisms
+      1.5-18 LeftDualOnMorphismsWithGivenLeftDuals
+      1.5-19 LeftClosedMonoidalEvaluationForLeftDual
+      1.5-20 LeftClosedMonoidalEvaluationForLeftDualWithGivenTensorProduct
+      1.5-21 MorphismToLeftBidual
+      1.5-22 MorphismToLeftBidualWithGivenLeftBidual
+      1.5-23 TensorProductLeftInternalHomCompatibilityMorphism
+      1.5-24 TensorProductLeftInternalHomCompatibilityMorphismWithGivenObjects
+      1.5-25 TensorProductLeftDualityCompatibilityMorphism
+      1.5-26 TensorProductLeftDualityCompatibilityMorphismWithGivenObjects
+      1.5-27 MorphismFromTensorProductToLeftInternalHom
+      1.5-28 MorphismFromTensorProductToLeftInternalHomWithGivenObjects
+      1.5-29 IsomorphismFromLeftDualObjectToLeftInternalHomIntoTensorUnit
+      1.5-30 IsomorphismFromLeftInternalHomIntoTensorUnitToLeftDualObject
+      1.5-31 UniversalPropertyOfLeftDual
+      1.5-32 LeftClosedMonoidalLambdaIntroduction
+      1.5-33 LeftClosedMonoidalLambdaElimination
+      1.5-34 IsomorphismFromObjectToLeftInternalHom
+      1.5-35 IsomorphismFromObjectToLeftInternalHomWithGivenLeftInternalHom
+      1.5-36 IsomorphismFromLeftInternalHomToObject
+      1.5-37 IsomorphismFromLeftInternalHomToObjectWithGivenLeftInternalHom
+    1.6 [33X[0;0YLeft Coclosed Monoidal Categories[133X
+      1.6-1 LeftInternalCoHomOnObjects
+      1.6-2 LeftInternalCoHomOnMorphisms
+      1.6-3 LeftInternalCoHomOnMorphismsWithGivenLeftInternalCoHoms
+      1.6-4 LeftCoclosedMonoidalEvaluationMorphism
+      1.6-5 LeftCoclosedMonoidalEvaluationMorphismWithGivenRange
+      1.6-6 LeftCoclosedMonoidalCoevaluationMorphism
+      1.6-7 LeftCoclosedMonoidalCoevaluationMorphismWithGivenSource
+      1.6-8 TensorProductToLeftInternalCoHomAdjunctionMap
+      1.6-9 TensorProductToLeftInternalCoHomAdjunctionMapWithGivenLeftInternalCoHom
+      1.6-10 LeftInternalCoHomToTensorProductAdjunctionMap
+      1.6-11 LeftInternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct
+      1.6-12 LeftCoclosedMonoidalPreCoComposeMorphism
+      1.6-13 LeftCoclosedMonoidalPreCoComposeMorphismWithGivenObjects
+      1.6-14 LeftCoclosedMonoidalPostCoComposeMorphism
+      1.6-15 LeftCoclosedMonoidalPostCoComposeMorphismWithGivenObjects
+      1.6-16 LeftCoDualOnObjects
+      1.6-17 LeftCoDualOnMorphisms
+      1.6-18 LeftCoDualOnMorphismsWithGivenLeftCoDuals
+      1.6-19 LeftCoclosedMonoidalEvaluationForLeftCoDual
+      1.6-20 LeftCoclosedMonoidalEvaluationForLeftCoDualWithGivenTensorProduct
+      1.6-21 MorphismFromLeftCoBidual
+      1.6-22 MorphismFromLeftCoBidualWithGivenLeftCoBidual
+      1.6-23 LeftInternalCoHomTensorProductCompatibilityMorphism
+      1.6-24 LeftInternalCoHomTensorProductCompatibilityMorphismWithGivenObjects
+      1.6-25 LeftCoDualityTensorProductCompatibilityMorphism
+      1.6-26 LeftCoDualityTensorProductCompatibilityMorphismWithGivenObjects
+      1.6-27 MorphismFromLeftInternalCoHomToTensorProduct
+      1.6-28 MorphismFromLeftInternalCoHomToTensorProductWithGivenObjects
+      1.6-29 IsomorphismFromLeftCoDualObjectToLeftInternalCoHomFromTensorUnit
+      1.6-30 IsomorphismFromLeftInternalCoHomFromTensorUnitToLeftCoDualObject
+      1.6-31 UniversalPropertyOfLeftCoDual
+      1.6-32 LeftCoclosedMonoidalLambdaIntroduction
+      1.6-33 LeftCoclosedMonoidalLambdaElimination
+      1.6-34 IsomorphismFromObjectToLeftInternalCoHom
+      1.6-35 IsomorphismFromObjectToLeftInternalCoHomWithGivenLeftInternalCoHom
+      1.6-36 IsomorphismFromLeftInternalCoHomToObject
+      1.6-37 IsomorphismFromLeftInternalCoHomToObjectWithGivenLeftInternalCoHom
     1.7 [33X[0;0YSymmetric Closed Monoidal Categories[133X
     1.8 [33X[0;0YSymmetric Coclosed Monoidal Categories[133X
     1.9 [33X[0;0YRigid Symmetric Closed Monoidal Categories[133X
-      1.9-1 IsomorphismFromTensorProductWithDualObjectToInternalHom
-      1.9-2 IsomorphismFromInternalHomToTensorProductWithDualObject
-      1.9-3 MorphismFromInternalHomToTensorProduct
-      1.9-4 MorphismFromInternalHomToTensorProductWithGivenObjects
-      1.9-5 TensorProductInternalHomCompatibilityMorphismInverse
-      1.9-6 TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects
-      1.9-7 CoevaluationForDual
-      1.9-8 CoevaluationForDualWithGivenTensorProduct
+      1.9-1 IsomorphismFromTensorProductWithLeftDualObjectToLeftInternalHom
+      1.9-2 IsomorphismFromLeftInternalHomToTensorProductWithLeftDualObject
+      1.9-3 MorphismFromLeftInternalHomToTensorProduct
+      1.9-4 MorphismFromLeftInternalHomToTensorProductWithGivenObjects
+      1.9-5 TensorProductLeftInternalHomCompatibilityMorphismInverse
+      1.9-6 TensorProductLeftInternalHomCompatibilityMorphismInverseWithGivenObjects
+      1.9-7 CoevaluationForLeftDual
+      1.9-8 CoevaluationForLeftDualWithGivenTensorProduct
       1.9-9 TraceMap
       1.9-10 RankMorphism
-      1.9-11 MorphismFromBidual
-      1.9-12 MorphismFromBidualWithGivenBidual
+      1.9-11 MorphismFromLeftBidual
+      1.9-12 MorphismFromLeftBidualWithGivenLeftBidual
     1.10 [33X[0;0YRigid Symmetric Coclosed Monoidal Categories[133X
-      1.10-1 IsomorphismFromInternalCoHomToTensorProductWithCoDualObject
-      1.10-2 IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom
-      1.10-3 MorphismFromTensorProductToInternalCoHom
-      1.10-4 MorphismFromTensorProductToInternalCoHomWithGivenObjects
-      1.10-5 InternalCoHomTensorProductCompatibilityMorphismInverse
-      1.10-6 InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects
-      1.10-7 CoclosedCoevaluationForCoDual
-      1.10-8 CoclosedCoevaluationForCoDualWithGivenTensorProduct
+      1.10-1 IsomorphismFromLeftInternalCoHomToTensorProductWithLeftCoDualObject
+      1.10-2 IsomorphismFromTensorProductWithLeftCoDualObjectToLeftInternalCoHom
+      1.10-3 MorphismFromTensorProductToLeftInternalCoHom
+      1.10-4 MorphismFromTensorProductToLeftInternalCoHomWithGivenObjects
+      1.10-5 LeftInternalCoHomTensorProductCompatibilityMorphismInverse
+      1.10-6 LeftInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects
+      1.10-7 LeftCoclosedMonoidalCoevaluationForLeftCoDual
+      1.10-8 LeftCoclosedMonoidalCoevaluationForLeftCoDualWithGivenTensorProduct
       1.10-9 CoTraceMap
       1.10-10 CoRankMorphism
-      1.10-11 MorphismToCoBidual
-      1.10-12 MorphismToCoBidualWithGivenCoBidual
+      1.10-11 MorphismToLeftCoBidual
+      1.10-12 MorphismToLeftCoBidualWithGivenLeftCoBidual
     1.11 [33X[0;0YConvenience Methods[133X
-      1.11-1 InternalHom
-      1.11-2 InternalCoHom
+      1.11-1 LeftInternalHom
+      1.11-2 LeftInternalCoHom
     1.12 [33X[0;0YAdd-methods[133X
       1.12-1 AddLeftDistributivityExpanding
       1.12-2 AddLeftDistributivityExpandingWithGivenObjects
@@ -231,80 +231,80 @@
       1.12-10 AddBraidingInverse
       1.12-11 AddBraidingInverseWithGivenTensorProducts
       1.12-12 AddBraidingWithGivenTensorProducts
-      1.12-13 AddCoevaluationMorphism
-      1.12-14 AddCoevaluationMorphismWithGivenRange
-      1.12-15 AddDualOnMorphisms
-      1.12-16 AddDualOnMorphismsWithGivenDuals
-      1.12-17 AddDualOnObjects
-      1.12-18 AddEvaluationForDual
-      1.12-19 AddEvaluationForDualWithGivenTensorProduct
-      1.12-20 AddEvaluationMorphism
-      1.12-21 AddEvaluationMorphismWithGivenSource
-      1.12-22 AddInternalHomOnMorphisms
-      1.12-23 AddInternalHomOnMorphismsWithGivenInternalHoms
-      1.12-24 AddInternalHomOnObjects
-      1.12-25 AddInternalHomToTensorProductAdjunctionMap
-      1.12-26 AddInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct
-      1.12-27 AddIsomorphismFromDualObjectToInternalHomIntoTensorUnit
-      1.12-28 AddIsomorphismFromInternalHomIntoTensorUnitToDualObject
-      1.12-29 AddIsomorphismFromInternalHomToObject
-      1.12-30 AddIsomorphismFromInternalHomToObjectWithGivenInternalHom
-      1.12-31 AddIsomorphismFromObjectToInternalHom
-      1.12-32 AddIsomorphismFromObjectToInternalHomWithGivenInternalHom
-      1.12-33 AddLambdaElimination
-      1.12-34 AddLambdaIntroduction
-      1.12-35 AddMonoidalPostComposeMorphism
-      1.12-36 AddMonoidalPostComposeMorphismWithGivenObjects
-      1.12-37 AddMonoidalPreComposeMorphism
-      1.12-38 AddMonoidalPreComposeMorphismWithGivenObjects
-      1.12-39 AddMorphismFromTensorProductToInternalHom
-      1.12-40 AddMorphismFromTensorProductToInternalHomWithGivenObjects
-      1.12-41 AddMorphismToBidual
-      1.12-42 AddMorphismToBidualWithGivenBidual
-      1.12-43 AddTensorProductDualityCompatibilityMorphism
-      1.12-44 AddTensorProductDualityCompatibilityMorphismWithGivenObjects
-      1.12-45 AddTensorProductInternalHomCompatibilityMorphism
-      1.12-46 AddTensorProductInternalHomCompatibilityMorphismWithGivenObjects
-      1.12-47 AddTensorProductToInternalHomAdjunctionMap
-      1.12-48 AddTensorProductToInternalHomAdjunctionMapWithGivenInternalHom
-      1.12-49 AddUniversalPropertyOfDual
-      1.12-50 AddCoDualOnMorphisms
-      1.12-51 AddCoDualOnMorphismsWithGivenCoDuals
-      1.12-52 AddCoDualOnObjects
-      1.12-53 AddCoDualityTensorProductCompatibilityMorphism
-      1.12-54 AddCoDualityTensorProductCompatibilityMorphismWithGivenObjects
-      1.12-55 AddCoLambdaElimination
-      1.12-56 AddCoLambdaIntroduction
-      1.12-57 AddCoclosedCoevaluationMorphism
-      1.12-58 AddCoclosedCoevaluationMorphismWithGivenSource
-      1.12-59 AddCoclosedEvaluationForCoDual
-      1.12-60 AddCoclosedEvaluationForCoDualWithGivenTensorProduct
-      1.12-61 AddCoclosedEvaluationMorphism
-      1.12-62 AddCoclosedEvaluationMorphismWithGivenRange
-      1.12-63 AddInternalCoHomOnMorphisms
-      1.12-64 AddInternalCoHomOnMorphismsWithGivenInternalCoHoms
-      1.12-65 AddInternalCoHomOnObjects
-      1.12-66 AddInternalCoHomTensorProductCompatibilityMorphism
-      1.12-67 AddInternalCoHomTensorProductCompatibilityMorphismWithGivenObjects
-      1.12-68 AddInternalCoHomToTensorProductAdjunctionMap
-      1.12-69 AddInternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct
-      1.12-70 AddIsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit
-      1.12-71 AddIsomorphismFromInternalCoHomFromTensorUnitToCoDualObject
-      1.12-72 AddIsomorphismFromInternalCoHomToObject
-      1.12-73 AddIsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom
-      1.12-74 AddIsomorphismFromObjectToInternalCoHom
-      1.12-75 AddIsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom
-      1.12-76 AddMonoidalPostCoComposeMorphism
-      1.12-77 AddMonoidalPostCoComposeMorphismWithGivenObjects
-      1.12-78 AddMonoidalPreCoComposeMorphism
-      1.12-79 AddMonoidalPreCoComposeMorphismWithGivenObjects
-      1.12-80 AddMorphismFromCoBidual
-      1.12-81 AddMorphismFromCoBidualWithGivenCoBidual
-      1.12-82 AddMorphismFromInternalCoHomToTensorProduct
-      1.12-83 AddMorphismFromInternalCoHomToTensorProductWithGivenObjects
-      1.12-84 AddTensorProductToInternalCoHomAdjunctionMap
-      1.12-85 AddTensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom
-      1.12-86 AddUniversalPropertyOfCoDual
+      1.12-13 AddIsomorphismFromLeftDualObjectToLeftInternalHomIntoTensorUnit
+      1.12-14 AddIsomorphismFromLeftInternalHomIntoTensorUnitToLeftDualObject
+      1.12-15 AddIsomorphismFromLeftInternalHomToObject
+      1.12-16 AddIsomorphismFromLeftInternalHomToObjectWithGivenLeftInternalHom
+      1.12-17 AddIsomorphismFromObjectToLeftInternalHom
+      1.12-18 AddIsomorphismFromObjectToLeftInternalHomWithGivenLeftInternalHom
+      1.12-19 AddLeftClosedMonoidalCoevaluationMorphism
+      1.12-20 AddLeftClosedMonoidalCoevaluationMorphismWithGivenRange
+      1.12-21 AddLeftClosedMonoidalEvaluationForLeftDual
+      1.12-22 AddLeftClosedMonoidalEvaluationForLeftDualWithGivenTensorProduct
+      1.12-23 AddLeftClosedMonoidalEvaluationMorphism
+      1.12-24 AddLeftClosedMonoidalEvaluationMorphismWithGivenSource
+      1.12-25 AddLeftClosedMonoidalLambdaElimination
+      1.12-26 AddLeftClosedMonoidalLambdaIntroduction
+      1.12-27 AddLeftClosedMonoidalPostComposeMorphism
+      1.12-28 AddLeftClosedMonoidalPostComposeMorphismWithGivenObjects
+      1.12-29 AddLeftClosedMonoidalPreComposeMorphism
+      1.12-30 AddLeftClosedMonoidalPreComposeMorphismWithGivenObjects
+      1.12-31 AddLeftDualOnMorphisms
+      1.12-32 AddLeftDualOnMorphismsWithGivenLeftDuals
+      1.12-33 AddLeftDualOnObjects
+      1.12-34 AddLeftInternalHomOnMorphisms
+      1.12-35 AddLeftInternalHomOnMorphismsWithGivenLeftInternalHoms
+      1.12-36 AddLeftInternalHomOnObjects
+      1.12-37 AddLeftInternalHomToTensorProductAdjunctionMap
+      1.12-38 AddLeftInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct
+      1.12-39 AddMorphismFromTensorProductToLeftInternalHom
+      1.12-40 AddMorphismFromTensorProductToLeftInternalHomWithGivenObjects
+      1.12-41 AddMorphismToLeftBidual
+      1.12-42 AddMorphismToLeftBidualWithGivenLeftBidual
+      1.12-43 AddTensorProductLeftDualityCompatibilityMorphism
+      1.12-44 AddTensorProductLeftDualityCompatibilityMorphismWithGivenObjects
+      1.12-45 AddTensorProductLeftInternalHomCompatibilityMorphism
+      1.12-46 AddTensorProductLeftInternalHomCompatibilityMorphismWithGivenObjects
+      1.12-47 AddTensorProductToLeftInternalHomAdjunctionMap
+      1.12-48 AddTensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom
+      1.12-49 AddUniversalPropertyOfLeftDual
+      1.12-50 AddIsomorphismFromLeftCoDualObjectToLeftInternalCoHomFromTensorUnit
+      1.12-51 AddIsomorphismFromLeftInternalCoHomFromTensorUnitToLeftCoDualObject
+      1.12-52 AddIsomorphismFromLeftInternalCoHomToObject
+      1.12-53 AddIsomorphismFromLeftInternalCoHomToObjectWithGivenLeftInternalCoHom
+      1.12-54 AddIsomorphismFromObjectToLeftInternalCoHom
+      1.12-55 AddIsomorphismFromObjectToLeftInternalCoHomWithGivenLeftInternalCoHom
+      1.12-56 AddLeftCoDualOnMorphisms
+      1.12-57 AddLeftCoDualOnMorphismsWithGivenLeftCoDuals
+      1.12-58 AddLeftCoDualOnObjects
+      1.12-59 AddLeftCoDualityTensorProductCompatibilityMorphism
+      1.12-60 AddLeftCoDualityTensorProductCompatibilityMorphismWithGivenObjects
+      1.12-61 AddLeftCoclosedMonoidalCoevaluationMorphism
+      1.12-62 AddLeftCoclosedMonoidalCoevaluationMorphismWithGivenSource
+      1.12-63 AddLeftCoclosedMonoidalEvaluationForLeftCoDual
+      1.12-64 AddLeftCoclosedMonoidalEvaluationForLeftCoDualWithGivenTensorProduct
+      1.12-65 AddLeftCoclosedMonoidalEvaluationMorphism
+      1.12-66 AddLeftCoclosedMonoidalEvaluationMorphismWithGivenRange
+      1.12-67 AddLeftCoclosedMonoidalLambdaElimination
+      1.12-68 AddLeftCoclosedMonoidalLambdaIntroduction
+      1.12-69 AddLeftCoclosedMonoidalPostCoComposeMorphism
+      1.12-70 AddLeftCoclosedMonoidalPostCoComposeMorphismWithGivenObjects
+      1.12-71 AddLeftCoclosedMonoidalPreCoComposeMorphism
+      1.12-72 AddLeftCoclosedMonoidalPreCoComposeMorphismWithGivenObjects
+      1.12-73 AddLeftInternalCoHomOnMorphisms
+      1.12-74 AddLeftInternalCoHomOnMorphismsWithGivenLeftInternalCoHoms
+      1.12-75 AddLeftInternalCoHomOnObjects
+      1.12-76 AddLeftInternalCoHomTensorProductCompatibilityMorphism
+      1.12-77 AddLeftInternalCoHomTensorProductCompatibilityMorphismWithGivenObjects
+      1.12-78 AddLeftInternalCoHomToTensorProductAdjunctionMap
+      1.12-79 AddLeftInternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct
+      1.12-80 AddMorphismFromLeftCoBidual
+      1.12-81 AddMorphismFromLeftCoBidualWithGivenLeftCoBidual
+      1.12-82 AddMorphismFromLeftInternalCoHomToTensorProduct
+      1.12-83 AddMorphismFromLeftInternalCoHomToTensorProductWithGivenObjects
+      1.12-84 AddTensorProductToLeftInternalCoHomAdjunctionMap
+      1.12-85 AddTensorProductToLeftInternalCoHomAdjunctionMapWithGivenLeftInternalCoHom
+      1.12-86 AddUniversalPropertyOfLeftCoDual
       1.12-87 AddAssociatorLeftToRight
       1.12-88 AddAssociatorLeftToRightWithGivenTensorProducts
       1.12-89 AddAssociatorRightToLeft
@@ -319,36 +319,36 @@
       1.12-98 AddRightUnitorWithGivenTensorProduct
       1.12-99 AddTensorProductOnMorphisms
       1.12-100 AddTensorProductOnMorphismsWithGivenTensorProducts
-      1.12-101 AddCoevaluationForDual
-      1.12-102 AddCoevaluationForDualWithGivenTensorProduct
-      1.12-103 AddIsomorphismFromInternalHomToTensorProductWithDualObject
-      1.12-104 AddIsomorphismFromTensorProductWithDualObjectToInternalHom
-      1.12-105 AddMorphismFromBidual
-      1.12-106 AddMorphismFromBidualWithGivenBidual
-      1.12-107 AddMorphismFromInternalHomToTensorProduct
-      1.12-108 AddMorphismFromInternalHomToTensorProductWithGivenObjects
+      1.12-101 AddCoevaluationForLeftDual
+      1.12-102 AddCoevaluationForLeftDualWithGivenTensorProduct
+      1.12-103 AddIsomorphismFromLeftInternalHomToTensorProductWithLeftDualObject
+      1.12-104 AddIsomorphismFromTensorProductWithLeftDualObjectToLeftInternalHom
+      1.12-105 AddMorphismFromLeftBidual
+      1.12-106 AddMorphismFromLeftBidualWithGivenLeftBidual
+      1.12-107 AddMorphismFromLeftInternalHomToTensorProduct
+      1.12-108 AddMorphismFromLeftInternalHomToTensorProductWithGivenObjects
       1.12-109 AddRankMorphism
-      1.12-110 AddTensorProductInternalHomCompatibilityMorphismInverse
-      1.12-111 AddTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects
+      1.12-110 AddTensorProductLeftInternalHomCompatibilityMorphismInverse
+      1.12-111 AddTensorProductLeftInternalHomCompatibilityMorphismInverseWithGivenObjects
       1.12-112 AddTraceMap
       1.12-113 AddCoRankMorphism
       1.12-114 AddCoTraceMap
-      1.12-115 AddCoclosedCoevaluationForCoDual
-      1.12-116 AddCoclosedCoevaluationForCoDualWithGivenTensorProduct
-      1.12-117 AddInternalCoHomTensorProductCompatibilityMorphismInverse
-      1.12-118 AddInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects
-      1.12-119 AddIsomorphismFromInternalCoHomToTensorProductWithCoDualObject
-      1.12-120 AddIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom
-      1.12-121 AddMorphismFromTensorProductToInternalCoHom
-      1.12-122 AddMorphismFromTensorProductToInternalCoHomWithGivenObjects
-      1.12-123 AddMorphismToCoBidual
-      1.12-124 AddMorphismToCoBidualWithGivenCoBidual
+      1.12-115 AddIsomorphismFromLeftInternalCoHomToTensorProductWithLeftCoDualObject
+      1.12-116 AddIsomorphismFromTensorProductWithLeftCoDualObjectToLeftInternalCoHom
+      1.12-117 AddLeftCoclosedMonoidalCoevaluationForLeftCoDual
+      1.12-118 AddLeftCoclosedMonoidalCoevaluationForLeftCoDualWithGivenTensorProduct
+      1.12-119 AddLeftInternalCoHomTensorProductCompatibilityMorphismInverse
+      1.12-120 AddLeftInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects
+      1.12-121 AddMorphismFromTensorProductToLeftInternalCoHom
+      1.12-122 AddMorphismFromTensorProductToLeftInternalCoHomWithGivenObjects
+      1.12-123 AddMorphismToLeftCoBidual
+      1.12-124 AddMorphismToLeftCoBidualWithGivenLeftCoBidual
   2 [33X[0;0YExamples and Tests[133X
     2.1 [33X[0;0YTest functions[133X
       2.1-1 AdditiveMonoidalCategoriesTest
       2.1-2 BraidedMonoidalCategoriesTest
-      2.1-3 ClosedMonoidalCategoriesTest
-      2.1-4 CoclosedMonoidalCategoriesTest
+      2.1-3 LeftClosedMonoidalCategoriesTest
+      2.1-4 LeftCoclosedMonoidalCategoriesTest
       2.1-5 MonoidalCategoriesTensorProductAndUnitTest
       2.1-6 MonoidalCategoriesTest
       2.1-7 RigidSymmetricClosedMonoidalCategoriesTest
@@ -358,23 +358,122 @@
     3.1 [33X[0;0YMonoidal Categories[133X
       3.1-1 WriteFileForMonoidalStructure
     3.2 [33X[0;0YClosed Monoidal Categories[133X
-      3.2-1 WriteFileForClosedMonoidalStructure
+      3.2-1 WriteFileForLeftClosedMonoidalStructure
     3.3 [33X[0;0YCoclosed Monoidal Categories[133X
-      3.3-1 WriteFileForCoclosedMonoidalStructure
+      3.3-1 WriteFileForLeftCoclosedMonoidalStructure
   4 [33X[0;0YThe terminal category with multiple objects[133X
     4.1 [33X[0;0YConstructors[133X
-  5 [33X[0;0YMonoidalCategories automatic generated documentation[133X
-    5.1 [33X[0;0YMonoidalCategories automatic generated documentation of properties[133X
-      5.1-1 IsBraidedMonoidalCategory
-      5.1-2 IsClosedMonoidalCategory
-      5.1-3 IsCoclosedMonoidalCategory
-      5.1-4 IsMonoidalCategory
-      5.1-5 IsStrictMonoidalCategory
-      5.1-6 IsRigidSymmetricClosedMonoidalCategory
-      5.1-7 IsRigidSymmetricCoclosedMonoidalCategory
-      5.1-8 IsSymmetricClosedMonoidalCategory
-      5.1-9 IsSymmetricCoclosedMonoidalCategory
-      5.1-10 IsSymmetricMonoidalCategory
+    4.2 [33X[0;0Y[5XGAP[105X Categories[133X
+  5 [33X[0;0YSynonyms[133X
+    5.1 [33X[0;0YSynonyms[133X
+      5.1-1 InternalHom
+      5.1-2 InternalCoHom
+      5.1-3 CoDualOnMorphisms
+      5.1-4 CoDualOnMorphismsWithGivenCoDuals
+      5.1-5 CoDualOnObjects
+      5.1-6 CoDualityTensorProductCompatibilityMorphism
+      5.1-7 CoDualityTensorProductCompatibilityMorphismWithGivenObjects
+      5.1-8 CoLambdaElimination
+      5.1-9 CoLambdaIntroduction
+      5.1-10 CoclosedCoevaluationForCoDual
+      5.1-11 CoclosedCoevaluationForCoDualWithGivenTensorProduct
+      5.1-12 CoclosedCoevaluationMorphism
+      5.1-13 CoclosedCoevaluationMorphismWithGivenSource
+      5.1-14 CoclosedEvaluationForCoDual
+      5.1-15 CoclosedEvaluationForCoDualWithGivenTensorProduct
+      5.1-16 CoclosedEvaluationMorphism
+      5.1-17 CoclosedEvaluationMorphismWithGivenRange
+      5.1-18 CoevaluationForDual
+      5.1-19 CoevaluationForDualWithGivenTensorProduct
+      5.1-20 CoevaluationMorphism
+      5.1-21 CoevaluationMorphismWithGivenRange
+      5.1-22 DualOnMorphisms
+      5.1-23 DualOnMorphismsWithGivenDuals
+      5.1-24 DualOnObjects
+      5.1-25 EvaluationForDual
+      5.1-26 EvaluationForDualWithGivenTensorProduct
+      5.1-27 EvaluationMorphism
+      5.1-28 EvaluationMorphismWithGivenSource
+      5.1-29 InternalCoHomOnMorphisms
+      5.1-30 InternalCoHomOnMorphismsWithGivenInternalCoHoms
+      5.1-31 InternalCoHomOnObjects
+      5.1-32 InternalCoHomTensorProductCompatibilityMorphism
+      5.1-33 InternalCoHomTensorProductCompatibilityMorphismInverse
+      5.1-34 InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects
+      5.1-35 InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects
+      5.1-36 InternalCoHomToTensorProductAdjunctionMap
+      5.1-37 InternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct
+      5.1-38 InternalHomOnMorphisms
+      5.1-39 InternalHomOnMorphismsWithGivenInternalHoms
+      5.1-40 InternalHomOnObjects
+      5.1-41 InternalHomToTensorProductAdjunctionMap
+      5.1-42 InternalHomToTensorProductAdjunctionMapWithGivenTensorProduct
+      5.1-43 IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit
+      5.1-44 IsomorphismFromDualObjectToInternalHomIntoTensorUnit
+      5.1-45 IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject
+      5.1-46 IsomorphismFromInternalCoHomToObject
+      5.1-47 IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom
+      5.1-48 IsomorphismFromInternalCoHomToTensorProductWithCoDualObject
+      5.1-49 IsomorphismFromInternalHomIntoTensorUnitToDualObject
+      5.1-50 IsomorphismFromInternalHomToObject
+      5.1-51 IsomorphismFromInternalHomToObjectWithGivenInternalHom
+      5.1-52 IsomorphismFromInternalHomToTensorProductWithDualObject
+      5.1-53 IsomorphismFromObjectToInternalCoHom
+      5.1-54 IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom
+      5.1-55 IsomorphismFromObjectToInternalHom
+      5.1-56 IsomorphismFromObjectToInternalHomWithGivenInternalHom
+      5.1-57 IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom
+      5.1-58 IsomorphismFromTensorProductWithDualObjectToInternalHom
+      5.1-59 LambdaElimination
+      5.1-60 LambdaIntroduction
+      5.1-61 MonoidalPostCoComposeMorphism
+      5.1-62 MonoidalPostCoComposeMorphismWithGivenObjects
+      5.1-63 MonoidalPostComposeMorphism
+      5.1-64 MonoidalPostComposeMorphismWithGivenObjects
+      5.1-65 MonoidalPreCoComposeMorphism
+      5.1-66 MonoidalPreCoComposeMorphismWithGivenObjects
+      5.1-67 MonoidalPreComposeMorphism
+      5.1-68 MonoidalPreComposeMorphismWithGivenObjects
+      5.1-69 MorphismFromBidual
+      5.1-70 MorphismFromBidualWithGivenBidual
+      5.1-71 MorphismFromCoBidual
+      5.1-72 MorphismFromCoBidualWithGivenCoBidual
+      5.1-73 MorphismFromInternalCoHomToTensorProduct
+      5.1-74 MorphismFromInternalCoHomToTensorProductWithGivenObjects
+      5.1-75 MorphismFromInternalHomToTensorProduct
+      5.1-76 MorphismFromInternalHomToTensorProductWithGivenObjects
+      5.1-77 MorphismFromTensorProductToInternalCoHom
+      5.1-78 MorphismFromTensorProductToInternalCoHomWithGivenObjects
+      5.1-79 MorphismFromTensorProductToInternalHom
+      5.1-80 MorphismFromTensorProductToInternalHomWithGivenObjects
+      5.1-81 MorphismToBidual
+      5.1-82 MorphismToBidualWithGivenBidual
+      5.1-83 MorphismToCoBidual
+      5.1-84 MorphismToCoBidualWithGivenCoBidual
+      5.1-85 TensorProductDualityCompatibilityMorphism
+      5.1-86 TensorProductDualityCompatibilityMorphismWithGivenObjects
+      5.1-87 TensorProductInternalHomCompatibilityMorphism
+      5.1-88 TensorProductInternalHomCompatibilityMorphismInverse
+      5.1-89 TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects
+      5.1-90 TensorProductInternalHomCompatibilityMorphismWithGivenObjects
+      5.1-91 TensorProductToInternalCoHomAdjunctionMap
+      5.1-92 TensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom
+      5.1-93 TensorProductToInternalHomAdjunctionMap
+      5.1-94 TensorProductToInternalHomAdjunctionMapWithGivenInternalHom
+      5.1-95 UniversalPropertyOfCoDual
+      5.1-96 UniversalPropertyOfDual
+  6 [33X[0;0YMonoidalCategories automatic generated documentation[133X
+    6.1 [33X[0;0YMonoidalCategories automatic generated documentation of properties[133X
+      6.1-1 IsBraidedMonoidalCategory
+      6.1-2 IsLeftClosedMonoidalCategory
+      6.1-3 IsLeftCoclosedMonoidalCategory
+      6.1-4 IsMonoidalCategory
+      6.1-5 IsStrictMonoidalCategory
+      6.1-6 IsRigidSymmetricClosedMonoidalCategory
+      6.1-7 IsRigidSymmetricCoclosedMonoidalCategory
+      6.1-8 IsSymmetricClosedMonoidalCategory
+      6.1-9 IsSymmetricCoclosedMonoidalCategory
+      6.1-10 IsSymmetricMonoidalCategory
   
   
   [32X

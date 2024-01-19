@@ -54,9 +54,9 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X2.1-3 ClosedMonoidalCategoriesTest[101X
+  [1X2.1-3 LeftClosedMonoidalCategoriesTest[101X
   
-  [33X[1;0Y[29X[2XClosedMonoidalCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X, [3Xdelta[103X, [3Xepsilon[103X, [3Xzeta[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XLeftClosedMonoidalCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X, [3Xdelta[103X, [3Xepsilon[103X, [3Xzeta[103X ) [32X function[133X
   
   [33X[0;0YThe arguments are[133X
   
@@ -77,8 +77,8 @@
   [30X    [33X[0;6Ya morphism [23X\zeta: 1 \rightarrow \mathrm{Hom}(c,d)[123X[133X
   
   [33X[0;0YThis     function     checks     for    every    operation    declared    in
-  ClosedMonoidalCategories.gd  if it is computable in the CAP category [23Xcat[123X. If
-  yes,  then  the  operation  is  executed with the parameters given above and
+  LeftClosedMonoidalCategories.gd if it is computable in the CAP category [23Xcat[123X.
+  If  yes,  then the operation is executed with the parameters given above and
   compared to the equivalent computation in the opposite category of [23Xcat[123X. Pass
   the options[133X
   
@@ -90,9 +90,9 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X2.1-4 CoclosedMonoidalCategoriesTest[101X
+  [1X2.1-4 LeftCoclosedMonoidalCategoriesTest[101X
   
-  [33X[1;0Y[29X[2XCoclosedMonoidalCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X, [3Xdelta[103X, [3Xepsilon[103X, [3Xzeta[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XLeftCoclosedMonoidalCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X, [3Xdelta[103X, [3Xepsilon[103X, [3Xzeta[103X ) [32X function[133X
   
   [33X[0;0YThe arguments are a CAP category [23Xcat[123X objects [23Xa, b, c, d[123X[133X
   
@@ -109,10 +109,10 @@
   [30X    [33X[0;6Ya morphism [23X\zeta: \mathrm{coHom}(c,d) \rightarrow 1[123X[133X
   
   [33X[0;0YThis     function     checks     for    every    operation    declared    in
-  CoclosedMonoidalCategories.gd  if  it is computable in the CAP category [23Xcat[123X.
-  If  yes,  then the operation is executed with the parameters given above and
-  compared to the equivalent computation in the opposite category of [23Xcat[123X. Pass
-  the options[133X
+  LeftCoclosedMonoidalCategories.gd  if  it  is computable in the CAP category
+  [23Xcat[123X.  If yes, then the operation is executed with the parameters given above
+  and  compared to the equivalent computation in the opposite category of [23Xcat[123X.
+  Pass the options[133X
   
   [30X    [33X[0;6Y[10Xverbose := true[110X to output more information.[133X
   
