@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "GeneralizedMorphismsForCAP",
 Subtitle := "Implementations of generalized morphisms for the CAP project",
-Version := "2023.08-02",
-Date := "2023-08-29",
+Version := "2024.01-01",
+Date := "2024-01-19",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -88,7 +88,7 @@ Dependencies := rec(
   GAP := ">= 4.12.1",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "CAP", ">= 2021.05-01" ],
-                           [ "MonoidalCategories", ">= 2019.01.16" ],
+                           [ "MonoidalCategories", ">= 2024.01-03" ],
                          ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
