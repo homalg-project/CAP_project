@@ -25,23 +25,23 @@ ReadPackage( "MonoidalCategories", "gap/BraidedMonoidalCategories.autogen.gd" );
 
 ReadPackage( "MonoidalCategories", "gap/SymmetricMonoidalCategoriesProperties.gd" );
 
-## (Co)Closed Monoidal
+## C(oc)losed Monoidal
 
-ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategoriesProperties.gd" );
-ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategoriesProperties.gd" );
+ReadPackage( "MonoidalCategories", "gap/LeftClosedMonoidalCategoriesProperties.gd" );
+ReadPackage( "MonoidalCategories", "gap/LeftCoclosedMonoidalCategoriesProperties.gd" );
 
-ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategories.gd" );
-ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategories.gd" );
+ReadPackage( "MonoidalCategories", "gap/LeftClosedMonoidalCategories.gd" );
+ReadPackage( "MonoidalCategories", "gap/LeftCoclosedMonoidalCategories.gd" );
 
-ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategories.autogen.gd" );
-ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategories.autogen.gd" );
+ReadPackage( "MonoidalCategories", "gap/LeftClosedMonoidalCategories.autogen.gd" );
+ReadPackage( "MonoidalCategories", "gap/LeftCoclosedMonoidalCategories.autogen.gd" );
 
-## Symmetric (Co)Closed Monoidal
+## Symmetric C(oc)losed Monoidal
 
 ReadPackage( "MonoidalCategories", "gap/SymmetricClosedMonoidalCategoriesProperties.gd" );
 ReadPackage( "MonoidalCategories", "gap/SymmetricCoclosedMonoidalCategoriesProperties.gd" );
 
-## Rigid Symmetric (Co)Closed Monoidal
+## Rigid Symmetric C(oc)losed Monoidal
 
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricClosedMonoidalCategoriesProperties.gd" );
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricCoclosedMonoidalCategoriesProperties.gd" );
@@ -54,8 +54,8 @@ ReadPackage( "MonoidalCategories", "gap/RigidSymmetricCoclosedMonoidalCategories
 
 ## Create files for monoidal categories
 ReadPackage( "MonoidalCategories", "gap/CreateMonoidalCategories.gd" );
-ReadPackage( "MonoidalCategories", "gap/CreateClosedMonoidalCategories.gd" );
-ReadPackage( "MonoidalCategories", "gap/CreateCoclosedMonoidalCategories.gd" );
+ReadPackage( "MonoidalCategories", "gap/CreateLeftClosedMonoidalCategories.gd" );
+ReadPackage( "MonoidalCategories", "gap/CreateLeftCoclosedMonoidalCategories.gd" );
 
 ## Synonyms
 ReadPackage( "MonoidalCategories", "gap/Synonyms.gd" );
@@ -66,7 +66,7 @@ ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesTensorProductAndUnitTe
 ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesTest.gd" );
 ReadPackage( "MonoidalCategories", "gap/AdditiveMonoidalCategoriesTest.gd" );
 ReadPackage( "MonoidalCategories", "gap/BraidedMonoidalCategoriesTest.gd" );
-ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategoriesTest.gd" );
-ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategoriesTest.gd" );
+ReadPackage( "MonoidalCategories", "gap/LeftClosedMonoidalCategoriesTest.gd" );
+ReadPackage( "MonoidalCategories", "gap/LeftCoclosedMonoidalCategoriesTest.gd" );
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricClosedMonoidalCategoriesTest.gd" );
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricCoclosedMonoidalCategoriesTest.gd" );

@@ -496,14 +496,14 @@ CAP_INTERNAL_ENHANCE_NAME_RECORD( LEFT_CLOSED_AND_LEFT_COCLOSED_MONOIDAL_CATEGOR
 CAP_INTERNAL_GENERATE_DOCUMENTATION_FROM_METHOD_NAME_RECORD(
     LEFT_CLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD,
     "MonoidalCategories",
-    "ClosedMonoidalCategories.autogen.gd", "Monoidal Categories",
+    "LeftClosedMonoidalCategories.autogen.gd", "Monoidal Categories",
     "Add-methods"
 );
 
 CAP_INTERNAL_GENERATE_DOCUMENTATION_FROM_METHOD_NAME_RECORD(
     LEFT_COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD,
     "MonoidalCategories",
-    "CoclosedMonoidalCategories.autogen.gd", "Monoidal Categories",
+    "LeftCoclosedMonoidalCategories.autogen.gd", "Monoidal Categories",
     "Add-methods"
 );
 
