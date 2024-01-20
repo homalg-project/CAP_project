@@ -5,6 +5,7 @@
 #
 
 ## Monoidal
+
 ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesTensorProductAndUnitMethodRecord.gi" );
 ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesTensorProductOnObjectsAndUnitObject.gi" );
 
@@ -33,6 +34,9 @@ ReadPackage( "MonoidalCategories", "gap/LeftCoclosedMonoidalCategoriesProperties
 
 ReadPackage( "MonoidalCategories", "gap/LeftClosedMonoidalCategoriesMethodRecord.gi" );
 ReadPackage( "MonoidalCategories", "gap/LeftCoclosedMonoidalCategoriesMethodRecord.gi" );
+
+ReadPackage( "MonoidalCategories", "gap/LeftClosedMonoidalCategoriesAdjunctionMethodRecord.gi" );
+ReadPackage( "MonoidalCategories", "gap/LeftCoclosedMonoidalCategoriesAdjunctionMethodRecord.gi" );
 
 ReadPackage( "MonoidalCategories", "gap/LeftClosedMonoidalCategories.gi" );
 ReadPackage( "MonoidalCategories", "gap/LeftCoclosedMonoidalCategories.gi" );
@@ -63,6 +67,9 @@ ReadPackage( "MonoidalCategories", "gap/SymmetricMonoidalCategoriesDerivedMethod
 ReadPackage( "MonoidalCategories", "gap/LeftClosedMonoidalCategoriesDerivedMethods.gi" );
 ReadPackage( "MonoidalCategories", "gap/LeftCoclosedMonoidalCategoriesDerivedMethods.gi" );
 
+ReadPackage( "MonoidalCategories", "gap/LeftClosedMonoidalCategoriesAdjunctionDerivedMethods.gi" );
+ReadPackage( "MonoidalCategories", "gap/LeftCoclosedMonoidalCategoriesAdjunctionDerivedMethods.gi" );
+
 ReadPackage( "MonoidalCategories", "gap/SymmetricClosedMonoidalCategoriesDerivedMethods.gi" );
 ReadPackage( "MonoidalCategories", "gap/SymmetricCoclosedMonoidalCategoriesDerivedMethods.gi" );
 
@@ -77,9 +84,12 @@ ReadPackage( "MonoidalCategories", "gap/HomomorphismStructureDerivedMethods.gi" 
 
 ReadPackage( "MonoidalCategories", "gap/CreateMonoidalCategories.gi" );
 ReadPackage( "MonoidalCategories", "gap/CreateLeftClosedMonoidalCategories.gi" );
+ReadPackage( "MonoidalCategories", "gap/CreateLeftClosedMonoidalCategoriesAdjunction.gi" );
 ReadPackage( "MonoidalCategories", "gap/CreateLeftCoclosedMonoidalCategories.gi" );
+ReadPackage( "MonoidalCategories", "gap/CreateLeftCoclosedMonoidalCategoriesAdjunction.gi" );
 
 ## Synonyms
+
 ReadPackage( "MonoidalCategories", "gap/Synonyms.gi" );
 
 ## Test methods

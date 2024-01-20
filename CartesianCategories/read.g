@@ -11,9 +11,11 @@ fi;
 # =#
 
 ## Initial category
+
 ReadPackage( "CartesianCategories", "gap/InitialCategory.gi" );
 
 ## Cartesian and Cocartesian
+
 ReadPackage( "CartesianCategories", "gap/CartesianCategoriesMethodRecord.gi" );
 ReadPackage( "CartesianCategories", "gap/CocartesianCategoriesMethodRecord.gi" );
 
@@ -40,10 +42,14 @@ ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategoriesProperties
 ReadPackage( "CartesianCategories", "gap/CartesianClosedCategoriesMethodRecord.gi" );
 ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategoriesMethodRecord.gi" );
 
+ReadPackage( "CartesianCategories", "gap/CartesianClosedCategoriesLeftAdjunctionMethodRecord.gi" );
+ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategoriesLeftAdjunctionMethodRecord.gi" );
+
 ReadPackage( "CartesianCategories", "gap/CartesianClosedCategories.gi" );
 ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategories.gi" );
 
 ## Derived methods
+
 ReadPackage( "CartesianCategories", "gap/CartesianCategoriesDerivedMethods.gi" );
 ReadPackage( "CartesianCategories", "gap/CocartesianCategoriesDerivedMethods.gi" );
 
@@ -56,6 +62,9 @@ ReadPackage( "CartesianCategories", "gap/SymmetricCocartesianCategoriesDerivedMe
 ReadPackage( "CartesianCategories", "gap/CartesianClosedCategoriesDerivedMethods.gi" );
 ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategoriesDerivedMethods.gi" );
 
+ReadPackage( "CartesianCategories", "gap/CartesianClosedCategoriesLeftAdjunctionDerivedMethods.gi" );
+ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategoriesLeftAdjunctionDerivedMethods.gi" );
+
 ReadPackage( "CartesianCategories", "gap/SymmetricCartesianClosedCategoriesDerivedMethods.gi" );
 ReadPackage( "CartesianCategories", "gap/SymmetricCocartesianCoclosedCategoriesDerivedMethods.gi" );
 
@@ -63,9 +72,11 @@ ReadPackage( "CartesianCategories", "gap/CartesianCategoriesDerivedMethods_extra
 ReadPackage( "CartesianCategories", "gap/CocartesianCategoriesDerivedMethods_extra.gi" );
 
 ## Bicartesian and finite (co)complete categories
+
 ReadPackage( "CartesianCategories", "gap/BicartesianCategories.gi" );
 
 ## Test methods
+
 ReadPackage( "CartesianCategories", "gap/CartesianCategoriesTest.gi" );
 ReadPackage( "CartesianCategories", "gap/CocartesianCategoriesTest.gi" );
 
@@ -79,4 +90,5 @@ ReadPackage( "CartesianCategories", "gap/CartesianClosedCategoriesTest.gi" );
 ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategoriesTest.gi" );
 
 ## Homomorphism structure
+
 ReadPackage( "CartesianCategories", "gap/HomomorphismStructureDerivedMethods.gi" );

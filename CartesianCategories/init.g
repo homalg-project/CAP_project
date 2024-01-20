@@ -52,6 +52,12 @@ ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategories.gd" );
 ReadPackage( "CartesianCategories", "gap/CartesianClosedCategories.autogen.gd" );
 ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategories.autogen.gd" );
 
+ReadPackage( "CartesianCategories", "gap/CartesianClosedCategoriesLeftAdjunction.gd" );
+ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategoriesLeftAdjunction.gd" );
+
+ReadPackage( "CartesianCategories", "gap/CartesianClosedCategoriesLeftAdjunction.autogen.gd" );
+ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategoriesLeftAdjunction.autogen.gd" );
+
 ## Bicartesian and finite (co)complete categories
 ReadPackage( "CartesianCategories", "gap/BicartesianCategories.gd" );
 
