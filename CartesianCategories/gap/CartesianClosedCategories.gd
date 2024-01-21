@@ -61,7 +61,6 @@ DeclareOperation( "ExponentialOnMorphismsWithGivenExponentials",
 DeclareOperation( "CartesianEvaluationMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
-## 3rd argument is $\mathrm{Exponential}(a,b) \times a$
 #! @Description
 #! The arguments are two objects $a,b$ and an object $s = \mathrm{Exponential}(a,b) \times a$.
 #! The output is the evaluation morphism $\mathrm{ev}_{a,b}: \mathrm{Exponential}(a,b) \times a \rightarrow b$, i.e.,
@@ -80,7 +79,6 @@ DeclareOperation( "CartesianEvaluationMorphismWithGivenSource",
 DeclareOperation( "CartesianCoevaluationMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
-## the last argument is $\mathrm{Exponential}(b, a \times b)$
 #! @Description
 #! The arguments are two objects $a,b$ and an object $r = \mathrm{Exponential}(b, a \times b)$.
 #! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: a \rightarrow \mathrm{Exponential}(b, a \times b)$, i.e.,
@@ -240,7 +238,6 @@ DeclareOperation( "MorphismToCartesianBidualWithGivenCartesianBidual",
 DeclareOperation( "DirectProductExponentialCompatibilityMorphism",
                   [ IsList ] );
 
-##
 #! @Description
 #! The arguments are a list of four objects $[ a, a', b, b' ]$,
 #! and two objects $s = \mathrm{Exponential}(a,a') \times \mathrm{Exponential}(b,b')$ and $r = \mathrm{Exponential}(a \times b,a' \times b')$.

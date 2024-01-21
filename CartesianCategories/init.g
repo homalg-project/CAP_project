@@ -11,10 +11,12 @@ fi;
 # =#
 
 ## Initial category
+
 ReadPackage( "CartesianCategories", "gap/InitialCategory.gd" );
 ReadPackage( "CartesianCategories", "gap/InitialCategoryProperties.gd" );
 
 ## Cartesian and Cocartesian
+
 ReadPackage( "CartesianCategories", "gap/CartesianCategories.gd" );
 ReadPackage( "CartesianCategories", "gap/CocartesianCategories.gd" );
 
@@ -43,6 +45,7 @@ ReadPackage( "CartesianCategories", "gap/BraidedCartesianCategories.autogen.gd" 
 ReadPackage( "CartesianCategories", "gap/BraidedCocartesianCategories.autogen.gd" );
 
 ## Cartesian Closed and Cocartesian Coclosed
+
 ReadPackage( "CartesianCategories", "gap/CartesianClosedCategoriesProperties.gd" );
 ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategoriesProperties.gd" );
 
@@ -53,9 +56,11 @@ ReadPackage( "CartesianCategories", "gap/CartesianClosedCategories.autogen.gd" )
 ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategories.autogen.gd" );
 
 ## Bicartesian and finite (co)complete categories
+
 ReadPackage( "CartesianCategories", "gap/BicartesianCategories.gd" );
 
 ## Test methods
+
 ReadPackage( "CartesianCategories", "gap/CartesianCategoriesTest.gd" );
 ReadPackage( "CartesianCategories", "gap/CocartesianCategoriesTest.gd" );
 

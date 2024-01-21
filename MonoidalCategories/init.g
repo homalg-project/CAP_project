@@ -5,6 +5,7 @@
 #
 
 ## Monoidal
+
 ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesProperties.gd" );
 ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesTensorProductOnObjectsAndUnitObject.gd" );
 ReadPackage( "MonoidalCategories", "gap/MonoidalCategories.gd" );
@@ -53,11 +54,13 @@ ReadPackage( "MonoidalCategories", "gap/RigidSymmetricClosedMonoidalCategories.a
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricCoclosedMonoidalCategories.autogen.gd" );
 
 ## Create files for monoidal categories
+
 ReadPackage( "MonoidalCategories", "gap/CreateMonoidalCategories.gd" );
 ReadPackage( "MonoidalCategories", "gap/CreateLeftClosedMonoidalCategories.gd" );
 ReadPackage( "MonoidalCategories", "gap/CreateLeftCoclosedMonoidalCategories.gd" );
 
 ## Synonyms
+
 ReadPackage( "MonoidalCategories", "gap/Synonyms.gd" );
 
 ## Test methods

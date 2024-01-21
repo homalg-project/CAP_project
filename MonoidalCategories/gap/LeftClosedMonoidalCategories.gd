@@ -58,7 +58,6 @@ DeclareOperation( "LeftInternalHomOnMorphismsWithGivenLeftInternalHoms",
 DeclareOperation( "LeftClosedMonoidalEvaluationMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
-## 3rd argument is $\mathrm{\underline{Hom}_\ell}(a,b) \otimes a$
 #! @Description
 #! The arguments are two objects $a,b$ and an object $s = \mathrm{\underline{Hom}_\ell}(a,b) \otimes a$.
 #! The output is the evaluation morphism $\mathrm{ev}_{a,b}: \mathrm{\underline{Hom}_\ell}(a,b) \otimes a \rightarrow b$, i.e.,
@@ -77,7 +76,6 @@ DeclareOperation( "LeftClosedMonoidalEvaluationMorphismWithGivenSource",
 DeclareOperation( "LeftClosedMonoidalCoevaluationMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
-## the last argument is $\mathrm{\underline{Hom}_\ell}(b, a \otimes b)$
 #! @Description
 #! The arguments are two objects $a,b$ and an object $r = \mathrm{\underline{Hom}_\ell}(b, a \otimes b)$.
 #! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: a \rightarrow \mathrm{\underline{Hom}_\ell}(b, a \otimes b)$, i.e.,
@@ -237,7 +235,6 @@ DeclareOperation( "MorphismToLeftBidualWithGivenLeftBidual",
 DeclareOperation( "TensorProductLeftInternalHomCompatibilityMorphism",
                   [ IsList ] );
 
-##
 #! @Description
 #! The arguments are a list of four objects $[ a, a', b, b' ]$,
 #! and two objects $s = \mathrm{\underline{Hom}_\ell}(a,a') \otimes \mathrm{\underline{Hom}_\ell}(b,b')$ and $r = \mathrm{\underline{Hom}_\ell}(a \otimes b,a' \otimes b')$.

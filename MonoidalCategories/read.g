@@ -5,6 +5,7 @@
 #
 
 ## Monoidal
+
 ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesTensorProductAndUnitMethodRecord.gi" );
 ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesTensorProductOnObjectsAndUnitObject.gi" );
 
@@ -80,6 +81,7 @@ ReadPackage( "MonoidalCategories", "gap/CreateLeftClosedMonoidalCategories.gi" )
 ReadPackage( "MonoidalCategories", "gap/CreateLeftCoclosedMonoidalCategories.gi" );
 
 ## Synonyms
+
 ReadPackage( "MonoidalCategories", "gap/Synonyms.gi" );
 
 ## Test methods
