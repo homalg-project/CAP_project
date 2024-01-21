@@ -387,14 +387,14 @@ IsZero( hom3 );
 InternalHomOnMorphisms( ass_left_to_right, ass_right_to_left );
 #! <A morphism in Category of f.p. graded left modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
-eval := EvaluationMorphism( a, b );
+eval := ClosedMonoidalLeftEvaluationMorphism( a, b );
 #! <A morphism in Category of f.p. graded left modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsEpimorphism( eval );
 #! true
 IsMonomorphism( eval );
 #! true
-coeval := CoevaluationMorphism( a, b );
+coeval := ClosedMonoidalLeftCoevaluationMorphism( a, b );
 #! <A morphism in Category of f.p. graded left modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsEpimorphism( coeval );
@@ -765,14 +765,14 @@ IsZero( hom3 );
 InternalHomOnMorphisms( ass_left_to_right, ass_right_to_left );
 #! <A morphism in Category of f.p. graded right modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
-eval := EvaluationMorphism( a, b );
+eval := ClosedMonoidalLeftEvaluationMorphism( a, b );
 #! <A morphism in Category of f.p. graded right modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsEpimorphism( eval );
 #! true
 IsMonomorphism( eval );
 #! true
-coeval := CoevaluationMorphism( a, b );
+coeval := ClosedMonoidalLeftCoevaluationMorphism( a, b );
 #! <A morphism in Category of f.p. graded right modules over
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsEpimorphism( coeval );

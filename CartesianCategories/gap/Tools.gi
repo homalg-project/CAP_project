@@ -25,9 +25,6 @@ WriteFileForMonoidalStructure(
              Distributivity := "CartesianDistributivity",
              DirectSum := "Coproduct",
              Braiding := "CartesianBraiding",
-             LeftClosedMonoidalLambda := "CartesianLambda",
-             LeftClosedMonoidalEvaluation := "CartesianEvaluation",
-             LeftClosedMonoidalCoevaluation := "CartesianCoevaluation",
              MONOIDAL := "CARTESIAN",
              Monoidal := "Cartesian",
              monoidal := "cartesian",
@@ -121,13 +118,13 @@ WriteFileForMonoidalStructure(
         );
 
 ##
-WriteFileForLeftClosedMonoidalStructure(
+WriteFileForClosedMonoidalStructure(
         rec(
              IsMonoidalCategory := "IsCartesianCategory",
              IsStrictMonoidalCategory := "IsStrictCartesianCategory",
              IsBraidedMonoidalCategory := "IsCartesianCategory",
              IsSymmetricMonoidalCategory := "IsCartesianCategory",
-             IsLeftClosedMonoidalCategory := "IsCartesianClosedCategory",
+             IsClosedMonoidalCategory := "IsCartesianClosedCategory",
              IsSymmetricClosedMonoidalCategory := "IsCartesianClosedCategory",
              AdditiveMonoidal := "DistributiveCartesian",
              TensorProductOnObjects := "DirectProduct",
@@ -139,18 +136,19 @@ WriteFileForLeftClosedMonoidalStructure(
              Distributivity := "CartesianDistributivity",
              DirectSum := "Coproduct",
              Braiding := "CartesianBraiding",
-             LeftClosedMonoidalLambda := "CartesianLambda",
-             LeftClosedMonoidalEvaluation := "CartesianEvaluation",
-             LeftClosedMonoidalCoevaluation := "CartesianCoevaluation",
-             LeftInternalHom := "Exponential",
-             LeftClosedMonoidalCategories := "CartesianClosedCategories",
-             LEFT_CLOSED_MONOIDAL := "CARTESIAN_CLOSED",
-             LeftClosedMonoidal := "Cartesian",
+             Lambda := "CartesianLambda",
+             ClosedMonoidalLeftEvaluation := "CartesianLeftEvaluation",
+             ClosedMonoidalLeftCoevaluation := "CartesianLeftCoevaluation",
+             InternalHom := "Exponential",
+             ClosedMonoidalCategories := "CartesianClosedCategories",
+             CLOSED_MONOIDAL := "CARTESIAN_CLOSED",
+             ClosedMonoidal := "Cartesian",
              MONOIDAL := "CARTESIAN",
              Monoidal := "Cartesian",
              monoidal := "cartesian",
-             LeftDual := "CartesianDual",
-             LeftBidual := "CartesianBidual",
+             Dual := "CartesianDual",
+             EvaluationFor := "CartesianEvaluationFor",
+             Bidual := "CartesianBidual",
              tensor_object := "direct_product_object",
              tensored := "x",
              otimes := "times",
@@ -200,168 +198,168 @@ WriteFileForLeftClosedMonoidalStructure(
                                ## BraidingInverse
                                [ "dual_operation := \"Braiding\"",
                                  "dual_operation := \"CocartesianBraiding\"" ],
-                               ## LeftClosedMonoidalCoevaluationMorphismWithGivenRange
-                               [ "dual_operation := \"LeftCoclosedMonoidalCoevaluationMorphismWithGivenSource\"",
-                                 "dual_operation := \"CocartesianCoevaluationMorphismWithGivenSource\"" ],
-                               ## LeftClosedMonoidalCoevaluationMorphism
-                               [ "dual_operation := \"LeftCoclosedMonoidalCoevaluationMorphism\"",
-                                 "dual_operation := \"CocartesianCoevaluationMorphism\"" ],
-                               ## LeftDualOnMorphismsWithGivenLeftDuals
-                               [ "dual_operation := \"LeftCoDualOnMorphismsWithGivenLeftCoDuals\"",
+                               ## ClosedMonoidalLeftCoevaluationMorphismWithGivenRange
+                               [ "dual_operation := \"CoclosedMonoidalLeftCoevaluationMorphismWithGivenSource\"",
+                                 "dual_operation := \"CocartesianLeftCoevaluationMorphismWithGivenSource\"" ],
+                               ## ClosedMonoidalLeftCoevaluationMorphism
+                               [ "dual_operation := \"CoclosedMonoidalLeftCoevaluationMorphism\"",
+                                 "dual_operation := \"CocartesianLeftCoevaluationMorphism\"" ],
+                               ## DualOnMorphismsWithGivenDuals
+                               [ "dual_operation := \"CoDualOnMorphismsWithGivenCoDuals\"",
                                  "dual_operation := \"CocartesianDualOnMorphismsWithGivenCocartesianDuals\"" ],
-                               ## LeftDualOnMorphisms
-                               [ "dual_operation := \"LeftCoDualOnMorphisms\"",
+                               ## DualOnMorphisms
+                               [ "dual_operation := \"CoDualOnMorphisms\"",
                                  "dual_operation := \"CocartesianDualOnMorphisms\"" ],
-                               ## LeftDualOnObjects
-                               [ "dual_operation := \"LeftCoDualOnObjects\"",
+                               ## DualOnObjects
+                               [ "dual_operation := \"CoDualOnObjects\"",
                                  "dual_operation := \"CocartesianDualOnObjects\"" ],
-                               ## EvaluationForLeftDualWithGivenTensorProduct
-                               [ "dual_operation := \"LeftCoclosedMonoidalEvaluationForLeftCoDualWithGivenTensorProduct\"",
+                               ## EvaluationForDualWithGivenTensorProduct
+                               [ "dual_operation := \"CoclosedEvaluationForCoDualWithGivenTensorProduct\"",
                                  "dual_operation := \"CocartesianEvaluationForCocartesianDualWithGivenCoproduct\"" ],
-                               ## EvaluationForLeftDual
-                               [ "dual_operation := \"LeftCoclosedMonoidalEvaluationForLeftCoDual\"",
+                               ## EvaluationForDual
+                               [ "dual_operation := \"CoclosedEvaluationForCoDual\"",
                                  "dual_operation := \"CocartesianEvaluationForCocartesianDual\"" ],
-                               ## LeftClosedMonoidalEvaluationMorphismWithGivenSource
-                               [ "dual_operation := \"LeftCoclosedMonoidalEvaluationMorphismWithGivenRange\"",
-                                 "dual_operation := \"CocartesianEvaluationMorphismWithGivenRange\"" ],
-                               ## LeftClosedMonoidalEvaluationMorphism
-                               [ "dual_operation := \"LeftCoclosedMonoidalEvaluationMorphism\"",
-                                 "dual_operation := \"CocartesianEvaluationMorphism\"" ],
-                               ## LeftInternalHomOnMorphismsWithGivenLeftInternalHoms
-                               [ "dual_operation := \"LeftInternalCoHomOnMorphismsWithGivenLeftInternalCoHoms\"",
+                               ## ClosedMonoidalLeftEvaluationMorphismWithGivenSource
+                               [ "dual_operation := \"CoclosedMonoidalLeftEvaluationMorphismWithGivenRange\"",
+                                 "dual_operation := \"CocartesianLeftEvaluationMorphismWithGivenRange\"" ],
+                               ## ClosedMonoidalLeftEvaluationMorphism
+                               [ "dual_operation := \"CoclosedMonoidalLeftEvaluationMorphism\"",
+                                 "dual_operation := \"CocartesianLeftEvaluationMorphism\"" ],
+                               ## InternalHomOnMorphismsWithGivenInternalHoms
+                               [ "dual_operation := \"InternalCoHomOnMorphismsWithGivenInternalCoHoms\"",
                                  "dual_operation := \"CoexponentialOnMorphismsWithGivenCoexponentials\"" ],
-                               ## LeftInternalHomOnMorphisms
-                               [ "dual_operation := \"LeftInternalCoHomOnMorphisms\"",
+                               ## InternalHomOnMorphisms
+                               [ "dual_operation := \"InternalCoHomOnMorphisms\"",
                                  "dual_operation := \"CoexponentialOnMorphisms\"" ],
-                               ## LeftInternalHomOnObjects
-                               [ "dual_operation := \"LeftInternalCoHomOnObjects\"",
+                               ## InternalHomOnObjects
+                               [ "dual_operation := \"InternalCoHomOnObjects\"",
                                  "dual_operation := \"CoexponentialOnObjects\"" ],
-                               ## LeftInternalHomToTensorProductAdjunctionMap
-                               [ "dual_operation := \"LeftInternalCoHomToTensorProductAdjunctionMap\"",
-                                 "dual_operation := \"CoexponentialToCoproductAdjunctionMap\"" ],
-                               ## LeftInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct
-                               [ "dual_operation := \"LeftInternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct\"",
-                                 "dual_operation := \"CoexponentialToCoproductAdjunctionMapWithGivenCoproduct\"" ],
-                               ## IsomorphismFromLeftDualObjectToLeftInternalHomIntoTensorUnit
-                               [ "dual_operation := \"IsomorphismFromLeftInternalCoHomFromTensorUnitToLeftCoDualObject\"",
+                               ## InternalHomToTensorProductLeftAdjunctionMap
+                               [ "dual_operation := \"InternalCoHomToTensorProductLeftAdjunctionMap\"",
+                                 "dual_operation := \"CoexponentialToCoproductLeftAdjunctionMap\"" ],
+                               ## InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct
+                               [ "dual_operation := \"InternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct\"",
+                                 "dual_operation := \"CoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct\"" ],
+                               ## IsomorphismFromDualObjectToInternalHomIntoTensorUnit
+                               [ "dual_operation := \"IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject\"",
                                  "dual_operation := \"IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject\"" ],
-                               ## IsomorphismFromLeftInternalHomIntoTensorUnitToLeftDualObject
-                               [ "dual_operation := \"IsomorphismFromLeftCoDualObjectToLeftInternalCoHomFromTensorUnit\"",
+                               ## IsomorphismFromInternalHomIntoTensorUnitToDualObject
+                               [ "dual_operation := \"IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit\"",
                                  "dual_operation := \"IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject\"" ],
-                               ## IsomorphismFromLeftInternalHomToObjectWithGivenLeftInternalHom
-                               [ "dual_operation := \"IsomorphismFromObjectToLeftInternalCoHomWithGivenLeftInternalCoHom\"",
+                               ## IsomorphismFromInternalHomToObjectWithGivenInternalHom
+                               [ "dual_operation := \"IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom\"",
                                  "dual_operation := \"IsomorphismFromObjectToCoexponentialWithGivenCoexponential\"" ],
-                               ## IsomorphismFromLeftInternalHomToObject
-                               [ "dual_operation := \"IsomorphismFromObjectToLeftInternalCoHom\"",
+                               ## IsomorphismFromInternalHomToObject
+                               [ "dual_operation := \"IsomorphismFromObjectToInternalCoHom\"",
                                  "dual_operation := \"IsomorphismFromObjectToCoexponential\"" ],
-                               ## IsomorphismFromObjectToLeftInternalHomWithGivenLeftInternalHom
-                               [ "dual_operation := \"IsomorphismFromLeftInternalCoHomToObjectWithGivenLeftInternalCoHom\"",
+                               ## IsomorphismFromObjectToInternalHomWithGivenInternalHom
+                               [ "dual_operation := \"IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom\"",
                                  "dual_operation := \"IsomorphismFromCoexponentialToObjectWithGivenCoexponential\"" ],
-                               ## IsomorphismFromObjectToLeftInternalHom
-                               [ "dual_operation := \"IsomorphismFromLeftInternalCoHomToObject\"",
+                               ## IsomorphismFromObjectToInternalHom
+                               [ "dual_operation := \"IsomorphismFromInternalCoHomToObject\"",
                                  "dual_operation := \"IsomorphismFromCoexponentialToObject\"" ],
-                               ## LeftClosedMonoidalLambdaElimination
-                               [ "dual_operation := \"LeftCoclosedMonoidalLambdaElimination\"",
+                               ## LambdaElimination
+                               [ "dual_operation := \"CoLambdaElimination\"",
                                  "dual_operation := \"CocartesianLambdaElimination\"" ],
-                               ## LeftClosedMonoidalLambdaIntroduction
-                               [ "dual_operation := \"LeftCoclosedMonoidalLambdaIntroduction\"",
+                               ## LambdaIntroduction
+                               [ "dual_operation := \"CoLambdaIntroduction\"",
                                  "dual_operation := \"CocartesianLambdaIntroduction\"" ],
-                               ## LeftClosedMonoidalPostComposeMorphismWithGivenObjects
-                               [ "dual_operation := \"LeftCoclosedMonoidalPostCoComposeMorphismWithGivenObjects\"",
+                               ## MonoidalPostComposeMorphismWithGivenObjects
+                               [ "dual_operation := \"MonoidalPostCoComposeMorphismWithGivenObjects\"",
                                  "dual_operation := \"CocartesianPostCoComposeMorphismWithGivenObjects\"" ],
-                               ## LeftClosedMonoidalPostComposeMorphism
-                               [ "dual_operation := \"LeftCoclosedMonoidalPostCoComposeMorphism\"",
+                               ## MonoidalPostComposeMorphism
+                               [ "dual_operation := \"MonoidalPostCoComposeMorphism\"",
                                  "dual_operation := \"CocartesianPostCoComposeMorphism\"" ],
-                               ## LeftClosedMonoidalPreComposeMorphismWithGivenObjects
-                               [ "dual_operation := \"LeftCoclosedMonoidalPreCoComposeMorphismWithGivenObjects\"",
+                               ## MonoidalPreComposeMorphismWithGivenObjects
+                               [ "dual_operation := \"MonoidalPreCoComposeMorphismWithGivenObjects\"",
                                  "dual_operation := \"CocartesianPreCoComposeMorphismWithGivenObjects\"" ],
-                               ## LeftClosedMonoidalPreComposeMorphism
-                               [ "dual_operation := \"LeftCoclosedMonoidalPreCoComposeMorphism\"",
+                               ## MonoidalPreComposeMorphism
+                               [ "dual_operation := \"MonoidalPreCoComposeMorphism\"",
                                  "dual_operation := \"CocartesianPreCoComposeMorphism\"" ],
-                               ## MorphismFromTensorProductToLeftInternalHomWithGivenObjects
-                               [ "dual_operation := \"MorphismFromLeftInternalCoHomToTensorProductWithGivenObjects\"",
+                               ## MorphismFromTensorProductToInternalHomWithGivenObjects
+                               [ "dual_operation := \"MorphismFromInternalCoHomToTensorProductWithGivenObjects\"",
                                  "dual_operation := \"MorphismFromCoexponentialToCoproductWithGivenObjects\"" ],
-                               ## MorphismFromTensorProductToLeftInternalHom
-                               [ "dual_operation := \"MorphismFromLeftInternalCoHomToTensorProduct\"",
+                               ## MorphismFromTensorProductToInternalHom
+                               [ "dual_operation := \"MorphismFromInternalCoHomToTensorProduct\"",
                                  "dual_operation := \"MorphismFromCoexponentialToCoproduct\"" ],
-                               ## MorphismToLeftBidualWithGivenLeftBidual
-                               [ "dual_operation := \"MorphismFromLeftCoBidualWithGivenLeftCoBidual\"",
+                               ## MorphismToBidualWithGivenBidual
+                               [ "dual_operation := \"MorphismFromCoBidualWithGivenCoBidual\"",
                                  "dual_operation := \"MorphismFromCocartesianBidualWithGivenCocartesianBidual\"" ],
-                               ## MorphismToLeftBidual
-                               [ "dual_operation := \"MorphismFromLeftCoBidual\"",
+                               ## MorphismToBidual
+                               [ "dual_operation := \"MorphismFromCoBidual\"",
                                  "dual_operation := \"MorphismFromCocartesianBidual\"" ],
-                               ## TensorProductLeftDualityCompatibilityMorphismWithGivenObjects
-                               [ "dual_operation := \"LeftCoDualityTensorProductCompatibilityMorphismWithGivenObjects\"",
+                               ## TensorProductDualityCompatibilityMorphismWithGivenObjects
+                               [ "dual_operation := \"CoDualityTensorProductCompatibilityMorphismWithGivenObjects\"",
                                  "dual_operation := \"CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects\"" ],
-                               ## TensorProductLeftDualityCompatibilityMorphism
-                               [ "dual_operation := \"LeftCoDualityTensorProductCompatibilityMorphism\"",
+                               ## TensorProductDualityCompatibilityMorphism
+                               [ "dual_operation := \"CoDualityTensorProductCompatibilityMorphism\"",
                                  "dual_operation := \"CocartesianDualityCoproductCompatibilityMorphism\"" ],
-                               ## TensorProductLeftInternalHomCompatibilityMorphismWithGivenObjects
-                               [ "dual_operation := \"LeftInternalCoHomTensorProductCompatibilityMorphismWithGivenObjects\"",
+                               ## TensorProductInternalHomCompatibilityMorphismWithGivenObjects
+                               [ "dual_operation := \"InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects\"",
                                  "dual_operation := \"CoexponentialCoproductCompatibilityMorphismWithGivenObjects\"" ],
-                               ## TensorProductLeftInternalHomCompatibilityMorphism
-                               [ "dual_operation := \"LeftInternalCoHomTensorProductCompatibilityMorphism\"",
+                               ## TensorProductInternalHomCompatibilityMorphism
+                               [ "dual_operation := \"InternalCoHomTensorProductCompatibilityMorphism\"",
                                  "dual_operation := \"CoexponentialCoproductCompatibilityMorphism\"" ],
-                               ## TensorProductToLeftInternalHomAdjunctionMap
-                               [ "dual_operation := \"TensorProductToLeftInternalCoHomAdjunctionMap\"",
-                                 "dual_operation := \"CoproductToCoexponentialAdjunctionMap\"" ],
-                               ## TensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom
-                               [ "dual_operation := \"TensorProductToLeftInternalCoHomAdjunctionMapWithGivenLeftInternalCoHom\"",
-                                 "dual_operation := \"CoproductToCoexponentialAdjunctionMapWithGivenCoexponential\"" ],
-                               ## UniversalPropertyOfLeftDual
-                               [ "dual_operation := \"UniversalPropertyOfLeftCoDual\"",
+                               ## TensorProductToInternalHomLeftAdjunctionMap
+                               [ "dual_operation := \"TensorProductToInternalCoHomLeftAdjunctionMap\"",
+                                 "dual_operation := \"CoproductToCoexponentialLeftAdjunctionMap\"" ],
+                               ## TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom
+                               [ "dual_operation := \"TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom\"",
+                                 "dual_operation := \"CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential\"" ],
+                               ## UniversalPropertyOfDual
+                               [ "dual_operation := \"UniversalPropertyOfCoDual\"",
                                  "dual_operation := \"UniversalPropertyOfCocartesianDual\"" ],
                                ##############################
                                ## Safe replacements for Tests
                                ##############################
                                ## Evalutions
-                               [ "LeftCoclosedMonoidalEvaluationMorphism",
-                                 "CocartesianEvaluationMorphism" ],
-                               [ "LeftCoclosedMonoidalCoevaluationMorphism",
-                                 "CocartesianCoevaluationMorphism" ],
+                               [ "CoclosedMonoidalLeftEvaluationMorphism",
+                                 "CocartesianLeftEvaluationMorphism" ],
+                               [ "CoclosedMonoidalLeftCoevaluationMorphism",
+                                 "CocartesianLeftCoevaluationMorphism" ],
                                ## AdjunctionMaps
-                               [ "TensorProductToLeftInternalCoHomAdjunctionMap",
-                                 "CoproductToCoexponentialAdjunctionMap" ],
-                               [ "LeftInternalCoHomToTensorProductAdjunctionMap",
-                                 "CoexponentialToCoproductAdjunctionMap" ],
+                               [ "TensorProductToInternalCoHomLeftAdjunctionMap",
+                                 "CoproductToCoexponentialLeftAdjunctionMap" ],
+                               [ "InternalCoHomToTensorProductLeftAdjunctionMap",
+                                 "CoexponentialToCoproductLeftAdjunctionMap" ],
                                ## MonoidalComposeMorphisms
-                               [ "LeftCoclosedMonoidalPreCoComposeMorphism",
+                               [ "MonoidalPreCoComposeMorphism",
                                  "CocartesianPreCoComposeMorphism" ],
-                               [ "LeftCoclosedMonoidalPostCoComposeMorphism",
+                               [ "MonoidalPostCoComposeMorphism",
                                  "CocartesianPostCoComposeMorphism" ],
                                # Codual
-                               [ "LeftCoDualOnObjects",
+                               [ "CoDualOnObjects",
                                  "CocartesianDualOnObjects" ],
-                               [ "LeftCoDualOnMorphisms",
+                               [ "CoDualOnMorphisms",
                                  "CocartesianDualOnMorphisms" ],
-                               [ "UniversalPropertyOfLeftCoDual",
+                               [ "UniversalPropertyOfCoDual",
                                  "UniversalPropertyOfCocartesianDual" ],
-                               # LeftCoclosedMonoidalEvaluationForCoDual
-                               [ "LeftCoclosedMonoidalEvaluationForLeftCoDual",
+                               # CoclosedEvaluationForCoDual
+                               [ "CoclosedEvaluationForCoDual",
                                  "CocartesianEvaluationForCocartesianDual" ],
                                # Cobidual
-                               [ "MorphismFromLeftCoBidual",
+                               [ "MorphismFromCoBidual",
                                  "MorphismFromCocartesianBidual" ],
                                # CompatibilityMorphisms
-                               [ "LeftInternalCoHomTensorProductCompatibilityMorphism",
+                               [ "InternalCoHomTensorProductCompatibilityMorphism",
                                  "CoexponentialCoproductCompatibilityMorphism" ],
-                               [ "LeftCoDualityTensorProductCompatibilityMorphism",
+                               [ "CoDualityTensorProductCompatibilityMorphism",
                                  "CocartesianDualityCoproductCompatibilityMorphism" ],
                                ## MorphismFromInternalCoHomToDirectProduct
-                               [ "MorphismFromLeftInternalCoHomToTensorProduct",
+                               [ "MorphismFromInternalCoHomToTensorProduct",
                                  "MorphismFromCoexponentialToCoproduct" ],
                                ## Isomorphisms
-                               [ "IsomorphismFromLeftInternalCoHomFromTensorUnitToLeftCoDualObject",
+                               [ "IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject",
                                  "IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject" ],
-                               [ "IsomorphismFromLeftCoDualObjectToLeftInternalCoHomFromTensorUnit",
+                               [ "IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit",
                                  "IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject" ],
                                ## Lambdas
-                               [ "LeftCoclosedMonoidalLambdaIntroduction",
+                               [ "CoLambdaIntroduction",
                                  "CocartesianLambdaIntroduction" ],
-                               [ "LeftCoclosedMonoidalLambdaElimination",
+                               [ "CoLambdaElimination",
                                  "CocartesianLambdaElimination" ],
                                ## InternalCoHom
-                               [ "LeftInternalCoHom",
+                               [ "InternalCoHom",
                                  "Coexponential" ],
                                ## TensorProduct
                                [ "TensorProductOnObjects( opposite",
@@ -373,20 +371,20 @@ WriteFileForLeftClosedMonoidalStructure(
                                ],
              ),
         "CartesianCategories",
-        rec( LeftClosedMonoidalCategories_gd := "CartesianClosedCategories.gd",
-             LeftClosedMonoidalCategoriesTest_gd := "CartesianClosedCategoriesTest.gd",
+        rec( ClosedMonoidalCategories_gd := "CartesianClosedCategories.gd",
+             ClosedMonoidalCategoriesTest_gd := "CartesianClosedCategoriesTest.gd",
              RigidSymmetricClosedMonoidalCategories_gd := fail,
              RigidSymmetricClosedMonoidalCategoriesTest_gd := fail,
-             LeftClosedMonoidalCategoriesProperties_gi := "CartesianClosedCategoriesProperties.gi",
-             LeftClosedMonoidalCategoriesMethodRecord_gi := "CartesianClosedCategoriesMethodRecord.gi",
-             LeftClosedMonoidalCategories_gi := "CartesianClosedCategories.gi",
-             LeftClosedMonoidalCategoriesTest_gi := "CartesianClosedCategoriesTest.gi",
+             ClosedMonoidalCategoriesProperties_gi := "CartesianClosedCategoriesProperties.gi",
+             ClosedMonoidalCategoriesMethodRecord_gi := "CartesianClosedCategoriesMethodRecord.gi",
+             ClosedMonoidalCategories_gi := "CartesianClosedCategories.gi",
+             ClosedMonoidalCategoriesTest_gi := "CartesianClosedCategoriesTest.gi",
              SymmetricClosedMonoidalCategoriesProperties_gi := fail,
              RigidSymmetricClosedMonoidalCategoriesProperties_gi := fail,
              RigidSymmetricClosedMonoidalCategoriesMethodRecord_gi := fail,
              RigidSymmetricClosedMonoidalCategories_gi := fail,
              RigidSymmetricClosedMonoidalCategoriesTest_gi := fail,
-             LeftClosedMonoidalCategoriesDerivedMethods_gi := "CartesianClosedCategoriesDerivedMethods.gi",
+             ClosedMonoidalCategoriesDerivedMethods_gi := "CartesianClosedCategoriesDerivedMethods.gi",
              SymmetricClosedMonoidalCategoriesDerivedMethods_gi := "SymmetricCartesianClosedCategoriesDerivedMethods.gi",
              RigidSymmetricClosedMonoidalCategoriesDerivedMethods_gi := fail,
              HomomorphismStructureDerivedMethods_gi := "HomomorphismStructureDerivedMethods.gi",
@@ -410,9 +408,6 @@ WriteFileForMonoidalStructure(
              Distributivity := "CocartesianCodistributivity",
              DirectSum := "DirectProduct",
              Braiding := "CocartesianBraiding",
-             LeftCoclosedMonoidalLambda := "CocartesianLambda",
-             LeftCoclosedMonoidalEvaluation := "CocartesianEvaluation",
-             LeftCoclosedMonoidalCoevaluation := "CocartesianCoevaluation",
              MONOIDAL := "COCARTESIAN",
              Monoidal := "Cocartesian",
              monoidal := "cocartesian",
@@ -505,13 +500,13 @@ WriteFileForMonoidalStructure(
         );
 
 ##
-WriteFileForLeftCoclosedMonoidalStructure(
+WriteFileForCoclosedMonoidalStructure(
         rec(
              IsMonoidalCategory := "IsCocartesianCategory",
              IsStrictMonoidalCategory := "IsStrictCocartesianCategory",
              IsBraidedMonoidalCategory := "IsCocartesianCategory",
              IsSymmetricMonoidalCategory := "IsCocartesianCategory",
-             IsLeftCoclosedMonoidalCategory := "IsCocartesianCoclosedCategory",
+             IsCoclosedMonoidalCategory := "IsCocartesianCoclosedCategory",
              IsSymmetricCoclosedMonoidalCategory := "IsCocartesianCoclosedCategory",
              AdditiveMonoidal := "CodistributiveCocartesian",
              TensorProductOnObjects := "Coproduct",
@@ -523,18 +518,19 @@ WriteFileForLeftCoclosedMonoidalStructure(
              Distributivity := "CocartesianCodistributivity",
              DirectSum := "DirectProduct",
              Braiding := "CocartesianBraiding",
-             LeftCoclosedMonoidalLambda := "CocartesianLambda",
-             LeftCoclosedMonoidalEvaluation := "CocartesianEvaluation",
-             LeftCoclosedMonoidalCoevaluation := "CocartesianCoevaluation",
-             LeftInternalCoHom := "Coexponential",
-             LeftCoclosedMonoidalCategories := "CocartesianCoclosedCategories",
-             LEFT_COCLOSED_MONOIDAL := "COCARTESIAN_COCLOSED",
-             LeftCoclosedMonoidal := "Cocartesian",
+             CoLambda := "CocartesianLambda",
+             CoclosedMonoidalLeftEvaluation := "CocartesianLeftEvaluation",
+             CoclosedMonoidalLeftCoevaluation := "CocartesianLeftCoevaluation",
+             InternalCoHom := "Coexponential",
+             CoclosedMonoidalCategories := "CocartesianCoclosedCategories",
+             COCLOSED_MONOIDAL := "COCARTESIAN_COCLOSED",
+             CoclosedMonoidal := "Cocartesian",
              MONOIDAL := "COCARTESIAN",
              Monoidal := "Cocartesian",
              monoidal := "cocartesian",
-             LeftCoDual := "CocartesianDual",
-             LeftCoBidual := "CocartesianBidual",
+             CoDual := "CocartesianDual",
+             CoclosedEvaluationFor := "CocartesianEvaluationFor",
+             CoBidual := "CocartesianBidual",
              tensor_object := "coproduct_object",
              tensored := "u",
              otimes := "sqcup",
@@ -592,178 +588,178 @@ WriteFileForLeftCoclosedMonoidalStructure(
                                ## BraidingInverse
                                [ "dual_operation := \"Braiding\"",
                                  "dual_operation := \"CartesianBraiding\"" ],
-                               ## LeftCoclosedMonoidalCoevaluationMorphismWithGivenSource
-                               [ "dual_operation := \"LeftClosedMonoidalCoevaluationMorphismWithGivenRange\"",
-                                 "dual_operation := \"CartesianCoevaluationMorphismWithGivenRange\"" ],
-                               ## LeftCoclosedMonoidalCoevaluationMorphism
-                               [ "dual_operation := \"LeftClosedMonoidalCoevaluationMorphism\"",
-                                 "dual_operation := \"CartesianCoevaluationMorphism\"" ],
-                               ## LeftCoDualOnMorphismsWithGivenLeftCoDuals
-                               [ "dual_operation := \"LeftDualOnMorphismsWithGivenLeftDuals\"",
+                               ## CoclosedMonoidalLeftCoevaluationMorphismWithGivenSource
+                               [ "dual_operation := \"ClosedMonoidalLeftCoevaluationMorphismWithGivenRange\"",
+                                 "dual_operation := \"CartesianLeftCoevaluationMorphismWithGivenRange\"" ],
+                               ## CoclosedMonoidalLeftCoevaluationMorphism
+                               [ "dual_operation := \"ClosedMonoidalLeftCoevaluationMorphism\"",
+                                 "dual_operation := \"CartesianLeftCoevaluationMorphism\"" ],
+                               ## CoDualOnMorphismsWithGivenCoDuals
+                               [ "dual_operation := \"DualOnMorphismsWithGivenDuals\"",
                                  "dual_operation := \"CartesianDualOnMorphismsWithGivenCartesianDuals\"" ],
-                               ## LeftCoDualOnMorphisms
-                               [ "dual_operation := \"LeftDualOnMorphisms\"",
+                               ## CoDualOnMorphisms
+                               [ "dual_operation := \"DualOnMorphisms\"",
                                  "dual_operation := \"CartesianDualOnMorphisms\"" ],
-                               ## LeftCoDualOnObjects
-                               [ "dual_operation := \"LeftDualOnObjects\"",
+                               ## CoDualOnObjects
+                               [ "dual_operation := \"DualOnObjects\"",
                                  "dual_operation := \"CartesianDualOnObjects\"" ],
-                               ## LeftCoclosedMonoidalEvaluationForLeftCoDualWithGivenTensorProduct
-                               [ "dual_operation := \"LeftClosedMonoidalEvaluationForLeftDualWithGivenTensorProduct\"",
+                               ## CoclosedEvaluationForCoDualWithGivenTensorProduct
+                               [ "dual_operation := \"EvaluationForDualWithGivenTensorProduct\"",
                                  "dual_operation := \"CartesianEvaluationForCartesianDualWithGivenDirectProduct\"" ],
-                               ## LeftCoclosedMonoidalEvaluationForLeftCoDual
-                               [ "dual_operation := \"LeftClosedMonoidalEvaluationForLeftDual\"",
+                               ## CoclosedEvaluationForCoDual
+                               [ "dual_operation := \"EvaluationForDual\"",
                                  "dual_operation := \"CartesianEvaluationForCartesianDual\"" ],
-                               ## LeftCoclosedMonoidalEvaluationMorphismWithGivenRange
-                               [ "dual_operation := \"LeftClosedMonoidalEvaluationMorphismWithGivenSource\"",
-                                 "dual_operation := \"CartesianEvaluationMorphismWithGivenSource\"" ],
-                               ## LeftCoclosedMonoidalEvaluationMorphism
-                               [ "dual_operation := \"LeftClosedMonoidalEvaluationMorphism\"",
-                                 "dual_operation := \"CartesianEvaluationMorphism\"" ],
-                               ## LeftInternalCoHomOnMorphismsWithGivenLeftInternalCoHoms
-                               [ "dual_operation := \"LeftInternalHomOnMorphismsWithGivenLeftInternalHoms\"",
+                               ## CoclosedMonoidalLeftEvaluationMorphismWithGivenRange
+                               [ "dual_operation := \"ClosedMonoidalLeftEvaluationMorphismWithGivenSource\"",
+                                 "dual_operation := \"CartesianLeftEvaluationMorphismWithGivenSource\"" ],
+                               ## CoclosedMonoidalLeftEvaluationMorphism
+                               [ "dual_operation := \"ClosedMonoidalLeftEvaluationMorphism\"",
+                                 "dual_operation := \"CartesianLeftEvaluationMorphism\"" ],
+                               ## InternalCoHomOnMorphismsWithGivenInternalCoHoms
+                               [ "dual_operation := \"InternalHomOnMorphismsWithGivenInternalHoms\"",
                                  "dual_operation := \"ExponentialOnMorphismsWithGivenExponentials\"" ],
-                               ## LeftInternalCoHomOnMorphisms
-                               [ "dual_operation := \"LeftInternalHomOnMorphisms\"",
+                               ## InternalCoHomOnMorphisms
+                               [ "dual_operation := \"InternalHomOnMorphisms\"",
                                  "dual_operation := \"ExponentialOnMorphisms\"" ],
-                               ## LeftInternalCoHomOnObjects
-                               [ "dual_operation := \"LeftInternalHomOnObjects\"",
+                               ## InternalCoHomOnObjects
+                               [ "dual_operation := \"InternalHomOnObjects\"",
                                  "dual_operation := \"ExponentialOnObjects\"" ],
-                               ## LeftInternalCoHomToTensorProductAdjunctionMap
-                               [ "dual_operation := \"LeftInternalHomToTensorProductAdjunctionMap\"",
-                                 "dual_operation := \"ExponentialToDirectProductAdjunctionMap\"" ],
-                               ## LeftInternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct
-                               [ "dual_operation := \"LeftInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct\"",
-                                 "dual_operation := \"ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct\"" ],
-                               ## IsomorphismFromLeftInternalCoHomFromTensorUnitToLeftCoDualObject
-                               [ "dual_operation := \"IsomorphismFromLeftDualObjectToLeftInternalHomIntoTensorUnit\"",
+                               ## InternalCoHomToTensorProductLeftAdjunctionMap
+                               [ "dual_operation := \"InternalHomToTensorProductLeftAdjunctionMap\"",
+                                 "dual_operation := \"ExponentialToDirectProductLeftAdjunctionMap\"" ],
+                               ## InternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct
+                               [ "dual_operation := \"InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct\"",
+                                 "dual_operation := \"ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct\"" ],
+                               ## IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject
+                               [ "dual_operation := \"IsomorphismFromDualObjectToInternalHomIntoTensorUnit\"",
                                  "dual_operation := \"IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject\"" ],
-                               ## IsomorphismFromLeftCoDualObjectToLeftInternalCoHomFromTensorUnit
-                               [ "dual_operation := \"IsomorphismFromLeftInternalHomIntoTensorUnitToLeftDualObject\"",
+                               ## IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit
+                               [ "dual_operation := \"IsomorphismFromInternalHomIntoTensorUnitToDualObject\"",
                                  "dual_operation := \"IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject\"" ],
-                               ## IsomorphismFromObjectToLeftInternalCoHomWithGivenLeftInternalCoHom
-                               [ "dual_operation := \"IsomorphismFromLeftInternalHomToObjectWithGivenLeftInternalHom\"",
+                               ## IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom
+                               [ "dual_operation := \"IsomorphismFromInternalHomToObjectWithGivenInternalHom\"",
                                  "dual_operation := \"IsomorphismFromExponentialToObjectWithGivenExponential\"" ],
-                               ## IsomorphismFromObjectToLeftInternalCoHom
-                               [ "dual_operation := \"IsomorphismFromLeftInternalHomToObject\"",
+                               ## IsomorphismFromObjectToInternalCoHom
+                               [ "dual_operation := \"IsomorphismFromInternalHomToObject\"",
                                  "dual_operation := \"IsomorphismFromExponentialToObject\"" ],
-                               ## IsomorphismFromLeftInternalCoHomToObjectWithGivenLeftInternalCoHom
-                               [ "dual_operation := \"IsomorphismFromObjectToLeftInternalHomWithGivenLeftInternalHom\"",
+                               ## IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom
+                               [ "dual_operation := \"IsomorphismFromObjectToInternalHomWithGivenInternalHom\"",
                                  "dual_operation := \"IsomorphismFromObjectToExponentialWithGivenExponential\"" ],
-                               ## IsomorphismFromLeftInternalCoHomToObject
-                               [ "dual_operation := \"IsomorphismFromObjectToLeftInternalHom\"",
+                               ## IsomorphismFromInternalCoHomToObject
+                               [ "dual_operation := \"IsomorphismFromObjectToInternalHom\"",
                                  "dual_operation := \"IsomorphismFromObjectToExponential\"" ],
-                               ## LeftCoclosedMonoidalLambdaElimination
-                               [ "dual_operation := \"LeftClosedMonoidalLambdaElimination\"",
+                               ## CoLambdaElimination
+                               [ "dual_operation := \"LambdaElimination\"",
                                  "dual_operation := \"CartesianLambdaElimination\"" ],
-                               ## LeftCoclosedMonoidalLambdaIntroduction
-                               [ "dual_operation := \"LeftClosedMonoidalLambdaIntroduction\"",
+                               ## CoLambdaIntroduction
+                               [ "dual_operation := \"LambdaIntroduction\"",
                                  "dual_operation := \"CartesianLambdaIntroduction\"" ],
-                               ## LeftCoclosedMonoidalPostCoComposeMorphismWithGivenObjects
-                               [ "dual_operation := \"LeftClosedMonoidalPostComposeMorphismWithGivenObjects\"",
+                               ## MonoidalPostCoComposeMorphismWithGivenObjects
+                               [ "dual_operation := \"MonoidalPostComposeMorphismWithGivenObjects\"",
                                  "dual_operation := \"CartesianPostComposeMorphismWithGivenObjects\"" ],
-                               ## LeftCoclosedMonoidalPostCoComposeMorphism
-                               [ "dual_operation := \"LeftClosedMonoidalPostComposeMorphism\"",
+                               ## MonoidalPostCoComposeMorphism
+                               [ "dual_operation := \"MonoidalPostComposeMorphism\"",
                                  "dual_operation := \"CartesianPostComposeMorphism\"" ],
-                               ## LeftCoclosedMonoidalPreCoComposeMorphismWithGivenObjects
-                               [ "dual_operation := \"LeftClosedMonoidalPreComposeMorphismWithGivenObjects\"",
+                               ## MonoidalPreCoComposeMorphismWithGivenObjects
+                               [ "dual_operation := \"MonoidalPreComposeMorphismWithGivenObjects\"",
                                  "dual_operation := \"CartesianPreComposeMorphismWithGivenObjects\"" ],
-                               ## LeftCoclosedMonoidalPreCoComposeMorphism
-                               [ "dual_operation := \"LeftClosedMonoidalPreComposeMorphism\"",
+                               ## MonoidalPreCoComposeMorphism
+                               [ "dual_operation := \"MonoidalPreComposeMorphism\"",
                                  "dual_operation := \"CartesianPreComposeMorphism\"" ],
-                               ## MorphismFromLeftInternalCoHomToTensorProductWithGivenObjects
-                               [ "dual_operation := \"MorphismFromTensorProductToLeftInternalHomWithGivenObjects\"",
+                               ## MorphismFromInternalCoHomToTensorProductWithGivenObjects
+                               [ "dual_operation := \"MorphismFromTensorProductToInternalHomWithGivenObjects\"",
                                  "dual_operation := \"MorphismFromDirectProductToExponentialWithGivenObjects\"" ],
-                               ## MorphismFromLeftInternalCoHomToTensorProduct
-                               [ "dual_operation := \"MorphismFromTensorProductToLeftInternalHom\"",
+                               ## MorphismFromInternalCoHomToTensorProduct
+                               [ "dual_operation := \"MorphismFromTensorProductToInternalHom\"",
                                  "dual_operation := \"MorphismFromDirectProductToExponential\"" ],
-                               ## MorphismFromLeftCoBidualWithGivenLeftCoBidual
-                               [ "dual_operation := \"MorphismToLeftBidualWithGivenLeftBidual\"",
+                               ## MorphismFromCoBidualWithGivenCoBidual
+                               [ "dual_operation := \"MorphismToBidualWithGivenBidual\"",
                                  "dual_operation := \"MorphismToCartesianBidualWithGivenCartesianBidual\"" ],
-                               ## MorphismFromLeftCoBidual
-                               [ "dual_operation := \"MorphismToLeftBidual\"",
+                               ## MorphismFromCoBidual
+                               [ "dual_operation := \"MorphismToBidual\"",
                                  "dual_operation := \"MorphismToCartesianBidual\"" ],
-                               ## LeftCoDualityTensorProductCompatibilityMorphismWithGivenObjects
-                               [ "dual_operation := \"TensorProductLeftDualityCompatibilityMorphismWithGivenObjects\"",
+                               ## CoDualityTensorProductCompatibilityMorphismWithGivenObjects
+                               [ "dual_operation := \"TensorProductDualityCompatibilityMorphismWithGivenObjects\"",
                                  "dual_operation := \"DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects\"" ],
-                               ## LeftCoDualityTensorProductCompatibilityMorphism
-                               [ "dual_operation := \"TensorProductLeftDualityCompatibilityMorphism\"",
+                               ## CoDualityTensorProductCompatibilityMorphism
+                               [ "dual_operation := \"TensorProductDualityCompatibilityMorphism\"",
                                  "dual_operation := \"DirectProductCartesianDualityCompatibilityMorphism\"" ],
-                               ## LeftInternalCoHomTensorProductCompatibilityMorphismWithGivenObjects
-                               [ "dual_operation := \"TensorProductLeftInternalHomCompatibilityMorphismWithGivenObjects\"",
+                               ## InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects
+                               [ "dual_operation := \"TensorProductInternalHomCompatibilityMorphismWithGivenObjects\"",
                                  "dual_operation := \"DirectProductExponentialCompatibilityMorphismWithGivenObjects\"" ],
-                               ## LeftInternalCoHomTensorProductCompatibilityMorphism
-                               [ "dual_operation := \"TensorProductLeftInternalHomCompatibilityMorphism\"",
+                               ## InternalCoHomTensorProductCompatibilityMorphism
+                               [ "dual_operation := \"TensorProductInternalHomCompatibilityMorphism\"",
                                  "dual_operation := \"DirectProductExponentialCompatibilityMorphism\"" ],
-                               ## TensorProductToLeftInternalCoHomAdjunctionMap
-                               [ "dual_operation := \"TensorProductToLeftInternalHomAdjunctionMap\"",
-                                 "dual_operation := \"DirectProductToExponentialAdjunctionMap\"" ],
-                               ## TensorProductToLeftInternalCoHomAdjunctionMapWithGivenLeftInternalCoHom
-                               [ "dual_operation := \"TensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom\"",
-                                 "dual_operation := \"DirectProductToExponentialAdjunctionMapWithGivenExponential\"" ],
-                               ## UniversalPropertyOfLeftCoDual
-                               [ "dual_operation := \"UniversalPropertyOfLeftDual\"",
+                               ## TensorProductToInternalCoHomLeftAdjunctionMap
+                               [ "dual_operation := \"TensorProductToInternalHomLeftAdjunctionMap\"",
+                                 "dual_operation := \"DirectProductToExponentialLeftAdjunctionMap\"" ],
+                               ## TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom
+                               [ "dual_operation := \"TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom\"",
+                                 "dual_operation := \"DirectProductToExponentialLeftAdjunctionMapWithGivenExponential\"" ],
+                               ## UniversalPropertyOfCoDual
+                               [ "dual_operation := \"UniversalPropertyOfDual\"",
                                  "dual_operation := \"UniversalPropertyOfCartesianDual\"" ],
-                               [ "LEFT_CLOSED_AND_LEFT_COCLOSED_MONOIDAL_CATEGORIES",
+                               [ "CLOSED_AND_COCLOSED_MONOIDAL_CATEGORIES",
                                  "CARTESIAN_CLOSED_AND_COCARTESIAN_COCLOSED_CATEGORIES" ],
-                               [ "LEFT_COCLOSED_MONOIDAL_CATEGORIES_METHOD",
+                               [ "COCLOSED_MONOIDAL_CATEGORIES_METHOD",
                                  "COCARTESIAN_COCLOSED_CATEGORIES_METHOD" ],
-                               [ "LEFT_CLOSED_MONOIDAL_CATEGORIES",
+                               [ "CLOSED_MONOIDAL_CATEGORIES",
                                  "CARTESIAN_CLOSED_CATEGORIES" ],
-                               [ "LeftCoclosedMonoidalCategories.autogen.gd",
+                               [ "CoclosedMonoidalCategories.autogen.gd",
                                  "CocartesianCoclosedCategories.autogen.gd" ],
-                               [ "\"LeftClosedMonoidalCategories.autogen.gd\", \"Monoidal Categories\"",
+                               [ "\"ClosedMonoidalCategories.autogen.gd\", \"Monoidal Categories\"",
                                  "\"CartesianClosedCategories.autogen.gd\", \"Cartesian Categories\"" ],
                                ##############################
                                ## Safe replacements for Tests
                                ##############################
                                ## Evalutions
-                               [ " LeftClosedMonoidalEvaluationMorphism",
-                                 " CartesianEvaluationMorphism" ],
-                               [ " LeftClosedMonoidalCoevaluationMorphism",
-                                 " CartesianCoevaluationMorphism" ],
+                               [ " ClosedMonoidalLeftEvaluationMorphism",
+                                 " CartesianLeftEvaluationMorphism" ],
+                               [ " ClosedMonoidalLeftCoevaluationMorphism",
+                                 " CartesianLeftCoevaluationMorphism" ],
                                ## AdjunctionMaps
-                               [ "TensorProductToLeftInternalHomAdjunctionMap",
-                                 "DirectProductToExponentialAdjunctionMap" ],
-                               [ "LeftInternalHomToTensorProductAdjunctionMap",
-                                 "ExponentialToDirectProductAdjunctionMap" ],
+                               [ "TensorProductToInternalHomLeftAdjunctionMap",
+                                 "DirectProductToExponentialLeftAdjunctionMap" ],
+                               [ "InternalHomToTensorProductLeftAdjunctionMap",
+                                 "ExponentialToDirectProductLeftAdjunctionMap" ],
                                ## MonoidalComposeMorphisms
-                               [ "LeftClosedMonoidalPreComposeMorphism",
+                               [ "MonoidalPreComposeMorphism",
                                  "CartesianPreComposeMorphism" ],
-                               [ "LeftClosedMonoidalPostComposeMorphism",
+                               [ "MonoidalPostComposeMorphism",
                                  "CartesianPostComposeMorphism" ],
                                # Dual
-                               [ " LeftDualOnObjects",
+                               [ " DualOnObjects",
                                  " CartesianDualOnObjects" ],
-                               [ " LeftDualOnMorphisms",
+                               [ " DualOnMorphisms",
                                  " CartesianDualOnMorphisms" ],
-                               [ "UniversalPropertyOfLeftDual",
+                               [ "UniversalPropertyOfDual",
                                  "UniversalPropertyOfCartesianDual" ],
                                # EvaluationForDual
-                               [ " LeftClosedMonoidalEvaluationForLeftDual",
+                               [ " EvaluationForDual",
                                  " CartesianEvaluationForCartesianDual" ],
                                # Bidual
-                               [ "MorphismToLeftBidual",
+                               [ "MorphismToBidual",
                                  "MorphismToCartesianBidual" ],
                                # CompatibilityMorphisms
-                               [ "TensorProductLeftInternalHomCompatibilityMorphism",
+                               [ "TensorProductInternalHomCompatibilityMorphism",
                                  "DirectProductExponentialCompatibilityMorphism" ],
-                               [ "TensorProductLeftDualityCompatibilityMorphism",
+                               [ "TensorProductDualityCompatibilityMorphism",
                                  "DirectProductCartesianDualityCompatibilityMorphism" ],
-                               ## MorphismFromTensorProductToLeftInternalHom
-                               [ "MorphismFromTensorProductToLeftInternalHom",
+                               ## MorphismFromTensorProductToInternalHom
+                               [ "MorphismFromTensorProductToInternalHom",
                                  "MorphismFromDirectProductToExponential" ],
                                ## Isomorphisms
-                               [ "IsomorphismFromLeftInternalHomIntoTensorUnitToLeftDualObject",
+                               [ "IsomorphismFromInternalHomIntoTensorUnitToDualObject",
                                  "IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject" ],
-                               [ "IsomorphismFromLeftDualObjectToLeftInternalHomIntoTensorUnit",
+                               [ "IsomorphismFromDualObjectToInternalHomIntoTensorUnit",
                                  "IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject" ],
                                ## Lambdas
-                               [ " LeftClosedMonoidalLambdaElimination",
-                                 " CartesianLambdaElimination" ],
-                               [ " LeftClosedMonoidalLambdaIntroduction",
+                               [ " LambdaIntroduction",
                                  " CartesianLambdaIntroduction" ],
+                               [ " LambdaElimination",
+                                 " CartesianLambdaElimination" ],
                                ## InternalHom
-                               [ "LeftInternalHom",
+                               [ "InternalHom",
                                  "Exponential" ],
                                ## TensorProduct
                                [ "TensorProductOnObjects( opposite",
@@ -775,20 +771,20 @@ WriteFileForLeftCoclosedMonoidalStructure(
                                ]
              ),
         "CartesianCategories",
-        rec( LeftCoclosedMonoidalCategories_gd := "CocartesianCoclosedCategories.gd",
-             LeftCoclosedMonoidalCategoriesTest_gd := "CocartesianCoclosedCategoriesTest.gd",
+        rec( CoclosedMonoidalCategories_gd := "CocartesianCoclosedCategories.gd",
+             CoclosedMonoidalCategoriesTest_gd := "CocartesianCoclosedCategoriesTest.gd",
              RigidSymmetricCoclosedMonoidalCategories_gd := fail,
              RigidSymmetricCoclosedMonoidalCategoriesTest_gd := fail,
-             LeftCoclosedMonoidalCategoriesProperties_gi := "CocartesianCoclosedCategoriesProperties.gi",
-             LeftCoclosedMonoidalCategoriesMethodRecord_gi := "CocartesianCoclosedCategoriesMethodRecord.gi",
-             LeftCoclosedMonoidalCategories_gi := "CocartesianCoclosedCategories.gi",
-             LeftCoclosedMonoidalCategoriesTest_gi := "CocartesianCoclosedCategoriesTest.gi",
+             CoclosedMonoidalCategoriesProperties_gi := "CocartesianCoclosedCategoriesProperties.gi",
+             CoclosedMonoidalCategoriesMethodRecord_gi := "CocartesianCoclosedCategoriesMethodRecord.gi",
+             CoclosedMonoidalCategories_gi := "CocartesianCoclosedCategories.gi",
+             CoclosedMonoidalCategoriesTest_gi := "CocartesianCoclosedCategoriesTest.gi",
              SymmetricCoclosedMonoidalCategoriesProperties_gi := fail,
              RigidSymmetricCoclosedMonoidalCategoriesProperties_gi := fail,
              RigidSymmetricCoclosedMonoidalCategoriesMethodRecord_gi := fail,
              RigidSymmetricCoclosedMonoidalCategories_gi := fail,
              RigidSymmetricCoclosedMonoidalCategoriesTest_gi := fail,
-             LeftCoclosedMonoidalCategoriesDerivedMethods_gi := "CocartesianCoclosedCategoriesDerivedMethods.gi",
+             CoclosedMonoidalCategoriesDerivedMethods_gi := "CocartesianCoclosedCategoriesDerivedMethods.gi",
              SymmetricCoclosedMonoidalCategoriesDerivedMethods_gi := "SymmetricCocartesianCoclosedCategoriesDerivedMethods.gi",
              RigidSymmetricCoclosedMonoidalCategoriesDerivedMethods_gi := fail,
              )

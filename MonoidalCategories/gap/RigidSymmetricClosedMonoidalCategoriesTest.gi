@@ -44,86 +44,86 @@ InstallGlobalFunction( "RigidSymmetricClosedMonoidalCategoriesTest",
         
         verbose := ValueOption( "verbose" ) = true;
         
-        if CanCompute( cat, "IsomorphismFromTensorProductWithLeftDualObjectToLeftInternalHom" ) then
+        if CanCompute( cat, "IsomorphismFromTensorProductWithDualObjectToInternalHom" ) then
             
             if verbose then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( "Testing 'IsomorphismFromTensorProductWithLeftDualObjectToLeftInternalHom' ..." );
+                Display( "Testing 'IsomorphismFromTensorProductWithDualObjectToInternalHom' ..." );
                 
             fi;
             
-            isomorphism_from_tensor_to_hom_ab := IsomorphismFromTensorProductWithLeftDualObjectToLeftInternalHom( a, b );
-            isomorphism_from_tensor_to_hom_ba := IsomorphismFromTensorProductWithLeftDualObjectToLeftInternalHom( b, a );
+            isomorphism_from_tensor_to_hom_ab := IsomorphismFromTensorProductWithDualObjectToInternalHom( a, b );
+            isomorphism_from_tensor_to_hom_ba := IsomorphismFromTensorProductWithDualObjectToInternalHom( b, a );
             
-            isomorphism_from_cohom_to_tensor_ab_op := IsomorphismFromLeftInternalCoHomToTensorProductWithLeftCoDualObject( a_op, b_op );
-            isomorphism_from_cohom_to_tensor_ba_op := IsomorphismFromLeftInternalCoHomToTensorProductWithLeftCoDualObject( b_op, a_op );
+            isomorphism_from_cohom_to_tensor_ab_op := IsomorphismFromInternalCoHomToTensorProductWithCoDualObject( a_op, b_op );
+            isomorphism_from_cohom_to_tensor_ba_op := IsomorphismFromInternalCoHomToTensorProductWithCoDualObject( b_op, a_op );
             
             Assert( 0, IsCongruentForMorphisms( isomorphism_from_cohom_to_tensor_ab_op, Opposite( opposite, isomorphism_from_tensor_to_hom_ba ) ) );
             Assert( 0, IsCongruentForMorphisms( isomorphism_from_cohom_to_tensor_ba_op, Opposite( opposite, isomorphism_from_tensor_to_hom_ab ) ) );
             
         fi;
         
-        if CanCompute( cat, "IsomorphismFromLeftInternalHomToTensorProductWithLeftDualObject" ) then
+        if CanCompute( cat, "IsomorphismFromInternalHomToTensorProductWithDualObject" ) then
             
             if verbose then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( "Testing 'IsomorphismFromLeftInternalHomToTensorProductWithLeftDualObject' ..." );
+                Display( "Testing 'IsomorphismFromInternalHomToTensorProductWithDualObject' ..." );
                 
             fi;
             
-            isomorphism_from_hom_to_tensor_ab := IsomorphismFromLeftInternalHomToTensorProductWithLeftDualObject( a, b );
-            isomorphism_from_hom_to_tensor_ba := IsomorphismFromLeftInternalHomToTensorProductWithLeftDualObject( b, a );
+            isomorphism_from_hom_to_tensor_ab := IsomorphismFromInternalHomToTensorProductWithDualObject( a, b );
+            isomorphism_from_hom_to_tensor_ba := IsomorphismFromInternalHomToTensorProductWithDualObject( b, a );
             
-            isomorphism_from_tensor_to_cohom_ab_op := IsomorphismFromTensorProductWithLeftCoDualObjectToLeftInternalCoHom( a_op, b_op );
-            isomorphism_from_tensor_to_cohom_ba_op := IsomorphismFromTensorProductWithLeftCoDualObjectToLeftInternalCoHom( b_op, a_op );
+            isomorphism_from_tensor_to_cohom_ab_op := IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom( a_op, b_op );
+            isomorphism_from_tensor_to_cohom_ba_op := IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom( b_op, a_op );
             
             Assert( 0, IsCongruentForMorphisms( isomorphism_from_tensor_to_cohom_ab_op, Opposite( opposite, isomorphism_from_hom_to_tensor_ab ) ) );
             Assert( 0, IsCongruentForMorphisms( isomorphism_from_tensor_to_cohom_ba_op, Opposite( opposite, isomorphism_from_hom_to_tensor_ba ) ) );
             
         fi;
         
-        if CanCompute( cat, "MorphismFromLeftInternalHomToTensorProduct" ) then
+        if CanCompute( cat, "MorphismFromInternalHomToTensorProduct" ) then
             
             if verbose then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( "Testing 'MorphismFromLeftInternalHomToTensorProduct' ..." );
+                Display( "Testing 'MorphismFromInternalHomToTensorProduct' ..." );
                 
             fi;
             
-            morphism_from_hom_to_tensor_product_ab := MorphismFromLeftInternalHomToTensorProduct( a, b );
-            morphism_from_hom_to_tensor_product_ba := MorphismFromLeftInternalHomToTensorProduct( b, a );
+            morphism_from_hom_to_tensor_product_ab := MorphismFromInternalHomToTensorProduct( a, b );
+            morphism_from_hom_to_tensor_product_ba := MorphismFromInternalHomToTensorProduct( b, a );
             
-            morphism_from_tensor_product_to_cohom_ab_op := MorphismFromTensorProductToLeftInternalCoHom( a_op, b_op );
-            morphism_from_tensor_product_to_cohom_ba_op := MorphismFromTensorProductToLeftInternalCoHom( b_op, a_op );
+            morphism_from_tensor_product_to_cohom_ab_op := MorphismFromTensorProductToInternalCoHom( a_op, b_op );
+            morphism_from_tensor_product_to_cohom_ba_op := MorphismFromTensorProductToInternalCoHom( b_op, a_op );
             
             Assert( 0, IsCongruentForMorphisms( morphism_from_tensor_product_to_cohom_ab_op, Opposite( opposite, morphism_from_hom_to_tensor_product_ab ) ) );
             Assert( 0, IsCongruentForMorphisms( morphism_from_tensor_product_to_cohom_ba_op, Opposite( opposite, morphism_from_hom_to_tensor_product_ba ) ) );
             
         fi;
         
-        if CanCompute( cat, "TensorProductLeftInternalHomCompatibilityMorphismInverse" ) then
+        if CanCompute( cat, "TensorProductInternalHomCompatibilityMorphismInverse" ) then
             
             if verbose then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( "Testing 'TensorProductLeftInternalHomCompatibilityMorphismInverse' ..." );
+                Display( "Testing 'TensorProductInternalHomCompatibilityMorphismInverse' ..." );
                 
             fi;
             
             # Hom( a ⊗ c, b ⊗ d ) → Hom( a, b ) ⊗ Hom( c, d )
-            tensor_to_hom_compatibility_inverse_abcd := TensorProductLeftInternalHomCompatibilityMorphismInverse( [ a, b, c, d ] );
+            tensor_to_hom_compatibility_inverse_abcd := TensorProductInternalHomCompatibilityMorphismInverse( [ a, b, c, d ] );
             
             # Hom( c ⊗ d, a ⊗ b ) → Hom( c, a ) ⊗ Hom( d, b )
-            tensor_to_hom_compatibility_inverse_cadb := TensorProductLeftInternalHomCompatibilityMorphismInverse( [ c, a, d, b ] );
+            tensor_to_hom_compatibility_inverse_cadb := TensorProductInternalHomCompatibilityMorphismInverse( [ c, a, d, b ] );
             
             # Cohom( a, c ) ⊗ Cohom( b, d ) → Cohom( a ⊗ b, c ⊗ d )
-            cohom_to_tensor_compatibility_inverse_abcd_op := LeftInternalCoHomTensorProductCompatibilityMorphismInverse( [ a_op, b_op, c_op, d_op ] );
+            cohom_to_tensor_compatibility_inverse_abcd_op := InternalCoHomTensorProductCompatibilityMorphismInverse( [ a_op, b_op, c_op, d_op ] );
             
             # Cohom( b, a ) ⊗ Cohom( d, c ) → Cohom( b ⊗ d, a ⊗ c )
-            cohom_to_tensor_compatibility_inverse_bdac_op := LeftInternalCoHomTensorProductCompatibilityMorphismInverse( [ b_op, d_op, a_op, c_op ] );
+            cohom_to_tensor_compatibility_inverse_bdac_op := InternalCoHomTensorProductCompatibilityMorphismInverse( [ b_op, d_op, a_op, c_op ] );
             
             # coHom( a, c ) ⊗ coHom( b, d ) → coHom( a ⊗ b, c ⊗ d )  ==  op( Hom( c ⊗ d, a ⊗ b ) → Hom( c, a ) ⊗ Hom( d, b ) )
             Assert( 0, IsCongruentForMorphisms( cohom_to_tensor_compatibility_inverse_abcd_op, Opposite( opposite, tensor_to_hom_compatibility_inverse_cadb ) ) );
@@ -133,20 +133,20 @@ InstallGlobalFunction( "RigidSymmetricClosedMonoidalCategoriesTest",
             
         fi;
         
-        if CanCompute( cat, "CoevaluationForLeftDual" ) then
+        if CanCompute( cat, "CoevaluationForDual" ) then
             
             if verbose then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( "Testing 'CoevaluationForLeftDual' ..." );
+                Display( "Testing 'CoevaluationForDual' ..." );
                 
             fi;
             
-            coev_for_dual_a := CoevaluationForLeftDual( a );
-            coev_for_dual_b := CoevaluationForLeftDual( b );
+            coev_for_dual_a := CoevaluationForDual( a );
+            coev_for_dual_b := CoevaluationForDual( b );
             
-            cocl_coev_for_codual_a_op := LeftCoclosedMonoidalCoevaluationForLeftCoDual( a_op );
-            cocl_coev_for_codual_b_op := LeftCoclosedMonoidalCoevaluationForLeftCoDual( b_op );
+            cocl_coev_for_codual_a_op := CoclosedCoevaluationForCoDual( a_op );
+            cocl_coev_for_codual_b_op := CoclosedCoevaluationForCoDual( b_op );
             
             Assert( 0, IsCongruentForMorphisms( cocl_coev_for_codual_a_op, Opposite( opposite, coev_for_dual_a ) ) );
             Assert( 0, IsCongruentForMorphisms( cocl_coev_for_codual_b_op, Opposite( opposite, coev_for_dual_b ) ) );
@@ -190,20 +190,20 @@ InstallGlobalFunction( "RigidSymmetricClosedMonoidalCategoriesTest",
             
         fi;
         
-        if CanCompute( cat, "MorphismFromLeftBidual" ) then
+        if CanCompute( cat, "MorphismFromBidual" ) then
             
             if verbose then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( "Testing 'MorphismFromLeftBidual' ..." );
+                Display( "Testing 'MorphismFromBidual' ..." );
                 
             fi;
             
-            morphism_from_bidual_a := MorphismFromLeftBidual( a );
-            morphism_from_bidual_b := MorphismFromLeftBidual( b );
+            morphism_from_bidual_a := MorphismFromBidual( a );
+            morphism_from_bidual_b := MorphismFromBidual( b );
             
-            morphism_to_cobidual_a_op := MorphismToLeftCoBidual( a_op );
-            morphism_to_cobidual_b_op := MorphismToLeftCoBidual( b_op );
+            morphism_to_cobidual_a_op := MorphismToCoBidual( a_op );
+            morphism_to_cobidual_b_op := MorphismToCoBidual( b_op );
             
             Assert( 0, IsCongruentForMorphisms( morphism_to_cobidual_a_op, Opposite( opposite, morphism_from_bidual_a ) ) );
             Assert( 0, IsCongruentForMorphisms( morphism_to_cobidual_b_op, Opposite( opposite, morphism_from_bidual_b ) ) );

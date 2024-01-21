@@ -10,12 +10,14 @@ T := TerminalCategoryWithMultipleObjects( );
 Display( T );
 #! A CAP category with name TerminalCategoryWithMultipleObjects( ):
 #! 
-#! 70 primitive operations were used to derive 313 operations for this category \
+#! 78 primitive operations were used to derive 367 operations for this category \
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing
+#! * IsLeftClosedMonoidalCategory
+#! * IsLeftCoclosedMonoidalCategory
 #! * IsAbelianCategoryWithEnoughInjectives
 #! * IsAbelianCategoryWithEnoughProjectives
 #! * IsRigidSymmetricClosedMonoidalCategory

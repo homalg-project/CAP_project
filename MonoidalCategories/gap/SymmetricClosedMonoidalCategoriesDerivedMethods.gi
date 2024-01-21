@@ -5,13 +5,13 @@
 #
 
 ##
-AddDerivationToCAP( MorphismToLeftBidualWithGivenLeftBidual,
-                    "MorphismToLeftBidualWithGivenLeftBidual using the braiding and the universal property of the dual",
+AddDerivationToCAP( MorphismToBidualWithGivenBidual,
+                    "MorphismToBidualWithGivenBidual using the braiding and the universal property of the dual",
                     [ [ PreCompose, 1 ],
                       [ Braiding, 1 ],
-                      [ LeftDualOnObjects, 2 ],
-                      [ LeftClosedMonoidalEvaluationForLeftDual, 1 ],
-                      [ UniversalPropertyOfLeftDual, 1 ] ],
+                      [ DualOnObjects, 2 ],
+                      [ EvaluationForDual, 1 ],
+                      [ UniversalPropertyOfDual, 1 ] ],
                     
   function( cat, a, avv )
     local alpha;
@@ -29,24 +29,24 @@ AddDerivationToCAP( MorphismToLeftBidualWithGivenLeftBidual,
     # UniversalProperty( a ⊗ a^v → 1 ) = ( a → a^v^v)
 
     alpha := PreCompose( cat,
-                     Braiding( cat, a, LeftDualOnObjects( cat, a ) ),
-                     LeftClosedMonoidalEvaluationForLeftDual( cat, a ) );
+                     Braiding( cat, a, DualOnObjects( cat, a ) ),
+                     EvaluationForDual( cat, a ) );
     
-    return UniversalPropertyOfLeftDual( cat, a, LeftDualOnObjects( cat, a ), alpha );
+    return UniversalPropertyOfDual( cat, a, DualOnObjects( cat, a ), alpha );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory );
 
 ##
-AddDerivationToCAP( MorphismToLeftBidualWithGivenLeftBidual,
-                    "MorphismToLeftBidualWithGivenLeftBidual using LeftClosedMonoidalCoevaluation, LeftInternalHom, and LeftClosedMonoidalEvaluation",
-                    [ [ LeftDualOnObjects, 1 ],
+AddDerivationToCAP( MorphismToBidualWithGivenBidual,
+                    "MorphismToBidualWithGivenBidual using ClosedMonoidalCoevaluation, InternalHom, and ClosedMonoidalEvaluation",
+                    [ [ DualOnObjects, 1 ],
                       [ TensorUnit, 1 ],
                       [ PreComposeList, 1 ],
-                      [ LeftClosedMonoidalCoevaluationMorphism, 1 ],
-                      [ LeftInternalHomOnMorphisms, 2 ],
+                      [ ClosedMonoidalLeftCoevaluationMorphism, 1 ],
+                      [ InternalHomOnMorphisms, 2 ],
                       [ IdentityMorphism, 2 ],
                       [ Braiding, 1 ],
-                      [ LeftClosedMonoidalEvaluationMorphism, 1 ] ],
+                      [ ClosedMonoidalLeftEvaluationMorphism, 1 ] ],
                     
   function( cat, a, avv )
     local av, morphism;
@@ -65,19 +65,19 @@ AddDerivationToCAP( MorphismToLeftBidualWithGivenLeftBidual,
     #        v
     #    Hom(a^v,1)
     
-    av := LeftDualOnObjects( cat, a );
+    av := DualOnObjects( cat, a );
     
     morphism := PreComposeList( cat,
                         a,
-                        [ LeftClosedMonoidalCoevaluationMorphism( cat, a, av ),
+                        [ ClosedMonoidalLeftCoevaluationMorphism( cat, a, av ),
                           
-                          LeftInternalHomOnMorphisms( cat,
+                          InternalHomOnMorphisms( cat,
                                   IdentityMorphism( cat, av ),
                                   Braiding( cat, a, av ) ),
                           
-                          LeftInternalHomOnMorphisms( cat,
+                          InternalHomOnMorphisms( cat,
                                   IdentityMorphism( cat, av ),
-                                  LeftClosedMonoidalEvaluationMorphism( cat, a, TensorUnit( cat ) ) ) ],
+                                  ClosedMonoidalLeftEvaluationMorphism( cat, a, TensorUnit( cat ) ) ) ],
                         avv );
     
     return morphism;
@@ -85,9 +85,9 @@ AddDerivationToCAP( MorphismToLeftBidualWithGivenLeftBidual,
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory );
 
 ##
-AddDerivationToCAP( TensorProductLeftInternalHomCompatibilityMorphismWithGivenObjects,
-                    "TensorProductLeftInternalHomCompatibilityMorphismWithGivenObjects using associator, braiding and the evaluation morphism",
-                    [ [ LeftInternalHomOnObjects, 2 ],
+AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphismWithGivenObjects,
+                    "TensorProductInternalHomCompatibilityMorphismWithGivenObjects using associator, braiding and the evaluation morphism",
+                    [ [ InternalHomOnObjects, 2 ],
                       [ IdentityMorphism, 4 ],
                       [ TensorProductOnObjects, 3 ],
                       [ PreComposeList, 1 ],
@@ -95,8 +95,8 @@ AddDerivationToCAP( TensorProductLeftInternalHomCompatibilityMorphismWithGivenOb
                       [ TensorProductOnMorphisms, 7 ],
                       [ AssociatorLeftToRight, 2 ],
                       [ Braiding, 1 ],
-                      [ LeftClosedMonoidalEvaluationMorphism, 2 ],
-                      [ TensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom, 1 ] ],
+                      [ ClosedMonoidalLeftEvaluationMorphism, 2 ],
+                      [ TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom, 1 ] ],
                     
   function( cat, source, list, range )
     local a1, b1, a2, b2, a1a2, int_hom_a1_b1, int_hom_a2_b2, id_a2, morphism;
@@ -141,9 +141,9 @@ AddDerivationToCAP( TensorProductLeftInternalHomCompatibilityMorphismWithGivenOb
     
     a1a2 := TensorProductOnObjects( cat, a1, a2 );
     
-    int_hom_a1_b1 := LeftInternalHomOnObjects( cat, a1, b1 );
+    int_hom_a1_b1 := InternalHomOnObjects( cat, a1, b1 );
     
-    int_hom_a2_b2 := LeftInternalHomOnObjects( cat, a2, b2 );
+    int_hom_a2_b2 := InternalHomOnObjects( cat, a2, b2 );
     
     id_a2 := IdentityMorphism( cat, a2 );
     
@@ -171,7 +171,7 @@ AddDerivationToCAP( TensorProductLeftInternalHomCompatibilityMorphismWithGivenOb
                           
                           TensorProductOnMorphisms( cat,
                                   TensorProductOnMorphisms( cat,
-                                          LeftClosedMonoidalEvaluationMorphism( cat, a1, b1 ),
+                                          ClosedMonoidalLeftEvaluationMorphism( cat, a1, b1 ),
                                           IdentityMorphism( cat, int_hom_a2_b2 ) ),
                                   id_a2 ),
                           
@@ -179,10 +179,10 @@ AddDerivationToCAP( TensorProductLeftInternalHomCompatibilityMorphismWithGivenOb
                           
                           TensorProductOnMorphisms( cat,
                                   IdentityMorphism( cat, b1 ),
-                                  LeftClosedMonoidalEvaluationMorphism( cat, a2, b2 ) ) ],
+                                  ClosedMonoidalLeftEvaluationMorphism( cat, a2, b2 ) ) ],
                         TensorProductOnObjects( cat, b1, b2 ) );
     
-    return TensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom( cat,
+    return TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom( cat,
                    source,
                    a1a2,
                    morphism,
@@ -191,17 +191,17 @@ AddDerivationToCAP( TensorProductLeftInternalHomCompatibilityMorphismWithGivenOb
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory );
 
 ##
-AddDerivationToCAP( LeftClosedMonoidalPreComposeMorphismWithGivenObjects,
-                    "LeftClosedMonoidalPreComposeMorphismWithGivenObjects using associator, braiding, evaluation, and tensor hom adjunction",
-                    [ [ LeftInternalHomOnObjects, 2 ],
+AddDerivationToCAP( MonoidalPreComposeMorphismWithGivenObjects,
+                    "MonoidalPreComposeMorphismWithGivenObjects using associator, braiding, evaluation, and tensor hom adjunction",
+                    [ [ InternalHomOnObjects, 2 ],
                       [ PreComposeList, 1 ],
                       [ AssociatorLeftToRight, 1 ],
                       [ TensorProductOnMorphisms, 2 ],
                       [ IdentityMorphism, 2 ],
                       [ Braiding, 2 ],
                       [ AssociatorRightToLeft, 1 ],
-                      [ LeftClosedMonoidalEvaluationMorphism, 2 ],
-                      [ TensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom, 1 ],
+                      [ ClosedMonoidalLeftEvaluationMorphism, 2 ],
+                      [ TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom, 1 ],
                       [ TensorProductOnObjects, 1 ] ],
                     
   function( cat, source, a, b, c, range )
@@ -236,9 +236,9 @@ AddDerivationToCAP( LeftClosedMonoidalPreComposeMorphismWithGivenObjects,
     #
     # Adjoint(  (Hom(a,b) ⊗ Hom(b,c)) ⊗ a → c ) = ( Hom(a,b) ⊗ Hom(b,c) → Hom(a,c) )
 
-    hom_a_b := LeftInternalHomOnObjects( cat, a, b );
+    hom_a_b := InternalHomOnObjects( cat, a, b );
     
-    hom_b_c := LeftInternalHomOnObjects( cat, b, c );
+    hom_b_c := InternalHomOnObjects( cat, b, c );
     
     morphism := PreComposeList( cat,
                         TensorProductOnObjects( cat,
@@ -253,15 +253,15 @@ AddDerivationToCAP( LeftClosedMonoidalPreComposeMorphismWithGivenObjects,
                           AssociatorRightToLeft( cat, hom_a_b, a, hom_b_c ),
                           
                           TensorProductOnMorphisms( cat,
-                                  LeftClosedMonoidalEvaluationMorphism( cat, a, b ),
+                                  ClosedMonoidalLeftEvaluationMorphism( cat, a, b ),
                                   IdentityMorphism( cat, hom_b_c ) ),
                           
                           Braiding( cat, b, hom_b_c ),
                           
-                          LeftClosedMonoidalEvaluationMorphism( cat, b, c ) ],
+                          ClosedMonoidalLeftEvaluationMorphism( cat, b, c ) ],
                         c );
     
-    return TensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom( cat,
+    return TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom( cat,
                    source,
                    a,
                    morphism,
@@ -270,12 +270,12 @@ AddDerivationToCAP( LeftClosedMonoidalPreComposeMorphismWithGivenObjects,
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory );
 
 ##
-AddDerivationToCAP( LeftClosedMonoidalPostComposeMorphismWithGivenObjects,
-                    "LeftClosedMonoidalPostComposeMorphismWithGivenObjects using LeftClosedMonoidalPreComposeMorphism and braiding",
+AddDerivationToCAP( MonoidalPostComposeMorphismWithGivenObjects,
+                    "MonoidalPostComposeMorphismWithGivenObjects using MonoidalPreComposeMorphism and braiding",
                     [ [ Braiding, 1 ],
-                      [ LeftInternalHomOnObjects, 2 ],
+                      [ InternalHomOnObjects, 2 ],
                       [ PreCompose, 1 ],
-                      [ LeftClosedMonoidalPreComposeMorphism, 1 ] ],
+                      [ MonoidalPreComposeMorphism, 1 ] ],
                     
   function( cat, source, a, b, c, range )
     local braiding;
@@ -290,19 +290,19 @@ AddDerivationToCAP( LeftClosedMonoidalPostComposeMorphismWithGivenObjects,
     #          v
     #       Hom(a,c)
     
-    braiding := Braiding( cat, LeftInternalHomOnObjects( cat, b, c ), LeftInternalHomOnObjects( cat, a, b ) );
+    braiding := Braiding( cat, InternalHomOnObjects( cat, b, c ), InternalHomOnObjects( cat, a, b ) );
     
-    return PreCompose( cat, braiding, LeftClosedMonoidalPreComposeMorphism( cat, a, b, c ) );
+    return PreCompose( cat, braiding, MonoidalPreComposeMorphism( cat, a, b, c ) );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory );
 
 ##
-AddDerivationToCAP( LeftClosedMonoidalPreComposeMorphismWithGivenObjects,
-                    "LeftClosedMonoidalPreComposeMorphismWithGivenObjects using LeftClosedMonoidalPostComposeMorphism and braiding",
+AddDerivationToCAP( MonoidalPreComposeMorphismWithGivenObjects,
+                    "MonoidalPreComposeMorphismWithGivenObjects using MonoidalPostComposeMorphism and braiding",
                     [ [ Braiding, 1 ],
-                      [ LeftInternalHomOnObjects, 2 ],
+                      [ InternalHomOnObjects, 2 ],
                       [ PreCompose, 1 ],
-                      [ LeftClosedMonoidalPostComposeMorphism, 1 ] ],
+                      [ MonoidalPostComposeMorphism, 1 ] ],
                     
   function( cat, source, a, b, c, range )
     local braiding;
@@ -317,23 +317,23 @@ AddDerivationToCAP( LeftClosedMonoidalPreComposeMorphismWithGivenObjects,
     #          v
     #       Hom(a,c)
     
-    braiding := Braiding( cat, LeftInternalHomOnObjects( cat, a, b ), LeftInternalHomOnObjects( cat, b, c ) );
+    braiding := Braiding( cat, InternalHomOnObjects( cat, a, b ), InternalHomOnObjects( cat, b, c ) );
     
-    return PreCompose( cat, braiding, LeftClosedMonoidalPostComposeMorphism( cat, a, b, c ) );
+    return PreCompose( cat, braiding, MonoidalPostComposeMorphism( cat, a, b, c ) );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory );
 
 ##
-AddDerivationToCAP( TensorProductLeftInternalHomCompatibilityMorphismWithGivenObjects,
-                    "TensorProductLeftInternalHomCompatibilityMorphismWithGivenObjects using braiding and the evaluation morphism",
-                    [ [ LeftInternalHomOnObjects, 2 ],
+AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphismWithGivenObjects,
+                    "TensorProductInternalHomCompatibilityMorphismWithGivenObjects using braiding and the evaluation morphism",
+                    [ [ InternalHomOnObjects, 2 ],
                       [ IdentityMorphism, 4 ],
                       [ TensorProductOnObjects, 3 ],
                       [ PreComposeList, 1 ],
                       [ TensorProductOnMorphisms, 5 ],
                       [ Braiding, 1 ],
-                      [ LeftClosedMonoidalEvaluationMorphism, 2 ],
-                      [ TensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom, 1 ] ],
+                      [ ClosedMonoidalLeftEvaluationMorphism, 2 ],
+                      [ TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom, 1 ] ],
                     
   function( cat, source, list, range )
     local a1, b1, a2, b2, a1a2, int_hom_a1_b1, int_hom_a2_b2, id_a2, morphism;
@@ -362,9 +362,9 @@ AddDerivationToCAP( TensorProductLeftInternalHomCompatibilityMorphismWithGivenOb
     
     a1a2 := TensorProductOnObjects( cat, a1, a2 );
     
-    int_hom_a1_b1 := LeftInternalHomOnObjects( cat, a1, b1 );
+    int_hom_a1_b1 := InternalHomOnObjects( cat, a1, b1 );
     
-    int_hom_a2_b2 := LeftInternalHomOnObjects( cat, a2, b2 );
+    int_hom_a2_b2 := InternalHomOnObjects( cat, a2, b2 );
     
     id_a2 := IdentityMorphism( cat, a2 );
     
@@ -380,16 +380,16 @@ AddDerivationToCAP( TensorProductLeftInternalHomCompatibilityMorphismWithGivenOb
                           
                           TensorProductOnMorphisms( cat,
                                   TensorProductOnMorphisms( cat,
-                                          LeftClosedMonoidalEvaluationMorphism( cat, a1, b1 ),
+                                          ClosedMonoidalLeftEvaluationMorphism( cat, a1, b1 ),
                                           IdentityMorphism( cat, int_hom_a2_b2 ) ),
                                   id_a2 ),
                           
                           TensorProductOnMorphisms( cat,
                                   IdentityMorphism( cat, b1 ),
-                                  LeftClosedMonoidalEvaluationMorphism( cat, a2, b2 ) ) ],
+                                  ClosedMonoidalLeftEvaluationMorphism( cat, a2, b2 ) ) ],
                         TensorProductOnObjects( cat, b1, b2 ) );
     
-    return TensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom( cat,
+    return TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom( cat,
                    source,
                    a1a2,
                    morphism,
@@ -398,15 +398,15 @@ AddDerivationToCAP( TensorProductLeftInternalHomCompatibilityMorphismWithGivenOb
 end : CategoryFilter := cat -> HasIsSymmetricClosedMonoidalCategory( cat ) and IsSymmetricClosedMonoidalCategory( cat ) and HasIsStrictMonoidalCategory( cat ) and IsStrictMonoidalCategory( cat ) );
 
 ##
-AddDerivationToCAP( LeftClosedMonoidalPreComposeMorphismWithGivenObjects,
-                    "LeftClosedMonoidalPreComposeMorphismWithGivenObjects using, braiding, evaluation, and tensor hom adjunction",
-                    [ [ LeftInternalHomOnObjects, 2 ],
+AddDerivationToCAP( MonoidalPreComposeMorphismWithGivenObjects,
+                    "MonoidalPreComposeMorphismWithGivenObjects using, braiding, evaluation, and tensor hom adjunction",
+                    [ [ InternalHomOnObjects, 2 ],
                       [ PreComposeList, 1 ],
                       [ TensorProductOnMorphisms, 2 ],
                       [ IdentityMorphism, 2 ],
                       [ Braiding, 2 ],
-                      [ LeftClosedMonoidalEvaluationMorphism, 2 ],
-                      [ TensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom, 1 ],
+                      [ ClosedMonoidalLeftEvaluationMorphism, 2 ],
+                      [ TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom, 1 ],
                       [ TensorProductOnObjects, 1 ] ],
                     
   function( cat, source, a, b, c, range )
@@ -433,9 +433,9 @@ AddDerivationToCAP( LeftClosedMonoidalPreComposeMorphismWithGivenObjects,
     #
     # Adjoint(  (Hom(a,b) ⊗ Hom(b,c)) ⊗ a → c ) = ( Hom(a,b) ⊗ Hom(b,c) → Hom(a,c) )
     
-    hom_a_b := LeftInternalHomOnObjects( cat, a, b );
+    hom_a_b := InternalHomOnObjects( cat, a, b );
     
-    hom_b_c := LeftInternalHomOnObjects( cat, b, c );
+    hom_b_c := InternalHomOnObjects( cat, b, c );
     
     morphism := PreComposeList( cat,
                         TensorProductOnObjects( cat,
@@ -446,15 +446,15 @@ AddDerivationToCAP( LeftClosedMonoidalPreComposeMorphismWithGivenObjects,
                                 Braiding( cat, hom_b_c, a ) ),
                           
                           TensorProductOnMorphisms( cat,
-                                  LeftClosedMonoidalEvaluationMorphism( cat, a, b ),
+                                  ClosedMonoidalLeftEvaluationMorphism( cat, a, b ),
                                   IdentityMorphism( cat, hom_b_c ) ),
                           
                           Braiding( cat, b, hom_b_c ),
                           
-                          LeftClosedMonoidalEvaluationMorphism( cat, b, c ) ],
+                          ClosedMonoidalLeftEvaluationMorphism( cat, b, c ) ],
                         c );
     
-    return TensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom( cat,
+    return TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom( cat,
                    source,
                    a,
                    morphism,

@@ -37,6 +37,15 @@ ReadPackage( "MonoidalCategories", "gap/LeftCoclosedMonoidalCategories.gd" );
 ReadPackage( "MonoidalCategories", "gap/LeftClosedMonoidalCategories.autogen.gd" );
 ReadPackage( "MonoidalCategories", "gap/LeftCoclosedMonoidalCategories.autogen.gd" );
 
+ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategoriesProperties.gd" );
+ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategoriesProperties.gd" );
+
+ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategories.gd" );
+ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategories.gd" );
+
+ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategories.autogen.gd" );
+ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategories.autogen.gd" );
+
 ## Symmetric C(oc)losed Monoidal
 
 ReadPackage( "MonoidalCategories", "gap/SymmetricClosedMonoidalCategoriesProperties.gd" );
@@ -58,6 +67,8 @@ ReadPackage( "MonoidalCategories", "gap/RigidSymmetricCoclosedMonoidalCategories
 ReadPackage( "MonoidalCategories", "gap/CreateMonoidalCategories.gd" );
 ReadPackage( "MonoidalCategories", "gap/CreateLeftClosedMonoidalCategories.gd" );
 ReadPackage( "MonoidalCategories", "gap/CreateLeftCoclosedMonoidalCategories.gd" );
+ReadPackage( "MonoidalCategories", "gap/CreateClosedMonoidalCategories.gd" );
+ReadPackage( "MonoidalCategories", "gap/CreateCoclosedMonoidalCategories.gd" );
 
 ## Synonyms
 
@@ -71,5 +82,7 @@ ReadPackage( "MonoidalCategories", "gap/AdditiveMonoidalCategoriesTest.gd" );
 ReadPackage( "MonoidalCategories", "gap/BraidedMonoidalCategoriesTest.gd" );
 ReadPackage( "MonoidalCategories", "gap/LeftClosedMonoidalCategoriesTest.gd" );
 ReadPackage( "MonoidalCategories", "gap/LeftCoclosedMonoidalCategoriesTest.gd" );
+ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategoriesTest.gd" );
+ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategoriesTest.gd" );
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricClosedMonoidalCategoriesTest.gd" );
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricCoclosedMonoidalCategoriesTest.gd" );

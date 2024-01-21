@@ -6,20 +6,20 @@
 
 InstallValue( RIGID_SYMMETRIC_LEFT_CLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD, rec(
 
-CoevaluationForLeftDual := rec(
+CoevaluationForDual := rec(
   filter_list := [ "category", "object" ],
   return_type := "morphism",
   input_arguments_names := [ "cat", "a" ],
   output_source_getter_string := "TensorUnit( cat )",
   output_source_getter_preconditions := [ [ "TensorUnit", 1 ] ],
-  output_range_getter_string := "TensorProductOnObjects( cat, a, LeftDualOnObjects( cat, a ) )",
-  output_range_getter_preconditions := [ [ "TensorProductOnObjects", 1 ], [ "LeftDualOnObjects", 1 ] ],
+  output_range_getter_string := "TensorProductOnObjects( cat, a, DualOnObjects( cat, a ) )",
+  output_range_getter_preconditions := [ [ "TensorProductOnObjects", 1 ], [ "DualOnObjects", 1 ] ],
   with_given_object_position := "both",
-  dual_operation := "LeftCoclosedMonoidalCoevaluationForLeftCoDual",
+  dual_operation := "CoclosedCoevaluationForCoDual",
   # Test in RigidSymmetricClosedMonoidalCategoriesTest
 ),
 
-CoevaluationForLeftDualWithGivenTensorProduct := rec(
+CoevaluationForDualWithGivenTensorProduct := rec(
   filter_list := [ "category", "object", "object", "object" ],
   return_type := "morphism",
   input_arguments_names := [ "cat", "s", "a", "r" ],
@@ -27,25 +27,25 @@ CoevaluationForLeftDualWithGivenTensorProduct := rec(
   output_source_getter_preconditions := [ ],
   output_range_getter_string := "r",
   output_range_getter_preconditions := [ ],
-  dual_operation := "LeftCoclosedMonoidalCoevaluationForLeftCoDualWithGivenTensorProduct",
+  dual_operation := "CoclosedCoevaluationForCoDualWithGivenTensorProduct",
   dual_arguments_reversed := true,
 ),
 
-MorphismFromLeftBidual := rec(
+MorphismFromBidual := rec(
   filter_list := [ "category", "object" ],
   return_type := "morphism",
   input_arguments_names := [ "cat", "a" ],
   output_range_getter_string := "a",
   output_range_getter_preconditions := [ ],
-  output_source_getter_string := "LeftDualOnObjects( cat, LeftDualOnObjects( cat, a ) )",
-  output_source_getter_preconditions := [ [ "LeftDualOnObjects", 2 ] ],
+  output_source_getter_string := "DualOnObjects( cat, DualOnObjects( cat, a ) )",
+  output_source_getter_preconditions := [ [ "DualOnObjects", 2 ] ],
   output_range_getter_string := "a",
   with_given_object_position := "Source",
-  dual_operation := "MorphismToLeftCoBidual",
+  dual_operation := "MorphismToCoBidual",
   # Test in RigidSymmetricClosedMonoidalCategoriesTest
 ),
 
-MorphismFromLeftBidualWithGivenLeftBidual := rec(
+MorphismFromBidualWithGivenBidual := rec(
   filter_list := [ "category", "object", "object" ],
   return_type := "morphism",
   input_arguments_names := [ "cat", "a", "s" ],
@@ -53,53 +53,53 @@ MorphismFromLeftBidualWithGivenLeftBidual := rec(
   output_source_getter_preconditions := [ ],
   output_range_getter_string := "a",
   output_range_getter_preconditions := [ ],
-  dual_operation := "MorphismToLeftCoBidualWithGivenLeftCoBidual",
+  dual_operation := "MorphismToCoBidualWithGivenCoBidual",
   dual_arguments_reversed := false,
 ),
 
-TensorProductLeftInternalHomCompatibilityMorphismInverse := rec(
+TensorProductInternalHomCompatibilityMorphismInverse := rec(
   filter_list := [ "category", "list_of_objects" ],
   return_type := "morphism",
   input_arguments_names := [ "cat", "list" ],
-  output_source_getter_string := "LeftInternalHomOnObjects( cat, TensorProductOnObjects( cat, list[1], list[3] ), TensorProductOnObjects( cat, list[2], list[4] ) )",
-  output_source_getter_preconditions := [ [ "LeftInternalHomOnObjects", 1 ], [ "TensorProductOnObjects", 2 ] ],
-  output_range_getter_string := "TensorProductOnObjects( cat, LeftInternalHomOnObjects( cat, list[1], list[2] ), LeftInternalHomOnObjects( cat, list[3], list[4] ) )",
-  output_range_getter_preconditions := [ [ "TensorProductOnObjects", 1 ], [ "LeftInternalHomOnObjects", 2 ] ],
+  output_source_getter_string := "InternalHomOnObjects( cat, TensorProductOnObjects( cat, list[1], list[3] ), TensorProductOnObjects( cat, list[2], list[4] ) )",
+  output_source_getter_preconditions := [ [ "InternalHomOnObjects", 1 ], [ "TensorProductOnObjects", 2 ] ],
+  output_range_getter_string := "TensorProductOnObjects( cat, InternalHomOnObjects( cat, list[1], list[2] ), InternalHomOnObjects( cat, list[3], list[4] ) )",
+  output_range_getter_preconditions := [ [ "TensorProductOnObjects", 1 ], [ "InternalHomOnObjects", 2 ] ],
   with_given_object_position := "both",
-  dual_operation := "LeftInternalCoHomTensorProductCompatibilityMorphismInverse",
+  dual_operation := "InternalCoHomTensorProductCompatibilityMorphismInverse",
   dual_preprocessor_func :=
     { cat, list } -> Pair( Opposite( cat ), [ Opposite( list[2] ), Opposite( list[4] ), Opposite( list[1] ), Opposite( list[3] ) ] ),
   dual_arguments_reversed := false,
   # Test in RigidSymmetricClosedMonoidalCategoriesTest
 ),
 
-TensorProductLeftInternalHomCompatibilityMorphismInverseWithGivenObjects := rec(
+TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects := rec(
   filter_list := [ "category", "object", "list_of_objects", "object" ],
   return_type := "morphism",
   input_arguments_names := [ "cat", "source", "list", "range" ],
   output_source_getter_string := "source",
   output_range_getter_string := "range",
-  dual_operation := "LeftInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects",
+  dual_operation := "InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects",
   dual_preprocessor_func :=
     { cat, s, list, r } -> NTuple( 4, Opposite( cat ), Opposite( r ), [ Opposite( list[2] ), Opposite( list[4] ), Opposite( list[1] ), Opposite( list[3] ) ], Opposite( s ) ),
   dual_arguments_reversed := false,
 ),
 
-MorphismFromLeftInternalHomToTensorProduct := rec(
+MorphismFromInternalHomToTensorProduct := rec(
   filter_list := [ "category", "object", "object" ],
   return_type := "morphism",
   input_arguments_names := [ "cat", "a", "b" ],
-  output_source_getter_string := "LeftInternalHomOnObjects( cat, a, b )",
-  output_source_getter_preconditions := [ [ "LeftInternalHomOnObjects", 1 ] ],
-  output_range_getter_string := "TensorProductOnObjects( cat, LeftDualOnObjects( cat, a ), b )",
-  output_range_getter_preconditions := [ [ "TensorProductOnObjects", 1 ], [ "LeftDualOnObjects", 1 ] ],
+  output_source_getter_string := "InternalHomOnObjects( cat, a, b )",
+  output_source_getter_preconditions := [ [ "InternalHomOnObjects", 1 ] ],
+  output_range_getter_string := "TensorProductOnObjects( cat, DualOnObjects( cat, a ), b )",
+  output_range_getter_preconditions := [ [ "TensorProductOnObjects", 1 ], [ "DualOnObjects", 1 ] ],
   with_given_object_position := "both",
-  dual_operation := "MorphismFromTensorProductToLeftInternalCoHom",
+  dual_operation := "MorphismFromTensorProductToInternalCoHom",
   dual_arguments_reversed := false,
   # Test in RigidSymmetricClosedMonoidalCategoriesTest
 ),
 
-MorphismFromLeftInternalHomToTensorProductWithGivenObjects := rec(
+MorphismFromInternalHomToTensorProductWithGivenObjects := rec(
   filter_list := [ "category", "object", "object", "object", "object" ],
   return_type := "morphism",
   input_arguments_names := [ "cat", "s", "a", "b", "r" ],
@@ -107,7 +107,7 @@ MorphismFromLeftInternalHomToTensorProductWithGivenObjects := rec(
   output_source_getter_preconditions := [ ],
   output_range_getter_string := "r",
   output_range_getter_preconditions := [ ],
-  dual_operation := "MorphismFromTensorProductToLeftInternalCoHomWithGivenObjects",
+  dual_operation := "MorphismFromTensorProductToInternalCoHomWithGivenObjects",
   dual_with_given_objects_reversed := true,
 ),
 
@@ -127,20 +127,20 @@ RankMorphism := rec(
   # Test in RigidSymmetricClosedMonoidalCategoriesTest
 ),
 
-IsomorphismFromTensorProductWithLeftDualObjectToLeftInternalHom := rec(
+IsomorphismFromTensorProductWithDualObjectToInternalHom := rec(
   filter_list := [ "category", "object", "object" ],
   return_type := "morphism",
   input_arguments_names := [ "cat", "a", "b" ],
-  dual_operation := "IsomorphismFromLeftInternalCoHomToTensorProductWithLeftCoDualObject",
+  dual_operation := "IsomorphismFromInternalCoHomToTensorProductWithCoDualObject",
   dual_arguments_reversed := true,
   # Test in RigidSymmetricClosedMonoidalCategoriesTest
 ),
 
-IsomorphismFromLeftInternalHomToTensorProductWithLeftDualObject := rec(
+IsomorphismFromInternalHomToTensorProductWithDualObject := rec(
   filter_list := [ "category", "object", "object" ],
   return_type := "morphism",
   input_arguments_names := [ "cat", "a", "b" ],
-  dual_operation := "IsomorphismFromTensorProductWithLeftCoDualObjectToLeftInternalCoHom",
+  dual_operation := "IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom",
   dual_arguments_reversed := false,
   # Test in RigidSymmetricClosedMonoidalCategoriesTest
 ),

@@ -45,11 +45,11 @@ AddDerivationToCAP( MorphismToCartesianBidualWithGivenCartesianBidual,
                     [ [ CartesianDualOnObjects, 1 ],
                       [ TerminalObject, 1 ],
                       [ PreComposeList, 1 ],
-                      [ CartesianCoevaluationMorphism, 1 ],
+                      [ CartesianLeftCoevaluationMorphism, 1 ],
                       [ ExponentialOnMorphisms, 2 ],
                       [ IdentityMorphism, 2 ],
                       [ CartesianBraiding, 1 ],
-                      [ CartesianEvaluationMorphism, 1 ] ],
+                      [ CartesianLeftEvaluationMorphism, 1 ] ],
                     
   function( cat, a, avv )
     local av, morphism;
@@ -72,7 +72,7 @@ AddDerivationToCAP( MorphismToCartesianBidualWithGivenCartesianBidual,
     
     morphism := PreComposeList( cat,
                         a,
-                        [ CartesianCoevaluationMorphism( cat, a, av ),
+                        [ CartesianLeftCoevaluationMorphism( cat, a, av ),
                           
                           ExponentialOnMorphisms( cat,
                                   IdentityMorphism( cat, av ),
@@ -80,7 +80,7 @@ AddDerivationToCAP( MorphismToCartesianBidualWithGivenCartesianBidual,
                           
                           ExponentialOnMorphisms( cat,
                                   IdentityMorphism( cat, av ),
-                                  CartesianEvaluationMorphism( cat, a, TerminalObject( cat ) ) ) ],
+                                  CartesianLeftEvaluationMorphism( cat, a, TerminalObject( cat ) ) ) ],
                         avv );
     
     return morphism;
@@ -98,8 +98,8 @@ AddDerivationToCAP( DirectProductExponentialCompatibilityMorphismWithGivenObject
                       [ DirectProductOnMorphisms, 7 ],
                       [ CartesianAssociatorLeftToRight, 2 ],
                       [ CartesianBraiding, 1 ],
-                      [ CartesianEvaluationMorphism, 2 ],
-                      [ DirectProductToExponentialAdjunctionMapWithGivenExponential, 1 ] ],
+                      [ CartesianLeftEvaluationMorphism, 2 ],
+                      [ DirectProductToExponentialLeftAdjunctionMapWithGivenExponential, 1 ] ],
                     
   function( cat, source, list, range )
     local a1, b1, a2, b2, a1a2, exp_a1_b1, exp_a2_b2, id_a2, morphism;
@@ -174,7 +174,7 @@ AddDerivationToCAP( DirectProductExponentialCompatibilityMorphismWithGivenObject
                           
                           DirectProductOnMorphisms( cat,
                                   DirectProductOnMorphisms( cat,
-                                          CartesianEvaluationMorphism( cat, a1, b1 ),
+                                          CartesianLeftEvaluationMorphism( cat, a1, b1 ),
                                           IdentityMorphism( cat, exp_a2_b2 ) ),
                                   id_a2 ),
                           
@@ -182,10 +182,10 @@ AddDerivationToCAP( DirectProductExponentialCompatibilityMorphismWithGivenObject
                           
                           DirectProductOnMorphisms( cat,
                                   IdentityMorphism( cat, b1 ),
-                                  CartesianEvaluationMorphism( cat, a2, b2 ) ) ],
+                                  CartesianLeftEvaluationMorphism( cat, a2, b2 ) ) ],
                         BinaryDirectProduct( cat, b1, b2 ) );
     
-    return DirectProductToExponentialAdjunctionMapWithGivenExponential( cat,
+    return DirectProductToExponentialLeftAdjunctionMapWithGivenExponential( cat,
                    source,
                    a1a2,
                    morphism,
@@ -203,8 +203,8 @@ AddDerivationToCAP( CartesianPreComposeMorphismWithGivenObjects,
                       [ IdentityMorphism, 2 ],
                       [ CartesianBraiding, 2 ],
                       [ CartesianAssociatorRightToLeft, 1 ],
-                      [ CartesianEvaluationMorphism, 2 ],
-                      [ DirectProductToExponentialAdjunctionMapWithGivenExponential, 1 ],
+                      [ CartesianLeftEvaluationMorphism, 2 ],
+                      [ DirectProductToExponentialLeftAdjunctionMapWithGivenExponential, 1 ],
                       [ DirectProduct, 1 ] ],
                     
   function( cat, source, a, b, c, range )
@@ -256,15 +256,15 @@ AddDerivationToCAP( CartesianPreComposeMorphismWithGivenObjects,
                           CartesianAssociatorRightToLeft( cat, exp_a_b, a, exp_b_c ),
                           
                           DirectProductOnMorphisms( cat,
-                                  CartesianEvaluationMorphism( cat, a, b ),
+                                  CartesianLeftEvaluationMorphism( cat, a, b ),
                                   IdentityMorphism( cat, exp_b_c ) ),
                           
                           CartesianBraiding( cat, b, exp_b_c ),
                           
-                          CartesianEvaluationMorphism( cat, b, c ) ],
+                          CartesianLeftEvaluationMorphism( cat, b, c ) ],
                         c );
     
-    return DirectProductToExponentialAdjunctionMapWithGivenExponential( cat,
+    return DirectProductToExponentialLeftAdjunctionMapWithGivenExponential( cat,
                    source,
                    a,
                    morphism,
@@ -335,8 +335,8 @@ AddDerivationToCAP( DirectProductExponentialCompatibilityMorphismWithGivenObject
                       [ PreComposeList, 1 ],
                       [ DirectProductOnMorphisms, 5 ],
                       [ CartesianBraiding, 1 ],
-                      [ CartesianEvaluationMorphism, 2 ],
-                      [ DirectProductToExponentialAdjunctionMapWithGivenExponential, 1 ] ],
+                      [ CartesianLeftEvaluationMorphism, 2 ],
+                      [ DirectProductToExponentialLeftAdjunctionMapWithGivenExponential, 1 ] ],
                     
   function( cat, source, list, range )
     local a1, b1, a2, b2, a1a2, exp_a1_b1, exp_a2_b2, id_a2, morphism;
@@ -383,16 +383,16 @@ AddDerivationToCAP( DirectProductExponentialCompatibilityMorphismWithGivenObject
                           
                           DirectProductOnMorphisms( cat,
                                   DirectProductOnMorphisms( cat,
-                                          CartesianEvaluationMorphism( cat, a1, b1 ),
+                                          CartesianLeftEvaluationMorphism( cat, a1, b1 ),
                                           IdentityMorphism( cat, exp_a2_b2 ) ),
                                   id_a2 ),
                           
                           DirectProductOnMorphisms( cat,
                                   IdentityMorphism( cat, b1 ),
-                                  CartesianEvaluationMorphism( cat, a2, b2 ) ) ],
+                                  CartesianLeftEvaluationMorphism( cat, a2, b2 ) ) ],
                         BinaryDirectProduct( cat, b1, b2 ) );
     
-    return DirectProductToExponentialAdjunctionMapWithGivenExponential( cat,
+    return DirectProductToExponentialLeftAdjunctionMapWithGivenExponential( cat,
                    source,
                    a1a2,
                    morphism,
@@ -408,8 +408,8 @@ AddDerivationToCAP( CartesianPreComposeMorphismWithGivenObjects,
                       [ DirectProductOnMorphisms, 2 ],
                       [ IdentityMorphism, 2 ],
                       [ CartesianBraiding, 2 ],
-                      [ CartesianEvaluationMorphism, 2 ],
-                      [ DirectProductToExponentialAdjunctionMapWithGivenExponential, 1 ],
+                      [ CartesianLeftEvaluationMorphism, 2 ],
+                      [ DirectProductToExponentialLeftAdjunctionMapWithGivenExponential, 1 ],
                       [ DirectProduct, 1 ] ],
                     
   function( cat, source, a, b, c, range )
@@ -449,15 +449,15 @@ AddDerivationToCAP( CartesianPreComposeMorphismWithGivenObjects,
                                 CartesianBraiding( cat, exp_b_c, a ) ),
                           
                           DirectProductOnMorphisms( cat,
-                                  CartesianEvaluationMorphism( cat, a, b ),
+                                  CartesianLeftEvaluationMorphism( cat, a, b ),
                                   IdentityMorphism( cat, exp_b_c ) ),
                           
                           CartesianBraiding( cat, b, exp_b_c ),
                           
-                          CartesianEvaluationMorphism( cat, b, c ) ],
+                          CartesianLeftEvaluationMorphism( cat, b, c ) ],
                         c );
     
-    return DirectProductToExponentialAdjunctionMapWithGivenExponential( cat,
+    return DirectProductToExponentialLeftAdjunctionMapWithGivenExponential( cat,
                    source,
                    a,
                    morphism,

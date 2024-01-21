@@ -1043,10 +1043,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         ## Operations related to the tensor-hom adjunction
         
         ##
-        AddLeftDualOnObjects( category, { cat, obj } -> obj );
+        AddDualOnObjects( category, { cat, obj } -> obj );
         
         ##
-        AddLeftDualOnMorphismsWithGivenLeftDuals( category,
+        AddDualOnMorphismsWithGivenDuals( category,
           function( cat, dual_source, morphism, dual_range )
             
             return CategoryOfRowsMorphism( cat, dual_source,
@@ -1056,7 +1056,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         end );
         
         ##
-        AddLeftClosedMonoidalEvaluationForLeftDualWithGivenTensorProduct( category,
+        AddEvaluationForDualWithGivenTensorProduct( category,
           function( cat, tensor_object, object, unit )
             local rank, id;
             
@@ -1071,7 +1071,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         end );
         
         ##
-        AddCoevaluationForLeftDualWithGivenTensorProduct( category,
+        AddCoevaluationForDualWithGivenTensorProduct( category,
           function( cat, unit, object, tensor_object )
             local rank, id;
             
@@ -1086,15 +1086,15 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         end );
        
         ##
-        AddMorphismToLeftBidualWithGivenLeftBidual( category, { cat, obj, dual } -> IdentityMorphism( cat, obj ) );
+        AddMorphismToBidualWithGivenBidual( category, { cat, obj, dual } -> IdentityMorphism( cat, obj ) );
 
         ## Operations related to the cohom-tensor adjunction
 
         ##
-        AddLeftCoDualOnObjects( category, { cat, obj } -> obj );
+        AddCoDualOnObjects( category, { cat, obj } -> obj );
 
         ##
-        AddLeftCoDualOnMorphismsWithGivenLeftCoDuals( category,
+        AddCoDualOnMorphismsWithGivenCoDuals( category,
           function( cat, codual_source, morphism, codual_range )
             
             return CategoryOfRowsMorphism( cat, codual_source,
@@ -1104,7 +1104,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         end );
         
         ##
-        AddLeftCoclosedMonoidalEvaluationForLeftCoDualWithGivenTensorProduct( category,
+        AddCoclosedEvaluationForCoDualWithGivenTensorProduct( category,
           function( cat, unit, object, tensor_object )
             local rank, id;
             
@@ -1119,7 +1119,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         end );
         
         ##
-        AddLeftCoclosedMonoidalCoevaluationForLeftCoDualWithGivenTensorProduct( category,
+        AddCoclosedCoevaluationForCoDualWithGivenTensorProduct( category,
           function( cat, tensor_object, object, unit )
             local rank, id;
             
@@ -1134,7 +1134,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         end );
        
         ##
-        AddMorphismFromLeftCoBidualWithGivenLeftCoBidual( category, { cat, obj, codual } -> IdentityMorphism( cat, obj ) );
+        AddMorphismFromCoBidualWithGivenCoBidual( category, { cat, obj, codual } -> IdentityMorphism( cat, obj ) );
         
     fi; ## commutative case
     

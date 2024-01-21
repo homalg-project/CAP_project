@@ -11,10 +11,10 @@
 ##
 AddFinalDerivationBundle( "adding the homomorphism structure using the closed monoidal structure",
                     [ [ TensorUnit, 1 ],
-                      [ LeftInternalHomOnObjects, 1 ],
-                      [ LeftInternalHomOnMorphismsWithGivenLeftInternalHoms, 1 ],
-                      [ LeftClosedMonoidalLambdaIntroduction, 1 ],
-                      [ LeftClosedMonoidalLambdaElimination, 1 ],
+                      [ InternalHomOnObjects, 1 ],
+                      [ InternalHomOnMorphismsWithGivenInternalHoms, 1 ],
+                      [ LambdaIntroduction, 1 ],
+                      [ LambdaElimination, 1 ],
                       ],
                     [
                       DistinguishedObjectOfHomomorphismStructure,
@@ -36,38 +36,38 @@ AddFinalDerivationBundle( "adding the homomorphism structure using the closed mo
 ],
 [
   HomomorphismStructureOnObjects,
-  [ [ LeftInternalHomOnObjects, 1 ] ],
+  [ [ InternalHomOnObjects, 1 ] ],
   function ( cat, a, b )
     
-    return LeftInternalHomOnObjects( cat, a, b );
+    return InternalHomOnObjects( cat, a, b );
     
 end
 ],
 [
   HomomorphismStructureOnMorphismsWithGivenObjects,
-  [ [ LeftInternalHomOnMorphismsWithGivenLeftInternalHoms, 1 ] ],
+  [ [ InternalHomOnMorphismsWithGivenInternalHoms, 1 ] ],
   function ( cat, s, alpha, beta, r )
     
-    return LeftInternalHomOnMorphismsWithGivenLeftInternalHoms( cat, s, alpha, beta, r );
+    return InternalHomOnMorphismsWithGivenInternalHoms( cat, s, alpha, beta, r );
     
 end
 ],
 [
   InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure,
-  [ [ LeftClosedMonoidalLambdaIntroduction, 1 ] ],
+  [ [ LambdaIntroduction, 1 ] ],
   function( cat, alpha )
     local iota;
     
-    return LeftClosedMonoidalLambdaIntroduction( cat, alpha );
+    return LambdaIntroduction( cat, alpha );
     
   end
 ],
 [
   InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism,
-  [ [ LeftClosedMonoidalLambdaElimination, 1 ] ],
+  [ [ LambdaElimination, 1 ] ],
   function ( cat, a, b, iota )
     
-    return LeftClosedMonoidalLambdaElimination( cat, a, b, iota );
+    return LambdaElimination( cat, a, b, iota );
     
   end
 ] : CategoryFilter := function( cat )

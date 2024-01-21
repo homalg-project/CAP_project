@@ -10,12 +10,14 @@ T := TerminalCategoryWithSingleObject( );
 Display( T );
 #! A CAP category with name TerminalCategoryWithSingleObject( ):
 #! 
-#! 64 primitive operations were used to derive 313 operations for this category \
+#! 72 primitive operations were used to derive 367 operations for this category \
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing
+#! * IsLeftClosedMonoidalCategory
+#! * IsLeftCoclosedMonoidalCategory
 #! * IsAbelianCategoryWithEnoughInjectives
 #! * IsAbelianCategoryWithEnoughProjectives
 #! * IsRigidSymmetricClosedMonoidalCategory
