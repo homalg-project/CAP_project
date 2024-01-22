@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "InternalExteriorAlgebraForCAP",
 Subtitle := "Constructions for Modules over the Internal Exterior Algebra for CAP",
-Version := "2023.03-01",
-Date := "2023-03-27",
+Version := "2024.01-01",
+Date := "2024-01-22",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -71,6 +71,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.12.1",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
+                           [ "MonoidalCategories", ">=2024.01-06" ],
                            [ "ActionsForCAP", ">=2017.01.11" ],
                            [ "GroupRepresentationsForCAP", ">=2017.01.11" ],
                            [ "ComplexesAndFilteredObjectsForCAP", ">=2015.10.20" ]
