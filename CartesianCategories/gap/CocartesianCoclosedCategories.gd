@@ -20,8 +20,8 @@ DeclareGlobalVariable( "COCARTESIAN_COCLOSED_CATEGORIES_METHOD_NAME_RECORD" );
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCoclosedCategory  := Concatenation( [
 "CoexponentialOnObjects",
 "CoexponentialOnMorphismsWithGivenCoexponentials",
-"CocartesianEvaluationMorphismWithGivenRange",
-"CocartesianCoevaluationMorphismWithGivenSource"
+"CocartesianLeftEvaluationMorphismWithGivenRange",
+"CocartesianLeftCoevaluationMorphismWithGivenSource"
 ], CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory );
 
 #! @Description
@@ -58,7 +58,7 @@ DeclareOperation( "CoexponentialOnMorphismsWithGivenCoexponentials",
 #! the unit of the coexponential-coproduct adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{Coexponential}(a,b) \sqcup b )$.
 #! @Arguments a, b
-DeclareOperation( "CocartesianEvaluationMorphism",
+DeclareOperation( "CocartesianLeftEvaluationMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
@@ -67,7 +67,7 @@ DeclareOperation( "CocartesianEvaluationMorphism",
 #! the unit of the coexponential-coproduct adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( a, r )$.
 #! @Arguments a, b, r
-DeclareOperation( "CocartesianEvaluationMorphismWithGivenRange",
+DeclareOperation( "CocartesianLeftEvaluationMorphismWithGivenRange",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
@@ -76,7 +76,7 @@ DeclareOperation( "CocartesianEvaluationMorphismWithGivenRange",
 #! the counit of the coexponential-coproduct adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Coexponential}(a \sqcup b, b), a )$.
 #! @Arguments a, b
-DeclareOperation( "CocartesianCoevaluationMorphism",
+DeclareOperation( "CocartesianLeftCoevaluationMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
@@ -85,7 +85,7 @@ DeclareOperation( "CocartesianCoevaluationMorphism",
 #! the unit of the coexponential-coproduct adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( s, a )$.
 #! @Arguments a, b, s
-DeclareOperation( "CocartesianCoevaluationMorphismWithGivenSource",
+DeclareOperation( "CocartesianLeftCoevaluationMorphismWithGivenSource",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
@@ -94,7 +94,7 @@ DeclareOperation( "CocartesianCoevaluationMorphismWithGivenSource",
 #! corresponding to $g$ under the coexponential-coproduct adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Coexponential}(a,b), c )$.
 #! @Arguments c, b, g
-DeclareOperation( "CoproductToCoexponentialAdjunctionMap",
+DeclareOperation( "CoproductToCoexponentialLeftAdjunctionMap",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
@@ -103,7 +103,7 @@ DeclareOperation( "CoproductToCoexponentialAdjunctionMap",
 #! corresponding to $g$ under the coexponential-coproduct adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( i, c )$.
 #! @Arguments c, b, g, i
-DeclareOperation( "CoproductToCoexponentialAdjunctionMapWithGivenCoexponential",
+DeclareOperation( "CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
@@ -112,7 +112,7 @@ DeclareOperation( "CoproductToCoexponentialAdjunctionMapWithGivenCoexponential",
 #! coexponential-coproduct adjunction.
 #! @Returns a morphism in $\mathrm{Hom}(a, c \sqcup b)$.
 #! @Arguments a, b, f
-DeclareOperation( "CoexponentialToCoproductAdjunctionMap",
+DeclareOperation( "CoexponentialToCoproductLeftAdjunctionMap",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
@@ -121,7 +121,7 @@ DeclareOperation( "CoexponentialToCoproductAdjunctionMap",
 #! coexponential-coproduct adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( a, t )$.
 #! @Arguments a, b, f, t
-DeclareOperation( "CoexponentialToCoproductAdjunctionMapWithGivenCoproduct",
+DeclareOperation( "CoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description

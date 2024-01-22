@@ -38,6 +38,15 @@ ReadPackage( "MonoidalCategories", "gap/LeftCoclosedMonoidalCategoriesMethodReco
 ReadPackage( "MonoidalCategories", "gap/LeftClosedMonoidalCategories.gi" );
 ReadPackage( "MonoidalCategories", "gap/LeftCoclosedMonoidalCategories.gi" );
 
+ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategoriesProperties.gi" );
+ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategoriesProperties.gi" );
+
+ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategoriesMethodRecord.gi" );
+ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategoriesMethodRecord.gi" );
+
+ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategories.gi" );
+ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategories.gi" );
+
 ## Symmetric (Co)Closed Monoidal
 
 ReadPackage( "MonoidalCategories", "gap/SymmetricClosedMonoidalCategoriesProperties.gi" );
@@ -64,6 +73,9 @@ ReadPackage( "MonoidalCategories", "gap/SymmetricMonoidalCategoriesDerivedMethod
 ReadPackage( "MonoidalCategories", "gap/LeftClosedMonoidalCategoriesDerivedMethods.gi" );
 ReadPackage( "MonoidalCategories", "gap/LeftCoclosedMonoidalCategoriesDerivedMethods.gi" );
 
+ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategoriesDerivedMethods.gi" );
+ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategoriesDerivedMethods.gi" );
+
 ReadPackage( "MonoidalCategories", "gap/SymmetricClosedMonoidalCategoriesDerivedMethods.gi" );
 ReadPackage( "MonoidalCategories", "gap/SymmetricCoclosedMonoidalCategoriesDerivedMethods.gi" );
 
@@ -79,10 +91,8 @@ ReadPackage( "MonoidalCategories", "gap/HomomorphismStructureDerivedMethods.gi" 
 ReadPackage( "MonoidalCategories", "gap/CreateMonoidalCategories.gi" );
 ReadPackage( "MonoidalCategories", "gap/CreateLeftClosedMonoidalCategories.gi" );
 ReadPackage( "MonoidalCategories", "gap/CreateLeftCoclosedMonoidalCategories.gi" );
-
-## Synonyms
-
-ReadPackage( "MonoidalCategories", "gap/Synonyms.gi" );
+ReadPackage( "MonoidalCategories", "gap/CreateClosedMonoidalCategories.gi" );
+ReadPackage( "MonoidalCategories", "gap/CreateCoclosedMonoidalCategories.gi" );
 
 ## Test methods
 
@@ -92,5 +102,7 @@ ReadPackage( "MonoidalCategories", "gap/AdditiveMonoidalCategoriesTest.gi" );
 ReadPackage( "MonoidalCategories", "gap/BraidedMonoidalCategoriesTest.gi" );
 ReadPackage( "MonoidalCategories", "gap/LeftClosedMonoidalCategoriesTest.gi" );
 ReadPackage( "MonoidalCategories", "gap/LeftCoclosedMonoidalCategoriesTest.gi" );
+ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategoriesTest.gi" );
+ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategoriesTest.gi" );
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricClosedMonoidalCategoriesTest.gi" );
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricCoclosedMonoidalCategoriesTest.gi" );

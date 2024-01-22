@@ -76,6 +76,50 @@ end
     , 100 );
     
     ##
+    AddCoDualOnMorphismsWithGivenCoDuals( cat,
+        
+########
+function ( cat_1, s_1, alpha_1, r_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, TransposedMatrix( UnderlyingMatrix( alpha_1 ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddCoDualOnObjects( cat,
+        
+########
+function ( cat_1, a_1 )
+    return a_1;
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddCoclosedCoevaluationForCoDualWithGivenTensorProduct( cat,
+        
+########
+function ( cat_1, s_1, a_1, r_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, ConvertMatrixToRow( HomalgIdentityMatrix( RankOfObject( a_1 ), UnderlyingRing( cat_1 ) ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddCoclosedEvaluationForCoDualWithGivenTensorProduct( cat,
+        
+########
+function ( cat_1, s_1, a_1, r_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, ConvertMatrixToColumn( HomalgIdentityMatrix( RankOfObject( a_1 ), UnderlyingRing( cat_1 ) ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddCoefficientsOfMorphism( cat,
         
 ########
@@ -87,7 +131,7 @@ end
     , 100 );
     
     ##
-    AddCoevaluationForLeftDualWithGivenTensorProduct( cat,
+    AddCoevaluationForDualWithGivenTensorProduct( cat,
         
 ########
 function ( cat_1, s_1, a_1, r_1 )
@@ -175,6 +219,39 @@ end
 ########
 function ( cat_1 )
     return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, 1 );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddDualOnMorphismsWithGivenDuals( cat,
+        
+########
+function ( cat_1, s_1, alpha_1, r_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, TransposedMatrix( UnderlyingMatrix( alpha_1 ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddDualOnObjects( cat,
+        
+########
+function ( cat_1, a_1 )
+    return a_1;
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddEvaluationForDualWithGivenTensorProduct( cat,
+        
+########
+function ( cat_1, s_1, a_1, r_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, ConvertMatrixToRow( HomalgIdentityMatrix( RankOfObject( a_1 ), UnderlyingRing( cat_1 ) ) ) );
 end
 ########
         
@@ -383,83 +460,6 @@ end
     , 100 );
     
     ##
-    AddLeftClosedMonoidalEvaluationForLeftDualWithGivenTensorProduct( cat,
-        
-########
-function ( cat_1, s_1, a_1, r_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, ConvertMatrixToRow( HomalgIdentityMatrix( RankOfObject( a_1 ), UnderlyingRing( cat_1 ) ) ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddLeftCoDualOnMorphismsWithGivenLeftCoDuals( cat,
-        
-########
-function ( cat_1, s_1, alpha_1, r_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, TransposedMatrix( UnderlyingMatrix( alpha_1 ) ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddLeftCoDualOnObjects( cat,
-        
-########
-function ( cat_1, a_1 )
-    return a_1;
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddLeftCoclosedMonoidalCoevaluationForLeftCoDualWithGivenTensorProduct( cat,
-        
-########
-function ( cat_1, s_1, a_1, r_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, ConvertMatrixToRow( HomalgIdentityMatrix( RankOfObject( a_1 ), UnderlyingRing( cat_1 ) ) ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddLeftCoclosedMonoidalEvaluationForLeftCoDualWithGivenTensorProduct( cat,
-        
-########
-function ( cat_1, s_1, a_1, r_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, ConvertMatrixToColumn( HomalgIdentityMatrix( RankOfObject( a_1 ), UnderlyingRing( cat_1 ) ) ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddLeftDualOnMorphismsWithGivenLeftDuals( cat,
-        
-########
-function ( cat_1, s_1, alpha_1, r_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, UnderlyingMatrix, TransposedMatrix( UnderlyingMatrix( alpha_1 ) ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddLeftDualOnObjects( cat,
-        
-########
-function ( cat_1, a_1 )
-    return a_1;
-end
-########
-        
-    , 100 );
-    
-    ##
     AddLift( cat,
         
 ########
@@ -504,7 +504,7 @@ end
     , 100 );
     
     ##
-    AddMorphismFromLeftCoBidualWithGivenLeftCoBidual( cat,
+    AddMorphismFromCoBidualWithGivenCoBidual( cat,
         
 ########
 function ( cat_1, a_1, s_1 )
@@ -515,7 +515,7 @@ end
     , 100 );
     
     ##
-    AddMorphismToLeftBidualWithGivenLeftBidual( cat,
+    AddMorphismToBidualWithGivenBidual( cat,
         
 ########
 function ( cat_1, a_1, r_1 )

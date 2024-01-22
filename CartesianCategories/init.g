@@ -59,6 +59,10 @@ ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategories.autogen.g
 
 ReadPackage( "CartesianCategories", "gap/BicartesianCategories.gd" );
 
+## Synonyms
+
+ReadPackage( "CartesianCategories", "gap/Synonyms.gd" );
+
 ## Test methods
 
 ReadPackage( "CartesianCategories", "gap/CartesianCategoriesTest.gd" );

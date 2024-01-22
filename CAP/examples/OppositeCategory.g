@@ -1,7 +1,7 @@
 #! @Chapter Examples and Tests
 
 #! @Section Opposite category
-LoadPackage( "LinearAlgebraForCAP", ">= 2024.01-03", false );
+LoadPackage( "LinearAlgebraForCAP", ">= 2024.01-04", false );
 
 #! @Example
 QQ := HomalgFieldOfRationals();;
@@ -9,15 +9,16 @@ vec := MatrixCategory( QQ );;
 op := Opposite( vec );;
 ListKnownCategoricalProperties( op );
 #! [ "IsAbCategory", "IsAbelianCategory", "IsAbelianCategoryWithEnoughInjectives"
-#!     , "IsAbelianCategoryWithEnoughProjectives", "IsAdditiveCategory",
-#!   "IsBraidedMonoidalCategory", "IsEnrichedOverCommutativeRegularSemigroup",
-#!   "IsEquippedWithHomomorphismStructure", "IsLeftClosedMonoidalCategory",
-#!   "IsLeftCoclosedMonoidalCategory", "IsLinearCategoryOverCommutativeRing",
-#!   "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms",
-#!   "IsMonoidalCategory", "IsPreAbelianCategory",
-#!   "IsRigidSymmetricClosedMonoidalCategory",
-#!   "IsRigidSymmetricCoclosedMonoidalCategory", "IsSkeletalCategory",
-#!   "IsStrictMonoidalCategory", "IsSymmetricClosedMonoidalCategory",
+#!     , "IsAbelianCategoryWithEnoughProjectives", "IsAdditiveCategory", 
+#!   "IsBraidedMonoidalCategory", "IsClosedMonoidalCategory", 
+#!   "IsCoclosedMonoidalCategory", "IsEnrichedOverCommutativeRegularSemigroup", 
+#!   "IsEquippedWithHomomorphismStructure", "IsLinearCategoryOverCommutativeRing"
+#!     , 
+#!   "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms", 
+#!   "IsMonoidalCategory", "IsPreAbelianCategory", 
+#!   "IsRigidSymmetricClosedMonoidalCategory", 
+#!   "IsRigidSymmetricCoclosedMonoidalCategory", "IsSkeletalCategory", 
+#!   "IsStrictMonoidalCategory", "IsSymmetricClosedMonoidalCategory", 
 #!   "IsSymmetricCoclosedMonoidalCategory", "IsSymmetricMonoidalCategory" ]
 V1 := Opposite( TensorUnit( vec ) );;
 V2 := DirectSum( V1, V1 );;

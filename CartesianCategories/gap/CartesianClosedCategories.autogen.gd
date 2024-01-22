@@ -12,44 +12,6 @@
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `CartesianCoevaluationMorphism`.
-#! $F: ( a, b ) \mapsto \mathtt{CartesianCoevaluationMorphism}(a, b)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCartesianCoevaluationMorphism",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCartesianCoevaluationMorphism",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCartesianCoevaluationMorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCartesianCoevaluationMorphism",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation `CartesianCoevaluationMorphismWithGivenRange`.
-#! $F: ( a, b, r ) \mapsto \mathtt{CartesianCoevaluationMorphismWithGivenRange}(a, b, r)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCartesianCoevaluationMorphismWithGivenRange",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCartesianCoevaluationMorphismWithGivenRange",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCartesianCoevaluationMorphismWithGivenRange",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCartesianCoevaluationMorphismWithGivenRange",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
 #! to the category for the basic operation `CartesianDualOnMorphisms`.
 #! $F: ( alpha ) \mapsto \mathtt{CartesianDualOnMorphisms}(alpha)$.
 #! @Returns nothing
@@ -145,44 +107,6 @@ DeclareOperation( "AddCartesianEvaluationForCartesianDualWithGivenDirectProduct"
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `CartesianEvaluationMorphism`.
-#! $F: ( a, b ) \mapsto \mathtt{CartesianEvaluationMorphism}(a, b)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCartesianEvaluationMorphism",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCartesianEvaluationMorphism",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCartesianEvaluationMorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCartesianEvaluationMorphism",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation `CartesianEvaluationMorphismWithGivenSource`.
-#! $F: ( a, b, s ) \mapsto \mathtt{CartesianEvaluationMorphismWithGivenSource}(a, b, s)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCartesianEvaluationMorphismWithGivenSource",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCartesianEvaluationMorphismWithGivenSource",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCartesianEvaluationMorphismWithGivenSource",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCartesianEvaluationMorphismWithGivenSource",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
 #! to the category for the basic operation `CartesianLambdaElimination`.
 #! $F: ( a, b, alpha ) \mapsto \mathtt{CartesianLambdaElimination}(a, b, alpha)$.
 #! @Returns nothing
@@ -216,6 +140,82 @@ DeclareOperation( "AddCartesianLambdaIntroduction",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddCartesianLambdaIntroduction",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `CartesianLeftCoevaluationMorphism`.
+#! $F: ( a, b ) \mapsto \mathtt{CartesianLeftCoevaluationMorphism}(a, b)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCartesianLeftCoevaluationMorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCartesianLeftCoevaluationMorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCartesianLeftCoevaluationMorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCartesianLeftCoevaluationMorphism",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `CartesianLeftCoevaluationMorphismWithGivenRange`.
+#! $F: ( a, b, r ) \mapsto \mathtt{CartesianLeftCoevaluationMorphismWithGivenRange}(a, b, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCartesianLeftCoevaluationMorphismWithGivenRange",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCartesianLeftCoevaluationMorphismWithGivenRange",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCartesianLeftCoevaluationMorphismWithGivenRange",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCartesianLeftCoevaluationMorphismWithGivenRange",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `CartesianLeftEvaluationMorphism`.
+#! $F: ( a, b ) \mapsto \mathtt{CartesianLeftEvaluationMorphism}(a, b)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCartesianLeftEvaluationMorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCartesianLeftEvaluationMorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCartesianLeftEvaluationMorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCartesianLeftEvaluationMorphism",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `CartesianLeftEvaluationMorphismWithGivenSource`.
+#! $F: ( a, b, s ) \mapsto \mathtt{CartesianLeftEvaluationMorphismWithGivenSource}(a, b, s)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCartesianLeftEvaluationMorphismWithGivenSource",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCartesianLeftEvaluationMorphismWithGivenSource",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCartesianLeftEvaluationMorphismWithGivenSource",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCartesianLeftEvaluationMorphismWithGivenSource",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -373,39 +373,39 @@ DeclareOperation( "AddDirectProductExponentialCompatibilityMorphismWithGivenObje
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `DirectProductToExponentialAdjunctionMap`.
-#! $F: ( a, b, f ) \mapsto \mathtt{DirectProductToExponentialAdjunctionMap}(a, b, f)$.
+#! to the category for the basic operation `DirectProductToExponentialLeftAdjunctionMap`.
+#! $F: ( a, b, f ) \mapsto \mathtt{DirectProductToExponentialLeftAdjunctionMap}(a, b, f)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddDirectProductToExponentialAdjunctionMap",
+DeclareOperation( "AddDirectProductToExponentialLeftAdjunctionMap",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddDirectProductToExponentialAdjunctionMap",
+DeclareOperation( "AddDirectProductToExponentialLeftAdjunctionMap",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddDirectProductToExponentialAdjunctionMap",
+DeclareOperation( "AddDirectProductToExponentialLeftAdjunctionMap",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddDirectProductToExponentialAdjunctionMap",
+DeclareOperation( "AddDirectProductToExponentialLeftAdjunctionMap",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `DirectProductToExponentialAdjunctionMapWithGivenExponential`.
-#! $F: ( a, b, f, i ) \mapsto \mathtt{DirectProductToExponentialAdjunctionMapWithGivenExponential}(a, b, f, i)$.
+#! to the category for the basic operation `DirectProductToExponentialLeftAdjunctionMapWithGivenExponential`.
+#! $F: ( a, b, f, i ) \mapsto \mathtt{DirectProductToExponentialLeftAdjunctionMapWithGivenExponential}(a, b, f, i)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddDirectProductToExponentialAdjunctionMapWithGivenExponential",
+DeclareOperation( "AddDirectProductToExponentialLeftAdjunctionMapWithGivenExponential",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddDirectProductToExponentialAdjunctionMapWithGivenExponential",
+DeclareOperation( "AddDirectProductToExponentialLeftAdjunctionMapWithGivenExponential",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddDirectProductToExponentialAdjunctionMapWithGivenExponential",
+DeclareOperation( "AddDirectProductToExponentialLeftAdjunctionMapWithGivenExponential",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddDirectProductToExponentialAdjunctionMapWithGivenExponential",
+DeclareOperation( "AddDirectProductToExponentialLeftAdjunctionMapWithGivenExponential",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -468,39 +468,39 @@ DeclareOperation( "AddExponentialOnObjects",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `ExponentialToDirectProductAdjunctionMap`.
-#! $F: ( b, c, g ) \mapsto \mathtt{ExponentialToDirectProductAdjunctionMap}(b, c, g)$.
+#! to the category for the basic operation `ExponentialToDirectProductLeftAdjunctionMap`.
+#! $F: ( b, c, g ) \mapsto \mathtt{ExponentialToDirectProductLeftAdjunctionMap}(b, c, g)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddExponentialToDirectProductAdjunctionMap",
+DeclareOperation( "AddExponentialToDirectProductLeftAdjunctionMap",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddExponentialToDirectProductAdjunctionMap",
+DeclareOperation( "AddExponentialToDirectProductLeftAdjunctionMap",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddExponentialToDirectProductAdjunctionMap",
+DeclareOperation( "AddExponentialToDirectProductLeftAdjunctionMap",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddExponentialToDirectProductAdjunctionMap",
+DeclareOperation( "AddExponentialToDirectProductLeftAdjunctionMap",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct`.
-#! $F: ( b, c, g, t ) \mapsto \mathtt{ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct}(b, c, g, t)$.
+#! to the category for the basic operation `ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct`.
+#! $F: ( b, c, g, t ) \mapsto \mathtt{ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct}(b, c, g, t)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddExponentialToDirectProductAdjunctionMapWithGivenDirectProduct",
+DeclareOperation( "AddExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddExponentialToDirectProductAdjunctionMapWithGivenDirectProduct",
+DeclareOperation( "AddExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddExponentialToDirectProductAdjunctionMapWithGivenDirectProduct",
+DeclareOperation( "AddExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddExponentialToDirectProductAdjunctionMapWithGivenDirectProduct",
+DeclareOperation( "AddExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

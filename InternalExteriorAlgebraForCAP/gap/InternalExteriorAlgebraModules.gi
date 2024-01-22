@@ -826,7 +826,7 @@ InstallMethod( EModuleActionCategoryObjectAsCoactionCategoryObject,
     
     v := UnderlyingActingObject( object );
     
-    structure_morphism := TensorProductToInternalHomAdjunctionMap( ActionDomain( object ), v, StructureMorphism( object ) );
+    structure_morphism := TensorProductToInternalHomLeftAdjunctionMap( ActionDomain( object ), v, StructureMorphism( object ) );
     
     return EModuleCoactionCategoryObject( structure_morphism, v );
     

@@ -44,7 +44,7 @@ CoexponentialOnMorphismsWithGivenCoexponentials := rec(
   dual_arguments_reversed := true,
 ),
 
-CocartesianEvaluationMorphism := rec(
+CocartesianLeftEvaluationMorphism := rec(
   filter_list := [ "category", "object", "object" ],
   return_type := "morphism",
   input_arguments_names := [ "cat", "a", "b" ],
@@ -54,12 +54,12 @@ CocartesianEvaluationMorphism := rec(
   output_range_getter_string := "BinaryCoproduct( cat, CoexponentialOnObjects( cat, a, b ), b )",
   output_range_getter_preconditions := [ [ "Coproduct", 1 ], [ "CoexponentialOnObjects", 1 ] ],
   with_given_object_position := "Range",
-  dual_operation := "CartesianEvaluationMorphism",
+  dual_operation := "CartesianLeftEvaluationMorphism",
   dual_arguments_reversed := true,
   # Test in CocartesianCoclosedCategoriesTest
 ),
 
-CocartesianEvaluationMorphismWithGivenRange := rec(
+CocartesianLeftEvaluationMorphismWithGivenRange := rec(
   filter_list := [ "category", "object", "object", "object" ],
   return_type := "morphism",
   input_arguments_names := [ "cat", "a", "b", "r" ],
@@ -67,12 +67,12 @@ CocartesianEvaluationMorphismWithGivenRange := rec(
   output_source_getter_preconditions := [ ],
   output_range_getter_string := "r",
   output_range_getter_preconditions := [ ],
-  dual_operation := "CartesianEvaluationMorphismWithGivenSource",
+  dual_operation := "CartesianLeftEvaluationMorphismWithGivenSource",
   dual_preprocessor_func := { cat, a, b, r } -> NTuple( 4, Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( r ) ),
   dual_arguments_reversed := false,
 ),
 
-CocartesianCoevaluationMorphism := rec(
+CocartesianLeftCoevaluationMorphism := rec(
   filter_list := [ "category", "object", "object" ],
   return_type := "morphism",
   input_arguments_names := [ "cat", "a", "b" ],
@@ -82,12 +82,12 @@ CocartesianCoevaluationMorphism := rec(
   output_source_getter_preconditions := [ [ "CoexponentialOnObjects", 1 ], [ "Coproduct", 1 ] ],
   output_range_getter_string := "a",
   with_given_object_position := "Source",
-  dual_operation := "CartesianCoevaluationMorphism",
+  dual_operation := "CartesianLeftCoevaluationMorphism",
   dual_arguments_reversed := false,
   # Test in CocartesianCoclosedCategoriesTest
 ),
 
-CocartesianCoevaluationMorphismWithGivenSource := rec(
+CocartesianLeftCoevaluationMorphismWithGivenSource := rec(
   filter_list := [ "category", "object", "object", "object" ],
   return_type := "morphism",
   input_arguments_names := [ "cat", "a", "b", "s" ],
@@ -95,11 +95,11 @@ CocartesianCoevaluationMorphismWithGivenSource := rec(
   output_source_getter_preconditions := [ ],
   output_range_getter_string := "a",
   output_range_getter_preconditions := [ ],
-  dual_operation := "CartesianCoevaluationMorphismWithGivenRange",
+  dual_operation := "CartesianLeftCoevaluationMorphismWithGivenRange",
   dual_arguments_reversed := false,
 ),
 
-CoproductToCoexponentialAdjunctionMap := rec(
+CoproductToCoexponentialLeftAdjunctionMap := rec(
   filter_list := [ "category", "object", "object", "morphism" ],
   return_type := "morphism",
   input_arguments_names := [ "cat", "c", "b", "g" ],
@@ -108,12 +108,12 @@ CoproductToCoexponentialAdjunctionMap := rec(
   output_range_getter_string := "c",
   output_range_getter_preconditions := [ ],
   with_given_object_position := "Source",
-  dual_operation := "DirectProductToExponentialAdjunctionMap",
+  dual_operation := "DirectProductToExponentialLeftAdjunctionMap",
   dual_arguments_reversed := false,
   # Test in CocartesianCoclosedCategoriesTest
 ),
 
-CoproductToCoexponentialAdjunctionMapWithGivenCoexponential := rec(
+CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential := rec(
   filter_list := [ "category", "object", "object", "morphism", "object" ],
   return_type := "morphism",
   input_arguments_names := [ "cat", "c", "b", "g", "i" ],
@@ -121,11 +121,11 @@ CoproductToCoexponentialAdjunctionMapWithGivenCoexponential := rec(
   output_source_getter_preconditions := [ ],
   output_range_getter_string := "c",
   output_range_getter_preconditions := [ ],
-  dual_operation := "DirectProductToExponentialAdjunctionMapWithGivenExponential",
+  dual_operation := "DirectProductToExponentialLeftAdjunctionMapWithGivenExponential",
   dual_arguments_reversed := false,
 ),
 
-CoexponentialToCoproductAdjunctionMap := rec(
+CoexponentialToCoproductLeftAdjunctionMap := rec(
   filter_list := [ "category", "object", "object", "morphism" ],
   return_type := "morphism",
   input_arguments_names := [ "cat", "a", "b", "f" ],
@@ -134,13 +134,13 @@ CoexponentialToCoproductAdjunctionMap := rec(
   output_range_getter_string := "BinaryCoproduct( cat, Range( f ), b )",
   output_range_getter_preconditions := [ [ "Coproduct", 1 ] ],
   with_given_object_position := "Range",
-  dual_operation := "ExponentialToDirectProductAdjunctionMap",
+  dual_operation := "ExponentialToDirectProductLeftAdjunctionMap",
   dual_preprocessor_func := { cat, a, b, f } -> NTuple( 4, Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( f ) ),
   dual_arguments_reversed := false,
   # Test in CocartesianCoclosedCategoriesTest
 ),
 
-CoexponentialToCoproductAdjunctionMapWithGivenCoproduct := rec(
+CoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct := rec(
   filter_list := [ "category", "object", "object", "morphism", "object" ],
   return_type := "morphism",
   input_arguments_names := [ "cat", "a", "b", "f", "t" ],
@@ -148,7 +148,7 @@ CoexponentialToCoproductAdjunctionMapWithGivenCoproduct := rec(
   output_source_getter_preconditions := [ ],
   output_range_getter_string := "t",
   output_range_getter_preconditions := [ ],
-  dual_operation := "ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct",
+  dual_operation := "ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct",
   dual_preprocessor_func := { cat, a, b, f, t } -> NTuple( 4, Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( f ), Opposite( t ) ),
   dual_arguments_reversed := false,
 ),

@@ -46,10 +46,10 @@ AddDerivationToCAP( MorphismFromCocartesianBidualWithGivenCocartesianBidual,
                       [ InitialObject, 1 ],
                       [ PreComposeList, 1 ],
                       [ CoexponentialOnMorphisms, 2 ],
-                      [ CocartesianEvaluationMorphism, 1 ],
+                      [ CocartesianLeftEvaluationMorphism, 1 ],
                       [ IdentityMorphism, 2 ],
                       [ CocartesianBraiding, 1 ],
-                      [ CocartesianCoevaluationMorphism, 1 ] ],
+                      [ CocartesianLeftCoevaluationMorphism, 1 ] ],
                     
   function( cat, a, avv )
     local av, morphism;
@@ -73,14 +73,14 @@ AddDerivationToCAP( MorphismFromCocartesianBidualWithGivenCocartesianBidual,
     morphism := PreComposeList( cat,
                         avv,
                         [ CoexponentialOnMorphisms( cat,
-                                CocartesianEvaluationMorphism( cat, InitialObject( cat ), a ),
+                                CocartesianLeftEvaluationMorphism( cat, InitialObject( cat ), a ),
                                 IdentityMorphism( cat, av ) ),
                           
                           CoexponentialOnMorphisms( cat,
                                   CocartesianBraiding( cat, av, a ),
                                   IdentityMorphism( cat, av ) ),
                           
-                          CocartesianCoevaluationMorphism( cat, a, av ) ],
+                          CocartesianLeftCoevaluationMorphism( cat, a, av ) ],
                         a );
     
     return morphism;
@@ -95,11 +95,11 @@ AddDerivationToCAP( CoexponentialCoproductCompatibilityMorphismWithGivenObjects,
                       [ Coproduct, 3 ],
                       [ PreComposeList, 1 ],
                       [ CoproductOnMorphisms, 7 ],
-                      [ CocartesianEvaluationMorphism, 2 ],
+                      [ CocartesianLeftEvaluationMorphism, 2 ],
                       [ CocartesianAssociatorRightToLeft, 2 ],
                       [ CocartesianAssociatorLeftToRight, 2 ],
                       [ CocartesianBraiding, 1 ],
-                      [ CoproductToCoexponentialAdjunctionMapWithGivenCoexponential, 1 ] ],
+                      [ CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential, 1 ] ],
                     
   function( cat, source, list, range )
     local a1, a2, b1, b2, b1b2, coexp_a1_b1, coexp_a2_b2, id_b2, morphism;
@@ -154,13 +154,13 @@ AddDerivationToCAP( CoexponentialCoproductCompatibilityMorphismWithGivenObjects,
                         BinaryCoproduct( cat, a1, a2 ),
                         [ CoproductOnMorphisms( cat,
                                 IdentityMorphism( cat, a1 ),
-                                CocartesianEvaluationMorphism( cat, a2, b2 ) ),
+                                CocartesianLeftEvaluationMorphism( cat, a2, b2 ) ),
                           
                           CocartesianAssociatorRightToLeft( cat, a1, coexp_a2_b2, b2 ),
                           
                           CoproductOnMorphisms( cat,
                                   CoproductOnMorphisms( cat,
-                                          CocartesianEvaluationMorphism( cat, a1, b1 ),
+                                          CocartesianLeftEvaluationMorphism( cat, a1, b1 ),
                                           IdentityMorphism( cat, coexp_a2_b2 ) ),
                                   id_b2 ),
                           
@@ -185,7 +185,7 @@ AddDerivationToCAP( CoexponentialCoproductCompatibilityMorphismWithGivenObjects,
                                 range,
                                 b1b2 ) );
     
-    return CoproductToCoexponentialAdjunctionMapWithGivenCoexponential( cat,
+    return CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential( cat,
                    range,
                    b1b2,
                    morphism,
@@ -198,13 +198,13 @@ AddDerivationToCAP( CocartesianPreCoComposeMorphismWithGivenObjects,
                     "CocartesianPreCoComposeMorphismWithGivenObjects using associator, braiding, cocartesian evaluation, and coexponential-coproduct adjunction",
                     [ [ CoexponentialOnObjects, 2 ],
                       [ PreComposeList, 1 ],
-                      [ CocartesianEvaluationMorphism, 2 ],
+                      [ CocartesianLeftEvaluationMorphism, 2 ],
                       [ CocartesianBraiding, 2 ],
                       [ CoproductOnMorphisms, 2 ],
                       [ IdentityMorphism, 2 ],
                       [ CocartesianAssociatorLeftToRight, 1 ],
                       [ CocartesianAssociatorRightToLeft, 1 ],
-                      [ CoproductToCoexponentialAdjunctionMapWithGivenCoexponential, 1 ],
+                      [ CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential, 1 ],
                       [ Coproduct, 1 ] ],
                     
   function( cat, source, a, b, c, range )
@@ -245,12 +245,12 @@ AddDerivationToCAP( CocartesianPreCoComposeMorphismWithGivenObjects,
     
     morphism := PreComposeList( cat,
                         a,
-                        [ CocartesianEvaluationMorphism( cat, a, b ),
+                        [ CocartesianLeftEvaluationMorphism( cat, a, b ),
                           
                           CocartesianBraiding( cat, coexp_a_b, b ),
                           
                           CoproductOnMorphisms( cat,
-                                  CocartesianEvaluationMorphism( cat, b, c ),
+                                  CocartesianLeftEvaluationMorphism( cat, b, c ),
                                   IdentityMorphism( cat, coexp_a_b ) ),
                           
                           CocartesianAssociatorLeftToRight( cat, coexp_b_c, c, coexp_a_b ),
@@ -264,7 +264,7 @@ AddDerivationToCAP( CocartesianPreCoComposeMorphismWithGivenObjects,
                                 range,
                                 c ) );
     
-    return CoproductToCoexponentialAdjunctionMapWithGivenCoexponential( cat,
+    return CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential( cat,
                    range,
                    c,
                    morphism,
@@ -334,9 +334,9 @@ AddDerivationToCAP( CoexponentialCoproductCompatibilityMorphismWithGivenObjects,
                       [ Coproduct, 3 ],
                       [ PreComposeList, 1 ],
                       [ CoproductOnMorphisms, 5 ],
-                      [ CocartesianEvaluationMorphism, 2 ],
+                      [ CocartesianLeftEvaluationMorphism, 2 ],
                       [ CocartesianBraiding, 1 ],
-                      [ CoproductToCoexponentialAdjunctionMapWithGivenCoexponential, 1 ] ],
+                      [ CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential, 1 ] ],
                     
   function( cat, source, list, range )
     local a1, a2, b1, b2, b1b2, coexp_a1_b1, coexp_a2_b2, id_b2, morphism;
@@ -375,11 +375,11 @@ AddDerivationToCAP( CoexponentialCoproductCompatibilityMorphismWithGivenObjects,
                         BinaryCoproduct( cat, a1, a2 ),
                         [ CoproductOnMorphisms( cat,
                                 IdentityMorphism( cat, a1 ),
-                                CocartesianEvaluationMorphism( cat, a2, b2 ) ),
+                                CocartesianLeftEvaluationMorphism( cat, a2, b2 ) ),
                           
                           CoproductOnMorphisms( cat,
                                   CoproductOnMorphisms( cat,
-                                          CocartesianEvaluationMorphism( cat, a1, b1 ),
+                                          CocartesianLeftEvaluationMorphism( cat, a1, b1 ),
                                           IdentityMorphism( cat, coexp_a2_b2 ) ),
                                   id_b2 ),
                           
@@ -392,7 +392,7 @@ AddDerivationToCAP( CoexponentialCoproductCompatibilityMorphismWithGivenObjects,
                                 range,
                                 b1b2 ) );
     
-    return CoproductToCoexponentialAdjunctionMapWithGivenCoexponential( cat,
+    return CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential( cat,
                    range,
                    b1b2,
                    morphism,
@@ -405,12 +405,12 @@ AddDerivationToCAP( CocartesianPreCoComposeMorphismWithGivenObjects,
                     "CocartesianPreCoComposeMorphismWithGivenObjects using braiding, cocartesian evaluation, and coexponential-coproduct adjunction",
                     [ [ CoexponentialOnObjects, 2 ],
                       [ PreComposeList, 1 ],
-                      [ CocartesianEvaluationMorphism, 2 ],
+                      [ CocartesianLeftEvaluationMorphism, 2 ],
                       [ CocartesianBraiding, 2 ],
                       [ CoproductOnMorphisms, 2 ],
                       [ IdentityMorphism, 2 ],
                       [ Coproduct, 1 ],
-                      [ CoproductToCoexponentialAdjunctionMapWithGivenCoexponential, 1 ] ],
+                      [ CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential, 1 ] ],
                     
   function( cat, source, a, b, c, range )
     local coexp_a_b, coexp_b_c, morphism;
@@ -442,12 +442,12 @@ AddDerivationToCAP( CocartesianPreCoComposeMorphismWithGivenObjects,
     
     morphism := PreComposeList( cat,
                         a,
-                        [ CocartesianEvaluationMorphism( cat, a, b ),
+                        [ CocartesianLeftEvaluationMorphism( cat, a, b ),
                           
                           CocartesianBraiding( cat, coexp_a_b, b ),
                           
                           CoproductOnMorphisms( cat,
-                                  CocartesianEvaluationMorphism( cat, b, c ),
+                                  CocartesianLeftEvaluationMorphism( cat, b, c ),
                                   IdentityMorphism( cat, coexp_a_b ) ),
                           
                           CoproductOnMorphisms( cat,
@@ -457,7 +457,7 @@ AddDerivationToCAP( CocartesianPreCoComposeMorphismWithGivenObjects,
                                 range,
                                 c ) );
     
-    return CoproductToCoexponentialAdjunctionMapWithGivenCoexponential( cat,
+    return CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential( cat,
                    range,
                    c,
                    morphism,

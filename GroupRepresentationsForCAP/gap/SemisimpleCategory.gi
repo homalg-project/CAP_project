@@ -2403,7 +2403,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     
     ##
-    AddLeftDualOnObjects( category, 
+    AddDualOnObjects( category,
       function( cat, object )
         local object_list, dual_list, elem;
         
@@ -2422,7 +2422,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     end );
     
     ##
-    AddLeftDualOnMorphismsWithGivenLeftDuals( category,
+    AddDualOnMorphismsWithGivenDuals( category,
       function( cat, dual_source, morphism, dual_range )
         local morphism_list;
         
@@ -2438,7 +2438,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     if associator_available then
     
     ##
-    AddCoevaluationForLeftDualWithGivenTensorProduct( category,
+    AddCoevaluationForDualWithGivenTensorProduct( category,
       function( cat, unit, object, tensor_object )
         local object_list, dual_object, dual_object_list, object_expanded_list, elem,
               dual_object_expanded_list, dim, matrix_list, zero_list,
@@ -2453,7 +2453,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
             
         fi;
         
-        dual_object := LeftDualOnObjects( object );
+        dual_object := DualOnObjects( object );
         
         dual_object_list := SemisimpleCategoryObjectListWithActualObjects( dual_object );
         
@@ -2524,7 +2524,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     end );
       
     ##
-    AddLeftClosedMonoidalEvaluationForLeftDualWithGivenTensorProduct( category,
+    AddEvaluationForDualWithGivenTensorProduct( category,
       function( cat, tensor_object, object, unit )
         local object_list, dual_object, dual_object_list, object_expanded_list, elem,
               dual_object_expanded_list, trivial_chi, dim, vector_space, vector_space_morphism,
@@ -2538,7 +2538,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
             
         fi;
         
-        dual_object := LeftDualOnObjects( object );
+        dual_object := DualOnObjects( object );
         
         dual_object_list := SemisimpleCategoryObjectListWithActualObjects( dual_object );
         
@@ -2617,7 +2617,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     fi;
     
 #     ##
-#     AddMorphismToLeftBidualWithGivenLeftBidual( category,
+#     AddMorphismToBidualWithGivenBidual( category,
 #       function( cat, object, bidual_of_object )
 #         
 #         return VectorSpaceMorphism( object,
@@ -2641,16 +2641,16 @@ InstallMethod( CAP_INTERNAL_EvaluationForDualOnIrreduciblesAsString,
     trivial_irreducible := Support( TensorUnit( CapCategory( object ) ) )[1];
     
     naive_morphism :=
-      ComponentProjectionMorphism( TensorProductOnObjects( LeftDualOnObjects( object ), object ), trivial_irreducible );
+      ComponentProjectionMorphism( TensorProductOnObjects( DualOnObjects( object ), object ), trivial_irreducible );
     
     automorphism := PreCompose( [
       LeftUnitorInverse( object ),
       TensorProductOnMorphisms( CoevaluationForDual( object ), id_object ),
-      AssociatorLeftToRight( object, LeftDualOnObjects( object ), object ),
+      AssociatorLeftToRight( object, DualOnObjects( object ), object ),
       TensorProductOnMorphisms( id_object, naive_morphism ),
       RightUnitor( object ) ] );
     
-    morphism := PreCompose( TensorProductOnMorphisms( IdentityMorphism( LeftDualOnObjects( object ) ), Inverse( automorphism ) ),
+    morphism := PreCompose( TensorProductOnMorphisms( IdentityMorphism( DualOnObjects( object ) ), Inverse( automorphism ) ),
                             naive_morphism );
     
     morphism := Component( morphism, trivial_irreducible );

@@ -84,6 +84,50 @@ end
     , 100 );
     
     ##
+    AddCoDualOnMorphismsWithGivenCoDuals( cat,
+        
+########
+function ( cat_1, s_1, alpha_1, r_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), Opposite( r_1 ), TransposedMatrix( AsHomalgMatrix( Opposite( alpha_1 ) ) ), Opposite( s_1 ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddCoDualOnObjects( cat,
+        
+########
+function ( cat_1, a_1 )
+    return a_1;
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddCoclosedCoevaluationForCoDualWithGivenTensorProduct( cat,
+        
+########
+function ( cat_1, s_1, a_1, r_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), Opposite( r_1 ), ConvertMatrixToRow( HomalgIdentityMatrix( AsInteger( Opposite( a_1 ) ), CommutativeRingOfLinearCategory( cat_1 ) ) ), Opposite( s_1 ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddCoclosedEvaluationForCoDualWithGivenTensorProduct( cat,
+        
+########
+function ( cat_1, s_1, a_1, r_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), Opposite( r_1 ), ConvertMatrixToColumn( HomalgIdentityMatrix( AsInteger( Opposite( a_1 ) ), CommutativeRingOfLinearCategory( cat_1 ) ) ), Opposite( s_1 ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddCoefficientsOfMorphism( cat,
         
 ########
@@ -95,7 +139,7 @@ end
     , 100 );
     
     ##
-    AddCoevaluationForLeftDualWithGivenTensorProduct( cat,
+    AddCoevaluationForDualWithGivenTensorProduct( cat,
         
 ########
 function ( cat_1, s_1, a_1, r_1 )
@@ -260,6 +304,28 @@ end
     , 100 );
     
     ##
+    AddDualOnMorphismsWithGivenDuals( cat,
+        
+########
+function ( cat_1, s_1, alpha_1, r_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), Opposite( r_1 ), TransposedMatrix( AsHomalgMatrix( Opposite( alpha_1 ) ) ), Opposite( s_1 ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddDualOnObjects( cat,
+        
+########
+function ( cat_1, a_1 )
+    return a_1;
+end
+########
+        
+    , 100 );
+    
+    ##
     AddEpimorphismFromSomeProjectiveObject( cat,
         
 ########
@@ -267,6 +333,17 @@ function ( cat_1, A_1 )
     local deduped_1_1;
     deduped_1_1 := Opposite( A_1 );
     return CreateCapCategoryMorphismWithAttributes( cat_1, A_1, A_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), deduped_1_1, HomalgIdentityMatrix( AsInteger( deduped_1_1 ), CommutativeRingOfLinearCategory( cat_1 ) ), deduped_1_1 ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddEvaluationForDualWithGivenTensorProduct( cat,
+        
+########
+function ( cat_1, s_1, a_1, r_1 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), Opposite( r_1 ), ConvertMatrixToRow( HomalgIdentityMatrix( AsInteger( Opposite( a_1 ) ), CommutativeRingOfLinearCategory( cat_1 ) ) ), Opposite( s_1 ) ) );
 end
 ########
         
@@ -546,83 +623,6 @@ end
     , 100 );
     
     ##
-    AddLeftClosedMonoidalEvaluationForLeftDualWithGivenTensorProduct( cat,
-        
-########
-function ( cat_1, s_1, a_1, r_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), Opposite( r_1 ), ConvertMatrixToRow( HomalgIdentityMatrix( AsInteger( Opposite( a_1 ) ), CommutativeRingOfLinearCategory( cat_1 ) ) ), Opposite( s_1 ) ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddLeftCoDualOnMorphismsWithGivenLeftCoDuals( cat,
-        
-########
-function ( cat_1, s_1, alpha_1, r_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), Opposite( r_1 ), TransposedMatrix( AsHomalgMatrix( Opposite( alpha_1 ) ) ), Opposite( s_1 ) ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddLeftCoDualOnObjects( cat,
-        
-########
-function ( cat_1, a_1 )
-    return a_1;
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddLeftCoclosedMonoidalCoevaluationForLeftCoDualWithGivenTensorProduct( cat,
-        
-########
-function ( cat_1, s_1, a_1, r_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), Opposite( r_1 ), ConvertMatrixToRow( HomalgIdentityMatrix( AsInteger( Opposite( a_1 ) ), CommutativeRingOfLinearCategory( cat_1 ) ) ), Opposite( s_1 ) ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddLeftCoclosedMonoidalEvaluationForLeftCoDualWithGivenTensorProduct( cat,
-        
-########
-function ( cat_1, s_1, a_1, r_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), Opposite( r_1 ), ConvertMatrixToColumn( HomalgIdentityMatrix( AsInteger( Opposite( a_1 ) ), CommutativeRingOfLinearCategory( cat_1 ) ) ), Opposite( s_1 ) ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddLeftDualOnMorphismsWithGivenLeftDuals( cat,
-        
-########
-function ( cat_1, s_1, alpha_1, r_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), Opposite( r_1 ), TransposedMatrix( AsHomalgMatrix( Opposite( alpha_1 ) ) ), Opposite( s_1 ) ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddLeftDualOnObjects( cat,
-        
-########
-function ( cat_1, a_1 )
-    return a_1;
-end
-########
-        
-    , 100 );
-    
-    ##
     AddLift( cat,
         
 ########
@@ -686,7 +686,7 @@ end
     , 100 );
     
     ##
-    AddMorphismFromLeftCoBidualWithGivenLeftCoBidual( cat,
+    AddMorphismFromCoBidualWithGivenCoBidual( cat,
         
 ########
 function ( cat_1, a_1, s_1 )
@@ -699,7 +699,7 @@ end
     , 100 );
     
     ##
-    AddMorphismToLeftBidualWithGivenLeftBidual( cat,
+    AddMorphismToBidualWithGivenBidual( cat,
         
 ########
 function ( cat_1, a_1, r_1 )

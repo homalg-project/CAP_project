@@ -1065,7 +1065,7 @@ InstallGlobalFunction( ADD_GRADED_INTERNAL_HOM_ON_OBJECTS_LEFT,
   function( category )
     
     ## WARNING: The given function uses basic operations.
-    AddLeftInternalHomOnObjects( category,
+    AddInternalHomOnObjects( category,
       
       function( cat, object_1, object_2 )
         
@@ -1081,7 +1081,7 @@ InstallGlobalFunction( ADD_GRADED_INTERNAL_HOM_ON_OBJECTS_RIGHT,
   function( category )
     
     ## WARNING: The given function uses basic operations.
-    AddLeftInternalHomOnObjects( category,
+    AddInternalHomOnObjects( category,
       
       function( cat, object_1, object_2 )
         
@@ -1097,7 +1097,7 @@ InstallGlobalFunction( ADD_GRADED_INTERNAL_HOM_ON_MORPHISMS_LEFT,
   function( category )
     
     ## WARNING: The given function uses basic operations.
-    AddLeftInternalHomOnMorphismsWithGivenLeftInternalHoms( category,
+    AddInternalHomOnMorphismsWithGivenInternalHoms( category,
       
       function( cat, new_source, morphism_1, morphism_2, new_range )
         local internal_hom_embedding_source, internal_hom_embedding_range, morphism_between_tensor_products;
@@ -1128,7 +1128,7 @@ InstallGlobalFunction( ADD_GRADED_INTERNAL_HOM_ON_MORPHISMS_RIGHT,
   function( category )
     
     ## WARNING: The given function uses basic operations.
-    AddLeftInternalHomOnMorphismsWithGivenLeftInternalHoms( category,
+    AddInternalHomOnMorphismsWithGivenInternalHoms( category,
       
       function( cat, new_source, morphism_1, morphism_2, new_range )
         local internal_hom_embedding_source, internal_hom_embedding_range, morphism_between_tensor_products;

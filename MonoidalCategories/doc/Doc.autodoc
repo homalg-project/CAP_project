@@ -51,6 +51,18 @@ is called a <Emph>left closed monoidal category</Emph>.
 If no operations involving left duals are installed manually, the left dual objects will be derived as $a^\vee \coloneqq \mathrm{\underline{Hom}_\ell}(a,1)$.
 
 The corresponding GAP property is called
+<C>IsLeftClosedMonoidalCategory</C>.
+
+@Section Closed Monoidal Categories
+
+A monoidal category $\mathbf{C}$
+which has for each functor $- \otimes b: \mathbf{C} \rightarrow \mathbf{C}$
+a right adjoint (denoted by $\mathrm{\underline{Hom}_\ell}(b,-)$)
+is called a <Emph>closed monoidal category</Emph>.
+
+If no operations involving duals are installed manually, the dual objects will be derived as $a^\vee \coloneqq \mathrm{\underline{Hom}_\ell}(a,1)$.
+
+The corresponding GAP property is called
 <C>IsClosedMonoidalCategory</C>.
 
 @Section Left Coclosed Monoidal Categories
@@ -61,6 +73,18 @@ a left adjoint (denoted by $\mathrm{\underline{coHom}}(-,b)$)
 is called a <Emph>left coclosed monoidal category</Emph>.
 
 If no operations involving left coduals are installed manually, the left codual objects will be derived as $a_\vee \coloneqq \mathrm{\underline{coHom}}(1,a)$.
+
+The corresponding GAP property is called
+<C>IsLeftCoclosedMonoidalCategory</C>.
+
+@Section Coclosed Monoidal Categories
+
+A monoidal category $\mathbf{C}$
+which has for each functor $- \otimes b: \mathbf{C} \rightarrow \mathbf{C}$
+a left adjoint (denoted by $\mathrm{\underline{coHom}}(-,b)$)
+is called a <Emph>coclosed monoidal category</Emph>.
+
+If no operations involving coduals are installed manually, the codual objects will be derived as $a_\vee \coloneqq \mathrm{\underline{coHom}}(1,a)$.
 
 The corresponding GAP property is called
 <C>IsCoclosedMonoidalCategory</C>.
