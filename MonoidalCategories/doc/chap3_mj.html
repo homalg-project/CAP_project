@@ -33,12 +33,14 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7BC682067A30E580">3.2 <span class="Heading">Closed Monoidal Categories</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B1E6E95839A2EB7">3.2-1 WriteFileForLeftClosedMonoidalStructure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7EF7CDED85FB1CA1">3.2-1 WriteFileForClosedMonoidalStructure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B1E6E95839A2EB7">3.2-2 WriteFileForLeftClosedMonoidalStructure</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X8197D69B805349AC">3.3 <span class="Heading">Coclosed Monoidal Categories</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7DAEDDFF84783E19">3.3-1 WriteFileForLeftCoclosedMonoidalStructure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83DBF79278AD1D37">3.3-1 WriteFileForCoclosedMonoidalStructure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7DAEDDFF84783E19">3.3-2 WriteFileForLeftCoclosedMonoidalStructure</a></span>
 </div></div>
 </div>
 
@@ -61,9 +63,18 @@
 
 <h4>3.2 <span class="Heading">Closed Monoidal Categories</span></h4>
 
+<p><a id="X7EF7CDED85FB1CA1" name="X7EF7CDED85FB1CA1"></a></p>
+
+<h5>3.2-1 WriteFileForClosedMonoidalStructure</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WriteFileForClosedMonoidalStructure</code>( <var class="Arg">key_val_rec</var>, <var class="Arg">package_name</var>, <var class="Arg">files_rec</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>This functions uses the dictionary <var class="Arg">key_val_rec</var> to create a new closed monoidal structure. It generates the necessary files in the package <var class="Arg">package_name</var> using the file-correspondence table <var class="Arg">files_rec</var>. See the implementation for details.</p>
+
 <p><a id="X7B1E6E95839A2EB7" name="X7B1E6E95839A2EB7"></a></p>
 
-<h5>3.2-1 WriteFileForLeftClosedMonoidalStructure</h5>
+<h5>3.2-2 WriteFileForLeftClosedMonoidalStructure</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WriteFileForLeftClosedMonoidalStructure</code>( <var class="Arg">key_val_rec</var>, <var class="Arg">package_name</var>, <var class="Arg">files_rec</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -74,9 +85,18 @@
 
 <h4>3.3 <span class="Heading">Coclosed Monoidal Categories</span></h4>
 
+<p><a id="X83DBF79278AD1D37" name="X83DBF79278AD1D37"></a></p>
+
+<h5>3.3-1 WriteFileForCoclosedMonoidalStructure</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WriteFileForCoclosedMonoidalStructure</code>( <var class="Arg">key_val_rec</var>, <var class="Arg">package_name</var>, <var class="Arg">files_rec</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>This functions uses the dictionary <var class="Arg">key_val_rec</var> to create a new coclosed monoidal structure. It generates the necessary files in the package <var class="Arg">package_name</var> using the file-correspondence table <var class="Arg">files_rec</var>. See the implementation for details.</p>
+
 <p><a id="X7DAEDDFF84783E19" name="X7DAEDDFF84783E19"></a></p>
 
-<h5>3.3-1 WriteFileForLeftCoclosedMonoidalStructure</h5>
+<h5>3.3-2 WriteFileForLeftCoclosedMonoidalStructure</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WriteFileForLeftCoclosedMonoidalStructure</code>( <var class="Arg">key_val_rec</var>, <var class="Arg">package_name</var>, <var class="Arg">files_rec</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>

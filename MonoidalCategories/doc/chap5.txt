@@ -4,614 +4,104 @@
   
   [1X5.1 [33X[0;0YSynonyms[133X[101X
   
-  [1X5.1-1 InternalHom[101X
-  
-  [33X[1;0Y[29X[2XInternalHom[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XLeftInternalHom[110X.[133X
-  
-  [1X5.1-2 InternalCoHom[101X
-  
-  [33X[1;0Y[29X[2XInternalCoHom[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XLeftInternalCoHom[110X.[133X
-  
-  [1X5.1-3 CoDualOnMorphisms[101X
-  
-  [33X[1;0Y[29X[2XCoDualOnMorphisms[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XLeftCoDualOnMorphisms[110X.[133X
-  
-  [1X5.1-4 CoDualOnMorphismsWithGivenCoDuals[101X
-  
-  [33X[1;0Y[29X[2XCoDualOnMorphismsWithGivenCoDuals[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XLeftCoDualOnMorphismsWithGivenLeftCoDuals[110X.[133X
-  
-  [1X5.1-5 CoDualOnObjects[101X
-  
-  [33X[1;0Y[29X[2XCoDualOnObjects[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XLeftCoDualOnObjects[110X.[133X
-  
-  [1X5.1-6 CoDualityTensorProductCompatibilityMorphism[101X
-  
-  [33X[1;0Y[29X[2XCoDualityTensorProductCompatibilityMorphism[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XLeftCoDualityTensorProductCompatibilityMorphism[110X.[133X
-  
-  [1X5.1-7 CoDualityTensorProductCompatibilityMorphismWithGivenObjects[101X
-  
-  [33X[1;0Y[29X[2XCoDualityTensorProductCompatibilityMorphismWithGivenObjects[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis               is               a               synonym              for
-  [10XLeftCoDualityTensorProductCompatibilityMorphismWithGivenObjects[110X.[133X
-  
-  [1X5.1-8 CoLambdaElimination[101X
-  
-  [33X[1;0Y[29X[2XCoLambdaElimination[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XLeftCoclosedMonoidalLambdaElimination[110X.[133X
-  
-  [1X5.1-9 CoLambdaIntroduction[101X
-  
-  [33X[1;0Y[29X[2XCoLambdaIntroduction[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XLeftCoclosedMonoidalLambdaIntroduction[110X.[133X
-  
-  [1X5.1-10 CoclosedCoevaluationForCoDual[101X
-  
-  [33X[1;0Y[29X[2XCoclosedCoevaluationForCoDual[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XLeftCoclosedMonoidalCoevaluationForLeftCoDual[110X.[133X
-  
-  [1X5.1-11 CoclosedCoevaluationForCoDualWithGivenTensorProduct[101X
-  
-  [33X[1;0Y[29X[2XCoclosedCoevaluationForCoDualWithGivenTensorProduct[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis               is               a               synonym              for
-  [10XLeftCoclosedMonoidalCoevaluationForLeftCoDualWithGivenTensorProduct[110X.[133X
-  
-  [1X5.1-12 CoclosedCoevaluationMorphism[101X
+  [1X5.1-1 CoclosedCoevaluationMorphism[101X
   
   [33X[1;0Y[29X[2XCoclosedCoevaluationMorphism[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[0;0YThis is a synonym for [10XLeftCoclosedMonoidalCoevaluationMorphism[110X.[133X
+  [33X[0;0YThis is a synonym for [10XCoclosedMonoidalLeftCoevaluationMorphism[110X.[133X
   
-  [1X5.1-13 CoclosedCoevaluationMorphismWithGivenSource[101X
+  [1X5.1-2 CoclosedCoevaluationMorphismWithGivenSource[101X
   
   [33X[1;0Y[29X[2XCoclosedCoevaluationMorphismWithGivenSource[102X( [3Xarg[103X ) [32X operation[133X
   
   [33X[0;0YThis               is               a               synonym              for
-  [10XLeftCoclosedMonoidalCoevaluationMorphismWithGivenSource[110X.[133X
+  [10XCoclosedMonoidalLeftCoevaluationMorphismWithGivenSource[110X.[133X
   
-  [1X5.1-14 CoclosedEvaluationForCoDual[101X
-  
-  [33X[1;0Y[29X[2XCoclosedEvaluationForCoDual[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XLeftCoclosedMonoidalEvaluationForLeftCoDual[110X.[133X
-  
-  [1X5.1-15 CoclosedEvaluationForCoDualWithGivenTensorProduct[101X
-  
-  [33X[1;0Y[29X[2XCoclosedEvaluationForCoDualWithGivenTensorProduct[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis               is               a               synonym              for
-  [10XLeftCoclosedMonoidalEvaluationForLeftCoDualWithGivenTensorProduct[110X.[133X
-  
-  [1X5.1-16 CoclosedEvaluationMorphism[101X
+  [1X5.1-3 CoclosedEvaluationMorphism[101X
   
   [33X[1;0Y[29X[2XCoclosedEvaluationMorphism[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[0;0YThis is a synonym for [10XLeftCoclosedMonoidalEvaluationMorphism[110X.[133X
+  [33X[0;0YThis is a synonym for [10XCoclosedMonoidalLeftEvaluationMorphism[110X.[133X
   
-  [1X5.1-17 CoclosedEvaluationMorphismWithGivenRange[101X
+  [1X5.1-4 CoclosedEvaluationMorphismWithGivenRange[101X
   
   [33X[1;0Y[29X[2XCoclosedEvaluationMorphismWithGivenRange[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[0;0YThis is a synonym for [10XLeftCoclosedMonoidalEvaluationMorphismWithGivenRange[110X.[133X
+  [33X[0;0YThis is a synonym for [10XCoclosedMonoidalLeftEvaluationMorphismWithGivenRange[110X.[133X
   
-  [1X5.1-18 CoevaluationForDual[101X
-  
-  [33X[1;0Y[29X[2XCoevaluationForDual[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XCoevaluationForLeftDual[110X.[133X
-  
-  [1X5.1-19 CoevaluationForDualWithGivenTensorProduct[101X
-  
-  [33X[1;0Y[29X[2XCoevaluationForDualWithGivenTensorProduct[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XCoevaluationForLeftDualWithGivenTensorProduct[110X.[133X
-  
-  [1X5.1-20 CoevaluationMorphism[101X
+  [1X5.1-5 CoevaluationMorphism[101X
   
   [33X[1;0Y[29X[2XCoevaluationMorphism[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[0;0YThis is a synonym for [10XLeftClosedMonoidalCoevaluationMorphism[110X.[133X
+  [33X[0;0YThis is a synonym for [10XClosedMonoidalLeftCoevaluationMorphism[110X.[133X
   
-  [1X5.1-21 CoevaluationMorphismWithGivenRange[101X
+  [1X5.1-6 CoevaluationMorphismWithGivenRange[101X
   
   [33X[1;0Y[29X[2XCoevaluationMorphismWithGivenRange[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[0;0YThis is a synonym for [10XLeftClosedMonoidalCoevaluationMorphismWithGivenRange[110X.[133X
+  [33X[0;0YThis is a synonym for [10XClosedMonoidalLeftCoevaluationMorphismWithGivenRange[110X.[133X
   
-  [1X5.1-22 DualOnMorphisms[101X
-  
-  [33X[1;0Y[29X[2XDualOnMorphisms[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XLeftDualOnMorphisms[110X.[133X
-  
-  [1X5.1-23 DualOnMorphismsWithGivenDuals[101X
-  
-  [33X[1;0Y[29X[2XDualOnMorphismsWithGivenDuals[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XLeftDualOnMorphismsWithGivenLeftDuals[110X.[133X
-  
-  [1X5.1-24 DualOnObjects[101X
-  
-  [33X[1;0Y[29X[2XDualOnObjects[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XLeftDualOnObjects[110X.[133X
-  
-  [1X5.1-25 EvaluationForDual[101X
-  
-  [33X[1;0Y[29X[2XEvaluationForDual[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XLeftClosedMonoidalEvaluationForLeftDual[110X.[133X
-  
-  [1X5.1-26 EvaluationForDualWithGivenTensorProduct[101X
-  
-  [33X[1;0Y[29X[2XEvaluationForDualWithGivenTensorProduct[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis               is               a               synonym              for
-  [10XLeftClosedMonoidalEvaluationForLeftDualWithGivenTensorProduct[110X.[133X
-  
-  [1X5.1-27 EvaluationMorphism[101X
+  [1X5.1-7 EvaluationMorphism[101X
   
   [33X[1;0Y[29X[2XEvaluationMorphism[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[0;0YThis is a synonym for [10XLeftClosedMonoidalEvaluationMorphism[110X.[133X
+  [33X[0;0YThis is a synonym for [10XClosedMonoidalLeftEvaluationMorphism[110X.[133X
   
-  [1X5.1-28 EvaluationMorphismWithGivenSource[101X
+  [1X5.1-8 EvaluationMorphismWithGivenSource[101X
   
   [33X[1;0Y[29X[2XEvaluationMorphismWithGivenSource[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[0;0YThis is a synonym for [10XLeftClosedMonoidalEvaluationMorphismWithGivenSource[110X.[133X
+  [33X[0;0YThis is a synonym for [10XClosedMonoidalLeftEvaluationMorphismWithGivenSource[110X.[133X
   
-  [1X5.1-29 InternalCoHomOnMorphisms[101X
-  
-  [33X[1;0Y[29X[2XInternalCoHomOnMorphisms[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XLeftInternalCoHomOnMorphisms[110X.[133X
-  
-  [1X5.1-30 InternalCoHomOnMorphismsWithGivenInternalCoHoms[101X
-  
-  [33X[1;0Y[29X[2XInternalCoHomOnMorphismsWithGivenInternalCoHoms[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis               is               a               synonym              for
-  [10XLeftInternalCoHomOnMorphismsWithGivenLeftInternalCoHoms[110X.[133X
-  
-  [1X5.1-31 InternalCoHomOnObjects[101X
-  
-  [33X[1;0Y[29X[2XInternalCoHomOnObjects[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XLeftInternalCoHomOnObjects[110X.[133X
-  
-  [1X5.1-32 InternalCoHomTensorProductCompatibilityMorphism[101X
-  
-  [33X[1;0Y[29X[2XInternalCoHomTensorProductCompatibilityMorphism[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XLeftInternalCoHomTensorProductCompatibilityMorphism[110X.[133X
-  
-  [1X5.1-33 InternalCoHomTensorProductCompatibilityMorphismInverse[101X
-  
-  [33X[1;0Y[29X[2XInternalCoHomTensorProductCompatibilityMorphismInverse[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis               is               a               synonym              for
-  [10XLeftInternalCoHomTensorProductCompatibilityMorphismInverse[110X.[133X
-  
-  [1X5.1-34 InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects[101X
-  
-  [33X[1;0Y[29X[2XInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis               is               a               synonym              for
-  [10XLeftInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects[110X.[133X
-  
-  [1X5.1-35 InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects[101X
-  
-  [33X[1;0Y[29X[2XInternalCoHomTensorProductCompatibilityMorphismWithGivenObjects[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis               is               a               synonym              for
-  [10XLeftInternalCoHomTensorProductCompatibilityMorphismWithGivenObjects[110X.[133X
-  
-  [1X5.1-36 InternalCoHomToTensorProductAdjunctionMap[101X
+  [1X5.1-9 InternalCoHomToTensorProductAdjunctionMap[101X
   
   [33X[1;0Y[29X[2XInternalCoHomToTensorProductAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[0;0YThis is a synonym for [10XLeftInternalCoHomToTensorProductAdjunctionMap[110X.[133X
+  [33X[0;0YThis is a synonym for [10XInternalCoHomToTensorProductLeftAdjunctionMap[110X.[133X
   
-  [1X5.1-37 InternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct[101X
+  [1X5.1-10 InternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct[101X
   
   [33X[1;0Y[29X[2XInternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct[102X( [3Xarg[103X ) [32X operation[133X
   
   [33X[0;0YThis               is               a               synonym              for
-  [10XLeftInternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct[110X.[133X
+  [10XInternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct[110X.[133X
   
-  [1X5.1-38 InternalHomOnMorphisms[101X
-  
-  [33X[1;0Y[29X[2XInternalHomOnMorphisms[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XLeftInternalHomOnMorphisms[110X.[133X
-  
-  [1X5.1-39 InternalHomOnMorphismsWithGivenInternalHoms[101X
-  
-  [33X[1;0Y[29X[2XInternalHomOnMorphismsWithGivenInternalHoms[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XLeftInternalHomOnMorphismsWithGivenLeftInternalHoms[110X.[133X
-  
-  [1X5.1-40 InternalHomOnObjects[101X
-  
-  [33X[1;0Y[29X[2XInternalHomOnObjects[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XLeftInternalHomOnObjects[110X.[133X
-  
-  [1X5.1-41 InternalHomToTensorProductAdjunctionMap[101X
+  [1X5.1-11 InternalHomToTensorProductAdjunctionMap[101X
   
   [33X[1;0Y[29X[2XInternalHomToTensorProductAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[0;0YThis is a synonym for [10XLeftInternalHomToTensorProductAdjunctionMap[110X.[133X
+  [33X[0;0YThis is a synonym for [10XInternalHomToTensorProductLeftAdjunctionMap[110X.[133X
   
-  [1X5.1-42 InternalHomToTensorProductAdjunctionMapWithGivenTensorProduct[101X
+  [1X5.1-12 InternalHomToTensorProductAdjunctionMapWithGivenTensorProduct[101X
   
   [33X[1;0Y[29X[2XInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct[102X( [3Xarg[103X ) [32X operation[133X
   
   [33X[0;0YThis               is               a               synonym              for
-  [10XLeftInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct[110X.[133X
+  [10XInternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct[110X.[133X
   
-  [1X5.1-43 IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit[101X
-  
-  [33X[1;0Y[29X[2XIsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis               is               a               synonym              for
-  [10XIsomorphismFromLeftCoDualObjectToLeftInternalCoHomFromTensorUnit[110X.[133X
-  
-  [1X5.1-44 IsomorphismFromDualObjectToInternalHomIntoTensorUnit[101X
-  
-  [33X[1;0Y[29X[2XIsomorphismFromDualObjectToInternalHomIntoTensorUnit[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis               is               a               synonym              for
-  [10XIsomorphismFromLeftDualObjectToLeftInternalHomIntoTensorUnit[110X.[133X
-  
-  [1X5.1-45 IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject[101X
-  
-  [33X[1;0Y[29X[2XIsomorphismFromInternalCoHomFromTensorUnitToCoDualObject[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis               is               a               synonym              for
-  [10XIsomorphismFromLeftInternalCoHomFromTensorUnitToLeftCoDualObject[110X.[133X
-  
-  [1X5.1-46 IsomorphismFromInternalCoHomToObject[101X
-  
-  [33X[1;0Y[29X[2XIsomorphismFromInternalCoHomToObject[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XIsomorphismFromLeftInternalCoHomToObject[110X.[133X
-  
-  [1X5.1-47 IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom[101X
-  
-  [33X[1;0Y[29X[2XIsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis               is               a               synonym              for
-  [10XIsomorphismFromLeftInternalCoHomToObjectWithGivenLeftInternalCoHom[110X.[133X
-  
-  [1X5.1-48 IsomorphismFromInternalCoHomToTensorProductWithCoDualObject[101X
-  
-  [33X[1;0Y[29X[2XIsomorphismFromInternalCoHomToTensorProductWithCoDualObject[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis               is               a               synonym              for
-  [10XIsomorphismFromLeftInternalCoHomToTensorProductWithLeftCoDualObject[110X.[133X
-  
-  [1X5.1-49 IsomorphismFromInternalHomIntoTensorUnitToDualObject[101X
-  
-  [33X[1;0Y[29X[2XIsomorphismFromInternalHomIntoTensorUnitToDualObject[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis               is               a               synonym              for
-  [10XIsomorphismFromLeftInternalHomIntoTensorUnitToLeftDualObject[110X.[133X
-  
-  [1X5.1-50 IsomorphismFromInternalHomToObject[101X
-  
-  [33X[1;0Y[29X[2XIsomorphismFromInternalHomToObject[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XIsomorphismFromLeftInternalHomToObject[110X.[133X
-  
-  [1X5.1-51 IsomorphismFromInternalHomToObjectWithGivenInternalHom[101X
-  
-  [33X[1;0Y[29X[2XIsomorphismFromInternalHomToObjectWithGivenInternalHom[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis               is               a               synonym              for
-  [10XIsomorphismFromLeftInternalHomToObjectWithGivenLeftInternalHom[110X.[133X
-  
-  [1X5.1-52 IsomorphismFromInternalHomToTensorProductWithDualObject[101X
-  
-  [33X[1;0Y[29X[2XIsomorphismFromInternalHomToTensorProductWithDualObject[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis               is               a               synonym              for
-  [10XIsomorphismFromLeftInternalHomToTensorProductWithLeftDualObject[110X.[133X
-  
-  [1X5.1-53 IsomorphismFromObjectToInternalCoHom[101X
-  
-  [33X[1;0Y[29X[2XIsomorphismFromObjectToInternalCoHom[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XIsomorphismFromObjectToLeftInternalCoHom[110X.[133X
-  
-  [1X5.1-54 IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom[101X
-  
-  [33X[1;0Y[29X[2XIsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis               is               a               synonym              for
-  [10XIsomorphismFromObjectToLeftInternalCoHomWithGivenLeftInternalCoHom[110X.[133X
-  
-  [1X5.1-55 IsomorphismFromObjectToInternalHom[101X
-  
-  [33X[1;0Y[29X[2XIsomorphismFromObjectToInternalHom[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XIsomorphismFromObjectToLeftInternalHom[110X.[133X
-  
-  [1X5.1-56 IsomorphismFromObjectToInternalHomWithGivenInternalHom[101X
-  
-  [33X[1;0Y[29X[2XIsomorphismFromObjectToInternalHomWithGivenInternalHom[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis               is               a               synonym              for
-  [10XIsomorphismFromObjectToLeftInternalHomWithGivenLeftInternalHom[110X.[133X
-  
-  [1X5.1-57 IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom[101X
-  
-  [33X[1;0Y[29X[2XIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis               is               a               synonym              for
-  [10XIsomorphismFromTensorProductWithLeftCoDualObjectToLeftInternalCoHom[110X.[133X
-  
-  [1X5.1-58 IsomorphismFromTensorProductWithDualObjectToInternalHom[101X
-  
-  [33X[1;0Y[29X[2XIsomorphismFromTensorProductWithDualObjectToInternalHom[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis               is               a               synonym              for
-  [10XIsomorphismFromTensorProductWithLeftDualObjectToLeftInternalHom[110X.[133X
-  
-  [1X5.1-59 LambdaElimination[101X
-  
-  [33X[1;0Y[29X[2XLambdaElimination[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XLeftClosedMonoidalLambdaElimination[110X.[133X
-  
-  [1X5.1-60 LambdaIntroduction[101X
-  
-  [33X[1;0Y[29X[2XLambdaIntroduction[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XLeftClosedMonoidalLambdaIntroduction[110X.[133X
-  
-  [1X5.1-61 MonoidalPostCoComposeMorphism[101X
-  
-  [33X[1;0Y[29X[2XMonoidalPostCoComposeMorphism[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XLeftCoclosedMonoidalPostCoComposeMorphism[110X.[133X
-  
-  [1X5.1-62 MonoidalPostCoComposeMorphismWithGivenObjects[101X
-  
-  [33X[1;0Y[29X[2XMonoidalPostCoComposeMorphismWithGivenObjects[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis               is               a               synonym              for
-  [10XLeftCoclosedMonoidalPostCoComposeMorphismWithGivenObjects[110X.[133X
-  
-  [1X5.1-63 MonoidalPostComposeMorphism[101X
-  
-  [33X[1;0Y[29X[2XMonoidalPostComposeMorphism[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XLeftClosedMonoidalPostComposeMorphism[110X.[133X
-  
-  [1X5.1-64 MonoidalPostComposeMorphismWithGivenObjects[101X
-  
-  [33X[1;0Y[29X[2XMonoidalPostComposeMorphismWithGivenObjects[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XLeftClosedMonoidalPostComposeMorphismWithGivenObjects[110X.[133X
-  
-  [1X5.1-65 MonoidalPreCoComposeMorphism[101X
-  
-  [33X[1;0Y[29X[2XMonoidalPreCoComposeMorphism[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XLeftCoclosedMonoidalPreCoComposeMorphism[110X.[133X
-  
-  [1X5.1-66 MonoidalPreCoComposeMorphismWithGivenObjects[101X
-  
-  [33X[1;0Y[29X[2XMonoidalPreCoComposeMorphismWithGivenObjects[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis               is               a               synonym              for
-  [10XLeftCoclosedMonoidalPreCoComposeMorphismWithGivenObjects[110X.[133X
-  
-  [1X5.1-67 MonoidalPreComposeMorphism[101X
-  
-  [33X[1;0Y[29X[2XMonoidalPreComposeMorphism[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XLeftClosedMonoidalPreComposeMorphism[110X.[133X
-  
-  [1X5.1-68 MonoidalPreComposeMorphismWithGivenObjects[101X
-  
-  [33X[1;0Y[29X[2XMonoidalPreComposeMorphismWithGivenObjects[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XLeftClosedMonoidalPreComposeMorphismWithGivenObjects[110X.[133X
-  
-  [1X5.1-69 MorphismFromBidual[101X
-  
-  [33X[1;0Y[29X[2XMorphismFromBidual[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XMorphismFromLeftBidual[110X.[133X
-  
-  [1X5.1-70 MorphismFromBidualWithGivenBidual[101X
-  
-  [33X[1;0Y[29X[2XMorphismFromBidualWithGivenBidual[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XMorphismFromLeftBidualWithGivenLeftBidual[110X.[133X
-  
-  [1X5.1-71 MorphismFromCoBidual[101X
-  
-  [33X[1;0Y[29X[2XMorphismFromCoBidual[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XMorphismFromLeftCoBidual[110X.[133X
-  
-  [1X5.1-72 MorphismFromCoBidualWithGivenCoBidual[101X
-  
-  [33X[1;0Y[29X[2XMorphismFromCoBidualWithGivenCoBidual[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XMorphismFromLeftCoBidualWithGivenLeftCoBidual[110X.[133X
-  
-  [1X5.1-73 MorphismFromInternalCoHomToTensorProduct[101X
-  
-  [33X[1;0Y[29X[2XMorphismFromInternalCoHomToTensorProduct[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XMorphismFromLeftInternalCoHomToTensorProduct[110X.[133X
-  
-  [1X5.1-74 MorphismFromInternalCoHomToTensorProductWithGivenObjects[101X
-  
-  [33X[1;0Y[29X[2XMorphismFromInternalCoHomToTensorProductWithGivenObjects[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis               is               a               synonym              for
-  [10XMorphismFromLeftInternalCoHomToTensorProductWithGivenObjects[110X.[133X
-  
-  [1X5.1-75 MorphismFromInternalHomToTensorProduct[101X
-  
-  [33X[1;0Y[29X[2XMorphismFromInternalHomToTensorProduct[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XMorphismFromLeftInternalHomToTensorProduct[110X.[133X
-  
-  [1X5.1-76 MorphismFromInternalHomToTensorProductWithGivenObjects[101X
-  
-  [33X[1;0Y[29X[2XMorphismFromInternalHomToTensorProductWithGivenObjects[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis               is               a               synonym              for
-  [10XMorphismFromLeftInternalHomToTensorProductWithGivenObjects[110X.[133X
-  
-  [1X5.1-77 MorphismFromTensorProductToInternalCoHom[101X
-  
-  [33X[1;0Y[29X[2XMorphismFromTensorProductToInternalCoHom[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XMorphismFromTensorProductToLeftInternalCoHom[110X.[133X
-  
-  [1X5.1-78 MorphismFromTensorProductToInternalCoHomWithGivenObjects[101X
-  
-  [33X[1;0Y[29X[2XMorphismFromTensorProductToInternalCoHomWithGivenObjects[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis               is               a               synonym              for
-  [10XMorphismFromTensorProductToLeftInternalCoHomWithGivenObjects[110X.[133X
-  
-  [1X5.1-79 MorphismFromTensorProductToInternalHom[101X
-  
-  [33X[1;0Y[29X[2XMorphismFromTensorProductToInternalHom[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XMorphismFromTensorProductToLeftInternalHom[110X.[133X
-  
-  [1X5.1-80 MorphismFromTensorProductToInternalHomWithGivenObjects[101X
-  
-  [33X[1;0Y[29X[2XMorphismFromTensorProductToInternalHomWithGivenObjects[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis               is               a               synonym              for
-  [10XMorphismFromTensorProductToLeftInternalHomWithGivenObjects[110X.[133X
-  
-  [1X5.1-81 MorphismToBidual[101X
-  
-  [33X[1;0Y[29X[2XMorphismToBidual[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XMorphismToLeftBidual[110X.[133X
-  
-  [1X5.1-82 MorphismToBidualWithGivenBidual[101X
-  
-  [33X[1;0Y[29X[2XMorphismToBidualWithGivenBidual[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XMorphismToLeftBidualWithGivenLeftBidual[110X.[133X
-  
-  [1X5.1-83 MorphismToCoBidual[101X
-  
-  [33X[1;0Y[29X[2XMorphismToCoBidual[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XMorphismToLeftCoBidual[110X.[133X
-  
-  [1X5.1-84 MorphismToCoBidualWithGivenCoBidual[101X
-  
-  [33X[1;0Y[29X[2XMorphismToCoBidualWithGivenCoBidual[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XMorphismToLeftCoBidualWithGivenLeftCoBidual[110X.[133X
-  
-  [1X5.1-85 TensorProductDualityCompatibilityMorphism[101X
-  
-  [33X[1;0Y[29X[2XTensorProductDualityCompatibilityMorphism[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XTensorProductLeftDualityCompatibilityMorphism[110X.[133X
-  
-  [1X5.1-86 TensorProductDualityCompatibilityMorphismWithGivenObjects[101X
-  
-  [33X[1;0Y[29X[2XTensorProductDualityCompatibilityMorphismWithGivenObjects[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis               is               a               synonym              for
-  [10XTensorProductLeftDualityCompatibilityMorphismWithGivenObjects[110X.[133X
-  
-  [1X5.1-87 TensorProductInternalHomCompatibilityMorphism[101X
-  
-  [33X[1;0Y[29X[2XTensorProductInternalHomCompatibilityMorphism[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XTensorProductLeftInternalHomCompatibilityMorphism[110X.[133X
-  
-  [1X5.1-88 TensorProductInternalHomCompatibilityMorphismInverse[101X
-  
-  [33X[1;0Y[29X[2XTensorProductInternalHomCompatibilityMorphismInverse[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis               is               a               synonym              for
-  [10XTensorProductLeftInternalHomCompatibilityMorphismInverse[110X.[133X
-  
-  [1X5.1-89 TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects[101X
-  
-  [33X[1;0Y[29X[2XTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis               is               a               synonym              for
-  [10XTensorProductLeftInternalHomCompatibilityMorphismInverseWithGivenObjects[110X.[133X
-  
-  [1X5.1-90 TensorProductInternalHomCompatibilityMorphismWithGivenObjects[101X
-  
-  [33X[1;0Y[29X[2XTensorProductInternalHomCompatibilityMorphismWithGivenObjects[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis               is               a               synonym              for
-  [10XTensorProductLeftInternalHomCompatibilityMorphismWithGivenObjects[110X.[133X
-  
-  [1X5.1-91 TensorProductToInternalCoHomAdjunctionMap[101X
+  [1X5.1-13 TensorProductToInternalCoHomAdjunctionMap[101X
   
   [33X[1;0Y[29X[2XTensorProductToInternalCoHomAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[0;0YThis is a synonym for [10XTensorProductToLeftInternalCoHomAdjunctionMap[110X.[133X
+  [33X[0;0YThis is a synonym for [10XTensorProductToInternalCoHomLeftAdjunctionMap[110X.[133X
   
-  [1X5.1-92 TensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom[101X
+  [1X5.1-14 TensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom[101X
   
   [33X[1;0Y[29X[2XTensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom[102X( [3Xarg[103X ) [32X operation[133X
   
   [33X[0;0YThis               is               a               synonym              for
-  [10XTensorProductToLeftInternalCoHomAdjunctionMapWithGivenLeftInternalCoHom[110X.[133X
+  [10XTensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom[110X.[133X
   
-  [1X5.1-93 TensorProductToInternalHomAdjunctionMap[101X
+  [1X5.1-15 TensorProductToInternalHomAdjunctionMap[101X
   
   [33X[1;0Y[29X[2XTensorProductToInternalHomAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[0;0YThis is a synonym for [10XTensorProductToLeftInternalHomAdjunctionMap[110X.[133X
+  [33X[0;0YThis is a synonym for [10XTensorProductToInternalHomLeftAdjunctionMap[110X.[133X
   
-  [1X5.1-94 TensorProductToInternalHomAdjunctionMapWithGivenInternalHom[101X
+  [1X5.1-16 TensorProductToInternalHomAdjunctionMapWithGivenInternalHom[101X
   
   [33X[1;0Y[29X[2XTensorProductToInternalHomAdjunctionMapWithGivenInternalHom[102X( [3Xarg[103X ) [32X operation[133X
   
   [33X[0;0YThis               is               a               synonym              for
-  [10XTensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom[110X.[133X
-  
-  [1X5.1-95 UniversalPropertyOfCoDual[101X
-  
-  [33X[1;0Y[29X[2XUniversalPropertyOfCoDual[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XUniversalPropertyOfLeftCoDual[110X.[133X
-  
-  [1X5.1-96 UniversalPropertyOfDual[101X
-  
-  [33X[1;0Y[29X[2XUniversalPropertyOfDual[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [33X[0;0YThis is a synonym for [10XUniversalPropertyOfLeftDual[110X.[133X
+  [10XTensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom[110X.[133X
   

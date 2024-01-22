@@ -17,7 +17,17 @@
   
   [1X3.2 [33X[0;0YClosed Monoidal Categories[133X[101X
   
-  [1X3.2-1 WriteFileForLeftClosedMonoidalStructure[101X
+  [1X3.2-1 WriteFileForClosedMonoidalStructure[101X
+  
+  [33X[1;0Y[29X[2XWriteFileForClosedMonoidalStructure[102X( [3Xkey_val_rec[103X, [3Xpackage_name[103X, [3Xfiles_rec[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThis  functions  uses  the  dictionary  [3Xkey_val_rec[103X  to  create a new closed
+  monoidal  structure.  It  generates  the  necessary  files  in  the  package
+  [3Xpackage_name[103X   using   the  file-correspondence  table  [3Xfiles_rec[103X.  See  the
+  implementation for details.[133X
+  
+  [1X3.2-2 WriteFileForLeftClosedMonoidalStructure[101X
   
   [33X[1;0Y[29X[2XWriteFileForLeftClosedMonoidalStructure[102X( [3Xkey_val_rec[103X, [3Xpackage_name[103X, [3Xfiles_rec[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -30,7 +40,17 @@
   
   [1X3.3 [33X[0;0YCoclosed Monoidal Categories[133X[101X
   
-  [1X3.3-1 WriteFileForLeftCoclosedMonoidalStructure[101X
+  [1X3.3-1 WriteFileForCoclosedMonoidalStructure[101X
+  
+  [33X[1;0Y[29X[2XWriteFileForCoclosedMonoidalStructure[102X( [3Xkey_val_rec[103X, [3Xpackage_name[103X, [3Xfiles_rec[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThis  functions  uses  the  dictionary  [3Xkey_val_rec[103X to create a new coclosed
+  monoidal  structure.  It  generates  the  necessary  files  in  the  package
+  [3Xpackage_name[103X   using   the  file-correspondence  table  [3Xfiles_rec[103X.  See  the
+  implementation for details.[133X
+  
+  [1X3.3-2 WriteFileForLeftCoclosedMonoidalStructure[101X
   
   [33X[1;0Y[29X[2XWriteFileForLeftCoclosedMonoidalStructure[102X( [3Xkey_val_rec[103X, [3Xpackage_name[103X, [3Xfiles_rec[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
