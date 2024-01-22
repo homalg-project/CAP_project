@@ -672,226 +672,250 @@
         BraidingWithGivenTensorProducts        for        IsCapCategoryObject,
         IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject[114X)[133X
   
+  [30X    [33X[0;6Y[2XClosedMonoidalLeftCoevaluationMorphism[102X            ([14XMonoidalCategories:
+        ClosedMonoidalLeftCoevaluationMorphism     for    IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XClosedMonoidalLeftCoevaluationMorphismWithGivenRange[102X
+        ([14XMonoidalCategories:
+        ClosedMonoidalLeftCoevaluationMorphismWithGivenRange               for
+        IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XClosedMonoidalLeftEvaluationMorphism[102X              ([14XMonoidalCategories:
+        ClosedMonoidalLeftEvaluationMorphism      for     IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XClosedMonoidalLeftEvaluationMorphismWithGivenSource[102X
+        ([14XMonoidalCategories:
+        ClosedMonoidalLeftEvaluationMorphismWithGivenSource                for
+        IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCoDualOnMorphisms[102X     ([14XMonoidalCategories:    CoDualOnMorphisms    for
+        IsCapCategoryMorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCoDualOnMorphismsWithGivenCoDuals[102X                 ([14XMonoidalCategories:
+        CoDualOnMorphismsWithGivenCoDuals       for       IsCapCategoryObject,
+        IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCoDualOnObjects[102X      ([14XMonoidalCategories:      CoDualOnObjects     for
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCoDualityTensorProductCompatibilityMorphism[102X       ([14XMonoidalCategories:
+        CoDualityTensorProductCompatibilityMorphism  for  IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCoDualityTensorProductCompatibilityMorphismWithGivenObjects[102X
+        ([14XMonoidalCategories:
+        CoDualityTensorProductCompatibilityMorphismWithGivenObjects        for
+        IsCapCategoryObject,     IsCapCategoryObject,     IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCoLambdaElimination[102X   ([14XMonoidalCategories:   CoLambdaElimination   for
+        IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCoLambdaIntroduction[102X   ([14XMonoidalCategories:  CoLambdaIntroduction  for
+        IsCapCategoryMorphism[114X)[133X
+  
   [30X    [33X[0;6Y[2XCoRankMorphism[102X       ([14XMonoidalCategories:      CoRankMorphism      for
         IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XCoTraceMap[102X ([14XMonoidalCategories: CoTraceMap for IsCapCategoryMorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XCoevaluationForLeftDual[102X  ([14XMonoidalCategories:  CoevaluationForLeftDual
-        for IsCapCategoryObject[114X)[133X
+  [30X    [33X[0;6Y[2XCoclosedCoevaluationForCoDual[102X                     ([14XMonoidalCategories:
+        CoclosedCoevaluationForCoDual for IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XCoevaluationForLeftDualWithGivenTensorProduct[102X     ([14XMonoidalCategories:
-        CoevaluationForLeftDualWithGivenTensorProduct for IsCapCategoryObject,
+  [30X    [33X[0;6Y[2XCoclosedCoevaluationForCoDualWithGivenTensorProduct[102X
+        ([14XMonoidalCategories:
+        CoclosedCoevaluationForCoDualWithGivenTensorProduct                for
+        IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCoclosedEvaluationForCoDual[102X                       ([14XMonoidalCategories:
+        CoclosedEvaluationForCoDual for IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCoclosedEvaluationForCoDualWithGivenTensorProduct[102X ([14XMonoidalCategories:
+        CoclosedEvaluationForCoDualWithGivenTensorProduct                  for
+        IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCoclosedMonoidalLeftCoevaluationMorphism[102X          ([14XMonoidalCategories:
+        CoclosedMonoidalLeftCoevaluationMorphism    for   IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCoclosedMonoidalLeftCoevaluationMorphismWithGivenSource[102X
+        ([14XMonoidalCategories:
+        CoclosedMonoidalLeftCoevaluationMorphismWithGivenSource            for
+        IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCoclosedMonoidalLeftEvaluationMorphism[102X            ([14XMonoidalCategories:
+        CoclosedMonoidalLeftEvaluationMorphism     for    IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCoclosedMonoidalLeftEvaluationMorphismWithGivenRange[102X
+        ([14XMonoidalCategories:
+        CoclosedMonoidalLeftEvaluationMorphismWithGivenRange               for
+        IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCoevaluationForDual[102X   ([14XMonoidalCategories:   CoevaluationForDual   for
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCoevaluationForDualWithGivenTensorProduct[102X         ([14XMonoidalCategories:
+        CoevaluationForDualWithGivenTensorProduct   for   IsCapCategoryObject,
         IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XDualOnMorphisms[102X      ([14XMonoidalCategories:      DualOnMorphisms     for
+        IsCapCategoryMorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XDualOnMorphismsWithGivenDuals[102X                     ([14XMonoidalCategories:
+        DualOnMorphismsWithGivenDuals         for         IsCapCategoryObject,
+        IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XDualOnObjects[102X       ([14XMonoidalCategories:       DualOnObjects       for
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XEvaluationForDual[102X     ([14XMonoidalCategories:    EvaluationForDual    for
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XEvaluationForDualWithGivenTensorProduct[102X           ([14XMonoidalCategories:
+        EvaluationForDualWithGivenTensorProduct    for    IsCapCategoryObject,
+        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XInternalCoHomOnMorphisms[102X ([14XMonoidalCategories: InternalCoHomOnMorphisms
+        for IsCapCategoryMorphism, IsCapCategoryMorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XInternalCoHomOnMorphismsWithGivenInternalCoHoms[102X   ([14XMonoidalCategories:
+        InternalCoHomOnMorphismsWithGivenInternalCoHoms                    for
+        IsCapCategoryObject,   IsCapCategoryMorphism,   IsCapCategoryMorphism,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XInternalCoHomOnObjects[102X ([14XMonoidalCategories: InternalCoHomOnObjects for
+        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XInternalCoHomTensorProductCompatibilityMorphism[102X   ([14XMonoidalCategories:
+        InternalCoHomTensorProductCompatibilityMorphism for IsList[114X)[133X
+  
+  [30X    [33X[0;6Y[2XInternalCoHomTensorProductCompatibilityMorphismInverse[102X
+        ([14XMonoidalCategories:
+        InternalCoHomTensorProductCompatibilityMorphismInverse for IsList[114X)[133X
+  
+  [30X    [33X[0;6Y[2XInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects[102X
+        ([14XMonoidalCategories:
+        InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects
+        for IsCapCategoryObject, IsList, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XInternalCoHomTensorProductCompatibilityMorphismWithGivenObjects[102X
+        ([14XMonoidalCategories:
+        InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects    for
+        IsCapCategoryObject, IsList, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XInternalCoHomToTensorProductLeftAdjunctionMap[102X     ([14XMonoidalCategories:
+        InternalCoHomToTensorProductLeftAdjunctionMap for IsCapCategoryObject,
+        IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XInternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct[102X
+        ([14XMonoidalCategories:
+        InternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct
+        for  IsCapCategoryObject,  IsCapCategoryObject, IsCapCategoryMorphism,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XInternalHomOnMorphisms[102X ([14XMonoidalCategories: InternalHomOnMorphisms for
+        IsCapCategoryMorphism, IsCapCategoryMorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XInternalHomOnMorphismsWithGivenInternalHoms[102X       ([14XMonoidalCategories:
+        InternalHomOnMorphismsWithGivenInternalHoms  for  IsCapCategoryObject,
+        IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XInternalHomOnObjects[102X   ([14XMonoidalCategories:  InternalHomOnObjects  for
+        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XInternalHomToTensorProductLeftAdjunctionMap[102X       ([14XMonoidalCategories:
+        InternalHomToTensorProductLeftAdjunctionMap  for  IsCapCategoryObject,
+        IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XInternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct[102X
+        ([14XMonoidalCategories:
+        InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct  for
+        IsCapCategoryObject,    IsCapCategoryObject,    IsCapCategoryMorphism,
+        IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XIsIsomorphicForObjects[102X      ([14XCAP:      IsIsomorphicForObjects      for
         IsCapCategoryObject, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromLeftCoDualObjectToLeftInternalCoHomFromTensorUnit[102X
+  [30X    [33X[0;6Y[2XIsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit[102X
         ([14XMonoidalCategories:
-        IsomorphismFromLeftCoDualObjectToLeftInternalCoHomFromTensorUnit   for
+        IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit           for
         IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromLeftDualObjectToLeftInternalHomIntoTensorUnit[102X
+  [30X    [33X[0;6Y[2XIsomorphismFromDualObjectToInternalHomIntoTensorUnit[102X
         ([14XMonoidalCategories:
-        IsomorphismFromLeftDualObjectToLeftInternalHomIntoTensorUnit       for
+        IsomorphismFromDualObjectToInternalHomIntoTensorUnit               for
         IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromLeftInternalCoHomFromTensorUnitToLeftCoDualObject[102X
+  [30X    [33X[0;6Y[2XIsomorphismFromInternalCoHomFromTensorUnitToCoDualObject[102X
         ([14XMonoidalCategories:
-        IsomorphismFromLeftInternalCoHomFromTensorUnitToLeftCoDualObject   for
+        IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject           for
         IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromLeftInternalCoHomToObject[102X          ([14XMonoidalCategories:
-        IsomorphismFromLeftInternalCoHomToObject for IsCapCategoryObject[114X)[133X
+  [30X    [33X[0;6Y[2XIsomorphismFromInternalCoHomToObject[102X              ([14XMonoidalCategories:
+        IsomorphismFromInternalCoHomToObject for IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromLeftInternalCoHomToObjectWithGivenLeftInternalCoHom[102X
+  [30X    [33X[0;6Y[2XIsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom[102X
         ([14XMonoidalCategories:
-        IsomorphismFromLeftInternalCoHomToObjectWithGivenLeftInternalCoHom for
+        IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom         for
         IsCapCategoryObject, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromLeftInternalCoHomToTensorProductWithLeftCoDualObject[102X
+  [30X    [33X[0;6Y[2XIsomorphismFromInternalCoHomToTensorProductWithCoDualObject[102X
         ([14XMonoidalCategories:
-        IsomorphismFromLeftInternalCoHomToTensorProductWithLeftCoDualObject
-        for IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+        IsomorphismFromInternalCoHomToTensorProductWithCoDualObject        for
+        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromLeftInternalHomIntoTensorUnitToLeftDualObject[102X
+  [30X    [33X[0;6Y[2XIsomorphismFromInternalHomIntoTensorUnitToDualObject[102X
         ([14XMonoidalCategories:
-        IsomorphismFromLeftInternalHomIntoTensorUnitToLeftDualObject       for
+        IsomorphismFromInternalHomIntoTensorUnitToDualObject               for
         IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromLeftInternalHomToObject[102X            ([14XMonoidalCategories:
-        IsomorphismFromLeftInternalHomToObject for IsCapCategoryObject[114X)[133X
+  [30X    [33X[0;6Y[2XIsomorphismFromInternalHomToObject[102X                ([14XMonoidalCategories:
+        IsomorphismFromInternalHomToObject for IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromLeftInternalHomToObjectWithGivenLeftInternalHom[102X
+  [30X    [33X[0;6Y[2XIsomorphismFromInternalHomToObjectWithGivenInternalHom[102X
         ([14XMonoidalCategories:
-        IsomorphismFromLeftInternalHomToObjectWithGivenLeftInternalHom     for
+        IsomorphismFromInternalHomToObjectWithGivenInternalHom             for
         IsCapCategoryObject, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromLeftInternalHomToTensorProductWithLeftDualObject[102X
+  [30X    [33X[0;6Y[2XIsomorphismFromInternalHomToTensorProductWithDualObject[102X
         ([14XMonoidalCategories:
-        IsomorphismFromLeftInternalHomToTensorProductWithLeftDualObject    for
+        IsomorphismFromInternalHomToTensorProductWithDualObject            for
         IsCapCategoryObject, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromObjectToLeftInternalCoHom[102X          ([14XMonoidalCategories:
-        IsomorphismFromObjectToLeftInternalCoHom for IsCapCategoryObject[114X)[133X
+  [30X    [33X[0;6Y[2XIsomorphismFromObjectToInternalCoHom[102X              ([14XMonoidalCategories:
+        IsomorphismFromObjectToInternalCoHom for IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromObjectToLeftInternalCoHomWithGivenLeftInternalCoHom[102X
+  [30X    [33X[0;6Y[2XIsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom[102X
         ([14XMonoidalCategories:
-        IsomorphismFromObjectToLeftInternalCoHomWithGivenLeftInternalCoHom for
+        IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom         for
         IsCapCategoryObject, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromObjectToLeftInternalHom[102X            ([14XMonoidalCategories:
-        IsomorphismFromObjectToLeftInternalHom for IsCapCategoryObject[114X)[133X
+  [30X    [33X[0;6Y[2XIsomorphismFromObjectToInternalHom[102X                ([14XMonoidalCategories:
+        IsomorphismFromObjectToInternalHom for IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromObjectToLeftInternalHomWithGivenLeftInternalHom[102X
+  [30X    [33X[0;6Y[2XIsomorphismFromObjectToInternalHomWithGivenInternalHom[102X
         ([14XMonoidalCategories:
-        IsomorphismFromObjectToLeftInternalHomWithGivenLeftInternalHom     for
+        IsomorphismFromObjectToInternalHomWithGivenInternalHom             for
         IsCapCategoryObject, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromTensorProductWithLeftCoDualObjectToLeftInternalCoHom[102X
+  [30X    [33X[0;6Y[2XIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom[102X
         ([14XMonoidalCategories:
-        IsomorphismFromTensorProductWithLeftCoDualObjectToLeftInternalCoHom
-        for IsCapCategoryObject, IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XIsomorphismFromTensorProductWithLeftDualObjectToLeftInternalHom[102X
-        ([14XMonoidalCategories:
-        IsomorphismFromTensorProductWithLeftDualObjectToLeftInternalHom    for
+        IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom        for
         IsCapCategoryObject, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XLeftClosedMonoidalCoevaluationMorphism[102X            ([14XMonoidalCategories:
-        LeftClosedMonoidalCoevaluationMorphism     for    IsCapCategoryObject,
-        IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftClosedMonoidalCoevaluationMorphismWithGivenRange[102X
+  [30X    [33X[0;6Y[2XIsomorphismFromTensorProductWithDualObjectToInternalHom[102X
         ([14XMonoidalCategories:
-        LeftClosedMonoidalCoevaluationMorphismWithGivenRange               for
-        IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftClosedMonoidalEvaluationForLeftDual[102X           ([14XMonoidalCategories:
-        LeftClosedMonoidalEvaluationForLeftDual for IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftClosedMonoidalEvaluationForLeftDualWithGivenTensorProduct[102X
-        ([14XMonoidalCategories:
-        LeftClosedMonoidalEvaluationForLeftDualWithGivenTensorProduct      for
-        IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftClosedMonoidalEvaluationMorphism[102X              ([14XMonoidalCategories:
-        LeftClosedMonoidalEvaluationMorphism      for     IsCapCategoryObject,
-        IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftClosedMonoidalEvaluationMorphismWithGivenSource[102X
-        ([14XMonoidalCategories:
-        LeftClosedMonoidalEvaluationMorphismWithGivenSource                for
-        IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftClosedMonoidalLambdaElimination[102X               ([14XMonoidalCategories:
-        LeftClosedMonoidalLambdaElimination      for      IsCapCategoryObject,
-        IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftClosedMonoidalLambdaIntroduction[102X              ([14XMonoidalCategories:
-        LeftClosedMonoidalLambdaIntroduction for IsCapCategoryMorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftClosedMonoidalPostComposeMorphism[102X             ([14XMonoidalCategories:
-        LeftClosedMonoidalPostComposeMorphism     for     IsCapCategoryObject,
+        IsomorphismFromTensorProductWithDualObjectToInternalHom            for
         IsCapCategoryObject, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XLeftClosedMonoidalPostComposeMorphismWithGivenObjects[102X
-        ([14XMonoidalCategories:
-        LeftClosedMonoidalPostComposeMorphismWithGivenObjects              for
-        IsCapCategoryObject,     IsCapCategoryObject,     IsCapCategoryObject,
-        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  [30X    [33X[0;6Y[2XLambdaElimination[102X     ([14XMonoidalCategories:    LambdaElimination    for
+        IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XLeftClosedMonoidalPreComposeMorphism[102X              ([14XMonoidalCategories:
-        LeftClosedMonoidalPreComposeMorphism      for     IsCapCategoryObject,
-        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftClosedMonoidalPreComposeMorphismWithGivenObjects[102X
-        ([14XMonoidalCategories:
-        LeftClosedMonoidalPreComposeMorphismWithGivenObjects               for
-        IsCapCategoryObject,     IsCapCategoryObject,     IsCapCategoryObject,
-        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftCoDualOnMorphisms[102X  ([14XMonoidalCategories:  LeftCoDualOnMorphisms for
+  [30X    [33X[0;6Y[2XLambdaIntroduction[102X    ([14XMonoidalCategories:    LambdaIntroduction   for
         IsCapCategoryMorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftCoDualOnMorphismsWithGivenLeftCoDuals[102X         ([14XMonoidalCategories:
-        LeftCoDualOnMorphismsWithGivenLeftCoDuals   for   IsCapCategoryObject,
-        IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftCoDualOnObjects[102X   ([14XMonoidalCategories:   LeftCoDualOnObjects   for
-        IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftCoDualityTensorProductCompatibilityMorphism[102X   ([14XMonoidalCategories:
-        LeftCoDualityTensorProductCompatibilityMorphism                    for
-        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftCoDualityTensorProductCompatibilityMorphismWithGivenObjects[102X
-        ([14XMonoidalCategories:
-        LeftCoDualityTensorProductCompatibilityMorphismWithGivenObjects    for
-        IsCapCategoryObject,     IsCapCategoryObject,     IsCapCategoryObject,
-        IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftCoclosedMonoidalCoevaluationForLeftCoDual[102X     ([14XMonoidalCategories:
-        LeftCoclosedMonoidalCoevaluationForLeftCoDual for IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftCoclosedMonoidalCoevaluationForLeftCoDualWithGivenTensorProduct[102X
-        ([14XMonoidalCategories:
-        LeftCoclosedMonoidalCoevaluationForLeftCoDualWithGivenTensorProduct
-        for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftCoclosedMonoidalCoevaluationMorphism[102X          ([14XMonoidalCategories:
-        LeftCoclosedMonoidalCoevaluationMorphism    for   IsCapCategoryObject,
-        IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftCoclosedMonoidalCoevaluationMorphismWithGivenSource[102X
-        ([14XMonoidalCategories:
-        LeftCoclosedMonoidalCoevaluationMorphismWithGivenSource            for
-        IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftCoclosedMonoidalEvaluationForLeftCoDual[102X       ([14XMonoidalCategories:
-        LeftCoclosedMonoidalEvaluationForLeftCoDual for IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftCoclosedMonoidalEvaluationForLeftCoDualWithGivenTensorProduct[102X
-        ([14XMonoidalCategories:
-        LeftCoclosedMonoidalEvaluationForLeftCoDualWithGivenTensorProduct  for
-        IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftCoclosedMonoidalEvaluationMorphism[102X            ([14XMonoidalCategories:
-        LeftCoclosedMonoidalEvaluationMorphism     for    IsCapCategoryObject,
-        IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftCoclosedMonoidalEvaluationMorphismWithGivenRange[102X
-        ([14XMonoidalCategories:
-        LeftCoclosedMonoidalEvaluationMorphismWithGivenRange               for
-        IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftCoclosedMonoidalLambdaElimination[102X             ([14XMonoidalCategories:
-        LeftCoclosedMonoidalLambdaElimination     for     IsCapCategoryObject,
-        IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftCoclosedMonoidalLambdaIntroduction[102X            ([14XMonoidalCategories:
-        LeftCoclosedMonoidalLambdaIntroduction for IsCapCategoryMorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftCoclosedMonoidalPostCoComposeMorphism[102X         ([14XMonoidalCategories:
-        LeftCoclosedMonoidalPostCoComposeMorphism   for   IsCapCategoryObject,
-        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftCoclosedMonoidalPostCoComposeMorphismWithGivenObjects[102X
-        ([14XMonoidalCategories:
-        LeftCoclosedMonoidalPostCoComposeMorphismWithGivenObjects          for
-        IsCapCategoryObject,     IsCapCategoryObject,     IsCapCategoryObject,
-        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftCoclosedMonoidalPreCoComposeMorphism[102X          ([14XMonoidalCategories:
-        LeftCoclosedMonoidalPreCoComposeMorphism    for   IsCapCategoryObject,
-        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftCoclosedMonoidalPreCoComposeMorphismWithGivenObjects[102X
-        ([14XMonoidalCategories:
-        LeftCoclosedMonoidalPreCoComposeMorphismWithGivenObjects           for
-        IsCapCategoryObject,     IsCapCategoryObject,     IsCapCategoryObject,
-        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XLeftDistributivityExpanding[102X                       ([14XMonoidalCategories:
         LeftDistributivityExpanding for IsCapCategoryObject, IsList[114X)[133X
@@ -907,81 +931,6 @@
         LeftDistributivityFactoringWithGivenObjects  for  IsCapCategoryObject,
         IsCapCategoryObject, IsList, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XLeftDualOnMorphisms[102X   ([14XMonoidalCategories:   LeftDualOnMorphisms   for
-        IsCapCategoryMorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftDualOnMorphismsWithGivenLeftDuals[102X             ([14XMonoidalCategories:
-        LeftDualOnMorphismsWithGivenLeftDuals     for     IsCapCategoryObject,
-        IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftDualOnObjects[102X     ([14XMonoidalCategories:    LeftDualOnObjects    for
-        IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftInternalCoHomOnMorphisms[102X                      ([14XMonoidalCategories:
-        LeftInternalCoHomOnMorphisms         for        IsCapCategoryMorphism,
-        IsCapCategoryMorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftInternalCoHomOnMorphismsWithGivenLeftInternalCoHoms[102X
-        ([14XMonoidalCategories:
-        LeftInternalCoHomOnMorphismsWithGivenLeftInternalCoHoms            for
-        IsCapCategoryObject,   IsCapCategoryMorphism,   IsCapCategoryMorphism,
-        IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftInternalCoHomOnObjects[102X                        ([14XMonoidalCategories:
-        LeftInternalCoHomOnObjects           for          IsCapCategoryObject,
-        IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftInternalCoHomTensorProductCompatibilityMorphism[102X
-        ([14XMonoidalCategories:
-        LeftInternalCoHomTensorProductCompatibilityMorphism for IsList[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftInternalCoHomTensorProductCompatibilityMorphismInverse[102X
-        ([14XMonoidalCategories:
-        LeftInternalCoHomTensorProductCompatibilityMorphismInverse for IsList[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects[102X
-        ([14XMonoidalCategories:
-        LeftInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects
-        for IsCapCategoryObject, IsList, IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftInternalCoHomTensorProductCompatibilityMorphismWithGivenObjects[102X
-        ([14XMonoidalCategories:
-        LeftInternalCoHomTensorProductCompatibilityMorphismWithGivenObjects
-        for IsCapCategoryObject, IsList, IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftInternalCoHomToTensorProductAdjunctionMap[102X     ([14XMonoidalCategories:
-        LeftInternalCoHomToTensorProductAdjunctionMap for IsCapCategoryObject,
-        IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftInternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct[102X
-        ([14XMonoidalCategories:
-        LeftInternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct
-        for  IsCapCategoryObject,  IsCapCategoryObject, IsCapCategoryMorphism,
-        IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftInternalHomOnMorphisms[102X                        ([14XMonoidalCategories:
-        LeftInternalHomOnMorphisms          for         IsCapCategoryMorphism,
-        IsCapCategoryMorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftInternalHomOnMorphismsWithGivenLeftInternalHoms[102X
-        ([14XMonoidalCategories:
-        LeftInternalHomOnMorphismsWithGivenLeftInternalHoms                for
-        IsCapCategoryObject,   IsCapCategoryMorphism,   IsCapCategoryMorphism,
-        IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftInternalHomOnObjects[102X ([14XMonoidalCategories: LeftInternalHomOnObjects
-        for IsCapCategoryObject, IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftInternalHomToTensorProductAdjunctionMap[102X       ([14XMonoidalCategories:
-        LeftInternalHomToTensorProductAdjunctionMap  for  IsCapCategoryObject,
-        IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XLeftInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct[102X
-        ([14XMonoidalCategories:
-        LeftInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct  for
-        IsCapCategoryObject,    IsCapCategoryObject,    IsCapCategoryMorphism,
-        IsCapCategoryObject[114X)[133X
-  
   [30X    [33X[0;6Y[2XLeftUnitor[102X ([14XMonoidalCategories: LeftUnitor for IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XLeftUnitorInverse[102X     ([14XMonoidalCategories:    LeftUnitorInverse    for
@@ -995,72 +944,108 @@
         LeftUnitorWithGivenTensorProduct        for       IsCapCategoryObject,
         IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismFromLeftBidual[102X ([14XMonoidalCategories: MorphismFromLeftBidual for
-        IsCapCategoryObject[114X)[133X
+  [30X    [33X[0;6Y[2XMonoidalPostCoComposeMorphism[102X                     ([14XMonoidalCategories:
+        MonoidalPostCoComposeMorphism         for         IsCapCategoryObject,
+        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismFromLeftBidualWithGivenLeftBidual[102X         ([14XMonoidalCategories:
-        MorphismFromLeftBidualWithGivenLeftBidual   for   IsCapCategoryObject,
-        IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XMorphismFromLeftCoBidual[102X ([14XMonoidalCategories: MorphismFromLeftCoBidual
-        for IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XMorphismFromLeftCoBidualWithGivenLeftCoBidual[102X     ([14XMonoidalCategories:
-        MorphismFromLeftCoBidualWithGivenLeftCoBidual for IsCapCategoryObject,
-        IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XMorphismFromLeftInternalCoHomToTensorProduct[102X      ([14XMonoidalCategories:
-        MorphismFromLeftInternalCoHomToTensorProduct  for IsCapCategoryObject,
-        IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XMorphismFromLeftInternalCoHomToTensorProductWithGivenObjects[102X
-        ([14XMonoidalCategories:
-        MorphismFromLeftInternalCoHomToTensorProductWithGivenObjects       for
+  [30X    [33X[0;6Y[2XMonoidalPostCoComposeMorphismWithGivenObjects[102X     ([14XMonoidalCategories:
+        MonoidalPostCoComposeMorphismWithGivenObjects for IsCapCategoryObject,
         IsCapCategoryObject,     IsCapCategoryObject,     IsCapCategoryObject,
         IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismFromLeftInternalHomToTensorProduct[102X        ([14XMonoidalCategories:
-        MorphismFromLeftInternalHomToTensorProduct   for  IsCapCategoryObject,
-        IsCapCategoryObject[114X)[133X
+  [30X    [33X[0;6Y[2XMonoidalPostComposeMorphism[102X                       ([14XMonoidalCategories:
+        MonoidalPostComposeMorphism          for          IsCapCategoryObject,
+        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismFromLeftInternalHomToTensorProductWithGivenObjects[102X
-        ([14XMonoidalCategories:
-        MorphismFromLeftInternalHomToTensorProductWithGivenObjects         for
+  [30X    [33X[0;6Y[2XMonoidalPostComposeMorphismWithGivenObjects[102X       ([14XMonoidalCategories:
+        MonoidalPostComposeMorphismWithGivenObjects  for  IsCapCategoryObject,
         IsCapCategoryObject,     IsCapCategoryObject,     IsCapCategoryObject,
         IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismFromTensorProductToLeftInternalCoHom[102X      ([14XMonoidalCategories:
-        MorphismFromTensorProductToLeftInternalCoHom  for IsCapCategoryObject,
-        IsCapCategoryObject[114X)[133X
+  [30X    [33X[0;6Y[2XMonoidalPreCoComposeMorphism[102X                      ([14XMonoidalCategories:
+        MonoidalPreCoComposeMorphism          for         IsCapCategoryObject,
+        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismFromTensorProductToLeftInternalCoHomWithGivenObjects[102X
-        ([14XMonoidalCategories:
-        MorphismFromTensorProductToLeftInternalCoHomWithGivenObjects       for
+  [30X    [33X[0;6Y[2XMonoidalPreCoComposeMorphismWithGivenObjects[102X      ([14XMonoidalCategories:
+        MonoidalPreCoComposeMorphismWithGivenObjects  for IsCapCategoryObject,
         IsCapCategoryObject,     IsCapCategoryObject,     IsCapCategoryObject,
         IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismFromTensorProductToLeftInternalHom[102X        ([14XMonoidalCategories:
-        MorphismFromTensorProductToLeftInternalHom   for  IsCapCategoryObject,
-        IsCapCategoryObject[114X)[133X
+  [30X    [33X[0;6Y[2XMonoidalPreComposeMorphism[102X                        ([14XMonoidalCategories:
+        MonoidalPreComposeMorphism           for          IsCapCategoryObject,
+        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismFromTensorProductToLeftInternalHomWithGivenObjects[102X
-        ([14XMonoidalCategories:
-        MorphismFromTensorProductToLeftInternalHomWithGivenObjects         for
+  [30X    [33X[0;6Y[2XMonoidalPreComposeMorphismWithGivenObjects[102X        ([14XMonoidalCategories:
+        MonoidalPreComposeMorphismWithGivenObjects   for  IsCapCategoryObject,
         IsCapCategoryObject,     IsCapCategoryObject,     IsCapCategoryObject,
         IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismToLeftBidual[102X   ([14XMonoidalCategories:  MorphismToLeftBidual  for
+  [30X    [33X[0;6Y[2XMorphismFromBidual[102X    ([14XMonoidalCategories:    MorphismFromBidual   for
         IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismToLeftBidualWithGivenLeftBidual[102X           ([14XMonoidalCategories:
-        MorphismToLeftBidualWithGivenLeftBidual    for    IsCapCategoryObject,
+  [30X    [33X[0;6Y[2XMorphismFromBidualWithGivenBidual[102X                 ([14XMonoidalCategories:
+        MorphismFromBidualWithGivenBidual       for       IsCapCategoryObject,
         IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismToLeftCoBidual[102X ([14XMonoidalCategories: MorphismToLeftCoBidual for
+  [30X    [33X[0;6Y[2XMorphismFromCoBidual[102X   ([14XMonoidalCategories:  MorphismFromCoBidual  for
         IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismToLeftCoBidualWithGivenLeftCoBidual[102X       ([14XMonoidalCategories:
-        MorphismToLeftCoBidualWithGivenLeftCoBidual  for  IsCapCategoryObject,
+  [30X    [33X[0;6Y[2XMorphismFromCoBidualWithGivenCoBidual[102X             ([14XMonoidalCategories:
+        MorphismFromCoBidualWithGivenCoBidual     for     IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XMorphismFromInternalCoHomToTensorProduct[102X          ([14XMonoidalCategories:
+        MorphismFromInternalCoHomToTensorProduct    for   IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XMorphismFromInternalCoHomToTensorProductWithGivenObjects[102X
+        ([14XMonoidalCategories:
+        MorphismFromInternalCoHomToTensorProductWithGivenObjects           for
+        IsCapCategoryObject,     IsCapCategoryObject,     IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XMorphismFromInternalHomToTensorProduct[102X            ([14XMonoidalCategories:
+        MorphismFromInternalHomToTensorProduct     for    IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XMorphismFromInternalHomToTensorProductWithGivenObjects[102X
+        ([14XMonoidalCategories:
+        MorphismFromInternalHomToTensorProductWithGivenObjects             for
+        IsCapCategoryObject,     IsCapCategoryObject,     IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XMorphismFromTensorProductToInternalCoHom[102X          ([14XMonoidalCategories:
+        MorphismFromTensorProductToInternalCoHom    for   IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XMorphismFromTensorProductToInternalCoHomWithGivenObjects[102X
+        ([14XMonoidalCategories:
+        MorphismFromTensorProductToInternalCoHomWithGivenObjects           for
+        IsCapCategoryObject,     IsCapCategoryObject,     IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XMorphismFromTensorProductToInternalHom[102X            ([14XMonoidalCategories:
+        MorphismFromTensorProductToInternalHom     for    IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XMorphismFromTensorProductToInternalHomWithGivenObjects[102X
+        ([14XMonoidalCategories:
+        MorphismFromTensorProductToInternalHomWithGivenObjects             for
+        IsCapCategoryObject,     IsCapCategoryObject,     IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XMorphismToBidual[102X     ([14XMonoidalCategories:     MorphismToBidual     for
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XMorphismToBidualWithGivenBidual[102X                   ([14XMonoidalCategories:
+        MorphismToBidualWithGivenBidual        for        IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XMorphismToCoBidual[102X    ([14XMonoidalCategories:    MorphismToCoBidual   for
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XMorphismToCoBidualWithGivenCoBidual[102X               ([14XMonoidalCategories:
+        MorphismToCoBidualWithGivenCoBidual      for      IsCapCategoryObject,
         IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XRankMorphism[102X        ([14XMonoidalCategories:        RankMorphism       for
@@ -1096,31 +1081,31 @@
   [30X    [33X[0;6Y[2XSomeIsomorphismBetweenObjects[102X  ([14XCAP: SomeIsomorphismBetweenObjects for
         IsCapCategoryObject, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XTensorProductLeftDualityCompatibilityMorphism[102X     ([14XMonoidalCategories:
-        TensorProductLeftDualityCompatibilityMorphism for IsCapCategoryObject,
+  [30X    [33X[0;6Y[2XTensorProductDualityCompatibilityMorphism[102X         ([14XMonoidalCategories:
+        TensorProductDualityCompatibilityMorphism   for   IsCapCategoryObject,
         IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XTensorProductLeftDualityCompatibilityMorphismWithGivenObjects[102X
+  [30X    [33X[0;6Y[2XTensorProductDualityCompatibilityMorphismWithGivenObjects[102X
         ([14XMonoidalCategories:
-        TensorProductLeftDualityCompatibilityMorphismWithGivenObjects      for
+        TensorProductDualityCompatibilityMorphismWithGivenObjects          for
         IsCapCategoryObject,     IsCapCategoryObject,     IsCapCategoryObject,
         IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XTensorProductLeftInternalHomCompatibilityMorphism[102X ([14XMonoidalCategories:
-        TensorProductLeftInternalHomCompatibilityMorphism for IsList[114X)[133X
+  [30X    [33X[0;6Y[2XTensorProductInternalHomCompatibilityMorphism[102X     ([14XMonoidalCategories:
+        TensorProductInternalHomCompatibilityMorphism for IsList[114X)[133X
   
-  [30X    [33X[0;6Y[2XTensorProductLeftInternalHomCompatibilityMorphismInverse[102X
+  [30X    [33X[0;6Y[2XTensorProductInternalHomCompatibilityMorphismInverse[102X
         ([14XMonoidalCategories:
-        TensorProductLeftInternalHomCompatibilityMorphismInverse for IsList[114X)[133X
+        TensorProductInternalHomCompatibilityMorphismInverse for IsList[114X)[133X
   
-  [30X    [33X[0;6Y[2XTensorProductLeftInternalHomCompatibilityMorphismInverseWithGivenObjects[102X
+  [30X    [33X[0;6Y[2XTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects[102X
         ([14XMonoidalCategories:
-        TensorProductLeftInternalHomCompatibilityMorphismInverseWithGivenObjects
+        TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects
         for IsCapCategoryObject, IsList, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XTensorProductLeftInternalHomCompatibilityMorphismWithGivenObjects[102X
+  [30X    [33X[0;6Y[2XTensorProductInternalHomCompatibilityMorphismWithGivenObjects[102X
         ([14XMonoidalCategories:
-        TensorProductLeftInternalHomCompatibilityMorphismWithGivenObjects  for
+        TensorProductInternalHomCompatibilityMorphismWithGivenObjects      for
         IsCapCategoryObject, IsList, IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XTensorProductOnMorphisms[102X ([14XMonoidalCategories: TensorProductOnMorphisms
@@ -1134,37 +1119,36 @@
   [30X    [33X[0;6Y[2XTensorProductOnObjects[102X ([14XMonoidalCategories: TensorProductOnObjects for
         IsCapCategoryObject, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XTensorProductToLeftInternalCoHomAdjunctionMap[102X     ([14XMonoidalCategories:
-        TensorProductToLeftInternalCoHomAdjunctionMap for IsCapCategoryObject,
+  [30X    [33X[0;6Y[2XTensorProductToInternalCoHomLeftAdjunctionMap[102X     ([14XMonoidalCategories:
+        TensorProductToInternalCoHomLeftAdjunctionMap for IsCapCategoryObject,
         IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XTensorProductToLeftInternalCoHomAdjunctionMapWithGivenLeftInternalCoHom[102X
+  [30X    [33X[0;6Y[2XTensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom[102X
         ([14XMonoidalCategories:
-        TensorProductToLeftInternalCoHomAdjunctionMapWithGivenLeftInternalCoHom
+        TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom
         for  IsCapCategoryObject,  IsCapCategoryObject, IsCapCategoryMorphism,
         IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XTensorProductToLeftInternalHomAdjunctionMap[102X       ([14XMonoidalCategories:
-        TensorProductToLeftInternalHomAdjunctionMap  for  IsCapCategoryObject,
+  [30X    [33X[0;6Y[2XTensorProductToInternalHomLeftAdjunctionMap[102X       ([14XMonoidalCategories:
+        TensorProductToInternalHomLeftAdjunctionMap  for  IsCapCategoryObject,
         IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XTensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom[102X
+  [30X    [33X[0;6Y[2XTensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom[102X
         ([14XMonoidalCategories:
-        TensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom
-        for  IsCapCategoryObject,  IsCapCategoryObject, IsCapCategoryMorphism,
+        TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom    for
+        IsCapCategoryObject,    IsCapCategoryObject,    IsCapCategoryMorphism,
         IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XTensorUnit[102X ([14XMonoidalCategories: TensorUnit for IsCapCategory[114X)[133X
   
   [30X    [33X[0;6Y[2XTraceMap[102X ([14XMonoidalCategories: TraceMap for IsCapCategoryMorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalPropertyOfLeftCoDual[102X                     ([14XMonoidalCategories:
-        UniversalPropertyOfLeftCoDual         for         IsCapCategoryObject,
+  [30X    [33X[0;6Y[2XUniversalPropertyOfCoDual[102X                         ([14XMonoidalCategories:
+        UniversalPropertyOfCoDual           for           IsCapCategoryObject,
         IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalPropertyOfLeftDual[102X                       ([14XMonoidalCategories:
-        UniversalPropertyOfLeftDual          for          IsCapCategoryObject,
-        IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
+  [30X    [33X[0;6Y[2XUniversalPropertyOfDual[102X  ([14XMonoidalCategories:  UniversalPropertyOfDual
+        for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
   
   
   [1X5.1-4 [33X[0;0YCategoryOfRows of a field[133X[101X
