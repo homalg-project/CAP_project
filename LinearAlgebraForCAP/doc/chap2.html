@@ -208,27 +208,27 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                cohom_ab</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">              );</span>
 &lt;A morphism in Category of matrices over Q&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ev_ab := EvaluationMorphism( a, b );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ev_ab := ClosedMonoidalLeftEvaluationMorphism( a, b );</span>
 &lt;A morphism in Category of matrices over Q&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coev_ab := CoevaluationMorphism( a, b );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coev_ab := ClosedMonoidalLeftCoevaluationMorphism( a, b );</span>
 &lt;A morphism in Category of matrices over Q&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cocl_ev_ab := CoclosedEvaluationMorphism( a, b );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cocl_ev_ab := CoclosedMonoidalLeftEvaluationMorphism( a, b );</span>
 &lt;A morphism in Category of matrices over Q&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cocl_ev_ba := CoclosedEvaluationMorphism( b, a );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cocl_ev_ba := CoclosedMonoidalLeftEvaluationMorphism( b, a );</span>
 &lt;A morphism in Category of matrices over Q&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cocl_coev_ab := CoclosedCoevaluationMorphism( a, b );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cocl_coev_ab := CoclosedMonoidalLeftCoevaluationMorphism( a, b );</span>
 &lt;A morphism in Category of matrices over Q&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UnderlyingMatrix( ev_ab ) = TransposedMatrix( UnderlyingMatrix( cocl_ev_ba ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UnderlyingMatrix( coev_ab ) = TransposedMatrix( UnderlyingMatrix( cocl_coev_ab ) );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tensor_hom_adj_1_hom_ab := InternalHomToTensorProductAdjunctionMap( a, b, 1_hom_ab );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tensor_hom_adj_1_hom_ab := InternalHomToTensorProductLeftAdjunctionMap( a, b, 1_hom_ab );</span>
 &lt;A morphism in Category of matrices over Q&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cohom_tensor_adj_1_cohom_ab := InternalCoHomToTensorProductAdjunctionMap( a, b, 1_cohom_ab );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cohom_tensor_adj_1_cohom_ab := InternalCoHomToTensorProductLeftAdjunctionMap( a, b, 1_cohom_ab );</span>
 &lt;A morphism in Category of matrices over Q&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tensor_hom_adj_1_ab := TensorProductToInternalHomAdjunctionMap( a, b, 1_ab );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tensor_hom_adj_1_ab := TensorProductToInternalHomLeftAdjunctionMap( a, b, 1_ab );</span>
 &lt;A morphism in Category of matrices over Q&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cohom_tensor_adj_1_ab := TensorProductToInternalCoHomAdjunctionMap( a, b, 1_ab );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cohom_tensor_adj_1_ab := TensorProductToInternalCoHomLeftAdjunctionMap( a, b, 1_ab );</span>
 &lt;A morphism in Category of matrices over Q&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ev_ab = tensor_hom_adj_1_hom_ab;</span>
 true

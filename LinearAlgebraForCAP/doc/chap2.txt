@@ -169,27 +169,27 @@
     [4X[25X>[125X [27X                cohom_ab[127X[104X
     [4X[25X>[125X [27X              );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
-    [4X[25Xgap>[125X [27Xev_ab := EvaluationMorphism( a, b );[127X[104X
+    [4X[25Xgap>[125X [27Xev_ab := ClosedMonoidalLeftEvaluationMorphism( a, b );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
-    [4X[25Xgap>[125X [27Xcoev_ab := CoevaluationMorphism( a, b );[127X[104X
+    [4X[25Xgap>[125X [27Xcoev_ab := ClosedMonoidalLeftCoevaluationMorphism( a, b );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
-    [4X[25Xgap>[125X [27Xcocl_ev_ab := CoclosedEvaluationMorphism( a, b );[127X[104X
+    [4X[25Xgap>[125X [27Xcocl_ev_ab := CoclosedMonoidalLeftEvaluationMorphism( a, b );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
-    [4X[25Xgap>[125X [27Xcocl_ev_ba := CoclosedEvaluationMorphism( b, a );[127X[104X
+    [4X[25Xgap>[125X [27Xcocl_ev_ba := CoclosedMonoidalLeftEvaluationMorphism( b, a );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
-    [4X[25Xgap>[125X [27Xcocl_coev_ab := CoclosedCoevaluationMorphism( a, b );[127X[104X
+    [4X[25Xgap>[125X [27Xcocl_coev_ab := CoclosedMonoidalLeftCoevaluationMorphism( a, b );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
     [4X[25Xgap>[125X [27XUnderlyingMatrix( ev_ab ) = TransposedMatrix( UnderlyingMatrix( cocl_ev_ba ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XUnderlyingMatrix( coev_ab ) = TransposedMatrix( UnderlyingMatrix( cocl_coev_ab ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xtensor_hom_adj_1_hom_ab := InternalHomToTensorProductAdjunctionMap( a, b, 1_hom_ab );[127X[104X
+    [4X[25Xgap>[125X [27Xtensor_hom_adj_1_hom_ab := InternalHomToTensorProductLeftAdjunctionMap( a, b, 1_hom_ab );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
-    [4X[25Xgap>[125X [27Xcohom_tensor_adj_1_cohom_ab := InternalCoHomToTensorProductAdjunctionMap( a, b, 1_cohom_ab );[127X[104X
+    [4X[25Xgap>[125X [27Xcohom_tensor_adj_1_cohom_ab := InternalCoHomToTensorProductLeftAdjunctionMap( a, b, 1_cohom_ab );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
-    [4X[25Xgap>[125X [27Xtensor_hom_adj_1_ab := TensorProductToInternalHomAdjunctionMap( a, b, 1_ab );[127X[104X
+    [4X[25Xgap>[125X [27Xtensor_hom_adj_1_ab := TensorProductToInternalHomLeftAdjunctionMap( a, b, 1_ab );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
-    [4X[25Xgap>[125X [27Xcohom_tensor_adj_1_ab := TensorProductToInternalCoHomAdjunctionMap( a, b, 1_ab );[127X[104X
+    [4X[25Xgap>[125X [27Xcohom_tensor_adj_1_ab := TensorProductToInternalCoHomLeftAdjunctionMap( a, b, 1_ab );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
     [4X[25Xgap>[125X [27Xev_ab = tensor_hom_adj_1_hom_ab;[127X[104X
     [4X[28Xtrue[128X[104X
