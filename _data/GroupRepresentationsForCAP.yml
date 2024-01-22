@@ -1,7 +1,7 @@
 name: GroupRepresentationsForCAP
-version: "2024.01-01"
+version: "2024.01-02"
 license: "GPL-2.0-or-later"
-date: 2024-01-19
+date: 2024-01-22
 description: |
     Skeletal category of group representations for CAP
 
@@ -26,10 +26,10 @@ needed-pkgs:
       version: ">= 2023.02-09"
       url: "https://homalg-project.github.io/pkg/CAP"
     - name: "MonoidalCategories"
-      version: ">= 2024.01-03"
+      version: ">= 2024.01-06"
       url: "https://homalg-project.github.io/pkg/MonoidalCategories"
     - name: "LinearAlgebraForCAP"
-      version: ">=2024.01-03"
+      version: ">=2024.01-04"
       url: "https://homalg-project.github.io/pkg/LinearAlgebraForCAP"
     - name: "RingsForHomalg"
       version: ">=2016.08.12"
@@ -44,11 +44,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/GroupRepresentationsFo
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/GroupRepresentationsForCAP-2024.01-01/GroupRepresentationsForCAP-2024.01-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/GroupRepresentationsForCAP-2024.01-02/GroupRepresentationsForCAP-2024.01-02.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/GroupRepresentationsForCAP-2024.01-01/GroupRepresentationsForCAP-2024.01-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/GroupRepresentationsForCAP-2024.01-02/GroupRepresentationsForCAP-2024.01-02.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/GroupRepresentationsForCAP-2024.01-01/GroupRepresentationsForCAP-2024.01-01-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/GroupRepresentationsForCAP-2024.01-02/GroupRepresentationsForCAP-2024.01-02-manual.pdf
 
 abstract: |
 
@@ -57,28 +57,28 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>Pos19</span>]   <b class='BibAuthor'>Posur, S.</b>,
+    [<span class='BibKey'>Pos22</span>]   <b class='BibAuthor'>Posur, S.</b>,
      <i class='BibTitle'>GroupRepresentationsForCAP, Skeletal category of group representations for CAP,
-             Version 2024.01-01</i>
-     (<span class='BibYear'>1-19</span>)<br />
+             Version 2024.01-02</i>
+     (<span class='BibYear'>1-22</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/GroupRepresentationsForCAP">https://homalg-project.github.io/pkg/GroupRepresentationsForCAP</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ GroupRepresentationsForCAP2024.01-01,
+    @misc{ GroupRepresentationsForCAP2024.01-02,
       author =           {Posur, S.},
       title =            {{GroupRepresentationsForCAP},   Skeletal  category  of
-                          group representations for CAP, {V}ersion 2024.01-01},
+                          group representations for CAP, {V}ersion 2024.01-02},
       month =            {4-},
-      year =             {1-19},
+      year =             {1-22},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/GroupRepresentationsForCAP}
                           {\texttt{https://homalg-project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{GroupRepresentationsForCAP}}},
-      printedkey =       {Pos19}
+      printedkey =       {Pos22}
     }
 

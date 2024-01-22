@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "GroupRepresentationsForCAP",
 Subtitle := "Skeletal category of group representations for CAP",
-Version := "2024.01-01",
-Date := "2024-01-19",
+Version := "2024.01-02",
+Date := "2024-01-22",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -74,8 +74,8 @@ Dependencies := rec(
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "ToolsForHomalg", ">= 2020.09.01" ],
                            [ "CAP", ">= 2023.02-09" ],
-                           [ "MonoidalCategories", ">= 2024.01-03" ],
-                           [ "LinearAlgebraForCAP", ">=2024.01-03" ],
+                           [ "MonoidalCategories", ">= 2024.01-06" ],
+                           [ "LinearAlgebraForCAP", ">=2024.01-04" ],
                            [ "RingsForHomalg", ">=2016.08.12" ],
                            [ "repsn", ">=3.0.2" ] ],
   SuggestedOtherPackages := [ ],
