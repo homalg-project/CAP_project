@@ -161,8 +161,8 @@ InstallGlobalFunction( "LeftClosedMonoidalCategoriesTest",
             cocl_ev_ba_op := LeftCoclosedMonoidalEvaluationMorphism( b_op, a_op );
             
             # Arguments must be reversed for evaluations
-            Assert( 0, IsCongruentForMorphisms( cocl_ev_ab_op, Opposite( opposite, ev_ba ) ) );
-            Assert( 0, IsCongruentForMorphisms( cocl_ev_ba_op, Opposite( opposite, ev_ab ) ) );
+            Assert( 0, IsCongruentForMorphisms( cocl_ev_ab_op, Opposite( opposite, ev_ab ) ) );
+            Assert( 0, IsCongruentForMorphisms( cocl_ev_ba_op, Opposite( opposite, ev_ba ) ) );
             
         fi;
         
@@ -648,7 +648,7 @@ InstallGlobalFunction( "LeftClosedMonoidalCategoriesTest",
             id_hom_ab := IdentityMorphism( LeftInternalHomOnObjects( a, b ) );
             id_hom_ba := IdentityMorphism( LeftInternalHomOnObjects( b, a ) );
             
-            # Adjoint( Hom( a. b ) → Hom( a, b ) )  ==  Hom( a, b ) ⊗ a → b
+            # Adjoint( Hom( a, b ) → Hom( a, b ) )  ==  Hom( a, b ) ⊗ a → b
             hom_to_tensor_adjunction_on_id_hom_ab := LeftInternalHomToTensorProductAdjunctionMap( a, b, id_hom_ab );
             
             # Adjoint( Hom( b, a ) → Hom( b, a ) )  ==  Hom( b, a ) ⊗ b → a
@@ -684,8 +684,8 @@ InstallGlobalFunction( "LeftClosedMonoidalCategoriesTest",
             # Adjoint( b ⊗ a → b ⊗ a )  ==  b → Hom( a, b ⊗ a )
             tensor_to_hom_adjunction_on_id_b_tensor_a := TensorProductToLeftInternalHomAdjunctionMap( b, a, id_b_tensor_a );
             
-            Assert( 0, IsCongruentForMorphisms( coev_ab, tensor_to_hom_adjunction_on_id_a_tensor_b ) );
-            Assert( 0, IsCongruentForMorphisms( coev_ba, tensor_to_hom_adjunction_on_id_b_tensor_a ) );
+            Assert( 0, IsCongruentForMorphisms( coev_ba, tensor_to_hom_adjunction_on_id_a_tensor_b ) );
+            Assert( 0, IsCongruentForMorphisms( coev_ab, tensor_to_hom_adjunction_on_id_b_tensor_a ) );
             
         fi;
 

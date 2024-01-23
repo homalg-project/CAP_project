@@ -72,7 +72,9 @@ ReadPackage( "MonoidalCategories", "gap/CreateCoclosedMonoidalCategories.gd" );
 
 ## Synonyms
 
+#= comment for Julia
 ReadPackage( "MonoidalCategories", "gap/Synonyms.gd" );
+# =#
 
 ## Test methods
 

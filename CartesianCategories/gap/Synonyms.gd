@@ -6,49 +6,57 @@
 
 ####################################
 ##
-#! @Chapter Synonyms
-##
-#! @Section Synonyms
+#! @Chapter Legacy Operations and Synonyms
 ##
 ####################################
 
-#= comment for Julia
+####################################
+##
+#! @Section Legacy operations
+##
+####################################
 
 #! @Description
-#!  This is a synonym for `CocartesianLeftCoevaluationMorphism`.
-# DeclareOperation( "CocartesianCoevaluationMorphism", [ IsObject ] );
-# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "CocartesianCoevaluationMorphism", CocartesianLeftCoevaluationMorphism );
+#!  This is a legacy operation for `CocartesianLeftCoevaluationMorphism`( <A>b</A>, <A>a</A> ),
+#!  i.e., with the first and second argument interchanged.
+#! @Arguments a, b
+DeclareOperation( "CocartesianCoevaluationMorphism", [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#!  This is a synonym for `CocartesianLeftCoevaluationMorphismWithGivenSource`.
-# DeclareOperation( "CocartesianCoevaluationMorphismWithGivenSource", [ IsObject ] );
-# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "CocartesianCoevaluationMorphismWithGivenSource", CocartesianLeftCoevaluationMorphismWithGivenSource );
+#!  This is a legacy operation for `CocartesianLeftCoevaluationMorphismWithGivenSource`( <A>b</A>, <A>a</A>, <A>s</A> ),
+#!  i.e., with the first and second argument interchanged.
+#! @Arguments a, b, s
+DeclareOperation( "CocartesianCoevaluationMorphismWithGivenSource", [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#!  This is a synonym for `CocartesianLeftEvaluationMorphism`.
-# DeclareOperation( "CocartesianEvaluationMorphism", [ IsObject ] );
-# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "CocartesianEvaluationMorphism", CocartesianLeftEvaluationMorphism );
+#!  This is a legacy operation for `CocartesianLeftEvaluationMorphism`( <A>b</A>, <A>a</A> ),
+#!  i.e., with the first and second argument interchanged.
+#! @Arguments a, b
+DeclareOperation( "CocartesianEvaluationMorphism", [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#!  This is a synonym for `CocartesianLeftEvaluationMorphismWithGivenRange`.
-# DeclareOperation( "CocartesianEvaluationMorphismWithGivenRange", [ IsObject ] );
-# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "CocartesianEvaluationMorphismWithGivenRange", CocartesianLeftEvaluationMorphismWithGivenRange );
+#!  This is a legacy operation for `CocartesianLeftEvaluationMorphismWithGivenRange`( <A>b</A>, <A>a</A>, <A>r</A> ),
+#!  i.e., with the first and second argument interchanged.
+#! @Arguments a, b, r
+DeclareOperation( "CocartesianEvaluationMorphismWithGivenRange", [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#!  This is a synonym for `CartesianLeftCoevaluationMorphism`.
-# DeclareOperation( "CartesianCoevaluationMorphism", [ IsObject ] );
-# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "CartesianCoevaluationMorphism", CartesianLeftCoevaluationMorphism );
+#!  This is a legacy operation for `CartesianLeftCoevaluationMorphism`( <A>b</A>, <A>a</A> ),
+#!  i.e., with the first and second argument interchanged.
+#! @Arguments a, b
+DeclareOperation( "CartesianCoevaluationMorphism", [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#!  This is a synonym for `CartesianLeftCoevaluationMorphismWithGivenRange`.
-# DeclareOperation( "CartesianCoevaluationMorphismWithGivenRange", [ IsObject ] );
-# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "CartesianCoevaluationMorphismWithGivenRange", CartesianLeftCoevaluationMorphismWithGivenRange );
+#!  This is a legacy operation for `CartesianLeftCoevaluationMorphismWithGivenRange`( <A>b</A>, <A>a</A>, <A>r</A> ),
+#!  i.e., with the first and second argument interchanged.
+#! @Arguments a, b, r
+DeclareOperation( "CartesianCoevaluationMorphismWithGivenRange", [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+####################################
+##
+#! @Section Synonyms for legacy operations
+##
+####################################
 
 #! @Description
 #!  This is a synonym for `CartesianLeftEvaluationMorphism`.
@@ -115,42 +123,6 @@ DeclareSynonym( "DirectProductToExponentialAdjunctionMapWithGivenExponential", D
 ##
 
 #! @Description
-#!  This is a synonym for `AddCocartesianLeftCoevaluationMorphism`
-# DeclareOperation( "AddCocartesianCoevaluationMorphism", [ IsObject ] );
-# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "AddCocartesianCoevaluationMorphism", AddCocartesianLeftCoevaluationMorphism );
-
-#! @Description
-#!  This is a synonym for `AddCocartesianLeftCoevaluationMorphismWithGivenSource`
-# DeclareOperation( "AddCocartesianCoevaluationMorphismWithGivenSource", [ IsObject ] );
-# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "AddCocartesianCoevaluationMorphismWithGivenSource", AddCocartesianLeftCoevaluationMorphismWithGivenSource );
-
-#! @Description
-#!  This is a synonym for `AddCocartesianLeftEvaluationMorphism`
-# DeclareOperation( "AddCocartesianEvaluationMorphism", [ IsObject ] );
-# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "AddCocartesianEvaluationMorphism", AddCocartesianLeftEvaluationMorphism );
-
-#! @Description
-#!  This is a synonym for `AddCocartesianLeftEvaluationMorphismWithGivenRange`
-# DeclareOperation( "AddCocartesianEvaluationMorphismWithGivenRange", [ IsObject ] );
-# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "AddCocartesianEvaluationMorphismWithGivenRange", AddCocartesianLeftEvaluationMorphismWithGivenRange );
-
-#! @Description
-#!  This is a synonym for `AddCartesianLeftCoevaluationMorphism`
-# DeclareOperation( "AddCartesianCoevaluationMorphism", [ IsObject ] );
-# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "AddCartesianCoevaluationMorphism", AddCartesianLeftCoevaluationMorphism );
-
-#! @Description
-#!  This is a synonym for `AddCartesianLeftCoevaluationMorphismWithGivenRange`
-# DeclareOperation( "AddCartesianCoevaluationMorphismWithGivenRange", [ IsObject ] );
-# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "AddCartesianCoevaluationMorphismWithGivenRange", AddCartesianLeftCoevaluationMorphismWithGivenRange );
-
-#! @Description
 #!  This is a synonym for `AddCartesianLeftEvaluationMorphism`
 # DeclareOperation( "AddCartesianEvaluationMorphism", [ IsObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
@@ -209,5 +181,3 @@ DeclareSynonym( "AddDirectProductToExponentialAdjunctionMap", AddDirectProductTo
 # DeclareOperation( "AddDirectProductToExponentialAdjunctionMapWithGivenExponential", [ IsObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
 DeclareSynonym( "AddDirectProductToExponentialAdjunctionMapWithGivenExponential", AddDirectProductToExponentialLeftAdjunctionMapWithGivenExponential );
-
-# =#

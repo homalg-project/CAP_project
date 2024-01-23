@@ -18,7 +18,7 @@ AddDerivationToCAP( TensorProductToLeftInternalHomAdjunctionMap,
     #
     #      a
     #      |
-    #      | coev_ab
+    #      | coev_ba
     #      v
     # Hom(b,a ⊗ b)
     #      |
@@ -27,7 +27,7 @@ AddDerivationToCAP( TensorProductToLeftInternalHomAdjunctionMap,
     #   Hom(b,c)
 
     return PreCompose( cat,
-             LeftClosedMonoidalCoevaluationMorphism( cat, a, b ),
+             LeftClosedMonoidalCoevaluationMorphism( cat, b, a ),
              LeftInternalHomOnMorphisms( cat, IdentityMorphism( cat, b ), f ) );
     
 end : CategoryFilter := IsLeftClosedMonoidalCategory );
@@ -41,13 +41,13 @@ AddDerivationToCAP( TensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInte
                       [ IdentityMorphism, 1 ] ],
                     
   function( cat, a, b, f, i )
-    local coev_ab;
+    local coev_ba;
     
     # f: a ⊗ b → c
     #
     #      a
     #      |
-    #      | coev_ab
+    #      | coev_ba
     #      v
     # Hom(b,a ⊗ b)
     #      |
@@ -55,11 +55,11 @@ AddDerivationToCAP( TensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInte
     #      v
     #   Hom(b,c)
     
-    coev_ab := LeftClosedMonoidalCoevaluationMorphism( cat, a, b );
+    coev_ba := LeftClosedMonoidalCoevaluationMorphism( cat, b, a );
     
     return PreCompose( cat,
-             coev_ab,
-             LeftInternalHomOnMorphismsWithGivenLeftInternalHoms( cat, Range( coev_ab ), IdentityMorphism( cat, b ), f, i ) );
+             coev_ba,
+             LeftInternalHomOnMorphismsWithGivenLeftInternalHoms( cat, Range( coev_ba ), IdentityMorphism( cat, b ), f, i ) );
     
 end : CategoryFilter := IsLeftClosedMonoidalCategory );
 
@@ -130,7 +130,7 @@ AddDerivationToCAP( LeftClosedMonoidalEvaluationMorphismWithGivenSource,
                       [ LeftInternalHomOnObjects, 1 ] ],
                     
   function( cat, a, b, tensor_object )
-
+    
     # Adjoint( id_Hom(a,b): Hom(a,b) → Hom(a,b) ) = ( Hom(a,b) ⊗ a → b )
     
     return LeftInternalHomToTensorProductAdjunctionMap( cat,
@@ -148,11 +148,11 @@ AddDerivationToCAP( LeftClosedMonoidalCoevaluationMorphismWithGivenRange,
                     
   function( cat, a, b, internal_hom )
     
-    # Adjoint( id_(a ⊗ b): a ⊗ b → a ⊗ b ) = ( a → Hom(b, a ⊗ b) )
-
+    # Adjoint( id_(b ⊗ a): b ⊗ a → b ⊗ a ) = ( b → Hom(a, b ⊗ a) )
+    
     return TensorProductToLeftInternalHomAdjunctionMap( cat,
-             a, b,
-             IdentityMorphism( cat, TensorProductOnObjects( cat, a, b ) ) );
+             b, a,
+             IdentityMorphism( cat, TensorProductOnObjects( cat, b, a ) ) );
     
 end : CategoryFilter := IsLeftClosedMonoidalCategory );
 
@@ -393,7 +393,7 @@ AddDerivationToCAP( IsomorphismFromObjectToLeftInternalHomWithGivenLeftInternalH
     
     #       a
     #       |
-    #       | coev_(a,1)
+    #       | coev_(1,a)
     #       v
     # Hom(1, a ⊗ 1)
     #       |
@@ -404,7 +404,7 @@ AddDerivationToCAP( IsomorphismFromObjectToLeftInternalHomWithGivenLeftInternalH
     unit := TensorUnit( cat );
     
     return PreCompose( cat,
-                   LeftClosedMonoidalCoevaluationMorphism( cat, a, unit ),
+                   LeftClosedMonoidalCoevaluationMorphism( cat, unit, a ),
                    
                    LeftInternalHomOnMorphisms( cat,
                            IdentityMorphism( cat, unit ),

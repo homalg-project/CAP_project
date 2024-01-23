@@ -56,7 +56,7 @@ AddDerivationToCAP( MorphismToCartesianBidualWithGivenCartesianBidual,
     
     #        a
     #        |
-    #        | coev_(a,a^v)
+    #        | coev_(a^v,a)
     #        v
     #  Exp(av, a × a^v)
     #        |
@@ -72,7 +72,7 @@ AddDerivationToCAP( MorphismToCartesianBidualWithGivenCartesianBidual,
     
     morphism := PreComposeList( cat,
                         a,
-                        [ CartesianLeftCoevaluationMorphism( cat, a, av ),
+                        [ CartesianLeftCoevaluationMorphism( cat, av, a ),
                           
                           ExponentialOnMorphisms( cat,
                                   IdentityMorphism( cat, av ),

@@ -6,59 +6,67 @@
 
 ####################################
 ##
-#! @Chapter Synonyms
-##
-#! @Section Synonyms
+#! @Chapter Legacy Operations and Synonyms
 ##
 ####################################
 
-#= comment for Julia
+####################################
+##
+#! @Section Legacy operations
+##
+####################################
 
 #! @Description
-#!  This is a synonym for `CoclosedMonoidalLeftCoevaluationMorphism`.
-# DeclareOperation( "CoclosedCoevaluationMorphism", [ IsObject ] );
-# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "CoclosedCoevaluationMorphism", CoclosedMonoidalLeftCoevaluationMorphism );
+#!  This is a legacy operation for `CoclosedMonoidalLeftCoevaluationMorphism`( <A>b</A>, <A>a</A> ),
+#!  i.e., with the first and second argument interchanged.
+#! @Arguments a, b
+DeclareOperation( "CoclosedCoevaluationMorphism", [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#!  This is a synonym for `CoclosedMonoidalLeftCoevaluationMorphismWithGivenSource`.
-# DeclareOperation( "CoclosedCoevaluationMorphismWithGivenSource", [ IsObject ] );
-# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "CoclosedCoevaluationMorphismWithGivenSource", CoclosedMonoidalLeftCoevaluationMorphismWithGivenSource );
+#!  This is a legacy operation for `CoclosedMonoidalLeftCoevaluationMorphismWithGivenSource`( <A>b</A>, <A>a</A>, <A>s</A> ),
+#!  i.e., with the first and second argument interchanged.
+#! @Arguments a, b, s
+DeclareOperation( "CoclosedCoevaluationMorphismWithGivenSource", [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#!  This is a synonym for `CoclosedMonoidalLeftEvaluationMorphism`.
-# DeclareOperation( "CoclosedEvaluationMorphism", [ IsObject ] );
-# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "CoclosedEvaluationMorphism", CoclosedMonoidalLeftEvaluationMorphism );
+#!  This is a legacy operation for `CoclosedMonoidalLeftEvaluationMorphism`( <A>b</A>, <A>a</A> ),
+#!  i.e., with the first and second argument interchanged.
+#! @Arguments a, b
+DeclareOperation( "CoclosedEvaluationMorphism", [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#!  This is a synonym for `CoclosedMonoidalLeftEvaluationMorphismWithGivenRange`.
-# DeclareOperation( "CoclosedEvaluationMorphismWithGivenRange", [ IsObject ] );
-# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "CoclosedEvaluationMorphismWithGivenRange", CoclosedMonoidalLeftEvaluationMorphismWithGivenRange );
+#!  This is a legacy operation for `CoclosedMonoidalLeftEvaluationMorphismWithGivenRange`( <A>b</A>, <A>a</A>, <A>r</A> ),
+#!  i.e., with the first and second argument interchanged.
+#! @Arguments a, b, r
+DeclareOperation( "CoclosedEvaluationMorphismWithGivenRange", [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#!  This is a synonym for `ClosedMonoidalLeftCoevaluationMorphism`.
-# DeclareOperation( "CoevaluationMorphism", [ IsObject ] );
-# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "CoevaluationMorphism", ClosedMonoidalLeftCoevaluationMorphism );
+#!  This is a legacy operation for `ClosedMonoidalLeftCoevaluationMorphism`( <A>b</A>, <A>a</A> ),
+#!  i.e., with the first and second argument interchanged.
+#! @Arguments a, b
+DeclareOperation( "CoevaluationMorphism", [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#!  This is a synonym for `ClosedMonoidalLeftCoevaluationMorphismWithGivenRange`.
-# DeclareOperation( "CoevaluationMorphismWithGivenRange", [ IsObject ] );
-# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "CoevaluationMorphismWithGivenRange", ClosedMonoidalLeftCoevaluationMorphismWithGivenRange );
+#!  This is a legacy operation for `ClosedMonoidalLeftCoevaluationMorphismWithGivenRange`( <A>b</A>, <A>a</A>, <A>r</A> ),
+#!  i.e., with the first and second argument interchanged.
+#! @Arguments a, b, r
+DeclareOperation( "CoevaluationMorphismWithGivenRange", [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+####################################
+##
+#! @Section Synonyms for legacy operations
+##
+####################################
 
 #! @Description
 #!  This is a synonym for `ClosedMonoidalLeftEvaluationMorphism`.
-# DeclareOperation( "EvaluationMorphism", [ IsObject ] );
+# DeclareOperation( "EvaluationMorphism", [ IsCapCategoryObject, IsCapCategoryObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
 DeclareSynonym( "EvaluationMorphism", ClosedMonoidalLeftEvaluationMorphism );
 
 #! @Description
 #!  This is a synonym for `ClosedMonoidalLeftEvaluationMorphismWithGivenSource`.
-# DeclareOperation( "EvaluationMorphismWithGivenSource", [ IsObject ] );
+# DeclareOperation( "EvaluationMorphismWithGivenSource", [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
 DeclareSynonym( "EvaluationMorphismWithGivenSource", ClosedMonoidalLeftEvaluationMorphismWithGivenSource );
 
@@ -109,5 +117,3 @@ DeclareSynonym( "TensorProductToInternalHomAdjunctionMap", TensorProductToIntern
 # DeclareOperation( "TensorProductToInternalHomAdjunctionMapWithGivenInternalHom", [ IsObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
 DeclareSynonym( "TensorProductToInternalHomAdjunctionMapWithGivenInternalHom", TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom );
-
-# =#

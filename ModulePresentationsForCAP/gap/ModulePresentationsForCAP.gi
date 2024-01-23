@@ -1045,7 +1045,7 @@ InstallGlobalFunction( ADD_COEVALUATION_MORPHISM_LEFT,
     
     AddClosedMonoidalLeftCoevaluationMorphismWithGivenRange( category,
       
-      function( cat, object_1, object_2, internal_hom )
+      function( cat, object_2, object_1, internal_hom )
         local object_1_tensored_object_2, internal_hom_embedding, rank_2, free_module, morphism,
               row, zero_row, i, matrix, rank_1, lifted_coevaluation;
         
@@ -1103,7 +1103,7 @@ InstallGlobalFunction( ADD_COEVALUATION_MORPHISM_RIGHT,
     
     AddClosedMonoidalLeftCoevaluationMorphismWithGivenRange( category,
       
-      function( cat, object_1, object_2, internal_hom )
+      function( cat, object_2, object_1, internal_hom )
         local object_1_tensored_object_2, internal_hom_embedding, rank_2, free_module, morphism,
               column, zero_column, i, matrix, rank_1, lifted_coevaluation;
         

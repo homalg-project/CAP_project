@@ -173,15 +173,21 @@ ev_ab := ClosedMonoidalLeftEvaluationMorphism( a, b );
 #! <A morphism in Category of matrices over Q>
 coev_ab := ClosedMonoidalLeftCoevaluationMorphism( a, b );
 #! <A morphism in Category of matrices over Q>
+coev_ba := ClosedMonoidalLeftCoevaluationMorphism( b, a );
+#! <A morphism in Category of matrices over Q>
 cocl_ev_ab := CoclosedMonoidalLeftEvaluationMorphism( a, b );
 #! <A morphism in Category of matrices over Q>
 cocl_ev_ba := CoclosedMonoidalLeftEvaluationMorphism( b, a );
 #! <A morphism in Category of matrices over Q>
 cocl_coev_ab := CoclosedMonoidalLeftCoevaluationMorphism( a, b );
 #! <A morphism in Category of matrices over Q>
-UnderlyingMatrix( ev_ab ) = TransposedMatrix( UnderlyingMatrix( cocl_ev_ba ) );
+cocl_coev_ba := CoclosedMonoidalLeftCoevaluationMorphism( b, a );
+#! <A morphism in Category of matrices over Q>
+UnderlyingMatrix( ev_ab ) = TransposedMatrix( UnderlyingMatrix( cocl_ev_ab ) );
 #! true
 UnderlyingMatrix( coev_ab ) = TransposedMatrix( UnderlyingMatrix( cocl_coev_ab ) );
+#! true
+UnderlyingMatrix( coev_ba ) = TransposedMatrix( UnderlyingMatrix( cocl_coev_ba ) );
 #! true
 tensor_hom_adj_1_hom_ab := InternalHomToTensorProductLeftAdjunctionMap( a, b, 1_hom_ab );
 #! <A morphism in Category of matrices over Q>
@@ -193,11 +199,11 @@ cohom_tensor_adj_1_ab := TensorProductToInternalCoHomLeftAdjunctionMap( a, b, 1_
 #! <A morphism in Category of matrices over Q>
 ev_ab = tensor_hom_adj_1_hom_ab;
 #! true
-cocl_ev_ab = cohom_tensor_adj_1_cohom_ab;
+cocl_ev_ba = cohom_tensor_adj_1_cohom_ab;
 #! true
-coev_ab = tensor_hom_adj_1_ab;
+coev_ba = tensor_hom_adj_1_ab;
 #! true
-cocl_coev_ab = cohom_tensor_adj_1_ab;
+cocl_coev_ba = cohom_tensor_adj_1_ab;
 #! true
 c := VectorSpaceObject(2,Q);
 #! <A vector space object over Q of dimension 2>

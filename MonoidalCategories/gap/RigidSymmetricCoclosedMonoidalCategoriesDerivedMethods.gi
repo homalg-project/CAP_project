@@ -111,49 +111,49 @@ AddDerivationToCAP( CoclosedMonoidalLeftEvaluationMorphismWithGivenRange,
                       [ Braiding, 1 ],
                       [ IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom, 1 ] ],
                     
-  function( cat, a, b, internal_cohom_tensored_b )
+  function( cat, a, b, internal_cohom_tensored_a )
     local morphism;
     
-    #      a
+    #      b
     #      |
-    #      | (ρ_a)^-1
+    #      | (ρ_b)^-1
     #      v
-    #    a ⊗ 1
+    #    b ⊗ 1
     #      |
-    #      | id_a ⊗ coclev_b
+    #      | id_b ⊗ coclev_a
     #      v
-    # a ⊗ (b_v ⊗ b)
+    # b ⊗ (a_v ⊗ a)
     #      |
-    #      | α_( a, ( b_v, b ) )
+    #      | α_( b, ( a_v, a ) )
     #      v
-    # (a ⊗ b_v) ⊗ b
+    # (b ⊗ a_v) ⊗ a
     #      |
-    #      | B_( a, coDual(b) ) ⊗ id_b
+    #      | B_( b, coDual(a) ) ⊗ id_a
     #      v
-    # (b_v ⊗ a) ⊗ b
+    # (a_v ⊗ b) ⊗ a
     #      |
-    #      | Isomorphism ⊗ id_b
+    #      | Isomorphism ⊗ id_a
     #      v
-    # coHom(a,b) ⊗ b
+    # coHom(b,a) ⊗ a
     
     morphism := PreComposeList( cat,
-                        a,
-                        [  RightUnitorInverse( cat, a ),
+                        b,
+                        [  RightUnitorInverse( cat, b ),
                            
                            TensorProductOnMorphisms( cat,
-                                   IdentityMorphism( cat, a ),
-                                   CoclosedEvaluationForCoDual( cat, b ) ),
+                                   IdentityMorphism( cat, b ),
+                                   CoclosedEvaluationForCoDual( cat, a ) ),
                            
-                           AssociatorRightToLeft( cat, a, CoDualOnObjects( cat, b ), b ),
-                           
-                           TensorProductOnMorphisms( cat,
-                                   Braiding( cat, a, CoDualOnObjects( cat, b ) ),
-                                   IdentityMorphism( cat, b ) ),
+                           AssociatorRightToLeft( cat, b, CoDualOnObjects( cat, a ), a ),
                            
                            TensorProductOnMorphisms( cat,
-                                   IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom( cat, b, a ),
-                                   IdentityMorphism( cat, b ) ) ],
-                        internal_cohom_tensored_b );
+                                   Braiding( cat, b, CoDualOnObjects( cat, a ) ),
+                                   IdentityMorphism( cat, a ) ),
+                           
+                           TensorProductOnMorphisms( cat,
+                                   IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom( cat, a, b ),
+                                   IdentityMorphism( cat, a ) ) ],
+                        internal_cohom_tensored_a );
     
     return morphism;
     
@@ -170,37 +170,37 @@ AddDerivationToCAP( CoclosedMonoidalLeftEvaluationMorphismWithGivenRange,
                       [ CoDualOnObjects, 1 ],
                       [ IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom, 1 ] ],
                     
-  function( cat, a, b, internal_cohom_tensored_b )
+  function( cat, a, b, internal_cohom_tensored_a )
     local morphism;
     
-    #    a ⊗ 1
+    #    b ⊗ 1
     #      |
-    #      | id_a ⊗ coclev_b
+    #      | id_b ⊗ coclev_a
     #      v
-    # a ⊗ b_v ⊗ b
+    # b ⊗ a_v ⊗ a
     #      |
-    #      | B_( a, coDual(b) ) ⊗ id_b
+    #      | B_( b, coDual(b) ) ⊗ id_a
     #      v
-    # b_v ⊗ a ⊗ b
+    # a_v ⊗ b ⊗ a
     #      |
-    #      | Isomorphism ⊗ id_b
+    #      | Isomorphism ⊗ id_a
     #      v
-    # coHom(a,b) ⊗ b
+    # coHom(b,a) ⊗ a
     
     morphism := PreComposeList( cat,
-                        a,
+                        b,
                         [ TensorProductOnMorphisms( cat,
-                                IdentityMorphism( cat, a ),
-                                CoclosedEvaluationForCoDual( cat, b ) ),
+                                IdentityMorphism( cat, b ),
+                                CoclosedEvaluationForCoDual( cat, a ) ),
                           
                           TensorProductOnMorphisms( cat,
-                                  Braiding( cat, a, CoDualOnObjects( cat, b ) ),
-                                  IdentityMorphism( cat, b ) ),
+                                  Braiding( cat, b, CoDualOnObjects( cat, a ) ),
+                                  IdentityMorphism( cat, a ) ),
                           
                           TensorProductOnMorphisms( cat,
-                                  IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom( cat, b, a ),
-                                  IdentityMorphism( cat, b ) ) ],
-                        internal_cohom_tensored_b );
+                                  IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom( cat, a, b ),
+                                  IdentityMorphism( cat, a ) ) ],
+                        internal_cohom_tensored_a );
     
     return morphism;
     
@@ -221,60 +221,60 @@ AddDerivationToCAP( CoclosedMonoidalLeftCoevaluationMorphismWithGivenSource,
                       [ LeftUnitor, 1 ] ],
                     
   function( cat, a, b, internal_cohom )
-    local codual_b, id_a, morphism;
+    local codual_a, id_b, morphism;
     
-    # coHom(a ⊗ b, b)
+    # coHom(b ⊗ a, a)
     #       |
     #       | Isomorphism
     #       v
-    #  b_v ⊗ (a ⊗ b)
+    #  a_v ⊗ (b ⊗ a)
     #       |
-    #       | id_(b_v) ⊗ B_( a, b )
+    #       | id_(a_v) ⊗ B_( b, a )
     #       v
-    #  b_v ⊗ (b ⊗ a)
+    #  a_v ⊗ (a ⊗ b)
     #       |
-    #       | α_( b_v, ( b, a ) )
+    #       | α_( a_v, ( a, b ) )
     #       v
-    #  (b_v ⊗ b) ⊗ a
+    #  (a_v ⊗ a) ⊗ b
     #       |
-    #       | B_( b_v, b ) ⊗ id_a
+    #       | B_( a_v, a ) ⊗ id_b
     #       v
-    # (b ⊗ b_v) ⊗ a
+    # (a ⊗ a_v) ⊗ b
     #       |
-    #       | coclcoev_b ⊗ id_a
+    #       | coclcoev_a ⊗ id_b
     #       v
-    #     1 ⊗ a
+    #     1 ⊗ b
     #       |
-    #       | λ_a
+    #       | λ_b
     #       v
-    #       a
+    #       b
     
-    codual_b := CoDualOnObjects( cat, b );
+    codual_a := CoDualOnObjects( cat, a );
     
-    id_a := IdentityMorphism( cat, a );
+    id_b := IdentityMorphism( cat, b );
     
     morphism := PreComposeList( cat,
                         internal_cohom,
                         [ IsomorphismFromInternalCoHomToTensorProductWithCoDualObject( cat,
-                                TensorProductOnObjects( cat, a, b ),
-                                b),
+                                TensorProductOnObjects( cat, b, a ),
+                                a ),
                           
                           TensorProductOnMorphisms( cat,
-                                  IdentityMorphism( cat, codual_b ),
-                                  Braiding( cat, a, b ) ),
+                                  IdentityMorphism( cat, codual_a ),
+                                  Braiding( cat, b, a ) ),
                           
-                          AssociatorRightToLeft( cat, codual_b, b, a ),
-                          
-                          TensorProductOnMorphisms( cat,
-                                  Braiding( cat, codual_b, b ),
-                                  id_a ),
+                          AssociatorRightToLeft( cat, codual_a, a, b ),
                           
                           TensorProductOnMorphisms( cat,
-                                  CoclosedCoevaluationForCoDual( cat, b ),
-                                  id_a ),
+                                  Braiding( cat, codual_a, a ),
+                                  id_b ),
                           
-                          LeftUnitor( cat, a ) ],
-                        a );
+                          TensorProductOnMorphisms( cat,
+                                  CoclosedCoevaluationForCoDual( cat, a ),
+                                  id_b ),
+                          
+                          LeftUnitor( cat, b ) ],
+                        b );
     
     return morphism;
     
@@ -293,48 +293,48 @@ AddDerivationToCAP( CoclosedMonoidalLeftCoevaluationMorphismWithGivenSource,
                       [ CoclosedCoevaluationForCoDual, 1 ] ],
                     
   function( cat, a, b, internal_cohom )
-    local codual_b, id_a, morphism;
+    local codual_a, id_b, morphism;
     
-    # coHom(a ⊗ b, b)
+    # coHom(b ⊗ a, a)
     #       |
     #       | Isomorphism
     #       v
-    #  b_v ⊗ (a ⊗ b)
+    #  a_v ⊗ (b ⊗ a)
     #       |
-    #       | id_(b_v) ⊗ B_( a, b )
+    #       | id_(a_v) ⊗ B_( b, a )
     #       v
-    #  b_v ⊗ (b ⊗ a)
+    #  a_v ⊗ (a ⊗ b)
     #       |
-    #       | B_( b_v, b ) ⊗ id_a
+    #       | B_( a_v, a ) ⊗ id_b
     #       v
-    # (b ⊗ b_v) ⊗ a
+    # (a ⊗ a_v) ⊗ b
     #       |
-    #       | coclcoev_b ⊗ id_a
+    #       | coclcoev_a ⊗ id_b
     #       v
-    #     1 ⊗ a
+    #     1 ⊗ b
     
-    codual_b := CoDualOnObjects( cat, b );
+    codual_a := CoDualOnObjects( cat, a );
     
-    id_a := IdentityMorphism( cat, a );
+    id_b := IdentityMorphism( cat, b );
     
     morphism := PreComposeList( cat,
                         internal_cohom,
                         [ IsomorphismFromInternalCoHomToTensorProductWithCoDualObject( cat,
-                                TensorProductOnObjects( cat, a, b ),
-                                b ),
+                                TensorProductOnObjects( cat, b, a ),
+                                a ),
                           
                           TensorProductOnMorphisms( cat,
-                                  IdentityMorphism( cat, codual_b ),
-                                  Braiding( cat, a, b ) ),
+                                  IdentityMorphism( cat, codual_a ),
+                                  Braiding( cat, b, a ) ),
                           
                           TensorProductOnMorphisms( cat,
-                                  Braiding( cat, codual_b, b ),
-                                  id_a ),
+                                  Braiding( cat, codual_a, a ),
+                                  id_b ),
                           
                           TensorProductOnMorphisms( cat,
-                                  CoclosedCoevaluationForCoDual( cat, b ),
-                                  id_a ) ],
-                        a );
+                                  CoclosedCoevaluationForCoDual( cat, a ),
+                                  id_b ) ],
+                        b );
     
     return morphism;
     

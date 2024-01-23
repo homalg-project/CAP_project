@@ -69,6 +69,12 @@ ReadPackage( "CartesianCategories", "gap/CocartesianCategoriesDerivedMethods_ext
 
 ReadPackage( "CartesianCategories", "gap/BicartesianCategories.gi" );
 
+## Synonyms
+
+#= comment for Julia
+ReadPackage( "CartesianCategories", "gap/Synonyms.gi" );
+# =#
+
 ## Test methods
 
 ReadPackage( "CartesianCategories", "gap/CartesianCategoriesTest.gi" );

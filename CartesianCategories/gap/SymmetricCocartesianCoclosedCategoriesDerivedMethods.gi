@@ -56,7 +56,7 @@ AddDerivationToCAP( MorphismFromCocartesianBidualWithGivenCocartesianBidual,
     
     #     Coexp(1, a_v)
     #          |
-    #          | Coexp( cocaev_(1,a), id_(a_v) )
+    #          | Coexp( cocaev_(a,1), id_(a_v) )
     #          v
     # Coexp(a_v ⊔ a, a_v)
     #          |
@@ -64,7 +64,7 @@ AddDerivationToCAP( MorphismFromCocartesianBidualWithGivenCocartesianBidual,
     #          v
     # Coexp(a ⊔ a_v, a_v)
     #          |
-    #          | cocacoev_(a, a_v)
+    #          | cocacoev_(a_v,a)
     #          v
     #          a
     
@@ -73,14 +73,14 @@ AddDerivationToCAP( MorphismFromCocartesianBidualWithGivenCocartesianBidual,
     morphism := PreComposeList( cat,
                         avv,
                         [ CoexponentialOnMorphisms( cat,
-                                CocartesianLeftEvaluationMorphism( cat, InitialObject( cat ), a ),
+                                CocartesianLeftEvaluationMorphism( cat, a, InitialObject( cat ) ),
                                 IdentityMorphism( cat, av ) ),
                           
                           CoexponentialOnMorphisms( cat,
                                   CocartesianBraiding( cat, av, a ),
                                   IdentityMorphism( cat, av ) ),
                           
-                          CocartesianLeftCoevaluationMorphism( cat, a, av ) ],
+                          CocartesianLeftCoevaluationMorphism( cat, av, a ) ],
                         a );
     
     return morphism;
@@ -154,13 +154,13 @@ AddDerivationToCAP( CoexponentialCoproductCompatibilityMorphismWithGivenObjects,
                         BinaryCoproduct( cat, a1, a2 ),
                         [ CoproductOnMorphisms( cat,
                                 IdentityMorphism( cat, a1 ),
-                                CocartesianLeftEvaluationMorphism( cat, a2, b2 ) ),
+                                CocartesianLeftEvaluationMorphism( cat, b2, a2 ) ),
                           
                           CocartesianAssociatorRightToLeft( cat, a1, coexp_a2_b2, b2 ),
                           
                           CoproductOnMorphisms( cat,
                                   CoproductOnMorphisms( cat,
-                                          CocartesianLeftEvaluationMorphism( cat, a1, b1 ),
+                                          CocartesianLeftEvaluationMorphism( cat, b1, a1 ),
                                           IdentityMorphism( cat, coexp_a2_b2 ) ),
                                   id_b2 ),
                           
@@ -245,12 +245,12 @@ AddDerivationToCAP( CocartesianPreCoComposeMorphismWithGivenObjects,
     
     morphism := PreComposeList( cat,
                         a,
-                        [ CocartesianLeftEvaluationMorphism( cat, a, b ),
+                        [ CocartesianLeftEvaluationMorphism( cat, b, a ),
                           
                           CocartesianBraiding( cat, coexp_a_b, b ),
                           
                           CoproductOnMorphisms( cat,
-                                  CocartesianLeftEvaluationMorphism( cat, b, c ),
+                                  CocartesianLeftEvaluationMorphism( cat, c, b ),
                                   IdentityMorphism( cat, coexp_a_b ) ),
                           
                           CocartesianAssociatorLeftToRight( cat, coexp_b_c, c, coexp_a_b ),
@@ -375,11 +375,11 @@ AddDerivationToCAP( CoexponentialCoproductCompatibilityMorphismWithGivenObjects,
                         BinaryCoproduct( cat, a1, a2 ),
                         [ CoproductOnMorphisms( cat,
                                 IdentityMorphism( cat, a1 ),
-                                CocartesianLeftEvaluationMorphism( cat, a2, b2 ) ),
+                                CocartesianLeftEvaluationMorphism( cat, b2, a2 ) ),
                           
                           CoproductOnMorphisms( cat,
                                   CoproductOnMorphisms( cat,
-                                          CocartesianLeftEvaluationMorphism( cat, a1, b1 ),
+                                          CocartesianLeftEvaluationMorphism( cat, b1, a1 ),
                                           IdentityMorphism( cat, coexp_a2_b2 ) ),
                                   id_b2 ),
                           
@@ -442,12 +442,12 @@ AddDerivationToCAP( CocartesianPreCoComposeMorphismWithGivenObjects,
     
     morphism := PreComposeList( cat,
                         a,
-                        [ CocartesianLeftEvaluationMorphism( cat, a, b ),
+                        [ CocartesianLeftEvaluationMorphism( cat, b, a ),
                           
                           CocartesianBraiding( cat, coexp_a_b, b ),
                           
                           CoproductOnMorphisms( cat,
-                                  CocartesianLeftEvaluationMorphism( cat, b, c ),
+                                  CocartesianLeftEvaluationMorphism( cat, c, b ),
                                   IdentityMorphism( cat, coexp_a_b ) ),
                           
                           CoproductOnMorphisms( cat,

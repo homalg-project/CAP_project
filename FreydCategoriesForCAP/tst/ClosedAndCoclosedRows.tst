@@ -126,7 +126,7 @@ true
 gap> id_a := IdentityMorphism( a );;
 gap> id_b := IdentityMorphism( b );;
 
-gap> alpha := CategoryOfRowsMorphism( a, HomalgMatrix( [ 2 .. 7], 2, 3, Q ), b );;
+gap> alpha := CategoryOfRowsMorphism( a, HomalgMatrix( [ 2 .. 7 ], 2, 3, Q ), b );;
 gap> beta := CategoryOfRowsMorphism( c, HomalgMatrix( [ 8 .. 31 ], 6, 4, Q ), d );;
 gap> gamma := CategoryOfRowsMorphism( b, HomalgMatrix( [ -8 .. 9 ], 3, 6, Q ), c );;
 
@@ -518,18 +518,18 @@ gap> cocl_coev_a0 := CoclosedMonoidalLeftCoevaluationMorphism( a, z );;
 # Correspondence between (co)units and their coclosed parts
 
 # Arguments must be reversed for evaluations
-gap> UnderlyingMatrix( ev_ab ) = TransposedMatrix( UnderlyingMatrix( cocl_ev_ba ) );
+gap> UnderlyingMatrix( ev_ab ) = TransposedMatrix( UnderlyingMatrix( cocl_ev_ab ) );
 true
-gap> UnderlyingMatrix( ev_ba ) = TransposedMatrix( UnderlyingMatrix( cocl_ev_ab ) );
+gap> UnderlyingMatrix( ev_ba ) = TransposedMatrix( UnderlyingMatrix( cocl_ev_ba ) );
 true
-gap> UnderlyingMatrix( ev_cd ) = TransposedMatrix( UnderlyingMatrix( cocl_ev_dc ) );
+gap> UnderlyingMatrix( ev_cd ) = TransposedMatrix( UnderlyingMatrix( cocl_ev_cd ) );
 true
-gap> UnderlyingMatrix( ev_dc ) = TransposedMatrix( UnderlyingMatrix( cocl_ev_cd ) );
+gap> UnderlyingMatrix( ev_dc ) = TransposedMatrix( UnderlyingMatrix( cocl_ev_dc ) );
 true
 
-gap> UnderlyingMatrix( ev_0a ) = TransposedMatrix( UnderlyingMatrix( cocl_ev_a0 ) );
+gap> UnderlyingMatrix( ev_0a ) = TransposedMatrix( UnderlyingMatrix( cocl_ev_0a ) );
 true
-gap> UnderlyingMatrix( ev_a0 ) = TransposedMatrix( UnderlyingMatrix( cocl_ev_0a ) );
+gap> UnderlyingMatrix( ev_a0 ) = TransposedMatrix( UnderlyingMatrix( cocl_ev_a0 ) );
 true
 
 gap> UnderlyingMatrix( coev_ab ) = TransposedMatrix( UnderlyingMatrix( cocl_coev_ab ) );
@@ -660,18 +660,18 @@ true
 gap> UnderlyingMatrix( tensor_to_hom_adjunction_on_id_a_tensor_0 ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_a_tensor_0 ) ); # a -> Hom( 0, a x 0 )  ==  Tr( Cohom( a x 0, 0) -> a )
 true
 
-gap> UnderlyingMatrix( coev_ab ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_a_tensor_b ) );
+gap> UnderlyingMatrix( coev_ba ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_a_tensor_b ) );
 true
-gap> UnderlyingMatrix( coev_ba ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_b_tensor_a ) );
+gap> UnderlyingMatrix( coev_ab ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_b_tensor_a ) );
 true
-gap> UnderlyingMatrix( coev_cd ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_c_tensor_d ) );
+gap> UnderlyingMatrix( coev_dc ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_c_tensor_d ) );
 true
-gap> UnderlyingMatrix( coev_dc ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_d_tensor_c ) );
+gap> UnderlyingMatrix( coev_cd ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_d_tensor_c ) );
 true
 
-gap> UnderlyingMatrix( coev_0a ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_0_tensor_a ) );
+gap> UnderlyingMatrix( coev_a0 ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_0_tensor_a ) );
 true
-gap> UnderlyingMatrix( coev_a0 ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_a_tensor_0 ) );
+gap> UnderlyingMatrix( coev_0a ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_a_tensor_0 ) );
 true
 
 # coclev = Transposed( ev ), arguments must be reversed for evaluations
@@ -690,18 +690,18 @@ true
 gap> UnderlyingMatrix( cohom_to_tensor_adjunction_on_id_cohom_a0 ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_0a ) ); # a -> Cohom( a, 0 ) x 0  ==  Tr( Hom( 0, a ) x 0 -> a )
 true
 
-gap> UnderlyingMatrix( cocl_ev_ab ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_ba ) );
+gap> UnderlyingMatrix( cocl_ev_ba ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_ba ) );
 true
-gap> UnderlyingMatrix( cocl_ev_ba ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_ab ) );
+gap> UnderlyingMatrix( cocl_ev_ab ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_ab ) );
 true
-gap> UnderlyingMatrix( cocl_ev_cd ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_dc ) );
+gap> UnderlyingMatrix( cocl_ev_dc ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_dc ) );
 true
-gap> UnderlyingMatrix( cocl_ev_dc ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_cd ) );
+gap> UnderlyingMatrix( cocl_ev_cd ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_cd ) );
 true
 
-gap> UnderlyingMatrix( cocl_ev_0a ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_a0 ) );
+gap> UnderlyingMatrix( cocl_ev_a0 ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_a0 ) );
 true
-gap> UnderlyingMatrix( cocl_ev_a0 ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_0a ) );
+gap> UnderlyingMatrix( cocl_ev_0a ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_0a ) );
 true
 
 # coclcoev = Transposed( coev )
@@ -720,18 +720,18 @@ true
 gap> UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_a_tensor_0 ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_adjunction_on_id_a_tensor_0 ) ); # Cohom( a x 0, 0 ) -> a  ==  Tr( a -> Hom( 0, a x 0 ) )
 true
 
-gap> UnderlyingMatrix( cocl_coev_ab ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_adjunction_on_id_a_tensor_b ) );
+gap> UnderlyingMatrix( cocl_coev_ba ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_adjunction_on_id_a_tensor_b ) );
 true
-gap> UnderlyingMatrix( cocl_coev_ba ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_adjunction_on_id_b_tensor_a ) );
+gap> UnderlyingMatrix( cocl_coev_ab ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_adjunction_on_id_b_tensor_a ) );
 true
-gap> UnderlyingMatrix( cocl_coev_cd ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_adjunction_on_id_c_tensor_d ) );
+gap> UnderlyingMatrix( cocl_coev_dc ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_adjunction_on_id_c_tensor_d ) );
 true
-gap> UnderlyingMatrix( cocl_coev_dc ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_adjunction_on_id_d_tensor_c ) );
+gap> UnderlyingMatrix( cocl_coev_cd ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_adjunction_on_id_d_tensor_c ) );
 true
 
-gap> UnderlyingMatrix( cocl_coev_0a ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_adjunction_on_id_0_tensor_a ) );
+gap> UnderlyingMatrix( cocl_coev_a0 ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_adjunction_on_id_0_tensor_a ) );
 true
-gap> UnderlyingMatrix( cocl_coev_a0 ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_adjunction_on_id_a_tensor_0 ) );
+gap> UnderlyingMatrix( cocl_coev_0a ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_adjunction_on_id_a_tensor_0 ) );
 true
 
 #####################################################
@@ -944,11 +944,11 @@ true
 gap> ev_for_dual_0 = ClosedMonoidalLeftEvaluationMorphism( z, u );
 true
 
-gap> cocl_ev_for_codual_a = CoclosedMonoidalLeftEvaluationMorphism( u, a );
+gap> cocl_ev_for_codual_a = CoclosedMonoidalLeftEvaluationMorphism( a, u );
 true
-gap> cocl_ev_for_codual_b = CoclosedMonoidalLeftEvaluationMorphism( u, b );
+gap> cocl_ev_for_codual_b = CoclosedMonoidalLeftEvaluationMorphism( b, u );
 true
-gap> cocl_ev_for_codual_0 = CoclosedMonoidalLeftEvaluationMorphism( u, z );
+gap> cocl_ev_for_codual_0 = CoclosedMonoidalLeftEvaluationMorphism( z, u );
 true
 
 #####################################################
@@ -1263,10 +1263,10 @@ false
 # Universal property of dual
 #########################################################
 
-gap> ab_to_1 := CategoryOfRowsMorphism( a_tensor_b, HomalgMatrix( [ 2 .. 7], RankOfObject( a_tensor_b ), 1, Q ), u );;
+gap> ab_to_1 := CategoryOfRowsMorphism( a_tensor_b, HomalgMatrix( [ 2 .. 7 ], RankOfObject( a_tensor_b ), 1, Q ), u );;
 gap> cd_to_1 := CategoryOfRowsMorphism( c_tensor_d, HomalgMatrix( [ 8 .. 31 ], RankOfObject( c_tensor_d ), 1, Q ), u );;
 
-gap> 1_to_ab := CategoryOfRowsMorphism( u, HomalgMatrix( [ 2 .. 7], 1, RankOfObject( a_tensor_b ), Q ), a_tensor_b );;
+gap> 1_to_ab := CategoryOfRowsMorphism( u, HomalgMatrix( [ 2 .. 7 ], 1, RankOfObject( a_tensor_b ), Q ), a_tensor_b );;
 gap> 1_to_cd := CategoryOfRowsMorphism( u, HomalgMatrix( [ 8 .. 31 ], 1, RankOfObject( c_tensor_d ), Q ), c_tensor_d );;
 
 gap> universal_property_of_dual_ab_to_1 := UniversalPropertyOfDual( a, b, ab_to_1 );;
