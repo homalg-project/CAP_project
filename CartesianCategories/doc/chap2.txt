@@ -327,44 +327,44 @@
   [1X2.2-4 CocartesianLeftEvaluationMorphism[101X
   
   [33X[1;0Y[29X[2XCocartesianLeftEvaluationMorphism[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya  morphism in [23X\mathrm{Hom}( a, \mathrm{Coexponential}(a,b) \sqcup
-            b )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya  morphism in [23X\mathrm{Hom}( b, \mathrm{Coexponential}(b,a) \sqcup
+            a )[123X.[133X
   
   [33X[0;0YThe arguments are two objects [23Xa, b[123X. The output is the cocartesian evaluation
-  morphism  [23X\mathrm{cocaev}_{a,b}:  a  \rightarrow \mathrm{Coexponential}(a,b)
-  \sqcup b[123X, i.e., the unit of the coexponential-coproduct adjunction.[133X
+  morphism  [23X\mathrm{cocaev}_{a,b}:  b  \rightarrow \mathrm{Coexponential}(b,a)
+  \sqcup a[123X, i.e., the unit of the coexponential-coproduct adjunction.[133X
   
   [1X2.2-5 CocartesianLeftEvaluationMorphismWithGivenRange[101X
   
   [33X[1;0Y[29X[2XCocartesianLeftEvaluationMorphismWithGivenRange[102X( [3Xa[103X, [3Xb[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, r )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( b, r )[123X.[133X
   
   [33X[0;0YThe    arguments    are    two    objects    [23Xa,b[123X   and   an   object   [23Xr   =
-  \mathrm{Coexponential}(a,b)   \sqcup   b[123X.  The  output  is  the  cocartesian
-  evaluation      morphism      [23X\mathrm{cocaev}_{a,b}:      a      \rightarrow
-  \mathrm{Coexponential}(a,b)    \sqcup    b[123X,    i.e.,   the   unit   of   the
+  \mathrm{Coexponential}(b,a)   \sqcup   a[123X.  The  output  is  the  cocartesian
+  evaluation      morphism      [23X\mathrm{cocaev}_{a,b}:      b      \rightarrow
+  \mathrm{Coexponential}(b,a)    \sqcup    a[123X,    i.e.,   the   unit   of   the
   coexponential-coproduct adjunction.[133X
   
   [1X2.2-6 CocartesianLeftCoevaluationMorphism[101X
   
   [33X[1;0Y[29X[2XCocartesianLeftCoevaluationMorphism[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \mathrm{Coexponential}(a \sqcup b, b),
-            a )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \mathrm{Coexponential}(b \sqcup a, a),
+            b )[123X.[133X
   
   [33X[0;0YThe   arguments   are  two  objects  [23Xa,b[123X.  The  output  is  the  cocartesian
-  coevaluation   morphism   [23X\mathrm{cocacoev}_{a,b}:  \mathrm{Coexponential}(a
-  \sqcup  b, b) \rightarrow a[123X, i.e., the counit of the coexponential-coproduct
+  coevaluation   morphism   [23X\mathrm{cocacoev}_{a,b}:  \mathrm{Coexponential}(b
+  \sqcup  a, a) \rightarrow b[123X, i.e., the counit of the coexponential-coproduct
   adjunction.[133X
   
   [1X2.2-7 CocartesianLeftCoevaluationMorphismWithGivenSource[101X
   
   [33X[1;0Y[29X[2XCocartesianLeftCoevaluationMorphismWithGivenSource[102X( [3Xa[103X, [3Xb[103X, [3Xs[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, a )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, b )[123X.[133X
   
-  [33X[0;0YThe arguments are two objects [23Xa,b[123X and an object [23Xs = \mathrm{Coexponential}(a
-  \sqcup   b,   b)[123X.  The  output  is  the  cocartesian  coevaluation  morphism
-  [23X\mathrm{cocacoev}_{a,b}:  \mathrm{Coexponential}(a  \sqcup b, b) \rightarrow
-  a[123X, i.e., the unit of the coexponential-coproduct adjunction.[133X
+  [33X[0;0YThe arguments are two objects [23Xa,b[123X and an object [23Xs = \mathrm{Coexponential}(b
+  \sqcup   a,   a)[123X.  The  output  is  the  cocartesian  coevaluation  morphism
+  [23X\mathrm{cocacoev}_{a,b}:  \mathrm{Coexponential}(b  \sqcup a, a) \rightarrow
+  b[123X, i.e., the unit of the coexponential-coproduct adjunction.[133X
   
   [1X2.2-8 CoproductToCoexponentialLeftAdjunctionMap[101X
   

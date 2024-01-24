@@ -1,104 +1,182 @@
   
-  [1X5 [33X[0;0YCartesianCategories automatic generated documentation[133X[101X
+  [1X5 [33X[0;0YLegacy Operations and Synonyms[133X[101X
   
   
-  [1X5.1 [33X[0;0YCartesianCategories automatic generated documentation of properties[133X[101X
+  [1X5.1 [33X[0;0YLegacy operations[133X[101X
   
-  [1X5.1-1 IsBicartesianCategory[101X
+  [1X5.1-1 CocartesianCoevaluationMorphism[101X
   
-  [33X[1;0Y[29X[2XIsBicartesianCategory[102X( [3XC[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  [33X[1;0Y[29X[2XCocartesianCoevaluationMorphism[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   
-  [33X[0;0YThe property of the category [3XC[103X being bicartesian.[133X
+  [33X[0;0YThis  is a legacy operation for [10XCocartesianLeftCoevaluationMorphism[110X( [3Xb[103X, [3Xa[103X ),
+  i.e., with the first and second argument interchanged.[133X
   
-  [1X5.1-2 IsFiniteCompleteCategory[101X
+  [1X5.1-2 CocartesianCoevaluationMorphismWithGivenSource[101X
   
-  [33X[1;0Y[29X[2XIsFiniteCompleteCategory[102X( [3XC[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  [33X[1;0Y[29X[2XCocartesianCoevaluationMorphismWithGivenSource[102X( [3Xa[103X, [3Xb[103X, [3Xs[103X ) [32X operation[133X
   
-  [33X[0;0YThe property of the category [3XC[103X being finite complete.[133X
+  [33X[0;0YThis           is          a          legacy          operation          for
+  [10XCocartesianLeftCoevaluationMorphismWithGivenSource[110X(  [3Xb[103X,  [3Xa[103X,  [3Xs[103X ), i.e., with
+  the first and second argument interchanged.[133X
   
-  [1X5.1-3 IsFiniteCocompleteCategory[101X
+  [1X5.1-3 CocartesianEvaluationMorphism[101X
   
-  [33X[1;0Y[29X[2XIsFiniteCocompleteCategory[102X( [3XC[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  [33X[1;0Y[29X[2XCocartesianEvaluationMorphism[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   
-  [33X[0;0YThe property of the category [3XC[103X being finite cocomplete.[133X
+  [33X[0;0YThis  is  a  legacy operation for [10XCocartesianLeftEvaluationMorphism[110X( [3Xb[103X, [3Xa[103X ),
+  i.e., with the first and second argument interchanged.[133X
   
-  [1X5.1-4 IsCartesianCategory[101X
+  [1X5.1-4 CocartesianEvaluationMorphismWithGivenRange[101X
   
-  [33X[1;0Y[29X[2XIsCartesianCategory[102X( [3XC[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  [33X[1;0Y[29X[2XCocartesianEvaluationMorphismWithGivenRange[102X( [3Xa[103X, [3Xb[103X, [3Xr[103X ) [32X operation[133X
   
-  [33X[0;0YThe property of the category [3XC[103X being cartesian.[133X
+  [33X[0;0YThis           is          a          legacy          operation          for
+  [10XCocartesianLeftEvaluationMorphismWithGivenRange[110X(  [3Xb[103X,  [3Xa[103X, [3Xr[103X ), i.e., with the
+  first and second argument interchanged.[133X
   
-  [1X5.1-5 IsStrictCartesianCategory[101X
+  [1X5.1-5 CartesianCoevaluationMorphism[101X
   
-  [33X[1;0Y[29X[2XIsStrictCartesianCategory[102X( [3XC[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  [33X[1;0Y[29X[2XCartesianCoevaluationMorphism[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   
-  [33X[0;0YThe property of the category [3XC[103X being strict cartesian.[133X
+  [33X[0;0YThis  is  a  legacy operation for [10XCartesianLeftCoevaluationMorphism[110X( [3Xb[103X, [3Xa[103X ),
+  i.e., with the first and second argument interchanged.[133X
   
-  [1X5.1-6 IsCartesianClosedCategory[101X
+  [1X5.1-6 CartesianCoevaluationMorphismWithGivenRange[101X
   
-  [33X[1;0Y[29X[2XIsCartesianClosedCategory[102X( [3XC[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  [33X[1;0Y[29X[2XCartesianCoevaluationMorphismWithGivenRange[102X( [3Xa[103X, [3Xb[103X, [3Xr[103X ) [32X operation[133X
   
-  [33X[0;0YThe property of the category [3XC[103X being cartesian closed.[133X
+  [33X[0;0YThis           is          a          legacy          operation          for
+  [10XCartesianLeftCoevaluationMorphismWithGivenRange[110X(  [3Xb[103X,  [3Xa[103X, [3Xr[103X ), i.e., with the
+  first and second argument interchanged.[133X
   
-  [1X5.1-7 IsBicartesianClosedCategory[101X
   
-  [33X[1;0Y[29X[2XIsBicartesianClosedCategory[102X( [3XC[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  [1X5.2 [33X[0;0YSynonyms for legacy operations[133X[101X
   
-  [33X[0;0YThe property of the category [3XC[103X being bicartesian closed.[133X
+  [1X5.2-1 CartesianEvaluationMorphism[101X
   
-  [1X5.1-8 IsCocartesianCategory[101X
+  [33X[1;0Y[29X[2XCartesianEvaluationMorphism[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[1;0Y[29X[2XIsCocartesianCategory[102X( [3XC[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  [33X[0;0YThis is a synonym for [10XCartesianLeftEvaluationMorphism[110X.[133X
   
-  [33X[0;0YThe property of the category [3XC[103X being cocartesian.[133X
+  [1X5.2-2 CartesianEvaluationMorphismWithGivenSource[101X
   
-  [1X5.1-9 IsStrictCocartesianCategory[101X
+  [33X[1;0Y[29X[2XCartesianEvaluationMorphismWithGivenSource[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[1;0Y[29X[2XIsStrictCocartesianCategory[102X( [3XC[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  [33X[0;0YThis is a synonym for [10XCartesianLeftEvaluationMorphismWithGivenSource[110X.[133X
   
-  [33X[0;0YThe property of the category [3XC[103X being strict cocartesian.[133X
+  [1X5.2-3 CoexponentialToCoproductAdjunctionMap[101X
   
-  [1X5.1-10 IsCocartesianCoclosedCategory[101X
+  [33X[1;0Y[29X[2XCoexponentialToCoproductAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[1;0Y[29X[2XIsCocartesianCoclosedCategory[102X( [3XC[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  [33X[0;0YThis is a synonym for [10XCoexponentialToCoproductLeftAdjunctionMap[110X.[133X
   
-  [33X[0;0YThe property of the category [3XC[103X being cocartesian coclosed.[133X
+  [1X5.2-4 CoexponentialToCoproductAdjunctionMapWithGivenCoproduct[101X
   
-  [1X5.1-11 IsBicartesianCoclosedCategory[101X
+  [33X[1;0Y[29X[2XCoexponentialToCoproductAdjunctionMapWithGivenCoproduct[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[1;0Y[29X[2XIsBicartesianCoclosedCategory[102X( [3XC[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  [33X[0;0YThis               is               a               synonym              for
+  [10XCoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct[110X.[133X
   
-  [33X[0;0YThe property of the category [3XC[103X being bicartesian coclosed.[133X
+  [1X5.2-5 ExponentialToDirectProductAdjunctionMap[101X
   
-  [1X5.1-12 IsCodistributiveCategory[101X
+  [33X[1;0Y[29X[2XExponentialToDirectProductAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[1;0Y[29X[2XIsCodistributiveCategory[102X( [3XC[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  [33X[0;0YThis is a synonym for [10XExponentialToDirectProductLeftAdjunctionMap[110X.[133X
   
-  [33X[0;0YThe property of the category [3XC[103X being codistributive.[133X
+  [1X5.2-6 ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct[101X
   
-  [1X5.1-13 IsDistributiveCategory[101X
+  [33X[1;0Y[29X[2XExponentialToDirectProductAdjunctionMapWithGivenDirectProduct[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[1;0Y[29X[2XIsDistributiveCategory[102X( [3XC[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  [33X[0;0YThis               is               a               synonym              for
+  [10XExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct[110X.[133X
   
-  [33X[0;0YThe property of the category [3XC[103X being distributive.[133X
+  [1X5.2-7 CoproductToCoexponentialAdjunctionMap[101X
   
-  [1X5.1-14 IsInitialCategory[101X
+  [33X[1;0Y[29X[2XCoproductToCoexponentialAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[1;0Y[29X[2XIsInitialCategory[102X( [3XC[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  [33X[0;0YThis is a synonym for [10XCoproductToCoexponentialLeftAdjunctionMap[110X.[133X
   
-  [33X[0;0YThe property of the category [3XC[103X being initial.[133X
+  [1X5.2-8 CoproductToCoexponentialAdjunctionMapWithGivenCoexponential[101X
+  
+  [33X[1;0Y[29X[2XCoproductToCoexponentialAdjunctionMapWithGivenCoexponential[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis               is               a               synonym              for
+  [10XCoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential[110X.[133X
+  
+  [1X5.2-9 DirectProductToExponentialAdjunctionMap[101X
+  
+  [33X[1;0Y[29X[2XDirectProductToExponentialAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis is a synonym for [10XDirectProductToExponentialLeftAdjunctionMap[110X.[133X
+  
+  [1X5.2-10 DirectProductToExponentialAdjunctionMapWithGivenExponential[101X
+  
+  [33X[1;0Y[29X[2XDirectProductToExponentialAdjunctionMapWithGivenExponential[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis               is               a               synonym              for
+  [10XDirectProductToExponentialLeftAdjunctionMapWithGivenExponential[110X.[133X
+  
+  [1X5.2-11 AddCartesianEvaluationMorphism[101X
+  
+  [33X[1;0Y[29X[2XAddCartesianEvaluationMorphism[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis is a synonym for [10XAddCartesianLeftEvaluationMorphism[110X[133X
+  
+  [1X5.2-12 AddCartesianEvaluationMorphismWithGivenSource[101X
+  
+  [33X[1;0Y[29X[2XAddCartesianEvaluationMorphismWithGivenSource[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis is a synonym for [10XAddCartesianLeftEvaluationMorphismWithGivenSource[110X[133X
+  
+  [1X5.2-13 AddCoexponentialToCoproductAdjunctionMap[101X
+  
+  [33X[1;0Y[29X[2XAddCoexponentialToCoproductAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis is a synonym for [10XAddCoexponentialToCoproductLeftAdjunctionMap[110X[133X
+  
+  [1X5.2-14 AddCoexponentialToCoproductAdjunctionMapWithGivenCoproduct[101X
+  
+  [33X[1;0Y[29X[2XAddCoexponentialToCoproductAdjunctionMapWithGivenCoproduct[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis               is               a               synonym              for
+  [10XAddCoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct[110X[133X
+  
+  [1X5.2-15 AddExponentialToDirectProductAdjunctionMap[101X
+  
+  [33X[1;0Y[29X[2XAddExponentialToDirectProductAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis is a synonym for [10XAddExponentialToDirectProductLeftAdjunctionMap[110X[133X
+  
+  [1X5.2-16 AddExponentialToDirectProductAdjunctionMapWithGivenDirectProduct[101X
+  
+  [33X[1;0Y[29X[2XAddExponentialToDirectProductAdjunctionMapWithGivenDirectProduct[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis               is               a               synonym              for
+  [10XAddExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct[110X[133X
+  
+  [1X5.2-17 AddCoproductToCoexponentialAdjunctionMap[101X
+  
+  [33X[1;0Y[29X[2XAddCoproductToCoexponentialAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis is a synonym for [10XAddCoproductToCoexponentialLeftAdjunctionMap[110X[133X
+  
+  [1X5.2-18 AddCoproductToCoexponentialAdjunctionMapWithGivenCoexponential[101X
+  
+  [33X[1;0Y[29X[2XAddCoproductToCoexponentialAdjunctionMapWithGivenCoexponential[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis               is               a               synonym              for
+  [10XAddCoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential[110X[133X
+  
+  [1X5.2-19 AddDirectProductToExponentialAdjunctionMap[101X
+  
+  [33X[1;0Y[29X[2XAddDirectProductToExponentialAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis is a synonym for [10XAddDirectProductToExponentialLeftAdjunctionMap[110X[133X
+  
+  [1X5.2-20 AddDirectProductToExponentialAdjunctionMapWithGivenExponential[101X
+  
+  [33X[1;0Y[29X[2XAddDirectProductToExponentialAdjunctionMapWithGivenExponential[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis               is               a               synonym              for
+  [10XAddDirectProductToExponentialLeftAdjunctionMapWithGivenExponential[110X[133X
   

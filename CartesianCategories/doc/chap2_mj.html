@@ -515,36 +515,36 @@
 <h5>2.2-4 CocartesianLeftEvaluationMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianLeftEvaluationMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( a, \mathrm{Coexponential}(a,b) \sqcup b )\)</span>.</p>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( b, \mathrm{Coexponential}(b,a) \sqcup a )\)</span>.</p>
 
-<p>The arguments are two objects <span class="SimpleMath">\(a, b\)</span>. The output is the cocartesian evaluation morphism <span class="SimpleMath">\(\mathrm{cocaev}_{a,b}: a \rightarrow \mathrm{Coexponential}(a,b) \sqcup b\)</span>, i.e., the unit of the coexponential-coproduct adjunction.</p>
+<p>The arguments are two objects <span class="SimpleMath">\(a, b\)</span>. The output is the cocartesian evaluation morphism <span class="SimpleMath">\(\mathrm{cocaev}_{a,b}: b \rightarrow \mathrm{Coexponential}(b,a) \sqcup a\)</span>, i.e., the unit of the coexponential-coproduct adjunction.</p>
 
 <p><a id="X8352CD1E80A790FF" name="X8352CD1E80A790FF"></a></p>
 
 <h5>2.2-5 CocartesianLeftEvaluationMorphismWithGivenRange</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianLeftEvaluationMorphismWithGivenRange</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( a, r )\)</span>.</p>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( b, r )\)</span>.</p>
 
-<p>The arguments are two objects <span class="SimpleMath">\(a,b\)</span> and an object <span class="SimpleMath">\(r = \mathrm{Coexponential}(a,b) \sqcup b\)</span>. The output is the cocartesian evaluation morphism <span class="SimpleMath">\(\mathrm{cocaev}_{a,b}: a \rightarrow \mathrm{Coexponential}(a,b) \sqcup b\)</span>, i.e., the unit of the coexponential-coproduct adjunction.</p>
+<p>The arguments are two objects <span class="SimpleMath">\(a,b\)</span> and an object <span class="SimpleMath">\(r = \mathrm{Coexponential}(b,a) \sqcup a\)</span>. The output is the cocartesian evaluation morphism <span class="SimpleMath">\(\mathrm{cocaev}_{a,b}: b \rightarrow \mathrm{Coexponential}(b,a) \sqcup a\)</span>, i.e., the unit of the coexponential-coproduct adjunction.</p>
 
 <p><a id="X7CA245F778C7A555" name="X7CA245F778C7A555"></a></p>
 
 <h5>2.2-6 CocartesianLeftCoevaluationMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianLeftCoevaluationMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( \mathrm{Coexponential}(a \sqcup b, b), a )\)</span>.</p>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( \mathrm{Coexponential}(b \sqcup a, a), b )\)</span>.</p>
 
-<p>The arguments are two objects <span class="SimpleMath">\(a,b\)</span>. The output is the cocartesian coevaluation morphism <span class="SimpleMath">\(\mathrm{cocacoev}_{a,b}: \mathrm{Coexponential}(a \sqcup b, b) \rightarrow a\)</span>, i.e., the counit of the coexponential-coproduct adjunction.</p>
+<p>The arguments are two objects <span class="SimpleMath">\(a,b\)</span>. The output is the cocartesian coevaluation morphism <span class="SimpleMath">\(\mathrm{cocacoev}_{a,b}: \mathrm{Coexponential}(b \sqcup a, a) \rightarrow b\)</span>, i.e., the counit of the coexponential-coproduct adjunction.</p>
 
 <p><a id="X8479F33A836A62F3" name="X8479F33A836A62F3"></a></p>
 
 <h5>2.2-7 CocartesianLeftCoevaluationMorphismWithGivenSource</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianLeftCoevaluationMorphismWithGivenSource</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( s, a )\)</span>.</p>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( s, b )\)</span>.</p>
 
-<p>The arguments are two objects <span class="SimpleMath">\(a,b\)</span> and an object <span class="SimpleMath">\(s = \mathrm{Coexponential}(a \sqcup b, b)\)</span>. The output is the cocartesian coevaluation morphism <span class="SimpleMath">\(\mathrm{cocacoev}_{a,b}: \mathrm{Coexponential}(a \sqcup b, b) \rightarrow a\)</span>, i.e., the unit of the coexponential-coproduct adjunction.</p>
+<p>The arguments are two objects <span class="SimpleMath">\(a,b\)</span> and an object <span class="SimpleMath">\(s = \mathrm{Coexponential}(b \sqcup a, a)\)</span>. The output is the cocartesian coevaluation morphism <span class="SimpleMath">\(\mathrm{cocacoev}_{a,b}: \mathrm{Coexponential}(b \sqcup a, a) \rightarrow b\)</span>, i.e., the unit of the coexponential-coproduct adjunction.</p>
 
 <p><a id="X7C58103083CE6B7E" name="X7C58103083CE6B7E"></a></p>
 

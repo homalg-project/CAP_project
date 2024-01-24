@@ -347,21 +347,21 @@
   [1X1.2-6 CartesianLeftCoevaluationMorphism[101X
   
   [33X[1;0Y[29X[2XCartesianLeftCoevaluationMorphism[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, \mathrm{Exponential}(b, a \times b)
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( b, \mathrm{Exponential}(a, b \times a)
             )[123X.[133X
   
   [33X[0;0YThe  arguments  are two objects [23Xa,b[123X. The output is the coevaluation morphism
-  [23X\mathrm{coev}_{a,b}:  a  \rightarrow  \mathrm{Exponential}(b,  a  \times b)[123X,
+  [23X\mathrm{coev}_{a,b}:  b  \rightarrow  \mathrm{Exponential}(a,  b  \times a)[123X,
   i.e., the unit of the direct product-exponential adjunction.[133X
   
   [1X1.2-7 CartesianLeftCoevaluationMorphismWithGivenRange[101X
   
   [33X[1;0Y[29X[2XCartesianLeftCoevaluationMorphismWithGivenRange[102X( [3Xa[103X, [3Xb[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, r )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( b, r )[123X.[133X
   
-  [33X[0;0YThe  arguments are two objects [23Xa,b[123X and an object [23Xr = \mathrm{Exponential}(b,
-  a  \times b)[123X. The output is the coevaluation morphism [23X\mathrm{coev}_{a,b}: a
-  \rightarrow  \mathrm{Exponential}(b,  a  \times  b)[123X,  i.e.,  the unit of the
+  [33X[0;0YThe  arguments are two objects [23Xa,b[123X and an object [23Xr = \mathrm{Exponential}(a,
+  b  \times a)[123X. The output is the coevaluation morphism [23X\mathrm{coev}_{a,b}: b
+  \rightarrow  \mathrm{Exponential}(a,  b  \times  a)[123X,  i.e.,  the unit of the
   direct product-exponential adjunction.[133X
   
   [1X1.2-8 DirectProductToExponentialLeftAdjunctionMap[101X

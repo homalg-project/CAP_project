@@ -6,10 +6,10 @@
         [1X Cartesian and cocartesian categories and various subdoctrines [101X
   
   
-                                   2024.01-05
+                                   2024.01-07
   
   
-                                22 January 2024
+                                24 January 2024
   
   
                                 Mohamed Barakat
@@ -340,56 +340,51 @@
       4.2-1 IsInitialCapCategory
       4.2-2 IsObjectInInitialCapCategory
       4.2-3 IsMorphismInInitialCapCategory
-  5 [33X[0;0YCartesianCategories automatic generated documentation[133X
-    5.1 [33X[0;0YCartesianCategories automatic generated documentation of properties[133X
-      5.1-1 IsBicartesianCategory
-      5.1-2 IsFiniteCompleteCategory
-      5.1-3 IsFiniteCocompleteCategory
-      5.1-4 IsCartesianCategory
-      5.1-5 IsStrictCartesianCategory
-      5.1-6 IsCartesianClosedCategory
-      5.1-7 IsBicartesianClosedCategory
-      5.1-8 IsCocartesianCategory
-      5.1-9 IsStrictCocartesianCategory
-      5.1-10 IsCocartesianCoclosedCategory
-      5.1-11 IsBicartesianCoclosedCategory
-      5.1-12 IsCodistributiveCategory
-      5.1-13 IsDistributiveCategory
-      5.1-14 IsInitialCategory
-  6 [33X[0;0YSynonyms[133X
-    6.1 [33X[0;0YSynonyms[133X
-      6.1-1 CocartesianCoevaluationMorphism
-      6.1-2 CocartesianCoevaluationMorphismWithGivenSource
-      6.1-3 CocartesianEvaluationMorphism
-      6.1-4 CocartesianEvaluationMorphismWithGivenRange
-      6.1-5 CartesianCoevaluationMorphism
-      6.1-6 CartesianCoevaluationMorphismWithGivenRange
-      6.1-7 CartesianEvaluationMorphism
-      6.1-8 CartesianEvaluationMorphismWithGivenSource
-      6.1-9 CoexponentialToCoproductAdjunctionMap
-      6.1-10 CoexponentialToCoproductAdjunctionMapWithGivenCoproduct
-      6.1-11 ExponentialToDirectProductAdjunctionMap
-      6.1-12 ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct
-      6.1-13 CoproductToCoexponentialAdjunctionMap
-      6.1-14 CoproductToCoexponentialAdjunctionMapWithGivenCoexponential
-      6.1-15 DirectProductToExponentialAdjunctionMap
-      6.1-16 DirectProductToExponentialAdjunctionMapWithGivenExponential
-      6.1-17 AddCocartesianCoevaluationMorphism
-      6.1-18 AddCocartesianCoevaluationMorphismWithGivenSource
-      6.1-19 AddCocartesianEvaluationMorphism
-      6.1-20 AddCocartesianEvaluationMorphismWithGivenRange
-      6.1-21 AddCartesianCoevaluationMorphism
-      6.1-22 AddCartesianCoevaluationMorphismWithGivenRange
-      6.1-23 AddCartesianEvaluationMorphism
-      6.1-24 AddCartesianEvaluationMorphismWithGivenSource
-      6.1-25 AddCoexponentialToCoproductAdjunctionMap
-      6.1-26 AddCoexponentialToCoproductAdjunctionMapWithGivenCoproduct
-      6.1-27 AddExponentialToDirectProductAdjunctionMap
-      6.1-28 AddExponentialToDirectProductAdjunctionMapWithGivenDirectProduct
-      6.1-29 AddCoproductToCoexponentialAdjunctionMap
-      6.1-30 AddCoproductToCoexponentialAdjunctionMapWithGivenCoexponential
-      6.1-31 AddDirectProductToExponentialAdjunctionMap
-      6.1-32 AddDirectProductToExponentialAdjunctionMapWithGivenExponential
+  5 [33X[0;0YLegacy Operations and Synonyms[133X
+    5.1 [33X[0;0YLegacy operations[133X
+      5.1-1 CocartesianCoevaluationMorphism
+      5.1-2 CocartesianCoevaluationMorphismWithGivenSource
+      5.1-3 CocartesianEvaluationMorphism
+      5.1-4 CocartesianEvaluationMorphismWithGivenRange
+      5.1-5 CartesianCoevaluationMorphism
+      5.1-6 CartesianCoevaluationMorphismWithGivenRange
+    5.2 [33X[0;0YSynonyms for legacy operations[133X
+      5.2-1 CartesianEvaluationMorphism
+      5.2-2 CartesianEvaluationMorphismWithGivenSource
+      5.2-3 CoexponentialToCoproductAdjunctionMap
+      5.2-4 CoexponentialToCoproductAdjunctionMapWithGivenCoproduct
+      5.2-5 ExponentialToDirectProductAdjunctionMap
+      5.2-6 ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct
+      5.2-7 CoproductToCoexponentialAdjunctionMap
+      5.2-8 CoproductToCoexponentialAdjunctionMapWithGivenCoexponential
+      5.2-9 DirectProductToExponentialAdjunctionMap
+      5.2-10 DirectProductToExponentialAdjunctionMapWithGivenExponential
+      5.2-11 AddCartesianEvaluationMorphism
+      5.2-12 AddCartesianEvaluationMorphismWithGivenSource
+      5.2-13 AddCoexponentialToCoproductAdjunctionMap
+      5.2-14 AddCoexponentialToCoproductAdjunctionMapWithGivenCoproduct
+      5.2-15 AddExponentialToDirectProductAdjunctionMap
+      5.2-16 AddExponentialToDirectProductAdjunctionMapWithGivenDirectProduct
+      5.2-17 AddCoproductToCoexponentialAdjunctionMap
+      5.2-18 AddCoproductToCoexponentialAdjunctionMapWithGivenCoexponential
+      5.2-19 AddDirectProductToExponentialAdjunctionMap
+      5.2-20 AddDirectProductToExponentialAdjunctionMapWithGivenExponential
+  6 [33X[0;0YCartesianCategories automatic generated documentation[133X
+    6.1 [33X[0;0YCartesianCategories automatic generated documentation of properties[133X
+      6.1-1 IsBicartesianCategory
+      6.1-2 IsFiniteCompleteCategory
+      6.1-3 IsFiniteCocompleteCategory
+      6.1-4 IsCartesianCategory
+      6.1-5 IsStrictCartesianCategory
+      6.1-6 IsCartesianClosedCategory
+      6.1-7 IsBicartesianClosedCategory
+      6.1-8 IsCocartesianCategory
+      6.1-9 IsStrictCocartesianCategory
+      6.1-10 IsCocartesianCoclosedCategory
+      6.1-11 IsBicartesianCoclosedCategory
+      6.1-12 IsCodistributiveCategory
+      6.1-13 IsDistributiveCategory
+      6.1-14 IsInitialCategory
   
   
   [32X
