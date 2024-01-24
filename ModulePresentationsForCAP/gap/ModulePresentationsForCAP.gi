@@ -958,7 +958,7 @@ InstallGlobalFunction( ADD_EVALUATION_MORPHISM_LEFT,
           
         od;
         
-        if rank_1 > 0 then 
+        if rank_1 > 0 then
           
           Add( column, 1 );
           
@@ -1015,7 +1015,7 @@ InstallGlobalFunction( ADD_EVALUATION_MORPHISM_RIGHT,
           
         od;
         
-        if rank_1 > 0 then 
+        if rank_1 > 0 then
           
           Add( row, 1 );
           
@@ -1073,7 +1073,7 @@ InstallGlobalFunction( ADD_COEVALUATION_MORPHISM_LEFT,
           
         od;
         
-        if rank_2 > 0 then 
+        if rank_2 > 0 then
           
           Add( row, 1 );
           
@@ -1131,7 +1131,7 @@ InstallGlobalFunction( ADD_COEVALUATION_MORPHISM_RIGHT,
           
         od;
         
-        if rank_2 > 0 then 
+        if rank_2 > 0 then
           
           Add( column, 1 );
           
@@ -1188,12 +1188,12 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     N := UnderlyingMatrix( Range(  morphism_1 ) );
     
     # NrColumns( N ) = 0 implies coker(N)=0 and  s = 0 implies coker(P)=0, hence morphism_1 is zero, and the zero morphism can always be lifted. 
-    if NrColumns( N ) = 0 or s = 0 then 
+    if NrColumns( N ) = 0 or s = 0 then
         return ZeroMorphism( Source( morphism_1 ), Source( morphism_2 ) ); 
     fi;
     
     # if NrColumns(M)=0 then M is zero, hence lift exists iff morphism_1 is zero.
-    if NrColumns( M ) = 0 and IsZeroForMorphisms( morphism_1 ) then 
+    if NrColumns( M ) = 0 and IsZeroForMorphisms( morphism_1 ) then
         return ZeroMorphism( Source( morphism_1 ), Source( morphism_2 ) );
     fi;
     A := UnderlyingMatrix( morphism_1 );
@@ -1326,12 +1326,12 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     N := UnderlyingMatrix( Source( morphism_1 ) );
     
     # NrColumns( N ) = 0 implies coker(N)=0 and  s = 0 implies coker(I)=0, hence morphism_2 is zero, and the zero morphism can always be colifted.
-    if NrColumns( N ) = 0 or s = 0 then 
+    if NrColumns( N ) = 0 or s = 0 then
         return ZeroMorphism( Range( morphism_1 ), Range( morphism_2 ) );
     fi;
 
     # if NrColumns(M)=0 then M is zero, hence colift exists iff morphism_2 is zero.
-    if NrColumns( M ) = 0 and IsZeroForMorphisms( morphism_2 ) then 
+    if NrColumns( M ) = 0 and IsZeroForMorphisms( morphism_2 ) then
         return ZeroMorphism( Range( morphism_1 ), Range( morphism_2 ) );
     fi;
 
@@ -1351,7 +1351,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     
     A_over_zero := UnionOfRows( A, zero_mat );
     
-    if NrColumns( A ) <= 1 then 
+    if NrColumns( A ) <= 1 then
         vec := A_over_zero;
     else
         vec := UnionOfRows( List( [ 1 .. NrColumns( A ) ], i-> CertainColumns( A_over_zero, [ i ] ) ) );
@@ -1474,7 +1474,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
     
     Nt := TransposedMatrix( UnderlyingMatrix( Range(  morphism_1 ) ) );
     
-    if NrRows( Nt ) = 0 or s = 0 then 
+    if NrRows( Nt ) = 0 or s = 0 then
         return ZeroMorphism( Source( morphism_1 ), Source( morphism_2 ) ); 
     fi;
 
@@ -1593,11 +1593,11 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
         
     Nt := TransposedMatrix( UnderlyingMatrix( Source( morphism_1 ) ) );
     
-    if NrRows( Nt ) = 0 or s = 0 then 
+    if NrRows( Nt ) = 0 or s = 0 then
         return ZeroMorphism( Range( morphism_1 ), Range( morphism_2 ) );
     fi;
     
-    if NrRows( Mt ) = 0 and IsZeroForMorphisms( morphism_2 ) then 
+    if NrRows( Mt ) = 0 and IsZeroForMorphisms( morphism_2 ) then
         return ZeroMorphism( Range( morphism_1 ), Range( morphism_2 ) );
     fi;
 
@@ -1617,7 +1617,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
     
     A_over_zero := UnionOfRows( At, zero_mat );
     
-    if NrColumns( At ) <= 1 then 
+    if NrColumns( At ) <= 1 then
         vec := A_over_zero;
     else
         vec := UnionOfRows( List( [ 1 .. NrColumns( At ) ], i-> CertainColumns( A_over_zero, [ i ] ) ) );
