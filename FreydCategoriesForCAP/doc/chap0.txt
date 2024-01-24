@@ -6,10 +6,10 @@
         [1X Freyd categories - Formal (co)kernels for additive categories [101X
   
   
-                                   2024.01-03
+                                   2024.01-04
   
   
-                                22 January 2024
+                                24 January 2024
   
   
                                 Sebastian Posur
