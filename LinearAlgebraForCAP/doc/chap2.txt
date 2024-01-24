@@ -173,15 +173,21 @@
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
     [4X[25Xgap>[125X [27Xcoev_ab := ClosedMonoidalLeftCoevaluationMorphism( a, b );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27Xcoev_ba := ClosedMonoidalLeftCoevaluationMorphism( b, a );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
     [4X[25Xgap>[125X [27Xcocl_ev_ab := CoclosedMonoidalLeftEvaluationMorphism( a, b );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
     [4X[25Xgap>[125X [27Xcocl_ev_ba := CoclosedMonoidalLeftEvaluationMorphism( b, a );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
     [4X[25Xgap>[125X [27Xcocl_coev_ab := CoclosedMonoidalLeftCoevaluationMorphism( a, b );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
-    [4X[25Xgap>[125X [27XUnderlyingMatrix( ev_ab ) = TransposedMatrix( UnderlyingMatrix( cocl_ev_ba ) );[127X[104X
+    [4X[25Xgap>[125X [27Xcocl_coev_ba := CoclosedMonoidalLeftCoevaluationMorphism( b, a );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27XUnderlyingMatrix( ev_ab ) = TransposedMatrix( UnderlyingMatrix( cocl_ev_ab ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XUnderlyingMatrix( coev_ab ) = TransposedMatrix( UnderlyingMatrix( cocl_coev_ab ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XUnderlyingMatrix( coev_ba ) = TransposedMatrix( UnderlyingMatrix( cocl_coev_ba ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xtensor_hom_adj_1_hom_ab := InternalHomToTensorProductLeftAdjunctionMap( a, b, 1_hom_ab );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
@@ -193,11 +199,11 @@
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
     [4X[25Xgap>[125X [27Xev_ab = tensor_hom_adj_1_hom_ab;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xcocl_ev_ab = cohom_tensor_adj_1_cohom_ab;[127X[104X
+    [4X[25Xgap>[125X [27Xcocl_ev_ba = cohom_tensor_adj_1_cohom_ab;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xcoev_ab = tensor_hom_adj_1_ab;[127X[104X
+    [4X[25Xgap>[125X [27Xcoev_ba = tensor_hom_adj_1_ab;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xcocl_coev_ab = cohom_tensor_adj_1_ab;[127X[104X
+    [4X[25Xgap>[125X [27Xcocl_coev_ba = cohom_tensor_adj_1_ab;[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xc := VectorSpaceObject(2,Q);[127X[104X
     [4X[28X<A vector space object over Q of dimension 2>[128X[104X
