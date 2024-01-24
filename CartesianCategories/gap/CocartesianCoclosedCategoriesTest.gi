@@ -164,8 +164,8 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             ev_ba_op := CartesianLeftEvaluationMorphism( b_op, a_op );
             
             # Arguments must be reversed for evaluations
-            Assert( 0, IsCongruentForMorphisms( coca_ev_ab, Opposite( ev_ba_op ) ) );
-            Assert( 0, IsCongruentForMorphisms( coca_ev_ba, Opposite( ev_ab_op ) ) );
+            Assert( 0, IsCongruentForMorphisms( coca_ev_ab, Opposite( ev_ab_op ) ) );
+            Assert( 0, IsCongruentForMorphisms( coca_ev_ba, Opposite( ev_ba_op ) ) );
             
         fi;
         
@@ -657,8 +657,8 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             # Adjoint( Coexp( b, a ) → Coexp( b, a ) )  ==  b → Coexp( b, a ) ⊔ a
             coexp_to_tensor_adjunction_on_id_coexp_ba := CoexponentialToCoproductLeftAdjunctionMap( b, a, id_coexp_ba );
             
-            Assert( 0, IsCongruentForMorphisms( coca_ev_ab, coexp_to_tensor_adjunction_on_id_coexp_ab ) );
-            Assert( 0, IsCongruentForMorphisms( coca_ev_ba, coexp_to_tensor_adjunction_on_id_coexp_ba ) );
+            Assert( 0, IsCongruentForMorphisms( coca_ev_ba, coexp_to_tensor_adjunction_on_id_coexp_ab ) );
+            Assert( 0, IsCongruentForMorphisms( coca_ev_ab, coexp_to_tensor_adjunction_on_id_coexp_ba ) );
             
         fi;
         
@@ -687,8 +687,8 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             # Adjoint( b ⊔ a → b ⊔ a )  ==  Coexp( b ⊔ a, a ) → b
             tensor_to_coexp_adjunction_on_id_b_tensor_a := CoproductToCoexponentialLeftAdjunctionMap( b, a, id_b_tensor_a );
             
-            Assert( 0, IsCongruentForMorphisms( coca_coev_ab, tensor_to_coexp_adjunction_on_id_a_tensor_b ) );
-            Assert( 0, IsCongruentForMorphisms( coca_coev_ba, tensor_to_coexp_adjunction_on_id_b_tensor_a ) );
+            Assert( 0, IsCongruentForMorphisms( coca_coev_ba, tensor_to_coexp_adjunction_on_id_a_tensor_b ) );
+            Assert( 0, IsCongruentForMorphisms( coca_coev_ab, tensor_to_coexp_adjunction_on_id_b_tensor_a ) );
             
         fi;
 

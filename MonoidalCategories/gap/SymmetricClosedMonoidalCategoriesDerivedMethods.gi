@@ -53,7 +53,7 @@ AddDerivationToCAP( MorphismToBidualWithGivenBidual,
     
     #        a
     #        |
-    #        | coev_(a,a^v)
+    #        | coev_(a^v,a)
     #        v
     #  Hom(av, a ⊗ a^v)
     #        |
@@ -69,7 +69,7 @@ AddDerivationToCAP( MorphismToBidualWithGivenBidual,
     
     morphism := PreComposeList( cat,
                         a,
-                        [ ClosedMonoidalLeftCoevaluationMorphism( cat, a, av ),
+                        [ ClosedMonoidalLeftCoevaluationMorphism( cat, av, a ),
                           
                           InternalHomOnMorphisms( cat,
                                   IdentityMorphism( cat, av ),

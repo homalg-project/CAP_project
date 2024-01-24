@@ -53,7 +53,7 @@ AddDerivationToCAP( MorphismFromCoBidualWithGivenCoBidual,
     
     #     coHom(1, a_v)
     #          |
-    #          | coHom( coclev_(1,a), id_(a_v) )
+    #          | coHom( coclev_(a,1), id_(a_v) )
     #          v
     # coHom(a_v ⊗ a, a_v)
     #          |
@@ -61,7 +61,7 @@ AddDerivationToCAP( MorphismFromCoBidualWithGivenCoBidual,
     #          v
     # coHom(a ⊗ a_v, a_v)
     #          |
-    #          | coclcoev_(a, a_v)
+    #          | coclcoev_(a_v,a)
     #          v
     #          a
     
@@ -70,14 +70,14 @@ AddDerivationToCAP( MorphismFromCoBidualWithGivenCoBidual,
     morphism := PreComposeList( cat,
                         avv,
                         [ InternalCoHomOnMorphisms( cat,
-                                CoclosedMonoidalLeftEvaluationMorphism( cat, TensorUnit( cat ), a ),
+                                CoclosedMonoidalLeftEvaluationMorphism( cat, a, TensorUnit( cat ) ),
                                 IdentityMorphism( cat, av ) ),
                           
                           InternalCoHomOnMorphisms( cat,
                                   Braiding( cat, av, a ),
                                   IdentityMorphism( cat, av ) ),
                           
-                          CoclosedMonoidalLeftCoevaluationMorphism( cat, a, av ) ],
+                          CoclosedMonoidalLeftCoevaluationMorphism( cat, av, a ) ],
                         a );
     
     return morphism;
@@ -151,13 +151,13 @@ AddDerivationToCAP( InternalCoHomTensorProductCompatibilityMorphismWithGivenObje
                         TensorProductOnObjects( cat, a1, a2 ),
                         [ TensorProductOnMorphisms( cat,
                                 IdentityMorphism( cat, a1 ),
-                                CoclosedMonoidalLeftEvaluationMorphism( cat, a2, b2 ) ),
+                                CoclosedMonoidalLeftEvaluationMorphism( cat, b2, a2 ) ),
                           
                           AssociatorRightToLeft( cat, a1, int_cohom_a2_b2, b2 ),
                           
                           TensorProductOnMorphisms( cat,
                                   TensorProductOnMorphisms( cat,
-                                          CoclosedMonoidalLeftEvaluationMorphism( cat, a1, b1 ),
+                                          CoclosedMonoidalLeftEvaluationMorphism( cat, b1, a1 ),
                                           IdentityMorphism( cat, int_cohom_a2_b2 ) ),
                                   id_b2 ),
                           
@@ -242,12 +242,12 @@ AddDerivationToCAP( MonoidalPreCoComposeMorphismWithGivenObjects,
     
     morphism := PreComposeList( cat,
                         a,
-                        [ CoclosedMonoidalLeftEvaluationMorphism( cat, a, b ),
+                        [ CoclosedMonoidalLeftEvaluationMorphism( cat, b, a ),
                           
                           Braiding( cat, cohom_a_b, b ),
                           
                           TensorProductOnMorphisms( cat,
-                                  CoclosedMonoidalLeftEvaluationMorphism( cat, b, c ),
+                                  CoclosedMonoidalLeftEvaluationMorphism( cat, c, b ),
                                   IdentityMorphism( cat, cohom_a_b ) ),
                           
                           AssociatorLeftToRight( cat, cohom_b_c, c, cohom_a_b ),
@@ -372,11 +372,11 @@ AddDerivationToCAP( InternalCoHomTensorProductCompatibilityMorphismWithGivenObje
                         TensorProductOnObjects( cat, a1, a2 ),
                         [ TensorProductOnMorphisms( cat,
                                 IdentityMorphism( cat, a1 ),
-                                CoclosedMonoidalLeftEvaluationMorphism( cat, a2, b2 ) ),
+                                CoclosedMonoidalLeftEvaluationMorphism( cat, b2, a2 ) ),
                           
                           TensorProductOnMorphisms( cat,
                                   TensorProductOnMorphisms( cat,
-                                          CoclosedMonoidalLeftEvaluationMorphism( cat, a1, b1 ),
+                                          CoclosedMonoidalLeftEvaluationMorphism( cat, b1, a1 ),
                                           IdentityMorphism( cat, int_cohom_a2_b2 ) ),
                                   id_b2 ),
                           
@@ -439,12 +439,12 @@ AddDerivationToCAP( MonoidalPreCoComposeMorphismWithGivenObjects,
     
     morphism := PreComposeList( cat,
                         a,
-                        [ CoclosedMonoidalLeftEvaluationMorphism( cat, a, b ),
+                        [ CoclosedMonoidalLeftEvaluationMorphism( cat, b, a ),
                           
                           Braiding( cat, cohom_a_b, b ),
                           
                           TensorProductOnMorphisms( cat,
-                                  CoclosedMonoidalLeftEvaluationMorphism( cat, b, c ),
+                                  CoclosedMonoidalLeftEvaluationMorphism( cat, c, b ),
                                   IdentityMorphism( cat, cohom_a_b ) ),
                           
                           TensorProductOnMorphisms( cat,

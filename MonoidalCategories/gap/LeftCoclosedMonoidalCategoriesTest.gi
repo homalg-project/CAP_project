@@ -161,8 +161,8 @@ InstallGlobalFunction( "LeftCoclosedMonoidalCategoriesTest",
             ev_ba_op := LeftClosedMonoidalEvaluationMorphism( b_op, a_op );
             
             # Arguments must be reversed for evaluations
-            Assert( 0, IsCongruentForMorphisms( cocl_ev_ab, Opposite( ev_ba_op ) ) );
-            Assert( 0, IsCongruentForMorphisms( cocl_ev_ba, Opposite( ev_ab_op ) ) );
+            Assert( 0, IsCongruentForMorphisms( cocl_ev_ab, Opposite( ev_ab_op ) ) );
+            Assert( 0, IsCongruentForMorphisms( cocl_ev_ba, Opposite( ev_ba_op ) ) );
             
         fi;
         
@@ -654,8 +654,8 @@ InstallGlobalFunction( "LeftCoclosedMonoidalCategoriesTest",
             # Adjoint( Cohom( b, a ) → Cohom( b, a ) )  ==  b → Cohom( b, a ) ⊗ a
             cohom_to_tensor_adjunction_on_id_cohom_ba := LeftInternalCoHomToTensorProductAdjunctionMap( b, a, id_cohom_ba );
             
-            Assert( 0, IsCongruentForMorphisms( cocl_ev_ab, cohom_to_tensor_adjunction_on_id_cohom_ab ) );
-            Assert( 0, IsCongruentForMorphisms( cocl_ev_ba, cohom_to_tensor_adjunction_on_id_cohom_ba ) );
+            Assert( 0, IsCongruentForMorphisms( cocl_ev_ba, cohom_to_tensor_adjunction_on_id_cohom_ab ) );
+            Assert( 0, IsCongruentForMorphisms( cocl_ev_ab, cohom_to_tensor_adjunction_on_id_cohom_ba ) );
             
         fi;
         
@@ -684,8 +684,8 @@ InstallGlobalFunction( "LeftCoclosedMonoidalCategoriesTest",
             # Adjoint( b ⊗ a → b ⊗ a )  ==  Cohom( b ⊗ a, a ) → b
             tensor_to_cohom_adjunction_on_id_b_tensor_a := TensorProductToLeftInternalCoHomAdjunctionMap( b, a, id_b_tensor_a );
             
-            Assert( 0, IsCongruentForMorphisms( cocl_coev_ab, tensor_to_cohom_adjunction_on_id_a_tensor_b ) );
-            Assert( 0, IsCongruentForMorphisms( cocl_coev_ba, tensor_to_cohom_adjunction_on_id_b_tensor_a ) );
+            Assert( 0, IsCongruentForMorphisms( cocl_coev_ba, tensor_to_cohom_adjunction_on_id_a_tensor_b ) );
+            Assert( 0, IsCongruentForMorphisms( cocl_coev_ab, tensor_to_cohom_adjunction_on_id_b_tensor_a ) );
             
         fi;
 

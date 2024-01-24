@@ -72,18 +72,18 @@ DeclareOperation( "CartesianLeftEvaluationMorphismWithGivenSource",
 
 #! @Description
 #! The arguments are two objects $a,b$.
-#! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: a \rightarrow \mathrm{Exponential}(b, a \times b)$, i.e.,
+#! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: b \rightarrow \mathrm{Exponential}(a, b \times a)$, i.e.,
 #! the unit of the direct product-exponential adjunction.
-#! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{Exponential}(b, a \times b) )$.
+#! @Returns a morphism in $\mathrm{Hom}( b, \mathrm{Exponential}(a, b \times a) )$.
 #! @Arguments a, b
 DeclareOperation( "CartesianLeftCoevaluationMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are two objects $a,b$ and an object $r = \mathrm{Exponential}(b, a \times b)$.
-#! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: a \rightarrow \mathrm{Exponential}(b, a \times b)$, i.e.,
+#! The arguments are two objects $a,b$ and an object $r = \mathrm{Exponential}(a, b \times a)$.
+#! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: b \rightarrow \mathrm{Exponential}(a, b \times a)$, i.e.,
 #! the unit of the direct product-exponential adjunction.
-#! @Returns a morphism in $\mathrm{Hom}( a, r )$.
+#! @Returns a morphism in $\mathrm{Hom}( b, r )$.
 #! @Arguments a, b, r
 DeclareOperation( "CartesianLeftCoevaluationMorphismWithGivenRange",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );

@@ -71,3 +71,5 @@ The corresponding GAP property is called <C>IsCocartesianCoclosedCategory</C>.
 @Section Constructor
 
 @Section GAP Categories
+
+@Chapter Legacy Operations and Synonyms

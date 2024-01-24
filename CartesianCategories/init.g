@@ -61,7 +61,9 @@ ReadPackage( "CartesianCategories", "gap/BicartesianCategories.gd" );
 
 ## Synonyms
 
+#= comment for Julia
 ReadPackage( "CartesianCategories", "gap/Synonyms.gd" );
+# =#
 
 ## Test methods
 

@@ -69,18 +69,18 @@ DeclareOperation( "ClosedMonoidalLeftEvaluationMorphismWithGivenSource",
 
 #! @Description
 #! The arguments are two objects $a,b$.
-#! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: a \rightarrow \mathrm{\underline{Hom}}(b, a \otimes b)$, i.e.,
+#! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: b \rightarrow \mathrm{\underline{Hom}}(a, b \otimes a)$, i.e.,
 #! the unit of the tensor hom adjunction.
-#! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{\underline{Hom}}(b, a \otimes b) )$.
+#! @Returns a morphism in $\mathrm{Hom}( b, \mathrm{\underline{Hom}}(a, b \otimes a) )$.
 #! @Arguments a, b
 DeclareOperation( "ClosedMonoidalLeftCoevaluationMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are two objects $a,b$ and an object $r = \mathrm{\underline{Hom}}(b, a \otimes b)$.
-#! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: a \rightarrow \mathrm{\underline{Hom}}(b, a \otimes b)$, i.e.,
+#! The arguments are two objects $a,b$ and an object $r = \mathrm{\underline{Hom}}(a, b \otimes a)$.
+#! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: b \rightarrow \mathrm{\underline{Hom}}(a, b \otimes a)$, i.e.,
 #! the unit of the tensor hom adjunction.
-#! @Returns a morphism in $\mathrm{Hom}( a, r )$.
+#! @Returns a morphism in $\mathrm{Hom}( b, r )$.
 #! @Arguments a, b, r
 DeclareOperation( "ClosedMonoidalLeftCoevaluationMorphismWithGivenRange",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );

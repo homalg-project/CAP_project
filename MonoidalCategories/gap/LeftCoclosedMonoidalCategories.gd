@@ -51,36 +51,36 @@ DeclareOperation( "LeftInternalCoHomOnMorphismsWithGivenLeftInternalCoHoms",
 
 #! @Description
 #! The arguments are two objects $a, b$.
-#! The output is the coclosed evaluation morphism $\mathrm{coclev}_{a,b}: a \rightarrow \mathrm{\underline{coHom}_\ell}(a,b) \otimes b$, i.e.,
+#! The output is the coclosed evaluation morphism $\mathrm{coclev}_{a,b}: b \rightarrow \mathrm{\underline{coHom}_\ell}(b,a) \otimes a$, i.e.,
 #! the unit of the cohom tensor adjunction.
-#! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{\underline{coHom}_\ell}(a,b) \otimes b )$.
+#! @Returns a morphism in $\mathrm{Hom}( b, \mathrm{\underline{coHom}_\ell}(b,a) \otimes a )$.
 #! @Arguments a, b
 DeclareOperation( "LeftCoclosedMonoidalEvaluationMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are two objects $a,b$ and an object $r = \mathrm{\underline{coHom}_\ell}(a,b) \otimes b$.
-#! The output is the coclosed evaluation morphism $\mathrm{coclev}_{a,b}: a \rightarrow \mathrm{\underline{coHom}_\ell}(a,b) \otimes b$, i.e.,
+#! The arguments are two objects $a,b$ and an object $r = \mathrm{\underline{coHom}_\ell}(b,a) \otimes a$.
+#! The output is the coclosed evaluation morphism $\mathrm{coclev}_{a,b}: b \rightarrow \mathrm{\underline{coHom}_\ell}(b,a) \otimes a$, i.e.,
 #! the unit of the cohom tensor adjunction.
-#! @Returns a morphism in $\mathrm{Hom}( a, r )$.
+#! @Returns a morphism in $\mathrm{Hom}( b, r )$.
 #! @Arguments a, b, r
 DeclareOperation( "LeftCoclosedMonoidalEvaluationMorphismWithGivenRange",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are two objects $a,b$.
-#! The output is the coclosed coevaluation morphism $\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}_\ell}(a \otimes b, b) \rightarrow a$, i.e.,
+#! The output is the coclosed coevaluation morphism $\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}_\ell}(b \otimes a, a) \rightarrow b$, i.e.,
 #! the counit of the cohom tensor adjunction.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}_\ell}(a \otimes b, b), a )$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}_\ell}(b \otimes a, a), b )$.
 #! @Arguments a, b
 DeclareOperation( "LeftCoclosedMonoidalCoevaluationMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are two objects $a,b$ and an object $s = \mathrm{\underline{coHom}_\ell}(a \otimes b, b)$.
-#! The output is the coclosed coevaluation morphism $\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}_\ell}(a \otimes b, b) \rightarrow a$, i.e.,
+#! The arguments are two objects $a,b$ and an object $s = \mathrm{\underline{coHom}_\ell}(b \otimes a, a)$.
+#! The output is the coclosed coevaluation morphism $\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}_\ell}(b \otimes a, a) \rightarrow b$, i.e.,
 #! the unit of the cohom tensor adjunction.
-#! @Returns a morphism in $\mathrm{Hom}( s, a )$.
+#! @Returns a morphism in $\mathrm{Hom}( s, b )$.
 #! @Arguments a, b, s
 DeclareOperation( "LeftCoclosedMonoidalCoevaluationMorphismWithGivenSource",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );

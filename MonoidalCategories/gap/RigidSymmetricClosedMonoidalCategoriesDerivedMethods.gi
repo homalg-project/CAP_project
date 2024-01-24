@@ -220,59 +220,59 @@ AddDerivationToCAP( ClosedMonoidalLeftCoevaluationMorphismWithGivenRange,
                       [ TensorProductOnObjects, 1 ] ],
                     
   function( cat, a, b, internal_hom )
-    local dual_b, id_a, morphism;
+    local dual_a, id_b, morphism;
     
-    #      a
+    #      b
     #      |
-    #      | (λ_a)^-1
+    #      | (λ_b)^-1
     #      v
-    #    1 ⊗ a
+    #    1 ⊗ b
     #      |
-    #      | coev_b ⊗ id_a
+    #      | coev_a ⊗ id_b
     #      v
-    # (b ⊗ b^v) ⊗ a
+    # (a ⊗ a^v) ⊗ b
     #      |
-    #      | B_( b, b^v ) ⊗ id_a
+    #      | B_( a, a^v ) ⊗ id_b
     #      v
-    # (b^v ⊗ b) ⊗ a
+    # (a^v ⊗ a) ⊗ b
     #      |
-    #      | α_( ( b^v, b ), a )
+    #      | α_( ( a^v, a ), b )
     #      v
-    # b^v ⊗ (b ⊗ a)
+    # a^v ⊗ (a ⊗ b)
     #      |
-    #      | id_(b^v) ⊗ B_( b, a )
+    #      | id_(a^v) ⊗ B_( a, b )
     #      v
-    # b^v ⊗ (a ⊗ b)
+    # a^v ⊗ (b ⊗ a)
     #      |
     #      | Isomorphism
     #      v
-    # Hom(b, a ⊗ b)
+    # Hom(a, b ⊗ a)
     
-    dual_b := DualOnObjects( cat, b );
+    dual_a := DualOnObjects( cat, a );
     
-    id_a := IdentityMorphism( cat, a );
+    id_b := IdentityMorphism( cat, b );
     
     morphism := PreComposeList( cat,
-                        a,
-                        [ LeftUnitorInverse( cat, a ),
+                        b,
+                        [ LeftUnitorInverse( cat, b ),
                           
                           TensorProductOnMorphisms( cat,
-                                  CoevaluationForDual( cat, b ),
-                                  id_a ),
+                                  CoevaluationForDual( cat, a ),
+                                  id_b ),
                           
                           TensorProductOnMorphisms( cat,
-                                  Braiding( cat, b, dual_b ),
-                                  id_a ),
+                                  Braiding( cat, a, dual_a ),
+                                  id_b ),
                           
-                          AssociatorLeftToRight( cat, dual_b, b, a ),
+                          AssociatorLeftToRight( cat, dual_a, a, b ),
                           
                           TensorProductOnMorphisms( cat,
-                                  IdentityMorphism( cat, dual_b ),
-                                  Braiding( cat, b, a ) ),
+                                  IdentityMorphism( cat, dual_a ),
+                                  Braiding( cat, a, b ) ),
                           
                           IsomorphismFromTensorProductWithDualObjectToInternalHom( cat,
-                                  b,
-                                  TensorProductOnObjects( cat, a, b ) ) ],
+                                  a,
+                                  TensorProductOnObjects( cat, b, a ) ) ],
                         internal_hom );
     
     return morphism;
@@ -292,47 +292,47 @@ AddDerivationToCAP( ClosedMonoidalLeftCoevaluationMorphismWithGivenRange,
                       [ TensorProductOnObjects, 1 ] ],
                     
   function( cat, a, b, internal_hom )
-    local dual_b, id_a, morphism;
+    local dual_a, id_b, morphism;
     
-    # 1 ⊗ a
+    # 1 ⊗ b
     #   |
-    #   | coev_b ⊗ id_a
+    #   | coev_a ⊗ id_b
     #   v
-    # b ⊗ b^v ⊗ a
+    # a ⊗ a^v ⊗ b
     #   |
-    #   | B_( b, b^v ) ⊗ id_a
+    #   | B_( a, a^v ) ⊗ id_b
     #   v
-    # b^v ⊗ b ⊗ a
+    # a^v ⊗ a ⊗ b
     #   |
-    #   | id_(b^v) ⊗ B_( b, a )
+    #   | id_(a^v) ⊗ B_( a, b )
     #   v
-    # b^v ⊗ a ⊗ b
+    # a^v ⊗ b ⊗ a
     #   |
     #   | Isomorphism
     #   v
-    # Hom(b, a ⊗ b)
+    # Hom(a, b ⊗ a)
     
-    dual_b := DualOnObjects( cat, b );
+    dual_a := DualOnObjects( cat, a );
     
-    id_a := IdentityMorphism( cat, a );
+    id_b := IdentityMorphism( cat, b );
     
     morphism := PreComposeList( cat,
-                        a,
+                        b,
                         [ TensorProductOnMorphisms( cat,
-                                CoevaluationForDual( cat, b ),
-                                id_a ),
+                                CoevaluationForDual( cat, a ),
+                                id_b ),
                           
                           TensorProductOnMorphisms( cat,
-                                  Braiding( cat, b, dual_b ),
-                                  id_a ),
+                                  Braiding( cat, a, dual_a ),
+                                  id_b ),
                           
                           TensorProductOnMorphisms( cat,
-                                  IdentityMorphism( cat, dual_b ),
-                                  Braiding( cat, b, a ) ),
+                                  IdentityMorphism( cat, dual_a ),
+                                  Braiding( cat, a, b ) ),
                           
                           IsomorphismFromTensorProductWithDualObjectToInternalHom( cat,
-                                  b,
-                                  TensorProductOnObjects( cat, a, b ) ) ],
+                                  a,
+                                  TensorProductOnObjects( cat, b, a ) ) ],
                         internal_hom );
     
     return morphism;

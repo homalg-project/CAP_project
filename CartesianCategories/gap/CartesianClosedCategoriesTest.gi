@@ -164,8 +164,8 @@ InstallGlobalFunction( "CartesianClosedCategoriesTest",
             coca_ev_ba_op := CocartesianLeftEvaluationMorphism( b_op, a_op );
             
             # Arguments must be reversed for evaluations
-            Assert( 0, IsCongruentForMorphisms( coca_ev_ab_op, Opposite( opposite, ev_ba ) ) );
-            Assert( 0, IsCongruentForMorphisms( coca_ev_ba_op, Opposite( opposite, ev_ab ) ) );
+            Assert( 0, IsCongruentForMorphisms( coca_ev_ab_op, Opposite( opposite, ev_ab ) ) );
+            Assert( 0, IsCongruentForMorphisms( coca_ev_ba_op, Opposite( opposite, ev_ba ) ) );
             
         fi;
         
@@ -651,7 +651,7 @@ InstallGlobalFunction( "CartesianClosedCategoriesTest",
             id_exp_ab := IdentityMorphism( ExponentialOnObjects( a, b ) );
             id_exp_ba := IdentityMorphism( ExponentialOnObjects( b, a ) );
             
-            # Adjoint( Exp( a. b ) → Exp( a, b ) )  ==  Exp( a, b ) × a → b
+            # Adjoint( Exp( a, b ) → Exp( a, b ) )  ==  Exp( a, b ) × a → b
             exp_to_tensor_adjunction_on_id_exp_ab := ExponentialToDirectProductLeftAdjunctionMap( a, b, id_exp_ab );
             
             # Adjoint( Exp( b, a ) → Exp( b, a ) )  ==  Exp( b, a ) × b → a
@@ -687,8 +687,8 @@ InstallGlobalFunction( "CartesianClosedCategoriesTest",
             # Adjoint( b × a → b × a )  ==  b → Exp( a, b × a )
             tensor_to_exp_adjunction_on_id_b_tensor_a := DirectProductToExponentialLeftAdjunctionMap( b, a, id_b_tensor_a );
             
-            Assert( 0, IsCongruentForMorphisms( coev_ab, tensor_to_exp_adjunction_on_id_a_tensor_b ) );
-            Assert( 0, IsCongruentForMorphisms( coev_ba, tensor_to_exp_adjunction_on_id_b_tensor_a ) );
+            Assert( 0, IsCongruentForMorphisms( coev_ba, tensor_to_exp_adjunction_on_id_a_tensor_b ) );
+            Assert( 0, IsCongruentForMorphisms( coev_ab, tensor_to_exp_adjunction_on_id_b_tensor_a ) );
             
         fi;
 

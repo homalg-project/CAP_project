@@ -94,6 +94,12 @@ ReadPackage( "MonoidalCategories", "gap/CreateLeftCoclosedMonoidalCategories.gi"
 ReadPackage( "MonoidalCategories", "gap/CreateClosedMonoidalCategories.gi" );
 ReadPackage( "MonoidalCategories", "gap/CreateCoclosedMonoidalCategories.gi" );
 
+## Synonyms
+
+#= comment for Julia
+ReadPackage( "MonoidalCategories", "gap/Synonyms.gi" );
+# =#
+
 ## Test methods
 
 ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesTensorProductAndUnitTest.gi" );

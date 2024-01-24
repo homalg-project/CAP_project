@@ -1663,7 +1663,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                                   "TensorProductOnMorphismsWithGivenTensorProducts", "ClosedMonoidalLeftCoevaluationMorphismWithGivenRange" ] ) then
         
         AddClosedMonoidalLeftCoevaluationMorphismWithGivenRange( category,
-            function( cat, A, B, R )
+            function( cat, B, A, R )
                 local a, b, emb_b, proj_B, A_tensor_B, proj_A_tensor_B, mono, tau, lift;
 
                 # (0) define quantities
@@ -1678,7 +1678,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                 mono := InternalHomOnMorphisms( cat, proj_B, IdentityMorphism( cat, A_tensor_B ) );
             
                 # (2) construct morphism from coevaluation in underlying category
-                tau := PreCompose( cat, AsFreydCategoryMorphism( cat, ClosedMonoidalLeftCoevaluationMorphism( underlying_category, a, b ) ), InternalHomOnMorphisms( cat, IdentityMorphism( cat, emb_b ), proj_A_tensor_B ) );
+                tau := PreCompose( cat, AsFreydCategoryMorphism( cat, ClosedMonoidalLeftCoevaluationMorphism( underlying_category, b, a ) ), InternalHomOnMorphisms( cat, IdentityMorphism( cat, emb_b ), proj_A_tensor_B ) );
                 
                 # (3) compute lift along mono
                 lift := LiftAlongMonomorphism( cat, mono, tau );
