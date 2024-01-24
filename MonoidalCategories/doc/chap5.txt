@@ -1,104 +1,115 @@
   
-  [1X5 [33X[0;0YSynonyms[133X[101X
+  [1X5 [33X[0;0YLegacy Operations and Synonyms[133X[101X
   
   
-  [1X5.1 [33X[0;0YSynonyms[133X[101X
+  [1X5.1 [33X[0;0YLegacy operations[133X[101X
   
   [1X5.1-1 CoclosedCoevaluationMorphism[101X
   
-  [33X[1;0Y[29X[2XCoclosedCoevaluationMorphism[102X( [3Xarg[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCoclosedCoevaluationMorphism[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   
-  [33X[0;0YThis is a synonym for [10XCoclosedMonoidalLeftCoevaluationMorphism[110X.[133X
+  [33X[0;0YThis  is a legacy operation for [10XCoclosedMonoidalLeftCoevaluationMorphism[110X( [3Xb[103X,
+  [3Xa[103X ), i.e., with the first and second argument interchanged.[133X
   
   [1X5.1-2 CoclosedCoevaluationMorphismWithGivenSource[101X
   
-  [33X[1;0Y[29X[2XCoclosedCoevaluationMorphismWithGivenSource[102X( [3Xarg[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCoclosedCoevaluationMorphismWithGivenSource[102X( [3Xa[103X, [3Xb[103X, [3Xs[103X ) [32X operation[133X
   
-  [33X[0;0YThis               is               a               synonym              for
-  [10XCoclosedMonoidalLeftCoevaluationMorphismWithGivenSource[110X.[133X
+  [33X[0;0YThis           is          a          legacy          operation          for
+  [10XCoclosedMonoidalLeftCoevaluationMorphismWithGivenSource[110X(  [3Xb[103X,  [3Xa[103X,  [3Xs[103X ), i.e.,
+  with the first and second argument interchanged.[133X
   
   [1X5.1-3 CoclosedEvaluationMorphism[101X
   
-  [33X[1;0Y[29X[2XCoclosedEvaluationMorphism[102X( [3Xarg[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCoclosedEvaluationMorphism[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   
-  [33X[0;0YThis is a synonym for [10XCoclosedMonoidalLeftEvaluationMorphism[110X.[133X
+  [33X[0;0YThis  is a legacy operation for [10XCoclosedMonoidalLeftEvaluationMorphism[110X( [3Xb[103X, [3Xa[103X
+  ), i.e., with the first and second argument interchanged.[133X
   
   [1X5.1-4 CoclosedEvaluationMorphismWithGivenRange[101X
   
-  [33X[1;0Y[29X[2XCoclosedEvaluationMorphismWithGivenRange[102X( [3Xarg[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCoclosedEvaluationMorphismWithGivenRange[102X( [3Xa[103X, [3Xb[103X, [3Xr[103X ) [32X operation[133X
   
-  [33X[0;0YThis is a synonym for [10XCoclosedMonoidalLeftEvaluationMorphismWithGivenRange[110X.[133X
+  [33X[0;0YThis           is          a          legacy          operation          for
+  [10XCoclosedMonoidalLeftEvaluationMorphismWithGivenRange[110X(  [3Xb[103X, [3Xa[103X, [3Xr[103X ), i.e., with
+  the first and second argument interchanged.[133X
   
   [1X5.1-5 CoevaluationMorphism[101X
   
-  [33X[1;0Y[29X[2XCoevaluationMorphism[102X( [3Xarg[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCoevaluationMorphism[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   
-  [33X[0;0YThis is a synonym for [10XClosedMonoidalLeftCoevaluationMorphism[110X.[133X
+  [33X[0;0YThis  is a legacy operation for [10XClosedMonoidalLeftCoevaluationMorphism[110X( [3Xb[103X, [3Xa[103X
+  ), i.e., with the first and second argument interchanged.[133X
   
   [1X5.1-6 CoevaluationMorphismWithGivenRange[101X
   
-  [33X[1;0Y[29X[2XCoevaluationMorphismWithGivenRange[102X( [3Xarg[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCoevaluationMorphismWithGivenRange[102X( [3Xa[103X, [3Xb[103X, [3Xr[103X ) [32X operation[133X
   
-  [33X[0;0YThis is a synonym for [10XClosedMonoidalLeftCoevaluationMorphismWithGivenRange[110X.[133X
+  [33X[0;0YThis           is          a          legacy          operation          for
+  [10XClosedMonoidalLeftCoevaluationMorphismWithGivenRange[110X(  [3Xb[103X, [3Xa[103X, [3Xr[103X ), i.e., with
+  the first and second argument interchanged.[133X
   
-  [1X5.1-7 EvaluationMorphism[101X
   
-  [33X[1;0Y[29X[2XEvaluationMorphism[102X( [3Xarg[103X ) [32X operation[133X
+  [1X5.2 [33X[0;0YSynonyms for legacy operations[133X[101X
+  
+  [1X5.2-1 EvaluationMorphism[101X
+  
+  [33X[1;0Y[29X[2XEvaluationMorphism[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
   
   [33X[0;0YThis is a synonym for [10XClosedMonoidalLeftEvaluationMorphism[110X.[133X
   
-  [1X5.1-8 EvaluationMorphismWithGivenSource[101X
+  [1X5.2-2 EvaluationMorphismWithGivenSource[101X
   
-  [33X[1;0Y[29X[2XEvaluationMorphismWithGivenSource[102X( [3Xarg[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XEvaluationMorphismWithGivenSource[102X( [3Xarg1[103X, [3Xarg2[103X, [3Xarg3[103X ) [32X operation[133X
   
   [33X[0;0YThis is a synonym for [10XClosedMonoidalLeftEvaluationMorphismWithGivenSource[110X.[133X
   
-  [1X5.1-9 InternalCoHomToTensorProductAdjunctionMap[101X
+  [1X5.2-3 InternalCoHomToTensorProductAdjunctionMap[101X
   
   [33X[1;0Y[29X[2XInternalCoHomToTensorProductAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
   
   [33X[0;0YThis is a synonym for [10XInternalCoHomToTensorProductLeftAdjunctionMap[110X.[133X
   
-  [1X5.1-10 InternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct[101X
+  [1X5.2-4 InternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct[101X
   
   [33X[1;0Y[29X[2XInternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct[102X( [3Xarg[103X ) [32X operation[133X
   
   [33X[0;0YThis               is               a               synonym              for
   [10XInternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct[110X.[133X
   
-  [1X5.1-11 InternalHomToTensorProductAdjunctionMap[101X
+  [1X5.2-5 InternalHomToTensorProductAdjunctionMap[101X
   
   [33X[1;0Y[29X[2XInternalHomToTensorProductAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
   
   [33X[0;0YThis is a synonym for [10XInternalHomToTensorProductLeftAdjunctionMap[110X.[133X
   
-  [1X5.1-12 InternalHomToTensorProductAdjunctionMapWithGivenTensorProduct[101X
+  [1X5.2-6 InternalHomToTensorProductAdjunctionMapWithGivenTensorProduct[101X
   
   [33X[1;0Y[29X[2XInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct[102X( [3Xarg[103X ) [32X operation[133X
   
   [33X[0;0YThis               is               a               synonym              for
   [10XInternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct[110X.[133X
   
-  [1X5.1-13 TensorProductToInternalCoHomAdjunctionMap[101X
+  [1X5.2-7 TensorProductToInternalCoHomAdjunctionMap[101X
   
   [33X[1;0Y[29X[2XTensorProductToInternalCoHomAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
   
   [33X[0;0YThis is a synonym for [10XTensorProductToInternalCoHomLeftAdjunctionMap[110X.[133X
   
-  [1X5.1-14 TensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom[101X
+  [1X5.2-8 TensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom[101X
   
   [33X[1;0Y[29X[2XTensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom[102X( [3Xarg[103X ) [32X operation[133X
   
   [33X[0;0YThis               is               a               synonym              for
   [10XTensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom[110X.[133X
   
-  [1X5.1-15 TensorProductToInternalHomAdjunctionMap[101X
+  [1X5.2-9 TensorProductToInternalHomAdjunctionMap[101X
   
   [33X[1;0Y[29X[2XTensorProductToInternalHomAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
   
   [33X[0;0YThis is a synonym for [10XTensorProductToInternalHomLeftAdjunctionMap[110X.[133X
   
-  [1X5.1-16 TensorProductToInternalHomAdjunctionMapWithGivenInternalHom[101X
+  [1X5.2-10 TensorProductToInternalHomAdjunctionMapWithGivenInternalHom[101X
   
   [33X[1;0Y[29X[2XTensorProductToInternalHomAdjunctionMapWithGivenInternalHom[102X( [3Xarg[103X ) [32X operation[133X
   

@@ -404,22 +404,22 @@
   [1X1.5-6 LeftClosedMonoidalCoevaluationMorphism[101X
   
   [33X[1;0Y[29X[2XLeftClosedMonoidalCoevaluationMorphism[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya  morphism in [23X\mathrm{Hom}( a, \mathrm{\underline{Hom}_\ell}(b, a
-            \otimes b) )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya  morphism in [23X\mathrm{Hom}( b, \mathrm{\underline{Hom}_\ell}(a, b
+            \otimes a) )[123X.[133X
   
   [33X[0;0YThe  arguments  are two objects [23Xa,b[123X. The output is the coevaluation morphism
-  [23X\mathrm{coev}_{a,b}:   a   \rightarrow   \mathrm{\underline{Hom}_\ell}(b,  a
-  \otimes b)[123X, i.e., the unit of the tensor hom adjunction.[133X
+  [23X\mathrm{coev}_{a,b}:   b   \rightarrow   \mathrm{\underline{Hom}_\ell}(a,  b
+  \otimes a)[123X, i.e., the unit of the tensor hom adjunction.[133X
   
   [1X1.5-7 LeftClosedMonoidalCoevaluationMorphismWithGivenRange[101X
   
   [33X[1;0Y[29X[2XLeftClosedMonoidalCoevaluationMorphismWithGivenRange[102X( [3Xa[103X, [3Xb[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, r )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( b, r )[123X.[133X
   
   [33X[0;0YThe    arguments    are    two    objects    [23Xa,b[123X   and   an   object   [23Xr   =
-  \mathrm{\underline{Hom}_\ell}(b,   a   \otimes   b)[123X.   The   output  is  the
-  coevaluation      morphism      [23X\mathrm{coev}_{a,b}:      a      \rightarrow
-  \mathrm{\underline{Hom}_\ell}(b,  a \otimes b)[123X, i.e., the unit of the tensor
+  \mathrm{\underline{Hom}_\ell}(a,   b   \otimes   a)[123X.   The   output  is  the
+  coevaluation      morphism      [23X\mathrm{coev}_{a,b}:      b      \rightarrow
+  \mathrm{\underline{Hom}_\ell}(a,  b \otimes a)[123X, i.e., the unit of the tensor
   hom adjunction.[133X
   
   [1X1.5-8 TensorProductToLeftInternalHomAdjunctionMap[101X
@@ -789,22 +789,22 @@
   [1X1.6-6 ClosedMonoidalLeftCoevaluationMorphism[101X
   
   [33X[1;0Y[29X[2XClosedMonoidalLeftCoevaluationMorphism[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}(  a,  \mathrm{\underline{Hom}}(b,  a
-            \otimes b) )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}(  b,  \mathrm{\underline{Hom}}(a,  b
+            \otimes a) )[123X.[133X
   
   [33X[0;0YThe  arguments  are two objects [23Xa,b[123X. The output is the coevaluation morphism
-  [23X\mathrm{coev}_{a,b}: a \rightarrow \mathrm{\underline{Hom}}(b, a \otimes b)[123X,
+  [23X\mathrm{coev}_{a,b}: b \rightarrow \mathrm{\underline{Hom}}(a, b \otimes a)[123X,
   i.e., the unit of the tensor hom adjunction.[133X
   
   [1X1.6-7 ClosedMonoidalLeftCoevaluationMorphismWithGivenRange[101X
   
   [33X[1;0Y[29X[2XClosedMonoidalLeftCoevaluationMorphismWithGivenRange[102X( [3Xa[103X, [3Xb[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, r )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( b, r )[123X.[133X
   
   [33X[0;0YThe    arguments    are    two    objects    [23Xa,b[123X   and   an   object   [23Xr   =
-  \mathrm{\underline{Hom}}(b,  a  \otimes  b)[123X.  The output is the coevaluation
-  morphism  [23X\mathrm{coev}_{a,b}:  a  \rightarrow \mathrm{\underline{Hom}}(b, a
-  \otimes b)[123X, i.e., the unit of the tensor hom adjunction.[133X
+  \mathrm{\underline{Hom}}(a,  b  \otimes  a)[123X.  The output is the coevaluation
+  morphism  [23X\mathrm{coev}_{a,b}:  b  \rightarrow \mathrm{\underline{Hom}}(a, b
+  \otimes a)[123X, i.e., the unit of the tensor hom adjunction.[133X
   
   [1X1.6-8 TensorProductToInternalHomLeftAdjunctionMap[101X
   
@@ -1143,44 +1143,44 @@
   [1X1.7-4 LeftCoclosedMonoidalEvaluationMorphism[101X
   
   [33X[1;0Y[29X[2XLeftCoclosedMonoidalEvaluationMorphism[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya          morphism          in          [23X\mathrm{Hom}(          a,
-            \mathrm{\underline{coHom}_\ell}(a,b) \otimes b )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya          morphism          in          [23X\mathrm{Hom}(          b,
+            \mathrm{\underline{coHom}_\ell}(b,a) \otimes a )[123X.[133X
   
   [33X[0;0YThe  arguments  are  two objects [23Xa, b[123X. The output is the coclosed evaluation
-  morphism            [23X\mathrm{coclev}_{a,b}:           a           \rightarrow
-  \mathrm{\underline{coHom}_\ell}(a,b)  \otimes b[123X, i.e., the unit of the cohom
+  morphism            [23X\mathrm{coclev}_{a,b}:           b           \rightarrow
+  \mathrm{\underline{coHom}_\ell}(b,a)  \otimes a[123X, i.e., the unit of the cohom
   tensor adjunction.[133X
   
   [1X1.7-5 LeftCoclosedMonoidalEvaluationMorphismWithGivenRange[101X
   
   [33X[1;0Y[29X[2XLeftCoclosedMonoidalEvaluationMorphismWithGivenRange[102X( [3Xa[103X, [3Xb[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, r )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( b, r )[123X.[133X
   
   [33X[0;0YThe    arguments    are    two    objects    [23Xa,b[123X   and   an   object   [23Xr   =
-  \mathrm{\underline{coHom}_\ell}(a,b)  \otimes  b[123X. The output is the coclosed
-  evaluation      morphism      [23X\mathrm{coclev}_{a,b}:      a      \rightarrow
-  \mathrm{\underline{coHom}_\ell}(a,b)  \otimes b[123X, i.e., the unit of the cohom
+  \mathrm{\underline{coHom}_\ell}(b,a)  \otimes  a[123X. The output is the coclosed
+  evaluation      morphism      [23X\mathrm{coclev}_{a,b}:      b      \rightarrow
+  \mathrm{\underline{coHom}_\ell}(b,a)  \otimes a[123X, i.e., the unit of the cohom
   tensor adjunction.[133X
   
   [1X1.7-6 LeftCoclosedMonoidalCoevaluationMorphism[101X
   
   [33X[1;0Y[29X[2XLeftCoclosedMonoidalCoevaluationMorphism[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya   morphism  in  [23X\mathrm{Hom}(  \mathrm{\underline{coHom}_\ell}(a
-            \otimes b, b), a )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya   morphism  in  [23X\mathrm{Hom}(  \mathrm{\underline{coHom}_\ell}(b
+            \otimes a, a), b )[123X.[133X
   
   [33X[0;0YThe  arguments  are two objects [23Xa,b[123X. The output is the coclosed coevaluation
-  morphism  [23X\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}_\ell}(a \otimes
-  b, b) \rightarrow a[123X, i.e., the counit of the cohom tensor adjunction.[133X
+  morphism  [23X\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}_\ell}(b \otimes
+  a, a) \rightarrow b[123X, i.e., the counit of the cohom tensor adjunction.[133X
   
   [1X1.7-7 LeftCoclosedMonoidalCoevaluationMorphismWithGivenSource[101X
   
   [33X[1;0Y[29X[2XLeftCoclosedMonoidalCoevaluationMorphismWithGivenSource[102X( [3Xa[103X, [3Xb[103X, [3Xs[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, a )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, b )[123X.[133X
   
   [33X[0;0YThe    arguments    are    two    objects    [23Xa,b[123X   and   an   object   [23Xs   =
-  \mathrm{\underline{coHom}_\ell}(a  \otimes b, b)[123X. The output is the coclosed
+  \mathrm{\underline{coHom}_\ell}(b  \otimes a, a)[123X. The output is the coclosed
   coevaluation                morphism                [23X\mathrm{coclcoev}_{a,b}:
-  \mathrm{\underline{coHom}_\ell}(a  \otimes  b,  b)  \rightarrow a[123X, i.e., the
+  \mathrm{\underline{coHom}_\ell}(b  \otimes  a,  a)  \rightarrow b[123X, i.e., the
   unit of the cohom tensor adjunction.[133X
   
   [1X1.7-8 TensorProductToLeftInternalCoHomAdjunctionMap[101X
@@ -1533,44 +1533,44 @@
   [1X1.8-4 CoclosedMonoidalLeftEvaluationMorphism[101X
   
   [33X[1;0Y[29X[2XCoclosedMonoidalLeftEvaluationMorphism[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}(  a, \mathrm{\underline{coHom}}(a,b)
-            \otimes b )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}(  b, \mathrm{\underline{coHom}}(b,a)
+            \otimes a )[123X.[133X
   
   [33X[0;0YThe  arguments  are  two objects [23Xa, b[123X. The output is the coclosed evaluation
-  morphism            [23X\mathrm{coclev}_{a,b}:           a           \rightarrow
-  \mathrm{\underline{coHom}}(a,b)  \otimes  b[123X,  i.e.,  the  unit  of the cohom
+  morphism            [23X\mathrm{coclev}_{a,b}:           b           \rightarrow
+  \mathrm{\underline{coHom}}(b,a)  \otimes  a[123X,  i.e.,  the  unit  of the cohom
   tensor adjunction.[133X
   
   [1X1.8-5 CoclosedMonoidalLeftEvaluationMorphismWithGivenRange[101X
   
   [33X[1;0Y[29X[2XCoclosedMonoidalLeftEvaluationMorphismWithGivenRange[102X( [3Xa[103X, [3Xb[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, r )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( b, r )[123X.[133X
   
   [33X[0;0YThe    arguments    are    two    objects    [23Xa,b[123X   and   an   object   [23Xr   =
-  \mathrm{\underline{coHom}}(a,b)  \otimes  b[123X.  The  output  is  the  coclosed
-  evaluation      morphism      [23X\mathrm{coclev}_{a,b}:      a      \rightarrow
-  \mathrm{\underline{coHom}}(a,b)  \otimes  b[123X,  i.e.,  the  unit  of the cohom
+  \mathrm{\underline{coHom}}(b,a)  \otimes  a[123X.  The  output  is  the  coclosed
+  evaluation      morphism      [23X\mathrm{coclev}_{a,b}:      b      \rightarrow
+  \mathrm{\underline{coHom}}(b,a)  \otimes  a[123X,  i.e.,  the  unit  of the cohom
   tensor adjunction.[133X
   
   [1X1.8-6 CoclosedMonoidalLeftCoevaluationMorphism[101X
   
   [33X[1;0Y[29X[2XCoclosedMonoidalLeftCoevaluationMorphism[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya  morphism  in [23X\mathrm{Hom}( \mathrm{\underline{coHom}}(a \otimes
-            b, b), a )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya  morphism  in [23X\mathrm{Hom}( \mathrm{\underline{coHom}}(b \otimes
+            a, a), b )[123X.[133X
   
   [33X[0;0YThe  arguments  are two objects [23Xa,b[123X. The output is the coclosed coevaluation
-  morphism [23X\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}}(a \otimes b, b)
-  \rightarrow a[123X, i.e., the counit of the cohom tensor adjunction.[133X
+  morphism [23X\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}}(b \otimes a, a)
+  \rightarrow b[123X, i.e., the counit of the cohom tensor adjunction.[133X
   
   [1X1.8-7 CoclosedMonoidalLeftCoevaluationMorphismWithGivenSource[101X
   
   [33X[1;0Y[29X[2XCoclosedMonoidalLeftCoevaluationMorphismWithGivenSource[102X( [3Xa[103X, [3Xb[103X, [3Xs[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, a )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, b )[123X.[133X
   
   [33X[0;0YThe    arguments    are    two    objects    [23Xa,b[123X   and   an   object   [23Xs   =
-  \mathrm{\underline{coHom}}(a  \otimes  b,  b)[123X.  The  output  is the coclosed
-  coevaluation  morphism [23X\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}}(a
-  \otimes b, b) \rightarrow a[123X, i.e., the unit of the cohom tensor adjunction.[133X
+  \mathrm{\underline{coHom}}(b  \otimes  a,  a)[123X.  The  output  is the coclosed
+  coevaluation  morphism [23X\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}}(b
+  \otimes a, a) \rightarrow b[123X, i.e., the unit of the cohom tensor adjunction.[133X
   
   [1X1.8-8 TensorProductToInternalCoHomLeftAdjunctionMap[101X
   

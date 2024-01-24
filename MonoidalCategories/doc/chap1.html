@@ -890,18 +890,18 @@
 <h5>1.5-6 LeftClosedMonoidalCoevaluationMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftClosedMonoidalCoevaluationMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, \mathrm{\underline{Hom}_\ell}(b, a \otimes b) )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( b, \mathrm{\underline{Hom}_\ell}(a, b \otimes a) )</span>.</p>
 
-<p>The arguments are two objects <span class="Math">a,b</span>. The output is the coevaluation morphism <span class="Math">\mathrm{coev}_{a,b}: a \rightarrow \mathrm{\underline{Hom}_\ell}(b, a \otimes b)</span>, i.e., the unit of the tensor hom adjunction.</p>
+<p>The arguments are two objects <span class="Math">a,b</span>. The output is the coevaluation morphism <span class="Math">\mathrm{coev}_{a,b}: b \rightarrow \mathrm{\underline{Hom}_\ell}(a, b \otimes a)</span>, i.e., the unit of the tensor hom adjunction.</p>
 
 <p><a id="X7BC7F1497A00E87A" name="X7BC7F1497A00E87A"></a></p>
 
 <h5>1.5-7 LeftClosedMonoidalCoevaluationMorphismWithGivenRange</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftClosedMonoidalCoevaluationMorphismWithGivenRange</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, r )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( b, r )</span>.</p>
 
-<p>The arguments are two objects <span class="Math">a,b</span> and an object <span class="Math">r = \mathrm{\underline{Hom}_\ell}(b, a \otimes b)</span>. The output is the coevaluation morphism <span class="Math">\mathrm{coev}_{a,b}: a \rightarrow \mathrm{\underline{Hom}_\ell}(b, a \otimes b)</span>, i.e., the unit of the tensor hom adjunction.</p>
+<p>The arguments are two objects <span class="Math">a,b</span> and an object <span class="Math">r = \mathrm{\underline{Hom}_\ell}(a, b \otimes a)</span>. The output is the coevaluation morphism <span class="Math">\mathrm{coev}_{a,b}: b \rightarrow \mathrm{\underline{Hom}_\ell}(a, b \otimes a)</span>, i.e., the unit of the tensor hom adjunction.</p>
 
 <p><a id="X86FF779687E83A1E" name="X86FF779687E83A1E"></a></p>
 
@@ -1233,18 +1233,18 @@
 <h5>1.6-6 ClosedMonoidalLeftCoevaluationMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ClosedMonoidalLeftCoevaluationMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, \mathrm{\underline{Hom}}(b, a \otimes b) )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( b, \mathrm{\underline{Hom}}(a, b \otimes a) )</span>.</p>
 
-<p>The arguments are two objects <span class="Math">a,b</span>. The output is the coevaluation morphism <span class="Math">\mathrm{coev}_{a,b}: a \rightarrow \mathrm{\underline{Hom}}(b, a \otimes b)</span>, i.e., the unit of the tensor hom adjunction.</p>
+<p>The arguments are two objects <span class="Math">a,b</span>. The output is the coevaluation morphism <span class="Math">\mathrm{coev}_{a,b}: b \rightarrow \mathrm{\underline{Hom}}(a, b \otimes a)</span>, i.e., the unit of the tensor hom adjunction.</p>
 
 <p><a id="X8196CE5D7C88D83C" name="X8196CE5D7C88D83C"></a></p>
 
 <h5>1.6-7 ClosedMonoidalLeftCoevaluationMorphismWithGivenRange</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ClosedMonoidalLeftCoevaluationMorphismWithGivenRange</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, r )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( b, r )</span>.</p>
 
-<p>The arguments are two objects <span class="Math">a,b</span> and an object <span class="Math">r = \mathrm{\underline{Hom}}(b, a \otimes b)</span>. The output is the coevaluation morphism <span class="Math">\mathrm{coev}_{a,b}: a \rightarrow \mathrm{\underline{Hom}}(b, a \otimes b)</span>, i.e., the unit of the tensor hom adjunction.</p>
+<p>The arguments are two objects <span class="Math">a,b</span> and an object <span class="Math">r = \mathrm{\underline{Hom}}(a, b \otimes a)</span>. The output is the coevaluation morphism <span class="Math">\mathrm{coev}_{a,b}: b \rightarrow \mathrm{\underline{Hom}}(a, b \otimes a)</span>, i.e., the unit of the tensor hom adjunction.</p>
 
 <p><a id="X7DB29AD17E80058E" name="X7DB29AD17E80058E"></a></p>
 
@@ -1558,36 +1558,36 @@
 <h5>1.7-4 LeftCoclosedMonoidalEvaluationMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftCoclosedMonoidalEvaluationMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, \mathrm{\underline{coHom}_\ell}(a,b) \otimes b )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( b, \mathrm{\underline{coHom}_\ell}(b,a) \otimes a )</span>.</p>
 
-<p>The arguments are two objects <span class="Math">a, b</span>. The output is the coclosed evaluation morphism <span class="Math">\mathrm{coclev}_{a,b}: a \rightarrow \mathrm{\underline{coHom}_\ell}(a,b) \otimes b</span>, i.e., the unit of the cohom tensor adjunction.</p>
+<p>The arguments are two objects <span class="Math">a, b</span>. The output is the coclosed evaluation morphism <span class="Math">\mathrm{coclev}_{a,b}: b \rightarrow \mathrm{\underline{coHom}_\ell}(b,a) \otimes a</span>, i.e., the unit of the cohom tensor adjunction.</p>
 
 <p><a id="X7E5607B1789E00B7" name="X7E5607B1789E00B7"></a></p>
 
 <h5>1.7-5 LeftCoclosedMonoidalEvaluationMorphismWithGivenRange</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftCoclosedMonoidalEvaluationMorphismWithGivenRange</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, r )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( b, r )</span>.</p>
 
-<p>The arguments are two objects <span class="Math">a,b</span> and an object <span class="Math">r = \mathrm{\underline{coHom}_\ell}(a,b) \otimes b</span>. The output is the coclosed evaluation morphism <span class="Math">\mathrm{coclev}_{a,b}: a \rightarrow \mathrm{\underline{coHom}_\ell}(a,b) \otimes b</span>, i.e., the unit of the cohom tensor adjunction.</p>
+<p>The arguments are two objects <span class="Math">a,b</span> and an object <span class="Math">r = \mathrm{\underline{coHom}_\ell}(b,a) \otimes a</span>. The output is the coclosed evaluation morphism <span class="Math">\mathrm{coclev}_{a,b}: b \rightarrow \mathrm{\underline{coHom}_\ell}(b,a) \otimes a</span>, i.e., the unit of the cohom tensor adjunction.</p>
 
 <p><a id="X81A249CE84828A9D" name="X81A249CE84828A9D"></a></p>
 
 <h5>1.7-6 LeftCoclosedMonoidalCoevaluationMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftCoclosedMonoidalCoevaluationMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{coHom}_\ell}(a \otimes b, b), a )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{coHom}_\ell}(b \otimes a, a), b )</span>.</p>
 
-<p>The arguments are two objects <span class="Math">a,b</span>. The output is the coclosed coevaluation morphism <span class="Math">\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}_\ell}(a \otimes b, b) \rightarrow a</span>, i.e., the counit of the cohom tensor adjunction.</p>
+<p>The arguments are two objects <span class="Math">a,b</span>. The output is the coclosed coevaluation morphism <span class="Math">\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}_\ell}(b \otimes a, a) \rightarrow b</span>, i.e., the counit of the cohom tensor adjunction.</p>
 
 <p><a id="X7D1018A284F21140" name="X7D1018A284F21140"></a></p>
 
 <h5>1.7-7 LeftCoclosedMonoidalCoevaluationMorphismWithGivenSource</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftCoclosedMonoidalCoevaluationMorphismWithGivenSource</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, a )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, b )</span>.</p>
 
-<p>The arguments are two objects <span class="Math">a,b</span> and an object <span class="Math">s = \mathrm{\underline{coHom}_\ell}(a \otimes b, b)</span>. The output is the coclosed coevaluation morphism <span class="Math">\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}_\ell}(a \otimes b, b) \rightarrow a</span>, i.e., the unit of the cohom tensor adjunction.</p>
+<p>The arguments are two objects <span class="Math">a,b</span> and an object <span class="Math">s = \mathrm{\underline{coHom}_\ell}(b \otimes a, a)</span>. The output is the coclosed coevaluation morphism <span class="Math">\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}_\ell}(b \otimes a, a) \rightarrow b</span>, i.e., the unit of the cohom tensor adjunction.</p>
 
 <p><a id="X7C8C473F85513477" name="X7C8C473F85513477"></a></p>
 
@@ -1901,36 +1901,36 @@
 <h5>1.8-4 CoclosedMonoidalLeftEvaluationMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoclosedMonoidalLeftEvaluationMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, \mathrm{\underline{coHom}}(a,b) \otimes b )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( b, \mathrm{\underline{coHom}}(b,a) \otimes a )</span>.</p>
 
-<p>The arguments are two objects <span class="Math">a, b</span>. The output is the coclosed evaluation morphism <span class="Math">\mathrm{coclev}_{a,b}: a \rightarrow \mathrm{\underline{coHom}}(a,b) \otimes b</span>, i.e., the unit of the cohom tensor adjunction.</p>
+<p>The arguments are two objects <span class="Math">a, b</span>. The output is the coclosed evaluation morphism <span class="Math">\mathrm{coclev}_{a,b}: b \rightarrow \mathrm{\underline{coHom}}(b,a) \otimes a</span>, i.e., the unit of the cohom tensor adjunction.</p>
 
 <p><a id="X7A1801D77EECEA29" name="X7A1801D77EECEA29"></a></p>
 
 <h5>1.8-5 CoclosedMonoidalLeftEvaluationMorphismWithGivenRange</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoclosedMonoidalLeftEvaluationMorphismWithGivenRange</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, r )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( b, r )</span>.</p>
 
-<p>The arguments are two objects <span class="Math">a,b</span> and an object <span class="Math">r = \mathrm{\underline{coHom}}(a,b) \otimes b</span>. The output is the coclosed evaluation morphism <span class="Math">\mathrm{coclev}_{a,b}: a \rightarrow \mathrm{\underline{coHom}}(a,b) \otimes b</span>, i.e., the unit of the cohom tensor adjunction.</p>
+<p>The arguments are two objects <span class="Math">a,b</span> and an object <span class="Math">r = \mathrm{\underline{coHom}}(b,a) \otimes a</span>. The output is the coclosed evaluation morphism <span class="Math">\mathrm{coclev}_{a,b}: b \rightarrow \mathrm{\underline{coHom}}(b,a) \otimes a</span>, i.e., the unit of the cohom tensor adjunction.</p>
 
 <p><a id="X7D6905F582F06003" name="X7D6905F582F06003"></a></p>
 
 <h5>1.8-6 CoclosedMonoidalLeftCoevaluationMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoclosedMonoidalLeftCoevaluationMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{coHom}}(a \otimes b, b), a )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{coHom}}(b \otimes a, a), b )</span>.</p>
 
-<p>The arguments are two objects <span class="Math">a,b</span>. The output is the coclosed coevaluation morphism <span class="Math">\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}}(a \otimes b, b) \rightarrow a</span>, i.e., the counit of the cohom tensor adjunction.</p>
+<p>The arguments are two objects <span class="Math">a,b</span>. The output is the coclosed coevaluation morphism <span class="Math">\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}}(b \otimes a, a) \rightarrow b</span>, i.e., the counit of the cohom tensor adjunction.</p>
 
 <p><a id="X802A3FC48280FBDE" name="X802A3FC48280FBDE"></a></p>
 
 <h5>1.8-7 CoclosedMonoidalLeftCoevaluationMorphismWithGivenSource</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoclosedMonoidalLeftCoevaluationMorphismWithGivenSource</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, a )</span>.</p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, b )</span>.</p>
 
-<p>The arguments are two objects <span class="Math">a,b</span> and an object <span class="Math">s = \mathrm{\underline{coHom}}(a \otimes b, b)</span>. The output is the coclosed coevaluation morphism <span class="Math">\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}}(a \otimes b, b) \rightarrow a</span>, i.e., the unit of the cohom tensor adjunction.</p>
+<p>The arguments are two objects <span class="Math">a,b</span> and an object <span class="Math">s = \mathrm{\underline{coHom}}(b \otimes a, a)</span>. The output is the coclosed coevaluation morphism <span class="Math">\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}}(b \otimes a, a) \rightarrow b</span>, i.e., the unit of the cohom tensor adjunction.</p>
 
 <p><a id="X8611EC2A7AAB307C" name="X8611EC2A7AAB307C"></a></p>
 
