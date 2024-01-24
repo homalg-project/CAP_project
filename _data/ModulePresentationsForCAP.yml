@@ -1,7 +1,7 @@
 name: ModulePresentationsForCAP
-version: "2024.01-03"
+version: "2024.01-04"
 license: "GPL-2.0-or-later"
-date: 2024-01-22
+date: 2024-01-24
 description: |
     Category R-pres for CAP
 
@@ -31,7 +31,7 @@ needed-pkgs:
       version: ">= 2023.05-03"
       url: "https://homalg-project.github.io/pkg/CAP"
     - name: "MonoidalCategories"
-      version: ">= 2024.01-06"
+      version: ">= 2024.01-08"
       url: "https://homalg-project.github.io/pkg/MonoidalCategories"
 
 suggested-pkgs:
@@ -48,11 +48,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/ModulePresentationsFor
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2024.01-03/ModulePresentationsForCAP-2024.01-03.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2024.01-04/ModulePresentationsForCAP-2024.01-04.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2024.01-03/ModulePresentationsForCAP-2024.01-03.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2024.01-04/ModulePresentationsForCAP-2024.01-04.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2024.01-03/ModulePresentationsForCAP-2024.01-03-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2024.01-04/ModulePresentationsForCAP-2024.01-04-manual.pdf
 
 abstract: |
     <span class="pkgname">ModulePresentationsForCAP</span> provides the category of finitely presented modules over a computable ring.
@@ -62,28 +62,28 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>GPZ22</span>]   <b class='BibAuthor'>Gutsche, S., Posur, S. and Zickgraf, F.</b>,
+    [<span class='BibKey'>GPZ24</span>]   <b class='BibAuthor'>Gutsche, S., Posur, S. and Zickgraf, F.</b>,
      <i class='BibTitle'>ModulePresentationsForCAP, Category R-pres for CAP,
-             Version 2024.01-03</i>
-     (<span class='BibYear'>1-22</span>)<br />
+             Version 2024.01-04</i>
+     (<span class='BibYear'>1-24</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/ModulePresentationsForCAP">https://homalg-project.github.io/pkg/ModulePresentationsForCAP</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ ModulePresentationsForCAP2024.01-03,
+    @misc{ ModulePresentationsForCAP2024.01-04,
       author =           {Gutsche, S. and Posur, S. and Zickgraf, F.},
       title =            {{ModulePresentationsForCAP},  Category R-pres for CAP,
-                          {V}ersion 2024.01-03},
+                          {V}ersion 2024.01-04},
       month =            {4-},
-      year =             {1-22},
+      year =             {1-24},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/ModulePresentationsForCAP}
                           {\texttt{https://homalg-project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{ModulePresentationsForCAP}}},
-      printedkey =       {GPZ22}
+      printedkey =       {GPZ24}
     }
 
