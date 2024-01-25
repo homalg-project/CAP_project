@@ -16,7 +16,7 @@ AddDerivationToCAP( DirectProductToExponentialLeftAdjunctionMap,
                       [ IdentityMorphism, 1 ] ],
                     
   function( cat, a, b, f )
-
+    
     # f: a × b → c
     #
     #      a
@@ -28,7 +28,7 @@ AddDerivationToCAP( DirectProductToExponentialLeftAdjunctionMap,
     #      | Exp(id_b, f)
     #      v
     #   Exp(b,c)
-
+    
     return PreCompose( cat,
              CartesianLeftCoevaluationMorphism( cat, b, a ),
              ExponentialOnMorphisms( cat, IdentityMorphism( cat, b ), f ) );
@@ -75,7 +75,7 @@ AddDerivationToCAP( ExponentialToDirectProductLeftAdjunctionMap,
                       [ CartesianLeftEvaluationMorphism, 1 ] ],
                     
   function( cat, b, c, g )
-
+    
     # g: a → Exp(b,c)
     #
     #    a × b
@@ -87,7 +87,7 @@ AddDerivationToCAP( ExponentialToDirectProductLeftAdjunctionMap,
     #      | ev_bc
     #      v
     #      c
-
+    
     return PreCompose( cat,
              DirectProductOnMorphisms( cat, g, IdentityMorphism( cat, b ) ),
              CartesianLeftEvaluationMorphism( cat, b, c ) );
@@ -116,7 +116,7 @@ AddDerivationToCAP( ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectPr
     #      | ev_bc
     #      v
     #      c
-     
+    
     ev_bc := CartesianLeftEvaluationMorphism( cat, b, c );
      
     return PreCompose( cat,

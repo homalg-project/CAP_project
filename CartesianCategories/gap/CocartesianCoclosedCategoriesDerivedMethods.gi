@@ -28,7 +28,7 @@ AddDerivationToCAP( CoproductToCoexponentialLeftAdjunctionMap,
     #        | cocacoev_bc
     #        v
     #        c
-
+    
     return PreCompose( cat,
              CoexponentialOnMorphisms( cat, g, IdentityMorphism( cat, b ) ),
              CocartesianLeftCoevaluationMorphism( cat, b, c ) );

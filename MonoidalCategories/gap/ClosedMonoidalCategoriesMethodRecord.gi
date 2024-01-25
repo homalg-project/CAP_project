@@ -143,7 +143,7 @@ InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct := rec(
   output_range_getter_string := "c",
   output_range_getter_preconditions := [ ],
   dual_operation := "InternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct",
-  dual_preprocessor_func := { cat, a, b, g, t } -> NTuple( 4, Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( g ),Opposite( t ) ),
+  dual_preprocessor_func := { cat, a, b, g, t } -> NTuple( 4, Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( g ), Opposite( t ) ),
   dual_arguments_reversed := false,
 ),
 

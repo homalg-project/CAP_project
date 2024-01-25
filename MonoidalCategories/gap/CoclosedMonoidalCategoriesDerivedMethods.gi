@@ -25,7 +25,7 @@ AddDerivationToCAP( TensorProductToInternalCoHomLeftAdjunctionMap,
     #        | coclcoev_bc
     #        v
     #        c
-
+    
     return PreCompose( cat,
              InternalCoHomOnMorphisms( cat, g, IdentityMorphism( cat, b ) ),
              CoclosedMonoidalLeftCoevaluationMorphism( cat, b, c ) );

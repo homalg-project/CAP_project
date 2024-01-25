@@ -13,7 +13,7 @@ AddDerivationToCAP( TensorProductToInternalHomLeftAdjunctionMap,
                       [ IdentityMorphism, 1 ] ],
                     
   function( cat, a, b, f )
-
+    
     # f: a ⊗ b → c
     #
     #      a
@@ -25,7 +25,7 @@ AddDerivationToCAP( TensorProductToInternalHomLeftAdjunctionMap,
     #      | Hom(id_b, f)
     #      v
     #   Hom(b,c)
-
+    
     return PreCompose( cat,
              ClosedMonoidalLeftCoevaluationMorphism( cat, b, a ),
              InternalHomOnMorphisms( cat, IdentityMorphism( cat, b ), f ) );
@@ -72,7 +72,7 @@ AddDerivationToCAP( InternalHomToTensorProductLeftAdjunctionMap,
                       [ ClosedMonoidalLeftEvaluationMorphism, 1 ] ],
                     
   function( cat, b, c, g )
-
+    
     # g: a → Hom(b,c)
     #
     #    a ⊗ b
@@ -84,7 +84,7 @@ AddDerivationToCAP( InternalHomToTensorProductLeftAdjunctionMap,
     #      | ev_bc
     #      v
     #      c
-
+    
     return PreCompose( cat,
              TensorProductOnMorphisms( cat, g, IdentityMorphism( cat, b ) ),
              ClosedMonoidalLeftEvaluationMorphism( cat, b, c ) );
@@ -113,7 +113,7 @@ AddDerivationToCAP( InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorPr
     #      | ev_bc
     #      v
     #      c
-     
+    
     ev_bc := ClosedMonoidalLeftEvaluationMorphism( cat, b, c );
      
     return PreCompose( cat,
