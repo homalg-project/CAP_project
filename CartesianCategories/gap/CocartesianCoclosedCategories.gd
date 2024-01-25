@@ -89,38 +89,38 @@ DeclareOperation( "CocartesianLeftCoevaluationMorphismWithGivenSource",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are two objects $c,b$ and a morphism $g: a \rightarrow c \sqcup b$.
-#! The output is a morphism $f: \mathrm{Coexponential}(a,b) \rightarrow c$
+#! The arguments are two objects $b,c$ and a morphism $g: a \rightarrow b \sqcup c$.
+#! The output is a morphism $f: \mathrm{Coexponential}(a,c) \rightarrow b$
 #! corresponding to $g$ under the coexponential-coproduct adjunction.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Coexponential}(a,b), c )$.
-#! @Arguments c, b, g
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Coexponential}(a,c), b )$.
+#! @Arguments b, c, g
 DeclareOperation( "CoproductToCoexponentialLeftAdjunctionMap",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
-#! The arguments are two objects $c,b$, a morphism $g: a \rightarrow c \sqcup b$ and an object $i = \mathrm{Coexponential}(a,b)$.
-#! The output is a morphism $f: \mathrm{Coexponential}(a,b) \rightarrow c$
+#! The arguments are two objects $b,c$, a morphism $g: a \rightarrow b \sqcup c$ and an object $i = \mathrm{Coexponential}(a,c)$.
+#! The output is a morphism $f: \mathrm{Coexponential}(a,c) \rightarrow b$
 #! corresponding to $g$ under the coexponential-coproduct adjunction.
-#! @Returns a morphism in $\mathrm{Hom}( i, c )$.
-#! @Arguments c, b, g, i
+#! @Returns a morphism in $\mathrm{Hom}( i, b )$.
+#! @Arguments b, c, g, i
 DeclareOperation( "CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are two objects $a,b$ and a morphism $f: \mathrm{Coexponential}(a,b) \rightarrow c$.
-#! The output is a morphism $g: a \rightarrow c \sqcup b$ corresponding to $f$ under the
+#! The arguments are two objects $a,c$ and a morphism $f: \mathrm{Coexponential}(a,c) \rightarrow b$.
+#! The output is a morphism $g: a \rightarrow b \sqcup c$ corresponding to $f$ under the
 #! coexponential-coproduct adjunction.
-#! @Returns a morphism in $\mathrm{Hom}(a, c \sqcup b)$.
-#! @Arguments a, b, f
+#! @Returns a morphism in $\mathrm{Hom}(a, b \sqcup c)$.
+#! @Arguments a, c, f
 DeclareOperation( "CoexponentialToCoproductLeftAdjunctionMap",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
-#! The arguments are two objects $a,b$, a morphism $f: \mathrm{Coexponential}(a,b) \rightarrow c$ and an object $t = c \sqcup b$.
-#! The output is a morphism $g: a \rightarrow c \sqcup b$ corresponding to $f$ under the
+#! The arguments are two objects $a,c$, a morphism $f: \mathrm{Coexponential}(a,c) \rightarrow b$ and an object $t = b \sqcup c$.
+#! The output is a morphism $g: a \rightarrow b \sqcup c$ corresponding to $f$ under the
 #! coexponential-coproduct adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( a, t )$.
-#! @Arguments a, b, f, t
+#! @Arguments a, c, f, t
 DeclareOperation( "CoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 

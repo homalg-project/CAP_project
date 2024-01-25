@@ -431,7 +431,7 @@ DeclareOperation( "AddCoexponentialOnObjects",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `CoexponentialToCoproductLeftAdjunctionMap`.
-#! $F: ( a, b, f ) \mapsto \mathtt{CoexponentialToCoproductLeftAdjunctionMap}(a, b, f)$.
+#! $F: ( a, c, f ) \mapsto \mathtt{CoexponentialToCoproductLeftAdjunctionMap}(a, c, f)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddCoexponentialToCoproductLeftAdjunctionMap",
@@ -450,7 +450,7 @@ DeclareOperation( "AddCoexponentialToCoproductLeftAdjunctionMap",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `CoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct`.
-#! $F: ( a, b, f, t ) \mapsto \mathtt{CoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct}(a, b, f, t)$.
+#! $F: ( a, c, f, t ) \mapsto \mathtt{CoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct}(a, c, f, t)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddCoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct",
@@ -469,7 +469,7 @@ DeclareOperation( "AddCoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduc
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `CoproductToCoexponentialLeftAdjunctionMap`.
-#! $F: ( c, b, g ) \mapsto \mathtt{CoproductToCoexponentialLeftAdjunctionMap}(c, b, g)$.
+#! $F: ( b, c, g ) \mapsto \mathtt{CoproductToCoexponentialLeftAdjunctionMap}(b, c, g)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddCoproductToCoexponentialLeftAdjunctionMap",
@@ -488,7 +488,7 @@ DeclareOperation( "AddCoproductToCoexponentialLeftAdjunctionMap",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential`.
-#! $F: ( c, b, g, i ) \mapsto \mathtt{CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential}(c, b, g, i)$.
+#! $F: ( b, c, g, i ) \mapsto \mathtt{CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential}(b, c, g, i)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddCoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential",

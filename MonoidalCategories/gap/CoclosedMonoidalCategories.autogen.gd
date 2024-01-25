@@ -355,7 +355,7 @@ DeclareOperation( "AddInternalCoHomTensorProductCompatibilityMorphismWithGivenOb
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `InternalCoHomToTensorProductLeftAdjunctionMap`.
-#! $F: ( a, b, f ) \mapsto \mathtt{InternalCoHomToTensorProductLeftAdjunctionMap}(a, b, f)$.
+#! $F: ( a, c, f ) \mapsto \mathtt{InternalCoHomToTensorProductLeftAdjunctionMap}(a, c, f)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddInternalCoHomToTensorProductLeftAdjunctionMap",
@@ -374,7 +374,7 @@ DeclareOperation( "AddInternalCoHomToTensorProductLeftAdjunctionMap",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `InternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct`.
-#! $F: ( a, b, f, t ) \mapsto \mathtt{InternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct}(a, b, f, t)$.
+#! $F: ( a, c, f, t ) \mapsto \mathtt{InternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct}(a, c, f, t)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddInternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct",
@@ -659,7 +659,7 @@ DeclareOperation( "AddMorphismFromInternalCoHomToTensorProductWithGivenObjects",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `TensorProductToInternalCoHomLeftAdjunctionMap`.
-#! $F: ( c, b, g ) \mapsto \mathtt{TensorProductToInternalCoHomLeftAdjunctionMap}(c, b, g)$.
+#! $F: ( b, c, g ) \mapsto \mathtt{TensorProductToInternalCoHomLeftAdjunctionMap}(b, c, g)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddTensorProductToInternalCoHomLeftAdjunctionMap",
@@ -678,7 +678,7 @@ DeclareOperation( "AddTensorProductToInternalCoHomLeftAdjunctionMap",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom`.
-#! $F: ( c, b, g, i ) \mapsto \mathtt{TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom}(c, b, g, i)$.
+#! $F: ( b, c, g, i ) \mapsto \mathtt{TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom}(b, c, g, i)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddTensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom",
