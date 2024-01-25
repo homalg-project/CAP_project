@@ -54,7 +54,7 @@ DeclareOperation( "ExponentialOnMorphismsWithGivenExponentials",
 
 #! @Description
 #! The arguments are two objects $a, b$.
-#! The output is the evaluation morphism $\mathrm{ev}_{a,b}: \mathrm{Exponential}(a,b) \times a \rightarrow b$, i.e.,
+#! The output is the left evaluation morphism $\mathrm{ev}_{a,b}: \mathrm{Exponential}(a,b) \times a \rightarrow b$, i.e.,
 #! the counit of the direct product-exponential adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Exponential}(a,b) \times a, b )$.
 #! @Arguments a, b
@@ -63,7 +63,7 @@ DeclareOperation( "CartesianLeftEvaluationMorphism",
 
 #! @Description
 #! The arguments are two objects $a,b$ and an object $s = \mathrm{Exponential}(a,b) \times a$.
-#! The output is the evaluation morphism $\mathrm{ev}_{a,b}: \mathrm{Exponential}(a,b) \times a \rightarrow b$, i.e.,
+#! The output is the left evaluation morphism $\mathrm{ev}_{a,b}: \mathrm{Exponential}(a,b) \times a \rightarrow b$, i.e.,
 #! the counit of the direct product-exponential adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( s, b )$.
 #! @Arguments a, b, s
@@ -72,7 +72,7 @@ DeclareOperation( "CartesianLeftEvaluationMorphismWithGivenSource",
 
 #! @Description
 #! The arguments are two objects $a,b$.
-#! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: b \rightarrow \mathrm{Exponential}(a, b \times a)$, i.e.,
+#! The output is the left coevaluation morphism $\mathrm{coev}_{a,b}: b \rightarrow \mathrm{Exponential}(a, b \times a)$, i.e.,
 #! the unit of the direct product-exponential adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( b, \mathrm{Exponential}(a, b \times a) )$.
 #! @Arguments a, b
@@ -81,7 +81,7 @@ DeclareOperation( "CartesianLeftCoevaluationMorphism",
 
 #! @Description
 #! The arguments are two objects $a,b$ and an object $r = \mathrm{Exponential}(a, b \times a)$.
-#! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: b \rightarrow \mathrm{Exponential}(a, b \times a)$, i.e.,
+#! The output is the left coevaluation morphism $\mathrm{coev}_{a,b}: b \rightarrow \mathrm{Exponential}(a, b \times a)$, i.e.,
 #! the unit of the direct product-exponential adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( b, r )$.
 #! @Arguments a, b, r

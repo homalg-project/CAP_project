@@ -51,7 +51,7 @@ DeclareOperation( "InternalHomOnMorphismsWithGivenInternalHoms",
 
 #! @Description
 #! The arguments are two objects $a, b$.
-#! The output is the evaluation morphism $\mathrm{ev}_{a,b}: \mathrm{\underline{Hom}}(a,b) \otimes a \rightarrow b$, i.e.,
+#! The output is the left evaluation morphism $\mathrm{ev}_{a,b}: \mathrm{\underline{Hom}}(a,b) \otimes a \rightarrow b$, i.e.,
 #! the counit of the tensor hom adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b) \otimes a, b )$.
 #! @Arguments a, b
@@ -60,7 +60,7 @@ DeclareOperation( "ClosedMonoidalLeftEvaluationMorphism",
 
 #! @Description
 #! The arguments are two objects $a,b$ and an object $s = \mathrm{\underline{Hom}}(a,b) \otimes a$.
-#! The output is the evaluation morphism $\mathrm{ev}_{a,b}: \mathrm{\underline{Hom}}(a,b) \otimes a \rightarrow b$, i.e.,
+#! The output is the left evaluation morphism $\mathrm{ev}_{a,b}: \mathrm{\underline{Hom}}(a,b) \otimes a \rightarrow b$, i.e.,
 #! the counit of the tensor hom adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( s, b )$.
 #! @Arguments a, b, s
@@ -69,7 +69,7 @@ DeclareOperation( "ClosedMonoidalLeftEvaluationMorphismWithGivenSource",
 
 #! @Description
 #! The arguments are two objects $a,b$.
-#! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: b \rightarrow \mathrm{\underline{Hom}}(a, b \otimes a)$, i.e.,
+#! The output is the left coevaluation morphism $\mathrm{coev}_{a,b}: b \rightarrow \mathrm{\underline{Hom}}(a, b \otimes a)$, i.e.,
 #! the unit of the tensor hom adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( b, \mathrm{\underline{Hom}}(a, b \otimes a) )$.
 #! @Arguments a, b
@@ -78,7 +78,7 @@ DeclareOperation( "ClosedMonoidalLeftCoevaluationMorphism",
 
 #! @Description
 #! The arguments are two objects $a,b$ and an object $r = \mathrm{\underline{Hom}}(a, b \otimes a)$.
-#! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: b \rightarrow \mathrm{\underline{Hom}}(a, b \otimes a)$, i.e.,
+#! The output is the left coevaluation morphism $\mathrm{coev}_{a,b}: b \rightarrow \mathrm{\underline{Hom}}(a, b \otimes a)$, i.e.,
 #! the unit of the tensor hom adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( b, r )$.
 #! @Arguments a, b, r

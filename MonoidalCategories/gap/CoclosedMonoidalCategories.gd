@@ -51,7 +51,7 @@ DeclareOperation( "InternalCoHomOnMorphismsWithGivenInternalCoHoms",
 
 #! @Description
 #! The arguments are two objects $a, b$.
-#! The output is the coclosed evaluation morphism $\mathrm{coclev}_{a,b}: b \rightarrow \mathrm{\underline{coHom}}(b,a) \otimes a$, i.e.,
+#! The output is the coclosed left evaluation morphism $\mathrm{coclev}_{a,b}: b \rightarrow \mathrm{\underline{coHom}}(b,a) \otimes a$, i.e.,
 #! the unit of the cohom tensor adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( b, \mathrm{\underline{coHom}}(b,a) \otimes a )$.
 #! @Arguments a, b
@@ -60,7 +60,7 @@ DeclareOperation( "CoclosedMonoidalLeftEvaluationMorphism",
 
 #! @Description
 #! The arguments are two objects $a,b$ and an object $r = \mathrm{\underline{coHom}}(b,a) \otimes a$.
-#! The output is the coclosed evaluation morphism $\mathrm{coclev}_{a,b}: b \rightarrow \mathrm{\underline{coHom}}(b,a) \otimes a$, i.e.,
+#! The output is the coclosed left evaluation morphism $\mathrm{coclev}_{a,b}: b \rightarrow \mathrm{\underline{coHom}}(b,a) \otimes a$, i.e.,
 #! the unit of the cohom tensor adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( b, r )$.
 #! @Arguments a, b, r
@@ -69,7 +69,7 @@ DeclareOperation( "CoclosedMonoidalLeftEvaluationMorphismWithGivenRange",
 
 #! @Description
 #! The arguments are two objects $a,b$.
-#! The output is the coclosed coevaluation morphism $\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}}(b \otimes a, a) \rightarrow b$, i.e.,
+#! The output is the coclosed left coevaluation morphism $\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}}(b \otimes a, a) \rightarrow b$, i.e.,
 #! the counit of the cohom tensor adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(b \otimes a, a), b )$.
 #! @Arguments a, b
@@ -78,7 +78,7 @@ DeclareOperation( "CoclosedMonoidalLeftCoevaluationMorphism",
 
 #! @Description
 #! The arguments are two objects $a,b$ and an object $s = \mathrm{\underline{coHom}}(b \otimes a, a)$.
-#! The output is the coclosed coevaluation morphism $\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}}(b \otimes a, a) \rightarrow b$, i.e.,
+#! The output is the coclosed left coevaluation morphism $\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}}(b \otimes a, a) \rightarrow b$, i.e.,
 #! the unit of the cohom tensor adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( s, b )$.
 #! @Arguments a, b, s
