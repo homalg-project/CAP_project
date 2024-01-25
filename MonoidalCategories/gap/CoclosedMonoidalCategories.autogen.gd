@@ -259,6 +259,82 @@ DeclareOperation( "AddCoclosedMonoidalLeftEvaluationMorphismWithGivenRange",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `CoclosedMonoidalRightCoevaluationMorphism`.
+#! $F: ( a, b ) \mapsto \mathtt{CoclosedMonoidalRightCoevaluationMorphism}(a, b)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCoclosedMonoidalRightCoevaluationMorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCoclosedMonoidalRightCoevaluationMorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCoclosedMonoidalRightCoevaluationMorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCoclosedMonoidalRightCoevaluationMorphism",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `CoclosedMonoidalRightCoevaluationMorphismWithGivenSource`.
+#! $F: ( a, b, s ) \mapsto \mathtt{CoclosedMonoidalRightCoevaluationMorphismWithGivenSource}(a, b, s)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCoclosedMonoidalRightCoevaluationMorphismWithGivenSource",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCoclosedMonoidalRightCoevaluationMorphismWithGivenSource",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCoclosedMonoidalRightCoevaluationMorphismWithGivenSource",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCoclosedMonoidalRightCoevaluationMorphismWithGivenSource",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `CoclosedMonoidalRightEvaluationMorphism`.
+#! $F: ( a, b ) \mapsto \mathtt{CoclosedMonoidalRightEvaluationMorphism}(a, b)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCoclosedMonoidalRightEvaluationMorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCoclosedMonoidalRightEvaluationMorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCoclosedMonoidalRightEvaluationMorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCoclosedMonoidalRightEvaluationMorphism",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `CoclosedMonoidalRightEvaluationMorphismWithGivenRange`.
+#! $F: ( a, b, r ) \mapsto \mathtt{CoclosedMonoidalRightEvaluationMorphismWithGivenRange}(a, b, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCoclosedMonoidalRightEvaluationMorphismWithGivenRange",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCoclosedMonoidalRightEvaluationMorphismWithGivenRange",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCoclosedMonoidalRightEvaluationMorphismWithGivenRange",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCoclosedMonoidalRightEvaluationMorphismWithGivenRange",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `InternalCoHomOnMorphisms`.
 #! $F: ( alpha, beta ) \mapsto \mathtt{InternalCoHomOnMorphisms}(alpha, beta)$.
 #! @Returns nothing
@@ -387,6 +463,44 @@ DeclareOperation( "AddInternalCoHomToTensorProductLeftAdjunctionMapWithGivenTens
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddInternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `InternalCoHomToTensorProductRightAdjunctionMap`.
+#! $F: ( a, b, f ) \mapsto \mathtt{InternalCoHomToTensorProductRightAdjunctionMap}(a, b, f)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddInternalCoHomToTensorProductRightAdjunctionMap",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInternalCoHomToTensorProductRightAdjunctionMap",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInternalCoHomToTensorProductRightAdjunctionMap",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInternalCoHomToTensorProductRightAdjunctionMap",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `InternalCoHomToTensorProductRightAdjunctionMapWithGivenTensorProduct`.
+#! $F: ( a, b, f, t ) \mapsto \mathtt{InternalCoHomToTensorProductRightAdjunctionMapWithGivenTensorProduct}(a, b, f, t)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddInternalCoHomToTensorProductRightAdjunctionMapWithGivenTensorProduct",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInternalCoHomToTensorProductRightAdjunctionMapWithGivenTensorProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInternalCoHomToTensorProductRightAdjunctionMapWithGivenTensorProduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInternalCoHomToTensorProductRightAdjunctionMapWithGivenTensorProduct",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -691,6 +805,44 @@ DeclareOperation( "AddTensorProductToInternalCoHomLeftAdjunctionMapWithGivenInte
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddTensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `TensorProductToInternalCoHomRightAdjunctionMap`.
+#! $F: ( b, c, g ) \mapsto \mathtt{TensorProductToInternalCoHomRightAdjunctionMap}(b, c, g)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddTensorProductToInternalCoHomRightAdjunctionMap",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddTensorProductToInternalCoHomRightAdjunctionMap",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddTensorProductToInternalCoHomRightAdjunctionMap",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddTensorProductToInternalCoHomRightAdjunctionMap",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `TensorProductToInternalCoHomRightAdjunctionMapWithGivenInternalCoHom`.
+#! $F: ( b, c, g, i ) \mapsto \mathtt{TensorProductToInternalCoHomRightAdjunctionMapWithGivenInternalCoHom}(b, c, g, i)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddTensorProductToInternalCoHomRightAdjunctionMapWithGivenInternalCoHom",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddTensorProductToInternalCoHomRightAdjunctionMapWithGivenInternalCoHom",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddTensorProductToInternalCoHomRightAdjunctionMapWithGivenInternalCoHom",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddTensorProductToInternalCoHomRightAdjunctionMapWithGivenInternalCoHom",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

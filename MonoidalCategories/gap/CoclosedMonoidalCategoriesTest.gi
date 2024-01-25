@@ -145,6 +145,47 @@ InstallGlobalFunction( "CoclosedMonoidalCategoriesTest",
             
         fi;
         
+        if CanCompute( cat, "CoclosedMonoidalRightEvaluationMorphism" ) then
+            
+            if verbose then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Display( "Testing 'CoclosedMonoidalRightEvaluationMorphism' ..." );
+                
+            fi;
+            
+            cocl_ev_ab := CoclosedMonoidalRightEvaluationMorphism( a, b );
+            cocl_ev_ba := CoclosedMonoidalRightEvaluationMorphism( b, a );
+            
+            ev_ab_op := ClosedMonoidalRightEvaluationMorphism( a_op, b_op );
+            ev_ba_op := ClosedMonoidalRightEvaluationMorphism( b_op, a_op );
+            
+            # Arguments must be reversed for evaluations
+            Assert( 0, IsCongruentForMorphisms( cocl_ev_ab, Opposite( ev_ab_op ) ) );
+            Assert( 0, IsCongruentForMorphisms( cocl_ev_ba, Opposite( ev_ba_op ) ) );
+            
+        fi;
+        
+        if CanCompute( cat, "CoclosedMonoidalRightCoevaluationMorphism" ) then
+            
+            if verbose then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Display( "Testing 'CoclosedMonoidalRightCoevaluationMorphism' ..." );
+                
+            fi;
+            
+            cocl_coev_ab := CoclosedMonoidalRightCoevaluationMorphism( a, b );
+            cocl_coev_ba := CoclosedMonoidalRightCoevaluationMorphism( b, a );
+            
+            coev_ab_op := ClosedMonoidalRightCoevaluationMorphism( a_op, b_op );
+            coev_ba_op := ClosedMonoidalRightCoevaluationMorphism( b_op, a_op );
+            
+            Assert( 0, IsCongruentForMorphisms( coev_ab_op, Opposite( opposite, cocl_coev_ab ) ) );
+            Assert( 0, IsCongruentForMorphisms( coev_ba_op, Opposite( opposite, cocl_coev_ba ) ) );
+            
+        fi;
+        
         if CanCompute( cat, "CoclosedMonoidalLeftEvaluationMorphism" ) then
             
             if verbose then

@@ -335,6 +335,82 @@ DeclareOperation( "AddCocartesianPreCoComposeMorphismWithGivenObjects",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `CocartesianRightCoevaluationMorphism`.
+#! $F: ( a, b ) \mapsto \mathtt{CocartesianRightCoevaluationMorphism}(a, b)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCocartesianRightCoevaluationMorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCocartesianRightCoevaluationMorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCocartesianRightCoevaluationMorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCocartesianRightCoevaluationMorphism",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `CocartesianRightCoevaluationMorphismWithGivenSource`.
+#! $F: ( a, b, s ) \mapsto \mathtt{CocartesianRightCoevaluationMorphismWithGivenSource}(a, b, s)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCocartesianRightCoevaluationMorphismWithGivenSource",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCocartesianRightCoevaluationMorphismWithGivenSource",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCocartesianRightCoevaluationMorphismWithGivenSource",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCocartesianRightCoevaluationMorphismWithGivenSource",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `CocartesianRightEvaluationMorphism`.
+#! $F: ( a, b ) \mapsto \mathtt{CocartesianRightEvaluationMorphism}(a, b)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCocartesianRightEvaluationMorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCocartesianRightEvaluationMorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCocartesianRightEvaluationMorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCocartesianRightEvaluationMorphism",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `CocartesianRightEvaluationMorphismWithGivenRange`.
+#! $F: ( a, b, r ) \mapsto \mathtt{CocartesianRightEvaluationMorphismWithGivenRange}(a, b, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCocartesianRightEvaluationMorphismWithGivenRange",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCocartesianRightEvaluationMorphismWithGivenRange",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCocartesianRightEvaluationMorphismWithGivenRange",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCocartesianRightEvaluationMorphismWithGivenRange",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `CoexponentialCoproductCompatibilityMorphism`.
 #! $F: ( list ) \mapsto \mathtt{CoexponentialCoproductCompatibilityMorphism}(list)$.
 #! @Returns nothing
@@ -468,6 +544,44 @@ DeclareOperation( "AddCoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduc
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `CoexponentialToCoproductRightAdjunctionMap`.
+#! $F: ( a, b, f ) \mapsto \mathtt{CoexponentialToCoproductRightAdjunctionMap}(a, b, f)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCoexponentialToCoproductRightAdjunctionMap",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCoexponentialToCoproductRightAdjunctionMap",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCoexponentialToCoproductRightAdjunctionMap",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCoexponentialToCoproductRightAdjunctionMap",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `CoexponentialToCoproductRightAdjunctionMapWithGivenCoproduct`.
+#! $F: ( a, b, f, t ) \mapsto \mathtt{CoexponentialToCoproductRightAdjunctionMapWithGivenCoproduct}(a, b, f, t)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCoexponentialToCoproductRightAdjunctionMapWithGivenCoproduct",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCoexponentialToCoproductRightAdjunctionMapWithGivenCoproduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCoexponentialToCoproductRightAdjunctionMapWithGivenCoproduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCoexponentialToCoproductRightAdjunctionMapWithGivenCoproduct",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `CoproductToCoexponentialLeftAdjunctionMap`.
 #! $F: ( b, c, g ) \mapsto \mathtt{CoproductToCoexponentialLeftAdjunctionMap}(b, c, g)$.
 #! @Returns nothing
@@ -501,6 +615,44 @@ DeclareOperation( "AddCoproductToCoexponentialLeftAdjunctionMapWithGivenCoexpone
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddCoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `CoproductToCoexponentialRightAdjunctionMap`.
+#! $F: ( b, c, g ) \mapsto \mathtt{CoproductToCoexponentialRightAdjunctionMap}(b, c, g)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCoproductToCoexponentialRightAdjunctionMap",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCoproductToCoexponentialRightAdjunctionMap",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCoproductToCoexponentialRightAdjunctionMap",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCoproductToCoexponentialRightAdjunctionMap",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `CoproductToCoexponentialRightAdjunctionMapWithGivenCoexponential`.
+#! $F: ( b, c, g, i ) \mapsto \mathtt{CoproductToCoexponentialRightAdjunctionMapWithGivenCoexponential}(b, c, g, i)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCoproductToCoexponentialRightAdjunctionMapWithGivenCoexponential",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCoproductToCoexponentialRightAdjunctionMapWithGivenCoexponential",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCoproductToCoexponentialRightAdjunctionMapWithGivenCoexponential",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCoproductToCoexponentialRightAdjunctionMapWithGivenCoexponential",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

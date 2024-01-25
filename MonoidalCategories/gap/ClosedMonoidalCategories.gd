@@ -17,6 +17,8 @@ DeclareGlobalVariable( "CLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD" );
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsClosedMonoidalCategory  := Concatenation( [
 "InternalHomOnObjects",
 "InternalHomOnMorphismsWithGivenInternalHoms",
+"ClosedMonoidalRightEvaluationMorphismWithGivenSource",
+"ClosedMonoidalRightCoevaluationMorphismWithGivenRange",
 "ClosedMonoidalLeftEvaluationMorphismWithGivenSource",
 "ClosedMonoidalLeftCoevaluationMorphismWithGivenRange"
 ], CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalCategory );
@@ -48,6 +50,78 @@ DeclareOperation( "InternalHomOnMorphisms",
 #! @Arguments s, alpha, beta, r
 DeclareOperation( "InternalHomOnMorphismsWithGivenInternalHoms",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are two objects $a, b$.
+#! The output is the right evaluation morphism $\mathrm{ev}_{a,b}:a \otimes \mathrm{\underline{Hom}}(a,b) \rightarrow b$, i.e.,
+#! the counit of the tensor hom adjunction.
+#! @Returns a morphism in $\mathrm{Hom}(a \otimes \mathrm{\underline{Hom}}(a,b), b )$.
+#! @Arguments a, b
+DeclareOperation( "ClosedMonoidalRightEvaluationMorphism",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are two objects $a,b$ and an object $s = a \otimes \mathrm{\underline{Hom}}(a,b)$.
+#! The output is the right evaluation morphism $\mathrm{ev}_{a,b}: a \otimes \mathrm{\underline{Hom}}(a,b) \rightarrow b$, i.e.,
+#! the counit of the tensor hom adjunction.
+#! @Returns a morphism in $\mathrm{Hom}( s, b )$.
+#! @Arguments a, b, s
+DeclareOperation( "ClosedMonoidalRightEvaluationMorphismWithGivenSource",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are two objects $a,b$.
+#! The output is the right coevaluation morphism $\mathrm{coev}_{a,b}: b \rightarrow \mathrm{\underline{Hom}}(a, a \otimes b)$, i.e.,
+#! the unit of the tensor hom adjunction.
+#! @Returns a morphism in $\mathrm{Hom}( b, \mathrm{\underline{Hom}}(a, a \otimes b) )$.
+#! @Arguments a, b
+DeclareOperation( "ClosedMonoidalRightCoevaluationMorphism",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are two objects $a,b$ and an object $r = \mathrm{\underline{Hom}}(a, a \otimes b)$.
+#! The output is the right coevaluation morphism $\mathrm{coev}_{a,b}: b \rightarrow \mathrm{\underline{Hom}}(a, a \otimes b)$, i.e.,
+#! the unit of the tensor hom adjunction.
+#! @Returns a morphism in $\mathrm{Hom}( b, r )$.
+#! @Arguments a, b, r
+DeclareOperation( "ClosedMonoidalRightCoevaluationMorphismWithGivenRange",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are two objects $a,b$ and a morphism $f: a \otimes b \rightarrow c$.
+#! The output is a morphism $g: b \rightarrow \mathrm{\underline{Hom}}(a,c)$
+#! corresponding to $f$ under the tensor hom adjunction.
+#! @Returns a morphism in $\mathrm{Hom}( b, \mathrm{\underline{Hom}}(a,c) )$.
+#! @Arguments a, b, f
+DeclareOperation( "TensorProductToInternalHomRightAdjunctionMap",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are two objects $a,b$, a morphism $f: a \otimes b \rightarrow c$ and an object $i = \mathrm{\underline{Hom}}(a,c)$.
+#! The output is a morphism $g: b \rightarrow \mathrm{\underline{Hom}}(a,c)$
+#! corresponding to $f$ under the tensor hom adjunction.
+#! @Returns a morphism in $\mathrm{Hom}( a, i )$.
+#! @Arguments a, b, f, i
+DeclareOperation( "TensorProductToInternalHomRightAdjunctionMapWithGivenInternalHom",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are two objects $a,c$ and a morphism $g: b \rightarrow \mathrm{\underline{Hom}}(a,c)$.
+#! The output is a morphism $f: a \otimes b \rightarrow c$ corresponding to $g$ under the
+#! tensor hom adjunction.
+#! @Returns a morphism in $\mathrm{Hom}(a \otimes b, c)$.
+#! @Arguments a, c, g
+DeclareOperation( "InternalHomToTensorProductRightAdjunctionMap",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are two objects $a,c$, a morphism $g: b \rightarrow \mathrm{\underline{Hom}}(a,c)$ and an object $t = a \otimes b$.
+#! The output is a morphism $f: a \otimes b \rightarrow c$ corresponding to $g$ under the
+#! tensor hom adjunction.
+#! @Returns a morphism in $\mathrm{Hom}(t, c)$.
+#! @Arguments a, c, g, t
+DeclareOperation( "InternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are two objects $a, b$.

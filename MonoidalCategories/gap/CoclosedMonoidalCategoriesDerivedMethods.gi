@@ -5,6 +5,157 @@
 #
 
 ##
+AddDerivationToCAP( TensorProductToInternalCoHomRightAdjunctionMap,
+                    "TensorProductToInternalCoHomRightAdjunctionMap using CoclosedMonoidalRightCoevaluationMorphism and InternalCoHom",
+                    [ [ PreCompose, 1 ],
+                      [ InternalCoHomOnMorphisms, 1 ],
+                      [ IdentityMorphism, 1 ],
+                      [ CoclosedMonoidalRightCoevaluationMorphism, 1 ] ],
+                    
+  function( cat, b, c, g )
+    
+    # g: a → b ⊗ c
+    #
+    #    coHom(a,b)
+    #        |
+    #        | coHom(g, id_b)
+    #        v
+    # coHom(b ⊗ c, b)
+    #        |
+    #        | coclcoev_bc
+    #        v
+    #        c
+    
+    return PreCompose( cat,
+             InternalCoHomOnMorphisms( cat, g, IdentityMorphism( cat, b ) ),
+             CoclosedMonoidalRightCoevaluationMorphism( cat, b, c ) );
+             
+end : CategoryFilter := IsCoclosedMonoidalCategory );
+
+##
+AddDerivationToCAP( TensorProductToInternalCoHomRightAdjunctionMapWithGivenInternalCoHom,
+                    "TensorProductToInternalCoHomRightAdjunctionMapWithGivenInternalCoHom using CoclosedMonoidalRightCoevaluationMorphism and InternalCoHom",
+                    [ [ CoclosedMonoidalRightCoevaluationMorphism, 1 ],
+                      [ PreCompose, 1 ],
+                      [ InternalCoHomOnMorphismsWithGivenInternalCoHoms, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    
+  function( cat, b, c, g, i )
+    local coclcoev_bc;
+    
+    # g: a → b ⊗ c
+    #
+    #    coHom(a,b)
+    #        |
+    #        | coHom(g, id_b)
+    #        v
+    # coHom(b ⊗ c, b)
+    #        |
+    #        | coclcoev_bc
+    #        v
+    #        c
+    
+    coclcoev_bc := CoclosedMonoidalRightCoevaluationMorphism( cat, b, c );
+    
+    return PreCompose( cat,
+             InternalCoHomOnMorphismsWithGivenInternalCoHoms( cat, i, g, IdentityMorphism( cat, b ), Source( coclcoev_bc ) ),
+             coclcoev_bc );
+    
+end : CategoryFilter := IsCoclosedMonoidalCategory );
+
+##
+AddDerivationToCAP( InternalCoHomToTensorProductRightAdjunctionMap,
+                    "InternalCoHomToTensorProductRightAdjunctionMap using TensorProductOnMorphisms and CoclosedMonoidalRightEvaluationMorphism",
+                    [ [ PreCompose, 1 ],
+                      [ CoclosedMonoidalRightEvaluationMorphism, 1 ],
+                      [ TensorProductOnMorphisms, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    
+  function( cat, a, b, f )
+    
+    # f: coHom(a,b) → c
+    #
+    #        a
+    #        |
+    #        | coclev_ba
+    #        v
+    # b ⊗ coHom(a,b)
+    #        |
+    #        | id_b ⊗ f
+    #        v
+    #      b ⊗ c
+    
+    return PreCompose( cat,
+             CoclosedMonoidalRightEvaluationMorphism( cat, b, a ),
+             TensorProductOnMorphisms( cat, IdentityMorphism( cat, b ), f ) );
+             
+end : CategoryFilter := IsCoclosedMonoidalCategory );
+
+##
+AddDerivationToCAP( InternalCoHomToTensorProductRightAdjunctionMapWithGivenTensorProduct,
+                    "InternalCoHomToTensorProductRightAdjunctionMapWithGivenTensorProduct using TensorProductOnMorphisms and CoclosedMonoidalRightEvaluationMorphism",
+                    [ [ PreCompose, 1 ],
+                      [ CoclosedMonoidalRightEvaluationMorphism, 1 ],
+                      [ TensorProductOnMorphismsWithGivenTensorProducts, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    
+  function( cat, a, b, f, t )
+    local coclev_ba;
+    
+    # f: coHom(a,b) → b
+    #
+    #        a
+    #        |
+    #        | coclev_ba
+    #        v
+    # b ⊗ coHom(a,b)
+    #        |
+    #        | id_b ⊗ f
+    #        v
+    #      b ⊗ c
+    
+    coclev_ba := CoclosedMonoidalRightEvaluationMorphism( cat, b, a );
+    
+    return PreCompose( cat,
+             coclev_ba,
+             TensorProductOnMorphismsWithGivenTensorProducts( cat, Range( coclev_ba ), IdentityMorphism( cat, b ), f, t ) );
+             
+end : CategoryFilter := IsCoclosedMonoidalCategory );
+
+##
+AddDerivationToCAP( CoclosedMonoidalRightEvaluationMorphismWithGivenRange,
+                    "CoclosedMonoidalRightEvaluationMorphismWithGivenRange using the cohom tensor adjunction on the identity",
+                    [ [ InternalCoHomToTensorProductRightAdjunctionMap, 1 ],
+                      [ IdentityMorphism, 1 ],
+                      [ InternalCoHomOnObjects, 1 ] ],
+                    
+  function( cat, a, b, tensor_object )
+    
+    # Adjoint( id_coHom(b,a): coHom(b,a) → coHom(b,a) ) = ( b → a ⊗ coHom(b,a) )
+    
+    return InternalCoHomToTensorProductRightAdjunctionMap( cat,
+             b, a,
+             IdentityMorphism( cat, InternalCoHomOnObjects( cat, b, a ) ) );
+    
+end : CategoryFilter := IsCoclosedMonoidalCategory );
+
+AddDerivationToCAP( CoclosedMonoidalRightCoevaluationMorphismWithGivenSource,
+                    "CoclosedMonoidalRightCoevaluationMorphismWithGivenSource using the cohom tensor adjunction on the identity",
+                    [ [ TensorProductToInternalCoHomRightAdjunctionMap, 1 ],
+                      [ IdentityMorphism, 1 ],
+                      [ TensorProductOnObjects, 1 ] ],
+                    
+  function( cat, a, b, internal_cohom )
+    
+    # Adjoint( id_(a ⊗ b): a ⊗ b → a ⊗ b ) = ( coHom(a ⊗ b, a) → b )
+    
+    return TensorProductToInternalCoHomRightAdjunctionMap( cat,
+             a, b,
+             IdentityMorphism( cat, TensorProductOnObjects( cat, a, b ) ) );
+    
+end : CategoryFilter := IsCoclosedMonoidalCategory );
+
+##
 AddDerivationToCAP( TensorProductToInternalCoHomLeftAdjunctionMap,
                     "TensorProductToInternalCoHomLeftAdjunctionMap using CoclosedMonoidalLeftCoevaluationMorphism and InternalCoHom",
                     [ [ PreCompose, 1 ],
