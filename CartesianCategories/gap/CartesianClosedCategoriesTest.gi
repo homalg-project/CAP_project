@@ -148,12 +148,53 @@ InstallGlobalFunction( "CartesianClosedCategoriesTest",
             
         fi;
         
+        if CanCompute( cat, "CartesianRightEvaluationMorphism" ) then
+            
+            if verbose then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Display( "Testing 'CartesianRightEvaluationMorphism' ..." );
+                
+            fi;
+            
+            ev_ab := CartesianRightEvaluationMorphism( a, b );
+            ev_ba := CartesianRightEvaluationMorphism( b, a );
+            
+            coca_ev_ab_op := CocartesianRightEvaluationMorphism( a_op, b_op );
+            coca_ev_ba_op := CocartesianRightEvaluationMorphism( b_op, a_op );
+            
+            # Arguments must be reversed for evaluations
+            Assert( 0, IsCongruentForMorphisms( coca_ev_ab_op, Opposite( opposite, ev_ab ) ) );
+            Assert( 0, IsCongruentForMorphisms( coca_ev_ba_op, Opposite( opposite, ev_ba ) ) );
+            
+        fi;
+        
+        if CanCompute( cat, "CartesianRightCoevaluationMorphism" ) then
+            
+            if verbose then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Display( "Testing 'CartesianRightEvaluationMorphism' ..." );
+                
+            fi;
+            
+            coev_ab := CartesianRightCoevaluationMorphism( a, b );
+            coev_ba := CartesianRightCoevaluationMorphism( b, a );
+            
+            coca_coev_ab_op := CocartesianRightCoevaluationMorphism( a_op, b_op );
+            coca_coev_ba_op := CocartesianRightCoevaluationMorphism( b_op, a_op );
+            
+            Assert( 0, IsCongruentForMorphisms( coca_coev_ab_op, Opposite( opposite, coev_ab ) ) );
+            Assert( 0, IsCongruentForMorphisms( coca_coev_ba_op, Opposite( opposite, coev_ba ) ) );
+            
+        fi;
+        
         if CanCompute( cat, "CartesianLeftEvaluationMorphism" ) then
             
             if verbose then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( "Testing 'EvaluationMorphism' ..." );
+                Display( "Testing 'CartesianLeftEvaluationMorphism' ..." );
                 
             fi;
             
@@ -174,7 +215,7 @@ InstallGlobalFunction( "CartesianClosedCategoriesTest",
             if verbose then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( "Testing 'CoevaluationMorphism' ..." );
+                Display( "Testing 'CartesianLeftEvaluationMorphism' ..." );
                 
             fi;
             

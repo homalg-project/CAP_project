@@ -20,6 +20,8 @@ DeclareGlobalVariable( "CARTESIAN_CLOSED_CATEGORIES_METHOD_NAME_RECORD" );
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianClosedCategory  := Concatenation( [
 "ExponentialOnObjects",
 "ExponentialOnMorphismsWithGivenExponentials",
+"CartesianRightEvaluationMorphismWithGivenSource",
+"CartesianRightCoevaluationMorphismWithGivenRange",
 "CartesianLeftEvaluationMorphismWithGivenSource",
 "CartesianLeftCoevaluationMorphismWithGivenRange"
 ], CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianCategory );
@@ -54,7 +56,79 @@ DeclareOperation( "ExponentialOnMorphismsWithGivenExponentials",
 
 #! @Description
 #! The arguments are two objects $a, b$.
-#! The output is the evaluation morphism $\mathrm{ev}_{a,b}: \mathrm{Exponential}(a,b) \times a \rightarrow b$, i.e.,
+#! The output is the right evaluation morphism $\mathrm{ev}_{a,b}:a \times \mathrm{Exponential}(a,b) \rightarrow b$, i.e.,
+#! the counit of the direct product-exponential adjunction.
+#! @Returns a morphism in $\mathrm{Hom}(a \times \mathrm{Exponential}(a,b), b )$.
+#! @Arguments a, b
+DeclareOperation( "CartesianRightEvaluationMorphism",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are two objects $a,b$ and an object $s = a \times \mathrm{Exponential}(a,b)$.
+#! The output is the right evaluation morphism $\mathrm{ev}_{a,b}: a \times \mathrm{Exponential}(a,b) \rightarrow b$, i.e.,
+#! the counit of the direct product-exponential adjunction.
+#! @Returns a morphism in $\mathrm{Hom}( s, b )$.
+#! @Arguments a, b, s
+DeclareOperation( "CartesianRightEvaluationMorphismWithGivenSource",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are two objects $a,b$.
+#! The output is the right coevaluation morphism $\mathrm{coev}_{a,b}: b \rightarrow \mathrm{Exponential}(a, a \times b)$, i.e.,
+#! the unit of the direct product-exponential adjunction.
+#! @Returns a morphism in $\mathrm{Hom}( b, \mathrm{Exponential}(a, a \times b) )$.
+#! @Arguments a, b
+DeclareOperation( "CartesianRightCoevaluationMorphism",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are two objects $a,b$ and an object $r = \mathrm{Exponential}(a, a \times b)$.
+#! The output is the right coevaluation morphism $\mathrm{coev}_{a,b}: b \rightarrow \mathrm{Exponential}(a, a \times b)$, i.e.,
+#! the unit of the direct product-exponential adjunction.
+#! @Returns a morphism in $\mathrm{Hom}( b, r )$.
+#! @Arguments a, b, r
+DeclareOperation( "CartesianRightCoevaluationMorphismWithGivenRange",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are two objects $a,b$ and a morphism $f: a \times b \rightarrow c$.
+#! The output is a morphism $g: b \rightarrow \mathrm{Exponential}(a,c)$
+#! corresponding to $f$ under the direct product-exponential adjunction.
+#! @Returns a morphism in $\mathrm{Hom}( b, \mathrm{Exponential}(a,c) )$.
+#! @Arguments a, b, f
+DeclareOperation( "DirectProductToExponentialRightAdjunctionMap",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are two objects $a,b$, a morphism $f: a \times b \rightarrow c$ and an object $i = \mathrm{Exponential}(a,c)$.
+#! The output is a morphism $g: b \rightarrow \mathrm{Exponential}(a,c)$
+#! corresponding to $f$ under the direct product-exponential adjunction.
+#! @Returns a morphism in $\mathrm{Hom}( a, i )$.
+#! @Arguments a, b, f, i
+DeclareOperation( "DirectProductToExponentialRightAdjunctionMapWithGivenExponential",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are two objects $a,c$ and a morphism $g: b \rightarrow \mathrm{Exponential}(a,c)$.
+#! The output is a morphism $f: a \times b \rightarrow c$ corresponding to $g$ under the
+#! direct product-exponential adjunction.
+#! @Returns a morphism in $\mathrm{Hom}(a \times b, c)$.
+#! @Arguments a, c, g
+DeclareOperation( "ExponentialToDirectProductRightAdjunctionMap",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are two objects $a,c$, a morphism $g: b \rightarrow \mathrm{Exponential}(a,c)$ and an object $t = a \times b$.
+#! The output is a morphism $f: a \times b \rightarrow c$ corresponding to $g$ under the
+#! direct product-exponential adjunction.
+#! @Returns a morphism in $\mathrm{Hom}(t, c)$.
+#! @Arguments a, c, g, t
+DeclareOperation( "ExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are two objects $a, b$.
+#! The output is the left evaluation morphism $\mathrm{ev}_{a,b}: \mathrm{Exponential}(a,b) \times a \rightarrow b$, i.e.,
 #! the counit of the direct product-exponential adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Exponential}(a,b) \times a, b )$.
 #! @Arguments a, b
@@ -63,7 +137,7 @@ DeclareOperation( "CartesianLeftEvaluationMorphism",
 
 #! @Description
 #! The arguments are two objects $a,b$ and an object $s = \mathrm{Exponential}(a,b) \times a$.
-#! The output is the evaluation morphism $\mathrm{ev}_{a,b}: \mathrm{Exponential}(a,b) \times a \rightarrow b$, i.e.,
+#! The output is the left evaluation morphism $\mathrm{ev}_{a,b}: \mathrm{Exponential}(a,b) \times a \rightarrow b$, i.e.,
 #! the counit of the direct product-exponential adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( s, b )$.
 #! @Arguments a, b, s
@@ -72,7 +146,7 @@ DeclareOperation( "CartesianLeftEvaluationMorphismWithGivenSource",
 
 #! @Description
 #! The arguments are two objects $a,b$.
-#! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: b \rightarrow \mathrm{Exponential}(a, b \times a)$, i.e.,
+#! The output is the left coevaluation morphism $\mathrm{coev}_{a,b}: b \rightarrow \mathrm{Exponential}(a, b \times a)$, i.e.,
 #! the unit of the direct product-exponential adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( b, \mathrm{Exponential}(a, b \times a) )$.
 #! @Arguments a, b
@@ -81,7 +155,7 @@ DeclareOperation( "CartesianLeftCoevaluationMorphism",
 
 #! @Description
 #! The arguments are two objects $a,b$ and an object $r = \mathrm{Exponential}(a, b \times a)$.
-#! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: b \rightarrow \mathrm{Exponential}(a, b \times a)$, i.e.,
+#! The output is the left coevaluation morphism $\mathrm{coev}_{a,b}: b \rightarrow \mathrm{Exponential}(a, b \times a)$, i.e.,
 #! the unit of the direct product-exponential adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( b, r )$.
 #! @Arguments a, b, r

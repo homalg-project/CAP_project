@@ -8,57 +8,57 @@
 
 
 ##
-AddDerivationToCAP( CoproductToCoexponentialLeftAdjunctionMap,
-                    "CoproductToCoexponentialLeftAdjunctionMap using CocartesianLeftCoevaluationMorphism and Coexponential",
+AddDerivationToCAP( CoproductToCoexponentialRightAdjunctionMap,
+                    "CoproductToCoexponentialRightAdjunctionMap using CocartesianRightCoevaluationMorphism and Coexponential",
                     [ [ PreCompose, 1 ],
                       [ CoexponentialOnMorphisms, 1 ],
                       [ IdentityMorphism, 1 ],
-                      [ CocartesianLeftCoevaluationMorphism, 1 ] ],
+                      [ CocartesianRightCoevaluationMorphism, 1 ] ],
                     
-  function( cat, c, b, g )
+  function( cat, b, c, g )
     
-    # g: a → c ⊔ b
+    # g: a → b ⊔ c
     #
     #    Coexp(a,b)
     #        |
     #        | Coexp(g, id_b)
     #        v
-    # Coexp(c ⊔ b, b)
+    # Coexp(b ⊔ c, b)
     #        |
     #        | cocacoev_bc
     #        v
     #        c
-
+    
     return PreCompose( cat,
              CoexponentialOnMorphisms( cat, g, IdentityMorphism( cat, b ) ),
-             CocartesianLeftCoevaluationMorphism( cat, b, c ) );
+             CocartesianRightCoevaluationMorphism( cat, b, c ) );
              
 end : CategoryFilter := IsCocartesianCoclosedCategory );
 
 ##
-AddDerivationToCAP( CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential,
-                    "CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential using CocartesianLeftCoevaluationMorphism and Coexponential",
-                    [ [ CocartesianLeftCoevaluationMorphism, 1 ],
+AddDerivationToCAP( CoproductToCoexponentialRightAdjunctionMapWithGivenCoexponential,
+                    "CoproductToCoexponentialRightAdjunctionMapWithGivenCoexponential using CocartesianRightCoevaluationMorphism and Coexponential",
+                    [ [ CocartesianRightCoevaluationMorphism, 1 ],
                       [ PreCompose, 1 ],
                       [ CoexponentialOnMorphismsWithGivenCoexponentials, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     
-  function( cat, c, b, g, i )
+  function( cat, b, c, g, i )
     local cocacoev_bc;
     
-    # g: a → c ⊔ b
+    # g: a → b ⊔ c
     #
     #    Coexp(a,b)
     #        |
     #        | Coexp(g, id_b)
     #        v
-    # Coexp(c ⊔ b, b)
+    # Coexp(b ⊔ c, b)
     #        |
     #        | cocacoev_bc
     #        v
     #        c
     
-    cocacoev_bc := CocartesianLeftCoevaluationMorphism( cat, b, c );
+    cocacoev_bc := CocartesianRightCoevaluationMorphism( cat, b, c );
     
     return PreCompose( cat,
              CoexponentialOnMorphismsWithGivenCoexponentials( cat, i, g, IdentityMorphism( cat, b ), Source( cocacoev_bc ) ),
@@ -67,10 +67,10 @@ AddDerivationToCAP( CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponent
 end : CategoryFilter := IsCocartesianCoclosedCategory );
 
 ##
-AddDerivationToCAP( CoexponentialToCoproductLeftAdjunctionMap,
-                    "CoexponentialToCoproductLeftAdjunctionMap using CoproductOnMorphisms and CocartesianLeftEvaluationMorphism",
+AddDerivationToCAP( CoexponentialToCoproductRightAdjunctionMap,
+                    "CoexponentialToCoproductRightAdjunctionMap using CoproductOnMorphisms and CocartesianRightEvaluationMorphism",
                     [ [ PreCompose, 1 ],
-                      [ CocartesianLeftEvaluationMorphism, 1 ],
+                      [ CocartesianRightEvaluationMorphism, 1 ],
                       [ CoproductOnMorphisms, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     
@@ -82,15 +82,166 @@ AddDerivationToCAP( CoexponentialToCoproductLeftAdjunctionMap,
     #        |
     #        | cocaev_ba
     #        v
-    # Coexp(a,b) ⊔ b
+    # b ⊔ Coexp(a,b)
     #        |
-    #        | f ⊔ id_b
+    #        | id_b ⊔ f
     #        v
-    #      c ⊔ b
+    #      b ⊔ c
     
     return PreCompose( cat,
-             CocartesianLeftEvaluationMorphism( cat, b, a ),
-             CoproductOnMorphisms( cat, f, IdentityMorphism( cat, b ) ) );
+             CocartesianRightEvaluationMorphism( cat, b, a ),
+             CoproductOnMorphisms( cat, IdentityMorphism( cat, b ), f ) );
+             
+end : CategoryFilter := IsCocartesianCoclosedCategory );
+
+##
+AddDerivationToCAP( CoexponentialToCoproductRightAdjunctionMapWithGivenCoproduct,
+                    "CoexponentialToCoproductRightAdjunctionMapWithGivenCoproduct using CoproductOnMorphisms and CocartesianRightEvaluationMorphism",
+                    [ [ PreCompose, 1 ],
+                      [ CocartesianRightEvaluationMorphism, 1 ],
+                      [ CoproductOnMorphismsWithGivenCoproducts, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    
+  function( cat, a, b, f, t )
+    local cocaev_ba;
+    
+    # f: Coexp(a,b) → b
+    #
+    #        a
+    #        |
+    #        | cocaev_ba
+    #        v
+    # b ⊔ Coexp(a,b)
+    #        |
+    #        | id_b ⊔ f
+    #        v
+    #      b ⊔ c
+    
+    cocaev_ba := CocartesianRightEvaluationMorphism( cat, b, a );
+    
+    return PreCompose( cat,
+             cocaev_ba,
+             CoproductOnMorphismsWithGivenCoproducts( cat, Range( cocaev_ba ), IdentityMorphism( cat, b ), f, t ) );
+             
+end : CategoryFilter := IsCocartesianCoclosedCategory );
+
+##
+AddDerivationToCAP( CocartesianRightEvaluationMorphismWithGivenRange,
+                    "CocartesianRightEvaluationMorphismWithGivenRange using the coexponential-coproduct adjunction on the identity",
+                    [ [ CoexponentialToCoproductRightAdjunctionMap, 1 ],
+                      [ IdentityMorphism, 1 ],
+                      [ CoexponentialOnObjects, 1 ] ],
+                    
+  function( cat, a, b, coproduct_object )
+    
+    # Adjoint( id_Coexp(b,a): Coexp(b,a) → Coexp(b,a) ) = ( b → a ⊔ Coexp(b,a) )
+    
+    return CoexponentialToCoproductRightAdjunctionMap( cat,
+             b, a,
+             IdentityMorphism( cat, CoexponentialOnObjects( cat, b, a ) ) );
+    
+end : CategoryFilter := IsCocartesianCoclosedCategory );
+
+AddDerivationToCAP( CocartesianRightCoevaluationMorphismWithGivenSource,
+                    "CocartesianRightCoevaluationMorphismWithGivenSource using the coexponential-coproduct adjunction on the identity",
+                    [ [ CoproductToCoexponentialRightAdjunctionMap, 1 ],
+                      [ IdentityMorphism, 1 ],
+                      [ Coproduct, 1 ] ],
+                    
+  function( cat, a, b, internal_cohom )
+    
+    # Adjoint( id_(a ⊔ b): a ⊔ b → a ⊔ b ) = ( Coexp(a ⊔ b, a) → b )
+    
+    return CoproductToCoexponentialRightAdjunctionMap( cat,
+             a, b,
+             IdentityMorphism( cat, BinaryCoproduct( cat, a, b ) ) );
+    
+end : CategoryFilter := IsCocartesianCoclosedCategory );
+
+##
+AddDerivationToCAP( CoproductToCoexponentialLeftAdjunctionMap,
+                    "CoproductToCoexponentialLeftAdjunctionMap using CocartesianLeftCoevaluationMorphism and Coexponential",
+                    [ [ PreCompose, 1 ],
+                      [ CoexponentialOnMorphisms, 1 ],
+                      [ IdentityMorphism, 1 ],
+                      [ CocartesianLeftCoevaluationMorphism, 1 ] ],
+                    
+  function( cat, b, c, g )
+    
+    # g: a → b ⊔ c
+    #
+    #    Coexp(a,c)
+    #        |
+    #        | Coexp(g, id_c)
+    #        v
+    # Coexp(b ⊔ c, c)
+    #        |
+    #        | cocacoev_cb
+    #        v
+    #        b
+    
+    return PreCompose( cat,
+             CoexponentialOnMorphisms( cat, g, IdentityMorphism( cat, c ) ),
+             CocartesianLeftCoevaluationMorphism( cat, c, b ) );
+             
+end : CategoryFilter := IsCocartesianCoclosedCategory );
+
+##
+AddDerivationToCAP( CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential,
+                    "CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential using CocartesianLeftCoevaluationMorphism and Coexponential",
+                    [ [ CocartesianLeftCoevaluationMorphism, 1 ],
+                      [ PreCompose, 1 ],
+                      [ CoexponentialOnMorphismsWithGivenCoexponentials, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    
+  function( cat, b, c, g, i )
+    local cocacoev_cb;
+    
+    # g: a → b ⊔ c
+    #
+    #    Coexp(a,c)
+    #        |
+    #        | Coexp(g, id_c)
+    #        v
+    # Coexp(b ⊔ c, c)
+    #        |
+    #        | cocacoev_cb
+    #        v
+    #        b
+    
+    cocacoev_cb := CocartesianLeftCoevaluationMorphism( cat, c, b );
+    
+    return PreCompose( cat,
+             CoexponentialOnMorphismsWithGivenCoexponentials( cat, i, g, IdentityMorphism( cat, c ), Source( cocacoev_cb ) ),
+             cocacoev_cb );
+    
+end : CategoryFilter := IsCocartesianCoclosedCategory );
+
+##
+AddDerivationToCAP( CoexponentialToCoproductLeftAdjunctionMap,
+                    "CoexponentialToCoproductLeftAdjunctionMap using CoproductOnMorphisms and CocartesianLeftEvaluationMorphism",
+                    [ [ PreCompose, 1 ],
+                      [ CocartesianLeftEvaluationMorphism, 1 ],
+                      [ CoproductOnMorphisms, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    
+  function( cat, a, c, f )
+    
+    # f: Coexp(a,c) → b
+    #
+    #        a
+    #        |
+    #        | cocaev_ca
+    #        v
+    # Coexp(a,c) ⊔ c
+    #        |
+    #        | f ⊔ id_c
+    #        v
+    #      b ⊔ c
+    
+    return PreCompose( cat,
+             CocartesianLeftEvaluationMorphism( cat, c, a ),
+             CoproductOnMorphisms( cat, f, IdentityMorphism( cat, c ) ) );
              
 end : CategoryFilter := IsCocartesianCoclosedCategory );
 
@@ -102,26 +253,26 @@ AddDerivationToCAP( CoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct,
                       [ CoproductOnMorphismsWithGivenCoproducts, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     
-  function( cat, a, b, f, t )
-    local cocaev_ba;
+  function( cat, a, c, f, t )
+    local cocaev_ca;
     
-    # f: Coexp(a,b) → c
+    # f: Coexp(a,c) → b
     #
     #        a
     #        |
-    #        | cocaev_ba
+    #        | cocaev_ca
     #        v
-    # Coexp(a,b) ⊔ b
+    # Coexp(a,c) ⊔ c
     #        |
-    #        | f ⊔ id_b
+    #        | f ⊔ id_c
     #        v
-    #      c ⊔ b
+    #      b ⊔ c
     
-    cocaev_ba := CocartesianLeftEvaluationMorphism( cat, b, a );
+    cocaev_ca := CocartesianLeftEvaluationMorphism( cat, c, a );
     
     return PreCompose( cat,
-             cocaev_ba,
-             CoproductOnMorphismsWithGivenCoproducts( cat, Range( cocaev_ba ), f, IdentityMorphism( cat, b ), t ) );
+             cocaev_ca,
+             CoproductOnMorphismsWithGivenCoproducts( cat, Range( cocaev_ca ), f, IdentityMorphism( cat, c ), t ) );
              
 end : CategoryFilter := IsCocartesianCoclosedCategory );
 

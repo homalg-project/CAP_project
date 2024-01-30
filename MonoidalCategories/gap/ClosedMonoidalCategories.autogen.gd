@@ -88,6 +88,82 @@ DeclareOperation( "AddClosedMonoidalLeftEvaluationMorphismWithGivenSource",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `ClosedMonoidalRightCoevaluationMorphism`.
+#! $F: ( a, b ) \mapsto \mathtt{ClosedMonoidalRightCoevaluationMorphism}(a, b)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddClosedMonoidalRightCoevaluationMorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddClosedMonoidalRightCoevaluationMorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddClosedMonoidalRightCoevaluationMorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddClosedMonoidalRightCoevaluationMorphism",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `ClosedMonoidalRightCoevaluationMorphismWithGivenRange`.
+#! $F: ( a, b, r ) \mapsto \mathtt{ClosedMonoidalRightCoevaluationMorphismWithGivenRange}(a, b, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddClosedMonoidalRightCoevaluationMorphismWithGivenRange",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddClosedMonoidalRightCoevaluationMorphismWithGivenRange",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddClosedMonoidalRightCoevaluationMorphismWithGivenRange",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddClosedMonoidalRightCoevaluationMorphismWithGivenRange",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `ClosedMonoidalRightEvaluationMorphism`.
+#! $F: ( a, b ) \mapsto \mathtt{ClosedMonoidalRightEvaluationMorphism}(a, b)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddClosedMonoidalRightEvaluationMorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddClosedMonoidalRightEvaluationMorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddClosedMonoidalRightEvaluationMorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddClosedMonoidalRightEvaluationMorphism",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `ClosedMonoidalRightEvaluationMorphismWithGivenSource`.
+#! $F: ( a, b, s ) \mapsto \mathtt{ClosedMonoidalRightEvaluationMorphismWithGivenSource}(a, b, s)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddClosedMonoidalRightEvaluationMorphismWithGivenSource",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddClosedMonoidalRightEvaluationMorphismWithGivenSource",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddClosedMonoidalRightEvaluationMorphismWithGivenSource",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddClosedMonoidalRightEvaluationMorphismWithGivenSource",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `DualOnMorphisms`.
 #! $F: ( alpha ) \mapsto \mathtt{DualOnMorphisms}(alpha)$.
 #! @Returns nothing
@@ -273,6 +349,44 @@ DeclareOperation( "AddInternalHomToTensorProductLeftAdjunctionMapWithGivenTensor
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddInternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `InternalHomToTensorProductRightAdjunctionMap`.
+#! $F: ( a, c, g ) \mapsto \mathtt{InternalHomToTensorProductRightAdjunctionMap}(a, c, g)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddInternalHomToTensorProductRightAdjunctionMap",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInternalHomToTensorProductRightAdjunctionMap",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInternalHomToTensorProductRightAdjunctionMap",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInternalHomToTensorProductRightAdjunctionMap",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `InternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct`.
+#! $F: ( a, c, g, t ) \mapsto \mathtt{InternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct}(a, c, g, t)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddInternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -691,6 +805,44 @@ DeclareOperation( "AddTensorProductToInternalHomLeftAdjunctionMapWithGivenIntern
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddTensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `TensorProductToInternalHomRightAdjunctionMap`.
+#! $F: ( a, b, f ) \mapsto \mathtt{TensorProductToInternalHomRightAdjunctionMap}(a, b, f)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddTensorProductToInternalHomRightAdjunctionMap",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddTensorProductToInternalHomRightAdjunctionMap",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddTensorProductToInternalHomRightAdjunctionMap",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddTensorProductToInternalHomRightAdjunctionMap",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `TensorProductToInternalHomRightAdjunctionMapWithGivenInternalHom`.
+#! $F: ( a, b, f, i ) \mapsto \mathtt{TensorProductToInternalHomRightAdjunctionMapWithGivenInternalHom}(a, b, f, i)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddTensorProductToInternalHomRightAdjunctionMapWithGivenInternalHom",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddTensorProductToInternalHomRightAdjunctionMapWithGivenInternalHom",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddTensorProductToInternalHomRightAdjunctionMapWithGivenInternalHom",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddTensorProductToInternalHomRightAdjunctionMapWithGivenInternalHom",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

@@ -1979,9 +1979,9 @@ end
     AddInternalCoHomToTensorProductLeftAdjunctionMap( cat,
         
 ########
-function ( cat_1, a_1, b_1, f_1 )
+function ( cat_1, a_1, c_1, f_1 )
     local morphism_attr_1_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1;
-    deduped_8_1 := AsInteger( b_1 );
+    deduped_8_1 := AsInteger( c_1 );
     deduped_7_1 := UnderlyingRing( cat_1 );
     deduped_6_1 := AsInteger( a_1 );
     deduped_5_1 := deduped_6_1 * deduped_8_1;
@@ -2001,9 +2001,9 @@ end
     AddInternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct( cat,
         
 ########
-function ( cat_1, a_1, b_1, f_1, t_1 )
+function ( cat_1, a_1, c_1, f_1, t_1 )
     local deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1;
-    deduped_7_1 := AsInteger( b_1 );
+    deduped_7_1 := AsInteger( c_1 );
     deduped_6_1 := UnderlyingRing( cat_1 );
     deduped_5_1 := AsInteger( a_1 );
     deduped_4_1 := deduped_5_1 * deduped_7_1;
@@ -5696,11 +5696,11 @@ end
     AddTensorProductToInternalCoHomLeftAdjunctionMap( cat,
         
 ########
-function ( cat_1, c_1, b_1, g_1 )
+function ( cat_1, b_1, c_1, g_1 )
     local morphism_attr_1_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1;
-    deduped_10_1 := AsInteger( c_1 );
+    deduped_10_1 := AsInteger( b_1 );
     deduped_9_1 := UnderlyingRing( cat_1 );
-    deduped_8_1 := AsInteger( b_1 );
+    deduped_8_1 := AsInteger( c_1 );
     deduped_7_1 := HomalgIdentityMatrix( deduped_10_1, deduped_9_1 );
     deduped_6_1 := deduped_8_1 * deduped_8_1;
     deduped_5_1 := deduped_10_1 * deduped_8_1;
@@ -5714,7 +5714,7 @@ function ( cat_1, c_1, b_1, g_1 )
                           deduped_1_2 := (i_2 - 1);
                           return (REM_INT( deduped_1_2, deduped_8_1 ) * deduped_8_1 + QUO_INT( deduped_1_2, deduped_8_1 ) + 1);
                       end ) ), deduped_6_1 ), deduped_6_1, deduped_6_1, deduped_9_1 ), deduped_7_1 ) * KroneckerMat( ConvertMatrixToColumn( deduped_4_1 ), deduped_7_1 ));
-    return AsCapCategoryMorphism( cat_1, AsCapCategoryObject( cat_1, NumberRows( morphism_attr_1_1 ) ), morphism_attr_1_1, c_1 );
+    return AsCapCategoryMorphism( cat_1, AsCapCategoryObject( cat_1, NumberRows( morphism_attr_1_1 ) ), morphism_attr_1_1, b_1 );
 end
 ########
         
@@ -5724,11 +5724,11 @@ end
     AddTensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom( cat,
         
 ########
-function ( cat_1, c_1, b_1, g_1, i_1 )
+function ( cat_1, b_1, c_1, g_1, i_1 )
     local deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1;
-    deduped_9_1 := AsInteger( c_1 );
+    deduped_9_1 := AsInteger( b_1 );
     deduped_8_1 := UnderlyingRing( cat_1 );
-    deduped_7_1 := AsInteger( b_1 );
+    deduped_7_1 := AsInteger( c_1 );
     deduped_6_1 := HomalgIdentityMatrix( deduped_9_1, deduped_8_1 );
     deduped_5_1 := deduped_7_1 * deduped_7_1;
     deduped_4_1 := deduped_9_1 * deduped_7_1;
@@ -5741,7 +5741,7 @@ function ( cat_1, c_1, b_1, g_1, i_1 )
                             local deduped_1_2;
                             deduped_1_2 := (i_2 - 1);
                             return (REM_INT( deduped_1_2, deduped_7_1 ) * deduped_7_1 + QUO_INT( deduped_1_2, deduped_7_1 ) + 1);
-                        end ) ), deduped_5_1 ), deduped_5_1, deduped_5_1, deduped_8_1 ), deduped_6_1 ) * KroneckerMat( ConvertMatrixToColumn( deduped_3_1 ), deduped_6_1 )), c_1 );
+                        end ) ), deduped_5_1 ), deduped_5_1, deduped_5_1, deduped_8_1 ), deduped_6_1 ) * KroneckerMat( ConvertMatrixToColumn( deduped_3_1 ), deduped_6_1 )), b_1 );
 end
 ########
         

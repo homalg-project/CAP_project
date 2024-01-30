@@ -145,12 +145,53 @@ InstallGlobalFunction( "ClosedMonoidalCategoriesTest",
             
         fi;
         
+        if CanCompute( cat, "ClosedMonoidalRightEvaluationMorphism" ) then
+            
+            if verbose then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Display( "Testing 'ClosedMonoidalRightEvaluationMorphism' ..." );
+                
+            fi;
+            
+            ev_ab := ClosedMonoidalRightEvaluationMorphism( a, b );
+            ev_ba := ClosedMonoidalRightEvaluationMorphism( b, a );
+            
+            cocl_ev_ab_op := CoclosedMonoidalRightEvaluationMorphism( a_op, b_op );
+            cocl_ev_ba_op := CoclosedMonoidalRightEvaluationMorphism( b_op, a_op );
+            
+            # Arguments must be reversed for evaluations
+            Assert( 0, IsCongruentForMorphisms( cocl_ev_ab_op, Opposite( opposite, ev_ab ) ) );
+            Assert( 0, IsCongruentForMorphisms( cocl_ev_ba_op, Opposite( opposite, ev_ba ) ) );
+            
+        fi;
+        
+        if CanCompute( cat, "ClosedMonoidalRightCoevaluationMorphism" ) then
+            
+            if verbose then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Display( "Testing 'ClosedMonoidalRightEvaluationMorphism' ..." );
+                
+            fi;
+            
+            coev_ab := ClosedMonoidalRightCoevaluationMorphism( a, b );
+            coev_ba := ClosedMonoidalRightCoevaluationMorphism( b, a );
+            
+            cocl_coev_ab_op := CoclosedMonoidalRightCoevaluationMorphism( a_op, b_op );
+            cocl_coev_ba_op := CoclosedMonoidalRightCoevaluationMorphism( b_op, a_op );
+            
+            Assert( 0, IsCongruentForMorphisms( cocl_coev_ab_op, Opposite( opposite, coev_ab ) ) );
+            Assert( 0, IsCongruentForMorphisms( cocl_coev_ba_op, Opposite( opposite, coev_ba ) ) );
+            
+        fi;
+        
         if CanCompute( cat, "ClosedMonoidalLeftEvaluationMorphism" ) then
             
             if verbose then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( "Testing 'EvaluationMorphism' ..." );
+                Display( "Testing 'ClosedMonoidalLeftEvaluationMorphism' ..." );
                 
             fi;
             
@@ -171,7 +212,7 @@ InstallGlobalFunction( "ClosedMonoidalCategoriesTest",
             if verbose then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( "Testing 'CoevaluationMorphism' ..." );
+                Display( "Testing 'ClosedMonoidalLeftEvaluationMorphism' ..." );
                 
             fi;
             

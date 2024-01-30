@@ -148,6 +148,47 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             
         fi;
         
+        if CanCompute( cat, "CocartesianRightEvaluationMorphism" ) then
+            
+            if verbose then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Display( "Testing 'CocartesianRightEvaluationMorphism' ..." );
+                
+            fi;
+            
+            coca_ev_ab := CocartesianRightEvaluationMorphism( a, b );
+            coca_ev_ba := CocartesianRightEvaluationMorphism( b, a );
+            
+            ev_ab_op := CartesianRightEvaluationMorphism( a_op, b_op );
+            ev_ba_op := CartesianRightEvaluationMorphism( b_op, a_op );
+            
+            # Arguments must be reversed for evaluations
+            Assert( 0, IsCongruentForMorphisms( coca_ev_ab, Opposite( ev_ab_op ) ) );
+            Assert( 0, IsCongruentForMorphisms( coca_ev_ba, Opposite( ev_ba_op ) ) );
+            
+        fi;
+        
+        if CanCompute( cat, "CocartesianRightCoevaluationMorphism" ) then
+            
+            if verbose then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Display( "Testing 'CocartesianRightCoevaluationMorphism' ..." );
+                
+            fi;
+            
+            coca_coev_ab := CocartesianRightCoevaluationMorphism( a, b );
+            coca_coev_ba := CocartesianRightCoevaluationMorphism( b, a );
+            
+            coev_ab_op := CartesianRightCoevaluationMorphism( a_op, b_op );
+            coev_ba_op := CartesianRightCoevaluationMorphism( b_op, a_op );
+            
+            Assert( 0, IsCongruentForMorphisms( coev_ab_op, Opposite( opposite, coca_coev_ab ) ) );
+            Assert( 0, IsCongruentForMorphisms( coev_ba_op, Opposite( opposite, coca_coev_ba ) ) );
+            
+        fi;
+        
         if CanCompute( cat, "CocartesianLeftEvaluationMorphism" ) then
             
             if verbose then
