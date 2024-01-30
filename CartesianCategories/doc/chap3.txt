@@ -240,7 +240,7 @@
     [4X[25X>[125X [27X      CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory  ),[127X[104X
     [4X[25X>[125X [27X  properties := [ "IsBicartesianClosedCategory", "IsSkeletalCategory" ] ) );;[127X[104X
     [4X[25Xgap>[125X [27XInfoOfInstalledOperationsOfCategory( distributive );[127X[104X
-    [4X[28X19 primitive operations were used to derive 113 operations for this category \[128X[104X
+    [4X[28X21 primitive operations were used to derive 121 operations for this category \[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsBicartesianClosedCategory[128X[104X
     [4X[28Xand not yet algorithmically[128X[104X
