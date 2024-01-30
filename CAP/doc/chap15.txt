@@ -665,14 +665,14 @@
   [1X15.11 [33X[0;0YTerminal category[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "MonoidalCategories" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "MonoidalCategories", ">= 2024.01-12", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XT := TerminalCategoryWithMultipleObjects( );[127X[104X
     [4X[28XTerminalCategoryWithMultipleObjects( )[128X[104X
     [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
     [4X[28XA CAP category with name TerminalCategoryWithMultipleObjects( ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X78 primitive operations were used to derive 367 operations for this category \[128X[104X
+    [4X[28X82 primitive operations were used to derive 383 operations for this category \[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
@@ -850,14 +850,14 @@
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "MonoidalCategories" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "MonoidalCategories", ">= 2024.01-12", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XT := TerminalCategoryWithSingleObject( );[127X[104X
     [4X[28XTerminalCategoryWithSingleObject( )[128X[104X
     [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
     [4X[28XA CAP category with name TerminalCategoryWithSingleObject( ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X72 primitive operations were used to derive 367 operations for this category \[128X[104X
+    [4X[28X76 primitive operations were used to derive 383 operations for this category \[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
