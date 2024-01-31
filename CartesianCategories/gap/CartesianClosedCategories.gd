@@ -118,11 +118,11 @@ DeclareOperation( "ExponentialToDirectProductRightAdjunctionMap",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
-#! The arguments are two objects $a,c$, a morphism $g: b \rightarrow \mathrm{Exponential}(a,c)$ and an object $t = a \times b$.
-#! The output is a morphism $f: a \times b \rightarrow c$ corresponding to $g$ under the
+#! The arguments are two objects $a,c$, a morphism $g: b \rightarrow \mathrm{Exponential}(a,c)$ and an object $s = a \times b$.
+#! The output is a morphism $f: s \rightarrow c$ corresponding to $g$ under the
 #! direct product-exponential adjunction.
-#! @Returns a morphism in $\mathrm{Hom}(t, c)$.
-#! @Arguments a, c, g, t
+#! @Returns a morphism in $\mathrm{Hom}(s, c)$.
+#! @Arguments a, c, g, s
 DeclareOperation( "ExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
@@ -190,11 +190,11 @@ DeclareOperation( "ExponentialToDirectProductLeftAdjunctionMap",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
-#! The arguments are two objects $b,c$, a morphism $g: a \rightarrow \mathrm{Exponential}(b,c)$ and an object $t = a \times b$.
-#! The output is a morphism $f: a \times b \rightarrow c$ corresponding to $g$ under the
+#! The arguments are two objects $b,c$, a morphism $g: a \rightarrow \mathrm{Exponential}(b,c)$ and an object $s = a \times b$.
+#! The output is a morphism $f: s \rightarrow c$ corresponding to $g$ under the
 #! direct product-exponential adjunction.
-#! @Returns a morphism in $\mathrm{Hom}(t, c)$.
-#! @Arguments b, c, g, t
+#! @Returns a morphism in $\mathrm{Hom}(s, c)$.
+#! @Arguments b, c, g, s
 DeclareOperation( "ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 

@@ -102,7 +102,7 @@ AddDerivationToCAP( ExponentialToDirectProductRightAdjunctionMapWithGivenDirectP
                       [ IdentityMorphism, 1 ],
                       [ CartesianRightEvaluationMorphism, 1 ] ],
                     
-  function( cat, a, c, g, t )
+  function( cat, a, c, g, s )
     local ev_ac;
     
     # g: b → Exp(a,c)
@@ -120,7 +120,7 @@ AddDerivationToCAP( ExponentialToDirectProductRightAdjunctionMapWithGivenDirectP
     ev_ac := CartesianRightEvaluationMorphism( cat, a, c );
      
     return PreCompose( cat,
-             DirectProductOnMorphismsWithGivenDirectProducts( cat, t, IdentityMorphism( cat, a ), g, Source( ev_ac ) ),
+             DirectProductOnMorphismsWithGivenDirectProducts( cat, s, IdentityMorphism( cat, a ), g, Source( ev_ac ) ),
              ev_ac );
     
 end : CategoryFilter := IsCartesianClosedCategory );
@@ -254,7 +254,7 @@ AddDerivationToCAP( ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectPr
                       [ IdentityMorphism, 1 ],
                       [ CartesianLeftEvaluationMorphism, 1 ] ],
                     
-  function( cat, b, c, g, t )
+  function( cat, b, c, g, s )
     local ev_bc;
     
     # g: a → Exp(b,c)
@@ -272,7 +272,7 @@ AddDerivationToCAP( ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectPr
     ev_bc := CartesianLeftEvaluationMorphism( cat, b, c );
      
     return PreCompose( cat,
-             DirectProductOnMorphismsWithGivenDirectProducts( cat, t, g, IdentityMorphism( cat, b ), Source( ev_bc ) ),
+             DirectProductOnMorphismsWithGivenDirectProducts( cat, s, g, IdentityMorphism( cat, b ), Source( ev_bc ) ),
              ev_bc );
     
 end : CategoryFilter := IsCartesianClosedCategory );

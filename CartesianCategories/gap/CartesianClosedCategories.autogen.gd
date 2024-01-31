@@ -602,7 +602,7 @@ DeclareOperation( "AddExponentialToDirectProductLeftAdjunctionMap",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct`.
-#! $F: ( b, c, g, t ) \mapsto \mathtt{ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct}(b, c, g, t)$.
+#! $F: ( b, c, g, s ) \mapsto \mathtt{ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct}(b, c, g, s)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct",
@@ -640,7 +640,7 @@ DeclareOperation( "AddExponentialToDirectProductRightAdjunctionMap",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `ExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct`.
-#! $F: ( a, c, g, t ) \mapsto \mathtt{ExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct}(a, c, g, t)$.
+#! $F: ( a, c, g, s ) \mapsto \mathtt{ExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct}(a, c, g, s)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct",

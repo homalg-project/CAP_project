@@ -140,13 +140,13 @@ ExponentialToDirectProductRightAdjunctionMap := rec(
 ExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct := rec(
   filter_list := [ "category", "object", "object", "morphism", "object" ],
   return_type := "morphism",
-  input_arguments_names := [ "cat", "a", "c", "g", "t" ],
-  output_source_getter_string := "t",
+  input_arguments_names := [ "cat", "a", "c", "g", "s" ],
+  output_source_getter_string := "s",
   output_source_getter_preconditions := [ ],
   output_range_getter_string := "c",
   output_range_getter_preconditions := [ ],
   dual_operation := "CoexponentialToCoproductRightAdjunctionMapWithGivenCoproduct",
-  dual_preprocessor_func := { cat, a, c, g, t } -> NTuple( 4, Opposite( cat ), Opposite( c ), Opposite( a ), Opposite( g ), Opposite( t ) ),
+  dual_preprocessor_func := { cat, a, c, g, s } -> NTuple( 4, Opposite( cat ), Opposite( c ), Opposite( a ), Opposite( g ), Opposite( s ) ),
   dual_arguments_reversed := false,
 ),
 
@@ -246,13 +246,13 @@ ExponentialToDirectProductLeftAdjunctionMap := rec(
 ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct := rec(
   filter_list := [ "category", "object", "object", "morphism", "object" ],
   return_type := "morphism",
-  input_arguments_names := [ "cat", "b", "c", "g", "t" ],
-  output_source_getter_string := "t",
+  input_arguments_names := [ "cat", "b", "c", "g", "s" ],
+  output_source_getter_string := "s",
   output_source_getter_preconditions := [ ],
   output_range_getter_string := "c",
   output_range_getter_preconditions := [ ],
   dual_operation := "CoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct",
-  dual_preprocessor_func := { cat, a, b, g, t } -> NTuple( 4, Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( g ), Opposite( t ) ),
+  dual_preprocessor_func := { cat, a, b, g, s } -> NTuple( 4, Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( g ), Opposite( s ) ),
   dual_arguments_reversed := false,
 ),
 
