@@ -157,12 +157,12 @@ AddDerivationToCAP( CocartesianBraidingWithGivenCoproducts,
                       [ UniversalMorphismFromCoproductWithGivenCoproduct, 1 ] ],
                     
   function( cat, aub, a, b, bua )
-    local i1, i2;
+    local i_b, i_a;
     
-    i1 := InjectionOfCofactorOfCoproductWithGivenCoproduct( cat, [ b, a ], 1, bua );
-    i2 := InjectionOfCofactorOfCoproductWithGivenCoproduct( cat, [ b, a ], 2, bua );
+    i_b := InjectionOfCofactorOfCoproductWithGivenCoproduct( cat, [ b, a ], 1, bua );
+    i_a := InjectionOfCofactorOfCoproductWithGivenCoproduct( cat, [ b, a ], 2, bua );
     
-    return UniversalMorphismFromCoproductWithGivenCoproduct( cat, [ a, b ], bua, [ i2, i1 ], aub );
+    return UniversalMorphismFromCoproductWithGivenCoproduct( cat, [ a, b ], bua, [ i_a, i_b ], aub );
     
 end );
 
