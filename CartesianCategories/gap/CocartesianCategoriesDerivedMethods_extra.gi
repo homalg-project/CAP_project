@@ -167,6 +167,22 @@ AddDerivationToCAP( CocartesianBraidingWithGivenCoproducts,
 end );
 
 ##
+AddDerivationToCAP( CocartesianBraidingInverseWithGivenCoproducts,
+                    "CocartesianBraidingInverseWithGivenCoproducts using the coproduct injections and the universal morphism into the coproduct",
+                    [ [ InjectionOfCofactorOfCoproductWithGivenCoproduct, 2 ],
+                      [ UniversalMorphismFromCoproductWithGivenCoproduct, 1 ] ],
+                    
+  function( cat, bua, a, b, aub )
+    local i_a, i_b;
+    
+    i_a := InjectionOfCofactorOfCoproductWithGivenCoproduct( cat, [ a, b ], 1, aub );
+    i_b := InjectionOfCofactorOfCoproductWithGivenCoproduct( cat, [ a, b ], 2, aub );
+    
+    return UniversalMorphismFromCoproductWithGivenCoproduct( cat, [ b, a ], aub, [ i_b, i_a ], bua );
+    
+end );
+
+##
 AddDerivationToCAP( LeftCocartesianCodistributivityExpandingWithGivenObjects,
                     "LeftCocartesianCodistributivityExpandingWithGivenObjects using the direct product projections, the functoriality of the coproduct, and the universal morphism of direct products",
                     [ [ ProjectionInFactorOfDirectProduct, 2 ],

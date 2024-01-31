@@ -167,6 +167,22 @@ AddDerivationToCAP( CartesianBraidingWithGivenDirectProducts,
 end );
 
 ##
+AddDerivationToCAP( CartesianBraidingInverseWithGivenDirectProducts,
+                    "CartesianBraidingInverseWithGivenDirectProducts using the direct product projections and the universal morphism in the direct product",
+                    [ [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 2 ],
+                      [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 1 ] ],
+                    
+  function( cat, bxa, a, b, axb )
+    local p_b, p_a;
+    
+    p_b := ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, [ b, a ], 1, bxa );
+    p_a := ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, [ b, a ], 2, bxa );
+    
+    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat, [ a, b ], bxa, [ p_a, p_b ], axb );
+    
+end );
+
+##
 AddDerivationToCAP( LeftCartesianDistributivityFactoringWithGivenObjects,
                     "LeftCartesianDistributivityFactoringWithGivenObjects using the coproduct injections, the functoriality of the direct product, and the universal morphism of coproducts",
                     [ [ InjectionOfCofactorOfCoproduct, 2 ],
