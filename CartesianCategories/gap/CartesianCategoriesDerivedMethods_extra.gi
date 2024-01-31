@@ -157,12 +157,28 @@ AddDerivationToCAP( CartesianBraidingWithGivenDirectProducts,
                       [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 1 ] ],
                     
   function( cat, axb, a, b, bxa )
-    local p1, p2;
+    local p_a, p_b;
     
-    p1 := ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, [ a, b ], 1, axb );
-    p2 := ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, [ a, b ], 2, axb );
+    p_a := ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, [ a, b ], 1, axb );
+    p_b := ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, [ a, b ], 2, axb );
     
-    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat, [ b, a ], axb, [ p2, p1 ], bxa );
+    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat, [ b, a ], axb, [ p_b, p_a ], bxa );
+    
+end );
+
+##
+AddDerivationToCAP( CartesianBraidingInverseWithGivenDirectProducts,
+                    "CartesianBraidingInverseWithGivenDirectProducts using the direct product projections and the universal morphism in the direct product",
+                    [ [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 2 ],
+                      [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 1 ] ],
+                    
+  function( cat, bxa, a, b, axb )
+    local p_b, p_a;
+    
+    p_b := ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, [ b, a ], 1, bxa );
+    p_a := ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, [ b, a ], 2, bxa );
+    
+    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat, [ a, b ], bxa, [ p_a, p_b ], axb );
     
 end );
 
