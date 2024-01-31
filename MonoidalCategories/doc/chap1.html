@@ -1309,10 +1309,10 @@
 
 <h5>1.6-11 InternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct</code>( <var class="Arg">a</var>, <var class="Arg">c</var>, <var class="Arg">g</var>, <var class="Arg">t</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(t, c)</span>.</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct</code>( <var class="Arg">a</var>, <var class="Arg">c</var>, <var class="Arg">g</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(s, c)</span>.</p>
 
-<p>The arguments are two objects <span class="Math">a,c</span>, a morphism <span class="Math">g: b \rightarrow \mathrm{\underline{Hom}}(a,c)</span> and an object <span class="Math">t = a \otimes b</span>. The output is a morphism <span class="Math">f: a \otimes b \rightarrow c</span> corresponding to <span class="Math">g</span> under the tensor hom adjunction.</p>
+<p>The arguments are two objects <span class="Math">a,c</span>, a morphism <span class="Math">g: b \rightarrow \mathrm{\underline{Hom}}(a,c)</span> and an object <span class="Math">s = a \otimes b</span>. The output is a morphism <span class="Math">f: s \rightarrow c</span> corresponding to <span class="Math">g</span> under the tensor hom adjunction.</p>
 
 <p><a id="X80B3C53A854B515B" name="X80B3C53A854B515B"></a></p>
 
@@ -1381,10 +1381,10 @@
 
 <h5>1.6-19 InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct</code>( <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">g</var>, <var class="Arg">t</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(t, c)</span>.</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct</code>( <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">g</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(s, c)</span>.</p>
 
-<p>The arguments are two objects <span class="Math">b,c</span>, a morphism <span class="Math">g: a \rightarrow \mathrm{\underline{Hom}}(b,c)</span> and an object <span class="Math">t = a \otimes b</span>. The output is a morphism <span class="Math">f: a \otimes b \rightarrow c</span> corresponding to <span class="Math">g</span> under the tensor hom adjunction.</p>
+<p>The arguments are two objects <span class="Math">b,c</span>, a morphism <span class="Math">g: a \rightarrow \mathrm{\underline{Hom}}(b,c)</span> and an object <span class="Math">s = a \otimes b</span>. The output is a morphism <span class="Math">f: s \rightarrow c</span> corresponding to <span class="Math">g</span> under the tensor hom adjunction.</p>
 
 <p><a id="X86E4E97C82BFB45C" name="X86E4E97C82BFB45C"></a></p>
 
@@ -2070,7 +2070,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalCoHomToTensorProductRightAdjunctionMapWithGivenTensorProduct</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">f</var>, <var class="Arg">t</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, t )</span>.</p>
 
-<p>The arguments are two objects <span class="Math">a,b</span>, a morphism <span class="Math">f: \mathrm{\underline{coHom}}(a,b) \rightarrow b</span> and an object <span class="Math">t = b \otimes c</span>. The output is a morphism <span class="Math">g: a \rightarrow b \otimes c</span> corresponding to <span class="Math">f</span> under the cohom tensor adjunction.</p>
+<p>The arguments are two objects <span class="Math">a,b</span>, a morphism <span class="Math">f: \mathrm{\underline{coHom}}(a,b) \rightarrow b</span> and an object <span class="Math">t = b \otimes c</span>. The output is a morphism <span class="Math">g: a \rightarrow t</span> corresponding to <span class="Math">f</span> under the cohom tensor adjunction.</p>
 
 <p><a id="X81020D9E85C3280A" name="X81020D9E85C3280A"></a></p>
 
@@ -2142,7 +2142,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct</code>( <var class="Arg">a</var>, <var class="Arg">c</var>, <var class="Arg">f</var>, <var class="Arg">t</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, t )</span>.</p>
 
-<p>The arguments are two objects <span class="Math">a,c</span>, a morphism <span class="Math">f: \mathrm{\underline{coHom}}(a,c) \rightarrow b</span> and an object <span class="Math">t = b \otimes c</span>. The output is a morphism <span class="Math">g: a \rightarrow b \otimes c</span> corresponding to <span class="Math">f</span> under the cohom tensor adjunction.</p>
+<p>The arguments are two objects <span class="Math">a,c</span>, a morphism <span class="Math">f: \mathrm{\underline{coHom}}(a,c) \rightarrow b</span> and an object <span class="Math">t = b \otimes c</span>. The output is a morphism <span class="Math">g: a \rightarrow t</span> corresponding to <span class="Math">f</span> under the cohom tensor adjunction.</p>
 
 <p><a id="X8337DE6B7D61EAC2" name="X8337DE6B7D61EAC2"></a></p>
 
@@ -2974,7 +2974,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct</code>. <span class="Math">F: ( b, c, g, t ) \mapsto \mathtt{InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct}(b, c, g, t)</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct</code>. <span class="Math">F: ( b, c, g, s ) \mapsto \mathtt{InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct}(b, c, g, s)</span>.</p>
 
 <p><a id="X7859349279882E9E" name="X7859349279882E9E"></a></p>
 
@@ -2992,7 +2992,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">InternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct</code>. <span class="Math">F: ( a, c, g, t ) \mapsto \mathtt{InternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct}(a, c, g, t)</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">InternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct</code>. <span class="Math">F: ( a, c, g, s ) \mapsto \mathtt{InternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct}(a, c, g, s)</span>.</p>
 
 <p><a id="X7983CB57783E6813" name="X7983CB57783E6813"></a></p>
 

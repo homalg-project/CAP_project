@@ -837,13 +837,13 @@
   
   [1X1.6-11 InternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct[101X
   
-  [33X[1;0Y[29X[2XInternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct[102X( [3Xa[103X, [3Xc[103X, [3Xg[103X, [3Xt[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(t, c)[123X.[133X
+  [33X[1;0Y[29X[2XInternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct[102X( [3Xa[103X, [3Xc[103X, [3Xg[103X, [3Xs[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(s, c)[123X.[133X
   
   [33X[0;0YThe   arguments   are   two   objects  [23Xa,c[123X,  a  morphism  [23Xg:  b  \rightarrow
-  \mathrm{\underline{Hom}}(a,c)[123X and an object [23Xt = a \otimes b[123X. The output is a
-  morphism  [23Xf:  a  \otimes b \rightarrow c[123X corresponding to [23Xg[123X under the tensor
-  hom adjunction.[133X
+  \mathrm{\underline{Hom}}(a,c)[123X and an object [23Xs = a \otimes b[123X. The output is a
+  morphism  [23Xf:  s  \rightarrow  c[123X  corresponding  to  [23Xg[123X  under  the tensor hom
+  adjunction.[133X
   
   [1X1.6-12 ClosedMonoidalLeftEvaluationMorphism[101X
   
@@ -916,13 +916,13 @@
   
   [1X1.6-19 InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct[101X
   
-  [33X[1;0Y[29X[2XInternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct[102X( [3Xb[103X, [3Xc[103X, [3Xg[103X, [3Xt[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(t, c)[123X.[133X
+  [33X[1;0Y[29X[2XInternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct[102X( [3Xb[103X, [3Xc[103X, [3Xg[103X, [3Xs[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(s, c)[123X.[133X
   
   [33X[0;0YThe   arguments   are   two   objects  [23Xb,c[123X,  a  morphism  [23Xg:  a  \rightarrow
-  \mathrm{\underline{Hom}}(b,c)[123X and an object [23Xt = a \otimes b[123X. The output is a
-  morphism  [23Xf:  a  \otimes b \rightarrow c[123X corresponding to [23Xg[123X under the tensor
-  hom adjunction.[133X
+  \mathrm{\underline{Hom}}(b,c)[123X and an object [23Xs = a \otimes b[123X. The output is a
+  morphism  [23Xf:  s  \rightarrow  c[123X  corresponding  to  [23Xg[123X  under  the tensor hom
+  adjunction.[133X
   
   [1X1.6-20 MonoidalPreComposeMorphism[101X
   
@@ -1689,8 +1689,8 @@
   
   [33X[0;0YThe     arguments     are     two     objects    [23Xa,b[123X,    a    morphism    [23Xf:
   \mathrm{\underline{coHom}}(a,b) \rightarrow b[123X and an object [23Xt = b \otimes c[123X.
-  The  output  is  a  morphism [23Xg: a \rightarrow b \otimes c[123X corresponding to [23Xf[123X
-  under the cohom tensor adjunction.[133X
+  The  output  is  a  morphism [23Xg: a \rightarrow t[123X corresponding to [23Xf[123X under the
+  cohom tensor adjunction.[133X
   
   [1X1.8-12 CoclosedMonoidalLeftEvaluationMorphism[101X
   
@@ -1771,8 +1771,8 @@
   
   [33X[0;0YThe     arguments     are     two     objects    [23Xa,c[123X,    a    morphism    [23Xf:
   \mathrm{\underline{coHom}}(a,c) \rightarrow b[123X and an object [23Xt = b \otimes c[123X.
-  The  output  is  a  morphism [23Xg: a \rightarrow b \otimes c[123X corresponding to [23Xf[123X
-  under the cohom tensor adjunction.[133X
+  The  output  is  a  morphism [23Xg: a \rightarrow t[123X corresponding to [23Xf[123X under the
+  cohom tensor adjunction.[133X
   
   [1X1.8-20 MonoidalPreCoComposeMorphism[101X
   
@@ -2686,9 +2686,9 @@
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XInternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct[110X.  [23XF:  ( b,
-  c,                g,                t                )               \mapsto
+  c,                g,                s                )               \mapsto
   \mathtt{InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct}(b,
-  c, g, t)[123X.[133X
+  c, g, s)[123X.[133X
   
   [1X1.14-31 AddInternalHomToTensorProductRightAdjunctionMap[101X
   
@@ -2708,9 +2708,9 @@
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XInternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct[110X.  [23XF: ( a,
-  c,                g,                t                )               \mapsto
+  c,                g,                s                )               \mapsto
   \mathtt{InternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct}(a,
-  c, g, t)[123X.[133X
+  c, g, s)[123X.[133X
   
   [1X1.14-33 AddIsomorphismFromDualObjectToInternalHomIntoTensorUnit[101X
   
