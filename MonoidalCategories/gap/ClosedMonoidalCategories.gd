@@ -115,11 +115,11 @@ DeclareOperation( "InternalHomToTensorProductRightAdjunctionMap",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
-#! The arguments are two objects $a,c$, a morphism $g: b \rightarrow \mathrm{\underline{Hom}}(a,c)$ and an object $t = a \otimes b$.
-#! The output is a morphism $f: a \otimes b \rightarrow c$ corresponding to $g$ under the
+#! The arguments are two objects $a,c$, a morphism $g: b \rightarrow \mathrm{\underline{Hom}}(a,c)$ and an object $s = a \otimes b$.
+#! The output is a morphism $f: s \rightarrow c$ corresponding to $g$ under the
 #! tensor hom adjunction.
-#! @Returns a morphism in $\mathrm{Hom}(t, c)$.
-#! @Arguments a, c, g, t
+#! @Returns a morphism in $\mathrm{Hom}(s, c)$.
+#! @Arguments a, c, g, s
 DeclareOperation( "InternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
@@ -187,11 +187,11 @@ DeclareOperation( "InternalHomToTensorProductLeftAdjunctionMap",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
-#! The arguments are two objects $b,c$, a morphism $g: a \rightarrow \mathrm{\underline{Hom}}(b,c)$ and an object $t = a \otimes b$.
-#! The output is a morphism $f: a \otimes b \rightarrow c$ corresponding to $g$ under the
+#! The arguments are two objects $b,c$, a morphism $g: a \rightarrow \mathrm{\underline{Hom}}(b,c)$ and an object $s = a \otimes b$.
+#! The output is a morphism $f: s \rightarrow c$ corresponding to $g$ under the
 #! tensor hom adjunction.
-#! @Returns a morphism in $\mathrm{Hom}(t, c)$.
-#! @Arguments b, c, g, t
+#! @Returns a morphism in $\mathrm{Hom}(s, c)$.
+#! @Arguments b, c, g, s
 DeclareOperation( "InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 

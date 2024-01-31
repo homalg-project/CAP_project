@@ -99,7 +99,7 @@ AddDerivationToCAP( InternalHomToTensorProductRightAdjunctionMapWithGivenTensorP
                       [ IdentityMorphism, 1 ],
                       [ ClosedMonoidalRightEvaluationMorphism, 1 ] ],
                     
-  function( cat, a, c, g, t )
+  function( cat, a, c, g, s )
     local ev_ac;
     
     # g: b → Hom(a,c)
@@ -117,7 +117,7 @@ AddDerivationToCAP( InternalHomToTensorProductRightAdjunctionMapWithGivenTensorP
     ev_ac := ClosedMonoidalRightEvaluationMorphism( cat, a, c );
      
     return PreCompose( cat,
-             TensorProductOnMorphismsWithGivenTensorProducts( cat, t, IdentityMorphism( cat, a ), g, Source( ev_ac ) ),
+             TensorProductOnMorphismsWithGivenTensorProducts( cat, s, IdentityMorphism( cat, a ), g, Source( ev_ac ) ),
              ev_ac );
     
 end : CategoryFilter := IsClosedMonoidalCategory );
@@ -251,7 +251,7 @@ AddDerivationToCAP( InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorPr
                       [ IdentityMorphism, 1 ],
                       [ ClosedMonoidalLeftEvaluationMorphism, 1 ] ],
                     
-  function( cat, b, c, g, t )
+  function( cat, b, c, g, s )
     local ev_bc;
     
     # g: a → Hom(b,c)
@@ -269,7 +269,7 @@ AddDerivationToCAP( InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorPr
     ev_bc := ClosedMonoidalLeftEvaluationMorphism( cat, b, c );
      
     return PreCompose( cat,
-             TensorProductOnMorphismsWithGivenTensorProducts( cat, t, g, IdentityMorphism( cat, b ), Source( ev_bc ) ),
+             TensorProductOnMorphismsWithGivenTensorProducts( cat, s, g, IdentityMorphism( cat, b ), Source( ev_bc ) ),
              ev_bc );
     
 end : CategoryFilter := IsClosedMonoidalCategory );

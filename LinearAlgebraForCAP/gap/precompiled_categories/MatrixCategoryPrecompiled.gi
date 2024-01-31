@@ -2079,14 +2079,14 @@ end
     AddInternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct( cat,
         
 ########
-function ( cat_1, b_1, c_1, g_1, t_1 )
+function ( cat_1, b_1, c_1, g_1, s_1 )
     local deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1;
     deduped_7_1 := AsInteger( c_1 );
     deduped_6_1 := UnderlyingRing( cat_1 );
     deduped_5_1 := AsInteger( b_1 );
     deduped_4_1 := deduped_5_1 * deduped_7_1;
     deduped_3_1 := HomalgIdentityMatrix( deduped_5_1, deduped_6_1 );
-    return AsCapCategoryMorphism( cat_1, t_1, KroneckerMat( AsHomalgMatrix( g_1 ), deduped_3_1 ) * (KroneckerMat( HomalgIdentityMatrix( deduped_4_1, deduped_6_1 ), deduped_3_1 ) * KroneckerMat( HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_4_1 ], function ( i_2 )
+    return AsCapCategoryMorphism( cat_1, s_1, KroneckerMat( AsHomalgMatrix( g_1 ), deduped_3_1 ) * (KroneckerMat( HomalgIdentityMatrix( deduped_4_1, deduped_6_1 ), deduped_3_1 ) * KroneckerMat( HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_4_1 ], function ( i_2 )
                             local deduped_1_2;
                             deduped_1_2 := (i_2 - 1);
                             return (REM_INT( deduped_1_2, deduped_7_1 ) * deduped_5_1 + QUO_INT( deduped_1_2, deduped_7_1 ) + 1);

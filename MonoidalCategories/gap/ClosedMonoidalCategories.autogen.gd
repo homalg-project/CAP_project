@@ -336,7 +336,7 @@ DeclareOperation( "AddInternalHomToTensorProductLeftAdjunctionMap",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct`.
-#! $F: ( b, c, g, t ) \mapsto \mathtt{InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct}(b, c, g, t)$.
+#! $F: ( b, c, g, s ) \mapsto \mathtt{InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct}(b, c, g, s)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddInternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct",
@@ -374,7 +374,7 @@ DeclareOperation( "AddInternalHomToTensorProductRightAdjunctionMap",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `InternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct`.
-#! $F: ( a, c, g, t ) \mapsto \mathtt{InternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct}(a, c, g, t)$.
+#! $F: ( a, c, g, s ) \mapsto \mathtt{InternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct}(a, c, g, s)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddInternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct",
