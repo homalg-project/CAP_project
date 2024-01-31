@@ -395,12 +395,12 @@
   
   [1X1.2-11 ExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct[101X
   
-  [33X[1;0Y[29X[2XExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct[102X( [3Xa[103X, [3Xc[103X, [3Xg[103X, [3Xt[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(t, c)[123X.[133X
+  [33X[1;0Y[29X[2XExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct[102X( [3Xa[103X, [3Xc[103X, [3Xg[103X, [3Xs[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(s, c)[123X.[133X
   
   [33X[0;0YThe   arguments   are   two   objects  [23Xa,c[123X,  a  morphism  [23Xg:  b  \rightarrow
-  \mathrm{Exponential}(a,c)[123X  and  an  object  [23Xt  = a \times b[123X. The output is a
-  morphism  [23Xf:  a  \times  b \rightarrow c[123X corresponding to [23Xg[123X under the direct
+  \mathrm{Exponential}(a,c)[123X  and  an  object  [23Xs  = a \times b[123X. The output is a
+  morphism   [23Xf:   s   \rightarrow  c[123X  corresponding  to  [23Xg[123X  under  the  direct
   product-exponential adjunction.[133X
   
   [1X1.2-12 CartesianLeftEvaluationMorphism[101X
@@ -474,12 +474,12 @@
   
   [1X1.2-19 ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct[101X
   
-  [33X[1;0Y[29X[2XExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct[102X( [3Xb[103X, [3Xc[103X, [3Xg[103X, [3Xt[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(t, c)[123X.[133X
+  [33X[1;0Y[29X[2XExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct[102X( [3Xb[103X, [3Xc[103X, [3Xg[103X, [3Xs[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(s, c)[123X.[133X
   
   [33X[0;0YThe   arguments   are   two   objects  [23Xb,c[123X,  a  morphism  [23Xg:  a  \rightarrow
-  \mathrm{Exponential}(b,c)[123X  and  an  object  [23Xt  = a \times b[123X. The output is a
-  morphism  [23Xf:  a  \times  b \rightarrow c[123X corresponding to [23Xg[123X under the direct
+  \mathrm{Exponential}(b,c)[123X  and  an  object  [23Xs  = a \times b[123X. The output is a
+  morphism   [23Xf:   s   \rightarrow  c[123X  corresponding  to  [23Xg[123X  under  the  direct
   product-exponential adjunction.[133X
   
   [1X1.2-20 CartesianPreComposeMorphism[101X
@@ -1274,9 +1274,9 @@
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct[110X.  [23XF:  ( b,
-  c,                g,                t                )               \mapsto
+  c,                g,                s                )               \mapsto
   \mathtt{ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct}(b,
-  c, g, t)[123X.[133X
+  c, g, s)[123X.[133X
   
   [1X1.4-53 AddExponentialToDirectProductRightAdjunctionMap[101X
   
@@ -1296,9 +1296,9 @@
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct[110X.  [23XF: ( a,
-  c,                g,                t                )               \mapsto
+  c,                g,                s                )               \mapsto
   \mathtt{ExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct}(a,
-  c, g, t)[123X.[133X
+  c, g, s)[123X.[133X
   
   [1X1.4-55 AddIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject[101X
   

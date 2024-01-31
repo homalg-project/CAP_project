@@ -593,10 +593,10 @@
 
 <h5>1.2-11 ExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct</code>( <var class="Arg">a</var>, <var class="Arg">c</var>, <var class="Arg">g</var>, <var class="Arg">t</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(t, c)\)</span>.</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct</code>( <var class="Arg">a</var>, <var class="Arg">c</var>, <var class="Arg">g</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(s, c)\)</span>.</p>
 
-<p>The arguments are two objects <span class="SimpleMath">\(a,c\)</span>, a morphism <span class="SimpleMath">\(g: b \rightarrow \mathrm{Exponential}(a,c)\)</span> and an object <span class="SimpleMath">\(t = a \times b\)</span>. The output is a morphism <span class="SimpleMath">\(f: a \times b \rightarrow c\)</span> corresponding to <span class="SimpleMath">\(g\)</span> under the direct product-exponential adjunction.</p>
+<p>The arguments are two objects <span class="SimpleMath">\(a,c\)</span>, a morphism <span class="SimpleMath">\(g: b \rightarrow \mathrm{Exponential}(a,c)\)</span> and an object <span class="SimpleMath">\(s = a \times b\)</span>. The output is a morphism <span class="SimpleMath">\(f: s \rightarrow c\)</span> corresponding to <span class="SimpleMath">\(g\)</span> under the direct product-exponential adjunction.</p>
 
 <p><a id="X788773DF7C95BCFC" name="X788773DF7C95BCFC"></a></p>
 
@@ -665,10 +665,10 @@
 
 <h5>1.2-19 ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct</code>( <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">g</var>, <var class="Arg">t</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(t, c)\)</span>.</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct</code>( <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">g</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(s, c)\)</span>.</p>
 
-<p>The arguments are two objects <span class="SimpleMath">\(b,c\)</span>, a morphism <span class="SimpleMath">\(g: a \rightarrow \mathrm{Exponential}(b,c)\)</span> and an object <span class="SimpleMath">\(t = a \times b\)</span>. The output is a morphism <span class="SimpleMath">\(f: a \times b \rightarrow c\)</span> corresponding to <span class="SimpleMath">\(g\)</span> under the direct product-exponential adjunction.</p>
+<p>The arguments are two objects <span class="SimpleMath">\(b,c\)</span>, a morphism <span class="SimpleMath">\(g: a \rightarrow \mathrm{Exponential}(b,c)\)</span> and an object <span class="SimpleMath">\(s = a \times b\)</span>. The output is a morphism <span class="SimpleMath">\(f: s \rightarrow c\)</span> corresponding to <span class="SimpleMath">\(g\)</span> under the direct product-exponential adjunction.</p>
 
 <p><a id="X7DF2EF1986FC7B1D" name="X7DF2EF1986FC7B1D"></a></p>
 
@@ -1387,7 +1387,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct</code>. <span class="SimpleMath">\(F: ( b, c, g, t ) \mapsto \mathtt{ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct}(b, c, g, t)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct</code>. <span class="SimpleMath">\(F: ( b, c, g, s ) \mapsto \mathtt{ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct}(b, c, g, s)\)</span>.</p>
 
 <p><a id="X7E31212B86B1AE69" name="X7E31212B86B1AE69"></a></p>
 
@@ -1405,7 +1405,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct</code>. <span class="SimpleMath">\(F: ( a, c, g, t ) \mapsto \mathtt{ExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct}(a, c, g, t)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct</code>. <span class="SimpleMath">\(F: ( a, c, g, s ) \mapsto \mathtt{ExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct}(a, c, g, s)\)</span>.</p>
 
 <p><a id="X7DBF793D7A9011F9" name="X7DBF793D7A9011F9"></a></p>
 
