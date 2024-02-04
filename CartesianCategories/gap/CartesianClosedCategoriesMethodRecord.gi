@@ -146,7 +146,7 @@ ExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct := rec(
   output_range_getter_string := "c",
   output_range_getter_preconditions := [ ],
   dual_operation := "CoexponentialToCoproductRightAdjunctionMapWithGivenCoproduct",
-  dual_preprocessor_func := { cat, a, c, g, s } -> NTuple( 4, Opposite( cat ), Opposite( c ), Opposite( a ), Opposite( g ), Opposite( s ) ),
+  dual_preprocessor_func := { cat, a, c, g, s } -> NTuple( 5, Opposite( cat ), Opposite( c ), Opposite( a ), Opposite( g ), Opposite( s ) ),
   dual_arguments_reversed := false,
 ),
 
@@ -252,7 +252,7 @@ ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct := rec(
   output_range_getter_string := "c",
   output_range_getter_preconditions := [ ],
   dual_operation := "CoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct",
-  dual_preprocessor_func := { cat, a, b, g, s } -> NTuple( 4, Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( g ), Opposite( s ) ),
+  dual_preprocessor_func := { cat, a, b, g, s } -> NTuple( 5, Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( g ), Opposite( s ) ),
   dual_arguments_reversed := false,
 ),
 
