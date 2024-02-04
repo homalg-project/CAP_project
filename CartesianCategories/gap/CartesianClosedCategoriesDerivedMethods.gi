@@ -424,7 +424,7 @@ AddDerivationToCAP( CartesianLambdaIntroduction,
                     
   function( cat, alpha )
     local result_morphism, source;
-
+    
     # 1 × a
     #   |
     #   | λ_a
@@ -435,7 +435,7 @@ AddDerivationToCAP( CartesianLambdaIntroduction,
     #   v
     #   b
     #
-    # Adjoint( 1 × a → b) = ( 1 → Exp(a,b) )
+    # Adjoint( 1 × a → b ) = ( 1 → Exp(a,b) )
     
     source := Source( alpha );
     
@@ -457,9 +457,9 @@ AddDerivationToCAP( CartesianLambdaElimination,
                     
   function( cat, a, b, alpha )
     local result_morphism;
-
+    
     # alpha: 1 → Exp(a,b)
-    # Adjoint( alpha ) = ( 1 × a → b)
+    # Adjoint( alpha ) = ( 1 × a → b )
     #
     #   a
     #   |
@@ -467,7 +467,7 @@ AddDerivationToCAP( CartesianLambdaElimination,
     #   v
     # 1 × a
     #   |
-    #   | Adjoint( alpha)
+    #   | Adjoint( alpha )
     #   v
     #   b
     

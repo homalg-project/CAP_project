@@ -421,7 +421,7 @@ AddDerivationToCAP( LambdaIntroduction,
                     
   function( cat, alpha )
     local result_morphism, source;
-
+    
     # 1 ⊗ a
     #   |
     #   | λ_a
@@ -432,7 +432,7 @@ AddDerivationToCAP( LambdaIntroduction,
     #   v
     #   b
     #
-    # Adjoint( 1 ⊗ a → b) = ( 1 → Hom(a,b) )
+    # Adjoint( 1 ⊗ a → b ) = ( 1 → Hom(a,b) )
     
     source := Source( alpha );
     
@@ -454,9 +454,9 @@ AddDerivationToCAP( LambdaElimination,
                     
   function( cat, a, b, alpha )
     local result_morphism;
-
+    
     # alpha: 1 → Hom(a,b)
-    # Adjoint( alpha ) = ( 1 ⊗ a → b)
+    # Adjoint( alpha ) = ( 1 ⊗ a → b )
     #
     #   a
     #   |
@@ -464,7 +464,7 @@ AddDerivationToCAP( LambdaElimination,
     #   v
     # 1 ⊗ a
     #   |
-    #   | Adjoint( alpha)
+    #   | Adjoint( alpha )
     #   v
     #   b
     
