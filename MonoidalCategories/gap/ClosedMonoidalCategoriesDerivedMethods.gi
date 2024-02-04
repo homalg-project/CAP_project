@@ -125,7 +125,7 @@ end : CategoryFilter := IsClosedMonoidalCategory );
 ##
 AddDerivationToCAP( ClosedMonoidalRightEvaluationMorphismWithGivenSource,
                     "ClosedMonoidalRightEvaluationMorphismWithGivenSource using the tensor hom adjunction on the identity",
-                    [ [ InternalHomToTensorProductRightAdjunctionMap, 1 ],
+                    [ [ InternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct, 1 ],
                       [ IdentityMorphism, 1 ],
                       [ InternalHomOnObjects, 1 ] ],
                     
@@ -133,16 +133,19 @@ AddDerivationToCAP( ClosedMonoidalRightEvaluationMorphismWithGivenSource,
     
     # Adjoint( id_Hom(a,b): Hom(a,b) → Hom(a,b) ) = ( a ⊗ Hom(a,b) → b )
     
-    return InternalHomToTensorProductRightAdjunctionMap( cat,
-             a, b,
-             IdentityMorphism( cat, InternalHomOnObjects( cat, a, b ) ) );
+    return InternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct( cat,
+                   a,
+                   b,
+                   IdentityMorphism( cat, InternalHomOnObjects( cat, a, b ) ),
+                   tensor_object # = a ⊗ Hom(a,b)
+                   );
     
 end : CategoryFilter := IsClosedMonoidalCategory );
 
 ##
 AddDerivationToCAP( ClosedMonoidalRightCoevaluationMorphismWithGivenRange,
                     "ClosedMonoidalRightCoevaluationMorphismWithGivenRange using the tensor hom adjunction on the identity",
-                    [ [ TensorProductToInternalHomRightAdjunctionMap, 1 ],
+                    [ [ TensorProductToInternalHomRightAdjunctionMapWithGivenInternalHom, 1 ],
                       [ IdentityMorphism, 1 ],
                       [ TensorProductOnObjects, 1 ] ],
                     
@@ -150,9 +153,12 @@ AddDerivationToCAP( ClosedMonoidalRightCoevaluationMorphismWithGivenRange,
     
     # Adjoint( id_(a ⊗ b): a ⊗ b → a ⊗ b ) = ( b → Hom(a, a ⊗ b) )
     
-    return TensorProductToInternalHomRightAdjunctionMap( cat,
-             a, b,
-             IdentityMorphism( cat, TensorProductOnObjects( cat, a, b ) ) );
+    return TensorProductToInternalHomRightAdjunctionMapWithGivenInternalHom( cat,
+                   a,
+                   b,
+                   IdentityMorphism( cat, TensorProductOnObjects( cat, a, b ) ),
+                   internal_hom # = Hom(a, a ⊗ b)
+                   );
     
 end : CategoryFilter := IsClosedMonoidalCategory );
 
@@ -277,7 +283,7 @@ end : CategoryFilter := IsClosedMonoidalCategory );
 ##
 AddDerivationToCAP( ClosedMonoidalLeftEvaluationMorphismWithGivenSource,
                     "ClosedMonoidalLeftEvaluationMorphismWithGivenSource using the tensor hom adjunction on the identity",
-                    [ [ InternalHomToTensorProductLeftAdjunctionMap, 1 ],
+                    [ [ InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct, 1 ],
                       [ IdentityMorphism, 1 ],
                       [ InternalHomOnObjects, 1 ] ],
                     
@@ -285,16 +291,19 @@ AddDerivationToCAP( ClosedMonoidalLeftEvaluationMorphismWithGivenSource,
     
     # Adjoint( id_Hom(a,b): Hom(a,b) → Hom(a,b) ) = ( Hom(a,b) ⊗ a → b )
     
-    return InternalHomToTensorProductLeftAdjunctionMap( cat,
-             a, b,
-             IdentityMorphism( cat, InternalHomOnObjects( cat, a, b ) ) );
+    return InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct( cat,
+                   a,
+                   b,
+                   IdentityMorphism( cat, InternalHomOnObjects( cat, a, b ) ),
+                   tensor_object # = Hom(a,b) ⊗ a
+                   );
     
 end : CategoryFilter := IsClosedMonoidalCategory );
 
 ##
 AddDerivationToCAP( ClosedMonoidalLeftCoevaluationMorphismWithGivenRange,
                     "ClosedMonoidalLeftCoevaluationMorphismWithGivenRange using the tensor hom adjunction on the identity",
-                    [ [ TensorProductToInternalHomLeftAdjunctionMap, 1 ],
+                    [ [ TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom, 1 ],
                       [ IdentityMorphism, 1 ],
                       [ TensorProductOnObjects, 1 ] ],
                     
@@ -302,9 +311,12 @@ AddDerivationToCAP( ClosedMonoidalLeftCoevaluationMorphismWithGivenRange,
     
     # Adjoint( id_(b ⊗ a): b ⊗ a → b ⊗ a ) = ( b → Hom(a, b ⊗ a) )
     
-    return TensorProductToInternalHomLeftAdjunctionMap( cat,
-             b, a,
-             IdentityMorphism( cat, TensorProductOnObjects( cat, b, a ) ) );
+    return TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom( cat,
+                   b,
+                   a,
+                   IdentityMorphism( cat, TensorProductOnObjects( cat, b, a ) ),
+                   internal_hom # = Hom(a, b ⊗ a)
+                   );
     
 end : CategoryFilter := IsClosedMonoidalCategory );
 
