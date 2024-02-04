@@ -413,6 +413,40 @@ end : CategoryFilter := IsClosedMonoidalCategory );
 
 ##
 AddDerivationToCAP( LambdaIntroduction,
+                    "LambdaIntroduction using the tensor hom adjunction and right unitor",
+                    [ [ PreCompose, 1 ],
+                      [ RightUnitor, 1 ],
+                      [ TensorProductToInternalHomRightAdjunctionMap, 1 ],
+                      [ TensorUnit, 1 ] ],
+                    
+  function( cat, alpha )
+    local result_morphism, source;
+    
+    # a ⊗ 1
+    #   |
+    #   | ρ_a
+    #   v
+    #   a
+    #   |
+    #   | alpha
+    #   v
+    #   b
+    #
+    # Adjoint( a ⊗ 1 → b ) = ( 1 → Hom(a,b) )
+    
+    source := Source( alpha );
+    
+    result_morphism := PreCompose( cat, RightUnitor( cat, source ), alpha );
+    
+    return TensorProductToInternalHomRightAdjunctionMap( cat,
+                   source,
+                   TensorUnit( cat ),
+                   result_morphism );
+    
+end : CategoryFilter := IsClosedMonoidalCategory );
+
+##
+AddDerivationToCAP( LambdaIntroduction,
                     "LambdaIntroduction using the tensor hom adjunction and left unitor",
                     [ [ PreCompose, 1 ],
                       [ LeftUnitor, 1 ],
@@ -421,7 +455,7 @@ AddDerivationToCAP( LambdaIntroduction,
                     
   function( cat, alpha )
     local result_morphism, source;
-
+    
     # 1 ⊗ a
     #   |
     #   | λ_a
@@ -432,7 +466,7 @@ AddDerivationToCAP( LambdaIntroduction,
     #   v
     #   b
     #
-    # Adjoint( 1 ⊗ a → b) = ( 1 → Hom(a,b) )
+    # Adjoint( 1 ⊗ a → b ) = ( 1 → Hom(a,b) )
     
     source := Source( alpha );
     
@@ -447,6 +481,35 @@ end : CategoryFilter := IsClosedMonoidalCategory );
 
 ##
 AddDerivationToCAP( LambdaElimination,
+                    "LambdaElimination using the tensor hom adjunction and right unitor inverse",
+                    [ [ InternalHomToTensorProductRightAdjunctionMap, 1 ],
+                      [ PreCompose, 1 ],
+                      [ RightUnitorInverse, 1 ] ],
+                    
+  function( cat, a, b, alpha )
+    local result_morphism;
+    
+    # alpha: 1 → Hom(a,b)
+    # Adjoint( alpha ) = ( a ⊗ 1 → b )
+    #
+    #   a
+    #   |
+    #   | (ρ_a)^-1
+    #   v
+    # a ⊗ 1
+    #   |
+    #   | Adjoint( alpha )
+    #   v
+    #   b
+    
+    result_morphism := InternalHomToTensorProductRightAdjunctionMap( cat, a, b, alpha );
+    
+    return PreCompose( cat, RightUnitorInverse( cat, a ), result_morphism );
+    
+end : CategoryFilter := IsClosedMonoidalCategory );
+
+##
+AddDerivationToCAP( LambdaElimination,
                     "LambdaElimination using the tensor hom adjunction and left unitor inverse",
                     [ [ InternalHomToTensorProductLeftAdjunctionMap, 1 ],
                       [ PreCompose, 1 ],
@@ -454,9 +517,9 @@ AddDerivationToCAP( LambdaElimination,
                     
   function( cat, a, b, alpha )
     local result_morphism;
-
+    
     # alpha: 1 → Hom(a,b)
-    # Adjoint( alpha ) = ( 1 ⊗ a → b)
+    # Adjoint( alpha ) = ( 1 ⊗ a → b )
     #
     #   a
     #   |
@@ -464,7 +527,7 @@ AddDerivationToCAP( LambdaElimination,
     #   v
     # 1 ⊗ a
     #   |
-    #   | Adjoint( alpha)
+    #   | Adjoint( alpha )
     #   v
     #   b
     

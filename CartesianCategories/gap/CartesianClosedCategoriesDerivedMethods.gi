@@ -416,6 +416,40 @@ end : CategoryFilter := IsCartesianClosedCategory );
 
 ##
 AddDerivationToCAP( CartesianLambdaIntroduction,
+                    "CartesianLambdaIntroduction using the direct product-exponential adjunction and right unitor",
+                    [ [ PreCompose, 1 ],
+                      [ CartesianRightUnitor, 1 ],
+                      [ DirectProductToExponentialRightAdjunctionMap, 1 ],
+                      [ TerminalObject, 1 ] ],
+                    
+  function( cat, alpha )
+    local result_morphism, source;
+    
+    # a × 1
+    #   |
+    #   | ρ_a
+    #   v
+    #   a
+    #   |
+    #   | alpha
+    #   v
+    #   b
+    #
+    # Adjoint( a × 1 → b ) = ( 1 → Exp(a,b) )
+    
+    source := Source( alpha );
+    
+    result_morphism := PreCompose( cat, CartesianRightUnitor( cat, source ), alpha );
+    
+    return DirectProductToExponentialRightAdjunctionMap( cat,
+                   source,
+                   TerminalObject( cat ),
+                   result_morphism );
+    
+end : CategoryFilter := IsCartesianClosedCategory );
+
+##
+AddDerivationToCAP( CartesianLambdaIntroduction,
                     "CartesianLambdaIntroduction using the direct product-exponential adjunction and left unitor",
                     [ [ PreCompose, 1 ],
                       [ CartesianLeftUnitor, 1 ],
@@ -424,7 +458,7 @@ AddDerivationToCAP( CartesianLambdaIntroduction,
                     
   function( cat, alpha )
     local result_morphism, source;
-
+    
     # 1 × a
     #   |
     #   | λ_a
@@ -435,7 +469,7 @@ AddDerivationToCAP( CartesianLambdaIntroduction,
     #   v
     #   b
     #
-    # Adjoint( 1 × a → b) = ( 1 → Exp(a,b) )
+    # Adjoint( 1 × a → b ) = ( 1 → Exp(a,b) )
     
     source := Source( alpha );
     
@@ -450,6 +484,35 @@ end : CategoryFilter := IsCartesianClosedCategory );
 
 ##
 AddDerivationToCAP( CartesianLambdaElimination,
+                    "CartesianLambdaElimination using the direct product-exponential adjunction and right unitor inverse",
+                    [ [ ExponentialToDirectProductRightAdjunctionMap, 1 ],
+                      [ PreCompose, 1 ],
+                      [ CartesianRightUnitorInverse, 1 ] ],
+                    
+  function( cat, a, b, alpha )
+    local result_morphism;
+    
+    # alpha: 1 → Exp(a,b)
+    # Adjoint( alpha ) = ( a × 1 → b )
+    #
+    #   a
+    #   |
+    #   | (ρ_a)^-1
+    #   v
+    # a × 1
+    #   |
+    #   | Adjoint( alpha )
+    #   v
+    #   b
+    
+    result_morphism := ExponentialToDirectProductRightAdjunctionMap( cat, a, b, alpha );
+    
+    return PreCompose( cat, CartesianRightUnitorInverse( cat, a ), result_morphism );
+    
+end : CategoryFilter := IsCartesianClosedCategory );
+
+##
+AddDerivationToCAP( CartesianLambdaElimination,
                     "CartesianLambdaElimination using the direct product-exponential adjunction and left unitor inverse",
                     [ [ ExponentialToDirectProductLeftAdjunctionMap, 1 ],
                       [ PreCompose, 1 ],
@@ -457,9 +520,9 @@ AddDerivationToCAP( CartesianLambdaElimination,
                     
   function( cat, a, b, alpha )
     local result_morphism;
-
+    
     # alpha: 1 → Exp(a,b)
-    # Adjoint( alpha ) = ( 1 × a → b)
+    # Adjoint( alpha ) = ( 1 × a → b )
     #
     #   a
     #   |
@@ -467,7 +530,7 @@ AddDerivationToCAP( CartesianLambdaElimination,
     #   v
     # 1 × a
     #   |
-    #   | Adjoint( alpha)
+    #   | Adjoint( alpha )
     #   v
     #   b
     
