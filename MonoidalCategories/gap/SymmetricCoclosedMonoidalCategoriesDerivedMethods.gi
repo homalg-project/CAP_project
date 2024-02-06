@@ -5,6 +5,134 @@
 #
 
 ##
+AddDerivationToCAP( TensorProductToInternalCoHomRightAdjunctionMapWithGivenInternalCoHom,
+                    "TensorProductToInternalCoHomRightAdjunctionMapWithGivenInternalCoHom using TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom and the braiding",
+                    [ [ TensorProductOnObjects, 1 ],
+                      [ BraidingWithGivenTensorProducts, 1 ],
+                      [ PreCompose, 1 ],
+                      [ TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom, 1 ] ],
+                    
+  function( cat, b, c, g, i )
+    
+    ## coHom( a, b ) = i → c
+    return TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom( cat,
+                   c,
+                   b,
+                   ## a → c ⊗ b
+                   PreCompose( cat,
+                           ## g: a → b ⊗ c
+                           g,
+                           ## b ⊗ c → c ⊗ b
+                           BraidingWithGivenTensorProducts( cat,
+                                   Range( g ),
+                                   b,
+                                   c,
+                                   TensorProductOnObjects( cat, c, b ) ) ),
+                   ## coHom( a, b )
+                   i );
+    
+end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory );
+
+##
+AddDerivationToCAP( TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom,
+                    "TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom using TensorProductToInternalCoHomRightAdjunctionMapWithGivenInternalCoHom and the braiding",
+                    [ [ TensorProductOnObjects, 1 ],
+                      [ BraidingWithGivenTensorProducts, 1 ],
+                      [ PreCompose, 1 ],
+                      [ TensorProductToInternalCoHomRightAdjunctionMapWithGivenInternalCoHom, 1 ] ],
+                    
+  function( cat, b, c, g, i )
+    
+    ## coHom( a, c ) = i → b
+    return TensorProductToInternalCoHomRightAdjunctionMapWithGivenInternalCoHom( cat,
+                   c,
+                   b,
+                   ## a → c ⊗ b
+                   PreCompose( cat,
+                           ## g: a → b ⊗ c
+                           g,
+                           ## b ⊗ c → c ⊗ b
+                           BraidingWithGivenTensorProducts( cat,
+                                   Range( g ),
+                                   b,
+                                   c,
+                                   TensorProductOnObjects( cat, c, b ) ) ),
+                   ## coHom( a, c )
+                   i );
+    
+end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory );
+
+##
+AddDerivationToCAP( InternalCoHomToTensorProductRightAdjunctionMapWithGivenTensorProduct,
+                    "InternalCoHomToTensorProductRightAdjunctionMapWithGivenTensorProduct using InternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct and the braiding",
+                    [ [ TensorProductOnObjects, 1 ],
+                      [ BraidingInverseWithGivenTensorProducts, 1 ],
+                      [ InternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct, 1 ],
+                      [ PreCompose, 1 ] ],
+                    
+  function( cat, a, b, f, t )
+    local c, c_tensor_b;
+    
+    ## f: coHom(a,b) → c
+    c := Range( f );
+    
+    ## c ⊗ b
+    c_tensor_b := TensorProductOnObjects( cat, c, b );
+    
+    ## a → b ⊗ c
+    return PreCompose( cat,
+                   ## a → c ⊗ b
+                   InternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct( cat,
+                           a,
+                           b,
+                           f,
+                           c_tensor_b ),
+                   ## c ⊗ b → b ⊗ c
+                   BraidingInverseWithGivenTensorProducts( cat,
+                           c_tensor_b,
+                           b,
+                           c,
+                           # b ⊗ c
+                           t ) );
+    
+end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory );
+
+##
+AddDerivationToCAP( InternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct,
+                    "InternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct using InternalCoHomToTensorProductRightAdjunctionMapWithGivenTensorProduct and the braiding",
+                    [ [ TensorProductOnObjects, 1 ],
+                      [ BraidingInverseWithGivenTensorProducts, 1 ],
+                      [ InternalCoHomToTensorProductRightAdjunctionMapWithGivenTensorProduct, 1 ],
+                      [ PreCompose, 1 ] ],
+                    
+  function( cat, a, c, f, t )
+    local b, c_tensor_b;
+    
+    ## f: coHom(a,c) → b
+    b := Range( f );
+    
+    ## c ⊗ b
+    c_tensor_b := TensorProductOnObjects( cat, c, b );
+    
+    ## a → b ⊗ c
+    return PreCompose( cat,
+                   ## a → c ⊗ b
+                   InternalCoHomToTensorProductRightAdjunctionMapWithGivenTensorProduct( cat,
+                           a,
+                           c,
+                           f,
+                           c_tensor_b ),
+                   ## c ⊗ b → b ⊗ c
+                   BraidingInverseWithGivenTensorProducts( cat,
+                           c_tensor_b,
+                           b,
+                           c,
+                           # b ⊗ c
+                           t ) );
+    
+end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory );
+
+##
 AddDerivationToCAP( MorphismFromCoBidualWithGivenCoBidual,
                     "MorphismFromCoBidualWithGivenCoBidual using the braiding and the universal property of the codual",
                     [ [ PreCompose, 1 ],
