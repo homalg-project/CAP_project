@@ -1,7 +1,7 @@
 name: InternalExteriorAlgebraForCAP
-version: "2024.01-01"
+version: "2024.02-01"
 license: "GPL-2.0-or-later"
-date: 2024-01-22
+date: 2024-02-07
 description: |
     Constructions for Modules over the Internal Exterior Algebra for CAP
 
@@ -20,13 +20,13 @@ needed-pkgs:
       version: ">= 1.5"
       url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
     - name: "MonoidalCategories"
-      version: ">=2024.01-06"
+      version: ">=2024.02-02"
       url: "https://homalg-project.github.io/pkg/MonoidalCategories"
     - name: "ActionsForCAP"
       version: ">=2017.01.11"
       url: "https://homalg-project.github.io/pkg/ActionsForCAP"
     - name: "GroupRepresentationsForCAP"
-      version: ">=2017.01.11"
+      version: ">=2024.02-01"
       url: "https://homalg-project.github.io/pkg/GroupRepresentationsForCAP"
     - name: "ComplexesAndFilteredObjectsForCAP"
       version: ">=2015.10.20"
@@ -38,11 +38,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/InternalExteriorAlgebr
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/InternalExteriorAlgebraForCAP-2024.01-01/InternalExteriorAlgebraForCAP-2024.01-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/InternalExteriorAlgebraForCAP-2024.02-01/InternalExteriorAlgebraForCAP-2024.02-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/InternalExteriorAlgebraForCAP-2024.01-01/InternalExteriorAlgebraForCAP-2024.01-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/InternalExteriorAlgebraForCAP-2024.02-01/InternalExteriorAlgebraForCAP-2024.02-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/InternalExteriorAlgebraForCAP-2024.01-01/InternalExteriorAlgebraForCAP-2024.01-01-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/InternalExteriorAlgebraForCAP-2024.02-01/InternalExteriorAlgebraForCAP-2024.02-01-manual.pdf
 
 abstract: |
 
@@ -51,29 +51,29 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>Pos22</span>]   <b class='BibAuthor'>Posur, S.</b>,
+    [<span class='BibKey'>Pos07</span>]   <b class='BibAuthor'>Posur, S.</b>,
      <i class='BibTitle'>InternalExteriorAlgebraForCAP, Constructions for Modules over the Internal Exterior Algebra for CAP,
-             Version 2024.01-01</i>
-     (<span class='BibYear'>1-22</span>)<br />
+             Version 2024.02-01</i>
+     (<span class='BibYear'>2-07</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/InternalExteriorAlgebraForCAP">https://homalg-project.github.io/pkg/InternalExteriorAlgebraForCAP</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ InternalExteriorAlgebraForCAP2024.01-01,
+    @misc{ InternalExteriorAlgebraForCAP2024.02-01,
       author =           {Posur, S.},
       title =            {{InternalExteriorAlgebraForCAP},   Constructions   for
                           Modules  over  the  Internal Exterior Algebra for CAP,
-                          {V}ersion 2024.01-01},
+                          {V}ersion 2024.02-01},
       month =            {4-},
-      year =             {1-22},
+      year =             {2-07},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/InternalExteriorAlgebraForCAP}
                           {\texttt{https://homalg-project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{InternalExteriorAlgebraForCAP}}},
-      printedkey =       {Pos22}
+      printedkey =       {Pos07}
     }
 
