@@ -2214,7 +2214,7 @@ end
     , 14453 : IsPrecompiledDerivation := true );
     
     ##
-    AddInternalCoHomToTensorProductLeftAdjunctionMap( cat,
+    AddInternalCoHomToTensorProductLeftAdjunctMorphism( cat,
         
 ########
 function ( cat_1, a_1, c_1, f_1 )
@@ -2236,7 +2236,7 @@ end
     , 3413 : IsPrecompiledDerivation := true );
     
     ##
-    AddInternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct( cat,
+    AddInternalCoHomToTensorProductLeftAdjunctMorphismWithGivenTensorProduct( cat,
         
 ########
 function ( cat_1, a_1, c_1, f_1, t_1 )
@@ -2257,7 +2257,7 @@ end
     , 3312 : IsPrecompiledDerivation := true );
     
     ##
-    AddInternalCoHomToTensorProductRightAdjunctionMap( cat,
+    AddInternalCoHomToTensorProductRightAdjunctMorphism( cat,
         
 ########
 function ( cat_1, a_1, b_1, f_1 )
@@ -2285,7 +2285,7 @@ end
     , 3715 : IsPrecompiledDerivation := true );
     
     ##
-    AddInternalCoHomToTensorProductRightAdjunctionMapWithGivenTensorProduct( cat,
+    AddInternalCoHomToTensorProductRightAdjunctMorphismWithGivenTensorProduct( cat,
         
 ########
 function ( cat_1, a_1, b_1, f_1, t_1 )
@@ -2347,7 +2347,7 @@ end
     , 302 : IsPrecompiledDerivation := true );
     
     ##
-    AddInternalHomToTensorProductLeftAdjunctionMap( cat,
+    AddInternalHomToTensorProductLeftAdjunctMorphism( cat,
         
 ########
 function ( cat_1, b_1, c_1, g_1 )
@@ -2369,7 +2369,7 @@ end
     , 3413 : IsPrecompiledDerivation := true );
     
     ##
-    AddInternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct( cat,
+    AddInternalHomToTensorProductLeftAdjunctMorphismWithGivenTensorProduct( cat,
         
 ########
 function ( cat_1, b_1, c_1, g_1, s_1 )
@@ -2390,7 +2390,7 @@ end
     , 3312 : IsPrecompiledDerivation := true );
     
     ##
-    AddInternalHomToTensorProductRightAdjunctionMap( cat,
+    AddInternalHomToTensorProductRightAdjunctMorphism( cat,
         
 ########
 function ( cat_1, a_1, c_1, g_1 )
@@ -2418,7 +2418,7 @@ end
     , 3714 : IsPrecompiledDerivation := true );
     
     ##
-    AddInternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct( cat,
+    AddInternalHomToTensorProductRightAdjunctMorphismWithGivenTensorProduct( cat,
         
 ########
 function ( cat_1, a_1, c_1, g_1, s_1 )
@@ -6041,7 +6041,7 @@ end
     , 100 );
     
     ##
-    AddTensorProductToInternalCoHomLeftAdjunctionMap( cat,
+    AddTensorProductToInternalCoHomLeftAdjunctMorphism( cat,
         
 ########
 function ( cat_1, b_1, c_1, g_1 )
@@ -6069,7 +6069,7 @@ end
     , 5322 : IsPrecompiledDerivation := true );
     
     ##
-    AddTensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom( cat,
+    AddTensorProductToInternalCoHomLeftAdjunctMorphismWithGivenInternalCoHom( cat,
         
 ########
 function ( cat_1, b_1, c_1, g_1, i_1 )
@@ -6096,7 +6096,7 @@ end
     , 5019 : IsPrecompiledDerivation := true );
     
     ##
-    AddTensorProductToInternalCoHomRightAdjunctionMap( cat,
+    AddTensorProductToInternalCoHomRightAdjunctMorphism( cat,
         
 ########
 function ( cat_1, b_1, c_1, g_1 )
@@ -6129,7 +6129,7 @@ end
     , 5623 : IsPrecompiledDerivation := true );
     
     ##
-    AddTensorProductToInternalCoHomRightAdjunctionMapWithGivenInternalCoHom( cat,
+    AddTensorProductToInternalCoHomRightAdjunctMorphismWithGivenInternalCoHom( cat,
         
 ########
 function ( cat_1, b_1, c_1, g_1, i_1 )
@@ -6161,7 +6161,7 @@ end
     , 5320 : IsPrecompiledDerivation := true );
     
     ##
-    AddTensorProductToInternalHomLeftAdjunctionMap( cat,
+    AddTensorProductToInternalHomLeftAdjunctMorphism( cat,
         
 ########
 function ( cat_1, a_1, b_1, f_1 )
@@ -6189,7 +6189,7 @@ end
     , 5322 : IsPrecompiledDerivation := true );
     
     ##
-    AddTensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom( cat,
+    AddTensorProductToInternalHomLeftAdjunctMorphismWithGivenInternalHom( cat,
         
 ########
 function ( cat_1, a_1, b_1, f_1, i_1 )
@@ -6216,7 +6216,7 @@ end
     , 5019 : IsPrecompiledDerivation := true );
     
     ##
-    AddTensorProductToInternalHomRightAdjunctionMap( cat,
+    AddTensorProductToInternalHomRightAdjunctMorphism( cat,
         
 ########
 function ( cat_1, a_1, b_1, f_1 )
@@ -6249,7 +6249,7 @@ end
     , 5624 : IsPrecompiledDerivation := true );
     
     ##
-    AddTensorProductToInternalHomRightAdjunctionMapWithGivenInternalHom( cat,
+    AddTensorProductToInternalHomRightAdjunctMorphismWithGivenInternalHom( cat,
         
 ########
 function ( cat_1, a_1, b_1, f_1, i_1 )

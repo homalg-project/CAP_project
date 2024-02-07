@@ -5,17 +5,17 @@
 #
 
 ##
-AddDerivationToCAP( TensorProductToInternalCoHomRightAdjunctionMapWithGivenInternalCoHom,
-                    "TensorProductToInternalCoHomRightAdjunctionMapWithGivenInternalCoHom using TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom and the braiding",
+AddDerivationToCAP( TensorProductToInternalCoHomRightAdjunctMorphismWithGivenInternalCoHom,
+                    "TensorProductToInternalCoHomRightAdjunctMorphismWithGivenInternalCoHom using TensorProductToInternalCoHomLeftAdjunctMorphismWithGivenInternalCoHom and the braiding",
                     [ [ TensorProductOnObjects, 1 ],
                       [ BraidingWithGivenTensorProducts, 1 ],
                       [ PreCompose, 1 ],
-                      [ TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom, 1 ] ],
+                      [ TensorProductToInternalCoHomLeftAdjunctMorphismWithGivenInternalCoHom, 1 ] ],
                     
   function( cat, b, c, g, i )
     
     ## coHom( a, b ) = i → c
-    return TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom( cat,
+    return TensorProductToInternalCoHomLeftAdjunctMorphismWithGivenInternalCoHom( cat,
                    c,
                    b,
                    ## a → c ⊗ b
@@ -34,17 +34,17 @@ AddDerivationToCAP( TensorProductToInternalCoHomRightAdjunctionMapWithGivenInter
 end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory );
 
 ##
-AddDerivationToCAP( TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom,
-                    "TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom using TensorProductToInternalCoHomRightAdjunctionMapWithGivenInternalCoHom and the braiding",
+AddDerivationToCAP( TensorProductToInternalCoHomLeftAdjunctMorphismWithGivenInternalCoHom,
+                    "TensorProductToInternalCoHomLeftAdjunctMorphismWithGivenInternalCoHom using TensorProductToInternalCoHomRightAdjunctMorphismWithGivenInternalCoHom and the braiding",
                     [ [ TensorProductOnObjects, 1 ],
                       [ BraidingWithGivenTensorProducts, 1 ],
                       [ PreCompose, 1 ],
-                      [ TensorProductToInternalCoHomRightAdjunctionMapWithGivenInternalCoHom, 1 ] ],
+                      [ TensorProductToInternalCoHomRightAdjunctMorphismWithGivenInternalCoHom, 1 ] ],
                     
   function( cat, b, c, g, i )
     
     ## coHom( a, c ) = i → b
-    return TensorProductToInternalCoHomRightAdjunctionMapWithGivenInternalCoHom( cat,
+    return TensorProductToInternalCoHomRightAdjunctMorphismWithGivenInternalCoHom( cat,
                    c,
                    b,
                    ## a → c ⊗ b
@@ -63,11 +63,11 @@ AddDerivationToCAP( TensorProductToInternalCoHomLeftAdjunctionMapWithGivenIntern
 end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory );
 
 ##
-AddDerivationToCAP( InternalCoHomToTensorProductRightAdjunctionMapWithGivenTensorProduct,
-                    "InternalCoHomToTensorProductRightAdjunctionMapWithGivenTensorProduct using InternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct and the braiding",
+AddDerivationToCAP( InternalCoHomToTensorProductRightAdjunctMorphismWithGivenTensorProduct,
+                    "InternalCoHomToTensorProductRightAdjunctMorphismWithGivenTensorProduct using InternalCoHomToTensorProductLeftAdjunctMorphismWithGivenTensorProduct and the braiding",
                     [ [ TensorProductOnObjects, 1 ],
                       [ BraidingInverseWithGivenTensorProducts, 1 ],
-                      [ InternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct, 1 ],
+                      [ InternalCoHomToTensorProductLeftAdjunctMorphismWithGivenTensorProduct, 1 ],
                       [ PreCompose, 1 ] ],
                     
   function( cat, a, b, f, t )
@@ -82,7 +82,7 @@ AddDerivationToCAP( InternalCoHomToTensorProductRightAdjunctionMapWithGivenTenso
     ## a → b ⊗ c
     return PreCompose( cat,
                    ## a → c ⊗ b
-                   InternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct( cat,
+                   InternalCoHomToTensorProductLeftAdjunctMorphismWithGivenTensorProduct( cat,
                            a,
                            b,
                            f,
@@ -98,11 +98,11 @@ AddDerivationToCAP( InternalCoHomToTensorProductRightAdjunctionMapWithGivenTenso
 end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory );
 
 ##
-AddDerivationToCAP( InternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct,
-                    "InternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct using InternalCoHomToTensorProductRightAdjunctionMapWithGivenTensorProduct and the braiding",
+AddDerivationToCAP( InternalCoHomToTensorProductLeftAdjunctMorphismWithGivenTensorProduct,
+                    "InternalCoHomToTensorProductLeftAdjunctMorphismWithGivenTensorProduct using InternalCoHomToTensorProductRightAdjunctMorphismWithGivenTensorProduct and the braiding",
                     [ [ TensorProductOnObjects, 1 ],
                       [ BraidingInverseWithGivenTensorProducts, 1 ],
-                      [ InternalCoHomToTensorProductRightAdjunctionMapWithGivenTensorProduct, 1 ],
+                      [ InternalCoHomToTensorProductRightAdjunctMorphismWithGivenTensorProduct, 1 ],
                       [ PreCompose, 1 ] ],
                     
   function( cat, a, c, f, t )
@@ -117,7 +117,7 @@ AddDerivationToCAP( InternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensor
     ## a → b ⊗ c
     return PreCompose( cat,
                    ## a → c ⊗ b
-                   InternalCoHomToTensorProductRightAdjunctionMapWithGivenTensorProduct( cat,
+                   InternalCoHomToTensorProductRightAdjunctMorphismWithGivenTensorProduct( cat,
                            a,
                            c,
                            f,
@@ -224,7 +224,7 @@ AddDerivationToCAP( InternalCoHomTensorProductCompatibilityMorphismWithGivenObje
                       [ AssociatorRightToLeft, 2 ],
                       [ AssociatorLeftToRight, 2 ],
                       [ Braiding, 1 ],
-                      [ TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom, 1 ] ],
+                      [ TensorProductToInternalCoHomLeftAdjunctMorphismWithGivenInternalCoHom, 1 ] ],
                     
   function( cat, source, list, range )
     local a1, a2, b1, b2, b1b2, int_cohom_a1_b1, int_cohom_a2_b2, id_b2, morphism;
@@ -310,7 +310,7 @@ AddDerivationToCAP( InternalCoHomTensorProductCompatibilityMorphismWithGivenObje
                                 range,
                                 b1b2 ) );
     
-    return TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom( cat,
+    return TensorProductToInternalCoHomLeftAdjunctMorphismWithGivenInternalCoHom( cat,
                    range,
                    b1b2,
                    morphism,
@@ -329,7 +329,7 @@ AddDerivationToCAP( MonoidalPreCoComposeMorphismWithGivenObjects,
                       [ IdentityMorphism, 2 ],
                       [ AssociatorLeftToRight, 1 ],
                       [ AssociatorRightToLeft, 1 ],
-                      [ TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom, 1 ],
+                      [ TensorProductToInternalCoHomLeftAdjunctMorphismWithGivenInternalCoHom, 1 ],
                       [ TensorProductOnObjects, 1 ] ],
                     
   function( cat, source, a, b, c, range )
@@ -389,7 +389,7 @@ AddDerivationToCAP( MonoidalPreCoComposeMorphismWithGivenObjects,
                                 range,
                                 c ) );
     
-    return TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom( cat,
+    return TensorProductToInternalCoHomLeftAdjunctMorphismWithGivenInternalCoHom( cat,
                    range,
                    c,
                    morphism,
@@ -461,7 +461,7 @@ AddDerivationToCAP( InternalCoHomTensorProductCompatibilityMorphismWithGivenObje
                       [ TensorProductOnMorphisms, 5 ],
                       [ CoclosedMonoidalLeftEvaluationMorphism, 2 ],
                       [ Braiding, 1 ],
-                      [ TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom, 1 ] ],
+                      [ TensorProductToInternalCoHomLeftAdjunctMorphismWithGivenInternalCoHom, 1 ] ],
                     
   function( cat, source, list, range )
     local a1, a2, b1, b2, b1b2, int_cohom_a1_b1, int_cohom_a2_b2, id_b2, morphism;
@@ -517,7 +517,7 @@ AddDerivationToCAP( InternalCoHomTensorProductCompatibilityMorphismWithGivenObje
                                 range,
                                 b1b2 ) );
     
-    return TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom( cat,
+    return TensorProductToInternalCoHomLeftAdjunctMorphismWithGivenInternalCoHom( cat,
                    range,
                    b1b2,
                    morphism,
@@ -535,7 +535,7 @@ AddDerivationToCAP( MonoidalPreCoComposeMorphismWithGivenObjects,
                       [ TensorProductOnMorphisms, 2 ],
                       [ IdentityMorphism, 2 ],
                       [ TensorProductOnObjects, 1 ],
-                      [ TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom, 1 ] ],
+                      [ TensorProductToInternalCoHomLeftAdjunctMorphismWithGivenInternalCoHom, 1 ] ],
                     
   function( cat, source, a, b, c, range )
     local cohom_a_b, cohom_b_c, morphism;
@@ -582,7 +582,7 @@ AddDerivationToCAP( MonoidalPreCoComposeMorphismWithGivenObjects,
                                 range,
                                 c ) );
     
-    return TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom( cat,
+    return TensorProductToInternalCoHomLeftAdjunctMorphismWithGivenInternalCoHom( cat,
                    range,
                    c,
                    morphism,

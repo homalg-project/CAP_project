@@ -189,13 +189,13 @@ UnderlyingMatrix( coev_ab ) = TransposedMatrix( UnderlyingMatrix( cocl_coev_ab )
 #! true
 UnderlyingMatrix( coev_ba ) = TransposedMatrix( UnderlyingMatrix( cocl_coev_ba ) );
 #! true
-tensor_hom_adj_1_hom_ab := InternalHomToTensorProductLeftAdjunctionMap( a, b, 1_hom_ab );
+tensor_hom_adj_1_hom_ab := InternalHomToTensorProductLeftAdjunctMorphism( a, b, 1_hom_ab );
 #! <A morphism in Category of matrices over Q>
-cohom_tensor_adj_1_cohom_ab := InternalCoHomToTensorProductLeftAdjunctionMap( a, b, 1_cohom_ab );
+cohom_tensor_adj_1_cohom_ab := InternalCoHomToTensorProductLeftAdjunctMorphism( a, b, 1_cohom_ab );
 #! <A morphism in Category of matrices over Q>
-tensor_hom_adj_1_ab := TensorProductToInternalHomLeftAdjunctionMap( a, b, 1_ab );
+tensor_hom_adj_1_ab := TensorProductToInternalHomLeftAdjunctMorphism( a, b, 1_ab );
 #! <A morphism in Category of matrices over Q>
-cohom_tensor_adj_1_ab := TensorProductToInternalCoHomLeftAdjunctionMap( a, b, 1_ab );
+cohom_tensor_adj_1_ab := TensorProductToInternalCoHomLeftAdjunctMorphism( a, b, 1_ab );
 #! <A morphism in Category of matrices over Q>
 ev_ab = tensor_hom_adj_1_hom_ab;
 #! true

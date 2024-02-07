@@ -5,8 +5,8 @@
 #
 
 ##
-AddDerivationToCAP( TensorProductToLeftInternalHomAdjunctionMap,
-                    "TensorProductToLeftInternalHomAdjunctionMap using LeftClosedMonoidalCoevaluationMorphism and LeftInternalHom",
+AddDerivationToCAP( TensorProductToLeftInternalHomAdjunctMorphism,
+                    "TensorProductToLeftInternalHomAdjunctMorphism using LeftClosedMonoidalCoevaluationMorphism and LeftInternalHom",
                     [ [ PreCompose, 1 ],
                       [ LeftClosedMonoidalCoevaluationMorphism, 1 ],
                       [ LeftInternalHomOnMorphisms, 1 ],
@@ -33,8 +33,8 @@ AddDerivationToCAP( TensorProductToLeftInternalHomAdjunctionMap,
 end : CategoryFilter := IsLeftClosedMonoidalCategory );
 
 ##
-AddDerivationToCAP( TensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom,
-                    "TensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom using LeftClosedMonoidalCoevaluationMorphism and LeftInternalHom",
+AddDerivationToCAP( TensorProductToLeftInternalHomAdjunctMorphismWithGivenLeftInternalHom,
+                    "TensorProductToLeftInternalHomAdjunctMorphismWithGivenLeftInternalHom using LeftClosedMonoidalCoevaluationMorphism and LeftInternalHom",
                     [ [ LeftClosedMonoidalCoevaluationMorphism, 1 ],
                       [ PreCompose, 1 ],
                       [ LeftInternalHomOnMorphismsWithGivenLeftInternalHoms, 1 ],
@@ -64,8 +64,8 @@ AddDerivationToCAP( TensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInte
 end : CategoryFilter := IsLeftClosedMonoidalCategory );
 
 ##
-AddDerivationToCAP( LeftInternalHomToTensorProductAdjunctionMap,
-                    "LeftInternalHomToTensorProductAdjunctionMap using TensorProductOnMorphisms and LeftClosedMonoidalEvaluationMorphism",
+AddDerivationToCAP( LeftInternalHomToTensorProductAdjunctMorphism,
+                    "LeftInternalHomToTensorProductAdjunctMorphism using TensorProductOnMorphisms and LeftClosedMonoidalEvaluationMorphism",
                     [ [ PreCompose, 1 ],
                       [ TensorProductOnMorphisms, 1 ],
                       [ IdentityMorphism, 1 ],
@@ -92,8 +92,8 @@ AddDerivationToCAP( LeftInternalHomToTensorProductAdjunctionMap,
 end : CategoryFilter := IsLeftClosedMonoidalCategory );
 
 ##
-AddDerivationToCAP( LeftInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct,
-                    "LeftInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct using TensorProductOnMorphisms and LeftClosedMonoidalEvaluationMorphism",
+AddDerivationToCAP( LeftInternalHomToTensorProductAdjunctMorphismWithGivenTensorProduct,
+                    "LeftInternalHomToTensorProductAdjunctMorphismWithGivenTensorProduct using TensorProductOnMorphisms and LeftClosedMonoidalEvaluationMorphism",
                     [ [ PreCompose, 1 ],
                       [ TensorProductOnMorphismsWithGivenTensorProducts, 1 ],
                       [ IdentityMorphism, 1 ],
@@ -125,7 +125,7 @@ end : CategoryFilter := IsLeftClosedMonoidalCategory );
 ##
 AddDerivationToCAP( LeftClosedMonoidalEvaluationMorphismWithGivenSource,
                     "LeftClosedMonoidalEvaluationMorphismWithGivenSource using the tensor hom adjunction on the identity",
-                    [ [ LeftInternalHomToTensorProductAdjunctionMap, 1 ],
+                    [ [ LeftInternalHomToTensorProductAdjunctMorphism, 1 ],
                       [ IdentityMorphism, 1 ],
                       [ LeftInternalHomOnObjects, 1 ] ],
                     
@@ -133,7 +133,7 @@ AddDerivationToCAP( LeftClosedMonoidalEvaluationMorphismWithGivenSource,
     
     # Adjoint( id_Hom(a,b): Hom(a,b) → Hom(a,b) ) = ( Hom(a,b) ⊗ a → b )
     
-    return LeftInternalHomToTensorProductAdjunctionMap( cat,
+    return LeftInternalHomToTensorProductAdjunctMorphism( cat,
              a, b,
              IdentityMorphism( cat, LeftInternalHomOnObjects( cat, a, b ) ) );
     
@@ -142,7 +142,7 @@ end : CategoryFilter := IsLeftClosedMonoidalCategory );
 ##
 AddDerivationToCAP( LeftClosedMonoidalCoevaluationMorphismWithGivenRange,
                     "LeftClosedMonoidalCoevaluationMorphismWithGivenRange using the tensor hom adjunction on the identity",
-                    [ [ TensorProductToLeftInternalHomAdjunctionMap, 1 ],
+                    [ [ TensorProductToLeftInternalHomAdjunctMorphism, 1 ],
                       [ IdentityMorphism, 1 ],
                       [ TensorProductOnObjects, 1 ] ],
                     
@@ -150,7 +150,7 @@ AddDerivationToCAP( LeftClosedMonoidalCoevaluationMorphismWithGivenRange,
     
     # Adjoint( id_(b ⊗ a): b ⊗ a → b ⊗ a ) = ( b → Hom(a, b ⊗ a) )
     
-    return TensorProductToLeftInternalHomAdjunctionMap( cat,
+    return TensorProductToLeftInternalHomAdjunctMorphism( cat,
              b, a,
              IdentityMorphism( cat, TensorProductOnObjects( cat, b, a ) ) );
     
@@ -160,7 +160,7 @@ end : CategoryFilter := IsLeftClosedMonoidalCategory );
 AddDerivationToCAP( UniversalPropertyOfLeftDual,
                     "UniversalPropertyOfLeftDual using the tensor hom adjunction",
                     [ [ PreCompose, 1 ],
-                      [ TensorProductToLeftInternalHomAdjunctionMap, 1 ],
+                      [ TensorProductToLeftInternalHomAdjunctMorphism, 1 ],
                       [ IsomorphismFromLeftInternalHomIntoTensorUnitToLeftDualObject, 1 ] ],
                     
   function( cat, t, a, alpha )
@@ -170,7 +170,7 @@ AddDerivationToCAP( UniversalPropertyOfLeftDual,
     # Adjoint( alpha ) = ( t → Hom(a,1) ) → a^v
     
     return PreCompose( cat,
-             TensorProductToLeftInternalHomAdjunctionMap( cat, t, a, alpha ),
+             TensorProductToLeftInternalHomAdjunctMorphism( cat, t, a, alpha ),
              IsomorphismFromLeftInternalHomIntoTensorUnitToLeftDualObject( cat, a ) );
     
 end : CategoryFilter := IsLeftClosedMonoidalCategory );
@@ -243,7 +243,7 @@ end : CategoryFilter := IsLeftClosedMonoidalCategory );
 ##
 AddDerivationToCAP( LeftClosedMonoidalEvaluationForLeftDualWithGivenTensorProduct,
                     "LeftClosedMonoidalEvaluationForLeftDualWithGivenTensorProduct using the tensor hom adjunction and IsomorphismFromLeftDualObjectToLeftInternalHomIntoTensorUnit",
-                    [ [ LeftInternalHomToTensorProductAdjunctionMap, 1 ],
+                    [ [ LeftInternalHomToTensorProductAdjunctMorphism, 1 ],
                       [ IsomorphismFromLeftDualObjectToLeftInternalHomIntoTensorUnit, 1 ] ],
                     
   function( cat, s, a, r )
@@ -252,7 +252,7 @@ AddDerivationToCAP( LeftClosedMonoidalEvaluationForLeftDualWithGivenTensorProduc
     #
     # Adjoint( a^v → Hom(a,1) ) = ( a^v ⊗ a → 1 )
     
-    return LeftInternalHomToTensorProductAdjunctionMap( cat,
+    return LeftInternalHomToTensorProductAdjunctMorphism( cat,
                    a,
                    r,
                    IsomorphismFromLeftDualObjectToLeftInternalHomIntoTensorUnit( cat, a ) );
@@ -264,7 +264,7 @@ AddDerivationToCAP( LeftClosedMonoidalLambdaIntroduction,
                     "LeftClosedMonoidalLambdaIntroduction using the tensor hom adjunction and left unitor",
                     [ [ PreCompose, 1 ],
                       [ LeftUnitor, 1 ],
-                      [ TensorProductToLeftInternalHomAdjunctionMap, 1 ],
+                      [ TensorProductToLeftInternalHomAdjunctMorphism, 1 ],
                       [ TensorUnit, 1 ] ],
                     
   function( cat, alpha )
@@ -286,7 +286,7 @@ AddDerivationToCAP( LeftClosedMonoidalLambdaIntroduction,
     
     result_morphism := PreCompose( cat, LeftUnitor( cat, source ), alpha );
     
-    return TensorProductToLeftInternalHomAdjunctionMap( cat,
+    return TensorProductToLeftInternalHomAdjunctMorphism( cat,
                    TensorUnit( cat ),
                    source,
                    result_morphism );
@@ -296,7 +296,7 @@ end : CategoryFilter := IsLeftClosedMonoidalCategory );
 ##
 AddDerivationToCAP( LeftClosedMonoidalLambdaElimination,
                     "LeftClosedMonoidalLambdaElimination using the tensor hom adjunction and left unitor inverse",
-                    [ [ LeftInternalHomToTensorProductAdjunctionMap, 1 ],
+                    [ [ LeftInternalHomToTensorProductAdjunctMorphism, 1 ],
                       [ PreCompose, 1 ],
                       [ LeftUnitorInverse, 1 ] ],
                     
@@ -316,7 +316,7 @@ AddDerivationToCAP( LeftClosedMonoidalLambdaElimination,
     #   v
     #   b
     
-    result_morphism := LeftInternalHomToTensorProductAdjunctionMap( cat, a, b, alpha );
+    result_morphism := LeftInternalHomToTensorProductAdjunctMorphism( cat, a, b, alpha );
     
     return PreCompose( cat, LeftUnitorInverse( cat, a ), result_morphism );
     
@@ -416,7 +416,7 @@ end : CategoryFilter := IsLeftClosedMonoidalCategory );
 AddDerivationToCAP( IsomorphismFromObjectToLeftInternalHomWithGivenLeftInternalHom,
                     "IsomorphismFromObjectToLeftInternalHomWithGivenLeftInternalHom as the adjoint of the right unitor",
                     [ [ TensorUnit, 1 ],
-                      [ TensorProductToLeftInternalHomAdjunctionMap, 1 ],
+                      [ TensorProductToLeftInternalHomAdjunctMorphism, 1 ],
                       [ RightUnitor, 1 ] ],
                     
   function( cat, a, internal_hom )
@@ -425,7 +425,7 @@ AddDerivationToCAP( IsomorphismFromObjectToLeftInternalHomWithGivenLeftInternalH
     #
     # Adjoint( ρ_a ) = ( a → Hom(1,a) )
     
-    return TensorProductToLeftInternalHomAdjunctionMap( cat,
+    return TensorProductToLeftInternalHomAdjunctMorphism( cat,
                    a,
                    TensorUnit( cat ),
                    RightUnitor( cat, a ) );
@@ -540,7 +540,7 @@ AddDerivationToCAP( LeftClosedMonoidalPostComposeMorphismWithGivenObjects,
                       [ TensorProductOnMorphisms, 1 ],
                       [ IdentityMorphism, 1 ],
                       [ LeftClosedMonoidalEvaluationMorphism, 2 ],
-                      [ TensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom, 1 ],
+                      [ TensorProductToLeftInternalHomAdjunctMorphismWithGivenLeftInternalHom, 1 ],
                       [ TensorProductOnObjects, 1 ] ],
                     
   function( cat, source, a, b, c, range )
@@ -580,7 +580,7 @@ AddDerivationToCAP( LeftClosedMonoidalPostComposeMorphismWithGivenObjects,
                           LeftClosedMonoidalEvaluationMorphism( cat, b, c ) ],
                         c );
     
-    return TensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom( cat,
+    return TensorProductToLeftInternalHomAdjunctMorphismWithGivenLeftInternalHom( cat,
                    source,
                    a,
                    morphism,
@@ -640,7 +640,7 @@ AddDerivationToCAP( LeftClosedMonoidalPostComposeMorphismWithGivenObjects,
                       [ TensorProductOnMorphisms, 1 ],
                       [ IdentityMorphism, 1 ],
                       [ LeftClosedMonoidalEvaluationMorphism, 2 ],
-                      [ TensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom, 1 ],
+                      [ TensorProductToLeftInternalHomAdjunctMorphismWithGivenLeftInternalHom, 1 ],
                       [ TensorProductOnObjects, 1 ] ],
                     
   function( cat, source, a, b, c, range )
@@ -670,7 +670,7 @@ AddDerivationToCAP( LeftClosedMonoidalPostComposeMorphismWithGivenObjects,
                           LeftClosedMonoidalEvaluationMorphism( cat, b, c ) ],
                         c );
     
-    return TensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom( cat,
+    return TensorProductToLeftInternalHomAdjunctMorphismWithGivenLeftInternalHom( cat,
                    source,
                    a,
                    morphism,

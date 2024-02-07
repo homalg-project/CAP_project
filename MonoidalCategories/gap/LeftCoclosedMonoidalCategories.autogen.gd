@@ -544,39 +544,39 @@ DeclareOperation( "AddLeftInternalCoHomTensorProductCompatibilityMorphismWithGiv
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `LeftInternalCoHomToTensorProductAdjunctionMap`.
-#! $F: ( a, c, f ) \mapsto \mathtt{LeftInternalCoHomToTensorProductAdjunctionMap}(a, c, f)$.
+#! to the category for the basic operation `LeftInternalCoHomToTensorProductAdjunctMorphism`.
+#! $F: ( a, c, f ) \mapsto \mathtt{LeftInternalCoHomToTensorProductAdjunctMorphism}(a, c, f)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddLeftInternalCoHomToTensorProductAdjunctionMap",
+DeclareOperation( "AddLeftInternalCoHomToTensorProductAdjunctMorphism",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddLeftInternalCoHomToTensorProductAdjunctionMap",
+DeclareOperation( "AddLeftInternalCoHomToTensorProductAdjunctMorphism",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddLeftInternalCoHomToTensorProductAdjunctionMap",
+DeclareOperation( "AddLeftInternalCoHomToTensorProductAdjunctMorphism",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftInternalCoHomToTensorProductAdjunctionMap",
+DeclareOperation( "AddLeftInternalCoHomToTensorProductAdjunctMorphism",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `LeftInternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct`.
-#! $F: ( a, c, f, t ) \mapsto \mathtt{LeftInternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct}(a, c, f, t)$.
+#! to the category for the basic operation `LeftInternalCoHomToTensorProductAdjunctMorphismWithGivenTensorProduct`.
+#! $F: ( a, c, f, t ) \mapsto \mathtt{LeftInternalCoHomToTensorProductAdjunctMorphismWithGivenTensorProduct}(a, c, f, t)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddLeftInternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct",
+DeclareOperation( "AddLeftInternalCoHomToTensorProductAdjunctMorphismWithGivenTensorProduct",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddLeftInternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct",
+DeclareOperation( "AddLeftInternalCoHomToTensorProductAdjunctMorphismWithGivenTensorProduct",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddLeftInternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct",
+DeclareOperation( "AddLeftInternalCoHomToTensorProductAdjunctMorphismWithGivenTensorProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftInternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct",
+DeclareOperation( "AddLeftInternalCoHomToTensorProductAdjunctMorphismWithGivenTensorProduct",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -658,39 +658,39 @@ DeclareOperation( "AddMorphismFromLeftInternalCoHomToTensorProductWithGivenObjec
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `TensorProductToLeftInternalCoHomAdjunctionMap`.
-#! $F: ( b, c, g ) \mapsto \mathtt{TensorProductToLeftInternalCoHomAdjunctionMap}(b, c, g)$.
+#! to the category for the basic operation `TensorProductToLeftInternalCoHomAdjunctMorphism`.
+#! $F: ( b, c, g ) \mapsto \mathtt{TensorProductToLeftInternalCoHomAdjunctMorphism}(b, c, g)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddTensorProductToLeftInternalCoHomAdjunctionMap",
+DeclareOperation( "AddTensorProductToLeftInternalCoHomAdjunctMorphism",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddTensorProductToLeftInternalCoHomAdjunctionMap",
+DeclareOperation( "AddTensorProductToLeftInternalCoHomAdjunctMorphism",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddTensorProductToLeftInternalCoHomAdjunctionMap",
+DeclareOperation( "AddTensorProductToLeftInternalCoHomAdjunctMorphism",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddTensorProductToLeftInternalCoHomAdjunctionMap",
+DeclareOperation( "AddTensorProductToLeftInternalCoHomAdjunctMorphism",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `TensorProductToLeftInternalCoHomAdjunctionMapWithGivenLeftInternalCoHom`.
-#! $F: ( b, c, g, i ) \mapsto \mathtt{TensorProductToLeftInternalCoHomAdjunctionMapWithGivenLeftInternalCoHom}(b, c, g, i)$.
+#! to the category for the basic operation `TensorProductToLeftInternalCoHomAdjunctMorphismWithGivenLeftInternalCoHom`.
+#! $F: ( b, c, g, i ) \mapsto \mathtt{TensorProductToLeftInternalCoHomAdjunctMorphismWithGivenLeftInternalCoHom}(b, c, g, i)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddTensorProductToLeftInternalCoHomAdjunctionMapWithGivenLeftInternalCoHom",
+DeclareOperation( "AddTensorProductToLeftInternalCoHomAdjunctMorphismWithGivenLeftInternalCoHom",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddTensorProductToLeftInternalCoHomAdjunctionMapWithGivenLeftInternalCoHom",
+DeclareOperation( "AddTensorProductToLeftInternalCoHomAdjunctMorphismWithGivenLeftInternalCoHom",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddTensorProductToLeftInternalCoHomAdjunctionMapWithGivenLeftInternalCoHom",
+DeclareOperation( "AddTensorProductToLeftInternalCoHomAdjunctMorphismWithGivenLeftInternalCoHom",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddTensorProductToLeftInternalCoHomAdjunctionMapWithGivenLeftInternalCoHom",
+DeclareOperation( "AddTensorProductToLeftInternalCoHomAdjunctMorphismWithGivenLeftInternalCoHom",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

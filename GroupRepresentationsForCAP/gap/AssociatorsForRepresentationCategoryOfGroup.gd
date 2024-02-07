@@ -113,7 +113,7 @@ DeclareOperation( "RewriteMatrixInCyclotomicGenerator", [ IsMatrix, IsInt ] );
 #! tensor hom adjunction.
 #! @Returns a morphism in $\mathrm{Hom}(a \otimes b, c)$.
 #! @Arguments b, c, g
-DeclareOperation( "InternalHomToTensorProductAdjunctionMapTemp",
+DeclareOperation( "InternalHomToTensorProductAdjunctMorphismTemp",
                   [ IsVectorSpaceObject, IsVectorSpaceObject, IsVectorSpaceMorphism ] );
 
 #! @Description

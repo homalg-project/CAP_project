@@ -93,7 +93,7 @@ LeftClosedMonoidalCoevaluationMorphismWithGivenRange := rec(
   dual_arguments_reversed := false,
 ),
 
-TensorProductToLeftInternalHomAdjunctionMap := rec(
+TensorProductToLeftInternalHomAdjunctMorphism := rec(
   filter_list := [ "category", "object", "object", "morphism" ],
   return_type := "morphism",
   input_arguments_names := [ "cat", "a", "b", "f" ],
@@ -102,12 +102,12 @@ TensorProductToLeftInternalHomAdjunctionMap := rec(
   output_range_getter_string := "LeftInternalHomOnObjects( cat, b, Range( f ) )",
   output_range_getter_preconditions := [ [ "LeftInternalHomOnObjects", 1 ] ],
   with_given_object_position := "Range",
-  dual_operation := "TensorProductToLeftInternalCoHomAdjunctionMap",
+  dual_operation := "TensorProductToLeftInternalCoHomAdjunctMorphism",
   dual_arguments_reversed := false,
   # Test in LeftClosedMonoidalCategoriesTest
 ),
 
-TensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom := rec(
+TensorProductToLeftInternalHomAdjunctMorphismWithGivenLeftInternalHom := rec(
   filter_list := [ "category", "object", "object", "morphism", "object" ],
   return_type := "morphism",
   input_arguments_names := [ "cat", "a", "b", "f", "i" ],
@@ -115,11 +115,11 @@ TensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom := rec(
   output_source_getter_preconditions := [ ],
   output_range_getter_string := "i",
   output_range_getter_preconditions := [ ],
-  dual_operation := "TensorProductToLeftInternalCoHomAdjunctionMapWithGivenLeftInternalCoHom",
+  dual_operation := "TensorProductToLeftInternalCoHomAdjunctMorphismWithGivenLeftInternalCoHom",
   dual_arguments_reversed := false,
 ),
 
-LeftInternalHomToTensorProductAdjunctionMap := rec(
+LeftInternalHomToTensorProductAdjunctMorphism := rec(
   filter_list := [ "category", "object", "object", "morphism" ],
   return_type := "morphism",
   input_arguments_names := [ "cat", "b", "c", "g" ],
@@ -128,13 +128,13 @@ LeftInternalHomToTensorProductAdjunctionMap := rec(
   output_range_getter_string := "c",
   output_range_getter_preconditions := [ ],
   with_given_object_position := "Source",
-  dual_operation := "LeftInternalCoHomToTensorProductAdjunctionMap",
+  dual_operation := "LeftInternalCoHomToTensorProductAdjunctMorphism",
   dual_preprocessor_func := { cat, a, b, g } -> NTuple( 4, Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( g ) ),
   dual_arguments_reversed := false,
   # Test in LeftClosedMonoidalCategoriesTest
 ),
 
-LeftInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct := rec(
+LeftInternalHomToTensorProductAdjunctMorphismWithGivenTensorProduct := rec(
   filter_list := [ "category", "object", "object", "morphism", "object" ],
   return_type := "morphism",
   input_arguments_names := [ "cat", "b", "c", "g", "t" ],
@@ -142,7 +142,7 @@ LeftInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct := rec(
   output_source_getter_preconditions := [ ],
   output_range_getter_string := "c",
   output_range_getter_preconditions := [ ],
-  dual_operation := "LeftInternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct",
+  dual_operation := "LeftInternalCoHomToTensorProductAdjunctMorphismWithGivenTensorProduct",
   dual_preprocessor_func := { cat, a, b, g, t } -> NTuple( 4, Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( g ),Opposite( t ) ),
   dual_arguments_reversed := false,
 ),

@@ -96,7 +96,7 @@ DeclareOperation( "CocartesianRightCoevaluationMorphismWithGivenSource",
 #! corresponding to $g$ under the coexponential-coproduct adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Coexponential}(a,b), c )$.
 #! @Arguments b, c, g
-DeclareOperation( "CoproductToCoexponentialRightAdjunctionMap",
+DeclareOperation( "CoproductToCoexponentialRightAdjunctMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
@@ -105,7 +105,7 @@ DeclareOperation( "CoproductToCoexponentialRightAdjunctionMap",
 #! corresponding to $g$ under the coexponential-coproduct adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( i, c )$.
 #! @Arguments b, c, g, i
-DeclareOperation( "CoproductToCoexponentialRightAdjunctionMapWithGivenCoexponential",
+DeclareOperation( "CoproductToCoexponentialRightAdjunctMorphismWithGivenCoexponential",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
@@ -114,7 +114,7 @@ DeclareOperation( "CoproductToCoexponentialRightAdjunctionMapWithGivenCoexponent
 #! coexponential-coproduct adjunction.
 #! @Returns a morphism in $\mathrm{Hom}(a, b \sqcup c)$.
 #! @Arguments a, b, f
-DeclareOperation( "CoexponentialToCoproductRightAdjunctionMap",
+DeclareOperation( "CoexponentialToCoproductRightAdjunctMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
@@ -123,7 +123,7 @@ DeclareOperation( "CoexponentialToCoproductRightAdjunctionMap",
 #! coexponential-coproduct adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( a, t )$.
 #! @Arguments a, b, f, t
-DeclareOperation( "CoexponentialToCoproductRightAdjunctionMapWithGivenCoproduct",
+DeclareOperation( "CoexponentialToCoproductRightAdjunctMorphismWithGivenCoproduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
@@ -168,7 +168,7 @@ DeclareOperation( "CocartesianLeftCoevaluationMorphismWithGivenSource",
 #! corresponding to $g$ under the coexponential-coproduct adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Coexponential}(a,c), b )$.
 #! @Arguments b, c, g
-DeclareOperation( "CoproductToCoexponentialLeftAdjunctionMap",
+DeclareOperation( "CoproductToCoexponentialLeftAdjunctMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
@@ -177,7 +177,7 @@ DeclareOperation( "CoproductToCoexponentialLeftAdjunctionMap",
 #! corresponding to $g$ under the coexponential-coproduct adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( i, b )$.
 #! @Arguments b, c, g, i
-DeclareOperation( "CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential",
+DeclareOperation( "CoproductToCoexponentialLeftAdjunctMorphismWithGivenCoexponential",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
@@ -186,7 +186,7 @@ DeclareOperation( "CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponenti
 #! coexponential-coproduct adjunction.
 #! @Returns a morphism in $\mathrm{Hom}(a, b \sqcup c)$.
 #! @Arguments a, c, f
-DeclareOperation( "CoexponentialToCoproductLeftAdjunctionMap",
+DeclareOperation( "CoexponentialToCoproductLeftAdjunctMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
@@ -195,7 +195,7 @@ DeclareOperation( "CoexponentialToCoproductLeftAdjunctionMap",
 #! coexponential-coproduct adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( a, t )$.
 #! @Arguments a, c, f, t
-DeclareOperation( "CoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct",
+DeclareOperation( "CoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description

@@ -93,7 +93,7 @@ DeclareOperation( "CoclosedMonoidalRightCoevaluationMorphismWithGivenSource",
 #! corresponding to $g$ under the cohom tensor adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a,b), c )$.
 #! @Arguments b, c, g
-DeclareOperation( "TensorProductToInternalCoHomRightAdjunctionMap",
+DeclareOperation( "TensorProductToInternalCoHomRightAdjunctMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
@@ -102,7 +102,7 @@ DeclareOperation( "TensorProductToInternalCoHomRightAdjunctionMap",
 #! corresponding to $g$ under the cohom tensor adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( i, c )$.
 #! @Arguments b, c, g, i
-DeclareOperation( "TensorProductToInternalCoHomRightAdjunctionMapWithGivenInternalCoHom",
+DeclareOperation( "TensorProductToInternalCoHomRightAdjunctMorphismWithGivenInternalCoHom",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
@@ -111,7 +111,7 @@ DeclareOperation( "TensorProductToInternalCoHomRightAdjunctionMapWithGivenIntern
 #! cohom tensor adjunction.
 #! @Returns a morphism in $\mathrm{Hom}(a, b \otimes c)$.
 #! @Arguments a, b, f
-DeclareOperation( "InternalCoHomToTensorProductRightAdjunctionMap",
+DeclareOperation( "InternalCoHomToTensorProductRightAdjunctMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
@@ -120,7 +120,7 @@ DeclareOperation( "InternalCoHomToTensorProductRightAdjunctionMap",
 #! cohom tensor adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( a, t )$.
 #! @Arguments a, b, f, t
-DeclareOperation( "InternalCoHomToTensorProductRightAdjunctionMapWithGivenTensorProduct",
+DeclareOperation( "InternalCoHomToTensorProductRightAdjunctMorphismWithGivenTensorProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
@@ -165,7 +165,7 @@ DeclareOperation( "CoclosedMonoidalLeftCoevaluationMorphismWithGivenSource",
 #! corresponding to $g$ under the cohom tensor adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a,c), b )$.
 #! @Arguments b, c, g
-DeclareOperation( "TensorProductToInternalCoHomLeftAdjunctionMap",
+DeclareOperation( "TensorProductToInternalCoHomLeftAdjunctMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
@@ -174,7 +174,7 @@ DeclareOperation( "TensorProductToInternalCoHomLeftAdjunctionMap",
 #! corresponding to $g$ under the cohom tensor adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( i, b )$.
 #! @Arguments b, c, g, i
-DeclareOperation( "TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom",
+DeclareOperation( "TensorProductToInternalCoHomLeftAdjunctMorphismWithGivenInternalCoHom",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
@@ -183,7 +183,7 @@ DeclareOperation( "TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInterna
 #! cohom tensor adjunction.
 #! @Returns a morphism in $\mathrm{Hom}(a, b \otimes c)$.
 #! @Arguments a, c, f
-DeclareOperation( "InternalCoHomToTensorProductLeftAdjunctionMap",
+DeclareOperation( "InternalCoHomToTensorProductLeftAdjunctMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
@@ -192,7 +192,7 @@ DeclareOperation( "InternalCoHomToTensorProductLeftAdjunctionMap",
 #! cohom tensor adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( a, t )$.
 #! @Arguments a, c, f, t
-DeclareOperation( "InternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct",
+DeclareOperation( "InternalCoHomToTensorProductLeftAdjunctMorphismWithGivenTensorProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description

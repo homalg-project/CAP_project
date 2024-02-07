@@ -1145,7 +1145,7 @@ phiR := ZeroMorphism( aR_o_bR, cR );
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( phiR );
 #! true
-tens_mor := TensorProductToInternalHomLeftAdjunctionMap(aR,bR,phiR);
+tens_mor := TensorProductToInternalHomLeftAdjunctMorphism(aR,bR,phiR);
 #! <A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4]
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( tens_mor );
@@ -1181,7 +1181,7 @@ phiC := ZeroMorphism( aC_o_bC, cC );
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( phiC );
 #! true
-tens_mor := TensorProductToInternalHomLeftAdjunctionMap(aC,bC,phiC);
+tens_mor := TensorProductToInternalHomLeftAdjunctMorphism(aC,bC,phiC);
 #! <A morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4]
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( tens_mor );
