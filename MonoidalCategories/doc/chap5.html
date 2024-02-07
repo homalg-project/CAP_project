@@ -45,6 +45,12 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7E1C1567803E7C91">5.2-8 TensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X8534C5AB7B80A8D8">5.2-9 TensorProductToInternalHomAdjunctionMap</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X875D98EF835CC34C">5.2-10 TensorProductToInternalHomAdjunctionMapWithGivenInternalHom</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7A68E9AF856E8EC5">5.2-11 InternalCoHomToTensorProductLeftAdjunctionMap</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7A6128507D63055E">5.2-12 InternalHomToTensorProductLeftAdjunctionMap</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7D9D52A780F6B608">5.2-13 TensorProductToInternalCoHomLeftAdjunctionMap</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X814AE2D67D150C0B">5.2-14 TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X782469E1837A982C">5.2-15 TensorProductToInternalHomLeftAdjunctionMap</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X846E5D587AD2FB8D">5.2-16 TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom</a></span>
 </div></div>
 </div>
 
@@ -119,7 +125,7 @@
 <h5>5.2-3 InternalCoHomToTensorProductAdjunctionMap</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalCoHomToTensorProductAdjunctionMap</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>This is a synonym for <code class="code">InternalCoHomToTensorProductLeftAdjunctionMap</code>.</p>
+<p>This is a synonym for <code class="code">InternalCoHomToTensorProductLeftAdjunctMorphism</code>.</p>
 
 <p><a id="X7BBB6AD87A056F37" name="X7BBB6AD87A056F37"></a></p>
 
@@ -133,7 +139,7 @@
 <h5>5.2-5 InternalHomToTensorProductAdjunctionMap</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalHomToTensorProductAdjunctionMap</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>This is a synonym for <code class="code">InternalHomToTensorProductLeftAdjunctionMap</code>.</p>
+<p>This is a synonym for <code class="code">InternalHomToTensorProductLeftAdjunctMorphism</code>.</p>
 
 <p><a id="X7E89D6DA7828F99E" name="X7E89D6DA7828F99E"></a></p>
 
@@ -147,28 +153,70 @@
 <h5>5.2-7 TensorProductToInternalCoHomAdjunctionMap</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductToInternalCoHomAdjunctionMap</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>This is a synonym for <code class="code">TensorProductToInternalCoHomLeftAdjunctionMap</code>.</p>
+<p>This is a synonym for <code class="code">TensorProductToInternalCoHomLeftAdjunctMorphism</code>.</p>
 
 <p><a id="X7E1C1567803E7C91" name="X7E1C1567803E7C91"></a></p>
 
 <h5>5.2-8 TensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>This is a synonym for <code class="code">TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom</code>.</p>
+<p>This is a synonym for <code class="code">TensorProductToInternalCoHomLeftAdjunctMorphismWithGivenInternalCoHom</code>.</p>
 
 <p><a id="X8534C5AB7B80A8D8" name="X8534C5AB7B80A8D8"></a></p>
 
 <h5>5.2-9 TensorProductToInternalHomAdjunctionMap</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductToInternalHomAdjunctionMap</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>This is a synonym for <code class="code">TensorProductToInternalHomLeftAdjunctionMap</code>.</p>
+<p>This is a synonym for <code class="code">TensorProductToInternalHomLeftAdjunctMorphism</code>.</p>
 
 <p><a id="X875D98EF835CC34C" name="X875D98EF835CC34C"></a></p>
 
 <h5>5.2-10 TensorProductToInternalHomAdjunctionMapWithGivenInternalHom</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductToInternalHomAdjunctionMapWithGivenInternalHom</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>This is a synonym for <code class="code">TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom</code>.</p>
+<p>This is a synonym for <code class="code">TensorProductToInternalHomLeftAdjunctMorphismWithGivenInternalHom</code>.</p>
+
+<p><a id="X7A68E9AF856E8EC5" name="X7A68E9AF856E8EC5"></a></p>
+
+<h5>5.2-11 InternalCoHomToTensorProductLeftAdjunctionMap</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalCoHomToTensorProductLeftAdjunctionMap</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>This is a synonym for <code class="code">InternalCoHomToTensorProductLeftAdjunctMorphism</code>.</p>
+
+<p><a id="X7A6128507D63055E" name="X7A6128507D63055E"></a></p>
+
+<h5>5.2-12 InternalHomToTensorProductLeftAdjunctionMap</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalHomToTensorProductLeftAdjunctionMap</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>This is a synonym for <code class="code">InternalHomToTensorProductLeftAdjunctMorphism</code>.</p>
+
+<p><a id="X7D9D52A780F6B608" name="X7D9D52A780F6B608"></a></p>
+
+<h5>5.2-13 TensorProductToInternalCoHomLeftAdjunctionMap</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductToInternalCoHomLeftAdjunctionMap</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>This is a synonym for <code class="code">TensorProductToInternalCoHomLeftAdjunctMorphism</code>.</p>
+
+<p><a id="X814AE2D67D150C0B" name="X814AE2D67D150C0B"></a></p>
+
+<h5>5.2-14 TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>This is a synonym for <code class="code">TensorProductToInternalCoHomLeftAdjunctMorphismWithGivenInternalCoHom</code>.</p>
+
+<p><a id="X782469E1837A982C" name="X782469E1837A982C"></a></p>
+
+<h5>5.2-15 TensorProductToInternalHomLeftAdjunctionMap</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductToInternalHomLeftAdjunctionMap</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>This is a synonym for <code class="code">TensorProductToInternalHomLeftAdjunctMorphism</code>.</p>
+
+<p><a id="X846E5D587AD2FB8D" name="X846E5D587AD2FB8D"></a></p>
+
+<h5>5.2-16 TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>This is a synonym for <code class="code">TensorProductToInternalHomLeftAdjunctMorphismWithGivenInternalHom</code>.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap4.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap6.html">[Next Chapter]</a>&nbsp;  </div>

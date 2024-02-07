@@ -68,7 +68,7 @@
   
   [33X[1;0Y[29X[2XInternalCoHomToTensorProductAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[0;0YThis is a synonym for [10XInternalCoHomToTensorProductLeftAdjunctionMap[110X.[133X
+  [33X[0;0YThis is a synonym for [10XInternalCoHomToTensorProductLeftAdjunctMorphism[110X.[133X
   
   [1X5.2-4 InternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct[101X
   
@@ -81,7 +81,7 @@
   
   [33X[1;0Y[29X[2XInternalHomToTensorProductAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[0;0YThis is a synonym for [10XInternalHomToTensorProductLeftAdjunctionMap[110X.[133X
+  [33X[0;0YThis is a synonym for [10XInternalHomToTensorProductLeftAdjunctMorphism[110X.[133X
   
   [1X5.2-6 InternalHomToTensorProductAdjunctionMapWithGivenTensorProduct[101X
   
@@ -94,25 +94,63 @@
   
   [33X[1;0Y[29X[2XTensorProductToInternalCoHomAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[0;0YThis is a synonym for [10XTensorProductToInternalCoHomLeftAdjunctionMap[110X.[133X
+  [33X[0;0YThis is a synonym for [10XTensorProductToInternalCoHomLeftAdjunctMorphism[110X.[133X
   
   [1X5.2-8 TensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom[101X
   
   [33X[1;0Y[29X[2XTensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom[102X( [3Xarg[103X ) [32X operation[133X
   
   [33X[0;0YThis               is               a               synonym              for
-  [10XTensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom[110X.[133X
+  [10XTensorProductToInternalCoHomLeftAdjunctMorphismWithGivenInternalCoHom[110X.[133X
   
   [1X5.2-9 TensorProductToInternalHomAdjunctionMap[101X
   
   [33X[1;0Y[29X[2XTensorProductToInternalHomAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[0;0YThis is a synonym for [10XTensorProductToInternalHomLeftAdjunctionMap[110X.[133X
+  [33X[0;0YThis is a synonym for [10XTensorProductToInternalHomLeftAdjunctMorphism[110X.[133X
   
   [1X5.2-10 TensorProductToInternalHomAdjunctionMapWithGivenInternalHom[101X
   
   [33X[1;0Y[29X[2XTensorProductToInternalHomAdjunctionMapWithGivenInternalHom[102X( [3Xarg[103X ) [32X operation[133X
   
   [33X[0;0YThis               is               a               synonym              for
-  [10XTensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom[110X.[133X
+  [10XTensorProductToInternalHomLeftAdjunctMorphismWithGivenInternalHom[110X.[133X
+  
+  [1X5.2-11 InternalCoHomToTensorProductLeftAdjunctionMap[101X
+  
+  [33X[1;0Y[29X[2XInternalCoHomToTensorProductLeftAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis is a synonym for [10XInternalCoHomToTensorProductLeftAdjunctMorphism[110X.[133X
+  
+  [1X5.2-12 InternalHomToTensorProductLeftAdjunctionMap[101X
+  
+  [33X[1;0Y[29X[2XInternalHomToTensorProductLeftAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis is a synonym for [10XInternalHomToTensorProductLeftAdjunctMorphism[110X.[133X
+  
+  [1X5.2-13 TensorProductToInternalCoHomLeftAdjunctionMap[101X
+  
+  [33X[1;0Y[29X[2XTensorProductToInternalCoHomLeftAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis is a synonym for [10XTensorProductToInternalCoHomLeftAdjunctMorphism[110X.[133X
+  
+  [1X5.2-14 TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom[101X
+  
+  [33X[1;0Y[29X[2XTensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis               is               a               synonym              for
+  [10XTensorProductToInternalCoHomLeftAdjunctMorphismWithGivenInternalCoHom[110X.[133X
+  
+  [1X5.2-15 TensorProductToInternalHomLeftAdjunctionMap[101X
+  
+  [33X[1;0Y[29X[2XTensorProductToInternalHomLeftAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis is a synonym for [10XTensorProductToInternalHomLeftAdjunctMorphism[110X.[133X
+  
+  [1X5.2-16 TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom[101X
+  
+  [33X[1;0Y[29X[2XTensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis               is               a               synonym              for
+  [10XTensorProductToInternalHomLeftAdjunctMorphismWithGivenInternalHom[110X.[133X
   

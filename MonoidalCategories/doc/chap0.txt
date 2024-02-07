@@ -6,7 +6,7 @@
                  [1X Monoidal and monoidal (co)closed categories [101X
   
   
-                                   2024.02-01
+                                   2024.02-02
   
   
                                 7 February 2024
@@ -119,10 +119,10 @@
       1.5-5 LeftClosedMonoidalEvaluationMorphismWithGivenSource
       1.5-6 LeftClosedMonoidalCoevaluationMorphism
       1.5-7 LeftClosedMonoidalCoevaluationMorphismWithGivenRange
-      1.5-8 TensorProductToLeftInternalHomAdjunctionMap
-      1.5-9 TensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom
-      1.5-10 LeftInternalHomToTensorProductAdjunctionMap
-      1.5-11 LeftInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct
+      1.5-8 TensorProductToLeftInternalHomAdjunctMorphism
+      1.5-9 TensorProductToLeftInternalHomAdjunctMorphismWithGivenLeftInternalHom
+      1.5-10 LeftInternalHomToTensorProductAdjunctMorphism
+      1.5-11 LeftInternalHomToTensorProductAdjunctMorphismWithGivenTensorProduct
       1.5-12 LeftClosedMonoidalPreComposeMorphism
       1.5-13 LeftClosedMonoidalPreComposeMorphismWithGivenObjects
       1.5-14 LeftClosedMonoidalPostComposeMorphism
@@ -157,18 +157,18 @@
       1.6-5 ClosedMonoidalRightEvaluationMorphismWithGivenSource
       1.6-6 ClosedMonoidalRightCoevaluationMorphism
       1.6-7 ClosedMonoidalRightCoevaluationMorphismWithGivenRange
-      1.6-8 TensorProductToInternalHomRightAdjunctionMap
-      1.6-9 TensorProductToInternalHomRightAdjunctionMapWithGivenInternalHom
-      1.6-10 InternalHomToTensorProductRightAdjunctionMap
-      1.6-11 InternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct
+      1.6-8 TensorProductToInternalHomRightAdjunctMorphism
+      1.6-9 TensorProductToInternalHomRightAdjunctMorphismWithGivenInternalHom
+      1.6-10 InternalHomToTensorProductRightAdjunctMorphism
+      1.6-11 InternalHomToTensorProductRightAdjunctMorphismWithGivenTensorProduct
       1.6-12 ClosedMonoidalLeftEvaluationMorphism
       1.6-13 ClosedMonoidalLeftEvaluationMorphismWithGivenSource
       1.6-14 ClosedMonoidalLeftCoevaluationMorphism
       1.6-15 ClosedMonoidalLeftCoevaluationMorphismWithGivenRange
-      1.6-16 TensorProductToInternalHomLeftAdjunctionMap
-      1.6-17 TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom
-      1.6-18 InternalHomToTensorProductLeftAdjunctionMap
-      1.6-19 InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct
+      1.6-16 TensorProductToInternalHomLeftAdjunctMorphism
+      1.6-17 TensorProductToInternalHomLeftAdjunctMorphismWithGivenInternalHom
+      1.6-18 InternalHomToTensorProductLeftAdjunctMorphism
+      1.6-19 InternalHomToTensorProductLeftAdjunctMorphismWithGivenTensorProduct
       1.6-20 MonoidalPreComposeMorphism
       1.6-21 MonoidalPreComposeMorphismWithGivenObjects
       1.6-22 MonoidalPostComposeMorphism
@@ -203,10 +203,10 @@
       1.7-5 LeftCoclosedMonoidalEvaluationMorphismWithGivenRange
       1.7-6 LeftCoclosedMonoidalCoevaluationMorphism
       1.7-7 LeftCoclosedMonoidalCoevaluationMorphismWithGivenSource
-      1.7-8 TensorProductToLeftInternalCoHomAdjunctionMap
-      1.7-9 TensorProductToLeftInternalCoHomAdjunctionMapWithGivenLeftInternalCoHom
-      1.7-10 LeftInternalCoHomToTensorProductAdjunctionMap
-      1.7-11 LeftInternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct
+      1.7-8 TensorProductToLeftInternalCoHomAdjunctMorphism
+      1.7-9 TensorProductToLeftInternalCoHomAdjunctMorphismWithGivenLeftInternalCoHom
+      1.7-10 LeftInternalCoHomToTensorProductAdjunctMorphism
+      1.7-11 LeftInternalCoHomToTensorProductAdjunctMorphismWithGivenTensorProduct
       1.7-12 LeftCoclosedMonoidalPreCoComposeMorphism
       1.7-13 LeftCoclosedMonoidalPreCoComposeMorphismWithGivenObjects
       1.7-14 LeftCoclosedMonoidalPostCoComposeMorphism
@@ -241,18 +241,18 @@
       1.8-5 CoclosedMonoidalRightEvaluationMorphismWithGivenRange
       1.8-6 CoclosedMonoidalRightCoevaluationMorphism
       1.8-7 CoclosedMonoidalRightCoevaluationMorphismWithGivenSource
-      1.8-8 TensorProductToInternalCoHomRightAdjunctionMap
-      1.8-9 TensorProductToInternalCoHomRightAdjunctionMapWithGivenInternalCoHom
-      1.8-10 InternalCoHomToTensorProductRightAdjunctionMap
-      1.8-11 InternalCoHomToTensorProductRightAdjunctionMapWithGivenTensorProduct
+      1.8-8 TensorProductToInternalCoHomRightAdjunctMorphism
+      1.8-9 TensorProductToInternalCoHomRightAdjunctMorphismWithGivenInternalCoHom
+      1.8-10 InternalCoHomToTensorProductRightAdjunctMorphism
+      1.8-11 InternalCoHomToTensorProductRightAdjunctMorphismWithGivenTensorProduct
       1.8-12 CoclosedMonoidalLeftEvaluationMorphism
       1.8-13 CoclosedMonoidalLeftEvaluationMorphismWithGivenRange
       1.8-14 CoclosedMonoidalLeftCoevaluationMorphism
       1.8-15 CoclosedMonoidalLeftCoevaluationMorphismWithGivenSource
-      1.8-16 TensorProductToInternalCoHomLeftAdjunctionMap
-      1.8-17 TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom
-      1.8-18 InternalCoHomToTensorProductLeftAdjunctionMap
-      1.8-19 InternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct
+      1.8-16 TensorProductToInternalCoHomLeftAdjunctMorphism
+      1.8-17 TensorProductToInternalCoHomLeftAdjunctMorphismWithGivenInternalCoHom
+      1.8-18 InternalCoHomToTensorProductLeftAdjunctMorphism
+      1.8-19 InternalCoHomToTensorProductLeftAdjunctMorphismWithGivenTensorProduct
       1.8-20 MonoidalPreCoComposeMorphism
       1.8-21 MonoidalPreCoComposeMorphismWithGivenObjects
       1.8-22 MonoidalPostCoComposeMorphism
@@ -341,10 +341,10 @@
       1.14-26 AddInternalHomOnMorphisms
       1.14-27 AddInternalHomOnMorphismsWithGivenInternalHoms
       1.14-28 AddInternalHomOnObjects
-      1.14-29 AddInternalHomToTensorProductLeftAdjunctionMap
-      1.14-30 AddInternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct
-      1.14-31 AddInternalHomToTensorProductRightAdjunctionMap
-      1.14-32 AddInternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct
+      1.14-29 AddInternalHomToTensorProductLeftAdjunctMorphism
+      1.14-30 AddInternalHomToTensorProductLeftAdjunctMorphismWithGivenTensorProduct
+      1.14-31 AddInternalHomToTensorProductRightAdjunctMorphism
+      1.14-32 AddInternalHomToTensorProductRightAdjunctMorphismWithGivenTensorProduct
       1.14-33 AddIsomorphismFromDualObjectToInternalHomIntoTensorUnit
       1.14-34 AddIsomorphismFromInternalHomIntoTensorUnitToDualObject
       1.14-35 AddIsomorphismFromInternalHomToObject
@@ -365,10 +365,10 @@
       1.14-50 AddTensorProductDualityCompatibilityMorphismWithGivenObjects
       1.14-51 AddTensorProductInternalHomCompatibilityMorphism
       1.14-52 AddTensorProductInternalHomCompatibilityMorphismWithGivenObjects
-      1.14-53 AddTensorProductToInternalHomLeftAdjunctionMap
-      1.14-54 AddTensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom
-      1.14-55 AddTensorProductToInternalHomRightAdjunctionMap
-      1.14-56 AddTensorProductToInternalHomRightAdjunctionMapWithGivenInternalHom
+      1.14-53 AddTensorProductToInternalHomLeftAdjunctMorphism
+      1.14-54 AddTensorProductToInternalHomLeftAdjunctMorphismWithGivenInternalHom
+      1.14-55 AddTensorProductToInternalHomRightAdjunctMorphism
+      1.14-56 AddTensorProductToInternalHomRightAdjunctMorphismWithGivenInternalHom
       1.14-57 AddUniversalPropertyOfDual
       1.14-58 AddCoDualOnMorphisms
       1.14-59 AddCoDualOnMorphismsWithGivenCoDuals
@@ -392,10 +392,10 @@
       1.14-77 AddInternalCoHomOnObjects
       1.14-78 AddInternalCoHomTensorProductCompatibilityMorphism
       1.14-79 AddInternalCoHomTensorProductCompatibilityMorphismWithGivenObjects
-      1.14-80 AddInternalCoHomToTensorProductLeftAdjunctionMap
-      1.14-81 AddInternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct
-      1.14-82 AddInternalCoHomToTensorProductRightAdjunctionMap
-      1.14-83 AddInternalCoHomToTensorProductRightAdjunctionMapWithGivenTensorProduct
+      1.14-80 AddInternalCoHomToTensorProductLeftAdjunctMorphism
+      1.14-81 AddInternalCoHomToTensorProductLeftAdjunctMorphismWithGivenTensorProduct
+      1.14-82 AddInternalCoHomToTensorProductRightAdjunctMorphism
+      1.14-83 AddInternalCoHomToTensorProductRightAdjunctMorphismWithGivenTensorProduct
       1.14-84 AddIsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit
       1.14-85 AddIsomorphismFromInternalCoHomFromTensorUnitToCoDualObject
       1.14-86 AddIsomorphismFromInternalCoHomToObject
@@ -410,10 +410,10 @@
       1.14-95 AddMorphismFromCoBidualWithGivenCoBidual
       1.14-96 AddMorphismFromInternalCoHomToTensorProduct
       1.14-97 AddMorphismFromInternalCoHomToTensorProductWithGivenObjects
-      1.14-98 AddTensorProductToInternalCoHomLeftAdjunctionMap
-      1.14-99 AddTensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom
-      1.14-100 AddTensorProductToInternalCoHomRightAdjunctionMap
-      1.14-101 AddTensorProductToInternalCoHomRightAdjunctionMapWithGivenInternalCoHom
+      1.14-98 AddTensorProductToInternalCoHomLeftAdjunctMorphism
+      1.14-99 AddTensorProductToInternalCoHomLeftAdjunctMorphismWithGivenInternalCoHom
+      1.14-100 AddTensorProductToInternalCoHomRightAdjunctMorphism
+      1.14-101 AddTensorProductToInternalCoHomRightAdjunctMorphismWithGivenInternalCoHom
       1.14-102 AddUniversalPropertyOfCoDual
       1.14-103 AddIsomorphismFromLeftDualObjectToLeftInternalHomIntoTensorUnit
       1.14-104 AddIsomorphismFromLeftInternalHomIntoTensorUnitToLeftDualObject
@@ -439,8 +439,8 @@
       1.14-124 AddLeftInternalHomOnMorphisms
       1.14-125 AddLeftInternalHomOnMorphismsWithGivenLeftInternalHoms
       1.14-126 AddLeftInternalHomOnObjects
-      1.14-127 AddLeftInternalHomToTensorProductAdjunctionMap
-      1.14-128 AddLeftInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct
+      1.14-127 AddLeftInternalHomToTensorProductAdjunctMorphism
+      1.14-128 AddLeftInternalHomToTensorProductAdjunctMorphismWithGivenTensorProduct
       1.14-129 AddMorphismFromTensorProductToLeftInternalHom
       1.14-130 AddMorphismFromTensorProductToLeftInternalHomWithGivenObjects
       1.14-131 AddMorphismToLeftBidual
@@ -449,8 +449,8 @@
       1.14-134 AddTensorProductLeftDualityCompatibilityMorphismWithGivenObjects
       1.14-135 AddTensorProductLeftInternalHomCompatibilityMorphism
       1.14-136 AddTensorProductLeftInternalHomCompatibilityMorphismWithGivenObjects
-      1.14-137 AddTensorProductToLeftInternalHomAdjunctionMap
-      1.14-138 AddTensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom
+      1.14-137 AddTensorProductToLeftInternalHomAdjunctMorphism
+      1.14-138 AddTensorProductToLeftInternalHomAdjunctMorphismWithGivenLeftInternalHom
       1.14-139 AddUniversalPropertyOfLeftDual
       1.14-140 AddIsomorphismFromLeftCoDualObjectToLeftInternalCoHomFromTensorUnit
       1.14-141 AddIsomorphismFromLeftInternalCoHomFromTensorUnitToLeftCoDualObject
@@ -480,14 +480,14 @@
       1.14-165 AddLeftInternalCoHomOnObjects
       1.14-166 AddLeftInternalCoHomTensorProductCompatibilityMorphism
       1.14-167 AddLeftInternalCoHomTensorProductCompatibilityMorphismWithGivenObjects
-      1.14-168 AddLeftInternalCoHomToTensorProductAdjunctionMap
-      1.14-169 AddLeftInternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct
+      1.14-168 AddLeftInternalCoHomToTensorProductAdjunctMorphism
+      1.14-169 AddLeftInternalCoHomToTensorProductAdjunctMorphismWithGivenTensorProduct
       1.14-170 AddMorphismFromLeftCoBidual
       1.14-171 AddMorphismFromLeftCoBidualWithGivenLeftCoBidual
       1.14-172 AddMorphismFromLeftInternalCoHomToTensorProduct
       1.14-173 AddMorphismFromLeftInternalCoHomToTensorProductWithGivenObjects
-      1.14-174 AddTensorProductToLeftInternalCoHomAdjunctionMap
-      1.14-175 AddTensorProductToLeftInternalCoHomAdjunctionMapWithGivenLeftInternalCoHom
+      1.14-174 AddTensorProductToLeftInternalCoHomAdjunctMorphism
+      1.14-175 AddTensorProductToLeftInternalCoHomAdjunctMorphismWithGivenLeftInternalCoHom
       1.14-176 AddUniversalPropertyOfLeftCoDual
       1.14-177 AddAssociatorLeftToRight
       1.14-178 AddAssociatorLeftToRightWithGivenTensorProducts
@@ -571,6 +571,12 @@
       5.2-8 TensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom
       5.2-9 TensorProductToInternalHomAdjunctionMap
       5.2-10 TensorProductToInternalHomAdjunctionMapWithGivenInternalHom
+      5.2-11 InternalCoHomToTensorProductLeftAdjunctionMap
+      5.2-12 InternalHomToTensorProductLeftAdjunctionMap
+      5.2-13 TensorProductToInternalCoHomLeftAdjunctionMap
+      5.2-14 TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom
+      5.2-15 TensorProductToInternalHomLeftAdjunctionMap
+      5.2-16 TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom
   6 [33X[0;0YMonoidalCategories automatic generated documentation[133X
     6.1 [33X[0;0YMonoidalCategories automatic generated documentation of properties[133X
       6.1-1 IsBraidedMonoidalCategory

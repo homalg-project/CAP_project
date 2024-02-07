@@ -1,5 +1,5 @@
 name: MonoidalCategories
-version: "2024.02-01"
+version: "2024.02-02"
 license: "GPL-2.0-or-later"
 date: 2024-02-07
 description: |
@@ -45,11 +45,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/MonoidalCategories/Pac
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2024.02-01/MonoidalCategories-2024.02-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2024.02-02/MonoidalCategories-2024.02-02.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2024.02-01/MonoidalCategories-2024.02-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2024.02-02/MonoidalCategories-2024.02-02.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2024.02-01/MonoidalCategories-2024.02-01-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2024.02-02/MonoidalCategories-2024.02-02-manual.pdf
 
 abstract: |
 
@@ -62,7 +62,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BGPKZ07</span>]   <b class='BibAuthor'>Barakat, M., Gutsche, S., Posur, S., Kuhmichel, T. and Zickgraf, F.</b>,
      <i class='BibTitle'>MonoidalCategories, Monoidal and monoidal (co)closed categories,
-             Version 2024.02-01</i>
+             Version 2024.02-02</i>
      (<span class='BibYear'>2-07</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/MonoidalCategories">https://homalg-project.github.io/pkg/MonoidalCategories</a></span>.
@@ -70,11 +70,11 @@ citeas: |
     
 
 bibtex: |
-    @misc{ MonoidalCategories2024.02-01,
+    @misc{ MonoidalCategories2024.02-02,
       author =           {Barakat,   M.  and  Gutsche,  S.  and  Posur,  S.  and
                           Kuhmichel, T. and Zickgraf, F.},
       title =            {{MonoidalCategories}, Monoidal and monoidal (co)closed
-                          categories, {V}ersion 2024.02-01},
+                          categories, {V}ersion 2024.02-02},
       month =            {4-},
       year =             {2-07},
       note =             {GAP package},
