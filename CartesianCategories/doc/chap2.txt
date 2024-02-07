@@ -402,7 +402,7 @@
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, t )[123X.[133X
   
   [33X[0;0YThe arguments are two objects [23Xa,b[123X, a morphism [23Xf: \mathrm{Coexponential}(a,b)
-  \rightarrow  b[123X  and  an object [23Xt = b \sqcup c[123X. The output is a morphism [23Xg: a
+  \rightarrow  c[123X  and  an object [23Xt = b \sqcup c[123X. The output is a morphism [23Xg: a
   \rightarrow   t[123X   corresponding   to  [23Xf[123X  under  the  coexponential-coproduct
   adjunction.[133X
   
