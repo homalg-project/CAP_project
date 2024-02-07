@@ -580,37 +580,37 @@ false
 
 # Closed and coclosed left adjunction maps for rows
 
-gap> tensor_to_hom_left_adjunction_on_id_a_tensor_b := TensorProductToInternalHomLeftAdjunctionMap( a, b, id_a_tensor_b );;
-gap> tensor_to_hom_left_adjunction_on_id_b_tensor_a := TensorProductToInternalHomLeftAdjunctionMap( b, a, id_b_tensor_a );;
-gap> tensor_to_hom_left_adjunction_on_id_c_tensor_d := TensorProductToInternalHomLeftAdjunctionMap( c, d, id_c_tensor_d );;
-gap> tensor_to_hom_left_adjunction_on_id_d_tensor_c := TensorProductToInternalHomLeftAdjunctionMap( d, c, id_d_tensor_c );;
+gap> tensor_to_hom_left_adjunction_on_id_a_tensor_b := TensorProductToInternalHomLeftAdjunctMorphism( a, b, id_a_tensor_b );;
+gap> tensor_to_hom_left_adjunction_on_id_b_tensor_a := TensorProductToInternalHomLeftAdjunctMorphism( b, a, id_b_tensor_a );;
+gap> tensor_to_hom_left_adjunction_on_id_c_tensor_d := TensorProductToInternalHomLeftAdjunctMorphism( c, d, id_c_tensor_d );;
+gap> tensor_to_hom_left_adjunction_on_id_d_tensor_c := TensorProductToInternalHomLeftAdjunctMorphism( d, c, id_d_tensor_c );;
 
-gap> tensor_to_hom_left_adjunction_on_id_0_tensor_a := TensorProductToInternalHomLeftAdjunctionMap( z, a, id_0_tensor_a );;
-gap> tensor_to_hom_left_adjunction_on_id_a_tensor_0 := TensorProductToInternalHomLeftAdjunctionMap( a, z, id_a_tensor_0 );;
+gap> tensor_to_hom_left_adjunction_on_id_0_tensor_a := TensorProductToInternalHomLeftAdjunctMorphism( z, a, id_0_tensor_a );;
+gap> tensor_to_hom_left_adjunction_on_id_a_tensor_0 := TensorProductToInternalHomLeftAdjunctMorphism( a, z, id_a_tensor_0 );;
 
-gap> hom_to_tensor_left_adjunction_on_id_hom_ab := InternalHomToTensorProductLeftAdjunctionMap( a, b, id_hom_ab );;
-gap> hom_to_tensor_left_adjunction_on_id_hom_ba := InternalHomToTensorProductLeftAdjunctionMap( b, a, id_hom_ba );;
-gap> hom_to_tensor_left_adjunction_on_id_hom_cd := InternalHomToTensorProductLeftAdjunctionMap( c, d, id_hom_cd );;
-gap> hom_to_tensor_left_adjunction_on_id_hom_dc := InternalHomToTensorProductLeftAdjunctionMap( d, c, id_hom_dc );;
+gap> hom_to_tensor_left_adjunction_on_id_hom_ab := InternalHomToTensorProductLeftAdjunctMorphism( a, b, id_hom_ab );;
+gap> hom_to_tensor_left_adjunction_on_id_hom_ba := InternalHomToTensorProductLeftAdjunctMorphism( b, a, id_hom_ba );;
+gap> hom_to_tensor_left_adjunction_on_id_hom_cd := InternalHomToTensorProductLeftAdjunctMorphism( c, d, id_hom_cd );;
+gap> hom_to_tensor_left_adjunction_on_id_hom_dc := InternalHomToTensorProductLeftAdjunctMorphism( d, c, id_hom_dc );;
 
-gap> hom_to_tensor_left_adjunction_on_id_hom_0a := InternalHomToTensorProductLeftAdjunctionMap( z, a, id_hom_0a );;
-gap> hom_to_tensor_left_adjunction_on_id_hom_a0 := InternalHomToTensorProductLeftAdjunctionMap( a, z, id_hom_a0 );;
+gap> hom_to_tensor_left_adjunction_on_id_hom_0a := InternalHomToTensorProductLeftAdjunctMorphism( z, a, id_hom_0a );;
+gap> hom_to_tensor_left_adjunction_on_id_hom_a0 := InternalHomToTensorProductLeftAdjunctMorphism( a, z, id_hom_a0 );;
 
-gap> tensor_to_cohom_left_adjunction_on_id_a_tensor_b := TensorProductToInternalCoHomLeftAdjunctionMap( a, b, id_a_tensor_b );;
-gap> tensor_to_cohom_left_adjunction_on_id_b_tensor_a := TensorProductToInternalCoHomLeftAdjunctionMap( b, a, id_b_tensor_a );;
-gap> tensor_to_cohom_left_adjunction_on_id_c_tensor_d := TensorProductToInternalCoHomLeftAdjunctionMap( c, d, id_c_tensor_d );;
-gap> tensor_to_cohom_left_adjunction_on_id_d_tensor_c := TensorProductToInternalCoHomLeftAdjunctionMap( d, c, id_d_tensor_c );;
+gap> tensor_to_cohom_left_adjunction_on_id_a_tensor_b := TensorProductToInternalCoHomLeftAdjunctMorphism( a, b, id_a_tensor_b );;
+gap> tensor_to_cohom_left_adjunction_on_id_b_tensor_a := TensorProductToInternalCoHomLeftAdjunctMorphism( b, a, id_b_tensor_a );;
+gap> tensor_to_cohom_left_adjunction_on_id_c_tensor_d := TensorProductToInternalCoHomLeftAdjunctMorphism( c, d, id_c_tensor_d );;
+gap> tensor_to_cohom_left_adjunction_on_id_d_tensor_c := TensorProductToInternalCoHomLeftAdjunctMorphism( d, c, id_d_tensor_c );;
 
-gap> tensor_to_cohom_left_adjunction_on_id_0_tensor_a := TensorProductToInternalCoHomLeftAdjunctionMap( z, a, id_0_tensor_a );;
-gap> tensor_to_cohom_left_adjunction_on_id_a_tensor_0 := TensorProductToInternalCoHomLeftAdjunctionMap( a, z, id_a_tensor_0 );;
+gap> tensor_to_cohom_left_adjunction_on_id_0_tensor_a := TensorProductToInternalCoHomLeftAdjunctMorphism( z, a, id_0_tensor_a );;
+gap> tensor_to_cohom_left_adjunction_on_id_a_tensor_0 := TensorProductToInternalCoHomLeftAdjunctMorphism( a, z, id_a_tensor_0 );;
 
-gap> cohom_to_tensor_left_adjunction_on_id_cohom_ab := InternalCoHomToTensorProductLeftAdjunctionMap( a, b, id_cohom_ab );;
-gap> cohom_to_tensor_left_adjunction_on_id_cohom_ba := InternalCoHomToTensorProductLeftAdjunctionMap( b, a, id_cohom_ba );;
-gap> cohom_to_tensor_left_adjunction_on_id_cohom_cd := InternalCoHomToTensorProductLeftAdjunctionMap( c, d, id_cohom_cd );;
-gap> cohom_to_tensor_left_adjunction_on_id_cohom_dc := InternalCoHomToTensorProductLeftAdjunctionMap( d, c, id_cohom_dc );;
+gap> cohom_to_tensor_left_adjunction_on_id_cohom_ab := InternalCoHomToTensorProductLeftAdjunctMorphism( a, b, id_cohom_ab );;
+gap> cohom_to_tensor_left_adjunction_on_id_cohom_ba := InternalCoHomToTensorProductLeftAdjunctMorphism( b, a, id_cohom_ba );;
+gap> cohom_to_tensor_left_adjunction_on_id_cohom_cd := InternalCoHomToTensorProductLeftAdjunctMorphism( c, d, id_cohom_cd );;
+gap> cohom_to_tensor_left_adjunction_on_id_cohom_dc := InternalCoHomToTensorProductLeftAdjunctMorphism( d, c, id_cohom_dc );;
 
-gap> cohom_to_tensor_left_adjunction_on_id_cohom_0a := InternalCoHomToTensorProductLeftAdjunctionMap( z, a, id_cohom_0a );;
-gap> cohom_to_tensor_left_adjunction_on_id_cohom_a0 := InternalCoHomToTensorProductLeftAdjunctionMap( a, z, id_cohom_a0 );;
+gap> cohom_to_tensor_left_adjunction_on_id_cohom_0a := InternalCoHomToTensorProductLeftAdjunctMorphism( z, a, id_cohom_0a );;
+gap> cohom_to_tensor_left_adjunction_on_id_cohom_a0 := InternalCoHomToTensorProductLeftAdjunctMorphism( a, z, id_cohom_a0 );;
 
 # Correspondence between closed and coclosed left adjunction maps
 
@@ -738,25 +738,25 @@ true
 # Left adjunction maps on non-identities
 #####################################################
 
-gap> tensor_to_hom_left_adjunction_on_alpha_tensor_beta := TensorProductToInternalHomLeftAdjunctionMap( a, c, alpha_tensor_beta );;
-gap> tensor_to_hom_left_adjunction_on_beta_tensor_alpha := TensorProductToInternalHomLeftAdjunctionMap( c, a, beta_tensor_alpha );;
-gap> tensor_to_hom_left_adjunction_on_alpha_tensor_beta_transposed := TensorProductToInternalHomLeftAdjunctionMap( a, c, alpha_tensor_beta_transposed );;
-gap> tensor_to_hom_left_adjunction_on_beta_tensor_alpha_transposed := TensorProductToInternalHomLeftAdjunctionMap( c, a, beta_tensor_alpha_transposed );;
+gap> tensor_to_hom_left_adjunction_on_alpha_tensor_beta := TensorProductToInternalHomLeftAdjunctMorphism( a, c, alpha_tensor_beta );;
+gap> tensor_to_hom_left_adjunction_on_beta_tensor_alpha := TensorProductToInternalHomLeftAdjunctMorphism( c, a, beta_tensor_alpha );;
+gap> tensor_to_hom_left_adjunction_on_alpha_tensor_beta_transposed := TensorProductToInternalHomLeftAdjunctMorphism( a, c, alpha_tensor_beta_transposed );;
+gap> tensor_to_hom_left_adjunction_on_beta_tensor_alpha_transposed := TensorProductToInternalHomLeftAdjunctMorphism( c, a, beta_tensor_alpha_transposed );;
 
-gap> tensor_to_cohom_left_adjunction_on_alpha_tensor_beta := TensorProductToInternalCoHomLeftAdjunctionMap( a, c, alpha_tensor_beta );;
-gap> tensor_to_cohom_left_adjunction_on_beta_tensor_alpha := TensorProductToInternalCoHomLeftAdjunctionMap( c, a, beta_tensor_alpha );;
-gap> tensor_to_cohom_left_adjunction_on_alpha_tensor_beta_transposed := TensorProductToInternalCoHomLeftAdjunctionMap( a, c, alpha_tensor_beta_transposed );;
-gap> tensor_to_cohom_left_adjunction_on_beta_tensor_alpha_transposed := TensorProductToInternalCoHomLeftAdjunctionMap( c, a, beta_tensor_alpha_transposed );;
+gap> tensor_to_cohom_left_adjunction_on_alpha_tensor_beta := TensorProductToInternalCoHomLeftAdjunctMorphism( a, c, alpha_tensor_beta );;
+gap> tensor_to_cohom_left_adjunction_on_beta_tensor_alpha := TensorProductToInternalCoHomLeftAdjunctMorphism( c, a, beta_tensor_alpha );;
+gap> tensor_to_cohom_left_adjunction_on_alpha_tensor_beta_transposed := TensorProductToInternalCoHomLeftAdjunctMorphism( a, c, alpha_tensor_beta_transposed );;
+gap> tensor_to_cohom_left_adjunction_on_beta_tensor_alpha_transposed := TensorProductToInternalCoHomLeftAdjunctMorphism( c, a, beta_tensor_alpha_transposed );;
 
-gap> hom_to_tensor_left_adjunction_on_hom_alpha_beta := InternalHomToTensorProductLeftAdjunctionMap( a, d, hom_alpha_beta );;
-gap> hom_to_tensor_left_adjunction_on_hom_beta_alpha := InternalHomToTensorProductLeftAdjunctionMap( c, b, hom_beta_alpha );;
-gap> hom_to_tensor_left_adjunction_on_hom_alpha_beta_transposed := InternalHomToTensorProductLeftAdjunctionMap( b, c, hom_alpha_beta_transposed );;
-gap> hom_to_tensor_left_adjunction_on_hom_beta_alpha_transposed := InternalHomToTensorProductLeftAdjunctionMap( d, a, hom_beta_alpha_transposed );;
+gap> hom_to_tensor_left_adjunction_on_hom_alpha_beta := InternalHomToTensorProductLeftAdjunctMorphism( a, d, hom_alpha_beta );;
+gap> hom_to_tensor_left_adjunction_on_hom_beta_alpha := InternalHomToTensorProductLeftAdjunctMorphism( c, b, hom_beta_alpha );;
+gap> hom_to_tensor_left_adjunction_on_hom_alpha_beta_transposed := InternalHomToTensorProductLeftAdjunctMorphism( b, c, hom_alpha_beta_transposed );;
+gap> hom_to_tensor_left_adjunction_on_hom_beta_alpha_transposed := InternalHomToTensorProductLeftAdjunctMorphism( d, a, hom_beta_alpha_transposed );;
 
-gap> cohom_to_tensor_left_adjunction_on_cohom_alpha_beta := InternalCoHomToTensorProductLeftAdjunctionMap( a, d, cohom_alpha_beta );;
-gap> cohom_to_tensor_left_adjunction_on_cohom_beta_alpha := InternalCoHomToTensorProductLeftAdjunctionMap( c, b, cohom_beta_alpha );;
-gap> cohom_to_tensor_left_adjunction_on_cohom_alpha_beta_transposed := InternalCoHomToTensorProductLeftAdjunctionMap( b, c, cohom_alpha_beta_transposed );;
-gap> cohom_to_tensor_left_adjunction_on_cohom_beta_alpha_transposed := InternalCoHomToTensorProductLeftAdjunctionMap( d, a, cohom_beta_alpha_transposed );;
+gap> cohom_to_tensor_left_adjunction_on_cohom_alpha_beta := InternalCoHomToTensorProductLeftAdjunctMorphism( a, d, cohom_alpha_beta );;
+gap> cohom_to_tensor_left_adjunction_on_cohom_beta_alpha := InternalCoHomToTensorProductLeftAdjunctMorphism( c, b, cohom_beta_alpha );;
+gap> cohom_to_tensor_left_adjunction_on_cohom_alpha_beta_transposed := InternalCoHomToTensorProductLeftAdjunctMorphism( b, c, cohom_alpha_beta_transposed );;
+gap> cohom_to_tensor_left_adjunction_on_cohom_beta_alpha_transposed := InternalCoHomToTensorProductLeftAdjunctMorphism( d, a, cohom_beta_alpha_transposed );;
 
 # Correspondence on left adjunction maps on tensor products
 
@@ -923,37 +923,37 @@ false
 
 # Closed and coclosed right adjunction maps for rows
 
-gap> tensor_to_hom_right_adjunction_on_id_a_tensor_b := TensorProductToInternalHomRightAdjunctionMap( a, b, id_a_tensor_b );;
-gap> tensor_to_hom_right_adjunction_on_id_b_tensor_a := TensorProductToInternalHomRightAdjunctionMap( b, a, id_b_tensor_a );;
-gap> tensor_to_hom_right_adjunction_on_id_c_tensor_d := TensorProductToInternalHomRightAdjunctionMap( c, d, id_c_tensor_d );;
-gap> tensor_to_hom_right_adjunction_on_id_d_tensor_c := TensorProductToInternalHomRightAdjunctionMap( d, c, id_d_tensor_c );;
+gap> tensor_to_hom_right_adjunction_on_id_a_tensor_b := TensorProductToInternalHomRightAdjunctMorphism( a, b, id_a_tensor_b );;
+gap> tensor_to_hom_right_adjunction_on_id_b_tensor_a := TensorProductToInternalHomRightAdjunctMorphism( b, a, id_b_tensor_a );;
+gap> tensor_to_hom_right_adjunction_on_id_c_tensor_d := TensorProductToInternalHomRightAdjunctMorphism( c, d, id_c_tensor_d );;
+gap> tensor_to_hom_right_adjunction_on_id_d_tensor_c := TensorProductToInternalHomRightAdjunctMorphism( d, c, id_d_tensor_c );;
 
-gap> tensor_to_hom_right_adjunction_on_id_0_tensor_a := TensorProductToInternalHomRightAdjunctionMap( z, a, id_0_tensor_a );;
-gap> tensor_to_hom_right_adjunction_on_id_a_tensor_0 := TensorProductToInternalHomRightAdjunctionMap( a, z, id_a_tensor_0 );;
+gap> tensor_to_hom_right_adjunction_on_id_0_tensor_a := TensorProductToInternalHomRightAdjunctMorphism( z, a, id_0_tensor_a );;
+gap> tensor_to_hom_right_adjunction_on_id_a_tensor_0 := TensorProductToInternalHomRightAdjunctMorphism( a, z, id_a_tensor_0 );;
 
-gap> hom_to_tensor_right_adjunction_on_id_hom_ab := InternalHomToTensorProductRightAdjunctionMap( a, b, id_hom_ab );;
-gap> hom_to_tensor_right_adjunction_on_id_hom_ba := InternalHomToTensorProductRightAdjunctionMap( b, a, id_hom_ba );;
-gap> hom_to_tensor_right_adjunction_on_id_hom_cd := InternalHomToTensorProductRightAdjunctionMap( c, d, id_hom_cd );;
-gap> hom_to_tensor_right_adjunction_on_id_hom_dc := InternalHomToTensorProductRightAdjunctionMap( d, c, id_hom_dc );;
+gap> hom_to_tensor_right_adjunction_on_id_hom_ab := InternalHomToTensorProductRightAdjunctMorphism( a, b, id_hom_ab );;
+gap> hom_to_tensor_right_adjunction_on_id_hom_ba := InternalHomToTensorProductRightAdjunctMorphism( b, a, id_hom_ba );;
+gap> hom_to_tensor_right_adjunction_on_id_hom_cd := InternalHomToTensorProductRightAdjunctMorphism( c, d, id_hom_cd );;
+gap> hom_to_tensor_right_adjunction_on_id_hom_dc := InternalHomToTensorProductRightAdjunctMorphism( d, c, id_hom_dc );;
 
-gap> hom_to_tensor_right_adjunction_on_id_hom_0a := InternalHomToTensorProductRightAdjunctionMap( z, a, id_hom_0a );;
-gap> hom_to_tensor_right_adjunction_on_id_hom_a0 := InternalHomToTensorProductRightAdjunctionMap( a, z, id_hom_a0 );;
+gap> hom_to_tensor_right_adjunction_on_id_hom_0a := InternalHomToTensorProductRightAdjunctMorphism( z, a, id_hom_0a );;
+gap> hom_to_tensor_right_adjunction_on_id_hom_a0 := InternalHomToTensorProductRightAdjunctMorphism( a, z, id_hom_a0 );;
 
-gap> tensor_to_cohom_right_adjunction_on_id_a_tensor_b := TensorProductToInternalCoHomRightAdjunctionMap( a, b, id_a_tensor_b );;
-gap> tensor_to_cohom_right_adjunction_on_id_b_tensor_a := TensorProductToInternalCoHomRightAdjunctionMap( b, a, id_b_tensor_a );;
-gap> tensor_to_cohom_right_adjunction_on_id_c_tensor_d := TensorProductToInternalCoHomRightAdjunctionMap( c, d, id_c_tensor_d );;
-gap> tensor_to_cohom_right_adjunction_on_id_d_tensor_c := TensorProductToInternalCoHomRightAdjunctionMap( d, c, id_d_tensor_c );;
+gap> tensor_to_cohom_right_adjunction_on_id_a_tensor_b := TensorProductToInternalCoHomRightAdjunctMorphism( a, b, id_a_tensor_b );;
+gap> tensor_to_cohom_right_adjunction_on_id_b_tensor_a := TensorProductToInternalCoHomRightAdjunctMorphism( b, a, id_b_tensor_a );;
+gap> tensor_to_cohom_right_adjunction_on_id_c_tensor_d := TensorProductToInternalCoHomRightAdjunctMorphism( c, d, id_c_tensor_d );;
+gap> tensor_to_cohom_right_adjunction_on_id_d_tensor_c := TensorProductToInternalCoHomRightAdjunctMorphism( d, c, id_d_tensor_c );;
 
-gap> tensor_to_cohom_right_adjunction_on_id_0_tensor_a := TensorProductToInternalCoHomRightAdjunctionMap( z, a, id_0_tensor_a );;
-gap> tensor_to_cohom_right_adjunction_on_id_a_tensor_0 := TensorProductToInternalCoHomRightAdjunctionMap( a, z, id_a_tensor_0 );;
+gap> tensor_to_cohom_right_adjunction_on_id_0_tensor_a := TensorProductToInternalCoHomRightAdjunctMorphism( z, a, id_0_tensor_a );;
+gap> tensor_to_cohom_right_adjunction_on_id_a_tensor_0 := TensorProductToInternalCoHomRightAdjunctMorphism( a, z, id_a_tensor_0 );;
 
-gap> cohom_to_tensor_right_adjunction_on_id_cohom_ab := InternalCoHomToTensorProductRightAdjunctionMap( a, b, id_cohom_ab );;
-gap> cohom_to_tensor_right_adjunction_on_id_cohom_ba := InternalCoHomToTensorProductRightAdjunctionMap( b, a, id_cohom_ba );;
-gap> cohom_to_tensor_right_adjunction_on_id_cohom_cd := InternalCoHomToTensorProductRightAdjunctionMap( c, d, id_cohom_cd );;
-gap> cohom_to_tensor_right_adjunction_on_id_cohom_dc := InternalCoHomToTensorProductRightAdjunctionMap( d, c, id_cohom_dc );;
+gap> cohom_to_tensor_right_adjunction_on_id_cohom_ab := InternalCoHomToTensorProductRightAdjunctMorphism( a, b, id_cohom_ab );;
+gap> cohom_to_tensor_right_adjunction_on_id_cohom_ba := InternalCoHomToTensorProductRightAdjunctMorphism( b, a, id_cohom_ba );;
+gap> cohom_to_tensor_right_adjunction_on_id_cohom_cd := InternalCoHomToTensorProductRightAdjunctMorphism( c, d, id_cohom_cd );;
+gap> cohom_to_tensor_right_adjunction_on_id_cohom_dc := InternalCoHomToTensorProductRightAdjunctMorphism( d, c, id_cohom_dc );;
 
-gap> cohom_to_tensor_right_adjunction_on_id_cohom_0a := InternalCoHomToTensorProductRightAdjunctionMap( z, a, id_cohom_0a );;
-gap> cohom_to_tensor_right_adjunction_on_id_cohom_a0 := InternalCoHomToTensorProductRightAdjunctionMap( a, z, id_cohom_a0 );;
+gap> cohom_to_tensor_right_adjunction_on_id_cohom_0a := InternalCoHomToTensorProductRightAdjunctMorphism( z, a, id_cohom_0a );;
+gap> cohom_to_tensor_right_adjunction_on_id_cohom_a0 := InternalCoHomToTensorProductRightAdjunctMorphism( a, z, id_cohom_a0 );;
 
 # Correspondence between closed and coclosed right adjunction maps
 
@@ -1081,25 +1081,25 @@ true
 # Right adjunction maps on non-identities
 #####################################################
 
-gap> tensor_to_hom_right_adjunction_on_alpha_tensor_beta := TensorProductToInternalHomRightAdjunctionMap( a, c, alpha_tensor_beta );;
-gap> tensor_to_hom_right_adjunction_on_beta_tensor_alpha := TensorProductToInternalHomRightAdjunctionMap( c, a, beta_tensor_alpha );;
-gap> tensor_to_hom_right_adjunction_on_alpha_tensor_beta_transposed := TensorProductToInternalHomRightAdjunctionMap( a, c, alpha_tensor_beta_transposed );;
-gap> tensor_to_hom_right_adjunction_on_beta_tensor_alpha_transposed := TensorProductToInternalHomRightAdjunctionMap( c, a, beta_tensor_alpha_transposed );;
+gap> tensor_to_hom_right_adjunction_on_alpha_tensor_beta := TensorProductToInternalHomRightAdjunctMorphism( a, c, alpha_tensor_beta );;
+gap> tensor_to_hom_right_adjunction_on_beta_tensor_alpha := TensorProductToInternalHomRightAdjunctMorphism( c, a, beta_tensor_alpha );;
+gap> tensor_to_hom_right_adjunction_on_alpha_tensor_beta_transposed := TensorProductToInternalHomRightAdjunctMorphism( a, c, alpha_tensor_beta_transposed );;
+gap> tensor_to_hom_right_adjunction_on_beta_tensor_alpha_transposed := TensorProductToInternalHomRightAdjunctMorphism( c, a, beta_tensor_alpha_transposed );;
 
-gap> tensor_to_cohom_right_adjunction_on_alpha_tensor_beta := TensorProductToInternalCoHomRightAdjunctionMap( a, c, alpha_tensor_beta );;
-gap> tensor_to_cohom_right_adjunction_on_beta_tensor_alpha := TensorProductToInternalCoHomRightAdjunctionMap( c, a, beta_tensor_alpha );;
-gap> tensor_to_cohom_right_adjunction_on_alpha_tensor_beta_transposed := TensorProductToInternalCoHomRightAdjunctionMap( a, c, alpha_tensor_beta_transposed );;
-gap> tensor_to_cohom_right_adjunction_on_beta_tensor_alpha_transposed := TensorProductToInternalCoHomRightAdjunctionMap( c, a, beta_tensor_alpha_transposed );;
+gap> tensor_to_cohom_right_adjunction_on_alpha_tensor_beta := TensorProductToInternalCoHomRightAdjunctMorphism( a, c, alpha_tensor_beta );;
+gap> tensor_to_cohom_right_adjunction_on_beta_tensor_alpha := TensorProductToInternalCoHomRightAdjunctMorphism( c, a, beta_tensor_alpha );;
+gap> tensor_to_cohom_right_adjunction_on_alpha_tensor_beta_transposed := TensorProductToInternalCoHomRightAdjunctMorphism( a, c, alpha_tensor_beta_transposed );;
+gap> tensor_to_cohom_right_adjunction_on_beta_tensor_alpha_transposed := TensorProductToInternalCoHomRightAdjunctMorphism( c, a, beta_tensor_alpha_transposed );;
 
-gap> hom_to_tensor_right_adjunction_on_hom_alpha_beta := InternalHomToTensorProductRightAdjunctionMap( a, d, hom_alpha_beta );;
-gap> hom_to_tensor_right_adjunction_on_hom_beta_alpha := InternalHomToTensorProductRightAdjunctionMap( c, b, hom_beta_alpha );;
-gap> hom_to_tensor_right_adjunction_on_hom_alpha_beta_transposed := InternalHomToTensorProductRightAdjunctionMap( b, c, hom_alpha_beta_transposed );;
-gap> hom_to_tensor_right_adjunction_on_hom_beta_alpha_transposed := InternalHomToTensorProductRightAdjunctionMap( d, a, hom_beta_alpha_transposed );;
+gap> hom_to_tensor_right_adjunction_on_hom_alpha_beta := InternalHomToTensorProductRightAdjunctMorphism( a, d, hom_alpha_beta );;
+gap> hom_to_tensor_right_adjunction_on_hom_beta_alpha := InternalHomToTensorProductRightAdjunctMorphism( c, b, hom_beta_alpha );;
+gap> hom_to_tensor_right_adjunction_on_hom_alpha_beta_transposed := InternalHomToTensorProductRightAdjunctMorphism( b, c, hom_alpha_beta_transposed );;
+gap> hom_to_tensor_right_adjunction_on_hom_beta_alpha_transposed := InternalHomToTensorProductRightAdjunctMorphism( d, a, hom_beta_alpha_transposed );;
 
-gap> cohom_to_tensor_right_adjunction_on_cohom_alpha_beta := InternalCoHomToTensorProductRightAdjunctionMap( a, d, cohom_alpha_beta );;
-gap> cohom_to_tensor_right_adjunction_on_cohom_beta_alpha := InternalCoHomToTensorProductRightAdjunctionMap( c, b, cohom_beta_alpha );;
-gap> cohom_to_tensor_right_adjunction_on_cohom_alpha_beta_transposed := InternalCoHomToTensorProductRightAdjunctionMap( b, c, cohom_alpha_beta_transposed );;
-gap> cohom_to_tensor_right_adjunction_on_cohom_beta_alpha_transposed := InternalCoHomToTensorProductRightAdjunctionMap( d, a, cohom_beta_alpha_transposed );;
+gap> cohom_to_tensor_right_adjunction_on_cohom_alpha_beta := InternalCoHomToTensorProductRightAdjunctMorphism( a, d, cohom_alpha_beta );;
+gap> cohom_to_tensor_right_adjunction_on_cohom_beta_alpha := InternalCoHomToTensorProductRightAdjunctMorphism( c, b, cohom_beta_alpha );;
+gap> cohom_to_tensor_right_adjunction_on_cohom_alpha_beta_transposed := InternalCoHomToTensorProductRightAdjunctMorphism( b, c, cohom_alpha_beta_transposed );;
+gap> cohom_to_tensor_right_adjunction_on_cohom_beta_alpha_transposed := InternalCoHomToTensorProductRightAdjunctMorphism( d, a, cohom_beta_alpha_transposed );;
 
 # Correspondence on right adjunction maps on tensor products
 

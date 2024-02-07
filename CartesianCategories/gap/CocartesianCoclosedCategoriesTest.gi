@@ -230,12 +230,12 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             
         fi;
         
-        if CanCompute( cat, "CoproductToCoexponentialLeftAdjunctionMap" ) then
+        if CanCompute( cat, "CoproductToCoexponentialLeftAdjunctMorphism" ) then
             
             if verbose then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( "Testing 'CoproductToCoexponentialLeftAdjunctionMap' ..." );
+                Display( "Testing 'CoproductToCoexponentialLeftAdjunctMorphism' ..." );
                 
             fi;
             
@@ -263,16 +263,16 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             beta_tensor_alpha_op := DirectProductOnMorphisms( opposite, beta_op, alpha_op );
             
             # Adjoint( a ⊔ c → b ⊔ d )  ==  Coexp( a ⊔ c, d ) → b
-            tensor_to_coexp_adjunction_on_alpha_tensor_beta := CoproductToCoexponentialLeftAdjunctionMap( b, d, alpha_tensor_beta );
+            tensor_to_coexp_adjunction_on_alpha_tensor_beta := CoproductToCoexponentialLeftAdjunctMorphism( b, d, alpha_tensor_beta );
             
             # Adjoint( c ⊔ a → d ⊔ b )  ==  Coexp( c ⊔ a, b ) → d
-            tensor_to_coexp_adjunction_on_beta_tensor_alpha := CoproductToCoexponentialLeftAdjunctionMap( d, b, beta_tensor_alpha );
+            tensor_to_coexp_adjunction_on_beta_tensor_alpha := CoproductToCoexponentialLeftAdjunctMorphism( d, b, beta_tensor_alpha );
             
             # Adjoint( b ⊔ d → a ⊔ c )  ==  b → Exp( d, a ⊔ c )
-            tensor_to_exp_adjunction_on_alpha_tensor_beta_op := DirectProductToExponentialLeftAdjunctionMap( b_op, d_op, alpha_tensor_beta_op );
+            tensor_to_exp_adjunction_on_alpha_tensor_beta_op := DirectProductToExponentialLeftAdjunctMorphism( b_op, d_op, alpha_tensor_beta_op );
             
             # Adjoint( d ⊔ b → c ⊔ a )  ==  d → Exp( b, c ⊔ a )
-            tensor_to_exp_adjunction_on_beta_tensor_alpha_op := DirectProductToExponentialLeftAdjunctionMap( d_op, b_op, beta_tensor_alpha_op );
+            tensor_to_exp_adjunction_on_beta_tensor_alpha_op := DirectProductToExponentialLeftAdjunctMorphism( d_op, b_op, beta_tensor_alpha_op );
             
             # Coexp( b ⊔ d, c ) → a  ==  op( a → Exp( c, b ⊔ d ) )
             Assert( 0, IsCongruentForMorphisms( tensor_to_exp_adjunction_on_alpha_tensor_beta_op, Opposite( opposite, tensor_to_coexp_adjunction_on_alpha_tensor_beta ) ) );
@@ -282,12 +282,12 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             
         fi;
         
-        if CanCompute( cat, "CoexponentialToCoproductLeftAdjunctionMap" ) then
+        if CanCompute( cat, "CoexponentialToCoproductLeftAdjunctMorphism" ) then
             
             if verbose then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( "Testing 'CoexponentialToCoproductLeftAdjunctionMap' ..." );
+                Display( "Testing 'CoexponentialToCoproductLeftAdjunctMorphism' ..." );
                 
             fi;
             
@@ -310,16 +310,16 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             #####################################################
             
             # Adjoint( Exp( b, c ) → Exp( a, d ) )  ==  Exp( b, c ) ⊔ a → d
-            coexp_to_tensor_adjunction_on_coexp_alpha_beta := CoexponentialToCoproductLeftAdjunctionMap( a, d, coexp_alpha_beta );
+            coexp_to_tensor_adjunction_on_coexp_alpha_beta := CoexponentialToCoproductLeftAdjunctMorphism( a, d, coexp_alpha_beta );
             
             # Adjoint( Exp( d, a ) → Exp( c, b ) )  ==  Exp( d, a ) ⊔ c → b
-            coexp_to_tensor_adjunction_on_coexp_beta_alpha := CoexponentialToCoproductLeftAdjunctionMap( c, b, coexp_beta_alpha );
+            coexp_to_tensor_adjunction_on_coexp_beta_alpha := CoexponentialToCoproductLeftAdjunctMorphism( c, b, coexp_beta_alpha );
             
             # Adjoint( Coexp( b, c ) → Coexp( a, d ) )  ==  b → Coexp( a, d ) ⊔ c
-            exp_to_tensor_adjunction_on_exp_alpha_beta_op := ExponentialToDirectProductLeftAdjunctionMap( b_op, c_op, exp_alpha_beta_op );
+            exp_to_tensor_adjunction_on_exp_alpha_beta_op := ExponentialToDirectProductLeftAdjunctMorphism( b_op, c_op, exp_alpha_beta_op );
             
             # Adjoint( Coexp( d, a ) → Coexp( c, b ) )  ==  d → Coexp( c, b ) ⊔ a
-            exp_to_tensor_adjunction_on_exp_beta_alpha_op := ExponentialToDirectProductLeftAdjunctionMap( d_op, a_op, exp_beta_alpha_op );
+            exp_to_tensor_adjunction_on_exp_beta_alpha_op := ExponentialToDirectProductLeftAdjunctMorphism( d_op, a_op, exp_beta_alpha_op );
             
             # b → Coexp( a, d ) ⊔ c  ==  op( Exp( d, a ) ⊔ c → b )
             Assert( 0, IsCongruentForMorphisms( exp_to_tensor_adjunction_on_exp_alpha_beta_op, Opposite( opposite, coexp_to_tensor_adjunction_on_coexp_beta_alpha ) ) );
@@ -675,14 +675,14 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
         
         if CanCompute( cat, "CoexponentialOnObjects" ) and
            CanCompute( cat, "CocartesianLeftEvaluationMorphism" ) and
-           CanCompute( cat, "CoexponentialToCoproductLeftAdjunctionMap" )
+           CanCompute( cat, "CoexponentialToCoproductLeftAdjunctMorphism" )
         
         then
             
             if verbose then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( "Consistency between 'CoclosedEvalutionMorphism' and 'AdjunctionMap' ..." );
+                Display( "Consistency between 'CoclosedEvalutionMorphism' and 'AdjunctMorphism' ..." );
                 
             fi;
             
@@ -693,10 +693,10 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             id_coexp_ba := IdentityMorphism( CoexponentialOnObjects( b, a ) );
             
             # Adjoint( Coexp( a, b ) → Coexp( a, b ) )  ==  a → Coexp( a, b ) ⊔ b
-            coexp_to_tensor_adjunction_on_id_coexp_ab := CoexponentialToCoproductLeftAdjunctionMap( a, b, id_coexp_ab );
+            coexp_to_tensor_adjunction_on_id_coexp_ab := CoexponentialToCoproductLeftAdjunctMorphism( a, b, id_coexp_ab );
             
             # Adjoint( Coexp( b, a ) → Coexp( b, a ) )  ==  b → Coexp( b, a ) ⊔ a
-            coexp_to_tensor_adjunction_on_id_coexp_ba := CoexponentialToCoproductLeftAdjunctionMap( b, a, id_coexp_ba );
+            coexp_to_tensor_adjunction_on_id_coexp_ba := CoexponentialToCoproductLeftAdjunctMorphism( b, a, id_coexp_ba );
             
             Assert( 0, IsCongruentForMorphisms( coca_ev_ba, coexp_to_tensor_adjunction_on_id_coexp_ab ) );
             Assert( 0, IsCongruentForMorphisms( coca_ev_ab, coexp_to_tensor_adjunction_on_id_coexp_ba ) );
@@ -705,14 +705,14 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
         
         if CanCompute( cat, "Coproduct" ) and
            CanCompute( cat, "CocartesianLeftCoevaluationMorphism" ) and
-           CanCompute( cat, "CoproductToCoexponentialLeftAdjunctionMap" )
+           CanCompute( cat, "CoproductToCoexponentialLeftAdjunctMorphism" )
         
         then
             
             if verbose then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( "Consistency between 'CoevalutionMorphism' and 'AdjunctionMap' ..." );
+                Display( "Consistency between 'CoevalutionMorphism' and 'AdjunctMorphism' ..." );
                 
             fi;
             
@@ -723,10 +723,10 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             id_b_tensor_a := IdentityMorphism( Coproduct( b, a ) );
             
             # Adjoint( a ⊔ b → a ⊔ b )  ==  Coexp( a ⊔ b, b ) → a
-            tensor_to_coexp_adjunction_on_id_a_tensor_b := CoproductToCoexponentialLeftAdjunctionMap( a, b, id_a_tensor_b );
+            tensor_to_coexp_adjunction_on_id_a_tensor_b := CoproductToCoexponentialLeftAdjunctMorphism( a, b, id_a_tensor_b );
             
             # Adjoint( b ⊔ a → b ⊔ a )  ==  Coexp( b ⊔ a, a ) → b
-            tensor_to_coexp_adjunction_on_id_b_tensor_a := CoproductToCoexponentialLeftAdjunctionMap( b, a, id_b_tensor_a );
+            tensor_to_coexp_adjunction_on_id_b_tensor_a := CoproductToCoexponentialLeftAdjunctMorphism( b, a, id_b_tensor_a );
             
             Assert( 0, IsCongruentForMorphisms( coca_coev_ba, tensor_to_coexp_adjunction_on_id_a_tensor_b ) );
             Assert( 0, IsCongruentForMorphisms( coca_coev_ab, tensor_to_coexp_adjunction_on_id_b_tensor_a ) );

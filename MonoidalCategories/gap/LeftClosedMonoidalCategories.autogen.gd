@@ -468,39 +468,39 @@ DeclareOperation( "AddLeftInternalHomOnObjects",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `LeftInternalHomToTensorProductAdjunctionMap`.
-#! $F: ( b, c, g ) \mapsto \mathtt{LeftInternalHomToTensorProductAdjunctionMap}(b, c, g)$.
+#! to the category for the basic operation `LeftInternalHomToTensorProductAdjunctMorphism`.
+#! $F: ( b, c, g ) \mapsto \mathtt{LeftInternalHomToTensorProductAdjunctMorphism}(b, c, g)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddLeftInternalHomToTensorProductAdjunctionMap",
+DeclareOperation( "AddLeftInternalHomToTensorProductAdjunctMorphism",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddLeftInternalHomToTensorProductAdjunctionMap",
+DeclareOperation( "AddLeftInternalHomToTensorProductAdjunctMorphism",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddLeftInternalHomToTensorProductAdjunctionMap",
+DeclareOperation( "AddLeftInternalHomToTensorProductAdjunctMorphism",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftInternalHomToTensorProductAdjunctionMap",
+DeclareOperation( "AddLeftInternalHomToTensorProductAdjunctMorphism",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `LeftInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct`.
-#! $F: ( b, c, g, t ) \mapsto \mathtt{LeftInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct}(b, c, g, t)$.
+#! to the category for the basic operation `LeftInternalHomToTensorProductAdjunctMorphismWithGivenTensorProduct`.
+#! $F: ( b, c, g, t ) \mapsto \mathtt{LeftInternalHomToTensorProductAdjunctMorphismWithGivenTensorProduct}(b, c, g, t)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddLeftInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct",
+DeclareOperation( "AddLeftInternalHomToTensorProductAdjunctMorphismWithGivenTensorProduct",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddLeftInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct",
+DeclareOperation( "AddLeftInternalHomToTensorProductAdjunctMorphismWithGivenTensorProduct",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddLeftInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct",
+DeclareOperation( "AddLeftInternalHomToTensorProductAdjunctMorphismWithGivenTensorProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct",
+DeclareOperation( "AddLeftInternalHomToTensorProductAdjunctMorphismWithGivenTensorProduct",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -658,39 +658,39 @@ DeclareOperation( "AddTensorProductLeftInternalHomCompatibilityMorphismWithGiven
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `TensorProductToLeftInternalHomAdjunctionMap`.
-#! $F: ( a, b, f ) \mapsto \mathtt{TensorProductToLeftInternalHomAdjunctionMap}(a, b, f)$.
+#! to the category for the basic operation `TensorProductToLeftInternalHomAdjunctMorphism`.
+#! $F: ( a, b, f ) \mapsto \mathtt{TensorProductToLeftInternalHomAdjunctMorphism}(a, b, f)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddTensorProductToLeftInternalHomAdjunctionMap",
+DeclareOperation( "AddTensorProductToLeftInternalHomAdjunctMorphism",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddTensorProductToLeftInternalHomAdjunctionMap",
+DeclareOperation( "AddTensorProductToLeftInternalHomAdjunctMorphism",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddTensorProductToLeftInternalHomAdjunctionMap",
+DeclareOperation( "AddTensorProductToLeftInternalHomAdjunctMorphism",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddTensorProductToLeftInternalHomAdjunctionMap",
+DeclareOperation( "AddTensorProductToLeftInternalHomAdjunctMorphism",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `TensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom`.
-#! $F: ( a, b, f, i ) \mapsto \mathtt{TensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom}(a, b, f, i)$.
+#! to the category for the basic operation `TensorProductToLeftInternalHomAdjunctMorphismWithGivenLeftInternalHom`.
+#! $F: ( a, b, f, i ) \mapsto \mathtt{TensorProductToLeftInternalHomAdjunctMorphismWithGivenLeftInternalHom}(a, b, f, i)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddTensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom",
+DeclareOperation( "AddTensorProductToLeftInternalHomAdjunctMorphismWithGivenLeftInternalHom",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddTensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom",
+DeclareOperation( "AddTensorProductToLeftInternalHomAdjunctMorphismWithGivenLeftInternalHom",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddTensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom",
+DeclareOperation( "AddTensorProductToLeftInternalHomAdjunctMorphismWithGivenLeftInternalHom",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddTensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom",
+DeclareOperation( "AddTensorProductToLeftInternalHomAdjunctMorphismWithGivenLeftInternalHom",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

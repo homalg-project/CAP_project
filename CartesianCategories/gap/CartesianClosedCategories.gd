@@ -96,7 +96,7 @@ DeclareOperation( "CartesianRightCoevaluationMorphismWithGivenRange",
 #! corresponding to $f$ under the direct product-exponential adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( b, \mathrm{Exponential}(a,c) )$.
 #! @Arguments a, b, f
-DeclareOperation( "DirectProductToExponentialRightAdjunctionMap",
+DeclareOperation( "DirectProductToExponentialRightAdjunctMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
@@ -105,7 +105,7 @@ DeclareOperation( "DirectProductToExponentialRightAdjunctionMap",
 #! corresponding to $f$ under the direct product-exponential adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( b, i )$.
 #! @Arguments a, b, f, i
-DeclareOperation( "DirectProductToExponentialRightAdjunctionMapWithGivenExponential",
+DeclareOperation( "DirectProductToExponentialRightAdjunctMorphismWithGivenExponential",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
@@ -114,7 +114,7 @@ DeclareOperation( "DirectProductToExponentialRightAdjunctionMapWithGivenExponent
 #! direct product-exponential adjunction.
 #! @Returns a morphism in $\mathrm{Hom}(a \times b, c)$.
 #! @Arguments a, c, g
-DeclareOperation( "ExponentialToDirectProductRightAdjunctionMap",
+DeclareOperation( "ExponentialToDirectProductRightAdjunctMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
@@ -123,7 +123,7 @@ DeclareOperation( "ExponentialToDirectProductRightAdjunctionMap",
 #! direct product-exponential adjunction.
 #! @Returns a morphism in $\mathrm{Hom}(s, c)$.
 #! @Arguments a, c, g, s
-DeclareOperation( "ExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct",
+DeclareOperation( "ExponentialToDirectProductRightAdjunctMorphismWithGivenDirectProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
@@ -168,7 +168,7 @@ DeclareOperation( "CartesianLeftCoevaluationMorphismWithGivenRange",
 #! corresponding to $f$ under the direct product-exponential adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{Exponential}(b,c) )$.
 #! @Arguments a, b, f
-DeclareOperation( "DirectProductToExponentialLeftAdjunctionMap",
+DeclareOperation( "DirectProductToExponentialLeftAdjunctMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
@@ -177,7 +177,7 @@ DeclareOperation( "DirectProductToExponentialLeftAdjunctionMap",
 #! corresponding to $f$ under the direct product-exponential adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( a, i )$.
 #! @Arguments a, b, f, i
-DeclareOperation( "DirectProductToExponentialLeftAdjunctionMapWithGivenExponential",
+DeclareOperation( "DirectProductToExponentialLeftAdjunctMorphismWithGivenExponential",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
@@ -186,7 +186,7 @@ DeclareOperation( "DirectProductToExponentialLeftAdjunctionMapWithGivenExponenti
 #! direct product-exponential adjunction.
 #! @Returns a morphism in $\mathrm{Hom}(a \times b, c)$.
 #! @Arguments b, c, g
-DeclareOperation( "ExponentialToDirectProductLeftAdjunctionMap",
+DeclareOperation( "ExponentialToDirectProductLeftAdjunctMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
@@ -195,7 +195,7 @@ DeclareOperation( "ExponentialToDirectProductLeftAdjunctionMap",
 #! direct product-exponential adjunction.
 #! @Returns a morphism in $\mathrm{Hom}(s, c)$.
 #! @Arguments b, c, g, s
-DeclareOperation( "ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct",
+DeclareOperation( "ExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description

@@ -396,7 +396,7 @@ InstallMethod( SkeletalFunctorTensorData,
               
           fi;
           
-          embedding_of_k_component := InternalHomToTensorProductAdjunctionMapTemp( rep3_vector_space_object, tensor_product_on_objects, elements_of_internal_hom );
+          embedding_of_k_component := InternalHomToTensorProductAdjunctMorphismTemp( rep3_vector_space_object, tensor_product_on_objects, elements_of_internal_hom );
           
           ## TODO: make this more efficient by using character theory
           if i = j then
@@ -1003,7 +1003,7 @@ InstallMethod( RewriteMatrixInCyclotomicGenerator,
 end );
 
 ##
-InstallMethod( InternalHomToTensorProductAdjunctionMapTemp,
+InstallMethod( InternalHomToTensorProductAdjunctMorphismTemp,
                [ IsVectorSpaceObject, IsVectorSpaceObject, IsVectorSpaceMorphism ],
                
   function( b, c, g )

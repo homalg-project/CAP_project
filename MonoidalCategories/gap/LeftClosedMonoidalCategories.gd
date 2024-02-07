@@ -91,7 +91,7 @@ DeclareOperation( "LeftClosedMonoidalCoevaluationMorphismWithGivenRange",
 #! corresponding to $f$ under the tensor hom adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{\underline{Hom}_\ell}(b,c) )$.
 #! @Arguments a, b, f
-DeclareOperation( "TensorProductToLeftInternalHomAdjunctionMap",
+DeclareOperation( "TensorProductToLeftInternalHomAdjunctMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
@@ -100,7 +100,7 @@ DeclareOperation( "TensorProductToLeftInternalHomAdjunctionMap",
 #! corresponding to $f$ under the tensor hom adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( a, i )$.
 #! @Arguments a, b, f, i
-DeclareOperation( "TensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInternalHom",
+DeclareOperation( "TensorProductToLeftInternalHomAdjunctMorphismWithGivenLeftInternalHom",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
@@ -109,7 +109,7 @@ DeclareOperation( "TensorProductToLeftInternalHomAdjunctionMapWithGivenLeftInter
 #! tensor hom adjunction.
 #! @Returns a morphism in $\mathrm{Hom}(a \otimes b, c)$.
 #! @Arguments b, c, g
-DeclareOperation( "LeftInternalHomToTensorProductAdjunctionMap",
+DeclareOperation( "LeftInternalHomToTensorProductAdjunctMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
@@ -118,7 +118,7 @@ DeclareOperation( "LeftInternalHomToTensorProductAdjunctionMap",
 #! tensor hom adjunction.
 #! @Returns a morphism in $\mathrm{Hom}(t, c)$.
 #! @Arguments b, c, g, t
-DeclareOperation( "LeftInternalHomToTensorProductAdjunctionMapWithGivenTensorProduct",
+DeclareOperation( "LeftInternalHomToTensorProductAdjunctMorphismWithGivenTensorProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description

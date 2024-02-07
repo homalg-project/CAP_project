@@ -71,49 +71,87 @@ DeclareSynonym( "EvaluationMorphism", ClosedMonoidalLeftEvaluationMorphism );
 DeclareSynonym( "EvaluationMorphismWithGivenSource", ClosedMonoidalLeftEvaluationMorphismWithGivenSource );
 
 #! @Description
-#!  This is a synonym for `InternalCoHomToTensorProductLeftAdjunctionMap`.
+#!  This is a synonym for `InternalCoHomToTensorProductLeftAdjunctMorphism`.
 # DeclareOperation( "InternalCoHomToTensorProductAdjunctionMap", [ IsObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "InternalCoHomToTensorProductAdjunctionMap", InternalCoHomToTensorProductLeftAdjunctionMap );
+DeclareSynonym( "InternalCoHomToTensorProductAdjunctionMap", InternalCoHomToTensorProductLeftAdjunctMorphism );
 
 #! @Description
 #!  This is a synonym for `InternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct`.
 # DeclareOperation( "InternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct", [ IsObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "InternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct", InternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct );
+DeclareSynonym( "InternalCoHomToTensorProductAdjunctionMapWithGivenTensorProduct", InternalCoHomToTensorProductLeftAdjunctMorphismWithGivenTensorProduct );
 
 #! @Description
-#!  This is a synonym for `InternalHomToTensorProductLeftAdjunctionMap`.
+#!  This is a synonym for `InternalHomToTensorProductLeftAdjunctMorphism`.
 # DeclareOperation( "InternalHomToTensorProductAdjunctionMap", [ IsObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "InternalHomToTensorProductAdjunctionMap", InternalHomToTensorProductLeftAdjunctionMap );
+DeclareSynonym( "InternalHomToTensorProductAdjunctionMap", InternalHomToTensorProductLeftAdjunctMorphism );
 
 #! @Description
 #!  This is a synonym for `InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct`.
 # DeclareOperation( "InternalHomToTensorProductAdjunctionMapWithGivenTensorProduct", [ IsObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "InternalHomToTensorProductAdjunctionMapWithGivenTensorProduct", InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct );
+DeclareSynonym( "InternalHomToTensorProductAdjunctionMapWithGivenTensorProduct", InternalHomToTensorProductLeftAdjunctMorphismWithGivenTensorProduct );
 
 #! @Description
-#!  This is a synonym for `TensorProductToInternalCoHomLeftAdjunctionMap`.
+#!  This is a synonym for `TensorProductToInternalCoHomLeftAdjunctMorphism`.
 # DeclareOperation( "TensorProductToInternalCoHomAdjunctionMap", [ IsObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "TensorProductToInternalCoHomAdjunctionMap", TensorProductToInternalCoHomLeftAdjunctionMap );
+DeclareSynonym( "TensorProductToInternalCoHomAdjunctionMap", TensorProductToInternalCoHomLeftAdjunctMorphism );
 
 #! @Description
-#!  This is a synonym for `TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom`.
+#!  This is a synonym for `TensorProductToInternalCoHomLeftAdjunctMorphismWithGivenInternalCoHom`.
 # DeclareOperation( "TensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom", [ IsObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "TensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom", TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom );
+DeclareSynonym( "TensorProductToInternalCoHomAdjunctionMapWithGivenInternalCoHom", TensorProductToInternalCoHomLeftAdjunctMorphismWithGivenInternalCoHom );
 
 #! @Description
-#!  This is a synonym for `TensorProductToInternalHomLeftAdjunctionMap`.
+#!  This is a synonym for `TensorProductToInternalHomLeftAdjunctMorphism`.
 # DeclareOperation( "TensorProductToInternalHomAdjunctionMap", [ IsObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "TensorProductToInternalHomAdjunctionMap", TensorProductToInternalHomLeftAdjunctionMap );
+DeclareSynonym( "TensorProductToInternalHomAdjunctionMap", TensorProductToInternalHomLeftAdjunctMorphism );
 
 #! @Description
-#!  This is a synonym for `TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom`.
+#!  This is a synonym for `TensorProductToInternalHomLeftAdjunctMorphismWithGivenInternalHom`.
 # DeclareOperation( "TensorProductToInternalHomAdjunctionMapWithGivenInternalHom", [ IsObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "TensorProductToInternalHomAdjunctionMapWithGivenInternalHom", TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom );
+DeclareSynonym( "TensorProductToInternalHomAdjunctionMapWithGivenInternalHom", TensorProductToInternalHomLeftAdjunctMorphismWithGivenInternalHom );
+
+## AdjunctionMap -> AdjunctMorphism
+
+#! @Description
+#!  This is a synonym for `InternalCoHomToTensorProductLeftAdjunctMorphism`.
+# DeclareOperation( "InternalCoHomToTensorProductLeftAdjunctionMap", [ IsObject ] );
+# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
+DeclareSynonym( "InternalCoHomToTensorProductLeftAdjunctionMap", InternalCoHomToTensorProductLeftAdjunctMorphism );
+
+#! @Description
+#!  This is a synonym for `InternalHomToTensorProductLeftAdjunctMorphism`.
+# DeclareOperation( "InternalHomToTensorProductLeftAdjunctionMap", [ IsObject ] );
+# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
+DeclareSynonym( "InternalHomToTensorProductLeftAdjunctionMap", InternalHomToTensorProductLeftAdjunctMorphism );
+
+#! @Description
+#!  This is a synonym for `TensorProductToInternalCoHomLeftAdjunctMorphism`.
+# DeclareOperation( "TensorProductToInternalCoHomLeftAdjunctionMap", [ IsObject ] );
+# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
+DeclareSynonym( "TensorProductToInternalCoHomLeftAdjunctionMap", TensorProductToInternalCoHomLeftAdjunctMorphism );
+
+#! @Description
+#!  This is a synonym for `TensorProductToInternalCoHomLeftAdjunctMorphismWithGivenInternalCoHom`.
+# DeclareOperation( "TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom", [ IsObject ] );
+# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
+DeclareSynonym( "TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom", TensorProductToInternalCoHomLeftAdjunctMorphismWithGivenInternalCoHom );
+
+#! @Description
+#!  This is a synonym for `TensorProductToInternalHomLeftAdjunctMorphism`.
+# DeclareOperation( "TensorProductToInternalHomLeftAdjunctionMap", [ IsObject ] );
+# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
+DeclareSynonym( "TensorProductToInternalHomLeftAdjunctionMap", TensorProductToInternalHomLeftAdjunctMorphism );
+
+#! @Description
+#!  This is a synonym for `TensorProductToInternalHomLeftAdjunctMorphismWithGivenInternalHom`.
+# DeclareOperation( "TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom", [ IsObject ] );
+# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
+DeclareSynonym( "TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom", TensorProductToInternalHomLeftAdjunctMorphismWithGivenInternalHom );

@@ -186,12 +186,12 @@ InstallGlobalFunction( "LeftCoclosedMonoidalCategoriesTest",
             
         fi;
         
-        if CanCompute( cat, "TensorProductToLeftInternalCoHomAdjunctionMap" ) then
+        if CanCompute( cat, "TensorProductToLeftInternalCoHomAdjunctMorphism" ) then
             
             if verbose then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( "Testing 'TensorProductToLeftInternalCoHomAdjunctionMap' ..." );
+                Display( "Testing 'TensorProductToLeftInternalCoHomAdjunctMorphism' ..." );
                 
             fi;
             
@@ -219,16 +219,16 @@ InstallGlobalFunction( "LeftCoclosedMonoidalCategoriesTest",
             beta_tensor_alpha_op := TensorProductOnMorphisms( opposite, beta_op, alpha_op );
             
             # Adjoint( a ⊗ c → b ⊗ d )  ==  Cohom( a ⊗ c, d ) → b
-            tensor_to_cohom_adjunction_on_alpha_tensor_beta := TensorProductToLeftInternalCoHomAdjunctionMap( b, d, alpha_tensor_beta );
+            tensor_to_cohom_adjunction_on_alpha_tensor_beta := TensorProductToLeftInternalCoHomAdjunctMorphism( b, d, alpha_tensor_beta );
             
             # Adjoint( c ⊗ a → d ⊗ b )  ==  Cohom( c ⊗ a, b ) → d
-            tensor_to_cohom_adjunction_on_beta_tensor_alpha := TensorProductToLeftInternalCoHomAdjunctionMap( d, b, beta_tensor_alpha );
+            tensor_to_cohom_adjunction_on_beta_tensor_alpha := TensorProductToLeftInternalCoHomAdjunctMorphism( d, b, beta_tensor_alpha );
             
             # Adjoint( b ⊗ d → a ⊗ c )  ==  b → Hom( d, a ⊗ c )
-            tensor_to_hom_adjunction_on_alpha_tensor_beta_op := TensorProductToLeftInternalHomAdjunctionMap( b_op, d_op, alpha_tensor_beta_op );
+            tensor_to_hom_adjunction_on_alpha_tensor_beta_op := TensorProductToLeftInternalHomAdjunctMorphism( b_op, d_op, alpha_tensor_beta_op );
             
             # Adjoint( d ⊗ b → c ⊗ a )  ==  d → Hom( b, c ⊗ a )
-            tensor_to_hom_adjunction_on_beta_tensor_alpha_op := TensorProductToLeftInternalHomAdjunctionMap( d_op, b_op, beta_tensor_alpha_op );
+            tensor_to_hom_adjunction_on_beta_tensor_alpha_op := TensorProductToLeftInternalHomAdjunctMorphism( d_op, b_op, beta_tensor_alpha_op );
             
             # coHom( b ⊗ d, c ) → a  ==  op( a → Hom( c, b ⊗ d ) )
             Assert( 0, IsCongruentForMorphisms( tensor_to_hom_adjunction_on_alpha_tensor_beta_op, Opposite( opposite, tensor_to_cohom_adjunction_on_alpha_tensor_beta ) ) );
@@ -238,12 +238,12 @@ InstallGlobalFunction( "LeftCoclosedMonoidalCategoriesTest",
             
         fi;
         
-        if CanCompute( cat, "LeftInternalCoHomToTensorProductAdjunctionMap" ) then
+        if CanCompute( cat, "LeftInternalCoHomToTensorProductAdjunctMorphism" ) then
             
             if verbose then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( "Testing 'LeftInternalCoHomToTensorProductAdjunctionMap' ..." );
+                Display( "Testing 'LeftInternalCoHomToTensorProductAdjunctMorphism' ..." );
                 
             fi;
             
@@ -266,16 +266,16 @@ InstallGlobalFunction( "LeftCoclosedMonoidalCategoriesTest",
             #####################################################
             
             # Adjoint( Hom( b, c ) → Hom( a, d ) )  ==  Hom( b, c ) ⊗ a → d
-            cohom_to_tensor_adjunction_on_cohom_alpha_beta := LeftInternalCoHomToTensorProductAdjunctionMap( a, d, cohom_alpha_beta );
+            cohom_to_tensor_adjunction_on_cohom_alpha_beta := LeftInternalCoHomToTensorProductAdjunctMorphism( a, d, cohom_alpha_beta );
             
             # Adjoint( Hom( d, a ) → Hom( c, b ) )  ==  Hom( d, a ) ⊗ c → b
-            cohom_to_tensor_adjunction_on_cohom_beta_alpha := LeftInternalCoHomToTensorProductAdjunctionMap( c, b, cohom_beta_alpha );
+            cohom_to_tensor_adjunction_on_cohom_beta_alpha := LeftInternalCoHomToTensorProductAdjunctMorphism( c, b, cohom_beta_alpha );
             
             # Adjoint( Cohom( b, c ) → Cohom( a, d ) )  ==  b → Cohom( a, d ) ⊗ c
-            hom_to_tensor_adjunction_on_hom_alpha_beta_op := LeftInternalHomToTensorProductAdjunctionMap( b_op, c_op, hom_alpha_beta_op );
+            hom_to_tensor_adjunction_on_hom_alpha_beta_op := LeftInternalHomToTensorProductAdjunctMorphism( b_op, c_op, hom_alpha_beta_op );
             
             # Adjoint( Cohom( d, a ) → Cohom( c, b ) )  ==  d → Cohom( c, b ) ⊗ a
-            hom_to_tensor_adjunction_on_hom_beta_alpha_op := LeftInternalHomToTensorProductAdjunctionMap( d_op, a_op, hom_beta_alpha_op );
+            hom_to_tensor_adjunction_on_hom_beta_alpha_op := LeftInternalHomToTensorProductAdjunctMorphism( d_op, a_op, hom_beta_alpha_op );
             
             # b → coHom( a, d ) ⊗ c  ==  op( Hom( d, a ) ⊗ c → b )
             Assert( 0, IsCongruentForMorphisms( hom_to_tensor_adjunction_on_hom_alpha_beta_op, Opposite( opposite, cohom_to_tensor_adjunction_on_cohom_beta_alpha ) ) );
@@ -631,14 +631,14 @@ InstallGlobalFunction( "LeftCoclosedMonoidalCategoriesTest",
         
         if CanCompute( cat, "LeftInternalCoHomOnObjects" ) and
            CanCompute( cat, "LeftCoclosedMonoidalEvaluationMorphism" ) and
-           CanCompute( cat, "LeftInternalCoHomToTensorProductAdjunctionMap" )
+           CanCompute( cat, "LeftInternalCoHomToTensorProductAdjunctMorphism" )
         
         then
             
             if verbose then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( "Consistency between 'CoclosedEvalutionMorphism' and 'AdjunctionMap' ..." );
+                Display( "Consistency between 'CoclosedEvalutionMorphism' and 'AdjunctMorphism' ..." );
                 
             fi;
             
@@ -649,10 +649,10 @@ InstallGlobalFunction( "LeftCoclosedMonoidalCategoriesTest",
             id_cohom_ba := IdentityMorphism( LeftInternalCoHomOnObjects( b, a ) );
             
             # Adjoint( Cohom( a, b ) → Cohom( a, b ) )  ==  a → Cohom( a, b ) ⊗ b
-            cohom_to_tensor_adjunction_on_id_cohom_ab := LeftInternalCoHomToTensorProductAdjunctionMap( a, b, id_cohom_ab );
+            cohom_to_tensor_adjunction_on_id_cohom_ab := LeftInternalCoHomToTensorProductAdjunctMorphism( a, b, id_cohom_ab );
             
             # Adjoint( Cohom( b, a ) → Cohom( b, a ) )  ==  b → Cohom( b, a ) ⊗ a
-            cohom_to_tensor_adjunction_on_id_cohom_ba := LeftInternalCoHomToTensorProductAdjunctionMap( b, a, id_cohom_ba );
+            cohom_to_tensor_adjunction_on_id_cohom_ba := LeftInternalCoHomToTensorProductAdjunctMorphism( b, a, id_cohom_ba );
             
             Assert( 0, IsCongruentForMorphisms( cocl_ev_ba, cohom_to_tensor_adjunction_on_id_cohom_ab ) );
             Assert( 0, IsCongruentForMorphisms( cocl_ev_ab, cohom_to_tensor_adjunction_on_id_cohom_ba ) );
@@ -661,14 +661,14 @@ InstallGlobalFunction( "LeftCoclosedMonoidalCategoriesTest",
         
         if CanCompute( cat, "TensorProductOnObjects" ) and
            CanCompute( cat, "LeftCoclosedMonoidalCoevaluationMorphism" ) and
-           CanCompute( cat, "TensorProductToLeftInternalCoHomAdjunctionMap" )
+           CanCompute( cat, "TensorProductToLeftInternalCoHomAdjunctMorphism" )
         
         then
             
             if verbose then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( "Consistency between 'CoevalutionMorphism' and 'AdjunctionMap' ..." );
+                Display( "Consistency between 'CoevalutionMorphism' and 'AdjunctMorphism' ..." );
                 
             fi;
             
@@ -679,10 +679,10 @@ InstallGlobalFunction( "LeftCoclosedMonoidalCategoriesTest",
             id_b_tensor_a := IdentityMorphism( TensorProductOnObjects( b, a ) );
             
             # Adjoint( a ⊗ b → a ⊗ b )  ==  Cohom( a ⊗ b, b ) → a
-            tensor_to_cohom_adjunction_on_id_a_tensor_b := TensorProductToLeftInternalCoHomAdjunctionMap( a, b, id_a_tensor_b );
+            tensor_to_cohom_adjunction_on_id_a_tensor_b := TensorProductToLeftInternalCoHomAdjunctMorphism( a, b, id_a_tensor_b );
             
             # Adjoint( b ⊗ a → b ⊗ a )  ==  Cohom( b ⊗ a, a ) → b
-            tensor_to_cohom_adjunction_on_id_b_tensor_a := TensorProductToLeftInternalCoHomAdjunctionMap( b, a, id_b_tensor_a );
+            tensor_to_cohom_adjunction_on_id_b_tensor_a := TensorProductToLeftInternalCoHomAdjunctMorphism( b, a, id_b_tensor_a );
             
             Assert( 0, IsCongruentForMorphisms( cocl_coev_ba, tensor_to_cohom_adjunction_on_id_a_tensor_b ) );
             Assert( 0, IsCongruentForMorphisms( cocl_coev_ab, tensor_to_cohom_adjunction_on_id_b_tensor_a ) );

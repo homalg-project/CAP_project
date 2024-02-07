@@ -71,113 +71,211 @@ DeclareSynonym( "CartesianEvaluationMorphism", CartesianLeftEvaluationMorphism )
 DeclareSynonym( "CartesianEvaluationMorphismWithGivenSource", CartesianLeftEvaluationMorphismWithGivenSource );
 
 #! @Description
-#!  This is a synonym for `CoexponentialToCoproductLeftAdjunctionMap`.
+#!  This is a synonym for `CoexponentialToCoproductLeftAdjunctMorphism`.
 # DeclareOperation( "CoexponentialToCoproductAdjunctionMap", [ IsObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "CoexponentialToCoproductAdjunctionMap", CoexponentialToCoproductLeftAdjunctionMap );
+DeclareSynonym( "CoexponentialToCoproductAdjunctionMap", CoexponentialToCoproductLeftAdjunctMorphism );
 
 #! @Description
-#!  This is a synonym for `CoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct`.
+#!  This is a synonym for `CoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduct`.
 # DeclareOperation( "CoexponentialToCoproductAdjunctionMapWithGivenCoproduct", [ IsObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "CoexponentialToCoproductAdjunctionMapWithGivenCoproduct", CoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct );
+DeclareSynonym( "CoexponentialToCoproductAdjunctionMapWithGivenCoproduct", CoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduct );
 
 #! @Description
-#!  This is a synonym for `ExponentialToDirectProductLeftAdjunctionMap`.
+#!  This is a synonym for `ExponentialToDirectProductLeftAdjunctMorphism`.
 # DeclareOperation( "ExponentialToDirectProductAdjunctionMap", [ IsObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "ExponentialToDirectProductAdjunctionMap", ExponentialToDirectProductLeftAdjunctionMap );
+DeclareSynonym( "ExponentialToDirectProductAdjunctionMap", ExponentialToDirectProductLeftAdjunctMorphism );
 
 #! @Description
-#!  This is a synonym for `ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct`.
+#!  This is a synonym for `ExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct`.
 # DeclareOperation( "ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct", [ IsObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct", ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct );
+DeclareSynonym( "ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct", ExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct );
 
 #! @Description
-#!  This is a synonym for `CoproductToCoexponentialLeftAdjunctionMap`.
+#!  This is a synonym for `CoproductToCoexponentialLeftAdjunctMorphism`.
 # DeclareOperation( "CoproductToCoexponentialAdjunctionMap", [ IsObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "CoproductToCoexponentialAdjunctionMap", CoproductToCoexponentialLeftAdjunctionMap );
+DeclareSynonym( "CoproductToCoexponentialAdjunctionMap", CoproductToCoexponentialLeftAdjunctMorphism );
 
 #! @Description
-#!  This is a synonym for `CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential`.
+#!  This is a synonym for `CoproductToCoexponentialLeftAdjunctMorphismWithGivenCoexponential`.
 # DeclareOperation( "CoproductToCoexponentialAdjunctionMapWithGivenCoexponential", [ IsObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "CoproductToCoexponentialAdjunctionMapWithGivenCoexponential", CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential );
+DeclareSynonym( "CoproductToCoexponentialAdjunctionMapWithGivenCoexponential", CoproductToCoexponentialLeftAdjunctMorphismWithGivenCoexponential );
 
 #! @Description
-#!  This is a synonym for `DirectProductToExponentialLeftAdjunctionMap`.
+#!  This is a synonym for `DirectProductToExponentialLeftAdjunctMorphism`.
 # DeclareOperation( "DirectProductToExponentialAdjunctionMap", [ IsObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "DirectProductToExponentialAdjunctionMap", DirectProductToExponentialLeftAdjunctionMap );
+DeclareSynonym( "DirectProductToExponentialAdjunctionMap", DirectProductToExponentialLeftAdjunctMorphism );
 
 #! @Description
-#!  This is a synonym for `DirectProductToExponentialLeftAdjunctionMapWithGivenExponential`.
+#!  This is a synonym for `DirectProductToExponentialLeftAdjunctMorphismWithGivenExponential`.
 # DeclareOperation( "DirectProductToExponentialAdjunctionMapWithGivenExponential", [ IsObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "DirectProductToExponentialAdjunctionMapWithGivenExponential", DirectProductToExponentialLeftAdjunctionMapWithGivenExponential );
+DeclareSynonym( "DirectProductToExponentialAdjunctionMapWithGivenExponential", DirectProductToExponentialLeftAdjunctMorphismWithGivenExponential );
 
 ##
 ## Add-methods
 ##
 
 #! @Description
-#!  This is a synonym for `AddCartesianLeftEvaluationMorphism`
+#!  This is a synonym for `AddCartesianLeftEvaluationMorphism`.
 # DeclareOperation( "AddCartesianEvaluationMorphism", [ IsObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
 DeclareSynonym( "AddCartesianEvaluationMorphism", AddCartesianLeftEvaluationMorphism );
 
 #! @Description
-#!  This is a synonym for `AddCartesianLeftEvaluationMorphismWithGivenSource`
+#!  This is a synonym for `AddCartesianLeftEvaluationMorphismWithGivenSource`.
 # DeclareOperation( "AddCartesianEvaluationMorphismWithGivenSource", [ IsObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
 DeclareSynonym( "AddCartesianEvaluationMorphismWithGivenSource", AddCartesianLeftEvaluationMorphismWithGivenSource );
 
 #! @Description
-#!  This is a synonym for `AddCoexponentialToCoproductLeftAdjunctionMap`
+#!  This is a synonym for `AddCoexponentialToCoproductLeftAdjunctMorphism`.
 # DeclareOperation( "AddCoexponentialToCoproductAdjunctionMap", [ IsObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "AddCoexponentialToCoproductAdjunctionMap", AddCoexponentialToCoproductLeftAdjunctionMap );
+DeclareSynonym( "AddCoexponentialToCoproductAdjunctionMap", AddCoexponentialToCoproductLeftAdjunctMorphism );
 
 #! @Description
-#!  This is a synonym for `AddCoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct`
+#!  This is a synonym for `AddCoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduct`.
 # DeclareOperation( "AddCoexponentialToCoproductAdjunctionMapWithGivenCoproduct", [ IsObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "AddCoexponentialToCoproductAdjunctionMapWithGivenCoproduct", AddCoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct );
+DeclareSynonym( "AddCoexponentialToCoproductAdjunctionMapWithGivenCoproduct", AddCoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduct );
 
 #! @Description
-#!  This is a synonym for `AddExponentialToDirectProductLeftAdjunctionMap`
+#!  This is a synonym for `AddExponentialToDirectProductLeftAdjunctMorphism`.
 # DeclareOperation( "AddExponentialToDirectProductAdjunctionMap", [ IsObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "AddExponentialToDirectProductAdjunctionMap", AddExponentialToDirectProductLeftAdjunctionMap );
+DeclareSynonym( "AddExponentialToDirectProductAdjunctionMap", AddExponentialToDirectProductLeftAdjunctMorphism );
 
 #! @Description
-#!  This is a synonym for `AddExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct`
+#!  This is a synonym for `AddExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct`.
 # DeclareOperation( "AddExponentialToDirectProductAdjunctionMapWithGivenDirectProduct", [ IsObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "AddExponentialToDirectProductAdjunctionMapWithGivenDirectProduct", AddExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct );
+DeclareSynonym( "AddExponentialToDirectProductAdjunctionMapWithGivenDirectProduct", AddExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct );
 
 #! @Description
-#!  This is a synonym for `AddCoproductToCoexponentialLeftAdjunctionMap`
+#!  This is a synonym for `AddCoproductToCoexponentialLeftAdjunctMorphism`.
 # DeclareOperation( "AddCoproductToCoexponentialAdjunctionMap", [ IsObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "AddCoproductToCoexponentialAdjunctionMap", AddCoproductToCoexponentialLeftAdjunctionMap );
+DeclareSynonym( "AddCoproductToCoexponentialAdjunctionMap", AddCoproductToCoexponentialLeftAdjunctMorphism );
 
 #! @Description
-#!  This is a synonym for `AddCoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential`
+#!  This is a synonym for `AddCoproductToCoexponentialLeftAdjunctMorphismWithGivenCoexponential`.
 # DeclareOperation( "AddCoproductToCoexponentialAdjunctionMapWithGivenCoexponential", [ IsObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "AddCoproductToCoexponentialAdjunctionMapWithGivenCoexponential", AddCoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential );
+DeclareSynonym( "AddCoproductToCoexponentialAdjunctionMapWithGivenCoexponential", AddCoproductToCoexponentialLeftAdjunctMorphismWithGivenCoexponential );
 
 #! @Description
-#!  This is a synonym for `AddDirectProductToExponentialLeftAdjunctionMap`
+#!  This is a synonym for `AddDirectProductToExponentialLeftAdjunctMorphism`.
 # DeclareOperation( "AddDirectProductToExponentialAdjunctionMap", [ IsObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "AddDirectProductToExponentialAdjunctionMap", AddDirectProductToExponentialLeftAdjunctionMap );
+DeclareSynonym( "AddDirectProductToExponentialAdjunctionMap", AddDirectProductToExponentialLeftAdjunctMorphism );
 
 #! @Description
-#!  This is a synonym for `AddDirectProductToExponentialLeftAdjunctionMapWithGivenExponential`
+#!  This is a synonym for `AddDirectProductToExponentialLeftAdjunctMorphismWithGivenExponential`.
 # DeclareOperation( "AddDirectProductToExponentialAdjunctionMapWithGivenExponential", [ IsObject ] );
 # this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
-DeclareSynonym( "AddDirectProductToExponentialAdjunctionMapWithGivenExponential", AddDirectProductToExponentialLeftAdjunctionMapWithGivenExponential );
+DeclareSynonym( "AddDirectProductToExponentialAdjunctionMapWithGivenExponential", AddDirectProductToExponentialLeftAdjunctMorphismWithGivenExponential );
+
+## AdjunctionMap -> AdjunctMorphism
+
+#! @Description
+#!  This is a synonym for `CoexponentialToCoproductLeftAdjunctMorphism`.
+# DeclareOperation( "CoexponentialToCoproductLeftAdjunctionMap", [ IsObject ] );
+# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
+DeclareSynonym( "CoexponentialToCoproductLeftAdjunctionMap", CoexponentialToCoproductLeftAdjunctMorphism );
+
+#! @Description
+#!  This is a synonym for `CoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduct`.
+# DeclareOperation( "CoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct", [ IsObject ] );
+# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
+DeclareSynonym( "CoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct", CoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduct );
+
+#! @Description
+#!  This is a synonym for `ExponentialToDirectProductLeftAdjunctMorphism`.
+# DeclareOperation( "ExponentialToDirectProductLeftAdjunctionMap", [ IsObject ] );
+# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
+DeclareSynonym( "ExponentialToDirectProductLeftAdjunctionMap", ExponentialToDirectProductLeftAdjunctMorphism );
+
+#! @Description
+#!  This is a synonym for `ExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct`.
+# DeclareOperation( "ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct", [ IsObject ] );
+# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
+DeclareSynonym( "ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct", ExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct );
+
+#! @Description
+#!  This is a synonym for `CoproductToCoexponentialLeftAdjunctMorphism`.
+# DeclareOperation( "CoproductToCoexponentialLeftAdjunctionMap", [ IsObject ] );
+# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
+DeclareSynonym( "CoproductToCoexponentialLeftAdjunctionMap", CoproductToCoexponentialLeftAdjunctMorphism );
+
+#! @Description
+#!  This is a synonym for `CoproductToCoexponentialLeftAdjunctMorphismWithGivenCoexponential`.
+# DeclareOperation( "CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential", [ IsObject ] );
+# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
+DeclareSynonym( "CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential", CoproductToCoexponentialLeftAdjunctMorphismWithGivenCoexponential );
+
+#! @Description
+#!  This is a synonym for `DirectProductToExponentialLeftAdjunctMorphism`.
+# DeclareOperation( "DirectProductToExponentialLeftAdjunctionMap", [ IsObject ] );
+# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
+DeclareSynonym( "DirectProductToExponentialLeftAdjunctionMap", DirectProductToExponentialLeftAdjunctMorphism );
+
+#! @Description
+#!  This is a synonym for `DirectProductToExponentialLeftAdjunctMorphismWithGivenExponential`.
+# DeclareOperation( "DirectProductToExponentialLeftAdjunctionMapWithGivenExponential", [ IsObject ] );
+# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
+DeclareSynonym( "DirectProductToExponentialLeftAdjunctionMapWithGivenExponential", DirectProductToExponentialLeftAdjunctMorphismWithGivenExponential );
+
+#! @Description
+#!  This is a synonym for `AddCoexponentialToCoproductLeftAdjunctMorphism`.
+# DeclareOperation( "AddCoexponentialToCoproductLeftAdjunctionMap", [ IsObject ] );
+# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
+DeclareSynonym( "AddCoexponentialToCoproductLeftAdjunctionMap", AddCoexponentialToCoproductLeftAdjunctMorphism );
+
+#! @Description
+#!  This is a synonym for `AddCoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduct`.
+# DeclareOperation( "AddCoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct", [ IsObject ] );
+# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
+DeclareSynonym( "AddCoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct", AddCoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduct );
+
+#! @Description
+#!  This is a synonym for `AddExponentialToDirectProductLeftAdjunctMorphism`.
+# DeclareOperation( "AddExponentialToDirectProductLeftAdjunctionMap", [ IsObject ] );
+# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
+DeclareSynonym( "AddExponentialToDirectProductLeftAdjunctionMap", AddExponentialToDirectProductLeftAdjunctMorphism );
+
+#! @Description
+#!  This is a synonym for `AddExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct`.
+# DeclareOperation( "AddExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct", [ IsObject ] );
+# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
+DeclareSynonym( "AddExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct", AddExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct );
+
+#! @Description
+#!  This is a synonym for `AddCoproductToCoexponentialLeftAdjunctMorphism`.
+# DeclareOperation( "AddCoproductToCoexponentialLeftAdjunctionMap", [ IsObject ] );
+# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
+DeclareSynonym( "AddCoproductToCoexponentialLeftAdjunctionMap", AddCoproductToCoexponentialLeftAdjunctMorphism );
+
+#! @Description
+#!  This is a synonym for `AddCoproductToCoexponentialLeftAdjunctMorphismWithGivenCoexponential`.
+# DeclareOperation( "AddCoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential", [ IsObject ] );
+# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
+DeclareSynonym( "AddCoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential", AddCoproductToCoexponentialLeftAdjunctMorphismWithGivenCoexponential );
+
+#! @Description
+#!  This is a synonym for `AddDirectProductToExponentialLeftAdjunctMorphism`.
+# DeclareOperation( "AddDirectProductToExponentialLeftAdjunctionMap", [ IsObject ] );
+# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
+DeclareSynonym( "AddDirectProductToExponentialLeftAdjunctionMap", AddDirectProductToExponentialLeftAdjunctMorphism );
+
+#! @Description
+#!  This is a synonym for `AddDirectProductToExponentialLeftAdjunctMorphismWithGivenExponential`.
+# DeclareOperation( "AddDirectProductToExponentialLeftAdjunctionMapWithGivenExponential", [ IsObject ] );
+# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
+DeclareSynonym( "AddDirectProductToExponentialLeftAdjunctionMapWithGivenExponential", AddDirectProductToExponentialLeftAdjunctMorphismWithGivenExponential );
