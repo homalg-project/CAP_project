@@ -6,7 +6,7 @@
         [1X Cartesian and cocartesian categories and various subdoctrines [101X
   
   
-                                   2024.02-01
+                                   2024.02-02
   
   
                                 7 February 2024
@@ -88,18 +88,18 @@
       1.2-5 CartesianRightEvaluationMorphismWithGivenSource
       1.2-6 CartesianRightCoevaluationMorphism
       1.2-7 CartesianRightCoevaluationMorphismWithGivenRange
-      1.2-8 DirectProductToExponentialRightAdjunctionMap
-      1.2-9 DirectProductToExponentialRightAdjunctionMapWithGivenExponential
-      1.2-10 ExponentialToDirectProductRightAdjunctionMap
-      1.2-11 ExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct
+      1.2-8 DirectProductToExponentialRightAdjunctMorphism
+      1.2-9 DirectProductToExponentialRightAdjunctMorphismWithGivenExponential
+      1.2-10 ExponentialToDirectProductRightAdjunctMorphism
+      1.2-11 ExponentialToDirectProductRightAdjunctMorphismWithGivenDirectProduct
       1.2-12 CartesianLeftEvaluationMorphism
       1.2-13 CartesianLeftEvaluationMorphismWithGivenSource
       1.2-14 CartesianLeftCoevaluationMorphism
       1.2-15 CartesianLeftCoevaluationMorphismWithGivenRange
-      1.2-16 DirectProductToExponentialLeftAdjunctionMap
-      1.2-17 DirectProductToExponentialLeftAdjunctionMapWithGivenExponential
-      1.2-18 ExponentialToDirectProductLeftAdjunctionMap
-      1.2-19 ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct
+      1.2-16 DirectProductToExponentialLeftAdjunctMorphism
+      1.2-17 DirectProductToExponentialLeftAdjunctMorphismWithGivenExponential
+      1.2-18 ExponentialToDirectProductLeftAdjunctMorphism
+      1.2-19 ExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct
       1.2-20 CartesianPreComposeMorphism
       1.2-21 CartesianPreComposeMorphismWithGivenObjects
       1.2-22 CartesianPostComposeMorphism
@@ -172,17 +172,17 @@
       1.4-41 AddDirectProductCartesianDualityCompatibilityMorphismWithGivenObjects
       1.4-42 AddDirectProductExponentialCompatibilityMorphism
       1.4-43 AddDirectProductExponentialCompatibilityMorphismWithGivenObjects
-      1.4-44 AddDirectProductToExponentialLeftAdjunctionMap
-      1.4-45 AddDirectProductToExponentialLeftAdjunctionMapWithGivenExponential
-      1.4-46 AddDirectProductToExponentialRightAdjunctionMap
-      1.4-47 AddDirectProductToExponentialRightAdjunctionMapWithGivenExponential
+      1.4-44 AddDirectProductToExponentialLeftAdjunctMorphism
+      1.4-45 AddDirectProductToExponentialLeftAdjunctMorphismWithGivenExponential
+      1.4-46 AddDirectProductToExponentialRightAdjunctMorphism
+      1.4-47 AddDirectProductToExponentialRightAdjunctMorphismWithGivenExponential
       1.4-48 AddExponentialOnMorphisms
       1.4-49 AddExponentialOnMorphismsWithGivenExponentials
       1.4-50 AddExponentialOnObjects
-      1.4-51 AddExponentialToDirectProductLeftAdjunctionMap
-      1.4-52 AddExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct
-      1.4-53 AddExponentialToDirectProductRightAdjunctionMap
-      1.4-54 AddExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct
+      1.4-51 AddExponentialToDirectProductLeftAdjunctMorphism
+      1.4-52 AddExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct
+      1.4-53 AddExponentialToDirectProductRightAdjunctMorphism
+      1.4-54 AddExponentialToDirectProductRightAdjunctMorphismWithGivenDirectProduct
       1.4-55 AddIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject
       1.4-56 AddIsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject
       1.4-57 AddIsomorphismFromExponentialToObject
@@ -240,18 +240,18 @@
       2.2-5 CocartesianRightEvaluationMorphismWithGivenRange
       2.2-6 CocartesianRightCoevaluationMorphism
       2.2-7 CocartesianRightCoevaluationMorphismWithGivenSource
-      2.2-8 CoproductToCoexponentialRightAdjunctionMap
-      2.2-9 CoproductToCoexponentialRightAdjunctionMapWithGivenCoexponential
-      2.2-10 CoexponentialToCoproductRightAdjunctionMap
-      2.2-11 CoexponentialToCoproductRightAdjunctionMapWithGivenCoproduct
+      2.2-8 CoproductToCoexponentialRightAdjunctMorphism
+      2.2-9 CoproductToCoexponentialRightAdjunctMorphismWithGivenCoexponential
+      2.2-10 CoexponentialToCoproductRightAdjunctMorphism
+      2.2-11 CoexponentialToCoproductRightAdjunctMorphismWithGivenCoproduct
       2.2-12 CocartesianLeftEvaluationMorphism
       2.2-13 CocartesianLeftEvaluationMorphismWithGivenRange
       2.2-14 CocartesianLeftCoevaluationMorphism
       2.2-15 CocartesianLeftCoevaluationMorphismWithGivenSource
-      2.2-16 CoproductToCoexponentialLeftAdjunctionMap
-      2.2-17 CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential
-      2.2-18 CoexponentialToCoproductLeftAdjunctionMap
-      2.2-19 CoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct
+      2.2-16 CoproductToCoexponentialLeftAdjunctMorphism
+      2.2-17 CoproductToCoexponentialLeftAdjunctMorphismWithGivenCoexponential
+      2.2-18 CoexponentialToCoproductLeftAdjunctMorphism
+      2.2-19 CoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduct
       2.2-20 CocartesianPreCoComposeMorphism
       2.2-21 CocartesianPreCoComposeMorphismWithGivenObjects
       2.2-22 CocartesianPostCoComposeMorphism
@@ -327,14 +327,14 @@
       2.4-44 AddCoexponentialOnMorphisms
       2.4-45 AddCoexponentialOnMorphismsWithGivenCoexponentials
       2.4-46 AddCoexponentialOnObjects
-      2.4-47 AddCoexponentialToCoproductLeftAdjunctionMap
-      2.4-48 AddCoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct
-      2.4-49 AddCoexponentialToCoproductRightAdjunctionMap
-      2.4-50 AddCoexponentialToCoproductRightAdjunctionMapWithGivenCoproduct
-      2.4-51 AddCoproductToCoexponentialLeftAdjunctionMap
-      2.4-52 AddCoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential
-      2.4-53 AddCoproductToCoexponentialRightAdjunctionMap
-      2.4-54 AddCoproductToCoexponentialRightAdjunctionMapWithGivenCoexponential
+      2.4-47 AddCoexponentialToCoproductLeftAdjunctMorphism
+      2.4-48 AddCoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduct
+      2.4-49 AddCoexponentialToCoproductRightAdjunctMorphism
+      2.4-50 AddCoexponentialToCoproductRightAdjunctMorphismWithGivenCoproduct
+      2.4-51 AddCoproductToCoexponentialLeftAdjunctMorphism
+      2.4-52 AddCoproductToCoexponentialLeftAdjunctMorphismWithGivenCoexponential
+      2.4-53 AddCoproductToCoexponentialRightAdjunctMorphism
+      2.4-54 AddCoproductToCoexponentialRightAdjunctMorphismWithGivenCoexponential
       2.4-55 AddIsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject
       2.4-56 AddIsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject
       2.4-57 AddIsomorphismFromCoexponentialToObject
@@ -401,6 +401,22 @@
       5.2-18 AddCoproductToCoexponentialAdjunctionMapWithGivenCoexponential
       5.2-19 AddDirectProductToExponentialAdjunctionMap
       5.2-20 AddDirectProductToExponentialAdjunctionMapWithGivenExponential
+      5.2-21 CoexponentialToCoproductLeftAdjunctionMap
+      5.2-22 CoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct
+      5.2-23 ExponentialToDirectProductLeftAdjunctionMap
+      5.2-24 ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct
+      5.2-25 CoproductToCoexponentialLeftAdjunctionMap
+      5.2-26 CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential
+      5.2-27 DirectProductToExponentialLeftAdjunctionMap
+      5.2-28 DirectProductToExponentialLeftAdjunctionMapWithGivenExponential
+      5.2-29 AddCoexponentialToCoproductLeftAdjunctionMap
+      5.2-30 AddCoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct
+      5.2-31 AddExponentialToDirectProductLeftAdjunctionMap
+      5.2-32 AddExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct
+      5.2-33 AddCoproductToCoexponentialLeftAdjunctionMap
+      5.2-34 AddCoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential
+      5.2-35 AddDirectProductToExponentialLeftAdjunctionMap
+      5.2-36 AddDirectProductToExponentialLeftAdjunctionMapWithGivenExponential
   6 [33X[0;0YCartesianCategories automatic generated documentation[133X
     6.1 [33X[0;0YCartesianCategories automatic generated documentation of properties[133X
       6.1-1 IsBicartesianCategory

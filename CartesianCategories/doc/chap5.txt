@@ -68,115 +68,219 @@
   
   [33X[1;0Y[29X[2XCoexponentialToCoproductAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[0;0YThis is a synonym for [10XCoexponentialToCoproductLeftAdjunctionMap[110X.[133X
+  [33X[0;0YThis is a synonym for [10XCoexponentialToCoproductLeftAdjunctMorphism[110X.[133X
   
   [1X5.2-4 CoexponentialToCoproductAdjunctionMapWithGivenCoproduct[101X
   
   [33X[1;0Y[29X[2XCoexponentialToCoproductAdjunctionMapWithGivenCoproduct[102X( [3Xarg[103X ) [32X operation[133X
   
   [33X[0;0YThis               is               a               synonym              for
-  [10XCoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct[110X.[133X
+  [10XCoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduct[110X.[133X
   
   [1X5.2-5 ExponentialToDirectProductAdjunctionMap[101X
   
   [33X[1;0Y[29X[2XExponentialToDirectProductAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[0;0YThis is a synonym for [10XExponentialToDirectProductLeftAdjunctionMap[110X.[133X
+  [33X[0;0YThis is a synonym for [10XExponentialToDirectProductLeftAdjunctMorphism[110X.[133X
   
   [1X5.2-6 ExponentialToDirectProductAdjunctionMapWithGivenDirectProduct[101X
   
   [33X[1;0Y[29X[2XExponentialToDirectProductAdjunctionMapWithGivenDirectProduct[102X( [3Xarg[103X ) [32X operation[133X
   
   [33X[0;0YThis               is               a               synonym              for
-  [10XExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct[110X.[133X
+  [10XExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct[110X.[133X
   
   [1X5.2-7 CoproductToCoexponentialAdjunctionMap[101X
   
   [33X[1;0Y[29X[2XCoproductToCoexponentialAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[0;0YThis is a synonym for [10XCoproductToCoexponentialLeftAdjunctionMap[110X.[133X
+  [33X[0;0YThis is a synonym for [10XCoproductToCoexponentialLeftAdjunctMorphism[110X.[133X
   
   [1X5.2-8 CoproductToCoexponentialAdjunctionMapWithGivenCoexponential[101X
   
   [33X[1;0Y[29X[2XCoproductToCoexponentialAdjunctionMapWithGivenCoexponential[102X( [3Xarg[103X ) [32X operation[133X
   
   [33X[0;0YThis               is               a               synonym              for
-  [10XCoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential[110X.[133X
+  [10XCoproductToCoexponentialLeftAdjunctMorphismWithGivenCoexponential[110X.[133X
   
   [1X5.2-9 DirectProductToExponentialAdjunctionMap[101X
   
   [33X[1;0Y[29X[2XDirectProductToExponentialAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[0;0YThis is a synonym for [10XDirectProductToExponentialLeftAdjunctionMap[110X.[133X
+  [33X[0;0YThis is a synonym for [10XDirectProductToExponentialLeftAdjunctMorphism[110X.[133X
   
   [1X5.2-10 DirectProductToExponentialAdjunctionMapWithGivenExponential[101X
   
   [33X[1;0Y[29X[2XDirectProductToExponentialAdjunctionMapWithGivenExponential[102X( [3Xarg[103X ) [32X operation[133X
   
   [33X[0;0YThis               is               a               synonym              for
-  [10XDirectProductToExponentialLeftAdjunctionMapWithGivenExponential[110X.[133X
+  [10XDirectProductToExponentialLeftAdjunctMorphismWithGivenExponential[110X.[133X
   
   [1X5.2-11 AddCartesianEvaluationMorphism[101X
   
   [33X[1;0Y[29X[2XAddCartesianEvaluationMorphism[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[0;0YThis is a synonym for [10XAddCartesianLeftEvaluationMorphism[110X[133X
+  [33X[0;0YThis is a synonym for [10XAddCartesianLeftEvaluationMorphism[110X.[133X
   
   [1X5.2-12 AddCartesianEvaluationMorphismWithGivenSource[101X
   
   [33X[1;0Y[29X[2XAddCartesianEvaluationMorphismWithGivenSource[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[0;0YThis is a synonym for [10XAddCartesianLeftEvaluationMorphismWithGivenSource[110X[133X
+  [33X[0;0YThis is a synonym for [10XAddCartesianLeftEvaluationMorphismWithGivenSource[110X.[133X
   
   [1X5.2-13 AddCoexponentialToCoproductAdjunctionMap[101X
   
   [33X[1;0Y[29X[2XAddCoexponentialToCoproductAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[0;0YThis is a synonym for [10XAddCoexponentialToCoproductLeftAdjunctionMap[110X[133X
+  [33X[0;0YThis is a synonym for [10XAddCoexponentialToCoproductLeftAdjunctMorphism[110X.[133X
   
   [1X5.2-14 AddCoexponentialToCoproductAdjunctionMapWithGivenCoproduct[101X
   
   [33X[1;0Y[29X[2XAddCoexponentialToCoproductAdjunctionMapWithGivenCoproduct[102X( [3Xarg[103X ) [32X operation[133X
   
   [33X[0;0YThis               is               a               synonym              for
-  [10XAddCoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct[110X[133X
+  [10XAddCoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduct[110X.[133X
   
   [1X5.2-15 AddExponentialToDirectProductAdjunctionMap[101X
   
   [33X[1;0Y[29X[2XAddExponentialToDirectProductAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[0;0YThis is a synonym for [10XAddExponentialToDirectProductLeftAdjunctionMap[110X[133X
+  [33X[0;0YThis is a synonym for [10XAddExponentialToDirectProductLeftAdjunctMorphism[110X.[133X
   
   [1X5.2-16 AddExponentialToDirectProductAdjunctionMapWithGivenDirectProduct[101X
   
   [33X[1;0Y[29X[2XAddExponentialToDirectProductAdjunctionMapWithGivenDirectProduct[102X( [3Xarg[103X ) [32X operation[133X
   
   [33X[0;0YThis               is               a               synonym              for
-  [10XAddExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct[110X[133X
+  [10XAddExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct[110X.[133X
   
   [1X5.2-17 AddCoproductToCoexponentialAdjunctionMap[101X
   
   [33X[1;0Y[29X[2XAddCoproductToCoexponentialAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[0;0YThis is a synonym for [10XAddCoproductToCoexponentialLeftAdjunctionMap[110X[133X
+  [33X[0;0YThis is a synonym for [10XAddCoproductToCoexponentialLeftAdjunctMorphism[110X.[133X
   
   [1X5.2-18 AddCoproductToCoexponentialAdjunctionMapWithGivenCoexponential[101X
   
   [33X[1;0Y[29X[2XAddCoproductToCoexponentialAdjunctionMapWithGivenCoexponential[102X( [3Xarg[103X ) [32X operation[133X
   
   [33X[0;0YThis               is               a               synonym              for
-  [10XAddCoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential[110X[133X
+  [10XAddCoproductToCoexponentialLeftAdjunctMorphismWithGivenCoexponential[110X.[133X
   
   [1X5.2-19 AddDirectProductToExponentialAdjunctionMap[101X
   
   [33X[1;0Y[29X[2XAddDirectProductToExponentialAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
   
-  [33X[0;0YThis is a synonym for [10XAddDirectProductToExponentialLeftAdjunctionMap[110X[133X
+  [33X[0;0YThis is a synonym for [10XAddDirectProductToExponentialLeftAdjunctMorphism[110X.[133X
   
   [1X5.2-20 AddDirectProductToExponentialAdjunctionMapWithGivenExponential[101X
   
   [33X[1;0Y[29X[2XAddDirectProductToExponentialAdjunctionMapWithGivenExponential[102X( [3Xarg[103X ) [32X operation[133X
   
   [33X[0;0YThis               is               a               synonym              for
-  [10XAddDirectProductToExponentialLeftAdjunctionMapWithGivenExponential[110X[133X
+  [10XAddDirectProductToExponentialLeftAdjunctMorphismWithGivenExponential[110X.[133X
+  
+  [1X5.2-21 CoexponentialToCoproductLeftAdjunctionMap[101X
+  
+  [33X[1;0Y[29X[2XCoexponentialToCoproductLeftAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis is a synonym for [10XCoexponentialToCoproductLeftAdjunctMorphism[110X.[133X
+  
+  [1X5.2-22 CoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct[101X
+  
+  [33X[1;0Y[29X[2XCoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis               is               a               synonym              for
+  [10XCoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduct[110X.[133X
+  
+  [1X5.2-23 ExponentialToDirectProductLeftAdjunctionMap[101X
+  
+  [33X[1;0Y[29X[2XExponentialToDirectProductLeftAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis is a synonym for [10XExponentialToDirectProductLeftAdjunctMorphism[110X.[133X
+  
+  [1X5.2-24 ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct[101X
+  
+  [33X[1;0Y[29X[2XExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis               is               a               synonym              for
+  [10XExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct[110X.[133X
+  
+  [1X5.2-25 CoproductToCoexponentialLeftAdjunctionMap[101X
+  
+  [33X[1;0Y[29X[2XCoproductToCoexponentialLeftAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis is a synonym for [10XCoproductToCoexponentialLeftAdjunctMorphism[110X.[133X
+  
+  [1X5.2-26 CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential[101X
+  
+  [33X[1;0Y[29X[2XCoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis               is               a               synonym              for
+  [10XCoproductToCoexponentialLeftAdjunctMorphismWithGivenCoexponential[110X.[133X
+  
+  [1X5.2-27 DirectProductToExponentialLeftAdjunctionMap[101X
+  
+  [33X[1;0Y[29X[2XDirectProductToExponentialLeftAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis is a synonym for [10XDirectProductToExponentialLeftAdjunctMorphism[110X.[133X
+  
+  [1X5.2-28 DirectProductToExponentialLeftAdjunctionMapWithGivenExponential[101X
+  
+  [33X[1;0Y[29X[2XDirectProductToExponentialLeftAdjunctionMapWithGivenExponential[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis               is               a               synonym              for
+  [10XDirectProductToExponentialLeftAdjunctMorphismWithGivenExponential[110X.[133X
+  
+  [1X5.2-29 AddCoexponentialToCoproductLeftAdjunctionMap[101X
+  
+  [33X[1;0Y[29X[2XAddCoexponentialToCoproductLeftAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis is a synonym for [10XAddCoexponentialToCoproductLeftAdjunctMorphism[110X.[133X
+  
+  [1X5.2-30 AddCoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct[101X
+  
+  [33X[1;0Y[29X[2XAddCoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis               is               a               synonym              for
+  [10XAddCoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduct[110X.[133X
+  
+  [1X5.2-31 AddExponentialToDirectProductLeftAdjunctionMap[101X
+  
+  [33X[1;0Y[29X[2XAddExponentialToDirectProductLeftAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis is a synonym for [10XAddExponentialToDirectProductLeftAdjunctMorphism[110X.[133X
+  
+  [1X5.2-32 AddExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct[101X
+  
+  [33X[1;0Y[29X[2XAddExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis               is               a               synonym              for
+  [10XAddExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct[110X.[133X
+  
+  [1X5.2-33 AddCoproductToCoexponentialLeftAdjunctionMap[101X
+  
+  [33X[1;0Y[29X[2XAddCoproductToCoexponentialLeftAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis is a synonym for [10XAddCoproductToCoexponentialLeftAdjunctMorphism[110X.[133X
+  
+  [1X5.2-34 AddCoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential[101X
+  
+  [33X[1;0Y[29X[2XAddCoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis               is               a               synonym              for
+  [10XAddCoproductToCoexponentialLeftAdjunctMorphismWithGivenCoexponential[110X.[133X
+  
+  [1X5.2-35 AddDirectProductToExponentialLeftAdjunctionMap[101X
+  
+  [33X[1;0Y[29X[2XAddDirectProductToExponentialLeftAdjunctionMap[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis is a synonym for [10XAddDirectProductToExponentialLeftAdjunctMorphism[110X.[133X
+  
+  [1X5.2-36 AddDirectProductToExponentialLeftAdjunctionMapWithGivenExponential[101X
+  
+  [33X[1;0Y[29X[2XAddDirectProductToExponentialLeftAdjunctionMapWithGivenExponential[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [33X[0;0YThis               is               a               synonym              for
+  [10XAddDirectProductToExponentialLeftAdjunctMorphismWithGivenExponential[110X.[133X
   

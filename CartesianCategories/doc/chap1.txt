@@ -364,18 +364,18 @@
   [23X\mathrm{coev}_{a,b}:  b  \rightarrow  \mathrm{Exponential}(a,  a  \times b)[123X,
   i.e., the unit of the direct product-exponential adjunction.[133X
   
-  [1X1.2-8 DirectProductToExponentialRightAdjunctionMap[101X
+  [1X1.2-8 DirectProductToExponentialRightAdjunctMorphism[101X
   
-  [33X[1;0Y[29X[2XDirectProductToExponentialRightAdjunctionMap[102X( [3Xa[103X, [3Xb[103X, [3Xf[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XDirectProductToExponentialRightAdjunctMorphism[102X( [3Xa[103X, [3Xb[103X, [3Xf[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( b, \mathrm{Exponential}(a,c) )[123X.[133X
   
   [33X[0;0YThe  arguments  are two objects [23Xa,b[123X and a morphism [23Xf: a \times b \rightarrow
   c[123X.  The  output  is  a  morphism  [23Xg: b \rightarrow \mathrm{Exponential}(a,c)[123X
   corresponding to [23Xf[123X under the direct product-exponential adjunction.[133X
   
-  [1X1.2-9 DirectProductToExponentialRightAdjunctionMapWithGivenExponential[101X
+  [1X1.2-9 DirectProductToExponentialRightAdjunctMorphismWithGivenExponential[101X
   
-  [33X[1;0Y[29X[2XDirectProductToExponentialRightAdjunctionMapWithGivenExponential[102X( [3Xa[103X, [3Xb[103X, [3Xf[103X, [3Xi[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XDirectProductToExponentialRightAdjunctMorphismWithGivenExponential[102X( [3Xa[103X, [3Xb[103X, [3Xf[103X, [3Xi[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( b, i )[123X.[133X
   
   [33X[0;0YThe  arguments  are  two objects [23Xa,b[123X, a morphism [23Xf: a \times b \rightarrow c[123X
@@ -383,9 +383,9 @@
   \rightarrow  \mathrm{Exponential}(a,c)[123X  corresponding  to [23Xf[123X under the direct
   product-exponential adjunction.[133X
   
-  [1X1.2-10 ExponentialToDirectProductRightAdjunctionMap[101X
+  [1X1.2-10 ExponentialToDirectProductRightAdjunctMorphism[101X
   
-  [33X[1;0Y[29X[2XExponentialToDirectProductRightAdjunctionMap[102X( [3Xa[103X, [3Xc[103X, [3Xg[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XExponentialToDirectProductRightAdjunctMorphism[102X( [3Xa[103X, [3Xc[103X, [3Xg[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \times b, c)[123X.[133X
   
   [33X[0;0YThe  arguments  are  two  objects  [23Xa,c[123X  and  a  morphism  [23Xg:  b  \rightarrow
@@ -393,9 +393,9 @@
   \rightarrow  c[123X  corresponding  to  [23Xg[123X  under  the  direct product-exponential
   adjunction.[133X
   
-  [1X1.2-11 ExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct[101X
+  [1X1.2-11 ExponentialToDirectProductRightAdjunctMorphismWithGivenDirectProduct[101X
   
-  [33X[1;0Y[29X[2XExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct[102X( [3Xa[103X, [3Xc[103X, [3Xg[103X, [3Xs[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XExponentialToDirectProductRightAdjunctMorphismWithGivenDirectProduct[102X( [3Xa[103X, [3Xc[103X, [3Xg[103X, [3Xs[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(s, c)[123X.[133X
   
   [33X[0;0YThe   arguments   are   two   objects  [23Xa,c[123X,  a  morphism  [23Xg:  b  \rightarrow
@@ -443,18 +443,18 @@
   [23X\mathrm{coev}_{a,b}:  b  \rightarrow  \mathrm{Exponential}(a,  b  \times a)[123X,
   i.e., the unit of the direct product-exponential adjunction.[133X
   
-  [1X1.2-16 DirectProductToExponentialLeftAdjunctionMap[101X
+  [1X1.2-16 DirectProductToExponentialLeftAdjunctMorphism[101X
   
-  [33X[1;0Y[29X[2XDirectProductToExponentialLeftAdjunctionMap[102X( [3Xa[103X, [3Xb[103X, [3Xf[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XDirectProductToExponentialLeftAdjunctMorphism[102X( [3Xa[103X, [3Xb[103X, [3Xf[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, \mathrm{Exponential}(b,c) )[123X.[133X
   
   [33X[0;0YThe  arguments  are two objects [23Xa,b[123X and a morphism [23Xf: a \times b \rightarrow
   c[123X.  The  output  is  a  morphism  [23Xg: a \rightarrow \mathrm{Exponential}(b,c)[123X
   corresponding to [23Xf[123X under the direct product-exponential adjunction.[133X
   
-  [1X1.2-17 DirectProductToExponentialLeftAdjunctionMapWithGivenExponential[101X
+  [1X1.2-17 DirectProductToExponentialLeftAdjunctMorphismWithGivenExponential[101X
   
-  [33X[1;0Y[29X[2XDirectProductToExponentialLeftAdjunctionMapWithGivenExponential[102X( [3Xa[103X, [3Xb[103X, [3Xf[103X, [3Xi[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XDirectProductToExponentialLeftAdjunctMorphismWithGivenExponential[102X( [3Xa[103X, [3Xb[103X, [3Xf[103X, [3Xi[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, i )[123X.[133X
   
   [33X[0;0YThe  arguments  are  two objects [23Xa,b[123X, a morphism [23Xf: a \times b \rightarrow c[123X
@@ -462,9 +462,9 @@
   \rightarrow  \mathrm{Exponential}(b,c)[123X  corresponding  to [23Xf[123X under the direct
   product-exponential adjunction.[133X
   
-  [1X1.2-18 ExponentialToDirectProductLeftAdjunctionMap[101X
+  [1X1.2-18 ExponentialToDirectProductLeftAdjunctMorphism[101X
   
-  [33X[1;0Y[29X[2XExponentialToDirectProductLeftAdjunctionMap[102X( [3Xb[103X, [3Xc[103X, [3Xg[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XExponentialToDirectProductLeftAdjunctMorphism[102X( [3Xb[103X, [3Xc[103X, [3Xg[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \times b, c)[123X.[133X
   
   [33X[0;0YThe  arguments  are  two  objects  [23Xb,c[123X  and  a  morphism  [23Xg:  a  \rightarrow
@@ -472,9 +472,9 @@
   \rightarrow  c[123X  corresponding  to  [23Xg[123X  under  the  direct product-exponential
   adjunction.[133X
   
-  [1X1.2-19 ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct[101X
+  [1X1.2-19 ExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct[101X
   
-  [33X[1;0Y[29X[2XExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct[102X( [3Xb[103X, [3Xc[103X, [3Xg[103X, [3Xs[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct[102X( [3Xb[103X, [3Xc[103X, [3Xg[103X, [3Xs[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(s, c)[123X.[133X
   
   [33X[0;0YThe   arguments   are   two   objects  [23Xb,c[123X,  a  morphism  [23Xg:  a  \rightarrow
@@ -1181,48 +1181,48 @@
   \mathtt{DirectProductExponentialCompatibilityMorphismWithGivenObjects}(source,
   list, range)[123X.[133X
   
-  [1X1.4-44 AddDirectProductToExponentialLeftAdjunctionMap[101X
+  [1X1.4-44 AddDirectProductToExponentialLeftAdjunctMorphism[101X
   
-  [33X[1;0Y[29X[2XAddDirectProductToExponentialLeftAdjunctionMap[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddDirectProductToExponentialLeftAdjunctMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XDirectProductToExponentialLeftAdjunctionMap[110X.   [23XF:   (  a,  b,  f  )  \mapsto
-  \mathtt{DirectProductToExponentialLeftAdjunctionMap}(a, b, f)[123X.[133X
+  [10XDirectProductToExponentialLeftAdjunctMorphism[110X.  [23XF:  (  a,  b,  f  )  \mapsto
+  \mathtt{DirectProductToExponentialLeftAdjunctMorphism}(a, b, f)[123X.[133X
   
-  [1X1.4-45 AddDirectProductToExponentialLeftAdjunctionMapWithGivenExponential[101X
+  [1X1.4-45 AddDirectProductToExponentialLeftAdjunctMorphismWithGivenExponential[101X
   
-  [33X[1;0Y[29X[2XAddDirectProductToExponentialLeftAdjunctionMapWithGivenExponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddDirectProductToExponentialLeftAdjunctMorphismWithGivenExponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XDirectProductToExponentialLeftAdjunctionMapWithGivenExponential[110X.  [23XF: ( a, b,
-  f,                      i                      )                     \mapsto
-  \mathtt{DirectProductToExponentialLeftAdjunctionMapWithGivenExponential}(a,
+  [10XDirectProductToExponentialLeftAdjunctMorphismWithGivenExponential[110X.  [23XF:  ( a,
+  b,                f,                i                )               \mapsto
+  \mathtt{DirectProductToExponentialLeftAdjunctMorphismWithGivenExponential}(a,
   b, f, i)[123X.[133X
   
-  [1X1.4-46 AddDirectProductToExponentialRightAdjunctionMap[101X
+  [1X1.4-46 AddDirectProductToExponentialRightAdjunctMorphism[101X
   
-  [33X[1;0Y[29X[2XAddDirectProductToExponentialRightAdjunctionMap[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddDirectProductToExponentialRightAdjunctMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XDirectProductToExponentialRightAdjunctionMap[110X.   [23XF:  (  a,  b,  f  )  \mapsto
-  \mathtt{DirectProductToExponentialRightAdjunctionMap}(a, b, f)[123X.[133X
+  [10XDirectProductToExponentialRightAdjunctMorphism[110X.  [23XF:  (  a,  b,  f  ) \mapsto
+  \mathtt{DirectProductToExponentialRightAdjunctMorphism}(a, b, f)[123X.[133X
   
-  [1X1.4-47 AddDirectProductToExponentialRightAdjunctionMapWithGivenExponential[101X
+  [1X1.4-47 AddDirectProductToExponentialRightAdjunctMorphismWithGivenExponential[101X
   
-  [33X[1;0Y[29X[2XAddDirectProductToExponentialRightAdjunctionMapWithGivenExponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddDirectProductToExponentialRightAdjunctMorphismWithGivenExponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XDirectProductToExponentialRightAdjunctionMapWithGivenExponential[110X. [23XF: ( a, b,
-  f,                      i                      )                     \mapsto
-  \mathtt{DirectProductToExponentialRightAdjunctionMapWithGivenExponential}(a,
+  [10XDirectProductToExponentialRightAdjunctMorphismWithGivenExponential[110X.  [23XF: ( a,
+  b,                f,                i                )               \mapsto
+  \mathtt{DirectProductToExponentialRightAdjunctMorphismWithGivenExponential}(a,
   b, f, i)[123X.[133X
   
   [1X1.4-48 AddExponentialOnMorphisms[101X
@@ -1256,48 +1256,48 @@
   [10XExponentialOnObjects[110X.  [23XF:  ( a, b ) \mapsto \mathtt{ExponentialOnObjects}(a,
   b)[123X.[133X
   
-  [1X1.4-51 AddExponentialToDirectProductLeftAdjunctionMap[101X
+  [1X1.4-51 AddExponentialToDirectProductLeftAdjunctMorphism[101X
   
-  [33X[1;0Y[29X[2XAddExponentialToDirectProductLeftAdjunctionMap[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddExponentialToDirectProductLeftAdjunctMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XExponentialToDirectProductLeftAdjunctionMap[110X.   [23XF:   (  b,  c,  g  )  \mapsto
-  \mathtt{ExponentialToDirectProductLeftAdjunctionMap}(b, c, g)[123X.[133X
+  [10XExponentialToDirectProductLeftAdjunctMorphism[110X.  [23XF:  (  b,  c,  g  )  \mapsto
+  \mathtt{ExponentialToDirectProductLeftAdjunctMorphism}(b, c, g)[123X.[133X
   
-  [1X1.4-52 AddExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct[101X
+  [1X1.4-52 AddExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct[101X
   
-  [33X[1;0Y[29X[2XAddExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct[110X.  [23XF:  ( b,
+  [10XExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct[110X. [23XF: ( b,
   c,                g,                s                )               \mapsto
-  \mathtt{ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct}(b,
+  \mathtt{ExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct}(b,
   c, g, s)[123X.[133X
   
-  [1X1.4-53 AddExponentialToDirectProductRightAdjunctionMap[101X
+  [1X1.4-53 AddExponentialToDirectProductRightAdjunctMorphism[101X
   
-  [33X[1;0Y[29X[2XAddExponentialToDirectProductRightAdjunctionMap[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddExponentialToDirectProductRightAdjunctMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XExponentialToDirectProductRightAdjunctionMap[110X.   [23XF:  (  a,  c,  g  )  \mapsto
-  \mathtt{ExponentialToDirectProductRightAdjunctionMap}(a, c, g)[123X.[133X
+  [10XExponentialToDirectProductRightAdjunctMorphism[110X.  [23XF:  (  a,  c,  g  ) \mapsto
+  \mathtt{ExponentialToDirectProductRightAdjunctMorphism}(a, c, g)[123X.[133X
   
-  [1X1.4-54 AddExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct[101X
+  [1X1.4-54 AddExponentialToDirectProductRightAdjunctMorphismWithGivenDirectProduct[101X
   
-  [33X[1;0Y[29X[2XAddExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddExponentialToDirectProductRightAdjunctMorphismWithGivenDirectProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct[110X.  [23XF: ( a,
-  c,                g,                s                )               \mapsto
-  \mathtt{ExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct}(a,
+  [10XExponentialToDirectProductRightAdjunctMorphismWithGivenDirectProduct[110X.  [23XF:  (
+  a,             c,            g,            s            )            \mapsto
+  \mathtt{ExponentialToDirectProductRightAdjunctMorphismWithGivenDirectProduct}(a,
   c, g, s)[123X.[133X
   
   [1X1.4-55 AddIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject[101X
