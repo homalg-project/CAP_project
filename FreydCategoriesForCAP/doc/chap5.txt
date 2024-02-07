@@ -842,23 +842,23 @@
         InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects    for
         IsCapCategoryObject, IsList, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XInternalCoHomToTensorProductLeftAdjunctionMap[102X     ([14XMonoidalCategories:
-        InternalCoHomToTensorProductLeftAdjunctionMap for IsCapCategoryObject,
-        IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
+  [30X    [33X[0;6Y[2XInternalCoHomToTensorProductLeftAdjunctMorphism[102X   ([14XMonoidalCategories:
+        InternalCoHomToTensorProductLeftAdjunctMorphism                    for
+        IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XInternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct[102X
+  [30X    [33X[0;6Y[2XInternalCoHomToTensorProductLeftAdjunctMorphismWithGivenTensorProduct[102X
         ([14XMonoidalCategories:
-        InternalCoHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct
+        InternalCoHomToTensorProductLeftAdjunctMorphismWithGivenTensorProduct
         for  IsCapCategoryObject,  IsCapCategoryObject, IsCapCategoryMorphism,
         IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XInternalCoHomToTensorProductRightAdjunctionMap[102X    ([14XMonoidalCategories:
-        InternalCoHomToTensorProductRightAdjunctionMap                     for
+  [30X    [33X[0;6Y[2XInternalCoHomToTensorProductRightAdjunctMorphism[102X  ([14XMonoidalCategories:
+        InternalCoHomToTensorProductRightAdjunctMorphism                   for
         IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XInternalCoHomToTensorProductRightAdjunctionMapWithGivenTensorProduct[102X
+  [30X    [33X[0;6Y[2XInternalCoHomToTensorProductRightAdjunctMorphismWithGivenTensorProduct[102X
         ([14XMonoidalCategories:
-        InternalCoHomToTensorProductRightAdjunctionMapWithGivenTensorProduct
+        InternalCoHomToTensorProductRightAdjunctMorphismWithGivenTensorProduct
         for  IsCapCategoryObject,  IsCapCategoryObject, IsCapCategoryMorphism,
         IsCapCategoryObject[114X)[133X
   
@@ -872,24 +872,24 @@
   [30X    [33X[0;6Y[2XInternalHomOnObjects[102X   ([14XMonoidalCategories:  InternalHomOnObjects  for
         IsCapCategoryObject, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XInternalHomToTensorProductLeftAdjunctionMap[102X       ([14XMonoidalCategories:
-        InternalHomToTensorProductLeftAdjunctionMap  for  IsCapCategoryObject,
+  [30X    [33X[0;6Y[2XInternalHomToTensorProductLeftAdjunctMorphism[102X     ([14XMonoidalCategories:
+        InternalHomToTensorProductLeftAdjunctMorphism for IsCapCategoryObject,
         IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XInternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct[102X
+  [30X    [33X[0;6Y[2XInternalHomToTensorProductLeftAdjunctMorphismWithGivenTensorProduct[102X
         ([14XMonoidalCategories:
-        InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct  for
-        IsCapCategoryObject,    IsCapCategoryObject,    IsCapCategoryMorphism,
+        InternalHomToTensorProductLeftAdjunctMorphismWithGivenTensorProduct
+        for  IsCapCategoryObject,  IsCapCategoryObject, IsCapCategoryMorphism,
         IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XInternalHomToTensorProductRightAdjunctionMap[102X      ([14XMonoidalCategories:
-        InternalHomToTensorProductRightAdjunctionMap  for IsCapCategoryObject,
-        IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
+  [30X    [33X[0;6Y[2XInternalHomToTensorProductRightAdjunctMorphism[102X    ([14XMonoidalCategories:
+        InternalHomToTensorProductRightAdjunctMorphism                     for
+        IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XInternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct[102X
+  [30X    [33X[0;6Y[2XInternalHomToTensorProductRightAdjunctMorphismWithGivenTensorProduct[102X
         ([14XMonoidalCategories:
-        InternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct for
-        IsCapCategoryObject,    IsCapCategoryObject,    IsCapCategoryMorphism,
+        InternalHomToTensorProductRightAdjunctMorphismWithGivenTensorProduct
+        for  IsCapCategoryObject,  IsCapCategoryObject, IsCapCategoryMorphism,
         IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XIsIsomorphicForObjects[102X      ([14XCAP:      IsIsomorphicForObjects      for
@@ -1175,43 +1175,43 @@
   [30X    [33X[0;6Y[2XTensorProductOnObjects[102X ([14XMonoidalCategories: TensorProductOnObjects for
         IsCapCategoryObject, IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XTensorProductToInternalCoHomLeftAdjunctionMap[102X     ([14XMonoidalCategories:
-        TensorProductToInternalCoHomLeftAdjunctionMap for IsCapCategoryObject,
-        IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XTensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom[102X
-        ([14XMonoidalCategories:
-        TensorProductToInternalCoHomLeftAdjunctionMapWithGivenInternalCoHom
-        for  IsCapCategoryObject,  IsCapCategoryObject, IsCapCategoryMorphism,
-        IsCapCategoryObject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XTensorProductToInternalCoHomRightAdjunctionMap[102X    ([14XMonoidalCategories:
-        TensorProductToInternalCoHomRightAdjunctionMap                     for
+  [30X    [33X[0;6Y[2XTensorProductToInternalCoHomLeftAdjunctMorphism[102X   ([14XMonoidalCategories:
+        TensorProductToInternalCoHomLeftAdjunctMorphism                    for
         IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XTensorProductToInternalCoHomRightAdjunctionMapWithGivenInternalCoHom[102X
+  [30X    [33X[0;6Y[2XTensorProductToInternalCoHomLeftAdjunctMorphismWithGivenInternalCoHom[102X
         ([14XMonoidalCategories:
-        TensorProductToInternalCoHomRightAdjunctionMapWithGivenInternalCoHom
+        TensorProductToInternalCoHomLeftAdjunctMorphismWithGivenInternalCoHom
         for  IsCapCategoryObject,  IsCapCategoryObject, IsCapCategoryMorphism,
         IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XTensorProductToInternalHomLeftAdjunctionMap[102X       ([14XMonoidalCategories:
-        TensorProductToInternalHomLeftAdjunctionMap  for  IsCapCategoryObject,
+  [30X    [33X[0;6Y[2XTensorProductToInternalCoHomRightAdjunctMorphism[102X  ([14XMonoidalCategories:
+        TensorProductToInternalCoHomRightAdjunctMorphism                   for
+        IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XTensorProductToInternalCoHomRightAdjunctMorphismWithGivenInternalCoHom[102X
+        ([14XMonoidalCategories:
+        TensorProductToInternalCoHomRightAdjunctMorphismWithGivenInternalCoHom
+        for  IsCapCategoryObject,  IsCapCategoryObject, IsCapCategoryMorphism,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XTensorProductToInternalHomLeftAdjunctMorphism[102X     ([14XMonoidalCategories:
+        TensorProductToInternalHomLeftAdjunctMorphism for IsCapCategoryObject,
         IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XTensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom[102X
+  [30X    [33X[0;6Y[2XTensorProductToInternalHomLeftAdjunctMorphismWithGivenInternalHom[102X
         ([14XMonoidalCategories:
-        TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom    for
+        TensorProductToInternalHomLeftAdjunctMorphismWithGivenInternalHom  for
         IsCapCategoryObject,    IsCapCategoryObject,    IsCapCategoryMorphism,
         IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XTensorProductToInternalHomRightAdjunctionMap[102X      ([14XMonoidalCategories:
-        TensorProductToInternalHomRightAdjunctionMap  for IsCapCategoryObject,
-        IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
+  [30X    [33X[0;6Y[2XTensorProductToInternalHomRightAdjunctMorphism[102X    ([14XMonoidalCategories:
+        TensorProductToInternalHomRightAdjunctMorphism                     for
+        IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XTensorProductToInternalHomRightAdjunctionMapWithGivenInternalHom[102X
+  [30X    [33X[0;6Y[2XTensorProductToInternalHomRightAdjunctMorphismWithGivenInternalHom[102X
         ([14XMonoidalCategories:
-        TensorProductToInternalHomRightAdjunctionMapWithGivenInternalHom   for
+        TensorProductToInternalHomRightAdjunctMorphismWithGivenInternalHom for
         IsCapCategoryObject,    IsCapCategoryObject,    IsCapCategoryMorphism,
         IsCapCategoryObject[114X)[133X
   

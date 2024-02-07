@@ -1905,7 +1905,7 @@
     [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( phiR );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xtens_mor := TensorProductToInternalHomLeftAdjunctionMap(aR,bR,phiR);[127X[104X
+    [4X[25Xgap>[125X [27Xtens_mor := TensorProductToInternalHomLeftAdjunctMorphism(aR,bR,phiR);[127X[104X
     [4X[28X<A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4][128X[104X
     [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( tens_mor );[127X[104X
@@ -1939,7 +1939,7 @@
     [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( phiC );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xtens_mor := TensorProductToInternalHomLeftAdjunctionMap(aC,bC,phiC);[127X[104X
+    [4X[25Xgap>[125X [27Xtens_mor := TensorProductToInternalHomLeftAdjunctMorphism(aC,bC,phiC);[127X[104X
     [4X[28X<A morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4][128X[104X
     [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( tens_mor );[127X[104X
