@@ -819,7 +819,7 @@
   [1X1.6-9 TensorProductToInternalHomRightAdjunctionMapWithGivenInternalHom[101X
   
   [33X[1;0Y[29X[2XTensorProductToInternalHomRightAdjunctionMapWithGivenInternalHom[102X( [3Xa[103X, [3Xb[103X, [3Xf[103X, [3Xi[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, i )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( b, i )[123X.[133X
   
   [33X[0;0YThe  arguments  are two objects [23Xa,b[123X, a morphism [23Xf: a \otimes b \rightarrow c[123X
   and an object [23Xi = \mathrm{\underline{Hom}}(a,c)[123X. The output is a morphism [23Xg:
@@ -1688,7 +1688,7 @@
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, t )[123X.[133X
   
   [33X[0;0YThe     arguments     are     two     objects    [23Xa,b[123X,    a    morphism    [23Xf:
-  \mathrm{\underline{coHom}}(a,b) \rightarrow b[123X and an object [23Xt = b \otimes c[123X.
+  \mathrm{\underline{coHom}}(a,b) \rightarrow c[123X and an object [23Xt = b \otimes c[123X.
   The  output  is  a  morphism [23Xg: a \rightarrow t[123X corresponding to [23Xf[123X under the
   cohom tensor adjunction.[133X
   
