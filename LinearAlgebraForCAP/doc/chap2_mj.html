@@ -231,13 +231,13 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UnderlyingMatrix( coev_ba ) = TransposedMatrix( UnderlyingMatrix( cocl_coev_ba ) );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tensor_hom_adj_1_hom_ab := InternalHomToTensorProductLeftAdjunctionMap( a, b, 1_hom_ab );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tensor_hom_adj_1_hom_ab := InternalHomToTensorProductLeftAdjunctMorphism( a, b, 1_hom_ab );</span>
 &lt;A morphism in Category of matrices over Q&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cohom_tensor_adj_1_cohom_ab := InternalCoHomToTensorProductLeftAdjunctionMap( a, b, 1_cohom_ab );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cohom_tensor_adj_1_cohom_ab := InternalCoHomToTensorProductLeftAdjunctMorphism( a, b, 1_cohom_ab );</span>
 &lt;A morphism in Category of matrices over Q&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tensor_hom_adj_1_ab := TensorProductToInternalHomLeftAdjunctionMap( a, b, 1_ab );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tensor_hom_adj_1_ab := TensorProductToInternalHomLeftAdjunctMorphism( a, b, 1_ab );</span>
 &lt;A morphism in Category of matrices over Q&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cohom_tensor_adj_1_ab := TensorProductToInternalCoHomLeftAdjunctionMap( a, b, 1_ab );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cohom_tensor_adj_1_ab := TensorProductToInternalCoHomLeftAdjunctMorphism( a, b, 1_ab );</span>
 &lt;A morphism in Category of matrices over Q&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ev_ab = tensor_hom_adj_1_hom_ab;</span>
 true

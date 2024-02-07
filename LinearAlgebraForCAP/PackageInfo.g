@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "LinearAlgebraForCAP",
 Subtitle := "Category of Matrices over a Field for CAP",
-Version := "2024.02-01",
+Version := "2024.02-02",
 Date := "2024-02-07",
 License := "GPL-2.0-or-later",
 
@@ -104,7 +104,7 @@ Dependencies := rec(
                            [ "MatricesForHomalg", ">= 2023.01-01" ],
                            [ "GaussForHomalg", ">= 2021.04-02" ],
                            [ "CAP", ">= 2023.10-07" ],
-                           [ "MonoidalCategories", ">= 2024.02-01" ],
+                           [ "MonoidalCategories", ">= 2024.02-02" ],
                            ],
   SuggestedOtherPackages := [
     [ "FreydCategoriesForCAP", ">= 2024.01-04" ],
