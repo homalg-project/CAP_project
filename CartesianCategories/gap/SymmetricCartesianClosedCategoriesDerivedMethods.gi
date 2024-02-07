@@ -8,6 +8,132 @@
 
 
 ##
+AddDerivationToCAP( DirectProductToExponentialRightAdjunctionMapWithGivenExponential,
+                    "DirectProductToExponentialRightAdjunctionMapWithGivenExponential using DirectProductToExponentialLeftAdjunctionMapWithGivenExponential and the braiding",
+                    [ [ DirectProduct, 1 ],
+                      [ CartesianBraidingInverseWithGivenDirectProducts, 1 ],
+                      [ PreCompose, 1 ],
+                      [ DirectProductToExponentialLeftAdjunctionMapWithGivenExponential, 1 ] ],
+                    
+  function( cat, a, b, f, i )
+    
+    ## b → i = Exp( a, c )
+    return DirectProductToExponentialLeftAdjunctionMapWithGivenExponential( cat,
+                   b,
+                   a,
+                   ## b × a → c
+                   PreCompose( cat,
+                           ## b × a → a × b
+                           CartesianBraidingInverseWithGivenDirectProducts( cat,
+                                   BinaryDirectProduct( cat, b, a ),
+                                   a,
+                                   b,
+                                   Source( f ) ),
+                           ## f: a × b → c
+                           f ),
+                   ## Exp( a, c )
+                   i );
+    
+end : CategoryFilter := IsCartesianClosedCategory );
+
+##
+AddDerivationToCAP( DirectProductToExponentialLeftAdjunctionMapWithGivenExponential,
+                    "DirectProductToExponentialLeftAdjunctionMapWithGivenExponential using DirectProductToExponentialRightAdjunctionMapWithGivenExponential and the braiding",
+                    [ [ DirectProduct, 1 ],
+                      [ CartesianBraidingInverseWithGivenDirectProducts, 1 ],
+                      [ PreCompose, 1 ],
+                      [ DirectProductToExponentialRightAdjunctionMapWithGivenExponential, 1 ] ],
+                    
+  function( cat, a, b, f, i )
+    
+    ## a → i = Exp( b, c )
+    return DirectProductToExponentialRightAdjunctionMapWithGivenExponential( cat,
+                   b,
+                   a,
+                   ## b × a → c
+                   PreCompose( cat,
+                           ## b × a → a × b
+                           CartesianBraidingInverseWithGivenDirectProducts( cat,
+                                   BinaryDirectProduct( cat, b, a ),
+                                   a,
+                                   b,
+                                   Source( f ) ),
+                           ## f: a × b → c
+                           f ),
+                   ## Exp( b, c )
+                   i );
+    
+end : CategoryFilter := IsCartesianClosedCategory );
+
+##
+AddDerivationToCAP( ExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct,
+                    "ExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct using ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct and the braiding",
+                    [ [ DirectProduct, 1 ],
+                      [ CartesianBraidingWithGivenDirectProducts, 1 ],
+                      [ ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct, 1 ],
+                      [ PreCompose, 1 ] ],
+                    
+  function( cat, a, c, g, s )
+    local b, b_tensor_a;
+    
+    ## g: b → Exp(a,c)
+    b := Source( g );
+    
+    ## b × a
+    b_tensor_a := BinaryDirectProduct( cat, b, a );
+    
+    ## a × b → c
+    return PreCompose( cat,
+                   ## a × b → b × a
+                   CartesianBraidingWithGivenDirectProducts( cat,
+                           s, # a × b
+                           a,
+                           b,
+                           b_tensor_a ),
+                   ## b × a → c
+                   ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct( cat,
+                           a,
+                           c,
+                           g,
+                           b_tensor_a ) );
+    
+end : CategoryFilter := IsCartesianClosedCategory );
+
+##
+AddDerivationToCAP( ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct,
+                    "ExponentialToDirectProductLeftAdjunctionMapWithGivenDirectProduct using ExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct and the braiding",
+                    [ [ DirectProduct, 1 ],
+                      [ CartesianBraidingWithGivenDirectProducts, 1 ],
+                      [ ExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct, 1 ],
+                      [ PreCompose, 1 ] ],
+                    
+  function( cat, b, c, g, s )
+    local a, b_tensor_a;
+
+    ## g: a → Exp(b,c)
+    a := Source( g );
+    
+    ## b × a
+    b_tensor_a := BinaryDirectProduct( cat, b, a );
+    
+    ## a × b → c
+    return PreCompose( cat,
+                   ## a × b → b × a
+                   CartesianBraidingWithGivenDirectProducts( cat,
+                           s, # a × b
+                           a,
+                           b,
+                           b_tensor_a ),
+                   ## b × a → c
+                   ExponentialToDirectProductRightAdjunctionMapWithGivenDirectProduct( cat,
+                           b,
+                           c,
+                           g,
+                           b_tensor_a ) );
+    
+end : CategoryFilter := IsCartesianClosedCategory );
+
+##
 AddDerivationToCAP( MorphismToCartesianBidualWithGivenCartesianBidual,
                     "MorphismToCartesianBidualWithGivenCartesianBidual using the braiding and the universal property of the dual",
                     [ [ PreCompose, 1 ],

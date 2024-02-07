@@ -100,7 +100,7 @@ DeclareOperation( "TensorProductToInternalHomRightAdjunctionMap",
 #! The arguments are two objects $a,b$, a morphism $f: a \otimes b \rightarrow c$ and an object $i = \mathrm{\underline{Hom}}(a,c)$.
 #! The output is a morphism $g: b \rightarrow \mathrm{\underline{Hom}}(a,c)$
 #! corresponding to $f$ under the tensor hom adjunction.
-#! @Returns a morphism in $\mathrm{Hom}( a, i )$.
+#! @Returns a morphism in $\mathrm{Hom}( b, i )$.
 #! @Arguments a, b, f, i
 DeclareOperation( "TensorProductToInternalHomRightAdjunctionMapWithGivenInternalHom",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );

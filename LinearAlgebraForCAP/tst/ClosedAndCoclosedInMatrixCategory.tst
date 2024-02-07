@@ -478,287 +478,287 @@ gap> id_cohom_ab = id_cohom_dc;
 false
 
 #####################################################
-# Units and counits
+# Left units and counits
 #####################################################
 
 # Units and counits for rows
 
-gap> ev_ab := ClosedMonoidalLeftEvaluationMorphism( a, b );;
-gap> ev_ba := ClosedMonoidalLeftEvaluationMorphism( b, a );;
-gap> ev_cd := ClosedMonoidalLeftEvaluationMorphism( c, d );;
-gap> ev_dc := ClosedMonoidalLeftEvaluationMorphism( d, c );;
+gap> left_ev_ab := ClosedMonoidalLeftEvaluationMorphism( a, b );;
+gap> left_ev_ba := ClosedMonoidalLeftEvaluationMorphism( b, a );;
+gap> left_ev_cd := ClosedMonoidalLeftEvaluationMorphism( c, d );;
+gap> left_ev_dc := ClosedMonoidalLeftEvaluationMorphism( d, c );;
 
-gap> ev_0a := ClosedMonoidalLeftEvaluationMorphism( z, a );;
-gap> ev_a0 := ClosedMonoidalLeftEvaluationMorphism( a, z );;
+gap> left_ev_0a := ClosedMonoidalLeftEvaluationMorphism( z, a );;
+gap> left_ev_a0 := ClosedMonoidalLeftEvaluationMorphism( a, z );;
 
-gap> coev_ab := ClosedMonoidalLeftCoevaluationMorphism( a, b );;
-gap> coev_ba := ClosedMonoidalLeftCoevaluationMorphism( b, a );;
-gap> coev_cd := ClosedMonoidalLeftCoevaluationMorphism( c, d );;
-gap> coev_dc := ClosedMonoidalLeftCoevaluationMorphism( d, c );;
+gap> left_coev_ab := ClosedMonoidalLeftCoevaluationMorphism( a, b );;
+gap> left_coev_ba := ClosedMonoidalLeftCoevaluationMorphism( b, a );;
+gap> left_coev_cd := ClosedMonoidalLeftCoevaluationMorphism( c, d );;
+gap> left_coev_dc := ClosedMonoidalLeftCoevaluationMorphism( d, c );;
 
-gap> coev_0a := ClosedMonoidalLeftCoevaluationMorphism( z, a );;
-gap> coev_a0 := ClosedMonoidalLeftCoevaluationMorphism( a, z );;
+gap> left_coev_0a := ClosedMonoidalLeftCoevaluationMorphism( z, a );;
+gap> left_coev_a0 := ClosedMonoidalLeftCoevaluationMorphism( a, z );;
 
-gap> cocl_ev_ab := CoclosedMonoidalLeftEvaluationMorphism( a, b );;
-gap> cocl_ev_ba := CoclosedMonoidalLeftEvaluationMorphism( b, a );;
-gap> cocl_ev_cd := CoclosedMonoidalLeftEvaluationMorphism( c, d );;
-gap> cocl_ev_dc := CoclosedMonoidalLeftEvaluationMorphism( d, c );;
+gap> left_cocl_ev_ab := CoclosedMonoidalLeftEvaluationMorphism( a, b );;
+gap> left_cocl_ev_ba := CoclosedMonoidalLeftEvaluationMorphism( b, a );;
+gap> left_cocl_ev_cd := CoclosedMonoidalLeftEvaluationMorphism( c, d );;
+gap> left_cocl_ev_dc := CoclosedMonoidalLeftEvaluationMorphism( d, c );;
 
-gap> cocl_ev_0a := CoclosedMonoidalLeftEvaluationMorphism( z, a );;
-gap> cocl_ev_a0 := CoclosedMonoidalLeftEvaluationMorphism( a, z );;
+gap> left_cocl_ev_0a := CoclosedMonoidalLeftEvaluationMorphism( z, a );;
+gap> left_cocl_ev_a0 := CoclosedMonoidalLeftEvaluationMorphism( a, z );;
 
-gap> cocl_coev_ab := CoclosedMonoidalLeftCoevaluationMorphism( a, b );;
-gap> cocl_coev_ba := CoclosedMonoidalLeftCoevaluationMorphism( b, a );;
-gap> cocl_coev_cd := CoclosedMonoidalLeftCoevaluationMorphism( c, d );;
-gap> cocl_coev_dc := CoclosedMonoidalLeftCoevaluationMorphism( d, c );;
+gap> left_cocl_coev_ab := CoclosedMonoidalLeftCoevaluationMorphism( a, b );;
+gap> left_cocl_coev_ba := CoclosedMonoidalLeftCoevaluationMorphism( b, a );;
+gap> left_cocl_coev_cd := CoclosedMonoidalLeftCoevaluationMorphism( c, d );;
+gap> left_cocl_coev_dc := CoclosedMonoidalLeftCoevaluationMorphism( d, c );;
 
-gap> cocl_coev_0a := CoclosedMonoidalLeftCoevaluationMorphism( z, a );;
-gap> cocl_coev_a0 := CoclosedMonoidalLeftCoevaluationMorphism( a, z );;
+gap> left_cocl_coev_0a := CoclosedMonoidalLeftCoevaluationMorphism( z, a );;
+gap> left_cocl_coev_a0 := CoclosedMonoidalLeftCoevaluationMorphism( a, z );;
 
-# Correspondence between (co)units and their coclosed parts
+# Correspondence between left (co)units and their coclosed parts
 
 # Arguments must be reversed for evaluations
-gap> UnderlyingMatrix( ev_ab ) = TransposedMatrix( UnderlyingMatrix( cocl_ev_ab ) );
+gap> UnderlyingMatrix( left_ev_ab ) = TransposedMatrix( UnderlyingMatrix( left_cocl_ev_ab ) );
 true
-gap> UnderlyingMatrix( ev_ba ) = TransposedMatrix( UnderlyingMatrix( cocl_ev_ba ) );
+gap> UnderlyingMatrix( left_ev_ba ) = TransposedMatrix( UnderlyingMatrix( left_cocl_ev_ba ) );
 true
-gap> UnderlyingMatrix( ev_cd ) = TransposedMatrix( UnderlyingMatrix( cocl_ev_cd ) );
+gap> UnderlyingMatrix( left_ev_cd ) = TransposedMatrix( UnderlyingMatrix( left_cocl_ev_cd ) );
 true
-gap> UnderlyingMatrix( ev_dc ) = TransposedMatrix( UnderlyingMatrix( cocl_ev_dc ) );
-true
-
-gap> UnderlyingMatrix( ev_0a ) = TransposedMatrix( UnderlyingMatrix( cocl_ev_0a ) );
-true
-gap> UnderlyingMatrix( ev_a0 ) = TransposedMatrix( UnderlyingMatrix( cocl_ev_a0 ) );
+gap> UnderlyingMatrix( left_ev_dc ) = TransposedMatrix( UnderlyingMatrix( left_cocl_ev_dc ) );
 true
 
-gap> UnderlyingMatrix( coev_ab ) = TransposedMatrix( UnderlyingMatrix( cocl_coev_ab ) );
+gap> UnderlyingMatrix( left_ev_0a ) = TransposedMatrix( UnderlyingMatrix( left_cocl_ev_0a ) );
 true
-gap> UnderlyingMatrix( coev_ba ) = TransposedMatrix( UnderlyingMatrix( cocl_coev_ba ) );
-true
-gap> UnderlyingMatrix( coev_cd ) = TransposedMatrix( UnderlyingMatrix( cocl_coev_cd ) );
-true
-gap> UnderlyingMatrix( coev_dc ) = TransposedMatrix( UnderlyingMatrix( cocl_coev_dc ) );
+gap> UnderlyingMatrix( left_ev_a0 ) = TransposedMatrix( UnderlyingMatrix( left_cocl_ev_a0 ) );
 true
 
-gap> UnderlyingMatrix( coev_0a ) = TransposedMatrix( UnderlyingMatrix( cocl_coev_0a ) );
+gap> UnderlyingMatrix( left_coev_ab ) = TransposedMatrix( UnderlyingMatrix( left_cocl_coev_ab ) );
 true
-gap> UnderlyingMatrix( coev_a0 ) = TransposedMatrix( UnderlyingMatrix( cocl_coev_a0 ) );
+gap> UnderlyingMatrix( left_coev_ba ) = TransposedMatrix( UnderlyingMatrix( left_cocl_coev_ba ) );
+true
+gap> UnderlyingMatrix( left_coev_cd ) = TransposedMatrix( UnderlyingMatrix( left_cocl_coev_cd ) );
+true
+gap> UnderlyingMatrix( left_coev_dc ) = TransposedMatrix( UnderlyingMatrix( left_cocl_coev_dc ) );
 true
 
-gap> ev_ba = cocl_ev_ba;
+gap> UnderlyingMatrix( left_coev_0a ) = TransposedMatrix( UnderlyingMatrix( left_cocl_coev_0a ) );
+true
+gap> UnderlyingMatrix( left_coev_a0 ) = TransposedMatrix( UnderlyingMatrix( left_cocl_coev_a0 ) );
+true
+
+gap> left_ev_ba = left_cocl_ev_ba;
 false
-gap> ev_ba = cocl_ev_cd;
+gap> left_ev_ba = left_cocl_ev_cd;
 false
-gap> ev_ba = cocl_ev_dc;
+gap> left_ev_ba = left_cocl_ev_dc;
 false
 
-gap> coev_dc = cocl_coev_cd;
+gap> left_coev_dc = left_cocl_coev_cd;
 false
-gap> coev_dc = cocl_coev_ab;
+gap> left_coev_dc = left_cocl_coev_ab;
 false
-gap> coev_dc = cocl_coev_ba;
-false
-
-gap> cocl_ev_cd = ev_ab;
-false
-gap> cocl_ev_cd = ev_ba;
-false
-gap> cocl_ev_cd = ev_cd;
+gap> left_coev_dc = left_cocl_coev_ba;
 false
 
-gap> cocl_coev_ab = coev_ba;
+gap> left_cocl_ev_cd = left_ev_ab;
 false
-gap> cocl_coev_ab = coev_cd;
+gap> left_cocl_ev_cd = left_ev_ba;
 false
-gap> cocl_coev_ab = coev_dc;
+gap> left_cocl_ev_cd = left_ev_cd;
+false
+
+gap> left_cocl_coev_ab = left_coev_ba;
+false
+gap> left_cocl_coev_ab = left_coev_cd;
+false
+gap> left_cocl_coev_ab = left_coev_dc;
 false
 
 #####################################################
-# Adjunction maps on identities
+# Left adjunction maps on identities
 #####################################################
 
-# Closed and coclosed adjunction maps for rows
+# Closed and coclosed left adjunction maps for rows
 
-gap> tensor_to_hom_adjunction_on_id_a_tensor_b := TensorProductToInternalHomLeftAdjunctionMap( a, b, id_a_tensor_b );;
-gap> tensor_to_hom_adjunction_on_id_b_tensor_a := TensorProductToInternalHomLeftAdjunctionMap( b, a, id_b_tensor_a );;
-gap> tensor_to_hom_adjunction_on_id_c_tensor_d := TensorProductToInternalHomLeftAdjunctionMap( c, d, id_c_tensor_d );;
-gap> tensor_to_hom_adjunction_on_id_d_tensor_c := TensorProductToInternalHomLeftAdjunctionMap( d, c, id_d_tensor_c );;
+gap> tensor_to_hom_left_adjunction_on_id_a_tensor_b := TensorProductToInternalHomLeftAdjunctionMap( a, b, id_a_tensor_b );;
+gap> tensor_to_hom_left_adjunction_on_id_b_tensor_a := TensorProductToInternalHomLeftAdjunctionMap( b, a, id_b_tensor_a );;
+gap> tensor_to_hom_left_adjunction_on_id_c_tensor_d := TensorProductToInternalHomLeftAdjunctionMap( c, d, id_c_tensor_d );;
+gap> tensor_to_hom_left_adjunction_on_id_d_tensor_c := TensorProductToInternalHomLeftAdjunctionMap( d, c, id_d_tensor_c );;
 
-gap> tensor_to_hom_adjunction_on_id_0_tensor_a := TensorProductToInternalHomLeftAdjunctionMap( z, a, id_0_tensor_a );;
-gap> tensor_to_hom_adjunction_on_id_a_tensor_0 := TensorProductToInternalHomLeftAdjunctionMap( a, z, id_a_tensor_0 );;
+gap> tensor_to_hom_left_adjunction_on_id_0_tensor_a := TensorProductToInternalHomLeftAdjunctionMap( z, a, id_0_tensor_a );;
+gap> tensor_to_hom_left_adjunction_on_id_a_tensor_0 := TensorProductToInternalHomLeftAdjunctionMap( a, z, id_a_tensor_0 );;
 
-gap> hom_to_tensor_adjunction_on_id_hom_ab := InternalHomToTensorProductLeftAdjunctionMap( a, b, id_hom_ab );;
-gap> hom_to_tensor_adjunction_on_id_hom_ba := InternalHomToTensorProductLeftAdjunctionMap( b, a, id_hom_ba );;
-gap> hom_to_tensor_adjunction_on_id_hom_cd := InternalHomToTensorProductLeftAdjunctionMap( c, d, id_hom_cd );;
-gap> hom_to_tensor_adjunction_on_id_hom_dc := InternalHomToTensorProductLeftAdjunctionMap( d, c, id_hom_dc );;
+gap> hom_to_tensor_left_adjunction_on_id_hom_ab := InternalHomToTensorProductLeftAdjunctionMap( a, b, id_hom_ab );;
+gap> hom_to_tensor_left_adjunction_on_id_hom_ba := InternalHomToTensorProductLeftAdjunctionMap( b, a, id_hom_ba );;
+gap> hom_to_tensor_left_adjunction_on_id_hom_cd := InternalHomToTensorProductLeftAdjunctionMap( c, d, id_hom_cd );;
+gap> hom_to_tensor_left_adjunction_on_id_hom_dc := InternalHomToTensorProductLeftAdjunctionMap( d, c, id_hom_dc );;
 
-gap> hom_to_tensor_adjunction_on_id_hom_0a := InternalHomToTensorProductLeftAdjunctionMap( z, a, id_hom_0a );;
-gap> hom_to_tensor_adjunction_on_id_hom_a0 := InternalHomToTensorProductLeftAdjunctionMap( a, z, id_hom_a0 );;
+gap> hom_to_tensor_left_adjunction_on_id_hom_0a := InternalHomToTensorProductLeftAdjunctionMap( z, a, id_hom_0a );;
+gap> hom_to_tensor_left_adjunction_on_id_hom_a0 := InternalHomToTensorProductLeftAdjunctionMap( a, z, id_hom_a0 );;
 
-gap> tensor_to_cohom_adjunction_on_id_a_tensor_b := TensorProductToInternalCoHomLeftAdjunctionMap( a, b, id_a_tensor_b );;
-gap> tensor_to_cohom_adjunction_on_id_b_tensor_a := TensorProductToInternalCoHomLeftAdjunctionMap( b, a, id_b_tensor_a );;
-gap> tensor_to_cohom_adjunction_on_id_c_tensor_d := TensorProductToInternalCoHomLeftAdjunctionMap( c, d, id_c_tensor_d );;
-gap> tensor_to_cohom_adjunction_on_id_d_tensor_c := TensorProductToInternalCoHomLeftAdjunctionMap( d, c, id_d_tensor_c );;
+gap> tensor_to_cohom_left_adjunction_on_id_a_tensor_b := TensorProductToInternalCoHomLeftAdjunctionMap( a, b, id_a_tensor_b );;
+gap> tensor_to_cohom_left_adjunction_on_id_b_tensor_a := TensorProductToInternalCoHomLeftAdjunctionMap( b, a, id_b_tensor_a );;
+gap> tensor_to_cohom_left_adjunction_on_id_c_tensor_d := TensorProductToInternalCoHomLeftAdjunctionMap( c, d, id_c_tensor_d );;
+gap> tensor_to_cohom_left_adjunction_on_id_d_tensor_c := TensorProductToInternalCoHomLeftAdjunctionMap( d, c, id_d_tensor_c );;
 
-gap> tensor_to_cohom_adjunction_on_id_0_tensor_a := TensorProductToInternalCoHomLeftAdjunctionMap( z, a, id_0_tensor_a );;
-gap> tensor_to_cohom_adjunction_on_id_a_tensor_0 := TensorProductToInternalCoHomLeftAdjunctionMap( a, z, id_a_tensor_0 );;
+gap> tensor_to_cohom_left_adjunction_on_id_0_tensor_a := TensorProductToInternalCoHomLeftAdjunctionMap( z, a, id_0_tensor_a );;
+gap> tensor_to_cohom_left_adjunction_on_id_a_tensor_0 := TensorProductToInternalCoHomLeftAdjunctionMap( a, z, id_a_tensor_0 );;
 
-gap> cohom_to_tensor_adjunction_on_id_cohom_ab := InternalCoHomToTensorProductLeftAdjunctionMap( a, b, id_cohom_ab );;
-gap> cohom_to_tensor_adjunction_on_id_cohom_ba := InternalCoHomToTensorProductLeftAdjunctionMap( b, a, id_cohom_ba );;
-gap> cohom_to_tensor_adjunction_on_id_cohom_cd := InternalCoHomToTensorProductLeftAdjunctionMap( c, d, id_cohom_cd );;
-gap> cohom_to_tensor_adjunction_on_id_cohom_dc := InternalCoHomToTensorProductLeftAdjunctionMap( d, c, id_cohom_dc );;
+gap> cohom_to_tensor_left_adjunction_on_id_cohom_ab := InternalCoHomToTensorProductLeftAdjunctionMap( a, b, id_cohom_ab );;
+gap> cohom_to_tensor_left_adjunction_on_id_cohom_ba := InternalCoHomToTensorProductLeftAdjunctionMap( b, a, id_cohom_ba );;
+gap> cohom_to_tensor_left_adjunction_on_id_cohom_cd := InternalCoHomToTensorProductLeftAdjunctionMap( c, d, id_cohom_cd );;
+gap> cohom_to_tensor_left_adjunction_on_id_cohom_dc := InternalCoHomToTensorProductLeftAdjunctionMap( d, c, id_cohom_dc );;
 
-gap> cohom_to_tensor_adjunction_on_id_cohom_0a := InternalCoHomToTensorProductLeftAdjunctionMap( z, a, id_cohom_0a );;
-gap> cohom_to_tensor_adjunction_on_id_cohom_a0 := InternalCoHomToTensorProductLeftAdjunctionMap( a, z, id_cohom_a0 );;
+gap> cohom_to_tensor_left_adjunction_on_id_cohom_0a := InternalCoHomToTensorProductLeftAdjunctionMap( z, a, id_cohom_0a );;
+gap> cohom_to_tensor_left_adjunction_on_id_cohom_a0 := InternalCoHomToTensorProductLeftAdjunctionMap( a, z, id_cohom_a0 );;
 
-# Correspondence between closed and coclosed adjunction maps
+# Correspondence between closed and coclosed left adjunction maps
 
 # ev = Transposed( coclev ), arguments must be reversed for evaluations
 
-gap> UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_ab ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_adjunction_on_id_cohom_ba ) ); # Hom( a, b ) x a -> b  ==  Tr( b -> Cohom( b, a ) x a )
+gap> UnderlyingMatrix( hom_to_tensor_left_adjunction_on_id_hom_ab ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_left_adjunction_on_id_cohom_ba ) ); # Hom( a, b ) x a -> b  ==  Tr( b -> Cohom( b, a ) x a )
 true
-gap> UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_ba ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_adjunction_on_id_cohom_ab ) ); # Hom( b, a ) x b -> a  ==  Tr( a -> Cohom( a, b ) x b )
+gap> UnderlyingMatrix( hom_to_tensor_left_adjunction_on_id_hom_ba ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_left_adjunction_on_id_cohom_ab ) ); # Hom( b, a ) x b -> a  ==  Tr( a -> Cohom( a, b ) x b )
 true
-gap> UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_cd ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_adjunction_on_id_cohom_dc ) ); # Hom( c, d ) x c -> d  ==  Tr( d -> Cohom( d, c ) x c )
+gap> UnderlyingMatrix( hom_to_tensor_left_adjunction_on_id_hom_cd ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_left_adjunction_on_id_cohom_dc ) ); # Hom( c, d ) x c -> d  ==  Tr( d -> Cohom( d, c ) x c )
 true
-gap> UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_dc ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_adjunction_on_id_cohom_cd ) ); # Hom( d, c ) x d -> c  ==  Tr( c -> Cohom( c, d ) x d )
-true
-
-gap> UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_0a ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_adjunction_on_id_cohom_a0 ) ); # Hom( 0, a ) x 0 -> a  ==  Tr( a -> Cohom( a, 0 ) x 0 )
-true
-gap> UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_a0 ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_adjunction_on_id_cohom_0a ) ); # Hom( a, 0 ) x a -> 0  ==  Tr( 0 -> Cohom( 0, a ) x a )
+gap> UnderlyingMatrix( hom_to_tensor_left_adjunction_on_id_hom_dc ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_left_adjunction_on_id_cohom_cd ) ); # Hom( d, c ) x d -> c  ==  Tr( c -> Cohom( c, d ) x d )
 true
 
-gap> UnderlyingMatrix( ev_ab ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_adjunction_on_id_cohom_ba ) );
+gap> UnderlyingMatrix( hom_to_tensor_left_adjunction_on_id_hom_0a ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_left_adjunction_on_id_cohom_a0 ) ); # Hom( 0, a ) x 0 -> a  ==  Tr( a -> Cohom( a, 0 ) x 0 )
 true
-gap> UnderlyingMatrix( ev_ba ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_adjunction_on_id_cohom_ab ) );
-true
-gap> UnderlyingMatrix( ev_cd ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_adjunction_on_id_cohom_dc ) );
-true
-gap> UnderlyingMatrix( ev_dc ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_adjunction_on_id_cohom_cd ) );
+gap> UnderlyingMatrix( hom_to_tensor_left_adjunction_on_id_hom_a0 ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_left_adjunction_on_id_cohom_0a ) ); # Hom( a, 0 ) x a -> 0  ==  Tr( 0 -> Cohom( 0, a ) x a )
 true
 
-gap> UnderlyingMatrix( ev_0a ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_adjunction_on_id_cohom_a0 ) );
+gap> UnderlyingMatrix( left_ev_ab ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_left_adjunction_on_id_cohom_ba ) );
 true
-gap> UnderlyingMatrix( ev_a0 ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_adjunction_on_id_cohom_0a ) );
+gap> UnderlyingMatrix( left_ev_ba ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_left_adjunction_on_id_cohom_ab ) );
 true
-
-# coev = Transposed( coclcoev )
-
-gap> UnderlyingMatrix( tensor_to_hom_adjunction_on_id_a_tensor_b ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_a_tensor_b ) ); # a -> Hom( b, a x b )  ==  Tr( Cohom( a x b, b) -> a )
+gap> UnderlyingMatrix( left_ev_cd ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_left_adjunction_on_id_cohom_dc ) );
 true
-gap> UnderlyingMatrix( tensor_to_hom_adjunction_on_id_b_tensor_a ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_b_tensor_a ) ); # b -> Hom( a, b x a )  ==  Tr( Cohom( b x a, a) -> b )
-true
-gap> UnderlyingMatrix( tensor_to_hom_adjunction_on_id_c_tensor_d ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_c_tensor_d ) ); # c -> Hom( d, c x d )  ==  Tr( Cohom( d x c, c) -> d )
-true
-gap> UnderlyingMatrix( tensor_to_hom_adjunction_on_id_d_tensor_c ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_d_tensor_c ) ); # d -> Hom( c, d x c )  ==  Tr( Cohom( c x d, d) -> c )
+gap> UnderlyingMatrix( left_ev_dc ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_left_adjunction_on_id_cohom_cd ) );
 true
 
-gap> UnderlyingMatrix( tensor_to_hom_adjunction_on_id_0_tensor_a ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_0_tensor_a ) ); # 0 -> Hom( a, 0 x a )  ==  Tr( Cohom( 0 x a, a) -> 0 )
+gap> UnderlyingMatrix( left_ev_0a ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_left_adjunction_on_id_cohom_a0 ) );
 true
-gap> UnderlyingMatrix( tensor_to_hom_adjunction_on_id_a_tensor_0 ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_a_tensor_0 ) ); # a -> Hom( 0, a x 0 )  ==  Tr( Cohom( a x 0, 0) -> a )
-true
-
-gap> UnderlyingMatrix( coev_ba ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_a_tensor_b ) );
-true
-gap> UnderlyingMatrix( coev_ab ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_b_tensor_a ) );
-true
-gap> UnderlyingMatrix( coev_dc ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_c_tensor_d ) );
-true
-gap> UnderlyingMatrix( coev_cd ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_d_tensor_c ) );
+gap> UnderlyingMatrix( left_ev_a0 ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_left_adjunction_on_id_cohom_0a ) );
 true
 
-gap> UnderlyingMatrix( coev_a0 ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_0_tensor_a ) );
+# left_coev = Transposed( coclcoev )
+
+gap> UnderlyingMatrix( tensor_to_hom_left_adjunction_on_id_a_tensor_b ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_left_adjunction_on_id_a_tensor_b ) ); # a -> Hom( b, a x b )  ==  Tr( Cohom( a x b, b) -> a )
 true
-gap> UnderlyingMatrix( coev_0a ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_a_tensor_0 ) );
+gap> UnderlyingMatrix( tensor_to_hom_left_adjunction_on_id_b_tensor_a ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_left_adjunction_on_id_b_tensor_a ) ); # b -> Hom( a, b x a )  ==  Tr( Cohom( b x a, a) -> b )
+true
+gap> UnderlyingMatrix( tensor_to_hom_left_adjunction_on_id_c_tensor_d ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_left_adjunction_on_id_c_tensor_d ) ); # c -> Hom( d, c x d )  ==  Tr( Cohom( d x c, c) -> d )
+true
+gap> UnderlyingMatrix( tensor_to_hom_left_adjunction_on_id_d_tensor_c ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_left_adjunction_on_id_d_tensor_c ) ); # d -> Hom( c, d x c )  ==  Tr( Cohom( c x d, d) -> c )
+true
+
+gap> UnderlyingMatrix( tensor_to_hom_left_adjunction_on_id_0_tensor_a ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_left_adjunction_on_id_0_tensor_a ) ); # 0 -> Hom( a, 0 x a )  ==  Tr( Cohom( 0 x a, a) -> 0 )
+true
+gap> UnderlyingMatrix( tensor_to_hom_left_adjunction_on_id_a_tensor_0 ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_left_adjunction_on_id_a_tensor_0 ) ); # a -> Hom( 0, a x 0 )  ==  Tr( Cohom( a x 0, 0) -> a )
+true
+
+gap> UnderlyingMatrix( left_coev_ba ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_left_adjunction_on_id_a_tensor_b ) );
+true
+gap> UnderlyingMatrix( left_coev_ab ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_left_adjunction_on_id_b_tensor_a ) );
+true
+gap> UnderlyingMatrix( left_coev_dc ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_left_adjunction_on_id_c_tensor_d ) );
+true
+gap> UnderlyingMatrix( left_coev_cd ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_left_adjunction_on_id_d_tensor_c ) );
+true
+
+gap> UnderlyingMatrix( left_coev_a0 ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_left_adjunction_on_id_0_tensor_a ) );
+true
+gap> UnderlyingMatrix( left_coev_0a ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_left_adjunction_on_id_a_tensor_0 ) );
 true
 
 # coclev = Transposed( ev ), arguments must be reversed for evaluations
 
-gap> UnderlyingMatrix( cohom_to_tensor_adjunction_on_id_cohom_ab ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_ba ) ); # a -> Cohom( a, b ) x b  ==  Tr( Hom( b, a ) x b -> a )
+gap> UnderlyingMatrix( cohom_to_tensor_left_adjunction_on_id_cohom_ab ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_left_adjunction_on_id_hom_ba ) ); # a -> Cohom( a, b ) x b  ==  Tr( Hom( b, a ) x b -> a )
 true
-gap> UnderlyingMatrix( cohom_to_tensor_adjunction_on_id_cohom_ba ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_ab ) ); # b -> Cohom( b, a ) x a  ==  Tr( Hom( a, b ) x a -> b )
+gap> UnderlyingMatrix( cohom_to_tensor_left_adjunction_on_id_cohom_ba ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_left_adjunction_on_id_hom_ab ) ); # b -> Cohom( b, a ) x a  ==  Tr( Hom( a, b ) x a -> b )
 true
-gap> UnderlyingMatrix( cohom_to_tensor_adjunction_on_id_cohom_cd ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_dc ) ); # c -> Cohom( c, d ) x d  ==  Tr( Hom( d, c ) x d -> c )
+gap> UnderlyingMatrix( cohom_to_tensor_left_adjunction_on_id_cohom_cd ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_left_adjunction_on_id_hom_dc ) ); # c -> Cohom( c, d ) x d  ==  Tr( Hom( d, c ) x d -> c )
 true
-gap> UnderlyingMatrix( cohom_to_tensor_adjunction_on_id_cohom_dc ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_cd ) ); # d -> Cohom( d, c ) x c  ==  Tr( Hom( c, d ) x c -> d )
-true
-
-gap> UnderlyingMatrix( cohom_to_tensor_adjunction_on_id_cohom_0a ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_a0 ) ); # 0 -> Cohom( 0, a ) x a  ==  Tr( Hom( a, 0 ) x a -> 0 )
-true
-gap> UnderlyingMatrix( cohom_to_tensor_adjunction_on_id_cohom_a0 ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_0a ) ); # a -> Cohom( a, 0 ) x 0  ==  Tr( Hom( 0, a ) x 0 -> a )
+gap> UnderlyingMatrix( cohom_to_tensor_left_adjunction_on_id_cohom_dc ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_left_adjunction_on_id_hom_cd ) ); # d -> Cohom( d, c ) x c  ==  Tr( Hom( c, d ) x c -> d )
 true
 
-gap> UnderlyingMatrix( cocl_ev_ba ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_ba ) );
+gap> UnderlyingMatrix( cohom_to_tensor_left_adjunction_on_id_cohom_0a ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_left_adjunction_on_id_hom_a0 ) ); # 0 -> Cohom( 0, a ) x a  ==  Tr( Hom( a, 0 ) x a -> 0 )
 true
-gap> UnderlyingMatrix( cocl_ev_ab ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_ab ) );
-true
-gap> UnderlyingMatrix( cocl_ev_dc ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_dc ) );
-true
-gap> UnderlyingMatrix( cocl_ev_cd ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_cd ) );
+gap> UnderlyingMatrix( cohom_to_tensor_left_adjunction_on_id_cohom_a0 ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_left_adjunction_on_id_hom_0a ) ); # a -> Cohom( a, 0 ) x 0  ==  Tr( Hom( 0, a ) x 0 -> a )
 true
 
-gap> UnderlyingMatrix( cocl_ev_a0 ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_a0 ) );
+gap> UnderlyingMatrix( left_cocl_ev_ba ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_left_adjunction_on_id_hom_ba ) );
 true
-gap> UnderlyingMatrix( cocl_ev_0a ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_adjunction_on_id_hom_0a ) );
+gap> UnderlyingMatrix( left_cocl_ev_ab ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_left_adjunction_on_id_hom_ab ) );
 true
-
-# coclcoev = Transposed( coev )
-
-gap> UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_a_tensor_b ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_adjunction_on_id_a_tensor_b ) ); # Cohom( a x b, b ) -> a  ==  Tr( a -> Hom( b, a x b ) )
+gap> UnderlyingMatrix( left_cocl_ev_dc ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_left_adjunction_on_id_hom_dc ) );
 true
-gap> UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_b_tensor_a ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_adjunction_on_id_b_tensor_a ) ); # Cohom( b x a, a ) -> b  ==  Tr( b -> Hom( a, b x a ) )
-true
-gap> UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_c_tensor_d ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_adjunction_on_id_c_tensor_d ) ); # Cohom( c x d, d ) -> c  ==  Tr( c -> Hom( d, c x d ) )
-true
-gap> UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_d_tensor_c ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_adjunction_on_id_d_tensor_c ) ); # Cohom( d x c, c ) -> d  ==  Tr( d -> Hom( c, d x c ) )
+gap> UnderlyingMatrix( left_cocl_ev_cd ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_left_adjunction_on_id_hom_cd ) );
 true
 
-gap> UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_0_tensor_a ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_adjunction_on_id_0_tensor_a ) ); # Cohom( 0 x a, a ) -> 0  ==  Tr( 0 -> Hom( a, 0 x a ) )
+gap> UnderlyingMatrix( left_cocl_ev_a0 ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_left_adjunction_on_id_hom_a0 ) );
 true
-gap> UnderlyingMatrix( tensor_to_cohom_adjunction_on_id_a_tensor_0 ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_adjunction_on_id_a_tensor_0 ) ); # Cohom( a x 0, 0 ) -> a  ==  Tr( a -> Hom( 0, a x 0 ) )
-true
-
-gap> UnderlyingMatrix( cocl_coev_ba ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_adjunction_on_id_a_tensor_b ) );
-true
-gap> UnderlyingMatrix( cocl_coev_ab ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_adjunction_on_id_b_tensor_a ) );
-true
-gap> UnderlyingMatrix( cocl_coev_dc ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_adjunction_on_id_c_tensor_d ) );
-true
-gap> UnderlyingMatrix( cocl_coev_cd ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_adjunction_on_id_d_tensor_c ) );
+gap> UnderlyingMatrix( left_cocl_ev_0a ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_left_adjunction_on_id_hom_0a ) );
 true
 
-gap> UnderlyingMatrix( cocl_coev_a0 ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_adjunction_on_id_0_tensor_a ) );
+# coclcoev = Transposed( left_coev )
+
+gap> UnderlyingMatrix( tensor_to_cohom_left_adjunction_on_id_a_tensor_b ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_left_adjunction_on_id_a_tensor_b ) ); # Cohom( a x b, b ) -> a  ==  Tr( a -> Hom( b, a x b ) )
 true
-gap> UnderlyingMatrix( cocl_coev_0a ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_adjunction_on_id_a_tensor_0 ) );
+gap> UnderlyingMatrix( tensor_to_cohom_left_adjunction_on_id_b_tensor_a ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_left_adjunction_on_id_b_tensor_a ) ); # Cohom( b x a, a ) -> b  ==  Tr( b -> Hom( a, b x a ) )
+true
+gap> UnderlyingMatrix( tensor_to_cohom_left_adjunction_on_id_c_tensor_d ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_left_adjunction_on_id_c_tensor_d ) ); # Cohom( c x d, d ) -> c  ==  Tr( c -> Hom( d, c x d ) )
+true
+gap> UnderlyingMatrix( tensor_to_cohom_left_adjunction_on_id_d_tensor_c ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_left_adjunction_on_id_d_tensor_c ) ); # Cohom( d x c, c ) -> d  ==  Tr( d -> Hom( c, d x c ) )
+true
+
+gap> UnderlyingMatrix( tensor_to_cohom_left_adjunction_on_id_0_tensor_a ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_left_adjunction_on_id_0_tensor_a ) ); # Cohom( 0 x a, a ) -> 0  ==  Tr( 0 -> Hom( a, 0 x a ) )
+true
+gap> UnderlyingMatrix( tensor_to_cohom_left_adjunction_on_id_a_tensor_0 ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_left_adjunction_on_id_a_tensor_0 ) ); # Cohom( a x 0, 0 ) -> a  ==  Tr( a -> Hom( 0, a x 0 ) )
+true
+
+gap> UnderlyingMatrix( left_cocl_coev_ba ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_left_adjunction_on_id_a_tensor_b ) );
+true
+gap> UnderlyingMatrix( left_cocl_coev_ab ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_left_adjunction_on_id_b_tensor_a ) );
+true
+gap> UnderlyingMatrix( left_cocl_coev_dc ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_left_adjunction_on_id_c_tensor_d ) );
+true
+gap> UnderlyingMatrix( left_cocl_coev_cd ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_left_adjunction_on_id_d_tensor_c ) );
+true
+
+gap> UnderlyingMatrix( left_cocl_coev_a0 ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_left_adjunction_on_id_0_tensor_a ) );
+true
+gap> UnderlyingMatrix( left_cocl_coev_0a ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_left_adjunction_on_id_a_tensor_0 ) );
 true
 
 #####################################################
-# Adjunction maps on non-identities
+# Left adjunction maps on non-identities
 #####################################################
 
-gap> tensor_to_hom_adjunction_on_alpha_tensor_beta := TensorProductToInternalHomLeftAdjunctionMap( a, c, alpha_tensor_beta );;
-gap> tensor_to_hom_adjunction_on_beta_tensor_alpha := TensorProductToInternalHomLeftAdjunctionMap( c, a, beta_tensor_alpha );;
-gap> tensor_to_hom_adjunction_on_alpha_tensor_beta_transposed := TensorProductToInternalHomLeftAdjunctionMap( a, c, alpha_tensor_beta_transposed );;
-gap> tensor_to_hom_adjunction_on_beta_tensor_alpha_transposed := TensorProductToInternalHomLeftAdjunctionMap( c, a, beta_tensor_alpha_transposed );;
+gap> tensor_to_hom_left_adjunction_on_alpha_tensor_beta := TensorProductToInternalHomLeftAdjunctionMap( a, c, alpha_tensor_beta );;
+gap> tensor_to_hom_left_adjunction_on_beta_tensor_alpha := TensorProductToInternalHomLeftAdjunctionMap( c, a, beta_tensor_alpha );;
+gap> tensor_to_hom_left_adjunction_on_alpha_tensor_beta_transposed := TensorProductToInternalHomLeftAdjunctionMap( a, c, alpha_tensor_beta_transposed );;
+gap> tensor_to_hom_left_adjunction_on_beta_tensor_alpha_transposed := TensorProductToInternalHomLeftAdjunctionMap( c, a, beta_tensor_alpha_transposed );;
 
-gap> tensor_to_cohom_adjunction_on_alpha_tensor_beta := TensorProductToInternalCoHomLeftAdjunctionMap( a, c, alpha_tensor_beta );;
-gap> tensor_to_cohom_adjunction_on_beta_tensor_alpha := TensorProductToInternalCoHomLeftAdjunctionMap( c, a, beta_tensor_alpha );;
-gap> tensor_to_cohom_adjunction_on_alpha_tensor_beta_transposed := TensorProductToInternalCoHomLeftAdjunctionMap( a, c, alpha_tensor_beta_transposed );;
-gap> tensor_to_cohom_adjunction_on_beta_tensor_alpha_transposed := TensorProductToInternalCoHomLeftAdjunctionMap( c, a, beta_tensor_alpha_transposed );;
+gap> tensor_to_cohom_left_adjunction_on_alpha_tensor_beta := TensorProductToInternalCoHomLeftAdjunctionMap( a, c, alpha_tensor_beta );;
+gap> tensor_to_cohom_left_adjunction_on_beta_tensor_alpha := TensorProductToInternalCoHomLeftAdjunctionMap( c, a, beta_tensor_alpha );;
+gap> tensor_to_cohom_left_adjunction_on_alpha_tensor_beta_transposed := TensorProductToInternalCoHomLeftAdjunctionMap( a, c, alpha_tensor_beta_transposed );;
+gap> tensor_to_cohom_left_adjunction_on_beta_tensor_alpha_transposed := TensorProductToInternalCoHomLeftAdjunctionMap( c, a, beta_tensor_alpha_transposed );;
 
-gap> hom_to_tensor_adjunction_on_hom_alpha_beta := InternalHomToTensorProductLeftAdjunctionMap( a, d, hom_alpha_beta );;
-gap> hom_to_tensor_adjunction_on_hom_beta_alpha := InternalHomToTensorProductLeftAdjunctionMap( c, b, hom_beta_alpha );;
-gap> hom_to_tensor_adjunction_on_hom_alpha_beta_transposed := InternalHomToTensorProductLeftAdjunctionMap( b, c, hom_alpha_beta_transposed );;
-gap> hom_to_tensor_adjunction_on_hom_beta_alpha_transposed := InternalHomToTensorProductLeftAdjunctionMap( d, a, hom_beta_alpha_transposed );;
+gap> hom_to_tensor_left_adjunction_on_hom_alpha_beta := InternalHomToTensorProductLeftAdjunctionMap( a, d, hom_alpha_beta );;
+gap> hom_to_tensor_left_adjunction_on_hom_beta_alpha := InternalHomToTensorProductLeftAdjunctionMap( c, b, hom_beta_alpha );;
+gap> hom_to_tensor_left_adjunction_on_hom_alpha_beta_transposed := InternalHomToTensorProductLeftAdjunctionMap( b, c, hom_alpha_beta_transposed );;
+gap> hom_to_tensor_left_adjunction_on_hom_beta_alpha_transposed := InternalHomToTensorProductLeftAdjunctionMap( d, a, hom_beta_alpha_transposed );;
 
-gap> cohom_to_tensor_adjunction_on_cohom_alpha_beta := InternalCoHomToTensorProductLeftAdjunctionMap( a, d, cohom_alpha_beta );;
-gap> cohom_to_tensor_adjunction_on_cohom_beta_alpha := InternalCoHomToTensorProductLeftAdjunctionMap( c, b, cohom_beta_alpha );;
-gap> cohom_to_tensor_adjunction_on_cohom_alpha_beta_transposed := InternalCoHomToTensorProductLeftAdjunctionMap( b, c, cohom_alpha_beta_transposed );;
-gap> cohom_to_tensor_adjunction_on_cohom_beta_alpha_transposed := InternalCoHomToTensorProductLeftAdjunctionMap( d, a, cohom_beta_alpha_transposed );;
+gap> cohom_to_tensor_left_adjunction_on_cohom_alpha_beta := InternalCoHomToTensorProductLeftAdjunctionMap( a, d, cohom_alpha_beta );;
+gap> cohom_to_tensor_left_adjunction_on_cohom_beta_alpha := InternalCoHomToTensorProductLeftAdjunctionMap( c, b, cohom_beta_alpha );;
+gap> cohom_to_tensor_left_adjunction_on_cohom_alpha_beta_transposed := InternalCoHomToTensorProductLeftAdjunctionMap( b, c, cohom_alpha_beta_transposed );;
+gap> cohom_to_tensor_left_adjunction_on_cohom_beta_alpha_transposed := InternalCoHomToTensorProductLeftAdjunctionMap( d, a, cohom_beta_alpha_transposed );;
 
-# Correspondence on adjunction maps on tensor products
+# Correspondence on left adjunction maps on tensor products
 
 ################################################
 #                                              #
@@ -776,19 +776,19 @@ gap> cohom_to_tensor_adjunction_on_cohom_beta_alpha_transposed := InternalCoHomT
 #                                              #
 ################################################
 
-gap> UnderlyingMatrix( tensor_to_hom_adjunction_on_alpha_tensor_beta ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_adjunction_on_alpha_tensor_beta_transposed ) ); # a -> Hom( c, b x d )  ==  Tr( Cohom( a x c, d ) -> b )
+gap> UnderlyingMatrix( tensor_to_hom_left_adjunction_on_alpha_tensor_beta ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_left_adjunction_on_alpha_tensor_beta_transposed ) ); # a -> Hom( c, b x d )  ==  Tr( Cohom( a x c, d ) -> b )
 true
 
-gap> UnderlyingMatrix( tensor_to_hom_adjunction_on_beta_tensor_alpha ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_adjunction_on_beta_tensor_alpha_transposed ) ); # c -> Hom( a, d x b )  ==  Tr( Cohom( d x b, a ) -> c )
+gap> UnderlyingMatrix( tensor_to_hom_left_adjunction_on_beta_tensor_alpha ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_left_adjunction_on_beta_tensor_alpha_transposed ) ); # c -> Hom( a, d x b )  ==  Tr( Cohom( d x b, a ) -> c )
 true
 
-gap> UnderlyingMatrix( tensor_to_cohom_adjunction_on_alpha_tensor_beta ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_adjunction_on_alpha_tensor_beta_transposed ) ); # Cohom( a x c, d ) -> b  ==  Tr( b -> Hom( d, a x c ) )
+gap> UnderlyingMatrix( tensor_to_cohom_left_adjunction_on_alpha_tensor_beta ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_left_adjunction_on_alpha_tensor_beta_transposed ) ); # Cohom( a x c, d ) -> b  ==  Tr( b -> Hom( d, a x c ) )
 true
 
-gap> UnderlyingMatrix( tensor_to_cohom_adjunction_on_beta_tensor_alpha ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_adjunction_on_beta_tensor_alpha_transposed ) ); # Cohom( c x a, b ) -> d  ==  Tr( d -> Hom( b, c x a ) )
+gap> UnderlyingMatrix( tensor_to_cohom_left_adjunction_on_beta_tensor_alpha ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_left_adjunction_on_beta_tensor_alpha_transposed ) ); # Cohom( c x a, b ) -> d  ==  Tr( d -> Hom( b, c x a ) )
 true
 
-# Correspondence on adjunction maps on internal (co)homs
+# Correspondence on left adjunction maps on internal (co)homs
 
 ###############################################################
 #                                                             #
@@ -808,16 +808,359 @@ true
 #                                                             #
 ###############################################################
 
-gap> UnderlyingMatrix( hom_to_tensor_adjunction_on_hom_alpha_beta ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_adjunction_on_cohom_beta_alpha_transposed ) ); # Hom( b, c ) x a -> d  ==  Tr( d -> Cohom( c, b ) x a )
+gap> UnderlyingMatrix( hom_to_tensor_left_adjunction_on_hom_alpha_beta ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_left_adjunction_on_cohom_beta_alpha_transposed ) ); # Hom( b, c ) x a -> d  ==  Tr( d -> Cohom( c, b ) x a )
 true
 
-gap> UnderlyingMatrix( hom_to_tensor_adjunction_on_hom_beta_alpha ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_adjunction_on_cohom_alpha_beta_transposed ) ); # Hom( d, a ) x c -> b  ==  Tr( b -> Cohom( a, d ) x c )
+gap> UnderlyingMatrix( hom_to_tensor_left_adjunction_on_hom_beta_alpha ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_left_adjunction_on_cohom_alpha_beta_transposed ) ); # Hom( d, a ) x c -> b  ==  Tr( b -> Cohom( a, d ) x c )
 true
 
-gap> UnderlyingMatrix( cohom_to_tensor_adjunction_on_cohom_alpha_beta ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_adjunction_on_hom_beta_alpha_transposed ) ); # a -> Cohom( b, c ) x d  ==  Tr( Hom( c, b ) x d -> a )
+gap> UnderlyingMatrix( cohom_to_tensor_left_adjunction_on_cohom_alpha_beta ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_left_adjunction_on_hom_beta_alpha_transposed ) ); # a -> Cohom( b, c ) x d  ==  Tr( Hom( c, b ) x d -> a )
 true
 
-gap> UnderlyingMatrix( cohom_to_tensor_adjunction_on_cohom_beta_alpha ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_adjunction_on_hom_alpha_beta_transposed ) ); # c -> Cohom( d, a ) x b  ==  Tr( Hom( a, d ) x b -> c )
+gap> UnderlyingMatrix( cohom_to_tensor_left_adjunction_on_cohom_beta_alpha ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_left_adjunction_on_hom_alpha_beta_transposed ) ); # c -> Cohom( d, a ) x b  ==  Tr( Hom( a, d ) x b -> c )
+true
+
+#####################################################
+# Right units and counits
+#####################################################
+
+# Units and counits for rows
+
+gap> right_ev_ab := ClosedMonoidalRightEvaluationMorphism( a, b );;
+gap> right_ev_ba := ClosedMonoidalRightEvaluationMorphism( b, a );;
+gap> right_ev_cd := ClosedMonoidalRightEvaluationMorphism( c, d );;
+gap> right_ev_dc := ClosedMonoidalRightEvaluationMorphism( d, c );;
+
+gap> right_ev_0a := ClosedMonoidalRightEvaluationMorphism( z, a );;
+gap> right_ev_a0 := ClosedMonoidalRightEvaluationMorphism( a, z );;
+
+gap> right_coev_ab := ClosedMonoidalRightCoevaluationMorphism( a, b );;
+gap> right_coev_ba := ClosedMonoidalRightCoevaluationMorphism( b, a );;
+gap> right_coev_cd := ClosedMonoidalRightCoevaluationMorphism( c, d );;
+gap> right_coev_dc := ClosedMonoidalRightCoevaluationMorphism( d, c );;
+
+gap> right_coev_0a := ClosedMonoidalRightCoevaluationMorphism( z, a );;
+gap> right_coev_a0 := ClosedMonoidalRightCoevaluationMorphism( a, z );;
+
+gap> right_cocl_ev_ab := CoclosedMonoidalRightEvaluationMorphism( a, b );;
+gap> right_cocl_ev_ba := CoclosedMonoidalRightEvaluationMorphism( b, a );;
+gap> right_cocl_ev_cd := CoclosedMonoidalRightEvaluationMorphism( c, d );;
+gap> right_cocl_ev_dc := CoclosedMonoidalRightEvaluationMorphism( d, c );;
+
+gap> right_cocl_ev_0a := CoclosedMonoidalRightEvaluationMorphism( z, a );;
+gap> right_cocl_ev_a0 := CoclosedMonoidalRightEvaluationMorphism( a, z );;
+
+gap> right_cocl_coev_ab := CoclosedMonoidalRightCoevaluationMorphism( a, b );;
+gap> right_cocl_coev_ba := CoclosedMonoidalRightCoevaluationMorphism( b, a );;
+gap> right_cocl_coev_cd := CoclosedMonoidalRightCoevaluationMorphism( c, d );;
+gap> right_cocl_coev_dc := CoclosedMonoidalRightCoevaluationMorphism( d, c );;
+
+gap> right_cocl_coev_0a := CoclosedMonoidalRightCoevaluationMorphism( z, a );;
+gap> right_cocl_coev_a0 := CoclosedMonoidalRightCoevaluationMorphism( a, z );;
+
+# Correspondence between right (co)units and their coclosed parts
+
+# Arguments must be reversed for evaluations
+gap> UnderlyingMatrix( right_ev_ab ) = TransposedMatrix( UnderlyingMatrix( right_cocl_ev_ab ) );
+true
+gap> UnderlyingMatrix( right_ev_ba ) = TransposedMatrix( UnderlyingMatrix( right_cocl_ev_ba ) );
+true
+gap> UnderlyingMatrix( right_ev_cd ) = TransposedMatrix( UnderlyingMatrix( right_cocl_ev_cd ) );
+true
+gap> UnderlyingMatrix( right_ev_dc ) = TransposedMatrix( UnderlyingMatrix( right_cocl_ev_dc ) );
+true
+
+gap> UnderlyingMatrix( right_ev_0a ) = TransposedMatrix( UnderlyingMatrix( right_cocl_ev_0a ) );
+true
+gap> UnderlyingMatrix( right_ev_a0 ) = TransposedMatrix( UnderlyingMatrix( right_cocl_ev_a0 ) );
+true
+
+gap> UnderlyingMatrix( right_coev_ab ) = TransposedMatrix( UnderlyingMatrix( right_cocl_coev_ab ) );
+true
+gap> UnderlyingMatrix( right_coev_ba ) = TransposedMatrix( UnderlyingMatrix( right_cocl_coev_ba ) );
+true
+gap> UnderlyingMatrix( right_coev_cd ) = TransposedMatrix( UnderlyingMatrix( right_cocl_coev_cd ) );
+true
+gap> UnderlyingMatrix( right_coev_dc ) = TransposedMatrix( UnderlyingMatrix( right_cocl_coev_dc ) );
+true
+
+gap> UnderlyingMatrix( right_coev_0a ) = TransposedMatrix( UnderlyingMatrix( right_cocl_coev_0a ) );
+true
+gap> UnderlyingMatrix( right_coev_a0 ) = TransposedMatrix( UnderlyingMatrix( right_cocl_coev_a0 ) );
+true
+
+gap> right_ev_ba = right_cocl_ev_ba;
+false
+gap> right_ev_ba = right_cocl_ev_cd;
+false
+gap> right_ev_ba = right_cocl_ev_dc;
+false
+
+gap> right_coev_dc = right_cocl_coev_cd;
+false
+gap> right_coev_dc = right_cocl_coev_ab;
+false
+gap> right_coev_dc = right_cocl_coev_ba;
+false
+
+gap> right_cocl_ev_cd = right_ev_ab;
+false
+gap> right_cocl_ev_cd = right_ev_ba;
+false
+gap> right_cocl_ev_cd = right_ev_cd;
+false
+
+gap> right_cocl_coev_ab = right_coev_ba;
+false
+gap> right_cocl_coev_ab = right_coev_cd;
+false
+gap> right_cocl_coev_ab = right_coev_dc;
+false
+
+#####################################################
+# Right adjunction maps on identities
+#####################################################
+
+# Closed and coclosed right adjunction maps for rows
+
+gap> tensor_to_hom_right_adjunction_on_id_a_tensor_b := TensorProductToInternalHomRightAdjunctionMap( a, b, id_a_tensor_b );;
+gap> tensor_to_hom_right_adjunction_on_id_b_tensor_a := TensorProductToInternalHomRightAdjunctionMap( b, a, id_b_tensor_a );;
+gap> tensor_to_hom_right_adjunction_on_id_c_tensor_d := TensorProductToInternalHomRightAdjunctionMap( c, d, id_c_tensor_d );;
+gap> tensor_to_hom_right_adjunction_on_id_d_tensor_c := TensorProductToInternalHomRightAdjunctionMap( d, c, id_d_tensor_c );;
+
+gap> tensor_to_hom_right_adjunction_on_id_0_tensor_a := TensorProductToInternalHomRightAdjunctionMap( z, a, id_0_tensor_a );;
+gap> tensor_to_hom_right_adjunction_on_id_a_tensor_0 := TensorProductToInternalHomRightAdjunctionMap( a, z, id_a_tensor_0 );;
+
+gap> hom_to_tensor_right_adjunction_on_id_hom_ab := InternalHomToTensorProductRightAdjunctionMap( a, b, id_hom_ab );;
+gap> hom_to_tensor_right_adjunction_on_id_hom_ba := InternalHomToTensorProductRightAdjunctionMap( b, a, id_hom_ba );;
+gap> hom_to_tensor_right_adjunction_on_id_hom_cd := InternalHomToTensorProductRightAdjunctionMap( c, d, id_hom_cd );;
+gap> hom_to_tensor_right_adjunction_on_id_hom_dc := InternalHomToTensorProductRightAdjunctionMap( d, c, id_hom_dc );;
+
+gap> hom_to_tensor_right_adjunction_on_id_hom_0a := InternalHomToTensorProductRightAdjunctionMap( z, a, id_hom_0a );;
+gap> hom_to_tensor_right_adjunction_on_id_hom_a0 := InternalHomToTensorProductRightAdjunctionMap( a, z, id_hom_a0 );;
+
+gap> tensor_to_cohom_right_adjunction_on_id_a_tensor_b := TensorProductToInternalCoHomRightAdjunctionMap( a, b, id_a_tensor_b );;
+gap> tensor_to_cohom_right_adjunction_on_id_b_tensor_a := TensorProductToInternalCoHomRightAdjunctionMap( b, a, id_b_tensor_a );;
+gap> tensor_to_cohom_right_adjunction_on_id_c_tensor_d := TensorProductToInternalCoHomRightAdjunctionMap( c, d, id_c_tensor_d );;
+gap> tensor_to_cohom_right_adjunction_on_id_d_tensor_c := TensorProductToInternalCoHomRightAdjunctionMap( d, c, id_d_tensor_c );;
+
+gap> tensor_to_cohom_right_adjunction_on_id_0_tensor_a := TensorProductToInternalCoHomRightAdjunctionMap( z, a, id_0_tensor_a );;
+gap> tensor_to_cohom_right_adjunction_on_id_a_tensor_0 := TensorProductToInternalCoHomRightAdjunctionMap( a, z, id_a_tensor_0 );;
+
+gap> cohom_to_tensor_right_adjunction_on_id_cohom_ab := InternalCoHomToTensorProductRightAdjunctionMap( a, b, id_cohom_ab );;
+gap> cohom_to_tensor_right_adjunction_on_id_cohom_ba := InternalCoHomToTensorProductRightAdjunctionMap( b, a, id_cohom_ba );;
+gap> cohom_to_tensor_right_adjunction_on_id_cohom_cd := InternalCoHomToTensorProductRightAdjunctionMap( c, d, id_cohom_cd );;
+gap> cohom_to_tensor_right_adjunction_on_id_cohom_dc := InternalCoHomToTensorProductRightAdjunctionMap( d, c, id_cohom_dc );;
+
+gap> cohom_to_tensor_right_adjunction_on_id_cohom_0a := InternalCoHomToTensorProductRightAdjunctionMap( z, a, id_cohom_0a );;
+gap> cohom_to_tensor_right_adjunction_on_id_cohom_a0 := InternalCoHomToTensorProductRightAdjunctionMap( a, z, id_cohom_a0 );;
+
+# Correspondence between closed and coclosed right adjunction maps
+
+# ev = Transposed( coclev ), arguments must be reversed for evaluations
+
+gap> UnderlyingMatrix( hom_to_tensor_right_adjunction_on_id_hom_ab ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_right_adjunction_on_id_cohom_ba ) ); # Hom( a, b ) x a -> b  ==  Tr( b -> Cohom( b, a ) x a )
+true
+gap> UnderlyingMatrix( hom_to_tensor_right_adjunction_on_id_hom_ba ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_right_adjunction_on_id_cohom_ab ) ); # Hom( b, a ) x b -> a  ==  Tr( a -> Cohom( a, b ) x b )
+true
+gap> UnderlyingMatrix( hom_to_tensor_right_adjunction_on_id_hom_cd ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_right_adjunction_on_id_cohom_dc ) ); # Hom( c, d ) x c -> d  ==  Tr( d -> Cohom( d, c ) x c )
+true
+gap> UnderlyingMatrix( hom_to_tensor_right_adjunction_on_id_hom_dc ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_right_adjunction_on_id_cohom_cd ) ); # Hom( d, c ) x d -> c  ==  Tr( c -> Cohom( c, d ) x d )
+true
+
+gap> UnderlyingMatrix( hom_to_tensor_right_adjunction_on_id_hom_0a ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_right_adjunction_on_id_cohom_a0 ) ); # Hom( 0, a ) x 0 -> a  ==  Tr( a -> Cohom( a, 0 ) x 0 )
+true
+gap> UnderlyingMatrix( hom_to_tensor_right_adjunction_on_id_hom_a0 ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_right_adjunction_on_id_cohom_0a ) ); # Hom( a, 0 ) x a -> 0  ==  Tr( 0 -> Cohom( 0, a ) x a )
+true
+
+gap> UnderlyingMatrix( right_ev_ab ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_right_adjunction_on_id_cohom_ba ) );
+true
+gap> UnderlyingMatrix( right_ev_ba ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_right_adjunction_on_id_cohom_ab ) );
+true
+gap> UnderlyingMatrix( right_ev_cd ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_right_adjunction_on_id_cohom_dc ) );
+true
+gap> UnderlyingMatrix( right_ev_dc ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_right_adjunction_on_id_cohom_cd ) );
+true
+
+gap> UnderlyingMatrix( right_ev_0a ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_right_adjunction_on_id_cohom_a0 ) );
+true
+gap> UnderlyingMatrix( right_ev_a0 ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_right_adjunction_on_id_cohom_0a ) );
+true
+
+# right_coev = coclcoev
+
+gap> UnderlyingMatrix( tensor_to_hom_right_adjunction_on_id_a_tensor_b ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_right_adjunction_on_id_a_tensor_b ) ); # a -> Hom( b, a x b )  ==  Tr( Cohom( a x b, b) -> a )
+true
+gap> UnderlyingMatrix( tensor_to_hom_right_adjunction_on_id_b_tensor_a ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_right_adjunction_on_id_b_tensor_a ) ); # b -> Hom( a, b x a )  ==  Tr( Cohom( b x a, a) -> b )
+true
+gap> UnderlyingMatrix( tensor_to_hom_right_adjunction_on_id_c_tensor_d ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_right_adjunction_on_id_c_tensor_d ) ); # c -> Hom( d, c x d )  ==  Tr( Cohom( d x c, c) -> d )
+true
+gap> UnderlyingMatrix( tensor_to_hom_right_adjunction_on_id_d_tensor_c ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_right_adjunction_on_id_d_tensor_c ) ); # d -> Hom( c, d x c )  ==  Tr( Cohom( c x d, d) -> c )
+true
+
+gap> UnderlyingMatrix( tensor_to_hom_right_adjunction_on_id_0_tensor_a ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_right_adjunction_on_id_0_tensor_a ) ); # 0 -> Hom( a, 0 x a )  ==  Tr( Cohom( 0 x a, a) -> 0 )
+true
+gap> UnderlyingMatrix( tensor_to_hom_right_adjunction_on_id_a_tensor_0 ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_right_adjunction_on_id_a_tensor_0 ) ); # a -> Hom( 0, a x 0 )  ==  Tr( Cohom( a x 0, 0) -> a )
+true
+
+gap> UnderlyingMatrix( right_coev_ab ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_right_adjunction_on_id_a_tensor_b ) );
+true
+gap> UnderlyingMatrix( right_coev_ba ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_right_adjunction_on_id_b_tensor_a ) );
+true
+gap> UnderlyingMatrix( right_coev_cd ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_right_adjunction_on_id_c_tensor_d ) );
+true
+gap> UnderlyingMatrix( right_coev_dc ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_right_adjunction_on_id_d_tensor_c ) );
+true
+
+gap> UnderlyingMatrix( right_coev_0a ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_right_adjunction_on_id_0_tensor_a ) );
+true
+gap> UnderlyingMatrix( right_coev_a0 ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_right_adjunction_on_id_a_tensor_0 ) );
+true
+
+# coclev = Transposed( ev ), arguments must be reversed for evaluations
+
+gap> UnderlyingMatrix( cohom_to_tensor_right_adjunction_on_id_cohom_ab ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_right_adjunction_on_id_hom_ba ) ); # a -> Cohom( a, b ) x b  ==  Tr( Hom( b, a ) x b -> a )
+true
+gap> UnderlyingMatrix( cohom_to_tensor_right_adjunction_on_id_cohom_ba ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_right_adjunction_on_id_hom_ab ) ); # b -> Cohom( b, a ) x a  ==  Tr( Hom( a, b ) x a -> b )
+true
+gap> UnderlyingMatrix( cohom_to_tensor_right_adjunction_on_id_cohom_cd ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_right_adjunction_on_id_hom_dc ) ); # c -> Cohom( c, d ) x d  ==  Tr( Hom( d, c ) x d -> c )
+true
+gap> UnderlyingMatrix( cohom_to_tensor_right_adjunction_on_id_cohom_dc ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_right_adjunction_on_id_hom_cd ) ); # d -> Cohom( d, c ) x c  ==  Tr( Hom( c, d ) x c -> d )
+true
+
+gap> UnderlyingMatrix( cohom_to_tensor_right_adjunction_on_id_cohom_0a ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_right_adjunction_on_id_hom_a0 ) ); # 0 -> Cohom( 0, a ) x a  ==  Tr( Hom( a, 0 ) x a -> 0 )
+true
+gap> UnderlyingMatrix( cohom_to_tensor_right_adjunction_on_id_cohom_a0 ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_right_adjunction_on_id_hom_0a ) ); # a -> Cohom( a, 0 ) x 0  ==  Tr( Hom( 0, a ) x 0 -> a )
+true
+
+gap> UnderlyingMatrix( right_cocl_ev_ba ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_right_adjunction_on_id_hom_ba ) );
+true
+gap> UnderlyingMatrix( right_cocl_ev_ab ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_right_adjunction_on_id_hom_ab ) );
+true
+gap> UnderlyingMatrix( right_cocl_ev_dc ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_right_adjunction_on_id_hom_dc ) );
+true
+gap> UnderlyingMatrix( right_cocl_ev_cd ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_right_adjunction_on_id_hom_cd ) );
+true
+
+gap> UnderlyingMatrix( right_cocl_ev_a0 ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_right_adjunction_on_id_hom_a0 ) );
+true
+gap> UnderlyingMatrix( right_cocl_ev_0a ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_right_adjunction_on_id_hom_0a ) );
+true
+
+# coclcoev = Transposed( right_coev )
+
+gap> UnderlyingMatrix( tensor_to_cohom_right_adjunction_on_id_a_tensor_b ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_right_adjunction_on_id_a_tensor_b ) ); # Cohom( a x b, b ) -> a  ==  Tr( a -> Hom( b, a x b ) )
+true
+gap> UnderlyingMatrix( tensor_to_cohom_right_adjunction_on_id_b_tensor_a ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_right_adjunction_on_id_b_tensor_a ) ); # Cohom( b x a, a ) -> b  ==  Tr( b -> Hom( a, b x a ) )
+true
+gap> UnderlyingMatrix( tensor_to_cohom_right_adjunction_on_id_c_tensor_d ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_right_adjunction_on_id_c_tensor_d ) ); # Cohom( c x d, d ) -> c  ==  Tr( c -> Hom( d, c x d ) )
+true
+gap> UnderlyingMatrix( tensor_to_cohom_right_adjunction_on_id_d_tensor_c ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_right_adjunction_on_id_d_tensor_c ) ); # Cohom( d x c, c ) -> d  ==  Tr( d -> Hom( c, d x c ) )
+true
+
+gap> UnderlyingMatrix( tensor_to_cohom_right_adjunction_on_id_0_tensor_a ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_right_adjunction_on_id_0_tensor_a ) ); # Cohom( 0 x a, a ) -> 0  ==  Tr( 0 -> Hom( a, 0 x a ) )
+true
+gap> UnderlyingMatrix( tensor_to_cohom_right_adjunction_on_id_a_tensor_0 ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_right_adjunction_on_id_a_tensor_0 ) ); # Cohom( a x 0, 0 ) -> a  ==  Tr( a -> Hom( 0, a x 0 ) )
+true
+
+gap> UnderlyingMatrix( right_cocl_coev_ab ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_right_adjunction_on_id_a_tensor_b ) );
+true
+gap> UnderlyingMatrix( right_cocl_coev_ba ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_right_adjunction_on_id_b_tensor_a ) );
+true
+gap> UnderlyingMatrix( right_cocl_coev_cd ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_right_adjunction_on_id_c_tensor_d ) );
+true
+gap> UnderlyingMatrix( right_cocl_coev_dc ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_right_adjunction_on_id_d_tensor_c ) );
+true
+
+gap> UnderlyingMatrix( right_cocl_coev_0a ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_right_adjunction_on_id_0_tensor_a ) );
+true
+gap> UnderlyingMatrix( right_cocl_coev_a0 ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_right_adjunction_on_id_a_tensor_0 ) );
+true
+
+#####################################################
+# Right adjunction maps on non-identities
+#####################################################
+
+gap> tensor_to_hom_right_adjunction_on_alpha_tensor_beta := TensorProductToInternalHomRightAdjunctionMap( a, c, alpha_tensor_beta );;
+gap> tensor_to_hom_right_adjunction_on_beta_tensor_alpha := TensorProductToInternalHomRightAdjunctionMap( c, a, beta_tensor_alpha );;
+gap> tensor_to_hom_right_adjunction_on_alpha_tensor_beta_transposed := TensorProductToInternalHomRightAdjunctionMap( a, c, alpha_tensor_beta_transposed );;
+gap> tensor_to_hom_right_adjunction_on_beta_tensor_alpha_transposed := TensorProductToInternalHomRightAdjunctionMap( c, a, beta_tensor_alpha_transposed );;
+
+gap> tensor_to_cohom_right_adjunction_on_alpha_tensor_beta := TensorProductToInternalCoHomRightAdjunctionMap( a, c, alpha_tensor_beta );;
+gap> tensor_to_cohom_right_adjunction_on_beta_tensor_alpha := TensorProductToInternalCoHomRightAdjunctionMap( c, a, beta_tensor_alpha );;
+gap> tensor_to_cohom_right_adjunction_on_alpha_tensor_beta_transposed := TensorProductToInternalCoHomRightAdjunctionMap( a, c, alpha_tensor_beta_transposed );;
+gap> tensor_to_cohom_right_adjunction_on_beta_tensor_alpha_transposed := TensorProductToInternalCoHomRightAdjunctionMap( c, a, beta_tensor_alpha_transposed );;
+
+gap> hom_to_tensor_right_adjunction_on_hom_alpha_beta := InternalHomToTensorProductRightAdjunctionMap( a, d, hom_alpha_beta );;
+gap> hom_to_tensor_right_adjunction_on_hom_beta_alpha := InternalHomToTensorProductRightAdjunctionMap( c, b, hom_beta_alpha );;
+gap> hom_to_tensor_right_adjunction_on_hom_alpha_beta_transposed := InternalHomToTensorProductRightAdjunctionMap( b, c, hom_alpha_beta_transposed );;
+gap> hom_to_tensor_right_adjunction_on_hom_beta_alpha_transposed := InternalHomToTensorProductRightAdjunctionMap( d, a, hom_beta_alpha_transposed );;
+
+gap> cohom_to_tensor_right_adjunction_on_cohom_alpha_beta := InternalCoHomToTensorProductRightAdjunctionMap( a, d, cohom_alpha_beta );;
+gap> cohom_to_tensor_right_adjunction_on_cohom_beta_alpha := InternalCoHomToTensorProductRightAdjunctionMap( c, b, cohom_beta_alpha );;
+gap> cohom_to_tensor_right_adjunction_on_cohom_alpha_beta_transposed := InternalCoHomToTensorProductRightAdjunctionMap( b, c, cohom_alpha_beta_transposed );;
+gap> cohom_to_tensor_right_adjunction_on_cohom_beta_alpha_transposed := InternalCoHomToTensorProductRightAdjunctionMap( d, a, cohom_beta_alpha_transposed );;
+
+# Correspondence on right adjunction maps on tensor products
+
+################################################
+#                                              #
+# alpha: a -> b                                #
+# beta:  c -> d                                #
+#                                              #
+# alpha_tensor_beta: a x c -> b x d            #
+# beta_tensor_alpha: c x a -> d x b            #
+#                                              #
+# alpha_transposed: b -> a                     #
+# beta_transposed:  d -> c                     #
+#                                              #
+# alpha_tensor_beta_transposed: b x d -> a x c #
+# beta_tensor_alpha_transposed: d x b -> c x a #
+#                                              #
+################################################
+
+gap> UnderlyingMatrix( tensor_to_hom_right_adjunction_on_alpha_tensor_beta ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_right_adjunction_on_alpha_tensor_beta_transposed ) ); # a -> Hom( c, b x d )  ==  Tr( Cohom( a x c, d ) -> b )
+true
+
+gap> UnderlyingMatrix( tensor_to_hom_right_adjunction_on_beta_tensor_alpha ) = TransposedMatrix( UnderlyingMatrix( tensor_to_cohom_right_adjunction_on_beta_tensor_alpha_transposed ) ); # c -> Hom( a, d x b )  ==  Tr( Cohom( d x b, a ) -> c )
+true
+
+gap> UnderlyingMatrix( tensor_to_cohom_right_adjunction_on_alpha_tensor_beta ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_right_adjunction_on_alpha_tensor_beta_transposed ) ); # Cohom( a x c, d ) -> b  ==  Tr( b -> Hom( d, a x c ) )
+true
+
+gap> UnderlyingMatrix( tensor_to_cohom_right_adjunction_on_beta_tensor_alpha ) = TransposedMatrix( UnderlyingMatrix( tensor_to_hom_right_adjunction_on_beta_tensor_alpha_transposed ) ); # Cohom( c x a, b ) -> d  ==  Tr( d -> Hom( b, c x a ) )
+true
+
+# Correspondence on right adjunction maps on internal (co)homs
+
+###############################################################
+#                                                             #
+# hom_alpha_beta: Hom( b, c ) -> Hom( a, d )                  #
+# hom_beta_alpha: Hom( d, a ) -> Hom( c, b )                  #
+#                                                             #
+# hom_alpha_beta_transposed: Hom( a, d ) -> Hom( b, c )       #
+# hom_beta_alpha_transposed: Hom( c, b ) -> Hom( d, a )       #
+#                                                             #
+###############################################################
+#                                                             #
+# cohom_alpha_beta: Cohom( a, d ) -> Cohom( b, c )            #
+# cohom_beta_alpha: Cohom( c, b ) -> Cohom( d, a )            #
+#                                                             #
+# cohom_alpha_beta_transposed: Cohom( b, c ) -> Cohom( a, d ) #
+# cohom_beta_alpha_transposed: Cohom( d, a ) -> Cohom( c, b ) #
+#                                                             #
+###############################################################
+
+gap> UnderlyingMatrix( hom_to_tensor_right_adjunction_on_hom_alpha_beta ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_right_adjunction_on_cohom_beta_alpha_transposed ) ); # Hom( b, c ) x a -> d  ==  Tr( d -> Cohom( c, b ) x a )
+true
+
+gap> UnderlyingMatrix( hom_to_tensor_right_adjunction_on_hom_beta_alpha ) = TransposedMatrix( UnderlyingMatrix( cohom_to_tensor_right_adjunction_on_cohom_alpha_beta_transposed ) ); # Hom( d, a ) x c -> b  ==  Tr( b -> Cohom( a, d ) x c )
+true
+
+gap> UnderlyingMatrix( cohom_to_tensor_right_adjunction_on_cohom_alpha_beta ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_right_adjunction_on_hom_beta_alpha_transposed ) ); # a -> Cohom( b, c ) x d  ==  Tr( Hom( c, b ) x d -> a )
+true
+
+gap> UnderlyingMatrix( cohom_to_tensor_right_adjunction_on_cohom_beta_alpha ) = TransposedMatrix( UnderlyingMatrix( hom_to_tensor_right_adjunction_on_hom_alpha_beta_transposed ) ); # c -> Cohom( d, a ) x b  ==  Tr( Hom( a, d ) x b -> c )
 true
 
 #####################################################
@@ -866,8 +1209,8 @@ gap> dual_id_b_tensor_a := DualOnMorphisms( id_b_tensor_a );;
 gap> dual_hom_alpha_beta := DualOnMorphisms( hom_alpha_beta );;
 gap> dual_hom_beta_alpha := DualOnMorphisms( hom_beta_alpha );;
 
-gap> dual_coev_ab := DualOnMorphisms( coev_ab );;
-gap> dual_coev_ba := DualOnMorphisms( coev_ba );;
+gap> dual_coev_ab := DualOnMorphisms( left_coev_ab );;
+gap> dual_coev_ba := DualOnMorphisms( left_coev_ba );;
 
 gap> codual_id_a_tensor_b := CoDualOnMorphisms( id_a_tensor_b );;
 gap> codual_id_b_tensor_a := CoDualOnMorphisms( id_b_tensor_a );;
@@ -875,8 +1218,8 @@ gap> codual_id_b_tensor_a := CoDualOnMorphisms( id_b_tensor_a );;
 gap> codual_cohom_alpha_beta := CoDualOnMorphisms( cohom_alpha_beta );;
 gap> codual_cohom_beta_alpha := CoDualOnMorphisms( cohom_beta_alpha );;
 
-gap> codual_cocl_coev_ab := CoDualOnMorphisms( cocl_coev_ab );;
-gap> codual_cocl_coev_ba := CoDualOnMorphisms( cocl_coev_ba );;
+gap> codual_cocl_coev_ab := CoDualOnMorphisms( left_cocl_coev_ab );;
+gap> codual_cocl_coev_ba := CoDualOnMorphisms( left_cocl_coev_ba );;
 
 # Correspondence on duals
 

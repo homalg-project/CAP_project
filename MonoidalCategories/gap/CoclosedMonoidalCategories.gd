@@ -115,7 +115,7 @@ DeclareOperation( "InternalCoHomToTensorProductRightAdjunctionMap",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
-#! The arguments are two objects $a,b$, a morphism $f: \mathrm{\underline{coHom}}(a,b) \rightarrow b$ and an object $t = b \otimes c$.
+#! The arguments are two objects $a,b$, a morphism $f: \mathrm{\underline{coHom}}(a,b) \rightarrow c$ and an object $t = b \otimes c$.
 #! The output is a morphism $g: a \rightarrow t$ corresponding to $f$ under the
 #! cohom tensor adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( a, t )$.

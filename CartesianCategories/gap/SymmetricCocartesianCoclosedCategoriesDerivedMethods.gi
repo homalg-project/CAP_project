@@ -8,6 +8,134 @@
 
 
 ##
+AddDerivationToCAP( CoproductToCoexponentialRightAdjunctionMapWithGivenCoexponential,
+                    "CoproductToCoexponentialRightAdjunctionMapWithGivenCoexponential using CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential and the braiding",
+                    [ [ Coproduct, 1 ],
+                      [ CocartesianBraidingWithGivenCoproducts, 1 ],
+                      [ PreCompose, 1 ],
+                      [ CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential, 1 ] ],
+                    
+  function( cat, b, c, g, i )
+    
+    ## Coexp( a, b ) = i → c
+    return CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential( cat,
+                   c,
+                   b,
+                   ## a → c ⊔ b
+                   PreCompose( cat,
+                           ## g: a → b ⊔ c
+                           g,
+                           ## b ⊔ c → c ⊔ b
+                           CocartesianBraidingWithGivenCoproducts( cat,
+                                   Range( g ),
+                                   b,
+                                   c,
+                                   BinaryCoproduct( cat, c, b ) ) ),
+                   ## Coexp( a, b )
+                   i );
+    
+end : CategoryFilter := IsCocartesianCoclosedCategory );
+
+##
+AddDerivationToCAP( CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential,
+                    "CoproductToCoexponentialLeftAdjunctionMapWithGivenCoexponential using CoproductToCoexponentialRightAdjunctionMapWithGivenCoexponential and the braiding",
+                    [ [ Coproduct, 1 ],
+                      [ CocartesianBraidingWithGivenCoproducts, 1 ],
+                      [ PreCompose, 1 ],
+                      [ CoproductToCoexponentialRightAdjunctionMapWithGivenCoexponential, 1 ] ],
+                    
+  function( cat, b, c, g, i )
+    
+    ## Coexp( a, c ) = i → b
+    return CoproductToCoexponentialRightAdjunctionMapWithGivenCoexponential( cat,
+                   c,
+                   b,
+                   ## a → c ⊔ b
+                   PreCompose( cat,
+                           ## g: a → b ⊔ c
+                           g,
+                           ## b ⊔ c → c ⊔ b
+                           CocartesianBraidingWithGivenCoproducts( cat,
+                                   Range( g ),
+                                   b,
+                                   c,
+                                   BinaryCoproduct( cat, c, b ) ) ),
+                   ## Coexp( a, c )
+                   i );
+    
+end : CategoryFilter := IsCocartesianCoclosedCategory );
+
+##
+AddDerivationToCAP( CoexponentialToCoproductRightAdjunctionMapWithGivenCoproduct,
+                    "CoexponentialToCoproductRightAdjunctionMapWithGivenCoproduct using CoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct and the braiding",
+                    [ [ Coproduct, 1 ],
+                      [ CocartesianBraidingInverseWithGivenCoproducts, 1 ],
+                      [ CoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct, 1 ],
+                      [ PreCompose, 1 ] ],
+                    
+  function( cat, a, b, f, t )
+    local c, c_tensor_b;
+    
+    ## f: Coexp(a,b) → c
+    c := Range( f );
+    
+    ## c ⊔ b
+    c_tensor_b := BinaryCoproduct( cat, c, b );
+    
+    ## a → b ⊔ c
+    return PreCompose( cat,
+                   ## a → c ⊔ b
+                   CoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct( cat,
+                           a,
+                           b,
+                           f,
+                           c_tensor_b ),
+                   ## c ⊔ b → b ⊔ c
+                   CocartesianBraidingInverseWithGivenCoproducts( cat,
+                           c_tensor_b,
+                           b,
+                           c,
+                           # b ⊔ c
+                           t ) );
+    
+end : CategoryFilter := IsCocartesianCoclosedCategory );
+
+##
+AddDerivationToCAP( CoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct,
+                    "CoexponentialToCoproductLeftAdjunctionMapWithGivenCoproduct using CoexponentialToCoproductRightAdjunctionMapWithGivenCoproduct and the braiding",
+                    [ [ Coproduct, 1 ],
+                      [ CocartesianBraidingInverseWithGivenCoproducts, 1 ],
+                      [ CoexponentialToCoproductRightAdjunctionMapWithGivenCoproduct, 1 ],
+                      [ PreCompose, 1 ] ],
+                    
+  function( cat, a, c, f, t )
+    local b, c_tensor_b;
+    
+    ## f: Coexp(a,c) → b
+    b := Range( f );
+    
+    ## c ⊔ b
+    c_tensor_b := BinaryCoproduct( cat, c, b );
+    
+    ## a → b ⊔ c
+    return PreCompose( cat,
+                   ## a → c ⊔ b
+                   CoexponentialToCoproductRightAdjunctionMapWithGivenCoproduct( cat,
+                           a,
+                           c,
+                           f,
+                           c_tensor_b ),
+                   ## c ⊔ b → b ⊔ c
+                   CocartesianBraidingInverseWithGivenCoproducts( cat,
+                           c_tensor_b,
+                           b,
+                           c,
+                           # b ⊔ c
+                           t ) );
+    
+end : CategoryFilter := IsCocartesianCoclosedCategory );
+
+##
 AddDerivationToCAP( MorphismFromCocartesianBidualWithGivenCocartesianBidual,
                     "MorphismFromCocartesianBidualWithGivenCocartesianBidual using the braiding and the universal property of the codual",
                     [ [ PreCompose, 1 ],

@@ -5,6 +5,132 @@
 #
 
 ##
+AddDerivationToCAP( TensorProductToInternalHomRightAdjunctionMapWithGivenInternalHom,
+                    "TensorProductToInternalHomRightAdjunctionMapWithGivenInternalHom using TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom and the braiding",
+                    [ [ TensorProductOnObjects, 1 ],
+                      [ BraidingInverseWithGivenTensorProducts, 1 ],
+                      [ PreCompose, 1 ],
+                      [ TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom, 1 ] ],
+                    
+  function( cat, a, b, f, i )
+    
+    ## b → i = Hom( a, c )
+    return TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom( cat,
+                   b,
+                   a,
+                   ## b ⊗ a → c
+                   PreCompose( cat,
+                           ## b ⊗ a → a ⊗ b
+                           BraidingInverseWithGivenTensorProducts( cat,
+                                   TensorProductOnObjects( cat, b, a ),
+                                   a,
+                                   b,
+                                   Source( f ) ),
+                           ## f: a ⊗ b → c
+                           f ),
+                   ## Hom( a, c )
+                   i );
+    
+end : CategoryFilter := IsSymmetricClosedMonoidalCategory );
+
+##
+AddDerivationToCAP( TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom,
+                    "TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom using TensorProductToInternalHomRightAdjunctionMapWithGivenInternalHom and the braiding",
+                    [ [ TensorProductOnObjects, 1 ],
+                      [ BraidingInverseWithGivenTensorProducts, 1 ],
+                      [ PreCompose, 1 ],
+                      [ TensorProductToInternalHomRightAdjunctionMapWithGivenInternalHom, 1 ] ],
+                    
+  function( cat, a, b, f, i )
+    
+    ## a → i = Hom( b, c )
+    return TensorProductToInternalHomRightAdjunctionMapWithGivenInternalHom( cat,
+                   b,
+                   a,
+                   ## b ⊗ a → c
+                   PreCompose( cat,
+                           ## b ⊗ a → a ⊗ b
+                           BraidingInverseWithGivenTensorProducts( cat,
+                                   TensorProductOnObjects( cat, b, a ),
+                                   a,
+                                   b,
+                                   Source( f ) ),
+                           ## f: a ⊗ b → c
+                           f ),
+                   ## Hom( b, c )
+                   i );
+    
+end : CategoryFilter := IsSymmetricClosedMonoidalCategory );
+
+##
+AddDerivationToCAP( InternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct,
+                    "InternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct using InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct and the braiding",
+                    [ [ TensorProductOnObjects, 1 ],
+                      [ BraidingWithGivenTensorProducts, 1 ],
+                      [ InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct, 1 ],
+                      [ PreCompose, 1 ] ],
+                    
+  function( cat, a, c, g, s )
+    local b, b_tensor_a;
+    
+    ## g: b → Hom(a,c)
+    b := Source( g );
+    
+    ## b ⊗ a
+    b_tensor_a := TensorProductOnObjects( cat, b, a );
+    
+    ## a ⊗ b → c
+    return PreCompose( cat,
+                   ## a ⊗ b → b ⊗ a
+                   BraidingWithGivenTensorProducts( cat,
+                           s, # a ⊗ b
+                           a,
+                           b,
+                           b_tensor_a ),
+                   ## b ⊗ a → c
+                   InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct( cat,
+                           a,
+                           c,
+                           g,
+                           b_tensor_a ) );
+    
+end : CategoryFilter := IsSymmetricClosedMonoidalCategory );
+
+##
+AddDerivationToCAP( InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct,
+                    "InternalHomToTensorProductLeftAdjunctionMapWithGivenTensorProduct using InternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct and the braiding",
+                    [ [ TensorProductOnObjects, 1 ],
+                      [ BraidingWithGivenTensorProducts, 1 ],
+                      [ InternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct, 1 ],
+                      [ PreCompose, 1 ] ],
+                    
+  function( cat, b, c, g, s )
+    local a, b_tensor_a;
+
+    ## g: a → Hom(b,c)
+    a := Source( g );
+    
+    ## b ⊗ a
+    b_tensor_a := TensorProductOnObjects( cat, b, a );
+    
+    ## a ⊗ b → c
+    return PreCompose( cat,
+                   ## a ⊗ b → b ⊗ a
+                   BraidingWithGivenTensorProducts( cat,
+                           s, # a ⊗ b
+                           a,
+                           b,
+                           b_tensor_a ),
+                   ## b ⊗ a → c
+                   InternalHomToTensorProductRightAdjunctionMapWithGivenTensorProduct( cat,
+                           b,
+                           c,
+                           g,
+                           b_tensor_a ) );
+    
+end : CategoryFilter := IsSymmetricClosedMonoidalCategory );
+
+##
 AddDerivationToCAP( MorphismToBidualWithGivenBidual,
                     "MorphismToBidualWithGivenBidual using the braiding and the universal property of the dual",
                     [ [ PreCompose, 1 ],
