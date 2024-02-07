@@ -337,9 +337,9 @@
   [33X[0;0YThe  arguments  are a matrix [23XM[123X and an integer [23Xn[123X. The output is a matrix [23XN[123X in
   [23XQ[\epsilon][123X. Substituting an [23Xn[123X-th root of unity for [23X\epsilon[123X in [23XN[123X yields [23XM[123X.[133X
   
-  [1X1.5-9 InternalHomToTensorProductAdjunctionMapTemp[101X
+  [1X1.5-9 InternalHomToTensorProductAdjunctMorphismTemp[101X
   
-  [33X[1;0Y[29X[2XInternalHomToTensorProductAdjunctionMapTemp[102X( [3Xb[103X, [3Xc[103X, [3Xg[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XInternalHomToTensorProductAdjunctMorphismTemp[102X( [3Xb[103X, [3Xc[103X, [3Xg[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \otimes b, c)[123X.[133X
   
   [33X[0;0YThe   arguments   are   objects   [23Xb,c[123X   and  a  morphism  [23Xg:  a  \rightarrow

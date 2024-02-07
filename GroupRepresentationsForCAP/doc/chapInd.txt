@@ -42,7 +42,7 @@
       for IsGroup, IsList, IsBool 1.4-5 
   [2XInitializeGroupDataDixon[102X, for IsGroup 1.4-3 
       for IsGroup, IsBool 1.4-4 
-  [2XInternalHomToTensorProductAdjunctionMapTemp[102X, for IsVectorSpaceObject, IsVectorSpaceObject, IsVectorSpaceMorphism 1.5-9 
+  [2XInternalHomToTensorProductAdjunctMorphismTemp[102X, for IsVectorSpaceObject, IsVectorSpaceObject, IsVectorSpaceMorphism 1.5-9 
   [2XIsSemisimpleCategoryMorphism[102X, for IsCapCategoryMorphism and IsCellOfSkeletalCategory 2.5-1 
   [2XIsSemisimpleCategoryObject[102X, for IsCapCategoryObject and IsCellOfSkeletalCategory 2.5-2 
   [2XIsYieldingIdentities[102X, for IsGIrreducibleObject 3.4-1 

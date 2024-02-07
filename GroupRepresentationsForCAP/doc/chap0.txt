@@ -6,10 +6,10 @@
               [1X Skeletal category of group representations for CAP [101X
   
   
-                                   2024.01-02
+                                   2024.02-01
   
   
-                                22 January 2024
+                                7 February 2024
   
   
                                 Sebastian Posur
@@ -67,7 +67,7 @@
       1.5-6 AffordAllIrreducibleRepresentationsDixon
       1.5-7 DefaultFieldForListOfRepresentations
       1.5-8 RewriteMatrixInCyclotomicGenerator
-      1.5-9 InternalHomToTensorProductAdjunctionMapTemp
+      1.5-9 InternalHomToTensorProductAdjunctMorphismTemp
       1.5-10 HomalgMatrixAsString
       1.5-11 DataFromSkeletalFunctorTensorDataAsStringList
       1.5-12 AsVectorSpaceMorphism
