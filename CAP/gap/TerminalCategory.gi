@@ -54,7 +54,12 @@ InstallGlobalFunction( CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY,
         if info.return_type = "bool" then
             Add( skip, operation_name );
         fi;
-      
+        
+        # Do not install operations returning a list of objects since the length of the list is unknown to us
+        if info.return_type = "list_of_objects" then
+            Add( skip, operation_name );
+        fi;
+        
     od;
     
     list_of_operations_to_install := Difference( list_of_operations_to_install, skip );
