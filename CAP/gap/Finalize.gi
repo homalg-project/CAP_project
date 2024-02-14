@@ -57,73 +57,16 @@ end );
 
 InstallGlobalFunction( AddFinalDerivation,
                
-  function( target_op, args... )
-    local description, can_compute, cannot_compute, func, additional_functions;
+  function( target_op, description, can_compute, cannot_compute, func )
     
-    if IsString( args[1] ) then
-        
-        if ValueOption( "Description" ) <> fail then
-            
-            Error( "passing the description both as an argument and as an option at the same time is not supported" );
-            
-        fi;
-        
-        description := args[1];
-        can_compute := args[2];
-        cannot_compute := args[3];
-        func := args[4];
-        additional_functions := args{[ 5 .. Length( args ) ]};
-        
-    else
-        
-        Print( "WARNING: Calling AddFinalDerivation without a description as the second argument is deprecated and will not be supported after 2024.03.31.\n" );
-        
-        description := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Description", "" );
-        can_compute := args[1];
-        cannot_compute := args[2];
-        func := args[3];
-        additional_functions := args{[ 4 .. Length( args ) ]};
-        
-    fi;
-    
-    if not IsEmpty( additional_functions ) then
-        
-        Display( "WARNING: AddFinalDerivation with additional functions is deprecated and will not be supported after 2023.10.28. Please use AddFinalDerivationBundle instead." );
-        
-    fi;
-    
-    CallFuncList( AddFinalDerivationBundle, Concatenation( [ description, can_compute, cannot_compute, [ target_op, can_compute, func ] ], additional_functions ) : Description := fail );
+    AddFinalDerivationBundle( description, can_compute, cannot_compute, [ target_op, can_compute, func ] );
     
 end );
 
 InstallGlobalFunction( AddFinalDerivationBundle,
                
-  function( args... )
-    local description, can_compute, cannot_compute, additional_functions, weight, category_filter, loop_multiplier, category_getters, function_called_before_installation, operations_in_graph, operations_to_install, union_of_collected_lists, derivations, used_op_names_with_multiples_and_category_getters, collected_list, dummy_func, dummy_derivation, final_derivation, i, current_additional_func, x;
-    
-    if IsString( args[1] ) then
-        
-        if ValueOption( "Description" ) <> fail then
-            
-            Error( "passing the description both as an argument and as an option at the same time is not supported" );
-            
-        fi;
-        
-        description := args[1];
-        can_compute := args[2];
-        cannot_compute := args[3];
-        additional_functions := args{[ 4 .. Length( args ) ]};
-        
-    else
-        
-        Print( "WARNING: Calling AddFinalDerivationBundle without a description as the first argument is deprecated and will not be supported after 2024.03.31.\n" );
-        
-        description := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Description", "" );
-        can_compute := args[1];
-        cannot_compute := args[2];
-        additional_functions := args{[ 3 .. Length( args ) ]};
-        
-    fi;
+  function( description, can_compute, cannot_compute, additional_functions... )
+    local weight, category_filter, loop_multiplier, category_getters, function_called_before_installation, operations_in_graph, operations_to_install, union_of_collected_lists, derivations, used_op_names_with_multiples_and_category_getters, collected_list, dummy_func, dummy_derivation, final_derivation, i, current_additional_func, x;
     
     if IsEmpty( additional_functions ) then
         

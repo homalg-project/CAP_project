@@ -1280,20 +1280,11 @@ DeclareOperation( "MorphismsOfExternalHom",
 #! The output is a list $L$ of morphisms which is a basis of $\mathrm{Hom}_{C}(a,b)$ in
 #! the sense that any given morphism $\alpha: a \to b$ can uniquely be written as a
 #! linear combination of $L$ with the coefficients in
-#! <C>CoefficientsOfMorphismWithGivenBasisOfExternalHom</C>($\alpha,L$).
+#! <C>CoefficientsOfMorphism</C>($\alpha$).
 #! @Returns a list of morphisms in $\mathrm{Hom}_{C}(a,b)$
 #! @Arguments a, b
 DeclareOperation( "BasisOfExternalHom",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
-
-#! @Description
-#! The arguments are a morphism  $\alpha: a \to b$ in a $k$-linear category $C$ and
-#! a list <A>L</A><C>=BasisOfExternalHom</C>($a,b$).
-#! The output is a list of coefficients of $\alpha$ with respect to $L$.
-#! @Returns a list of elements in $k$
-#! @Arguments alpha, L
-DeclareOperation( "CoefficientsOfMorphismWithGivenBasisOfExternalHom",
-                  [ IsCapCategoryMorphism, IsList ] );
 
 #! @Description
 #! This is a convenience method.

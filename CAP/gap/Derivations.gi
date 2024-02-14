@@ -238,53 +238,11 @@ function( G, d )
   
 end );
 
-InstallOtherMethod( AddDerivation,
-               [ IsDerivedMethodGraph, IsFunction, IsFunction ],
-               
-  function( graph, target_op, func )
-    local loop_multiplier, category_getters, operations_in_graph, collected_list;
-    
-    Print( "WARNING: a derivation for ", NameFunction( target_op ), " has no explicit preconditions. Calling AddDerivation without explicit preconditions is deprecated and will not be supported after 2024.03.31.\n" );
-    
-    loop_multiplier := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "WeightLoopMultiple", 2 );
-    category_getters := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryGetters", rec( ) );
-    
-    operations_in_graph := Operations( graph );
-    
-    collected_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( func, operations_in_graph, loop_multiplier, CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS, category_getters );
-    
-    AddDerivation( graph, target_op, collected_list, func );
-    
-end );
-
-InstallOtherMethod( AddDerivation,
-               [ IsDerivedMethodGraph, IsFunction, IsList, IsFunction ],
-               
-  function( graph, target_op, used_ops_with_multiples_and_category_getters, func )
-    
-    if IsStringRep( used_ops_with_multiples_and_category_getters ) or (IsString( used_ops_with_multiples_and_category_getters ) and not IsEmpty( used_ops_with_multiples_and_category_getters )) then
-        
-        Error( "calling AddDerivation with a description as the second argument but without explicit preconditions is not supported." );
-        
-    fi;
-    
-    Print( "WARNING: Calling AddDerivation without a description as the second argument is deprecated and will not be supported after 2024.03.31.\n" );
-    
-    AddDerivation( graph, target_op, CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Description", "" ), used_ops_with_multiples_and_category_getters, func : Description := fail );
-    
-end );
-
 InstallMethod( AddDerivation,
                [ IsDerivedMethodGraph, IsFunction, IsString, IsDenseList, IsFunction ],
                
   function( graph, target_op, description, used_ops_with_multiples_and_category_getters, func )
     local weight, category_filter, loop_multiplier, category_getters, function_called_before_installation, operations_in_graph, collected_list, used_op_names_with_multiples_and_category_getters, derivation, x;
-    
-    if ValueOption( "Description" ) <> fail then
-        
-        Error( "passing the description both as an argument and as an option at the same time is not supported" );
-        
-    fi;
     
     # When compiling categories, a derivation does not cause overhead anymore, so we would like to simply set `Weight` to 0.
     # However, the weight 1 is currently needed to prevent the installation of cyclic derivations.
@@ -377,22 +335,6 @@ InstallGlobalFunction( AddDerivationToCAP,
     list := Concatenation( [ CAP_INTERNAL_DERIVATION_GRAPH ], arg );
     
     CallFuncList( AddDerivation, list );
-    
-end );
-
-InstallGlobalFunction( AddWithGivenDerivationPairToCAP,
-  
-  function( target_op, without_given_func, with_given_func )
-    local without_given_name, with_given_name;
-    
-    Print( "WARNING: AddWithGivenDerivationPairToCAP is deprecated and will not be supported after 2024.03.31. Please use AddDerivationToCAP twice instead.\n" );
-    
-    without_given_name := NameFunction( target_op );
-    
-    with_given_name := CAP_INTERNAL_METHOD_NAME_RECORD.(without_given_name).with_given_without_given_name_pair[2];
-    
-    AddDerivationToCAP( target_op, without_given_func );
-    AddDerivationToCAP( ValueGlobal( with_given_name ), with_given_func );
     
 end );
 

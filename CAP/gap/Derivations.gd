@@ -168,9 +168,6 @@ DeclareOperation( "AddDerivation", [ IsDerivedMethodGraph, IsFunction, IsString,
 #!
 DeclareGlobalFunction( "AddDerivationToCAP" );
 
-#!
-DeclareGlobalFunction( "AddWithGivenDerivationPairToCAP" );
-
 #! @Description
 #!  Gives the operations in the graph <A>G</A>, as a list of strings.
 #! @Arguments G
