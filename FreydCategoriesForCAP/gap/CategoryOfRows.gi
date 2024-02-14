@@ -555,10 +555,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
         dim_factor := RankOfObject( object_list[ projection_number ] );
         
-        projection_in_factor := UnionOfRows( HomalgZeroMatrix( dim_pre, dim_factor, ring ),
+        projection_in_factor := UnionOfRows( ring, dim_factor, [
+                                             HomalgZeroMatrix( dim_pre, dim_factor, ring ),
                                              HomalgIdentityMatrix( dim_factor, ring ),
                                              HomalgZeroMatrix( dim_post, dim_factor, ring )
-                                           );
+                                           ] );
         
         return CategoryOfRowsMorphism( cat, direct_sum_object, projection_in_factor, object_list[ projection_number ] );
         
@@ -593,10 +594,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
         dim_cofactor := RankOfObject( object_list[ injection_number ] );
         
-        injection_of_cofactor := UnionOfColumns( HomalgZeroMatrix( dim_cofactor, dim_pre ,ring ),
+        injection_of_cofactor := UnionOfColumns( ring, dim_cofactor, [
+                                                 HomalgZeroMatrix( dim_cofactor, dim_pre ,ring ),
                                                  HomalgIdentityMatrix( dim_cofactor, ring ),
                                                  HomalgZeroMatrix( dim_cofactor, dim_post, ring )
-                                               );
+                                               ] );
         
         return CategoryOfRowsMorphism( cat, object_list[ injection_number ], injection_of_cofactor, coproduct );
 

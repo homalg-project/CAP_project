@@ -420,7 +420,7 @@ function ( cat_1, objects_1, k_1, P_1 )
             return AsInteger( Opposite( x_2 ) );
         end );
     deduped_1_1 := deduped_2_1[k_1];
-    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_3_1, P_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), Opposite( P_1 ), UnionOfRows( HomalgZeroMatrix( Sum( deduped_2_1{[ 1 .. k_1 - 1 ]} ), deduped_1_1, deduped_4_1 ), HomalgIdentityMatrix( deduped_1_1, deduped_4_1 ), HomalgZeroMatrix( Sum( deduped_2_1{[ k_1 + 1 .. Length( objects_1 ) ]} ), deduped_1_1, deduped_4_1 ) ), CAP_JIT_INCOMPLETE_LOGIC( Opposite( CAP_JIT_INCOMPLETE_LOGIC( deduped_3_1 ) ) ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_3_1, P_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), Opposite( P_1 ), UnionOfRows( deduped_4_1, deduped_1_1, [ HomalgZeroMatrix( Sum( deduped_2_1{[ 1 .. k_1 - 1 ]} ), deduped_1_1, deduped_4_1 ), HomalgIdentityMatrix( deduped_1_1, deduped_4_1 ), HomalgZeroMatrix( Sum( deduped_2_1{[ k_1 + 1 .. Length( objects_1 ) ]} ), deduped_1_1, deduped_4_1 ) ] ), CAP_JIT_INCOMPLETE_LOGIC( Opposite( CAP_JIT_INCOMPLETE_LOGIC( deduped_3_1 ) ) ) ) );
 end
 ########
         
@@ -772,7 +772,7 @@ function ( cat_1, objects_1, k_1, P_1 )
             return AsInteger( Opposite( x_2 ) );
         end );
     deduped_1_1 := deduped_2_1[k_1];
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, deduped_3_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), CAP_JIT_INCOMPLETE_LOGIC( Opposite( CAP_JIT_INCOMPLETE_LOGIC( deduped_3_1 ) ) ), UnionOfColumns( HomalgZeroMatrix( deduped_1_1, Sum( deduped_2_1{[ 1 .. k_1 - 1 ]} ), deduped_4_1 ), HomalgIdentityMatrix( deduped_1_1, deduped_4_1 ), HomalgZeroMatrix( deduped_1_1, Sum( deduped_2_1{[ k_1 + 1 .. Length( objects_1 ) ]} ), deduped_4_1 ) ), Opposite( P_1 ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, deduped_3_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), CAP_JIT_INCOMPLETE_LOGIC( Opposite( CAP_JIT_INCOMPLETE_LOGIC( deduped_3_1 ) ) ), UnionOfColumns( deduped_4_1, deduped_1_1, [ HomalgZeroMatrix( deduped_1_1, Sum( deduped_2_1{[ 1 .. k_1 - 1 ]} ), deduped_4_1 ), HomalgIdentityMatrix( deduped_1_1, deduped_4_1 ), HomalgZeroMatrix( deduped_1_1, Sum( deduped_2_1{[ k_1 + 1 .. Length( objects_1 ) ]} ), deduped_4_1 ) ] ), Opposite( P_1 ) ) );
 end
 ########
         
