@@ -39,7 +39,7 @@ DeclareCategory( "IsDerivedMethod", IsAttributeStoringRep );
 #!  The argument <A>name</A> is an arbitrary name used to
 #!  identify this derivation, and is useful only for debugging
 #!  purposes.
-#!  The argument <A>target_op</A> is the operation which
+#!  The argument <A>target_op_name</A> is the name of the operation which
 #!  the derived method implements.
 #!  The argument <A>used_ops_with_multiples</A> contains
 #!  
@@ -68,7 +68,7 @@ DeclareCategory( "IsDerivedMethod", IsAttributeStoringRep );
 #!  not rely on `CanCompute` to check conditions.
 #! @Arguments name, target_op, used_ops_with_multiples, weight, func, category_filter
 DeclareOperation( "MakeDerivation",
-                  [ IsString, IsFunction, IsDenseList,
+                  [ IsString, IsString, IsDenseList,
                     IsPosInt, IsFunction, IsFunction ] );
 
 #! @Description
@@ -159,10 +159,7 @@ DeclareOperation( "AddOperationsToDerivationGraph", [ IsDerivedMethodGraph, IsDe
 
 #! @Description
 #!  Add a derivation to a derivation graph.
-#! @Arguments G, d
-DeclareOperation( "AddDerivation", [ IsDerivedMethodGraph, IsDerivedMethod ] );
-
-#!
+#! @Arguments graph, target_op, description, used_ops_with_multiples_and_category_getters, func
 DeclareOperation( "AddDerivation", [ IsDerivedMethodGraph, IsFunction, IsString, IsDenseList, IsFunction ] );
 
 #!

@@ -30,15 +30,15 @@ InstallGlobalFunction( "DeactivateDerivationInfo",
 end );
 
 InstallMethod( MakeDerivation,
-               [ IsString, IsFunction, IsDenseList, IsPosInt, IsFunction, IsFunction ],
+               [ IsString, IsString, IsDenseList, IsPosInt, IsFunction, IsFunction ],
                
-function( name, target_op, used_op_names_with_multiples_and_category_getters, weight, func, category_filter )
+function( name, target_op_name, used_op_names_with_multiples_and_category_getters, weight, func, category_filter )
   local wrapped_category_filter, derivation;
     
     #= comment for Julia
     if PositionSublist( String( category_filter ), "CanCompute" ) <> fail then
         
-        Print( "WARNING: The CategoryFilter of a derivation for ", NameFunction( target_op ), " uses `CanCompute`. Please register all preconditions explicitly.\n" );
+        Print( "WARNING: The CategoryFilter of a derivation for ", target_op_name, " uses `CanCompute`. Please register all preconditions explicitly.\n" );
         
     fi;
     # =#
@@ -51,7 +51,7 @@ function( name, target_op, used_op_names_with_multiples_and_category_getters, we
     
     if ForAny( used_op_names_with_multiples_and_category_getters, x -> x[3] <> fail ) and category_filter = IsCapCategory then
         
-        Print( "WARNING: A derivation for ", NameFunction( target_op ), " depends on other categories (e.g. RangeCategoryOfHomomorphismStructure) but does no test via the CategoryFilter if the other categories are available (e.g. by testing HasRangeCategoryOfHomomorphismStructure).\n" );
+        Print( "WARNING: A derivation for ", target_op_name, " depends on other categories (e.g. RangeCategoryOfHomomorphismStructure) but does no test via the CategoryFilter if the other categories are available (e.g. by testing HasRangeCategoryOfHomomorphismStructure).\n" );
         
     fi;
     
@@ -76,7 +76,7 @@ function( name, target_op, used_op_names_with_multiples_and_category_getters, we
         DerivationWeight, weight,
         DerivationFunction, func,
         CategoryFilter, wrapped_category_filter,
-        TargetOperation, NameFunction( target_op ),
+        TargetOperation, target_op_name,
         UsedOperationsWithMultiplesAndCategoryGetters, used_op_names_with_multiples_and_category_getters
     );
     
@@ -194,55 +194,10 @@ function( G )
 end );
 
 InstallMethod( AddDerivation,
-               [ IsDerivedMethodGraph, IsDerivedMethod ],
-function( G, d )
-  local method_name, filter_list, number_of_proposed_arguments, current_function_argument_number, target_op, x;
-  
-  if IsIdenticalObj( G, CAP_INTERNAL_DERIVATION_GRAPH ) then
-    
-    method_name := TargetOperation( d );
-    
-    if not IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(method_name) ) then
-        
-        Error( "trying to add a derivation to CAP_INTERNAL_DERIVATION_GRAPH for a method not in CAP_INTERNAL_METHOD_NAME_RECORD" );
-        
-    fi;
-    
-    filter_list := CAP_INTERNAL_METHOD_NAME_RECORD.(method_name).filter_list;
-    
-    number_of_proposed_arguments := Length( filter_list );
-    
-    current_function_argument_number := NumberArgumentsFunction( DerivationFunction( d ) );
-    
-    if current_function_argument_number >= 0 and current_function_argument_number <> number_of_proposed_arguments then
-        Error( "While adding a derivation for ", method_name, ": given function has ", String( current_function_argument_number ),
-               " arguments but should have ", String( number_of_proposed_arguments ) );
-    fi;
-    
-  fi;
-  
-  target_op := TargetOperation( d );
-  
-  Add( G!.derivations_by_target.( target_op ), d );
-  for x in UsedOperationsWithMultiplesAndCategoryGetters( d ) do
-    # We add all operations, even those with category getters: In case the category getter
-    # returns the category itself, this allows to recursively trigger derivations correctly.
-    Add( G!.derivations_by_used_ops.( x[1] ), d );
-  od;
-  
-  if IsEmpty( UsedOperationsWithMultiplesAndCategoryGetters( d ) ) then
-    
-    Add( G!.derivations_by_used_ops.none, d );
-    
-  fi;
-  
-end );
-
-InstallMethod( AddDerivation,
                [ IsDerivedMethodGraph, IsFunction, IsString, IsDenseList, IsFunction ],
                
   function( graph, target_op, description, used_ops_with_multiples_and_category_getters, func )
-    local weight, category_filter, loop_multiplier, category_getters, function_called_before_installation, operations_in_graph, collected_list, used_op_names_with_multiples_and_category_getters, derivation, x;
+    local weight, category_filter, loop_multiplier, category_getters, function_called_before_installation, target_op_name, operations_in_graph, used_op_names_with_multiples_and_category_getters, collected_list, derivation, x;
     
     # When compiling categories, a derivation does not cause overhead anymore, so we would like to simply set `Weight` to 0.
     # However, the weight 1 is currently needed to prevent the installation of cyclic derivations.
@@ -251,6 +206,8 @@ InstallMethod( AddDerivation,
     loop_multiplier := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "WeightLoopMultiple", 2 );
     category_getters := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryGetters", rec( ) );
     function_called_before_installation := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "FunctionCalledBeforeInstallation", false );
+    
+    target_op_name := NameFunction( target_op );
     
     ## get used ops
     operations_in_graph := Operations( graph );
@@ -267,7 +224,7 @@ InstallMethod( AddDerivation,
         
         if (Length( x ) = 2 or (Length( x ) = 3 and x[3] = fail)) and x[1] = target_op then
             
-            Error( "A derivation for ", NameFunction( target_op ), " has itself as a precondition. This is not supported because we cannot compute a well-defined weight.\n" );
+            Error( "A derivation for ", target_op_name, " has itself as a precondition. This is not supported because we cannot compute a well-defined weight.\n" );
             
         fi;
         
@@ -302,7 +259,7 @@ InstallMethod( AddDerivation,
         SortBy( collected_list, x -> x[1] );
         
         Print(
-            "WARNING: You have installed a derivation for ", NameFunction( target_op ), " with preconditions ", used_op_names_with_multiples_and_category_getters,
+            "WARNING: You have installed a derivation for ", target_op_name, " with preconditions ", used_op_names_with_multiples_and_category_getters,
             " but the automated detection has detected the following list of preconditions: ", collected_list, ".\n",
             "If this is a bug in the automated detection, please report it.\n"
         );
@@ -311,7 +268,7 @@ InstallMethod( AddDerivation,
     # =#
     
     derivation := MakeDerivation( description,
-                                  target_op,
+                                  target_op_name,
                                   used_op_names_with_multiples_and_category_getters,
                                   weight,
                                   func,
@@ -323,18 +280,47 @@ InstallMethod( AddDerivation,
         
     fi;
     
-    AddDerivation( graph, derivation );
+    Add( graph!.derivations_by_target.(target_op_name), derivation );
+    
+    for x in used_op_names_with_multiples_and_category_getters do
+        # We add all operations, even those with category getters: In case the category getter
+        # returns the category itself, this allows to recursively trigger derivations correctly.
+        Add( graph!.derivations_by_used_ops.(x[1]), derivation );
+    od;
+    
+    if IsEmpty( used_op_names_with_multiples_and_category_getters ) then
+        
+        Add( graph!.derivations_by_used_ops.none, derivation );
+        
+    fi;
     
 end );
 
 InstallGlobalFunction( AddDerivationToCAP,
   
-  function( arg )
-    local list;
+  function( target_op, description, used_ops_with_multiples_and_category_getters, func )
+    local method_name, filter_list, number_of_proposed_arguments, current_function_argument_number;
     
-    list := Concatenation( [ CAP_INTERNAL_DERIVATION_GRAPH ], arg );
+    method_name := NameFunction( target_op );
     
-    CallFuncList( AddDerivation, list );
+    if not IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(method_name) ) then
+        
+        Error( "trying to add a derivation to CAP_INTERNAL_DERIVATION_GRAPH for a method not in CAP_INTERNAL_METHOD_NAME_RECORD" );
+        
+    fi;
+    
+    filter_list := CAP_INTERNAL_METHOD_NAME_RECORD.(method_name).filter_list;
+    
+    number_of_proposed_arguments := Length( filter_list );
+    
+    current_function_argument_number := NumberArgumentsFunction( func );
+    
+    if current_function_argument_number >= 0 and current_function_argument_number <> number_of_proposed_arguments then
+        Error( "While adding a derivation for ", method_name, ": given function has ", String( current_function_argument_number ),
+               " arguments but should have ", String( number_of_proposed_arguments ) );
+    fi;
+    
+    AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH, target_op, description, used_ops_with_multiples_and_category_getters, func );
     
 end );
 
