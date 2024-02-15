@@ -19,8 +19,8 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsEquippedWithHomomorphismStructure 
     [
         "DistinguishedObjectOfHomomorphismStructure",
         "HomomorphismStructureOnObjects",
-        "HomomorphismStructureOnMorphisms",
-        "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
+        "HomomorphismStructureOnMorphismsWithGivenObjects",
+        "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects",
         "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
     ]
 );
