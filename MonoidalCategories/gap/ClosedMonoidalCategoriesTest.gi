@@ -293,9 +293,6 @@ InstallGlobalFunction( "ClosedMonoidalCategoriesTest",
             # hom_alpha_beta: Hom( b, c ) → Hom( a, d )
             # hom_beta_alpha: Hom( d, a ) → Hom( c, b )
             #
-            # hom_alpha_beta_op: Hom( a, d ) → Hom( b, c )
-            # hom_beta_alpha_op: Hom( c, b ) → Hom( d, a )
-            #
             #####################################################
             #
             # cohom_alpha_beta: coHom( a, d ) → coHom( b, c )
