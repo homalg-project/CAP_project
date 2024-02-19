@@ -4,6 +4,59 @@
 # Implementations
 #
 
+##
+InstallGlobalFunction( "FunctionWithNamedArguments", function ( specification, func )
+    
+    Assert( 0, IsList( specification ) );
+    Assert( 0, IsFunction( func ) );
+    Assert( 0, ForAll( specification, x -> IsList( x ) and Length( x ) = 2 and IsString( x[1] ) and not IsMutable( x[2] ) ) );
+    Assert( 0, NumberArgumentsFunction( func ) >= 1 or NumberArgumentsFunction( func ) <= -2 );
+    Assert( 0, NamesLocalVariablesFunction( func )[1] = "CAP_NAMED_ARGUMENTS" );
+    
+    return function ( args... )
+      local CAP_NAMED_ARGUMENTS, current_options, result, s;
+        
+        CAP_NAMED_ARGUMENTS := rec( );
+        
+        if IsEmpty( OptionsStack ) then
+            
+            current_options := rec( );
+            
+        else
+            
+            current_options := Last( OptionsStack );
+            
+        fi;
+        
+        for s in specification do
+            
+            if IsBound( current_options.(s[1]) ) then
+                
+                CAP_NAMED_ARGUMENTS.(s[1]) := current_options.(s[1]);
+                Unbind( current_options.(s[1]) );
+                
+            else
+                
+                CAP_NAMED_ARGUMENTS.(s[1]) := s[2];
+                
+            fi;
+            
+        od;
+        
+        result := CallFuncListWrap( func, Concatenation( [ CAP_NAMED_ARGUMENTS ], args ) );
+        
+        if Length( result ) = 1 then
+            
+            return result[1];
+            
+        fi;
+        
+        Assert( 0, Length( result ) = 0 );
+        
+    end;
+    
+end );
+
 #####################################
 ##
 ## Install add
@@ -1541,8 +1594,12 @@ InstallGlobalFunction( TransposedMatWithGivenDimensions, function ( nr_rows, nr_
 end );
 
 ##
-InstallGlobalFunction( HandlePrecompiledTowers, function ( category, underlying_category, constructor_name )
-  local precompiled_towers, remaining_constructors_in_tower, precompiled_functions_adder, info;
+InstallGlobalFunction( HandlePrecompiledTowers, FunctionWithNamedArguments(
+  [
+    [ "no_precompiled_code", false ],
+  ],
+  function ( CAP_NAMED_ARGUMENTS, category, underlying_category, constructor_name )
+    local precompiled_towers, remaining_constructors_in_tower, precompiled_functions_adder, info;
     
     if not IsBound( underlying_category!.compiler_hints ) or not IsBound( underlying_category!.compiler_hints.precompiled_towers ) then
         
@@ -1589,7 +1646,7 @@ InstallGlobalFunction( HandlePrecompiledTowers, function ( category, underlying_
             
             if Length( remaining_constructors_in_tower ) = 1 then
                 
-                if ValueOption( "no_precompiled_code" ) <> true then
+                if not CAP_NAMED_ARGUMENTS.no_precompiled_code then
                     
                     # add precompiled functions
                     CallFuncList( precompiled_functions_adder, [ category ] );
@@ -1631,7 +1688,7 @@ InstallGlobalFunction( HandlePrecompiledTowers, function ( category, underlying_
     # return void for Julia
     return;
     
-end );
+end ) );
 
 InstallGlobalFunction( CAP_JIT_INCOMPLETE_LOGIC, IdFunc );
 InstallGlobalFunction( CAP_JIT_EXPR_CASE_WRAPPER, IdFunc );

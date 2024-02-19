@@ -170,11 +170,15 @@ InstallGlobalFunction( CapInternalInstallAdd,
     InstallMethod( add_function,
                    [ IsCapCategory, IsFunction, IsInt ],
                    
-      function( category, func, weight )
+     FunctionWithNamedArguments(
+      [
+        [ "IsPrecompiledDerivation", false ],
+      ],
+      function( CAP_NAMED_ARGUMENTS, category, func, weight )
         
-        add_function( category, [ [ func, [ ] ] ], weight );
+        add_function( category, [ [ func, [ ] ] ], weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
         
-    end );
+    end ) );
     
     InstallMethod( add_function,
                    [ IsCapCategory, IsList ],
@@ -187,8 +191,14 @@ InstallGlobalFunction( CapInternalInstallAdd,
     
     InstallMethod( add_function,
                    [ IsCapCategory, IsList, IsInt ],
-      
-      function( category, method_list, weight )
+     
+     FunctionWithNamedArguments(
+      [
+        [ "IsDerivation", false ],
+        [ "IsFinalDerivation", false ],
+        [ "IsPrecompiledDerivation", false ],
+      ],
+      function( CAP_NAMED_ARGUMENTS, category, method_list, weight )
         local is_derivation, is_final_derivation, is_precompiled_derivation, replaced_filter_list, needs_wrapping,
             number_of_proposed_arguments, current_function_argument_number, current_additional_filter_list_length,
             input_sanity_check_functions, output_human_readable_identifier_list, output_sanity_check_function,
@@ -202,20 +212,11 @@ InstallGlobalFunction( CapInternalInstallAdd,
             Error( "you must pass at least one function to the add method" );
         fi;
         
-        is_derivation := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "IsDerivation", false );
+        is_derivation := CAP_NAMED_ARGUMENTS.IsDerivation;
         
-        is_final_derivation := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "IsFinalDerivation", false );
+        is_final_derivation := CAP_NAMED_ARGUMENTS.IsFinalDerivation;
         
-        if is_final_derivation then
-            
-            Assert( 0, is_derivation );
-            
-            # `is_derivation` is used below in the sense of a non-final derivation
-            is_derivation := false;
-            
-        fi;
-        
-        is_precompiled_derivation := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "IsPrecompiledDerivation", false );
+        is_precompiled_derivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation;
         
         if Length( Positions( [ is_derivation, is_final_derivation, is_precompiled_derivation ], true ) ) > 1 then
             
@@ -548,8 +549,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
         if not is_derivation then
             
             # Final derivations are not handled by the original derivation mechanism and are thus just like primitive operations for it.
-            # make sure to reset options
-            AddPrimitiveOperation( category!.derivations_weight_list, function_name, weight : IsFinalDerivation := false, IsPrecompiledDerivation := false );
+            AddPrimitiveOperation( category!.derivations_weight_list, function_name, weight );
             
         fi;
         
@@ -563,7 +563,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
             
         fi;
         
-    end );
+    end ) );
     
 end );
 

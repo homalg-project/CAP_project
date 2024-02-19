@@ -83,15 +83,13 @@ end );
 
 BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
   
-  function( opposite_category, category )
-    local only_primitive_operations, recnames, list_of_underlying_operations,
+  function( opposite_category, category, only_primitive_operations )
+    local recnames, list_of_underlying_operations,
           operations_of_homomorphism_structure, operations_of_external_hom,
           current_recname, current_entry, dual_operation_name, filter_list, input_arguments_names, return_type, func_string,
           preprocessor_string, dual_arguments, tmp,
           postprocessor_string, output_source_getter_string, output_range_getter_string, return_statement,
           func, weight, current_add, list_of_attributes, attr, tester, setter;
-    
-    only_primitive_operations := ValueOption( "only_primitive_operations" ) = true;
     
     ## Take care of attributes
     ## TODO: if there are more instances, set markers in the MethodRecord
@@ -381,7 +379,11 @@ end );
 InstallMethod( Opposite,
                [ IsCapCategory, IsString ],
                
-  function( category, name )
+ FunctionWithNamedArguments(
+  [
+    [ "only_primitive_operations", false ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, category, name )
     local opposite_category, known_properties, opposite_property_pairs, pair;
     
     if not IsFinalized( category ) then
@@ -544,7 +546,7 @@ InstallMethod( Opposite,
         
     end );
     
-    CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY( opposite_category, category );
+    CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY( opposite_category, category, CAP_NAMED_ARGUMENTS.only_primitive_operations );
     
     Finalize( opposite_category );
     
@@ -558,7 +560,7 @@ InstallMethod( Opposite,
     
     return opposite_category;
     
-end );
+end ) );
 
 ##
 InstallMethod( Opposite,

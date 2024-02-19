@@ -7,6 +7,18 @@
 
 #! @Section Tools
 
+#! @Arguments specification, func
+#! @Returns a function
+#! @Description
+#!  Simulates named arguments in &GAP; as follows:
+#!  * <A>specification</A> is a list of pairs with first entry the name of the argument and second entry a default value (which must be immutable).
+#!  * <A>func</A> must be a function with first argument `CAP_NAMED_ARGUMENTS`.
+#!  * The return value is a function with one argument fewer than <A>func</A>.
+#!  
+#!  When calling the returned function, the arguments are passed on to <A>func</A>.
+#!  To simulate named arguments, any &GAP; options appearing in <A>specification</A> are consumed and put into the record `CAP_NAMED_ARGUMENTS`.
+DeclareGlobalFunction( "FunctionWithNamedArguments" );
+
 #! @Arguments filter_string[, category]
 #! @Returns a record
 #! @Description
