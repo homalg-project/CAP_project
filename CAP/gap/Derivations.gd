@@ -159,8 +159,8 @@ DeclareOperation( "AddOperationsToDerivationGraph", [ IsDerivedMethodGraph, IsDe
 
 #! @Description
 #!  Add a derivation to a derivation graph.
-#! @Arguments graph, target_op, description, used_ops_with_multiples_and_category_getters, func
-DeclareOperation( "AddDerivation", [ IsDerivedMethodGraph, IsFunction, IsString, IsDenseList, IsFunction ] );
+#! @Arguments graph, target_op, description, used_ops_with_multiples_and_category_getters, func, weight, category_filter, loop_multiplier, category_getters, function_called_before_installation
+DeclareGlobalFunction( "AddDerivation" );
 
 #!
 DeclareGlobalFunction( "AddDerivationToCAP" );

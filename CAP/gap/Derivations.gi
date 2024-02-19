@@ -193,19 +193,10 @@ function( G )
   return Concatenation( "<", String( G ), ">" );
 end );
 
-InstallMethod( AddDerivation,
-               [ IsDerivedMethodGraph, IsFunction, IsString, IsDenseList, IsFunction ],
-               
-  function( graph, target_op, description, used_ops_with_multiples_and_category_getters, func )
-    local weight, category_filter, loop_multiplier, category_getters, function_called_before_installation, target_op_name, operations_in_graph, used_op_names_with_multiples_and_category_getters, collected_list, derivation, x;
-    
-    # When compiling categories, a derivation does not cause overhead anymore, so we would like to simply set `Weight` to 0.
-    # However, the weight 1 is currently needed to prevent the installation of cyclic derivations.
-    weight := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Weight", 1 );
-    category_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryFilter", IsCapCategory );
-    loop_multiplier := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "WeightLoopMultiple", 2 );
-    category_getters := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryGetters", rec( ) );
-    function_called_before_installation := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "FunctionCalledBeforeInstallation", false );
+InstallGlobalFunction( AddDerivation,
+  
+  function( graph, target_op, description, used_ops_with_multiples_and_category_getters, func, weight, category_filter, loop_multiplier, category_getters, function_called_before_installation )
+    local target_op_name, operations_in_graph, used_op_names_with_multiples_and_category_getters, collected_list, derivation, x;
     
     target_op_name := NameFunction( target_op );
     
@@ -299,7 +290,7 @@ end );
 InstallGlobalFunction( AddDerivationToCAP,
   
   function( target_op, description, used_ops_with_multiples_and_category_getters, func )
-    local method_name, filter_list, number_of_proposed_arguments, current_function_argument_number;
+    local method_name, filter_list, number_of_proposed_arguments, current_function_argument_number, weight, category_filter, loop_multiplier, category_getters, function_called_before_installation;
     
     method_name := NameFunction( target_op );
     
@@ -320,7 +311,15 @@ InstallGlobalFunction( AddDerivationToCAP,
                " arguments but should have ", String( number_of_proposed_arguments ) );
     fi;
     
-    AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH, target_op, description, used_ops_with_multiples_and_category_getters, func );
+    # When compiling categories, a derivation does not cause overhead anymore, so we would like to simply set `Weight` to 0.
+    # However, the weight 1 is currently needed to prevent the installation of cyclic derivations.
+    weight := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Weight", 1 );
+    category_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryFilter", IsCapCategory );
+    loop_multiplier := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "WeightLoopMultiple", 2 );
+    category_getters := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryGetters", rec( ) );
+    function_called_before_installation := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "FunctionCalledBeforeInstallation", false );
+    
+    AddDerivation( CAP_INTERNAL_DERIVATION_GRAPH, target_op, description, used_ops_with_multiples_and_category_getters, func, weight, category_filter, loop_multiplier, category_getters, function_called_before_installation );
     
 end );
 
