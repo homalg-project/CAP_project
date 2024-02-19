@@ -23,7 +23,25 @@
   
   [1X9.2 [33X[0;0YTools[133X[101X
   
-  [1X9.2-1 CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING[101X
+  [1X9.2-1 FunctionWithNamedArguments[101X
+  
+  [33X[1;0Y[29X[2XFunctionWithNamedArguments[102X( [3Xspecification[103X, [3Xfunc[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya function[133X
+  
+  [33X[0;0YSimulates named arguments in [5XGAP[105X as follows:[133X
+  
+  [30X    [33X[0;6Y[3Xspecification[103X  is  a  list  of  pairs with first entry the name of the
+        argument and second entry a default value (which must be immutable).[133X
+  
+  [30X    [33X[0;6Y[3Xfunc[103X must be a function with first argument [10XCAP_NAMED_ARGUMENTS[110X.[133X
+  
+  [30X    [33X[0;6YThe return value is a function with one argument fewer than [3Xfunc[103X.[133X
+  
+  [33X[0;0YWhen  calling the returned function, the arguments are passed on to [3Xfunc[103X. To
+  simulate  named  arguments,  any  [5XGAP[105X options appearing in [3Xspecification[103X are
+  consumed and put into the record [10XCAP_NAMED_ARGUMENTS[110X.[133X
+  
+  [1X9.2-2 CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING[101X
   
   [33X[1;0Y[29X[2XCAP_INTERNAL_GET_DATA_TYPE_FROM_STRING[102X( [3Xfilter_string[103X[, [3Xcategory[103X] ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
@@ -36,15 +54,15 @@
   the  context  of [10XCompilerForCAP[110X because the component [10Xcategory[110X cannot be set
   in this case.[133X
   
-  [1X9.2-2 CAP_INTERNAL_GET_DATA_TYPES_FROM_STRINGS[101X
+  [1X9.2-3 CAP_INTERNAL_GET_DATA_TYPES_FROM_STRINGS[101X
   
   [33X[1;0Y[29X[2XCAP_INTERNAL_GET_DATA_TYPES_FROM_STRINGS[102X( [3Xlist_of_strings[103X[, [3Xcategory[103X] ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
   
-  [33X[0;0YApplies  [2XCAP_INTERNAL_GET_DATA_TYPE_FROM_STRING[102X  ([14X9.2-1[114X)  to all elements of
+  [33X[0;0YApplies  [2XCAP_INTERNAL_GET_DATA_TYPE_FROM_STRING[102X  ([14X9.2-2[114X)  to all elements of
   [3Xlist[103X and returns the result.[133X
   
-  [1X9.2-3 CAP_INTERNAL_REPLACED_STRING_WITH_FILTER[101X
+  [1X9.2-4 CAP_INTERNAL_REPLACED_STRING_WITH_FILTER[101X
   
   [33X[1;0Y[29X[2XCAP_INTERNAL_REPLACED_STRING_WITH_FILTER[102X( [3Xfilter_string[103X[, [3Xcategory[103X] ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya filter[133X
@@ -54,15 +72,15 @@
   category     is     given,     generic     filters     ([10XIsCapCategoryObject[110X,
   [10XIsCapCategoryMorphism[110X etc.) are used.[133X
   
-  [1X9.2-4 CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS[101X
+  [1X9.2-5 CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS[101X
   
   [33X[1;0Y[29X[2XCAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS[102X( [3Xlist[103X[, [3Xcategory[103X] ) [32X function[133X
   [6XReturns:[106X  [33X[0;10YReplaced list[133X
   
-  [33X[0;0YApplies  [2XCAP_INTERNAL_REPLACED_STRING_WITH_FILTER[102X ([14X9.2-3[114X) to all elements of
+  [33X[0;0YApplies  [2XCAP_INTERNAL_REPLACED_STRING_WITH_FILTER[102X ([14X9.2-4[114X) to all elements of
   [3Xlist[103X and returns the result.[133X
   
-  [1X9.2-5 CAP_INTERNAL_MERGE_FILTER_LISTS[101X
+  [1X9.2-6 CAP_INTERNAL_MERGE_FILTER_LISTS[101X
   
   [33X[1;0Y[29X[2XCAP_INTERNAL_MERGE_FILTER_LISTS[102X( [3Xlist[103X, [3Xadditional[103X, [3Xlist[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ymerged lists[133X
@@ -72,7 +90,7 @@
   second  list are then appended (via and) to the filters in the first list at
   the corresponding position, and the resulting list is returned.[133X
   
-  [1X9.2-6 CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT[101X
+  [1X9.2-7 CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT[101X
   
   [33X[1;0Y[29X[2XCAP_INTERNAL_RETURN_OPTION_OR_DEFAULT[102X( [3Xstring[103X, [3Xvalue[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Yoption value[133X
@@ -80,7 +98,7 @@
   [33X[0;0YReturns the value of the option with name string, or, if this value is fail,
   the object value.[133X
   
-  [1X9.2-7 CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION[101X
+  [1X9.2-8 CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION[101X
   
   [33X[1;0Y[29X[2XCAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION[102X( [3Xfunction[103X, [3Xsymbol_list[103X, [3Xloop_multiple[103X, [3Xreplacement_record[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list of symbols with multiples[133X
@@ -92,7 +110,7 @@
   appearances  of  found  strings  should  be replaced by collections of other
   strings, then these can be specified in the replacement record.[133X
   
-  [1X9.2-8 CAP_INTERNAL_MERGE_PRECONDITIONS_LIST[101X
+  [1X9.2-9 CAP_INTERNAL_MERGE_PRECONDITIONS_LIST[101X
   
   [33X[1;0Y[29X[2XCAP_INTERNAL_MERGE_PRECONDITIONS_LIST[102X( [3Xlist1[103X, [3Xlist2[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ymerge list[133X
@@ -103,7 +121,7 @@
   in  both  lists,  the resulting lists only contains this pair once, with the
   higher multiple from both lists.[133X
   
-  [1X9.2-9 CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER[101X
+  [1X9.2-10 CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER[101X
   
   [33X[1;0Y[29X[2XCAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER[102X( [3Xdata_type[103X, [3Xhuman_readable_identifier_list[103X ) [32X function[133X
   
@@ -112,7 +130,7 @@
   to  [10XError[110X  to  refer  to  the  argument  of  the unary function in the error
   message.[133X
   
-  [1X9.2-10 CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY[101X
+  [1X9.2-11 CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY[101X
   
   [33X[1;0Y[29X[2XCAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY[102X( [3Xcell[103X, [3Xcategory[103X, [3Xhuman_readable_identifier_list[103X ) [32X function[133X
   
@@ -121,7 +139,7 @@
   category   are   performed.  [3Xhuman_readable_identifier_list[103X  is  a  list  of
   arguments passed to [10XError[110X to refer to [3Xcell[103X in the error message.[133X
   
-  [1X9.2-11 CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY[101X
+  [1X9.2-12 CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY[101X
   
   [33X[1;0Y[29X[2XCAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY[102X( [3Xobject[103X, [3Xcategory[103X, [3Xhuman_readable_identifier_list[103X ) [32X function[133X
   
@@ -130,7 +148,7 @@
   concrete category are performed. [3Xhuman_readable_identifier_list[103X is a list of
   arguments passed to [10XError[110X to refer to [3Xobject[103X in the error message.[133X
   
-  [1X9.2-12 CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY[101X
+  [1X9.2-13 CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY[101X
   
   [33X[1;0Y[29X[2XCAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY[102X( [3Xmorphism[103X, [3Xcategory[103X, [3Xhuman_readable_identifier_list[103X ) [32X function[133X
   
@@ -139,7 +157,7 @@
   concrete category are performed. [3Xhuman_readable_identifier_list[103X is a list of
   arguments passed to [10XError[110X to refer to [3Xmorphism[103X in the error message.[133X
   
-  [1X9.2-13 CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY[101X
+  [1X9.2-14 CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY[101X
   
   [33X[1;0Y[29X[2XCAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY[102X( [3Xtwo_cell[103X, [3Xcategory[103X, [3Xhuman_readable_identifier_list[103X ) [32X function[133X
   
@@ -148,14 +166,14 @@
   concrete category are performed. [3Xhuman_readable_identifier_list[103X is a list of
   arguments passed to [10XError[110X to refer to [3Xtwo_cell[103X in the error message.[133X
   
-  [1X9.2-14 CachingStatistic[101X
+  [1X9.2-15 CachingStatistic[101X
   
   [33X[1;0Y[29X[2XCachingStatistic[102X( [3Xcategory[103X[, [3Xoperation[103X] ) [32X function[133X
   
   [33X[0;0YPrints  statistics  for  all caches in [3Xcategory[103X. If [3Xoperation[103X is given (as a
   string), only statistics for the given operation cache is stored.[133X
   
-  [1X9.2-15 BrowseCachingStatistic[101X
+  [1X9.2-16 BrowseCachingStatistic[101X
   
   [33X[1;0Y[29X[2XBrowseCachingStatistic[102X( [3Xcategory[103X ) [32X function[133X
   
@@ -165,14 +183,14 @@
   cache  accesses,  and "stored" the number of objects currently stored in the
   cache.[133X
   
-  [1X9.2-16 InstallDeprecatedAlias[101X
+  [1X9.2-17 InstallDeprecatedAlias[101X
   
   [33X[1;0Y[29X[2XInstallDeprecatedAlias[102X( [3Xalias_name[103X, [3Xfunction_name[103X, [3Xdeprecation_date[103X ) [32X function[133X
   
   [33X[0;0YMakes  the  function  given  by  [3Xfunction_name[103X  available  under  the  alias
   [3Xalias_name[103X with a deprecation warning including the date [3Xdeprecation_date[103X.[133X
   
-  [1X9.2-17 IsSpecializationOfFilter[101X
+  [1X9.2-18 IsSpecializationOfFilter[101X
   
   [33X[1;0Y[29X[2XIsSpecializationOfFilter[102X( [3Xfilter1[103X, [3Xfilter2[103X ) [32X function[133X
   
@@ -182,31 +200,31 @@
   filters  (e.g.  [10XIsCapCategory[110X,  [10XIsCapCategoryObject[110X,  [10XIsCapCategoryMorphism[110X,
   ...).[133X
   
-  [1X9.2-18 IsSpecializationOfFilterList[101X
+  [1X9.2-19 IsSpecializationOfFilterList[101X
   
   [33X[1;0Y[29X[2XIsSpecializationOfFilterList[102X( [3Xfilter_list1[103X, [3Xfilter_list2[103X ) [32X function[133X
   
   [33X[0;0YChecks if [3Xfilter_list2[103X is more special than [3Xfilter_list1[103X, i.e. if both lists
   have  the  same  length and any element of [3Xfilter_list2[103X is more special than
   the    corresponding    element    of   [3Xfilter_list1[103X   in   the   sense   of
-  [2XIsSpecializationOfFilter[102X ([14X9.2-17[114X). [3Xfilter_list1[103X and [3Xfilter_list2[103X can also be
+  [2XIsSpecializationOfFilter[102X ([14X9.2-18[114X). [3Xfilter_list1[103X and [3Xfilter_list2[103X can also be
   the string [10X"any"[110X, respresenting a most general filter list of any length.[133X
   
-  [1X9.2-19 InstallMethodForCompilerForCAP[101X
+  [1X9.2-20 InstallMethodForCompilerForCAP[101X
   
   [33X[1;0Y[29X[2XInstallMethodForCompilerForCAP[102X( [3Xsame[103X, [3Xas[103X, [3Xfor[103X, [3XInstallMethod[103X ) [32X function[133X
   
   [33X[0;0YInstalls a method via [10XInstallMethod[110X and adds it to the list of methods known
-  to the compiler. See [2XCapJitAddKnownMethod[102X ([14X9.2-21[114X) for requirements.[133X
+  to the compiler. See [2XCapJitAddKnownMethod[102X ([14X9.2-22[114X) for requirements.[133X
   
-  [1X9.2-20 InstallOtherMethodForCompilerForCAP[101X
+  [1X9.2-21 InstallOtherMethodForCompilerForCAP[101X
   
   [33X[1;0Y[29X[2XInstallOtherMethodForCompilerForCAP[102X( [3Xsame[103X, [3Xas[103X, [3Xfor[103X, [3XInstallOtherMethod[103X ) [32X function[133X
   
   [33X[0;0YInstalls  a method via [10XInstallOtherMethod[110X and adds it to the list of methods
-  known to the compiler. See [2XCapJitAddKnownMethod[102X ([14X9.2-21[114X) for requirements.[133X
+  known to the compiler. See [2XCapJitAddKnownMethod[102X ([14X9.2-22[114X) for requirements.[133X
   
-  [1X9.2-21 CapJitAddKnownMethod[101X
+  [1X9.2-22 CapJitAddKnownMethod[101X
   
   [33X[1;0Y[29X[2XCapJitAddKnownMethod[102X( [3Xoperation[103X, [3Xfilters[103X, [3Xmethod[103X ) [32X function[133X
   
@@ -225,7 +243,7 @@
   CAP  operation)  with  the  same number of arguments and one category filter
   implying the other is not supported.[133X
   
-  [1X9.2-22 CapJitAddTypeSignature[101X
+  [1X9.2-23 CapJitAddTypeSignature[101X
   
   [33X[1;0Y[29X[2XCapJitAddTypeSignature[102X( [3Xname[103X, [3Xinput_filters[103X, [3Xoutput_data_type[103X ) [32X function[133X
   
@@ -241,23 +259,23 @@
   output).         See         [2XCapJitInferredDataTypes[102X        ([14XCompilerForCAP:
   CapJitInferredDataTypes[114X) for more details on data types.[133X
   
-  [1X9.2-23 CapJitAddTypeSignatureDeferred[101X
+  [1X9.2-24 CapJitAddTypeSignatureDeferred[101X
   
   [33X[1;0Y[29X[2XCapJitAddTypeSignatureDeferred[102X( [3Xpackage_name[103X, [3Xname[103X, [3Xinput_filters[103X, [3Xoutput_data_type[103X ) [32X function[133X
   
-  [33X[0;0Y(experimental)  Same as [2XCapJitAddTypeSignature[102X ([14X9.2-22[114X), but the filters and
+  [33X[0;0Y(experimental)  Same as [2XCapJitAddTypeSignature[102X ([14X9.2-23[114X), but the filters and
   the  output  data type must be given as strings which will be evaluated once
   [3Xpackage_name[103X  is  loaded.  This should be used with care because errors will
   only be detected at runtime.[133X
   
-  [1X9.2-24 CapJitDataTypeOfListOf[101X
+  [1X9.2-25 CapJitDataTypeOfListOf[101X
   
   [33X[1;0Y[29X[2XCapJitDataTypeOfListOf[102X( [3Xelement_type[103X ) [32X function[133X
   
   [33X[0;0Y(experimental)  Returns  the  data type of a list whose elements are of type
   [3Xelement_type[103X. [3Xelement_type[103X must be a filter or a data type.[133X
   
-  [1X9.2-25 CapJitDataTypeOfNTupleOf[101X
+  [1X9.2-26 CapJitDataTypeOfNTupleOf[101X
   
   [33X[1;0Y[29X[2XCapJitDataTypeOfNTupleOf[102X( [3Xn[103X, [3Xelement_types...[103X ) [32X function[133X
   
@@ -265,7 +283,7 @@
   types  corresponding  to  [3Xelement_types[103X. [3Xelement_types...[103X must be filters or
   data types.[133X
   
-  [1X9.2-26 CapJitDataTypeOfCategory[101X
+  [1X9.2-27 CapJitDataTypeOfCategory[101X
   
   [33X[1;0Y[29X[2XCapJitDataTypeOfCategory[102X( [3Xcategory[103X ) [32X function[133X
   [33X[1;0Y[29X[2XCapJitDataTypeOfObjectOfCategory[102X( [3Xcategory[103X ) [32X function[133X
@@ -275,7 +293,7 @@
   [33X[0;0Y(experimental) Returns the data type of the category (or objects, morphisms,
   or two cells in the category) [3Xcategory[103X.[133X
   
-  [1X9.2-27 CapJitTypedExpression[101X
+  [1X9.2-28 CapJitTypedExpression[101X
   
   [33X[1;0Y[29X[2XCapJitTypedExpression[102X( [3Xvalue[103X, [3Xdata_type_getter[103X ) [32X function[133X
   
@@ -285,7 +303,7 @@
   arguments  or  a  single  argument,  and  return  a  valid data type. If the
   function  accepts  a  single  argument, it must be inside a CAP operation or
   method      known      to      CompilerForCAP      (for     example,     see
-  [2XInstallMethodForCompilerForCAP[102X ([14X9.2-19[114X)), and the current category (i.e. the
+  [2XInstallMethodForCompilerForCAP[102X ([14X9.2-20[114X)), and the current category (i.e. the
   first  argument of the CAP operation or method known to CompilerForCAP) will
   be  passed  to  the  function.  IMPORTANT:  If [3Xdata_type_getter[103X is a literal
   function,  it  must  not  contain  references  to  variables in its context.
@@ -293,7 +311,7 @@
   [2XCapJitInferredDataTypes[102X  ([14XCompilerForCAP:  CapJitInferredDataTypes[114X) for more
   details on data types.[133X
   
-  [1X9.2-28 CapFixpoint[101X
+  [1X9.2-29 CapFixpoint[101X
   
   [33X[1;0Y[29X[2XCapFixpoint[102X( [3Xpredicate[103X, [3Xfunc[103X, [3Xinitial_value[103X ) [32X function[133X
   
@@ -301,41 +319,41 @@
   starting  with [3Xinitial_value[103X. If no such fixpoint exists, the execution does
   not terminate.[133X
   
-  [1X9.2-29 Iterated[101X
+  [1X9.2-30 Iterated[101X
   
   [33X[1;0Y[29X[2XIterated[102X( [3Xlist[103X, [3Xfunc[103X, [3Xinitial_value[103X ) [32X operation[133X
   
   [33X[0;0YShorthand for [10XIterated( Concatenation( [ [3Xinitial_value[103X[10X ], [3Xlist[103X[10X ), [3Xfunc[103X[10X )[110X.[133X
   
-  [1X9.2-30 Iterated[101X
+  [1X9.2-31 Iterated[101X
   
   [33X[1;0Y[29X[2XIterated[102X( [3Xlist[103X, [3Xfunc[103X, [3Xinitial_value[103X, [3Xterminal_value[103X ) [32X operation[133X
   
   [33X[0;0YShorthand   for   [10XIterated(   Concatenation(  [  [3Xinitial_value[103X[10X  ],  [3Xlist[103X[10X,  [
   [3Xterminal_value[103X[10X ] ), [3Xfunc[103X[10X )[110X.[133X
   
-  [1X9.2-31 TransitivelyNeededOtherPackages[101X
+  [1X9.2-32 TransitivelyNeededOtherPackages[101X
   
   [33X[1;0Y[29X[2XTransitivelyNeededOtherPackages[102X( [3Xpackage_name[103X ) [32X function[133X
   
   [33X[0;0YReturns a list of package names which are transitively needed other packages
   of the package [3Xpackage_name[103X.[133X
   
-  [1X9.2-32 PackageOfCAPOperation[101X
+  [1X9.2-33 PackageOfCAPOperation[101X
   
   [33X[1;0Y[29X[2XPackageOfCAPOperation[102X( [3Xoperation_name[103X ) [32X function[133X
   
   [33X[0;0YReturns  the  name  of  the  package  to  which  the  CAP operation given by
   [3Xoperation_name[103X belongs or fail if the package is not known.[133X
   
-  [1X9.2-33 SafePosition[101X
+  [1X9.2-34 SafePosition[101X
   
   [33X[1;0Y[29X[2XSafePosition[102X( [3Xlist[103X, [3Xobj[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan integer[133X
   
   [33X[0;0YReturns [10XPosition( [3Xlist[103X[10X, [3Xobj[103X[10X )[110X while asserting that this value is not [10Xfail[110X.[133X
   
-  [1X9.2-34 SafeUniquePosition[101X
+  [1X9.2-35 SafeUniquePosition[101X
   
   [33X[1;0Y[29X[2XSafeUniquePosition[102X( [3Xlist[103X, [3Xobj[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan integer[133X
@@ -343,7 +361,7 @@
   [33X[0;0YReturns  [10XPosition(  [3Xlist[103X[10X,  [3Xobj[103X[10X )[110X while asserting that this value is not [10Xfail[110X
   and the position is unique.[133X
   
-  [1X9.2-35 SafePositionProperty[101X
+  [1X9.2-36 SafePositionProperty[101X
   
   [33X[1;0Y[29X[2XSafePositionProperty[102X( [3Xlist[103X, [3Xfunc[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan integer[133X
@@ -351,7 +369,7 @@
   [33X[0;0YReturns  [10XPositionProperty(  [3Xlist[103X[10X,  [3Xfunc[103X[10X )[110X while asserting that this value is
   not [10Xfail[110X.[133X
   
-  [1X9.2-36 SafeUniquePositionProperty[101X
+  [1X9.2-37 SafeUniquePositionProperty[101X
   
   [33X[1;0Y[29X[2XSafeUniquePositionProperty[102X( [3Xlist[103X, [3Xfunc[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan integer[133X
@@ -360,14 +378,14 @@
   corresponding  entry  while  asserting  that  there  exists exactly one such
   position.[133X
   
-  [1X9.2-37 SafeFirst[101X
+  [1X9.2-38 SafeFirst[101X
   
   [33X[1;0Y[29X[2XSafeFirst[102X( [3Xlist[103X, [3Xfunc[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan element of the list[133X
   
   [33X[0;0YReturns [10XFirst( [3Xlist[103X[10X, [3Xfunc[103X[10X )[110X while asserting that this value is not [10Xfail[110X.[133X
   
-  [1X9.2-38 SafeUniqueEntry[101X
+  [1X9.2-39 SafeUniqueEntry[101X
   
   [33X[1;0Y[29X[2XSafeUniqueEntry[102X( [3Xlist[103X, [3Xfunc[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan element of the list[133X
@@ -375,28 +393,28 @@
   [33X[0;0YReturns  a  value  in  [3Xlist[103X for which [3Xfunc[103X returns [10Xtrue[110X while asserting that
   there exists exactly one such entry.[133X
   
-  [1X9.2-39 NTuple[101X
+  [1X9.2-40 NTuple[101X
   
   [33X[1;0Y[29X[2XNTuple[102X( [3Xn[103X, [3Xargs...[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
   
   [33X[0;0YReturns [3Xargs[103X while asserting that its length is [3Xn[103X.[133X
   
-  [1X9.2-40 Pair[101X
+  [1X9.2-41 Pair[101X
   
   [33X[1;0Y[29X[2XPair[102X( [3Xfirst[103X, [3Xsecond[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
   
   [33X[0;0YAlias for [10XNTuple( 2, [3Xfirst[103X[10X, [3Xsecond[103X[10X )[110X.[133X
   
-  [1X9.2-41 Triple[101X
+  [1X9.2-42 Triple[101X
   
   [33X[1;0Y[29X[2XTriple[102X( [3Xfirst[103X, [3Xsecond[103X, [3Xthird[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
   
   [33X[0;0YAlias for [10XNTuple( 3, [3Xfirst[103X[10X, [3Xsecond[103X[10X, [3Xthird[103X[10X )[110X.[133X
   
-  [1X9.2-42 TransposedMatWithGivenDimensions[101X
+  [1X9.2-43 TransposedMatWithGivenDimensions[101X
   
   [33X[1;0Y[29X[2XTransposedMatWithGivenDimensions[102X( [3Xnr_rows[103X, [3Xnr_cols[103X, [3Xlistlist[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list (of lists)[133X
@@ -406,7 +424,7 @@
   [23Xi=1[123X to [3Xnr_rows[103X. The output is the transpose of [3Xlistlist[103X as a list consisting
   of [3Xnr_cols[103X rows and [3Xnr_rows[103X columns.[133X
   
-  [1X9.2-43 HandlePrecompiledTowers[101X
+  [1X9.2-44 HandlePrecompiledTowers[101X
   
   [33X[1;0Y[29X[2XHandlePrecompiledTowers[102X( [3Xcategory[103X, [3Xunderlying_category[103X, [3Xconstructor_name[103X ) [32X function[133X
   
@@ -430,14 +448,14 @@
   [3Xconstructor_name[103X  is  the  only  entry of [10Xremaining_constructors_in_tower[110X of
   multiple entries.[133X
   
-  [1X9.2-44 CAP_JIT_INCOMPLETE_LOGIC[101X
+  [1X9.2-45 CAP_JIT_INCOMPLETE_LOGIC[101X
   
   [33X[1;0Y[29X[2XCAP_JIT_INCOMPLETE_LOGIC[102X( [3Xvalue[103X ) [32X function[133X
   
   [33X[0;0YSimply  returns  [3Xvalue[103X.  Used  to signify that the argument is not fully run
   through all logic functions/templates by CompilerForCAP.[133X
   
-  [1X9.2-45 CAP_JIT_EXPR_CASE_WRAPPER[101X
+  [1X9.2-46 CAP_JIT_EXPR_CASE_WRAPPER[101X
   
   [33X[1;0Y[29X[2XCAP_JIT_EXPR_CASE_WRAPPER[102X( [3Xfunc[103X ) [32X function[133X
   
@@ -447,7 +465,7 @@
   if-elif-else   end()[110X  as  [10XCAP_JIT_EXPR_CASE_WRAPPER(function()  if-elif-else
   end)()[110X because the former is not valid in Julia.[133X
   
-  [1X9.2-46 ListWithKeys[101X
+  [1X9.2-47 ListWithKeys[101X
   
   [33X[1;0Y[29X[2XListWithKeys[102X( [3Xlist[103X, [3Xfunc[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
@@ -455,7 +473,7 @@
   [33X[0;0YSame  as  [10XList(  [3Xlist[103X[10X,  [3Xfunc[103X[10X  )[110X  but [3Xfunc[103X gets both the key [10Xi[110X and [10X[3Xlist[103X[10X[i][110X as
   arguments.[133X
   
-  [1X9.2-47 SumWithKeys[101X
+  [1X9.2-48 SumWithKeys[101X
   
   [33X[1;0Y[29X[2XSumWithKeys[102X( [3Xlist[103X, [3Xfunc[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
@@ -463,7 +481,7 @@
   [33X[0;0YSame  as  [10XSum(  [3Xlist[103X[10X,  [3Xfunc[103X[10X  )[110X  but  [3Xfunc[103X gets both the key [10Xi[110X and [10X[3Xlist[103X[10X[i][110X as
   arguments.[133X
   
-  [1X9.2-48 ProductWithKeys[101X
+  [1X9.2-49 ProductWithKeys[101X
   
   [33X[1;0Y[29X[2XProductWithKeys[102X( [3Xlist[103X, [3Xfunc[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
@@ -471,7 +489,7 @@
   [33X[0;0YSame  as  [10XProduct(  [3Xlist[103X[10X, [3Xfunc[103X[10X )[110X but [3Xfunc[103X gets both the key [10Xi[110X and [10X[3Xlist[103X[10X[i][110X as
   arguments.[133X
   
-  [1X9.2-49 ForAllWithKeys[101X
+  [1X9.2-50 ForAllWithKeys[101X
   
   [33X[1;0Y[29X[2XForAllWithKeys[102X( [3Xlist[103X, [3Xfunc[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
@@ -479,7 +497,7 @@
   [33X[0;0YSame  as  [10XForAll(  [3Xlist[103X[10X,  [3Xfunc[103X[10X )[110X but [3Xfunc[103X gets both the key [10Xi[110X and [10X[3Xlist[103X[10X[i][110X as
   arguments.[133X
   
-  [1X9.2-50 ForAnyWithKeys[101X
+  [1X9.2-51 ForAnyWithKeys[101X
   
   [33X[1;0Y[29X[2XForAnyWithKeys[102X( [3Xlist[103X, [3Xfunc[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
@@ -487,7 +505,7 @@
   [33X[0;0YSame  as  [10XForAny(  [3Xlist[103X[10X,  [3Xfunc[103X[10X )[110X but [3Xfunc[103X gets both the key [10Xi[110X and [10X[3Xlist[103X[10X[i][110X as
   arguments.[133X
   
-  [1X9.2-51 NumberWithKeys[101X
+  [1X9.2-52 NumberWithKeys[101X
   
   [33X[1;0Y[29X[2XNumberWithKeys[102X( [3Xlist[103X, [3Xfunc[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
@@ -495,7 +513,7 @@
   [33X[0;0YSame  as  [10XNumber(  [3Xlist[103X[10X,  [3Xfunc[103X[10X )[110X but [3Xfunc[103X gets both the key [10Xi[110X and [10X[3Xlist[103X[10X[i][110X as
   arguments.[133X
   
-  [1X9.2-52 FilteredWithKeys[101X
+  [1X9.2-53 FilteredWithKeys[101X
   
   [33X[1;0Y[29X[2XFilteredWithKeys[102X( [3Xlist[103X, [3Xfunc[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
@@ -503,7 +521,7 @@
   [33X[0;0YSame  as  [10XFiltered( [3Xlist[103X[10X, [3Xfunc[103X[10X )[110X but [3Xfunc[103X gets both the key [10Xi[110X and [10X[3Xlist[103X[10X[i][110X as
   arguments.[133X
   
-  [1X9.2-53 FirstWithKeys[101X
+  [1X9.2-54 FirstWithKeys[101X
   
   [33X[1;0Y[29X[2XFirstWithKeys[102X( [3Xlist[103X, [3Xfunc[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
@@ -511,7 +529,7 @@
   [33X[0;0YSame  as  [10XFirst(  [3Xlist[103X[10X,  [3Xfunc[103X[10X  )[110X but [3Xfunc[103X gets both the key [10Xi[110X and [10X[3Xlist[103X[10X[i][110X as
   arguments.[133X
   
-  [1X9.2-54 LastWithKeys[101X
+  [1X9.2-55 LastWithKeys[101X
   
   [33X[1;0Y[29X[2XLastWithKeys[102X( [3Xlist[103X, [3Xfunc[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X

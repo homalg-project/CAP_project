@@ -6,7 +6,7 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2024.02-02
+                                   2024.02-03
   
   
                                 19 February 2024
@@ -921,60 +921,61 @@
       9.1-1 ObjectCache
       9.1-2 MorphismCache
     9.2 [33X[0;0YTools[133X
-      9.2-1 CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING
-      9.2-2 CAP_INTERNAL_GET_DATA_TYPES_FROM_STRINGS
-      9.2-3 CAP_INTERNAL_REPLACED_STRING_WITH_FILTER
-      9.2-4 CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS
-      9.2-5 CAP_INTERNAL_MERGE_FILTER_LISTS
-      9.2-6 CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT
-      9.2-7 CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION
-      9.2-8 CAP_INTERNAL_MERGE_PRECONDITIONS_LIST
-      9.2-9 CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER
-      9.2-10 CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY
-      9.2-11 CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY
-      9.2-12 CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY
-      9.2-13 CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY
-      9.2-14 CachingStatistic
-      9.2-15 BrowseCachingStatistic
-      9.2-16 InstallDeprecatedAlias
-      9.2-17 IsSpecializationOfFilter
-      9.2-18 IsSpecializationOfFilterList
-      9.2-19 InstallMethodForCompilerForCAP
-      9.2-20 InstallOtherMethodForCompilerForCAP
-      9.2-21 CapJitAddKnownMethod
-      9.2-22 CapJitAddTypeSignature
-      9.2-23 CapJitAddTypeSignatureDeferred
-      9.2-24 CapJitDataTypeOfListOf
-      9.2-25 CapJitDataTypeOfNTupleOf
-      9.2-26 CapJitDataTypeOfCategory
-      9.2-27 CapJitTypedExpression
-      9.2-28 CapFixpoint
-      9.2-29 Iterated
+      9.2-1 FunctionWithNamedArguments
+      9.2-2 CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING
+      9.2-3 CAP_INTERNAL_GET_DATA_TYPES_FROM_STRINGS
+      9.2-4 CAP_INTERNAL_REPLACED_STRING_WITH_FILTER
+      9.2-5 CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS
+      9.2-6 CAP_INTERNAL_MERGE_FILTER_LISTS
+      9.2-7 CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT
+      9.2-8 CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION
+      9.2-9 CAP_INTERNAL_MERGE_PRECONDITIONS_LIST
+      9.2-10 CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER
+      9.2-11 CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY
+      9.2-12 CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY
+      9.2-13 CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY
+      9.2-14 CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY
+      9.2-15 CachingStatistic
+      9.2-16 BrowseCachingStatistic
+      9.2-17 InstallDeprecatedAlias
+      9.2-18 IsSpecializationOfFilter
+      9.2-19 IsSpecializationOfFilterList
+      9.2-20 InstallMethodForCompilerForCAP
+      9.2-21 InstallOtherMethodForCompilerForCAP
+      9.2-22 CapJitAddKnownMethod
+      9.2-23 CapJitAddTypeSignature
+      9.2-24 CapJitAddTypeSignatureDeferred
+      9.2-25 CapJitDataTypeOfListOf
+      9.2-26 CapJitDataTypeOfNTupleOf
+      9.2-27 CapJitDataTypeOfCategory
+      9.2-28 CapJitTypedExpression
+      9.2-29 CapFixpoint
       9.2-30 Iterated
-      9.2-31 TransitivelyNeededOtherPackages
-      9.2-32 PackageOfCAPOperation
-      9.2-33 SafePosition
-      9.2-34 SafeUniquePosition
-      9.2-35 SafePositionProperty
-      9.2-36 SafeUniquePositionProperty
-      9.2-37 SafeFirst
-      9.2-38 SafeUniqueEntry
-      9.2-39 NTuple
-      9.2-40 Pair
-      9.2-41 Triple
-      9.2-42 TransposedMatWithGivenDimensions
-      9.2-43 HandlePrecompiledTowers
-      9.2-44 CAP_JIT_INCOMPLETE_LOGIC
-      9.2-45 CAP_JIT_EXPR_CASE_WRAPPER
-      9.2-46 ListWithKeys
-      9.2-47 SumWithKeys
-      9.2-48 ProductWithKeys
-      9.2-49 ForAllWithKeys
-      9.2-50 ForAnyWithKeys
-      9.2-51 NumberWithKeys
-      9.2-52 FilteredWithKeys
-      9.2-53 FirstWithKeys
-      9.2-54 LastWithKeys
+      9.2-31 Iterated
+      9.2-32 TransitivelyNeededOtherPackages
+      9.2-33 PackageOfCAPOperation
+      9.2-34 SafePosition
+      9.2-35 SafeUniquePosition
+      9.2-36 SafePositionProperty
+      9.2-37 SafeUniquePositionProperty
+      9.2-38 SafeFirst
+      9.2-39 SafeUniqueEntry
+      9.2-40 NTuple
+      9.2-41 Pair
+      9.2-42 Triple
+      9.2-43 TransposedMatWithGivenDimensions
+      9.2-44 HandlePrecompiledTowers
+      9.2-45 CAP_JIT_INCOMPLETE_LOGIC
+      9.2-46 CAP_JIT_EXPR_CASE_WRAPPER
+      9.2-47 ListWithKeys
+      9.2-48 SumWithKeys
+      9.2-49 ProductWithKeys
+      9.2-50 ForAllWithKeys
+      9.2-51 ForAnyWithKeys
+      9.2-52 NumberWithKeys
+      9.2-53 FilteredWithKeys
+      9.2-54 FirstWithKeys
+      9.2-55 LastWithKeys
   10 [33X[0;0YLimits and Colimits[133X
     10.1 [33X[0;0YSpecification of Limits and Colimits[133X
     10.2 [33X[0;0YEnhancing Limit Specifications[133X
