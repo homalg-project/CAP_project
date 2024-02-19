@@ -112,3 +112,10 @@ ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategoriesTest.gi" );
 ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategoriesTest.gi" );
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricClosedMonoidalCategoriesTest.gi" );
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricCoclosedMonoidalCategoriesTest.gi" );
+
+## WithGiven test methods
+
+ReadPackage( "MonoidalCategories", "gap/LeftClosedMonoidalCategoriesTestWithGiven.gi" );
+ReadPackage( "MonoidalCategories", "gap/LeftCoclosedMonoidalCategoriesTestWithGiven.gi" );
+ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategoriesTestWithGiven.gi" );
+ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategoriesTestWithGiven.gi" );

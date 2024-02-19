@@ -88,3 +88,10 @@ ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategoriesTest.gd" );
 ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategoriesTest.gd" );
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricClosedMonoidalCategoriesTest.gd" );
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricCoclosedMonoidalCategoriesTest.gd" );
+
+## WithGiven test methods
+
+ReadPackage( "MonoidalCategories", "gap/LeftClosedMonoidalCategoriesTestWithGiven.gd" );
+ReadPackage( "MonoidalCategories", "gap/LeftCoclosedMonoidalCategoriesTestWithGiven.gd" );
+ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategoriesTestWithGiven.gd" );
+ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategoriesTestWithGiven.gd" );

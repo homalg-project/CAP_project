@@ -145,6 +145,7 @@ LeftInternalHomToTensorProductAdjunctMorphismWithGivenTensorProduct := rec(
   dual_operation := "LeftInternalCoHomToTensorProductAdjunctMorphismWithGivenTensorProduct",
   dual_preprocessor_func := { cat, a, b, g, t } -> NTuple( 5, Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( g ), Opposite( t ) ),
   dual_arguments_reversed := false,
+  # Test in LeftClosedMonoidalCategoriesTestWithGiven
 ),
 
 LeftClosedMonoidalPreComposeMorphism := rec(
