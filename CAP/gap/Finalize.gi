@@ -55,17 +55,40 @@ BindGlobal( "CAP_INTERNAL_FINAL_DERIVATION_SANITY_CHECK",
     
 end );
 
-InstallGlobalFunction( AddFinalDerivation,
-               
-  function( target_op, description, can_compute, cannot_compute, func )
+InstallGlobalFunction( AddFinalDerivation, FunctionWithNamedArguments(
+  [
+    # When compiling categories, a derivation does not cause overhead anymore, so we would like to simply set `Weight` to 0.
+    # However, the weight 1 is currently needed to prevent the installation of cyclic derivations.
+    [ "Weight", 1 ],
+    [ "CategoryFilter", IsCapCategory ],
+    [ "WeightLoopMultiple", 2 ],
+    [ "CategoryGetters", Immutable( rec( ) ) ],
+    [ "FunctionCalledBeforeInstallation", false ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, target_op, description, can_compute, cannot_compute, func )
     
-    AddFinalDerivationBundle( description, can_compute, cannot_compute, [ target_op, can_compute, func ] );
+    AddFinalDerivationBundle(
+        description, can_compute, cannot_compute, [ target_op, can_compute, func ] :
+        Weight := CAP_NAMED_ARGUMENTS.Weight,
+        CategoryFilter := CAP_NAMED_ARGUMENTS.CategoryFilter,
+        WeightLoopMultiple := CAP_NAMED_ARGUMENTS.WeightLoopMultiple,
+        CategoryGetters := CAP_NAMED_ARGUMENTS.CategoryGetters,
+        FunctionCalledBeforeInstallation := CAP_NAMED_ARGUMENTS.FunctionCalledBeforeInstallation
+    );
     
-end );
+end ) );
 
-InstallGlobalFunction( AddFinalDerivationBundle,
-               
-  function( description, can_compute, cannot_compute, additional_functions... )
+InstallGlobalFunction( AddFinalDerivationBundle, FunctionWithNamedArguments(
+  [
+    # When compiling categories, a derivation does not cause overhead anymore, so we would like to simply set `Weight` to 0.
+    # However, the weight 1 is currently needed to prevent the installation of cyclic derivations.
+    [ "Weight", 1 ],
+    [ "CategoryFilter", IsCapCategory ],
+    [ "WeightLoopMultiple", 2 ],
+    [ "CategoryGetters", Immutable( rec( ) ) ],
+    [ "FunctionCalledBeforeInstallation", false ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, description, can_compute, cannot_compute, additional_functions... )
     local weight, category_filter, loop_multiplier, category_getters, function_called_before_installation, operations_in_graph, operations_to_install, union_of_collected_lists, derivations, used_op_names_with_multiples_and_category_getters, collected_list, dummy_derivation, final_derivation, i, current_additional_func, x;
     
     if IsEmpty( additional_functions ) then
@@ -74,11 +97,11 @@ InstallGlobalFunction( AddFinalDerivationBundle,
         
     fi;
     
-    weight := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Weight", 1 );
-    category_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryFilter", IsCapCategory );
-    loop_multiplier := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "WeightLoopMultiple", 2 );
-    category_getters := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryGetters", rec( ) );
-    function_called_before_installation := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "FunctionCalledBeforeInstallation", false );
+    weight := CAP_NAMED_ARGUMENTS.Weight;
+    category_filter := CAP_NAMED_ARGUMENTS.CategoryFilter;
+    loop_multiplier := CAP_NAMED_ARGUMENTS.WeightLoopMultiple;
+    category_getters := CAP_NAMED_ARGUMENTS.CategoryGetters;
+    function_called_before_installation := CAP_NAMED_ARGUMENTS.FunctionCalledBeforeInstallation;
     
     for i in [ 1 .. Length( additional_functions ) ] do
         
@@ -270,12 +293,16 @@ InstallGlobalFunction( AddFinalDerivationBundle,
     
     Add( CAP_INTERNAL_FINAL_DERIVATION_LIST.final_derivation_list, final_derivation );
     
-end );
+end ) );
 
 InstallMethod( Finalize,
                [ IsCapCategory ],
-  
-  function( category )
+ 
+ FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, category )
     local derivation_list, weight_list, current_install, current_final_derivation, weight, old_weights, categorical_properties, diff, properties_with_logic, property, i, derivation, property_name;
     
     if IsFinalized( category ) then
@@ -284,7 +311,7 @@ InstallMethod( Finalize,
         
     fi;
     
-    if ValueOption( "FinalizeCategory" ) = false then
+    if not CAP_NAMED_ARGUMENTS.FinalizeCategory then
         
         return false;
         
@@ -307,15 +334,19 @@ InstallMethod( Finalize,
         
     fi;
     
+    #= comment for Julia
     if ValueOption( "disable_derivations" ) = true then
         
         derivation_list := [ ];
         
     else
+        # =#
         
         derivation_list := ShallowCopy( CAP_INTERNAL_FINAL_DERIVATION_LIST.final_derivation_list );
         
+        #= comment for Julia
     fi;
+    # =#
     
     weight_list := category!.derivations_weight_list;
     
@@ -465,4 +496,4 @@ InstallMethod( Finalize,
     
     return true;
     
-end );
+end ) );
