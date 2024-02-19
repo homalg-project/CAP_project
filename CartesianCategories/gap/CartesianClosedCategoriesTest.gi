@@ -296,9 +296,6 @@ InstallGlobalFunction( "CartesianClosedCategoriesTest",
             # exp_alpha_beta: Exp( b, c ) → Exp( a, d )
             # exp_beta_alpha: Exp( d, a ) → Exp( c, b )
             #
-            # exp_alpha_beta_op: Exp( a, d ) → Exp( b, c )
-            # exp_beta_alpha_op: Exp( c, b ) → Exp( d, a )
-            #
             #####################################################
             #
             # coexp_alpha_beta: Coexp( a, d ) → Coexp( b, c )

@@ -13,8 +13,8 @@
 
 #! @Description
 #! The arguments are
-#! a CAP category $cat$
-#! objects $a, b, c, d$
+#! * a CAP category $cat$
+#! * objects $a, b, c, d$
 #! * a morphism $\alpha: a \rightarrow b$
 #! * a morphism $\beta: c \rightarrow d$
 #! * a morphism $\gamma: 1 \rightarrow a \sqcup b$
