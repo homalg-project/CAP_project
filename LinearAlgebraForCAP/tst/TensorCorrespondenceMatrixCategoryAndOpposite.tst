@@ -121,6 +121,7 @@ gap> epsilon := VectorSpaceMorphism( u, HomalgMatrix( [ 2 .. 7 ], Dimension( u )
 gap> zeta := VectorSpaceMorphism( u, HomalgMatrix( [ 8 .. 31 ], Dimension( u ), Dimension( hom_cd ), Q ), hom_cd );;
 
 gap> ClosedMonoidalCategoriesTest( mc, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
+gap> ClosedMonoidalCategoriesTestWithGiven( mc, opposite, a, b, c, d, alpha, beta) ;;
 
 gap> a = 0 / mc;;
 gap> d = 0 / mc;;
@@ -139,6 +140,7 @@ gap> epsilon := ZeroMorphism( u, hom_ab );;
 gap> zeta := ZeroMorphism( u, hom_cd );;
 
 gap> ClosedMonoidalCategoriesTest( mc, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
+gap> ClosedMonoidalCategoriesTestWithGiven( mc, opposite, a, b, c, d, alpha, beta );;
 
 ##############################################
 # CoclosedMonoidalCategoriesTest
@@ -165,6 +167,7 @@ gap> epsilon := VectorSpaceMorphism( cohom_ab, HomalgMatrix( [ 2 .. 7 ], Dimensi
 gap> zeta := VectorSpaceMorphism( cohom_cd, HomalgMatrix( [ 8 .. 31 ], Dimension( cohom_cd ), Dimension( u ), Q ), u );;
 
 gap> CoclosedMonoidalCategoriesTest( mc, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
+gap> CoclosedMonoidalCategoriesTestWithGiven( mc, opposite, a, b, c, d, alpha, beta );;
 
 gap> a = 0 / mc;;
 gap> d = 0 / mc;;
@@ -183,6 +186,7 @@ gap> epsilon := ZeroMorphism( cohom_ab, u );;
 gap> zeta := ZeroMorphism( cohom_cd, u );;
 
 gap> CoclosedMonoidalCategoriesTest( mc, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
+gap> CoclosedMonoidalCategoriesTestWithGiven( mc, opposite, a, b, c, d, alpha, beta );;
 
 ##############################################
 # RigidSymmetricClosedMonoidalCategoriesTest
