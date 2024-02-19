@@ -33,7 +33,7 @@
 </span>
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X8445F6F187784DF1">8.2-1 IsDerivedMethod</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7DB4FFE37D1BB931">8.2-2 MakeDerivation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7D48366978D5BABD">8.2-2 MakeDerivation</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X85FA69CA831B3D68">8.2-3 DerivationName</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X8039396185E25B0C">8.2-4 DerivationWeight</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7CBD06FC8461DCA9">8.2-5 DerivationFunction</a></span>
@@ -50,13 +50,11 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X81A930FD84B9A43F">8.3-1 IsDerivedMethodGraph</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7E19A0AD8661EF00">8.3-2 MakeDerivationGraph</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7B801088854A0127">8.3-3 AddOperationsToDerivationGraph</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7DEBC71E8450F86A">8.3-4 AddDerivation</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X807CC9B37D9CCCF7">8.3-5 AddDerivation</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7BC80B4F7A067D91">8.3-6 AddDerivationToCAP</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X8263F4547BBF28C7">8.3-7 AddWithGivenDerivationPairToCAP</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X8669CCC78175B23B">8.3-8 Operations</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7D8B5FE482B39913">8.3-9 DerivationsUsingOperation</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7A4C262581C53309">8.3-10 DerivationsOfOperation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X83CDB3B181A3E3D7">8.3-4 AddDerivation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7BC80B4F7A067D91">8.3-5 AddDerivationToCAP</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X8669CCC78175B23B">8.3-6 Operations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7D8B5FE482B39913">8.3-7 DerivationsUsingOperation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7A4C262581C53309">8.3-8 DerivationsOfOperation</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap8.html#X86F129738355A31B">8.4 <span class="Heading">Managing Derivations in a Category</span></a>
 </span>
@@ -128,12 +126,12 @@
 
 <p>A derivation object describes a derived method. It contains information about which operation the derived method implements, and which other operations it relies on.</p>
 
-<p><a id="X7DB4FFE37D1BB931" name="X7DB4FFE37D1BB931"></a></p>
+<p><a id="X7D48366978D5BABD" name="X7D48366978D5BABD"></a></p>
 
 <h5>8.2-2 MakeDerivation</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MakeDerivation</code>( <var class="Arg">name</var>, <var class="Arg">target_op</var>, <var class="Arg">used_ops_with_multiples</var>, <var class="Arg">weight</var>, <var class="Arg">func</var>, <var class="Arg">category_filter</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Creates a new derivation object. The argument <var class="Arg">name</var> is an arbitrary name used to identify this derivation, and is useful only for debugging purposes. The argument <var class="Arg">target_op</var> is the operation which the derived method implements. The argument <var class="Arg">used_ops_with_multiples</var> contains</p>
+<p>Creates a new derivation object. The argument <var class="Arg">name</var> is an arbitrary name used to identify this derivation, and is useful only for debugging purposes. The argument <var class="Arg">target_op_name</var> is the name of the operation which the derived method implements. The argument <var class="Arg">used_ops_with_multiples</var> contains</p>
 
 
 <ul>
@@ -241,45 +239,35 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddOperationsToDerivationGraph</code>( <var class="Arg">graph</var>, <var class="Arg">operations</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Adds a list of operation names <var class="Arg">operations</var> to a given derivation graph <var class="Arg">graph</var>. This is used in extensions of CAP which want to have their own basic operations, but do not want to pollute the CAP kernel any more. Please use it with caution. If a weight list/category was created before it will not be aware of the operations.</p>
 
-<p><a id="X7DEBC71E8450F86A" name="X7DEBC71E8450F86A"></a></p>
+<p><a id="X83CDB3B181A3E3D7" name="X83CDB3B181A3E3D7"></a></p>
 
 <h5>8.3-4 AddDerivation</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddDerivation</code>( <var class="Arg">G</var>, <var class="Arg">d</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddDerivation</code>( <var class="Arg">graph</var>, <var class="Arg">target_op</var>, <var class="Arg">description</var>, <var class="Arg">used_ops_with_multiples_and_category_getters</var>, <var class="Arg">func</var>, <var class="Arg">weight</var>, <var class="Arg">category_filter</var>, <var class="Arg">loop_multiplier</var>, <var class="Arg">category_getters</var>, <var class="Arg">function_called_before_installation</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Add a derivation to a derivation graph.</p>
 
-<p><a id="X807CC9B37D9CCCF7" name="X807CC9B37D9CCCF7"></a></p>
-
-<h5>8.3-5 AddDerivation</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddDerivation</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var>, <var class="Arg">arg3</var>, <var class="Arg">arg4</var>, <var class="Arg">arg5</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p><a id="X7BC80B4F7A067D91" name="X7BC80B4F7A067D91"></a></p>
 
-<h5>8.3-6 AddDerivationToCAP</h5>
+<h5>8.3-5 AddDerivationToCAP</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddDerivationToCAP</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p><a id="X8263F4547BBF28C7" name="X8263F4547BBF28C7"></a></p>
-
-<h5>8.3-7 AddWithGivenDerivationPairToCAP</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddWithGivenDerivationPairToCAP</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p><a id="X8669CCC78175B23B" name="X8669CCC78175B23B"></a></p>
 
-<h5>8.3-8 Operations</h5>
+<h5>8.3-6 Operations</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Operations</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Gives the operations in the graph <var class="Arg">G</var>, as a list of strings.</p>
 
 <p><a id="X7D8B5FE482B39913" name="X7D8B5FE482B39913"></a></p>
 
-<h5>8.3-9 DerivationsUsingOperation</h5>
+<h5>8.3-7 DerivationsUsingOperation</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DerivationsUsingOperation</code>( <var class="Arg">G</var>, <var class="Arg">op_name</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Finds all the derivations in the graph <var class="Arg">G</var> that use the operation named <var class="Arg">op_name</var>, and returns them as a list.</p>
 
 <p><a id="X7A4C262581C53309" name="X7A4C262581C53309"></a></p>
 
-<h5>8.3-10 DerivationsOfOperation</h5>
+<h5>8.3-8 DerivationsOfOperation</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DerivationsOfOperation</code>( <var class="Arg">G</var>, <var class="Arg">op_name</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Finds all the derivations in the graph <var class="Arg">G</var> targeting the operation named <var class="Arg">op_name</var> (that is, the derivations that provide implementations of this operation), and returns them as a list.</p>

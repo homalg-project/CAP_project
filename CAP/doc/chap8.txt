@@ -36,8 +36,8 @@
   
   [33X[0;0YCreates a new derivation object. The argument [3Xname[103X is an arbitrary name used
   to  identify this derivation, and is useful only for debugging purposes. The
-  argument [3Xtarget_op[103X is the operation which the derived method implements. The
-  argument [3Xused_ops_with_multiples[103X contains[133X
+  argument  [3Xtarget_op_name[103X  is  the  name  of  the operation which the derived
+  method implements. The argument [3Xused_ops_with_multiples[103X contains[133X
   
   [30X    [33X[0;6Ythe name of each operation used by the derived method,[133X
   
@@ -160,36 +160,28 @@
   
   [1X8.3-4 AddDerivation[101X
   
-  [33X[1;0Y[29X[2XAddDerivation[102X( [3XG[103X, [3Xd[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddDerivation[102X( [3Xgraph[103X, [3Xtarget_op[103X, [3Xdescription[103X, [3Xused_ops_with_multiples_and_category_getters[103X, [3Xfunc[103X, [3Xweight[103X, [3Xcategory_filter[103X, [3Xloop_multiplier[103X, [3Xcategory_getters[103X, [3Xfunction_called_before_installation[103X ) [32X function[133X
   
   [33X[0;0YAdd a derivation to a derivation graph.[133X
   
-  [1X8.3-5 AddDerivation[101X
-  
-  [33X[1;0Y[29X[2XAddDerivation[102X( [3Xarg1[103X, [3Xarg2[103X, [3Xarg3[103X, [3Xarg4[103X, [3Xarg5[103X ) [32X operation[133X
-  
-  [1X8.3-6 AddDerivationToCAP[101X
+  [1X8.3-5 AddDerivationToCAP[101X
   
   [33X[1;0Y[29X[2XAddDerivationToCAP[102X( [3Xarg[103X ) [32X function[133X
   
-  [1X8.3-7 AddWithGivenDerivationPairToCAP[101X
-  
-  [33X[1;0Y[29X[2XAddWithGivenDerivationPairToCAP[102X( [3Xarg[103X ) [32X function[133X
-  
-  [1X8.3-8 Operations[101X
+  [1X8.3-6 Operations[101X
   
   [33X[1;0Y[29X[2XOperations[102X( [3XG[103X ) [32X attribute[133X
   
   [33X[0;0YGives the operations in the graph [3XG[103X, as a list of strings.[133X
   
-  [1X8.3-9 DerivationsUsingOperation[101X
+  [1X8.3-7 DerivationsUsingOperation[101X
   
   [33X[1;0Y[29X[2XDerivationsUsingOperation[102X( [3XG[103X, [3Xop_name[103X ) [32X operation[133X
   
   [33X[0;0YFinds  all  the  derivations  in  the  graph  [3XG[103X that use the operation named
   [3Xop_name[103X, and returns them as a list.[133X
   
-  [1X8.3-10 DerivationsOfOperation[101X
+  [1X8.3-8 DerivationsOfOperation[101X
   
   [33X[1;0Y[29X[2XDerivationsOfOperation[102X( [3XG[103X, [3Xop_name[103X ) [32X operation[133X
   

@@ -179,8 +179,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C551C8F7BA2F3F1">3.16-19 ExtendRangeOfHomomorphismStructureByIdentityAsFullEmbedding</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8510A7E08672FD73">3.16-20 MorphismsOfExternalHom</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7CC9C1A487AE6086">3.16-21 BasisOfExternalHom</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X82DE981C839D9F71">3.16-22 CoefficientsOfMorphismWithGivenBasisOfExternalHom</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8636593C845B23D2">3.16-23 CoefficientsOfMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8636593C845B23D2">3.16-22 CoefficientsOfMorphism</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7B39E2927B533D10">3.17 <span class="Heading">Simplified Morphisms</span></a>
 </span>
@@ -1221,20 +1220,11 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BasisOfExternalHom</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a list of morphisms in <span class="Math">\mathrm{Hom}_{C}(a,b)</span></p>
 
-<p>The arguments are objects <span class="Math">a,b</span> in a <span class="Math">k</span>-linear category <span class="Math">C</span>. The output is a list <span class="Math">L</span> of morphisms which is a basis of <span class="Math">\mathrm{Hom}_{C}(a,b)</span> in the sense that any given morphism <span class="Math">\alpha: a \to b</span> can uniquely be written as a linear combination of <span class="Math">L</span> with the coefficients in <code class="code">CoefficientsOfMorphismWithGivenBasisOfExternalHom</code>(<span class="Math">\alpha,L</span>).</p>
-
-<p><a id="X82DE981C839D9F71" name="X82DE981C839D9F71"></a></p>
-
-<h5>3.16-22 CoefficientsOfMorphismWithGivenBasisOfExternalHom</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoefficientsOfMorphismWithGivenBasisOfExternalHom</code>( <var class="Arg">alpha</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a list of elements in <span class="Math">k</span></p>
-
-<p>The arguments are a morphism <span class="Math">\alpha: a \to b</span> in a <span class="Math">k</span>-linear category <span class="Math">C</span> and a list <var class="Arg">L</var><code class="code">=BasisOfExternalHom</code>(<span class="Math">a,b</span>). The output is a list of coefficients of <span class="Math">\alpha</span> with respect to <span class="Math">L</span>.</p>
+<p>The arguments are objects <span class="Math">a,b</span> in a <span class="Math">k</span>-linear category <span class="Math">C</span>. The output is a list <span class="Math">L</span> of morphisms which is a basis of <span class="Math">\mathrm{Hom}_{C}(a,b)</span> in the sense that any given morphism <span class="Math">\alpha: a \to b</span> can uniquely be written as a linear combination of <span class="Math">L</span> with the coefficients in <code class="code">CoefficientsOfMorphism</code>(<span class="Math">\alpha</span>).</p>
 
 <p><a id="X8636593C845B23D2" name="X8636593C845B23D2"></a></p>
 
-<h5>3.16-23 CoefficientsOfMorphism</h5>
+<h5>3.16-22 CoefficientsOfMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoefficientsOfMorphism</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a list of elements in <span class="Math">k</span></p>

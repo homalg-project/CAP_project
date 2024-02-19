@@ -1067,19 +1067,9 @@
   [33X[0;0YThe arguments are objects [23Xa,b[123X in a [23Xk[123X-linear category [23XC[123X. The output is a list
   [23XL[123X  of  morphisms which is a basis of [23X\mathrm{Hom}_{C}(a,b)[123X in the sense that
   any  given  morphism  [23X\alpha:  a  \to  b[123X can uniquely be written as a linear
-  combination       of       [23XL[123X       with       the       coefficients      in
-  [10XCoefficientsOfMorphismWithGivenBasisOfExternalHom[110X([23X\alpha,L[123X).[133X
+  combination of [23XL[123X with the coefficients in [10XCoefficientsOfMorphism[110X([23X\alpha[123X).[133X
   
-  [1X3.16-22 CoefficientsOfMorphismWithGivenBasisOfExternalHom[101X
-  
-  [33X[1;0Y[29X[2XCoefficientsOfMorphismWithGivenBasisOfExternalHom[102X( [3Xalpha[103X, [3XL[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya list of elements in [23Xk[123X[133X
-  
-  [33X[0;0YThe  arguments are a morphism [23X\alpha: a \to b[123X in a [23Xk[123X-linear category [23XC[123X and a
-  list  [3XL[103X[10X=BasisOfExternalHom[110X([23Xa,b[123X).  The  output  is  a list of coefficients of
-  [23X\alpha[123X with respect to [23XL[123X.[133X
-  
-  [1X3.16-23 CoefficientsOfMorphism[101X
+  [1X3.16-22 CoefficientsOfMorphism[101X
   
   [33X[1;0Y[29X[2XCoefficientsOfMorphism[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya list of elements in [23Xk[123X[133X

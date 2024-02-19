@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2024.02-01
+                                   2024.02-02
   
   
-                                13 February 2024
+                                19 February 2024
   
   
                                Sebastian Gutsche
@@ -305,8 +305,7 @@
       3.16-19 ExtendRangeOfHomomorphismStructureByIdentityAsFullEmbedding
       3.16-20 MorphismsOfExternalHom
       3.16-21 BasisOfExternalHom
-      3.16-22 CoefficientsOfMorphismWithGivenBasisOfExternalHom
-      3.16-23 CoefficientsOfMorphism
+      3.16-22 CoefficientsOfMorphism
     3.17 [33X[0;0YSimplified Morphisms[133X
       3.17-1 SimplifyMorphism
       3.17-2 SimplifySource
@@ -887,12 +886,10 @@
       8.3-2 MakeDerivationGraph
       8.3-3 AddOperationsToDerivationGraph
       8.3-4 AddDerivation
-      8.3-5 AddDerivation
-      8.3-6 AddDerivationToCAP
-      8.3-7 AddWithGivenDerivationPairToCAP
-      8.3-8 Operations
-      8.3-9 DerivationsUsingOperation
-      8.3-10 DerivationsOfOperation
+      8.3-5 AddDerivationToCAP
+      8.3-6 Operations
+      8.3-7 DerivationsUsingOperation
+      8.3-8 DerivationsOfOperation
     8.4 [33X[0;0YManaging Derivations in a Category[133X
       8.4-1 IsOperationWeightList
       8.4-2 MakeOperationWeightList
