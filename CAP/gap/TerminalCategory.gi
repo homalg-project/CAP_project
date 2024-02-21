@@ -113,8 +113,11 @@ end );
 #########################################
 
 ##
-InstallGlobalFunction( TerminalCategoryWithSingleObject,
-  function( )
+InstallGlobalFunction( TerminalCategoryWithSingleObject, FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS )
     local name, category_filter, category_object_filter, category_morphism_filter,
           create_func_object, create_func_morphism,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
@@ -239,11 +242,15 @@ InstallGlobalFunction( TerminalCategoryWithSingleObject,
         
     end );
     
-    Finalize( T );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        
+        Finalize( T );
+        
+    fi;
     
     return T;
     
-end );
+end ) );
 
 ##
 InstallMethod( UniqueObject,
@@ -280,8 +287,11 @@ end );
 #########################################
 
 ##
-InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
-  function( )
+InstallGlobalFunction( TerminalCategoryWithMultipleObjects, FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS )
     local name, category_filter, category_object_filter, category_morphism_filter,
           create_func_object, create_func_morphism,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
@@ -465,11 +475,15 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
         
     end );
     
-    Finalize( T );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        
+        Finalize( T );
+        
+    fi;
     
     return T;
     
-end );
+end ) );
 
 ################################
 ##
