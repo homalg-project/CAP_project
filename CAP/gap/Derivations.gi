@@ -960,7 +960,7 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
     
     possible_derivations := List( DerivationsOfOperation( CAP_INTERNAL_DERIVATION_GRAPH, name ), d -> rec( derivation := d ) );
     
-    for final_derivation in CAP_INTERNAL_FINAL_DERIVATION_LIST.final_derivation_list do
+    for final_derivation in CAP_INTERNAL_FINAL_DERIVATION_LIST do
         
         for current_derivation in final_derivation.derivations do
             
