@@ -3,8 +3,7 @@
 #
 # Implementations
 #
-InstallValue( CAP_INTERNAL_FINAL_DERIVATION_LIST,
-              rec( final_derivation_list := [ ] ) );
+InstallValue( CAP_INTERNAL_FINAL_DERIVATION_LIST, [ ] );
 
 BindGlobal( "CAP_INTERNAL_FINAL_DERIVATION_SANITY_CHECK",
   
@@ -291,7 +290,7 @@ InstallGlobalFunction( AddFinalDerivationBundle, FunctionWithNamedArguments(
     
     CAP_INTERNAL_FINAL_DERIVATION_SANITY_CHECK( final_derivation );
     
-    Add( CAP_INTERNAL_FINAL_DERIVATION_LIST.final_derivation_list, final_derivation );
+    Add( CAP_INTERNAL_FINAL_DERIVATION_LIST, final_derivation );
     
 end ) );
 
@@ -342,7 +341,7 @@ InstallMethod( Finalize,
     else
         # =#
         
-        derivation_list := ShallowCopy( CAP_INTERNAL_FINAL_DERIVATION_LIST.final_derivation_list );
+        derivation_list := ShallowCopy( CAP_INTERNAL_FINAL_DERIVATION_LIST );
         
         #= comment for Julia
     fi;
