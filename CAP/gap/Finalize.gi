@@ -302,7 +302,7 @@ InstallMethod( Finalize,
     [ "FinalizeCategory", true ],
   ],
   function( CAP_NAMED_ARGUMENTS, category )
-    local derivation_list, weight_list, current_install, current_final_derivation, weight, old_weights, categorical_properties, diff, properties_with_logic, property, i, derivation, property_name;
+    local derivation_list, weight_list, current_install, current_final_derivation, weight, old_weights, categorical_properties, diff, properties_with_logic, property, i, derivation, operation, property_name;
     
     if IsFinalized( category ) then
         
@@ -461,6 +461,17 @@ InstallMethod( Finalize,
         fi;
         
     fi;
+    
+    # actually install normal derivations
+    for operation in Operations( DerivationGraph( weight_list ) ) do
+        
+        if DerivationOfOperation( weight_list, operation ) <> fail then
+            
+            InstallDerivationForCategory( DerivationOfOperation( weight_list, operation ), CurrentOperationWeight( weight_list, operation ), category );
+            
+        fi;
+        
+    od;
     
     SetIsFinalized( category, true );
     

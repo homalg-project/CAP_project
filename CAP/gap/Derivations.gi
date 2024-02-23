@@ -478,11 +478,9 @@ BindGlobal( "TryToInstallDerivation", function ( owl, d )
 
     if new_weight < current_weight or (new_weight = current_weight and current_derivation <> fail and new_pos < current_pos) then
         
-        if not IsIdenticalObj( current_derivation, d ) then
-            
-            InstallDerivationForCategory( d, new_weight, CategoryOfOperationWeightList( owl ) );
-            
-        fi;
+        # Previously, `InstallDerivationForCategory` was called at this point.
+        # However, this could lead to methods being overwritten if cheaper derivations become available while adding primitive installations to a category.
+        # Hence, we now install the derivations in `Finalize`.
         
         owl!.operation_weights.( target ) := new_weight;
         owl!.operation_derivations.( target ) := d;
