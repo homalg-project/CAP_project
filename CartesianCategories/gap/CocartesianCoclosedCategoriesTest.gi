@@ -291,7 +291,7 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
                 
             fi;
             
-            #####################################################
+            ##################################################
             #
             # exp_alpha_beta: Exp( b, c ) → Exp( a, d )
             # exp_beta_alpha: Exp( d, a ) → Exp( c, b )
@@ -299,32 +299,29 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             # exp_alpha_beta_op: Exp( a, d ) → Exp( b, c )
             # exp_beta_alpha_op: Exp( c, b ) → Exp( d, a )
             #
-            #####################################################
+            ##################################################
             #
             # coexp_alpha_beta: Coexp( a, d ) → Coexp( b, c )
             # coexp_beta_alpha: Coexp( c, b ) → Coexp( d, a )
             #
-            # coexp_alpha_beta_op: Coexp( b, c ) → Coexp( a, d )
-            # coexp_beta_alpha_op: Coexp( d, a ) → Coexp( c, b )
-            #
-            #####################################################
+            ##################################################
             
-            # Adjoint( Exp( b, c ) → Exp( a, d ) )  ==  Exp( b, c ) ⊔ a → d
+            # Adjoint( Coexp( a, d ) → Coexp( b, c ) )  ==  a → Coexp( b, c ) ⊔ d
             coexp_to_tensor_adjunction_on_coexp_alpha_beta := CoexponentialToCoproductLeftAdjunctMorphism( a, d, coexp_alpha_beta );
             
-            # Adjoint( Exp( d, a ) → Exp( c, b ) )  ==  Exp( d, a ) ⊔ c → b
+            # Adjoint( Coexp( c, b ) → Coexp( d, a ) )  ==  c → Coexp( d, a ) ⊔ b
             coexp_to_tensor_adjunction_on_coexp_beta_alpha := CoexponentialToCoproductLeftAdjunctMorphism( c, b, coexp_beta_alpha );
             
-            # Adjoint( Coexp( b, c ) → Coexp( a, d ) )  ==  b → Coexp( a, d ) ⊔ c
+            # Adjoint( Exp( a, d ) → Exp( b, c ) )  ==  Exp( a, d ) ⊔ b → c
             exp_to_tensor_adjunction_on_exp_alpha_beta_op := ExponentialToDirectProductLeftAdjunctMorphism( b_op, c_op, exp_alpha_beta_op );
             
-            # Adjoint( Coexp( d, a ) → Coexp( c, b ) )  ==  d → Coexp( c, b ) ⊔ a
+            # Adjoint( Exp( c, b ) → Exp( d, a ) )  ==  Exp( c, b ) ⊔ d → a
             exp_to_tensor_adjunction_on_exp_beta_alpha_op := ExponentialToDirectProductLeftAdjunctMorphism( d_op, a_op, exp_beta_alpha_op );
             
-            # b → Coexp( a, d ) ⊔ c  ==  op( Exp( d, a ) ⊔ c → b )
+            # Exp( a, d ) ⊔ b → c  ==  op( c → Coexp( d, a ) ⊔ b )
             Assert( 0, IsCongruentForMorphisms( exp_to_tensor_adjunction_on_exp_alpha_beta_op, Opposite( opposite, coexp_to_tensor_adjunction_on_coexp_beta_alpha ) ) );
             
-            # d → Coexp( c, b ) ⊔ a  ==  op( Exp( b, c ) ⊔ a → d )
+            # Exp( c, b ) ⊔ d → a  ==  op( a → Coexp( b, c ) ⊔ d )
             Assert( 0, IsCongruentForMorphisms( exp_to_tensor_adjunction_on_exp_beta_alpha_op, Opposite( opposite, coexp_to_tensor_adjunction_on_coexp_alpha_beta ) ) );
             
         fi;

@@ -148,6 +148,7 @@ ExponentialToDirectProductRightAdjunctMorphismWithGivenDirectProduct := rec(
   dual_operation := "CoexponentialToCoproductRightAdjunctMorphismWithGivenCoproduct",
   dual_preprocessor_func := { cat, a, c, g, s } -> NTuple( 5, Opposite( cat ), Opposite( c ), Opposite( a ), Opposite( g ), Opposite( s ) ),
   dual_arguments_reversed := false,
+  # Test in CartesianClosedCategoriesTestWithGiven
 ),
 
 CartesianLeftEvaluationMorphism := rec(

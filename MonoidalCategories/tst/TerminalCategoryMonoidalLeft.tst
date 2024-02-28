@@ -143,6 +143,10 @@ gap> LeftClosedMonoidalCategoriesTest( T, opposite, a, b, c, d, alpha, beta, gam
 gap> LeftClosedMonoidalCategoriesTest( T, opposite_primitive, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
 
 #
+gap> LeftClosedMonoidalCategoriesTestWithGiven( T, opposite, a, b, c, d, alpha, beta );;
+gap> LeftClosedMonoidalCategoriesTestWithGiven( T, opposite_primitive, a, b, c, d, alpha, beta );;
+
+#
 gap> z := ZeroObject( T );;
 
 #
@@ -164,6 +168,10 @@ gap> zeta := MorphismConstructor( u, "f_uhomaz", hom_az );;
 #
 gap> LeftClosedMonoidalCategoriesTest( T, opposite, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
 gap> LeftClosedMonoidalCategoriesTest( T, opposite_primitive, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
+
+#
+gap> LeftClosedMonoidalCategoriesTestWithGiven( T, opposite, z, a, a, z, alpha, beta );;
+gap> LeftClosedMonoidalCategoriesTestWithGiven( T, opposite_primitive, z, a, a, z, alpha, beta );;
 
 #
 ##############################################
@@ -199,6 +207,10 @@ gap> LeftCoclosedMonoidalCategoriesTest( T, opposite, a, b, c, d, alpha, beta, g
 gap> LeftCoclosedMonoidalCategoriesTest( T, opposite_primitive, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
 
 #
+gap> LeftCoclosedMonoidalCategoriesTestWithGiven( T, opposite, a, b, c, d, alpha, beta );;
+gap> LeftCoclosedMonoidalCategoriesTestWithGiven( T, opposite_primitive, a, b, c, d, alpha, beta );;
+
+#
 gap> z := ZeroObject( T );;
 
 #
@@ -220,6 +232,10 @@ gap> zeta := MorphismConstructor( cohom_az, "cohomazu", u );;
 #
 gap> LeftCoclosedMonoidalCategoriesTest( T, opposite, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
 gap> LeftCoclosedMonoidalCategoriesTest( T, opposite_primitive, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
+
+#
+gap> LeftCoclosedMonoidalCategoriesTestWithGiven( T, opposite, z, a, a, z, alpha, beta );;
+gap> LeftCoclosedMonoidalCategoriesTestWithGiven( T, opposite_primitive, z, a, a, z, alpha, beta );;
 
 #
 ##############################################

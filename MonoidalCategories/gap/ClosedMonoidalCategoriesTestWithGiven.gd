@@ -1,11 +1,8 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# CartesianCategories: Cartesian and cocartesian categories and various subdoctrines
+# MonoidalCategories: Monoidal and monoidal (co)closed categories
 #
 # Declarations
 #
-# THIS FILE WAS AUTOMATICALLY GENERATED
-
-
 
 #! @Chapter Examples and Tests
 
@@ -17,13 +14,9 @@
 #! * objects $a, b, c, d$
 #! * a morphism $\alpha: a \rightarrow b$
 #! * a morphism $\beta: c \rightarrow d$
-#! * a morphism $\gamma: 1 \rightarrow a \sqcup b$
-#! * a morphism $\delta: 1 \rightarrow c \sqcup d$
-#! * a morphism $\epsilon: \mathrm{coHom}(a,b) \rightarrow 1$
-#! * a morphism $\zeta: \mathrm{coHom}(c,d) \rightarrow 1$
-#! This function checks for every operation
-#! declared in CocartesianCoclosedCategories.gd
-#! if it is computable in the CAP category $cat$.
+#! This function checks for some *WithGiven operations
+#! declared in ClosedMonoidalCategories.gd
+#! if they are computable in the CAP category $cat$.
 #! If yes, then the operation is executed
 #! with the parameters given above and
 #! compared to the equivalent computation in
@@ -37,5 +30,5 @@
 #!    installed operations in $cat$.
 #!    The advantage is, that more derivations might be tested.
 #!    On the downside, this might test fewer dual_pre/postprocessor_funcs.
-#! @Arguments cat, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta
-DeclareGlobalFunction( "CocartesianCoclosedCategoriesTest" );
+#! @Arguments cat, a, b, c, d, alpha, beta
+DeclareGlobalFunction( "ClosedMonoidalCategoriesTestWithGiven" );

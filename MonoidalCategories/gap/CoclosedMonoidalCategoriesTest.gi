@@ -288,7 +288,7 @@ InstallGlobalFunction( "CoclosedMonoidalCategoriesTest",
                 
             fi;
             
-            #####################################################
+            ##################################################
             #
             # hom_alpha_beta: Hom( b, c ) → Hom( a, d )
             # hom_beta_alpha: Hom( d, a ) → Hom( c, b )
@@ -296,32 +296,29 @@ InstallGlobalFunction( "CoclosedMonoidalCategoriesTest",
             # hom_alpha_beta_op: Hom( a, d ) → Hom( b, c )
             # hom_beta_alpha_op: Hom( c, b ) → Hom( d, a )
             #
-            #####################################################
+            ##################################################
             #
             # cohom_alpha_beta: coHom( a, d ) → coHom( b, c )
             # cohom_beta_alpha: coHom( c, b ) → coHom( d, a )
             #
-            # cohom_alpha_beta_op: coHom( b, c ) → coHom( a, d )
-            # cohom_beta_alpha_op: coHom( d, a ) → coHom( c, b )
-            #
-            #####################################################
+            ##################################################
             
-            # Adjoint( Hom( b, c ) → Hom( a, d ) )  ==  Hom( b, c ) ⊗ a → d
+            # Adjoint( coHom( a, d ) → coHom( b, c ) )  ==  a → coHom( b, c ) ⊗ d
             cohom_to_tensor_adjunction_on_cohom_alpha_beta := InternalCoHomToTensorProductLeftAdjunctMorphism( a, d, cohom_alpha_beta );
             
-            # Adjoint( Hom( d, a ) → Hom( c, b ) )  ==  Hom( d, a ) ⊗ c → b
+            # Adjoint( coHom( c, b ) → coHom( d, a ) )  ==  c → coHom( d, a ) ⊗ b
             cohom_to_tensor_adjunction_on_cohom_beta_alpha := InternalCoHomToTensorProductLeftAdjunctMorphism( c, b, cohom_beta_alpha );
             
-            # Adjoint( Cohom( b, c ) → Cohom( a, d ) )  ==  b → Cohom( a, d ) ⊗ c
+            # Adjoint( Hom( a, d ) → Hom( b, c ) )  ==  Hom( a, d ) ⊗ b → c
             hom_to_tensor_adjunction_on_hom_alpha_beta_op := InternalHomToTensorProductLeftAdjunctMorphism( b_op, c_op, hom_alpha_beta_op );
             
-            # Adjoint( Cohom( d, a ) → Cohom( c, b ) )  ==  d → Cohom( c, b ) ⊗ a
+            # Adjoint( Hom( c, b ) → Hom( d, a ) )  ==  Hom( c, b ) ⊗ d → a
             hom_to_tensor_adjunction_on_hom_beta_alpha_op := InternalHomToTensorProductLeftAdjunctMorphism( d_op, a_op, hom_beta_alpha_op );
             
-            # b → coHom( a, d ) ⊗ c  ==  op( Hom( d, a ) ⊗ c → b )
+            # Hom( a, d ) ⊗ b → c  ==  op( c → coHom( d, a ) ⊗ b )
             Assert( 0, IsCongruentForMorphisms( hom_to_tensor_adjunction_on_hom_alpha_beta_op, Opposite( opposite, cohom_to_tensor_adjunction_on_cohom_beta_alpha ) ) );
             
-            # d → coHom( c, b ) ⊗ a  ==  op( Hom( b, c ) ⊗ a → d )
+            # Hom( c, b ) ⊗ d → a  ==  op( a → coHom( b, c ) ⊗ d )
             Assert( 0, IsCongruentForMorphisms( hom_to_tensor_adjunction_on_hom_beta_alpha_op, Opposite( opposite, cohom_to_tensor_adjunction_on_cohom_alpha_beta ) ) );
             
         fi;
