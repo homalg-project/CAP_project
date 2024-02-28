@@ -6,10 +6,10 @@
                  [1X Monoidal and monoidal (co)closed categories [101X
   
   
-                                   2024.02-03
+                                   2024.02-04
   
   
-                                19 February 2024
+                                28 February 2024
   
   
                                 Mohamed Barakat
@@ -532,13 +532,17 @@
       2.1-1 AdditiveMonoidalCategoriesTest
       2.1-2 BraidedMonoidalCategoriesTest
       2.1-3 ClosedMonoidalCategoriesTest
-      2.1-4 CoclosedMonoidalCategoriesTest
-      2.1-5 LeftClosedMonoidalCategoriesTest
-      2.1-6 LeftCoclosedMonoidalCategoriesTest
-      2.1-7 MonoidalCategoriesTensorProductAndUnitTest
-      2.1-8 MonoidalCategoriesTest
-      2.1-9 RigidSymmetricClosedMonoidalCategoriesTest
-      2.1-10 RigidSymmetricCoclosedMonoidalCategoriesTest
+      2.1-4 ClosedMonoidalCategoriesTestWithGiven
+      2.1-5 CoclosedMonoidalCategoriesTest
+      2.1-6 CoclosedMonoidalCategoriesTestWithGiven
+      2.1-7 LeftClosedMonoidalCategoriesTest
+      2.1-8 LeftClosedMonoidalCategoriesTestWithGiven
+      2.1-9 LeftCoclosedMonoidalCategoriesTest
+      2.1-10 LeftCoclosedMonoidalCategoriesTestWithGiven
+      2.1-11 MonoidalCategoriesTensorProductAndUnitTest
+      2.1-12 MonoidalCategoriesTest
+      2.1-13 RigidSymmetricClosedMonoidalCategoriesTest
+      2.1-14 RigidSymmetricCoclosedMonoidalCategoriesTest
     2.2 [33X[0;0YBasics[133X
   3 [33X[0;0YCode Generation for Monodial Categories[133X
     3.1 [33X[0;0YMonoidal Categories[133X
