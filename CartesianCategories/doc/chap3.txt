@@ -147,7 +147,11 @@
   
   [33X[1;0Y[29X[2XCocartesianCoclosedCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X, [3Xdelta[103X, [3Xepsilon[103X, [3Xzeta[103X ) [32X function[133X
   
-  [33X[0;0YThe arguments are a CAP category [23Xcat[123X objects [23Xa, b, c, d[123X[133X
+  [33X[0;0YThe arguments are[133X
+  
+  [30X    [33X[0;6Ya CAP category [23Xcat[123X[133X
+  
+  [30X    [33X[0;6Yobjects [23Xa, b, c, d[123X[133X
   
   [30X    [33X[0;6Ya morphism [23X\alpha: a \rightarrow b[123X[133X
   

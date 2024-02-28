@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "CartesianCategories",
 Subtitle := "Cartesian and cocartesian categories and various subdoctrines",
-Version := "2024.02-03",
-Date := "2024-02-08",
-Date := "2024-02-08",
+Version := "2024.02-04",
+Date := "2024-02-28",
+Date := "2024-02-28",
 License := "GPL-2.0-or-later",
 
 Persons := [
