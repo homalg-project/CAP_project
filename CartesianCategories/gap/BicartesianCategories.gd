@@ -62,3 +62,16 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteCocompleteCategory :=
                   "UniversalMorphismFromCoequalizerWithGivenCoequalizer",
                   ],
                   CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory ) );
+
+#! @Description
+#!  The property of the category <A>C</A> being finite bicomplete.
+#! @Arguments C
+DeclareProperty( "IsFiniteBicompleteCategory", IsCapCategory );
+
+AddCategoricalProperty( [ "IsFiniteBicompleteCategory", "IsFiniteBicompleteCategory" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteBicompleteCategory :=
+  SortedList(
+          Concatenation(
+                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteCompleteCategory,
+                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteCocompleteCategory ) );
