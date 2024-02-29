@@ -33,8 +33,11 @@ InstallTrueMethod( IsCocartesianCategory, IsFiniteCocompleteCategory );
 
 InstallTrueMethod( IsBicartesianCategory, IsAdditiveCategory );
 
-InstallTrueMethod( IsFiniteCompleteCategory, IsAbelianCategory );
-InstallTrueMethod( IsFiniteCocompleteCategory, IsAbelianCategory );
+InstallTrueMethod( IsFiniteBicompleteCategory, IsFiniteCompleteCategory and IsFiniteCocompleteCategory );
+InstallTrueMethod( IsFiniteCompleteCategory, IsFiniteBicompleteCategory );
+InstallTrueMethod( IsFiniteCocompleteCategory, IsFiniteBicompleteCategory );
+
+InstallTrueMethod( IsFiniteBicompleteCategory, IsAbelianCategory );
 
 ##
 InstallMethodForCompilerForCAP( BinaryDirectProduct,
