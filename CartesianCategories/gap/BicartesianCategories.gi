@@ -33,7 +33,9 @@ InstallTrueMethod( IsCocartesianCategory, IsFiniteCocompleteCategory );
 
 InstallTrueMethod( IsBicartesianCategory, IsAdditiveCategory );
 
+#= comment for Julia
 InstallTrueMethod( IsFiniteBicompleteCategory, IsFiniteCompleteCategory and IsFiniteCocompleteCategory );
+# =#
 InstallTrueMethod( IsFiniteCompleteCategory, IsFiniteBicompleteCategory );
 InstallTrueMethod( IsFiniteCocompleteCategory, IsFiniteBicompleteCategory );
 
