@@ -22,12 +22,12 @@ BindGlobal( "CAP_INTERNAL_CREATE_Cat",
   function(  )
     local cat;
     
-    cat := CreateCapCategory( "Cat",
-                              IsCapCategory,
-                              IsCapCategoryAsCatObject,
-                              IsCapFunctor,
-                              IsCapNaturalTransformation
-                              : is_computable := false );
+    cat := CreateCapCategoryWithDataTypes(
+        "Cat", IsCapCategory,
+        IsCapCategoryAsCatObject, IsCapFunctor, IsCapNaturalTransformation,
+        fail, fail, fail
+        : is_computable := false
+    );
     
     INSTALL_CAP_CAT_FUNCTIONS( cat );
     
