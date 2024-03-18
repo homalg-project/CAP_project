@@ -325,9 +325,9 @@
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">distributive := DummyCategory( rec(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  list_of_operations_to_install :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    Concatenation(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    DuplicateFreeList( Concatenation(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">      CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianClosedCategory,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">      CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory  ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory ) ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  properties := [ "IsBicartesianClosedCategory", "IsSkeletalCategory" ] ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InfoOfInstalledOperationsOfCategory( distributive );</span>
 21 primitive operations were used to derive 121 operations for this category \
