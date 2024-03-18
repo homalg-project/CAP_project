@@ -9,9 +9,9 @@ LoadPackage( "CartesianCategories", false );
 
 distributive := DummyCategory( rec(
   list_of_operations_to_install :=
-    Concatenation(
+    DuplicateFreeList( Concatenation(
       CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianClosedCategory,
-      CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory  ),
+      CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory ) ),
   properties := [ "IsBicartesianClosedCategory", "IsSkeletalCategory" ] ) );;
 
 InfoOfInstalledOperationsOfCategory( distributive );
