@@ -113,6 +113,21 @@ Dependencies := rec(
   ExternalConditions := [ ],
 ),
 
+Extensions := [
+  rec(
+    needed := [ [ "FinSetsForCAP", ">= 2023.07-03" ] ],
+    filename := "gap/GroupsAsCats.gi",
+  ),
+  rec(
+    needed := [ [ "FinSetsForCAP", ">= 2023.07-03" ] ],
+    filename := "gap/LinearClosure.gi",
+  ),
+  rec(
+    needed := [ [ "FinSetsForCAP", ">= 2023.07-03" ] ],
+    filename := "gap/ProSetsAsCats.gi",
+  ),
+],
+
 AvailabilityTest := function()
         return true;
     end,
