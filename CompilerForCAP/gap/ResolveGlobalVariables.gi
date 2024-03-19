@@ -109,16 +109,6 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
                     # normalize to the "official" name
                     name := NameFunction( value );
                     
-                    # in GAP 4.11 and GAP 4.13, "MatElm" points to "[,]", in GAP 4.12 it's the other way round
-                    if name = "MatElm" then
-                        
-                        # this code is only executed with GAP 4.12, but coverage information is only uploaded for GAP master
-                        Assert( 0, IsIdenticalObj( \[\,\], MatElm ) );
-                        
-                        name := "[,]";
-                        
-                    fi;
-                    
                     # `IsBoundGlobal` calls `CheckGlobalName`, which warns about names containing characters not in `IdentifierLetters`.
                     # This is expected for operations in CAP_JIT_INTERNAL_OPERATION_TO_SYNTAX_TREE_TRANSLATIONS, so we avoid IsBoundGlobal in this case.
                     if name <> tree.gvar and (IsBound( CAP_JIT_INTERNAL_OPERATION_TO_SYNTAX_TREE_TRANSLATIONS.(name) ) or IsBoundGlobal( name )) and IsIdenticalObj( value, ValueGlobal( name ) ) then
