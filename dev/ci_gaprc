@@ -1,3 +1,5 @@
+SetUserPreference( "ShortBanners", true );
+
 # Prefer GAPInfo.UserGapRoot over other package directories to prevent accidentally testing package
 # versions distributed with GAP.
 
