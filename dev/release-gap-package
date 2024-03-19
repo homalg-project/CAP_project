@@ -239,7 +239,9 @@ command -v git >/dev/null 2>&1 ||
     error "the 'git' command was not found, please install it"
 
 if [ "x$PYTHON" != x ] ; then
-    :
+    if ! command -v "$PYTHON" >/dev/null 2>&1; then
+      error "Could not execute python from PYTHON environment variable"
+    fi
 elif command -v python >/dev/null 2>&1; then
     PYTHON=python
 elif command -v python3 >/dev/null 2>&1; then
@@ -361,6 +363,7 @@ fi
 #
 # Determine GitHub repository and username, and the current branch
 #
+if [ $ONLY_TARBALL = no ] ; then
 notice "Using GitHub repository $REPO"
 
 if [ "x$GITHUB_USER" = x ] ; then
@@ -371,11 +374,13 @@ if [ "x$GITHUB_USER" = x ] ; then
 fi
 notice "Using GitHub username $GITHUB_USER"
 
-if [ "x$ONLY_TARBALL" = xno ] ; then
-    BRANCH=$(git symbolic-ref -q --short HEAD)
-    notice "Using branch $BRANCH"
+BRANCH=$(git symbolic-ref -q --short HEAD || echo)
+if [ "x$BRANCH" = x ] ; then
+    notice "no branch! Cannot proceed, exiting."
+    exit 1
 fi
-
+notice "Using branch $BRANCH"
+fi
 
 ######################################################################
 #
@@ -507,7 +512,9 @@ find . -name .DS_Store -exec rm -f {} +
 # * perform additional sanity checks;
 # * ...
 if [ "x$RELEASE_SCRIPT" != x ] ; then
-	. "$RELEASE_SCRIPT"
+    . "$RELEASE_SCRIPT"
+    # do not delete the custom release script since it might be reused, for example by additional packages of a monorepo
+    # if it should be deleted, it can always simply delete itself
 elif [ -f .release ] ; then
     . ./.release
     rm -f .release
@@ -673,7 +680,7 @@ echo ""
 
 for PDFFile in $PDFFiles ; do
     FULLNAME="$TMP_DIR/$BASENAME/$PDFFile"
-    UPLOADNAME=$PKG-$VERSION-$(echo "${PDFFile#doc/}" | sed 's;/;-;g')
+    UPLOADNAME=$BASENAME-$(echo "${PDFFile#doc/}" | sed 's;/;-;g')
     if [ ! -f "$FULLNAME" ] ; then
         error "could not find PDF"
     fi

@@ -106,11 +106,15 @@ Dependencies := rec(
                            [ "CAP", ">= 2023.10-07" ],
                            [ "MonoidalCategories", ">= 2024.02-02" ],
                            ],
-  SuggestedOtherPackages := [
-    [ "FreydCategoriesForCAP", ">= 2024.01-04" ],
-  ],
   ExternalConditions := [ ],
 ),
+
+Extensions := [
+  rec(
+    needed := [ [ "FreydCategoriesForCAP", ">= 2024.01-04" ] ],
+    filename := "gap/MatrixCategoryAsCategoryOfRows.gi",
+  ),
+],
 
 AvailabilityTest := function()
         return true;

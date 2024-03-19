@@ -4,11 +4,7 @@
 # Reading the declaration part of the package.
 #
 
-#= comment for Julia
-if IsBound( WriteFileForMonoidalStructure ) then
 ReadPackage( "CartesianCategories", "gap/Tools.gd" );
-fi;
-# =#
 
 ## Initial category
 
