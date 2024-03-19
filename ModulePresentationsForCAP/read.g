@@ -23,9 +23,3 @@ ReadPackage( "ModulePresentationsForCAP", "gap/ModulePresentationFunctors.gi" );
 ReadPackage( "ModulePresentationsForCAP", "gap/ModulePresentationNaturalTransformations.gi" );
 
 ReadPackage( "ModulePresentationsForCAP", "gap/Tools.gi" );
-
-if IsPackageMarkedForLoading( "FreydCategoriesForCAP", ">= 2021.12-04" ) then
-    
-    ReadPackage( "ModulePresentationsForCAP", "gap/ModulePresentationsAsFreydCategoryOfCategoryOfRowsOrColumns.gi" );
-    
-fi;

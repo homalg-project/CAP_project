@@ -32,15 +32,6 @@ ReadPackage( "FreydCategoriesForCAP", "gap/AdelmanCategory.gi" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/GradedModulePresentationsByFreyd/GradedModulePresentationsByFreyd.gi" );
 
-if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" ) then
-    ReadPackage( "FreydCategoriesForCAP", "gap/GroupsAsCats.gi" );
-    
-    ReadPackage( "FreydCategoriesForCAP", "gap/LinearClosure.gi" );
-    
-    ReadPackage( "FreydCategoriesForCAP", "gap/ProSetsAsCats.gi" );
-    
-fi;
-
 ReadPackage( "FreydCategoriesForCAP", "gap/RingsAsAbCats.gi" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/GradeFiltration.gi" );

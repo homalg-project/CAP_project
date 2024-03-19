@@ -106,6 +106,13 @@ Dependencies := rec(
   ExternalConditions := [ ],
 ),
 
+Extensions := [
+  rec(
+    needed := [ [ "MonoidalCategories", ">= 2024.02-01" ] ],
+    filename := "gap/Tools.gi",
+  ),
+],
+
 AvailabilityTest := function()
         return true;
     end,
