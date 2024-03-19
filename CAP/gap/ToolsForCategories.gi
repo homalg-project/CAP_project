@@ -5,6 +5,9 @@
 #
 
 ##
+# some options should affect the whole function stack and should hence not be consumed by FunctionWithNamedArguments
+BindGlobal( "CAP_INTERNAL_GLOBAL_OPTIONS", [ "no_precompiled_code" ] );
+
 InstallGlobalFunction( "FunctionWithNamedArguments", function ( specification, func )
     
     Assert( 0, IsList( specification ) );
@@ -33,7 +36,12 @@ InstallGlobalFunction( "FunctionWithNamedArguments", function ( specification, f
             if IsBound( current_options.(s[1]) ) then
                 
                 CAP_NAMED_ARGUMENTS.(s[1]) := current_options.(s[1]);
-                Unbind( current_options.(s[1]) );
+                
+                if not s[1] in CAP_INTERNAL_GLOBAL_OPTIONS then
+                    
+                    Unbind( current_options.(s[1]) );
+                    
+                fi;
                 
             else
                 
