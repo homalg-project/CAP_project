@@ -7,9 +7,13 @@
 gap> PushOptions( rec( OnlyNeeded := true ) );
 gap> package_loading_info_level := InfoLevel( InfoPackageLoading );;
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_ERROR );;
+gap> LoadPackage( "FreydCategoriesForCAP", false );
+true
 gap> LoadPackage( "LinearAlgebraForCAP", false );
 true
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_INFO );;
+gap> LoadPackage( "FreydCategoriesForCAP" );
+true
 gap> LoadPackage( "LinearAlgebraForCAP" );
 true
 gap> SetInfoLevel( InfoPackageLoading, package_loading_info_level );;
