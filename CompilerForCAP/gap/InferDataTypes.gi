@@ -184,16 +184,6 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_I
     # normalize to the "official" name
     gvar := NameFunction( ValueGlobal( gvar ) );
     
-    # in GAP 4.11 and GAP 4.13, "MatElm" points to "[,]", in GAP 4.12 it's the other way round
-    if gvar = "MatElm" then
-        
-        # this code is only executed with GAP 4.12, but coverage information is only uploaded for GAP master
-        Assert( 0, IsIdenticalObj( \[\,\], MatElm ) );
-        
-        gvar := "[,]";
-        
-    fi;
-    
     input_filters := List( input_types, type -> type.filter );
     
     if IsCategory( ValueGlobal( gvar ) ) and Length( input_filters ) = 1 then
