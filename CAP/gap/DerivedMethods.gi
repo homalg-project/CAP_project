@@ -2297,6 +2297,58 @@ end : CategoryFilter := cat -> HasIsLocallyOfFiniteInjectiveDimension( cat ) and
 ###########################
 
 ##
+AddDerivationToCAP( InitialObject,
+                    "InitialObject as the empty coproduct",
+                    [ [ Coproduct, 1 ] ],
+                    
+  function( cat )
+    
+    return Coproduct( cat, CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( cat ) ) ) );
+    
+end : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true );
+
+##
+AddDerivationToCAP( UniversalMorphismFromInitialObjectWithGivenInitialObject,
+                    "UniversalMorphismFromInitialObjectWithGivenInitialObject as the universal morphism from the empty coproduct",
+                    [ [ UniversalMorphismFromCoproductWithGivenCoproduct, 1 ] ],
+                    
+  function( cat, target, initial_object )
+    
+    return UniversalMorphismFromCoproductWithGivenCoproduct( cat,
+                   CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( cat ) ) ),
+                   target,
+                   CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( cat ) ) ),
+                   initial_object );
+    
+end : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true );
+
+##
+AddDerivationToCAP( TerminalObject,
+                    "TerminalObject as the empty direct product",
+                    [ [ DirectProduct, 1 ] ],
+                    
+  function( cat )
+    
+    return DirectProduct( cat, CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( cat ) ) ) );
+    
+end : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true );
+
+##
+AddDerivationToCAP( UniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
+                    "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject as the universal morphism into the empty direct product",
+                    [ [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 1 ] ],
+                    
+  function( cat, source, terminal_object )
+    
+    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat,
+                   CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( cat ) ) ),
+                   source,
+                   CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( cat ) ) ),
+                   terminal_object );
+    
+end : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true );
+
+##
 AddDerivationToCAP( KernelObject,
                     "KernelObject as the source of KernelEmbedding",
                     [ [ KernelEmbedding, 1 ] ],
