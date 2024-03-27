@@ -715,7 +715,7 @@ fi
 # BSD and GNU make.
 for f in ./*/*.htm* ; do
   sed \
-    -e 's;href="../../../doc/;href="https://www.gap-system.org/Manuals/doc/;g' \
+    -e 's;href="../../../doc/;href="https://docs.gap-system.org/doc/;g' \
     -e 's;href="../../../pkg/GAPDoc[^\/]*/doc/;href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc/doc/;g' \
     -e 's;href="../../../pkg/gapdoc[^\/]*/doc/;href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc/doc/;g' \
     "$f" > "$f.bak"
