@@ -1,7 +1,7 @@
 name: ActionsForCAP
-version: "2023.08-02"
+version: "2024.04-01"
 license: "GPL-2.0-or-later"
-date: 2023-08-29
+date: 2024-04-04
 description: |
     Actions and Coactions for CAP
 
@@ -17,12 +17,12 @@ maintainers:
     - name: Sebastian Posur
       url: https://sebastianpos.github.io
 
-GAP: ">= 4.12.1"
+GAP: ">= 4.13.0"
 
 needed-pkgs:
     - name: "GAPDoc"
       version: ">= 1.5"
-      url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
+      url: "https://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
     - name: "CAP"
       version: ">= 2019.09.16"
       url: "https://homalg-project.github.io/pkg/CAP"
@@ -39,11 +39,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/ActionsForCAP/PackageI
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-2023.08-02/ActionsForCAP-2023.08-02.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-2024.04-01/ActionsForCAP-2024.04-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-2023.08-02/ActionsForCAP-2023.08-02.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-2024.04-01/ActionsForCAP-2024.04-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-2023.08-02/ActionsForCAP-2023.08-02-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-2024.04-01/ActionsForCAP-2024.04-01-manual.pdf
 
 abstract: |
 
@@ -52,28 +52,28 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>GP29</span>]   <b class='BibAuthor'>Gutsche, S. and Posur, S.</b>,
+    [<span class='BibKey'>GP04</span>]   <b class='BibAuthor'>Gutsche, S. and Posur, S.</b>,
      <i class='BibTitle'>ActionsForCAP, Actions and Coactions for CAP,
-             Version 2023.08-02</i>
-     (<span class='BibYear'>8-29</span>)<br />
+             Version 2024.04-01</i>
+     (<span class='BibYear'>4-04</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/ActionsForCAP">https://homalg-project.github.io/pkg/ActionsForCAP</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ ActionsForCAP2023.08-02,
+    @misc{ ActionsForCAP,
       author =           {Gutsche, S. and Posur, S.},
       title =            {{ActionsForCAP},   Actions   and  Coactions  for  CAP,
-                          {V}ersion 2023.08-02},
-      month =            {3-},
-      year =             {8-29},
+                          {V}ersion 2024.04\texttt{\symbol{45}}01},
+      month =            {4\texttt{\symbol{45}}},
+      year =             {4\texttt{\symbol{45}}04},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/ActionsForCAP}
-                          {\texttt{https://homalg-project.github.io/}\discretionary
+                          {\texttt{https://homalg\texttt{\symbol{45}}project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{ActionsForCAP}}},
-      printedkey =       {GP29}
+      printedkey =       {GP04}
     }
 
