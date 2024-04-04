@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "GroupRepresentationsForCAP",
 Subtitle := "Skeletal category of group representations for CAP",
-Version := "2024.02-01",
-Date := "2024-02-07",
+Version := "2024.04-01",
+Date := "2024-04-04",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -70,7 +70,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.12.1",
+  GAP := ">= 4.13.0",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "ToolsForHomalg", ">= 2020.09.01" ],
                            [ "CAP", ">= 2023.02-09" ],
