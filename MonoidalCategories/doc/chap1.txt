@@ -3832,8 +3832,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XIsomorphismFromLeftCoDualObjectToLeftInternalCoHomFromTensorUnit[110X.  [23XF:  ( a )
   \mapsto
-  \mathtt{IsomorphismFromLeftCoDualObjectToLeftInternalCoHomFromTensorUnit}(a)
-  .[133X
+  \mathtt{IsomorphismFromLeftCoDualObjectToLeftInternalCoHomFromTensorUnit}(a)[123X.[133X
   
   [1X1.14-141 AddIsomorphismFromLeftInternalCoHomFromTensorUnitToLeftCoDualObject[101X
   
@@ -3844,8 +3843,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XIsomorphismFromLeftInternalCoHomFromTensorUnitToLeftCoDualObject[110X.  [23XF:  ( a )
   \mapsto
-  \mathtt{IsomorphismFromLeftInternalCoHomFromTensorUnitToLeftCoDualObject}(a)
-  .[133X
+  \mathtt{IsomorphismFromLeftInternalCoHomFromTensorUnitToLeftCoDualObject}(a)[123X.[133X
   
   [1X1.14-142 AddIsomorphismFromLeftInternalCoHomToObject[101X
   
