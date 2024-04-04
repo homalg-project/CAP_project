@@ -1,7 +1,7 @@
 name: AttributeCategoryForCAP
-version: "2023.08-02"
+version: "2024.04-01"
 license: "GPL-2.0-or-later"
-date: 2023-08-29
+date: 2024-04-04
 description: |
     Automatic enhancement with attributes of a CAP category
 
@@ -17,12 +17,12 @@ maintainers:
     - name: Sebastian Gutsche
       url: http://wwwb.math.rwth-aachen.de/~gutsche
 
-GAP: ">= 4.12.1"
+GAP: ">= 4.13.0"
 
 needed-pkgs:
     - name: "GAPDoc"
       version: ">= 1.5"
-      url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
+      url: "https://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
     - name: "CAP"
       version: ">= 2023.02-04"
       url: "https://homalg-project.github.io/pkg/CAP"
@@ -36,11 +36,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/AttributeCategoryForCA
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/AttributeCategoryForCAP-2023.08-02/AttributeCategoryForCAP-2023.08-02.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/AttributeCategoryForCAP-2024.04-01/AttributeCategoryForCAP-2024.04-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/AttributeCategoryForCAP-2023.08-02/AttributeCategoryForCAP-2023.08-02.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/AttributeCategoryForCAP-2024.04-01/AttributeCategoryForCAP-2024.04-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/AttributeCategoryForCAP-2023.08-02/AttributeCategoryForCAP-2023.08-02-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/AttributeCategoryForCAP-2024.04-01/AttributeCategoryForCAP-2024.04-01-manual.pdf
 
 abstract: |
 
@@ -49,28 +49,29 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>PG29</span>]   <b class='BibAuthor'>Posur, S. and Gutsche, S.</b>,
+    [<span class='BibKey'>PG04</span>]   <b class='BibAuthor'>Posur, S. and Gutsche, S.</b>,
      <i class='BibTitle'>AttributeCategoryForCAP, Automatic enhancement with attributes of a CAP category,
-             Version 2023.08-02</i>
-     (<span class='BibYear'>8-29</span>)<br />
+             Version 2024.04-01</i>
+     (<span class='BibYear'>4-04</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/AttributeCategoryForCAP">https://homalg-project.github.io/pkg/AttributeCategoryForCAP</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ AttributeCategoryForCAP2023.08-02,
+    @misc{ AttributeCategoryForCAP,
       author =           {Posur, S. and Gutsche, S.},
       title =            {{AttributeCategoryForCAP},  Automatic enhancement with
-                          attributes of a CAP category, {V}ersion 2023.08-02},
-      month =            {3-},
-      year =             {8-29},
+                          attributes    of    a    CAP    category,    {V}ersion
+                          2024.04\texttt{\symbol{45}}01},
+      month =            {4\texttt{\symbol{45}}},
+      year =             {4\texttt{\symbol{45}}04},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/AttributeCategoryForCAP}
-                          {\texttt{https://homalg-project.github.io/}\discretionary
+                          {\texttt{https://homalg\texttt{\symbol{45}}project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{AttributeCategoryForCAP}}},
-      printedkey =       {PG29}
+      printedkey =       {PG04}
     }
 
