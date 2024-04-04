@@ -1173,8 +1173,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure[110X.
   [23XF:               (               alpha               )               \mapsto
-  \mathtt{InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure}(alpha)
-  .[133X
+  \mathtt{InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure}(alpha)[123X.[133X
   
   [1X7.6-83 AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects[101X
   
