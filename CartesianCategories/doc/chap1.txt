@@ -1309,8 +1309,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject[110X.  [23XF: ( a )
   \mapsto
-  \mathtt{IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject}(a)
-  .[133X
+  \mathtt{IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject}(a)[123X.[133X
   
   [1X1.4-56 AddIsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject[101X
   
@@ -1321,8 +1320,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XIsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject[110X.  [23XF: ( a )
   \mapsto
-  \mathtt{IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject}(a)
-  .[133X
+  \mathtt{IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject}(a)[123X.[133X
   
   [1X1.4-57 AddIsomorphismFromExponentialToObject[101X
   

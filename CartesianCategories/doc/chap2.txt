@@ -1322,8 +1322,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XIsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject[110X. [23XF: ( a
   )                                                                    \mapsto
-  \mathtt{IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject}(a)
-  .[133X
+  \mathtt{IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject}(a)[123X.[133X
   
   [1X2.4-56 AddIsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject[101X
   
@@ -1334,8 +1333,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XIsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject[110X. [23XF: ( a
   )                                                                    \mapsto
-  \mathtt{IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject}(a)
-  .[133X
+  \mathtt{IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject}(a)[123X.[133X
   
   [1X2.4-57 AddIsomorphismFromCoexponentialToObject[101X
   
