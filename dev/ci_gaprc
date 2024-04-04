@@ -1,3 +1,5 @@
+SetUserPreference( "ShortBanners", true );
+
 # Prefer GAPInfo.UserGapRoot over other package directories to prevent accidentally testing package
 # versions distributed with GAP.
 
@@ -7,16 +9,7 @@ FORCE_LOADING_FROM_USER_GAP_ROOT := function ( )
         package_info := GAPInfo.PackagesInfo.(name);
         pos := PositionProperty( package_info, info -> StartsWith( info.InstallationPath, GAPInfo.UserGapRoot ) );
         if pos <> fail then
-            # work around https://github.com/gap-system/gap/pull/5178
-            if IsBound( GAPInfo.PackagesLoaded.(name) ) then
-                if StartsWith( GAPInfo.PackagesLoaded.(name)[1], GAPInfo.UserGapRoot ) then
-                    continue;
-                else
-                    Error( "package already loaded at ", GAPInfo.PackagesLoaded.(name)[1] );
-                fi;
-            else
-                SetPackagePath( name, package_info[pos].InstallationPath );
-            fi;
+            SetPackagePath( name, package_info[pos].InstallationPath );
         fi;
     od;
 end;

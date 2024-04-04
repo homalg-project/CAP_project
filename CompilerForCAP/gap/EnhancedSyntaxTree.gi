@@ -998,8 +998,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
         else
             
             # replace by native syntax if possible
-            # do not do this for "[,]" because of a difference between GAP 4.12 and GAP 4.13 regarding the indentation (https://github.com/gap-system/gap/pull/5167)
-            if CapJitIsCallToGlobalFunction( tree, gvar -> IsBound( CAP_JIT_INTERNAL_OPERATION_TO_SYNTAX_TREE_TRANSLATIONS.(gvar) ) and gvar <> "[,]" ) then
+            if CapJitIsCallToGlobalFunction( tree, gvar -> IsBound( CAP_JIT_INTERNAL_OPERATION_TO_SYNTAX_TREE_TRANSLATIONS.(gvar) ) ) then
                 
                 tree := CAP_JIT_INTERNAL_OPERATION_TO_SYNTAX_TREE_TRANSLATIONS.(tree.funcref.gvar)( tree );
                 
