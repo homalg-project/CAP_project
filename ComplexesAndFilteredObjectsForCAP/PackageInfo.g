@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "ComplexesAndFilteredObjectsForCAP",
 Subtitle := "Implementation of complexes, cocomplexes and filtered objects for CAP",
-Version := "2023.08-01",
-Date := "2023-08-29",
+Version := "2024.04-01",
+Date := "2024-04-04",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -84,7 +84,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.12.1",
+  GAP := ">= 4.13.0",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "CAP", ">= 2021.05-01" ] ],
   SuggestedOtherPackages := [ ],
