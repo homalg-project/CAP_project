@@ -9,6 +9,17 @@
 
 <!-- END HEADER -->
 
+## Installation
+
+1. Install [GAP](https://www.gap-system.org/Download/).
+2. Download the [latest version](https://github.com/homalg-project/CAP_project/archive/HEAD.zip) of [CAP_project](https://homalg-project.github.io/prj/CAP_project/).
+3. Locate your user specific GAP root directory, for example by looking at the value of `GAPInfo.UserGapRoot` in a GAP session. Create this directory if it does not yet exist.
+4. Create a subdirectory named `pkg` of the user specific GAP root directory located in step 3.
+5. Extract the file downloaded in step 2 into the subdirectory `pkg` created in step 4.
+6. Launch GAP and execute `LoadPackage( "CompilerForCAP" );` to verify that the installation was successful.
+
+## Introduction
+
 Using the notions of category theory initially comes with a measurable performance overhead when implementing algorithms in CAP.
 The most obvious reason for this is the excessive amount of superfluous boxing and unboxing occurring during complex computations once we use several category constructors.
 As an example, consider the category
