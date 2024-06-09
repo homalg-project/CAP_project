@@ -74,6 +74,7 @@ ReadPackage( "MonoidalCategories", "gap/LeftClosedMonoidalCategoriesDerivedMetho
 ReadPackage( "MonoidalCategories", "gap/LeftCoclosedMonoidalCategoriesDerivedMethods.gi" );
 
 ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategoriesDerivedMethods.gi" );
+ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategoriesDerivedMethods_extra.gi" );
 ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategoriesDerivedMethods.gi" );
 
 ReadPackage( "MonoidalCategories", "gap/SymmetricClosedMonoidalCategoriesDerivedMethods.gi" );

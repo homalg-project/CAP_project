@@ -908,6 +908,310 @@ AddDerivationToCAP( CartesianPostComposeMorphismWithGivenObjects,
     
 end : CategoryFilter := cat -> HasIsCartesianClosedCategory( cat ) and IsCartesianClosedCategory( cat ) and HasIsStrictCartesianCategory( cat ) and IsStrictCartesianCategory( cat ) );
 
+##
+AddDerivationToCAP( DirectProductToExponentialRightAdjunctionIsomorphismWithGivenObjects,
+                    "DirectProductToExponentialRightAdjunctionIsomorphismWithGivenObjects as inverse of ExponentialToDirectProductRightAdjunctionIsomorphismWithGivenObjects",
+                    [ [ ExponentialToDirectProductRightAdjunctionIsomorphismWithGivenObjects, 1 ],
+                      [ InverseForMorphisms, 1, RangeCategoryOfHomomorphismStructure ] ],
+        
+  function( cat, H_a_tensor_b_c, a, b, c, H_b_exp_ac )
+    local H;
+    
+    H := RangeCategoryOfHomomorphismStructure( cat );
+    
+    return InverseForMorphisms( H,
+                   ExponentialToDirectProductRightAdjunctionIsomorphismWithGivenObjects( cat,
+                           H_b_exp_ac,
+                           a,
+                           b,
+                           c,
+                           H_a_tensor_b_c ) );
+    
+end : CategoryGetters := rec( H := RangeCategoryOfHomomorphismStructure ),
+      CategoryFilter := HasRangeCategoryOfHomomorphismStructure );
+
+##
+AddDerivationToCAP( ExponentialToDirectProductRightAdjunctionIsomorphismWithGivenObjects,
+                    "ExponentialToDirectProductRightAdjunctionIsomorphismWithGivenObjects as inverse of DirectProductToExponentialRightAdjunctionIsomorphismWithGivenObjects",
+                    [ [ DirectProductToExponentialRightAdjunctionIsomorphismWithGivenObjects, 1 ],
+                      [ InverseForMorphisms, 1, RangeCategoryOfHomomorphismStructure ] ],
+        
+  function( cat, H_b_exp_ac, a, b, c, H_a_tensor_b_c )
+    local H;
+    
+    H := RangeCategoryOfHomomorphismStructure( cat );
+    
+    return InverseForMorphisms( H,
+                   DirectProductToExponentialRightAdjunctionIsomorphismWithGivenObjects( cat,
+                           H_a_tensor_b_c,
+                           a,
+                           b,
+                           c,
+                           H_b_exp_ac ) );
+    
+end : CategoryGetters := rec( H := RangeCategoryOfHomomorphismStructure ),
+      CategoryFilter := HasRangeCategoryOfHomomorphismStructure );
+
+##
+AddDerivationToCAP( DirectProductToExponentialRightAdjunctMorphismWithGivenExponential,
+                    "DirectProductToExponentialRightAdjunctMorphismWithGivenExponential using DirectProductToExponentialRightAdjunctionIsomorphismWithGivenObjects",
+                    [ [ HomomorphismStructureOnObjects, 2 ],
+                      [ DirectProduct, 1 ],
+                      [ DirectProductToExponentialRightAdjunctionIsomorphismWithGivenObjects, 1 ],
+                      [ DistinguishedObjectOfHomomorphismStructure, 1 ],
+                      [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects, 1 ],
+                      [ PreCompose, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 1 ] ],
+        
+  function( cat, a, b, f, exp_ac )
+    local H, c, H_a_tensor_b_c, H_b_exp_ac, iso, distinguished_object, f_name, g_name;
+    
+    H := RangeCategoryOfHomomorphismStructure( cat );
+    
+    c := Range( f );
+    
+    H_a_tensor_b_c := HomomorphismStructureOnObjects( cat,
+                              BinaryDirectProduct( cat, a, b ),
+                              c );
+    
+    H_b_exp_ac := HomomorphismStructureOnObjects( cat,
+                          b,
+                          exp_ac );
+    
+    iso := DirectProductToExponentialRightAdjunctionIsomorphismWithGivenObjects( cat,
+                   H_a_tensor_b_c,
+                   a,
+                   b,
+                   c,
+                   H_b_exp_ac );
+    
+    distinguished_object := DistinguishedObjectOfHomomorphismStructure( cat );
+    
+    f_name := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( cat,
+                      distinguished_object,
+                      f,
+                      H_a_tensor_b_c );
+    
+    ## the name of the adjunct of f:
+    g_name := PreCompose( H,
+                      f_name,
+                      iso );
+    
+    return InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
+                   b,
+                   exp_ac,
+                   g_name );
+    
+end : CategoryFilter := IsCartesianClosedCategory,
+      CategoryGetters := rec( H := RangeCategoryOfHomomorphismStructure ) );
+
+##
+AddDerivationToCAP( ExponentialToDirectProductRightAdjunctMorphismWithGivenDirectProduct,
+                    "ExponentialToDirectProductRightAdjunctMorphismWithGivenDirectProduct using ExponentialToDirectProductRightAdjunctionIsomorphismWithGivenObjects",
+                    [ [ ExponentialOnObjects, 1 ],
+                      [ HomomorphismStructureOnObjects, 2 ],
+                      [ ExponentialToDirectProductRightAdjunctionIsomorphismWithGivenObjects, 1 ],
+                      [ DistinguishedObjectOfHomomorphismStructure, 1 ],
+                      [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects, 1 ],
+                      [ PreCompose, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 1 ] ],
+        
+  function( cat, a, c, g, a_tensor_b )
+    local H, b, H_b_exp_ac, H_a_tensor_b_c, iso, distinguished_object, g_name, f_name;
+    
+    H := RangeCategoryOfHomomorphismStructure( cat );
+    
+    b := Source( g );
+    
+    H_b_exp_ac := HomomorphismStructureOnObjects( cat,
+                          b,
+                          ExponentialOnObjects( cat,
+                                  a,
+                                  c ) );
+    
+    H_a_tensor_b_c := HomomorphismStructureOnObjects( cat,
+                              a_tensor_b,
+                              c );
+    
+    iso := ExponentialToDirectProductRightAdjunctionIsomorphismWithGivenObjects( cat,
+                   H_b_exp_ac,
+                   a,
+                   b,
+                   c,
+                   H_a_tensor_b_c );
+    
+    distinguished_object := DistinguishedObjectOfHomomorphismStructure( cat );
+    
+    g_name := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( cat,
+                      distinguished_object,
+                      g,
+                      H_b_exp_ac );
+    
+    ## the name of the adjunct of g:
+    f_name := PreCompose( H,
+                      g_name,
+                      iso );
+    
+    return InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
+                   a_tensor_b,
+                   c,
+                   f_name );
+    
+end : CategoryFilter := IsCartesianClosedCategory,
+      CategoryGetters := rec( H := RangeCategoryOfHomomorphismStructure ) );
+
+##
+AddDerivationToCAP( DirectProductToExponentialLeftAdjunctionIsomorphismWithGivenObjects,
+                    "DirectProductToExponentialLeftAdjunctionIsomorphismWithGivenObjects as inverse of ExponentialToDirectProductLeftAdjunctionIsomorphismWithGivenObjects",
+                    [ [ ExponentialToDirectProductLeftAdjunctionIsomorphismWithGivenObjects, 1 ],
+                      [ InverseForMorphisms, 1, RangeCategoryOfHomomorphismStructure ] ],
+        
+  function( cat, H_a_tensor_b_c, a, b, c, H_a_exp_bc )
+    local H;
+    
+    H := RangeCategoryOfHomomorphismStructure( cat );
+    
+    return InverseForMorphisms( H,
+                   ExponentialToDirectProductLeftAdjunctionIsomorphismWithGivenObjects( cat,
+                           H_a_exp_bc,
+                           a,
+                           b,
+                           c,
+                           H_a_tensor_b_c ) );
+    
+end : CategoryGetters := rec( H := RangeCategoryOfHomomorphismStructure ),
+      CategoryFilter := HasRangeCategoryOfHomomorphismStructure );
+
+##
+AddDerivationToCAP( ExponentialToDirectProductLeftAdjunctionIsomorphismWithGivenObjects,
+                    "ExponentialToDirectProductLeftAdjunctionIsomorphismWithGivenObjects as inverse of DirectProductToExponentialLeftAdjunctionIsomorphismWithGivenObjects",
+                    [ [ DirectProductToExponentialLeftAdjunctionIsomorphismWithGivenObjects, 1 ],
+                      [ InverseForMorphisms, 1, RangeCategoryOfHomomorphismStructure ] ],
+        
+  function( cat, H_a_exp_bc, a, b, c, H_a_tensor_b_c )
+    local H;
+    
+    H := RangeCategoryOfHomomorphismStructure( cat );
+    
+    return InverseForMorphisms( H,
+                   DirectProductToExponentialLeftAdjunctionIsomorphismWithGivenObjects( cat,
+                           H_a_tensor_b_c,
+                           a,
+                           b,
+                           c,
+                           H_a_exp_bc ) );
+    
+end : CategoryGetters := rec( H := RangeCategoryOfHomomorphismStructure ),
+      CategoryFilter := HasRangeCategoryOfHomomorphismStructure );
+
+##
+AddDerivationToCAP( DirectProductToExponentialLeftAdjunctMorphismWithGivenExponential,
+                    "DirectProductToExponentialLeftAdjunctMorphismWithGivenExponential using DirectProductToExponentialLeftAdjunctionIsomorphismWithGivenObjects",
+                    [ [ HomomorphismStructureOnObjects, 2 ],
+                      [ DirectProduct, 1 ],
+                      [ DirectProductToExponentialLeftAdjunctionIsomorphismWithGivenObjects, 1 ],
+                      [ DistinguishedObjectOfHomomorphismStructure, 1 ],
+                      [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects, 1 ],
+                      [ PreCompose, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 1 ] ],
+        
+  function( cat, a, b, f, exp_bc )
+    local H, c, H_a_tensor_b_c, H_a_exp_bc, iso, distinguished_object, f_name, g_name;
+    
+    H := RangeCategoryOfHomomorphismStructure( cat );
+    
+    c := Range( f );
+    
+    H_a_tensor_b_c := HomomorphismStructureOnObjects( cat,
+                              BinaryDirectProduct( cat, a, b ),
+                              c );
+    
+    H_a_exp_bc := HomomorphismStructureOnObjects( cat,
+                          a,
+                          exp_bc );
+    
+    iso := DirectProductToExponentialLeftAdjunctionIsomorphismWithGivenObjects( cat,
+                   H_a_tensor_b_c,
+                   a,
+                   b,
+                   c,
+                   H_a_exp_bc );
+    
+    distinguished_object := DistinguishedObjectOfHomomorphismStructure( cat );
+    
+    f_name := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( cat,
+                      distinguished_object,
+                      f,
+                      H_a_tensor_b_c );
+    
+    ## the name of the adjunct of f:
+    g_name := PreCompose( H,
+                      f_name,
+                      iso );
+    
+    return InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
+                   a,
+                   exp_bc,
+                   g_name );
+    
+end : CategoryFilter := IsCartesianClosedCategory,
+      CategoryGetters := rec( H := RangeCategoryOfHomomorphismStructure ) );
+
+##
+AddDerivationToCAP( ExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct,
+                    "ExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct using ExponentialToDirectProductLeftAdjunctionIsomorphismWithGivenObjects",
+                    [ [ ExponentialOnObjects, 1 ],
+                      [ HomomorphismStructureOnObjects, 2 ],
+                      [ ExponentialToDirectProductLeftAdjunctionIsomorphismWithGivenObjects, 1 ],
+                      [ DistinguishedObjectOfHomomorphismStructure, 1 ],
+                      [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects, 1 ],
+                      [ PreCompose, 1, RangeCategoryOfHomomorphismStructure ],
+                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 1 ] ],
+        
+  function( cat, b, c, g, a_tensor_b )
+    local H, a, H_a_exp_bc, H_a_tensor_b_c, iso, distinguished_object, g_name, f_name;
+    
+    H := RangeCategoryOfHomomorphismStructure( cat );
+    
+    a := Source( g );
+    
+    H_a_exp_bc := HomomorphismStructureOnObjects( cat,
+                          a,
+                          ExponentialOnObjects( cat,
+                                  b,
+                                  c ) );
+    
+    H_a_tensor_b_c := HomomorphismStructureOnObjects( cat,
+                              a_tensor_b,
+                              c );
+    
+    iso := ExponentialToDirectProductLeftAdjunctionIsomorphismWithGivenObjects( cat,
+                   H_a_exp_bc,
+                   a,
+                   b,
+                   c,
+                   H_a_tensor_b_c );
+    
+    distinguished_object := DistinguishedObjectOfHomomorphismStructure( cat );
+    
+    g_name := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( cat,
+                      distinguished_object,
+                      g,
+                      H_a_exp_bc );
+    
+    ## the name of the adjunct of g:
+    f_name := PreCompose( H,
+                      g_name,
+                      iso );
+    
+    return InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
+                   a_tensor_b,
+                   c,
+                   f_name );
+    
+end : CategoryFilter := IsCartesianClosedCategory,
+      CategoryGetters := rec( H := RangeCategoryOfHomomorphismStructure ) );
+
 ####################################
 ## Final derived methods
 ####################################

@@ -354,6 +354,44 @@ DeclareOperation( "AddInternalHomToTensorProductLeftAdjunctMorphismWithGivenTens
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `InternalHomToTensorProductLeftAdjunctionIsomorphism`.
+#! $F: ( a, b, c ) \mapsto \mathtt{InternalHomToTensorProductLeftAdjunctionIsomorphism}(a, b, c)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddInternalHomToTensorProductLeftAdjunctionIsomorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInternalHomToTensorProductLeftAdjunctionIsomorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInternalHomToTensorProductLeftAdjunctionIsomorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInternalHomToTensorProductLeftAdjunctionIsomorphism",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `InternalHomToTensorProductLeftAdjunctionIsomorphismWithGivenObjects`.
+#! $F: ( s, a, b, c, r ) \mapsto \mathtt{InternalHomToTensorProductLeftAdjunctionIsomorphismWithGivenObjects}(s, a, b, c, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddInternalHomToTensorProductLeftAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInternalHomToTensorProductLeftAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInternalHomToTensorProductLeftAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInternalHomToTensorProductLeftAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `InternalHomToTensorProductRightAdjunctMorphism`.
 #! $F: ( a, c, g ) \mapsto \mathtt{InternalHomToTensorProductRightAdjunctMorphism}(a, c, g)$.
 #! @Returns nothing
@@ -387,6 +425,44 @@ DeclareOperation( "AddInternalHomToTensorProductRightAdjunctMorphismWithGivenTen
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddInternalHomToTensorProductRightAdjunctMorphismWithGivenTensorProduct",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `InternalHomToTensorProductRightAdjunctionIsomorphism`.
+#! $F: ( a, b, c ) \mapsto \mathtt{InternalHomToTensorProductRightAdjunctionIsomorphism}(a, b, c)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddInternalHomToTensorProductRightAdjunctionIsomorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInternalHomToTensorProductRightAdjunctionIsomorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInternalHomToTensorProductRightAdjunctionIsomorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInternalHomToTensorProductRightAdjunctionIsomorphism",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `InternalHomToTensorProductRightAdjunctionIsomorphismWithGivenObjects`.
+#! $F: ( s, a, b, c, r ) \mapsto \mathtt{InternalHomToTensorProductRightAdjunctionIsomorphismWithGivenObjects}(s, a, b, c, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddInternalHomToTensorProductRightAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInternalHomToTensorProductRightAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInternalHomToTensorProductRightAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInternalHomToTensorProductRightAdjunctionIsomorphismWithGivenObjects",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -810,6 +886,44 @@ DeclareOperation( "AddTensorProductToInternalHomLeftAdjunctMorphismWithGivenInte
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `TensorProductToInternalHomLeftAdjunctionIsomorphism`.
+#! $F: ( a, b, c ) \mapsto \mathtt{TensorProductToInternalHomLeftAdjunctionIsomorphism}(a, b, c)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddTensorProductToInternalHomLeftAdjunctionIsomorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddTensorProductToInternalHomLeftAdjunctionIsomorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddTensorProductToInternalHomLeftAdjunctionIsomorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddTensorProductToInternalHomLeftAdjunctionIsomorphism",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `TensorProductToInternalHomLeftAdjunctionIsomorphismWithGivenObjects`.
+#! $F: ( s, a, b, c, r ) \mapsto \mathtt{TensorProductToInternalHomLeftAdjunctionIsomorphismWithGivenObjects}(s, a, b, c, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddTensorProductToInternalHomLeftAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddTensorProductToInternalHomLeftAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddTensorProductToInternalHomLeftAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddTensorProductToInternalHomLeftAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `TensorProductToInternalHomRightAdjunctMorphism`.
 #! $F: ( a, b, f ) \mapsto \mathtt{TensorProductToInternalHomRightAdjunctMorphism}(a, b, f)$.
 #! @Returns nothing
@@ -843,6 +957,44 @@ DeclareOperation( "AddTensorProductToInternalHomRightAdjunctMorphismWithGivenInt
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddTensorProductToInternalHomRightAdjunctMorphismWithGivenInternalHom",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `TensorProductToInternalHomRightAdjunctionIsomorphism`.
+#! $F: ( a, b, c ) \mapsto \mathtt{TensorProductToInternalHomRightAdjunctionIsomorphism}(a, b, c)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddTensorProductToInternalHomRightAdjunctionIsomorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddTensorProductToInternalHomRightAdjunctionIsomorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddTensorProductToInternalHomRightAdjunctionIsomorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddTensorProductToInternalHomRightAdjunctionIsomorphism",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `TensorProductToInternalHomRightAdjunctionIsomorphismWithGivenObjects`.
+#! $F: ( s, a, b, c, r ) \mapsto \mathtt{TensorProductToInternalHomRightAdjunctionIsomorphismWithGivenObjects}(s, a, b, c, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddTensorProductToInternalHomRightAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddTensorProductToInternalHomRightAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddTensorProductToInternalHomRightAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddTensorProductToInternalHomRightAdjunctionIsomorphismWithGivenObjects",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

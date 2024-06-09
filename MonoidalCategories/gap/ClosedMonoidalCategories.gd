@@ -98,12 +98,32 @@ DeclareOperation( "TensorProductToInternalHomRightAdjunctMorphism",
 
 #! @Description
 #! The arguments are two objects $a,b$, a morphism $f: a \otimes b \rightarrow c$ and an object $i = \mathrm{\underline{Hom}}(a,c)$.
-#! The output is a morphism $g: b \rightarrow \mathrm{\underline{Hom}}(a,c)$
+#! The output is a morphism $g: b \rightarrow i$
 #! corresponding to $f$ under the tensor hom adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( b, i )$.
 #! @Arguments a, b, f, i
 DeclareOperation( "TensorProductToInternalHomRightAdjunctMorphismWithGivenInternalHom",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are three objects $a,b,c$.
+#! The output is the tri-natural isomorphism
+#! $H(a \otimes b, c) \to H(b, \mathrm{\underline{Hom}}(a,c))$
+#! in the range category of the homomorphism structure $H$.
+#! @Returns a morphism in $\mathrm{Hom}( H(a \otimes b, c), H(b, \mathrm{\underline{Hom}}(a,c)) )$.
+#! @Arguments a, b, c
+DeclareOperation( "TensorProductToInternalHomRightAdjunctionIsomorphism",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are fives objects $s,a,b,c,r$
+#! where $s = H(a \otimes b, c)$ and $r = H(b, \mathrm{\underline{Hom}}(a,c))$.
+#! The output is the tri-natural isomorphism $s \to r$
+#! in the range category of the homomorphism structure $H$.
+#! @Returns a morphism in $\mathrm{Hom}( s, r )$.
+#! @Arguments s, a, b, c, r
+DeclareOperation( "TensorProductToInternalHomRightAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are two objects $a,c$ and a morphism $g: b \rightarrow \mathrm{\underline{Hom}}(a,c)$.
@@ -122,6 +142,26 @@ DeclareOperation( "InternalHomToTensorProductRightAdjunctMorphism",
 #! @Arguments a, c, g, s
 DeclareOperation( "InternalHomToTensorProductRightAdjunctMorphismWithGivenTensorProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are three objects $a,b,c$.
+#! The output is the tri-natural isomorphism
+#! $H(b, \mathrm{\underline{Hom}}(a,c)) \to H(a \otimes b, c)$
+#! in the range category of the homomorphism structure $H$.
+#! @Returns a morphism in $\mathrm{Hom}( H(b, \mathrm{\underline{Hom}}(a,c)), H(a \otimes b, c) )$.
+#! @Arguments a, b, c
+DeclareOperation( "InternalHomToTensorProductRightAdjunctionIsomorphism",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are fives objects $s,a,b,c,r$
+#! where $s = H(b, \mathrm{\underline{Hom}}(a,c))$ and $r = H(a \otimes b, c)$.
+#! The output is the tri-natural isomorphism $s \to r$
+#! in the range category of the homomorphism structure $H$.
+#! @Returns a morphism in $\mathrm{Hom}( s, r )$.
+#! @Arguments s, a, b, c, r
+DeclareOperation( "InternalHomToTensorProductRightAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are two objects $a, b$.
@@ -170,12 +210,32 @@ DeclareOperation( "TensorProductToInternalHomLeftAdjunctMorphism",
 
 #! @Description
 #! The arguments are two objects $a,b$, a morphism $f: a \otimes b \rightarrow c$ and an object $i = \mathrm{\underline{Hom}}(b,c)$.
-#! The output is a morphism $g: a \rightarrow \mathrm{\underline{Hom}}(b,c)$
+#! The output is a morphism $g: a \rightarrow i$
 #! corresponding to $f$ under the tensor hom adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( a, i )$.
 #! @Arguments a, b, f, i
 DeclareOperation( "TensorProductToInternalHomLeftAdjunctMorphismWithGivenInternalHom",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are three objects $a,b,c$.
+#! The output is the tri-natural isomorphism
+#! $H(a \otimes b, c) \to H(a, \mathrm{\underline{Hom}}(b,c))$
+#! in the range category of the homomorphism structure $H$.
+#! @Returns a morphism in $\mathrm{Hom}( H(a \otimes b, c), H(a, \mathrm{\underline{Hom}}(b,c)) )$.
+#! @Arguments a, b, c
+DeclareOperation( "TensorProductToInternalHomLeftAdjunctionIsomorphism",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are fives objects $s,a,b,c,r$
+#! where $s = H(a \otimes b, c)$ and $r = H(a, \mathrm{\underline{Hom}}(b,c))$.
+#! The output is the tri-natural isomorphism $s \to r$
+#! in the range category of the homomorphism structure $H$.
+#! @Returns a morphism in $\mathrm{Hom}( s, r )$.
+#! @Arguments s, a, b, c, r
+DeclareOperation( "TensorProductToInternalHomLeftAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are two objects $b,c$ and a morphism $g: a \rightarrow \mathrm{\underline{Hom}}(b,c)$.
@@ -194,6 +254,26 @@ DeclareOperation( "InternalHomToTensorProductLeftAdjunctMorphism",
 #! @Arguments b, c, g, s
 DeclareOperation( "InternalHomToTensorProductLeftAdjunctMorphismWithGivenTensorProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are three objects $a,b,c$.
+#! The output is the tri-natural isomorphism
+#! $H(a, \mathrm{\underline{Hom}}(b,c)) \to H(a \otimes b, c)$
+#! in the range category of the homomorphism structure $H$.
+#! @Returns a morphism in $\mathrm{Hom}( H(a, \mathrm{\underline{Hom}}(b,c)), H(a \otimes b, c) )$.
+#! @Arguments a, b, c
+DeclareOperation( "InternalHomToTensorProductLeftAdjunctionIsomorphism",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are fives objects $s,a,b,c,r$
+#! where $s = H(a, \mathrm{\underline{Hom}}(b,c))$ and $r = H(a \otimes b, c)$.
+#! The output is the tri-natural isomorphism $s \to r$
+#! in the range category of the homomorphism structure $H$.
+#! @Returns a morphism in $\mathrm{Hom}( s, r )$.
+#! @Arguments s, a, b, c, r
+DeclareOperation( "InternalHomToTensorProductLeftAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are three objects $a,b,c$.

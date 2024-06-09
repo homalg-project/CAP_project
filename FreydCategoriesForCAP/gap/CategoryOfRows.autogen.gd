@@ -268,8 +268,12 @@
 #! * <Ref BookName="MonoidalCategories" Func="InternalHomOnObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="InternalHomToTensorProductLeftAdjunctMorphism" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="InternalHomToTensorProductLeftAdjunctMorphismWithGivenTensorProduct" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="InternalHomToTensorProductLeftAdjunctionIsomorphism" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="InternalHomToTensorProductLeftAdjunctionIsomorphismWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="InternalHomToTensorProductRightAdjunctMorphism" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="InternalHomToTensorProductRightAdjunctMorphismWithGivenTensorProduct" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="InternalHomToTensorProductRightAdjunctionIsomorphism" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="InternalHomToTensorProductRightAdjunctionIsomorphismWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsIsomorphicForObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="IsomorphismFromDualObjectToInternalHomIntoTensorUnit" Label="for Is" />
@@ -346,8 +350,12 @@
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductToInternalCoHomRightAdjunctMorphismWithGivenInternalCoHom" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductToInternalHomLeftAdjunctMorphism" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductToInternalHomLeftAdjunctMorphismWithGivenInternalHom" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="TensorProductToInternalHomLeftAdjunctionIsomorphism" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="TensorProductToInternalHomLeftAdjunctionIsomorphismWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductToInternalHomRightAdjunctMorphism" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductToInternalHomRightAdjunctMorphismWithGivenInternalHom" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="TensorProductToInternalHomRightAdjunctionIsomorphism" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="TensorProductToInternalHomRightAdjunctionIsomorphismWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorUnit" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TraceMap" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="UniversalPropertyOfCoDual" Label="for Is" />

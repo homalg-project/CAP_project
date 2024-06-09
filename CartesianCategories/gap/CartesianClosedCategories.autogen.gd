@@ -487,6 +487,44 @@ DeclareOperation( "AddDirectProductToExponentialLeftAdjunctMorphismWithGivenExpo
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `DirectProductToExponentialLeftAdjunctionIsomorphism`.
+#! $F: ( a, b, c ) \mapsto \mathtt{DirectProductToExponentialLeftAdjunctionIsomorphism}(a, b, c)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddDirectProductToExponentialLeftAdjunctionIsomorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddDirectProductToExponentialLeftAdjunctionIsomorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddDirectProductToExponentialLeftAdjunctionIsomorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddDirectProductToExponentialLeftAdjunctionIsomorphism",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `DirectProductToExponentialLeftAdjunctionIsomorphismWithGivenObjects`.
+#! $F: ( s, a, b, c, r ) \mapsto \mathtt{DirectProductToExponentialLeftAdjunctionIsomorphismWithGivenObjects}(s, a, b, c, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddDirectProductToExponentialLeftAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddDirectProductToExponentialLeftAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddDirectProductToExponentialLeftAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddDirectProductToExponentialLeftAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `DirectProductToExponentialRightAdjunctMorphism`.
 #! $F: ( a, b, f ) \mapsto \mathtt{DirectProductToExponentialRightAdjunctMorphism}(a, b, f)$.
 #! @Returns nothing
@@ -520,6 +558,44 @@ DeclareOperation( "AddDirectProductToExponentialRightAdjunctMorphismWithGivenExp
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddDirectProductToExponentialRightAdjunctMorphismWithGivenExponential",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `DirectProductToExponentialRightAdjunctionIsomorphism`.
+#! $F: ( a, b, c ) \mapsto \mathtt{DirectProductToExponentialRightAdjunctionIsomorphism}(a, b, c)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddDirectProductToExponentialRightAdjunctionIsomorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddDirectProductToExponentialRightAdjunctionIsomorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddDirectProductToExponentialRightAdjunctionIsomorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddDirectProductToExponentialRightAdjunctionIsomorphism",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `DirectProductToExponentialRightAdjunctionIsomorphismWithGivenObjects`.
+#! $F: ( s, a, b, c, r ) \mapsto \mathtt{DirectProductToExponentialRightAdjunctionIsomorphismWithGivenObjects}(s, a, b, c, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddDirectProductToExponentialRightAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddDirectProductToExponentialRightAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddDirectProductToExponentialRightAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddDirectProductToExponentialRightAdjunctionIsomorphismWithGivenObjects",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -620,6 +696,44 @@ DeclareOperation( "AddExponentialToDirectProductLeftAdjunctMorphismWithGivenDire
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `ExponentialToDirectProductLeftAdjunctionIsomorphism`.
+#! $F: ( a, b, c ) \mapsto \mathtt{ExponentialToDirectProductLeftAdjunctionIsomorphism}(a, b, c)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddExponentialToDirectProductLeftAdjunctionIsomorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddExponentialToDirectProductLeftAdjunctionIsomorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddExponentialToDirectProductLeftAdjunctionIsomorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddExponentialToDirectProductLeftAdjunctionIsomorphism",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `ExponentialToDirectProductLeftAdjunctionIsomorphismWithGivenObjects`.
+#! $F: ( s, a, b, c, r ) \mapsto \mathtt{ExponentialToDirectProductLeftAdjunctionIsomorphismWithGivenObjects}(s, a, b, c, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddExponentialToDirectProductLeftAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddExponentialToDirectProductLeftAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddExponentialToDirectProductLeftAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddExponentialToDirectProductLeftAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `ExponentialToDirectProductRightAdjunctMorphism`.
 #! $F: ( a, c, g ) \mapsto \mathtt{ExponentialToDirectProductRightAdjunctMorphism}(a, c, g)$.
 #! @Returns nothing
@@ -653,6 +767,44 @@ DeclareOperation( "AddExponentialToDirectProductRightAdjunctMorphismWithGivenDir
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddExponentialToDirectProductRightAdjunctMorphismWithGivenDirectProduct",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `ExponentialToDirectProductRightAdjunctionIsomorphism`.
+#! $F: ( a, b, c ) \mapsto \mathtt{ExponentialToDirectProductRightAdjunctionIsomorphism}(a, b, c)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddExponentialToDirectProductRightAdjunctionIsomorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddExponentialToDirectProductRightAdjunctionIsomorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddExponentialToDirectProductRightAdjunctionIsomorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddExponentialToDirectProductRightAdjunctionIsomorphism",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `ExponentialToDirectProductRightAdjunctionIsomorphismWithGivenObjects`.
+#! $F: ( s, a, b, c, r ) \mapsto \mathtt{ExponentialToDirectProductRightAdjunctionIsomorphismWithGivenObjects}(s, a, b, c, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddExponentialToDirectProductRightAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddExponentialToDirectProductRightAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddExponentialToDirectProductRightAdjunctionIsomorphismWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddExponentialToDirectProductRightAdjunctionIsomorphismWithGivenObjects",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

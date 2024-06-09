@@ -3,14 +3,14 @@
 #! @Section Terminal category
 
 #! @Example
-LoadPackage( "MonoidalCategories", ">= 2024.01-12", false );
+LoadPackage( "MonoidalCategories", ">= 2024.06-01", false );
 #! true
 T := TerminalCategoryWithMultipleObjects( );
 #! TerminalCategoryWithMultipleObjects( )
 Display( T );
 #! A CAP category with name TerminalCategoryWithMultipleObjects( ):
 #! 
-#! 82 primitive operations were used to derive 383 operations for this category \
+#! 82 primitive operations were used to derive 391 operations for this category \
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
