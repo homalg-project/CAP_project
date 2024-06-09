@@ -882,6 +882,17 @@
         for  IsCapCategoryObject,  IsCapCategoryObject, IsCapCategoryMorphism,
         IsCapCategoryObject[114X)[133X
   
+  [30X    [33X[0;6Y[2XInternalHomToTensorProductLeftAdjunctionIsomorphism[102X
+        ([14XMonoidalCategories:
+        InternalHomToTensorProductLeftAdjunctionIsomorphism                for
+        IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XInternalHomToTensorProductLeftAdjunctionIsomorphismWithGivenObjects[102X
+        ([14XMonoidalCategories:
+        InternalHomToTensorProductLeftAdjunctionIsomorphismWithGivenObjects
+        for   IsCapCategoryObject,  IsCapCategoryObject,  IsCapCategoryObject,
+        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
   [30X    [33X[0;6Y[2XInternalHomToTensorProductRightAdjunctMorphism[102X    ([14XMonoidalCategories:
         InternalHomToTensorProductRightAdjunctMorphism                     for
         IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
@@ -891,6 +902,17 @@
         InternalHomToTensorProductRightAdjunctMorphismWithGivenTensorProduct
         for  IsCapCategoryObject,  IsCapCategoryObject, IsCapCategoryMorphism,
         IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XInternalHomToTensorProductRightAdjunctionIsomorphism[102X
+        ([14XMonoidalCategories:
+        InternalHomToTensorProductRightAdjunctionIsomorphism               for
+        IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XInternalHomToTensorProductRightAdjunctionIsomorphismWithGivenObjects[102X
+        ([14XMonoidalCategories:
+        InternalHomToTensorProductRightAdjunctionIsomorphismWithGivenObjects
+        for   IsCapCategoryObject,  IsCapCategoryObject,  IsCapCategoryObject,
+        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XIsIsomorphicForObjects[102X      ([14XCAP:      IsIsomorphicForObjects      for
         IsCapCategoryObject, IsCapCategoryObject[114X)[133X
@@ -1205,6 +1227,17 @@
         IsCapCategoryObject,    IsCapCategoryObject,    IsCapCategoryMorphism,
         IsCapCategoryObject[114X)[133X
   
+  [30X    [33X[0;6Y[2XTensorProductToInternalHomLeftAdjunctionIsomorphism[102X
+        ([14XMonoidalCategories:
+        TensorProductToInternalHomLeftAdjunctionIsomorphism                for
+        IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XTensorProductToInternalHomLeftAdjunctionIsomorphismWithGivenObjects[102X
+        ([14XMonoidalCategories:
+        TensorProductToInternalHomLeftAdjunctionIsomorphismWithGivenObjects
+        for   IsCapCategoryObject,  IsCapCategoryObject,  IsCapCategoryObject,
+        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
   [30X    [33X[0;6Y[2XTensorProductToInternalHomRightAdjunctMorphism[102X    ([14XMonoidalCategories:
         TensorProductToInternalHomRightAdjunctMorphism                     for
         IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
@@ -1214,6 +1247,17 @@
         TensorProductToInternalHomRightAdjunctMorphismWithGivenInternalHom for
         IsCapCategoryObject,    IsCapCategoryObject,    IsCapCategoryMorphism,
         IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XTensorProductToInternalHomRightAdjunctionIsomorphism[102X
+        ([14XMonoidalCategories:
+        TensorProductToInternalHomRightAdjunctionIsomorphism               for
+        IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XTensorProductToInternalHomRightAdjunctionIsomorphismWithGivenObjects[102X
+        ([14XMonoidalCategories:
+        TensorProductToInternalHomRightAdjunctionIsomorphismWithGivenObjects
+        for   IsCapCategoryObject,  IsCapCategoryObject,  IsCapCategoryObject,
+        IsCapCategoryObject, IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XTensorUnit[102X ([14XMonoidalCategories: TensorUnit for IsCapCategory[114X)[133X
   
