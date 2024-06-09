@@ -6,10 +6,10 @@
                   [1X Category of Matrices over a Field for CAP [101X
   
   
-                                   2024.04-02
+                                   2024.06-01
   
   
-                                  8 April 2024
+                                  10 June 2024
   
   
                                Sebastian Gutsche
