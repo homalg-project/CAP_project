@@ -3417,3 +3417,109 @@ AddFinalDerivationBundle( "Adding BasisOfExternalHom and CoefficientsOfMorphism 
       
   end
 );
+
+##
+AddFinalDerivationBundle( "InitialObject as the empty coproduct",
+                    [ [ Coproduct, 1 ],
+                      [ UniversalMorphismFromCoproductWithGivenCoproduct, 1 ] ],
+                    [ InitialObject,
+                      UniversalMorphismFromInitialObject,
+                      UniversalMorphismFromInitialObjectWithGivenInitialObject ],
+[
+  InitialObject,
+  [ [ Coproduct, 1 ] ],
+  function( cat )
+    
+    return Coproduct( cat, CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( cat ) ) ) );
+    
+  end
+],
+[
+  UniversalMorphismFromInitialObjectWithGivenInitialObject,
+  [ [ UniversalMorphismFromCoproductWithGivenCoproduct, 1 ] ],
+  function( cat, target, initial_object )
+    
+    return UniversalMorphismFromCoproductWithGivenCoproduct( cat,
+                   CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( cat ) ) ),
+                   target,
+                   CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( cat ) ) ),
+                   initial_object );
+    
+end
+] : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true );
+
+##
+AddFinalDerivationBundle( "TerminalObject as the empty direct product",
+                    [ [ DirectProduct, 1 ],
+                      [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 1 ] ],
+                    [ TerminalObject,
+                      UniversalMorphismIntoTerminalObject,
+                      UniversalMorphismIntoTerminalObjectWithGivenTerminalObject ],
+[
+  TerminalObject,
+  [ [ DirectProduct, 1 ] ],
+  function( cat )
+    
+    return DirectProduct( cat, CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( cat ) ) ) );
+    
+  end
+],
+[
+  UniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
+  [ [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 1 ] ],
+  function( cat, source, terminal_object )
+    
+    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat,
+                   CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( cat ) ) ),
+                   source,
+                   CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( cat ) ) ),
+                   terminal_object );
+    
+  end
+] : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true );
+
+##
+AddFinalDerivationBundle( "ZeroObject as the empty direct product",
+                    [ [ DirectSum, 1 ],
+                      [ UniversalMorphismFromDirectSumWithGivenDirectSum, 1 ],
+                      [ UniversalMorphismIntoDirectSumWithGivenDirectSum, 1 ] ],
+                    [ ZeroObject,
+                      UniversalMorphismFromZeroObject,
+                      UniversalMorphismFromZeroObjectWithGivenZeroObject,
+                      UniversalMorphismIntoZeroObject,
+                      UniversalMorphismIntoZeroObjectWithGivenZeroObject ],
+[
+  ZeroObject,
+  [ [ DirectSum, 1 ] ],
+  function( cat )
+    
+    return DirectSum( cat, CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( cat ) ) ) );
+    
+  end
+],
+[
+  UniversalMorphismFromZeroObjectWithGivenZeroObject,
+  [ [ UniversalMorphismFromDirectSumWithGivenDirectSum, 1 ] ],
+  function( cat, target, zero_object )
+    
+    return UniversalMorphismFromDirectSumWithGivenDirectSum( cat,
+                   CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( cat ) ) ),
+                   target,
+                   CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( cat ) ) ),
+                   zero_object );
+    
+  end
+],
+[
+  UniversalMorphismIntoZeroObjectWithGivenZeroObject,
+  [ [ UniversalMorphismIntoDirectSumWithGivenDirectSum, 1 ] ],
+  function( cat, source, zero_object )
+    
+    return UniversalMorphismIntoDirectSumWithGivenDirectSum( cat,
+                   CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( cat ) ) ),
+                   source,
+                   CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( cat ) ) ),
+                   zero_object );
+    
+  end
+] : CategoryFilter := cat -> IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true );
