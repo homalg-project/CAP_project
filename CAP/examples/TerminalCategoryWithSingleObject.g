@@ -10,7 +10,7 @@ T := TerminalCategoryWithSingleObject( );
 Display( T );
 #! A CAP category with name TerminalCategoryWithSingleObject( ):
 #! 
-#! 76 primitive operations were used to derive 391 operations for this category \
+#! 80 primitive operations were used to derive 391 operations for this category \
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
@@ -43,9 +43,9 @@ Display( t );
 Display( z );
 #! A zero object in TerminalCategoryWithSingleObject( ).
 IsIdenticalObj( i, z );
-#! true
+#! false
 IsIdenticalObj( t, z );
-#! true
+#! false
 IsWellDefined( z );
 #! true
 id_z := IdentityMorphism( z );

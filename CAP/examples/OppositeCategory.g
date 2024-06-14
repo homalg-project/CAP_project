@@ -10,8 +10,10 @@ op := Opposite( vec );;
 ListKnownCategoricalProperties( op );
 #! [ "IsAbCategory", "IsAbelianCategory", "IsAbelianCategoryWithEnoughInjectives"
 #!     , "IsAbelianCategoryWithEnoughProjectives", "IsAdditiveCategory", 
-#!   "IsBraidedMonoidalCategory", "IsClosedMonoidalCategory", 
-#!   "IsCoclosedMonoidalCategory", "IsEnrichedOverCommutativeRegularSemigroup", 
+#!   "IsBraidedMonoidalCategory", "IsCategoryWithInitialObject",
+#!   "IsCategoryWithTerminalObject", "IsCategoryWithZeroObject",
+#!   "IsClosedMonoidalCategory", "IsCoclosedMonoidalCategory",
+#!   "IsEnrichedOverCommutativeRegularSemigroup", 
 #!   "IsEquippedWithHomomorphismStructure", "IsLinearCategoryOverCommutativeRing"
 #!     , 
 #!   "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms", 

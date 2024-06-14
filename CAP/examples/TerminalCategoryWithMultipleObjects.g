@@ -10,7 +10,7 @@ T := TerminalCategoryWithMultipleObjects( );
 Display( T );
 #! A CAP category with name TerminalCategoryWithMultipleObjects( ):
 #! 
-#! 82 primitive operations were used to derive 391 operations for this category \
+#! 86 primitive operations were used to derive 391 operations for this category \
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
@@ -35,15 +35,15 @@ t := TerminalObject( T );
 z := ZeroObject( T );
 #! <A zero object in TerminalCategoryWithMultipleObjects( )>
 Display( i );
-#! ZeroObject
+#! InitialObject
 Display( t );
-#! ZeroObject
+#! TerminalObject
 Display( z );
 #! ZeroObject
 IsIdenticalObj( i, z );
-#! true
+#! false
 IsIdenticalObj( t, z );
-#! true
+#! false
 id_z := IdentityMorphism( z );
 #! <A zero, identity morphism in TerminalCategoryWithMultipleObjects( )>
 fn_z := ZeroObjectFunctorial( T );
