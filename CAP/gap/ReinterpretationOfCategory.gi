@@ -256,7 +256,7 @@ InstallMethod( ReinterpretationOfCategory,
         "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
     ];
     
-    if HasRangeCategoryOfHomomorphismStructure( C ) and not IsEmpty( Intersection( list_of_operations_to_install, operations_of_homomorphism_structure ) ) then
+    if HasRangeCategoryOfHomomorphismStructure( C ) then
         
         HC := RangeCategoryOfHomomorphismStructure( C );
         
@@ -266,6 +266,17 @@ InstallMethod( ReinterpretationOfCategory,
             # so the range of the homomorphism structure of D should be D itself.
             # This prevents infinite recursions.
             HC := D;
+            
+        fi;
+        
+        SetRangeCategoryOfHomomorphismStructure( D, HC );
+        SetIsEquippedWithHomomorphismStructure( D, true );
+        
+    fi;
+    
+    if HasRangeCategoryOfHomomorphismStructure( C ) and not IsEmpty( Intersection( list_of_operations_to_install, operations_of_homomorphism_structure ) ) then
+        
+        if IsIdenticalObj( D, HC ) then
             
             # prepare for ExtendRangeOfHomomorphismStructureByFullEmbedding
             object_function := function ( C, HC, object )
@@ -313,9 +324,6 @@ InstallMethod( ReinterpretationOfCategory,
             ExtendRangeOfHomomorphismStructureByIdentityAsFullEmbedding( C );
             
         fi;
-        
-        SetRangeCategoryOfHomomorphismStructure( D, HC );
-        SetIsEquippedWithHomomorphismStructure( D, true );
         
         if "DistinguishedObjectOfHomomorphismStructure" in list_of_operations_to_install then
             AddDistinguishedObjectOfHomomorphismStructure( D,
