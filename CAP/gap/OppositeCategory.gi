@@ -85,7 +85,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
   
   function( opposite_category, category, only_primitive_operations )
     local recnames, list_of_underlying_operations,
-          operations_of_homomorphism_structure, operations_of_external_hom,
+          installed_operations_of_homomorphism_structure_and_external_hom, H,
           current_recname, current_entry, dual_operation_name, filter_list, input_arguments_names, return_type, func_string,
           preprocessor_string, dual_arguments, tmp,
           postprocessor_string, output_source_getter_string, output_range_getter_string, return_statement,
@@ -125,26 +125,33 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
         list_of_underlying_operations := ListInstalledOperationsOfCategory( category );
     fi;
     
-    operations_of_homomorphism_structure :=
-      [ "DistinguishedObjectOfHomomorphismStructure",
-        "HomomorphismStructureOnObjects",
-        "HomomorphismStructureOnMorphisms",
-        "HomomorphismStructureOnMorphismsWithGivenObjects",
-        "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
-        "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects",
-        "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
-        ];
+    installed_operations_of_homomorphism_structure_and_external_hom :=
+      Intersection( ListInstalledOperationsOfCategory( category ),
+              [ "DistinguishedObjectOfHomomorphismStructure",
+                "HomomorphismStructureOnObjects",
+                "HomomorphismStructureOnMorphisms",
+                "HomomorphismStructureOnMorphismsWithGivenObjects",
+                "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
+                "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects",
+                "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
+                "MorphismsOfExternalHom",
+                "BasisOfExternalHom",
+                "CoefficientsOfMorphism",
+                ] );
     
-    if not IsEmpty( Intersection( list_of_underlying_operations, operations_of_homomorphism_structure ) ) then
+    ## the opposite category has the same enrichment as the original category:
+    if HasRangeCategoryOfHomomorphismStructure( category ) then
         
-        if not HasRangeCategoryOfHomomorphismStructure( category ) then
-            
-            Error( "<category> has operations related to the homomorphism structure but no range category is set. This is not supported." );
-            
-        fi;
+        H := RangeCategoryOfHomomorphismStructure( category );
         
-        SetRangeCategoryOfHomomorphismStructure( opposite_category, RangeCategoryOfHomomorphismStructure( category ) );
-        SetIsEquippedWithHomomorphismStructure( opposite_category, true );
+        SetRangeCategoryOfHomomorphismStructure( opposite_category, H );
+        
+        ## be sure the above assignment succeeded:
+        Assert( 0, IsIdenticalObj( H, RangeCategoryOfHomomorphismStructure( opposite_category ) ) );
+        
+        list_of_underlying_operations := Concatenation( list_of_underlying_operations, installed_operations_of_homomorphism_structure_and_external_hom );
+        
+        list_of_underlying_operations := Set( list_of_underlying_operations );
         
     fi;
     

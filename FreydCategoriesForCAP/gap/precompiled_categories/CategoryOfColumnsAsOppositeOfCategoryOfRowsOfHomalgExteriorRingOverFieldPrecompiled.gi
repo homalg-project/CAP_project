@@ -39,6 +39,54 @@ end
     , 100 );
     
     ##
+    AddBasisOfExternalHom( cat,
+        
+########
+function ( cat_1, arg2_1, arg3_1 )
+    local hoisted_1_1, deduped_5_1, hoisted_7_1, hoisted_8_1, deduped_11_1, deduped_12_1, deduped_13_1, deduped_14_1, deduped_15_1, deduped_16_1;
+    deduped_16_1 := BasisOfRingOverBaseFieldAsColumnVector( cat_1 );
+    deduped_15_1 := RankOfObject( arg2_1 );
+    deduped_14_1 := RankOfObject( arg3_1 );
+    deduped_13_1 := Length( EntriesOfHomalgColumnVector( deduped_16_1 ) );
+    deduped_12_1 := deduped_15_1 * deduped_13_1;
+    deduped_11_1 := deduped_14_1 * deduped_12_1;
+    hoisted_8_1 := [ 1 .. deduped_14_1 ];
+    hoisted_7_1 := [ 1 .. deduped_15_1 ];
+    deduped_5_1 := UnderlyingRing( cat_1 );
+    hoisted_1_1 := HomalgIdentityMatrix( deduped_11_1, CommutativeRingOfLinearCategory( cat_1 ) );
+    return List( [ 1 .. deduped_11_1 ], function ( i_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := ConvertRowToMatrix( CertainRows( hoisted_1_1, [ i_2 ] ), 1, deduped_11_1 );
+            return CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg3_1, UnderlyingMatrix, HomalgMatrixListList( List( hoisted_8_1, function ( j_3 )
+                        local deduped_1_3;
+                        deduped_1_3 := (CAP_JIT_INCOMPLETE_LOGIC( j_3 ) - 1) * deduped_12_1;
+                        return List( hoisted_7_1, function ( s_4 )
+                                local deduped_1_4;
+                                deduped_1_4 := (CAP_JIT_INCOMPLETE_LOGIC( s_4 ) - 1) * deduped_13_1;
+                                return EntriesOfHomalgMatrix( CoercedMatrix( deduped_5_1, CAP_JIT_INCOMPLETE_LOGIC( CertainColumns( hoisted_1_2, [ (deduped_1_3 + (deduped_1_4 + 1)) .. (deduped_1_3 + (deduped_1_4 + deduped_13_1)) ] ) ) ) * deduped_16_1 )[1];
+                            end );
+                    end ), deduped_14_1, deduped_15_1, deduped_5_1 ) );
+        end );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddCoefficientsOfMorphism( cat,
+        
+########
+function ( cat_1, arg2_1 )
+    local deduped_1_1, deduped_2_1;
+    deduped_2_1 := UnderlyingMatrix( arg2_1 );
+    deduped_1_1 := UnderlyingRing( cat_1 );
+    return EntriesOfHomalgMatrix( CoercedMatrix( deduped_1_1, CommutativeRingOfLinearCategory( cat_1 ), CoefficientsWithGivenMonomials( ConvertMatrixToRow( deduped_2_1 ), DiagMat( deduped_1_1, ListWithIdenticalEntries( NumberRows( deduped_2_1 ), DiagMat( deduped_1_1, ListWithIdenticalEntries( NumberColumns( deduped_2_1 ), BasisOfRingOverBaseFieldAsColumnVector( cat_1 ) ) ) ) ) ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddColift( cat,
         
 ########
@@ -122,6 +170,26 @@ end
     , 100 );
     
     ##
+    AddHomomorphismStructureOnMorphisms( cat,
+        
+########
+function ( cat_1, alpha_1, beta_1 )
+    local morphism_attr_1_1, deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1;
+    deduped_7_1 := UnderlyingMatrix( alpha_1 );
+    deduped_6_1 := BasisOfRingOverBaseFieldAsColumnVector( cat_1 );
+    deduped_5_1 := UnderlyingMatrix( beta_1 );
+    deduped_4_1 := UnderlyingRing( cat_1 );
+    deduped_3_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
+    morphism_attr_1_1 := CoercedMatrix( deduped_4_1, CommutativeRingOfLinearCategory( cat_1 ), CoefficientsWithGivenMonomials( KroneckerMat( TransposedMatrix( deduped_5_1 ), DualKroneckerMat( UnionOfRows( deduped_4_1, NumberColumns( deduped_6_1 ), List( EntriesOfHomalgColumnVector( deduped_6_1 ), function ( x_2 )
+                      return COMPILATION_HELPER_HomalgMatrixFromRingElement( x_2, deduped_4_1 );
+                  end ) ), deduped_7_1 ) ), DiagMat( deduped_4_1, ListWithIdenticalEntries( NumberRows( deduped_5_1 ), DiagMat( deduped_4_1, ListWithIdenticalEntries( NumberColumns( deduped_7_1 ), deduped_6_1 ) ) ) ) ) );
+    return CreateCapCategoryMorphismWithAttributes( deduped_3_1, CreateCapCategoryObjectWithAttributes( deduped_3_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( deduped_3_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddHomomorphismStructureOnMorphismsWithGivenObjects( cat,
         
 ########
@@ -184,6 +252,22 @@ function ( cat_1, objects_1, k_1, P_1 )
     deduped_2_1 := List( objects_1, RankOfObject );
     deduped_1_1 := deduped_2_1[k_1];
     return CreateCapCategoryMorphismWithAttributes( cat_1, objects_1[k_1], P_1, UnderlyingMatrix, UnionOfRows( HomalgZeroMatrix( Sum( deduped_2_1{[ 1 .. k_1 - 1 ]} ), deduped_1_1, deduped_3_1 ), HomalgIdentityMatrix( deduped_1_1, deduped_3_1 ), HomalgZeroMatrix( Sum( deduped_2_1{[ k_1 + 1 .. Length( objects_1 ) ]} ), deduped_1_1, deduped_3_1 ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat,
+        
+########
+function ( cat_1, alpha_1 )
+    local morphism_attr_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
+    deduped_4_1 := UnderlyingMatrix( alpha_1 );
+    deduped_3_1 := UnderlyingRing( cat_1 );
+    deduped_2_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
+    morphism_attr_1_1 := CoercedMatrix( deduped_3_1, CommutativeRingOfLinearCategory( cat_1 ), CoefficientsWithGivenMonomials( ConvertMatrixToRow( deduped_4_1 ), DiagMat( deduped_3_1, ListWithIdenticalEntries( NumberRows( deduped_4_1 ), DiagMat( deduped_3_1, ListWithIdenticalEntries( NumberColumns( deduped_4_1 ), BasisOfRingOverBaseFieldAsColumnVector( cat_1 ) ) ) ) ) ) );
+    return CreateCapCategoryMorphismWithAttributes( deduped_2_1, CreateCapCategoryObjectWithAttributes( deduped_2_1, RankOfObject, 1 ), CreateCapCategoryObjectWithAttributes( deduped_2_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
