@@ -685,8 +685,10 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ListKnownCategoricalProperties( op );</span>
 [ "IsAbCategory", "IsAbelianCategory", "IsAbelianCategoryWithEnoughInjectives"
     , "IsAbelianCategoryWithEnoughProjectives", "IsAdditiveCategory", 
-  "IsBraidedMonoidalCategory", "IsClosedMonoidalCategory", 
-  "IsCoclosedMonoidalCategory", "IsEnrichedOverCommutativeRegularSemigroup", 
+  "IsBraidedMonoidalCategory", "IsCategoryWithInitialObject",
+  "IsCategoryWithTerminalObject", "IsCategoryWithZeroObject",
+  "IsClosedMonoidalCategory", "IsCoclosedMonoidalCategory",
+  "IsEnrichedOverCommutativeRegularSemigroup", 
   "IsEquippedWithHomomorphismStructure", "IsLinearCategoryOverCommutativeRing"
     , 
   "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms", 
@@ -764,7 +766,7 @@ TerminalCategoryWithMultipleObjects( )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( T );</span>
 A CAP category with name TerminalCategoryWithMultipleObjects( ):
 
-82 primitive operations were used to derive 391 operations for this category \
+86 primitive operations were used to derive 391 operations for this category \
 which algorithmically
 * IsCategoryWithDecidableColifts
 * IsCategoryWithDecidableLifts
@@ -789,15 +791,15 @@ and furthermore mathematically
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z := ZeroObject( T );</span>
 &lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( i );</span>
-ZeroObject
+InitialObject
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( t );</span>
-ZeroObject
+TerminalObject
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( z );</span>
 ZeroObject
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( i, z );</span>
-true
+false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( t, z );</span>
-true
+false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_z := IdentityMorphism( z );</span>
 &lt;A zero, identity morphism in TerminalCategoryWithMultipleObjects( )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">fn_z := ZeroObjectFunctorial( T );</span>
@@ -950,7 +952,7 @@ TerminalCategoryWithSingleObject( )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( T );</span>
 A CAP category with name TerminalCategoryWithSingleObject( ):
 
-76 primitive operations were used to derive 391 operations for this category \
+80 primitive operations were used to derive 391 operations for this category \
 which algorithmically
 * IsCategoryWithDecidableColifts
 * IsCategoryWithDecidableLifts
@@ -983,9 +985,9 @@ A zero object in TerminalCategoryWithSingleObject( ).
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( z );</span>
 A zero object in TerminalCategoryWithSingleObject( ).
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( i, z );</span>
-true
+false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( t, z );</span>
-true
+false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( z );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_z := IdentityMorphism( z );</span>

@@ -597,8 +597,10 @@
     [4X[25Xgap>[125X [27XListKnownCategoricalProperties( op );[127X[104X
     [4X[28X[ "IsAbCategory", "IsAbelianCategory", "IsAbelianCategoryWithEnoughInjectives"[128X[104X
     [4X[28X    , "IsAbelianCategoryWithEnoughProjectives", "IsAdditiveCategory", [128X[104X
-    [4X[28X  "IsBraidedMonoidalCategory", "IsClosedMonoidalCategory", [128X[104X
-    [4X[28X  "IsCoclosedMonoidalCategory", "IsEnrichedOverCommutativeRegularSemigroup", [128X[104X
+    [4X[28X  "IsBraidedMonoidalCategory", "IsCategoryWithInitialObject",[128X[104X
+    [4X[28X  "IsCategoryWithTerminalObject", "IsCategoryWithZeroObject",[128X[104X
+    [4X[28X  "IsClosedMonoidalCategory", "IsCoclosedMonoidalCategory",[128X[104X
+    [4X[28X  "IsEnrichedOverCommutativeRegularSemigroup", [128X[104X
     [4X[28X  "IsEquippedWithHomomorphismStructure", "IsLinearCategoryOverCommutativeRing"[128X[104X
     [4X[28X    , [128X[104X
     [4X[28X  "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms", [128X[104X
@@ -672,7 +674,7 @@
     [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
     [4X[28XA CAP category with name TerminalCategoryWithMultipleObjects( ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X82 primitive operations were used to derive 391 operations for this category \[128X[104X
+    [4X[28X86 primitive operations were used to derive 391 operations for this category \[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
@@ -697,15 +699,15 @@
     [4X[25Xgap>[125X [27Xz := ZeroObject( T );[127X[104X
     [4X[28X<A zero object in TerminalCategoryWithMultipleObjects( )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( i );[127X[104X
-    [4X[28XZeroObject[128X[104X
+    [4X[28XInitialObject[128X[104X
     [4X[25Xgap>[125X [27XDisplay( t );[127X[104X
-    [4X[28XZeroObject[128X[104X
+    [4X[28XTerminalObject[128X[104X
     [4X[25Xgap>[125X [27XDisplay( z );[127X[104X
     [4X[28XZeroObject[128X[104X
     [4X[25Xgap>[125X [27XIsIdenticalObj( i, z );[127X[104X
-    [4X[28Xtrue[128X[104X
+    [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XIsIdenticalObj( t, z );[127X[104X
-    [4X[28Xtrue[128X[104X
+    [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27Xid_z := IdentityMorphism( z );[127X[104X
     [4X[28X<A zero, identity morphism in TerminalCategoryWithMultipleObjects( )>[128X[104X
     [4X[25Xgap>[125X [27Xfn_z := ZeroObjectFunctorial( T );[127X[104X
@@ -857,7 +859,7 @@
     [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
     [4X[28XA CAP category with name TerminalCategoryWithSingleObject( ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X76 primitive operations were used to derive 391 operations for this category \[128X[104X
+    [4X[28X80 primitive operations were used to derive 391 operations for this category \[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
@@ -890,9 +892,9 @@
     [4X[25Xgap>[125X [27XDisplay( z );[127X[104X
     [4X[28XA zero object in TerminalCategoryWithSingleObject( ).[128X[104X
     [4X[25Xgap>[125X [27XIsIdenticalObj( i, z );[127X[104X
-    [4X[28Xtrue[128X[104X
+    [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XIsIdenticalObj( t, z );[127X[104X
-    [4X[28Xtrue[128X[104X
+    [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( z );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xid_z := IdentityMorphism( z );[127X[104X
