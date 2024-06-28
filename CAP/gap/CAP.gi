@@ -25,6 +25,12 @@ BindGlobal( "TheFamilyOfCapCategoryTwoCells",
 ##
 ######################################
 
+InstallTrueMethod( IsCategoryWithInitialObject, IsCategoryWithZeroObject );
+
+InstallTrueMethod( IsCategoryWithTerminalObject, IsCategoryWithZeroObject );
+
+InstallTrueMethod( IsCategoryWithZeroObject, IsAdditiveCategory );
+
 InstallTrueMethod( IsEnrichedOverCommutativeRegularSemigroup, IsAbCategory );
 
 InstallTrueMethod( IsAbCategory, IsLinearCategoryOverCommutativeRing );

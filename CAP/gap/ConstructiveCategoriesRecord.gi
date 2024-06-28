@@ -41,6 +41,31 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithDecidableColifts := Co
     ]
 );
 
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithInitialObject := Concatenation(
+    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory,
+    [
+        "InitialObject",
+        "UniversalMorphismFromInitialObject",
+    ]
+);
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithTerminalObject := Concatenation(
+    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory,
+    [
+        "TerminalObject",
+        "UniversalMorphismIntoTerminalObject",
+    ]
+);
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithZeroObject := Concatenation(
+    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory,
+    [
+        "ZeroObject",
+        "UniversalMorphismFromZeroObject",
+        "UniversalMorphismIntoZeroObject",
+    ]
+);
+
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsEnrichedOverCommutativeRegularSemigroup := Concatenation(
     CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory,
     [
@@ -75,10 +100,8 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsLinearCategoryOverCommutativeRingW
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsAdditiveCategory := Concatenation(
     CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsAbCategory,
+    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithZeroObject,
     [
-        "ZeroObject",
-        "UniversalMorphismFromZeroObject",
-        "UniversalMorphismIntoZeroObject",
         "DirectSum",
         "ProjectionInFactorOfDirectSum",
         "InjectionOfCofactorOfDirectSum",
