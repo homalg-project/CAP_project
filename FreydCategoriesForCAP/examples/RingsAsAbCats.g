@@ -79,9 +79,9 @@ coeffs := CoefficientsOfMorphism( alpha );
 IsCongruentForMorphisms( alpha, LinearCombinationOfMorphisms( u, coeffs, basis, u ) );
 #! true
 u_op := Opposite( u );
-#! <An object in Opposite( Ring as category( Q{e0,e1} ) )>
+#! <An object in Opposite( RingAsCategory( Q{e0,e1} ) )>
 alpha_op := Opposite( alpha );
-#! <A morphism in Opposite( Ring as category( Q{e0,e1} ) )>
+#! <A morphism in Opposite( RingAsCategory( Q{e0,e1} ) )>
 basis := BasisOfExternalHom( u_op, u_op );;
 coeffs := CoefficientsOfMorphism( alpha_op );
 #! [ 2, 3, 4, 5 ]
