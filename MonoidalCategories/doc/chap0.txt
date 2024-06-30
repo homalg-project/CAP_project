@@ -6,10 +6,10 @@
                  [1X Monoidal and monoidal (co)closed categories [101X
   
   
-                                   2024.06-01
+                                   2024.06-02
   
   
-                                  9 June 2024
+                                  30 June 2024
   
   
                                 Mohamed Barakat
