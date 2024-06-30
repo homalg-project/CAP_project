@@ -1641,7 +1641,6 @@ end );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "ZeroImmutable", [ "IsHomalgRing" ], "IsHomalgRingElement" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "OneImmutable", [ "IsHomalgRing" ], "IsHomalgRingElement" );
 
-CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgMatrix", [ "IsList", "IsInt", "IsInt", "IsHomalgRing" ], "IsHomalgMatrix" );
 CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgMatrixListList", [ "IsList", "IsInt", "IsInt", "IsHomalgRing" ], """function( input_types )
     
     Assert( 0, input_types[1].element_type.filter = IsList );

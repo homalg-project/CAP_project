@@ -1034,7 +1034,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
                                 );
           
           return CategoryOfRowsMorphism( cat, object_1_tensored_object_2,
-                                         HomalgMatrix( permutation_matrix, rank, rank, ring ),
+                                         HomalgMatrixListList( permutation_matrix, rank, rank, ring ),
                                          object_2_tensored_object_1
                                        );
           

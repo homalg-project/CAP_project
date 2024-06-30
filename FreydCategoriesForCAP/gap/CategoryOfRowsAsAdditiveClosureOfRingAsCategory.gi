@@ -311,6 +311,6 @@ end );
 
 InstallGlobalFunction( COMPILATION_HELPER_HomalgMatrixFromRingElement, function ( ring_element, ring )
     
-    return HomalgMatrix( [ ring_element ], 1, 1, ring );
+    return HomalgMatrixListList( [ [ ring_element ] ], 1, 1, ring );
     
 end );
