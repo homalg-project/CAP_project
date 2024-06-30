@@ -326,7 +326,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
             od;
         od;
         
-        basis_over_base_field_as_column_vector := HomalgMatrix( basis_over_base_field, Length( basis_over_base_field ), 1, ring );
+        basis_over_base_field_as_column_vector := HomalgColumnVector( basis_over_base_field, Length( basis_over_base_field ), ring );
         
         SetBasisOverBaseFieldAsColumnVector( category, basis_over_base_field_as_column_vector );
         
@@ -336,7 +336,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
         AddBasisOfExternalHom( category, { cat, a, b } -> List( EntriesOfHomalgColumnVector( basis_over_base_field_as_column_vector ), x -> RingAsCategoryMorphism( cat, x ) ) );
         
         ##
-        AddCoefficientsOfMorphism( category, { cat, r } -> EntriesOfHomalgRowVector( CoercedMatrix( UnderlyingRing( cat ), field, CoefficientsWithGivenMonomials( HomalgMatrix( [ UnderlyingRingElement( r ) ], 1, 1, UnderlyingRing( cat ) ), basis_over_base_field_as_column_vector ) ) ) );
+        AddCoefficientsOfMorphism( category, { cat, r } -> EntriesOfHomalgRowVector( CoercedMatrix( UnderlyingRing( cat ), field, CoefficientsWithGivenMonomials( HomalgMatrixListList( [ [ UnderlyingRingElement( r ) ] ], 1, 1, UnderlyingRing( cat ) ), basis_over_base_field_as_column_vector ) ) ) );
         
     fi;
     

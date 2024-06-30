@@ -141,7 +141,7 @@ CapJitAddLogicTemplate(
     )
 );
 
-# HomalgMatrix( EntriesOfHomalgRowVector )
+# HomalgRowVector( EntriesOfHomalgRowVector )
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ "matrix", "nr_cols", "ring" ],
