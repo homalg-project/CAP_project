@@ -3,7 +3,7 @@
 #! @Section Terminal category
 
 #! @Example
-LoadPackage( "MonoidalCategories", ">= 2024.06-01", false );
+LoadPackage( "MonoidalCategories", ">= 2024.06-02", false );
 #! true
 T := TerminalCategoryWithMultipleObjects( );
 #! TerminalCategoryWithMultipleObjects( )
@@ -18,10 +18,10 @@ Display( T );
 #! * IsLinearCategoryOverCommutativeRing
 #! * IsLeftClosedMonoidalCategory
 #! * IsLeftCoclosedMonoidalCategory
-#! * IsAbelianCategoryWithEnoughInjectives
-#! * IsAbelianCategoryWithEnoughProjectives
 #! * IsRigidSymmetricClosedMonoidalCategory
 #! * IsRigidSymmetricCoclosedMonoidalCategory
+#! * IsAbelianCategoryWithEnoughInjectives
+#! * IsAbelianCategoryWithEnoughProjectives
 #! and not yet algorithmically
 #! * IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms
 #! and furthermore mathematically

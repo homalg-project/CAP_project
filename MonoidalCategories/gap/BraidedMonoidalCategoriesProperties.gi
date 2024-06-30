@@ -4,9 +4,11 @@
 # Implementations
 #
 
-CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBraidedMonoidalCategory  := Concatenation( [
-"BraidingWithGivenTensorProducts",
-"BraidingInverseWithGivenTensorProducts"
-], CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalCategory );
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBraidedMonoidalCategory :=
+  Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalCategory,
+          [ "BraidingWithGivenTensorProducts",
+            "BraidingInverseWithGivenTensorProducts"
+            ] );
 
 InstallTrueMethod( IsMonoidalCategory, IsBraidedMonoidalCategory );

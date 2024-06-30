@@ -17,14 +17,16 @@
 
 DeclareGlobalVariable( "CARTESIAN_CLOSED_CATEGORIES_METHOD_NAME_RECORD" );
 
-CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianClosedCategory  := Concatenation( [
-"ExponentialOnObjects",
-"ExponentialOnMorphismsWithGivenExponentials",
-"CartesianRightEvaluationMorphismWithGivenSource",
-"CartesianRightCoevaluationMorphismWithGivenRange",
-"CartesianLeftEvaluationMorphismWithGivenSource",
-"CartesianLeftCoevaluationMorphismWithGivenRange"
-], CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianCategory );
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianClosedCategory :=
+  Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianCategory,
+          [ "ExponentialOnObjects",
+            "ExponentialOnMorphismsWithGivenExponentials",
+            "CartesianRightEvaluationMorphismWithGivenSource",
+            "CartesianRightCoevaluationMorphismWithGivenRange",
+            "CartesianLeftEvaluationMorphismWithGivenSource",
+            "CartesianLeftCoevaluationMorphismWithGivenRange"
+            ] );
 
 #! @Description
 #! The arguments are two objects $a,b$.

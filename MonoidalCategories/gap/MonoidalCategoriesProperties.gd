@@ -4,17 +4,19 @@
 # Declarations
 #
 
-CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalCategory  := Concatenation( [
-"TensorProductOnObjects",
-"TensorProductOnMorphismsWithGivenTensorProducts",
-"TensorUnit",
-"AssociatorLeftToRightWithGivenTensorProducts",
-"AssociatorRightToLeftWithGivenTensorProducts",
-"LeftUnitorWithGivenTensorProduct",
-"LeftUnitorInverseWithGivenTensorProduct",
-"RightUnitorWithGivenTensorProduct",
-"RightUnitorInverseWithGivenTensorProduct"
-], CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory );
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalCategory  :=
+  Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory,
+          [ "TensorProductOnObjects",
+            "TensorProductOnMorphismsWithGivenTensorProducts",
+            "TensorUnit",
+            "AssociatorLeftToRightWithGivenTensorProducts",
+            "AssociatorRightToLeftWithGivenTensorProducts",
+            "LeftUnitorWithGivenTensorProduct",
+            "LeftUnitorInverseWithGivenTensorProduct",
+            "RightUnitorWithGivenTensorProduct",
+            "RightUnitorInverseWithGivenTensorProduct"
+            ] );
 
 #! @Description
 #!  The property of the category <A>C</A> being monoidal.
