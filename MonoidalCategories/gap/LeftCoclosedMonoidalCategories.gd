@@ -14,12 +14,14 @@
 
 DeclareGlobalVariable( "LEFT_COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD" );
 
-CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsLeftCoclosedMonoidalCategory  := Concatenation( [
-"LeftInternalCoHomOnObjects",
-"LeftInternalCoHomOnMorphismsWithGivenLeftInternalCoHoms",
-"LeftCoclosedMonoidalEvaluationMorphismWithGivenRange",
-"LeftCoclosedMonoidalCoevaluationMorphismWithGivenSource"
-], CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalCategory );
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsLeftCoclosedMonoidalCategory :=
+  Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalCategory,
+          [ "LeftInternalCoHomOnObjects",
+            "LeftInternalCoHomOnMorphismsWithGivenLeftInternalCoHoms",
+            "LeftCoclosedMonoidalEvaluationMorphismWithGivenRange",
+            "LeftCoclosedMonoidalCoevaluationMorphismWithGivenSource"
+            ] );
 
 #! @Description
 #! The arguments are two objects $a,b$.

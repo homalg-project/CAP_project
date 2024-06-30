@@ -19,12 +19,13 @@ DeclareProperty( "IsStrictCocartesianCategory", IsCapCategory );
 AddCategoricalProperty( [ "IsStrictCocartesianCategory", "IsStrictCartesianCategory" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory :=
-  Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithInitialObject,
-          [ "Coproduct",
-            "InjectionOfCofactorOfCoproductWithGivenCoproduct",
-            "UniversalMorphismFromCoproductWithGivenCoproduct",
-          ], CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory );
+  DuplicateFreeList(
+          Concatenation(
+                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithInitialObject,
+                  [ "Coproduct",
+                    "InjectionOfCofactorOfCoproductWithGivenCoproduct",
+                    "UniversalMorphismFromCoproductWithGivenCoproduct",
+                    ] ) );
 
 ## For internal use only:
 ## we need an operation name different from `Coproduct`, since CompilerForCAP

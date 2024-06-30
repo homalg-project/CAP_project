@@ -19,13 +19,13 @@ DeclareProperty( "IsStrictCartesianCategory", IsCapCategory );
 AddCategoricalProperty( [ "IsStrictCartesianCategory", "IsStrictCocartesianCategory" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianCategory :=
-  Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithTerminalObject,
-          [ "DirectProduct",
-            "ProjectionInFactorOfDirectProductWithGivenDirectProduct",
-            "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
-            ],
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory );
+  DuplicateFreeList(
+          Concatenation(
+                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithTerminalObject,
+                  [ "DirectProduct",
+                    "ProjectionInFactorOfDirectProductWithGivenDirectProduct",
+                    "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
+                    ] ) );
 
 ## For internal use only:
 ## we need an operation name different from `DirectProduct`, since CompilerForCAP
