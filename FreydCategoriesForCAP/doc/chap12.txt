@@ -1364,9 +1364,9 @@
     [4X[25Xgap>[125X [27XIsCongruentForMorphisms( alpha, LinearCombinationOfMorphisms( u, coeffs, basis, u ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xu_op := Opposite( u );[127X[104X
-    [4X[28X<An object in Opposite( Ring as category( Q{e0,e1} ) )>[128X[104X
+    [4X[28X<An object in Opposite( RingAsCategory( Q{e0,e1} ) )>[128X[104X
     [4X[25Xgap>[125X [27Xalpha_op := Opposite( alpha );[127X[104X
-    [4X[28X<A morphism in Opposite( Ring as category( Q{e0,e1} ) )>[128X[104X
+    [4X[28X<A morphism in Opposite( RingAsCategory( Q{e0,e1} ) )>[128X[104X
     [4X[25Xgap>[125X [27Xbasis := BasisOfExternalHom( u_op, u_op );;[127X[104X
     [4X[25Xgap>[125X [27Xcoeffs := CoefficientsOfMorphism( alpha_op );[127X[104X
     [4X[28X[ 2, 3, 4, 5 ][128X[104X
