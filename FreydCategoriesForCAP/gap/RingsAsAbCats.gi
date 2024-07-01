@@ -23,7 +23,7 @@ InstallMethod( RING_AS_CATEGORY,
   function( ring )
     local category;
     
-    category := CreateCapCategory( Concatenation( "Ring as category( ", String( ring )," )" ), IsRingAsCategory, IsRingAsCategoryObject, IsRingAsCategoryMorphism, IsCapCategoryTwoCell );
+    category := CreateCapCategory( Concatenation( "RingAsCategory( ", String( ring )," )" ), IsRingAsCategory, IsRingAsCategoryObject, IsRingAsCategoryMorphism, IsCapCategoryTwoCell );
     
     category!.compiler_hints := rec(
         category_attribute_names := [

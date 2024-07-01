@@ -5,7 +5,7 @@ gap> old_screen_width := SizeScreen( )[1];;
 gap> SizeScreen( [ 4096 ] );;
 
 #
-gap> LoadPackage( "FreydCategoriesForCAP", false );
+gap> LoadPackage( "FreydCategoriesForCAP", ">= 2024.06-03", false );
 true
 
 #
@@ -21,14 +21,14 @@ gap> CapJitEnableProofAssistantMode( );
 #
 gap> StateProposition( cat, "is_equipped_with_preadditive_structure" );;
 Proposition:
-Ring as category( an arbitrary ring ) is equipped with a preadditive structure.
+RingAsCategory( an arbitrary ring ) is equipped with a preadditive structure.
 
 # AdditionForMorphisms well-defined
 gap> StateNextLemma( );
 
 
 Lemma 1:
-In Ring as category( an arbitrary ring ), the addition of morphisms defines a morphism:
+In RingAsCategory( an arbitrary ring ), the addition of morphisms defines a morphism:
 For two objects A and B and two morphisms alpha : A → B and beta : A → B we have
 function ( cat, A, B, alpha, beta )
     return IsWellDefinedForMorphismsWithGivenSourceAndRange( cat, A, AdditionForMorphisms( cat, alpha, beta ), B );
@@ -48,7 +48,7 @@ gap> StateNextLemma( );
 
 
 Lemma 2:
-In Ring as category( an arbitrary ring ), addition of morphisms is associative:
+In RingAsCategory( an arbitrary ring ), addition of morphisms is associative:
 For two objects A and B and three morphisms alpha : A → B, beta : A → B, and gamma : A → B we have
 function ( cat, A, B, alpha, beta, gamma )
     return IsCongruentForMorphisms( cat, AdditionForMorphisms( cat, AdditionForMorphisms( cat, alpha, beta ), gamma ), AdditionForMorphisms( cat, alpha, AdditionForMorphisms( cat, beta, gamma ) ) );
@@ -69,7 +69,7 @@ gap> StateNextLemma( );
 
 
 Lemma 3:
-In Ring as category( an arbitrary ring ), addition of morphisms is commutative:
+In RingAsCategory( an arbitrary ring ), addition of morphisms is commutative:
 For two objects A and B and two morphisms alpha : A → B and beta : A → B we have
 function ( cat, A, B, alpha, beta )
     return IsCongruentForMorphisms( cat, AdditionForMorphisms( cat, alpha, beta ), AdditionForMorphisms( cat, beta, alpha ) );
@@ -90,7 +90,7 @@ gap> StateNextLemma( );
 
 
 Lemma 4:
-In Ring as category( an arbitrary ring ), composition is additive in the first component:
+In RingAsCategory( an arbitrary ring ), composition is additive in the first component:
 For three objects A, B, and C and three morphisms alpha : A → B, beta : A → B, and phi : B → C we have
 function ( cat, A, B, C, alpha, beta, phi )
     return IsCongruentForMorphisms( cat, PreCompose( cat, AdditionForMorphisms( cat, alpha, beta ), phi ), AdditionForMorphisms( cat, PreCompose( cat, alpha, phi ), PreCompose( cat, beta, phi ) ) );
@@ -111,7 +111,7 @@ gap> StateNextLemma( );
 
 
 Lemma 5:
-In Ring as category( an arbitrary ring ), composition is additive in the second component:
+In RingAsCategory( an arbitrary ring ), composition is additive in the second component:
 For three objects A, B, and C and three morphisms alpha : B → C, beta : B → C, and phi : A → B we have
 function ( cat, A, B, C, alpha, beta, phi )
     return IsCongruentForMorphisms( cat, PreCompose( cat, phi, AdditionForMorphisms( cat, alpha, beta ) ), AdditionForMorphisms( cat, PreCompose( cat, phi, alpha ), PreCompose( cat, phi, beta ) ) );
@@ -132,7 +132,7 @@ gap> StateNextLemma( );
 
 
 Lemma 6:
-In Ring as category( an arbitrary ring ), the zero morphism between two objects is a morphism:
+In RingAsCategory( an arbitrary ring ), the zero morphism between two objects is a morphism:
 For two objects A and B we have
 function ( cat, A, B )
     return IsWellDefinedForMorphismsWithGivenSourceAndRange( cat, A, ZeroMorphism( cat, A, B ), B );
@@ -152,7 +152,7 @@ gap> StateNextLemma( );
 
 
 Lemma 7:
-In Ring as category( an arbitrary ring ), zero morphisms are left neutral:
+In RingAsCategory( an arbitrary ring ), zero morphisms are left neutral:
 For two objects A and B and a morphism alpha : A → B we have
 function ( cat, A, B, alpha )
     return IsCongruentForMorphisms( cat, AdditionForMorphisms( cat, ZeroMorphism( cat, A, B ), alpha ), alpha );
@@ -173,7 +173,7 @@ gap> StateNextLemma( );
 
 
 Lemma 8:
-In Ring as category( an arbitrary ring ), zero morphisms are right neutral:
+In RingAsCategory( an arbitrary ring ), zero morphisms are right neutral:
 For two objects A and B and a morphism alpha : A → B we have
 function ( cat, A, B, alpha )
     return IsCongruentForMorphisms( cat, AdditionForMorphisms( cat, alpha, ZeroMorphism( cat, A, B ) ), alpha );
@@ -194,7 +194,7 @@ gap> StateNextLemma( );
 
 
 Lemma 9:
-In Ring as category( an arbitrary ring ), the additive inverse of a morphism defines a morphism:
+In RingAsCategory( an arbitrary ring ), the additive inverse of a morphism defines a morphism:
 For two objects A and B and a morphism alpha : A → B we have
 function ( cat, A, B, alpha )
     return IsWellDefinedForMorphismsWithGivenSourceAndRange( cat, A, AdditiveInverseForMorphisms( cat, alpha ), B );
@@ -214,7 +214,7 @@ gap> StateNextLemma( );
 
 
 Lemma 10:
-In Ring as category( an arbitrary ring ), additive inverses are left inverse:
+In RingAsCategory( an arbitrary ring ), additive inverses are left inverse:
 For two objects A and B and a morphism alpha : A → B we have
 function ( cat, A, B, alpha )
     return IsCongruentForMorphisms( cat, AdditionForMorphisms( cat, AdditiveInverseForMorphisms( cat, alpha ), alpha ), ZeroMorphism( cat, A, B ) );
@@ -235,7 +235,7 @@ gap> StateNextLemma( );
 
 
 Lemma 11:
-In Ring as category( an arbitrary ring ), additive inverses are right inverse:
+In RingAsCategory( an arbitrary ring ), additive inverses are right inverse:
 For two objects A and B and a morphism alpha : A → B we have
 function ( cat, A, B, alpha )
     return IsCongruentForMorphisms( cat, AdditionForMorphisms( cat, alpha, AdditiveInverseForMorphisms( cat, alpha ) ), ZeroMorphism( cat, A, B ) );
@@ -256,7 +256,7 @@ gap> AssertProposition( );
 
 
 Summing up, we have shown:
-Ring as category( an arbitrary ring ) is equipped with a preadditive structure. ∎
+RingAsCategory( an arbitrary ring ) is equipped with a preadditive structure. ∎
 
 #
 gap> CapJitDisableProofAssistantMode( );

@@ -5,7 +5,7 @@ gap> old_screen_width := SizeScreen( )[1];;
 gap> SizeScreen( [ 4096 ] );;
 
 #
-gap> LoadPackage( "FreydCategoriesForCAP", false );
+gap> LoadPackage( "FreydCategoriesForCAP", ">= 2024.06-03", false );
 true
 
 #
@@ -30,14 +30,14 @@ gap> CapJitEnableProofAssistantMode( );
 #
 gap> StateProposition( cat, "is_equipped_with_linear_structure" );;
 Proposition:
-Ring as category( a k-algebra ) is equipped with a linear structure.
+RingAsCategory( a k-algebra ) is equipped with a linear structure.
 
 # MultiplyWithElementOfCommutativeRingForMorphisms is well-defined
 gap> StateNextLemma( );
 
 
 Lemma 1:
-In Ring as category( a k-algebra ), multiplying a morphism by a ring element defines a morphism:
+In RingAsCategory( a k-algebra ), multiplying a morphism by a ring element defines a morphism:
 For two objects A and B, an element r of the commutative ring of the linear structure, and a morphism alpha : A → B we have
 function ( cat, A, B, r, alpha )
     return IsWellDefinedForMorphismsWithGivenSourceAndRange( cat, A, MultiplyWithElementOfCommutativeRingForMorphisms( cat, r, alpha ), B );
@@ -57,7 +57,7 @@ gap> StateNextLemma( );
 
 
 Lemma 2:
-In Ring as category( a k-algebra ), multiplication with ring elements is associative:
+In RingAsCategory( a k-algebra ), multiplication with ring elements is associative:
 For two objects A and B, two elements r and s of the commutative ring of the linear structure, and a morphism alpha : A → B we have
 function ( cat, A, B, r, s, alpha )
     return IsCongruentForMorphisms( cat, MultiplyWithElementOfCommutativeRingForMorphisms( cat, r, MultiplyWithElementOfCommutativeRingForMorphisms( s, alpha ) ), MultiplyWithElementOfCommutativeRingForMorphisms( cat, r * s, alpha ) );
@@ -78,7 +78,7 @@ gap> StateNextLemma( );
 
 
 Lemma 3:
-In Ring as category( a k-algebra ), composition distributes over the addition of ring elements:
+In RingAsCategory( a k-algebra ), composition distributes over the addition of ring elements:
 For two objects A and B, two elements r and s of the commutative ring of the linear structure, and a morphism alpha : A → B we have
 function ( cat, A, B, r, s, alpha )
     return IsCongruentForMorphisms( cat, MultiplyWithElementOfCommutativeRingForMorphisms( cat, r + s, alpha ), AdditionForMorphisms( cat, MultiplyWithElementOfCommutativeRingForMorphisms( cat, r, alpha ), MultiplyWithElementOfCommutativeRingForMorphisms( cat, s, alpha ) ) );
@@ -99,7 +99,7 @@ gap> StateNextLemma( );
 
 
 Lemma 4:
-In Ring as category( a k-algebra ), ring multiplication distributes over the addition of morphisms:
+In RingAsCategory( a k-algebra ), ring multiplication distributes over the addition of morphisms:
 For two objects A and B, an element r of the commutative ring of the linear structure, and two morphisms alpha : A → B and beta : A → B we have
 function ( cat, A, B, r, alpha, beta )
     return IsCongruentForMorphisms( cat, MultiplyWithElementOfCommutativeRingForMorphisms( cat, r, AdditionForMorphisms( cat, alpha, beta ) ), AdditionForMorphisms( cat, MultiplyWithElementOfCommutativeRingForMorphisms( cat, r, alpha ), MultiplyWithElementOfCommutativeRingForMorphisms( cat, r, beta ) ) );
@@ -120,7 +120,7 @@ gap> StateNextLemma( );
 
 
 Lemma 5:
-In Ring as category( a k-algebra ), multiplication with ring elements has a neutral element:
+In RingAsCategory( a k-algebra ), multiplication with ring elements has a neutral element:
 For two objects A and B and a morphism alpha : A → B we have
 function ( cat, A, B, alpha )
     return IsCongruentForMorphisms( cat, MultiplyWithElementOfCommutativeRingForMorphisms( cat, One( CommutativeRingOfLinearCategory( cat ) ), alpha ), alpha );
@@ -141,7 +141,7 @@ gap> StateNextLemma( );
 
 
 Lemma 6:
-In Ring as category( a k-algebra ), composition is linear in the first component:
+In RingAsCategory( a k-algebra ), composition is linear in the first component:
 For three objects A, B, and C, an element r of the commutative ring of the linear structure, and two morphisms alpha : A → B and beta : B → C we have
 function ( cat, A, B, C, r, alpha, beta )
     return IsCongruentForMorphisms( cat, PreCompose( cat, MultiplyWithElementOfCommutativeRingForMorphisms( cat, r, alpha ), beta ), MultiplyWithElementOfCommutativeRingForMorphisms( cat, r, PreCompose( cat, alpha, beta ) ) );
@@ -162,7 +162,7 @@ gap> StateNextLemma( );
 
 
 Lemma 7:
-In Ring as category( a k-algebra ), composition is linear in the second component:
+In RingAsCategory( a k-algebra ), composition is linear in the second component:
 For three objects A, B, and C, an element r of the commutative ring of the linear structure, and two morphisms alpha : A → B and beta : B → C we have
 function ( cat, A, B, C, r, alpha, beta )
     return IsCongruentForMorphisms( cat, PreCompose( cat, alpha, MultiplyWithElementOfCommutativeRingForMorphisms( cat, r, beta ) ), MultiplyWithElementOfCommutativeRingForMorphisms( cat, r, PreCompose( cat, alpha, beta ) ) );
@@ -183,7 +183,7 @@ gap> AssertProposition( );
 
 
 Summing up, we have shown:
-Ring as category( a k-algebra ) is equipped with a linear structure. ∎
+RingAsCategory( a k-algebra ) is equipped with a linear structure. ∎
 
 #
 gap> CapJitDisableProofAssistantMode( );
