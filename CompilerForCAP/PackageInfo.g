@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "CompilerForCAP",
 Subtitle := "Speed up and verify categorical algorithms",
-Version := "2024.06-01",
+Version := "2024.07-01",
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
 License := "GPL-2.0-or-later",
 
@@ -75,6 +75,17 @@ Dependencies := rec(
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
 ),
+
+Extensions := [
+  rec(
+    needed := [ [ "MatricesForHomalg", ">= 2023.11-02" ] ],
+    filename := "gap/TypeSignaturesOfMatricesForHomalg.gi",
+  ),
+  rec(
+    needed := [ [ "QPA", ">= 2.0" ] ],
+    filename := "gap/TypeSignaturesOfQPA.gi",
+  ),
+],
 
 AvailabilityTest := ReturnTrue,
 

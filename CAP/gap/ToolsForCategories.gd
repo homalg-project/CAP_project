@@ -201,13 +201,6 @@ DeclareGlobalFunction( "CapJitAddKnownMethod" );
 DeclareGlobalFunction( "CapJitAddTypeSignature" );
 
 #! @Description
-#!   (experimental) Same as <Ref Func="CapJitAddTypeSignature" />, but the filters and the output data type must be given as strings
-#!   which will be evaluated once <A>package_name</A> is loaded.
-#!   This should be used with care because errors will only be detected at runtime.
-#! @Arguments package_name, name, input_filters, output_data_type
-DeclareGlobalFunction( "CapJitAddTypeSignatureDeferred" );
-
-#! @Description
 #!   (experimental) Returns the data type of a list whose elements are of type <A>element_type</A>.
 #!   <A>element_type</A> must be a filter or a data type.
 #! @Arguments element_type
