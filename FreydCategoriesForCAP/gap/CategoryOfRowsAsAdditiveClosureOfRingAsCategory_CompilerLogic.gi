@@ -11,7 +11,6 @@ CapJitAddLogicTemplate(
         src_template := "List( UnionOfRowsListList( nr_cols, listlist ), row -> List( row, func ) )",
         dst_template := "UnionOfRowsListList( nr_cols, List( listlist, list -> List( list, new_row -> List( new_row, func ) ) ) )",
         new_funcs := [ [ "list" ], [ "new_row" ] ],
-        needed_packages := [ [ "FreydCategoriesForCAP", ">= 2021.12-02" ] ],
     )
 );
 
@@ -22,7 +21,6 @@ CapJitAddLogicTemplate(
         src_template := "List( UnionOfColumnsListList( nr_rows, listlist ), row -> List( row, func ) )",
         dst_template := "UnionOfColumnsListList( nr_rows, List( listlist, list -> List( list, new_row -> List( new_row, func ) ) ) )",
         new_funcs := [ [ "list" ], [ "new_row" ] ],
-        needed_packages := [ [ "FreydCategoriesForCAP", ">= 2021.12-02" ] ],
     )
 );
 
@@ -140,7 +138,6 @@ CapJitAddLogicTemplate(
         variable_names := [ "matrix", "row", "col" ],
         src_template := "EntriesOfHomalgMatrixAsListList( matrix )[row][col]",
         dst_template := "matrix[row, col]",
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
 
@@ -150,7 +147,6 @@ CapJitAddLogicTemplate(
         variable_names := [ "matrix", "nr_cols", "ring" ],
         src_template := "HomalgRowVector( EntriesOfHomalgRowVector( matrix ), nr_cols, ring )",
         dst_template := "matrix",
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
 
@@ -160,7 +156,6 @@ CapJitAddLogicTemplate(
         variable_names := [ "list", "row_vector", "nr_rows", "nr_cols", "ring" ],
         src_template := "HomalgMatrixListList( List( list, x -> EntriesOfHomalgRowVector( row_vector ) ), nr_rows, nr_cols, ring )",
         dst_template := "UnionOfRows( ring, nr_cols, List( list, x -> row_vector ) )",
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
 
@@ -171,7 +166,6 @@ CapJitAddLogicTemplate(
         src_template := "HomalgMatrixListList( UnionOfRowsListList( nr_cols, list ), nr_rows, nr_cols2, ring )",
         dst_template := "UnionOfRows( ring, nr_cols, List( list, l -> HomalgMatrixListList( l, Length( l ), nr_cols, ring ) ) )",
         new_funcs := [ [ "l" ] ],
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
 
@@ -182,7 +176,6 @@ CapJitAddLogicTemplate(
         src_template := "HomalgMatrixListList( UnionOfColumnsListList( nr_rows, list ), nr_rows2, nr_cols, ring )",
         dst_template := "UnionOfColumns( ring, nr_rows, List( list, l -> HomalgMatrixListList( l, nr_rows, Length( l[1] ), ring ) ) )", # WARNING: l[1] might not exist
         new_funcs := [ [ "l" ] ],
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
 
@@ -192,7 +185,6 @@ CapJitAddLogicTemplate(
         variable_names := [ "ring2", "nr_cols", "list", "ring1", "matrix" ],
         src_template := "UnionOfRows( ring2, nr_cols, List( list, l -> CoercedMatrix( ring1, ring2, matrix ) ) )",
         dst_template := "CoercedMatrix( ring1, ring2, UnionOfRows( ring1, nr_cols, List( list, l -> matrix ) ) )",
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
 
@@ -202,7 +194,6 @@ CapJitAddLogicTemplate(
         variable_names := [ "ring2", "nr_rows", "list", "ring1", "matrix" ],
         src_template := "UnionOfColumns( ring2, nr_rows, List( list, l -> CoercedMatrix( ring1, ring2, matrix ) ) )",
         dst_template := "CoercedMatrix( ring1, ring2, UnionOfColumns( ring1, nr_rows, List( list, l -> matrix ) ) )",
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
 
@@ -213,7 +204,6 @@ CapJitAddLogicTemplate(
         variable_filters := [ IsObject, IsObject, IsObject, "IsHomalgMatrix", "IsHomalgMatrix" ],
         src_template := "UnionOfRows( ring, nr_cols, List( list, l -> CoefficientsWithGivenMonomials( matrix, monomials ) ) )",
         dst_template := "CoefficientsWithGivenMonomials( UnionOfRows( ring, NumberColumns( monomials ), List( list, l -> matrix ) ), monomials )",
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
 
@@ -225,7 +215,6 @@ CapJitAddLogicTemplate(
         src_template := "UnionOfColumns( ring, nr_rows, List( list, l -> CoefficientsWithGivenMonomials( matrix, monomials ) ) )",
         dst_template := "CoefficientsWithGivenMonomials( UnionOfColumns( ring, nr_rows, List( list, l -> matrix ) ), DiagMat( ring, List( list, x -> monomials ) ) )",
         new_funcs := [ [ "x" ] ],
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
 
@@ -236,7 +225,6 @@ CapJitAddLogicTemplate(
         variable_filters := [ "IsHomalgRingElement", "IsInt", "IsInt", "IsHomalgRing" ],
         src_template := "HomalgMatrixListList( [ [ ring_element ] ], nr_rows, nr_cols, ring )",
         dst_template := "COMPILATION_HELPER_HomalgMatrixFromRingElement( ring_element, ring )",
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.06.27" ] ],
     )
 );
 
@@ -247,7 +235,6 @@ CapJitAddLogicTemplate(
         variable_filters := [ "IsHomalgRingElement", "IsHomalgRing" ],
         src_template := "HomalgMatrix( [ ring_element ], 1, 1, ring )",
         dst_template := "COMPILATION_HELPER_HomalgMatrixFromRingElement( ring_element, ring )",
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.06.27" ] ],
     )
 );
 
@@ -260,7 +247,6 @@ CapJitAddLogicTemplate(
         variable_filters := [ IsObject, IsObject, IsObject, "IsHomalgRingElement", "IsHomalgRingElement", "IsHomalgRingElement" ],
         src_template := "UnionOfRows( homalg_ring, nr_cols, List( list, l -> COMPILATION_HELPER_HomalgMatrixFromRingElement( ring_element1 * ring_element2 * ring_element3, homalg_ring ) ) )",
         dst_template := "ring_element1 * (UnionOfRows( homalg_ring, nr_cols, List( list, l -> COMPILATION_HELPER_HomalgMatrixFromRingElement( ring_element2, homalg_ring ) ) ) * ring_element3)",
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
 
@@ -271,7 +257,6 @@ CapJitAddLogicTemplate(
         variable_filters := [ IsObject, IsObject, IsObject, "IsHomalgRingElement", "IsHomalgRingElement" ],
         src_template := "UnionOfColumns( homalg_ring, nr_rows, List( list, l -> COMPILATION_HELPER_HomalgMatrixFromRingElement( ring_element1 * ring_element2, homalg_ring ) ) )",
         dst_template := "ring_element1 * UnionOfColumns( homalg_ring, nr_rows, List( list, l -> COMPILATION_HELPER_HomalgMatrixFromRingElement( ring_element2, homalg_ring ) ) )",
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
 
@@ -282,7 +267,6 @@ CapJitAddLogicTemplate(
         variable_filters := [ IsObject, IsObject, IsObject, "IsHomalgRingElement", "IsHomalgMatrix" ],
         src_template := "UnionOfRows( homalg_ring, nr_cols, List( list, l -> ring_element * matrix ) )",
         dst_template := "ring_element * UnionOfRows( homalg_ring, nr_cols, List( list, l -> matrix ) )",
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
 
@@ -293,7 +277,6 @@ CapJitAddLogicTemplate(
         variable_filters := [ IsObject, IsObject, IsObject, "IsHomalgMatrix", "IsHomalgRingElement" ],
         src_template := "UnionOfRows( homalg_ring, nr_cols, List( list, l -> matrix * ring_element ) )",
         dst_template := "UnionOfRows( homalg_ring, nr_cols, List( list, l -> matrix ) ) * ring_element",
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
 
@@ -304,7 +287,6 @@ CapJitAddLogicTemplate(
         variable_filters := [ IsObject, IsObject, IsObject, "IsHomalgRingElement", "IsHomalgMatrix" ],
         src_template := "UnionOfColumns( homalg_ring, nr_rows, List( list, l -> ring_element * matrix ) )",
         dst_template := "ring_element * UnionOfColumns( homalg_ring, nr_rows, List( list, l -> matrix ) )",
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
 
@@ -315,7 +297,6 @@ CapJitAddLogicTemplate(
         variable_filters := [ IsObject, IsObject, IsObject, "IsHomalgMatrix", "IsHomalgRingElement" ],
         src_template := "UnionOfColumns( homalg_ring, nr_rows, List( list, l -> matrix * ring_element ) )",
         dst_template := "UnionOfColumns( homalg_ring, nr_rows, List( list, l -> matrix ) ) * ring_element",
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
 
@@ -332,7 +313,6 @@ CapJitAddLogicTemplate(
             ) )
         """,
         dst_template := "matrix",
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.06.27" ] ],
     )
 );
 
@@ -349,7 +329,6 @@ CapJitAddLogicTemplate(
             ) )
         """,
         dst_template := "DualKroneckerMat( matrix1, matrix2 )",
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.06.27" ] ],
     )
 );
 
@@ -366,7 +345,6 @@ CapJitAddLogicTemplate(
             ) )
         """,
         dst_template := "KroneckerMat( TransposedMatrix( matrix1 ), matrix2 )",
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
 
@@ -383,7 +361,6 @@ CapJitAddLogicTemplate(
             ) )
         """,
         dst_template := "ConvertMatrixToRow( matrix )",
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.06.27" ] ],
     )
 );
 
@@ -407,7 +384,6 @@ CapJitAddLogicTemplate(
             )
         """,
         dst_template := "ConvertRowToMatrix( matrix, nr_rows, nr_cols )",
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.06.27" ] ],
     )
 );
 
@@ -419,7 +395,6 @@ CapJitAddLogicTemplate(
         src_template := "Iterated( ListN( list1, list2, { x, y } -> x / ring * UnderlyingRingElement( y ) ), { alpha, beta } -> alpha + beta, Zero( ring ) )",
         dst_template := "EntriesOfHomalgMatrix( HomalgMatrixListList( [ List( list1, x -> x / ring ) ], 1, Length( list1 ), ring ) * HomalgMatrixListList( List( list2, y -> [ UnderlyingRingElement( y ) ] ), Length( list2 ), 1, ring ) )[1]",
         new_funcs := [ [ "x" ], [ "y" ] ],
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.06.27" ] ],
     )
 );
 
@@ -430,7 +405,6 @@ CapJitAddLogicTemplate(
         variable_filters := [ "IsHomalgMatrix", "IsHomalgRing" ],
         src_template := "HomalgMatrixListList( [ List( EntriesOfHomalgRowVector( row_vector ), x -> x / ring ) ], 1, Length( EntriesOfHomalgRowVector( row_vector ) ), ring )",
         dst_template := "CoercedMatrix( ring, row_vector )",
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.06.27" ] ],
     )
 );
 
@@ -441,7 +415,6 @@ CapJitAddLogicTemplate(
         variable_filters := [ "IsHomalgMatrix", "IsHomalgRing" ],
         src_template := "HomalgMatrixListList( List( EntriesOfHomalgColumnVector( column_vector ), x -> [ x ] ), Length( EntriesOfHomalgColumnVector( column_vector ) ), 1, ring )",
         dst_template := "column_vector",
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.06.27" ] ],
     )
 );
 
@@ -452,7 +425,6 @@ CapJitAddLogicTemplate(
         variable_filters := [ "IsHomalgRing", "IsHomalgRingElement" ],
         src_template := "OneImmutable( ring ) * r",
         dst_template := "r",
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.06.27" ] ],
     )
 );
 
@@ -463,7 +435,6 @@ CapJitAddLogicTemplate(
         variable_filters := [ "IsHomalgRing", "IsHomalgRingElement" ],
         src_template := "r * OneImmutable( ring )",
         dst_template := "r",
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.06.27" ] ],
     )
 );
 
@@ -485,7 +456,6 @@ CapJitAddLogicTemplate(
         src_template := "CertainColumns( List( list, func )[i], range )",
         dst_template := "List( list, x -> CertainColumns( func( x ), range ) )[i]",
         new_funcs := [ [ "x" ] ],
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.06.27" ] ],
     )
 );
 
@@ -496,6 +466,5 @@ CapJitAddLogicTemplate(
         variable_filters := [ "IsHomalgMatrix", "IsInt", "IsInt", "IsInt", "IsInt" ],
         src_template := "CertainColumns( CertainColumns( matrix, [ from1 + 1 .. to1 ] ), [ from2 .. to2 ] )",
         dst_template := "CertainColumns( matrix, [ from1 + from2 .. from1 + to2 ] )",
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.06.27" ] ],
     )
 );

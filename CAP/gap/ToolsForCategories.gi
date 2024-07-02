@@ -1213,46 +1213,6 @@ InstallGlobalFunction( "CapJitAddTypeSignature", function ( name, input_filters,
 end );
 
 ##
-BindGlobal( "CAP_JIT_INTERNAL_TYPE_SIGNATURES_DEFERRED", rec( ) );
-
-InstallGlobalFunction( "CapJitAddTypeSignatureDeferred", function ( package_name, name, input_filters, output_data_type )
-    
-    if input_filters <> "any" then
-        
-        if not IsList( input_filters ) then
-            
-            # COVERAGE_IGNORE_NEXT_LINE
-            Error( "<input_filters> must be a list or the string \"any\"" );
-            
-        fi;
-        
-        if not ForAll( input_filters, filter -> IsString( filter ) ) then
-            
-            # COVERAGE_IGNORE_NEXT_LINE
-            Error( "<input_filters> must be a list of strings or the string \"any\"" );
-            
-        fi;
-        
-    fi;
-    
-    if not IsString( output_data_type ) then
-        
-        # COVERAGE_IGNORE_NEXT_LINE
-        Error( "<output_data_type> must be a string" );
-        
-    fi;
-    
-    if not IsBound( CAP_JIT_INTERNAL_TYPE_SIGNATURES_DEFERRED.(package_name) ) then
-        
-        CAP_JIT_INTERNAL_TYPE_SIGNATURES_DEFERRED.(package_name) := [ ];
-        
-    fi;
-    
-    Add( CAP_JIT_INTERNAL_TYPE_SIGNATURES_DEFERRED.(package_name), [ name, input_filters, output_data_type ] );
-    
-end );
-
-##
 InstallGlobalFunction( CapJitDataTypeOfListOf, function ( element_type )
     
     if IsFilter( element_type ) then
