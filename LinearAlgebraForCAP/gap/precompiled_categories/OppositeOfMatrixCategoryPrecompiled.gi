@@ -350,20 +350,6 @@ end
     , 100 );
     
     ##
-    AddHomomorphismStructureOnMorphisms( cat,
-        
-########
-function ( cat_1, alpha_1, beta_1 )
-    local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := OppositeCategory( cat_1 );
-    morphism_attr_1_1 := KroneckerMat( TransposedMatrix( AsHomalgMatrix( Opposite( beta_1 ) ) ), AsHomalgMatrix( Opposite( alpha_1 ) ) );
-    return AsCapCategoryMorphism( deduped_2_1, AsCapCategoryObject( deduped_2_1, NumberRows( morphism_attr_1_1 ) ), morphism_attr_1_1, AsCapCategoryObject( deduped_2_1, NumberColumns( morphism_attr_1_1 ) ) );
-end
-########
-        
-    , 301 );
-    
-    ##
     AddHomomorphismStructureOnMorphismsWithGivenObjects( cat,
         
 ########
@@ -439,20 +425,6 @@ end
 ########
         
     , 100 );
-    
-    ##
-    AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat,
-        
-########
-function ( cat_1, alpha_1 )
-    local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := OppositeCategory( cat_1 );
-    morphism_attr_1_1 := ConvertMatrixToRow( AsHomalgMatrix( Opposite( alpha_1 ) ) );
-    return AsCapCategoryMorphism( deduped_2_1, AsCapCategoryObject( deduped_2_1, 1 ), morphism_attr_1_1, AsCapCategoryObject( deduped_2_1, NumberColumns( morphism_attr_1_1 ) ) );
-end
-########
-        
-    , 301 );
     
     ##
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( cat,

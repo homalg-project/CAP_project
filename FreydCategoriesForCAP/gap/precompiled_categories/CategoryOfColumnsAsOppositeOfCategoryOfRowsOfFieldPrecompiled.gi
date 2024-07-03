@@ -315,20 +315,6 @@ end
     , 100 );
     
     ##
-    AddHomomorphismStructureOnMorphisms( cat,
-        
-########
-function ( cat_1, alpha_1, beta_1 )
-    local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
-    morphism_attr_1_1 := KroneckerMat( TransposedMatrix( UnderlyingMatrix( beta_1 ) ), UnderlyingMatrix( alpha_1 ) );
-    return CreateCapCategoryMorphismWithAttributes( deduped_2_1, CreateCapCategoryObjectWithAttributes( deduped_2_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( deduped_2_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
-end
-########
-        
-    , 100 );
-    
-    ##
     AddHomomorphismStructureOnMorphismsWithGivenObjects( cat,
         
 ########
@@ -406,20 +392,6 @@ function ( cat_1, objects_1, k_1, P_1 )
     deduped_2_1 := List( objects_1, RankOfObject );
     deduped_1_1 := deduped_2_1[k_1];
     return CreateCapCategoryMorphismWithAttributes( cat_1, objects_1[k_1], P_1, UnderlyingMatrix, UnionOfRows( HomalgZeroMatrix( Sum( deduped_2_1{[ 1 .. k_1 - 1 ]} ), deduped_1_1, deduped_3_1 ), HomalgIdentityMatrix( deduped_1_1, deduped_3_1 ), HomalgZeroMatrix( Sum( deduped_2_1{[ k_1 + 1 .. Length( objects_1 ) ]} ), deduped_1_1, deduped_3_1 ) ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat,
-        
-########
-function ( cat_1, alpha_1 )
-    local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
-    morphism_attr_1_1 := ConvertMatrixToRow( UnderlyingMatrix( alpha_1 ) );
-    return CreateCapCategoryMorphismWithAttributes( deduped_2_1, CreateCapCategoryObjectWithAttributes( deduped_2_1, RankOfObject, 1 ), CreateCapCategoryObjectWithAttributes( deduped_2_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         

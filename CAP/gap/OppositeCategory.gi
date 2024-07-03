@@ -83,8 +83,8 @@ end );
 
 BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
   
-  function( opposite_category, category, only_primitive_operations )
-    local recnames, list_of_underlying_operations,
+  function( opposite_category, category, only_primitive_operations, only_primitive_operations_and_hom_structure )
+    local recnames, list_of_underlying_operations, operations_of_homomorphism_structure,
           installed_operations_of_homomorphism_structure_and_external_hom, H,
           current_recname, current_entry, dual_operation_name, filter_list, input_arguments_names, return_type, func_string,
           preprocessor_string, dual_arguments, tmp,
@@ -119,39 +119,59 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
                           "VerticalPostCompose",
                           "IdenticalTwoCell" ] );
     
-    if only_primitive_operations then
+    if only_primitive_operations or only_primitive_operations_and_hom_structure then
         list_of_underlying_operations := ListPrimitivelyInstalledOperationsOfCategory( category );
     else
         list_of_underlying_operations := ListInstalledOperationsOfCategory( category );
     fi;
     
-    installed_operations_of_homomorphism_structure_and_external_hom :=
-      Intersection( ListInstalledOperationsOfCategory( category ),
-              [ "DistinguishedObjectOfHomomorphismStructure",
-                "HomomorphismStructureOnObjects",
-                "HomomorphismStructureOnMorphisms",
-                "HomomorphismStructureOnMorphismsWithGivenObjects",
-                "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
-                "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects",
-                "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
-                "MorphismsOfExternalHom",
-                "BasisOfExternalHom",
-                "CoefficientsOfMorphism",
-                ] );
+    operations_of_homomorphism_structure :=
+      [ "DistinguishedObjectOfHomomorphismStructure",
+        "HomomorphismStructureOnObjects",
+        "HomomorphismStructureOnMorphisms",
+        "HomomorphismStructureOnMorphismsWithGivenObjects",
+        "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
+        "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects",
+        "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
+        ];
     
-    ## the opposite category has the same enrichment as the original category:
-    if HasRangeCategoryOfHomomorphismStructure( category ) then
+    if not IsEmpty( Intersection( list_of_underlying_operations, operations_of_homomorphism_structure ) ) then
         
-        H := RangeCategoryOfHomomorphismStructure( category );
+        SetRangeCategoryOfHomomorphismStructure( opposite_category, RangeCategoryOfHomomorphismStructure( category ) );
         
-        SetRangeCategoryOfHomomorphismStructure( opposite_category, H );
+    fi;
+    
+    if only_primitive_operations_and_hom_structure then
         
-        ## be sure the above assignment succeeded:
-        Assert( 0, IsIdenticalObj( H, RangeCategoryOfHomomorphismStructure( opposite_category ) ) );
+        installed_operations_of_homomorphism_structure_and_external_hom :=
+          Intersection( ListInstalledOperationsOfCategory( category ),
+                  [ "DistinguishedObjectOfHomomorphismStructure",
+                    "HomomorphismStructureOnObjects",
+                    "HomomorphismStructureOnMorphisms",
+                    "HomomorphismStructureOnMorphismsWithGivenObjects",
+                    "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
+                    "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects",
+                    "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
+                    "MorphismsOfExternalHom",
+                    "BasisOfExternalHom",
+                    "CoefficientsOfMorphism",
+                    ] );
         
-        list_of_underlying_operations := Concatenation( list_of_underlying_operations, installed_operations_of_homomorphism_structure_and_external_hom );
-        
-        list_of_underlying_operations := Set( list_of_underlying_operations );
+        ## the opposite category has the same enrichment as the original category:
+        if HasRangeCategoryOfHomomorphismStructure( category ) then
+            
+            H := RangeCategoryOfHomomorphismStructure( category );
+            
+            SetRangeCategoryOfHomomorphismStructure( opposite_category, H );
+            
+            ## be sure the above assignment succeeded:
+            Assert( 0, IsIdenticalObj( H, RangeCategoryOfHomomorphismStructure( opposite_category ) ) );
+            
+            list_of_underlying_operations := Concatenation( list_of_underlying_operations, installed_operations_of_homomorphism_structure_and_external_hom );
+            
+            list_of_underlying_operations := Set( list_of_underlying_operations );
+            
+        fi;
         
     fi;
     
@@ -389,6 +409,7 @@ InstallMethod( Opposite,
  FunctionWithNamedArguments(
   [
     [ "only_primitive_operations", false ],
+    [ "only_primitive_operations_and_hom_structure", false ],
   ],
   function( CAP_NAMED_ARGUMENTS, category, name )
     local opposite_category, known_properties, opposite_property_pairs, pair;
@@ -553,7 +574,7 @@ InstallMethod( Opposite,
         
     end );
     
-    CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY( opposite_category, category, CAP_NAMED_ARGUMENTS.only_primitive_operations );
+    CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY( opposite_category, category, CAP_NAMED_ARGUMENTS.only_primitive_operations, CAP_NAMED_ARGUMENTS.only_primitive_operations_and_hom_structure );
     
     Finalize( opposite_category );
     
