@@ -764,6 +764,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
         SetRangeCategoryOfHomomorphismStructure( category, rows );
         SetIsEquippedWithHomomorphismStructure( category, true );
         
+        if HasIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( rows ) and
+           IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( rows ) then
+            SetIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( category, true );
+        fi;
+        
         t_obj := CategoryOfRowsObject( rows, 1 );
         
         t_finsets := TerminalObject( finsets );
