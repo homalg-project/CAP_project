@@ -158,9 +158,6 @@
 <li><p><code class="code">apply_in_proof_assistant_mode</code> (optional): one of the strings <code class="code">"yes"</code>, <code class="code">"no"</code>, or <code class="code">"only"</code>, defaults to <code class="code">"yes"</code></p>
 
 </li>
-<li><p><code class="code">needed_packages</code> (optional): a list of pairs (i.e. lists with two entries) of strings, defaults to the empty list</p>
-
-</li>
 <li><p><code class="code">debug</code> (optional): a boolean</p>
 
 </li>
@@ -185,9 +182,6 @@
 
 </li>
 <li><p><code class="code">apply_in_proof_assistant_mode</code> determines if the logic template is applied in proof assistant mode, is not applied in proof assistant mode, or is <em>only</em> applied in proof assistant mode but not in normal mode.</p>
-
-</li>
-<li><p><code class="code">needed_packages</code> has the same format as <code class="code">NeededOtherPackages</code> in <code class="code">PackageInfo.g</code>. The template is only evaluated if the packages in <code class="code">needed_packages</code> are loaded in the correct versions.</p>
 
 </li>
 <li><p><code class="code">debug</code> can be set to <code class="code">true</code> to print more information while <code class="func">CapJitAppliedLogicTemplates</code> (<a href="chap2_mj.html#X7AE756B8878FD449"><span class="RefLink">2.5-18</span></a>) tries to apply the template. (Note: this causes informational break loops which are not actual errors).</p>

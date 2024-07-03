@@ -70,9 +70,6 @@
   [30X    [33X[0;6Y[10Xapply_in_proof_assistant_mode[110X  (optional):  one  of the strings [10X"yes"[110X,
         [10X"no"[110X, or [10X"only"[110X, defaults to [10X"yes"[110X[133X
   
-  [30X    [33X[0;6Y[10Xneeded_packages[110X  (optional):  a  list  of  pairs  (i.e. lists with two
-        entries) of strings, defaults to the empty list[133X
-  
   [30X    [33X[0;6Y[10Xdebug[110X (optional): a boolean[133X
   
   [30X    [33X[0;6Y[10Xdebug_path[110X (optional): a path[133X
@@ -105,10 +102,6 @@
         applied  in  proof  assistant  mode, is not applied in proof assistant
         mode,  or  is  [13Xonly[113X  applied in proof assistant mode but not in normal
         mode.[133X
-  
-  [30X    [33X[0;6Y[10Xneeded_packages[110X   has   the  same  format  as  [10XNeededOtherPackages[110X  in
-        [10XPackageInfo.g[110X.  The  template  is  only  evaluated  if the packages in
-        [10Xneeded_packages[110X are loaded in the correct versions.[133X
   
   [30X    [33X[0;6Y[10Xdebug[110X   can   be   set   to  [10Xtrue[110X  to  print  more  information  while
         [2XCapJitAppliedLogicTemplates[102X  ([14X2.5-18[114X)  tries  to  apply  the template.
