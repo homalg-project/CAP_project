@@ -85,6 +85,11 @@ InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows,
     
     SetCommutativeRingOfLinearCategory( category, ring );
     
+    if HasIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( rows ) and
+       IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( rows ) then
+        SetIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( category, true );
+    fi;
+    
     SetUnderlyingRing( category, ring );
     
     SetUnderlyingCategory( category, underlying_category );
