@@ -9,14 +9,14 @@ InstallGlobalFunction( CapJitAddLogicTemplate, function ( template )
     # the logic template will later be enhanced in-place -> make a copy
     template := StructuralCopy( template );
     
+    CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE( template );
+    
     Add( CAP_JIT_LOGIC_TEMPLATES, template );
     
 end );
 
 InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( template )
   local diff, variable_name, unbound_global_variable_names, syntax_tree_variables_ids, pre_func_identify_syntax_tree_variables, additional_arguments_func_identify_syntax_tree_variables, tmp_tree, pre_func, additional_arguments_func, i;
-    
-    # Caution: this function must only be called once the needed packages of the template are loaded!
     
     if IsBound( template.is_fully_enhanced ) and template.is_fully_enhanced = true then
         
@@ -40,7 +40,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
         
     fi;
     
-    diff := Difference( RecNames( template ), [ "variable_names", "variable_filters", "src_template", "src_template_tree", "dst_template", "dst_template_tree", "new_funcs", "number_of_applications", "apply_in_proof_assistant_mode", "needed_packages", "debug", "debug_path" ] );
+    diff := Difference( RecNames( template ), [ "variable_names", "variable_filters", "src_template", "src_template_tree", "dst_template", "dst_template_tree", "new_funcs", "number_of_applications", "apply_in_proof_assistant_mode", "debug", "debug_path" ] );
     
     if not IsEmpty( diff ) then
         
@@ -71,13 +71,6 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
         
         # COVERAGE_IGNORE_NEXT_LINE
         Error( "dst_template ends with a semicolon. This is not supported." );
-        
-    fi;
-    
-    if IsBound( template.needed_packages ) and (not IsList( template.needed_packages ) or ForAny( template.needed_packages, p -> not IsList( p ) or Length( p ) <> 2 )) then
-        
-        # COVERAGE_IGNORE_NEXT_LINE
-        Error( "the record entry needed_packages of a logic template must be a list of pairs" );
         
     fi;
     
@@ -943,50 +936,15 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree )
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, "Apply logic templates." );
     
-    for template in CAP_JIT_LOGIC_TEMPLATES do
-        
-        if IsBound( template.needed_packages ) then
-            
-            # check if all needed packages are loaded
-            if not ForAll( template.needed_packages, p -> IsPackageMarkedForLoading( p[1], p[2] ) ) then
-                
-                continue;
-                
-            fi;
-            
-        fi;
-        
-        if not IsBound( template.is_fully_enhanced ) or template.is_fully_enhanced <> true then
-            
-            CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE( template );
-            
-        fi;
-        
-    od;
-    
     tree := CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATES( tree, Filtered( CAP_JIT_LOGIC_TEMPLATES, t ->
-        IsBound( t.is_fully_enhanced ) and t.is_fully_enhanced = true and (
-            (CAP_JIT_PROOF_ASSISTANT_MODE_ENABLED and t.apply_in_proof_assistant_mode <> "no") or
-            (not CAP_JIT_PROOF_ASSISTANT_MODE_ENABLED and t.apply_in_proof_assistant_mode <> "only")
-        )
+        (CAP_JIT_PROOF_ASSISTANT_MODE_ENABLED and t.apply_in_proof_assistant_mode <> "no") or
+        (not CAP_JIT_PROOF_ASSISTANT_MODE_ENABLED and t.apply_in_proof_assistant_mode <> "only")
     ) );
     
     MakeReadWriteGlobal( "CAP_JIT_LOGIC_TEMPLATES" );
     
-    CAP_JIT_LOGIC_TEMPLATES := Filtered( CAP_JIT_LOGIC_TEMPLATES, function ( t )
+    CAP_JIT_LOGIC_TEMPLATES := Filtered( CAP_JIT_LOGIC_TEMPLATES, t -> t.number_of_applications <> 0 );
         
-        if not (IsBound( t.is_fully_enhanced ) and t.is_fully_enhanced = true) then
-            
-            return true;
-            
-        else
-            
-            return t.number_of_applications <> 0;
-            
-        fi;
-        
-    end );
-    
     MakeReadOnlyGlobal( "CAP_JIT_LOGIC_TEMPLATES" );
     
     return tree;
