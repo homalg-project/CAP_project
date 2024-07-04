@@ -49,17 +49,17 @@
   
   [1X14.1-7 DummyRing[101X
   
-  [33X[1;0Y[29X[2XDummyRing[102X( [3Xarg[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XDummyRing[102X(  ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya dummy ring[133X
   
   [1X14.1-8 DummyCommutativeRing[101X
   
-  [33X[1;0Y[29X[2XDummyCommutativeRing[102X( [3Xarg[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XDummyCommutativeRing[102X(  ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya dummy commutative ring[133X
   
   [1X14.1-9 DummyField[101X
   
-  [33X[1;0Y[29X[2XDummyField[102X( [3Xarg[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XDummyField[102X(  ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya dummy field[133X
   
   
