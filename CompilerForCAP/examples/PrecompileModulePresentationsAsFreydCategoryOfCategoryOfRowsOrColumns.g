@@ -6,6 +6,8 @@
 
 LoadPackage( "ModulePresentationsForCAP", false );
 #! true
+LoadPackage( "FreydCategoriesForCAP", false );
+#! true
 
 ReadPackage( "LinearAlgebraForCAP", "gap/CompilerLogic.gi" );
 #! true
