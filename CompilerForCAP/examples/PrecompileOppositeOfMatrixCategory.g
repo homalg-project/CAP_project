@@ -6,6 +6,8 @@
 
 LoadPackage( "LinearAlgebraForCAP", false );
 #! true
+LoadPackage( "RingsForHomalg", false );
+#! true
 
 QQ := HomalgFieldOfRationalsInSingular( );;
 
