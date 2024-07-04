@@ -241,6 +241,8 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "ModulePresentationsForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XReadPackage( "LinearAlgebraForCAP", "gap/CompilerLogic.gi" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationalsInSingular( );;[127X[104X
@@ -364,6 +366,8 @@
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "RingsForHomalg", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationalsInSingular( );;[127X[104X
     [4X[25Xgap>[125X [27X# be careful not to use `MatrixCategory` because attributes are not supported[127X[104X
