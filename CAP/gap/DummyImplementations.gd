@@ -64,14 +64,17 @@ DeclareFilter( "IsDummyFieldElement",
 ####################################
 
 #! @Description
+#! @Arguments
 #! @Returns a dummy ring
 DeclareGlobalFunction( "DummyRing" );
 
 #! @Description
+#! @Arguments
 #! @Returns a dummy commutative ring
 DeclareGlobalFunction( "DummyCommutativeRing" );
 
 #! @Description
+#! @Arguments
 #! @Returns a dummy field
 DeclareGlobalFunction( "DummyField" );
 
