@@ -30,7 +30,6 @@ end );
 CapJitAddTypeSignature( "ZeroImmutable", [ IsHomalgRing ], IsHomalgRingElement );
 CapJitAddTypeSignature( "OneImmutable", [ IsHomalgRing ], IsHomalgRingElement );
 
-CapJitAddTypeSignature( "HomalgMatrix", [ IsList, IsInt, IsInt, IsHomalgRing ], IsHomalgMatrix );
 CapJitAddTypeSignature( "HomalgMatrixListList", [ IsList, IsInt, IsInt, IsHomalgRing ], function ( input_types )
     
     Assert( 0, input_types[1].element_type.filter = IsList );
