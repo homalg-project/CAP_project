@@ -1344,7 +1344,7 @@ AddDerivationToCAP( IsomorphismFromImageObjectToKernelOfCokernel,
     
     morphism_to_kernel := LiftAlongMonomorphism( cat, kernel_emb, morphism );
     
-    return UniversalMorphismFromImage( cat, morphism, [ morphism_to_kernel, kernel_emb ] );
+    return UniversalMorphismFromImage( cat, morphism, Pair( morphism_to_kernel, kernel_emb ) );
     
 end : CategoryFilter := IsAbelianCategory );
 
