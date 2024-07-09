@@ -63,15 +63,7 @@ DeclareAttribute( "UnderlyingRingElement",
                   IsRingAsCategoryMorphism );
 CapJitAddTypeSignature( "UnderlyingRingElement", [ IsRingAsCategoryMorphism ], function ( input_types )
     
-    if HasRingElementFilter( UnderlyingRing( input_types[1].category ) ) then
-        
-        return rec( filter := RingElementFilter( UnderlyingRing( input_types[1].category ) ) );
-        
-    else
-        
-        return rec( filter := IsRingElement );
-        
-    fi;
+    return CapJitDataTypeOfElementOfRing( UnderlyingRing( input_types[1].category ) );
     
 end );
 
@@ -80,15 +72,7 @@ DeclareAttribute( "UnderlyingRing",
 
 CapJitAddTypeSignature( "UnderlyingRing", [ IsRingAsCategory ], function ( input_types )
     
-    if HasRingFilter( UnderlyingRing( input_types[1].category ) ) then
-        
-        return rec( filter := RingFilter( UnderlyingRing( input_types[1].category ) ) );
-        
-    else
-        
-        return rec( filter := IsRing );
-        
-    fi;
+    return CapJitDataTypeOfRing( UnderlyingRing( input_types[1].category ) );
     
 end );
 
@@ -96,10 +80,16 @@ DeclareAttribute( "BasisOverBaseFieldAsColumnVector",
                   IsRingAsCategory );
 
 CapJitAddTypeSignature( "BasisOverBaseFieldAsColumnVector", [ IsRingAsCategory ], function ( input_types )
+  local ring;
     
-    Assert( 0, IsHomalgRing( UnderlyingRing( input_types[1].category ) ) );
+    ring := UnderlyingRing( input_types[1].category );
     
-    return rec( filter := IsHomalgMatrix );
+    Assert( 0, IsHomalgRing( ring ) );
+    
+    return rec(
+        filter := IsHomalgMatrix,
+        ring := ring,
+    );
     
 end );
 

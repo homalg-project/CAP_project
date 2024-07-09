@@ -66,4 +66,14 @@ DeclareAttribute( "UnderlyingFieldForHomalg",
 #! @Arguments alpha
 DeclareAttribute( "UnderlyingMatrix",
                   IsVectorSpaceMorphism );
-CapJitAddTypeSignature( "UnderlyingMatrix", [ IsVectorSpaceMorphism ], IsHomalgMatrix );
+
+CapJitAddTypeSignature( "UnderlyingMatrix", [ IsVectorSpaceMorphism ], function ( input_types )
+    
+    Assert( 0, IsHomalgRing( UnderlyingRing( input_types[1].category ) ) );
+    
+    return rec(
+        filter := IsHomalgMatrix,
+        ring := UnderlyingRing( input_types[1].category ),
+    );
+    
+end );

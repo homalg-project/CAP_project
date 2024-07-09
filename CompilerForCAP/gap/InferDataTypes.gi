@@ -4,11 +4,6 @@
 # Implementations
 #
 
-BindGlobal( "CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS", [
-    IsInt,
-    IsIntegers,
-] );
-
 InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_DATA_TYPE_OF_VALUE", function ( value )
   local element_types, element_type, filters, i;
     
@@ -81,24 +76,9 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_DATA_TYPE_OF_VALUE", function ( val
         
         return CapJitDataTypeOfMorphismOfCategory( CapCategory( value ) );
         
-    elif IsBoundGlobal( "IsQuiverVertex" ) and ValueGlobal( "IsQuiverVertex" )( value ) then
+    elif IsRing( value ) then
         
-        # Every quiver vertex also lies in IsPath, which is listed in CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS.
-        # We want to strictly distinguish between vertices and paths (see QuiverVertexAsIdentityPath),
-        # so we have to handle quiver vertices as a special case here.
-        return rec( filter := ValueGlobal( "IsQuiverVertex" ) );
-        
-    fi;
-    
-    filters := Filtered( CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS, filter -> filter( value ) );
-    
-    if Length( filters ) > 1 then
-        
-        ErrorWithCurrentlyCompiledFunctionLocation( "<value> matches more than one filter in CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS: ", filters );
-        
-    elif Length( filters ) = 1 then
-        
-        return rec( filter := filters[1] );
+        return CapJitDataTypeOfRing( value );
         
     elif IsFunction( value ) then
         
@@ -851,6 +831,7 @@ end );
 CapJitAddTypeSignature( "AsInteger", [ IsCapCategoryObject ], function ( input_types )
     
     Assert( 0, input_types[1].category!.object_attribute_name = "AsInteger" );
+    Assert( 0, ObjectDatumType( input_types[1].category ).filter = IsInt );
     
     return rec( filter := IsInt );
     
@@ -859,6 +840,7 @@ end );
 CapJitAddTypeSignature( "AsInteger", [ IsCapCategoryMorphism ], function ( input_types )
     
     Assert( 0, input_types[1].category!.morphism_attribute_name = "AsInteger" );
+    Assert( 0, MorphismDatumType( input_types[1].category ).filter = IsInt );
     
     return rec( filter := IsInt );
     
@@ -872,19 +854,8 @@ CapJitAddTypeSignature( "RangeCategoryOfHomomorphismStructure", [ IsCapCategory 
 end );
 
 CapJitAddTypeSignature( "CommutativeRingOfLinearCategory", [ IsCapCategory ], function ( input_types )
-  local ring;
     
-    ring := CommutativeRingOfLinearCategory( input_types[1].category );
-    
-    if HasRingFilter( ring ) then
-        
-        return rec( filter := RingFilter( ring ) );
-        
-    else
-        
-        return rec( filter := IsRing );
-        
-    fi;
+    return CapJitDataTypeOfRing( CommutativeRingOfLinearCategory( input_types[1].category ) );
     
 end );
 

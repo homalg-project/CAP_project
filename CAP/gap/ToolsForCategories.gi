@@ -221,57 +221,15 @@ InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( stri
         
         if category = false or not HasCommutativeRingOfLinearCategory( category ) then
             
-            is_ring_element := IsRingElement;
-            
-        else
-            
-            ring := CommutativeRingOfLinearCategory( category );
-            
-            if HasRingElementFilter( ring ) then
-                
-                is_ring_element := RingElementFilter( ring );
-                
-            else
-                
-                is_ring_element := IsRingElement;
-                
-            fi;
+            return CapJitDataTypeOfElementOfRing( false );
             
         fi;
         
-        return rec(
-            filter := is_ring_element,
-        );
+        return CapJitDataTypeOfElementOfRing( CommutativeRingOfLinearCategory( category ) );
         
     elif string = "list_of_elements_of_commutative_ring_of_linear_structure" then
         
-        if category <> false and not HasCommutativeRingOfLinearCategory( category ) then
-            
-            Print( "WARNING: You are calling an Add function for a CAP operation for \"", Name( category ), "\" which is part of the linear structure over a commutative ring but the category has no CommutativeRingOfLinearCategory (yet).\n" );
-            
-        fi;
-        
-        if category = false or not HasCommutativeRingOfLinearCategory( category ) then
-            
-            is_ring_element := IsRingElement;
-            
-        else
-            
-            ring := CommutativeRingOfLinearCategory( category );
-            
-            if HasRingElementFilter( ring ) then
-                
-                is_ring_element := RingElementFilter( ring );
-                
-            else
-                
-                is_ring_element := IsRingElement;
-                
-            fi;
-            
-        fi;
-        
-        return CapJitDataTypeOfListOf( is_ring_element );
+        return CapJitDataTypeOfListOf( CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( "element_of_commutative_ring_of_linear_structure", category ) );
         
     elif string = "list_of_integers_and_list_of_morphisms" then
         
@@ -1262,6 +1220,51 @@ InstallGlobalFunction( CapJitDataTypeOfNTupleOf, function ( n, element_types... 
     
 end );
 
+##
+InstallGlobalFunction( CapJitDataTypeOfRing, function ( ring )
+  local type;
+    
+    if ring = false then
+        
+        type := rec(
+            filter := IsRing,
+        );
+        
+    else
+        
+        type := rec(
+            filter := RingFilter( ring ),
+            ring := ring,
+        );
+        
+    fi;
+    
+    return type;
+    
+end );
+
+##
+InstallGlobalFunction( CapJitDataTypeOfElementOfRing, function ( ring )
+  local type;
+    
+    if ring = false then
+        
+        type := rec(
+            filter := IsRingElement,
+        );
+        
+    else
+        
+        type := rec(
+            filter := RingElementFilter( ring ),
+            ring := ring,
+        );
+        
+    fi;
+    
+    return type;
+    
+end );
 ##
 InstallGlobalFunction( CapJitDataTypeOfCategory, function ( cat )
   local type;

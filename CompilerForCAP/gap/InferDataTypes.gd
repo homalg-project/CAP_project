@@ -14,6 +14,9 @@
 #!     of the inputs, the second entry is the data type of the output.
 #!   * `IsList` with additional component `element_type`: The type of the elements of the list. Only homogeneous lists are supported.
 #!   * `IsNTuple` with additional component `element_types`: The types of the elements of the tuple.
+#!   * filters implying `IsRing`, `IsRingElement`, `IsHomalgMatrix` with additional component `ring`:
+#!     The ring instance (to which the element or matrix belongs).
+#!     Exception: If the filter `IsInt` describes a ``technical'' integer (e.g. an index) and not an integer used in a mathematical context, the component `ring` should not be set.
 #!   * filters implying `IsCapCategory`, `IsCapCategoryObject`, `IsCapCategoryMorphism`, or `IsCapCategoryTwoCell` with additional component `category`:
 #!     The category instance (to which the object, morphism or two cell belongs).
 #!   WARNING: `IsString` implies `IsList`, so when creating a data type with filter implying `IsString` one must set `element_type` to
