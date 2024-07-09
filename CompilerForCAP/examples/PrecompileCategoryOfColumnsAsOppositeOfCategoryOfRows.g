@@ -10,10 +10,13 @@ ReadPackage( "FreydCategoriesForCAP",
     "gap/CategoryOfRowsAsAdditiveClosureOfRingAsCategory_CompilerLogic.gi");
 #! true
 
+homalg_field := DummyHomalgField( );;
+commutative_homalg_ring := DummyCommutativeHomalgRing( );;
+homalg_ring := DummyHomalgRing( );;
+
 QQ := HomalgFieldOfRationalsInSingular( );;
 QQxy := QQ * "x,y";;
 EQQxy := KoszulDualRing( QQxy );;
-R := KoszulDualRing( HomalgRingOfIntegersInSingular( ) * "x,y" );;
 
 precompile_CategoryOfColumns := function( homalg_ring, name )
     
@@ -35,18 +38,18 @@ precompile_CategoryOfColumns := function( homalg_ring, name )
         number_of_objectified_morphisms_in_data_structure_of_morphism := 1
     ); end;;
 
-precompile_CategoryOfColumns( QQ, "Field" );;
-precompile_CategoryOfColumns( QQxy, "CommutativeRing" );;
+precompile_CategoryOfColumns( homalg_field, "Field" );;
+precompile_CategoryOfColumns( commutative_homalg_ring, "CommutativeRing" );;
 precompile_CategoryOfColumns( EQQxy, "HomalgExteriorRingOverField" );;
-precompile_CategoryOfColumns( R, "ArbitraryRing" );;
+precompile_CategoryOfColumns( homalg_ring, "ArbitraryRing" );;
 
-CategoryOfColumns( QQ )!.precompiled_functions_added;
+CategoryOfColumns( homalg_field )!.precompiled_functions_added;
 #! true
-CategoryOfColumns( QQxy )!.precompiled_functions_added;
+CategoryOfColumns( commutative_homalg_ring )!.precompiled_functions_added;
 #! true
 CategoryOfColumns( EQQxy )!.precompiled_functions_added;
 #! true
-CategoryOfColumns( R )!.precompiled_functions_added;
+CategoryOfColumns( homalg_ring )!.precompiled_functions_added;
 #! true
 
 #! @EndExample
