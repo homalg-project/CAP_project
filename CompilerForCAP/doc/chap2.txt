@@ -629,6 +629,12 @@
   [30X    [33X[0;6Y[10XIsNTuple[110X  with  additional  component  [10Xelement_types[110X: The types of the
         elements of the tuple.[133X
   
+  [30X    [33X[0;6Yfilters implying [10XIsRing[110X, [10XIsRingElement[110X, [10XIsHomalgMatrix[110X with additional
+        component  [10Xring[110X:  The  ring  instance  (to which the element or matrix
+        belongs).  Exception:  If  the  filter  [10XIsInt[110X  describes a [10X[110Xtechnical''
+        integer  (e.g.  an  index)  and  not an integer used in a mathematical
+        context, the component [10Xring[110X should not be set.[133X
+  
   [30X    [33X[0;6Yfilters       implying       [10XIsCapCategory[110X,       [10XIsCapCategoryObject[110X,
         [10XIsCapCategoryMorphism[110X,   or   [10XIsCapCategoryTwoCell[110X   with   additional
         component  [10Xcategory[110X:  The  category  instance  (to  which  the object,
