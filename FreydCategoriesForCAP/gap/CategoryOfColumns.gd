@@ -79,18 +79,15 @@ DeclareOperation( "\/",
 
 DeclareAttribute( "UnderlyingRing",
                   IsCategoryOfColumns );
-CapJitAddTypeSignature( "UnderlyingRing", [ IsCategoryOfColumns ], IsHomalgRing );
+
+CapJitAddTypeSignature( "UnderlyingRing", [ IsCategoryOfColumns ], function ( input_types )
+    
+    return CapJitDataTypeOfRing( UnderlyingRing( input_types[1].category ) );
+    
+end );
 
 DeclareAttribute( "BasisOfRingOverBaseFieldAsColumnVector",
                   IsCategoryOfColumns );
-
-CapJitAddTypeSignature( "BasisOfRingOverBaseFieldAsColumnVector", [ IsCategoryOfColumns ], function ( input_types )
-    
-    Assert( 0, IsHomalgRing( UnderlyingRing( input_types[1].category ) ) );
-    
-    return rec( filter := IsHomalgMatrix );
-    
-end );
 
 DeclareAttribute( "RankOfObject",
                   IsCategoryOfColumnsObject );
@@ -98,9 +95,28 @@ CapJitAddTypeSignature( "RankOfObject", [ IsCategoryOfColumnsObject ], IsInt );
 
 DeclareAttribute( "UnderlyingMatrix",
                   IsCategoryOfColumnsMorphism );
-CapJitAddTypeSignature( "UnderlyingMatrix", [ IsCategoryOfColumnsMorphism ], IsHomalgMatrix );
+
+CapJitAddTypeSignature( "UnderlyingMatrix", [ IsCategoryOfColumnsMorphism ], function ( input_types )
+    
+    Assert( 0, IsHomalgRing( UnderlyingRing( input_types[1].category ) ) );
+    
+    return rec(
+        filter := IsHomalgMatrix,
+        ring := UnderlyingRing( input_types[1].category ),
+    );
+    
+end );
 
 DeclareAttribute( "CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple",
                   IsCategoryOfColumnsMorphism );
 
-CapJitAddTypeSignature( "CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple", [ IsCategoryOfColumnsMorphism ], CapJitDataTypeOfNTupleOf( 3, IsHomalgMatrix, IsHomalgMatrix, IsHomalgMatrix ) );
+CapJitAddTypeSignature( "CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple", [ IsCategoryOfColumnsMorphism ], function ( input_types )
+  local ring;
+    
+    ring := UnderlyingRing( input_types[1].category );
+    
+    Assert( 0, IsHomalgRing( ring ) );
+    
+    return CapJitDataTypeOfNTupleOf( 3, rec( filter := IsHomalgMatrix, ring := ring ), rec( filter := IsHomalgMatrix, ring := ring ), rec( filter := IsHomalgMatrix, ring := ring ) );
+    
+end );

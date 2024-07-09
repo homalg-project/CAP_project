@@ -214,6 +214,15 @@ DeclareGlobalFunction( "CapJitDataTypeOfNTupleOf" );
 
 #! @BeginGroup
 #! @Description
+#!   (experimental) Returns the data type of the ring (or elements of the ring) <A>ring</A>.
+#! @Arguments ring
+DeclareGlobalFunction( "CapJitDataTypeOfRing" );
+#! @Arguments ring
+DeclareGlobalFunction( "CapJitDataTypeOfElementOfRing" );
+#! @EndGroup
+
+#! @BeginGroup
+#! @Description
 #!   (experimental) Returns the data type of the category (or objects, morphisms, or two cells in the category) <A>category</A>.
 #! @Arguments category
 DeclareGlobalFunction( "CapJitDataTypeOfCategory" );

@@ -168,18 +168,15 @@ fi;
 
 DeclareAttribute( "UnderlyingRing",
                   IsCategoryOfRows );
-CapJitAddTypeSignature( "UnderlyingRing", [ IsCategoryOfRows ], IsHomalgRing );
+
+CapJitAddTypeSignature( "UnderlyingRing", [ IsCategoryOfRows ], function ( input_types )
+    
+    return CapJitDataTypeOfRing( UnderlyingRing( input_types[1].category ) );
+    
+end );
 
 DeclareAttribute( "BasisOfRingOverBaseFieldAsColumnVector",
                   IsCategoryOfRows );
-
-CapJitAddTypeSignature( "BasisOfRingOverBaseFieldAsColumnVector", [ IsCategoryOfRows ], function ( input_types )
-    
-    Assert( 0, IsHomalgRing( UnderlyingRing( input_types[1].category ) ) );
-    
-    return rec( filter := IsHomalgMatrix );
-    
-end );
 
 DeclareAttribute( "RankOfObject",
                   IsCategoryOfRowsObject );
@@ -187,12 +184,31 @@ CapJitAddTypeSignature( "RankOfObject", [ IsCategoryOfRowsObject ], IsInt );
 
 DeclareAttribute( "UnderlyingMatrix",
                   IsCategoryOfRowsMorphism );
-CapJitAddTypeSignature( "UnderlyingMatrix", [ IsCategoryOfRowsMorphism ], IsHomalgMatrix );
+
+CapJitAddTypeSignature( "UnderlyingMatrix", [ IsCategoryOfRowsMorphism ], function ( input_types )
+    
+    Assert( 0, IsHomalgRing( UnderlyingRing( input_types[1].category ) ) );
+    
+    return rec(
+        filter := IsHomalgMatrix,
+        ring := UnderlyingRing( input_types[1].category ),
+    );
+    
+end );
 
 DeclareAttribute( "CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple",
                   IsCategoryOfRowsMorphism );
 
-CapJitAddTypeSignature( "CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple", [ IsCategoryOfRowsMorphism ], CapJitDataTypeOfNTupleOf( 3, IsHomalgMatrix, IsHomalgMatrix, IsHomalgMatrix ) );
+CapJitAddTypeSignature( "CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple", [ IsCategoryOfRowsMorphism ], function ( input_types )
+  local ring;
+    
+    ring := UnderlyingRing( input_types[1].category );
+    
+    Assert( 0, IsHomalgRing( ring ) );
+    
+    return CapJitDataTypeOfNTupleOf( 3, rec( filter := IsHomalgMatrix, ring := ring ), rec( filter := IsHomalgMatrix, ring := ring ), rec( filter := IsHomalgMatrix, ring := ring ) );
+    
+end );
 
 ####################################
 ##
@@ -203,14 +219,41 @@ CapJitAddTypeSignature( "CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple", [ Is
 ##
 DeclareGlobalFunction( "CATEGORY_OF_ROWS_SimplificationSourceAndRangeTuple" );
 
-CapJitAddTypeSignature( "CATEGORY_OF_ROWS_SimplificationSourceAndRangeTuple", [ IsCategoryOfRowsMorphism ], CapJitDataTypeOfNTupleOf( 5, IsHomalgMatrix, IsHomalgMatrix, IsHomalgMatrix, IsHomalgMatrix, IsHomalgMatrix ) );
+CapJitAddTypeSignature( "CATEGORY_OF_ROWS_SimplificationSourceAndRangeTuple", [ IsCategoryOfRowsMorphism ], function ( input_types )
+  local ring;
+    
+    ring := UnderlyingRing( input_types[1].category );
+    
+    Assert( 0, IsHomalgRing( ring ) );
+    
+    return CapJitDataTypeOfNTupleOf( 5, rec( filter := IsHomalgMatrix, ring := ring ), rec( filter := IsHomalgMatrix, ring := ring ), rec( filter := IsHomalgMatrix, ring := ring ), rec( filter := IsHomalgMatrix, ring := ring ), rec( filter := IsHomalgMatrix, ring := ring ) );
+    
+end );
 
 ##
 DeclareGlobalFunction( "CATEGORY_OF_ROWS_SimplificationSourceTuple" );
 
-CapJitAddTypeSignature( "CATEGORY_OF_ROWS_SimplificationSourceTuple", [ IsCategoryOfRowsMorphism ], CapJitDataTypeOfNTupleOf( 3, IsHomalgMatrix, IsHomalgMatrix, IsHomalgMatrix ) );
+CapJitAddTypeSignature( "CATEGORY_OF_ROWS_SimplificationSourceTuple", [ IsCategoryOfRowsMorphism ], function ( input_types )
+  local ring;
+    
+    ring := UnderlyingRing( input_types[1].category );
+    
+    Assert( 0, IsHomalgRing( ring ) );
+    
+    return CapJitDataTypeOfNTupleOf( 3, rec( filter := IsHomalgMatrix, ring := ring ), rec( filter := IsHomalgMatrix, ring := ring ), rec( filter := IsHomalgMatrix, ring := ring ) );
+    
+end );
 
 ##
 DeclareGlobalFunction( "CATEGORY_OF_ROWS_SimplificationRangeTuple" );
 
-CapJitAddTypeSignature( "CATEGORY_OF_ROWS_SimplificationRangeTuple", [ IsCategoryOfRowsMorphism ], CapJitDataTypeOfNTupleOf( 3, IsHomalgMatrix, IsHomalgMatrix, IsHomalgMatrix ) );
+CapJitAddTypeSignature( "CATEGORY_OF_ROWS_SimplificationRangeTuple", [ IsCategoryOfRowsMorphism ], function ( input_types )
+  local ring;
+    
+    ring := UnderlyingRing( input_types[1].category );
+    
+    Assert( 0, IsHomalgRing( ring ) );
+    
+    return CapJitDataTypeOfNTupleOf( 3, rec( filter := IsHomalgMatrix, ring := ring ), rec( filter := IsHomalgMatrix, ring := ring ), rec( filter := IsHomalgMatrix, ring := ring ) );
+    
+end );

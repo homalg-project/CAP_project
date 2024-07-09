@@ -102,7 +102,17 @@ DeclareProperty( "IsFree",
 #! @Arguments A
 DeclareAttribute( "UnderlyingMatrix",
                   IsLeftOrRightPresentation );
-CapJitAddTypeSignature( "UnderlyingMatrix", [ IsLeftOrRightPresentation ], IsHomalgMatrix );
+
+CapJitAddTypeSignature( "UnderlyingMatrix", [ IsLeftOrRightPresentation ], function ( input_types )
+    
+    Assert( 0, IsHomalgRing( UnderlyingRing( input_types[1].category ) ) );
+    
+    return rec(
+        filter := IsHomalgMatrix,
+        ring := UnderlyingRing( input_types[1].category ),
+    );
+    
+end );
 
 #! @Description
 #! The argument is an object $A$ in the category of left or right presentations
