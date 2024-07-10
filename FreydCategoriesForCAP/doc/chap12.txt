@@ -1038,9 +1038,9 @@
   CategoryOfRows )[110X as [10XCategoryOfColumns[110X using [10XReinterpretationOfCategory[110X. This
   can be achieved up to minor modifications by swapping [10Xobject_constructor[110X and
   [10Xmodeling_tower_object_constructor[110X         and         so        on        in
-  [10XCategoryOfColumsAsOppositeOfCategoryOfRows[110X. With this, objects and morphisms
-  indeed  have  the  attribute  [10XOpposite[110X  as  desired. Getting [10XObjectDatum[110X and
-  [10XMorphismDatum[110X  to  return  this  attribute would also be possible, but would
+  [10XCategoryOfColums_as_Opposite_CategoryOfRows[110X.    With   this,   objects   and
+  morphisms indeed have the attribute [10XOpposite[110X as desired. Getting [10XObjectDatum[110X
+  and [10XMorphismDatum[110X to return this attribute would also be possible, but would
   require   more   effort   than   simply   swapping   [10Xobject_constructor[110X  and
   [10Xmodeling_tower_object_constructor[110X and so.[133X
   

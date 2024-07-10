@@ -37,7 +37,7 @@
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationalsInSingular();;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := QQ * "x,y,z";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rows := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( R );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rows := CategoryOfRows_as_AdditiveClosure_RingAsCategory( R );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := HomalgMatrix( "[[x^2,4*y]]", 1, 2, R );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N := HomalgMatrix( "[[1,3*x], [2*y^3,5*y]]", 2, 2, R );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := M * N;;</span>
@@ -73,7 +73,7 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># E and EE are both occupied by GAP</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">EEE := KoszulDualRing( R );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rows := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( EEE );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rows := CategoryOfRows_as_AdditiveClosure_RingAsCategory( EEE );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := HomalgMatrix( "[[e0*e1,3*e0]]", 1, 2, EEE );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N := HomalgMatrix( "[[1,e0*e2], [2*e0*e1*e2,5*e2]]", 2, 2, EEE );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := M * N;;</span>
