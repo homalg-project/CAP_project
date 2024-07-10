@@ -102,9 +102,10 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "LinearAlgebraForCAP", "gap/CompilerLogic.gi" );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationalsInSingular( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CAP_INTERNAL_DUMMY_HOMALG_FIELD_COUNTER := 1;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">homalg_field := DummyHomalgField( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor := field -&gt; MatrixCategoryAsCategoryOfRows( field );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ QQ ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ homalg_field ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "MatrixCategoryPrecompiled";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "LinearAlgebraForCAP";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategoryAndCompareResult(</span>
@@ -117,9 +118,9 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_objects_in_data_structure_of_morphism := 2,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_morphisms_in_data_structure_of_morphism := 1</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MatrixCategoryPrecompiled( QQ );</span>
-Category of matrices over Q
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MatrixCategory( QQ )!.precompiled_functions_added;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MatrixCategoryPrecompiled( homalg_field );</span>
+Category of matrices over Dummy homalg field 1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MatrixCategory( homalg_field )!.precompiled_functions_added;</span>
 true
 </pre></div>
 
@@ -134,10 +135,12 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "FreydCategoriesForCAP",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    "gap/CategoryOfRowsAsAdditiveClosureOfRingAsCategory_CompilerLogic.gi");</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">homalg_field := DummyHomalgField( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">commutative_homalg_ring := DummyCommutativeHomalgRing( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">homalg_ring := DummyHomalgRing( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationalsInSingular( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQxy := QQ * "x,y";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EQQxy := KoszulDualRing( QQxy );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := KoszulDualRing( HomalgRingOfIntegersInSingular( ) * "x,y" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfColumns := function( homalg_ring, name )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    CapJitPrecompileCategoryAndCompareResult(</span>
@@ -157,17 +160,17 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        number_of_objectified_objects_in_data_structure_of_morphism := 2,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        number_of_objectified_morphisms_in_data_structure_of_morphism := 1</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    ); end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfColumns( QQ, "Field" );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfColumns( QQxy, "CommutativeRing" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfColumns( homalg_field, "Field" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfColumns( commutative_homalg_ring, "CommutativeRing" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfColumns( EQQxy, "HomalgExteriorRingOverField" );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfColumns( R, "ArbitraryRing" );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CategoryOfColumns( QQ )!.precompiled_functions_added;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfColumns( homalg_ring, "ArbitraryRing" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CategoryOfColumns( homalg_field )!.precompiled_functions_added;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CategoryOfColumns( QQxy )!.precompiled_functions_added;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CategoryOfColumns( commutative_homalg_ring )!.precompiled_functions_added;</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CategoryOfColumns( EQQxy )!.precompiled_functions_added;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CategoryOfColumns( R )!.precompiled_functions_added;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CategoryOfColumns( homalg_ring )!.precompiled_functions_added;</span>
 true
 </pre></div>
 
@@ -178,10 +181,12 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "FreydCategoriesForCAP",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    "gap/CategoryOfRowsAsAdditiveClosureOfRingAsCategory_CompilerLogic.gi");</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">homalg_field := DummyHomalgField( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">commutative_homalg_ring := DummyCommutativeHomalgRing( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">homalg_ring := DummyHomalgRing( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationalsInSingular( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQxy := QQ * "x,y";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EQQxy := KoszulDualRing( QQxy );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := KoszulDualRing( HomalgRingOfIntegersInSingular( ) * "x,y" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfRows := function( homalg_ring, name )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    CapJitPrecompileCategoryAndCompareResult(</span>
@@ -201,17 +206,17 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        number_of_objectified_objects_in_data_structure_of_morphism := 2,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        number_of_objectified_morphisms_in_data_structure_of_morphism := 1</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    ); end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfRows( QQ, "Field" );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfRows( QQxy, "CommutativeRing" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfRows( homalg_field, "Field" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfRows( commutative_homalg_ring, "CommutativeRing" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfRows( EQQxy, "HomalgExteriorRingOverField" );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfRows( R, "ArbitraryRing" );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CategoryOfRows( QQ )!.precompiled_functions_added;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfRows( homalg_ring, "ArbitraryRing" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CategoryOfRows( homalg_field )!.precompiled_functions_added;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CategoryOfRows( QQxy )!.precompiled_functions_added;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CategoryOfRows( commutative_homalg_ring )!.precompiled_functions_added;</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CategoryOfRows( EQQxy )!.precompiled_functions_added;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CategoryOfRows( R )!.precompiled_functions_added;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CategoryOfRows( homalg_ring )!.precompiled_functions_added;</span>
 true
 </pre></div>
 
@@ -284,9 +289,9 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "LinearAlgebraForCAP", "gap/CompilerLogic.gi" );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationalsInSingular( );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQxy := QQ * "x,y";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EEE := KoszulDualRing( QQxy * "a,b" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">homalg_field := DummyHomalgField( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">commutative_homalg_ring := DummyCommutativeHomalgRing( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">homalg_ring := DummyHomalgRing( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># CAUTION: when adding new operations make sure that they are compatible</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput"># with the ones added manually in `ADD_FUNCTIONS_FOR_LEFT/RIGHT_PRESENTATION`.</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">operations_for_arbitrary_ring := [</span>
@@ -352,13 +357,13 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        operations := operations</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    ); end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_LeftPresentations(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    QQ, "Field", operations_for_commutative_ring</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    homalg_field, "Field", operations_for_commutative_ring</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_LeftPresentations(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    QQxy, "CommutativeRing", operations_for_commutative_ring</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    commutative_homalg_ring, "CommutativeRing", operations_for_commutative_ring</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_LeftPresentations(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    EEE, "ArbitraryRing", operations_for_arbitrary_ring</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    homalg_ring, "ArbitraryRing", operations_for_arbitrary_ring</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_RightPresentations := function( ring, name, operations )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
@@ -378,25 +383,25 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        number_of_objectified_morphisms_in_data_structure_of_morphism := 1</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    ); end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_RightPresentations(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    QQ, "Field", operations_for_commutative_ring</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    homalg_field, "Field", operations_for_commutative_ring</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_RightPresentations(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    QQxy, "CommutativeRing", operations_for_commutative_ring</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    commutative_homalg_ring, "CommutativeRing", operations_for_commutative_ring</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_RightPresentations(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    EEE, "ArbitraryRing", operations_for_arbitrary_ring</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    homalg_ring, "ArbitraryRing", operations_for_arbitrary_ring</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LeftPresentations( QQ )!.precompiled_functions_added;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LeftPresentations( homalg_field )!.precompiled_functions_added;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LeftPresentations( QQxy )!.precompiled_functions_added;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LeftPresentations( commutative_homalg_ring )!.precompiled_functions_added;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LeftPresentations( EEE )!.precompiled_functions_added;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LeftPresentations( homalg_ring )!.precompiled_functions_added;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RightPresentations( QQ )!.precompiled_functions_added;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RightPresentations( homalg_field )!.precompiled_functions_added;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RightPresentations( QQxy )!.precompiled_functions_added;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RightPresentations( commutative_homalg_ring )!.precompiled_functions_added;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RightPresentations( EEE )!.precompiled_functions_added;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RightPresentations( homalg_ring )!.precompiled_functions_added;</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># put the letter 'V' here to work around</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput"># https://github.com/frankluebeck/GAPDoc/pull/61</span>
@@ -409,7 +414,8 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "RingsForHomalg", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationalsInSingular( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CAP_INTERNAL_DUMMY_HOMALG_FIELD_COUNTER := 1;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">homalg_field := DummyHomalgField( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># be careful not to use `MatrixCategory` because attributes are not supported</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">category_constructor := function( field )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    return Opposite(</span>
@@ -419,7 +425,7 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        ) :</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        only_primitive_operations := true</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    ); end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ QQ ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ homalg_field ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "OppositeOfMatrixCategoryPrecompiled";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "LinearAlgebraForCAP";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategoryAndCompareResult(</span>
@@ -437,8 +443,8 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    "LinearAlgebraForCAP",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    "gap/precompiled_categories/OppositeOfMatrixCategoryPrecompiled.gi"</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">OppositeOfMatrixCategoryPrecompiled( QQ );</span>
-Opposite( Category of matrices over Q )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">OppositeOfMatrixCategoryPrecompiled( homalg_field );</span>
+Opposite( Category of matrices over Dummy homalg field 1 )
 </pre></div>
 
 
