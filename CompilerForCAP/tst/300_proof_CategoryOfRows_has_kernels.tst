@@ -9,13 +9,7 @@ gap> LoadPackage( "FreydCategoriesForCAP", false );
 true
 
 #
-gap> k := DummyField( );;
-
-# CategoryOfRows expects a *homalg* field
-gap> SetFilterObj( k, IsHomalgRing );
-gap> SetFilterObj( k, IsFieldForHomalg );
-gap> k!.RingFilter := IsHomalgRing;;
-gap> k!.RingElementFilter := IsHomalgRingElement;;
+gap> k := DummyHomalgField( );;
 
 #
 gap> cat := CategoryOfRows( k );;
