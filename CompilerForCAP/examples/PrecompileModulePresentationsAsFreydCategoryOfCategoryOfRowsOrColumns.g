@@ -12,9 +12,9 @@ LoadPackage( "FreydCategoriesForCAP", false );
 ReadPackage( "LinearAlgebraForCAP", "gap/CompilerLogic.gi" );
 #! true
 
-QQ := HomalgFieldOfRationalsInSingular( );;
-QQxy := QQ * "x,y";;
-EEE := KoszulDualRing( QQxy * "a,b" );;
+homalg_field := DummyHomalgField( );;
+commutative_homalg_ring := DummyCommutativeHomalgRing( );;
+homalg_ring := DummyHomalgRing( );;
 
 # CAUTION: when adding new operations make sure that they are compatible
 # with the ones added manually in `ADD_FUNCTIONS_FOR_LEFT/RIGHT_PRESENTATION`.
@@ -84,13 +84,13 @@ precompile_LeftPresentations := function( ring, name, operations )
     ); end;;
 
 precompile_LeftPresentations(
-    QQ, "Field", operations_for_commutative_ring
+    homalg_field, "Field", operations_for_commutative_ring
 );;
 precompile_LeftPresentations(
-    QQxy, "CommutativeRing", operations_for_commutative_ring
+    commutative_homalg_ring, "CommutativeRing", operations_for_commutative_ring
 );;
 precompile_LeftPresentations(
-    EEE, "ArbitraryRing", operations_for_arbitrary_ring
+    homalg_ring, "ArbitraryRing", operations_for_arbitrary_ring
 );;
 
 precompile_RightPresentations := function( ring, name, operations )
@@ -112,32 +112,32 @@ precompile_RightPresentations := function( ring, name, operations )
     ); end;;
 
 precompile_RightPresentations(
-    QQ, "Field", operations_for_commutative_ring
+    homalg_field, "Field", operations_for_commutative_ring
 );;
 precompile_RightPresentations(
-    QQxy, "CommutativeRing", operations_for_commutative_ring
+    commutative_homalg_ring, "CommutativeRing", operations_for_commutative_ring
 );;
 precompile_RightPresentations(
-    EEE, "ArbitraryRing", operations_for_arbitrary_ring
+    homalg_ring, "ArbitraryRing", operations_for_arbitrary_ring
 );;
 
 
-LeftPresentations( QQ )!.precompiled_functions_added;
+LeftPresentations( homalg_field )!.precompiled_functions_added;
 #! true
 
-LeftPresentations( QQxy )!.precompiled_functions_added;
+LeftPresentations( commutative_homalg_ring )!.precompiled_functions_added;
 #! true
 
-LeftPresentations( EEE )!.precompiled_functions_added;
+LeftPresentations( homalg_ring )!.precompiled_functions_added;
 #! true
 
-RightPresentations( QQ )!.precompiled_functions_added;
+RightPresentations( homalg_field )!.precompiled_functions_added;
 #! true
 
-RightPresentations( QQxy )!.precompiled_functions_added;
+RightPresentations( commutative_homalg_ring )!.precompiled_functions_added;
 #! true
 
-RightPresentations( EEE )!.precompiled_functions_added;
+RightPresentations( homalg_ring )!.precompiled_functions_added;
 #! true
 
 # put the letter 'V' here to work around

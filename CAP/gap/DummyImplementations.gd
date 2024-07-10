@@ -52,7 +52,7 @@ DeclareFilter( "IsDummyField",
         IsDummyCommutativeRing );
 
 #! @Description
-#!  The &GAP; filter of elements of a dummy commutative ring.
+#!  The &GAP; filter of elements of a dummy field.
 DeclareFilter( "IsDummyFieldElement",
         IsDummyCommutativeRingElement );
 # =#

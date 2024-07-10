@@ -9,7 +9,8 @@ LoadPackage( "LinearAlgebraForCAP", false );
 LoadPackage( "RingsForHomalg", false );
 #! true
 
-QQ := HomalgFieldOfRationalsInSingular( );;
+CAP_INTERNAL_DUMMY_HOMALG_FIELD_COUNTER := 1;;
+homalg_field := DummyHomalgField( );;
 
 # be careful not to use `MatrixCategory` because attributes are not supported
 category_constructor := function( field )
@@ -21,7 +22,7 @@ category_constructor := function( field )
         only_primitive_operations := true
     ); end;;
 
-given_arguments := [ QQ ];;
+given_arguments := [ homalg_field ];;
 compiled_category_name := "OppositeOfMatrixCategoryPrecompiled";;
 package_name := "LinearAlgebraForCAP";;
 
@@ -41,7 +42,7 @@ ReadPackage(
     "LinearAlgebraForCAP",
     "gap/precompiled_categories/OppositeOfMatrixCategoryPrecompiled.gi"
 );;
-OppositeOfMatrixCategoryPrecompiled( QQ );
-#! Opposite( Category of matrices over Q )
+OppositeOfMatrixCategoryPrecompiled( homalg_field );
+#! Opposite( Category of matrices over Dummy homalg field 1 )
 
 #! @EndExample

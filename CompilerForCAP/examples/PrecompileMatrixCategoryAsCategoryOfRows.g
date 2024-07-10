@@ -12,10 +12,11 @@ LoadPackage( "LinearAlgebraForCAP", false );
 ReadPackage( "LinearAlgebraForCAP", "gap/CompilerLogic.gi" );
 #! true
 
-QQ := HomalgFieldOfRationalsInSingular( );;
+CAP_INTERNAL_DUMMY_HOMALG_FIELD_COUNTER := 1;;
+homalg_field := DummyHomalgField( );;
 
 category_constructor := field -> MatrixCategoryAsCategoryOfRows( field );;
-given_arguments := [ QQ ];;
+given_arguments := [ homalg_field ];;
 compiled_category_name := "MatrixCategoryPrecompiled";;
 package_name := "LinearAlgebraForCAP";;
 
@@ -30,10 +31,10 @@ CapJitPrecompileCategoryAndCompareResult(
     number_of_objectified_morphisms_in_data_structure_of_morphism := 1
 );;
 
-MatrixCategoryPrecompiled( QQ );
-#! Category of matrices over Q
+MatrixCategoryPrecompiled( homalg_field );
+#! Category of matrices over Dummy homalg field 1
 
-MatrixCategory( QQ )!.precompiled_functions_added;
+MatrixCategory( homalg_field )!.precompiled_functions_added;
 #! true
 
 #! @EndExample
