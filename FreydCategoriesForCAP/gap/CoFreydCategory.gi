@@ -5,7 +5,7 @@
 #
 
 # read precompiled categories
-ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CoFreydCategoryAsOppositeOfFreydCategoryOfOppositePrecompiled.gi" );
+ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CoFreydCategory_as_Opposite_FreydCategory_Opposite_precompiled.gi" );
 
 ####################################
 ##
@@ -18,11 +18,11 @@ InstallGlobalFunction( CO_FREYD_CATEGORY,
   function( underlying_category )
     local cat;
     
-    cat := CoFreydCategoryAsOppositeOfFreydCategoryOfOpposite( underlying_category : FinalizeCategory := false );
+    cat := CoFreydCategory_as_Opposite_FreydCategory_Opposite( underlying_category : FinalizeCategory := false );
     
     if ValueOption( "no_precompiled_code" ) <> true then
         
-        ADD_FUNCTIONS_FOR_CoFreydCategoryAsOppositeOfFreydCategoryOfOppositePrecompiled( cat );
+        ADD_FUNCTIONS_FOR_CoFreydCategory_as_Opposite_FreydCategory_Opposite_precompiled( cat );
         
     fi;
     

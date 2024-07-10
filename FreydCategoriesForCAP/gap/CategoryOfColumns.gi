@@ -5,10 +5,10 @@
 #
 
 # read precompiled categories
-ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CategoryOfColumnsAsOppositeOfCategoryOfRowsOfFieldPrecompiled.gi" );
-ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CategoryOfColumnsAsOppositeOfCategoryOfRowsOfCommutativeRingPrecompiled.gi" );
-ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CategoryOfColumnsAsOppositeOfCategoryOfRowsOfHomalgExteriorRingOverFieldPrecompiled.gi" );
-ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CategoryOfColumnsAsOppositeOfCategoryOfRowsOfArbitraryRingPrecompiled.gi" );
+ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CategoryOfColumns_as_Opposite_CategoryOfRows_Field_precompiled.gi" );
+ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CategoryOfColumns_as_Opposite_CategoryOfRows_CommutativeRing_precompiled.gi" );
+ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CategoryOfColumns_as_Opposite_CategoryOfRows_HomalgExteriorRingOverField_precompiled.gi" );
+ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CategoryOfColumns_as_Opposite_CategoryOfRows_ArbitraryRing_precompiled.gi" );
 
 ####################################
 ##
@@ -23,25 +23,25 @@ InstallMethod( CategoryOfColumns,
   function( homalg_ring )
     local cat;
     
-    cat := CategoryOfColumnsAsOppositeOfCategoryOfRows( homalg_ring : FinalizeCategory := false );
+    cat := CategoryOfColumns_as_Opposite_CategoryOfRows( homalg_ring : FinalizeCategory := false );
     
     if ValueOption( "no_precompiled_code" ) <> true then
         
         if HasIsFieldForHomalg( homalg_ring ) and IsFieldForHomalg( homalg_ring ) then
             
-            ADD_FUNCTIONS_FOR_CategoryOfColumnsAsOppositeOfCategoryOfRowsOfFieldPrecompiled( cat );
+            ADD_FUNCTIONS_FOR_CategoryOfColumns_as_Opposite_CategoryOfRows_Field_precompiled( cat );
             
         elif HasIsCommutative( homalg_ring ) and IsCommutative( homalg_ring ) then
             
-            ADD_FUNCTIONS_FOR_CategoryOfColumnsAsOppositeOfCategoryOfRowsOfCommutativeRingPrecompiled( cat );
+            ADD_FUNCTIONS_FOR_CategoryOfColumns_as_Opposite_CategoryOfRows_CommutativeRing_precompiled( cat );
             
         elif HasIsExteriorRing( homalg_ring ) and IsExteriorRing( homalg_ring ) and IsField( BaseRing( homalg_ring ) ) then
             
-            ADD_FUNCTIONS_FOR_CategoryOfColumnsAsOppositeOfCategoryOfRowsOfHomalgExteriorRingOverFieldPrecompiled( cat );
+            ADD_FUNCTIONS_FOR_CategoryOfColumns_as_Opposite_CategoryOfRows_HomalgExteriorRingOverField_precompiled( cat );
             
         else
             
-            ADD_FUNCTIONS_FOR_CategoryOfColumnsAsOppositeOfCategoryOfRowsOfArbitraryRingPrecompiled( cat );
+            ADD_FUNCTIONS_FOR_CategoryOfColumns_as_Opposite_CategoryOfRows_ArbitraryRing_precompiled( cat );
             
         fi;
         

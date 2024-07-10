@@ -16,4 +16,4 @@ ReadPackage( "ModulePresentationsForCAP", "gap/ModulePresentationNaturalTransfor
 
 ReadPackage( "ModulePresentationsForCAP", "gap/Tools.gd" );
 
-ReadPackage( "ModulePresentationsForCAP", "gap/ModulePresentationsAsFreydCategoryOfCategoryOfRowsOrColumns.gd" );
+ReadPackage( "ModulePresentationsForCAP", "gap/ModulePresentations_as_FreydCategory_CategoryOfRowsOrColumns.gd" );

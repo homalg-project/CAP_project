@@ -5,7 +5,7 @@ QQ := HomalgFieldOfRationalsInSingular( );;
 QQxy := QQ * "x,y";;
 ring := KoszulDualRing( QQxy );;
 
-rfpres := RightPresentationsAsFreydCategoryOfCategoryOfColumns( ring : no_precompiled_code := true ); # true or false
+rfpres := RightPresentations_as_FreydCategory_CategoryOfColumns( ring : no_precompiled_code := true ); # true or false
 
 m := 1; # 1, 2, 3, 4, 5, 10, 20, 30
 

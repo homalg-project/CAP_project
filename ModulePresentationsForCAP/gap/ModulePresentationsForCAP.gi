@@ -11,7 +11,7 @@ InstallMethod( LeftPresentations,
   function( ring )
     local category;
     
-    # Since `FreydCategoriesForCAP` is not deposited, we cannot simply return `LeftPresentationsAsFreydCategoryOfCategoryOfRows( ring )`
+    # Since `FreydCategoriesForCAP` is not deposited, we cannot simply return `LeftPresentations_as_FreydCategory_CategoryOfRows( ring )`
     # but have to construct the category manually.
     
     category := CreateCapCategoryWithDataTypes(
@@ -55,7 +55,7 @@ InstallMethod( LeftPresentations,
         
         if IsPackageMarkedForLoading( "FreydCategoriesForCAP", ">= 2021.11-01" ) then
             
-            return LeftPresentationsAsFreydCategoryOfCategoryOfRows( ring );
+            return LeftPresentations_as_FreydCategory_CategoryOfRows( ring );
             
         else
             
@@ -67,15 +67,15 @@ InstallMethod( LeftPresentations,
         
         if HasIsFieldForHomalg( ring ) and IsFieldForHomalg( ring ) then
             
-            ADD_FUNCTIONS_FOR_LeftPresentationsAsFreydCategoryOfCategoryOfRowsOfFieldPrecompiled( category );
+            ADD_FUNCTIONS_FOR_LeftPresentations_as_FreydCategory_CategoryOfRows_Field_precompiled( category );
             
         elif HasIsCommutative( ring ) and IsCommutative( ring ) then
             
-            ADD_FUNCTIONS_FOR_LeftPresentationsAsFreydCategoryOfCategoryOfRowsOfCommutativeRingPrecompiled( category );
+            ADD_FUNCTIONS_FOR_LeftPresentations_as_FreydCategory_CategoryOfRows_CommutativeRing_precompiled( category );
             
         else
             
-            ADD_FUNCTIONS_FOR_LeftPresentationsAsFreydCategoryOfCategoryOfRowsOfArbitraryRingPrecompiled( category );
+            ADD_FUNCTIONS_FOR_LeftPresentations_as_FreydCategory_CategoryOfRows_ArbitraryRing_precompiled( category );
             
         fi;
         
@@ -115,7 +115,7 @@ InstallMethod( RightPresentations,
   function( ring )
     local category;
     
-    # Since `FreydCategoriesForCAP` is not deposited, we cannot simply return `RightPresentationsAsFreydCategoryOfCategoryOfColumns( ring )`
+    # Since `FreydCategoriesForCAP` is not deposited, we cannot simply return `RightPresentations_as_FreydCategory_CategoryOfColumns( ring )`
     # but have to construct the category manually.
     
     category := CreateCapCategoryWithDataTypes(
@@ -159,7 +159,7 @@ InstallMethod( RightPresentations,
         
         if IsPackageMarkedForLoading( "FreydCategoriesForCAP", ">= 2021.11-01" ) then
             
-            return RightPresentationsAsFreydCategoryOfCategoryOfColumns( ring );
+            return RightPresentations_as_FreydCategory_CategoryOfColumns( ring );
             
         else
             
@@ -171,15 +171,15 @@ InstallMethod( RightPresentations,
         
         if HasIsFieldForHomalg( ring ) and IsFieldForHomalg( ring ) then
             
-            ADD_FUNCTIONS_FOR_RightPresentationsAsFreydCategoryOfCategoryOfColumnsOfFieldPrecompiled( category );
+            ADD_FUNCTIONS_FOR_RightPresentations_as_FreydCategory_CategoryOfColumns_Field_precompiled( category );
             
         elif HasIsCommutative( ring ) and IsCommutative( ring ) then
             
-            ADD_FUNCTIONS_FOR_RightPresentationsAsFreydCategoryOfCategoryOfColumnsOfCommutativeRingPrecompiled( category );
+            ADD_FUNCTIONS_FOR_RightPresentations_as_FreydCategory_CategoryOfColumns_CommutativeRing_precompiled( category );
             
         else
             
-            ADD_FUNCTIONS_FOR_RightPresentationsAsFreydCategoryOfCategoryOfColumnsOfArbitraryRingPrecompiled( category );
+            ADD_FUNCTIONS_FOR_RightPresentations_as_FreydCategory_CategoryOfColumns_ArbitraryRing_precompiled( category );
             
         fi;
         

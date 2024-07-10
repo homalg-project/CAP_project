@@ -5,10 +5,10 @@
 #
 
 # read precompiled categories
-ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CategoryOfRowsAsAdditiveClosureOfRingAsCategoryOfFieldPrecompiled.gi" );
-ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CategoryOfRowsAsAdditiveClosureOfRingAsCategoryOfCommutativeRingPrecompiled.gi" );
-ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CategoryOfRowsAsAdditiveClosureOfRingAsCategoryOfHomalgExteriorRingOverFieldPrecompiled.gi" );
-ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CategoryOfRowsAsAdditiveClosureOfRingAsCategoryOfArbitraryRingPrecompiled.gi" );
+ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CategoryOfRows_as_AdditiveClosure_RingAsCategory_Field_precompiled.gi" );
+ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CategoryOfRows_as_AdditiveClosure_RingAsCategory_CommutativeRing_precompiled.gi" );
+ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CategoryOfRows_as_AdditiveClosure_RingAsCategory_HomalgExteriorRingOverField_precompiled.gi" );
+ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CategoryOfRows_as_AdditiveClosure_RingAsCategory_ArbitraryRing_precompiled.gi" );
 
 ####################################
 ##
@@ -23,7 +23,7 @@ InstallMethod( CategoryOfRows,
   function( homalg_ring )
     local cat;
     
-    cat := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( homalg_ring : FinalizeCategory := false );
+    cat := CategoryOfRows_as_AdditiveClosure_RingAsCategory( homalg_ring : FinalizeCategory := false );
     
     # this cache replaces the KeyDependentOperation caching when using ObjectConstructor directly instead of CategoryOfRowsObject
     SetCachingToWeak( cat, "ObjectConstructor" );
@@ -32,19 +32,19 @@ InstallMethod( CategoryOfRows,
         
         if HasIsFieldForHomalg( homalg_ring ) and IsFieldForHomalg( homalg_ring ) then
             
-            ADD_FUNCTIONS_FOR_CategoryOfRowsAsAdditiveClosureOfRingAsCategoryOfFieldPrecompiled( cat );
+            ADD_FUNCTIONS_FOR_CategoryOfRows_as_AdditiveClosure_RingAsCategory_Field_precompiled( cat );
             
         elif HasIsCommutative( homalg_ring ) and IsCommutative( homalg_ring ) then
             
-            ADD_FUNCTIONS_FOR_CategoryOfRowsAsAdditiveClosureOfRingAsCategoryOfCommutativeRingPrecompiled( cat );
+            ADD_FUNCTIONS_FOR_CategoryOfRows_as_AdditiveClosure_RingAsCategory_CommutativeRing_precompiled( cat );
             
         elif HasIsExteriorRing( homalg_ring ) and IsExteriorRing( homalg_ring ) and IsField( BaseRing( homalg_ring ) ) then
             
-            ADD_FUNCTIONS_FOR_CategoryOfRowsAsAdditiveClosureOfRingAsCategoryOfHomalgExteriorRingOverFieldPrecompiled( cat );
+            ADD_FUNCTIONS_FOR_CategoryOfRows_as_AdditiveClosure_RingAsCategory_HomalgExteriorRingOverField_precompiled( cat );
             
         else
             
-            ADD_FUNCTIONS_FOR_CategoryOfRowsAsAdditiveClosureOfRingAsCategoryOfArbitraryRingPrecompiled( cat );
+            ADD_FUNCTIONS_FOR_CategoryOfRows_as_AdditiveClosure_RingAsCategory_ArbitraryRing_precompiled( cat );
             
         fi;
         

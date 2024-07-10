@@ -8,7 +8,7 @@ LoadPackage( "FreydCategoriesForCAP" );;
 QQ := HomalgFieldOfRationalsInSingular();;
 
 R := QQ * "x,y,z";;
-rows := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( R );;
+rows := CategoryOfRows_as_AdditiveClosure_RingAsCategory( R );;
 
 M := HomalgMatrix( "[[x^2,4*y]]", 1, 2, R );;
 N := HomalgMatrix( "[[1,3*x], [2*y^3,5*y]]", 2, 2, R );;
@@ -50,7 +50,7 @@ IsCongruentForMorphisms(
 
 # E and EE are both occupied by GAP
 EEE := KoszulDualRing( R );;
-rows := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( EEE );;
+rows := CategoryOfRows_as_AdditiveClosure_RingAsCategory( EEE );;
 
 M := HomalgMatrix( "[[e0*e1,3*e0]]", 1, 2, EEE );;
 N := HomalgMatrix( "[[1,e0*e2], [2*e0*e1*e2,5*e2]]", 2, 2, EEE );;
