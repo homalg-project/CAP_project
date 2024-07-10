@@ -10,4 +10,4 @@ ReadPackage( "LinearAlgebraForCAP", "gap/MatrixCategoryObject.gd" );
 
 ReadPackage( "LinearAlgebraForCAP", "gap/MatrixCategoryMorphism.gd" );
 
-ReadPackage( "LinearAlgebraForCAP", "gap/MatrixCategoryAsCategoryOfRows.gd" );
+ReadPackage( "LinearAlgebraForCAP", "gap/MatrixCategory_as_CategoryOfRows.gd" );

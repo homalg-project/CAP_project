@@ -3,7 +3,7 @@
 #
 # Reading the implementation part of the package.
 #
-ReadPackage( "LinearAlgebraForCAP", "gap/precompiled_categories/MatrixCategoryPrecompiled.gi" );
+ReadPackage( "LinearAlgebraForCAP", "gap/precompiled_categories/MatrixCategory_precompiled.gi" );
 
 ReadPackage( "LinearAlgebraForCAP", "gap/LinearAlgebraForCAP.gi" );
 

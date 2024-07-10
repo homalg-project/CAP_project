@@ -75,7 +75,7 @@ InstallGlobalFunction( MATRIX_CATEGORY,
         
         if IsPackageMarkedForLoading( "FreydCategoriesForCAP", ">= 2022.10-14" ) then
             
-            category := MatrixCategoryAsCategoryOfRows( homalg_field );
+            category := MatrixCategory_as_CategoryOfRows( homalg_field );
             
         else
             
@@ -85,7 +85,7 @@ InstallGlobalFunction( MATRIX_CATEGORY,
         
     else
         
-        ADD_FUNCTIONS_FOR_MatrixCategoryPrecompiled( category );
+        ADD_FUNCTIONS_FOR_MatrixCategory_precompiled( category );
         
     fi;
     

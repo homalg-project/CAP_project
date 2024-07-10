@@ -10,7 +10,7 @@ LoadPackage( "LinearAlgebraForCAP", false );
 #! true
 
 Q := HomalgFieldOfRationals();;
-vec := MatrixCategoryAsCategoryOfRows( Q : no_precompiled_code := true );;
+vec := MatrixCategory_as_CategoryOfRows( Q : no_precompiled_code := true );;
 
 V := MatrixCategoryObject( vec, 2 );;
 alpha := ZeroMorphism( V, V );;

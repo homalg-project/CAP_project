@@ -31,7 +31,7 @@ CapJitAddTypeSignature( "HomalgMatrixListList", [ IsList, IsInt, IsInt, IsHomalg
     ring := input_types[4].ring;
     
     Assert( 0, input_types[1].element_type.filter = IsList );
-    Assert( 0, input_types[1].element_type.element_type = CapJitDataTypeOfElementOfRing( ring ) or input_types[1].element_type.element_type.filter = IsInt ); # for example, integers appear in AddZeroMorphism in FreydCategoriesForCAP/gap/CategoryOfRowsAsAdditiveClosureOfRingAsCategory.gi
+    Assert( 0, input_types[1].element_type.element_type = CapJitDataTypeOfElementOfRing( ring ) or input_types[1].element_type.element_type.filter = IsInt ); # for example, integers appear in AddZeroMorphism in FreydCategoriesForCAP/gap/CategoryOfRows_as_AdditiveClosure_RingAsCategory.gi
     
     return rec(
         filter := IsHomalgMatrix,

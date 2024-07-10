@@ -102,7 +102,7 @@ InstallMethod( ADDITIVE_CLOSURE,
         Error(
             "The options `matrix_element_as_morphism` and `list_list_as_matrix` are not supported anymore. ",
             "Use a `WrapperCategory` with custom ObjectConstructor and MorphismConstructor instead. ",
-            "See `CategoryOfRowsAsAdditiveClosureOfRingAsCategory` as an example."
+            "See `CategoryOfRows_as_AdditiveClosure_RingAsCategory` as an example."
         );
         
     fi;

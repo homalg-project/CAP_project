@@ -54,7 +54,7 @@
 #! We will show how one can reinterpret a category with the following guiding example:
 #! We reinterpret `Opposite( CategoryOfRows( R ) )` as `CategoryOfColumns( R )` using
 #! <Ref Oper="ReinterpretationOfCategory" Label="for IsCapCategory, IsRecord" />
-#! with the options described in the following (see `CategoryOfColumnsAsOppositeOfCategoryOfRows.gi` in
+#! with the options described in the following (see `CategoryOfColumns_as_Opposite_CategoryOfRows.gi` in
 #! `FreydCategoriesForCAP` for a full implementation).
 #! <Enum>
 #! <Item>

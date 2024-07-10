@@ -6,10 +6,10 @@
 ReadPackage( "FreydCategoriesForCAP", "gap/FreydCategoriesForCAP.gi" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfRows.gi" );
-ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfRowsAsAdditiveClosureOfRingAsCategory.gi" );
+ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfRows_as_AdditiveClosure_RingAsCategory.gi" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfColumns.gi" );
-ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfColumnsAsOppositeOfCategoryOfRows.gi" );
+ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfColumns_as_Opposite_CategoryOfRows.gi" );
 
 # include the packages for graded rows and columns
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfGradedRowsAndColumns/GradedRowOrColumn.gi" );
@@ -22,7 +22,7 @@ ReadPackage( "FreydCategoriesForCAP", "gap/FreydCategoriesDerivedMethods.gi" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/FreydCategory.gi" );
 ReadPackage( "FreydCategoriesForCAP", "gap/CoFreydCategory.gi" );
-ReadPackage( "FreydCategoriesForCAP", "gap/CoFreydCategoryAsOppositeOfFreydCategoryOfOpposite.gi" );
+ReadPackage( "FreydCategoriesForCAP", "gap/CoFreydCategory_as_Opposite_FreydCategory_Opposite.gi" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/AdditiveClosure.gi" );
 
