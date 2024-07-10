@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2024.07-05
+                                   2024.07-06
   
   
-                                  9 July 2024
+                                  10 July 2024
   
   
                                Sebastian Gutsche
@@ -1035,6 +1035,16 @@
       14.2-2 IsDummyCategoryObject
       14.2-3 IsDummyCategoryMorphism
       14.2-4 DummyCategory
+    14.3 [33X[0;0YDummy homalg rings[133X
+      14.3-1 IsDummyHomalgRing
+      14.3-2 IsDummyHomalgRingElement
+      14.3-3 IsDummyCommutativeHomalgRing
+      14.3-4 IsDummyCommutativeHomalgRingElement
+      14.3-5 IsDummyHomalgField
+      14.3-6 IsDummyHomalgFieldElement
+      14.3-7 DummyHomalgRing
+      14.3-8 DummyCommutativeHomalgRing
+      14.3-9 DummyHomalgField
   15 [33X[0;0YExamples and Tests[133X
     15.1 [33X[0;0YDummy implementations[133X
       15.1-1 [33X[0;0YDummy categories[133X

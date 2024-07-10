@@ -45,7 +45,7 @@
   
   [33X[1;0Y[29X[2XIsDummyFieldElement[102X [32X filter[133X
   
-  [33X[0;0YThe [5XGAP[105X filter of elements of a dummy commutative ring.[133X
+  [33X[0;0YThe [5XGAP[105X filter of elements of a dummy field.[133X
   
   [1X14.1-7 DummyRing[101X
   
@@ -98,4 +98,60 @@
   [10X{object,morphism}_{constructor,datum}[110X and [10Xcreate_func_*[110X will be set to dummy
   implementations  (throwing  errors when actually called). The dummy category
   will pretend to support empty limits by default.[133X
+  
+  
+  [1X14.3 [33X[0;0YDummy homalg rings[133X[101X
+  
+  [33X[0;0YThe operations in this section require [10XMatricesForHomalg[110X to be loaded.[133X
+  
+  [1X14.3-1 IsDummyHomalgRing[101X
+  
+  [33X[1;0Y[29X[2XIsDummyHomalgRing[102X [32X filter[133X
+  
+  [33X[0;0YThe [5XGAP[105X filter of dummy homalg rings.[133X
+  
+  [1X14.3-2 IsDummyHomalgRingElement[101X
+  
+  [33X[1;0Y[29X[2XIsDummyHomalgRingElement[102X [32X filter[133X
+  
+  [33X[0;0YThe [5XGAP[105X filter of elements of a dummy homalg ring.[133X
+  
+  [1X14.3-3 IsDummyCommutativeHomalgRing[101X
+  
+  [33X[1;0Y[29X[2XIsDummyCommutativeHomalgRing[102X [32X filter[133X
+  
+  [33X[0;0YThe [5XGAP[105X filter of dummy commutative homalg rings.[133X
+  
+  [1X14.3-4 IsDummyCommutativeHomalgRingElement[101X
+  
+  [33X[1;0Y[29X[2XIsDummyCommutativeHomalgRingElement[102X [32X filter[133X
+  
+  [33X[0;0YThe [5XGAP[105X filter of elements of a dummy commutative homalg ring.[133X
+  
+  [1X14.3-5 IsDummyHomalgField[101X
+  
+  [33X[1;0Y[29X[2XIsDummyHomalgField[102X [32X filter[133X
+  
+  [33X[0;0YThe [5XGAP[105X filter of dummy homalg fields.[133X
+  
+  [1X14.3-6 IsDummyHomalgFieldElement[101X
+  
+  [33X[1;0Y[29X[2XIsDummyHomalgFieldElement[102X [32X filter[133X
+  
+  [33X[0;0YThe [5XGAP[105X filter of elements of a dummy homalg field.[133X
+  
+  [1X14.3-7 DummyHomalgRing[101X
+  
+  [33X[1;0Y[29X[2XDummyHomalgRing[102X(  ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya dummy homalg ring[133X
+  
+  [1X14.3-8 DummyCommutativeHomalgRing[101X
+  
+  [33X[1;0Y[29X[2XDummyCommutativeHomalgRing[102X(  ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya dummy commutative homalg ring[133X
+  
+  [1X14.3-9 DummyHomalgField[101X
+  
+  [33X[1;0Y[29X[2XDummyHomalgField[102X(  ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya dummy homalg field[133X
   

@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "CAP",
 Subtitle := "Categories, Algorithms, Programming",
-Version := "2024.07-05",
-Date := "2024-07-09",
+Version := "2024.07-06",
+Date := "2024-07-10",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -119,6 +119,17 @@ Dependencies := rec(
   ExternalConditions := []
 
 ),
+
+Extensions := [
+  rec(
+    needed := [ [ "MatricesForHomalg", ">= 2023.11-02" ] ],
+    filename := "gap/DummyImplementationsOfMatricesForHomalg.gd",
+  ),
+  rec(
+    needed := [ [ "MatricesForHomalg", ">= 2023.11-02" ] ],
+    filename := "gap/DummyImplementationsOfMatricesForHomalg.gi",
+  ),
+],
 
 AvailabilityTest := function()
         return true;

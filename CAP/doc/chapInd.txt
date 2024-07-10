@@ -457,8 +457,11 @@
   [2XDownOnlyMorphismData[102X, for IsCapCategoryMorphism 1.8-2 
   [2XDownToBottom[102X, for IsObject 1.8-3 
   [2XDummyCategory[102X, for IsRecord 14.2-4 
+  [2XDummyCommutativeHomalgRing[102X 14.3-8 
   [2XDummyCommutativeRing[102X 14.1-8 
   [2XDummyField[102X 14.1-9 
+  [2XDummyHomalgField[102X 14.3-9 
+  [2XDummyHomalgRing[102X 14.3-7 
   [2XDummyRing[102X 14.1-7 
   [2XEmbeddingOfEqualizer[102X, for IsCapCategoryObject, IsList 6.9-3 
   [2XEmbeddingOfEqualizerWithGivenEqualizer[102X, for IsCapCategoryObject, IsList, IsCapCategoryObject 6.9-4 
@@ -595,10 +598,16 @@
   [2XIsDummyCategory[102X, for IsCapCategory 14.2-1 
   [2XIsDummyCategoryMorphism[102X, for IsCapCategoryMorphism 14.2-3 
   [2XIsDummyCategoryObject[102X, for IsCapCategoryObject 14.2-2 
+  [2XIsDummyCommutativeHomalgRing[102X 14.3-3 
+  [2XIsDummyCommutativeHomalgRingElement[102X 14.3-4 
   [2XIsDummyCommutativeRing[102X 14.1-3 
   [2XIsDummyCommutativeRingElement[102X 14.1-4 
   [2XIsDummyField[102X 14.1-5 
   [2XIsDummyFieldElement[102X 14.1-6 
+  [2XIsDummyHomalgField[102X 14.3-5 
+  [2XIsDummyHomalgFieldElement[102X 14.3-6 
+  [2XIsDummyHomalgRing[102X 14.3-1 
+  [2XIsDummyHomalgRingElement[102X 14.3-2 
   [2XIsDummyRing[102X 14.1-1 
   [2XIsDummyRingElement[102X 14.1-2 
   [2XIsEmptyHeap[102X, for IsStringMinHeap 8.5-6 
