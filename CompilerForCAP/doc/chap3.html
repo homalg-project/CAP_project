@@ -43,7 +43,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LinearAlgebraForCAP", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MatrixCategoryAsCategoryOfRows( Q : no_precompiled_code := true );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MatrixCategory_as_CategoryOfRows( Q : no_precompiled_code := true );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := MatrixCategoryObject( vec, 2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := ZeroMorphism( V, V );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := IdentityMorphism( V );;</span>
@@ -104,9 +104,9 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CAP_INTERNAL_DUMMY_HOMALG_FIELD_COUNTER := 1;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">homalg_field := DummyHomalgField( );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor := field -&gt; MatrixCategoryAsCategoryOfRows( field );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor := field -&gt; MatrixCategory_as_CategoryOfRows( field );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ homalg_field ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "MatrixCategoryPrecompiled";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "MatrixCategory_precompiled";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "LinearAlgebraForCAP";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategoryAndCompareResult(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_constructor,</span>
@@ -118,7 +118,7 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_objects_in_data_structure_of_morphism := 2,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_morphisms_in_data_structure_of_morphism := 1</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MatrixCategoryPrecompiled( homalg_field );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MatrixCategory_precompiled( homalg_field );</span>
 Category of matrices over Dummy homalg field 1
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MatrixCategory( homalg_field )!.precompiled_functions_added;</span>
 true
@@ -133,7 +133,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "FreydCategoriesForCAP",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "gap/CategoryOfRowsAsAdditiveClosureOfRingAsCategory_CompilerLogic.gi");</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "gap/CategoryOfRows_as_AdditiveClosure_RingAsCategory_CompilerLogic.gi");</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">homalg_field := DummyHomalgField( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">commutative_homalg_ring := DummyCommutativeHomalgRing( );;</span>
@@ -150,9 +150,9 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        [ homalg_ring ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        "FreydCategoriesForCAP",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        Concatenation(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "CategoryOfColumnsAsOppositeOfCategoryOfRowsOf",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "CategoryOfColumns_as_Opposite_CategoryOfRows_",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            name,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "Precompiled"</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "_precompiled"</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        ) :</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        operations := "primitive",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        number_of_objectified_objects_in_data_structure_of_object := 1,</span>
@@ -179,7 +179,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "FreydCategoriesForCAP",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "gap/CategoryOfRowsAsAdditiveClosureOfRingAsCategory_CompilerLogic.gi");</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "gap/CategoryOfRows_as_AdditiveClosure_RingAsCategory_CompilerLogic.gi");</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">homalg_field := DummyHomalgField( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">commutative_homalg_ring := DummyCommutativeHomalgRing( );;</span>
@@ -196,9 +196,9 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        [ homalg_ring ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        "FreydCategoriesForCAP",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        Concatenation(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "CategoryOfRowsAsAdditiveClosureOfRingAsCategoryOf",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "CategoryOfRows_as_AdditiveClosure_RingAsCategory_",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            name,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "Precompiled"</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "_precompiled"</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        ) :</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        operations := "primitive",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        number_of_objectified_objects_in_data_structure_of_object := 1,</span>
@@ -265,12 +265,12 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StopCompilationAtPrimitivelyInstalledOperationsOfCategory( dummy );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategoryAndCompareResult(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    underlying_category -&gt; CoFreydCategoryAsOppositeOfFreydCategoryOfOpposite(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    underlying_category -&gt; CoFreydCategory_as_Opposite_FreydCategory_Opposite(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        underlying_category</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ dummy ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    "FreydCategoriesForCAP",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "CoFreydCategoryAsOppositeOfFreydCategoryOfOppositePrecompiled" :</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "CoFreydCategory_as_Opposite_FreydCategory_Opposite_precompiled" :</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    operations := "primitive",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_objects_in_data_structure_of_object := 1,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_morphisms_in_data_structure_of_object := 0,</span>
@@ -346,13 +346,13 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_LeftPresentations := function( ring, name, operations )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    CapJitPrecompileCategoryAndCompareResult(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        ring -&gt; LeftPresentationsAsFreydCategoryOfCategoryOfRows( ring ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        ring -&gt; LeftPresentations_as_FreydCategory_CategoryOfRows( ring ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        [ ring ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        "ModulePresentationsForCAP",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        Concatenation(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "LeftPresentationsAsFreydCategoryOfCategoryOfRowsOf",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "LeftPresentations_as_FreydCategory_CategoryOfRows_",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            name,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "Precompiled"</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "_precompiled"</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        ) :</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        operations := operations</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    ); end;;</span>
@@ -368,13 +368,13 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_RightPresentations := function( ring, name, operations )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    CapJitPrecompileCategoryAndCompareResult(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        ring -&gt; RightPresentationsAsFreydCategoryOfCategoryOfColumns( ring ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        ring -&gt; RightPresentations_as_FreydCategory_CategoryOfColumns( ring ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        [ ring ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        "ModulePresentationsForCAP",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        Concatenation(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "RightPresentationsAsFreydCategoryOfCategoryOfColumnsOf",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "RightPresentations_as_FreydCategory_CategoryOfColumns_",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            name,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "Precompiled"</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "_precompiled"</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        ) :</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        operations := operations,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        number_of_objectified_objects_in_data_structure_of_object := 1,</span>
@@ -426,7 +426,7 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        only_primitive_operations := true</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    ); end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ homalg_field ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "OppositeOfMatrixCategoryPrecompiled";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "Opposite_MatrixCategory_precompiled";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "LinearAlgebraForCAP";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategoryAndCompareResult(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_constructor,</span>
@@ -441,9 +441,9 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    "LinearAlgebraForCAP",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "gap/precompiled_categories/OppositeOfMatrixCategoryPrecompiled.gi"</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "gap/precompiled_categories/Opposite_MatrixCategory_precompiled.gi"</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">OppositeOfMatrixCategoryPrecompiled( homalg_field );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Opposite_MatrixCategory_precompiled( homalg_field );</span>
 Opposite( Category of matrices over Dummy homalg field 1 )
 </pre></div>
 

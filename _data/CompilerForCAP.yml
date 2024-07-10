@@ -1,5 +1,5 @@
 name: CompilerForCAP
-version: "2024.07-05"
+version: "2024.07-06"
 license: "GPL-2.0-or-later"
 date: 2024-07-10
 description: |
@@ -29,11 +29,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/CompilerForCAP/Package
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2024.07-05/CompilerForCAP-2024.07-05.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2024.07-06/CompilerForCAP-2024.07-06.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2024.07-05/CompilerForCAP-2024.07-05.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2024.07-06/CompilerForCAP-2024.07-06.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2024.07-05/CompilerForCAP-2024.07-05-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2024.07-06/CompilerForCAP-2024.07-06-manual.pdf
 
 abstract: |
 
@@ -44,7 +44,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>Zic10</span>]   <b class='BibAuthor'>Zickgraf, F.</b>,
      <i class='BibTitle'>CompilerForCAP, Speed up and verify categorical algorithms,
-             Version 2024.07-05</i>
+             Version 2024.07-06</i>
      (<span class='BibYear'>7-10</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/CompilerForCAP">https://homalg-project.github.io/pkg/CompilerForCAP</a></span>.
@@ -55,7 +55,7 @@ bibtex: |
     @misc{ CompilerForCAP,
       author =           {Zickgraf, F.},
       title =            {{CompilerForCAP},  Speed  up  and  verify  categorical
-                          algorithms, {V}ersion 2024.07\texttt{\symbol{45}}05},
+                          algorithms, {V}ersion 2024.07\texttt{\symbol{45}}06},
       month =            {4\texttt{\symbol{45}}},
       year =             {7\texttt{\symbol{45}}10},
       note =             {GAP package},

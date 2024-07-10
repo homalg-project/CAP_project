@@ -10,7 +10,7 @@
     [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
-    [4X[25Xgap>[125X [27Xvec := MatrixCategoryAsCategoryOfRows( Q : no_precompiled_code := true );;[127X[104X
+    [4X[25Xgap>[125X [27Xvec := MatrixCategory_as_CategoryOfRows( Q : no_precompiled_code := true );;[127X[104X
     [4X[25Xgap>[125X [27XV := MatrixCategoryObject( vec, 2 );;[127X[104X
     [4X[25Xgap>[125X [27Xalpha := ZeroMorphism( V, V );;[127X[104X
     [4X[25Xgap>[125X [27Xbeta := IdentityMorphism( V );;[127X[104X
@@ -70,9 +70,9 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XCAP_INTERNAL_DUMMY_HOMALG_FIELD_COUNTER := 1;;[127X[104X
     [4X[25Xgap>[125X [27Xhomalg_field := DummyHomalgField( );;[127X[104X
-    [4X[25Xgap>[125X [27Xcategory_constructor := field -> MatrixCategoryAsCategoryOfRows( field );;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_constructor := field -> MatrixCategory_as_CategoryOfRows( field );;[127X[104X
     [4X[25Xgap>[125X [27Xgiven_arguments := [ homalg_field ];;[127X[104X
-    [4X[25Xgap>[125X [27Xcompiled_category_name := "MatrixCategoryPrecompiled";;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_category_name := "MatrixCategory_precompiled";;[127X[104X
     [4X[25Xgap>[125X [27Xpackage_name := "LinearAlgebraForCAP";;[127X[104X
     [4X[25Xgap>[125X [27XCapJitPrecompileCategoryAndCompareResult([127X[104X
     [4X[25X>[125X [27X    category_constructor,[127X[104X
@@ -84,7 +84,7 @@
     [4X[25X>[125X [27X    number_of_objectified_objects_in_data_structure_of_morphism := 2,[127X[104X
     [4X[25X>[125X [27X    number_of_objectified_morphisms_in_data_structure_of_morphism := 1[127X[104X
     [4X[25X>[125X [27X);;[127X[104X
-    [4X[25Xgap>[125X [27XMatrixCategoryPrecompiled( homalg_field );[127X[104X
+    [4X[25Xgap>[125X [27XMatrixCategory_precompiled( homalg_field );[127X[104X
     [4X[28XCategory of matrices over Dummy homalg field 1[128X[104X
     [4X[25Xgap>[125X [27XMatrixCategory( homalg_field )!.precompiled_functions_added;[127X[104X
     [4X[28Xtrue[128X[104X
@@ -97,7 +97,7 @@
     [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XReadPackage( "FreydCategoriesForCAP",[127X[104X
-    [4X[25X>[125X [27X    "gap/CategoryOfRowsAsAdditiveClosureOfRingAsCategory_CompilerLogic.gi");[127X[104X
+    [4X[25X>[125X [27X    "gap/CategoryOfRows_as_AdditiveClosure_RingAsCategory_CompilerLogic.gi");[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xhomalg_field := DummyHomalgField( );;[127X[104X
     [4X[25Xgap>[125X [27Xcommutative_homalg_ring := DummyCommutativeHomalgRing( );;[127X[104X
@@ -114,9 +114,9 @@
     [4X[25X>[125X [27X        [ homalg_ring ],[127X[104X
     [4X[25X>[125X [27X        "FreydCategoriesForCAP",[127X[104X
     [4X[25X>[125X [27X        Concatenation([127X[104X
-    [4X[25X>[125X [27X            "CategoryOfColumnsAsOppositeOfCategoryOfRowsOf",[127X[104X
+    [4X[25X>[125X [27X            "CategoryOfColumns_as_Opposite_CategoryOfRows_",[127X[104X
     [4X[25X>[125X [27X            name,[127X[104X
-    [4X[25X>[125X [27X            "Precompiled"[127X[104X
+    [4X[25X>[125X [27X            "_precompiled"[127X[104X
     [4X[25X>[125X [27X        ) :[127X[104X
     [4X[25X>[125X [27X        operations := "primitive",[127X[104X
     [4X[25X>[125X [27X        number_of_objectified_objects_in_data_structure_of_object := 1,[127X[104X
@@ -142,7 +142,7 @@
     [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XReadPackage( "FreydCategoriesForCAP",[127X[104X
-    [4X[25X>[125X [27X    "gap/CategoryOfRowsAsAdditiveClosureOfRingAsCategory_CompilerLogic.gi");[127X[104X
+    [4X[25X>[125X [27X    "gap/CategoryOfRows_as_AdditiveClosure_RingAsCategory_CompilerLogic.gi");[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xhomalg_field := DummyHomalgField( );;[127X[104X
     [4X[25Xgap>[125X [27Xcommutative_homalg_ring := DummyCommutativeHomalgRing( );;[127X[104X
@@ -159,9 +159,9 @@
     [4X[25X>[125X [27X        [ homalg_ring ],[127X[104X
     [4X[25X>[125X [27X        "FreydCategoriesForCAP",[127X[104X
     [4X[25X>[125X [27X        Concatenation([127X[104X
-    [4X[25X>[125X [27X            "CategoryOfRowsAsAdditiveClosureOfRingAsCategoryOf",[127X[104X
+    [4X[25X>[125X [27X            "CategoryOfRows_as_AdditiveClosure_RingAsCategory_",[127X[104X
     [4X[25X>[125X [27X            name,[127X[104X
-    [4X[25X>[125X [27X            "Precompiled"[127X[104X
+    [4X[25X>[125X [27X            "_precompiled"[127X[104X
     [4X[25X>[125X [27X        ) :[127X[104X
     [4X[25X>[125X [27X        operations := "primitive",[127X[104X
     [4X[25X>[125X [27X        number_of_objectified_objects_in_data_structure_of_object := 1,[127X[104X
@@ -227,12 +227,12 @@
     [4X[25X>[125X [27X) );;[127X[104X
     [4X[25Xgap>[125X [27XStopCompilationAtPrimitivelyInstalledOperationsOfCategory( dummy );[127X[104X
     [4X[25Xgap>[125X [27XCapJitPrecompileCategoryAndCompareResult([127X[104X
-    [4X[25X>[125X [27X    underlying_category -> CoFreydCategoryAsOppositeOfFreydCategoryOfOpposite([127X[104X
+    [4X[25X>[125X [27X    underlying_category -> CoFreydCategory_as_Opposite_FreydCategory_Opposite([127X[104X
     [4X[25X>[125X [27X        underlying_category[127X[104X
     [4X[25X>[125X [27X    ),[127X[104X
     [4X[25X>[125X [27X    [ dummy ],[127X[104X
     [4X[25X>[125X [27X    "FreydCategoriesForCAP",[127X[104X
-    [4X[25X>[125X [27X    "CoFreydCategoryAsOppositeOfFreydCategoryOfOppositePrecompiled" :[127X[104X
+    [4X[25X>[125X [27X    "CoFreydCategory_as_Opposite_FreydCategory_Opposite_precompiled" :[127X[104X
     [4X[25X>[125X [27X    operations := "primitive",[127X[104X
     [4X[25X>[125X [27X    number_of_objectified_objects_in_data_structure_of_object := 1,[127X[104X
     [4X[25X>[125X [27X    number_of_objectified_morphisms_in_data_structure_of_object := 0,[127X[104X
@@ -307,13 +307,13 @@
     [4X[25Xgap>[125X [27Xprecompile_LeftPresentations := function( ring, name, operations )[127X[104X
     [4X[25X>[125X [27X    [127X[104X
     [4X[25X>[125X [27X    CapJitPrecompileCategoryAndCompareResult([127X[104X
-    [4X[25X>[125X [27X        ring -> LeftPresentationsAsFreydCategoryOfCategoryOfRows( ring ),[127X[104X
+    [4X[25X>[125X [27X        ring -> LeftPresentations_as_FreydCategory_CategoryOfRows( ring ),[127X[104X
     [4X[25X>[125X [27X        [ ring ],[127X[104X
     [4X[25X>[125X [27X        "ModulePresentationsForCAP",[127X[104X
     [4X[25X>[125X [27X        Concatenation([127X[104X
-    [4X[25X>[125X [27X            "LeftPresentationsAsFreydCategoryOfCategoryOfRowsOf",[127X[104X
+    [4X[25X>[125X [27X            "LeftPresentations_as_FreydCategory_CategoryOfRows_",[127X[104X
     [4X[25X>[125X [27X            name,[127X[104X
-    [4X[25X>[125X [27X            "Precompiled"[127X[104X
+    [4X[25X>[125X [27X            "_precompiled"[127X[104X
     [4X[25X>[125X [27X        ) :[127X[104X
     [4X[25X>[125X [27X        operations := operations[127X[104X
     [4X[25X>[125X [27X    ); end;;[127X[104X
@@ -329,13 +329,13 @@
     [4X[25Xgap>[125X [27Xprecompile_RightPresentations := function( ring, name, operations )[127X[104X
     [4X[25X>[125X [27X    [127X[104X
     [4X[25X>[125X [27X    CapJitPrecompileCategoryAndCompareResult([127X[104X
-    [4X[25X>[125X [27X        ring -> RightPresentationsAsFreydCategoryOfCategoryOfColumns( ring ),[127X[104X
+    [4X[25X>[125X [27X        ring -> RightPresentations_as_FreydCategory_CategoryOfColumns( ring ),[127X[104X
     [4X[25X>[125X [27X        [ ring ],[127X[104X
     [4X[25X>[125X [27X        "ModulePresentationsForCAP",[127X[104X
     [4X[25X>[125X [27X        Concatenation([127X[104X
-    [4X[25X>[125X [27X            "RightPresentationsAsFreydCategoryOfCategoryOfColumnsOf",[127X[104X
+    [4X[25X>[125X [27X            "RightPresentations_as_FreydCategory_CategoryOfColumns_",[127X[104X
     [4X[25X>[125X [27X            name,[127X[104X
-    [4X[25X>[125X [27X            "Precompiled"[127X[104X
+    [4X[25X>[125X [27X            "_precompiled"[127X[104X
     [4X[25X>[125X [27X        ) :[127X[104X
     [4X[25X>[125X [27X        operations := operations,[127X[104X
     [4X[25X>[125X [27X        number_of_objectified_objects_in_data_structure_of_object := 1,[127X[104X
@@ -386,7 +386,7 @@
     [4X[25X>[125X [27X        only_primitive_operations := true[127X[104X
     [4X[25X>[125X [27X    ); end;;[127X[104X
     [4X[25Xgap>[125X [27Xgiven_arguments := [ homalg_field ];;[127X[104X
-    [4X[25Xgap>[125X [27Xcompiled_category_name := "OppositeOfMatrixCategoryPrecompiled";;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_category_name := "Opposite_MatrixCategory_precompiled";;[127X[104X
     [4X[25Xgap>[125X [27Xpackage_name := "LinearAlgebraForCAP";;[127X[104X
     [4X[25Xgap>[125X [27XCapJitPrecompileCategoryAndCompareResult([127X[104X
     [4X[25X>[125X [27X    category_constructor,[127X[104X
@@ -401,9 +401,9 @@
     [4X[25X>[125X [27X);;[127X[104X
     [4X[25Xgap>[125X [27XReadPackage([127X[104X
     [4X[25X>[125X [27X    "LinearAlgebraForCAP",[127X[104X
-    [4X[25X>[125X [27X    "gap/precompiled_categories/OppositeOfMatrixCategoryPrecompiled.gi"[127X[104X
+    [4X[25X>[125X [27X    "gap/precompiled_categories/Opposite_MatrixCategory_precompiled.gi"[127X[104X
     [4X[25X>[125X [27X);;[127X[104X
-    [4X[25Xgap>[125X [27XOppositeOfMatrixCategoryPrecompiled( homalg_field );[127X[104X
+    [4X[25Xgap>[125X [27XOpposite_MatrixCategory_precompiled( homalg_field );[127X[104X
     [4X[28XOpposite( Category of matrices over Dummy homalg field 1 )[128X[104X
   [4X[32X[104X
   
