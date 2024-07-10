@@ -231,27 +231,7 @@
   of  rank [23X1[123X. In particular, the annihilator itself is seen as a left or right
   presentation.[133X
   
-  [1X1.3-11 LeftPresentationsAsFreydCategoryOfCategoryOfRows[101X
-  
-  [33X[1;0Y[29X[2XLeftPresentationsAsFreydCategoryOfCategoryOfRows[102X( [3XR[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya category[133X
-  
-  [33X[0;0YThe  argument  is  a  homalg  ring  [23XR[123X.  The  output  is the category of left
-  presentations  over  [23XR[123X,  constructed  internally as the [10XFreydCategory[110X of the
-  [10XCategoryOfRows[110X  of [3XR[103X. Only available if the package [10XFreydCategoriesForCAP[110X is
-  available.[133X
-  
-  [1X1.3-12 RightPresentationsAsFreydCategoryOfCategoryOfColumns[101X
-  
-  [33X[1;0Y[29X[2XRightPresentationsAsFreydCategoryOfCategoryOfColumns[102X( [3XR[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya category[133X
-  
-  [33X[0;0YThe  argument  is  a  homalg  ring  [23XR[123X.  The  output is the category of right
-  presentations  over  [23XR[123X,  constructed  internally as the [10XFreydCategory[110X of the
-  [10XCategoryOfColumns[110X  of [3XR[103X. Only available if the package [10XFreydCategoriesForCAP[110X
-  is available.[133X
-  
-  [1X1.3-13 LeftPresentations[101X
+  [1X1.3-11 LeftPresentations[101X
   
   [33X[1;0Y[29X[2XLeftPresentations[102X( [3XR[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya category[133X
@@ -259,13 +239,33 @@
   [33X[0;0YThe  argument  is  a  homalg  ring  [23XR[123X.  The  output  is the category of left
   presentations over [23XR[123X.[133X
   
-  [1X1.3-14 RightPresentations[101X
+  [1X1.3-12 RightPresentations[101X
   
   [33X[1;0Y[29X[2XRightPresentations[102X( [3XR[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya category[133X
   
   [33X[0;0YThe  argument  is  a  homalg  ring  [23XR[123X.  The  output is the category of right
   presentations over [23XR[123X.[133X
+  
+  [1X1.3-13 LeftPresentations_as_FreydCategory_CategoryOfRows[101X
+  
+  [33X[1;0Y[29X[2XLeftPresentations_as_FreydCategory_CategoryOfRows[102X( [3XR[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya category[133X
+  
+  [33X[0;0YThe  argument  is  a  homalg  ring  [23XR[123X.  The  output  is the category of left
+  presentations  over  [23XR[123X,  constructed  internally as the [10XFreydCategory[110X of the
+  [10XCategoryOfRows[110X  of [3XR[103X. Only available if the package [10XFreydCategoriesForCAP[110X is
+  available.[133X
+  
+  [1X1.3-14 RightPresentations_as_FreydCategory_CategoryOfColumns[101X
+  
+  [33X[1;0Y[29X[2XRightPresentations_as_FreydCategory_CategoryOfColumns[102X( [3XR[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya category[133X
+  
+  [33X[0;0YThe  argument  is  a  homalg  ring  [23XR[123X.  The  output is the category of right
+  presentations  over  [23XR[123X,  constructed  internally as the [10XFreydCategory[110X of the
+  [10XCategoryOfColumns[110X  of [3XR[103X. Only available if the package [10XFreydCategoriesForCAP[110X
+  is available.[133X
   
   
   [1X1.4 [33X[0;0YAttributes[133X[101X

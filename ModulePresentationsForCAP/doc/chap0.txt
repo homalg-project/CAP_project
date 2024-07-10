@@ -6,10 +6,10 @@
                            [1X Category R-pres for CAP [101X
   
   
-                                   2024.07-01
+                                   2024.07-02
   
   
-                                  9 July 2024
+                                  10 July 2024
   
   
                                Sebastian Gutsche
@@ -84,10 +84,10 @@
       1.3-8 UnderlyingMatrix
       1.3-9 UnderlyingHomalgRing
       1.3-10 Annihilator
-      1.3-11 LeftPresentationsAsFreydCategoryOfCategoryOfRows
-      1.3-12 RightPresentationsAsFreydCategoryOfCategoryOfColumns
-      1.3-13 LeftPresentations
-      1.3-14 RightPresentations
+      1.3-11 LeftPresentations
+      1.3-12 RightPresentations
+      1.3-13 LeftPresentations_as_FreydCategory_CategoryOfRows
+      1.3-14 RightPresentations_as_FreydCategory_CategoryOfColumns
     1.4 [33X[0;0YAttributes[133X
       1.4-1 UnderlyingHomalgRing
       1.4-2 UnderlyingMatrix

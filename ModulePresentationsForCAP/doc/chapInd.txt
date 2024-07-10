@@ -26,8 +26,8 @@
   [2XIsLeftPresentationMorphism[102X, for IsLeftOrRightPresentationMorphism 1.2-2 
   [2XIsRightPresentation[102X, for IsLeftOrRightPresentation 1.2-6 
   [2XIsRightPresentationMorphism[102X, for IsLeftOrRightPresentationMorphism 1.2-3 
-  [2XLeftPresentations[102X, for IsHomalgRing 1.3-13 
-  [2XLeftPresentationsAsFreydCategoryOfCategoryOfRows[102X, for IsHomalgRing 1.3-11 
+  [2XLeftPresentations[102X, for IsHomalgRing 1.3-11 
+  [2XLeftPresentations_as_FreydCategory_CategoryOfRows[102X, for IsHomalgRing 1.3-13 
   [2XNaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsLeft[102X, for IsHomalgRing 1.6-3 
   [2XNaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsRight[102X, for IsHomalgRing 1.6-4 
   [2XNaturalIsomorphismFromIdentityToLessGeneratorsLeft[102X, for IsHomalgRing 1.6-5 
@@ -37,8 +37,8 @@
   [2XNaturalTransformationFromIdentityToDoubleDualLeft[102X, for IsHomalgRing 1.6-7 
   [2XNaturalTransformationFromIdentityToDoubleDualRight[102X, for IsHomalgRing 1.6-8 
   [2XPresentationMorphism[102X, for IsLeftOrRightPresentation, IsHomalgMatrix, IsLeftOrRightPresentation 1.3-1 
-  [2XRightPresentations[102X, for IsHomalgRing 1.3-14 
-  [2XRightPresentationsAsFreydCategoryOfCategoryOfColumns[102X, for IsHomalgRing 1.3-12 
+  [2XRightPresentations[102X, for IsHomalgRing 1.3-12 
+  [2XRightPresentations_as_FreydCategory_CategoryOfColumns[102X, for IsHomalgRing 1.3-14 
   [2XStandardGeneratorMorphism[102X, for IsLeftOrRightPresentation, IsInt 1.5-1 
   [2XUnderlyingHomalgRing[102X, for IsLeftOrRightPresentation 1.3-9 
       for IsLeftOrRightPresentationMorphism 1.4-1 
