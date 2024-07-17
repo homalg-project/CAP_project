@@ -127,7 +127,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
             
         fi;
         
-        InstallMethod( CAP_operation, replaced_filter_list{[ 2 .. Length( replaced_filter_list ) ]}, get_convenience_function( CAP_operation ) );
+        InstallOtherMethod( CAP_operation, replaced_filter_list{[ 2 .. Length( replaced_filter_list ) ]}, get_convenience_function( CAP_operation ) );
         
     fi;
     

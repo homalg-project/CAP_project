@@ -88,7 +88,7 @@ InstallMethod( CategoryOfRows_as_AdditiveClosure_RingAsCategory,
     
     modeling_tower_object_datum := function ( cat, object )
         
-        return Length( ObjectList( object ) );
+        return BigInt( Length( ObjectList( object ) ) );
         
     end;
     

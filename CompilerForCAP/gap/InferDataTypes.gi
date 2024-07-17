@@ -152,7 +152,7 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_I
     
     if Length( type_signatures ) = 0 then
         
-        DisplayWithCurrentlyCompiledFunctionLocation( Concatenation( "WARNING: Could not find matching declaration of ", gvar, " for input ", String( input_filters ) ) );
+        ErrorWithCurrentlyCompiledFunctionLocation( Concatenation( "WARNING: Could not find matching declaration of ", gvar, " for input ", String( input_filters ) ) );
         return fail;
         
     elif Length( type_signatures ) > 1 then
@@ -428,7 +428,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INFERRED_DATA_TYPES, function ( tree, in
         
         if tree.type = "EXPR_INT" then
             
-            data_type := rec( filter := IsInt );
+            data_type := rec( filter := IsSmallIntRep );
             
         elif tree.type = "EXPR_STRING" then
             
@@ -519,6 +519,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_INFERRED_DATA_TYPES, function ( tree, in
             
         elif tree.type = "EXPR_RANGE" then
             
+            # TODO
             data_type := CapJitDataTypeOfListOf( IsInt );
             
         elif tree.type = "EXPR_LIST" then
@@ -888,9 +889,17 @@ CapJitAddTypeSignature( "RETURN_TRUE", [ IsObject, IsObject ], IsBool );
 CapJitAddTypeSignature( "Length", [ IsList ], IsInt );
 CapJitAddTypeSignature( "IsEmpty", [ IsList ], IsBool );
 CapJitAddTypeSignature( "+", [ IsInt, IsInt ], IsInt );
+CapJitAddTypeSignature( "+", [ IsInt, IsSmallIntRep ], IsInt );
+CapJitAddTypeSignature( "+", [ IsSmallIntRep, IsSmallIntRep ], IsSmallIntRep );
+CapJitAddTypeSignature( "+", [ IsSmallIntRep, IsInt ], IsInt );
 CapJitAddTypeSignature( "AdditiveInverseSameMutability", [ IsInt ], IsInt );
 CapJitAddTypeSignature( "-", [ IsInt, IsInt ], IsInt );
+CapJitAddTypeSignature( "-", [ IsInt, IsSmallIntRep ], IsInt );
+CapJitAddTypeSignature( "-", [ IsSmallIntRep, IsSmallIntRep ], IsSmallIntRep );
 CapJitAddTypeSignature( "*", [ IsInt, IsInt ], IsInt );
+CapJitAddTypeSignature( "*", [ IsInt, IsSmallIntRep ], IsInt );
+CapJitAddTypeSignature( "*", [ IsSmallIntRep, IsInt ], IsInt );
+CapJitAddTypeSignature( "*", [ IsSmallIntRep, IsSmallIntRep ], IsInt );
 CapJitAddTypeSignature( "^", [ IsInt, IsInt ], IsInt );
 CapJitAddTypeSignature( "REM_INT", [ IsInt, IsInt ], IsInt );
 CapJitAddTypeSignature( "QUO_INT", [ IsInt, IsInt ], IsInt );
@@ -900,6 +909,7 @@ CapJitAddTypeSignature( "^", [ IsPerm, IsInt ], IsPerm );
 CapJitAddTypeSignature( "PermList", [ IsList ], IsPerm );
 CapJitAddTypeSignature( "PermutationMat", [ IsPerm, IsInt ], CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( IsInt ) ) );
 CapJitAddTypeSignature( "BigInt", [ IsInt ], IsBigInt );
+CapJitAddTypeSignature( "BigInt", [ IsSmallIntRep ], IsInt );
 
 CapJitAddTypeSignature( "IS_IDENTICAL_OBJ", [ IsObject, IsObject ], function ( input_types )
     
@@ -1014,6 +1024,12 @@ CapJitAddTypeSignature( "Random", [ IsList ], function ( input_types )
 end );
 
 CapJitAddTypeSignature( "[]", [ IsList, IsInt ], function ( input_types )
+    
+    return input_types[1].element_type;
+    
+end );
+
+CapJitAddTypeSignature( "[]", [ IsList, IsSmallIntRep ], function ( input_types )
     
     return input_types[1].element_type;
     
