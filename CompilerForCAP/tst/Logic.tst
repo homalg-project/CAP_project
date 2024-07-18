@@ -224,7 +224,12 @@ gap> tree := CapJitInferredDataTypes( tree );;
 gap> tree := CapJitAppliedLogic( tree );;
 gap> Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
 function (  )
-    return [  ];
+    return CapJitTypedExpression( [  ], function (  )
+            return rec(
+                filter := IsList,
+                element_type := rec(
+                    filter := IsInt ) );
+        end );
 end
 
 # Concatenation of two empty lists
@@ -237,7 +242,12 @@ gap> tree := CapJitInferredDataTypes( tree );;
 gap> tree := CapJitAppliedLogic( tree );;
 gap> Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
 function (  )
-    return [  ];
+    return CapJitTypedExpression( [  ], function (  )
+            return rec(
+                filter := IsList,
+                element_type := rec(
+                    filter := IsInt ) );
+        end );
 end
 
 # List of a literal empty list
@@ -250,7 +260,14 @@ gap> tree := CapJitInferredDataTypes( tree );;
 gap> tree := CapJitAppliedLogic( tree );;
 gap> Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
 function (  )
-    return [  ];
+    return CapJitTypedExpression( [  ], function (  )
+            return rec(
+                filter := IsList,
+                element_type := rec(
+                    filter := IsList,
+                    element_type := rec(
+                        filter := IsInt ) ) );
+        end );
 end
 
 #
