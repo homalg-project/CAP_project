@@ -910,7 +910,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
       function( cat, diagram, test_object, morphisms, direct_sum )
         local listlist;
         
-        listlist := UnionOfColumnsListList( Length( ObjectList( test_object ) ), List( morphisms, tau -> MorphismMatrix( tau ) ) );
+        listlist := UnionOfColumnsListList( BigInt( Length( ObjectList( test_object ) ) ), List( morphisms, tau -> MorphismMatrix( tau ) ) );
         
         return AdditiveClosureMorphism( cat, test_object,
                                         listlist,
@@ -923,7 +923,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
       function( cat, diagram, test_object, morphisms, direct_sum )
         local listlist;
         
-        listlist := UnionOfRowsListList( Length( ObjectList( test_object ) ), List( morphisms, tau -> MorphismMatrix( tau ) ) );
+        listlist := UnionOfRowsListList( BigInt( Length( ObjectList( test_object ) ) ), List( morphisms, tau -> MorphismMatrix( tau ) ) );
         
         return AdditiveClosureMorphism( cat, direct_sum,
                                         listlist,
