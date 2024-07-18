@@ -170,7 +170,17 @@ CapJitAddLogicFunction( function ( tree )
             # for integers, strings, and chars we can also decide inequality
             elif tree.left.type = "EXPR_INT" or tree.left.type = "EXPR_STRING" or tree.left.type = "EXPR_CHAR" then
                 
-                return rec( type := "EXPR_FALSE" );
+                # CAUTION: One value might have a data type set and the other not -> they might differ with regard to `CapJitIsEqualForEnhancedSyntaxTrees`
+                # despite having equal values. Hence, to decide inequality we have to explicitly check the values again.
+                if tree.left.value = tree.right.value then
+                    
+                    return rec( type := "EXPR_TRUE" );
+                    
+                else
+                    
+                    return rec( type := "EXPR_FALSE" );
+                    
+                fi;
                 
             fi;
             

@@ -86,7 +86,18 @@ end
 
 #
 gap> func := function ( x )
->   if 1 = 2 then return 1; elif x = x then return 2; else return 3; fi; end;;
+>   
+>   if 1 = 2 then
+>       return 1;
+>   elif 1 = CapJitTypedExpression( 1, { } -> rec( filter := IsInt ) ) then
+>       return 2;
+>   elif x = x then
+>       return 3;
+>   else
+>       return 4;
+>   fi;
+>   
+>   end;;
 
 #
 gap> tree := ENHANCED_SYNTAX_TREE( func );;
@@ -97,8 +108,10 @@ function ( x_1 )
         return 1;
     elif true then
         return 2;
-    else
+    elif true then
         return 3;
+    else
+        return 4;
     fi;
     return;
 end
