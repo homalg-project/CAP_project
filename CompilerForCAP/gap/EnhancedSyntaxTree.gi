@@ -1449,7 +1449,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
     end;
     
     result_func := function ( tree, result, keys, additional_arguments )
-      local key;
+      local data_type_as_syntax_tree, data_type_tree, key;
         
         if IsList( result ) then
             
@@ -1464,6 +1464,128 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 tree.(key) := result.(key);
                 
             od;
+            
+            if tree.type = "EXPR_LIST" and IsEmpty( tree.list ) and IsBound( tree.data_type ) then
+                
+                Assert( 0, tree.data_type.filter = IsList );
+                
+                data_type_as_syntax_tree := function ( data_type )
+                  local element_type, element_types;
+                    
+                    # check if we have a simple, globally accessible filter
+                    if RecNames( data_type ) = [ "filter" ] and IsIdenticalObj( data_type.filter, ValueGlobal( NameFunction( data_type.filter ) ) ) then
+                        
+                        return rec(
+                            type := "EXPR_REC",
+                            keyvalue := [
+                                rec(
+                                    key := "filter",
+                                    value := rec(
+                                        type := "EXPR_REF_GVAR",
+                                        gvar := NameFunction( data_type.filter ),
+                                    ),
+                                ),
+                            ],
+                        );
+                        
+                    elif data_type.filter = IsList then
+                        
+                        element_type := data_type_as_syntax_tree( data_type.element_type );
+                        
+                        if element_type <> fail then
+                            
+                            return rec(
+                                type := "EXPR_REC",
+                                keyvalue := [
+                                    rec(
+                                        key := "filter",
+                                        value := rec(
+                                            type := "EXPR_REF_GVAR",
+                                            gvar := "IsList",
+                                        ),
+                                    ),
+                                    rec(
+                                        key := "element_type",
+                                        value := element_type,
+                                    ),
+                                ],
+                            );
+                            
+                        fi;
+                        
+                    elif data_type.filter = IsNTuple then
+                        
+                        element_types := List( data_type.element_types, data_type_as_syntax_tree );
+                        
+                        if ForAll( element_types, t -> t <> fail ) then
+                            
+                            return rec(
+                                type := "EXPR_REC",
+                                keyvalue := [
+                                    rec(
+                                        key := "filter",
+                                        value := rec(
+                                            type := "EXPR_REF_GVAR",
+                                            gvar := "IsNTuple",
+                                        ),
+                                    ),
+                                    rec(
+                                        key := "element_types",
+                                        value := rec(
+                                            type := "EXPR_LIST",
+                                            list := element_types,
+                                        ),
+                                    ),
+                                ],
+                            );
+                            
+                        fi;
+                        
+                    fi;
+                    
+                    # case not yet handled
+                    return fail;
+                    
+                end;
+                
+                data_type_tree := data_type_as_syntax_tree( tree.data_type );
+                
+                if data_type_tree <> fail then
+                    
+                    # CapJitTypedExpression( [ ], { } -> ... )
+                    tree := rec(
+                        type := "EXPR_FUNCCALL_2ARGS",
+                        funcref := rec(
+                            type := "EXPR_REF_GVAR",
+                            gvar := "CapJitTypedExpression",
+                        ),
+                        args := [
+                            rec(
+                                type := "EXPR_LIST",
+                                list := [ ],
+                            ),
+                            rec(
+                                type := "EXPR_FUNC",
+                                nams := [ ],
+                                narg := 0,
+                                nloc := 0,
+                                variadic := false,
+                                stats := rec(
+                                    type := "STAT_SEQ_STAT",
+                                    statements := [
+                                        rec(
+                                            type := "STAT_RETURN_OBJ",
+                                            obj := data_type_tree,
+                                        ),
+                                    ],
+                                ),
+                            ),
+                        ],
+                    );
+                    
+                fi;
+                
+            fi;
             
             return tree;
             
