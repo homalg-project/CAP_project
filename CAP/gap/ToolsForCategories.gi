@@ -1358,7 +1358,62 @@ InstallGlobalFunction( CapJitDataTypeOfTwoCellOfCategory, function ( cat )
 end );
 
 ##
-InstallGlobalFunction( CapJitTypedExpression, ReturnFirst );
+InstallGlobalFunction( CapJitTypedExpression, function ( value, data_type_getter )
+    
+    # We try to execute data_type_getter to increase the code coverage.
+    # This approach has some downsides:
+    # * Previously, the implementation of `CapJitTypedExpression` was simply `ReturnFirst`, which should be faster.
+    # * To avoid runtime overhead, we only execute the code below for assertion level >= 2 (which is used in the tests).
+    #   However, this leads to a possibly unexpected difference when executing code in tests and by hand.
+    # * We can only execute data_type_getter if it has 0 arguments.
+    
+    Assert( 2, (function ( )
+      local data_type;
+        
+        if NumberArgumentsFunction( data_type_getter ) = 0 then
+            
+            data_type := data_type_getter( );
+            
+        elif NumberArgumentsFunction( data_type_getter ) = 1 then
+            
+            # we do not have access to the category and hence cannot check anything
+            return true;
+            
+        else
+            
+            # COVERAGE_IGNORE_NEXT_LINE
+            Error( "the data type getter of CapJitTypedExpression must be a function accepting either no argument or a single argument" );
+            
+        fi;
+        
+        if IsFilter( data_type ) then
+            
+            data_type := rec( filter := data_type );
+            
+        fi;
+        
+        if not IsRecord( data_type ) or not IsBound( data_type.filter ) then
+            
+            # COVERAGE_IGNORE_NEXT_LINE
+            Error( "CapJitTypedExpression has returned ", data_type, " which is not a valid data type" );
+            
+        fi;
+        
+        # simple plausibility check
+        if not data_type.filter( value ) then
+            
+            # COVERAGE_IGNORE_NEXT_LINE
+            Error( "<value> does not lie in <data_type.filter>" );
+            
+        fi;
+        
+        return true;
+        
+    end)( ) );
+    
+    return value;
+    
+end );
 
 ##
 InstallGlobalFunction( CapFixpoint, function ( predicate, func, initial_value )
