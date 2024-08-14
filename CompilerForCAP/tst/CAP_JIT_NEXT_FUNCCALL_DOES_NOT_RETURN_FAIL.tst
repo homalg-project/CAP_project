@@ -14,7 +14,6 @@ gap> MyKernelLift := function( cat, mor, test_mor )
 >     return LiftOrFail( cat, test_mor, KernelEmbedding( cat, mor ) ); end;;
 
 #
-gap> V := VectorSpaceObject( 2, Q );;
 gap> compiled_func := CapJitCompiledFunction( MyKernelLift, rows );;
 WARNING: Compiling CAP operation LiftOrFail with return_type morphism_or_fail.\
  Operations returning fail usually do not fulfill the requirements that all br\

@@ -194,7 +194,7 @@ InstallMethod( Component,
     
     multiplicity := Multiplicity( semisimple_category_object, irr );
     
-    return VectorSpaceObject( multiplicity, UnderlyingFieldForHomalg( semisimple_category_object ) );
+    return MatrixCategoryObject( UnderlyingCategoryForSemisimpleCategory( CapCategory( semisimple_category_object ) ), multiplicity );
     
 end );
 

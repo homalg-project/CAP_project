@@ -16,7 +16,13 @@ InstallMethod( VectorSpaceObject,
                 
   function( dimension, homalg_field )
     
-    return MatrixCategoryObject( MatrixCategory( homalg_field ), dimension );
+    if not IsBound( homalg_field!.MatrixCategory ) then
+        
+        homalg_field!.MatrixCategory := MatrixCategory( homalg_field );
+        
+    fi;
+    
+    return MatrixCategoryObject( homalg_field!.MatrixCategory, dimension );
     
 end );
 

@@ -23,8 +23,8 @@ DeclareCategory( "IsMatrixCategory",
 #! $m \times n$ matrices.
 #! @Returns a category
 #! @Arguments F
-DeclareAttribute( "MatrixCategory",
-                  IsFieldForHomalg );
+DeclareOperation( "MatrixCategory",
+                  [ IsFieldForHomalg ] );
 
 # provide a constructor which is not an attribute
 DeclareGlobalFunction( "MATRIX_CATEGORY" );

@@ -194,18 +194,18 @@ InstallMethod( RepresentationCategoryMorphism,
                [ IsSemisimpleCategoryObject, IsList, IsSemisimpleCategoryObject ],
                
   function( source, morphism_list, range )
-    local field, new_morphism_list, elem, vector_space_morphism;
+    local underlying_category, new_morphism_list, elem, vector_space_morphism;
     
-    field := UnderlyingFieldForHomalgForSemisimpleCategory( CapCategory( source ) );
+    underlying_category := UnderlyingCategoryForSemisimpleCategory( CapCategory( source ) );
     
     new_morphism_list := [ ];
     
     for elem in morphism_list do
         
         vector_space_morphism := 
-          VectorSpaceMorphism( VectorSpaceObject( NrRows( elem[1] ), field ),
+          VectorSpaceMorphism( MatrixCategoryObject( underlying_category, NrRows( elem[1] ) ),
                                elem[1], 
-                               VectorSpaceObject( NrColumns( elem[1] ), field ) );
+                               MatrixCategoryObject( underlying_category, NrColumns( elem[1] ) ) );
         
         Add( new_morphism_list, [ vector_space_morphism, GIrreducibleObject( elem[2] ) ] );
         
@@ -394,18 +394,18 @@ InstallMethod( RepresentationCategoryZGradedMorphism,
                [ IsSemisimpleCategoryObject, IsList, IsSemisimpleCategoryObject ],
                
   function( source, morphism_list, range )
-    local field, new_morphism_list, elem, vector_space_morphism;
+    local underlying_category, new_morphism_list, elem, vector_space_morphism;
     
-    field := UnderlyingFieldForHomalgForSemisimpleCategory( CapCategory( source ) );
+    underlying_category := UnderlyingCategoryForSemisimpleCategory( CapCategory( source ) );
     
     new_morphism_list := [ ];
     
     for elem in morphism_list do
         
         vector_space_morphism :=
-          VectorSpaceMorphism( VectorSpaceObject( NrRows( elem[1] ), field ),
+          VectorSpaceMorphism( MatrixCategoryObject( underlying_category, NrRows( elem[1] ) ),
                                elem[1], 
-                               VectorSpaceObject( NrColumns( elem[1] ), field ) );
+                               MatrixCategoryObject( underlying_category, NrColumns( elem[1] ) ) );
         
         Add( new_morphism_list, [ vector_space_morphism, GZGradedIrreducibleObject( elem[2], elem[3] ) ] );
         
