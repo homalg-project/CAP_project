@@ -3,8 +3,8 @@
   [1XIndex[101X
   
   [2XDimension[102X, for IsVectorSpaceObject 1.2-4 
-  [2XIsVectorSpaceMorphism[102X, for IsCapCategoryMorphism and IsCellOfSkeletalCategory 1.3-1 
-  [2XIsVectorSpaceObject[102X, for IsCapCategoryObject and IsCellOfSkeletalCategory 1.3-2 
+  [2XIsVectorSpaceMorphism[102X, for IsCapCategoryMorphism 1.3-1 
+  [2XIsVectorSpaceObject[102X, for IsCapCategoryObject 1.3-2 
   [2XMatrixCategory[102X, for IsFieldForHomalg 1.1-1 
   [2XMatrixCategory_as_CategoryOfRows[102X, for IsFieldForHomalg 1.1-5 
   [2XMatrixCategoryObject[102X, for IsMatrixCategory, IsInt 1.1-4 
