@@ -117,9 +117,6 @@ DeclareCategory( "IsCapCategoryMorphism",
 DeclareCategory( "IsCapCategoryTwoCell",
                  IsCapCategoryCell );
 
-DeclareCategory( "IsCellOfSkeletalCategory",
-                 IsCapCategoryCell );
-
 ###################################
 ##
 #! @Section Categorical properties
