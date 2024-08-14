@@ -5,15 +5,16 @@
 #! @Example
 Q := HomalgFieldOfRationals();
 #! Q
-V := VectorSpaceObject( 2, Q );
+vec := MatrixCategory( Q );;
+V := MatrixCategoryObject( vec, 2 );
 #! <A vector space object over Q of dimension 2>
-W := VectorSpaceObject( 3, Q );
+W := MatrixCategoryObject( vec, 3 );
 #! <A vector space object over Q of dimension 3>
 alpha := VectorSpaceMorphism( V, [ [ 1, 1, 1 ], [ -1, -1, -1 ] ], W );
 #! <A morphism in Category of matrices over Q>
 k := KernelObject( alpha );
 #! <A vector space object over Q of dimension 1>
-T := VectorSpaceObject( 2, Q );
+T := MatrixCategoryObject( vec, 2 );
 #! <A vector space object over Q of dimension 2>
 tau := VectorSpaceMorphism( T, [ [ 2, 2 ], [ 2, 2 ] ], V );
 #! <A morphism in Category of matrices over Q>
@@ -28,15 +29,16 @@ KernelEmbedding( alpha );
 #! @Example
 Q := HomalgFieldOfRationals();
 #! Q
-V := VectorSpaceObject( 2, Q );
+vec := MatrixCategory( Q );;
+V := MatrixCategoryObject( vec, 2 );
 #! <A vector space object over Q of dimension 2>
-W := VectorSpaceObject( 3, Q );
+W := MatrixCategoryObject( vec, 3 );
 #! <A vector space object over Q of dimension 3>
 alpha := VectorSpaceMorphism( V, [ [ 1, 1, 1 ], [ -1, -1, -1 ] ], W );
 #! <A morphism in Category of matrices over Q>
 k := KernelObject( alpha );
 #! <A vector space object over Q of dimension 1>
-T := VectorSpaceObject( 2, Q );
+T := MatrixCategoryObject( vec, 2 );
 #! <A vector space object over Q of dimension 2>
 tau := VectorSpaceMorphism( T, [ [ 2, 2 ], [ 2, 2 ] ], V );
 #! <A morphism in Category of matrices over Q>
@@ -49,9 +51,10 @@ HasKernelEmbedding( alpha );
 #! @Example
 Q := HomalgFieldOfRationals();
 #! Q
-V := VectorSpaceObject( 2, Q );
+vec := MatrixCategory( Q );;
+V := MatrixCategoryObject( vec, 2 );
 #! <A vector space object over Q of dimension 2>
-W := VectorSpaceObject( 3, Q );
+W := MatrixCategoryObject( vec, 3 );
 #! <A vector space object over Q of dimension 3>
 alpha := VectorSpaceMorphism( V, [ [ 1, 1, 1 ], [ -1, -1, -1 ] ], W );
 #! <A morphism in Category of matrices over Q>
@@ -61,9 +64,9 @@ k_emb := KernelEmbedding( alpha );
 #! <A split monomorphism in Category of matrices over Q>
 IsEqualForObjects( Source( k_emb ), k );
 #! true
-V := VectorSpaceObject( 2, Q );
+V := MatrixCategoryObject( vec, 2 );
 #! <A vector space object over Q of dimension 2>
-W := VectorSpaceObject( 3, Q );
+W := MatrixCategoryObject( vec, 3 );
 #! <A vector space object over Q of dimension 3>
 beta := VectorSpaceMorphism( V, [ [ 1, 1, 1 ], [ -1, -1, -1 ] ], W );
 #! <A morphism in Category of matrices over Q>

@@ -5,11 +5,12 @@
 #! @Example
 Q := HomalgFieldOfRationals();
 #! Q
-A := VectorSpaceObject( 1, Q );
+vec := MatrixCategory( Q );;
+A := MatrixCategoryObject( vec, 1 );
 #! <A vector space object over Q of dimension 1>
-B := VectorSpaceObject( 2, Q );
+B := MatrixCategoryObject( vec, 2 );
 #! <A vector space object over Q of dimension 2>
-C := VectorSpaceObject( 3, Q );
+C := MatrixCategoryObject( vec, 3 );
 #! <A vector space object over Q of dimension 3>
 AtoC := VectorSpaceMorphism( A, [ [ 1, 2, 0 ] ], C );
 #! <A morphism in Category of matrices over Q>
