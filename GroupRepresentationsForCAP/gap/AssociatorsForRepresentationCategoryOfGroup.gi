@@ -1039,23 +1039,6 @@ InstallMethod( CreateEndomorphismFromString,
 end );
 
 ##
-InstallMethod( AsVectorSpaceMorphism,
-               [ IsHomalgMatrix ],
-               
-  function( homalg_matrix )
-    local field;
-    
-    field := HomalgRing( homalg_matrix );
-    
-    return VectorSpaceMorphism(
-             VectorSpaceObject( NrRows( homalg_matrix ), field ),
-             homalg_matrix,
-             VectorSpaceObject( NrColumns( homalg_matrix ), field )
-           );
-    
-end );
-
-##
 InstallMethod( DecompositionFactorOfMultiplicationWithIdentity,
                [ IsVectorSpaceMorphism, IsInt ],
                
@@ -1070,7 +1053,7 @@ InstallMethod( DecompositionFactorOfMultiplicationWithIdentity,
     
     homalg_matrix := CertainRows( CertainColumns( homalg_matrix, entry_list ), entry_list );
     
-    return AsVectorSpaceMorphism( homalg_matrix );
+    return homalg_matrix / CapCategory( morphism );
     
 end );
 
