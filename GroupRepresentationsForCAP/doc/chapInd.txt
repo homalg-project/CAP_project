@@ -43,8 +43,8 @@
   [2XInitializeGroupDataDixon[102X, for IsGroup 1.4-3 
       for IsGroup, IsBool 1.4-4 
   [2XInternalHomToTensorProductAdjunctMorphismTemp[102X, for IsVectorSpaceObject, IsVectorSpaceObject, IsVectorSpaceMorphism 1.5-9 
-  [2XIsSemisimpleCategoryMorphism[102X, for IsCapCategoryMorphism and IsCellOfSkeletalCategory 2.5-1 
-  [2XIsSemisimpleCategoryObject[102X, for IsCapCategoryObject and IsCellOfSkeletalCategory 2.5-2 
+  [2XIsSemisimpleCategoryMorphism[102X, for IsCapCategoryMorphism 2.5-1 
+  [2XIsSemisimpleCategoryObject[102X, for IsCapCategoryObject 2.5-2 
   [2XIsYieldingIdentities[102X, for IsGIrreducibleObject 3.4-1 
       for IsGZGradedIrreducibleObject 3.4-2 
   [2XLaTeXStringOfSemisimpleCategoryObjectList[102X 5.1-1 
