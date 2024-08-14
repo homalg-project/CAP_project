@@ -25,7 +25,7 @@ InstallGlobalFunction( MATRIX_CATEGORY,
     
     category := CreateCapCategoryWithDataTypes(
         Concatenation( "Category of matrices over ", RingName( homalg_field ) ), IsMatrixCategory,
-        IsVectorSpaceObject and HasAsInteger and HasIsProjective and IsProjective, IsVectorSpaceMorphism and HasAsHomalgMatrix, IsCapCategoryTwoCell,
+        IsVectorSpaceObject, IsVectorSpaceMorphism, IsCapCategoryTwoCell,
         IsInt, rec( filter := IsHomalgMatrix, ring := homalg_field ), fail
     );
     

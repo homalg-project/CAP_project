@@ -8,7 +8,7 @@ LoadPackage( "LinearAlgebraForCAP" );;
 Q := HomalgFieldOfRationals();;
 a := VectorSpaceObject( 3, Q );
 #! <A vector space object over Q of dimension 3>
-HasIsProjective( a ) and IsProjective( a );
+IsProjective( a );
 #! true
 vec := MatrixCategory( Q );;
 ap := 3/vec;;
