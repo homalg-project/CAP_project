@@ -17,7 +17,7 @@
 #! of matrices of a field $F$.
 #! @Arguments object
 DeclareCategory( "IsVectorSpaceObject",
-                 IsCapCategoryObject and IsCellOfSkeletalCategory );
+                 IsCapCategoryObject );
 
 ####################################
 ##
