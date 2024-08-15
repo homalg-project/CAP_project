@@ -61,11 +61,11 @@
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X80F4D09E85E3B38A">3.5-1 Multiplicity</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8562E528821E49B7"><code>3.5-2 \*</code></a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8609F7A3836655E8">3.5-3 AssociatorFromData</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7EE642C28796D03B">3.5-3 AssociatorFromData</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C70D1017C2BCDD0">3.5-4 ExteriorPower</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7A666EA4861B3398">3.5-5 Multiplicity</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7E7DC38A7F3D0AC9"><code>3.5-6 \*</code></a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X786B54D77A014F44">3.5-7 AssociatorFromData</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8084E1B687FF60E1">3.5-7 AssociatorFromData</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X85038A3E7D69DBD7">3.5-8 ExteriorPower</a></span>
 </div></div>
 </div>
@@ -330,11 +330,11 @@
 
 <p>The arguments are 2 <span class="Math">G</span>-irreducible objects <span class="Math">i,j</span> with underlying irreducible characters <span class="Math">a,b</span>, respectively. The output is a list L = <span class="Math">[ [ n_1, k_1 ], \dots, [ n_l, k_l ] ]</span> consisting of positive integers <span class="Math">n_c</span> and <span class="Math">G</span>-irreducible objects <span class="Math">k_c</span> representing the character decomposition into irreducibles of the product <span class="Math">a\cdot b</span>.</p>
 
-<p><a id="X8609F7A3836655E8" name="X8609F7A3836655E8"></a></p>
+<p><a id="X7EE642C28796D03B" name="X7EE642C28796D03B"></a></p>
 
 <h5>3.5-3 AssociatorFromData</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatorFromData</code>( <var class="Arg">i</var>, <var class="Arg">j</var>, <var class="Arg">k</var>, <var class="Arg">A</var>, <var class="Arg">F</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatorFromData</code>( <var class="Arg">i</var>, <var class="Arg">j</var>, <var class="Arg">k</var>, <var class="Arg">A</var>, <var class="Arg">vec</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a list</p>
 
 <p>The arguments are</p>
@@ -347,7 +347,7 @@
 <li><p>a list <span class="Math">A</span> containing the associator on all irreducibles as strings, e.g., the list constructed by the methods provided in this package,</p>
 
 </li>
-<li><p>a homalg field <span class="Math">F</span>,</p>
+<li><p>a matrix category <code class="code">vec</code> of a homalg field <span class="Math">F</span>,</p>
 
 </li>
 <li><p>a list L = <span class="Math">[ [ n_1, h_1 ], \dots, [ n_l, h_l ] ]</span> consisting of positive integers <span class="Math">n_c</span> and <span class="Math">G</span>-irreducible objects <span class="Math">h_c</span> representing the character decomposition into irreducibles of the product of <span class="Math">i,j,k</span>.</p>
@@ -385,11 +385,11 @@
 
 <p>The arguments are 2 <span class="Math">G-\mathbb{Z}</span>-irreducible objects <span class="Math">i,j</span> with underlying irreducible characters <span class="Math">a,b</span>, respectively. The output is a list L = <span class="Math">[ [ n_1, k_1 ], \dots, [ n_l, k_l ] ]</span> consisting of positive integers <span class="Math">n_c</span> and <span class="Math">G</span>-irreducible objects <span class="Math">k_c</span> representing the character decomposition into irreducibles of the product <span class="Math">a\cdot b</span>. The underlying degrees of <span class="Math">k_c</span> are given by the sum of the underlying degrees of <span class="Math">i</span> and <span class="Math">j</span>.</p>
 
-<p><a id="X786B54D77A014F44" name="X786B54D77A014F44"></a></p>
+<p><a id="X8084E1B687FF60E1" name="X8084E1B687FF60E1"></a></p>
 
 <h5>3.5-7 AssociatorFromData</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatorFromData</code>( <var class="Arg">i</var>, <var class="Arg">j</var>, <var class="Arg">k</var>, <var class="Arg">A</var>, <var class="Arg">F</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatorFromData</code>( <var class="Arg">i</var>, <var class="Arg">j</var>, <var class="Arg">k</var>, <var class="Arg">A</var>, <var class="Arg">vec</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a list</p>
 
 <p>The arguments are</p>
@@ -402,7 +402,7 @@
 <li><p>a list <span class="Math">A</span> containing the associator on all irreducibles (of <span class="Math">G</span>-irreducible objects) as strings, e.g., the list constructed by the methods provided in this package,</p>
 
 </li>
-<li><p>a homalg field <span class="Math">F</span>,</p>
+<li><p>a matrix category <code class="code">vec</code> of a homalg field <span class="Math">F</span>,</p>
 
 </li>
 <li><p>a list L = <span class="Math">[ [ n_1, h_1 ], \dots, [ n_l, h_l ] ]</span> consisting of positive integers <span class="Math">n_c</span> and <span class="Math">G-\mathbb{Z}</span>-irreducible objects <span class="Math">h_c</span> representing the character decomposition into irreducibles of the product of <span class="Math">i,j,k</span>.</p>

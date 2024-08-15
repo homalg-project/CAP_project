@@ -233,7 +233,7 @@
   
   [1X3.5-3 AssociatorFromData[101X
   
-  [33X[1;0Y[29X[2XAssociatorFromData[102X( [3Xi[103X, [3Xj[103X, [3Xk[103X, [3XA[103X, [3XF[103X, [3XL[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAssociatorFromData[102X( [3Xi[103X, [3Xj[103X, [3Xk[103X, [3XA[103X, [3Xvec[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
   
   [33X[0;0YThe arguments are[133X
@@ -243,7 +243,7 @@
   [30X    [33X[0;6Ya  list  [23XA[123X  containing  the associator on all irreducibles as strings,
         e.g., the list constructed by the methods provided in this package,[133X
   
-  [30X    [33X[0;6Ya homalg field [23XF[123X,[133X
+  [30X    [33X[0;6Ya matrix category [10Xvec[110X of a homalg field [23XF[123X,[133X
   
   [30X    [33X[0;6Ya  list  L  =  [23X[  [  n_1,  h_1  ], \dots, [ n_l, h_l ] ][123X consisting of
         positive  integers  [23Xn_c[123X and [23XG[123X-irreducible objects [23Xh_c[123X representing the
@@ -295,7 +295,7 @@
   
   [1X3.5-7 AssociatorFromData[101X
   
-  [33X[1;0Y[29X[2XAssociatorFromData[102X( [3Xi[103X, [3Xj[103X, [3Xk[103X, [3XA[103X, [3XF[103X, [3XL[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAssociatorFromData[102X( [3Xi[103X, [3Xj[103X, [3Xk[103X, [3XA[103X, [3Xvec[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
   
   [33X[0;0YThe arguments are[133X
@@ -306,7 +306,7 @@
         [23XG[123X-irreducible  objects)  as strings, e.g., the list constructed by the
         methods provided in this package,[133X
   
-  [30X    [33X[0;6Ya homalg field [23XF[123X,[133X
+  [30X    [33X[0;6Ya matrix category [10Xvec[110X of a homalg field [23XF[123X,[133X
   
   [30X    [33X[0;6Ya  list  L  =  [23X[  [  n_1,  h_1  ], \dots, [ n_l, h_l ] ][123X consisting of
         positive   integers   [23Xn_c[123X  and  [23XG-\mathbb{Z}[123X-irreducible  objects  [23Xh_c[123X

@@ -9,8 +9,8 @@
   [2XAssociatorDataFromSkeletalFunctorTensorData[102X, for IsInt, IsInt, IsInt, IsList 1.4-8 
   [2XAssociatorForSufficientlyManyTriples[102X 1.4-9 
       for IsList, IsBool 1.4-10 
-  [2XAssociatorFromData[102X, for IsGIrreducibleObject, IsGIrreducibleObject, IsGIrreducibleObject, IsList, IsFieldForHomalg, IsList 3.5-3 
-      for IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsList, IsFieldForHomalg, IsList 3.5-7 
+  [2XAssociatorFromData[102X, for IsGIrreducibleObject, IsGIrreducibleObject, IsGIrreducibleObject, IsList, IsMatrixCategory, IsList 3.5-3 
+      for IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsList, IsMatrixCategory, IsList 3.5-7 
   [2XComponent[102X, for IsSemisimpleCategoryMorphism, IsObject 2.4-1 
       for IsSemisimpleCategoryObject, IsObject 2.4-4 
   [2XComponentInclusionMorphism[102X, for IsSemisimpleCategoryObject, IsObject 2.2-5 
