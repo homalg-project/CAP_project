@@ -132,14 +132,6 @@ DeclareOperation( "HomalgMatrixAsString", [ IsHomalgMatrix ] );
 #! @Arguments l
 DeclareOperation( "DataFromSkeletalFunctorTensorDataAsStringList", [ IsList ] );
 
-#! @Description
-#! The argument is a homalg matrix $M$.
-#! The output is a vector space morphism whose underlying matrix is
-#! given by $M$.
-#! @Returns a vector space morphism
-#! @Arguments M
-DeclareAttribute( "AsVectorSpaceMorphism", IsHomalgMatrix );
-
 ## Tensor decomposition: A \otimes I -> A #TODO: or was it I \otimes A -> A?
 DeclareOperation( "DecompositionFactorOfMultiplicationWithIdentity",
                   [ IsVectorSpaceMorphism, IsInt ] );

@@ -17,6 +17,8 @@ InstallMethod( AsVectorSpaceMorphism,
   function( homalg_matrix )
     local field;
     
+    Print( "WARNING: AsVectorSpaceMorphism is deprecated and will not be supported after 2025.08.14. Use `<homalg_matrix> / <matrix_category>` instead.\n" );
+    
     field := HomalgRing( homalg_matrix );
     
     return VectorSpaceMorphism(
