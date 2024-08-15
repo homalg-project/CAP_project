@@ -3,8 +3,7 @@
 #! @Section Kernel
 
 #! @Example
-Q := HomalgFieldOfRationals();
-#! Q
+Q := HomalgFieldOfRationals();;
 vec := MatrixCategory( Q );;
 V := MatrixCategoryObject( vec, 2 );
 #! <A vector space object over Q of dimension 2>
@@ -27,8 +26,7 @@ KernelEmbedding( alpha );
 #! @EndExample
 
 #! @Example
-Q := HomalgFieldOfRationals();
-#! Q
+Q := HomalgFieldOfRationals();;
 vec := MatrixCategory( Q );;
 V := MatrixCategoryObject( vec, 2 );
 #! <A vector space object over Q of dimension 2>
@@ -49,8 +47,7 @@ HasKernelEmbedding( alpha );
 #! @EndExample
 
 #! @Example
-Q := HomalgFieldOfRationals();
-#! Q
+Q := HomalgFieldOfRationals();;
 vec := MatrixCategory( Q );;
 V := MatrixCategoryObject( vec, 2 );
 #! <A vector space object over Q of dimension 2>

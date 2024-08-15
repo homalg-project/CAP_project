@@ -3,8 +3,7 @@
 #! @Section FiberProduct
 
 #! @Example
-Q := HomalgFieldOfRationals();
-#! Q
+Q := HomalgFieldOfRationals();;
 vec := MatrixCategory( Q );;
 A := MatrixCategoryObject( vec, 1 );
 #! <A vector space object over Q of dimension 1>
