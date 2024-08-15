@@ -86,6 +86,7 @@ end );
 ##
 ####################################
 
+##
 InstallMethod( String,
               [ IsVectorSpaceObject ],
               
@@ -96,6 +97,7 @@ InstallMethod( String,
                           " of dimension ", String( AsInteger( vector_space_object ) ) );
     
 end );
+
 ##
 InstallMethod( ViewString,
                [ IsVectorSpaceObject ],
