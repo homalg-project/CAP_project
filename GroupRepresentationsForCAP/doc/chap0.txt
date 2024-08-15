@@ -6,10 +6,10 @@
               [1X Skeletal category of group representations for CAP [101X
   
   
-                                   2024.08-01
+                                   2024.08-02
   
   
-                                 14 August 2024
+                                 15 August 2024
   
   
                                 Sebastian Posur
@@ -70,8 +70,7 @@
       1.5-9 InternalHomToTensorProductAdjunctMorphismTemp
       1.5-10 HomalgMatrixAsString
       1.5-11 DataFromSkeletalFunctorTensorDataAsStringList
-      1.5-12 AsVectorSpaceMorphism
-      1.5-13 CreateEndomorphismFromString
+      1.5-12 CreateEndomorphismFromString
   2 [33X[0;0YSemisimple Categories[133X
     2.1 [33X[0;0YIntroduction[133X
     2.2 [33X[0;0YConstructors[133X

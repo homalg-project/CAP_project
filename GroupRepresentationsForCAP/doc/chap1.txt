@@ -363,15 +363,7 @@
   allowed.  The  output is a list where each non-empty entry of [23Xl[123X is converted
   to a string using HomalgMatrixAsString.[133X
   
-  [1X1.5-12 AsVectorSpaceMorphism[101X
-  
-  [33X[1;0Y[29X[2XAsVectorSpaceMorphism[102X( [3XM[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya vector space morphism[133X
-  
-  [33X[0;0YThe  argument  is  a  homalg matrix [23XM[123X. The output is a vector space morphism
-  whose underlying matrix is given by [23XM[123X.[133X
-  
-  [1X1.5-13 CreateEndomorphismFromString[101X
+  [1X1.5-12 CreateEndomorphismFromString[101X
   
   [33X[1;0Y[29X[2XCreateEndomorphismFromString[102X( [3XV[103X, [3Xs[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya vector space morphism[133X

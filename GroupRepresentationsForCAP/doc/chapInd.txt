@@ -11,7 +11,6 @@
       for IsList, IsBool 1.4-10 
   [2XAssociatorFromData[102X, for IsGIrreducibleObject, IsGIrreducibleObject, IsGIrreducibleObject, IsList, IsFieldForHomalg, IsList 3.5-3 
       for IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsList, IsFieldForHomalg, IsList 3.5-7 
-  [2XAsVectorSpaceMorphism[102X, for IsHomalgMatrix 1.5-12 
   [2XComponent[102X, for IsSemisimpleCategoryMorphism, IsObject 2.4-1 
       for IsSemisimpleCategoryObject, IsObject 2.4-4 
   [2XComponentInclusionMorphism[102X, for IsSemisimpleCategoryObject, IsObject 2.2-5 
@@ -19,7 +18,7 @@
   [2XComputeAssociator[102X, for IsGroup, IsBool 1.4-11 
       for IsGroup, IsBool, IsBool 1.4-12 
       for IsGroup, IsBool, IsBool, IsBool 1.4-13 
-  [2XCreateEndomorphismFromString[102X, for IsVectorSpaceObject, IsString 1.5-13 
+  [2XCreateEndomorphismFromString[102X, for IsVectorSpaceObject, IsString 1.5-12 
   [2XDataFromSkeletalFunctorTensorDataAsStringList[102X, for IsList 1.5-11 
   [2XDefaultFieldForListOfRepresentations[102X, for IsList 1.5-7 
   [2XDefinedOverCyclotomicField[102X, for IsInt, IsGroupHomomorphism 1.5-2 
