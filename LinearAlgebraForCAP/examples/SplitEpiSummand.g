@@ -6,8 +6,9 @@ LoadPackage( "LinearAlgebraForCAP" );;
 
 #! @Example
 Q := HomalgFieldOfRationals();;
-a := VectorSpaceObject( 3, Q );;
-b := VectorSpaceObject( 4, Q );;
+Qmat := MatrixCategory( Q );;
+a := MatrixCategoryObject( Qmat, 3 );;
+b := MatrixCategoryObject( Qmat, 4 );;
 homalg_matrix := HomalgMatrix( [ [ 1, 0, 0, 0 ],
                                   [ 0, 1, 0, -1 ],
                                   [ -1, 0, 2, 1 ] ], 3, 4, Q );;

@@ -354,7 +354,7 @@ end );
 
 InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
   function( category, tensor_unit, associator_data, is_complete_data )
-    local field, membership_function, associator_on_irreducibles, braiding_on_irreducibles,
+    local underlying_category, field, membership_function, associator_on_irreducibles, braiding_on_irreducibles,
           distributivity_expanding_for_triple, distributivity_factoring_for_triple,
           right_distributivity_expanding_permutation, left_distributivity_expanding_permutation,
           distributivity_function, associator_available, is_magma_ring;
@@ -369,7 +369,9 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
     fi;
     
-    field := UnderlyingCategoryForSemisimpleCategory( category )!.field_for_matrix_category;
+    underlying_category := UnderlyingCategoryForSemisimpleCategory( category );
+    
+    field := underlying_category!.field_for_matrix_category;
     
     is_magma_ring := IsHomalgExternalRingInMAGMARep( field );
     
@@ -555,7 +557,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         object_list := SemisimpleCategoryObjectList( object );
         
         morphism_list := 
-          List( object_list, elem -> [ IdentityMorphism( VectorSpaceObject( elem[1], field ) ), elem[2] ] );
+          List( object_list, elem -> [ IdentityMorphism( MatrixCategoryObject( underlying_category, elem[1] ) ), elem[2] ] );
         
         return SemisimpleCategoryMorphism( object, morphism_list, object );
         
@@ -714,7 +716,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                 
             fi;
             
-            Add( morphism_list, [ ZeroMorphism( VectorSpaceObject( dim_source, field ), VectorSpaceObject( dim_range, field ) ), irr ] );
+            Add( morphism_list, [ ZeroMorphism( MatrixCategoryObject( underlying_category, dim_source ), MatrixCategoryObject( underlying_category, dim_range ) ), irr ] );
             
         od;
         
@@ -747,7 +749,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         sink_object_list := SemisimpleCategoryObjectList( sink );
         
         result_morphism_list := List( sink_object_list, elem ->
-          [ UniversalMorphismIntoZeroObject( VectorSpaceObject( elem[1], field ) ), elem[2] ] );
+          [ UniversalMorphismIntoZeroObject( MatrixCategoryObject( underlying_category, elem[1] ) ), elem[2] ] );
         
         return SemisimpleCategoryMorphism( sink, result_morphism_list, zero_object )  ;
         
@@ -761,7 +763,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         source_object_list := SemisimpleCategoryObjectList( source );
         
         result_morphism_list := List( source_object_list, elem ->
-          [ UniversalMorphismFromZeroObject( VectorSpaceObject( elem[1], field ) ), elem[2] ] );
+          [ UniversalMorphismFromZeroObject( MatrixCategoryObject( underlying_category, elem[1] ) ), elem[2] ] );
         
         return SemisimpleCategoryMorphism( zero_object, result_morphism_list, source )  ;
         
@@ -1146,7 +1148,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                     
                     if multiplicity > 0 then
                         
-                        object := VectorSpaceObject( multiplicity, field );
+                        object := MatrixCategoryObject( underlying_category, multiplicity );
                         
                         Add( j_list, TensorProductOnMorphisms( tensor_products[i][j], IdentityMorphism( object ) ) );
                         
@@ -1456,7 +1458,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
       
       if is_complete_data then
           
-          morphism_list := AssociatorFromData( irr_1, irr_2, irr_3, associator_data, field, SemisimpleCategoryObjectList( object ) );
+          morphism_list := AssociatorFromData( irr_1, irr_2, irr_3, associator_data, underlying_category, SemisimpleCategoryObjectList( object ) );
           
           result_morphism := SemisimpleCategoryMorphism( object, morphism_list, object );
           
@@ -1475,7 +1477,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
               if ( irr_1_nr <= irr_2_nr and irr_2_nr <= irr_3_nr ) then
                   #(AAB), (ABB): can be loaded directly
                   
-                  morphism_list := AssociatorFromData( irr_1, irr_2, irr_3, associator_data, field, SemisimpleCategoryObjectList( object ) );
+                  morphism_list := AssociatorFromData( irr_1, irr_2, irr_3, associator_data, underlying_category, SemisimpleCategoryObjectList( object ) );
                   
                   result_morphism := SemisimpleCategoryMorphism( object, morphism_list, object );
                   
@@ -1536,7 +1538,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
               if ( irr_1_nr <= irr_2_nr ) and ( irr_1_nr <= irr_3_nr ) then
                   #(ABC), (ACB): can be loaded directly
                   
-                  morphism_list := AssociatorFromData( irr_1, irr_2, irr_3, associator_data, field, SemisimpleCategoryObjectList( object ) );
+                  morphism_list := AssociatorFromData( irr_1, irr_2, irr_3, associator_data, underlying_category, SemisimpleCategoryObjectList( object ) );
                   
                   result_morphism := SemisimpleCategoryMorphism( object, morphism_list, object );
                   
@@ -2134,7 +2136,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                 
                 dim := Multiplicity( new_source, chi );
                 
-                vector_space_object := VectorSpaceObject( dim, field );
+                vector_space_object := MatrixCategoryObject( underlying_category, dim );
                 
                 homalg_matrix := CertainRows(
                   HomalgIdentityMatrix( dim, field ),
@@ -2196,7 +2198,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
                 
                 dim := Multiplicity( new_source, chi );
                 
-                vector_space_object := VectorSpaceObject( dim, field );
+                vector_space_object := MatrixCategoryObject( underlying_category, dim );
                 
                 homalg_matrix := CertainRows(
                   HomalgIdentityMatrix( dim, field ),
@@ -2261,7 +2263,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
           
           homalg_mat := HomalgDiagonalMatrix( diagonal, field );
           
-          vector_space := VectorSpaceObject( elem[1], field );
+          vector_space := MatrixCategoryObject( underlying_category, elem[1] );
           
           Add( morphism_list, [ VectorSpaceMorphism( vector_space, homalg_mat, vector_space ), elem[2] ] );
           
@@ -2485,7 +2487,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
         dim := Multiplicity( tensor_object, trivial_chi );
         
-        vector_space := VectorSpaceObject( dim, field );
+        vector_space := MatrixCategoryObject( underlying_category, dim );
         
         vector_space_morphism :=
           VectorSpaceMorphism( TensorUnit( UnderlyingCategoryForSemisimpleCategory( CapCategory( unit ) ) ),
@@ -2576,7 +2578,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
         dim := Multiplicity( tensor_object, trivial_chi );
         
-        vector_space := VectorSpaceObject( dim, field );
+        vector_space := MatrixCategoryObject( underlying_category, dim );
         
         vector_space_morphism :=
           VectorSpaceMorphism( vector_space,

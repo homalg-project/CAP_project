@@ -16,10 +16,10 @@ gap> mc := MatrixCategory( Q );;
 
 # Tensor objects and internal (co)homs
 
-gap> a := VectorSpaceObject( 2, Q );;
-gap> b := VectorSpaceObject( 3, Q );;
-gap> c := VectorSpaceObject( 6, Q );;
-gap> d := VectorSpaceObject( 4, Q );;
+gap> a := MatrixCategoryObject( mc, 2 );;
+gap> b := MatrixCategoryObject( mc, 3 );;
+gap> c := MatrixCategoryObject( mc, 6 );;
+gap> d := MatrixCategoryObject( mc, 4 );;
 
 gap> z := ZeroObject( mc );;
 gap> u := TensorUnit( mc );;

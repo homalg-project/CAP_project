@@ -167,7 +167,7 @@ DeclareOperation( "TensorProductOfIrreduciblesOp", [ IsList, IsGZGradedIrreducib
 #! - three $G-\mathbb{Z}$-irreducible objects $i,j,k$,
 #! - a list $A$ containing the associator on all irreducibles (of $G$-irreducible objects) as strings,
 #!   e.g., the list constructed by the methods provided in this package,
-#! - a homalg field $F$,
+#! - a matrix category `vec` of a homalg field $F$,
 #! - a list L = $[ [ n_1, h_1 ], \dots, [ n_l, h_l ] ]$
 #!   consisting of positive integers $n_c$ and $G-\mathbb{Z}$-irreducible objects $h_c$
 #!   representing the character decomposition into irreducibles of the product of $i,j,k$.
@@ -176,9 +176,9 @@ DeclareOperation( "TensorProductOfIrreduciblesOp", [ IsList, IsGZGradedIrreducib
 #! where $\alpha_{h_c}$ is the $F$-vector space homomorphism
 #! representing the $h_c$-th component of the associator of $i,j,k$.
 #! @Returns a list
-#! @Arguments i, j, k, A, F, L
+#! @Arguments i, j, k, A, vec, L
 DeclareOperation( "AssociatorFromData", 
-                  [ IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsList, IsFieldForHomalg, IsList ] );
+                  [ IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsList, IsMatrixCategory, IsList ] );
 
 ##
 DeclareOperation( "AssociatorStringListFromData", 

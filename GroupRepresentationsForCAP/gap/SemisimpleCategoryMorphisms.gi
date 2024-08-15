@@ -65,14 +65,14 @@ InstallMethod( SemisimpleCategoryMorphismSparse,
                [ IsSemisimpleCategoryObject, IsList, IsSemisimpleCategoryObject ],
                
   function( source, morphism_list, range )
-    local support, field, chi, pos, source_vector_space, range_vector_space;
+    local support, underlying_category, chi, pos, source_vector_space, range_vector_space;
     
     morphism_list := Filtered( morphism_list,
                        alpha -> NrRows( UnderlyingMatrix( alpha[1] ) ) <> 0 or NrColumns( UnderlyingMatrix( alpha[1] ) ) <> 0 );
     
     support := Union( Support( source ), Support( range ) );
     
-    field := UnderlyingFieldForHomalg( source );
+    underlying_category := UnderlyingCategoryForSemisimpleCategory( CapCategory( source ) );
     
     for chi in support do
       
@@ -80,9 +80,9 @@ InstallMethod( SemisimpleCategoryMorphismSparse,
       
       if pos = fail then
           
-          source_vector_space := VectorSpaceObject( Multiplicity( source, chi ), field );
+          source_vector_space := MatrixCategoryObject( underlying_category, Multiplicity( source, chi ) );
           
-          range_vector_space := VectorSpaceObject( Multiplicity( range, chi ), field );
+          range_vector_space := MatrixCategoryObject( underlying_category, Multiplicity( range, chi ) );
           
           Add( morphism_list, [ ZeroMorphism( source_vector_space, range_vector_space ), chi ] );
           
@@ -150,7 +150,7 @@ InstallMethod( CAP_INTERNAL_Create_Semisimple_Endomorphism_From_Sparse_String_Li
                [ IsSemisimpleCategoryObject, IsList ],
                
   function( object, string_list )
-    local morphism_list, object_list, size, field, i, vector_space;
+    local morphism_list, object_list, size, field, underlying_category, i, vector_space;
     
     morphism_list := [];
     
@@ -160,11 +160,13 @@ InstallMethod( CAP_INTERNAL_Create_Semisimple_Endomorphism_From_Sparse_String_Li
     
     field := UnderlyingFieldForHomalg( object );
     
+    underlying_category := UnderlyingCategoryForSemisimpleCategory( CapCategory( object ) );
+    
     for i in [ 1 .. size ] do
 #         
 #         ConvertToStringRep( string_list[i] );
 #         
-        vector_space := VectorSpaceObject( object_list[i][1], field );
+        vector_space := MatrixCategoryObject( underlying_category, object_list[i][1] );
         
         Add( morphism_list, [
           VectorSpaceMorphism(
@@ -184,7 +186,7 @@ InstallMethod( CAP_INTERNAL_Create_Semisimple_Endomorphism_From_List_Of_Diagonal
                [ IsSemisimpleCategoryObject, IsList ],
                
   function( object, list )
-    local morphism_list, object_list, size, field, i, vector_space;
+    local morphism_list, object_list, size, underlying_category, i, vector_space;
     
     morphism_list := [];
     
@@ -192,11 +194,11 @@ InstallMethod( CAP_INTERNAL_Create_Semisimple_Endomorphism_From_List_Of_Diagonal
     
     size := Size( object_list );
     
-    field := UnderlyingFieldForHomalg( object );
+    underlying_category := UnderlyingCategoryForSemisimpleCategory( CapCategory( object ) );
     
     for i in [ 1 .. size ] do
         
-        vector_space := VectorSpaceObject( object_list[i][1], field );
+        vector_space := MatrixCategoryObject( underlying_category, object_list[i][1] );
         
         Add( morphism_list, [
           VectorSpaceMorphism(
@@ -216,7 +218,7 @@ InstallMethod( CAP_INTERNAL_Create_Semisimple_Endomorphism_From_String_List,
                [ IsSemisimpleCategoryObject, IsList, IsList ],
                
   function( object, list_matrices, list_degrees )
-    local morphism_list, object_list, size, field, i, vector_space;
+    local morphism_list, object_list, size, field, underlying_category, i, vector_space;
     
     morphism_list := [];
     
@@ -226,9 +228,11 @@ InstallMethod( CAP_INTERNAL_Create_Semisimple_Endomorphism_From_String_List,
     
     field := UnderlyingFieldForHomalg( object );
     
+    underlying_category := UnderlyingCategoryForSemisimpleCategory( CapCategory( object ) );
+    
     for i in [ 1 .. size ] do
         
-        vector_space := VectorSpaceObject( object_list[i][1], field );
+        vector_space := MatrixCategoryObject( underlying_category, object_list[i][1] );
         
         Add( morphism_list, [
           VectorSpaceMorphism(

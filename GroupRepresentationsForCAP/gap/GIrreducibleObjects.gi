@@ -189,9 +189,9 @@ end );
 
 ##
 InstallMethod( AssociatorFromData,
-               [ IsGIrreducibleObject, IsGIrreducibleObject, IsGIrreducibleObject, IsList, IsFieldForHomalg, IsList ],
+               [ IsGIrreducibleObject, IsGIrreducibleObject, IsGIrreducibleObject, IsList, IsMatrixCategory, IsList ],
                
-  function( irr_1, irr_2, irr_3, associator_data, field, tensor_decomposition_list )
+  function( irr_1, irr_2, irr_3, associator_data, vec, tensor_decomposition_list )
     local data, morphism_list, elem, pos, string, homalg_matrix, vector_space;
     
     data :=
@@ -205,9 +205,9 @@ InstallMethod( AssociatorFromData,
         
         string := Concatenation( "[", data[pos], "]" );
         
-        homalg_matrix := HomalgMatrix( string, elem[1], elem[1], field );
+        homalg_matrix := HomalgMatrix( string, elem[1], elem[1], UnderlyingRing( vec ) );
         
-        vector_space := VectorSpaceObject( elem[1], field );
+        vector_space := MatrixCategoryObject( vec, elem[1] );
         
         Add( morphism_list, [ VectorSpaceMorphism( vector_space, homalg_matrix, vector_space ), elem[2] ] );
         
