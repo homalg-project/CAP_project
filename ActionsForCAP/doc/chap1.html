@@ -44,7 +44,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := TensorUnit( vec );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat := LeftActionsCategory( u );</span>
 Category of left actions of &lt;A vector space object over Q of dimension 1&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := VectorSpaceObject( 2, Q );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := MatrixCategoryObject( vec, 2 );</span>
 &lt;A vector space object over Q of dimension 2&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := VectorSpaceMorphism( TensorProductOnObjects( u, V ), HomalgMatrix( [ [ 0, 1 ], [ -1, 0 ] ], 2, 2, Q ), V );</span>
 &lt;A morphism in Category of matrices over Q&gt;
