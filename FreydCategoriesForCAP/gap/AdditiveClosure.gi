@@ -557,7 +557,7 @@ end );
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
   
   function( category )
-    local compare_morphisms, underlying_category, range_category, object_function, morphism_function, object_function_inverse, morphism_function_inverse;
+    local compare_morphisms, underlying_category, underlying_range_category, range_category, object_function, morphism_function, object_function_inverse, morphism_function_inverse;
     
     underlying_category := UnderlyingCategory( category );
     
@@ -993,18 +993,20 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     
     if HasRangeCategoryOfHomomorphismStructure( underlying_category ) then
         
+        underlying_range_category := RangeCategoryOfHomomorphismStructure( underlying_category );
+        
         # If the range category of the underlying category is not additive but pre-additive, we first apply AdditiveClosure to it.
         # See https://arxiv.org/abs/1908.04132 (Sebastian Posur: Methods of constructive category theory), Remark 1.28
-        if not (HasIsAdditiveCategory and IsAdditiveCategory)( RangeCategoryOfHomomorphismStructure( underlying_category ) ) and (HasIsAbCategory and IsAbCategory)( RangeCategoryOfHomomorphismStructure( underlying_category ) ) then
+        if not (HasIsAdditiveCategory( underlying_range_category ) and IsAdditiveCategory( underlying_range_category )) and HasIsAbCategory( underlying_range_category ) and IsAbCategory( underlying_range_category ) then
             
-            if IsIdenticalObj( underlying_category, RangeCategoryOfHomomorphismStructure( underlying_category ) ) then
+            if IsIdenticalObj( underlying_category, underlying_range_category ) then
                 
                 # prevent infinite recursion
                 range_category := category;
                 
             else
                 
-                range_category := AdditiveClosure( RangeCategoryOfHomomorphismStructure( underlying_category ) );
+                range_category := AdditiveClosure( underlying_range_category );
                 
             fi;
             
@@ -1057,7 +1059,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
             
         else
             
-            range_category := RangeCategoryOfHomomorphismStructure( underlying_category );
+            range_category := underlying_range_category;
             
             ExtendRangeOfHomomorphismStructureByIdentityAsFullEmbedding( underlying_category );
             
