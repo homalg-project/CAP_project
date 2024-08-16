@@ -272,28 +272,28 @@ if false then
 #! The output is an object in <A>C</A> which is a formal direct sum of <C>Random</C>(<A>L</A>[1]) objects in <A>U</A> each computed via <C>RandomObjectByList</C>(<A>U</A>,<A>L</A>[2]).
 #! @Returns an object in C
 #! @Arguments C, L
-DeclareOperation( RandomObjectByList, [ IsAdditiveClosureCategory, IsList ] );
+DeclareOperation( "RandomObjectByList", [ IsAdditiveClosureCategory, IsList ] );
 
 #! @Description
 #! The arguments are an additive closure category <A>C</A> of a category <A>U</A> and a non-negative integer <A>n</A>.
 #! The output is an object in <A>C</A> which is a formal direct sum of at most <A>n</A> objects in <A>U</A> each computed via <C>RandomObjectByInteger</C>(<A>U</A>,<A>n</A>).
 #! @Returns an object in C
 #! @Arguments C, n
-DeclareOperation( RandomObjectByInteger, [ IsAdditiveClosureCategory, IsInt ] );
+DeclareOperation( "RandomObjectByInteger", [ IsAdditiveClosureCategory, IsInt ] );
 
 #! @Description
 #! The arguments are two objects <A>S</A>, <A>R</A> and a list <A>L</A>.
 #! The output is a morphism from <A>S</A> to <A>R</A> whose matrix entry at index $i,j$ is computed via <C>RandomMorphismWithFixedSourceAndRangeByList</C>(<A>S</A>[$i$],<A>R</A>[$j$],<A>L</A>).
 #! @Returns  a morphism in C
 #! @Arguments S, R, L
-DeclareOperation( RandomMorphismWithFixedSourceAndRangeByList, [ IsAdditiveClosureObject, IsAdditiveClosureObject, IsList ] );
+DeclareOperation( "RandomMorphismWithFixedSourceAndRangeByList", [ IsAdditiveClosureObject, IsAdditiveClosureObject, IsList ] );
 
 #! @Description
 #! The arguments are two objects <A>S</A>, <A>R</A> and an integer <A>n</A>.
 #! The output is a morphism from <A>S</A> to <A>R</A> whose matrix entry at index $i,j$ is computed via <C>RandomMorphismWithFixedSourceAndRangeByInteger</C>(<A>S</A>[$i$],<A>R</A>[$j$],<A>n</A>).
 #! @Returns  a morphism in C
 #! @Arguments S, R, n
-DeclareOperation( RandomMorphismWithFixedSourceAndRangeByInteger, [ IsAdditiveClosureObject, IsAdditiveClosureObject, IsInt ] );
+DeclareOperation( "RandomMorphismWithFixedSourceAndRangeByInteger", [ IsAdditiveClosureObject, IsAdditiveClosureObject, IsInt ] );
 
 #! @Description
 #! The arguments are an object <A>S</A> in an additive closure category <A>C</A> and a list <A>L</A> consisting of two lists.
@@ -301,7 +301,7 @@ DeclareOperation( RandomMorphismWithFixedSourceAndRangeByInteger, [ IsAdditiveCl
 #! $R$ is computed via <C>RandomObjectByList</C>(<A>C</A>,<A>L</A>[1]).
 #! @Returns a morphism in C
 #! @Arguments S, L
-DeclareOperation( RandomMorphismWithFixedSourceByList, [ IsAdditiveClosureObject, IsList ] );
+DeclareOperation( "RandomMorphismWithFixedSourceByList", [ IsAdditiveClosureObject, IsList ] );
 
 #! @Description
 #! The arguments are an object <A>S</A> in an additive closure category <A>C</A> and an integer <A>n</A>.
@@ -309,7 +309,7 @@ DeclareOperation( RandomMorphismWithFixedSourceByList, [ IsAdditiveClosureObject
 #! $R$ is computed via <C>RandomObjectByInteger</C>(<A>C</A>,<A>n</A>).
 #! @Returns  a morphism in C
 #! @Arguments S, n
-DeclareOperation( RandomMorphismWithFixedSourceByInteger, [ IsAdditiveClosureObject, IsInt ] );
+DeclareOperation( "RandomMorphismWithFixedSourceByInteger", [ IsAdditiveClosureObject, IsInt ] );
 
 #! @Description
 #! The arguments are an object <A>R</A> in an additive closure category <A>C</A> and a list <A>L</A> consisting of two lists.
@@ -317,7 +317,7 @@ DeclareOperation( RandomMorphismWithFixedSourceByInteger, [ IsAdditiveClosureObj
 #! $S$ is computed via <C>RandomObjectByList</C>(<A>C</A>,<A>L</A>[1]).
 #! @Returns a morphism in a category of rows
 #! @Arguments R, L
-DeclareOperation( RandomMorphismWithFixedRangeByList, [ IsAdditiveClosureObject, IsList ] );
+DeclareOperation( "RandomMorphismWithFixedRangeByList", [ IsAdditiveClosureObject, IsList ] );
 
 #! @Description
 #! The arguments are an object <A>S</A> in an additive closure category <A>C</A> and an integer <A>n</A>.
@@ -325,7 +325,7 @@ DeclareOperation( RandomMorphismWithFixedRangeByList, [ IsAdditiveClosureObject,
 #! $S$ is computed via <C>RandomObjectByInteger</C>(<A>C</A>,<A>n</A>).
 #! @Returns a morphism in C
 #! @Arguments R, n
-DeclareOperation( RandomMorphismWithFixedRangeByInteger, [ IsAdditiveClosureObject, IsInt ] );
+DeclareOperation( "RandomMorphismWithFixedRangeByInteger", [ IsAdditiveClosureObject, IsInt ] );
 
 #! @Description
 #! The arguments are an additive closure category <A>C</A> and a list <A>L</A> consisiting of three lists.
@@ -333,7 +333,7 @@ DeclareOperation( RandomMorphismWithFixedRangeByInteger, [ IsAdditiveClosureObje
 #! $S$ and $R$ are computed via <C>RandomObjectByList</C>(<A>C</A>,<A>L</A>[i]) for $i=1,2$ respectively.
 #! @Returns  a morphism in C
 #! @Arguments C, L
-DeclareOperation( RandomMorphismByList, [ IsAdditiveClosureCategory, IsList ] );
+DeclareOperation( "RandomMorphismByList", [ IsAdditiveClosureCategory, IsList ] );
 
 #! @Description
 #! The arguments are an additive closure category <A>C</A> and a non-negative integer <A>n</A>.
@@ -341,7 +341,7 @@ DeclareOperation( RandomMorphismByList, [ IsAdditiveClosureCategory, IsList ] );
 #! $S$ and $R$ are computed via <C>RandomObjectByInteger</C>(<A>C</A>,<A>n</A>).
 #! @Returns  a morphism in C
 #! @Arguments C, n
-DeclareOperation( RandomMorphismByInteger, [ IsAdditiveClosureCategory, IsInt ] );
+DeclareOperation( "RandomMorphismByInteger", [ IsAdditiveClosureCategory, IsInt ] );
 
 fi;
 
