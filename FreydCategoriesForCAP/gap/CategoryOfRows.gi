@@ -1512,12 +1512,12 @@ InstallMethod( ViewString,
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
                [ IsCategoryOfRowsObject ],
                
   function( category_of_rows_object )
     
-    Display( String( category_of_rows_object ) );
+    return Concatenation( String( category_of_rows_object ), "\n" );
     
 end );
 

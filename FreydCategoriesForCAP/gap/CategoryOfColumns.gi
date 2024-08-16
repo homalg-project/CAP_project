@@ -259,12 +259,12 @@ InstallMethod( ViewString,
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
                [ IsCategoryOfColumnsObject ],
                
   function( category_of_columns_object )
     
-    Display( String( category_of_columns_object ) );
+    return Concatenation( String( category_of_columns_object ), "\n" );
     
 end );
 
