@@ -773,7 +773,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
       AddEpimorphismFromSomeProjectiveObject( category, { cat, obj } -> IdentityMorphism( cat, obj ) );
       
       ##
-      AddIsProjective( category, { cat, obj } -> true );
+      AddIsProjective( category, { cat, obj } -> true, 1 );
       
       ##
       AddSomeInjectiveObject( category, { cat, obj } -> obj );
@@ -782,7 +782,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
       AddMonomorphismIntoSomeInjectiveObject( category, { cat, obj } -> IdentityMorphism( cat, obj ) );
       
       ##
-      AddIsInjective( category, { cat, obj } -> true );
+      AddIsInjective( category, { cat, obj } -> true, 1 );
       
       ##
       AddKernelObject( category,

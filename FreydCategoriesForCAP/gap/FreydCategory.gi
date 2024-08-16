@@ -1050,12 +1050,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         underlying_range_category := CapCategory( distinguished_object );
         
         ## 3 possible cases:
-        ## 1) the range category is abelian
+        ## 1) the range category is abelian and the distinguished object is projective (the projectiveness has to be known in advance or must be cheap to compute)
         ## 2) one could apply the Freyd category constructor to the range category to make it abelian
         ## 3) else
         if HasIsAbelianCategory( underlying_range_category )
             and IsAbelianCategory( underlying_range_category )
-            and HasIsProjective( distinguished_object )
+            and (HasIsProjective( distinguished_object ) or CurrentOperationWeight( underlying_range_category!.derivations_weight_list, "IsProjective" ) <= 50)
             and IsProjective( distinguished_object ) then
             
             SetRangeCategoryOfHomomorphismStructure( category, underlying_range_category );

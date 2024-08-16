@@ -11,7 +11,7 @@ Q := HomalgFieldOfRationals();;
 RowsQ := CategoryOfRows( Q );;
 a := 3/RowsQ;;
 b := 4/RowsQ;;
-HasIsProjective( a ) and IsProjective( a );
+IsProjective( a );
 #! true
 homalg_matrix := HomalgMatrix( [ [ 1, 0, 0, 0 ],
                                   [ 0, 1, 0, -1 ],
@@ -74,7 +74,7 @@ Q := HomalgFieldOfRationals();;
 ColsQ := CategoryOfColumns( Q );;
 a := 3/ColsQ;;
 b := 4/ColsQ;;
-HasIsProjective( a ) and IsProjective( a );
+IsProjective( a );
 #! true
 homalg_matrix := HomalgMatrix( [ [ 1, 0, 0, 0 ],
                                   [ 0, 1, 0, -1 ],

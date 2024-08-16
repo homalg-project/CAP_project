@@ -19,7 +19,7 @@ InstallMethod( CategoryOfRows_as_AdditiveClosure_RingAsCategory,
     [ "FinalizeCategory", true ],
   ],
   function( CAP_NAMED_ARGUMENTS, homalg_ring )
-    local ring_as_category, add, object_constructor, modeling_tower_object_constructor, object_datum, modeling_tower_object_datum, morphism_constructor, modeling_tower_morphism_constructor, morphism_datum, modeling_tower_morphism_datum, category_object_filter, wrapper;
+    local ring_as_category, add, is_defined_over_field, object_constructor, modeling_tower_object_constructor, object_datum, modeling_tower_object_datum, morphism_constructor, modeling_tower_morphism_constructor, morphism_datum, modeling_tower_morphism_datum, wrapper;
     
     ring_as_category := RING_AS_CATEGORY( homalg_ring );
     
@@ -38,7 +38,9 @@ InstallMethod( CategoryOfRows_as_AdditiveClosure_RingAsCategory,
         
     fi;
     
-    if HasIsFieldForHomalg( homalg_ring ) and IsFieldForHomalg( homalg_ring ) then
+    is_defined_over_field := HasIsFieldForHomalg( homalg_ring ) and IsFieldForHomalg( homalg_ring );
+    
+    if is_defined_over_field then
         
         SetIsAbelianCategory( add, true );
         
@@ -212,21 +214,11 @@ InstallMethod( CategoryOfRows_as_AdditiveClosure_RingAsCategory,
         
     end;
     
-    if HasIsFieldForHomalg( homalg_ring ) and IsFieldForHomalg( homalg_ring ) then
-        
-        category_object_filter := IsCategoryOfRowsObject and HasIsProjective and IsProjective;
-        
-    else
-        
-        category_object_filter := IsCategoryOfRowsObject;
-        
-    fi;
-    
     wrapper := ReinterpretationOfCategory( add, rec(
         name := Concatenation( "Rows( ", RingName( homalg_ring )," )" ),
         category_filter := IsCategoryOfRows,
-        category_object_filter := category_object_filter,
-        category_morphism_filter := IsCategoryOfRowsMorphism and HasUnderlyingMatrix,
+        category_object_filter := IsCategoryOfRowsObject,
+        category_morphism_filter := IsCategoryOfRowsMorphism,
         object_constructor := object_constructor,
         object_datum := object_datum,
         morphism_constructor := morphism_constructor,
@@ -306,6 +298,16 @@ InstallMethod( CategoryOfRows_as_AdditiveClosure_RingAsCategory,
         return CategoryOfRowsMorphism( cat, Range( alpha ), left_divide, Range( beta ) );
         
     end );
+    
+    if is_defined_over_field then
+        
+        ##
+        AddIsProjective( wrapper, { cat, obj } -> true, 1 );
+        
+        ##
+        AddIsInjective( wrapper, { cat, obj } -> true, 1 );
+        
+    fi;
     
     if CAP_NAMED_ARGUMENTS.FinalizeCategory then
         

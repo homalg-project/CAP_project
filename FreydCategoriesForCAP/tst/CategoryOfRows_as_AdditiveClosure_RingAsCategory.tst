@@ -8,7 +8,7 @@ gap> vec := CategoryOfRows_as_AdditiveClosure_RingAsCategory( QQ );
 Rows( Q )
 gap> a := CategoryOfRowsObject( vec, 3 );
 <A row module over Q of rank 3>
-gap> HasIsProjective( a ) and IsProjective( a );
+gap> IsProjective( a );
 true
 gap> b := CategoryOfRowsObject( vec, 4 );
 <A row module over Q of rank 4>
@@ -117,6 +117,11 @@ gap> iota := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStr
 gap> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( distinguished_object, mor, object );;
 gap> beta := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( mor ), Range( mor ), iota );;
 gap> IsCongruentForMorphisms( mor, beta );
+true
+
+# make sure FreydCategory( rows ) has the same range category of hom structure as rows
+# this can only be the case if FreydCategory is able to determine that the distinguished object is projective
+gap> IsIdenticalObj( RangeCategoryOfHomomorphismStructure( FreydCategory( rows ) ), RangeCategoryOfHomomorphismStructure( rows ) );
 true
 
 #
