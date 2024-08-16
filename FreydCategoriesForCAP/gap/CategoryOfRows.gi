@@ -1446,7 +1446,7 @@ AddFinalDerivationBundle( "Using BasisOfExternalHom and CoefficientsOfMorphism t
     function ( cat )
       
       if not IsCategoryOfRows( cat ) and
-         (HasIsEquippedWithHomomorphismStructure and IsEquippedWithHomomorphismStructure)( cat ) and
+         HasIsEquippedWithHomomorphismStructure( cat ) and IsEquippedWithHomomorphismStructure( cat ) and
          HasRangeCategoryOfHomomorphismStructure( cat ) and
          IsCategoryOfRows( RangeCategoryOfHomomorphismStructure( cat ) ) and
          HasIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( cat ) and IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( cat ) and
