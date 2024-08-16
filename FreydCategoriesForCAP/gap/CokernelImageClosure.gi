@@ -86,7 +86,7 @@ InstallMethod( CokernelImageClosureObject,
     
     if not IsEqualForObjects( Range( generator_morphism ), Range( relation_morphism ) ) then
         
-        Error ( "the ranges of the given morphisms have to be equal" );
+        Error( "the ranges of the given morphisms have to be equal" );
         
     fi;
 
@@ -295,8 +295,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
     AddIsEqualForObjects( category,
       function( cat, object_1, object_2 )
 
-        return IsEqualForMorphismsOnMor( RelationMorphism( object_1 ), RelationMorphism( object_2 ) ) 
-               and 
+        return IsEqualForMorphismsOnMor( RelationMorphism( object_1 ), RelationMorphism( object_2 ) ) and
                IsEqualForMorphismsOnMor( GeneratorMorphism( object_1 ), GeneratorMorphism( object_2) );
 
     end );

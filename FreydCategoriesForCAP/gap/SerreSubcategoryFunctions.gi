@@ -130,7 +130,7 @@ InstallGlobalFunction( FREYD_CATEGORIES_CHOP_ABOVE_SERRE_SUBCATEGORIES,
     
     new_K := KernelObject( int );
     
-    if IsZero( new_K ) then 
+    if IsZero( new_K ) then
         return true;
     fi;
     
@@ -183,7 +183,7 @@ InstallGlobalFunction( FREYD_CATEGORIES_CHOP_BELOW_SERRE_SUBCATEGORIES,
     
     new_K := CokernelObject( int );
     
-    if IsZero( new_K ) then 
+    if IsZero( new_K ) then
         return true;
     fi;
     

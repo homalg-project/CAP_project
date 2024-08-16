@@ -374,9 +374,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         
         # test which methods are supported by the underlying category
         not_supported := [];
-        Perform( to_be_tested, function(x) if not CanCompute( underlying_category, x ) then 
-                                            Add( not_supported, x );
-                                         fi; end);
+        Perform( to_be_tested, function(x)
+            if not CanCompute( underlying_category, x ) then
+                Add( not_supported, x );
+            fi;
+        end );
         
         # methods cannot be installed, so inform the user
         if not IsEmpty( not_supported ) then
@@ -803,8 +805,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
 
     fi;
     
+    ## Lift is implicit in WitnessForBeingCongruentToZero
     if is_possible_to_install( "LiftAlongMonomorphism, ColiftAlongEpimorphism",
-                               [ "Lift" ] ) then ## Lift is implicit in WitnessForBeingCongruentToZero
+                               [ "Lift" ] ) then
         
         ##
         AddLiftAlongMonomorphism( category,

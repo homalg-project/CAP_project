@@ -96,7 +96,7 @@ InstallOtherMethodForCompilerForCAP( AdelmanCategoryObject,
     
     if not IsEqualForObjects( Range( relation_morphism ), Source( corelation_morphism ) ) then
     
-        Error ( "the range of the relation morphism has to be equal to the source of the co-relation morphism" );
+        Error( "the range of the relation morphism has to be equal to the source of the co-relation morphism" );
     
     fi;
     
@@ -344,8 +344,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     AddIsEqualForObjects( category,
       function( cat, object_1, object_2 )
         
-        return IsEqualForMorphismsOnMor( RelationMorphism( object_1 ), RelationMorphism( object_2 ) )
-               and IsEqualForMorphismsOnMor( CorelationMorphism( object_1 ), CorelationMorphism( object_2 ) );
+        return IsEqualForMorphismsOnMor( RelationMorphism( object_1 ), RelationMorphism( object_2 ) ) and
+               IsEqualForMorphismsOnMor( CorelationMorphism( object_1 ), CorelationMorphism( object_2 ) );
         
     end );
     
@@ -784,10 +784,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
         ## 2) one could apply the Freyd category constructor to the range category to make it abelian
         ## 3) else
         
-        if HasIsAbelianCategory( range_category ) 
-           and IsAbelianCategory( range_category ) 
-           and HasIsProjective( distinguished_object )
-           and IsProjective( distinguished_object ) then
+        if HasIsAbelianCategory( range_category ) and
+           IsAbelianCategory( range_category ) and
+           HasIsProjective( distinguished_object ) and
+           IsProjective( distinguished_object ) then
             
             SetRangeCategoryOfHomomorphismStructure( category, range_category );
             SetIsEquippedWithHomomorphismStructure( category, true );
@@ -804,9 +804,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
             interpret_morphism_from_distinguished_object_to_homomorphism_structure_as_homomorphism := 
                 InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism;
             
-        elif  HasIsAdditiveCategory( range_category )
-               and IsAdditiveCategory( range_category )
-               and ForAll(
+        elif  HasIsAdditiveCategory( range_category ) and
+              IsAdditiveCategory( range_category ) and
+              ForAll(
                    [ "Lift",
                      "SubtractionForMorphisms",
                      "PreCompose",
