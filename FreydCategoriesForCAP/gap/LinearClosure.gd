@@ -161,8 +161,8 @@ DeclareOperation( "ExtendFunctorToLinearClosureOfSource",
 ##
 ####################################
 
-DeclareOperation( "\*",
+DeclareOperation( "*",
                   [ IsLinearClosureMorphism, IsLinearClosureMorphism ] );
 
-DeclareOperation( "\/",
+DeclareOperation( "/",
                   [ IsCapCategoryMorphism, IsLinearClosure ] );

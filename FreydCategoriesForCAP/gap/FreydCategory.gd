@@ -79,10 +79,10 @@ DeclareAttribute( "EmbeddingFunctorIntoFreydCategory",
                   IsCapCategory );
 
 ##
-DeclareOperation( "\/",
+DeclareOperation( "/",
                   [ IsCapCategoryMorphism, IsFreydCategory ] );
 
-DeclareOperation( "\/",
+DeclareOperation( "/",
                   [ IsHomalgMatrix, IsFreydCategory ] );
 
 ####################################
@@ -286,17 +286,17 @@ DeclareOperationWithCache( "INTERNAL_HOM_EMBEDDING",
 ####################################################################################
 
 #!
-DeclareOperation( "\*",
+DeclareOperation( "*",
                [ IsFreydCategoryObject, IsFreydCategoryObject ] );
 
 #!
-DeclareOperation( "\^",
+DeclareOperation( "^",
                [ IsFreydCategoryObject, IsInt ] );
 
 #!
-DeclareOperation( "\*",
+DeclareOperation( "*",
                [ IsFreydCategoryMorphism, IsFreydCategoryMorphism ] );
 
 #!
-DeclareOperation( "\^",
+DeclareOperation( "^",
                [ IsFreydCategoryMorphism, IsInt ] );

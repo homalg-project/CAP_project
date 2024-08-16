@@ -170,7 +170,7 @@ DeclareAttribute( "AsAdelmanCategoryMorphism",
 #! morphism of $a$, and whose co-relation morphism is $0$.
 #! @Returns an object
 #! @Arguments a, C
-DeclareOperation( "\/",
+DeclareOperation( "/",
                   [ IsCapCategoryObject, IsAdelmanCategory ] );
 
 #! @Description
@@ -183,7 +183,7 @@ DeclareOperation( "\/",
 #! and $y = \mathrm{ AsAdelmanCategoryObject( Range( \alpha ) ) }$.
 #! @Returns a morphism in $\mathrm{Hom}( x, y )$
 #! @Arguments alpha, C
-DeclareOperation( "\/",
+DeclareOperation( "/",
                   [ IsCapCategoryMorphism, IsAdelmanCategory ] );
 
 ####################################

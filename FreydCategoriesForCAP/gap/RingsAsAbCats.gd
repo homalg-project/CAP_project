@@ -100,11 +100,11 @@ end );
 ####################################
 
 ##
-DeclareOperation( "\*",
+DeclareOperation( "*",
                   [ IsRingAsCategoryMorphism, IsRingAsCategoryMorphism ] );
 
 ##
-DeclareOperation( "\/",
+DeclareOperation( "/",
                   [ IsRingElement, IsRingAsCategory ] );
 
 ####################################

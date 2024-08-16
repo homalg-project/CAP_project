@@ -250,13 +250,13 @@ end );
 #! @Description
 #! The input is either a list of objects or list of lists of morphisms. The method delegates to
 #! either <C>AdditiveClosureObject</C> or <C>AdditiveClosureMorphism</C>.
-DeclareOperation( "\/",
+DeclareOperation( "/",
                   [ IsList, IsAdditiveClosureCategory ] );
 
 #! @Description
 #! This is a convenience method for
 #! <C>AsAdditiveClosureObject</C> and <C>AsAdditiveClosureMorphism</C>.
-DeclareOperation( "\/",
+DeclareOperation( "/",
                   [ IsCapCategoryCell, IsAdditiveClosureCategory ] );
 
 ####################################

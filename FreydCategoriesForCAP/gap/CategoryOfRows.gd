@@ -68,7 +68,7 @@ CapJitAddTypeSignature( "CategoryOfRowsMorphism", [ IsCategoryOfRows, IsCategory
     
 end );
 
-DeclareOperation( "\/",
+DeclareOperation( "/",
                   [ IsHomalgMatrix, IsCategoryOfRows ] );
 
 KeyDependentOperation( "StandardRowMorphism",
