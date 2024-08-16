@@ -781,7 +781,7 @@ InstallMethod( ExtendRangeOfHomomorphismStructureByFullEmbedding,
     # object_function_inverse and morphism_function_inverse define the inverse of ι on its image
     
     InstallMethodForCompilerForCAP( DistinguishedObjectOfHomomorphismStructureExtendedByFullEmbedding,
-                                    [ IsCapCategory and CategoryFilter( C ), IsCapCategory and CategoryFilter( E ) ],
+                                    [ CategoryFilter( C ), CategoryFilter( E ) ],
       function ( C, E )
         
         return object_function( C, E, DistinguishedObjectOfHomomorphismStructure( C ) );
@@ -789,7 +789,7 @@ InstallMethod( ExtendRangeOfHomomorphismStructureByFullEmbedding,
     end );
     
     InstallMethodForCompilerForCAP( HomomorphismStructureOnObjectsExtendedByFullEmbedding,
-                                    [ IsCapCategory and CategoryFilter( C ), IsCapCategory and CategoryFilter( E ), IsCapCategoryObject and ObjectFilter( C ), IsCapCategoryObject and ObjectFilter( C ) ],
+                                    [ CategoryFilter( C ), CategoryFilter( E ), ObjectFilter( C ), ObjectFilter( C ) ],
       function ( C, E, a, b )
         
         return object_function( C, E, HomomorphismStructureOnObjects( C, a, b ) );
@@ -797,7 +797,7 @@ InstallMethod( ExtendRangeOfHomomorphismStructureByFullEmbedding,
     end );
     
     InstallMethodForCompilerForCAP( HomomorphismStructureOnMorphismsExtendedByFullEmbedding,
-                                    [ IsCapCategory and CategoryFilter( C ), IsCapCategory and CategoryFilter( E ), IsCapCategoryMorphism and MorphismFilter( C ), IsCapCategoryMorphism and MorphismFilter( C ) ],
+                                    [ CategoryFilter( C ), CategoryFilter( E ), MorphismFilter( C ), MorphismFilter( C ) ],
       function ( C, E, alpha, beta )
         local mor;
         
@@ -808,7 +808,7 @@ InstallMethod( ExtendRangeOfHomomorphismStructureByFullEmbedding,
     end );
     
     InstallMethodForCompilerForCAP( HomomorphismStructureOnMorphismsWithGivenObjectsExtendedByFullEmbedding,
-                                    [ IsCapCategory and CategoryFilter( C ), IsCapCategory and CategoryFilter( E ), IsCapCategoryObject and ObjectFilter( E ), IsCapCategoryMorphism and MorphismFilter( C ), IsCapCategoryMorphism and MorphismFilter( C ), IsCapCategoryObject and ObjectFilter( E ) ],
+                                    [ CategoryFilter( C ), CategoryFilter( E ), ObjectFilter( E ), MorphismFilter( C ), MorphismFilter( C ), ObjectFilter( E ) ],
       function ( C, E, s, alpha, beta, r )
         local mor;
         
@@ -819,7 +819,7 @@ InstallMethod( ExtendRangeOfHomomorphismStructureByFullEmbedding,
     end );
     
     InstallMethodForCompilerForCAP( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureExtendedByFullEmbedding,
-                                    [ IsCapCategory and CategoryFilter( C ), IsCapCategory and CategoryFilter( E ), IsCapCategoryMorphism and MorphismFilter( C ) ],
+                                    [ CategoryFilter( C ), CategoryFilter( E ), MorphismFilter( C ) ],
       function ( C, E, alpha )
         local mor;
         
@@ -830,7 +830,7 @@ InstallMethod( ExtendRangeOfHomomorphismStructureByFullEmbedding,
     end );
     
     InstallMethodForCompilerForCAP( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjectsExtendedByFullEmbedding,
-                                    [ IsCapCategory and CategoryFilter( C ), IsCapCategory and CategoryFilter( E ), IsCapCategoryObject and ObjectFilter( E ), IsCapCategoryMorphism and MorphismFilter( C ), IsCapCategoryObject and ObjectFilter( E ) ],
+                                    [ CategoryFilter( C ), CategoryFilter( E ), ObjectFilter( E ), MorphismFilter( C ), ObjectFilter( E ) ],
       function ( C, E, distinguished_object, alpha, r )
         local mor;
         
@@ -841,7 +841,7 @@ InstallMethod( ExtendRangeOfHomomorphismStructureByFullEmbedding,
     end );
     
     InstallMethodForCompilerForCAP( InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphismExtendedByFullEmbedding,
-                                    [ IsCapCategory and CategoryFilter( C ), IsCapCategory and CategoryFilter( E ), IsCapCategoryObject and ObjectFilter( C ), IsCapCategoryObject and ObjectFilter( C ), IsCapCategoryMorphism and MorphismFilter( E ) ],
+                                    [ CategoryFilter( C ), CategoryFilter( E ), ObjectFilter( C ), ObjectFilter( C ), MorphismFilter( E ) ],
       function ( C, E, a, b, iota )
         
         return InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( C, a, b, morphism_function_inverse( C, E, object_function_inverse( C, E, Source( iota ) ), iota, object_function_inverse( C, E, Range( iota ) ) ) );
