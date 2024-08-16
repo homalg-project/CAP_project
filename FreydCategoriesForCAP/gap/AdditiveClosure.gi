@@ -44,7 +44,9 @@ InstallGlobalFunction( NullMatImmutable, function ( arg... )
     
     null := ListWithIdenticalEntries( m, row );
     
+    #= comment for Julia
     MakeImmutable( null );
+    # =#
     
     return null;
     
@@ -1503,6 +1505,7 @@ InstallMethod( Display,
     
 end );
 
+#= comment for Julia
 ##
 InstallMethod( LaTeXOutput,
           [ IsAdditiveClosureObject ],
@@ -1564,6 +1567,7 @@ InstallMethod( LaTeXOutput,
             );
     
 end );
+# =#
 
 ####################################
 ##

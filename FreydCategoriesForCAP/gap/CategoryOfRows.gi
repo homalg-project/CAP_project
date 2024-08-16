@@ -38,10 +38,12 @@ InstallMethod( CategoryOfRows,
             
             ADD_FUNCTIONS_FOR_CategoryOfRows_as_AdditiveClosure_RingAsCategory_CommutativeRing_precompiled( cat );
             
+        #= comment for Julia
         elif HasIsExteriorRing( homalg_ring ) and IsExteriorRing( homalg_ring ) and IsField( BaseRing( homalg_ring ) ) then
             
             ADD_FUNCTIONS_FOR_CategoryOfRows_as_AdditiveClosure_RingAsCategory_HomalgExteriorRingOverField_precompiled( cat );
             
+        # =#
         else
             
             ADD_FUNCTIONS_FOR_CategoryOfRows_as_AdditiveClosure_RingAsCategory_ArbitraryRing_precompiled( cat );
@@ -973,6 +975,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
     fi;
     
+    #= comment for Julia
     if HasIsExteriorRing( ring ) and IsExteriorRing( ring ) and IsField( BaseRing( ring ) ) then
         
         Assert( 0, IsLinearCategoryOverCommutativeRing( category ) );
@@ -989,6 +992,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         end );
         
     fi;
+    # =#
     
     ## Operations related to tensor structure
     
@@ -1531,6 +1535,7 @@ InstallMethod( LaTeXOutput,
     
 end );
 
+#= comment for Julia
 ##
 InstallMethod( LaTeXOutput,
                [ IsCategoryOfRowsMorphism ],
@@ -1561,7 +1566,7 @@ InstallMethod( LaTeXOutput,
     fi;
     
 end );
-
+# =#
 
 ####################################
 ##

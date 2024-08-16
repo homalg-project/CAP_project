@@ -243,6 +243,7 @@ InstallMethod( CategoryOfRows_as_AdditiveClosure_RingAsCategory,
         range_attribute_getter_name := "NumberColumns",
     );
     
+    #= comment for Julia
     if HasIsExteriorRing( homalg_ring ) and IsExteriorRing( homalg_ring ) and IsField( BaseRing( homalg_ring ) ) then
         
         SetBasisOfRingOverBaseFieldAsColumnVector( wrapper, BasisOverBaseFieldAsColumnVector( ring_as_category ) );
@@ -250,6 +251,7 @@ InstallMethod( CategoryOfRows_as_AdditiveClosure_RingAsCategory,
         Add( wrapper!.compiler_hints.category_attribute_names, "BasisOfRingOverBaseFieldAsColumnVector" );
         
     fi;
+    # =#
     
     # some manually precompiled functions
     

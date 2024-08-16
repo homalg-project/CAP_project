@@ -1404,6 +1404,7 @@ InstallMethod( Display,
     
 end );
 
+#= comment for Julia
 ##
 InstallMethod( LaTeXOutput,
                [ IsAdelmanCategoryObject ],
@@ -1459,11 +1460,7 @@ InstallMethod( LaTeXOutput,
     );
     
 end );
-
-
-
-
-
+# =#
 
 ####################################
 ##

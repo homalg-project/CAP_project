@@ -2033,6 +2033,7 @@ InstallMethod( LaTeXOutput,
     
 end );
 
+#= comment for Julia
 ##
 InstallMethod( LaTeXOutput,
                [ IsFreydCategoryMorphism ],
@@ -2062,7 +2063,7 @@ InstallMethod( LaTeXOutput,
     fi;
     
 end );
-
+# =#
 
 ####################################################################################
 ##

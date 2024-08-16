@@ -13,11 +13,13 @@ ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfColumns.gd" );
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfColumns_as_Opposite_CategoryOfRows.gd" );
 
 # include the packages for graded rows and columns
+#= comment for Julia
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfGradedRowsAndColumns/GradedRowOrColumn.gd" );
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfGradedRowsAndColumns/GradedRowOrColumnMorphism.gd" );
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfGradedRowsAndColumns/CategoryOfGradedRows.gd" );
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfGradedRowsAndColumns/CategoryOfGradedColumns.gd" );
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfGradedRowsAndColumns/Tools.gd" );
+# =#
 
 ReadPackage( "FreydCategoriesForCAP", "gap/FreydCategory.gd" );
 ReadPackage( "FreydCategoriesForCAP", "gap/CoFreydCategory.gd" );
