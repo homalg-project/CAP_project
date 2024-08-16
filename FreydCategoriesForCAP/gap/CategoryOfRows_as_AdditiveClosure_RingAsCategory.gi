@@ -14,10 +14,14 @@
 InstallMethod( CategoryOfRows_as_AdditiveClosure_RingAsCategory,
                [ IsHomalgRing ],
                
-  function( homalg_ring )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, homalg_ring )
     local ring_as_category, add, object_constructor, modeling_tower_object_constructor, object_datum, modeling_tower_object_datum, morphism_constructor, modeling_tower_morphism_constructor, morphism_datum, modeling_tower_morphism_datum, category_object_filter, wrapper;
     
-    ring_as_category := RING_AS_CATEGORY( homalg_ring : FinalizeCategory := true );
+    ring_as_category := RING_AS_CATEGORY( homalg_ring );
     
     add := ADDITIVE_CLOSURE( ring_as_category : FinalizeCategory := false );
     
@@ -46,7 +50,7 @@ InstallMethod( CategoryOfRows_as_AdditiveClosure_RingAsCategory,
     
     Reevaluate( add!.derivations_weight_list );
     
-    Finalize( add : FinalizeCategory := true );
+    Finalize( add );
     
     
     
@@ -303,11 +307,15 @@ InstallMethod( CategoryOfRows_as_AdditiveClosure_RingAsCategory,
         
     end );
     
-    Finalize( wrapper );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        
+        Finalize( wrapper );
+        
+    fi;
     
     return wrapper;
     
-end );
+end ) );
 
 InstallGlobalFunction( COMPILATION_HELPER_HomalgMatrixFromRingElement, function ( ring_element, ring )
     

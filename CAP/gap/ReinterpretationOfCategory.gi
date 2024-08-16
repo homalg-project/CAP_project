@@ -9,7 +9,11 @@ InstallMethod( ReinterpretationOfCategory,
         "for a CAP category and a record of options",
         [ IsCapCategory, IsRecord ],
         
-  function( C, options )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, C, options )
     local known_options_with_filters, filter, mandatory_options, category_constructor_options, list_of_operations_to_install, D, operations_of_homomorphism_structure, HC, object_function, morphism_function, object_function_inverse, morphism_function_inverse, option_name, option;
     
     ## check given options
@@ -379,11 +383,15 @@ InstallMethod( ReinterpretationOfCategory,
         
     fi;
     
-    Finalize( D );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        
+        Finalize( D );
+        
+    fi;
     
     return D;
     
-end );
+end ) );
 
 ##
 InstallMethod( ReinterpretationFunctor,

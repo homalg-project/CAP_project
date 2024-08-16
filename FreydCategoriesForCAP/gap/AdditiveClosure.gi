@@ -78,7 +78,11 @@ InstallMethod( AdditiveClosure,
 InstallMethod( ADDITIVE_CLOSURE,
                [ IsCapCategory ],
                
-  function( underlying_category )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, underlying_category )
     local category, precompiled_towers, remaining_constructors_in_tower, precompiled_functions_adder, info;
     
     if not ( HasIsAbCategory( underlying_category ) and IsAbCategory( underlying_category ) ) then
@@ -134,11 +138,15 @@ InstallMethod( ADDITIVE_CLOSURE,
     
     HandlePrecompiledTowers( category, underlying_category, "AdditiveClosure" );
     
-    Finalize( category );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        
+        Finalize( category );
+        
+    fi;
     
     return category;
     
-end );
+end ) );
 
 ##
 InstallMethod( AsAdditiveClosureObject,
