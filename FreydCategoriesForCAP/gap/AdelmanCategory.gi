@@ -271,7 +271,7 @@ InstallMethod( IsSequenceAsAdelmanCategoryObject,
                
   function( object )
     
-    return IsZero( PreCompose( RelationMorphism( object ), CorelationMorphism( object ) ) );
+    return IsZeroForMorphisms( PreCompose( RelationMorphism( object ), CorelationMorphism( object ) ) );
     
 end );
 
