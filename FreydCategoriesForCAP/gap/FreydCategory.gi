@@ -10,7 +10,7 @@
 ##
 ####################################
 
-BindGlobal( "InfoFreydCategoriesForCAP", NewInfoClass("InfoFreydCategoriesForCAP") );
+DeclareInfoClass( "InfoFreydCategoriesForCAP" );
 
 
 
