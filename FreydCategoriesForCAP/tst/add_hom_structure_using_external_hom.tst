@@ -9,8 +9,7 @@ gap> dummy := DummyCategory( rec(
 >                    "PreComposeList",
 >                    "SumOfMorphisms" ],
 >                properties := [ "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms" ] ) : FinalizeCategory := false );;
-gap> field := HomalgFieldOfRationals( );
-Q
+gap> field := HomalgFieldOfRationals( );;
 gap> SetCommutativeRingOfLinearCategory( dummy, field );
 gap> AddMultiplyWithElementOfCommutativeRingForMorphisms( dummy, ReturnNothing );
 gap> AddBasisOfExternalHom( dummy, ReturnNothing );
