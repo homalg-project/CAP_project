@@ -95,9 +95,9 @@
   [10XAsAdelmanCategoryObject( a )[110X, whose range [23Xy[123X is [10XAsAdelmanCategoryObject( b )[110X,
   and whose morphism datum is [23X\alpha[123X.[133X
   
-  [1X4.2-6 \/[101X
+  [1X4.2-6 /[101X
   
-  [33X[1;0Y[29X[2X\/[102X( [3Xa[103X, [3XC[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2X/[102X( [3Xa[103X, [3XC[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
   [33X[0;0YThis is a convenience method. The first argument is an object [23Xa[123X which either
@@ -108,9 +108,9 @@
   in  [23XC[123X whose relation morphism is the same as the relation morphism of [23Xa[123X, and
   whose co-relation morphism is [23X0[123X.[133X
   
-  [1X4.2-7 \/[101X
+  [1X4.2-7 /[101X
   
-  [33X[1;0Y[29X[2X\/[102X( [3Xalpha[103X, [3XC[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2X/[102X( [3Xalpha[103X, [3XC[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( x, y )[123X[133X
   
   [33X[0;0YThis  is a convenience method. The first argument is a morphism [23X\alpha[123X which

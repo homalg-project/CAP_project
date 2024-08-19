@@ -188,19 +188,19 @@
   
   [1X11.3 [33X[0;0YConvenient methods for tensor products of freyd objects and morphisms[133X[101X
   
-  [1X11.3-1 \*[101X
+  [1X11.3-1 *[101X
   
-  [33X[1;0Y[29X[2X\*[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2X*[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
   
-  [1X11.3-2 \^[101X
+  [1X11.3-2 ^[101X
   
-  [33X[1;0Y[29X[2X\^[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2X^[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
   
-  [1X11.3-3 \*[101X
+  [1X11.3-3 *[101X
   
-  [33X[1;0Y[29X[2X\*[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2X*[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
   
-  [1X11.3-4 \^[101X
+  [1X11.3-4 ^[101X
   
-  [33X[1;0Y[29X[2X\^[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2X^[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
   

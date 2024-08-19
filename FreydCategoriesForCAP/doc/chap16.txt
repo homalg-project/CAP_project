@@ -11,7 +11,7 @@
     [4X[25Xgap>[125X [27XRowsQ := CategoryOfRows( Q );;[127X[104X
     [4X[25Xgap>[125X [27Xa := 3/RowsQ;;[127X[104X
     [4X[25Xgap>[125X [27Xb := 4/RowsQ;;[127X[104X
-    [4X[25Xgap>[125X [27XHasIsProjective( a ) and IsProjective( a );[127X[104X
+    [4X[25Xgap>[125X [27XIsProjective( a );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xhomalg_matrix := HomalgMatrix( [ [ 1, 0, 0, 0 ],[127X[104X
     [4X[25X>[125X [27X                                  [ 0, 1, 0, -1 ],[127X[104X
@@ -74,7 +74,7 @@
     [4X[25Xgap>[125X [27XColsQ := CategoryOfColumns( Q );;[127X[104X
     [4X[25Xgap>[125X [27Xa := 3/ColsQ;;[127X[104X
     [4X[25Xgap>[125X [27Xb := 4/ColsQ;;[127X[104X
-    [4X[25Xgap>[125X [27XHasIsProjective( a ) and IsProjective( a );[127X[104X
+    [4X[25Xgap>[125X [27XIsProjective( a );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xhomalg_matrix := HomalgMatrix( [ [ 1, 0, 0, 0 ],[127X[104X
     [4X[25X>[125X [27X                                  [ 0, 1, 0, -1 ],[127X[104X

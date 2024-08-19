@@ -5,8 +5,7 @@
   [1X6.1 [33X[0;0YConstructors of objects[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XS := HomalgRingOfIntegers();[127X[104X
-    [4X[28XZ[128X[104X
+    [4X[25Xgap>[125X [27XS := HomalgRingOfIntegers();;[127X[104X
     [4X[25Xgap>[125X [27Xrows := CategoryOfRows( S );[127X[104X
     [4X[28XRows( Z )[128X[104X
     [4X[25Xgap>[125X [27Xobj1 := CategoryOfRowsObject( 2, rows );[127X[104X

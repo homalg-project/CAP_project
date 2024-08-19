@@ -6,10 +6,10 @@
         [1X Freyd categories - Formal (co)kernels for additive categories [101X
   
   
-                                   2024.08-01
+                                   2024.08-02
   
   
-                                 15 August 2024
+                                 19 August 2024
   
   
                                 Sebastian Posur
@@ -173,8 +173,8 @@
     2.4 [33X[0;0YOperators[133X
       2.4-1 []
       2.4-2 [
-      2.4-3 \/
-      2.4-4 \/
+      2.4-3 /
+      2.4-4 /
     2.5 [33X[0;0YRandom methods for additive closure category[133X
       2.5-1 RandomObjectByList
       2.5-2 RandomObjectByInteger
@@ -203,8 +203,8 @@
       4.2-3 AdelmanCategoryMorphism
       4.2-4 AsAdelmanCategoryObject
       4.2-5 AsAdelmanCategoryMorphism
-      4.2-6 \/
-      4.2-7 \/
+      4.2-6 /
+      4.2-7 /
     4.3 [33X[0;0YAttributes and Properties[133X
       4.3-1 UnderlyingCategory
       4.3-2 RelationMorphism
@@ -302,10 +302,10 @@
     11.2 [33X[0;0YInternal Hom-Embedding[133X
       11.2-1 INTERNAL_HOM_EMBEDDING
     11.3 [33X[0;0YConvenient methods for tensor products of freyd objects and morphisms[133X
-      11.3-1 \*
-      11.3-2 \^
-      11.3-3 \*
-      11.3-4 \^
+      11.3-1 *
+      11.3-2 ^
+      11.3-3 *
+      11.3-4 ^
   12 [33X[0;0YExamples and Tests[133X
     12.1 [33X[0;0YAdelman category basics for category of rows[133X
     12.2 [33X[0;0YAdelman category basics for category of columns[133X

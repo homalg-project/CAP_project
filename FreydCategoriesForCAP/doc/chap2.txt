@@ -185,16 +185,16 @@
   some  additive  category  [23XC^\oplus[123X  and  two integers [23Xi,j[123X. The output is the
   [23X(i,j)[123X'th entry in [10XMorphismMatrix[110X([23X\alpha[123X).[133X
   
-  [1X2.4-3 \/[101X
+  [1X2.4-3 /[101X
   
-  [33X[1;0Y[29X[2X\/[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2X/[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
   
   [33X[0;0YThe  input  is  either  a list of objects or list of lists of morphisms. The
   method delegates to either [10XAdditiveClosureObject[110X or [10XAdditiveClosureMorphism[110X.[133X
   
-  [1X2.4-4 \/[101X
+  [1X2.4-4 /[101X
   
-  [33X[1;0Y[29X[2X\/[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2X/[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
   
   [33X[0;0YThis    is    a   convenience   method   for   [10XAsAdditiveClosureObject[110X   and
   [10XAsAdditiveClosureMorphism[110X.[133X

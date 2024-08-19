@@ -37,8 +37,8 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X81F049E878DD16BE">4.2-3 AdelmanCategoryMorphism</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7EC300AD85DE89C4">4.2-4 AsAdelmanCategoryObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7D1A3B698707A95C">4.2-5 AsAdelmanCategoryMorphism</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7C60A7A778E18DF0"><code>4.2-6 \/</code></a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7D33626787DF2809"><code>4.2-7 \/</code></a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7C60A7A778E18DF0">4.2-6 /</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7D33626787DF2809">4.2-7 /</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X7DC480E57D26429A">4.3 <span class="Heading">Attributes and Properties</span></a>
 </span>
@@ -153,18 +153,18 @@
 
 <p><a id="X7C60A7A778E18DF0" name="X7C60A7A778E18DF0"></a></p>
 
-<h5><code>4.2-6 \/</code></h5>
+<h5>4.2-6 /</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; \/</code>( <var class="Arg">a</var>, <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; /</code>( <var class="Arg">a</var>, <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: an object</p>
 
 <p>This is a convenience method. The first argument is an object <span class="Math">a</span> which either lies in an additive category <span class="Math">A</span> (which was not created as a Freyd category) or in a Freyd category <span class="Math">F</span> of an underlying additive category <span class="Math">A</span>. The second argument is an Adelman category <span class="Math">C</span> of <span class="Math">A</span>. If <span class="Math">a</span> lies in <span class="Math">A</span> this method returns <code class="code">AsAdelmanCategoryObject( a )</code>. If <span class="Math">a</span> lies in <span class="Math">F</span>, this method return an object in <span class="Math">C</span> whose relation morphism is the same as the relation morphism of <span class="Math">a</span>, and whose co-relation morphism is <span class="Math">0</span>.</p>
 
 <p><a id="X7D33626787DF2809" name="X7D33626787DF2809"></a></p>
 
-<h5><code>4.2-7 \/</code></h5>
+<h5>4.2-7 /</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; \/</code>( <var class="Arg">alpha</var>, <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; /</code>( <var class="Arg">alpha</var>, <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( x, y )</span></p>
 
 <p>This is a convenience method. The first argument is a morphism <span class="Math">\alpha</span> which lies in an additive category <span class="Math">A</span>. The second argument is an Adelman category <span class="Math">C</span> of <span class="Math">A</span>. This method returns <code class="code">AsAdelmanCategoryMorphism( alpha )</code>. We set <span class="Math">x = \mathrm{ AsAdelmanCategoryObject( Source( \alpha ) ) }</span> and <span class="Math">y = \mathrm{ AsAdelmanCategoryObject( Range( \alpha ) ) }</span>.</p>

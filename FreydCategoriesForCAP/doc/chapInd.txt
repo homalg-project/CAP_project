@@ -2,15 +2,15 @@
   
   [1XIndex[101X
   
-  [2X[[102X, for IsAdditiveClosureMorphism, IsInt, IsInt 2.4-2 
-  [2X[][102X, for IsAdditiveClosureObject, IsInt 2.4-1 
-  [2X\*[102X, for IsFreydCategoryMorphism, IsFreydCategoryMorphism 11.3-3 
+  [2X*[102X, for IsFreydCategoryMorphism, IsFreydCategoryMorphism 11.3-3 
       for IsFreydCategoryObject, IsFreydCategoryObject 11.3-1 
-  [2X\/[102X, for IsCapCategoryCell, IsAdditiveClosureCategory 2.4-4 
+  [2X/[102X, for IsCapCategoryCell, IsAdditiveClosureCategory 2.4-4 
       for IsCapCategoryMorphism, IsAdelmanCategory 4.2-7 
       for IsCapCategoryObject, IsAdelmanCategory 4.2-6 
       for IsList, IsAdditiveClosureCategory 2.4-3 
-  [2X\^[102X, for IsFreydCategoryMorphism, IsInt 11.3-4 
+  [2X[[102X, for IsAdditiveClosureMorphism, IsInt, IsInt 2.4-2 
+  [2X[][102X, for IsAdditiveClosureObject, IsInt 2.4-1 
+  [2X^[102X, for IsFreydCategoryMorphism, IsInt 11.3-4 
       for IsFreydCategoryObject, IsInt 11.3-2 
   [2XAddBiasedWeakFiberProduct[102X, for IsCapCategory, IsFunction 1.4-6 
   [2XAddBiasedWeakPushout[102X, for IsCapCategory, IsFunction 1.6-6 
