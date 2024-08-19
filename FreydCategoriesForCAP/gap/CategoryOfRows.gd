@@ -68,7 +68,7 @@ CapJitAddTypeSignature( "CategoryOfRowsMorphism", [ IsCategoryOfRows, IsCategory
     
 end );
 
-DeclareOperation( "\/",
+DeclareOperation( "/",
                   [ IsHomalgMatrix, IsCategoryOfRows ] );
 
 KeyDependentOperation( "StandardRowMorphism",
@@ -87,14 +87,14 @@ if false then
 #! The output is an object whose rank is a random element in <A>L</A>.
 #! @Returns an object in a category of rows
 #! @Arguments C, L
-DeclareOperation( RandomObjectByList, [ IsCategoryOfRows, IsList ] );
+DeclareOperation( "RandomObjectByList", [ IsCategoryOfRows, IsList ] );
 
 #! @Description
 #! The arguments are a category of rows <A>C</A> and a non-negative integer <A>n</A>.
 #! The output is an object whose rank is at most <A>n</A>.
 #! @Returns an object in a category of rows
 #! @Arguments C, n
-DeclareOperation( RandomObjectByInteger, [ IsCategoryOfRows, IsInt ] );
+DeclareOperation( "RandomObjectByInteger", [ IsCategoryOfRows, IsInt ] );
 
 #! @Description
 #! The arguments are two objects <A>S</A>, <A>R</A> and a list <A>L</A> of integers or elements in the underlying ring.
@@ -102,7 +102,7 @@ DeclareOperation( RandomObjectByInteger, [ IsCategoryOfRows, IsInt ] );
 #! matrices over the underlying ring.
 #! @Returns  a morphism in a category of rows
 #! @Arguments S, R, L
-DeclareOperation( RandomMorphismWithFixedSourceAndRangeByList, [ IsCategoryOfRowsObject, IsCategoryOfRowsObject, IsList ] );
+DeclareOperation( "RandomMorphismWithFixedSourceAndRangeByList", [ IsCategoryOfRowsObject, IsCategoryOfRowsObject, IsList ] );
 
 #! @Description
 #! The arguments are two objects <A>S</A>, <A>R</A> and an integer <A>n</A>.
@@ -110,7 +110,7 @@ DeclareOperation( RandomMorphismWithFixedSourceAndRangeByList, [ IsCategoryOfRow
 #! Particularly, the argument <A>n</A> will be disregarded.
 #! @Returns  a morphism in a category of rows
 #! @Arguments S, R, n
-DeclareOperation( RandomMorphismWithFixedSourceAndRangeByInteger, [ IsCategoryOfRowsObject, IsCategoryOfRowsObject, IsInt ] );
+DeclareOperation( "RandomMorphismWithFixedSourceAndRangeByInteger", [ IsCategoryOfRowsObject, IsCategoryOfRowsObject, IsInt ] );
 
 #! @Description
 #! The arguments are an object <A>S</A> and a list <A>L</A> consisting of two lists: a non-empty list of non-negative integers and a list of integers or elements in the underlying ring.
@@ -118,14 +118,14 @@ DeclareOperation( RandomMorphismWithFixedSourceAndRangeByInteger, [ IsCategoryOf
 #! The matrix of the morphism is an <A>L</A>[2]-linear combination of random matrices over the underlying ring.
 #! @Returns a morphism in a category of rows
 #! @Arguments S, L
-DeclareOperation( RandomMorphismWithFixedSourceByList, [ IsCategoryOfRowsObject, IsList ] );
+DeclareOperation( "RandomMorphismWithFixedSourceByList", [ IsCategoryOfRowsObject, IsList ] );
 
 #! @Description
 #! The arguments are an object <A>S</A> and a non-negative integer <A>n</A>.
 #! The output is a morphism from <A>S</A> to an object <A>R</A> whose rank is at most <A>n</A>.
 #! @Returns  a morphism in a category of rows
 #! @Arguments S, n
-DeclareOperation( RandomMorphismWithFixedSourceByInteger, [ IsCategoryOfRowsObject, IsInt ] );
+DeclareOperation( "RandomMorphismWithFixedSourceByInteger", [ IsCategoryOfRowsObject, IsInt ] );
 
 #! @Description
 #! The arguments are an object <A>R</A> and a list <A>L</A> consisting of two lists: a non-empty list of non-negative integers and a list of integers or elements in the underlying ring.
@@ -133,14 +133,14 @@ DeclareOperation( RandomMorphismWithFixedSourceByInteger, [ IsCategoryOfRowsObje
 #! The matrix of the morphism is an <A>L</A>[2]-linear combination of random matrices over the underlying ring.
 #! @Returns a morphism in a category of rows
 #! @Arguments R, L
-DeclareOperation( RandomMorphismWithFixedRangeByList, [ IsCategoryOfRowsObject, IsList ] );
+DeclareOperation( "RandomMorphismWithFixedRangeByList", [ IsCategoryOfRowsObject, IsList ] );
 
 #! @Description
 #! The arguments are an object <A>R</A> and a non-negative integer <A>n</A>.
 #! The output is a morphism to <A>R</A> from an object <A>S</A> whose rank is at most <A>n</A>.
 #! @Returns a morphism in a category of rows
 #! @Arguments R, n
-DeclareOperation( RandomMorphismWithFixedRangeByInteger, [ IsCategoryOfRowsObject, IsInt ] );
+DeclareOperation( "RandomMorphismWithFixedRangeByInteger", [ IsCategoryOfRowsObject, IsInt ] );
 
 #! @Description
 #! The arguments are a category of rows <A>C</A> and a list <A>L</A> consisting of 3 lists: two non-empty lists of non-negative integers and a list of integers or elements in the underlying ring.
@@ -148,14 +148,14 @@ DeclareOperation( RandomMorphismWithFixedRangeByInteger, [ IsCategoryOfRowsObjec
 #! Its matrix is an <A>L</A>[3]-linear combination of random matrices over the underlying ring.
 #! @Returns  a morphism in a category of rows
 #! @Arguments C, L
-DeclareOperation( RandomMorphismByList, [ IsCategoryOfRows, IsList ] );
+DeclareOperation( "RandomMorphismByList", [ IsCategoryOfRows, IsList ] );
 
 #! @Description
 #! The arguments are a category of rows <A>C</A> and a non-negative integer <A>n</A>.
 #! The output is a morphism whose source and range ranks are at most <A>n</A>.
 #! @Returns  a morphism in a category of rows
 #! @Arguments C, n
-DeclareOperation( RandomMorphismByInteger, [ IsCategoryOfRows, IsInt ] );
+DeclareOperation( "RandomMorphismByInteger", [ IsCategoryOfRows, IsInt ] );
 
 fi;
 

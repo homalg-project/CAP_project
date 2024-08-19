@@ -8,8 +8,7 @@ LoadPackage( "RingsForHomalg" );
 #####################################
 
 #! @Example
-S := HomalgRingOfIntegers();
-#! Z
+S := HomalgRingOfIntegers();;
 rows := CategoryOfRows( S );
 #! Rows( Z )
 obj1 := CategoryOfRowsObject( 2, rows );

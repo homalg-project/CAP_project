@@ -20,7 +20,11 @@ InstallMethod( RingAsCategory,
 InstallMethod( RING_AS_CATEGORY,
                [ IsRing ],
                
-  function( ring )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, ring )
     local category;
     
     category := CreateCapCategory( Concatenation( "RingAsCategory( ", String( ring )," )" ), IsRingAsCategory, IsRingAsCategoryObject, IsRingAsCategoryMorphism, IsCapCategoryTwoCell );
@@ -38,11 +42,15 @@ InstallMethod( RING_AS_CATEGORY,
     
     INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY( category );
     
-    Finalize( category );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        
+        Finalize( category );
+        
+    fi;
     
     return category;
     
-end );
+end ) );
 
 ##
 InstallMethod( RingAsCategoryUniqueObject,
@@ -296,6 +304,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
         
     fi;
     
+    #= comment for Julia
     if IsHomalgRing( ring ) and HasIsExteriorRing( ring ) and IsExteriorRing( ring ) and IsField( BaseRing( ring ) ) then
         
         field := BaseRing( ring );
@@ -339,6 +348,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
         AddCoefficientsOfMorphism( category, { cat, r } -> EntriesOfHomalgRowVector( CoercedMatrix( UnderlyingRing( cat ), field, CoefficientsWithGivenMonomials( HomalgMatrixListList( [ [ UnderlyingRingElement( r ) ] ], 1, 1, UnderlyingRing( cat ) ), BasisOverBaseFieldAsColumnVector( cat ) ) ) ) );
         
     fi;
+    # =#
     
     ## Random Methods
     

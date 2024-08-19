@@ -44,7 +44,9 @@ InstallGlobalFunction( NullMatImmutable, function ( arg... )
     
     null := ListWithIdenticalEntries( m, row );
     
+    #= comment for Julia
     MakeImmutable( null );
+    # =#
     
     return null;
     
@@ -78,7 +80,11 @@ InstallMethod( AdditiveClosure,
 InstallMethod( ADDITIVE_CLOSURE,
                [ IsCapCategory ],
                
-  function( underlying_category )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, underlying_category )
     local category, precompiled_towers, remaining_constructors_in_tower, precompiled_functions_adder, info;
     
     if not ( HasIsAbCategory( underlying_category ) and IsAbCategory( underlying_category ) ) then
@@ -134,11 +140,15 @@ InstallMethod( ADDITIVE_CLOSURE,
     
     HandlePrecompiledTowers( category, underlying_category, "AdditiveClosure" );
     
-    Finalize( category );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        
+        Finalize( category );
+        
+    fi;
     
     return category;
     
-end );
+end ) );
 
 ##
 InstallMethod( AsAdditiveClosureObject,
@@ -549,7 +559,7 @@ end );
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
   
   function( category )
-    local compare_morphisms, underlying_category, range_category, object_function, morphism_function, object_function_inverse, morphism_function_inverse;
+    local compare_morphisms, underlying_category, underlying_range_category, range_category, object_function, morphism_function, object_function_inverse, morphism_function_inverse;
     
     underlying_category := UnderlyingCategory( category );
     
@@ -985,18 +995,20 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     
     if HasRangeCategoryOfHomomorphismStructure( underlying_category ) then
         
+        underlying_range_category := RangeCategoryOfHomomorphismStructure( underlying_category );
+        
         # If the range category of the underlying category is not additive but pre-additive, we first apply AdditiveClosure to it.
         # See https://arxiv.org/abs/1908.04132 (Sebastian Posur: Methods of constructive category theory), Remark 1.28
-        if not (HasIsAdditiveCategory and IsAdditiveCategory)( RangeCategoryOfHomomorphismStructure( underlying_category ) ) and (HasIsAbCategory and IsAbCategory)( RangeCategoryOfHomomorphismStructure( underlying_category ) ) then
+        if not (HasIsAdditiveCategory( underlying_range_category ) and IsAdditiveCategory( underlying_range_category )) and HasIsAbCategory( underlying_range_category ) and IsAbCategory( underlying_range_category ) then
             
-            if IsIdenticalObj( underlying_category, RangeCategoryOfHomomorphismStructure( underlying_category ) ) then
+            if IsIdenticalObj( underlying_category, underlying_range_category ) then
                 
                 # prevent infinite recursion
                 range_category := category;
                 
             else
                 
-                range_category := AdditiveClosure( RangeCategoryOfHomomorphismStructure( underlying_category ) );
+                range_category := AdditiveClosure( underlying_range_category );
                 
             fi;
             
@@ -1049,7 +1061,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
             
         else
             
-            range_category := RangeCategoryOfHomomorphismStructure( underlying_category );
+            range_category := underlying_range_category;
             
             ExtendRangeOfHomomorphismStructureByIdentityAsFullEmbedding( underlying_category );
             
@@ -1058,8 +1070,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         SetRangeCategoryOfHomomorphismStructure( category, range_category );
         SetIsEquippedWithHomomorphismStructure( category, true );
         
-        if ForAll( [ "DirectSum" ], f -> CanCompute( range_category, f ) )
-           and  ForAll( [ "HomomorphismStructureOnObjects" ], f -> CanCompute( underlying_category, f ) ) then
+        if ForAll( [ "DirectSum" ], f -> CanCompute( range_category, f ) ) and
+           ForAll( [ "HomomorphismStructureOnObjects" ], f -> CanCompute( underlying_category, f ) ) then
             
             ##
             AddHomomorphismStructureOnObjects( category,
@@ -1078,9 +1090,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         fi;
         
         # legacy
-        if ForAll( [ "MorphismBetweenDirectSumsWithGivenDirectSums" ], f -> CanCompute( range_category, f ) )
-           and  ForAll( [ "HomomorphismStructureOnMorphismsWithGivenObjects" ], f -> CanCompute( underlying_category, f ) )
-           and not (IsBound( range_category!.supports_empty_limits ) and range_category!.supports_empty_limits = true) then
+        if ForAll( [ "MorphismBetweenDirectSumsWithGivenDirectSums" ], f -> CanCompute( range_category, f ) ) and
+           ForAll( [ "HomomorphismStructureOnMorphismsWithGivenObjects" ], f -> CanCompute( underlying_category, f ) ) and
+           not (IsBound( range_category!.supports_empty_limits ) and range_category!.supports_empty_limits = true) then
             
             ##
             AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
@@ -1196,13 +1208,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
             
         fi;
         
-        if ForAll( [ "UniversalMorphismIntoZeroObject", 
-                     "UniversalMorphismIntoDirectSum" ], 
-                     f -> CanCompute( range_category, f ) )
-           and ForAll( [ "DistinguishedObjectOfHomomorphismStructure", 
+        if ForAll( [ "UniversalMorphismIntoZeroObject",
+                     "UniversalMorphismIntoDirectSum" ],
+                     f -> CanCompute( range_category, f ) ) and
+           ForAll( [ "DistinguishedObjectOfHomomorphismStructure",
                          "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" ],
-                         f -> CanCompute( underlying_category, f ) )
-           and not (IsBound( range_category!.supports_empty_limits ) and range_category!.supports_empty_limits = true) then
+                         f -> CanCompute( underlying_category, f ) ) and
+           not (IsBound( range_category!.supports_empty_limits ) and range_category!.supports_empty_limits = true) then
             
             ##
             AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
@@ -1234,11 +1246,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         fi;
         
         if ForAll( [ "UniversalMorphismIntoDirectSum" ],
-                     f -> CanCompute( range_category, f ) )
-           and ForAll( [ "DistinguishedObjectOfHomomorphismStructure",
+                     f -> CanCompute( range_category, f ) ) and
+           ForAll( [ "DistinguishedObjectOfHomomorphismStructure",
                          "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" ],
-                         f -> CanCompute( underlying_category, f ) )
-           and IsBound( range_category!.supports_empty_limits ) and range_category!.supports_empty_limits = true then
+                         f -> CanCompute( underlying_category, f ) ) and
+           IsBound( range_category!.supports_empty_limits ) and range_category!.supports_empty_limits = true then
             
             ##
             AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( category,
@@ -1284,8 +1296,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         
         if ForAll( [ "HomomorphismStructureOnObjects",
                      "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ],
-                     f -> CanCompute( underlying_category, f ) )
-           and ForAll( [ "PreCompose",
+                     f -> CanCompute( underlying_category, f ) ) and
+           ForAll( [ "PreCompose",
                          "ProjectionInFactorOfDirectSum" ],
                          f -> CanCompute( range_category, f ) ) then
             
@@ -1493,6 +1505,7 @@ InstallMethod( Display,
     
 end );
 
+#= comment for Julia
 ##
 InstallMethod( LaTeXOutput,
           [ IsAdditiveClosureObject ],
@@ -1554,6 +1567,7 @@ InstallMethod( LaTeXOutput,
             );
     
 end );
+# =#
 
 ####################################
 ##

@@ -38,10 +38,12 @@ InstallMethod( CategoryOfRows,
             
             ADD_FUNCTIONS_FOR_CategoryOfRows_as_AdditiveClosure_RingAsCategory_CommutativeRing_precompiled( cat );
             
+        #= comment for Julia
         elif HasIsExteriorRing( homalg_ring ) and IsExteriorRing( homalg_ring ) and IsField( BaseRing( homalg_ring ) ) then
             
             ADD_FUNCTIONS_FOR_CategoryOfRows_as_AdditiveClosure_RingAsCategory_HomalgExteriorRingOverField_precompiled( cat );
             
+        # =#
         else
             
             ADD_FUNCTIONS_FOR_CategoryOfRows_as_AdditiveClosure_RingAsCategory_ArbitraryRing_precompiled( cat );
@@ -773,7 +775,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
       AddEpimorphismFromSomeProjectiveObject( category, { cat, obj } -> IdentityMorphism( cat, obj ) );
       
       ##
-      AddIsProjective( category, { cat, obj } -> true );
+      AddIsProjective( category, { cat, obj } -> true, 1 );
       
       ##
       AddSomeInjectiveObject( category, { cat, obj } -> obj );
@@ -782,7 +784,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
       AddMonomorphismIntoSomeInjectiveObject( category, { cat, obj } -> IdentityMorphism( cat, obj ) );
       
       ##
-      AddIsInjective( category, { cat, obj } -> true );
+      AddIsInjective( category, { cat, obj } -> true, 1 );
       
       ##
       AddKernelObject( category,
@@ -973,6 +975,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
     fi;
     
+    #= comment for Julia
     if HasIsExteriorRing( ring ) and IsExteriorRing( ring ) and IsField( BaseRing( ring ) ) then
         
         Assert( 0, IsLinearCategoryOverCommutativeRing( category ) );
@@ -989,6 +992,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         end );
         
     fi;
+    # =#
     
     ## Operations related to tensor structure
     
@@ -1446,7 +1450,7 @@ AddFinalDerivationBundle( "Using BasisOfExternalHom and CoefficientsOfMorphism t
     function ( cat )
       
       if not IsCategoryOfRows( cat ) and
-         (HasIsEquippedWithHomomorphismStructure and IsEquippedWithHomomorphismStructure)( cat ) and
+         HasIsEquippedWithHomomorphismStructure( cat ) and IsEquippedWithHomomorphismStructure( cat ) and
          HasRangeCategoryOfHomomorphismStructure( cat ) and
          IsCategoryOfRows( RangeCategoryOfHomomorphismStructure( cat ) ) and
          HasIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( cat ) and IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( cat ) and
@@ -1512,12 +1516,12 @@ InstallMethod( ViewString,
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
                [ IsCategoryOfRowsObject ],
                
   function( category_of_rows_object )
     
-    Display( String( category_of_rows_object ) );
+    return Concatenation( String( category_of_rows_object ), "\n" );
     
 end );
 
@@ -1531,6 +1535,7 @@ InstallMethod( LaTeXOutput,
     
 end );
 
+#= comment for Julia
 ##
 InstallMethod( LaTeXOutput,
                [ IsCategoryOfRowsMorphism ],
@@ -1561,7 +1566,7 @@ InstallMethod( LaTeXOutput,
     fi;
     
 end );
-
+# =#
 
 ####################################
 ##

@@ -117,7 +117,7 @@ gap> alpha := CategoryOfRowsMorphism( a, HomalgMatrix( [ 2 .. 7 ], RankOfObject(
 gap> beta := CategoryOfRowsMorphism( c, HomalgMatrix( [ 8 .. 31 ], RankOfObject( c ), RankOfObject( d ), Q ), d );;
 gap> gamma := CategoryOfRowsMorphism( a_tensor_b, HomalgMatrix( [ 2 .. 7 ], RankOfObject( a_tensor_b ), RankOfObject( u ), Q ), u );;
 gap> delta := CategoryOfRowsMorphism( c_tensor_d, HomalgMatrix( [ 8 .. 31 ], RankOfObject( c_tensor_d ), RankOfObject( u ), Q ), u );;
-gap> epsilon := CategoryOfRowsMorphism( u, HomalgMatrix( [ 2 .. 7], RankOfObject( u ), RankOfObject( hom_ab ), Q ), hom_ab );;
+gap> epsilon := CategoryOfRowsMorphism( u, HomalgMatrix( [ 2 .. 7 ], RankOfObject( u ), RankOfObject( hom_ab ), Q ), hom_ab );;
 gap> zeta := CategoryOfRowsMorphism( u, HomalgMatrix( [ 8 .. 31 ], RankOfObject( u ), RankOfObject( hom_cd ), Q ), hom_cd );;
 
 gap> ClosedMonoidalCategoriesTest( rows, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;

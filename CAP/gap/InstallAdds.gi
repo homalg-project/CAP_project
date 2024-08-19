@@ -542,7 +542,17 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 
             fi;
             
-            install_func( i[ 1 ], i[ 2 ] );
+            if IsEmpty( i[2] ) then
+                
+                install_func( i[ 1 ], i[ 2 ] );
+                
+            else
+                
+                #= comment for Julia
+                install_func( i[ 1 ], i[ 2 ] );
+                # =#
+                
+            fi;
             
         od;
         
@@ -562,6 +572,9 @@ InstallGlobalFunction( CapInternalInstallAdd,
             category!.primitive_operations.( function_name ) := true;
             
         fi;
+        
+        # return void for Julia
+        return;
         
     end ) );
     

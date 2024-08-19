@@ -66,9 +66,9 @@ DeclareAttribute( "PositionWithinElements",
 ####################################
 
 ##
-DeclareOperation( "\*",
+DeclareOperation( "*",
                   [ IsGroupAsCategoryMorphism, IsGroupAsCategoryMorphism ] );
 
 ##
-DeclareOperation( "\/",
+DeclareOperation( "/",
                   [ IsObject, IsGroupAsCategory ] );

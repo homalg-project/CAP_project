@@ -65,9 +65,9 @@ DeclareAttribute( "Size",
 ####################################
 
 ##
-DeclareOperation( "\*",
+DeclareOperation( "*",
                   [ IsProSetAsCategoryMorphism, IsProSetAsCategoryMorphism ] );
 
 ##
-DeclareOperation( "\/",
+DeclareOperation( "/",
                   [ IsInt, IsProSetAsCategory ] );

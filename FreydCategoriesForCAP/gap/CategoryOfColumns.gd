@@ -68,7 +68,7 @@ CapJitAddTypeSignature( "CategoryOfColumnsMorphism", [ IsCategoryOfColumns, IsCa
     
 end );
 
-DeclareOperation( "\/",
+DeclareOperation( "/",
                   [ IsHomalgMatrix, IsCategoryOfColumns ] );
 
 ####################################

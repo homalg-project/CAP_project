@@ -264,7 +264,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
         ## Precomputatation of the multiplication maps
         ## [g,h] -> List encoding the multiplication map (x -> G[g] * x * G[h])
         
-        if size <= 120 then ## take Size( SymmetricGroup( 5 ) ) as a first guess
+        ## take Size( SymmetricGroup( 5 ) ) as a first guess
+        if size <= 120 then
             
             ## heavy precomputation, only do for reasonable sizes
             

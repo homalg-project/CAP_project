@@ -12,11 +12,13 @@ ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfColumns.gi" );
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfColumns_as_Opposite_CategoryOfRows.gi" );
 
 # include the packages for graded rows and columns
+#= comment for Julia
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfGradedRowsAndColumns/GradedRowOrColumn.gi" );
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfGradedRowsAndColumns/GradedRowOrColumnMorphism.gi" );
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfGradedRowsAndColumns/CategoryOfGradedRows.gi" );
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfGradedRowsAndColumns/CategoryOfGradedColumns.gi" );
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfGradedRowsAndColumns/Tools.gi" );
+# =#
 
 ReadPackage( "FreydCategoriesForCAP", "gap/FreydCategoriesDerivedMethods.gi" );
 
@@ -30,7 +32,9 @@ ReadPackage( "FreydCategoriesForCAP", "gap/CokernelImageClosure.gi" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/AdelmanCategory.gi" );
 
+#= comment for Julia
 ReadPackage( "FreydCategoriesForCAP", "gap/GradedModulePresentationsByFreyd/GradedModulePresentationsByFreyd.gi" );
+# =#
 
 ReadPackage( "FreydCategoriesForCAP", "gap/RingsAsAbCats.gi" );
 

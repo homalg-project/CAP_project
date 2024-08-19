@@ -69,13 +69,13 @@ DeclareAttribute( "PseudoInverse",
 ####################################
 
 ##
-DeclareOperation( "\/",
+DeclareOperation( "/",
                   [ IsCapCategoryObject, IsRelCategory ] );
 
 ##
-DeclareOperation( "\/",
+DeclareOperation( "/",
                   [ IsCapCategoryMorphism, IsRelCategory ] );
 
 ##
-DeclareOperation( "\/",
+DeclareOperation( "/",
                   [ IsRelCategory, IsCapCategoryMorphism ] );

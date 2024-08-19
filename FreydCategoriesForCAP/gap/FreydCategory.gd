@@ -79,10 +79,10 @@ DeclareAttribute( "EmbeddingFunctorIntoFreydCategory",
                   IsCapCategory );
 
 ##
-DeclareOperation( "\/",
+DeclareOperation( "/",
                   [ IsCapCategoryMorphism, IsFreydCategory ] );
 
-DeclareOperation( "\/",
+DeclareOperation( "/",
                   [ IsHomalgMatrix, IsFreydCategory ] );
 
 ####################################
@@ -160,7 +160,7 @@ if false then
 #! <C>RandomMorphismByList</C>(<A>underlying_cat</A>, <A>L</A>).
 #! @Returns an object in a Freyd category
 #! @Arguments cat, L
-DeclareOperation( RandomObjectByList, [ IsFreydCategory, IsList ] );
+DeclareOperation( "RandomObjectByList", [ IsFreydCategory, IsList ] );
 
 #! @Description
 #! The arguments are a Freyd category <A>cat</A> of a category <A>underlying_cat</A> and an integer <A>n</A>.
@@ -168,7 +168,7 @@ DeclareOperation( RandomObjectByList, [ IsFreydCategory, IsList ] );
 #! <C>RandomMorphismByInteger</C>(<A>underlying_cat</A>, <A>n</A>).
 #! @Returns an object in a Freyd category
 #! @Arguments cat, n
-DeclareOperation( RandomObjectByInteger, [ IsFreydCategory, IsInt ] );
+DeclareOperation( "RandomObjectByInteger", [ IsFreydCategory, IsInt ] );
 
 #! @Description
 #! The arguments are two objects <A>S</A> and <A>R</A> in a Freyd category <A>cat</A> of a category <A>underlying_cat</A> and a list <A>L</A>.
@@ -180,7 +180,7 @@ DeclareOperation( RandomObjectByInteger, [ IsFreydCategory, IsInt ] );
 #!   $\eta:1\to H(S,R)$ is a random morphism constructed via <C>RandomMorphismWithFixedSourceAndRangeByList</C>($1$,$H(S,R)$,<A>L</A>).
 #! @Returns  a morphism in a Freyd category
 #! @Arguments S, R, L
-DeclareOperation( RandomMorphismWithFixedSourceAndRangeByList, [ IsFreydCategoryObject, IsFreydCategoryObject, IsList ] );
+DeclareOperation( "RandomMorphismWithFixedSourceAndRangeByList", [ IsFreydCategoryObject, IsFreydCategoryObject, IsList ] );
 
 #! @Description
 #! The arguments are two objects <A>S</A> and <A>R</A> in a Freyd category <A>cat</A> of a category <A>underlying_cat</A> and an integer <A>n</A>.
@@ -192,7 +192,7 @@ DeclareOperation( RandomMorphismWithFixedSourceAndRangeByList, [ IsFreydCategory
 #!   $\eta:1\to H(S,R)$ is a random morphism constructed via <C>RandomMorphismWithFixedSourceAndRangeByInteger</C>($1$,$H(S,R)$,<A>n</A>).
 #! @Returns  a morphism in a Freyd category
 #! @Arguments S, R, n
-DeclareOperation( RandomMorphismWithFixedSourceAndRangeByInteger, [ IsFreydCategoryObject, IsFreydCategoryObject, IsInt ] );
+DeclareOperation( "RandomMorphismWithFixedSourceAndRangeByInteger", [ IsFreydCategoryObject, IsFreydCategoryObject, IsInt ] );
 
 #! @Description
 #! The arguments are an object <A>S</A> in a Freyd category <A>cat</A> of a category <A>underlying_cat</A> and a list <A>L</A>.
@@ -204,7 +204,7 @@ DeclareOperation( RandomMorphismWithFixedSourceAndRangeByInteger, [ IsFreydCateg
 #! The output is a morphism $S \to R$ in <A>cat</A> whose morphism datum is $\delta \circ \mu_1$ and whose range's relation morphism is $\delta \circ \mu_2$.
 #! @Returns  a morphism in a Freyd category
 #! @Arguments S, L
-DeclareOperation( RandomMorphismWithFixedSourceByList, [ IsFreydCategoryObject, IsList ] );
+DeclareOperation( "RandomMorphismWithFixedSourceByList", [ IsFreydCategoryObject, IsList ] );
 
 #! @Description
 #! The arguments are an object <A>S</A> in a Freyd category <A>cat</A> of a category <A>underlying_cat</A> and an integer <A>n</A>.
@@ -216,7 +216,7 @@ DeclareOperation( RandomMorphismWithFixedSourceByList, [ IsFreydCategoryObject, 
 #! The output is a morphism $S \to R$ in <A>cat</A> whose morphism datum is $\delta \circ \mu_1$ and whose range's relation morphism is $\delta \circ \mu_2$.
 #! @Returns  a morphism in a Freyd category
 #! @Arguments S, n
-DeclareOperation( RandomMorphismWithFixedSourceByInteger, [ IsFreydCategoryObject, IsInt ] );
+DeclareOperation( "RandomMorphismWithFixedSourceByInteger", [ IsFreydCategoryObject, IsInt ] );
 
 #! @Description
 #! The arguments are an object <A>R</A> in a Freyd category <A>cat</A> of a category <A>underlying_cat</A> and a list <A>L</A>.
@@ -228,7 +228,7 @@ DeclareOperation( RandomMorphismWithFixedSourceByInteger, [ IsFreydCategoryObjec
 #! The output is a morphism $S \to R$ in <A>cat</A> whose morphism datum is $\rho$ and whose source's relation morphism is $\rho_S \circ \delta$.
 #! @Returns a morphism in a Freyd category
 #! @Arguments R, L
-DeclareOperation( RandomMorphismWithFixedRangeByList, [ IsFreydCategoryObject, IsList ] );
+DeclareOperation( "RandomMorphismWithFixedRangeByList", [ IsFreydCategoryObject, IsList ] );
 
 #! @Description
 #! The arguments are an object <A>R</A> in a Freyd category <A>cat</A> of a category <A>underlying_cat</A> and an integer <A>n</A>.
@@ -240,7 +240,7 @@ DeclareOperation( RandomMorphismWithFixedRangeByList, [ IsFreydCategoryObject, I
 #! The output is a morphism $S \to R$ in <A>cat</A> whose morphism datum is $\rho$ and whose source's relation morphism is $\rho_S \circ \delta$.
 #! @Returns a morphism in a Freyd category
 #! @Arguments R, n
-DeclareOperation( RandomMorphismWithFixedRangeByInteger, [ IsFreydCategoryObject, IsInt ] );
+DeclareOperation( "RandomMorphismWithFixedRangeByInteger", [ IsFreydCategoryObject, IsInt ] );
 
 #! @Description
 #! The arguments are a Freyd category <A>cat</A> and a list <A>L</A> consisting of three lists.
@@ -248,7 +248,7 @@ DeclareOperation( RandomMorphismWithFixedRangeByInteger, [ IsFreydCategoryObject
 #! $S$ is constructed via <C>RandomObjectByList</C>(<A>cat</A>,<A>L</A>[1]) and $R$ via <C>RandomObjectByList</C>(<A>cat</A>,<A>L</A>[2]).
 #! @Returns  a morphism in a Freyd category
 #! @Arguments cat, L
-DeclareOperation( RandomMorphismByList, [ IsFreydCategory, IsList ] );
+DeclareOperation( "RandomMorphismByList", [ IsFreydCategory, IsList ] );
 
 #! @Description
 #! The arguments are a Freyd category <A>cat</A> and an integer <A>n</A>.
@@ -256,7 +256,7 @@ DeclareOperation( RandomMorphismByList, [ IsFreydCategory, IsList ] );
 #! $S$ and $R$ are random objects constructed via <C>RandomObjectByInteger</C>(<A>cat</A>,<A>n</A>).
 #! @Returns  a morphism in a Freyd category
 #! @Arguments cat, n
-DeclareOperation( RandomMorphismByInteger, [ IsFreydCategory, IsInt ] );
+DeclareOperation( "RandomMorphismByInteger", [ IsFreydCategory, IsInt ] );
 
 fi;
 
@@ -286,17 +286,17 @@ DeclareOperationWithCache( "INTERNAL_HOM_EMBEDDING",
 ####################################################################################
 
 #!
-DeclareOperation( "\*",
+DeclareOperation( "*",
                [ IsFreydCategoryObject, IsFreydCategoryObject ] );
 
 #!
-DeclareOperation( "\^",
+DeclareOperation( "^",
                [ IsFreydCategoryObject, IsInt ] );
 
 #!
-DeclareOperation( "\*",
+DeclareOperation( "*",
                [ IsFreydCategoryMorphism, IsFreydCategoryMorphism ] );
 
 #!
-DeclareOperation( "\^",
+DeclareOperation( "^",
                [ IsFreydCategoryMorphism, IsInt ] );
