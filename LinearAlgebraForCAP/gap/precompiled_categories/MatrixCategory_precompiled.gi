@@ -2616,7 +2616,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 201 : IsPrecompiledDerivation := true );
+    , 3 : IsPrecompiledDerivation := true );
     
     ##
     AddIsCodominating( cat,
@@ -2823,7 +2823,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 1 );
     
     ##
     AddIsIsomorphicForObjects( cat,
@@ -2902,7 +2902,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 1 );
     
     ##
     AddIsSplitEpimorphism( cat,
