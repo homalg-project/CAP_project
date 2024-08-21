@@ -504,7 +504,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 1 );
     
     ##
     AddIsLiftable( cat,
@@ -526,7 +526,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 1 );
     
     ##
     AddIsWellDefinedForMorphisms( cat,
