@@ -28,6 +28,19 @@ InstallMethod( CategoryOfRows,
     # this cache replaces the KeyDependentOperation caching when using ObjectConstructor directly instead of CategoryOfRowsObject
     SetCachingToWeak( cat, "ObjectConstructor" );
     
+    # the folowing properties are not (yet) handled by AdditiveClosure
+    if HasIsCommutative( homalg_ring ) and IsCommutative( homalg_ring ) then
+        
+        SetIsStrictMonoidalCategory( cat, true );
+        
+        SetIsRigidSymmetricClosedMonoidalCategory( cat, true );
+        
+        SetIsRigidSymmetricCoclosedMonoidalCategory( cat, true );
+        
+    fi;
+    
+    INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS( cat );
+    
     if ValueOption( "no_precompiled_code" ) <> true then
         
         if HasIsFieldForHomalg( homalg_ring ) and IsFieldForHomalg( homalg_ring ) then
@@ -51,19 +64,6 @@ InstallMethod( CategoryOfRows,
         fi;
         
     fi;
-    
-    # the folowing properties are not (yet) handled by AdditiveClosure
-    if HasIsCommutative( homalg_ring ) and IsCommutative( homalg_ring ) then
-        
-        SetIsStrictMonoidalCategory( cat, true );
-        
-        SetIsRigidSymmetricClosedMonoidalCategory( cat, true );
-        
-        SetIsRigidSymmetricCoclosedMonoidalCategory( cat, true );
-        
-    fi;
-    
-    INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS( cat );
     
     Finalize( cat );
     
