@@ -242,7 +242,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
             
             # Not all derivations are properly dualized, so it can happen that a derivation for the dual of an operation is cheaper than the operation.
             # This would automatically be fixed by https://github.com/homalg-project/CAP_project/issues/1078.
-            if not WasCreatedAsOppositeCategory( category ) then
+            #if not WasCreatedAsOppositeCategory( category ) then
                 
                 Print( "WARNING: Ignoring a function added for ", function_name, " with weight ", weight, " to \"", Name( category ), "\" because there already is a function installed with weight ", CurrentOperationWeight( category!.derivations_weight_list, function_name ), "." );
                 
@@ -253,8 +253,9 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 fi;
                 
                 Print( "\n" );
+                Error("asd");
                 
-            fi;
+            #fi;
             
             return;
             
@@ -265,7 +266,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
             
             # Not all derivations are properly dualized, so it can happen that a derivation for the dual of an operation is cheaper than the operation.
             # This would automatically be fixed by https://github.com/homalg-project/CAP_project/issues/1078.
-            if not WasCreatedAsOppositeCategory( category ) then
+            #if not WasCreatedAsOppositeCategory( category ) then
                 
                 Print( "WARNING: Overriding a function for ", function_name, " primitively added to \"", Name( category ), "\" with a derivation." );
                 
@@ -277,7 +278,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 
                 Print( "\n" );
                 
-            fi;
+            #fi;
             
         fi;
         

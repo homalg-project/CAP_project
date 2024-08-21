@@ -24,7 +24,7 @@ BindGlobal( "IsCapTerminalCategoryMorphismRep", IsMorphismInCapTerminalCategoryW
 
 InstallGlobalFunction( CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY,
   function( input_record )
-    local completed_record, list_of_operations_to_install, skip, info, properties, excluded_properties, T, operation_name;
+    local completed_record, list_of_operations_to_install, skip, info, properties, excluded_properties, T, operation_name, operation;
     
     completed_record := ShallowCopy( input_record );
     
@@ -66,6 +66,14 @@ InstallGlobalFunction( CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY,
     
     completed_record.list_of_operations_to_install := list_of_operations_to_install;
     
+    completed_record.operation_weights := rec( );
+    
+    for operation in list_of_operations_to_install do
+        
+        completed_record.operation_weights.(operation) := 1;
+        
+    od;
+    
     properties := Set( List( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST, a -> a[1] ) );
     
     if IsBound( completed_record.excluded_properties ) then
@@ -100,7 +108,7 @@ InstallGlobalFunction( CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY,
         ## equality of source and target is part of the specification of the input and checked by the pre-function
         return true;
         
-    end );
+    end, 1 );
     
     return T;
     
@@ -208,7 +216,7 @@ InstallGlobalFunction( TerminalCategoryWithSingleObject, FunctionWithNamedArgume
         
         return true;
         
-    end );
+    end, 1 );
     
     ##
     AddIsWellDefinedForMorphisms( T,
@@ -216,7 +224,7 @@ InstallGlobalFunction( TerminalCategoryWithSingleObject, FunctionWithNamedArgume
         
         return true;
         
-    end );
+    end, 1 );
     
     ##
     AddIsEqualForObjects( T,
@@ -224,7 +232,7 @@ InstallGlobalFunction( TerminalCategoryWithSingleObject, FunctionWithNamedArgume
         
         return true;
         
-    end );
+    end, 1 );
     
     ##
     AddIsEqualForMorphisms( T,
@@ -232,7 +240,7 @@ InstallGlobalFunction( TerminalCategoryWithSingleObject, FunctionWithNamedArgume
         
         return true;
         
-    end );
+    end, 1 );
     
     ##
     AddMorphismsOfExternalHom( T,
@@ -240,7 +248,7 @@ InstallGlobalFunction( TerminalCategoryWithSingleObject, FunctionWithNamedArgume
         
         return [ UniqueMorphism( T ) ];
         
-    end );
+    end, 2 );
     
     if CAP_NAMED_ARGUMENTS.FinalizeCategory then
         
