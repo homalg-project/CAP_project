@@ -67,7 +67,7 @@ Display( CokernelObject( co_freyd_mor ) );
 #! Range: 
 #! A row module over Z of rank 0
 #! 
-#! A zero, split epi-, split monomorphism in Rows( Z )
+#! A morphism in Rows( Z )
 #! 
 #! 
 #! --------------------------------
@@ -86,6 +86,6 @@ Display( UnderlyingMorphism( CokernelProjection( co_freyd_mor ) ) );
 #! Range: 
 #! A row module over Z of rank 0
 #! 
-#! A zero, split epimorphism in Rows( Z )
+#! A morphism in Rows( Z )
 
 #! @EndExample
