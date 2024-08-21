@@ -540,7 +540,7 @@
     [4X[28XRange: [128X[104X
     [4X[28XA row module over Z of rank 0[128X[104X
     [4X[28X[128X[104X
-    [4X[28XA zero, split epi-, split monomorphism in Rows( Z )[128X[104X
+    [4X[28XA morphism in Rows( Z )[128X[104X
     [4X[28X[128X[104X
     [4X[28X[128X[104X
     [4X[28X--------------------------------[128X[104X
@@ -559,7 +559,7 @@
     [4X[28XRange: [128X[104X
     [4X[28XA row module over Z of rank 0[128X[104X
     [4X[28X[128X[104X
-    [4X[28XA zero, split epimorphism in Rows( Z )[128X[104X
+    [4X[28XA morphism in Rows( Z )[128X[104X
   [4X[32X[104X
   
   
