@@ -372,7 +372,7 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects, FunctionWithNamedArg
     
     excluded_properties := Concatenation( excluded_strict_properties, excluded_skeletal_properties );
     
-    range_cat := TerminalCategoryWithSingleObject( : FinalizeCategory := true );
+    range_cat := TerminalCategoryWithSingleObject( );
     
     T := CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY( rec(
                  name := name,

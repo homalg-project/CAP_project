@@ -20,7 +20,11 @@ ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CategoryOfRows
 InstallMethod( CategoryOfRows,
                [ IsHomalgRing ],
                
-  function( homalg_ring )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, homalg_ring )
     local cat;
     
     cat := CategoryOfRows_as_AdditiveClosure_RingAsCategory( homalg_ring : FinalizeCategory := false );
@@ -65,11 +69,15 @@ InstallMethod( CategoryOfRows,
         
     fi;
     
-    Finalize( cat );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        
+        Finalize( cat );
+        
+    fi;
     
     return cat;
     
-end );
+end ) );
 
 ##
 InstallOtherMethod( CategoryOfRowsObject,

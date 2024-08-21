@@ -20,7 +20,11 @@ ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CategoryOfColu
 InstallMethod( CategoryOfColumns,
                [ IsHomalgRing ],
                
-  function( homalg_ring )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, homalg_ring )
     local cat;
     
     cat := CategoryOfColumns_as_Opposite_CategoryOfRows( homalg_ring : FinalizeCategory := false );
@@ -47,11 +51,15 @@ InstallMethod( CategoryOfColumns,
         
     fi;
     
-    Finalize( cat );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        
+        Finalize( cat );
+        
+    fi;
     
     return cat;
     
-end );
+end ) );
 
 ##
 InstallOtherMethod( CategoryOfColumnsObject,

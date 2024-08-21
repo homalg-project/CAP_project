@@ -14,12 +14,16 @@
 InstallMethod( CategoryOfColumns_as_Opposite_CategoryOfRows,
                [ IsHomalgRing ],
                
-  function( homalg_ring )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, homalg_ring )
     local rows, op, object_constructor, modeling_tower_object_constructor, object_datum, modeling_tower_object_datum, morphism_constructor, modeling_tower_morphism_datum, morphism_datum, modeling_tower_morphism_constructor, category_object_filter, wrapper;
     
-    rows := CategoryOfRows( homalg_ring : FinalizeCategory := true );
+    rows := CategoryOfRows( homalg_ring );
     
-    op := Opposite( rows : only_primitive_operations := true, FinalizeCategory := true );
+    op := Opposite( rows : only_primitive_operations := true );
     
     ##
     object_constructor := function( cat, rank )
@@ -148,11 +152,15 @@ InstallMethod( CategoryOfColumns_as_Opposite_CategoryOfRows,
     
     INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_CATEGORY_OF_ROWS( wrapper );
     
-    Finalize( wrapper );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        
+        Finalize( wrapper );
+        
+    fi;
     
     return wrapper;
     
-end );
+end ) );
 
 ####################################
 ##

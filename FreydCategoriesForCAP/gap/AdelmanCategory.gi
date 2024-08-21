@@ -14,7 +14,11 @@
 InstallMethod( AdelmanCategory,
                [ IsCapCategory ],
 
-  function( underlying_category )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, underlying_category )
     local adelman_category, func;
     
     if not HasIsAdditiveCategory( underlying_category ) then
@@ -71,11 +75,15 @@ InstallMethod( AdelmanCategory,
     
     HandlePrecompiledTowers( adelman_category, underlying_category, "AdelmanCategory" );
     
-    Finalize( adelman_category );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        
+        Finalize( adelman_category );
+        
+    fi;
     
     return adelman_category;
     
-end );
+end ) );
 
 
 ##
@@ -816,7 +824,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
                       ],
                    f -> CanCompute( range_category, f ) )  then
             
-            SetRangeCategoryOfHomomorphismStructure( category, FreydCategory( range_category : FinalizeCategory := true ) );
+            SetRangeCategoryOfHomomorphismStructure( category, FreydCategory( range_category ) );
             SetIsEquippedWithHomomorphismStructure( category, true );
             
             homomorphism_structure_derivation_case := "apply_freyd";

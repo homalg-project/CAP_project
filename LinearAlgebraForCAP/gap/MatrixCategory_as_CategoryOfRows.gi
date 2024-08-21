@@ -14,10 +14,14 @@
 InstallMethod( MatrixCategory_as_CategoryOfRows,
                [ IsFieldForHomalg ],
                
-  function( homalg_ring )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, homalg_ring )
     local rows, object_constructor, modeling_tower_object_constructor, object_datum, modeling_tower_object_datum, morphism_constructor, modeling_tower_morphism_constructor, morphism_datum, modeling_tower_morphism_datum, wrapper;
     
-    rows := CategoryOfRows( homalg_ring : FinalizeCategory := true, no_precompiled_code := false ); # we do not want to recompile CategoryOfRows
+    rows := CategoryOfRows( homalg_ring : no_precompiled_code := false ); # we do not want to recompile CategoryOfRows
     
     object_constructor := function ( cat, dimension )
         
@@ -160,8 +164,12 @@ InstallMethod( MatrixCategory_as_CategoryOfRows,
         range_attribute_getter_name := "NumberColumns",
     );
     
-    Finalize( wrapper );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        
+        Finalize( wrapper );
+        
+    fi;
     
     return wrapper;
     
-end );
+end ) );
