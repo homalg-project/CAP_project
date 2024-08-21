@@ -54,6 +54,9 @@
   [30X    [33X[0;6Y[10Xlist_of_operations_to_install[110X  (mandatory):  a  list  of  names of [5XCAP[105X
         operations which should be installed for the category[133X
   
+  [30X    [33X[0;6Y[10Xoperation_weights[110X   (optional):   a   record   mapping  operations  in
+        [10Xlist_of_operations_to_install[110X to their weights[133X
+  
   [30X    [33X[0;6Y[10Xis_computable[110X    (optional):   whether   the   category   can   decide
         [10XIsCongruentForMorphisms[110X[133X
   
