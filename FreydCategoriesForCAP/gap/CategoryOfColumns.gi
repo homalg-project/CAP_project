@@ -20,7 +20,11 @@ ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CategoryOfColu
 InstallMethod( CategoryOfColumns,
                [ IsHomalgRing ],
                
-  function( homalg_ring )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, homalg_ring )
     local cat;
     
     cat := CategoryOfColumns_as_Opposite_CategoryOfRows( homalg_ring : FinalizeCategory := false );
@@ -35,10 +39,12 @@ InstallMethod( CategoryOfColumns,
             
             ADD_FUNCTIONS_FOR_CategoryOfColumns_as_Opposite_CategoryOfRows_CommutativeRing_precompiled( cat );
             
+        #= comment for Julia
         elif HasIsExteriorRing( homalg_ring ) and IsExteriorRing( homalg_ring ) and IsField( BaseRing( homalg_ring ) ) then
             
             ADD_FUNCTIONS_FOR_CategoryOfColumns_as_Opposite_CategoryOfRows_HomalgExteriorRingOverField_precompiled( cat );
             
+        # =#
         else
             
             ADD_FUNCTIONS_FOR_CategoryOfColumns_as_Opposite_CategoryOfRows_ArbitraryRing_precompiled( cat );
@@ -47,11 +53,15 @@ InstallMethod( CategoryOfColumns,
         
     fi;
     
-    Finalize( cat );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        
+        Finalize( cat );
+        
+    fi;
     
     return cat;
     
-end );
+end ) );
 
 ##
 InstallOtherMethod( CategoryOfColumnsObject,

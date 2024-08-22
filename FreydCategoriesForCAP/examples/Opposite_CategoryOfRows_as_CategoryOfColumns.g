@@ -73,17 +73,9 @@ zero := ZeroMorphism( source, range );
 sum := AdditionForMorphisms( zero, zero );
 #! <A morphism in Opposite( Rows( Q ) )>
 # notice that source and range are indeed swapped compared to the above
-Display( Opposite( sum ) );
-#! Source: 
+Display( Source( Opposite( sum ) ) );
 #! A row module over Q of rank 2
-#! 
-#! Matrix: 
-#! [ [  0 ],
-#!   [  0 ] ]
-#! 
-#! Range: 
+Display( Range( Opposite( sum ) ) );
 #! A row module over Q of rank 1
-#! 
-#! A morphism in Rows( Q )
 
 #! @EndExample

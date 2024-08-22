@@ -29,7 +29,7 @@ IsWellDefined( obj1 );
 #! true
 obj4 := CategoryOfRowsObject( 2, rows );
 #! <A row module over Z of rank 2>
-mor := CategoryOfRowsMorphism( obj3, HomalgMatrix( [[1,2]], S ), obj4 );
+mor := CategoryOfRowsMorphism( obj3, HomalgMatrix( [[1,2]], 1, 2, S ), obj4 );
 #! <A morphism in Rows( Z )>
 IsWellDefined( mor );
 #! true
@@ -53,7 +53,7 @@ Display( UnderlyingMatrix( mor ) );
 ########################################################################
 
 #! @Example
-Size( AdditiveGenerators( rows ) );
+Length( AdditiveGenerators( rows ) );
 #! 1
 ZeroObject( rows );
 #! <A row module over Z of rank 0>
@@ -234,7 +234,7 @@ IsMonomorphism( ck );
 #! false
 IsEpimorphism( ck );
 #! true
-mor1 := CategoryOfRowsMorphism( obj5, HomalgMatrix( [[ 1 ], [ 2 ]], S ), obj6 );
+mor1 := CategoryOfRowsMorphism( obj5, HomalgMatrix( [[ 1 ], [ 2 ]], 2, 1, S ), obj6 );
 #! <A morphism in Rows( Z )>
 #! @EndExample
 
@@ -297,7 +297,7 @@ source := CategoryOfRowsObject( 1, rows );
 #! <A row module over Z of rank 1>
 range := CategoryOfRowsObject( 2, rows );
 #! <A row module over Z of rank 2>
-mor := CategoryOfRowsMorphism( source, HomalgMatrix( [[ 2, 3 ]], S ), range );
+mor := CategoryOfRowsMorphism( source, HomalgMatrix( [[ 2, 3 ]], 1, 2, S ), range );
 #! <A morphism in Rows( Z )>
 colift := Colift( mor2, mor );
 #! <A morphism in Rows( Z )>

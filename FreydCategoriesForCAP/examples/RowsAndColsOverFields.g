@@ -41,7 +41,7 @@ i2 := InjectionOfCofactorOfPushout( [ alpha, beta ], 2 );;
 u := UniversalMorphismFromDirectSum( [ b, b ], [ i1, i2 ] );;
 KernelObjectFunctorial( u, IdentityMorphism( Source( u ) ), u ) = IdentityMorphism( 3/RowsQ );
 #! true
-IsZero( CokernelObjectFunctorial( u, IdentityMorphism( Range( u ) ), u ) );
+IsZeroForMorphisms( CokernelObjectFunctorial( u, IdentityMorphism( Range( u ) ), u ) );
 #! true
 DirectProductFunctorial( [ u, u ] ) = DirectSumFunctorial( [ u, u ] );
 #! true
@@ -106,7 +106,7 @@ i2 := InjectionOfCofactorOfPushout( [ alpha, beta ], 2 );;
 u := UniversalMorphismFromDirectSum( [ b, b ], [ i1, i2 ] );;
 KernelObjectFunctorial( u, IdentityMorphism( Source( u ) ), u ) = IdentityMorphism( 3/ColsQ );
 #! true
-IsZero( CokernelObjectFunctorial( u, IdentityMorphism( Range( u ) ), u ) );
+IsZeroForMorphisms( CokernelObjectFunctorial( u, IdentityMorphism( Range( u ) ), u ) );
 #! true
 DirectProductFunctorial( [ u, u ] ) = DirectSumFunctorial( [ u, u ] );
 #! true

@@ -14,13 +14,6 @@ InstallMethod( MatrixCategory,
                [ IsFieldForHomalg ],
                
   function( homalg_field )
-    
-    return MATRIX_CATEGORY( homalg_field );
-    
-end );
-
-InstallGlobalFunction( MATRIX_CATEGORY,
-  function( homalg_field )
     local category;
     
     category := CreateCapCategoryWithDataTypes(

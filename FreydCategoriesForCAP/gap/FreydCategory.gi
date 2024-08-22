@@ -22,7 +22,11 @@ DeclareInfoClass( "InfoFreydCategoriesForCAP" );
 
 ##
 InstallGlobalFunction( FREYD_CATEGORY,
-  function( underlying_category )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, underlying_category )
     local name, freyd_category, commutative_ring, conditions;
     
     if not IsValidInputForFreydCategory( underlying_category ) then
@@ -120,11 +124,15 @@ InstallGlobalFunction( FREYD_CATEGORY,
     
     INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY( freyd_category );
     
-    Finalize( freyd_category );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        
+        Finalize( freyd_category );
+        
+    fi;
     
     return freyd_category;
     
-end );
+end ) );
 
 ##
 InstallMethod( FreydCategory,
@@ -1090,7 +1098,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                 
             else
                 
-                range_category := FreydCategory( underlying_range_category : FinalizeCategory := true );
+                range_category := FreydCategory( underlying_range_category );
                 
             fi;
             

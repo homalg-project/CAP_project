@@ -14,12 +14,16 @@
 InstallMethod( CategoryOfColumns_as_Opposite_CategoryOfRows,
                [ IsHomalgRing ],
                
-  function( homalg_ring )
-    local rows, op, object_constructor, modeling_tower_object_constructor, object_datum, modeling_tower_object_datum, morphism_constructor, modeling_tower_morphism_datum, morphism_datum, modeling_tower_morphism_constructor, category_object_filter, wrapper;
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, homalg_ring )
+    local rows, op, object_constructor, modeling_tower_object_constructor, object_datum, modeling_tower_object_datum, morphism_constructor, modeling_tower_morphism_datum, morphism_datum, modeling_tower_morphism_constructor, wrapper;
     
-    rows := CategoryOfRows( homalg_ring : FinalizeCategory := true );
+    rows := CategoryOfRows( homalg_ring );
     
-    op := Opposite( rows : only_primitive_operations := true, FinalizeCategory := true );
+    op := Opposite( rows : only_primitive_operations := true );
     
     ##
     object_constructor := function( cat, rank )
@@ -99,21 +103,11 @@ InstallMethod( CategoryOfColumns_as_Opposite_CategoryOfRows,
         
     end;
     
-    if HasIsFieldForHomalg( homalg_ring ) and IsFieldForHomalg( homalg_ring ) then
-        
-        category_object_filter := IsCategoryOfColumnsObject and HasIsProjective and IsProjective;
-        
-    else
-        
-        category_object_filter := IsCategoryOfColumnsObject;
-        
-    fi;
-    
     wrapper := ReinterpretationOfCategory( op, rec(
         name := Concatenation( "Columns( ", RingName( homalg_ring )," )" ),
         category_filter := IsCategoryOfColumns,
-        category_object_filter := category_object_filter,
-        category_morphism_filter := IsCategoryOfColumnsMorphism and HasUnderlyingMatrix,
+        category_object_filter := IsCategoryOfColumnsObject,
+        category_morphism_filter := IsCategoryOfColumnsMorphism,
         object_constructor := object_constructor,
         object_datum := object_datum,
         morphism_constructor := morphism_constructor,
@@ -138,6 +132,7 @@ InstallMethod( CategoryOfColumns_as_Opposite_CategoryOfRows,
         range_attribute_getter_name := "NumberRows",
     );
     
+    #= comment for Julia
     if HasIsExteriorRing( homalg_ring ) and IsExteriorRing( homalg_ring ) and IsField( BaseRing( homalg_ring ) ) then
         
         SetBasisOfRingOverBaseFieldAsColumnVector( wrapper, BasisOfRingOverBaseFieldAsColumnVector( rows ) );
@@ -145,14 +140,19 @@ InstallMethod( CategoryOfColumns_as_Opposite_CategoryOfRows,
         Add( wrapper!.compiler_hints.category_attribute_names, "BasisOfRingOverBaseFieldAsColumnVector" );
         
     fi;
+    # =#
     
     INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_CATEGORY_OF_ROWS( wrapper );
     
-    Finalize( wrapper );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        
+        Finalize( wrapper );
+        
+    fi;
     
     return wrapper;
     
-end );
+end ) );
 
 ####################################
 ##

@@ -15,7 +15,11 @@ ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CoFreydCategor
 
 ##
 InstallGlobalFunction( CO_FREYD_CATEGORY,
-  function( underlying_category )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, underlying_category )
     local cat;
     
     cat := CoFreydCategory_as_Opposite_FreydCategory_Opposite( underlying_category : FinalizeCategory := false );
@@ -26,11 +30,15 @@ InstallGlobalFunction( CO_FREYD_CATEGORY,
         
     fi;
     
-    Finalize( cat );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        
+        Finalize( cat );
+        
+    fi;
     
     return cat;
     
-end );
+end ) );
 
 ##
 InstallMethod( CoFreydCategory,
