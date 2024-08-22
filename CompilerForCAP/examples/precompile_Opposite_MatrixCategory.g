@@ -12,10 +12,9 @@ LoadPackage( "RingsForHomalg", false );
 CAP_INTERNAL_DUMMY_HOMALG_FIELD_COUNTER := 1;;
 homalg_field := DummyHomalgField( );;
 
-# be careful not to use `MatrixCategory` because attributes are not supported
 category_constructor := function( field )
     return Opposite(
-        MATRIX_CATEGORY(
+        MatrixCategory(
             field :
             no_precompiled_code := false, FinalizeCategory := true
         ) :

@@ -8,7 +8,7 @@ LoadPackage( "LinearAlgebraForCAP", false );
 #! true
 Q := HomalgFieldOfRationals( );
 #! Q
-Qmat := MATRIX_CATEGORY( Q );
+Qmat := MatrixCategory( Q );
 #! Category of matrices over Q
 Wrapper := WrapperCategory( Qmat, rec( ) );
 #! WrapperCategory( Category of matrices over Q )

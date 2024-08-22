@@ -6,7 +6,7 @@ true
 
 #
 gap> Q := HomalgFieldOfRationals();;
-gap> vec := MATRIX_CATEGORY( Q );;
+gap> vec := MatrixCategory( Q );;
 
 #
 gap> func := function ( cat, x )
