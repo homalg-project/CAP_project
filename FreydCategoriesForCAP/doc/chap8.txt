@@ -24,7 +24,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xobj4 := CategoryOfColumnsObject( 2, cols );[127X[104X
     [4X[28X<A column module over Z of rank 2>[128X[104X
-    [4X[25Xgap>[125X [27Xmor := CategoryOfColumnsMorphism( obj3, HomalgMatrix( [[1],[2]], S ), obj4 );[127X[104X
+    [4X[25Xgap>[125X [27Xmor := CategoryOfColumnsMorphism( obj3, HomalgMatrix( [[1],[2]], 2, 1, S ), obj4 );[127X[104X
     [4X[28X<A morphism in Columns( Z )>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( mor );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -224,7 +224,7 @@
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XIsEpimorphism( ck );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xmor1 := CategoryOfColumnsMorphism( obj5, HomalgMatrix( [[ 1, 2 ]], S ), obj6 );[127X[104X
+    [4X[25Xgap>[125X [27Xmor1 := CategoryOfColumnsMorphism( obj5, HomalgMatrix( [[ 1, 2 ]], 1, 2, S ), obj6 );[127X[104X
     [4X[28X<A morphism in Columns( Z )>[128X[104X
   [4X[32X[104X
   
@@ -285,7 +285,7 @@
     [4X[28X<A column module over Z of rank 1>[128X[104X
     [4X[25Xgap>[125X [27Xrange := CategoryOfColumnsObject( 2, cols );[127X[104X
     [4X[28X<A column module over Z of rank 2>[128X[104X
-    [4X[25Xgap>[125X [27Xmor := CategoryOfColumnsMorphism( source, HomalgMatrix( [[ 2 ], [ 3 ]], S ), range );[127X[104X
+    [4X[25Xgap>[125X [27Xmor := CategoryOfColumnsMorphism( source, HomalgMatrix( [[ 2 ], [ 3 ]], 2, 1, S ), range );[127X[104X
     [4X[28X<A morphism in Columns( Z )>[128X[104X
     [4X[25Xgap>[125X [27Xcolift := Colift( mor2, mor );[127X[104X
     [4X[28X<A morphism in Columns( Z )>[128X[104X

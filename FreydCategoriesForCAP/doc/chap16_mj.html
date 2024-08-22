@@ -74,7 +74,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := UniversalMorphismFromDirectSum( [ b, b ], [ i1, i2 ] );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KernelObjectFunctorial( u, IdentityMorphism( Source( u ) ), u ) = IdentityMorphism( 3/RowsQ );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( CokernelObjectFunctorial( u, IdentityMorphism( Range( u ) ), u ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( CokernelObjectFunctorial( u, IdentityMorphism( Range( u ) ), u ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectProductFunctorial( [ u, u ] ) = DirectSumFunctorial( [ u, u ] );</span>
 true
@@ -140,7 +140,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := UniversalMorphismFromDirectSum( [ b, b ], [ i1, i2 ] );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KernelObjectFunctorial( u, IdentityMorphism( Source( u ) ), u ) = IdentityMorphism( 3/ColsQ );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( CokernelObjectFunctorial( u, IdentityMorphism( Range( u ) ), u ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( CokernelObjectFunctorial( u, IdentityMorphism( Range( u ) ), u ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectProductFunctorial( [ u, u ] ) = DirectSumFunctorial( [ u, u ] );</span>
 true

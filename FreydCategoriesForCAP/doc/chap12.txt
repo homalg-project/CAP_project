@@ -134,9 +134,9 @@
     [4X[25Xgap>[125X [27Xalpha := CategoryOfRowsMorphism( obj1, HomalgMatrix( [ [ 1, 2 ] ], 1, 2, R ), obj2 );;[127X[104X
     [4X[25Xgap>[125X [27Xbeta := CategoryOfRowsMorphism( obj2, HomalgMatrix( [ [ 1, 2 ], [ 3, 4 ] ], 2, 2, R ), obj2 );;[127X[104X
     [4X[25Xgap>[125X [27Xcomp := PreCompose( alpha, beta );;[127X[104X
-    [4X[25Xgap>[125X [27XIsZero( comp );;[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( comp );;[127X[104X
     [4X[25Xgap>[125X [27Xzero := ZeroMorphism( obj1, obj2 );;[127X[104X
-    [4X[25Xgap>[125X [27XIsZero( zero );;[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( zero );;[127X[104X
     [4X[25Xgap>[125X [27XZeroObject( cat );;[127X[104X
     [4X[25Xgap>[125X [27XUniversalMorphismIntoZeroObject( obj2 );;[127X[104X
     [4X[25Xgap>[125X [27XUniversalMorphismFromZeroObject( obj1 );;[127X[104X
@@ -153,31 +153,31 @@
     [4X[25Xgap>[125X [27XDirectSum( obj1, obj2 );;[127X[104X
     [4X[25Xgap>[125X [27XDirectSumFunctorial( [ alpha, beta, id ] );;[127X[104X
     [4X[25Xgap>[125X [27Xproj := ProjectionInFactorOfDirectSum( [ obj2, obj1, obj2 ], 2 );;[127X[104X
-    [4X[25Xgap>[125X [27XIsZero( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 1 ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 1 ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsOne( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 2 ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 3 ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 3 ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( ComponentOfMorphismFromCoproduct( proj, [ obj2, obj1, obj2 ], 1 ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( ComponentOfMorphismFromCoproduct( proj, [ obj2, obj1, obj2 ], 1 ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsOne( ComponentOfMorphismFromCoproduct( proj, [ obj2, obj1, obj2 ], 2 ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( ComponentOfMorphismFromCoproduct( proj, [ obj2, obj1, obj2 ], 3 ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( ComponentOfMorphismFromCoproduct( proj, [ obj2, obj1, obj2 ], 3 ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XUniversalMorphismIntoDirectSum( [ alpha, alpha, alpha ] );;[127X[104X
     [4X[25Xgap>[125X [27Xinj := InjectionOfCofactorOfDirectSum( [ obj2, obj2, obj1 ], 2 );;[127X[104X
-    [4X[25Xgap>[125X [27XIsZero( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 1 ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 1 ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsOne( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 2 ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 3 ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 3 ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( ComponentOfMorphismIntoDirectProduct( inj, [ obj2, obj2, obj1 ], 1 ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( ComponentOfMorphismIntoDirectProduct( inj, [ obj2, obj2, obj1 ], 1 ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsOne( ComponentOfMorphismIntoDirectProduct( inj, [ obj2, obj2, obj1 ], 2 ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( ComponentOfMorphismIntoDirectProduct( inj, [ obj2, obj2, obj1 ], 3 ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( ComponentOfMorphismIntoDirectProduct( inj, [ obj2, obj2, obj1 ], 3 ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xgamma := CategoryOfRowsMorphism( obj2, HomalgMatrix( [ [ 1, 1 ], [ 1, 1 ] ], 2, 2, R ), obj2 );;[127X[104X
     [4X[25Xgap>[125X [27XIsColiftable( beta, gamma );[127X[104X
@@ -338,28 +338,28 @@
     [4X[25Xgap>[125X [27Xalpha := CategoryOfColumnsMorphism( obj1, HomalgMatrix( [ [ 1 ], [ 2 ] ], 1, 2, R ), obj2 );;[127X[104X
     [4X[25Xgap>[125X [27Xbeta := CategoryOfColumnsMorphism( obj2, HomalgMatrix( [ [ 1, 2 ], [ 3, 4 ] ], 2, 2, R ), obj2 );;[127X[104X
     [4X[25Xgap>[125X [27Xcomp := PreCompose( alpha, beta );;[127X[104X
-    [4X[25Xgap>[125X [27XIsZero( comp );;[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( comp );;[127X[104X
     [4X[25Xgap>[125X [27Xzero := ZeroMorphism( obj1, obj2 );;[127X[104X
-    [4X[25Xgap>[125X [27XIsZero( zero );;[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( zero );;[127X[104X
     [4X[25Xgap>[125X [27XZeroObject( cat );;[127X[104X
     [4X[25Xgap>[125X [27XUniversalMorphismIntoZeroObject( obj2 );;[127X[104X
     [4X[25Xgap>[125X [27XUniversalMorphismFromZeroObject( obj1 );;[127X[104X
     [4X[25Xgap>[125X [27XDirectSum( obj1, obj2 );;[127X[104X
     [4X[25Xgap>[125X [27XDirectSumFunctorial( [ alpha, beta, id ] );;[127X[104X
     [4X[25Xgap>[125X [27Xproj := ProjectionInFactorOfDirectSum( [ obj2, obj1, obj2 ], 2 );;[127X[104X
-    [4X[25Xgap>[125X [27XIsZero( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 1 ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 1 ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsOne( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 2 ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 3 ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 3 ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XUniversalMorphismIntoDirectSum( [ alpha, alpha, alpha ] );;[127X[104X
     [4X[25Xgap>[125X [27Xinj := InjectionOfCofactorOfDirectSum( [ obj2, obj2, obj1 ], 2 );;[127X[104X
-    [4X[25Xgap>[125X [27XIsZero( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 1 ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 1 ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsOne( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 2 ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 3 ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 3 ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xgamma := CategoryOfColumnsMorphism( obj2, HomalgMatrix( [ [ 1, 1 ], [ 1, 1 ] ], 2, 2, R ), obj2 );;[127X[104X
     [4X[25Xgap>[125X [27XIsColiftable( beta, gamma );[127X[104X
@@ -704,11 +704,11 @@
     [4X[25Xgap>[125X [27Xsource := AdelmanCategoryObject( two, two );;[127X[104X
     [4X[25Xgap>[125X [27Xrange := AdelmanCategoryObject( two, four );;[127X[104X
     [4X[25Xgap>[125X [27Xmor := AdelmanCategoryMorphism( source, one, range );;[127X[104X
-    [4X[25Xgap>[125X [27XIsZero( mor );[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( mor );[127X[104X
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27Xemb := EmbeddingFunctorIntoFreydCategory( RowsR );;[127X[104X
     [4X[25Xgap>[125X [27Xind := AdelmanCategoryFunctorInducedByUniversalProperty( emb );;[127X[104X
-    [4X[25Xgap>[125X [27XIsZero( ApplyFunctor( ind, mor ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( ApplyFunctor( ind, mor ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XM := FreydCategoryObject( AsCategoryOfRowsMorphism( HomalgMatrix( [ [  2, 2, 2 ], [ 4, 4, 6 ] ], 2, 3, R ), RowsR ) );;[127X[104X
     [4X[25Xgap>[125X [27Xas_tensor := EmbeddingFunctorOfFreydCategoryIntoAdelmanCategory( RowsR );;[127X[104X
@@ -717,7 +717,7 @@
     [4X[25Xgap>[125X [27Xrsat := RightSatelliteAsEndofunctorOfAdelmanCategory( RowsR );;[127X[104X
     [4X[25Xgap>[125X [27Xtorsion := ApplyFunctor( ind, ( ApplyFunctor( rsat, ApplyFunctor( lsat, Mt ) ) ) );;[127X[104X
     [4X[25Xgap>[125X [27Xunit := UnitOfSatelliteAdjunctionOfAdelmanCategory( RowsR );;[127X[104X
-    [4X[25Xgap>[125X [27XIsZero( ApplyNaturalTransformation( unit, Mt ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( ApplyNaturalTransformation( unit, Mt ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xcounit := CounitOfSatelliteAdjunctionOfAdelmanCategory( RowsR );;[127X[104X
     [4X[25Xgap>[125X [27Xt := ApplyNaturalTransformation( counit, Mt );;[127X[104X
@@ -1107,18 +1107,10 @@
     [4X[25Xgap>[125X [27Xsum := AdditionForMorphisms( zero, zero );[127X[104X
     [4X[28X<A morphism in Opposite( Rows( Q ) )>[128X[104X
     [4X[25Xgap>[125X [27X# notice that source and range are indeed swapped compared to the above[127X[104X
-    [4X[25X>[125X [27XDisplay( Opposite( sum ) );[127X[104X
-    [4X[28XSource: [128X[104X
+    [4X[25X>[125X [27XDisplay( Source( Opposite( sum ) ) );[127X[104X
     [4X[28XA row module over Q of rank 2[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XMatrix: [128X[104X
-    [4X[28X[ [  0 ],[128X[104X
-    [4X[28X  [  0 ] ][128X[104X
-    [4X[28X[128X[104X
-    [4X[28XRange: [128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Range( Opposite( sum ) ) );[127X[104X
     [4X[28XA row module over Q of rank 1[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XA morphism in Rows( Q )[128X[104X
   [4X[32X[104X
   
   
@@ -1275,14 +1267,14 @@
     [4X[25Xgap>[125X [27XT := TwistedLinearClosure( R, rel, cocycle );;[127X[104X
     [4X[25Xgap>[125X [27Xgamma := beta/T;;[127X[104X
     [4X[25Xgap>[125X [27Xdelta := ZeroMorphism( 1/vec, 1/vec )/rel/T;;[127X[104X
-    [4X[25Xgap>[125X [27XIsZero( 3*gamma - 3*gamma );[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( 3*gamma - 3*gamma );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsCongruentForMorphisms( delta, gamma );[127X[104X
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27Xbeta := PreCompose( alpha_rel_inv/T, alpha_rel/T );;[127X[104X
-    [4X[25Xgap>[125X [27XIsZero( beta - t * IdentityMorphism( Range( alpha_rel/T ) ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( beta - t * IdentityMorphism( Range( alpha_rel/T ) ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( ( gamma * delta ) * gamma - gamma * ( delta * gamma ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( ( gamma * delta ) * gamma - gamma * ( delta * gamma ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[28X#@fi[128X[104X
   [4X[32X[104X
@@ -1297,13 +1289,13 @@
     [4X[28X<2>[128X[104X
     [4X[25Xgap>[125X [27XIsOne( alpha );[127X[104X
     [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( alpha );[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( alpha );[127X[104X
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27Xalpha * alpha;[127X[104X
     [4X[28X<4>[128X[104X
     [4X[25Xgap>[125X [27X-alpha;[127X[104X
     [4X[28X<-2>[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( alpha + AdditiveInverse( alpha ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( alpha + AdditiveInverse( alpha ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xbeta := RingAsCategoryMorphism( 1/2, CR );;[127X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( beta );[127X[104X
@@ -1314,7 +1306,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xdelta := ZeroMorphism( u, u );[127X[104X
     [4X[28X<0>[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( delta );[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( delta );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27X2 * alpha;[127X[104X
     [4X[28X<4>[128X[104X
@@ -1335,13 +1327,13 @@
     [4X[28X<5*e0*e1+3*e0+4*e1+2>[128X[104X
     [4X[25Xgap>[125X [27XIsOne( alpha );[127X[104X
     [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( alpha );[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( alpha );[127X[104X
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27Xalpha * alpha;[127X[104X
     [4X[28X<20*e0*e1+12*e0+16*e1+4>[128X[104X
     [4X[25Xgap>[125X [27X-alpha;[127X[104X
     [4X[28X<-5*e0*e1-3*e0-4*e1-2>[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( alpha + AdditiveInverse( alpha ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( alpha + AdditiveInverse( alpha ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xgamma := IdentityMorphism( u );[127X[104X
     [4X[28X<1>[128X[104X
@@ -1349,7 +1341,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xdelta := ZeroMorphism( u, u );[127X[104X
     [4X[28X<0>[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( delta );[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( delta );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27X2 * alpha;[127X[104X
     [4X[28X<10*e0*e1+6*e0+8*e1+4>[128X[104X

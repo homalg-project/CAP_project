@@ -65,7 +65,7 @@ Columns( Z )
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj4 := CategoryOfColumnsObject( 2, cols );</span>
 &lt;A column module over Z of rank 2&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor := CategoryOfColumnsMorphism( obj3, HomalgMatrix( [[1],[2]], S ), obj4 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor := CategoryOfColumnsMorphism( obj3, HomalgMatrix( [[1],[2]], 2, 1, S ), obj4 );</span>
 &lt;A morphism in Columns( Z )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( mor );</span>
 true
@@ -286,7 +286,7 @@ false
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEpimorphism( ck );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor1 := CategoryOfColumnsMorphism( obj5, HomalgMatrix( [[ 1, 2 ]], S ), obj6 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor1 := CategoryOfColumnsMorphism( obj5, HomalgMatrix( [[ 1, 2 ]], 1, 2, S ), obj6 );</span>
 &lt;A morphism in Columns( Z )&gt;
 </pre></div>
 
@@ -353,7 +353,7 @@ A column module over Z of rank 1
 &lt;A column module over Z of rank 1&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">range := CategoryOfColumnsObject( 2, cols );</span>
 &lt;A column module over Z of rank 2&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor := CategoryOfColumnsMorphism( source, HomalgMatrix( [[ 2 ], [ 3 ]], S ), range );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor := CategoryOfColumnsMorphism( source, HomalgMatrix( [[ 2 ], [ 3 ]], 2, 1, S ), range );</span>
 &lt;A morphism in Columns( Z )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">colift := Colift( mor2, mor );</span>
 &lt;A morphism in Columns( Z )&gt;

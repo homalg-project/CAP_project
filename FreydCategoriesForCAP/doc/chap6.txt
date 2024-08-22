@@ -24,7 +24,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xobj4 := CategoryOfRowsObject( 2, rows );[127X[104X
     [4X[28X<A row module over Z of rank 2>[128X[104X
-    [4X[25Xgap>[125X [27Xmor := CategoryOfRowsMorphism( obj3, HomalgMatrix( [[1,2]], S ), obj4 );[127X[104X
+    [4X[25Xgap>[125X [27Xmor := CategoryOfRowsMorphism( obj3, HomalgMatrix( [[1,2]], 1, 2, S ), obj4 );[127X[104X
     [4X[28X<A morphism in Rows( Z )>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( mor );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -43,7 +43,7 @@
   [1X6.3 [33X[0;0YA few categorical constructions for category of rows[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XSize( AdditiveGenerators( rows ) );[127X[104X
+    [4X[25Xgap>[125X [27XLength( AdditiveGenerators( rows ) );[127X[104X
     [4X[28X1[128X[104X
     [4X[25Xgap>[125X [27XZeroObject( rows );[127X[104X
     [4X[28X<A row module over Z of rank 0>[128X[104X
@@ -224,7 +224,7 @@
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XIsEpimorphism( ck );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xmor1 := CategoryOfRowsMorphism( obj5, HomalgMatrix( [[ 1 ], [ 2 ]], S ), obj6 );[127X[104X
+    [4X[25Xgap>[125X [27Xmor1 := CategoryOfRowsMorphism( obj5, HomalgMatrix( [[ 1 ], [ 2 ]], 2, 1, S ), obj6 );[127X[104X
     [4X[28X<A morphism in Rows( Z )>[128X[104X
   [4X[32X[104X
   
@@ -287,7 +287,7 @@
     [4X[28X<A row module over Z of rank 1>[128X[104X
     [4X[25Xgap>[125X [27Xrange := CategoryOfRowsObject( 2, rows );[127X[104X
     [4X[28X<A row module over Z of rank 2>[128X[104X
-    [4X[25Xgap>[125X [27Xmor := CategoryOfRowsMorphism( source, HomalgMatrix( [[ 2, 3 ]], S ), range );[127X[104X
+    [4X[25Xgap>[125X [27Xmor := CategoryOfRowsMorphism( source, HomalgMatrix( [[ 2, 3 ]], 1, 2, S ), range );[127X[104X
     [4X[28X<A morphism in Rows( Z )>[128X[104X
     [4X[25Xgap>[125X [27Xcolift := Colift( mor2, mor );[127X[104X
     [4X[28X<A morphism in Rows( Z )>[128X[104X

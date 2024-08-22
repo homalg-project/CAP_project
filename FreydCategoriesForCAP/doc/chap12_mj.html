@@ -231,9 +231,9 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := CategoryOfRowsMorphism( obj1, HomalgMatrix( [ [ 1, 2 ] ], 1, 2, R ), obj2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := CategoryOfRowsMorphism( obj2, HomalgMatrix( [ [ 1, 2 ], [ 3, 4 ] ], 2, 2, R ), obj2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">comp := PreCompose( alpha, beta );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( comp );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( comp );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">zero := ZeroMorphism( obj1, obj2 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( zero );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( zero );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZeroObject( cat );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UniversalMorphismIntoZeroObject( obj2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UniversalMorphismFromZeroObject( obj1 );;</span>
@@ -250,31 +250,31 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectSum( obj1, obj2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectSumFunctorial( [ alpha, beta, id ] );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">proj := ProjectionInFactorOfDirectSum( [ obj2, obj1, obj2 ], 2 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 1 ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 1 ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 2 ) );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 3 ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 3 ) );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ComponentOfMorphismFromCoproduct( proj, [ obj2, obj1, obj2 ], 1 ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( ComponentOfMorphismFromCoproduct( proj, [ obj2, obj1, obj2 ], 1 ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( ComponentOfMorphismFromCoproduct( proj, [ obj2, obj1, obj2 ], 2 ) );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ComponentOfMorphismFromCoproduct( proj, [ obj2, obj1, obj2 ], 3 ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( ComponentOfMorphismFromCoproduct( proj, [ obj2, obj1, obj2 ], 3 ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UniversalMorphismIntoDirectSum( [ alpha, alpha, alpha ] );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">inj := InjectionOfCofactorOfDirectSum( [ obj2, obj2, obj1 ], 2 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 1 ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 1 ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 2 ) );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 3 ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 3 ) );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ComponentOfMorphismIntoDirectProduct( inj, [ obj2, obj2, obj1 ], 1 ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( ComponentOfMorphismIntoDirectProduct( inj, [ obj2, obj2, obj1 ], 1 ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( ComponentOfMorphismIntoDirectProduct( inj, [ obj2, obj2, obj1 ], 2 ) );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ComponentOfMorphismIntoDirectProduct( inj, [ obj2, obj2, obj1 ], 3 ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( ComponentOfMorphismIntoDirectProduct( inj, [ obj2, obj2, obj1 ], 3 ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := CategoryOfRowsMorphism( obj2, HomalgMatrix( [ [ 1, 1 ], [ 1, 1 ] ], 2, 2, R ), obj2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsColiftable( beta, gamma );</span>
@@ -437,28 +437,28 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := CategoryOfColumnsMorphism( obj1, HomalgMatrix( [ [ 1 ], [ 2 ] ], 1, 2, R ), obj2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := CategoryOfColumnsMorphism( obj2, HomalgMatrix( [ [ 1, 2 ], [ 3, 4 ] ], 2, 2, R ), obj2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">comp := PreCompose( alpha, beta );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( comp );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( comp );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">zero := ZeroMorphism( obj1, obj2 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( zero );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( zero );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZeroObject( cat );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UniversalMorphismIntoZeroObject( obj2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UniversalMorphismFromZeroObject( obj1 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectSum( obj1, obj2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectSumFunctorial( [ alpha, beta, id ] );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">proj := ProjectionInFactorOfDirectSum( [ obj2, obj1, obj2 ], 2 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 1 ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 1 ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 2 ) );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 3 ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 3 ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UniversalMorphismIntoDirectSum( [ alpha, alpha, alpha ] );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">inj := InjectionOfCofactorOfDirectSum( [ obj2, obj2, obj1 ], 2 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 1 ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 1 ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 2 ) );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 3 ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 3 ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := CategoryOfColumnsMorphism( obj2, HomalgMatrix( [ [ 1, 1 ], [ 1, 1 ] ], 2, 2, R ), obj2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsColiftable( beta, gamma );</span>
@@ -811,11 +811,11 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">source := AdelmanCategoryObject( two, two );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">range := AdelmanCategoryObject( two, four );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor := AdelmanCategoryMorphism( source, one, range );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( mor );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( mor );</span>
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">emb := EmbeddingFunctorIntoFreydCategory( RowsR );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ind := AdelmanCategoryFunctorInducedByUniversalProperty( emb );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ApplyFunctor( ind, mor ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( ApplyFunctor( ind, mor ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := FreydCategoryObject( AsCategoryOfRowsMorphism( HomalgMatrix( [ [  2, 2, 2 ], [ 4, 4, 6 ] ], 2, 3, R ), RowsR ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">as_tensor := EmbeddingFunctorOfFreydCategoryIntoAdelmanCategory( RowsR );;</span>
@@ -824,7 +824,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rsat := RightSatelliteAsEndofunctorOfAdelmanCategory( RowsR );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">torsion := ApplyFunctor( ind, ( ApplyFunctor( rsat, ApplyFunctor( lsat, Mt ) ) ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">unit := UnitOfSatelliteAdjunctionOfAdelmanCategory( RowsR );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ApplyNaturalTransformation( unit, Mt ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( ApplyNaturalTransformation( unit, Mt ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">counit := CounitOfSatelliteAdjunctionOfAdelmanCategory( RowsR );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := ApplyNaturalTransformation( counit, Mt );;</span>
@@ -1223,18 +1223,10 @@ Opposite( Rows( Q ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sum := AdditionForMorphisms( zero, zero );</span>
 &lt;A morphism in Opposite( Rows( Q ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># notice that source and range are indeed swapped compared to the above</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">Display( Opposite( sum ) );</span>
-Source: 
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">Display( Source( Opposite( sum ) ) );</span>
 A row module over Q of rank 2
-
-Matrix: 
-[ [  0 ],
-  [  0 ] ]
-
-Range: 
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Range( Opposite( sum ) ) );</span>
 A row module over Q of rank 1
-
-A morphism in Rows( Q )
 </pre></div>
 
 <p><a id="X820CD9B28165BF9F" name="X820CD9B28165BF9F"></a></p>
@@ -1399,14 +1391,14 @@ false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TwistedLinearClosure( R, rel, cocycle );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := beta/T;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">delta := ZeroMorphism( 1/vec, 1/vec )/rel/T;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( 3*gamma - 3*gamma );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( 3*gamma - 3*gamma );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( delta, gamma );</span>
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := PreCompose( alpha_rel_inv/T, alpha_rel/T );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( beta - t * IdentityMorphism( Range( alpha_rel/T ) ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( beta - t * IdentityMorphism( Range( alpha_rel/T ) ) );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ( gamma * delta ) * gamma - gamma * ( delta * gamma ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( ( gamma * delta ) * gamma - gamma * ( delta * gamma ) );</span>
 true
 #@fi
 </pre></div>
@@ -1423,13 +1415,13 @@ true
 &lt;2&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( alpha );</span>
 false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( alpha );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( alpha );</span>
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha * alpha;</span>
 &lt;4&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">-alpha;</span>
 &lt;-2&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( alpha + AdditiveInverse( alpha ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( alpha + AdditiveInverse( alpha ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := RingAsCategoryMorphism( 1/2, CR );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( beta );</span>
@@ -1440,7 +1432,7 @@ false
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">delta := ZeroMorphism( u, u );</span>
 &lt;0&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( delta );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( delta );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">2 * alpha;</span>
 &lt;4&gt;
@@ -1461,13 +1453,13 @@ true
 &lt;5*e0*e1+3*e0+4*e1+2&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( alpha );</span>
 false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( alpha );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( alpha );</span>
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha * alpha;</span>
 &lt;20*e0*e1+12*e0+16*e1+4&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">-alpha;</span>
 &lt;-5*e0*e1-3*e0-4*e1-2&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( alpha + AdditiveInverse( alpha ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( alpha + AdditiveInverse( alpha ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := IdentityMorphism( u );</span>
 &lt;1&gt;
@@ -1475,7 +1467,7 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">delta := ZeroMorphism( u, u );</span>
 &lt;0&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( delta );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( delta );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">2 * alpha;</span>
 &lt;10*e0*e1+6*e0+8*e1+4&gt;

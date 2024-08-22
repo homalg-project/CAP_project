@@ -41,7 +41,7 @@
     [4X[25Xgap>[125X [27Xu := UniversalMorphismFromDirectSum( [ b, b ], [ i1, i2 ] );;[127X[104X
     [4X[25Xgap>[125X [27XKernelObjectFunctorial( u, IdentityMorphism( Source( u ) ), u ) = IdentityMorphism( 3/RowsQ );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( CokernelObjectFunctorial( u, IdentityMorphism( Range( u ) ), u ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( CokernelObjectFunctorial( u, IdentityMorphism( Range( u ) ), u ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XDirectProductFunctorial( [ u, u ] ) = DirectSumFunctorial( [ u, u ] );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -106,7 +106,7 @@
     [4X[25Xgap>[125X [27Xu := UniversalMorphismFromDirectSum( [ b, b ], [ i1, i2 ] );;[127X[104X
     [4X[25Xgap>[125X [27XKernelObjectFunctorial( u, IdentityMorphism( Source( u ) ), u ) = IdentityMorphism( 3/ColsQ );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( CokernelObjectFunctorial( u, IdentityMorphism( Range( u ) ), u ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( CokernelObjectFunctorial( u, IdentityMorphism( Range( u ) ), u ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XDirectProductFunctorial( [ u, u ] ) = DirectSumFunctorial( [ u, u ] );[127X[104X
     [4X[28Xtrue[128X[104X

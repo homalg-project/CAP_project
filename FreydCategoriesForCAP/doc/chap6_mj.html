@@ -68,7 +68,7 @@ Rows( Z )
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj4 := CategoryOfRowsObject( 2, rows );</span>
 &lt;A row module over Z of rank 2&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor := CategoryOfRowsMorphism( obj3, HomalgMatrix( [[1,2]], S ), obj4 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor := CategoryOfRowsMorphism( obj3, HomalgMatrix( [[1,2]], 1, 2, S ), obj4 );</span>
 &lt;A morphism in Rows( Z )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( mor );</span>
 true
@@ -90,7 +90,7 @@ A row module over Z of rank 2
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size( AdditiveGenerators( rows ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( AdditiveGenerators( rows ) );</span>
 1
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZeroObject( rows );</span>
 &lt;A row module over Z of rank 0&gt;
@@ -289,7 +289,7 @@ false
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEpimorphism( ck );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor1 := CategoryOfRowsMorphism( obj5, HomalgMatrix( [[ 1 ], [ 2 ]], S ), obj6 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor1 := CategoryOfRowsMorphism( obj5, HomalgMatrix( [[ 1 ], [ 2 ]], 2, 1, S ), obj6 );</span>
 &lt;A morphism in Rows( Z )&gt;
 </pre></div>
 
@@ -358,7 +358,7 @@ A row module over Z of rank 1
 &lt;A row module over Z of rank 1&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">range := CategoryOfRowsObject( 2, rows );</span>
 &lt;A row module over Z of rank 2&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor := CategoryOfRowsMorphism( source, HomalgMatrix( [[ 2, 3 ]], S ), range );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor := CategoryOfRowsMorphism( source, HomalgMatrix( [[ 2, 3 ]], 1, 2, S ), range );</span>
 &lt;A morphism in Rows( Z )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">colift := Colift( mor2, mor );</span>
 &lt;A morphism in Rows( Z )&gt;
