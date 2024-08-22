@@ -53,7 +53,7 @@ Display( UnderlyingMatrix( mor ) );
 ########################################################################
 
 #! @Example
-Size( AdditiveGenerators( rows ) );
+Length( AdditiveGenerators( rows ) );
 #! 1
 ZeroObject( rows );
 #! <A row module over Z of rank 0>
