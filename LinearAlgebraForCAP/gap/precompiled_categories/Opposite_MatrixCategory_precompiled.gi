@@ -73,11 +73,11 @@ function ( cat_1, s_1, a_1, b_1, r_1 )
     deduped_3_1 := AsInteger( deduped_4_1 );
     hoisted_2_1 := AsInteger( Opposite( a_1 ) );
     deduped_1_1 := AsInteger( Opposite( b_1 ) );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), deduped_4_1, HomalgMatrixListList( PermutationMat( PermList( List( [ 1 .. deduped_3_1 ], function ( i_2 )
-                      local deduped_1_2;
-                      deduped_1_2 := i_2 - 1;
-                      return REM_INT( deduped_1_2, deduped_1_1 ) * hoisted_2_1 + QUO_INT( deduped_1_2, deduped_1_1 ) + 1;
-                  end ) ), deduped_3_1 ), deduped_3_1, deduped_3_1, CommutativeRingOfLinearCategory( cat_1 ) ), Opposite( s_1 ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), deduped_4_1, CertainRows( HomalgIdentityMatrix( deduped_3_1, CommutativeRingOfLinearCategory( cat_1 ) ), List( [ 1 .. deduped_3_1 ], function ( i_2 )
+                  local deduped_1_2;
+                  deduped_1_2 := i_2 - 1;
+                  return REM_INT( deduped_1_2, deduped_1_1 ) * hoisted_2_1 + QUO_INT( deduped_1_2, deduped_1_1 ) + 1;
+              end ) ), Opposite( s_1 ) ) );
 end
 ########
         

@@ -979,11 +979,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
         rank := Rank( object_1_tensored_object_2 );
         
         # compute the mapping matrix
-        permutation_matrix := PermutationMat( 
-                         PermList( List( [ 1 .. rank ], i -> ( RemInt( i - 1, rank_2 ) * rank_1 + QuoInt( i - 1, rank_2 ) + 1 ) ) ),
-                                rank 
-                              );
-        permutation_matrix := TransposedMatrix( HomalgMatrix( permutation_matrix, rank, rank, underlying_graded_ring ) );
+        permutation_matrix := CertainColumns( HomalgIdentityMatrix( rank, underlying_graded_ring ),
+                                      List( [ 1 .. rank ], i -> ( RemInt( i - 1, rank_2 ) * rank_1 + QuoInt( i - 1, rank_2 ) + 1 ) ) );
         
         # and return the corresponding morphism
         return GradedRowOrColumnMorphism( object_1_tensored_object_2,

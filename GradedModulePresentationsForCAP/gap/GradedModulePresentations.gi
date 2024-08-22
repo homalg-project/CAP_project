@@ -1233,7 +1233,7 @@ end );
 #     AddBraidingWithGivenTensorProducts( category,
 #       
 #       function( cat, object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
-#         local homalg_ring, permutation_matrix, rank_1, rank_2, rank;
+#         local homalg_ring, rank_1, rank_2, rank, permutation_matrix;
 #         
 #         homalg_ring := UnderlyingHomalgRing( object_1 );
 #         
@@ -1243,13 +1243,11 @@ end );
 #         
 #         rank := NrColumns( UnderlyingMatrix( object_1_tensored_object_2 ) );
 #         
-#         permutation_matrix := PermutationMat( 
-#                                 PermList( List( [ 1 .. rank ], i -> ( RemInt( i - 1, rank_2 ) * rank_1 + QuoInt( i - 1, rank_2 ) + 1 ) ) ),
-#                                 rank 
-#                               );
+#         permutation_matrix := CertainRows( HomalgIdentityMatrix( rank, underlying_graded_ring ),
+#                                       List( [ 1 .. rank ], i -> ( RemInt( i - 1, rank_2 ) * rank_1 + QuoInt( i - 1, rank_2 ) + 1 ) ) );
 #         
 #         return PresentationMorphism( object_1_tensored_object_2,
-#                                      HomalgMatrix( permutation_matrix, rank, rank, homalg_ring ),
+#                                      permutation_matrix,
 #                                      object_2_tensored_object_1 );
 #         
 #     end );
@@ -1264,7 +1262,7 @@ end );
 #     AddBraidingWithGivenTensorProducts( category,
 #       
 #       function( cat, object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
-#         local homalg_ring, permutation_matrix, rank_1, rank_2, rank;
+#         local homalg_ring, rank_1, rank_2, rank, permutation_matrix;
 #         
 #         homalg_ring := UnderlyingHomalgRing( object_1 );
 #         
@@ -1274,13 +1272,11 @@ end );
 #         
 #         rank := NrRows( UnderlyingMatrix( object_1_tensored_object_2 ) );
 #         
-#         permutation_matrix := PermutationMat( 
-#                                 PermList( List( [ 1 .. rank ], i -> ( RemInt( i - 1, rank_2 ) * rank_1 + QuoInt( i - 1, rank_2 ) + 1 ) ) ),
-#                                 rank 
-#                               );
+#         permutation_matrix := CertainColumns( HomalgIdentityMatrix( rank, underlying_graded_ring ),
+#                                       List( [ 1 .. rank ], i -> ( RemInt( i - 1, rank_2 ) * rank_1 + QuoInt( i - 1, rank_2 ) + 1 ) ) );
 #         
 #         return PresentationMorphism( object_1_tensored_object_2,
-#                                      TransposedMatrix( HomalgMatrix( permutation_matrix, rank, rank, homalg_ring ) ), ## transposed of the left case
+#                                      permutation_matrix,
 #                                      object_2_tensored_object_1 );
 #         
 #     end );
