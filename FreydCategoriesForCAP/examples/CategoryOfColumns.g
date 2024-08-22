@@ -29,7 +29,7 @@ IsWellDefined( obj1 );
 #! true
 obj4 := CategoryOfColumnsObject( 2, cols );
 #! <A column module over Z of rank 2>
-mor := CategoryOfColumnsMorphism( obj3, HomalgMatrix( [[1],[2]], S ), obj4 );
+mor := CategoryOfColumnsMorphism( obj3, HomalgMatrix( [[1],[2]], 2, 1, S ), obj4 );
 #! <A morphism in Columns( Z )>
 IsWellDefined( mor );
 #! true
@@ -234,7 +234,7 @@ IsMonomorphism( ck );
 #! false
 IsEpimorphism( ck );
 #! true
-mor1 := CategoryOfColumnsMorphism( obj5, HomalgMatrix( [[ 1, 2 ]], S ), obj6 );
+mor1 := CategoryOfColumnsMorphism( obj5, HomalgMatrix( [[ 1, 2 ]], 1, 2, S ), obj6 );
 #! <A morphism in Columns( Z )>
 #! @EndExample
 
@@ -295,7 +295,7 @@ source := CategoryOfColumnsObject( 1, cols );
 #! <A column module over Z of rank 1>
 range := CategoryOfColumnsObject( 2, cols );
 #! <A column module over Z of rank 2>
-mor := CategoryOfColumnsMorphism( source, HomalgMatrix( [[ 2 ], [ 3 ]], S ), range );
+mor := CategoryOfColumnsMorphism( source, HomalgMatrix( [[ 2 ], [ 3 ]], 2, 1, S ), range );
 #! <A morphism in Columns( Z )>
 colift := Colift( mor2, mor );
 #! <A morphism in Columns( Z )>
