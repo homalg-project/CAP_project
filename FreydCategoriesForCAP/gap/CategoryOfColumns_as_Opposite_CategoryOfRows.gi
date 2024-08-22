@@ -19,7 +19,7 @@ InstallMethod( CategoryOfColumns_as_Opposite_CategoryOfRows,
     [ "FinalizeCategory", true ],
   ],
   function( CAP_NAMED_ARGUMENTS, homalg_ring )
-    local rows, op, object_constructor, modeling_tower_object_constructor, object_datum, modeling_tower_object_datum, morphism_constructor, modeling_tower_morphism_datum, morphism_datum, modeling_tower_morphism_constructor, category_object_filter, wrapper;
+    local rows, op, object_constructor, modeling_tower_object_constructor, object_datum, modeling_tower_object_datum, morphism_constructor, modeling_tower_morphism_datum, morphism_datum, modeling_tower_morphism_constructor, wrapper;
     
     rows := CategoryOfRows( homalg_ring );
     
@@ -103,21 +103,11 @@ InstallMethod( CategoryOfColumns_as_Opposite_CategoryOfRows,
         
     end;
     
-    if HasIsFieldForHomalg( homalg_ring ) and IsFieldForHomalg( homalg_ring ) then
-        
-        category_object_filter := IsCategoryOfColumnsObject and HasIsProjective and IsProjective;
-        
-    else
-        
-        category_object_filter := IsCategoryOfColumnsObject;
-        
-    fi;
-    
     wrapper := ReinterpretationOfCategory( op, rec(
         name := Concatenation( "Columns( ", RingName( homalg_ring )," )" ),
         category_filter := IsCategoryOfColumns,
-        category_object_filter := category_object_filter,
-        category_morphism_filter := IsCategoryOfColumnsMorphism and HasUnderlyingMatrix,
+        category_object_filter := IsCategoryOfColumnsObject,
+        category_morphism_filter := IsCategoryOfColumnsMorphism,
         object_constructor := object_constructor,
         object_datum := object_datum,
         morphism_constructor := morphism_constructor,
