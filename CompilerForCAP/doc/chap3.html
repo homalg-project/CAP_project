@@ -416,10 +416,9 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CAP_INTERNAL_DUMMY_HOMALG_FIELD_COUNTER := 1;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">homalg_field := DummyHomalgField( );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># be careful not to use `MatrixCategory` because attributes are not supported</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">category_constructor := function( field )</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor := function( field )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    return Opposite(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        MATRIX_CATEGORY(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        MatrixCategory(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            field :</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            no_precompiled_code := false, FinalizeCategory := true</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        ) :</span>
