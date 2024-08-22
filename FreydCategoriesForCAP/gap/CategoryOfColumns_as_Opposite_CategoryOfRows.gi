@@ -142,6 +142,7 @@ InstallMethod( CategoryOfColumns_as_Opposite_CategoryOfRows,
         range_attribute_getter_name := "NumberRows",
     );
     
+    #= comment for Julia
     if HasIsExteriorRing( homalg_ring ) and IsExteriorRing( homalg_ring ) and IsField( BaseRing( homalg_ring ) ) then
         
         SetBasisOfRingOverBaseFieldAsColumnVector( wrapper, BasisOfRingOverBaseFieldAsColumnVector( rows ) );
@@ -149,6 +150,7 @@ InstallMethod( CategoryOfColumns_as_Opposite_CategoryOfRows,
         Add( wrapper!.compiler_hints.category_attribute_names, "BasisOfRingOverBaseFieldAsColumnVector" );
         
     fi;
+    # =#
     
     INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_CATEGORY_OF_ROWS( wrapper );
     
