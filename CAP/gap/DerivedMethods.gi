@@ -2537,8 +2537,7 @@ AddDerivationToCAP( SolveLinearSystemInAbCategory,
     ## reinterpretation of the solution
     summands := List( [ 1 .. n ], j -> HomomorphismStructureOnObjects( cat, Range( left_coefficients[1][j] ), Source( right_coefficients[1][j] ) ) );
     
-    return
-      List( [ 1 .. n ], j -> 
+    return List( [ 1 .. n ], j ->
         InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
           Range( left_coefficients[1][j] ),
           Source( right_coefficients[1][j] ),
@@ -2609,8 +2608,7 @@ AddDerivationToCAP( SolveLinearSystemInAbCategoryOrFail,
     ## reinterpretation of the solution
     summands := List( [ 1 .. n ], j -> HomomorphismStructureOnObjects( cat, Range( left_coefficients[1][j] ), Source( right_coefficients[1][j] ) ) );
     
-    return
-      List( [ 1 .. n ], j -> 
+    return List( [ 1 .. n ], j ->
         InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
           Range( left_coefficients[1][j] ),
           Source( right_coefficients[1][j] ),

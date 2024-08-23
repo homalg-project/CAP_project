@@ -503,8 +503,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
             return false;
         fi;
         
-        return ForAll( [ 1 .. size ], i -> equal_or_cong( SupportMorphisms( alpha )[i], SupportMorphisms( beta )[i] ) )
-                and
+        return ForAll( [ 1 .. size ], i -> equal_or_cong( SupportMorphisms( alpha )[i], SupportMorphisms( beta )[i] ) ) and
                 coeffs_a = coeffs_b;
         
     end;
@@ -755,11 +754,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
          "HomomorphismStructureOnMorphismsWithGivenObjects",
          "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
          "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ],
-         f -> CanCompute( underlying_category, f ) )
-         and
-         IsSkeletalCategoryOfFiniteSets( RangeCategoryOfHomomorphismStructure( underlying_category ) )
-         and
-         with_nf
+         f -> CanCompute( underlying_category, f ) ) and
+              IsSkeletalCategoryOfFiniteSets( RangeCategoryOfHomomorphismStructure( underlying_category ) ) and
+              with_nf
          then
             
         finsets := RangeCategoryOfHomomorphismStructure( underlying_category );
@@ -831,8 +828,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
             
             supp_b := SupportMorphisms( beta );
             
-            return
-                Iterated(
+            return Iterated(
                     List(
                         [ 1 .. size_a ],
                         i -> Iterated(
@@ -883,8 +879,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
             
             range_finset := FinSet( finsets, size );
             
-            return
-                LinearClosureMorphism(
+            return LinearClosureMorphism(
                     a,
                     EntriesOfHomalgMatrix( UnderlyingMatrix( mor ) ),
                     List( [ 0 .. size - 1 ], i ->

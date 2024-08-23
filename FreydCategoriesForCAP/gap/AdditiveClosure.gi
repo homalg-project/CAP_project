@@ -1518,8 +1518,7 @@ InstallMethod( LaTeXOutput,
     if IsEmpty( objs ) then
       return "0";
     else
-      return
-        JoinStringsWithSeparator(
+      return JoinStringsWithSeparator(
           List( objs,
               function( pair )
                 local s;

@@ -549,8 +549,7 @@ InstallMethod( AsMorphismInFreeAbelianCategory,
                
   function( morphism )
     
-    return 
-      Opposite(
+    return Opposite(
         AsFreydCategoryMorphism(
           Opposite(
             AsFreydCategoryMorphism(

@@ -59,9 +59,9 @@ InstallMethod( AdelmanCategory,
     
     SetUnderlyingCategory( adelman_category, underlying_category );
     
-    if HasIsLinearCategoryOverCommutativeRing( underlying_category )
-        and IsLinearCategoryOverCommutativeRing( underlying_category )
-          and HasCommutativeRingOfLinearCategory( underlying_category ) then
+    if HasIsLinearCategoryOverCommutativeRing( underlying_category ) and
+       IsLinearCategoryOverCommutativeRing( underlying_category ) and
+       HasCommutativeRingOfLinearCategory( underlying_category ) then
       
       SetIsLinearCategoryOverCommutativeRing( adelman_category, true );
       

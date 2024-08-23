@@ -196,8 +196,7 @@ InstallMethod( WitnessForBeingCongruentToZero,
     
     range := Range( morphism );
 
-    return
-    Lift(
+    return Lift(
         PreCompose(
             MorphismDatum( morphism ),
             GeneratorMorphism( range )
@@ -216,8 +215,7 @@ InstallMethod( MereExistenceOfWitnessForBeingCongruentToZero,
     
     range := Range( morphism );
 
-    return
-    IsLiftable(
+    return IsLiftable(
         PreCompose(
             MorphismDatum( morphism ),
             GeneratorMorphism( range )
@@ -551,8 +549,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
       
       function( cat, morphism, test_object, test_morphism, cokernel_object )
         
-        return 
-            CokernelImageClosureMorphism( 
+        return CokernelImageClosureMorphism(
                 cokernel_object,
                 MorphismDatum( test_morphism ),
                 Range( test_morphism ) 
@@ -568,8 +565,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
 
         range := Range( morphism );
 
-        return 
-            CokernelImageClosureObject( 
+        return CokernelImageClosureObject(
                 PreCompose( MorphismDatum( morphism ), GeneratorMorphism( range ) ),
                 RelationMorphism( range )
             );
@@ -580,8 +576,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
       
       function( cat, morphism, image )
         
-        return
-            CokernelImageClosureMorphism(
+        return CokernelImageClosureMorphism(
                 image,
                 MorphismDatum( morphism ),
                 Range( morphism )
@@ -596,8 +591,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
 
         source := Source( morphism );
 
-        return
-            CokernelImageClosureMorphism(
+        return CokernelImageClosureMorphism(
                 source,
                 IdentityMorphism( Source( GeneratorMorphism( source ) ) ),
                 image
@@ -613,8 +607,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
 
         tau := test_factorization[1];
 
-        return
-            CokernelImageClosureMorphism(
+        return CokernelImageClosureMorphism(
                 image,
                 MorphismDatum( tau ),
                 Range( tau )
@@ -645,8 +638,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
                 RelationMorphism( source )
             );
 
-            return
-                CokernelImageClosureMorphism(
+            return CokernelImageClosureMorphism(
                     kernel,
                     projection,
                     source
@@ -667,8 +659,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
                 MorphismDatum( test_morphism )
             );
             
-            return
-                CokernelImageClosureMorphism(
+            return CokernelImageClosureMorphism(
                     Source( test_morphism ),
                     u,
                     kernel
@@ -683,8 +674,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
 
             proj_object := Source( GeneratorMorphism( object ) );
 
-            return
-                CokernelImageClosureMorphism(
+            return CokernelImageClosureMorphism(
                     AsCokernelImageClosureObject( proj_object ),
                     IdentityMorphism( proj_object ),
                     object
@@ -718,8 +708,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
 
             lift := ComponentOfMorphismIntoDirectSum( lift, [ Au, RBu ], 1 );
 
-            return
-                CokernelImageClosureMorphism(
+            return CokernelImageClosureMorphism(
                     Source( tau ),
                     lift,
                     A
