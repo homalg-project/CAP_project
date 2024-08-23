@@ -10,8 +10,6 @@
 ##
 ####################################
 
-BindGlobal( "FREYD_CATEGORIES_SkeletalFinSets", SkeletalCategoryOfFiniteSets( : overhead := false ) );
-
 ##
 InstallMethod( GroupAsCategory,
                [ IsGroup ],

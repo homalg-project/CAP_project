@@ -116,15 +116,15 @@ Dependencies := rec(
 Extensions := [
   rec(
     needed := [ [ "FinSetsForCAP", ">= 2023.07-03" ] ],
-    filename := "gap/GroupsAsCats.gi",
-  ),
-  rec(
-    needed := [ [ "FinSetsForCAP", ">= 2023.07-03" ] ],
     filename := "gap/LinearClosure.gi",
   ),
   rec(
     needed := [ [ "FinSetsForCAP", ">= 2023.07-03" ] ],
     filename := "gap/ProSetsAsCats.gi",
+  ),
+  rec(
+    needed := [ [ "FinSetsForCAP", ">= 2023.07-03" ] ],
+    filename := "gap/GroupsAsCats.gi",
   ),
 ],
 

@@ -10,6 +10,8 @@
 ##
 ####################################
 
+BindGlobal( "FREYD_CATEGORIES_SkeletalFinSets", SkeletalCategoryOfFiniteSets( : overhead := false ) );
+
 ## TODO: create a meaningful sanity check
 InstallGlobalFunction( PRO_SET_AS_CATEGORY_SANITY_CHECK,
   function( incidence_matrix )
