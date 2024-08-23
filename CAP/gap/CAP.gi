@@ -1058,9 +1058,9 @@ InstallMethod( DownToBottom,
     
     equality_func := function( a, b )
       
-      if IsList( a ) and IsList( b ) and Size( a ) = Size( b ) then
+      if IsList( a ) and IsList( b ) and Length( a ) = Length( b ) then
         
-        return ForAll( [ 1 .. Size( a ) ], i -> equality_func(a[i], b[i]) );
+        return ForAll( [ 1 .. Length( a ) ], i -> equality_func(a[i], b[i]) );
         
       else
         

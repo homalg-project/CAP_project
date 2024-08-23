@@ -121,10 +121,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RELATIONS_CATEGORY,
         
         arrow_beta := Arrow( beta );
         
-        return
-          IsEqualForObjects( Source( arrow_alpha ), Source( arrow_beta ) ) and
-          IsEqualForMorphisms( arrow_alpha, arrow_beta ) and
-          IsEqualForMorphisms( ReversedArrow( alpha ), ReversedArrow( beta ) );
+        return IsEqualForObjects( Source( arrow_alpha ), Source( arrow_beta ) ) and
+               IsEqualForMorphisms( arrow_alpha, arrow_beta ) and
+               IsEqualForMorphisms( ReversedArrow( alpha ), ReversedArrow( beta ) );
           
     end );
     

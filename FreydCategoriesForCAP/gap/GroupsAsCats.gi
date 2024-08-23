@@ -10,8 +10,6 @@
 ##
 ####################################
 
-BindGlobal( "FREYD_CATEGORIES_SkeletalFinSets", SkeletalCategoryOfFiniteSets( : overhead := false ) );
-
 ##
 InstallMethod( GroupAsCategory,
                [ IsGroup ],
@@ -249,7 +247,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
         
         elements := ElementsOfUnderlyingGroup( category );
         
-        size := Size( elements );
+        size := Length( elements );
         
         RG := FinSet( FREYD_CATEGORIES_SkeletalFinSets, size );
         

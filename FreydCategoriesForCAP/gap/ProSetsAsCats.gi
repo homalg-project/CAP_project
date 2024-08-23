@@ -10,6 +10,8 @@
 ##
 ####################################
 
+BindGlobal( "FREYD_CATEGORIES_SkeletalFinSets", SkeletalCategoryOfFiniteSets( : overhead := false ) );
+
 ## TODO: create a meaningful sanity check
 InstallGlobalFunction( PRO_SET_AS_CATEGORY_SANITY_CHECK,
   function( incidence_matrix )
@@ -25,7 +27,7 @@ InstallGlobalFunction( PRO_SET_AS_CATEGORY_SANITY_CHECK,
 
     sqr := incidence_matrix^2;
 
-    for i in [1..l] do
+    for i in [ 1 .. l ] do
       if not IsSubset([0, 1], Set(incidence_matrix[i])) then
         return [ false, "Incidence matrix must have entries in {0, 1}" ];
       fi;
@@ -45,6 +47,8 @@ InstallMethod( ProSetAsCategory,
   function( incidence_matrix )
     local category, check;
 
+    #= comment for Julia
+    # `TraceMat` and squaring of lists of lists is not available in Julia yet
     check := PRO_SET_AS_CATEGORY_SANITY_CHECK( incidence_matrix );
 
     if not check[1] then
@@ -52,6 +56,7 @@ InstallMethod( ProSetAsCategory,
         Error( check[2] );
 
     fi;
+    # =#
 
     category := CreateCapCategoryWithDataTypes(
                         "ProSet",
@@ -83,7 +88,7 @@ InstallMethod( Size,
 
   function( category )
 
-    return Size( IncidenceMatrix( category ) );
+    return Length( IncidenceMatrix( category ) );
 
 end );
 
@@ -163,7 +168,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_PROSET_AS_CATEGORY,
     AddIsWellDefinedForObjects( category,
       function( cat, obj )
 
-        return UnderlyingInteger( obj ) in [1 .. Size( category )];
+        return UnderlyingInteger( obj ) in [ 1 .. Size( category ) ];
 
     end );
 
@@ -301,8 +306,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_PROSET_AS_CATEGORY,
 
         m := IncidenceMatrix(category);
         if m[ UnderlyingInteger( a ) ][ UnderlyingInteger( b ) ] = 1 then
-          return OneElementSet;
-        else return emptySet;
+            return OneElementSet;
+        else
+            return emptySet;
         fi;
 
     end );
@@ -311,10 +317,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_PROSET_AS_CATEGORY,
     AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
       function( cat, source, alpha, beta, range )
 
-        if IsEqualForObjects(source, OneElementSet )then
-          return IdentityMorphism( source );
-
-        else return UniversalMorphismFromInitialObject( range );
+        if IsEqualForObjects(source, OneElementSet ) then
+            return IdentityMorphism( source );
+        else
+            return UniversalMorphismFromInitialObject( range );
         fi;
 
     end );

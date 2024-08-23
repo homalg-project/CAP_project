@@ -23,6 +23,10 @@ InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows,
         
     fi;
     
+    sorting_function := fail;
+    
+    cocycle := fail;
+    
     if Length( arg ) = 0 then
         
         with_nf := false;
@@ -39,7 +43,7 @@ InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows,
         
         with_nf := arg[2];
         
-        if IsBound( arg[3] ) then
+        if Length( arg ) >= 3 then
             
             sorting_function := arg[3];
             
@@ -47,7 +51,7 @@ InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows,
         
     fi;
     
-    if IsBound( cocycle ) then
+    if cocycle <> fail then
         
         name := Concatenation( "TwistedLinearClosure( ", Name( underlying_category )," )" );
         
@@ -67,13 +71,13 @@ InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows,
     
     category!.with_nf := with_nf;
     
-    if IsBound( sorting_function ) then
+    if sorting_function <> fail then
         
         category!.sorting_function := sorting_function;
         
     fi;
     
-    if IsBound( cocycle ) then
+    if cocycle <> fail then
         
         category!.cocycle := cocycle;
         
@@ -288,7 +292,7 @@ InstallMethod( LinearClosureMorphism,
     
     c := coefficients_copy[1];
     
-    for i in [ 2 .. Size( support_morphisms_copy ) ] do
+    for i in [ 2 .. Length( support_morphisms_copy ) ] do
         
         m_compare := support_morphisms_copy[i];
         
@@ -499,8 +503,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
             return false;
         fi;
         
-        return ForAll( [ 1 .. size ], i -> equal_or_cong( SupportMorphisms( alpha )[i], SupportMorphisms( beta )[i] ) )
-                and
+        return ForAll( [ 1 .. size ], i -> equal_or_cong( SupportMorphisms( alpha )[i], SupportMorphisms( beta )[i] ) ) and
                 coeffs_a = coeffs_b;
         
     end;
@@ -545,9 +548,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
             fi;
         fi;
         
-        size := Size( coeffs );
+        size := Length( coeffs );
         
-        if size <> Size( supp ) then
+        if size <> Length( supp ) then
             return false;
         fi;
         
@@ -622,9 +625,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
             
             supp := [];
             
-            for a in [ 1 .. Size( coeffs_alpha ) ] do
+            for a in [ 1 .. Length( coeffs_alpha ) ] do
                 
-                for b in [ 1 .. Size( coeffs_beta ) ] do
+                for b in [ 1 .. Length( coeffs_beta ) ] do
                     
                     gamma := mul_supp( supp_alpha[a], supp_beta[b] );
                     
@@ -751,11 +754,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
          "HomomorphismStructureOnMorphismsWithGivenObjects",
          "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
          "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ],
-         f -> CanCompute( underlying_category, f ) )
-         and
-         IsSkeletalCategoryOfFiniteSets( RangeCategoryOfHomomorphismStructure( underlying_category ) )
-         and
-         with_nf
+         f -> CanCompute( underlying_category, f ) ) and
+              IsSkeletalCategoryOfFiniteSets( RangeCategoryOfHomomorphismStructure( underlying_category ) ) and
+              with_nf
          then
             
         finsets := RangeCategoryOfHomomorphismStructure( underlying_category );
@@ -811,11 +812,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
             
             coeffs_a := CoefficientsList( alpha );
             
-            size_a := Size( coeffs_a );
+            size_a := Length( coeffs_a );
             
             coeffs_b := CoefficientsList( beta );
             
-            size_b := Size( coeffs_b );
+            size_b := Length( coeffs_b );
             
             if size_a = 0 or size_b = 0 then
                 
@@ -827,8 +828,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
             
             supp_b := SupportMorphisms( beta );
             
-            return
-                Iterated(
+            return Iterated(
                     List(
                         [ 1 .. size_a ],
                         i -> Iterated(
@@ -851,7 +851,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
                 
                 coeffs := CoefficientsList( alpha );
                 
-                if Size( coeffs ) = 0 then
+                if IsEmpty( coeffs ) then
                     
                     return ZeroMorphism( t_obj, HomomorphismStructureOnObjects( Source( alpha ), Range( alpha ) ) );
                     
@@ -859,10 +859,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
                 
                 supp := SupportMorphisms( alpha );
                 
-                return
-                    Sum( List( [ 1 .. Size( coeffs ) ],
-                    i ->
-                    coeffs[i] * FunctorMor( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( supp[i] ) ) ) );
+                return Sum( List( [ 1 .. Length( coeffs ) ],
+                    i -> coeffs[i] * FunctorMor( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( supp[i] ) ) ) );
                 
         end );
         
@@ -879,8 +877,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
             
             range_finset := FinSet( finsets, size );
             
-            return
-                LinearClosureMorphism(
+            return LinearClosureMorphism(
                     a,
                     EntriesOfHomalgMatrix( UnderlyingMatrix( mor ) ),
                     List( [ 0 .. size - 1 ], i ->
@@ -995,7 +992,7 @@ InstallMethod( ViewString,
         
         support := SupportMorphisms( alpha );
         
-        list := List( [ 1 .. Size( coeffs ) ], i -> Concatenation( "(", ViewString( coeffs[i] ), "*", ViewString( support[i] ), ")" ) );
+        list := List( [ 1 .. Length( coeffs ) ], i -> Concatenation( "(", ViewString( coeffs[i] ), "*", ViewString( support[i] ), ")" ) );
         
         return JoinStringsWithSeparator( list, " + " );
         

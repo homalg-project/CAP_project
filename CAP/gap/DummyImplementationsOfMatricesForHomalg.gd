@@ -21,8 +21,6 @@
 #
 ####################################
 
-#= comment for Julia
-
 #! @Description
 #!  The &GAP; filter of dummy homalg rings.
 DeclareFilter( "IsDummyHomalgRing",
@@ -52,7 +50,6 @@ DeclareFilter( "IsDummyHomalgField",
 #!  The &GAP; filter of elements of a dummy homalg field.
 DeclareFilter( "IsDummyHomalgFieldElement",
         IsDummyCommutativeHomalgRingElement );
-# =#
 
 ####################################
 #

@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "FreydCategoriesForCAP",
 Subtitle := "Freyd categories - Formal (co)kernels for additive categories",
-Version := "2024.08-05",
+Version := "2024.08-06",
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
 License := "GPL-2.0-or-later",
 
@@ -116,15 +116,15 @@ Dependencies := rec(
 Extensions := [
   rec(
     needed := [ [ "FinSetsForCAP", ">= 2023.07-03" ] ],
-    filename := "gap/GroupsAsCats.gi",
-  ),
-  rec(
-    needed := [ [ "FinSetsForCAP", ">= 2023.07-03" ] ],
     filename := "gap/LinearClosure.gi",
   ),
   rec(
     needed := [ [ "FinSetsForCAP", ">= 2023.07-03" ] ],
     filename := "gap/ProSetsAsCats.gi",
+  ),
+  rec(
+    needed := [ [ "FinSetsForCAP", ">= 2023.07-03" ] ],
+    filename := "gap/GroupsAsCats.gi",
   ),
 ],
 

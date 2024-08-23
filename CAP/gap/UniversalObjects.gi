@@ -154,7 +154,7 @@ InstallMethod( MorphismBetweenDirectSums,
   function( morphism_matrix )
     local nr_rows, nr_cols;
     
-    nr_rows := Size( morphism_matrix );
+    nr_rows := Length( morphism_matrix );
     
     if nr_rows = 0 then
         
@@ -162,7 +162,7 @@ InstallMethod( MorphismBetweenDirectSums,
         
     fi;
     
-    nr_cols := Size( morphism_matrix[1] );
+    nr_cols := Length( morphism_matrix[1] );
     
     if nr_cols = 0 then
         
@@ -170,7 +170,7 @@ InstallMethod( MorphismBetweenDirectSums,
         
     fi;
     
-    return MorphismBetweenDirectSums( CapCategory( morphism_matrix[1,1] ),
+    return MorphismBetweenDirectSums( CapCategory( morphism_matrix[1][1] ),
              List( morphism_matrix, row -> Source( row[1] ) ),
              morphism_matrix,
              List( morphism_matrix[1], col -> Range( col ) )
@@ -184,7 +184,7 @@ InstallOtherMethod( MorphismBetweenDirectSums,
   function( cat, morphism_matrix )
     local nr_rows, nr_cols;
     
-    nr_rows := Size( morphism_matrix );
+    nr_rows := Length( morphism_matrix );
     
     if nr_rows = 0 then
         
@@ -192,7 +192,7 @@ InstallOtherMethod( MorphismBetweenDirectSums,
         
     fi;
     
-    nr_cols := Size( morphism_matrix[1] );
+    nr_cols := Length( morphism_matrix[1] );
     
     if nr_cols = 0 then
         
