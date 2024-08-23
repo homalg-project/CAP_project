@@ -23,6 +23,10 @@ InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows,
         
     fi;
     
+    sorting_function := fail;
+    
+    cocycle := fail;
+    
     if Length( arg ) = 0 then
         
         with_nf := false;
@@ -39,7 +43,7 @@ InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows,
         
         with_nf := arg[2];
         
-        if IsBound( arg[3] ) then
+        if Length( arg ) >= 3 then
             
             sorting_function := arg[3];
             
@@ -47,7 +51,7 @@ InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows,
         
     fi;
     
-    if IsBound( cocycle ) then
+    if cocycle <> fail then
         
         name := Concatenation( "TwistedLinearClosure( ", Name( underlying_category )," )" );
         
@@ -67,13 +71,13 @@ InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows,
     
     category!.with_nf := with_nf;
     
-    if IsBound( sorting_function ) then
+    if sorting_function <> fail then
         
         category!.sorting_function := sorting_function;
         
     fi;
     
-    if IsBound( cocycle ) then
+    if cocycle <> fail then
         
         category!.cocycle := cocycle;
         
