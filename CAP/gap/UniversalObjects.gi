@@ -170,7 +170,7 @@ InstallMethod( MorphismBetweenDirectSums,
         
     fi;
     
-    return MorphismBetweenDirectSums( CapCategory( morphism_matrix[1,1] ),
+    return MorphismBetweenDirectSums( CapCategory( morphism_matrix[1][1] ),
              List( morphism_matrix, row -> Source( row[1] ) ),
              morphism_matrix,
              List( morphism_matrix[1], col -> Range( col ) )
