@@ -859,7 +859,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
             ##
             # this is expensive, so we assume a weight of 400 which will be used below
             InstallMethodWithCacheFromObject( HomomorphismStructureOnObjectsForAdelmanCategoryGeneralizedEmbedding,
-                                              [ IsAdelmanCategoryObject and ObjectFilter( category ), IsAdelmanCategoryObject and ObjectFilter( category ) ],
+                                              [ ObjectFilter( category ), ObjectFilter( category ) ],
                 function( object_A, object_B )
                   local A, Ap, App, B, Bp, Bpp, a, b, ap, bp,
                         H_A_b, H_ap_B, H_A_bp, H_a_B, H_ap_Bpp, H_Ap_b, rel, corel, ker, coker, im;
