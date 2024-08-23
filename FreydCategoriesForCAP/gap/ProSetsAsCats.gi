@@ -47,6 +47,8 @@ InstallMethod( ProSetAsCategory,
   function( incidence_matrix )
     local category, check;
 
+    #= comment for Julia
+    # `TraceMat` and squaring of lists of lists is not available in Julia yet
     check := PRO_SET_AS_CATEGORY_SANITY_CHECK( incidence_matrix );
 
     if not check[1] then
@@ -54,6 +56,7 @@ InstallMethod( ProSetAsCategory,
         Error( check[2] );
 
     fi;
+    # =#
 
     category := CreateCapCategoryWithDataTypes(
                         "ProSet",
