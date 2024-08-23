@@ -163,7 +163,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj1 := CategoryOfColumnsObject( 1, cols );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj2 := CategoryOfColumnsObject( 2, cols );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id := IdentityMorphism( obj2 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := CategoryOfColumnsMorphism( obj1, HomalgMatrix( [ [ 1 ], [ 2 ] ], 1, 2, R ), obj2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := CategoryOfColumnsMorphism( obj1, HomalgMatrix( [ [ 1 ], [ 2 ] ], 2, 1, R ), obj2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := CategoryOfColumnsMorphism( obj2, HomalgMatrix( [ [ 1, 3 ], [ 2, 4 ] ], 2, 2, R ), obj2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := CategoryOfColumnsMorphism( obj2, HomalgMatrix( [ [ 1, 3 ], [ 3, 4 ] ], 2, 2, R ), obj2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj1_a := AsAdelmanCategoryObject( obj1 );;</span>
