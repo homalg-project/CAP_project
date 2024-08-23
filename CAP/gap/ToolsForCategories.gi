@@ -385,16 +385,19 @@ InstallGlobalFunction( "CAP_INTERNAL_MERGE_FILTER_LISTS",
   
   function( filter_list, additional_filters )
     local i;
+    
+    if IsEmpty( additional_filters ) then
+        return filter_list;
+    fi;
+    
     filter_list := ShallowCopy( filter_list );
     
-    if Length( filter_list ) < Length( additional_filters ) then
-        Error( "too many additional filters" );
+    if Length( filter_list ) <> Length( additional_filters ) then
+        Error( "wrong number of additional filters" );
     fi;
     
     for i in [ 1 .. Length( additional_filters ) ] do
-        if IsBound( additional_filters[ i ] ) then
-            filter_list[ i ] := filter_list[ i ] and additional_filters[ i ];
-        fi;
+        filter_list[ i ] := filter_list[ i ] and additional_filters[ i ];
     od;
     
     return filter_list;
