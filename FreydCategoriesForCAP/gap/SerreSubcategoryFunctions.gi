@@ -40,9 +40,9 @@ InstallGlobalFunction( FREYD_CATEGORIES_REFINEMENT_FOR_SERRE_SUBCATEGORIES,
     
     newL := ShallowCopy( L );
     
-    for i in [ 1 .. Size( L ) ] do
+    for i in [ 1 .. Length( L ) ] do
         
-        for j in [ 1 .. Size( L ) ] do
+        for j in [ 1 .. Length( L ) ] do
             
             hom := HomomorphismStructureOnObjects( L[i], L[j] );
             

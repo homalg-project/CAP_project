@@ -85,7 +85,7 @@ InstallMethod( Size,
 
   function( category )
 
-    return Size( IncidenceMatrix( category ) );
+    return Length( IncidenceMatrix( category ) );
 
 end );
 

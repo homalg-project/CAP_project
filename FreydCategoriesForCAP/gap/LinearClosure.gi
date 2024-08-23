@@ -292,7 +292,7 @@ InstallMethod( LinearClosureMorphism,
     
     c := coefficients_copy[1];
     
-    for i in [ 2 .. Size( support_morphisms_copy ) ] do
+    for i in [ 2 .. Length( support_morphisms_copy ) ] do
         
         m_compare := support_morphisms_copy[i];
         
@@ -548,9 +548,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
             fi;
         fi;
         
-        size := Size( coeffs );
+        size := Length( coeffs );
         
-        if size <> Size( supp ) then
+        if size <> Length( supp ) then
             return false;
         fi;
         
@@ -625,9 +625,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
             
             supp := [];
             
-            for a in [ 1 .. Size( coeffs_alpha ) ] do
+            for a in [ 1 .. Length( coeffs_alpha ) ] do
                 
-                for b in [ 1 .. Size( coeffs_beta ) ] do
+                for b in [ 1 .. Length( coeffs_beta ) ] do
                     
                     gamma := mul_supp( supp_alpha[a], supp_beta[b] );
                     
@@ -812,11 +812,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
             
             coeffs_a := CoefficientsList( alpha );
             
-            size_a := Size( coeffs_a );
+            size_a := Length( coeffs_a );
             
             coeffs_b := CoefficientsList( beta );
             
-            size_b := Size( coeffs_b );
+            size_b := Length( coeffs_b );
             
             if size_a = 0 or size_b = 0 then
                 
@@ -851,7 +851,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
                 
                 coeffs := CoefficientsList( alpha );
                 
-                if Size( coeffs ) = 0 then
+                if IsEmpty( coeffs ) then
                     
                     return ZeroMorphism( t_obj, HomomorphismStructureOnObjects( Source( alpha ), Range( alpha ) ) );
                     
@@ -859,10 +859,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
                 
                 supp := SupportMorphisms( alpha );
                 
-                return
-                    Sum( List( [ 1 .. Size( coeffs ) ],
-                    i ->
-                    coeffs[i] * FunctorMor( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( supp[i] ) ) ) );
+                return Sum( List( [ 1 .. Length( coeffs ) ],
+                    i -> coeffs[i] * FunctorMor( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( supp[i] ) ) ) );
                 
         end );
         
@@ -994,7 +992,7 @@ InstallMethod( ViewString,
         
         support := SupportMorphisms( alpha );
         
-        list := List( [ 1 .. Size( coeffs ) ], i -> Concatenation( "(", ViewString( coeffs[i] ), "*", ViewString( support[i] ), ")" ) );
+        list := List( [ 1 .. Length( coeffs ) ], i -> Concatenation( "(", ViewString( coeffs[i] ), "*", ViewString( support[i] ), ")" ) );
         
         return JoinStringsWithSeparator( list, " + " );
         
