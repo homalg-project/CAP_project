@@ -292,8 +292,8 @@ end );
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
 
   function( category )
-    local underlying_category, distinguished_object, range_category, homomorphism_structure_derivation_case,
-          homomorphism_structure_on_morphisms, interpret_homomorphism_as_morphism_from_distinguished_object_to_homomorphism_structure,
+    local underlying_category, range_category, underlying_distinguished_object, homomorphism_structure_derivation_case,
+          homomorphism_structure_on_morphisms, distinguished_object, interpret_homomorphism_as_morphism_from_distinguished_object_to_homomorphism_structure,
           interpret_morphism_from_distinguished_object_to_homomorphism_structure_as_homomorphism;
     
     underlying_category := UnderlyingCategory( category );
@@ -782,10 +782,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     if ForAll( [ "DistinguishedObjectOfHomomorphismStructure" ],
                f -> CanCompute( underlying_category, f ) ) then
         
-        distinguished_object := DistinguishedObjectOfHomomorphismStructure( underlying_category );
-            
-        range_category := CapCategory( distinguished_object );
+        range_category := RangeCategoryOfHomomorphismStructure( underlying_category );
         
+        underlying_distinguished_object := DistinguishedObjectOfHomomorphismStructure( underlying_category );
         
         ## 3 possible cases:
         ## 1) the range category is abelian
@@ -794,8 +793,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
         
         if HasIsAbelianCategory( range_category ) and
            IsAbelianCategory( range_category ) and
-           HasIsProjective( distinguished_object ) and
-           IsProjective( distinguished_object ) then
+           HasIsProjective( underlying_distinguished_object ) and
+           IsProjective( underlying_distinguished_object ) then
             
             SetRangeCategoryOfHomomorphismStructure( category, range_category );
             SetIsEquippedWithHomomorphismStructure( category, true );
@@ -804,7 +803,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
             
             homomorphism_structure_on_morphisms := HomomorphismStructureOnMorphisms;
             
-            distinguished_object := distinguished_object;
+            distinguished_object := cat -> underlying_distinguished_object;
             
             interpret_homomorphism_as_morphism_from_distinguished_object_to_homomorphism_structure :=
                 InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure;
@@ -836,7 +835,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
                 
             end;
             
-            distinguished_object := AsFreydCategoryObject( distinguished_object );
+            distinguished_object := cat -> AsFreydCategoryObject( underlying_distinguished_object );
             
             interpret_homomorphism_as_morphism_from_distinguished_object_to_homomorphism_structure :=
               function( alpha )
@@ -944,12 +943,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
             end, 100 + 2 * 400 );
             
              ##
-            AddDistinguishedObjectOfHomomorphismStructure( category,
-              function( cat )
-                
-                return distinguished_object;
-                
-            end );
+            AddDistinguishedObjectOfHomomorphismStructure( category, distinguished_object );
             
             ##
             AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
