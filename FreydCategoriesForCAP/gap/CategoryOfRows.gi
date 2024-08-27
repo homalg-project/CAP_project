@@ -1034,7 +1034,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         ##
         AddBraidingWithGivenTensorProducts( category,
           function( cat, object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
-          local permutation_matrix, rank, rank_1, rank_2;
+          local rank, rank_1, rank_2, permutation_matrix;
           
           rank_1 := RankOfObject( object_1 );
           
@@ -1042,15 +1042,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
           
           rank := RankOfObject( object_1_tensored_object_2 );
           
-          permutation_matrix := PermutationMat(
-                                  PermList( List( [ 1 .. rank ], i -> ( RemInt( i - 1, rank_2 ) * rank_1 + QuoInt( i - 1, rank_2 ) + 1 ) ) ),
-                                  rank
-                                );
+          permutation_matrix := CertainRows( HomalgIdentityMatrix( rank, ring ),
+                                        List( [ 1 .. rank ], i -> ( RemInt( i - 1, rank_2 ) * rank_1 + QuoInt( i - 1, rank_2 ) + 1 ) ) );
           
-          return CategoryOfRowsMorphism( cat, object_1_tensored_object_2,
-                                         HomalgMatrixListList( permutation_matrix, rank, rank, ring ),
-                                         object_2_tensored_object_1
-                                       );
+          return CategoryOfRowsMorphism( cat,
+                                         object_1_tensored_object_2,
+                                         permutation_matrix,
+                                         object_2_tensored_object_1 );
           
         end );
 
