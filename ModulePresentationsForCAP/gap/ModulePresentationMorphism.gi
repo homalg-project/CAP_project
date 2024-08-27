@@ -286,8 +286,6 @@ end );
 ##
 InstallMethod( DisplayString,
                [ IsLeftOrRightPresentationMorphism ],
-               # FIXME: Fix the rank in GenericView and delete this afterwards
-               9999,
                
   function( morphism )
     

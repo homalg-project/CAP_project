@@ -260,8 +260,6 @@ end );
 ##
 InstallMethod( DisplayString,
                [ IsLeftOrRightPresentation ],
-               # FIXME: Fix the rank in GenericView and delete this afterwards
-               9999,
                
   function( object )
     
