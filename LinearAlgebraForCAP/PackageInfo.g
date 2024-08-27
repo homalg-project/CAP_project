@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "LinearAlgebraForCAP",
 Subtitle := "Category of Matrices over a Field for CAP",
-Version := "2024.08-05",
-Date := "2024-08-22",
+Version := "2024.08-06",
+Date := "2024-08-27",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -111,7 +111,7 @@ Dependencies := rec(
 
 Extensions := [
   rec(
-    needed := [ [ "FreydCategoriesForCAP", ">= 2024.01-04" ] ],
+    needed := [ [ "FreydCategoriesForCAP", ">= 2024.08-06" ] ],
     filename := "gap/MatrixCategory_as_CategoryOfRows.gi",
   ),
 ],
