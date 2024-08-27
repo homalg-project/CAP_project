@@ -6,17 +6,19 @@
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XZZZ := HomalgRingOfIntegersInSingular();;[127X[104X
-    [4X[25Xgap>[125X [27XM1 := AsLeftPresentation( HomalgMatrix( [ [ "2" ] ], ZZZ ) );;[127X[104X
-    [4X[25Xgap>[125X [27XM2 := AsLeftPresentation( HomalgMatrix( [ [ "3" ] ], ZZZ ) );;[127X[104X
-    [4X[25Xgap>[125X [27XM3 := AsLeftPresentation( HomalgMatrix( [ [ "4" ] ], ZZZ ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xfpres := LeftPresentations( ZZZ );;[127X[104X
+    [4X[25Xgap>[125X [27XM1 := AsLeftPresentation( fpres, HomalgMatrix( [ [ "2" ] ], ZZZ ) );;[127X[104X
+    [4X[25Xgap>[125X [27XM2 := AsLeftPresentation( fpres, HomalgMatrix( [ [ "3" ] ], ZZZ ) );;[127X[104X
+    [4X[25Xgap>[125X [27XM3 := AsLeftPresentation( fpres, HomalgMatrix( [ [ "4" ] ], ZZZ ) );;[127X[104X
     [4X[25Xgap>[125X [27XM := DirectSum( M1, M2, M3 );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( Annihilator( M ) );[127X[104X
     [4X[28X12[128X[104X
     [4X[28X[128X[104X
     [4X[28XA monomorphism in Category of left presentations of Z[128X[104X
-    [4X[25Xgap>[125X [27XM1 := AsRightPresentation( HomalgMatrix( [ [ "2" ] ], ZZZ ) );;[127X[104X
-    [4X[25Xgap>[125X [27XM2 := AsRightPresentation( HomalgMatrix( [ [ "3" ] ], ZZZ ) );;[127X[104X
-    [4X[25Xgap>[125X [27XM3 := AsRightPresentation( HomalgMatrix( [ [ "4" ] ], ZZZ ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xfpres := RightPresentations( ZZZ );;[127X[104X
+    [4X[25Xgap>[125X [27XM1 := AsRightPresentation( fpres, HomalgMatrix( [ [ "2" ] ], ZZZ ) );;[127X[104X
+    [4X[25Xgap>[125X [27XM2 := AsRightPresentation( fpres, HomalgMatrix( [ [ "3" ] ], ZZZ ) );;[127X[104X
+    [4X[25Xgap>[125X [27XM3 := AsRightPresentation( fpres, HomalgMatrix( [ [ "4" ] ], ZZZ ) );;[127X[104X
     [4X[25Xgap>[125X [27XM := DirectSum( M1, M2, M3 );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( Annihilator( M ) );[127X[104X
     [4X[28X12[128X[104X
@@ -31,10 +33,11 @@
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationalsInSingular();;[127X[104X
     [4X[25Xgap>[125X [27XR := Q * "x,y";[127X[104X
     [4X[28XQ[x,y][128X[104X
-    [4X[25Xgap>[125X [27XF := AsLeftPresentation( HomalgMatrix( [ [ 0 ] ], R ) );[127X[104X
+    [4X[25Xgap>[125X [27Xfpres := LeftPresentations( R );;[127X[104X
+    [4X[25Xgap>[125X [27XF := AsLeftPresentation( fpres, HomalgMatrix( [ [ 0 ] ], R ) );[127X[104X
     [4X[28X<An object in Category of left presentations of Q[x,y]>[128X[104X
-    [4X[25Xgap>[125X [27XI1 := AsLeftPresentation( HomalgMatrix( [ [ "x" ] ], R ) );;[127X[104X
-    [4X[25Xgap>[125X [27XI2 := AsLeftPresentation( HomalgMatrix( [ [ "y" ] ], R ) );;[127X[104X
+    [4X[25Xgap>[125X [27XI1 := AsLeftPresentation( fpres, HomalgMatrix( [ [ "x" ] ], R ) );;[127X[104X
+    [4X[25Xgap>[125X [27XI2 := AsLeftPresentation( fpres, HomalgMatrix( [ [ "y" ] ], R ) );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( I1 );[127X[104X
     [4X[28Xx[128X[104X
     [4X[28X[128X[104X
@@ -72,8 +75,9 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationalsInSingular();;[127X[104X
     [4X[25Xgap>[125X [27XR := Q * "x,y,z";;[127X[104X
+    [4X[25Xgap>[125X [27Xfpres := LeftPresentations( R );;[127X[104X
     [4X[25Xgap>[125X [27XM := HomalgMatrix( [ [ "x" ], [ "y" ], [ "z" ] ], 3, 1, R );;[127X[104X
-    [4X[25Xgap>[125X [27XMl := AsLeftPresentation( M );;[127X[104X
+    [4X[25Xgap>[125X [27XMl := AsLeftPresentation( fpres, M );;[127X[104X
     [4X[25Xgap>[125X [27Xeps := CoverByFreeModule( Ml );;[127X[104X
     [4X[25Xgap>[125X [27Xiota1 := KernelEmbedding( eps );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( iota1 );[127X[104X
@@ -131,7 +135,7 @@
     [4X[28X[128X[104X
     [4X[28XA morphism in Category of left presentations of Q[x,y,z][128X[104X
     [4X[25Xgap>[125X [27XN := HomalgMatrix( [ [ "x" ] ], 1, 1, R );;[127X[104X
-    [4X[25Xgap>[125X [27XNl := AsLeftPresentation( N );;[127X[104X
+    [4X[25Xgap>[125X [27XNl := AsLeftPresentation( fpres, N );;[127X[104X
     [4X[25Xgap>[125X [27Xd2Nl := TensorProductOnMorphisms( d2, IdentityMorphism( Nl ) );;[127X[104X
     [4X[25Xgap>[125X [27Xd1Nl := TensorProductOnMorphisms( d1, IdentityMorphism( Nl ) );;[127X[104X
     [4X[25Xgap>[125X [27XIsZero( PreCompose( d2Nl, d1Nl ) );[127X[104X
@@ -140,9 +144,9 @@
     [4X[25Xgap>[125X [27Xboundaries := ImageEmbedding( d2Nl );;[127X[104X
     [4X[25Xgap>[125X [27Xboundaries_in_cyles := LiftAlongMonomorphism( cycles, boundaries );;[127X[104X
     [4X[25Xgap>[125X [27Xhomology := CokernelObject( boundaries_in_cyles );;[127X[104X
-    [4X[25Xgap>[125X [27XLessGenFunctor := FunctorLessGeneratorsLeft( R );;[127X[104X
+    [4X[25Xgap>[125X [27XLessGenFunctor := FunctorLessGeneratorsLeft( fpres );;[127X[104X
     [4X[25Xgap>[125X [27Xhomology := ApplyFunctor( LessGenFunctor, homology );;[127X[104X
-    [4X[25Xgap>[125X [27XStdBasisFunctor := FunctorStandardModuleLeft( R );;[127X[104X
+    [4X[25Xgap>[125X [27XStdBasisFunctor := FunctorStandardModuleLeft( fpres );;[127X[104X
     [4X[25Xgap>[125X [27Xhomology := ApplyFunctor( StdBasisFunctor, homology );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( homology );[127X[104X
     [4X[28Xz,[128X[104X
@@ -157,9 +161,10 @@
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XR := HomalgRingOfIntegers( );;[127X[104X
-    [4X[25Xgap>[125X [27XM := AsLeftPresentation( HomalgMatrix( [ [ 2 ] ], 1, 1, R ) );[127X[104X
+    [4X[25Xgap>[125X [27Xfpres := LeftPresentations( R );;[127X[104X
+    [4X[25Xgap>[125X [27XM := AsLeftPresentation( fpres, HomalgMatrix( [ [ 2 ] ], 1, 1, R ) );[127X[104X
     [4X[28X<An object in Category of left presentations of Z>[128X[104X
-    [4X[25Xgap>[125X [27XN := AsLeftPresentation( HomalgMatrix( [ [ 3 ] ], 1, 1, R ) );[127X[104X
+    [4X[25Xgap>[125X [27XN := AsLeftPresentation( fpres, HomalgMatrix( [ [ 3 ] ], 1, 1, R ) );[127X[104X
     [4X[28X<An object in Category of left presentations of Z>[128X[104X
     [4X[25Xgap>[125X [27XT := TensorProductOnObjects( M, N );[127X[104X
     [4X[28X<An object in Category of left presentations of Z>[128X[104X
