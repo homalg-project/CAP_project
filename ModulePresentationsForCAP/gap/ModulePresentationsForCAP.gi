@@ -939,7 +939,7 @@ InstallGlobalFunction( ADD_EVALUATION_MORPHISM_LEFT,
         
         rank_1 := NrColumns( UnderlyingMatrix( object_1 ) );
         
-        free_module := FreeLeftPresentation( rank_1, homalg_ring );
+        free_module := FreeLeftPresentation( cat, rank_1 );
         
         morphism := PreCompose( internal_hom_embedding, Braiding( free_module, object_2 ) );
         
@@ -996,7 +996,7 @@ InstallGlobalFunction( ADD_EVALUATION_MORPHISM_RIGHT,
         
         rank_1 := NrRows( UnderlyingMatrix( object_1 ) );
         
-        free_module := FreeRightPresentation( rank_1, homalg_ring );
+        free_module := FreeRightPresentation( cat, rank_1 );
         
         morphism := PreCompose( internal_hom_embedding, Braiding( free_module, object_2 ) );
         
@@ -1055,7 +1055,7 @@ InstallGlobalFunction( ADD_COEVALUATION_MORPHISM_LEFT,
         
         rank_2 := NrColumns( UnderlyingMatrix( object_2 ) );
         
-        free_module := FreeLeftPresentation( rank_2, homalg_ring );
+        free_module := FreeLeftPresentation( cat, rank_2 );
         
         morphism := PreCompose( internal_hom_embedding, Braiding( free_module, object_1_tensored_object_2 ) );
         
@@ -1113,7 +1113,7 @@ InstallGlobalFunction( ADD_COEVALUATION_MORPHISM_RIGHT,
         
         rank_2 := NrRows( UnderlyingMatrix( object_2 ) );
         
-        free_module := FreeRightPresentation( rank_2, homalg_ring );
+        free_module := FreeRightPresentation( cat, rank_2 );
         
         morphism := PreCompose( internal_hom_embedding, Braiding( free_module, object_1_tensored_object_2 ) );
         

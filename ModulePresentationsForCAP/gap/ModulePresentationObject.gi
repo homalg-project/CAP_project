@@ -61,6 +61,16 @@ InstallMethod( FreeLeftPresentation,
                [ IsInt, IsHomalgRing ],
                
   function( rank, homalg_ring )
+    
+    return FreeLeftPresentation( LeftPresentations( homalg_ring ), rank );
+    
+end );
+
+##
+InstallOtherMethod( FreeLeftPresentation,
+                    [ IsCategoryOfLeftPresentations, IsInt ],
+                    
+  function( cat, rank )
     local object;
     
     if rank < 0 then
@@ -69,7 +79,7 @@ InstallMethod( FreeLeftPresentation,
       
     fi;
     
-    object := AsLeftPresentation( HomalgZeroMatrix( 0, rank, homalg_ring ) );
+    object := AsLeftPresentation( cat, HomalgZeroMatrix( 0, rank, UnderlyingRing( cat ) ) );
     
     SetIsProjective( object, true );
     
@@ -82,6 +92,16 @@ InstallMethod( FreeRightPresentation,
                [ IsInt, IsHomalgRing ],
                
   function( rank, homalg_ring )
+    
+    return FreeRightPresentation( RightPresentations( homalg_ring ), rank );
+    
+end );
+
+##
+InstallOtherMethod( FreeRightPresentation,
+                    [ IsCategoryOfRightPresentations, IsInt ],
+                    
+  function( cat, rank )
     local object;
     
     if rank < 0 then
@@ -90,7 +110,7 @@ InstallMethod( FreeRightPresentation,
       
     fi;
     
-    object := AsRightPresentation( HomalgZeroMatrix( rank, 0, homalg_ring ) );
+    object := AsRightPresentation( cat, HomalgZeroMatrix( rank, 0, UnderlyingRing( cat ) ) );
     
     SetIsProjective( object, true );
     
@@ -169,8 +189,10 @@ InstallMethodWithCacheFromObject( INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT,
                                   [ IsLeftOrRightPresentation, IsLeftOrRightPresentation ],
                                   
   function( object_1, object_2 )
-    local underlying_matrix_1, transposed_underlying_matrix_1, identity_matrix_2, differential_matrix, homalg_ring,
+    local category, underlying_matrix_1, transposed_underlying_matrix_1, identity_matrix_2, differential_matrix, homalg_ring,
           free_module_source, free_module_range, differential;
+    
+    category := CapCategory( object_1 );
     
     underlying_matrix_1 := UnderlyingMatrix( object_1 );
     
@@ -182,9 +204,9 @@ InstallMethodWithCacheFromObject( INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT,
     
     homalg_ring := UnderlyingHomalgRing( object_1 );
     
-    free_module_source := FreeLeftPresentation( NrColumns( underlying_matrix_1 ), homalg_ring );
+    free_module_source := FreeLeftPresentation( category, NrColumns( underlying_matrix_1 ) );
     
-    free_module_range := FreeLeftPresentation( NrRows( underlying_matrix_1 ), homalg_ring );
+    free_module_range := FreeLeftPresentation( category, NrRows( underlying_matrix_1 ) );
     
     differential :=  PresentationMorphism( TensorProductOnObjects( free_module_source, object_2 ),
                                            differential_matrix,
@@ -200,8 +222,10 @@ InstallMethodWithCacheFromObject( INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_RIGHT
                                   [ IsLeftOrRightPresentation, IsLeftOrRightPresentation ],
                                   
   function( object_1, object_2 )
-    local underlying_matrix_1, transposed_underlying_matrix_1, identity_matrix_2, differential_matrix, homalg_ring,
+    local category, underlying_matrix_1, transposed_underlying_matrix_1, identity_matrix_2, differential_matrix, homalg_ring,
           free_module_source, free_module_range, differential;
+    
+    category := CapCategory( object_1 );
     
     underlying_matrix_1 := UnderlyingMatrix( object_1 );
     
@@ -213,9 +237,9 @@ InstallMethodWithCacheFromObject( INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_RIGHT
     
     homalg_ring := UnderlyingHomalgRing( object_1 );
     
-    free_module_source := FreeRightPresentation( NrRows( underlying_matrix_1 ), homalg_ring );
+    free_module_source := FreeRightPresentation( category, NrRows( underlying_matrix_1 ) );
     
-    free_module_range := FreeRightPresentation( NrColumns( underlying_matrix_1 ), homalg_ring );
+    free_module_range := FreeRightPresentation( category, NrColumns( underlying_matrix_1 ) );
     
     differential :=  PresentationMorphism( TensorProductOnObjects( free_module_source, object_2 ),
                                            differential_matrix,

@@ -9,8 +9,9 @@ LoadPackage( "RingsForHomalg", ">= 2020.04.17" );
 #! @Example
 Q := HomalgFieldOfRationalsInSingular();;
 R := Q * "x,y,z";;
+fpres := LeftPresentations( R );;
 M := HomalgMatrix( [ [ "x" ], [ "y" ], [ "z" ] ], 3, 1, R );;
-Ml := AsLeftPresentation( M );;
+Ml := AsLeftPresentation( fpres, M );;
 eps := CoverByFreeModule( Ml );;
 iota1 := KernelEmbedding( eps );;
 Display( iota1 );
@@ -68,7 +69,7 @@ Display( d3 );
 #! 
 #! A morphism in Category of left presentations of Q[x,y,z]
 N := HomalgMatrix( [ [ "x" ] ], 1, 1, R );;
-Nl := AsLeftPresentation( N );;
+Nl := AsLeftPresentation( fpres, N );;
 d2Nl := TensorProductOnMorphisms( d2, IdentityMorphism( Nl ) );;
 d1Nl := TensorProductOnMorphisms( d1, IdentityMorphism( Nl ) );;
 IsZero( PreCompose( d2Nl, d1Nl ) );
@@ -77,9 +78,9 @@ cycles := KernelEmbedding( d1Nl );;
 boundaries := ImageEmbedding( d2Nl );;
 boundaries_in_cyles := LiftAlongMonomorphism( cycles, boundaries );;
 homology := CokernelObject( boundaries_in_cyles );;
-LessGenFunctor := FunctorLessGeneratorsLeft( R );;
+LessGenFunctor := FunctorLessGeneratorsLeft( fpres );;
 homology := ApplyFunctor( LessGenFunctor, homology );;
-StdBasisFunctor := FunctorStandardModuleLeft( R );;
+StdBasisFunctor := FunctorStandardModuleLeft( fpres );;
 homology := ApplyFunctor( StdBasisFunctor, homology );;
 Display( homology );
 #! z,
