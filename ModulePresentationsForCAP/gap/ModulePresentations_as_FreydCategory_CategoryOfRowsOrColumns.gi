@@ -141,6 +141,7 @@ InstallMethod( LeftPresentations_as_FreydCategory_CategoryOfRows,
     
     left_presentations!.ring_for_representation_category := ring;
     
+    #= comment for Julia
     ## TODO: avoid code duplication (see RightPresentations)
     AddTheoremFileToCategory( left_presentations,
       Filename(
@@ -159,6 +160,7 @@ InstallMethod( LeftPresentations_as_FreydCategory_CategoryOfRows,
         DirectoriesPackageLibrary( "ModulePresentationsForCAP", "LogicForModulePresentations" ),
         "RelationsForGeneralModuleCategories.tex" )
     );
+    # =#
     
     Finalize( left_presentations );
     
@@ -297,6 +299,7 @@ InstallMethod( RightPresentations_as_FreydCategory_CategoryOfColumns,
     
     right_presentations!.ring_for_representation_category := ring;
     
+    #= comment for Julia
     ## TODO: avoid code duplication (see LeftPresentations)
     AddTheoremFileToCategory( right_presentations,
       Filename(
@@ -315,6 +318,7 @@ InstallMethod( RightPresentations_as_FreydCategory_CategoryOfColumns,
         DirectoriesPackageLibrary( "ModulePresentationsForCAP", "LogicForModulePresentations" ),
         "RelationsForGeneralModuleCategories.tex" )
     );
+    # =#
     
     Finalize( right_presentations );
     

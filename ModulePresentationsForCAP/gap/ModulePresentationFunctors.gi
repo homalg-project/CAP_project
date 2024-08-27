@@ -12,15 +12,22 @@
 
 BindGlobal( "INSTALL_FUNCTOR_STANDARD_MODULE_METHODS",
             
-  function( functor_standard_module, presentations, basis_of_module, decide_zero, as_presentation )
+  function( functor_standard_module, is_category_of_presentations, presentations, basis_of_module, decide_zero, as_presentation )
     
     InstallMethod( functor_standard_module,
                    [ IsHomalgRing ],
                    
       function( ring )
-        local category, functor;
         
-        category := presentations( ring );
+        return functor_standard_module( presentations( ring ) );
+        
+    end );
+    
+    InstallOtherMethod( functor_standard_module,
+                        [ is_category_of_presentations ],
+                        
+      function( category )
+        local functor;
         
         functor := CapFunctor( Concatenation( "Standard module for ", Name( category ) ), category, category );
         
@@ -31,7 +38,7 @@ BindGlobal( "INSTALL_FUNCTOR_STANDARD_MODULE_METHODS",
             
             matrix := basis_of_module( UnderlyingMatrix( object ) );
             
-            return as_presentation( matrix );
+            return as_presentation( category, matrix );
             
         end );
         
@@ -58,9 +65,9 @@ BindGlobal( "INSTALL_FUNCTOR_STANDARD_MODULE",
             
   function( )
     
-    INSTALL_FUNCTOR_STANDARD_MODULE_METHODS( FunctorStandardModuleLeft,  LeftPresentations,  BasisOfRowModule,    DecideZeroRows,    AsLeftPresentation  );
+    INSTALL_FUNCTOR_STANDARD_MODULE_METHODS( FunctorStandardModuleLeft,  IsCategoryOfLeftPresentations, LeftPresentations,  BasisOfRowModule,    DecideZeroRows,    AsLeftPresentation  );
     
-    INSTALL_FUNCTOR_STANDARD_MODULE_METHODS( FunctorStandardModuleRight, RightPresentations, BasisOfColumnModule, DecideZeroColumns, AsRightPresentation );
+    INSTALL_FUNCTOR_STANDARD_MODULE_METHODS( FunctorStandardModuleRight, IsCategoryOfRightPresentations, RightPresentations, BasisOfColumnModule, DecideZeroColumns, AsRightPresentation );
     
 end );
 
@@ -170,9 +177,17 @@ InstallMethod( FunctorLessGeneratorsLeft,
                [ IsHomalgRing ],
                
   function( ring )
-    local category, functor;
     
-    category := LeftPresentations( ring );
+    return FunctorLessGeneratorsLeft( LeftPresentations( ring ) );
+    
+end );
+
+##
+InstallOtherMethod( FunctorLessGeneratorsLeft,
+                    [ IsCategoryOfLeftPresentations ],
+                    
+  function( category )
+    local functor;
     
     functor := CapFunctor( Concatenation( "Less generators for ", Name( category ) ), category, category );
     
@@ -183,7 +198,7 @@ InstallMethod( FunctorLessGeneratorsLeft,
         
         new_object := LessGeneratorsTransformationTripleLeft( UnderlyingMatrix( object ) )[1];
         
-        return AsLeftPresentation( new_object );
+        return AsLeftPresentation( category, new_object );
         
     end );
     
@@ -213,9 +228,17 @@ InstallMethod( FunctorLessGeneratorsRight,
                [ IsHomalgRing ],
                
   function( ring )
-    local category, functor;
     
-    category := RightPresentations( ring );
+    return FunctorLessGeneratorsRight( RightPresentations( ring ) );
+    
+end );
+
+##
+InstallOtherMethod( FunctorLessGeneratorsRight,
+                    [ IsCategoryOfRightPresentations ],
+                     
+  function( category )
+    local functor;
     
     functor := CapFunctor( Concatenation( "Less generators for ", Name( category ) ), category, category );
     
@@ -226,7 +249,7 @@ InstallMethod( FunctorLessGeneratorsRight,
         
         new_object := LessGeneratorsTransformationTripleRight( UnderlyingMatrix( object ) )[1];
         
-        return AsRightPresentation( new_object );
+        return AsRightPresentation( category, new_object );
         
     end );
     
@@ -253,11 +276,22 @@ end );
 
 ##
 InstallMethod( FunctorDualLeft,
-                [ IsHomalgRing ], 
-   function( ring )
-     local category, functor;
+               [ IsHomalgRing ],
+               
+  function( ring )
+    
+    return FunctorDualLeft( LeftPresentations( ring ) );
+    
+end );
+
+##
+InstallOtherMethod( FunctorDualLeft,
+                    [ IsCategoryOfLeftPresentations ],
+                    
+   function( category )
+     local ring, functor;
      
-     category := LeftPresentations( ring );
+     ring := UnderlyingRing( category );
      
      functor := CapFunctor( Concatenation( "Hom( , R ) functor for ", Name( category ) ), Opposite( category ), category );
      
@@ -315,11 +349,22 @@ end );
 
 ##
 InstallMethod( FunctorDualRight,
-                [ IsHomalgRing ], 
-   function( ring )
-     local category, functor;
+               [ IsHomalgRing ],
+               
+  function( ring )
+    
+    return FunctorDualRight( RightPresentations( ring ) );
+    
+end );
+
+##
+InstallOtherMethod( FunctorDualRight,
+                    [ IsCategoryOfRightPresentations ],
+                    
+   function( category )
+     local ring, functor;
      
-     category := RightPresentations( ring );
+     ring := UnderlyingRing( category );
      
      functor := CapFunctor( Concatenation( "Hom( , R ) functor for ", Name( category ) ), Opposite( category ), category );
      
@@ -376,15 +421,24 @@ end );
 
 ##
 InstallMethod( FunctorDoubleDualLeft,
-                [ IsHomalgRing ], 
-   function( ring )
-     local category, functor, dual_functor;
-     
-     category := LeftPresentations( ring );
+               [ IsHomalgRing ],
+               
+  function( ring )
+    
+    return FunctorDoubleDualLeft( LeftPresentations( ring ) );
+    
+end );
+
+##
+InstallOtherMethod( FunctorDoubleDualLeft,
+                    [ IsCategoryOfLeftPresentations ],
+                    
+   function( category )
+     local functor, dual_functor;
      
      functor := CapFunctor( Concatenation( " Hom( Hom( , R ), R ) functor for ", Name( category ) ), category, category );
      
-     dual_functor := FunctorDualLeft( ring );
+     dual_functor := FunctorDualLeft( category );
     
      AddObjectFunction( functor, 
      
@@ -408,15 +462,24 @@ end );
 
 ##
 InstallMethod( FunctorDoubleDualRight,
-                [ IsHomalgRing ], 
-   function( ring )
-     local category, functor, dual_functor;
-     
-     category := RightPresentations( ring );
+               [ IsHomalgRing ],
+               
+  function( ring )
+    
+    return FunctorDoubleDualRight( RightPresentations( ring ) );
+    
+end );
+
+##
+InstallOtherMethod( FunctorDoubleDualRight,
+                    [ IsCategoryOfRightPresentations ],
+                    
+   function( category )
+     local functor, dual_functor;
      
      functor := CapFunctor( Concatenation( " Hom( Hom( , R ), R ) functor for ", Name( category ) ), category, category );
      
-     dual_functor := FunctorDualRight( ring );
+     dual_functor := FunctorDualRight( category );
     
      AddObjectFunction( functor, 
      

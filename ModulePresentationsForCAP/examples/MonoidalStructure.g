@@ -8,9 +8,10 @@ LoadPackage( "RingsForHomalg" );
 
 #! @Example
 R := HomalgRingOfIntegers( );;
-M := AsLeftPresentation( HomalgMatrix( [ [ 2 ] ], 1, 1, R ) );
+fpres := LeftPresentations( R );;
+M := AsLeftPresentation( fpres, HomalgMatrix( [ [ 2 ] ], 1, 1, R ) );
 #! <An object in Category of left presentations of Z>
-N := AsLeftPresentation( HomalgMatrix( [ [ 3 ] ], 1, 1, R ) );
+N := AsLeftPresentation( fpres, HomalgMatrix( [ [ 3 ] ], 1, 1, R ) );
 #! <An object in Category of left presentations of Z>
 T := TensorProductOnObjects( M, N );
 #! <An object in Category of left presentations of Z>

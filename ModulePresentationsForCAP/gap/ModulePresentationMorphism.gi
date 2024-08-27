@@ -254,7 +254,7 @@ InstallMethod( CoverByFreeModule,
     
     number_of_generators := NrColumns( UnderlyingMatrix( left_presentation ) );
     
-    free_presentation := FreeLeftPresentation( number_of_generators, underlying_ring );
+    free_presentation := FreeLeftPresentation( CapCategory( left_presentation ), number_of_generators );
     
     return PresentationMorphism( free_presentation, HomalgIdentityMatrix( number_of_generators, underlying_ring ), left_presentation );
     
@@ -271,7 +271,7 @@ InstallMethod( CoverByFreeModule,
     
     number_of_generators := NrRows( UnderlyingMatrix( right_presentation ) );
     
-    free_presentation := FreeRightPresentation( number_of_generators, underlying_ring );
+    free_presentation := FreeRightPresentation( CapCategory( right_presentation ), number_of_generators );
     
     return PresentationMorphism( free_presentation, HomalgIdentityMatrix( number_of_generators, underlying_ring ), right_presentation );
     
@@ -286,8 +286,6 @@ end );
 ##
 InstallMethod( DisplayString,
                [ IsLeftOrRightPresentationMorphism ],
-               # FIXME: Fix the rank in GenericView and delete this afterwards
-               9999,
                
   function( morphism )
     

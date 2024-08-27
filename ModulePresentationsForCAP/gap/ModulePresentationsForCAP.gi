@@ -18,7 +18,7 @@ InstallMethod( LeftPresentations,
                         Concatenation( "Category of left presentations of ", RingName( ring ) ),
                         IsCategoryOfLeftPresentations,
                         IsLeftPresentation,
-                        IsLeftPresentationMorphism and HasUnderlyingMatrix,
+                        IsLeftPresentationMorphism,
                         IsCapCategoryTwoCell,
                         fail,
                         fail,
@@ -83,6 +83,7 @@ InstallMethod( LeftPresentations,
     
     ADD_FUNCTIONS_FOR_LEFT_PRESENTATION( category );
     
+    #= comment for Julia
     ## TODO: avoid code duplication (see RightPresentations)
     AddTheoremFileToCategory( category,
       Filename(
@@ -101,6 +102,7 @@ InstallMethod( LeftPresentations,
         DirectoriesPackageLibrary( "ModulePresentationsForCAP", "LogicForModulePresentations" ),
         "RelationsForGeneralModuleCategories.tex" )
     );
+    # =#
     
     Finalize( category );
     
@@ -122,7 +124,7 @@ InstallMethod( RightPresentations,
                         Concatenation( "Category of right presentations of ", RingName( ring ) ),
                         IsCategoryOfRightPresentations,
                         IsRightPresentation,
-                        IsRightPresentationMorphism and HasUnderlyingMatrix,
+                        IsRightPresentationMorphism,
                         IsCapCategoryTwoCell,
                         fail,
                         fail,
@@ -187,6 +189,7 @@ InstallMethod( RightPresentations,
     
     ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION( category );
     
+    #= comment for Julia
     ## TODO: avoid code duplication (see LeftPresentations)
     AddTheoremFileToCategory( category,
       Filename(
@@ -205,6 +208,7 @@ InstallMethod( RightPresentations,
         DirectoriesPackageLibrary( "ModulePresentationsForCAP", "LogicForModulePresentations" ),
         "RelationsForGeneralModuleCategories.tex" )
     );
+    # =#
     
     Finalize( category );
     
@@ -342,8 +346,8 @@ InstallGlobalFunction( ADD_IS_WELL_DEFINED_FOR_MORPHISM_LEFT,
         
         morphism_matrix := UnderlyingMatrix( morphism );
         
-        if not ( NrColumns( source_matrix ) = NrRows( morphism_matrix )
-                 and NrColumns( morphism_matrix ) = NrColumns( range_matrix ) ) then
+        if not ( NrColumns( source_matrix ) = NrRows( morphism_matrix ) and
+                 NrColumns( morphism_matrix ) = NrColumns( range_matrix ) ) then
           
           return false;
           
@@ -378,8 +382,8 @@ InstallGlobalFunction( ADD_IS_WELL_DEFINED_FOR_MORPHISM_RIGHT,
         
         morphism_matrix := UnderlyingMatrix( morphism );
         
-        if not ( NrRows( source_matrix ) = NrColumns( morphism_matrix )
-                 and NrRows( morphism_matrix ) = NrRows( range_matrix ) ) then
+        if not ( NrRows( source_matrix ) = NrColumns( morphism_matrix ) and
+                 NrRows( morphism_matrix ) = NrRows( range_matrix ) ) then
           
           return false;
           
@@ -935,7 +939,7 @@ InstallGlobalFunction( ADD_EVALUATION_MORPHISM_LEFT,
         
         rank_1 := NrColumns( UnderlyingMatrix( object_1 ) );
         
-        free_module := FreeLeftPresentation( rank_1, homalg_ring );
+        free_module := FreeLeftPresentation( cat, rank_1 );
         
         morphism := PreCompose( internal_hom_embedding, Braiding( free_module, object_2 ) );
         
@@ -992,7 +996,7 @@ InstallGlobalFunction( ADD_EVALUATION_MORPHISM_RIGHT,
         
         rank_1 := NrRows( UnderlyingMatrix( object_1 ) );
         
-        free_module := FreeRightPresentation( rank_1, homalg_ring );
+        free_module := FreeRightPresentation( cat, rank_1 );
         
         morphism := PreCompose( internal_hom_embedding, Braiding( free_module, object_2 ) );
         
@@ -1051,7 +1055,7 @@ InstallGlobalFunction( ADD_COEVALUATION_MORPHISM_LEFT,
         
         rank_2 := NrColumns( UnderlyingMatrix( object_2 ) );
         
-        free_module := FreeLeftPresentation( rank_2, homalg_ring );
+        free_module := FreeLeftPresentation( cat, rank_2 );
         
         morphism := PreCompose( internal_hom_embedding, Braiding( free_module, object_1_tensored_object_2 ) );
         
@@ -1109,7 +1113,7 @@ InstallGlobalFunction( ADD_COEVALUATION_MORPHISM_RIGHT,
         
         rank_2 := NrRows( UnderlyingMatrix( object_2 ) );
         
-        free_module := FreeRightPresentation( rank_2, homalg_ring );
+        free_module := FreeRightPresentation( cat, rank_2 );
         
         morphism := PreCompose( internal_hom_embedding, Braiding( free_module, object_1_tensored_object_2 ) );
         

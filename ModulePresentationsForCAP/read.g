@@ -18,7 +18,9 @@ ReadPackage( "ModulePresentationsForCAP", "gap/ModulePresentationObject.gi" );
 
 ReadPackage( "ModulePresentationsForCAP", "gap/ModulePresentationMorphism.gi" );
 
+#= comment for Julia
 ReadPackage( "ModulePresentationsForCAP", "gap/ModulePresentationFunctors.gi" );
+# =#
 
 ReadPackage( "ModulePresentationsForCAP", "gap/ModulePresentationNaturalTransformations.gi" );
 

@@ -10,10 +10,11 @@ LoadPackage( "RingsForHomalg" );
 Q := HomalgFieldOfRationalsInSingular();;
 R := Q * "x,y";
 #! Q[x,y]
-F := AsLeftPresentation( HomalgMatrix( [ [ 0 ] ], R ) );
+fpres := LeftPresentations( R );;
+F := AsLeftPresentation( fpres, HomalgMatrix( [ [ 0 ] ], R ) );
 #! <An object in Category of left presentations of Q[x,y]>
-I1 := AsLeftPresentation( HomalgMatrix( [ [ "x" ] ], R ) );;
-I2 := AsLeftPresentation( HomalgMatrix( [ [ "y" ] ], R ) );;
+I1 := AsLeftPresentation( fpres, HomalgMatrix( [ [ "x" ] ], R ) );;
+I2 := AsLeftPresentation( fpres, HomalgMatrix( [ [ "y" ] ], R ) );;
 Display( I1 );
 #! x
 #! 
