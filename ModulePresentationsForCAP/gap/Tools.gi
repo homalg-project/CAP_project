@@ -65,7 +65,9 @@ BindGlobal( "INSTALL_GET_RID_OF_ZERO_GENERATORS_TRANSFORMATION_TRIPLE",
 end );
 
 ##
+#= comment for Julia
 INSTALL_GET_RID_OF_ZERO_GENERATORS_TRANSFORMATION_TRIPLE( );
+# =#
 
 ##
 InstallMethod( LessGeneratorsTransformationTripleLeft,

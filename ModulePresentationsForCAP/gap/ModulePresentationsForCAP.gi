@@ -83,6 +83,7 @@ InstallMethod( LeftPresentations,
     
     ADD_FUNCTIONS_FOR_LEFT_PRESENTATION( category );
     
+    #= comment for Julia
     ## TODO: avoid code duplication (see RightPresentations)
     AddTheoremFileToCategory( category,
       Filename(
@@ -101,6 +102,7 @@ InstallMethod( LeftPresentations,
         DirectoriesPackageLibrary( "ModulePresentationsForCAP", "LogicForModulePresentations" ),
         "RelationsForGeneralModuleCategories.tex" )
     );
+    # =#
     
     Finalize( category );
     
@@ -187,6 +189,7 @@ InstallMethod( RightPresentations,
     
     ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION( category );
     
+    #= comment for Julia
     ## TODO: avoid code duplication (see LeftPresentations)
     AddTheoremFileToCategory( category,
       Filename(
@@ -205,6 +208,7 @@ InstallMethod( RightPresentations,
         DirectoriesPackageLibrary( "ModulePresentationsForCAP", "LogicForModulePresentations" ),
         "RelationsForGeneralModuleCategories.tex" )
     );
+    # =#
     
     Finalize( category );
     
