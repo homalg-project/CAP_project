@@ -346,8 +346,8 @@ InstallGlobalFunction( ADD_IS_WELL_DEFINED_FOR_MORPHISM_LEFT,
         
         morphism_matrix := UnderlyingMatrix( morphism );
         
-        if not ( NrColumns( source_matrix ) = NrRows( morphism_matrix )
-                 and NrColumns( morphism_matrix ) = NrColumns( range_matrix ) ) then
+        if not ( NrColumns( source_matrix ) = NrRows( morphism_matrix ) and
+                 NrColumns( morphism_matrix ) = NrColumns( range_matrix ) ) then
           
           return false;
           
@@ -382,8 +382,8 @@ InstallGlobalFunction( ADD_IS_WELL_DEFINED_FOR_MORPHISM_RIGHT,
         
         morphism_matrix := UnderlyingMatrix( morphism );
         
-        if not ( NrRows( source_matrix ) = NrColumns( morphism_matrix )
-                 and NrRows( morphism_matrix ) = NrRows( range_matrix ) ) then
+        if not ( NrRows( source_matrix ) = NrColumns( morphism_matrix ) and
+                 NrRows( morphism_matrix ) = NrRows( range_matrix ) ) then
           
           return false;
           
