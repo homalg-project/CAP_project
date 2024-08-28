@@ -8,10 +8,9 @@
 # ToolsForCategories.gi is already loaded in init.g
 #ReadPackage( "CAP", "gap/ToolsForCategories.gi" );
 
-## CAP.gi uses implementations in this file.
-ReadPackage( "CAP", "gap/Derivations.gi" );
-
 ReadPackage( "CAP", "gap/CAP.gi" );
+
+ReadPackage( "CAP", "gap/Derivations.gi" );
 
 ReadPackage( "CAP", "gap/Finalize.gi" );
 

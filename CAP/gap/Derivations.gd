@@ -162,6 +162,8 @@ DeclareOperation( "AddOperationsToDerivationGraph", [ IsDerivedMethodGraph, IsDe
 #! @Arguments graph, target_op, description, used_ops_with_multiples_and_category_getters, func, weight, category_filter, loop_multiplier, category_getters, function_called_before_installation
 DeclareGlobalFunction( "AddDerivation" );
 
+DeclareGlobalName( "CAP_INTERNAL_DERIVATION_GRAPH" );
+
 #!
 DeclareGlobalFunction( "AddDerivationToCAP" );
 

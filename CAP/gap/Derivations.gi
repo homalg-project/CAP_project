@@ -291,6 +291,8 @@ InstallGlobalFunction( AddDerivation,
     
 end );
 
+BindGlobal( "CAP_INTERNAL_DERIVATION_GRAPH", MakeDerivationGraph( [ ] ) );
+
 InstallGlobalFunction( AddDerivationToCAP, FunctionWithNamedArguments(
   [
     # When compiling categories, a derivation does not cause overhead anymore, so we would like to simply set `Weight` to 0.

@@ -141,10 +141,6 @@ InstallGlobalFunction( HAS_VALUE_OF_CATEGORY_CACHE,
     
 end );
 
-InstallValue( CAP_INTERNAL_DERIVATION_GRAPH,
-    
-    MakeDerivationGraph( [ ] ) );
-
 
 ######################################
 ##
