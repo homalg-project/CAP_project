@@ -5,9 +5,8 @@
 #
 ## the CAP core
 
-ReadPackage( "CAP", "gap/MethodRecordTools.gi" );
-
-ReadPackage( "CAP", "gap/ConstructiveCategoriesRecord.gi" );
+# ToolsForCategories.gi is already loaded in init.g
+#ReadPackage( "CAP", "gap/ToolsForCategories.gi" );
 
 ## CAP.gi uses implementations in this file.
 ReadPackage( "CAP", "gap/Derivations.gi" );
@@ -15,6 +14,8 @@ ReadPackage( "CAP", "gap/Derivations.gi" );
 ReadPackage( "CAP", "gap/CAP.gi" );
 
 ReadPackage( "CAP", "gap/Finalize.gi" );
+
+ReadPackage( "CAP", "gap/MethodRecordTools.gi" );
 
 ReadPackage( "CAP", "gap/CategoryObjects.gi" );
 
@@ -34,9 +35,15 @@ ReadPackage( "CAP", "gap/TheoremParser.gi" );
 
 ReadPackage( "CAP", "gap/LogicForCAP.gi" );
 
+ReadPackage( "CAP", "gap/ConstructiveCategoriesRecord.gi" );
+
+ReadPackage( "CAP", "gap/PrintingFunctions.gi" );
+
 ReadPackage( "CAP", "gap/PrepareFunctionsTools.gi" );
 
-## pre-defined CAP operations and category constructors
+ReadPackage( "CAP", "gap/ToolsForCategories_AfterLoading.gi" );
+
+## pre-defined CAP operations
 ReadPackage( "CAP", "gap/MethodRecord.gi" );
 
 ReadPackage( "CAP", "gap/PrepareFunctions.gi" );
@@ -47,13 +54,12 @@ ReadPackage( "CAP", "gap/LimitConvenienceOutput.gi" );
 
 ReadPackage( "CAP", "gap/DerivedMethods.autogen.gi" );
 
+## pre-defined category constructors
 ReadPackage( "CAP", "gap/OppositeCategory.gi" );
 
 ReadPackage( "CAP", "gap/ProductCategory.gi" );
 
 ReadPackage( "CAP", "gap/CategoriesCategory.gi" );
-
-ReadPackage( "CAP", "gap/PrintingFunctions.gi" );
 
 ReadPackage( "CAP", "gap/CategoryConstructor.gi" );
 
@@ -65,6 +71,5 @@ ReadPackage( "CAP", "gap/WrapperCategory.gi" );
 
 ReadPackage( "CAP", "gap/DummyImplementations.gi" );
 
-ReadPackage( "CAP", "gap/ToolsForCategories_AfterLoading.gi" );
-
+## init
 ReadPackage( "CAP", "gap/init.gi" );

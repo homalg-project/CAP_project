@@ -12,7 +12,7 @@ ReadPackage( "CAP", "gap/Derivations.gd" );
 
 ReadPackage( "CAP", "gap/Finalize.gd" );
 
-ReadPackage( "CAP", "gap/AddFunctions.autogen.gd" );
+ReadPackage( "CAP", "gap/MethodRecordTools.gd" );
 
 ReadPackage( "CAP", "gap/CategoryObjects.gd" );
 
@@ -32,8 +32,6 @@ ReadPackage( "CAP", "gap/TheoremParser.gd" );
 
 ReadPackage( "CAP", "gap/LogicForCAP.gd" );
 
-ReadPackage( "CAP", "gap/MethodRecordTools.gd" );
-
 ReadPackage( "CAP", "gap/ConstructiveCategoriesRecord.gd" );
 
 ReadPackage( "CAP", "gap/PrintingFunctions.gd" );
@@ -42,6 +40,9 @@ ReadPackage( "CAP", "gap/PrepareFunctionsTools.gd" );
 
 # load tools required for pre-defined category constructors
 ReadPackage( "CAP", "gap/ToolsForCategories.gi" );
+
+## pre-defined CAP operations
+ReadPackage( "CAP", "gap/AddFunctions.autogen.gd" );
 
 ## pre-defined category constructors
 ReadPackage( "CAP", "gap/OppositeCategory.gd" );
