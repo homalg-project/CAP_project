@@ -46,6 +46,8 @@ ReadPackage( "CAP", "gap/CategoryObjectsOperations.gd" );
 
 ReadPackage( "CAP", "gap/CategoryMorphismsOperations.gd" );
 
+ReadPackage( "CAP", "gap/CategoryTwoCellsOperations.gd" );
+
 ReadPackage( "CAP", "gap/UniversalObjects.gd" );
 
 ReadPackage( "CAP", "gap/AddFunctions.autogen.gd" );
