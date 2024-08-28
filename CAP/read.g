@@ -44,6 +44,8 @@ ReadPackage( "CAP", "gap/PrepareFunctionsTools.gi" );
 ## pre-defined CAP operations
 ReadPackage( "CAP", "gap/CategoryObjectsOperations.gi" );
 
+ReadPackage( "CAP", "gap/CategoryMorphismsOperations.gi" );
+
 ReadPackage( "CAP", "gap/UniversalObjects.gi" );
 
 ReadPackage( "CAP", "gap/MethodRecord.gi" );
