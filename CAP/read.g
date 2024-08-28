@@ -42,6 +42,8 @@ ReadPackage( "CAP", "gap/PrepareFunctionsTools.gi" );
 ## the CAP library
 
 ## pre-defined CAP operations
+ReadPackage( "CAP", "gap/CategoryObjectsOperations.gi" );
+
 ReadPackage( "CAP", "gap/UniversalObjects.gi" );
 
 ReadPackage( "CAP", "gap/MethodRecord.gi" );

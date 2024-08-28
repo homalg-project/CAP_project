@@ -42,6 +42,8 @@ ReadPackage( "CAP", "gap/ToolsForCategories.gi" );
 ## the CAP library
 
 ## pre-defined CAP operations
+ReadPackage( "CAP", "gap/CategoryObjectsOperations.gd" );
+
 ReadPackage( "CAP", "gap/UniversalObjects.gd" );
 
 ReadPackage( "CAP", "gap/AddFunctions.autogen.gd" );
