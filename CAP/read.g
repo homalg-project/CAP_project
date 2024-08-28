@@ -34,8 +34,12 @@ ReadPackage( "CAP", "gap/TheoremParser.gi" );
 
 ReadPackage( "CAP", "gap/LogicForCAP.gi" );
 
+ReadPackage( "CAP", "gap/PrepareFunctionsTools.gi" );
+
 ## pre-defined CAP operations and category constructors
 ReadPackage( "CAP", "gap/MethodRecord.gi" );
+
+ReadPackage( "CAP", "gap/PrepareFunctions.gi" );
 
 ReadPackage( "CAP", "gap/DerivedMethods.gi" );
 
@@ -50,8 +54,6 @@ ReadPackage( "CAP", "gap/ProductCategory.gi" );
 ReadPackage( "CAP", "gap/CategoriesCategory.gi" );
 
 ReadPackage( "CAP", "gap/PrintingFunctions.gi" );
-
-ReadPackage( "CAP", "gap/PrepareFunctions.gi" );
 
 ReadPackage( "CAP", "gap/CategoryConstructor.gi" );
 

@@ -38,7 +38,7 @@ ReadPackage( "CAP", "gap/ConstructiveCategoriesRecord.gd" );
 
 ReadPackage( "CAP", "gap/PrintingFunctions.gd" );
 
-ReadPackage( "CAP", "gap/PrepareFunctions.gd" );
+ReadPackage( "CAP", "gap/PrepareFunctionsTools.gd" );
 
 # load tools required for pre-defined category constructors
 ReadPackage( "CAP", "gap/ToolsForCategories.gi" );
