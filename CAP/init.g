@@ -3,6 +3,7 @@
 #
 # Reading the declaration part of the package.
 #
+## the CAP core
 ReadPackage( "CAP", "gap/ToolsForCategories.gd" );
 
 ReadPackage( "CAP", "gap/CAP.gd" );
@@ -31,7 +32,7 @@ ReadPackage( "CAP", "gap/TheoremParser.gd" );
 
 ReadPackage( "CAP", "gap/LogicForCAP.gd" );
 
-ReadPackage( "CAP", "gap/MethodRecord.gd" );
+ReadPackage( "CAP", "gap/MethodRecordTools.gd" );
 
 ReadPackage( "CAP", "gap/ConstructiveCategoriesRecord.gd" );
 
@@ -39,9 +40,10 @@ ReadPackage( "CAP", "gap/PrintingFunctions.gd" );
 
 ReadPackage( "CAP", "gap/PrepareFunctions.gd" );
 
-# category constructors (which might rely on some tools)
+# load tools required for pre-defined category constructors
 ReadPackage( "CAP", "gap/ToolsForCategories.gi" );
 
+## pre-defined category constructors
 ReadPackage( "CAP", "gap/OppositeCategory.gd" );
 
 ReadPackage( "CAP", "gap/ProductCategory.gd" );

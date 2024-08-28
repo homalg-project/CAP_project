@@ -3,8 +3,10 @@
 #
 # Reading the implementation part of the package.
 #
+## the CAP core
+
 ## CAP.gi uses implementations in this file.
-ReadPackage( "CAP", "gap/MethodRecord.gi" );
+ReadPackage( "CAP", "gap/MethodRecordTools.gi" );
 
 ReadPackage( "CAP", "gap/ConstructiveCategoriesRecord.gi" );
 
@@ -31,6 +33,9 @@ ReadPackage( "CAP", "gap/TheoremParser.gi" );
 # =#
 
 ReadPackage( "CAP", "gap/LogicForCAP.gi" );
+
+## pre-defined CAP operations and category constructors
+ReadPackage( "CAP", "gap/MethodRecord.gi" );
 
 ReadPackage( "CAP", "gap/DerivedMethods.gi" );
 
