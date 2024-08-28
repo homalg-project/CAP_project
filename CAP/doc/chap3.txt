@@ -44,9 +44,61 @@
   [23Xb[123X.[133X
   
   
-  [1X3.2 [33X[0;0YMorphism constructors[133X[101X
+  [1X3.2 [33X[0;0YAdding Morphisms to a Category[133X[101X
   
-  [1X3.2-1 MorphismConstructor[101X
+  [1X3.2-1 Add[101X
+  
+  [33X[1;0Y[29X[2XAdd[102X( [3Xcategory[103X, [3Xmorphism[103X ) [32X operation[133X
+  
+  [33X[0;0YAdds [3Xmorphism[103X as a morphism to [3Xcategory[103X.[133X
+  
+  [1X3.2-2 AddMorphism[101X
+  
+  [33X[1;0Y[29X[2XAddMorphism[102X( [3Xcategory[103X, [3Xmorphism[103X ) [32X operation[133X
+  
+  [33X[0;0YAdds  [3Xmorphism[103X  as  a  morphism to [3Xcategory[103X. If [3Xmorphism[103X already lies in the
+  filter [10XIsCapCategoryMorphism[110X, the operation [2XAdd[102X ([14X3.2-1[114X) can be used instead.[133X
+  
+  [1X3.2-3 CreateCapCategoryMorphismWithAttributes[101X
+  
+  [33X[1;0Y[29X[2XCreateCapCategoryMorphismWithAttributes[102X( [3Xcategory[103X, [3Xsource[103X, [3Xrange[103X[, [3Xattr1[103X, [3Xval1[103X, [3Xattr2[103X, [3Xval2[103X, [3X...[103X] ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YCreates a morphism in [3Xcategory[103X with the given attributes.[133X
+  
+  [1X3.2-4 AsCapCategoryMorphism[101X
+  
+  [33X[1;0Y[29X[2XAsCapCategoryMorphism[102X( [3Xcategory[103X, [3Xsource[103X, [3Xvalue[103X, [3Xrange[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YEXPERIMENTAL: This specification might change any time without prior notice.
+  Views [3Xvalue[103X as a morphism from [3Xsource[103X to [3Xrange[103X in [3Xcategory[103X.[133X
+  
+  [1X3.2-5 AsPrimitiveValue[101X
+  
+  [33X[1;0Y[29X[2XAsPrimitiveValue[102X( [3Xmorphism[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XAsInteger[102X( [3Xmorphism[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XAsHomalgMatrix[102X( [3Xmorphism[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya value[133X
+  
+  [33X[0;0YEXPERIMENTAL: This specification might change any time without prior notice.
+  Views  a  morphism obtained via [2XAsCapCategoryMorphism[102X ([14X3.2-4[114X) as a primitive
+  value  again.  Here, the word [13Xprimitive[113X means [13Xprimitive from the perspective
+  of  the category[113X. For example, from the perspective of an opposite category,
+  morphisms  of the underlying category are primitive values. The attribute is
+  chosen according to the morphism datum type:[133X
+  
+  [30X    [33X[0;6YFor [10XIsInt[110X, the attribute [10XAsInteger[110X is used.[133X
+  
+  [30X    [33X[0;6YFor [10XIsHomalgMatrix[110X, the attribute [10XAsHomalgMatrix[110X is used.[133X
+  
+  [33X[0;0YIn  all  other  cases  or  if no morphism datum type is given, the attribute
+  [10XAsPrimitiveValue[110X is used.[133X
+  
+  
+  [1X3.3 [33X[0;0YMorphism constructors[133X[101X
+  
+  [1X3.3-1 MorphismConstructor[101X
   
   [33X[1;0Y[29X[2XMorphismConstructor[102X( [3XS[103X, [3Xa[103X, [3XT[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(S,T)[123X[133X
@@ -58,7 +110,7 @@
   [10XSetCachingToWeak(  C,  "MorphismConstructor"  )[110X  resp. [10XSetCachingToCrisp( C,
   "MorphismConstructor" )[110X.[133X
   
-  [1X3.2-2 MorphismDatum[101X
+  [1X3.3-2 MorphismDatum[101X
   
   [33X[1;0Y[29X[2XMorphismDatum[102X( [3Xmor[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ydepends on the category[133X
@@ -71,9 +123,9 @@
   [10XSetCachingToCrisp( C, "MorphismDatum" )[110X.[133X
   
   
-  [1X3.3 [33X[0;0YCategorical Properties of Morphisms[133X[101X
+  [1X3.4 [33X[0;0YCategorical Properties of Morphisms[133X[101X
   
-  [1X3.3-1 IsMonomorphism[101X
+  [1X3.4-1 IsMonomorphism[101X
   
   [33X[1;0Y[29X[2XIsMonomorphism[102X( [3Xalpha[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -81,7 +133,7 @@
   [33X[0;0YThe  argument  is  a  morphism  [23X\alpha[123X.  The  output  is [10Xtrue[110X if [23X\alpha[123X is a
   monomorphism, otherwise the output is [10Xfalse[110X.[133X
   
-  [1X3.3-2 IsEpimorphism[101X
+  [1X3.4-2 IsEpimorphism[101X
   
   [33X[1;0Y[29X[2XIsEpimorphism[102X( [3Xalpha[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -89,7 +141,7 @@
   [33X[0;0YThe  argument  is  a  morphism  [23X\alpha[123X.  The  output is [10Xtrue[110X if [23X\alpha[123X is an
   epimorphism, otherwise the output is [10Xfalse[110X.[133X
   
-  [1X3.3-3 IsIsomorphism[101X
+  [1X3.4-3 IsIsomorphism[101X
   
   [33X[1;0Y[29X[2XIsIsomorphism[102X( [3Xalpha[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -97,7 +149,7 @@
   [33X[0;0YThe  argument  is  a  morphism  [23X\alpha[123X.  The  output is [10Xtrue[110X if [23X\alpha[123X is an
   isomorphism, otherwise the output is [10Xfalse[110X.[133X
   
-  [1X3.3-4 IsSplitMonomorphism[101X
+  [1X3.4-4 IsSplitMonomorphism[101X
   
   [33X[1;0Y[29X[2XIsSplitMonomorphism[102X( [3Xalpha[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -105,7 +157,7 @@
   [33X[0;0YThe  argument  is a morphism [23X\alpha[123X. The output is [10Xtrue[110X if [23X\alpha[123X is a split
   monomorphism, otherwise the output is [10Xfalse[110X.[133X
   
-  [1X3.3-5 IsSplitEpimorphism[101X
+  [1X3.4-5 IsSplitEpimorphism[101X
   
   [33X[1;0Y[29X[2XIsSplitEpimorphism[102X( [3Xalpha[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -113,7 +165,7 @@
   [33X[0;0YThe  argument  is a morphism [23X\alpha[123X. The output is [10Xtrue[110X if [23X\alpha[123X is a split
   epimorphism, otherwise the output is [10Xfalse[110X.[133X
   
-  [1X3.3-6 IsOne[101X
+  [1X3.4-6 IsOne[101X
   
   [33X[1;0Y[29X[2XIsOne[102X( [3Xalpha[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -121,7 +173,7 @@
   [33X[0;0YThe  argument  is  a morphism [23X\alpha: a \rightarrow a[123X. The output is [10Xtrue[110X if
   [23X\alpha[123X is congruent to the identity of [23Xa[123X, otherwise the output is [10Xfalse[110X.[133X
   
-  [1X3.3-7 IsIdempotent[101X
+  [1X3.4-7 IsIdempotent[101X
   
   [33X[1;0Y[29X[2XIsIdempotent[102X( [3Xalpha[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -130,7 +182,7 @@
   [23X\alpha^2 \sim_{a,a} \alpha[123X, otherwise the output is [10Xfalse[110X.[133X
   
   
-  [1X3.4 [33X[0;0YRandom Morphisms[133X[101X
+  [1X3.5 [33X[0;0YRandom Morphisms[133X[101X
   
   [33X[0;0YCAP  provides  two  principal  methods  to generate random morphisms with or
   without fixed source and range:[133X
@@ -145,7 +197,7 @@
         Hence,  these  operations  are  not  thought  to  be  used  in generic
         categorical algorithms.[133X
   
-  [1X3.4-1 RandomMorphismWithFixedSourceByInteger[101X
+  [1X3.5-1 RandomMorphismWithFixedSourceByInteger[101X
   
   [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceByInteger[102X( [3Xa[103X, [3Xn[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X[133X
@@ -158,7 +210,7 @@
   [10XRandomMorphismWithFixedSourceAndRangeByInteger[110X([23XC[123X,[23Xa[123X,[23Xb[123X,[23X1[123X+[10XLog2Int[110X([23Xn[123X))  where  [23Xb[123X
   is computed via [10XRandomObjectByInteger[110X([23XC[123X,[23Xn[123X).[133X
   
-  [1X3.4-2 RandomMorphismWithFixedSourceByList[101X
+  [1X3.5-2 RandomMorphismWithFixedSourceByList[101X
   
   [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceByList[102X( [3Xa[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X[133X
@@ -171,7 +223,7 @@
   [10XRandomMorphismWithFixedSourceAndRangeByList[110X([23XC,a,b,L[2][123X)  where [23Xb[123X is computed
   via [10XRandomObjectByList[110X([23XC,L[1][123X).[133X
   
-  [1X3.4-3 RandomMorphismWithFixedRangeByInteger[101X
+  [1X3.5-3 RandomMorphismWithFixedRangeByInteger[101X
   
   [33X[1;0Y[29X[2XRandomMorphismWithFixedRangeByInteger[102X( [3Xb[103X, [3Xn[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X[133X
@@ -184,7 +236,7 @@
   [10XRandomMorphismWithFixedSourceAndRangeByInteger[110X([23XC[123X,[23Xa[123X,[23Xb[123X,[23X1[123X+[10XLog2Int[110X([23Xn[123X))  where  [23Xa[123X
   is computed via [10XRandomObjectByInteger[110X([23XC[123X,[23Xn[123X).[133X
   
-  [1X3.4-4 RandomMorphismWithFixedRangeByList[101X
+  [1X3.5-4 RandomMorphismWithFixedRangeByList[101X
   
   [33X[1;0Y[29X[2XRandomMorphismWithFixedRangeByList[102X( [3Xb[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X[133X
@@ -197,7 +249,7 @@
   [10XRandomMorphismWithFixedSourceAndRangeByList[110X([23XC,a,b,L[2][123X)  where [23Xa[123X is computed
   via [10XRandomObjectByList[110X([23XC,L[1][123X).[133X
   
-  [1X3.4-5 RandomMorphismWithFixedSourceAndRangeByInteger[101X
+  [1X3.5-5 RandomMorphismWithFixedSourceAndRangeByInteger[101X
   
   [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceAndRangeByInteger[102X( [3Xa[103X, [3Xb[103X, [3Xn[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X[133X
@@ -205,7 +257,7 @@
   [33X[0;0YThe  arguments are two objects [23Xa[123X and [23Xb[123X in a category [23XC[123X and an integer [23Xn[123X. The
   output is a random morphism [23X\alpha: a \rightarrow b[123X in [23XC[123X.[133X
   
-  [1X3.4-6 RandomMorphismWithFixedSourceAndRangeByList[101X
+  [1X3.5-6 RandomMorphismWithFixedSourceAndRangeByList[101X
   
   [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceAndRangeByList[102X( [3Xa[103X, [3Xb[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X[133X
@@ -214,7 +266,7 @@
   and  [23Xb[123X in a category [23XC[123X and a list [23XL[123X. The output is a random morphism [23X\alpha:
   a \rightarrow b[123X in [23XC[123X.[133X
   
-  [1X3.4-7 RandomMorphismByInteger[101X
+  [1X3.5-7 RandomMorphismByInteger[101X
   
   [33X[1;0Y[29X[2XRandomMorphismByInteger[102X( [3XC[103X, [3Xn[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23XC[123X[133X
@@ -238,7 +290,7 @@
         derived   as   [10XRandomMorphismWithFixedRangeByInteger[110X([23XC,b,1[123X+[10XLog2Int[110X([23Xn[123X))
         where [23Xb[123X is computed via [10XRandomObjectByInteger[110X([23XC,n[123X).[133X
   
-  [1X3.4-8 RandomMorphismByList[101X
+  [1X3.5-8 RandomMorphismByList[101X
   
   [33X[1;0Y[29X[2XRandomMorphismByList[102X( [3XC[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23XC[123X[133X
@@ -262,7 +314,7 @@
         derived  as  [10XRandomMorphismWithFixedRangeByList[110X([23XC,b,L[2][123X)  where  [23Xb[123X is
         computed via [10XRandomObjectByList[110X([23XC,L[1][123X).[133X
   
-  [1X3.4-9 RandomMorphismWithFixedSource[101X
+  [1X3.5-9 RandomMorphismWithFixedSource[101X
   
   [33X[1;0Y[29X[2XRandomMorphismWithFixedSource[102X( [3Xa[103X, [3Xn[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XRandomMorphismWithFixedSource[102X( [3Xa[103X, [3XL[103X ) [32X operation[133X
@@ -279,11 +331,11 @@
   one of the above methods.[133X
   
   
-  [1X3.5 [33X[0;0YNon-Categorical Properties of Morphisms[133X[101X
+  [1X3.6 [33X[0;0YNon-Categorical Properties of Morphisms[133X[101X
   
   [33X[0;0YNon-categorical properties are not stable under equivalences of categories.[133X
   
-  [1X3.5-1 IsEqualToIdentityMorphism[101X
+  [1X3.6-1 IsEqualToIdentityMorphism[101X
   
   [33X[1;0Y[29X[2XIsEqualToIdentityMorphism[102X( [3Xalpha[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -291,7 +343,7 @@
   [33X[0;0YThe  argument  is  a morphism [23X\alpha: a \rightarrow b[123X. The output is [10Xtrue[110X if
   [23X\alpha = \mathrm{id}_a[123X, otherwise the output is [10Xfalse[110X.[133X
   
-  [1X3.5-2 IsEqualToZeroMorphism[101X
+  [1X3.6-2 IsEqualToZeroMorphism[101X
   
   [33X[1;0Y[29X[2XIsEqualToZeroMorphism[102X( [3Xalpha[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -299,7 +351,7 @@
   [33X[0;0YThe  argument  is  a morphism [23X\alpha: a \rightarrow b[123X. The output is [10Xtrue[110X if
   [23X\alpha = 0[123X, otherwise the output is [10Xfalse[110X.[133X
   
-  [1X3.5-3 IsEndomorphism[101X
+  [1X3.6-3 IsEndomorphism[101X
   
   [33X[1;0Y[29X[2XIsEndomorphism[102X( [3Xalpha[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -307,82 +359,13 @@
   [33X[0;0YThe  argument  is  a  morphism  [23X\alpha[123X.  The  output is [10Xtrue[110X if [23X\alpha[123X is an
   endomorphism, otherwise the output is [10Xfalse[110X.[133X
   
-  [1X3.5-4 IsAutomorphism[101X
+  [1X3.6-4 IsAutomorphism[101X
   
   [33X[1;0Y[29X[2XIsAutomorphism[102X( [3Xalpha[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
   [33X[0;0YThe  argument  is  a  morphism  [23X\alpha[123X.  The  output is [10Xtrue[110X if [23X\alpha[123X is an
   automorphism, otherwise the output is [10Xfalse[110X.[133X
-  
-  
-  [1X3.6 [33X[0;0YAdding Morphisms to a Category[133X[101X
-  
-  [1X3.6-1 Add[101X
-  
-  [33X[1;0Y[29X[2XAdd[102X( [3Xcategory[103X, [3Xmorphism[103X ) [32X operation[133X
-  
-  [33X[0;0YAdds [3Xmorphism[103X as a morphism to [3Xcategory[103X.[133X
-  
-  [1X3.6-2 AddMorphism[101X
-  
-  [33X[1;0Y[29X[2XAddMorphism[102X( [3Xcategory[103X, [3Xmorphism[103X ) [32X operation[133X
-  
-  [33X[0;0YAdds  [3Xmorphism[103X  as  a  morphism to [3Xcategory[103X. If [3Xmorphism[103X already lies in the
-  filter [10XIsCapCategoryMorphism[110X, the operation [2XAdd[102X ([14X3.6-1[114X) can be used instead.[133X
-  
-  [1X3.6-3 AddMorphismRepresentation[101X
-  
-  [33X[1;0Y[29X[2XAddMorphismRepresentation[102X( [3Xcategory[103X, [3Xfilter[103X ) [32X operation[133X
-  
-  [33X[0;0Y[13XDeprecated[113X: use [2XCreateCapCategoryWithDataTypes[102X ([14X1.3-4[114X) instead. The argument
-  [3Xfilter[103X is used to create a morphism type for the category [3Xcategory[103X, which is
-  then   used  in  [10XObjectifyMorphismWithSourceAndRangeForCAPWithAttributes[110X  to
-  objectify    morphisms    for    this    category.    [3Xfilter[103X    must   imply
-  [10XIsCapCategoryMorphism[110X.[133X
-  
-  [1X3.6-4 ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes[101X
-  
-  [33X[1;0Y[29X[2XObjectifyMorphismWithSourceAndRangeForCAPWithAttributes[102X( [3Xmorphism[103X, [3Xcategory[103X, [3Xsource[103X, [3Xrange[103X[, [3Xattr1[103X, [3Xval1[103X, [3Xattr2[103X, [3Xval2[103X, [3X...[103X] ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism[133X
-  
-  [33X[0;0Y[13XDeprecated[113X: use [2XCreateCapCategoryMorphismWithAttributes[102X ([14X3.6-5[114X) instead.[133X
-  
-  [1X3.6-5 CreateCapCategoryMorphismWithAttributes[101X
-  
-  [33X[1;0Y[29X[2XCreateCapCategoryMorphismWithAttributes[102X( [3Xcategory[103X, [3Xsource[103X, [3Xrange[103X[, [3Xattr1[103X, [3Xval1[103X, [3Xattr2[103X, [3Xval2[103X, [3X...[103X] ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism[133X
-  
-  [33X[0;0YCreates a morphism in [3Xcategory[103X with the given attributes.[133X
-  
-  [1X3.6-6 AsCapCategoryMorphism[101X
-  
-  [33X[1;0Y[29X[2XAsCapCategoryMorphism[102X( [3Xcategory[103X, [3Xsource[103X, [3Xvalue[103X, [3Xrange[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism[133X
-  
-  [33X[0;0YEXPERIMENTAL: This specification might change any time without prior notice.
-  Views [3Xvalue[103X as a morphism from [3Xsource[103X to [3Xrange[103X in [3Xcategory[103X.[133X
-  
-  [1X3.6-7 AsPrimitiveValue[101X
-  
-  [33X[1;0Y[29X[2XAsPrimitiveValue[102X( [3Xmorphism[103X ) [32X attribute[133X
-  [33X[1;0Y[29X[2XAsInteger[102X( [3Xmorphism[103X ) [32X attribute[133X
-  [33X[1;0Y[29X[2XAsHomalgMatrix[102X( [3Xmorphism[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya value[133X
-  
-  [33X[0;0YEXPERIMENTAL: This specification might change any time without prior notice.
-  Views  a  morphism obtained via [2XAsCapCategoryMorphism[102X ([14X3.6-6[114X) as a primitive
-  value  again.  Here, the word [13Xprimitive[113X means [13Xprimitive from the perspective
-  of  the category[113X. For example, from the perspective of an opposite category,
-  morphisms  of the underlying category are primitive values. The attribute is
-  chosen according to the morphism datum type:[133X
-  
-  [30X    [33X[0;6YFor [10XIsInt[110X, the attribute [10XAsInteger[110X is used.[133X
-  
-  [30X    [33X[0;6YFor [10XIsHomalgMatrix[110X, the attribute [10XAsHomalgMatrix[110X is used.[133X
-  
-  [33X[0;0YIn  all  other  cases  or  if no morphism datum type is given, the attribute
-  [10XAsPrimitiveValue[110X is used.[133X
   
   
   [1X3.7 [33X[0;0YEquality and Congruence for Morphisms[133X[101X

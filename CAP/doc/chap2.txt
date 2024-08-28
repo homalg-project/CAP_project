@@ -20,9 +20,61 @@
   [23Xa[123X was added.[133X
   
   
-  [1X2.2 [33X[0;0YEqualities for Objects[133X[101X
+  [1X2.2 [33X[0;0YAdding Objects to a Category[133X[101X
   
-  [1X2.2-1 IsEqualForObjects[101X
+  [1X2.2-1 Add[101X
+  
+  [33X[1;0Y[29X[2XAdd[102X( [3Xcategory[103X, [3Xobject[103X ) [32X operation[133X
+  
+  [33X[0;0YAdds [3Xobject[103X as an object to [3Xcategory[103X.[133X
+  
+  [1X2.2-2 AddObject[101X
+  
+  [33X[1;0Y[29X[2XAddObject[102X( [3Xcategory[103X, [3Xobject[103X ) [32X operation[133X
+  
+  [33X[0;0YAdds  [3Xobject[103X  as an object to [3Xcategory[103X. If [3Xobject[103X already lies in the filter
+  [10XIsCapCategoryObject[110X, the operation [2XAdd[102X ([14X2.2-1[114X) can be used instead.[133X
+  
+  [1X2.2-3 CreateCapCategoryObjectWithAttributes[101X
+  
+  [33X[1;0Y[29X[2XCreateCapCategoryObjectWithAttributes[102X( [3Xcategory[103X[, [3Xattribute1[103X, [3Xvalue1[103X, [3X...[103X] ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YCreates an object in [3Xcategory[103X with the given attributes.[133X
+  
+  [1X2.2-4 AsCapCategoryObject[101X
+  
+  [33X[1;0Y[29X[2XAsCapCategoryObject[102X( [3Xcategory[103X, [3Xvalue[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YEXPERIMENTAL: This specification might change any time without prior notice.
+  Views [3Xvalue[103X as an object in [3Xcategory[103X.[133X
+  
+  [1X2.2-5 AsPrimitiveValue[101X
+  
+  [33X[1;0Y[29X[2XAsPrimitiveValue[102X( [3Xobject[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XAsInteger[102X( [3Xobject[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XAsHomalgMatrix[102X( [3Xobject[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya value[133X
+  
+  [33X[0;0YEXPERIMENTAL: This specification might change any time without prior notice.
+  Views  an  object  obtained  via  [2XAsCapCategoryObject[102X ([14X2.2-4[114X) as a primitive
+  value  again.  Here, the word [13Xprimitive[113X means [13Xprimitive from the perspective
+  of  the category[113X. For example, from the perspective of an opposite category,
+  objects  of  the  underlying category are primitive values. The attribute is
+  chosen according to the object datum type:[133X
+  
+  [30X    [33X[0;6YFor [10XIsInt[110X, the attribute [10XAsInteger[110X is used.[133X
+  
+  [30X    [33X[0;6YFor [10XIsHomalgMatrix[110X, the attribute [10XAsHomalgMatrix[110X is used.[133X
+  
+  [33X[0;0YIn  all  other  cases  or  if  no  object datum type is given, the attribute
+  [10XAsPrimitiveValue[110X is used.[133X
+  
+  
+  [1X2.3 [33X[0;0YEqualities for Objects[133X[101X
+  
+  [1X2.3-1 IsEqualForObjects[101X
   
   [33X[1;0Y[29X[2XIsEqualForObjects[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -30,7 +82,7 @@
   [33X[0;0YThe  arguments  are  two  objects  [23Xa[123X  and  [23Xb[123X.  The  output is [10Xtrue[110X if [23Xa = b[123X,
   otherwise the output is [10Xfalse[110X.[133X
   
-  [1X2.2-2 IsIsomorphicForObjects[101X
+  [1X2.3-2 IsIsomorphicForObjects[101X
   
   [33X[1;0Y[29X[2XIsIsomorphicForObjects[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -39,7 +91,7 @@
   isomorphic,  that  is, if there exists an isomorphism [23Xa \to b[123X, otherwise the
   output is [10Xfalse[110X.[133X
   
-  [1X2.2-3 SomeIsomorphismBetweenObjects[101X
+  [1X2.3-3 SomeIsomorphismBetweenObjects[101X
   
   [33X[1;0Y[29X[2XSomeIsomorphismBetweenObjects[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan isomorphism in [23X\mathrm{Hom}(a,b)[123X[133X
@@ -48,9 +100,9 @@
   isomorphism [23Xa \to b[123X.[133X
   
   
-  [1X2.3 [33X[0;0YCategorical Properties of Objects[133X[101X
+  [1X2.4 [33X[0;0YCategorical Properties of Objects[133X[101X
   
-  [1X2.3-1 IsBijectiveObject[101X
+  [1X2.4-1 IsBijectiveObject[101X
   
   [33X[1;0Y[29X[2XIsBijectiveObject[102X( [3Xa[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -58,7 +110,7 @@
   [33X[0;0YThe  argument is an object [23Xa[123X. The output is [10Xtrue[110X if [23Xa[123X is a bijective object,
   otherwise the output is [10Xfalse[110X.[133X
   
-  [1X2.3-2 IsProjective[101X
+  [1X2.4-2 IsProjective[101X
   
   [33X[1;0Y[29X[2XIsProjective[102X( [3Xa[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -66,7 +118,7 @@
   [33X[0;0YThe argument is an object [23Xa[123X. The output is [10Xtrue[110X if [23Xa[123X is a projective object,
   otherwise the output is [10Xfalse[110X.[133X
   
-  [1X2.3-3 IsInjective[101X
+  [1X2.4-3 IsInjective[101X
   
   [33X[1;0Y[29X[2XIsInjective[102X( [3Xa[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -74,7 +126,7 @@
   [33X[0;0YThe argument is an object [23Xa[123X. The output is [10Xtrue[110X if [23Xa[123X is an injective object,
   otherwise the output is [10Xfalse[110X.[133X
   
-  [1X2.3-4 IsTerminal[101X
+  [1X2.4-4 IsTerminal[101X
   
   [33X[1;0Y[29X[2XIsTerminal[102X( [3Xa[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -83,7 +135,7 @@
   [23Xa[123X  is  isomorphic to the terminal object of [23X\mathbf{C}[123X, otherwise the output
   is [10Xfalse[110X.[133X
   
-  [1X2.3-5 IsInitial[101X
+  [1X2.4-5 IsInitial[101X
   
   [33X[1;0Y[29X[2XIsInitial[102X( [3Xa[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -92,7 +144,7 @@
   [23Xa[123X is isomorphic to the initial object of [23X\mathbf{C}[123X, otherwise the output is
   [10Xfalse[110X.[133X
   
-  [1X2.3-6 IsZeroForObjects[101X
+  [1X2.4-6 IsZeroForObjects[101X
   
   [33X[1;0Y[29X[2XIsZeroForObjects[102X( [3Xa[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -101,7 +153,7 @@
   [23Xa[123X  is  isomorphic  to the zero object of [23X\mathbf{C}[123X, otherwise the output is
   [10Xfalse[110X.[133X
   
-  [1X2.3-7 IsZero[101X
+  [1X2.4-7 IsZero[101X
   
   [33X[1;0Y[29X[2XIsZero[102X( [3Xa[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -111,7 +163,7 @@
   [10Xfalse[110X.[133X
   
   
-  [1X2.4 [33X[0;0YRandom Objects[133X[101X
+  [1X2.5 [33X[0;0YRandom Objects[133X[101X
   
   [33X[0;0YCAP provides two principal methods to generate random objects:[133X
   
@@ -125,7 +177,7 @@
         Hence,  these  operations  are  not  thought  to  be  used  in generic
         categorical algorithms.[133X
   
-  [1X2.4-1 RandomObjectByInteger[101X
+  [1X2.5-1 RandomObjectByInteger[101X
   
   [33X[1;0Y[29X[2XRandomObjectByInteger[102X( [3XC[103X, [3Xn[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object in [23XC[123X[133X
@@ -133,7 +185,7 @@
   [33X[0;0YThe  arguments  are  a  category  [23XC[123X and an integer [23Xn[123X. The output is a random
   object in [23XC[123X.[133X
   
-  [1X2.4-2 RandomObjectByList[101X
+  [1X2.5-2 RandomObjectByList[101X
   
   [33X[1;0Y[29X[2XRandomObjectByList[102X( [3XC[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object in [23XC[123X[133X
@@ -141,21 +193,21 @@
   [33X[0;0YThe  arguments  are a category [23XC[123X and a list [23XL[123X. The output is a random object
   in [23XC[123X.[133X
   
-  [1X2.4-3 RandomObject[101X
+  [1X2.5-3 RandomObject[101X
   
   [33X[1;0Y[29X[2XRandomObject[102X( [3XC[103X, [3Xn[103X ) [32X operation[133X
   
   [33X[0;0YThese  are  convenient methods and they, depending on the input, delegate to
   one of the above methods.[133X
   
-  [1X2.4-4 RandomObject[101X
+  [1X2.5-4 RandomObject[101X
   
   [33X[1;0Y[29X[2XRandomObject[102X( [3XC[103X, [3XL[103X ) [32X operation[133X
   
   
-  [1X2.5 [33X[0;0YTool functions for caches[133X[101X
+  [1X2.6 [33X[0;0YTool functions for caches[133X[101X
   
-  [1X2.5-1 IsEqualForCacheForObjects[101X
+  [1X2.6-1 IsEqualForCacheForObjects[101X
   
   [33X[1;0Y[29X[2XIsEqualForCacheForObjects[102X( [3Xphi[103X, [3Xpsi[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ytrue or false[133X
@@ -169,74 +221,6 @@
   you  add  a function via [10XAddIsEqualForCacheForObjects[110X, that function is used
   instead. A function [23XF: a,b \mapsto bool[123X is expected there. The output has to
   be true or false. Fail is not allowed in this context.[133X
-  
-  
-  [1X2.6 [33X[0;0YAdding Objects to a Category[133X[101X
-  
-  [1X2.6-1 Add[101X
-  
-  [33X[1;0Y[29X[2XAdd[102X( [3Xcategory[103X, [3Xobject[103X ) [32X operation[133X
-  
-  [33X[0;0YAdds [3Xobject[103X as an object to [3Xcategory[103X.[133X
-  
-  [1X2.6-2 AddObject[101X
-  
-  [33X[1;0Y[29X[2XAddObject[102X( [3Xcategory[103X, [3Xobject[103X ) [32X operation[133X
-  
-  [33X[0;0YAdds  [3Xobject[103X  as an object to [3Xcategory[103X. If [3Xobject[103X already lies in the filter
-  [10XIsCapCategoryObject[110X, the operation [2XAdd[102X ([14X2.6-1[114X) can be used instead.[133X
-  
-  [1X2.6-3 AddObjectRepresentation[101X
-  
-  [33X[1;0Y[29X[2XAddObjectRepresentation[102X( [3Xcategory[103X, [3Xfilter[103X ) [32X operation[133X
-  
-  [33X[0;0Y[13XDeprecated[113X: use [2XCreateCapCategoryWithDataTypes[102X ([14X1.3-4[114X) instead. The argument
-  [3Xfilter[103X  is used to create an object type for the category [3Xcategory[103X, which is
-  then  used  in  [10XObjectifyObjectForCAPWithAttributes[110X to objectify objects for
-  this category. [3Xfilter[103X must imply [10XIsCapCategoryObject[110X.[133X
-  
-  [1X2.6-4 ObjectifyObjectForCAPWithAttributes[101X
-  
-  [33X[1;0Y[29X[2XObjectifyObjectForCAPWithAttributes[102X( [3Xobject[103X, [3Xcategory[103X[, [3Xattribute1[103X, [3Xvalue1[103X, [3X...[103X] ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Yan object[133X
-  
-  [33X[0;0Y[13XDeprecated[113X: use [2XCreateCapCategoryObjectWithAttributes[102X ([14X2.6-5[114X) instead.[133X
-  
-  [1X2.6-5 CreateCapCategoryObjectWithAttributes[101X
-  
-  [33X[1;0Y[29X[2XCreateCapCategoryObjectWithAttributes[102X( [3Xcategory[103X[, [3Xattribute1[103X, [3Xvalue1[103X, [3X...[103X] ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Yan object[133X
-  
-  [33X[0;0YCreates an object in [3Xcategory[103X with the given attributes.[133X
-  
-  [1X2.6-6 AsCapCategoryObject[101X
-  
-  [33X[1;0Y[29X[2XAsCapCategoryObject[102X( [3Xcategory[103X, [3Xvalue[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Yan object[133X
-  
-  [33X[0;0YEXPERIMENTAL: This specification might change any time without prior notice.
-  Views [3Xvalue[103X as an object in [3Xcategory[103X.[133X
-  
-  [1X2.6-7 AsPrimitiveValue[101X
-  
-  [33X[1;0Y[29X[2XAsPrimitiveValue[102X( [3Xobject[103X ) [32X attribute[133X
-  [33X[1;0Y[29X[2XAsInteger[102X( [3Xobject[103X ) [32X attribute[133X
-  [33X[1;0Y[29X[2XAsHomalgMatrix[102X( [3Xobject[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya value[133X
-  
-  [33X[0;0YEXPERIMENTAL: This specification might change any time without prior notice.
-  Views  an  object  obtained  via  [2XAsCapCategoryObject[102X ([14X2.6-6[114X) as a primitive
-  value  again.  Here, the word [13Xprimitive[113X means [13Xprimitive from the perspective
-  of  the category[113X. For example, from the perspective of an opposite category,
-  objects  of  the  underlying category are primitive values. The attribute is
-  chosen according to the object datum type:[133X
-  
-  [30X    [33X[0;6YFor [10XIsInt[110X, the attribute [10XAsInteger[110X is used.[133X
-  
-  [30X    [33X[0;6YFor [10XIsHomalgMatrix[110X, the attribute [10XAsHomalgMatrix[110X is used.[133X
-  
-  [33X[0;0YIn  all  other  cases  or  if  no  object datum type is given, the attribute
-  [10XAsPrimitiveValue[110X is used.[133X
   
   
   [1X2.7 [33X[0;0YObject constructors[133X[101X

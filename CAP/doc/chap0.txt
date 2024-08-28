@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2024.08-05
+                                   2024.08-07
   
   
-                                 23 August 2024
+                                 28 August 2024
   
   
                                Sebastian Gutsche
@@ -146,33 +146,31 @@
   2 [33X[0;0YObjects[133X
     2.1 [33X[0;0YAttributes for the Type of Objects[133X
       2.1-1 CapCategory
-    2.2 [33X[0;0YEqualities for Objects[133X
-      2.2-1 IsEqualForObjects
-      2.2-2 IsIsomorphicForObjects
-      2.2-3 SomeIsomorphismBetweenObjects
-    2.3 [33X[0;0YCategorical Properties of Objects[133X
-      2.3-1 IsBijectiveObject
-      2.3-2 IsProjective
-      2.3-3 IsInjective
-      2.3-4 IsTerminal
-      2.3-5 IsInitial
-      2.3-6 IsZeroForObjects
-      2.3-7 IsZero
-    2.4 [33X[0;0YRandom Objects[133X
-      2.4-1 RandomObjectByInteger
-      2.4-2 RandomObjectByList
-      2.4-3 RandomObject
-      2.4-4 RandomObject
-    2.5 [33X[0;0YTool functions for caches[133X
-      2.5-1 IsEqualForCacheForObjects
-    2.6 [33X[0;0YAdding Objects to a Category[133X
-      2.6-1 Add
-      2.6-2 AddObject
-      2.6-3 AddObjectRepresentation
-      2.6-4 ObjectifyObjectForCAPWithAttributes
-      2.6-5 CreateCapCategoryObjectWithAttributes
-      2.6-6 AsCapCategoryObject
-      2.6-7 AsPrimitiveValue
+    2.2 [33X[0;0YAdding Objects to a Category[133X
+      2.2-1 Add
+      2.2-2 AddObject
+      2.2-3 CreateCapCategoryObjectWithAttributes
+      2.2-4 AsCapCategoryObject
+      2.2-5 AsPrimitiveValue
+    2.3 [33X[0;0YEqualities for Objects[133X
+      2.3-1 IsEqualForObjects
+      2.3-2 IsIsomorphicForObjects
+      2.3-3 SomeIsomorphismBetweenObjects
+    2.4 [33X[0;0YCategorical Properties of Objects[133X
+      2.4-1 IsBijectiveObject
+      2.4-2 IsProjective
+      2.4-3 IsInjective
+      2.4-4 IsTerminal
+      2.4-5 IsInitial
+      2.4-6 IsZeroForObjects
+      2.4-7 IsZero
+    2.5 [33X[0;0YRandom Objects[133X
+      2.5-1 RandomObjectByInteger
+      2.5-2 RandomObjectByList
+      2.5-3 RandomObject
+      2.5-4 RandomObject
+    2.6 [33X[0;0YTool functions for caches[133X
+      2.6-1 IsEqualForCacheForObjects
     2.7 [33X[0;0YObject constructors[133X
       2.7-1 ObjectConstructor
       2.7-2 /
@@ -203,40 +201,38 @@
       3.1-2 Source
       3.1-3 Range
       3.1-4 Target
-    3.2 [33X[0;0YMorphism constructors[133X
-      3.2-1 MorphismConstructor
-      3.2-2 MorphismDatum
-    3.3 [33X[0;0YCategorical Properties of Morphisms[133X
-      3.3-1 IsMonomorphism
-      3.3-2 IsEpimorphism
-      3.3-3 IsIsomorphism
-      3.3-4 IsSplitMonomorphism
-      3.3-5 IsSplitEpimorphism
-      3.3-6 IsOne
-      3.3-7 IsIdempotent
-    3.4 [33X[0;0YRandom Morphisms[133X
-      3.4-1 RandomMorphismWithFixedSourceByInteger
-      3.4-2 RandomMorphismWithFixedSourceByList
-      3.4-3 RandomMorphismWithFixedRangeByInteger
-      3.4-4 RandomMorphismWithFixedRangeByList
-      3.4-5 RandomMorphismWithFixedSourceAndRangeByInteger
-      3.4-6 RandomMorphismWithFixedSourceAndRangeByList
-      3.4-7 RandomMorphismByInteger
-      3.4-8 RandomMorphismByList
-      3.4-9 RandomMorphismWithFixedSource
-    3.5 [33X[0;0YNon-Categorical Properties of Morphisms[133X
-      3.5-1 IsEqualToIdentityMorphism
-      3.5-2 IsEqualToZeroMorphism
-      3.5-3 IsEndomorphism
-      3.5-4 IsAutomorphism
-    3.6 [33X[0;0YAdding Morphisms to a Category[133X
-      3.6-1 Add
-      3.6-2 AddMorphism
-      3.6-3 AddMorphismRepresentation
-      3.6-4 ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes
-      3.6-5 CreateCapCategoryMorphismWithAttributes
-      3.6-6 AsCapCategoryMorphism
-      3.6-7 AsPrimitiveValue
+    3.2 [33X[0;0YAdding Morphisms to a Category[133X
+      3.2-1 Add
+      3.2-2 AddMorphism
+      3.2-3 CreateCapCategoryMorphismWithAttributes
+      3.2-4 AsCapCategoryMorphism
+      3.2-5 AsPrimitiveValue
+    3.3 [33X[0;0YMorphism constructors[133X
+      3.3-1 MorphismConstructor
+      3.3-2 MorphismDatum
+    3.4 [33X[0;0YCategorical Properties of Morphisms[133X
+      3.4-1 IsMonomorphism
+      3.4-2 IsEpimorphism
+      3.4-3 IsIsomorphism
+      3.4-4 IsSplitMonomorphism
+      3.4-5 IsSplitEpimorphism
+      3.4-6 IsOne
+      3.4-7 IsIdempotent
+    3.5 [33X[0;0YRandom Morphisms[133X
+      3.5-1 RandomMorphismWithFixedSourceByInteger
+      3.5-2 RandomMorphismWithFixedSourceByList
+      3.5-3 RandomMorphismWithFixedRangeByInteger
+      3.5-4 RandomMorphismWithFixedRangeByList
+      3.5-5 RandomMorphismWithFixedSourceAndRangeByInteger
+      3.5-6 RandomMorphismWithFixedSourceAndRangeByList
+      3.5-7 RandomMorphismByInteger
+      3.5-8 RandomMorphismByList
+      3.5-9 RandomMorphismWithFixedSource
+    3.6 [33X[0;0YNon-Categorical Properties of Morphisms[133X
+      3.6-1 IsEqualToIdentityMorphism
+      3.6-2 IsEqualToZeroMorphism
+      3.6-3 IsEndomorphism
+      3.6-4 IsAutomorphism
     3.7 [33X[0;0YEquality and Congruence for Morphisms[133X
       3.7-1 IsCongruentForMorphisms
       3.7-2 IsEqualForMorphisms
