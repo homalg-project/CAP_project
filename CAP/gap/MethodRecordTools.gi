@@ -3,7 +3,7 @@
 #
 # Implementations
 #
-InstallValue( CAP_INTERNAL_VALID_RETURN_TYPES,
+BindGlobal( "CAP_INTERNAL_VALID_RETURN_TYPES",
 #! @BeginCode CAP_INTERNAL_VALID_RETURN_TYPES
     [
         "object",
@@ -62,7 +62,7 @@ BindGlobal( "CAP_INTERNAL_LEGACY_METHOD_NAME_RECORD_COMPONENTS",
     ]
 );
 
-InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD, rec( ) );
+BindGlobal( "CAP_INTERNAL_METHOD_NAME_RECORD", rec( ) );
 
 InstallGlobalFunction( "CAP_INTERNAL_ENHANCE_NAME_RECORD_LIMITS",
   function ( limits )
@@ -650,7 +650,7 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
     
 end );
 
-InstallValue( CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS, rec() );
+BindGlobal( "CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS", rec( ) );
 
 InstallGlobalFunction( CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD,
   function( replacement_data )
@@ -665,11 +665,11 @@ InstallGlobalFunction( CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD,
     
 end );
 
-InstallValue( CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_OBJECTS, [ ] );
+BindGlobal( "CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_OBJECTS", [ ] );
 
-InstallValue( CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_MORPHISMS, [ ] );
+BindGlobal( "CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_MORPHISMS", [ ] );
 
-InstallValue( CAP_INTERNAL_FIND_OPPOSITE_PROPERTY_PAIRS_IN_METHOD_NAME_RECORD,
+InstallGlobalFunction( CAP_INTERNAL_FIND_OPPOSITE_PROPERTY_PAIRS_IN_METHOD_NAME_RECORD,
   function( method_name_record )
     local recnames, current_recname, current_entry, current_rec, category_property_list, elem;
     

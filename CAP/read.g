@@ -41,8 +41,6 @@ ReadPackage( "CAP", "gap/PrintingFunctions.gi" );
 
 ReadPackage( "CAP", "gap/PrepareFunctionsTools.gi" );
 
-ReadPackage( "CAP", "gap/ToolsForCategories_AfterLoading.gi" );
-
 ## pre-defined CAP operations
 ReadPackage( "CAP", "gap/MethodRecord.gi" );
 

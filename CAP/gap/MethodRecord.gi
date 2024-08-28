@@ -4130,7 +4130,7 @@ MonomorphismIntoInjectiveEnvelopeObjectWithGivenInjectiveEnvelopeObject := rec(
 
 ) );
 
-InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD_LIMITS, [
+BindGlobal( "CAP_INTERNAL_METHOD_NAME_RECORD_LIMITS", [
 rec(
   object_specification := [ "varobject" ],
   morphism_specification := [  ],
