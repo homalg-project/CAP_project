@@ -131,19 +131,6 @@ InstallGlobalFunction( AddFinalDerivationBundle, FunctionWithNamedArguments(
         
         used_op_names_with_multiples_and_category_getters := fail;
         
-        # see AddDerivation in Derivations.gi
-        #= comment for Julia
-        collected_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( Last( current_additional_func ), operations_in_graph, loop_multiplier, CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS, category_getters );
-        
-        if Length( current_additional_func ) = 2 then
-            
-            Print( "WARNING: a final derivation for ", NameFunction( current_additional_func[1] ), " has no explicit preconditions. Calling AddFinalDerivation(Bundle) without explicit preconditions is deprecated and will not be supported after 2024.03.31.\n" );
-            
-            current_additional_func := [ current_additional_func[1], collected_list, current_additional_func[2] ];
-            
-        fi;
-        # =#
-        
         Assert( 0, Length( current_additional_func ) = 3 );
         
         used_op_names_with_multiples_and_category_getters := [ ];
@@ -185,6 +172,9 @@ InstallGlobalFunction( AddFinalDerivationBundle, FunctionWithNamedArguments(
         od;
         
         #= comment for Julia
+        # see AddDerivation in Derivations.gi
+        collected_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( Last( current_additional_func ), operations_in_graph, loop_multiplier, CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS, category_getters );
+        
         if Length( collected_list ) <> Length( used_op_names_with_multiples_and_category_getters ) or not ForAll( collected_list, c -> c in used_op_names_with_multiples_and_category_getters ) then
             
             SortBy( used_op_names_with_multiples_and_category_getters, x -> x[1] );

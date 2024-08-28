@@ -19,78 +19,7 @@ BindGlobal( "IsCapCategoryObjectRep", IsCapCategoryObject );
 ##
 #######################################
 
-InstallValue( PROPAGATION_LIST_FOR_EQUAL_OBJECTS,
-              [  
-                 "IsTerminal",
-                 "IsInitial",
-                 "IsProjective",
-                 "IsInjective",
-                 "IsZeroForObjects",
-                 # ..
-              ] );
-
-###################################
-##
-## Constructive Object-sets
-##
-###################################
-
-# This method should not be selected when the two objects belong to the same category and the category can compute IsEqualForObjects.
-InstallOtherMethod( IsEqualForObjects,
-                    [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ],
-
-  function( cat, object_1, object_2 )
-    
-    if not HasCapCategory( object_1 ) then
-        
-        Error( Concatenation( "the object \"", String( object_1 ), "\" has no CAP category" ) );
-        
-    fi;
-    
-    if not HasCapCategory( object_2 ) then
-        
-        Error( Concatenation( "the object \"", String( object_2 ), "\" has no CAP category" ) );
-        
-    fi;
-    
-    if not IsIdenticalObj( CapCategory( object_1 ), cat ) then
-        
-        Error( Concatenation( "the object \"", String( object_1 ), "\" does not belong to the CAP category <cat>" ) );
-        
-    elif not IsIdenticalObj( CapCategory( object_2 ), cat ) then
-        
-        Error( Concatenation( "the object \"", String( object_2 ), "\" does not belong to the CAP category <cat>" ) );
-        
-    else
-        
-        # convenience: as long as the objects are identical, everything "just works"
-        if IsIdenticalObj( object_1, object_2 ) then
-            
-            return true;
-            
-        else
-            
-            Error( "Cannot decide whether the object \"", String( object_1 ), "\" and the object \"", String( object_2 ), "\" are equal. You can fix this error by installing `IsEqualForObjects` in <cat> or possibly avoid it by enabling strict caching." );
-            
-        fi;
-        
-    fi;
-    
-end );
-
-##
-InstallMethod( \=,
-               [ IsCapCategoryObject, IsCapCategoryObject ],
-  function( object_1, object_2 )
-
-    if CapCategory( object_1 )!.input_sanity_check_level > 0 or CapCategory( object_2 )!.input_sanity_check_level > 0  then
-        if not IsIdenticalObj( CapCategory( object_1 ), CapCategory( object_2 ) ) then
-            Error( Concatenation( "the object \"", String( object_1 ), "\" and the object \"", String( object_2 ), "\" do not belong to the same CAP category" ) );
-        fi;
-    fi;
-               
-  return IsEqualForObjects( object_1, object_2 );
-end );
+InstallValue( PROPAGATION_LIST_FOR_EQUAL_OBJECTS, [ ] );
 
 ##
 InstallGlobalFunction( INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS,
@@ -206,103 +135,6 @@ InstallMethod( AddObject,
 end );
 
 ##
-InstallMethod( \/,
-               [ IsObject, IsCapCategory ],
-               
-  function( object_datum, cat )
-    
-    if not CanCompute( cat, "ObjectConstructor" ) then
-        
-        Error( "You are calling the generic \"/\" method, but <cat> does not have an object constructor. Please add one or install a special version of \"/\"." );
-        
-    fi;
-    
-    return ObjectConstructor( cat, object_datum );
-    
-end );
-
-##
-InstallMethod( IsWellDefined,
-               [ IsCapCategoryObject ],
-  IsWellDefinedForObjects
-);
-
-##
-InstallMethod( IsZero,
-               [ IsCapCategoryObject ],
-                  
-IsZeroForObjects );
-
-##
-InstallMethod( IsEqualForCache,
-               [ IsCapCategoryObject, IsCapCategoryObject ],
-               
-  { obj1, obj2 } -> IsEqualForCacheForObjects( CapCategory( obj1 ), obj1, obj2 ) );
-
-##
-# generic fallback to IsIdenticalObj
-InstallOtherMethod( IsEqualForCacheForObjects,
-               [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ],
-               
-  { cat, obj1, obj2 } -> IsIdenticalObj( obj1, obj2 ) );
-
-##
-InstallMethod( AddObjectRepresentation,
-               [ IsCapCategory, IsObject ],
-               
-  function( category, representation )
-    
-    Print( "WARNING: AddObjectRepresentation is deprecated and will not be supported after 2024.08.21. Please use CreateCapCategory with four arguments instead.\n" );
-    
-    if not IsSpecializationOfFilter( IsCapCategoryObject, representation ) then
-        
-        Error( "the object representation must imply IsCapCategoryObject" );
-        
-    fi;
-    
-    if IsBound( category!.initially_known_categorical_properties ) then
-        
-        Error( "calling AddObjectRepresentation after adding functions to the category is not supported" );
-        
-    fi;
-    
-    InstallTrueMethod( representation, ObjectFilter( category ) );
-    
-end );
-
-##
-InstallMethod( RandomObject, [ IsCapCategory, IsInt ], RandomObjectByInteger );
-
-##
-InstallMethod( RandomObject, [ IsCapCategory, IsList ], RandomObjectByList );
-
-##
-InstallGlobalFunction( ObjectifyObjectForCAPWithAttributes,
-                       
-  function( object, category, additional_arguments_list... )
-    local arg_list, obj;
-    
-    Print( "WARNING: ObjectifyObjectForCAPWithAttributes is deprecated and will not be supported after 2024.08.29. Please use CreateCapCategoryObjectWithAttributes instead.\n" );
-    
-    arg_list := Concatenation(
-        [ object, category!.object_type, CapCategory, category ], additional_arguments_list
-    );
-    
-    obj := CallFuncList( ObjectifyWithAttributes, arg_list );
-    
-    #= comment for Julia
-    # This can be removed once AddObjectRepresentation is removed.
-    # work around https://github.com/gap-system/gap/issues/3642:
-    # New implications of `ObjectFilter( category )` (e.g. installed via `AddObjectRepresentation`)
-    # are not automatically set in `category!.object_type`.
-    SetFilterObj( obj, ObjectFilter( category ) );
-    # =#
-    
-    return obj;
-    
-end );
-
-##
 InstallGlobalFunction( CreateCapCategoryObjectWithAttributes,
                        
   function( category, additional_arguments_list... )
@@ -313,14 +145,6 @@ InstallGlobalFunction( CreateCapCategoryObjectWithAttributes,
     );
     
     obj := CallFuncList( ObjectifyWithAttributes, arg_list );
-    
-    #= comment for Julia
-    # This can be removed once AddObjectRepresentation is removed.
-    # work around https://github.com/gap-system/gap/issues/3642:
-    # New implications of `ObjectFilter( category )` (e.g. installed via `AddObjectRepresentation`)
-    # are not automatically set in `category!.object_type`.
-    SetFilterObj( obj, ObjectFilter( category ) );
-    # =#
     
     return obj;
     
@@ -349,15 +173,6 @@ InstallGlobalFunction( AsCapCategoryObject,
     fi;
     
     return obj;
-    
-end );
-
-##
-InstallMethod( Simplify,
-               [ IsCapCategoryObject ],
-  function( object )
-    
-    return SimplifyObject( object, infinity );
     
 end );
 

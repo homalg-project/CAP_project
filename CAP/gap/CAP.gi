@@ -141,10 +141,6 @@ InstallGlobalFunction( HAS_VALUE_OF_CATEGORY_CACHE,
     
 end );
 
-InstallValue( CAP_INTERNAL_DERIVATION_GRAPH,
-    
-    MakeDerivationGraph( [ ] ) );
-
 
 ######################################
 ##
@@ -658,8 +654,6 @@ InstallMethod( MissingOperationsForConstructivenessOfCategory,
     return result_list;
     
 end );
-
-InstallDeprecatedAlias( "CheckConstructivenessOfCategory", "MissingOperationsForConstructivenessOfCategory", "2024.12.18" );
 
 ####################################
 ##

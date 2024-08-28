@@ -62,16 +62,3 @@ InstallMethod( AddTwoCell,
     
 end );
 
-###########################
-##
-## IsWellDefined
-##
-###########################
-
-##
-InstallMethod( IsWellDefined,
-               [ IsCapCategoryTwoCell ],
-               
-  IsWellDefinedForTwoCells
-);
-

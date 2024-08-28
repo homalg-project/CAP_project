@@ -117,55 +117,7 @@ InstallMethod( WrapperCategory,
         [ IsCapCategory, IsRecord ],
         
   function( C, options )
-    local combined_options, known_options_with_filters, filter, reinterpretation_options, option_name;
-    
-    # options which should either all or none be set for consistency and will be delegated to ReinterpretationOfCategory if set
-    combined_options := [
-        "object_constructor",
-        "object_datum",
-        "morphism_constructor",
-        "morphism_datum",
-        "modeling_tower_object_constructor",
-        "modeling_tower_object_datum",
-        "modeling_tower_morphism_constructor",
-        "modeling_tower_morphism_datum",
-    ];
-    
-    if Length( Set( List( combined_options, name -> IsBound( options.(name) ) ) ) ) > 1 then
-        
-        Display( "WARNING: To avoid inconsistencies, either all or none of the following options should be set in a call to `WrapperCategory`. This is not the case." );
-        Display( combined_options );
-        
-    fi;
-    
-    if IsBound( options.wrap_range_of_hom_structure ) then
-        
-        if options.wrap_range_of_hom_structure and not IsIdenticalObj( C, RangeCategoryOfHomomorphismStructure( C ) ) then
-            
-            Error( "Wrapping the range of the hom structure is not supported anymore (except if the category has itself as the range of its hom structure). Please remove `wrap_range_of_hom_structure`." );
-            
-        fi;
-        
-        if not options.wrap_range_of_hom_structure and IsIdenticalObj( C, RangeCategoryOfHomomorphismStructure( C ) ) then
-            
-            Error( "If the category has itself as the range of its hom structure, the range of the hom structure is always wrapped. Please remove `wrap_range_of_hom_structure`." );
-            
-        fi;
-        
-        options := ShallowCopy( options );
-        Unbind( options.wrap_range_of_hom_structure );
-        
-        Print( "WARNING: The option wrap_range_of_hom_structure is deprecated and will not be supported after 2024.05.02.\n" );
-        
-    fi;
-    
-    if IsBound( options.object_constructor ) then
-        
-        Print( "WARNING: Setting object_constructor etc. for WrapperCategory is deprecated and will not be supported after 2024.05.02. Use ReinterpretationOfCategory instead.\n" );
-        
-        return ReinterpretationOfCategory( C, options );
-        
-    fi;
+    local known_options_with_filters, filter, reinterpretation_options, option_name;
     
     ## check given options
     known_options_with_filters := rec(
