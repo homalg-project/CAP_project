@@ -908,22 +908,6 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
     
 end );
 
-BindGlobal( "CAP_INTERNAL_CREATE_NEW_FUNC_WITH_ONE_MORE_ARGUMENT_WITH_RETURN",
-  
-  function( func )
-    
-    return function( arg ) return CallFuncList( func, arg{[ 2 .. Length( arg ) ]} ); end;
-    
-end );
-
-BindGlobal( "CAP_INTERNAL_CREATE_NEW_FUNC_WITH_ONE_MORE_ARGUMENT_WITHOUT_RETURN",
-  
-  function( func )
-    
-    return function( arg ) CallFuncList( func, arg{[ 2 .. Length( arg ) ]} ); end;
-    
-end );
-
 InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
   function( record )
     local recnames, current_recname, current_rec, diff, number_of_arguments,

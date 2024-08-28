@@ -199,7 +199,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
         [ "IsPrecompiledDerivation", false ],
       ],
       function( CAP_NAMED_ARGUMENTS, category, method_list, weight )
-        local is_derivation, is_final_derivation, is_precompiled_derivation, replaced_filter_list, needs_wrapping,
+        local is_derivation, is_final_derivation, is_precompiled_derivation, replaced_filter_list,
             number_of_proposed_arguments, current_function_argument_number, current_additional_filter_list_length,
             input_sanity_check_functions, output_human_readable_identifier_list, output_sanity_check_function,
             output_data_type, assert_is_value_of_return_type, install_func, name, current_function_number, i;
@@ -287,20 +287,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
         
         ## Nr arguments sanity check
         
-        # backwards compatibility for categories with `category!.category_as_first_argument = false`
-        needs_wrapping := IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = false and not (is_derivation or is_final_derivation);
-        
-        if needs_wrapping then
-            
-            Print( "WARNING: Setting `category!.category_as_first_argument` to `false` is deprecated and will not be supported after 2024.08.29.\n" );
-            
-            number_of_proposed_arguments := Length( filter_list ) - 1;
-            
-        else
-            
-            number_of_proposed_arguments := Length( filter_list );
-            
-        fi;
+        number_of_proposed_arguments := Length( filter_list );
         
         for current_function_number in [ 1 .. Length( method_list ) ] do
             
@@ -311,25 +298,11 @@ InstallGlobalFunction( CapInternalInstallAdd,
                        " arguments but should have ", String( number_of_proposed_arguments ) );
             fi;
             
-            if not needs_wrapping then
-                
-                current_additional_filter_list_length := Length( method_list[ current_function_number ][ 2 ] );
-                
-                if current_additional_filter_list_length > 0 and current_additional_filter_list_length <> number_of_proposed_arguments then
-                    Error( "In ", add_name, ": the additional filter list of given function ", String( current_function_number ), " has length ",
-                           String( current_additional_filter_list_length ), " but should have length ", String( number_of_proposed_arguments ), " (or 0)" );
-                fi;
-                
-            else
-                
-                method_list[ current_function_number ][ 1 ] := CAP_INTERNAL_CREATE_NEW_FUNC_WITH_ONE_MORE_ARGUMENT_WITH_RETURN( method_list[ current_function_number ][ 1 ] );
-                
-                if not IsEmpty( method_list[ current_function_number ][ 2 ] ) then
-                    
-                    method_list[ current_function_number ][ 2 ] := Concatenation( [ IsCapCategory ], method_list[ current_function_number ][ 2 ] );
-                    
-                fi;
-                
+            current_additional_filter_list_length := Length( method_list[ current_function_number ][ 2 ] );
+            
+            if current_additional_filter_list_length > 0 and current_additional_filter_list_length <> number_of_proposed_arguments then
+                Error( "In ", add_name, ": the additional filter list of given function ", String( current_function_number ), " has length ",
+                       String( current_additional_filter_list_length ), " but should have length ", String( number_of_proposed_arguments ), " (or 0)" );
             fi;
             
         od;

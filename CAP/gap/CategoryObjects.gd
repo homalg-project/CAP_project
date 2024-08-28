@@ -228,21 +228,6 @@ DeclareOperation( "Add",
 DeclareOperation( "AddObject",
                   [ IsCapCategory, IsAttributeStoringRep ] );
 
-#! @Arguments category, filter
-#! @Description
-#!  **Deprecated**: use <Ref Func="CreateCapCategoryWithDataTypes" /> instead.
-#!  The argument <A>filter</A> is used to create an object type for the
-#!  category <A>category</A>, which is then used in <C>ObjectifyObjectForCAPWithAttributes</C>
-#!  to objectify objects for this category. <A>filter</A> must imply `IsCapCategoryObject`.
-DeclareOperation( "AddObjectRepresentation",
-                  [ IsCapCategory, IsObject ] );
-
-#! @Arguments object, category[, attribute1, value1, ...]
-#! @Description
-#!  **Deprecated**: use <Ref Func="CreateCapCategoryObjectWithAttributes" /> instead.
-#! @Returns an object
-DeclareGlobalFunction( "ObjectifyObjectForCAPWithAttributes" );
-
 #! @Arguments category, [attribute1, value1, ...]
 #! @Description
 #!  Creates an object in <A>category</A> with the given attributes.

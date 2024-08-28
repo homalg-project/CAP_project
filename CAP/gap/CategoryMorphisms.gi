@@ -248,30 +248,6 @@ InstallOtherMethod( IsEqualForCacheForMorphisms,
                
   { cat, mor1, mor2 } -> IsIdenticalObj( mor1, mor2 ) );
 
-##
-InstallMethod( AddMorphismRepresentation,
-               [ IsCapCategory, IsObject ],
-               
-  function( category, representation )
-    
-    Print( "WARNING: AddMorphismRepresentation is deprecated and will not be supported after 2024.08.21. Please use CreateCapCategory with four arguments instead.\n" );
-    
-    if not IsSpecializationOfFilter( IsCapCategoryMorphism, representation ) then
-        
-        Error( "the morphism representation must imply IsCapCategoryMorphism" );
-        
-    fi;
-    
-    if IsBound( category!.initially_known_categorical_properties ) then
-        
-        Error( "calling AddMorphismRepresentation after adding functions to the category is not supported" );
-        
-    fi;
-    
-    InstallTrueMethod( representation, MorphismFilter( category ) );
-    
-end );
-
 InstallMethod( RandomMorphismWithFixedSourceAndRange,
     [ IsCapCategoryObject, IsCapCategoryObject, IsInt ], RandomMorphismWithFixedSourceAndRangeByInteger );
 
@@ -303,37 +279,6 @@ InstallMethod( RandomMorphism,
     [ IsCapCategoryObject, IsCapCategoryObject, IsInt ], RandomMorphismWithFixedSourceAndRangeByInteger );
 
 ##
-InstallGlobalFunction( ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes,
-                       
-  function( morphism, category, source, range, additional_arguments_list... )
-    local arg_list, objectified_morphism;
-    
-    Print( "WARNING: ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes is deprecated and will not be supported after 2024.08.29. Please use CreateCapCategoryMorphismWithAttributes instead.\n" );
-    
-    arg_list := Concatenation(
-        [ morphism, category!.morphism_type, CapCategory, category, Source, source, Range, range ], additional_arguments_list
-    );
-    
-    objectified_morphism := CallFuncList( ObjectifyWithAttributes, arg_list );
-    
-    if category!.predicate_logic then
-        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ objectified_morphism ], source, category );
-        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ objectified_morphism ], range, category );
-    fi;
-    
-    #= comment for Julia
-    # This can be removed once AddMorphismRepresentation is removed.
-    # work around https://github.com/gap-system/gap/issues/3642:
-    # New implications of `MorphismFilter( category )` (e.g. installed via `AddMorphismRepresentation`)
-    # are not automatically set in `category!.morphism_type`.
-    SetFilterObj( objectified_morphism, MorphismFilter( category ) );
-    # =#
-    
-    return objectified_morphism;
-    
-end );
-
-##
 InstallGlobalFunction( CreateCapCategoryMorphismWithAttributes,
                        
   function( category, source, range, additional_arguments_list... )
@@ -349,14 +294,6 @@ InstallGlobalFunction( CreateCapCategoryMorphismWithAttributes,
         INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ objectified_morphism ], source, category );
         INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ objectified_morphism ], range, category );
     fi;
-    
-    #= comment for Julia
-    # This can be removed once AddMorphismRepresentation is removed.
-    # work around https://github.com/gap-system/gap/issues/3642:
-    # New implications of `MorphismFilter( category )` (e.g. installed via `AddMorphismRepresentation`)
-    # are not automatically set in `category!.morphism_type`.
-    SetFilterObj( objectified_morphism, MorphismFilter( category ) );
-    # =#
     
     return objectified_morphism;
     

@@ -377,21 +377,6 @@ DeclareOperation( "Add",
 DeclareOperation( "AddMorphism",
                   [ IsCapCategory, IsAttributeStoringRep ] );
 
-#! @Arguments category, filter
-#! @Description
-#!  **Deprecated**: use <Ref Func="CreateCapCategoryWithDataTypes" /> instead.
-#!  The argument <A>filter</A> is used to create a morphism type for the
-#!  category <A>category</A>, which is then used in <C>ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes</C>
-#!  to objectify morphisms for this category. <A>filter</A> must imply `IsCapCategoryMorphism`.
-DeclareOperation( "AddMorphismRepresentation",
-                  [ IsCapCategory, IsObject ] );
-
-#! @Arguments morphism, category, source, range[, attr1, val1, attr2, val2, ...]
-#! @Description
-#!  **Deprecated**: use <Ref Func="CreateCapCategoryMorphismWithAttributes" /> instead.
-#! @Returns a morphism
-DeclareGlobalFunction( "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" );
-
 #! @Arguments category, source, range[, attr1, val1, attr2, val2, ...]
 #! @Description
 #!  Creates a morphism in <A>category</A> with the given attributes.

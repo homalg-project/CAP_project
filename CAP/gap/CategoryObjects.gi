@@ -247,60 +247,10 @@ InstallOtherMethod( IsEqualForCacheForObjects,
   { cat, obj1, obj2 } -> IsIdenticalObj( obj1, obj2 ) );
 
 ##
-InstallMethod( AddObjectRepresentation,
-               [ IsCapCategory, IsObject ],
-               
-  function( category, representation )
-    
-    Print( "WARNING: AddObjectRepresentation is deprecated and will not be supported after 2024.08.21. Please use CreateCapCategory with four arguments instead.\n" );
-    
-    if not IsSpecializationOfFilter( IsCapCategoryObject, representation ) then
-        
-        Error( "the object representation must imply IsCapCategoryObject" );
-        
-    fi;
-    
-    if IsBound( category!.initially_known_categorical_properties ) then
-        
-        Error( "calling AddObjectRepresentation after adding functions to the category is not supported" );
-        
-    fi;
-    
-    InstallTrueMethod( representation, ObjectFilter( category ) );
-    
-end );
-
-##
 InstallMethod( RandomObject, [ IsCapCategory, IsInt ], RandomObjectByInteger );
 
 ##
 InstallMethod( RandomObject, [ IsCapCategory, IsList ], RandomObjectByList );
-
-##
-InstallGlobalFunction( ObjectifyObjectForCAPWithAttributes,
-                       
-  function( object, category, additional_arguments_list... )
-    local arg_list, obj;
-    
-    Print( "WARNING: ObjectifyObjectForCAPWithAttributes is deprecated and will not be supported after 2024.08.29. Please use CreateCapCategoryObjectWithAttributes instead.\n" );
-    
-    arg_list := Concatenation(
-        [ object, category!.object_type, CapCategory, category ], additional_arguments_list
-    );
-    
-    obj := CallFuncList( ObjectifyWithAttributes, arg_list );
-    
-    #= comment for Julia
-    # This can be removed once AddObjectRepresentation is removed.
-    # work around https://github.com/gap-system/gap/issues/3642:
-    # New implications of `ObjectFilter( category )` (e.g. installed via `AddObjectRepresentation`)
-    # are not automatically set in `category!.object_type`.
-    SetFilterObj( obj, ObjectFilter( category ) );
-    # =#
-    
-    return obj;
-    
-end );
 
 ##
 InstallGlobalFunction( CreateCapCategoryObjectWithAttributes,
@@ -313,14 +263,6 @@ InstallGlobalFunction( CreateCapCategoryObjectWithAttributes,
     );
     
     obj := CallFuncList( ObjectifyWithAttributes, arg_list );
-    
-    #= comment for Julia
-    # This can be removed once AddObjectRepresentation is removed.
-    # work around https://github.com/gap-system/gap/issues/3642:
-    # New implications of `ObjectFilter( category )` (e.g. installed via `AddObjectRepresentation`)
-    # are not automatically set in `category!.object_type`.
-    SetFilterObj( obj, ObjectFilter( category ) );
-    # =#
     
     return obj;
     

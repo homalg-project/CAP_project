@@ -659,8 +659,6 @@ InstallMethod( MissingOperationsForConstructivenessOfCategory,
     
 end );
 
-InstallDeprecatedAlias( "CheckConstructivenessOfCategory", "MissingOperationsForConstructivenessOfCategory", "2024.12.18" );
-
 ####################################
 ##
 ## Sanity checks

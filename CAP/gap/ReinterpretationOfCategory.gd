@@ -260,9 +260,6 @@ CapJitAddTypeSignature( "ReinterpretationOfMorphism", [ IsCapCategory, IsCapCate
     
 end );
 
-InstallDeprecatedAlias( "ModeledObject", "ReinterpretationOfObject", "2024.05.02" );
-InstallDeprecatedAlias( "ModeledMorphism", "ReinterpretationOfMorphism", "2024.05.02" );
-
 # helper operations
 # Those should never be used outside of ReinterpretationOfCategory, but allow to register methods for CompilerForCAP.
 DeclareOperation( "ModelingTowerObjectConstructor", [ IsCapCategory, IsObject ] );
