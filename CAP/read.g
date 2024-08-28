@@ -5,11 +5,11 @@
 #
 ## the CAP core
 
-## CAP.gi uses implementations in this file.
 ReadPackage( "CAP", "gap/MethodRecordTools.gi" );
 
 ReadPackage( "CAP", "gap/ConstructiveCategoriesRecord.gi" );
 
+## CAP.gi uses implementations in this file.
 ReadPackage( "CAP", "gap/Derivations.gi" );
 
 ReadPackage( "CAP", "gap/CAP.gi" );
