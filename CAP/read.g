@@ -25,8 +25,6 @@ ReadPackage( "CAP", "gap/CategoryTwoCells.gi" );
 
 ReadPackage( "CAP", "gap/LimitConvenience.gi" );
 
-ReadPackage( "CAP", "gap/UniversalObjects.gi" );
-
 ReadPackage( "CAP", "gap/InstallAdds.gi" );
 
 #= comment for Julia
@@ -41,7 +39,11 @@ ReadPackage( "CAP", "gap/PrintingFunctions.gi" );
 
 ReadPackage( "CAP", "gap/PrepareFunctionsTools.gi" );
 
+## the CAP library
+
 ## pre-defined CAP operations
+ReadPackage( "CAP", "gap/UniversalObjects.gi" );
+
 ReadPackage( "CAP", "gap/MethodRecord.gi" );
 
 ReadPackage( "CAP", "gap/PrepareFunctions.gi" );

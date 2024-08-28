@@ -22,8 +22,6 @@ ReadPackage( "CAP", "gap/CategoryTwoCells.gd" );
 
 ReadPackage( "CAP", "gap/LimitConvenience.gd" );
 
-ReadPackage( "CAP", "gap/UniversalObjects.gd" );
-
 ReadPackage( "CAP", "gap/InstallAdds.gd" );
 
 #= comment for Julia
@@ -38,10 +36,14 @@ ReadPackage( "CAP", "gap/PrintingFunctions.gd" );
 
 ReadPackage( "CAP", "gap/PrepareFunctionsTools.gd" );
 
-# load tools required for pre-defined category constructors
+# load tools required for the CAP library
 ReadPackage( "CAP", "gap/ToolsForCategories.gi" );
 
+## the CAP library
+
 ## pre-defined CAP operations
+ReadPackage( "CAP", "gap/UniversalObjects.gd" );
+
 ReadPackage( "CAP", "gap/AddFunctions.autogen.gd" );
 
 ## pre-defined category constructors
