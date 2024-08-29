@@ -9,78 +9,78 @@
 
 #! @Section Add-methods
 
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `CocartesianBraiding`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a, b ) \mapsto \mathtt{CocartesianBraiding}(a, b)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddCocartesianBraiding",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddCocartesianBraiding",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddCocartesianBraiding",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddCocartesianBraiding",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `CocartesianBraidingInverse`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a, b ) \mapsto \mathtt{CocartesianBraidingInverse}(a, b)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddCocartesianBraidingInverse",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddCocartesianBraidingInverse",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddCocartesianBraidingInverse",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddCocartesianBraidingInverse",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `CocartesianBraidingInverseWithGivenCoproducts`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( s, a, b, r ) \mapsto \mathtt{CocartesianBraidingInverseWithGivenCoproducts}(s, a, b, r)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddCocartesianBraidingInverseWithGivenCoproducts",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddCocartesianBraidingInverseWithGivenCoproducts",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddCocartesianBraidingInverseWithGivenCoproducts",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddCocartesianBraidingInverseWithGivenCoproducts",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `CocartesianBraidingWithGivenCoproducts`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( s, a, b, r ) \mapsto \mathtt{CocartesianBraidingWithGivenCoproducts}(s, a, b, r)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddCocartesianBraidingWithGivenCoproducts",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddCocartesianBraidingWithGivenCoproducts",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddCocartesianBraidingWithGivenCoproducts",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCocartesianBraidingWithGivenCoproducts",
-                  [ IsCapCategory, IsList ] );

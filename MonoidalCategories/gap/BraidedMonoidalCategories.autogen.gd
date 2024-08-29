@@ -9,78 +9,78 @@
 
 #! @Section Add-methods
 
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `Braiding`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a, b ) \mapsto \mathtt{Braiding}(a, b)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddBraiding",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddBraiding",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddBraiding",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddBraiding",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `BraidingInverse`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a, b ) \mapsto \mathtt{BraidingInverse}(a, b)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddBraidingInverse",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddBraidingInverse",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddBraidingInverse",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddBraidingInverse",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `BraidingInverseWithGivenTensorProducts`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( s, a, b, r ) \mapsto \mathtt{BraidingInverseWithGivenTensorProducts}(s, a, b, r)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddBraidingInverseWithGivenTensorProducts",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddBraidingInverseWithGivenTensorProducts",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddBraidingInverseWithGivenTensorProducts",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddBraidingInverseWithGivenTensorProducts",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `BraidingWithGivenTensorProducts`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( s, a, b, r ) \mapsto \mathtt{BraidingWithGivenTensorProducts}(s, a, b, r)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddBraidingWithGivenTensorProducts",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddBraidingWithGivenTensorProducts",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddBraidingWithGivenTensorProducts",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddBraidingWithGivenTensorProducts",
-                  [ IsCapCategory, IsList ] );

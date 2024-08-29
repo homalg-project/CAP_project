@@ -9,705 +9,705 @@
 
 #! @Section Add-methods
 
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `IsomorphismFromLeftDualObjectToLeftInternalHomIntoTensorUnit`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a ) \mapsto \mathtt{IsomorphismFromLeftDualObjectToLeftInternalHomIntoTensorUnit}(a)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddIsomorphismFromLeftDualObjectToLeftInternalHomIntoTensorUnit",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddIsomorphismFromLeftDualObjectToLeftInternalHomIntoTensorUnit",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddIsomorphismFromLeftDualObjectToLeftInternalHomIntoTensorUnit",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddIsomorphismFromLeftDualObjectToLeftInternalHomIntoTensorUnit",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `IsomorphismFromLeftInternalHomIntoTensorUnitToLeftDualObject`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a ) \mapsto \mathtt{IsomorphismFromLeftInternalHomIntoTensorUnitToLeftDualObject}(a)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddIsomorphismFromLeftInternalHomIntoTensorUnitToLeftDualObject",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddIsomorphismFromLeftInternalHomIntoTensorUnitToLeftDualObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddIsomorphismFromLeftInternalHomIntoTensorUnitToLeftDualObject",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddIsomorphismFromLeftInternalHomIntoTensorUnitToLeftDualObject",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `IsomorphismFromLeftInternalHomToObject`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a ) \mapsto \mathtt{IsomorphismFromLeftInternalHomToObject}(a)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddIsomorphismFromLeftInternalHomToObject",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddIsomorphismFromLeftInternalHomToObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddIsomorphismFromLeftInternalHomToObject",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddIsomorphismFromLeftInternalHomToObject",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `IsomorphismFromLeftInternalHomToObjectWithGivenLeftInternalHom`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a, s ) \mapsto \mathtt{IsomorphismFromLeftInternalHomToObjectWithGivenLeftInternalHom}(a, s)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddIsomorphismFromLeftInternalHomToObjectWithGivenLeftInternalHom",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddIsomorphismFromLeftInternalHomToObjectWithGivenLeftInternalHom",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddIsomorphismFromLeftInternalHomToObjectWithGivenLeftInternalHom",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddIsomorphismFromLeftInternalHomToObjectWithGivenLeftInternalHom",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `IsomorphismFromObjectToLeftInternalHom`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a ) \mapsto \mathtt{IsomorphismFromObjectToLeftInternalHom}(a)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddIsomorphismFromObjectToLeftInternalHom",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddIsomorphismFromObjectToLeftInternalHom",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddIsomorphismFromObjectToLeftInternalHom",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddIsomorphismFromObjectToLeftInternalHom",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `IsomorphismFromObjectToLeftInternalHomWithGivenLeftInternalHom`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a, r ) \mapsto \mathtt{IsomorphismFromObjectToLeftInternalHomWithGivenLeftInternalHom}(a, r)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddIsomorphismFromObjectToLeftInternalHomWithGivenLeftInternalHom",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddIsomorphismFromObjectToLeftInternalHomWithGivenLeftInternalHom",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddIsomorphismFromObjectToLeftInternalHomWithGivenLeftInternalHom",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddIsomorphismFromObjectToLeftInternalHomWithGivenLeftInternalHom",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `LeftClosedMonoidalCoevaluationMorphism`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a, b ) \mapsto \mathtt{LeftClosedMonoidalCoevaluationMorphism}(a, b)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddLeftClosedMonoidalCoevaluationMorphism",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddLeftClosedMonoidalCoevaluationMorphism",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddLeftClosedMonoidalCoevaluationMorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftClosedMonoidalCoevaluationMorphism",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `LeftClosedMonoidalCoevaluationMorphismWithGivenRange`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a, b, r ) \mapsto \mathtt{LeftClosedMonoidalCoevaluationMorphismWithGivenRange}(a, b, r)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddLeftClosedMonoidalCoevaluationMorphismWithGivenRange",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddLeftClosedMonoidalCoevaluationMorphismWithGivenRange",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddLeftClosedMonoidalCoevaluationMorphismWithGivenRange",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftClosedMonoidalCoevaluationMorphismWithGivenRange",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `LeftClosedMonoidalEvaluationForLeftDual`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a ) \mapsto \mathtt{LeftClosedMonoidalEvaluationForLeftDual}(a)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddLeftClosedMonoidalEvaluationForLeftDual",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddLeftClosedMonoidalEvaluationForLeftDual",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddLeftClosedMonoidalEvaluationForLeftDual",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftClosedMonoidalEvaluationForLeftDual",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `LeftClosedMonoidalEvaluationForLeftDualWithGivenTensorProduct`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( s, a, r ) \mapsto \mathtt{LeftClosedMonoidalEvaluationForLeftDualWithGivenTensorProduct}(s, a, r)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddLeftClosedMonoidalEvaluationForLeftDualWithGivenTensorProduct",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddLeftClosedMonoidalEvaluationForLeftDualWithGivenTensorProduct",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddLeftClosedMonoidalEvaluationForLeftDualWithGivenTensorProduct",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftClosedMonoidalEvaluationForLeftDualWithGivenTensorProduct",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `LeftClosedMonoidalEvaluationMorphism`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a, b ) \mapsto \mathtt{LeftClosedMonoidalEvaluationMorphism}(a, b)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddLeftClosedMonoidalEvaluationMorphism",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddLeftClosedMonoidalEvaluationMorphism",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddLeftClosedMonoidalEvaluationMorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftClosedMonoidalEvaluationMorphism",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `LeftClosedMonoidalEvaluationMorphismWithGivenSource`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a, b, s ) \mapsto \mathtt{LeftClosedMonoidalEvaluationMorphismWithGivenSource}(a, b, s)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddLeftClosedMonoidalEvaluationMorphismWithGivenSource",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddLeftClosedMonoidalEvaluationMorphismWithGivenSource",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddLeftClosedMonoidalEvaluationMorphismWithGivenSource",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftClosedMonoidalEvaluationMorphismWithGivenSource",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `LeftClosedMonoidalLambdaElimination`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a, b, alpha ) \mapsto \mathtt{LeftClosedMonoidalLambdaElimination}(a, b, alpha)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddLeftClosedMonoidalLambdaElimination",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddLeftClosedMonoidalLambdaElimination",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddLeftClosedMonoidalLambdaElimination",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftClosedMonoidalLambdaElimination",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `LeftClosedMonoidalLambdaIntroduction`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( alpha ) \mapsto \mathtt{LeftClosedMonoidalLambdaIntroduction}(alpha)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddLeftClosedMonoidalLambdaIntroduction",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddLeftClosedMonoidalLambdaIntroduction",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddLeftClosedMonoidalLambdaIntroduction",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftClosedMonoidalLambdaIntroduction",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `LeftClosedMonoidalPostComposeMorphism`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a, b, c ) \mapsto \mathtt{LeftClosedMonoidalPostComposeMorphism}(a, b, c)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddLeftClosedMonoidalPostComposeMorphism",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddLeftClosedMonoidalPostComposeMorphism",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddLeftClosedMonoidalPostComposeMorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftClosedMonoidalPostComposeMorphism",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `LeftClosedMonoidalPostComposeMorphismWithGivenObjects`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( s, a, b, c, r ) \mapsto \mathtt{LeftClosedMonoidalPostComposeMorphismWithGivenObjects}(s, a, b, c, r)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddLeftClosedMonoidalPostComposeMorphismWithGivenObjects",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddLeftClosedMonoidalPostComposeMorphismWithGivenObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddLeftClosedMonoidalPostComposeMorphismWithGivenObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftClosedMonoidalPostComposeMorphismWithGivenObjects",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `LeftClosedMonoidalPreComposeMorphism`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a, b, c ) \mapsto \mathtt{LeftClosedMonoidalPreComposeMorphism}(a, b, c)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddLeftClosedMonoidalPreComposeMorphism",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddLeftClosedMonoidalPreComposeMorphism",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddLeftClosedMonoidalPreComposeMorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftClosedMonoidalPreComposeMorphism",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `LeftClosedMonoidalPreComposeMorphismWithGivenObjects`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( s, a, b, c, r ) \mapsto \mathtt{LeftClosedMonoidalPreComposeMorphismWithGivenObjects}(s, a, b, c, r)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddLeftClosedMonoidalPreComposeMorphismWithGivenObjects",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddLeftClosedMonoidalPreComposeMorphismWithGivenObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddLeftClosedMonoidalPreComposeMorphismWithGivenObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftClosedMonoidalPreComposeMorphismWithGivenObjects",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `LeftDualOnMorphisms`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( alpha ) \mapsto \mathtt{LeftDualOnMorphisms}(alpha)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddLeftDualOnMorphisms",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddLeftDualOnMorphisms",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddLeftDualOnMorphisms",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftDualOnMorphisms",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `LeftDualOnMorphismsWithGivenLeftDuals`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( s, alpha, r ) \mapsto \mathtt{LeftDualOnMorphismsWithGivenLeftDuals}(s, alpha, r)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddLeftDualOnMorphismsWithGivenLeftDuals",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddLeftDualOnMorphismsWithGivenLeftDuals",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddLeftDualOnMorphismsWithGivenLeftDuals",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftDualOnMorphismsWithGivenLeftDuals",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `LeftDualOnObjects`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a ) \mapsto \mathtt{LeftDualOnObjects}(a)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddLeftDualOnObjects",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddLeftDualOnObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddLeftDualOnObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftDualOnObjects",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `LeftInternalHomOnMorphisms`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( alpha, beta ) \mapsto \mathtt{LeftInternalHomOnMorphisms}(alpha, beta)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddLeftInternalHomOnMorphisms",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddLeftInternalHomOnMorphisms",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddLeftInternalHomOnMorphisms",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftInternalHomOnMorphisms",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `LeftInternalHomOnMorphismsWithGivenLeftInternalHoms`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( s, alpha, beta, r ) \mapsto \mathtt{LeftInternalHomOnMorphismsWithGivenLeftInternalHoms}(s, alpha, beta, r)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddLeftInternalHomOnMorphismsWithGivenLeftInternalHoms",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddLeftInternalHomOnMorphismsWithGivenLeftInternalHoms",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddLeftInternalHomOnMorphismsWithGivenLeftInternalHoms",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftInternalHomOnMorphismsWithGivenLeftInternalHoms",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `LeftInternalHomOnObjects`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a, b ) \mapsto \mathtt{LeftInternalHomOnObjects}(a, b)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddLeftInternalHomOnObjects",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddLeftInternalHomOnObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddLeftInternalHomOnObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftInternalHomOnObjects",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `LeftInternalHomToTensorProductAdjunctMorphism`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( b, c, g ) \mapsto \mathtt{LeftInternalHomToTensorProductAdjunctMorphism}(b, c, g)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddLeftInternalHomToTensorProductAdjunctMorphism",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddLeftInternalHomToTensorProductAdjunctMorphism",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddLeftInternalHomToTensorProductAdjunctMorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftInternalHomToTensorProductAdjunctMorphism",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `LeftInternalHomToTensorProductAdjunctMorphismWithGivenTensorProduct`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( b, c, g, t ) \mapsto \mathtt{LeftInternalHomToTensorProductAdjunctMorphismWithGivenTensorProduct}(b, c, g, t)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddLeftInternalHomToTensorProductAdjunctMorphismWithGivenTensorProduct",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddLeftInternalHomToTensorProductAdjunctMorphismWithGivenTensorProduct",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddLeftInternalHomToTensorProductAdjunctMorphismWithGivenTensorProduct",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftInternalHomToTensorProductAdjunctMorphismWithGivenTensorProduct",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `MorphismFromTensorProductToLeftInternalHom`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a, b ) \mapsto \mathtt{MorphismFromTensorProductToLeftInternalHom}(a, b)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddMorphismFromTensorProductToLeftInternalHom",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddMorphismFromTensorProductToLeftInternalHom",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddMorphismFromTensorProductToLeftInternalHom",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddMorphismFromTensorProductToLeftInternalHom",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `MorphismFromTensorProductToLeftInternalHomWithGivenObjects`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( s, a, b, r ) \mapsto \mathtt{MorphismFromTensorProductToLeftInternalHomWithGivenObjects}(s, a, b, r)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddMorphismFromTensorProductToLeftInternalHomWithGivenObjects",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddMorphismFromTensorProductToLeftInternalHomWithGivenObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddMorphismFromTensorProductToLeftInternalHomWithGivenObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddMorphismFromTensorProductToLeftInternalHomWithGivenObjects",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `MorphismToLeftBidual`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a ) \mapsto \mathtt{MorphismToLeftBidual}(a)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddMorphismToLeftBidual",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddMorphismToLeftBidual",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddMorphismToLeftBidual",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddMorphismToLeftBidual",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `MorphismToLeftBidualWithGivenLeftBidual`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a, r ) \mapsto \mathtt{MorphismToLeftBidualWithGivenLeftBidual}(a, r)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddMorphismToLeftBidualWithGivenLeftBidual",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddMorphismToLeftBidualWithGivenLeftBidual",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddMorphismToLeftBidualWithGivenLeftBidual",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddMorphismToLeftBidualWithGivenLeftBidual",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `TensorProductLeftDualityCompatibilityMorphism`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a, b ) \mapsto \mathtt{TensorProductLeftDualityCompatibilityMorphism}(a, b)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddTensorProductLeftDualityCompatibilityMorphism",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddTensorProductLeftDualityCompatibilityMorphism",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddTensorProductLeftDualityCompatibilityMorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddTensorProductLeftDualityCompatibilityMorphism",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `TensorProductLeftDualityCompatibilityMorphismWithGivenObjects`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( s, a, b, r ) \mapsto \mathtt{TensorProductLeftDualityCompatibilityMorphismWithGivenObjects}(s, a, b, r)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddTensorProductLeftDualityCompatibilityMorphismWithGivenObjects",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddTensorProductLeftDualityCompatibilityMorphismWithGivenObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddTensorProductLeftDualityCompatibilityMorphismWithGivenObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddTensorProductLeftDualityCompatibilityMorphismWithGivenObjects",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `TensorProductLeftInternalHomCompatibilityMorphism`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( list ) \mapsto \mathtt{TensorProductLeftInternalHomCompatibilityMorphism}(list)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddTensorProductLeftInternalHomCompatibilityMorphism",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddTensorProductLeftInternalHomCompatibilityMorphism",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddTensorProductLeftInternalHomCompatibilityMorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddTensorProductLeftInternalHomCompatibilityMorphism",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `TensorProductLeftInternalHomCompatibilityMorphismWithGivenObjects`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( source, list, range ) \mapsto \mathtt{TensorProductLeftInternalHomCompatibilityMorphismWithGivenObjects}(source, list, range)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddTensorProductLeftInternalHomCompatibilityMorphismWithGivenObjects",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddTensorProductLeftInternalHomCompatibilityMorphismWithGivenObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddTensorProductLeftInternalHomCompatibilityMorphismWithGivenObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddTensorProductLeftInternalHomCompatibilityMorphismWithGivenObjects",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `TensorProductToLeftInternalHomAdjunctMorphism`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a, b, f ) \mapsto \mathtt{TensorProductToLeftInternalHomAdjunctMorphism}(a, b, f)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddTensorProductToLeftInternalHomAdjunctMorphism",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddTensorProductToLeftInternalHomAdjunctMorphism",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddTensorProductToLeftInternalHomAdjunctMorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddTensorProductToLeftInternalHomAdjunctMorphism",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `TensorProductToLeftInternalHomAdjunctMorphismWithGivenLeftInternalHom`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a, b, f, i ) \mapsto \mathtt{TensorProductToLeftInternalHomAdjunctMorphismWithGivenLeftInternalHom}(a, b, f, i)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddTensorProductToLeftInternalHomAdjunctMorphismWithGivenLeftInternalHom",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddTensorProductToLeftInternalHomAdjunctMorphismWithGivenLeftInternalHom",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddTensorProductToLeftInternalHomAdjunctMorphismWithGivenLeftInternalHom",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddTensorProductToLeftInternalHomAdjunctMorphismWithGivenLeftInternalHom",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `UniversalPropertyOfLeftDual`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( t, a, alpha ) \mapsto \mathtt{UniversalPropertyOfLeftDual}(t, a, alpha)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddUniversalPropertyOfLeftDual",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddUniversalPropertyOfLeftDual",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddUniversalPropertyOfLeftDual",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalPropertyOfLeftDual",
-                  [ IsCapCategory, IsList ] );

@@ -38,36 +38,14 @@ InstallGlobalFunction( CapInternalInstallAdd,
       ],
       function( CAP_NAMED_ARGUMENTS, category, func, weight )
         
-        add_function( category, [ [ func, [ ] ] ], weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
-        
-    end ) );
-    
-    InstallMethod( add_function,
-                   [ IsCapCategory, IsList ],
-                   
-      function( category, func )
-        
-        add_function( category, func, -1 );
-        
-    end );
-    
-    InstallMethod( add_function,
-                   [ IsCapCategory, IsList, IsInt ],
-     
-     FunctionWithNamedArguments(
-      [
-        [ "IsPrecompiledDerivation", false ],
-      ],
-      function ( CAP_NAMED_ARGUMENTS, category, method_list, weight )
-        
-        AddCapOperation( record.function_name, category, method_list, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+        AddCapOperation( record.function_name, category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
         
     end ) );
     
 end );
 
 InstallMethod( AddCapOperation,
-               [ IsString, IsCapCategory, IsList, IsInt ],
+               [ IsString, IsCapCategory, IsFunction, IsInt ],
                
  FunctionWithNamedArguments(
   [
@@ -75,11 +53,10 @@ InstallMethod( AddCapOperation,
     [ "IsFinalDerivation", false ],
     [ "IsPrecompiledDerivation", false ],
   ],
-  function( CAP_NAMED_ARGUMENTS, function_name, category, method_list, weight )
-    local record, is_derivation, is_final_derivation, is_precompiled_derivation, replaced_filter_list,
-        number_of_proposed_arguments, current_function_argument_number, current_additional_filter_list_length,
+  function( CAP_NAMED_ARGUMENTS, function_name, category, func_to_install, weight )
+    local record, category_name, is_derivation, is_final_derivation, is_precompiled_derivation, replaced_filter_list,
         input_human_readable_identifier_getter, input_sanity_check_functions, output_human_readable_identifier_getter, output_sanity_check_function,
-        output_data_type, install_func, name, current_function_number, i;
+        output_data_type;
     
     record := CAP_INTERNAL_METHOD_NAME_RECORD.(function_name);
     
@@ -87,9 +64,7 @@ InstallMethod( AddCapOperation,
         Error( "cannot add methods anymore, category is finalized" );
     fi;
     
-    if Length( method_list ) = 0 then
-        Error( "you must pass at least one function to the add method" );
-    fi;
+    category_name := Name( category );
     
     is_derivation := CAP_NAMED_ARGUMENTS.IsDerivation;
     
@@ -124,7 +99,7 @@ InstallMethod( AddCapOperation,
         # * There are some derivations of weight 1 for thin categories which are triggered immediately and which CategoryConstructor tries to overwrite with weight 100.
         if not WasCreatedAsOppositeCategory( category ) and CurrentOperationWeight( category!.derivations_weight_list, function_name ) <> 1 then
             
-            Print( "WARNING: Ignoring a function added for ", function_name, " with weight ", weight, " to \"", Name( category ), "\" because there already is a function installed with weight ", CurrentOperationWeight( category!.derivations_weight_list, function_name ), "." );
+            Print( "WARNING: Ignoring a function added for ", function_name, " with weight ", weight, " to \"", category_name, "\" because there already is a function installed with weight ", CurrentOperationWeight( category!.derivations_weight_list, function_name ), "." );
             
             if is_precompiled_derivation then
                 
@@ -148,7 +123,7 @@ InstallMethod( AddCapOperation,
         # * There is a test in Locales creating a category via CategoryConstructor (which uses weight 100) and then installs a really cheap method for UniqueMorphism which triggers a bunch of cheap derivations.
         if not WasCreatedAsOppositeCategory( category ) and weight > 4 then
             
-            Print( "WARNING: Overriding a function for ", function_name, " primitively added to \"", Name( category ), "\" with a derivation." );
+            Print( "WARNING: Overriding a function for ", function_name, " primitively added to \"", category_name, "\" with a derivation." );
             
             if is_precompiled_derivation then
                 
@@ -165,29 +140,14 @@ InstallMethod( AddCapOperation,
     replaced_filter_list := CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS( record.filter_list, category );
     
     ## Nr arguments sanity check
-    
-    number_of_proposed_arguments := Length( replaced_filter_list );
-    
-    for current_function_number in [ 1 .. Length( method_list ) ] do
+    if NumberArgumentsFunction( func_to_install ) >= 0 and NumberArgumentsFunction( func_to_install ) <> Length( replaced_filter_list ) then
         
-        current_function_argument_number := NumberArgumentsFunction( method_list[ current_function_number ][ 1 ] );
+        Error( "While adding a function for ", function_name, ": given function has ", NumberArgumentsFunction( func_to_install ), " arguments but should have ", Length( replaced_filter_list ) );
         
-        if current_function_argument_number >= 0 and current_function_argument_number <> number_of_proposed_arguments then
-            Error( "While adding a function for ", function_name, ": given function ", String( current_function_number ), " has ", String( current_function_argument_number ),
-                   " arguments but should have ", String( number_of_proposed_arguments ) );
-        fi;
-        
-        current_additional_filter_list_length := Length( method_list[ current_function_number ][ 2 ] );
-        
-        if current_additional_filter_list_length > 0 and current_additional_filter_list_length <> number_of_proposed_arguments then
-            Error( "While adding a function for ", function_name, ": the additional filter list of given function ", String( current_function_number ), " has length ",
-                   String( current_additional_filter_list_length ), " but should have length ", String( number_of_proposed_arguments ), " (or 0)" );
-        fi;
-        
-    od;
+    fi;
     
     # prepare input sanity check
-    input_human_readable_identifier_getter := { i, function_name, category } -> Concatenation( "the ", String(i), "-th argument of the function \033[1m", function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" );
+    input_human_readable_identifier_getter := { i, function_name, category } -> Concatenation( "the ", String( i ), "-th argument of the function \033[1m", function_name, "\033[0m of the category named \033[1m", category_name, "\033[0m" );
     
     input_sanity_check_functions := List( [ 1 .. Length( record.filter_list ) ], function ( i )
       local filter_string, data_type, assert_is_value_of_type;
@@ -215,7 +175,7 @@ InstallMethod( AddCapOperation,
     end );
     
     # prepare output sanity check
-    output_human_readable_identifier_getter := {} -> Concatenation( "the result of the function \033[1m", function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" );
+    output_human_readable_identifier_getter := {} -> Concatenation( "the result of the function \033[1m", function_name, "\033[0m of the category named \033[1m", category_name, "\033[0m" );
     
     output_data_type := CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( record.return_type, category );
     
@@ -229,121 +189,13 @@ InstallMethod( AddCapOperation,
         
     fi;
     
-    install_func := function( func_to_install, additional_filters )
-      local new_filter_list, index;
-        
-        Add( category!.added_functions.( function_name ), [ func_to_install, additional_filters ] );
-        
-        new_filter_list := CAP_INTERNAL_MERGE_FILTER_LISTS( replaced_filter_list, additional_filters );
-        
-        if category!.overhead then
-            
-            InstallMethodWithCache( record.operation,
-                            new_filter_list,
-                            
-              function( arg )
-                local redirect_return, pre_func_return, collect_timing_statistics, start_time, result, end_time, i;
-                
-                if not IsFinalized( category ) and not category!.primitive_operations.( function_name ) then
-                    
-                    Print(
-                        "WARNING: You are calling an operation in an unfinalized category with name \"", Name( category ),
-                        "\". This is fine for debugging purposes, but for production use you should finalize the category by calling `Finalize` (with the option `FinalizeCategory := true` if needed).\n"
-                    );
-                    
-                fi;
-                
-                if IsBound( record.redirect_function ) then
-                    redirect_return := CallFuncList( record.redirect_function, arg );
-                    if redirect_return[ 1 ] = true then
-                        if category!.predicate_logic then
-                            INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{[ 2 .. Length( arg ) ]}, redirect_return[ 2 ], category );
-                        fi;
-                        return redirect_return[ 2 ];
-                    fi;
-                fi;
-                
-                if category!.input_sanity_check_level > 0 then
-                    for i in [ 1 .. Length( input_sanity_check_functions ) ] do
-                        input_sanity_check_functions[ i ]( arg[ i ], i, function_name, category );
-                    od;
-                    
-                    if IsBound( record.pre_function ) then
-                        pre_func_return := CallFuncList( record.pre_function, arg );
-                        if pre_func_return[ 1 ] = false then
-                            CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, pre_func_return[ 2 ] );
-                        fi;
-                    fi;
-                    
-                    if category!.input_sanity_check_level > 1 and IsBound( record.pre_function_full ) then
-                        pre_func_return := CallFuncList( record.pre_function_full, arg );
-                        if pre_func_return[ 1 ] = false then
-                            CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, pre_func_return[ 2 ] );
-                        fi;
-                    fi;
-                    
-                fi;
-                
-                collect_timing_statistics := category!.timing_statistics_enabled and not is_derivation and not is_final_derivation;
-                
-                if collect_timing_statistics then
-                    
-                    start_time := Runtime( );
-                    
-                fi;
-                
-                result := CallFuncList( func_to_install, arg );
-                
-                if collect_timing_statistics then
-                    
-                    end_time := Runtime( );
-                    
-                    Add( category!.timing_statistics.( function_name ), end_time - start_time );
-                    
-                fi;
-                
-                if category!.predicate_logic then
-                    INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{[ 2 .. Length( arg ) ]}, result, category );
-                fi;
-                
-                if not is_derivation and not is_final_derivation then
-                    if category!.add_primitive_output then
-                        record.add_value_to_category_function( category, result );
-                    elif category!.output_sanity_check_level > 0 then
-                        output_sanity_check_function( result );
-                    fi;
-                fi;
-                
-                if IsBound( record.post_function ) then
-                    
-                    CallFuncList( record.post_function, Concatenation( arg, [ result ] ) );
-                    
-                fi;
-                
-                return result;
-                
-            end : InstallMethod := InstallOtherMethod, Cache := GET_METHOD_CACHE( category, function_name, Length( replaced_filter_list ) ) );
-        
-        else #category!.overhead = false
-            
-            InstallOtherMethod( record.operation,
-                        new_filter_list,
-                
-                function( arg )
-                    
-                    return CallFuncList( func_to_install, arg );
-                    
-            end );
-            
-        fi;
-        
-    end;
-    
     if not IsBound( category!.added_functions.( function_name ) ) then
         
         category!.added_functions.( function_name ) := [ ];
         
     fi;
+    
+    Add( category!.added_functions.( function_name ), func_to_install );
     
     if not IsBound( category!.timing_statistics.( function_name ) ) then
         
@@ -351,46 +203,129 @@ InstallMethod( AddCapOperation,
         
     fi;
     
-    for i in method_list do
+    # set name for debugging purposes
+    if NameFunction( func_to_install ) in [ "unknown", "_EVALSTRINGTMP" ] then
         
-        name := Name( category );
-        
-        # set name for debugging purposes
-        if NameFunction( i[ 1 ] ) in [ "unknown", "_EVALSTRINGTMP" ] then
+        if is_derivation then
             
-            if is_derivation then
-                
-                SetNameFunction( i[ 1 ], Concatenation( "Derivation (first added to ", name, ") of ", function_name ) );
-                
-            elif is_final_derivation then
-                
-                SetNameFunction( i[ 1 ], Concatenation( "Final derivation (first added to ", name, ") of ", function_name ) );
-                
-            elif is_precompiled_derivation then
-                
-                SetNameFunction( i[ 1 ], Concatenation( "Precompiled derivation added to ", name, " for ", function_name ) );
-                
-            else
-                
-                SetNameFunction( i[ 1 ], Concatenation( "Function added to ", name, " for ", function_name ) );
-                
-            fi;
+            SetNameFunction( func_to_install, Concatenation( "Derivation (first added to ", category_name, ") of ", function_name ) );
             
-        fi;
-        
-        if IsEmpty( i[2] ) then
+        elif is_final_derivation then
             
-            install_func( i[ 1 ], i[ 2 ] );
+            SetNameFunction( func_to_install, Concatenation( "Final derivation (first added to ", category_name, ") of ", function_name ) );
+            
+        elif is_precompiled_derivation then
+            
+            SetNameFunction( func_to_install, Concatenation( "Precompiled derivation added to ", category_name, " for ", function_name ) );
             
         else
             
-            #= comment for Julia
-            install_func( i[ 1 ], i[ 2 ] );
-            # =#
+            SetNameFunction( func_to_install, Concatenation( "Function added to ", category_name, " for ", function_name ) );
             
         fi;
         
-    od;
+    fi;
+    
+    if not category!.overhead then
+        
+        InstallOtherMethod( record.operation,
+                            replaced_filter_list,
+                            
+            function( arg )
+                
+                return CallFuncList( func_to_install, arg );
+                
+        end );
+        
+    else
+        
+        InstallMethodWithCache( record.operation,
+                                replaced_filter_list,
+                                
+          function( arg )
+            local redirect_return, pre_func_return, collect_timing_statistics, start_time, result, end_time, i;
+            
+            if not IsFinalized( category ) and not category!.primitive_operations.( function_name ) then
+                
+                Print(
+                    "WARNING: You are calling an operation in an unfinalized category with name \"", category_name,
+                    "\". This is fine for debugging purposes, but for production use you should finalize the category by calling `Finalize` (with the option `FinalizeCategory := true` if needed).\n"
+                );
+                
+            fi;
+            
+            if IsBound( record.redirect_function ) then
+                redirect_return := CallFuncList( record.redirect_function, arg );
+                if redirect_return[ 1 ] = true then
+                    if category!.predicate_logic then
+                        INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{[ 2 .. Length( arg ) ]}, redirect_return[ 2 ], category );
+                    fi;
+                    return redirect_return[ 2 ];
+                fi;
+            fi;
+            
+            if category!.input_sanity_check_level > 0 then
+                for i in [ 1 .. Length( input_sanity_check_functions ) ] do
+                    input_sanity_check_functions[ i ]( arg[ i ], i, function_name, category );
+                od;
+                
+                if IsBound( record.pre_function ) then
+                    pre_func_return := CallFuncList( record.pre_function, arg );
+                    if pre_func_return[ 1 ] = false then
+                        CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, pre_func_return[ 2 ] );
+                    fi;
+                fi;
+                
+                if category!.input_sanity_check_level > 1 and IsBound( record.pre_function_full ) then
+                    pre_func_return := CallFuncList( record.pre_function_full, arg );
+                    if pre_func_return[ 1 ] = false then
+                        CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, pre_func_return[ 2 ] );
+                    fi;
+                fi;
+                
+            fi;
+            
+            collect_timing_statistics := category!.timing_statistics_enabled and not is_derivation and not is_final_derivation;
+            
+            if collect_timing_statistics then
+                
+                start_time := Runtime( );
+                
+            fi;
+            
+            result := CallFuncList( func_to_install, arg );
+            
+            if collect_timing_statistics then
+                
+                end_time := Runtime( );
+                
+                Add( category!.timing_statistics.( function_name ), end_time - start_time );
+                
+            fi;
+            
+            if category!.predicate_logic then
+                INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{[ 2 .. Length( arg ) ]}, result, category );
+            fi;
+            
+            if not is_derivation and not is_final_derivation then
+                if category!.add_primitive_output then
+                    record.add_value_to_category_function( category, result );
+                elif category!.output_sanity_check_level > 0 then
+                    output_sanity_check_function( result );
+                fi;
+            fi;
+            
+            if IsBound( record.post_function ) then
+                
+                CallFuncList( record.post_function, Concatenation( arg, [ result ] ) );
+                
+            fi;
+            
+            return result;
+            
+        end : InstallMethod := InstallOtherMethod, Cache := GET_METHOD_CACHE( category, function_name, Length( replaced_filter_list ) ) );
+        
+    fi;
     
     if not is_derivation then
         

@@ -9,40 +9,40 @@
 
 #! @Section Add-methods
 
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `TensorProductOnObjects`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( arg2, arg3 ) \mapsto \mathtt{TensorProductOnObjects}(arg2, arg3)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddTensorProductOnObjects",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddTensorProductOnObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddTensorProductOnObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddTensorProductOnObjects",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `TensorUnit`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: (  ) \mapsto \mathtt{TensorUnit}()$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddTensorUnit",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddTensorUnit",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddTensorUnit",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddTensorUnit",
-                  [ IsCapCategory, IsList ] );

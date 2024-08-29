@@ -565,67 +565,49 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     AddPreCompose( category,
-      
-      [ 
-        [ function( cat, morphism_1, morphism_2 )
-            local mor_1_list, mor_2_list, source, range, union, composition_list, irr, mor_1, mor_2;
-            
-            mor_1_list := SemisimpleCategoryMorphismList( morphism_1 );
-            
-            mor_2_list := SemisimpleCategoryMorphismList( morphism_2 );
-            
-            source := Source( morphism_1 );
-            
-            range := Range( morphism_2 );
-            
-            union := Union( Support( source ), Support( range ) );
-            
-            composition_list := [ ];
-            
-            for irr in union do
-                
-                mor_1 := First( mor_1_list, elem -> elem[2] = irr );
-                
-                mor_2 := First( mor_2_list, elem -> elem[2] = irr );
-                
-                if mor_1 = fail then
-                    
-                    Add( composition_list,
-                         [ UniversalMorphismFromZeroObject( Range( mor_2[1] ) ), irr ] );
-                    
-                elif mor_2 = fail then
-                    
-                    Add( composition_list,
-                         [ UniversalMorphismIntoZeroObject( Source( mor_1[1] ) ), irr ] );
-                    
-                else
-                    
-                    Add( composition_list,
-                         [ PreCompose( mor_1[1], mor_2[1] ), irr ] );
-                    
-                fi;
-                
-            od;
-            
-            return SemisimpleCategoryMorphism( source, composition_list, range );
-            
-          end, [ , ] ],
+      function( cat, morphism_1, morphism_2 )
+        local mor_1_list, mor_2_list, source, range, union, composition_list, irr, mor_1, mor_2;
         
-        [ function( cat, left_morphism, identity_morphism )
-            
-            return left_morphism;
-            
-          end, [ IsSemisimpleCategory, IsSemisimpleCategoryMorphism, IsEqualToIdentityMorphism ] ],
+        mor_1_list := SemisimpleCategoryMorphismList( morphism_1 );
         
-        [ function( cat, identity_morphism, right_morphism )
-            
-            return right_morphism;
-            
-          end, [ IsSemisimpleCategory, IsEqualToIdentityMorphism, IsSemisimpleCategoryMorphism] ],
+        mor_2_list := SemisimpleCategoryMorphismList( morphism_2 );
         
-      ]
-    
-    );
+        source := Source( morphism_1 );
+        
+        range := Range( morphism_2 );
+        
+        union := Union( Support( source ), Support( range ) );
+        
+        composition_list := [ ];
+        
+        for irr in union do
+            
+            mor_1 := First( mor_1_list, elem -> elem[2] = irr );
+            
+            mor_2 := First( mor_2_list, elem -> elem[2] = irr );
+            
+            if mor_1 = fail then
+                
+                Add( composition_list,
+                     [ UniversalMorphismFromZeroObject( Range( mor_2[1] ) ), irr ] );
+                
+            elif mor_2 = fail then
+                
+                Add( composition_list,
+                     [ UniversalMorphismIntoZeroObject( Source( mor_1[1] ) ), irr ] );
+                
+            else
+                
+                Add( composition_list,
+                     [ PreCompose( mor_1[1], mor_2[1] ), irr ] );
+                
+            fi;
+            
+        od;
+        
+        return SemisimpleCategoryMorphism( source, composition_list, range );
+        
+    end );
     
     ## Basic Operations for an Additive Category
     ##
@@ -1040,54 +1022,32 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     ## Basic Operations for Monoidal Categories
     ##
     AddTensorProductOnObjects( category,
-      [
-        [ function( cat, object_1, object_2 )
-            local object_1_list, object_2_list, object_list, elem_1, elem_2, prod, multiplicity;
+      function( cat, object_1, object_2 )
+        local object_1_list, object_2_list, object_list, elem_1, elem_2, prod, multiplicity;
+        
+        object_1_list := SemisimpleCategoryObjectList( object_1 );
+        
+        object_2_list := SemisimpleCategoryObjectList( object_2 );
+        
+        object_list := [ ];
+        
+        for elem_1 in object_1_list do
             
-            object_1_list := SemisimpleCategoryObjectList( object_1 );
-            
-            object_2_list := SemisimpleCategoryObjectList( object_2 );
-            
-            object_list := [ ];
-            
-            for elem_1 in object_1_list do
+            for elem_2 in object_2_list do
                 
-                for elem_2 in object_2_list do
-                    
-                    prod := elem_1[2] * elem_2[2];
-                    
-                    multiplicity := elem_1[1] * elem_2[1];
-                    
-                    Append( object_list, List( prod, pair -> [ pair[1] * multiplicity, pair[2] ] ) );
-                    
-                od;
+                prod := elem_1[2] * elem_2[2];
+                
+                multiplicity := elem_1[1] * elem_2[1];
+                
+                Append( object_list, List( prod, pair -> [ pair[1] * multiplicity, pair[2] ] ) );
                 
             od;
             
-            return SemisimpleCategoryObject( object_list, category );
-            
-          end,
-          
-          [ ] ],
+        od;
         
-        [ function( cat, object_1, object_2 )
-            
-            return object_1;
-            
-          end,
-          
-          [ IsSemisimpleCategory, IsZeroForObjects, IsSemisimpleCategoryObject ] ],
-         
-        [ function( cat, object_1, object_2 )
-            
-            return object_2;
-            
-          end,
-          
-          [ IsSemisimpleCategory, IsSemisimpleCategoryObject, IsZeroForObjects ] ]
-      ]
-    
-    );
+        return SemisimpleCategoryObject( object_list, category );
+        
+    end );
     
     AddTensorUnit( category,
       

@@ -9,230 +9,230 @@
 
 #! @Section Add-methods
 
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `CoRankMorphism`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a ) \mapsto \mathtt{CoRankMorphism}(a)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddCoRankMorphism",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddCoRankMorphism",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddCoRankMorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddCoRankMorphism",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `CoTraceMap`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( alpha ) \mapsto \mathtt{CoTraceMap}(alpha)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddCoTraceMap",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddCoTraceMap",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddCoTraceMap",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddCoTraceMap",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `CoclosedCoevaluationForCoDual`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a ) \mapsto \mathtt{CoclosedCoevaluationForCoDual}(a)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddCoclosedCoevaluationForCoDual",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddCoclosedCoevaluationForCoDual",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddCoclosedCoevaluationForCoDual",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddCoclosedCoevaluationForCoDual",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `CoclosedCoevaluationForCoDualWithGivenTensorProduct`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( s, a, r ) \mapsto \mathtt{CoclosedCoevaluationForCoDualWithGivenTensorProduct}(s, a, r)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddCoclosedCoevaluationForCoDualWithGivenTensorProduct",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddCoclosedCoevaluationForCoDualWithGivenTensorProduct",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddCoclosedCoevaluationForCoDualWithGivenTensorProduct",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddCoclosedCoevaluationForCoDualWithGivenTensorProduct",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `InternalCoHomTensorProductCompatibilityMorphismInverse`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( list ) \mapsto \mathtt{InternalCoHomTensorProductCompatibilityMorphismInverse}(list)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddInternalCoHomTensorProductCompatibilityMorphismInverse",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddInternalCoHomTensorProductCompatibilityMorphismInverse",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddInternalCoHomTensorProductCompatibilityMorphismInverse",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddInternalCoHomTensorProductCompatibilityMorphismInverse",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( source, list, range ) \mapsto \mathtt{InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects}(source, list, range)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `IsomorphismFromInternalCoHomToTensorProductWithCoDualObject`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a, b ) \mapsto \mathtt{IsomorphismFromInternalCoHomToTensorProductWithCoDualObject}(a, b)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddIsomorphismFromInternalCoHomToTensorProductWithCoDualObject",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddIsomorphismFromInternalCoHomToTensorProductWithCoDualObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddIsomorphismFromInternalCoHomToTensorProductWithCoDualObject",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddIsomorphismFromInternalCoHomToTensorProductWithCoDualObject",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a, b ) \mapsto \mathtt{IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom}(a, b)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `MorphismFromTensorProductToInternalCoHom`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a, b ) \mapsto \mathtt{MorphismFromTensorProductToInternalCoHom}(a, b)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddMorphismFromTensorProductToInternalCoHom",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddMorphismFromTensorProductToInternalCoHom",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddMorphismFromTensorProductToInternalCoHom",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddMorphismFromTensorProductToInternalCoHom",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `MorphismFromTensorProductToInternalCoHomWithGivenObjects`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( s, a, b, r ) \mapsto \mathtt{MorphismFromTensorProductToInternalCoHomWithGivenObjects}(s, a, b, r)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddMorphismFromTensorProductToInternalCoHomWithGivenObjects",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddMorphismFromTensorProductToInternalCoHomWithGivenObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddMorphismFromTensorProductToInternalCoHomWithGivenObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddMorphismFromTensorProductToInternalCoHomWithGivenObjects",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `MorphismToCoBidual`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a ) \mapsto \mathtt{MorphismToCoBidual}(a)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddMorphismToCoBidual",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddMorphismToCoBidual",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddMorphismToCoBidual",
-                  [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddMorphismToCoBidual",
-                  [ IsCapCategory, IsList ] );
-
+#! @BeginGroup
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `MorphismToCoBidualWithGivenCoBidual`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
 #! $F: ( a, r ) \mapsto \mathtt{MorphismToCoBidualWithGivenCoBidual}(a, r)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddMorphismToCoBidualWithGivenCoBidual",
                   [ IsCapCategory, IsFunction ] );
 
+#! @Arguments C, F, weight
 DeclareOperation( "AddMorphismToCoBidualWithGivenCoBidual",
                   [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
 
-DeclareOperation( "AddMorphismToCoBidualWithGivenCoBidual",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMorphismToCoBidualWithGivenCoBidual",
-                  [ IsCapCategory, IsList ] );
