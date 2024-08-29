@@ -84,38 +84,40 @@ DeclareGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION" );
 #!  lists only contains this pair once, with the higher multiple from both lists.
 DeclareGlobalFunction( "CAP_INTERNAL_MERGE_PRECONDITIONS_LIST" );
 
-#! @Arguments data_type, human_readable_identifier_list
+#! @Arguments data_type, human_readable_identifier_getter
+#! @Returns a function
 #! @Description
-#!  Returns a unary function which throws an error if its argument is not of type <A>data_type</A>.
-#!  <A>human_readable_identifier_list</A> is a list of arguments passed to `Error` to refer to the argument of the unary function in the error message.
+#!  Returns a function `f` which throws an error if its first argument is not of type <A>data_type</A>.
+#!  <A>human_readable_identifier_getter</A> is a function returning a string which is used to refer to the first argument of `f` in the error message.
+#!  The arguments of `f` except the first argument are passed on to <A>human_readable_identifier_getter</A>.
 DeclareGlobalFunction( "CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER" );
 
-#! @Arguments cell, category, human_readable_identifier_list
+#! @Arguments cell, category, human_readable_identifier_getter
 #! @Description
 #!  The function throws an error if <A>cell</A> is not a cell of <A>category</A>.
 #!  If <A>category</A> is the boolean <C>false</C>, only general checks not specific to a concrete category are performed.
-#!  <A>human_readable_identifier_list</A> is a list of arguments passed to `Error` to refer to <A>cell</A> in the error message.
+#!  <A>human_readable_identifier_getter</A> is a 0-ary function returning a string which is used to refer to <A>cell</A> in the error message.
 DeclareGlobalFunction( "CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY" );
 
-#! @Arguments object, category, human_readable_identifier_list
+#! @Arguments object, category, human_readable_identifier_getter
 #! @Description
 #!  The function throws an error if <A>object</A> is not an object of <A>category</A>.
 #!  If <A>category</A> is the boolean <C>false</C>, only general checks not specific to a concrete category are performed.
-#!  <A>human_readable_identifier_list</A> is a list of arguments passed to `Error` to refer to <A>object</A> in the error message.
+#!  <A>human_readable_identifier_getter</A> is a 0-ary function returning a string which is used to refer to <A>cell</A> in the error message.
 DeclareGlobalFunction( "CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY" );
 
-#! @Arguments morphism, category, human_readable_identifier_list
+#! @Arguments morphism, category, human_readable_identifier_getter
 #! @Description
 #!  The function throws an error if <A>morphism</A> is not a morphism of <A>category</A>.
 #!  If <A>category</A> is the boolean <C>false</C>, only general checks not specific to a concrete category are performed.
-#!  <A>human_readable_identifier_list</A> is a list of arguments passed to `Error` to refer to <A>morphism</A> in the error message.
+#!  <A>human_readable_identifier_getter</A> is a 0-ary function returning a string which is used to refer to <A>cell</A> in the error message.
 DeclareGlobalFunction( "CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY" );
 
-#! @Arguments two_cell, category, human_readable_identifier_list
+#! @Arguments two_cell, category, human_readable_identifier_getter
 #! @Description
 #!  The function throws an error if <A>two_cell</A> is not a $2$-cell of <A>category</A>.
 #!  If <A>category</A> is the boolean <C>false</C>, only general checks not specific to a concrete category are performed.
-#!  <A>human_readable_identifier_list</A> is a list of arguments passed to `Error` to refer to <A>two_cell</A> in the error message.
+#!  <A>human_readable_identifier_getter</A> is a 0-ary function returning a string which is used to refer to <A>cell</A> in the error message.
 DeclareGlobalFunction( "CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY" );
 
 DeclareGlobalFunction( "ListKnownCategoricalProperties" );

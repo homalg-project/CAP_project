@@ -340,6 +340,8 @@ InstallGlobalFunction( "CreateCapCategoryWithDataTypes", FunctionWithNamedArgume
     
     obj!.add_primitive_output := false;
     
+    obj!.input_sanity_check_functions := rec( );
+    
     # convenience for Julia lists
     if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
         
