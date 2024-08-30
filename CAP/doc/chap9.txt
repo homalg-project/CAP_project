@@ -123,48 +123,53 @@
   
   [1X9.2-10 CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER[101X
   
-  [33X[1;0Y[29X[2XCAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER[102X( [3Xdata_type[103X, [3Xhuman_readable_identifier_list[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XCAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER[102X( [3Xdata_type[103X, [3Xhuman_readable_identifier_getter[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya function[133X
   
-  [33X[0;0YReturns  a  unary  function  which throws an error if its argument is not of
-  type [3Xdata_type[103X. [3Xhuman_readable_identifier_list[103X is a list of arguments passed
-  to  [10XError[110X  to  refer  to  the  argument  of  the unary function in the error
-  message.[133X
+  [33X[0;0YReturns  a  function [10Xf[110X which throws an error if its first argument is not of
+  type  [3Xdata_type[103X.  [3Xhuman_readable_identifier_getter[103X is a function returning a
+  string  which  is  used  to  refer  to  the first argument of [10Xf[110X in the error
+  message.  The  arguments  of  [10Xf[110X  except  the first argument are passed on to
+  [3Xhuman_readable_identifier_getter[103X.[133X
   
   [1X9.2-11 CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY[101X
   
-  [33X[1;0Y[29X[2XCAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY[102X( [3Xcell[103X, [3Xcategory[103X, [3Xhuman_readable_identifier_list[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XCAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY[102X( [3Xcell[103X, [3Xcategory[103X, [3Xhuman_readable_identifier_getter[103X ) [32X function[133X
   
   [33X[0;0YThe  function throws an error if [3Xcell[103X is not a cell of [3Xcategory[103X. If [3Xcategory[103X
   is  the  boolean  [10Xfalse[110X,  only  general  checks  not  specific to a concrete
-  category   are   performed.  [3Xhuman_readable_identifier_list[103X  is  a  list  of
-  arguments passed to [10XError[110X to refer to [3Xcell[103X in the error message.[133X
+  category are performed. [3Xhuman_readable_identifier_getter[103X is a 0-ary function
+  returning a string which is used to refer to [3Xcell[103X in the error message.[133X
   
   [1X9.2-12 CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY[101X
   
-  [33X[1;0Y[29X[2XCAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY[102X( [3Xobject[103X, [3Xcategory[103X, [3Xhuman_readable_identifier_list[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XCAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY[102X( [3Xobject[103X, [3Xcategory[103X, [3Xhuman_readable_identifier_getter[103X ) [32X function[133X
   
   [33X[0;0YThe  function  throws  an  error  if [3Xobject[103X is not an object of [3Xcategory[103X. If
   [3Xcategory[103X  is  the  boolean  [10Xfalse[110X,  only  general  checks  not specific to a
-  concrete category are performed. [3Xhuman_readable_identifier_list[103X is a list of
-  arguments passed to [10XError[110X to refer to [3Xobject[103X in the error message.[133X
+  concrete category are performed. [3Xhuman_readable_identifier_getter[103X is a 0-ary
+  function  returning  a  string  which  is used to refer to [3Xcell[103X in the error
+  message.[133X
   
   [1X9.2-13 CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY[101X
   
-  [33X[1;0Y[29X[2XCAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY[102X( [3Xmorphism[103X, [3Xcategory[103X, [3Xhuman_readable_identifier_list[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XCAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY[102X( [3Xmorphism[103X, [3Xcategory[103X, [3Xhuman_readable_identifier_getter[103X ) [32X function[133X
   
   [33X[0;0YThe  function  throws an error if [3Xmorphism[103X is not a morphism of [3Xcategory[103X. If
   [3Xcategory[103X  is  the  boolean  [10Xfalse[110X,  only  general  checks  not specific to a
-  concrete category are performed. [3Xhuman_readable_identifier_list[103X is a list of
-  arguments passed to [10XError[110X to refer to [3Xmorphism[103X in the error message.[133X
+  concrete category are performed. [3Xhuman_readable_identifier_getter[103X is a 0-ary
+  function  returning  a  string  which  is used to refer to [3Xcell[103X in the error
+  message.[133X
   
   [1X9.2-14 CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY[101X
   
-  [33X[1;0Y[29X[2XCAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY[102X( [3Xtwo_cell[103X, [3Xcategory[103X, [3Xhuman_readable_identifier_list[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XCAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY[102X( [3Xtwo_cell[103X, [3Xcategory[103X, [3Xhuman_readable_identifier_getter[103X ) [32X function[133X
   
   [33X[0;0YThe  function  throws  an  error if [3Xtwo_cell[103X is not a [23X2[123X-cell of [3Xcategory[103X. If
   [3Xcategory[103X  is  the  boolean  [10Xfalse[110X,  only  general  checks  not specific to a
-  concrete category are performed. [3Xhuman_readable_identifier_list[103X is a list of
-  arguments passed to [10XError[110X to refer to [3Xtwo_cell[103X in the error message.[133X
+  concrete category are performed. [3Xhuman_readable_identifier_getter[103X is a 0-ary
+  function  returning  a  string  which  is used to refer to [3Xcell[103X in the error
+  message.[133X
   
   [1X9.2-15 CachingStatistic[101X
   

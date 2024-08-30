@@ -216,36 +216,38 @@
 
 <h5>9.2-10 CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER</code>( <var class="Arg">data_type</var>, <var class="Arg">human_readable_identifier_list</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Returns a unary function which throws an error if its argument is not of type <var class="Arg">data_type</var>. <var class="Arg">human_readable_identifier_list</var> is a list of arguments passed to <code class="code">Error</code> to refer to the argument of the unary function in the error message.</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER</code>( <var class="Arg">data_type</var>, <var class="Arg">human_readable_identifier_getter</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a function</p>
+
+<p>Returns a function <code class="code">f</code> which throws an error if its first argument is not of type <var class="Arg">data_type</var>. <var class="Arg">human_readable_identifier_getter</var> is a function returning a string which is used to refer to the first argument of <code class="code">f</code> in the error message. The arguments of <code class="code">f</code> except the first argument are passed on to <var class="Arg">human_readable_identifier_getter</var>.</p>
 
 <p><a id="X82F35A5C80A6AB86" name="X82F35A5C80A6AB86"></a></p>
 
 <h5>9.2-11 CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY</code>( <var class="Arg">cell</var>, <var class="Arg">category</var>, <var class="Arg">human_readable_identifier_list</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>The function throws an error if <var class="Arg">cell</var> is not a cell of <var class="Arg">category</var>. If <var class="Arg">category</var> is the boolean <code class="code">false</code>, only general checks not specific to a concrete category are performed. <var class="Arg">human_readable_identifier_list</var> is a list of arguments passed to <code class="code">Error</code> to refer to <var class="Arg">cell</var> in the error message.</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY</code>( <var class="Arg">cell</var>, <var class="Arg">category</var>, <var class="Arg">human_readable_identifier_getter</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>The function throws an error if <var class="Arg">cell</var> is not a cell of <var class="Arg">category</var>. If <var class="Arg">category</var> is the boolean <code class="code">false</code>, only general checks not specific to a concrete category are performed. <var class="Arg">human_readable_identifier_getter</var> is a 0-ary function returning a string which is used to refer to <var class="Arg">cell</var> in the error message.</p>
 
 <p><a id="X8335A3308291E3A2" name="X8335A3308291E3A2"></a></p>
 
 <h5>9.2-12 CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY</code>( <var class="Arg">object</var>, <var class="Arg">category</var>, <var class="Arg">human_readable_identifier_list</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>The function throws an error if <var class="Arg">object</var> is not an object of <var class="Arg">category</var>. If <var class="Arg">category</var> is the boolean <code class="code">false</code>, only general checks not specific to a concrete category are performed. <var class="Arg">human_readable_identifier_list</var> is a list of arguments passed to <code class="code">Error</code> to refer to <var class="Arg">object</var> in the error message.</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY</code>( <var class="Arg">object</var>, <var class="Arg">category</var>, <var class="Arg">human_readable_identifier_getter</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>The function throws an error if <var class="Arg">object</var> is not an object of <var class="Arg">category</var>. If <var class="Arg">category</var> is the boolean <code class="code">false</code>, only general checks not specific to a concrete category are performed. <var class="Arg">human_readable_identifier_getter</var> is a 0-ary function returning a string which is used to refer to <var class="Arg">cell</var> in the error message.</p>
 
 <p><a id="X7DD95FC27FBF20E3" name="X7DD95FC27FBF20E3"></a></p>
 
 <h5>9.2-13 CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY</code>( <var class="Arg">morphism</var>, <var class="Arg">category</var>, <var class="Arg">human_readable_identifier_list</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>The function throws an error if <var class="Arg">morphism</var> is not a morphism of <var class="Arg">category</var>. If <var class="Arg">category</var> is the boolean <code class="code">false</code>, only general checks not specific to a concrete category are performed. <var class="Arg">human_readable_identifier_list</var> is a list of arguments passed to <code class="code">Error</code> to refer to <var class="Arg">morphism</var> in the error message.</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY</code>( <var class="Arg">morphism</var>, <var class="Arg">category</var>, <var class="Arg">human_readable_identifier_getter</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>The function throws an error if <var class="Arg">morphism</var> is not a morphism of <var class="Arg">category</var>. If <var class="Arg">category</var> is the boolean <code class="code">false</code>, only general checks not specific to a concrete category are performed. <var class="Arg">human_readable_identifier_getter</var> is a 0-ary function returning a string which is used to refer to <var class="Arg">cell</var> in the error message.</p>
 
 <p><a id="X818BBDDE8387D373" name="X818BBDDE8387D373"></a></p>
 
 <h5>9.2-14 CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY</code>( <var class="Arg">two_cell</var>, <var class="Arg">category</var>, <var class="Arg">human_readable_identifier_list</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>The function throws an error if <var class="Arg">two_cell</var> is not a <span class="Math">2</span>-cell of <var class="Arg">category</var>. If <var class="Arg">category</var> is the boolean <code class="code">false</code>, only general checks not specific to a concrete category are performed. <var class="Arg">human_readable_identifier_list</var> is a list of arguments passed to <code class="code">Error</code> to refer to <var class="Arg">two_cell</var> in the error message.</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY</code>( <var class="Arg">two_cell</var>, <var class="Arg">category</var>, <var class="Arg">human_readable_identifier_getter</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>The function throws an error if <var class="Arg">two_cell</var> is not a <span class="Math">2</span>-cell of <var class="Arg">category</var>. If <var class="Arg">category</var> is the boolean <code class="code">false</code>, only general checks not specific to a concrete category are performed. <var class="Arg">human_readable_identifier_getter</var> is a 0-ary function returning a string which is used to refer to <var class="Arg">cell</var> in the error message.</p>
 
 <p><a id="X82FC76688082956A" name="X82FC76688082956A"></a></p>
 
