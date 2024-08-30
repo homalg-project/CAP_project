@@ -6,8 +6,9 @@ LoadPackage( "LinearAlgebraForCAP" );
 
 #! @Example
 field := HomalgFieldOfRationals( );;
-V := VectorSpaceObject( 1, field );;
-W := VectorSpaceObject( 2, field );;
+vec := MatrixCategory( field );;
+V := MatrixCategoryObject( vec, 1 );;
+W := MatrixCategoryObject( vec, 2 );;
 alpha := VectorSpaceMorphism( V, HomalgMatrix( [ [ 1, -1 ] ], 1, 2, field ), W );;
 beta := VectorSpaceMorphism( W, HomalgMatrix( [ [ 1, 2 ], [ 3, 4 ] ], 2, 2, field ), W );;
 IsLiftable( alpha, beta );

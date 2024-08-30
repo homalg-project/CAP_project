@@ -6,13 +6,14 @@ LoadPackage( "LinearAlgebraForCAP" );
 
 #! @Example
 field := HomalgFieldOfRationals( );;
-A := VectorSpaceObject( 1, field );;
-B := VectorSpaceObject( 2, field );;
-C := VectorSpaceObject( 3, field );;
+vec := MatrixCategory( field );;
+A := MatrixCategoryObject( vec, 1 );;
+B := MatrixCategoryObject( vec, 2 );;
+C := MatrixCategoryObject( vec, 3 );;
 
 alpha := VectorSpaceMorphism( A, HomalgMatrix( [ [ 1, 0, 0 ] ], 1, 3, field ), C );;
 beta := VectorSpaceMorphism( C, HomalgMatrix( [ [ 1, 0 ], [ 1, 1 ], [ 1, 2 ] ], 3, 2, field ), B );;
-IsZero( PreCompose( alpha, beta ) );
+IsZeroForMorphisms( PreCompose( alpha, beta ) );
 #! false
 IsCongruentForMorphisms(
     IdentityMorphism( HomologyObject( alpha, beta ) ),
@@ -43,8 +44,9 @@ IsIsomorphism(
     )
 );
 #! true
-alpha_op := Opposite( alpha );;
-beta_op := Opposite( beta );;
+op := Opposite( vec );;
+alpha_op := Opposite( op, alpha );;
+beta_op := Opposite( op, beta );;
 IsCongruentForMorphisms(
     IdentityMorphism( HomologyObject( beta_op, alpha_op ) ),
     HomologyObjectFunctorial( beta_op, alpha_op, IdentityMorphism( Opposite( C ) ), beta_op, alpha_op )

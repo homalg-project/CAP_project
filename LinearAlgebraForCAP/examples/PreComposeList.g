@@ -6,9 +6,10 @@ LoadPackage( "LinearAlgebraForCAP" );
 
 #! @Example
 field := HomalgFieldOfRationals( );;
-A := VectorSpaceObject( 1, field );;
-B := VectorSpaceObject( 2, field );;
-C := VectorSpaceObject( 3, field );;
+vec := MatrixCategory( field );;
+A := MatrixCategoryObject( vec, 1 );;
+B := MatrixCategoryObject( vec, 2 );;
+C := MatrixCategoryObject( vec, 3 );;
 
 alpha := VectorSpaceMorphism( A, HomalgMatrix( [ [ 1, 0, 0 ] ], 1, 3, field ), C );;
 beta := VectorSpaceMorphism( C, HomalgMatrix( [ [ 1, 0 ], [ 1, 1 ], [ 1, 2 ] ], 3, 2, field ), B );;
@@ -16,14 +17,14 @@ beta := VectorSpaceMorphism( C, HomalgMatrix( [ [ 1, 0 ], [ 1, 1 ], [ 1, 2 ] ], 
 IsCongruentForMorphisms( PreCompose( alpha, beta ), PostCompose( beta, alpha ) );
 #! true
 
-IsOne( PreComposeList( A, [ ], A ) );
+IsCongruentForMorphisms( PreComposeList( A, [ ], A ), IdentityMorphism( A ) );
 #! true
 IsCongruentForMorphisms( PreComposeList( A, [ alpha ], C ), alpha );
 #! true
 IsCongruentForMorphisms( PreComposeList( A, [ alpha, beta ], B ), PreCompose( alpha, beta ) );
 #! true
 
-IsOne( PostComposeList( A, [ ], A ) );
+IsCongruentForMorphisms( PostComposeList( A, [ ], A ), IdentityMorphism( A ) );
 #! true
 IsCongruentForMorphisms( PostComposeList( A, [ alpha ], C ), alpha );
 #! true
