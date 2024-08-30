@@ -1,27 +1,27 @@
 #! @Chapter Examples and Tests
 
 #! @Section Opposite category
-LoadPackage( "LinearAlgebraForCAP", ">= 2024.01-04", false );
 
 #! @Example
+LoadPackage( "LinearAlgebraForCAP", ">= 2024.01-04", false );
+#! true
 QQ := HomalgFieldOfRationals();;
 vec := MatrixCategory( QQ );;
 op := Opposite( vec );;
-ListKnownCategoricalProperties( op );
-#! [ "IsAbCategory", "IsAbelianCategory", "IsAbelianCategoryWithEnoughInjectives"
-#!     , "IsAbelianCategoryWithEnoughProjectives", "IsAdditiveCategory", 
-#!   "IsBraidedMonoidalCategory", "IsCategoryWithInitialObject",
-#!   "IsCategoryWithTerminalObject", "IsCategoryWithZeroObject",
-#!   "IsClosedMonoidalCategory", "IsCoclosedMonoidalCategory",
-#!   "IsEnrichedOverCommutativeRegularSemigroup", 
-#!   "IsEquippedWithHomomorphismStructure", "IsLinearCategoryOverCommutativeRing"
-#!     , 
-#!   "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms", 
-#!   "IsMonoidalCategory", "IsPreAbelianCategory", 
-#!   "IsRigidSymmetricClosedMonoidalCategory", 
-#!   "IsRigidSymmetricCoclosedMonoidalCategory", "IsSkeletalCategory", 
-#!   "IsStrictMonoidalCategory", "IsSymmetricClosedMonoidalCategory", 
-#!   "IsSymmetricCoclosedMonoidalCategory", "IsSymmetricMonoidalCategory" ]
+Display( ListKnownCategoricalProperties( op ) );
+#! [ "IsAbCategory", "IsAbelianCategory", "IsAbelianCategoryWithEnoughInjectives",\
+#!  "IsAbelianCategoryWithEnoughProjectives", "IsAdditiveCategory",\
+#!  "IsBraidedMonoidalCategory", "IsCategoryWithInitialObject",\
+#!  "IsCategoryWithTerminalObject", "IsCategoryWithZeroObject",\
+#!  "IsClosedMonoidalCategory", "IsCoclosedMonoidalCategory",\
+#!  "IsEnrichedOverCommutativeRegularSemigroup",\
+#!  "IsEquippedWithHomomorphismStructure", "IsLinearCategoryOverCommutativeRing",\
+#!  "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms",\
+#!  "IsMonoidalCategory", "IsPreAbelianCategory",\
+#!  "IsRigidSymmetricClosedMonoidalCategory",\
+#!  "IsRigidSymmetricCoclosedMonoidalCategory", "IsSkeletalCategory",\
+#!  "IsStrictMonoidalCategory", "IsSymmetricClosedMonoidalCategory",\
+#!  "IsSymmetricCoclosedMonoidalCategory", "IsSymmetricMonoidalCategory" ]
 V1 := Opposite( TensorUnit( vec ) );;
 V2 := DirectSum( V1, V1 );;
 V3 := DirectSum( V1, V2 );;
@@ -46,6 +46,9 @@ IsWellDefined( mor );
 #! true
 IsWellDefined( Opposite( mor ) );
 #! true
-IsOne( UniversalMorphismFromImage( mor, [ CoastrictionToImage( mor ), ImageEmbedding( mor ) ] ) );
+IsCongruentForMorphisms(
+    UniversalMorphismFromImage( mor, [ CoastrictionToImage( mor ), ImageEmbedding( mor ) ] ),
+    IdentityMorphism( ImageObject( mor ) )
+);
 #! true
 #! @EndExample

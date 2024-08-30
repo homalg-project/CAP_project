@@ -6,14 +6,13 @@
 
 LoadPackage( "LinearAlgebraForCAP", false );
 #! true
-Q := HomalgFieldOfRationals( );
-#! Q
+Q := HomalgFieldOfRationals( );;
 Qmat := MatrixCategory( Q );
 #! Category of matrices over Q
 Wrapper := WrapperCategory( Qmat, rec( ) );
 #! WrapperCategory( Category of matrices over Q )
 mor := ZeroMorphism( ZeroObject( Wrapper ), ZeroObject( Wrapper ) );;
-2 * mor;;
+(2 / Q) * mor;;
 BasisOfExternalHom( Source( mor ), Range( mor ) );;
 CoefficientsOfMorphism( mor );;
 distinguished_object := DistinguishedObjectOfHomomorphismStructure( Wrapper );;
