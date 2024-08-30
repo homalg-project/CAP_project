@@ -6,8 +6,9 @@ LoadPackage( "LinearAlgebraForCAP" );
 
 #! @Example
 field := HomalgFieldOfRationals( );;
-A := VectorSpaceObject( 3, field );;
-B := VectorSpaceObject( 2, field );;
+vec := MatrixCategory( field );;
+A := MatrixCategoryObject( vec, 3 );;
+B := MatrixCategoryObject( vec, 2 );;
 
 alpha := VectorSpaceMorphism( B, HomalgMatrix( [ [ 1, -1, 1 ], [ 1, 1, 1 ] ], 2, 3, field ), A );;
 beta := VectorSpaceMorphism( B, HomalgMatrix( [ [ 1, 2, 1 ], [ 2, 1, 1 ] ], 2, 3, field ), A );;

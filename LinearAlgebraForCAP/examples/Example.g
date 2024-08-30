@@ -92,7 +92,7 @@ Display( u );
 #! A morphism in Category of matrices over Q
 KernelObjectFunctorial( u, IdentityMorphism( Source( u ) ), u ) = IdentityMorphism( MatrixCategoryObject( vec, 3 ) );
 #! true
-IsZero( CokernelObjectFunctorial( u, IdentityMorphism( Range( u ) ), u ) );
+IsZeroForMorphisms( CokernelObjectFunctorial( u, IdentityMorphism( Range( u ) ), u ) );
 #! true
 DirectProductFunctorial( [ u, u ] ) = DirectSumFunctorial( [ u, u ] );
 #! true

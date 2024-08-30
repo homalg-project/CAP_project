@@ -2,9 +2,11 @@ LoadPackage( "LinearAlgebraForCAP" );
 
 Q := HomalgFieldOfRationals( );
 
-V := VectorSpaceObject( 1, Q );
+vec := MatrixCategory( Q );
 
-W := VectorSpaceObject( 2, Q );
+V := MatrixCategoryObject( vec, 1 );
+
+W := MatrixCategoryObject( vec, 2 );
 
 alpha := VectorSpaceMorphism( V, HomalgMatrix( [ [ 1, 0 ] ], Q ), W );
 
