@@ -7,15 +7,11 @@
 gap> PushOptions( rec( OnlyNeeded := true ) );
 gap> package_loading_info_level := InfoLevel( InfoPackageLoading );;
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_ERROR );;
-gap> LoadPackage( "GaussForHomalg", false );
-true
 gap> LoadPackage( "ModulePresentationsForCAP", false );
 true
 gap> LoadPackage( "CAP", false );
 true
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_INFO );;
-gap> LoadPackage( "GaussForHomalg" );
-true
 gap> LoadPackage( "ModulePresentationsForCAP" );
 true
 gap> LoadPackage( "CAP" );

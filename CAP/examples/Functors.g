@@ -8,8 +8,8 @@ LoadPackage( "ModulePresentationsForCAP" );
 #! Here is the first way to model a binary functor:
 
 #! @Example
-field := HomalgFieldOfRationals( );;
-vec := LeftPresentations( field );;
+ring := HomalgRingOfIntegers( );;
+vec := LeftPresentations( ring );;
 F := CapFunctor( "CohomForVec", [ vec, [ vec, true ] ], vec );;
 obj_func := function( A, B ) return TensorProductOnObjects( A, DualOnObjects( B ) ); end;;
 mor_func := function( source, alpha, beta, range ) return TensorProductOnMorphismsWithGivenTensorProducts( source, alpha, DualOnMorphisms( beta ), range ); end;;
@@ -22,7 +22,7 @@ AddMorphismFunction( F, mor_func );;
 
 #! @Example
 InputSignature( F );
-#! [ [ Category of left presentations of Q, false ], [ Category of left presentations of Q, true ] ]
+#! [ [ Category of left presentations of Z, false ], [ Category of left presentations of Z, true ] ]
 #! @EndExample
 
 #! We can see that <C>ApplyFunctor</C> works both on two arguments and on one argument (in the product category).
@@ -55,7 +55,7 @@ IsCongruentForMorphisms( value1, value3 );
 
 #! @Example
 InputSignature( F2 );
-#! [ [ Product of: Category of left presentations of Q, Opposite( Category of left presentations of Q ), false ] ]
+#! [ [ Product of: Category of left presentations of Z, Opposite( Category of left presentations of Z ), false ] ]
 #! @EndExample
 
 #! Installation of the first functor as a GAP-operation.
