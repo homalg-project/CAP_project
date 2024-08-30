@@ -25,13 +25,25 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X8104A77D7B5CCD4F">2.1 <span class="Heading">Basic Commands</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X87F5609A7B33C58C">2.2 <span class="Heading">Split epi summand</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X852F59737EC57965">2.2 <span class="Heading">Homology object</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7DCD99628504B810">2.3 <span class="Heading">Kernel</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7CDB7FF27D734D2D">2.3 <span class="Heading">Liftable</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7DE20941803BFBD9">2.4 <span class="Heading">FiberProduct</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X8218390A785F1EDB">2.4 <span class="Heading">MorphismFromSourceToPushout and MorphismFromFiberProductToSink</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7F34E29281DF3FCE">2.5 <span class="Heading">PreComposeList and PostComposeList</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X87F5609A7B33C58C">2.6 <span class="Heading">Split epi summand</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7DCD99628504B810">2.7 <span class="Heading">Kernel</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7DE20941803BFBD9">2.8 <span class="Heading">FiberProduct</span></a>
 </span>
 </div>
 </div>
@@ -131,7 +143,7 @@ A morphism in Category of matrices over Q
 A morphism in Category of matrices over Q
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KernelObjectFunctorial( u, IdentityMorphism( Source( u ) ), u ) = IdentityMorphism( MatrixCategoryObject( vec, 3 ) );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( CokernelObjectFunctorial( u, IdentityMorphism( Range( u ) ), u ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( CokernelObjectFunctorial( u, IdentityMorphism( Range( u ) ), u ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectProductFunctorial( [ u, u ] ) = DirectSumFunctorial( [ u, u ] );</span>
 true
@@ -298,9 +310,195 @@ true
 true
 </pre></div>
 
+<p><a id="X852F59737EC57965" name="X852F59737EC57965"></a></p>
+
+<h4>2.2 <span class="Heading">Homology object</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">field := HomalgFieldOfRationals( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MatrixCategory( field );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := MatrixCategoryObject( vec, 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := MatrixCategoryObject( vec, 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := MatrixCategoryObject( vec, 3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := VectorSpaceMorphism( A, HomalgMatrix( [ [ 1, 0, 0 ] ], 1, 3, field ), C );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := VectorSpaceMorphism( C, HomalgMatrix( [ [ 1, 0 ], [ 1, 1 ], [ 1, 2 ] ], 3, 2, field ), B );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( PreCompose( alpha, beta ) );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    IdentityMorphism( HomologyObject( alpha, beta ) ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    HomologyObjectFunctorial( alpha, beta, IdentityMorphism( C ), alpha, beta )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kernel_beta := KernelEmbedding( beta );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := Source( kernel_beta );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    HomologyObjectFunctorial( </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        MorphismFromZeroObject( K ), </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        MorphismIntoZeroObject( K ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        kernel_beta,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        MorphismFromZeroObject( Source( beta ) ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        beta</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cokernel_alpha := CokernelProjection( alpha );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Co := Range( cokernel_alpha );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    HomologyObjectFunctorial( </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        alpha,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        MorphismIntoZeroObject( Range( alpha ) ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        cokernel_alpha,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        MorphismFromZeroObject( Co ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        MorphismIntoZeroObject( Co )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">op := Opposite( vec );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha_op := Opposite( op, alpha );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta_op := Opposite( op, beta );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    IdentityMorphism( HomologyObject( beta_op, alpha_op ) ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    HomologyObjectFunctorial( beta_op, alpha_op, IdentityMorphism( Opposite( C ) ), beta_op, alpha_op )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kernel_beta := KernelEmbedding( beta_op );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := Source( kernel_beta );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    HomologyObjectFunctorial( </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        MorphismFromZeroObject( K ), </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        MorphismIntoZeroObject( K ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        kernel_beta,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        MorphismFromZeroObject( Source( beta_op ) ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        beta_op</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cokernel_alpha := CokernelProjection( alpha_op );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Co := Range( cokernel_alpha );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    HomologyObjectFunctorial( </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        alpha_op,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        MorphismIntoZeroObject( Range( alpha_op ) ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        cokernel_alpha,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        MorphismFromZeroObject( Co ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        MorphismIntoZeroObject( Co )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+</pre></div>
+
+<p><a id="X7CDB7FF27D734D2D" name="X7CDB7FF27D734D2D"></a></p>
+
+<h4>2.3 <span class="Heading">Liftable</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">field := HomalgFieldOfRationals( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MatrixCategory( field );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := MatrixCategoryObject( vec, 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">W := MatrixCategoryObject( vec, 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := VectorSpaceMorphism( V, HomalgMatrix( [ [ 1, -1 ] ], 1, 2, field ), W );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := VectorSpaceMorphism( W, HomalgMatrix( [ [ 1, 2 ], [ 3, 4 ] ], 2, 2, field ), W );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsLiftable( alpha, beta );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsLiftable( beta, alpha );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsLiftableAlongMonomorphism( beta, alpha );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := VectorSpaceMorphism( W, HomalgMatrix( [ [ 1 ], [ 1 ] ], 2, 1, field ), V );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsColiftable( beta, gamma );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsColiftable( gamma, beta );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsColiftableAlongEpimorphism( beta, gamma );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( PreInverseForMorphisms( gamma ), gamma ) = IdentityMorphism( V );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( alpha, PostInverseForMorphisms( alpha ) ) = IdentityMorphism( V );</span>
+true
+</pre></div>
+
+<p><a id="X8218390A785F1EDB" name="X8218390A785F1EDB"></a></p>
+
+<h4>2.4 <span class="Heading">MorphismFromSourceToPushout and MorphismFromFiberProductToSink</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">field := HomalgFieldOfRationals( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MatrixCategory( field );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := MatrixCategoryObject( vec, 3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := MatrixCategoryObject( vec, 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := VectorSpaceMorphism( B, HomalgMatrix( [ [ 1, -1, 1 ], [ 1, 1, 1 ] ], 2, 3, field ), A );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := VectorSpaceMorphism( B, HomalgMatrix( [ [ 1, 2, 1 ], [ 2, 1, 1 ] ], 2, 3, field ), A );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := MorphismFromFiberProductToSink( [ alpha, beta ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    m,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    PreCompose( ProjectionInFactorOfFiberProduct( [ alpha, beta ], 1 ), alpha )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    m,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    PreCompose( ProjectionInFactorOfFiberProduct( [ alpha, beta ], 2 ), beta )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">MorphismFromKernelObjectToSink( alpha ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    PreCompose( KernelEmbedding( alpha ), alpha )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha_p := DualOnMorphisms( alpha );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta_p := DualOnMorphisms( beta );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m_p := MorphismFromSourceToPushout( [ alpha_p, beta_p ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    m_p,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    PreCompose( alpha_p, InjectionOfCofactorOfPushout( [ alpha_p, beta_p ], 1 ) )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    m_p,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    PreCompose( beta_p, InjectionOfCofactorOfPushout( [ alpha_p, beta_p ], 2 ) )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    MorphismFromSourceToCokernelObject( alpha_p ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    PreCompose( alpha_p, CokernelProjection( alpha_p ) )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+</pre></div>
+
+<p><a id="X7F34E29281DF3FCE" name="X7F34E29281DF3FCE"></a></p>
+
+<h4>2.5 <span class="Heading">PreComposeList and PostComposeList</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">field := HomalgFieldOfRationals( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MatrixCategory( field );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := MatrixCategoryObject( vec, 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := MatrixCategoryObject( vec, 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := MatrixCategoryObject( vec, 3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := VectorSpaceMorphism( A, HomalgMatrix( [ [ 1, 0, 0 ] ], 1, 3, field ), C );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := VectorSpaceMorphism( C, HomalgMatrix( [ [ 1, 0 ], [ 1, 1 ], [ 1, 2 ] ], 3, 2, field ), B );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( PreCompose( alpha, beta ), PostCompose( beta, alpha ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( PreComposeList( A, [ ], A ), IdentityMorphism( A ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( PreComposeList( A, [ alpha ], C ), alpha );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( PreComposeList( A, [ alpha, beta ], B ), PreCompose( alpha, beta ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( PostComposeList( A, [ ], A ), IdentityMorphism( A ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( PostComposeList( A, [ alpha ], C ), alpha );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( PostComposeList( A, [ beta, alpha ], B ), PostCompose( beta, alpha ) );</span>
+true
+</pre></div>
+
 <p><a id="X87F5609A7B33C58C" name="X87F5609A7B33C58C"></a></p>
 
-<h4>2.2 <span class="Heading">Split epi summand</span></h4>
+<h4>2.6 <span class="Heading">Split epi summand</span></h4>
 
 
 <div class="example"><pre>
@@ -331,7 +529,7 @@ A morphism in Category of matrices over Q
 
 <p><a id="X7DCD99628504B810" name="X7DCD99628504B810"></a></p>
 
-<h4>2.3 <span class="Heading">Kernel</span></h4>
+<h4>2.7 <span class="Heading">Kernel</span></h4>
 
 
 <div class="example"><pre>
@@ -409,7 +607,7 @@ true
 
 <p><a id="X7DE20941803BFBD9" name="X7DE20941803BFBD9"></a></p>
 
-<h4>2.4 <span class="Heading">FiberProduct</span></h4>
+<h4>2.8 <span class="Heading">FiberProduct</span></h4>
 
 
 <div class="example"><pre>
