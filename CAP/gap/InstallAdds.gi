@@ -201,7 +201,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
       function( CAP_NAMED_ARGUMENTS, category, method_list, weight )
         local is_derivation, is_final_derivation, is_precompiled_derivation, replaced_filter_list,
             number_of_proposed_arguments, current_function_argument_number, current_additional_filter_list_length,
-            input_sanity_check_functions, output_human_readable_identifier_list, output_sanity_check_function,
+            input_human_readable_identifier_getter, input_sanity_check_functions, output_human_readable_identifier_getter, output_sanity_check_function,
             output_data_type, assert_is_value_of_return_type, install_func, name, current_function_number, i;
         
         if IsFinalized( category ) then
@@ -308,27 +308,35 @@ InstallGlobalFunction( CapInternalInstallAdd,
         od;
         
         # prepare input sanity check
+        input_human_readable_identifier_getter := { i, function_name, category } -> Concatenation( "the ", String(i), "-th argument of the function \033[1m", function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" );
+        
         input_sanity_check_functions := List( [ 1 .. Length( record.filter_list ) ], function ( i )
           local filter_string, data_type, assert_is_value_of_type;
             
             filter_string := record.filter_list[ i ];
             
-            data_type := CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( filter_string, category );
-            
-            if data_type <> fail then
+            if not IsBound( category!.input_sanity_check_functions.(filter_string) ) then
                 
-                return CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER( data_type, [ "the ", i, "-th argument of the function \033[1m", record.function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" ] );
+                data_type := CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( filter_string, category );
                 
-            else
-                
-                return ReturnTrue;
+                if data_type <> fail then
+                    
+                    category!.input_sanity_check_functions.(filter_string) := CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER( data_type, input_human_readable_identifier_getter );
+                    
+                else
+                    
+                    category!.input_sanity_check_functions.(filter_string) := ReturnTrue;
+                    
+                fi;
                 
             fi;
+            
+            return category!.input_sanity_check_functions.(filter_string);
             
         end );
         
         # prepare output sanity check
-        output_human_readable_identifier_list := [ "the result of the function \033[1m", record.function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" ];
+        output_human_readable_identifier_getter := {} -> Concatenation( "the result of the function \033[1m", function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" );
         
         if EndsWith( record.return_type, "_or_fail" ) then
             
@@ -342,7 +350,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
         
         if output_data_type <> fail then
             
-            assert_is_value_of_return_type := CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER( output_data_type, output_human_readable_identifier_list );
+            assert_is_value_of_return_type := CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER( output_data_type, output_human_readable_identifier_getter );
             
             if EndsWith( record.return_type, "_or_fail" ) then
                 
@@ -404,7 +412,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     
                     if category!.input_sanity_check_level > 0 then
                         for i in [ 1 .. Length( input_sanity_check_functions ) ] do
-                            input_sanity_check_functions[ i ]( arg[ i ] );
+                            input_sanity_check_functions[ i ]( arg[ i ], i, function_name, category );
                         od;
                         
                         pre_func_return := CallFuncList( pre_function, arg );
