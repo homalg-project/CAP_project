@@ -31,10 +31,13 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X8296A25779A52244">2.3 <span class="Heading">Koszul Complex</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X828DF9B1782D1AF6">2.4 <span class="Heading">Closed Monoidal Structure</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X808DC49C7ED99B52">2.4 <span class="Heading">Monoidal Categories</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7C3B1694803034A2">2.5 <span class="Heading">Projectivity test</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X828DF9B1782D1AF6">2.5 <span class="Heading">Closed Monoidal Structure</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7C3B1694803034A2">2.6 <span class="Heading">Projectivity test</span></a>
 </span>
 </div>
 </div>
@@ -202,9 +205,116 @@ x
 An object in Category of left presentations of Q[x,y,z]
 </pre></div>
 
+<p><a id="X808DC49C7ED99B52" name="X808DC49C7ED99B52"></a></p>
+
+<h4>2.4 <span class="Heading">Monoidal Categories</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZZ := HomalgRingOfIntegers();;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">fpres := LeftPresentations( ZZZ );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ml := AsLeftPresentation( fpres, HomalgMatrix( [ [ 2 ] ], 1, 1, ZZZ ) );</span>
+&lt;An object in Category of left presentations of Z&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Nl := AsLeftPresentation( fpres, HomalgMatrix( [ [ 3 ] ], 1, 1, ZZZ ) );</span>
+&lt;An object in Category of left presentations of Z&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Tl := TensorProductOnObjects( Ml, Nl );</span>
+&lt;An object in Category of left presentations of Z&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( UnderlyingMatrix( Tl ) );</span>
+[ [  3 ],
+  [  2 ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForObjects( Tl );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Bl := Braiding( DirectSum( Ml, Nl ), DirectSum( Ml, Ml ) );</span>
+&lt;A morphism in Category of left presentations of Z&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( UnderlyingMatrix( Bl ) );</span>
+[ [  1,  0,  0,  0 ],
+  [  0,  0,  1,  0 ],
+  [  0,  1,  0,  0 ],
+  [  0,  0,  0,  1 ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( Bl );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ul := TensorUnit( CapCategory( Ml ) );</span>
+&lt;An object in Category of left presentations of Z&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IntHoml := InternalHomOnObjects( DirectSum( Ml, Ul ), Nl );</span>
+&lt;An object in Category of left presentations of Z&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( UnderlyingMatrix( IntHoml ) );</span>
+[ [  1,  2 ],
+  [  0,  3 ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">generator_l1 := StandardGeneratorMorphism( IntHoml, 1 );</span>
+&lt;A morphism in Category of left presentations of Z&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">morphism_l1 := LambdaElimination( DirectSum( Ml, Ul ), Nl, generator_l1 );</span>
+&lt;A morphism in Category of left presentations of Z&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( UnderlyingMatrix( morphism_l1 ) );</span>
+[ [  -3 ],
+  [   2 ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">generator_l2 := StandardGeneratorMorphism( IntHoml, 2 );</span>
+&lt;A morphism in Category of left presentations of Z&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">morphism_l2 := LambdaElimination( DirectSum( Ml, Ul ), Nl, generator_l2 );</span>
+&lt;A morphism in Category of left presentations of Z&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( UnderlyingMatrix( morphism_l2 ) );</span>
+[ [   0 ],
+  [  -1 ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( LambdaIntroduction( morphism_l1 ), generator_l1 );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( LambdaIntroduction( morphism_l1 ), generator_l1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( LambdaIntroduction( morphism_l2 ), generator_l2 );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( LambdaIntroduction( morphism_l2 ), generator_l2 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">fpres := RightPresentations( ZZZ );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Mr := AsRightPresentation( fpres, HomalgMatrix( [ [ 2 ] ], 1, 1, ZZZ ) );</span>
+&lt;An object in Category of right presentations of Z&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Nr := AsRightPresentation( fpres, HomalgMatrix( [ [ 3 ] ], 1, 1, ZZZ ) );</span>
+&lt;An object in Category of right presentations of Z&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Tr := TensorProductOnObjects( Mr, Nr );</span>
+&lt;An object in Category of right presentations of Z&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( UnderlyingMatrix( Tr ) );</span>
+[ [  3,  2 ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForObjects( Tr );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Br := Braiding( DirectSum( Mr, Nr ), DirectSum( Mr, Mr ) );</span>
+&lt;A morphism in Category of right presentations of Z&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( UnderlyingMatrix( Br ) );</span>
+[ [  1,  0,  0,  0 ],
+  [  0,  0,  1,  0 ],
+  [  0,  1,  0,  0 ],
+  [  0,  0,  0,  1 ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( Br );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ur := TensorUnit( CapCategory( Mr ) );</span>
+&lt;An object in Category of right presentations of Z&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IntHomr := InternalHomOnObjects( DirectSum( Mr, Ur ), Nr );</span>
+&lt;An object in Category of right presentations of Z&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( UnderlyingMatrix( IntHomr ) );</span>
+[ [  1,  0 ],
+  [  2,  3 ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">generator_r1 := StandardGeneratorMorphism( IntHomr, 1 );</span>
+&lt;A morphism in Category of right presentations of Z&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">morphism_r1 := LambdaElimination( DirectSum( Mr, Ur ), Nr, generator_r1 );</span>
+&lt;A morphism in Category of right presentations of Z&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( UnderlyingMatrix( morphism_r1 ) );</span>
+[ [  -3,   2 ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">generator_r2 := StandardGeneratorMorphism( IntHoml, 2 );</span>
+&lt;A morphism in Category of left presentations of Z&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">morphism_r2 := LambdaElimination( DirectSum( Ml, Ul ), Nl, generator_r2 );</span>
+&lt;A morphism in Category of left presentations of Z&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( UnderlyingMatrix( morphism_r2 ) );</span>
+[ [   0 ],
+  [  -1 ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( LambdaIntroduction( morphism_r1 ), generator_r1 );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( LambdaIntroduction( morphism_r1 ), generator_r1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( LambdaIntroduction( morphism_r2 ), generator_r2 );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( LambdaIntroduction( morphism_r2 ), generator_r2 );</span>
+true
+</pre></div>
+
 <p><a id="X828DF9B1782D1AF6" name="X828DF9B1782D1AF6"></a></p>
 
-<h4>2.4 <span class="Heading">Closed Monoidal Structure</span></h4>
+<h4>2.5 <span class="Heading">Closed Monoidal Structure</span></h4>
 
 
 <div class="example"><pre>
@@ -247,7 +357,7 @@ A morphism in Category of left presentations of Z
 
 <p><a id="X7C3B1694803034A2" name="X7C3B1694803034A2"></a></p>
 
-<h4>2.5 <span class="Heading">Projectivity test</span></h4>
+<h4>2.6 <span class="Heading">Projectivity test</span></h4>
 
 
 <div class="example"><pre>

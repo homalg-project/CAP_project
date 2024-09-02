@@ -157,7 +157,112 @@
   [4X[32X[104X
   
   
-  [1X2.4 [33X[0;0YClosed Monoidal Structure[133X[101X
+  [1X2.4 [33X[0;0YMonoidal Categories[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZZZ := HomalgRingOfIntegers();;[127X[104X
+    [4X[25Xgap>[125X [27Xfpres := LeftPresentations( ZZZ );;[127X[104X
+    [4X[25Xgap>[125X [27XMl := AsLeftPresentation( fpres, HomalgMatrix( [ [ 2 ] ], 1, 1, ZZZ ) );[127X[104X
+    [4X[28X<An object in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XNl := AsLeftPresentation( fpres, HomalgMatrix( [ [ 3 ] ], 1, 1, ZZZ ) );[127X[104X
+    [4X[28X<An object in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XTl := TensorProductOnObjects( Ml, Nl );[127X[104X
+    [4X[28X<An object in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( Tl ) );[127X[104X
+    [4X[28X[ [  3 ],[128X[104X
+    [4X[28X  [  2 ] ][128X[104X
+    [4X[25Xgap>[125X [27XIsZeroForObjects( Tl );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XBl := Braiding( DirectSum( Ml, Nl ), DirectSum( Ml, Ml ) );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( Bl ) );[127X[104X
+    [4X[28X[ [  1,  0,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  1,  0 ],[128X[104X
+    [4X[28X  [  0,  1,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  0,  1 ] ][128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( Bl );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XUl := TensorUnit( CapCategory( Ml ) );[127X[104X
+    [4X[28X<An object in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XIntHoml := InternalHomOnObjects( DirectSum( Ml, Ul ), Nl );[127X[104X
+    [4X[28X<An object in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( IntHoml ) );[127X[104X
+    [4X[28X[ [  1,  2 ],[128X[104X
+    [4X[28X  [  0,  3 ] ][128X[104X
+    [4X[25Xgap>[125X [27Xgenerator_l1 := StandardGeneratorMorphism( IntHoml, 1 );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27Xmorphism_l1 := LambdaElimination( DirectSum( Ml, Ul ), Nl, generator_l1 );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( morphism_l1 ) );[127X[104X
+    [4X[28X[ [  -3 ],[128X[104X
+    [4X[28X  [   2 ] ][128X[104X
+    [4X[25Xgap>[125X [27Xgenerator_l2 := StandardGeneratorMorphism( IntHoml, 2 );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27Xmorphism_l2 := LambdaElimination( DirectSum( Ml, Ul ), Nl, generator_l2 );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( morphism_l2 ) );[127X[104X
+    [4X[28X[ [   0 ],[128X[104X
+    [4X[28X  [  -1 ] ][128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForMorphisms( LambdaIntroduction( morphism_l1 ), generator_l1 );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( LambdaIntroduction( morphism_l1 ), generator_l1 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForMorphisms( LambdaIntroduction( morphism_l2 ), generator_l2 );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( LambdaIntroduction( morphism_l2 ), generator_l2 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xfpres := RightPresentations( ZZZ );;[127X[104X
+    [4X[25Xgap>[125X [27XMr := AsRightPresentation( fpres, HomalgMatrix( [ [ 2 ] ], 1, 1, ZZZ ) );[127X[104X
+    [4X[28X<An object in Category of right presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XNr := AsRightPresentation( fpres, HomalgMatrix( [ [ 3 ] ], 1, 1, ZZZ ) );[127X[104X
+    [4X[28X<An object in Category of right presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XTr := TensorProductOnObjects( Mr, Nr );[127X[104X
+    [4X[28X<An object in Category of right presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( Tr ) );[127X[104X
+    [4X[28X[ [  3,  2 ] ][128X[104X
+    [4X[25Xgap>[125X [27XIsZeroForObjects( Tr );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XBr := Braiding( DirectSum( Mr, Nr ), DirectSum( Mr, Mr ) );[127X[104X
+    [4X[28X<A morphism in Category of right presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( Br ) );[127X[104X
+    [4X[28X[ [  1,  0,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  1,  0 ],[128X[104X
+    [4X[28X  [  0,  1,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  0,  1 ] ][128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( Br );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XUr := TensorUnit( CapCategory( Mr ) );[127X[104X
+    [4X[28X<An object in Category of right presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XIntHomr := InternalHomOnObjects( DirectSum( Mr, Ur ), Nr );[127X[104X
+    [4X[28X<An object in Category of right presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( IntHomr ) );[127X[104X
+    [4X[28X[ [  1,  0 ],[128X[104X
+    [4X[28X  [  2,  3 ] ][128X[104X
+    [4X[25Xgap>[125X [27Xgenerator_r1 := StandardGeneratorMorphism( IntHomr, 1 );[127X[104X
+    [4X[28X<A morphism in Category of right presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27Xmorphism_r1 := LambdaElimination( DirectSum( Mr, Ur ), Nr, generator_r1 );[127X[104X
+    [4X[28X<A morphism in Category of right presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( morphism_r1 ) );[127X[104X
+    [4X[28X[ [  -3,   2 ] ][128X[104X
+    [4X[25Xgap>[125X [27Xgenerator_r2 := StandardGeneratorMorphism( IntHoml, 2 );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27Xmorphism_r2 := LambdaElimination( DirectSum( Ml, Ul ), Nl, generator_r2 );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( morphism_r2 ) );[127X[104X
+    [4X[28X[ [   0 ],[128X[104X
+    [4X[28X  [  -1 ] ][128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForMorphisms( LambdaIntroduction( morphism_r1 ), generator_r1 );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( LambdaIntroduction( morphism_r1 ), generator_r1 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForMorphisms( LambdaIntroduction( morphism_r2 ), generator_r2 );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( LambdaIntroduction( morphism_r2 ), generator_r2 );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X2.5 [33X[0;0YClosed Monoidal Structure[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XR := HomalgRingOfIntegers( );;[127X[104X
@@ -198,7 +303,7 @@
   [4X[32X[104X
   
   
-  [1X2.5 [33X[0;0YProjectivity test[133X[101X
+  [1X2.6 [33X[0;0YProjectivity test[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationalsInSingular();;[127X[104X

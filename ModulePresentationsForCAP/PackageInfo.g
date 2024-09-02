@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "ModulePresentationsForCAP",
 Subtitle := "Category R-pres for CAP",
-Version := "2024.08-03",
-Date := "2024-08-27",
+Version := "2024.08-04",
+Date := "2024-09-02",
 License := "GPL-2.0-or-later",
 
 Persons := [
