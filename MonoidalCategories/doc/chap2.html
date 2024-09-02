@@ -40,9 +40,6 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X78CAAAE77DC5CF4F">2.1-13 RigidSymmetricClosedMonoidalCategoriesTest</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8154BEE7850EFEEA">2.1-14 RigidSymmetricCoclosedMonoidalCategoriesTest</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X868F7BAB7AC2EEBC">2.2 <span class="Heading">Basics</span></a>
-</span>
-</div>
 </div>
 
 <h3>2 <span class="Heading">Examples and Tests</span></h3>
@@ -540,54 +537,6 @@
 
 </li>
 </ul>
-<p><a id="X868F7BAB7AC2EEBC" name="X868F7BAB7AC2EEBC"></a></p>
-
-<h4>2.2 <span class="Heading">Basics</span></h4>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "MonoidalCategories", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LinearAlgebraForCAP", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();</span>
-Q
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := VectorSpaceObject( 1, Q );</span>
-&lt;A vector space object over Q of dimension 1&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := VectorSpaceObject( 2, Q );</span>
-&lt;A vector space object over Q of dimension 2&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := VectorSpaceObject( 3, Q );</span>
-&lt;A vector space object over Q of dimension 3&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z := ZeroObject( CapCategory( a ) );</span>
-&lt;A vector space object over Q of dimension 0&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := VectorSpaceMorphism( a, [ [ 1, 0 ] ], b );</span>
-&lt;A morphism in Category of matrices over Q&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := VectorSpaceMorphism( b,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], c );</span>
-&lt;A morphism in Category of matrices over Q&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := VectorSpaceMorphism( c,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                 [ [ 0, 1, 1 ], [ 1, 0, 1 ], [ 1, 1, 0 ] ], c );</span>
-&lt;A morphism in Category of matrices over Q&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        TensorProductOnMorphisms( alpha, beta ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        TensorProductOnMorphisms( beta, alpha ) );</span>
-false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( AssociatorRightToLeft( a, b, c ) );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        gamma, LambdaElimination( c, c, LambdaIntroduction( gamma ) ) );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( TraceMap( gamma ) );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        RankMorphism( DirectSum( a, b ) ), RankMorphism( c ) );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( Braiding( b, c ) );</span>
-false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( Braiding( b, c ), Braiding( c, b ) ) );</span>
-true
-</pre></div>
-
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3.html">[Next Chapter]</a>&nbsp;  </div>
 
