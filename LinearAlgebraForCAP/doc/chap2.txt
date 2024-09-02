@@ -365,7 +365,65 @@
   [4X[32X[104X
   
   
-  [1X2.4 [33X[0;0YMorphismFromSourceToPushout and MorphismFromFiberProductToSink[133X[101X
+  [1X2.4 [33X[0;0YMonoidal structure[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
+    [4X[25Xgap>[125X [27Xvec := MatrixCategory( Q );;[127X[104X
+    [4X[25Xgap>[125X [27Xa := MatrixCategoryObject( vec, 1 );[127X[104X
+    [4X[28X<A vector space object over Q of dimension 1>[128X[104X
+    [4X[25Xgap>[125X [27Xb := MatrixCategoryObject( vec, 2 );[127X[104X
+    [4X[28X<A vector space object over Q of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27Xc := MatrixCategoryObject( vec, 3 );[127X[104X
+    [4X[28X<A vector space object over Q of dimension 3>[128X[104X
+    [4X[25Xgap>[125X [27Xz := ZeroObject( vec );[127X[104X
+    [4X[28X<A vector space object over Q of dimension 0>[128X[104X
+    [4X[25Xgap>[125X [27Xalpha := VectorSpaceMorphism( a, [ [ 1, 0 ] ], b );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27Xbeta := VectorSpaceMorphism( b,[127X[104X
+    [4X[25X>[125X [27X                [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], c );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27Xgamma := VectorSpaceMorphism( c,[127X[104X
+    [4X[25X>[125X [27X                 [ [ 0, 1, 1 ], [ 1, 0, 1 ], [ 1, 1, 0 ] ], c );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
+    [4X[25X>[125X [27X    TensorProductOnMorphisms( alpha, beta ),[127X[104X
+    [4X[25X>[125X [27X    TensorProductOnMorphisms( beta, alpha )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
+    [4X[25X>[125X [27X    AssociatorRightToLeft( a, b, c ),[127X[104X
+    [4X[25X>[125X [27X    IdentityMorphism( TensorProductOnObjects( a, TensorProductOnObjects( b, c ) ) )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
+    [4X[25X>[125X [27X    gamma,[127X[104X
+    [4X[25X>[125X [27X    LambdaElimination( c, c, LambdaIntroduction( gamma ) )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( TraceMap( gamma ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
+    [4X[25X>[125X [27X    RankMorphism( DirectSum( a, b ) ),[127X[104X
+    [4X[25X>[125X [27X    RankMorphism( c )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
+    [4X[25X>[125X [27X    Braiding( b, c ),[127X[104X
+    [4X[25X>[125X [27X    IdentityMorphism( TensorProductOnObjects( b, c ) )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
+    [4X[25X>[125X [27X    PreCompose( Braiding( b, c ), Braiding( c, b ) ),[127X[104X
+    [4X[25X>[125X [27X    IdentityMorphism( TensorProductOnObjects( b, c ) )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X2.5 [33X[0;0YMorphismFromSourceToPushout and MorphismFromFiberProductToSink[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xfield := HomalgFieldOfRationals( );;[127X[104X
@@ -411,7 +469,7 @@
   [4X[32X[104X
   
   
-  [1X2.5 [33X[0;0YOpposite category[133X[101X
+  [1X2.6 [33X[0;0YOpposite category[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP", ">= 2024.01-04", false );[127X[104X
@@ -465,7 +523,7 @@
   [4X[32X[104X
   
   
-  [1X2.6 [33X[0;0YPreComposeList and PostComposeList[133X[101X
+  [1X2.7 [33X[0;0YPreComposeList and PostComposeList[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xfield := HomalgFieldOfRationals( );;[127X[104X
@@ -492,7 +550,7 @@
   [4X[32X[104X
   
   
-  [1X2.7 [33X[0;0YSplit epi summand[133X[101X
+  [1X2.8 [33X[0;0YSplit epi summand[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
@@ -521,7 +579,7 @@
   [4X[32X[104X
   
   
-  [1X2.8 [33X[0;0YKernel[133X[101X
+  [1X2.9 [33X[0;0YKernel[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
@@ -595,7 +653,7 @@
   [4X[32X[104X
   
   
-  [1X2.9 [33X[0;0YFiberProduct[133X[101X
+  [1X2.10 [33X[0;0YFiberProduct[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
@@ -619,7 +677,7 @@
   [4X[32X[104X
   
   
-  [1X2.10 [33X[0;0YWrapperCategory[133X[101X
+  [1X2.11 [33X[0;0YWrapperCategory[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP", false );[127X[104X

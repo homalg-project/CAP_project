@@ -31,25 +31,28 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7CDB7FF27D734D2D">2.3 <span class="Heading">Liftable</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X8218390A785F1EDB">2.4 <span class="Heading">MorphismFromSourceToPushout and MorphismFromFiberProductToSink</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X797080CE873BB56D">2.4 <span class="Heading">Monoidal structure</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X84410C637B3C1D0E">2.5 <span class="Heading">Opposite category</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X8218390A785F1EDB">2.5 <span class="Heading">MorphismFromSourceToPushout and MorphismFromFiberProductToSink</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7F34E29281DF3FCE">2.6 <span class="Heading">PreComposeList and PostComposeList</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X84410C637B3C1D0E">2.6 <span class="Heading">Opposite category</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X87F5609A7B33C58C">2.7 <span class="Heading">Split epi summand</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7F34E29281DF3FCE">2.7 <span class="Heading">PreComposeList and PostComposeList</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7DCD99628504B810">2.8 <span class="Heading">Kernel</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X87F5609A7B33C58C">2.8 <span class="Heading">Split epi summand</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7DE20941803BFBD9">2.9 <span class="Heading">FiberProduct</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7DCD99628504B810">2.9 <span class="Heading">Kernel</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X8245BF297DF9A3E7">2.10 <span class="Heading">WrapperCategory</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7DE20941803BFBD9">2.10 <span class="Heading">FiberProduct</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X8245BF297DF9A3E7">2.11 <span class="Heading">WrapperCategory</span></a>
 </span>
 </div>
 </div>
@@ -425,9 +428,69 @@ true
 true
 </pre></div>
 
+<p><a id="X797080CE873BB56D" name="X797080CE873BB56D"></a></p>
+
+<h4>2.4 <span class="Heading">Monoidal structure</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LinearAlgebraForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MatrixCategory( Q );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := MatrixCategoryObject( vec, 1 );</span>
+&lt;A vector space object over Q of dimension 1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := MatrixCategoryObject( vec, 2 );</span>
+&lt;A vector space object over Q of dimension 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := MatrixCategoryObject( vec, 3 );</span>
+&lt;A vector space object over Q of dimension 3&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z := ZeroObject( vec );</span>
+&lt;A vector space object over Q of dimension 0&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := VectorSpaceMorphism( a, [ [ 1, 0 ] ], b );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := VectorSpaceMorphism( b,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], c );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := VectorSpaceMorphism( c,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                 [ [ 0, 1, 1 ], [ 1, 0, 1 ], [ 1, 1, 0 ] ], c );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    TensorProductOnMorphisms( alpha, beta ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    TensorProductOnMorphisms( beta, alpha )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    AssociatorRightToLeft( a, b, c ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    IdentityMorphism( TensorProductOnObjects( a, TensorProductOnObjects( b, c ) ) )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    gamma,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    LambdaElimination( c, c, LambdaIntroduction( gamma ) )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( TraceMap( gamma ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    RankMorphism( DirectSum( a, b ) ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    RankMorphism( c )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    Braiding( b, c ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    IdentityMorphism( TensorProductOnObjects( b, c ) )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    PreCompose( Braiding( b, c ), Braiding( c, b ) ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    IdentityMorphism( TensorProductOnObjects( b, c ) )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+</pre></div>
+
 <p><a id="X8218390A785F1EDB" name="X8218390A785F1EDB"></a></p>
 
-<h4>2.4 <span class="Heading">MorphismFromSourceToPushout and MorphismFromFiberProductToSink</span></h4>
+<h4>2.5 <span class="Heading">MorphismFromSourceToPushout and MorphismFromFiberProductToSink</span></h4>
 
 
 <div class="example"><pre>
@@ -475,7 +538,7 @@ true
 
 <p><a id="X84410C637B3C1D0E" name="X84410C637B3C1D0E"></a></p>
 
-<h4>2.5 <span class="Heading">Opposite category</span></h4>
+<h4>2.6 <span class="Heading">Opposite category</span></h4>
 
 
 <div class="example"><pre>
@@ -531,7 +594,7 @@ true
 
 <p><a id="X7F34E29281DF3FCE" name="X7F34E29281DF3FCE"></a></p>
 
-<h4>2.6 <span class="Heading">PreComposeList and PostComposeList</span></h4>
+<h4>2.7 <span class="Heading">PreComposeList and PostComposeList</span></h4>
 
 
 <div class="example"><pre>
@@ -560,7 +623,7 @@ true
 
 <p><a id="X87F5609A7B33C58C" name="X87F5609A7B33C58C"></a></p>
 
-<h4>2.7 <span class="Heading">Split epi summand</span></h4>
+<h4>2.8 <span class="Heading">Split epi summand</span></h4>
 
 
 <div class="example"><pre>
@@ -591,7 +654,7 @@ A morphism in Category of matrices over Q
 
 <p><a id="X7DCD99628504B810" name="X7DCD99628504B810"></a></p>
 
-<h4>2.8 <span class="Heading">Kernel</span></h4>
+<h4>2.9 <span class="Heading">Kernel</span></h4>
 
 
 <div class="example"><pre>
@@ -669,7 +732,7 @@ true
 
 <p><a id="X7DE20941803BFBD9" name="X7DE20941803BFBD9"></a></p>
 
-<h4>2.9 <span class="Heading">FiberProduct</span></h4>
+<h4>2.10 <span class="Heading">FiberProduct</span></h4>
 
 
 <div class="example"><pre>
@@ -695,7 +758,7 @@ true
 
 <p><a id="X8245BF297DF9A3E7" name="X8245BF297DF9A3E7"></a></p>
 
-<h4>2.10 <span class="Heading">WrapperCategory</span></h4>
+<h4>2.11 <span class="Heading">WrapperCategory</span></h4>
 
 
 <div class="example"><pre>
