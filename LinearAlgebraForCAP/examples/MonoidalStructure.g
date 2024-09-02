@@ -1,10 +1,8 @@
 #! @Chapter Examples and Tests
 
-#! @Section Basics
+#! @Section Monoidal structure
 
 #! @Example
-LoadPackage( "MonoidalCategories", false );
-#! true
 LoadPackage( "LinearAlgebraForCAP", false );
 #! true
 Q := HomalgFieldOfRationals();

@@ -1,0 +1,1 @@
+needed for `make test-basic-spacing` not to complain about missing directory `examples`
