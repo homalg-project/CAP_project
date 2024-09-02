@@ -6,10 +6,10 @@
                   [1X Category of Matrices over a Field for CAP [101X
   
   
-                                   2024.08-08
+                                   2024.08-09
   
   
-                                 30 August 2024
+                                2 September 2024
   
   
                                Sebastian Gutsche
@@ -74,10 +74,12 @@
     2.2 [33X[0;0YHomology object[133X
     2.3 [33X[0;0YLiftable[133X
     2.4 [33X[0;0YMorphismFromSourceToPushout and MorphismFromFiberProductToSink[133X
-    2.5 [33X[0;0YPreComposeList and PostComposeList[133X
-    2.6 [33X[0;0YSplit epi summand[133X
-    2.7 [33X[0;0YKernel[133X
-    2.8 [33X[0;0YFiberProduct[133X
+    2.5 [33X[0;0YOpposite category[133X
+    2.6 [33X[0;0YPreComposeList and PostComposeList[133X
+    2.7 [33X[0;0YSplit epi summand[133X
+    2.8 [33X[0;0YKernel[133X
+    2.9 [33X[0;0YFiberProduct[133X
+    2.10 [33X[0;0YWrapperCategory[133X
   
   
   [32X

@@ -34,16 +34,22 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X8218390A785F1EDB">2.4 <span class="Heading">MorphismFromSourceToPushout and MorphismFromFiberProductToSink</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7F34E29281DF3FCE">2.5 <span class="Heading">PreComposeList and PostComposeList</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X84410C637B3C1D0E">2.5 <span class="Heading">Opposite category</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X87F5609A7B33C58C">2.6 <span class="Heading">Split epi summand</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7F34E29281DF3FCE">2.6 <span class="Heading">PreComposeList and PostComposeList</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7DCD99628504B810">2.7 <span class="Heading">Kernel</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X87F5609A7B33C58C">2.7 <span class="Heading">Split epi summand</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7DE20941803BFBD9">2.8 <span class="Heading">FiberProduct</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7DCD99628504B810">2.8 <span class="Heading">Kernel</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7DE20941803BFBD9">2.9 <span class="Heading">FiberProduct</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X8245BF297DF9A3E7">2.10 <span class="Heading">WrapperCategory</span></a>
 </span>
 </div>
 </div>
@@ -467,9 +473,65 @@ true
 true
 </pre></div>
 
+<p><a id="X84410C637B3C1D0E" name="X84410C637B3C1D0E"></a></p>
+
+<h4>2.5 <span class="Heading">Opposite category</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LinearAlgebraForCAP", "&gt;= 2024.01-04", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals();;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MatrixCategory( QQ );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">op := Opposite( vec );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ListKnownCategoricalProperties( op ) );</span>
+[ "IsAbCategory", "IsAbelianCategory", "IsAbelianCategoryWithEnoughInjectives",\
+ "IsAbelianCategoryWithEnoughProjectives", "IsAdditiveCategory",\
+ "IsBraidedMonoidalCategory", "IsCategoryWithInitialObject",\
+ "IsCategoryWithTerminalObject", "IsCategoryWithZeroObject",\
+ "IsClosedMonoidalCategory", "IsCoclosedMonoidalCategory",\
+ "IsEnrichedOverCommutativeRegularSemigroup",\
+ "IsEquippedWithHomomorphismStructure", "IsLinearCategoryOverCommutativeRing",\
+ "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms",\
+ "IsMonoidalCategory", "IsPreAbelianCategory",\
+ "IsRigidSymmetricClosedMonoidalCategory",\
+ "IsRigidSymmetricCoclosedMonoidalCategory", "IsSkeletalCategory",\
+ "IsStrictMonoidalCategory", "IsSymmetricClosedMonoidalCategory",\
+ "IsSymmetricCoclosedMonoidalCategory", "IsSymmetricMonoidalCategory" ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V1 := Opposite( TensorUnit( vec ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V2 := DirectSum( V1, V1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V3 := DirectSum( V1, V2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V4 := DirectSum( V1, V3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V5 := DirectSum( V1, V4 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( MorphismBetweenDirectSums( op, [ ], [ ], [ V1 ] ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( MorphismBetweenDirectSums( op, [ V1 ], [ [ ] ], [ ] ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha13 := InjectionOfCofactorOfDirectSum( [ V1, V2 ], 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha14 := InjectionOfCofactorOfDirectSum( [ V1, V2, V1 ], 3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha15 := InjectionOfCofactorOfDirectSum( [ V2, V1, V2 ], 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha23 := InjectionOfCofactorOfDirectSum( [ V2, V1 ], 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha24 := InjectionOfCofactorOfDirectSum( [ V1, V2, V1 ], 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha25 := InjectionOfCofactorOfDirectSum( [ V2, V2, V1 ], 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mat := [</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ alpha13, alpha14, alpha15 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ alpha23, alpha24, alpha25 ]</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor := MorphismBetweenDirectSums( mat );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( mor );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( Opposite( mor ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    UniversalMorphismFromImage( mor, [ CoastrictionToImage( mor ), ImageEmbedding( mor ) ] ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    IdentityMorphism( ImageObject( mor ) )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+</pre></div>
+
 <p><a id="X7F34E29281DF3FCE" name="X7F34E29281DF3FCE"></a></p>
 
-<h4>2.5 <span class="Heading">PreComposeList and PostComposeList</span></h4>
+<h4>2.6 <span class="Heading">PreComposeList and PostComposeList</span></h4>
 
 
 <div class="example"><pre>
@@ -498,7 +560,7 @@ true
 
 <p><a id="X87F5609A7B33C58C" name="X87F5609A7B33C58C"></a></p>
 
-<h4>2.6 <span class="Heading">Split epi summand</span></h4>
+<h4>2.7 <span class="Heading">Split epi summand</span></h4>
 
 
 <div class="example"><pre>
@@ -529,7 +591,7 @@ A morphism in Category of matrices over Q
 
 <p><a id="X7DCD99628504B810" name="X7DCD99628504B810"></a></p>
 
-<h4>2.7 <span class="Heading">Kernel</span></h4>
+<h4>2.8 <span class="Heading">Kernel</span></h4>
 
 
 <div class="example"><pre>
@@ -607,7 +669,7 @@ true
 
 <p><a id="X7DE20941803BFBD9" name="X7DE20941803BFBD9"></a></p>
 
-<h4>2.8 <span class="Heading">FiberProduct</span></h4>
+<h4>2.9 <span class="Heading">FiberProduct</span></h4>
 
 
 <div class="example"><pre>
@@ -629,6 +691,34 @@ true
 &lt;A morphism in Category of matrices over Q&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">p2 := ProjectionInFactorOfFiberProduct( [ AtoC, BtoC ], 2 );</span>
 &lt;A morphism in Category of matrices over Q&gt;
+</pre></div>
+
+<p><a id="X8245BF297DF9A3E7" name="X8245BF297DF9A3E7"></a></p>
+
+<h4>2.10 <span class="Heading">WrapperCategory</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LinearAlgebraForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Qmat := MatrixCategory( Q );</span>
+Category of matrices over Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Wrapper := WrapperCategory( Qmat, rec( ) );</span>
+WrapperCategory( Category of matrices over Q )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor := ZeroMorphism( ZeroObject( Wrapper ), ZeroObject( Wrapper ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">(2 / Q) * mor;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">BasisOfExternalHom( Source( mor ), Range( mor ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoefficientsOfMorphism( mor );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">distinguished_object := DistinguishedObjectOfHomomorphismStructure( Wrapper );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">object := HomomorphismStructureOnObjects( Source( mor ), Source( mor ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomomorphismStructureOnMorphisms( mor, mor );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomomorphismStructureOnMorphismsWithGivenObjects( object, mor, mor, object );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( mor );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( distinguished_object, mor, object );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( mor ), Range( mor ), iota );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( mor, beta );</span>
+true
 </pre></div>
 
 

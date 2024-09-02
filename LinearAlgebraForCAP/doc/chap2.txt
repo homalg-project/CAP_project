@@ -411,7 +411,61 @@
   [4X[32X[104X
   
   
-  [1X2.5 [33X[0;0YPreComposeList and PostComposeList[133X[101X
+  [1X2.5 [33X[0;0YOpposite category[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP", ">= 2024.01-04", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals();;[127X[104X
+    [4X[25Xgap>[125X [27Xvec := MatrixCategory( QQ );;[127X[104X
+    [4X[25Xgap>[125X [27Xop := Opposite( vec );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( ListKnownCategoricalProperties( op ) );[127X[104X
+    [4X[28X[ "IsAbCategory", "IsAbelianCategory", "IsAbelianCategoryWithEnoughInjectives",\[128X[104X
+    [4X[28X "IsAbelianCategoryWithEnoughProjectives", "IsAdditiveCategory",\[128X[104X
+    [4X[28X "IsBraidedMonoidalCategory", "IsCategoryWithInitialObject",\[128X[104X
+    [4X[28X "IsCategoryWithTerminalObject", "IsCategoryWithZeroObject",\[128X[104X
+    [4X[28X "IsClosedMonoidalCategory", "IsCoclosedMonoidalCategory",\[128X[104X
+    [4X[28X "IsEnrichedOverCommutativeRegularSemigroup",\[128X[104X
+    [4X[28X "IsEquippedWithHomomorphismStructure", "IsLinearCategoryOverCommutativeRing",\[128X[104X
+    [4X[28X "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms",\[128X[104X
+    [4X[28X "IsMonoidalCategory", "IsPreAbelianCategory",\[128X[104X
+    [4X[28X "IsRigidSymmetricClosedMonoidalCategory",\[128X[104X
+    [4X[28X "IsRigidSymmetricCoclosedMonoidalCategory", "IsSkeletalCategory",\[128X[104X
+    [4X[28X "IsStrictMonoidalCategory", "IsSymmetricClosedMonoidalCategory",\[128X[104X
+    [4X[28X "IsSymmetricCoclosedMonoidalCategory", "IsSymmetricMonoidalCategory" ][128X[104X
+    [4X[25Xgap>[125X [27XV1 := Opposite( TensorUnit( vec ) );;[127X[104X
+    [4X[25Xgap>[125X [27XV2 := DirectSum( V1, V1 );;[127X[104X
+    [4X[25Xgap>[125X [27XV3 := DirectSum( V1, V2 );;[127X[104X
+    [4X[25Xgap>[125X [27XV4 := DirectSum( V1, V3 );;[127X[104X
+    [4X[25Xgap>[125X [27XV5 := DirectSum( V1, V4 );;[127X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( MorphismBetweenDirectSums( op, [ ], [ ], [ V1 ] ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( MorphismBetweenDirectSums( op, [ V1 ], [ [ ] ], [ ] ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xalpha13 := InjectionOfCofactorOfDirectSum( [ V1, V2 ], 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xalpha14 := InjectionOfCofactorOfDirectSum( [ V1, V2, V1 ], 3 );;[127X[104X
+    [4X[25Xgap>[125X [27Xalpha15 := InjectionOfCofactorOfDirectSum( [ V2, V1, V2 ], 2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xalpha23 := InjectionOfCofactorOfDirectSum( [ V2, V1 ], 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xalpha24 := InjectionOfCofactorOfDirectSum( [ V1, V2, V1 ], 2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xalpha25 := InjectionOfCofactorOfDirectSum( [ V2, V2, V1 ], 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xmat := [[127X[104X
+    [4X[25X>[125X [27X    [ alpha13, alpha14, alpha15 ],[127X[104X
+    [4X[25X>[125X [27X    [ alpha23, alpha24, alpha25 ][127X[104X
+    [4X[25X>[125X [27X];;[127X[104X
+    [4X[25Xgap>[125X [27Xmor := MorphismBetweenDirectSums( mat );;[127X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( mor );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( Opposite( mor ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
+    [4X[25X>[125X [27X    UniversalMorphismFromImage( mor, [ CoastrictionToImage( mor ), ImageEmbedding( mor ) ] ),[127X[104X
+    [4X[25X>[125X [27X    IdentityMorphism( ImageObject( mor ) )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X2.6 [33X[0;0YPreComposeList and PostComposeList[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xfield := HomalgFieldOfRationals( );;[127X[104X
@@ -438,7 +492,7 @@
   [4X[32X[104X
   
   
-  [1X2.6 [33X[0;0YSplit epi summand[133X[101X
+  [1X2.7 [33X[0;0YSplit epi summand[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
@@ -467,7 +521,7 @@
   [4X[32X[104X
   
   
-  [1X2.7 [33X[0;0YKernel[133X[101X
+  [1X2.8 [33X[0;0YKernel[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
@@ -541,7 +595,7 @@
   [4X[32X[104X
   
   
-  [1X2.8 [33X[0;0YFiberProduct[133X[101X
+  [1X2.9 [33X[0;0YFiberProduct[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
@@ -562,5 +616,31 @@
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
     [4X[25Xgap>[125X [27Xp2 := ProjectionInFactorOfFiberProduct( [ AtoC, BtoC ], 2 );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X2.10 [33X[0;0YWrapperCategory[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );;[127X[104X
+    [4X[25Xgap>[125X [27XQmat := MatrixCategory( Q );[127X[104X
+    [4X[28XCategory of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27XWrapper := WrapperCategory( Qmat, rec( ) );[127X[104X
+    [4X[28XWrapperCategory( Category of matrices over Q )[128X[104X
+    [4X[25Xgap>[125X [27Xmor := ZeroMorphism( ZeroObject( Wrapper ), ZeroObject( Wrapper ) );;[127X[104X
+    [4X[25Xgap>[125X [27X(2 / Q) * mor;;[127X[104X
+    [4X[25Xgap>[125X [27XBasisOfExternalHom( Source( mor ), Range( mor ) );;[127X[104X
+    [4X[25Xgap>[125X [27XCoefficientsOfMorphism( mor );;[127X[104X
+    [4X[25Xgap>[125X [27Xdistinguished_object := DistinguishedObjectOfHomomorphismStructure( Wrapper );;[127X[104X
+    [4X[25Xgap>[125X [27Xobject := HomomorphismStructureOnObjects( Source( mor ), Source( mor ) );;[127X[104X
+    [4X[25Xgap>[125X [27XHomomorphismStructureOnMorphisms( mor, mor );;[127X[104X
+    [4X[25Xgap>[125X [27XHomomorphismStructureOnMorphismsWithGivenObjects( object, mor, mor, object );;[127X[104X
+    [4X[25Xgap>[125X [27Xiota := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( mor );;[127X[104X
+    [4X[25Xgap>[125X [27XInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( distinguished_object, mor, object );;[127X[104X
+    [4X[25Xgap>[125X [27Xbeta := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( mor ), Range( mor ), iota );;[127X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( mor, beta );[127X[104X
+    [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
