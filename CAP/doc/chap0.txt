@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2024.08-08
+                                   2024.08-09
   
   
-                                 30 August 2024
+                                2 September 2024
   
   
                                Sebastian Gutsche
@@ -1048,14 +1048,7 @@
     15.2 [33X[0;0YFunctors[133X
     15.3 [33X[0;0YHandlePrecompiledTowers[133X
     15.4 [33X[0;0YHomomorphism structure[133X
-    15.5 [33X[0;0YHomology object[133X
-    15.6 [33X[0;0YLiftable[133X
-    15.7 [33X[0;0YMonoidal Categories[133X
-    15.8 [33X[0;0YMorphismFromSourceToPushout and MorphismFromFiberProductToSink[133X
-    15.9 [33X[0;0YOpposite category[133X
-    15.10 [33X[0;0YPreComposeList and PostComposeList[133X
-    15.11 [33X[0;0YTerminal category[133X
-    15.12 [33X[0;0YWrapperCategory[133X
+    15.5 [33X[0;0YTerminal category[133X
   16 [33X[0;0YTerminal category[133X
     16.1 [33X[0;0Y[5XGAP[105X Categories[133X
       16.1-1 IsCapTerminalCategoryWithSingleObject
