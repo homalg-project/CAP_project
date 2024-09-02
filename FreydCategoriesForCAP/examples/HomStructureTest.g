@@ -3,12 +3,15 @@
 #! @Section Homomorphism structure
 
 #! @Example
-ReadPackage( "CAP", "examples/FieldAsCategory.g" );;
-Q := HomalgFieldOfRationals();;
-Qoid := FieldAsCategory( Q );;
-a := FieldAsCategoryMorphism( Qoid, 1/2 );;
-b := FieldAsCategoryMorphism( Qoid, -2/3 );;
-u := FieldAsCategoryUniqueObject( Qoid );;
+LoadPackage( "FreydCategoriesForCAP", false );
+#! true
+LoadPackage( "RingsForHomalg", false );
+#! true
+EEE := KoszulDualRing( HomalgFieldOfRationalsInSingular( ) * "x,y" );;
+Eoid := RingAsCategory( EEE );;
+a := RingAsCategoryMorphism( Eoid, 1/2 );;
+b := RingAsCategoryMorphism( Eoid, -2/3 );;
+u := RingAsCategoryUniqueObject( Eoid );;
 IsCongruentForMorphisms( a,
     InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
         u,u,
@@ -20,10 +23,10 @@ IsCongruentForMorphisms( a,
 #! true
 a = HomStructure( u, u, HomStructure( a ) );
 #! true
-IsEqualForObjects( HomStructure( Qoid ), DistinguishedObjectOfHomomorphismStructure( Qoid ) );
+IsEqualForObjects( HomStructure( Eoid ), DistinguishedObjectOfHomomorphismStructure( Eoid ) );
 #! true
-c := FieldAsCategoryMorphism( Qoid, 3 );;
-d := FieldAsCategoryMorphism( Qoid, 0 );;
+c := RingAsCategoryMorphism( Eoid, 3 );;
+d := RingAsCategoryMorphism( Eoid, 0 );;
 left_coeffs := [ [ a, b ], [ c, d ] ];;
 right_coeffs := [ [ PreCompose( a, b ), PreCompose( b, c ) ], [ c, PreCompose( a, a ) ] ];;
 right_side := [ a, b ];;
@@ -50,16 +53,16 @@ LiftOrFail( c, d );
 IsLiftable( d, c );
 #! true
 LiftOrFail( d, c );
-#! 0
+#! <0>
 Lift( d, c );
-#! 0
+#! <0>
 
 IsColiftable( c, d );
 #! true
 ColiftOrFail( c, d );
-#! 0
+#! <0>
 Colift( c, d );
-#! 0
+#! <0>
 IsColiftable( d, c );
 #! false
 ColiftOrFail( d, c );

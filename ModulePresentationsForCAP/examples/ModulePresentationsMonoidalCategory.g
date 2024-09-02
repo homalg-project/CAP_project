@@ -6,9 +6,10 @@ LoadPackage( "ModulePresentationsForCAP" );
 
 #! @Example
 ZZZ := HomalgRingOfIntegers();;
-Ml := AsLeftPresentation( HomalgMatrix( [ [ 2 ] ], 1, 1, ZZZ ) );
+fpres := LeftPresentations( ZZZ );;
+Ml := AsLeftPresentation( fpres, HomalgMatrix( [ [ 2 ] ], 1, 1, ZZZ ) );
 #! <An object in Category of left presentations of Z>
-Nl := AsLeftPresentation( HomalgMatrix( [ [ 3 ] ], 1, 1, ZZZ ) );
+Nl := AsLeftPresentation( fpres, HomalgMatrix( [ [ 3 ] ], 1, 1, ZZZ ) );
 #! <An object in Category of left presentations of Z>
 Tl := TensorProductOnObjects( Ml, Nl );
 #! <An object in Category of left presentations of Z>
@@ -55,9 +56,10 @@ IsEqualForMorphisms( LambdaIntroduction( morphism_l2 ), generator_l2 );
 #! false
 IsCongruentForMorphisms( LambdaIntroduction( morphism_l2 ), generator_l2 );
 #! true
-Mr := AsRightPresentation( HomalgMatrix( [ [ 2 ] ], 1, 1, ZZZ ) );
+fpres := RightPresentations( ZZZ );;
+Mr := AsRightPresentation( fpres, HomalgMatrix( [ [ 2 ] ], 1, 1, ZZZ ) );
 #! <An object in Category of right presentations of Z>
-Nr := AsRightPresentation( HomalgMatrix( [ [ 3 ] ], 1, 1, ZZZ ) );
+Nr := AsRightPresentation( fpres, HomalgMatrix( [ [ 3 ] ], 1, 1, ZZZ ) );
 #! <An object in Category of right presentations of Z>
 Tr := TensorProductOnObjects( Mr, Nr );
 #! <An object in Category of right presentations of Z>

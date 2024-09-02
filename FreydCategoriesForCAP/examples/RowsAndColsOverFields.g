@@ -47,11 +47,17 @@ DirectProductFunctorial( [ u, u ] ) = DirectSumFunctorial( [ u, u ] );
 #! true
 CoproductFunctorial( [ u, u ] ) = DirectSumFunctorial( [ u, u ] );
 #! true
-IsOne( FiberProductFunctorial( [ u, u ], [ IdentityMorphism( Source( u ) ), IdentityMorphism( Source( u ) ) ], [ u, u ] ) );
+IsCongruentForMorphisms(
+    FiberProductFunctorial( [ u, u ], [ IdentityMorphism( Source( u ) ), IdentityMorphism( Source( u ) ) ], [ u, u ] ),
+    IdentityMorphism( FiberProduct( [ u, u ] ) )
+);
 #! true
-IsOne( PushoutFunctorial( [ u, u ], [ IdentityMorphism( Range( u ) ), IdentityMorphism( Range( u ) ) ], [ u, u ] ) );
+IsCongruentForMorphisms(
+    PushoutFunctorial( [ u, u ], [ IdentityMorphism( Range( u ) ), IdentityMorphism( Range( u ) ) ], [ u, u ] ),
+    IdentityMorphism( Pushout( [ u, u ] ) )
+);
 #! true
-IsCongruentForMorphisms( (1/2) * alpha, alpha * (1/2) );
+IsCongruentForMorphisms( ((1/2) / Q) * alpha, alpha * ((1/2) / Q) );
 #! true
 RankOfObject( HomomorphismStructureOnObjects( a, b ) ) = RankOfObject( a ) * RankOfObject( b );
 #! true
@@ -112,11 +118,17 @@ DirectProductFunctorial( [ u, u ] ) = DirectSumFunctorial( [ u, u ] );
 #! true
 CoproductFunctorial( [ u, u ] ) = DirectSumFunctorial( [ u, u ] );
 #! true
-IsOne( FiberProductFunctorial( [ u, u ], [ IdentityMorphism( Source( u ) ), IdentityMorphism( Source( u ) ) ], [ u, u ] ) );
+IsCongruentForMorphisms(
+    FiberProductFunctorial( [ u, u ], [ IdentityMorphism( Source( u ) ), IdentityMorphism( Source( u ) ) ], [ u, u ] ),
+    IdentityMorphism( FiberProduct( [ u, u ] ) )
+);
 #! true
-IsOne( PushoutFunctorial( [ u, u ], [ IdentityMorphism( Range( u ) ), IdentityMorphism( Range( u ) ) ], [ u, u ] ) );
+IsCongruentForMorphisms(
+    PushoutFunctorial( [ u, u ], [ IdentityMorphism( Range( u ) ), IdentityMorphism( Range( u ) ) ], [ u, u ] ),
+    IdentityMorphism( Pushout( [ u, u ] ) )
+);
 #! true
-IsCongruentForMorphisms( (1/2) * alpha, alpha * (1/2) );
+IsCongruentForMorphisms( ((1/2) / Q) * alpha, alpha * ((1/2) / Q) );
 #! true
 RankOfObject( HomomorphismStructureOnObjects( a, b ) ) = RankOfObject( a ) * RankOfObject( b );
 #! true
