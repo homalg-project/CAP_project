@@ -61,31 +61,34 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X87D4D7857F0B6568">12.12 <span class="Heading">Homomorphisms between f.p. functors based on category of columns</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X84C669D87B0599DB">12.13 <span class="Heading">Linear closure of categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X86A2AE6E7C297595">12.13 <span class="Heading">Homomorphism structure</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X81E7031D85FD2569">12.14 <span class="Heading">Matrices over ZP K</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X84C669D87B0599DB">12.14 <span class="Heading">Linear closure of categories</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X7F1E3F5A7EC538B6">12.15 <span class="Heading">Matrices over ZG</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X81E7031D85FD2569">12.15 <span class="Heading">Matrices over ZP K</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X8598E8828771FA9D">12.16 <span class="Heading">Opposite( CategoryOfRow ) as CategoryOfColumns</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X7F1E3F5A7EC538B6">12.16 <span class="Heading">Matrices over ZG</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X820CD9B28165BF9F">12.17 <span class="Heading">Testing if an object is projective, injective, bijective, and computing projective/injective dimensions</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X8598E8828771FA9D">12.17 <span class="Heading">Opposite( CategoryOfRow ) as CategoryOfColumns</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X7AFC8F247C00D608">12.18 <span class="Heading">Prosets</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X820CD9B28165BF9F">12.18 <span class="Heading">Testing if an object is projective, injective, bijective, and computing projective/injective dimensions</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X7A810CDA83F2897F">12.19 <span class="Heading">Tests</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X7AFC8F247C00D608">12.19 <span class="Heading">Prosets</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X789E61CF843CF960">12.20 <span class="Heading">Category of relations</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X7A810CDA83F2897F">12.20 <span class="Heading">Tests</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X8001962586A4466B">12.21 <span class="Heading">Rings as Ab-categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X789E61CF843CF960">12.21 <span class="Heading">Category of relations</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X8001962586A4466B">12.22 <span class="Heading">Rings as Ab-categories</span></a>
 </span>
 </div>
 </div>
@@ -1015,9 +1018,79 @@ false
 false
 </pre></div>
 
+<p><a id="X86A2AE6E7C297595" name="X86A2AE6E7C297595"></a></p>
+
+<h4>12.13 <span class="Heading">Homomorphism structure</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "RingsForHomalg", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EEE := KoszulDualRing( HomalgFieldOfRationalsInSingular( ) * "x,y" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Eoid := RingAsCategory( EEE );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := RingAsCategoryMorphism( Eoid, 1/2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := RingAsCategoryMorphism( Eoid, -2/3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := RingAsCategoryUniqueObject( Eoid );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( a,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        u,u,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            a</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a = HomStructure( u, u, HomStructure( a ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForObjects( HomStructure( Eoid ), DistinguishedObjectOfHomomorphismStructure( Eoid ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := RingAsCategoryMorphism( Eoid, 3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d := RingAsCategoryMorphism( Eoid, 0 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">left_coeffs := [ [ a, b ], [ c, d ] ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">right_coeffs := [ [ PreCompose( a, b ), PreCompose( b, c ) ], [ c, PreCompose( a, a ) ] ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">right_side := [ a, b ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MereExistenceOfSolutionOfLinearSystemInAbCategory( left_coeffs, right_coeffs, right_side );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">solution := </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    SolveLinearSystemInAbCategory(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    left_coeffs,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    right_coeffs,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    right_side</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ForAll( [ 1, 2 ], i -&gt;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        Sum( List( [ 1, 2 ], j -&gt; PreCompose( [ left_coeffs[i][j], solution[j], right_coeffs[i][j] ] ) ) ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        right_side[i]</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsLiftable( c, d );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LiftOrFail( c, d );</span>
+fail
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsLiftable( d, c );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LiftOrFail( d, c );</span>
+&lt;0&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Lift( d, c );</span>
+&lt;0&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsColiftable( c, d );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ColiftOrFail( c, d );</span>
+&lt;0&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Colift( c, d );</span>
+&lt;0&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsColiftable( d, c );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ColiftOrFail( d, c );</span>
+fail
+</pre></div>
+
 <p><a id="X84C669D87B0599DB" name="X84C669D87B0599DB"></a></p>
 
-<h4>12.13 <span class="Heading">Linear closure of categories</span></h4>
+<h4>12.14 <span class="Heading">Linear closure of categories</span></h4>
 
 
 <div class="example"><pre>
@@ -1048,7 +1121,7 @@ false
 
 <p><a id="X81E7031D85FD2569" name="X81E7031D85FD2569"></a></p>
 
-<h4>12.14 <span class="Heading">Matrices over ZP K</span></h4>
+<h4>12.15 <span class="Heading">Matrices over ZP K</span></h4>
 
 
 <div class="example"><pre>
@@ -1095,7 +1168,7 @@ true
 
 <p><a id="X7F1E3F5A7EC538B6" name="X7F1E3F5A7EC538B6"></a></p>
 
-<h4>12.15 <span class="Heading">Matrices over ZG</span></h4>
+<h4>12.16 <span class="Heading">Matrices over ZG</span></h4>
 
 <p>Construction of a tower of categories</p>
 
@@ -1155,7 +1228,7 @@ true
 
 <p><a id="X8598E8828771FA9D" name="X8598E8828771FA9D"></a></p>
 
-<h4>12.16 <span class="Heading">Opposite( CategoryOfRow ) as CategoryOfColumns</span></h4>
+<h4>12.17 <span class="Heading">Opposite( CategoryOfRow ) as CategoryOfColumns</span></h4>
 
 <p>Assume that we have the constructors <code class="code">CategoryOfRows</code> and <code class="code">CategoryOfColumns</code> but no constructor <code class="code">Opposite</code>. Then we can still model <code class="code">Opposite( CategoryOfRows )</code> as <code class="code">CategoryOfColumns</code> using <code class="code">ReinterpretationOfCategory</code>. This can be achieved up to minor modifications by swapping <code class="code">object_constructor</code> and <code class="code">modeling_tower_object_constructor</code> and so on in <code class="code">CategoryOfColums_as_Opposite_CategoryOfRows</code>. With this, objects and morphisms indeed have the attribute <code class="code">Opposite</code> as desired. Getting <code class="code">ObjectDatum</code> and <code class="code">MorphismDatum</code> to return this attribute would also be possible, but would require more effort than simply swapping <code class="code">object_constructor</code> and <code class="code">modeling_tower_object_constructor</code> and so.</p>
 
@@ -1231,7 +1304,7 @@ A row module over Q of rank 1
 
 <p><a id="X820CD9B28165BF9F" name="X820CD9B28165BF9F"></a></p>
 
-<h4>12.17 <span class="Heading">Testing if an object is projective, injective, bijective, and computing projective/injective dimensions</span></h4>
+<h4>12.18 <span class="Heading">Testing if an object is projective, injective, bijective, and computing projective/injective dimensions</span></h4>
 
 
 <div class="example"><pre>
@@ -1274,7 +1347,7 @@ true
 
 <p><a id="X7AFC8F247C00D608" name="X7AFC8F247C00D608"></a></p>
 
-<h4>12.18 <span class="Heading">Prosets</span></h4>
+<h4>12.19 <span class="Heading">Prosets</span></h4>
 
 
 <div class="example"><pre>
@@ -1317,7 +1390,7 @@ true
 
 <p><a id="X7A810CDA83F2897F" name="X7A810CDA83F2897F"></a></p>
 
-<h4>12.19 <span class="Heading">Tests</span></h4>
+<h4>12.20 <span class="Heading">Tests</span></h4>
 
 
 <div class="example"><pre>
@@ -1365,7 +1438,7 @@ true
 
 <p><a id="X789E61CF843CF960" name="X789E61CF843CF960"></a></p>
 
-<h4>12.20 <span class="Heading">Category of relations</span></h4>
+<h4>12.21 <span class="Heading">Category of relations</span></h4>
 
 
 <div class="example"><pre>
@@ -1405,7 +1478,7 @@ true
 
 <p><a id="X8001962586A4466B" name="X8001962586A4466B"></a></p>
 
-<h4>12.21 <span class="Heading">Rings as Ab-categories</span></h4>
+<h4>12.22 <span class="Heading">Rings as Ab-categories</span></h4>
 
 
 <div class="example"><pre>

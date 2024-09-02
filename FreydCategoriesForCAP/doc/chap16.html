@@ -77,11 +77,17 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoproductFunctorial( [ u, u ] ) = DirectSumFunctorial( [ u, u ] );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( FiberProductFunctorial( [ u, u ], [ IdentityMorphism( Source( u ) ), IdentityMorphism( Source( u ) ) ], [ u, u ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    FiberProductFunctorial( [ u, u ], [ IdentityMorphism( Source( u ) ), IdentityMorphism( Source( u ) ) ], [ u, u ] ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    IdentityMorphism( FiberProduct( [ u, u ] ) )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PushoutFunctorial( [ u, u ], [ IdentityMorphism( Range( u ) ), IdentityMorphism( Range( u ) ) ], [ u, u ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    PushoutFunctorial( [ u, u ], [ IdentityMorphism( Range( u ) ), IdentityMorphism( Range( u ) ) ], [ u, u ] ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    IdentityMorphism( Pushout( [ u, u ] ) )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( (1/2) * alpha, alpha * (1/2) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( ((1/2) / Q) * alpha, alpha * ((1/2) / Q) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RankOfObject( HomomorphismStructureOnObjects( a, b ) ) = RankOfObject( a ) * RankOfObject( b );</span>
 true
@@ -143,11 +149,17 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoproductFunctorial( [ u, u ] ) = DirectSumFunctorial( [ u, u ] );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( FiberProductFunctorial( [ u, u ], [ IdentityMorphism( Source( u ) ), IdentityMorphism( Source( u ) ) ], [ u, u ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    FiberProductFunctorial( [ u, u ], [ IdentityMorphism( Source( u ) ), IdentityMorphism( Source( u ) ) ], [ u, u ] ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    IdentityMorphism( FiberProduct( [ u, u ] ) )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PushoutFunctorial( [ u, u ], [ IdentityMorphism( Range( u ) ), IdentityMorphism( Range( u ) ) ], [ u, u ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    PushoutFunctorial( [ u, u ], [ IdentityMorphism( Range( u ) ), IdentityMorphism( Range( u ) ) ], [ u, u ] ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    IdentityMorphism( Pushout( [ u, u ] ) )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( (1/2) * alpha, alpha * (1/2) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( ((1/2) / Q) * alpha, alpha * ((1/2) / Q) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RankOfObject( HomomorphismStructureOnObjects( a, b ) ) = RankOfObject( a ) * RankOfObject( b );</span>
 true

@@ -901,7 +901,75 @@
   [4X[32X[104X
   
   
-  [1X12.13 [33X[0;0YLinear closure of categories[133X[101X
+  [1X12.13 [33X[0;0YHomomorphism structure[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "RingsForHomalg", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XEEE := KoszulDualRing( HomalgFieldOfRationalsInSingular( ) * "x,y" );;[127X[104X
+    [4X[25Xgap>[125X [27XEoid := RingAsCategory( EEE );;[127X[104X
+    [4X[25Xgap>[125X [27Xa := RingAsCategoryMorphism( Eoid, 1/2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xb := RingAsCategoryMorphism( Eoid, -2/3 );;[127X[104X
+    [4X[25Xgap>[125X [27Xu := RingAsCategoryUniqueObject( Eoid );;[127X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( a,[127X[104X
+    [4X[25X>[125X [27X    InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism([127X[104X
+    [4X[25X>[125X [27X        u,u,[127X[104X
+    [4X[25X>[125X [27X        InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure([127X[104X
+    [4X[25X>[125X [27X            a[127X[104X
+    [4X[25X>[125X [27X        )[127X[104X
+    [4X[25X>[125X [27X    )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xa = HomStructure( u, u, HomStructure( a ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForObjects( HomStructure( Eoid ), DistinguishedObjectOfHomomorphismStructure( Eoid ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xc := RingAsCategoryMorphism( Eoid, 3 );;[127X[104X
+    [4X[25Xgap>[125X [27Xd := RingAsCategoryMorphism( Eoid, 0 );;[127X[104X
+    [4X[25Xgap>[125X [27Xleft_coeffs := [ [ a, b ], [ c, d ] ];;[127X[104X
+    [4X[25Xgap>[125X [27Xright_coeffs := [ [ PreCompose( a, b ), PreCompose( b, c ) ], [ c, PreCompose( a, a ) ] ];;[127X[104X
+    [4X[25Xgap>[125X [27Xright_side := [ a, b ];;[127X[104X
+    [4X[25Xgap>[125X [27XMereExistenceOfSolutionOfLinearSystemInAbCategory( left_coeffs, right_coeffs, right_side );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xsolution := [127X[104X
+    [4X[25X>[125X [27X    SolveLinearSystemInAbCategory([127X[104X
+    [4X[25X>[125X [27X    left_coeffs,[127X[104X
+    [4X[25X>[125X [27X    right_coeffs,[127X[104X
+    [4X[25X>[125X [27X    right_side[127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27XForAll( [ 1, 2 ], i ->[127X[104X
+    [4X[25X>[125X [27X    IsCongruentForMorphisms([127X[104X
+    [4X[25X>[125X [27X        Sum( List( [ 1, 2 ], j -> PreCompose( [ left_coeffs[i][j], solution[j], right_coeffs[i][j] ] ) ) ),[127X[104X
+    [4X[25X>[125X [27X        right_side[i][127X[104X
+    [4X[25X>[125X [27X    )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsLiftable( c, d );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XLiftOrFail( c, d );[127X[104X
+    [4X[28Xfail[128X[104X
+    [4X[25Xgap>[125X [27XIsLiftable( d, c );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLiftOrFail( d, c );[127X[104X
+    [4X[28X<0>[128X[104X
+    [4X[25Xgap>[125X [27XLift( d, c );[127X[104X
+    [4X[28X<0>[128X[104X
+    [4X[25Xgap>[125X [27XIsColiftable( c, d );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XColiftOrFail( c, d );[127X[104X
+    [4X[28X<0>[128X[104X
+    [4X[25Xgap>[125X [27XColift( c, d );[127X[104X
+    [4X[28X<0>[128X[104X
+    [4X[25Xgap>[125X [27XIsColiftable( d, c );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XColiftOrFail( d, c );[127X[104X
+    [4X[28Xfail[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X12.14 [33X[0;0YLinear closure of categories[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )[128X[104X
@@ -930,7 +998,7 @@
   [4X[32X[104X
   
   
-  [1X12.14 [33X[0;0YMatrices over ZP K[133X[101X
+  [1X12.15 [33X[0;0YMatrices over ZP K[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )[128X[104X
@@ -975,7 +1043,7 @@
   [4X[32X[104X
   
   
-  [1X12.15 [33X[0;0YMatrices over ZG[133X[101X
+  [1X12.16 [33X[0;0YMatrices over ZG[133X[101X
   
   [33X[0;0YConstruction of a tower of categories[133X
   
@@ -1031,7 +1099,7 @@
   [4X[32X[104X
   
   
-  [1X12.16 [33X[0;0YOpposite( CategoryOfRow ) as CategoryOfColumns[133X[101X
+  [1X12.17 [33X[0;0YOpposite( CategoryOfRow ) as CategoryOfColumns[133X[101X
   
   [33X[0;0YAssume  that  we  have the constructors [10XCategoryOfRows[110X and [10XCategoryOfColumns[110X
   but   no   constructor   [10XOpposite[110X.   Then   we  can  still  model  [10XOpposite(
@@ -1114,7 +1182,7 @@
   [4X[32X[104X
   
   
-  [1X12.17  [33X[0;0YTesting  if  an  object  is  projective,  injective,  bijective,  and[101X
+  [1X12.18  [33X[0;0YTesting  if  an  object  is  projective,  injective,  bijective,  and[101X
   [1Xcomputing projective/injective dimensions[133X[101X
   
   [4X[32X  Example  [32X[104X
@@ -1156,7 +1224,7 @@
   [4X[32X[104X
   
   
-  [1X12.18 [33X[0;0YProsets[133X[101X
+  [1X12.19 [33X[0;0YProsets[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )[128X[104X
@@ -1197,7 +1265,7 @@
   [4X[32X[104X
   
   
-  [1X12.19 [33X[0;0YTests[133X[101X
+  [1X12.20 [33X[0;0YTests[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", false );[127X[104X
@@ -1242,7 +1310,7 @@
   [4X[32X[104X
   
   
-  [1X12.20 [33X[0;0YCategory of relations[133X[101X
+  [1X12.21 [33X[0;0YCategory of relations[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XF := HomalgRingOfIntegers( 3 );;[127X[104X
@@ -1280,7 +1348,7 @@
   [4X[32X[104X
   
   
-  [1X12.21 [33X[0;0YRings as Ab-categories[133X[101X
+  [1X12.22 [33X[0;0YRings as Ab-categories[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XCR := RingAsCategory( Integers );;[127X[104X

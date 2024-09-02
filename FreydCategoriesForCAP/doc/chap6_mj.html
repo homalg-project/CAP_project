@@ -435,19 +435,10 @@ A row module over Z of rank 2
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                                 [ 0, 1 ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                                 [ -2, 0] ], 3, 2, Q );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := homalg_matrix / rows;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">diagram := [ alpha, 2*alpha, 3*alpha ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">diagram := [ alpha, (2 / Q) * alpha, (3 / Q) * alpha ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">equalizer := EmbeddingOfEqualizer( diagram );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display(equalizer);</span>
-Source: 
-A row module over Q of rank 1
-
-Matrix:
-[ [  2,  0,  1 ] ]
-
-Range:
-A row module over Q of rank 3
-
-A monomorphism in Rows( Q )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( equalizer ) ) );</span>
+[ [ 2, 0, 1 ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">equalizer_d1 := PreCompose( equalizer, diagram[1] );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">equalizer_d2 := PreCompose( equalizer, diagram[2] );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">equalizer_d3 := PreCompose( equalizer, diagram[3] );;</span>
@@ -457,19 +448,10 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( equalizer_d1, equalizer_d3 );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">universal_morphism := UniversalMorphismIntoEqualizer( Source(alpha), diagram, Source( 2*equalizer ), 2*equalizer );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( universal_morphism );</span>
-Source:
-A row module over Q of rank 1
-
-Matrix:
-[ [  2 ] ]
-
-Range:
-A row module over Q of rank 1
-
-A morphism in Rows( Q )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( PreCompose( universal_morphism, equalizer ), 2*equalizer );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">universal_morphism := UniversalMorphismIntoEqualizer( Source(alpha), diagram, Source( (2 / Q) * equalizer ), (2 / Q) * equalizer );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( universal_morphism ) ) );</span>
+[ [ 2 ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( PreCompose( universal_morphism, equalizer ), (2 / Q) * equalizer );</span>
 true
 </pre></div>
 
@@ -480,21 +462,10 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">homalg_matrix := HomalgMatrix( [ [ 1, 0, -2 ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                                 [ 0, 1, 0 ] ], 2, 3, Q );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := homalg_matrix / rows;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">diagram := [ alpha, 2*alpha, 3*alpha ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">diagram := [ alpha, (2 / Q) * alpha, (3 / Q) * alpha ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coequalizer := ProjectionOntoCoequalizer( diagram );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( coequalizer );</span>
-Source:
-A row module over Q of rank 3
-
-Matrix: 
-[ [  2 ],
-  [  0 ],
-  [  1 ] ]
-
-Range:
-A row module over Q of rank 1
-
-An epimorphism in Rows( Q )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( coequalizer ) ) );</span>
+[ [ 2 ], [ 0 ], [ 1 ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coequalizer_d1 := PreCompose( diagram[1], coequalizer );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coequalizer_d2 := PreCompose( diagram[2], coequalizer );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coequalizer_d3 := PreCompose( diagram[3], coequalizer );;</span>
@@ -504,19 +475,10 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( coequalizer_d1, coequalizer_d3 );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">universal_morphism := UniversalMorphismFromCoequalizer( Range(alpha), diagram, Range( 2*coequalizer ), 2*coequalizer );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( universal_morphism );</span>
-Source:
-A row module over Q of rank 1
-
-Matrix:
-[ [  2 ] ]
-
-Range:
-A row module over Q of rank 1
-
-A morphism in Rows( Q )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( PreCompose( coequalizer,  universal_morphism ), 2*coequalizer );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">universal_morphism := UniversalMorphismFromCoequalizer( Range(alpha), diagram, Range( (2 / Q) * coequalizer ), (2 / Q) * coequalizer );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( universal_morphism ) ) );</span>
+[ [ 2 ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( PreCompose( coequalizer,  universal_morphism ), (2 / Q) * coequalizer );</span>
 true
 </pre></div>
 
