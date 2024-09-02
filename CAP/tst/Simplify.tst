@@ -15,15 +15,6 @@ gap> DeclareCategory( "IsMorphismInStringsAsCategory", IsCapCategoryMorphism );
 
 #############################
 ##
-## Constructors
-##
-#############################
-gap> DeclareOperation( "StringsAsCategory", [] );
-gap> DeclareOperation( "StringsAsCategoryObject", [ IsStringsAsCategory, IsString ] );
-gap> DeclareOperation( "StringsAsCategoryMorphism", [ IsStringsAsCategory, IsObjectInStringsAsCategory, IsString, IsObjectInStringsAsCategory ] );
-
-#############################
-##
 ## Attributes
 ##
 #############################
@@ -35,58 +26,24 @@ gap> DeclareAttribute( "UnderlyingString", IsMorphismInStringsAsCategory );
 ## Constructors
 ##
 #############################
-gap> DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY" );
-gap> DeclareGlobalFunction( "RemovedCharacters" );
-gap> DeclareGlobalFunction( "DeleteVowels" );
-gap> InstallGlobalFunction( RemovedCharacters,
+gap> BindGlobal( "RemovedCharacters",
 >        function( str, chars )
->            local copy;
 >            
->            copy := ShallowCopy( str );
->            
->            RemoveCharacters( copy, chars );
->            
->            return copy;
+>            return Filtered( str, c -> not c in chars );
 >            
 >    end );
-gap> InstallGlobalFunction( DeleteVowels,
+gap> BindGlobal( "DeleteVowels",
 >        function( str, n )
 >            local vowels;
 >            
 >            vowels := "aeiou";
 >            
->            return RemovedCharacters( str , vowels{[1.. Minimum( Length( vowels ), n )]} );
+>            return RemovedCharacters( str , vowels{[ 1 .. Minimum( Length( vowels ), n ) ]} );
 >            
 >    end );
 
 ##
-gap> InstallMethod( StringsAsCategory,
->                   [ ],
->                   
->      function( )
->        local category;
->        
->        category := CreateCapCategoryWithDataTypes( "Category of strings up to vowels",
->                                                    IsStringsAsCategory,
->                                                    IsObjectInStringsAsCategory,
->                                                    IsMorphismInStringsAsCategory,
->                                                    IsCapCategoryTwoCell,
->                                                    IsStringRep,
->                                                    IsStringRep,
->                                                    fail );
->        
->        INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY( category );
->        
->        Finalize( category );
->        
->        return category;
->        
->    end );
-
-##
-gap> InstallMethod( StringsAsCategoryObject,
->                   [ IsStringsAsCategory, IsString ],
->                   
+gap> BindGlobal( "StringsAsCategoryObject",
 >      function( cat, string )
 >        
 >        return CreateCapCategoryObjectWithAttributes( cat,
@@ -95,9 +52,7 @@ gap> InstallMethod( StringsAsCategoryObject,
 >    end );
 
 ##
-gap> InstallMethod( StringsAsCategoryMorphism,
->                   [ IsStringsAsCategory, IsObjectInStringsAsCategory, IsString, IsObjectInStringsAsCategory ],
->                   
+gap> BindGlobal( "StringsAsCategoryMorphism",
 >      function( cat, source, string, range )
 >        
 >        return CreateCapCategoryMorphismWithAttributes( cat,
@@ -107,15 +62,19 @@ gap> InstallMethod( StringsAsCategoryMorphism,
 >        
 >    end );
 
-#############################
 ##
-## Basic operations
-##
-#############################
-gap> InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
->      
->      function( category )
->        local vec, tunit, vowels;
+gap> BindGlobal( "StringsAsCategory",
+>      function( )
+>        local category, vowels;
+>        
+>        category := CreateCapCategoryWithDataTypes( "Category of strings up to vowels",
+>                                                    IsStringsAsCategory,
+>                                                    IsObjectInStringsAsCategory,
+>                                                    IsMorphismInStringsAsCategory,
+>                                                    IsCapCategoryTwoCell,
+>                                                    IsStringRep,
+>                                                    IsStringRep,
+>                                                    fail );
 >        
 >        vowels := "aeiou";
 >        
@@ -154,8 +113,7 @@ gap> InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
 >        AddIsWellDefinedForMorphisms( category,
 >            function( cat, alpha )
 >                
->                return RemovedCharacters( Concatenation( UnderlyingString( Source( alpha ) ), UnderlyingString( alpha ) ), vowels )
->                    = RemovedCharacters( UnderlyingString( Range( alpha ) ), vowels );
+>                return RemovedCharacters( Concatenation( UnderlyingString( Source( alpha ) ), UnderlyingString( alpha ) ), vowels ) = RemovedCharacters( UnderlyingString( Range( alpha ) ), vowels );
 >                
 >        end );
 >        
@@ -190,7 +148,7 @@ gap> InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
 >                
 >                min := Minimum( Length( vowels ), n );
 >                
->                return StringsAsCategoryObject( cat, RemovedCharacters( UnderlyingString( a ) , vowels{[1..min]} ) );
+>                return StringsAsCategoryObject( cat, RemovedCharacters( UnderlyingString( a ) , vowels{[ 1 .. min ]} ) );
 >                
 >        end );
 >        
@@ -232,7 +190,7 @@ gap> InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
 >                
 >                return StringsAsCategoryMorphism( cat,
 >                                                  Source( alpha ),
->                                                  RemovedCharacters( UnderlyingString( alpha ) , vowels{[1..min]} ),
+>                                                  RemovedCharacters( UnderlyingString( alpha ) , vowels{[ 1 .. min ]} ),
 >                                                  Range( alpha ) );
 >                
 >        end );
@@ -465,32 +423,10 @@ gap> InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY,
 >                
 >        end );
 >        
->    end );
-
-#############################
-##
-## View
-##
-#############################
-
-##
-gap> InstallMethod( ViewString,
->                   [ IsMorphismInStringsAsCategory ],
->    
->      function( alpha )
+>        Finalize( category );
 >        
->        return Concatenation( ViewString( Source( alpha ) ), " -- ", String( UnderlyingString( alpha ) ), " --> ", ViewString( Range( alpha ) ) );
+>        return category;
 >        
->    end );
-
-##
-gap> InstallMethod( ViewString,
->                   [ IsObjectInStringsAsCategory ],
->    
->      function( a )
->    
->        return String( UnderlyingString( a ) );
->    
 >    end );
 
 #############################
