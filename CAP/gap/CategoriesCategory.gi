@@ -394,6 +394,8 @@ InstallGlobalFunction( ApplyFunctor,
     local is_object, cache, cache_return, computed_value,
           source_list, source_value, range_list, range_value, i, tmp, source_category, range_category, input_signature;
     
+    arguments := List( arguments ); # in Julia, `arguments` is a tuple which we cannot assign to below
+    
     source_category := AsCapCategory( Source( functor ) );
     range_category := AsCapCategory( Range( functor ) );
     input_signature := InputSignature( functor );
@@ -803,10 +805,10 @@ InstallMethod( InstallFunctor,
     
     for current_filters in install_list do
         
-        CallFuncList( DeclareOperation, current_filters );
+        DeclareOperation( current_filters[1], current_filters[2] );
         
-        InstallMethod( ValueGlobal( current_filters[ 1 ] ),
-                      current_filters[ 2 ],
+        InstallMethod( ValueGlobal( current_filters[1] ),
+                       current_filters[2],
                       
           function( arg )
             
