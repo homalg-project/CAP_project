@@ -12,10 +12,6 @@ BindGlobal( "IsCapFunctorRep", IsCapFunctor );
 # backwards compatibility
 BindGlobal( "IsCapNaturalTransformationRep", IsCapNaturalTransformation );
 
-BindGlobal( "TheTypeOfCapNaturalTransformations",
-        NewType( TheFamilyOfCapCategoryTwoCells,
-                IsCapNaturalTransformation ) );
-
 ##
 BindGlobal( "CAP_INTERNAL_CREATE_Cat",
                
@@ -393,6 +389,8 @@ InstallGlobalFunction( ApplyFunctor,
   function( functor, arguments... )
     local is_object, cache, cache_return, computed_value,
           source_list, source_value, range_list, range_value, i, tmp, source_category, range_category, input_signature;
+    
+    arguments := List( arguments ); # in Julia, `arguments` is a tuple which we cannot assign to below
     
     source_category := AsCapCategory( Source( functor ) );
     range_category := AsCapCategory( Range( functor ) );
@@ -803,10 +801,10 @@ InstallMethod( InstallFunctor,
     
     for current_filters in install_list do
         
-        CallFuncList( DeclareOperation, current_filters );
+        DeclareOperation( current_filters[1], current_filters[2] );
         
-        InstallMethod( ValueGlobal( current_filters[ 1 ] ),
-                      current_filters[ 2 ],
+        InstallMethod( ValueGlobal( current_filters[1] ),
+                       current_filters[2],
                       
           function( arg )
             
@@ -995,14 +993,11 @@ InstallMethod( NaturalTransformation,
         
     fi;
     
-    natural_transformation := ObjectifyWithAttributes( rec( ), TheTypeOfCapNaturalTransformations,
-                                                       Name, name,
-                                                       Source, source,
-                                                       Range, range );
-    
-    Add( CapCategory( source ), natural_transformation );
-    
-    return natural_transformation;
+    return CreateCapCategoryTwoCellWithAttributes(
+        CapCategory( source ),
+        source, range,
+        Name, name
+    );
     
 end );
 
@@ -1073,11 +1068,13 @@ end );
 InstallGlobalFunction( ApplyNaturalTransformation,
                
   function( arg )
-    local trafo, source_functor, arguments, i, source_value, range_value, computed_value;
+    local trafo, source_functor, range_category, arguments, source_value, range_value, computed_value, i;
     
     trafo := arg[ 1 ];
     
     source_functor := Source( trafo );
+    
+    range_category := AsCapCategory( Range( source_functor ) );
     
     arguments := arg{[ 2 .. Length( arg ) ]};
     
@@ -1102,7 +1099,11 @@ InstallGlobalFunction( ApplyNaturalTransformation,
     
     computed_value := CallFuncList( NaturalTransformationOperation( trafo ), Concatenation( [ source_value ], arguments, [ range_value ] ) );
     
-    Add( AsCapCategory( Range( source_functor ) ), computed_value );
+    if range_category!.add_primitive_output then
+        
+        AddTwoCell( range_category, computed_value );
+        
+    fi;
     
     ## TODO: this should be replaced by an "a => b" todo_list with more properties
     if HasIsIsomorphism( trafo ) and IsIsomorphism( trafo ) then

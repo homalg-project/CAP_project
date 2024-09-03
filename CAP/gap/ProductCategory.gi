@@ -301,16 +301,18 @@ InstallMethodWithCacheFromObject( ProductCategoryTwoCell,
                                   [ IsCapProductCategory, IsList ],
                                   
   function( category, twocell_list )
-    local product_twocell;
+    local source, range;
     
-    product_twocell := ObjectifyWithAttributes( rec( ), TheTypeOfCapCategoryProductTwoCells,
-                                                Components, twocell_list,
-                                                Length, Length( twocell_list )
-                                              );
+    source := ProductCategoryMorphism( category, List( twocell_list, Source ) );
+    range := ProductCategoryMorphism( category, List( twocell_list, Range ) );
     
-    Add( category, product_twocell );
-    
-    return product_twocell;
+    return CreateCapCategoryTwoCellWithAttributes(
+        category,
+        source, range,
+        Components, twocell_list,
+        Length, Length( twocell_list )
+        
+    );
     
 end : ArgumentNumber := 1 );
 
@@ -408,26 +410,6 @@ end );
 ## Section Morphism function
 ##
 ###################################
-
-##
-InstallMethod( Source,
-               [ IsCapCategoryProductTwoCell ],
-               
-  function( twocell )
-    
-    return ProductCategoryMorphism( CapCategory( twocell ), List( Components( twocell ), Source ) );
-    
-end );
-
-##
-InstallMethod( Range,
-               [ IsCapCategoryProductTwoCell ],
-               
-  function( twocell )
-    
-    return ProductCategoryMorphism( CapCategory( twocell ), List( Components( twocell ), Range ) );
-    
-end );
 
 ##
 InstallMethodWithCacheFromObject( HorizontalPreCompose,

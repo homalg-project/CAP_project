@@ -274,6 +274,8 @@ InstallGlobalFunction( "CreateCapCategoryWithDataTypes", FunctionWithNamedArgume
     SetTwoCellFilter( obj, filter );
     SetTwoCellDatumType( obj, two_cell_datum_type );
     
+    obj!.two_cell_type := NewType( TheFamilyOfCapCategoryTwoCells, filter );
+    
     ## misc
     SetIsFinalized( obj, false );
     

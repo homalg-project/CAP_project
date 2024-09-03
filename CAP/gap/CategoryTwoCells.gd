@@ -41,8 +41,23 @@ DeclareAttribute( "Target",
 ##
 ###################################
 
+#! @Description
+#!  Adds <A>twocell</A> as a $2$-cell to <A>category</A>.
+#! @Arguments category, twocell
 DeclareOperation( "Add",
                   [ IsCapCategory, IsCapCategoryTwoCell ] );
 
+#! @Description
+#!  Adds <A>twocell</A> as a $2$-cell to <A>category</A>.
+#!  If <A>twocell</A> already lies in the filter <C>IsCapCategoryTwoCell</C>,
+#!  the operation <Ref Oper="Add" Label="for IsCapCategory, IsCapCategoryTwoCell" />
+#!  can be used instead.
+#! @Arguments category, twocell
 DeclareOperation( "AddTwoCell",
-                  [ IsCapCategory, IsObject ] );
+                  [ IsCapCategory, IsAttributeStoringRep ] );
+                  
+#! @Arguments category, source, range[, attr1, val1, attr2, val2, ...]
+#! @Description
+#!  Creates a $2$-cell in <A>category</A> with the given attributes.
+#! @Returns a twocell
+DeclareGlobalFunction( "CreateCapCategoryTwoCellWithAttributes" );

@@ -63,7 +63,17 @@ end );
 
 ##
 InstallMethod( AddTwoCell,
-               [ IsCapCategory, IsObject ],
+               [ IsCapCategory, IsCapCategoryTwoCell ],
+               
+  function( category, twocell )
+    
+    Add( category, twocell );
+    
+end );
+
+##
+InstallMethod( AddTwoCell,
+               [ IsCapCategory, IsAttributeStoringRep ],
                
   function( category, twocell )
     
@@ -73,3 +83,16 @@ InstallMethod( AddTwoCell,
     
 end );
 
+##
+InstallGlobalFunction( CreateCapCategoryTwoCellWithAttributes,
+                       
+  function( category, source, range, additional_arguments_list... )
+    local arg_list;
+    
+    arg_list := Concatenation(
+        [ rec( ), category!.two_cell_type, CapCategory, category, Source, source, Range, range ], additional_arguments_list
+    );
+    
+    return CallFuncList( ObjectifyWithAttributes, arg_list );
+    
+end );
