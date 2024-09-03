@@ -260,7 +260,7 @@
   [1X5.5 [33X[0;0YNatural transformations[133X[101X
   
   [33X[0;0YNatural  transformations form the [23X2[123X-cells of Cat. As such, it is possible to
-  compose them vertically and horizontally, see Section [14X4.2[114X.[133X
+  compose them vertically and horizontally, see Section [14X4.3[114X.[133X
   
   [1X5.5-1 Name[101X
   

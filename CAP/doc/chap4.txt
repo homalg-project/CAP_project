@@ -29,9 +29,32 @@
   target [23X\beta[123X.[133X
   
   
-  [1X4.2 [33X[0;0YIdentity 2-Cell and Composition of 2-Cells[133X[101X
+  [1X4.2 [33X[0;0YAdding 2-Cells to a Category[133X[101X
   
-  [1X4.2-1 IdentityTwoCell[101X
+  [1X4.2-1 Add[101X
+  
+  [33X[1;0Y[29X[2XAdd[102X( [3Xcategory[103X, [3Xtwocell[103X ) [32X operation[133X
+  
+  [33X[0;0YAdds [3Xtwocell[103X as a [23X2[123X-cell to [3Xcategory[103X.[133X
+  
+  [1X4.2-2 AddTwoCell[101X
+  
+  [33X[1;0Y[29X[2XAddTwoCell[102X( [3Xcategory[103X, [3Xtwocell[103X ) [32X operation[133X
+  
+  [33X[0;0YAdds  [3Xtwocell[103X as a [23X2[123X-cell to [3Xcategory[103X. If [3Xtwocell[103X already lies in the filter
+  [10XIsCapCategoryTwoCell[110X, the operation [2XAdd[102X ([14X4.2-1[114X) can be used instead.[133X
+  
+  [1X4.2-3 CreateCapCategoryTwoCellWithAttributes[101X
+  
+  [33X[1;0Y[29X[2XCreateCapCategoryTwoCellWithAttributes[102X( [3Xcategory[103X, [3Xsource[103X, [3Xrange[103X[, [3Xattr1[103X, [3Xval1[103X, [3Xattr2[103X, [3Xval2[103X, [3X...[103X] ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya twocell[133X
+  
+  [33X[0;0YCreates a [23X2[123X-cell in [3Xcategory[103X with the given attributes.[133X
+  
+  
+  [1X4.3 [33X[0;0YIdentity 2-Cell and Composition of 2-Cells[133X[101X
+  
+  [1X4.3-1 IdentityTwoCell[101X
   
   [33X[1;0Y[29X[2XIdentityTwoCell[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [23X2[123X-cell[133X
@@ -39,7 +62,7 @@
   [33X[0;0YThe  argument  is  a  morphism  [23X\alpha[123X.  The  output  is its identity [23X2[123X-cell
   [23X\mathrm{id}_{\alpha}: \alpha \rightarrow \alpha[123X.[133X
   
-  [1X4.2-2 HorizontalPreCompose[101X
+  [1X4.3-2 HorizontalPreCompose[101X
   
   [33X[1;0Y[29X[2XHorizontalPreCompose[102X( [3Xc[103X, [3Xd[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya [23X2[123X-cell[133X
@@ -49,7 +72,7 @@
   [23X\gamma,  \delta: b \rightarrow c[123X. The output is their horizontal composition
   [23Xd \ast c: (\gamma \circ \alpha) \rightarrow (\delta \circ \beta)[123X.[133X
   
-  [1X4.2-3 HorizontalPostCompose[101X
+  [1X4.3-3 HorizontalPostCompose[101X
   
   [33X[1;0Y[29X[2XHorizontalPostCompose[102X( [3Xd[103X, [3Xc[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya [23X2[123X-cell[133X
@@ -59,7 +82,7 @@
   [23X\gamma,  \delta: b \rightarrow c[123X. The output is their horizontal composition
   [23Xd \ast c: (\gamma \circ \alpha) \rightarrow (\delta \circ \beta)[123X.[133X
   
-  [1X4.2-4 VerticalPreCompose[101X
+  [1X4.3-4 VerticalPreCompose[101X
   
   [33X[1;0Y[29X[2XVerticalPreCompose[102X( [3Xc[103X, [3Xd[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya [23X2[123X-cell[133X
@@ -69,7 +92,7 @@
   The  output  is  their  vertical  composition  [23Xd \circ c: \alpha \rightarrow
   \gamma[123X.[133X
   
-  [1X4.2-5 VerticalPostCompose[101X
+  [1X4.3-5 VerticalPostCompose[101X
   
   [33X[1;0Y[29X[2XVerticalPostCompose[102X( [3Xd[103X, [3Xc[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya [23X2[123X-cell[133X
@@ -80,9 +103,9 @@
   \gamma[123X.[133X
   
   
-  [1X4.3 [33X[0;0YWell-Definedness for 2-Cells[133X[101X
+  [1X4.4 [33X[0;0YWell-Definedness for 2-Cells[133X[101X
   
-  [1X4.3-1 IsWellDefinedForTwoCells[101X
+  [1X4.4-1 IsWellDefinedForTwoCells[101X
   
   [33X[1;0Y[29X[2XIsWellDefinedForTwoCells[102X( [3Xc[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
