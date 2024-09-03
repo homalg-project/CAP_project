@@ -92,25 +92,9 @@ InstallMethod( Add,
         
     fi;
     
-    AddObject( category, Source( morphism ) );
-    
-    AddObject( category, Range( morphism ) );
-    
-    if category!.predicate_logic then
-        
-        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ morphism ], Source( morphism ), category );
-        
-        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ morphism ], Range( morphism ), category );
-      
-    fi;
-    
     if HasCapCategory( morphism ) then
         
-        if IsIdenticalObj( CapCategory( morphism ), category ) then
-            
-            return;
-            
-        else
+        if not IsIdenticalObj( CapCategory( morphism ), category ) then
             
             Error(
                 Concatenation(
@@ -125,9 +109,23 @@ InstallMethod( Add,
             
         fi;
         
+    else
+        
+        SetCapCategory( morphism, category );
+        
     fi;
     
-    SetCapCategory( morphism, category );
+    AddObject( category, Source( morphism ) );
+    
+    AddObject( category, Range( morphism ) );
+    
+    if category!.predicate_logic then
+        
+        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ morphism ], Source( morphism ), category );
+        
+        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ morphism ], Range( morphism ), category );
+      
+    fi;
     
 end );
 
