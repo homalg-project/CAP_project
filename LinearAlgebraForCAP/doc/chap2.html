@@ -65,6 +65,8 @@
 
 
 <div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LinearAlgebraForCAP", false );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MatrixCategory( Q );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := MatrixCategoryObject( vec, 3 );</span>
@@ -78,45 +80,40 @@ true
 &lt;A vector space object over Q of dimension 4&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">homalg_matrix := HomalgMatrix( [ [ 1, 0, 0, 0 ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                                  [ 0, 1, 0, -1 ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                  [ -1, 0, 2, 1 ] ], 3, 4, Q );</span>
-&lt;A 3 x 4 matrix over an internal ring&gt;
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                  [ -1, 0, 2, 1 ] ], 3, 4, Q );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := VectorSpaceMorphism( a, homalg_matrix, b );</span>
 &lt;A morphism in Category of matrices over Q&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( alpha );</span>
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># @drop_example_in_Julia: view/print/display strings of matrices differ between GAP and Julia, see https://github.com/homalg-project/MatricesForHomalg.jl/issues/41</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">Display( alpha );</span>
 [ [   1,   0,   0,   0 ],
   [   0,   1,   0,  -1 ],
   [  -1,   0,   2,   1 ] ]
 
 A morphism in Category of matrices over Q
+</pre></div>
+
+
+<div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alphap := homalg_matrix/vec;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( alpha, alphap );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">homalg_matrix := HomalgMatrix( [ [ 1, 1, 0, 0 ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                                  [ 0, 1, 0, -1 ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                  [ -1, 0, 2, 1 ] ], 3, 4, Q );</span>
-&lt;A 3 x 4 matrix over an internal ring&gt;
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                  [ -1, 0, 2, 1 ] ], 3, 4, Q );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := VectorSpaceMorphism( a, homalg_matrix, b );</span>
 &lt;A morphism in Category of matrices over Q&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CokernelObject( alpha );</span>
 &lt;A vector space object over Q of dimension 1&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := CokernelProjection( alpha );;</span>
-#@if ValueOption( "no_precompiled_code" ) &lt;&gt; true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( c );</span>
-[ [     0 ],
-  [     1 ],
-  [  -1/2 ],
-  [     1 ] ]
-
-A split epimorphism in Category of matrices over Q
-#@fi
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( c ) ) );</span>
+[ [ 0 ], [ 1 ], [ -1/2 ], [ 1 ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := UniversalMorphismIntoDirectSum( [ c, c ] );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( gamma );</span>
-[ [     0,     0 ],
-  [     1,     1 ],
-  [  -1/2,  -1/2 ],
-  [     1,     1 ] ]
-
-A morphism in Category of matrices over Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( gamma ) ) );</span>
+[ [ 0, 0 ], [ 1, 1 ], [ -1/2, -1/2 ], [ 1, 1 ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">colift := CokernelColift( alpha, gamma );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( PreCompose( c, colift ), gamma );</span>
 true
@@ -126,11 +123,8 @@ true
 &lt;A vector space object over Q of dimension 2&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">p1 := ProjectionInFactorOfFiberProduct( [ alpha, beta ], 1 );</span>
 &lt;A morphism in Category of matrices over Q&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( PreCompose( p1, alpha ) );</span>
-[ [   0,   1,   0,  -1 ],
-  [  -1,   0,   2,   1 ] ]
-
-A morphism in Category of matrices over Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( PreCompose( p1, alpha ) ) ) );</span>
+[ [ 0, 1, 0, -1 ], [ -1, 0, 2, 1 ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Pushout( alpha, beta );</span>
 &lt;A vector space object over Q of dimension 5&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i1 := InjectionOfCofactorOfPushout( [ alpha, beta ], 1 );</span>
@@ -139,17 +133,24 @@ A morphism in Category of matrices over Q
 &lt;A morphism in Category of matrices over Q&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := UniversalMorphismFromDirectSum( [ b, b ], [ i1, i2 ] );</span>
 &lt;A morphism in Category of matrices over Q&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( u );</span>
-[ [     0,     1,     1,     0,     0 ],
-  [     1,     0,     1,     0,    -1 ],
-  [  -1/2,     0,   1/2,     1,   1/2 ],
-  [     1,     0,     0,     0,     0 ],
-  [     0,     1,     0,     0,     0 ],
-  [     0,     0,     1,     0,     0 ],
-  [     0,     0,     0,     1,     0 ],
-  [     0,     0,     0,     0,     1 ] ]
+</pre></div>
 
-A morphism in Category of matrices over Q
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># @drop_example_in_Julia: differences in the output of SyzygiesOfRows, see https://github.com/homalg-project/MatricesForHomalg.jl/issues/50</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">Display( EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( u ) ) );</span>
+[ [ 0, 1, 1, 0, 0 ],\
+ [ 1, 0, 1, 0, -1 ],\
+ [ -1/2, 0, 1/2, 1, 1/2 ],\
+ [ 1, 0, 0, 0, 0 ],\
+ [ 0, 1, 0, 0, 0 ],\
+ [ 0, 0, 1, 0, 0 ],\
+ [ 0, 0, 0, 1, 0 ],\
+ [ 0, 0, 0, 0, 1 ] ]
+</pre></div>
+
+
+<div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KernelObjectFunctorial( u, IdentityMorphism( Source( u ) ), u ) = IdentityMorphism( MatrixCategoryObject( vec, 3 ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( CokernelObjectFunctorial( u, IdentityMorphism( Range( u ) ), u ) );</span>
@@ -158,11 +159,17 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoproductFunctorial( [ u, u ] ) = DirectSumFunctorial( [ u, u ] );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( FiberProductFunctorial( [ u, u ], [ IdentityMorphism( Source( u ) ), IdentityMorphism( Source( u ) ) ], [ u, u ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    FiberProductFunctorial( [ u, u ], [ IdentityMorphism( Source( u ) ), IdentityMorphism( Source( u ) ) ], [ u, u ] ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    IdentityMorphism( FiberProduct( [ u, u ] ) )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PushoutFunctorial( [ u, u ], [ IdentityMorphism( Range( u ) ), IdentityMorphism( Range( u ) ) ], [ u, u ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    PushoutFunctorial( [ u, u ], [ IdentityMorphism( Range( u ) ), IdentityMorphism( Range( u ) ) ], [ u, u ] ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    IdentityMorphism( Pushout( [ u, u ] ) )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( (1/2) * alpha, alpha * (1/2) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( ((1/2) / Q) * alpha, alpha * ((1/2) / Q) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( HomomorphismStructureOnObjects( a, b ) ) = Dimension( a ) * Dimension( b );</span>
 true
@@ -176,12 +183,14 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha_op := Opposite( alpha );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">op := Opposite( vec );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha_op := Opposite( op, alpha );</span>
 &lt;A morphism in Opposite( Category of matrices over Q )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">basis := BasisOfExternalHom( Source( alpha_op ), Range( alpha_op ) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coeffs := CoefficientsOfMorphism( alpha_op );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coeffs := CoefficientsOfMorphism( alpha_op );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( coeffs );</span>
 [ 1, 0, 0, 0, 0, 1, 0, -1, -1, 0, 2, 1 ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( alpha_op, coeffs * basis );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( alpha_op, LinearCombinationOfMorphisms( Source( alpha_op ), coeffs, basis, Range( alpha_op ) ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := CapCategory( alpha );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := TensorUnit( vec );;</span>
@@ -211,19 +220,19 @@ true
 &lt;A vector space object over Q of dimension 12&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_ab = cohom_ab;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">1_ab := VectorSpaceMorphism(</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">unit_ab := VectorSpaceMorphism(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">          a_otimes_b,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">          HomalgIdentityMatrix( Dimension( a_otimes_b ), Q ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">          a_otimes_b</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">          );</span>
 &lt;A morphism in Category of matrices over Q&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">1_hom_ab := VectorSpaceMorphism(</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">unit_hom_ab := VectorSpaceMorphism(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">              hom_ab,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">              HomalgIdentityMatrix( Dimension( hom_ab ), Q ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">              hom_ab</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            );</span>
 &lt;A morphism in Category of matrices over Q&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">1_cohom_ab := VectorSpaceMorphism(</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">unit_cohom_ab := VectorSpaceMorphism(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                cohom_ab,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                HomalgIdentityMatrix( Dimension( cohom_ab ), Q ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                cohom_ab</span>
@@ -249,13 +258,13 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UnderlyingMatrix( coev_ba ) = TransposedMatrix( UnderlyingMatrix( cocl_coev_ba ) );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tensor_hom_adj_1_hom_ab := InternalHomToTensorProductLeftAdjunctMorphism( a, b, 1_hom_ab );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tensor_hom_adj_1_hom_ab := InternalHomToTensorProductLeftAdjunctMorphism( a, b, unit_hom_ab );</span>
 &lt;A morphism in Category of matrices over Q&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cohom_tensor_adj_1_cohom_ab := InternalCoHomToTensorProductLeftAdjunctMorphism( a, b, 1_cohom_ab );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cohom_tensor_adj_1_cohom_ab := InternalCoHomToTensorProductLeftAdjunctMorphism( a, b, unit_cohom_ab );</span>
 &lt;A morphism in Category of matrices over Q&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tensor_hom_adj_1_ab := TensorProductToInternalHomLeftAdjunctMorphism( a, b, 1_ab );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tensor_hom_adj_1_ab := TensorProductToInternalHomLeftAdjunctMorphism( a, b, unit_ab );</span>
 &lt;A morphism in Category of matrices over Q&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cohom_tensor_adj_1_ab := TensorProductToInternalCoHomLeftAdjunctMorphism( a, b, 1_ab );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cohom_tensor_adj_1_ab := TensorProductToInternalCoHomLeftAdjunctMorphism( a, b, unit_ab );</span>
 &lt;A morphism in Category of matrices over Q&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ev_ab = tensor_hom_adj_1_hom_ab;</span>
 true
@@ -269,7 +278,12 @@ true
 &lt;A vector space object over Q of dimension 2&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d := MatrixCategoryObject( vec, 1 );</span>
 &lt;A vector space object over Q of dimension 1&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pre_compose := MonoidalPreComposeMorphism( a, b, c );</span>
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># @drop_example_in_Julia: MonoidalPreComposeMorphism is very slow because multiplication of matrices of Rationals{BigInt} is very slow, see https://github.com/homalg-project/MatricesForHomalg.jl/issues/48</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">pre_compose := MonoidalPreComposeMorphism( a, b, c );</span>
 &lt;A morphism in Category of matrices over Q&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">post_compose := MonoidalPostComposeMorphism( a, b, c );</span>
 &lt;A morphism in Category of matrices over Q&gt;
@@ -305,14 +319,10 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">delta := PreCompose( colambda, lambda);</span>
 &lt;A morphism in Category of matrices over Q&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( TraceMap( delta ) );</span>
-[ [  9 ] ]
-
-A morphism in Category of matrices over Q
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CoTraceMap( delta ) );</span>
-[ [  9 ] ]
-
-A morphism in Category of matrices over Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( TraceMap( delta ) ) ) );</span>
+[ [ 9 ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( CoTraceMap( delta ) ) ) );</span>
+[ [ 9 ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TraceMap( delta ) = CoTraceMap( delta );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RankMorphism( a ) = CoRankMorphism( a );</span>
@@ -627,6 +637,8 @@ true
 
 
 <div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LinearAlgebraForCAP", false );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Qmat := MatrixCategory( Q );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := MatrixCategoryObject( Qmat, 3 );;</span>
@@ -635,21 +647,24 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                                  [ 0, 1, 0, -1 ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                                  [ -1, 0, 2, 1 ] ], 3, 4, Q );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := VectorSpaceMorphism( a, homalg_matrix, b );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( SomeReductionBySplitEpiSummand( alpha ) );</span>
-(an empty 0 x 1 matrix)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := SomeReductionBySplitEpiSummand( alpha );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefinedForMorphisms( beta );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( Source( beta ) );</span>
+0
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( Range( beta ) );</span>
+1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := SomeReductionBySplitEpiSummand_MorphismFromInputRange( alpha );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( gamma ) ) );</span>
+[ [ 0 ], [ 1 ], [ -1/2 ], [ 1 ] ]
+</pre></div>
 
-A morphism in Category of matrices over Q
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( SomeReductionBySplitEpiSummand_MorphismFromInputRange( alpha ) );</span>
-[ [     0 ],
-  [     1 ],
-  [  -1/2 ],
-  [     1 ] ]
 
-A morphism in Category of matrices over Q
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( SomeReductionBySplitEpiSummand_MorphismToInputRange( alpha ) );</span>
-[ [  0,  1,  0,  0 ] ]
-
-A morphism in Category of matrices over Q
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># @drop_example_in_Julia: differences in the output of (Safe)RightDivide, see https://github.com/homalg-project/MatricesForHomalg.jl/issues/50</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">delta := SomeReductionBySplitEpiSummand_MorphismToInputRange( alpha );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( delta ) ) );</span>
+[ [ 0, 1, 0, 0 ] ]
 </pre></div>
 
 <p><a id="X7DCD99628504B810" name="X7DCD99628504B810"></a></p>
