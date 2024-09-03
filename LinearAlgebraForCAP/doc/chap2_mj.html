@@ -28,34 +28,37 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X8104A77D7B5CCD4F">2.1 <span class="Heading">Basic Commands</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X852F59737EC57965">2.2 <span class="Heading">Homology object</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X78D1062D78BE08C1">2.2 <span class="Heading">Functors</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7CDB7FF27D734D2D">2.3 <span class="Heading">Liftable</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X852F59737EC57965">2.3 <span class="Heading">Homology object</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X797080CE873BB56D">2.4 <span class="Heading">Monoidal structure</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7CDB7FF27D734D2D">2.4 <span class="Heading">Liftable</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X8218390A785F1EDB">2.5 <span class="Heading">MorphismFromSourceToPushout and MorphismFromFiberProductToSink</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X797080CE873BB56D">2.5 <span class="Heading">Monoidal structure</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X84410C637B3C1D0E">2.6 <span class="Heading">Opposite category</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X8218390A785F1EDB">2.6 <span class="Heading">MorphismFromSourceToPushout and MorphismFromFiberProductToSink</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7F34E29281DF3FCE">2.7 <span class="Heading">PreComposeList and PostComposeList</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X84410C637B3C1D0E">2.7 <span class="Heading">Opposite category</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X87F5609A7B33C58C">2.8 <span class="Heading">Split epi summand</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7F34E29281DF3FCE">2.8 <span class="Heading">PreComposeList and PostComposeList</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7DCD99628504B810">2.9 <span class="Heading">Kernel</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X87F5609A7B33C58C">2.9 <span class="Heading">Split epi summand</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7DE20941803BFBD9">2.10 <span class="Heading">FiberProduct</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7DCD99628504B810">2.10 <span class="Heading">Kernel</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X8245BF297DF9A3E7">2.11 <span class="Heading">WrapperCategory</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7DE20941803BFBD9">2.11 <span class="Heading">FiberProduct</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X8245BF297DF9A3E7">2.12 <span class="Heading">WrapperCategory</span></a>
 </span>
 </div>
 </div>
@@ -332,9 +335,57 @@ true
 true
 </pre></div>
 
+<p><a id="X78D1062D78BE08C1" name="X78D1062D78BE08C1"></a></p>
+
+<h4>2.2 <span class="Heading">Functors</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LinearAlgebraForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ring := HomalgFieldOfRationals( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MatrixCategory( ring );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := CapFunctor( "CohomForVec", [ vec, [ vec, true ] ], vec );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj_func := function( A, B ) return TensorProductOnObjects( A, DualOnObjects( B ) ); end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor_func := function( source, alpha, beta, range ) return TensorProductOnMorphismsWithGivenTensorProducts( source, alpha, DualOnMorphisms( beta ), range ); end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddObjectFunction( F, obj_func );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddMorphismFunction( F, mor_func );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( InputSignature( F ) );</span>
+[ [ Category of matrices over Q, false ], [ Category of matrices over Q, true ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V1 := TensorUnit( vec );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V3 := DirectSum( V1, V1, V1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi1 := ProjectionInFactorOfDirectSum( [ V1, V1 ], 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi2 := ProjectionInFactorOfDirectSum( [ V3, V1 ], 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">value1 := ApplyFunctor( F, pi1, pi2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">input := ProductCategoryMorphism( AsCapCategory( Source( F ) ), [ pi1, Opposite( pi2 ) ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">value2 := ApplyFunctor( F, input );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( value1, value2 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InstallFunctor( F, "F_installation" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_installation( pi1, pi2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_installation( input );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_installationOnObjects( V1, V1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_installationOnObjects( ProductCategoryObject( AsCapCategory( Source( F ) ), [ V1, Opposite( V1 ) ] ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_installationOnMorphisms( pi1, pi2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_installationOnMorphisms( input );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F2 := CapFunctor( "CohomForVec2", ProductCategory( [ vec, Opposite( vec ) ] ), vec );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddObjectFunction( F2, a -&gt; obj_func( a[1], Opposite( a[2] ) ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddMorphismFunction( F2, function( source, datum, range ) return mor_func( source, datum[1], Opposite( datum[2] ), range ); end );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">input := ProductCategoryMorphism( AsCapCategory( Source( F2 ) ), [ pi1, Opposite( pi2 ) ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">value3 := ApplyFunctor( F2, input );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( value1, value3 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( InputSignature( F2 ) );</span>
+[ [ Product of: Category of matrices over Q, Opposite( Category of matrices over Q ), false ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InstallFunctor( F2, "F_installation2" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_installation2( input );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_installation2OnObjects( ProductCategoryObject( AsCapCategory( Source( F2 ) ), [ V1, Opposite( V1 ) ] ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_installation2OnMorphisms( input );;</span>
+</pre></div>
+
 <p><a id="X852F59737EC57965" name="X852F59737EC57965"></a></p>
 
-<h4>2.2 <span class="Heading">Homology object</span></h4>
+<h4>2.3 <span class="Heading">Homology object</span></h4>
 
 
 <div class="example"><pre>
@@ -412,7 +463,7 @@ true
 
 <p><a id="X7CDB7FF27D734D2D" name="X7CDB7FF27D734D2D"></a></p>
 
-<h4>2.3 <span class="Heading">Liftable</span></h4>
+<h4>2.4 <span class="Heading">Liftable</span></h4>
 
 
 <div class="example"><pre>
@@ -443,7 +494,7 @@ true
 
 <p><a id="X797080CE873BB56D" name="X797080CE873BB56D"></a></p>
 
-<h4>2.4 <span class="Heading">Monoidal structure</span></h4>
+<h4>2.5 <span class="Heading">Monoidal structure</span></h4>
 
 
 <div class="example"><pre>
@@ -503,7 +554,7 @@ true
 
 <p><a id="X8218390A785F1EDB" name="X8218390A785F1EDB"></a></p>
 
-<h4>2.5 <span class="Heading">MorphismFromSourceToPushout and MorphismFromFiberProductToSink</span></h4>
+<h4>2.6 <span class="Heading">MorphismFromSourceToPushout and MorphismFromFiberProductToSink</span></h4>
 
 
 <div class="example"><pre>
@@ -551,7 +602,7 @@ true
 
 <p><a id="X84410C637B3C1D0E" name="X84410C637B3C1D0E"></a></p>
 
-<h4>2.6 <span class="Heading">Opposite category</span></h4>
+<h4>2.7 <span class="Heading">Opposite category</span></h4>
 
 
 <div class="example"><pre>
@@ -607,7 +658,7 @@ true
 
 <p><a id="X7F34E29281DF3FCE" name="X7F34E29281DF3FCE"></a></p>
 
-<h4>2.7 <span class="Heading">PreComposeList and PostComposeList</span></h4>
+<h4>2.8 <span class="Heading">PreComposeList and PostComposeList</span></h4>
 
 
 <div class="example"><pre>
@@ -636,7 +687,7 @@ true
 
 <p><a id="X87F5609A7B33C58C" name="X87F5609A7B33C58C"></a></p>
 
-<h4>2.8 <span class="Heading">Split epi summand</span></h4>
+<h4>2.9 <span class="Heading">Split epi summand</span></h4>
 
 
 <div class="example"><pre>
@@ -672,7 +723,7 @@ true
 
 <p><a id="X7DCD99628504B810" name="X7DCD99628504B810"></a></p>
 
-<h4>2.9 <span class="Heading">Kernel</span></h4>
+<h4>2.10 <span class="Heading">Kernel</span></h4>
 
 
 <div class="example"><pre>
@@ -750,7 +801,7 @@ true
 
 <p><a id="X7DE20941803BFBD9" name="X7DE20941803BFBD9"></a></p>
 
-<h4>2.10 <span class="Heading">FiberProduct</span></h4>
+<h4>2.11 <span class="Heading">FiberProduct</span></h4>
 
 
 <div class="example"><pre>
@@ -776,7 +827,7 @@ true
 
 <p><a id="X8245BF297DF9A3E7" name="X8245BF297DF9A3E7"></a></p>
 
-<h4>2.11 <span class="Heading">WrapperCategory</span></h4>
+<h4>2.12 <span class="Heading">WrapperCategory</span></h4>
 
 
 <div class="example"><pre>
