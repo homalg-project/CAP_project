@@ -157,20 +157,63 @@ BindGlobal( "CAP_INTERNAL_INSTALL_PRODUCT_ADDS_FROM_CATEGORY",
         
         create_func := function( current_name )
             
-            return function( cat, arg... )
-                local product_args, result_list;
+            if current_entry.return_type = "bool" then
                 
-                product_args := CAP_INTERNAL_CREATE_PRODUCT_ARGUMENT_LIST( arg );
+                return function( cat, arg... )
+                    local product_args, result_list;
+                    
+                    product_args := CAP_INTERNAL_CREATE_PRODUCT_ARGUMENT_LIST( arg );
+                    
+                    result_list := List( product_args, i -> CallFuncList( ValueGlobal( current_name ), i ) );
+                    
+                    return ForAll( result_list, IdFunc );
+                    
+                end;
                 
-                result_list := List( product_args, i -> CallFuncList( ValueGlobal( current_name ), i ) );
+            elif current_entry.return_type = "object" then
                 
-                if ForAll( result_list, IsBool ) then
-                    return ForAll( result_list, i -> i = true );
-                fi;
+                return function( cat, arg... )
+                    local product_args, result_list;
+                    
+                    product_args := CAP_INTERNAL_CREATE_PRODUCT_ARGUMENT_LIST( arg );
+                    
+                    result_list := List( product_args, i -> CallFuncList( ValueGlobal( current_name ), i ) );
+                    
+                    return ProductCategoryObject( cat, result_list );
+                    
+                end;
                 
-                return CallFuncList( Product, result_list );
+            elif current_entry.return_type = "morphism" then
                 
-            end;
+                return function( cat, arg... )
+                    local product_args, result_list;
+                    
+                    product_args := CAP_INTERNAL_CREATE_PRODUCT_ARGUMENT_LIST( arg );
+                    
+                    result_list := List( product_args, i -> CallFuncList( ValueGlobal( current_name ), i ) );
+                    
+                    return ProductCategoryMorphism( cat, result_list );
+                    
+                end;
+                
+            elif current_entry.return_type = "twocell" then
+                
+                return function( cat, arg... )
+                    local product_args, result_list;
+                    
+                    product_args := CAP_INTERNAL_CREATE_PRODUCT_ARGUMENT_LIST( arg );
+                    
+                    result_list := List( product_args, i -> CallFuncList( ValueGlobal( current_name ), i ) );
+                    
+                    return ProductCategoryTwoCell( cat, result_list );
+                    
+                end;
+                
+            else
+                
+                Error( "this should never happen" );
+                
+            fi;
             
         end;
         
@@ -185,10 +228,10 @@ BindGlobal( "CAP_INTERNAL_INSTALL_PRODUCT_ADDS_FROM_CATEGORY",
 end );
 
 ##
-InstallMethodWithCrispCache( ProductOp,
-                                  [ IsList, IsCapCategory ],
+InstallMethodWithCrispCache( ProductCategory,
+                             [ IsList ],
                         
-  function( category_list, selector )
+  function( category_list )
     local product_category, namestring;
     
     if not ForAll( category_list, IsFinalized ) then
@@ -206,13 +249,11 @@ InstallMethodWithCrispCache( ProductOp,
     
     namestring := Concatenation( "Product of: " , namestring );
     
-    product_category := CreateCapCategory( namestring );
+    product_category := CreateCapCategory( namestring, IsCapProductCategory, IsCapCategoryProductObject, IsCapCategoryProductMorphism, IsCapCategoryProductTwoCell );
     
     SetComponents( product_category, category_list );
     
     SetLength( product_category, Length( category_list ) );
-    
-    SetFilterObj( product_category, IsCapProductCategory );
     
     CAP_INTERNAL_INSTALL_PRODUCT_ADDS_FROM_CATEGORY( product_category );
     
@@ -223,46 +264,43 @@ InstallMethodWithCrispCache( ProductOp,
 end );
 
 ##
-InstallMethodWithCacheFromObject( ProductOp_OnObjects,
-                                  [ IsList, IsCapCategory ],
+InstallMethodWithCacheFromObject( ProductCategoryObject,
+                                  [ IsCapProductCategory, IsList ],
                         
-  function( object_list, category )
-    local product_object, entry, i;
+  function( category, object_list )
     
-    product_object := ObjectifyWithAttributes( rec( ), TheTypeOfCapCategoryProductObjects,
-                                               Components, object_list,
-                                               Length, Length( object_list )
-                                             );
+    return CreateCapCategoryObjectWithAttributes(
+        category,
+        Components, object_list,
+        Length, Length( object_list )
+    );
     
-    Add( category, product_object );
-    
-    return product_object;
-    
-end : ArgumentNumber := 2 );
+end : ArgumentNumber := 1 );
 
 ##
-InstallMethodWithCacheFromObject( ProductOp_OnMorphisms,
-                                  [ IsList, IsCapCategory ],
+InstallMethodWithCacheFromObject( ProductCategoryMorphism,
+                                  [ IsCapProductCategory, IsList ],
                                   
-  function( morphism_list, category )
-    local product_morphism, entry, i;
+  function( category, morphism_list )
+    local source, range;
     
-    product_morphism := ObjectifyWithAttributes( rec( ), TheTypeOfCapCategoryProductMorphisms,
-                                                 Components, morphism_list,
-                                                 Length, Length( morphism_list )
-                                               );
+    source := ProductCategoryObject( category, List( morphism_list, Source ) );
+    range := ProductCategoryObject( category, List( morphism_list, Range ) );
     
-    Add( category, product_morphism );
+    return CreateCapCategoryMorphismWithAttributes(
+        category,
+        source, range,
+        Components, morphism_list,
+        Length, Length( morphism_list )
+    );
     
-    return product_morphism;
-    
-end : ArgumentNumber := 2 );
+end : ArgumentNumber := 1 );
 
 ##
-InstallMethodWithCacheFromObject( ProductOp_OnTwoCells,
-                                  [ IsList, IsCapCategory ],
+InstallMethodWithCacheFromObject( ProductCategoryTwoCell,
+                                  [ IsCapProductCategory, IsList ],
                                   
-  function( twocell_list, category )
+  function( category, twocell_list )
     local product_twocell;
     
     product_twocell := ObjectifyWithAttributes( rec( ), TheTypeOfCapCategoryProductTwoCells,
@@ -274,37 +312,24 @@ InstallMethodWithCacheFromObject( ProductOp_OnTwoCells,
     
     return product_twocell;
     
-end : ArgumentNumber := 2 );
-
-##
-InstallMethod( ProductOp,
-               [ IsList, IsCapCategoryObject ],
-               
-  function( object_list, selector )
-    local category_list;
-    
-    category_list := List( object_list, CapCategory );
-    
-    return ProductOp_OnObjects( object_list, ProductOp( category_list, category_list[ 1 ] ) );
-    
-end );
+end : ArgumentNumber := 1 );
 
 ##
 InstallOtherMethod( \/,
           [ IsList, IsCapProductCategory ],
   function( list, category )
 
-    if IsCapCategoryObject( list[ 1 ] ) then
+    if ForAll( list, IsCapCategoryObject ) then
 
-      return ProductOp_OnObjects( list, category );
+      return ProductCategoryObject( category, list );
 
-    elif IsCapCategoryMorphism( list[ 1 ] ) then
+    elif ForAll( list, IsCapCategoryMorphism ) then
 
-      return ProductOp_OnMorphisms( list, category );
+      return ProductCategoryMorphism( category, list );
 
-    elif IsCapCategoryTwoCell( list[ 1 ] ) then
+    elif ForAll( list, IsCapCategoryTwoCell ) then
 
-      return ProductOp_OnTwoCells( list, category );
+      return ProductCategoryTwoCell( category, list );
 
     else
 
@@ -312,32 +337,6 @@ InstallOtherMethod( \/,
 
     fi;
 
-end );
-
-##
-InstallMethod( ProductOp,
-               [ IsList, IsCapCategoryMorphism ],
-               
-  function( morphism_list, selector )
-    local category_list;
-    
-    category_list := List( morphism_list, CapCategory );
-    
-    return ProductOp_OnMorphisms( morphism_list, ProductOp( category_list, category_list[ 1 ] ) );
-    
-end );
-
-##
-InstallMethod( ProductOp,
-               [ IsList, IsCapCategoryTwoCell ],
-               
-  function( twocell_list, selector )
-    local category_list;
-    
-    category_list := List( twocell_list, CapCategory );
-    
-    return ProductOp_OnMorphisms( twocell_list, ProductOp( category_list, category_list[ 1 ] ) );
-    
 end );
 
 ##
@@ -412,31 +411,11 @@ end );
 
 ##
 InstallMethod( Source,
-               [ IsCapCategoryProductMorphism ],
-               
-  function( morphism )
-    
-    return CallFuncList( Product, List( Components( morphism ), Source ) );
-    
-end );
-
-##
-InstallMethod( Range,
-               [ IsCapCategoryProductMorphism ],
-               
-  function( morphism )
-    
-    return CallFuncList( Product, List( Components( morphism ), Range ) );
-    
-end );
-
-##
-InstallMethod( Source,
                [ IsCapCategoryProductTwoCell ],
                
   function( twocell )
     
-    return CallFuncList( Product, List( Components( twocell ), Source ) );
+    return ProductCategoryMorphism( CapCategory( twocell ), List( Components( twocell ), Source ) );
     
 end );
 
@@ -446,7 +425,7 @@ InstallMethod( Range,
                
   function( twocell )
     
-    return CallFuncList( Product, List( Components( twocell ), Range ) );
+    return ProductCategoryMorphism( CapCategory( twocell ), List( Components( twocell ), Range ) );
     
 end );
 
@@ -461,7 +440,7 @@ InstallMethodWithCacheFromObject( HorizontalPreCompose,
     
     right_comp := Components( twocell_right );
     
-    return CallFuncList( Product, List( [ 1 .. Length( twocell_left ) ], i -> HorizontalPreCompose( left_comp[ i ], right_comp[ i ] ) ) );
+    return ProductCategoryTwoCell( CapCategory( twocell_left ), List( [ 1 .. Length( twocell_left ) ], i -> HorizontalPreCompose( left_comp[ i ], right_comp[ i ] ) ) );
     
 end );
 
@@ -476,7 +455,7 @@ InstallMethodWithCacheFromObject( VerticalPreCompose,
     
     right_comp := Components( twocell_right );
     
-    return CallFuncList( Product, List( [ 1 .. Length( twocell_left ) ], i -> VerticalPreCompose( left_comp[ i ], right_comp[ i ] ) ) );
+    return ProductCategoryTwoCell( CapCategory( twocell_left ), List( [ 1 .. Length( twocell_left ) ], i -> VerticalPreCompose( left_comp[ i ], right_comp[ i ] ) ) );
     
 end );
 
@@ -496,7 +475,7 @@ InstallMethodWithCache( DirectProductFunctor,
     
     direct_product_functor := CapFunctor( 
       Concatenation( "direct_product_on_", Name( category ), "_for_", String( number_of_arguments ), "_arguments" ),
-      CallFuncList( Product, List( [ 1 .. number_of_arguments ], c -> category ) ), 
+      ProductCategory( List( [ 1 .. number_of_arguments ], c -> category ) ),
       category 
     );
     
@@ -535,7 +514,7 @@ InstallMethodWithCache( CoproductFunctor,
     
     coproduct_functor := CapFunctor( 
       Concatenation( "coproduct_on_", Name( category ), "_for_", String( number_of_arguments ), "_arguments" ),
-      CallFuncList( Product, List( [ 1 .. number_of_arguments ], c -> category ) ), 
+      ProductCategory( List( [ 1 .. number_of_arguments ], c -> category ) ),
       category 
     );
     
@@ -578,15 +557,19 @@ MakeReadWriteGlobal( "Product" );
 
 ## HEHE!
 Product := function( arg )
-  
-  if ( ForAll( arg, IsCapCategory ) or ForAll( arg, IsCapCategoryObject ) or ForAll( arg, IsCapCategoryMorphism ) ) and Length( arg ) > 0 then
-      
-      return ProductOp( arg, arg[ 1 ] );
-      
-  fi;
-  
-  return CallFuncList( CAP_INTERNAL_PRODUCT_SAVE, arg );
-  
+    
+    if ForAll( arg, IsCapCategory ) then
+        
+        return ProductCategory( arg );
+        
+    elif ForAll( arg, IsCapCategoryCell ) then
+        
+        return arg / ProductCategory( List( arg, CapCategory ) );
+        
+    fi;
+    
+    return CallFuncList( CAP_INTERNAL_PRODUCT_SAVE, arg );
+    
 end;
 
 MakeReadOnlyGlobal( "Product" );

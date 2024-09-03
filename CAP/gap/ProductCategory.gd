@@ -59,23 +59,20 @@ DeclareOperation( "[]",
 ##
 ############################
 
-DeclareOperation( "ProductOp",
-                  [ IsList, IsCapCategory ] );
+DeclareOperation( "ProductCategory",
+                  [ IsList ] );
 
-DeclareOperation( "ProductOp_OnMorphisms",
-                  [ IsList, IsCapCategory ] );
+DeclareOperation( "ProductCategoryObject",
+                  [ IsCapProductCategory, IsList ] );
 
-DeclareOperation( "ProductOp_OnObjects",
-                  [ IsList, IsCapCategory ] );
+DeclareOperation( "ProductCategoryMorphism",
+                  [ IsCapProductCategory, IsList ] );
 
-DeclareOperation( "ProductOp_OnTwoCells",
-                  [ IsList, IsCapCategory ] );
+DeclareOperation( "ProductCategoryTwoCell",
+                  [ IsCapProductCategory, IsList ] );
 
 DeclareOperation( "/",
                   [ IsList, IsCapProductCategory ] );
-
-DeclareOperation( "ProductOp",
-                  [ IsList, IsCapCategoryCell ] );
 
 ############################
 ##

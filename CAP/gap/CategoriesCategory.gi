@@ -90,7 +90,7 @@ BindGlobal( "CAP_INTERNAL_CREATE_FUNCTOR_SOURCE",
         
     od;
     
-    return CallFuncList( Product, source_list );
+    return ProductCategory( source_list );
     
 end );
 
@@ -587,7 +587,7 @@ AddDirectProduct( category,
                   
   function( cat, object_product_list )
     
-    return AsCatObject( CallFuncList( Product, List( object_product_list, AsCapCategory ) ) );
+    return AsCatObject( ProductCategory( List( object_product_list, AsCapCategory ) ) );
     
 end );
 
@@ -645,7 +645,7 @@ AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( category,
             
             object_list := List( sink, F -> ApplyFunctor( F, object ) );
             
-            return CallFuncList( Product, object_list );
+            return ProductCategoryObject( object_list );
             
         end );
         
@@ -656,7 +656,7 @@ AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( category,
             
             morphism_list := List( sink, F -> ApplyFunctor( F, morphism ) );
             
-            return CallFuncList( Product, morphism_list );
+            return ProductCategoryMorphism( morphism_list );
             
         end );
         

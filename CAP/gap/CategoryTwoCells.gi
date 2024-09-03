@@ -24,29 +24,40 @@ InstallMethod( Add,
   function( category, twocell )
     local obj_filter, filter;
     
+    filter := TwoCellFilter( category );
+    
+    if not filter( twocell ) then
+        
+        SetFilterObj( twocell, filter );
+        
+    fi;
+    
     if HasCapCategory( twocell ) then
         
-        if IsIdenticalObj( CapCategory( twocell ), category ) then
+        if not IsIdenticalObj( CapCategory( twocell ), category ) then
             
-            return;
-            
-        else
-            
-            Error( "this 2-cell already has a category" );
+            Error(
+                Concatenation(
+                    "a two cell that lies in the CAP-category with the name\n",
+                    Name( CapCategory( twocell ) ),
+                    "\n",
+                    "was tried to be added to a different CAP-category with the name\n",
+                    Name( category ), ".\n",
+                    "(Please note that it is possible for different CAP-categories to have the same name)"
+                )
+            );
             
         fi;
+        
+    else
+        
+        SetCapCategory( twocell, category );
         
     fi;
     
     AddMorphism( category, Source( twocell ) );
     
     AddMorphism( category, Range( twocell ) );
-    
-    filter := TwoCellFilter( category );
-    
-    SetFilterObj( twocell, filter );
-    
-    SetCapCategory( twocell, category );
     
 end );
 
