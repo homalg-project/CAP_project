@@ -126,7 +126,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
           direct_sum_attributes_operation, create_function_primitive_type, create_function_object,
           create_function_morphism_no_new_object, create_function_morphism_new_source,
           create_function_morphism_new_range, attributes, recnames, name, func, pos, function_to_add, add_function,
-          create_function_object_no_arguments, create_function_morphism_or_fail, with_given_object_name, entry,
+          create_function_object_no_arguments, with_given_object_name, entry,
           no_install_list, functorial, installed_operations_of_underlying_category;
     
     category_with_attributes := structure_record.category_with_attributes;
@@ -213,40 +213,6 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
             underlying_arg:= List( arg, UnderlyingCell );
             
             underlying_return := CallFuncList( operation, underlying_arg );
-            
-            source := CallFuncList( output_source_getter, Concatenation( [ category_with_attributes ], arg ) );
-            
-            range := CallFuncList( output_range_getter, Concatenation( [ category_with_attributes ], arg ) );
-            
-            return CallFuncList( morphism_constructor, [ source, underlying_return, range ] );
-            
-          end;
-          
-      end;
-    
-    ## assumes that no new object is created
-    create_function_morphism_or_fail :=
-      function( operation_name )
-        local operation, output_source_getter, output_range_getter;
-        
-        operation := ValueGlobal( operation_name );
-        
-        output_source_getter := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).output_source_getter;
-        output_range_getter := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).output_range_getter;
-        
-        return
-          function( cat, arg... )
-            local underlying_arg, underlying_return, source, range;
-            
-            underlying_arg:= List( arg, UnderlyingCell );
-            
-            underlying_return := CallFuncList( operation, underlying_arg );
-            
-            if underlying_return = fail then
-                
-                return fail;
-                
-            fi;
             
             source := CallFuncList( output_source_getter, Concatenation( [ category_with_attributes ], arg ) );
             
@@ -477,12 +443,6 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
                 fi;
                 
             fi;
-            
-        elif entry.return_type = "morphism_or_fail" then
-            
-            function_to_add := create_function_morphism_or_fail( name );
-            
-            add_function( category_with_attributes, function_to_add );
             
         fi;
         

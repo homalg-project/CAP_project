@@ -4,7 +4,7 @@
 # Implementations
 #
 InstallGlobalFunction( "CapJitCompiledCAPOperationAsEnhancedSyntaxTree", function ( cat, operation_name, post_processing_enabled )
-  local index, function_to_compile, global_variable_name, info, return_type, trees;
+  local index, function_to_compile, global_variable_name, info, trees;
     
     Assert( 0, CanCompute( cat, operation_name ) );
     
@@ -52,19 +52,7 @@ InstallGlobalFunction( "CapJitCompiledCAPOperationAsEnhancedSyntaxTree", functio
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name);
         
-        return_type := info.return_type;
-        
-        if EndsWith( return_type, "fail" ) then
-            
-            Display( Concatenation(
-                "WARNING: Compiling CAP operation ", operation_name, " with return_type ", return_type, ". ",
-                "Operations returning fail usually do not fulfill the requirements that all branches of an if statement can be executed even if the corresponding condition does not hold. ",
-                "This might cause errors."
-            ) );
-            
-        fi;
-        
-        trees := CapJitCompiledFunctionAsEnhancedSyntaxTree( function_to_compile, "with_and_without_post_processing", cat, info.filter_list, return_type );
+        trees := CapJitCompiledFunctionAsEnhancedSyntaxTree( function_to_compile, "with_and_without_post_processing", cat, info.filter_list, info.return_type );
         
         cat!.compiled_functions_trees.(operation_name)[index] := trees[1];
         cat!.compiled_functions_post_processed_trees.(operation_name)[index] := trees[2];

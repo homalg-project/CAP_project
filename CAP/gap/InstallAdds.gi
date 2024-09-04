@@ -3,30 +3,6 @@
 #
 # Implementations
 #
-BindGlobal( "CAP_INTERNAL_ADD_OBJECT_OR_FAIL",
-  
-  function( category, object_or_fail )
-    
-    if object_or_fail = fail then
-        return;
-    fi;
-    
-    AddObject( category, object_or_fail );
-    
-end );
-
-BindGlobal( "CAP_INTERNAL_ADD_MORPHISM_OR_FAIL",
-  
-  function( category, morphism_or_fail )
-    
-    if morphism_or_fail = fail then
-        return;
-    fi;
-    
-    AddMorphism( category, morphism_or_fail );
-    
-end );
-
 BindGlobal( "CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY",
   
   function( function_name, category, message )
@@ -92,10 +68,6 @@ InstallGlobalFunction( CapInternalInstallAdd,
         add_value_to_category_function := AddMorphism;
     elif record.return_type = "twocell" then
         add_value_to_category_function := AddTwoCell;
-    elif record.return_type = "object_or_fail" then
-        add_value_to_category_function := CAP_INTERNAL_ADD_OBJECT_OR_FAIL;
-    elif record.return_type = "morphism_or_fail" then
-        add_value_to_category_function := CAP_INTERNAL_ADD_MORPHISM_OR_FAIL;
     else
         add_value_to_category_function := ReturnTrue;
     fi;
@@ -202,7 +174,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
         local is_derivation, is_final_derivation, is_precompiled_derivation, replaced_filter_list,
             number_of_proposed_arguments, current_function_argument_number, current_additional_filter_list_length,
             input_human_readable_identifier_getter, input_sanity_check_functions, output_human_readable_identifier_getter, output_sanity_check_function,
-            output_data_type, assert_is_value_of_return_type, install_func, name, current_function_number, i;
+            output_data_type, install_func, name, current_function_number, i;
         
         if IsFinalized( category ) then
             Error( "cannot add methods anymore, category is finalized" );
@@ -338,37 +310,11 @@ InstallGlobalFunction( CapInternalInstallAdd,
         # prepare output sanity check
         output_human_readable_identifier_getter := {} -> Concatenation( "the result of the function \033[1m", function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" );
         
-        if EndsWith( record.return_type, "_or_fail" ) then
-            
-            output_data_type := CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( record.return_type{[ 1 .. Length( record.return_type ) - 8 ]}, category );
-            
-        else
-            
-            output_data_type := CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( record.return_type, category );
-            
-        fi;
+        output_data_type := CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( record.return_type, category );
         
         if output_data_type <> fail then
             
-            assert_is_value_of_return_type := CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER( output_data_type, output_human_readable_identifier_getter );
-            
-            if EndsWith( record.return_type, "_or_fail" ) then
-                
-                output_sanity_check_function := function( result )
-                    
-                    if result <> fail then
-                        
-                        assert_is_value_of_return_type( result );
-                        
-                    fi;
-                    
-                end;
-                
-            else
-                
-                output_sanity_check_function := assert_is_value_of_return_type;
-                
-            fi;
+            output_sanity_check_function := CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER( output_data_type, output_human_readable_identifier_getter );
             
         else
             
