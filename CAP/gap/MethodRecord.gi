@@ -129,21 +129,6 @@ Lift := rec(
   compatible_with_congruence_of_morphisms := false,
 ),
 
-LiftOrFail := rec(
-  filter_list := [ "category", "morphism", "morphism" ],
-  input_arguments_names := [ "cat", "alpha", "beta" ],
-  output_source_getter_string := "Source( alpha )",
-  output_source_getter_preconditions := [ ],
-  output_range_getter_string := "Source( beta )",
-  output_range_getter_preconditions := [ ],
-  pre_function := "Lift",
-  return_type := "morphism_or_fail",
-  dual_operation := "ColiftOrFail",
-  dual_arguments_reversed := true,
-  is_merely_set_theoretic := true,
-  compatible_with_congruence_of_morphisms := false,
-),
-
 IsLiftable := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   pre_function := "Lift",
@@ -172,21 +157,6 @@ Colift := rec(
   end,
   return_type := "morphism",
   dual_operation := "Lift",
-  dual_arguments_reversed := true,
-  is_merely_set_theoretic := true,
-  compatible_with_congruence_of_morphisms := false,
-),
-
-ColiftOrFail := rec(
-  filter_list := [ "category", "morphism", "morphism" ],
-  input_arguments_names := [ "cat", "alpha", "beta" ],
-  output_source_getter_string := "Range( alpha )",
-  output_source_getter_preconditions := [ ],
-  output_range_getter_string := "Range( beta )",
-  output_range_getter_preconditions := [ ],
-  pre_function := "Colift",
-  return_type := "morphism_or_fail",
-  dual_operation := "LiftOrFail",
   dual_arguments_reversed := true,
   is_merely_set_theoretic := true,
   compatible_with_congruence_of_morphisms := false,
@@ -3573,13 +3543,6 @@ SolveLinearSystemInAbCategory := rec(
     return [ true ];
     
   end,
-),
-
-SolveLinearSystemInAbCategoryOrFail := rec(
-  filter_list := [ "category", "list_of_lists_of_morphisms", "list_of_lists_of_morphisms", "list_of_morphisms" ],
-  return_type := "list_of_morphisms_or_fail",
-  pre_function := "SolveLinearSystemInAbCategory",
-  pre_function_full := "SolveLinearSystemInAbCategory"
 ),
 
 MereExistenceOfSolutionOfLinearSystemInAbCategory := rec(

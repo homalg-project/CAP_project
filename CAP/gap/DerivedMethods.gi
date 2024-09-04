@@ -1896,37 +1896,6 @@ end : CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure 
       CategoryFilter := cat -> HasRangeCategoryOfHomomorphismStructure( cat ) );
 
 ##
-AddDerivationToCAP( LiftOrFail,
-                    "Derive LiftOrFail using the homomorphism structure and LiftOrFail in the range of the homomorphism structure",
-                    [ [ IdentityMorphism, 1 ],
-                      [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure, 1 ],
-                      [ HomomorphismStructureOnMorphisms, 1 ],
-                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 1 ],
-                      [ LiftOrFail, 1, RangeCategoryOfHomomorphismStructure ] ],
-                    
-  function( cat, alpha, beta )
-    local range_cat, a, b, l;
-    
-    range_cat := RangeCategoryOfHomomorphismStructure( cat );
-    
-    a := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat, alpha );
-    
-    b := HomomorphismStructureOnMorphisms( cat, IdentityMorphism( cat, Source( alpha ) ), beta );
-    
-    l := LiftOrFail( range_cat, a, b );
-    
-    if l = fail then
-      
-      return fail;
-      
-    fi;
-    
-    return InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat, Source( alpha ), Source( beta ), l );
-    
-end : CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
-      CategoryFilter := cat -> HasRangeCategoryOfHomomorphismStructure( cat ) );
-
-##
 AddDerivationToCAP( IsLiftable,
                     "Derive IsLiftable using the homomorphism structure and Liftable in the range of the homomorphism structure",
                     [ [ IdentityMorphism, 1 ],
@@ -1968,37 +1937,6 @@ AddDerivationToCAP( Colift,
     a := HomomorphismStructureOnMorphisms( cat, alpha, IdentityMorphism( cat, Range( beta ) ) );
     
     return InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat, Range( alpha ), Range( beta ), Lift( range_cat, b, a ) );
-    
-end : CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
-      CategoryFilter := cat -> HasRangeCategoryOfHomomorphismStructure( cat ) );
-
-##
-AddDerivationToCAP( ColiftOrFail,
-                    "Derive ColiftOrFail using the homomorphism structure and LiftOrFail in the range of the homomorphism structure",
-                    [ [ IdentityMorphism, 1 ],
-                      [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure, 1 ],
-                      [ HomomorphismStructureOnMorphisms, 1 ],
-                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 1 ],
-                      [ LiftOrFail, 1, RangeCategoryOfHomomorphismStructure ] ],
-                    
-  function( cat, alpha, beta )
-    local range_cat, b, a, l;
-    
-    range_cat := RangeCategoryOfHomomorphismStructure( cat );
-    
-    b := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat, beta );
-    
-    a := HomomorphismStructureOnMorphisms( cat, alpha, IdentityMorphism( cat, Range( beta ) ) );
-    
-    l := LiftOrFail( range_cat, b, a );
-    
-    if l = fail then
-      
-      return fail;
-      
-    fi;
-    
-    return InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat, Range( alpha ), Range( beta ), l );
     
 end : CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
       CategoryFilter := cat -> HasRangeCategoryOfHomomorphismStructure( cat ) );
@@ -2048,34 +1986,6 @@ AddDerivationToCAP( Lift,
 end );
 
 ##
-AddDerivationToCAP( LiftOrFail,
-                    "LiftOrFail by SolveLinearSystemInAbCategoryOrFail",
-                    [ [ IdentityMorphism, 1 ],
-                      [ SolveLinearSystemInAbCategoryOrFail, 1 ] ],
-                    
-  function( cat, alpha, beta )
-    local left_coefficients, right_coefficients, right_side, right_divide;
-    
-    left_coefficients := [ [ IdentityMorphism( cat, Source( alpha ) ) ] ];
-    
-    right_coefficients := [ [ beta ] ];
-    
-    right_side := [ alpha ];
-    
-    right_divide := SolveLinearSystemInAbCategoryOrFail( cat,
-                      left_coefficients, right_coefficients, right_side );
-    
-    if right_divide = fail then
-      
-      return fail;
-      
-    fi;
-    
-    return right_divide[1];
-    
-end );
-
-##
 AddDerivationToCAP( IsLiftable,
                     "IsLiftable by MereExistenceOfSolutionOfLinearSystemInAbCategory",
                     [ [ IdentityMorphism, 1 ],
@@ -2118,34 +2028,6 @@ AddDerivationToCAP( Colift,
 end );
 
 ##
-AddDerivationToCAP( ColiftOrFail,
-                    "ColiftOrFail by SolveLinearSystemInAbCategoryOrFail",
-                    [ [ IdentityMorphism, 1 ],
-                      [ SolveLinearSystemInAbCategoryOrFail, 1 ] ],
-                    
-  function( cat, alpha, beta )
-    local left_coefficients, right_coefficients, right_side, left_divide;
-    
-    left_coefficients := [ [ alpha ] ];
-    
-    right_coefficients := [ [ IdentityMorphism( cat, Range( beta ) ) ] ];
-    
-    right_side := [ beta ];
-    
-    left_divide := SolveLinearSystemInAbCategoryOrFail( cat,
-                      left_coefficients, right_coefficients, right_side );
-    
-    if left_divide = fail then
-      
-      return fail;
-      
-    fi;
-    
-    return left_divide[1];
-    
-end );
-
-##
 AddDerivationToCAP( IsColiftable,
                     "IsColiftable by MereExistenceOfSolutionOfLinearSystemInAbCategory",
                     [ [ IdentityMorphism, 1 ],
@@ -2162,66 +2044,6 @@ AddDerivationToCAP( IsColiftable,
     
     return MereExistenceOfSolutionOfLinearSystemInAbCategory( cat,
                       left_coefficients, right_coefficients, right_side );
-    
-end );
-
-##
-AddDerivationToCAP( LiftOrFail,
-                    "LiftOrFail using IsLiftable and Lift",
-                    [ [ IsLiftable, 1 ],
-                      [ Lift, 1 ] ],
-                    
-  function( cat, alpha, beta )
-    
-    if IsLiftable( cat, alpha, beta ) then
-        
-        return Lift( cat, alpha, beta );
-        
-    else
-        
-        return fail;
-        
-    fi;
-    
-end );
-
-##
-AddDerivationToCAP( ColiftOrFail,
-                    "ColiftOrFail using IsColiftable and Colift",
-                    [ [ IsColiftable, 1 ],
-                      [ Colift, 1 ] ],
-                    
-  function( cat, alpha, beta )
-    
-    if IsColiftable( cat, alpha, beta ) then
-        
-        return Colift( cat, alpha, beta );
-        
-    else
-        
-        return fail;
-        
-    fi;
-    
-end );
-
-##
-AddDerivationToCAP( SolveLinearSystemInAbCategoryOrFail,
-                    "SolveLinearSystemInAbCategoryOrFail using MereExistenceOfSolutionOfLinearSystemInAbCategory and SolveLinearSystemInAbCategory",
-                    [ [ MereExistenceOfSolutionOfLinearSystemInAbCategory, 1 ],
-                      [ SolveLinearSystemInAbCategory, 1 ] ],
-                    
-  function( cat, left_coefficients, right_coefficients, right_side )
-    
-    if MereExistenceOfSolutionOfLinearSystemInAbCategory( cat, left_coefficients, right_coefficients, right_side ) then
-        
-        return SolveLinearSystemInAbCategory( cat, left_coefficients, right_coefficients, right_side );
-        
-    else
-        
-        return fail;
-        
-    fi;
     
 end );
 
@@ -2533,77 +2355,6 @@ AddDerivationToCAP( SolveLinearSystemInAbCategory,
     
     ## the actual computation of the solution
     lift := Lift( range_cat, nu, H );
-    
-    ## reinterpretation of the solution
-    summands := List( [ 1 .. n ], j -> HomomorphismStructureOnObjects( cat, Range( left_coefficients[1][j] ), Source( right_coefficients[1][j] ) ) );
-    
-    return List( [ 1 .. n ], j ->
-        InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
-          Range( left_coefficients[1][j] ),
-          Source( right_coefficients[1][j] ),
-          ComponentOfMorphismIntoDirectSum( range_cat, lift, summands, j )
-        )
-      );
-  end :
-  CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
-  CategoryFilter := cat -> HasIsAbCategory( cat ) and IsAbCategory( cat ) and HasRangeCategoryOfHomomorphismStructure( cat )
-);
-
-##
-AddDerivationToCAP( SolveLinearSystemInAbCategoryOrFail,
-                    "SolveLinearSystemInAbCategoryOrFail using the homomorphism structure",
-                    [ [ DistinguishedObjectOfHomomorphismStructure, 1 ],
-                      [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure, 2 ],
-                      [ HomomorphismStructureOnMorphismsWithGivenObjects, 4 ],
-                      [ HomomorphismStructureOnObjects, 6 ],
-                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 2 ],
-                      [ UniversalMorphismIntoDirectSum, 1, RangeCategoryOfHomomorphismStructure ],
-                      [ MorphismBetweenDirectSums, 1, RangeCategoryOfHomomorphismStructure ],
-                      [ LiftOrFail, 1, RangeCategoryOfHomomorphismStructure ],
-                      [ ComponentOfMorphismIntoDirectSum, 2, RangeCategoryOfHomomorphismStructure ] ],
-                    
-  function( cat, left_coefficients, right_coefficients, right_side )
-    local range_cat, m, n, distinguished_object, interpretations, nu, H_B_C, H_A_D, list, H, lift, summands;
-    
-    range_cat := RangeCategoryOfHomomorphismStructure( cat );
-    
-    m := Length( left_coefficients );
-    
-    n := Length( left_coefficients[1] );
-    
-    ## create lift diagram
-    
-    distinguished_object := DistinguishedObjectOfHomomorphismStructure( cat );
-    interpretations := List( [ 1 .. m ], i -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat, right_side[i] ) );
-    
-    nu := UniversalMorphismIntoDirectSum( range_cat,
-        List( interpretations, mor -> Range( mor ) ),
-        distinguished_object,
-        interpretations
-    );
-    
-    # left_coefficients[i][j] : A_i -> B_j
-    # right_coefficients[i][j] : C_j -> D_i
-    
-    H_B_C := List( [ 1 .. n ], j -> HomomorphismStructureOnObjects( cat, Range( left_coefficients[1][j] ), Source( right_coefficients[1][j] ) ) );
-    
-    H_A_D := List( [ 1 .. m ], i -> HomomorphismStructureOnObjects( cat, Source( left_coefficients[i][1] ), Range( right_coefficients[i][1] ) ) );
-    
-    list :=
-      List( [ 1 .. n ],
-      j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphismsWithGivenObjects( cat, H_B_C[j], left_coefficients[i][j], right_coefficients[i][j], H_A_D[i] ) ) 
-    );
-    
-    H := MorphismBetweenDirectSums( range_cat, H_B_C, list, H_A_D );
-    
-    ## the actual computation of the solution
-    lift := LiftOrFail( range_cat, nu, H );
-    
-    if lift = fail then
-        
-        return fail;
-        
-    fi;
     
     ## reinterpretation of the solution
     summands := List( [ 1 .. n ], j -> HomomorphismStructureOnObjects( cat, Range( left_coefficients[1][j] ), Source( right_coefficients[1][j] ) ) );
