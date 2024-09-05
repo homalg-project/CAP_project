@@ -600,34 +600,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
 
     end );
     
-    AddLiftOrFail( category,
-      function( cat, morphism1, morphism2 )
-        local right_divide, required_degrees, lift;
-        
-        # try to find a lift
-        right_divide := RightDivide( UnderlyingHomalgMatrix( morphism1 ), UnderlyingHomalgMatrix( morphism2 ) );
-
-        # check if this failed
-        if right_divide = fail then
-          
-          return fail;
-          
-        fi;
-
-        # identify the homogeneous part of this matrix
-        required_degrees := List( UnzipDegreeList( Source( morphism1 ) ),
-                                i -> List( UnzipDegreeList( Source( morphism2 ) ), j -> j - i ) );
-        lift := HomogeneousPartOfMatrix( right_divide, required_degrees );
-        
-        # and construct the lift
-        return GradedRowOrColumnMorphism( Source( morphism1 ),
-                                          lift,
-                                          Source( morphism2 ),
-                                          checks
-                                          );
-
-    end );
-    
     AddIsLiftable( category,
       function( cat, morphism1, morphism2 )
         
@@ -646,33 +618,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
 
         # try to find a matrix that performs the colift
         left_divide := LeftDivide( UnderlyingHomalgMatrix( morphism1 ), UnderlyingHomalgMatrix( morphism2 ) );
-
-        required_degrees := List( UnzipDegreeList( Range( morphism1 ) ),
-                                i -> List( UnzipDegreeList( Range( morphism2 ) ), j -> j - i ) );
-        colift := HomogeneousPartOfMatrix( left_divide, required_degrees );
-                                
-        # if it did work, return the corresponding morphism
-        return GradedRowOrColumnMorphism( Range( morphism1 ),
-                                                 colift,
-                                                 Range( morphism2 ),
-                                                 checks
-                                                 );
-
-    end );
-
-    AddColiftOrFail( category,
-      function( cat, morphism1, morphism2 )
-        local left_divide, required_degrees, colift;
-
-        # try to find a matrix that performs the colift
-        left_divide := LeftDivide( UnderlyingHomalgMatrix( morphism1 ), UnderlyingHomalgMatrix( morphism2 ) );
-
-        # check if this worked
-        if left_divide = fail then
-
-          return fail;
-
-        fi;
 
         required_degrees := List( UnzipDegreeList( Range( morphism1 ) ),
                                 i -> List( UnzipDegreeList( Range( morphism2 ) ), j -> j - i ) );

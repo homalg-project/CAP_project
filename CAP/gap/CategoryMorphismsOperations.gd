@@ -748,6 +748,7 @@ DeclareOperation( "Lift",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
+#! This is a convenience operation.
 #! The arguments are two morphisms $\alpha: a \rightarrow c$, $\beta: b \rightarrow c$.
 #! The output is a lift $\alpha / \beta: a \rightarrow b$ of $\alpha$ along $\beta$
 #! if such a lift exists or $\mathtt{fail}$ if it doesn't.
@@ -782,6 +783,7 @@ DeclareOperation( "Colift",
 
 
 #! @Description
+#! This is a convenience operation.
 #! The arguments are two morphisms $\alpha: a \rightarrow c$, $\beta: a \rightarrow b$.
 #! The output is a colift $\alpha \backslash \beta: c \rightarrow b$ of $\beta$ along $\alpha$
 #! if such a colift exists or $\mathtt{fail}$ if it doesn't.
@@ -1001,6 +1003,7 @@ DeclareOperation( "SolveLinearSystemInAbCategory",
                    [ IsList, IsList, IsList ] );
 
 #! @Description
+#! This is a convenience operation.
 #! Like <C>SolveLinearSystemInAbCategory</C>,
 #! but without the assumption that a solution exists.
 #! If no solution exists, `fail` is returned.

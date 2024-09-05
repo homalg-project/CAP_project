@@ -19,7 +19,6 @@
 #! * <Ref BookName="FreydCategoriesForCAP" Func="BiasedWeakPushout" Label="for Is" />
 #! * <Ref BookName="CAP" Func="Colift" Label="for Is" />
 #! * <Ref BookName="CAP" Func="ColiftAlongEpimorphism" Label="for Is" />
-#! * <Ref BookName="CAP" Func="ColiftOrFail" Label="for Is" />
 #! * <Ref BookName="CAP" Func="ComponentOfMorphismFromCoproduct" Label="for Is" />
 #! * <Ref BookName="CAP" Func="ComponentOfMorphismFromDirectSum" Label="for Is" />
 #! * <Ref BookName="CAP" Func="ComponentOfMorphismIntoDirectProduct" Label="for Is" />
@@ -92,7 +91,6 @@
 #! * <Ref BookName="CAP" Func="JointPairwiseDifferencesOfMorphismsIntoDirectProduct" Label="for Is" />
 #! * <Ref BookName="CAP" Func="Lift" Label="for Is" />
 #! * <Ref BookName="CAP" Func="LiftAlongMonomorphism" Label="for Is" />
-#! * <Ref BookName="CAP" Func="LiftOrFail" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MorphismBetweenDirectSums" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MorphismBetweenDirectSumsWithGivenDirectSums" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MorphismConstructor" Label="for Is" />
@@ -203,7 +201,6 @@
 #! * <Ref BookName="CAP" Func="MereExistenceOfSolutionOfLinearSystemInAbCategory" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MultiplyWithElementOfCommutativeRingForMorphisms" Label="for Is" />
 #! * <Ref BookName="CAP" Func="SolveLinearSystemInAbCategory" Label="for Is" />
-#! * <Ref BookName="CAP" Func="SolveLinearSystemInAbCategoryOrFail" Label="for Is" />
 
 #! @Subsection CategoryOfRows of a commutative ring
 

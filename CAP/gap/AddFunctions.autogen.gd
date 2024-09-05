@@ -506,25 +506,6 @@ DeclareOperation( "AddColiftAlongEpimorphism",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `ColiftOrFail`.
-#! $F: ( alpha, beta ) \mapsto \mathtt{ColiftOrFail}(alpha, beta)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddColiftOrFail",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddColiftOrFail",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddColiftOrFail",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddColiftOrFail",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
 #! to the category for the basic operation `ComponentOfMorphismFromCoproduct`.
 #! $F: ( alpha, I, i ) \mapsto \mathtt{ComponentOfMorphismFromCoproduct}(alpha, I, i)$.
 #! @Returns nothing
@@ -3014,25 +2995,6 @@ DeclareOperation( "AddLiftAlongMonomorphism",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `LiftOrFail`.
-#! $F: ( alpha, beta ) \mapsto \mathtt{LiftOrFail}(alpha, beta)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddLiftOrFail",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddLiftOrFail",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddLiftOrFail",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddLiftOrFail",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
 #! to the category for the basic operation `LinearCombinationOfMorphisms`.
 #! $F: ( source, list_of_ring_elements, list_of_morphisms, range ) \mapsto \mathtt{LinearCombinationOfMorphisms}(source, list_of_ring_elements, list_of_morphisms, range)$.
 #! @Returns nothing
@@ -4491,25 +4453,6 @@ DeclareOperation( "AddSolveLinearSystemInAbCategory",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddSolveLinearSystemInAbCategory",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation `SolveLinearSystemInAbCategoryOrFail`.
-#! $F: ( arg2, arg3, arg4 ) \mapsto \mathtt{SolveLinearSystemInAbCategoryOrFail}(arg2, arg3, arg4)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddSolveLinearSystemInAbCategoryOrFail",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddSolveLinearSystemInAbCategoryOrFail",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddSolveLinearSystemInAbCategoryOrFail",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddSolveLinearSystemInAbCategoryOrFail",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
