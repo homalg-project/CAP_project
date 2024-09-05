@@ -882,7 +882,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LiftOrFail</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a,b) + \{ \mathtt{fail} \}</span></p>
 
-<p>The arguments are two morphisms <span class="Math">\alpha: a \rightarrow c</span>, <span class="Math">\beta: b \rightarrow c</span>. The output is a lift <span class="Math">\alpha / \beta: a \rightarrow b</span> of <span class="Math">\alpha</span> along <span class="Math">\beta</span> if such a lift exists or <span class="Math">\mathtt{fail}</span> if it doesn't. Recall that a lift <span class="Math">\alpha / \beta: a \rightarrow b</span> of <span class="Math">\alpha</span> along <span class="Math">\beta</span> is a morphism such that <span class="Math">\beta \circ (\alpha / \beta) \sim_{a,c} \alpha</span>.</p>
+<p>This is a convenience operation. The arguments are two morphisms <span class="Math">\alpha: a \rightarrow c</span>, <span class="Math">\beta: b \rightarrow c</span>. The output is a lift <span class="Math">\alpha / \beta: a \rightarrow b</span> of <span class="Math">\alpha</span> along <span class="Math">\beta</span> if such a lift exists or <span class="Math">\mathtt{fail}</span> if it doesn't. Recall that a lift <span class="Math">\alpha / \beta: a \rightarrow b</span> of <span class="Math">\alpha</span> along <span class="Math">\beta</span> is a morphism such that <span class="Math">\beta \circ (\alpha / \beta) \sim_{a,c} \alpha</span>.</p>
 
 <p><a id="X7F895375875BE5B9" name="X7F895375875BE5B9"></a></p>
 
@@ -909,7 +909,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ColiftOrFail</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(c,b) + \{ \mathtt{fail} \}</span></p>
 
-<p>The arguments are two morphisms <span class="Math">\alpha: a \rightarrow c</span>, <span class="Math">\beta: a \rightarrow b</span>. The output is a colift <span class="Math">\alpha \backslash \beta: c \rightarrow b</span> of <span class="Math">\beta</span> along <span class="Math">\alpha</span> if such a colift exists or <span class="Math">\mathtt{fail}</span> if it doesn't. Recall that a colift <span class="Math">\alpha \backslash \beta: c \rightarrow b</span> of <span class="Math">\beta</span> along <span class="Math">\alpha</span> is a morphism such that <span class="Math">(\alpha \backslash \beta) \circ \alpha \sim_{a,b} \beta</span>.</p>
+<p>This is a convenience operation. The arguments are two morphisms <span class="Math">\alpha: a \rightarrow c</span>, <span class="Math">\beta: a \rightarrow b</span>. The output is a colift <span class="Math">\alpha \backslash \beta: c \rightarrow b</span> of <span class="Math">\beta</span> along <span class="Math">\alpha</span> if such a colift exists or <span class="Math">\mathtt{fail}</span> if it doesn't. Recall that a colift <span class="Math">\alpha \backslash \beta: c \rightarrow b</span> of <span class="Math">\beta</span> along <span class="Math">\alpha</span> is a morphism such that <span class="Math">(\alpha \backslash \beta) \circ \alpha \sim_{a,b} \beta</span>.</p>
 
 <p><a id="X8685B04087B1E52A" name="X8685B04087B1E52A"></a></p>
 
@@ -1076,7 +1076,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SolveLinearSystemInAbCategoryOrFail</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">gamma</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a list of morphisms <span class="Math">[X_1, \dots, X_n]</span> or <code class="code">fail</code></p>
 
-<p>Like <code class="code">SolveLinearSystemInAbCategory</code>, but without the assumption that a solution exists. If no solution exists, <code class="code">fail</code> is returned.</p>
+<p>This is a convenience operation. Like <code class="code">SolveLinearSystemInAbCategory</code>, but without the assumption that a solution exists. If no solution exists, <code class="code">fail</code> is returned.</p>
 
 <p><a id="X7A722FA5817D5F76" name="X7A722FA5817D5F76"></a></p>
 

@@ -701,11 +701,12 @@
   [33X[1;0Y[29X[2XLiftOrFail[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b) + \{ \mathtt{fail} \}[123X[133X
   
-  [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  a  \rightarrow  c[123X,  [23X\beta:  b
-  \rightarrow  c[123X.  The  output  is  a  lift [23X\alpha / \beta: a \rightarrow b[123X of
-  [23X\alpha[123X  along  [23X\beta[123X  if  such a lift exists or [23X\mathtt{fail}[123X if it doesn't.
-  Recall  that a lift [23X\alpha / \beta: a \rightarrow b[123X of [23X\alpha[123X along [23X\beta[123X is
-  a morphism such that [23X\beta \circ (\alpha / \beta) \sim_{a,c} \alpha[123X.[133X
+  [33X[0;0YThis  is  a convenience operation. The arguments are two morphisms [23X\alpha: a
+  \rightarrow  c[123X, [23X\beta: b \rightarrow c[123X. The output is a lift [23X\alpha / \beta:
+  a \rightarrow b[123X of [23X\alpha[123X along [23X\beta[123X if such a lift exists or [23X\mathtt{fail}[123X
+  if  it doesn't. Recall that a lift [23X\alpha / \beta: a \rightarrow b[123X of [23X\alpha[123X
+  along  [23X\beta[123X is a morphism such that [23X\beta \circ (\alpha / \beta) \sim_{a,c}
+  \alpha[123X.[133X
   
   [1X3.12-7 IsLiftable[101X
   
@@ -734,12 +735,12 @@
   [33X[1;0Y[29X[2XColiftOrFail[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(c,b) + \{ \mathtt{fail} \}[123X[133X
   
-  [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  a  \rightarrow  c[123X,  [23X\beta:  a
-  \rightarrow b[123X. The output is a colift [23X\alpha \backslash \beta: c \rightarrow
-  b[123X  of  [23X\beta[123X  along  [23X\alpha[123X  if  such a colift exists or [23X\mathtt{fail}[123X if it
-  doesn't.  Recall  that  a colift [23X\alpha \backslash \beta: c \rightarrow b[123X of
-  [23X\beta[123X  along  [23X\alpha[123X is a morphism such that [23X(\alpha \backslash \beta) \circ
-  \alpha \sim_{a,b} \beta[123X.[133X
+  [33X[0;0YThis  is  a convenience operation. The arguments are two morphisms [23X\alpha: a
+  \rightarrow  c[123X,  [23X\beta:  a  \rightarrow  b[123X.  The  output  is a colift [23X\alpha
+  \backslash  \beta:  c  \rightarrow  b[123X of [23X\beta[123X along [23X\alpha[123X if such a colift
+  exists  or  [23X\mathtt{fail}[123X  if  it  doesn't.  Recall  that  a  colift  [23X\alpha
+  \backslash  \beta:  c \rightarrow b[123X of [23X\beta[123X along [23X\alpha[123X is a morphism such
+  that [23X(\alpha \backslash \beta) \circ \alpha \sim_{a,b} \beta[123X.[133X
   
   [1X3.12-10 IsColiftable[101X
   
@@ -917,8 +918,9 @@
   [33X[1;0Y[29X[2XSolveLinearSystemInAbCategoryOrFail[102X( [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list of morphisms [23X[X_1, \dots, X_n][123X or [10Xfail[110X[133X
   
-  [33X[0;0YLike  [10XSolveLinearSystemInAbCategory[110X,  but  without  the  assumption  that  a
-  solution exists. If no solution exists, [10Xfail[110X is returned.[133X
+  [33X[0;0YThis  is  a  convenience  operation. Like [10XSolveLinearSystemInAbCategory[110X, but
+  without  the  assumption that a solution exists. If no solution exists, [10Xfail[110X
+  is returned.[133X
   
   [1X3.16-10 MereExistenceOfSolutionOfLinearSystemInAbCategory[101X
   

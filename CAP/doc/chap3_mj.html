@@ -885,7 +885,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LiftOrFail</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a,b) + \{ \mathtt{fail} \}\)</span></p>
 
-<p>The arguments are two morphisms <span class="SimpleMath">\(\alpha: a \rightarrow c\)</span>, <span class="SimpleMath">\(\beta: b \rightarrow c\)</span>. The output is a lift <span class="SimpleMath">\(\alpha / \beta: a \rightarrow b\)</span> of <span class="SimpleMath">\(\alpha\)</span> along <span class="SimpleMath">\(\beta\)</span> if such a lift exists or <span class="SimpleMath">\(\mathtt{fail}\)</span> if it doesn't. Recall that a lift <span class="SimpleMath">\(\alpha / \beta: a \rightarrow b\)</span> of <span class="SimpleMath">\(\alpha\)</span> along <span class="SimpleMath">\(\beta\)</span> is a morphism such that <span class="SimpleMath">\(\beta \circ (\alpha / \beta) \sim_{a,c} \alpha\)</span>.</p>
+<p>This is a convenience operation. The arguments are two morphisms <span class="SimpleMath">\(\alpha: a \rightarrow c\)</span>, <span class="SimpleMath">\(\beta: b \rightarrow c\)</span>. The output is a lift <span class="SimpleMath">\(\alpha / \beta: a \rightarrow b\)</span> of <span class="SimpleMath">\(\alpha\)</span> along <span class="SimpleMath">\(\beta\)</span> if such a lift exists or <span class="SimpleMath">\(\mathtt{fail}\)</span> if it doesn't. Recall that a lift <span class="SimpleMath">\(\alpha / \beta: a \rightarrow b\)</span> of <span class="SimpleMath">\(\alpha\)</span> along <span class="SimpleMath">\(\beta\)</span> is a morphism such that <span class="SimpleMath">\(\beta \circ (\alpha / \beta) \sim_{a,c} \alpha\)</span>.</p>
 
 <p><a id="X7F895375875BE5B9" name="X7F895375875BE5B9"></a></p>
 
@@ -912,7 +912,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ColiftOrFail</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(c,b) + \{ \mathtt{fail} \}\)</span></p>
 
-<p>The arguments are two morphisms <span class="SimpleMath">\(\alpha: a \rightarrow c\)</span>, <span class="SimpleMath">\(\beta: a \rightarrow b\)</span>. The output is a colift <span class="SimpleMath">\(\alpha \backslash \beta: c \rightarrow b\)</span> of <span class="SimpleMath">\(\beta\)</span> along <span class="SimpleMath">\(\alpha\)</span> if such a colift exists or <span class="SimpleMath">\(\mathtt{fail}\)</span> if it doesn't. Recall that a colift <span class="SimpleMath">\(\alpha \backslash \beta: c \rightarrow b\)</span> of <span class="SimpleMath">\(\beta\)</span> along <span class="SimpleMath">\(\alpha\)</span> is a morphism such that <span class="SimpleMath">\((\alpha \backslash \beta) \circ \alpha \sim_{a,b} \beta\)</span>.</p>
+<p>This is a convenience operation. The arguments are two morphisms <span class="SimpleMath">\(\alpha: a \rightarrow c\)</span>, <span class="SimpleMath">\(\beta: a \rightarrow b\)</span>. The output is a colift <span class="SimpleMath">\(\alpha \backslash \beta: c \rightarrow b\)</span> of <span class="SimpleMath">\(\beta\)</span> along <span class="SimpleMath">\(\alpha\)</span> if such a colift exists or <span class="SimpleMath">\(\mathtt{fail}\)</span> if it doesn't. Recall that a colift <span class="SimpleMath">\(\alpha \backslash \beta: c \rightarrow b\)</span> of <span class="SimpleMath">\(\beta\)</span> along <span class="SimpleMath">\(\alpha\)</span> is a morphism such that <span class="SimpleMath">\((\alpha \backslash \beta) \circ \alpha \sim_{a,b} \beta\)</span>.</p>
 
 <p><a id="X8685B04087B1E52A" name="X8685B04087B1E52A"></a></p>
 
@@ -1079,7 +1079,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SolveLinearSystemInAbCategoryOrFail</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">gamma</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a list of morphisms <span class="SimpleMath">\([X_1, \dots, X_n]\)</span> or <code class="code">fail</code></p>
 
-<p>Like <code class="code">SolveLinearSystemInAbCategory</code>, but without the assumption that a solution exists. If no solution exists, <code class="code">fail</code> is returned.</p>
+<p>This is a convenience operation. Like <code class="code">SolveLinearSystemInAbCategory</code>, but without the assumption that a solution exists. If no solution exists, <code class="code">fail</code> is returned.</p>
 
 <p><a id="X7A722FA5817D5F76" name="X7A722FA5817D5F76"></a></p>
 
