@@ -196,10 +196,10 @@ RightUnitorInverseWithGivenTensorProduct := rec(
 
 CAP_INTERNAL_ENHANCE_NAME_RECORD( MONOIDAL_CATEGORIES_METHOD_NAME_RECORD );
 
-CAP_INTERNAL_GENERATE_DOCUMENTATION_FROM_METHOD_NAME_RECORD(
+CAP_INTERNAL_GENERATE_DECLARATIONS_AND_INSTALLATIONS_FROM_METHOD_NAME_RECORD(
     MONOIDAL_CATEGORIES_METHOD_NAME_RECORD,
     "MonoidalCategories",
-    "MonoidalCategories.autogen.gd",
+    "MonoidalCategoriesMethodRecord",
     "Monoidal Categories",
     "Add-methods"
 );

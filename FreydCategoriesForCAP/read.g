@@ -5,6 +5,8 @@
 #
 ReadPackage( "FreydCategoriesForCAP", "gap/FreydCategoriesForCAP.gi" );
 
+ReadPackage( "FreydCategoriesForCAP", "gap/MethodRecordInstallations.autogen.gi" );
+
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfRows.gi" );
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfRows_as_AdditiveClosure_RingAsCategory.gi" );
 

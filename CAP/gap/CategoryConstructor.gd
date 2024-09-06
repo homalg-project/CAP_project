@@ -57,14 +57,14 @@ DeclareInfoClass( "InfoCategoryConstructor" );
 #!  The value `"default"` chooses a suitable default string, see the implementation for details.
 #!  The following placeholders may be used in the strings and are replaced automatically:
 #!  * `operation_name` will be replaced by the name of the operation
-#!  * `input_arguments...` will be replaced by the `input_arguments_names` specified in the method name record (see <Ref Sect="Section_CapInternalInstallAdd" />)
+#!  * `input_arguments...` will be replaced by the `input_arguments_names` specified in the method name record (see <Ref Sect="Section_method_name_record_entries" />)
 #!  * `underlying_arguments...`: If the constructed category is created from another category, `underlying_category_getter_string`, `underlying_object_getter_string`, and
 #!    `underlying_morphism_getter_string` may be strings of functions computing the underlying category (when applied to the constructed category) and
 #!    the underlying object resp. morphism (when applied to the constructed category and an object resp. morphism in the constructed category).
 #!    These functions are applied to `input_arguments` and `underlying_arguments` is replaced by the result.
 #!  * `number_of_arguments` will be replaced by the number of input/underlying arguments
 #!  * `top_source` and `top_range`: If the return type is `morphism`, source and range are computed if possible and `top_source` and `top_range` are replaced by the results.
-#!    For computing source and range, the `output_source_getter_string` and `output_range_getter_string` from the method name record are used if available (see <Ref Sect="Section_CapInternalInstallAdd" />).
+#!    For computing source and range, the `output_source_getter_string` and `output_range_getter_string` from the method name record are used if available (see <Ref Sect="Section_method_name_record_entries" />).
 #!    In some categories, source and range can always be obtained in a generic way (e.g. from the morphism datum). In this case, `generic_output_source_getter_string` and `generic_output_range_getter_string`
 #!    can be set and are used if the required information is not available in the method name record.
 #!  * `top_object_getter` and `top_morphism_getter` are used in the `"default"` strings and are replaced by `top_object_getter_string` and `top_morphism_getter_string`, respectively.

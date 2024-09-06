@@ -62,10 +62,10 @@ BraidingInverseWithGivenTensorProducts := rec(
 
 CAP_INTERNAL_ENHANCE_NAME_RECORD( BRAIDED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD );
 
-CAP_INTERNAL_GENERATE_DOCUMENTATION_FROM_METHOD_NAME_RECORD(
+CAP_INTERNAL_GENERATE_DECLARATIONS_AND_INSTALLATIONS_FROM_METHOD_NAME_RECORD(
     BRAIDED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD,
     "MonoidalCategories",
-    "BraidedMonoidalCategories.autogen.gd",
+    "BraidedMonoidalCategoriesMethodRecord",
     "Monoidal Categories",
     "Add-methods"
 );

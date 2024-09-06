@@ -50,7 +50,7 @@ ReadPackage( "CAP", "gap/CategoryTwoCellsOperations.gd" );
 
 ReadPackage( "CAP", "gap/UniversalObjects.gd" );
 
-ReadPackage( "CAP", "gap/AddFunctions.autogen.gd" );
+ReadPackage( "CAP", "gap/MethodRecordDeclarations.autogen.gd" );
 
 ## pre-defined category constructors
 ReadPackage( "CAP", "gap/OppositeCategory.gd" );
