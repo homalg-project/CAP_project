@@ -6,10 +6,10 @@
                  [1X Monoidal and monoidal (co)closed categories [101X
   
   
-                                   2024.09-01
+                                   2024.09-02
   
   
-                                2 September 2024
+                                6 September 2024
   
   
                                 Mohamed Barakat
@@ -555,7 +555,7 @@
       2.1-8 LeftClosedMonoidalCategoriesTestWithGiven
       2.1-9 LeftCoclosedMonoidalCategoriesTest
       2.1-10 LeftCoclosedMonoidalCategoriesTestWithGiven
-      2.1-11 MonoidalCategoriesTensorProductAndUnitTest
+      2.1-11 MonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest
       2.1-12 MonoidalCategoriesTest
       2.1-13 RigidSymmetricClosedMonoidalCategoriesTest
       2.1-14 RigidSymmetricCoclosedMonoidalCategoriesTest

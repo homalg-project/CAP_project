@@ -414,7 +414,7 @@
   [2XLeftUnitorInverse[102X, for IsCapCategoryObject 1.1-9 
   [2XLeftUnitorInverseWithGivenTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject 1.1-10 
   [2XLeftUnitorWithGivenTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject 1.1-8 
-  [2XMonoidalCategoriesTensorProductAndUnitTest[102X 2.1-11 
+  [2XMonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest[102X 2.1-11 
   [2XMonoidalCategoriesTest[102X 2.1-12 
   [2XMonoidalPostCoComposeMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.8-22 
   [2XMonoidalPostCoComposeMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.8-23 
