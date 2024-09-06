@@ -189,10 +189,6 @@ DeclareAttribute( "RangeOfFunctor", IsCapFunctor );
 DeclareOperation( "AddObjectFunction",
                   [ IsCapFunctor, IsFunction ] );
 
-DeclareOperation( "AddObjectFunction",
-                  [ IsCapFunctor, IsList ] );
-
-
 #! @Description
 #! The argument is a functor $F$.
 #! The output is the GAP operation
@@ -226,9 +222,6 @@ DeclareAttribute( "FunctorObjectOperation",
 #! @Arguments F, f
 DeclareOperation( "AddMorphismFunction",
                   [ IsCapFunctor, IsFunction ] );
-
-DeclareOperation( "AddMorphismFunction",
-                  [ IsCapFunctor, IsList ] );
 
 #! @Description
 #! The argument is a functor $F$.
@@ -412,15 +405,12 @@ DeclareAttribute( "NaturalTransformationOperation",
 #! @BeginGroup
 
 #! @Description
-#!  Adds the function (or list of functions) <A>func</A> to the natural transformation <A>N</A>.
-#!  The function or each function in the list should take three arguments. If $N: F \rightarrow G$,
+#!  Adds the function <A>func</A> to the natural transformation <A>N</A>.
+#!  The function should take three arguments. If $N: F \rightarrow G$,
 #!  the arguments should be $F(A), A, G(A)$. The ouptput should be a morphism, $F(A) \rightarrow G(A)$.
 #! @Arguments N, func
 DeclareOperation( "AddNaturalTransformationFunction",
                   [ IsCapNaturalTransformation, IsFunction ] );
-
-DeclareOperation( "AddNaturalTransformationFunction",
-                  [ IsCapNaturalTransformation, IsList ] );
 
 #! @EndGroup
 

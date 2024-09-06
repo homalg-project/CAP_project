@@ -376,28 +376,6 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS_FOR_JULIA,
     
 end );
 
-InstallGlobalFunction( "CAP_INTERNAL_MERGE_FILTER_LISTS",
-  
-  function( filter_list, additional_filters )
-    local i;
-    
-    if IsEmpty( additional_filters ) then
-        return filter_list;
-    fi;
-    
-    filter_list := ShallowCopy( filter_list );
-    
-    if Length( filter_list ) <> Length( additional_filters ) then
-        Error( "wrong number of additional filters" );
-    fi;
-    
-    for i in [ 1 .. Length( additional_filters ) ] do
-        filter_list[ i ] := filter_list[ i ] and additional_filters[ i ];
-    od;
-    
-    return filter_list;
-end );
-
 InstallGlobalFunction( "CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER",
   
   function( data_type, human_readable_identifier_getter )

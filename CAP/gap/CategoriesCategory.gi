@@ -179,39 +179,6 @@ InstallMethod( RangeOfFunctor,
   F -> AsCapCategory( Range( F ) )
 );
 
-BindGlobal( "CAP_INTERNAL_SANITIZE_FUNC_LIST_FOR_FUNCTORS",
-  
-  function( list )
-    local sanitized_list, i;
-    
-    sanitized_list := [ ];
-    
-    for i in list do
-        
-        if IsFunction( i ) then
-            
-            Add( sanitized_list, [ i, [ ] ] );
-            
-        elif IsList( i ) and Length( i ) = 1 then
-            
-            Add( sanitized_list, [ i[ 1 ], [ ] ] );
-            
-        elif IsList( i ) and Length( i ) = 2 then
-            
-            Add( sanitized_list, i );
-            
-        else
-            
-            Error( "wrong function input" );
-            
-        fi;
-        
-    od;
-    
-    return sanitized_list;
-    
-end );
-
 BindGlobal( "CAP_INTERNAL_FUNCTOR_CREATE_FILTER_LIST",
   
   function( functor, type )
@@ -239,21 +206,6 @@ BindGlobal( "CAP_INTERNAL_FUNCTOR_CREATE_FILTER_LIST",
     fi;
     
     return filter_list;
-    
-end );
-
-BindGlobal( "CAP_INTERNAL_INSTALL_FUNCTOR_OPERATION",
-  
-  function( operation, func_list, filter_list, cache )
-    local current_filter_list, current_method;
-    
-    for current_method in func_list do
-        
-        current_filter_list := CAP_INTERNAL_MERGE_FILTER_LISTS( filter_list, current_method[ 2 ] );
-        
-        InstallMethodWithCache( operation, current_filter_list, current_method[ 1 ] : Cache := cache );
-        
-    od;
     
 end );
 
@@ -287,49 +239,33 @@ end );
 
 ##
 InstallMethod( AddObjectFunction,
-               [ IsCapFunctor, IsList ],
+               [ IsCapFunctor, IsFunction ],
                
-  function( functor, func_list )
-    local sanitized_list, filter_list, operation;
-    
-    sanitized_list := CAP_INTERNAL_SANITIZE_FUNC_LIST_FOR_FUNCTORS( func_list );
+  function( functor, func )
+    local filter_list, operation;
     
     filter_list := CAP_INTERNAL_FUNCTOR_CREATE_FILTER_LIST( functor, "object" );
     
     if not IsBound( functor!.object_function_list ) then
         
-        functor!.object_function_list := sanitized_list;
-        
-    else
-        
-        Append( functor!.object_function_list, sanitized_list );
+        functor!.object_function_list := [ ];
         
     fi;
     
+    Add( functor!.object_function_list, func );
+    
     operation := FunctorObjectOperation( functor );
     
-    CAP_INTERNAL_INSTALL_FUNCTOR_OPERATION( operation, sanitized_list, filter_list, ObjectCache( functor ) );
-    
-end );
-
-##
-InstallMethod( AddObjectFunction,
-               [ IsCapFunctor, IsFunction ],
-               
-  function( functor, func )
-    
-    AddObjectFunction( functor, [ [ func, [ ] ] ] );
+    InstallMethodWithCache( operation, filter_list, func : Cache := ObjectCache( functor ) );
     
 end );
 
 ##
 InstallMethod( AddMorphismFunction,
-               [ IsCapFunctor, IsList ],
+               [ IsCapFunctor, IsFunction ],
                
-  function( functor, func_list )
-    local sanitized_list, filter_list, operation, range_cat;
-    
-    sanitized_list := CAP_INTERNAL_SANITIZE_FUNC_LIST_FOR_FUNCTORS( func_list );
+  function( functor, func )
+    local filter_list, operation, range_cat;
     
     filter_list := CAP_INTERNAL_FUNCTOR_CREATE_FILTER_LIST( functor, "morphism" );
     
@@ -339,27 +275,15 @@ InstallMethod( AddMorphismFunction,
     
     if not IsBound( functor!.morphism_function_list ) then
         
-        functor!.morphism_function_list := sanitized_list;
-        
-    else
-        
-        Append( functor!.morphism_function_list, sanitized_list );
+        functor!.morphism_function_list := [ ];
         
     fi;
     
+    Add( functor!.morphism_function_list, func );
+    
     operation := FunctorMorphismOperation( functor );
     
-    CAP_INTERNAL_INSTALL_FUNCTOR_OPERATION( operation, sanitized_list, filter_list, MorphismCache( functor ) );
-    
-end );
-
-##
-InstallMethod( AddMorphismFunction,
-               [ IsCapFunctor, IsFunction ],
-               
-  function( functor, func )
-    
-    AddMorphismFunction( functor, [ [ func, [ ] ] ] );
+    InstallMethodWithCache( operation, filter_list, func : Cache := MorphismCache( functor ) );
     
 end );
 
@@ -1028,12 +952,10 @@ end );
 
 ##
 InstallMethod( AddNaturalTransformationFunction,
-               [ IsCapNaturalTransformation, IsList ],
+               [ IsCapNaturalTransformation, IsFunction ],
                
-  function( trafo, func_list )
-    local sanitized_list, filter_list, operation, range_cat;
-    
-    sanitized_list := CAP_INTERNAL_SANITIZE_FUNC_LIST_FOR_FUNCTORS( func_list );
+  function( trafo, func )
+    local filter_list, operation, range_cat;
     
     filter_list := CAP_INTERNAL_FUNCTOR_CREATE_FILTER_LIST( Source( trafo ), "object" );
     
@@ -1041,27 +963,15 @@ InstallMethod( AddNaturalTransformationFunction,
     
     if not IsBound( trafo!.function_list ) then
         
-        trafo!.function_list := sanitized_list;
-        
-    else
-        
-        Append( trafo!.function_list, sanitized_list );
+        trafo!.function_list := [ ];
         
     fi;
     
+    Add( trafo!.function_list, func );
+    
     operation := NaturalTransformationOperation( trafo );
     
-    CAP_INTERNAL_INSTALL_FUNCTOR_OPERATION( operation, sanitized_list, filter_list, NaturalTransformationCache( trafo ) );
-    
-end );
-
-##
-InstallMethod( AddNaturalTransformationFunction,
-               [ IsCapNaturalTransformation, IsFunction ],
-               
-  function( trafo, func )
-    
-    AddNaturalTransformationFunction( trafo, [ [ func, [ ] ] ] );
+    InstallMethodWithCache( operation, filter_list, func : Cache := NaturalTransformationCache( trafo ) );
     
 end );
 

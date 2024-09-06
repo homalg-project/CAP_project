@@ -50,14 +50,6 @@ DeclareGlobalFunction( "CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS" );
 
 DeclareGlobalFunction( "CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS_FOR_JULIA" );
 
-#! @Arguments list, additional list
-#! @Returns merged lists
-#! @Description
-#!  The first argument should be a dense list with filters, the second a sparse list containing filters
-#!  not longer then the first one. The filters of the second list are then appended (via and) to the
-#!  filters in the first list at the corresponding position, and the resulting list is returned.
-DeclareGlobalFunction( "CAP_INTERNAL_MERGE_FILTER_LISTS" );
-
 #! @Arguments string, value
 #! @Returns option value
 #! @Description
