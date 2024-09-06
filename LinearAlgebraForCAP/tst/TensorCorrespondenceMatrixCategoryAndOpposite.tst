@@ -12,23 +12,23 @@ gap> mc := MatrixCategory( Q );;
 gap> opposite := Opposite( mc );;
 
 ##############################################
-# MonoidalCategoriesTensorProductAndUnitTest
+# MonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest
 ##############################################
 
 gap> a := 2 / mc;;
 gap> b := 3 / mc;;
 
-gap> MonoidalCategoriesTensorProductAndUnitTest( mc, opposite, a, b );;
+gap> MonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest( mc, opposite, a, b );;
 
 gap> a := 0 / mc;;
 gap> b := 2 / mc;;
 
-gap> MonoidalCategoriesTensorProductAndUnitTest( mc, opposite, a, b );;
+gap> MonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest( mc, opposite, a, b );;
 
 gap> a := 3 / mc;;
 gap> b := 0 / mc;;
 
-gap> MonoidalCategoriesTensorProductAndUnitTest( mc, opposite, a, b );;
+gap> MonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest( mc, opposite, a, b );;
 
 ##############################################
 # MonoidalCategoriesTest

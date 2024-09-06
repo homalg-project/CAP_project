@@ -13,7 +13,7 @@
 #! * a CAP category $cat$
 #! * objects $a, b$
 #! This function checks for every operation
-#! declared in MonoidalCategoriesTensorProductAndUnit.gd
+#! declared in MonoidalCategoriesTensorProductOnObjectsAndTensorUnit.gd
 #! if it is computable in the CAP category $cat$.
 #! If yes, then the operation is executed
 #! with the parameters given above and
@@ -29,4 +29,4 @@
 #!    The advantage is, that more derivations might be tested.
 #!    On the downside, this might test fewer dual_pre/postprocessor_funcs.
 #! @Arguments cat, a, b
-DeclareGlobalFunction( "MonoidalCategoriesTensorProductAndUnitTest" );
+DeclareGlobalFunction( "MonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest" );

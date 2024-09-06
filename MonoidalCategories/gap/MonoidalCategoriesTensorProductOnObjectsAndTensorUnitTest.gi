@@ -4,7 +4,7 @@
 # Implementations
 #
 
-InstallGlobalFunction( "MonoidalCategoriesTensorProductAndUnitTest",
+InstallGlobalFunction( "MonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest",
     
     function( cat, opposite, a, b )
         

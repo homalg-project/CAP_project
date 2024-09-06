@@ -78,7 +78,7 @@ ReadPackage( "MonoidalCategories", "gap/Synonyms.gd" );
 
 ## Test methods
 
-ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesTensorProductAndUnitTest.gd" );
+ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest.gd" );
 ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesTest.gd" );
 ReadPackage( "MonoidalCategories", "gap/AdditiveMonoidalCategoriesTest.gd" );
 ReadPackage( "MonoidalCategories", "gap/BraidedMonoidalCategoriesTest.gd" );

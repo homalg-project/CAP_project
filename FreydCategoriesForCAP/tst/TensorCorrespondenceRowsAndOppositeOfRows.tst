@@ -12,23 +12,23 @@ gap> rows := CategoryOfRows( Q );;
 gap> opposite := Opposite( rows );;
 
 ##############################################
-# MonoidalCategoriesTensorProductAndUnitTest
+# MonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest
 ##############################################
 
 gap> a := 2 / rows;;
 gap> b := 3 / rows;;
 
-gap> MonoidalCategoriesTensorProductAndUnitTest( rows, opposite, a, b );;
+gap> MonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest( rows, opposite, a, b );;
 
 gap> a := 0 / rows;;
 gap> b := 2 / rows;;
 
-gap> MonoidalCategoriesTensorProductAndUnitTest( rows, opposite, a, b );;
+gap> MonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest( rows, opposite, a, b );;
 
 gap> a := 3 / rows;;
 gap> b := 0 / rows;;
 
-gap> MonoidalCategoriesTensorProductAndUnitTest( rows, opposite, a, b );;
+gap> MonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest( rows, opposite, a, b );;
 
 ##############################################
 # MonoidalCategoriesTest

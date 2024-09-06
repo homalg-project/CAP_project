@@ -11,14 +11,14 @@ TensorProductOnObjects := rec(
   return_type := "object",
   dual_operation := "TensorProductOnObjects",
   dual_arguments_reversed := false,
-  # Test in MonoidalCategoriesTensorProductAndUnitTest
+  # Test in MonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest
 ),
 
 TensorUnit := rec(
   filter_list := [ "category" ],
   return_type := "object",
   dual_operation := "TensorUnit",
-  # Test in MonoidalCategoriesTensorProductAndUnitTest
+  # Test in MonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest
 ),
 
 ) );
