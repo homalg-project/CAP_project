@@ -1,7 +1,7 @@
 name: CartesianCategories
-version: "2024.06-03"
+version: "2024.09-01"
 license: "GPL-2.0-or-later"
-date: 2024-06-30
+date: 2024-09-06
 description: |
     Cartesian and cocartesian categories and various subdoctrines
 
@@ -30,7 +30,7 @@ needed-pkgs:
 
 suggested-pkgs:
     - name: "MonoidalCategories"
-      version: ">= 2024.06-02"
+      version: ">= 2024.09-02"
       url: "https://homalg-project.github.io/pkg/MonoidalCategories"
 
 www: https://homalg-project.github.io/pkg/CartesianCategories
@@ -39,11 +39,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/CartesianCategories/Pa
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/CartesianCategories-2024.06-03/CartesianCategories-2024.06-03.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/CartesianCategories-2024.09-01/CartesianCategories-2024.09-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/CartesianCategories-2024.06-03/CartesianCategories-2024.06-03.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/CartesianCategories-2024.09-01/CartesianCategories-2024.09-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/CartesianCategories-2024.06-03/CartesianCategories-2024.06-03-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/CartesianCategories-2024.09-01/CartesianCategories-2024.09-01-manual.pdf
 
 abstract: |
 
@@ -54,10 +54,10 @@ keywords: |
     elementary toposes.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BZK30</span>]   <b class='BibAuthor'>Barakat, M., Zickgraf, F. and Kuhmichel, T.</b>,
+    [<span class='BibKey'>BZK06</span>]   <b class='BibAuthor'>Barakat, M., Zickgraf, F. and Kuhmichel, T.</b>,
      <i class='BibTitle'>CartesianCategories, Cartesian and cocartesian categories and various subdoctrines,
-             Version 2024.06-03</i>
-     (<span class='BibYear'>6-30</span>)<br />
+             Version 2024.09-01</i>
+     (<span class='BibYear'>9-06</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/CartesianCategories">https://homalg-project.github.io/pkg/CartesianCategories</a></span>.
     </p>
@@ -68,9 +68,9 @@ bibtex: |
       author =           {Barakat, M. and Zickgraf, F. and Kuhmichel, T.},
       title =            {{CartesianCategories},   Cartesian   and   cocartesian
                           categories   and   various   subdoctrines,   {V}ersion
-                          2024.06\texttt{\symbol{45}}03},
+                          2024.09\texttt{\symbol{45}}01},
       month =            {4\texttt{\symbol{45}}},
-      year =             {6\texttt{\symbol{45}}30},
+      year =             {9\texttt{\symbol{45}}06},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/CartesianCategories}
@@ -78,6 +78,6 @@ bibtex: |
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{CartesianCategories}}},
       keywords =         {elementary toposes},
-      printedkey =       {BZK30}
+      printedkey =       {BZK06}
     }
 
