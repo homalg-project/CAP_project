@@ -1671,6 +1671,16 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
         fi;
         
+        if current_rec.return_type = "object" then
+            current_rec.add_value_to_category_function := AddObject;
+        elif current_rec.return_type = "morphism" then
+            current_rec.add_value_to_category_function := AddMorphism;
+        elif current_rec.return_type = "twocell" then
+            current_rec.add_value_to_category_function := AddTwoCell;
+        else
+            current_rec.add_value_to_category_function := ReturnTrue;
+        fi;
+        
     od;
     
     CAP_INTERNAL_FIND_OPPOSITE_PROPERTY_PAIRS_IN_METHOD_NAME_RECORD( record );

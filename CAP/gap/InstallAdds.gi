@@ -17,7 +17,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
   
   function( record )
     local function_name, CAP_operation, add_name, add_function, pre_function, pre_function_full,
-          redirect_function, post_function, filter_list, add_value_to_category_function;
+          redirect_function, post_function, filter_list;
     
     function_name := record.function_name;
     
@@ -59,16 +59,6 @@ InstallGlobalFunction( CapInternalInstallAdd,
     fi;
     
     filter_list := record.filter_list;
-    
-    if record.return_type = "object" then
-        add_value_to_category_function := AddObject;
-    elif record.return_type = "morphism" then
-        add_value_to_category_function := AddMorphism;
-    elif record.return_type = "twocell" then
-        add_value_to_category_function := AddTwoCell;
-    else
-        add_value_to_category_function := ReturnTrue;
-    fi;
     
     InstallMethod( add_function,
                    [ IsCapCategory, IsFunction ],
@@ -339,7 +329,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     
                     if not is_derivation and not is_final_derivation then
                         if category!.add_primitive_output then
-                            add_value_to_category_function( category, result );
+                            record.add_value_to_category_function( category, result );
                         elif category!.output_sanity_check_level > 0 then
                             output_sanity_check_function( result );
                         fi;
