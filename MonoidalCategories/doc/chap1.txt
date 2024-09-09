@@ -166,31 +166,13 @@
   [33X[0;0YThe  arguments  are  two  objects  [23Xa,  b[123X. The output is the tensor product [23Xa
   \otimes b[123X.[133X
   
-  [1X1.1-16 AddTensorProductOnObjects[101X
-  
-  [33X[1;0Y[29X[2XAddTensorProductOnObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ynothing[133X
-  
-  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XTensorProductOnObjects[110X. [23XF: (a,b) \mapsto a \otimes b[123X.[133X
-  
-  [1X1.1-17 TensorUnit[101X
+  [1X1.1-16 TensorUnit[101X
   
   [33X[1;0Y[29X[2XTensorUnit[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
   [33X[0;0YThe  argument  is  a category [23X\mathbf{C}[123X. The output is the tensor unit [23X1[123X of
   [23X\mathbf{C}[123X.[133X
-  
-  [1X1.1-18 AddTensorUnit[101X
-  
-  [33X[1;0Y[29X[2XAddTensorUnit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ynothing[133X
-  
-  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given  function [23XF[123X to the category for the basic operation [10XTensorUnit[110X. [23XF: ( )
-  \mapsto 1[123X.[133X
   
   
   [1X1.2 [33X[0;0YAdditive Monoidal Categories[133X[101X
@@ -4518,7 +4500,26 @@
   \mapsto  \mathtt{TensorProductOnMorphismsWithGivenTensorProducts}(s,  alpha,
   beta, r)[123X.[133X
   
-  [1X1.14-199 AddCoevaluationForDual[101X
+  [1X1.14-199 AddTensorProductOnObjects[101X
+  
+  [33X[1;0Y[29X[2XAddTensorProductOnObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XTensorProductOnObjects[110X.      [23XF:      (      arg2,     arg3     )     \mapsto
+  \mathtt{TensorProductOnObjects}(arg2, arg3)[123X.[133X
+  
+  [1X1.14-200 AddTensorUnit[101X
+  
+  [33X[1;0Y[29X[2XAddTensorUnit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given  function [23XF[123X to the category for the basic operation [10XTensorUnit[110X. [23XF: ( )
+  \mapsto \mathtt{TensorUnit}()[123X.[133X
+  
+  [1X1.14-201 AddCoevaluationForDual[101X
   
   [33X[1;0Y[29X[2XAddCoevaluationForDual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -4527,7 +4528,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XCoevaluationForDual[110X. [23XF: ( a ) \mapsto \mathtt{CoevaluationForDual}(a)[123X.[133X
   
-  [1X1.14-200 AddCoevaluationForDualWithGivenTensorProduct[101X
+  [1X1.14-202 AddCoevaluationForDualWithGivenTensorProduct[101X
   
   [33X[1;0Y[29X[2XAddCoevaluationForDualWithGivenTensorProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -4537,7 +4538,7 @@
   [10XCoevaluationForDualWithGivenTensorProduct[110X.   [23XF:   (   s,   a,  r  )  \mapsto
   \mathtt{CoevaluationForDualWithGivenTensorProduct}(s, a, r)[123X.[133X
   
-  [1X1.14-201 AddIsomorphismFromInternalHomToTensorProductWithDualObject[101X
+  [1X1.14-203 AddIsomorphismFromInternalHomToTensorProductWithDualObject[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromInternalHomToTensorProductWithDualObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -4547,7 +4548,7 @@
   [10XIsomorphismFromInternalHomToTensorProductWithDualObject[110X. [23XF: ( a, b ) \mapsto
   \mathtt{IsomorphismFromInternalHomToTensorProductWithDualObject}(a, b)[123X.[133X
   
-  [1X1.14-202 AddIsomorphismFromTensorProductWithDualObjectToInternalHom[101X
+  [1X1.14-204 AddIsomorphismFromTensorProductWithDualObjectToInternalHom[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromTensorProductWithDualObjectToInternalHom[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -4557,7 +4558,7 @@
   [10XIsomorphismFromTensorProductWithDualObjectToInternalHom[110X. [23XF: ( a, b ) \mapsto
   \mathtt{IsomorphismFromTensorProductWithDualObjectToInternalHom}(a, b)[123X.[133X
   
-  [1X1.14-203 AddMorphismFromBidual[101X
+  [1X1.14-205 AddMorphismFromBidual[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromBidual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -4566,7 +4567,7 @@
   given function [23XF[123X to the category for the basic operation [10XMorphismFromBidual[110X.
   [23XF: ( a ) \mapsto \mathtt{MorphismFromBidual}(a)[123X.[133X
   
-  [1X1.14-204 AddMorphismFromBidualWithGivenBidual[101X
+  [1X1.14-206 AddMorphismFromBidualWithGivenBidual[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromBidualWithGivenBidual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -4576,7 +4577,7 @@
   [10XMorphismFromBidualWithGivenBidual[110X.     [23XF:     (     a,     s    )    \mapsto
   \mathtt{MorphismFromBidualWithGivenBidual}(a, s)[123X.[133X
   
-  [1X1.14-205 AddMorphismFromInternalHomToTensorProduct[101X
+  [1X1.14-207 AddMorphismFromInternalHomToTensorProduct[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromInternalHomToTensorProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -4586,7 +4587,7 @@
   [10XMorphismFromInternalHomToTensorProduct[110X.    [23XF:    (    a,    b    )   \mapsto
   \mathtt{MorphismFromInternalHomToTensorProduct}(a, b)[123X.[133X
   
-  [1X1.14-206 AddMorphismFromInternalHomToTensorProductWithGivenObjects[101X
+  [1X1.14-208 AddMorphismFromInternalHomToTensorProductWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromInternalHomToTensorProductWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -4597,7 +4598,7 @@
   \mapsto   \mathtt{MorphismFromInternalHomToTensorProductWithGivenObjects}(s,
   a, b, r)[123X.[133X
   
-  [1X1.14-207 AddRankMorphism[101X
+  [1X1.14-209 AddRankMorphism[101X
   
   [33X[1;0Y[29X[2XAddRankMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -4606,7 +4607,7 @@
   given  function [23XF[123X to the category for the basic operation [10XRankMorphism[110X. [23XF: (
   a ) \mapsto \mathtt{RankMorphism}(a)[123X.[133X
   
-  [1X1.14-208 AddTensorProductInternalHomCompatibilityMorphismInverse[101X
+  [1X1.14-210 AddTensorProductInternalHomCompatibilityMorphismInverse[101X
   
   [33X[1;0Y[29X[2XAddTensorProductInternalHomCompatibilityMorphismInverse[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -4616,7 +4617,7 @@
   [10XTensorProductInternalHomCompatibilityMorphismInverse[110X.  [23XF:  (  list ) \mapsto
   \mathtt{TensorProductInternalHomCompatibilityMorphismInverse}(list)[123X.[133X
   
-  [1X1.14-209 AddTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects[101X
+  [1X1.14-211 AddTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -4628,7 +4629,7 @@
   \mathtt{TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects}(source,
   list, range)[123X.[133X
   
-  [1X1.14-210 AddTraceMap[101X
+  [1X1.14-212 AddTraceMap[101X
   
   [33X[1;0Y[29X[2XAddTraceMap[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -4637,7 +4638,7 @@
   given  function  [23XF[123X  to  the  category for the basic operation [10XTraceMap[110X. [23XF: (
   alpha ) \mapsto \mathtt{TraceMap}(alpha)[123X.[133X
   
-  [1X1.14-211 AddCoRankMorphism[101X
+  [1X1.14-213 AddCoRankMorphism[101X
   
   [33X[1;0Y[29X[2XAddCoRankMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -4646,7 +4647,7 @@
   given  function [23XF[123X to the category for the basic operation [10XCoRankMorphism[110X. [23XF:
   ( a ) \mapsto \mathtt{CoRankMorphism}(a)[123X.[133X
   
-  [1X1.14-212 AddCoTraceMap[101X
+  [1X1.14-214 AddCoTraceMap[101X
   
   [33X[1;0Y[29X[2XAddCoTraceMap[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -4655,7 +4656,7 @@
   given  function  [23XF[123X  to the category for the basic operation [10XCoTraceMap[110X. [23XF: (
   alpha ) \mapsto \mathtt{CoTraceMap}(alpha)[123X.[133X
   
-  [1X1.14-213 AddCoclosedCoevaluationForCoDual[101X
+  [1X1.14-215 AddCoclosedCoevaluationForCoDual[101X
   
   [33X[1;0Y[29X[2XAddCoclosedCoevaluationForCoDual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -4665,7 +4666,7 @@
   [10XCoclosedCoevaluationForCoDual[110X.       [23XF:       (       a       )      \mapsto
   \mathtt{CoclosedCoevaluationForCoDual}(a)[123X.[133X
   
-  [1X1.14-214 AddCoclosedCoevaluationForCoDualWithGivenTensorProduct[101X
+  [1X1.14-216 AddCoclosedCoevaluationForCoDualWithGivenTensorProduct[101X
   
   [33X[1;0Y[29X[2XAddCoclosedCoevaluationForCoDualWithGivenTensorProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -4675,7 +4676,7 @@
   [10XCoclosedCoevaluationForCoDualWithGivenTensorProduct[110X.  [23XF: ( s, a, r ) \mapsto
   \mathtt{CoclosedCoevaluationForCoDualWithGivenTensorProduct}(s, a, r)[123X.[133X
   
-  [1X1.14-215 AddInternalCoHomTensorProductCompatibilityMorphismInverse[101X
+  [1X1.14-217 AddInternalCoHomTensorProductCompatibilityMorphismInverse[101X
   
   [33X[1;0Y[29X[2XAddInternalCoHomTensorProductCompatibilityMorphismInverse[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -4685,7 +4686,7 @@
   [10XInternalCoHomTensorProductCompatibilityMorphismInverse[110X.  [23XF: ( list ) \mapsto
   \mathtt{InternalCoHomTensorProductCompatibilityMorphismInverse}(list)[123X.[133X
   
-  [1X1.14-216 AddInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects[101X
+  [1X1.14-218 AddInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -4697,7 +4698,7 @@
   \mathtt{InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects}(source,
   list, range)[123X.[133X
   
-  [1X1.14-217 AddIsomorphismFromInternalCoHomToTensorProductWithCoDualObject[101X
+  [1X1.14-219 AddIsomorphismFromInternalCoHomToTensorProductWithCoDualObject[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromInternalCoHomToTensorProductWithCoDualObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -4708,7 +4709,7 @@
   \mapsto
   \mathtt{IsomorphismFromInternalCoHomToTensorProductWithCoDualObject}(a, b)[123X.[133X
   
-  [1X1.14-218 AddIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom[101X
+  [1X1.14-220 AddIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -4719,7 +4720,7 @@
   \mapsto
   \mathtt{IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom}(a, b)[123X.[133X
   
-  [1X1.14-219 AddMorphismFromTensorProductToInternalCoHom[101X
+  [1X1.14-221 AddMorphismFromTensorProductToInternalCoHom[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromTensorProductToInternalCoHom[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -4729,7 +4730,7 @@
   [10XMorphismFromTensorProductToInternalCoHom[110X.    [23XF:    (    a,   b   )   \mapsto
   \mathtt{MorphismFromTensorProductToInternalCoHom}(a, b)[123X.[133X
   
-  [1X1.14-220 AddMorphismFromTensorProductToInternalCoHomWithGivenObjects[101X
+  [1X1.14-222 AddMorphismFromTensorProductToInternalCoHomWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromTensorProductToInternalCoHomWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -4740,7 +4741,7 @@
   \mapsto \mathtt{MorphismFromTensorProductToInternalCoHomWithGivenObjects}(s,
   a, b, r)[123X.[133X
   
-  [1X1.14-221 AddMorphismToCoBidual[101X
+  [1X1.14-223 AddMorphismToCoBidual[101X
   
   [33X[1;0Y[29X[2XAddMorphismToCoBidual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -4749,7 +4750,7 @@
   given function [23XF[123X to the category for the basic operation [10XMorphismToCoBidual[110X.
   [23XF: ( a ) \mapsto \mathtt{MorphismToCoBidual}(a)[123X.[133X
   
-  [1X1.14-222 AddMorphismToCoBidualWithGivenCoBidual[101X
+  [1X1.14-224 AddMorphismToCoBidualWithGivenCoBidual[101X
   
   [33X[1;0Y[29X[2XAddMorphismToCoBidualWithGivenCoBidual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
