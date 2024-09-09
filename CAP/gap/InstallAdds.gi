@@ -16,7 +16,7 @@ end );
 InstallGlobalFunction( CapInternalInstallAdd,
   
   function( record )
-    local function_name, CAP_operation, add_name, add_function, pre_function, pre_function_full,
+    local function_name, CAP_operation, add_function, pre_function, pre_function_full,
           redirect_function, post_function, filter_list;
     
     function_name := record.function_name;
@@ -31,8 +31,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
         
     fi;
     
-    add_name := Concatenation( "Add", function_name );
-    add_function := ValueGlobal( add_name );
+    add_function := ValueGlobal( Concatenation( "Add", function_name ) );
     
     if IsBound( record.pre_function ) then
         pre_function := record.pre_function;
@@ -196,14 +195,14 @@ InstallGlobalFunction( CapInternalInstallAdd,
             current_function_argument_number := NumberArgumentsFunction( method_list[ current_function_number ][ 1 ] );
             
             if current_function_argument_number >= 0 and current_function_argument_number <> number_of_proposed_arguments then
-                Error( "In ", add_name, ": given function ", String( current_function_number ), " has ", String( current_function_argument_number ),
+                Error( "While adding a function for ", function_name, ": given function ", String( current_function_number ), " has ", String( current_function_argument_number ),
                        " arguments but should have ", String( number_of_proposed_arguments ) );
             fi;
             
             current_additional_filter_list_length := Length( method_list[ current_function_number ][ 2 ] );
             
             if current_additional_filter_list_length > 0 and current_additional_filter_list_length <> number_of_proposed_arguments then
-                Error( "In ", add_name, ": the additional filter list of given function ", String( current_function_number ), " has length ",
+                Error( "While adding a function for ", function_name, ": the additional filter list of given function ", String( current_function_number ), " has length ",
                        String( current_additional_filter_list_length ), " but should have length ", String( number_of_proposed_arguments ), " (or 0)" );
             fi;
             
