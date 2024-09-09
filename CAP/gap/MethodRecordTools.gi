@@ -686,11 +686,11 @@ InstallGlobalFunction( CAP_INTERNAL_FIND_OPPOSITE_PROPERTY_PAIRS_IN_METHOD_NAME_
         
         if not IsBound( current_rec.dual_operation ) or current_rec.dual_operation = current_recname then
             
-            current_entry := current_rec.installation_name;
+            current_entry := NameFunction( current_rec.operation );
             
         else
             
-            current_entry := [ current_rec.installation_name, method_name_record.( current_rec.dual_operation ).installation_name ];
+            current_entry := [ NameFunction( current_rec.operation ), NameFunction( method_name_record.( current_rec.dual_operation ).operation ) ];
             current_entry := [ Concatenation( current_entry[ 1 ], " vs ", current_entry[ 2 ] ), current_entry ];
             
         fi;
@@ -907,7 +907,7 @@ end );
 
 InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
   function( record )
-    local recnames, current_recname, current_rec, diff, number_of_arguments,
+    local recnames, current_recname, current_rec, diff, number_of_arguments, func,
           without_given_name, with_given_prefix, with_given_names, with_given_name, without_given_rec, with_given_object_position, object_name,
           object_filter_list, with_given_object_filter, given_source_argument_name, given_range_argument_name, with_given_rec,
           collected_list, preconditions, can_always_compute_output_source_getter, can_always_compute_output_range_getter;
@@ -1152,13 +1152,15 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
         fi;
         
-        if IsOperation( ValueGlobal( current_recname ) ) then
+        func := ValueGlobal( current_recname );
+        
+        if IsOperation( func ) then
             
-            current_rec.installation_name := current_recname;
+            current_rec.operation := func;
             
-        elif IsFunction( ValueGlobal( current_recname ) ) then
+        elif IsFunction( func ) then
             
-            current_rec.installation_name := Concatenation( current_recname, "Op" );
+            current_rec.operation := ValueGlobal( Concatenation( current_recname, "Op" ) );
             
         else
             
@@ -1669,6 +1671,16 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                 
             fi;
             
+        fi;
+        
+        if current_rec.return_type = "object" then
+            current_rec.add_value_to_category_function := AddObject;
+        elif current_rec.return_type = "morphism" then
+            current_rec.add_value_to_category_function := AddMorphism;
+        elif current_rec.return_type = "twocell" then
+            current_rec.add_value_to_category_function := AddTwoCell;
+        else
+            current_rec.add_value_to_category_function := ReturnTrue;
         fi;
         
     od;

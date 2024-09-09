@@ -110,9 +110,7 @@ FunctionWithNamedArguments(
     [ "IsFinalDerivation", false ],
   ],
   function( CAP_NAMED_ARGUMENTS, d, weight, C )
-    local method_name, func, add_method, add_name, general_filter_list,
-          installation_name, nr_arguments, cache_name, current_filters, current_implementation,
-          function_called_before_installation;
+    local method_name, func;
     
     Info( DerivationInfo, 1, Concatenation( "install(",
                                             String( weight ),
@@ -123,8 +121,6 @@ FunctionWithNamedArguments(
     
     method_name := TargetOperation( d );
     func := DerivationFunction( d );
-    add_name := Concatenation( "Add", method_name );
-    add_method := ValueGlobal( add_name );
     
     if HasFunctionCalledBeforeInstallation( d ) then
         
@@ -132,9 +128,7 @@ FunctionWithNamedArguments(
         
     fi;
     
-    # use the add method with signature IsCapCategory, IsList, IsInt to avoid
-    # the convenience for AddZeroObject etc.
-    add_method( C, [ Pair( func, [ ] ) ], weight : IsDerivation := not(CAP_NAMED_ARGUMENTS.IsFinalDerivation), IsFinalDerivation := CAP_NAMED_ARGUMENTS.IsFinalDerivation );
+    AddCapOperation( method_name, C, [ Pair( func, [ ] ) ], weight : IsDerivation := not(CAP_NAMED_ARGUMENTS.IsFinalDerivation), IsFinalDerivation := CAP_NAMED_ARGUMENTS.IsFinalDerivation );
     
 end ) );
 

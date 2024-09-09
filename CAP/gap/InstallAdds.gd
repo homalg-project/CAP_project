@@ -13,4 +13,6 @@
 #! @Arguments record
 DeclareGlobalFunction( "CapInternalInstallAdd" );
 
+DeclareOperation( "AddCapOperation", [ IsString, IsCapCategory, IsList, IsInt ] );
+
 DeclareGlobalFunction( "CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD" );
