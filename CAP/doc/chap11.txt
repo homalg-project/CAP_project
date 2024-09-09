@@ -81,11 +81,7 @@
   
   [30X    [33X[0;6Y[10Xcreate_func_object[110X: see below[133X
   
-  [30X    [33X[0;6Y[10Xcreate_func_object_or_fail[110X: see below[133X
-  
   [30X    [33X[0;6Y[10Xcreate_func_morphism[110X: see below[133X
-  
-  [30X    [33X[0;6Y[10Xcreate_func_morphism_or_fail[110X: see below[133X
   
   [30X    [33X[0;6Y[10Xcreate_func_list_of_objects[110X: see below[133X
   
@@ -116,14 +112,14 @@
   [30X    [33X[0;6Y[10Xnumber_of_arguments[110X will be replaced by the number of input/underlying
         arguments[133X
   
-  [30X    [33X[0;6Y[10Xtop_source[110X   and   [10Xtop_range[110X:  If  the  return  type  is  [10Xmorphism[110X  or
-        [10Xmorphism_or_fail[110X,  source  and  range  are  computed  if  possible and
-        [10Xtop_source[110X  and  [10Xtop_range[110X  are replaced by the results. For computing
-        source     and     range,    the    [10Xoutput_source_getter_string[110X    and
-        [10Xoutput_range_getter_string[110X  from  the  method  name record are used if
-        available  (see  [14X7.3[114X). In some categories, source and range can always
-        be  obtained  in a generic way (e.g. from the morphism datum). In this
-        case,              [10Xgeneric_output_source_getter_string[110X             and
+  [30X    [33X[0;6Y[10Xtop_source[110X  and  [10Xtop_range[110X: If the return type is [10Xmorphism[110X, source and
+        range  are  computed  if  possible  and  [10Xtop_source[110X  and [10Xtop_range[110X are
+        replaced   by  the  results.  For  computing  source  and  range,  the
+        [10Xoutput_source_getter_string[110X  and  [10Xoutput_range_getter_string[110X  from the
+        method   name  record  are  used  if  available  (see  [14X7.3[114X).  In  some
+        categories,  source  and range can always be obtained in a generic way
+        (e.g.     from     the     morphism     datum).    In    this    case,
+        [10Xgeneric_output_source_getter_string[110X                                and
         [10Xgeneric_output_range_getter_string[110X  can  be  set  and  are used if the
         required information is not available in the method name record.[133X
   

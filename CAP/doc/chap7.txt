@@ -203,16 +203,13 @@
   [4X[32X  Code  [32X[104X
     [4X    [[104X
     [4X        "object",[104X
-    [4X        "object_or_fail",[104X
     [4X        "morphism",[104X
-    [4X        "morphism_or_fail",[104X
     [4X        "twocell",[104X
     [4X        "object_in_range_category_of_homomorphism_structure",[104X
     [4X        "morphism_in_range_category_of_homomorphism_structure",[104X
     [4X        "bool",[104X
     [4X        "list_of_objects",[104X
     [4X        "list_of_morphisms",[104X
-    [4X        "list_of_morphisms_or_fail",[104X
     [4X        "list_of_lists_of_morphisms",[104X
     [4X        "object_datum",[104X
     [4X        "morphism_datum",[104X
