@@ -111,7 +111,7 @@ FunctionWithNamedArguments(
   ],
   function( CAP_NAMED_ARGUMENTS, d, weight, C )
     local method_name, func, add_method, add_name, general_filter_list,
-          installation_name, nr_arguments, cache_name, current_filters, current_implementation,
+          nr_arguments, cache_name, current_filters, current_implementation,
           function_called_before_installation;
     
     Info( DerivationInfo, 1, Concatenation( "install(",

@@ -16,20 +16,10 @@ end );
 InstallGlobalFunction( CapInternalInstallAdd,
   
   function( record )
-    local function_name, CAP_operation, add_function, pre_function, pre_function_full,
+    local function_name, add_function, pre_function, pre_function_full,
           redirect_function, post_function;
     
     function_name := record.function_name;
-    
-    if not IsBound( record.installation_name ) then
-        
-        CAP_operation := ValueGlobal( function_name );
-        
-    else
-        
-        CAP_operation := ValueGlobal( record.installation_name );
-        
-    fi;
     
     add_function := ValueGlobal( Concatenation( "Add", function_name ) );
     
@@ -258,7 +248,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
             
             if category!.overhead then
                 
-                InstallMethodWithCache( CAP_operation,
+                InstallMethodWithCache( record.operation,
                                 new_filter_list,
                                 
                   function( arg )
@@ -344,7 +334,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
             
             else #category!.overhead = false
                 
-                InstallOtherMethod( CAP_operation,
+                InstallOtherMethod( record.operation,
                             new_filter_list,
                     
                     function( arg )
@@ -613,16 +603,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD,
         
         function_name := current_recname;
         filter_list := current_rec.filter_list;
-        
-        if not IsBound( current_rec.installation_name ) then
-            
-            CAP_operation := ValueGlobal( function_name );
-            
-        else
-            
-            CAP_operation := ValueGlobal( current_rec.installation_name );
-            
-        fi;
+        CAP_operation := current_rec.operation;
         
         # declare operation with category as first argument and install convenience method
         if current_rec.install_convenience_without_category then
