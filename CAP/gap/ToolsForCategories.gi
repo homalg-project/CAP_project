@@ -206,11 +206,6 @@ InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( stri
             
         fi;
         
-    elif string = "object_or_fail" or string = "morphism_or_fail" or string = "list_or_morphisms_or_fail" then
-        
-        # cannot be express "or fail" yet
-        return fail;
-        
     elif string = "element_of_commutative_ring_of_linear_structure" then
         
         if category <> false and not HasCommutativeRingOfLinearCategory( category ) then

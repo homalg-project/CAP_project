@@ -39,9 +39,7 @@ InstallMethod( CategoryConstructor,
         generic_output_range_getter_string := IsString,
         create_func_bool := IsObject,
         create_func_object := IsObject,
-        create_func_object_or_fail := IsObject,
         create_func_morphism := IsObject,
-        create_func_morphism_or_fail := IsObject,
         create_func_list_of_objects := IsObject,
     );
     
@@ -233,24 +231,6 @@ InstallMethod( CategoryConstructor,
                 
             end
         """,
-        object_or_fail := """
-            function( input_arguments... )
-              local underlying_result;
-                
-                underlying_result := operation_name( underlying_arguments... );
-                
-                if underlying_result = fail then
-                    
-                    return fail;
-                    
-                else
-                    
-                    return top_object_getter( cat, underlying_result );
-                    
-                fi;
-                
-            end
-        """,
         morphism := """
             function( input_arguments... )
               local underlying_result;
@@ -258,24 +238,6 @@ InstallMethod( CategoryConstructor,
                 underlying_result := operation_name( underlying_arguments... );
                 
                 return top_morphism_getter( cat, top_source, underlying_result, top_range );
-                
-            end
-        """,
-        morphism_or_fail := """
-            function( input_arguments... )
-              local underlying_result;
-                
-                underlying_result := operation_name( underlying_arguments... );
-                
-                if underlying_result = fail then
-                    
-                    return fail;
-                    
-                else
-                    
-                    return top_morphism_getter( cat, top_source, underlying_result, top_range );
-                    
-                fi;
                 
             end
         """,

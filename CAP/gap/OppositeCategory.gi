@@ -334,26 +334,6 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
                     output_range_getter := output_range_getter_string,
                 ) );
                 
-            elif return_type = "object_or_fail" then
-                
-                return_statement := """
-                    if result = fail then
-                        return fail;
-                    else
-                        return ObjectConstructor( cat, result );
-                    fi;
-                """;
-                
-            elif return_type = "morphism_or_fail" then
-                
-                return_statement := """
-                    if result = fail then
-                        return fail;
-                    else
-                        return MorphismConstructor( cat, ObjectConstructor( cat, Range( result ) ), result, ObjectConstructor( cat, Source( result ) ) );
-                    fi;
-                """;
-                
             elif return_type = "list_of_morphisms" then
                 
                 return_statement := "return List( result, mor -> MorphismConstructor( cat, ObjectConstructor( cat, Range( mor ) ), mor, ObjectConstructor( cat, Source( mor ) ) ) );";

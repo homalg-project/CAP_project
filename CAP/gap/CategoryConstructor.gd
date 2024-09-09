@@ -48,9 +48,7 @@ DeclareInfoClass( "InfoCategoryConstructor" );
 #!  * `generic_output_range_getter_string` (optional): see below
 #!  * `create_func_bool`: see below
 #!  * `create_func_object`: see below
-#!  * `create_func_object_or_fail`: see below
 #!  * `create_func_morphism`: see below
-#!  * `create_func_morphism_or_fail`: see below
 #!  * `create_func_list_of_objects`: see below
 #!
 #!  The values of the keys `create_func_*` should be either the string `"default`" or functions which accept the category and the name of a &CAP; operation
@@ -65,7 +63,7 @@ DeclareInfoClass( "InfoCategoryConstructor" );
 #!    the underlying object resp. morphism (when applied to the constructed category and an object resp. morphism in the constructed category).
 #!    These functions are applied to `input_arguments` and `underlying_arguments` is replaced by the result.
 #!  * `number_of_arguments` will be replaced by the number of input/underlying arguments
-#!  * `top_source` and `top_range`: If the return type is `morphism` or `morphism_or_fail`, source and range are computed if possible and `top_source` and `top_range` are replaced by the results.
+#!  * `top_source` and `top_range`: If the return type is `morphism`, source and range are computed if possible and `top_source` and `top_range` are replaced by the results.
 #!    For computing source and range, the `output_source_getter_string` and `output_range_getter_string` from the method name record are used if available (see <Ref Sect="Section_CapInternalInstallAdd" />).
 #!    In some categories, source and range can always be obtained in a generic way (e.g. from the morphism datum). In this case, `generic_output_source_getter_string` and `generic_output_range_getter_string`
 #!    can be set and are used if the required information is not available in the method name record.

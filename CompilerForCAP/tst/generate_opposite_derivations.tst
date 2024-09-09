@@ -339,13 +339,6 @@ gap> derivations := Filtered( derivations, function ( d )
 >       
 >   fi;
 >   
->   # exclude operations possibly returning fail
->   if EndsWith( info.return_type, "fail" ) then
->       
->       return false;
->       
->   fi;
->   
 >   # exclude derivations with category filters for which we have no dual
 >   if PropertyAndOppositeProperty( CategoryFilter( d ) ) = fail then
 >       
