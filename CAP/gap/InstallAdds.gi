@@ -17,7 +17,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
   
   function( record )
     local function_name, CAP_operation, add_function, pre_function, pre_function_full,
-          redirect_function, post_function, filter_list;
+          redirect_function, post_function;
     
     function_name := record.function_name;
     
@@ -56,8 +56,6 @@ InstallGlobalFunction( CapInternalInstallAdd,
     else
         post_function := false;
     fi;
-    
-    filter_list := record.filter_list;
     
     InstallMethod( add_function,
                    [ IsCapCategory, IsFunction ],
@@ -184,11 +182,11 @@ InstallGlobalFunction( CapInternalInstallAdd,
             
         fi;
         
-        replaced_filter_list := CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS( filter_list, category );
+        replaced_filter_list := CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS( record.filter_list, category );
         
         ## Nr arguments sanity check
         
-        number_of_proposed_arguments := Length( filter_list );
+        number_of_proposed_arguments := Length( replaced_filter_list );
         
         for current_function_number in [ 1 .. Length( method_list ) ] do
             
@@ -342,7 +340,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     
                     return result;
                     
-                end : InstallMethod := InstallOtherMethod, Cache := GET_METHOD_CACHE( category, function_name, Length( filter_list ) ) );
+                end : InstallMethod := InstallOtherMethod, Cache := GET_METHOD_CACHE( category, function_name, Length( replaced_filter_list ) ) );
             
             else #category!.overhead = false
                 
