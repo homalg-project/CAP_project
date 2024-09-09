@@ -7,7 +7,7 @@
 ## Monoidal
 
 ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesProperties.gd" );
-ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesTensorProductOnObjectsAndUnitObject.gd" );
+ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesTensorProductOnObjectsAndTensorUnit.gd" );
 ReadPackage( "MonoidalCategories", "gap/MonoidalCategories.gd" );
 ReadPackage( "MonoidalCategories", "gap/MonoidalCategories.autogen.gd" );
 

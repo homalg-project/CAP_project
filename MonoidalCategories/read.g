@@ -7,7 +7,7 @@
 ## Monoidal
 
 ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesTensorProductOnObjectsAndTensorUnitMethodRecord.gi" );
-ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesTensorProductOnObjectsAndUnitObject.gi" );
+ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesTensorProductOnObjectsAndTensorUnit.gi" );
 
 ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesMethodRecord.gi" );
 ReadPackage( "MonoidalCategories", "gap/MonoidalCategories.gi" );
