@@ -16,36 +16,11 @@ end );
 InstallGlobalFunction( CapInternalInstallAdd,
   
   function( record )
-    local function_name, add_function, pre_function, pre_function_full,
-          redirect_function, post_function;
+    local function_name, add_function;
     
     function_name := record.function_name;
     
     add_function := ValueGlobal( Concatenation( "Add", function_name ) );
-    
-    if IsBound( record.pre_function ) then
-        pre_function := record.pre_function;
-    else
-        pre_function := function( arg ) return [ true ]; end;
-    fi;
-
-    if IsBound( record.pre_function_full ) then
-        pre_function_full := record.pre_function_full;
-    else
-        pre_function_full := function( arg ) return [ true ]; end;
-    fi;
-    
-    if IsBound( record.redirect_function ) then
-        redirect_function := record.redirect_function;
-    else
-        redirect_function := false;
-    fi;
-    
-    if IsBound( record.post_function ) then
-        post_function := record.post_function;
-    else
-        post_function := false;
-    fi;
     
     InstallMethod( add_function,
                    [ IsCapCategory, IsFunction ],
@@ -263,8 +238,8 @@ InstallGlobalFunction( CapInternalInstallAdd,
                         
                     fi;
                     
-                    if redirect_function <> false then
-                        redirect_return := CallFuncList( redirect_function, arg );
+                    if IsBound( record.redirect_function ) then
+                        redirect_return := CallFuncList( record.redirect_function, arg );
                         if redirect_return[ 1 ] = true then
                             if category!.predicate_logic then
                                 INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{[ 2 .. Length( arg ) ]}, redirect_return[ 2 ], category );
@@ -278,13 +253,15 @@ InstallGlobalFunction( CapInternalInstallAdd,
                             input_sanity_check_functions[ i ]( arg[ i ], i, function_name, category );
                         od;
                         
-                        pre_func_return := CallFuncList( pre_function, arg );
-                        if pre_func_return[ 1 ] = false then
-                            CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, pre_func_return[ 2 ] );
+                        if IsBound( record.pre_function ) then
+                            pre_func_return := CallFuncList( record.pre_function, arg );
+                            if pre_func_return[ 1 ] = false then
+                                CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, pre_func_return[ 2 ] );
+                            fi;
                         fi;
                         
-                        if category!.input_sanity_check_level > 1 then
-                            pre_func_return := CallFuncList( pre_function_full, arg );
+                        if category!.input_sanity_check_level > 1 and IsBound( record.pre_function_full ) then
+                            pre_func_return := CallFuncList( record.pre_function_full, arg );
                             if pre_func_return[ 1 ] = false then
                                 CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, pre_func_return[ 2 ] );
                             fi;
@@ -322,9 +299,9 @@ InstallGlobalFunction( CapInternalInstallAdd,
                         fi;
                     fi;
                     
-                    if post_function <> false then
+                    if IsBound( record.post_function ) then
                         
-                        CallFuncList( post_function, Concatenation( arg, [ result ] ) );
+                        CallFuncList( record.post_function, Concatenation( arg, [ result ] ) );
                         
                     fi;
                     
