@@ -16,11 +16,9 @@ end );
 InstallGlobalFunction( CapInternalInstallAdd,
   
   function( record )
-    local function_name, add_function;
+    local add_function;
     
-    function_name := record.function_name;
-    
-    add_function := ValueGlobal( Concatenation( "Add", function_name ) );
+    add_function := ValueGlobal( Concatenation( "Add", record.function_name ) );
     
     InstallMethod( add_function,
                    [ IsCapCategory, IsFunction ],
@@ -63,10 +61,12 @@ InstallGlobalFunction( CapInternalInstallAdd,
         [ "IsPrecompiledDerivation", false ],
       ],
       function( CAP_NAMED_ARGUMENTS, category, method_list, weight )
-        local is_derivation, is_final_derivation, is_precompiled_derivation, replaced_filter_list,
+        local function_name, is_derivation, is_final_derivation, is_precompiled_derivation, replaced_filter_list,
             number_of_proposed_arguments, current_function_argument_number, current_additional_filter_list_length,
             input_human_readable_identifier_getter, input_sanity_check_functions, output_human_readable_identifier_getter, output_sanity_check_function,
             output_data_type, install_func, name, current_function_number, i;
+        
+        function_name := record.function_name;
         
         if IsFinalized( category ) then
             Error( "cannot add methods anymore, category is finalized" );
