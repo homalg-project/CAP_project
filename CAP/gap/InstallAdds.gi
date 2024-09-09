@@ -17,9 +17,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
   
   function( record )
     local function_name, CAP_operation, add_name, add_function, pre_function, pre_function_full,
-          redirect_function, post_function, filter_list,
-          add_value_to_category_function, replaced_filter_list,
-          enhanced_filter_list, get_convenience_function;
+          redirect_function, post_function, filter_list, add_value_to_category_function;
     
     function_name := record.function_name;
     
@@ -71,64 +69,6 @@ InstallGlobalFunction( CapInternalInstallAdd,
     else
         add_value_to_category_function := ReturnTrue;
     fi;
-    
-    # declare operation with category as first argument and install convenience method
-    if record.install_convenience_without_category then
-        
-        replaced_filter_list := CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS( filter_list );
-        
-        if filter_list[2] in [ "object", "morphism", "twocell" ] then
-            
-            get_convenience_function := oper -> { arg } -> CallFuncList( oper, Concatenation( [ CapCategory( arg[1] ) ], arg ) );
-            
-        elif filter_list[2] = "list_of_objects" or filter_list[2] = "list_of_morphisms" then
-            
-            get_convenience_function := oper -> { arg } -> CallFuncList( oper, Concatenation( [ CapCategory( arg[1][1] ) ], arg ) );
-            
-        elif filter_list[3] in [ "object", "morphism", "twocell" ] then
-            
-            get_convenience_function := oper -> { arg } -> CallFuncList( oper, Concatenation( [ CapCategory( arg[2] ) ], arg ) );
-            
-        elif filter_list[4] = "list_of_objects" or filter_list[4] = "list_of_morphisms" then
-            
-            get_convenience_function := oper -> { arg } -> CallFuncList( oper, Concatenation( [ CapCategory( arg[3][1] ) ], arg ) );
-            
-        else
-            
-            Error( Concatenation( "please add a way to derive the category from the arguments of ", function_name ) );
-            
-        fi;
-        
-        InstallMethod( CAP_operation, replaced_filter_list{[ 2 .. Length( replaced_filter_list ) ]}, get_convenience_function( CAP_operation ) );
-        
-    fi;
-    
-    # convenience for Julia lists
-    #= comment for Julia
-    if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
-        
-        if "list_of_objects" in filter_list or "list_of_morphisms" in filter_list or "list_of_twocells" in filter_list then
-            
-            replaced_filter_list := CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS_FOR_JULIA( filter_list );
-            
-            Assert( 0, ValueGlobal( "IsJuliaObject" ) in replaced_filter_list );
-            
-            InstallOtherMethod( CAP_operation,
-                    replaced_filter_list,
-                    { arg } -> CallFuncList( CAP_operation,
-                            List( arg, function( ar ) if ValueGlobal( "IsJuliaObject" )( ar ) then return ValueGlobal( "ConvertJuliaToGAP" )( ar ); fi; return ar; end ) ) );
-            
-            Assert( 0, record.install_convenience_without_category );
-            
-            InstallOtherMethod( CAP_operation,
-                    replaced_filter_list{[ 2 .. Length( replaced_filter_list ) ]},
-                    { arg } -> CallFuncList( CAP_operation,
-                            List( arg, function( ar ) if ValueGlobal( "IsJuliaObject" )( ar ) then return ValueGlobal( "ConvertJuliaToGAP" )( ar ); fi; return ar; end ) ) );
-            
-        fi;
-        
-    fi;
-    # =#
     
     InstallMethod( add_function,
                    [ IsCapCategory, IsFunction ],
@@ -665,7 +605,7 @@ end );
 InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD,
     
   function( record )
-    local recnames, current_recname, current_rec;
+    local recnames, current_rec, function_name, filter_list, CAP_operation, replaced_filter_list, get_convenience_function, current_recname;
     
     recnames := RecNames( record );
     
@@ -683,6 +623,77 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD,
         
         ## keep track of it in method name rec
         CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname ) := current_rec;
+        
+        function_name := current_recname;
+        filter_list := current_rec.filter_list;
+        
+        if not IsBound( current_rec.installation_name ) then
+            
+            CAP_operation := ValueGlobal( function_name );
+            
+        else
+            
+            CAP_operation := ValueGlobal( current_rec.installation_name );
+            
+        fi;
+        
+        # declare operation with category as first argument and install convenience method
+        if current_rec.install_convenience_without_category then
+            
+            replaced_filter_list := CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS( filter_list );
+            
+            if filter_list[2] in [ "object", "morphism", "twocell" ] then
+                
+                get_convenience_function := oper -> { arg } -> CallFuncList( oper, Concatenation( [ CapCategory( arg[1] ) ], arg ) );
+                
+            elif filter_list[2] = "list_of_objects" or filter_list[2] = "list_of_morphisms" then
+                
+                get_convenience_function := oper -> { arg } -> CallFuncList( oper, Concatenation( [ CapCategory( arg[1][1] ) ], arg ) );
+                
+            elif filter_list[3] in [ "object", "morphism", "twocell" ] then
+                
+                get_convenience_function := oper -> { arg } -> CallFuncList( oper, Concatenation( [ CapCategory( arg[2] ) ], arg ) );
+                
+            elif filter_list[4] = "list_of_objects" or filter_list[4] = "list_of_morphisms" then
+                
+                get_convenience_function := oper -> { arg } -> CallFuncList( oper, Concatenation( [ CapCategory( arg[3][1] ) ], arg ) );
+                
+            else
+                
+                Error( Concatenation( "please add a way to derive the category from the arguments of ", function_name ) );
+                
+            fi;
+            
+            InstallMethod( CAP_operation, replaced_filter_list{[ 2 .. Length( replaced_filter_list ) ]}, get_convenience_function( CAP_operation ) );
+            
+        fi;
+        
+        # convenience for Julia lists
+        #= comment for Julia
+        if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
+            
+            if "list_of_objects" in filter_list or "list_of_morphisms" in filter_list or "list_of_twocells" in filter_list then
+                
+                replaced_filter_list := CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS_FOR_JULIA( filter_list );
+                
+                Assert( 0, ValueGlobal( "IsJuliaObject" ) in replaced_filter_list );
+                
+                InstallOtherMethod( CAP_operation,
+                        replaced_filter_list,
+                        { arg } -> CallFuncList( CAP_operation,
+                                List( arg, function( ar ) if ValueGlobal( "IsJuliaObject" )( ar ) then return ValueGlobal( "ConvertJuliaToGAP" )( ar ); fi; return ar; end ) ) );
+                
+                Assert( 0, current_rec.install_convenience_without_category );
+                
+                InstallOtherMethod( CAP_operation,
+                        replaced_filter_list{[ 2 .. Length( replaced_filter_list ) ]},
+                        { arg } -> CallFuncList( CAP_operation,
+                                List( arg, function( ar ) if ValueGlobal( "IsJuliaObject" )( ar ) then return ValueGlobal( "ConvertJuliaToGAP" )( ar ); fi; return ar; end ) ) );
+                
+            fi;
+            
+        fi;
+        # =#
         
         CapInternalInstallAdd( current_rec );
         
