@@ -283,10 +283,9 @@
   
   [33X[1;0Y[29X[2XAddNaturalTransformationFunction[102X( [3XN[103X, [3Xfunc[103X ) [32X operation[133X
   
-  [33X[0;0YAdds  the function (or list of functions) [3Xfunc[103X to the natural transformation
-  [3XN[103X. The function or each function in the list should take three arguments. If
-  [23XN:  F  \rightarrow  G[123X,  the  arguments  should be [23XF(A), A, G(A)[123X. The ouptput
-  should be a morphism, [23XF(A) \rightarrow G(A)[123X.[133X
+  [33X[0;0YAdds  the function [3Xfunc[103X to the natural transformation [3XN[103X. The function should
+  take  three  arguments. If [23XN: F \rightarrow G[123X, the arguments should be [23XF(A),
+  A, G(A)[123X. The ouptput should be a morphism, [23XF(A) \rightarrow G(A)[123X.[133X
   
   [1X5.5-4 ApplyNaturalTransformation[101X
   
