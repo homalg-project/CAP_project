@@ -11,6 +11,8 @@ alpha := 2 / CR;
 #! <2>
 IsOne( alpha );
 #! false
+MorphismDatum( alpha );
+#! 2
 IsZeroForMorphisms( alpha );
 #! false
 alpha * alpha;
@@ -42,6 +44,34 @@ CoefficientsOfMorphism( alpha );
 #! [ 2 ]
 IsCongruentForMorphisms( alpha, LinearCombinationOfMorphisms( u, CoefficientsOfMorphism( alpha ), BasisOfExternalHom( u, u ), u ) );
 #! true
+TensorUnit( CR );
+#! *
+TensorUnit( CR ) = u;
+#! true
+TensorProductOnObjects( u, u );
+#! *
+TensorProductOnObjects( u, u ) = u;
+#! true
+TensorProductOnMorphisms( alpha, beta );
+#! <1>
+Braiding( u, u );
+#! <1>
+DualOnObjects( u ) = u;
+#! true
+DualOnMorphisms( alpha ) = alpha;
+#! true
+EvaluationForDual( u );
+#! <1>
+CoevaluationForDual( u );
+#! <1>
+CoDualOnObjects( u ) = u;
+#! true
+CoDualOnMorphisms( beta ) = beta;
+#! true
+CoclosedEvaluationForCoDual( u );
+#! <1>
+CoclosedCoevaluationForCoDual( u );
+#! <1>
 
 EEE := KoszulDualRing( HomalgFieldOfRationalsInSingular( ) * "x,y" );;
 CE := RingAsCategory( EEE );;

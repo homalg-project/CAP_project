@@ -40,6 +40,20 @@ InstallMethod( RING_AS_CATEGORY,
     
     SetIsAbCategory( category, true );
     
+    if HasIsCommutative( ring ) and IsCommutative( ring ) then
+        
+        SetIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( category, true );
+        
+        SetCommutativeRingOfLinearCategory( category, ring );
+        
+        SetIsStrictMonoidalCategory( category, true );
+        
+        SetIsRigidSymmetricClosedMonoidalCategory( category, true );
+        
+        SetIsRigidSymmetricCoclosedMonoidalCategory( category, true );
+        
+    fi;
+    
     INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY( category );
     
     if CAP_NAMED_ARGUMENTS.FinalizeCategory then
@@ -71,10 +85,10 @@ InstallMethodForCompilerForCAP( RingAsCategoryMorphism,
     
     unique_object := RingAsCategoryUniqueObject( category );
     
-    return CreateCapCategoryMorphismWithAttributes( category,
-                                                    unique_object,
-                                                    unique_object,
-                                                    UnderlyingRingElement, element );
+    return MorphismConstructor( category,
+                   unique_object,
+                   element,
+                   unique_object );
     
 end );
 
@@ -126,6 +140,25 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
     local ring, equality_func, field, basis_over_base_field, indets, l, basis_over_base_field_as_column_vector, k, comb;
     
     ring := UnderlyingRing( category );
+    
+    ##
+    AddMorphismConstructor( category,
+      function( cat, source, ring_element, range )
+        
+        return CreateCapCategoryMorphismWithAttributes( cat,
+                       source,
+                       range,
+                       UnderlyingRingElement, ring_element );
+        
+    end );
+    
+    ##
+    AddMorphismDatum( category,
+      function( cat, mor )
+        
+        return UnderlyingRingElement( mor );
+        
+    end );
     
     ##
     AddIsEqualForObjects( category, {cat, A, B} -> true );
@@ -222,10 +255,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
     
     if HasIsCommutative( ring ) and IsCommutative( ring ) then
         
-        SetIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( category, true );
-        
-        SetCommutativeRingOfLinearCategory( category, ring );
-        
         ##
         AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
           function( cat, r, alpha )
@@ -302,6 +331,96 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
             
         end );
         
+        ##
+        AddTensorUnit( category,
+          function( cat )
+            
+            return RingAsCategoryUniqueObject( cat );
+            
+        end );
+        
+        ##
+        AddTensorProductOnObjects( category,
+          function( cat, a, b )
+            
+            return RingAsCategoryUniqueObject( cat );
+            
+        end );
+        
+        ##
+        AddTensorProductOnMorphismsWithGivenTensorProducts( category,
+          function( cat, source, alpha, beta, range )
+            
+            return RingAsCategoryMorphism( cat,
+                           UnderlyingRingElement( alpha ) * UnderlyingRingElement( beta ) );
+            
+        end );
+        
+        ##
+        AddBraiding( category,
+          function( cat, object_1, object_2 )
+            
+            return IdentityMorphism( cat,
+                           RingAsCategoryUniqueObject( cat ) );
+            
+        end );
+        
+        ##
+        AddDualOnObjects( category, { cat, obj } -> obj );
+        
+        ##
+        AddDualOnMorphisms( category,
+          function( cat, morphism )
+            
+            return morphism;
+            
+        end );
+        
+        ##
+        AddEvaluationForDualWithGivenTensorProduct( category,
+          function( cat, tensor_object, object, unit )
+            
+            return IdentityMorphism( cat, unit );
+            
+        end );
+        
+        ##
+        AddCoevaluationForDualWithGivenTensorProduct( category,
+          function( cat, unit, object, tensor_object )
+            
+            return IdentityMorphism( cat, unit );
+            
+        end );
+        
+        ## Operations related to the cohom-tensor adjunction
+        
+        ##
+        AddCoDualOnObjects( category, { cat, obj } -> obj );
+        
+        ##
+        AddCoDualOnMorphisms( category,
+          function( cat, morphism )
+            
+            return morphism;
+            
+        end );
+        
+        ##
+        AddCoclosedEvaluationForCoDualWithGivenTensorProduct( category,
+          function( cat, unit, object, tensor_object )
+            
+            return IdentityMorphism( cat, unit );
+            
+        end );
+        
+        ##
+        AddCoclosedCoevaluationForCoDualWithGivenTensorProduct( category,
+          function( cat, tensor_object, object, unit )
+            
+            return IdentityMorphism( cat, unit );
+            
+        end );
+       
     fi;
     
     #= comment for Julia
