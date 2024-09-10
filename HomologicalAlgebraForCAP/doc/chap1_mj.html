@@ -190,7 +190,7 @@ Ascending to descending filtered object functor of Category of left presentation
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := SpectralSequenceEntryOfDescendingFilteredCocomplex( cocomplex, 2, -2, 1 );</span>
 &lt;A morphism in Generalized morphism category of Category of left presentations of Q[x,y]&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );</span>
--y,x
+x,-y
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := SpectralSequenceEntryOfDescendingFilteredCocomplex( cocomplex, 3, -2, 1 );</span>
 &lt;A morphism in Generalized morphism category of Category of left presentations of Q[x,y]&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );</span>
@@ -198,8 +198,8 @@ Ascending to descending filtered object functor of Category of left presentation
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := SpectralSequenceDifferentialOfDescendingFilteredCocomplex( cocomplex, 2, -2, 1 );</span>
 &lt;A morphism in Category of left presentations of Q[x,y]&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, s ) ) );</span>
-x^2,
-x*y
+x*y,
+x^2
 </pre></div>
 
 

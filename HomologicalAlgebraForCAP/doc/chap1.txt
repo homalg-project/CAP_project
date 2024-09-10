@@ -156,7 +156,7 @@
     [4X[25Xgap>[125X [27Xs := SpectralSequenceEntryOfDescendingFilteredCocomplex( cocomplex, 2, -2, 1 );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of Category of left presentations of Q[x,y]>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );[127X[104X
-    [4X[28X-y,x[128X[104X
+    [4X[28Xx,-y[128X[104X
     [4X[25Xgap>[125X [27Xs := SpectralSequenceEntryOfDescendingFilteredCocomplex( cocomplex, 3, -2, 1 );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of Category of left presentations of Q[x,y]>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );[127X[104X
@@ -164,7 +164,7 @@
     [4X[25Xgap>[125X [27Xs := SpectralSequenceDifferentialOfDescendingFilteredCocomplex( cocomplex, 2, -2, 1 );[127X[104X
     [4X[28X<A morphism in Category of left presentations of Q[x,y]>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, s ) ) );[127X[104X
-    [4X[28Xx^2,[128X[104X
-    [4X[28Xx*y[128X[104X
+    [4X[28Xx*y,[128X[104X
+    [4X[28Xx^2[128X[104X
   [4X[32X[104X
   
