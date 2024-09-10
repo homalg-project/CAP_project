@@ -273,7 +273,7 @@
     [4X[25Xgap>[125X [27XSourceAid( composition );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
     [4X[25Xgap>[125X [27XRangeAid( composition );[127X[104X
-    [4X[28X<An identity morphism in Category of matrices over Q>[128X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
   [4X[32X[104X
   
   [33X[0;0YSecond composition test[133X
@@ -306,7 +306,7 @@
     [4X[25Xgap>[125X [27XRangeAid( composition2 );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
     [4X[25Xgap>[125X [27XSourceAid( composition2 );[127X[104X
-    [4X[28X<An identity morphism in Category of matrices over Q>[128X[104X
+    [4X[28X<A split monomorphism in Category of matrices over Q>[128X[104X
   [4X[32X[104X
   
   [33X[0;0YThird composition test[133X
