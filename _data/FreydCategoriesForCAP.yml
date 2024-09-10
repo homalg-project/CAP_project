@@ -1,5 +1,5 @@
 name: FreydCategoriesForCAP
-version: "2024.09-03"
+version: "2024.09-04"
 license: "GPL-2.0-or-later"
 date: 2024-09-10
 description: |
@@ -50,11 +50,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2024.09-03/FreydCategoriesForCAP-2024.09-03.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2024.09-04/FreydCategoriesForCAP-2024.09-04.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2024.09-03/FreydCategoriesForCAP-2024.09-03.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2024.09-04/FreydCategoriesForCAP-2024.09-04.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2024.09-03/FreydCategoriesForCAP-2024.09-03-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2024.09-04/FreydCategoriesForCAP-2024.09-04-manual.pdf
 
 abstract: |
 
@@ -65,7 +65,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>PBZ10</span>]   <b class='BibAuthor'>Posur, S., Bies, M. and Zickgraf, F.</b>,
      <i class='BibTitle'>FreydCategoriesForCAP, Freyd categories - Formal (co)kernels for additive categories,
-             Version 2024.09-03</i>
+             Version 2024.09-04</i>
      (<span class='BibYear'>9-10</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FreydCategoriesForCAP">https://homalg-project.github.io/pkg/FreydCategoriesForCAP</a></span>.
@@ -77,7 +77,7 @@ bibtex: |
       author =           {Posur, S. and Bies, M. and Zickgraf, F.},
       title =            {{FreydCategoriesForCAP},        Freyd       categories
                           \texttt{\symbol{45}}  Formal  (co)kernels for additive
-                          categories, {V}ersion 2024.09\texttt{\symbol{45}}03},
+                          categories, {V}ersion 2024.09\texttt{\symbol{45}}04},
       month =            {4\texttt{\symbol{45}}},
       year =             {9\texttt{\symbol{45}}10},
       note =             {GAP package},
