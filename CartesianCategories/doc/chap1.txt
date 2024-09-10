@@ -828,838 +828,1114 @@
   [1X1.4-1 AddCartesianBraiding[101X
   
   [33X[1;0Y[29X[2XAddCartesianBraiding[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianBraiding[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given  function [23XF[123X to the category for the basic operation [10XCartesianBraiding[110X.
-  [23XF: ( a, b ) \mapsto \mathtt{CartesianBraiding}(a, b)[123X.[133X
+  Optionally,  a  weight  (default: 100) can be specified which should roughly
+  correspond  to  the computational complexity of the function (lower weight =
+  less    complex    =    faster   execution).   [23XF:   (   a,   b   )   \mapsto
+  \mathtt{CartesianBraiding}(a, b)[123X.[133X
   
   [1X1.4-2 AddCartesianBraidingInverse[101X
   
   [33X[1;0Y[29X[2XAddCartesianBraidingInverse[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianBraidingInverse[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianBraidingInverse[110X.       [23XF:      (      a,      b      )      \mapsto
-  \mathtt{CartesianBraidingInverse}(a, b)[123X.[133X
+  [10XCartesianBraidingInverse[110X.   Optionally,  a  weight  (default:  100)  can  be
+  specified which should roughly correspond to the computational complexity of
+  the  function  (lower weight = less complex = faster execution). [23XF: ( a, b )
+  \mapsto \mathtt{CartesianBraidingInverse}(a, b)[123X.[133X
   
   [1X1.4-3 AddCartesianBraidingInverseWithGivenDirectProducts[101X
   
   [33X[1;0Y[29X[2XAddCartesianBraidingInverseWithGivenDirectProducts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianBraidingInverseWithGivenDirectProducts[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianBraidingInverseWithGivenDirectProducts[110X.  [23XF:  ( s, a, b, r ) \mapsto
+  [10XCartesianBraidingInverseWithGivenDirectProducts[110X.    Optionally,   a   weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster     execution).     [23XF:     (     s,     a,    b,    r    )    \mapsto
   \mathtt{CartesianBraidingInverseWithGivenDirectProducts}(s, a, b, r)[123X.[133X
   
   [1X1.4-4 AddCartesianBraidingWithGivenDirectProducts[101X
   
   [33X[1;0Y[29X[2XAddCartesianBraidingWithGivenDirectProducts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianBraidingWithGivenDirectProducts[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianBraidingWithGivenDirectProducts[110X.   [23XF:  (  s,  a,  b,  r  )  \mapsto
+  [10XCartesianBraidingWithGivenDirectProducts[110X.  Optionally,  a  weight  (default:
+  100)  can  be specified which should roughly correspond to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF:         (         s,        a,        b,        r        )        \mapsto
   \mathtt{CartesianBraidingWithGivenDirectProducts}(s, a, b, r)[123X.[133X
   
   [1X1.4-5 AddCartesianAssociatorLeftToRight[101X
   
   [33X[1;0Y[29X[2XAddCartesianAssociatorLeftToRight[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianAssociatorLeftToRight[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianAssociatorLeftToRight[110X.     [23XF:    (    a,    b,    c    )    \mapsto
-  \mathtt{CartesianAssociatorLeftToRight}(a, b, c)[123X.[133X
+  [10XCartesianAssociatorLeftToRight[110X.  Optionally,  a weight (default: 100) can be
+  specified which should roughly correspond to the computational complexity of
+  the  function (lower weight = less complex = faster execution). [23XF: ( a, b, c
+  ) \mapsto \mathtt{CartesianAssociatorLeftToRight}(a, b, c)[123X.[133X
   
   [1X1.4-6 AddCartesianAssociatorLeftToRightWithGivenDirectProducts[101X
   
   [33X[1;0Y[29X[2XAddCartesianAssociatorLeftToRightWithGivenDirectProducts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianAssociatorLeftToRightWithGivenDirectProducts[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianAssociatorLeftToRightWithGivenDirectProducts[110X.  [23XF: ( s, a, b, c, r )
-  \mapsto \mathtt{CartesianAssociatorLeftToRightWithGivenDirectProducts}(s, a,
-  b, c, r)[123X.[133X
+  [10XCartesianAssociatorLeftToRightWithGivenDirectProducts[110X.  Optionally, a weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster    execution).    [23XF:    (    s,    a,    b,    c,    r    )   \mapsto
+  \mathtt{CartesianAssociatorLeftToRightWithGivenDirectProducts}(s,  a,  b, c,
+  r)[123X.[133X
   
   [1X1.4-7 AddCartesianAssociatorRightToLeft[101X
   
   [33X[1;0Y[29X[2XAddCartesianAssociatorRightToLeft[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianAssociatorRightToLeft[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianAssociatorRightToLeft[110X.     [23XF:    (    a,    b,    c    )    \mapsto
-  \mathtt{CartesianAssociatorRightToLeft}(a, b, c)[123X.[133X
+  [10XCartesianAssociatorRightToLeft[110X.  Optionally,  a weight (default: 100) can be
+  specified which should roughly correspond to the computational complexity of
+  the  function (lower weight = less complex = faster execution). [23XF: ( a, b, c
+  ) \mapsto \mathtt{CartesianAssociatorRightToLeft}(a, b, c)[123X.[133X
   
   [1X1.4-8 AddCartesianAssociatorRightToLeftWithGivenDirectProducts[101X
   
   [33X[1;0Y[29X[2XAddCartesianAssociatorRightToLeftWithGivenDirectProducts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianAssociatorRightToLeftWithGivenDirectProducts[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianAssociatorRightToLeftWithGivenDirectProducts[110X.  [23XF: ( s, a, b, c, r )
-  \mapsto \mathtt{CartesianAssociatorRightToLeftWithGivenDirectProducts}(s, a,
-  b, c, r)[123X.[133X
+  [10XCartesianAssociatorRightToLeftWithGivenDirectProducts[110X.  Optionally, a weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster    execution).    [23XF:    (    s,    a,    b,    c,    r    )   \mapsto
+  \mathtt{CartesianAssociatorRightToLeftWithGivenDirectProducts}(s,  a,  b, c,
+  r)[123X.[133X
   
   [1X1.4-9 AddCartesianDiagonal[101X
   
   [33X[1;0Y[29X[2XAddCartesianDiagonal[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianDiagonal[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given  function [23XF[123X to the category for the basic operation [10XCartesianDiagonal[110X.
-  [23XF: ( a, n ) \mapsto \mathtt{CartesianDiagonal}(a, n)[123X.[133X
+  Optionally,  a  weight  (default: 100) can be specified which should roughly
+  correspond  to  the computational complexity of the function (lower weight =
+  less    complex    =    faster   execution).   [23XF:   (   a,   n   )   \mapsto
+  \mathtt{CartesianDiagonal}(a, n)[123X.[133X
   
   [1X1.4-10 AddCartesianDiagonalWithGivenCartesianPower[101X
   
   [33X[1;0Y[29X[2XAddCartesianDiagonalWithGivenCartesianPower[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianDiagonalWithGivenCartesianPower[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianDiagonalWithGivenCartesianPower[110X.  [23XF:  (  a,  n,  cartesian_power  )
-  \mapsto        \mathtt{CartesianDiagonalWithGivenCartesianPower}(a,       n,
-  cartesian_power)[123X.[133X
+  [10XCartesianDiagonalWithGivenCartesianPower[110X.  Optionally,  a  weight  (default:
+  100)  can  be specified which should roughly correspond to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF:        (        a,        n,        cartesian_power       )       \mapsto
+  \mathtt{CartesianDiagonalWithGivenCartesianPower}(a, n, cartesian_power)[123X.[133X
   
   [1X1.4-11 AddCartesianLeftUnitor[101X
   
   [33X[1;0Y[29X[2XAddCartesianLeftUnitor[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianLeftUnitor[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianLeftUnitor[110X. [23XF: ( a ) \mapsto \mathtt{CartesianLeftUnitor}(a)[123X.[133X
+  [10XCartesianLeftUnitor[110X.  Optionally,  a  weight (default: 100) can be specified
+  which  should  roughly  correspond  to  the  computational complexity of the
+  function  (lower weight = less complex = faster execution). [23XF: ( a ) \mapsto
+  \mathtt{CartesianLeftUnitor}(a)[123X.[133X
   
   [1X1.4-12 AddCartesianLeftUnitorInverse[101X
   
   [33X[1;0Y[29X[2XAddCartesianLeftUnitorInverse[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianLeftUnitorInverse[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianLeftUnitorInverse[110X.        [23XF:        (       a       )       \mapsto
-  \mathtt{CartesianLeftUnitorInverse}(a)[123X.[133X
+  [10XCartesianLeftUnitorInverse[110X.  Optionally,  a  weight  (default:  100)  can be
+  specified which should roughly correspond to the computational complexity of
+  the  function  (lower  weight  =  less complex = faster execution). [23XF: ( a )
+  \mapsto \mathtt{CartesianLeftUnitorInverse}(a)[123X.[133X
   
   [1X1.4-13 AddCartesianLeftUnitorInverseWithGivenDirectProduct[101X
   
   [33X[1;0Y[29X[2XAddCartesianLeftUnitorInverseWithGivenDirectProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianLeftUnitorInverseWithGivenDirectProduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianLeftUnitorInverseWithGivenDirectProduct[110X.   [23XF:  (  a,  r  )  \mapsto
+  [10XCartesianLeftUnitorInverseWithGivenDirectProduct[110X.   Optionally,   a   weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster       execution).       [23XF:       (      a,      r      )      \mapsto
   \mathtt{CartesianLeftUnitorInverseWithGivenDirectProduct}(a, r)[123X.[133X
   
   [1X1.4-14 AddCartesianLeftUnitorWithGivenDirectProduct[101X
   
   [33X[1;0Y[29X[2XAddCartesianLeftUnitorWithGivenDirectProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianLeftUnitorWithGivenDirectProduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianLeftUnitorWithGivenDirectProduct[110X.    [23XF:    (   a,   s   )   \mapsto
-  \mathtt{CartesianLeftUnitorWithGivenDirectProduct}(a, s)[123X.[133X
+  [10XCartesianLeftUnitorWithGivenDirectProduct[110X.  Optionally,  a  weight (default:
+  100)  can  be specified which should roughly correspond to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF:  (  a,  s ) \mapsto \mathtt{CartesianLeftUnitorWithGivenDirectProduct}(a,
+  s)[123X.[133X
   
   [1X1.4-15 AddCartesianRightUnitor[101X
   
   [33X[1;0Y[29X[2XAddCartesianRightUnitor[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianRightUnitor[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianRightUnitor[110X. [23XF: ( a ) \mapsto \mathtt{CartesianRightUnitor}(a)[123X.[133X
+  [10XCartesianRightUnitor[110X.  Optionally,  a weight (default: 100) can be specified
+  which  should  roughly  correspond  to  the  computational complexity of the
+  function  (lower weight = less complex = faster execution). [23XF: ( a ) \mapsto
+  \mathtt{CartesianRightUnitor}(a)[123X.[133X
   
   [1X1.4-16 AddCartesianRightUnitorInverse[101X
   
   [33X[1;0Y[29X[2XAddCartesianRightUnitorInverse[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianRightUnitorInverse[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianRightUnitorInverse[110X.        [23XF:       (       a       )       \mapsto
-  \mathtt{CartesianRightUnitorInverse}(a)[123X.[133X
+  [10XCartesianRightUnitorInverse[110X.  Optionally,  a  weight  (default:  100) can be
+  specified which should roughly correspond to the computational complexity of
+  the  function  (lower  weight  =  less complex = faster execution). [23XF: ( a )
+  \mapsto \mathtt{CartesianRightUnitorInverse}(a)[123X.[133X
   
   [1X1.4-17 AddCartesianRightUnitorInverseWithGivenDirectProduct[101X
   
   [33X[1;0Y[29X[2XAddCartesianRightUnitorInverseWithGivenDirectProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianRightUnitorInverseWithGivenDirectProduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianRightUnitorInverseWithGivenDirectProduct[110X.  [23XF:  (  a,  r  )  \mapsto
+  [10XCartesianRightUnitorInverseWithGivenDirectProduct[110X.   Optionally,   a  weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster       execution).       [23XF:       (      a,      r      )      \mapsto
   \mathtt{CartesianRightUnitorInverseWithGivenDirectProduct}(a, r)[123X.[133X
   
   [1X1.4-18 AddCartesianRightUnitorWithGivenDirectProduct[101X
   
   [33X[1;0Y[29X[2XAddCartesianRightUnitorWithGivenDirectProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianRightUnitorWithGivenDirectProduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianRightUnitorWithGivenDirectProduct[110X.    [23XF:   (   a,   s   )   \mapsto
-  \mathtt{CartesianRightUnitorWithGivenDirectProduct}(a, s)[123X.[133X
+  [10XCartesianRightUnitorWithGivenDirectProduct[110X.  Optionally,  a weight (default:
+  100)  can  be specified which should roughly correspond to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF:  (  a, s ) \mapsto \mathtt{CartesianRightUnitorWithGivenDirectProduct}(a,
+  s)[123X.[133X
   
   [1X1.4-19 AddDirectProductOnMorphisms[101X
   
   [33X[1;0Y[29X[2XAddDirectProductOnMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddDirectProductOnMorphisms[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XDirectProductOnMorphisms[110X.     [23XF:     (     alpha,     beta     )     \mapsto
-  \mathtt{DirectProductOnMorphisms}(alpha, beta)[123X.[133X
+  [10XDirectProductOnMorphisms[110X.   Optionally,  a  weight  (default:  100)  can  be
+  specified which should roughly correspond to the computational complexity of
+  the  function  (lower weight = less complex = faster execution). [23XF: ( alpha,
+  beta ) \mapsto \mathtt{DirectProductOnMorphisms}(alpha, beta)[123X.[133X
   
   [1X1.4-20 AddDirectProductOnMorphismsWithGivenDirectProducts[101X
   
   [33X[1;0Y[29X[2XAddDirectProductOnMorphismsWithGivenDirectProducts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddDirectProductOnMorphismsWithGivenDirectProducts[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XDirectProductOnMorphismsWithGivenDirectProducts[110X.  [23XF:  (  s, alpha, beta, r )
-  \mapsto  \mathtt{DirectProductOnMorphismsWithGivenDirectProducts}(s,  alpha,
-  beta, r)[123X.[133X
+  [10XDirectProductOnMorphismsWithGivenDirectProducts[110X.    Optionally,   a   weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster    execution).    [23XF:    (    s,    alpha,    beta,    r   )   \mapsto
+  \mathtt{DirectProductOnMorphismsWithGivenDirectProducts}(s, alpha, beta, r)[123X.[133X
   
   [1X1.4-21 AddCartesianDualOnMorphisms[101X
   
   [33X[1;0Y[29X[2XAddCartesianDualOnMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianDualOnMorphisms[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianDualOnMorphisms[110X.       [23XF:       (       alpha       )       \mapsto
-  \mathtt{CartesianDualOnMorphisms}(alpha)[123X.[133X
+  [10XCartesianDualOnMorphisms[110X.   Optionally,  a  weight  (default:  100)  can  be
+  specified which should roughly correspond to the computational complexity of
+  the  function (lower weight = less complex = faster execution). [23XF: ( alpha )
+  \mapsto \mathtt{CartesianDualOnMorphisms}(alpha)[123X.[133X
   
   [1X1.4-22 AddCartesianDualOnMorphismsWithGivenCartesianDuals[101X
   
   [33X[1;0Y[29X[2XAddCartesianDualOnMorphismsWithGivenCartesianDuals[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianDualOnMorphismsWithGivenCartesianDuals[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianDualOnMorphismsWithGivenCartesianDuals[110X.  [23XF: ( s, alpha, r ) \mapsto
+  [10XCartesianDualOnMorphismsWithGivenCartesianDuals[110X.    Optionally,   a   weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster     execution).     [23XF:     (     s,     alpha,     r     )    \mapsto
   \mathtt{CartesianDualOnMorphismsWithGivenCartesianDuals}(s, alpha, r)[123X.[133X
   
   [1X1.4-23 AddCartesianDualOnObjects[101X
   
   [33X[1;0Y[29X[2XAddCartesianDualOnObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianDualOnObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianDualOnObjects[110X. [23XF: ( a ) \mapsto \mathtt{CartesianDualOnObjects}(a)[123X.[133X
+  [10XCartesianDualOnObjects[110X. Optionally, a weight (default: 100) can be specified
+  which  should  roughly  correspond  to  the  computational complexity of the
+  function  (lower weight = less complex = faster execution). [23XF: ( a ) \mapsto
+  \mathtt{CartesianDualOnObjects}(a)[123X.[133X
   
   [1X1.4-24 AddCartesianEvaluationForCartesianDual[101X
   
   [33X[1;0Y[29X[2XAddCartesianEvaluationForCartesianDual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianEvaluationForCartesianDual[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianEvaluationForCartesianDual[110X.      [23XF:      (      a     )     \mapsto
-  \mathtt{CartesianEvaluationForCartesianDual}(a)[123X.[133X
+  [10XCartesianEvaluationForCartesianDual[110X. Optionally, a weight (default: 100) can
+  be specified which should roughly correspond to the computational complexity
+  of  the  function (lower weight = less complex = faster execution). [23XF: ( a )
+  \mapsto \mathtt{CartesianEvaluationForCartesianDual}(a)[123X.[133X
   
   [1X1.4-25 AddCartesianEvaluationForCartesianDualWithGivenDirectProduct[101X
   
   [33X[1;0Y[29X[2XAddCartesianEvaluationForCartesianDualWithGivenDirectProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianEvaluationForCartesianDualWithGivenDirectProduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianEvaluationForCartesianDualWithGivenDirectProduct[110X.  [23XF:  (  s, a, r )
-  \mapsto
+  [10XCartesianEvaluationForCartesianDualWithGivenDirectProduct[110X.   Optionally,   a
+  weight  (default:  100)  can be specified which should roughly correspond to
+  the  computational complexity of the function (lower weight = less complex =
+  faster      execution).      [23XF:      (     s,     a,     r     )     \mapsto
   \mathtt{CartesianEvaluationForCartesianDualWithGivenDirectProduct}(s, a, r)[123X.[133X
   
   [1X1.4-26 AddCartesianLambdaElimination[101X
   
   [33X[1;0Y[29X[2XAddCartesianLambdaElimination[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianLambdaElimination[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianLambdaElimination[110X.     [23XF:    (    a,    b,    alpha    )    \mapsto
-  \mathtt{CartesianLambdaElimination}(a, b, alpha)[123X.[133X
+  [10XCartesianLambdaElimination[110X.  Optionally,  a  weight  (default:  100)  can be
+  specified which should roughly correspond to the computational complexity of
+  the  function  (lower  weight = less complex = faster execution). [23XF: ( a, b,
+  alpha ) \mapsto \mathtt{CartesianLambdaElimination}(a, b, alpha)[123X.[133X
   
   [1X1.4-27 AddCartesianLambdaIntroduction[101X
   
   [33X[1;0Y[29X[2XAddCartesianLambdaIntroduction[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianLambdaIntroduction[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianLambdaIntroduction[110X.       [23XF:       (      alpha      )      \mapsto
-  \mathtt{CartesianLambdaIntroduction}(alpha)[123X.[133X
+  [10XCartesianLambdaIntroduction[110X.  Optionally,  a  weight  (default:  100) can be
+  specified which should roughly correspond to the computational complexity of
+  the  function (lower weight = less complex = faster execution). [23XF: ( alpha )
+  \mapsto \mathtt{CartesianLambdaIntroduction}(alpha)[123X.[133X
   
   [1X1.4-28 AddCartesianLeftCoevaluationMorphism[101X
   
   [33X[1;0Y[29X[2XAddCartesianLeftCoevaluationMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianLeftCoevaluationMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianLeftCoevaluationMorphism[110X.     [23XF:     (     a,     b    )    \mapsto
-  \mathtt{CartesianLeftCoevaluationMorphism}(a, b)[123X.[133X
+  [10XCartesianLeftCoevaluationMorphism[110X.  Optionally,  a weight (default: 100) can
+  be specified which should roughly correspond to the computational complexity
+  of  the function (lower weight = less complex = faster execution). [23XF: ( a, b
+  ) \mapsto \mathtt{CartesianLeftCoevaluationMorphism}(a, b)[123X.[133X
   
   [1X1.4-29 AddCartesianLeftCoevaluationMorphismWithGivenRange[101X
   
   [33X[1;0Y[29X[2XAddCartesianLeftCoevaluationMorphismWithGivenRange[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianLeftCoevaluationMorphismWithGivenRange[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianLeftCoevaluationMorphismWithGivenRange[110X.  [23XF:  (  a,  b,  r ) \mapsto
+  [10XCartesianLeftCoevaluationMorphismWithGivenRange[110X.    Optionally,   a   weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster      execution).      [23XF:      (     a,     b,     r     )     \mapsto
   \mathtt{CartesianLeftCoevaluationMorphismWithGivenRange}(a, b, r)[123X.[133X
   
   [1X1.4-30 AddCartesianLeftEvaluationMorphism[101X
   
   [33X[1;0Y[29X[2XAddCartesianLeftEvaluationMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianLeftEvaluationMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianLeftEvaluationMorphism[110X.     [23XF:     (     a,     b     )     \mapsto
-  \mathtt{CartesianLeftEvaluationMorphism}(a, b)[123X.[133X
+  [10XCartesianLeftEvaluationMorphism[110X.  Optionally, a weight (default: 100) can be
+  specified which should roughly correspond to the computational complexity of
+  the  function  (lower weight = less complex = faster execution). [23XF: ( a, b )
+  \mapsto \mathtt{CartesianLeftEvaluationMorphism}(a, b)[123X.[133X
   
   [1X1.4-31 AddCartesianLeftEvaluationMorphismWithGivenSource[101X
   
   [33X[1;0Y[29X[2XAddCartesianLeftEvaluationMorphismWithGivenSource[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianLeftEvaluationMorphismWithGivenSource[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianLeftEvaluationMorphismWithGivenSource[110X.  [23XF:  (  a,  b,  s  ) \mapsto
+  [10XCartesianLeftEvaluationMorphismWithGivenSource[110X.    Optionally,    a   weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster      execution).      [23XF:      (     a,     b,     s     )     \mapsto
   \mathtt{CartesianLeftEvaluationMorphismWithGivenSource}(a, b, s)[123X.[133X
   
   [1X1.4-32 AddCartesianPostComposeMorphism[101X
   
   [33X[1;0Y[29X[2XAddCartesianPostComposeMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianPostComposeMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianPostComposeMorphism[110X.     [23XF:     (     a,    b,    c    )    \mapsto
-  \mathtt{CartesianPostComposeMorphism}(a, b, c)[123X.[133X
+  [10XCartesianPostComposeMorphism[110X.  Optionally,  a  weight  (default: 100) can be
+  specified which should roughly correspond to the computational complexity of
+  the  function (lower weight = less complex = faster execution). [23XF: ( a, b, c
+  ) \mapsto \mathtt{CartesianPostComposeMorphism}(a, b, c)[123X.[133X
   
   [1X1.4-33 AddCartesianPostComposeMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddCartesianPostComposeMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianPostComposeMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianPostComposeMorphismWithGivenObjects[110X.  [23XF:  ( s, a, b, c, r ) \mapsto
+  [10XCartesianPostComposeMorphismWithGivenObjects[110X. Optionally, a weight (default:
+  100)  can  be specified which should roughly correspond to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF:       (       s,       a,       b,       c,       r       )       \mapsto
   \mathtt{CartesianPostComposeMorphismWithGivenObjects}(s, a, b, c, r)[123X.[133X
   
   [1X1.4-34 AddCartesianPreComposeMorphism[101X
   
   [33X[1;0Y[29X[2XAddCartesianPreComposeMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianPreComposeMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianPreComposeMorphism[110X.     [23XF:     (     a,     b,    c    )    \mapsto
-  \mathtt{CartesianPreComposeMorphism}(a, b, c)[123X.[133X
+  [10XCartesianPreComposeMorphism[110X.  Optionally,  a  weight  (default:  100) can be
+  specified which should roughly correspond to the computational complexity of
+  the  function (lower weight = less complex = faster execution). [23XF: ( a, b, c
+  ) \mapsto \mathtt{CartesianPreComposeMorphism}(a, b, c)[123X.[133X
   
   [1X1.4-35 AddCartesianPreComposeMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddCartesianPreComposeMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianPreComposeMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianPreComposeMorphismWithGivenObjects[110X.  [23XF:  (  s, a, b, c, r ) \mapsto
+  [10XCartesianPreComposeMorphismWithGivenObjects[110X.  Optionally, a weight (default:
+  100)  can  be specified which should roughly correspond to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF:       (       s,       a,       b,       c,       r       )       \mapsto
   \mathtt{CartesianPreComposeMorphismWithGivenObjects}(s, a, b, c, r)[123X.[133X
   
   [1X1.4-36 AddCartesianRightCoevaluationMorphism[101X
   
   [33X[1;0Y[29X[2XAddCartesianRightCoevaluationMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianRightCoevaluationMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianRightCoevaluationMorphism[110X.     [23XF:     (     a,    b    )    \mapsto
-  \mathtt{CartesianRightCoevaluationMorphism}(a, b)[123X.[133X
+  [10XCartesianRightCoevaluationMorphism[110X.  Optionally, a weight (default: 100) can
+  be specified which should roughly correspond to the computational complexity
+  of  the function (lower weight = less complex = faster execution). [23XF: ( a, b
+  ) \mapsto \mathtt{CartesianRightCoevaluationMorphism}(a, b)[123X.[133X
   
   [1X1.4-37 AddCartesianRightCoevaluationMorphismWithGivenRange[101X
   
   [33X[1;0Y[29X[2XAddCartesianRightCoevaluationMorphismWithGivenRange[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianRightCoevaluationMorphismWithGivenRange[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianRightCoevaluationMorphismWithGivenRange[110X.  [23XF:  (  a,  b, r ) \mapsto
+  [10XCartesianRightCoevaluationMorphismWithGivenRange[110X.   Optionally,   a   weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster      execution).      [23XF:      (     a,     b,     r     )     \mapsto
   \mathtt{CartesianRightCoevaluationMorphismWithGivenRange}(a, b, r)[123X.[133X
   
   [1X1.4-38 AddCartesianRightEvaluationMorphism[101X
   
   [33X[1;0Y[29X[2XAddCartesianRightEvaluationMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianRightEvaluationMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianRightEvaluationMorphism[110X.     [23XF:     (     a,     b     )    \mapsto
-  \mathtt{CartesianRightEvaluationMorphism}(a, b)[123X.[133X
+  [10XCartesianRightEvaluationMorphism[110X. Optionally, a weight (default: 100) can be
+  specified which should roughly correspond to the computational complexity of
+  the  function  (lower weight = less complex = faster execution). [23XF: ( a, b )
+  \mapsto \mathtt{CartesianRightEvaluationMorphism}(a, b)[123X.[133X
   
   [1X1.4-39 AddCartesianRightEvaluationMorphismWithGivenSource[101X
   
   [33X[1;0Y[29X[2XAddCartesianRightEvaluationMorphismWithGivenSource[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCartesianRightEvaluationMorphismWithGivenSource[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCartesianRightEvaluationMorphismWithGivenSource[110X.  [23XF:  (  a,  b,  s ) \mapsto
+  [10XCartesianRightEvaluationMorphismWithGivenSource[110X.    Optionally,   a   weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster      execution).      [23XF:      (     a,     b,     s     )     \mapsto
   \mathtt{CartesianRightEvaluationMorphismWithGivenSource}(a, b, s)[123X.[133X
   
   [1X1.4-40 AddDirectProductCartesianDualityCompatibilityMorphism[101X
   
   [33X[1;0Y[29X[2XAddDirectProductCartesianDualityCompatibilityMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddDirectProductCartesianDualityCompatibilityMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XDirectProductCartesianDualityCompatibilityMorphism[110X.  [23XF:  (  a,  b  ) \mapsto
+  [10XDirectProductCartesianDualityCompatibilityMorphism[110X.   Optionally,  a  weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster       execution).       [23XF:       (      a,      b      )      \mapsto
   \mathtt{DirectProductCartesianDualityCompatibilityMorphism}(a, b)[123X.[133X
   
   [1X1.4-41 AddDirectProductCartesianDualityCompatibilityMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddDirectProductCartesianDualityCompatibilityMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddDirectProductCartesianDualityCompatibilityMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XDirectProductCartesianDualityCompatibilityMorphismWithGivenObjects[110X.  [23XF: ( s,
-  a,                b,                r                )               \mapsto
+  [10XDirectProductCartesianDualityCompatibilityMorphismWithGivenObjects[110X.
+  Optionally,  a  weight  (default: 100) can be specified which should roughly
+  correspond  to  the computational complexity of the function (lower weight =
+  less   complex   =   faster   execution).   [23XF:  (  s,  a,  b,  r  )  \mapsto
   \mathtt{DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects}(s,
   a, b, r)[123X.[133X
   
   [1X1.4-42 AddDirectProductExponentialCompatibilityMorphism[101X
   
   [33X[1;0Y[29X[2XAddDirectProductExponentialCompatibilityMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddDirectProductExponentialCompatibilityMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XDirectProductExponentialCompatibilityMorphism[110X.   [23XF:   (   list   )   \mapsto
+  [10XDirectProductExponentialCompatibilityMorphism[110X.    Optionally,    a    weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster        execution).        [23XF:       (       list       )       \mapsto
   \mathtt{DirectProductExponentialCompatibilityMorphism}(list)[123X.[133X
   
   [1X1.4-43 AddDirectProductExponentialCompatibilityMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddDirectProductExponentialCompatibilityMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddDirectProductExponentialCompatibilityMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XDirectProductExponentialCompatibilityMorphismWithGivenObjects[110X.  [23XF: ( source,
-  list,                    range                   )                   \mapsto
+  [10XDirectProductExponentialCompatibilityMorphismWithGivenObjects[110X. Optionally, a
+  weight  (default:  100)  can be specified which should roughly correspond to
+  the  computational complexity of the function (lower weight = less complex =
+  faster    execution).    [23XF:    (    source,    list,    range    )   \mapsto
   \mathtt{DirectProductExponentialCompatibilityMorphismWithGivenObjects}(source,
   list, range)[123X.[133X
   
   [1X1.4-44 AddDirectProductToExponentialLeftAdjunctMorphism[101X
   
   [33X[1;0Y[29X[2XAddDirectProductToExponentialLeftAdjunctMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddDirectProductToExponentialLeftAdjunctMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XDirectProductToExponentialLeftAdjunctMorphism[110X.  [23XF:  (  a,  b,  f  )  \mapsto
+  [10XDirectProductToExponentialLeftAdjunctMorphism[110X.    Optionally,    a    weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster      execution).      [23XF:      (     a,     b,     f     )     \mapsto
   \mathtt{DirectProductToExponentialLeftAdjunctMorphism}(a, b, f)[123X.[133X
   
   [1X1.4-45 AddDirectProductToExponentialLeftAdjunctMorphismWithGivenExponential[101X
   
   [33X[1;0Y[29X[2XAddDirectProductToExponentialLeftAdjunctMorphismWithGivenExponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddDirectProductToExponentialLeftAdjunctMorphismWithGivenExponential[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XDirectProductToExponentialLeftAdjunctMorphismWithGivenExponential[110X.  [23XF:  ( a,
-  b,                f,                i                )               \mapsto
+  [10XDirectProductToExponentialLeftAdjunctMorphismWithGivenExponential[110X.
+  Optionally,  a  weight  (default: 100) can be specified which should roughly
+  correspond  to  the computational complexity of the function (lower weight =
+  less   complex   =   faster   execution).   [23XF:  (  a,  b,  f,  i  )  \mapsto
   \mathtt{DirectProductToExponentialLeftAdjunctMorphismWithGivenExponential}(a,
   b, f, i)[123X.[133X
   
   [1X1.4-46 AddDirectProductToExponentialLeftAdjunctionIsomorphism[101X
   
   [33X[1;0Y[29X[2XAddDirectProductToExponentialLeftAdjunctionIsomorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddDirectProductToExponentialLeftAdjunctionIsomorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XDirectProductToExponentialLeftAdjunctionIsomorphism[110X.  [23XF: ( a, b, c ) \mapsto
+  [10XDirectProductToExponentialLeftAdjunctionIsomorphism[110X.  Optionally,  a  weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster      execution).      [23XF:      (     a,     b,     c     )     \mapsto
   \mathtt{DirectProductToExponentialLeftAdjunctionIsomorphism}(a, b, c)[123X.[133X
   
   [1X1.4-47 AddDirectProductToExponentialLeftAdjunctionIsomorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddDirectProductToExponentialLeftAdjunctionIsomorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddDirectProductToExponentialLeftAdjunctionIsomorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XDirectProductToExponentialLeftAdjunctionIsomorphismWithGivenObjects[110X. [23XF: ( s,
-  a,             b,            c,            r            )            \mapsto
+  [10XDirectProductToExponentialLeftAdjunctionIsomorphismWithGivenObjects[110X.
+  Optionally,  a  weight  (default: 100) can be specified which should roughly
+  correspond  to  the computational complexity of the function (lower weight =
+  less   complex  =  faster  execution).  [23XF:  (  s,  a,  b,  c,  r  )  \mapsto
   \mathtt{DirectProductToExponentialLeftAdjunctionIsomorphismWithGivenObjects}(s,
   a, b, c, r)[123X.[133X
   
   [1X1.4-48 AddDirectProductToExponentialRightAdjunctMorphism[101X
   
   [33X[1;0Y[29X[2XAddDirectProductToExponentialRightAdjunctMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddDirectProductToExponentialRightAdjunctMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XDirectProductToExponentialRightAdjunctMorphism[110X.  [23XF:  (  a,  b,  f  ) \mapsto
+  [10XDirectProductToExponentialRightAdjunctMorphism[110X.    Optionally,    a   weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster      execution).      [23XF:      (     a,     b,     f     )     \mapsto
   \mathtt{DirectProductToExponentialRightAdjunctMorphism}(a, b, f)[123X.[133X
   
   [1X1.4-49 AddDirectProductToExponentialRightAdjunctMorphismWithGivenExponential[101X
   
   [33X[1;0Y[29X[2XAddDirectProductToExponentialRightAdjunctMorphismWithGivenExponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddDirectProductToExponentialRightAdjunctMorphismWithGivenExponential[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XDirectProductToExponentialRightAdjunctMorphismWithGivenExponential[110X.  [23XF: ( a,
-  b,                f,                i                )               \mapsto
+  [10XDirectProductToExponentialRightAdjunctMorphismWithGivenExponential[110X.
+  Optionally,  a  weight  (default: 100) can be specified which should roughly
+  correspond  to  the computational complexity of the function (lower weight =
+  less   complex   =   faster   execution).   [23XF:  (  a,  b,  f,  i  )  \mapsto
   \mathtt{DirectProductToExponentialRightAdjunctMorphismWithGivenExponential}(a,
   b, f, i)[123X.[133X
   
   [1X1.4-50 AddDirectProductToExponentialRightAdjunctionIsomorphism[101X
   
   [33X[1;0Y[29X[2XAddDirectProductToExponentialRightAdjunctionIsomorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddDirectProductToExponentialRightAdjunctionIsomorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XDirectProductToExponentialRightAdjunctionIsomorphism[110X. [23XF: ( a, b, c ) \mapsto
+  [10XDirectProductToExponentialRightAdjunctionIsomorphism[110X.  Optionally,  a weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster      execution).      [23XF:      (     a,     b,     c     )     \mapsto
   \mathtt{DirectProductToExponentialRightAdjunctionIsomorphism}(a, b, c)[123X.[133X
   
   [1X1.4-51 AddDirectProductToExponentialRightAdjunctionIsomorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddDirectProductToExponentialRightAdjunctionIsomorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddDirectProductToExponentialRightAdjunctionIsomorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XDirectProductToExponentialRightAdjunctionIsomorphismWithGivenObjects[110X.  [23XF:  (
-  s,          a,          b,          c,          r          )         \mapsto
+  [10XDirectProductToExponentialRightAdjunctionIsomorphismWithGivenObjects[110X.
+  Optionally,  a  weight  (default: 100) can be specified which should roughly
+  correspond  to  the computational complexity of the function (lower weight =
+  less   complex  =  faster  execution).  [23XF:  (  s,  a,  b,  c,  r  )  \mapsto
   \mathtt{DirectProductToExponentialRightAdjunctionIsomorphismWithGivenObjects}(s,
   a, b, c, r)[123X.[133X
   
   [1X1.4-52 AddExponentialOnMorphisms[101X
   
   [33X[1;0Y[29X[2XAddExponentialOnMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddExponentialOnMorphisms[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XExponentialOnMorphisms[110X.      [23XF:      (     alpha,     beta     )     \mapsto
-  \mathtt{ExponentialOnMorphisms}(alpha, beta)[123X.[133X
+  [10XExponentialOnMorphisms[110X. Optionally, a weight (default: 100) can be specified
+  which  should  roughly  correspond  to  the  computational complexity of the
+  function  (lower weight = less complex = faster execution). [23XF: ( alpha, beta
+  ) \mapsto \mathtt{ExponentialOnMorphisms}(alpha, beta)[123X.[133X
   
   [1X1.4-53 AddExponentialOnMorphismsWithGivenExponentials[101X
   
   [33X[1;0Y[29X[2XAddExponentialOnMorphismsWithGivenExponentials[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddExponentialOnMorphismsWithGivenExponentials[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XExponentialOnMorphismsWithGivenExponentials[110X.  [23XF:  (  s,  alpha,  beta,  r  )
-  \mapsto \mathtt{ExponentialOnMorphismsWithGivenExponentials}(s, alpha, beta,
-  r)[123X.[133X
+  [10XExponentialOnMorphismsWithGivenExponentials[110X.  Optionally, a weight (default:
+  100)  can  be specified which should roughly correspond to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF:        (        s,       alpha,       beta,       r       )       \mapsto
+  \mathtt{ExponentialOnMorphismsWithGivenExponentials}(s, alpha, beta, r)[123X.[133X
   
   [1X1.4-54 AddExponentialOnObjects[101X
   
   [33X[1;0Y[29X[2XAddExponentialOnObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddExponentialOnObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XExponentialOnObjects[110X.  [23XF:  ( a, b ) \mapsto \mathtt{ExponentialOnObjects}(a,
-  b)[123X.[133X
+  [10XExponentialOnObjects[110X.  Optionally,  a weight (default: 100) can be specified
+  which  should  roughly  correspond  to  the  computational complexity of the
+  function  (lower  weight  =  less  complex  = faster execution). [23XF: ( a, b )
+  \mapsto \mathtt{ExponentialOnObjects}(a, b)[123X.[133X
   
   [1X1.4-55 AddExponentialToDirectProductLeftAdjunctMorphism[101X
   
   [33X[1;0Y[29X[2XAddExponentialToDirectProductLeftAdjunctMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddExponentialToDirectProductLeftAdjunctMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XExponentialToDirectProductLeftAdjunctMorphism[110X.  [23XF:  (  b,  c,  g  )  \mapsto
+  [10XExponentialToDirectProductLeftAdjunctMorphism[110X.    Optionally,    a    weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster      execution).      [23XF:      (     b,     c,     g     )     \mapsto
   \mathtt{ExponentialToDirectProductLeftAdjunctMorphism}(b, c, g)[123X.[133X
   
   [1X1.4-56 AddExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct[101X
   
   [33X[1;0Y[29X[2XAddExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct[110X. [23XF: ( b,
-  c,                g,                s                )               \mapsto
+  [10XExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct[110X.
+  Optionally,  a  weight  (default: 100) can be specified which should roughly
+  correspond  to  the computational complexity of the function (lower weight =
+  less   complex   =   faster   execution).   [23XF:  (  b,  c,  g,  s  )  \mapsto
   \mathtt{ExponentialToDirectProductLeftAdjunctMorphismWithGivenDirectProduct}(b,
   c, g, s)[123X.[133X
   
   [1X1.4-57 AddExponentialToDirectProductLeftAdjunctionIsomorphism[101X
   
   [33X[1;0Y[29X[2XAddExponentialToDirectProductLeftAdjunctionIsomorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddExponentialToDirectProductLeftAdjunctionIsomorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XExponentialToDirectProductLeftAdjunctionIsomorphism[110X.  [23XF: ( a, b, c ) \mapsto
+  [10XExponentialToDirectProductLeftAdjunctionIsomorphism[110X.  Optionally,  a  weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster      execution).      [23XF:      (     a,     b,     c     )     \mapsto
   \mathtt{ExponentialToDirectProductLeftAdjunctionIsomorphism}(a, b, c)[123X.[133X
   
   [1X1.4-58 AddExponentialToDirectProductLeftAdjunctionIsomorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddExponentialToDirectProductLeftAdjunctionIsomorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddExponentialToDirectProductLeftAdjunctionIsomorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XExponentialToDirectProductLeftAdjunctionIsomorphismWithGivenObjects[110X. [23XF: ( s,
-  a,             b,            c,            r            )            \mapsto
+  [10XExponentialToDirectProductLeftAdjunctionIsomorphismWithGivenObjects[110X.
+  Optionally,  a  weight  (default: 100) can be specified which should roughly
+  correspond  to  the computational complexity of the function (lower weight =
+  less   complex  =  faster  execution).  [23XF:  (  s,  a,  b,  c,  r  )  \mapsto
   \mathtt{ExponentialToDirectProductLeftAdjunctionIsomorphismWithGivenObjects}(s,
   a, b, c, r)[123X.[133X
   
   [1X1.4-59 AddExponentialToDirectProductRightAdjunctMorphism[101X
   
   [33X[1;0Y[29X[2XAddExponentialToDirectProductRightAdjunctMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddExponentialToDirectProductRightAdjunctMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XExponentialToDirectProductRightAdjunctMorphism[110X.  [23XF:  (  a,  c,  g  ) \mapsto
+  [10XExponentialToDirectProductRightAdjunctMorphism[110X.    Optionally,    a   weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster      execution).      [23XF:      (     a,     c,     g     )     \mapsto
   \mathtt{ExponentialToDirectProductRightAdjunctMorphism}(a, c, g)[123X.[133X
   
   [1X1.4-60 AddExponentialToDirectProductRightAdjunctMorphismWithGivenDirectProduct[101X
   
   [33X[1;0Y[29X[2XAddExponentialToDirectProductRightAdjunctMorphismWithGivenDirectProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddExponentialToDirectProductRightAdjunctMorphismWithGivenDirectProduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XExponentialToDirectProductRightAdjunctMorphismWithGivenDirectProduct[110X.  [23XF:  (
-  a,             c,            g,            s            )            \mapsto
+  [10XExponentialToDirectProductRightAdjunctMorphismWithGivenDirectProduct[110X.
+  Optionally,  a  weight  (default: 100) can be specified which should roughly
+  correspond  to  the computational complexity of the function (lower weight =
+  less   complex   =   faster   execution).   [23XF:  (  a,  c,  g,  s  )  \mapsto
   \mathtt{ExponentialToDirectProductRightAdjunctMorphismWithGivenDirectProduct}(a,
   c, g, s)[123X.[133X
   
   [1X1.4-61 AddExponentialToDirectProductRightAdjunctionIsomorphism[101X
   
   [33X[1;0Y[29X[2XAddExponentialToDirectProductRightAdjunctionIsomorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddExponentialToDirectProductRightAdjunctionIsomorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XExponentialToDirectProductRightAdjunctionIsomorphism[110X. [23XF: ( a, b, c ) \mapsto
+  [10XExponentialToDirectProductRightAdjunctionIsomorphism[110X.  Optionally,  a weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster      execution).      [23XF:      (     a,     b,     c     )     \mapsto
   \mathtt{ExponentialToDirectProductRightAdjunctionIsomorphism}(a, b, c)[123X.[133X
   
   [1X1.4-62 AddExponentialToDirectProductRightAdjunctionIsomorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddExponentialToDirectProductRightAdjunctionIsomorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddExponentialToDirectProductRightAdjunctionIsomorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XExponentialToDirectProductRightAdjunctionIsomorphismWithGivenObjects[110X.  [23XF:  (
-  s,          a,          b,          c,          r          )         \mapsto
+  [10XExponentialToDirectProductRightAdjunctionIsomorphismWithGivenObjects[110X.
+  Optionally,  a  weight  (default: 100) can be specified which should roughly
+  correspond  to  the computational complexity of the function (lower weight =
+  less   complex  =  faster  execution).  [23XF:  (  s,  a,  b,  c,  r  )  \mapsto
   \mathtt{ExponentialToDirectProductRightAdjunctionIsomorphismWithGivenObjects}(s,
   a, b, c, r)[123X.[133X
   
   [1X1.4-63 AddIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject[110X.  [23XF: ( a )
-  \mapsto
+  [10XIsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject[110X.
+  Optionally,  a  weight  (default: 100) can be specified which should roughly
+  correspond  to  the computational complexity of the function (lower weight =
+  less    complex    =    faster    execution).    [23XF:    (    a    )   \mapsto
   \mathtt{IsomorphismFromCartesianDualObjectToExponentialIntoTerminalObject}(a)[123X.[133X
   
   [1X1.4-64 AddIsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddIsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XIsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject[110X.  [23XF: ( a )
-  \mapsto
+  [10XIsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject[110X.
+  Optionally,  a  weight  (default: 100) can be specified which should roughly
+  correspond  to  the computational complexity of the function (lower weight =
+  less    complex    =    faster    execution).    [23XF:    (    a    )   \mapsto
   \mathtt{IsomorphismFromExponentialIntoTerminalObjectToCartesianDualObject}(a)[123X.[133X
   
   [1X1.4-65 AddIsomorphismFromExponentialToObject[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromExponentialToObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddIsomorphismFromExponentialToObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XIsomorphismFromExponentialToObject[110X.      [23XF:      (      a      )     \mapsto
-  \mathtt{IsomorphismFromExponentialToObject}(a)[123X.[133X
+  [10XIsomorphismFromExponentialToObject[110X.  Optionally, a weight (default: 100) can
+  be specified which should roughly correspond to the computational complexity
+  of  the  function (lower weight = less complex = faster execution). [23XF: ( a )
+  \mapsto \mathtt{IsomorphismFromExponentialToObject}(a)[123X.[133X
   
   [1X1.4-66 AddIsomorphismFromExponentialToObjectWithGivenExponential[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromExponentialToObjectWithGivenExponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddIsomorphismFromExponentialToObjectWithGivenExponential[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XIsomorphismFromExponentialToObjectWithGivenExponential[110X.  [23XF: ( a, s ) \mapsto
+  [10XIsomorphismFromExponentialToObjectWithGivenExponential[110X. Optionally, a weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster       execution).       [23XF:       (      a,      s      )      \mapsto
   \mathtt{IsomorphismFromExponentialToObjectWithGivenExponential}(a, s)[123X.[133X
   
   [1X1.4-67 AddIsomorphismFromObjectToExponential[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromObjectToExponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddIsomorphismFromObjectToExponential[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XIsomorphismFromObjectToExponential[110X.      [23XF:      (      a      )     \mapsto
-  \mathtt{IsomorphismFromObjectToExponential}(a)[123X.[133X
+  [10XIsomorphismFromObjectToExponential[110X.  Optionally, a weight (default: 100) can
+  be specified which should roughly correspond to the computational complexity
+  of  the  function (lower weight = less complex = faster execution). [23XF: ( a )
+  \mapsto \mathtt{IsomorphismFromObjectToExponential}(a)[123X.[133X
   
   [1X1.4-68 AddIsomorphismFromObjectToExponentialWithGivenExponential[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromObjectToExponentialWithGivenExponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddIsomorphismFromObjectToExponentialWithGivenExponential[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XIsomorphismFromObjectToExponentialWithGivenExponential[110X.  [23XF: ( a, r ) \mapsto
+  [10XIsomorphismFromObjectToExponentialWithGivenExponential[110X. Optionally, a weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster       execution).       [23XF:       (      a,      r      )      \mapsto
   \mathtt{IsomorphismFromObjectToExponentialWithGivenExponential}(a, r)[123X.[133X
   
   [1X1.4-69 AddMorphismFromDirectProductToExponential[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromDirectProductToExponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddMorphismFromDirectProductToExponential[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XMorphismFromDirectProductToExponential[110X.    [23XF:    (    a,    b    )   \mapsto
-  \mathtt{MorphismFromDirectProductToExponential}(a, b)[123X.[133X
+  [10XMorphismFromDirectProductToExponential[110X.  Optionally, a weight (default: 100)
+  can  be  specified  which  should  roughly  correspond  to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF: ( a, b ) \mapsto \mathtt{MorphismFromDirectProductToExponential}(a, b)[123X.[133X
   
   [1X1.4-70 AddMorphismFromDirectProductToExponentialWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromDirectProductToExponentialWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddMorphismFromDirectProductToExponentialWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XMorphismFromDirectProductToExponentialWithGivenObjects[110X.  [23XF:  (  s, a, b, r )
-  \mapsto   \mathtt{MorphismFromDirectProductToExponentialWithGivenObjects}(s,
-  a, b, r)[123X.[133X
+  [10XMorphismFromDirectProductToExponentialWithGivenObjects[110X. Optionally, a weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster     execution).     [23XF:     (     s,     a,    b,    r    )    \mapsto
+  \mathtt{MorphismFromDirectProductToExponentialWithGivenObjects}(s, a, b, r)[123X.[133X
   
   [1X1.4-71 AddMorphismToCartesianBidual[101X
   
   [33X[1;0Y[29X[2XAddMorphismToCartesianBidual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddMorphismToCartesianBidual[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XMorphismToCartesianBidual[110X.        [23XF:        (        a       )       \mapsto
-  \mathtt{MorphismToCartesianBidual}(a)[123X.[133X
+  [10XMorphismToCartesianBidual[110X.  Optionally,  a  weight  (default:  100)  can  be
+  specified which should roughly correspond to the computational complexity of
+  the  function  (lower  weight  =  less complex = faster execution). [23XF: ( a )
+  \mapsto \mathtt{MorphismToCartesianBidual}(a)[123X.[133X
   
   [1X1.4-72 AddMorphismToCartesianBidualWithGivenCartesianBidual[101X
   
   [33X[1;0Y[29X[2XAddMorphismToCartesianBidualWithGivenCartesianBidual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddMorphismToCartesianBidualWithGivenCartesianBidual[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XMorphismToCartesianBidualWithGivenCartesianBidual[110X.  [23XF:  (  a,  r  )  \mapsto
+  [10XMorphismToCartesianBidualWithGivenCartesianBidual[110X.   Optionally,   a  weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster       execution).       [23XF:       (      a,      r      )      \mapsto
   \mathtt{MorphismToCartesianBidualWithGivenCartesianBidual}(a, r)[123X.[133X
   
   [1X1.4-73 AddUniversalPropertyOfCartesianDual[101X
   
   [33X[1;0Y[29X[2XAddUniversalPropertyOfCartesianDual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddUniversalPropertyOfCartesianDual[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XUniversalPropertyOfCartesianDual[110X.    [23XF:    (   t,   a,   alpha   )   \mapsto
-  \mathtt{UniversalPropertyOfCartesianDual}(t, a, alpha)[123X.[133X
+  [10XUniversalPropertyOfCartesianDual[110X. Optionally, a weight (default: 100) can be
+  specified which should roughly correspond to the computational complexity of
+  the  function  (lower  weight = less complex = faster execution). [23XF: ( t, a,
+  alpha ) \mapsto \mathtt{UniversalPropertyOfCartesianDual}(t, a, alpha)[123X.[133X
   
   [1X1.4-74 AddLeftCartesianDistributivityExpanding[101X
   
   [33X[1;0Y[29X[2XAddLeftCartesianDistributivityExpanding[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddLeftCartesianDistributivityExpanding[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XLeftCartesianDistributivityExpanding[110X.     [23XF:    (    a,    L    )    \mapsto
-  \mathtt{LeftCartesianDistributivityExpanding}(a, L)[123X.[133X
+  [10XLeftCartesianDistributivityExpanding[110X.  Optionally,  a  weight (default: 100)
+  can  be  specified  which  should  roughly  correspond  to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF: ( a, L ) \mapsto \mathtt{LeftCartesianDistributivityExpanding}(a, L)[123X.[133X
   
   [1X1.4-75 AddLeftCartesianDistributivityExpandingWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddLeftCartesianDistributivityExpandingWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddLeftCartesianDistributivityExpandingWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XLeftCartesianDistributivityExpandingWithGivenObjects[110X.  [23XF:  (  s,  a,  L, r )
-  \mapsto  \mathtt{LeftCartesianDistributivityExpandingWithGivenObjects}(s, a,
-  L, r)[123X.[133X
+  [10XLeftCartesianDistributivityExpandingWithGivenObjects[110X.  Optionally,  a weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster     execution).     [23XF:     (     s,     a,    L,    r    )    \mapsto
+  \mathtt{LeftCartesianDistributivityExpandingWithGivenObjects}(s, a, L, r)[123X.[133X
   
   [1X1.4-76 AddLeftCartesianDistributivityFactoring[101X
   
   [33X[1;0Y[29X[2XAddLeftCartesianDistributivityFactoring[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddLeftCartesianDistributivityFactoring[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XLeftCartesianDistributivityFactoring[110X.     [23XF:    (    a,    L    )    \mapsto
-  \mathtt{LeftCartesianDistributivityFactoring}(a, L)[123X.[133X
+  [10XLeftCartesianDistributivityFactoring[110X.  Optionally,  a  weight (default: 100)
+  can  be  specified  which  should  roughly  correspond  to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF: ( a, L ) \mapsto \mathtt{LeftCartesianDistributivityFactoring}(a, L)[123X.[133X
   
   [1X1.4-77 AddLeftCartesianDistributivityFactoringWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddLeftCartesianDistributivityFactoringWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddLeftCartesianDistributivityFactoringWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XLeftCartesianDistributivityFactoringWithGivenObjects[110X.  [23XF:  (  s,  a,  L, r )
-  \mapsto  \mathtt{LeftCartesianDistributivityFactoringWithGivenObjects}(s, a,
-  L, r)[123X.[133X
+  [10XLeftCartesianDistributivityFactoringWithGivenObjects[110X.  Optionally,  a weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster     execution).     [23XF:     (     s,     a,    L,    r    )    \mapsto
+  \mathtt{LeftCartesianDistributivityFactoringWithGivenObjects}(s, a, L, r)[123X.[133X
   
   [1X1.4-78 AddRightCartesianDistributivityExpanding[101X
   
   [33X[1;0Y[29X[2XAddRightCartesianDistributivityExpanding[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddRightCartesianDistributivityExpanding[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XRightCartesianDistributivityExpanding[110X.    [23XF:    (    L,    a    )    \mapsto
-  \mathtt{RightCartesianDistributivityExpanding}(L, a)[123X.[133X
+  [10XRightCartesianDistributivityExpanding[110X.  Optionally,  a weight (default: 100)
+  can  be  specified  which  should  roughly  correspond  to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF: ( L, a ) \mapsto \mathtt{RightCartesianDistributivityExpanding}(L, a)[123X.[133X
   
   [1X1.4-79 AddRightCartesianDistributivityExpandingWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddRightCartesianDistributivityExpandingWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddRightCartesianDistributivityExpandingWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XRightCartesianDistributivityExpandingWithGivenObjects[110X.  [23XF:  (  s,  L, a, r )
-  \mapsto \mathtt{RightCartesianDistributivityExpandingWithGivenObjects}(s, L,
-  a, r)[123X.[133X
+  [10XRightCartesianDistributivityExpandingWithGivenObjects[110X.  Optionally, a weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster     execution).     [23XF:     (     s,     L,    a,    r    )    \mapsto
+  \mathtt{RightCartesianDistributivityExpandingWithGivenObjects}(s, L, a, r)[123X.[133X
   
   [1X1.4-80 AddRightCartesianDistributivityFactoring[101X
   
   [33X[1;0Y[29X[2XAddRightCartesianDistributivityFactoring[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddRightCartesianDistributivityFactoring[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XRightCartesianDistributivityFactoring[110X.    [23XF:    (    L,    a    )    \mapsto
-  \mathtt{RightCartesianDistributivityFactoring}(L, a)[123X.[133X
+  [10XRightCartesianDistributivityFactoring[110X.  Optionally,  a weight (default: 100)
+  can  be  specified  which  should  roughly  correspond  to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF: ( L, a ) \mapsto \mathtt{RightCartesianDistributivityFactoring}(L, a)[123X.[133X
   
   [1X1.4-81 AddRightCartesianDistributivityFactoringWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddRightCartesianDistributivityFactoringWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddRightCartesianDistributivityFactoringWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XRightCartesianDistributivityFactoringWithGivenObjects[110X.  [23XF:  (  s,  L, a, r )
-  \mapsto \mathtt{RightCartesianDistributivityFactoringWithGivenObjects}(s, L,
-  a, r)[123X.[133X
+  [10XRightCartesianDistributivityFactoringWithGivenObjects[110X.  Optionally, a weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster     execution).     [23XF:     (     s,     L,    a,    r    )    \mapsto
+  \mathtt{RightCartesianDistributivityFactoringWithGivenObjects}(s, L, a, r)[123X.[133X
   

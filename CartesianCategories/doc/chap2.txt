@@ -758,759 +758,1001 @@
   [1X2.4-1 AddCocartesianBraiding[101X
   
   [33X[1;0Y[29X[2XAddCocartesianBraiding[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianBraiding[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianBraiding[110X. [23XF: ( a, b ) \mapsto \mathtt{CocartesianBraiding}(a, b)[123X.[133X
+  [10XCocartesianBraiding[110X.  Optionally,  a  weight (default: 100) can be specified
+  which  should  roughly  correspond  to  the  computational complexity of the
+  function  (lower  weight  =  less  complex  = faster execution). [23XF: ( a, b )
+  \mapsto \mathtt{CocartesianBraiding}(a, b)[123X.[133X
   
   [1X2.4-2 AddCocartesianBraidingInverse[101X
   
   [33X[1;0Y[29X[2XAddCocartesianBraidingInverse[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianBraidingInverse[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianBraidingInverse[110X.      [23XF:      (      a,      b      )     \mapsto
-  \mathtt{CocartesianBraidingInverse}(a, b)[123X.[133X
+  [10XCocartesianBraidingInverse[110X.  Optionally,  a  weight  (default:  100)  can be
+  specified which should roughly correspond to the computational complexity of
+  the  function  (lower weight = less complex = faster execution). [23XF: ( a, b )
+  \mapsto \mathtt{CocartesianBraidingInverse}(a, b)[123X.[133X
   
   [1X2.4-3 AddCocartesianBraidingInverseWithGivenCoproducts[101X
   
   [33X[1;0Y[29X[2XAddCocartesianBraidingInverseWithGivenCoproducts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianBraidingInverseWithGivenCoproducts[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianBraidingInverseWithGivenCoproducts[110X.  [23XF:  (  s,  a, b, r ) \mapsto
+  [10XCocartesianBraidingInverseWithGivenCoproducts[110X.    Optionally,    a    weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster     execution).     [23XF:     (     s,     a,    b,    r    )    \mapsto
   \mathtt{CocartesianBraidingInverseWithGivenCoproducts}(s, a, b, r)[123X.[133X
   
   [1X2.4-4 AddCocartesianBraidingWithGivenCoproducts[101X
   
   [33X[1;0Y[29X[2XAddCocartesianBraidingWithGivenCoproducts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianBraidingWithGivenCoproducts[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianBraidingWithGivenCoproducts[110X.   [23XF:   (   s,  a,  b,  r  )  \mapsto
-  \mathtt{CocartesianBraidingWithGivenCoproducts}(s, a, b, r)[123X.[133X
+  [10XCocartesianBraidingWithGivenCoproducts[110X.  Optionally, a weight (default: 100)
+  can  be  specified  which  should  roughly  correspond  to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF: ( s, a, b, r ) \mapsto \mathtt{CocartesianBraidingWithGivenCoproducts}(s,
+  a, b, r)[123X.[133X
   
   [1X2.4-5 AddCocartesianAssociatorLeftToRight[101X
   
   [33X[1;0Y[29X[2XAddCocartesianAssociatorLeftToRight[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianAssociatorLeftToRight[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianAssociatorLeftToRight[110X.    [23XF:    (    a,    b,    c    )   \mapsto
-  \mathtt{CocartesianAssociatorLeftToRight}(a, b, c)[123X.[133X
+  [10XCocartesianAssociatorLeftToRight[110X. Optionally, a weight (default: 100) can be
+  specified which should roughly correspond to the computational complexity of
+  the  function (lower weight = less complex = faster execution). [23XF: ( a, b, c
+  ) \mapsto \mathtt{CocartesianAssociatorLeftToRight}(a, b, c)[123X.[133X
   
   [1X2.4-6 AddCocartesianAssociatorLeftToRightWithGivenCoproducts[101X
   
   [33X[1;0Y[29X[2XAddCocartesianAssociatorLeftToRightWithGivenCoproducts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianAssociatorLeftToRightWithGivenCoproducts[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianAssociatorLeftToRightWithGivenCoproducts[110X.  [23XF:  (  s, a, b, c, r )
-  \mapsto  \mathtt{CocartesianAssociatorLeftToRightWithGivenCoproducts}(s,  a,
-  b, c, r)[123X.[133X
+  [10XCocartesianAssociatorLeftToRightWithGivenCoproducts[110X.  Optionally,  a  weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster    execution).    [23XF:    (    s,    a,    b,    c,    r    )   \mapsto
+  \mathtt{CocartesianAssociatorLeftToRightWithGivenCoproducts}(s, a, b, c, r)[123X.[133X
   
   [1X2.4-7 AddCocartesianAssociatorRightToLeft[101X
   
   [33X[1;0Y[29X[2XAddCocartesianAssociatorRightToLeft[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianAssociatorRightToLeft[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianAssociatorRightToLeft[110X.    [23XF:    (    a,    b,    c    )   \mapsto
-  \mathtt{CocartesianAssociatorRightToLeft}(a, b, c)[123X.[133X
+  [10XCocartesianAssociatorRightToLeft[110X. Optionally, a weight (default: 100) can be
+  specified which should roughly correspond to the computational complexity of
+  the  function (lower weight = less complex = faster execution). [23XF: ( a, b, c
+  ) \mapsto \mathtt{CocartesianAssociatorRightToLeft}(a, b, c)[123X.[133X
   
   [1X2.4-8 AddCocartesianAssociatorRightToLeftWithGivenCoproducts[101X
   
   [33X[1;0Y[29X[2XAddCocartesianAssociatorRightToLeftWithGivenCoproducts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianAssociatorRightToLeftWithGivenCoproducts[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianAssociatorRightToLeftWithGivenCoproducts[110X.  [23XF:  (  s, a, b, c, r )
-  \mapsto  \mathtt{CocartesianAssociatorRightToLeftWithGivenCoproducts}(s,  a,
-  b, c, r)[123X.[133X
+  [10XCocartesianAssociatorRightToLeftWithGivenCoproducts[110X.  Optionally,  a  weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster    execution).    [23XF:    (    s,    a,    b,    c,    r    )   \mapsto
+  \mathtt{CocartesianAssociatorRightToLeftWithGivenCoproducts}(s, a, b, c, r)[123X.[133X
   
   [1X2.4-9 AddCocartesianCodiagonal[101X
   
   [33X[1;0Y[29X[2XAddCocartesianCodiagonal[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianCodiagonal[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianCodiagonal[110X. [23XF: ( a, n ) \mapsto \mathtt{CocartesianCodiagonal}(a,
-  n)[123X.[133X
+  [10XCocartesianCodiagonal[110X.  Optionally, a weight (default: 100) can be specified
+  which  should  roughly  correspond  to  the  computational complexity of the
+  function  (lower  weight  =  less  complex  = faster execution). [23XF: ( a, n )
+  \mapsto \mathtt{CocartesianCodiagonal}(a, n)[123X.[133X
   
   [1X2.4-10 AddCocartesianCodiagonalWithGivenCocartesianMultiple[101X
   
   [33X[1;0Y[29X[2XAddCocartesianCodiagonalWithGivenCocartesianMultiple[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianCodiagonalWithGivenCocartesianMultiple[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianCodiagonalWithGivenCocartesianMultiple[110X.     [23XF:     (     a,    n,
-  cocartesian_multiple                        )                        \mapsto
+  [10XCocartesianCodiagonalWithGivenCocartesianMultiple[110X.   Optionally,   a  weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster   execution).   [23XF:   (   a,   n,   cocartesian_multiple   )   \mapsto
   \mathtt{CocartesianCodiagonalWithGivenCocartesianMultiple}(a,             n,
   cocartesian_multiple)[123X.[133X
   
   [1X2.4-11 AddCocartesianLeftUnitor[101X
   
   [33X[1;0Y[29X[2XAddCocartesianLeftUnitor[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianLeftUnitor[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianLeftUnitor[110X. [23XF: ( a ) \mapsto \mathtt{CocartesianLeftUnitor}(a)[123X.[133X
+  [10XCocartesianLeftUnitor[110X.  Optionally, a weight (default: 100) can be specified
+  which  should  roughly  correspond  to  the  computational complexity of the
+  function  (lower weight = less complex = faster execution). [23XF: ( a ) \mapsto
+  \mathtt{CocartesianLeftUnitor}(a)[123X.[133X
   
   [1X2.4-12 AddCocartesianLeftUnitorInverse[101X
   
   [33X[1;0Y[29X[2XAddCocartesianLeftUnitorInverse[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianLeftUnitorInverse[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianLeftUnitorInverse[110X.       [23XF:       (       a       )       \mapsto
-  \mathtt{CocartesianLeftUnitorInverse}(a)[123X.[133X
+  [10XCocartesianLeftUnitorInverse[110X.  Optionally,  a  weight  (default: 100) can be
+  specified which should roughly correspond to the computational complexity of
+  the  function  (lower  weight  =  less complex = faster execution). [23XF: ( a )
+  \mapsto \mathtt{CocartesianLeftUnitorInverse}(a)[123X.[133X
   
   [1X2.4-13 AddCocartesianLeftUnitorInverseWithGivenCoproduct[101X
   
   [33X[1;0Y[29X[2XAddCocartesianLeftUnitorInverseWithGivenCoproduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianLeftUnitorInverseWithGivenCoproduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianLeftUnitorInverseWithGivenCoproduct[110X.   [23XF:   (   a,  r  )  \mapsto
+  [10XCocartesianLeftUnitorInverseWithGivenCoproduct[110X.    Optionally,    a   weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster       execution).       [23XF:       (      a,      r      )      \mapsto
   \mathtt{CocartesianLeftUnitorInverseWithGivenCoproduct}(a, r)[123X.[133X
   
   [1X2.4-14 AddCocartesianLeftUnitorWithGivenCoproduct[101X
   
   [33X[1;0Y[29X[2XAddCocartesianLeftUnitorWithGivenCoproduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianLeftUnitorWithGivenCoproduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianLeftUnitorWithGivenCoproduct[110X.    [23XF:    (    a,    s   )   \mapsto
-  \mathtt{CocartesianLeftUnitorWithGivenCoproduct}(a, s)[123X.[133X
+  [10XCocartesianLeftUnitorWithGivenCoproduct[110X. Optionally, a weight (default: 100)
+  can  be  specified  which  should  roughly  correspond  to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF: ( a, s ) \mapsto \mathtt{CocartesianLeftUnitorWithGivenCoproduct}(a, s)[123X.[133X
   
   [1X2.4-15 AddCocartesianRightUnitor[101X
   
   [33X[1;0Y[29X[2XAddCocartesianRightUnitor[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianRightUnitor[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianRightUnitor[110X. [23XF: ( a ) \mapsto \mathtt{CocartesianRightUnitor}(a)[123X.[133X
+  [10XCocartesianRightUnitor[110X. Optionally, a weight (default: 100) can be specified
+  which  should  roughly  correspond  to  the  computational complexity of the
+  function  (lower weight = less complex = faster execution). [23XF: ( a ) \mapsto
+  \mathtt{CocartesianRightUnitor}(a)[123X.[133X
   
   [1X2.4-16 AddCocartesianRightUnitorInverse[101X
   
   [33X[1;0Y[29X[2XAddCocartesianRightUnitorInverse[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianRightUnitorInverse[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianRightUnitorInverse[110X.       [23XF:       (       a       )      \mapsto
-  \mathtt{CocartesianRightUnitorInverse}(a)[123X.[133X
+  [10XCocartesianRightUnitorInverse[110X.  Optionally,  a  weight (default: 100) can be
+  specified which should roughly correspond to the computational complexity of
+  the  function  (lower  weight  =  less complex = faster execution). [23XF: ( a )
+  \mapsto \mathtt{CocartesianRightUnitorInverse}(a)[123X.[133X
   
   [1X2.4-17 AddCocartesianRightUnitorInverseWithGivenCoproduct[101X
   
   [33X[1;0Y[29X[2XAddCocartesianRightUnitorInverseWithGivenCoproduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianRightUnitorInverseWithGivenCoproduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianRightUnitorInverseWithGivenCoproduct[110X.   [23XF:   (  a,  r  )  \mapsto
+  [10XCocartesianRightUnitorInverseWithGivenCoproduct[110X.    Optionally,   a   weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster       execution).       [23XF:       (      a,      r      )      \mapsto
   \mathtt{CocartesianRightUnitorInverseWithGivenCoproduct}(a, r)[123X.[133X
   
   [1X2.4-18 AddCocartesianRightUnitorWithGivenCoproduct[101X
   
   [33X[1;0Y[29X[2XAddCocartesianRightUnitorWithGivenCoproduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianRightUnitorWithGivenCoproduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianRightUnitorWithGivenCoproduct[110X.    [23XF:    (    a,   s   )   \mapsto
-  \mathtt{CocartesianRightUnitorWithGivenCoproduct}(a, s)[123X.[133X
+  [10XCocartesianRightUnitorWithGivenCoproduct[110X.  Optionally,  a  weight  (default:
+  100)  can  be specified which should roughly correspond to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF: ( a, s ) \mapsto \mathtt{CocartesianRightUnitorWithGivenCoproduct}(a, s)[123X.[133X
   
   [1X2.4-19 AddCoproductOnMorphisms[101X
   
   [33X[1;0Y[29X[2XAddCoproductOnMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCoproductOnMorphisms[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCoproductOnMorphisms[110X.      [23XF:      (      alpha,      beta     )     \mapsto
-  \mathtt{CoproductOnMorphisms}(alpha, beta)[123X.[133X
+  [10XCoproductOnMorphisms[110X.  Optionally,  a weight (default: 100) can be specified
+  which  should  roughly  correspond  to  the  computational complexity of the
+  function  (lower weight = less complex = faster execution). [23XF: ( alpha, beta
+  ) \mapsto \mathtt{CoproductOnMorphisms}(alpha, beta)[123X.[133X
   
   [1X2.4-20 AddCoproductOnMorphismsWithGivenCoproducts[101X
   
   [33X[1;0Y[29X[2XAddCoproductOnMorphismsWithGivenCoproducts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCoproductOnMorphismsWithGivenCoproducts[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCoproductOnMorphismsWithGivenCoproducts[110X.  [23XF:  (  s, alpha, beta, r ) \mapsto
+  [10XCoproductOnMorphismsWithGivenCoproducts[110X. Optionally, a weight (default: 100)
+  can  be  specified  which  should  roughly  correspond  to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF:        (        s,       alpha,       beta,       r       )       \mapsto
   \mathtt{CoproductOnMorphismsWithGivenCoproducts}(s, alpha, beta, r)[123X.[133X
   
   [1X2.4-21 AddCocartesianDualOnMorphisms[101X
   
   [33X[1;0Y[29X[2XAddCocartesianDualOnMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianDualOnMorphisms[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianDualOnMorphisms[110X.       [23XF:       (       alpha      )      \mapsto
-  \mathtt{CocartesianDualOnMorphisms}(alpha)[123X.[133X
+  [10XCocartesianDualOnMorphisms[110X.  Optionally,  a  weight  (default:  100)  can be
+  specified which should roughly correspond to the computational complexity of
+  the  function (lower weight = less complex = faster execution). [23XF: ( alpha )
+  \mapsto \mathtt{CocartesianDualOnMorphisms}(alpha)[123X.[133X
   
   [1X2.4-22 AddCocartesianDualOnMorphismsWithGivenCocartesianDuals[101X
   
   [33X[1;0Y[29X[2XAddCocartesianDualOnMorphismsWithGivenCocartesianDuals[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianDualOnMorphismsWithGivenCocartesianDuals[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianDualOnMorphismsWithGivenCocartesianDuals[110X.  [23XF:  (  s,  alpha,  r )
-  \mapsto      \mathtt{CocartesianDualOnMorphismsWithGivenCocartesianDuals}(s,
-  alpha, r)[123X.[133X
+  [10XCocartesianDualOnMorphismsWithGivenCocartesianDuals[110X.  Optionally,  a  weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster     execution).     [23XF:     (     s,     alpha,     r     )    \mapsto
+  \mathtt{CocartesianDualOnMorphismsWithGivenCocartesianDuals}(s, alpha, r)[123X.[133X
   
   [1X2.4-23 AddCocartesianDualOnObjects[101X
   
   [33X[1;0Y[29X[2XAddCocartesianDualOnObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianDualOnObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianDualOnObjects[110X.        [23XF:        (        a        )       \mapsto
-  \mathtt{CocartesianDualOnObjects}(a)[123X.[133X
+  [10XCocartesianDualOnObjects[110X.   Optionally,  a  weight  (default:  100)  can  be
+  specified which should roughly correspond to the computational complexity of
+  the  function  (lower  weight  =  less complex = faster execution). [23XF: ( a )
+  \mapsto \mathtt{CocartesianDualOnObjects}(a)[123X.[133X
   
   [1X2.4-24 AddCocartesianDualityCoproductCompatibilityMorphism[101X
   
   [33X[1;0Y[29X[2XAddCocartesianDualityCoproductCompatibilityMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianDualityCoproductCompatibilityMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianDualityCoproductCompatibilityMorphism[110X.   [23XF:  (  a,  b  )  \mapsto
+  [10XCocartesianDualityCoproductCompatibilityMorphism[110X.   Optionally,   a   weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster       execution).       [23XF:       (      a,      b      )      \mapsto
   \mathtt{CocartesianDualityCoproductCompatibilityMorphism}(a, b)[123X.[133X
   
   [1X2.4-25 AddCocartesianDualityCoproductCompatibilityMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddCocartesianDualityCoproductCompatibilityMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianDualityCoproductCompatibilityMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianDualityCoproductCompatibilityMorphismWithGivenObjects[110X. [23XF: ( s, a,
-  b,                      r                      )                     \mapsto
+  [10XCocartesianDualityCoproductCompatibilityMorphismWithGivenObjects[110X.
+  Optionally,  a  weight  (default: 100) can be specified which should roughly
+  correspond  to  the computational complexity of the function (lower weight =
+  less   complex   =   faster   execution).   [23XF:  (  s,  a,  b,  r  )  \mapsto
   \mathtt{CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects}(s,
   a, b, r)[123X.[133X
   
   [1X2.4-26 AddCocartesianEvaluationForCocartesianDual[101X
   
   [33X[1;0Y[29X[2XAddCocartesianEvaluationForCocartesianDual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianEvaluationForCocartesianDual[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianEvaluationForCocartesianDual[110X.     [23XF:     (     a     )    \mapsto
-  \mathtt{CocartesianEvaluationForCocartesianDual}(a)[123X.[133X
+  [10XCocartesianEvaluationForCocartesianDual[110X. Optionally, a weight (default: 100)
+  can  be  specified  which  should  roughly  correspond  to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF: ( a ) \mapsto \mathtt{CocartesianEvaluationForCocartesianDual}(a)[123X.[133X
   
   [1X2.4-27 AddCocartesianEvaluationForCocartesianDualWithGivenCoproduct[101X
   
   [33X[1;0Y[29X[2XAddCocartesianEvaluationForCocartesianDualWithGivenCoproduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianEvaluationForCocartesianDualWithGivenCoproduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianEvaluationForCocartesianDualWithGivenCoproduct[110X.  [23XF:  (  s, a, r )
-  \mapsto
+  [10XCocartesianEvaluationForCocartesianDualWithGivenCoproduct[110X.   Optionally,   a
+  weight  (default:  100)  can be specified which should roughly correspond to
+  the  computational complexity of the function (lower weight = less complex =
+  faster      execution).      [23XF:      (     s,     a,     r     )     \mapsto
   \mathtt{CocartesianEvaluationForCocartesianDualWithGivenCoproduct}(s, a, r)[123X.[133X
   
   [1X2.4-28 AddCocartesianLambdaElimination[101X
   
   [33X[1;0Y[29X[2XAddCocartesianLambdaElimination[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianLambdaElimination[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianLambdaElimination[110X.    [23XF:    (    a,    b,    alpha    )   \mapsto
-  \mathtt{CocartesianLambdaElimination}(a, b, alpha)[123X.[133X
+  [10XCocartesianLambdaElimination[110X.  Optionally,  a  weight  (default: 100) can be
+  specified which should roughly correspond to the computational complexity of
+  the  function  (lower  weight = less complex = faster execution). [23XF: ( a, b,
+  alpha ) \mapsto \mathtt{CocartesianLambdaElimination}(a, b, alpha)[123X.[133X
   
   [1X2.4-29 AddCocartesianLambdaIntroduction[101X
   
   [33X[1;0Y[29X[2XAddCocartesianLambdaIntroduction[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianLambdaIntroduction[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianLambdaIntroduction[110X.      [23XF:      (      alpha      )      \mapsto
-  \mathtt{CocartesianLambdaIntroduction}(alpha)[123X.[133X
+  [10XCocartesianLambdaIntroduction[110X.  Optionally,  a  weight (default: 100) can be
+  specified which should roughly correspond to the computational complexity of
+  the  function (lower weight = less complex = faster execution). [23XF: ( alpha )
+  \mapsto \mathtt{CocartesianLambdaIntroduction}(alpha)[123X.[133X
   
   [1X2.4-30 AddCocartesianLeftCoevaluationMorphism[101X
   
   [33X[1;0Y[29X[2XAddCocartesianLeftCoevaluationMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianLeftCoevaluationMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianLeftCoevaluationMorphism[110X.     [23XF:     (    a,    b    )    \mapsto
-  \mathtt{CocartesianLeftCoevaluationMorphism}(a, b)[123X.[133X
+  [10XCocartesianLeftCoevaluationMorphism[110X. Optionally, a weight (default: 100) can
+  be specified which should roughly correspond to the computational complexity
+  of  the function (lower weight = less complex = faster execution). [23XF: ( a, b
+  ) \mapsto \mathtt{CocartesianLeftCoevaluationMorphism}(a, b)[123X.[133X
   
   [1X2.4-31 AddCocartesianLeftCoevaluationMorphismWithGivenSource[101X
   
   [33X[1;0Y[29X[2XAddCocartesianLeftCoevaluationMorphismWithGivenSource[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianLeftCoevaluationMorphismWithGivenSource[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianLeftCoevaluationMorphismWithGivenSource[110X.  [23XF:  ( a, b, s ) \mapsto
+  [10XCocartesianLeftCoevaluationMorphismWithGivenSource[110X.   Optionally,  a  weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster      execution).      [23XF:      (     a,     b,     s     )     \mapsto
   \mathtt{CocartesianLeftCoevaluationMorphismWithGivenSource}(a, b, s)[123X.[133X
   
   [1X2.4-32 AddCocartesianLeftEvaluationMorphism[101X
   
   [33X[1;0Y[29X[2XAddCocartesianLeftEvaluationMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianLeftEvaluationMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianLeftEvaluationMorphism[110X.     [23XF:     (     a,     b    )    \mapsto
-  \mathtt{CocartesianLeftEvaluationMorphism}(a, b)[123X.[133X
+  [10XCocartesianLeftEvaluationMorphism[110X.  Optionally,  a weight (default: 100) can
+  be specified which should roughly correspond to the computational complexity
+  of  the function (lower weight = less complex = faster execution). [23XF: ( a, b
+  ) \mapsto \mathtt{CocartesianLeftEvaluationMorphism}(a, b)[123X.[133X
   
   [1X2.4-33 AddCocartesianLeftEvaluationMorphismWithGivenRange[101X
   
   [33X[1;0Y[29X[2XAddCocartesianLeftEvaluationMorphismWithGivenRange[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianLeftEvaluationMorphismWithGivenRange[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianLeftEvaluationMorphismWithGivenRange[110X.  [23XF:  (  a,  b,  r ) \mapsto
+  [10XCocartesianLeftEvaluationMorphismWithGivenRange[110X.    Optionally,   a   weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster      execution).      [23XF:      (     a,     b,     r     )     \mapsto
   \mathtt{CocartesianLeftEvaluationMorphismWithGivenRange}(a, b, r)[123X.[133X
   
   [1X2.4-34 AddCocartesianPostCoComposeMorphism[101X
   
   [33X[1;0Y[29X[2XAddCocartesianPostCoComposeMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianPostCoComposeMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianPostCoComposeMorphism[110X.    [23XF:    (    a,    b,    c    )   \mapsto
-  \mathtt{CocartesianPostCoComposeMorphism}(a, b, c)[123X.[133X
+  [10XCocartesianPostCoComposeMorphism[110X. Optionally, a weight (default: 100) can be
+  specified which should roughly correspond to the computational complexity of
+  the  function (lower weight = less complex = faster execution). [23XF: ( a, b, c
+  ) \mapsto \mathtt{CocartesianPostCoComposeMorphism}(a, b, c)[123X.[133X
   
   [1X2.4-35 AddCocartesianPostCoComposeMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddCocartesianPostCoComposeMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianPostCoComposeMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianPostCoComposeMorphismWithGivenObjects[110X.  [23XF:  (  s,  a,  b,  c, r )
-  \mapsto  \mathtt{CocartesianPostCoComposeMorphismWithGivenObjects}(s,  a, b,
-  c, r)[123X.[133X
+  [10XCocartesianPostCoComposeMorphismWithGivenObjects[110X.   Optionally,   a   weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster    execution).    [23XF:    (    s,    a,    b,    c,    r    )   \mapsto
+  \mathtt{CocartesianPostCoComposeMorphismWithGivenObjects}(s, a, b, c, r)[123X.[133X
   
   [1X2.4-36 AddCocartesianPreCoComposeMorphism[101X
   
   [33X[1;0Y[29X[2XAddCocartesianPreCoComposeMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianPreCoComposeMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianPreCoComposeMorphism[110X.    [23XF:    (    a,    b,    c    )    \mapsto
-  \mathtt{CocartesianPreCoComposeMorphism}(a, b, c)[123X.[133X
+  [10XCocartesianPreCoComposeMorphism[110X.  Optionally, a weight (default: 100) can be
+  specified which should roughly correspond to the computational complexity of
+  the  function (lower weight = less complex = faster execution). [23XF: ( a, b, c
+  ) \mapsto \mathtt{CocartesianPreCoComposeMorphism}(a, b, c)[123X.[133X
   
   [1X2.4-37 AddCocartesianPreCoComposeMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddCocartesianPreCoComposeMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianPreCoComposeMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianPreCoComposeMorphismWithGivenObjects[110X.  [23XF:  (  s,  a,  b,  c,  r )
-  \mapsto \mathtt{CocartesianPreCoComposeMorphismWithGivenObjects}(s, a, b, c,
-  r)[123X.[133X
+  [10XCocartesianPreCoComposeMorphismWithGivenObjects[110X.    Optionally,   a   weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster    execution).    [23XF:    (    s,    a,    b,    c,    r    )   \mapsto
+  \mathtt{CocartesianPreCoComposeMorphismWithGivenObjects}(s, a, b, c, r)[123X.[133X
   
   [1X2.4-38 AddCocartesianRightCoevaluationMorphism[101X
   
   [33X[1;0Y[29X[2XAddCocartesianRightCoevaluationMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianRightCoevaluationMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianRightCoevaluationMorphism[110X.     [23XF:    (    a,    b    )    \mapsto
-  \mathtt{CocartesianRightCoevaluationMorphism}(a, b)[123X.[133X
+  [10XCocartesianRightCoevaluationMorphism[110X.  Optionally,  a  weight (default: 100)
+  can  be  specified  which  should  roughly  correspond  to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF: ( a, b ) \mapsto \mathtt{CocartesianRightCoevaluationMorphism}(a, b)[123X.[133X
   
   [1X2.4-39 AddCocartesianRightCoevaluationMorphismWithGivenSource[101X
   
   [33X[1;0Y[29X[2XAddCocartesianRightCoevaluationMorphismWithGivenSource[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianRightCoevaluationMorphismWithGivenSource[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianRightCoevaluationMorphismWithGivenSource[110X.  [23XF: ( a, b, s ) \mapsto
+  [10XCocartesianRightCoevaluationMorphismWithGivenSource[110X.  Optionally,  a  weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster      execution).      [23XF:      (     a,     b,     s     )     \mapsto
   \mathtt{CocartesianRightCoevaluationMorphismWithGivenSource}(a, b, s)[123X.[133X
   
   [1X2.4-40 AddCocartesianRightEvaluationMorphism[101X
   
   [33X[1;0Y[29X[2XAddCocartesianRightEvaluationMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianRightEvaluationMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianRightEvaluationMorphism[110X.     [23XF:     (     a,    b    )    \mapsto
-  \mathtt{CocartesianRightEvaluationMorphism}(a, b)[123X.[133X
+  [10XCocartesianRightEvaluationMorphism[110X.  Optionally, a weight (default: 100) can
+  be specified which should roughly correspond to the computational complexity
+  of  the function (lower weight = less complex = faster execution). [23XF: ( a, b
+  ) \mapsto \mathtt{CocartesianRightEvaluationMorphism}(a, b)[123X.[133X
   
   [1X2.4-41 AddCocartesianRightEvaluationMorphismWithGivenRange[101X
   
   [33X[1;0Y[29X[2XAddCocartesianRightEvaluationMorphismWithGivenRange[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCocartesianRightEvaluationMorphismWithGivenRange[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCocartesianRightEvaluationMorphismWithGivenRange[110X.  [23XF:  (  a,  b, r ) \mapsto
+  [10XCocartesianRightEvaluationMorphismWithGivenRange[110X.   Optionally,   a   weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster      execution).      [23XF:      (     a,     b,     r     )     \mapsto
   \mathtt{CocartesianRightEvaluationMorphismWithGivenRange}(a, b, r)[123X.[133X
   
   [1X2.4-42 AddCoexponentialCoproductCompatibilityMorphism[101X
   
   [33X[1;0Y[29X[2XAddCoexponentialCoproductCompatibilityMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCoexponentialCoproductCompatibilityMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCoexponentialCoproductCompatibilityMorphism[110X.    [23XF:    (   list   )   \mapsto
+  [10XCoexponentialCoproductCompatibilityMorphism[110X.  Optionally, a weight (default:
+  100)  can  be specified which should roughly correspond to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF:                (               list               )               \mapsto
   \mathtt{CoexponentialCoproductCompatibilityMorphism}(list)[123X.[133X
   
   [1X2.4-43 AddCoexponentialCoproductCompatibilityMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddCoexponentialCoproductCompatibilityMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCoexponentialCoproductCompatibilityMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCoexponentialCoproductCompatibilityMorphismWithGivenObjects[110X.  [23XF:  (  source,
-  list,                    range                   )                   \mapsto
+  [10XCoexponentialCoproductCompatibilityMorphismWithGivenObjects[110X.  Optionally,  a
+  weight  (default:  100)  can be specified which should roughly correspond to
+  the  computational complexity of the function (lower weight = less complex =
+  faster    execution).    [23XF:    (    source,    list,    range    )   \mapsto
   \mathtt{CoexponentialCoproductCompatibilityMorphismWithGivenObjects}(source,
   list, range)[123X.[133X
   
   [1X2.4-44 AddCoexponentialOnMorphisms[101X
   
   [33X[1;0Y[29X[2XAddCoexponentialOnMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCoexponentialOnMorphisms[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCoexponentialOnMorphisms[110X.     [23XF:     (     alpha,     beta     )     \mapsto
-  \mathtt{CoexponentialOnMorphisms}(alpha, beta)[123X.[133X
+  [10XCoexponentialOnMorphisms[110X.   Optionally,  a  weight  (default:  100)  can  be
+  specified which should roughly correspond to the computational complexity of
+  the  function  (lower weight = less complex = faster execution). [23XF: ( alpha,
+  beta ) \mapsto \mathtt{CoexponentialOnMorphisms}(alpha, beta)[123X.[133X
   
   [1X2.4-45 AddCoexponentialOnMorphismsWithGivenCoexponentials[101X
   
   [33X[1;0Y[29X[2XAddCoexponentialOnMorphismsWithGivenCoexponentials[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCoexponentialOnMorphismsWithGivenCoexponentials[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCoexponentialOnMorphismsWithGivenCoexponentials[110X.  [23XF:  (  s, alpha, beta, r )
-  \mapsto  \mathtt{CoexponentialOnMorphismsWithGivenCoexponentials}(s,  alpha,
-  beta, r)[123X.[133X
+  [10XCoexponentialOnMorphismsWithGivenCoexponentials[110X.    Optionally,   a   weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster    execution).    [23XF:    (    s,    alpha,    beta,    r   )   \mapsto
+  \mathtt{CoexponentialOnMorphismsWithGivenCoexponentials}(s, alpha, beta, r)[123X.[133X
   
   [1X2.4-46 AddCoexponentialOnObjects[101X
   
   [33X[1;0Y[29X[2XAddCoexponentialOnObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCoexponentialOnObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCoexponentialOnObjects[110X.       [23XF:       (       a,      b      )      \mapsto
-  \mathtt{CoexponentialOnObjects}(a, b)[123X.[133X
+  [10XCoexponentialOnObjects[110X. Optionally, a weight (default: 100) can be specified
+  which  should  roughly  correspond  to  the  computational complexity of the
+  function  (lower  weight  =  less  complex  = faster execution). [23XF: ( a, b )
+  \mapsto \mathtt{CoexponentialOnObjects}(a, b)[123X.[133X
   
   [1X2.4-47 AddCoexponentialToCoproductLeftAdjunctMorphism[101X
   
   [33X[1;0Y[29X[2XAddCoexponentialToCoproductLeftAdjunctMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCoexponentialToCoproductLeftAdjunctMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCoexponentialToCoproductLeftAdjunctMorphism[110X.   [23XF:   (  a,  c,  f  )  \mapsto
+  [10XCoexponentialToCoproductLeftAdjunctMorphism[110X.  Optionally, a weight (default:
+  100)  can  be specified which should roughly correspond to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF:          (          a,          c,          f          )          \mapsto
   \mathtt{CoexponentialToCoproductLeftAdjunctMorphism}(a, c, f)[123X.[133X
   
   [1X2.4-48 AddCoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduct[101X
   
   [33X[1;0Y[29X[2XAddCoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduct[110X. [23XF: ( a, c, f,
-  t                                  )                                 \mapsto
+  [10XCoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduct[110X. Optionally, a
+  weight  (default:  100)  can be specified which should roughly correspond to
+  the  computational complexity of the function (lower weight = less complex =
+  faster     execution).     [23XF:     (     a,     c,    f,    t    )    \mapsto
   \mathtt{CoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduct}(a, c,
   f, t)[123X.[133X
   
   [1X2.4-49 AddCoexponentialToCoproductRightAdjunctMorphism[101X
   
   [33X[1;0Y[29X[2XAddCoexponentialToCoproductRightAdjunctMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCoexponentialToCoproductRightAdjunctMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCoexponentialToCoproductRightAdjunctMorphism[110X.   [23XF:  (  a,  b,  f  )  \mapsto
+  [10XCoexponentialToCoproductRightAdjunctMorphism[110X. Optionally, a weight (default:
+  100)  can  be specified which should roughly correspond to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF:          (          a,          b,          f          )          \mapsto
   \mathtt{CoexponentialToCoproductRightAdjunctMorphism}(a, b, f)[123X.[133X
   
   [1X2.4-50 AddCoexponentialToCoproductRightAdjunctMorphismWithGivenCoproduct[101X
   
   [33X[1;0Y[29X[2XAddCoexponentialToCoproductRightAdjunctMorphismWithGivenCoproduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCoexponentialToCoproductRightAdjunctMorphismWithGivenCoproduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCoexponentialToCoproductRightAdjunctMorphismWithGivenCoproduct[110X.  [23XF:  ( a, b,
-  f,                      t                      )                     \mapsto
+  [10XCoexponentialToCoproductRightAdjunctMorphismWithGivenCoproduct[110X.  Optionally,
+  a  weight (default: 100) can be specified which should roughly correspond to
+  the  computational complexity of the function (lower weight = less complex =
+  faster     execution).     [23XF:     (     a,     b,    f,    t    )    \mapsto
   \mathtt{CoexponentialToCoproductRightAdjunctMorphismWithGivenCoproduct}(a,
   b, f, t)[123X.[133X
   
   [1X2.4-51 AddCoproductToCoexponentialLeftAdjunctMorphism[101X
   
   [33X[1;0Y[29X[2XAddCoproductToCoexponentialLeftAdjunctMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCoproductToCoexponentialLeftAdjunctMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCoproductToCoexponentialLeftAdjunctMorphism[110X.   [23XF:   (  b,  c,  g  )  \mapsto
+  [10XCoproductToCoexponentialLeftAdjunctMorphism[110X.  Optionally, a weight (default:
+  100)  can  be specified which should roughly correspond to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF:          (          b,          c,          g          )          \mapsto
   \mathtt{CoproductToCoexponentialLeftAdjunctMorphism}(b, c, g)[123X.[133X
   
   [1X2.4-52 AddCoproductToCoexponentialLeftAdjunctMorphismWithGivenCoexponential[101X
   
   [33X[1;0Y[29X[2XAddCoproductToCoexponentialLeftAdjunctMorphismWithGivenCoexponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCoproductToCoexponentialLeftAdjunctMorphismWithGivenCoexponential[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCoproductToCoexponentialLeftAdjunctMorphismWithGivenCoexponential[110X.  [23XF:  ( b,
-  c,                g,                i                )               \mapsto
+  [10XCoproductToCoexponentialLeftAdjunctMorphismWithGivenCoexponential[110X.
+  Optionally,  a  weight  (default: 100) can be specified which should roughly
+  correspond  to  the computational complexity of the function (lower weight =
+  less   complex   =   faster   execution).   [23XF:  (  b,  c,  g,  i  )  \mapsto
   \mathtt{CoproductToCoexponentialLeftAdjunctMorphismWithGivenCoexponential}(b,
   c, g, i)[123X.[133X
   
   [1X2.4-53 AddCoproductToCoexponentialRightAdjunctMorphism[101X
   
   [33X[1;0Y[29X[2XAddCoproductToCoexponentialRightAdjunctMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCoproductToCoexponentialRightAdjunctMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCoproductToCoexponentialRightAdjunctMorphism[110X.   [23XF:  (  b,  c,  g  )  \mapsto
+  [10XCoproductToCoexponentialRightAdjunctMorphism[110X. Optionally, a weight (default:
+  100)  can  be specified which should roughly correspond to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF:          (          b,          c,          g          )          \mapsto
   \mathtt{CoproductToCoexponentialRightAdjunctMorphism}(b, c, g)[123X.[133X
   
   [1X2.4-54 AddCoproductToCoexponentialRightAdjunctMorphismWithGivenCoexponential[101X
   
   [33X[1;0Y[29X[2XAddCoproductToCoexponentialRightAdjunctMorphismWithGivenCoexponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCoproductToCoexponentialRightAdjunctMorphismWithGivenCoexponential[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCoproductToCoexponentialRightAdjunctMorphismWithGivenCoexponential[110X.  [23XF: ( b,
-  c,                g,                i                )               \mapsto
+  [10XCoproductToCoexponentialRightAdjunctMorphismWithGivenCoexponential[110X.
+  Optionally,  a  weight  (default: 100) can be specified which should roughly
+  correspond  to  the computational complexity of the function (lower weight =
+  less   complex   =   faster   execution).   [23XF:  (  b,  c,  g,  i  )  \mapsto
   \mathtt{CoproductToCoexponentialRightAdjunctMorphismWithGivenCoexponential}(b,
   c, g, i)[123X.[133X
   
   [1X2.4-55 AddIsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddIsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XIsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject[110X. [23XF: ( a
-  )                                                                    \mapsto
+  [10XIsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject[110X.
+  Optionally,  a  weight  (default: 100) can be specified which should roughly
+  correspond  to  the computational complexity of the function (lower weight =
+  less    complex    =    faster    execution).    [23XF:    (    a    )   \mapsto
   \mathtt{IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject}(a)[123X.[133X
   
   [1X2.4-56 AddIsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddIsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XIsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject[110X. [23XF: ( a
-  )                                                                    \mapsto
+  [10XIsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject[110X.
+  Optionally,  a  weight  (default: 100) can be specified which should roughly
+  correspond  to  the computational complexity of the function (lower weight =
+  less    complex    =    faster    execution).    [23XF:    (    a    )   \mapsto
   \mathtt{IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject}(a)[123X.[133X
   
   [1X2.4-57 AddIsomorphismFromCoexponentialToObject[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromCoexponentialToObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddIsomorphismFromCoexponentialToObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XIsomorphismFromCoexponentialToObject[110X.      [23XF:      (     a     )     \mapsto
-  \mathtt{IsomorphismFromCoexponentialToObject}(a)[123X.[133X
+  [10XIsomorphismFromCoexponentialToObject[110X.  Optionally,  a  weight (default: 100)
+  can  be  specified  which  should  roughly  correspond  to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF: ( a ) \mapsto \mathtt{IsomorphismFromCoexponentialToObject}(a)[123X.[133X
   
   [1X2.4-58 AddIsomorphismFromCoexponentialToObjectWithGivenCoexponential[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromCoexponentialToObjectWithGivenCoexponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddIsomorphismFromCoexponentialToObjectWithGivenCoexponential[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XIsomorphismFromCoexponentialToObjectWithGivenCoexponential[110X.  [23XF:  (  a,  s  )
-  \mapsto
+  [10XIsomorphismFromCoexponentialToObjectWithGivenCoexponential[110X.   Optionally,  a
+  weight  (default:  100)  can be specified which should roughly correspond to
+  the  computational complexity of the function (lower weight = less complex =
+  faster       execution).       [23XF:       (      a,      s      )      \mapsto
   \mathtt{IsomorphismFromCoexponentialToObjectWithGivenCoexponential}(a, s)[123X.[133X
   
   [1X2.4-59 AddIsomorphismFromObjectToCoexponential[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromObjectToCoexponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddIsomorphismFromObjectToCoexponential[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XIsomorphismFromObjectToCoexponential[110X.      [23XF:      (     a     )     \mapsto
-  \mathtt{IsomorphismFromObjectToCoexponential}(a)[123X.[133X
+  [10XIsomorphismFromObjectToCoexponential[110X.  Optionally,  a  weight (default: 100)
+  can  be  specified  which  should  roughly  correspond  to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF: ( a ) \mapsto \mathtt{IsomorphismFromObjectToCoexponential}(a)[123X.[133X
   
   [1X2.4-60 AddIsomorphismFromObjectToCoexponentialWithGivenCoexponential[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromObjectToCoexponentialWithGivenCoexponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddIsomorphismFromObjectToCoexponentialWithGivenCoexponential[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XIsomorphismFromObjectToCoexponentialWithGivenCoexponential[110X.  [23XF:  (  a,  r  )
-  \mapsto
+  [10XIsomorphismFromObjectToCoexponentialWithGivenCoexponential[110X.   Optionally,  a
+  weight  (default:  100)  can be specified which should roughly correspond to
+  the  computational complexity of the function (lower weight = less complex =
+  faster       execution).       [23XF:       (      a,      r      )      \mapsto
   \mathtt{IsomorphismFromObjectToCoexponentialWithGivenCoexponential}(a, r)[123X.[133X
   
   [1X2.4-61 AddMorphismFromCocartesianBidual[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromCocartesianBidual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddMorphismFromCocartesianBidual[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XMorphismFromCocartesianBidual[110X.       [23XF:       (       a       )      \mapsto
-  \mathtt{MorphismFromCocartesianBidual}(a)[123X.[133X
+  [10XMorphismFromCocartesianBidual[110X.  Optionally,  a  weight (default: 100) can be
+  specified which should roughly correspond to the computational complexity of
+  the  function  (lower  weight  =  less complex = faster execution). [23XF: ( a )
+  \mapsto \mathtt{MorphismFromCocartesianBidual}(a)[123X.[133X
   
   [1X2.4-62 AddMorphismFromCocartesianBidualWithGivenCocartesianBidual[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromCocartesianBidualWithGivenCocartesianBidual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddMorphismFromCocartesianBidualWithGivenCocartesianBidual[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XMorphismFromCocartesianBidualWithGivenCocartesianBidual[110X. [23XF: ( a, s ) \mapsto
+  [10XMorphismFromCocartesianBidualWithGivenCocartesianBidual[110X.    Optionally,    a
+  weight  (default:  100)  can be specified which should roughly correspond to
+  the  computational complexity of the function (lower weight = less complex =
+  faster       execution).       [23XF:       (      a,      s      )      \mapsto
   \mathtt{MorphismFromCocartesianBidualWithGivenCocartesianBidual}(a, s)[123X.[133X
   
   [1X2.4-63 AddMorphismFromCoexponentialToCoproduct[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromCoexponentialToCoproduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddMorphismFromCoexponentialToCoproduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XMorphismFromCoexponentialToCoproduct[110X.     [23XF:    (    a,    b    )    \mapsto
-  \mathtt{MorphismFromCoexponentialToCoproduct}(a, b)[123X.[133X
+  [10XMorphismFromCoexponentialToCoproduct[110X.  Optionally,  a  weight (default: 100)
+  can  be  specified  which  should  roughly  correspond  to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF: ( a, b ) \mapsto \mathtt{MorphismFromCoexponentialToCoproduct}(a, b)[123X.[133X
   
   [1X2.4-64 AddMorphismFromCoexponentialToCoproductWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromCoexponentialToCoproductWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddMorphismFromCoexponentialToCoproductWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XMorphismFromCoexponentialToCoproductWithGivenObjects[110X.  [23XF:  (  s,  a,  b, r )
-  \mapsto  \mathtt{MorphismFromCoexponentialToCoproductWithGivenObjects}(s, a,
-  b, r)[123X.[133X
+  [10XMorphismFromCoexponentialToCoproductWithGivenObjects[110X.  Optionally,  a weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster     execution).     [23XF:     (     s,     a,    b,    r    )    \mapsto
+  \mathtt{MorphismFromCoexponentialToCoproductWithGivenObjects}(s, a, b, r)[123X.[133X
   
   [1X2.4-65 AddUniversalPropertyOfCocartesianDual[101X
   
   [33X[1;0Y[29X[2XAddUniversalPropertyOfCocartesianDual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddUniversalPropertyOfCocartesianDual[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XUniversalPropertyOfCocartesianDual[110X.   [23XF:   (   t,   a,   alpha   )   \mapsto
-  \mathtt{UniversalPropertyOfCocartesianDual}(t, a, alpha)[123X.[133X
+  [10XUniversalPropertyOfCocartesianDual[110X.  Optionally, a weight (default: 100) can
+  be specified which should roughly correspond to the computational complexity
+  of the function (lower weight = less complex = faster execution). [23XF: ( t, a,
+  alpha ) \mapsto \mathtt{UniversalPropertyOfCocartesianDual}(t, a, alpha)[123X.[133X
   
   [1X2.4-66 AddLeftCocartesianCodistributivityExpanding[101X
   
   [33X[1;0Y[29X[2XAddLeftCocartesianCodistributivityExpanding[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddLeftCocartesianCodistributivityExpanding[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XLeftCocartesianCodistributivityExpanding[110X.    [23XF:    (    a,   L   )   \mapsto
-  \mathtt{LeftCocartesianCodistributivityExpanding}(a, L)[123X.[133X
+  [10XLeftCocartesianCodistributivityExpanding[110X.  Optionally,  a  weight  (default:
+  100)  can  be specified which should roughly correspond to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF: ( a, L ) \mapsto \mathtt{LeftCocartesianCodistributivityExpanding}(a, L)[123X.[133X
   
   [1X2.4-67 AddLeftCocartesianCodistributivityExpandingWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddLeftCocartesianCodistributivityExpandingWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddLeftCocartesianCodistributivityExpandingWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XLeftCocartesianCodistributivityExpandingWithGivenObjects[110X.  [23XF: ( s, a, L, r )
-  \mapsto \mathtt{LeftCocartesianCodistributivityExpandingWithGivenObjects}(s,
-  a, L, r)[123X.[133X
+  [10XLeftCocartesianCodistributivityExpandingWithGivenObjects[110X.    Optionally,   a
+  weight  (default:  100)  can be specified which should roughly correspond to
+  the  computational complexity of the function (lower weight = less complex =
+  faster     execution).     [23XF:     (     s,     a,    L,    r    )    \mapsto
+  \mathtt{LeftCocartesianCodistributivityExpandingWithGivenObjects}(s,  a,  L,
+  r)[123X.[133X
   
   [1X2.4-68 AddLeftCocartesianCodistributivityFactoring[101X
   
   [33X[1;0Y[29X[2XAddLeftCocartesianCodistributivityFactoring[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddLeftCocartesianCodistributivityFactoring[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XLeftCocartesianCodistributivityFactoring[110X.    [23XF:    (    a,   L   )   \mapsto
-  \mathtt{LeftCocartesianCodistributivityFactoring}(a, L)[123X.[133X
+  [10XLeftCocartesianCodistributivityFactoring[110X.  Optionally,  a  weight  (default:
+  100)  can  be specified which should roughly correspond to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF: ( a, L ) \mapsto \mathtt{LeftCocartesianCodistributivityFactoring}(a, L)[123X.[133X
   
   [1X2.4-69 AddLeftCocartesianCodistributivityFactoringWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddLeftCocartesianCodistributivityFactoringWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddLeftCocartesianCodistributivityFactoringWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XLeftCocartesianCodistributivityFactoringWithGivenObjects[110X.  [23XF: ( s, a, L, r )
-  \mapsto \mathtt{LeftCocartesianCodistributivityFactoringWithGivenObjects}(s,
-  a, L, r)[123X.[133X
+  [10XLeftCocartesianCodistributivityFactoringWithGivenObjects[110X.    Optionally,   a
+  weight  (default:  100)  can be specified which should roughly correspond to
+  the  computational complexity of the function (lower weight = less complex =
+  faster     execution).     [23XF:     (     s,     a,    L,    r    )    \mapsto
+  \mathtt{LeftCocartesianCodistributivityFactoringWithGivenObjects}(s,  a,  L,
+  r)[123X.[133X
   
   [1X2.4-70 AddRightCocartesianCodistributivityExpanding[101X
   
   [33X[1;0Y[29X[2XAddRightCocartesianCodistributivityExpanding[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddRightCocartesianCodistributivityExpanding[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XRightCocartesianCodistributivityExpanding[110X.    [23XF:    (   L,   a   )   \mapsto
-  \mathtt{RightCocartesianCodistributivityExpanding}(L, a)[123X.[133X
+  [10XRightCocartesianCodistributivityExpanding[110X.  Optionally,  a  weight (default:
+  100)  can  be specified which should roughly correspond to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF:  (  L,  a ) \mapsto \mathtt{RightCocartesianCodistributivityExpanding}(L,
+  a)[123X.[133X
   
   [1X2.4-71 AddRightCocartesianCodistributivityExpandingWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddRightCocartesianCodistributivityExpandingWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddRightCocartesianCodistributivityExpandingWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XRightCocartesianCodistributivityExpandingWithGivenObjects[110X. [23XF: ( s, L, a, r )
-  \mapsto
+  [10XRightCocartesianCodistributivityExpandingWithGivenObjects[110X.   Optionally,   a
+  weight  (default:  100)  can be specified which should roughly correspond to
+  the  computational complexity of the function (lower weight = less complex =
+  faster     execution).     [23XF:     (     s,     L,    a,    r    )    \mapsto
   \mathtt{RightCocartesianCodistributivityExpandingWithGivenObjects}(s,  L, a,
   r)[123X.[133X
   
   [1X2.4-72 AddRightCocartesianCodistributivityFactoring[101X
   
   [33X[1;0Y[29X[2XAddRightCocartesianCodistributivityFactoring[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddRightCocartesianCodistributivityFactoring[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XRightCocartesianCodistributivityFactoring[110X.    [23XF:    (   L,   a   )   \mapsto
-  \mathtt{RightCocartesianCodistributivityFactoring}(L, a)[123X.[133X
+  [10XRightCocartesianCodistributivityFactoring[110X.  Optionally,  a  weight (default:
+  100)  can  be specified which should roughly correspond to the computational
+  complexity of the function (lower weight = less complex = faster execution).
+  [23XF:  (  L,  a ) \mapsto \mathtt{RightCocartesianCodistributivityFactoring}(L,
+  a)[123X.[133X
   
   [1X2.4-73 AddRightCocartesianCodistributivityFactoringWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddRightCocartesianCodistributivityFactoringWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddRightCocartesianCodistributivityFactoringWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XRightCocartesianCodistributivityFactoringWithGivenObjects[110X. [23XF: ( s, L, a, r )
-  \mapsto
+  [10XRightCocartesianCodistributivityFactoringWithGivenObjects[110X.   Optionally,   a
+  weight  (default:  100)  can be specified which should roughly correspond to
+  the  computational complexity of the function (lower weight = less complex =
+  faster     execution).     [23XF:     (     s,     L,    a,    r    )    \mapsto
   \mathtt{RightCocartesianCodistributivityFactoringWithGivenObjects}(s,  L, a,
   r)[123X.[133X
   
