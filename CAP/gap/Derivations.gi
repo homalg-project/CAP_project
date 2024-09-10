@@ -128,7 +128,7 @@ FunctionWithNamedArguments(
         
     fi;
     
-    AddCapOperation( method_name, C, [ Pair( func, [ ] ) ], weight : IsDerivation := not(CAP_NAMED_ARGUMENTS.IsFinalDerivation), IsFinalDerivation := CAP_NAMED_ARGUMENTS.IsFinalDerivation );
+    AddCapOperation( method_name, C, func, weight : IsDerivation := not(CAP_NAMED_ARGUMENTS.IsFinalDerivation), IsFinalDerivation := CAP_NAMED_ARGUMENTS.IsFinalDerivation );
     
 end ) );
 
@@ -837,7 +837,7 @@ end );
 InstallGlobalFunction( DerivationsOfMethodByCategory,
   
   function( category, name )
-    local category_weight_list, current_weight, current_derivation, currently_installed_funcs, to_delete, weight_list, category_getter_string, possible_derivations, category_filter, weight, found, i, x, final_derivation;
+    local category_weight_list, current_weight, current_derivation, currently_installed_func, weight_list, category_getter_string, possible_derivations, category_filter, weight, found, x, final_derivation;
     
     if IsFunction( name ) then
         name := NameFunction( name );
@@ -875,22 +875,7 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
                 
             fi;
             
-            currently_installed_funcs := category!.added_functions.( name );
-            
-            # delete overwritten funcs
-            to_delete := [ ];
-            
-            for i in [ 1 .. Length( currently_installed_funcs ) ] do
-                
-                if ForAny( [ (i+1) .. Length( currently_installed_funcs ) ], j -> currently_installed_funcs[i][2] = currently_installed_funcs[j][2] ) then
-                    
-                    Add( to_delete, i );
-                    
-                fi;
-                
-            od;
-            
-            currently_installed_funcs := currently_installed_funcs{Difference( [ 1 .. Length( currently_installed_funcs ) ], to_delete )};
+            currently_installed_func := Last( category!.added_functions.( name ) );
             
         else
             
@@ -916,32 +901,15 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
                 
             od;
             
-            currently_installed_funcs := [ Pair( DerivationFunction( current_derivation ), [ ] ) ];
+            currently_installed_func := DerivationFunction( current_derivation );
             
         fi;
         
-        Print( "\nThe following function" );
-        
-        if Length( currently_installed_funcs ) > 1 then
-            Print( "s were" );
-        else
-            Print( " was" );
-        fi;
-        
-        Print( " installed for this operation:\n\n" );
-        
-        for i in currently_installed_funcs do
-            
-            Print( "Filters: " );
-            Print( String( i[ 2 ] ) );
-            Print( "\n\n" );
-            Display( i[ 1 ] );
-            Print( "\n" );
-            Print( "Source: ", FilenameFunc( i[ 1 ] ), ":", StartlineFunc( i[ 1 ] ), "\n" );
-            Print( "\n" );
-            
-        od;
-        
+        Print( "\nThe following function was installed for this operation:\n\n" );
+        Display( currently_installed_func );
+        Print( "\n" );
+        Print( "Source: ", FilenameFunc( currently_installed_func ), ":", StartlineFunc( currently_installed_func ), "\n" );
+        Print( "\n" );
         Print( "#######\n\n" );
         
     else

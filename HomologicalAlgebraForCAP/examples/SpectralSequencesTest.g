@@ -107,7 +107,7 @@ Display( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject(
 s := SpectralSequenceEntryOfDescendingFilteredCocomplex( cocomplex, 2, -2, 1 );
 #! <A morphism in Generalized morphism category of Category of left presentations of Q[x,y]>
 Display( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );
-#! -y,x
+#! x,-y
 s := SpectralSequenceEntryOfDescendingFilteredCocomplex( cocomplex, 3, -2, 1 );
 #! <A morphism in Generalized morphism category of Category of left presentations of Q[x,y]>
 Display( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );
@@ -115,6 +115,6 @@ Display( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject(
 s := SpectralSequenceDifferentialOfDescendingFilteredCocomplex( cocomplex, 2, -2, 1 );
 #! <A morphism in Category of left presentations of Q[x,y]>
 Display( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, s ) ) );
-#! x^2,
-#! x*y
+#! x*y,
+#! x^2
 #! @EndExample

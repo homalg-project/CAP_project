@@ -61,92 +61,58 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_CO
     
     ## PreCompose
     
-    AddPreCompose( category, [
-      
-      [ function( cat, morphism1, morphism2 )
-          local honest_category, pushout_diagram, injection_left, injection_right;
-          
-          honest_category := UnderlyingHonestCategory( cat );
-          
-          pushout_diagram := [ ReversedArrow( morphism1 ), Arrow( morphism2 ) ];
-          
-          injection_left := InjectionOfCofactorOfPushout( honest_category, pushout_diagram, 1 );
-          
-          injection_right := InjectionOfCofactorOfPushout( honest_category, pushout_diagram, 2 );
-          
-          return GeneralizedMorphismByCospan( PreCompose( honest_category, Arrow( morphism1 ), injection_left ),
-                                              PreCompose( honest_category, ReversedArrow( morphism2 ), injection_right ) );
-          
-      end, [ ] ],
-      
-      [ function( cat, morphism1, morphism2 )
-          local honest_category, arrow, reversed_arrow;
-          
-          honest_category := UnderlyingHonestCategory( cat );
-          
-          arrow := PreCompose( honest_category, Arrow( morphism1 ), Arrow( morphism2 ) );
-          
-          return AsGeneralizedMorphismByCospan( arrow );
-          
-      end, [ IsGeneralizedMorphismCategoryByCospans, HasIdentityAsReversedArrow, HasIdentityAsReversedArrow ] ],
-      
-      [ function( cat, morphism1, morphism2 )
-          local honest_category, arrow;
-          
-          honest_category := UnderlyingHonestCategory( cat );
-          
-          arrow := PreCompose( honest_category, Arrow( morphism1 ), Arrow( morphism2 ) );
-          
-          return GeneralizedMorphismByCospan( arrow, ReversedArrow( morphism2 ) );
-          
-      end, [ IsGeneralizedMorphismCategoryByCospans, HasIdentityAsReversedArrow, IsGeneralizedMorphismByCospan ] ] ] );
+    AddPreCompose( category,
+                   
+      function( cat, morphism1, morphism2 )
+        local honest_category, pushout_diagram, injection_left, injection_right;
+        
+        honest_category := UnderlyingHonestCategory( cat );
+        
+        pushout_diagram := [ ReversedArrow( morphism1 ), Arrow( morphism2 ) ];
+        
+        injection_left := InjectionOfCofactorOfPushout( honest_category, pushout_diagram, 1 );
+        
+        injection_right := InjectionOfCofactorOfPushout( honest_category, pushout_diagram, 2 );
+        
+        return GeneralizedMorphismByCospan( PreCompose( honest_category, Arrow( morphism1 ), injection_left ),
+                                            PreCompose( honest_category, ReversedArrow( morphism2 ), injection_right ) );
+        
+    end );
     
     
     ## AdditionForMorphisms
     
-    AddAdditionForMorphisms( category, [
+    AddAdditionForMorphisms( category,
                              
-      [ function( cat, morphism1, morphism2 )
-          local honest_category, pushout_diagram, pushout_left, pushout_right, arrow, reversed_arrow;
-          
-          honest_category := UnderlyingHonestCategory( cat );
-          
-          pushout_diagram := [ ReversedArrow( morphism1 ), ReversedArrow( morphism2 ) ];
-          
-          pushout_left := InjectionOfCofactorOfPushout( honest_category, pushout_diagram, 1 );
-          
-          pushout_right := InjectionOfCofactorOfPushout( honest_category, pushout_diagram, 2 );
-          
-          arrow := AdditionForMorphisms( honest_category,
-                                         PreCompose( honest_category, Arrow( morphism1 ), pushout_left ),
-                                         PreCompose( honest_category, Arrow( morphism2 ), pushout_right ) );
-          
-          reversed_arrow := PreCompose( honest_category, pushout_diagram[ 1 ], pushout_left );
-          
-          return GeneralizedMorphismByCospan( arrow, reversed_arrow );
-          
-      end, [ ] ],
+      function( cat, morphism1, morphism2 )
+        local honest_category, pushout_diagram, pushout_left, pushout_right, arrow, reversed_arrow;
+        
+        honest_category := UnderlyingHonestCategory( cat );
+        
+        pushout_diagram := [ ReversedArrow( morphism1 ), ReversedArrow( morphism2 ) ];
+        
+        pushout_left := InjectionOfCofactorOfPushout( honest_category, pushout_diagram, 1 );
+        
+        pushout_right := InjectionOfCofactorOfPushout( honest_category, pushout_diagram, 2 );
+        
+        arrow := AdditionForMorphisms( honest_category,
+                                       PreCompose( honest_category, Arrow( morphism1 ), pushout_left ),
+                                       PreCompose( honest_category, Arrow( morphism2 ), pushout_right ) );
+        
+        reversed_arrow := PreCompose( honest_category, pushout_diagram[ 1 ], pushout_left );
+        
+        return GeneralizedMorphismByCospan( arrow, reversed_arrow );
+        
+    end );
       
-      [ function( cat, morphism1, morphism2 )
-          
-          return AsGeneralizedMorphismByCospan( AdditionForMorphisms( UnderlyingHonestCategory( cat ), Arrow( morphism1 ), Arrow( morphism2 ) ) );
-          
-      end, [ IsGeneralizedMorphismCategoryByCospans, HasIdentityAsReversedArrow, HasIdentityAsReversedArrow ] ] ] );
-      
-    AddAdditiveInverseForMorphisms( category, [
+    AddAdditiveInverseForMorphisms( category,
                                     
-      [ function( cat, morphism )
-           
-         return GeneralizedMorphismByCospan( AdditiveInverseForMorphisms( UnderlyingHonestCategory( cat ), Arrow( morphism ) ),
-                                             ReversedArrow( morphism ) );
-         
-      end, [ ] ],
-      
-      [ function( cat, morphism )
-          
-          return AsGeneralizedMorphismByCospan( AdditiveInverseForMorphisms( UnderlyingHonestCategory( cat ), Arrow( morphism ) ) );
-          
-      end, [ IsGeneralizedMorphismCategoryByCospans, HasIdentityAsReversedArrow ] ] ] );
+      function( cat, morphism )
+        
+        return GeneralizedMorphismByCospan( AdditiveInverseForMorphisms( UnderlyingHonestCategory( cat ), Arrow( morphism ) ),
+                                            ReversedArrow( morphism ) );
+        
+    end );
     
     AddZeroMorphism( category,
       

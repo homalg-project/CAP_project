@@ -54,92 +54,58 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_SP
     ## PreCompose
     
     
-    AddPreCompose( category, [
-      
-      [ function( cat, morphism1, morphism2 )
-          local honest_category, pullback_diagram, projection_left, projection_right;
-          
-          honest_category := UnderlyingHonestCategory( cat );
-          
-          pullback_diagram := [ Arrow( morphism1 ), ReversedArrow( morphism2 ) ];
-          
-          projection_left := ProjectionInFactorOfFiberProduct( honest_category, pullback_diagram, 1 );
-          
-          projection_right := ProjectionInFactorOfFiberProduct( honest_category, pullback_diagram, 2 );
-          
-          return GeneralizedMorphismBySpan( PreCompose( honest_category, projection_left, ReversedArrow( morphism1 ) ),
-                                            PreCompose( projection_right, Arrow( morphism2 ) ) );
-          
-      end, [ ] ],
-      
-      [ function( cat, morphism1, morphism2 )
-          local honest_category, arrow;
-          
-          honest_category := UnderlyingHonestCategory( cat );
-          
-          arrow := PreCompose( honest_category, Arrow( morphism1 ), Arrow( morphism2 ) );
-          
-          return AsGeneralizedMorphismBySpan( arrow );
-          
-      end, [ IsGeneralizedMorphismCategoryBySpans, HasIdentityAsReversedArrow, HasIdentityAsReversedArrow ] ],
-      
-      [ function( cat, morphism1, morphism2 )
-          local honest_category, arrow;
-          
-          honest_category := UnderlyingHonestCategory( cat );
-          
-          arrow := PreCompose( honest_category, Arrow( morphism1 ), Arrow( morphism2 ) );
-          
-          return GeneralizedMorphismBySpan( ReversedArrow( morphism1 ), arrow );
-          
-      end, [ IsGeneralizedMorphismCategoryBySpans, IsGeneralizedMorphismBySpan, HasIdentityAsReversedArrow ] ] ] );
+    AddPreCompose( category,
+                   
+      function( cat, morphism1, morphism2 )
+        local honest_category, pullback_diagram, projection_left, projection_right;
+        
+        honest_category := UnderlyingHonestCategory( cat );
+        
+        pullback_diagram := [ Arrow( morphism1 ), ReversedArrow( morphism2 ) ];
+        
+        projection_left := ProjectionInFactorOfFiberProduct( honest_category, pullback_diagram, 1 );
+        
+        projection_right := ProjectionInFactorOfFiberProduct( honest_category, pullback_diagram, 2 );
+        
+        return GeneralizedMorphismBySpan( PreCompose( honest_category, projection_left, ReversedArrow( morphism1 ) ),
+                                          PreCompose( projection_right, Arrow( morphism2 ) ) );
+        
+    end );
     
     
     ## AdditionForMorphisms
     
-    AddAdditionForMorphisms( category, [
+    AddAdditionForMorphisms( category,
                              
-      [ function( cat, morphism1, morphism2 )
-          local honest_category, pullback_diagram, pullback_left, pullback_right, arrow, reversed_arrow;
-          
-          honest_category := UnderlyingHonestCategory( cat );
-          
-          pullback_diagram := [ ReversedArrow( morphism1 ), ReversedArrow( morphism2 ) ];
-          
-          pullback_left := ProjectionInFactorOfFiberProduct( honest_category, pullback_diagram, 1 );
-          
-          pullback_right := ProjectionInFactorOfFiberProduct( honest_category, pullback_diagram, 2 );
-          
-          arrow := AdditionForMorphisms( honest_category,
-                                         PreCompose( honest_category, pullback_left, Arrow( morphism1 ) ),
-                                         PreCompose( honest_category, pullback_right, Arrow( morphism2 ) ) );
-          
-          reversed_arrow := PreCompose( honest_category, pullback_left, pullback_diagram[ 1 ] );
-          
-          return GeneralizedMorphismBySpan( reversed_arrow, arrow );
-          
-      end, [ ] ],
+      function( cat, morphism1, morphism2 )
+        local honest_category, pullback_diagram, pullback_left, pullback_right, arrow, reversed_arrow;
+        
+        honest_category := UnderlyingHonestCategory( cat );
+        
+        pullback_diagram := [ ReversedArrow( morphism1 ), ReversedArrow( morphism2 ) ];
+        
+        pullback_left := ProjectionInFactorOfFiberProduct( honest_category, pullback_diagram, 1 );
+        
+        pullback_right := ProjectionInFactorOfFiberProduct( honest_category, pullback_diagram, 2 );
+        
+        arrow := AdditionForMorphisms( honest_category,
+                                       PreCompose( honest_category, pullback_left, Arrow( morphism1 ) ),
+                                       PreCompose( honest_category, pullback_right, Arrow( morphism2 ) ) );
+        
+        reversed_arrow := PreCompose( honest_category, pullback_left, pullback_diagram[ 1 ] );
+        
+        return GeneralizedMorphismBySpan( reversed_arrow, arrow );
+        
+    end );
       
-      [ function( cat, morphism1, morphism2 )
-          
-          return AsGeneralizedMorphismBySpan( AdditionForMorphisms( UnderlyingHonestCategory( cat ), Arrow( morphism1 ), Arrow( morphism2 ) ) );
-          
-      end, [ IsGeneralizedMorphismCategoryBySpans, HasIdentityAsReversedArrow, HasIdentityAsReversedArrow ] ] ] );
-      
-    AddAdditiveInverseForMorphisms( category, [
+    AddAdditiveInverseForMorphisms( category,
                                     
-      [ function( cat, morphism )
-           
-         return GeneralizedMorphismBySpan( ReversedArrow( morphism ),
-                                           AdditiveInverseForMorphisms( UnderlyingHonestCategory( cat ), Arrow( morphism ) ) );
-         
-      end, [ ] ],
-      
-      [ function( cat, morphism )
-          
-          return AsGeneralizedMorphismBySpan( AdditiveInverseForMorphisms( UnderlyingHonestCategory( cat ), Arrow( morphism ) ) );
-          
-      end, [ IsGeneralizedMorphismCategoryBySpans, HasIdentityAsReversedArrow ] ] ] );
+      function( cat, morphism )
+        
+        return GeneralizedMorphismBySpan( ReversedArrow( morphism ),
+                                          AdditiveInverseForMorphisms( UnderlyingHonestCategory( cat ), Arrow( morphism ) ) );
+        
+    end );
     
     AddZeroMorphism( category,
       

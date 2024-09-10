@@ -68,95 +68,34 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
     
     ## PreCompose
     
-    AddPreCompose( category, [
-      
-      [ function( cat, mor1, mor2 )
-          
-          return GeneralizedMorphismByThreeArrows( SourceAid( mor1 ),
-                                                   PreCompose( UnderlyingHonestCategory( cat ), Arrow( mor1 ), Arrow( mor2 ) ),
-                                                   RangeAid( mor2 ) );
-          
-      end, [ IsGeneralizedMorphismCategoryByThreeArrows, HasIdentityAsRangeAid, HasIdentityAsSourceAid ] ],
-      
-      
-      [ function( cat, mor1, mor2 )
-          local honest_category, category, pullback_diagram, new_source_aid, new_morphism_aid;
-          
-          honest_category := UnderlyingHonestCategory( cat );
-          
-          pullback_diagram := [ Arrow( mor1 ), SourceAid( mor2 ) ];
-          
-          new_source_aid := PreCompose( honest_category,
-                                        ProjectionInFactorOfFiberProduct( honest_category, pullback_diagram, 1 ),
-                                        SourceAid( mor1 ) );
-          
-          new_morphism_aid := PreCompose( honest_category,
-                                          ProjectionInFactorOfFiberProduct( honest_category, pullback_diagram, 2 ),
-                                          Arrow( mor2 ) );
-          
-          return GeneralizedMorphismByThreeArrowsWithSourceAid( new_source_aid, new_morphism_aid );
-          
-      end, [ IsGeneralizedMorphismCategoryByThreeArrows, HasIdentityAsRangeAid, HasIdentityAsRangeAid ] ],
-      
-      
-      [ function( cat, mor1, mor2 )
-          local honest_category, category, diagram, injection_of_cofactor1, injection_of_cofactor2, new_morphism_aid, new_range_aid;
-          
-          honest_category := UnderlyingHonestCategory( cat );
-          
-          diagram := [ RangeAid( mor1 ), Arrow( mor2 ) ];
-          
-          injection_of_cofactor1 := InjectionOfCofactorOfPushout( honest_category, diagram, 1 );
-          
-          injection_of_cofactor2 := InjectionOfCofactorOfPushout( honest_category, diagram, 2 );
-          
-          new_morphism_aid := PreCompose( honest_category, Arrow( mor1 ), injection_of_cofactor1 );
-          
-          new_range_aid := PreCompose( honest_category, RangeAid( mor2 ), injection_of_cofactor2 );
-          
-          return GeneralizedMorphismByThreeArrowsWithRangeAid( new_morphism_aid, new_range_aid );
-          
-      end, [ IsGeneralizedMorphismCategoryByThreeArrows, HasIdentityAsSourceAid, HasIdentityAsSourceAid ] ],
-      
-      
-      [ function( cat, mor1, mor2 )
-          local honest_category, category;
-          
-          honest_category := UnderlyingHonestCategory( cat );
-          
-          return AsGeneralizedMorphismByThreeArrows( PreCompose( honest_category, Arrow( mor1 ), Arrow( mor2 ) ) );
-          
-      end, [ IsGeneralizedMorphismCategoryByThreeArrows,
-             HasIdentityAsRangeAid and HasIdentityAsSourceAid,
-             HasIdentityAsRangeAid and HasIdentityAsSourceAid ] ],
-      
-      
-      [ function( cat, mor1, mor2 )
-          local honest_category, generalized_mor_factor_sub, pullback_diagram, pushout_diagram, new_associated, new_source_aid, new_range_aid;
-          
-          honest_category := UnderlyingHonestCategory( cat );
-          
-          generalized_mor_factor_sub := GeneralizedMorphismFromFactorToSubobjectByThreeArrows( RangeAid( mor1 ), SourceAid( mor2 ) );
-          
-          pullback_diagram := [ Arrow( mor1 ), SourceAid( generalized_mor_factor_sub ) ];
-          
-          pushout_diagram := [ RangeAid( generalized_mor_factor_sub ), Arrow( mor2 ) ];
-          
-          new_source_aid := PreCompose( honest_category,
-                                        ProjectionInFactorOfFiberProduct( honest_category, pullback_diagram, 1 ),
-                                        SourceAid( mor1 ) );
-          
-          new_associated := PreCompose( honest_category,
-                                        ProjectionInFactorOfFiberProduct( honest_category, pullback_diagram, 2 ),
-                                        InjectionOfCofactorOfPushout( honest_category, pushout_diagram, 1 ) );
-          
-          new_range_aid := PreCompose( honest_category,
-                                       RangeAid( mor2 ),
-                                       InjectionOfCofactorOfPushout( honest_category, pushout_diagram, 2 ) );
-          
-          return GeneralizedMorphismByThreeArrows( new_source_aid, new_associated, new_range_aid );
-          
-      end, [ ] ] ] );
+    AddPreCompose( category,
+                   
+      function( cat, mor1, mor2 )
+        local honest_category, generalized_mor_factor_sub, pullback_diagram, pushout_diagram, new_associated, new_source_aid, new_range_aid;
+        
+        honest_category := UnderlyingHonestCategory( cat );
+        
+        generalized_mor_factor_sub := GeneralizedMorphismFromFactorToSubobjectByThreeArrows( RangeAid( mor1 ), SourceAid( mor2 ) );
+        
+        pullback_diagram := [ Arrow( mor1 ), SourceAid( generalized_mor_factor_sub ) ];
+        
+        pushout_diagram := [ RangeAid( generalized_mor_factor_sub ), Arrow( mor2 ) ];
+        
+        new_source_aid := PreCompose( honest_category,
+                                      ProjectionInFactorOfFiberProduct( honest_category, pullback_diagram, 1 ),
+                                      SourceAid( mor1 ) );
+        
+        new_associated := PreCompose( honest_category,
+                                      ProjectionInFactorOfFiberProduct( honest_category, pullback_diagram, 2 ),
+                                      InjectionOfCofactorOfPushout( honest_category, pushout_diagram, 1 ) );
+        
+        new_range_aid := PreCompose( honest_category,
+                                     RangeAid( mor2 ),
+                                     InjectionOfCofactorOfPushout( honest_category, pushout_diagram, 2 ) );
+        
+        return GeneralizedMorphismByThreeArrows( new_source_aid, new_associated, new_range_aid );
+        
+    end );
     
     
     ## AdditionForMorphisms

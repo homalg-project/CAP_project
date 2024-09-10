@@ -236,9 +236,6 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_PRESENTATION,
     # special, lazy installation
     ADD_KERNEL_LEFT( category );
     
-    # has special cases
-    ADD_PRECOMPOSE_LEFT( category );
-    
     # IsWellDefined* should not be compiled
     ADD_IS_WELL_DEFINED_FOR_OBJECTS( category );
     
@@ -280,8 +277,6 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION,
   function( category )
     
     ADD_KERNEL_RIGHT( category );
-    
-    ADD_PRECOMPOSE_RIGHT( category );
     
     ADD_IS_WELL_DEFINED_FOR_OBJECTS( category );
     
@@ -484,95 +479,6 @@ InstallGlobalFunction( ADD_KERNEL_RIGHT,
         return PresentationMorphism( cat, Source( beta ), lift, Source( alpha ) );
         
     end );
-    
-end );
-
-##
-InstallGlobalFunction( ADD_PRECOMPOSE_LEFT,
-                       
-  function( category )
-    local homalg_ring;
-    
-    homalg_ring := category!.ring_for_representation_category;
-    
-    AddPreCompose( category,
-                   
-      [ 
-        [ function( cat, left_morphism, identity_morphism )
-            
-            return left_morphism;
-            
-          end, [ IsCapCategory, IsCapCategoryMorphism, IsEqualToIdentityMorphism ] ],
-        
-        [ function( cat, identity_morphism, right_morphism )
-            
-            return right_morphism;
-            
-          end, [ IsCapCategory, IsEqualToIdentityMorphism, IsCapCategoryMorphism ] ],
-        
-        [ function( cat, left_morphism, zero_morphism )
-            
-            return PresentationMorphism( cat, Source( left_morphism ),
-                                         HomalgZeroMatrix( NrRows( UnderlyingMatrix( left_morphism ) ), NrColumns( UnderlyingMatrix( zero_morphism ) ), homalg_ring ),
-                                         Range( zero_morphism ) );
-          
-          end, [ IsCapCategory, IsCapCategoryMorphism, IsEqualToZeroMorphism ] ],
-        
-        [ function( cat, zero_morphism, right_morphism )
-            
-            return PresentationMorphism( cat, Source( zero_morphism ),
-                                         HomalgZeroMatrix( NrRows( UnderlyingMatrix( zero_morphism ) ), NrColumns( UnderlyingMatrix( right_morphism ) ), homalg_ring ),
-                                         Range( right_morphism ) );
-          
-          end, [ IsCapCategory, IsEqualToZeroMorphism, IsCapCategoryMorphism ] ],
-      ]
-      
-    );
-    
-end );
-
-##
-InstallGlobalFunction( ADD_PRECOMPOSE_RIGHT,
-                       
-  function( category )
-    local homalg_ring;
-    
-    homalg_ring := category!.ring_for_representation_category;
-    
-    AddPreCompose( category,
-      
-      [ 
-        [ function( cat, left_morphism, identity_morphism )
-            
-            return left_morphism;
-            
-          end, [ IsCapCategory, IsCapCategoryMorphism, IsEqualToIdentityMorphism ] ],
-        
-        [ function( cat, identity_morphism, right_morphism )
-            
-            return right_morphism;
-            
-          end, [ IsCapCategory, IsEqualToIdentityMorphism, IsCapCategoryMorphism ] ],
-        
-        
-        [ function( cat, left_morphism, zero_morphism )
-            
-            return PresentationMorphism( cat, Source( left_morphism ),
-                                         HomalgZeroMatrix( NrRows( UnderlyingMatrix( zero_morphism ) ), NrColumns( UnderlyingMatrix( left_morphism ) ), homalg_ring ),
-                                         Range( zero_morphism ) );
-          
-          end, [ IsCapCategory, IsCapCategoryMorphism, IsEqualToZeroMorphism ] ],
-        
-        [ function( cat, zero_morphism, right_morphism )
-            
-            return PresentationMorphism( cat, Source( zero_morphism ),
-                                         HomalgZeroMatrix( NrRows( UnderlyingMatrix( right_morphism ) ), NrColumns( UnderlyingMatrix( zero_morphism ) ), homalg_ring ),
-                                         Range( right_morphism ) );
-          
-          end, [ IsCapCategory, IsEqualToZeroMorphism, IsCapCategoryMorphism ] ],
-      ]
-      
-    );
     
 end );
 

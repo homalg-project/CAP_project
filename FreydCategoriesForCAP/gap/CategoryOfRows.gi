@@ -405,49 +405,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddPreCompose( category,
-      
-      [
-        [ function( cat, morphism_1, morphism_2 )
-            local composition;
-            
-            composition := UnderlyingMatrix( morphism_1 ) * UnderlyingMatrix( morphism_2 );
-            
-            return CategoryOfRowsMorphism( cat, Source( morphism_1 ), composition, Range( morphism_2 ) );
-            
-          end, [ ] ],
+      function( cat, morphism_1, morphism_2 )
+        local composition;
         
-        [ function( cat, left_morphism, identity_morphism )
-            
-            return left_morphism;
-            
-          end, [ IsCapCategory, IsCapCategoryMorphism, IsEqualToIdentityMorphism ] ],
+        composition := UnderlyingMatrix( morphism_1 ) * UnderlyingMatrix( morphism_2 );
         
-        [ function( cat, identity_morphism, right_morphism )
-            
-            return right_morphism;
-            
-          end, [ IsCapCategory, IsEqualToIdentityMorphism, IsCapCategoryMorphism ] ],
+        return CategoryOfRowsMorphism( cat, Source( morphism_1 ), composition, Range( morphism_2 ) );
         
-        [ function( cat, left_morphism, zero_morphism )
-            
-            return CategoryOfRowsMorphism( cat, Source( left_morphism ),
-                                        HomalgZeroMatrix( RankOfObject( Source( left_morphism ) ),
-                                        RankOfObject( Range( zero_morphism ) ), ring ),
-                                        Range( zero_morphism ) );
-          
-          end, [ IsCapCategory, IsCapCategoryMorphism, IsZeroForMorphisms ] ],
-        
-        [ function( cat, zero_morphism, right_morphism )
-            
-            return CategoryOfRowsMorphism( cat, Source( zero_morphism ),
-                                           HomalgZeroMatrix( RankOfObject( Source( zero_morphism ) ),
-                                           RankOfObject( Range( right_morphism ) ), ring ),
-                                           Range( right_morphism ) );
-          
-          end, [ IsCapCategory, IsZeroForMorphisms, IsCapCategoryMorphism ] ],
-      ]
-    
-    );
+    end );
     
     ## Basic Operations for an Additive Category
     ##
