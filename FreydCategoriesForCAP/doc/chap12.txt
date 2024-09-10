@@ -1357,6 +1357,8 @@
     [4X[28X<2>[128X[104X
     [4X[25Xgap>[125X [27XIsOne( alpha );[127X[104X
     [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XMorphismDatum( alpha );[127X[104X
+    [4X[28X2[128X[104X
     [4X[25Xgap>[125X [27XIsZeroForMorphisms( alpha );[127X[104X
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27Xalpha * alpha;[127X[104X
@@ -1388,6 +1390,34 @@
     [4X[28X[ 2 ][128X[104X
     [4X[25Xgap>[125X [27XIsCongruentForMorphisms( alpha, LinearCombinationOfMorphisms( u, CoefficientsOfMorphism( alpha ), BasisOfExternalHom( u, u ), u ) );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XTensorUnit( CR );[127X[104X
+    [4X[28X*[128X[104X
+    [4X[25Xgap>[125X [27XTensorUnit( CR ) = u;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XTensorProductOnObjects( u, u );[127X[104X
+    [4X[28X*[128X[104X
+    [4X[25Xgap>[125X [27XTensorProductOnObjects( u, u ) = u;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XTensorProductOnMorphisms( alpha, beta );[127X[104X
+    [4X[28X<1>[128X[104X
+    [4X[25Xgap>[125X [27XBraiding( u, u );[127X[104X
+    [4X[28X<1>[128X[104X
+    [4X[25Xgap>[125X [27XDualOnObjects( u ) = u;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDualOnMorphisms( alpha ) = alpha;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XEvaluationForDual( u );[127X[104X
+    [4X[28X<1>[128X[104X
+    [4X[25Xgap>[125X [27XCoevaluationForDual( u );[127X[104X
+    [4X[28X<1>[128X[104X
+    [4X[25Xgap>[125X [27XCoDualOnObjects( u ) = u;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCoDualOnMorphisms( beta ) = beta;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCoclosedEvaluationForCoDual( u );[127X[104X
+    [4X[28X<1>[128X[104X
+    [4X[25Xgap>[125X [27XCoclosedCoevaluationForCoDual( u );[127X[104X
+    [4X[28X<1>[128X[104X
     [4X[25Xgap>[125X [27XEEE := KoszulDualRing( HomalgFieldOfRationalsInSingular( ) * "x,y" );;[127X[104X
     [4X[25Xgap>[125X [27XCE := RingAsCategory( EEE );;[127X[104X
     [4X[25Xgap>[125X [27Xu := RingAsCategoryUniqueObject( CE );;[127X[104X

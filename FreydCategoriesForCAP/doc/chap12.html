@@ -1485,6 +1485,8 @@ true
 &lt;2&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( alpha );</span>
 false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismDatum( alpha );</span>
+2
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( alpha );</span>
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha * alpha;</span>
@@ -1516,6 +1518,34 @@ true
 [ 2 ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( alpha, LinearCombinationOfMorphisms( u, CoefficientsOfMorphism( alpha ), BasisOfExternalHom( u, u ), u ) );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TensorUnit( CR );</span>
+*
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TensorUnit( CR ) = u;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TensorProductOnObjects( u, u );</span>
+*
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TensorProductOnObjects( u, u ) = u;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TensorProductOnMorphisms( alpha, beta );</span>
+&lt;1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Braiding( u, u );</span>
+&lt;1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DualOnObjects( u ) = u;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DualOnMorphisms( alpha ) = alpha;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EvaluationForDual( u );</span>
+&lt;1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoevaluationForDual( u );</span>
+&lt;1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoDualOnObjects( u ) = u;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoDualOnMorphisms( beta ) = beta;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoclosedEvaluationForCoDual( u );</span>
+&lt;1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoclosedCoevaluationForCoDual( u );</span>
+&lt;1&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EEE := KoszulDualRing( HomalgFieldOfRationalsInSingular( ) * "x,y" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CE := RingAsCategory( EEE );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := RingAsCategoryUniqueObject( CE );;</span>
