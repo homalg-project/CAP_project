@@ -88,7 +88,7 @@ Arrow( composition );
 SourceAid( composition );
 #! <A morphism in Category of matrices over Q>
 RangeAid( composition );
-#! <A morphism in Category of matrices over Q>
+#! <An identity morphism in Category of matrices over Q>
 #! @EndExample
 
 #! Second composition test
@@ -121,7 +121,7 @@ Arrow( composition2 );
 RangeAid( composition2 );
 #! <A morphism in Category of matrices over Q>
 SourceAid( composition2 );
-#! <A split monomorphism in Category of matrices over Q>
+#! <An identity morphism in Category of matrices over Q>
 #! @EndExample
 
 #! Third composition test
