@@ -72,7 +72,36 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_SP
         
     end );
     
+    # the following optimizations probably do not fulfill the specification "equal input gives equal output", see https://github.com/homalg-project/CAP_project/issues/1669
+    InstallOtherMethod( PreCompose,
+                        [ CategoryFilter( category ), MorphismFilter( category ) and HasIdentityAsReversedArrow, MorphismFilter( category ) and HasIdentityAsReversedArrow ],
+                        
+      function( cat, morphism1, morphism2 )
+          local honest_category, arrow;
+
+          honest_category := UnderlyingHonestCategory( cat );
+
+          arrow := PreCompose( honest_category, Arrow( morphism1 ), Arrow( morphism2 ) );
+
+          return AsGeneralizedMorphismBySpan( arrow );
+
+    end );
     
+    InstallOtherMethod( PreCompose,
+                        [ CategoryFilter( category ), MorphismFilter( category ), MorphismFilter( category ) and HasIdentityAsReversedArrow ],
+                        
+      function( cat, morphism1, morphism2 )
+          local honest_category, arrow;
+
+          honest_category := UnderlyingHonestCategory( cat );
+
+          arrow := PreCompose( honest_category, Arrow( morphism1 ), Arrow( morphism2 ) );
+
+          return GeneralizedMorphismBySpan( ReversedArrow( morphism1 ), arrow );
+
+    end );
+    
+
     ## AdditionForMorphisms
     
     AddAdditionForMorphisms( category,
