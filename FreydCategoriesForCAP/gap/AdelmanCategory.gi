@@ -793,7 +793,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
         
         if HasIsAbelianCategory( range_category ) and
            IsAbelianCategory( range_category ) and
-           HasIsProjective( underlying_distinguished_object ) and
+           (HasIsProjective( underlying_distinguished_object ) or CurrentOperationWeight( range_category!.derivations_weight_list, "IsProjective" ) <= 50) and
            IsProjective( underlying_distinguished_object ) then
             
             SetRangeCategoryOfHomomorphismStructure( category, range_category );
