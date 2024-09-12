@@ -89,7 +89,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
           current_recname, current_entry, dual_operation_name, filter_list, input_arguments_names, return_type, func_string,
           preprocessor_string, dual_arguments, tmp,
           postprocessor_string, output_source_getter_string, output_range_getter_string, return_statement,
-          func, weight, current_add, list_of_attributes, attr, tester, setter;
+          func, weight, list_of_attributes, attr, tester, setter;
     
     ## Take care of attributes
     ## TODO: if there are more instances, set markers in the MethodRecord
@@ -373,9 +373,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
         
         Assert( 0, weight < infinity );
         
-        current_add := ValueGlobal( Concatenation( "Add", current_recname ) );
-        
-        current_add( opposite_category, func, weight );
+        AddCapOperation( current_recname, opposite_category, func, weight );
         
     od;
     
