@@ -79,20 +79,10 @@ After calling an add method, the corresponding operation is available in the cat
 of the primitive value, might be available.
 
 
-@Section InstallAdd Function
-@SectionLabel CapInternalInstallAdd
+@Section Method name record entries
+@SectionLabel method_name_record_entries
 
-Almost all Add methods in the CAP kernel are installed by the `CapInternalInstallAdd` operation.
-The definition of this function is as follows:
-
-@BeginCode CapInternalInstallAdd
-DeclareOperation( "CapInternalInstallAdd",
-                  [ IsRecord ] );
-@EndCode
-
-@InsertCode CapInternalInstallAdd
-
-The record can have the following components:
+The entries of method name records can have the following components:
 @InsertCode CAP_INTERNAL_VALID_METHOD_NAME_RECORD_COMPONENTS
 
 * pre_function (optional): A function which is used as the prefunction of the installed methods, as described above.
@@ -161,10 +151,6 @@ The record can have the following components:
 
 * compatible_with_congruence_of_morphisms (optional): Indicates if the operation is compatible with the congruence of morphisms, that is,
   if the output does not change with regard to `IsEqualForObjects` and `IsCongruentForMorphisms` if the input changes with regard to `IsEqualForObjects` and `IsCongruentForMorphisms`.
-
-Using all those entries, the operation `CapInternalInstallAdd` installs add methods as described above. It first provides plausibility
-checks for all the entries described, then installs the Add method in 4 ways, with list or functions as second argument, and
-with an optional third parameter for the weight.
 
 
 @Section Enhancing the method name record

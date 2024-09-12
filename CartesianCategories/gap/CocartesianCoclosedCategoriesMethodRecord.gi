@@ -600,17 +600,17 @@ end );
 
 CAP_INTERNAL_ENHANCE_NAME_RECORD( CARTESIAN_CLOSED_AND_COCARTESIAN_COCLOSED_CATEGORIES_METHOD_NAME_RECORD );
 
-CAP_INTERNAL_GENERATE_DOCUMENTATION_FROM_METHOD_NAME_RECORD(
+CAP_INTERNAL_GENERATE_DECLARATIONS_AND_INSTALLATIONS_FROM_METHOD_NAME_RECORD(
     CARTESIAN_CLOSED_CATEGORIES_METHOD_NAME_RECORD,
     "CartesianCategories",
-    "CartesianClosedCategories.autogen.gd", "Cartesian Categories",
+    "CartesianClosedCategoriesMethodRecord", "Cartesian Categories",
     "Add-methods"
 );
 
-CAP_INTERNAL_GENERATE_DOCUMENTATION_FROM_METHOD_NAME_RECORD(
+CAP_INTERNAL_GENERATE_DECLARATIONS_AND_INSTALLATIONS_FROM_METHOD_NAME_RECORD(
     COCARTESIAN_COCLOSED_CATEGORIES_METHOD_NAME_RECORD,
     "CartesianCategories",
-    "CocartesianCoclosedCategories.autogen.gd", "Cocartesian Categories",
+    "CocartesianCoclosedCategoriesMethodRecord", "Cocartesian Categories",
     "Add-methods"
 );
 

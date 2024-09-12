@@ -8,20 +8,24 @@
 
 ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesTensorProductOnObjectsAndTensorUnitMethodRecord.gi" );
 ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesTensorProductOnObjectsAndTensorUnit.gi" );
+ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesTensorProductOnObjectsAndTensorUnitMethodRecordInstallations.autogen.gi" );
 
 ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesMethodRecord.gi" );
 ReadPackage( "MonoidalCategories", "gap/MonoidalCategories.gi" );
+ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesMethodRecordInstallations.autogen.gi" );
 
 ## Additive Monoidal
 
 ReadPackage( "MonoidalCategories", "gap/AdditiveMonoidalCategoriesMethodRecord.gi" );
 ReadPackage( "MonoidalCategories", "gap/AdditiveMonoidalCategories.gi" );
+ReadPackage( "MonoidalCategories", "gap/AdditiveMonoidalCategoriesMethodRecordInstallations.autogen.gi" );
 
 ## Braided Monoidal
 
 ReadPackage( "MonoidalCategories", "gap/BraidedMonoidalCategoriesProperties.gi" );
 ReadPackage( "MonoidalCategories", "gap/BraidedMonoidalCategoriesMethodRecord.gi" );
 ReadPackage( "MonoidalCategories", "gap/BraidedMonoidalCategories.gi" );
+ReadPackage( "MonoidalCategories", "gap/BraidedMonoidalCategoriesMethodRecordInstallations.autogen.gi" );
 
 ## Symmetric Monoidal
 
@@ -38,6 +42,9 @@ ReadPackage( "MonoidalCategories", "gap/LeftCoclosedMonoidalCategoriesMethodReco
 ReadPackage( "MonoidalCategories", "gap/LeftClosedMonoidalCategories.gi" );
 ReadPackage( "MonoidalCategories", "gap/LeftCoclosedMonoidalCategories.gi" );
 
+ReadPackage( "MonoidalCategories", "gap/LeftClosedMonoidalCategoriesMethodRecordInstallations.autogen.gi" );
+ReadPackage( "MonoidalCategories", "gap/LeftCoclosedMonoidalCategoriesMethodRecordInstallations.autogen.gi" );
+
 ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategoriesProperties.gi" );
 ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategoriesProperties.gi" );
 
@@ -46,6 +53,9 @@ ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategoriesMethodRecord.g
 
 ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategories.gi" );
 ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategories.gi" );
+
+ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategoriesMethodRecordInstallations.autogen.gi" );
+ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategoriesMethodRecordInstallations.autogen.gi" );
 
 ## Symmetric (Co)Closed Monoidal
 
@@ -62,6 +72,9 @@ ReadPackage( "MonoidalCategories", "gap/RigidSymmetricCoclosedMonoidalCategories
 
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricClosedMonoidalCategories.gi" );
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricCoclosedMonoidalCategories.gi" );
+
+ReadPackage( "MonoidalCategories", "gap/RigidSymmetricClosedMonoidalCategoriesMethodRecordInstallations.autogen.gi" );
+ReadPackage( "MonoidalCategories", "gap/RigidSymmetricCoclosedMonoidalCategoriesMethodRecordInstallations.autogen.gi" );
 
 ## Derived Methods
 

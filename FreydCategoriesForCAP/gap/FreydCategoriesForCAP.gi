@@ -534,10 +534,10 @@ MonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectFo
 
 CAP_INTERNAL_ENHANCE_NAME_RECORD( FREYD_CATEGORIES_METHOD_NAME_RECORD );
 
-CAP_INTERNAL_GENERATE_DOCUMENTATION_FROM_METHOD_NAME_RECORD(
+CAP_INTERNAL_GENERATE_DECLARATIONS_AND_INSTALLATIONS_FROM_METHOD_NAME_RECORD(
     FREYD_CATEGORIES_METHOD_NAME_RECORD,
     "FreydCategoriesForCAP",
-    "AddFunctions.autogen.gd",
+    "MethodRecord",
     "Add Functions",
     "Available Add functions"
 );

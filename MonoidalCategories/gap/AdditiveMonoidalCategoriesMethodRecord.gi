@@ -114,10 +114,10 @@ RightDistributivityFactoringWithGivenObjects := rec(
 
 CAP_INTERNAL_ENHANCE_NAME_RECORD( DISTRIBUTIVE_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD );
 
-CAP_INTERNAL_GENERATE_DOCUMENTATION_FROM_METHOD_NAME_RECORD(
+CAP_INTERNAL_GENERATE_DECLARATIONS_AND_INSTALLATIONS_FROM_METHOD_NAME_RECORD(
     DISTRIBUTIVE_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD,
     "MonoidalCategories",
-    "AdditiveMonoidalCategories.autogen.gd",
+    "AdditiveMonoidalCategoriesMethodRecord",
     "Monoidal Categories",
     "Add-methods"
 );

@@ -597,17 +597,17 @@ end );
 
 CAP_INTERNAL_ENHANCE_NAME_RECORD( CLOSED_AND_COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD );
 
-CAP_INTERNAL_GENERATE_DOCUMENTATION_FROM_METHOD_NAME_RECORD(
+CAP_INTERNAL_GENERATE_DECLARATIONS_AND_INSTALLATIONS_FROM_METHOD_NAME_RECORD(
     CLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD,
     "MonoidalCategories",
-    "ClosedMonoidalCategories.autogen.gd", "Monoidal Categories",
+    "ClosedMonoidalCategoriesMethodRecord", "Monoidal Categories",
     "Add-methods"
 );
 
-CAP_INTERNAL_GENERATE_DOCUMENTATION_FROM_METHOD_NAME_RECORD(
+CAP_INTERNAL_GENERATE_DECLARATIONS_AND_INSTALLATIONS_FROM_METHOD_NAME_RECORD(
     COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD,
     "MonoidalCategories",
-    "CoclosedMonoidalCategories.autogen.gd", "Monoidal Categories",
+    "CoclosedMonoidalCategoriesMethodRecord", "Monoidal Categories",
     "Add-methods"
 );
 

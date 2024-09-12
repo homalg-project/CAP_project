@@ -51,6 +51,8 @@ ReadPackage( "CAP", "gap/UniversalObjects.gi" );
 
 ReadPackage( "CAP", "gap/MethodRecord.gi" );
 
+ReadPackage( "CAP", "gap/MethodRecordInstallations.autogen.gi" );
+
 ReadPackage( "CAP", "gap/PrepareFunctions.gi" );
 
 ReadPackage( "CAP", "gap/DerivedMethods.gi" );

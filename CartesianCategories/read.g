@@ -16,17 +16,26 @@ ReadPackage( "CartesianCategories", "gap/CocartesianCategoriesMethodRecord.gi" )
 ReadPackage( "CartesianCategories", "gap/CartesianCategories.gi" );
 ReadPackage( "CartesianCategories", "gap/CocartesianCategories.gi" );
 
+ReadPackage( "CartesianCategories", "gap/CartesianCategoriesMethodRecordInstallations.autogen.gi" );
+ReadPackage( "CartesianCategories", "gap/CocartesianCategoriesMethodRecordInstallations.autogen.gi" );
+
 ReadPackage( "CartesianCategories", "gap/DistributiveCartesianCategoriesMethodRecord.gi" );
 ReadPackage( "CartesianCategories", "gap/CodistributiveCocartesianCategoriesMethodRecord.gi" );
 
 ReadPackage( "CartesianCategories", "gap/DistributiveCartesianCategories.gi" );
 ReadPackage( "CartesianCategories", "gap/CodistributiveCocartesianCategories.gi" );
 
+ReadPackage( "CartesianCategories", "gap/DistributiveCartesianCategoriesMethodRecordInstallations.autogen.gi" );
+ReadPackage( "CartesianCategories", "gap/CodistributiveCocartesianCategoriesMethodRecordInstallations.autogen.gi" );
+
 ReadPackage( "CartesianCategories", "gap/BraidedCartesianCategoriesMethodRecord.gi" );
 ReadPackage( "CartesianCategories", "gap/BraidedCocartesianCategoriesMethodRecord.gi" );
 
 ReadPackage( "CartesianCategories", "gap/BraidedCartesianCategories.gi" );
 ReadPackage( "CartesianCategories", "gap/BraidedCocartesianCategories.gi" );
+
+ReadPackage( "CartesianCategories", "gap/BraidedCartesianCategoriesMethodRecordInstallations.autogen.gi" );
+ReadPackage( "CartesianCategories", "gap/BraidedCocartesianCategoriesMethodRecordInstallations.autogen.gi" );
 
 ## Cartesian Closed and Cocartesian Coclosed
 
@@ -38,6 +47,9 @@ ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategoriesMethodReco
 
 ReadPackage( "CartesianCategories", "gap/CartesianClosedCategories.gi" );
 ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategories.gi" );
+
+ReadPackage( "CartesianCategories", "gap/CartesianClosedCategoriesMethodRecordInstallations.autogen.gi" );
+ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategoriesMethodRecordInstallations.autogen.gi" );
 
 ## Derived methods
 
