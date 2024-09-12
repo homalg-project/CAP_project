@@ -1,75 +1,77 @@
   
-  [1X18  [33X[0;0YThe  CAP category of graded module presentations for CAP by use of Freyd[101X
-  [1Xcategories[133X[101X
+  [1X18 [33X[0;0YExample on tensor products in Freyd categories[133X[101X
   
   
-  [1X18.1 [33X[0;0YCAP categories[133X[101X
+  [1X18.1 [33X[0;0YTensor products for categories of rows[133X[101X
   
-  [1X18.1-1 FpGradedLeftModules[101X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XR := HomalgFieldOfRationalsInSingular() * "a,b,c,d,e,f,g,h,i,j";;[127X[104X
+    [4X[25Xgap>[125X [27XC := CategoryOfRows( R );;[127X[104X
+    [4X[25Xgap>[125X [27XT := TensorUnit( C );;[127X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( T );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
   
-  [33X[1;0Y[29X[2XFpGradedLeftModules[102X( [3XS[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya CapCategory[133X
+  [33X[0;0YWe test the naturality of the braiding.[133X
   
-  [33X[0;0YGiven  a  graded  ring  [3XS[103X, one can consider the category of f.p. graded left
-  [23XS[123X-modules, which is captured by this attribute.[133X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XR2 := DirectSum( T, T );;[127X[104X
+    [4X[25Xgap>[125X [27XR3 := DirectSum( T, R2 );;[127X[104X
+    [4X[25Xgap>[125X [27XR4 := DirectSum( R2, R2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xalpha := CategoryOfRowsMorphism( T, HomalgMatrix( "[ a, b, c, d ]", 1, 4, R ), R4 );;[127X[104X
+    [4X[25Xgap>[125X [27Xbeta := CategoryOfRowsMorphism( R2, HomalgMatrix( "[ e, f, g, h, i, j ]", 2, 3, R ), R3 );;[127X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
+    [4X[25X>[125X [27X    PreCompose( Braiding( T, R2 ), TensorProductOnMorphisms( beta, alpha ) ),[127X[104X
+    [4X[25X>[125X [27X    PreCompose( TensorProductOnMorphisms( alpha, beta ), Braiding( R4, R3 ) )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
   
-  [1X18.1-2 FpGradedRightModules[101X
+  [33X[0;0YWe  compute  the  torsion part of a f.p. module with the help of the induced
+  tensor structure on the Freyd category.[133X
   
-  [33X[1;0Y[29X[2XFpGradedRightModules[102X( [3XS[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya CapCategory[133X
-  
-  [33X[0;0YGiven  a  graded  ring [3XS[103X, one can consider the category of f.p. graded right
-  [23XS[123X-modules, which is captured by this attribute.[133X
-  
-  
-  [1X18.2 [33X[0;0YThe GAP categories for graded module presentations for CAP[133X[101X
-  
-  [1X18.2-1 IsFpGradedLeftOrRightModulesObject[101X
-  
-  [33X[1;0Y[29X[2XIsFpGradedLeftOrRightModulesObject[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe GAP category of graded left and right module presentations.[133X
-  
-  [1X18.2-2 IsFpGradedLeftModulesObject[101X
-  
-  [33X[1;0Y[29X[2XIsFpGradedLeftModulesObject[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe  GAP  category of objects in the presentation category over the category
-  of projective graded left modules.[133X
-  
-  [1X18.2-3 IsFpGradedRightModulesObject[101X
-  
-  [33X[1;0Y[29X[2XIsFpGradedRightModulesObject[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe  GAP  category of objects in the presentation category over the category
-  of projective graded right modules.[133X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XM := FreydCategoryObject( alpha );;[127X[104X
+    [4X[25Xgap>[125X [27Xmu := MorphismToBidual( M );;[127X[104X
+    [4X[25Xgap>[125X [27Xco := CoastrictionToImage( mu );;[127X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( co );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
   
   
-  [1X18.3 [33X[0;0YThe GAP categories for graded module presentation morphisms for CAP[133X[101X
+  [1X18.2 [33X[0;0YTensor products for categories of columns[133X[101X
   
-  [1X18.3-1 IsFpGradedLeftOrRightModulesMorphism[101X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XR := HomalgFieldOfRationalsInSingular() * "a,b,c,d,e,f,g,h,i,j";;[127X[104X
+    [4X[25Xgap>[125X [27XC := CategoryOfColumns( R );;[127X[104X
+    [4X[25Xgap>[125X [27XT := TensorUnit( C );;[127X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( T );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
   
-  [33X[1;0Y[29X[2XIsFpGradedLeftOrRightModulesMorphism[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  [33X[0;0YWe test the naturality of the braiding.[133X
   
-  [33X[0;0YThe GAP category of left or right module presentation morphisms[133X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XR2 := DirectSum( T, T );;[127X[104X
+    [4X[25Xgap>[125X [27XR3 := DirectSum( T, R2 );;[127X[104X
+    [4X[25Xgap>[125X [27XR4 := DirectSum( R2, R2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xalpha := CategoryOfColumnsMorphism( T, HomalgMatrix( "[ a, b, c, d ]", 4, 1, R ), R4 );;[127X[104X
+    [4X[25Xgap>[125X [27Xbeta := CategoryOfColumnsMorphism( R2, HomalgMatrix( "[ e, f, g, h, i, j ]", 3, 2, R ), R3 );;[127X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
+    [4X[25X>[125X [27X    PreCompose( Braiding( T, R2 ), TensorProductOnMorphisms( beta, alpha ) ),[127X[104X
+    [4X[25X>[125X [27X    PreCompose( TensorProductOnMorphisms( alpha, beta ), Braiding( R4, R3 ) )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
   
-  [1X18.3-2 IsFpGradedLeftModulesMorphism[101X
+  [33X[0;0YWe  compute  the  torsion part of a f.p. module with the help of the induced
+  tensor structure on the Freyd category.[133X
   
-  [33X[1;0Y[29X[2XIsFpGradedLeftModulesMorphism[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe GAP category of morphisms in the presentation category over the category
-  of projective graded left modules.[133X
-  
-  [1X18.3-3 IsFpGradedRightModulesMorphism[101X
-  
-  [33X[1;0Y[29X[2XIsFpGradedRightModulesMorphism[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe GAP category of morphisms in the presentation category over the category
-  of projective graded right modules.[133X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XM := FreydCategoryObject( alpha );;[127X[104X
+    [4X[25Xgap>[125X [27Xmu := MorphismToBidual( M );;[127X[104X
+    [4X[25Xgap>[125X [27Xco := CoastrictionToImage( mu );;[127X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( co );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
   

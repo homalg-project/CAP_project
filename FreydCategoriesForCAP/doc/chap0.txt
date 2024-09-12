@@ -6,10 +6,10 @@
         [1X Freyd categories - Formal (co)kernels for additive categories [101X
   
   
-                                   2024.09-05
+                                   2024.09-06
   
   
-                               11 September 2024
+                               12 September 2024
   
   
                                 Sebastian Posur
@@ -62,22 +62,12 @@
       1.1-3 WeakKernelEmbeddingWithGivenWeakKernelObject
       1.1-4 WeakKernelLift
       1.1-5 WeakKernelLiftWithGivenWeakKernelObject
-      1.1-6 AddWeakKernelObject
-      1.1-7 AddWeakKernelEmbedding
-      1.1-8 AddWeakKernelEmbeddingWithGivenWeakKernelObject
-      1.1-9 AddWeakKernelLift
-      1.1-10 AddWeakKernelLiftWithGivenWeakKernelObject
     1.2 [33X[0;0YWeak cokernel[133X
       1.2-1 WeakCokernelObject
       1.2-2 WeakCokernelProjection
       1.2-3 WeakCokernelProjectionWithGivenWeakCokernelObject
       1.2-4 WeakCokernelColift
       1.2-5 WeakCokernelColiftWithGivenWeakCokernelObject
-      1.2-6 AddWeakCokernelObject
-      1.2-7 AddWeakCokernelProjection
-      1.2-8 AddWeakCokernelProjectionWithGivenWeakCokernelObject
-      1.2-9 AddWeakCokernelColift
-      1.2-10 AddWeakCokernelColiftWithGivenWeakCokernelObject
     1.3 [33X[0;0YWeak bi-fiber product[133X
       1.3-1 WeakBiFiberProduct
       1.3-2 ProjectionInFirstFactorOfWeakBiFiberProduct
@@ -87,25 +77,12 @@
       1.3-6 UniversalMorphismIntoWeakBiFiberProduct
       1.3-7 UniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct
       1.3-8 WeakBiFiberProductMorphismToDirectSum
-      1.3-9 AddWeakBiFiberProduct
-      1.3-10 AddProjectionInFirstFactorOfWeakBiFiberProduct
-      1.3-11 AddProjectionInSecondFactorOfWeakBiFiberProduct
-      1.3-12 AddProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct
-      1.3-13 AddProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct
-      1.3-14 AddUniversalMorphismIntoWeakBiFiberProduct
-      1.3-15 AddUniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct
-      1.3-16 AddWeakBiFiberProductMorphismToDirectSum
     1.4 [33X[0;0YBiased weak fiber product[133X
       1.4-1 BiasedWeakFiberProduct
       1.4-2 ProjectionOfBiasedWeakFiberProduct
       1.4-3 ProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct
       1.4-4 UniversalMorphismIntoBiasedWeakFiberProduct
       1.4-5 UniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct
-      1.4-6 AddBiasedWeakFiberProduct
-      1.4-7 AddProjectionOfBiasedWeakFiberProduct
-      1.4-8 AddProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct
-      1.4-9 AddUniversalMorphismIntoBiasedWeakFiberProduct
-      1.4-10 AddUniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct
     1.5 [33X[0;0YWeak bi-pushout[133X
       1.5-1 WeakBiPushout
       1.5-2 InjectionOfFirstCofactorOfWeakBiPushout
@@ -115,25 +92,12 @@
       1.5-6 UniversalMorphismFromWeakBiPushout
       1.5-7 UniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout
       1.5-8 DirectSumMorphismToWeakBiPushout
-      1.5-9 AddWeakBiPushout
-      1.5-10 AddInjectionOfFirstCofactorOfWeakBiPushout
-      1.5-11 AddInjectionOfSecondCofactorOfWeakBiPushout
-      1.5-12 AddInjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout
-      1.5-13 AddInjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout
-      1.5-14 AddUniversalMorphismFromWeakBiPushout
-      1.5-15 AddUniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout
-      1.5-16 AddDirectSumMorphismToWeakBiPushout
     1.6 [33X[0;0YBiased weak pushout[133X
       1.6-1 BiasedWeakPushout
       1.6-2 InjectionOfBiasedWeakPushout
       1.6-3 InjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout
       1.6-4 UniversalMorphismFromBiasedWeakPushout
       1.6-5 UniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout
-      1.6-6 AddBiasedWeakPushout
-      1.6-7 AddInjectionOfBiasedWeakPushout
-      1.6-8 AddInjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout
-      1.6-9 AddUniversalMorphismFromBiasedWeakPushout
-      1.6-10 AddUniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout
     1.7 [33X[0;0YAbelian constructions[133X
       1.7-1 SomeProjectiveObjectForKernelObject
       1.7-2 EpimorphismFromSomeProjectiveObjectForKernelObject
@@ -141,12 +105,6 @@
       1.7-4 SomeInjectiveObjectForCokernelObject
       1.7-5 MonomorphismToSomeInjectiveObjectForCokernelObject
       1.7-6 MonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject
-      1.7-7 AddSomeProjectiveObjectForKernelObject
-      1.7-8 AddSomeInjectiveObjectForCokernelObject
-      1.7-9 AddEpimorphismFromSomeProjectiveObjectForKernelObject
-      1.7-10 AddMonomorphismToSomeInjectiveObjectForCokernelObject
-      1.7-11 AddEpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject
-      1.7-12 AddMonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject
   2 [33X[0;0YAdditive closure[133X
     2.1 [33X[0;0YGAP Categories[133X
       2.1-1 IsAdditiveClosureCategory
@@ -330,51 +288,95 @@
     12.20 [33X[0;0YTests[133X
     12.21 [33X[0;0YCategory of relations[133X
     12.22 [33X[0;0YRings as Ab-categories[133X
-  13 [33X[0;0YLinear closure of a category[133X
-    13.1 [33X[0;0YFunctors[133X
-      13.1-1 ExtendFunctorToLinearClosureOfSource
-      13.1-2 ExtendFunctorToLinearClosureOfSource
-  14 [33X[0;0YRings as categories[133X
-    14.1 [33X[0;0YRandom methods[133X
-      14.1-1 RandomObjectByList
-      14.1-2 RandomObjectByInteger
-      14.1-3 RandomMorphismWithFixedSourceAndRangeByList
-      14.1-4 RandomMorphismWithFixedSourceAndRangeByInteger
-      14.1-5 RandomMorphismWithFixedSourceByList
-      14.1-6 RandomMorphismWithFixedSourceByInteger
-      14.1-7 RandomMorphismWithFixedRangeByList
-      14.1-8 RandomMorphismWithFixedRangeByInteger
-      14.1-9 RandomMorphismByList
-      14.1-10 RandomMorphismByInteger
-  15 [33X[0;0YExamples on graded rows and columns[133X
-    15.1 [33X[0;0YFreyd category of graded rows[133X
-    15.2 [33X[0;0YFreyd category of graded columns[133X
-    15.3 [33X[0;0YConstructors of objects and reduction of degree lists[133X
-    15.4 [33X[0;0YConstructors of morphisms[133X
-    15.5 [33X[0;0YThe GAP categories[133X
-    15.6 [33X[0;0YA few categorical constructions for graded rows[133X
-    15.7 [33X[0;0YA few categorical constructions for graded columns[133X
-    15.8 [33X[0;0YAdditional examples on monoidal structure for graded rows[133X
-    15.9 [33X[0;0YAdditional examples on monoidal structure for graded columns[133X
-    15.10 [33X[0;0YExamples to test Tools methods in graded rows/cols[133X
-  16 [33X[0;0YCategory of rows and columns over a field[133X
-    16.1 [33X[0;0YAbelian operations for rows[133X
-  17 [33X[0;0YExample on tensor products in Freyd categories[133X
-    17.1 [33X[0;0YTensor products for categories of rows[133X
-    17.2 [33X[0;0YTensor products for categories of columns[133X
-  18 [33X[0;0YThe CAP category of graded module presentations for CAP by use of Freyd
+  13 [33X[0;0YAdd Functions[133X
+    13.1 [33X[0;0YAvailable Add functions[133X
+      13.1-1 AddBiasedWeakFiberProduct
+      13.1-2 AddBiasedWeakPushout
+      13.1-3 AddDirectSumMorphismToWeakBiPushout
+      13.1-4 AddEpimorphismFromSomeProjectiveObjectForKernelObject
+      13.1-5 AddEpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject
+      13.1-6 AddInjectionOfBiasedWeakPushout
+      13.1-7 AddInjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout
+      13.1-8 AddInjectionOfFirstCofactorOfWeakBiPushout
+      13.1-9 AddInjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout
+      13.1-10 AddInjectionOfSecondCofactorOfWeakBiPushout
+      13.1-11 AddInjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout
+      13.1-12 AddMonomorphismToSomeInjectiveObjectForCokernelObject
+      13.1-13 AddMonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject
+      13.1-14 AddProjectionInFirstFactorOfWeakBiFiberProduct
+      13.1-15 AddProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct
+      13.1-16 AddProjectionInSecondFactorOfWeakBiFiberProduct
+      13.1-17 AddProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct
+      13.1-18 AddProjectionOfBiasedWeakFiberProduct
+      13.1-19 AddProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct
+      13.1-20 AddSomeInjectiveObjectForCokernelObject
+      13.1-21 AddSomeProjectiveObjectForKernelObject
+      13.1-22 AddUniversalMorphismFromBiasedWeakPushout
+      13.1-23 AddUniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout
+      13.1-24 AddUniversalMorphismFromWeakBiPushout
+      13.1-25 AddUniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout
+      13.1-26 AddUniversalMorphismIntoBiasedWeakFiberProduct
+      13.1-27 AddUniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct
+      13.1-28 AddUniversalMorphismIntoWeakBiFiberProduct
+      13.1-29 AddUniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct
+      13.1-30 AddWeakBiFiberProduct
+      13.1-31 AddWeakBiFiberProductMorphismToDirectSum
+      13.1-32 AddWeakBiPushout
+      13.1-33 AddWeakCokernelColift
+      13.1-34 AddWeakCokernelColiftWithGivenWeakCokernelObject
+      13.1-35 AddWeakCokernelObject
+      13.1-36 AddWeakCokernelProjection
+      13.1-37 AddWeakCokernelProjectionWithGivenWeakCokernelObject
+      13.1-38 AddWeakKernelEmbedding
+      13.1-39 AddWeakKernelEmbeddingWithGivenWeakKernelObject
+      13.1-40 AddWeakKernelLift
+      13.1-41 AddWeakKernelLiftWithGivenWeakKernelObject
+      13.1-42 AddWeakKernelObject
+  14 [33X[0;0YLinear closure of a category[133X
+    14.1 [33X[0;0YFunctors[133X
+      14.1-1 ExtendFunctorToLinearClosureOfSource
+      14.1-2 ExtendFunctorToLinearClosureOfSource
+  15 [33X[0;0YRings as categories[133X
+    15.1 [33X[0;0YRandom methods[133X
+      15.1-1 RandomObjectByList
+      15.1-2 RandomObjectByInteger
+      15.1-3 RandomMorphismWithFixedSourceAndRangeByList
+      15.1-4 RandomMorphismWithFixedSourceAndRangeByInteger
+      15.1-5 RandomMorphismWithFixedSourceByList
+      15.1-6 RandomMorphismWithFixedSourceByInteger
+      15.1-7 RandomMorphismWithFixedRangeByList
+      15.1-8 RandomMorphismWithFixedRangeByInteger
+      15.1-9 RandomMorphismByList
+      15.1-10 RandomMorphismByInteger
+  16 [33X[0;0YExamples on graded rows and columns[133X
+    16.1 [33X[0;0YFreyd category of graded rows[133X
+    16.2 [33X[0;0YFreyd category of graded columns[133X
+    16.3 [33X[0;0YConstructors of objects and reduction of degree lists[133X
+    16.4 [33X[0;0YConstructors of morphisms[133X
+    16.5 [33X[0;0YThe GAP categories[133X
+    16.6 [33X[0;0YA few categorical constructions for graded rows[133X
+    16.7 [33X[0;0YA few categorical constructions for graded columns[133X
+    16.8 [33X[0;0YAdditional examples on monoidal structure for graded rows[133X
+    16.9 [33X[0;0YAdditional examples on monoidal structure for graded columns[133X
+    16.10 [33X[0;0YExamples to test Tools methods in graded rows/cols[133X
+  17 [33X[0;0YCategory of rows and columns over a field[133X
+    17.1 [33X[0;0YAbelian operations for rows[133X
+  18 [33X[0;0YExample on tensor products in Freyd categories[133X
+    18.1 [33X[0;0YTensor products for categories of rows[133X
+    18.2 [33X[0;0YTensor products for categories of columns[133X
+  19 [33X[0;0YThe CAP category of graded module presentations for CAP by use of Freyd
   categories[133X
-    18.1 [33X[0;0YCAP categories[133X
-      18.1-1 FpGradedLeftModules
-      18.1-2 FpGradedRightModules
-    18.2 [33X[0;0YThe GAP categories for graded module presentations for CAP[133X
-      18.2-1 IsFpGradedLeftOrRightModulesObject
-      18.2-2 IsFpGradedLeftModulesObject
-      18.2-3 IsFpGradedRightModulesObject
-    18.3 [33X[0;0YThe GAP categories for graded module presentation morphisms for CAP[133X
-      18.3-1 IsFpGradedLeftOrRightModulesMorphism
-      18.3-2 IsFpGradedLeftModulesMorphism
-      18.3-3 IsFpGradedRightModulesMorphism
+    19.1 [33X[0;0YCAP categories[133X
+      19.1-1 FpGradedLeftModules
+      19.1-2 FpGradedRightModules
+    19.2 [33X[0;0YThe GAP categories for graded module presentations for CAP[133X
+      19.2-1 IsFpGradedLeftOrRightModulesObject
+      19.2-2 IsFpGradedLeftModulesObject
+      19.2-3 IsFpGradedRightModulesObject
+    19.3 [33X[0;0YThe GAP categories for graded module presentation morphisms for CAP[133X
+      19.3-1 IsFpGradedLeftOrRightModulesMorphism
+      19.3-2 IsFpGradedLeftModulesMorphism
+      19.3-3 IsFpGradedRightModulesMorphism
   
   
   [32X
