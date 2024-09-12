@@ -6,7 +6,7 @@
         [1X Freyd categories - Formal (co)kernels for additive categories [101X
   
   
-                                   2024.09-06
+                                   2024.09-07
   
   
                                12 September 2024
@@ -288,54 +288,54 @@
     12.20 [33X[0;0YTests[133X
     12.21 [33X[0;0YCategory of relations[133X
     12.22 [33X[0;0YRings as Ab-categories[133X
-  13 [33X[0;0YAdd Functions[133X
-    13.1 [33X[0;0YAvailable Add functions[133X
-      13.1-1 AddBiasedWeakFiberProduct
-      13.1-2 AddBiasedWeakPushout
-      13.1-3 AddDirectSumMorphismToWeakBiPushout
-      13.1-4 AddEpimorphismFromSomeProjectiveObjectForKernelObject
-      13.1-5 AddEpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject
-      13.1-6 AddInjectionOfBiasedWeakPushout
-      13.1-7 AddInjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout
-      13.1-8 AddInjectionOfFirstCofactorOfWeakBiPushout
-      13.1-9 AddInjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout
-      13.1-10 AddInjectionOfSecondCofactorOfWeakBiPushout
-      13.1-11 AddInjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout
-      13.1-12 AddMonomorphismToSomeInjectiveObjectForCokernelObject
-      13.1-13 AddMonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject
-      13.1-14 AddProjectionInFirstFactorOfWeakBiFiberProduct
-      13.1-15 AddProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct
-      13.1-16 AddProjectionInSecondFactorOfWeakBiFiberProduct
-      13.1-17 AddProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct
-      13.1-18 AddProjectionOfBiasedWeakFiberProduct
-      13.1-19 AddProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct
-      13.1-20 AddSomeInjectiveObjectForCokernelObject
-      13.1-21 AddSomeProjectiveObjectForKernelObject
-      13.1-22 AddUniversalMorphismFromBiasedWeakPushout
-      13.1-23 AddUniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout
-      13.1-24 AddUniversalMorphismFromWeakBiPushout
-      13.1-25 AddUniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout
-      13.1-26 AddUniversalMorphismIntoBiasedWeakFiberProduct
-      13.1-27 AddUniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct
-      13.1-28 AddUniversalMorphismIntoWeakBiFiberProduct
-      13.1-29 AddUniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct
-      13.1-30 AddWeakBiFiberProduct
-      13.1-31 AddWeakBiFiberProductMorphismToDirectSum
-      13.1-32 AddWeakBiPushout
-      13.1-33 AddWeakCokernelColift
-      13.1-34 AddWeakCokernelColiftWithGivenWeakCokernelObject
-      13.1-35 AddWeakCokernelObject
-      13.1-36 AddWeakCokernelProjection
-      13.1-37 AddWeakCokernelProjectionWithGivenWeakCokernelObject
-      13.1-38 AddWeakKernelEmbedding
-      13.1-39 AddWeakKernelEmbeddingWithGivenWeakKernelObject
-      13.1-40 AddWeakKernelLift
-      13.1-41 AddWeakKernelLiftWithGivenWeakKernelObject
-      13.1-42 AddWeakKernelObject
-  14 [33X[0;0YLinear closure of a category[133X
-    14.1 [33X[0;0YFunctors[133X
-      14.1-1 ExtendFunctorToLinearClosureOfSource
-      14.1-2 ExtendFunctorToLinearClosureOfSource
+  13 [33X[0;0YLinear closure of a category[133X
+    13.1 [33X[0;0YFunctors[133X
+      13.1-1 ExtendFunctorToLinearClosureOfSource
+      13.1-2 ExtendFunctorToLinearClosureOfSource
+  14 [33X[0;0YAdd Functions[133X
+    14.1 [33X[0;0YAvailable Add functions[133X
+      14.1-1 AddBiasedWeakFiberProduct
+      14.1-2 AddBiasedWeakPushout
+      14.1-3 AddDirectSumMorphismToWeakBiPushout
+      14.1-4 AddEpimorphismFromSomeProjectiveObjectForKernelObject
+      14.1-5 AddEpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject
+      14.1-6 AddInjectionOfBiasedWeakPushout
+      14.1-7 AddInjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout
+      14.1-8 AddInjectionOfFirstCofactorOfWeakBiPushout
+      14.1-9 AddInjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout
+      14.1-10 AddInjectionOfSecondCofactorOfWeakBiPushout
+      14.1-11 AddInjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout
+      14.1-12 AddMonomorphismToSomeInjectiveObjectForCokernelObject
+      14.1-13 AddMonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject
+      14.1-14 AddProjectionInFirstFactorOfWeakBiFiberProduct
+      14.1-15 AddProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct
+      14.1-16 AddProjectionInSecondFactorOfWeakBiFiberProduct
+      14.1-17 AddProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct
+      14.1-18 AddProjectionOfBiasedWeakFiberProduct
+      14.1-19 AddProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct
+      14.1-20 AddSomeInjectiveObjectForCokernelObject
+      14.1-21 AddSomeProjectiveObjectForKernelObject
+      14.1-22 AddUniversalMorphismFromBiasedWeakPushout
+      14.1-23 AddUniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout
+      14.1-24 AddUniversalMorphismFromWeakBiPushout
+      14.1-25 AddUniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout
+      14.1-26 AddUniversalMorphismIntoBiasedWeakFiberProduct
+      14.1-27 AddUniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct
+      14.1-28 AddUniversalMorphismIntoWeakBiFiberProduct
+      14.1-29 AddUniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct
+      14.1-30 AddWeakBiFiberProduct
+      14.1-31 AddWeakBiFiberProductMorphismToDirectSum
+      14.1-32 AddWeakBiPushout
+      14.1-33 AddWeakCokernelColift
+      14.1-34 AddWeakCokernelColiftWithGivenWeakCokernelObject
+      14.1-35 AddWeakCokernelObject
+      14.1-36 AddWeakCokernelProjection
+      14.1-37 AddWeakCokernelProjectionWithGivenWeakCokernelObject
+      14.1-38 AddWeakKernelEmbedding
+      14.1-39 AddWeakKernelEmbeddingWithGivenWeakKernelObject
+      14.1-40 AddWeakKernelLift
+      14.1-41 AddWeakKernelLiftWithGivenWeakKernelObject
+      14.1-42 AddWeakKernelObject
   15 [33X[0;0YRings as categories[133X
     15.1 [33X[0;0YRandom methods[133X
       15.1-1 RandomObjectByList
