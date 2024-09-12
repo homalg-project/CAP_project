@@ -12,7 +12,7 @@ InstallMethodForCompilerForCAP( AsObjectInWrapperCategory,
   function( D, object )
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( object, ModelingCategory( D ), [ "the object given to AsObjectInWrapperCategory" ] );
+    CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( object, ModelingCategory( D ), {} -> "the object given to AsObjectInWrapperCategory" );
     
     return CreateCapCategoryObjectWithAttributes( D,
                                                   UnderlyingCell, object );
@@ -38,7 +38,7 @@ InstallOtherMethodForCompilerForCAP( AsMorphismInWrapperCategory,
   function( D, source, morphism, range )
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( morphism, ModelingCategory( D ), [ "the morphism given to AsMorphismInWrapperCategory" ] );
+    CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( morphism, ModelingCategory( D ), {} -> "the morphism given to AsMorphismInWrapperCategory" );
     
     if not IsEqualForObjects( ModelingCategory( D ), ObjectDatum( D, source ), Source( morphism ) ) then
         Error( "ObjectDatum( source ) and Source( morphism ) do not coincide\n" );

@@ -381,6 +381,8 @@ InstallGlobalFunction( "CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER",
   function( data_type, human_readable_identifier_getter )
     local generic_help_string, filter, asserts_value_is_of_element_type, assert_value_is_of_element_type;
     
+    Assert( 0, IsFunction( human_readable_identifier_getter ) );
+    
     generic_help_string := " You can access the value via the local variable 'value' in a break loop.";
     
     filter := data_type.filter;
@@ -1946,6 +1948,8 @@ InstallGlobalFunction( CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY,
   function( cell, category, human_readable_identifier_getter )
     local generic_help_string;
     
+    Assert( 0, IsFunction( human_readable_identifier_getter ) );
+    
     generic_help_string := " You can access the category cell and category via the local variables 'cell' and 'category' in a break loop.";
     
     if not IsCapCategoryCell( cell ) then
@@ -1967,6 +1971,8 @@ InstallGlobalFunction( CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY,
   
   function( object, category, human_readable_identifier_getter )
     local generic_help_string;
+    
+    Assert( 0, IsFunction( human_readable_identifier_getter ) );
     
     generic_help_string := " You can access the object and category via the local variables 'object' and 'category' in a break loop.";
     
@@ -1993,6 +1999,8 @@ InstallGlobalFunction( CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY,
   
   function( morphism, category, human_readable_identifier_getter )
     local generic_help_string;
+    
+    Assert( 0, IsFunction( human_readable_identifier_getter ) );
     
     generic_help_string := " You can access the morphism and category via the local variables 'morphism' and 'category' in a break loop.";
     
@@ -2031,6 +2039,8 @@ InstallGlobalFunction( CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY,
   
   function( two_cell, category, human_readable_identifier_getter )
     local generic_help_string;
+    
+    Assert( 0, IsFunction( human_readable_identifier_getter ) );
     
     generic_help_string := " You can access the 2-cell and category via the local variables 'two_cell' and 'category' in a break loop.";
     
