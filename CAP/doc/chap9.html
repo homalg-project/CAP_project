@@ -146,7 +146,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING</code>( <var class="Arg">filter_string</var>[, <var class="Arg">category</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a record</p>
 
-<p>The function takes one of the strings listed under <code class="code">filter_list</code> in <a href="chap7.html#X7D83FC527EA66166"><span class="RefLink">7.3</span></a> as input and returns the corresponding data type (see <code class="func">CapJitInferredDataTypes</code> (<a href="https://homalg-project.github.io/CAP_project/CompilerForCAP/doc/chap2.html#X821BE2CE7C30674E"><span class="RefLink">CompilerForCAP: CapJitInferredDataTypes</span></a>) for details). If no category is given, data types with generic filters (<code class="code">IsCapCategoryObject</code>, <code class="code">IsCapCategoryMorphism</code> etc.) are returned. However, those cannot be used in the context of <code class="code">CompilerForCAP</code> because the component <code class="code">category</code> cannot be set in this case.</p>
+<p>The function takes one of the strings listed under <code class="code">filter_list</code> in <a href="chap7.html#X7E1C4F9D80329FEC"><span class="RefLink">7.3</span></a> as input and returns the corresponding data type (see <code class="func">CapJitInferredDataTypes</code> (<a href="https://homalg-project.github.io/CAP_project/CompilerForCAP/doc/chap2.html#X821BE2CE7C30674E"><span class="RefLink">CompilerForCAP: CapJitInferredDataTypes</span></a>) for details). If no category is given, data types with generic filters (<code class="code">IsCapCategoryObject</code>, <code class="code">IsCapCategoryMorphism</code> etc.) are returned. However, those cannot be used in the context of <code class="code">CompilerForCAP</code> because the component <code class="code">category</code> cannot be set in this case.</p>
 
 <p><a id="X7E03E1EB7E0505C9" name="X7E03E1EB7E0505C9"></a></p>
 
@@ -164,7 +164,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_REPLACED_STRING_WITH_FILTER</code>( <var class="Arg">filter_string</var>[, <var class="Arg">category</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a filter</p>
 
-<p>The function takes one of the strings listed under <code class="code">filter_list</code> in <a href="chap7.html#X7D83FC527EA66166"><span class="RefLink">7.3</span></a> as input. The corresponding filter of the category <var class="Arg">category</var> is returned. If no category is given, generic filters (<code class="code">IsCapCategoryObject</code>, <code class="code">IsCapCategoryMorphism</code> etc.) are used.</p>
+<p>The function takes one of the strings listed under <code class="code">filter_list</code> in <a href="chap7.html#X7E1C4F9D80329FEC"><span class="RefLink">7.3</span></a> as input. The corresponding filter of the category <var class="Arg">category</var> is returned. If no category is given, generic filters (<code class="code">IsCapCategoryObject</code>, <code class="code">IsCapCategoryMorphism</code> etc.) are used.</p>
 
 <p><a id="X7F3826497806B627" name="X7F3826497806B627"></a></p>
 
@@ -265,7 +265,7 @@
 <h5>9.2-17 IsSpecializationOfFilter</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsSpecializationOfFilter</code>( <var class="Arg">filter1</var>, <var class="Arg">filter2</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Checks if <var class="Arg">filter2</var> is more special than <var class="Arg">filter1</var>, i.e. if <var class="Arg">filter2</var> implies <var class="Arg">filter1</var>. <var class="Arg">filter1</var> and/or <var class="Arg">filter2</var> can also be one of the strings listed under <code class="code">filter_list</code> in <a href="chap7.html#X7D83FC527EA66166"><span class="RefLink">7.3</span></a> and in this case are replaced by the corresponding filters (e.g. <code class="code">IsCapCategory</code>, <code class="code">IsCapCategoryObject</code>, <code class="code">IsCapCategoryMorphism</code>, ...).</p>
+<p>Checks if <var class="Arg">filter2</var> is more special than <var class="Arg">filter1</var>, i.e. if <var class="Arg">filter2</var> implies <var class="Arg">filter1</var>. <var class="Arg">filter1</var> and/or <var class="Arg">filter2</var> can also be one of the strings listed under <code class="code">filter_list</code> in <a href="chap7.html#X7E1C4F9D80329FEC"><span class="RefLink">7.3</span></a> and in this case are replaced by the corresponding filters (e.g. <code class="code">IsCapCategory</code>, <code class="code">IsCapCategoryObject</code>, <code class="code">IsCapCategoryMorphism</code>, ...).</p>
 
 <p><a id="X7E756CEB799322B0" name="X7E756CEB799322B0"></a></p>
 

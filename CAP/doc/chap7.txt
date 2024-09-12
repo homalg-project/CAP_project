@@ -112,18 +112,9 @@
   primitive value, might be available.[133X
   
   
-  [1X7.3 [33X[0;0YInstallAdd Function[133X[101X
+  [1X7.3 [33X[0;0YMethod name record entries[133X[101X
   
-  [33X[0;0YAlmost   all   Add   methods   in  the  CAP  kernel  are  installed  by  the
-  [10XCapInternalInstallAdd[110X  operation.  The  definition  of  this  function is as
-  follows:[133X
-  
-  [4X[32X  Code  [32X[104X
-    [4XDeclareOperation( "CapInternalInstallAdd",[104X
-    [4X                  [ IsRecord ] );[104X
-  [4X[32X[104X
-  
-  [33X[0;0YThe record can have the following components:[133X
+  [33X[0;0YThe entries of method name records can have the following components:[133X
   
   [4X[32X  Code  [32X[104X
     [4X    [[104X
@@ -278,18 +269,6 @@
         the  output  does  not  change  with  regard  to [10XIsEqualForObjects[110X and
         [10XIsCongruentForMorphisms[110X   if   the   input   changes  with  regard  to
         [10XIsEqualForObjects[110X and [10XIsCongruentForMorphisms[110X.[133X
-  
-  [33X[0;0YUsing  all  those  entries, the operation [10XCapInternalInstallAdd[110X installs add
-  methods  as  described  above. It first provides plausibility checks for all
-  the  entries described, then installs the Add method in 4 ways, with list or
-  functions  as  second argument, and with an optional third parameter for the
-  weight.[133X
-  
-  [1X7.3-1 CapInternalInstallAdd[101X
-  
-  [33X[1;0Y[29X[2XCapInternalInstallAdd[102X( [3Xrecord[103X ) [32X function[133X
-  
-  [33X[0;0YSee [14X7.3[114X.[133X
   
   
   [1X7.4 [33X[0;0YEnhancing the method name record[133X[101X

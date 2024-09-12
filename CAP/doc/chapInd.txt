@@ -641,7 +641,6 @@
       for IsString, IsCapCategoryAsCatObject, IsCapCategoryAsCatObject 5.4-1 
       for IsString, IsList, IsCapCategory 5.4-2 
       for IsString, IsList, IsCapCategoryAsCatObject 5.4-2 
-  [2XCapInternalInstallAdd[102X 7.3-1 
   [2XCapJitAddKnownMethod[102X 9.2-21 
   [2XCapJitAddTypeSignature[102X 9.2-22 
   [2XCapJitDataTypeOfCategory[102X 9.2-26 

@@ -31,11 +31,9 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X85E3D9E07B8BC960">7.2 <span class="Heading">Add Method</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X7D83FC527EA66166">7.3 <span class="Heading">InstallAdd Function</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X7E1C4F9D80329FEC">7.3 <span class="Heading">Method name record entries</span></a>
 </span>
-<div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7AFC15FE81D083CB">7.3-1 CapInternalInstallAdd</a></span>
-</div></div>
+</div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X844CF4D187364721">7.4 <span class="Heading">Enhancing the method name record</span></a>
 </span>
 </div>
@@ -442,19 +440,11 @@ DeclareOperation( "AddSomeFunc",
 </ul>
 <p>After calling an add method, the corresponding operation is available in the category. Also, some derivations, which are triggered by the setting of the primitive value, might be available.</p>
 
-<p><a id="X7D83FC527EA66166" name="X7D83FC527EA66166"></a></p>
+<p><a id="X7E1C4F9D80329FEC" name="X7E1C4F9D80329FEC"></a></p>
 
-<h4>7.3 <span class="Heading">InstallAdd Function</span></h4>
+<h4>7.3 <span class="Heading">Method name record entries</span></h4>
 
-<p>Almost all Add methods in the CAP kernel are installed by the <code class="code">CapInternalInstallAdd</code> operation. The definition of this function is as follows:</p>
-
-
-<div class="example"><pre>
-DeclareOperation( "CapInternalInstallAdd",
-                  [ IsRecord ] );
-</pre></div>
-
-<p>The record can have the following components:</p>
+<p>The entries of method name records can have the following components:</p>
 
 
 <div class="example"><pre>
@@ -646,15 +636,6 @@ DeclareOperation( "CapInternalInstallAdd",
 
 </li>
 </ul>
-<p>Using all those entries, the operation <code class="code">CapInternalInstallAdd</code> installs add methods as described above. It first provides plausibility checks for all the entries described, then installs the Add method in 4 ways, with list or functions as second argument, and with an optional third parameter for the weight.</p>
-
-<p><a id="X7AFC15FE81D083CB" name="X7AFC15FE81D083CB"></a></p>
-
-<h5>7.3-1 CapInternalInstallAdd</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapInternalInstallAdd</code>( <var class="Arg">record</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>See <a href="chap7_mj.html#X7D83FC527EA66166"><span class="RefLink">7.3</span></a>.</p>
-
 <p><a id="X844CF4D187364721" name="X844CF4D187364721"></a></p>
 
 <h4>7.4 <span class="Heading">Enhancing the method name record</span></h4>

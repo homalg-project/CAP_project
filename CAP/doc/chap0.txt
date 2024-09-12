@@ -6,7 +6,7 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2024.09-11
+                                   2024.09-12
   
   
                                12 September 2024
@@ -577,8 +577,7 @@
   7 [33X[0;0YAdd Functions[133X
     7.1 [33X[0;0YFunctions Installed by Add[133X
     7.2 [33X[0;0YAdd Method[133X
-    7.3 [33X[0;0YInstallAdd Function[133X
-      7.3-1 CapInternalInstallAdd
+    7.3 [33X[0;0YMethod name record entries[133X
     7.4 [33X[0;0YEnhancing the method name record[133X
     7.5 [33X[0;0YPrepare functions[133X
       7.5-1 CAPOperationPrepareFunction
