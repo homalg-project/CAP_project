@@ -6,6 +6,8 @@
 
 ReadPackage( "FreydCategoriesForCAP", "gap/FreydCategoriesForCAP.gd" );
 
+ReadPackage( "FreydCategoriesForCAP", "gap/AddFunctions.autogen.gd" );
+
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfRows.gd" );
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfRows_as_AdditiveClosure_RingAsCategory.gd" );
 
