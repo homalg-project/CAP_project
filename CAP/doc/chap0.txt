@@ -6,7 +6,7 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2024.09-13
+                                   2024.09-14
   
   
                                13 September 2024
@@ -1061,8 +1061,8 @@
       16.2-2 TerminalCategoryWithMultipleObjects
       16.2-3 CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY
     16.3 [33X[0;0YAttributes[133X
-      16.3-1 UniqueObject
-      16.3-2 UniqueMorphism
+      16.3-1 TerminalCategoryWithSingleObjectUniqueObject
+      16.3-2 TerminalCategoryWithSingleObjectUniqueMorphism
       16.3-3 FunctorFromTerminalCategory
   
   

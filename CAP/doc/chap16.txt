@@ -82,16 +82,16 @@
   
   [1X16.3 [33X[0;0YAttributes[133X[101X
   
-  [1X16.3-1 UniqueObject[101X
+  [1X16.3-1 TerminalCategoryWithSingleObjectUniqueObject[101X
   
-  [33X[1;0Y[29X[2XUniqueObject[102X( [3Xarg[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XTerminalCategoryWithSingleObjectUniqueObject[102X( [3Xarg[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
   
   [33X[0;0YThe unique object in a terminal category with a single object.[133X
   
-  [1X16.3-2 UniqueMorphism[101X
+  [1X16.3-2 TerminalCategoryWithSingleObjectUniqueMorphism[101X
   
-  [33X[1;0Y[29X[2XUniqueMorphism[102X( [3Xarg[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XTerminalCategoryWithSingleObjectUniqueMorphism[102X( [3Xarg[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
   
   [33X[0;0YThe unique morphism in a terminal category with a single object.[133X

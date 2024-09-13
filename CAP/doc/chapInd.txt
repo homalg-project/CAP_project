@@ -1152,6 +1152,8 @@
   [2XTargetOperation[102X, for IsDerivedMethod 8.2-8 
   [2XTerminalCategoryWithMultipleObjects[102X 16.2-2 
   [2XTerminalCategoryWithSingleObject[102X 16.2-1 
+  [2XTerminalCategoryWithSingleObjectUniqueMorphism[102X, for IsCapTerminalCategoryWithSingleObject 16.3-2 
+  [2XTerminalCategoryWithSingleObjectUniqueObject[102X, for IsCapTerminalCategoryWithSingleObject 16.3-1 
   [2XTerminalObject[102X, for IsCapCategory 6.4-1 
       for IsCapCategoryCell 6.4-2 
   [2XTerminalObjectFunctorial[102X, for IsCapCategory 6.4-5 
@@ -1163,8 +1165,6 @@
   [2XTwoCellFilter[102X, for IsCapCategory 1.4-5 
   [2XUnderlyingCell[102X, for IsWrapperCapCategoryMorphism 13.2-2 
       for IsWrapperCapCategoryObject 13.2-1 
-  [2XUniqueMorphism[102X, for IsCapTerminalCategoryWithSingleObject 16.3-2 
-  [2XUniqueObject[102X, for IsCapTerminalCategoryWithSingleObject 16.3-1 
   [2XUniversalMorphismFromCoequalizer[102X, for IsCapCategoryObject, IsList, IsCapCategoryObject, IsCapCategoryMorphism 6.10-7 
   [2XUniversalMorphismFromCoequalizerWithGivenCoequalizer[102X, for IsCapCategoryObject, IsList, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 6.10-8 
   [2XUniversalMorphismFromCoproduct[102X, for IsList, IsCapCategoryObject, IsList 6.7-6 
