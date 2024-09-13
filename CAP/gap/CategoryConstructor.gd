@@ -36,10 +36,10 @@ DeclareInfoClass( "InfoCategoryConstructor" );
 #!  * `morphism_constructor` (optional): function added as an installation of <Ref Oper="MorphismConstructor" Label="for IsCapCategoryObject, IsObject, IsCapCategoryObject" /> to the category
 #!  * `morphism_datum` (optional): function added as an installation of <Ref Oper="MorphismDatum" Label="for IsCapCategoryMorphism" /> to the category
 #!  * `list_of_operations_to_install` (mandatory): a list of names of &CAP; operations which should be installed for the category
-#!  * `operation_weights` (optional): a record mapping operations in `list_of_operations_to_install` to their weights
 #!  * `is_computable` (optional): whether the category can decide `IsCongruentForMorphisms`
 #!  * `supports_empty_limits` (optional): whether the category supports empty lists in inputs to operations of limits and colimits
 #!  * `underlying_category_getter_string` (optional): see below
+#!  * `underlying_category` (optional): see below
 #!  * `underlying_object_getter_string` (optional): see below
 #!  * `underlying_morphism_getter_string` (optional): see below
 #!  * `top_object_getter_string` (optional): see below
@@ -53,8 +53,9 @@ DeclareInfoClass( "InfoCategoryConstructor" );
 #!
 #!  The values of the keys `create_func_*` should be either the string `"default`" or functions which accept the category and the name of a &CAP; operation
 #!  of the corresponding `return_type`. Values for return types occuring for operations in `list_of_operations_to_install` are mandatory.
-#!  The functions must return strings, which (after some replacements described below) will be evaluated and added as an installation of the corresponding operation to the category.
-#!  The value `"default"` chooses a suitable default string, see the implementation for details.
+#!  The functions must return either strings or pairs of a string and an integer:
+#!  The strings (after some replacements described below) will be evaluated and added as installations of the corresponding operations to the category with weights given by the integer (if provided).
+#!  The value `"default"` chooses a suitable default string (see the implementation for details) and gets the weights from `underlying_category`.
 #!  The following placeholders may be used in the strings and are replaced automatically:
 #!  * `operation_name` will be replaced by the name of the operation
 #!  * `input_arguments...` will be replaced by the `input_arguments_names` specified in the method name record (see <Ref Sect="Section_method_name_record_entries" />)

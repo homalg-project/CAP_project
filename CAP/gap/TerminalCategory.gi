@@ -24,7 +24,7 @@ BindGlobal( "IsCapTerminalCategoryMorphismRep", IsMorphismInCapTerminalCategoryW
 
 InstallGlobalFunction( CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY,
   function( input_record )
-    local completed_record, list_of_operations_to_install, skip, info, properties, excluded_properties, T, operation_name;
+    local completed_record, list_of_operations_to_install, skip, info, properties, excluded_properties, T, operation_name, operation;
     
     completed_record := ShallowCopy( input_record );
     
@@ -104,7 +104,7 @@ InstallGlobalFunction( CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY,
         ## equality of source and target is part of the specification of the input and checked by the pre-function
         return true;
         
-    end );
+    end, 1 );
     
     return T;
     
@@ -147,13 +147,13 @@ InstallGlobalFunction( TerminalCategoryWithSingleObject, FunctionWithNamedArgume
     create_func_object :=
         function( name, T )
             
-            return """
+            return Pair( """
                 function( input_arguments... )
                     
                     return ObjectConstructor( cat, fail );
                     
                 end
-            """;
+            """, 1 );
             
         end;
     
@@ -161,13 +161,13 @@ InstallGlobalFunction( TerminalCategoryWithSingleObject, FunctionWithNamedArgume
     create_func_morphism :=
         function( name, T )
             
-            return """
+            return Pair( """
                 function( input_arguments... )
                     
                     return MorphismConstructor( cat, top_source, fail, top_range );
                     
                 end
-            """;
+            """, 1 );
             
         end;
     
@@ -211,7 +211,7 @@ InstallGlobalFunction( TerminalCategoryWithSingleObject, FunctionWithNamedArgume
         
         return true;
         
-    end );
+    end, 1 );
     
     ##
     AddIsWellDefinedForMorphisms( T,
@@ -219,7 +219,7 @@ InstallGlobalFunction( TerminalCategoryWithSingleObject, FunctionWithNamedArgume
         
         return true;
         
-    end );
+    end, 1 );
     
     ##
     AddIsEqualForObjects( T,
@@ -227,7 +227,7 @@ InstallGlobalFunction( TerminalCategoryWithSingleObject, FunctionWithNamedArgume
         
         return true;
         
-    end );
+    end, 1 );
     
     ##
     AddIsEqualForMorphisms( T,
@@ -235,7 +235,7 @@ InstallGlobalFunction( TerminalCategoryWithSingleObject, FunctionWithNamedArgume
         
         return true;
         
-    end );
+    end, 1 );
     
     ##
     AddMorphismsOfExternalHom( T,
@@ -243,7 +243,7 @@ InstallGlobalFunction( TerminalCategoryWithSingleObject, FunctionWithNamedArgume
         
         return [ TerminalCategoryWithSingleObjectUniqueMorphism( T ) ];
         
-    end );
+    end, 2 );
     
     if CAP_NAMED_ARGUMENTS.FinalizeCategory then
         
@@ -321,13 +321,13 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects, FunctionWithNamedArg
     create_func_object :=
         function( name, T )
             
-            return """
+            return Pair( """
                 function( input_arguments... )
                     
                     return ObjectConstructor( cat, "operation_name" );
                     
                 end
-            """;
+            """, 1 );
             
         end;
     
@@ -335,13 +335,13 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects, FunctionWithNamedArg
     create_func_morphism :=
         function( name, T )
             
-            return """
+            return Pair( """
                 function( input_arguments... )
                     
                     return MorphismConstructor( cat, top_source, "operation_name", top_range );
                     
                 end
-            """;
+            """, 1 );
             
         end;
     
@@ -432,7 +432,7 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects, FunctionWithNamedArg
         
         return true;
         
-    end );
+    end, 1 );
     
     ##
     AddSomeIsomorphismBetweenObjects( T,
@@ -440,42 +440,42 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects, FunctionWithNamedArg
         
         return MorphismConstructor( T, object_1, "SomeIsomorphismBetweenObjects", object_2 );
         
-    end );
+    end, 1 );
     
     AddDistinguishedObjectOfHomomorphismStructure( T,
       function( T )
         
         return TerminalCategoryWithSingleObjectUniqueObject( RangeCategoryOfHomomorphismStructure( T ) );
         
-    end );
+    end, 2 );
     
     AddHomomorphismStructureOnObjects( T,
       function( T, source, target )
         
         return TerminalCategoryWithSingleObjectUniqueObject( RangeCategoryOfHomomorphismStructure( T ) );
         
-    end );
+    end, 2 );
     
     AddHomomorphismStructureOnMorphismsWithGivenObjects( T,
       function( T, source, morphism_1, morphism_2, target )
         
         return TerminalCategoryWithSingleObjectUniqueMorphism( RangeCategoryOfHomomorphismStructure( T ) );
         
-    end );
+    end, 2 );
     
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( T,
       function( T, distinguished_object, morphism, target )
         
         return TerminalCategoryWithSingleObjectUniqueMorphism( RangeCategoryOfHomomorphismStructure( T ) );
         
-    end );
+    end, 2 );
     
     AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( T,
       function( T, source, target, iota  )
         
         return MorphismConstructor( T, source, "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism", target );
         
-    end );
+    end, 1 );
     
     if CAP_NAMED_ARGUMENTS.FinalizeCategory then
         
