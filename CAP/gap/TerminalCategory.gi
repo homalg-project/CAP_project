@@ -237,7 +237,7 @@ InstallGlobalFunction( TerminalCategoryWithSingleObject, FunctionWithNamedArgume
     AddMorphismsOfExternalHom( T,
       function( T, object_1, object_2 )
         
-        return [ UniqueMorphism( T ) ];
+        return [ TerminalCategoryWithSingleObjectUniqueMorphism( T ) ];
         
     end );
     
@@ -252,7 +252,7 @@ InstallGlobalFunction( TerminalCategoryWithSingleObject, FunctionWithNamedArgume
 end ) );
 
 ##
-InstallMethod( UniqueObject,
+InstallMethod( TerminalCategoryWithSingleObjectUniqueObject,
                [ IsCapTerminalCategoryWithSingleObject ],
                
   function( category )
@@ -265,13 +265,13 @@ InstallMethod( UniqueObject,
 end );
 
 ##
-InstallMethod( UniqueMorphism,
+InstallMethod( TerminalCategoryWithSingleObjectUniqueMorphism,
                [ IsCapTerminalCategoryWithSingleObject ],
                
   function( category )
     local object, morphism;
     
-    object := UniqueObject( category );
+    object := TerminalCategoryWithSingleObjectUniqueObject( category );
     
     morphism := MorphismConstructor( category, object, fail, object );
     
@@ -441,28 +441,28 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects, FunctionWithNamedArg
     AddDistinguishedObjectOfHomomorphismStructure( T,
       function( T )
         
-        return UniqueObject( RangeCategoryOfHomomorphismStructure( T ) );
+        return TerminalCategoryWithSingleObjectUniqueObject( RangeCategoryOfHomomorphismStructure( T ) );
         
     end );
     
     AddHomomorphismStructureOnObjects( T,
       function( T, source, target )
         
-        return UniqueObject( RangeCategoryOfHomomorphismStructure( T ) );
+        return TerminalCategoryWithSingleObjectUniqueObject( RangeCategoryOfHomomorphismStructure( T ) );
         
     end );
     
     AddHomomorphismStructureOnMorphismsWithGivenObjects( T,
       function( T, source, morphism_1, morphism_2, target )
         
-        return UniqueMorphism( RangeCategoryOfHomomorphismStructure( T ) );
+        return TerminalCategoryWithSingleObjectUniqueMorphism( RangeCategoryOfHomomorphismStructure( T ) );
         
     end );
     
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( T,
       function( T, distinguished_object, morphism, target )
         
-        return UniqueMorphism( RangeCategoryOfHomomorphismStructure( T ) );
+        return TerminalCategoryWithSingleObjectUniqueMorphism( RangeCategoryOfHomomorphismStructure( T ) );
         
     end );
     
