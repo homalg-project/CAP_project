@@ -748,7 +748,6 @@ BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
     with_given_name_function := ValueGlobal( with_given_name );
     
     # Check if `object_function` is declared as an attribute and can actually be used as one in our context.
-    # We do not print a warning if somethings is declared as an attribute but cannot be used as one in our context because this might actually happen, see for example `UniqueMorphism`.
     is_attribute := IsAttribute( object_function ) and Length( object_filter_list ) <= 2 and IsSpecializationOfFilter( IsAttributeStoringRep, CAP_INTERNAL_REPLACED_STRING_WITH_FILTER( Last( object_filter_list ) ) );
     
     if not is_attribute then
@@ -857,7 +856,6 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
     cache_key_length := Length( object_arguments_positions );
     
     # Check if `object_function` is declared as an attribute and can actually be used as one in our context.
-    # We do not print a warning if somethings is declared as an attribute but cannot be used as one in our context because this might actually happen, see for example `UniqueMorphism`.
     is_attribute := IsAttribute( object_function ) and Length( object_filter_list ) <= 2 and IsSpecializationOfFilter( IsAttributeStoringRep, CAP_INTERNAL_REPLACED_STRING_WITH_FILTER( Last( object_filter_list ) ) );
     
     if not is_attribute then

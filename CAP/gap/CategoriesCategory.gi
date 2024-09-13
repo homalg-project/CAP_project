@@ -494,11 +494,11 @@ AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( category,
     
     AddObjectFunction( new_functor,
                        
-                       function( arg ) return UniqueObject( AsCapCategory( terminal_cat ) ); end );
+                       function( arg ) return TerminalCategoryWithSingleObjectUniqueObject( AsCapCategory( terminal_cat ) ); end );
     
     AddMorphismFunction( new_functor,
                          
-                         function( arg ) return UniqueMorphism( AsCapCategory( terminal_cat ) ); end );
+                         function( arg ) return TerminalCategoryWithSingleObjectUniqueMorphism( AsCapCategory( terminal_cat ) ); end );
     
     return new_functor;
     

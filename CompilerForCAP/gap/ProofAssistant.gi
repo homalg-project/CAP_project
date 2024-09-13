@@ -2148,8 +2148,8 @@ BindGlobal( "CAP_JIT_INTERNAL_PROOF_ASSISTANT_ENHANCE_PROPOSITIONS", function ( 
     
     # use a terminal category for plausibility tests
     cat := TerminalCategoryWithSingleObject( );
-    obj := UniqueObject( cat );
-    mor := UniqueMorphism( cat );
+    obj := TerminalCategoryWithSingleObjectUniqueObject( cat );
+    mor := TerminalCategoryWithSingleObjectUniqueMorphism( cat );
     
     # CAP_JIT_INTERNAL_EXPR_CASE has no implementation because it should not be called by regular code
     old_CAP_JIT_INTERNAL_EXPR_CASE := CAP_JIT_INTERNAL_EXPR_CASE;

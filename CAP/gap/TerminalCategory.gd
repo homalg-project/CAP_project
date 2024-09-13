@@ -86,13 +86,13 @@ DeclareGlobalFunction( "CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY" );
 #! @Description
 #!  The unique object in a terminal category with a single object.
 #! @Returns a &CAP; object
-DeclareAttribute( "UniqueObject",
+DeclareAttribute( "TerminalCategoryWithSingleObjectUniqueObject",
                   IsCapTerminalCategoryWithSingleObject );
 
 #! @Description
 #!  The unique morphism in a terminal category with a single object.
 #! @Returns a &CAP; morphism
-DeclareAttribute( "UniqueMorphism",
+DeclareAttribute( "TerminalCategoryWithSingleObjectUniqueMorphism",
                   IsCapTerminalCategoryWithSingleObject );
 
 #########################################
