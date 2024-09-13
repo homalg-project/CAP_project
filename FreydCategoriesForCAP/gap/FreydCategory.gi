@@ -408,7 +408,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
       function( cat, relation_morphism )
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
-        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( relation_morphism, UnderlyingCategory( cat ), [ "the object datum given to the object constructor of <cat>" ] );
+        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( relation_morphism, UnderlyingCategory( cat ), {} -> "the object datum given to the object constructor of <cat>" );
         
         return CreateCapCategoryObjectWithAttributes( cat,
                                                       RelationMorphism, relation_morphism );
@@ -428,7 +428,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
       function( cat, source, morphism_datum, range )
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
-        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( morphism_datum, UnderlyingCategory( cat ), [ "the morphism datum given to the morphism constructor of <cat>" ] );
+        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( morphism_datum, UnderlyingCategory( cat ), {} -> "the morphism datum given to the morphism constructor of <cat>" );
         
         if not IsEqualForObjects( UnderlyingCategory( cat ), Source( morphism_datum ), Range( ObjectDatum( cat, source ) ) ) then
             

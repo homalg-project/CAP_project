@@ -324,7 +324,7 @@ InstallGlobalFunction( ApplyFunctor,
     if Length( arguments ) = 1 and functor!.number_arguments > 1 then
         
         if source_category!.input_sanity_check_level > 0 then
-            CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY( arguments[ 1 ], source_category, [ "the argument passed to the functor named \033[1m", Name(functor), "\033[0m" ] );
+            CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY( arguments[ 1 ], source_category, {} -> Concatenation( "the argument passed to the functor named \033[1m", Name(functor), "\033[0m" ) );
         fi;
 
         arguments := ShallowCopy( Components( arguments[ 1 ] ) );
@@ -337,7 +337,7 @@ InstallGlobalFunction( ApplyFunctor,
         
     elif Length( arguments ) = 1 and input_signature[ 1 ][ 2 ] = true then
         if source_category!.input_sanity_check_level > 0 then
-            CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY( arguments[ 1 ], false, [ "the argument passed to the functor named \033[1m", Name(functor), "\033[0m" ] );
+            CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY( arguments[ 1 ], false, {} -> Concatenation( "the argument passed to the functor named \033[1m", Name(functor), "\033[0m" ) );
         fi;
 
         if IsIdenticalObj( CapCategory( arguments[ 1 ] ), Opposite( input_signature[ 1 ][ 1 ] ) ) then
@@ -345,7 +345,7 @@ InstallGlobalFunction( ApplyFunctor,
         fi;
     elif Length( arguments ) = 1 then
         if source_category!.input_sanity_check_level > 0 then
-            CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY( arguments[ 1 ], source_category, [ "the argument passed to the functor named \033[1m", Name(functor), "\033[0m" ] );
+            CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY( arguments[ 1 ], source_category, {} -> Concatenation( "the argument passed to the functor named \033[1m", Name(functor), "\033[0m" ) );
         fi;
     fi;
     
@@ -358,14 +358,14 @@ InstallGlobalFunction( ApplyFunctor,
             fi;
 
             for i in [ 1 .. Length( input_signature ) ] do
-                CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arguments[ i ], input_signature[ i ][ 1 ], [ "the ", String(i), "-th argument passed to the functor named \033[1m", Name(functor), "\033[0m" ] );
+                CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arguments[ i ], input_signature[ i ][ 1 ], {} -> Concatenation( "the ", String(i), "-th argument passed to the functor named \033[1m", Name(functor), "\033[0m" ) );
             od;
         fi;
         
         computed_value := CallFuncList( FunctorObjectOperation( functor ), arguments );
 
         if range_category!.output_sanity_check_level > 0 and not range_category!.add_primitive_output then
-            CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( computed_value, range_category, [ "the result of the object function of the functor named \033[1m", Name(functor), "\033[0m" ] );
+            CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( computed_value, range_category, {} -> Concatenation( "the result of the object function of the functor named \033[1m", Name(functor), "\033[0m" ) );
         fi;
         
         if range_category!.add_primitive_output then
@@ -382,7 +382,7 @@ InstallGlobalFunction( ApplyFunctor,
             fi;
 
             for i in [ 1 .. Length( input_signature ) ] do
-                CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arguments[ i ], input_signature[ i ][ 1 ], [ "the ", String(i), "-th argument passed to the functor named \033[1m", Name(functor), "\033[0m" ] );
+                CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arguments[ i ], input_signature[ i ][ 1 ], {} -> Concatenation( "the ", String(i), "-th argument passed to the functor named \033[1m", Name(functor), "\033[0m" ) );
             od;
         fi;
         
@@ -405,7 +405,7 @@ InstallGlobalFunction( ApplyFunctor,
         computed_value := CallFuncList( FunctorMorphismOperation( functor ), Concatenation( [ source_value ], arguments, [ range_value ] ) );
 
         if range_category!.output_sanity_check_level > 0 and not range_category!.add_primitive_output then
-            CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( computed_value, range_category, [ "the result of the morphism function of the functor named \033[1m", Name(functor), "\033[0m" ] );
+            CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( computed_value, range_category, {} -> Concatenation( "the result of the morphism function of the functor named \033[1m", Name(functor), "\033[0m" ) );
         fi;
         
         if range_category!.add_primitive_output then
