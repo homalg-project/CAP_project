@@ -107,7 +107,7 @@ InstallMethod( AddCapOperation,
     fi;
     
     # prepare input sanity check
-    input_human_readable_identifier_getter := { i, function_name, category } -> Concatenation( "the ", String( i ), "-th argument of the function \033[1m", function_name, "\033[0m of the category named \033[1m", category_name, "\033[0m" );
+    input_human_readable_identifier_getter := { i, function_name, category_name } -> Concatenation( "the ", String( i ), "-th argument of the function \033[1m", function_name, "\033[0m of the category named \033[1m", category_name, "\033[0m" );
     
     input_sanity_check_functions := [ ];
     
@@ -134,8 +134,7 @@ InstallMethod( AddCapOperation,
     od;
     
     # prepare output sanity check
-    output_human_readable_identifier_getter := {} -> Concatenation( "the result of the function \033[1m", function_name, "\033[0m of the category named \033[1m", category_name, "\033[0m" );
-    
+    output_human_readable_identifier_getter := { function_name, category_name } -> Concatenation( "the result of the function \033[1m", function_name, "\033[0m of the category named \033[1m", category_name, "\033[0m" );
     output_data_type := CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( record.return_type, category );
     
     if output_data_type <> fail then
@@ -225,7 +224,7 @@ InstallMethod( AddCapOperation,
             
             if category!.input_sanity_check_level > 0 then
                 for i in [ 1 .. Length( input_sanity_check_functions ) ] do
-                    input_sanity_check_functions[ i ]( arg[ i ], i, function_name, category );
+                    input_sanity_check_functions[ i ]( arg[ i ], i, function_name, category_name );
                 od;
                 
                 if IsBound( record.pre_function ) then
@@ -262,16 +261,16 @@ InstallMethod( AddCapOperation,
                 
             fi;
             
-            if category!.predicate_logic then
-                INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{[ 2 .. Length( arg ) ]}, result, category );
-            fi;
-            
             if not is_derivation and not is_final_derivation then
                 if category!.add_primitive_output then
                     record.add_value_to_category_function( category, result );
                 elif category!.output_sanity_check_level > 0 then
-                    output_sanity_check_function( result );
+                    output_sanity_check_function( result, function_name, category_name );
                 fi;
+            fi;
+            
+            if category!.predicate_logic then
+                INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{[ 2 .. Length( arg ) ]}, result, category );
             fi;
             
             if IsBound( record.post_function ) then

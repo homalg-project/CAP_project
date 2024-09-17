@@ -146,13 +146,13 @@ InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( stri
         
     elif string = "object_in_range_category_of_homomorphism_structure" then
         
-        if category <> false and not HasRangeCategoryOfHomomorphismStructure( category ) then
+        if not IsIdenticalObj( category, false ) and not HasRangeCategoryOfHomomorphismStructure( category ) then
             
             Display( Concatenation( "WARNING: You are calling an Add function for a CAP operation for \"", Name( category ), "\" which is part of a homomorphism structure but the category has no RangeCategoryOfHomomorphismStructure (yet)" ) );
             
         fi;
         
-        if category = false or not HasRangeCategoryOfHomomorphismStructure( category ) then
+        if IsIdenticalObj( category, false ) or not HasRangeCategoryOfHomomorphismStructure( category ) then
             
             return CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( "object" );
             
@@ -164,13 +164,13 @@ InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( stri
         
     elif string = "morphism_in_range_category_of_homomorphism_structure" then
         
-        if category <> false and not HasRangeCategoryOfHomomorphismStructure( category ) then
+        if not IsIdenticalObj( category, false ) and not HasRangeCategoryOfHomomorphismStructure( category ) then
             
             Display( Concatenation( "WARNING: You are calling an Add function for a CAP operation for \"", Name( category ), "\" which is part of a homomorphism structure but the category has no RangeCategoryOfHomomorphismStructure (yet)" ) );
             
         fi;
         
-        if category = false or not HasRangeCategoryOfHomomorphismStructure( category ) then
+        if IsIdenticalObj( category, false ) or not HasRangeCategoryOfHomomorphismStructure( category ) then
             
             return CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( "morphism" );
             
@@ -182,7 +182,7 @@ InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( stri
         
     elif string = "object_datum" then
         
-        if category <> false then
+        if not IsIdenticalObj( category, false ) then
             
             # might be `fail`
             return ObjectDatumType( category );
@@ -195,7 +195,7 @@ InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( stri
         
     elif string = "morphism_datum" then
         
-        if category <> false then
+        if not IsIdenticalObj( category, false ) then
             
             # might be `fail`
             return MorphismDatumType( category );
@@ -208,13 +208,13 @@ InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( stri
         
     elif string = "element_of_commutative_ring_of_linear_structure" then
         
-        if category <> false and not HasCommutativeRingOfLinearCategory( category ) then
+        if not IsIdenticalObj( category, false ) and not HasCommutativeRingOfLinearCategory( category ) then
             
             Print( "WARNING: You are calling an Add function for a CAP operation for \"", Name( category ), "\" which is part of the linear structure over a commutative ring but the category has no CommutativeRingOfLinearCategory (yet).\n" );
             
         fi;
         
-        if category = false or not HasCommutativeRingOfLinearCategory( category ) then
+        if IsIdenticalObj( category, false ) or not HasCommutativeRingOfLinearCategory( category ) then
             
             return CapJitDataTypeOfElementOfRing( false );
             
@@ -1188,7 +1188,7 @@ end );
 InstallGlobalFunction( CapJitDataTypeOfRing, function ( ring )
   local type;
     
-    if ring = false then
+    if IsIdenticalObj( ring, false ) then
         
         type := rec(
             filter := IsRing,
@@ -1211,7 +1211,7 @@ end );
 InstallGlobalFunction( CapJitDataTypeOfElementOfRing, function ( ring )
   local type;
     
-    if ring = false then
+    if IsIdenticalObj( ring, false ) then
         
         type := rec(
             filter := IsRingElement,
@@ -1233,7 +1233,7 @@ end );
 InstallGlobalFunction( CapJitDataTypeOfCategory, function ( cat )
   local type;
     
-    if cat = false then
+    if IsIdenticalObj( cat, false ) then
         
         type := rec(
             filter := IsCapCategory,
@@ -1256,7 +1256,7 @@ end );
 InstallGlobalFunction( CapJitDataTypeOfObjectOfCategory, function ( cat )
   local type;
     
-    if cat = false then
+    if IsIdenticalObj( cat, false ) then
         
         type := rec(
             filter := IsCapCategoryObject,
@@ -1279,7 +1279,7 @@ end );
 InstallGlobalFunction( CapJitDataTypeOfMorphismOfCategory, function ( cat )
   local type;
     
-    if cat = false then
+    if IsIdenticalObj( cat, false ) then
         
         type := rec(
             filter := IsCapCategoryMorphism,
@@ -1302,7 +1302,7 @@ end );
 InstallGlobalFunction( CapJitDataTypeOfTwoCellOfCategory, function ( cat )
   local type;
     
-    if cat = false then
+    if IsIdenticalObj( cat, false ) then
         
         type := rec(
             filter := IsCapCategoryTwoCell,
@@ -1960,7 +1960,7 @@ InstallGlobalFunction( CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY,
         Error( human_readable_identifier_getter( ), " has no CAP category.", generic_help_string );
     fi;
     
-    if category <> false and not IsIdenticalObj( CapCategory( cell ), category ) then
+    if not IsIdenticalObj( category, false ) and not IsIdenticalObj( CapCategory( cell ), category ) then
         Error( "The CapCategory of ", human_readable_identifier_getter( ), " is not identical to the category named \033[1m", Name( category ), "\033[0m.", generic_help_string );
     fi;
     
@@ -1984,11 +1984,11 @@ InstallGlobalFunction( CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY,
         Error( human_readable_identifier_getter( ), " has no CAP category.", generic_help_string );
     fi;
     
-    if category <> false and not IsIdenticalObj( CapCategory( object ), category ) then
+    if not IsIdenticalObj( category, false ) and not IsIdenticalObj( CapCategory( object ), category ) then
         Error( "The CapCategory of ", human_readable_identifier_getter( ), " is not identical to the category named \033[1m", Name( category ), "\033[0m.", generic_help_string );
     fi;
     
-    if category <> false and not ObjectFilter( category )( object ) then
+    if not IsIdenticalObj( category, false ) and not ObjectFilter( category )( object ) then
         Error( human_readable_identifier_getter( ), " does not lie in the object filter of the category named \033[1m", Name( category ), "\033[0m.", generic_help_string );
     fi;
     
@@ -2012,11 +2012,11 @@ InstallGlobalFunction( CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY,
         Error( human_readable_identifier_getter( ), " has no CAP category.", generic_help_string );
     fi;
     
-    if category <> false and not IsIdenticalObj( CapCategory( morphism ), category ) then
+    if not IsIdenticalObj( category, false ) and not IsIdenticalObj( CapCategory( morphism ), category ) then
         Error( "the CAP-category of ", human_readable_identifier_getter( ), " is not identical to the category named \033[1m", Name( category ), "\033[0m.", generic_help_string );
     fi;
     
-    if category <> false and not MorphismFilter( category )( morphism ) then
+    if not IsIdenticalObj( category, false ) and not MorphismFilter( category )( morphism ) then
         Error( human_readable_identifier_getter( ), " does not lie in the morphism filter of the category named \033[1m", Name( category ), "\033[0m.", generic_help_string );
     fi;
     
@@ -2052,11 +2052,11 @@ InstallGlobalFunction( CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY,
         Error( human_readable_identifier_getter( ), " has no CAP category.", generic_help_string );
     fi;
     
-    if category <> false and not IsIdenticalObj( CapCategory( two_cell ), category ) then
+    if not IsIdenticalObj( category, false ) and not IsIdenticalObj( CapCategory( two_cell ), category ) then
         Error( "the CapCategory of ", human_readable_identifier_getter( ), " is not identical to the category named \033[1m", Name( category ), "\033[0m.", generic_help_string );
     fi;
     
-    if category <> false and not TwoCellFilter( category )( two_cell ) then
+    if not IsIdenticalObj( category, false ) and not TwoCellFilter( category )( two_cell ) then
         Error( human_readable_identifier_getter( ), " does not lie in the 2-cell filter of the category named \033[1m", Name( category ), "\033[0m.", generic_help_string );
     fi;
     
