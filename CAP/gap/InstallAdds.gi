@@ -261,16 +261,16 @@ InstallMethod( AddCapOperation,
                 
             fi;
             
-            if category!.predicate_logic then
-                INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{[ 2 .. Length( arg ) ]}, result, category );
-            fi;
-            
             if not is_derivation and not is_final_derivation then
                 if category!.add_primitive_output then
                     record.add_value_to_category_function( category, result );
                 elif category!.output_sanity_check_level > 0 then
                     output_sanity_check_function( result, function_name, category_name );
                 fi;
+            fi;
+            
+            if category!.predicate_logic then
+                INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{[ 2 .. Length( arg ) ]}, result, category );
             fi;
             
             if IsBound( record.post_function ) then
