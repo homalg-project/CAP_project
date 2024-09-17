@@ -20,8 +20,7 @@ InstallGlobalFunction( DummyRing, function( )
     name := Concatenation( "Dummy ring ", String( CAP_INTERNAL_DUMMY_RING_COUNTER ) );
     CAP_INTERNAL_DUMMY_RING_COUNTER := CAP_INTERNAL_DUMMY_RING_COUNTER + 1;
     
-    ring := ObjectifyWithAttributes( rec( ),
-        NewType( TheFamilyOfDummyRings, IsAttributeStoringRep and ring_filter ),
+    ring := CreateGapObjectWithAttributes( NewType( TheFamilyOfDummyRings, IsAttributeStoringRep and ring_filter ),
         Name, name,
         String, name,
         RingFilter, ring_filter,
@@ -54,8 +53,7 @@ InstallGlobalFunction( DummyCommutativeRing, function( )
     name := Concatenation( "Dummy commutative ring ", String( CAP_INTERNAL_DUMMY_COMMUTATIVE_RING_COUNTER ) );
     CAP_INTERNAL_DUMMY_COMMUTATIVE_RING_COUNTER := CAP_INTERNAL_DUMMY_COMMUTATIVE_RING_COUNTER + 1;
     
-    ring := ObjectifyWithAttributes( rec( ),
-        NewType( TheFamilyOfDummyCommutativeRings, IsAttributeStoringRep and ring_filter ),
+    ring := CreateGapObjectWithAttributes( NewType( TheFamilyOfDummyCommutativeRings, IsAttributeStoringRep and ring_filter ),
         Name, name,
         String, name,
         RingFilter, ring_filter,
@@ -89,8 +87,7 @@ InstallGlobalFunction( DummyField, function( )
     name := Concatenation( "Dummy field ", String( CAP_INTERNAL_DUMMY_FIELD_COUNTER ) );
     CAP_INTERNAL_DUMMY_FIELD_COUNTER := CAP_INTERNAL_DUMMY_FIELD_COUNTER + 1;
     
-    ring := ObjectifyWithAttributes( rec( ),
-        NewType( TheFamilyOfDummyFields, IsAttributeStoringRep and ring_filter ),
+    ring := CreateGapObjectWithAttributes( NewType( TheFamilyOfDummyFields, IsAttributeStoringRep and ring_filter ),
         Name, name,
         String, name,
         RingFilter, ring_filter,
