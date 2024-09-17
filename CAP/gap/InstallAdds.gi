@@ -24,8 +24,8 @@ InstallMethod( AddCapOperation,
   ],
   function( CAP_NAMED_ARGUMENTS, function_name, category, func_to_install, weight )
     local record, category_name, is_derivation, is_final_derivation, is_precompiled_derivation, replaced_filter_list,
-        input_human_readable_identifier_getter, input_sanity_check_functions, output_human_readable_identifier_getter, output_sanity_check_function,
-        output_data_type;
+        input_human_readable_identifier_getter, input_sanity_check_functions, filter_string, data_type,
+        output_human_readable_identifier_getter, output_data_type, output_sanity_check_function;
     
     record := CAP_INTERNAL_METHOD_NAME_RECORD.(function_name);
     
@@ -109,10 +109,9 @@ InstallMethod( AddCapOperation,
     # prepare input sanity check
     input_human_readable_identifier_getter := { i, function_name, category } -> Concatenation( "the ", String( i ), "-th argument of the function \033[1m", function_name, "\033[0m of the category named \033[1m", category_name, "\033[0m" );
     
-    input_sanity_check_functions := List( [ 1 .. Length( record.filter_list ) ], function ( i )
-      local filter_string, data_type, assert_is_value_of_type;
-        
-        filter_string := record.filter_list[ i ];
+    input_sanity_check_functions := [ ];
+    
+    for filter_string in record.filter_list do
         
         if not IsBound( category!.input_sanity_check_functions.(filter_string) ) then
             
@@ -130,9 +129,9 @@ InstallMethod( AddCapOperation,
             
         fi;
         
-        return category!.input_sanity_check_functions.(filter_string);
+        Add( input_sanity_check_functions, category!.input_sanity_check_functions.(filter_string) );
         
-    end );
+    od;
     
     # prepare output sanity check
     output_human_readable_identifier_getter := {} -> Concatenation( "the result of the function \033[1m", function_name, "\033[0m of the category named \033[1m", category_name, "\033[0m" );
