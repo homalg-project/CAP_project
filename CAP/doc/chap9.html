@@ -85,6 +85,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7D0B0ECF7F70FB8E">9.2-52 FilteredWithKeys</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7914B5437CBEB3EC">9.2-53 FirstWithKeys</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X849D015F79B08FCC">9.2-54 LastWithKeys</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X81386B5D7CE25406">9.2-55 CreateGapObjectWithAttributes</a></span>
 </div></div>
 </div>
 
@@ -578,6 +579,13 @@
 <p>Returns: a list</p>
 
 <p>Same as <code class="code">Last( <var class="Arg">list</var>, <var class="Arg">func</var> )</code> but <var class="Arg">func</var> gets both the key <code class="code">i</code> and <code class="code"><var class="Arg">list</var>[i]</code> as arguments.</p>
+
+<p><a id="X81386B5D7CE25406" name="X81386B5D7CE25406"></a></p>
+
+<h5>9.2-55 CreateGapObjectWithAttributes</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateGapObjectWithAttributes</code>( <var class="Arg">type</var>[, <var class="Arg">attribute1</var>, <var class="Arg">value1</var>, <var class="Arg">...</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Shorthand for <code class="code">ObjectifyWithAttributes( rec( ), type, [attribute1, value1, ...] )</code>.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap8.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap10.html">[Next Chapter]</a>&nbsp;  </div>

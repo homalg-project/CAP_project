@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2024.09-16
+                                   2024.09-17
   
   
-                               17 September 2024
+                               18 September 2024
   
   
                                Sebastian Gutsche
@@ -974,6 +974,7 @@
       9.2-52 FilteredWithKeys
       9.2-53 FirstWithKeys
       9.2-54 LastWithKeys
+      9.2-55 CreateGapObjectWithAttributes
   10 [33X[0;0YLimits and Colimits[133X
     10.1 [33X[0;0YSpecification of Limits and Colimits[133X
     10.2 [33X[0;0YEnhancing Limit Specifications[133X

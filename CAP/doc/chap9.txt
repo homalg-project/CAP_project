@@ -531,3 +531,10 @@
   [33X[0;0YSame  as  [10XLast(  [3Xlist[103X[10X,  [3Xfunc[103X[10X  )[110X  but [3Xfunc[103X gets both the key [10Xi[110X and [10X[3Xlist[103X[10X[i][110X as
   arguments.[133X
   
+  [1X9.2-55 CreateGapObjectWithAttributes[101X
+  
+  [33X[1;0Y[29X[2XCreateGapObjectWithAttributes[102X( [3Xtype[103X[, [3Xattribute1[103X, [3Xvalue1[103X, [3X...[103X] ) [32X function[133X
+  
+  [33X[0;0YShorthand  for  [10XObjectifyWithAttributes(  rec( ), type, [attribute1, value1,
+  ...] )[110X.[133X
+  
