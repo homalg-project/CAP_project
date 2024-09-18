@@ -292,7 +292,7 @@ InstallMethod( Finalize,
     [ "FinalizeCategory", true ],
   ],
   function( CAP_NAMED_ARGUMENTS, category )
-    local derivation_list, weight_list, current_install, current_final_derivation, weight, old_weights, categorical_properties, diff, properties_with_logic, property, i, derivation, operation, property_name, installed_operations_of_homomorphism_structure;
+    local derivation_list, weight_list, current_install, current_final_derivation, weight, old_weights, categorical_properties, diff, properties_with_logic, property, i, derivation, operation, property_name, installed_operations_of_homomorphism_structure, original_REORDER_METHODS_SUSPENSION_LEVEL;
     
     if IsFinalized( category ) then
         
@@ -487,8 +487,16 @@ InstallMethod( Finalize,
         
         properties_with_logic := RecNames( category!.logical_implication_files.Propositions );
         
-        # INSTALL_LOGICAL_IMPLICATIONS_HELPER indirectly calls `InstallTrueMethod` many times -> suspend method reordering
-        SuspendMethodReordering( );
+        # INSTALL_PREDICATE_IMPLICATION (part of INSTALL_LOGICAL_IMPLICATIONS_HELPER) calls `InstallTrueMethod` many times, so in principle methods have to be reordered.
+        # However, all implications are of the form `property and Object/MorphismFilter => property2 and Object/MorphismFilter`.
+        # CAP does not install methods with filters of the form `property and Object/MorphismFilter` and we assume that neither does the user.
+        # Hence, we can skip the method reordering completely.
+        
+        #= comment for Julia
+        original_REORDER_METHODS_SUSPENSION_LEVEL := REORDER_METHODS_SUSPENSION_LEVEL;
+        
+        REORDER_METHODS_SUSPENSION_LEVEL := 1;
+        # =#
         
         for property_name in properties_with_logic do
             
@@ -502,7 +510,9 @@ InstallMethod( Finalize,
             
         od;
         
-        ResumeMethodReordering( );
+        #= comment for Julia
+        REORDER_METHODS_SUSPENSION_LEVEL := original_REORDER_METHODS_SUSPENSION_LEVEL;
+        # =#
         
     fi;
     
