@@ -25,7 +25,7 @@ InstallGlobalFunction( InfoStringOfInstalledOperationsOfCategory,
     
     MaximalPropertiesWithRegardToImplication := function ( list_of_properties )
         
-        return MaximalObjects( list_of_properties, { p1, p2 } -> p1 in ListImpliedFilters( ValueGlobal( p2 ) ) );
+        return MaximalObjects( list_of_properties, { p1, p2 } -> IsSpecializationOfFilter( ValueGlobal( p1 ), ValueGlobal( p2 ) ) );
         
     end;
     
@@ -83,8 +83,7 @@ InstallGlobalFunction( InfoStringOfInstalledOperationsOfCategory,
     
     ## Finally, capture the remaining mathematical properties influencing the derivation mechanism:
     list_of_mathematical_properties_not_implied_by_algorithmic_or_not_yet_algorithmic_properties :=
-      Difference( list_of_mathematical_properties,
-              Concatenation( List( list_of_algorithmic_and_not_yet_algorithmic_properties, p -> ListImpliedFilters( ValueGlobal( p ) ) ) ) );
+      Filtered( list_of_mathematical_properties, pm -> not ForAny( list_of_algorithmic_and_not_yet_algorithmic_properties, pa -> IsSpecializationOfFilter( ValueGlobal( pm ), ValueGlobal( pa ) ) ) );
     
     list_of_maximal_mathematical_properties_not_implied_by_algorithmic_or_not_yet_algorithmic_properties :=
       MaximalPropertiesWithRegardToImplication( list_of_mathematical_properties_not_implied_by_algorithmic_or_not_yet_algorithmic_properties );
