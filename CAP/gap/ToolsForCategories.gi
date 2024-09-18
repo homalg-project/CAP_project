@@ -229,7 +229,7 @@ InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( stri
     elif string = "list_of_integers_and_list_of_morphisms" then
         
         return CapJitDataTypeOfNTupleOf( 2,
-                       CapJitDataTypeOfListOf( rec( filter := IsInt ) ),
+                       CapJitDataTypeOfListOf( IsInt ),
                        CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( category ) ) );
         
     elif string = "arbitrary_list" then

@@ -90,9 +90,9 @@ InstallGlobalFunction( CreateCapCategoryTwoCellWithAttributes,
     local arg_list;
     
     arg_list := Concatenation(
-        [ rec( ), category!.two_cell_type, CapCategory, category, Source, source, Range, range ], additional_arguments_list
+        [ category!.two_cell_type, CapCategory, category, Source, source, Range, range ], additional_arguments_list
     );
     
-    return CallFuncList( ObjectifyWithAttributes, arg_list );
+    return CallFuncList( CreateGapObjectWithAttributes, arg_list );
     
 end );
