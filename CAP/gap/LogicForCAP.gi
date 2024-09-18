@@ -401,7 +401,7 @@ InstallGlobalFunction( INSTALL_PREDICATE_IMPLICATION,
         
     else
         
-        cell_filter := TwoCellFilter( category );
+        Error( "unknown cell type" );
         
     fi;
     
