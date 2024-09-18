@@ -141,10 +141,10 @@ InstallGlobalFunction( CreateCapCategoryObjectWithAttributes,
     local arg_list, obj;
     
     arg_list := Concatenation(
-        [ rec( ), category!.object_type, CapCategory, category ], additional_arguments_list
+        [ category!.object_type, CapCategory, category ], additional_arguments_list
     );
     
-    obj := CallFuncList( ObjectifyWithAttributes, arg_list );
+    obj := CallFuncList( CreateGapObjectWithAttributes, arg_list );
     
     return obj;
     
@@ -164,7 +164,7 @@ InstallGlobalFunction( AsCapCategoryObject,
         
     fi;
     
-    obj := ObjectifyWithAttributes( rec( ), category!.object_type, CapCategory, category, category!.object_attribute, object_datum );
+    obj := CreateGapObjectWithAttributes( category!.object_type, CapCategory, category, category!.object_attribute, object_datum );
     
     if not IsIdenticalObj( category!.object_attribute( obj ), object_datum ) then
         

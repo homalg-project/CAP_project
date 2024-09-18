@@ -70,8 +70,7 @@ function( name, target_op_name, used_op_names_with_multiples_and_category_getter
         
     fi;
     
-    derivation := ObjectifyWithAttributes(
-        rec( ), TheTypeOfDerivedMethods,
+    derivation := CreateGapObjectWithAttributes( TheTypeOfDerivedMethods,
         DerivationName, name,
         DerivationWeight, weight,
         DerivationFunction, func,

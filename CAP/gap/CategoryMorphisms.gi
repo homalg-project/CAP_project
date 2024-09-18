@@ -156,10 +156,10 @@ InstallGlobalFunction( CreateCapCategoryMorphismWithAttributes,
     local arg_list, objectified_morphism;
     
     arg_list := Concatenation(
-        [ rec( ), category!.morphism_type, CapCategory, category, Source, source, Range, range ], additional_arguments_list
+        [ category!.morphism_type, CapCategory, category, Source, source, Range, range ], additional_arguments_list
     );
     
-    objectified_morphism := CallFuncList( ObjectifyWithAttributes, arg_list );
+    objectified_morphism := CallFuncList( CreateGapObjectWithAttributes, arg_list );
     
     if category!.predicate_logic then
         INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ objectified_morphism ], source, category );
@@ -184,7 +184,7 @@ InstallGlobalFunction( AsCapCategoryMorphism,
         
     fi;
     
-    mor := ObjectifyWithAttributes( rec( ), category!.morphism_type, CapCategory, category, Source, source, Range, range, category!.morphism_attribute, morphism_datum );
+    mor := CreateGapObjectWithAttributes( category!.morphism_type, CapCategory, category, Source, source, Range, range, category!.morphism_attribute, morphism_datum );
     
     if not IsIdenticalObj( category!.morphism_attribute( mor ), morphism_datum ) then
         

@@ -2101,3 +2101,15 @@ InstallGlobalFunction( PackageOfCAPOperation, function ( operation_name )
     return packages[1];
     
 end );
+
+##
+InstallGlobalFunction( CreateGapObjectWithAttributes, function( type, additional_arguments_list... )
+    local arg_list;
+    
+    arg_list := Concatenation(
+        [ rec( ), type ], additional_arguments_list
+    );
+    
+    return CallFuncList( ObjectifyWithAttributes, arg_list );
+    
+end );

@@ -20,8 +20,7 @@ InstallGlobalFunction( DummyHomalgRing, function( )
     name := Concatenation( "Dummy homalg ring ", String( CAP_INTERNAL_DUMMY_HOMALG_RING_COUNTER ) );
     CAP_INTERNAL_DUMMY_HOMALG_RING_COUNTER := CAP_INTERNAL_DUMMY_HOMALG_RING_COUNTER + 1;
     
-    ring := ObjectifyWithAttributes( rec( ),
-        NewType( TheFamilyOfDummyHomalgRings, IsAttributeStoringRep and ring_filter ),
+    ring := CreateGapObjectWithAttributes( NewType( TheFamilyOfDummyHomalgRings, IsAttributeStoringRep and ring_filter ),
         Name, name,
         String, name,
         RingFilter, ring_filter,
@@ -48,8 +47,7 @@ InstallGlobalFunction( DummyCommutativeHomalgRing, function( )
     name := Concatenation( "Dummy commutative homalg ring ", String( CAP_INTERNAL_DUMMY_COMMUTATIVE_HOMALG_RING_COUNTER ) );
     CAP_INTERNAL_DUMMY_COMMUTATIVE_HOMALG_RING_COUNTER := CAP_INTERNAL_DUMMY_COMMUTATIVE_HOMALG_RING_COUNTER + 1;
     
-    ring := ObjectifyWithAttributes( rec( ),
-        NewType( TheFamilyOfDummyCommutativeHomalgRings, IsAttributeStoringRep and ring_filter ),
+    ring := CreateGapObjectWithAttributes( NewType( TheFamilyOfDummyCommutativeHomalgRings, IsAttributeStoringRep and ring_filter ),
         Name, name,
         String, name,
         RingFilter, ring_filter,
@@ -77,8 +75,7 @@ InstallGlobalFunction( DummyHomalgField, function( )
     name := Concatenation( "Dummy homalg field ", String( CAP_INTERNAL_DUMMY_HOMALG_FIELD_COUNTER ) );
     CAP_INTERNAL_DUMMY_HOMALG_FIELD_COUNTER := CAP_INTERNAL_DUMMY_HOMALG_FIELD_COUNTER + 1;
     
-    ring := ObjectifyWithAttributes( rec( ),
-        NewType( TheFamilyOfDummyHomalgFields, IsAttributeStoringRep and ring_filter ),
+    ring := CreateGapObjectWithAttributes( NewType( TheFamilyOfDummyHomalgFields, IsAttributeStoringRep and ring_filter ),
         Name, name,
         String, name,
         RingFilter, ring_filter,
