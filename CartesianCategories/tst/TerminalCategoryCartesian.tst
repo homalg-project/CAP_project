@@ -15,6 +15,11 @@ gap> opposite := Opposite( T, "Opposite with all operations" );;
 gap> opposite_primitive := Opposite( T, "Opposite with primitive operations" : only_primitive_operations := true );;
 
 #
+gap> DeactivateCachingOfCategory( T );
+gap> DeactivateCachingOfCategory( opposite );
+gap> DeactivateCachingOfCategory( opposite_primitive );
+
+#
 ##############################################
 # CartesianCategoriesTest
 ##############################################
