@@ -266,6 +266,7 @@ InstallGlobalFunction( AddDerivation,
     fi;
     
     Add( graph!.derivations_by_target.(target_op_name), derivation );
+    derivation!.position_in_derivations_by_target := Length( graph!.derivations_by_target.(target_op_name) );
     
     for x in used_op_names_with_multiples_and_category_getters do
         # We add all operations, even those with category getters: In case the category getter
@@ -439,7 +440,7 @@ function( owl, op_name )
 end );
 
 BindGlobal( "TryToInstallDerivation", function ( owl, d )
-  local new_weight, target, current_weight, current_derivation, derivations_of_target, new_pos, current_pos;
+  local new_weight, target, current_weight, current_derivation;
     
     if not IsApplicableToCategory( d, CategoryOfOperationWeightList( owl ) ) then
         return fail;
@@ -456,19 +457,7 @@ BindGlobal( "TryToInstallDerivation", function ( owl, d )
     current_weight := CurrentOperationWeight( owl, target );
     current_derivation := DerivationOfOperation( owl, target );
     
-    if current_derivation <> fail then
-        
-        derivations_of_target := DerivationsOfOperation( DerivationGraph( owl ), target );
-        
-        new_pos := PositionProperty( derivations_of_target, x -> IsIdenticalObj( x, d ) );
-        current_pos := PositionProperty( derivations_of_target, x -> IsIdenticalObj( x, current_derivation ) );
-        
-        Assert( 0, new_pos <> fail );
-        Assert( 0, current_pos <> fail );
-        
-    fi;
-
-    if new_weight < current_weight or (new_weight = current_weight and current_derivation <> fail and new_pos < current_pos) then
+    if new_weight < current_weight or (new_weight = current_weight and current_derivation <> fail and d!.position_in_derivations_by_target < current_derivation!.position_in_derivations_by_target) then
         
         # Previously, `InstallDerivationForCategory` was called at this point.
         # However, this could lead to methods being overwritten if cheaper derivations become available while adding primitive installations to a category.
