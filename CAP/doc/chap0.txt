@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2024.09-20
+                                   2024.09-21
   
   
-                               19 September 2024
+                               20 September 2024
   
   
                                Sebastian Gutsche
@@ -904,17 +904,6 @@
       8.4-12 PrintDerivationTree
       8.4-13 PrintTree
       8.4-14 PrintTreeRec
-    8.5 [33X[0;0YMin Heaps for Strings[133X
-      8.5-1 IsStringMinHeap
-      8.5-2 StringMinHeap
-      8.5-3 Add
-      8.5-4 ExtractMin
-      8.5-5 DecreaseKey
-      8.5-6 IsEmptyHeap
-      8.5-7 HeapSize
-      8.5-8 Contains
-      8.5-9 Swap
-      8.5-10 Heapify
   9 [33X[0;0YTechnical Details[133X
     9.1 [33X[0;0YThe Category Cat[133X
       9.1-1 ObjectCache

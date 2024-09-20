@@ -77,20 +77,6 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8_mj.html#X7E59037F7B4E42D0">8.4-13 PrintTree</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8_mj.html#X8293EF6286A82480">8.4-14 PrintTreeRec</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap8_mj.html#X85B1CCCC81C1A631">8.5 <span class="Heading">Min Heaps for Strings</span></a>
-</span>
-<div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8_mj.html#X7EAA63F885D8E710">8.5-1 IsStringMinHeap</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8_mj.html#X812EDE3F8737AB9D">8.5-2 StringMinHeap</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8_mj.html#X80604054823A6F01">8.5-3 Add</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8_mj.html#X7E136159853A3BAC">8.5-4 ExtractMin</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8_mj.html#X79B2FB2178CC6A34">8.5-5 DecreaseKey</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8_mj.html#X7CEECD45781A49A3">8.5-6 IsEmptyHeap</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8_mj.html#X7E1CEFDB7824EE94">8.5-7 HeapSize</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8_mj.html#X82F874FB7954D662">8.5-8 Contains</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8_mj.html#X7AE2A000800CD0A2">8.5-9 Swap</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8_mj.html#X78B8D0BD7A2FE83A">8.5-10 Heapify</a></span>
-</div></div>
 </div>
 
 <h3>8 <span class="Heading">Managing Derived Methods</span></h3>
@@ -377,84 +363,6 @@
 <h5>8.4-14 PrintTreeRec</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PrintTreeRec</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var>, <var class="Arg">arg3</var>, <var class="Arg">arg4</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p><a id="X85B1CCCC81C1A631" name="X85B1CCCC81C1A631"></a></p>
-
-<h4>8.5 <span class="Heading">Min Heaps for Strings</span></h4>
-
-<p>This section describes an implementation of min heaps for storing strings with associated integer keys, used internally by operation weight lists.</p>
-
-<p><a id="X7EAA63F885D8E710" name="X7EAA63F885D8E710"></a></p>
-
-<h5>8.5-1 IsStringMinHeap</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsStringMinHeap</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>A string min heap is a min heap where every node contains a string label and an integer key.</p>
-
-<p><a id="X812EDE3F8737AB9D" name="X812EDE3F8737AB9D"></a></p>
-
-<h5>8.5-2 StringMinHeap</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; StringMinHeap</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Create an empty string min heap.</p>
-
-<p><a id="X80604054823A6F01" name="X80604054823A6F01"></a></p>
-
-<h5>8.5-3 Add</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Add</code>( <var class="Arg">H</var>, <var class="Arg">string</var>, <var class="Arg">key</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Add a new node containing the label <var class="Arg">string</var> and the key <var class="Arg">key</var> to the heap <var class="Arg">H</var>.</p>
-
-<p><a id="X7E136159853A3BAC" name="X7E136159853A3BAC"></a></p>
-
-<h5>8.5-4 ExtractMin</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExtractMin</code>( <var class="Arg">H</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Remove a node with minimal key value from the heap <var class="Arg">H</var>, and return it. The return value is a list <code class="code">[ label, key ]</code>, where <code class="code">label</code> is the extracted node's label (a string) and <code class="code">key</code> is the node's key (an integer).</p>
-
-<p><a id="X79B2FB2178CC6A34" name="X79B2FB2178CC6A34"></a></p>
-
-<h5>8.5-5 DecreaseKey</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DecreaseKey</code>( <var class="Arg">H</var>, <var class="Arg">string</var>, <var class="Arg">key</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Decrease the key value for the node with label <var class="Arg">string</var> in the heap <var class="Arg">H</var>. The new key value is given by <var class="Arg">key</var> and must be smaller than the node's current value.</p>
-
-<p><a id="X7CEECD45781A49A3" name="X7CEECD45781A49A3"></a></p>
-
-<h5>8.5-6 IsEmptyHeap</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsEmptyHeap</code>( <var class="Arg">H</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns <code class="code">true</code> if the heap <var class="Arg">H</var> is empty, <code class="code">false</code> otherwise.</p>
-
-<p><a id="X7E1CEFDB7824EE94" name="X7E1CEFDB7824EE94"></a></p>
-
-<h5>8.5-7 HeapSize</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HeapSize</code>( <var class="Arg">H</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns the number of nodes in the heap <var class="Arg">H</var>.</p>
-
-<p><a id="X82F874FB7954D662" name="X82F874FB7954D662"></a></p>
-
-<h5>8.5-8 Contains</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Contains</code>( <var class="Arg">H</var>, <var class="Arg">string</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns <code class="code">true</code> if the heap <var class="Arg">H</var> contains a node with label <var class="Arg">string</var>, and <code class="code">false</code> otherwise.</p>
-
-<p><a id="X7AE2A000800CD0A2" name="X7AE2A000800CD0A2"></a></p>
-
-<h5>8.5-9 Swap</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Swap</code>( <var class="Arg">H</var>, <var class="Arg">i</var>, <var class="Arg">j</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Swaps two elements in the list used to implement the heap, and updates the heap's internal mapping of labels to list indices. This is an internal function which should only be called from the functions that implement the heap functionality.</p>
-
-<p><a id="X78B8D0BD7A2FE83A" name="X78B8D0BD7A2FE83A"></a></p>
-
-<h5>8.5-10 Heapify</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Heapify</code>( <var class="Arg">H</var>, <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Heapify the heap <var class="Arg">H</var>, starting from index <var class="Arg">i</var>. This is an internal function.</p>
-
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap7_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap9_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
