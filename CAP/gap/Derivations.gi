@@ -11,13 +11,10 @@ BindGlobal( "TheFamilyOfDerivationGraphs",
             NewFamily( "TheFamilyOfDerivationGraphs" ) );
 BindGlobal( "TheFamilyOfOperationWeightLists",
             NewFamily( "TheFamilyOfOperationWeightLists" ) );
-BindGlobal( "TheFamilyOfStringMinHeaps",
-            NewFamily( "TheFamilyOfStringMinHeaps" ) );
 
 BindGlobal( "TheTypeOfDerivedMethods", NewType( TheFamilyOfDerivations, IsDerivedMethod ) );
 BindGlobal( "TheTypeOfDerivationsGraphs", NewType( TheFamilyOfDerivationGraphs, IsDerivedMethodGraph ) );
 BindGlobal( "TheTypeOfOperationWeightLists", NewType( TheFamilyOfOperationWeightLists, IsOperationWeightList ) );
-BindGlobal( "TheTypeOfStringMinHeaps", NewType( TheFamilyOfStringMinHeaps, IsStringMinHeap ) );
 
 InstallGlobalFunction( "ActivateDerivationInfo",
   function( )
@@ -480,11 +477,7 @@ BindGlobal( "TryToInstallDerivation", function ( owl, d )
         owl!.operation_weights.( target ) := new_weight;
         owl!.operation_derivations.( target ) := d;
         
-        return new_weight;
-        
-    else
-        
-        return fail;
+        InstallDerivationsUsingOperation( owl, target );
         
     fi;
     
@@ -493,38 +486,11 @@ end );
 InstallMethod( InstallDerivationsUsingOperation,
                [ IsOperationWeightList, IsString ],
 function( owl, op_name )
-  local Q, derivations_to_install, node, new_weight, target, d;
+  local d;
     
-    Q := StringMinHeap();
-    Add( Q, op_name, 0 );
-    
-    while not IsEmptyHeap( Q ) do
+    for d in DerivationsUsingOperation( DerivationGraph( owl ), op_name ) do
         
-        node := ExtractMin( Q );
-        
-        op_name := node[ 1 ];
-        
-        for d in DerivationsUsingOperation( DerivationGraph( owl ), op_name ) do
-            
-            new_weight := TryToInstallDerivation( owl, d );
-            
-            if new_weight <> fail then
-                
-                target := TargetOperation( d );
-                
-                if Contains( Q, target ) then
-                    
-                    DecreaseKey( Q, target, new_weight );
-                    
-                else
-                    
-                    Add( Q, target, new_weight );
-                    
-                fi;
-                
-            fi;
-            
-        od;
+        TryToInstallDerivation( owl, d );
         
     od;
     
@@ -539,13 +505,7 @@ function( owl )
         
         for d in DerivationsOfOperation( DerivationGraph( owl ), op_name ) do
             
-            new_weight := TryToInstallDerivation( owl, d );
-            
-            if new_weight <> fail then
-                
-                InstallDerivationsUsingOperation( owl, TargetOperation( d ) );
-                
-            fi;
+            TryToInstallDerivation( owl, d );
             
         od;
         
@@ -635,126 +595,6 @@ function( owl, op_name )
              print_node,
              get_children );
 end );
-
-
-InstallGlobalFunction( StringMinHeap,
-function()
-  return Objectify( TheTypeOfStringMinHeaps,
-                    rec( key := function(n) return n[2]; end,
-                         str := function(n) return n[1]; end,
-                         array := [],
-                         node_indices := rec() ) );
-end );
-
-InstallMethod( String,
-               [ IsStringMinHeap ],
-function( H )
-  return Concatenation( "min heap for strings, with size ",
-                        String( HeapSize( H ) ) );
-end );
-
-InstallMethod( ViewString,
-               [ IsStringMinHeap ],
-function( H )
-  return Concatenation( "<", String( H ), ">" );
-end );
-
-InstallMethod( HeapSize,
-               [ IsStringMinHeap ],
-function( H )
-  return Length( H!.array );
-end );
-
-InstallMethod( Add,
-               [ IsStringMinHeap, IsString, IsInt ],
-function( H, string, key )
-  local array;
-  array := H!.array;
-  Add( array, [ string, key ] );
-  H!.node_indices.( string ) := Length( array );
-  DecreaseKey( H, string, key );
-end );
-
-InstallMethod( IsEmptyHeap,
-               [ IsStringMinHeap ],
-function( H )
-  return IsEmpty( H!.array );
-end );
-
-InstallMethod( ExtractMin,
-               [ IsStringMinHeap ],
-function( H )
-  local array, node, key;
-  array := H!.array;
-  node := array[ 1 ];
-  Swap( H, 1, Length( array ) );
-  Remove( array );
-  key := H!.str( node );
-  Unbind( H!.node_indices.( key ) );
-  if not IsEmpty( array ) then
-    Heapify( H, 1 );
-  fi;
-  return node;
-end );
-
-InstallMethod( DecreaseKey,
-               [ IsStringMinHeap, IsString, IsInt ],
-function( H, string, key )
-  local array, i, parent;
-  array := H!.array;
-  i := H!.node_indices.( string );
-  array[ i ][ 2 ] := key;
-  parent := Int( i / 2 );
-  while parent > 0 and H!.key( array[ i ] ) < H!.key( array[ parent ] ) do
-    Swap( H, i, parent );
-    i := parent;
-    parent := Int( i / 2 );
-  od;
-end );
-
-InstallMethod( Swap,
-               [ IsStringMinHeap, IsPosInt, IsPosInt ],
-function( H, i, j )
-  local array, node_indices, str, tmp, key;
-  array := H!.array;
-  node_indices := H!.node_indices;
-  str := H!.str;
-  tmp := array[ i ];
-  array[ i ] := array[ j ];
-  array[ j ] := tmp;
-  key := str( array[ i ] );
-  node_indices.( key ) := i;
-  key := str( array[ j ] );
-  node_indices.( key ) := j;
-end );
-
-InstallMethod( Contains,
-               [ IsStringMinHeap, IsString ],
-function( H, string )
-  return IsBound( H!.node_indices.( string ) );
-end );
-
-InstallMethod( Heapify,
-               [ IsStringMinHeap, IsPosInt ],
-function( H, i )
-  local key, array, left, right, smallest;
-  key := H!.key;
-  array := H!.array;
-  left := 2 * i;
-  right := 2 * i + 1;
-  smallest := i;
-  if left <= HeapSize( H ) and key( array[ left ] ) < key( array[ smallest ] ) then
-    smallest := left;
-  fi;
-  if right <= HeapSize( H ) and key( array[ right ] ) < key( array[ smallest ] ) then
-    smallest := right;
-  fi;
-  if smallest <> i then
-    Swap( H, i, smallest );
-    Heapify( H, smallest );
-  fi;
-end );
-
 
 InstallMethod( PrintTree,
                [ IsObject, IsFunction, IsFunction ],
