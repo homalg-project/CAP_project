@@ -466,7 +466,12 @@ BindGlobal( "TryToInstallDerivation", function ( owl, d )
         owl!.operation_weights.( target ) := new_weight;
         owl!.operation_derivations.( target ) := d;
         
-        InstallDerivationsUsingOperation( owl, target );
+        # if the weight has not changed, there is no need to re-trigger the chain of derivations
+        if new_weight <> current_weight then
+            
+            InstallDerivationsUsingOperation( owl, target );
+            
+        fi;
         
     fi;
     
@@ -519,18 +524,26 @@ end );
 
 InstallMethod( AddPrimitiveOperation,
                [ IsOperationWeightList, IsString, IsInt ],
-function( owl, op_name, weight )
+function( owl, op_name, new_weight )
+  local current_weight;
     
     Info( DerivationInfo, 1, Concatenation( "install(",
-                                  String( weight ),
+                                  String( new_weight ),
                                   ") ",
                                   op_name,
                                   ": primitive installation\n" ) );
     
-    owl!.operation_weights.( op_name ) := weight;
+    current_weight := owl!.operation_weights.( op_name );
+    
+    owl!.operation_weights.( op_name ) := new_weight;
     owl!.operation_derivations.( op_name ) := fail;
     
-    InstallDerivationsUsingOperation( owl, op_name );
+    # if the weight has not changed, there is no need to re-trigger the chain of derivations
+    if new_weight <> current_weight then
+        
+        InstallDerivationsUsingOperation( owl, op_name );
+        
+    fi;
     
 end );
 
