@@ -72,16 +72,14 @@ DeclareOperation( "MakeDerivation",
                     IsPosInt, IsFunction, IsFunction ] );
 
 #! @Description
-#!  The name of the derivation.  This is a name identifying this
-#!  particular derivation, and normally not the same as the name
-#!  of the operation implemented by the derivation.
+#!  A description of the derivation.
 #! @Arguments d
-DeclareAttribute( "DerivationName", IsDerivedMethod );
+DeclareAttribute( "Description", IsDerivedMethod );
 
 #! @Description
-#!  Extra weight for the derivation.
+#!  Additional weight for the derivation.
 #! @Arguments d
-DeclareAttribute( "DerivationWeight", IsDerivedMethod );
+DeclareAttribute( "AdditionalWeight", IsDerivedMethod );
 
 #! @Description
 #!  The implementation of the derivation.
