@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2024.09-22
+                                   2024.09-23
   
   
-                               20 September 2024
+                               24 September 2024
   
   
                                Sebastian Gutsche
@@ -871,8 +871,8 @@
     8.2 [33X[0;0YDerivation Objects[133X
       8.2-1 IsDerivedMethod
       8.2-2 MakeDerivation
-      8.2-3 DerivationName
-      8.2-4 DerivationWeight
+      8.2-3 Description
+      8.2-4 AdditionalWeight
       8.2-5 DerivationFunction
       8.2-6 CategoryFilter
       8.2-7 IsApplicableToCategory

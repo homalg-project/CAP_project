@@ -62,19 +62,17 @@
   must  not  change  during  the installation of operations. In particular, it
   must not rely on [10XCanCompute[110X to check conditions.[133X
   
-  [1X8.2-3 DerivationName[101X
+  [1X8.2-3 Description[101X
   
-  [33X[1;0Y[29X[2XDerivationName[102X( [3Xd[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XDescription[102X( [3Xd[103X ) [32X attribute[133X
   
-  [33X[0;0YThe  name  of  the  derivation.  This  is a name identifying this particular
-  derivation,  and  normally  not  the  same  as  the  name  of  the operation
-  implemented by the derivation.[133X
+  [33X[0;0YA description of the derivation.[133X
   
-  [1X8.2-4 DerivationWeight[101X
+  [1X8.2-4 AdditionalWeight[101X
   
-  [33X[1;0Y[29X[2XDerivationWeight[102X( [3Xd[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XAdditionalWeight[102X( [3Xd[103X ) [32X attribute[133X
   
-  [33X[0;0YExtra weight for the derivation.[133X
+  [33X[0;0YAdditional weight for the derivation.[133X
   
   [1X8.2-5 DerivationFunction[101X
   

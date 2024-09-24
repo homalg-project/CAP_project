@@ -304,6 +304,7 @@
       for IsCapCategory, IsFunction, IsInt 7.6-123 
   [2XAddIsZeroForObjects[102X, for IsCapCategory, IsFunction 7.6-124 
       for IsCapCategory, IsFunction, IsInt 7.6-124 
+  [2XAdditionalWeight[102X, for IsDerivedMethod 8.2-4 
   [2XAdditionForMorphisms[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.8-2 
   [2XAdditiveGenerators[102X, for IsCapCategory 1.4-11 
   [2XAdditiveInverseForMorphisms[102X, for IsCapCategoryMorphism 3.8-4 
@@ -705,11 +706,10 @@
   [2XDerivationFunction[102X, for IsDerivedMethod 8.2-5 
   [2XDerivationGraph[102X, for IsOperationWeightList 8.4-3 
   [2XDerivationInfo[102X 8.1-1 
-  [2XDerivationName[102X, for IsDerivedMethod 8.2-3 
   [2XDerivationOfOperation[102X, for IsOperationWeightList, IsString 8.4-7 
   [2XDerivationsOfOperation[102X, for IsDerivedMethodGraph, IsString 8.3-8 
   [2XDerivationsUsingOperation[102X, for IsDerivedMethodGraph, IsString 8.3-7 
-  [2XDerivationWeight[102X, for IsDerivedMethod 8.2-4 
+  [2XDescription[102X, for IsDerivedMethod 8.2-3 
   [2XDirectProduct[102X 6.8-1 
   [2XDirectProductFunctorial[102X, for IsList, IsList, IsList 6.8-7 
   [2XDirectProductFunctorialWithGivenDirectProducts[102X, for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject 6.8-8 

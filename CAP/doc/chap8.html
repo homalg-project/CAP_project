@@ -34,8 +34,8 @@
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X8445F6F187784DF1">8.2-1 IsDerivedMethod</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7D48366978D5BABD">8.2-2 MakeDerivation</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X85FA69CA831B3D68">8.2-3 DerivationName</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X8039396185E25B0C">8.2-4 DerivationWeight</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X87FAA68185CE87A4">8.2-3 Description</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7FB3A67D81A47B14">8.2-4 AdditionalWeight</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7CBD06FC8461DCA9">8.2-5 DerivationFunction</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7F2B7310826D555B">8.2-6 CategoryFilter</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7CA199A3868E0222">8.2-7 IsApplicableToCategory</a></span>
@@ -133,19 +133,19 @@
 </ul>
 <p>This is given as a list of lists, where each sublist has as first entry the name of an operation, as second entry an integer and as third entry either a function or <code class="code">fail</code>. This function should accept the category for which this derivation will be installed, and return a category for which the operation in the first entry must be installed for the derivation to be considered applicable. The argument <var class="Arg">weight</var> is an additional number to add when calculating the resulting weight of the target operation using this derivation. Unless there is any particular reason to regard the derivation as exceedingly expensive, this number should be <code class="code">1</code>. The argument <var class="Arg">func</var> contains the actual implementation of the derived method. The argument <var class="Arg">category_filter</var> is a filter (or function) describing which categories the derivation is valid for. If it is valid for all categories, then this argument should have the value <code class="code">IsCapCategory</code>. The output of <var class="Arg">category_filter</var> must not change during the installation of operations. In particular, it must not rely on <code class="code">CanCompute</code> to check conditions.</p>
 
-<p><a id="X85FA69CA831B3D68" name="X85FA69CA831B3D68"></a></p>
+<p><a id="X87FAA68185CE87A4" name="X87FAA68185CE87A4"></a></p>
 
-<h5>8.2-3 DerivationName</h5>
+<h5>8.2-3 Description</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DerivationName</code>( <var class="Arg">d</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>The name of the derivation. This is a name identifying this particular derivation, and normally not the same as the name of the operation implemented by the derivation.</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Description</code>( <var class="Arg">d</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>A description of the derivation.</p>
 
-<p><a id="X8039396185E25B0C" name="X8039396185E25B0C"></a></p>
+<p><a id="X7FB3A67D81A47B14" name="X7FB3A67D81A47B14"></a></p>
 
-<h5>8.2-4 DerivationWeight</h5>
+<h5>8.2-4 AdditionalWeight</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DerivationWeight</code>( <var class="Arg">d</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Extra weight for the derivation.</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdditionalWeight</code>( <var class="Arg">d</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Additional weight for the derivation.</p>
 
 <p><a id="X7CBD06FC8461DCA9" name="X7CBD06FC8461DCA9"></a></p>
 
