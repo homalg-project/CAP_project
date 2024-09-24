@@ -108,13 +108,6 @@ FunctionWithNamedArguments(
   function( CAP_NAMED_ARGUMENTS, d, weight, C )
     local method_name, func;
     
-    Info( DerivationInfo, 1, Concatenation( "install(",
-                                            String( weight ),
-                                            ") ",
-                                            TargetOperation( d ),
-                                            ": ",
-                                            Description( d ), "\n" ) );
-    
     method_name := TargetOperation( d );
     func := DerivationFunction( d );
     
@@ -458,6 +451,13 @@ BindGlobal( "TryToInstallDerivation", function ( owl, d )
     current_derivation := DerivationOfOperation( owl, target );
     
     if new_weight < current_weight or (new_weight = current_weight and current_derivation <> fail and d!.position_in_derivations_by_target < current_derivation!.position_in_derivations_by_target) then
+        
+        Info( DerivationInfo, 1, Concatenation( "install(",
+                                                String( new_weight ),
+                                                ") ",
+                                                target,
+                                                ": ",
+                                                Description( d ), "\n" ) );
         
         # Previously, `InstallDerivationForCategory` was called at this point.
         # However, this could lead to methods being overwritten if cheaper derivations become available while adding primitive installations to a category.
