@@ -29,7 +29,7 @@ end );
 InstallMethod( MakeDerivation,
                [ IsString, IsString, IsDenseList, IsPosInt, IsFunction, IsFunction ],
                
-function( name, target_op_name, used_op_names_with_multiples_and_category_getters, weight, func, category_filter )
+function( description, target_op_name, used_op_names_with_multiples_and_category_getters, weight, func, category_filter )
   local wrapped_category_filter, derivation;
     
     #= comment for Julia
@@ -68,8 +68,8 @@ function( name, target_op_name, used_op_names_with_multiples_and_category_getter
     fi;
     
     derivation := CreateGapObjectWithAttributes( TheTypeOfDerivedMethods,
-        DerivationName, name,
-        DerivationWeight, weight,
+        Description, description,
+        AdditionalWeight, weight,
         DerivationFunction, func,
         CategoryFilter, wrapped_category_filter,
         TargetOperation, target_op_name,
@@ -83,7 +83,7 @@ end );
 InstallMethod( String,
                [ IsDerivedMethod ],
 function( d )
-  return Concatenation( "derivation ", DerivationName( d ),
+  return Concatenation( "derivation ", Description( d ),
                         " of operation ", TargetOperation( d ) );
 end );
 
@@ -113,7 +113,7 @@ FunctionWithNamedArguments(
                                             ") ",
                                             TargetOperation( d ),
                                             ": ",
-                                            DerivationName( d ), "\n" ) );
+                                            Description( d ), "\n" ) );
     
     method_name := TargetOperation( d );
     func := DerivationFunction( d );
@@ -395,7 +395,7 @@ function( owl, d )
     category := CategoryOfOperationWeightList( owl );
     category_operation_weights := owl!.operation_weights;
     
-    weight := DerivationWeight( d );
+    weight := AdditionalWeight( d );
     
     for x in UsedOperationsWithMultiplesAndCategoryGetters( d ) do
         
@@ -562,7 +562,7 @@ function( owl, op_name )
       if d = fail then
         Print( "[primitive]" );
       else
-        Print( "[derived:", DerivationName( d ), "]" );
+        Print( "[derived:", Description( d ), "]" );
       fi;
     fi;
   end;
@@ -576,7 +576,7 @@ function( owl, op_name )
     if d = fail then
       return [];
     else
-      return Concatenation( [ [ fail, DerivationWeight( d ) ] ],
+      return Concatenation( [ [ fail, AdditionalWeight( d ) ] ],
                             UsedOperationsWithMultiplesAndCategoryGetters( d ) );
     fi;
   end;
@@ -707,7 +707,7 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
             
         else
             
-            Print( "It was derived by ", TextAttr.b3, DerivationName( current_derivation ), TextAttr.reset, " using \n" );
+            Print( "It was derived by ", TextAttr.b3, Description( current_derivation ), TextAttr.reset, " using \n" );
             
             for x in UsedOperationsWithMultiplesAndCategoryGetters( current_derivation ) do
                 
@@ -829,7 +829,7 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
             
         od;
         
-        Print( "with additional weight ", DerivationWeight( current_derivation.derivation ) );
+        Print( "with additional weight ", AdditionalWeight( current_derivation.derivation ) );
         
         Assert( 0, IsBound( current_derivation.can_compute ) = IsBound( current_derivation.cannot_compute ) );
         
