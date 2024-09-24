@@ -41,6 +41,9 @@ InstallMethod( CategoryOfRows,
         
         SetIsRigidSymmetricCoclosedMonoidalCategory( cat, true );
         
+        # since methods have been added before, we have to reevaluate the derivations
+        Reevaluate( cat!.derivations_weight_list );
+        
     fi;
     
     INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS( cat );

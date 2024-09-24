@@ -285,9 +285,8 @@ InstallMethod( AddCapOperation,
         
     fi;
     
-    if not is_derivation then
+    if not (is_derivation or is_final_derivation) then
         
-        # Final derivations are not handled by the original derivation mechanism and are thus just like primitive operations for it.
         AddPrimitiveOperation( category!.derivations_weight_list, function_name, weight );
         
     fi;

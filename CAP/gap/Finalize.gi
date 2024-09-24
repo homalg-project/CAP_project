@@ -292,7 +292,7 @@ InstallMethod( Finalize,
     [ "FinalizeCategory", true ],
   ],
   function( CAP_NAMED_ARGUMENTS, category )
-    local derivation_list, weight_list, current_install, current_final_derivation, weight, old_weights, categorical_properties, diff, properties_with_logic, property, i, derivation, operation, property_name, installed_operations_of_homomorphism_structure, original_REORDER_METHODS_SUSPENSION_LEVEL;
+    local derivation_list, weight_list, current_install, current_final_derivation, op_name, new_weight, current_weight, old_weights, categorical_properties, diff, properties_with_logic, property, i, derivation, operation, property_name, installed_operations_of_homomorphism_structure, original_REORDER_METHODS_SUSPENSION_LEVEL;
     
     if IsFinalized( category ) then
         
@@ -391,16 +391,35 @@ InstallMethod( Finalize,
             
             for derivation in current_final_derivation.derivations do
                 
-                weight := OperationWeightUsingDerivation( weight_list, derivation );
+                op_name := TargetOperation( derivation );
+                new_weight := OperationWeightUsingDerivation( weight_list, derivation );
+                current_weight := CurrentOperationWeight( weight_list, op_name );
                 
-                Assert( 0, weight <> infinity );
+                Assert( 0, new_weight <> infinity );
                 
                 # When installing a final derivation bundle, the installation of the first operations in the bundle
                 # might trigger (normal) derivations of later operations it the bundle, which might be cheaper then
                 # the derivations provided in the bundle.
-                if weight <= CurrentOperationWeight( weight_list, TargetOperation( derivation ) ) then
+                if new_weight <= current_weight then
                     
-                    InstallDerivationForCategory( derivation, weight, category : IsFinalDerivation := true );
+                    Info( DerivationInfo, 1, Concatenation( "install(",
+                                                            String( new_weight ),
+                                                            ") ",
+                                                            op_name,
+                                                            ": ",
+                                                            Description( derivation ), "\n" ) );
+                    
+                    InstallDerivationForCategory( derivation, new_weight, category : IsFinalDerivation := true );
+                    
+                    weight_list!.operation_weights.( op_name ) := new_weight;
+                    weight_list!.operation_derivations.( op_name ) := fail;
+                    
+                    # if the weight has not changed, there is no need to re-trigger the chain of derivations
+                    if new_weight <> current_weight then
+                        
+                        InstallDerivationsUsingOperation( weight_list, op_name );
+                        
+                    fi;
                     
                 fi;
                 
