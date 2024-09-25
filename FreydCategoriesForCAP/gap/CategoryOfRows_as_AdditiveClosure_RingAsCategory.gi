@@ -30,8 +30,7 @@ InstallMethod( CategoryOfRows_as_AdditiveClosure_RingAsCategory,
     # These ring properties should actually be propagated to some categorical properties of `ring_as_category`
     # which the AdditiveClosure can use generically.
     # However, such categorical properties do not (yet) exist, so we have to set the categorical properties
-    # a posteriori here. Afterwards, we have to reevaluate the derivations because they might have changed
-    # by setting the properties.
+    # a posteriori here.
     if HasHasInvariantBasisProperty( homalg_ring ) and HasInvariantBasisProperty( homalg_ring ) then
         
         SetIsSkeletalCategory( add, true );
@@ -49,8 +48,6 @@ InstallMethod( CategoryOfRows_as_AdditiveClosure_RingAsCategory,
         SetIsAbelianCategoryWithEnoughInjectives( add, true );
         
     fi;
-    
-    Reevaluate( add!.derivations_weight_list );
     
     Finalize( add );
     
