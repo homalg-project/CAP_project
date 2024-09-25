@@ -292,7 +292,7 @@ InstallMethod( Finalize,
     [ "FinalizeCategory", true ],
   ],
   function( CAP_NAMED_ARGUMENTS, category )
-    local derivation_list, weight_list, current_install, current_final_derivation, op_name, new_weight, current_weight, old_weights, categorical_properties, diff, properties_with_logic, property, i, derivation, operation, property_name, installed_operations_of_homomorphism_structure, original_REORDER_METHODS_SUSPENSION_LEVEL;
+    local derivation_list, weight_list, current_install, current_final_derivation, op_name, new_weight, current_weight, old_weights, properties_with_logic, property, i, derivation, operation, property_name, installed_operations_of_homomorphism_structure, original_REORDER_METHODS_SUSPENSION_LEVEL;
     
     if IsFinalized( category ) then
         
@@ -303,15 +303,6 @@ InstallMethod( Finalize,
     if not CAP_NAMED_ARGUMENTS.FinalizeCategory then
         
         return false;
-        
-    fi;
-    
-    # prepare for the checks below (usually this is done when the first add function is called, but we support the case that no add function is called at all)
-    if not IsBound( category!.initially_known_categorical_properties ) then
-        
-        category!.initially_known_categorical_properties := ShallowCopy( ListKnownCategoricalProperties( category ) );
-        
-        InstallDerivationsUsingOperation( category!.derivations_weight_list, "none" );
         
     fi;
     
@@ -338,6 +329,18 @@ InstallMethod( Finalize,
     # =#
     
     weight_list := category!.derivations_weight_list;
+    
+    InstallDerivationsUsingOperation( weight_list, "none" );
+    
+    for op_name in SortedList( RecNames( weight_list!.operation_weights ) ) do
+        
+        if weight_list!.operation_weights.(op_name) <> infinity and weight_list!.operation_derivations.(op_name) = fail then
+            
+            InstallDerivationsUsingOperation( weight_list, op_name );
+            
+        fi;
+        
+    od;
     
     while true do
         
@@ -429,45 +432,24 @@ InstallMethod( Finalize,
         
     od;
     
-    if category!.overhead then
+    # TODO: remove once this check has passed the CI of all packages
+    # Check if reevaluation triggers new derivations. Derivations are installed recursively by `InstallDerivationsUsingOperation`, so this should never happen.
+    # See the WARNING below for possible causes why it still might happen.
+    old_weights := StructuralCopy( weight_list!.operation_weights );
+    
+    Info( DerivationInfo, 1, "Starting reevaluation of derivation weight list of the category name \"", Name( category ), "\"\n" );
+    
+    Reevaluate( weight_list );
+    
+    Info( DerivationInfo, 1, "Finished reevaluation of derivation weight list of the category name \"", Name( category ), "\"\n" );
+    
+    if weight_list!.operation_weights <> old_weights then
         
-        # Check if reevaluation triggers new derivations. Derivations are installed recursively by `InstallDerivationsUsingOperation`, so this should never happen.
-        # See the WARNING below for possible causes why it still might happen.
-        old_weights := StructuralCopy( weight_list!.operation_weights );
-        
-        Info( DerivationInfo, 1, "Starting reevaluation of derivation weight list of the category name \"", Name( category ), "\"\n" );
-        
-        Reevaluate( weight_list );
-        
-        Info( DerivationInfo, 1, "Finished reevaluation of derivation weight list of the category name \"", Name( category ), "\"\n" );
-        
-        categorical_properties := ListKnownCategoricalProperties( category );
-        
-        if not IsSubset( categorical_properties, category!.initially_known_categorical_properties ) then
-            
-            Print( "WARNING: The category named \"", Name( category ), "\" has lost the following categorical properties since installation of the first function:\n" );
-            Display( Difference( category!.initially_known_categorical_properties, categorical_properties ) );
-            
-        fi;
-        
-        if weight_list!.operation_weights <> old_weights then
-            
-            Print( "WARNING: The installed derivations of the category named \"", Name( category ), "\" have changed by reevaluation, which is not expected at this point.\n" );
-            Print( "This might be due to one of the following reasons:\n" );
-            Print( "* The category might have gained a new setting like `supports_empty_limits` since adding the first function. Such settings should always be set before adding functions.\n" );
-            Print( "* The category filter of some derivation might not fulfill the specification.\n" );
-            
-            diff := Difference( categorical_properties, category!.initially_known_categorical_properties );
-            
-            if not IsEmpty( diff ) then
-                
-                Print( "* The category has gained the following new categorical properties since adding the first function: ", diff, ". Properties should always be set before adding functions for operations which might trigger derivations involving the properties.\n" );
-                
-            fi;
-            
-            Print( "For debugging, call `ActivateDerivationInfo( )`, retry, and look at the derivations between \"Starting reevaluation of ...\" and \"Finished reevaluation of ...\".\n" );
-            
-        fi;
+        Print( "WARNING: The installed derivations of the category named \"", Name( category ), "\" have changed by reevaluation, which is not expected at this point.\n" );
+        Print( "This might be due to one of the following reasons:\n" );
+        Print( "* The category might have gained a new setting like `supports_empty_limits` since adding the first function. Such settings should always be set before adding functions.\n" );
+        Print( "* The category filter of some derivation might not fulfill the specification.\n" );
+        Print( "For debugging, call `ActivateDerivationInfo( )`, retry, and look at the derivations between \"Starting reevaluation of ...\" and \"Finished reevaluation of ...\".\n" );
         
     fi;
     

@@ -538,13 +538,6 @@ function( owl, op_name, new_weight )
     owl!.operation_weights.( op_name ) := new_weight;
     owl!.operation_derivations.( op_name ) := fail;
     
-    # if the weight has not changed, there is no need to re-trigger the chain of derivations
-    if new_weight <> current_weight then
-        
-        InstallDerivationsUsingOperation( owl, op_name );
-        
-    fi;
-    
 end );
 
 InstallMethod( PrintDerivationTree,

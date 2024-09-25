@@ -1070,7 +1070,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         SetRangeCategoryOfHomomorphismStructure( category, range_category );
         SetIsEquippedWithHomomorphismStructure( category, true );
         
-        if ForAll( [ "DirectSum" ], f -> CanCompute( range_category, f ) ) and
+        if (ForAll( [ "DirectSum" ], f -> CanCompute( range_category, f ) ) or IsIdenticalObj( range_category, category )) and
            ForAll( [ "HomomorphismStructureOnObjects" ], f -> CanCompute( underlying_category, f ) ) then
             
             ##
@@ -1090,7 +1090,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         fi;
         
         # legacy
-        if ForAll( [ "MorphismBetweenDirectSumsWithGivenDirectSums" ], f -> CanCompute( range_category, f ) ) and
+        if (ForAll( [ "MorphismBetweenDirectSumsWithGivenDirectSums" ], f -> CanCompute( range_category, f ) ) or IsIdenticalObj( range_category, category )) and
            ForAll( [ "HomomorphismStructureOnMorphismsWithGivenObjects" ], f -> CanCompute( underlying_category, f ) ) and
            not (IsBound( range_category!.supports_empty_limits ) and range_category!.supports_empty_limits = true) then
             
@@ -1130,7 +1130,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
             
         fi;
         
-        if ForAll( [ "MorphismBetweenDirectSumsWithGivenDirectSums" ], f -> CanCompute( range_category, f ) )
+        if (ForAll( [ "MorphismBetweenDirectSumsWithGivenDirectSums" ], f -> CanCompute( range_category, f ) ) or IsIdenticalObj( range_category, category ))
            and ForAll( [ "HomomorphismStructureOnMorphismsWithGivenObjects" ], f -> CanCompute( underlying_category, f ) )
            and IsBound( range_category!.supports_empty_limits ) and range_category!.supports_empty_limits = true then
             
@@ -1208,9 +1208,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
             
         fi;
         
-        if ForAll( [ "UniversalMorphismIntoZeroObject",
+        if (ForAll( [ "UniversalMorphismIntoZeroObject",
                      "UniversalMorphismIntoDirectSum" ],
-                     f -> CanCompute( range_category, f ) ) and
+                     f -> CanCompute( range_category, f ) ) or IsIdenticalObj( range_category, category )) and
            ForAll( [ "DistinguishedObjectOfHomomorphismStructure",
                          "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" ],
                          f -> CanCompute( underlying_category, f ) ) and
@@ -1245,8 +1245,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
             
         fi;
         
-        if ForAll( [ "UniversalMorphismIntoDirectSum" ],
-                     f -> CanCompute( range_category, f ) ) and
+        if (ForAll( [ "UniversalMorphismIntoDirectSum" ],
+                     f -> CanCompute( range_category, f ) ) or IsIdenticalObj( range_category, category )) and
            ForAll( [ "DistinguishedObjectOfHomomorphismStructure",
                          "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" ],
                          f -> CanCompute( underlying_category, f ) ) and
@@ -1297,9 +1297,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         if ForAll( [ "HomomorphismStructureOnObjects",
                      "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ],
                      f -> CanCompute( underlying_category, f ) ) and
-           ForAll( [ "PreCompose",
+           (ForAll( [ "PreCompose",
                          "ProjectionInFactorOfDirectSum" ],
-                         f -> CanCompute( range_category, f ) ) then
+                         f -> CanCompute( range_category, f ) ) or IsIdenticalObj( range_category, category )) then
             
             ##
             AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
