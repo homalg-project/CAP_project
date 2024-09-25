@@ -51,13 +51,30 @@ InstallMethod( AddCapOperation,
         weight := 100;
     fi;
     
-    # If there already is a faster method: do nothing but display a warning because this should not happen usually.
+    # If there already is a faster method: do nothing but display a warning because this should not happen.
     if weight > CurrentOperationWeight( category!.derivations_weight_list, function_name ) then
         
-        # There are some derivations of weight 1 for thin categories which are triggered immediately and which CategoryConstructor tries to overwrite with weight 100.
-        if CurrentOperationWeight( category!.derivations_weight_list, function_name ) <> 1 then
+        Print( "WARNING: Ignoring a function added for ", function_name, " with weight ", weight, " to \"", category_name, "\" because there already is a function installed with weight ", CurrentOperationWeight( category!.derivations_weight_list, function_name ), "." );
+        
+        if is_precompiled_derivation then
             
-            Print( "WARNING: Ignoring a function added for ", function_name, " with weight ", weight, " to \"", category_name, "\" because there already is a function installed with weight ", CurrentOperationWeight( category!.derivations_weight_list, function_name ), "." );
+            Print( " Probably you have to rerun the precompilation to adjust the weights in the precompiled code." );
+            
+        fi;
+        
+        Print( "\n" );
+        
+        return;
+        
+    fi;
+    
+    # Display a warning when overwriting primitive operations with derivations.
+    if (is_derivation or is_final_derivation or is_precompiled_derivation) and IsBound( category!.primitive_operations.( function_name ) ) and category!.primitive_operations.( function_name ) then
+        
+        # There are some derivations of weight 1 for thin categories which overwrite methods installed by CategoryConstructor with weight 100.
+        if weight <> 1 then
+            
+            Print( "WARNING: Overriding a function for ", function_name, " primitively added to \"", category_name, "\" with a derivation." );
             
             if is_precompiled_derivation then
                 
@@ -68,23 +85,6 @@ InstallMethod( AddCapOperation,
             Print( "\n" );
             
         fi;
-        
-        return;
-        
-    fi;
-    
-    # Display a warning when overwriting primitive operations with derivations.
-    if (is_derivation or is_final_derivation or is_precompiled_derivation) and IsBound( category!.primitive_operations.( function_name ) ) and category!.primitive_operations.( function_name ) then
-        
-        Print( "WARNING: Overriding a function for ", function_name, " primitively added to \"", category_name, "\" with a derivation." );
-        
-        if is_precompiled_derivation then
-            
-            Print( " Probably you have to rerun the precompilation to adjust the weights in the precompiled code." );
-            
-        fi;
-        
-        Print( "\n" );
         
     fi;
     
