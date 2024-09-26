@@ -292,7 +292,7 @@ InstallMethod( Finalize,
     [ "FinalizeCategory", true ],
   ],
   function( CAP_NAMED_ARGUMENTS, category )
-    local derivation_list, weight_list, current_install, current_final_derivation, op_name, new_weight, current_weight, old_weights, properties_with_logic, property, i, derivation, operation, property_name, installed_operations_of_homomorphism_structure, original_REORDER_METHODS_SUSPENSION_LEVEL;
+    local derivation_list, weight_list, current_install, current_final_derivation, op_name, new_weight, current_weight, properties_with_logic, property, i, derivation, operation, property_name, installed_operations_of_homomorphism_structure, original_REORDER_METHODS_SUSPENSION_LEVEL;
     
     if IsFinalized( category ) then
         
@@ -423,27 +423,6 @@ InstallMethod( Finalize,
         fi;
         
     od;
-    
-    # TODO: remove once this check has passed the CI of all packages
-    # Check if reevaluation triggers new derivations. Derivations are installed recursively by `InstallDerivationsUsingOperation`, so this should never happen.
-    # See the WARNING below for possible causes why it still might happen.
-    old_weights := StructuralCopy( weight_list!.operation_weights );
-    
-    Info( DerivationInfo, 1, "Starting reevaluation of derivation weight list of the category name \"", Name( category ), "\"\n" );
-    
-    Reevaluate( weight_list );
-    
-    Info( DerivationInfo, 1, "Finished reevaluation of derivation weight list of the category name \"", Name( category ), "\"\n" );
-    
-    if weight_list!.operation_weights <> old_weights then
-        
-        Print( "WARNING: The installed derivations of the category named \"", Name( category ), "\" have changed by reevaluation, which is not expected at this point.\n" );
-        Print( "This might be due to one of the following reasons:\n" );
-        Print( "* The category might have gained a new setting like `supports_empty_limits` since adding the first function. Such settings should always be set before adding functions.\n" );
-        Print( "* The category filter of some derivation might not fulfill the specification.\n" );
-        Print( "For debugging, call `ActivateDerivationInfo( )`, retry, and look at the derivations between \"Starting reevaluation of ...\" and \"Finished reevaluation of ...\".\n" );
-        
-    fi;
     
     installed_operations_of_homomorphism_structure :=
       Intersection( ListInstalledOperationsOfCategory( category ),
