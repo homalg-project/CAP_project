@@ -36,11 +36,9 @@ DeclareCategory( "IsDerivedMethod", IsAttributeStoringRep );
 
 #! @Description
 #!  Creates a new derivation object.
-#!  The argument <A>name</A> is an arbitrary name used to
-#!  identify this derivation, and is useful only for debugging
-#!  purposes.
 #!  The argument <A>target_op_name</A> is the name of the operation which
 #!  the derived method implements.
+#!  The argument <A>description</A> should describe the derivation.
 #!  The argument <A>used_ops_with_multiples</A> contains
 #!  
 #!  * the name of each operation used by the derived method,
@@ -53,23 +51,22 @@ DeclareCategory( "IsDerivedMethod", IsAttributeStoringRep );
 #!  category for which this derivation will be installed,
 #!  and return a category for which the operation in the first
 #!  entry must be installed for the derivation to be considered applicable.
+#!  The argument <A>func</A> contains the actual implementation of the
+#!  derived method.
 #!  The argument <A>weight</A> is an additional number to add
 #!  when calculating the resulting weight of the target operation
 #!  using this derivation. Unless there is any particular reason
 #!  to regard the derivation as exceedingly expensive, this number
 #!  should be <C>1</C>.
-#!  The argument <A>func</A> contains the actual implementation of the
-#!  derived method.
 #!  The argument <A>category_filter</A> is a filter (or function) describing
 #!  which categories the derivation is valid for. If it is valid
 #!  for all categories, then this argument should have the value
 #!  <C>IsCapCategory</C>. The output of <A>category_filter</A> must not
 #!  change during the installation of operations. In particular, it must
 #!  not rely on `CanCompute` to check conditions.
-#! @Arguments name, target_op, used_ops_with_multiples, weight, func, category_filter
-DeclareOperation( "MakeDerivation",
-                  [ IsString, IsString, IsDenseList,
-                    IsPosInt, IsFunction, IsFunction ] );
+#! @Arguments target_op_name, description, used_ops_with_multiples, func, weight, category_filter
+DeclareOperation( "CreateDerivation",
+                  [ IsString, IsString, IsDenseList, IsFunction, IsPosInt, IsFunction ] );
 
 #! @Description
 #!  A description of the derivation.

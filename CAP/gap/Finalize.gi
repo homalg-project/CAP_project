@@ -189,12 +189,12 @@ InstallGlobalFunction( AddFinalDerivationBundle, FunctionWithNamedArguments(
         fi;
         # =#
         
-        Add( derivations, MakeDerivation(
-            Concatenation( description, " (final derivation)" ),
+        Add( derivations, CreateDerivation(
             NameFunction( current_additional_func[1] ),
+            Concatenation( description, " (final derivation)" ),
             used_op_names_with_multiples_and_category_getters,
-            weight,
             current_additional_func[3],
+            weight,
             category_filter
         ) );
         
@@ -262,12 +262,12 @@ InstallGlobalFunction( AddFinalDerivationBundle, FunctionWithNamedArguments(
     fi;
     
     # only used to check if we can install all the derivations in `derivations`
-    dummy_derivation := MakeDerivation(
-        "dummy derivation",
+    dummy_derivation := CreateDerivation(
         "internal dummy function of a final derivation",
+        "dummy derivation",
         used_op_names_with_multiples_and_category_getters,
-        1,
         ReturnTrue,
+        1,
         category_filter
     );
     

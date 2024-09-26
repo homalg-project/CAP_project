@@ -26,10 +26,10 @@ InstallGlobalFunction( "DeactivateDerivationInfo",
     SetInfoLevel( DerivationInfo, 0 );
 end );
 
-InstallMethod( MakeDerivation,
-               [ IsString, IsString, IsDenseList, IsPosInt, IsFunction, IsFunction ],
+InstallMethod( CreateDerivation,
+               [ IsString, IsString, IsDenseList, IsFunction, IsPosInt, IsFunction ],
                
-function( description, target_op_name, used_op_names_with_multiples_and_category_getters, weight, func, category_filter )
+function( target_op_name, description, used_op_names_with_multiples_and_category_getters, func, weight, category_filter )
   local wrapped_category_filter, derivation;
     
     #= comment for Julia
@@ -236,12 +236,14 @@ InstallGlobalFunction( AddDerivation,
     fi;
     # =#
     
-    derivation := MakeDerivation( description,
-                                  target_op_name,
-                                  used_op_names_with_multiples_and_category_getters,
-                                  weight,
-                                  func,
-                                  category_filter );
+    derivation := CreateDerivation(
+        target_op_name,
+        description,
+        used_op_names_with_multiples_and_category_getters,
+        func,
+        weight,
+        category_filter
+    );
     
     if function_called_before_installation <> false then
         
