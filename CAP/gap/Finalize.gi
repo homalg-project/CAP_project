@@ -318,6 +318,12 @@ InstallMethod( Finalize,
             
             if weight_list!.operation_weights.(op_name) <> infinity and weight_list!.operation_derivations.(op_name) = fail then
                 
+                Info( DerivationInfo, 1, Concatenation( "add(",
+                                                        String( weight_list!.operation_weights.(op_name) ),
+                                                        ") ",
+                                                        op_name,
+                                                        ": primitive installation\n" ) );
+                
                 InstallDerivationsUsingOperation( weight_list, op_name );
                 
             fi;
@@ -390,7 +396,7 @@ InstallMethod( Finalize,
                     # the derivations provided in the bundle.
                     if new_weight <= current_weight then
                         
-                        Info( DerivationInfo, 1, Concatenation( "install(",
+                        Info( DerivationInfo, 1, Concatenation( "derive(",
                                                                 String( new_weight ),
                                                                 ") ",
                                                                 op_name,
