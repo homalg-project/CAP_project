@@ -122,7 +122,7 @@ gap> CAP_JIT_INTERNAL_COPY_OF_CATEGORY := fail;;
 gap> BindGlobal( "GenerateOppositeDerivation", function ( derivation )
 > local operation_name, dual_operation_name, list_of_operations_to_install, property_pair, properties, dummy, op, op_op, copy, info, input_arguments_names, filter_list, return_type, prepared_arguments_strings, recoercion_function_string, compiled_func;
 >   
->   PushOptions( rec( disable_derivations := true, overhead := false ) );
+>   PushOptions( rec( overhead := false ) );
 >   
 >   operation_name := TargetOperation( derivation );
 >   
@@ -147,7 +147,9 @@ gap> BindGlobal( "GenerateOppositeDerivation", function ( derivation )
 >       name := Concatenation( "Dummy for ", dual_operation_name ),
 >       list_of_operations_to_install := list_of_operations_to_install,
 >       properties := properties,
->   ) );
+>   ) : FinalizeCategory := false );
+>   
+>   Finalize( dummy : disable_derivations := true );
 >   
 >   StopCompilationAtPrimitivelyInstalledOperationsOfCategory( dummy );
 >   
@@ -156,13 +158,15 @@ gap> BindGlobal( "GenerateOppositeDerivation", function ( derivation )
 >   
 >   # trigger the derivation manually
 >   TryToInstallDerivation( op!.derivations_weight_list, derivation );
->   
 >   Assert( 0, CanCompute( op, operation_name ) );
+>   InstallDerivationForCategory( derivation, CurrentOperationWeight( op!.derivations_weight_list, operation_name ), op );
 >   
->   Finalize( op );
+>   Finalize( op : disable_derivations := true );
 >   
 >   # take the opposite again, where the dual operation is now available
->   op_op := Opposite( op, Concatenation( "Double opposite of ", Name( dummy ) ) );
+>   op_op := Opposite( op, Concatenation( "Double opposite of ", Name( dummy ) ) : FinalizeCategory := false );
+>   
+>   Finalize( op_op : disable_derivations := true );
 >   
 >   Assert( 0, CanCompute( op_op, dual_operation_name ) );
 >   
@@ -180,7 +184,9 @@ gap> BindGlobal( "GenerateOppositeDerivation", function ( derivation )
 >       modeling_tower_object_datum := { copy, tower_object } -> Opposite( Opposite( tower_object ) ),
 >       modeling_tower_morphism_constructor := { copy, source, orig_morphism, range } -> MorphismConstructor( ModelingCategory( copy ), source, MorphismConstructor( OppositeCategory( ModelingCategory( copy ) ), Opposite( range ), orig_morphism, Opposite( source ) ), range ),
 >       modeling_tower_morphism_datum := { copy, tower_morphism } -> Opposite( Opposite( tower_morphism ) ),
->   ) );
+>   ) : FinalizeCategory := false );
+>   
+>   Finalize( copy : disable_derivations := true );
 >   
 >   # to compute the dual operation in the original category, we coerce objects and morphism to the copy,
 >   # compute the dual operation there, and re-coerce the result back to the original category
@@ -280,12 +286,10 @@ gap> BindGlobal( "GenerateOppositeDerivation", function ( derivation )
 >       return_type
 >   );
 >   
->   Assert( 0, ValueOption( "disable_derivations" ) = true );
 >   Assert( 0, ValueOption( "overhead" ) = false );
 >   
 >   PopOptions( );
 >   
->   Assert( 0, ValueOption( "disable_derivations" ) = fail );
 >   Assert( 0, ValueOption( "overhead" ) = fail );
 >   
 >   return compiled_func;

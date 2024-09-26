@@ -290,6 +290,7 @@ InstallMethod( Finalize,
  FunctionWithNamedArguments(
   [
     [ "FinalizeCategory", true ],
+    [ "disable_derivations", false ],
   ],
   function( CAP_NAMED_ARGUMENTS, category )
     local derivation_list, weight_list, current_install, current_final_derivation, op_name, new_weight, current_weight, properties_with_logic, property, i, derivation, operation, property_name, installed_operations_of_homomorphism_structure, original_REORDER_METHODS_SUSPENSION_LEVEL;
@@ -306,123 +307,128 @@ InstallMethod( Finalize,
         
     fi;
     
-    #= comment for Julia
-    if ValueOption( "disable_derivations" ) = true then
+    if not CAP_NAMED_ARGUMENTS.disable_derivations then
         
-        derivation_list := [ ];
+        weight_list := category!.derivations_weight_list;
         
-    else
-        # =#
+        # ordinary derivations
+        InstallDerivationsUsingOperation( weight_list, "none" );
         
-        derivation_list := ShallowCopy( CAP_INTERNAL_FINAL_DERIVATION_LIST );
-        
-        #= comment for Julia
-    fi;
-    # =#
-    
-    weight_list := category!.derivations_weight_list;
-    
-    InstallDerivationsUsingOperation( weight_list, "none" );
-    
-    for op_name in SortedList( RecNames( weight_list!.operation_weights ) ) do
-        
-        if weight_list!.operation_weights.(op_name) <> infinity and weight_list!.operation_derivations.(op_name) = fail then
+        for op_name in SortedList( RecNames( weight_list!.operation_weights ) ) do
             
-            InstallDerivationsUsingOperation( weight_list, op_name );
-            
-        fi;
-        
-    od;
-    
-    while true do
-        
-        current_install := fail;
-        
-        for i in [ 1 .. Length( derivation_list ) ] do
-            
-            current_final_derivation := derivation_list[ i ];
-            
-            # check if all conditions for installing the final derivation are met
-            
-            if not IsApplicableToCategory( current_final_derivation.dummy_derivation, category ) then
+            if weight_list!.operation_weights.(op_name) <> infinity and weight_list!.operation_derivations.(op_name) = fail then
                 
-                continue;
+                InstallDerivationsUsingOperation( weight_list, op_name );
                 
             fi;
-            
-            if ForAny( current_final_derivation.cannot_compute, operation_name -> CurrentOperationWeight( weight_list, operation_name ) < infinity ) then
-                
-                continue;
-                
-            fi;
-            
-            if OperationWeightUsingDerivation( weight_list, current_final_derivation.dummy_derivation ) = infinity then
-                
-                continue;
-                
-            fi;
-            
-            # if we get here, everything matched
-            current_install := i;
-            break;
             
         od;
         
-        if current_install = fail then
+        # final derivations
+        derivation_list := ShallowCopy( CAP_INTERNAL_FINAL_DERIVATION_LIST );
+        
+        while true do
             
-            break;
+            current_install := fail;
             
-        else
-            
-            current_final_derivation := Remove( derivation_list, current_install );
-            
-            ## call function before adding the method
-            
-            if current_final_derivation.function_called_before_installation <> false then
+            for i in [ 1 .. Length( derivation_list ) ] do
                 
-                current_final_derivation.function_called_before_installation( category );
+                current_final_derivation := derivation_list[ i ];
                 
-            fi;
-            
-            for derivation in current_final_derivation.derivations do
+                # check if all conditions for installing the final derivation are met
                 
-                op_name := TargetOperation( derivation );
-                new_weight := OperationWeightUsingDerivation( weight_list, derivation );
-                current_weight := CurrentOperationWeight( weight_list, op_name );
-                
-                Assert( 0, new_weight <> infinity );
-                
-                # When installing a final derivation bundle, the installation of the first operations in the bundle
-                # might trigger (normal) derivations of later operations it the bundle, which might be cheaper then
-                # the derivations provided in the bundle.
-                if new_weight <= current_weight then
+                if not IsApplicableToCategory( current_final_derivation.dummy_derivation, category ) then
                     
-                    Info( DerivationInfo, 1, Concatenation( "install(",
-                                                            String( new_weight ),
-                                                            ") ",
-                                                            op_name,
-                                                            ": ",
-                                                            Description( derivation ), "\n" ) );
-                    
-                    InstallDerivationForCategory( derivation, new_weight, category : IsFinalDerivation := true );
-                    
-                    weight_list!.operation_weights.( op_name ) := new_weight;
-                    weight_list!.operation_derivations.( op_name ) := fail;
-                    
-                    # if the weight has not changed, there is no need to re-trigger the chain of derivations
-                    if new_weight <> current_weight then
-                        
-                        InstallDerivationsUsingOperation( weight_list, op_name );
-                        
-                    fi;
+                    continue;
                     
                 fi;
                 
+                if ForAny( current_final_derivation.cannot_compute, operation_name -> CurrentOperationWeight( weight_list, operation_name ) < infinity ) then
+                    
+                    continue;
+                    
+                fi;
+                
+                if OperationWeightUsingDerivation( weight_list, current_final_derivation.dummy_derivation ) = infinity then
+                    
+                    continue;
+                    
+                fi;
+                
+                # if we get here, everything matched
+                current_install := i;
+                break;
+                
             od;
             
-        fi;
+            if current_install = fail then
+                
+                break;
+                
+            else
+                
+                current_final_derivation := Remove( derivation_list, current_install );
+                
+                ## call function before adding the method
+                
+                if current_final_derivation.function_called_before_installation <> false then
+                    
+                    current_final_derivation.function_called_before_installation( category );
+                    
+                fi;
+                
+                for derivation in current_final_derivation.derivations do
+                    
+                    op_name := TargetOperation( derivation );
+                    new_weight := OperationWeightUsingDerivation( weight_list, derivation );
+                    current_weight := CurrentOperationWeight( weight_list, op_name );
+                    
+                    Assert( 0, new_weight <> infinity );
+                    
+                    # When installing a final derivation bundle, the installation of the first operations in the bundle
+                    # might trigger (normal) derivations of later operations it the bundle, which might be cheaper then
+                    # the derivations provided in the bundle.
+                    if new_weight <= current_weight then
+                        
+                        Info( DerivationInfo, 1, Concatenation( "install(",
+                                                                String( new_weight ),
+                                                                ") ",
+                                                                op_name,
+                                                                ": ",
+                                                                Description( derivation ), "\n" ) );
+                        
+                        InstallDerivationForCategory( derivation, new_weight, category : IsFinalDerivation := true );
+                        
+                        weight_list!.operation_weights.( op_name ) := new_weight;
+                        weight_list!.operation_derivations.( op_name ) := fail;
+                        
+                        # if the weight has not changed, there is no need to re-trigger the chain of derivations
+                        if new_weight <> current_weight then
+                            
+                            InstallDerivationsUsingOperation( weight_list, op_name );
+                            
+                        fi;
+                        
+                    fi;
+                    
+                od;
+                
+            fi;
+            
+        od;
         
-    od;
+        # actually install ordinary derivations
+        for operation in Operations( DerivationGraph( weight_list ) ) do
+            
+            if DerivationOfOperation( weight_list, operation ) <> fail then
+                
+                InstallDerivationForCategory( DerivationOfOperation( weight_list, operation ), CurrentOperationWeight( weight_list, operation ), category );
+                
+            fi;
+            
+        od;
+        
+    fi;
     
     installed_operations_of_homomorphism_structure :=
       Intersection( ListInstalledOperationsOfCategory( category ),
@@ -441,17 +447,6 @@ InstallMethod( Finalize,
         Error( "<category> has operations related to the homomorphism structure but no range category is set. This is not supported." );
         
     fi;
-    
-    # actually install normal derivations
-    for operation in Operations( DerivationGraph( weight_list ) ) do
-        
-        if DerivationOfOperation( weight_list, operation ) <> fail then
-            
-            InstallDerivationForCategory( DerivationOfOperation( weight_list, operation ), CurrentOperationWeight( weight_list, operation ), category );
-            
-        fi;
-        
-    od;
     
     SetIsFinalized( category, true );
     

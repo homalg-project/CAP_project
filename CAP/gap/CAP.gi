@@ -288,20 +288,7 @@ InstallGlobalFunction( "CreateCapCategoryWithDataTypes", FunctionWithNamedArgume
     
     obj!.is_computable := CAP_NAMED_ARGUMENTS.is_computable;
     
-    #= comment for Julia
-    if ValueOption( "disable_derivations" ) = true then
-        
-        # use an empty derivation graph
-        obj!.derivations_weight_list := MakeOperationWeightList( obj, MakeDerivationGraph( Operations( CAP_INTERNAL_DERIVATION_GRAPH ) ) );
-        
-    else
-        # =#
-        
-        obj!.derivations_weight_list := MakeOperationWeightList( obj, CAP_INTERNAL_DERIVATION_GRAPH );
-        
-        #= comment for Julia
-    fi;
-    # =#
+    obj!.derivations_weight_list := MakeOperationWeightList( obj, CAP_INTERNAL_DERIVATION_GRAPH );
     
     obj!.caches := rec( );
     
