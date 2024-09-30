@@ -323,9 +323,14 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects, FunctionWithNamedArg
             
             return Pair( """
                 function( input_arguments... )
-                    
-                    return ObjectConstructor( cat, "operation_name" );
-                    
+                  local args, string;
+                  
+                  args := [ input_arguments... ];
+                  
+                  string := Concatenation( "operation_name", "( ", JoinStringsWithSeparator( List( [ 2 .. number_of_arguments ], i -> String( args[i] ) ), ", " ), " )" );
+                  
+                  return ObjectConstructor( cat, string );
+                  
                 end
             """, 1 );
             
@@ -337,9 +342,14 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects, FunctionWithNamedArg
             
             return Pair( """
                 function( input_arguments... )
-                    
-                    return MorphismConstructor( cat, top_source, "operation_name", top_range );
-                    
+                  local args, string;
+                  
+                  args := [ input_arguments... ];
+                  
+                  string := Concatenation( "operation_name", "( ", JoinStringsWithSeparator( List( [ 2 .. number_of_arguments ], i -> String( args[i] ) ), ", " ), " )" );
+                  
+                  return MorphismConstructor( cat, top_source, string, top_range );
+                  
                 end
             """, 1 );
             
