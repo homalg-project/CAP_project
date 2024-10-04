@@ -898,6 +898,14 @@ InstallGlobalFunction( TriggerAllDerivations, function( category )
     
     weight_list := category!.derivations_weight_list;
     
+    for op_name in RecNames( category!.operations ) do
+        
+        Assert( 0, category!.operations.(op_name).type in [ "primitive_installation", "precompiled_derivation" ] );
+        
+        AddPrimitiveOperation( weight_list, op_name, category!.operations.(op_name).weight );
+        
+    od;
+    
     # Trigger ordinary derivations, but do not install them yet:
     # While triggering derivations, cheaper derivations can become available, but we do not want to overwrite methods.
     

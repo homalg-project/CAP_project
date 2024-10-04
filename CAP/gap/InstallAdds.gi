@@ -25,7 +25,7 @@ InstallMethod( AddCapOperation,
   function( CAP_NAMED_ARGUMENTS, function_name, category, func_to_install, weight )
     local record, category_name, is_derivation, is_final_derivation, is_precompiled_derivation, replaced_filter_list,
         input_human_readable_identifier_getter, input_sanity_check_functions, filter_string, data_type,
-        output_human_readable_identifier_getter, output_data_type, output_sanity_check_function;
+        output_human_readable_identifier_getter, output_data_type, output_sanity_check_function, type;
     
     record := CAP_INTERNAL_METHOD_NAME_RECORD.(function_name);
     
@@ -267,11 +267,29 @@ InstallMethod( AddCapOperation,
         
     fi;
     
-    if not (is_derivation or is_final_derivation) then
+    if is_derivation then
         
-        AddPrimitiveOperation( category!.derivations_weight_list, function_name, weight );
+        type := "ordinary_derivation";
+        
+    elif is_final_derivation then
+        
+        type := "final_derivation";
+        
+    elif is_precompiled_derivation then
+        
+        type := "precompiled_derivation";
+        
+    else
+        
+        type := "primitive_installation";
         
     fi;
+    
+    category!.operations.(function_name) := rec(
+        type := type,
+        weight := weight,
+        func := func_to_install,
+    );
     
     if is_derivation or is_final_derivation or is_precompiled_derivation then
         

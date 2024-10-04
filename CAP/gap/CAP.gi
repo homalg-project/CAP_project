@@ -302,6 +302,8 @@ InstallGlobalFunction( "CreateCapCategoryWithDataTypes", FunctionWithNamedArgume
     
     obj!.added_functions := rec( );
     
+    obj!.operations := rec( );
+    
     obj!.timing_statistics := rec( );
     obj!.timing_statistics_enabled := false;
     
@@ -599,9 +601,7 @@ InstallMethod( CanCompute,
         
     fi;
     
-    weight_list := category!.derivations_weight_list;
-    
-    return CurrentOperationWeight( weight_list, string ) <> infinity;
+    return IsBound( category!.operations.(string) );
     
 end );
 

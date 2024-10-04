@@ -264,9 +264,6 @@ DeclareOperation( "Saturate", [ IsOperationWeightList ] );
 #! @Description
 #!  Add the operation named <A>op_name</A> to the operation weight list <A>owl</A>
 #!  with weight <A>weight</A>.
-#!  This causes all operations that can be derived, directly or indirectly,
-#!  from the newly added operation to be installed as well
-#!  (unless they are already installed with the same or lower weight).
 #! @Arguments owl, op_name, weight
 DeclareOperation( "AddPrimitiveOperation", [ IsOperationWeightList, IsString, IsInt ] );
 
