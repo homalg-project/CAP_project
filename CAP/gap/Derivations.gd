@@ -285,6 +285,26 @@ DeclareOperation( "PrintTreeRec",
 
 #################################
 ##
+## Final derivations
+##
+#################################
+
+DeclareGlobalVariable( "CAP_INTERNAL_FINAL_DERIVATION_LIST" );
+
+DeclareGlobalFunction( "AddFinalDerivation" );
+
+DeclareGlobalFunction( "AddFinalDerivationBundle" );
+
+#################################
+##
+## Triggering derivations
+##
+#################################
+
+DeclareGlobalFunction( "TriggerAllDerivations" );
+
+#################################
+##
 ## Some print functions
 ##
 #################################
