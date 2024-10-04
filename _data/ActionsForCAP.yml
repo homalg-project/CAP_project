@@ -1,7 +1,7 @@
 name: ActionsForCAP
-version: "2024.09-01"
+version: "2024.09-02"
 license: "GPL-2.0-or-later"
-date: 2024-09-25
+date: 2024-10-04
 description: |
     Actions and Coactions for CAP
 
@@ -39,11 +39,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/ActionsForCAP/PackageI
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-2024.09-01/ActionsForCAP-2024.09-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-2024.09-02/ActionsForCAP-2024.09-02.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-2024.09-01/ActionsForCAP-2024.09-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-2024.09-02/ActionsForCAP-2024.09-02.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-2024.09-01/ActionsForCAP-2024.09-01-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-2024.09-02/ActionsForCAP-2024.09-02-manual.pdf
 
 abstract: |
 
@@ -52,10 +52,10 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>GP25</span>]   <b class='BibAuthor'>Gutsche, S. and Posur, S.</b>,
+    [<span class='BibKey'>GP04</span>]   <b class='BibAuthor'>Gutsche, S. and Posur, S.</b>,
      <i class='BibTitle'>ActionsForCAP, Actions and Coactions for CAP,
-             Version 2024.09-01</i>
-     (<span class='BibYear'>9-25</span>)<br />
+             Version 2024.09-02</i>
+     (<span class='BibYear'>0-04</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/ActionsForCAP">https://homalg-project.github.io/pkg/ActionsForCAP</a></span>.
     </p>
@@ -65,15 +65,15 @@ bibtex: |
     @misc{ ActionsForCAP,
       author =           {Gutsche, S. and Posur, S.},
       title =            {{ActionsForCAP},   Actions   and  Coactions  for  CAP,
-                          {V}ersion 2024.09\texttt{\symbol{45}}01},
+                          {V}ersion 2024.09\texttt{\symbol{45}}02},
       month =            {4\texttt{\symbol{45}}},
-      year =             {9\texttt{\symbol{45}}25},
+      year =             {0\texttt{\symbol{45}}04},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/ActionsForCAP}
                           {\texttt{https://homalg\texttt{\symbol{45}}project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{ActionsForCAP}}},
-      printedkey =       {GP25}
+      printedkey =       {GP04}
     }
 
