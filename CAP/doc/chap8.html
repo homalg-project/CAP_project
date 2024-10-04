@@ -33,7 +33,7 @@
 </span>
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X8445F6F187784DF1">8.2-1 IsDerivedMethod</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7D48366978D5BABD">8.2-2 MakeDerivation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X870C435486E0CA6C">8.2-2 CreateDerivation</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X87FAA68185CE87A4">8.2-3 Description</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7FB3A67D81A47B14">8.2-4 AdditionalWeight</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7CBD06FC8461DCA9">8.2-5 DerivationFunction</a></span>
@@ -112,12 +112,12 @@
 
 <p>A derivation object describes a derived method. It contains information about which operation the derived method implements, and which other operations it relies on.</p>
 
-<p><a id="X7D48366978D5BABD" name="X7D48366978D5BABD"></a></p>
+<p><a id="X870C435486E0CA6C" name="X870C435486E0CA6C"></a></p>
 
-<h5>8.2-2 MakeDerivation</h5>
+<h5>8.2-2 CreateDerivation</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MakeDerivation</code>( <var class="Arg">name</var>, <var class="Arg">target_op</var>, <var class="Arg">used_ops_with_multiples</var>, <var class="Arg">weight</var>, <var class="Arg">func</var>, <var class="Arg">category_filter</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Creates a new derivation object. The argument <var class="Arg">name</var> is an arbitrary name used to identify this derivation, and is useful only for debugging purposes. The argument <var class="Arg">target_op_name</var> is the name of the operation which the derived method implements. The argument <var class="Arg">used_ops_with_multiples</var> contains</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateDerivation</code>( <var class="Arg">target_op_name</var>, <var class="Arg">description</var>, <var class="Arg">used_ops_with_multiples</var>, <var class="Arg">func</var>, <var class="Arg">weight</var>, <var class="Arg">category_filter</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Creates a new derivation object. The argument <var class="Arg">target_op_name</var> is the name of the operation which the derived method implements. The argument <var class="Arg">description</var> should describe the derivation. The argument <var class="Arg">used_ops_with_multiples</var> contains</p>
 
 
 <ul>
@@ -131,7 +131,7 @@
 
 </li>
 </ul>
-<p>This is given as a list of lists, where each sublist has as first entry the name of an operation, as second entry an integer and as third entry either a function or <code class="code">fail</code>. This function should accept the category for which this derivation will be installed, and return a category for which the operation in the first entry must be installed for the derivation to be considered applicable. The argument <var class="Arg">weight</var> is an additional number to add when calculating the resulting weight of the target operation using this derivation. Unless there is any particular reason to regard the derivation as exceedingly expensive, this number should be <code class="code">1</code>. The argument <var class="Arg">func</var> contains the actual implementation of the derived method. The argument <var class="Arg">category_filter</var> is a filter (or function) describing which categories the derivation is valid for. If it is valid for all categories, then this argument should have the value <code class="code">IsCapCategory</code>. The output of <var class="Arg">category_filter</var> must not change during the installation of operations. In particular, it must not rely on <code class="code">CanCompute</code> to check conditions.</p>
+<p>This is given as a list of lists, where each sublist has as first entry the name of an operation, as second entry an integer and as third entry either a function or <code class="code">fail</code>. This function should accept the category for which this derivation will be installed, and return a category for which the operation in the first entry must be installed for the derivation to be considered applicable. The argument <var class="Arg">func</var> contains the actual implementation of the derived method. The argument <var class="Arg">weight</var> is an additional number to add when calculating the resulting weight of the target operation using this derivation. Unless there is any particular reason to regard the derivation as exceedingly expensive, this number should be <code class="code">1</code>. The argument <var class="Arg">category_filter</var> is a filter (or function) describing which categories the derivation is valid for. If it is valid for all categories, then this argument should have the value <code class="code">IsCapCategory</code>. The output of <var class="Arg">category_filter</var> must not change during the installation of operations. In particular, it must not rely on <code class="code">CanCompute</code> to check conditions.</p>
 
 <p><a id="X87FAA68185CE87A4" name="X87FAA68185CE87A4"></a></p>
 
