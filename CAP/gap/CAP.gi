@@ -298,8 +298,6 @@ InstallGlobalFunction( "CreateCapCategoryWithDataTypes", FunctionWithNamedArgume
         
     od;
     
-    obj!.primitive_operations := rec( );
-    
     obj!.added_functions := rec( );
     
     obj!.operations := rec( );

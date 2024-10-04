@@ -258,13 +258,20 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         
         Assert( 0, weight < infinity );
         
-        if IsBound( cat!.primitive_operations.(function_name) ) and cat!.primitive_operations.(function_name) = true then
+        if cat!.operations.(function_name).type = "primitive_installation" then
             
             IsPrecompiledDerivation_string := "";
             
-        else
+        elif cat!.operations.(function_name).type = "ordinary_derivation" or cat!.operations.(function_name).type = "final_derivation" then
             
             IsPrecompiledDerivation_string := " : IsPrecompiledDerivation := true";
+            
+        else
+            
+            # the case "precompiled_derivation" should never occur
+            
+            # COVERAGE_IGNORE_NEXT_LINE
+            Error( "this should never happen" );
             
         fi;
         

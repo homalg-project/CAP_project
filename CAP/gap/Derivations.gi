@@ -1123,13 +1123,21 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
         
         if current_derivation = fail then
             
-            if IsBound( category!.primitive_operations.( name ) ) and category!.primitive_operations.( name ) = true then
+            if category!.operations.( name ).type = "primitive_installation" then
                 
-                Print( "It was given as a primitive operation.\n" );
+                Print( "It was installed primitively.\n" );
+                
+            elif category!.operations.( name ).type = "final_derivation" then
+                
+                Print( "It was installed as a final derivation.\n" );
+                
+            elif category!.operations.( name ).type = "precompiled_derivation" then
+                
+                Print( "It was installed as a precompiled derivation.\n" );
                 
             else
                 
-                Print( "It was installed as a final or precompiled derivation.\n" );
+                Error( "this should never happen" );
                 
             fi;
             
@@ -1355,6 +1363,23 @@ end );
 InstallGlobalFunction( ListPrimitivelyInstalledOperationsOfCategory,
   
   function( arg )
+    local cat, names;
+    
+    if Length( arg ) < 1 then
+        Error( "first argument needs to be <category>" );
+    fi;
+    
+    cat := arg[ 1 ];
+    
+    names := CallFuncList( ListInstalledOperationsOfCategory, arg );
+    
+    return Filtered( names, x -> cat!.operations.(x).type = "primitive_installation" );
+    
+end );
+
+InstallGlobalFunction( ListInstalledOperationsOfCategory,
+  
+  function( arg )
     local cat, filter, names;
     
     if Length( arg ) < 1 then
@@ -1374,57 +1399,15 @@ InstallGlobalFunction( ListPrimitivelyInstalledOperationsOfCategory,
     fi;
     
     if not IsCapCategory( cat ) then
-        Error( "input must be category or cell" );
+        Error( "input is not a category (cell)" );
     fi;
     
-    names := Filtered( RecNames( cat!.primitive_operations ), x -> cat!.primitive_operations.(x) );
+    names := RecNames( cat!.operations );
     
     if filter <> fail then
         names := Filtered( names, i -> PositionSublist( i, filter ) <> fail );
     fi;
     
     return AsSortedList( names );
-    
-end );
-
-InstallGlobalFunction( ListInstalledOperationsOfCategory,
-  
-  function( arg )
-    local category, filter, weight_list, list_of_methods, list_of_installed_methods;
-    
-    if Length( arg ) < 1 then
-        Error( "first argument needs to be <category>" );
-    fi;
-    
-    category := arg[ 1 ];
-    
-    if Length( arg ) > 1 then
-        filter := arg[ 2 ];
-    else
-        filter := fail;
-    fi;
-    
-    if IsCapCategoryCell( category ) then
-        category := CapCategory( category );
-    fi;
-    
-    if not IsCapCategory( category ) then
-        Error( "input is not a category (cell)" );
-        return;
-    fi;
-    
-    weight_list := category!.derivations_weight_list;
-    
-    list_of_methods := Operations( CAP_INTERNAL_DERIVATION_GRAPH );
-    
-    list_of_methods := AsSortedList( list_of_methods );
-    
-    list_of_methods := Filtered( list_of_methods, i -> CurrentOperationWeight( weight_list, i ) < infinity );
-    
-    if filter <> fail then
-        list_of_methods := Filtered( list_of_methods, i -> PositionSublist( i, filter ) <> fail );
-    fi;
-    
-    return list_of_methods;
     
 end );

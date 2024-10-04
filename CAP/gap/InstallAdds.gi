@@ -69,7 +69,7 @@ InstallMethod( AddCapOperation,
     fi;
     
     # Display a warning when overwriting primitive operations with derivations.
-    if (is_derivation or is_final_derivation or is_precompiled_derivation) and IsBound( category!.primitive_operations.( function_name ) ) and category!.primitive_operations.( function_name ) then
+    if (is_derivation or is_final_derivation or is_precompiled_derivation) and IsBound( category!.operations.( function_name ) ) and category!.operations.( function_name ).type = "primitive_installation" then
         
         # There are some derivations of weight 1 for thin categories which overwrite methods installed by CategoryConstructor with weight 100.
         if weight <> 1 then
@@ -290,16 +290,6 @@ InstallMethod( AddCapOperation,
         weight := weight,
         func := func_to_install,
     );
-    
-    if is_derivation or is_final_derivation or is_precompiled_derivation then
-        
-        category!.primitive_operations.( function_name ) := false;
-        
-    else
-        
-        category!.primitive_operations.( function_name ) := true;
-        
-    fi;
     
     # return void for Julia
     return;
