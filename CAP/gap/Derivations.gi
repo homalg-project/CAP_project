@@ -434,7 +434,7 @@ function( owl, op_name )
   return owl!.operation_derivations.( op_name );
 end );
 
-BindGlobal( "TryToInstallDerivation", function ( owl, d )
+BindGlobal( "TryToTriggerDerivation", function ( owl, d )
   local new_weight, target, current_weight, current_derivation;
     
     if not IsApplicableToCategory( d, CategoryOfOperationWeightList( owl ) ) then
@@ -461,17 +461,13 @@ BindGlobal( "TryToInstallDerivation", function ( owl, d )
                                                 ": ",
                                                 Description( d ), "\n" ) );
         
-        # Previously, `InstallDerivationForCategory` was called at this point.
-        # However, this could lead to methods being overwritten if cheaper derivations become available while adding primitive installations to a category.
-        # Hence, we now install the derivations in `Finalize`.
-        
         owl!.operation_weights.( target ) := new_weight;
         owl!.operation_derivations.( target ) := d;
         
         # if the weight has not changed, there is no need to re-trigger the chain of derivations
         if new_weight <> current_weight then
             
-            InstallDerivationsUsingOperation( owl, target );
+            TriggerDerivationsUsingOperation( owl, target );
             
         fi;
         
@@ -479,14 +475,14 @@ BindGlobal( "TryToInstallDerivation", function ( owl, d )
     
 end );
 
-InstallMethod( InstallDerivationsUsingOperation,
+InstallMethod( TriggerDerivationsUsingOperation,
                [ IsOperationWeightList, IsString ],
 function( owl, op_name )
   local d;
     
     for d in DerivationsUsingOperation( DerivationGraph( owl ), op_name ) do
         
-        TryToInstallDerivation( owl, d );
+        TryToTriggerDerivation( owl, d );
         
     od;
     
@@ -501,7 +497,7 @@ function( owl )
         
         for d in DerivationsOfOperation( DerivationGraph( owl ), op_name ) do
             
-            TryToInstallDerivation( owl, d );
+            TryToTriggerDerivation( owl, d );
             
         od;
         
@@ -902,8 +898,10 @@ InstallGlobalFunction( TriggerAllDerivations, function( category )
     
     weight_list := category!.derivations_weight_list;
     
-    # ordinary derivations
-    InstallDerivationsUsingOperation( weight_list, "none" );
+    # Trigger ordinary derivations, but do not install them yet:
+    # While triggering derivations, cheaper derivations can become available, but we do not want to overwrite methods.
+    
+    TriggerDerivationsUsingOperation( weight_list, "none" );
     
     for op_name in SortedList( RecNames( weight_list!.operation_weights ) ) do
         
@@ -915,13 +913,14 @@ InstallGlobalFunction( TriggerAllDerivations, function( category )
                                                     op_name,
                                                     ": primitive installation\n" ) );
             
-            InstallDerivationsUsingOperation( weight_list, op_name );
+            TriggerDerivationsUsingOperation( weight_list, op_name );
             
         fi;
         
     od;
     
-    # final derivations
+    # Trigger and install final derivations
+    
     derivation_list := ShallowCopy( CAP_INTERNAL_FINAL_DERIVATION_LIST );
     
     while true do
@@ -994,15 +993,15 @@ InstallGlobalFunction( TriggerAllDerivations, function( category )
                                                             ": ",
                                                             Description( derivation ), "\n" ) );
                     
-                    InstallDerivationForCategory( derivation, new_weight, category : IsFinalDerivation := true );
-                    
                     weight_list!.operation_weights.( op_name ) := new_weight;
                     weight_list!.operation_derivations.( op_name ) := fail;
+                    
+                    InstallDerivationForCategory( derivation, new_weight, category : IsFinalDerivation := true );
                     
                     # if the weight has not changed, there is no need to re-trigger the chain of derivations
                     if new_weight <> current_weight then
                         
-                        InstallDerivationsUsingOperation( weight_list, op_name );
+                        TriggerDerivationsUsingOperation( weight_list, op_name );
                         
                     fi;
                     
@@ -1014,7 +1013,8 @@ InstallGlobalFunction( TriggerAllDerivations, function( category )
         
     od;
     
-    # actually install ordinary derivations
+    # Actually install ordinary derivations
+    
     for operation in Operations( DerivationGraph( weight_list ) ) do
         
         if DerivationOfOperation( weight_list, operation ) <> fail then

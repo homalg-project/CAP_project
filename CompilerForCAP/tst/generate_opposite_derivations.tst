@@ -157,8 +157,8 @@ gap> BindGlobal( "GenerateOppositeDerivation", function ( derivation )
 >   op := Opposite( dummy : only_primitive_operations := true, FinalizeCategory := false );
 >   
 >   # trigger the derivation manually
->   TryToInstallDerivation( op!.derivations_weight_list, derivation );
 >   Assert( 0, CanCompute( op, operation_name ) );
+>   TryToTriggerDerivation( op!.derivations_weight_list, derivation );
 >   InstallDerivationForCategory( derivation, CurrentOperationWeight( op!.derivations_weight_list, operation_name ), op );
 >   
 >   Finalize( op : disable_derivations := true );

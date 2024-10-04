@@ -238,12 +238,12 @@ DeclareOperation( "OperationWeightUsingDerivation",
 DeclareOperation( "DerivationOfOperation", [ IsOperationWeightList, IsString ] );
 
 #! @Description
-#!  Performs a search from the operation <A>op_name</A>, and installs all derivations
+#!  Performs a search from the operation <A>op_name</A>, and triggers all derivations
 #!  that give improvements over the current state.
-#!  This is used internally by <C>AddPrimitiveOperation</C> and <C>Reevaluate</C>.
+#!  This is used internally by <C>TriggerAllDerivations</C> and <C>Reevaluate</C>.
 #!  It should normally not be necessary to call this function directly.
 #! @Arguments owl, op_name
-DeclareOperation( "InstallDerivationsUsingOperation",
+DeclareOperation( "TriggerDerivationsUsingOperation",
                   [ IsOperationWeightList, IsString ] );
 
 #! @Description
