@@ -130,14 +130,12 @@ end );
 BindGlobal( "CAP_INTERNAL_INSTALL_PRODUCT_ADDS_FROM_CATEGORY",
   
   function( product_category )
-    local recnames, current_recname, category_weight_list, current_entry, func,
+    local recnames, current_recname, current_entry, func,
           current_add, create_func, components;
     
     recnames := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
     
     components := Components( product_category );
-    
-    category_weight_list := List( components, category -> category!.derivations_weight_list );
     
     for current_recname in recnames do
         
@@ -151,7 +149,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_PRODUCT_ADDS_FROM_CATEGORY",
             continue;
         fi;
         
-        if ForAny( category_weight_list, list -> CurrentOperationWeight( list, current_recname ) = infinity ) then
+        if ForAny( components, category -> not CanCompute( category, current_recname ) ) then
             continue;
         fi;
         

@@ -29,7 +29,7 @@ InstallMethod( LeftCoactionsCategory,
                [ IsCapCategoryObject, IsString, IsList ],
                
   function( coacting_object, name, context_filter_list )
-    local underlying_monoidal_category, preconditions, category_weight_list, i,
+    local underlying_monoidal_category, preconditions, i,
           structure_record, object_constructor, morphism_constructor, 
           left_coactions_category, identity_of_coacting_object;
     
@@ -110,14 +110,11 @@ InstallMethod( LeftCoactionsCategory,
         
     end;
     
-    ##
-    category_weight_list := underlying_monoidal_category!.derivations_weight_list;
-    
     ## Left coaction for ZeroObject
     preconditions := [ "UniversalMorphismIntoZeroObject",
                        "TensorProductOnObjects" ];
     
-    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
+    if ForAll( preconditions, c -> CanCompute( underlying_monoidal_category, c ) ) then
         
         structure_record.ZeroObject :=
           function( underlying_zero_object )
@@ -133,7 +130,7 @@ InstallMethod( LeftCoactionsCategory,
                        "DirectSumFunctorialWithGivenDirectSums",
                        "PreCompose" ];
     
-    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
+    if ForAll( preconditions, c -> CanCompute( underlying_monoidal_category, c ) ) then
         
         structure_record.DirectSum :=
           function( obj_list, underlying_direct_sum )
@@ -160,7 +157,7 @@ InstallMethod( LeftCoactionsCategory,
                        "TensorProductOnObjects", #belongs to TensorProductOnMorphisms
                        "Lift" ]; #we can't use LiftAlongMonomorphism here because we don't know if the tensor product is left exact
     
-    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
+    if ForAll( preconditions, c -> CanCompute( underlying_monoidal_category, c ) ) then
         
         identity_of_coacting_object := IdentityMorphism( coacting_object );
         
@@ -185,7 +182,7 @@ InstallMethod( LeftCoactionsCategory,
                        "TensorProductOnObjects", #belongs to TensorProductOnMorphisms
                        "ColiftAlongEpimorphism" ];
     
-    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
+    if ForAll( preconditions, c -> CanCompute( underlying_monoidal_category, c ) ) then
         
         identity_of_coacting_object := IdentityMorphism( coacting_object );
         
@@ -263,7 +260,7 @@ InstallMethod( RightCoactionsCategory,
                [ IsCapCategoryObject, IsString, IsList ],
                
   function( coacting_object, name, context_filter_list )
-    local underlying_monoidal_category, preconditions, category_weight_list, i,
+    local underlying_monoidal_category, preconditions, i,
           structure_record, object_constructor, morphism_constructor, 
           right_coactions_category, identity_of_coacting_object;
     
@@ -345,13 +342,11 @@ InstallMethod( RightCoactionsCategory,
     end;
     
     ##
-    category_weight_list := underlying_monoidal_category!.derivations_weight_list;
-    
     ## Right coaction for ZeroObject
     preconditions := [ "UniversalMorphismIntoZeroObject",
                        "TensorProductOnObjects" ];
     
-    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
+    if ForAll( preconditions, c -> CanCompute( underlying_monoidal_category, c ) ) then
         
         structure_record.ZeroObject :=
           function( underlying_zero_object )
@@ -367,7 +362,7 @@ InstallMethod( RightCoactionsCategory,
                        "DirectSumFunctorialWithGivenDirectSums",
                        "PreCompose" ];
     
-    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
+    if ForAll( preconditions, c -> CanCompute( underlying_monoidal_category, c ) ) then
         
         structure_record.DirectSum :=
           function( obj_list, underlying_direct_sum )
@@ -394,7 +389,7 @@ InstallMethod( RightCoactionsCategory,
                        "TensorProductOnObjects", #belongs to TensorProductOnMorphisms
                        "Lift" ]; #we can't use LiftAlongMonomorphism here because we don't know if the tensor product is left exact
     
-    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
+    if ForAll( preconditions, c -> CanCompute( underlying_monoidal_category, c ) ) then
         
         identity_of_coacting_object := IdentityMorphism( coacting_object );
         
@@ -419,7 +414,7 @@ InstallMethod( RightCoactionsCategory,
                        "TensorProductOnObjects", #belongs to TensorProductOnMorphisms
                        "ColiftAlongEpimorphism" ];
     
-    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
+    if ForAll( preconditions, c -> CanCompute( underlying_monoidal_category, c ) ) then
         
         identity_of_coacting_object := IdentityMorphism( coacting_object );
         

@@ -30,7 +30,7 @@ InstallMethod( LeftActionsCategory,
                [ IsCapCategoryObject, IsString, IsList ],
                
   function( acting_object, name, context_filter_list )
-    local underlying_monoidal_category, preconditions, category_weight_list, i,
+    local underlying_monoidal_category, preconditions, i,
           structure_record, object_constructor, morphism_constructor, 
           left_actions_category, identity_of_acting_object, tensor_preserves_epis;
     
@@ -111,14 +111,11 @@ InstallMethod( LeftActionsCategory,
         
     end;
     
-    ##
-    category_weight_list := underlying_monoidal_category!.derivations_weight_list;
-    
     ## Left action for ZeroObject
     preconditions := [ "UniversalMorphismIntoZeroObject",
                        "TensorProductOnObjects" ];
     
-    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
+    if ForAll( preconditions, c -> CanCompute( underlying_monoidal_category, c ) ) then
         
         structure_record.ZeroObject :=
           function( underlying_zero_object )
@@ -134,7 +131,7 @@ InstallMethod( LeftActionsCategory,
                        "DirectSumFunctorialWithGivenDirectSums",
                        "PreCompose" ];
     
-    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
+    if ForAll( preconditions, c -> CanCompute( underlying_monoidal_category, c ) ) then
         
         structure_record.DirectSum :=
           function( obj_list, underlying_direct_sum )
@@ -160,7 +157,7 @@ InstallMethod( LeftActionsCategory,
                        "TensorProductOnObjects", #belongs to TensorProductOnMorphisms
                        "LiftAlongMonomorphism" ];
     
-    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
+    if ForAll( preconditions, c -> CanCompute( underlying_monoidal_category, c ) ) then
         
         identity_of_acting_object := IdentityMorphism( acting_object );
         
@@ -193,7 +190,7 @@ InstallMethod( LeftActionsCategory,
         Add( preconditions, "Colift" );
     fi;
     
-    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
+    if ForAll( preconditions, c -> CanCompute( underlying_monoidal_category, c ) ) then
         
         identity_of_acting_object := IdentityMorphism( acting_object );
         
@@ -285,7 +282,7 @@ InstallMethod( RightActionsCategory,
                [ IsCapCategoryObject, IsString, IsList ],
                
   function( acting_object, name, context_filter_list )
-    local underlying_monoidal_category, preconditions, category_weight_list, i,
+    local underlying_monoidal_category, preconditions, i,
           structure_record, object_constructor, morphism_constructor, 
           right_actions_category, identity_of_acting_object, tensor_preserves_epis;
     
@@ -366,14 +363,11 @@ InstallMethod( RightActionsCategory,
         
     end;
     
-    ##
-    category_weight_list := underlying_monoidal_category!.derivations_weight_list;
-    
     ## Right action for ZeroObject
     preconditions := [ "UniversalMorphismIntoZeroObject",
                        "TensorProductOnObjects" ];
     
-    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
+    if ForAll( preconditions, c -> CanCompute( underlying_monoidal_category, c ) ) then
         
         structure_record.ZeroObject :=
           function( underlying_zero_object )
@@ -389,7 +383,7 @@ InstallMethod( RightActionsCategory,
                        "DirectSumFunctorialWithGivenDirectSums",
                        "PreCompose" ];
     
-    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
+    if ForAll( preconditions, c -> CanCompute( underlying_monoidal_category, c ) ) then
         
         structure_record.DirectSum :=
           function( obj_list, underlying_direct_sum )
@@ -415,7 +409,7 @@ InstallMethod( RightActionsCategory,
                        "TensorProductOnObjects", #belongs to TensorProductOnMorphisms
                        "LiftAlongMonomorphism" ];
     
-    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
+    if ForAll( preconditions, c -> CanCompute( underlying_monoidal_category, c ) ) then
         
         identity_of_acting_object := IdentityMorphism( acting_object );
         
@@ -448,7 +442,7 @@ InstallMethod( RightActionsCategory,
         Add( preconditions, "Colift" );
     fi;
     
-    if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
+    if ForAll( preconditions, c -> CanCompute( underlying_monoidal_category, c ) ) then
         
         identity_of_acting_object := IdentityMorphism( acting_object );
         

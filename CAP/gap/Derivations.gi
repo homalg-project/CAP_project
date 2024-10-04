@@ -26,10 +26,10 @@ InstallGlobalFunction( "DeactivateDerivationInfo",
     SetInfoLevel( DerivationInfo, 0 );
 end );
 
-InstallMethod( MakeDerivation,
-               [ IsString, IsString, IsDenseList, IsPosInt, IsFunction, IsFunction ],
+InstallMethod( CreateDerivation,
+               [ IsString, IsString, IsDenseList, IsFunction, IsPosInt, IsFunction ],
                
-function( description, target_op_name, used_op_names_with_multiples_and_category_getters, weight, func, category_filter )
+function( target_op_name, description, used_op_names_with_multiples_and_category_getters, func, weight, category_filter )
   local wrapped_category_filter, derivation;
     
     #= comment for Julia
@@ -236,12 +236,14 @@ InstallGlobalFunction( AddDerivation,
     fi;
     # =#
     
-    derivation := MakeDerivation( description,
-                                  target_op_name,
-                                  used_op_names_with_multiples_and_category_getters,
-                                  weight,
-                                  func,
-                                  category_filter );
+    derivation := CreateDerivation(
+        target_op_name,
+        description,
+        used_op_names_with_multiples_and_category_getters,
+        func,
+        weight,
+        category_filter
+    );
     
     if function_called_before_installation <> false then
         
@@ -452,7 +454,7 @@ BindGlobal( "TryToInstallDerivation", function ( owl, d )
     
     if new_weight < current_weight or (new_weight = current_weight and current_derivation <> fail and d!.position_in_derivations_by_target < current_derivation!.position_in_derivations_by_target) then
         
-        Info( DerivationInfo, 1, Concatenation( "install(",
+        Info( DerivationInfo, 1, Concatenation( "derive(",
                                                 String( new_weight ),
                                                 ") ",
                                                 target,
@@ -525,18 +527,9 @@ end );
 InstallMethod( AddPrimitiveOperation,
                [ IsOperationWeightList, IsString, IsInt ],
 function( owl, op_name, new_weight )
-  local current_weight;
-    
-    Info( DerivationInfo, 1, Concatenation( "install(",
-                                  String( new_weight ),
-                                  ") ",
-                                  op_name,
-                                  ": primitive installation\n" ) );
-    
-    current_weight := owl!.operation_weights.( op_name );
     
     owl!.operation_weights.( op_name ) := new_weight;
-    owl!.operation_derivations.( op_name ) := fail;
+    Assert( 0, owl!.operation_derivations.( op_name ) = fail );
     
 end );
 

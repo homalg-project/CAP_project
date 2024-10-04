@@ -357,7 +357,7 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryByCospans,
                                   [ IsCapCategory, IsFunction, IsString ],
                                   
   function( category, test_function, function_name )
-    local serre_category, gen_category, name, preconditions, category_weight_list, i;
+    local serre_category, gen_category, name, preconditions, i;
     
     if not IsFinalized( category ) then
         
@@ -380,11 +380,9 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryByCospans,
                        "KernelEmbedding",
                        "CokernelProjection" ];
     
-    category_weight_list := category!.derivations_weight_list;
-    
     for i in preconditions do
         
-        if CurrentOperationWeight( category_weight_list, i ) = infinity then
+        if not CanCompute( category, i ) then
             
             Error( Concatenation( "category must be able to compute ", i ) );
             return;

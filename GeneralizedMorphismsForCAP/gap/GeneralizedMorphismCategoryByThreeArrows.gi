@@ -223,7 +223,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
         
     end );
     
-    if CurrentOperationWeight( underlying_honest_category!.derivations_weight_list, "IsWellDefinedForObjects" ) < infinity then
+    if CanCompute( underlying_honest_category, "IsWellDefinedForObjects" ) then
         
         AddIsWellDefinedForObjects( category,
           
@@ -235,7 +235,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
           
     fi;
     
-    if CurrentOperationWeight( underlying_honest_category!.derivations_weight_list, "IsWellDefinedForMorphisms" ) < infinity then
+    if CanCompute( underlying_honest_category, "IsWellDefinedForMorphisms" ) then
         
         AddIsWellDefinedForMorphisms( category,
                                       
@@ -276,7 +276,7 @@ InstallMethod( GeneralizedMorphismCategoryByThreeArrows,
                [ IsCapCategory ],
                
   function( category )
-    local name, generalized_morphism_category, category_weight_list, i, preconditions;
+    local name, generalized_morphism_category, i, preconditions;
     
     if not IsFinalized( category ) then
         
@@ -306,11 +306,9 @@ InstallMethod( GeneralizedMorphismCategoryByThreeArrows,
                        "CoastrictionToImage",
                        "ImageEmbedding" ];
     
-    category_weight_list := category!.derivations_weight_list;
-    
     for i in preconditions do
         
-        if CurrentOperationWeight( category_weight_list, i ) = infinity then
+        if not CanCompute( category, i ) then
             
             Error( Concatenation( "category must be able to compute ", i ) );
             return;

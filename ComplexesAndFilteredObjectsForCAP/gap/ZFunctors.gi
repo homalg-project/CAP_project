@@ -984,7 +984,7 @@ end );
 InstallGlobalFunction( INSTALL_OPERATIONS_FOR_ZFUNCTOR_CATEGORY,
             
   function( category )
-    local install_entries, entry, weight_list;
+    local install_entries, entry;
     
     install_entries := [
         [ [ "PreCompose" ], ADD_PRECOMPOSE_IN_Z_FUNCTORS ],
@@ -1061,11 +1061,9 @@ InstallGlobalFunction( INSTALL_OPERATIONS_FOR_ZFUNCTOR_CATEGORY,
         
     ];
     
-    weight_list := category!.derivations_weight_list;
-    
     for entry in install_entries do
         
-        if ForAll( entry[ 1 ], i -> CurrentOperationWeight( weight_list, i ) < infinity ) then
+        if ForAll( entry[ 1 ], i -> CanCompute( category, i ) ) then
             
             entry[ 2 ]( category );
             

@@ -711,7 +711,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
     InstallGlobalFunction( ValueGlobal( Concatenation( "INSTALL_OPERATIONS_FOR_", name_part, "_CATEGORY" ) ),
                 
       function( category )
-       local z_functor_category, install_entries, entry, weight_list;
+       local z_functor_category, install_entries, entry;
         
         z_functor_category := ZFunctorCategory( category );
         
@@ -791,11 +791,9 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
             
         ];
         
-        weight_list := z_functor_category!.derivations_weight_list;
-        
         for entry in install_entries do
             
-            if ForAll( entry[ 1 ], i -> CurrentOperationWeight( weight_list, i ) < infinity ) then
+            if ForAll( entry[ 1 ], i -> CanCompute( z_functor_category, i ) ) then
                 
                 entry[ 2 ]( category );
                 
