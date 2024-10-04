@@ -702,8 +702,6 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
                 
             fi;
             
-            currently_installed_func := Last( category!.added_functions.( name ) );
-            
         else
             
             Print( "It was derived by ", TextAttr.b3, Description( current_derivation ), TextAttr.reset, " using \n" );
@@ -728,9 +726,11 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
                 
             od;
             
-            currently_installed_func := DerivationFunction( current_derivation );
+            Assert( 0, IsIdenticalObj( Last( category!.added_functions.( name ) ), DerivationFunction( current_derivation ) ) );
             
         fi;
+        
+        currently_installed_func := Last( category!.added_functions.( name ) );
         
         Print( "\nThe following function was installed for this operation:\n\n" );
         Display( currently_installed_func );
