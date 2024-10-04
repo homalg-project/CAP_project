@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "ComplexesAndFilteredObjectsForCAP",
 Subtitle := "Implementation of complexes, cocomplexes and filtered objects for CAP",
-Version := "2024.04-01",
-Date := "2024-04-04",
+Version := "2024.09-01",
+Date := "2024-10-04",
 License := "GPL-2.0-or-later",
 
 Persons := [
