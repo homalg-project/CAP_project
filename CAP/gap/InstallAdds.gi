@@ -194,15 +194,6 @@ InstallMethod( AddCapOperation,
           function( arg )
             local redirect_return, pre_func_return, collect_timing_statistics, start_time, result, end_time, i;
             
-            if not IsFinalized( category ) and not category!.primitive_operations.( function_name ) then
-                
-                Print(
-                    "WARNING: You are calling an operation in an unfinalized category with name \"", category_name,
-                    "\". This is fine for debugging purposes, but for production use you should finalize the category by calling `Finalize` (with the option `FinalizeCategory := true` if needed).\n"
-                );
-                
-            fi;
-            
             if IsBound( record.redirect_function ) then
                 redirect_return := CallFuncList( record.redirect_function, arg );
                 if redirect_return[ 1 ] = true then
