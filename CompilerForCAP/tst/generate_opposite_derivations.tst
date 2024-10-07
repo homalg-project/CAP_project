@@ -120,7 +120,7 @@ gap> CAP_JIT_INTERNAL_COPY_OF_CATEGORY := fail;;
 
 #
 gap> BindGlobal( "GenerateOppositeDerivation", function ( derivation )
-> local operation_name, dual_operation_name, list_of_operations_to_install, property_pair, properties, dummy, op, op_op, copy, info, input_arguments_names, filter_list, return_type, prepared_arguments_strings, recoercion_function_string, compiled_func;
+> local operation_name, dual_operation_name, list_of_operations_to_install, property_pair, properties, dummy, op, op_op, copy, info, input_arguments_names, filter_list, return_type, prepared_arguments_strings, recoercion_function_string, compiled_func, op_name;
 >   
 >   PushOptions( rec( overhead := false ) );
 >   
@@ -157,9 +157,12 @@ gap> BindGlobal( "GenerateOppositeDerivation", function ( derivation )
 >   op := Opposite( dummy : only_primitive_operations := true, FinalizeCategory := false );
 >   
 >   # trigger the derivation manually
->   TryToInstallDerivation( op!.derivations_weight_list, derivation );
->   Assert( 0, CanCompute( op, operation_name ) );
+>   for op_name in RecNames( op!.operations ) do
+>       AddPrimitiveOperation( op!.derivations_weight_list, op_name, op!.operations.(op_name).weight );
+>   od;
+>   TryToTriggerDerivation( op!.derivations_weight_list, derivation );
 >   InstallDerivationForCategory( derivation, CurrentOperationWeight( op!.derivations_weight_list, operation_name ), op );
+>   Assert( 0, CanCompute( op, operation_name ) );
 >   
 >   Finalize( op : disable_derivations := true );
 >   

@@ -298,9 +298,9 @@ InstallGlobalFunction( "CreateCapCategoryWithDataTypes", FunctionWithNamedArgume
         
     od;
     
-    obj!.primitive_operations := rec( );
-    
     obj!.added_functions := rec( );
+    
+    obj!.operations := rec( );
     
     obj!.timing_statistics := rec( );
     obj!.timing_statistics_enabled := false;
@@ -599,9 +599,7 @@ InstallMethod( CanCompute,
         
     fi;
     
-    weight_list := category!.derivations_weight_list;
-    
-    return CurrentOperationWeight( weight_list, string ) <> infinity;
+    return IsBound( category!.operations.(string) );
     
 end );
 
@@ -614,6 +612,70 @@ InstallMethod( CanCompute,
     Display( "WARNING: calling `CanCompute` with a CAP operation as the second argument should only be done for debugging purposes." );
     
     return CanCompute( category, NameFunction( operation ) );
+    
+end );
+
+##
+InstallMethod( OperationWeight,
+               [ IsCapCategory, IsString ],
+               
+  function( category, op_name )
+    
+    return category!.operations.(op_name).weight;
+    
+end );
+
+##
+InstallGlobalFunction( ListInstalledOperationsOfCategory,
+  
+  function( arg )
+    local cat, filter, names;
+    
+    if Length( arg ) < 1 then
+        Error( "first argument needs to be <category>" );
+    fi;
+    
+    cat := arg[ 1 ];
+    
+    if Length( arg ) > 1 then
+        filter := arg[ 2 ];
+    else
+        filter := fail;
+    fi;
+    
+    if IsCapCategoryCell( cat ) then
+        cat := CapCategory( cat );
+    fi;
+    
+    if not IsCapCategory( cat ) then
+        Error( "input is not a category (cell)" );
+    fi;
+    
+    names := RecNames( cat!.operations );
+    
+    if filter <> fail then
+        names := Filtered( names, i -> PositionSublist( i, filter ) <> fail );
+    fi;
+    
+    return AsSortedList( names );
+    
+end );
+
+##
+InstallGlobalFunction( ListPrimitivelyInstalledOperationsOfCategory,
+  
+  function( arg )
+    local cat, names;
+    
+    if Length( arg ) < 1 then
+        Error( "first argument needs to be <category>" );
+    fi;
+    
+    cat := arg[ 1 ];
+    
+    names := CallFuncList( ListInstalledOperationsOfCategory, arg );
+    
+    return Filtered( names, x -> cat!.operations.(x).type = "primitive_installation" );
     
 end );
 

@@ -1066,7 +1066,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         ## 3) else
         if HasIsAbelianCategory( underlying_range_category )
             and IsAbelianCategory( underlying_range_category )
-            and (HasIsProjective( distinguished_object ) or CurrentOperationWeight( underlying_range_category!.derivations_weight_list, "IsProjective" ) <= 50)
+            and (HasIsProjective( distinguished_object ) or (CanCompute( underlying_range_category, "IsProjective" ) and OperationWeight( underlying_range_category, "IsProjective" ) <= 50))
             and IsProjective( distinguished_object ) then
             
             SetRangeCategoryOfHomomorphismStructure( category, underlying_range_category );

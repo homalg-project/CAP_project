@@ -585,6 +585,16 @@ DeclareOperation( "CanCompute",
 #! @EndGroup
 
 #! @Description
+#!  Returns the weight of the operation currently installed as <A>op_name</A> in <A>cat</A>.
+#! @Returns an integer
+#! @Arguments cat, op_name
+DeclareOperation( "OperationWeight",
+                  [ IsCapCategory, IsString ] );
+
+DeclareGlobalFunction( "ListInstalledOperationsOfCategory" );
+DeclareGlobalFunction( "ListPrimitivelyInstalledOperationsOfCategory" );
+
+#! @Description
 #! The arguments are a category $C$ and a string $s$.
 #! If $s$ is a categorical property (e.g. <C>"IsAbelianCategory"</C>),
 #! the output is a list of strings with CAP operations

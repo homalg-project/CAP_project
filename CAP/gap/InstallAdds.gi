@@ -25,7 +25,7 @@ InstallMethod( AddCapOperation,
   function( CAP_NAMED_ARGUMENTS, function_name, category, func_to_install, weight )
     local record, category_name, is_derivation, is_final_derivation, is_precompiled_derivation, replaced_filter_list,
         input_human_readable_identifier_getter, input_sanity_check_functions, filter_string, data_type,
-        output_human_readable_identifier_getter, output_data_type, output_sanity_check_function;
+        output_human_readable_identifier_getter, output_data_type, output_sanity_check_function, type;
     
     record := CAP_INTERNAL_METHOD_NAME_RECORD.(function_name);
     
@@ -52,9 +52,9 @@ InstallMethod( AddCapOperation,
     fi;
     
     # If there already is a faster method: do nothing but display a warning because this should not happen.
-    if weight > CurrentOperationWeight( category!.derivations_weight_list, function_name ) then
+    if CanCompute( category, function_name ) and weight > OperationWeight( category, function_name ) then
         
-        Print( "WARNING: Ignoring a function added for ", function_name, " with weight ", weight, " to \"", category_name, "\" because there already is a function installed with weight ", CurrentOperationWeight( category!.derivations_weight_list, function_name ), "." );
+        Print( "WARNING: Ignoring a function added for ", function_name, " with weight ", weight, " to \"", category_name, "\" because there already is a function installed with weight ", OperationWeight( category, function_name ), "." );
         
         if is_precompiled_derivation then
             
@@ -69,7 +69,7 @@ InstallMethod( AddCapOperation,
     fi;
     
     # Display a warning when overwriting primitive operations with derivations.
-    if (is_derivation or is_final_derivation or is_precompiled_derivation) and IsBound( category!.primitive_operations.( function_name ) ) and category!.primitive_operations.( function_name ) then
+    if (is_derivation or is_final_derivation or is_precompiled_derivation) and IsBound( category!.operations.( function_name ) ) and category!.operations.( function_name ).type = "primitive_installation" then
         
         # There are some derivations of weight 1 for thin categories which overwrite methods installed by CategoryConstructor with weight 100.
         if weight <> 1 then
@@ -194,15 +194,6 @@ InstallMethod( AddCapOperation,
           function( arg )
             local redirect_return, pre_func_return, collect_timing_statistics, start_time, result, end_time, i;
             
-            if not IsFinalized( category ) and not category!.primitive_operations.( function_name ) then
-                
-                Print(
-                    "WARNING: You are calling an operation in an unfinalized category with name \"", category_name,
-                    "\". This is fine for debugging purposes, but for production use you should finalize the category by calling `Finalize` (with the option `FinalizeCategory := true` if needed).\n"
-                );
-                
-            fi;
-            
             if IsBound( record.redirect_function ) then
                 redirect_return := CallFuncList( record.redirect_function, arg );
                 if redirect_return[ 1 ] = true then
@@ -276,21 +267,29 @@ InstallMethod( AddCapOperation,
         
     fi;
     
-    if not (is_derivation or is_final_derivation) then
+    if is_derivation then
         
-        AddPrimitiveOperation( category!.derivations_weight_list, function_name, weight );
+        type := "ordinary_derivation";
         
-    fi;
-    
-    if is_derivation or is_final_derivation or is_precompiled_derivation then
+    elif is_final_derivation then
         
-        category!.primitive_operations.( function_name ) := false;
+        type := "final_derivation";
+        
+    elif is_precompiled_derivation then
+        
+        type := "precompiled_derivation";
         
     else
         
-        category!.primitive_operations.( function_name ) := true;
+        type := "primitive_installation";
         
     fi;
+    
+    category!.operations.(function_name) := rec(
+        type := type,
+        weight := weight,
+        func := func_to_install,
+    );
     
     # return void for Julia
     return;

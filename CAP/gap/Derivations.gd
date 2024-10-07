@@ -238,12 +238,12 @@ DeclareOperation( "OperationWeightUsingDerivation",
 DeclareOperation( "DerivationOfOperation", [ IsOperationWeightList, IsString ] );
 
 #! @Description
-#!  Performs a search from the operation <A>op_name</A>, and installs all derivations
+#!  Performs a search from the operation <A>op_name</A>, and triggers all derivations
 #!  that give improvements over the current state.
-#!  This is used internally by <C>AddPrimitiveOperation</C> and <C>Reevaluate</C>.
+#!  This is used internally by <C>TriggerAllDerivations</C> and <C>Reevaluate</C>.
 #!  It should normally not be necessary to call this function directly.
 #! @Arguments owl, op_name
-DeclareOperation( "InstallDerivationsUsingOperation",
+DeclareOperation( "TriggerDerivationsUsingOperation",
                   [ IsOperationWeightList, IsString ] );
 
 #! @Description
@@ -264,9 +264,6 @@ DeclareOperation( "Saturate", [ IsOperationWeightList ] );
 #! @Description
 #!  Add the operation named <A>op_name</A> to the operation weight list <A>owl</A>
 #!  with weight <A>weight</A>.
-#!  This causes all operations that can be derived, directly or indirectly,
-#!  from the newly added operation to be installed as well
-#!  (unless they are already installed with the same or lower weight).
 #! @Arguments owl, op_name, weight
 DeclareOperation( "AddPrimitiveOperation", [ IsOperationWeightList, IsString, IsInt ] );
 
@@ -285,12 +282,29 @@ DeclareOperation( "PrintTreeRec",
 
 #################################
 ##
+## Final derivations
+##
+#################################
+
+DeclareGlobalVariable( "CAP_INTERNAL_FINAL_DERIVATION_LIST" );
+
+DeclareGlobalFunction( "AddFinalDerivation" );
+
+DeclareGlobalFunction( "AddFinalDerivationBundle" );
+
+#################################
+##
+## Triggering derivations
+##
+#################################
+
+DeclareGlobalFunction( "TriggerAllDerivations" );
+
+#################################
+##
 ## Some print functions
 ##
 #################################
 
 DeclareGlobalFunction( "InstalledMethodsOfCategory" );
 DeclareGlobalFunction( "DerivationsOfMethodByCategory" );
-
-DeclareGlobalFunction( "ListInstalledOperationsOfCategory" );
-DeclareGlobalFunction( "ListPrimitivelyInstalledOperationsOfCategory" );
