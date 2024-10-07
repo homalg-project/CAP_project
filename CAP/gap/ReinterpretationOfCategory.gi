@@ -142,7 +142,7 @@ InstallMethod( ReinterpretationOfCategory,
     
     for operation in list_of_operations_to_install do
         
-        category_constructor_options.operation_weights.(operation) := CurrentOperationWeight( C!.derivations_weight_list, operation );
+        category_constructor_options.operation_weights.(operation) := OperationWeight( C, operation );
         
     od;
     
@@ -226,7 +226,7 @@ InstallMethod( ReinterpretationOfCategory,
             return List( MorphismsOfExternalHom( ModelingCategory( cat ), ModelingObject( cat, a ), ModelingObject( cat, b ) ),
                          mor -> ReinterpretationOfMorphism( cat, a, mor, b ) );
             
-        end, CurrentOperationWeight( C!.derivations_weight_list, "MorphismsOfExternalHom" ) );
+        end, OperationWeight( C, "MorphismsOfExternalHom" ) );
         
     fi;
     
@@ -238,7 +238,7 @@ InstallMethod( ReinterpretationOfCategory,
             return List( BasisOfExternalHom( ModelingCategory( cat ), ModelingObject( cat, a ), ModelingObject( cat, b ) ),
                          mor -> ReinterpretationOfMorphism( cat, a, mor, b ) );
             
-        end, CurrentOperationWeight( C!.derivations_weight_list, "BasisOfExternalHom" ) );
+        end, OperationWeight( C, "BasisOfExternalHom" ) );
         
     fi;
     
@@ -249,7 +249,7 @@ InstallMethod( ReinterpretationOfCategory,
             
             return CoefficientsOfMorphism( ModelingCategory( cat ), ModelingMorphism( cat, alpha ) );
             
-        end, CurrentOperationWeight( C!.derivations_weight_list, "CoefficientsOfMorphism" ) );
+        end, OperationWeight( C, "CoefficientsOfMorphism" ) );
         
     fi;
     
@@ -330,7 +330,7 @@ InstallMethod( ReinterpretationOfCategory,
                 
                 return DistinguishedObjectOfHomomorphismStructureExtendedByFullEmbedding( ModelingCategory( cat ), HC );
                 
-            end, CurrentOperationWeight( C!.derivations_weight_list, "DistinguishedObjectOfHomomorphismStructure" ) );
+            end, OperationWeight( C, "DistinguishedObjectOfHomomorphismStructure" ) );
         fi;
         
         if "HomomorphismStructureOnObjects" in list_of_operations_to_install then
@@ -339,7 +339,7 @@ InstallMethod( ReinterpretationOfCategory,
                 
                 return HomomorphismStructureOnObjectsExtendedByFullEmbedding( ModelingCategory( cat ), HC, ModelingObject( cat, a ), ModelingObject( cat, b ) );
                 
-            end, CurrentOperationWeight( C!.derivations_weight_list, "HomomorphismStructureOnObjects" ) );
+            end, OperationWeight( C, "HomomorphismStructureOnObjects" ) );
         fi;
         
         if "HomomorphismStructureOnMorphisms" in list_of_operations_to_install then
@@ -348,7 +348,7 @@ InstallMethod( ReinterpretationOfCategory,
                 
                 return HomomorphismStructureOnMorphismsExtendedByFullEmbedding( ModelingCategory( cat ), HC, ModelingMorphism( cat, alpha ), ModelingMorphism( cat, beta ) );
                 
-            end, CurrentOperationWeight( C!.derivations_weight_list, "HomomorphismStructureOnMorphisms" ) );
+            end, OperationWeight( C, "HomomorphismStructureOnMorphisms" ) );
         fi;
         
         if "HomomorphismStructureOnMorphismsWithGivenObjects" in list_of_operations_to_install then
@@ -357,7 +357,7 @@ InstallMethod( ReinterpretationOfCategory,
                 
                 return HomomorphismStructureOnMorphismsWithGivenObjectsExtendedByFullEmbedding( ModelingCategory( cat ), HC, s, ModelingMorphism( cat, alpha ), ModelingMorphism( cat, beta ), r );
                 
-            end, CurrentOperationWeight( C!.derivations_weight_list, "HomomorphismStructureOnMorphismsWithGivenObjects" ) );
+            end, OperationWeight( C, "HomomorphismStructureOnMorphismsWithGivenObjects" ) );
         fi;
         
         if "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" in list_of_operations_to_install then
@@ -366,7 +366,7 @@ InstallMethod( ReinterpretationOfCategory,
                 
                 return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureExtendedByFullEmbedding( ModelingCategory( cat ), HC, ModelingMorphism( cat, alpha ) );
                 
-            end, CurrentOperationWeight( C!.derivations_weight_list, "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" ) );
+            end, OperationWeight( C, "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" ) );
         fi;
         
         if "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects" in list_of_operations_to_install then
@@ -375,7 +375,7 @@ InstallMethod( ReinterpretationOfCategory,
                 
                 return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjectsExtendedByFullEmbedding( ModelingCategory( cat ), HC, s, ModelingMorphism( cat, alpha ), r );
                 
-            end, CurrentOperationWeight( C!.derivations_weight_list, "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects" ) );
+            end, OperationWeight( C, "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects" ) );
         fi;
         
         if "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" in list_of_operations_to_install then
@@ -384,7 +384,7 @@ InstallMethod( ReinterpretationOfCategory,
                 
                 return ReinterpretationOfMorphism( cat, a, InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphismExtendedByFullEmbedding( ModelingCategory( cat ), HC, ModelingObject( cat, a ), ModelingObject( cat, b ), iota ), b );
                 
-            end, CurrentOperationWeight( C!.derivations_weight_list, "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ) );
+            end, OperationWeight( C, "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ) );
         fi;
         
     fi;

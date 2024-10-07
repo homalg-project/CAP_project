@@ -254,9 +254,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         
         # Taking the original weight is not optimal because the compilation might have simplified things drastically.
         # However, this is still better than just setting everything to the default weight.
-        weight := CurrentOperationWeight( cat!.derivations_weight_list, function_name );
-        
-        Assert( 0, weight < infinity );
+        weight := OperationWeight( cat, function_name );
         
         if cat!.operations.(function_name).type = "primitive_installation" then
             

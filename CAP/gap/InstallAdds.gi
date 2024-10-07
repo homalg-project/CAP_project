@@ -52,9 +52,9 @@ InstallMethod( AddCapOperation,
     fi;
     
     # If there already is a faster method: do nothing but display a warning because this should not happen.
-    if weight > CurrentOperationWeight( category!.derivations_weight_list, function_name ) then
+    if CanCompute( category, function_name ) and weight > OperationWeight( category, function_name ) then
         
-        Print( "WARNING: Ignoring a function added for ", function_name, " with weight ", weight, " to \"", category_name, "\" because there already is a function installed with weight ", CurrentOperationWeight( category!.derivations_weight_list, function_name ), "." );
+        Print( "WARNING: Ignoring a function added for ", function_name, " with weight ", weight, " to \"", category_name, "\" because there already is a function installed with weight ", OperationWeight( category, function_name ), "." );
         
         if is_precompiled_derivation then
             

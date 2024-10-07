@@ -757,8 +757,8 @@ BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
             
             category := arg[ 1 ];
             
-            without_given_weight := CurrentOperationWeight( category!.derivations_weight_list, without_given_name );
-            with_given_weight := CurrentOperationWeight( category!.derivations_weight_list, with_given_name );
+            without_given_weight := OperationWeight( category, without_given_name );
+            with_given_weight := OperationWeight( category, with_given_name );
             
             # If the WithGiven version is more expensive than the WithoutGiven version, redirection makes no sense and
             # might even lead to inifite loops if the WithGiven version is derived from the WithoutGiven version.
@@ -799,8 +799,8 @@ BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
             
             category := arg[ 1 ];
             
-            without_given_weight := CurrentOperationWeight( category!.derivations_weight_list, without_given_name );
-            with_given_weight := CurrentOperationWeight( category!.derivations_weight_list, with_given_name );
+            without_given_weight := OperationWeight( category, without_given_name );
+            with_given_weight := OperationWeight( category, with_given_name );
             
             # If the WithGiven version is more expensive than the WithoutGiven version, redirection makes no sense and
             # might even lead to inifite loops if the WithGiven version is derived from the WithoutGiven version.

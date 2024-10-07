@@ -616,6 +616,16 @@ InstallMethod( CanCompute,
 end );
 
 ##
+InstallMethod( OperationWeight,
+               [ IsCapCategory, IsString ],
+               
+  function( category, op_name )
+    
+    return category!.operations.(op_name).weight;
+    
+end );
+
+##
 InstallMethod( MissingOperationsForConstructivenessOfCategory,
                [ IsCapCategory, IsString ],
                
