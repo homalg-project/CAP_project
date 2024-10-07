@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2024.09-29
+                                   2024.10-01
   
   
-                                 4 October 2024
+                                 7 October 2024
   
   
                                Sebastian Gutsche
@@ -122,7 +122,8 @@
       1.5-8 CapCategorySwitchLogicOff
     1.6 [33X[0;0YTool functions[133X
       1.6-1 CanCompute
-      1.6-2 MissingOperationsForConstructivenessOfCategory
+      1.6-2 OperationWeight
+      1.6-3 MissingOperationsForConstructivenessOfCategory
     1.7 [33X[0;0YWell-Definedness of Cells[133X
       1.7-1 IsWellDefined
     1.8 [33X[0;0YUnpacking data structures[133X
@@ -897,7 +898,7 @@
       8.4-5 CurrentOperationWeight
       8.4-6 OperationWeightUsingDerivation
       8.4-7 DerivationOfOperation
-      8.4-8 InstallDerivationsUsingOperation
+      8.4-8 TriggerDerivationsUsingOperation
       8.4-9 Reevaluate
       8.4-10 Saturate
       8.4-11 AddPrimitiveOperation

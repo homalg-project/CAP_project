@@ -248,13 +248,13 @@
   either  implemented  directly  or  not  implemented  at  all),  then [10Xfail[110X is
   returned.[133X
   
-  [1X8.4-8 InstallDerivationsUsingOperation[101X
+  [1X8.4-8 TriggerDerivationsUsingOperation[101X
   
-  [33X[1;0Y[29X[2XInstallDerivationsUsingOperation[102X( [3Xowl[103X, [3Xop_name[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XTriggerDerivationsUsingOperation[102X( [3Xowl[103X, [3Xop_name[103X ) [32X operation[133X
   
-  [33X[0;0YPerforms  a  search from the operation [3Xop_name[103X, and installs all derivations
+  [33X[0;0YPerforms  a  search from the operation [3Xop_name[103X, and triggers all derivations
   that  give  improvements  over the current state. This is used internally by
-  [10XAddPrimitiveOperation[110X and [10XReevaluate[110X. It should normally not be necessary to
+  [10XTriggerAllDerivations[110X and [10XReevaluate[110X. It should normally not be necessary to
   call this function directly.[133X
   
   [1X8.4-9 Reevaluate[101X
@@ -279,9 +279,7 @@
   [33X[1;0Y[29X[2XAddPrimitiveOperation[102X( [3Xowl[103X, [3Xop_name[103X, [3Xweight[103X ) [32X operation[133X
   
   [33X[0;0YAdd the operation named [3Xop_name[103X to the operation weight list [3Xowl[103X with weight
-  [3Xweight[103X.  This  causes  all  operations  that  can  be  derived,  directly or
-  indirectly,  from  the newly added operation to be installed as well (unless
-  they are already installed with the same or lower weight).[133X
+  [3Xweight[103X.[133X
   
   [1X8.4-12 PrintDerivationTree[101X
   

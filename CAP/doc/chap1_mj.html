@@ -98,7 +98,8 @@
 </span>
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X851D0435816DDB40">1.6-1 CanCompute</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X78A3DEF28359DF73">1.6-2 MissingOperationsForConstructivenessOfCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X820DD63180AE4BAB">1.6-2 OperationWeight</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X78A3DEF28359DF73">1.6-3 MissingOperationsForConstructivenessOfCategory</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7DB3D2BD8792ABBC">1.7 <span class="Heading">Well-Definedness of Cells</span></a>
 </span>
@@ -648,9 +649,18 @@
 
 <p>The argument is a category <var class="Arg">C</var> and a string <var class="Arg">string</var>, which should be the name of a CAP operation, e.g., PreCompose. If applying this method is possible in <span class="SimpleMath">\(C\)</span>, the method returns <code class="code">true</code>, <code class="code">false</code> otherwise. If the string is not the name of a CAP operation, an error is raised. For debugging purposes one can also pass the CAP operation instead of its name.</p>
 
+<p><a id="X820DD63180AE4BAB" name="X820DD63180AE4BAB"></a></p>
+
+<h5>1.6-2 OperationWeight</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; OperationWeight</code>( <var class="Arg">cat</var>, <var class="Arg">op_name</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an integer</p>
+
+<p>Returns the weight of the operation currently installed as <var class="Arg">op_name</var> in <var class="Arg">cat</var>.</p>
+
 <p><a id="X78A3DEF28359DF73" name="X78A3DEF28359DF73"></a></p>
 
-<h5>1.6-2 MissingOperationsForConstructivenessOfCategory</h5>
+<h5>1.6-3 MissingOperationsForConstructivenessOfCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MissingOperationsForConstructivenessOfCategory</code>( <var class="Arg">C</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a list</p>

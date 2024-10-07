@@ -66,7 +66,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7BE16AB2849D0107">8.4-5 CurrentOperationWeight</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7A67FC1B80BF67AD">8.4-6 OperationWeightUsingDerivation</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X79490A257E67804E">8.4-7 DerivationOfOperation</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X8411326D85222A6C">8.4-8 InstallDerivationsUsingOperation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7B67E3BD81BE00A6">8.4-8 TriggerDerivationsUsingOperation</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7E2279C47AFE3FAD">8.4-9 Reevaluate</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X8748C9C27F6B47A3">8.4-10 Saturate</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X835210E67EF93118">8.4-11 AddPrimitiveOperation</a></span>
@@ -313,12 +313,12 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DerivationOfOperation</code>( <var class="Arg">owl</var>, <var class="Arg">op_name</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns the derivation which is currently used to implement the operation named <var class="Arg">op_name</var>. If the operation is not implemented by a derivation (that is, either implemented directly or not implemented at all), then <code class="code">fail</code> is returned.</p>
 
-<p><a id="X8411326D85222A6C" name="X8411326D85222A6C"></a></p>
+<p><a id="X7B67E3BD81BE00A6" name="X7B67E3BD81BE00A6"></a></p>
 
-<h5>8.4-8 InstallDerivationsUsingOperation</h5>
+<h5>8.4-8 TriggerDerivationsUsingOperation</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InstallDerivationsUsingOperation</code>( <var class="Arg">owl</var>, <var class="Arg">op_name</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Performs a search from the operation <var class="Arg">op_name</var>, and installs all derivations that give improvements over the current state. This is used internally by <code class="code">AddPrimitiveOperation</code> and <code class="code">Reevaluate</code>. It should normally not be necessary to call this function directly.</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TriggerDerivationsUsingOperation</code>( <var class="Arg">owl</var>, <var class="Arg">op_name</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Performs a search from the operation <var class="Arg">op_name</var>, and triggers all derivations that give improvements over the current state. This is used internally by <code class="code">TriggerAllDerivations</code> and <code class="code">Reevaluate</code>. It should normally not be necessary to call this function directly.</p>
 
 <p><a id="X7E2279C47AFE3FAD" name="X7E2279C47AFE3FAD"></a></p>
 
@@ -339,7 +339,7 @@
 <h5>8.4-11 AddPrimitiveOperation</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPrimitiveOperation</code>( <var class="Arg">owl</var>, <var class="Arg">op_name</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Add the operation named <var class="Arg">op_name</var> to the operation weight list <var class="Arg">owl</var> with weight <var class="Arg">weight</var>. This causes all operations that can be derived, directly or indirectly, from the newly added operation to be installed as well (unless they are already installed with the same or lower weight).</p>
+<p>Add the operation named <var class="Arg">op_name</var> to the operation weight list <var class="Arg">owl</var> with weight <var class="Arg">weight</var>.</p>
 
 <p><a id="X8145094E862826BE" name="X8145094E862826BE"></a></p>
 

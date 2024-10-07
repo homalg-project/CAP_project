@@ -487,7 +487,14 @@
   of  a CAP operation, an error is raised. For debugging purposes one can also
   pass the CAP operation instead of its name.[133X
   
-  [1X1.6-2 MissingOperationsForConstructivenessOfCategory[101X
+  [1X1.6-2 OperationWeight[101X
+  
+  [33X[1;0Y[29X[2XOperationWeight[102X( [3Xcat[103X, [3Xop_name[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan integer[133X
+  
+  [33X[0;0YReturns the weight of the operation currently installed as [3Xop_name[103X in [3Xcat[103X.[133X
+  
+  [1X1.6-3 MissingOperationsForConstructivenessOfCategory[101X
   
   [33X[1;0Y[29X[2XMissingOperationsForConstructivenessOfCategory[102X( [3XC[103X, [3Xs[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X

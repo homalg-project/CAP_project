@@ -822,7 +822,6 @@
   [2XInputSignature[102X, for IsCapFunctor 5.4-10 
   [2XInstallDeprecatedAlias[102X 9.2-16 
   [2XInstallDerivationForCategory[102X, for IsDerivedMethod, IsPosInt, IsCapCategory 8.2-10 
-  [2XInstallDerivationsUsingOperation[102X, for IsOperationWeightList, IsString 8.4-8 
   [2XInstallFunctor[102X, for IsCapFunctor, IsString 5.4-11 
   [2XInstallMethodForCompilerForCAP[102X 9.2-19 
   [2XInstallNaturalTransformation[102X, for IsCapNaturalTransformation, IsString 5.5-5 
@@ -980,7 +979,7 @@
   [2XMakeDerivationGraph[102X, for IsDenseList 8.3-2 
   [2XMakeOperationWeightList[102X, for IsCapCategory, IsDerivedMethodGraph 8.4-2 
   [2XMereExistenceOfSolutionOfLinearSystemInAbCategory[102X, for IsList, IsList, IsList 3.16-10 
-  [2XMissingOperationsForConstructivenessOfCategory[102X, for IsCapCategory, IsString 1.6-2 
+  [2XMissingOperationsForConstructivenessOfCategory[102X, for IsCapCategory, IsString 1.6-3 
   [2XModelingCategory[102X, for IsCapCategory 12.5-1 
   [2XModelingMorphism[102X, for IsCapCategory, IsCapCategoryMorphism 12.6-5 
   [2XModelingObject[102X, for IsCapCategory, IsCapCategoryObject 12.6-3 
@@ -1027,6 +1026,7 @@
   [2XObjectDatumType[102X, for IsCapCategory 1.4-6 
   [2XObjectFilter[102X, for IsCapCategory 1.4-3 
   [2XOperations[102X, for IsDerivedMethodGraph 8.3-6 
+  [2XOperationWeight[102X, for IsCapCategory, IsString 1.6-2 
   [2XOperationWeightUsingDerivation[102X, for IsOperationWeightList, IsDerivedMethod 8.4-6 
   [2XPackageOfCAPOperation[102X 9.2-32 
   [2XPair[102X 9.2-40 
@@ -1151,6 +1151,7 @@
   [2XTerminalObjectFunctorialWithGivenTerminalObjects[102X, for IsCapCategoryObject, IsCapCategoryObject 6.4-6 
   [2XTransitivelyNeededOtherPackages[102X 9.2-31 
   [2XTransposedMatWithGivenDimensions[102X 9.2-42 
+  [2XTriggerDerivationsUsingOperation[102X, for IsOperationWeightList, IsString 8.4-8 
   [2XTriple[102X 9.2-41 
   [2XTwoCellDatumType[102X, for IsCapCategory 1.4-8 
   [2XTwoCellFilter[102X, for IsCapCategory 1.4-5 
