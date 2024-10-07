@@ -308,6 +308,3 @@ DeclareGlobalFunction( "TriggerAllDerivations" );
 
 DeclareGlobalFunction( "InstalledMethodsOfCategory" );
 DeclareGlobalFunction( "DerivationsOfMethodByCategory" );
-
-DeclareGlobalFunction( "ListInstalledOperationsOfCategory" );
-DeclareGlobalFunction( "ListPrimitivelyInstalledOperationsOfCategory" );

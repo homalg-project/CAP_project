@@ -626,6 +626,60 @@ InstallMethod( OperationWeight,
 end );
 
 ##
+InstallGlobalFunction( ListInstalledOperationsOfCategory,
+  
+  function( arg )
+    local cat, filter, names;
+    
+    if Length( arg ) < 1 then
+        Error( "first argument needs to be <category>" );
+    fi;
+    
+    cat := arg[ 1 ];
+    
+    if Length( arg ) > 1 then
+        filter := arg[ 2 ];
+    else
+        filter := fail;
+    fi;
+    
+    if IsCapCategoryCell( cat ) then
+        cat := CapCategory( cat );
+    fi;
+    
+    if not IsCapCategory( cat ) then
+        Error( "input is not a category (cell)" );
+    fi;
+    
+    names := RecNames( cat!.operations );
+    
+    if filter <> fail then
+        names := Filtered( names, i -> PositionSublist( i, filter ) <> fail );
+    fi;
+    
+    return AsSortedList( names );
+    
+end );
+
+##
+InstallGlobalFunction( ListPrimitivelyInstalledOperationsOfCategory,
+  
+  function( arg )
+    local cat, names;
+    
+    if Length( arg ) < 1 then
+        Error( "first argument needs to be <category>" );
+    fi;
+    
+    cat := arg[ 1 ];
+    
+    names := CallFuncList( ListInstalledOperationsOfCategory, arg );
+    
+    return Filtered( names, x -> cat!.operations.(x).type = "primitive_installation" );
+    
+end );
+
+##
 InstallMethod( MissingOperationsForConstructivenessOfCategory,
                [ IsCapCategory, IsString ],
                

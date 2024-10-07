@@ -591,6 +591,9 @@ DeclareOperation( "CanCompute",
 DeclareOperation( "OperationWeight",
                   [ IsCapCategory, IsString ] );
 
+DeclareGlobalFunction( "ListInstalledOperationsOfCategory" );
+DeclareGlobalFunction( "ListPrimitivelyInstalledOperationsOfCategory" );
+
 #! @Description
 #! The arguments are a category $C$ and a string $s$.
 #! If $s$ is a categorical property (e.g. <C>"IsAbelianCategory"</C>),
