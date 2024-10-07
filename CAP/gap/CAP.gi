@@ -288,8 +288,6 @@ InstallGlobalFunction( "CreateCapCategoryWithDataTypes", FunctionWithNamedArgume
     
     obj!.is_computable := CAP_NAMED_ARGUMENTS.is_computable;
     
-    obj!.derivations_weight_list := MakeOperationWeightList( obj, CAP_INTERNAL_DERIVATION_GRAPH );
-    
     obj!.caches := rec( );
     
     for operation_name in CAP_INTERNAL.operation_names_with_cache_disabled_by_default do

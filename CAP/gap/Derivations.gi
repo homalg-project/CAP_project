@@ -376,16 +376,13 @@ end );
 InstallMethod( CurrentOperationWeight,
                [ IsOperationWeightList, IsString ],
 function( owl, op_name )
-  if IsBound( owl!.operation_weights.( op_name ) ) then
-      return owl!.operation_weights.( op_name );
-  fi;
-  return infinity;
+  return owl!.operation_weights.( op_name );
 end );
 
 InstallMethod( OperationWeightUsingDerivation,
                [ IsOperationWeightList, IsDerivedMethod ],
 function( owl, d )
-  local category, category_operation_weights, weight, operation_weights, operation_name, operation_weight, x;
+  local category, category_operation_weights, weight, operation_weights, operation_weight, x;
     
     category := CategoryOfOperationWeightList( owl );
     category_operation_weights := owl!.operation_weights;
@@ -404,15 +401,7 @@ function( owl, d )
             
         fi;
         
-        operation_name := x[1];
-        
-        if not IsBound( operation_weights.(operation_name) ) then
-            
-            return infinity;
-            
-        fi;
-        
-        operation_weight := operation_weights.(operation_name);
+        operation_weight := operation_weights.(x[1]);
         
         if operation_weight = infinity then
             
@@ -896,7 +885,9 @@ end ) );
 InstallGlobalFunction( TriggerAllDerivations, function( category )
   local weight_list, derivation_list, current_install, current_final_derivation, op_name, new_weight, current_weight, i, derivation, operation;
     
-    weight_list := category!.derivations_weight_list;
+    weight_list := MakeOperationWeightList( category, CAP_INTERNAL_DERIVATION_GRAPH );
+    
+    category!.derivations_weight_list := weight_list;
     
     for op_name in RecNames( category!.operations ) do
         
