@@ -21,7 +21,7 @@ morphism_matrix := [ [ alpha, beta ], [ beta, alpha ] ];;
 
 # compile the derivation of MorphismBetweenDirectSumsWithGivenDirectSums
 Print(
-    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[1],
+    vec!.operations.MorphismBetweenDirectSumsWithGivenDirectSums.func,
     "\n"
 );
 #! function ( cat, S, diagram_S, morphism_matrix, diagram_T, T )
@@ -35,7 +35,7 @@ Print(
 #!        T, test_diagram_coproduct, S );
 #! end
 compiled_func2 := CapJitCompiledFunction(
-    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[1],
+    vec!.operations.MorphismBetweenDirectSumsWithGivenDirectSums.func,
     vec
 );;
 Display( compiled_func2 );

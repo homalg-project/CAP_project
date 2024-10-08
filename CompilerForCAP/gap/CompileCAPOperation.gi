@@ -17,7 +17,7 @@ InstallGlobalFunction( "CapJitCompiledCAPOperationAsEnhancedSyntaxTree", functio
     
     if not IsBound( cat!.compiled_functions_trees.(operation_name) ) then
         
-        function_to_compile := Last( cat!.added_functions.(operation_name) );
+        function_to_compile := cat!.operations.(operation_name).func;
         
         if IsOperation( function_to_compile ) or IsKernelFunction( function_to_compile ) then
             

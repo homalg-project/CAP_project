@@ -1144,7 +1144,7 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
                 
             od;
             
-            Assert( 0, IsIdenticalObj( Last( category!.added_functions.( name ) ), DerivationFunction( current_derivation ) ) );
+            Assert( 0, IsIdenticalObj( category!.operations.( name ).func, DerivationFunction( current_derivation ) ) );
             
         else
             
@@ -1152,7 +1152,7 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
             
         fi;
         
-        currently_installed_func := Last( category!.added_functions.( name ) );
+        currently_installed_func := category!.operations.( name ).func;
         
         Print( "\nThe following function was installed for this operation:\n\n" );
         Display( currently_installed_func );
