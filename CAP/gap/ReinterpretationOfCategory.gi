@@ -85,6 +85,7 @@ InstallMethod( ReinterpretationOfCategory,
     # the methods for ModelingObject et al. will be installed later once we have a category instance filter
     category_constructor_options := rec(
         underlying_category_getter_string := "ModelingCategory",
+        underlying_category := C,
         underlying_object_getter_string := "ModelingObject",
         underlying_morphism_getter_string := "ModelingMorphism",
         top_object_getter_string := "ReinterpretationOfObject",
@@ -137,14 +138,6 @@ InstallMethod( ReinterpretationOfCategory,
     fi;
     
     category_constructor_options.list_of_operations_to_install := list_of_operations_to_install;
-    
-    category_constructor_options.operation_weights := rec( );
-    
-    for operation in list_of_operations_to_install do
-        
-        category_constructor_options.operation_weights.(operation) := OperationWeight( C, operation );
-        
-    od;
     
     if IsBound( C!.supports_empty_limits ) then
         

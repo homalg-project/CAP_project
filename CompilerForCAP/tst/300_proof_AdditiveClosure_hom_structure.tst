@@ -33,9 +33,7 @@ gap> dummy_range := DummyCategory( rec(
 >     properties := [
 >         "IsAdditiveCategory",
 >     ],
-> ) : FinalizeCategory := false );;
-gap> AddMorphismBetweenDirectSums( dummy_range, { cat, source_diagram, matrix, target_diagram } -> fail );
-gap> Finalize( dummy_range );;
+> ) );;
 
 #
 gap> dummy := DummyCategory( rec(

@@ -166,13 +166,13 @@ InstallMethod( DummyCategory,
         
     fi;
     
-    dummy_function := { operation_name, dummy } -> """
+    dummy_function := { operation_name, dummy } -> Pair( """
         function ( input_arguments... )
             
             Error( "this is a dummy category without actual implementation" );
             
         end
-    """;
+    """, 1 );
     
     category_constructor_options.create_func_bool := dummy_function;
     category_constructor_options.create_func_object := dummy_function;
