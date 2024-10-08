@@ -376,16 +376,13 @@ end );
 InstallMethod( CurrentOperationWeight,
                [ IsOperationWeightList, IsString ],
 function( owl, op_name )
-  if IsBound( owl!.operation_weights.( op_name ) ) then
-      return owl!.operation_weights.( op_name );
-  fi;
-  return infinity;
+  return owl!.operation_weights.( op_name );
 end );
 
 InstallMethod( OperationWeightUsingDerivation,
                [ IsOperationWeightList, IsDerivedMethod ],
 function( owl, d )
-  local category, category_operation_weights, weight, operation_weights, operation_name, operation_weight, x;
+  local category, category_operation_weights, weight, operation_weights, operation_weight, x;
     
     category := CategoryOfOperationWeightList( owl );
     category_operation_weights := owl!.operation_weights;
@@ -404,15 +401,7 @@ function( owl, d )
             
         fi;
         
-        operation_name := x[1];
-        
-        if not IsBound( operation_weights.(operation_name) ) then
-            
-            return infinity;
-            
-        fi;
-        
-        operation_weight := operation_weights.(operation_name);
+        operation_weight := operation_weights.(x[1]);
         
         if operation_weight = infinity then
             
@@ -896,7 +885,9 @@ end ) );
 InstallGlobalFunction( TriggerAllDerivations, function( category )
   local weight_list, derivation_list, current_install, current_final_derivation, op_name, new_weight, current_weight, i, derivation, operation;
     
-    weight_list := category!.derivations_weight_list;
+    weight_list := MakeOperationWeightList( category, CAP_INTERNAL_DERIVATION_GRAPH );
+    
+    category!.derivations_weight_list := weight_list;
     
     for op_name in RecNames( category!.operations ) do
         
@@ -1095,7 +1086,7 @@ end );
 InstallGlobalFunction( DerivationsOfMethodByCategory,
   
   function( category, name )
-    local category_weight_list, current_weight, current_derivation, currently_installed_func, weight_list, category_getter_string, possible_derivations, category_filter, weight, found, x, final_derivation;
+    local current_derivation, currently_installed_func, weight_list, category_getter_string, possible_derivations, category_filter, weight, found, x, final_derivation;
     
     if IsFunction( name ) then
         name := NameFunction( name );
@@ -1111,37 +1102,25 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
         return;
     fi;
     
-    category_weight_list := category!.derivations_weight_list;
+    if CanCompute( category, name ) then
     
-    current_weight := CurrentOperationWeight( category_weight_list, name );
-    
-    if current_weight < infinity then
-    
-        current_derivation := DerivationOfOperation( category_weight_list, name );
+        Print( Name( category ), " can already compute ", TextAttr.b4, name, TextAttr.reset, " with weight " , OperationWeight( category, name ), ".\n" );
         
-        Print( Name( category ), " can already compute ", TextAttr.b4, name, TextAttr.reset, " with weight " , current_weight, ".\n" );
-        
-        if current_derivation = fail then
+        if category!.operations.( name ).type = "primitive_installation" then
             
-            if category!.operations.( name ).type = "primitive_installation" then
-                
-                Print( "It was installed primitively.\n" );
-                
-            elif category!.operations.( name ).type = "final_derivation" then
-                
-                Print( "It was installed as a final derivation.\n" );
-                
-            elif category!.operations.( name ).type = "precompiled_derivation" then
-                
-                Print( "It was installed as a precompiled derivation.\n" );
-                
-            else
-                
-                Error( "this should never happen" );
-                
-            fi;
+            Print( "It was installed primitively.\n" );
             
-        else
+        elif category!.operations.( name ).type = "final_derivation" then
+            
+            Print( "It was installed as a final derivation.\n" );
+            
+        elif category!.operations.( name ).type = "precompiled_derivation" then
+            
+            Print( "It was installed as a precompiled derivation.\n" );
+            
+        elif category!.operations.( name ).type = "ordinary_derivation" then
+            
+            current_derivation := DerivationOfOperation( category!.derivations_weight_list, name );
             
             Print( "It was derived by ", TextAttr.b3, Description( current_derivation ), TextAttr.reset, " using \n" );
             
@@ -1149,7 +1128,7 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
                 
                 if x[3] = fail then
                     
-                    weight_list := category_weight_list;
+                    weight_list := category!.derivations_weight_list;
                     category_getter_string := "";
                     
                 else
@@ -1166,6 +1145,10 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
             od;
             
             Assert( 0, IsIdenticalObj( Last( category!.added_functions.( name ) ), DerivationFunction( current_derivation ) ) );
+            
+        else
+            
+            Error( "this should never happen" );
             
         fi;
         
@@ -1228,32 +1211,31 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
             
             if x[3] = fail then
                 
-                weight_list := category_weight_list;
+                if CanCompute( category, x[1] ) then
+                    
+                    weight := OperationWeight( category, x[1] );
+                    
+                else
+                    
+                    weight := infinity;
+                    
+                fi;
+                
                 category_getter_string := "";
                 
             else
                 
-                if category_filter( category ) then
+                if category_filter( category ) and CanCompute( x[3](category), x[1] ) then
                     
-                    weight_list := x[3](category)!.derivations_weight_list;
+                    weight := OperationWeight( x[3](category), x[1] );
                     
                 else
                     
-                    weight_list := fail;
+                    weight := infinity;
                     
                 fi;
                 
                 category_getter_string := Concatenation( " in the category obtained by applying ", String( x[3] ) );
-                
-            fi;
-            
-            if weight_list = fail then
-                
-                weight := infinity;
-                
-            else
-                
-                weight := CurrentOperationWeight( weight_list, x[1] );
                 
             fi;
             
@@ -1281,32 +1263,31 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
                 
                 if x[3] = fail then
                     
-                    weight_list := category_weight_list;
+                    if CanCompute( category, x[1] ) then
+                        
+                        weight := OperationWeight( category, x[1] );
+                        
+                    else
+                        
+                        weight := infinity;
+                        
+                    fi;
+                    
                     category_getter_string := "";
                     
                 else
                     
-                    if category_filter( category ) then
+                    if category_filter( category ) and CanCompute( x[3](category), x[1] ) then
                         
-                        weight_list := x[3](category)!.derivations_weight_list;
+                        weight := OperationWeight( x[3](category), x[1] );
                         
                     else
                         
-                        weight_list := fail;
+                        weight := infinity;
                         
                     fi;
                 
                     category_getter_string := Concatenation( " in the category obtained by applying ", String( x[3] ) );
-                    
-                fi;
-                
-                if weight_list = fail then
-                    
-                    weight := infinity;
-                    
-                else
-                    
-                    weight := CurrentOperationWeight( weight_list, x[1] );
                     
                 fi;
                 
@@ -1331,9 +1312,7 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
             
             for x in current_derivation.cannot_compute do
                 
-                weight := CurrentOperationWeight( category_weight_list, x );
-                
-                if weight < infinity then
+                if CanCompute( category, x ) then
                     
                     Print( "* ", x, "\n" );
                     found := true;
