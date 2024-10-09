@@ -598,35 +598,6 @@ end );
 
 InstallValue( CAP_INTERNAL_FINAL_DERIVATION_LIST, [ ] );
 
-BindGlobal( "CAP_INTERNAL_FINAL_DERIVATION_SANITY_CHECK",
-  
-  function( final_derivation )
-    local derivation;
-    
-    if IsEmpty( final_derivation.derivations ) then
-        
-        Error( "trying to add a final derivation without any functions to install" );
-        
-    fi;
-    
-    if StartsWith( TargetOperation( final_derivation.derivations[1] ), "IsomorphismFrom" ) and Length( final_derivation.derivations ) = 1 then
-        
-        Print( "WARNING: You are installing a final derivation for ", TargetOperation( final_derivation.derivations[1] ), " which does not include its inverse. You should probably use a bundled final derivation to also install its inverse.\n" );
-        
-    fi;
-    
-    for derivation in final_derivation.derivations do
-        
-        if not TargetOperation( derivation ) in final_derivation.cannot_compute then
-            
-            Print( "WARNING: A final derivation for ", TargetOperation( final_derivation.derivations[1] ), " installs ", TargetOperation( derivation ), " but does not list it in its exclude list.\n" );
-            
-        fi;
-        
-    od;
-    
-end );
-
 InstallGlobalFunction( AddFinalDerivation, FunctionWithNamedArguments(
   [
     # When compiling categories, a derivation does not cause overhead anymore, so we would like to simply set `Weight` to 0.
@@ -663,23 +634,23 @@ InstallGlobalFunction( AddFinalDerivationBundle, FunctionWithNamedArguments(
   function( CAP_NAMED_ARGUMENTS, description, can_compute, cannot_compute, additional_functions... )
     local weight, category_filter, loop_multiplier, category_getters, function_called_before_installation, operations_in_graph, operations_to_install, union_of_collected_lists, derivations, used_op_names_with_multiples_and_category_getters, collected_list, dummy_derivation, final_derivation, i, current_additional_func, x;
     
-    if IsEmpty( additional_functions ) then
-        
-        Error( "trying to add a final derivation without any functions to install" );
-        
-    fi;
-    
     weight := CAP_NAMED_ARGUMENTS.Weight;
     category_filter := CAP_NAMED_ARGUMENTS.CategoryFilter;
     loop_multiplier := CAP_NAMED_ARGUMENTS.WeightLoopMultiple;
     category_getters := CAP_NAMED_ARGUMENTS.CategoryGetters;
     function_called_before_installation := CAP_NAMED_ARGUMENTS.FunctionCalledBeforeInstallation;
     
+    if IsEmpty( additional_functions ) then
+        
+        Error( "trying to add a final derivation without any functions to install" );
+        
+    fi;
+    
     for i in [ 1 .. Length( additional_functions ) ] do
         
-        if not (IsList( additional_functions[i] ) and Length( additional_functions[i] ) in [ 2, 3 ]) then
+        if not (IsList( additional_functions[i] ) and Length( additional_functions[i] ) = 3) then
             
-            Error( "additional functions must be given as pairs [ <operation>, <function> ] or triples [ <operation>, <function>, <preconditions> ]" );
+            Error( "additional functions must be given as triples [ <operation>, <preconditions>, <function> ]" );
             
         fi;
         
@@ -689,7 +660,19 @@ InstallGlobalFunction( AddFinalDerivationBundle, FunctionWithNamedArguments(
             
         fi;
         
+        if not additional_functions[i][1] in cannot_compute then
+            
+            Print( "WARNING: A final derivation installs ", NameFunction( additional_functions[i][1] ), " but does not list it in its exclude list.\n" );
+            
+        fi;
+        
     od;
+    
+    if Length( additional_functions ) = 1 and StartsWith( NameFunction( additional_functions[1][1] ), "IsomorphismFrom" ) then
+        
+        Print( "WARNING: You are installing a final derivation for ", NameFunction( additional_functions[1][1] ), " which does not include its inverse. You should probably use a bundled final derivation to also install its inverse.\n" );
+        
+    fi;
     
     operations_in_graph := Operations( CAP_INTERNAL_DERIVATION_GRAPH );
     
@@ -703,8 +686,6 @@ InstallGlobalFunction( AddFinalDerivationBundle, FunctionWithNamedArguments(
     for current_additional_func in additional_functions do
         
         used_op_names_with_multiples_and_category_getters := fail;
-        
-        Assert( 0, Length( current_additional_func ) = 3 );
         
         used_op_names_with_multiples_and_category_getters := [ ];
         
@@ -792,7 +773,7 @@ InstallGlobalFunction( AddFinalDerivationBundle, FunctionWithNamedArguments(
             
         fi;
         
-        # CAP_INTERNAL_FINAL_DERIVATION_SANITY_CHECK ensures that all installed operations appear in cannot_compute
+        # check that preconditions do not appear in cannot_compute (which in particular includes all operations installed by this final derivation, as checked above)
         if (Length( x ) = 2 or (Length( x ) = 3 and x[3] = fail)) and x[1] in cannot_compute then
             
             Error( "A final derivation for ", TargetOperation( derivations[1] ), " has precondition ", x[1], " which is also in its exclude list.\n" );
@@ -850,8 +831,6 @@ InstallGlobalFunction( AddFinalDerivationBundle, FunctionWithNamedArguments(
         derivations := derivations,
         function_called_before_installation := function_called_before_installation,
     );
-    
-    CAP_INTERNAL_FINAL_DERIVATION_SANITY_CHECK( final_derivation );
     
     Add( CAP_INTERNAL_FINAL_DERIVATION_LIST, final_derivation );
     
