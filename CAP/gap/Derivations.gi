@@ -685,8 +685,6 @@ InstallGlobalFunction( AddFinalDerivationBundle, FunctionWithNamedArguments(
     
     for current_additional_func in additional_functions do
         
-        used_op_names_with_multiples_and_category_getters := fail;
-        
         used_op_names_with_multiples_and_category_getters := [ ];
         
         for x in current_additional_func[2] do
