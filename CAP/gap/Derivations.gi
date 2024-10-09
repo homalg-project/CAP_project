@@ -838,11 +838,11 @@ end ) );
 
 #################################
 ##
-## Triggering derivations
+## Installing derivations
 ##
 #################################
 
-InstallGlobalFunction( TriggerAllDerivations, function( category )
+InstallGlobalFunction( InstallDerivations, function( category )
   local weight_list, derivation_list, current_install, current_final_derivation, op_name, new_weight, current_weight, i, derivation, operation;
     
     weight_list := MakeOperationWeightList( category, CAP_INTERNAL_DERIVATION_GRAPH );

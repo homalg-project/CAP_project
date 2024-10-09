@@ -240,7 +240,7 @@ DeclareOperation( "DerivationOfOperation", [ IsOperationWeightList, IsString ] )
 #! @Description
 #!  Performs a search from the operation <A>op_name</A>, and triggers all derivations
 #!  that give improvements over the current state.
-#!  This is used internally by <C>TriggerAllDerivations</C> and <C>Reevaluate</C>.
+#!  This is used internally by <C>InstallDerivations</C> and <C>Reevaluate</C>.
 #!  It should normally not be necessary to call this function directly.
 #! @Arguments owl, op_name
 DeclareOperation( "TriggerDerivationsUsingOperation",
@@ -294,11 +294,11 @@ DeclareGlobalFunction( "AddFinalDerivationBundle" );
 
 #################################
 ##
-## Triggering derivations
+## Installing derivations
 ##
 #################################
 
-DeclareGlobalFunction( "TriggerAllDerivations" );
+DeclareGlobalFunction( "InstallDerivations" );
 
 #################################
 ##
