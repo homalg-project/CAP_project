@@ -401,6 +401,13 @@ function( owl, d )
             
             operation_weights := x[3](category)!.derivations_weight_list!.operation_weights;
             
+            # the category `x[3](category)` might have been finalized before the operation `x[1]` was added to CAP
+            if not IsBound( operation_weights.(x[1]) ) then
+                
+                return infinity;
+                
+            fi;
+            
         fi;
         
         operation_weight := operation_weights.(x[1]);
