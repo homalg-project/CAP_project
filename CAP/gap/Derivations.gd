@@ -64,9 +64,8 @@ DeclareCategory( "IsDerivedMethod", IsAttributeStoringRep );
 #!  <C>IsCapCategory</C>. The output of <A>category_filter</A> must not
 #!  change during the installation of operations. In particular, it must
 #!  not rely on `CanCompute` to check conditions.
-#! @Arguments target_op_name, description, used_ops_with_multiples, func, weight, category_filter
-DeclareOperation( "CreateDerivation",
-                  [ IsString, IsString, IsDenseList, IsFunction, IsPosInt, IsFunction ] );
+#! @Arguments target_op_name, description, used_ops_with_multiples, func, weight, category_filter, loop_multiplier, category_getters
+DeclareGlobalFunction( "CreateDerivation" );
 
 #! @Description
 #!  A description of the derivation.
