@@ -698,7 +698,7 @@
   [2XCreateCapCategoryObjectWithAttributes[102X 2.2-3 
   [2XCreateCapCategoryTwoCellWithAttributes[102X 4.2-3 
   [2XCreateCapCategoryWithDataTypes[102X 1.3-4 
-  [2XCreateDerivation[102X, for IsString, IsString, IsDenseList, IsFunction, IsPosInt, IsFunction 8.2-2 
+  [2XCreateDerivation[102X 8.2-2 
   [2XCreateGapObjectWithAttributes[102X 9.2-55 
   [2XCurrentOperationWeight[102X, for IsOperationWeightList, IsString 8.4-5 
   [2XDeactivateCachingOfCategory[102X 1.9-2 

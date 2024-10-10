@@ -32,7 +32,7 @@
   
   [1X8.2-2 CreateDerivation[101X
   
-  [33X[1;0Y[29X[2XCreateDerivation[102X( [3Xtarget_op_name[103X, [3Xdescription[103X, [3Xused_ops_with_multiples[103X, [3Xfunc[103X, [3Xweight[103X, [3Xcategory_filter[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCreateDerivation[102X( [3Xtarget_op_name[103X, [3Xdescription[103X, [3Xused_ops_with_multiples[103X, [3Xfunc[103X, [3Xweight[103X, [3Xcategory_filter[103X, [3Xloop_multiplier[103X, [3Xcategory_getters[103X ) [32X function[133X
   
   [33X[0;0YCreates  a new derivation object. The argument [3Xtarget_op_name[103X is the name of
   the  operation which the derived method implements. The argument [3Xdescription[103X
@@ -254,7 +254,7 @@
   
   [33X[0;0YPerforms  a  search from the operation [3Xop_name[103X, and triggers all derivations
   that  give  improvements  over the current state. This is used internally by
-  [10XTriggerAllDerivations[110X and [10XReevaluate[110X. It should normally not be necessary to
+  [10XInstallDerivations[110X  and  [10XReevaluate[110X.  It should normally not be necessary to
   call this function directly.[133X
   
   [1X8.4-9 Reevaluate[101X
